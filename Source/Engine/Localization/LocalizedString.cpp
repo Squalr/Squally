@@ -9,7 +9,8 @@ using namespace cocos2d;
 
 LocalizedString::LocalizedString()
 {
-	this->onLocaleChange = nullptr;
+	this->onStringUpdate = nullptr;
+	this->stringReplacementVariables = std::vector<std::string>();
 	this->currentLanguage = Localization::getLanguage();
 }
 
@@ -23,7 +24,7 @@ void LocalizedString::onEnter()
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
-		this->onLocaleChange(this);
+		this->onStringUpdate(this);
 	}
 }
 
@@ -33,9 +34,9 @@ void LocalizedString::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
-		if (this->onLocaleChange != nullptr)
+		if (this->onStringUpdate != nullptr)
 		{
-			this->onLocaleChange(this);
+			this->onStringUpdate(this);
 		}
 	}));
 }
@@ -164,7 +165,17 @@ std::string LocalizedString::getString()
 	}
 }
 
-void LocalizedString::setOnLocaleChangeCallback(std::function<void(LocalizedString* newString)> onLocaleChange)
+void LocalizedString::setStringReplacementVariables(std::vector<std::string> stringReplacementVariables)
 {
-	this->onLocaleChange = onLocaleChange;
+	this->stringReplacementVariables = stringReplacementVariables;
+
+	if (this->onStringUpdate != nullptr)
+	{
+		this->onStringUpdate(this);
+	}
+}
+
+void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onLocaleChange)
+{
+	this->onStringUpdate = onLocaleChange;
 }

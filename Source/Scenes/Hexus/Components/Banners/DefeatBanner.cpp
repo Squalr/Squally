@@ -8,6 +8,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/Defeat.h"
+
 using namespace cocos2d;
 
 DefeatBanner* DefeatBanner::create()
@@ -24,7 +26,7 @@ DefeatBanner::DefeatBanner()
 	this->defeatBanner1 = Sprite::create(HexusResources::EnemyBanner);
 	this->defeatBanner2 = Sprite::create(HexusResources::EnemyBanner);
 
-	this->setBannerText("DEFEAT!");
+	this->setBannerText(Strings::Hexus_Banners_Defeat::create());
 
 	this->addBannerChild(this->defeatBanner1);
 	this->addBannerChild(this->defeatBanner2);

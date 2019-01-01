@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/LastStand.h"
+
 using namespace cocos2d;
 
 PlayerLastStandBanner* PlayerLastStandBanner::create()
@@ -23,7 +25,7 @@ PlayerLastStandBanner::PlayerLastStandBanner()
 	this->playerPassBanner1 = Sprite::create(HexusResources::PlayerBanner);
 	this->playerPassBanner2 = Sprite::create(HexusResources::PlayerBanner);
 
-	this->setBannerText("LAST STAND");
+	this->setBannerText(Strings::Hexus_Banners_LastStand::create());
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);

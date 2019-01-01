@@ -31,7 +31,7 @@ protected:
 	void addBannerChild(Node* child);
 
 private:
-	cocos2d::LayerColor* statusBanner;
-	LocalizedLabel* statusLabel;
+	cocos2d::LayerColor* bannerOverlay;
+	LocalizedLabel* bannerLabel;
 	cocos2d::Node* bannerChildrenNode;
 };

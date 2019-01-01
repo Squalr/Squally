@@ -32,7 +32,7 @@ PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(UIResources::Menus_Icons_Coins);
-	LocalizedLabel* gold = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::PlusNumeric::create());
+	LocalizedLabel* gold = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Numerics_PlusNumeric::create());
 
 	gold->setStringReplacementVariables({ "+200" });
 	gold->enableOutline(Color4B::BLACK, 2);
@@ -44,7 +44,7 @@ PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 	this->sprite->addChild(coin);
 	this->sprite->addChild(gold);
 
-	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Numeric::create());
+	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Numerics_Numeric::create());
 
 	this->valueLabel->setStringReplacementVariables({ std::to_string(PlushieMonkey::lockCountDown) });
 	this->valueLabel->setPosition(-48.0f, 128.0f);

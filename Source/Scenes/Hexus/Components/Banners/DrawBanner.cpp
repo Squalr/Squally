@@ -8,6 +8,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/Draw.h"
+
 using namespace cocos2d;
 
 DrawBanner* DrawBanner::create()
@@ -24,7 +26,7 @@ DrawBanner::DrawBanner()
 	this->defeatBanner1 = Sprite::create(HexusResources::RoundBanner);
 	this->defeatBanner2 = Sprite::create(HexusResources::RoundBanner);
 
-	this->setBannerText("DRAW!");
+	this->setBannerText(Strings::Hexus_Banners_Draw::create());
 
 	this->addBannerChild(this->defeatBanner1);
 	this->addBannerChild(this->defeatBanner2);

@@ -38,7 +38,7 @@ RemainingCardDisplay::RemainingCardDisplay()
 	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::CardsToPlayToolTip::create());
+	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardsToPlayToolTip::create());
 
 	this->remainingCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
@@ -132,25 +132,25 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
 		std::string infinitySymbol = convert.to_bytes(utf16_string);
 
-		this->remainingCardLabel->setString(infinitySymbol);
-		this->enemyRemainingCardLabel->setString(infinitySymbol);
+		this->remainingCardLabel->setStringReplacementVariables({ infinitySymbol });
+		this->enemyRemainingCardLabel->setStringReplacementVariables({ infinitySymbol });
 	}
 	else
 	{
-		this->remainingCardLabel->setString(std::to_string(gameState->playableCardsThisTurn));
-		this->enemyRemainingCardLabel->setString(std::to_string(gameState->playableCardsThisTurn));
+		this->remainingCardLabel->setStringReplacementVariables({ std::to_string(gameState->playableCardsThisTurn) });
+		this->enemyRemainingCardLabel->setStringReplacementVariables({ std::to_string(gameState->playableCardsThisTurn) });
 	}
 
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
 		{
-			this->enemyRemainingCardLabel->setString(std::to_string(0));
+			this->enemyRemainingCardLabel->setStringReplacementVariables({ std::to_string(0) });
 			break;
 		}
 		case GameState::Turn::Enemy:
 		{
-			this->remainingCardLabel->setString(std::to_string(0));
+			this->remainingCardLabel->setStringReplacementVariables({ std::to_string(0) });
 			break;
 		}
 		default:
