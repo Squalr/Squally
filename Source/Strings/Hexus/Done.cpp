@@ -4,171 +4,171 @@
 
 #include "Done.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Done* Done::create()
+	Hexus_Done* Hexus_Done::create()
 	{
-		Done* instance = new Done();
+		Hexus_Done* instance = new Hexus_Done();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Done::clone()
+	LocalizedString* Hexus_Done::clone()
 	{
-		return Done::create();
+		return Hexus_Done::create();
 	}
 
-	Done::Done() : LocalizedString()
-	{
-	}
-
-	Done::~Done()
+	Hexus_Done::Hexus_Done() : LocalizedString()
 	{
 	}
 
-	std::string Done::getStringAr()
+	Hexus_Done::~Hexus_Done()
+	{
+	}
+
+	std::string Hexus_Done::getStringAr()
 	{
 		return "فعله";
 	}
 
-	std::string Done::getStringBg()
+	std::string Hexus_Done::getStringBg()
 	{
 		return "Свършен";
 	}
 
-	std::string Done::getStringCs()
+	std::string Hexus_Done::getStringCs()
 	{
 		return "Hotovo";
 	}
 
-	std::string Done::getStringDa()
+	std::string Hexus_Done::getStringDa()
 	{
 		return "Færdig";
 	}
 
-	std::string Done::getStringDe()
+	std::string Hexus_Done::getStringDe()
 	{
 		return "Erledigt";
 	}
 
-	std::string Done::getStringEl()
+	std::string Hexus_Done::getStringEl()
 	{
 		return "Εγινε";
 	}
 
-	std::string Done::getStringEn()
+	std::string Hexus_Done::getStringEn()
 	{
 		return "Done";
 	}
 
-	std::string Done::getStringEs()
+	std::string Hexus_Done::getStringEs()
 	{
 		return "Hecho";
 	}
 
-	std::string Done::getStringEs419()
+	std::string Hexus_Done::getStringEs419()
 	{
 		return "Hecho";
 	}
 
-	std::string Done::getStringFi()
+	std::string Hexus_Done::getStringFi()
 	{
 		return "Tehty";
 	}
 
-	std::string Done::getStringFr()
+	std::string Hexus_Done::getStringFr()
 	{
 		return "Terminé";
 	}
 
-	std::string Done::getStringHu()
+	std::string Hexus_Done::getStringHu()
 	{
 		return "Kész";
 	}
 
-	std::string Done::getStringIt()
+	std::string Hexus_Done::getStringIt()
 	{
 		return "Fatto";
 	}
 
-	std::string Done::getStringJa()
+	std::string Hexus_Done::getStringJa()
 	{
 		return "完了";
 	}
 
-	std::string Done::getStringKo()
+	std::string Hexus_Done::getStringKo()
 	{
 		return "끝난";
 	}
 
-	std::string Done::getStringNl()
+	std::string Hexus_Done::getStringNl()
 	{
 		return "Gedaan";
 	}
 
-	std::string Done::getStringNo()
+	std::string Hexus_Done::getStringNo()
 	{
 		return "Ferdig";
 	}
 
-	std::string Done::getStringPl()
+	std::string Hexus_Done::getStringPl()
 	{
 		return "Gotowe";
 	}
 
-	std::string Done::getStringPt()
+	std::string Hexus_Done::getStringPt()
 	{
 		return "Feito";
 	}
 
-	std::string Done::getStringPtBr()
+	std::string Hexus_Done::getStringPtBr()
 	{
 		return "Feito";
 	}
 
-	std::string Done::getStringRo()
+	std::string Hexus_Done::getStringRo()
 	{
 		return "Terminat";
 	}
 
-	std::string Done::getStringRu()
+	std::string Hexus_Done::getStringRu()
 	{
 		return "Готово";
 	}
 
-	std::string Done::getStringSv()
+	std::string Hexus_Done::getStringSv()
 	{
 		return "Gjort";
 	}
 
-	std::string Done::getStringTh()
+	std::string Hexus_Done::getStringTh()
 	{
 		return "เสร็จสิ้น";
 	}
 
-	std::string Done::getStringTr()
+	std::string Hexus_Done::getStringTr()
 	{
 		return "tamam";
 	}
 
-	std::string Done::getStringUk()
+	std::string Hexus_Done::getStringUk()
 	{
 		return "Виконано";
 	}
 
-	std::string Done::getStringVi()
+	std::string Hexus_Done::getStringVi()
 	{
 		return "Làm xong";
 	}
 
-	std::string Done::getStringZhCn()
+	std::string Hexus_Done::getStringZhCn()
 	{
 		return "完成";
 	}
 
-	std::string Done::getStringZhTw()
+	std::string Hexus_Done::getStringZhTw()
 	{
 		return "完成";
 	}

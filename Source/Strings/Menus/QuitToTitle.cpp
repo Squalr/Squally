@@ -4,171 +4,171 @@
 
 #include "QuitToTitle.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	QuitToTitle* QuitToTitle::create()
+	Menus_QuitToTitle* Menus_QuitToTitle::create()
 	{
-		QuitToTitle* instance = new QuitToTitle();
+		Menus_QuitToTitle* instance = new Menus_QuitToTitle();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* QuitToTitle::clone()
+	LocalizedString* Menus_QuitToTitle::clone()
 	{
-		return QuitToTitle::create();
+		return Menus_QuitToTitle::create();
 	}
 
-	QuitToTitle::QuitToTitle() : LocalizedString()
-	{
-	}
-
-	QuitToTitle::~QuitToTitle()
+	Menus_QuitToTitle::Menus_QuitToTitle() : LocalizedString()
 	{
 	}
 
-	std::string QuitToTitle::getStringAr()
+	Menus_QuitToTitle::~Menus_QuitToTitle()
+	{
+	}
+
+	std::string Menus_QuitToTitle::getStringAr()
 	{
 		return "استقال الى العنوان";
 	}
 
-	std::string QuitToTitle::getStringBg()
+	std::string Menus_QuitToTitle::getStringBg()
 	{
 		return "Излезте от заглавието";
 	}
 
-	std::string QuitToTitle::getStringCs()
+	std::string Menus_QuitToTitle::getStringCs()
 	{
 		return "Ukončete titul";
 	}
 
-	std::string QuitToTitle::getStringDa()
+	std::string Menus_QuitToTitle::getStringDa()
 	{
 		return "Afslut til Titel";
 	}
 
-	std::string QuitToTitle::getStringDe()
+	std::string Menus_QuitToTitle::getStringDe()
 	{
 		return "Beenden und zurück zum Titelbildschrim";
 	}
 
-	std::string QuitToTitle::getStringEl()
+	std::string Menus_QuitToTitle::getStringEl()
 	{
 		return "Κλείστε στον τίτλο";
 	}
 
-	std::string QuitToTitle::getStringEn()
+	std::string Menus_QuitToTitle::getStringEn()
 	{
 		return "Quit to Title";
 	}
 
-	std::string QuitToTitle::getStringEs()
+	std::string Menus_QuitToTitle::getStringEs()
 	{
 		return "Salir al título";
 	}
 
-	std::string QuitToTitle::getStringEs419()
+	std::string Menus_QuitToTitle::getStringEs419()
 	{
 		return "Salir al título";
 	}
 
-	std::string QuitToTitle::getStringFi()
+	std::string Menus_QuitToTitle::getStringFi()
 	{
 		return "Lopeta otsikko";
 	}
 
-	std::string QuitToTitle::getStringFr()
+	std::string Menus_QuitToTitle::getStringFr()
 	{
 		return "Quitter vers Titre";
 	}
 
-	std::string QuitToTitle::getStringHu()
+	std::string Menus_QuitToTitle::getStringHu()
 	{
 		return "Kilép a cím";
 	}
 
-	std::string QuitToTitle::getStringIt()
+	std::string Menus_QuitToTitle::getStringIt()
 	{
 		return "Abbandona al titolo";
 	}
 
-	std::string QuitToTitle::getStringJa()
+	std::string Menus_QuitToTitle::getStringJa()
 	{
 		return "タイトルを終了";
 	}
 
-	std::string QuitToTitle::getStringKo()
+	std::string Menus_QuitToTitle::getStringKo()
 	{
 		return "제목으로 종료";
 	}
 
-	std::string QuitToTitle::getStringNl()
+	std::string Menus_QuitToTitle::getStringNl()
 	{
 		return "Keer terug naar titelscherm";
 	}
 
-	std::string QuitToTitle::getStringNo()
+	std::string Menus_QuitToTitle::getStringNo()
 	{
 		return "Avslutt til tittel";
 	}
 
-	std::string QuitToTitle::getStringPl()
+	std::string Menus_QuitToTitle::getStringPl()
 	{
 		return "Zamknij do tytułu";
 	}
 
-	std::string QuitToTitle::getStringPt()
+	std::string Menus_QuitToTitle::getStringPt()
 	{
 		return "Sair para o título";
 	}
 
-	std::string QuitToTitle::getStringPtBr()
+	std::string Menus_QuitToTitle::getStringPtBr()
 	{
 		return "Sair para o título";
 	}
 
-	std::string QuitToTitle::getStringRo()
+	std::string Menus_QuitToTitle::getStringRo()
 	{
 		return "Renunta la titlu";
 	}
 
-	std::string QuitToTitle::getStringRu()
+	std::string Menus_QuitToTitle::getStringRu()
 	{
 		return "Выйти в название";
 	}
 
-	std::string QuitToTitle::getStringSv()
+	std::string Menus_QuitToTitle::getStringSv()
 	{
 		return "Avsluta titeln";
 	}
 
-	std::string QuitToTitle::getStringTh()
+	std::string Menus_QuitToTitle::getStringTh()
 	{
 		return "ออกจากหัวข้อ";
 	}
 
-	std::string QuitToTitle::getStringTr()
+	std::string Menus_QuitToTitle::getStringTr()
 	{
 		return "Başlığa Çık";
 	}
 
-	std::string QuitToTitle::getStringUk()
+	std::string Menus_QuitToTitle::getStringUk()
 	{
 		return "Вийти з заголовка";
 	}
 
-	std::string QuitToTitle::getStringVi()
+	std::string Menus_QuitToTitle::getStringVi()
 	{
 		return "Thoát khỏi tiêu đề";
 	}
 
-	std::string QuitToTitle::getStringZhCn()
+	std::string Menus_QuitToTitle::getStringZhCn()
 	{
 		return "退出标题";
 	}
 
-	std::string QuitToTitle::getStringZhTw()
+	std::string Menus_QuitToTitle::getStringZhTw()
 	{
 		return "退出標題";
 	}

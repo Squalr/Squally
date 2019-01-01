@@ -23,6 +23,7 @@
 #include "Strings/Menus/CodeEditor/ClickToEdit.h"
 #include "Strings/Menus/CodeEditor/CodeEditor.h"
 #include "Strings/Menus/CodeEditor/Status.h"
+#include "Strings/Menus/CodeEditor/Function.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -88,17 +89,17 @@ CodeEditor::CodeEditor()
 	this->activeHackableCode = nullptr;
 
 	this->codeEditorBackground = Sprite::create(UIResources::Menus_HackerModeMenu_EmptyFullScreenMenu);
-	this->codeEditorTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::CodeEditor::create()));
+	this->codeEditorTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_CodeEditor_CodeEditor::create()));
 
-	this->statusWindow = TextWindow::create(LocaleStrings::Status::create(), CodeEditor::statusSize, CodeEditor::defaultColor);
-	this->functionWindow = EditableTextWindow::create(LocaleStrings::Status::create(), CodeEditor::functionSize, CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create(LocaleStrings::AllocationEditor::create(), CodeEditor::secondarySize, CodeEditor::defaultColor);
+	this->statusWindow = TextWindow::create(Strings::Menus_CodeEditor_Status::create(), CodeEditor::statusSize, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create(Strings::Menus_CodeEditor_Function::create(), CodeEditor::functionSize, CodeEditor::defaultColor);
+	this->secondaryWindow = EditableTextWindow::create(Strings::Menus_CodeEditor_AllocationEditor::create(), CodeEditor::secondarySize, CodeEditor::defaultColor);
 
-	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
-	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
+	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
+	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
 
-	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Cancel::create());
-	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Cancel::create());
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -136,7 +137,7 @@ CodeEditor::CodeEditor()
 	this->acceptButtonGrayed = Node::create();
 	this->acceptButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
 
-	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Accept::create());
+	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->acceptButtonGrayed->addChild(acceptGray);
 
@@ -387,7 +388,7 @@ void CodeEditor::open(HackableCode* hackableCode)
 {
 	this->activeHackableCode = hackableCode;
 
-	this->functionWindow->setTitle("Function '" + hackableCode->getFunctionName()->getString() + "'");
+	this->functionWindow->setTitleStringReplaceVariables({ hackableCode->getFunctionName()->getString() });
 	this->functionWindow->setText(hackableCode->getAssemblyString());
 	this->functionWindow->focus();
 

@@ -4,171 +4,171 @@
 
 #include "SelectAChapter.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	SelectAChapter* SelectAChapter::create()
+	Hexus_SelectAChapter* Hexus_SelectAChapter::create()
 	{
-		SelectAChapter* instance = new SelectAChapter();
+		Hexus_SelectAChapter* instance = new Hexus_SelectAChapter();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* SelectAChapter::clone()
+	LocalizedString* Hexus_SelectAChapter::clone()
 	{
-		return SelectAChapter::create();
+		return Hexus_SelectAChapter::create();
 	}
 
-	SelectAChapter::SelectAChapter() : LocalizedString()
-	{
-	}
-
-	SelectAChapter::~SelectAChapter()
+	Hexus_SelectAChapter::Hexus_SelectAChapter() : LocalizedString()
 	{
 	}
 
-	std::string SelectAChapter::getStringAr()
+	Hexus_SelectAChapter::~Hexus_SelectAChapter()
+	{
+	}
+
+	std::string Hexus_SelectAChapter::getStringAr()
 	{
 		return "اختر الفصل";
 	}
 
-	std::string SelectAChapter::getStringBg()
+	std::string Hexus_SelectAChapter::getStringBg()
 	{
 		return "Изберете глава";
 	}
 
-	std::string SelectAChapter::getStringCs()
+	std::string Hexus_SelectAChapter::getStringCs()
 	{
 		return "Vyberte kapitolu";
 	}
 
-	std::string SelectAChapter::getStringDa()
+	std::string Hexus_SelectAChapter::getStringDa()
 	{
 		return "Vælg en kapitel";
 	}
 
-	std::string SelectAChapter::getStringDe()
+	std::string Hexus_SelectAChapter::getStringDe()
 	{
 		return "Wählen Sie ein Kapitel aus";
 	}
 
-	std::string SelectAChapter::getStringEl()
+	std::string Hexus_SelectAChapter::getStringEl()
 	{
 		return "Επιλέξτε ένα κεφάλαιο";
 	}
 
-	std::string SelectAChapter::getStringEn()
+	std::string Hexus_SelectAChapter::getStringEn()
 	{
 		return "Select a Chapter";
 	}
 
-	std::string SelectAChapter::getStringEs()
+	std::string Hexus_SelectAChapter::getStringEs()
 	{
 		return "Seleccione un capitulo";
 	}
 
-	std::string SelectAChapter::getStringEs419()
+	std::string Hexus_SelectAChapter::getStringEs419()
 	{
 		return "Seleccione un capitulo";
 	}
 
-	std::string SelectAChapter::getStringFi()
+	std::string Hexus_SelectAChapter::getStringFi()
 	{
 		return "Valitse luku";
 	}
 
-	std::string SelectAChapter::getStringFr()
+	std::string Hexus_SelectAChapter::getStringFr()
 	{
 		return "Sélectionnez un chapitre";
 	}
 
-	std::string SelectAChapter::getStringHu()
+	std::string Hexus_SelectAChapter::getStringHu()
 	{
 		return "Válasszon egy fejezetet";
 	}
 
-	std::string SelectAChapter::getStringIt()
+	std::string Hexus_SelectAChapter::getStringIt()
 	{
 		return "Seleziona un capitolo";
 	}
 
-	std::string SelectAChapter::getStringJa()
+	std::string Hexus_SelectAChapter::getStringJa()
 	{
 		return "章を選択";
 	}
 
-	std::string SelectAChapter::getStringKo()
+	std::string Hexus_SelectAChapter::getStringKo()
 	{
 		return "챕터 선택";
 	}
 
-	std::string SelectAChapter::getStringNl()
+	std::string Hexus_SelectAChapter::getStringNl()
 	{
 		return "Selecteer een hoofdstuk";
 	}
 
-	std::string SelectAChapter::getStringNo()
+	std::string Hexus_SelectAChapter::getStringNo()
 	{
 		return "Velg en kapittel";
 	}
 
-	std::string SelectAChapter::getStringPl()
+	std::string Hexus_SelectAChapter::getStringPl()
 	{
 		return "Wybierz rozdział";
 	}
 
-	std::string SelectAChapter::getStringPt()
+	std::string Hexus_SelectAChapter::getStringPt()
 	{
 		return "Selecione um capítulo";
 	}
 
-	std::string SelectAChapter::getStringPtBr()
+	std::string Hexus_SelectAChapter::getStringPtBr()
 	{
 		return "Selecione um capítulo";
 	}
 
-	std::string SelectAChapter::getStringRo()
+	std::string Hexus_SelectAChapter::getStringRo()
 	{
 		return "Selectați un capitol";
 	}
 
-	std::string SelectAChapter::getStringRu()
+	std::string Hexus_SelectAChapter::getStringRu()
 	{
 		return "Выберите главу";
 	}
 
-	std::string SelectAChapter::getStringSv()
+	std::string Hexus_SelectAChapter::getStringSv()
 	{
 		return "Välj ett kapitel";
 	}
 
-	std::string SelectAChapter::getStringTh()
+	std::string Hexus_SelectAChapter::getStringTh()
 	{
 		return "เลือกบท";
 	}
 
-	std::string SelectAChapter::getStringTr()
+	std::string Hexus_SelectAChapter::getStringTr()
 	{
 		return "Bir Bölüm Seç";
 	}
 
-	std::string SelectAChapter::getStringUk()
+	std::string Hexus_SelectAChapter::getStringUk()
 	{
 		return "Виберіть розділ";
 	}
 
-	std::string SelectAChapter::getStringVi()
+	std::string Hexus_SelectAChapter::getStringVi()
 	{
 		return "Chọn một chương";
 	}
 
-	std::string SelectAChapter::getStringZhCn()
+	std::string Hexus_SelectAChapter::getStringZhCn()
 	{
 		return "选择一个章节";
 	}
 
-	std::string SelectAChapter::getStringZhTw()
+	std::string Hexus_SelectAChapter::getStringZhTw()
 	{
 		return "選擇一個章節";
 	}

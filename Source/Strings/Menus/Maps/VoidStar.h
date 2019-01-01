@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class VoidStar : public LocalizedString
+	class Menus_Maps_VoidStar : public LocalizedString
 	{
 	public:
-		static VoidStar* create();
+		static Menus_Maps_VoidStar* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		VoidStar();
-		~VoidStar();
+		Menus_Maps_VoidStar();
+		~Menus_Maps_VoidStar();
 	};
 }

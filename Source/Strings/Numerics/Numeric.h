@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class FlailTargetAngle : public LocalizedString
+	class Numerics_Numeric : public LocalizedString
 	{
 	public:
-		static FlailTargetAngle* create();
+		static Numerics_Numeric* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		FlailTargetAngle();
-		~FlailTargetAngle();
+		Numerics_Numeric();
+		~Numerics_Numeric();
 	};
 }

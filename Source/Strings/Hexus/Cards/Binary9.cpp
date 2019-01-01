@@ -4,171 +4,171 @@
 
 #include "Binary9.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary9* Binary9::create()
+	Hexus_Cards_Binary9* Hexus_Cards_Binary9::create()
 	{
-		Binary9* instance = new Binary9();
+		Hexus_Cards_Binary9* instance = new Hexus_Cards_Binary9();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary9::clone()
+	LocalizedString* Hexus_Cards_Binary9::clone()
 	{
-		return Binary9::create();
+		return Hexus_Cards_Binary9::create();
 	}
 
-	Binary9::Binary9() : LocalizedString()
-	{
-	}
-
-	Binary9::~Binary9()
+	Hexus_Cards_Binary9::Hexus_Cards_Binary9() : LocalizedString()
 	{
 	}
 
-	std::string Binary9::getStringAr()
+	Hexus_Cards_Binary9::~Hexus_Cards_Binary9()
+	{
+	}
+
+	std::string Hexus_Cards_Binary9::getStringAr()
 	{
 		return "الصهارة golem";
 	}
 
-	std::string Binary9::getStringBg()
+	std::string Hexus_Cards_Binary9::getStringBg()
 	{
 		return "магма голем";
 	}
 
-	std::string Binary9::getStringCs()
+	std::string Hexus_Cards_Binary9::getStringCs()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringDa()
+	std::string Hexus_Cards_Binary9::getStringDa()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringDe()
+	std::string Hexus_Cards_Binary9::getStringDe()
 	{
 		return "Magma Golem";
 	}
 
-	std::string Binary9::getStringEl()
+	std::string Hexus_Cards_Binary9::getStringEl()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringEn()
+	std::string Hexus_Cards_Binary9::getStringEn()
 	{
 		return "Magma Golem";
 	}
 
-	std::string Binary9::getStringEs()
+	std::string Hexus_Cards_Binary9::getStringEs()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringEs419()
+	std::string Hexus_Cards_Binary9::getStringEs419()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringFi()
+	std::string Hexus_Cards_Binary9::getStringFi()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringFr()
+	std::string Hexus_Cards_Binary9::getStringFr()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringHu()
+	std::string Hexus_Cards_Binary9::getStringHu()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringIt()
+	std::string Hexus_Cards_Binary9::getStringIt()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringJa()
+	std::string Hexus_Cards_Binary9::getStringJa()
 	{
 		return "マグマゴーレム";
 	}
 
-	std::string Binary9::getStringKo()
+	std::string Hexus_Cards_Binary9::getStringKo()
 	{
 		return "마그마 골렘";
 	}
 
-	std::string Binary9::getStringNl()
+	std::string Hexus_Cards_Binary9::getStringNl()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringNo()
+	std::string Hexus_Cards_Binary9::getStringNo()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringPl()
+	std::string Hexus_Cards_Binary9::getStringPl()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringPt()
+	std::string Hexus_Cards_Binary9::getStringPt()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringPtBr()
+	std::string Hexus_Cards_Binary9::getStringPtBr()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringRo()
+	std::string Hexus_Cards_Binary9::getStringRo()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringRu()
+	std::string Hexus_Cards_Binary9::getStringRu()
 	{
 		return "магма голем";
 	}
 
-	std::string Binary9::getStringSv()
+	std::string Hexus_Cards_Binary9::getStringSv()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringTh()
+	std::string Hexus_Cards_Binary9::getStringTh()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringTr()
+	std::string Hexus_Cards_Binary9::getStringTr()
 	{
 		return "magma golem";
 	}
 
-	std::string Binary9::getStringUk()
+	std::string Hexus_Cards_Binary9::getStringUk()
 	{
 		return "магма-голем";
 	}
 
-	std::string Binary9::getStringVi()
+	std::string Hexus_Cards_Binary9::getStringVi()
 	{
 		return "golem magma";
 	}
 
-	std::string Binary9::getStringZhCn()
+	std::string Hexus_Cards_Binary9::getStringZhCn()
 	{
 		return "岩浆傀儡";
 	}
 
-	std::string Binary9::getStringZhTw()
+	std::string Hexus_Cards_Binary9::getStringZhTw()
 	{
 		return "岩漿傀儡";
 	}

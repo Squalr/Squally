@@ -4,171 +4,171 @@
 
 #include "Decimal13.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal13* Decimal13::create()
+	Hexus_Cards_Decimal13* Hexus_Cards_Decimal13::create()
 	{
-		Decimal13* instance = new Decimal13();
+		Hexus_Cards_Decimal13* instance = new Hexus_Cards_Decimal13();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal13::clone()
+	LocalizedString* Hexus_Cards_Decimal13::clone()
 	{
-		return Decimal13::create();
+		return Hexus_Cards_Decimal13::create();
 	}
 
-	Decimal13::Decimal13() : LocalizedString()
-	{
-	}
-
-	Decimal13::~Decimal13()
+	Hexus_Cards_Decimal13::Hexus_Cards_Decimal13() : LocalizedString()
 	{
 	}
 
-	std::string Decimal13::getStringAr()
+	Hexus_Cards_Decimal13::~Hexus_Cards_Decimal13()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal13::getStringAr()
 	{
 		return "خليك مجنون";
 	}
 
-	std::string Decimal13::getStringBg()
+	std::string Hexus_Cards_Decimal13::getStringBg()
 	{
 		return "Бетикът на Гетик";
 	}
 
-	std::string Decimal13::getStringCs()
+	std::string Hexus_Cards_Decimal13::getStringCs()
 	{
 		return "Getic šílenec";
 	}
 
-	std::string Decimal13::getStringDa()
+	std::string Hexus_Cards_Decimal13::getStringDa()
 	{
 		return "Getic den vanvittige";
 	}
 
-	std::string Decimal13::getStringDe()
+	std::string Hexus_Cards_Decimal13::getStringDe()
 	{
 		return "Getic der Wahnsinnige";
 	}
 
-	std::string Decimal13::getStringEl()
+	std::string Hexus_Cards_Decimal13::getStringEl()
 	{
 		return "Γκέτισε το τρελό";
 	}
 
-	std::string Decimal13::getStringEn()
+	std::string Hexus_Cards_Decimal13::getStringEn()
 	{
 		return "Getic the insane";
 	}
 
-	std::string Decimal13::getStringEs()
+	std::string Hexus_Cards_Decimal13::getStringEs()
 	{
 		return "Getic el loco";
 	}
 
-	std::string Decimal13::getStringEs419()
+	std::string Hexus_Cards_Decimal13::getStringEs419()
 	{
 		return "Getic el loco";
 	}
 
-	std::string Decimal13::getStringFi()
+	std::string Hexus_Cards_Decimal13::getStringFi()
 	{
 		return "Getic hullu";
 	}
 
-	std::string Decimal13::getStringFr()
+	std::string Hexus_Cards_Decimal13::getStringFr()
 	{
 		return "Getic le fou";
 	}
 
-	std::string Decimal13::getStringHu()
+	std::string Hexus_Cards_Decimal13::getStringHu()
 	{
 		return "Getic az őrült";
 	}
 
-	std::string Decimal13::getStringIt()
+	std::string Hexus_Cards_Decimal13::getStringIt()
 	{
 		return "Getic il pazzo";
 	}
 
-	std::string Decimal13::getStringJa()
+	std::string Hexus_Cards_Decimal13::getStringJa()
 	{
 		return "非常識なゲチ";
 	}
 
-	std::string Decimal13::getStringKo()
+	std::string Hexus_Cards_Decimal13::getStringKo()
 	{
 		return "정신 나갔어.";
 	}
 
-	std::string Decimal13::getStringNl()
+	std::string Hexus_Cards_Decimal13::getStringNl()
 	{
 		return "Getic the krankzinnig";
 	}
 
-	std::string Decimal13::getStringNo()
+	std::string Hexus_Cards_Decimal13::getStringNo()
 	{
 		return "Getic den vanvittige";
 	}
 
-	std::string Decimal13::getStringPl()
+	std::string Hexus_Cards_Decimal13::getStringPl()
 	{
 		return "Getic jest szalony";
 	}
 
-	std::string Decimal13::getStringPt()
+	std::string Hexus_Cards_Decimal13::getStringPt()
 	{
 		return "Getic o insano";
 	}
 
-	std::string Decimal13::getStringPtBr()
+	std::string Hexus_Cards_Decimal13::getStringPtBr()
 	{
 		return "Getic o insano";
 	}
 
-	std::string Decimal13::getStringRo()
+	std::string Hexus_Cards_Decimal13::getStringRo()
 	{
 		return "Getic nebunul";
 	}
 
-	std::string Decimal13::getStringRu()
+	std::string Hexus_Cards_Decimal13::getStringRu()
 	{
 		return "Гетик безумный";
 	}
 
-	std::string Decimal13::getStringSv()
+	std::string Hexus_Cards_Decimal13::getStringSv()
 	{
 		return "Getic den galen";
 	}
 
-	std::string Decimal13::getStringTh()
+	std::string Hexus_Cards_Decimal13::getStringTh()
 	{
 		return "ทำให้คนบ้า";
 	}
 
-	std::string Decimal13::getStringTr()
+	std::string Hexus_Cards_Decimal13::getStringTr()
 	{
 		return "Deliyi kızdırmak";
 	}
 
-	std::string Decimal13::getStringUk()
+	std::string Hexus_Cards_Decimal13::getStringUk()
 	{
 		return "Гетичний божевільний";
 	}
 
-	std::string Decimal13::getStringVi()
+	std::string Hexus_Cards_Decimal13::getStringVi()
 	{
 		return "Gây điên";
 	}
 
-	std::string Decimal13::getStringZhCn()
+	std::string Hexus_Cards_Decimal13::getStringZhCn()
 	{
 		return "Getic疯了";
 	}
 
-	std::string Decimal13::getStringZhTw()
+	std::string Hexus_Cards_Decimal13::getStringZhTw()
 	{
 		return "Getic瘋了";
 	}

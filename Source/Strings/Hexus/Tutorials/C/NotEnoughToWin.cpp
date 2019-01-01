@@ -4,171 +4,171 @@
 
 #include "NotEnoughToWin.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	NotEnoughToWin* NotEnoughToWin::create()
+	Hexus_Tutorials_C_NotEnoughToWin* Hexus_Tutorials_C_NotEnoughToWin::create()
 	{
-		NotEnoughToWin* instance = new NotEnoughToWin();
+		Hexus_Tutorials_C_NotEnoughToWin* instance = new Hexus_Tutorials_C_NotEnoughToWin();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* NotEnoughToWin::clone()
+	LocalizedString* Hexus_Tutorials_C_NotEnoughToWin::clone()
 	{
-		return NotEnoughToWin::create();
+		return Hexus_Tutorials_C_NotEnoughToWin::create();
 	}
 
-	NotEnoughToWin::NotEnoughToWin() : LocalizedString()
-	{
-	}
-
-	NotEnoughToWin::~NotEnoughToWin()
+	Hexus_Tutorials_C_NotEnoughToWin::Hexus_Tutorials_C_NotEnoughToWin() : LocalizedString()
 	{
 	}
 
-	std::string NotEnoughToWin::getStringAr()
+	Hexus_Tutorials_C_NotEnoughToWin::~Hexus_Tutorials_C_NotEnoughToWin()
+	{
+	}
+
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringAr()
 	{
 		return "لن تكون بطاقاتك كافية للفوز بهذه الجولة!";
 	}
 
-	std::string NotEnoughToWin::getStringBg()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringBg()
 	{
 		return "Вашите карти няма да бъдат достатъчни, за да спечелите този кръг!";
 	}
 
-	std::string NotEnoughToWin::getStringCs()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringCs()
 	{
 		return "Vaše karty nebudou stačit k tomu, aby vyhrál toto kolo!";
 	}
 
-	std::string NotEnoughToWin::getStringDa()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringDa()
 	{
 		return "Dine kort vil ikke være nok til at vinde denne runde!";
 	}
 
-	std::string NotEnoughToWin::getStringDe()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringDe()
 	{
 		return "Ihre Karten werden nicht ausreichen, um diese Runde zu gewinnen!";
 	}
 
-	std::string NotEnoughToWin::getStringEl()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringEl()
 	{
 		return "Οι κάρτες σας δεν θα είναι αρκετές για να κερδίσετε αυτόν τον γύρο!";
 	}
 
-	std::string NotEnoughToWin::getStringEn()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringEn()
 	{
 		return "Your cards will not be enough to win this round!";
 	}
 
-	std::string NotEnoughToWin::getStringEs()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringEs()
 	{
 		return "¡Tus cartas no serán suficientes para ganar esta ronda!";
 	}
 
-	std::string NotEnoughToWin::getStringEs419()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringEs419()
 	{
 		return "¡Tus cartas no serán suficientes para ganar esta ronda!";
 	}
 
-	std::string NotEnoughToWin::getStringFi()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringFi()
 	{
 		return "Korttisi eivät riitä voittamaan tämän kierroksen!";
 	}
 
-	std::string NotEnoughToWin::getStringFr()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringFr()
 	{
 		return "Vos cartes ne seront pas assez pour gagner ce tour!";
 	}
 
-	std::string NotEnoughToWin::getStringHu()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringHu()
 	{
 		return "A kártyáid nem lesznek elégek, hogy megnyerjük ezt a fordulót!";
 	}
 
-	std::string NotEnoughToWin::getStringIt()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringIt()
 	{
 		return "Le tue carte non saranno sufficienti per vincere questo round!";
 	}
 
-	std::string NotEnoughToWin::getStringJa()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringJa()
 	{
 		return "あなたのカードはこのラウンドに勝つのに十分ではないでしょう！";
 	}
 
-	std::string NotEnoughToWin::getStringKo()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringKo()
 	{
 		return "당신의 카드는이 라운드에서 이기기에 충분하지 않습니다!";
 	}
 
-	std::string NotEnoughToWin::getStringNl()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringNl()
 	{
 		return "Je kaarten zijn niet genoeg om deze ronde te winnen!";
 	}
 
-	std::string NotEnoughToWin::getStringNo()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringNo()
 	{
 		return "Kortene dine vil ikke være nok til å vinne denne runden!";
 	}
 
-	std::string NotEnoughToWin::getStringPl()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringPl()
 	{
 		return "Twoje karty nie wystarczą, aby wygrać w tej rundzie!";
 	}
 
-	std::string NotEnoughToWin::getStringPt()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringPt()
 	{
 		return "Suas cartas não serão suficientes para vencer esta rodada!";
 	}
 
-	std::string NotEnoughToWin::getStringPtBr()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringPtBr()
 	{
 		return "Suas cartas não serão suficientes para vencer esta rodada!";
 	}
 
-	std::string NotEnoughToWin::getStringRo()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringRo()
 	{
 		return "Cardurile tale nu vor fi suficiente pentru a câștiga această rundă!";
 	}
 
-	std::string NotEnoughToWin::getStringRu()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringRu()
 	{
 		return "Твоих карт не хватит, чтобы выиграть этот раунд!";
 	}
 
-	std::string NotEnoughToWin::getStringSv()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringSv()
 	{
 		return "Dina kort kommer inte räcka för att vinna denna runda!";
 	}
 
-	std::string NotEnoughToWin::getStringTh()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringTh()
 	{
 		return "ไพ่ของคุณจะไม่เพียงพอที่จะชนะในรอบนี้!";
 	}
 
-	std::string NotEnoughToWin::getStringTr()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringTr()
 	{
 		return "Kartlarınız bu turu kazanmak için yeterli olmayacak!";
 	}
 
-	std::string NotEnoughToWin::getStringUk()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringUk()
 	{
 		return "Ваших карт не вистачить, щоб виграти цей раунд!";
 	}
 
-	std::string NotEnoughToWin::getStringVi()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringVi()
 	{
 		return "Thẻ của bạn sẽ không đủ để giành chiến thắng trong vòng này!";
 	}
 
-	std::string NotEnoughToWin::getStringZhCn()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringZhCn()
 	{
 		return "你的牌不足以赢得这一轮！";
 	}
 
-	std::string NotEnoughToWin::getStringZhTw()
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringZhTw()
 	{
 		return "你的牌不足以贏得這一輪！";
 	}

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class LambdaCrypts : public LocalizedString
+	class Menus_Maps_LambdaCrypts : public LocalizedString
 	{
 	public:
-		static LambdaCrypts* create();
+		static Menus_Maps_LambdaCrypts* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		LambdaCrypts();
-		~LambdaCrypts();
+		Menus_Maps_LambdaCrypts();
+		~Menus_Maps_LambdaCrypts();
 	};
 }

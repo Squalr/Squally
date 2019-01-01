@@ -4,171 +4,171 @@
 
 #include "Resolution1280x720.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Resolution1280x720* Resolution1280x720::create()
+	Menus_Options_Resolution1280x720* Menus_Options_Resolution1280x720::create()
 	{
-		Resolution1280x720* instance = new Resolution1280x720();
+		Menus_Options_Resolution1280x720* instance = new Menus_Options_Resolution1280x720();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Resolution1280x720::clone()
+	LocalizedString* Menus_Options_Resolution1280x720::clone()
 	{
-		return Resolution1280x720::create();
+		return Menus_Options_Resolution1280x720::create();
 	}
 
-	Resolution1280x720::Resolution1280x720() : LocalizedString()
-	{
-	}
-
-	Resolution1280x720::~Resolution1280x720()
+	Menus_Options_Resolution1280x720::Menus_Options_Resolution1280x720() : LocalizedString()
 	{
 	}
 
-	std::string Resolution1280x720::getStringAr()
+	Menus_Options_Resolution1280x720::~Menus_Options_Resolution1280x720()
 	{
-		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringBg()
+	std::string Menus_Options_Resolution1280x720::getStringAr()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringCs()
+	std::string Menus_Options_Resolution1280x720::getStringBg()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringDa()
+	std::string Menus_Options_Resolution1280x720::getStringCs()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringDe()
+	std::string Menus_Options_Resolution1280x720::getStringDa()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringEl()
+	std::string Menus_Options_Resolution1280x720::getStringDe()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringEn()
+	std::string Menus_Options_Resolution1280x720::getStringEl()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringEs()
+	std::string Menus_Options_Resolution1280x720::getStringEn()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringEs419()
+	std::string Menus_Options_Resolution1280x720::getStringEs()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringFi()
+	std::string Menus_Options_Resolution1280x720::getStringEs419()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringFr()
+	std::string Menus_Options_Resolution1280x720::getStringFi()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringHu()
+	std::string Menus_Options_Resolution1280x720::getStringFr()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringIt()
+	std::string Menus_Options_Resolution1280x720::getStringHu()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringJa()
+	std::string Menus_Options_Resolution1280x720::getStringIt()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringKo()
+	std::string Menus_Options_Resolution1280x720::getStringJa()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringNl()
+	std::string Menus_Options_Resolution1280x720::getStringKo()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringNo()
+	std::string Menus_Options_Resolution1280x720::getStringNl()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringPl()
+	std::string Menus_Options_Resolution1280x720::getStringNo()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringPt()
+	std::string Menus_Options_Resolution1280x720::getStringPl()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringPtBr()
+	std::string Menus_Options_Resolution1280x720::getStringPt()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringRo()
+	std::string Menus_Options_Resolution1280x720::getStringPtBr()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringRu()
+	std::string Menus_Options_Resolution1280x720::getStringRo()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringSv()
+	std::string Menus_Options_Resolution1280x720::getStringRu()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringTh()
+	std::string Menus_Options_Resolution1280x720::getStringSv()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringTr()
+	std::string Menus_Options_Resolution1280x720::getStringTh()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringUk()
+	std::string Menus_Options_Resolution1280x720::getStringTr()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringVi()
+	std::string Menus_Options_Resolution1280x720::getStringUk()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringZhCn()
+	std::string Menus_Options_Resolution1280x720::getStringVi()
 	{
 		return "1280x720";
 	}
 
-	std::string Resolution1280x720::getStringZhTw()
+	std::string Menus_Options_Resolution1280x720::getStringZhCn()
+	{
+		return "1280x720";
+	}
+
+	std::string Menus_Options_Resolution1280x720::getStringZhTw()
 	{
 		return "1280x720";
 	}

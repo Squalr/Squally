@@ -4,171 +4,171 @@
 
 #include "HexStorm.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	HexStorm* HexStorm::create()
+	Hexus_Cards_HexStorm* Hexus_Cards_HexStorm::create()
 	{
-		HexStorm* instance = new HexStorm();
+		Hexus_Cards_HexStorm* instance = new Hexus_Cards_HexStorm();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* HexStorm::clone()
+	LocalizedString* Hexus_Cards_HexStorm::clone()
 	{
-		return HexStorm::create();
+		return Hexus_Cards_HexStorm::create();
 	}
 
-	HexStorm::HexStorm() : LocalizedString()
-	{
-	}
-
-	HexStorm::~HexStorm()
+	Hexus_Cards_HexStorm::Hexus_Cards_HexStorm() : LocalizedString()
 	{
 	}
 
-	std::string HexStorm::getStringAr()
+	Hexus_Cards_HexStorm::~Hexus_Cards_HexStorm()
+	{
+	}
+
+	std::string Hexus_Cards_HexStorm::getStringAr()
 	{
 		return "عاصفة سداسية عشرية";
 	}
 
-	std::string HexStorm::getStringBg()
+	std::string Hexus_Cards_HexStorm::getStringBg()
 	{
 		return "Шестнадесетична буря";
 	}
 
-	std::string HexStorm::getStringCs()
+	std::string Hexus_Cards_HexStorm::getStringCs()
 	{
 		return "Hexadecimální bouře";
 	}
 
-	std::string HexStorm::getStringDa()
+	std::string Hexus_Cards_HexStorm::getStringDa()
 	{
 		return "Hexadecimal storm";
 	}
 
-	std::string HexStorm::getStringDe()
+	std::string Hexus_Cards_HexStorm::getStringDe()
 	{
 		return "Hexadezimaler Sturm";
 	}
 
-	std::string HexStorm::getStringEl()
+	std::string Hexus_Cards_HexStorm::getStringEl()
 	{
 		return "Δεκαεξαδική θύελλα";
 	}
 
-	std::string HexStorm::getStringEn()
+	std::string Hexus_Cards_HexStorm::getStringEn()
 	{
 		return "Hex Storm";
 	}
 
-	std::string HexStorm::getStringEs()
+	std::string Hexus_Cards_HexStorm::getStringEs()
 	{
 		return "Tormenta hexadecimal";
 	}
 
-	std::string HexStorm::getStringEs419()
+	std::string Hexus_Cards_HexStorm::getStringEs419()
 	{
 		return "Tormenta hexadecimal";
 	}
 
-	std::string HexStorm::getStringFi()
+	std::string Hexus_Cards_HexStorm::getStringFi()
 	{
 		return "Heksadesimaalinen myrsky";
 	}
 
-	std::string HexStorm::getStringFr()
+	std::string Hexus_Cards_HexStorm::getStringFr()
 	{
 		return "Tempête hexadécimale";
 	}
 
-	std::string HexStorm::getStringHu()
+	std::string Hexus_Cards_HexStorm::getStringHu()
 	{
 		return "Hatodecimális vihar";
 	}
 
-	std::string HexStorm::getStringIt()
+	std::string Hexus_Cards_HexStorm::getStringIt()
 	{
 		return "Tempesta esadecimale";
 	}
 
-	std::string HexStorm::getStringJa()
+	std::string Hexus_Cards_HexStorm::getStringJa()
 	{
 		return "16進数の嵐";
 	}
 
-	std::string HexStorm::getStringKo()
+	std::string Hexus_Cards_HexStorm::getStringKo()
 	{
 		return "16 진수 폭풍";
 	}
 
-	std::string HexStorm::getStringNl()
+	std::string Hexus_Cards_HexStorm::getStringNl()
 	{
 		return "Hexadecimale storm";
 	}
 
-	std::string HexStorm::getStringNo()
+	std::string Hexus_Cards_HexStorm::getStringNo()
 	{
 		return "Hexadecimal storm";
 	}
 
-	std::string HexStorm::getStringPl()
+	std::string Hexus_Cards_HexStorm::getStringPl()
 	{
 		return "Wichura szesnastkowa";
 	}
 
-	std::string HexStorm::getStringPt()
+	std::string Hexus_Cards_HexStorm::getStringPt()
 	{
 		return "Tempestade hexadecimal";
 	}
 
-	std::string HexStorm::getStringPtBr()
+	std::string Hexus_Cards_HexStorm::getStringPtBr()
 	{
 		return "Tempestade hexadecimal";
 	}
 
-	std::string HexStorm::getStringRo()
+	std::string Hexus_Cards_HexStorm::getStringRo()
 	{
 		return "Furtună falsă";
 	}
 
-	std::string HexStorm::getStringRu()
+	std::string Hexus_Cards_HexStorm::getStringRu()
 	{
 		return "Шестнадцатеричный шторм";
 	}
 
-	std::string HexStorm::getStringSv()
+	std::string Hexus_Cards_HexStorm::getStringSv()
 	{
 		return "Hexadecimal storm";
 	}
 
-	std::string HexStorm::getStringTh()
+	std::string Hexus_Cards_HexStorm::getStringTh()
 	{
 		return "พายุเลขฐานสิบหก";
 	}
 
-	std::string HexStorm::getStringTr()
+	std::string Hexus_Cards_HexStorm::getStringTr()
 	{
 		return "Onaltılık fırtına";
 	}
 
-	std::string HexStorm::getStringUk()
+	std::string Hexus_Cards_HexStorm::getStringUk()
 	{
 		return "Шістнадцятковий шторм";
 	}
 
-	std::string HexStorm::getStringVi()
+	std::string Hexus_Cards_HexStorm::getStringVi()
 	{
 		return "Bão tố thập lục phân";
 	}
 
-	std::string HexStorm::getStringZhCn()
+	std::string Hexus_Cards_HexStorm::getStringZhCn()
 	{
 		return "十六进制风暴";
 	}
 
-	std::string HexStorm::getStringZhTw()
+	std::string Hexus_Cards_HexStorm::getStringZhTw()
 	{
 		return "十六進制風暴";
 	}

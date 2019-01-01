@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class LogicalOr : public LocalizedString
+	class Hexus_Cards_LogicalOr : public LocalizedString
 	{
 	public:
-		static LogicalOr* create();
+		static Hexus_Cards_LogicalOr* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		LogicalOr();
-		~LogicalOr();
+		Hexus_Cards_LogicalOr();
+		~Hexus_Cards_LogicalOr();
 	};
 }

@@ -36,7 +36,7 @@ EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, Size initWi
 
 	this->lineNumbers = RichText::create();
 
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::ClickToEdit::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Menus_CodeEditor_ClickToEdit::create());
 
 	this->editableText = UICCTextField::create(label->getString(), label->getFont(), label->getFontSize());
 

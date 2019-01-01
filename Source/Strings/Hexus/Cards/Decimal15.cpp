@@ -4,171 +4,171 @@
 
 #include "Decimal15.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal15* Decimal15::create()
+	Hexus_Cards_Decimal15* Hexus_Cards_Decimal15::create()
 	{
-		Decimal15* instance = new Decimal15();
+		Hexus_Cards_Decimal15* instance = new Hexus_Cards_Decimal15();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal15::clone()
+	LocalizedString* Hexus_Cards_Decimal15::clone()
 	{
-		return Decimal15::create();
+		return Hexus_Cards_Decimal15::create();
 	}
 
-	Decimal15::Decimal15() : LocalizedString()
-	{
-	}
-
-	Decimal15::~Decimal15()
+	Hexus_Cards_Decimal15::Hexus_Cards_Decimal15() : LocalizedString()
 	{
 	}
 
-	std::string Decimal15::getStringAr()
+	Hexus_Cards_Decimal15::~Hexus_Cards_Decimal15()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal15::getStringAr()
 	{
 		return "حارس المرمى";
 	}
 
-	std::string Decimal15::getStringBg()
+	std::string Hexus_Cards_Decimal15::getStringBg()
 	{
 		return "Пазача";
 	}
 
-	std::string Decimal15::getStringCs()
+	std::string Hexus_Cards_Decimal15::getStringCs()
 	{
 		return "Strážce";
 	}
 
-	std::string Decimal15::getStringDa()
+	std::string Hexus_Cards_Decimal15::getStringDa()
 	{
 		return "Keeperen";
 	}
 
-	std::string Decimal15::getStringDe()
+	std::string Hexus_Cards_Decimal15::getStringDe()
 	{
 		return "Der Torwart";
 	}
 
-	std::string Decimal15::getStringEl()
+	std::string Hexus_Cards_Decimal15::getStringEl()
 	{
 		return "Ο κάτοχος";
 	}
 
-	std::string Decimal15::getStringEn()
+	std::string Hexus_Cards_Decimal15::getStringEn()
 	{
 		return "The Keeper";
 	}
 
-	std::string Decimal15::getStringEs()
+	std::string Hexus_Cards_Decimal15::getStringEs()
 	{
 		return "El arquero";
 	}
 
-	std::string Decimal15::getStringEs419()
+	std::string Hexus_Cards_Decimal15::getStringEs419()
 	{
 		return "El arquero";
 	}
 
-	std::string Decimal15::getStringFi()
+	std::string Hexus_Cards_Decimal15::getStringFi()
 	{
 		return "Pitäjä";
 	}
 
-	std::string Decimal15::getStringFr()
+	std::string Hexus_Cards_Decimal15::getStringFr()
 	{
 		return "Le gardien";
 	}
 
-	std::string Decimal15::getStringHu()
+	std::string Hexus_Cards_Decimal15::getStringHu()
 	{
 		return "A Keeper";
 	}
 
-	std::string Decimal15::getStringIt()
+	std::string Hexus_Cards_Decimal15::getStringIt()
 	{
 		return "Il custode";
 	}
 
-	std::string Decimal15::getStringJa()
+	std::string Hexus_Cards_Decimal15::getStringJa()
 	{
 		return "キーパー";
 	}
 
-	std::string Decimal15::getStringKo()
+	std::string Hexus_Cards_Decimal15::getStringKo()
 	{
 		return "지킴이";
 	}
 
-	std::string Decimal15::getStringNl()
+	std::string Hexus_Cards_Decimal15::getStringNl()
 	{
 		return "De keeper";
 	}
 
-	std::string Decimal15::getStringNo()
+	std::string Hexus_Cards_Decimal15::getStringNo()
 	{
 		return "Målvakten";
 	}
 
-	std::string Decimal15::getStringPl()
+	std::string Hexus_Cards_Decimal15::getStringPl()
 	{
 		return "Bramkarz";
 	}
 
-	std::string Decimal15::getStringPt()
+	std::string Hexus_Cards_Decimal15::getStringPt()
 	{
 		return "O guardião";
 	}
 
-	std::string Decimal15::getStringPtBr()
+	std::string Hexus_Cards_Decimal15::getStringPtBr()
 	{
 		return "O guardião";
 	}
 
-	std::string Decimal15::getStringRo()
+	std::string Hexus_Cards_Decimal15::getStringRo()
 	{
 		return "Păstrătorul";
 	}
 
-	std::string Decimal15::getStringRu()
+	std::string Hexus_Cards_Decimal15::getStringRu()
 	{
 		return "Хранитель";
 	}
 
-	std::string Decimal15::getStringSv()
+	std::string Hexus_Cards_Decimal15::getStringSv()
 	{
 		return "Målvakten";
 	}
 
-	std::string Decimal15::getStringTh()
+	std::string Hexus_Cards_Decimal15::getStringTh()
 	{
 		return "ผู้รักษาประตู";
 	}
 
-	std::string Decimal15::getStringTr()
+	std::string Hexus_Cards_Decimal15::getStringTr()
 	{
 		return "Kaleci";
 	}
 
-	std::string Decimal15::getStringUk()
+	std::string Hexus_Cards_Decimal15::getStringUk()
 	{
 		return "Зберігач";
 	}
 
-	std::string Decimal15::getStringVi()
+	std::string Hexus_Cards_Decimal15::getStringVi()
 	{
 		return "Người giữ";
 	}
 
-	std::string Decimal15::getStringZhCn()
+	std::string Hexus_Cards_Decimal15::getStringZhCn()
 	{
 		return "守护者";
 	}
 
-	std::string Decimal15::getStringZhTw()
+	std::string Hexus_Cards_Decimal15::getStringZhTw()
 	{
 		return "守護者";
 	}

@@ -4,171 +4,171 @@
 
 #include "Resolution3840x2160.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Resolution3840x2160* Resolution3840x2160::create()
+	Menus_Options_Resolution3840x2160* Menus_Options_Resolution3840x2160::create()
 	{
-		Resolution3840x2160* instance = new Resolution3840x2160();
+		Menus_Options_Resolution3840x2160* instance = new Menus_Options_Resolution3840x2160();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Resolution3840x2160::clone()
+	LocalizedString* Menus_Options_Resolution3840x2160::clone()
 	{
-		return Resolution3840x2160::create();
+		return Menus_Options_Resolution3840x2160::create();
 	}
 
-	Resolution3840x2160::Resolution3840x2160() : LocalizedString()
-	{
-	}
-
-	Resolution3840x2160::~Resolution3840x2160()
+	Menus_Options_Resolution3840x2160::Menus_Options_Resolution3840x2160() : LocalizedString()
 	{
 	}
 
-	std::string Resolution3840x2160::getStringAr()
+	Menus_Options_Resolution3840x2160::~Menus_Options_Resolution3840x2160()
 	{
-		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringBg()
+	std::string Menus_Options_Resolution3840x2160::getStringAr()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringCs()
+	std::string Menus_Options_Resolution3840x2160::getStringBg()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringDa()
+	std::string Menus_Options_Resolution3840x2160::getStringCs()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringDe()
+	std::string Menus_Options_Resolution3840x2160::getStringDa()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringEl()
+	std::string Menus_Options_Resolution3840x2160::getStringDe()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringEn()
+	std::string Menus_Options_Resolution3840x2160::getStringEl()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringEs()
+	std::string Menus_Options_Resolution3840x2160::getStringEn()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringEs419()
+	std::string Menus_Options_Resolution3840x2160::getStringEs()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringFi()
+	std::string Menus_Options_Resolution3840x2160::getStringEs419()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringFr()
+	std::string Menus_Options_Resolution3840x2160::getStringFi()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringHu()
+	std::string Menus_Options_Resolution3840x2160::getStringFr()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringIt()
+	std::string Menus_Options_Resolution3840x2160::getStringHu()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringJa()
+	std::string Menus_Options_Resolution3840x2160::getStringIt()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringKo()
+	std::string Menus_Options_Resolution3840x2160::getStringJa()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringNl()
+	std::string Menus_Options_Resolution3840x2160::getStringKo()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringNo()
+	std::string Menus_Options_Resolution3840x2160::getStringNl()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringPl()
+	std::string Menus_Options_Resolution3840x2160::getStringNo()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringPt()
+	std::string Menus_Options_Resolution3840x2160::getStringPl()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringPtBr()
+	std::string Menus_Options_Resolution3840x2160::getStringPt()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringRo()
+	std::string Menus_Options_Resolution3840x2160::getStringPtBr()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringRu()
+	std::string Menus_Options_Resolution3840x2160::getStringRo()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringSv()
+	std::string Menus_Options_Resolution3840x2160::getStringRu()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringTh()
+	std::string Menus_Options_Resolution3840x2160::getStringSv()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringTr()
+	std::string Menus_Options_Resolution3840x2160::getStringTh()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringUk()
+	std::string Menus_Options_Resolution3840x2160::getStringTr()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringVi()
+	std::string Menus_Options_Resolution3840x2160::getStringUk()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringZhCn()
+	std::string Menus_Options_Resolution3840x2160::getStringVi()
 	{
 		return "3840x2160";
 	}
 
-	std::string Resolution3840x2160::getStringZhTw()
+	std::string Menus_Options_Resolution3840x2160::getStringZhCn()
+	{
+		return "3840x2160";
+	}
+
+	std::string Menus_Options_Resolution3840x2160::getStringZhTw()
 	{
 		return "3840x2160";
 	}

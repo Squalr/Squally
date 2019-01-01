@@ -4,171 +4,171 @@
 
 #include "Binary0.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary0* Binary0::create()
+	Hexus_Cards_Binary0* Hexus_Cards_Binary0::create()
 	{
-		Binary0* instance = new Binary0();
+		Hexus_Cards_Binary0* instance = new Hexus_Cards_Binary0();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary0::clone()
+	LocalizedString* Hexus_Cards_Binary0::clone()
 	{
-		return Binary0::create();
+		return Hexus_Cards_Binary0::create();
 	}
 
-	Binary0::Binary0() : LocalizedString()
-	{
-	}
-
-	Binary0::~Binary0()
+	Hexus_Cards_Binary0::Hexus_Cards_Binary0() : LocalizedString()
 	{
 	}
 
-	std::string Binary0::getStringAr()
+	Hexus_Cards_Binary0::~Hexus_Cards_Binary0()
+	{
+	}
+
+	std::string Hexus_Cards_Binary0::getStringAr()
 	{
 		return "حصاة";
 	}
 
-	std::string Binary0::getStringBg()
+	std::string Hexus_Cards_Binary0::getStringBg()
 	{
 		return "камъче";
 	}
 
-	std::string Binary0::getStringCs()
+	std::string Hexus_Cards_Binary0::getStringCs()
 	{
 		return "Oblázek";
 	}
 
-	std::string Binary0::getStringDa()
+	std::string Hexus_Cards_Binary0::getStringDa()
 	{
 		return "Rullesten";
 	}
 
-	std::string Binary0::getStringDe()
+	std::string Hexus_Cards_Binary0::getStringDe()
 	{
 		return "Kieselstein";
 	}
 
-	std::string Binary0::getStringEl()
+	std::string Hexus_Cards_Binary0::getStringEl()
 	{
 		return "Χαλίκι";
 	}
 
-	std::string Binary0::getStringEn()
+	std::string Hexus_Cards_Binary0::getStringEn()
 	{
 		return "Pebble";
 	}
 
-	std::string Binary0::getStringEs()
+	std::string Hexus_Cards_Binary0::getStringEs()
 	{
 		return "Guijarro";
 	}
 
-	std::string Binary0::getStringEs419()
+	std::string Hexus_Cards_Binary0::getStringEs419()
 	{
 		return "Guijarro";
 	}
 
-	std::string Binary0::getStringFi()
+	std::string Hexus_Cards_Binary0::getStringFi()
 	{
 		return "Kivi";
 	}
 
-	std::string Binary0::getStringFr()
+	std::string Hexus_Cards_Binary0::getStringFr()
 	{
 		return "Caillou";
 	}
 
-	std::string Binary0::getStringHu()
+	std::string Hexus_Cards_Binary0::getStringHu()
 	{
 		return "Kavics";
 	}
 
-	std::string Binary0::getStringIt()
+	std::string Hexus_Cards_Binary0::getStringIt()
 	{
 		return "ciottolo";
 	}
 
-	std::string Binary0::getStringJa()
+	std::string Hexus_Cards_Binary0::getStringJa()
 	{
 		return "小石";
 	}
 
-	std::string Binary0::getStringKo()
+	std::string Hexus_Cards_Binary0::getStringKo()
 	{
 		return "마노";
 	}
 
-	std::string Binary0::getStringNl()
+	std::string Hexus_Cards_Binary0::getStringNl()
 	{
 		return "Kiezelsteen";
 	}
 
-	std::string Binary0::getStringNo()
+	std::string Hexus_Cards_Binary0::getStringNo()
 	{
 		return "Småstein";
 	}
 
-	std::string Binary0::getStringPl()
+	std::string Hexus_Cards_Binary0::getStringPl()
 	{
 		return "Kamyk";
 	}
 
-	std::string Binary0::getStringPt()
+	std::string Hexus_Cards_Binary0::getStringPt()
 	{
 		return "Seixo";
 	}
 
-	std::string Binary0::getStringPtBr()
+	std::string Hexus_Cards_Binary0::getStringPtBr()
 	{
 		return "Seixo";
 	}
 
-	std::string Binary0::getStringRo()
+	std::string Hexus_Cards_Binary0::getStringRo()
 	{
 		return "prundiș";
 	}
 
-	std::string Binary0::getStringRu()
+	std::string Hexus_Cards_Binary0::getStringRu()
 	{
 		return "галька";
 	}
 
-	std::string Binary0::getStringSv()
+	std::string Hexus_Cards_Binary0::getStringSv()
 	{
 		return "Sten";
 	}
 
-	std::string Binary0::getStringTh()
+	std::string Hexus_Cards_Binary0::getStringTh()
 	{
 		return "กรวด";
 	}
 
-	std::string Binary0::getStringTr()
+	std::string Hexus_Cards_Binary0::getStringTr()
 	{
 		return "çakıl";
 	}
 
-	std::string Binary0::getStringUk()
+	std::string Hexus_Cards_Binary0::getStringUk()
 	{
 		return "Галька";
 	}
 
-	std::string Binary0::getStringVi()
+	std::string Hexus_Cards_Binary0::getStringVi()
 	{
 		return "Sỏi";
 	}
 
-	std::string Binary0::getStringZhCn()
+	std::string Hexus_Cards_Binary0::getStringZhCn()
 	{
 		return "卵石";
 	}
 
-	std::string Binary0::getStringZhTw()
+	std::string Hexus_Cards_Binary0::getStringZhTw()
 	{
 		return "卵石";
 	}

@@ -4,171 +4,171 @@
 
 #include "Hex5.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex5* Hex5::create()
+	Hexus_Cards_Hex5* Hexus_Cards_Hex5::create()
 	{
-		Hex5* instance = new Hex5();
+		Hexus_Cards_Hex5* instance = new Hexus_Cards_Hex5();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex5::clone()
+	LocalizedString* Hexus_Cards_Hex5::clone()
 	{
-		return Hex5::create();
+		return Hexus_Cards_Hex5::create();
 	}
 
-	Hex5::Hex5() : LocalizedString()
-	{
-	}
-
-	Hex5::~Hex5()
+	Hexus_Cards_Hex5::Hexus_Cards_Hex5() : LocalizedString()
 	{
 	}
 
-	std::string Hex5::getStringAr()
+	Hexus_Cards_Hex5::~Hexus_Cards_Hex5()
+	{
+	}
+
+	std::string Hexus_Cards_Hex5::getStringAr()
 	{
 		return "مرعب";
 	}
 
-	std::string Hex5::getStringBg()
+	std::string Hexus_Cards_Hex5::getStringBg()
 	{
 		return "Зловещ";
 	}
 
-	std::string Hex5::getStringCs()
+	std::string Hexus_Cards_Hex5::getStringCs()
 	{
 		return "Strašidelný";
 	}
 
-	std::string Hex5::getStringDa()
+	std::string Hexus_Cards_Hex5::getStringDa()
 	{
 		return "Uhyggelig";
 	}
 
-	std::string Hex5::getStringDe()
+	std::string Hexus_Cards_Hex5::getStringDe()
 	{
 		return "Gruslig";
 	}
 
-	std::string Hex5::getStringEl()
+	std::string Hexus_Cards_Hex5::getStringEl()
 	{
 		return "Στοιχειωμένος";
 	}
 
-	std::string Hex5::getStringEn()
+	std::string Hexus_Cards_Hex5::getStringEn()
 	{
 		return "Spooks";
 	}
 
-	std::string Hex5::getStringEs()
+	std::string Hexus_Cards_Hex5::getStringEs()
 	{
 		return "Escalofriante";
 	}
 
-	std::string Hex5::getStringEs419()
+	std::string Hexus_Cards_Hex5::getStringEs419()
 	{
 		return "Escalofriante";
 	}
 
-	std::string Hex5::getStringFi()
+	std::string Hexus_Cards_Hex5::getStringFi()
 	{
 		return "Aavemainen";
 	}
 
-	std::string Hex5::getStringFr()
+	std::string Hexus_Cards_Hex5::getStringFr()
 	{
 		return "Effrayant";
 	}
 
-	std::string Hex5::getStringHu()
+	std::string Hexus_Cards_Hex5::getStringHu()
 	{
 		return "Ijesztő";
 	}
 
-	std::string Hex5::getStringIt()
+	std::string Hexus_Cards_Hex5::getStringIt()
 	{
 		return "Spaventoso";
 	}
 
-	std::string Hex5::getStringJa()
+	std::string Hexus_Cards_Hex5::getStringJa()
 	{
 		return "不気味な";
 	}
 
-	std::string Hex5::getStringKo()
+	std::string Hexus_Cards_Hex5::getStringKo()
 	{
 		return "유령 같은";
 	}
 
-	std::string Hex5::getStringNl()
+	std::string Hexus_Cards_Hex5::getStringNl()
 	{
 		return "Spookachtig";
 	}
 
-	std::string Hex5::getStringNo()
+	std::string Hexus_Cards_Hex5::getStringNo()
 	{
 		return "Skummelt";
 	}
 
-	std::string Hex5::getStringPl()
+	std::string Hexus_Cards_Hex5::getStringPl()
 	{
 		return "Straszny";
 	}
 
-	std::string Hex5::getStringPt()
+	std::string Hexus_Cards_Hex5::getStringPt()
 	{
 		return "Assustador";
 	}
 
-	std::string Hex5::getStringPtBr()
+	std::string Hexus_Cards_Hex5::getStringPtBr()
 	{
 		return "Assustador";
 	}
 
-	std::string Hex5::getStringRo()
+	std::string Hexus_Cards_Hex5::getStringRo()
 	{
 		return "Înfricoșător";
 	}
 
-	std::string Hex5::getStringRu()
+	std::string Hexus_Cards_Hex5::getStringRu()
 	{
 		return "Жуткий";
 	}
 
-	std::string Hex5::getStringSv()
+	std::string Hexus_Cards_Hex5::getStringSv()
 	{
 		return "Läskigt";
 	}
 
-	std::string Hex5::getStringTh()
+	std::string Hexus_Cards_Hex5::getStringTh()
 	{
 		return "น่ากลัว";
 	}
 
-	std::string Hex5::getStringTr()
+	std::string Hexus_Cards_Hex5::getStringTr()
 	{
 		return "Ürpertici";
 	}
 
-	std::string Hex5::getStringUk()
+	std::string Hexus_Cards_Hex5::getStringUk()
 	{
 		return "Моторошний";
 	}
 
-	std::string Hex5::getStringVi()
+	std::string Hexus_Cards_Hex5::getStringVi()
 	{
 		return "Ma quái";
 	}
 
-	std::string Hex5::getStringZhCn()
+	std::string Hexus_Cards_Hex5::getStringZhCn()
 	{
 		return "幽灵般的";
 	}
 
-	std::string Hex5::getStringZhTw()
+	std::string Hexus_Cards_Hex5::getStringZhTw()
 	{
 		return "幽靈般的";
 	}

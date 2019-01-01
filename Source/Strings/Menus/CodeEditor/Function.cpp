@@ -4,172 +4,172 @@
 
 #include "Function.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Function* Function::create()
+	Menus_CodeEditor_Function* Menus_CodeEditor_Function::create()
 	{
-		Function* instance = new Function();
+		Menus_CodeEditor_Function* instance = new Menus_CodeEditor_Function();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Function::clone()
+	LocalizedString* Menus_CodeEditor_Function::clone()
 	{
-		return Function::create();
+		return Menus_CodeEditor_Function::create();
 	}
 
-	Function::Function() : LocalizedString()
-	{
-	}
-
-	Function::~Function()
+	Menus_CodeEditor_Function::Menus_CodeEditor_Function() : LocalizedString()
 	{
 	}
 
-	std::string Function::getStringAr()
+	Menus_CodeEditor_Function::~Menus_CodeEditor_Function()
 	{
-		return "وظيفة";
 	}
 
-	std::string Function::getStringBg()
+	std::string Menus_CodeEditor_Function::getStringAr()
 	{
-		return "функция";
+		return "وظيفة: %s";
 	}
 
-	std::string Function::getStringCs()
+	std::string Menus_CodeEditor_Function::getStringBg()
 	{
-		return "Funkce";
+		return "функция: %s";
 	}
 
-	std::string Function::getStringDa()
+	std::string Menus_CodeEditor_Function::getStringCs()
 	{
-		return "Fungere";
+		return "Funkce: %s";
 	}
 
-	std::string Function::getStringDe()
+	std::string Menus_CodeEditor_Function::getStringDa()
 	{
-		return "Funktion";
+		return "Fungere: %s";
 	}
 
-	std::string Function::getStringEl()
+	std::string Menus_CodeEditor_Function::getStringDe()
 	{
-		return "Λειτουργία";
+		return "Funktion: %s";
 	}
 
-	std::string Function::getStringEn()
+	std::string Menus_CodeEditor_Function::getStringEl()
 	{
-		return "Function";
+		return "Λειτουργία: %s";
 	}
 
-	std::string Function::getStringEs()
+	std::string Menus_CodeEditor_Function::getStringEn()
 	{
-		return "Función";
+		return "Function: %s";
 	}
 
-	std::string Function::getStringEs419()
+	std::string Menus_CodeEditor_Function::getStringEs()
 	{
-		return "Función";
+		return "Función: %s";
 	}
 
-	std::string Function::getStringFi()
+	std::string Menus_CodeEditor_Function::getStringEs419()
 	{
-		return "Toimia";
+		return "Función: %s";
 	}
 
-	std::string Function::getStringFr()
+	std::string Menus_CodeEditor_Function::getStringFi()
 	{
-		return "Fonction";
+		return "Toimia: %s";
 	}
 
-	std::string Function::getStringHu()
+	std::string Menus_CodeEditor_Function::getStringFr()
 	{
-		return "Funkció";
+		return "Fonction : %s";
 	}
 
-	std::string Function::getStringIt()
+	std::string Menus_CodeEditor_Function::getStringHu()
 	{
-		return "Funzione";
+		return "Funkció: %s";
 	}
 
-	std::string Function::getStringJa()
+	std::string Menus_CodeEditor_Function::getStringIt()
 	{
-		return "関数";
+		return "Funzione: %s";
 	}
 
-	std::string Function::getStringKo()
+	std::string Menus_CodeEditor_Function::getStringJa()
 	{
-		return "기능";
+		return "関数: %s";
 	}
 
-	std::string Function::getStringNl()
+	std::string Menus_CodeEditor_Function::getStringKo()
 	{
-		return "Functie";
+		return "기능: %s";
 	}
 
-	std::string Function::getStringNo()
+	std::string Menus_CodeEditor_Function::getStringNl()
 	{
-		return "Funksjon";
+		return "Functie: %s";
 	}
 
-	std::string Function::getStringPl()
+	std::string Menus_CodeEditor_Function::getStringNo()
 	{
-		return "Funkcjonować";
+		return "Funksjon: %s";
 	}
 
-	std::string Function::getStringPt()
+	std::string Menus_CodeEditor_Function::getStringPl()
 	{
-		return "Função";
+		return "Funkcjonować: %s";
 	}
 
-	std::string Function::getStringPtBr()
+	std::string Menus_CodeEditor_Function::getStringPt()
 	{
-		return "Função";
+		return "Função: %s";
 	}
 
-	std::string Function::getStringRo()
+	std::string Menus_CodeEditor_Function::getStringPtBr()
 	{
-		return "Funcţie";
+		return "Função: %s";
 	}
 
-	std::string Function::getStringRu()
+	std::string Menus_CodeEditor_Function::getStringRo()
 	{
-		return "функция";
+		return "Funcţie: %s";
 	}
 
-	std::string Function::getStringSv()
+	std::string Menus_CodeEditor_Function::getStringRu()
 	{
-		return "Fungera";
+		return "функция: %s";
 	}
 
-	std::string Function::getStringTh()
+	std::string Menus_CodeEditor_Function::getStringSv()
 	{
-		return "ฟังก์ชัน";
+		return "Fungera: %s";
 	}
 
-	std::string Function::getStringTr()
+	std::string Menus_CodeEditor_Function::getStringTh()
 	{
-		return "fonksiyon";
+		return "ฟังก์ชัน: %s";
 	}
 
-	std::string Function::getStringUk()
+	std::string Menus_CodeEditor_Function::getStringTr()
 	{
-		return "Функція";
+		return "fonksiyon: %s";
 	}
 
-	std::string Function::getStringVi()
+	std::string Menus_CodeEditor_Function::getStringUk()
 	{
-		return "Chức năng";
+		return "Функція: %s";
 	}
 
-	std::string Function::getStringZhCn()
+	std::string Menus_CodeEditor_Function::getStringVi()
 	{
-		return "功能";
+		return "Chức năng: %s";
 	}
 
-	std::string Function::getStringZhTw()
+	std::string Menus_CodeEditor_Function::getStringZhCn()
 	{
-		return "功能";
+		return "功能: %s";
+	}
+
+	std::string Menus_CodeEditor_Function::getStringZhTw()
+	{
+		return "功能: %s";
 	}
 }

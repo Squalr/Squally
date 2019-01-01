@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
+#include "Strings/LateBound.h"
+
 using namespace cocos2d;
 
 const float Card::cardScale = 0.4f;
@@ -104,7 +106,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
-	this->cardText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2);
+	this->cardText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::LateBound::create());
 	this->cardText->setAlignment(TextHAlignment::CENTER);
 	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardText->enableOutline(Color4B::BLACK, 6);
@@ -370,15 +372,15 @@ void Card::updateText()
 	switch (this->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
-			this->cardText->setString(HackUtils::toBinary4(this->getAttack()));
+			this->cardText->setStringReplacementVariables({ HackUtils::toBinary4(this->getAttack()) });
 			this->cardText->setTextColor(Card::binaryColor);
 			break;
 		case CardData::CardType::Decimal:
-			this->cardText->setString(std::to_string(this->getAttack()));
+			this->cardText->setStringReplacementVariables({ std::to_string(this->getAttack()) });
 			this->cardText->setTextColor(Card::decimalColor);
 			break;
 		case CardData::CardType::Hexidecimal:
-			this->cardText->setString(HackUtils::toHex(this->getAttack()));
+			this->cardText->setStringReplacementVariables({ HackUtils::toHex(this->getAttack()) });
 			this->cardText->setTextColor(Card::hexColor);
 			break;
 		case CardData::CardType::Special_MOV:
@@ -394,7 +396,7 @@ void Card::updateText()
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
-			this->cardText->setString(this->cardData->getCardTypeString());
+			this->cardText->setStringReplacementVariables({ this->cardData->getCardTypeString() });
 			this->cardText->setTextColor(Card::specialColor);
 		default:
 			break;

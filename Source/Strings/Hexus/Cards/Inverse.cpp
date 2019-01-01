@@ -4,171 +4,171 @@
 
 #include "Inverse.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Inverse* Inverse::create()
+	Hexus_Cards_Inverse* Hexus_Cards_Inverse::create()
 	{
-		Inverse* instance = new Inverse();
+		Hexus_Cards_Inverse* instance = new Hexus_Cards_Inverse();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Inverse::clone()
+	LocalizedString* Hexus_Cards_Inverse::clone()
 	{
-		return Inverse::create();
+		return Hexus_Cards_Inverse::create();
 	}
 
-	Inverse::Inverse() : LocalizedString()
-	{
-	}
-
-	Inverse::~Inverse()
+	Hexus_Cards_Inverse::Hexus_Cards_Inverse() : LocalizedString()
 	{
 	}
 
-	std::string Inverse::getStringAr()
+	Hexus_Cards_Inverse::~Hexus_Cards_Inverse()
+	{
+	}
+
+	std::string Hexus_Cards_Inverse::getStringAr()
 	{
 		return "بت عكسية";
 	}
 
-	std::string Inverse::getStringBg()
+	std::string Hexus_Cards_Inverse::getStringBg()
 	{
 		return "Обратни битове";
 	}
 
-	std::string Inverse::getStringCs()
+	std::string Hexus_Cards_Inverse::getStringCs()
 	{
 		return "Inverzní bity";
 	}
 
-	std::string Inverse::getStringDa()
+	std::string Hexus_Cards_Inverse::getStringDa()
 	{
 		return "Inverse bits";
 	}
 
-	std::string Inverse::getStringDe()
+	std::string Hexus_Cards_Inverse::getStringDe()
 	{
 		return "Inverse Bits";
 	}
 
-	std::string Inverse::getStringEl()
+	std::string Hexus_Cards_Inverse::getStringEl()
 	{
 		return "Αντίστροφα δυφία";
 	}
 
-	std::string Inverse::getStringEn()
+	std::string Hexus_Cards_Inverse::getStringEn()
 	{
 		return "Inverse Bits";
 	}
 
-	std::string Inverse::getStringEs()
+	std::string Hexus_Cards_Inverse::getStringEs()
 	{
 		return "Bits inversos";
 	}
 
-	std::string Inverse::getStringEs419()
+	std::string Hexus_Cards_Inverse::getStringEs419()
 	{
 		return "Bits inversos";
 	}
 
-	std::string Inverse::getStringFi()
+	std::string Hexus_Cards_Inverse::getStringFi()
 	{
 		return "Käänteiset bitit";
 	}
 
-	std::string Inverse::getStringFr()
+	std::string Hexus_Cards_Inverse::getStringFr()
 	{
 		return "Inverse bits";
 	}
 
-	std::string Inverse::getStringHu()
+	std::string Hexus_Cards_Inverse::getStringHu()
 	{
 		return "Fordított bitek";
 	}
 
-	std::string Inverse::getStringIt()
+	std::string Hexus_Cards_Inverse::getStringIt()
 	{
 		return "Bit inversi";
 	}
 
-	std::string Inverse::getStringJa()
+	std::string Hexus_Cards_Inverse::getStringJa()
 	{
 		return "逆ビット";
 	}
 
-	std::string Inverse::getStringKo()
+	std::string Hexus_Cards_Inverse::getStringKo()
 	{
 		return "역 비트";
 	}
 
-	std::string Inverse::getStringNl()
+	std::string Hexus_Cards_Inverse::getStringNl()
 	{
 		return "Inverse bits";
 	}
 
-	std::string Inverse::getStringNo()
+	std::string Hexus_Cards_Inverse::getStringNo()
 	{
 		return "Inverterte biter";
 	}
 
-	std::string Inverse::getStringPl()
+	std::string Hexus_Cards_Inverse::getStringPl()
 	{
 		return "Bity odwrotne";
 	}
 
-	std::string Inverse::getStringPt()
+	std::string Hexus_Cards_Inverse::getStringPt()
 	{
 		return "Inverse bits";
 	}
 
-	std::string Inverse::getStringPtBr()
+	std::string Hexus_Cards_Inverse::getStringPtBr()
 	{
 		return "Inverse bits";
 	}
 
-	std::string Inverse::getStringRo()
+	std::string Hexus_Cards_Inverse::getStringRo()
 	{
 		return "Bite inversate";
 	}
 
-	std::string Inverse::getStringRu()
+	std::string Hexus_Cards_Inverse::getStringRu()
 	{
 		return "Обратные биты";
 	}
 
-	std::string Inverse::getStringSv()
+	std::string Hexus_Cards_Inverse::getStringSv()
 	{
 		return "Inverterade bitar";
 	}
 
-	std::string Inverse::getStringTh()
+	std::string Hexus_Cards_Inverse::getStringTh()
 	{
 		return "บิตผกผัน";
 	}
 
-	std::string Inverse::getStringTr()
+	std::string Hexus_Cards_Inverse::getStringTr()
 	{
 		return "Ters bit";
 	}
 
-	std::string Inverse::getStringUk()
+	std::string Hexus_Cards_Inverse::getStringUk()
 	{
 		return "Зворотні біти";
 	}
 
-	std::string Inverse::getStringVi()
+	std::string Hexus_Cards_Inverse::getStringVi()
 	{
 		return "Bit nghịch đảo";
 	}
 
-	std::string Inverse::getStringZhCn()
+	std::string Hexus_Cards_Inverse::getStringZhCn()
 	{
 		return "反位";
 	}
 
-	std::string Inverse::getStringZhTw()
+	std::string Hexus_Cards_Inverse::getStringZhTw()
 	{
 		return "反位";
 	}

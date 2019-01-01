@@ -4,171 +4,171 @@
 
 #include "DecStorm.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	DecStorm* DecStorm::create()
+	Hexus_Cards_DecStorm* Hexus_Cards_DecStorm::create()
 	{
-		DecStorm* instance = new DecStorm();
+		Hexus_Cards_DecStorm* instance = new Hexus_Cards_DecStorm();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* DecStorm::clone()
+	LocalizedString* Hexus_Cards_DecStorm::clone()
 	{
-		return DecStorm::create();
+		return Hexus_Cards_DecStorm::create();
 	}
 
-	DecStorm::DecStorm() : LocalizedString()
-	{
-	}
-
-	DecStorm::~DecStorm()
+	Hexus_Cards_DecStorm::Hexus_Cards_DecStorm() : LocalizedString()
 	{
 	}
 
-	std::string DecStorm::getStringAr()
+	Hexus_Cards_DecStorm::~Hexus_Cards_DecStorm()
+	{
+	}
+
+	std::string Hexus_Cards_DecStorm::getStringAr()
 	{
 		return "العاصفة العشرية";
 	}
 
-	std::string DecStorm::getStringBg()
+	std::string Hexus_Cards_DecStorm::getStringBg()
 	{
 		return "Десетична буря";
 	}
 
-	std::string DecStorm::getStringCs()
+	std::string Hexus_Cards_DecStorm::getStringCs()
 	{
 		return "Desetinná bouře";
 	}
 
-	std::string DecStorm::getStringDa()
+	std::string Hexus_Cards_DecStorm::getStringDa()
 	{
 		return "Decimal storm";
 	}
 
-	std::string DecStorm::getStringDe()
+	std::string Hexus_Cards_DecStorm::getStringDe()
 	{
 		return "Dezimalsturm";
 	}
 
-	std::string DecStorm::getStringEl()
+	std::string Hexus_Cards_DecStorm::getStringEl()
 	{
 		return "Δεκαδική θύελλα";
 	}
 
-	std::string DecStorm::getStringEn()
+	std::string Hexus_Cards_DecStorm::getStringEn()
 	{
 		return "Dec Storm";
 	}
 
-	std::string DecStorm::getStringEs()
+	std::string Hexus_Cards_DecStorm::getStringEs()
 	{
 		return "Tormenta decimal";
 	}
 
-	std::string DecStorm::getStringEs419()
+	std::string Hexus_Cards_DecStorm::getStringEs419()
 	{
 		return "Tormenta decimal";
 	}
 
-	std::string DecStorm::getStringFi()
+	std::string Hexus_Cards_DecStorm::getStringFi()
 	{
 		return "Kymmenen myrsky";
 	}
 
-	std::string DecStorm::getStringFr()
+	std::string Hexus_Cards_DecStorm::getStringFr()
 	{
 		return "Tempête décimale";
 	}
 
-	std::string DecStorm::getStringHu()
+	std::string Hexus_Cards_DecStorm::getStringHu()
 	{
 		return "Tizedes vihar";
 	}
 
-	std::string DecStorm::getStringIt()
+	std::string Hexus_Cards_DecStorm::getStringIt()
 	{
 		return "Tempesta decimale";
 	}
 
-	std::string DecStorm::getStringJa()
+	std::string Hexus_Cards_DecStorm::getStringJa()
 	{
 		return "十進嵐";
 	}
 
-	std::string DecStorm::getStringKo()
+	std::string Hexus_Cards_DecStorm::getStringKo()
 	{
 		return "십진 폭풍";
 	}
 
-	std::string DecStorm::getStringNl()
+	std::string Hexus_Cards_DecStorm::getStringNl()
 	{
 		return "Decimale storm";
 	}
 
-	std::string DecStorm::getStringNo()
+	std::string Hexus_Cards_DecStorm::getStringNo()
 	{
 		return "Desimal storm";
 	}
 
-	std::string DecStorm::getStringPl()
+	std::string Hexus_Cards_DecStorm::getStringPl()
 	{
 		return "Decimal storm";
 	}
 
-	std::string DecStorm::getStringPt()
+	std::string Hexus_Cards_DecStorm::getStringPt()
 	{
 		return "Tempestade decimal";
 	}
 
-	std::string DecStorm::getStringPtBr()
+	std::string Hexus_Cards_DecStorm::getStringPtBr()
 	{
 		return "Tempestade decimal";
 	}
 
-	std::string DecStorm::getStringRo()
+	std::string Hexus_Cards_DecStorm::getStringRo()
 	{
 		return "Furtuna zecimală";
 	}
 
-	std::string DecStorm::getStringRu()
+	std::string Hexus_Cards_DecStorm::getStringRu()
 	{
 		return "Десятичная буря";
 	}
 
-	std::string DecStorm::getStringSv()
+	std::string Hexus_Cards_DecStorm::getStringSv()
 	{
 		return "Decimal storm";
 	}
 
-	std::string DecStorm::getStringTh()
+	std::string Hexus_Cards_DecStorm::getStringTh()
 	{
 		return "พายุเลขฐานสิบ";
 	}
 
-	std::string DecStorm::getStringTr()
+	std::string Hexus_Cards_DecStorm::getStringTr()
 	{
 		return "Ondalık fırtına";
 	}
 
-	std::string DecStorm::getStringUk()
+	std::string Hexus_Cards_DecStorm::getStringUk()
 	{
 		return "Десятковий шторм";
 	}
 
-	std::string DecStorm::getStringVi()
+	std::string Hexus_Cards_DecStorm::getStringVi()
 	{
 		return "Bão thập phân";
 	}
 
-	std::string DecStorm::getStringZhCn()
+	std::string Hexus_Cards_DecStorm::getStringZhCn()
 	{
 		return "十进风暴";
 	}
 
-	std::string DecStorm::getStringZhTw()
+	std::string Hexus_Cards_DecStorm::getStringZhTw()
 	{
 		return "十進風暴";
 	}

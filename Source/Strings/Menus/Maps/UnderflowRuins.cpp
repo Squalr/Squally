@@ -4,171 +4,171 @@
 
 #include "UnderflowRuins.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	UnderflowRuins* UnderflowRuins::create()
+	Menus_Maps_UnderflowRuins* Menus_Maps_UnderflowRuins::create()
 	{
-		UnderflowRuins* instance = new UnderflowRuins();
+		Menus_Maps_UnderflowRuins* instance = new Menus_Maps_UnderflowRuins();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* UnderflowRuins::clone()
+	LocalizedString* Menus_Maps_UnderflowRuins::clone()
 	{
-		return UnderflowRuins::create();
+		return Menus_Maps_UnderflowRuins::create();
 	}
 
-	UnderflowRuins::UnderflowRuins() : LocalizedString()
-	{
-	}
-
-	UnderflowRuins::~UnderflowRuins()
+	Menus_Maps_UnderflowRuins::Menus_Maps_UnderflowRuins() : LocalizedString()
 	{
 	}
 
-	std::string UnderflowRuins::getStringAr()
+	Menus_Maps_UnderflowRuins::~Menus_Maps_UnderflowRuins()
+	{
+	}
+
+	std::string Menus_Maps_UnderflowRuins::getStringAr()
 	{
 		return "أطلال";
 	}
 
-	std::string UnderflowRuins::getStringBg()
+	std::string Menus_Maps_UnderflowRuins::getStringBg()
 	{
 		return "Руините под земята";
 	}
 
-	std::string UnderflowRuins::getStringCs()
+	std::string Menus_Maps_UnderflowRuins::getStringCs()
 	{
 		return "Zříceniny podtlaku";
 	}
 
-	std::string UnderflowRuins::getStringDa()
+	std::string Menus_Maps_UnderflowRuins::getStringDa()
 	{
 		return "Understrøm ruiner";
 	}
 
-	std::string UnderflowRuins::getStringDe()
+	std::string Menus_Maps_UnderflowRuins::getStringDe()
 	{
 		return "Unterlaufruinen";
 	}
 
-	std::string UnderflowRuins::getStringEl()
+	std::string Menus_Maps_UnderflowRuins::getStringEl()
 	{
 		return "Υπολείμματα κατάρρευσης";
 	}
 
-	std::string UnderflowRuins::getStringEn()
+	std::string Menus_Maps_UnderflowRuins::getStringEn()
 	{
 		return "Underflow Ruins";
 	}
 
-	std::string UnderflowRuins::getStringEs()
+	std::string Menus_Maps_UnderflowRuins::getStringEs()
 	{
 		return "Ruinas de bajo flujo";
 	}
 
-	std::string UnderflowRuins::getStringEs419()
+	std::string Menus_Maps_UnderflowRuins::getStringEs419()
 	{
 		return "Ruinas de bajo flujo";
 	}
 
-	std::string UnderflowRuins::getStringFi()
+	std::string Menus_Maps_UnderflowRuins::getStringFi()
 	{
 		return "Virtaama rauniot";
 	}
 
-	std::string UnderflowRuins::getStringFr()
+	std::string Menus_Maps_UnderflowRuins::getStringFr()
 	{
 		return "Ruines souterraines";
 	}
 
-	std::string UnderflowRuins::getStringHu()
+	std::string Menus_Maps_UnderflowRuins::getStringHu()
 	{
 		return "Túlfolyó romok";
 	}
 
-	std::string UnderflowRuins::getStringIt()
+	std::string Menus_Maps_UnderflowRuins::getStringIt()
 	{
 		return "Rovine sottostanti";
 	}
 
-	std::string UnderflowRuins::getStringJa()
+	std::string Menus_Maps_UnderflowRuins::getStringJa()
 	{
 		return "アンダーフロー遺跡";
 	}
 
-	std::string UnderflowRuins::getStringKo()
+	std::string Menus_Maps_UnderflowRuins::getStringKo()
 	{
 		return "언더 플로우 유적";
 	}
 
-	std::string UnderflowRuins::getStringNl()
+	std::string Menus_Maps_UnderflowRuins::getStringNl()
 	{
 		return "Onderstroomruïnes";
 	}
 
-	std::string UnderflowRuins::getStringNo()
+	std::string Menus_Maps_UnderflowRuins::getStringNo()
 	{
 		return "Understrøm ruiner";
 	}
 
-	std::string UnderflowRuins::getStringPl()
+	std::string Menus_Maps_UnderflowRuins::getStringPl()
 	{
 		return "Underflow ruiny";
 	}
 
-	std::string UnderflowRuins::getStringPt()
+	std::string Menus_Maps_UnderflowRuins::getStringPt()
 	{
 		return "Ruínas de underflow";
 	}
 
-	std::string UnderflowRuins::getStringPtBr()
+	std::string Menus_Maps_UnderflowRuins::getStringPtBr()
 	{
 		return "Ruínas de underflow";
 	}
 
-	std::string UnderflowRuins::getStringRo()
+	std::string Menus_Maps_UnderflowRuins::getStringRo()
 	{
 		return "Ruinele subterane";
 	}
 
-	std::string UnderflowRuins::getStringRu()
+	std::string Menus_Maps_UnderflowRuins::getStringRu()
 	{
 		return "Подвал руины";
 	}
 
-	std::string UnderflowRuins::getStringSv()
+	std::string Menus_Maps_UnderflowRuins::getStringSv()
 	{
 		return "Underflödesruiner";
 	}
 
-	std::string UnderflowRuins::getStringTh()
+	std::string Menus_Maps_UnderflowRuins::getStringTh()
 	{
 		return "อันเดอร์โฟลว์ซากปรักหักพัง";
 	}
 
-	std::string UnderflowRuins::getStringTr()
+	std::string Menus_Maps_UnderflowRuins::getStringTr()
 	{
 		return "Akıntı kalıntıları";
 	}
 
-	std::string UnderflowRuins::getStringUk()
+	std::string Menus_Maps_UnderflowRuins::getStringUk()
 	{
 		return "Руїни під водою";
 	}
 
-	std::string UnderflowRuins::getStringVi()
+	std::string Menus_Maps_UnderflowRuins::getStringVi()
 	{
 		return "Di tích ngầm";
 	}
 
-	std::string UnderflowRuins::getStringZhCn()
+	std::string Menus_Maps_UnderflowRuins::getStringZhCn()
 	{
 		return "下溢的废墟";
 	}
 
-	std::string UnderflowRuins::getStringZhTw()
+	std::string Menus_Maps_UnderflowRuins::getStringZhTw()
 	{
 		return "下溢的廢墟";
 	}

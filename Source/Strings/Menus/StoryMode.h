@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class StoryMode : public LocalizedString
+	class Menus_StoryMode : public LocalizedString
 	{
 	public:
-		static StoryMode* create();
+		static Menus_StoryMode* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		StoryMode();
-		~StoryMode();
+		Menus_StoryMode();
+		~Menus_StoryMode();
 	};
 }

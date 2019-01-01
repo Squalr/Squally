@@ -4,171 +4,171 @@
 
 #include "Binary8.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary8* Binary8::create()
+	Hexus_Cards_Binary8* Hexus_Cards_Binary8::create()
 	{
-		Binary8* instance = new Binary8();
+		Hexus_Cards_Binary8* instance = new Hexus_Cards_Binary8();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary8::clone()
+	LocalizedString* Hexus_Cards_Binary8::clone()
 	{
-		return Binary8::create();
+		return Hexus_Cards_Binary8::create();
 	}
 
-	Binary8::Binary8() : LocalizedString()
-	{
-	}
-
-	Binary8::~Binary8()
+	Hexus_Cards_Binary8::Hexus_Cards_Binary8() : LocalizedString()
 	{
 	}
 
-	std::string Binary8::getStringAr()
+	Hexus_Cards_Binary8::~Hexus_Cards_Binary8()
+	{
+	}
+
+	std::string Hexus_Cards_Binary8::getStringAr()
 	{
 		return "سحق الروبوت";
 	}
 
-	std::string Binary8::getStringBg()
+	std::string Hexus_Cards_Binary8::getStringBg()
 	{
 		return "Трошащ робот";
 	}
 
-	std::string Binary8::getStringCs()
+	std::string Hexus_Cards_Binary8::getStringCs()
 	{
 		return "Drtící robot";
 	}
 
-	std::string Binary8::getStringDa()
+	std::string Hexus_Cards_Binary8::getStringDa()
 	{
 		return "Knusningsrobot";
 	}
 
-	std::string Binary8::getStringDe()
+	std::string Hexus_Cards_Binary8::getStringDe()
 	{
 		return "Roboter zerquetschen";
 	}
 
-	std::string Binary8::getStringEl()
+	std::string Hexus_Cards_Binary8::getStringEl()
 	{
 		return "Ρομπότ σύνθλιψης";
 	}
 
-	std::string Binary8::getStringEn()
+	std::string Hexus_Cards_Binary8::getStringEn()
 	{
 		return "Crush-o-matic";
 	}
 
-	std::string Binary8::getStringEs()
+	std::string Hexus_Cards_Binary8::getStringEs()
 	{
 		return "Robot de trituración";
 	}
 
-	std::string Binary8::getStringEs419()
+	std::string Hexus_Cards_Binary8::getStringEs419()
 	{
 		return "Robot de trituración";
 	}
 
-	std::string Binary8::getStringFi()
+	std::string Hexus_Cards_Binary8::getStringFi()
 	{
 		return "Murskausrobotti";
 	}
 
-	std::string Binary8::getStringFr()
+	std::string Hexus_Cards_Binary8::getStringFr()
 	{
 		return "Robot concasseur";
 	}
 
-	std::string Binary8::getStringHu()
+	std::string Hexus_Cards_Binary8::getStringHu()
 	{
 		return "Zúzó robot";
 	}
 
-	std::string Binary8::getStringIt()
+	std::string Hexus_Cards_Binary8::getStringIt()
 	{
 		return "Robot schiacciante";
 	}
 
-	std::string Binary8::getStringJa()
+	std::string Hexus_Cards_Binary8::getStringJa()
 	{
 		return "破砕ロボット";
 	}
 
-	std::string Binary8::getStringKo()
+	std::string Hexus_Cards_Binary8::getStringKo()
 	{
 		return "분쇄 로봇";
 	}
 
-	std::string Binary8::getStringNl()
+	std::string Hexus_Cards_Binary8::getStringNl()
 	{
 		return "Brekende robot";
 	}
 
-	std::string Binary8::getStringNo()
+	std::string Hexus_Cards_Binary8::getStringNo()
 	{
 		return "Knusende robot";
 	}
 
-	std::string Binary8::getStringPl()
+	std::string Hexus_Cards_Binary8::getStringPl()
 	{
 		return "Kruszenie robota";
 	}
 
-	std::string Binary8::getStringPt()
+	std::string Hexus_Cards_Binary8::getStringPt()
 	{
 		return "Robô de esmagamento";
 	}
 
-	std::string Binary8::getStringPtBr()
+	std::string Hexus_Cards_Binary8::getStringPtBr()
 	{
 		return "Robô de esmagamento";
 	}
 
-	std::string Binary8::getStringRo()
+	std::string Hexus_Cards_Binary8::getStringRo()
 	{
 		return "Robotul de strivire";
 	}
 
-	std::string Binary8::getStringRu()
+	std::string Hexus_Cards_Binary8::getStringRu()
 	{
 		return "Дробильный робот";
 	}
 
-	std::string Binary8::getStringSv()
+	std::string Hexus_Cards_Binary8::getStringSv()
 	{
 		return "Krossrobot";
 	}
 
-	std::string Binary8::getStringTh()
+	std::string Hexus_Cards_Binary8::getStringTh()
 	{
 		return "หุ่นยนต์บด";
 	}
 
-	std::string Binary8::getStringTr()
+	std::string Hexus_Cards_Binary8::getStringTr()
 	{
 		return "Kırma robotu";
 	}
 
-	std::string Binary8::getStringUk()
+	std::string Hexus_Cards_Binary8::getStringUk()
 	{
 		return "Робот дроблення";
 	}
 
-	std::string Binary8::getStringVi()
+	std::string Hexus_Cards_Binary8::getStringVi()
 	{
 		return "Robot nghiền";
 	}
 
-	std::string Binary8::getStringZhCn()
+	std::string Hexus_Cards_Binary8::getStringZhCn()
 	{
 		return "破碎机器人";
 	}
 
-	std::string Binary8::getStringZhTw()
+	std::string Hexus_Cards_Binary8::getStringZhTw()
 	{
 		return "破碎機器人";
 	}

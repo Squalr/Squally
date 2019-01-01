@@ -4,171 +4,171 @@
 
 #include "Return.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Return* Return::create()
+	Menus_Return* Menus_Return::create()
 	{
-		Return* instance = new Return();
+		Menus_Return* instance = new Menus_Return();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Return::clone()
+	LocalizedString* Menus_Return::clone()
 	{
-		return Return::create();
+		return Menus_Return::create();
 	}
 
-	Return::Return() : LocalizedString()
-	{
-	}
-
-	Return::~Return()
+	Menus_Return::Menus_Return() : LocalizedString()
 	{
 	}
 
-	std::string Return::getStringAr()
+	Menus_Return::~Menus_Return()
+	{
+	}
+
+	std::string Menus_Return::getStringAr()
 	{
 		return "إرجاع";
 	}
 
-	std::string Return::getStringBg()
+	std::string Menus_Return::getStringBg()
 	{
 		return "връщане";
 	}
 
-	std::string Return::getStringCs()
+	std::string Menus_Return::getStringCs()
 	{
 		return "Vrátit se";
 	}
 
-	std::string Return::getStringDa()
+	std::string Menus_Return::getStringDa()
 	{
 		return "Vend tilbage";
 	}
 
-	std::string Return::getStringDe()
+	std::string Menus_Return::getStringDe()
 	{
 		return "Rückkehr";
 	}
 
-	std::string Return::getStringEl()
+	std::string Menus_Return::getStringEl()
 	{
 		return "ΕΠΙΣΤΡΟΦΗ";
 	}
 
-	std::string Return::getStringEn()
+	std::string Menus_Return::getStringEn()
 	{
 		return "Return";
 	}
 
-	std::string Return::getStringEs()
+	std::string Menus_Return::getStringEs()
 	{
 		return "Regreso";
 	}
 
-	std::string Return::getStringEs419()
+	std::string Menus_Return::getStringEs419()
 	{
 		return "Regreso";
 	}
 
-	std::string Return::getStringFi()
+	std::string Menus_Return::getStringFi()
 	{
 		return "Palata";
 	}
 
-	std::string Return::getStringFr()
+	std::string Menus_Return::getStringFr()
 	{
 		return "Revenir";
 	}
 
-	std::string Return::getStringHu()
+	std::string Menus_Return::getStringHu()
 	{
 		return "Visszatérés";
 	}
 
-	std::string Return::getStringIt()
+	std::string Menus_Return::getStringIt()
 	{
 		return "Ritorno";
 	}
 
-	std::string Return::getStringJa()
+	std::string Menus_Return::getStringJa()
 	{
 		return "戻る";
 	}
 
-	std::string Return::getStringKo()
+	std::string Menus_Return::getStringKo()
 	{
 		return "반환";
 	}
 
-	std::string Return::getStringNl()
+	std::string Menus_Return::getStringNl()
 	{
 		return "terugkeer";
 	}
 
-	std::string Return::getStringNo()
+	std::string Menus_Return::getStringNo()
 	{
 		return "Komme tilbake";
 	}
 
-	std::string Return::getStringPl()
+	std::string Menus_Return::getStringPl()
 	{
 		return "Powrót";
 	}
 
-	std::string Return::getStringPt()
+	std::string Menus_Return::getStringPt()
 	{
 		return "Retorna";
 	}
 
-	std::string Return::getStringPtBr()
+	std::string Menus_Return::getStringPtBr()
 	{
 		return "Retorna";
 	}
 
-	std::string Return::getStringRo()
+	std::string Menus_Return::getStringRo()
 	{
 		return "Întoarcere";
 	}
 
-	std::string Return::getStringRu()
+	std::string Menus_Return::getStringRu()
 	{
 		return "Вернуть";
 	}
 
-	std::string Return::getStringSv()
+	std::string Menus_Return::getStringSv()
 	{
 		return "Lämna tillbaka";
 	}
 
-	std::string Return::getStringTh()
+	std::string Menus_Return::getStringTh()
 	{
 		return "กลับ";
 	}
 
-	std::string Return::getStringTr()
+	std::string Menus_Return::getStringTr()
 	{
 		return "Dönüş";
 	}
 
-	std::string Return::getStringUk()
+	std::string Menus_Return::getStringUk()
 	{
 		return "Повернення";
 	}
 
-	std::string Return::getStringVi()
+	std::string Menus_Return::getStringVi()
 	{
 		return "Trở về";
 	}
 
-	std::string Return::getStringZhCn()
+	std::string Menus_Return::getStringZhCn()
 	{
 		return "返回";
 	}
 
-	std::string Return::getStringZhTw()
+	std::string Menus_Return::getStringZhTw()
 	{
 		return "返回";
 	}

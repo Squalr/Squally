@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class PendulumTargetAngle : public LocalizedString
+	class Hexus_CardDescriptions_Addition : public LocalizedString
 	{
 	public:
-		static PendulumTargetAngle* create();
+		static Hexus_CardDescriptions_Addition* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		PendulumTargetAngle();
-		~PendulumTargetAngle();
+		Hexus_CardDescriptions_Addition();
+		~Hexus_CardDescriptions_Addition();
 	};
 }

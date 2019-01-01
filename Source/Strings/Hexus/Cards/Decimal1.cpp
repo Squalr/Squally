@@ -4,171 +4,171 @@
 
 #include "Decimal1.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal1* Decimal1::create()
+	Hexus_Cards_Decimal1* Hexus_Cards_Decimal1::create()
 	{
-		Decimal1* instance = new Decimal1();
+		Hexus_Cards_Decimal1* instance = new Hexus_Cards_Decimal1();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal1::clone()
+	LocalizedString* Hexus_Cards_Decimal1::clone()
 	{
-		return Decimal1::create();
+		return Hexus_Cards_Decimal1::create();
 	}
 
-	Decimal1::Decimal1() : LocalizedString()
-	{
-	}
-
-	Decimal1::~Decimal1()
+	Hexus_Cards_Decimal1::Hexus_Cards_Decimal1() : LocalizedString()
 	{
 	}
 
-	std::string Decimal1::getStringAr()
+	Hexus_Cards_Decimal1::~Hexus_Cards_Decimal1()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal1::getStringAr()
 	{
 		return "جيسيكا";
 	}
 
-	std::string Decimal1::getStringBg()
+	std::string Hexus_Cards_Decimal1::getStringBg()
 	{
 		return "Джесика";
 	}
 
-	std::string Decimal1::getStringCs()
+	std::string Hexus_Cards_Decimal1::getStringCs()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringDa()
+	std::string Hexus_Cards_Decimal1::getStringDa()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringDe()
+	std::string Hexus_Cards_Decimal1::getStringDe()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringEl()
+	std::string Hexus_Cards_Decimal1::getStringEl()
 	{
 		return "Τζέσικα";
 	}
 
-	std::string Decimal1::getStringEn()
+	std::string Hexus_Cards_Decimal1::getStringEn()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringEs()
+	std::string Hexus_Cards_Decimal1::getStringEs()
 	{
 		return "Jess";
 	}
 
-	std::string Decimal1::getStringEs419()
+	std::string Hexus_Cards_Decimal1::getStringEs419()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringFi()
+	std::string Hexus_Cards_Decimal1::getStringFi()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringFr()
+	std::string Hexus_Cards_Decimal1::getStringFr()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringHu()
+	std::string Hexus_Cards_Decimal1::getStringHu()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringIt()
+	std::string Hexus_Cards_Decimal1::getStringIt()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringJa()
+	std::string Hexus_Cards_Decimal1::getStringJa()
 	{
 		return "ジェシカ";
 	}
 
-	std::string Decimal1::getStringKo()
+	std::string Hexus_Cards_Decimal1::getStringKo()
 	{
 		return "제시카";
 	}
 
-	std::string Decimal1::getStringNl()
+	std::string Hexus_Cards_Decimal1::getStringNl()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringNo()
+	std::string Hexus_Cards_Decimal1::getStringNo()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringPl()
+	std::string Hexus_Cards_Decimal1::getStringPl()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringPt()
+	std::string Hexus_Cards_Decimal1::getStringPt()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringPtBr()
+	std::string Hexus_Cards_Decimal1::getStringPtBr()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringRo()
+	std::string Hexus_Cards_Decimal1::getStringRo()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringRu()
+	std::string Hexus_Cards_Decimal1::getStringRu()
 	{
 		return "Джессика";
 	}
 
-	std::string Decimal1::getStringSv()
+	std::string Hexus_Cards_Decimal1::getStringSv()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringTh()
+	std::string Hexus_Cards_Decimal1::getStringTh()
 	{
 		return "เจสสิก้า";
 	}
 
-	std::string Decimal1::getStringTr()
+	std::string Hexus_Cards_Decimal1::getStringTr()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringUk()
+	std::string Hexus_Cards_Decimal1::getStringUk()
 	{
 		return "Джессіка";
 	}
 
-	std::string Decimal1::getStringVi()
+	std::string Hexus_Cards_Decimal1::getStringVi()
 	{
 		return "Jessica";
 	}
 
-	std::string Decimal1::getStringZhCn()
+	std::string Hexus_Cards_Decimal1::getStringZhCn()
 	{
 		return "杰西卡";
 	}
 
-	std::string Decimal1::getStringZhTw()
+	std::string Hexus_Cards_Decimal1::getStringZhTw()
 	{
 		return "傑西卡";
 	}

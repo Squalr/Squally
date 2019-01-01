@@ -4,171 +4,171 @@
 
 #include "NewGame.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	NewGame* NewGame::create()
+	Menus_NewGame* Menus_NewGame::create()
 	{
-		NewGame* instance = new NewGame();
+		Menus_NewGame* instance = new Menus_NewGame();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* NewGame::clone()
+	LocalizedString* Menus_NewGame::clone()
 	{
-		return NewGame::create();
+		return Menus_NewGame::create();
 	}
 
-	NewGame::NewGame() : LocalizedString()
-	{
-	}
-
-	NewGame::~NewGame()
+	Menus_NewGame::Menus_NewGame() : LocalizedString()
 	{
 	}
 
-	std::string NewGame::getStringAr()
+	Menus_NewGame::~Menus_NewGame()
+	{
+	}
+
+	std::string Menus_NewGame::getStringAr()
 	{
 		return "لعبة جديدة";
 	}
 
-	std::string NewGame::getStringBg()
+	std::string Menus_NewGame::getStringBg()
 	{
 		return "Нова игра";
 	}
 
-	std::string NewGame::getStringCs()
+	std::string Menus_NewGame::getStringCs()
 	{
 		return "Nová hra";
 	}
 
-	std::string NewGame::getStringDa()
+	std::string Menus_NewGame::getStringDa()
 	{
 		return "Nyt spil";
 	}
 
-	std::string NewGame::getStringDe()
+	std::string Menus_NewGame::getStringDe()
 	{
 		return "Neues Spiel";
 	}
 
-	std::string NewGame::getStringEl()
+	std::string Menus_NewGame::getStringEl()
 	{
 		return "Νέο παιχνίδι";
 	}
 
-	std::string NewGame::getStringEn()
+	std::string Menus_NewGame::getStringEn()
 	{
 		return "New Game";
 	}
 
-	std::string NewGame::getStringEs()
+	std::string Menus_NewGame::getStringEs()
 	{
 		return "Nuevo juego";
 	}
 
-	std::string NewGame::getStringEs419()
+	std::string Menus_NewGame::getStringEs419()
 	{
 		return "Nuevo juego";
 	}
 
-	std::string NewGame::getStringFi()
+	std::string Menus_NewGame::getStringFi()
 	{
 		return "Uusi peli";
 	}
 
-	std::string NewGame::getStringFr()
+	std::string Menus_NewGame::getStringFr()
 	{
 		return "Nouveau jeu";
 	}
 
-	std::string NewGame::getStringHu()
+	std::string Menus_NewGame::getStringHu()
 	{
 		return "Új játék";
 	}
 
-	std::string NewGame::getStringIt()
+	std::string Menus_NewGame::getStringIt()
 	{
 		return "Nuovo gioco";
 	}
 
-	std::string NewGame::getStringJa()
+	std::string Menus_NewGame::getStringJa()
 	{
 		return "新しいゲーム";
 	}
 
-	std::string NewGame::getStringKo()
+	std::string Menus_NewGame::getStringKo()
 	{
 		return "새로운 게임";
 	}
 
-	std::string NewGame::getStringNl()
+	std::string Menus_NewGame::getStringNl()
 	{
 		return "Nieuw spel";
 	}
 
-	std::string NewGame::getStringNo()
+	std::string Menus_NewGame::getStringNo()
 	{
 		return "Nytt spill";
 	}
 
-	std::string NewGame::getStringPl()
+	std::string Menus_NewGame::getStringPl()
 	{
 		return "Nowa gra";
 	}
 
-	std::string NewGame::getStringPt()
+	std::string Menus_NewGame::getStringPt()
 	{
 		return "Novo jogo";
 	}
 
-	std::string NewGame::getStringPtBr()
+	std::string Menus_NewGame::getStringPtBr()
 	{
 		return "Novo jogo";
 	}
 
-	std::string NewGame::getStringRo()
+	std::string Menus_NewGame::getStringRo()
 	{
 		return "Joc nou";
 	}
 
-	std::string NewGame::getStringRu()
+	std::string Menus_NewGame::getStringRu()
 	{
 		return "Новая игра";
 	}
 
-	std::string NewGame::getStringSv()
+	std::string Menus_NewGame::getStringSv()
 	{
 		return "Nytt spel";
 	}
 
-	std::string NewGame::getStringTh()
+	std::string Menus_NewGame::getStringTh()
 	{
 		return "เกมส์ใหม่";
 	}
 
-	std::string NewGame::getStringTr()
+	std::string Menus_NewGame::getStringTr()
 	{
 		return "Yeni oyun";
 	}
 
-	std::string NewGame::getStringUk()
+	std::string Menus_NewGame::getStringUk()
 	{
 		return "Нова гра";
 	}
 
-	std::string NewGame::getStringVi()
+	std::string Menus_NewGame::getStringVi()
 	{
 		return "Trò chơi mới";
 	}
 
-	std::string NewGame::getStringZhCn()
+	std::string Menus_NewGame::getStringZhCn()
 	{
 		return "新游戏";
 	}
 
-	std::string NewGame::getStringZhTw()
+	std::string Menus_NewGame::getStringZhTw()
 	{
 		return "新遊戲";
 	}

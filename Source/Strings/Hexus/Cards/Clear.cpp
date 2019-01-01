@@ -4,171 +4,171 @@
 
 #include "Clear.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Clear* Clear::create()
+	Hexus_Cards_Clear* Hexus_Cards_Clear::create()
 	{
-		Clear* instance = new Clear();
+		Hexus_Cards_Clear* instance = new Hexus_Cards_Clear();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Clear::clone()
+	LocalizedString* Hexus_Cards_Clear::clone()
 	{
-		return Clear::create();
+		return Hexus_Cards_Clear::create();
 	}
 
-	Clear::Clear() : LocalizedString()
-	{
-	}
-
-	Clear::~Clear()
+	Hexus_Cards_Clear::Hexus_Cards_Clear() : LocalizedString()
 	{
 	}
 
-	std::string Clear::getStringAr()
+	Hexus_Cards_Clear::~Hexus_Cards_Clear()
+	{
+	}
+
+	std::string Hexus_Cards_Clear::getStringAr()
 	{
 		return "واضح";
 	}
 
-	std::string Clear::getStringBg()
+	std::string Hexus_Cards_Clear::getStringBg()
 	{
 		return "ясно";
 	}
 
-	std::string Clear::getStringCs()
+	std::string Hexus_Cards_Clear::getStringCs()
 	{
 		return "Průhledná";
 	}
 
-	std::string Clear::getStringDa()
+	std::string Hexus_Cards_Clear::getStringDa()
 	{
 		return "Klar";
 	}
 
-	std::string Clear::getStringDe()
+	std::string Hexus_Cards_Clear::getStringDe()
 	{
 		return "klar";
 	}
 
-	std::string Clear::getStringEl()
+	std::string Hexus_Cards_Clear::getStringEl()
 	{
 		return "Σαφή";
 	}
 
-	std::string Clear::getStringEn()
+	std::string Hexus_Cards_Clear::getStringEn()
 	{
 		return "Clear";
 	}
 
-	std::string Clear::getStringEs()
+	std::string Hexus_Cards_Clear::getStringEs()
 	{
 		return "Claro";
 	}
 
-	std::string Clear::getStringEs419()
+	std::string Hexus_Cards_Clear::getStringEs419()
 	{
 		return "Claro";
 	}
 
-	std::string Clear::getStringFi()
+	std::string Hexus_Cards_Clear::getStringFi()
 	{
 		return "Asia selvä";
 	}
 
-	std::string Clear::getStringFr()
+	std::string Hexus_Cards_Clear::getStringFr()
 	{
 		return "Clair";
 	}
 
-	std::string Clear::getStringHu()
+	std::string Hexus_Cards_Clear::getStringHu()
 	{
 		return "Egyértelmű";
 	}
 
-	std::string Clear::getStringIt()
+	std::string Hexus_Cards_Clear::getStringIt()
 	{
 		return "Chiaro";
 	}
 
-	std::string Clear::getStringJa()
+	std::string Hexus_Cards_Clear::getStringJa()
 	{
 		return "クリア";
 	}
 
-	std::string Clear::getStringKo()
+	std::string Hexus_Cards_Clear::getStringKo()
 	{
 		return "명확한";
 	}
 
-	std::string Clear::getStringNl()
+	std::string Hexus_Cards_Clear::getStringNl()
 	{
 		return "Duidelijk";
 	}
 
-	std::string Clear::getStringNo()
+	std::string Hexus_Cards_Clear::getStringNo()
 	{
 		return "Klar";
 	}
 
-	std::string Clear::getStringPl()
+	std::string Hexus_Cards_Clear::getStringPl()
 	{
 		return "Jasny";
 	}
 
-	std::string Clear::getStringPt()
+	std::string Hexus_Cards_Clear::getStringPt()
 	{
 		return "Claro";
 	}
 
-	std::string Clear::getStringPtBr()
+	std::string Hexus_Cards_Clear::getStringPtBr()
 	{
 		return "Claro";
 	}
 
-	std::string Clear::getStringRo()
+	std::string Hexus_Cards_Clear::getStringRo()
 	{
 		return "clar";
 	}
 
-	std::string Clear::getStringRu()
+	std::string Hexus_Cards_Clear::getStringRu()
 	{
 		return "Очистить";
 	}
 
-	std::string Clear::getStringSv()
+	std::string Hexus_Cards_Clear::getStringSv()
 	{
 		return "Klar";
 	}
 
-	std::string Clear::getStringTh()
+	std::string Hexus_Cards_Clear::getStringTh()
 	{
 		return "ชัดเจน";
 	}
 
-	std::string Clear::getStringTr()
+	std::string Hexus_Cards_Clear::getStringTr()
 	{
 		return "Açık";
 	}
 
-	std::string Clear::getStringUk()
+	std::string Hexus_Cards_Clear::getStringUk()
 	{
 		return "Очистити";
 	}
 
-	std::string Clear::getStringVi()
+	std::string Hexus_Cards_Clear::getStringVi()
 	{
 		return "Thông thoáng";
 	}
 
-	std::string Clear::getStringZhCn()
+	std::string Hexus_Cards_Clear::getStringZhCn()
 	{
 		return "明确";
 	}
 
-	std::string Clear::getStringZhTw()
+	std::string Hexus_Cards_Clear::getStringZhTw()
 	{
 		return "明確";
 	}

@@ -4,171 +4,171 @@
 
 #include "Hex9.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex9* Hex9::create()
+	Hexus_Cards_Hex9* Hexus_Cards_Hex9::create()
 	{
-		Hex9* instance = new Hex9();
+		Hexus_Cards_Hex9* instance = new Hexus_Cards_Hex9();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex9::clone()
+	LocalizedString* Hexus_Cards_Hex9::clone()
 	{
-		return Hex9::create();
+		return Hexus_Cards_Hex9::create();
 	}
 
-	Hex9::Hex9() : LocalizedString()
-	{
-	}
-
-	Hex9::~Hex9()
+	Hexus_Cards_Hex9::Hexus_Cards_Hex9() : LocalizedString()
 	{
 	}
 
-	std::string Hex9::getStringAr()
+	Hexus_Cards_Hex9::~Hexus_Cards_Hex9()
+	{
+	}
+
+	std::string Hexus_Cards_Hex9::getStringAr()
 	{
 		return "العدار";
 	}
 
-	std::string Hex9::getStringBg()
+	std::string Hexus_Cards_Hex9::getStringBg()
 	{
 		return "хидра";
 	}
 
-	std::string Hex9::getStringCs()
+	std::string Hexus_Cards_Hex9::getStringCs()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringDa()
+	std::string Hexus_Cards_Hex9::getStringDa()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringDe()
+	std::string Hexus_Cards_Hex9::getStringDe()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringEl()
+	std::string Hexus_Cards_Hex9::getStringEl()
 	{
 		return "Ύδρα";
 	}
 
-	std::string Hex9::getStringEn()
+	std::string Hexus_Cards_Hex9::getStringEn()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringEs()
+	std::string Hexus_Cards_Hex9::getStringEs()
 	{
 		return "Hidra";
 	}
 
-	std::string Hex9::getStringEs419()
+	std::string Hexus_Cards_Hex9::getStringEs419()
 	{
 		return "Hidra";
 	}
 
-	std::string Hex9::getStringFi()
+	std::string Hexus_Cards_Hex9::getStringFi()
 	{
 		return "tursas";
 	}
 
-	std::string Hex9::getStringFr()
+	std::string Hexus_Cards_Hex9::getStringFr()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringHu()
+	std::string Hexus_Cards_Hex9::getStringHu()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringIt()
+	std::string Hexus_Cards_Hex9::getStringIt()
 	{
 		return "Idra";
 	}
 
-	std::string Hex9::getStringJa()
+	std::string Hexus_Cards_Hex9::getStringJa()
 	{
 		return "ヒドラ";
 	}
 
-	std::string Hex9::getStringKo()
+	std::string Hexus_Cards_Hex9::getStringKo()
 	{
 		return "히드라";
 	}
 
-	std::string Hex9::getStringNl()
+	std::string Hexus_Cards_Hex9::getStringNl()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringNo()
+	std::string Hexus_Cards_Hex9::getStringNo()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringPl()
+	std::string Hexus_Cards_Hex9::getStringPl()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringPt()
+	std::string Hexus_Cards_Hex9::getStringPt()
 	{
 		return "Hidra";
 	}
 
-	std::string Hex9::getStringPtBr()
+	std::string Hexus_Cards_Hex9::getStringPtBr()
 	{
 		return "Hidra";
 	}
 
-	std::string Hex9::getStringRo()
+	std::string Hexus_Cards_Hex9::getStringRo()
 	{
 		return "hidră";
 	}
 
-	std::string Hex9::getStringRu()
+	std::string Hexus_Cards_Hex9::getStringRu()
 	{
 		return "гидра";
 	}
 
-	std::string Hex9::getStringSv()
+	std::string Hexus_Cards_Hex9::getStringSv()
 	{
 		return "hydra";
 	}
 
-	std::string Hex9::getStringTh()
+	std::string Hexus_Cards_Hex9::getStringTh()
 	{
 		return "ไฮดรา";
 	}
 
-	std::string Hex9::getStringTr()
+	std::string Hexus_Cards_Hex9::getStringTr()
 	{
 		return "hidra";
 	}
 
-	std::string Hex9::getStringUk()
+	std::string Hexus_Cards_Hex9::getStringUk()
 	{
 		return "Гідра";
 	}
 
-	std::string Hex9::getStringVi()
+	std::string Hexus_Cards_Hex9::getStringVi()
 	{
 		return "Hydra";
 	}
 
-	std::string Hex9::getStringZhCn()
+	std::string Hexus_Cards_Hex9::getStringZhCn()
 	{
 		return "水润";
 	}
 
-	std::string Hex9::getStringZhTw()
+	std::string Hexus_Cards_Hex9::getStringZhTw()
 	{
 		return "水潤";
 	}

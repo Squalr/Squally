@@ -4,171 +4,171 @@
 
 #include "Binary6.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary6* Binary6::create()
+	Hexus_Cards_Binary6* Hexus_Cards_Binary6::create()
 	{
-		Binary6* instance = new Binary6();
+		Hexus_Cards_Binary6* instance = new Hexus_Cards_Binary6();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary6::clone()
+	LocalizedString* Hexus_Cards_Binary6::clone()
 	{
-		return Binary6::create();
+		return Hexus_Cards_Binary6::create();
 	}
 
-	Binary6::Binary6() : LocalizedString()
-	{
-	}
-
-	Binary6::~Binary6()
+	Hexus_Cards_Binary6::Hexus_Cards_Binary6() : LocalizedString()
 	{
 	}
 
-	std::string Binary6::getStringAr()
+	Hexus_Cards_Binary6::~Hexus_Cards_Binary6()
+	{
+	}
+
+	std::string Hexus_Cards_Binary6::getStringAr()
 	{
 		return "إنسان آلي";
 	}
 
-	std::string Binary6::getStringBg()
+	std::string Hexus_Cards_Binary6::getStringBg()
 	{
 		return "робот";
 	}
 
-	std::string Binary6::getStringCs()
+	std::string Hexus_Cards_Binary6::getStringCs()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringDa()
+	std::string Hexus_Cards_Binary6::getStringDa()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringDe()
+	std::string Hexus_Cards_Binary6::getStringDe()
 	{
 		return "Roboter";
 	}
 
-	std::string Binary6::getStringEl()
+	std::string Hexus_Cards_Binary6::getStringEl()
 	{
 		return "ρομπότ";
 	}
 
-	std::string Binary6::getStringEn()
+	std::string Hexus_Cards_Binary6::getStringEn()
 	{
 		return "M-Bot";
 	}
 
-	std::string Binary6::getStringEs()
+	std::string Hexus_Cards_Binary6::getStringEs()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringEs419()
+	std::string Hexus_Cards_Binary6::getStringEs419()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringFi()
+	std::string Hexus_Cards_Binary6::getStringFi()
 	{
 		return "robotti";
 	}
 
-	std::string Binary6::getStringFr()
+	std::string Hexus_Cards_Binary6::getStringFr()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringHu()
+	std::string Hexus_Cards_Binary6::getStringHu()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringIt()
+	std::string Hexus_Cards_Binary6::getStringIt()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringJa()
+	std::string Hexus_Cards_Binary6::getStringJa()
 	{
 		return "ロボット";
 	}
 
-	std::string Binary6::getStringKo()
+	std::string Hexus_Cards_Binary6::getStringKo()
 	{
 		return "기계 인간";
 	}
 
-	std::string Binary6::getStringNl()
+	std::string Hexus_Cards_Binary6::getStringNl()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringNo()
+	std::string Hexus_Cards_Binary6::getStringNo()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringPl()
+	std::string Hexus_Cards_Binary6::getStringPl()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringPt()
+	std::string Hexus_Cards_Binary6::getStringPt()
 	{
 		return "robô";
 	}
 
-	std::string Binary6::getStringPtBr()
+	std::string Hexus_Cards_Binary6::getStringPtBr()
 	{
 		return "robô";
 	}
 
-	std::string Binary6::getStringRo()
+	std::string Hexus_Cards_Binary6::getStringRo()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringRu()
+	std::string Hexus_Cards_Binary6::getStringRu()
 	{
 		return "робот";
 	}
 
-	std::string Binary6::getStringSv()
+	std::string Hexus_Cards_Binary6::getStringSv()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringTh()
+	std::string Hexus_Cards_Binary6::getStringTh()
 	{
 		return "หุ่นยนต์";
 	}
 
-	std::string Binary6::getStringTr()
+	std::string Hexus_Cards_Binary6::getStringTr()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringUk()
+	std::string Hexus_Cards_Binary6::getStringUk()
 	{
 		return "робот";
 	}
 
-	std::string Binary6::getStringVi()
+	std::string Hexus_Cards_Binary6::getStringVi()
 	{
 		return "robot";
 	}
 
-	std::string Binary6::getStringZhCn()
+	std::string Hexus_Cards_Binary6::getStringZhCn()
 	{
 		return "机器人";
 	}
 
-	std::string Binary6::getStringZhTw()
+	std::string Hexus_Cards_Binary6::getStringZhTw()
 	{
 		return "機器人";
 	}

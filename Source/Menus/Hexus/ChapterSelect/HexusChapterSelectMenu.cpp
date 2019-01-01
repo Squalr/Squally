@@ -8,7 +8,6 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
@@ -24,7 +23,6 @@
 #include "Menus/Hexus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
 #include "Menus/Hexus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
 
-#include "Resources/MusicResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Back.h"
@@ -63,10 +61,10 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->hexusChapterPreviewVolcano = HexusChapterPreviewVolcano::create();
 	this->hexusChapterPreviewObelisk = HexusChapterPreviewObelisk::create();
 	this->hexusChapterPreviewMech = HexusChapterPreviewMech::create();
-	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::SelectAChapter::create());
+	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_SelectAChapter::create());
 
-	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
-	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -78,8 +76,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ManageCards::create());
-	LocalizedLabel* manageDeckLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ManageCards::create());
+	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ManageCards::create());
+	LocalizedLabel* manageDeckLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ManageCards::create());
 	
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -91,8 +89,8 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	LocalizedLabel* shopLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Shop::create());
-	LocalizedLabel* shopLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Shop::create());
+	LocalizedLabel* shopLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Shop::create());
+	LocalizedLabel* shopLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Shop::create());
 
 	shopLabel->enableOutline(Color4B::BLACK, 2);
 	shopLabelHover->enableOutline(Color4B::BLACK, 2);

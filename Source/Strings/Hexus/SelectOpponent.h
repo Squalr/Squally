@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class SelectOpponent : public LocalizedString
+	class Hexus_SelectOpponent : public LocalizedString
 	{
 	public:
-		static SelectOpponent* create();
+		static Hexus_SelectOpponent* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		SelectOpponent();
-		~SelectOpponent();
+		Hexus_SelectOpponent();
+		~Hexus_SelectOpponent();
 	};
 }

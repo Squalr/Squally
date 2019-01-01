@@ -50,6 +50,7 @@ public:
 		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
+	void setStringReplacementVariables(std::vector<std::string> stringReplacementVariables);
 	float getFontSize();
 	std::string getFont();
 	void runTypeWriterEffect(float speed = LocalizedLabel::DefaultTypeSpeed);
@@ -66,9 +67,12 @@ private:
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	~LocalizedLabel();
 
-	void onLocaleChange(LocalizedString* localizedString);
-	void onEnter() override;
+	// Hide methods that we do not want available
+	using super::setString;
 
+	void onEnter() override;
+	void updateText();
+	void onLocaleChange(LocalizedString* localizedString);
 	static float getFontSizeM1(std::string fontResource);
 	static float getFontSizeM2(std::string fontResource);
 	static float getFontSizeM3(std::string fontResource);
@@ -86,6 +90,7 @@ private:
 	FontStyle fontStyle;
 	FontSize fontSize;
 	std::function<void()> typeWriterFinishedCallback;
+	std::vector<std::string> stringReplacementVariables;
 
 	static const std::string ScheduleKeyTypeWriterEffect;
 	static const float DefaultTypeSpeed;

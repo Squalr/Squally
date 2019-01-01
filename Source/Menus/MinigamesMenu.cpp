@@ -54,8 +54,8 @@ MinigamesMenu::MinigamesMenu()
 	this->backgroundNode = Node::create();
 	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
 
-	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
-	LocalizedLabel*	backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
+	LocalizedLabel*	backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -67,8 +67,8 @@ MinigamesMenu::MinigamesMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	LocalizedLabel*	hexusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Hexus::create());
-	LocalizedLabel*	hexusLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Hexus::create());
+	LocalizedLabel*	hexusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Hexus::create());
+	LocalizedLabel*	hexusLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Hexus::create());
 
 	hexusLabel->setColor(textColor);
 	hexusLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -94,8 +94,8 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusButton->addChild(hexusIcon);
 	this->hexusButton->setClickSound(SoundResources::Menus_Simple_Button);
 
-	LocalizedLabel*	hexusPuzzlesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::HexusPuzzles::create());
-	LocalizedLabel*	hexusPuzzlesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::HexusPuzzles::create());
+	LocalizedLabel*	hexusPuzzlesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_HexusPuzzles::create());
+	LocalizedLabel*	hexusPuzzlesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_HexusPuzzles::create());
 
 	hexusPuzzlesLabel->setColor(textColor);
 	hexusPuzzlesLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -250,8 +250,8 @@ TextMenuSprite* MinigamesMenu::createComingSoonButton()
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
-	LocalizedLabel*	comingSoonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ComingSoon::create());
-	LocalizedLabel*	comingSoonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ComingSoon::create());
+	LocalizedLabel*	comingSoonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_ComingSoon::create());
+	LocalizedLabel*	comingSoonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_ComingSoon::create());
 
 	comingSoonLabel->setColor(textColor);
 	comingSoonLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

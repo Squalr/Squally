@@ -38,7 +38,7 @@ RemainingCardDisplay::RemainingCardDisplay()
 	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::CardsToPlayToolTip::create());
+	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::CardsToPlayToolTip::create());
 
 	this->remainingCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 

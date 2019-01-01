@@ -22,7 +22,7 @@ HexusChapterPreviewVolcano* HexusChapterPreviewVolcano::create()
 	return instance;
 }
 
-HexusChapterPreviewVolcano::HexusChapterPreviewVolcano() : HexusChapterPreview(HexusChapterPreviewVolcano::SaveKeyChapterName, LocaleStrings::DaemonsHallow::create())
+HexusChapterPreviewVolcano::HexusChapterPreviewVolcano() : HexusChapterPreview(HexusChapterPreviewVolcano::SaveKeyChapterName, Strings::Menus_Maps_DaemonsHallow::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano));
 }

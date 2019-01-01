@@ -4,171 +4,171 @@
 
 #include "CastleValgrind.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	CastleValgrind* CastleValgrind::create()
+	Menus_Maps_CastleValgrind* Menus_Maps_CastleValgrind::create()
 	{
-		CastleValgrind* instance = new CastleValgrind();
+		Menus_Maps_CastleValgrind* instance = new Menus_Maps_CastleValgrind();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* CastleValgrind::clone()
+	LocalizedString* Menus_Maps_CastleValgrind::clone()
 	{
-		return CastleValgrind::create();
+		return Menus_Maps_CastleValgrind::create();
 	}
 
-	CastleValgrind::CastleValgrind() : LocalizedString()
-	{
-	}
-
-	CastleValgrind::~CastleValgrind()
+	Menus_Maps_CastleValgrind::Menus_Maps_CastleValgrind() : LocalizedString()
 	{
 	}
 
-	std::string CastleValgrind::getStringAr()
+	Menus_Maps_CastleValgrind::~Menus_Maps_CastleValgrind()
+	{
+	}
+
+	std::string Menus_Maps_CastleValgrind::getStringAr()
 	{
 		return "قلعة";
 	}
 
-	std::string CastleValgrind::getStringBg()
+	std::string Menus_Maps_CastleValgrind::getStringBg()
 	{
 		return "Замъкът Валгринд";
 	}
 
-	std::string CastleValgrind::getStringCs()
+	std::string Menus_Maps_CastleValgrind::getStringCs()
 	{
 		return "Zámek Valgrind";
 	}
 
-	std::string CastleValgrind::getStringDa()
+	std::string Menus_Maps_CastleValgrind::getStringDa()
 	{
 		return "Slot Valgrind";
 	}
 
-	std::string CastleValgrind::getStringDe()
+	std::string Menus_Maps_CastleValgrind::getStringDe()
 	{
 		return "Schloss Valgrind";
 	}
 
-	std::string CastleValgrind::getStringEl()
+	std::string Menus_Maps_CastleValgrind::getStringEl()
 	{
 		return "Κάστρο Valgrind";
 	}
 
-	std::string CastleValgrind::getStringEn()
+	std::string Menus_Maps_CastleValgrind::getStringEn()
 	{
 		return "Castle Valgrind";
 	}
 
-	std::string CastleValgrind::getStringEs()
+	std::string Menus_Maps_CastleValgrind::getStringEs()
 	{
 		return "Castillo de valgrind";
 	}
 
-	std::string CastleValgrind::getStringEs419()
+	std::string Menus_Maps_CastleValgrind::getStringEs419()
 	{
 		return "Castillo de valgrind";
 	}
 
-	std::string CastleValgrind::getStringFi()
+	std::string Menus_Maps_CastleValgrind::getStringFi()
 	{
 		return "Valgrindin linna";
 	}
 
-	std::string CastleValgrind::getStringFr()
+	std::string Menus_Maps_CastleValgrind::getStringFr()
 	{
 		return "Château Valgrind";
 	}
 
-	std::string CastleValgrind::getStringHu()
+	std::string Menus_Maps_CastleValgrind::getStringHu()
 	{
 		return "Valgrind vár";
 	}
 
-	std::string CastleValgrind::getStringIt()
+	std::string Menus_Maps_CastleValgrind::getStringIt()
 	{
 		return "Castello Valgrind";
 	}
 
-	std::string CastleValgrind::getStringJa()
+	std::string Menus_Maps_CastleValgrind::getStringJa()
 	{
 		return "キャッスルバルグリンド";
 	}
 
-	std::string CastleValgrind::getStringKo()
+	std::string Menus_Maps_CastleValgrind::getStringKo()
 	{
 		return "캐슬 밸 글린 드";
 	}
 
-	std::string CastleValgrind::getStringNl()
+	std::string Menus_Maps_CastleValgrind::getStringNl()
 	{
 		return "Kasteel Valgrind";
 	}
 
-	std::string CastleValgrind::getStringNo()
+	std::string Menus_Maps_CastleValgrind::getStringNo()
 	{
 		return "Slott Valgrind";
 	}
 
-	std::string CastleValgrind::getStringPl()
+	std::string Menus_Maps_CastleValgrind::getStringPl()
 	{
 		return "Zamek Valgrind";
 	}
 
-	std::string CastleValgrind::getStringPt()
+	std::string Menus_Maps_CastleValgrind::getStringPt()
 	{
 		return "Castelo Valgrind";
 	}
 
-	std::string CastleValgrind::getStringPtBr()
+	std::string Menus_Maps_CastleValgrind::getStringPtBr()
 	{
 		return "Castelo Valgrind";
 	}
 
-	std::string CastleValgrind::getStringRo()
+	std::string Menus_Maps_CastleValgrind::getStringRo()
 	{
 		return "Castelul Valgrind";
 	}
 
-	std::string CastleValgrind::getStringRu()
+	std::string Menus_Maps_CastleValgrind::getStringRu()
 	{
 		return "Замок Валгринд";
 	}
 
-	std::string CastleValgrind::getStringSv()
+	std::string Menus_Maps_CastleValgrind::getStringSv()
 	{
 		return "Slott Valgrind";
 	}
 
-	std::string CastleValgrind::getStringTh()
+	std::string Menus_Maps_CastleValgrind::getStringTh()
 	{
 		return "ปราสาท";
 	}
 
-	std::string CastleValgrind::getStringTr()
+	std::string Menus_Maps_CastleValgrind::getStringTr()
 	{
 		return "Valgrind Kalesi";
 	}
 
-	std::string CastleValgrind::getStringUk()
+	std::string Menus_Maps_CastleValgrind::getStringUk()
 	{
 		return "Замок Вальгрінд";
 	}
 
-	std::string CastleValgrind::getStringVi()
+	std::string Menus_Maps_CastleValgrind::getStringVi()
 	{
 		return "Lâu đài Valgrind";
 	}
 
-	std::string CastleValgrind::getStringZhCn()
+	std::string Menus_Maps_CastleValgrind::getStringZhCn()
 	{
 		return "城堡Valgrind";
 	}
 
-	std::string CastleValgrind::getStringZhTw()
+	std::string Menus_Maps_CastleValgrind::getStringZhTw()
 	{
 		return "城堡Valgrind";
 	}

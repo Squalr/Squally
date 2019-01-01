@@ -6,7 +6,7 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
 	class Empty : public LocalizedString
 	{

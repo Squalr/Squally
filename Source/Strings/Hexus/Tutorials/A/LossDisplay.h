@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class LossDisplay : public LocalizedString
+	class Hexus_Tutorials_A_LossDisplay : public LocalizedString
 	{
 	public:
-		static LossDisplay* create();
+		static Hexus_Tutorials_A_LossDisplay* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		LossDisplay();
-		~LossDisplay();
+		Hexus_Tutorials_A_LossDisplay();
+		~Hexus_Tutorials_A_LossDisplay();
 	};
 }

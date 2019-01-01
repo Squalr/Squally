@@ -54,8 +54,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->backgroundNode = Node::create();
 
-	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
-	LocalizedLabel*	backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
+	LocalizedLabel*	backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -68,8 +68,8 @@ SaveSelectMenu::SaveSelectMenu()
 	);
 
 
-	LocalizedLabel*	saveGame1Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::ContinueGame::create());
-	LocalizedLabel*	saveGame1LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::ContinueGame::create());
+	LocalizedLabel*	saveGame1Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ContinueGame::create());
+	LocalizedLabel*	saveGame1LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ContinueGame::create());
 
 	saveGame1Label->setColor(textColor);
 	saveGame1Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -94,8 +94,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame1->addChild(saveGame1Icon);
 
-	LocalizedLabel*	saveGame2Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
-	LocalizedLabel*	saveGame2LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
+	LocalizedLabel*	saveGame2Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_NewGame::create());
+	LocalizedLabel*	saveGame2LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_NewGame::create());
 	
 	saveGame2Label->setColor(textColor);
 	saveGame2Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -120,8 +120,8 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->saveGame2->addChild(saveGame2Icon);
 
-	LocalizedLabel*	saveGame3Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
-	LocalizedLabel*	saveGame3LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::NewGame::create());
+	LocalizedLabel*	saveGame3Label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_NewGame::create());
+	LocalizedLabel*	saveGame3LabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_NewGame::create());
 
 	saveGame3Label->setColor(textColor);
 	saveGame3Label->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -247,4 +247,3 @@ void SaveSelectMenu::onBackClick(MenuSprite* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }
-

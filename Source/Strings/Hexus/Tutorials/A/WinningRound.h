@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class WinningRound : public LocalizedString
+	class Hexus_Tutorials_A_WinningRound : public LocalizedString
 	{
 	public:
-		static WinningRound* create();
+		static Hexus_Tutorials_A_WinningRound* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		WinningRound();
-		~WinningRound();
+		Hexus_Tutorials_A_WinningRound();
+		~Hexus_Tutorials_A_WinningRound();
 	};
 }

@@ -4,171 +4,171 @@
 
 #include "LogicalXor.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	LogicalXor* LogicalXor::create()
+	Hexus_Cards_LogicalXor* Hexus_Cards_LogicalXor::create()
 	{
-		LogicalXor* instance = new LogicalXor();
+		Hexus_Cards_LogicalXor* instance = new Hexus_Cards_LogicalXor();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* LogicalXor::clone()
+	LocalizedString* Hexus_Cards_LogicalXor::clone()
 	{
-		return LogicalXor::create();
+		return Hexus_Cards_LogicalXor::create();
 	}
 
-	LogicalXor::LogicalXor() : LocalizedString()
-	{
-	}
-
-	LogicalXor::~LogicalXor()
+	Hexus_Cards_LogicalXor::Hexus_Cards_LogicalXor() : LocalizedString()
 	{
 	}
 
-	std::string LogicalXor::getStringAr()
+	Hexus_Cards_LogicalXor::~Hexus_Cards_LogicalXor()
+	{
+	}
+
+	std::string Hexus_Cards_LogicalXor::getStringAr()
 	{
 		return "منطقية XOR";
 	}
 
-	std::string LogicalXor::getStringBg()
+	std::string Hexus_Cards_LogicalXor::getStringBg()
 	{
 		return "Логически XOR";
 	}
 
-	std::string LogicalXor::getStringCs()
+	std::string Hexus_Cards_LogicalXor::getStringCs()
 	{
 		return "Logické XOR";
 	}
 
-	std::string LogicalXor::getStringDa()
+	std::string Hexus_Cards_LogicalXor::getStringDa()
 	{
 		return "Logisk XOR";
 	}
 
-	std::string LogicalXor::getStringDe()
+	std::string Hexus_Cards_LogicalXor::getStringDe()
 	{
 		return "Logisches XOR";
 	}
 
-	std::string LogicalXor::getStringEl()
+	std::string Hexus_Cards_LogicalXor::getStringEl()
 	{
 		return "Λογική XOR";
 	}
 
-	std::string LogicalXor::getStringEn()
+	std::string Hexus_Cards_LogicalXor::getStringEn()
 	{
 		return "Logical XOR";
 	}
 
-	std::string LogicalXor::getStringEs()
+	std::string Hexus_Cards_LogicalXor::getStringEs()
 	{
 		return "XOR lógico";
 	}
 
-	std::string LogicalXor::getStringEs419()
+	std::string Hexus_Cards_LogicalXor::getStringEs419()
 	{
 		return "XOR lógico";
 	}
 
-	std::string LogicalXor::getStringFi()
+	std::string Hexus_Cards_LogicalXor::getStringFi()
 	{
 		return "Looginen XOR";
 	}
 
-	std::string LogicalXor::getStringFr()
+	std::string Hexus_Cards_LogicalXor::getStringFr()
 	{
 		return "XOR logique";
 	}
 
-	std::string LogicalXor::getStringHu()
+	std::string Hexus_Cards_LogicalXor::getStringHu()
 	{
 		return "Logikai XOR";
 	}
 
-	std::string LogicalXor::getStringIt()
+	std::string Hexus_Cards_LogicalXor::getStringIt()
 	{
 		return "XOR logico";
 	}
 
-	std::string LogicalXor::getStringJa()
+	std::string Hexus_Cards_LogicalXor::getStringJa()
 	{
 		return "論理XOR";
 	}
 
-	std::string LogicalXor::getStringKo()
+	std::string Hexus_Cards_LogicalXor::getStringKo()
 	{
 		return "논리 XOR";
 	}
 
-	std::string LogicalXor::getStringNl()
+	std::string Hexus_Cards_LogicalXor::getStringNl()
 	{
 		return "Logische XOR";
 	}
 
-	std::string LogicalXor::getStringNo()
+	std::string Hexus_Cards_LogicalXor::getStringNo()
 	{
 		return "Logisk XOR";
 	}
 
-	std::string LogicalXor::getStringPl()
+	std::string Hexus_Cards_LogicalXor::getStringPl()
 	{
 		return "Logiczny XOR";
 	}
 
-	std::string LogicalXor::getStringPt()
+	std::string Hexus_Cards_LogicalXor::getStringPt()
 	{
 		return "XOR lógico";
 	}
 
-	std::string LogicalXor::getStringPtBr()
+	std::string Hexus_Cards_LogicalXor::getStringPtBr()
 	{
 		return "XOR lógico";
 	}
 
-	std::string LogicalXor::getStringRo()
+	std::string Hexus_Cards_LogicalXor::getStringRo()
 	{
 		return "Logic XOR";
 	}
 
-	std::string LogicalXor::getStringRu()
+	std::string Hexus_Cards_LogicalXor::getStringRu()
 	{
 		return "Логический XOR";
 	}
 
-	std::string LogicalXor::getStringSv()
+	std::string Hexus_Cards_LogicalXor::getStringSv()
 	{
 		return "Logisk XOR";
 	}
 
-	std::string LogicalXor::getStringTh()
+	std::string Hexus_Cards_LogicalXor::getStringTh()
 	{
 		return "ตรรกะ XOR";
 	}
 
-	std::string LogicalXor::getStringTr()
+	std::string Hexus_Cards_LogicalXor::getStringTr()
 	{
 		return "Mantıksal XOR";
 	}
 
-	std::string LogicalXor::getStringUk()
+	std::string Hexus_Cards_LogicalXor::getStringUk()
 	{
 		return "Логічний XOR";
 	}
 
-	std::string LogicalXor::getStringVi()
+	std::string Hexus_Cards_LogicalXor::getStringVi()
 	{
 		return "XOR logic";
 	}
 
-	std::string LogicalXor::getStringZhCn()
+	std::string Hexus_Cards_LogicalXor::getStringZhCn()
 	{
 		return "逻辑异或";
 	}
 
-	std::string LogicalXor::getStringZhTw()
+	std::string Hexus_Cards_LogicalXor::getStringZhTw()
 	{
 		return "邏輯異或";
 	}

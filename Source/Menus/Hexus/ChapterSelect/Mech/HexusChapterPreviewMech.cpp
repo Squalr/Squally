@@ -22,7 +22,7 @@ HexusChapterPreviewMech* HexusChapterPreviewMech::create()
 	return instance;
 }
 
-HexusChapterPreviewMech::HexusChapterPreviewMech() : HexusChapterPreview(HexusChapterPreviewMech::SaveKeyChapterName, LocaleStrings::VoidStar::create())
+HexusChapterPreviewMech::HexusChapterPreviewMech() : HexusChapterPreview(HexusChapterPreviewMech::SaveKeyChapterName, Strings::Menus_Maps_VoidStar::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameMech));
 }

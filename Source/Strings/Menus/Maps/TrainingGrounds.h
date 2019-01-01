@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class TrainingGrounds : public LocalizedString
+	class Menus_Maps_TrainingGrounds : public LocalizedString
 	{
 	public:
-		static TrainingGrounds* create();
+		static Menus_Maps_TrainingGrounds* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		TrainingGrounds();
-		~TrainingGrounds();
+		Menus_Maps_TrainingGrounds();
+		~Menus_Maps_TrainingGrounds();
 	};
 }

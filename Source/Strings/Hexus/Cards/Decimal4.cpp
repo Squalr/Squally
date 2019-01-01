@@ -4,171 +4,171 @@
 
 #include "Decimal4.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal4* Decimal4::create()
+	Hexus_Cards_Decimal4* Hexus_Cards_Decimal4::create()
 	{
-		Decimal4* instance = new Decimal4();
+		Hexus_Cards_Decimal4* instance = new Hexus_Cards_Decimal4();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal4::clone()
+	LocalizedString* Hexus_Cards_Decimal4::clone()
 	{
-		return Decimal4::create();
+		return Hexus_Cards_Decimal4::create();
 	}
 
-	Decimal4::Decimal4() : LocalizedString()
-	{
-	}
-
-	Decimal4::~Decimal4()
+	Hexus_Cards_Decimal4::Hexus_Cards_Decimal4() : LocalizedString()
 	{
 	}
 
-	std::string Decimal4::getStringAr()
+	Hexus_Cards_Decimal4::~Hexus_Cards_Decimal4()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal4::getStringAr()
 	{
 		return "ايدن";
 	}
 
-	std::string Decimal4::getStringBg()
+	std::string Hexus_Cards_Decimal4::getStringBg()
 	{
 		return "рай";
 	}
 
-	std::string Decimal4::getStringCs()
+	std::string Hexus_Cards_Decimal4::getStringCs()
 	{
 		return "ráj";
 	}
 
-	std::string Decimal4::getStringDa()
+	std::string Hexus_Cards_Decimal4::getStringDa()
 	{
 		return "iden";
 	}
 
-	std::string Decimal4::getStringDe()
+	std::string Hexus_Cards_Decimal4::getStringDe()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringEl()
+	std::string Hexus_Cards_Decimal4::getStringEl()
 	{
 		return "Εδέμ";
 	}
 
-	std::string Decimal4::getStringEn()
+	std::string Hexus_Cards_Decimal4::getStringEn()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringEs()
+	std::string Hexus_Cards_Decimal4::getStringEs()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringEs419()
+	std::string Hexus_Cards_Decimal4::getStringEs419()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringFi()
+	std::string Hexus_Cards_Decimal4::getStringFi()
 	{
 		return "iden";
 	}
 
-	std::string Decimal4::getStringFr()
+	std::string Hexus_Cards_Decimal4::getStringFr()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringHu()
+	std::string Hexus_Cards_Decimal4::getStringHu()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringIt()
+	std::string Hexus_Cards_Decimal4::getStringIt()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringJa()
+	std::string Hexus_Cards_Decimal4::getStringJa()
 	{
 		return "エデン";
 	}
 
-	std::string Decimal4::getStringKo()
+	std::string Hexus_Cards_Decimal4::getStringKo()
 	{
 		return "에덴 동산";
 	}
 
-	std::string Decimal4::getStringNl()
+	std::string Hexus_Cards_Decimal4::getStringNl()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringNo()
+	std::string Hexus_Cards_Decimal4::getStringNo()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringPl()
+	std::string Hexus_Cards_Decimal4::getStringPl()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringPt()
+	std::string Hexus_Cards_Decimal4::getStringPt()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringPtBr()
+	std::string Hexus_Cards_Decimal4::getStringPtBr()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringRo()
+	std::string Hexus_Cards_Decimal4::getStringRo()
 	{
 		return "iden";
 	}
 
-	std::string Decimal4::getStringRu()
+	std::string Hexus_Cards_Decimal4::getStringRu()
 	{
 		return "Иден";
 	}
 
-	std::string Decimal4::getStringSv()
+	std::string Hexus_Cards_Decimal4::getStringSv()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringTh()
+	std::string Hexus_Cards_Decimal4::getStringTh()
 	{
 		return "สุขาวดี";
 	}
 
-	std::string Decimal4::getStringTr()
+	std::string Hexus_Cards_Decimal4::getStringTr()
 	{
 		return "Eden";
 	}
 
-	std::string Decimal4::getStringUk()
+	std::string Hexus_Cards_Decimal4::getStringUk()
 	{
 		return "Едем";
 	}
 
-	std::string Decimal4::getStringVi()
+	std::string Hexus_Cards_Decimal4::getStringVi()
 	{
 		return "Iden";
 	}
 
-	std::string Decimal4::getStringZhCn()
+	std::string Hexus_Cards_Decimal4::getStringZhCn()
 	{
 		return "鉴定者";
 	}
 
-	std::string Decimal4::getStringZhTw()
+	std::string Hexus_Cards_Decimal4::getStringZhTw()
 	{
 		return "鑑定者";
 	}

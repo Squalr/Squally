@@ -4,171 +4,171 @@
 
 #include "ComingSoon.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	ComingSoon* ComingSoon::create()
+	Menus_ComingSoon* Menus_ComingSoon::create()
 	{
-		ComingSoon* instance = new ComingSoon();
+		Menus_ComingSoon* instance = new Menus_ComingSoon();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* ComingSoon::clone()
+	LocalizedString* Menus_ComingSoon::clone()
 	{
-		return ComingSoon::create();
+		return Menus_ComingSoon::create();
 	}
 
-	ComingSoon::ComingSoon() : LocalizedString()
-	{
-	}
-
-	ComingSoon::~ComingSoon()
+	Menus_ComingSoon::Menus_ComingSoon() : LocalizedString()
 	{
 	}
 
-	std::string ComingSoon::getStringAr()
+	Menus_ComingSoon::~Menus_ComingSoon()
+	{
+	}
+
+	std::string Menus_ComingSoon::getStringAr()
 	{
 		return "قريبا...";
 	}
 
-	std::string ComingSoon::getStringBg()
+	std::string Menus_ComingSoon::getStringBg()
 	{
 		return "Очаквайте скоро...";
 	}
 
-	std::string ComingSoon::getStringCs()
+	std::string Menus_ComingSoon::getStringCs()
 	{
 		return "Brzy...";
 	}
 
-	std::string ComingSoon::getStringDa()
+	std::string Menus_ComingSoon::getStringDa()
 	{
 		return "Kommer snart ...";
 	}
 
-	std::string ComingSoon::getStringDe()
+	std::string Menus_ComingSoon::getStringDe()
 	{
 		return "Demnächst...";
 	}
 
-	std::string ComingSoon::getStringEl()
+	std::string Menus_ComingSoon::getStringEl()
 	{
 		return "Ερχομαι συντομα...";
 	}
 
-	std::string ComingSoon::getStringEn()
+	std::string Menus_ComingSoon::getStringEn()
 	{
 		return "Coming soon...";
 	}
 
-	std::string ComingSoon::getStringEs()
+	std::string Menus_ComingSoon::getStringEs()
 	{
 		return "Próximamente...";
 	}
 
-	std::string ComingSoon::getStringEs419()
+	std::string Menus_ComingSoon::getStringEs419()
 	{
 		return "Próximamente...";
 	}
 
-	std::string ComingSoon::getStringFi()
+	std::string Menus_ComingSoon::getStringFi()
 	{
 		return "Tulossa pian...";
 	}
 
-	std::string ComingSoon::getStringFr()
+	std::string Menus_ComingSoon::getStringFr()
 	{
 		return "Arrive bientôt...";
 	}
 
-	std::string ComingSoon::getStringHu()
+	std::string Menus_ComingSoon::getStringHu()
 	{
 		return "Hamarosan...";
 	}
 
-	std::string ComingSoon::getStringIt()
+	std::string Menus_ComingSoon::getStringIt()
 	{
 		return "Prossimamente...";
 	}
 
-	std::string ComingSoon::getStringJa()
+	std::string Menus_ComingSoon::getStringJa()
 	{
 		return "近日公開...";
 	}
 
-	std::string ComingSoon::getStringKo()
+	std::string Menus_ComingSoon::getStringKo()
 	{
 		return "곧 나옵니다 ...";
 	}
 
-	std::string ComingSoon::getStringNl()
+	std::string Menus_ComingSoon::getStringNl()
 	{
 		return "Komt binnenkort...";
 	}
 
-	std::string ComingSoon::getStringNo()
+	std::string Menus_ComingSoon::getStringNo()
 	{
 		return "Kommer snart...";
 	}
 
-	std::string ComingSoon::getStringPl()
+	std::string Menus_ComingSoon::getStringPl()
 	{
 		return "Wkrótce...";
 	}
 
-	std::string ComingSoon::getStringPt()
+	std::string Menus_ComingSoon::getStringPt()
 	{
 		return "Em breve...";
 	}
 
-	std::string ComingSoon::getStringPtBr()
+	std::string Menus_ComingSoon::getStringPtBr()
 	{
 		return "Em breve...";
 	}
 
-	std::string ComingSoon::getStringRo()
+	std::string Menus_ComingSoon::getStringRo()
 	{
 		return "In curand...";
 	}
 
-	std::string ComingSoon::getStringRu()
+	std::string Menus_ComingSoon::getStringRu()
 	{
 		return "Скоро будет...";
 	}
 
-	std::string ComingSoon::getStringSv()
+	std::string Menus_ComingSoon::getStringSv()
 	{
 		return "Kommer snart...";
 	}
 
-	std::string ComingSoon::getStringTh()
+	std::string Menus_ComingSoon::getStringTh()
 	{
 		return "เร็ว ๆ นี้...";
 	}
 
-	std::string ComingSoon::getStringTr()
+	std::string Menus_ComingSoon::getStringTr()
 	{
 		return "Çok yakında...";
 	}
 
-	std::string ComingSoon::getStringUk()
+	std::string Menus_ComingSoon::getStringUk()
 	{
 		return "Незабаром...";
 	}
 
-	std::string ComingSoon::getStringVi()
+	std::string Menus_ComingSoon::getStringVi()
 	{
 		return "Sắp có ...";
 	}
 
-	std::string ComingSoon::getStringZhCn()
+	std::string Menus_ComingSoon::getStringZhCn()
 	{
 		return "快来了...";
 	}
 
-	std::string ComingSoon::getStringZhTw()
+	std::string Menus_ComingSoon::getStringZhTw()
 	{
 		return "快來了...";
 	}

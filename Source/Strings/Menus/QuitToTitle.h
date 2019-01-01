@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class QuitToTitle : public LocalizedString
+	class Menus_QuitToTitle : public LocalizedString
 	{
 	public:
-		static QuitToTitle* create();
+		static Menus_QuitToTitle* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		QuitToTitle();
-		~QuitToTitle();
+		Menus_QuitToTitle();
+		~Menus_QuitToTitle();
 	};
 }

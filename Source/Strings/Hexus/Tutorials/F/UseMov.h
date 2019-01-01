@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class UseMov : public LocalizedString
+	class Hexus_Tutorials_F_UseMov : public LocalizedString
 	{
 	public:
-		static UseMov* create();
+		static Hexus_Tutorials_F_UseMov* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		UseMov();
-		~UseMov();
+		Hexus_Tutorials_F_UseMov();
+		~Hexus_Tutorials_F_UseMov();
 	};
 }

@@ -1,8 +1,7 @@
 #include "LocalizedLabel.h"
 
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
-
-#include "2d/CCActionInterval.h"
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
@@ -10,6 +9,7 @@
 #include "Resources/FontResources.h"
 
 #include "Strings/Empty.h"
+#include "Engine/Utils/StrUtils.h"
 
 const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
 const float LocalizedLabel::DefaultTypeSpeed = 0.025f;
@@ -38,7 +38,7 @@ LocalizedLabel* LocalizedLabel::create(
 	TextHAlignment hAlignment,
 	TextVAlignment vAlignment)
 {
-	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, LocaleStrings::Empty::create(), dimensions, hAlignment, vAlignment);
+	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, Strings::Empty::create(), dimensions, hAlignment, vAlignment);
 
 	label->autorelease();
 
@@ -53,6 +53,7 @@ LocalizedLabel::LocalizedLabel(
 	TextHAlignment hAlignment,
 	TextVAlignment vAlignment)
 {
+	this->stringReplacementVariables = std::vector<std::string>();
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
 	this->localizedString = localizedString;
@@ -105,6 +106,13 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const 
 	this->localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::onLocaleChange, this));
 
 	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
+}
+
+void LocalizedLabel::setStringReplacementVariables(std::vector<std::string> stringReplacementVariables)
+{
+	this->stringReplacementVariables = stringReplacementVariables;
+
+	this->updateText();
 }
 
 float LocalizedLabel::getFontSize()
@@ -178,10 +186,22 @@ std::string LocalizedLabel::getFont()
 	}
 }
 
+void LocalizedLabel::updateText()
+{
+	std::string string = localizedString->getString();
+
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		string = StrUtils::replaceFirstOccurence(string, "%s", *it);
+	}
+}
+
 void LocalizedLabel::onLocaleChange(LocalizedString* localizedString)
 {
+	this->updateText();
+
 	this->initWithTTF(
-		localizedString->getString(),
+		this->getString(),
 		this->getFont(),
 		this->getFontSize(),
 		this->getDimensions(), 

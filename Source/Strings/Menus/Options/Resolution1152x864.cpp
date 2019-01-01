@@ -4,171 +4,171 @@
 
 #include "Resolution1152x864.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Resolution1152x864* Resolution1152x864::create()
+	Menus_Options_Resolution1152x864* Menus_Options_Resolution1152x864::create()
 	{
-		Resolution1152x864* instance = new Resolution1152x864();
+		Menus_Options_Resolution1152x864* instance = new Menus_Options_Resolution1152x864();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Resolution1152x864::clone()
+	LocalizedString* Menus_Options_Resolution1152x864::clone()
 	{
-		return Resolution1152x864::create();
+		return Menus_Options_Resolution1152x864::create();
 	}
 
-	Resolution1152x864::Resolution1152x864() : LocalizedString()
-	{
-	}
-
-	Resolution1152x864::~Resolution1152x864()
+	Menus_Options_Resolution1152x864::Menus_Options_Resolution1152x864() : LocalizedString()
 	{
 	}
 
-	std::string Resolution1152x864::getStringAr()
+	Menus_Options_Resolution1152x864::~Menus_Options_Resolution1152x864()
 	{
-		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringBg()
+	std::string Menus_Options_Resolution1152x864::getStringAr()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringCs()
+	std::string Menus_Options_Resolution1152x864::getStringBg()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringDa()
+	std::string Menus_Options_Resolution1152x864::getStringCs()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringDe()
+	std::string Menus_Options_Resolution1152x864::getStringDa()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringEl()
+	std::string Menus_Options_Resolution1152x864::getStringDe()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringEn()
+	std::string Menus_Options_Resolution1152x864::getStringEl()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringEs()
+	std::string Menus_Options_Resolution1152x864::getStringEn()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringEs419()
+	std::string Menus_Options_Resolution1152x864::getStringEs()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringFi()
+	std::string Menus_Options_Resolution1152x864::getStringEs419()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringFr()
+	std::string Menus_Options_Resolution1152x864::getStringFi()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringHu()
+	std::string Menus_Options_Resolution1152x864::getStringFr()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringIt()
+	std::string Menus_Options_Resolution1152x864::getStringHu()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringJa()
+	std::string Menus_Options_Resolution1152x864::getStringIt()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringKo()
+	std::string Menus_Options_Resolution1152x864::getStringJa()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringNl()
+	std::string Menus_Options_Resolution1152x864::getStringKo()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringNo()
+	std::string Menus_Options_Resolution1152x864::getStringNl()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringPl()
+	std::string Menus_Options_Resolution1152x864::getStringNo()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringPt()
+	std::string Menus_Options_Resolution1152x864::getStringPl()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringPtBr()
+	std::string Menus_Options_Resolution1152x864::getStringPt()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringRo()
+	std::string Menus_Options_Resolution1152x864::getStringPtBr()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringRu()
+	std::string Menus_Options_Resolution1152x864::getStringRo()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringSv()
+	std::string Menus_Options_Resolution1152x864::getStringRu()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringTh()
+	std::string Menus_Options_Resolution1152x864::getStringSv()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringTr()
+	std::string Menus_Options_Resolution1152x864::getStringTh()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringUk()
+	std::string Menus_Options_Resolution1152x864::getStringTr()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringVi()
+	std::string Menus_Options_Resolution1152x864::getStringUk()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringZhCn()
+	std::string Menus_Options_Resolution1152x864::getStringVi()
 	{
 		return "1152x864";
 	}
 
-	std::string Resolution1152x864::getStringZhTw()
+	std::string Menus_Options_Resolution1152x864::getStringZhCn()
+	{
+		return "1152x864";
+	}
+
+	std::string Menus_Options_Resolution1152x864::getStringZhTw()
 	{
 		return "1152x864";
 	}

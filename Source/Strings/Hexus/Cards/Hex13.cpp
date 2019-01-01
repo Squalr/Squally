@@ -4,171 +4,171 @@
 
 #include "Hex13.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex13* Hex13::create()
+	Hexus_Cards_Hex13* Hexus_Cards_Hex13::create()
 	{
-		Hex13* instance = new Hex13();
+		Hexus_Cards_Hex13* instance = new Hexus_Cards_Hex13();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex13::clone()
+	LocalizedString* Hexus_Cards_Hex13::clone()
 	{
-		return Hex13::create();
+		return Hexus_Cards_Hex13::create();
 	}
 
-	Hex13::Hex13() : LocalizedString()
-	{
-	}
-
-	Hex13::~Hex13()
+	Hexus_Cards_Hex13::Hexus_Cards_Hex13() : LocalizedString()
 	{
 	}
 
-	std::string Hex13::getStringAr()
+	Hexus_Cards_Hex13::~Hexus_Cards_Hex13()
+	{
+	}
+
+	std::string Hexus_Cards_Hex13::getStringAr()
 	{
 		return "ملك هيكل عظمي";
 	}
 
-	std::string Hex13::getStringBg()
+	std::string Hexus_Cards_Hex13::getStringBg()
 	{
 		return "Скелетен крал";
 	}
 
-	std::string Hex13::getStringCs()
+	std::string Hexus_Cards_Hex13::getStringCs()
 	{
 		return "Skeleton King";
 	}
 
-	std::string Hex13::getStringDa()
+	std::string Hexus_Cards_Hex13::getStringDa()
 	{
 		return "Skeleton King";
 	}
 
-	std::string Hex13::getStringDe()
+	std::string Hexus_Cards_Hex13::getStringDe()
 	{
 		return "Skelett König";
 	}
 
-	std::string Hex13::getStringEl()
+	std::string Hexus_Cards_Hex13::getStringEl()
 	{
 		return "Σκελετός Βασιλιάς";
 	}
 
-	std::string Hex13::getStringEn()
+	std::string Hexus_Cards_Hex13::getStringEn()
 	{
 		return "Skeleton King";
 	}
 
-	std::string Hex13::getStringEs()
+	std::string Hexus_Cards_Hex13::getStringEs()
 	{
 		return "Rey Esqueleto";
 	}
 
-	std::string Hex13::getStringEs419()
+	std::string Hexus_Cards_Hex13::getStringEs419()
 	{
 		return "Rey Esqueleto";
 	}
 
-	std::string Hex13::getStringFi()
+	std::string Hexus_Cards_Hex13::getStringFi()
 	{
 		return "Skeleton King";
 	}
 
-	std::string Hex13::getStringFr()
+	std::string Hexus_Cards_Hex13::getStringFr()
 	{
 		return "Roi Squelette";
 	}
 
-	std::string Hex13::getStringHu()
+	std::string Hexus_Cards_Hex13::getStringHu()
 	{
 		return "Csontváz király";
 	}
 
-	std::string Hex13::getStringIt()
+	std::string Hexus_Cards_Hex13::getStringIt()
 	{
 		return "Scheletro King";
 	}
 
-	std::string Hex13::getStringJa()
+	std::string Hexus_Cards_Hex13::getStringJa()
 	{
 		return "スケルトンキング";
 	}
 
-	std::string Hex13::getStringKo()
+	std::string Hexus_Cards_Hex13::getStringKo()
 	{
 		return "스켈레톤 킹";
 	}
 
-	std::string Hex13::getStringNl()
+	std::string Hexus_Cards_Hex13::getStringNl()
 	{
 		return "Skelet koning";
 	}
 
-	std::string Hex13::getStringNo()
+	std::string Hexus_Cards_Hex13::getStringNo()
 	{
 		return "Skeleton King";
 	}
 
-	std::string Hex13::getStringPl()
+	std::string Hexus_Cards_Hex13::getStringPl()
 	{
 		return "Król Szkieletów";
 	}
 
-	std::string Hex13::getStringPt()
+	std::string Hexus_Cards_Hex13::getStringPt()
 	{
 		return "Rei esqueleto";
 	}
 
-	std::string Hex13::getStringPtBr()
+	std::string Hexus_Cards_Hex13::getStringPtBr()
 	{
 		return "Rei esqueleto";
 	}
 
-	std::string Hex13::getStringRo()
+	std::string Hexus_Cards_Hex13::getStringRo()
 	{
 		return "Regele scheletului";
 	}
 
-	std::string Hex13::getStringRu()
+	std::string Hexus_Cards_Hex13::getStringRu()
 	{
 		return "Скелет Кинг";
 	}
 
-	std::string Hex13::getStringSv()
+	std::string Hexus_Cards_Hex13::getStringSv()
 	{
 		return "Skelett King";
 	}
 
-	std::string Hex13::getStringTh()
+	std::string Hexus_Cards_Hex13::getStringTh()
 	{
 		return "Skeleton King";
 	}
 
-	std::string Hex13::getStringTr()
+	std::string Hexus_Cards_Hex13::getStringTr()
 	{
 		return "İskelet Kral";
 	}
 
-	std::string Hex13::getStringUk()
+	std::string Hexus_Cards_Hex13::getStringUk()
 	{
 		return "Король скелета";
 	}
 
-	std::string Hex13::getStringVi()
+	std::string Hexus_Cards_Hex13::getStringVi()
 	{
 		return "Vua xương";
 	}
 
-	std::string Hex13::getStringZhCn()
+	std::string Hexus_Cards_Hex13::getStringZhCn()
 	{
 		return "骷髅王";
 	}
 
-	std::string Hex13::getStringZhTw()
+	std::string Hexus_Cards_Hex13::getStringZhTw()
 	{
 		return "骷髏王";
 	}

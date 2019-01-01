@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class StoreLabelBinary : public LocalizedString
+	class Hexus_StoreLabelBinary : public LocalizedString
 	{
 	public:
-		static StoreLabelBinary* create();
+		static Hexus_StoreLabelBinary* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		StoreLabelBinary();
-		~StoreLabelBinary();
+		Hexus_StoreLabelBinary();
+		~Hexus_StoreLabelBinary();
 	};
 }

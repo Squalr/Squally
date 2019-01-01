@@ -4,7 +4,7 @@
 
 #include "Empty.h"
 
-namespace LocaleStrings
+namespace Strings
 {
 	Empty* Empty::create()
 	{
