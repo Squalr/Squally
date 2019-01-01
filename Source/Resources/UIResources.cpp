@@ -6,8 +6,7 @@
 #include <string>
 
 const std::string UIResources::EmptyImage = "UI/EmptyImage.png";
-const std::string UIResources::Fonts_AlienText = "UI/Fonts/AlienText.png";
-const std::string UIResources::Fonts_BooleanText = "UI/Fonts/BooleanText.png";
+const std::string UIResources::Fonts_Texture_AlienText = "UI/Fonts/Texture/AlienText.png";
 const std::string UIResources::HUD_HealthBar = "UI/HUD/HealthBar.png";
 const std::string UIResources::HUD_HealthBarFrame = "UI/HUD/HealthBarFrame.png";
 const std::string UIResources::HUD_Heart = "UI/HUD/Heart.png";
