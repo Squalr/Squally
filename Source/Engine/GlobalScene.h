@@ -5,6 +5,7 @@
 class GlobalScene : public SmartScene
 {
 public:
+	virtual void addGlobalEventListener(cocos2d::EventListener* listener);
 
 private:
     typedef SmartScene super;

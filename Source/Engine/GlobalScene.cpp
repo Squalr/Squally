@@ -1,4 +1,17 @@
 #include "GlobalScene.h"
 
-// TODO ?
-// What does this do zac? - buccim2
+#include "cocos/base/CCEventListener.h"
+
+using namespace cocos2d;
+
+void GlobalScene::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	super::addEventListener(listener);
+}

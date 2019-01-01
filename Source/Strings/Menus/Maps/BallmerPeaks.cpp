@@ -145,7 +145,7 @@ namespace LocaleStrings
 
 	std::string BallmerPeaks::getStringTh()
 	{
-		return "ยอด Ballmer";
+		return "ยอด";
 	}
 
 	std::string BallmerPeaks::getStringTr()

@@ -30,12 +30,12 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringAr()
 	{
-		return "Hexus";
+		return "عرافة";
 	}
 
 	std::string Hexus::getStringBg()
 	{
-		return "Hexus";
+		return "магия";
 	}
 
 	std::string Hexus::getStringCs()
@@ -50,12 +50,12 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringDe()
 	{
-		return "Hexus";
+		return "Verhexen";
 	}
 
 	std::string Hexus::getStringEl()
 	{
-		return "Hexus";
+		return "Μαγεύω";
 	}
 
 	std::string Hexus::getStringEn()
@@ -65,12 +65,12 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringEs()
 	{
-		return "Hexus";
+		return "Maleficio";
 	}
 
 	std::string Hexus::getStringEs419()
 	{
-		return "Hexus";
+		return "Maleficio";
 	}
 
 	std::string Hexus::getStringFi()
@@ -90,17 +90,17 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringIt()
 	{
-		return "Hexus";
+		return "Esadecimale";
 	}
 
 	std::string Hexus::getStringJa()
 	{
-		return "Hexus";
+		return "六角";
 	}
 
 	std::string Hexus::getStringKo()
 	{
-		return "Hexus";
+		return "마녀";
 	}
 
 	std::string Hexus::getStringNl()
@@ -115,7 +115,7 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringPl()
 	{
-		return "Hexus";
+		return "Klątwa";
 	}
 
 	std::string Hexus::getStringPt()
@@ -135,7 +135,7 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringRu()
 	{
-		return "Hexus";
+		return "наговор";
 	}
 
 	std::string Hexus::getStringSv()
@@ -145,12 +145,12 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringTh()
 	{
-		return "Hexus";
+		return "แม่มด";
 	}
 
 	std::string Hexus::getStringTr()
 	{
-		return "Hexus";
+		return "büyü";
 	}
 
 	std::string Hexus::getStringUk()
@@ -160,16 +160,16 @@ namespace LocaleStrings
 
 	std::string Hexus::getStringVi()
 	{
-		return "Hexus";
+		return "Lục giác";
 	}
 
 	std::string Hexus::getStringZhCn()
 	{
-		return "Hexus";
+		return "十六进制";
 	}
 
 	std::string Hexus::getStringZhTw()
 	{
-		return "Hexus";
+		return "十六進制";
 	}
 }

@@ -104,18 +104,6 @@ void SmartScene::addEventListener(EventListener* listener)
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void SmartScene::addGlobalEventListener(EventListener* listener)
-{
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	listener->setIsGlobal(true);
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
 void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 {
 	if (listener == nullptr)

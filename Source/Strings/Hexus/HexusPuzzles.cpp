@@ -30,7 +30,7 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringAr()
 	{
-		return "الألغاز السداسي";
+		return "الألغاز الهيكس";
 	}
 
 	std::string HexusPuzzles::getStringBg()
@@ -40,37 +40,37 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringCs()
 	{
-		return "Hexus Puzzles";
+		return "Hexus hádanky";
 	}
 
 	std::string HexusPuzzles::getStringDa()
 	{
-		return "Hexus Puslespil";
+		return "Hexus puslespil";
 	}
 
 	std::string HexusPuzzles::getStringDe()
 	{
-		return "Hexenrätsel";
+		return "Hexus Rätsel";
 	}
 
 	std::string HexusPuzzles::getStringEl()
 	{
-		return "Εξάγωνες παζλ";
+		return "Hexus παζλ";
 	}
 
 	std::string HexusPuzzles::getStringEn()
 	{
-		return "Hexus Puzzles";
+		return "Hexus puzzles";
 	}
 
 	std::string HexusPuzzles::getStringEs()
 	{
-		return "Puzzles de Hexus";
+		return "Rompecabezas Maleficio";
 	}
 
 	std::string HexusPuzzles::getStringEs419()
 	{
-		return "Puzzles de Hexus";
+		return "Rompecabezas Maleficio";
 	}
 
 	std::string HexusPuzzles::getStringFi()
@@ -80,7 +80,7 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringFr()
 	{
-		return "Hexus Puzzles";
+		return "Énigmes";
 	}
 
 	std::string HexusPuzzles::getStringHu()
@@ -90,17 +90,17 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringIt()
 	{
-		return "Hexus Puzzles";
+		return "Puzzle esagonali";
 	}
 
 	std::string HexusPuzzles::getStringJa()
 	{
-		return "ヘクサスパズル";
+		return "六角パズル";
 	}
 
 	std::string HexusPuzzles::getStringKo()
 	{
-		return "Hexus Puzzles";
+		return "16 진수 퍼즐";
 	}
 
 	std::string HexusPuzzles::getStringNl()
@@ -110,32 +110,32 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringNo()
 	{
-		return "Hexus-puslespill";
+		return "Hexus puslespill";
 	}
 
 	std::string HexusPuzzles::getStringPl()
 	{
-		return "Puzzle Hexus";
+		return "Zagadki sześciokątne";
 	}
 
 	std::string HexusPuzzles::getStringPt()
 	{
-		return "Quebra-Cabeças Hexus";
+		return "Quebra-cabeças de Hexus";
 	}
 
 	std::string HexusPuzzles::getStringPtBr()
 	{
-		return "Quebra-Cabeças Hexus";
+		return "Quebra-cabeças de Hexus";
 	}
 
 	std::string HexusPuzzles::getStringRo()
 	{
-		return "Hexus Puzzle";
+		return "Puzzle-uri Hexus";
 	}
 
 	std::string HexusPuzzles::getStringRu()
 	{
-		return "Пазлы Гексус";
+		return "Головоломки Hexus";
 	}
 
 	std::string HexusPuzzles::getStringSv()
@@ -150,12 +150,12 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringTr()
 	{
-		return "Hexus Bulmacaları";
+		return "Hexus yapboz oyunları";
 	}
 
 	std::string HexusPuzzles::getStringUk()
 	{
-		return "Головоломки Hexus";
+		return "Hexus головоломки";
 	}
 
 	std::string HexusPuzzles::getStringVi()
@@ -165,11 +165,11 @@ namespace LocaleStrings
 
 	std::string HexusPuzzles::getStringZhCn()
 	{
-		return "Hexus拼图";
+		return "六角形拼图";
 	}
 
 	std::string HexusPuzzles::getStringZhTw()
 	{
-		return "Hexus拼圖";
+		return "六角形拼圖";
 	}
 }

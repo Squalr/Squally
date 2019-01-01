@@ -47,7 +47,9 @@ protected:
 
 private:
 	typedef SmartNode super;
+	void onEnter() override;
 	void initializeListeners() override;
 
 	std::function<void(LocalizedString* newString)> onLocaleChange;
+	cocos2d::LanguageType currentLanguage;
 };
