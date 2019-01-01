@@ -104,37 +104,102 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 		}
 		case EventKeyboard::KeyCode::KEY_F5:
 		{
-			Localization::setLanguage(LanguageType::FRENCH);
+			Localization::setLanguage(LanguageType::THAI);
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F6:
 		{
-			Localization::setLanguage(LanguageType::ITALIAN);
+			Localization::setLanguage(LanguageType::VIETNAMESE);
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F7:
 		{
-			Localization::setLanguage(LanguageType::GERMAN);
+			Localization::setLanguage(LanguageType::RUSSIAN);
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F8:
 		{
-			Localization::setLanguage(LanguageType::SPANISH);
+			Localization::setLanguage(LanguageType::UKRAINIAN);
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F9:
 		{
-			Localization::setLanguage(LanguageType::RUSSIAN);
+			Localization::setLanguage(LanguageType::HUNGARIAN);
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F10:
 		{
-			Localization::setLanguage(LanguageType::VIETNAMESE);
+			Localization::setLanguage(LanguageType::BULGARIAN);
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F11:
 		{
+			Localization::setLanguage(LanguageType::CZECH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_1:
+		{
+			Localization::setLanguage(LanguageType::ARABIC);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_2:
+		{
+			Localization::setLanguage(LanguageType::CHINESE_TRADITIONAL);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_3:
+		{
+			Localization::setLanguage(LanguageType::GREEK);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_4:
+		{
+			Localization::setLanguage(LanguageType::DANISH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_5:
+		{
+			Localization::setLanguage(LanguageType::DUTCH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_6:
+		{
+			Localization::setLanguage(LanguageType::FINNISH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_7:
+		{
+			Localization::setLanguage(LanguageType::FRENCH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_9:
+		{
+			Localization::setLanguage(LanguageType::POLISH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_0:
+		{
+			Localization::setLanguage(LanguageType::TURKISH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_PG_UP:
+		{
+			Localization::setLanguage(LanguageType::PORTUGUESE);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_EQUAL:
+		{
+			Localization::setLanguage(LanguageType::PORTUGUESE_BRAZIL);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_HOME:
+		{
 			Localization::setLanguage(LanguageType::SWEDISH);
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_INSERT:
+		{
+			Localization::setLanguage(LanguageType::ROMANIAN);
 			break;
 		}
 		default:

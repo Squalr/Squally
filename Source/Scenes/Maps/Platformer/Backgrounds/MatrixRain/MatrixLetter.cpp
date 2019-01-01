@@ -31,7 +31,7 @@ MatrixLetter* MatrixLetter::create()
 
 MatrixLetter::MatrixLetter()
 {
-	this->initWithFile(FontResources::AlienText);
+	this->initWithFile(FontResources::Texture_AlienText);
 
 	this->randomizeLetter();
 

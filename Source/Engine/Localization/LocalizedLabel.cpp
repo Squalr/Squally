@@ -258,7 +258,7 @@ std::string LocalizedLabel::getPixelFont()
 		case LanguageType::JAPANESE:
 		case LanguageType::KOREAN:
 		{
-			return FontResources::Pixel_Zpix;
+			return FontResources::Pixel_Standard_Pixel_Zpix;
 		}
 		case LanguageType::ARABIC:
 		case LanguageType::BULGARIAN:
@@ -286,7 +286,7 @@ std::string LocalizedLabel::getPixelFont()
 		case LanguageType::VIETNAMESE:
 		{
 			// TODO
-			return FontResources::Pixel_Zpix;
+			return FontResources::Pixel_Standard_Pixel_Zpix;
 		}
 	}
 }
@@ -295,45 +295,34 @@ std::string LocalizedLabel::getMainFont()
 {
 	switch (Localization::getLanguage())
 	{
-		default:
-		case LanguageType::ENGLISH:
-		{
-			return FontResources::Montserrat_Medium;
-		}
 		case LanguageType::CHINESE_SIMPLIFIED:
+		{
+			return FontResources::Main_ChineseSimplified_NotoSansCJKsc_Medium;
+		}
 		case LanguageType::CHINESE_TRADITIONAL:
+		{
+			return FontResources::Main_ChineseTraditional_NotoSansCJKtc_Medium;
+		}
 		case LanguageType::JAPANESE:
+		{
+			return FontResources::Main_Japanese_NotoSansCJKjp_Medium;
+		}
 		case LanguageType::KOREAN:
 		{
-			return FontResources::Ubuntu_WenQuanYiMicroHeiMono_02;
+			return FontResources::Main_Korean_NotoSansCJKkr_Medium;
 		}
 		case LanguageType::ARABIC:
-		case LanguageType::BULGARIAN:
-		case LanguageType::CZECH:
-		case LanguageType::DANISH:
-		case LanguageType::DUTCH:
-		case LanguageType::FINNISH:
-		case LanguageType::FRENCH:
-		case LanguageType::GERMAN:
-		case LanguageType::GREEK:
-		case LanguageType::HUNGARIAN:
-		case LanguageType::ITALIAN:
-		case LanguageType::NORWEGIAN:
-		case LanguageType::POLISH:
-		case LanguageType::PORTUGUESE:
-		case LanguageType::PORTUGUESE_BRAZIL:
-		case LanguageType::ROMANIAN:
-		case LanguageType::RUSSIAN:
-		case LanguageType::SPANISH:
-		case LanguageType::SPANISH_LATIN_AMERICAN:
-		case LanguageType::SWEDISH:
-		case LanguageType::THAI:
-		case LanguageType::TURKISH:
-		case LanguageType::UKRAINIAN:
-		case LanguageType::VIETNAMESE:
 		{
-			// TODO
-			return FontResources::Montserrat_Medium;
+			return FontResources::Main_Arabic_NotoSansArabic_Medium;
+		}
+		case LanguageType::THAI:
+		{
+			return FontResources::Main_Thai_NotoSansThai_Medium;
+		}
+		default:
+		{
+			// This covers almost all languages with a standard alphabet (cyrillic, greek, latin based)
+			return FontResources::Main_Standard_NotoSans_Medium;
 		}
 	}
 }
@@ -342,45 +331,34 @@ std::string LocalizedLabel::getCodingFont()
 {
 	switch (Localization::getLanguage())
 	{
-		default:
-		case LanguageType::ENGLISH:
-		{
-			return FontResources::UbuntuMono_Bold;
-		}
 		case LanguageType::CHINESE_SIMPLIFIED:
+		{
+			return FontResources::Coding_ChineseSimplified_NotoSansMonoCJKsc_Bold;
+		}
 		case LanguageType::CHINESE_TRADITIONAL:
+		{
+			return FontResources::Coding_ChineseTraditional_NotoSansMonoCJKtc_Bold;
+		}
 		case LanguageType::JAPANESE:
+		{
+			return FontResources::Coding_Japanese_NotoSansMonoCJKjp_Bold;
+		}
 		case LanguageType::KOREAN:
 		{
-			return FontResources::Ubuntu_WenQuanYiMicroHeiMono_02;
+			return FontResources::Coding_Korean_NotoSansMonoCJKkr_Bold;
 		}
 		case LanguageType::ARABIC:
-		case LanguageType::BULGARIAN:
-		case LanguageType::CZECH:
-		case LanguageType::DANISH:
-		case LanguageType::DUTCH:
-		case LanguageType::FINNISH:
-		case LanguageType::FRENCH:
-		case LanguageType::GERMAN:
-		case LanguageType::GREEK:
-		case LanguageType::HUNGARIAN:
-		case LanguageType::ITALIAN:
-		case LanguageType::NORWEGIAN:
-		case LanguageType::POLISH:
-		case LanguageType::PORTUGUESE:
-		case LanguageType::PORTUGUESE_BRAZIL:
-		case LanguageType::ROMANIAN:
-		case LanguageType::RUSSIAN:
-		case LanguageType::SPANISH:
-		case LanguageType::SPANISH_LATIN_AMERICAN:
-		case LanguageType::SWEDISH:
-		case LanguageType::THAI:
-		case LanguageType::TURKISH:
-		case LanguageType::UKRAINIAN:
-		case LanguageType::VIETNAMESE:
 		{
-			// TODO
-			return FontResources::UbuntuMono_Bold;
+			return FontResources::Main_Arabic_NotoSansArabic_Bold;
+		}
+		case LanguageType::THAI:
+		{
+			return FontResources::Main_Thai_NotoSansThai_Bold;
+		}
+		default:
+		{
+			// This covers almost all languages with a standard alphabet (cyrillic, greek, latin based)
+			return FontResources::Coding_Standard_NotoMono_Regular;
 		}
 	}
 }

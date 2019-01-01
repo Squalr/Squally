@@ -7,8 +7,7 @@
 namespace UIResources
 {
 	extern const std::string EmptyImage;
-	extern const std::string Fonts_AlienText;
-	extern const std::string Fonts_BooleanText;
+	extern const std::string Fonts_Texture_AlienText;
 	extern const std::string HUD_HealthBar;
 	extern const std::string HUD_HealthBarFrame;
 	extern const std::string HUD_Heart;
