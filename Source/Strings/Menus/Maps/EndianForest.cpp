@@ -30,7 +30,7 @@ namespace LocaleStrings
 
 	std::string EndianForest::getStringAr()
 	{
-		return "الغابة Endian";
+		return "الغابة";
 	}
 
 	std::string EndianForest::getStringBg()
@@ -145,7 +145,7 @@ namespace LocaleStrings
 
 	std::string EndianForest::getStringTh()
 	{
-		return "ป่า Endian";
+		return "ป่า";
 	}
 
 	std::string EndianForest::getStringTr()
@@ -165,11 +165,11 @@ namespace LocaleStrings
 
 	std::string EndianForest::getStringZhCn()
 	{
-		return "Endian森林";
+		return "尾数森林";
 	}
 
 	std::string EndianForest::getStringZhTw()
 	{
-		return "Endian森林";
+		return "尾數森林";
 	}
 }

@@ -30,7 +30,7 @@ namespace LocaleStrings
 
 	std::string UnderflowRuins::getStringAr()
 	{
-		return "أطلال Underflow";
+		return "أطلال";
 	}
 
 	std::string UnderflowRuins::getStringBg()

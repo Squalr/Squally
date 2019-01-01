@@ -30,7 +30,7 @@ namespace LocaleStrings
 
 	std::string LambdaCrypts::getStringAr()
 	{
-		return "Lambda الخبايا";
+		return "الخبايا";
 	}
 
 	std::string LambdaCrypts::getStringBg()
@@ -145,7 +145,7 @@ namespace LocaleStrings
 
 	std::string LambdaCrypts::getStringTh()
 	{
-		return "แลมด้า crypts";
+		return "แลมด้า";
 	}
 
 	std::string LambdaCrypts::getStringTr()

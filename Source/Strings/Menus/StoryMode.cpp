@@ -145,7 +145,7 @@ namespace LocaleStrings
 
 	std::string StoryMode::getStringTh()
 	{
-		return "Sโหมดเนื้อเรื่อง";
+		return "โหมดเนื้อเรื่อง";
 	}
 
 	std::string StoryMode::getStringTr()

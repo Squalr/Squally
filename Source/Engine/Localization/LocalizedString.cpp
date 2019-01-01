@@ -10,17 +10,28 @@ using namespace cocos2d;
 LocalizedString::LocalizedString()
 {
 	this->onLocaleChange = nullptr;
+	this->currentLanguage = Localization::getLanguage();
 }
 
 LocalizedString::~LocalizedString()
 {
 }
 
+void LocalizedString::onEnter()
+{
+	super::onEnter();
+
+	if (this->currentLanguage != Localization::getLanguage())
+	{
+		this->onLocaleChange(this);
+	}
+}
+
 void LocalizedString::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
 		if (this->onLocaleChange != nullptr)
 		{

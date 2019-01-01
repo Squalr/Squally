@@ -9,8 +9,14 @@ void GlobalNode::pause()
 	// Do nothing -- global nodes should not get paused
 }
 
-void GlobalNode::addEventListener(EventListener* listener)
+void GlobalNode::addGlobalEventListener(EventListener* listener)
 {
-	// Force events to be added as global events for global nodes
-	super::addGlobalEventListener(listener);
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	super::addEventListener(listener);
 }

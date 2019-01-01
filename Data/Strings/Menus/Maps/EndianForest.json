@@ -1,5 +1,5 @@
 {
-    "ar": "الغابة Endian",
+    "ar": "الغابة",
     "bg": "Горска гора",
     "cs": "Endianský les",
     "da": "Endian skov",
@@ -22,10 +22,10 @@
     "ro": "Pădurea endiană",
     "ru": "Endian Forest",
     "sv": "Endian skog",
-    "th": "ป่า Endian",
+    "th": "ป่า",
     "tr": "Endian ormanı",
     "uk": "Ендіанський ліс",
     "vi": "Rừng endian",
-    "zh-CN": "Endian森林",
-    "zh-TW": "Endian森林"
+    "zh-CN": "尾数森林",
+    "zh-TW": "尾數森林"
 }

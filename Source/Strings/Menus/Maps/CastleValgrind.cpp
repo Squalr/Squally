@@ -30,7 +30,7 @@ namespace LocaleStrings
 
 	std::string CastleValgrind::getStringAr()
 	{
-		return "قلعة Valgrind";
+		return "قلعة";
 	}
 
 	std::string CastleValgrind::getStringBg()
@@ -145,7 +145,7 @@ namespace LocaleStrings
 
 	std::string CastleValgrind::getStringTh()
 	{
-		return "ปราสาท Valgrind";
+		return "ปราสาท";
 	}
 
 	std::string CastleValgrind::getStringTr()
