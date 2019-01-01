@@ -4,171 +4,171 @@
 
 #include "Options.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Options* Options::create()
+	Menus_Options_Options* Menus_Options_Options::create()
 	{
-		Options* instance = new Options();
+		Menus_Options_Options* instance = new Menus_Options_Options();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Options::clone()
+	LocalizedString* Menus_Options_Options::clone()
 	{
-		return Options::create();
+		return Menus_Options_Options::create();
 	}
 
-	Options::Options() : LocalizedString()
-	{
-	}
-
-	Options::~Options()
+	Menus_Options_Options::Menus_Options_Options() : LocalizedString()
 	{
 	}
 
-	std::string Options::getStringAr()
+	Menus_Options_Options::~Menus_Options_Options()
+	{
+	}
+
+	std::string Menus_Options_Options::getStringAr()
 	{
 		return "خيارات";
 	}
 
-	std::string Options::getStringBg()
+	std::string Menus_Options_Options::getStringBg()
 	{
 		return "Настроики";
 	}
 
-	std::string Options::getStringCs()
+	std::string Menus_Options_Options::getStringCs()
 	{
 		return "Možnosti";
 	}
 
-	std::string Options::getStringDa()
+	std::string Menus_Options_Options::getStringDa()
 	{
 		return "Muligheder";
 	}
 
-	std::string Options::getStringDe()
+	std::string Menus_Options_Options::getStringDe()
 	{
 		return "Optionen";
 	}
 
-	std::string Options::getStringEl()
+	std::string Menus_Options_Options::getStringEl()
 	{
 		return "Επιλογές";
 	}
 
-	std::string Options::getStringEn()
+	std::string Menus_Options_Options::getStringEn()
 	{
 		return "Options";
 	}
 
-	std::string Options::getStringEs()
+	std::string Menus_Options_Options::getStringEs()
 	{
 		return "Opciones";
 	}
 
-	std::string Options::getStringEs419()
+	std::string Menus_Options_Options::getStringEs419()
 	{
 		return "Opciones";
 	}
 
-	std::string Options::getStringFi()
+	std::string Menus_Options_Options::getStringFi()
 	{
 		return "vaihtoehdot";
 	}
 
-	std::string Options::getStringFr()
+	std::string Menus_Options_Options::getStringFr()
 	{
 		return "Options";
 	}
 
-	std::string Options::getStringHu()
+	std::string Menus_Options_Options::getStringHu()
 	{
 		return "Opciók";
 	}
 
-	std::string Options::getStringIt()
+	std::string Menus_Options_Options::getStringIt()
 	{
 		return "Opzioni";
 	}
 
-	std::string Options::getStringJa()
+	std::string Menus_Options_Options::getStringJa()
 	{
 		return "オプション";
 	}
 
-	std::string Options::getStringKo()
+	std::string Menus_Options_Options::getStringKo()
 	{
 		return "옵션";
 	}
 
-	std::string Options::getStringNl()
+	std::string Menus_Options_Options::getStringNl()
 	{
 		return "opties";
 	}
 
-	std::string Options::getStringNo()
+	std::string Menus_Options_Options::getStringNo()
 	{
 		return "alternativer";
 	}
 
-	std::string Options::getStringPl()
+	std::string Menus_Options_Options::getStringPl()
 	{
 		return "Opcje";
 	}
 
-	std::string Options::getStringPt()
+	std::string Menus_Options_Options::getStringPt()
 	{
 		return "Opções";
 	}
 
-	std::string Options::getStringPtBr()
+	std::string Menus_Options_Options::getStringPtBr()
 	{
 		return "Opções";
 	}
 
-	std::string Options::getStringRo()
+	std::string Menus_Options_Options::getStringRo()
 	{
 		return "Opțiuni";
 	}
 
-	std::string Options::getStringRu()
+	std::string Menus_Options_Options::getStringRu()
 	{
 		return "Опции";
 	}
 
-	std::string Options::getStringSv()
+	std::string Menus_Options_Options::getStringSv()
 	{
 		return "alternativ";
 	}
 
-	std::string Options::getStringTh()
+	std::string Menus_Options_Options::getStringTh()
 	{
 		return "ตัวเลือก";
 	}
 
-	std::string Options::getStringTr()
+	std::string Menus_Options_Options::getStringTr()
 	{
 		return "Seçenekler";
 	}
 
-	std::string Options::getStringUk()
+	std::string Menus_Options_Options::getStringUk()
 	{
 		return "Опції";
 	}
 
-	std::string Options::getStringVi()
+	std::string Menus_Options_Options::getStringVi()
 	{
 		return "Tùy chọn";
 	}
 
-	std::string Options::getStringZhCn()
+	std::string Menus_Options_Options::getStringZhCn()
 	{
 		return "选项";
 	}
 
-	std::string Options::getStringZhTw()
+	std::string Menus_Options_Options::getStringZhTw()
 	{
 		return "選項";
 	}

@@ -4,171 +4,171 @@
 
 #include "Exit.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Exit* Exit::create()
+	Menus_Exit* Menus_Exit::create()
 	{
-		Exit* instance = new Exit();
+		Menus_Exit* instance = new Menus_Exit();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Exit::clone()
+	LocalizedString* Menus_Exit::clone()
 	{
-		return Exit::create();
+		return Menus_Exit::create();
 	}
 
-	Exit::Exit() : LocalizedString()
-	{
-	}
-
-	Exit::~Exit()
+	Menus_Exit::Menus_Exit() : LocalizedString()
 	{
 	}
 
-	std::string Exit::getStringAr()
+	Menus_Exit::~Menus_Exit()
+	{
+	}
+
+	std::string Menus_Exit::getStringAr()
 	{
 		return "ىخرج";
 	}
 
-	std::string Exit::getStringBg()
+	std::string Menus_Exit::getStringBg()
 	{
 		return "изход";
 	}
 
-	std::string Exit::getStringCs()
+	std::string Menus_Exit::getStringCs()
 	{
 		return "Výstup";
 	}
 
-	std::string Exit::getStringDa()
+	std::string Menus_Exit::getStringDa()
 	{
 		return "Afslut";
 	}
 
-	std::string Exit::getStringDe()
+	std::string Menus_Exit::getStringDe()
 	{
 		return "Ausgang";
 	}
 
-	std::string Exit::getStringEl()
+	std::string Menus_Exit::getStringEl()
 	{
 		return "Εξοδος";
 	}
 
-	std::string Exit::getStringEn()
+	std::string Menus_Exit::getStringEn()
 	{
 		return "Exit";
 	}
 
-	std::string Exit::getStringEs()
+	std::string Menus_Exit::getStringEs()
 	{
 		return "Salida";
 	}
 
-	std::string Exit::getStringEs419()
+	std::string Menus_Exit::getStringEs419()
 	{
 		return "Salida";
 	}
 
-	std::string Exit::getStringFi()
+	std::string Menus_Exit::getStringFi()
 	{
 		return "poistuminen";
 	}
 
-	std::string Exit::getStringFr()
+	std::string Menus_Exit::getStringFr()
 	{
 		return "Sortie";
 	}
 
-	std::string Exit::getStringHu()
+	std::string Menus_Exit::getStringHu()
 	{
 		return "Kijárat";
 	}
 
-	std::string Exit::getStringIt()
+	std::string Menus_Exit::getStringIt()
 	{
 		return "Uscita";
 	}
 
-	std::string Exit::getStringJa()
+	std::string Menus_Exit::getStringJa()
 	{
 		return "出口";
 	}
 
-	std::string Exit::getStringKo()
+	std::string Menus_Exit::getStringKo()
 	{
 		return "출구";
 	}
 
-	std::string Exit::getStringNl()
+	std::string Menus_Exit::getStringNl()
 	{
 		return "Uitgang";
 	}
 
-	std::string Exit::getStringNo()
+	std::string Menus_Exit::getStringNo()
 	{
 		return "Exit";
 	}
 
-	std::string Exit::getStringPl()
+	std::string Menus_Exit::getStringPl()
 	{
 		return "Wyjście";
 	}
 
-	std::string Exit::getStringPt()
+	std::string Menus_Exit::getStringPt()
 	{
 		return "Saída";
 	}
 
-	std::string Exit::getStringPtBr()
+	std::string Menus_Exit::getStringPtBr()
 	{
 		return "Saída";
 	}
 
-	std::string Exit::getStringRo()
+	std::string Menus_Exit::getStringRo()
 	{
 		return "Ieșire";
 	}
 
-	std::string Exit::getStringRu()
+	std::string Menus_Exit::getStringRu()
 	{
 		return "Выход";
 	}
 
-	std::string Exit::getStringSv()
+	std::string Menus_Exit::getStringSv()
 	{
 		return "Utgång";
 	}
 
-	std::string Exit::getStringTh()
+	std::string Menus_Exit::getStringTh()
 	{
 		return "ทางออก";
 	}
 
-	std::string Exit::getStringTr()
+	std::string Menus_Exit::getStringTr()
 	{
 		return "çıkış";
 	}
 
-	std::string Exit::getStringUk()
+	std::string Menus_Exit::getStringUk()
 	{
 		return "Вхід";
 	}
 
-	std::string Exit::getStringVi()
+	std::string Menus_Exit::getStringVi()
 	{
 		return "Lối thoát hiểm";
 	}
 
-	std::string Exit::getStringZhCn()
+	std::string Menus_Exit::getStringZhCn()
 	{
 		return "出口";
 	}
 
-	std::string Exit::getStringZhTw()
+	std::string Menus_Exit::getStringZhTw()
 	{
 		return "出口";
 	}

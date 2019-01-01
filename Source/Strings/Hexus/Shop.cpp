@@ -4,171 +4,171 @@
 
 #include "Shop.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Shop* Shop::create()
+	Hexus_Shop* Hexus_Shop::create()
 	{
-		Shop* instance = new Shop();
+		Hexus_Shop* instance = new Hexus_Shop();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Shop::clone()
+	LocalizedString* Hexus_Shop::clone()
 	{
-		return Shop::create();
+		return Hexus_Shop::create();
 	}
 
-	Shop::Shop() : LocalizedString()
-	{
-	}
-
-	Shop::~Shop()
+	Hexus_Shop::Hexus_Shop() : LocalizedString()
 	{
 	}
 
-	std::string Shop::getStringAr()
+	Hexus_Shop::~Hexus_Shop()
+	{
+	}
+
+	std::string Hexus_Shop::getStringAr()
 	{
 		return "متجر";
 	}
 
-	std::string Shop::getStringBg()
+	std::string Hexus_Shop::getStringBg()
 	{
 		return "магазин";
 	}
 
-	std::string Shop::getStringCs()
+	std::string Hexus_Shop::getStringCs()
 	{
 		return "Prodejna";
 	}
 
-	std::string Shop::getStringDa()
+	std::string Hexus_Shop::getStringDa()
 	{
 		return "Butik";
 	}
 
-	std::string Shop::getStringDe()
+	std::string Hexus_Shop::getStringDe()
 	{
 		return "Shop";
 	}
 
-	std::string Shop::getStringEl()
+	std::string Hexus_Shop::getStringEl()
 	{
 		return "Κατάστημα";
 	}
 
-	std::string Shop::getStringEn()
+	std::string Hexus_Shop::getStringEn()
 	{
 		return "Shop";
 	}
 
-	std::string Shop::getStringEs()
+	std::string Hexus_Shop::getStringEs()
 	{
 		return "tienda";
 	}
 
-	std::string Shop::getStringEs419()
+	std::string Hexus_Shop::getStringEs419()
 	{
 		return "tienda";
 	}
 
-	std::string Shop::getStringFi()
+	std::string Hexus_Shop::getStringFi()
 	{
 		return "Myymälä";
 	}
 
-	std::string Shop::getStringFr()
+	std::string Hexus_Shop::getStringFr()
 	{
 		return "Boutique";
 	}
 
-	std::string Shop::getStringHu()
+	std::string Hexus_Shop::getStringHu()
 	{
 		return "Üzlet";
 	}
 
-	std::string Shop::getStringIt()
+	std::string Hexus_Shop::getStringIt()
 	{
 		return "Negozio";
 	}
 
-	std::string Shop::getStringJa()
+	std::string Hexus_Shop::getStringJa()
 	{
 		return "ショップ";
 	}
 
-	std::string Shop::getStringKo()
+	std::string Hexus_Shop::getStringKo()
 	{
 		return "가게";
 	}
 
-	std::string Shop::getStringNl()
+	std::string Hexus_Shop::getStringNl()
 	{
 		return "Winkel";
 	}
 
-	std::string Shop::getStringNo()
+	std::string Hexus_Shop::getStringNo()
 	{
 		return "Butikk";
 	}
 
-	std::string Shop::getStringPl()
+	std::string Hexus_Shop::getStringPl()
 	{
 		return "Sklep";
 	}
 
-	std::string Shop::getStringPt()
+	std::string Hexus_Shop::getStringPt()
 	{
 		return "fazer compras";
 	}
 
-	std::string Shop::getStringPtBr()
+	std::string Hexus_Shop::getStringPtBr()
 	{
 		return "fazer compras";
 	}
 
-	std::string Shop::getStringRo()
+	std::string Hexus_Shop::getStringRo()
 	{
 		return "Magazin";
 	}
 
-	std::string Shop::getStringRu()
+	std::string Hexus_Shop::getStringRu()
 	{
 		return "Магазин";
 	}
 
-	std::string Shop::getStringSv()
+	std::string Hexus_Shop::getStringSv()
 	{
 		return "affär";
 	}
 
-	std::string Shop::getStringTh()
+	std::string Hexus_Shop::getStringTh()
 	{
 		return "ร้านขายของ";
 	}
 
-	std::string Shop::getStringTr()
+	std::string Hexus_Shop::getStringTr()
 	{
 		return "Dükkan";
 	}
 
-	std::string Shop::getStringUk()
+	std::string Hexus_Shop::getStringUk()
 	{
 		return "Магазин";
 	}
 
-	std::string Shop::getStringVi()
+	std::string Hexus_Shop::getStringVi()
 	{
 		return "Shop";
 	}
 
-	std::string Shop::getStringZhCn()
+	std::string Hexus_Shop::getStringZhCn()
 	{
 		return "店";
 	}
 
-	std::string Shop::getStringZhTw()
+	std::string Hexus_Shop::getStringZhTw()
 	{
 		return "店";
 	}

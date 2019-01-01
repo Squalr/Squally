@@ -52,9 +52,9 @@ OptionsMenu::OptionsMenu()
 
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
-	this->fullScreenLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::FullScreen::create());
+	this->fullScreenLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_FullScreen::create());
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, LocaleStrings::Options::create());
+	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Options_Options::create());
 
 	this->optionsLabel->setColor(OptionsMenu::TitleColor);
 	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -72,17 +72,17 @@ OptionsMenu::OptionsMenu()
 	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOnHover);
 	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
 
-	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1080x768::create());
-	this->label1152x864 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1152x864::create());
-	this->label1280x720 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1280x720::create());
-	this->label1280x960 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1280x960::create());
-	this->label1280x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1280x1024::create());
-	this->label1440x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1440x900::create());
-	this->label1600x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1600x900::create());
-	this->label1600x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1600x1024::create());
-	this->label1920x1080 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution1920x1080::create());
-	this->label2560x1440 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution2560x1440::create());
-	this->label3840x2160 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, LocaleStrings::Resolution3840x2160::create());
+	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1080x768::create());
+	this->label1152x864 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1152x864::create());
+	this->label1280x720 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1280x720::create());
+	this->label1280x960 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1280x960::create());
+	this->label1280x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1280x1024::create());
+	this->label1440x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1440x900::create());
+	this->label1600x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1600x900::create());
+	this->label1600x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1600x1024::create());
+	this->label1920x1080 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1920x1080::create());
+	this->label2560x1440 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution2560x1440::create());
+	this->label3840x2160 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution3840x2160::create());
 
 	this->option1080x768 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
 	this->option1152x864 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
@@ -104,8 +104,8 @@ OptionsMenu::OptionsMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
-	LocalizedLabel*	returnLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
+	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel*	returnLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 
 	returnLabel->setColor(textColor);
 	returnLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

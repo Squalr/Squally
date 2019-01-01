@@ -4,171 +4,171 @@
 
 #include "Hex0.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex0* Hex0::create()
+	Hexus_Cards_Hex0* Hexus_Cards_Hex0::create()
 	{
-		Hex0* instance = new Hex0();
+		Hexus_Cards_Hex0* instance = new Hexus_Cards_Hex0();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex0::clone()
+	LocalizedString* Hexus_Cards_Hex0::clone()
 	{
-		return Hex0::create();
+		return Hexus_Cards_Hex0::create();
 	}
 
-	Hex0::Hex0() : LocalizedString()
-	{
-	}
-
-	Hex0::~Hex0()
+	Hexus_Cards_Hex0::Hexus_Cards_Hex0() : LocalizedString()
 	{
 	}
 
-	std::string Hex0::getStringAr()
+	Hexus_Cards_Hex0::~Hexus_Cards_Hex0()
+	{
+	}
+
+	std::string Hexus_Cards_Hex0::getStringAr()
 	{
 		return "شيطان الهون";
 	}
 
-	std::string Hex0::getStringBg()
+	std::string Hexus_Cards_Hex0::getStringBg()
 	{
 		return "Демон";
 	}
 
-	std::string Hex0::getStringCs()
+	std::string Hexus_Cards_Hex0::getStringCs()
 	{
 		return "Demon haunch";
 	}
 
-	std::string Hex0::getStringDa()
+	std::string Hexus_Cards_Hex0::getStringDa()
 	{
 		return "Demon haunch";
 	}
 
-	std::string Hex0::getStringDe()
+	std::string Hexus_Cards_Hex0::getStringDe()
 	{
 		return "Dämonenhaufen";
 	}
 
-	std::string Hex0::getStringEl()
+	std::string Hexus_Cards_Hex0::getStringEl()
 	{
 		return "Demon haunch";
 	}
 
-	std::string Hex0::getStringEn()
+	std::string Hexus_Cards_Hex0::getStringEn()
 	{
 		return "Demon Haunch";
 	}
 
-	std::string Hex0::getStringEs()
+	std::string Hexus_Cards_Hex0::getStringEs()
 	{
 		return "Demonio";
 	}
 
-	std::string Hex0::getStringEs419()
+	std::string Hexus_Cards_Hex0::getStringEs419()
 	{
 		return "Demonio";
 	}
 
-	std::string Hex0::getStringFi()
+	std::string Hexus_Cards_Hex0::getStringFi()
 	{
 		return "Demonin haukkuminen";
 	}
 
-	std::string Hex0::getStringFr()
+	std::string Hexus_Cards_Hex0::getStringFr()
 	{
 		return "Hanche de démon";
 	}
 
-	std::string Hex0::getStringHu()
+	std::string Hexus_Cards_Hex0::getStringHu()
 	{
 		return "Démon csöpög";
 	}
 
-	std::string Hex0::getStringIt()
+	std::string Hexus_Cards_Hex0::getStringIt()
 	{
 		return "Coscia di demone";
 	}
 
-	std::string Hex0::getStringJa()
+	std::string Hexus_Cards_Hex0::getStringJa()
 	{
 		return "デーモンハンチ";
 	}
 
-	std::string Hex0::getStringKo()
+	std::string Hexus_Cards_Hex0::getStringKo()
 	{
 		return "악마";
 	}
 
-	std::string Hex0::getStringNl()
+	std::string Hexus_Cards_Hex0::getStringNl()
 	{
 		return "Demon-console";
 	}
 
-	std::string Hex0::getStringNo()
+	std::string Hexus_Cards_Hex0::getStringNo()
 	{
 		return "Demon haunch";
 	}
 
-	std::string Hex0::getStringPl()
+	std::string Hexus_Cards_Hex0::getStringPl()
 	{
 		return "Udziec demonów";
 	}
 
-	std::string Hex0::getStringPt()
+	std::string Hexus_Cards_Hex0::getStringPt()
 	{
 		return "Demônio";
 	}
 
-	std::string Hex0::getStringPtBr()
+	std::string Hexus_Cards_Hex0::getStringPtBr()
 	{
 		return "Demônio";
 	}
 
-	std::string Hex0::getStringRo()
+	std::string Hexus_Cards_Hex0::getStringRo()
 	{
 		return "Lovitura Demon";
 	}
 
-	std::string Hex0::getStringRu()
+	std::string Hexus_Cards_Hex0::getStringRu()
 	{
 		return "Демон демон";
 	}
 
-	std::string Hex0::getStringSv()
+	std::string Hexus_Cards_Hex0::getStringSv()
 	{
 		return "Demon haunch";
 	}
 
-	std::string Hex0::getStringTh()
+	std::string Hexus_Cards_Hex0::getStringTh()
 	{
 		return "ปีศาจลางสังหรณ์";
 	}
 
-	std::string Hex0::getStringTr()
+	std::string Hexus_Cards_Hex0::getStringTr()
 	{
 		return "İblis";
 	}
 
-	std::string Hex0::getStringUk()
+	std::string Hexus_Cards_Hex0::getStringUk()
 	{
 		return "Демон";
 	}
 
-	std::string Hex0::getStringVi()
+	std::string Hexus_Cards_Hex0::getStringVi()
 	{
 		return "Quỷ lôi";
 	}
 
-	std::string Hex0::getStringZhCn()
+	std::string Hexus_Cards_Hex0::getStringZhCn()
 	{
 		return "恶魔骚扰";
 	}
 
-	std::string Hex0::getStringZhTw()
+	std::string Hexus_Cards_Hex0::getStringZhTw()
 	{
 		return "惡魔騷擾";
 	}

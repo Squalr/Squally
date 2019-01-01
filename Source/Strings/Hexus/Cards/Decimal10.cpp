@@ -4,171 +4,171 @@
 
 #include "Decimal10.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal10* Decimal10::create()
+	Hexus_Cards_Decimal10* Hexus_Cards_Decimal10::create()
 	{
-		Decimal10* instance = new Decimal10();
+		Hexus_Cards_Decimal10* instance = new Hexus_Cards_Decimal10();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal10::clone()
+	LocalizedString* Hexus_Cards_Decimal10::clone()
 	{
-		return Decimal10::create();
+		return Hexus_Cards_Decimal10::create();
 	}
 
-	Decimal10::Decimal10() : LocalizedString()
-	{
-	}
-
-	Decimal10::~Decimal10()
+	Hexus_Cards_Decimal10::Hexus_Cards_Decimal10() : LocalizedString()
 	{
 	}
 
-	std::string Decimal10::getStringAr()
+	Hexus_Cards_Decimal10::~Hexus_Cards_Decimal10()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal10::getStringAr()
 	{
 		return "أشرق";
 	}
 
-	std::string Decimal10::getStringBg()
+	std::string Hexus_Cards_Decimal10::getStringBg()
 	{
 		return "излъчвам";
 	}
 
-	std::string Decimal10::getStringCs()
+	std::string Hexus_Cards_Decimal10::getStringCs()
 	{
 		return "Ozářit";
 	}
 
-	std::string Decimal10::getStringDa()
+	std::string Hexus_Cards_Decimal10::getStringDa()
 	{
 		return "bestråle";
 	}
 
-	std::string Decimal10::getStringDe()
+	std::string Hexus_Cards_Decimal10::getStringDe()
 	{
 		return "Bestrahlen";
 	}
 
-	std::string Decimal10::getStringEl()
+	std::string Hexus_Cards_Decimal10::getStringEl()
 	{
 		return "Ακτινοβολώ";
 	}
 
-	std::string Decimal10::getStringEn()
+	std::string Hexus_Cards_Decimal10::getStringEn()
 	{
 		return "Irrius";
 	}
 
-	std::string Decimal10::getStringEs()
+	std::string Hexus_Cards_Decimal10::getStringEs()
 	{
 		return "Irradiar";
 	}
 
-	std::string Decimal10::getStringEs419()
+	std::string Hexus_Cards_Decimal10::getStringEs419()
 	{
 		return "Irradiar";
 	}
 
-	std::string Decimal10::getStringFi()
+	std::string Hexus_Cards_Decimal10::getStringFi()
 	{
 		return "Säteilyttää";
 	}
 
-	std::string Decimal10::getStringFr()
+	std::string Hexus_Cards_Decimal10::getStringFr()
 	{
 		return "Irradier";
 	}
 
-	std::string Decimal10::getStringHu()
+	std::string Hexus_Cards_Decimal10::getStringHu()
 	{
 		return "kivilágít";
 	}
 
-	std::string Decimal10::getStringIt()
+	std::string Hexus_Cards_Decimal10::getStringIt()
 	{
 		return "Irradiare";
 	}
 
-	std::string Decimal10::getStringJa()
+	std::string Hexus_Cards_Decimal10::getStringJa()
 	{
 		return "照射する";
 	}
 
-	std::string Decimal10::getStringKo()
+	std::string Hexus_Cards_Decimal10::getStringKo()
 	{
 		return "비추다";
 	}
 
-	std::string Decimal10::getStringNl()
+	std::string Hexus_Cards_Decimal10::getStringNl()
 	{
 		return "Bestralen";
 	}
 
-	std::string Decimal10::getStringNo()
+	std::string Hexus_Cards_Decimal10::getStringNo()
 	{
 		return "bestråle";
 	}
 
-	std::string Decimal10::getStringPl()
+	std::string Hexus_Cards_Decimal10::getStringPl()
 	{
 		return "Naświetlać";
 	}
 
-	std::string Decimal10::getStringPt()
+	std::string Hexus_Cards_Decimal10::getStringPt()
 	{
 		return "Irradiar";
 	}
 
-	std::string Decimal10::getStringPtBr()
+	std::string Hexus_Cards_Decimal10::getStringPtBr()
 	{
 		return "Irradiar";
 	}
 
-	std::string Decimal10::getStringRo()
+	std::string Hexus_Cards_Decimal10::getStringRo()
 	{
 		return "Iradia";
 	}
 
-	std::string Decimal10::getStringRu()
+	std::string Hexus_Cards_Decimal10::getStringRu()
 	{
 		return "облучать";
 	}
 
-	std::string Decimal10::getStringSv()
+	std::string Hexus_Cards_Decimal10::getStringSv()
 	{
 		return "Bestråla";
 	}
 
-	std::string Decimal10::getStringTh()
+	std::string Hexus_Cards_Decimal10::getStringTh()
 	{
 		return "ฉายรังสี";
 	}
 
-	std::string Decimal10::getStringTr()
+	std::string Hexus_Cards_Decimal10::getStringTr()
 	{
 		return "Saçmak";
 	}
 
-	std::string Decimal10::getStringUk()
+	std::string Hexus_Cards_Decimal10::getStringUk()
 	{
 		return "Опромінюють";
 	}
 
-	std::string Decimal10::getStringVi()
+	std::string Hexus_Cards_Decimal10::getStringVi()
 	{
 		return "Chiếu xạ";
 	}
 
-	std::string Decimal10::getStringZhCn()
+	std::string Hexus_Cards_Decimal10::getStringZhCn()
 	{
 		return "照射";
 	}
 
-	std::string Decimal10::getStringZhTw()
+	std::string Hexus_Cards_Decimal10::getStringZhTw()
 	{
 		return "照射";
 	}

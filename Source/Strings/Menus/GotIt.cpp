@@ -4,171 +4,171 @@
 
 #include "GotIt.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	GotIt* GotIt::create()
+	Menus_GotIt* Menus_GotIt::create()
 	{
-		GotIt* instance = new GotIt();
+		Menus_GotIt* instance = new Menus_GotIt();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* GotIt::clone()
+	LocalizedString* Menus_GotIt::clone()
 	{
-		return GotIt::create();
+		return Menus_GotIt::create();
 	}
 
-	GotIt::GotIt() : LocalizedString()
-	{
-	}
-
-	GotIt::~GotIt()
+	Menus_GotIt::Menus_GotIt() : LocalizedString()
 	{
 	}
 
-	std::string GotIt::getStringAr()
+	Menus_GotIt::~Menus_GotIt()
+	{
+	}
+
+	std::string Menus_GotIt::getStringAr()
 	{
 		return "أنا أفهم!";
 	}
 
-	std::string GotIt::getStringBg()
+	std::string Menus_GotIt::getStringBg()
 	{
 		return "Разбирам!";
 	}
 
-	std::string GotIt::getStringCs()
+	std::string Menus_GotIt::getStringCs()
 	{
 		return "Chápu!";
 	}
 
-	std::string GotIt::getStringDa()
+	std::string Menus_GotIt::getStringDa()
 	{
 		return "Jeg forstår!";
 	}
 
-	std::string GotIt::getStringDe()
+	std::string Menus_GotIt::getStringDe()
 	{
 		return "Ich verstehe!";
 	}
 
-	std::string GotIt::getStringEl()
+	std::string Menus_GotIt::getStringEl()
 	{
 		return "Καταλαβαίνω!";
 	}
 
-	std::string GotIt::getStringEn()
+	std::string Menus_GotIt::getStringEn()
 	{
 		return "Got it!";
 	}
 
-	std::string GotIt::getStringEs()
+	std::string Menus_GotIt::getStringEs()
 	{
 		return "¡Entiendo!";
 	}
 
-	std::string GotIt::getStringEs419()
+	std::string Menus_GotIt::getStringEs419()
 	{
 		return "¡Entiendo!";
 	}
 
-	std::string GotIt::getStringFi()
+	std::string Menus_GotIt::getStringFi()
 	{
 		return "Ymmärrän!";
 	}
 
-	std::string GotIt::getStringFr()
+	std::string Menus_GotIt::getStringFr()
 	{
 		return "Je comprends!";
 	}
 
-	std::string GotIt::getStringHu()
+	std::string Menus_GotIt::getStringHu()
 	{
 		return "Megértem!";
 	}
 
-	std::string GotIt::getStringIt()
+	std::string Menus_GotIt::getStringIt()
 	{
 		return "Capisco!";
 	}
 
-	std::string GotIt::getStringJa()
+	std::string Menus_GotIt::getStringJa()
 	{
 		return "わかります！";
 	}
 
-	std::string GotIt::getStringKo()
+	std::string Menus_GotIt::getStringKo()
 	{
 		return "이해 했어!";
 	}
 
-	std::string GotIt::getStringNl()
+	std::string Menus_GotIt::getStringNl()
 	{
 		return "Ik begrijp het!";
 	}
 
-	std::string GotIt::getStringNo()
+	std::string Menus_GotIt::getStringNo()
 	{
 		return "Jeg forstår!";
 	}
 
-	std::string GotIt::getStringPl()
+	std::string Menus_GotIt::getStringPl()
 	{
 		return "Rozumiem!";
 	}
 
-	std::string GotIt::getStringPt()
+	std::string Menus_GotIt::getStringPt()
 	{
 		return "Compreendo!";
 	}
 
-	std::string GotIt::getStringPtBr()
+	std::string Menus_GotIt::getStringPtBr()
 	{
 		return "Compreendo!";
 	}
 
-	std::string GotIt::getStringRo()
+	std::string Menus_GotIt::getStringRo()
 	{
 		return "Inteleg!";
 	}
 
-	std::string GotIt::getStringRu()
+	std::string Menus_GotIt::getStringRu()
 	{
 		return "Я понимаю!";
 	}
 
-	std::string GotIt::getStringSv()
+	std::string Menus_GotIt::getStringSv()
 	{
 		return "Jag förstår!";
 	}
 
-	std::string GotIt::getStringTh()
+	std::string Menus_GotIt::getStringTh()
 	{
 		return "ฉันเข้าใจ!";
 	}
 
-	std::string GotIt::getStringTr()
+	std::string Menus_GotIt::getStringTr()
 	{
 		return "Anlıyorum!";
 	}
 
-	std::string GotIt::getStringUk()
+	std::string Menus_GotIt::getStringUk()
 	{
 		return "Я розумію!";
 	}
 
-	std::string GotIt::getStringVi()
+	std::string Menus_GotIt::getStringVi()
 	{
 		return "Tôi hiểu!";
 	}
 
-	std::string GotIt::getStringZhCn()
+	std::string Menus_GotIt::getStringZhCn()
 	{
 		return "我明白！";
 	}
 
-	std::string GotIt::getStringZhTw()
+	std::string Menus_GotIt::getStringZhTw()
 	{
 		return "我明白！";
 	}

@@ -4,171 +4,171 @@
 
 #include "Accept.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Accept* Accept::create()
+	Menus_Accept* Menus_Accept::create()
 	{
-		Accept* instance = new Accept();
+		Menus_Accept* instance = new Menus_Accept();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Accept::clone()
+	LocalizedString* Menus_Accept::clone()
 	{
-		return Accept::create();
+		return Menus_Accept::create();
 	}
 
-	Accept::Accept() : LocalizedString()
-	{
-	}
-
-	Accept::~Accept()
+	Menus_Accept::Menus_Accept() : LocalizedString()
 	{
 	}
 
-	std::string Accept::getStringAr()
+	Menus_Accept::~Menus_Accept()
+	{
+	}
+
+	std::string Menus_Accept::getStringAr()
 	{
 		return "قبول";
 	}
 
-	std::string Accept::getStringBg()
+	std::string Menus_Accept::getStringBg()
 	{
 		return "приемам";
 	}
 
-	std::string Accept::getStringCs()
+	std::string Menus_Accept::getStringCs()
 	{
 		return "Akceptovat";
 	}
 
-	std::string Accept::getStringDa()
+	std::string Menus_Accept::getStringDa()
 	{
 		return "Acceptere";
 	}
 
-	std::string Accept::getStringDe()
+	std::string Menus_Accept::getStringDe()
 	{
 		return "Akzeptieren";
 	}
 
-	std::string Accept::getStringEl()
+	std::string Menus_Accept::getStringEl()
 	{
 		return "Αποδέχομαι";
 	}
 
-	std::string Accept::getStringEn()
+	std::string Menus_Accept::getStringEn()
 	{
 		return "Accept";
 	}
 
-	std::string Accept::getStringEs()
+	std::string Menus_Accept::getStringEs()
 	{
 		return "Aceptar";
 	}
 
-	std::string Accept::getStringEs419()
+	std::string Menus_Accept::getStringEs419()
 	{
 		return "Aceptar";
 	}
 
-	std::string Accept::getStringFi()
+	std::string Menus_Accept::getStringFi()
 	{
 		return "Hyväksyä";
 	}
 
-	std::string Accept::getStringFr()
+	std::string Menus_Accept::getStringFr()
 	{
 		return "Acceptez";
 	}
 
-	std::string Accept::getStringHu()
+	std::string Menus_Accept::getStringHu()
 	{
 		return "Elfogad";
 	}
 
-	std::string Accept::getStringIt()
+	std::string Menus_Accept::getStringIt()
 	{
 		return "Accettare";
 	}
 
-	std::string Accept::getStringJa()
+	std::string Menus_Accept::getStringJa()
 	{
 		return "受け入れる";
 	}
 
-	std::string Accept::getStringKo()
+	std::string Menus_Accept::getStringKo()
 	{
 		return "동의";
 	}
 
-	std::string Accept::getStringNl()
+	std::string Menus_Accept::getStringNl()
 	{
 		return "Aanvaarden";
 	}
 
-	std::string Accept::getStringNo()
+	std::string Menus_Accept::getStringNo()
 	{
 		return "Aksepterer";
 	}
 
-	std::string Accept::getStringPl()
+	std::string Menus_Accept::getStringPl()
 	{
 		return "Zaakceptować";
 	}
 
-	std::string Accept::getStringPt()
+	std::string Menus_Accept::getStringPt()
 	{
 		return "Aceitar";
 	}
 
-	std::string Accept::getStringPtBr()
+	std::string Menus_Accept::getStringPtBr()
 	{
 		return "Aceitar";
 	}
 
-	std::string Accept::getStringRo()
+	std::string Menus_Accept::getStringRo()
 	{
 		return "Accept";
 	}
 
-	std::string Accept::getStringRu()
+	std::string Menus_Accept::getStringRu()
 	{
 		return "принимать";
 	}
 
-	std::string Accept::getStringSv()
+	std::string Menus_Accept::getStringSv()
 	{
 		return "Acceptera";
 	}
 
-	std::string Accept::getStringTh()
+	std::string Menus_Accept::getStringTh()
 	{
 		return "ยอมรับ";
 	}
 
-	std::string Accept::getStringTr()
+	std::string Menus_Accept::getStringTr()
 	{
 		return "Kabul etmek";
 	}
 
-	std::string Accept::getStringUk()
+	std::string Menus_Accept::getStringUk()
 	{
 		return "Прийняти";
 	}
 
-	std::string Accept::getStringVi()
+	std::string Menus_Accept::getStringVi()
 	{
 		return "Chấp nhận";
 	}
 
-	std::string Accept::getStringZhCn()
+	std::string Menus_Accept::getStringZhCn()
 	{
 		return "接受";
 	}
 
-	std::string Accept::getStringZhTw()
+	std::string Menus_Accept::getStringZhTw()
 	{
 		return "接受";
 	}

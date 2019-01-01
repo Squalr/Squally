@@ -4,171 +4,171 @@
 
 #include "Next.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Next* Next::create()
+	Menus_Next* Menus_Next::create()
 	{
-		Next* instance = new Next();
+		Menus_Next* instance = new Menus_Next();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Next::clone()
+	LocalizedString* Menus_Next::clone()
 	{
-		return Next::create();
+		return Menus_Next::create();
 	}
 
-	Next::Next() : LocalizedString()
-	{
-	}
-
-	Next::~Next()
+	Menus_Next::Menus_Next() : LocalizedString()
 	{
 	}
 
-	std::string Next::getStringAr()
+	Menus_Next::~Menus_Next()
+	{
+	}
+
+	std::string Menus_Next::getStringAr()
 	{
 		return "التالى";
 	}
 
-	std::string Next::getStringBg()
+	std::string Menus_Next::getStringBg()
 	{
 		return "Следващия";
 	}
 
-	std::string Next::getStringCs()
+	std::string Menus_Next::getStringCs()
 	{
 		return "další";
 	}
 
-	std::string Next::getStringDa()
+	std::string Menus_Next::getStringDa()
 	{
 		return "Næste";
 	}
 
-	std::string Next::getStringDe()
+	std::string Menus_Next::getStringDe()
 	{
 		return "Nächster";
 	}
 
-	std::string Next::getStringEl()
+	std::string Menus_Next::getStringEl()
 	{
 		return "Επόμενο";
 	}
 
-	std::string Next::getStringEn()
+	std::string Menus_Next::getStringEn()
 	{
 		return "Next";
 	}
 
-	std::string Next::getStringEs()
+	std::string Menus_Next::getStringEs()
 	{
 		return "Siguiente";
 	}
 
-	std::string Next::getStringEs419()
+	std::string Menus_Next::getStringEs419()
 	{
 		return "Siguiente";
 	}
 
-	std::string Next::getStringFi()
+	std::string Menus_Next::getStringFi()
 	{
 		return "Seuraava";
 	}
 
-	std::string Next::getStringFr()
+	std::string Menus_Next::getStringFr()
 	{
 		return "Suivant";
 	}
 
-	std::string Next::getStringHu()
+	std::string Menus_Next::getStringHu()
 	{
 		return "Következő";
 	}
 
-	std::string Next::getStringIt()
+	std::string Menus_Next::getStringIt()
 	{
 		return "Il prossimo";
 	}
 
-	std::string Next::getStringJa()
+	std::string Menus_Next::getStringJa()
 	{
 		return "次";
 	}
 
-	std::string Next::getStringKo()
+	std::string Menus_Next::getStringKo()
 	{
 		return "다음 것";
 	}
 
-	std::string Next::getStringNl()
+	std::string Menus_Next::getStringNl()
 	{
 		return "volgende";
 	}
 
-	std::string Next::getStringNo()
+	std::string Menus_Next::getStringNo()
 	{
 		return "neste";
 	}
 
-	std::string Next::getStringPl()
+	std::string Menus_Next::getStringPl()
 	{
 		return "Kolejny";
 	}
 
-	std::string Next::getStringPt()
+	std::string Menus_Next::getStringPt()
 	{
 		return "Próximo";
 	}
 
-	std::string Next::getStringPtBr()
+	std::string Menus_Next::getStringPtBr()
 	{
 		return "Próximo";
 	}
 
-	std::string Next::getStringRo()
+	std::string Menus_Next::getStringRo()
 	{
 		return "Următor →";
 	}
 
-	std::string Next::getStringRu()
+	std::string Menus_Next::getStringRu()
 	{
 		return "следующий";
 	}
 
-	std::string Next::getStringSv()
+	std::string Menus_Next::getStringSv()
 	{
 		return "Nästa";
 	}
 
-	std::string Next::getStringTh()
+	std::string Menus_Next::getStringTh()
 	{
 		return "ต่อไป";
 	}
 
-	std::string Next::getStringTr()
+	std::string Menus_Next::getStringTr()
 	{
 		return "Sonraki";
 	}
 
-	std::string Next::getStringUk()
+	std::string Menus_Next::getStringUk()
 	{
 		return "Далі";
 	}
 
-	std::string Next::getStringVi()
+	std::string Menus_Next::getStringVi()
 	{
 		return "Kế tiếp";
 	}
 
-	std::string Next::getStringZhCn()
+	std::string Menus_Next::getStringZhCn()
 	{
 		return "下一个";
 	}
 
-	std::string Next::getStringZhTw()
+	std::string Menus_Next::getStringZhTw()
 	{
 		return "下一個";
 	}

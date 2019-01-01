@@ -35,6 +35,7 @@
 #include "Strings/Hexus/StoreLabelDecimal.h"
 #include "Strings/Hexus/StoreLabelHex.h"
 #include "Strings/Hexus/StoreLabelSpecial.h"
+#include "Strings/Numerics/Numeric.h"
 
 using namespace cocos2d;
 
@@ -67,7 +68,7 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->goldPanel = Sprite::create(UIResources::Menus_StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Numerics_Numeric::create());
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	this->goldLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -81,8 +82,8 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootboxesNode = Node::create();
 	this->storeMenu = Sprite::create(UIResources::Menus_StoreMenu_StoreBoard);
 
-	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
-	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Back::create());
+	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
+	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 	
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -98,8 +99,8 @@ HexusStoreMenu::HexusStoreMenu()
 	this->lootBoxRewardBackground->setOpacity(0);
 
 	this->chosenCardsNode = Node::create();
-	LocalizedLabel* lootBoxReturnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
-	LocalizedLabel* lootBoxReturnLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Return::create());
+	LocalizedLabel* lootBoxReturnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel* lootBoxReturnLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 
 	lootBoxReturnLabel->enableOutline(Color4B::BLACK, 2);
 	lootBoxReturnLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -138,10 +139,10 @@ HexusStoreMenu::HexusStoreMenu()
 	hexIcon->setPosition(Vec2(-32.0f, 0.0f));
 	specialIcon->setPosition(Vec2(-32.0f, 0.0f));
 
-	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelBinary::create());
-	LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelDecimal::create());
-	LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelHex::create());
-	LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::StoreLabelSpecial::create());
+	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelBinary::create());
+	LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelDecimal::create());
+	LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelHex::create());
+	LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelSpecial::create());
 
 	binaryLabel->enableOutline(Color4B::BLACK, 3);
 	binaryLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -444,10 +445,10 @@ std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string 
 	animationNode->playAnimation();
 
 	MenuSprite* frame = MenuSprite::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
-	priceLabel->setString(std::to_string(price));
+	priceLabel->setStringReplacementVariables({ std::to_string(price) });
 
 	animationNode->setScale(HexusStoreMenu::LootBoxScale);
 	animationNode->setPosition(Vec2(0.0f, 16.0f));
@@ -574,10 +575,10 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 
 	this->updateCardLimitText(cardLimitLabel, cardData);
 
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
-	priceLabel->setString(std::to_string(price));
+	priceLabel->setStringReplacementVariables({ std::to_string(price) });
 
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -144.0f));
@@ -625,7 +626,7 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, CardData* cardDa
 {
 	int ownedCount = CardStorage::getOwnedCardCount(cardData);
 
-	label->setString(std::to_string(ownedCount) + " / " + std::to_string(3));
+	label->setStringReplacementVariables({ std::to_string(ownedCount) + " / " + std::to_string(3) });
 
 	if (ownedCount >= 3)
 	{
@@ -873,7 +874,7 @@ void HexusStoreMenu::hideMenus()
 
 void HexusStoreMenu::updateGoldText()
 {
-	this->goldLabel->setString(std::to_string(CardStorage::getGold()));
+	this->goldLabel->setStringReplacementVariables({ std::to_string(CardStorage::getGold()) });
 }
 
 CardData* HexusStoreMenu::chooseRandomCard(std::map<CardData*, float> cardChoices)

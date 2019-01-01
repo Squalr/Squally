@@ -4,171 +4,171 @@
 
 #include "BinaryMax.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	BinaryMax* BinaryMax::create()
+	Hexus_BinaryMax* Hexus_BinaryMax::create()
 	{
-		BinaryMax* instance = new BinaryMax();
+		Hexus_BinaryMax* instance = new Hexus_BinaryMax();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* BinaryMax::clone()
+	LocalizedString* Hexus_BinaryMax::clone()
 	{
-		return BinaryMax::create();
+		return Hexus_BinaryMax::create();
 	}
 
-	BinaryMax::BinaryMax() : LocalizedString()
-	{
-	}
-
-	BinaryMax::~BinaryMax()
+	Hexus_BinaryMax::Hexus_BinaryMax() : LocalizedString()
 	{
 	}
 
-	std::string BinaryMax::getStringAr()
+	Hexus_BinaryMax::~Hexus_BinaryMax()
 	{
-		return "1111";
 	}
 
-	std::string BinaryMax::getStringBg()
+	std::string Hexus_BinaryMax::getStringAr()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringCs()
+	std::string Hexus_BinaryMax::getStringBg()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringDa()
+	std::string Hexus_BinaryMax::getStringCs()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringDe()
+	std::string Hexus_BinaryMax::getStringDa()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringEl()
+	std::string Hexus_BinaryMax::getStringDe()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringEn()
+	std::string Hexus_BinaryMax::getStringEl()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringEs()
+	std::string Hexus_BinaryMax::getStringEn()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringEs419()
+	std::string Hexus_BinaryMax::getStringEs()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringFi()
+	std::string Hexus_BinaryMax::getStringEs419()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringFr()
+	std::string Hexus_BinaryMax::getStringFi()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringHu()
+	std::string Hexus_BinaryMax::getStringFr()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringIt()
+	std::string Hexus_BinaryMax::getStringHu()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringJa()
+	std::string Hexus_BinaryMax::getStringIt()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringKo()
+	std::string Hexus_BinaryMax::getStringJa()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringNl()
+	std::string Hexus_BinaryMax::getStringKo()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringNo()
+	std::string Hexus_BinaryMax::getStringNl()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringPl()
+	std::string Hexus_BinaryMax::getStringNo()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringPt()
+	std::string Hexus_BinaryMax::getStringPl()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringPtBr()
+	std::string Hexus_BinaryMax::getStringPt()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringRo()
+	std::string Hexus_BinaryMax::getStringPtBr()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringRu()
+	std::string Hexus_BinaryMax::getStringRo()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringSv()
+	std::string Hexus_BinaryMax::getStringRu()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringTh()
+	std::string Hexus_BinaryMax::getStringSv()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringTr()
+	std::string Hexus_BinaryMax::getStringTh()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringUk()
+	std::string Hexus_BinaryMax::getStringTr()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringVi()
+	std::string Hexus_BinaryMax::getStringUk()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringZhCn()
+	std::string Hexus_BinaryMax::getStringVi()
 	{
 		return "1111";
 	}
 
-	std::string BinaryMax::getStringZhTw()
+	std::string Hexus_BinaryMax::getStringZhCn()
+	{
+		return "1111";
+	}
+
+	std::string Hexus_BinaryMax::getStringZhTw()
 	{
 		return "1111";
 	}

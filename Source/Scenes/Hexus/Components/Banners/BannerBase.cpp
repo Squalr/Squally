@@ -1,6 +1,5 @@
 #include "BannerBase.h"
 
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
@@ -69,9 +68,9 @@ void BannerBase::onAnyStateChange(GameState* gameState)
 	ComponentBase::onAnyStateChange(gameState);
 }
 
-void BannerBase::setBannerText(std::string text)
+void BannerBase::setBannerText(LocalizedString* text)
 {
-	this->statusLabel->setString(text);
+	this->statusLabel->setLocalizedString(text);
 }
 
 void BannerBase::flashBanner()

@@ -4,171 +4,171 @@
 
 #include "LastStand.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	LastStand* LastStand::create()
+	Hexus_LastStand* Hexus_LastStand::create()
 	{
-		LastStand* instance = new LastStand();
+		Hexus_LastStand* instance = new Hexus_LastStand();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* LastStand::clone()
+	LocalizedString* Hexus_LastStand::clone()
 	{
-		return LastStand::create();
+		return Hexus_LastStand::create();
 	}
 
-	LastStand::LastStand() : LocalizedString()
-	{
-	}
-
-	LastStand::~LastStand()
+	Hexus_LastStand::Hexus_LastStand() : LocalizedString()
 	{
 	}
 
-	std::string LastStand::getStringAr()
+	Hexus_LastStand::~Hexus_LastStand()
+	{
+	}
+
+	std::string Hexus_LastStand::getStringAr()
 	{
 		return "الموقف الأخير";
 	}
 
-	std::string LastStand::getStringBg()
+	std::string Hexus_LastStand::getStringBg()
 	{
 		return "Последния оцелял";
 	}
 
-	std::string LastStand::getStringCs()
+	std::string Hexus_LastStand::getStringCs()
 	{
 		return "Poslední vzdor";
 	}
 
-	std::string LastStand::getStringDa()
+	std::string Hexus_LastStand::getStringDa()
 	{
 		return "Last Stand";
 	}
 
-	std::string LastStand::getStringDe()
+	std::string Hexus_LastStand::getStringDe()
 	{
 		return "Last Stand";
 	}
 
-	std::string LastStand::getStringEl()
+	std::string Hexus_LastStand::getStringEl()
 	{
 		return "Τελευταία στάση";
 	}
 
-	std::string LastStand::getStringEn()
+	std::string Hexus_LastStand::getStringEn()
 	{
 		return "Last Stand";
 	}
 
-	std::string LastStand::getStringEs()
+	std::string Hexus_LastStand::getStringEs()
 	{
 		return "Última resistencia";
 	}
 
-	std::string LastStand::getStringEs419()
+	std::string Hexus_LastStand::getStringEs419()
 	{
 		return "Última resistencia";
 	}
 
-	std::string LastStand::getStringFi()
+	std::string Hexus_LastStand::getStringFi()
 	{
 		return "Last Stand";
 	}
 
-	std::string LastStand::getStringFr()
+	std::string Hexus_LastStand::getStringFr()
 	{
 		return "Dernier combat";
 	}
 
-	std::string LastStand::getStringHu()
+	std::string Hexus_LastStand::getStringHu()
 	{
 		return "Utolsó vérig";
 	}
 
-	std::string LastStand::getStringIt()
+	std::string Hexus_LastStand::getStringIt()
 	{
 		return "Ultimo atto";
 	}
 
-	std::string LastStand::getStringJa()
+	std::string Hexus_LastStand::getStringJa()
 	{
 		return "最後の砦";
 	}
 
-	std::string LastStand::getStringKo()
+	std::string Hexus_LastStand::getStringKo()
 	{
 		return "마지막 스탠드";
 	}
 
-	std::string LastStand::getStringNl()
+	std::string Hexus_LastStand::getStringNl()
 	{
 		return "Last Stand";
 	}
 
-	std::string LastStand::getStringNo()
+	std::string Hexus_LastStand::getStringNo()
 	{
 		return "Siste skanse";
 	}
 
-	std::string LastStand::getStringPl()
+	std::string Hexus_LastStand::getStringPl()
 	{
 		return "Ostatnia podstawa";
 	}
 
-	std::string LastStand::getStringPt()
+	std::string Hexus_LastStand::getStringPt()
 	{
 		return "Última posição";
 	}
 
-	std::string LastStand::getStringPtBr()
+	std::string Hexus_LastStand::getStringPtBr()
 	{
 		return "Última posição";
 	}
 
-	std::string LastStand::getStringRo()
+	std::string Hexus_LastStand::getStringRo()
 	{
 		return "Ultima redută";
 	}
 
-	std::string LastStand::getStringRu()
+	std::string Hexus_LastStand::getStringRu()
 	{
 		return "Последний бой";
 	}
 
-	std::string LastStand::getStringSv()
+	std::string Hexus_LastStand::getStringSv()
 	{
 		return "Sista stativet";
 	}
 
-	std::string LastStand::getStringTh()
+	std::string Hexus_LastStand::getStringTh()
 	{
 		return "คนสุดท้าย";
 	}
 
-	std::string LastStand::getStringTr()
+	std::string Hexus_LastStand::getStringTr()
 	{
 		return "Son şans";
 	}
 
-	std::string LastStand::getStringUk()
+	std::string Hexus_LastStand::getStringUk()
 	{
 		return "Останній стенд";
 	}
 
-	std::string LastStand::getStringVi()
+	std::string Hexus_LastStand::getStringVi()
 	{
 		return "Đứng cuối";
 	}
 
-	std::string LastStand::getStringZhCn()
+	std::string Hexus_LastStand::getStringZhCn()
 	{
 		return "最后一站";
 	}
 
-	std::string LastStand::getStringZhTw()
+	std::string Hexus_LastStand::getStringZhTw()
 	{
 		return "最後一站";
 	}

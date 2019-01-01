@@ -4,171 +4,171 @@
 
 #include "VoidStar.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	VoidStar* VoidStar::create()
+	Menus_Maps_VoidStar* Menus_Maps_VoidStar::create()
 	{
-		VoidStar* instance = new VoidStar();
+		Menus_Maps_VoidStar* instance = new Menus_Maps_VoidStar();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* VoidStar::clone()
+	LocalizedString* Menus_Maps_VoidStar::clone()
 	{
-		return VoidStar::create();
+		return Menus_Maps_VoidStar::create();
 	}
 
-	VoidStar::VoidStar() : LocalizedString()
-	{
-	}
-
-	VoidStar::~VoidStar()
+	Menus_Maps_VoidStar::Menus_Maps_VoidStar() : LocalizedString()
 	{
 	}
 
-	std::string VoidStar::getStringAr()
+	Menus_Maps_VoidStar::~Menus_Maps_VoidStar()
+	{
+	}
+
+	std::string Menus_Maps_VoidStar::getStringAr()
 	{
 		return "نجم الفراغ";
 	}
 
-	std::string VoidStar::getStringBg()
+	std::string Menus_Maps_VoidStar::getStringBg()
 	{
 		return "Пуста звезда";
 	}
 
-	std::string VoidStar::getStringCs()
+	std::string Menus_Maps_VoidStar::getStringCs()
 	{
 		return "Neplatná hvězda";
 	}
 
-	std::string VoidStar::getStringDa()
+	std::string Menus_Maps_VoidStar::getStringDa()
 	{
 		return "Ugyldig stjerne";
 	}
 
-	std::string VoidStar::getStringDe()
+	std::string Menus_Maps_VoidStar::getStringDe()
 	{
 		return "Leerer Stern";
 	}
 
-	std::string VoidStar::getStringEl()
+	std::string Menus_Maps_VoidStar::getStringEl()
 	{
 		return "Άκυρο αστέρι";
 	}
 
-	std::string VoidStar::getStringEn()
+	std::string Menus_Maps_VoidStar::getStringEn()
 	{
 		return "Void Star";
 	}
 
-	std::string VoidStar::getStringEs()
+	std::string Menus_Maps_VoidStar::getStringEs()
 	{
 		return "Estrella del vacio";
 	}
 
-	std::string VoidStar::getStringEs419()
+	std::string Menus_Maps_VoidStar::getStringEs419()
 	{
 		return "Estrella del vacio";
 	}
 
-	std::string VoidStar::getStringFi()
+	std::string Menus_Maps_VoidStar::getStringFi()
 	{
 		return "Tyhjä tähti";
 	}
 
-	std::string VoidStar::getStringFr()
+	std::string Menus_Maps_VoidStar::getStringFr()
 	{
 		return "Étoile vide";
 	}
 
-	std::string VoidStar::getStringHu()
+	std::string Menus_Maps_VoidStar::getStringHu()
 	{
 		return "Érvénytelen csillag";
 	}
 
-	std::string VoidStar::getStringIt()
+	std::string Menus_Maps_VoidStar::getStringIt()
 	{
 		return "Stella vuota";
 	}
 
-	std::string VoidStar::getStringJa()
+	std::string Menus_Maps_VoidStar::getStringJa()
 	{
 		return "ヴォイドスター";
 	}
 
-	std::string VoidStar::getStringKo()
+	std::string Menus_Maps_VoidStar::getStringKo()
 	{
 		return "공허한 별";
 	}
 
-	std::string VoidStar::getStringNl()
+	std::string Menus_Maps_VoidStar::getStringNl()
 	{
 		return "Leegte ster";
 	}
 
-	std::string VoidStar::getStringNo()
+	std::string Menus_Maps_VoidStar::getStringNo()
 	{
 		return "Gyldig stjerne";
 	}
 
-	std::string VoidStar::getStringPl()
+	std::string Menus_Maps_VoidStar::getStringPl()
 	{
 		return "Gwiazda pustki";
 	}
 
-	std::string VoidStar::getStringPt()
+	std::string Menus_Maps_VoidStar::getStringPt()
 	{
 		return "Estrela vazia";
 	}
 
-	std::string VoidStar::getStringPtBr()
+	std::string Menus_Maps_VoidStar::getStringPtBr()
 	{
 		return "Estrela vazia";
 	}
 
-	std::string VoidStar::getStringRo()
+	std::string Menus_Maps_VoidStar::getStringRo()
 	{
 		return "Void stea";
 	}
 
-	std::string VoidStar::getStringRu()
+	std::string Menus_Maps_VoidStar::getStringRu()
 	{
 		return "Пустая звезда";
 	}
 
-	std::string VoidStar::getStringSv()
+	std::string Menus_Maps_VoidStar::getStringSv()
 	{
 		return "Annullerad stjärna";
 	}
 
-	std::string VoidStar::getStringTh()
+	std::string Menus_Maps_VoidStar::getStringTh()
 	{
 		return "ดาวโมฆะ";
 	}
 
-	std::string VoidStar::getStringTr()
+	std::string Menus_Maps_VoidStar::getStringTr()
 	{
 		return "Boşluk yıldızı";
 	}
 
-	std::string VoidStar::getStringUk()
+	std::string Menus_Maps_VoidStar::getStringUk()
 	{
 		return "Пустельна зірка";
 	}
 
-	std::string VoidStar::getStringVi()
+	std::string Menus_Maps_VoidStar::getStringVi()
 	{
 		return "Ngôi sao trống";
 	}
 
-	std::string VoidStar::getStringZhCn()
+	std::string Menus_Maps_VoidStar::getStringZhCn()
 	{
 		return "虚空之星";
 	}
 
-	std::string VoidStar::getStringZhTw()
+	std::string Menus_Maps_VoidStar::getStringZhTw()
 	{
 		return "虛空之星";
 	}

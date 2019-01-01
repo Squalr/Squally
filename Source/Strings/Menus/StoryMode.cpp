@@ -4,171 +4,171 @@
 
 #include "StoryMode.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	StoryMode* StoryMode::create()
+	Menus_StoryMode* Menus_StoryMode::create()
 	{
-		StoryMode* instance = new StoryMode();
+		Menus_StoryMode* instance = new Menus_StoryMode();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* StoryMode::clone()
+	LocalizedString* Menus_StoryMode::clone()
 	{
-		return StoryMode::create();
+		return Menus_StoryMode::create();
 	}
 
-	StoryMode::StoryMode() : LocalizedString()
-	{
-	}
-
-	StoryMode::~StoryMode()
+	Menus_StoryMode::Menus_StoryMode() : LocalizedString()
 	{
 	}
 
-	std::string StoryMode::getStringAr()
+	Menus_StoryMode::~Menus_StoryMode()
+	{
+	}
+
+	std::string Menus_StoryMode::getStringAr()
 	{
 		return "وضع القصة";
 	}
 
-	std::string StoryMode::getStringBg()
+	std::string Menus_StoryMode::getStringBg()
 	{
 		return "Режим на историята";
 	}
 
-	std::string StoryMode::getStringCs()
+	std::string Menus_StoryMode::getStringCs()
 	{
 		return "Příběhový mód";
 	}
 
-	std::string StoryMode::getStringDa()
+	std::string Menus_StoryMode::getStringDa()
 	{
 		return "Story Mode";
 	}
 
-	std::string StoryMode::getStringDe()
+	std::string Menus_StoryMode::getStringDe()
 	{
 		return "Geschichtsmodus";
 	}
 
-	std::string StoryMode::getStringEl()
+	std::string Menus_StoryMode::getStringEl()
 	{
 		return "Λειτουργία ιστορίας";
 	}
 
-	std::string StoryMode::getStringEn()
+	std::string Menus_StoryMode::getStringEn()
 	{
 		return "Story Mode";
 	}
 
-	std::string StoryMode::getStringEs()
+	std::string Menus_StoryMode::getStringEs()
 	{
 		return "Modo historia";
 	}
 
-	std::string StoryMode::getStringEs419()
+	std::string Menus_StoryMode::getStringEs419()
 	{
 		return "Modo historia";
 	}
 
-	std::string StoryMode::getStringFi()
+	std::string Menus_StoryMode::getStringFi()
 	{
 		return "Story-tila";
 	}
 
-	std::string StoryMode::getStringFr()
+	std::string Menus_StoryMode::getStringFr()
 	{
 		return "Mode Histoire";
 	}
 
-	std::string StoryMode::getStringHu()
+	std::string Menus_StoryMode::getStringHu()
 	{
 		return "Történetmód";
 	}
 
-	std::string StoryMode::getStringIt()
+	std::string Menus_StoryMode::getStringIt()
 	{
 		return "Modalità storia";
 	}
 
-	std::string StoryMode::getStringJa()
+	std::string Menus_StoryMode::getStringJa()
 	{
 		return "ストーリーモード";
 	}
 
-	std::string StoryMode::getStringKo()
+	std::string Menus_StoryMode::getStringKo()
 	{
 		return "스토리 모드";
 	}
 
-	std::string StoryMode::getStringNl()
+	std::string Menus_StoryMode::getStringNl()
 	{
 		return "Verhaal modus";
 	}
 
-	std::string StoryMode::getStringNo()
+	std::string Menus_StoryMode::getStringNo()
 	{
 		return "Fortellingsmodus";
 	}
 
-	std::string StoryMode::getStringPl()
+	std::string Menus_StoryMode::getStringPl()
 	{
 		return "Tryb opowieści";
 	}
 
-	std::string StoryMode::getStringPt()
+	std::string Menus_StoryMode::getStringPt()
 	{
 		return "Modo história";
 	}
 
-	std::string StoryMode::getStringPtBr()
+	std::string Menus_StoryMode::getStringPtBr()
 	{
 		return "Modo história";
 	}
 
-	std::string StoryMode::getStringRo()
+	std::string Menus_StoryMode::getStringRo()
 	{
 		return "Modul poveste";
 	}
 
-	std::string StoryMode::getStringRu()
+	std::string Menus_StoryMode::getStringRu()
 	{
 		return "Режим истории";
 	}
 
-	std::string StoryMode::getStringSv()
+	std::string Menus_StoryMode::getStringSv()
 	{
 		return "Story Mode";
 	}
 
-	std::string StoryMode::getStringTh()
+	std::string Menus_StoryMode::getStringTh()
 	{
 		return "โหมดเนื้อเรื่อง";
 	}
 
-	std::string StoryMode::getStringTr()
+	std::string Menus_StoryMode::getStringTr()
 	{
 		return "Hikaye modu";
 	}
 
-	std::string StoryMode::getStringUk()
+	std::string Menus_StoryMode::getStringUk()
 	{
 		return "Режим історії";
 	}
 
-	std::string StoryMode::getStringVi()
+	std::string Menus_StoryMode::getStringVi()
 	{
 		return "Chế độ câu chuyện";
 	}
 
-	std::string StoryMode::getStringZhCn()
+	std::string Menus_StoryMode::getStringZhCn()
 	{
 		return "故事模式";
 	}
 
-	std::string StoryMode::getStringZhTw()
+	std::string Menus_StoryMode::getStringZhTw()
 	{
 		return "故事模式";
 	}

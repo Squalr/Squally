@@ -4,171 +4,171 @@
 
 #include "Subtract.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Subtract* Subtract::create()
+	Hexus_Cards_Subtract* Hexus_Cards_Subtract::create()
 	{
-		Subtract* instance = new Subtract();
+		Hexus_Cards_Subtract* instance = new Hexus_Cards_Subtract();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Subtract::clone()
+	LocalizedString* Hexus_Cards_Subtract::clone()
 	{
-		return Subtract::create();
+		return Hexus_Cards_Subtract::create();
 	}
 
-	Subtract::Subtract() : LocalizedString()
-	{
-	}
-
-	Subtract::~Subtract()
+	Hexus_Cards_Subtract::Hexus_Cards_Subtract() : LocalizedString()
 	{
 	}
 
-	std::string Subtract::getStringAr()
+	Hexus_Cards_Subtract::~Hexus_Cards_Subtract()
+	{
+	}
+
+	std::string Hexus_Cards_Subtract::getStringAr()
 	{
 		return "طرح";
 	}
 
-	std::string Subtract::getStringBg()
+	std::string Hexus_Cards_Subtract::getStringBg()
 	{
 		return "изваждам";
 	}
 
-	std::string Subtract::getStringCs()
+	std::string Hexus_Cards_Subtract::getStringCs()
 	{
 		return "Odčítat";
 	}
 
-	std::string Subtract::getStringDa()
+	std::string Hexus_Cards_Subtract::getStringDa()
 	{
 		return "Trække fra";
 	}
 
-	std::string Subtract::getStringDe()
+	std::string Hexus_Cards_Subtract::getStringDe()
 	{
 		return "Subtrahieren";
 	}
 
-	std::string Subtract::getStringEl()
+	std::string Hexus_Cards_Subtract::getStringEl()
 	{
 		return "Αφαιρώ";
 	}
 
-	std::string Subtract::getStringEn()
+	std::string Hexus_Cards_Subtract::getStringEn()
 	{
 		return "Subtract";
 	}
 
-	std::string Subtract::getStringEs()
+	std::string Hexus_Cards_Subtract::getStringEs()
 	{
 		return "Sustraer";
 	}
 
-	std::string Subtract::getStringEs419()
+	std::string Hexus_Cards_Subtract::getStringEs419()
 	{
 		return "Sustraer";
 	}
 
-	std::string Subtract::getStringFi()
+	std::string Hexus_Cards_Subtract::getStringFi()
 	{
 		return "Vähentää";
 	}
 
-	std::string Subtract::getStringFr()
+	std::string Hexus_Cards_Subtract::getStringFr()
 	{
 		return "Soustraire";
 	}
 
-	std::string Subtract::getStringHu()
+	std::string Hexus_Cards_Subtract::getStringHu()
 	{
 		return "levon";
 	}
 
-	std::string Subtract::getStringIt()
+	std::string Hexus_Cards_Subtract::getStringIt()
 	{
 		return "Sottrarre";
 	}
 
-	std::string Subtract::getStringJa()
+	std::string Hexus_Cards_Subtract::getStringJa()
 	{
 		return "引き算";
 	}
 
-	std::string Subtract::getStringKo()
+	std::string Hexus_Cards_Subtract::getStringKo()
 	{
 		return "덜다";
 	}
 
-	std::string Subtract::getStringNl()
+	std::string Hexus_Cards_Subtract::getStringNl()
 	{
 		return "Aftrekken";
 	}
 
-	std::string Subtract::getStringNo()
+	std::string Hexus_Cards_Subtract::getStringNo()
 	{
 		return "Trekke fra";
 	}
 
-	std::string Subtract::getStringPl()
+	std::string Hexus_Cards_Subtract::getStringPl()
 	{
 		return "Odejmować";
 	}
 
-	std::string Subtract::getStringPt()
+	std::string Hexus_Cards_Subtract::getStringPt()
 	{
 		return "Subtrair";
 	}
 
-	std::string Subtract::getStringPtBr()
+	std::string Hexus_Cards_Subtract::getStringPtBr()
 	{
 		return "Subtrair";
 	}
 
-	std::string Subtract::getStringRo()
+	std::string Hexus_Cards_Subtract::getStringRo()
 	{
 		return "Scădea";
 	}
 
-	std::string Subtract::getStringRu()
+	std::string Hexus_Cards_Subtract::getStringRu()
 	{
 		return "вычитать";
 	}
 
-	std::string Subtract::getStringSv()
+	std::string Hexus_Cards_Subtract::getStringSv()
 	{
 		return "Subtrahera";
 	}
 
-	std::string Subtract::getStringTh()
+	std::string Hexus_Cards_Subtract::getStringTh()
 	{
 		return "ลบออก";
 	}
 
-	std::string Subtract::getStringTr()
+	std::string Hexus_Cards_Subtract::getStringTr()
 	{
 		return "çıkarmak";
 	}
 
-	std::string Subtract::getStringUk()
+	std::string Hexus_Cards_Subtract::getStringUk()
 	{
 		return "Відняти";
 	}
 
-	std::string Subtract::getStringVi()
+	std::string Hexus_Cards_Subtract::getStringVi()
 	{
 		return "Trừ";
 	}
 
-	std::string Subtract::getStringZhCn()
+	std::string Hexus_Cards_Subtract::getStringZhCn()
 	{
 		return "减去";
 	}
 
-	std::string Subtract::getStringZhTw()
+	std::string Hexus_Cards_Subtract::getStringZhTw()
 	{
 		return "減去";
 	}

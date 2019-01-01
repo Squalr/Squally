@@ -97,7 +97,7 @@ void MechanicalFlail::registerHackables()
 {
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
-		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(LocaleStrings::FlailTargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::FlailTargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
 	};
 
 	auto swingFunc = &MechanicalFlail::swingToAngle;

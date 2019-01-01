@@ -60,7 +60,7 @@ Wind::~Wind()
 
 void Wind::registerHackables()
 {
-	this->windDataSpeedY = HackableData::create(&this->windSpeed.y, LocaleStrings::Empty::create(), typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
+	this->windDataSpeedY = HackableData::create(&this->windSpeed.y, Strings::Empty::create(), typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
 	this->registerData(this->windDataSpeedY);
 }
 

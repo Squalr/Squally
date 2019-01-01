@@ -4,171 +4,171 @@
 
 #include "StoreLabelDecimal.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	StoreLabelDecimal* StoreLabelDecimal::create()
+	Hexus_StoreLabelDecimal* Hexus_StoreLabelDecimal::create()
 	{
-		StoreLabelDecimal* instance = new StoreLabelDecimal();
+		Hexus_StoreLabelDecimal* instance = new Hexus_StoreLabelDecimal();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* StoreLabelDecimal::clone()
+	LocalizedString* Hexus_StoreLabelDecimal::clone()
 	{
-		return StoreLabelDecimal::create();
+		return Hexus_StoreLabelDecimal::create();
 	}
 
-	StoreLabelDecimal::StoreLabelDecimal() : LocalizedString()
-	{
-	}
-
-	StoreLabelDecimal::~StoreLabelDecimal()
+	Hexus_StoreLabelDecimal::Hexus_StoreLabelDecimal() : LocalizedString()
 	{
 	}
 
-	std::string StoreLabelDecimal::getStringAr()
+	Hexus_StoreLabelDecimal::~Hexus_StoreLabelDecimal()
 	{
-		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringBg()
+	std::string Hexus_StoreLabelDecimal::getStringAr()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringCs()
+	std::string Hexus_StoreLabelDecimal::getStringBg()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringDa()
+	std::string Hexus_StoreLabelDecimal::getStringCs()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringDe()
+	std::string Hexus_StoreLabelDecimal::getStringDa()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringEl()
+	std::string Hexus_StoreLabelDecimal::getStringDe()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringEn()
+	std::string Hexus_StoreLabelDecimal::getStringEl()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringEs()
+	std::string Hexus_StoreLabelDecimal::getStringEn()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringEs419()
+	std::string Hexus_StoreLabelDecimal::getStringEs()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringFi()
+	std::string Hexus_StoreLabelDecimal::getStringEs419()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringFr()
+	std::string Hexus_StoreLabelDecimal::getStringFi()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringHu()
+	std::string Hexus_StoreLabelDecimal::getStringFr()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringIt()
+	std::string Hexus_StoreLabelDecimal::getStringHu()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringJa()
+	std::string Hexus_StoreLabelDecimal::getStringIt()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringKo()
+	std::string Hexus_StoreLabelDecimal::getStringJa()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringNl()
+	std::string Hexus_StoreLabelDecimal::getStringKo()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringNo()
+	std::string Hexus_StoreLabelDecimal::getStringNl()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringPl()
+	std::string Hexus_StoreLabelDecimal::getStringNo()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringPt()
+	std::string Hexus_StoreLabelDecimal::getStringPl()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringPtBr()
+	std::string Hexus_StoreLabelDecimal::getStringPt()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringRo()
+	std::string Hexus_StoreLabelDecimal::getStringPtBr()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringRu()
+	std::string Hexus_StoreLabelDecimal::getStringRo()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringSv()
+	std::string Hexus_StoreLabelDecimal::getStringRu()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringTh()
+	std::string Hexus_StoreLabelDecimal::getStringSv()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringTr()
+	std::string Hexus_StoreLabelDecimal::getStringTh()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringUk()
+	std::string Hexus_StoreLabelDecimal::getStringTr()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringVi()
+	std::string Hexus_StoreLabelDecimal::getStringUk()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringZhCn()
+	std::string Hexus_StoreLabelDecimal::getStringVi()
 	{
 		return "15";
 	}
 
-	std::string StoreLabelDecimal::getStringZhTw()
+	std::string Hexus_StoreLabelDecimal::getStringZhCn()
+	{
+		return "15";
+	}
+
+	std::string Hexus_StoreLabelDecimal::getStringZhTw()
 	{
 		return "15";
 	}

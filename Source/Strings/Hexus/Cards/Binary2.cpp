@@ -4,171 +4,171 @@
 
 #include "Binary2.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary2* Binary2::create()
+	Hexus_Cards_Binary2* Hexus_Cards_Binary2::create()
 	{
-		Binary2* instance = new Binary2();
+		Hexus_Cards_Binary2* instance = new Hexus_Cards_Binary2();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary2::clone()
+	LocalizedString* Hexus_Cards_Binary2::clone()
 	{
-		return Binary2::create();
+		return Hexus_Cards_Binary2::create();
 	}
 
-	Binary2::Binary2() : LocalizedString()
-	{
-	}
-
-	Binary2::~Binary2()
+	Hexus_Cards_Binary2::Hexus_Cards_Binary2() : LocalizedString()
 	{
 	}
 
-	std::string Binary2::getStringAr()
+	Hexus_Cards_Binary2::~Hexus_Cards_Binary2()
+	{
+	}
+
+	std::string Hexus_Cards_Binary2::getStringAr()
 	{
 		return "ممتاز";
 	}
 
-	std::string Binary2::getStringBg()
+	std::string Hexus_Cards_Binary2::getStringBg()
 	{
 		return "отличен";
 	}
 
-	std::string Binary2::getStringCs()
+	std::string Hexus_Cards_Binary2::getStringCs()
 	{
 		return "vynikající";
 	}
 
-	std::string Binary2::getStringDa()
+	std::string Hexus_Cards_Binary2::getStringDa()
 	{
 		return "Fremragende";
 	}
 
-	std::string Binary2::getStringDe()
+	std::string Hexus_Cards_Binary2::getStringDe()
 	{
 		return "ausgezeichnet";
 	}
 
-	std::string Binary2::getStringEl()
+	std::string Hexus_Cards_Binary2::getStringEl()
 	{
 		return "Άριστη";
 	}
 
-	std::string Binary2::getStringEn()
+	std::string Hexus_Cards_Binary2::getStringEn()
 	{
 		return "Skitters";
 	}
 
-	std::string Binary2::getStringEs()
+	std::string Hexus_Cards_Binary2::getStringEs()
 	{
 		return "excelente";
 	}
 
-	std::string Binary2::getStringEs419()
+	std::string Hexus_Cards_Binary2::getStringEs419()
 	{
 		return "excelente";
 	}
 
-	std::string Binary2::getStringFi()
+	std::string Hexus_Cards_Binary2::getStringFi()
 	{
 		return "erinomainen";
 	}
 
-	std::string Binary2::getStringFr()
+	std::string Hexus_Cards_Binary2::getStringFr()
 	{
 		return "excellent";
 	}
 
-	std::string Binary2::getStringHu()
+	std::string Hexus_Cards_Binary2::getStringHu()
 	{
 		return "kiváló";
 	}
 
-	std::string Binary2::getStringIt()
+	std::string Hexus_Cards_Binary2::getStringIt()
 	{
 		return "eccellente";
 	}
 
-	std::string Binary2::getStringJa()
+	std::string Hexus_Cards_Binary2::getStringJa()
 	{
 		return "優れました";
 	}
 
-	std::string Binary2::getStringKo()
+	std::string Hexus_Cards_Binary2::getStringKo()
 	{
 		return "우수한";
 	}
 
-	std::string Binary2::getStringNl()
+	std::string Hexus_Cards_Binary2::getStringNl()
 	{
 		return "Sparkle";
 	}
 
-	std::string Binary2::getStringNo()
+	std::string Hexus_Cards_Binary2::getStringNo()
 	{
 		return "utmerket";
 	}
 
-	std::string Binary2::getStringPl()
+	std::string Hexus_Cards_Binary2::getStringPl()
 	{
 		return "doskonały";
 	}
 
-	std::string Binary2::getStringPt()
+	std::string Hexus_Cards_Binary2::getStringPt()
 	{
 		return "excelente";
 	}
 
-	std::string Binary2::getStringPtBr()
+	std::string Hexus_Cards_Binary2::getStringPtBr()
 	{
 		return "excelente";
 	}
 
-	std::string Binary2::getStringRo()
+	std::string Hexus_Cards_Binary2::getStringRo()
 	{
 		return "excelent";
 	}
 
-	std::string Binary2::getStringRu()
+	std::string Hexus_Cards_Binary2::getStringRu()
 	{
 		return "отлично";
 	}
 
-	std::string Binary2::getStringSv()
+	std::string Hexus_Cards_Binary2::getStringSv()
 	{
 		return "utmärkt";
 	}
 
-	std::string Binary2::getStringTh()
+	std::string Hexus_Cards_Binary2::getStringTh()
 	{
 		return "ยอดเยี่ยม";
 	}
 
-	std::string Binary2::getStringTr()
+	std::string Hexus_Cards_Binary2::getStringTr()
 	{
 		return "mükemmel";
 	}
 
-	std::string Binary2::getStringUk()
+	std::string Hexus_Cards_Binary2::getStringUk()
 	{
 		return "відмінно";
 	}
 
-	std::string Binary2::getStringVi()
+	std::string Hexus_Cards_Binary2::getStringVi()
 	{
 		return "xuất sắc";
 	}
 
-	std::string Binary2::getStringZhCn()
+	std::string Hexus_Cards_Binary2::getStringZhCn()
 	{
 		return "优";
 	}
 
-	std::string Binary2::getStringZhTw()
+	std::string Hexus_Cards_Binary2::getStringZhTw()
 	{
 		return "優";
 	}

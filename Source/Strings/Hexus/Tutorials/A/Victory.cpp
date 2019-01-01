@@ -4,171 +4,171 @@
 
 #include "Victory.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Victory* Victory::create()
+	Hexus_Tutorials_A_Victory* Hexus_Tutorials_A_Victory::create()
 	{
-		Victory* instance = new Victory();
+		Hexus_Tutorials_A_Victory* instance = new Hexus_Tutorials_A_Victory();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Victory::clone()
+	LocalizedString* Hexus_Tutorials_A_Victory::clone()
 	{
-		return Victory::create();
+		return Hexus_Tutorials_A_Victory::create();
 	}
 
-	Victory::Victory() : LocalizedString()
-	{
-	}
-
-	Victory::~Victory()
+	Hexus_Tutorials_A_Victory::Hexus_Tutorials_A_Victory() : LocalizedString()
 	{
 	}
 
-	std::string Victory::getStringAr()
+	Hexus_Tutorials_A_Victory::~Hexus_Tutorials_A_Victory()
 	{
-		return "";
 	}
 
-	std::string Victory::getStringBg()
+	std::string Hexus_Tutorials_A_Victory::getStringAr()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringCs()
+	std::string Hexus_Tutorials_A_Victory::getStringBg()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringDa()
+	std::string Hexus_Tutorials_A_Victory::getStringCs()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringDe()
+	std::string Hexus_Tutorials_A_Victory::getStringDa()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringEl()
+	std::string Hexus_Tutorials_A_Victory::getStringDe()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringEn()
+	std::string Hexus_Tutorials_A_Victory::getStringEl()
+	{
+		return "";
+	}
+
+	std::string Hexus_Tutorials_A_Victory::getStringEn()
 	{
 		return "Your opponent has lost 2 lives, so you win the match!";
 	}
 
-	std::string Victory::getStringEs()
+	std::string Hexus_Tutorials_A_Victory::getStringEs()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringEs419()
+	std::string Hexus_Tutorials_A_Victory::getStringEs419()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringFi()
+	std::string Hexus_Tutorials_A_Victory::getStringFi()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringFr()
+	std::string Hexus_Tutorials_A_Victory::getStringFr()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringHu()
+	std::string Hexus_Tutorials_A_Victory::getStringHu()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringIt()
+	std::string Hexus_Tutorials_A_Victory::getStringIt()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringJa()
+	std::string Hexus_Tutorials_A_Victory::getStringJa()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringKo()
+	std::string Hexus_Tutorials_A_Victory::getStringKo()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringNl()
+	std::string Hexus_Tutorials_A_Victory::getStringNl()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringNo()
+	std::string Hexus_Tutorials_A_Victory::getStringNo()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringPl()
+	std::string Hexus_Tutorials_A_Victory::getStringPl()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringPt()
+	std::string Hexus_Tutorials_A_Victory::getStringPt()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringPtBr()
+	std::string Hexus_Tutorials_A_Victory::getStringPtBr()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringRo()
+	std::string Hexus_Tutorials_A_Victory::getStringRo()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringRu()
+	std::string Hexus_Tutorials_A_Victory::getStringRu()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringSv()
+	std::string Hexus_Tutorials_A_Victory::getStringSv()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringTh()
+	std::string Hexus_Tutorials_A_Victory::getStringTh()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringTr()
+	std::string Hexus_Tutorials_A_Victory::getStringTr()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringUk()
+	std::string Hexus_Tutorials_A_Victory::getStringUk()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringVi()
+	std::string Hexus_Tutorials_A_Victory::getStringVi()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringZhCn()
+	std::string Hexus_Tutorials_A_Victory::getStringZhCn()
 	{
 		return "";
 	}
 
-	std::string Victory::getStringZhTw()
+	std::string Hexus_Tutorials_A_Victory::getStringZhTw()
 	{
 		return "";
 	}

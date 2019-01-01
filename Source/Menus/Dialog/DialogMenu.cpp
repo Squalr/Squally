@@ -88,7 +88,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
 
 	this->dialogText = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
-	this->dialogText->setString(text);
+	//this->dialogText->setString(text);
 	this->dialogText->enableWrap(true);
 	this->dialogText->setDimensions(1024.0f, 224.0f);
 
@@ -158,7 +158,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 		DialogMenu* dialogMenu = choiceDialogPair.second;
 
 		LocalizedLabel* localizedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
-		localizedLabel->setString(choice);
+		//	localizedLabel->setString(choice);
 		MenuLabel* label = MenuLabel::create(localizedLabel);
 		label->setColor(Color4B::YELLOW);
 		label->setHoverColor(Color4B(0x6c, 0xa5, 0xad, 0xff));

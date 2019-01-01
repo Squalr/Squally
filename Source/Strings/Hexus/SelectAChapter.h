@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class SelectAChapter : public LocalizedString
+	class Hexus_SelectAChapter : public LocalizedString
 	{
 	public:
-		static SelectAChapter* create();
+		static Hexus_SelectAChapter* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		SelectAChapter();
-		~SelectAChapter();
+		Hexus_SelectAChapter();
+		~Hexus_SelectAChapter();
 	};
 }

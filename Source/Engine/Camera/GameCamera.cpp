@@ -16,6 +16,8 @@
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
+#include "Strings/Numerics/Numeric.h"
+
 using namespace cocos2d;
 
 GameCamera* GameCamera::cameraInstance = nullptr;
@@ -43,8 +45,8 @@ GameCamera::GameCamera()
 	this->cameraBounds = Rect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
-	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
-	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
+	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
 	this->hud->setZOrder(9999);
 	this->hud->setVisible(false);
 
@@ -403,6 +405,6 @@ void GameCamera::updateCameraDebugLabels()
 	streamX << std::fixed << std::setprecision(2) << cameraPosition.x;
 	streamY << std::fixed << std::setprecision(2) << cameraPosition.y;
 
-	this->debugCameraLabelX->setString("Camera X: " + streamX.str());
-	this->debugCameraLabelY->setString("Camera Y: " + streamY.str());
+	this->debugCameraLabelX->setStringReplacementVariables({ streamX.str() });
+	this->debugCameraLabelY->setStringReplacementVariables({ streamY.str() });
 }

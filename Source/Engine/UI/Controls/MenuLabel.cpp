@@ -38,6 +38,25 @@ MenuLabel::~MenuLabel()
 {
 }
 
+void MenuLabel::onEnter()
+{
+	super::onEnter();
+}
+
+void MenuLabel::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->getEventDispatcher()->removeEventListenersForTarget(this);
+
+	EventListenerMouse* mouseListener = EventListenerMouse::create();
+
+	mouseListener->onMouseMove = CC_CALLBACK_1(MenuLabel::onMouseMove, this);
+	mouseListener->onMouseDown = CC_CALLBACK_1(MenuLabel::onMouseDown, this);
+
+	this->addEventListener(mouseListener);
+}
+
 void MenuLabel::setColor(Color4B color)
 {
 	this->normalColor = color;
@@ -59,33 +78,6 @@ void MenuLabel::setGlowColor(Color4B color)
 void MenuLabel::setCallback(std::function<void(MenuLabel*)> callback)
 {
 	this->menuOnMouseClick = callback;
-}
-
-void MenuLabel::setText(std::string text)
-{
-	this->label->setString(text);
-	this->labelHighlighted->setString(text);
-
-	this->setContentSize(this->label->getContentSize());
-}
-
-void MenuLabel::onEnter()
-{
-	super::onEnter();
-}
-
-void MenuLabel::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
-
-	EventListenerMouse* mouseListener = EventListenerMouse::create();
-
-	mouseListener->onMouseMove = CC_CALLBACK_1(MenuLabel::onMouseMove, this);
-	mouseListener->onMouseDown = CC_CALLBACK_1(MenuLabel::onMouseDown, this);
-
-	this->addEventListener(mouseListener);
 }
 
 void MenuLabel::onMouseMove(EventMouse* event)

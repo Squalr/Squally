@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class BinaryMax : public LocalizedString
+	class Hexus_BinaryMax : public LocalizedString
 	{
 	public:
-		static BinaryMax* create();
+		static Hexus_BinaryMax* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		BinaryMax();
-		~BinaryMax();
+		Hexus_BinaryMax();
+		~Hexus_BinaryMax();
 	};
 }

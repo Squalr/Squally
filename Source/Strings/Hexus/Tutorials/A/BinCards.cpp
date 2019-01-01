@@ -4,171 +4,171 @@
 
 #include "BinCards.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	BinCards* BinCards::create()
+	Hexus_Tutorials_A_BinCards* Hexus_Tutorials_A_BinCards::create()
 	{
-		BinCards* instance = new BinCards();
+		Hexus_Tutorials_A_BinCards* instance = new Hexus_Tutorials_A_BinCards();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* BinCards::clone()
+	LocalizedString* Hexus_Tutorials_A_BinCards::clone()
 	{
-		return BinCards::create();
+		return Hexus_Tutorials_A_BinCards::create();
 	}
 
-	BinCards::BinCards() : LocalizedString()
-	{
-	}
-
-	BinCards::~BinCards()
+	Hexus_Tutorials_A_BinCards::Hexus_Tutorials_A_BinCards() : LocalizedString()
 	{
 	}
 
-	std::string BinCards::getStringAr()
+	Hexus_Tutorials_A_BinCards::~Hexus_Tutorials_A_BinCards()
+	{
+	}
+
+	std::string Hexus_Tutorials_A_BinCards::getStringAr()
 	{
 		return "البطاقات الزرقاء هي بطاقات ثنائية.";
 	}
 
-	std::string BinCards::getStringBg()
+	std::string Hexus_Tutorials_A_BinCards::getStringBg()
 	{
 		return "Сините карти са двоични карти.";
 	}
 
-	std::string BinCards::getStringCs()
+	std::string Hexus_Tutorials_A_BinCards::getStringCs()
 	{
 		return "Modré karty jsou binárními kartami.";
 	}
 
-	std::string BinCards::getStringDa()
+	std::string Hexus_Tutorials_A_BinCards::getStringDa()
 	{
 		return "Blå kort er binære kort.";
 	}
 
-	std::string BinCards::getStringDe()
+	std::string Hexus_Tutorials_A_BinCards::getStringDe()
 	{
 		return "Blaue Karten sind binäre Karten.";
 	}
 
-	std::string BinCards::getStringEl()
+	std::string Hexus_Tutorials_A_BinCards::getStringEl()
 	{
 		return "Οι μπλε κάρτες είναι δυαδικές κάρτες.";
 	}
 
-	std::string BinCards::getStringEn()
+	std::string Hexus_Tutorials_A_BinCards::getStringEn()
 	{
 		return "Blue cards are binary cards.";
 	}
 
-	std::string BinCards::getStringEs()
+	std::string Hexus_Tutorials_A_BinCards::getStringEs()
 	{
 		return "Las tarjetas azules son tarjetas binarias.";
 	}
 
-	std::string BinCards::getStringEs419()
+	std::string Hexus_Tutorials_A_BinCards::getStringEs419()
 	{
 		return "Las tarjetas azules son tarjetas binarias.";
 	}
 
-	std::string BinCards::getStringFi()
+	std::string Hexus_Tutorials_A_BinCards::getStringFi()
 	{
 		return "Siniset kortit ovat binäärikortteja.";
 	}
 
-	std::string BinCards::getStringFr()
+	std::string Hexus_Tutorials_A_BinCards::getStringFr()
 	{
 		return "Les cartes bleues sont des cartes binaires.";
 	}
 
-	std::string BinCards::getStringHu()
+	std::string Hexus_Tutorials_A_BinCards::getStringHu()
 	{
 		return "A kék kártyák bináris kártyák.";
 	}
 
-	std::string BinCards::getStringIt()
+	std::string Hexus_Tutorials_A_BinCards::getStringIt()
 	{
 		return "Le carte blu sono carte binari.";
 	}
 
-	std::string BinCards::getStringJa()
+	std::string Hexus_Tutorials_A_BinCards::getStringJa()
 	{
 		return "ブルーカードはバイナリカードです。";
 	}
 
-	std::string BinCards::getStringKo()
+	std::string Hexus_Tutorials_A_BinCards::getStringKo()
 	{
 		return "파란색 카드는 이진 카드입니다.";
 	}
 
-	std::string BinCards::getStringNl()
+	std::string Hexus_Tutorials_A_BinCards::getStringNl()
 	{
 		return "Blauwe kaarten zijn binaire kaarten.";
 	}
 
-	std::string BinCards::getStringNo()
+	std::string Hexus_Tutorials_A_BinCards::getStringNo()
 	{
 		return "Blå kort er binære kort.";
 	}
 
-	std::string BinCards::getStringPl()
+	std::string Hexus_Tutorials_A_BinCards::getStringPl()
 	{
 		return "Niebieskie karty to karty binarne.";
 	}
 
-	std::string BinCards::getStringPt()
+	std::string Hexus_Tutorials_A_BinCards::getStringPt()
 	{
 		return "Cartões azuis são cartões binários.";
 	}
 
-	std::string BinCards::getStringPtBr()
+	std::string Hexus_Tutorials_A_BinCards::getStringPtBr()
 	{
 		return "Cartões azuis são cartões binários.";
 	}
 
-	std::string BinCards::getStringRo()
+	std::string Hexus_Tutorials_A_BinCards::getStringRo()
 	{
 		return "Cartile albastre sunt carduri binare.";
 	}
 
-	std::string BinCards::getStringRu()
+	std::string Hexus_Tutorials_A_BinCards::getStringRu()
 	{
 		return "Синие карты - это бинарные карты.";
 	}
 
-	std::string BinCards::getStringSv()
+	std::string Hexus_Tutorials_A_BinCards::getStringSv()
 	{
 		return "Blå kort är binära kort.";
 	}
 
-	std::string BinCards::getStringTh()
+	std::string Hexus_Tutorials_A_BinCards::getStringTh()
 	{
 		return "บัตรสีฟ้าเป็นบัตรไบนารี";
 	}
 
-	std::string BinCards::getStringTr()
+	std::string Hexus_Tutorials_A_BinCards::getStringTr()
 	{
 		return "Mavi kartlar ikili kartlardır.";
 	}
 
-	std::string BinCards::getStringUk()
+	std::string Hexus_Tutorials_A_BinCards::getStringUk()
 	{
 		return "Сині карти - це двійкові карти.";
 	}
 
-	std::string BinCards::getStringVi()
+	std::string Hexus_Tutorials_A_BinCards::getStringVi()
 	{
 		return "Thẻ màu xanh là thẻ nhị phân.";
 	}
 
-	std::string BinCards::getStringZhCn()
+	std::string Hexus_Tutorials_A_BinCards::getStringZhCn()
 	{
 		return "蓝卡是二进制卡。";
 	}
 
-	std::string BinCards::getStringZhTw()
+	std::string Hexus_Tutorials_A_BinCards::getStringZhTw()
 	{
 		return "藍卡是二進制卡。";
 	}

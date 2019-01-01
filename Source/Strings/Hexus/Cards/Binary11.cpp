@@ -4,171 +4,171 @@
 
 #include "Binary11.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary11* Binary11::create()
+	Hexus_Cards_Binary11* Hexus_Cards_Binary11::create()
 	{
-		Binary11* instance = new Binary11();
+		Hexus_Cards_Binary11* instance = new Hexus_Cards_Binary11();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary11::clone()
+	LocalizedString* Hexus_Cards_Binary11::clone()
 	{
-		return Binary11::create();
+		return Hexus_Cards_Binary11::create();
 	}
 
-	Binary11::Binary11() : LocalizedString()
-	{
-	}
-
-	Binary11::~Binary11()
+	Hexus_Cards_Binary11::Hexus_Cards_Binary11() : LocalizedString()
 	{
 	}
 
-	std::string Binary11::getStringAr()
+	Hexus_Cards_Binary11::~Hexus_Cards_Binary11()
+	{
+	}
+
+	std::string Hexus_Cards_Binary11::getStringAr()
 	{
 		return "روك golem";
 	}
 
-	std::string Binary11::getStringBg()
+	std::string Hexus_Cards_Binary11::getStringBg()
 	{
 		return "рок голем";
 	}
 
-	std::string Binary11::getStringCs()
+	std::string Hexus_Cards_Binary11::getStringCs()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringDa()
+	std::string Hexus_Cards_Binary11::getStringDa()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringDe()
+	std::string Hexus_Cards_Binary11::getStringDe()
 	{
 		return "Rock Golem";
 	}
 
-	std::string Binary11::getStringEl()
+	std::string Hexus_Cards_Binary11::getStringEl()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringEn()
+	std::string Hexus_Cards_Binary11::getStringEn()
 	{
 		return "Rock Golem";
 	}
 
-	std::string Binary11::getStringEs()
+	std::string Hexus_Cards_Binary11::getStringEs()
 	{
 		return "golem de roca";
 	}
 
-	std::string Binary11::getStringEs419()
+	std::string Hexus_Cards_Binary11::getStringEs419()
 	{
 		return "golem de roca";
 	}
 
-	std::string Binary11::getStringFi()
+	std::string Hexus_Cards_Binary11::getStringFi()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringFr()
+	std::string Hexus_Cards_Binary11::getStringFr()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringHu()
+	std::string Hexus_Cards_Binary11::getStringHu()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringIt()
+	std::string Hexus_Cards_Binary11::getStringIt()
 	{
 		return "golem rock";
 	}
 
-	std::string Binary11::getStringJa()
+	std::string Hexus_Cards_Binary11::getStringJa()
 	{
 		return "ロックゴーレム";
 	}
 
-	std::string Binary11::getStringKo()
+	std::string Hexus_Cards_Binary11::getStringKo()
 	{
 		return "바위 골렘";
 	}
 
-	std::string Binary11::getStringNl()
+	std::string Hexus_Cards_Binary11::getStringNl()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringNo()
+	std::string Hexus_Cards_Binary11::getStringNo()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringPl()
+	std::string Hexus_Cards_Binary11::getStringPl()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringPt()
+	std::string Hexus_Cards_Binary11::getStringPt()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringPtBr()
+	std::string Hexus_Cards_Binary11::getStringPtBr()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringRo()
+	std::string Hexus_Cards_Binary11::getStringRo()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringRu()
+	std::string Hexus_Cards_Binary11::getStringRu()
 	{
 		return "рок голем";
 	}
 
-	std::string Binary11::getStringSv()
+	std::string Hexus_Cards_Binary11::getStringSv()
 	{
 		return "rock golem";
 	}
 
-	std::string Binary11::getStringTh()
+	std::string Hexus_Cards_Binary11::getStringTh()
 	{
 		return "ร็อคโกเล็ม";
 	}
 
-	std::string Binary11::getStringTr()
+	std::string Hexus_Cards_Binary11::getStringTr()
 	{
 		return "Rock Golem";
 	}
 
-	std::string Binary11::getStringUk()
+	std::string Hexus_Cards_Binary11::getStringUk()
 	{
 		return "рок-голем";
 	}
 
-	std::string Binary11::getStringVi()
+	std::string Hexus_Cards_Binary11::getStringVi()
 	{
 		return "đá golem";
 	}
 
-	std::string Binary11::getStringZhCn()
+	std::string Hexus_Cards_Binary11::getStringZhCn()
 	{
 		return "岩石傀儡";
 	}
 
-	std::string Binary11::getStringZhTw()
+	std::string Hexus_Cards_Binary11::getStringZhTw()
 	{
 		return "岩石傀儡";
 	}

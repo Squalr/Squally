@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class LogicalXor : public LocalizedString
+	class Hexus_Cards_LogicalXor : public LocalizedString
 	{
 	public:
-		static LogicalXor* create();
+		static Hexus_Cards_LogicalXor* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		LogicalXor();
-		~LogicalXor();
+		Hexus_Cards_LogicalXor();
+		~Hexus_Cards_LogicalXor();
 	};
 }

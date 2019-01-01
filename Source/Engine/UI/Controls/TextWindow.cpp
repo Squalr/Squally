@@ -33,7 +33,7 @@ TextWindow* TextWindow::create(LocalizedString* windowTitle, Size initWindowSize
 TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
 	this->displayTextElements = std::vector<RichElement*>();
-	this->referenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, LocaleStrings::Empty::create());
+	this->referenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Empty::create());
 
 	this->marginSize = 0;
 	this->windowSize = initWindowSize;
@@ -45,7 +45,7 @@ TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3
 	this->displayedText = RichText::create();
 	this->background = Node::create();
 	this->titleBar = Node::create();
-	this->windowTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, windowTitle));
+	this->windowTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, windowTitle);
 
 	this->background->addChild(LayerColor::create(this->windowColor, this->windowSize.width, this->windowSize.height));
 	this->titleBar->addChild(LayerColor::create(this->titleBarColor, this->windowSize.width, TextWindow::TitleBarHeight));
@@ -113,9 +113,9 @@ void TextWindow::setTitleBarColor(Color4B newTitleBarColor)
 	this->initializePositions();
 }
 
-void TextWindow::setTitle(std::string text)
+void TextWindow::setTitleStringReplaceVariables(std::vector<std::string> stringReplaceVariables)
 {
-	this->windowTitle->setText(text);
+	this->windowTitle->setStringReplacementVariables(stringReplaceVariables);
 }
 
 void TextWindow::insertText(std::string text, Color3B color)

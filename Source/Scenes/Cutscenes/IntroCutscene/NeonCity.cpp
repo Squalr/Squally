@@ -67,7 +67,7 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->vaporCorp->setScale(1.0f);
 	this->cityForeground->setScale(0.35f);
 
-	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, LocaleStrings::PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 

@@ -4,171 +4,171 @@
 
 #include "Assembler.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Assembler* Assembler::create()
+	Menus_CodeEditor_Assembler* Menus_CodeEditor_Assembler::create()
 	{
-		Assembler* instance = new Assembler();
+		Menus_CodeEditor_Assembler* instance = new Menus_CodeEditor_Assembler();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Assembler::clone()
+	LocalizedString* Menus_CodeEditor_Assembler::clone()
 	{
-		return Assembler::create();
+		return Menus_CodeEditor_Assembler::create();
 	}
 
-	Assembler::Assembler() : LocalizedString()
-	{
-	}
-
-	Assembler::~Assembler()
+	Menus_CodeEditor_Assembler::Menus_CodeEditor_Assembler() : LocalizedString()
 	{
 	}
 
-	std::string Assembler::getStringAr()
+	Menus_CodeEditor_Assembler::~Menus_CodeEditor_Assembler()
+	{
+	}
+
+	std::string Menus_CodeEditor_Assembler::getStringAr()
 	{
 		return "المجمع";
 	}
 
-	std::string Assembler::getStringBg()
+	std::string Menus_CodeEditor_Assembler::getStringBg()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringCs()
+	std::string Menus_CodeEditor_Assembler::getStringCs()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringDa()
+	std::string Menus_CodeEditor_Assembler::getStringDa()
 	{
 		return "assembler";
 	}
 
-	std::string Assembler::getStringDe()
+	std::string Menus_CodeEditor_Assembler::getStringDe()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringEl()
+	std::string Menus_CodeEditor_Assembler::getStringEl()
 	{
 		return "Συμβολομεταφράστης";
 	}
 
-	std::string Assembler::getStringEn()
+	std::string Menus_CodeEditor_Assembler::getStringEn()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringEs()
+	std::string Menus_CodeEditor_Assembler::getStringEs()
 	{
 		return "Ensamblador";
 	}
 
-	std::string Assembler::getStringEs419()
+	std::string Menus_CodeEditor_Assembler::getStringEs419()
 	{
 		return "Ensamblador";
 	}
 
-	std::string Assembler::getStringFi()
+	std::string Menus_CodeEditor_Assembler::getStringFi()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringFr()
+	std::string Menus_CodeEditor_Assembler::getStringFr()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringHu()
+	std::string Menus_CodeEditor_Assembler::getStringHu()
 	{
 		return "Szerelő";
 	}
 
-	std::string Assembler::getStringIt()
+	std::string Menus_CodeEditor_Assembler::getStringIt()
 	{
 		return "assembler";
 	}
 
-	std::string Assembler::getStringJa()
+	std::string Menus_CodeEditor_Assembler::getStringJa()
 	{
 		return "アセンブラ";
 	}
 
-	std::string Assembler::getStringKo()
+	std::string Menus_CodeEditor_Assembler::getStringKo()
 	{
 		return "어셈블러";
 	}
 
-	std::string Assembler::getStringNl()
+	std::string Menus_CodeEditor_Assembler::getStringNl()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringNo()
+	std::string Menus_CodeEditor_Assembler::getStringNo()
 	{
 		return "assembler";
 	}
 
-	std::string Assembler::getStringPl()
+	std::string Menus_CodeEditor_Assembler::getStringPl()
 	{
 		return "Monter";
 	}
 
-	std::string Assembler::getStringPt()
+	std::string Menus_CodeEditor_Assembler::getStringPt()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringPtBr()
+	std::string Menus_CodeEditor_Assembler::getStringPtBr()
 	{
 		return "Assembler";
 	}
 
-	std::string Assembler::getStringRo()
+	std::string Menus_CodeEditor_Assembler::getStringRo()
 	{
 		return "montator";
 	}
 
-	std::string Assembler::getStringRu()
+	std::string Menus_CodeEditor_Assembler::getStringRu()
 	{
 		return "ассемблер";
 	}
 
-	std::string Assembler::getStringSv()
+	std::string Menus_CodeEditor_Assembler::getStringSv()
 	{
 		return "Assemblerare";
 	}
 
-	std::string Assembler::getStringTh()
+	std::string Menus_CodeEditor_Assembler::getStringTh()
 	{
 		return "ผู้ประกอบ";
 	}
 
-	std::string Assembler::getStringTr()
+	std::string Menus_CodeEditor_Assembler::getStringTr()
 	{
 		return "montajcı";
 	}
 
-	std::string Assembler::getStringUk()
+	std::string Menus_CodeEditor_Assembler::getStringUk()
 	{
 		return "Асемблер";
 	}
 
-	std::string Assembler::getStringVi()
+	std::string Menus_CodeEditor_Assembler::getStringVi()
 	{
 		return "Nhà lắp ráp";
 	}
 
-	std::string Assembler::getStringZhCn()
+	std::string Menus_CodeEditor_Assembler::getStringZhCn()
 	{
 		return "汇编";
 	}
 
-	std::string Assembler::getStringZhTw()
+	std::string Menus_CodeEditor_Assembler::getStringZhTw()
 	{
 		return "彙編";
 	}

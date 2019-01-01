@@ -4,171 +4,171 @@
 
 #include "Tutorials.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Tutorials* Tutorials::create()
+	Menus_Tutorials* Menus_Tutorials::create()
 	{
-		Tutorials* instance = new Tutorials();
+		Menus_Tutorials* instance = new Menus_Tutorials();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Tutorials::clone()
+	LocalizedString* Menus_Tutorials::clone()
 	{
-		return Tutorials::create();
+		return Menus_Tutorials::create();
 	}
 
-	Tutorials::Tutorials() : LocalizedString()
-	{
-	}
-
-	Tutorials::~Tutorials()
+	Menus_Tutorials::Menus_Tutorials() : LocalizedString()
 	{
 	}
 
-	std::string Tutorials::getStringAr()
+	Menus_Tutorials::~Menus_Tutorials()
+	{
+	}
+
+	std::string Menus_Tutorials::getStringAr()
 	{
 		return "دروس";
 	}
 
-	std::string Tutorials::getStringBg()
+	std::string Menus_Tutorials::getStringBg()
 	{
 		return "уроци";
 	}
 
-	std::string Tutorials::getStringCs()
+	std::string Menus_Tutorials::getStringCs()
 	{
 		return "Tutoriály";
 	}
 
-	std::string Tutorials::getStringDa()
+	std::string Menus_Tutorials::getStringDa()
 	{
 		return "Vejledninger";
 	}
 
-	std::string Tutorials::getStringDe()
+	std::string Menus_Tutorials::getStringDe()
 	{
 		return "Tutorials";
 	}
 
-	std::string Tutorials::getStringEl()
+	std::string Menus_Tutorials::getStringEl()
 	{
 		return "Εκπαιδευτικά σεμινάρια";
 	}
 
-	std::string Tutorials::getStringEn()
+	std::string Menus_Tutorials::getStringEn()
 	{
 		return "Tutorials";
 	}
 
-	std::string Tutorials::getStringEs()
+	std::string Menus_Tutorials::getStringEs()
 	{
 		return "Tutoriales";
 	}
 
-	std::string Tutorials::getStringEs419()
+	std::string Menus_Tutorials::getStringEs419()
 	{
 		return "Tutoriales";
 	}
 
-	std::string Tutorials::getStringFi()
+	std::string Menus_Tutorials::getStringFi()
 	{
 		return "Oppaat";
 	}
 
-	std::string Tutorials::getStringFr()
+	std::string Menus_Tutorials::getStringFr()
 	{
 		return "Tutoriels";
 	}
 
-	std::string Tutorials::getStringHu()
+	std::string Menus_Tutorials::getStringHu()
 	{
 		return "oktatóanyagok";
 	}
 
-	std::string Tutorials::getStringIt()
+	std::string Menus_Tutorials::getStringIt()
 	{
 		return "Esercitazioni";
 	}
 
-	std::string Tutorials::getStringJa()
+	std::string Menus_Tutorials::getStringJa()
 	{
 		return "チュートリアル";
 	}
 
-	std::string Tutorials::getStringKo()
+	std::string Menus_Tutorials::getStringKo()
 	{
 		return "자습서";
 	}
 
-	std::string Tutorials::getStringNl()
+	std::string Menus_Tutorials::getStringNl()
 	{
 		return "tutorials";
 	}
 
-	std::string Tutorials::getStringNo()
+	std::string Menus_Tutorials::getStringNo()
 	{
 		return "Guider";
 	}
 
-	std::string Tutorials::getStringPl()
+	std::string Menus_Tutorials::getStringPl()
 	{
 		return "Poradniki";
 	}
 
-	std::string Tutorials::getStringPt()
+	std::string Menus_Tutorials::getStringPt()
 	{
 		return "Tutoriais";
 	}
 
-	std::string Tutorials::getStringPtBr()
+	std::string Menus_Tutorials::getStringPtBr()
 	{
 		return "Tutoriais";
 	}
 
-	std::string Tutorials::getStringRo()
+	std::string Menus_Tutorials::getStringRo()
 	{
 		return "Tutoriale";
 	}
 
-	std::string Tutorials::getStringRu()
+	std::string Menus_Tutorials::getStringRu()
 	{
 		return "Учебники";
 	}
 
-	std::string Tutorials::getStringSv()
+	std::string Menus_Tutorials::getStringSv()
 	{
 		return "Handledningar";
 	}
 
-	std::string Tutorials::getStringTh()
+	std::string Menus_Tutorials::getStringTh()
 	{
 		return "สอน";
 	}
 
-	std::string Tutorials::getStringTr()
+	std::string Menus_Tutorials::getStringTr()
 	{
 		return "Öğreticiler";
 	}
 
-	std::string Tutorials::getStringUk()
+	std::string Menus_Tutorials::getStringUk()
 	{
 		return "Підручники";
 	}
 
-	std::string Tutorials::getStringVi()
+	std::string Menus_Tutorials::getStringVi()
 	{
 		return "Hướng dẫn";
 	}
 
-	std::string Tutorials::getStringZhCn()
+	std::string Menus_Tutorials::getStringZhCn()
 	{
 		return "教程";
 	}
 
-	std::string Tutorials::getStringZhTw()
+	std::string Menus_Tutorials::getStringZhTw()
 	{
 		return "教程";
 	}

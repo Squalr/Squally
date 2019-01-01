@@ -22,7 +22,7 @@ HexusChapterPreviewCaverns* HexusChapterPreviewCaverns::create()
 	return instance;
 }
 
-HexusChapterPreviewCaverns::HexusChapterPreviewCaverns() : HexusChapterPreview(HexusChapterPreviewCaverns::SaveKeyChapterName, LocaleStrings::SeaSharpCaverns::create())
+HexusChapterPreviewCaverns::HexusChapterPreviewCaverns() : HexusChapterPreview(HexusChapterPreviewCaverns::SaveKeyChapterName, Strings::Menus_Maps_SeaSharpCaverns::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
 }

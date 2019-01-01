@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class OpponentLead : public LocalizedString
+	class Hexus_Tutorials_C_OpponentLead : public LocalizedString
 	{
 	public:
-		static OpponentLead* create();
+		static Hexus_Tutorials_C_OpponentLead* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		OpponentLead();
-		~OpponentLead();
+		Hexus_Tutorials_C_OpponentLead();
+		~Hexus_Tutorials_C_OpponentLead();
 	};
 }

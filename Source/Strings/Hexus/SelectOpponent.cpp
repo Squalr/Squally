@@ -4,171 +4,171 @@
 
 #include "SelectOpponent.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	SelectOpponent* SelectOpponent::create()
+	Hexus_SelectOpponent* Hexus_SelectOpponent::create()
 	{
-		SelectOpponent* instance = new SelectOpponent();
+		Hexus_SelectOpponent* instance = new Hexus_SelectOpponent();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* SelectOpponent::clone()
+	LocalizedString* Hexus_SelectOpponent::clone()
 	{
-		return SelectOpponent::create();
+		return Hexus_SelectOpponent::create();
 	}
 
-	SelectOpponent::SelectOpponent() : LocalizedString()
-	{
-	}
-
-	SelectOpponent::~SelectOpponent()
+	Hexus_SelectOpponent::Hexus_SelectOpponent() : LocalizedString()
 	{
 	}
 
-	std::string SelectOpponent::getStringAr()
+	Hexus_SelectOpponent::~Hexus_SelectOpponent()
+	{
+	}
+
+	std::string Hexus_SelectOpponent::getStringAr()
 	{
 		return "اختر الخصم";
 	}
 
-	std::string SelectOpponent::getStringBg()
+	std::string Hexus_SelectOpponent::getStringBg()
 	{
 		return "Изберете съперник";
 	}
 
-	std::string SelectOpponent::getStringCs()
+	std::string Hexus_SelectOpponent::getStringCs()
 	{
 		return "Vyberte protihráči";
 	}
 
-	std::string SelectOpponent::getStringDa()
+	std::string Hexus_SelectOpponent::getStringDa()
 	{
 		return "Vælg en modstander";
 	}
 
-	std::string SelectOpponent::getStringDe()
+	std::string Hexus_SelectOpponent::getStringDe()
 	{
 		return "Wählen Sie einen Gegner aus";
 	}
 
-	std::string SelectOpponent::getStringEl()
+	std::string Hexus_SelectOpponent::getStringEl()
 	{
 		return "Επιλέξτε έναν αντίπαλο";
 	}
 
-	std::string SelectOpponent::getStringEn()
+	std::string Hexus_SelectOpponent::getStringEn()
 	{
 		return "Select an Opponent";
 	}
 
-	std::string SelectOpponent::getStringEs()
+	std::string Hexus_SelectOpponent::getStringEs()
 	{
 		return "Seleccione un oponente";
 	}
 
-	std::string SelectOpponent::getStringEs419()
+	std::string Hexus_SelectOpponent::getStringEs419()
 	{
 		return "Seleccione un oponente";
 	}
 
-	std::string SelectOpponent::getStringFi()
+	std::string Hexus_SelectOpponent::getStringFi()
 	{
 		return "Valitse vastustaja";
 	}
 
-	std::string SelectOpponent::getStringFr()
+	std::string Hexus_SelectOpponent::getStringFr()
 	{
 		return "Sélectionnez un adversaire";
 	}
 
-	std::string SelectOpponent::getStringHu()
+	std::string Hexus_SelectOpponent::getStringHu()
 	{
 		return "Válasszon egy ellenfelet";
 	}
 
-	std::string SelectOpponent::getStringIt()
+	std::string Hexus_SelectOpponent::getStringIt()
 	{
 		return "Seleziona un avversario";
 	}
 
-	std::string SelectOpponent::getStringJa()
+	std::string Hexus_SelectOpponent::getStringJa()
 	{
 		return "相手を選択";
 	}
 
-	std::string SelectOpponent::getStringKo()
+	std::string Hexus_SelectOpponent::getStringKo()
 	{
 		return "상대방 선택";
 	}
 
-	std::string SelectOpponent::getStringNl()
+	std::string Hexus_SelectOpponent::getStringNl()
 	{
 		return "Selecteer een tegenstander";
 	}
 
-	std::string SelectOpponent::getStringNo()
+	std::string Hexus_SelectOpponent::getStringNo()
 	{
 		return "Velg en motstander";
 	}
 
-	std::string SelectOpponent::getStringPl()
+	std::string Hexus_SelectOpponent::getStringPl()
 	{
 		return "Wybierz przeciwnika";
 	}
 
-	std::string SelectOpponent::getStringPt()
+	std::string Hexus_SelectOpponent::getStringPt()
 	{
 		return "Selecione um oponente";
 	}
 
-	std::string SelectOpponent::getStringPtBr()
+	std::string Hexus_SelectOpponent::getStringPtBr()
 	{
 		return "Selecione um oponente";
 	}
 
-	std::string SelectOpponent::getStringRo()
+	std::string Hexus_SelectOpponent::getStringRo()
 	{
 		return "Selectați un Oponent";
 	}
 
-	std::string SelectOpponent::getStringRu()
+	std::string Hexus_SelectOpponent::getStringRu()
 	{
 		return "Выберите оппонента";
 	}
 
-	std::string SelectOpponent::getStringSv()
+	std::string Hexus_SelectOpponent::getStringSv()
 	{
 		return "Välj en motståndare";
 	}
 
-	std::string SelectOpponent::getStringTh()
+	std::string Hexus_SelectOpponent::getStringTh()
 	{
 		return "เลือกฝ่ายตรงข้าม";
 	}
 
-	std::string SelectOpponent::getStringTr()
+	std::string Hexus_SelectOpponent::getStringTr()
 	{
 		return "Bir rakip seçin";
 	}
 
-	std::string SelectOpponent::getStringUk()
+	std::string Hexus_SelectOpponent::getStringUk()
 	{
 		return "Виберіть Противника";
 	}
 
-	std::string SelectOpponent::getStringVi()
+	std::string Hexus_SelectOpponent::getStringVi()
 	{
 		return "Chọn một đối thủ";
 	}
 
-	std::string SelectOpponent::getStringZhCn()
+	std::string Hexus_SelectOpponent::getStringZhCn()
 	{
 		return "选择一个对手";
 	}
 
-	std::string SelectOpponent::getStringZhTw()
+	std::string Hexus_SelectOpponent::getStringZhTw()
 	{
 		return "選擇一個對手";
 	}

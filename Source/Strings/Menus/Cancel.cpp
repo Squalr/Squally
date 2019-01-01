@@ -4,171 +4,171 @@
 
 #include "Cancel.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Cancel* Cancel::create()
+	Menus_Cancel* Menus_Cancel::create()
 	{
-		Cancel* instance = new Cancel();
+		Menus_Cancel* instance = new Menus_Cancel();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Cancel::clone()
+	LocalizedString* Menus_Cancel::clone()
 	{
-		return Cancel::create();
+		return Menus_Cancel::create();
 	}
 
-	Cancel::Cancel() : LocalizedString()
-	{
-	}
-
-	Cancel::~Cancel()
+	Menus_Cancel::Menus_Cancel() : LocalizedString()
 	{
 	}
 
-	std::string Cancel::getStringAr()
+	Menus_Cancel::~Menus_Cancel()
+	{
+	}
+
+	std::string Menus_Cancel::getStringAr()
 	{
 		return "إلغاء";
 	}
 
-	std::string Cancel::getStringBg()
+	std::string Menus_Cancel::getStringBg()
 	{
 		return "Отказ";
 	}
 
-	std::string Cancel::getStringCs()
+	std::string Menus_Cancel::getStringCs()
 	{
 		return "zrušení";
 	}
 
-	std::string Cancel::getStringDa()
+	std::string Menus_Cancel::getStringDa()
 	{
 		return "Afbestille";
 	}
 
-	std::string Cancel::getStringDe()
+	std::string Menus_Cancel::getStringDe()
 	{
 		return "Stornieren";
 	}
 
-	std::string Cancel::getStringEl()
+	std::string Menus_Cancel::getStringEl()
 	{
 		return "Ματαίωση";
 	}
 
-	std::string Cancel::getStringEn()
+	std::string Menus_Cancel::getStringEn()
 	{
 		return "Cancel";
 	}
 
-	std::string Cancel::getStringEs()
+	std::string Menus_Cancel::getStringEs()
 	{
 		return "Cancelar";
 	}
 
-	std::string Cancel::getStringEs419()
+	std::string Menus_Cancel::getStringEs419()
 	{
 		return "Cancelar";
 	}
 
-	std::string Cancel::getStringFi()
+	std::string Menus_Cancel::getStringFi()
 	{
 		return "Peruuttaa";
 	}
 
-	std::string Cancel::getStringFr()
+	std::string Menus_Cancel::getStringFr()
 	{
 		return "Annuler";
 	}
 
-	std::string Cancel::getStringHu()
+	std::string Menus_Cancel::getStringHu()
 	{
 		return "Megszünteti";
 	}
 
-	std::string Cancel::getStringIt()
+	std::string Menus_Cancel::getStringIt()
 	{
 		return "Annulla";
 	}
 
-	std::string Cancel::getStringJa()
+	std::string Menus_Cancel::getStringJa()
 	{
 		return "キャンセル";
 	}
 
-	std::string Cancel::getStringKo()
+	std::string Menus_Cancel::getStringKo()
 	{
 		return "취소";
 	}
 
-	std::string Cancel::getStringNl()
+	std::string Menus_Cancel::getStringNl()
 	{
 		return "annuleren";
 	}
 
-	std::string Cancel::getStringNo()
+	std::string Menus_Cancel::getStringNo()
 	{
 		return "Avbryt";
 	}
 
-	std::string Cancel::getStringPl()
+	std::string Menus_Cancel::getStringPl()
 	{
 		return "Anuluj";
 	}
 
-	std::string Cancel::getStringPt()
+	std::string Menus_Cancel::getStringPt()
 	{
 		return "Cancelar";
 	}
 
-	std::string Cancel::getStringPtBr()
+	std::string Menus_Cancel::getStringPtBr()
 	{
 		return "Cancelar";
 	}
 
-	std::string Cancel::getStringRo()
+	std::string Menus_Cancel::getStringRo()
 	{
 		return "Anulare";
 	}
 
-	std::string Cancel::getStringRu()
+	std::string Menus_Cancel::getStringRu()
 	{
 		return "отменить";
 	}
 
-	std::string Cancel::getStringSv()
+	std::string Menus_Cancel::getStringSv()
 	{
 		return "Annullera";
 	}
 
-	std::string Cancel::getStringTh()
+	std::string Menus_Cancel::getStringTh()
 	{
 		return "ยกเลิก";
 	}
 
-	std::string Cancel::getStringTr()
+	std::string Menus_Cancel::getStringTr()
 	{
 		return "İptal etmek";
 	}
 
-	std::string Cancel::getStringUk()
+	std::string Menus_Cancel::getStringUk()
 	{
 		return "Скасувати";
 	}
 
-	std::string Cancel::getStringVi()
+	std::string Menus_Cancel::getStringVi()
 	{
 		return "Hủy bỏ";
 	}
 
-	std::string Cancel::getStringZhCn()
+	std::string Menus_Cancel::getStringZhCn()
 	{
 		return "取消";
 	}
 
-	std::string Cancel::getStringZhTw()
+	std::string Menus_Cancel::getStringZhTw()
 	{
 		return "取消";
 	}

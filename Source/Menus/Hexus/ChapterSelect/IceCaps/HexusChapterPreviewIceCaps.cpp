@@ -22,7 +22,7 @@ HexusChapterPreviewIceCaps* HexusChapterPreviewIceCaps::create()
 	return instance;
 }
 
-HexusChapterPreviewIceCaps::HexusChapterPreviewIceCaps() : HexusChapterPreview(HexusChapterPreviewIceCaps::SaveKeyChapterName, LocaleStrings::BallmerPeaks::create())
+HexusChapterPreviewIceCaps::HexusChapterPreviewIceCaps() : HexusChapterPreview(HexusChapterPreviewIceCaps::SaveKeyChapterName, Strings::Menus_Maps_BallmerPeaks::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps));
 }

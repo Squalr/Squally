@@ -4,171 +4,171 @@
 
 #include "AllocationEditor.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	AllocationEditor* AllocationEditor::create()
+	Menus_CodeEditor_AllocationEditor* Menus_CodeEditor_AllocationEditor::create()
 	{
-		AllocationEditor* instance = new AllocationEditor();
+		Menus_CodeEditor_AllocationEditor* instance = new Menus_CodeEditor_AllocationEditor();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* AllocationEditor::clone()
+	LocalizedString* Menus_CodeEditor_AllocationEditor::clone()
 	{
-		return AllocationEditor::create();
+		return Menus_CodeEditor_AllocationEditor::create();
 	}
 
-	AllocationEditor::AllocationEditor() : LocalizedString()
-	{
-	}
-
-	AllocationEditor::~AllocationEditor()
+	Menus_CodeEditor_AllocationEditor::Menus_CodeEditor_AllocationEditor() : LocalizedString()
 	{
 	}
 
-	std::string AllocationEditor::getStringAr()
+	Menus_CodeEditor_AllocationEditor::~Menus_CodeEditor_AllocationEditor()
+	{
+	}
+
+	std::string Menus_CodeEditor_AllocationEditor::getStringAr()
 	{
 		return "محرر التخصيص";
 	}
 
-	std::string AllocationEditor::getStringBg()
+	std::string Menus_CodeEditor_AllocationEditor::getStringBg()
 	{
 		return "Редактор за разпределение";
 	}
 
-	std::string AllocationEditor::getStringCs()
+	std::string Menus_CodeEditor_AllocationEditor::getStringCs()
 	{
 		return "Editor přidělení";
 	}
 
-	std::string AllocationEditor::getStringDa()
+	std::string Menus_CodeEditor_AllocationEditor::getStringDa()
 	{
 		return "Allokeringseditor";
 	}
 
-	std::string AllocationEditor::getStringDe()
+	std::string Menus_CodeEditor_AllocationEditor::getStringDe()
 	{
 		return "Zuteilungseditor";
 	}
 
-	std::string AllocationEditor::getStringEl()
+	std::string Menus_CodeEditor_AllocationEditor::getStringEl()
 	{
 		return "Εκδότης κατανομής";
 	}
 
-	std::string AllocationEditor::getStringEn()
+	std::string Menus_CodeEditor_AllocationEditor::getStringEn()
 	{
 		return "Allocation Editor";
 	}
 
-	std::string AllocationEditor::getStringEs()
+	std::string Menus_CodeEditor_AllocationEditor::getStringEs()
 	{
 		return "Allocation Editor";
 	}
 
-	std::string AllocationEditor::getStringEs419()
+	std::string Menus_CodeEditor_AllocationEditor::getStringEs419()
 	{
 		return "Allocation Editor";
 	}
 
-	std::string AllocationEditor::getStringFi()
+	std::string Menus_CodeEditor_AllocationEditor::getStringFi()
 	{
 		return "Allocation Editor";
 	}
 
-	std::string AllocationEditor::getStringFr()
+	std::string Menus_CodeEditor_AllocationEditor::getStringFr()
 	{
 		return "Allocation Editor";
 	}
 
-	std::string AllocationEditor::getStringHu()
+	std::string Menus_CodeEditor_AllocationEditor::getStringHu()
 	{
 		return "Allocation Editor";
 	}
 
-	std::string AllocationEditor::getStringIt()
+	std::string Menus_CodeEditor_AllocationEditor::getStringIt()
 	{
 		return "Editor di allocazioni";
 	}
 
-	std::string AllocationEditor::getStringJa()
+	std::string Menus_CodeEditor_AllocationEditor::getStringJa()
 	{
 		return "割り当てエディタ";
 	}
 
-	std::string AllocationEditor::getStringKo()
+	std::string Menus_CodeEditor_AllocationEditor::getStringKo()
 	{
 		return "할당 편집기";
 	}
 
-	std::string AllocationEditor::getStringNl()
+	std::string Menus_CodeEditor_AllocationEditor::getStringNl()
 	{
 		return "Toewijzingseditor";
 	}
 
-	std::string AllocationEditor::getStringNo()
+	std::string Menus_CodeEditor_AllocationEditor::getStringNo()
 	{
 		return "Allokeringsredigerer";
 	}
 
-	std::string AllocationEditor::getStringPl()
+	std::string Menus_CodeEditor_AllocationEditor::getStringPl()
 	{
 		return "Edytor alokacji";
 	}
 
-	std::string AllocationEditor::getStringPt()
+	std::string Menus_CodeEditor_AllocationEditor::getStringPt()
 	{
 		return "Editor de alocação";
 	}
 
-	std::string AllocationEditor::getStringPtBr()
+	std::string Menus_CodeEditor_AllocationEditor::getStringPtBr()
 	{
 		return "Editor de alocação";
 	}
 
-	std::string AllocationEditor::getStringRo()
+	std::string Menus_CodeEditor_AllocationEditor::getStringRo()
 	{
 		return "Editorul de alocare";
 	}
 
-	std::string AllocationEditor::getStringRu()
+	std::string Menus_CodeEditor_AllocationEditor::getStringRu()
 	{
 		return "Редактор размещения";
 	}
 
-	std::string AllocationEditor::getStringSv()
+	std::string Menus_CodeEditor_AllocationEditor::getStringSv()
 	{
 		return "Allokeringsredigerare";
 	}
 
-	std::string AllocationEditor::getStringTh()
+	std::string Menus_CodeEditor_AllocationEditor::getStringTh()
 	{
 		return "เครื่องมือแก้ไขการจัดสรร";
 	}
 
-	std::string AllocationEditor::getStringTr()
+	std::string Menus_CodeEditor_AllocationEditor::getStringTr()
 	{
 		return "Tahsis Editör";
 	}
 
-	std::string AllocationEditor::getStringUk()
+	std::string Menus_CodeEditor_AllocationEditor::getStringUk()
 	{
 		return "Редактор розподілу";
 	}
 
-	std::string AllocationEditor::getStringVi()
+	std::string Menus_CodeEditor_AllocationEditor::getStringVi()
 	{
 		return "Biên tập phân bổ";
 	}
 
-	std::string AllocationEditor::getStringZhCn()
+	std::string Menus_CodeEditor_AllocationEditor::getStringZhCn()
 	{
 		return "分配编辑器";
 	}
 
-	std::string AllocationEditor::getStringZhTw()
+	std::string Menus_CodeEditor_AllocationEditor::getStringZhTw()
 	{
 		return "分配編輯器";
 	}

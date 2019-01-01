@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class Resolution1152x864 : public LocalizedString
+	class Menus_Options_Resolution1152x864 : public LocalizedString
 	{
 	public:
-		static Resolution1152x864* create();
+		static Menus_Options_Resolution1152x864* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Resolution1152x864();
-		~Resolution1152x864();
+		Menus_Options_Resolution1152x864();
+		~Menus_Options_Resolution1152x864();
 	};
 }

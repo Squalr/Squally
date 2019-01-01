@@ -4,171 +4,171 @@
 
 #include "Binary3.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary3* Binary3::create()
+	Hexus_Cards_Binary3* Hexus_Cards_Binary3::create()
 	{
-		Binary3* instance = new Binary3();
+		Hexus_Cards_Binary3* instance = new Hexus_Cards_Binary3();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary3::clone()
+	LocalizedString* Hexus_Cards_Binary3::clone()
 	{
-		return Binary3::create();
+		return Hexus_Cards_Binary3::create();
 	}
 
-	Binary3::Binary3() : LocalizedString()
-	{
-	}
-
-	Binary3::~Binary3()
+	Hexus_Cards_Binary3::Hexus_Cards_Binary3() : LocalizedString()
 	{
 	}
 
-	std::string Binary3::getStringAr()
+	Hexus_Cards_Binary3::~Hexus_Cards_Binary3()
+	{
+	}
+
+	std::string Hexus_Cards_Binary3::getStringAr()
 	{
 		return "فطر";
 	}
 
-	std::string Binary3::getStringBg()
+	std::string Hexus_Cards_Binary3::getStringBg()
 	{
 		return "гъба";
 	}
 
-	std::string Binary3::getStringCs()
+	std::string Hexus_Cards_Binary3::getStringCs()
 	{
 		return "houba";
 	}
 
-	std::string Binary3::getStringDa()
+	std::string Hexus_Cards_Binary3::getStringDa()
 	{
 		return "champignon";
 	}
 
-	std::string Binary3::getStringDe()
+	std::string Hexus_Cards_Binary3::getStringDe()
 	{
 		return "Pilz";
 	}
 
-	std::string Binary3::getStringEl()
+	std::string Hexus_Cards_Binary3::getStringEl()
 	{
 		return "μανιτάρι";
 	}
 
-	std::string Binary3::getStringEn()
+	std::string Hexus_Cards_Binary3::getStringEn()
 	{
 		return "Shroomy";
 	}
 
-	std::string Binary3::getStringEs()
+	std::string Hexus_Cards_Binary3::getStringEs()
 	{
 		return "seta";
 	}
 
-	std::string Binary3::getStringEs419()
+	std::string Hexus_Cards_Binary3::getStringEs419()
 	{
 		return "seta";
 	}
 
-	std::string Binary3::getStringFi()
+	std::string Hexus_Cards_Binary3::getStringFi()
 	{
 		return "sieni";
 	}
 
-	std::string Binary3::getStringFr()
+	std::string Hexus_Cards_Binary3::getStringFr()
 	{
 		return "champignon";
 	}
 
-	std::string Binary3::getStringHu()
+	std::string Hexus_Cards_Binary3::getStringHu()
 	{
 		return "gomba";
 	}
 
-	std::string Binary3::getStringIt()
+	std::string Hexus_Cards_Binary3::getStringIt()
 	{
 		return "fungo";
 	}
 
-	std::string Binary3::getStringJa()
+	std::string Hexus_Cards_Binary3::getStringJa()
 	{
 		return "キノコ";
 	}
 
-	std::string Binary3::getStringKo()
+	std::string Hexus_Cards_Binary3::getStringKo()
 	{
 		return "버섯";
 	}
 
-	std::string Binary3::getStringNl()
+	std::string Hexus_Cards_Binary3::getStringNl()
 	{
 		return "paddestoel";
 	}
 
-	std::string Binary3::getStringNo()
+	std::string Hexus_Cards_Binary3::getStringNo()
 	{
 		return "sopp";
 	}
 
-	std::string Binary3::getStringPl()
+	std::string Hexus_Cards_Binary3::getStringPl()
 	{
 		return "Grzyb";
 	}
 
-	std::string Binary3::getStringPt()
+	std::string Hexus_Cards_Binary3::getStringPt()
 	{
 		return "cogumelo";
 	}
 
-	std::string Binary3::getStringPtBr()
+	std::string Hexus_Cards_Binary3::getStringPtBr()
 	{
 		return "cogumelo";
 	}
 
-	std::string Binary3::getStringRo()
+	std::string Hexus_Cards_Binary3::getStringRo()
 	{
 		return "ciupercă";
 	}
 
-	std::string Binary3::getStringRu()
+	std::string Hexus_Cards_Binary3::getStringRu()
 	{
 		return "гриб";
 	}
 
-	std::string Binary3::getStringSv()
+	std::string Hexus_Cards_Binary3::getStringSv()
 	{
 		return "svamp";
 	}
 
-	std::string Binary3::getStringTh()
+	std::string Hexus_Cards_Binary3::getStringTh()
 	{
 		return "เห็ด";
 	}
 
-	std::string Binary3::getStringTr()
+	std::string Hexus_Cards_Binary3::getStringTr()
 	{
 		return "mantar";
 	}
 
-	std::string Binary3::getStringUk()
+	std::string Hexus_Cards_Binary3::getStringUk()
 	{
 		return "гриб";
 	}
 
-	std::string Binary3::getStringVi()
+	std::string Hexus_Cards_Binary3::getStringVi()
 	{
 		return "nấm";
 	}
 
-	std::string Binary3::getStringZhCn()
+	std::string Hexus_Cards_Binary3::getStringZhCn()
 	{
 		return "蘑菇";
 	}
 
-	std::string Binary3::getStringZhTw()
+	std::string Hexus_Cards_Binary3::getStringZhTw()
 	{
 		return "蘑菇";
 	}

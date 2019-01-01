@@ -250,3 +250,16 @@ std::string StrUtils::replaceAll(std::string str, const std::string& from, const
 
 	return str;
 }
+
+std::basic_string<char> StrUtils::replaceFirstOccurence(std::basic_string<char> str, const std::basic_string<char>& from, const std::basic_string<char>& to)
+{
+	size_t start_pos = 0;
+
+	if ((start_pos = str.find(from, start_pos)) != std::string::npos)
+	{
+		str.replace(start_pos, from.length(), to);
+		start_pos += to.length();
+	}
+
+	return str;
+}

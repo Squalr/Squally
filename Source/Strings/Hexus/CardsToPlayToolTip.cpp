@@ -4,171 +4,171 @@
 
 #include "CardsToPlayToolTip.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	CardsToPlayToolTip* CardsToPlayToolTip::create()
+	Hexus_CardsToPlayToolTip* Hexus_CardsToPlayToolTip::create()
 	{
-		CardsToPlayToolTip* instance = new CardsToPlayToolTip();
+		Hexus_CardsToPlayToolTip* instance = new Hexus_CardsToPlayToolTip();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* CardsToPlayToolTip::clone()
+	LocalizedString* Hexus_CardsToPlayToolTip::clone()
 	{
-		return CardsToPlayToolTip::create();
+		return Hexus_CardsToPlayToolTip::create();
 	}
 
-	CardsToPlayToolTip::CardsToPlayToolTip() : LocalizedString()
-	{
-	}
-
-	CardsToPlayToolTip::~CardsToPlayToolTip()
+	Hexus_CardsToPlayToolTip::Hexus_CardsToPlayToolTip() : LocalizedString()
 	{
 	}
 
-	std::string CardsToPlayToolTip::getStringAr()
+	Hexus_CardsToPlayToolTip::~Hexus_CardsToPlayToolTip()
+	{
+	}
+
+	std::string Hexus_CardsToPlayToolTip::getStringAr()
 	{
 		return "عدد البطاقات التي يمكن تشغيلها هذا المنعطف";
 	}
 
-	std::string CardsToPlayToolTip::getStringBg()
+	std::string Hexus_CardsToPlayToolTip::getStringBg()
 	{
 		return "Броят на картите, които могат да се играят на този ход";
 	}
 
-	std::string CardsToPlayToolTip::getStringCs()
+	std::string Hexus_CardsToPlayToolTip::getStringCs()
 	{
 		return "Počet karet, které lze přehrát";
 	}
 
-	std::string CardsToPlayToolTip::getStringDa()
+	std::string Hexus_CardsToPlayToolTip::getStringDa()
 	{
 		return "Antallet af kort, der kan spilles, drejer";
 	}
 
-	std::string CardsToPlayToolTip::getStringDe()
+	std::string Hexus_CardsToPlayToolTip::getStringDe()
 	{
 		return "Die Anzahl der Karten, die in diesem Zug gespielt werden können";
 	}
 
-	std::string CardsToPlayToolTip::getStringEl()
+	std::string Hexus_CardsToPlayToolTip::getStringEl()
 	{
 		return "Ο αριθμός των καρτών που μπορείτε να παίξετε αυτή τη στροφή";
 	}
 
-	std::string CardsToPlayToolTip::getStringEn()
+	std::string Hexus_CardsToPlayToolTip::getStringEn()
 	{
 		return "The number of cards that can be played this turn";
 	}
 
-	std::string CardsToPlayToolTip::getStringEs()
+	std::string Hexus_CardsToPlayToolTip::getStringEs()
 	{
 		return "La cantidad de cartas que se pueden jugar este turno.";
 	}
 
-	std::string CardsToPlayToolTip::getStringEs419()
+	std::string Hexus_CardsToPlayToolTip::getStringEs419()
 	{
 		return "La cantidad de cartas que se pueden jugar este turno.";
 	}
 
-	std::string CardsToPlayToolTip::getStringFi()
+	std::string Hexus_CardsToPlayToolTip::getStringFi()
 	{
 		return "Korttien määrä, joita voi toistaa tällä vuorolla";
 	}
 
-	std::string CardsToPlayToolTip::getStringFr()
+	std::string Hexus_CardsToPlayToolTip::getStringFr()
 	{
 		return "Le nombre de cartes pouvant être jouées ce tour-ci";
 	}
 
-	std::string CardsToPlayToolTip::getStringHu()
+	std::string Hexus_CardsToPlayToolTip::getStringHu()
 	{
 		return "A lapok száma, melyeket ebben a körben lehet lejátszani";
 	}
 
-	std::string CardsToPlayToolTip::getStringIt()
+	std::string Hexus_CardsToPlayToolTip::getStringIt()
 	{
 		return "Il numero di carte che possono essere giocate in questo turno";
 	}
 
-	std::string CardsToPlayToolTip::getStringJa()
+	std::string Hexus_CardsToPlayToolTip::getStringJa()
 	{
 		return "このターンにプレイできるカードの枚数";
 	}
 
-	std::string CardsToPlayToolTip::getStringKo()
+	std::string Hexus_CardsToPlayToolTip::getStringKo()
 	{
 		return "이번 턴에 사용할 수있는 카드의 수";
 	}
 
-	std::string CardsToPlayToolTip::getStringNl()
+	std::string Hexus_CardsToPlayToolTip::getStringNl()
 	{
 		return "Het aantal kaarten dat deze beurt kan worden gespeeld";
 	}
 
-	std::string CardsToPlayToolTip::getStringNo()
+	std::string Hexus_CardsToPlayToolTip::getStringNo()
 	{
 		return "Antall kort som kan spilles denne svingen";
 	}
 
-	std::string CardsToPlayToolTip::getStringPl()
+	std::string Hexus_CardsToPlayToolTip::getStringPl()
 	{
 		return "Liczba kart, które można zagrać w tej turze";
 	}
 
-	std::string CardsToPlayToolTip::getStringPt()
+	std::string Hexus_CardsToPlayToolTip::getStringPt()
 	{
 		return "O número de cartas que podem ser jogadas neste turno";
 	}
 
-	std::string CardsToPlayToolTip::getStringPtBr()
+	std::string Hexus_CardsToPlayToolTip::getStringPtBr()
 	{
 		return "O número de cartas que podem ser jogadas neste turno";
 	}
 
-	std::string CardsToPlayToolTip::getStringRo()
+	std::string Hexus_CardsToPlayToolTip::getStringRo()
 	{
 		return "Numărul de cărți care pot fi jucate în acest rând";
 	}
 
-	std::string CardsToPlayToolTip::getStringRu()
+	std::string Hexus_CardsToPlayToolTip::getStringRu()
 	{
 		return "Количество карт, которые можно разыграть в этот ход";
 	}
 
-	std::string CardsToPlayToolTip::getStringSv()
+	std::string Hexus_CardsToPlayToolTip::getStringSv()
 	{
 		return "Antalet kort som kan spelas denna tur";
 	}
 
-	std::string CardsToPlayToolTip::getStringTh()
+	std::string Hexus_CardsToPlayToolTip::getStringTh()
 	{
 		return "จำนวนไพ่ที่สามารถเล่นได้เทิร์นนี้";
 	}
 
-	std::string CardsToPlayToolTip::getStringTr()
+	std::string Hexus_CardsToPlayToolTip::getStringTr()
 	{
 		return "Bu sırayla oynanabilecek kartların sayısı";
 	}
 
-	std::string CardsToPlayToolTip::getStringUk()
+	std::string Hexus_CardsToPlayToolTip::getStringUk()
 	{
 		return "Кількість карт, які можна відтворити в цей хід";
 	}
 
-	std::string CardsToPlayToolTip::getStringVi()
+	std::string Hexus_CardsToPlayToolTip::getStringVi()
 	{
 		return "Số lượng thẻ có thể được chơi lần lượt này";
 	}
 
-	std::string CardsToPlayToolTip::getStringZhCn()
+	std::string Hexus_CardsToPlayToolTip::getStringZhCn()
 	{
 		return "本回合可以玩的牌数";
 	}
 
-	std::string CardsToPlayToolTip::getStringZhTw()
+	std::string Hexus_CardsToPlayToolTip::getStringZhTw()
 	{
 		return "本回合可以玩的牌數";
 	}

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class CastleValgrind : public LocalizedString
+	class Menus_Maps_CastleValgrind : public LocalizedString
 	{
 	public:
-		static CastleValgrind* create();
+		static Menus_Maps_CastleValgrind* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		CastleValgrind();
-		~CastleValgrind();
+		Menus_Maps_CastleValgrind();
+		~Menus_Maps_CastleValgrind();
 	};
 }

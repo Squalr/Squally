@@ -4,171 +4,171 @@
 
 #include "PressEscToSkip.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	PressEscToSkip* PressEscToSkip::create()
+	Cutscenes_PressEscToSkip* Cutscenes_PressEscToSkip::create()
 	{
-		PressEscToSkip* instance = new PressEscToSkip();
+		Cutscenes_PressEscToSkip* instance = new Cutscenes_PressEscToSkip();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* PressEscToSkip::clone()
+	LocalizedString* Cutscenes_PressEscToSkip::clone()
 	{
-		return PressEscToSkip::create();
+		return Cutscenes_PressEscToSkip::create();
 	}
 
-	PressEscToSkip::PressEscToSkip() : LocalizedString()
-	{
-	}
-
-	PressEscToSkip::~PressEscToSkip()
+	Cutscenes_PressEscToSkip::Cutscenes_PressEscToSkip() : LocalizedString()
 	{
 	}
 
-	std::string PressEscToSkip::getStringAr()
+	Cutscenes_PressEscToSkip::~Cutscenes_PressEscToSkip()
+	{
+	}
+
+	std::string Cutscenes_PressEscToSkip::getStringAr()
 	{
 		return "اضغط على الهروب للتخطي";
 	}
 
-	std::string PressEscToSkip::getStringBg()
+	std::string Cutscenes_PressEscToSkip::getStringBg()
 	{
 		return "Натиснете бягство, за да прескочите";
 	}
 
-	std::string PressEscToSkip::getStringCs()
+	std::string Cutscenes_PressEscToSkip::getStringCs()
 	{
 		return "Stisknutím klávesy escape přeskočíte";
 	}
 
-	std::string PressEscToSkip::getStringDa()
+	std::string Cutscenes_PressEscToSkip::getStringDa()
 	{
 		return "Tryk på esc for at springe over";
 	}
 
-	std::string PressEscToSkip::getStringDe()
+	std::string Cutscenes_PressEscToSkip::getStringDe()
 	{
 		return "Drücken Sie zum Überspringen esc";
 	}
 
-	std::string PressEscToSkip::getStringEl()
+	std::string Cutscenes_PressEscToSkip::getStringEl()
 	{
 		return "Πατήστε διαφυγή για να παραλείψετε";
 	}
 
-	std::string PressEscToSkip::getStringEn()
+	std::string Cutscenes_PressEscToSkip::getStringEn()
 	{
 		return "Press esc to skip";
 	}
 
-	std::string PressEscToSkip::getStringEs()
+	std::string Cutscenes_PressEscToSkip::getStringEs()
 	{
 		return "Presiona esc para saltar";
 	}
 
-	std::string PressEscToSkip::getStringEs419()
+	std::string Cutscenes_PressEscToSkip::getStringEs419()
 	{
 		return "Presiona esc para saltar";
 	}
 
-	std::string PressEscToSkip::getStringFi()
+	std::string Cutscenes_PressEscToSkip::getStringFi()
 	{
 		return "Voit ohittaa painamalla esc";
 	}
 
-	std::string PressEscToSkip::getStringFr()
+	std::string Cutscenes_PressEscToSkip::getStringFr()
 	{
 		return "Appuyez sur esc pour sauter";
 	}
 
-	std::string PressEscToSkip::getStringHu()
+	std::string Cutscenes_PressEscToSkip::getStringHu()
 	{
 		return "Nyomja meg az esc gombot az ugráshoz";
 	}
 
-	std::string PressEscToSkip::getStringIt()
+	std::string Cutscenes_PressEscToSkip::getStringIt()
 	{
 		return "Premere esc per saltare";
 	}
 
-	std::string PressEscToSkip::getStringJa()
+	std::string Cutscenes_PressEscToSkip::getStringJa()
 	{
 		return "スキップするにはEscキーを押します";
 	}
 
-	std::string PressEscToSkip::getStringKo()
+	std::string Cutscenes_PressEscToSkip::getStringKo()
 	{
 		return "이스케이프를 눌러 건너 뛰기";
 	}
 
-	std::string PressEscToSkip::getStringNl()
+	std::string Cutscenes_PressEscToSkip::getStringNl()
 	{
 		return "Druk op esc om over te slaan";
 	}
 
-	std::string PressEscToSkip::getStringNo()
+	std::string Cutscenes_PressEscToSkip::getStringNo()
 	{
 		return "Trykk på esc for å hoppe over";
 	}
 
-	std::string PressEscToSkip::getStringPl()
+	std::string Cutscenes_PressEscToSkip::getStringPl()
 	{
 		return "Naciśnij klawisz esc, aby pominąć";
 	}
 
-	std::string PressEscToSkip::getStringPt()
+	std::string Cutscenes_PressEscToSkip::getStringPt()
 	{
 		return "Pressione esc para pular";
 	}
 
-	std::string PressEscToSkip::getStringPtBr()
+	std::string Cutscenes_PressEscToSkip::getStringPtBr()
 	{
 		return "Pressione esc para pular";
 	}
 
-	std::string PressEscToSkip::getStringRo()
+	std::string Cutscenes_PressEscToSkip::getStringRo()
 	{
 		return "Apăsați esc pentru a sări peste";
 	}
 
-	std::string PressEscToSkip::getStringRu()
+	std::string Cutscenes_PressEscToSkip::getStringRu()
 	{
 		return "Нажмите esc, чтобы пропустить";
 	}
 
-	std::string PressEscToSkip::getStringSv()
+	std::string Cutscenes_PressEscToSkip::getStringSv()
 	{
 		return "Tryck på esc för att hoppa över";
 	}
 
-	std::string PressEscToSkip::getStringTh()
+	std::string Cutscenes_PressEscToSkip::getStringTh()
 	{
 		return "กดหลบหนีเพื่อข้าม";
 	}
 
-	std::string PressEscToSkip::getStringTr()
+	std::string Cutscenes_PressEscToSkip::getStringTr()
 	{
 		return "Atlamak için esc tuşuna basın.";
 	}
 
-	std::string PressEscToSkip::getStringUk()
+	std::string Cutscenes_PressEscToSkip::getStringUk()
 	{
 		return "Натисніть клавішу Втеча щоб пропустити";
 	}
 
-	std::string PressEscToSkip::getStringVi()
+	std::string Cutscenes_PressEscToSkip::getStringVi()
 	{
 		return "Nhấn thoát để bỏ qua";
 	}
 
-	std::string PressEscToSkip::getStringZhCn()
+	std::string Cutscenes_PressEscToSkip::getStringZhCn()
 	{
 		return "按逃生跳过";
 	}
 
-	std::string PressEscToSkip::getStringZhTw()
+	std::string Cutscenes_PressEscToSkip::getStringZhTw()
 	{
 		return "按逃生跳過";
 	}

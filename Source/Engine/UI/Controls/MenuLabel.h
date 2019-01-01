@@ -18,7 +18,6 @@ class MenuLabel : public SmartNode
 public:
 	static MenuLabel* create(LocalizedLabel* label);
 
-	void setText(std::string text);
 	void setColor(cocos2d::Color4B color);
 	void setHoverColor(cocos2d::Color4B color);
 	void setGlowColor(cocos2d::Color4B color);

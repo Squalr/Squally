@@ -4,171 +4,171 @@
 
 #include "Decimal5.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal5* Decimal5::create()
+	Hexus_Cards_Decimal5* Hexus_Cards_Decimal5::create()
 	{
-		Decimal5* instance = new Decimal5();
+		Hexus_Cards_Decimal5* instance = new Hexus_Cards_Decimal5();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal5::clone()
+	LocalizedString* Hexus_Cards_Decimal5::clone()
 	{
-		return Decimal5::create();
+		return Hexus_Cards_Decimal5::create();
 	}
 
-	Decimal5::Decimal5() : LocalizedString()
-	{
-	}
-
-	Decimal5::~Decimal5()
+	Hexus_Cards_Decimal5::Hexus_Cards_Decimal5() : LocalizedString()
 	{
 	}
 
-	std::string Decimal5::getStringAr()
+	Hexus_Cards_Decimal5::~Hexus_Cards_Decimal5()
 	{
-		return "";
 	}
 
-	std::string Decimal5::getStringBg()
+	std::string Hexus_Cards_Decimal5::getStringAr()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringCs()
+	std::string Hexus_Cards_Decimal5::getStringBg()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringDa()
+	std::string Hexus_Cards_Decimal5::getStringCs()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringDe()
+	std::string Hexus_Cards_Decimal5::getStringDa()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringEl()
+	std::string Hexus_Cards_Decimal5::getStringDe()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringEn()
+	std::string Hexus_Cards_Decimal5::getStringEl()
+	{
+		return "";
+	}
+
+	std::string Hexus_Cards_Decimal5::getStringEn()
 	{
 		return "Caine 'One Eye' Thorn";
 	}
 
-	std::string Decimal5::getStringEs()
+	std::string Hexus_Cards_Decimal5::getStringEs()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringEs419()
+	std::string Hexus_Cards_Decimal5::getStringEs419()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringFi()
+	std::string Hexus_Cards_Decimal5::getStringFi()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringFr()
+	std::string Hexus_Cards_Decimal5::getStringFr()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringHu()
+	std::string Hexus_Cards_Decimal5::getStringHu()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringIt()
+	std::string Hexus_Cards_Decimal5::getStringIt()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringJa()
+	std::string Hexus_Cards_Decimal5::getStringJa()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringKo()
+	std::string Hexus_Cards_Decimal5::getStringKo()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringNl()
+	std::string Hexus_Cards_Decimal5::getStringNl()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringNo()
+	std::string Hexus_Cards_Decimal5::getStringNo()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringPl()
+	std::string Hexus_Cards_Decimal5::getStringPl()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringPt()
+	std::string Hexus_Cards_Decimal5::getStringPt()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringPtBr()
+	std::string Hexus_Cards_Decimal5::getStringPtBr()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringRo()
+	std::string Hexus_Cards_Decimal5::getStringRo()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringRu()
+	std::string Hexus_Cards_Decimal5::getStringRu()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringSv()
+	std::string Hexus_Cards_Decimal5::getStringSv()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringTh()
+	std::string Hexus_Cards_Decimal5::getStringTh()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringTr()
+	std::string Hexus_Cards_Decimal5::getStringTr()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringUk()
+	std::string Hexus_Cards_Decimal5::getStringUk()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringVi()
+	std::string Hexus_Cards_Decimal5::getStringVi()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringZhCn()
+	std::string Hexus_Cards_Decimal5::getStringZhCn()
 	{
 		return "";
 	}
 
-	std::string Decimal5::getStringZhTw()
+	std::string Hexus_Cards_Decimal5::getStringZhTw()
 	{
 		return "";
 	}

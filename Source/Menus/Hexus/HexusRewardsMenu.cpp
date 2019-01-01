@@ -48,8 +48,8 @@ HexusRewardsMenu::HexusRewardsMenu()
 
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	
-	LocalizedLabel* returnButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::Return::create());
-	LocalizedLabel* returnButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, LocaleStrings::Return::create());
+	LocalizedLabel* returnButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Return::create());
+	LocalizedLabel* returnButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Return::create());
 
 	returnButtonLabel->enableOutline(Color4B::BLACK, 2);
 	returnButtonLabelHover->enableOutline(Color4B::BLACK, 2);
@@ -140,7 +140,7 @@ void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
 	{
 		float progress = MathUtils::clamp(((float)currentTick / (float)ticks), 0.0f, 1.0f);
 
-		this->goldLabel->setString("+" + std::to_string((int)(reward * progress)));
+		this->goldLabel->setStringReplacementVariables({ std::to_string((int)(reward * progress)) });
 
 		currentTick++;
 

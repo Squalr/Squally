@@ -45,7 +45,7 @@ VaporWeb::VaporWeb()
 	this->darkLord = Sprite::create(CutsceneResources::VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
 	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
-	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, LocaleStrings::PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
 	{

@@ -4,171 +4,171 @@
 
 #include "Decimal6.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal6* Decimal6::create()
+	Hexus_Cards_Decimal6* Hexus_Cards_Decimal6::create()
 	{
-		Decimal6* instance = new Decimal6();
+		Hexus_Cards_Decimal6* instance = new Hexus_Cards_Decimal6();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal6::clone()
+	LocalizedString* Hexus_Cards_Decimal6::clone()
 	{
-		return Decimal6::create();
+		return Hexus_Cards_Decimal6::create();
 	}
 
-	Decimal6::Decimal6() : LocalizedString()
-	{
-	}
-
-	Decimal6::~Decimal6()
+	Hexus_Cards_Decimal6::Hexus_Cards_Decimal6() : LocalizedString()
 	{
 	}
 
-	std::string Decimal6::getStringAr()
+	Hexus_Cards_Decimal6::~Hexus_Cards_Decimal6()
 	{
-		return "Kovi";
 	}
 
-	std::string Decimal6::getStringBg()
+	std::string Hexus_Cards_Decimal6::getStringAr()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringCs()
+	std::string Hexus_Cards_Decimal6::getStringBg()
+	{
+		return "Kovi";
+	}
+
+	std::string Hexus_Cards_Decimal6::getStringCs()
 	{
 		return "Bojování";
 	}
 
-	std::string Decimal6::getStringDa()
+	std::string Hexus_Cards_Decimal6::getStringDa()
 	{
 		return "kovi";
 	}
 
-	std::string Decimal6::getStringDe()
+	std::string Hexus_Cards_Decimal6::getStringDe()
 	{
 		return "Kämpfen";
 	}
 
-	std::string Decimal6::getStringEl()
+	std::string Hexus_Cards_Decimal6::getStringEl()
 	{
 		return "Καταπολέμηση";
 	}
 
-	std::string Decimal6::getStringEn()
+	std::string Hexus_Cards_Decimal6::getStringEn()
 	{
 		return "Fighting";
 	}
 
-	std::string Decimal6::getStringEs()
+	std::string Hexus_Cards_Decimal6::getStringEs()
 	{
 		return "Peleando";
 	}
 
-	std::string Decimal6::getStringEs419()
+	std::string Hexus_Cards_Decimal6::getStringEs419()
 	{
 		return "Peleando";
 	}
 
-	std::string Decimal6::getStringFi()
+	std::string Hexus_Cards_Decimal6::getStringFi()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringFr()
+	std::string Hexus_Cards_Decimal6::getStringFr()
 	{
 		return "Se battre";
 	}
 
-	std::string Decimal6::getStringHu()
+	std::string Hexus_Cards_Decimal6::getStringHu()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringIt()
+	std::string Hexus_Cards_Decimal6::getStringIt()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringJa()
+	std::string Hexus_Cards_Decimal6::getStringJa()
 	{
 		return "けんか";
 	}
 
-	std::string Decimal6::getStringKo()
+	std::string Hexus_Cards_Decimal6::getStringKo()
 	{
 		return "격투";
 	}
 
-	std::string Decimal6::getStringNl()
+	std::string Hexus_Cards_Decimal6::getStringNl()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringNo()
+	std::string Hexus_Cards_Decimal6::getStringNo()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringPl()
+	std::string Hexus_Cards_Decimal6::getStringPl()
 	{
 		return "Walka";
 	}
 
-	std::string Decimal6::getStringPt()
+	std::string Hexus_Cards_Decimal6::getStringPt()
 	{
 		return "Lutando";
 	}
 
-	std::string Decimal6::getStringPtBr()
+	std::string Hexus_Cards_Decimal6::getStringPtBr()
 	{
 		return "Lutando";
 	}
 
-	std::string Decimal6::getStringRo()
+	std::string Hexus_Cards_Decimal6::getStringRo()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringRu()
+	std::string Hexus_Cards_Decimal6::getStringRu()
 	{
 		return "Кови";
 	}
 
-	std::string Decimal6::getStringSv()
+	std::string Hexus_Cards_Decimal6::getStringSv()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringTh()
+	std::string Hexus_Cards_Decimal6::getStringTh()
 	{
 		return "KOVI";
 	}
 
-	std::string Decimal6::getStringTr()
+	std::string Hexus_Cards_Decimal6::getStringTr()
 	{
 		return "KOVI";
 	}
 
-	std::string Decimal6::getStringUk()
+	std::string Hexus_Cards_Decimal6::getStringUk()
 	{
 		return "Боротьба";
 	}
 
-	std::string Decimal6::getStringVi()
+	std::string Hexus_Cards_Decimal6::getStringVi()
 	{
 		return "Chiến đấu";
 	}
 
-	std::string Decimal6::getStringZhCn()
+	std::string Hexus_Cards_Decimal6::getStringZhCn()
 	{
 		return "Kovi";
 	}
 
-	std::string Decimal6::getStringZhTw()
+	std::string Hexus_Cards_Decimal6::getStringZhTw()
 	{
 		return "Kovi";
 	}

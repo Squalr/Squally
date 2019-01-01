@@ -4,171 +4,171 @@
 
 #include "Hex8.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex8* Hex8::create()
+	Hexus_Cards_Hex8* Hexus_Cards_Hex8::create()
 	{
-		Hex8* instance = new Hex8();
+		Hexus_Cards_Hex8* instance = new Hexus_Cards_Hex8();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex8::clone()
+	LocalizedString* Hexus_Cards_Hex8::clone()
 	{
-		return Hex8::create();
+		return Hexus_Cards_Hex8::create();
 	}
 
-	Hex8::Hex8() : LocalizedString()
-	{
-	}
-
-	Hex8::~Hex8()
+	Hexus_Cards_Hex8::Hexus_Cards_Hex8() : LocalizedString()
 	{
 	}
 
-	std::string Hex8::getStringAr()
+	Hexus_Cards_Hex8::~Hexus_Cards_Hex8()
+	{
+	}
+
+	std::string Hexus_Cards_Hex8::getStringAr()
 	{
 		return "يعانق";
 	}
 
-	std::string Hex8::getStringBg()
+	std::string Hexus_Cards_Hex8::getStringBg()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringCs()
+	std::string Hexus_Cards_Hex8::getStringCs()
 	{
 		return "Smochuje";
 	}
 
-	std::string Hex8::getStringDa()
+	std::string Hexus_Cards_Hex8::getStringDa()
 	{
 		return "smooches";
 	}
 
-	std::string Hex8::getStringDe()
+	std::string Hexus_Cards_Hex8::getStringDe()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringEl()
+	std::string Hexus_Cards_Hex8::getStringEl()
 	{
 		return "Σκουπίζει";
 	}
 
-	std::string Hex8::getStringEn()
+	std::string Hexus_Cards_Hex8::getStringEn()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringEs()
+	std::string Hexus_Cards_Hex8::getStringEs()
 	{
 		return "Bollos";
 	}
 
-	std::string Hex8::getStringEs419()
+	std::string Hexus_Cards_Hex8::getStringEs419()
 	{
 		return "Bollos";
 	}
 
-	std::string Hex8::getStringFi()
+	std::string Hexus_Cards_Hex8::getStringFi()
 	{
 		return "smooches";
 	}
 
-	std::string Hex8::getStringFr()
+	std::string Hexus_Cards_Hex8::getStringFr()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringHu()
+	std::string Hexus_Cards_Hex8::getStringHu()
 	{
 		return "smooches";
 	}
 
-	std::string Hex8::getStringIt()
+	std::string Hexus_Cards_Hex8::getStringIt()
 	{
 		return "smooches";
 	}
 
-	std::string Hex8::getStringJa()
+	std::string Hexus_Cards_Hex8::getStringJa()
 	{
 		return "スムース";
 	}
 
-	std::string Hex8::getStringKo()
+	std::string Hexus_Cards_Hex8::getStringKo()
 	{
 		return "멍청이";
 	}
 
-	std::string Hex8::getStringNl()
+	std::string Hexus_Cards_Hex8::getStringNl()
 	{
 		return "smooches";
 	}
 
-	std::string Hex8::getStringNo()
+	std::string Hexus_Cards_Hex8::getStringNo()
 	{
 		return "smooches";
 	}
 
-	std::string Hex8::getStringPl()
+	std::string Hexus_Cards_Hex8::getStringPl()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringPt()
+	std::string Hexus_Cards_Hex8::getStringPt()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringPtBr()
+	std::string Hexus_Cards_Hex8::getStringPtBr()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringRo()
+	std::string Hexus_Cards_Hex8::getStringRo()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringRu()
+	std::string Hexus_Cards_Hex8::getStringRu()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringSv()
+	std::string Hexus_Cards_Hex8::getStringSv()
 	{
 		return "Byten";
 	}
 
-	std::string Hex8::getStringTh()
+	std::string Hexus_Cards_Hex8::getStringTh()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringTr()
+	std::string Hexus_Cards_Hex8::getStringTr()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringUk()
+	std::string Hexus_Cards_Hex8::getStringUk()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringVi()
+	std::string Hexus_Cards_Hex8::getStringVi()
 	{
 		return "Smooches";
 	}
 
-	std::string Hex8::getStringZhCn()
+	std::string Hexus_Cards_Hex8::getStringZhCn()
 	{
 		return "拥吻";
 	}
 
-	std::string Hex8::getStringZhTw()
+	std::string Hexus_Cards_Hex8::getStringZhTw()
 	{
 		return "擁吻";
 	}

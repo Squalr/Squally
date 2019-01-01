@@ -10,6 +10,7 @@
 #include "Scenes/Hexus/GameState.h"
 
 #include "Strings/Hexus/BinLabel.h"
+#include "Strings/Hexus/CardDescriptions.h"
 #include "Strings/Hexus/DecLabel.h"
 #include "Strings/Hexus/HexLabel.h"
 
@@ -159,14 +160,13 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
-				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
-				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
+				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_BinLabel::create());
+				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_DecLabel::create());
+				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_HexLabel::create());
 
-				// TODO: Localized labels need to be able to handle appending things (probably parametrized template thing?)
-				binaryLabel->setString(binaryLabel->getString() + " " + HackUtils::toBinary4(attack));
-				decimalLabel->setString(decimalLabel->getString() + " " + std::to_string(attack));
-				hexLabel->setString(hexLabel->getString() + " " + HackUtils::toHex(attack));
+				binaryLabel->setStringReplacementVariables({ HackUtils::toBinary4(attack) });
+				decimalLabel->setStringReplacementVariables({ std::to_string(attack) });
+				hexLabel->setStringReplacementVariables({ HackUtils::toHex(attack) });
 
 				binaryLabel->setAnchorPoint(Vec2::ZERO);
 				decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -273,10 +273,10 @@ void CardPreview::previewCard(Card* card)
 					{
 						break;
 					}
-
-					this->previewPanel->addChild(specialLabel);
-					break;
 				}
+
+				this->previewPanel->addChild(specialLabel);
+				break;
 			}
 		}
 	}

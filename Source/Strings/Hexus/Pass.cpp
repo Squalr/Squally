@@ -4,171 +4,171 @@
 
 #include "Pass.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Pass* Pass::create()
+	Hexus_Pass* Hexus_Pass::create()
 	{
-		Pass* instance = new Pass();
+		Hexus_Pass* instance = new Hexus_Pass();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Pass::clone()
+	LocalizedString* Hexus_Pass::clone()
 	{
-		return Pass::create();
+		return Hexus_Pass::create();
 	}
 
-	Pass::Pass() : LocalizedString()
-	{
-	}
-
-	Pass::~Pass()
+	Hexus_Pass::Hexus_Pass() : LocalizedString()
 	{
 	}
 
-	std::string Pass::getStringAr()
+	Hexus_Pass::~Hexus_Pass()
+	{
+	}
+
+	std::string Hexus_Pass::getStringAr()
 	{
 		return "البشري";
 	}
 
-	std::string Pass::getStringBg()
+	std::string Hexus_Pass::getStringBg()
 	{
 		return "Pass";
 	}
 
-	std::string Pass::getStringCs()
+	std::string Hexus_Pass::getStringCs()
 	{
 		return "Složit";
 	}
 
-	std::string Pass::getStringDa()
+	std::string Hexus_Pass::getStringDa()
 	{
 		return "Passere";
 	}
 
-	std::string Pass::getStringDe()
+	std::string Hexus_Pass::getStringDe()
 	{
 		return "Bestehen";
 	}
 
-	std::string Pass::getStringEl()
+	std::string Hexus_Pass::getStringEl()
 	{
 		return "Πέρασμα";
 	}
 
-	std::string Pass::getStringEn()
+	std::string Hexus_Pass::getStringEn()
 	{
 		return "Pass";
 	}
 
-	std::string Pass::getStringEs()
+	std::string Hexus_Pass::getStringEs()
 	{
 		return "Pasar";
 	}
 
-	std::string Pass::getStringEs419()
+	std::string Hexus_Pass::getStringEs419()
 	{
 		return "Pasar";
 	}
 
-	std::string Pass::getStringFi()
+	std::string Hexus_Pass::getStringFi()
 	{
 		return "Kulkea";
 	}
 
-	std::string Pass::getStringFr()
+	std::string Hexus_Pass::getStringFr()
 	{
 		return "Passer";
 	}
 
-	std::string Pass::getStringHu()
+	std::string Hexus_Pass::getStringHu()
 	{
 		return "Pass";
 	}
 
-	std::string Pass::getStringIt()
+	std::string Hexus_Pass::getStringIt()
 	{
 		return "Passaggio";
 	}
 
-	std::string Pass::getStringJa()
+	std::string Hexus_Pass::getStringJa()
 	{
 		return "パス";
 	}
 
-	std::string Pass::getStringKo()
+	std::string Hexus_Pass::getStringKo()
 	{
 		return "패스";
 	}
 
-	std::string Pass::getStringNl()
+	std::string Hexus_Pass::getStringNl()
 	{
 		return "Voorbij lopen";
 	}
 
-	std::string Pass::getStringNo()
+	std::string Hexus_Pass::getStringNo()
 	{
 		return "Passere";
 	}
 
-	std::string Pass::getStringPl()
+	std::string Hexus_Pass::getStringPl()
 	{
 		return "Przechodzić";
 	}
 
-	std::string Pass::getStringPt()
+	std::string Hexus_Pass::getStringPt()
 	{
 		return "Passar";
 	}
 
-	std::string Pass::getStringPtBr()
+	std::string Hexus_Pass::getStringPtBr()
 	{
 		return "Passar";
 	}
 
-	std::string Pass::getStringRo()
+	std::string Hexus_Pass::getStringRo()
 	{
 		return "Trece";
 	}
 
-	std::string Pass::getStringRu()
+	std::string Hexus_Pass::getStringRu()
 	{
 		return "Проходить";
 	}
 
-	std::string Pass::getStringSv()
+	std::string Hexus_Pass::getStringSv()
 	{
 		return "Passera";
 	}
 
-	std::string Pass::getStringTh()
+	std::string Hexus_Pass::getStringTh()
 	{
 		return "ผ่าน";
 	}
 
-	std::string Pass::getStringTr()
+	std::string Hexus_Pass::getStringTr()
 	{
 		return "Geçiş";
 	}
 
-	std::string Pass::getStringUk()
+	std::string Hexus_Pass::getStringUk()
 	{
 		return "Перевал";
 	}
 
-	std::string Pass::getStringVi()
+	std::string Hexus_Pass::getStringVi()
 	{
 		return "Vượt qua";
 	}
 
-	std::string Pass::getStringZhCn()
+	std::string Hexus_Pass::getStringZhCn()
 	{
 		return "通过";
 	}
 
-	std::string Pass::getStringZhTw()
+	std::string Hexus_Pass::getStringZhTw()
 	{
 		return "通過";
 	}

@@ -4,171 +4,171 @@
 
 #include "Flip2.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Flip2* Flip2::create()
+	Hexus_Cards_Flip2* Hexus_Cards_Flip2::create()
 	{
-		Flip2* instance = new Flip2();
+		Hexus_Cards_Flip2* instance = new Hexus_Cards_Flip2();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Flip2::clone()
+	LocalizedString* Hexus_Cards_Flip2::clone()
 	{
-		return Flip2::create();
+		return Hexus_Cards_Flip2::create();
 	}
 
-	Flip2::Flip2() : LocalizedString()
-	{
-	}
-
-	Flip2::~Flip2()
+	Hexus_Cards_Flip2::Hexus_Cards_Flip2() : LocalizedString()
 	{
 	}
 
-	std::string Flip2::getStringAr()
+	Hexus_Cards_Flip2::~Hexus_Cards_Flip2()
+	{
+	}
+
+	std::string Hexus_Cards_Flip2::getStringAr()
 	{
 		return "اقلب الثانية";
 	}
 
-	std::string Flip2::getStringBg()
+	std::string Hexus_Cards_Flip2::getStringBg()
 	{
 		return "Обърнете втория бит";
 	}
 
-	std::string Flip2::getStringCs()
+	std::string Hexus_Cards_Flip2::getStringCs()
 	{
 		return "Překlopte druhý bit";
 	}
 
-	std::string Flip2::getStringDa()
+	std::string Hexus_Cards_Flip2::getStringDa()
 	{
 		return "Vend den anden bit";
 	}
 
-	std::string Flip2::getStringDe()
+	std::string Hexus_Cards_Flip2::getStringDe()
 	{
 		return "Drehen Sie das zweite Bit um";
 	}
 
-	std::string Flip2::getStringEl()
+	std::string Hexus_Cards_Flip2::getStringEl()
 	{
 		return "Περιστρέψτε το δεύτερο κομμάτι";
 	}
 
-	std::string Flip2::getStringEn()
+	std::string Hexus_Cards_Flip2::getStringEn()
 	{
 		return "Flip Bit 2";
 	}
 
-	std::string Flip2::getStringEs()
+	std::string Hexus_Cards_Flip2::getStringEs()
 	{
 		return "Voltear el segundo bit";
 	}
 
-	std::string Flip2::getStringEs419()
+	std::string Hexus_Cards_Flip2::getStringEs419()
 	{
 		return "Voltear el segundo bit";
 	}
 
-	std::string Flip2::getStringFi()
+	std::string Hexus_Cards_Flip2::getStringFi()
 	{
 		return "Käännä toinen bitti";
 	}
 
-	std::string Flip2::getStringFr()
+	std::string Hexus_Cards_Flip2::getStringFr()
 	{
 		return "Retournez le deuxième bit";
 	}
 
-	std::string Flip2::getStringHu()
+	std::string Hexus_Cards_Flip2::getStringHu()
 	{
 		return "Flip a második bit";
 	}
 
-	std::string Flip2::getStringIt()
+	std::string Hexus_Cards_Flip2::getStringIt()
 	{
 		return "Capovolgi il secondo bit";
 	}
 
-	std::string Flip2::getStringJa()
+	std::string Hexus_Cards_Flip2::getStringJa()
 	{
 		return "2番目のビットを反転";
 	}
 
-	std::string Flip2::getStringKo()
+	std::string Hexus_Cards_Flip2::getStringKo()
 	{
 		return "두 번째 비트 뒤집기";
 	}
 
-	std::string Flip2::getStringNl()
+	std::string Hexus_Cards_Flip2::getStringNl()
 	{
 		return "Draai het tweede deel";
 	}
 
-	std::string Flip2::getStringNo()
+	std::string Hexus_Cards_Flip2::getStringNo()
 	{
 		return "Vend den andre biten";
 	}
 
-	std::string Flip2::getStringPl()
+	std::string Hexus_Cards_Flip2::getStringPl()
 	{
 		return "Odwróć drugi bit";
 	}
 
-	std::string Flip2::getStringPt()
+	std::string Hexus_Cards_Flip2::getStringPt()
 	{
 		return "Virar o segundo bit";
 	}
 
-	std::string Flip2::getStringPtBr()
+	std::string Hexus_Cards_Flip2::getStringPtBr()
 	{
 		return "Virar o segundo bit";
 	}
 
-	std::string Flip2::getStringRo()
+	std::string Hexus_Cards_Flip2::getStringRo()
 	{
 		return "Răsuciți al doilea element";
 	}
 
-	std::string Flip2::getStringRu()
+	std::string Hexus_Cards_Flip2::getStringRu()
 	{
 		return "Отразить второй бит";
 	}
 
-	std::string Flip2::getStringSv()
+	std::string Hexus_Cards_Flip2::getStringSv()
 	{
 		return "Vänd den andra biten";
 	}
 
-	std::string Flip2::getStringTh()
+	std::string Hexus_Cards_Flip2::getStringTh()
 	{
 		return "พลิกบิตที่สอง";
 	}
 
-	std::string Flip2::getStringTr()
+	std::string Hexus_Cards_Flip2::getStringTr()
 	{
 		return "İkinci biti çevir";
 	}
 
-	std::string Flip2::getStringUk()
+	std::string Hexus_Cards_Flip2::getStringUk()
 	{
 		return "Переверніть другий біт";
 	}
 
-	std::string Flip2::getStringVi()
+	std::string Hexus_Cards_Flip2::getStringVi()
 	{
 		return "Lật bit thứ hai";
 	}
 
-	std::string Flip2::getStringZhCn()
+	std::string Hexus_Cards_Flip2::getStringZhCn()
 	{
 		return "翻转第二位";
 	}
 
-	std::string Flip2::getStringZhTw()
+	std::string Hexus_Cards_Flip2::getStringZhTw()
 	{
 		return "翻轉第二位";
 	}

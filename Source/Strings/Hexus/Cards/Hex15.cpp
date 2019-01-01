@@ -4,171 +4,171 @@
 
 #include "Hex15.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex15* Hex15::create()
+	Hexus_Cards_Hex15* Hexus_Cards_Hex15::create()
 	{
-		Hex15* instance = new Hex15();
+		Hexus_Cards_Hex15* instance = new Hexus_Cards_Hex15();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex15::clone()
+	LocalizedString* Hexus_Cards_Hex15::clone()
 	{
-		return Hex15::create();
+		return Hexus_Cards_Hex15::create();
 	}
 
-	Hex15::Hex15() : LocalizedString()
-	{
-	}
-
-	Hex15::~Hex15()
+	Hexus_Cards_Hex15::Hexus_Cards_Hex15() : LocalizedString()
 	{
 	}
 
-	std::string Hex15::getStringAr()
+	Hexus_Cards_Hex15::~Hexus_Cards_Hex15()
+	{
+	}
+
+	std::string Hexus_Cards_Hex15::getStringAr()
 	{
 		return "دارث";
 	}
 
-	std::string Hex15::getStringBg()
+	std::string Hexus_Cards_Hex15::getStringBg()
 	{
 		return "Дарт";
 	}
 
-	std::string Hex15::getStringCs()
+	std::string Hexus_Cards_Hex15::getStringCs()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringDa()
+	std::string Hexus_Cards_Hex15::getStringDa()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringDe()
+	std::string Hexus_Cards_Hex15::getStringDe()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringEl()
+	std::string Hexus_Cards_Hex15::getStringEl()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringEn()
+	std::string Hexus_Cards_Hex15::getStringEn()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringEs()
+	std::string Hexus_Cards_Hex15::getStringEs()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringEs419()
+	std::string Hexus_Cards_Hex15::getStringEs419()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringFi()
+	std::string Hexus_Cards_Hex15::getStringFi()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringFr()
+	std::string Hexus_Cards_Hex15::getStringFr()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringHu()
+	std::string Hexus_Cards_Hex15::getStringHu()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringIt()
+	std::string Hexus_Cards_Hex15::getStringIt()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringJa()
+	std::string Hexus_Cards_Hex15::getStringJa()
 	{
 		return "ダース";
 	}
 
-	std::string Hex15::getStringKo()
+	std::string Hexus_Cards_Hex15::getStringKo()
 	{
 		return "타스";
 	}
 
-	std::string Hex15::getStringNl()
+	std::string Hexus_Cards_Hex15::getStringNl()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringNo()
+	std::string Hexus_Cards_Hex15::getStringNo()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringPl()
+	std::string Hexus_Cards_Hex15::getStringPl()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringPt()
+	std::string Hexus_Cards_Hex15::getStringPt()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringPtBr()
+	std::string Hexus_Cards_Hex15::getStringPtBr()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringRo()
+	std::string Hexus_Cards_Hex15::getStringRo()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringRu()
+	std::string Hexus_Cards_Hex15::getStringRu()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringSv()
+	std::string Hexus_Cards_Hex15::getStringSv()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringTh()
+	std::string Hexus_Cards_Hex15::getStringTh()
 	{
 		return "ดาร์ท";
 	}
 
-	std::string Hex15::getStringTr()
+	std::string Hexus_Cards_Hex15::getStringTr()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringUk()
+	std::string Hexus_Cards_Hex15::getStringUk()
 	{
 		return "Дарт";
 	}
 
-	std::string Hex15::getStringVi()
+	std::string Hexus_Cards_Hex15::getStringVi()
 	{
 		return "Xarth";
 	}
 
-	std::string Hex15::getStringZhCn()
+	std::string Hexus_Cards_Hex15::getStringZhCn()
 	{
 		return "达斯";
 	}
 
-	std::string Hex15::getStringZhTw()
+	std::string Hexus_Cards_Hex15::getStringZhTw()
 	{
 		return "達斯";
 	}

@@ -19,6 +19,8 @@
 
 #include "Resources/ShaderResources.h"
 
+#include "Strings/Numerics/Numeric.h"
+
 using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeTexture = "texture";
@@ -316,11 +318,11 @@ void TerrainObject::buildSurfaceTextures()
 		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
 		std::string bisectingAngleString = bisectingAngleStream.str();
 
-		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
-		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
+		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Numerics_Numeric::create());
+		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Numerics_Numeric::create());
 
-		angleDebug->setString(angleString);
-		bisectingAngleDebug->setString(bisectingAngleString);
+		angleDebug->setStringReplacementVariables({ angleString });
+		bisectingAngleDebug->setStringReplacementVariables({ bisectingAngleString });
 
 		angleDebug->setTextColor(Color4B::YELLOW);
 		bisectingAngleDebug->setTextColor(Color4B::MAGENTA);
