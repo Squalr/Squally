@@ -16,6 +16,8 @@
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
+#include "Strings/Debugging/CameraX.h"
+#include "Strings/Debugging/CameraY.h"
 #include "Strings/Numerics/Numeric.h"
 
 using namespace cocos2d;
@@ -45,8 +47,8 @@ GameCamera::GameCamera()
 	this->cameraBounds = Rect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
-	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
-	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
+	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
+	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraY::create());
 	this->hud->setZOrder(9999);
 	this->hud->setVisible(false);
 
