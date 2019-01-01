@@ -827,6 +827,27 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.cpp
 	Source/Strings/Empty.cpp
+	Source/Strings/Hexus/Actions/ChooseRow.cpp
+	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
+	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
+	Source/Strings/Hexus/Banners/Defeat.cpp
+	Source/Strings/Hexus/Banners/Draw.cpp
+	Source/Strings/Hexus/Banners/FinalRound.cpp
+	Source/Strings/Hexus/Banners/Infinity.cpp
+	Source/Strings/Hexus/Banners/LastStand.cpp
+	Source/Strings/Hexus/Banners/NextRound.cpp
+	Source/Strings/Hexus/Banners/OpponentFirst.cpp
+	Source/Strings/Hexus/Banners/OpponentPassed.cpp
+	Source/Strings/Hexus/Banners/OpponentRoundWin.cpp
+	Source/Strings/Hexus/Banners/OpponentsTurn.cpp
+	Source/Strings/Hexus/Banners/PlayerFirst.cpp
+	Source/Strings/Hexus/Banners/PlayerPassed.cpp
+	Source/Strings/Hexus/Banners/PlayerRoundWin.cpp
+	Source/Strings/Hexus/Banners/PlayerTurn.cpp
+	Source/Strings/Hexus/Banners/RemainingCardReplacements.cpp
+	Source/Strings/Hexus/Banners/RoundStart.cpp
+	Source/Strings/Hexus/Banners/RoundTied.cpp
+	Source/Strings/Hexus/Banners/Victory.cpp
 	Source/Strings/Hexus/BinCards.cpp
 	Source/Strings/Hexus/BinLabel.cpp
 	Source/Strings/Hexus/BinaryMax.cpp
@@ -1802,6 +1823,27 @@ list(APPEND GAME_HEADER
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.h
 	Source/Strings/Empty.h
+	Source/Strings/Hexus/Actions/ChooseRow.h
+	Source/Strings/Hexus/Actions/ChooseSourceCard.h
+	Source/Strings/Hexus/Actions/ChooseTargetCard.h
+	Source/Strings/Hexus/Banners/Defeat.h
+	Source/Strings/Hexus/Banners/Draw.h
+	Source/Strings/Hexus/Banners/FinalRound.h
+	Source/Strings/Hexus/Banners/Infinity.h
+	Source/Strings/Hexus/Banners/LastStand.h
+	Source/Strings/Hexus/Banners/NextRound.h
+	Source/Strings/Hexus/Banners/OpponentFirst.h
+	Source/Strings/Hexus/Banners/OpponentPassed.h
+	Source/Strings/Hexus/Banners/OpponentRoundWin.h
+	Source/Strings/Hexus/Banners/OpponentsTurn.h
+	Source/Strings/Hexus/Banners/PlayerFirst.h
+	Source/Strings/Hexus/Banners/PlayerPassed.h
+	Source/Strings/Hexus/Banners/PlayerRoundWin.h
+	Source/Strings/Hexus/Banners/PlayerTurn.h
+	Source/Strings/Hexus/Banners/RemainingCardReplacements.h
+	Source/Strings/Hexus/Banners/RoundStart.h
+	Source/Strings/Hexus/Banners/RoundTied.h
+	Source/Strings/Hexus/Banners/Victory.h
 	Source/Strings/Hexus/BinCards.h
 	Source/Strings/Hexus/BinLabel.h
 	Source/Strings/Hexus/BinaryMax.h

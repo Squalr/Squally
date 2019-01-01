@@ -53,7 +53,6 @@ LocalizedLabel::LocalizedLabel(
 	TextHAlignment hAlignment,
 	TextVAlignment vAlignment)
 {
-	this->stringReplacementVariables = std::vector<std::string>();
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
 	this->localizedString = localizedString;
@@ -101,18 +100,19 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const 
 	this->setHorizontalAlignment(hAlignment);
 	this->setVerticalAlignment(vAlignment);
 
-	this->onLocaleChange(this->localizedString);
+	this->onStringUpdate(this->localizedString);
 
-	this->localizedString->setOnLocaleChangeCallback(CC_CALLBACK_1(LocalizedLabel::onLocaleChange, this));
+	this->localizedString->setOnStringUpdateCallback(CC_CALLBACK_1(LocalizedLabel::onStringUpdate, this));
 
 	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
 }
 
 void LocalizedLabel::setStringReplacementVariables(std::vector<std::string> stringReplacementVariables)
 {
-	this->stringReplacementVariables = stringReplacementVariables;
-
-	this->updateText();
+	if (this->localizedString != nullptr)
+	{
+		this->localizedString->setStringReplacementVariables(stringReplacementVariables);
+	}
 }
 
 float LocalizedLabel::getFontSize()
@@ -186,22 +186,10 @@ std::string LocalizedLabel::getFont()
 	}
 }
 
-void LocalizedLabel::updateText()
+void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 {
-	std::string string = localizedString->getString();
-
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
-	{
-		string = StrUtils::replaceFirstOccurence(string, "%s", *it);
-	}
-}
-
-void LocalizedLabel::onLocaleChange(LocalizedString* localizedString)
-{
-	this->updateText();
-
 	this->initWithTTF(
-		this->getString(),
+		localizedString->getString(),
 		this->getFont(),
 		this->getFontSize(),
 		this->getDimensions(), 

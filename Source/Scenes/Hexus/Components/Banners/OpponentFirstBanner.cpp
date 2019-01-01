@@ -8,6 +8,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/OpponentFirst.h"
+
 using namespace cocos2d;
 
 OpponentFirstBanner* OpponentFirstBanner::create()
@@ -24,7 +26,7 @@ OpponentFirstBanner::OpponentFirstBanner()
 	this->enemyBanner1 = Sprite::create(HexusResources::EnemyBanner);
 	this->enemyBanner2 = Sprite::create(HexusResources::EnemyBanner);
 
-	this->setBannerText("OPPONENT GOES FIRST");
+	this->setBannerText(Strings::Hexus_Banners_OpponentFirst::create());
 
 	this->addBannerChild(this->enemyBanner1);
 	this->addBannerChild(this->enemyBanner2);

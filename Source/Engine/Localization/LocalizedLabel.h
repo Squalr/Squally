@@ -71,8 +71,7 @@ private:
 	using super::setString;
 
 	void onEnter() override;
-	void updateText();
-	void onLocaleChange(LocalizedString* localizedString);
+	void onStringUpdate(LocalizedString* localizedString);
 	static float getFontSizeM1(std::string fontResource);
 	static float getFontSizeM2(std::string fontResource);
 	static float getFontSizeM3(std::string fontResource);
@@ -90,7 +89,6 @@ private:
 	FontStyle fontStyle;
 	FontSize fontSize;
 	std::function<void()> typeWriterFinishedCallback;
-	std::vector<std::string> stringReplacementVariables;
 
 	static const std::string ScheduleKeyTypeWriterEffect;
 	static const float DefaultTypeSpeed;

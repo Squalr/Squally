@@ -22,17 +22,17 @@ BannerBase::BannerBase()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->statusBanner = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
-	this->statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2);
+	this->bannerOverlay = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
+	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2);
 	this->bannerChildrenNode = Node::create();
 
-	this->statusBanner->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->statusLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->statusLabel->enableOutline(Color4B::BLACK, 4);
+	this->bannerOverlay->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->bannerLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->bannerLabel->enableOutline(Color4B::BLACK, 4);
 
-	this->addChild(this->statusBanner);
+	this->addChild(this->bannerOverlay);
 	this->addChild(this->bannerChildrenNode);
-	this->addChild(this->statusLabel);
+	this->addChild(this->bannerLabel);
 }
 
 BannerBase::~BannerBase()
@@ -43,8 +43,8 @@ void BannerBase::onEnter()
 {
 	ComponentBase::onEnter();
 
-	this->statusBanner->setOpacity(0);
-	this->statusLabel->setOpacity(0);
+	this->bannerOverlay->setOpacity(0);
+	this->bannerLabel->setOpacity(0);
 	this->bannerChildrenNode->setOpacity(0);
 }
 
@@ -54,8 +54,8 @@ void BannerBase::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->statusBanner->setPosition(0.0f, visibleSize.height / 2.0f - this->statusBanner->getContentSize().height / 2 + 320.0f);
-	this->statusLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
+	this->bannerOverlay->setPosition(0.0f, visibleSize.height / 2.0f - this->bannerOverlay->getContentSize().height / 2 + 320.0f);
+	this->bannerLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 320.0f);
 }
 
 void BannerBase::onBeforeStateChange(GameState* gameState)
@@ -70,19 +70,19 @@ void BannerBase::onAnyStateChange(GameState* gameState)
 
 void BannerBase::setBannerText(LocalizedString* text)
 {
-	this->statusLabel->setLocalizedString(text);
+	this->bannerLabel->setLocalizedString(text);
 }
 
 void BannerBase::flashBanner()
 {
-	this->statusLabel->runAction(Sequence::create(
+	this->bannerLabel->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 255),
 		DelayTime::create(Config::bannerDisplayDuration),
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));
 
-	this->statusBanner->runAction(Sequence::create(
+	this->bannerOverlay->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 196),
 		DelayTime::create(Config::bannerDisplayDuration),
 		FadeTo::create(Config::bannerFadeSpeed, 0),
@@ -99,12 +99,12 @@ void BannerBase::flashBanner()
 
 void BannerBase::showBanner()
 {
-	this->statusLabel->runAction(Sequence::create(
+	this->bannerLabel->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 255),
 		nullptr
 	));
 
-	this->statusBanner->runAction(Sequence::create(
+	this->bannerOverlay->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 196),
 		nullptr
 	));
@@ -117,12 +117,12 @@ void BannerBase::showBanner()
 
 void BannerBase::hideBanner()
 {
-	this->statusLabel->runAction(Sequence::create(
+	this->bannerLabel->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));
 
-	this->statusBanner->runAction(Sequence::create(
+	this->bannerOverlay->runAction(Sequence::create(
 		FadeTo::create(Config::bannerFadeSpeed, 0),
 		nullptr
 	));

@@ -10,6 +10,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
 
+#include "Strings/Hexus/Banners/RemainingCardReplacements.h"
+
 using namespace cocos2d;
 
 CardReplaceBanner* CardReplaceBanner::create()
@@ -64,7 +66,10 @@ void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 	{
 		if (gameState->cardReplaceCount > 0)
 		{
-			this->setBannerText("REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount));
+			LocalizedString* newText = Strings::Hexus_Banners_RemainingCardReplacements::create();
+			newText->setStringReplacementVariables({ std::to_string(gameState->cardReplaceCount) });
+
+			this->setBannerText(newText);
 			this->showBanner();
 
 			this->penaltyIconParticles->start();

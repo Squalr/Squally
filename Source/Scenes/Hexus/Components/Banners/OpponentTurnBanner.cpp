@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/OpponentsTurn.h"
+
 using namespace cocos2d;
 
 OpponentTurnBanner* OpponentTurnBanner::create()
@@ -23,7 +25,7 @@ OpponentTurnBanner::OpponentTurnBanner()
 	this->enemyBanner1 = Sprite::create(HexusResources::EnemyBanner);
 	this->enemyBanner2 = Sprite::create(HexusResources::EnemyBanner);
 
-	this->setBannerText("OPPONENT'S TURN");
+	this->setBannerText(Strings::Hexus_Banners_OpponentsTurn::create());
 
 	this->addBannerChild(this->enemyBanner1);
 	this->addBannerChild(this->enemyBanner2);

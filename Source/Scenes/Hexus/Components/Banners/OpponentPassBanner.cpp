@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/OpponentPassed.h"
+
 using namespace cocos2d;
 
 OpponentPassBanner* OpponentPassBanner::create()
@@ -23,7 +25,7 @@ OpponentPassBanner::OpponentPassBanner()
 	this->opponentPassBanner1 = Sprite::create(HexusResources::EnemyPassBanner);
 	this->opponentPassBanner2 = Sprite::create(HexusResources::EnemyPassBanner);
 
-	this->setBannerText("OPPONENT PASSED");
+	this->setBannerText(Strings::Hexus_Banners_OpponentPassed::create());
 
 	this->addBannerChild(this->opponentPassBanner1);
 	this->addBannerChild(this->opponentPassBanner2);

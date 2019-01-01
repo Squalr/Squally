@@ -10,7 +10,23 @@
 #include "Scenes/Hexus/GameState.h"
 
 #include "Strings/Hexus/BinLabel.h"
-#include "Strings/Hexus/CardDescriptions.h"
+#include "Strings/Hexus/CardDescriptions/Addition.h"
+#include "Strings/Hexus/CardDescriptions/BinStorm.h"
+#include "Strings/Hexus/CardDescriptions/Clear.h"
+#include "Strings/Hexus/CardDescriptions/DecStorm.h"
+#include "Strings/Hexus/CardDescriptions/Flip1.h"
+#include "Strings/Hexus/CardDescriptions/Flip2.h"
+#include "Strings/Hexus/CardDescriptions/Flip3.h"
+#include "Strings/Hexus/CardDescriptions/Flip4.h"
+#include "Strings/Hexus/CardDescriptions/HexStorm.h"
+#include "Strings/Hexus/CardDescriptions/Inverse.h"
+#include "Strings/Hexus/CardDescriptions/LogicalAnd.h"
+#include "Strings/Hexus/CardDescriptions/LogicalOr.h"
+#include "Strings/Hexus/CardDescriptions/LogicalXor.h"
+#include "Strings/Hexus/CardDescriptions/Mov.h"
+#include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
+#include "Strings/Hexus/CardDescriptions/ShiftRight.h"
+#include "Strings/Hexus/CardDescriptions/Subtract.h"
 #include "Strings/Hexus/DecLabel.h"
 #include "Strings/Hexus/HexLabel.h"
 
@@ -206,67 +222,87 @@ void CardPreview::previewCard(Card* card)
 				{
 					case CardData::CardType::Special_MOV:
 					{
-						specialLabel->setString("Select one of your cards and MOV its value into another card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Mov::create());
 						break;
 					}
 					case CardData::CardType::Special_AND:
 					{
-						specialLabel->setString("Select one of your cards and AND its value with another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalAnd::create());
 						break;
 					}
 					case CardData::CardType::Special_OR:
 					{
-						specialLabel->setString("Select one of your cards and OR its value with another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalOr::create());
 						break;
 					}
 					case CardData::CardType::Special_XOR:
 					{
-						specialLabel->setString("Select one of your cards and XOR its value with another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalXor::create());
 						break;
 					}
 					case CardData::CardType::Special_SHL:
 					{
-						specialLabel->setString("Shift the bits left of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftLeft::create());
 						break;
 					}
 					case CardData::CardType::Special_SHR:
 					{
-						specialLabel->setString("Shift the bits right of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRight::create());
 						break;
 					}
 					case CardData::CardType::Special_INV:
 					{
-						specialLabel->setString("Invert the bits of the target card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Inverse::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP1:
 					{
-						specialLabel->setString("Flip the 1st bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip1::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP2:
 					{
-						specialLabel->setString("Flip the 2nd bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip2::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP3:
 					{
-						specialLabel->setString("Flip the 3rd bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip3::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP4:
 					{
-						specialLabel->setString("Flip the 4th bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip4::create());
 						break;
 					}
 					case CardData::CardType::Special_ADD:
 					{
-						specialLabel->setString("Select one of your cards and ADD its value to another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Addition::create());
 						break;
 					}
 					case CardData::CardType::Special_SUB:
 					{
-						specialLabel->setString("Select one of your cards and SUB its value from another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Subtract::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_CLEAR:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Subtract::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_BIN_STORM:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_BinStorm::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_DEC_STORM:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_DecStorm::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_HEX_STORM:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_HexStorm::create());
 						break;
 					}
 					default:

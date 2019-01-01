@@ -6,7 +6,6 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/GameState.h"
@@ -14,6 +13,7 @@
 #include "Resources/HexusResources.h"
 
 #include "Strings/Hexus/DrawToolTip.h"
+#include "Strings/Numerics/Numeric.h"
 
 using namespace cocos2d;
 
@@ -29,15 +29,15 @@ DrawCountDisplay* DrawCountDisplay::create()
 DrawCountDisplay::DrawCountDisplay()
 {
 	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
-	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
-	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
 
 	LayerColor* deckDrawCountMouseOverPanel;
 	Label* deckDrawCountCardMouseOverLabel;
 
 	this->deckDrawCountMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::DrawToolTip::create());
+	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_DrawToolTip::create());
 
 	this->deckDrawCountCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
@@ -130,8 +130,8 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		return;
 	}
 
-	this->drawCountLabel->setString(std::to_string(gameState->playerCardsDrawnNextRound));
-	this->enemyDrawCountLabel->setString(std::to_string(gameState->enemyCardsDrawnNextRound));
+	this->drawCountLabel->setStringReplacementVariables({ std::to_string(gameState->playerCardsDrawnNextRound) });
+	this->enemyDrawCountLabel->setStringReplacementVariables({ std::to_string(gameState->enemyCardsDrawnNextRound) });
 
 	switch (gameState->stateType)
 	{
@@ -153,6 +153,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
+		default:
 		case GameState::StateType::PlayerTurnStart:
 		{
 			if (!gameState->enemyPassed)

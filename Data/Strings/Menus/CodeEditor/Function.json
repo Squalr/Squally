@@ -12,7 +12,7 @@
     "fr": "Fonction : %s",
     "hu": "Funkció: %s",
     "it": "Funzione: %s",
-    "ja": "関数: %s",
+    "ja": "関数： %s",
     "ko": "기능: %s",
     "nl": "Functie: %s",
     "no": "Funksjon: %s",
@@ -26,6 +26,6 @@
     "tr": "fonksiyon: %s",
     "uk": "Функція: %s",
     "vi": "Chức năng: %s",
-    "zh-CN": "功能: %s",
-    "zh-TW": "功能: %s"
+    "zh-CN": "功能： %s",
+    "zh-TW": "功能： %s"
 }

@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/PlayerFirst.h"
+
 using namespace cocos2d;
 
 PlayerFirstBanner* PlayerFirstBanner::create()
@@ -23,7 +25,7 @@ PlayerFirstBanner::PlayerFirstBanner()
 	this->playerBanner1 = Sprite::create(HexusResources::PlayerBanner);
 	this->playerBanner2 = Sprite::create(HexusResources::PlayerBanner);
 
-	this->setBannerText("YOU GO FIRST");
+	this->setBannerText(Strings::Hexus_Banners_PlayerFirst::create());
 
 	this->addBannerChild(this->playerBanner1);
 	this->addBannerChild(this->playerBanner2);

@@ -11,6 +11,10 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Numerics/Numeric.h"
+#include "Strings/Numerics/PlusNumeric.h"
+#include "Strings/Numerics/MinusNumeric.h"
+
 using namespace cocos2d;
 
 // Obscure cached values with a cipher -- less confusing for those hacking the game if we hide cached values
@@ -41,19 +45,19 @@ RowTotals::RowTotals()
 	this->playerDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
 	this->playerHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
 
-	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
+	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
 
-	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
-	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
+	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
 
 	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
@@ -280,21 +284,23 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 
 void RowTotals::updateTotals(GameState* gameState)
 {
-	this->playerBinaryCardTotal->setString(std::to_string(gameState->playerBinaryCards->getRowAttack()));
-	this->playerDecimalCardTotal->setString(std::to_string(gameState->playerDecimalCards->getRowAttack()));
-	this->playerHexCardTotal->setString(std::to_string(gameState->playerHexCards->getRowAttack()));
-	this->enemyBinaryCardTotal->setString(std::to_string(gameState->enemyBinaryCards->getRowAttack()));
-	this->enemyDecimalCardTotal->setString(std::to_string(gameState->enemyDecimalCards->getRowAttack()));
-	this->enemyHexCardTotal->setString(std::to_string(gameState->enemyHexCards->getRowAttack()));
+	this->playerBinaryCardTotal->setStringReplacementVariables({ std::to_string(gameState->playerBinaryCards->getRowAttack()) });
+	this->playerDecimalCardTotal->setStringReplacementVariables({ std::to_string(gameState->playerDecimalCards->getRowAttack()) });
+	this->playerHexCardTotal->setStringReplacementVariables({ std::to_string(gameState->playerHexCards->getRowAttack()) });
+	this->enemyBinaryCardTotal->setStringReplacementVariables({ std::to_string(gameState->enemyBinaryCards->getRowAttack()) });
+	this->enemyDecimalCardTotal->setStringReplacementVariables({ std::to_string(gameState->enemyDecimalCards->getRowAttack()) });
+	this->enemyHexCardTotal->setStringReplacementVariables({ std::to_string(gameState->enemyHexCards->getRowAttack()) });
 }
 
 void RowTotals::runDeltaAnimation(LocalizedLabel* label, float startPositionY, int delta)
 {
 	const float floatOffsetY = 32.0f;
 
+	LocalizedString* deltaString = (delta < 0 ? (LocalizedString*)Strings::Numerics_MinusNumeric::create() : (LocalizedString*)Strings::Numerics_PlusNumeric::create());
+	deltaString->setStringReplacementVariables({ std::to_string(std::abs(delta)) });
+
 	label->setPositionY(startPositionY - floatOffsetY / 4.0f);
 	label->setOpacity(255);
-	label->setString((delta < 0 ? "-" : "+") + std::to_string(std::abs(delta)));
 	label->setTextColor(delta < 0 ? Color4B::RED : Color4B::YELLOW);
 	label->runAction(MoveTo::create(1.0f, Vec2(label->getPositionX(), startPositionY + (floatOffsetY * 3.0f) / 4.0f)));
 	label->runAction(FadeTo::create(1.0f, 0));

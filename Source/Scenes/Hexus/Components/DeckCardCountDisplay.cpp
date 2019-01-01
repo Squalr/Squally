@@ -9,6 +9,8 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 
+#include "Strings/Numerics/Numeric.h"
+
 using namespace cocos2d;
 
 DeckCardCountDisplay* DeckCardCountDisplay::create()
@@ -23,9 +25,9 @@ DeckCardCountDisplay* DeckCardCountDisplay::create()
 DeckCardCountDisplay::DeckCardCountDisplay()
 {
 	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->playerDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->playerDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
 	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->enemyDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
 
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
@@ -72,6 +74,6 @@ void DeckCardCountDisplay::onAnyStateChange(GameState* gameState)
 
 void DeckCardCountDisplay::updateTotals(GameState* gameState)
 {
-	this->playerDeckCardCountText->setString(StrUtils::toStringZeroPad(gameState->playerDeck->getCardCount(), 2));
-	this->enemyDeckCardCountText->setString(StrUtils::toStringZeroPad(gameState->enemyDeck->getCardCount(), 2));
+	this->playerDeckCardCountText->setStringReplacementVariables({ StrUtils::toStringZeroPad(gameState->playerDeck->getCardCount(), 2) });
+	this->enemyDeckCardCountText->setStringReplacementVariables({ StrUtils::toStringZeroPad(gameState->enemyDeck->getCardCount(), 2) });
 }

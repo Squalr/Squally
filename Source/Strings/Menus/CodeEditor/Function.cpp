@@ -95,7 +95,7 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Function::getStringJa()
 	{
-		return "関数: %s";
+		return "関数： %s";
 	}
 
 	std::string Menus_CodeEditor_Function::getStringKo()
@@ -165,11 +165,11 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Function::getStringZhCn()
 	{
-		return "功能: %s";
+		return "功能： %s";
 	}
 
 	std::string Menus_CodeEditor_Function::getStringZhTw()
 	{
-		return "功能: %s";
+		return "功能： %s";
 	}
 }
