@@ -30,7 +30,7 @@ void CollisionEventDispatcher::initializeListeners()
 	contactListener->onContactPostSolve = CC_CALLBACK_1(CollisionEventDispatcher::onContactUpdate, this);
 	contactListener->onContactSeparate = CC_CALLBACK_1(CollisionEventDispatcher::onContactEnd, this);
 
-	this->addEventListener(contactListener);
+	this->addGlobalEventListener(contactListener);
 }
 
 bool CollisionEventDispatcher::onContactBegin(PhysicsContact &contact)

@@ -48,7 +48,7 @@ void Input::initializeListeners()
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(Input::onKeyPressed, this);
 	keyboardListener->onKeyReleased = CC_CALLBACK_2(Input::onKeyReleased, this);
 
-	this->addEventListener(keyboardListener);
+	this->addGlobalEventListener(keyboardListener);
 }
 
 void Input::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)

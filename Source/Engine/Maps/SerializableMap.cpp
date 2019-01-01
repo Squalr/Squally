@@ -56,7 +56,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	// Callback to receive deserialized layers as they are parsed by their deserializers
 	auto onDeserializeCallback = [&](DeserializationEvents::LayerDeserializationArgs args)
 	{
-		deserializedLayerMap.emplace(args.layerIndex, args.serializableLayer);
+		deserializedLayerMap[args.layerIndex] = args.serializableLayer;
 	};
 
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
@@ -86,7 +86,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
 	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
 	{
-		deserializedLayerMap.emplace((*it)->layerIndex, SerializableTileLayer::deserialize((*it)));
+		deserializedLayerMap[(*it)->layerIndex] = SerializableTileLayer::deserialize((*it));
 	}
 
 	// Convert from map to ordered vector
