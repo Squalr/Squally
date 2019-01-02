@@ -317,8 +317,8 @@ void TerrainObject::buildSurfaceTextures()
 		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
 		ConstantString* bisectingAngleString = ConstantString::create(bisectingAngleStream.str());
 
-		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, angleString);
-		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, bisectingAngleString);
+		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, angleString);
+		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, bisectingAngleString);
 
 		angleDebug->setTextColor(Color4B::YELLOW);
 		bisectingAngleDebug->setTextColor(Color4B::MAGENTA);

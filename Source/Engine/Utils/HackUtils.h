@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include <typeinfo>
+
+class LocalizedString;
 
 class HackUtils
 {
@@ -24,7 +25,7 @@ public:
 		struct ErrorData
 		{
 			int lineNumber;
-			std::string message;
+			LocalizedString* message;
 		};
 
 		ErrorData errorData;
@@ -45,8 +46,5 @@ public:
 	static std::string dataTypeToString(DataType dataType);
 	static std::string valueStringOf(void* dataPointer, DataType dataType);
 	static std::string arrayOfByteStringOf(void* dataPointer, int length, int maxLength);
-
-private:
-	//static CompileResult constructCompileResult(Fasm::FasmResult* fasmResult);
 };
 

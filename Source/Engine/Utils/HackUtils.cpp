@@ -2,7 +2,6 @@
 
 #include <algorithm>
 #include <bitset>
-#include <exception>
 #include <iomanip>
 #include <sstream>
 
@@ -11,7 +10,6 @@
 
 #include "Engine/asmtk/asmtk.h"
 #include "Engine/Utils/LogUtils.h"
-#include "Engine/Utils/MathUtils.h"
 
 #if __GNUC__ || __clang__
 	#include <unistd.h>

@@ -108,7 +108,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardEffects = CardEffects::create();
 
 	this->cardString = ConstantString::create();
-	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
+	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
 
 	this->cardLabel->setStringReplacementVariables(this->cardString);
 	this->cardLabel->setAlignment(TextHAlignment::CENTER);
