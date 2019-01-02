@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Numerics_PlusNumeric : public LocalizedString
+	class Generics_MinusConstant : public LocalizedString
 	{
 	public:
-		static Numerics_PlusNumeric* create();
+		static Generics_MinusConstant* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace Strings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Numerics_PlusNumeric();
-		~Numerics_PlusNumeric();
+		Generics_MinusConstant();
+		~Generics_MinusConstant();
 	};
 }

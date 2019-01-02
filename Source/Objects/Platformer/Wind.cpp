@@ -1,7 +1,6 @@
 #include "Wind.h"
 
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/ccTypes.h"
 #include "cocos/base/CCValue.h"
 #include "cocos/2d/CCParticleSystemQuad.h"
 
@@ -12,7 +11,7 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Empty.h"
+#include "Strings/Generics/Empty.h"
 
 using namespace cocos2d;
 
@@ -60,7 +59,7 @@ Wind::~Wind()
 
 void Wind::registerHackables()
 {
-	this->windDataSpeedY = HackableData::create(&this->windSpeed.y, Strings::Empty::create(), typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
+	this->windDataSpeedY = HackableData::create(&this->windSpeed.y, Strings::Generics_Empty::create(), typeid(this->windSpeed.y), UIResources::Menus_Icons_AlchemyPot);
 	this->registerData(this->windDataSpeedY);
 }
 

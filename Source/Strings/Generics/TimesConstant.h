@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class LateBound : public LocalizedString
+	class Generics_TimesConstant : public LocalizedString
 	{
 	public:
-		static LateBound* create();
+		static Generics_TimesConstant* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace Strings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		LateBound();
-		~LateBound();
+		Generics_TimesConstant();
+		~Generics_TimesConstant();
 	};
 }

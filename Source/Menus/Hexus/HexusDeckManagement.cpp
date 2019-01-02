@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/CCheckbox.h"
@@ -30,8 +31,8 @@
 #include "Strings/Hexus/CardsInStorage.h"
 #include "Strings/Hexus/HexCards.h"
 #include "Strings/Hexus/SpecialCards.h"
-#include "Strings/Numerics/Numeric.h"
-#include "Strings/Numerics/TimesNumeric.h"
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/TimesConstant.h"
 
 using namespace cocos2d;
 
@@ -56,7 +57,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->activeFilter = CardFilterFlags::All;
 	this->displayDeckCards = std::map<CardData*, MenuCard*>();
 	this->displayStorageCards = std::map<CardData*, MenuCard*>();
-	this->countLabels = std::map<MenuCard*, LocalizedLabel*>();
+	this->countLabels = std::map<MenuCard*, std::tuple<ConstantString*, LocalizedLabel*>>();
 	this->deckCards = std::map<CardData*, int>();
 	this->storageCards = std::map<CardData*, int>();
 
@@ -70,15 +71,26 @@ HexusDeckManagement::HexusDeckManagement()
 	this->titleSprite = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_AxeLogo);
 
 	this->totalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardsInDeck::create());
-	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	this->totalCardsInDeckValueString = ConstantString::create();
+	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	this->binaryCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_BinCards::create());
-	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	this->binaryCardsInDeckValueString = ConstantString::create();
+	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	this->decimalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_DecCards::create());
-	this->decimalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	this->decimalCardsInDeckValueString = ConstantString::create();
+	this->decimalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	this->hexCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_HexCards::create());
-	this->hexCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	this->hexCardsInDeckValueString = ConstantString::create();
+	this->hexCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	this->specialCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_SpecialCards::create());
-	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	this->specialCardsInDeckValueString = ConstantString::create();
+	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+
+	this->totalCardsInDeckValueLabel->setStringReplacementVariables(this->totalCardsInDeckValueString);
+	this->binaryCardsInDeckValueLabel->setStringReplacementVariables(this->binaryCardsInDeckValueString);
+	this->decimalCardsInDeckValueLabel->setStringReplacementVariables(this->decimalCardsInDeckValueString);
+	this->hexCardsInDeckValueLabel->setStringReplacementVariables(this->hexCardsInDeckValueString);
+	this->specialCardsInDeckValueLabel->setStringReplacementVariables(this->specialCardsInDeckValueString);
 
 	MenuSprite* allButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
 	MenuSprite* allButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
@@ -530,19 +542,20 @@ void HexusDeckManagement::rebuildCardLists()
 
 	if (totalDeckCards < CardStorage::minimumDeckCards)
 	{
-		this->totalCardsInDeckValueLabel->setStringReplacementVariables({ std::to_string(totalDeckCards) + " / " + std::to_string(CardStorage::minimumDeckCards) });
+		// TODO: Not localization safe!
+		this->totalCardsInDeckValueString->setString({ std::to_string(totalDeckCards) + " / " + std::to_string(CardStorage::minimumDeckCards) });
 		this->totalCardsInDeckValueLabel->setTextColor(Color4B::RED);
 	}
 	else
 	{
-		this->totalCardsInDeckValueLabel->setStringReplacementVariables({ std::to_string(totalDeckCards) });
+		this->totalCardsInDeckValueString->setString({ std::to_string(totalDeckCards) });
 		this->totalCardsInDeckValueLabel->setTextColor(Color4B::YELLOW);
 	}
 
-	this->binaryCardsInDeckValueLabel->setStringReplacementVariables({ std::to_string(totalDeckBinaryCards) });
-	this->decimalCardsInDeckValueLabel->setStringReplacementVariables({ std::to_string(totalDeckDecimalCards) });
-	this->hexCardsInDeckValueLabel->setStringReplacementVariables({ std::to_string(totalDeckHexCards) });
-	this->specialCardsInDeckValueLabel->setStringReplacementVariables({ std::to_string(totalDeckSpecialCards) });
+	this->binaryCardsInDeckValueString->setString({ std::to_string(totalDeckBinaryCards) });
+	this->decimalCardsInDeckValueString->setString({ std::to_string(totalDeckDecimalCards) });
+	this->hexCardsInDeckValueString->setString({ std::to_string(totalDeckHexCards) });
+	this->specialCardsInDeckValueString->setString({ std::to_string(totalDeckSpecialCards) });
 
 	// Position all the cards
 	this->initializeListeners();
@@ -552,7 +565,10 @@ void HexusDeckManagement::rebuildCardLists()
 MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 {
 	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_TimesNumeric::create());
+	ConstantString* valueString = ConstantString::create();
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_TimesConstant::create());
+
+	label->setStringReplacementVariables(valueString);
 
 	label->enableOutline(Color4B::BLACK, 4);
 	label->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -563,7 +579,7 @@ MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 	card->setScale(0.6f);
 	card->reveal();
 
-	this->countLabels.emplace(card, label);
+	this->countLabels[card] = std::make_tuple(valueString, label);
 	this->updateCardCount(card, count);
 
 	return card;
@@ -573,24 +589,27 @@ void HexusDeckManagement::updateCardCount(MenuCard* card, int count)
 {
 	if (this->countLabels.find(card) != this->countLabels.end())
 	{
-		this->countLabels[card]->setStringReplacementVariables({ std::to_string(count) });
+		ConstantString* valueString = std::get<0>(this->countLabels[card]);
+		LocalizedLabel* label = std::get<1>(this->countLabels[card]);
+
+		valueString->setString(std::to_string(count));
 
 		switch (count)
 		{
 			case 1:
 			default:
 			{
-				this->countLabels[card]->setTextColor(Color4B(192, 165, 108, 255));
+				label->setTextColor(Color4B(192, 165, 108, 255));
 				break;
 			}
 			case 2:
 			{
-				this->countLabels[card]->setTextColor(Color4B(214, 184, 121, 255));
+				label->setTextColor(Color4B(214, 184, 121, 255));
 				break;
 			}
 			case 3:
 			{
-				this->countLabels[card]->setTextColor(Color4B(238, 205, 135, 255));
+				label->setTextColor(Color4B(238, 205, 135, 255));
 				break;
 			}
 		}

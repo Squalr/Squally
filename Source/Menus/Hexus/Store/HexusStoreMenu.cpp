@@ -12,6 +12,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
@@ -35,7 +36,8 @@
 #include "Strings/Hexus/StoreLabelDecimal.h"
 #include "Strings/Hexus/StoreLabelHex.h"
 #include "Strings/Hexus/StoreLabelSpecial.h"
-#include "Strings/Numerics/Numeric.h"
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/XOverY.h"
 
 using namespace cocos2d;
 
@@ -62,14 +64,16 @@ HexusStoreMenu::HexusStoreMenu()
 	this->decimalCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
 	this->hexCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
 	this->specialCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
-	this->limitLabels = std::map<MenuCard*, LocalizedLabel*>();
+	this->limitLabels = std::map<MenuCard*, std::tuple<ConstantString*, ConstantString*, LocalizedLabel*>>();
 
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
 
 	this->goldPanel = Sprite::create(UIResources::Menus_StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Numerics_Numeric::create());
+	this->goldString = ConstantString::create();
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
 
+	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	this->goldLabel->setPosition(Vec2(-32.0f, 0.0f));
 	this->goldLabel->setAlignment(TextHAlignment::LEFT);
@@ -445,10 +449,11 @@ std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string 
 	animationNode->playAnimation();
 
 	MenuSprite* frame = MenuSprite::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	ConstantString* priceString = ConstantString::create(std::to_string(price));
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
-	priceLabel->setStringReplacementVariables({ std::to_string(price) });
+	priceLabel->setStringReplacementVariables(priceString);
 
 	animationNode->setScale(HexusStoreMenu::LootBoxScale);
 	animationNode->setPosition(Vec2(0.0f, 16.0f));
@@ -567,18 +572,22 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 		}
 	}
 
-	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1);
+	ConstantString* countString = ConstantString::create();
+	ConstantString* limitString = ConstantString::create();
+	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_XOverY::create());
 
+	cardLimitLabel->setStringReplacementVariables({ countString, limitString });
 	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	cardLimitLabel->enableOutline(Color4B::BLACK, 4);
 	cardLimitLabel->setPosition(Vec2(-96.0f, 128.0f));
 
-	this->updateCardLimitText(cardLimitLabel, cardData);
+	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Numerics_Numeric::create());
+	ConstantString* priceString = ConstantString::create(std::to_string(price));
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
-	priceLabel->setStringReplacementVariables({ std::to_string(price) });
+	priceLabel->setStringReplacementVariables(priceString);
 
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -144.0f));
@@ -593,40 +602,43 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 	menuCard->setPosition(Vec2(0.0f, 16.0f));
 	menuCard->setScale(0.8f);
 
-	cardContainer->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel));
+	cardContainer->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
 
 	cardContainer->addChild(goldIcon);
 	cardContainer->addChild(priceLabel);
 	menuCard->addDisplayItem(cardLimitLabel);
 
-	this->limitLabels.emplace(menuCard, cardLimitLabel);
+	this->limitLabels[menuCard] = std::make_tuple(countString, limitString, cardLimitLabel);
 
 	return std::tuple<MenuSprite*, MenuCard*, int>(cardContainer, menuCard, price);
 }
 
 void HexusStoreMenu::updateAllCardLimits()
 {
-	for (auto it = this->binaryCards.begin(); it != this->binaryCards.end(); it++)
+	auto iterateAndUpdateCardLimits = [=](std::vector<std::tuple<MenuSprite*, MenuCard*, int>> cards)
 	{
-		this->updateCardLimitText(this->limitLabels[std::get<1>(*it)], std::get<1>(*it)->cardData);
-	}
+		for (auto it = this->binaryCards.begin(); it != this->binaryCards.end(); it++)
+		{
+			MenuCard* card = std::get<1>(*it);
+			ConstantString* countString = std::get<0>(this->limitLabels[card]);
+			ConstantString* limitString = std::get<1>(this->limitLabels[card]);
+			LocalizedLabel* label = std::get<2>(this->limitLabels[card]);
 
-	for (auto it = this->decimalCards.begin(); it != this->decimalCards.end(); it++)
-	{
-		this->updateCardLimitText(this->limitLabels[std::get<1>(*it)], std::get<1>(*it)->cardData);
-	}
+			this->updateCardLimitText(label, countString, limitString, card->cardData);
+		}
+	};
 
-	for (auto it = this->hexCards.begin(); it != this->hexCards.end(); it++)
-	{
-		this->updateCardLimitText(this->limitLabels[std::get<1>(*it)], std::get<1>(*it)->cardData);
-	}
+	iterateAndUpdateCardLimits(this->binaryCards);
+	iterateAndUpdateCardLimits(this->decimalCards);
+	iterateAndUpdateCardLimits(this->hexCards);
 }
 
-void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, CardData* cardData)
+void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, ConstantString* countString, ConstantString* limitString, CardData* cardData)
 {
 	int ownedCount = CardStorage::getOwnedCardCount(cardData);
 
-	label->setStringReplacementVariables({ std::to_string(ownedCount) + " / " + std::to_string(3) });
+	countString->setString(std::to_string(ownedCount));
+	countString->setString(std::to_string(3));
 
 	if (ownedCount >= 3)
 	{
@@ -638,7 +650,7 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, CardData* cardDa
 	}
 }
 
-void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel)
+void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
 {
 	int gold = CardStorage::getGold();
 
@@ -656,7 +668,7 @@ void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price
 
 	CardStorage::addStorageCard(cardData);
 
-	this->updateCardLimitText(cardLimitLabel, cardData);
+	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 }
 
 void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
@@ -874,7 +886,7 @@ void HexusStoreMenu::hideMenus()
 
 void HexusStoreMenu::updateGoldText()
 {
-	this->goldLabel->setStringReplacementVariables({ std::to_string(CardStorage::getGold()) });
+	this->goldString->setString(std::to_string(CardStorage::getGold()));
 }
 
 CardData* HexusStoreMenu::chooseRandomCard(std::map<CardData*, float> cardChoices)

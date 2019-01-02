@@ -12,7 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Empty.h"
+#include "Strings/Generics/Empty.h"
 #include "Strings/Hexus/Actions/ChooseRow.h"
 #include "Strings/Hexus/Actions/ChooseSourceCard.h"
 #include "Strings/Hexus/Actions/ChooseTargetCard.h"
@@ -30,7 +30,7 @@ StagingHelperText* StagingHelperText::create()
 
 StagingHelperText::StagingHelperText()
 {
-	this->selectionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
+	this->selectionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);
@@ -175,7 +175,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 
 void StagingHelperText::clearSelectionStatus()
 {
-	this->selectionLabel->setLocalizedString(Strings::Empty::create());
+	this->selectionLabel->setLocalizedString(Strings::Generics_Empty::create());
 	this->cancelButton->setClickCallback(nullptr);
 	this->helpButton->setClickCallback(nullptr);
 	this->selectionLabel->runAction(FadeTo::create(0.25f, 0));

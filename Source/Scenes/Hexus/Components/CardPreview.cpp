@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardData.h"
@@ -9,6 +10,7 @@
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
+#include "Strings/Generics/Empty.h"
 #include "Strings/Hexus/BinLabel.h"
 #include "Strings/Hexus/CardDescriptions/Addition.h"
 #include "Strings/Hexus/CardDescriptions/BinStorm.h"
@@ -180,9 +182,13 @@ void CardPreview::previewCard(Card* card)
 				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_DecLabel::create());
 				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_HexLabel::create());
 
-				binaryLabel->setStringReplacementVariables({ HackUtils::toBinary4(attack) });
-				decimalLabel->setStringReplacementVariables({ std::to_string(attack) });
-				hexLabel->setStringReplacementVariables({ HackUtils::toHex(attack) });
+				ConstantString* binaryString = ConstantString::create(HackUtils::toBinary4(attack));
+				ConstantString* decimalString = ConstantString::create(std::to_string(attack));
+				ConstantString* hexString = ConstantString::create(HackUtils::toHex(attack));
+
+				binaryLabel->setStringReplacementVariables(binaryString);
+				decimalLabel->setStringReplacementVariables(decimalString);
+				hexLabel->setStringReplacementVariables(hexString);
 
 				binaryLabel->setAnchorPoint(Vec2::ZERO);
 				decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -210,7 +216,7 @@ void CardPreview::previewCard(Card* card)
 			}
 			default:
 			{
-				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
+				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 
 				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);
@@ -218,6 +224,7 @@ void CardPreview::previewCard(Card* card)
 				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
 				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
 
+				// TODO: Not a fan of allocating memory at runtime like this by calling create, maybe this is fine though
 				switch (card->cardData->cardType)
 				{
 					case CardData::CardType::Special_MOV:

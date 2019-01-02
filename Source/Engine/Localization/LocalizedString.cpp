@@ -11,7 +11,7 @@ using namespace cocos2d;
 LocalizedString::LocalizedString()
 {
 	this->onStringUpdate = nullptr;
-	this->stringReplacementVariables = std::vector<std::string>();
+	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
 }
 
@@ -198,15 +198,34 @@ std::string LocalizedString::getString()
 
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s", *it);
+		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s", (*it)->getString());
 	}
 
 	return localizedString;
 }
 
-void LocalizedString::setStringReplacementVariables(std::vector<std::string> stringReplacementVariables)
+void LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
 {
+	this->setStringReplacementVariables({ stringReplacementVariables });
+}
+
+void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
+{
+	// Release old replacement varaibles
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		this->removeChild(*it);
+	}
+
 	this->stringReplacementVariables = stringReplacementVariables;
+
+	// Retain new replacement variables
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		// Update this string if any of the replacement variables get updated
+		(*it)->setOnStringUpdateCallback([=](LocalizedString*) { if (this->onStringUpdate != nullptr) { this->onStringUpdate(this); } });
+		this->addChild(*it);
+	}
 
 	if (this->onStringUpdate != nullptr)
 	{
@@ -214,7 +233,7 @@ void LocalizedString::setStringReplacementVariables(std::vector<std::string> str
 	}
 }
 
-void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onLocaleChange)
+void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate)
 {
-	this->onStringUpdate = onLocaleChange;
+	this->onStringUpdate = onStringUpdate;
 }

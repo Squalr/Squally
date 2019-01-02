@@ -36,13 +36,6 @@ public:
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
 	);
-	static LocalizedLabel* create(
-		FontStyle fontStyle,
-		FontSize fontSize,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
-		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
-		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
-	);
 
 	LocalizedLabel* clone();
 	void setLocalizedString(
@@ -50,7 +43,8 @@ public:
 		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
-	void setStringReplacementVariables(std::vector<std::string> stringReplacementVariables);
+	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
+	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	float getFontSize();
 	std::string getFont();
 	void runTypeWriterEffect(float speed = LocalizedLabel::DefaultTypeSpeed);

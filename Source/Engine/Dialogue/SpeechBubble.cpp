@@ -8,6 +8,9 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Camera/GameCamera.h"
 
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/Empty.h"
+
 using namespace cocos2d;
 
 const Color4F SpeechBubble::BubbleColor = Color4F(Color4B(189, 215, 221, 196));
@@ -28,7 +31,7 @@ SpeechBubble::SpeechBubble()
 {
 	this->stem = DrawNode::create(3.0f);
 	this->bubble = DrawNode::create(3.0f);
-	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
+	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 

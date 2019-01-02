@@ -17,6 +17,7 @@
 #include "Resources/StringResources.h"
 
 #include "Strings/Cutscenes/PressEscToSkip.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -75,17 +76,17 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	{
 		case NeonCityScene::Intro:
 		{
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 		case NeonCityScene::Return:
 		{
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCityReturn, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCityReturn, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 		case NeonCityScene::Singularity:
 		{
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCitySingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCitySingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 	}

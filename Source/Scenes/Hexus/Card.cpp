@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
@@ -14,7 +15,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/LateBound.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -106,10 +107,13 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
-	this->cardText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::LateBound::create());
-	this->cardText->setAlignment(TextHAlignment::CENTER);
-	this->cardText->setAnchorPoint(Vec2(0.5f, 1.0f));
-	this->cardText->enableOutline(Color4B::BLACK, 6);
+	this->cardString = ConstantString::create();
+	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
+
+	this->cardLabel->setStringReplacementVariables(this->cardString);
+	this->cardLabel->setAlignment(TextHAlignment::CENTER);
+	this->cardLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->cardLabel->enableOutline(Color4B::BLACK, 6);
 
 	this->setScale(Card::cardScale);
 
@@ -121,7 +125,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->addChild(this->cardFocus);
 	this->addChild(this->cardSelect);
 	this->addChild(this->cardEffects);
-	this->addChild(this->cardText);
+	this->addChild(this->cardLabel);
 
 	this->hide();
 	this->unfocus();
@@ -142,7 +146,7 @@ void Card::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->cardText->setPosition(Vec2(0.0f, -88.0f));
+	this->cardLabel->setPosition(Vec2(0.0f, -88.0f));
 }
 
 void Card::initializeListeners()
@@ -323,7 +327,7 @@ void Card::reveal()
 	this->cardBack->setVisible(true);
 	this->cardFront->setVisible(true);
 	this->cardSprite->setVisible(true);
-	this->cardText->setVisible(true);
+	this->cardLabel->setVisible(true);
 }
 
 void Card::hide()
@@ -331,7 +335,7 @@ void Card::hide()
 	this->cardBack->setVisible(true);
 	this->cardFront->setVisible(false);
 	this->cardSprite->setVisible(false);
-	this->cardText->setVisible(false);
+	this->cardLabel->setVisible(false);
 }
 
 void Card::focus()
@@ -372,17 +376,23 @@ void Card::updateText()
 	switch (this->cardData->cardType)
 	{
 		case CardData::CardType::Binary:
-			this->cardText->setStringReplacementVariables({ HackUtils::toBinary4(this->getAttack()) });
-			this->cardText->setTextColor(Card::binaryColor);
+		{
+			this->cardString->setString(HackUtils::toBinary4(this->getAttack()));
+			this->cardLabel->setTextColor(Card::binaryColor);
 			break;
+		}
 		case CardData::CardType::Decimal:
-			this->cardText->setStringReplacementVariables({ std::to_string(this->getAttack()) });
-			this->cardText->setTextColor(Card::decimalColor);
+		{
+			this->cardString->setString(std::to_string(this->getAttack()));
+			this->cardLabel->setTextColor(Card::decimalColor);
 			break;
+		}
 		case CardData::CardType::Hexidecimal:
-			this->cardText->setStringReplacementVariables({ HackUtils::toHex(this->getAttack()) });
-			this->cardText->setTextColor(Card::hexColor);
+		{
+			this->cardString->setString(HackUtils::toHex(this->getAttack()));
+			this->cardLabel->setTextColor(Card::hexColor);
 			break;
+		}
 		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
@@ -396,19 +406,23 @@ void Card::updateText()
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
-			this->cardText->setStringReplacementVariables({ this->cardData->getCardTypeString() });
-			this->cardText->setTextColor(Card::specialColor);
+		{
+			this->cardString->setString(this->cardData->getCardTypeString());
+			this->cardLabel->setTextColor(Card::specialColor);
+		}
 		default:
+		{
 			break;
+		}
 	}
 
 	if (actualAttack > this->cardData->attack)
 	{
-		this->cardText->setTextColor(Card::buffColor);
+		this->cardLabel->setTextColor(Card::buffColor);
 	}
 	else if (actualAttack < this->cardData->attack)
 	{
-		this->cardText->setTextColor(Card::debuffColor);
+		this->cardLabel->setTextColor(Card::debuffColor);
 	}
 }
 

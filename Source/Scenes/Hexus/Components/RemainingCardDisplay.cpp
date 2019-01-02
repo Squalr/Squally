@@ -1,5 +1,4 @@
 #include "RemainingCardDisplay.h"
-#include <codecvt>
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
@@ -7,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Hexus/CardRow.h"
@@ -17,6 +17,8 @@
 #include "Resources/ParticleResources.h"
 
 #include "Strings/Hexus/CardsToPlayToolTip.h"
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/Infinity.h"
 
 using namespace cocos2d;
 
@@ -33,9 +35,9 @@ RemainingCardDisplay::RemainingCardDisplay()
 {
 	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
 	this->remainingCardSprite = MenuSprite::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
-	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 	this->enemyRemainingCardSprite = Sprite::create(HexusResources::RemainingCardsIcon);
-	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
 	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardsToPlayToolTip::create());
@@ -128,29 +130,25 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 
 	if (gameState->enemyPassed || gameState->playerPassed)
 	{
-		wchar_t const* utf16_string = L"\u221E";
-		std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> convert;
-		std::string infinitySymbol = convert.to_bytes(utf16_string);
-
-		this->remainingCardLabel->setStringReplacementVariables({ infinitySymbol });
-		this->enemyRemainingCardLabel->setStringReplacementVariables({ infinitySymbol });
+		this->remainingCardLabel->setStringReplacementVariables(Strings::Generics_Infinity::create());
+		this->enemyRemainingCardLabel->setStringReplacementVariables(Strings::Generics_Infinity::create());
 	}
 	else
 	{
-		this->remainingCardLabel->setStringReplacementVariables({ std::to_string(gameState->playableCardsThisTurn) });
-		this->enemyRemainingCardLabel->setStringReplacementVariables({ std::to_string(gameState->playableCardsThisTurn) });
+		this->remainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playableCardsThisTurn)));
+		this->enemyRemainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playableCardsThisTurn)));
 	}
 
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
 		{
-			this->enemyRemainingCardLabel->setStringReplacementVariables({ std::to_string(0) });
+			this->enemyRemainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(0)));
 			break;
 		}
 		case GameState::Turn::Enemy:
 		{
-			this->remainingCardLabel->setStringReplacementVariables({ std::to_string(0) });
+			this->remainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(0)));
 			break;
 		}
 		default:

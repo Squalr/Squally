@@ -4,6 +4,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
@@ -11,9 +12,9 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Numerics/Numeric.h"
-#include "Strings/Numerics/PlusNumeric.h"
-#include "Strings/Numerics/MinusNumeric.h"
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/PlusConstant.h"
+#include "Strings/Generics/MinusConstant.h"
 
 using namespace cocos2d;
 
@@ -45,19 +46,19 @@ RowTotals::RowTotals()
 	this->playerDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
 	this->playerHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
 
-	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 
-	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
-	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Numerics_Numeric::create());
+	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 
 	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);
@@ -284,20 +285,22 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 
 void RowTotals::updateTotals(GameState* gameState)
 {
-	this->playerBinaryCardTotal->setStringReplacementVariables({ std::to_string(gameState->playerBinaryCards->getRowAttack()) });
-	this->playerDecimalCardTotal->setStringReplacementVariables({ std::to_string(gameState->playerDecimalCards->getRowAttack()) });
-	this->playerHexCardTotal->setStringReplacementVariables({ std::to_string(gameState->playerHexCards->getRowAttack()) });
-	this->enemyBinaryCardTotal->setStringReplacementVariables({ std::to_string(gameState->enemyBinaryCards->getRowAttack()) });
-	this->enemyDecimalCardTotal->setStringReplacementVariables({ std::to_string(gameState->enemyDecimalCards->getRowAttack()) });
-	this->enemyHexCardTotal->setStringReplacementVariables({ std::to_string(gameState->enemyHexCards->getRowAttack()) });
+	this->playerBinaryCardTotal->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playerBinaryCards->getRowAttack())));
+	this->playerDecimalCardTotal->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playerDecimalCards->getRowAttack())));
+	this->playerHexCardTotal->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playerHexCards->getRowAttack())));
+	this->enemyBinaryCardTotal->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->enemyBinaryCards->getRowAttack())));
+	this->enemyDecimalCardTotal->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->enemyDecimalCards->getRowAttack())));
+	this->enemyHexCardTotal->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->enemyHexCards->getRowAttack())));
 }
 
 void RowTotals::runDeltaAnimation(LocalizedLabel* label, float startPositionY, int delta)
 {
 	const float floatOffsetY = 32.0f;
 
-	LocalizedString* deltaString = (delta < 0 ? (LocalizedString*)Strings::Numerics_MinusNumeric::create() : (LocalizedString*)Strings::Numerics_PlusNumeric::create());
-	deltaString->setStringReplacementVariables({ std::to_string(std::abs(delta)) });
+	LocalizedString* deltaString = (delta < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create());
+	ConstantString* valueString = ConstantString::create(std::to_string(std::abs(delta)));
+
+	deltaString->setStringReplacementVariables(valueString);
 
 	label->setPositionY(startPositionY - floatOffsetY / 4.0f);
 	label->setOpacity(255);
