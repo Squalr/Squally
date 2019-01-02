@@ -9,12 +9,16 @@ class LocalizedString : public SmartNode
 public:
 	virtual LocalizedString* clone() = 0;
 	std::string getString();
-	void setStringReplacementVariables(std::vector<std::string> stringReplacementVariables);
-	void setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onLocaleChange);
+	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
+	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
+	void setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate);
 
 protected:
 	LocalizedString();
 	~LocalizedString();
+
+	void onEnter() override;
+	void initializeListeners() override;
 
 	virtual std::string getStringAr() = 0;
 	virtual std::string getStringBg() = 0;
@@ -46,12 +50,10 @@ protected:
 	virtual std::string getStringZhCn() = 0;
 	virtual std::string getStringZhTw() = 0;
 
+	std::function<void(LocalizedString* newString)> onStringUpdate;
+	std::vector<LocalizedString*> stringReplacementVariables;
+	cocos2d::LanguageType currentLanguage;
+
 private:
 	typedef SmartNode super;
-	void onEnter() override;
-	void initializeListeners() override;
-
-	std::function<void(LocalizedString* newString)> onStringUpdate;
-	std::vector<std::string> stringReplacementVariables;
-	cocos2d::LanguageType currentLanguage;
 };

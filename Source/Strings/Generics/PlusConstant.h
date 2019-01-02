@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hexus_Banners_Infinity : public LocalizedString
+	class Generics_PlusConstant : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_Infinity* create();
+		static Generics_PlusConstant* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace Strings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Hexus_Banners_Infinity();
-		~Hexus_Banners_Infinity();
+		Generics_PlusConstant();
+		~Generics_PlusConstant();
 	};
 }

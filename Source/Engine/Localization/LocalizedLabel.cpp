@@ -8,7 +8,6 @@
 
 #include "Resources/FontResources.h"
 
-#include "Strings/Empty.h"
 #include "Engine/Utils/StrUtils.h"
 
 const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
@@ -25,20 +24,6 @@ LocalizedLabel* LocalizedLabel::create(
 	TextVAlignment vAlignment)
 {
 	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, localizedString, dimensions, hAlignment, vAlignment);
-
-	label->autorelease();
-
-	return label;
-}
-
-LocalizedLabel* LocalizedLabel::create(
-	FontStyle fontStyle, 
-	FontSize fontSize,
-	const Size& dimensions,
-	TextHAlignment hAlignment,
-	TextVAlignment vAlignment)
-{
-	LocalizedLabel* label = new LocalizedLabel(fontStyle, fontSize, Strings::Empty::create(), dimensions, hAlignment, vAlignment);
 
 	label->autorelease();
 
@@ -76,7 +61,7 @@ LocalizedLabel* LocalizedLabel::clone()
 {
 	if (this->localizedString == nullptr)
 	{
-		return LocalizedLabel::create(this->fontStyle, this->fontSize);
+		return LocalizedLabel::create(this->fontStyle, this->fontSize, nullptr);
 	}
 
 	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
@@ -107,7 +92,12 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const 
 	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
 }
 
-void LocalizedLabel::setStringReplacementVariables(std::vector<std::string> stringReplacementVariables)
+void LocalizedLabel::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
+{
+	this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
+}
+
+void LocalizedLabel::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	if (this->localizedString != nullptr)
 	{

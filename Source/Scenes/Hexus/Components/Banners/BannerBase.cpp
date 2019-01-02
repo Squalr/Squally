@@ -7,6 +7,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/Config.h"
 
+#include "Strings/Generics/Empty.h"
+
 using namespace cocos2d;
 
 BannerBase* BannerBase::create()
@@ -23,7 +25,7 @@ BannerBase::BannerBase()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->bannerOverlay = LayerColor::create(Color4B(0, 0, 0, 127), visibleSize.width, 144.0f);
-	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2);
+	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Generics_Empty::create());
 	this->bannerChildrenNode = Node::create();
 
 	this->bannerOverlay->setAnchorPoint(Vec2(0.5f, 0.5f));

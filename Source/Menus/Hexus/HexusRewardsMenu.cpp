@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
@@ -19,6 +20,7 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Menus/Return.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -44,8 +46,10 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1);
+	this->goldString = ConstantString::create();
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
+	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	
 	LocalizedLabel* returnButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Return::create());
@@ -140,7 +144,7 @@ void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
 	{
 		float progress = MathUtils::clamp(((float)currentTick / (float)ticks), 0.0f, 1.0f);
 
-		this->goldLabel->setStringReplacementVariables({ std::to_string((int)(reward * progress)) });
+		this->goldString->setString(std::to_string((int)(reward * progress)));
 
 		currentTick++;
 

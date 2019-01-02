@@ -11,7 +11,8 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 
-#include "Strings/Empty.h"
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/Empty.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -33,7 +34,7 @@ TextWindow* TextWindow::create(LocalizedString* windowTitle, Size initWindowSize
 TextWindow::TextWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
 {
 	this->displayTextElements = std::vector<RichElement*>();
-	this->referenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Empty::create());
+	this->referenceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
 
 	this->marginSize = 0;
 	this->windowSize = initWindowSize;
@@ -113,7 +114,12 @@ void TextWindow::setTitleBarColor(Color4B newTitleBarColor)
 	this->initializePositions();
 }
 
-void TextWindow::setTitleStringReplaceVariables(std::vector<std::string> stringReplaceVariables)
+void TextWindow::setTitleStringReplaceVariables(LocalizedString* stringReplaceVariables)
+{
+	this->windowTitle->setStringReplacementVariables(stringReplaceVariables);
+}
+
+void TextWindow::setTitleStringReplaceVariables(std::vector<LocalizedString*> stringReplaceVariables)
 {
 	this->windowTitle->setStringReplacementVariables(stringReplaceVariables);
 }

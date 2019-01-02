@@ -28,7 +28,8 @@ class TextWindow : public SmartNode
 public:
 	static TextWindow* create(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
 
-	void setTitleStringReplaceVariables(std::vector<std::string> stringReplaceVariables);
+	void setTitleStringReplaceVariables(LocalizedString* stringReplaceVariables);
+	void setTitleStringReplaceVariables(std::vector<LocalizedString*> stringReplaceVariables);
 	void insertText(std::string text, cocos2d::Color3B color);
 	void setMarginSize(float newMarginSize);
 	virtual void insertNewline();

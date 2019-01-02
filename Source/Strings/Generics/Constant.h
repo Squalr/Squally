@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Numerics_TimesNumeric : public LocalizedString
+	class Generics_Constant : public LocalizedString
 	{
 	public:
-		static Numerics_TimesNumeric* create();
+		static Generics_Constant* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace Strings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Numerics_TimesNumeric();
-		~Numerics_TimesNumeric();
+		Generics_Constant();
+		~Generics_Constant();
 	};
 }

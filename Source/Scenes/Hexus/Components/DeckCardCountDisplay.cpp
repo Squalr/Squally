@@ -3,13 +3,14 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 
-#include "Strings/Numerics/Numeric.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -25,9 +26,9 @@ DeckCardCountDisplay* DeckCardCountDisplay::create()
 DeckCardCountDisplay::DeckCardCountDisplay()
 {
 	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->playerDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
+	this->playerDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->enemyDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
+	this->enemyDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
@@ -74,6 +75,6 @@ void DeckCardCountDisplay::onAnyStateChange(GameState* gameState)
 
 void DeckCardCountDisplay::updateTotals(GameState* gameState)
 {
-	this->playerDeckCardCountText->setStringReplacementVariables({ StrUtils::toStringZeroPad(gameState->playerDeck->getCardCount(), 2) });
-	this->enemyDeckCardCountText->setStringReplacementVariables({ StrUtils::toStringZeroPad(gameState->enemyDeck->getCardCount(), 2) });
+	this->playerDeckCardCountText->setStringReplacementVariables(ConstantString::create(StrUtils::toStringZeroPad(gameState->playerDeck->getCardCount(), 2)));
+	this->enemyDeckCardCountText->setStringReplacementVariables(ConstantString::create(StrUtils::toStringZeroPad(gameState->enemyDeck->getCardCount(), 2)));
 }

@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Empty : public LocalizedString
+	class Generics_Empty : public LocalizedString
 	{
 	public:
-		static Empty* create();
+		static Generics_Empty* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace Strings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Empty();
-		~Empty();
+		Generics_Empty();
+		~Generics_Empty();
 	};
 }

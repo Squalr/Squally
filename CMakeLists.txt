@@ -100,6 +100,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableObject.cpp
 	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
+	Source/Engine/Localization/ConstantString.cpp
 	Source/Engine/Localization/Localization.cpp
 	Source/Engine/Localization/LocalizedLabel.cpp
 	Source/Engine/Localization/LocalizedString.cpp
@@ -826,14 +827,19 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Debugging/CameraY.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.cpp
-	Source/Strings/Empty.cpp
+	Source/Strings/Generics/Constant.cpp
+	Source/Strings/Generics/Empty.cpp
+	Source/Strings/Generics/Infinity.cpp
+	Source/Strings/Generics/MinusConstant.cpp
+	Source/Strings/Generics/PlusConstant.cpp
+	Source/Strings/Generics/TimesConstant.cpp
+	Source/Strings/Generics/XOverY.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
 	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
 	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
 	Source/Strings/Hexus/Banners/Defeat.cpp
 	Source/Strings/Hexus/Banners/Draw.cpp
 	Source/Strings/Hexus/Banners/FinalRound.cpp
-	Source/Strings/Hexus/Banners/Infinity.cpp
 	Source/Strings/Hexus/Banners/LastStand.cpp
 	Source/Strings/Hexus/Banners/NextRound.cpp
 	Source/Strings/Hexus/Banners/OpponentFirst.cpp
@@ -974,7 +980,6 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Tutorials/D/UseShiftRight.cpp
 	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.cpp
 	Source/Strings/Hexus/Tutorials/F/UseMov.cpp
-	Source/Strings/LateBound.cpp
 	Source/Strings/Menus/Accept.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
@@ -1020,10 +1025,6 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Return.cpp
 	Source/Strings/Menus/StoryMode.cpp
 	Source/Strings/Menus/Tutorials.cpp
-	Source/Strings/Numerics/MinusNumeric.cpp
-	Source/Strings/Numerics/Numeric.cpp
-	Source/Strings/Numerics/PlusNumeric.cpp
-	Source/Strings/Numerics/TimesNumeric.cpp
 	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.cpp
 	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.cpp
 
@@ -1072,6 +1073,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableObject.h
 	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
+	Source/Engine/Localization/ConstantString.h
 	Source/Engine/Localization/Localization.h
 	Source/Engine/Localization/LocalizedLabel.h
 	Source/Engine/Localization/LocalizedString.h
@@ -1822,14 +1824,19 @@ list(APPEND GAME_HEADER
 	Source/Strings/Debugging/CameraY.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.h
-	Source/Strings/Empty.h
+	Source/Strings/Generics/Constant.h
+	Source/Strings/Generics/Empty.h
+	Source/Strings/Generics/Infinity.h
+	Source/Strings/Generics/MinusConstant.h
+	Source/Strings/Generics/PlusConstant.h
+	Source/Strings/Generics/TimesConstant.h
+	Source/Strings/Generics/XOverY.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
 	Source/Strings/Hexus/Actions/ChooseSourceCard.h
 	Source/Strings/Hexus/Actions/ChooseTargetCard.h
 	Source/Strings/Hexus/Banners/Defeat.h
 	Source/Strings/Hexus/Banners/Draw.h
 	Source/Strings/Hexus/Banners/FinalRound.h
-	Source/Strings/Hexus/Banners/Infinity.h
 	Source/Strings/Hexus/Banners/LastStand.h
 	Source/Strings/Hexus/Banners/NextRound.h
 	Source/Strings/Hexus/Banners/OpponentFirst.h
@@ -1970,7 +1977,6 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Tutorials/D/UseShiftRight.h
 	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.h
 	Source/Strings/Hexus/Tutorials/F/UseMov.h
-	Source/Strings/LateBound.h
 	Source/Strings/Menus/Accept.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
@@ -2016,10 +2022,6 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Return.h
 	Source/Strings/Menus/StoryMode.h
 	Source/Strings/Menus/Tutorials.h
-	Source/Strings/Numerics/MinusNumeric.h
-	Source/Strings/Numerics/Numeric.h
-	Source/Strings/Numerics/PlusNumeric.h
-	Source/Strings/Numerics/TimesNumeric.h
 	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.h
 	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.h
 

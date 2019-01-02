@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Hexus/Config.h"
@@ -13,7 +14,7 @@
 #include "Resources/HexusResources.h"
 
 #include "Strings/Hexus/DrawToolTip.h"
-#include "Strings/Numerics/Numeric.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -29,9 +30,9 @@ DrawCountDisplay* DrawCountDisplay::create()
 DrawCountDisplay::DrawCountDisplay()
 {
 	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
-	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
+	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
-	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Numerics_Numeric::create());
+	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
 	LayerColor* deckDrawCountMouseOverPanel;
 	Label* deckDrawCountCardMouseOverLabel;
@@ -130,8 +131,8 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		return;
 	}
 
-	this->drawCountLabel->setStringReplacementVariables({ std::to_string(gameState->playerCardsDrawnNextRound) });
-	this->enemyDrawCountLabel->setStringReplacementVariables({ std::to_string(gameState->enemyCardsDrawnNextRound) });
+	this->drawCountLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playerCardsDrawnNextRound)));
+	this->enemyDrawCountLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->enemyCardsDrawnNextRound)));
 
 	switch (gameState->stateType)
 	{
