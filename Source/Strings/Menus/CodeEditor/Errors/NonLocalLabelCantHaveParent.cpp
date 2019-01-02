@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringAr()
 	{
-		return "الحالة";
+		return "لا يمكن أن يكون للمعلمة غير المحلية ولي الأمر";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringBg()
 	{
-		return "Статус";
+		return "Неместният етикет не може да има родител";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringCs()
 	{
-		return "Postavení";
+		return "Místní štítek nemůže mít rodič";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringDa()
 	{
-		return "status";
+		return "Ikke-lokal etiket kan ikke have forælder";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringDe()
 	{
-		return "Status";
+		return "Nichtlokales Label kann kein übergeordnetes Label haben";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Η μη τοπική ετικέτα δεν μπορεί να έχει γονέα";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringEn()
 	{
-		return "Status";
+		return "Non-local label can't have parent";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringEs()
 	{
-		return "Estado";
+		return "Etiqueta no local no puede tener padre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringEs419()
 	{
-		return "Estado";
+		return "Etiqueta no local no puede tener padre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringFi()
 	{
-		return "Status";
+		return "Ei-paikallisella merkillä ei voi olla vanhempaa";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringFr()
 	{
-		return "Statut";
+		return "L'étiquette non locale ne peut pas avoir de parent";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringHu()
 	{
-		return "Állapot";
+		return "A nem helyi címke nem lehet szülő";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringIt()
 	{
-		return "Stato";
+		return "L'etichetta non locale non può avere un genitore";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringJa()
 	{
-		return "状態";
+		return "非ローカルラベルは親を持つことができません";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringKo()
 	{
-		return "지위";
+		return "비 로컬 라벨은 부모를 가질 수 없습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringNl()
 	{
-		return "staat";
+		return "Niet-lokaal label kan geen bovenliggend item hebben";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringNo()
 	{
-		return "Status";
+		return "Ikke-lokal etikett kan ikke ha foreldre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringPl()
 	{
-		return "Status";
+		return "Etykieta nielokalna nie może mieć elementu nadrzędnego";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringPt()
 	{
-		return "Status";
+		return "Rótulo não local não pode ter pai";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringPtBr()
 	{
-		return "Status";
+		return "Rótulo não local não pode ter pai";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringRo()
 	{
-		return "stare";
+		return "Eticheta non-locală nu poate avea părinte";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringRu()
 	{
-		return "Status";
+		return "Нелокальный ярлык не может иметь родителя";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringSv()
 	{
-		return "Status";
+		return "Icke-lokal etikett kan inte ha förälder";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringTh()
 	{
-		return "สถานะ";
+		return "ป้ายกำกับที่ไม่ใช่ในท้องถิ่นไม่สามารถมีพาเรนต์ได้";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringTr()
 	{
-		return "durum";
+		return "Yerel olmayan etiketin üst öğesi olamaz";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringUk()
 	{
-		return "Статус";
+		return "Не локальна мітка не може мати батьківську";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringVi()
 	{
-		return "Trạng thái";
+		return "Nhãn không phải địa phương không thể có cha mẹ";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringZhCn()
 	{
-		return "状态";
+		return "非本地标签不能有父母";
 	}
 
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringZhTw()
 	{
-		return "狀態";
+		return "非本地標籤不能有父母";
 	}
 }

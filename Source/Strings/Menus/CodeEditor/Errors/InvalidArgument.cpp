@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringAr()
 	{
-		return "الحالة";
+		return "سيطة غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден аргумент";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges Argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο επιχείρημα";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringEn()
 	{
-		return "Status";
+		return "Invalid argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringEs()
 	{
-		return "Estado";
+		return "Argumento no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringEs419()
 	{
-		return "Estado";
+		return "Argumento no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen argumentti";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringFr()
 	{
-		return "Statut";
+		return "Invalid argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringHu()
 	{
-		return "Állapot";
+		return "Hibás érvelés";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringIt()
 	{
-		return "Stato";
+		return "Argomento non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringJa()
 	{
-		return "状態";
+		return "無効な引数";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringKo()
 	{
-		return "지위";
+		return "잘못된 인수";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringPl()
 	{
-		return "Status";
+		return "Błędny argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringPt()
 	{
-		return "Status";
+		return "Argumento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringPtBr()
 	{
-		return "Status";
+		return "Argumento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringRo()
 	{
-		return "stare";
+		return "Argument invalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringRu()
 	{
-		return "Status";
+		return "Недействительным аргумент";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt argument";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringTh()
 	{
-		return "สถานะ";
+		return "อาร์กิวเมนต์ไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz argüman";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний аргумент";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringVi()
 	{
-		return "Trạng thái";
+		return "Đối số không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringZhCn()
 	{
-		return "状态";
+		return "无效的论点";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArgument::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的論點";
 	}
 }

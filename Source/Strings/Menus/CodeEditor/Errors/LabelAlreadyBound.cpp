@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringAr()
 	{
-		return "الحالة";
+		return "التسمية ملزمة بالفعل";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringBg()
 	{
-		return "Статус";
+		return "Етикетът вече е обвързан";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringCs()
 	{
-		return "Postavení";
+		return "Označení už bylo vázáno";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringDa()
 	{
-		return "status";
+		return "Etiketten er allerede bundet";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringDe()
 	{
-		return "Status";
+		return "Beschriftung bereits gebunden";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Η ετικέτα είναι ήδη δεσμευμένη";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringEn()
 	{
-		return "Status";
+		return "Label already bound";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringEs()
 	{
-		return "Estado";
+		return "Etiqueta ya encuadernada";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringEs419()
 	{
-		return "Estado";
+		return "Etiqueta ya encuadernada";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringFi()
 	{
-		return "Status";
+		return "Tarra on jo sidottu";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringFr()
 	{
-		return "Statut";
+		return "Label déjà lié";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringHu()
 	{
-		return "Állapot";
+		return "A címke már megkötött";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringIt()
 	{
-		return "Stato";
+		return "Etichetta già vincolata";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringJa()
 	{
-		return "状態";
+		return "ラベルはすでに綴じられています";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringKo()
 	{
-		return "지위";
+		return "라벨이 이미 바인딩 됨";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringNl()
 	{
-		return "staat";
+		return "Label al gebonden";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringNo()
 	{
-		return "Status";
+		return "Etikett som allerede er bundet";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringPl()
 	{
-		return "Status";
+		return "Etykieta już związana";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringPt()
 	{
-		return "Status";
+		return "Etiqueta já vinculada";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringPtBr()
 	{
-		return "Status";
+		return "Etiqueta já vinculada";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringRo()
 	{
-		return "stare";
+		return "Eticheta deja legată";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringRu()
 	{
-		return "Status";
+		return "Ярлык уже связан";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringSv()
 	{
-		return "Status";
+		return "Etikett som redan är bunden";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringTh()
 	{
-		return "สถานะ";
+		return "ป้ายกำกับถูกผูกไว้แล้ว";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringTr()
 	{
-		return "durum";
+		return "Etiket zaten bağlı";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringUk()
 	{
-		return "Статус";
+		return "Мітка вже пов'язана";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringVi()
 	{
-		return "Trạng thái";
+		return "Nhãn đã bị ràng buộc";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringZhCn()
 	{
-		return "状态";
+		return "标签已绑定";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyBound::getStringZhTw()
 	{
-		return "狀態";
+		return "標籤已綁定";
 	}
 }

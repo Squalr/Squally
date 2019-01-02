@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringAr()
 	{
-		return "الحالة";
+		return "استخدام غير صالح لعنوان 64 بت";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringBg()
 	{
-		return "Статус";
+		return "Невалидно използване на 64-битов адрес";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatné použití 64bitové adresy";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringDa()
 	{
-		return "status";
+		return "Ugyldig brug af 64-bit adresse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Verwendung der 64-Bit-Adresse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη χρήση της διεύθυνσης 64-bit";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringEn()
 	{
-		return "Status";
+		return "Invalid use of 64-bit address";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringEs()
 	{
-		return "Estado";
+		return "Uso no válido de la dirección de 64 bits";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringEs419()
 	{
-		return "Estado";
+		return "Uso no válido de la dirección de 64 bits";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringFi()
 	{
-		return "Status";
+		return "64-bittisen osoitteen virheellinen käyttö";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringFr()
 	{
-		return "Statut";
+		return "Utilisation non valide d'une adresse 64 bits";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringHu()
 	{
-		return "Állapot";
+		return "A 64 bites cím érvénytelen használata";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringIt()
 	{
-		return "Stato";
+		return "Uso non valido dell'indirizzo a 64 bit";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringJa()
 	{
-		return "状態";
+		return "64ビットアドレスの無効な使用";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringKo()
 	{
-		return "지위";
+		return "64 비트 주소가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig gebruik van een 64-bits adres";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig bruk av 64-biters adresse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowe użycie adresu 64-bitowego";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringPt()
 	{
-		return "Status";
+		return "Uso inválido do endereço de 64 bits";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringPtBr()
 	{
-		return "Status";
+		return "Uso inválido do endereço de 64 bits";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringRo()
 	{
-		return "stare";
+		return "Utilizarea nevalidă a adresei pe 64 de biți";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringRu()
 	{
-		return "Status";
+		return "Неправильное использование 64-битного адреса";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig användning av 64-bitars adress";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringTh()
 	{
-		return "สถานะ";
+		return "การใช้ที่อยู่ 64- บิตไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringTr()
 	{
-		return "durum";
+		return "64 bit adresin geçersiz kullanımı";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringUk()
 	{
-		return "Статус";
+		return "Неправильне використання 64-розрядного адреси";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringVi()
 	{
-		return "Trạng thái";
+		return "Sử dụng không hợp lệ địa chỉ 64 bit";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringZhCn()
 	{
-		return "状态";
+		return "无效使用64位地址";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringZhTw()
 	{
-		return "狀態";
+		return "無效使用64位地址";
 	}
 }

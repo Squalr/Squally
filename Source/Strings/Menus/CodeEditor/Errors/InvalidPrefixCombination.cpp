@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringAr()
 	{
-		return "الحالة";
+		return "مجموعة بادئة غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна комбинация от префикси";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná kombinace předpony";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringDa()
 	{
-		return "status";
+		return "Ugyldig præfiks kombination";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Präfixkombination";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρος συνδυασμός προθέματος";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringEn()
 	{
-		return "Status";
+		return "Invalid prefix combination";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringEs()
 	{
-		return "Estado";
+		return "Combinación de prefijo inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringEs419()
 	{
-		return "Estado";
+		return "Combinación de prefijo inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen etuliitteen yhdistelmä";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringFr()
 	{
-		return "Statut";
+		return "Combinaison de préfixe invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen előtag-kombináció";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringIt()
 	{
-		return "Stato";
+		return "Combinazione prefisso non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringJa()
 	{
-		return "状態";
+		return "無効なプレフィックスの組み合わせ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringKo()
 	{
-		return "지위";
+		return "프리픽스 조합이 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige prefix-combinatie";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig prefiks kombinasjon";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa kombinacja prefiksu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringPt()
 	{
-		return "Status";
+		return "Combinação de prefixo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringPtBr()
 	{
-		return "Status";
+		return "Combinação de prefixo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringRo()
 	{
-		return "stare";
+		return "Combinație prefixă nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringRu()
 	{
-		return "Status";
+		return "Неверная комбинация префиксов";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt prefix kombination";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringTh()
 	{
-		return "สถานะ";
+		return "การรวมคำนำหน้าไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz ön ek kombinasyonu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна комбінація префікса";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringVi()
 	{
-		return "Trạng thái";
+		return "Kết hợp tiền tố không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringZhCn()
 	{
-		return "状态";
+		return "无效的前缀组合";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的前綴組合";
 	}
 }

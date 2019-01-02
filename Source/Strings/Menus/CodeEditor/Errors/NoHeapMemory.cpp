@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringAr()
 	{
-		return "الحالة";
+		return "لا ذاكرة كومة";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringBg()
 	{
-		return "Статус";
+		return "Няма памет за куп";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringCs()
 	{
-		return "Postavení";
+		return "Žádná paměť haldy";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringDa()
 	{
-		return "status";
+		return "Ingen bunthukommelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringDe()
 	{
-		return "Status";
+		return "Kein Heap-Speicher";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Καμία μνήμη σωρού";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringEn()
 	{
-		return "Status";
+		return "No heap memory";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringEs()
 	{
-		return "Estado";
+		return "No hay memoria de pila";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringEs419()
 	{
-		return "Estado";
+		return "No hay memoria de pila";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringFi()
 	{
-		return "Status";
+		return "Ei heap-muistia";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringFr()
 	{
-		return "Statut";
+		return "Pas de mémoire";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringHu()
 	{
-		return "Állapot";
+		return "Nincs halom memória";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringIt()
 	{
-		return "Stato";
+		return "Nessuna memoria heap";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringJa()
 	{
-		return "状態";
+		return "ヒープメモリなし";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringKo()
 	{
-		return "지위";
+		return "힙 메모리가 없습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringNl()
 	{
-		return "staat";
+		return "Geen geheugen";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringNo()
 	{
-		return "Status";
+		return "Ingen heapminne";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringPl()
 	{
-		return "Status";
+		return "Brak pamięci sterty";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringPt()
 	{
-		return "Status";
+		return "Nenhuma memória heap";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringPtBr()
 	{
-		return "Status";
+		return "Nenhuma memória heap";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringRo()
 	{
-		return "stare";
+		return "Nicio memorie heap";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringRu()
 	{
-		return "Status";
+		return "Нет кучи памяти";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringSv()
 	{
-		return "Status";
+		return "Inget hålminne";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringTh()
 	{
-		return "สถานะ";
+		return "ไม่มีหน่วยความจำกอง";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringTr()
 	{
-		return "durum";
+		return "Öbek hafızası yok";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringUk()
 	{
-		return "Статус";
+		return "Немає пам'яті купи";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringVi()
 	{
-		return "Trạng thái";
+		return "Không có bộ nhớ heap";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringZhCn()
 	{
-		return "状态";
+		return "没有堆内存";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringZhTw()
 	{
-		return "狀態";
+		return "沒有堆內存";
 	}
 }

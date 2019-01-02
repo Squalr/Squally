@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringAr()
 	{
-		return "الحالة";
+		return "لا رمز ولدت";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringBg()
 	{
-		return "Статус";
+		return "Не е генериран код";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringCs()
 	{
-		return "Postavení";
+		return "Žádný kód nebyl vygenerován";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringDa()
 	{
-		return "status";
+		return "Ingen kode genereret";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringDe()
 	{
-		return "Status";
+		return "Kein Code generiert";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Δεν δημιουργήθηκε κανένας κώδικας";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringEn()
 	{
-		return "Status";
+		return "No code generated";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringEs()
 	{
-		return "Estado";
+		return "No se genera código";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringEs419()
 	{
-		return "Estado";
+		return "No se genera código";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringFi()
 	{
-		return "Status";
+		return "Ei koodia";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringFr()
 	{
-		return "Statut";
+		return "Aucun code généré";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringHu()
 	{
-		return "Állapot";
+		return "Nincs kód létrehozva";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringIt()
 	{
-		return "Stato";
+		return "Nessun codice generato";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringJa()
 	{
-		return "状態";
+		return "コードは生成されません";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringKo()
 	{
-		return "지위";
+		return "생성 된 코드가 없습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringNl()
 	{
-		return "staat";
+		return "Geen code gegenereerd";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringNo()
 	{
-		return "Status";
+		return "Ingen kode generert";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringPl()
 	{
-		return "Status";
+		return "Nie wygenerowano kodu";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringPt()
 	{
-		return "Status";
+		return "Nenhum código gerado";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringPtBr()
 	{
-		return "Status";
+		return "Nenhum código gerado";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringRo()
 	{
-		return "stare";
+		return "Niciun cod nu a fost generat";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringRu()
 	{
-		return "Status";
+		return "Код не сгенерирован";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringSv()
 	{
-		return "Status";
+		return "Ingen kod genererad";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringTh()
 	{
-		return "สถานะ";
+		return "ไม่มีการสร้างรหัส";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringTr()
 	{
-		return "durum";
+		return "Kod oluşturulmadı";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringUk()
 	{
-		return "Статус";
+		return "Не створено жодного коду";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringVi()
 	{
-		return "Trạng thái";
+		return "Không có mã được tạo";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringZhCn()
 	{
-		return "状态";
+		return "没有代码生成";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringZhTw()
 	{
-		return "狀態";
+		return "沒有代碼生成";
 	}
 }

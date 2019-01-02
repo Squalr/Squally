@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringAr()
 	{
-		return "الحالة";
+		return "استخدام غير صالح لـ %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringBg()
 	{
-		return "Статус";
+		return "Невалидното използване на %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatné použití %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringDa()
 	{
-		return "status";
+		return "Ugyldig brug af %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Verwendung von %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη χρήση %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringEn()
 	{
-		return "Status";
+		return "Invalid use of %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringEs()
 	{
-		return "Estado";
+		return "Uso inválido de %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringEs419()
 	{
-		return "Estado";
+		return "Uso inválido de %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen %s käyttö";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringFr()
 	{
-		return "Statut";
+		return "Utilisation non valide de %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringHu()
 	{
-		return "Állapot";
+		return "A (z) %s érvénytelen használata";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringIt()
 	{
-		return "Stato";
+		return "Uso non valido di %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringJa()
 	{
-		return "状態";
+		return "%sの無効な使用";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringKo()
 	{
-		return "지위";
+		return "%s 의 잘못된 사용";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig gebruik van %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig bruk av %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringPl()
 	{
-		return "Status";
+		return "Błędne użycie %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringPt()
 	{
-		return "Status";
+		return "Uso inválido de %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringPtBr()
 	{
-		return "Status";
+		return "Uso inválido de %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringRo()
 	{
-		return "stare";
+		return "Utilizarea nevalidă a %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringRu()
 	{
-		return "Status";
+		return "Неправильное использование %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig användning av %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringTh()
 	{
-		return "สถานะ";
+		return "การใช้ %s ไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringTr()
 	{
-		return "durum";
+		return "%s geçersiz kullanımı";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringUk()
 	{
-		return "Статус";
+		return "Неправильне використання %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringVi()
 	{
-		return "Trạng thái";
+		return "Sử dụng %s không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringZhCn()
 	{
-		return "状态";
+		return "%s的使用无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringZhTw()
 	{
-		return "狀態";
+		return "%s的使用無效";
 	}
 }

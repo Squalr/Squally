@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringAr()
 	{
-		return "الحالة";
+		return "لا مزيد من السجلات المادية";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringBg()
 	{
-		return "Статус";
+		return "Няма повече физически регистри";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringCs()
 	{
-		return "Postavení";
+		return "Žádné další fyzické registry";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringDa()
 	{
-		return "status";
+		return "Ikke flere fysiske registre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringDe()
 	{
-		return "Status";
+		return "Keine physischen Register mehr";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Δεν υπάρχουν άλλα φυσικά μητρώα";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringEn()
 	{
-		return "Status";
+		return "No more physical registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringEs()
 	{
-		return "Estado";
+		return "No más registros físicos.";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringEs419()
 	{
-		return "Estado";
+		return "No más registros físicos.";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringFi()
 	{
-		return "Status";
+		return "Ei enää fyysisiä rekistereitä";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringFr()
 	{
-		return "Statut";
+		return "Plus de registres physiques";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringHu()
 	{
-		return "Állapot";
+		return "Nincs több fizikai regiszter";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringIt()
 	{
-		return "Stato";
+		return "Niente più registri fisici";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringJa()
 	{
-		return "状態";
+		return "これ以上の物理レジスタ";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringKo()
 	{
-		return "지위";
+		return "물리적 레지스터가 더 이상 없음";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringNl()
 	{
-		return "staat";
+		return "Geen fysieke registers meer";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringNo()
 	{
-		return "Status";
+		return "Ikke flere fysiske registre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringPl()
 	{
-		return "Status";
+		return "Koniec z rejestrami fizycznymi";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringPt()
 	{
-		return "Status";
+		return "Não há mais registros físicos";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringPtBr()
 	{
-		return "Status";
+		return "Não há mais registros físicos";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringRo()
 	{
-		return "stare";
+		return "Nu mai există registre fizice";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringRu()
 	{
-		return "Status";
+		return "Нет больше физических регистров";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringSv()
 	{
-		return "Status";
+		return "Inga fler fysiska register";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringTh()
 	{
-		return "สถานะ";
+		return "ไม่มีการลงทะเบียนทางกายภาพอีกต่อไป";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringTr()
 	{
-		return "durum";
+		return "Artık fiziksel kayıt yok";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringUk()
 	{
-		return "Статус";
+		return "Більше немає фізичних регістрів";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringVi()
 	{
-		return "Trạng thái";
+		return "Không còn đăng ký vật lý";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringZhCn()
 	{
-		return "状态";
+		return "没有更多的物理登记";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringZhTw()
 	{
-		return "狀態";
+		return "沒有更多的物理登記";
 	}
 }

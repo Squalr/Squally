@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringAr()
 	{
-		return "الحالة";
+		return "حجم المشغل غامضة";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringBg()
 	{
-		return "Статус";
+		return "Неясен размер на операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringCs()
 	{
-		return "Postavení";
+		return "Velikost ambiguózního operandu";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringDa()
 	{
-		return "status";
+		return "Tvetydig operand størrelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringDe()
 	{
-		return "Status";
+		return "Mehrdeutige Operandengröße";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Διφορούμενο μέγεθος λειτουργικού";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringEn()
 	{
-		return "Status";
+		return "Ambiguous operand size";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringEs()
 	{
-		return "Estado";
+		return "Tamaño de operando ambiguo";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringEs419()
 	{
-		return "Estado";
+		return "Tamaño de operando ambiguo";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringFi()
 	{
-		return "Status";
+		return "Epäselvä operandikoko";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringFr()
 	{
-		return "Statut";
+		return "Taille d'opérande ambiguë";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringHu()
 	{
-		return "Állapot";
+		return "Kétértelmű operandusméret";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringIt()
 	{
-		return "Stato";
+		return "Dimensione dell'operando ambigua";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringJa()
 	{
-		return "状態";
+		return "あいまいなオペランドサイズ";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringKo()
 	{
-		return "지위";
+		return "모호한 피연산자 크기";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringNl()
 	{
-		return "staat";
+		return "Meervoudige operand-grootte";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringNo()
 	{
-		return "Status";
+		return "Tvetydig operand størrelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringPl()
 	{
-		return "Status";
+		return "Niejednoznaczny rozmiar operandu";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringPt()
 	{
-		return "Status";
+		return "Tamanho do operando ambíguo";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringPtBr()
 	{
-		return "Status";
+		return "Tamanho do operando ambíguo";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringRo()
 	{
-		return "stare";
+		return "Mărimea operandului ambiguă";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringRu()
 	{
-		return "Status";
+		return "Неопределенный размер операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringSv()
 	{
-		return "Status";
+		return "Tvetydig operand storlek";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringTh()
 	{
-		return "สถานะ";
+		return "ขนาดตัวถูกดำเนินการที่ไม่ชัดเจน";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringTr()
 	{
-		return "durum";
+		return "Belirsiz işlenen boyutu";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringUk()
 	{
-		return "Статус";
+		return "Розмір неоднозначного операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringVi()
 	{
-		return "Trạng thái";
+		return "Kích thước toán hạng mơ hồ";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringZhCn()
 	{
-		return "状态";
+		return "操作数大小不明确";
 	}
 
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringZhTw()
 	{
-		return "狀態";
+		return "操作數大小不明確";
 	}
 }

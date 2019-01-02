@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringAr()
 	{
-		return "الحالة";
+		return "بادئة امتداد السجل غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден префикс за разширение на регистъра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná předpona rozšíření registru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt registerudvidelsespræfikse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges Präfix für Registererweiterung";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο πρόθεμα επέκτασης καταχωρητή";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringEn()
 	{
-		return "Status";
+		return "Invalid rex prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringEs()
 	{
-		return "Estado";
+		return "Prefijo de extensión de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringEs419()
 	{
-		return "Estado";
+		return "Prefijo de extensión de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen rekisterin laajennuksen etuliite";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringFr()
 	{
-		return "Statut";
+		return "Préfixe d'extension de registre invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen regisztrálási kiterjesztés előtag";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringIt()
 	{
-		return "Stato";
+		return "Prefisso di estensione del registro non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringJa()
 	{
-		return "状態";
+		return "無効なレジスタ拡張プレフィックス";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringKo()
 	{
-		return "지위";
+		return "잘못된 레지스터 확장자 접두사";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige prefix voor registeruitbreiding";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig registerutvidelsesprefikse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy prefiks rozszerzenia rejestru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringPt()
 	{
-		return "Status";
+		return "Prefixo de extensão de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringPtBr()
 	{
-		return "Status";
+		return "Prefixo de extensão de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringRo()
 	{
-		return "stare";
+		return "Prefixul prefixului extensiei nevalid este nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringRu()
 	{
-		return "Status";
+		return "Неверный префикс расширения регистра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt registerförlängningsprefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringTh()
 	{
-		return "สถานะ";
+		return "คำนำหน้าส่วนขยายการลงทะเบียนไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz kayıt uzantısı öneki";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний префікс розширення реєстру";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tiền tố mở rộng đăng ký không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringZhCn()
 	{
-		return "状态";
+		return "无效的寄存器扩展名前缀";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的寄存器擴展名前綴";
 	}
 }

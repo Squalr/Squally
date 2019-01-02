@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringAr()
 	{
-		return "الحالة";
+		return "بالفعل التهيئة";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringBg()
 	{
-		return "Статус";
+		return "Вече е инициализиран";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringCs()
 	{
-		return "Postavení";
+		return "Již inicializováno";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringDa()
 	{
-		return "status";
+		return "Allerede initialiseret";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringDe()
 	{
-		return "Status";
+		return "Bereits initialisiert";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Ήταν ήδη προετοιμασμένη";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringEn()
 	{
-		return "Status";
+		return "Already initialized";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringEs()
 	{
-		return "Estado";
+		return "Ya inicializado";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringEs419()
 	{
-		return "Estado";
+		return "Ya inicializado";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringFi()
 	{
-		return "Status";
+		return "Olet jo alustettu";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringFr()
 	{
-		return "Statut";
+		return "Déjà initialisé";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringHu()
 	{
-		return "Állapot";
+		return "Már inicializált";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringIt()
 	{
-		return "Stato";
+		return "Già inizializzato";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringJa()
 	{
-		return "状態";
+		return "初期化済み";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringKo()
 	{
-		return "지위";
+		return "이미 초기화 됨";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringNl()
 	{
-		return "staat";
+		return "Al geïnitialiseerd";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringNo()
 	{
-		return "Status";
+		return "Allerede initialisert";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringPl()
 	{
-		return "Status";
+		return "Już zainicjowane";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringPt()
 	{
-		return "Status";
+		return "Já inicializado";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringPtBr()
 	{
-		return "Status";
+		return "Já inicializado";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringRo()
 	{
-		return "stare";
+		return "Deja a fost inițializată";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringRu()
 	{
-		return "Status";
+		return "Уже инициализирован";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringSv()
 	{
-		return "Status";
+		return "Redan initialiserad";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringTh()
 	{
-		return "สถานะ";
+		return "เริ่มต้นแล้ว";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringTr()
 	{
-		return "durum";
+		return "Zaten başlatıldı";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringUk()
 	{
-		return "Статус";
+		return "Вже ініціалізовано";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringVi()
 	{
-		return "Trạng thái";
+		return "Đã khởi tạo";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringZhCn()
 	{
-		return "状态";
+		return "已经初始化了";
 	}
 
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringZhTw()
 	{
-		return "狀態";
+		return "已經初始化了";
 	}
 }

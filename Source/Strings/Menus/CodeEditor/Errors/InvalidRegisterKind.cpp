@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringAr()
 	{
-		return "الحالة";
+		return "نوع التسجيل غير صالح";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден вид регистър";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný druh registru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringDa()
 	{
-		return "status";
+		return "Ugyldig registertype";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Registrierungsart";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο είδος καταχωρητή";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringEn()
 	{
-		return "Status";
+		return "Invalid register kind";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringEs()
 	{
-		return "Estado";
+		return "Tipo de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringEs419()
 	{
-		return "Estado";
+		return "Tipo de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen rekisterityyppi";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringFr()
 	{
-		return "Statut";
+		return "Type de registre invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen regiszterfajta";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringIt()
 	{
-		return "Stato";
+		return "Tipo di registro non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringJa()
 	{
-		return "状態";
+		return "登録種別が無効です";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringKo()
 	{
-		return "지위";
+		return "유효하지 않은 레지스터 종류";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige registertype";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig registertype";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy rodzaj rejestru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringPt()
 	{
-		return "Status";
+		return "Tipo de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringPtBr()
 	{
-		return "Status";
+		return "Tipo de registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringRo()
 	{
-		return "stare";
+		return "Tip de înregistrare nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringRu()
 	{
-		return "Status";
+		return "Неверный вид регистра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt register slag";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringTh()
 	{
-		return "สถานะ";
+		return "ประเภทการลงทะเบียนไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz kayıt türü";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний тип реєстру";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringVi()
 	{
-		return "Trạng thái";
+		return "Loại đăng ký không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringZhCn()
 	{
-		return "状态";
+		return "无效的注册类型";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterKind::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的註冊類型";
 	}
 }

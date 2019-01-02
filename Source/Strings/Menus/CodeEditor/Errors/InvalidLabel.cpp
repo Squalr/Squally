@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringAr()
 	{
-		return "الحالة";
+		return "تصنيف غير صالح";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден етикет";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná jmenovka";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringDa()
 	{
-		return "status";
+		return "Ugyldig etiket";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Bezeichnung";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη ετικέτα";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringEn()
 	{
-		return "Status";
+		return "Invalid label";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringEs()
 	{
-		return "Estado";
+		return "Etiqueta inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringEs419()
 	{
-		return "Estado";
+		return "Etiqueta inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen etiketti";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringFr()
 	{
-		return "Statut";
+		return "Étiquette invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen címke";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringIt()
 	{
-		return "Stato";
+		return "Etichetta non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringJa()
 	{
-		return "状態";
+		return "無効なラベル";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringKo()
 	{
-		return "지위";
+		return "라벨이 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig label";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig etikett";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa etykieta";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringPt()
 	{
-		return "Status";
+		return "Rótulo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringPtBr()
 	{
-		return "Status";
+		return "Rótulo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringRo()
 	{
-		return "stare";
+		return "Etichetă nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringRu()
 	{
-		return "Status";
+		return "Неверный ярлык";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig etikett";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringTh()
 	{
-		return "สถานะ";
+		return "ป้ายกำกับไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz etiket";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна мітка";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringVi()
 	{
-		return "Trạng thái";
+		return "Nhãn không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringZhCn()
 	{
-		return "状态";
+		return "标签无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringZhTw()
 	{
-		return "狀態";
+		return "標籤無效";
 	}
 }

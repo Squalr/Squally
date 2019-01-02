@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringAr()
 	{
-		return "الحالة";
+		return "معرف فعلي غير صالح للتسجيل";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден физически идентификатор на регистъра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný fyzický identifikátor registru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt registers fysiske id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringDe()
 	{
-		return "Status";
+		return "Ungültige physische ID des Registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη φυσικό αναγνωριστικό μητρώου του μητρώου";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringEn()
 	{
-		return "Status";
+		return "Invalid register's physical id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringEs()
 	{
-		return "Estado";
+		return "ID física del registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringEs419()
 	{
-		return "Estado";
+		return "ID física del registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen rekisterin fyysinen tunnus";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringFr()
 	{
-		return "Statut";
+		return "Identifiant physique du registre invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen regiszter fizikai azonosítója";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringIt()
 	{
-		return "Stato";
+		return "ID fisico del registro non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringJa()
 	{
-		return "状態";
+		return "無効なレジスタの物理ID";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringKo()
 	{
-		return "지위";
+		return "잘못된 레지스터의 실제 ID입니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige fysieke identiteit van het register";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig registers fysiske id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy identyfikator fizyczny rejestru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringPt()
 	{
-		return "Status";
+		return "ID físico do registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringPtBr()
 	{
-		return "Status";
+		return "ID físico do registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringRo()
 	{
-		return "stare";
+		return "Id-ul fizic al înregistrării nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringRu()
 	{
-		return "Status";
+		return "Неверный физический идентификатор реестра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt registers fysiska id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringTh()
 	{
-		return "สถานะ";
+		return "รหัสจริงของการลงทะเบียนไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz kayıt defterinin fiziksel kimliği";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний фізичний ідентифікатор реєстру";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringVi()
 	{
-		return "Trạng thái";
+		return "Id vật lý của người đăng ký không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringZhCn()
 	{
-		return "状态";
+		return "寄存器的物理ID无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringZhTw()
 	{
-		return "狀態";
+		return "寄存器的物理ID無效";
 	}
 }

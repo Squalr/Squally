@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringAr()
 	{
-		return "الحالة";
+		return "فتحة مشغولة";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringBg()
 	{
-		return "Статус";
+		return "Слотът е зает";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringCs()
 	{
-		return "Postavení";
+		return "Obsazený slot";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringDa()
 	{
-		return "status";
+		return "Slot optaget";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringDe()
 	{
-		return "Status";
+		return "Slot belegt";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Η αυλάκωση είναι κατειλημμένη";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringEn()
 	{
-		return "Status";
+		return "Slot occupied";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringEs()
 	{
-		return "Estado";
+		return "Ranura ocupada";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringEs419()
 	{
-		return "Estado";
+		return "Ranura ocupada";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringFi()
 	{
-		return "Status";
+		return "Raha on varattu";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringFr()
 	{
-		return "Statut";
+		return "Emplacement occupé";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringHu()
 	{
-		return "Állapot";
+		return "Slot elfoglalt";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringIt()
 	{
-		return "Stato";
+		return "Slot occupati";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringJa()
 	{
-		return "状態";
+		return "スロット占有";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringKo()
 	{
-		return "지위";
+		return "점유 된 슬롯";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringNl()
 	{
-		return "staat";
+		return "Slot bezet";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringNo()
 	{
-		return "Status";
+		return "Slot okkupert";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringPl()
 	{
-		return "Status";
+		return "Zajęte gniazdo";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringPt()
 	{
-		return "Status";
+		return "Slot ocupado";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringPtBr()
 	{
-		return "Status";
+		return "Slot ocupado";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringRo()
 	{
-		return "stare";
+		return "Slot ocupat";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringRu()
 	{
-		return "Status";
+		return "Слот занят";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringSv()
 	{
-		return "Status";
+		return "Slot upptagen";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringTh()
 	{
-		return "สถานะ";
+		return "ช่องครอบครอง";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringTr()
 	{
-		return "durum";
+		return "Yuva işgal";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringUk()
 	{
-		return "Статус";
+		return "Слот зайнятий";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringVi()
 	{
-		return "Trạng thái";
+		return "Khe chiếm dụng";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringZhCn()
 	{
-		return "状态";
+		return "插槽占用";
 	}
 
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringZhTw()
 	{
-		return "狀態";
+		return "插槽佔用";
 	}
 }

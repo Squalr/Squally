@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringAr()
 	{
-		return "الحالة";
+		return "قيمة فورية غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна непосредствена стойност";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná okamžitá hodnota";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringDa()
 	{
-		return "status";
+		return "Ugyldig øjeblikkelig værdi";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringDe()
 	{
-		return "Status";
+		return "Ungültiger unmittelbarer Wert";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη άμεση αξία";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringEn()
 	{
-		return "Status";
+		return "Invalid immediate value";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringEs()
 	{
-		return "Estado";
+		return "Valor inmediato inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringEs419()
 	{
-		return "Estado";
+		return "Valor inmediato inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen välitön arvo";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringFr()
 	{
-		return "Statut";
+		return "Valeur immédiate invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen azonnali érték";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringIt()
 	{
-		return "Stato";
+		return "Valore immediato non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringJa()
 	{
-		return "状態";
+		return "即値が無効です";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringKo()
 	{
-		return "지위";
+		return "유효하지 않은 즉시 값";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige onmiddellijke waarde";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig umiddelbar verdi";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa wartość bezpośrednia";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringPt()
 	{
-		return "Status";
+		return "Valor imediato inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringPtBr()
 	{
-		return "Status";
+		return "Valor imediato inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringRo()
 	{
-		return "stare";
+		return "Valoare imediată nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringRu()
 	{
-		return "Status";
+		return "Неверное немедленное значение";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt omedelbart värde";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringTh()
 	{
-		return "สถานะ";
+		return "ค่าในทันทีไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz hemen değer";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringUk()
 	{
-		return "Статус";
+		return "Недійсне безпосереднє значення";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringVi()
 	{
-		return "Trạng thái";
+		return "Giá trị ngay lập tức không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringZhCn()
 	{
-		return "状态";
+		return "无效的立即值";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的立即值";
 	}
 }

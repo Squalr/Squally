@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringAr()
 	{
-		return "الحالة";
+		return "لا سجلات متتالية";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringBg()
 	{
-		return "Статус";
+		return "Не последователни регистри";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringCs()
 	{
-		return "Postavení";
+		return "Ne po sobě jdoucí registry";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringDa()
 	{
-		return "status";
+		return "Ikke på hinanden følgende registre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringDe()
 	{
-		return "Status";
+		return "Nicht fortlaufende Register";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Δεν είναι διαδοχικά μητρώα";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringEn()
 	{
-		return "Status";
+		return "Not consecutive registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringEs()
 	{
-		return "Estado";
+		return "Registros no consecutivos";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringEs419()
 	{
-		return "Estado";
+		return "Registros no consecutivos";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringFi()
 	{
-		return "Status";
+		return "Ei peräkkäisiä rekistereitä";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringFr()
 	{
-		return "Statut";
+		return "Registres non consécutifs";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringHu()
 	{
-		return "Állapot";
+		return "Nem egymást követő regiszterek";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringIt()
 	{
-		return "Stato";
+		return "Registri non consecutivi";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringJa()
 	{
-		return "状態";
+		return "連続しないレジスタ";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringKo()
 	{
-		return "지위";
+		return "연속 레지스터가 아님";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringNl()
 	{
-		return "staat";
+		return "Niet opeenvolgende registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringNo()
 	{
-		return "Status";
+		return "Ikke påfølgende registre";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringPl()
 	{
-		return "Status";
+		return "Nie kolejne rejestry";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringPt()
 	{
-		return "Status";
+		return "Não registros consecutivos";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringPtBr()
 	{
-		return "Status";
+		return "Não registros consecutivos";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringRo()
 	{
-		return "stare";
+		return "Nu sunt registre consecutive";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringRu()
 	{
-		return "Status";
+		return "Непоследовательные регистры";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringSv()
 	{
-		return "Status";
+		return "Inga på varandra följande register";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringTh()
 	{
-		return "สถานะ";
+		return "ไม่ใช่การลงทะเบียนติดต่อกัน";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringTr()
 	{
-		return "durum";
+		return "Ardışık olmayan kayıtlar";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringUk()
 	{
-		return "Статус";
+		return "Не послідовні регістри";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringVi()
 	{
-		return "Trạng thái";
+		return "Không đăng ký liên tiếp";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringZhCn()
 	{
-		return "状态";
+		return "不连续的寄存器";
 	}
 
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringZhTw()
 	{
-		return "狀態";
+		return "不連續的寄存器";
 	}
 }

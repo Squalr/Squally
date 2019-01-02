@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringAr()
 	{
-		return "الحالة";
+		return "بادئة الإصدار غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден префикс за пускане";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná předpona pro uvolnění";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt udgivelses prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges Freigabepräfix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο πρόθεμα απελευθέρωσης";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringEn()
 	{
-		return "Status";
+		return "Invalid xrelease prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringEs()
 	{
-		return "Estado";
+		return "Prefijo de lanzamiento no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringEs419()
 	{
-		return "Estado";
+		return "Prefijo de lanzamiento no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen julkaisun etuliite";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringFr()
 	{
-		return "Statut";
+		return "Préfixe de publication non valide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen kiadás előtag";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringIt()
 	{
-		return "Stato";
+		return "Prefisso di rilascio non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringJa()
 	{
-		return "状態";
+		return "無効なリリースプレフィックス";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringKo()
 	{
-		return "지위";
+		return "출시 번호가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringNl()
 	{
-		return "staat";
+		return "Voorvoegsel ongeldige versie";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig utgivelses prefiks";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy prefiks wydania";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringPt()
 	{
-		return "Status";
+		return "Prefixo de lançamento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringPtBr()
 	{
-		return "Status";
+		return "Prefixo de lançamento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringRo()
 	{
-		return "stare";
+		return "Prefix de eliberare nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringRu()
 	{
-		return "Status";
+		return "Неверный префикс выпуска";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt släppprefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringTh()
 	{
-		return "สถานะ";
+		return "คำนำหน้าปล่อยไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz yayın öneki";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний префікс випуску";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tiền tố phát hành không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringZhCn()
 	{
-		return "状态";
+		return "无效的发布前缀";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的發布前綴";
 	}
 }

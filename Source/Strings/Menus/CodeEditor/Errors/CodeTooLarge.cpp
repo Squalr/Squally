@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringAr()
 	{
-		return "الحالة";
+		return "الرمز كبير جدًا";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringBg()
 	{
-		return "Статус";
+		return "Кодът е твърде голям";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringCs()
 	{
-		return "Postavení";
+		return "Kód je příliš velký";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringDa()
 	{
-		return "status";
+		return "Koden er for stor";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringDe()
 	{
-		return "Status";
+		return "Code zu groß";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Ο κωδικός είναι πολύ μεγάλος";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringEn()
 	{
-		return "Status";
+		return "Code too large";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringEs()
 	{
-		return "Estado";
+		return "Código demasiado grande";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringEs419()
 	{
-		return "Estado";
+		return "Código demasiado grande";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringFi()
 	{
-		return "Status";
+		return "Koodi on liian suuri";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringFr()
 	{
-		return "Statut";
+		return "Code trop grand";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringHu()
 	{
-		return "Állapot";
+		return "A kód túl nagy";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringIt()
 	{
-		return "Stato";
+		return "Codice troppo grande";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringJa()
 	{
-		return "状態";
+		return "コードが大きすぎます";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringKo()
 	{
-		return "지위";
+		return "코드가 너무 큼";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringNl()
 	{
-		return "staat";
+		return "Code te groot";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringNo()
 	{
-		return "Status";
+		return "Koden er for stor";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringPl()
 	{
-		return "Status";
+		return "Kod jest za duży";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringPt()
 	{
-		return "Status";
+		return "Código muito grande";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringPtBr()
 	{
-		return "Status";
+		return "Código muito grande";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringRo()
 	{
-		return "stare";
+		return "Codul este prea mare";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringRu()
 	{
-		return "Status";
+		return "Слишком большой код";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringSv()
 	{
-		return "Status";
+		return "Koden är för stor";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringTh()
 	{
-		return "สถานะ";
+		return "รหัสใหญ่เกินไป";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringTr()
 	{
-		return "durum";
+		return "Kod çok büyük";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringUk()
 	{
-		return "Статус";
+		return "Код занадто великий";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringVi()
 	{
-		return "Trạng thái";
+		return "Mã quá lớn";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringZhCn()
 	{
-		return "状态";
+		return "代码太大了";
 	}
 
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringZhTw()
 	{
-		return "狀態";
+		return "代碼太大了";
 	}
 }

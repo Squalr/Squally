@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringAr()
 	{
-		return "الحالة";
+		return "اسم العلامة طويل للغاية";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringBg()
 	{
-		return "Статус";
+		return "Името на етикета е твърде дълго";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringCs()
 	{
-		return "Postavení";
+		return "Název štítku je příliš dlouhý";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringDa()
 	{
-		return "status";
+		return "Etikett navn for længe";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringDe()
 	{
-		return "Status";
+		return "Markenname zu lang";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Το όνομα της ετικέτας είναι πολύ μεγάλο";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringEn()
 	{
-		return "Status";
+		return "Label name too long";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringEs()
 	{
-		return "Estado";
+		return "Nombre de la etiqueta demasiado largo";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringEs419()
 	{
-		return "Estado";
+		return "Nombre de la etiqueta demasiado largo";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringFi()
 	{
-		return "Status";
+		return "Tarran nimi on liian pitkä";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringFr()
 	{
-		return "Statut";
+		return "Nom de l'étiquette trop long";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringHu()
 	{
-		return "Állapot";
+		return "A címke neve túl hosszú";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringIt()
 	{
-		return "Stato";
+		return "Il nome dell'etichetta è troppo lungo";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringJa()
 	{
-		return "状態";
+		return "ラベル名が長すぎます";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringKo()
 	{
-		return "지위";
+		return "라벨 이름이 너무 깁니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringNl()
 	{
-		return "staat";
+		return "Labelnaam te lang";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringNo()
 	{
-		return "Status";
+		return "Etikettnavn for lenge";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringPl()
 	{
-		return "Status";
+		return "Nazwa etykiety jest za długa";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringPt()
 	{
-		return "Status";
+		return "Nome do rótulo muito longo";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringPtBr()
 	{
-		return "Status";
+		return "Nome do rótulo muito longo";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringRo()
 	{
-		return "stare";
+		return "Numele etichetei este prea lung";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringRu()
 	{
-		return "Status";
+		return "Название ярлыка слишком длинное";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringSv()
 	{
-		return "Status";
+		return "Etikettnamn för länge";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringTh()
 	{
-		return "สถานะ";
+		return "ชื่อป้ายกำกับยาวเกินไป";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringTr()
 	{
-		return "durum";
+		return "Etiket adı çok uzun";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringUk()
 	{
-		return "Статус";
+		return "Назва мітки занадто довга";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tên nhãn quá dài";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringZhCn()
 	{
-		return "状态";
+		return "标签名称太长";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringZhTw()
 	{
-		return "狀態";
+		return "標籤名稱太長";
 	}
 }

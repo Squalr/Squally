@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringAr()
 	{
-		return "الحالة";
+		return "Invalid اكتسب البادئة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден префикс за придобиване";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná předvolba získání";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt erhverver præfiks";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges Erfassungspräfix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο πρόθεμα";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringEn()
 	{
-		return "Status";
+		return "Invalid xacquire prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringEs()
 	{
-		return "Estado";
+		return "El prefijo de adquisición no es válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringEs419()
 	{
-		return "Estado";
+		return "El prefijo de adquisición no es válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen hanki etuliite";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringFr()
 	{
-		return "Statut";
+		return "Préfixe d'acquisition non valide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen beszerzési előtag";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringIt()
 	{
-		return "Stato";
+		return "Prefisso acquisito non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringJa()
 	{
-		return "状態";
+		return "取得プレフィックスが無効です";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringKo()
 	{
-		return "지위";
+		return "획득 접두사가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige prefix kopen";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig oppkjøp prefiks";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy prefiks przejęcia";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringPt()
 	{
-		return "Status";
+		return "Prefixo de aquisição inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringPtBr()
 	{
-		return "Status";
+		return "Prefixo de aquisição inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringRo()
 	{
-		return "stare";
+		return "Prefixul de achiziție nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringRu()
 	{
-		return "Status";
+		return "Неверный префикс получения";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt förvärv prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringTh()
 	{
-		return "สถานะ";
+		return "รับคำนำหน้าไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz satın alma öneki";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний префікс на придбання";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tiền tố có được không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringZhCn()
 	{
-		return "状态";
+		return "获取前缀无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringZhTw()
 	{
-		return "狀態";
+		return "獲取前綴無效";
 	}
 }

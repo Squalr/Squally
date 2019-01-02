@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringAr()
 	{
-		return "الحالة";
+		return "لا توجد ذاكرة افتراضية";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringBg()
 	{
-		return "Статус";
+		return "Няма виртуална памет";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringCs()
 	{
-		return "Postavení";
+		return "Žádná virtuální paměť";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringDa()
 	{
-		return "status";
+		return "Ingen virtuel hukommelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringDe()
 	{
-		return "Status";
+		return "Kein virtueller Speicher";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Δεν υπάρχει εικονική μνήμη";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringEn()
 	{
-		return "Status";
+		return "No virtual memory";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringEs()
 	{
-		return "Estado";
+		return "Sin memoria virtual";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringEs419()
 	{
-		return "Estado";
+		return "Sin memoria virtual";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringFi()
 	{
-		return "Status";
+		return "Ei virtuaalimuistia";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringFr()
 	{
-		return "Statut";
+		return "Pas de mémoire virtuelle";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringHu()
 	{
-		return "Állapot";
+		return "Nincs virtuális memória";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringIt()
 	{
-		return "Stato";
+		return "Nessuna memoria virtuale";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringJa()
 	{
-		return "状態";
+		return "仮想メモリなし";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringKo()
 	{
-		return "지위";
+		return "가상 메모리가 없습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringNl()
 	{
-		return "staat";
+		return "Geen virtueel geheugen";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringNo()
 	{
-		return "Status";
+		return "Ingen virtuelt minne";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringPl()
 	{
-		return "Status";
+		return "Brak pamięci wirtualnej";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringPt()
 	{
-		return "Status";
+		return "No virtual memory";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringPtBr()
 	{
-		return "Status";
+		return "No virtual memory";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringRo()
 	{
-		return "stare";
+		return "No virtual memory";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringRu()
 	{
-		return "Status";
+		return "Нет виртуальной памяти";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringSv()
 	{
-		return "Status";
+		return "Inget virtuellt minne";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringTh()
 	{
-		return "สถานะ";
+		return "ไม่มีหน่วยความจำเสมือน";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringTr()
 	{
-		return "durum";
+		return "Sanal bellek yok";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringUk()
 	{
-		return "Статус";
+		return "Відсутній віртуальна пам'ять";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringVi()
 	{
-		return "Trạng thái";
+		return "Không có bộ nhớ ảo";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringZhCn()
 	{
-		return "状态";
+		return "没有虚拟内存";
 	}
 
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringZhTw()
 	{
-		return "狀態";
+		return "沒有虛擬內存";
 	}
 }

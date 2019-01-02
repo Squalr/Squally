@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringAr()
 	{
-		return "الحالة";
+		return "بنية غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна архитектура";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná architektura";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringDa()
 	{
-		return "status";
+		return "Ugyldig arkitektur";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Architektur";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη αρχιτεκτονική";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringEn()
 	{
-		return "Status";
+		return "Invalid architecture";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringEs()
 	{
-		return "Estado";
+		return "Arquitectura inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringEs419()
 	{
-		return "Estado";
+		return "Arquitectura inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen arkkitehtuuri";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringFr()
 	{
-		return "Statut";
+		return "Invalid architecture";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen architektúra";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringIt()
 	{
-		return "Stato";
+		return "Architettura non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringJa()
 	{
-		return "状態";
+		return "無効なアーキテクチャ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringKo()
 	{
-		return "지위";
+		return "아키텍처가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige architectuur";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig arkitektur";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa architektura";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringPt()
 	{
-		return "Status";
+		return "Arquitetura Inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringPtBr()
 	{
-		return "Status";
+		return "Arquitetura Inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringRo()
 	{
-		return "stare";
+		return "Arhitectură nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringRu()
 	{
-		return "Status";
+		return "Неверная архитектура";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig arkitektur";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringTh()
 	{
-		return "สถานะ";
+		return "สถาปัตยกรรมไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz mimari";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна архітектура";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringVi()
 	{
-		return "Trạng thái";
+		return "Kiến trúc không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringZhCn()
 	{
-		return "状态";
+		return "无效的架构";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的架構";
 	}
 }

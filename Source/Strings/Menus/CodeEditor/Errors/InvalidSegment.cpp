@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringAr()
 	{
-		return "الحالة";
+		return "شريحة غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден сегмент";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringDe()
 	{
-		return "Status";
+		return "Invalid segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο τμήμα";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringEn()
 	{
-		return "Status";
+		return "Invalid segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringEs()
 	{
-		return "Estado";
+		return "Segmento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringEs419()
 	{
-		return "Estado";
+		return "Segmento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen segmentti";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringFr()
 	{
-		return "Statut";
+		return "Segment invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen szegmens";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringIt()
 	{
-		return "Stato";
+		return "Segmento non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringJa()
 	{
-		return "状態";
+		return "無効なセグメント";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringKo()
 	{
-		return "지위";
+		return "유효하지 않은 세그먼트";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringPt()
 	{
-		return "Status";
+		return "Segmento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringPtBr()
 	{
-		return "Status";
+		return "Segmento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringRo()
 	{
-		return "stare";
+		return "Segment nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringRu()
 	{
-		return "Status";
+		return "Неверный сегмент";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringTh()
 	{
-		return "สถานะ";
+		return "ส่วนไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz segment";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний сегмент";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringVi()
 	{
-		return "Trạng thái";
+		return "Phân khúc không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringZhCn()
 	{
-		return "状态";
+		return "无效的细分";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的細分";
 	}
 }

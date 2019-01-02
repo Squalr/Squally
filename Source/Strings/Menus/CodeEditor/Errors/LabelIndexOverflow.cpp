@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringAr()
 	{
-		return "الحالة";
+		return "تجاوز فهرس التسمية";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringBg()
 	{
-		return "Статус";
+		return "Преливане на индекса на етикета";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringCs()
 	{
-		return "Postavení";
+		return "Přetečení indexu štítků";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringDa()
 	{
-		return "status";
+		return "Etiket indeks overløb";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringDe()
 	{
-		return "Status";
+		return "Labelindexüberlauf";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Επωάστε τον δείκτη ετικετών";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringEn()
 	{
-		return "Status";
+		return "Label index overflow";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringEs()
 	{
-		return "Estado";
+		return "Desbordamiento de índice de etiqueta";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringEs419()
 	{
-		return "Estado";
+		return "Desbordamiento de índice de etiqueta";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringFi()
 	{
-		return "Status";
+		return "Tarran indeksin ylivuoto";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringFr()
 	{
-		return "Statut";
+		return "Dépassement d'index d'étiquette";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringHu()
 	{
-		return "Állapot";
+		return "Címke index túlcsordulás";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringIt()
 	{
-		return "Stato";
+		return "Overflow dell'indice dell'etichetta";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringJa()
 	{
-		return "状態";
+		return "ラベルインデックスのオーバーフロー";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringKo()
 	{
-		return "지위";
+		return "라벨 색인 오버플로";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringNl()
 	{
-		return "staat";
+		return "Label index overloop";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringNo()
 	{
-		return "Status";
+		return "Etikettindeksoverløp";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringPl()
 	{
-		return "Status";
+		return "Przepełnienie indeksu etykiet";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringPt()
 	{
-		return "Status";
+		return "Estouro de índice de etiqueta";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringPtBr()
 	{
-		return "Status";
+		return "Estouro de índice de etiqueta";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringRo()
 	{
-		return "stare";
+		return "Excesul indexului de etichete";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringRu()
 	{
-		return "Status";
+		return "Переполнение индекса метки";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringSv()
 	{
-		return "Status";
+		return "Etikettindexflöde";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringTh()
 	{
-		return "สถานะ";
+		return "ป้ายล้นดัชนี";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringTr()
 	{
-		return "durum";
+		return "Etiket dizini taşması";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringUk()
 	{
-		return "Статус";
+		return "Переповнення індексу мітки";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tràn chỉ mục nhãn";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringZhCn()
 	{
-		return "状态";
+		return "标签索引溢出";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringZhTw()
 	{
-		return "狀態";
+		return "標籤索引溢出";
 	}
 }

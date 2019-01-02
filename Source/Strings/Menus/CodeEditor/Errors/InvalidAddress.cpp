@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringAr()
 	{
-		return "الحالة";
+		return "عنوان خاطئ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден адрес";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná adresa";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringDa()
 	{
-		return "status";
+		return "Ugyldig adresse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Adresse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη διεύθυνση";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringEn()
 	{
-		return "Status";
+		return "Invalid address";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringEs()
 	{
-		return "Estado";
+		return "Dirección inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringEs419()
 	{
-		return "Estado";
+		return "Dirección inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringFi()
 	{
-		return "Status";
+		return "Väärä osoite";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringFr()
 	{
-		return "Statut";
+		return "Adresse invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen cím";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringIt()
 	{
-		return "Stato";
+		return "Indirizzo non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringJa()
 	{
-		return "状態";
+		return "無効なアドレス";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringKo()
 	{
-		return "지위";
+		return "잘못된 주소";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig adres";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig adresse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringPl()
 	{
-		return "Status";
+		return "Błędny adres";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringPt()
 	{
-		return "Status";
+		return "Endereço inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringPtBr()
 	{
-		return "Status";
+		return "Endereço inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringRo()
 	{
-		return "stare";
+		return "Adresă invalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringRu()
 	{
-		return "Status";
+		return "Неверный адрес";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig adress";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringTh()
 	{
-		return "สถานะ";
+		return "ที่อยู่ที่ไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz adres";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна адреса";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringVi()
 	{
-		return "Trạng thái";
+		return "Địa chỉ không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringZhCn()
 	{
-		return "状态";
+		return "无效地址";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringZhTw()
 	{
-		return "狀態";
+		return "無效地址";
 	}
 }

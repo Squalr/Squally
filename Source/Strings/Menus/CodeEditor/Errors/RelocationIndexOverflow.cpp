@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringAr()
 	{
-		return "الحالة";
+		return "تجاوز مؤشر إعادة التوزيع";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringBg()
 	{
-		return "Статус";
+		return "Преливане на индекса на преместване";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringCs()
 	{
-		return "Postavení";
+		return "Přetečení indexu přemístění";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringDa()
 	{
-		return "status";
+		return "Flytningsindeks overløb";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringDe()
 	{
-		return "Status";
+		return "Überlauf des Umzugsindex";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μετεγκατάσταση δείκτη μετεγκατάστασης";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringEn()
 	{
-		return "Status";
+		return "Relocation index overflow";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringEs()
 	{
-		return "Estado";
+		return "Desbordamiento del índice de reubicación";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringEs419()
 	{
-		return "Estado";
+		return "Desbordamiento del índice de reubicación";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringFi()
 	{
-		return "Status";
+		return "Siirtoindeksin ylivuoto";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringFr()
 	{
-		return "Statut";
+		return "Dépassement d'index de relocalisation";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringHu()
 	{
-		return "Állapot";
+		return "Áthelyezési index túlcsordulás";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringIt()
 	{
-		return "Stato";
+		return "Overflow dell'indice di ricollocazione";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringJa()
 	{
-		return "状態";
+		return "再配置インデックスのオーバーフロー";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringKo()
 	{
-		return "지위";
+		return "재배치 색인 오버 플로우";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringNl()
 	{
-		return "staat";
+		return "Verplaatsingsindex overloop";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringNo()
 	{
-		return "Status";
+		return "Flyttingsindeks overløp";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringPl()
 	{
-		return "Status";
+		return "Przepełnienie indeksu relokacji";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringPt()
 	{
-		return "Status";
+		return "Estouro de índice de realocação";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringPtBr()
 	{
-		return "Status";
+		return "Estouro de índice de realocação";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringRo()
 	{
-		return "stare";
+		return "Reluarea indexului de relocare";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringRu()
 	{
-		return "Status";
+		return "Переполнение индекса перемещения";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringSv()
 	{
-		return "Status";
+		return "Flyttningsindex överflöde";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringTh()
 	{
-		return "สถานะ";
+		return "ย้ายดัชนีมากเกินไป";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringTr()
 	{
-		return "durum";
+		return "Taşınma endeksi taşması";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringUk()
 	{
-		return "Статус";
+		return "Переповнення індексу перенесення";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tràn chỉ số di dời";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringZhCn()
 	{
-		return "状态";
+		return "重定位索引溢出";
 	}
 
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringZhTw()
 	{
-		return "狀態";
+		return "重定位索引溢出";
 	}
 }
