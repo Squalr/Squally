@@ -47,8 +47,8 @@ GameCamera::GameCamera()
 	this->cameraBounds = Rect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
-	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
-	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraY::create());
+	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
+	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraY::create());
 	this->debugCameraStringX = ConstantString::create();
 	this->debugCameraStringY = ConstantString::create();
 	this->hud->setZOrder(9999);

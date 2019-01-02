@@ -46,19 +46,19 @@ RowTotals::RowTotals()
 	this->playerDecimalTotalSocket = Sprite::create(HexusResources::RowTotalSocketDec);
 	this->playerHexTotalSocket = Sprite::create(HexusResources::RowTotalSocketHex);
 
-	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerBinaryCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerDecimalCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerHexCardTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 
-	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
-	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerBinaryCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerDecimalCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerHexCardDeltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 
 	this->enemyBinaryCardTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyDecimalCardTotal->enableOutline(Color4B::BLACK, 3);

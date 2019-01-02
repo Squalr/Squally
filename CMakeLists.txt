@@ -127,7 +127,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CProgressBar.cpp
 	Source/Engine/UI/Controls/CRadioButton.cpp
 	Source/Engine/UI/Controls/CSlider.cpp
-	Source/Engine/UI/Controls/EditableTextWindow.cpp
 	Source/Engine/UI/Controls/FocusTakeOver.cpp
 	Source/Engine/UI/Controls/HelpArrow.cpp
 	Source/Engine/UI/Controls/IconMenuSprite.cpp
@@ -135,8 +134,9 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/MenuSprite.cpp
 	Source/Engine/UI/Controls/MouseOverPanel.cpp
 	Source/Engine/UI/Controls/ScrollPane.cpp
+	Source/Engine/UI/Controls/Text/EditableTextWindow.cpp
+	Source/Engine/UI/Controls/Text/TextWindow.cpp
 	Source/Engine/UI/Controls/TextMenuSprite.cpp
-	Source/Engine/UI/Controls/TextWindow.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/FloatingSprite.cpp
 	Source/Engine/UI/HUD/DeveloperHud.cpp
@@ -831,6 +831,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Generics/Empty.cpp
 	Source/Strings/Generics/Infinity.cpp
 	Source/Strings/Generics/MinusConstant.cpp
+	Source/Strings/Generics/Newline.cpp
 	Source/Strings/Generics/PlusConstant.cpp
 	Source/Strings/Generics/TimesConstant.cpp
 	Source/Strings/Generics/XOverY.cpp
@@ -987,8 +988,9 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/CodeEditor/Assembler.cpp
 	Source/Strings/Menus/CodeEditor/ClickToEdit.cpp
 	Source/Strings/Menus/CodeEditor/CodeEditor.cpp
-	Source/Strings/Menus/CodeEditor/Function.cpp
+	Source/Strings/Menus/CodeEditor/FunctionHeader.cpp
 	Source/Strings/Menus/CodeEditor/Status.cpp
+	Source/Strings/Menus/CodeEditor/StatusHeader.cpp
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
@@ -1101,7 +1103,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CProgressBar.h
 	Source/Engine/UI/Controls/CRadioButton.h
 	Source/Engine/UI/Controls/CSlider.h
-	Source/Engine/UI/Controls/EditableTextWindow.h
 	Source/Engine/UI/Controls/FocusTakeOver.h
 	Source/Engine/UI/Controls/HelpArrow.h
 	Source/Engine/UI/Controls/IconMenuSprite.h
@@ -1109,8 +1110,9 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/MenuSprite.h
 	Source/Engine/UI/Controls/MouseOverPanel.h
 	Source/Engine/UI/Controls/ScrollPane.h
+	Source/Engine/UI/Controls/Text/EditableTextWindow.h
+	Source/Engine/UI/Controls/Text/TextWindow.h
 	Source/Engine/UI/Controls/TextMenuSprite.h
-	Source/Engine/UI/Controls/TextWindow.h
 	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/FloatingSprite.h
 	Source/Engine/UI/HUD/DeveloperHud.h
@@ -1828,6 +1830,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Generics/Empty.h
 	Source/Strings/Generics/Infinity.h
 	Source/Strings/Generics/MinusConstant.h
+	Source/Strings/Generics/Newline.h
 	Source/Strings/Generics/PlusConstant.h
 	Source/Strings/Generics/TimesConstant.h
 	Source/Strings/Generics/XOverY.h
@@ -1984,8 +1987,9 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/CodeEditor/Assembler.h
 	Source/Strings/Menus/CodeEditor/ClickToEdit.h
 	Source/Strings/Menus/CodeEditor/CodeEditor.h
-	Source/Strings/Menus/CodeEditor/Function.h
+	Source/Strings/Menus/CodeEditor/FunctionHeader.h
 	Source/Strings/Menus/CodeEditor/Status.h
+	Source/Strings/Menus/CodeEditor/StatusHeader.h
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h

@@ -12,6 +12,7 @@ public:
 	{
 		Main,
 		Coding,
+		Monospaced,
 		Pixel,
 	};
 
@@ -77,6 +78,7 @@ private:
 
 	static std::string getPixelFont();
 	static std::string getMainFont();
+	static std::string getMonospacedFont();
 	static std::string getCodingFont();
 
 	LocalizedString* localizedString;

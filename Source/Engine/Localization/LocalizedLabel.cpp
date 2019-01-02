@@ -8,8 +8,6 @@
 
 #include "Resources/FontResources.h"
 
-#include "Engine/Utils/StrUtils.h"
-
 const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
 const float LocalizedLabel::DefaultTypeSpeed = 0.025f;
 
@@ -161,17 +159,18 @@ std::string LocalizedLabel::getFont()
 		case FontStyle::Main:
 		{
 			return LocalizedLabel::getMainFont();
-			break;
 		}
 		case FontStyle::Coding:
 		{
 			return LocalizedLabel::getCodingFont();
-			break;
+		}
+		case FontStyle::Monospaced:
+		{
+			return LocalizedLabel::getMonospacedFont();
 		}
 		case FontStyle::Pixel:
 		{
 			return LocalizedLabel::getPixelFont();
-			break;
 		}
 	}
 }
@@ -325,25 +324,25 @@ std::string LocalizedLabel::getMainFont()
 	}
 }
 
-std::string LocalizedLabel::getCodingFont()
+std::string LocalizedLabel::getMonospacedFont()
 {
 	switch (Localization::getLanguage())
 	{
 		case LanguageType::CHINESE_SIMPLIFIED:
 		{
-			return FontResources::Coding_ChineseSimplified_NotoSansMonoCJKsc_Bold;
+			return FontResources::Main_ChineseSimplified_NotoSansMonoCJKsc_Regular;
 		}
 		case LanguageType::CHINESE_TRADITIONAL:
 		{
-			return FontResources::Coding_ChineseTraditional_NotoSansMonoCJKtc_Bold;
+			return FontResources::Main_ChineseTraditional_NotoSansMonoCJKtc_Regular;
 		}
 		case LanguageType::JAPANESE:
 		{
-			return FontResources::Coding_Japanese_NotoSansMonoCJKjp_Bold;
+			return FontResources::Main_Japanese_NotoSansMonoCJKjp_Regular;
 		}
 		case LanguageType::KOREAN:
 		{
-			return FontResources::Coding_Korean_NotoSansMonoCJKkr_Bold;
+			return FontResources::Main_Korean_NotoSansMonoCJKkr_Regular;
 		}
 		case LanguageType::ARABIC:
 		{
@@ -356,9 +355,14 @@ std::string LocalizedLabel::getCodingFont()
 		default:
 		{
 			// This covers almost all languages with a standard alphabet (cyrillic, greek, latin based)
-			return FontResources::Coding_Standard_NotoMono_Regular;
+			return FontResources::Main_Standard_NotoMono_Regular;
 		}
 	}
+}
+
+std::string LocalizedLabel::getCodingFont()
+{
+	return FontResources::Coding_UbuntuMono_Bold;
 }
 
 float LocalizedLabel::getFontSizeM1(std::string fontResource)
