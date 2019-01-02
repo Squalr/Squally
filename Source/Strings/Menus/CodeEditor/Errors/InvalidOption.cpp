@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringAr()
 	{
-		return "الحالة";
+		return "خيار %s أو %s غير صالح";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна опция %s или %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná možnost %s nebo %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringDa()
 	{
-		return "status";
+		return "Ugyldig %s eller %s mulighed";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Option %s oder %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη επιλογή %s ή %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringEn()
 	{
-		return "Status";
+		return "Invalid %s or %s option";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringEs()
 	{
-		return "Estado";
+		return "Opción %s o %s inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringEs419()
 	{
-		return "Estado";
+		return "Opción %s o %s inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen %s tai %s vaihtoehto";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringFr()
 	{
-		return "Statut";
+		return "Option %s ou %s non valide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen %s vagy %s opció";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringIt()
 	{
-		return "Stato";
+		return "Opzione %s o %s non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringJa()
 	{
-		return "状態";
+		return "無効な%sまたは%sオプション";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringKo()
 	{
-		return "지위";
+		return "잘못된  %s 또는 %s 옵션";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige %s of %s optie";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig %s eller %s alternativ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa opcja %s lub %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringPt()
 	{
-		return "Status";
+		return "Opção %s ou %s inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringPtBr()
 	{
-		return "Status";
+		return "Opção %s ou %s inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringRo()
 	{
-		return "stare";
+		return "Opțiunea %s sau %s nu este validă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringRu()
 	{
-		return "Status";
+		return "Неверный параметр %s или %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt %s eller %s alternativ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringTh()
 	{
-		return "สถานะ";
+		return "ตัวเลือก %s หรือ %s ไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz %s veya %s seçeneği";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна опція %s або %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tùy chọn %s hoặc %s không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringZhCn()
 	{
-		return "状态";
+		return "%s或%s选项无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringZhTw()
 	{
-		return "狀態";
+		return "%s或%s選項無效";
 	}
 }

@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringAr()
 	{
-		return "الحالة";
+		return "تسجيلات متراكبة";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringBg()
 	{
-		return "Статус";
+		return "Припокриващи се регистри";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringCs()
 	{
-		return "Postavení";
+		return "Překryté registry";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringDa()
 	{
-		return "status";
+		return "Overlappede registre";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringDe()
 	{
-		return "Status";
+		return "Überlappende Register";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Επικάλυψη καταχωρητών";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringEn()
 	{
-		return "Status";
+		return "Overlapped registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringEs()
 	{
-		return "Estado";
+		return "Registros superpuestos";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringEs419()
 	{
-		return "Estado";
+		return "Registros superpuestos";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringFi()
 	{
-		return "Status";
+		return "Päällekkäiset rekisterit";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringFr()
 	{
-		return "Statut";
+		return "Registres superposés";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringHu()
 	{
-		return "Állapot";
+		return "Átfedő regiszterek";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringIt()
 	{
-		return "Stato";
+		return "Registri sovrapposti";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringJa()
 	{
-		return "状態";
+		return "重複レジスタ";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringKo()
 	{
-		return "지위";
+		return "겹쳐진 레지스터";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringNl()
 	{
-		return "staat";
+		return "Overlappende registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringNo()
 	{
-		return "Status";
+		return "Overlappede registre";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringPl()
 	{
-		return "Status";
+		return "Nakładające się rejestry";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringPt()
 	{
-		return "Status";
+		return "Registros sobrepostos";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringPtBr()
 	{
-		return "Status";
+		return "Registros sobrepostos";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringRo()
 	{
-		return "stare";
+		return "Registrele suprapuse";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringRu()
 	{
-		return "Status";
+		return "Перекрытые регистры";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringSv()
 	{
-		return "Status";
+		return "Överlappade register";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringTh()
 	{
-		return "สถานะ";
+		return "รีจิสเตอร์ที่ทับซ้อนกัน";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringTr()
 	{
-		return "durum";
+		return "Örtüşen kayıtlar";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringUk()
 	{
-		return "Статус";
+		return "Перекриваються регістри";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringVi()
 	{
-		return "Trạng thái";
+		return "Các thanh ghi chồng chéo";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringZhCn()
 	{
-		return "状态";
+		return "重叠寄存器";
 	}
 
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringZhTw()
 	{
-		return "狀態";
+		return "重疊寄存器";
 	}
 }

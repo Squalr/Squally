@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringAr()
 	{
-		return "الحالة";
+		return "خطأ غير معروف";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringBg()
 	{
-		return "Статус";
+		return "Неизвестна грешка";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringCs()
 	{
-		return "Postavení";
+		return "Neznámá chyba";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringDa()
 	{
-		return "status";
+		return "Ukendt fejl";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringDe()
 	{
-		return "Status";
+		return "Unbekannter Fehler";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Αγνωστο σφάλμα";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringEn()
 	{
-		return "Status";
+		return "Unknown error";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringEs()
 	{
-		return "Estado";
+		return "Error desconocido";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringEs419()
 	{
-		return "Estado";
+		return "Error desconocido";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringFi()
 	{
-		return "Status";
+		return "Tuntematon virhe";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringFr()
 	{
-		return "Statut";
+		return "Erreur inconnue";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringHu()
 	{
-		return "Állapot";
+		return "Ismeretlen hiba";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringIt()
 	{
-		return "Stato";
+		return "Errore sconosciuto";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringJa()
 	{
-		return "状態";
+		return "未知のエラー";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringKo()
 	{
-		return "지위";
+		return "알수없는 오류";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringNl()
 	{
-		return "staat";
+		return "Onbekende fout";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringNo()
 	{
-		return "Status";
+		return "Ukjent feil";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringPl()
 	{
-		return "Status";
+		return "Nieznany błąd";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringPt()
 	{
-		return "Status";
+		return "Erro desconhecido";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringPtBr()
 	{
-		return "Status";
+		return "Erro desconhecido";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringRo()
 	{
-		return "stare";
+		return "Eroare necunoscută";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringRu()
 	{
-		return "Status";
+		return "Неизвестная ошибка";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringSv()
 	{
-		return "Status";
+		return "Okänt fel";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringTh()
 	{
-		return "สถานะ";
+		return "ข้อผิดพลาดที่ไม่รู้จัก";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringTr()
 	{
-		return "durum";
+		return "Bilinmeyen hata";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringUk()
 	{
-		return "Статус";
+		return "Невідома помилка";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringVi()
 	{
-		return "Trạng thái";
+		return "Lỗi không rõ";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringZhCn()
 	{
-		return "状态";
+		return "未知错误";
 	}
 
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringZhTw()
 	{
-		return "狀態";
+		return "未知錯誤";
 	}
 }

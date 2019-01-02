@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringAr()
 	{
-		return "الحالة";
+		return "التسمية محددة بالفعل";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringBg()
 	{
-		return "Статус";
+		return "Етикетът вече е определен";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringCs()
 	{
-		return "Postavení";
+		return "Označení již bylo definováno";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringDa()
 	{
-		return "status";
+		return "Etiket er allerede defineret";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringDe()
 	{
-		return "Status";
+		return "Beschriftung bereits definiert";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Η ετικέτα έχει ήδη οριστεί";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringEn()
 	{
-		return "Status";
+		return "Label already defined";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringEs()
 	{
-		return "Estado";
+		return "Etiqueta ya definida";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringEs419()
 	{
-		return "Estado";
+		return "Etiqueta ya definida";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringFi()
 	{
-		return "Status";
+		return "Tarra on jo määritetty";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringFr()
 	{
-		return "Statut";
+		return "Label déjà défini";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringHu()
 	{
-		return "Állapot";
+		return "Már megjelölt címke";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringIt()
 	{
-		return "Stato";
+		return "Etichetta già definita";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringJa()
 	{
-		return "状態";
+		return "ラベルはすでに定義されています";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringKo()
 	{
-		return "지위";
+		return "이미 정의 된 라벨";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringNl()
 	{
-		return "staat";
+		return "Label al gedefinieerd";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringNo()
 	{
-		return "Status";
+		return "Etikett er allerede definert";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringPl()
 	{
-		return "Status";
+		return "Etykieta już zdefiniowana";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringPt()
 	{
-		return "Status";
+		return "Rótulo já definido";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringPtBr()
 	{
-		return "Status";
+		return "Rótulo já definido";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringRo()
 	{
-		return "stare";
+		return "Eticheta a fost deja definită";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringRu()
 	{
-		return "Status";
+		return "Метка уже определена";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringSv()
 	{
-		return "Status";
+		return "Etikett som redan definierats";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringTh()
 	{
-		return "สถานะ";
+		return "ป้ายกำกับที่กำหนดไว้แล้ว";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringTr()
 	{
-		return "durum";
+		return "Etiket zaten tanımlanmış";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringUk()
 	{
-		return "Статус";
+		return "Мітка вже визначена";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringVi()
 	{
-		return "Trạng thái";
+		return "Nhãn đã được xác định";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringZhCn()
 	{
-		return "状态";
+		return "标签已定义";
 	}
 
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringZhTw()
 	{
-		return "狀態";
+		return "標籤已定義";
 	}
 }

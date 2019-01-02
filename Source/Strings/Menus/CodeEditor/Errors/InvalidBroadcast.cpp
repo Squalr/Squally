@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringAr()
 	{
-		return "الحالة";
+		return "البث غير صالح %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringBg()
 	{
-		return "Статус";
+		return "Невалидното излъчване %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatné vysílání %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringDa()
 	{
-		return "status";
+		return "Ugyldig udsendelse %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Übertragung %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη μετάδοση %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringEn()
 	{
-		return "Status";
+		return "Invalid broadcast %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringEs()
 	{
-		return "Estado";
+		return "Transmisión no válida %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringEs419()
 	{
-		return "Estado";
+		return "Transmisión no válida %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen lähetys %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringFr()
 	{
-		return "Statut";
+		return "Diffusion invalide %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen broadcast %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringIt()
 	{
-		return "Stato";
+		return "Trasmissione %s non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringJa()
 	{
-		return "状態";
+		return "ブロードキャスト%sが無効です";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringKo()
 	{
-		return "지위";
+		return "잘못된 브로드 캐스트 %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige uitzending %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig kringkasting %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringPl()
 	{
-		return "Status";
+		return "Niepoprawna transmisja %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringPt()
 	{
-		return "Status";
+		return "Transmissão %s inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringPtBr()
 	{
-		return "Status";
+		return "Transmissão %s inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringRo()
 	{
-		return "stare";
+		return "Transmisie nevalidă %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringRu()
 	{
-		return "Status";
+		return "Неверная трансляция %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig sändning %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringTh()
 	{
-		return "สถานะ";
+		return "การออกอากาศ %s ไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz yayın %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна трансляція %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringVi()
 	{
-		return "Trạng thái";
+		return "Phát sóng không hợp lệ %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringZhCn()
 	{
-		return "状态";
+		return "广播%s无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringZhTw()
 	{
-		return "狀態";
+		return "廣播%s無效";
 	}
 }

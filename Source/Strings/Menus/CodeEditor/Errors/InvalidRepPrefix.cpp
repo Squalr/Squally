@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringAr()
 	{
-		return "الحالة";
+		return "بادئة تكرار غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден префикс за повтаряне";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná předpona opakování";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt gentag præfiks";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges Wiederholungspräfix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο πρόθεμα επανάληψης";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringEn()
 	{
-		return "Status";
+		return "Invalid rep prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringEs()
 	{
-		return "Estado";
+		return "Prefijo de repetición no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringEs419()
 	{
-		return "Estado";
+		return "Prefijo de repetición no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen toiston etuliite";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringFr()
 	{
-		return "Statut";
+		return "Préfixe de répétition invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen ismétlő előtag";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringIt()
 	{
-		return "Stato";
+		return "Prefisso di ripetizione non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringJa()
 	{
-		return "状態";
+		return "無効な繰り返しプレフィックス";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringKo()
 	{
-		return "지위";
+		return "반복되는 접두어가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig herhaalprefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig gjentatt prefiks";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy prefiks powtarzania";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringPt()
 	{
-		return "Status";
+		return "Prefixo de repetição inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringPtBr()
 	{
-		return "Status";
+		return "Prefixo de repetição inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringRo()
 	{
-		return "stare";
+		return "Prefix repetat nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringRu()
 	{
-		return "Status";
+		return "Неверный повторный префикс";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt upprepningsprefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringTh()
 	{
-		return "สถานะ";
+		return "คำนำหน้าซ้ำไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz tekrar öneki";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний префікс повтору";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tiền tố lặp lại không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringZhCn()
 	{
-		return "状态";
+		return "重复前缀无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringZhTw()
 	{
-		return "狀態";
+		return "重複前綴無效";
 	}
 }

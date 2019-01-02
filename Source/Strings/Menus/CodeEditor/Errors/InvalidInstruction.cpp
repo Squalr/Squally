@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringAr()
 	{
-		return "الحالة";
+		return "تعليمات غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна инструкция";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná instrukce";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringDa()
 	{
-		return "status";
+		return "Ugyldig instruktion";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Anweisung";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη οδηγία";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringEn()
 	{
-		return "Status";
+		return "Invalid instruction";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringEs()
 	{
-		return "Estado";
+		return "Instrucción inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringEs419()
 	{
-		return "Estado";
+		return "Instrucción inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen ohje";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringFr()
 	{
-		return "Statut";
+		return "Instruction invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen utasítás";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringIt()
 	{
-		return "Stato";
+		return "Istruzione non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringJa()
 	{
-		return "状態";
+		return "無効な命令";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringKo()
 	{
-		return "지위";
+		return "잘못된 명령";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige instructie";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig instruksjon";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringPl()
 	{
-		return "Status";
+		return "Niepoprawna instrukcja";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringPt()
 	{
-		return "Status";
+		return "Instrução inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringPtBr()
 	{
-		return "Status";
+		return "Instrução inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringRo()
 	{
-		return "stare";
+		return "Instrucțiune nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringRu()
 	{
-		return "Status";
+		return "Неверная инструкция";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig instruktion";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringTh()
 	{
-		return "สถานะ";
+		return "คำสั่งไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz talimat";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна інструкція";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringVi()
 	{
-		return "Trạng thái";
+		return "Hướng dẫn không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringZhCn()
 	{
-		return "状态";
+		return "无效的指令";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的指令";
 	}
 }

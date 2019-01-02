@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringAr()
 	{
-		return "الحالة";
+		return "معرف الظاهري غير صالح للتسجيل";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден виртуален идентификатор на регистъра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný virtuální identifikátor registru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt registers virtuelle id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringDe()
 	{
-		return "Status";
+		return "Ungültige virtuelle ID des Registers";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο εικονικό αναγνωριστικό μητρώου";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringEn()
 	{
-		return "Status";
+		return "Invalid register's virtual id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringEs()
 	{
-		return "Estado";
+		return "ID virtual del registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringEs419()
 	{
-		return "Estado";
+		return "ID virtual del registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen rekisterin virtuaalinen tunnus";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringFr()
 	{
-		return "Statut";
+		return "Identifiant virtuel du registre invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen regiszter virtuális azonosítója";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringIt()
 	{
-		return "Stato";
+		return "ID virtuale del registro non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringJa()
 	{
-		return "状態";
+		return "無効なレジスタの仮想ID";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringKo()
 	{
-		return "지위";
+		return "잘못된 레지스터의 가상 ID";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige register's virtuele id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig registers virtuelle id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy identyfikator wirtualnego rejestru";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringPt()
 	{
-		return "Status";
+		return "ID virtual do registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringPtBr()
 	{
-		return "Status";
+		return "ID virtual do registro inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringRo()
 	{
-		return "stare";
+		return "ID-ul virtual al înregistrării nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringRu()
 	{
-		return "Status";
+		return "Неверный виртуальный идентификатор реестра";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt registers virtuella id";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringTh()
 	{
-		return "สถานะ";
+		return "รหัสเสมือนของการลงทะเบียนไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz kayıt defterinin sanal kimliği";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний віртуальний ідентифікатор реєстру";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringVi()
 	{
-		return "Trạng thái";
+		return "Id ảo của người đăng ký không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringZhCn()
 	{
-		return "状态";
+		return "无效的寄存器虚拟ID";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的寄存器虛擬ID";
 	}
 }

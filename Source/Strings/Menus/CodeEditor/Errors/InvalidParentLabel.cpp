@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringAr()
 	{
-		return "الحالة";
+		return "تسمية أصل غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден родителски етикет";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný nadřazený štítek";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringDa()
 	{
-		return "status";
+		return "Ugyldig modermærke";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges übergeordnetes Label";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη ετικέτα γονέα";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringEn()
 	{
-		return "Status";
+		return "Invalid parent label";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringEs()
 	{
-		return "Estado";
+		return "Etiqueta padre inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringEs419()
 	{
-		return "Estado";
+		return "Etiqueta padre inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen vanhemerkki";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringFr()
 	{
-		return "Statut";
+		return "Etiquette parent invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen szülőcímke";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringIt()
 	{
-		return "Stato";
+		return "Etichetta genitore non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringJa()
 	{
-		return "状態";
+		return "無効な親ラベル";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringKo()
 	{
-		return "지위";
+		return "상위 라벨이 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig ouderlabel";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig foreldre etikett";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa etykieta nadrzędna";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringPt()
 	{
-		return "Status";
+		return "Rótulo pai inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringPtBr()
 	{
-		return "Status";
+		return "Rótulo pai inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringRo()
 	{
-		return "stare";
+		return "Etichetă parentală nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringRu()
 	{
-		return "Status";
+		return "Неверный родительский ярлык";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig förälder etikett";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringTh()
 	{
-		return "สถานะ";
+		return "ป้ายกำกับหลักไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz üst etiket";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний батьківський ярлик";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringVi()
 	{
-		return "Trạng thái";
+		return "Nhãn cha không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringZhCn()
 	{
-		return "状态";
+		return "无效的父标签";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的父標籤";
 	}
 }

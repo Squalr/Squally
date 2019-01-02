@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringAr()
 	{
-		return "الحالة";
+		return "الميزة غير ممكّنة";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringBg()
 	{
-		return "Статус";
+		return "Функцията не е активирана";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringCs()
 	{
-		return "Postavení";
+		return "Funkce není povolena";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringDa()
 	{
-		return "status";
+		return "Funktionen er ikke aktiveret";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringDe()
 	{
-		return "Status";
+		return "Funktion nicht aktiviert";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Η λειτουργία δεν είναι ενεργοποιημένη";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringEn()
 	{
-		return "Status";
+		return "Feature not enabled";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringEs()
 	{
-		return "Estado";
+		return "Característica no habilitada";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringEs419()
 	{
-		return "Estado";
+		return "Característica no habilitada";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringFi()
 	{
-		return "Status";
+		return "Ominaisuus ei ole käytössä";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringFr()
 	{
-		return "Statut";
+		return "Fonction non activée";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringHu()
 	{
-		return "Állapot";
+		return "A funkció nincs engedélyezve";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringIt()
 	{
-		return "Stato";
+		return "Funzionalità non abilitata";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringJa()
 	{
-		return "状態";
+		return "機能が有効になっていません";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringKo()
 	{
-		return "지위";
+		return "사용할 수없는 기능";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringNl()
 	{
-		return "staat";
+		return "Functie niet ingeschakeld";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringNo()
 	{
-		return "Status";
+		return "Funksjonen er ikke aktivert";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringPl()
 	{
-		return "Status";
+		return "Funkcja nie jest włączona";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringPt()
 	{
-		return "Status";
+		return "Recurso não ativado";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringPtBr()
 	{
-		return "Status";
+		return "Recurso não ativado";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringRo()
 	{
-		return "stare";
+		return "Funcția nu este activată";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringRu()
 	{
-		return "Status";
+		return "Функция не включена";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringSv()
 	{
-		return "Status";
+		return "Funktionen är inte aktiverad";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringTh()
 	{
-		return "สถานะ";
+		return "ไม่ได้เปิดใช้งานคุณสมบัติ";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringTr()
 	{
-		return "durum";
+		return "Özellik etkin değil";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringUk()
 	{
-		return "Статус";
+		return "Функція не активована";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tính năng không được kích hoạt";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringZhCn()
 	{
-		return "状态";
+		return "功能未启用";
 	}
 
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringZhTw()
 	{
-		return "狀態";
+		return "功能未啟用";
 	}
 }

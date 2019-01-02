@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringAr()
 	{
-		return "الحالة";
+		return "حالة غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringBg()
 	{
-		return "Статус";
+		return "Невалидно състояние";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný stav";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringDa()
 	{
-		return "status";
+		return "Ugyldig tilstand";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringDe()
 	{
-		return "Status";
+		return "Ungültiger Status";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη κατάσταση";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringEn()
 	{
-		return "Status";
+		return "Invalid state";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringEs()
 	{
-		return "Estado";
+		return "Estado Inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringEs419()
 	{
-		return "Estado";
+		return "Estado Inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen tila";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringFr()
 	{
-		return "Statut";
+		return "Etat non valide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen állapot";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringIt()
 	{
-		return "Stato";
+		return "Stato non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringJa()
 	{
-		return "状態";
+		return "無効な状態";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringKo()
 	{
-		return "지위";
+		return "상태가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige status";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig tilstand";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy stan";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringPt()
 	{
-		return "Status";
+		return "Estado inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringPtBr()
 	{
-		return "Status";
+		return "Estado inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringRo()
 	{
-		return "stare";
+		return "Stare nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringRu()
 	{
-		return "Status";
+		return "Неверное состояние";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt tillstånd";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringTh()
 	{
-		return "สถานะ";
+		return "รัฐไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz devlet";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний стан";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringVi()
 	{
-		return "Trạng thái";
+		return "Nhà nước không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringZhCn()
 	{
-		return "状态";
+		return "状态无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidState::getStringZhTw()
 	{
-		return "狀態";
+		return "狀態無效";
 	}
 }

@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringAr()
 	{
-		return "الحالة";
+		return "بادئة القفل غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден префикс за заключване";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná předpona zámku";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringDa()
 	{
-		return "status";
+		return "Ugyldigt låseforvalg";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringDe()
 	{
-		return "Status";
+		return "Ungültiges Sperrpräfix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο πρόθεμα κλειδώματος";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringEn()
 	{
-		return "Status";
+		return "Invalid lock prefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringEs()
 	{
-		return "Estado";
+		return "Prefijo de bloqueo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringEs419()
 	{
-		return "Estado";
+		return "Prefijo de bloqueo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen lukituksen etuliite";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringFr()
 	{
-		return "Statut";
+		return "Préfixe de verrouillage invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen zárszám";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringIt()
 	{
-		return "Stato";
+		return "Prefisso di blocco non valido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringJa()
 	{
-		return "状態";
+		return "無効なロックプレフィックス";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringKo()
 	{
-		return "지위";
+		return "잘못된 접두사 접두사";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringNl()
 	{
-		return "staat";
+		return "Ongeldig voorvoegsel vergrendelen";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig låse prefiks";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowy prefiks blokady";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringPt()
 	{
-		return "Status";
+		return "Prefixo de bloqueio inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringPtBr()
 	{
-		return "Status";
+		return "Prefixo de bloqueio inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringRo()
 	{
-		return "stare";
+		return "Prefixul de blocare este nevalid";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringRu()
 	{
-		return "Status";
+		return "Неверный префикс блокировки";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringSv()
 	{
-		return "Status";
+		return "Ogiltigt låsprefix";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringTh()
 	{
-		return "สถานะ";
+		return "คำนำหน้าล็อคไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz kilit öneki";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний префікс блокування";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringVi()
 	{
-		return "Trạng thái";
+		return "Tiền tố khóa không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringZhCn()
 	{
-		return "状态";
+		return "锁定前缀无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringZhTw()
 	{
-		return "狀態";
+		return "鎖定前綴無效";
 	}
 }

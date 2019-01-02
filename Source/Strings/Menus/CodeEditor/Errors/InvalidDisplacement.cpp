@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringAr()
 	{
-		return "الحالة";
+		return "النزوح غير صالح";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringBg()
 	{
-		return "Статус";
+		return "Невалидното изместване";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný posun";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringDa()
 	{
-		return "status";
+		return "Ugyldig fortrængning";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Verschiebung";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη εκτόπιση";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringEn()
 	{
-		return "Status";
+		return "Invalid displacement";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringEs()
 	{
-		return "Estado";
+		return "Desplazamiento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringEs419()
 	{
-		return "Estado";
+		return "Desplazamiento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen siirtymä";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringFr()
 	{
-		return "Statut";
+		return "Déplacement invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen elmozdulás";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringIt()
 	{
-		return "Stato";
+		return "Spostamento invalido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringJa()
 	{
-		return "状態";
+		return "無効なディスプレイスメント";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringKo()
 	{
-		return "지위";
+		return "변위가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige verplaatsing";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig forskyvning";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringPl()
 	{
-		return "Status";
+		return "Niewłaściwe przemieszczenie";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringPt()
 	{
-		return "Status";
+		return "Deslocamento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringPtBr()
 	{
-		return "Status";
+		return "Deslocamento inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringRo()
 	{
-		return "stare";
+		return "Deplasare nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringRu()
 	{
-		return "Status";
+		return "Неверное смещение";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig förskjutning";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringTh()
 	{
-		return "สถานะ";
+		return "การกำจัดไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz yer değiştirme";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringUk()
 	{
-		return "Статус";
+		return "Недійсне переміщення";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringVi()
 	{
-		return "Trạng thái";
+		return "Dịch chuyển không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringZhCn()
 	{
-		return "状态";
+		return "位移无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringZhTw()
 	{
-		return "狀態";
+		return "位移無效";
 	}
 }

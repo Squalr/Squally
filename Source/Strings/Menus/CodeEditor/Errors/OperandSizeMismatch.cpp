@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringAr()
 	{
-		return "الحالة";
+		return "عدم تطابق حجم المعامل";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringBg()
 	{
-		return "Статус";
+		return "Несъответствие в размера на операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringCs()
 	{
-		return "Postavení";
+		return "Nesoulad velikosti operandu";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringDa()
 	{
-		return "status";
+		return "Operand størrelse mismatch";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringDe()
 	{
-		return "Status";
+		return "Nicht übereinstimmende Operandengröße";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Αναντιστοιχία μεγέθους λειτουργιών";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringEn()
 	{
-		return "Status";
+		return "Operand size mismatch";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringEs()
 	{
-		return "Estado";
+		return "Desajuste de tamaño del operando";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringEs419()
 	{
-		return "Estado";
+		return "Desajuste de tamaño del operando";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringFi()
 	{
-		return "Status";
+		return "Operand-koon epäsuhta";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringFr()
 	{
-		return "Statut";
+		return "Non concordance de taille d'opérande";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringHu()
 	{
-		return "Állapot";
+		return "Működési méretbeli eltérés";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringIt()
 	{
-		return "Stato";
+		return "Mancata corrispondenza delle dimensioni dell'operando";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringJa()
 	{
-		return "状態";
+		return "オペランドサイズの不一致";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringKo()
 	{
-		return "지위";
+		return "피연산자 크기 불일치";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringNl()
 	{
-		return "staat";
+		return "Misaanpassing operand-grootte";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringNo()
 	{
-		return "Status";
+		return "Operand størrelse mismatch";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringPl()
 	{
-		return "Status";
+		return "Niedopasowanie rozmiaru niezgodności";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringPt()
 	{
-		return "Status";
+		return "Incompatibilidade de tamanho de operando";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringPtBr()
 	{
-		return "Status";
+		return "Incompatibilidade de tamanho de operando";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringRo()
 	{
-		return "stare";
+		return "Neconcordanța mărimii operațiilor";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringRu()
 	{
-		return "Status";
+		return "Несоответствие размера операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringSv()
 	{
-		return "Status";
+		return "Operand storlek mismatch";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringTh()
 	{
-		return "สถานะ";
+		return "ตัวดำเนินการขนาดไม่ตรงกัน";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringTr()
 	{
-		return "durum";
+		return "Operand boyut uyuşmazlığı";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringUk()
 	{
-		return "Статус";
+		return "Невідповідність розміру операнду";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringVi()
 	{
-		return "Trạng thái";
+		return "Kích thước toán hạng không khớp";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringZhCn()
 	{
-		return "状态";
+		return "操作数大小不匹配";
 	}
 
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringZhTw()
 	{
-		return "狀態";
+		return "操作數大小不匹配";
 	}
 }

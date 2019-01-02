@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringAr()
 	{
-		return "الحالة";
+		return "معلومات النوع غير صالحة";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна информация за типа";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatné info o typu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringDa()
 	{
-		return "status";
+		return "Ugyldig type info";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Typinformationen";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρες πληροφορίες τύπου";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringEn()
 	{
-		return "Status";
+		return "Invalid type info";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringEs()
 	{
-		return "Estado";
+		return "Información de tipo no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringEs419()
 	{
-		return "Estado";
+		return "Información de tipo no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen tyyppitiedot";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringFr()
 	{
-		return "Statut";
+		return "Informations de type non valides";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen típusú információ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringIt()
 	{
-		return "Stato";
+		return "Informazioni sul tipo non valide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringJa()
 	{
-		return "状態";
+		return "型情報が無効です";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringKo()
 	{
-		return "지위";
+		return "형식 정보가 잘못되었습니다.";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige type-info";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig type info";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowe informacje o typie";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringPt()
 	{
-		return "Status";
+		return "Informação de tipo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringPtBr()
 	{
-		return "Status";
+		return "Informação de tipo inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringRo()
 	{
-		return "stare";
+		return "Informație de tip nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringRu()
 	{
-		return "Status";
+		return "Неверный тип информации";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig typ info";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringTh()
 	{
-		return "สถานะ";
+		return "ข้อมูลประเภทไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz tür bilgisi";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна інформація про тип";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringVi()
 	{
-		return "Trạng thái";
+		return "Thông tin loại không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringZhCn()
 	{
-		return "状态";
+		return "无效的类型信息";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的類型信息";
 	}
 }

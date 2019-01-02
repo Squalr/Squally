@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringAr()
 	{
-		return "الحالة";
+		return "حجم المعامل غير صالح";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден размер на операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná velikost operandu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringDa()
 	{
-		return "status";
+		return "Ugyldig operandstørrelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Operandengröße";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρο μέγεθος λειτουργικού";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringEn()
 	{
-		return "Status";
+		return "Invalid operand size";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringEs()
 	{
-		return "Estado";
+		return "Tamaño de operando no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringEs419()
 	{
-		return "Estado";
+		return "Tamaño de operando no válido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen operandikoko";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringFr()
 	{
-		return "Statut";
+		return "Taille d'opérande invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen operandusméret";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringIt()
 	{
-		return "Stato";
+		return "Dimensione dell'operando non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringJa()
 	{
-		return "状態";
+		return "無効なオペランドサイズ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringKo()
 	{
-		return "지위";
+		return "잘못된 피연산자 크기";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige operand-grootte";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig operand størrelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringPl()
 	{
-		return "Status";
+		return "Niepoprawny rozmiar operandu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringPt()
 	{
-		return "Status";
+		return "Tamanho do operando inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringPtBr()
 	{
-		return "Status";
+		return "Tamanho do operando inválido";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringRo()
 	{
-		return "stare";
+		return "Mărimea operandului nevalidă";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringRu()
 	{
-		return "Status";
+		return "Неверный размер операнда";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig operandstorlek";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringTh()
 	{
-		return "สถานะ";
+		return "ขนาดตัวถูกดำเนินการไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz işlenen boyutu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний розмір операнду";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringVi()
 	{
-		return "Trạng thái";
+		return "Kích thước toán hạng không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringZhCn()
 	{
-		return "状态";
+		return "操作数大小无效";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringZhTw()
 	{
-		return "狀態";
+		return "操作數大小無效";
 	}
 }

@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringAr()
 	{
-		return "الحالة";
+		return "قناع غير صالح ، متوقع %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringBg()
 	{
-		return "Статус";
+		return "Невалидна битова маска, очаква се %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatná bitová maska, očekávaná %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringDa()
 	{
-		return "status";
+		return "Ugyldig bitmask, forventet %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringDe()
 	{
-		return "Status";
+		return "Ungültige Bitmaske, %s erwartet";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη bitmask, αναμενόμενη %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringEn()
 	{
-		return "Status";
+		return "Invalid bitmask, expected %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringEs()
 	{
-		return "Estado";
+		return "Máscara de bits no válida, %s esperada";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringEs419()
 	{
-		return "Estado";
+		return "Máscara de bits no válida, %s esperada";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen bittikartta, odotettu %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringFr()
 	{
-		return "Statut";
+		return "Masque binaire invalide, %s attendu";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen bitmaszk, várható %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringIt()
 	{
-		return "Stato";
+		return "Maschera di bit non valida, attesa %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringJa()
 	{
-		return "状態";
+		return "ビットマスクが無効です。予想される%s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringKo()
 	{
-		return "지위";
+		return "잘못된 비트 마스크, 예상 된 %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige bitmask, verwachte %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig bitmask, forventet %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa maska ​​bitowa, oczekiwany %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringPt()
 	{
-		return "Status";
+		return "Bitmask inválido, esperado %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringPtBr()
 	{
-		return "Status";
+		return "Bitmask inválido, esperado %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringRo()
 	{
-		return "stare";
+		return "Bit mască nevalidă, așteptat %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringRu()
 	{
-		return "Status";
+		return "Неверная битовая маска, ожидается %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig bitmask, förväntad %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringTh()
 	{
-		return "สถานะ";
+		return "bitmask ไม่ถูกต้องคาดว่า %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz bit maskesi, beklenen %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringUk()
 	{
-		return "Статус";
+		return "Недійсна бітова маска, очікувана s%";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringVi()
 	{
-		return "Trạng thái";
+		return "Bitmask không hợp lệ, dự kiến %s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringZhCn()
 	{
-		return "状态";
+		return "无效的位掩码，预期%s";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的位掩碼，預期%s";
 	}
 }

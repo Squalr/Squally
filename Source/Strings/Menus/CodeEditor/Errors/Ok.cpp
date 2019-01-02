@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringAr()
 	{
-		return "الحالة";
+		return "حسنا";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringBg()
 	{
-		return "Статус";
+		return "Добре";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringCs()
 	{
-		return "Postavení";
+		return "OK";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringDa()
 	{
-		return "status";
+		return "Okay";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringDe()
 	{
-		return "Status";
+		return "OK";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Εντάξει";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringEn()
 	{
-		return "Status";
+		return "Ok";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringEs()
 	{
-		return "Estado";
+		return "De acuerdo";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringEs419()
 	{
-		return "Estado";
+		return "De acuerdo";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringFi()
 	{
-		return "Status";
+		return "kunnossa";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringFr()
 	{
-		return "Statut";
+		return "D'accord";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringHu()
 	{
-		return "Állapot";
+		return "Ok";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringIt()
 	{
-		return "Stato";
+		return "Ok";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringJa()
 	{
-		return "状態";
+		return "OK";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringKo()
 	{
-		return "지위";
+		return "승인";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringNl()
 	{
-		return "staat";
+		return "OK";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringNo()
 	{
-		return "Status";
+		return "ok";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringPl()
 	{
-		return "Status";
+		return "Ok";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringPt()
 	{
-		return "Status";
+		return "Está bem";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringPtBr()
 	{
-		return "Status";
+		return "Está bem";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringRo()
 	{
-		return "stare";
+		return "O.K";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringRu()
 	{
-		return "Status";
+		return "Хорошо";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringSv()
 	{
-		return "Status";
+		return "Ok";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringTh()
 	{
-		return "สถานะ";
+		return "ตกลง";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringTr()
 	{
-		return "durum";
+		return "Tamam";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringUk()
 	{
-		return "Статус";
+		return "В порядку";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringVi()
 	{
-		return "Trạng thái";
+		return "Được";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringZhCn()
 	{
-		return "状态";
+		return "好";
 	}
 
 	std::string Menus_CodeEditor_Errors_Ok::getStringZhTw()
 	{
-		return "狀態";
+		return "好";
 	}
 }

@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringAr()
 	{
-		return "الحالة";
+		return "إدخال غير صالح للنقل";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringBg()
 	{
-		return "Статус";
+		return "Невалиден запис за преместване";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringCs()
 	{
-		return "Postavení";
+		return "Neplatný záznam o přemístění";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringDa()
 	{
-		return "status";
+		return "Ugyldig flytning indtastning";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringDe()
 	{
-		return "Status";
+		return "Ungültiger Umzugseintrag";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Μη έγκυρη καταχώριση μετεγκατάστασης";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringEn()
 	{
-		return "Status";
+		return "Invalid relocation entry";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringEs()
 	{
-		return "Estado";
+		return "Entrada de reubicación no válida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringEs419()
 	{
-		return "Estado";
+		return "Entrada de reubicación no válida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringFi()
 	{
-		return "Status";
+		return "Virheellinen siirron merkintä";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringFr()
 	{
-		return "Statut";
+		return "Entrée de relocalisation invalide";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringHu()
 	{
-		return "Állapot";
+		return "Érvénytelen áthelyezési bejegyzés";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringIt()
 	{
-		return "Stato";
+		return "Voce di trasferimento non valida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringJa()
 	{
-		return "状態";
+		return "無効な再配置エントリ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringKo()
 	{
-		return "지위";
+		return "잘못된 재배치 항목";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringNl()
 	{
-		return "staat";
+		return "Ongeldige herplaatsing invoer";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringNo()
 	{
-		return "Status";
+		return "Ugyldig flyttingstillatelse";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringPl()
 	{
-		return "Status";
+		return "Nieprawidłowa pozycja relokacji";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringPt()
 	{
-		return "Status";
+		return "Entrada de realocação inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringPtBr()
 	{
-		return "Status";
+		return "Entrada de realocação inválida";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringRo()
 	{
-		return "stare";
+		return "Intrare nevalidă la mutare";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringRu()
 	{
-		return "Status";
+		return "Неверная запись о переезде";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringSv()
 	{
-		return "Status";
+		return "Ogiltig omlokalisering";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringTh()
 	{
-		return "สถานะ";
+		return "รายการโยกย้ายไม่ถูกต้อง";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringTr()
 	{
-		return "durum";
+		return "Geçersiz yer değiştirme girişi";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringUk()
 	{
-		return "Статус";
+		return "Недійсний запис про переміщення";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringVi()
 	{
-		return "Trạng thái";
+		return "Mục di dời không hợp lệ";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringZhCn()
 	{
-		return "状态";
+		return "无效的重定位条目";
 	}
 
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringZhTw()
 	{
-		return "狀態";
+		return "無效的重定位條目";
 	}
 }
