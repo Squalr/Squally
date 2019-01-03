@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringAr()
 	{
-		return "الحالة";
+		return "سيتم ملء وحدات بايت غير معبأة بتعليمات NOP ، التي لا تفعل شيئًا.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringBg()
 	{
-		return "Статус";
+		return "Неизпълнените байтове ще бъдат запълнени с NOP инструкции, които не правят нищо.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringCs()
 	{
-		return "Postavení";
+		return "Nevyplněné bajty budou vyplněny instrukcemi NOP, které nic neudělají.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringDa()
 	{
-		return "status";
+		return "Ufyldte bytes vil blive udfyldt med NOP instruktioner, som ikke gør noget.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringDe()
 	{
-		return "Status";
+		return "Nicht erfüllte Bytes werden mit NOP-Anweisungen gefüllt, die nichts bewirken.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Τα μη συμπληρωμένα byte θα συμπληρωθούν με οδηγίες NOP, οι οποίες δεν κάνουν τίποτα.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringEn()
 	{
-		return "Status";
+		return "Unfilled bytes will be filled with NOP instructions, which do nothing.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringEs()
 	{
-		return "Estado";
+		return "Los bytes sin rellenar se llenarán con instrucciones NOP, que no hacen nada.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringEs419()
 	{
-		return "Estado";
+		return "Los bytes sin rellenar se llenarán con instrucciones NOP, que no hacen nada.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringFi()
 	{
-		return "Status";
+		return "Täytetyt tavut täytetään NOP-ohjeilla, jotka eivät tee mitään.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringFr()
 	{
-		return "Statut";
+		return "Les octets non remplis seront remplis d'instructions NOP, qui ne font rien.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringHu()
 	{
-		return "Állapot";
+		return "A nem töltött bájtokat NOP utasítások töltik meg, amelyek nem tesznek semmit.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringIt()
 	{
-		return "Stato";
+		return "I byte non riempiti saranno riempiti con istruzioni NOP, che non fanno nulla.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringJa()
 	{
-		return "状態";
+		return "埋められていないバイトは、何もしないNOP命令で埋められます。";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringKo()
 	{
-		return "지위";
+		return "채워지지 않은 바이트는 아무것도 수행하지 않는 NOP 명령어로 채워집니다.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringNl()
 	{
-		return "staat";
+		return "Niet-gevulde bytes worden gevuld met NOP-instructies, die niets doen.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringNo()
 	{
-		return "Status";
+		return "Ufylte byter vil bli fylt med NOP-instruksjoner, som ikke gjør noe.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringPl()
 	{
-		return "Status";
+		return "Niewypełnione bajty zostaną wypełnione instrukcjami NOP, które nie robią nic.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringPt()
 	{
-		return "Status";
+		return "Bytes não preenchidos serão preenchidos com instruções NOP, que não fazem nada.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringPtBr()
 	{
-		return "Status";
+		return "Bytes não preenchidos serão preenchidos com instruções NOP, que não fazem nada.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringRo()
 	{
-		return "stare";
+		return "Cărțile necompletate vor fi umplute cu instrucțiuni NOP, care nu fac nimic.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringRu()
 	{
-		return "Status";
+		return "Незаполненные байты будут заполнены инструкциями NOP, которые ничего не делают.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringSv()
 	{
-		return "Status";
+		return "Ouppfyllda byte kommer att fyllas med NOP-instruktioner, som inte gör något.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringTh()
 	{
-		return "สถานะ";
+		return "ไบต์ที่ไม่สำเร็จจะถูกเติมด้วยคำสั่ง NOP ซึ่งไม่ทำอะไรเลย";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringTr()
 	{
-		return "durum";
+		return "Doldurulmamış baytlar, hiçbir şey yapmadan NOP talimatları ile doldurulacaktır.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringUk()
 	{
-		return "Статус";
+		return "Незаповнені байти будуть заповнені інструкціями NOP, які нічого не роблять.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringVi()
 	{
-		return "Trạng thái";
+		return "Các byte chưa được điền sẽ được điền với các hướng dẫn NOP, không làm gì cả.";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringZhCn()
 	{
-		return "状态";
+		return "未填充的字节将填充NOP指令，这些指令不执行任何操作。";
 	}
 
 	std::string Menus_CodeEditor_UnfilledBytes::getStringZhTw()
 	{
-		return "狀態";
+		return "未填充的字節將填充NOP指令，這些指令不執行任何操作。";
 	}
 }

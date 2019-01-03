@@ -2,10 +2,12 @@
 
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/ui/UIRichText.h"
 #include "cocos/ui/UIScrollView.h"
 #include "cocos/ui/UITextField.h"
 
+#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/Controls/MenuLabel.h"
@@ -86,6 +88,11 @@ void TextWindow::initializePositions()
 void TextWindow::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	{
+		this->rebuildText();
+	}));
 }
 
 void TextWindow::setWindowColor(Color4B windowColor)
@@ -156,7 +163,12 @@ void TextWindow::clearText()
 
 void TextWindow::rebuildText()
 {
-	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> elements = this->textElements;
+	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> elements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
+
+	for (auto it = this->textElements.begin(); it != this->textElements.end(); it++)
+	{
+		elements.push_back(std::make_tuple(std::get<0>(*it)->clone(), std::get<1>(*it)));
+	}
 
 	this->clearText();
 

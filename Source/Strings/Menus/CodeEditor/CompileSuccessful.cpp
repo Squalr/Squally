@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringAr()
 	{
-		return "الحالة";
+		return "ترجمة ناجحة";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringBg()
 	{
-		return "Статус";
+		return "Компилирайте успешно";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringCs()
 	{
-		return "Postavení";
+		return "Kompilace úspěšná";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringDa()
 	{
-		return "status";
+		return "Kompilere vellykket";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringDe()
 	{
-		return "Status";
+		return "Kompilieren Sie erfolgreich";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Σύνταξη επιτυχίας";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringEn()
 	{
-		return "Status";
+		return "Compile successful";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringEs()
 	{
-		return "Estado";
+		return "Compilar exitoso";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringEs419()
 	{
-		return "Estado";
+		return "Compilar exitoso";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringFi()
 	{
-		return "Status";
+		return "Käännä onnistunut";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringFr()
 	{
-		return "Statut";
+		return "Compiler avec succès";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringHu()
 	{
-		return "Állapot";
+		return "Sikeres";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringIt()
 	{
-		return "Stato";
+		return "Compilare con successo";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringJa()
 	{
-		return "状態";
+		return "コンパイル成功";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringKo()
 	{
-		return "지위";
+		return "컴파일 성공";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringNl()
 	{
-		return "staat";
+		return "Compileer succesvol";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringNo()
 	{
-		return "Status";
+		return "Kompilere vellykket";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringPl()
 	{
-		return "Status";
+		return "Skompiluj udane";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringPt()
 	{
-		return "Status";
+		return "Compilar com sucesso";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringPtBr()
 	{
-		return "Status";
+		return "Compilar com sucesso";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringRo()
 	{
-		return "stare";
+		return "Compilați cu succes";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringRu()
 	{
-		return "Status";
+		return "Успешная компиляция";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringSv()
 	{
-		return "Status";
+		return "Kompilera framgångsrik";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringTh()
 	{
-		return "สถานะ";
+		return "รวบรวมสำเร็จ";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringTr()
 	{
-		return "durum";
+		return "Derleme başarılı";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringUk()
 	{
-		return "Статус";
+		return "Компілювати успішно";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringVi()
 	{
-		return "Trạng thái";
+		return "Biên dịch thành công";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringZhCn()
 	{
-		return "状态";
+		return "编译成功";
 	}
 
 	std::string Menus_CodeEditor_CompileSuccessful::getStringZhTw()
 	{
-		return "狀態";
+		return "編譯成功";
 	}
 }

@@ -26,10 +26,10 @@ public:
 	
 	struct token
 	{
-		std::string tokenStr;
+		LocalizedString* tokenStr;
 		cocos2d::Color3B color;
 
-		token(std::string tokenStr, cocos2d::Color3B color) :
+		token(LocalizedString* tokenStr, cocos2d::Color3B color) :
 			tokenStr(tokenStr), color(color)
 		{
 		}

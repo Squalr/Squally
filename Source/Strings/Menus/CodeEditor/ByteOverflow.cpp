@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringAr()
 	{
-		return "الحالة";
+		return "تجاوز البايت! استخدم التوزيعات لكتابة المزيد من التجميع.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringBg()
 	{
-		return "Статус";
+		return "Преливане на байтове! Използвайте разпределения, за да пишете повече монтаж.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringCs()
 	{
-		return "Postavení";
+		return "Byte přetečení! Použijte alokace pro zápis dalšího sestavení.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringDa()
 	{
-		return "status";
+		return "Byte overløb! Brug tildelinger til at skrive mere samling.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringDe()
 	{
-		return "Status";
+		return "Byteüberlauf! Verwenden Sie Zuordnungen, um mehr Assembly zu schreiben.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Byte υπερχείλιση! Χρησιμοποιήστε κατανομές για να γράψετε περισσότερη συναρμολόγηση.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringEn()
 	{
-		return "Status";
+		return "Byte overflow! Use allocations to write more assembly.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringEs()
 	{
-		return "Estado";
+		return "Desbordamiento de bytes! Usa las asignaciones para escribir más ensamblajes.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringEs419()
 	{
-		return "Estado";
+		return "Desbordamiento de bytes! Usa las asignaciones para escribir más ensamblajes.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringFi()
 	{
-		return "Status";
+		return "Byte-ylivuoto! Voit käyttää lisää kokoonpanoja käyttämällä varauksia.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringFr()
 	{
-		return "Statut";
+		return "Débordement d'octets! Utilisez les allocations pour écrire plus d'assembly.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringHu()
 	{
-		return "Állapot";
+		return "Bájt túlcsordulás! Használjon hozzárendeléseket több összeszerelés írásához.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringIt()
 	{
-		return "Stato";
+		return "Byte overflow! Utilizzare le allocazioni per scrivere più assembly.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringJa()
 	{
-		return "状態";
+		return "バイトオーバーフロー！より多くのアセンブリを書くために割り当てを使用してください。";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringKo()
 	{
-		return "지위";
+		return "바이트 오버플로! 할당을 사용하여 더 많은 어셈블리를 작성하십시오.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringNl()
 	{
-		return "staat";
+		return "Byte overloop! Gebruik toewijzingen om meer assembly te schrijven.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringNo()
 	{
-		return "Status";
+		return "Byte overløp! Bruk tildelinger for å skrive mer samling.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringPl()
 	{
-		return "Status";
+		return "Przepełnienie bajtów! Użyj przydziałów, aby napisać więcej złożenia.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringPt()
 	{
-		return "Status";
+		return "Excesso de bytes! Use alocações para escrever mais montagem.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringPtBr()
 	{
-		return "Status";
+		return "Excesso de bytes! Use alocações para escrever mais montagem.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringRo()
 	{
-		return "stare";
+		return "Byte overflow! Utilizați alocări pentru a scrie mai multe montaj.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringRu()
 	{
-		return "Status";
+		return "Переполнение байта! Используйте выделения, чтобы написать больше сборок.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringSv()
 	{
-		return "Status";
+		return "Byte överflöde! Använd anslag för att skriva mer montering.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringTh()
 	{
-		return "สถานะ";
+		return "ไบต์ล้น! ใช้การจัดสรรเพื่อเขียนชุดประกอบเพิ่มเติม";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringTr()
 	{
-		return "durum";
+		return "Bayt taşması! Daha fazla derleme yazmak için tahsisleri kullanın.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringUk()
 	{
-		return "Статус";
+		return "Переповнення байтів! Використовуйте виділення для запису більше збірки.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringVi()
 	{
-		return "Trạng thái";
+		return "Byte tràn! Sử dụng phân bổ để viết thêm lắp ráp.";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringZhCn()
 	{
-		return "状态";
+		return "字节溢出！使用分配来编写更多程序集。";
 	}
 
 	std::string Menus_CodeEditor_ByteOverflow::getStringZhTw()
 	{
-		return "狀態";
+		return "字節溢出！使用分配來編寫更多程序集。";
 	}
 }

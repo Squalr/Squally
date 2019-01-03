@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Bytes::getStringAr()
 	{
-		return "الحالة";
+		return "بايت: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringBg()
 	{
-		return "Статус";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringCs()
 	{
-		return "Postavení";
+		return "Byty: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringDa()
 	{
-		return "status";
+		return "bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringDe()
 	{
-		return "Status";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringEn()
 	{
-		return "Status";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringEs()
 	{
-		return "Estado";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringEs419()
 	{
-		return "Estado";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringFi()
 	{
-		return "Status";
+		return "tavua: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringFr()
 	{
-		return "Statut";
+		return "Octets : ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringHu()
 	{
-		return "Állapot";
+		return "byte: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringIt()
 	{
-		return "Stato";
+		return "byte: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringJa()
 	{
-		return "状態";
+		return "バイト数： ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringKo()
 	{
-		return "지위";
+		return "바이트: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringNl()
 	{
-		return "staat";
+		return "bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringNo()
 	{
-		return "Status";
+		return "bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringPl()
 	{
-		return "Status";
+		return "Bajty: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringPt()
 	{
-		return "Status";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringPtBr()
 	{
-		return "Status";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringRo()
 	{
-		return "stare";
+		return "bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringRu()
 	{
-		return "Status";
+		return "Б: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringSv()
 	{
-		return "Status";
+		return "Bytes: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringTh()
 	{
-		return "สถานะ";
+		return "ไบต์: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringTr()
 	{
-		return "durum";
+		return "Bayt: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringUk()
 	{
-		return "Статус";
+		return "Байти: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringVi()
 	{
-		return "Trạng thái";
+		return "Byte: ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringZhCn()
 	{
-		return "状态";
+		return "字节： ";
 	}
 
 	std::string Menus_CodeEditor_Bytes::getStringZhTw()
 	{
-		return "狀態";
+		return "字節： ";
 	}
 }
