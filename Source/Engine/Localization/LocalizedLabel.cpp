@@ -175,6 +175,10 @@ std::string LocalizedLabel::getFont()
 
 void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 {
+	// Save some state we wish to keep
+	int outlineSize = this->getOutlineSize();
+	Color4B outlineColor = Color4B(_effectColorF);
+
 	this->initWithTTF(
 		localizedString->getString(),
 		this->getFont(),
@@ -183,6 +187,12 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 		this->getHorizontalAlignment(),
 		this->getVerticalAlignment()
 	);
+
+	// Restore that state
+	if (outlineSize > 0)
+	{
+		this->enableOutline(outlineColor, outlineSize);
+	}
 }
 
 std::string LocalizedLabel::getPixelFont()

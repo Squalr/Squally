@@ -18,6 +18,8 @@ private:
 	DebugDisplay();
 	~DebugDisplay();
 
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 
 	LocalizedLabel* stateLabel;

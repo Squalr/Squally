@@ -76,7 +76,8 @@ private:
 	ToggleGroup* filters;
 
 	LocalizedLabel* totalCardsInDeckLabel;
-	ConstantString* totalCardsInDeckValueString;
+	ConstantString* totalCardsInDeckValueXString;
+	ConstantString* totalCardsInDeckValueYString;
 	LocalizedLabel* totalCardsInDeckValueLabel;
 	LocalizedLabel* binaryCardsInDeckLabel;
 	ConstantString* binaryCardsInDeckValueString;

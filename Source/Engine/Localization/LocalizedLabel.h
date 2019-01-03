@@ -51,7 +51,7 @@ public:
 
 private:
 	typedef cocos2d::Label super;
-	friend class TypeWriterEffect;
+	friend class TypeWriterEffect; // I dont care if this is bad practice
 
 	LocalizedLabel(
 		FontStyle fontStyle,

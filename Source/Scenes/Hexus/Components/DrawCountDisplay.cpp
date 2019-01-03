@@ -30,9 +30,9 @@ DrawCountDisplay* DrawCountDisplay::create()
 DrawCountDisplay::DrawCountDisplay()
 {
 	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
-	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
-	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
 	LayerColor* deckDrawCountMouseOverPanel;
 	Label* deckDrawCountCardMouseOverLabel;

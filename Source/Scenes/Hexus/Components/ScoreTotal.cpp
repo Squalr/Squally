@@ -27,12 +27,12 @@ ScoreTotal* ScoreTotal::create()
 ScoreTotal::ScoreTotal()
 {
 	this->playerTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->playerTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->playerTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 	this->playerTotal->enableOutline(Color4B::BLACK, 3);
 	this->playerLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
 	this->enemyTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->enemyTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
+	this->enemyTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 

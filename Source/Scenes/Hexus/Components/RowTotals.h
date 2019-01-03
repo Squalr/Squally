@@ -43,12 +43,19 @@ private:
 	LocalizedLabel* playerDecimalCardTotal;
 	LocalizedLabel* playerHexCardTotal;
 
-	LocalizedLabel* enemyBinaryCardDeltaLabel;
-	LocalizedLabel* enemyDecimalCardDeltaLabel;
-	LocalizedLabel* enemyHexCardDeltaLabel;
-	LocalizedLabel* playerBinaryCardDeltaLabel;
-	LocalizedLabel* playerDecimalCardDeltaLabel;
-	LocalizedLabel* playerHexCardDeltaLabel;
+	LocalizedLabel* enemyBinaryCardIncreaseLabel;
+	LocalizedLabel* enemyDecimalCardIncreaseLabel;
+	LocalizedLabel* enemyHexCardIncreaseLabel;
+	LocalizedLabel* playerBinaryCardIncreaseLabel;
+	LocalizedLabel* playerDecimalCardIncreaseLabel;
+	LocalizedLabel* playerHexCardIncreaseLabel;
+
+	LocalizedLabel* enemyBinaryCardDecreaseLabel;
+	LocalizedLabel* enemyDecimalCardDecreaseLabel;
+	LocalizedLabel* enemyHexCardDecreaseLabel;
+	LocalizedLabel* playerBinaryCardDecreaseLabel;
+	LocalizedLabel* playerDecimalCardDecreaseLabel;
+	LocalizedLabel* playerHexCardDecreaseLabel;
 
 	int cachedEnemyBinaryTotal;
 	int cachedEnemyDecimalTotal;

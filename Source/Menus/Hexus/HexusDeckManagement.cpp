@@ -33,6 +33,7 @@
 #include "Strings/Hexus/SpecialCards.h"
 #include "Strings/Generics/Constant.h"
 #include "Strings/Generics/TimesConstant.h"
+#include "Strings/Generics/XOverY.h"
 
 using namespace cocos2d;
 
@@ -71,8 +72,9 @@ HexusDeckManagement::HexusDeckManagement()
 	this->titleSprite = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_AxeLogo);
 
 	this->totalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardsInDeck::create());
-	this->totalCardsInDeckValueString = ConstantString::create();
-	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->totalCardsInDeckValueXString = ConstantString::create();
+	this->totalCardsInDeckValueYString = ConstantString::create();
+	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_XOverY::create());
 	this->binaryCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_BinCards::create());
 	this->binaryCardsInDeckValueString = ConstantString::create();
 	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
@@ -86,7 +88,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->specialCardsInDeckValueString = ConstantString::create();
 	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 
-	this->totalCardsInDeckValueLabel->setStringReplacementVariables(this->totalCardsInDeckValueString);
+	this->totalCardsInDeckValueLabel->setStringReplacementVariables({ this->totalCardsInDeckValueXString , this->totalCardsInDeckValueYString });
 	this->binaryCardsInDeckValueLabel->setStringReplacementVariables(this->binaryCardsInDeckValueString);
 	this->decimalCardsInDeckValueLabel->setStringReplacementVariables(this->decimalCardsInDeckValueString);
 	this->hexCardsInDeckValueLabel->setStringReplacementVariables(this->hexCardsInDeckValueString);
@@ -540,15 +542,15 @@ void HexusDeckManagement::rebuildCardLists()
 		}
 	}
 
+	this->totalCardsInDeckValueXString->setString(std::to_string(totalDeckCards));
+	this->totalCardsInDeckValueYString->setString(std::to_string(CardStorage::minimumDeckCards));
+
 	if (totalDeckCards < CardStorage::minimumDeckCards)
 	{
-		// TODO: Not localization safe!
-		this->totalCardsInDeckValueString->setString({ std::to_string(totalDeckCards) + " / " + std::to_string(CardStorage::minimumDeckCards) });
 		this->totalCardsInDeckValueLabel->setTextColor(Color4B::RED);
 	}
 	else
 	{
-		this->totalCardsInDeckValueString->setString({ std::to_string(totalDeckCards) });
 		this->totalCardsInDeckValueLabel->setTextColor(Color4B::YELLOW);
 	}
 
@@ -566,7 +568,7 @@ MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 {
 	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
 	ConstantString* valueString = ConstantString::create();
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_TimesConstant::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_TimesConstant::create());
 
 	label->setStringReplacementVariables(valueString);
 
