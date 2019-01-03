@@ -11,6 +11,18 @@ extern "C" {
 }
 #endif
 
+int StrUtils::unicodeStrLen(std::string str)
+{
+	int len = 0;
+
+	for (auto it = str.begin(); it != str.end(); it++)
+	{
+		len += (*it & 0xc0) != 0x80;
+	}
+
+	return len;
+}
+
 std::string StrUtils::ltrim(std::string str, std::string toRemove, bool ignoreCase)
 {
 	while(StrUtils::startsWith(str, toRemove, ignoreCase))

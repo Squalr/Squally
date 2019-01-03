@@ -35,6 +35,20 @@ DebugDisplay::~DebugDisplay()
 {
 }
 
+void DebugDisplay::onDeveloperModeEnable()
+{
+	ComponentBase::onDeveloperModeEnable();
+
+	this->setVisible(true);
+}
+
+void DebugDisplay::onDeveloperModeDisable()
+{
+	ComponentBase::onDeveloperModeEnable();
+
+	this->setVisible(false);
+}
+
 void DebugDisplay::initializePositions()
 {
 	ComponentBase::initializePositions();

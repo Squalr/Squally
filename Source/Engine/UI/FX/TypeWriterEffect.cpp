@@ -7,6 +7,8 @@
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
+#include "Engine/Utils/StrUtils.h"
 
 const float TypeWriterEffect::DefaultDelayPerLetter = 0.025f;
 
@@ -31,6 +33,12 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 		label->_contentDirty = true;
 		label->_letters.clear();
 	});
+
+	int strLen = StrUtils::unicodeStrLen(label->localizedString->getString());
+	int strLenEn = StrUtils::unicodeStrLen(label->localizedString->getString());
+
+	// I don't know how fast characters should appear in other locales -- just normalize them to the speed of english
+	delayPerLetter = (strLen <= 0) ? delayPerLetter : (delayPerLetter * ((float)strLenEn / (float)strLen));
 
 	for (int i = 0; i < max; i++)
 	{

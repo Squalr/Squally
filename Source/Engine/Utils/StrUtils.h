@@ -5,6 +5,7 @@
 class StrUtils
 {
 public:
+	static int unicodeStrLen(std::string str);
 	static std::vector<std::string> tokenize(std::string str, std::string delimiters);
 	static std::vector<std::string> splitOn(std::string str, std::string delimiter);
 	static std::string toStringZeroPad(int value, int zeroCount);

@@ -206,7 +206,7 @@ std::string LocalizedString::getString()
 
 void LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
 {
-	this->setStringReplacementVariables({ stringReplacementVariables });
+	this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
 }
 
 void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)

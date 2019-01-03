@@ -1,5 +1,7 @@
 #include "DeveloperModeController.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
@@ -64,6 +66,9 @@ bool DeveloperModeController::isDeveloperModeEnabled()
 
 void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	static const LanguageType LastLanguageInEnum = LanguageType::VIETNAMESE;
+	static LanguageType nextLanguage = LanguageType::ENGLISH;
+
 	switch (keyCode)
 	{
 		case EventKeyboard::KeyCode::KEY_GRAVE:
@@ -84,122 +89,68 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 		}
 		case EventKeyboard::KeyCode::KEY_F1:
 		{
-			Localization::setLanguage(LanguageType::ENGLISH);
+			this->stopAllActions();
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F2:
 		{
-			Localization::setLanguage(LanguageType::CHINESE_SIMPLIFIED);
+			this->stopAllActions();
+			this->runAction(RepeatForever::create(Sequence::create(
+				CallFunc::create([=]()
+				{
+					Localization::setLanguage(nextLanguage);
+
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+				}),
+				DelayTime::create(1.0f),
+				nullptr
+			)));
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F3:
 		{
-			Localization::setLanguage(LanguageType::JAPANESE);
+			this->stopAllActions();
+			this->runAction(RepeatForever::create(Sequence::create(
+				CallFunc::create([=]()
+				{
+					Localization::setLanguage(nextLanguage);
+
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+				}),
+				DelayTime::create(0.75f),
+				nullptr
+			)));
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_F4:
 		{
-			Localization::setLanguage(LanguageType::KOREAN);
+			this->stopAllActions();
+			this->runAction(RepeatForever::create(Sequence::create(
+				CallFunc::create([=]()
+				{
+					Localization::setLanguage(nextLanguage);
+
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+				}),
+				DelayTime::create(0.5f),
+				nullptr
+			)));
 			break;
 		}
+		this->stopAllActions();
 		case EventKeyboard::KeyCode::KEY_F5:
 		{
-			Localization::setLanguage(LanguageType::THAI);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F6:
-		{
-			Localization::setLanguage(LanguageType::VIETNAMESE);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F7:
-		{
-			Localization::setLanguage(LanguageType::RUSSIAN);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F8:
-		{
-			Localization::setLanguage(LanguageType::UKRAINIAN);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F9:
-		{
-			Localization::setLanguage(LanguageType::HUNGARIAN);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F10:
-		{
-			Localization::setLanguage(LanguageType::BULGARIAN);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F11:
-		{
-			Localization::setLanguage(LanguageType::CZECH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_1:
-		{
-			Localization::setLanguage(LanguageType::ARABIC);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_2:
-		{
-			Localization::setLanguage(LanguageType::CHINESE_TRADITIONAL);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_3:
-		{
-			Localization::setLanguage(LanguageType::GREEK);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_4:
-		{
-			Localization::setLanguage(LanguageType::DANISH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_5:
-		{
-			Localization::setLanguage(LanguageType::DUTCH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_6:
-		{
-			Localization::setLanguage(LanguageType::FINNISH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_7:
-		{
-			Localization::setLanguage(LanguageType::FRENCH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_9:
-		{
-			Localization::setLanguage(LanguageType::POLISH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_0:
-		{
-			Localization::setLanguage(LanguageType::TURKISH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_PG_UP:
-		{
-			Localization::setLanguage(LanguageType::PORTUGUESE);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_EQUAL:
-		{
-			Localization::setLanguage(LanguageType::PORTUGUESE_BRAZIL);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_HOME:
-		{
-			Localization::setLanguage(LanguageType::SWEDISH);
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_INSERT:
-		{
-			Localization::setLanguage(LanguageType::ROMANIAN);
+			this->stopAllActions();
+			this->runAction(RepeatForever::create(Sequence::create(
+				CallFunc::create([=]()
+				{
+					Localization::setLanguage(nextLanguage);
+
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+				}),
+				DelayTime::create(0.25f),
+				nullptr
+			)));
 			break;
 		}
 		default:

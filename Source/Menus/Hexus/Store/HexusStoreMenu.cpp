@@ -143,10 +143,10 @@ HexusStoreMenu::HexusStoreMenu()
 	hexIcon->setPosition(Vec2(-32.0f, 0.0f));
 	specialIcon->setPosition(Vec2(-32.0f, 0.0f));
 
-	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelBinary::create());
-	LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelDecimal::create());
-	LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelHex::create());
-	LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelSpecial::create());
+	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelBinary::create());
+	LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelDecimal::create());
+	LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelHex::create());
+	LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelSpecial::create());
 
 	binaryLabel->enableOutline(Color4B::BLACK, 3);
 	binaryLabel->setPosition(Vec2(-32.0f, 0.0f));
@@ -574,7 +574,7 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 
 	ConstantString* countString = ConstantString::create();
 	ConstantString* limitString = ConstantString::create();
-	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_XOverY::create());
+	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_XOverY::create());
 
 	cardLimitLabel->setStringReplacementVariables({ countString, limitString });
 	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -584,7 +584,7 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 
 	priceLabel->setStringReplacementVariables(priceString);
@@ -638,7 +638,7 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, ConstantString* 
 	int ownedCount = CardStorage::getOwnedCardCount(cardData);
 
 	countString->setString(std::to_string(ownedCount));
-	countString->setString(std::to_string(3));
+	limitString->setString(std::to_string(3));
 
 	if (ownedCount >= 3)
 	{
