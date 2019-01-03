@@ -13,6 +13,7 @@ namespace cocos2d
 class Card;
 class CardData;
 class CCheckbox;
+class ConstantString;
 class LocalizedLabel;
 class MenuCard;
 class MenuSprite;
@@ -75,21 +76,26 @@ private:
 	ToggleGroup* filters;
 
 	LocalizedLabel* totalCardsInDeckLabel;
+	ConstantString* totalCardsInDeckValueString;
 	LocalizedLabel* totalCardsInDeckValueLabel;
 	LocalizedLabel* binaryCardsInDeckLabel;
+	ConstantString* binaryCardsInDeckValueString;
 	LocalizedLabel* binaryCardsInDeckValueLabel;
 	LocalizedLabel* decimalCardsInDeckLabel;
+	ConstantString* decimalCardsInDeckValueString;
 	LocalizedLabel* decimalCardsInDeckValueLabel;
 	LocalizedLabel* hexCardsInDeckLabel;
+	ConstantString* hexCardsInDeckValueString;
 	LocalizedLabel* hexCardsInDeckValueLabel;
 	LocalizedLabel* specialCardsInDeckLabel;
+	ConstantString* specialCardsInDeckValueString;
 	LocalizedLabel* specialCardsInDeckValueLabel;
 
 	CardFilterFlags activeFilter;
 
 	std::map<CardData*, MenuCard*> displayDeckCards;
 	std::map<CardData*, MenuCard*> displayStorageCards;
-	std::map<MenuCard*, LocalizedLabel*> countLabels;
+	std::map<MenuCard*, std::tuple<ConstantString*, LocalizedLabel*>> countLabels;
 
 	std::map<CardData*, int> deckCards;
 	std::map<CardData*, int> storageCards;

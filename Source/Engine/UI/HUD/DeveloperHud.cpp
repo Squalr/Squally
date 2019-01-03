@@ -80,6 +80,10 @@ void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 			break;
 		}
+		default:
+		{
+			break;
+		}
 	}
 }
 

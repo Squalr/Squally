@@ -4,171 +4,171 @@
 
 #include "Binary14.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary14* Binary14::create()
+	Hexus_Cards_Binary14* Hexus_Cards_Binary14::create()
 	{
-		Binary14* instance = new Binary14();
+		Hexus_Cards_Binary14* instance = new Hexus_Cards_Binary14();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary14::clone()
+	LocalizedString* Hexus_Cards_Binary14::clone()
 	{
-		return Binary14::create();
+		return Hexus_Cards_Binary14::create();
 	}
 
-	Binary14::Binary14() : LocalizedString()
-	{
-	}
-
-	Binary14::~Binary14()
+	Hexus_Cards_Binary14::Hexus_Cards_Binary14() : LocalizedString()
 	{
 	}
 
-	std::string Binary14::getStringAr()
+	Hexus_Cards_Binary14::~Hexus_Cards_Binary14()
+	{
+	}
+
+	std::string Hexus_Cards_Binary14::getStringAr()
 	{
 		return "اليتي";
 	}
 
-	std::string Binary14::getStringBg()
+	std::string Hexus_Cards_Binary14::getStringBg()
 	{
 		return "Йети";
 	}
 
-	std::string Binary14::getStringCs()
+	std::string Hexus_Cards_Binary14::getStringCs()
 	{
 		return "Yeti";
 	}
 
-	std::string Binary14::getStringDa()
+	std::string Hexus_Cards_Binary14::getStringDa()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringDe()
+	std::string Hexus_Cards_Binary14::getStringDe()
 	{
 		return "Yeti";
 	}
 
-	std::string Binary14::getStringEl()
+	std::string Hexus_Cards_Binary14::getStringEl()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringEn()
+	std::string Hexus_Cards_Binary14::getStringEn()
 	{
 		return "Yeti";
 	}
 
-	std::string Binary14::getStringEs()
+	std::string Hexus_Cards_Binary14::getStringEs()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringEs419()
+	std::string Hexus_Cards_Binary14::getStringEs419()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringFi()
+	std::string Hexus_Cards_Binary14::getStringFi()
 	{
 		return "lumimies";
 	}
 
-	std::string Binary14::getStringFr()
+	std::string Hexus_Cards_Binary14::getStringFr()
 	{
 		return "Yéti";
 	}
 
-	std::string Binary14::getStringHu()
+	std::string Hexus_Cards_Binary14::getStringHu()
 	{
 		return "havasi ember";
 	}
 
-	std::string Binary14::getStringIt()
+	std::string Hexus_Cards_Binary14::getStringIt()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringJa()
+	std::string Hexus_Cards_Binary14::getStringJa()
 	{
 		return "イエティ";
 	}
 
-	std::string Binary14::getStringKo()
+	std::string Hexus_Cards_Binary14::getStringKo()
 	{
 		return "아직";
 	}
 
-	std::string Binary14::getStringNl()
+	std::string Hexus_Cards_Binary14::getStringNl()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringNo()
+	std::string Hexus_Cards_Binary14::getStringNo()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringPl()
+	std::string Hexus_Cards_Binary14::getStringPl()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringPt()
+	std::string Hexus_Cards_Binary14::getStringPt()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringPtBr()
+	std::string Hexus_Cards_Binary14::getStringPtBr()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringRo()
+	std::string Hexus_Cards_Binary14::getStringRo()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringRu()
+	std::string Hexus_Cards_Binary14::getStringRu()
 	{
 		return "йети";
 	}
 
-	std::string Binary14::getStringSv()
+	std::string Hexus_Cards_Binary14::getStringSv()
 	{
 		return "yeti";
 	}
 
-	std::string Binary14::getStringTh()
+	std::string Hexus_Cards_Binary14::getStringTh()
 	{
 		return "เยติ";
 	}
 
-	std::string Binary14::getStringTr()
+	std::string Hexus_Cards_Binary14::getStringTr()
 	{
 		return "Yeti canavarı";
 	}
 
-	std::string Binary14::getStringUk()
+	std::string Hexus_Cards_Binary14::getStringUk()
 	{
 		return "Yeti monster";
 	}
 
-	std::string Binary14::getStringVi()
+	std::string Hexus_Cards_Binary14::getStringVi()
 	{
 		return "Quái vật Yeti";
 	}
 
-	std::string Binary14::getStringZhCn()
+	std::string Hexus_Cards_Binary14::getStringZhCn()
 	{
 		return "雪人怪物";
 	}
 
-	std::string Binary14::getStringZhTw()
+	std::string Hexus_Cards_Binary14::getStringZhTw()
 	{
 		return "雪人怪物";
 	}

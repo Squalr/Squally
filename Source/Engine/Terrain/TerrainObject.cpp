@@ -11,6 +11,7 @@
 #include "cocos/renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -310,17 +311,14 @@ void TerrainObject::buildSurfaceTextures()
 
 		std::stringstream angleStream;
 		angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / M_PI);
-		std::string angleString = angleStream.str();
+		ConstantString* angleString = ConstantString::create(angleStream.str());
 
 		std::stringstream bisectingAngleStream;
 		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
-		std::string bisectingAngleString = bisectingAngleStream.str();
+		ConstantString* bisectingAngleString = ConstantString::create(bisectingAngleStream.str());
 
-		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
-		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
-
-		angleDebug->setString(angleString);
-		bisectingAngleDebug->setString(bisectingAngleString);
+		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, angleString);
+		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, bisectingAngleString);
 
 		angleDebug->setTextColor(Color4B::YELLOW);
 		bisectingAngleDebug->setTextColor(Color4B::MAGENTA);

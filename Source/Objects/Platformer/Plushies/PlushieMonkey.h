@@ -1,7 +1,9 @@
 #pragma once
 
 #include "Objects/Platformer/Plushies/Plushie.h"
+#include "Engine/Localization/ConstantString.h"
 
+class ConstantString;
 class LocalizedLabel;
 
 class PlushieMonkey : public Plushie
@@ -25,6 +27,7 @@ private:
 
 	void decreaseLockTimer();
 
+	ConstantString* valueString;
 	LocalizedLabel* valueLabel;
 
 	int previousValue;

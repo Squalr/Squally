@@ -4,171 +4,171 @@
 
 #include "FullScreen.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	FullScreen* FullScreen::create()
+	Menus_Options_FullScreen* Menus_Options_FullScreen::create()
 	{
-		FullScreen* instance = new FullScreen();
+		Menus_Options_FullScreen* instance = new Menus_Options_FullScreen();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* FullScreen::clone()
+	LocalizedString* Menus_Options_FullScreen::clone()
 	{
-		return FullScreen::create();
+		return Menus_Options_FullScreen::create();
 	}
 
-	FullScreen::FullScreen() : LocalizedString()
-	{
-	}
-
-	FullScreen::~FullScreen()
+	Menus_Options_FullScreen::Menus_Options_FullScreen() : LocalizedString()
 	{
 	}
 
-	std::string FullScreen::getStringAr()
+	Menus_Options_FullScreen::~Menus_Options_FullScreen()
+	{
+	}
+
+	std::string Menus_Options_FullScreen::getStringAr()
 	{
 		return "شاشة كاملة";
 	}
 
-	std::string FullScreen::getStringBg()
+	std::string Menus_Options_FullScreen::getStringBg()
 	{
 		return "Цял екран";
 	}
 
-	std::string FullScreen::getStringCs()
+	std::string Menus_Options_FullScreen::getStringCs()
 	{
 		return "Celá obrazovka";
 	}
 
-	std::string FullScreen::getStringDa()
+	std::string Menus_Options_FullScreen::getStringDa()
 	{
 		return "Fuld skærm";
 	}
 
-	std::string FullScreen::getStringDe()
+	std::string Menus_Options_FullScreen::getStringDe()
 	{
 		return "Vollbildschirm";
 	}
 
-	std::string FullScreen::getStringEl()
+	std::string Menus_Options_FullScreen::getStringEl()
 	{
 		return "ΠΛΗΡΗΣ ΟΘΟΝΗ";
 	}
 
-	std::string FullScreen::getStringEn()
+	std::string Menus_Options_FullScreen::getStringEn()
 	{
 		return "Full Screen";
 	}
 
-	std::string FullScreen::getStringEs()
+	std::string Menus_Options_FullScreen::getStringEs()
 	{
 		return "Pantalla completa";
 	}
 
-	std::string FullScreen::getStringEs419()
+	std::string Menus_Options_FullScreen::getStringEs419()
 	{
 		return "Pantalla completa";
 	}
 
-	std::string FullScreen::getStringFi()
+	std::string Menus_Options_FullScreen::getStringFi()
 	{
 		return "Koko näyttö";
 	}
 
-	std::string FullScreen::getStringFr()
+	std::string Menus_Options_FullScreen::getStringFr()
 	{
 		return "Plein écran";
 	}
 
-	std::string FullScreen::getStringHu()
+	std::string Menus_Options_FullScreen::getStringHu()
 	{
 		return "Teljes képernyő";
 	}
 
-	std::string FullScreen::getStringIt()
+	std::string Menus_Options_FullScreen::getStringIt()
 	{
 		return "A schermo intero";
 	}
 
-	std::string FullScreen::getStringJa()
+	std::string Menus_Options_FullScreen::getStringJa()
 	{
 		return "全画面表示";
 	}
 
-	std::string FullScreen::getStringKo()
+	std::string Menus_Options_FullScreen::getStringKo()
 	{
 		return "전체 화면";
 	}
 
-	std::string FullScreen::getStringNl()
+	std::string Menus_Options_FullScreen::getStringNl()
 	{
 		return "Volledig scherm";
 	}
 
-	std::string FullScreen::getStringNo()
+	std::string Menus_Options_FullScreen::getStringNo()
 	{
 		return "Full skjerm";
 	}
 
-	std::string FullScreen::getStringPl()
+	std::string Menus_Options_FullScreen::getStringPl()
 	{
 		return "Pełny ekran";
 	}
 
-	std::string FullScreen::getStringPt()
+	std::string Menus_Options_FullScreen::getStringPt()
 	{
 		return "Tela cheia";
 	}
 
-	std::string FullScreen::getStringPtBr()
+	std::string Menus_Options_FullScreen::getStringPtBr()
 	{
 		return "Tela cheia";
 	}
 
-	std::string FullScreen::getStringRo()
+	std::string Menus_Options_FullScreen::getStringRo()
 	{
 		return "Ecran complet";
 	}
 
-	std::string FullScreen::getStringRu()
+	std::string Menus_Options_FullScreen::getStringRu()
 	{
 		return "Полноэкранный";
 	}
 
-	std::string FullScreen::getStringSv()
+	std::string Menus_Options_FullScreen::getStringSv()
 	{
 		return "Fullskärm";
 	}
 
-	std::string FullScreen::getStringTh()
+	std::string Menus_Options_FullScreen::getStringTh()
 	{
 		return "เต็มจอ";
 	}
 
-	std::string FullScreen::getStringTr()
+	std::string Menus_Options_FullScreen::getStringTr()
 	{
 		return "Tam ekran";
 	}
 
-	std::string FullScreen::getStringUk()
+	std::string Menus_Options_FullScreen::getStringUk()
 	{
 		return "Повноекранний";
 	}
 
-	std::string FullScreen::getStringVi()
+	std::string Menus_Options_FullScreen::getStringVi()
 	{
 		return "Toàn màn hình";
 	}
 
-	std::string FullScreen::getStringZhCn()
+	std::string Menus_Options_FullScreen::getStringZhCn()
 	{
 		return "全屏";
 	}
 
-	std::string FullScreen::getStringZhTw()
+	std::string Menus_Options_FullScreen::getStringZhTw()
 	{
 		return "全屏";
 	}

@@ -2,9 +2,12 @@
 
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -19,7 +22,7 @@ DebugDisplay* DebugDisplay::create()
 
 DebugDisplay::DebugDisplay()
 {
-	this->stateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1);
+	this->stateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
 	this->stateLabel->enableOutline(Color4B::BLACK, 2);
 
@@ -54,107 +57,107 @@ void DebugDisplay::onAnyStateChange(GameState* gameState)
 	{
 		case GameState::StateType::EmptyState:
 		{
-			this->stateLabel->setString("EmptyState");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("EmptyState"));
 			break;
 		}
 		case GameState::StateType::GameStart:
 		{
-			this->stateLabel->setString("GameStart");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("GameStart"));
 			break;
 		}
 		case GameState::StateType::DrawInitialCards:
 		{
-			this->stateLabel->setString("DrawInitialCards");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("DrawInitialCards"));
 			break;
 		}
 		case GameState::StateType::Draw:
 		{
-			this->stateLabel->setString("Draw");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("Draw"));
 			break;
 		}
 		case GameState::StateType::CoinFlip:
 		{
-			this->stateLabel->setString("CoinFlip");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("CoinFlip"));
 			break;
 		}
 		case GameState::StateType::RoundStart:
 		{
-			this->stateLabel->setString("RoundStart");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("RoundStart"));
 			break;
 		}
 		case GameState::StateType::CardReplace:
 		{
-			this->stateLabel->setString("CardReplace");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("CardReplace"));
 			break;
 		}
 		case GameState::StateType::PlayerTurnStart:
 		{
-			this->stateLabel->setString("PlayerTurnStart");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("PlayerTurnStart"));
 			break;
 		}
 		case GameState::StateType::OpponentTurnStart:
 		{
-			this->stateLabel->setString("OpponentTurnStart");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("OpponentTurnStart"));
 			break;
 		}
 		case GameState::StateType::Neutral:
 		{
-			this->stateLabel->setString("Neutral");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("Neutral"));
 			break;
 		}
 		case GameState::StateType::SelectionStaged:
 		{
-			this->stateLabel->setString("SelectionStaged");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("SelectionStaged"));
 			break;
 		}
 		case GameState::StateType::CombineStaged:
 		{
-			this->stateLabel->setString("CombineStaged");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("CombineStaged"));
 			break;
 		}
 		case GameState::StateType::PlayCard:
 		{
-			this->stateLabel->setString("PlayCard");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("PlayCard"));
 			break;
 		}
 		case GameState::StateType::Pass:
 		{
-			this->stateLabel->setString("Pass");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("Pass"));
 			break;
 		}
 		case GameState::StateType::AIDecideCard:
 		{
-			this->stateLabel->setString("AIDecideCard");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("AIDecideCard"));
 			break;
 		}
 		case GameState::StateType::AIDecideCardReplace:
 		{
-			this->stateLabel->setString("AIDecideCardReplace");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("AIDecideCardReplace"));
 			break;
 		}
 		case GameState::StateType::AIDecideTarget:
 		{
-			this->stateLabel->setString("AIDecideTarget");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("AIDecideTarget"));
 			break;
 		}
 		case GameState::StateType::TurnEnd:
 		{
-			this->stateLabel->setString("TurnEnd");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("TurnEnd"));
 			break;
 		}
 		case GameState::StateType::RoundEnd:
 		{
-			this->stateLabel->setString("RoundEnd");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("RoundEnd"));
 			break;
 		}
 		case GameState::StateType::GameEnd:
 		{
-			this->stateLabel->setString("GameEnd");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("GameEnd"));
 			break;
 		}
 		default:
 		{
-			this->stateLabel->setString("InvalidState");
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("EmptyInvalidStateState"));
 			break;
 		}
 	}

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class DecLabel : public LocalizedString
+	class Hexus_DecLabel : public LocalizedString
 	{
 	public:
-		static DecLabel* create();
+		static Hexus_DecLabel* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		DecLabel();
-		~DecLabel();
+		Hexus_DecLabel();
+		~Hexus_DecLabel();
 	};
 }

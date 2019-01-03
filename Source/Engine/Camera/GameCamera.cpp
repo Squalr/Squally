@@ -11,10 +11,14 @@
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
+
+#include "Strings/Debugging/CameraX.h"
+#include "Strings/Debugging/CameraY.h"
 
 using namespace cocos2d;
 
@@ -43,10 +47,15 @@ GameCamera::GameCamera()
 	this->cameraBounds = Rect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
-	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
-	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1);
+	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
+	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraY::create());
+	this->debugCameraStringX = ConstantString::create();
+	this->debugCameraStringY = ConstantString::create();
 	this->hud->setZOrder(9999);
 	this->hud->setVisible(false);
+
+	this->debugCameraLabelX->setStringReplacementVariables(this->debugCameraStringX);
+	this->debugCameraLabelY->setStringReplacementVariables(this->debugCameraStringY);
 
 	this->debugCameraLabelX->setAnchorPoint(Vec2(0.0f, 0.0f));
 	this->debugCameraLabelY->setAnchorPoint(Vec2(0.0f, 0.0f));
@@ -220,6 +229,12 @@ Vec2 GameCamera::boundCameraByEllipses()
 	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
+
+		if (trackingData.target == nullptr)
+		{
+			return cameraPosition;
+		}
+
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
 
 		// Don't even bother if the input data is bad
@@ -268,6 +283,12 @@ Vec2 GameCamera::boundCameraByRectangle()
 	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
+
+		if (trackingData.target == nullptr)
+		{
+			return cameraPosition;
+		}
+
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
 
 		// Handle camera scrolling from target traveling past scroll distance
@@ -403,6 +424,6 @@ void GameCamera::updateCameraDebugLabels()
 	streamX << std::fixed << std::setprecision(2) << cameraPosition.x;
 	streamY << std::fixed << std::setprecision(2) << cameraPosition.y;
 
-	this->debugCameraLabelX->setString("Camera X: " + streamX.str());
-	this->debugCameraLabelY->setString("Camera Y: " + streamY.str());
+	this->debugCameraStringX->setString(streamX.str());
+	this->debugCameraStringY->setString(streamY.str());
 }

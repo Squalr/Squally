@@ -4,171 +4,171 @@
 
 #include "Binary10.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary10* Binary10::create()
+	Hexus_Cards_Binary10* Hexus_Cards_Binary10::create()
 	{
-		Binary10* instance = new Binary10();
+		Hexus_Cards_Binary10* instance = new Hexus_Cards_Binary10();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary10::clone()
+	LocalizedString* Hexus_Cards_Binary10::clone()
 	{
-		return Binary10::create();
+		return Hexus_Cards_Binary10::create();
 	}
 
-	Binary10::Binary10() : LocalizedString()
-	{
-	}
-
-	Binary10::~Binary10()
+	Hexus_Cards_Binary10::Hexus_Cards_Binary10() : LocalizedString()
 	{
 	}
 
-	std::string Binary10::getStringAr()
+	Hexus_Cards_Binary10::~Hexus_Cards_Binary10()
+	{
+	}
+
+	std::string Hexus_Cards_Binary10::getStringAr()
 	{
 		return "فرس النبي";
 	}
 
-	std::string Binary10::getStringBg()
+	std::string Hexus_Cards_Binary10::getStringBg()
 	{
 		return "богомолка";
 	}
 
-	std::string Binary10::getStringCs()
+	std::string Hexus_Cards_Binary10::getStringCs()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringDa()
+	std::string Hexus_Cards_Binary10::getStringDa()
 	{
 		return "mantis";
 	}
 
-	std::string Binary10::getStringDe()
+	std::string Hexus_Cards_Binary10::getStringDe()
 	{
 		return "Gottesanbeterin";
 	}
 
-	std::string Binary10::getStringEl()
+	std::string Hexus_Cards_Binary10::getStringEl()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringEn()
+	std::string Hexus_Cards_Binary10::getStringEn()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringEs()
+	std::string Hexus_Cards_Binary10::getStringEs()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringEs419()
+	std::string Hexus_Cards_Binary10::getStringEs419()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringFi()
+	std::string Hexus_Cards_Binary10::getStringFi()
 	{
 		return "rukoilijasirkka";
 	}
 
-	std::string Binary10::getStringFr()
+	std::string Hexus_Cards_Binary10::getStringFr()
 	{
 		return "Mante";
 	}
 
-	std::string Binary10::getStringHu()
+	std::string Hexus_Cards_Binary10::getStringHu()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringIt()
+	std::string Hexus_Cards_Binary10::getStringIt()
 	{
 		return "Mantide";
 	}
 
-	std::string Binary10::getStringJa()
+	std::string Hexus_Cards_Binary10::getStringJa()
 	{
 		return "カマキリ";
 	}
 
-	std::string Binary10::getStringKo()
+	std::string Hexus_Cards_Binary10::getStringKo()
 	{
 		return "사마귀";
 	}
 
-	std::string Binary10::getStringNl()
+	std::string Hexus_Cards_Binary10::getStringNl()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringNo()
+	std::string Hexus_Cards_Binary10::getStringNo()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringPl()
+	std::string Hexus_Cards_Binary10::getStringPl()
 	{
 		return "Modliszka";
 	}
 
-	std::string Binary10::getStringPt()
+	std::string Hexus_Cards_Binary10::getStringPt()
 	{
 		return "louva a Deus";
 	}
 
-	std::string Binary10::getStringPtBr()
+	std::string Hexus_Cards_Binary10::getStringPtBr()
 	{
 		return "louva a Deus";
 	}
 
-	std::string Binary10::getStringRo()
+	std::string Hexus_Cards_Binary10::getStringRo()
 	{
 		return "Mantis";
 	}
 
-	std::string Binary10::getStringRu()
+	std::string Hexus_Cards_Binary10::getStringRu()
 	{
 		return "Богомол";
 	}
 
-	std::string Binary10::getStringSv()
+	std::string Hexus_Cards_Binary10::getStringSv()
 	{
 		return "Bönsyrsa";
 	}
 
-	std::string Binary10::getStringTh()
+	std::string Hexus_Cards_Binary10::getStringTh()
 	{
 		return "ตั๊กแตนตำข้าว";
 	}
 
-	std::string Binary10::getStringTr()
+	std::string Hexus_Cards_Binary10::getStringTr()
 	{
 		return "peygamber devesi";
 	}
 
-	std::string Binary10::getStringUk()
+	std::string Hexus_Cards_Binary10::getStringUk()
 	{
 		return "Богомол";
 	}
 
-	std::string Binary10::getStringVi()
+	std::string Hexus_Cards_Binary10::getStringVi()
 	{
 		return "con bọ ngựa";
 	}
 
-	std::string Binary10::getStringZhCn()
+	std::string Hexus_Cards_Binary10::getStringZhCn()
 	{
 		return "螂";
 	}
 
-	std::string Binary10::getStringZhTw()
+	std::string Hexus_Cards_Binary10::getStringZhTw()
 	{
 		return "螂";
 	}

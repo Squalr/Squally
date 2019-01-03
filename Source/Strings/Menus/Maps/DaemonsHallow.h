@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class DaemonsHallow : public LocalizedString
+	class Menus_Maps_DaemonsHallow : public LocalizedString
 	{
 	public:
-		static DaemonsHallow* create();
+		static Menus_Maps_DaemonsHallow* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		DaemonsHallow();
-		~DaemonsHallow();
+		Menus_Maps_DaemonsHallow();
+		~Menus_Maps_DaemonsHallow();
 	};
 }

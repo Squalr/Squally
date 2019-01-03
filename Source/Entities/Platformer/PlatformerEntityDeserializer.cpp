@@ -262,7 +262,7 @@ void PlatformerEntityDeserializer::initializeListeners()
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 
-	this->addEventListener(deserializationRequestListener);
+	this->addGlobalEventListener(deserializationRequestListener);
 }
 
 void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)

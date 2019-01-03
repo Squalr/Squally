@@ -4,12 +4,14 @@
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 
 LocalizedString::LocalizedString()
 {
-	this->onLocaleChange = nullptr;
+	this->onStringUpdate = nullptr;
+	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
 }
 
@@ -23,7 +25,7 @@ void LocalizedString::onEnter()
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
-		this->onLocaleChange(this);
+		this->onStringUpdate(this);
 	}
 }
 
@@ -33,138 +35,205 @@ void LocalizedString::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
-		if (this->onLocaleChange != nullptr)
+		if (this->onStringUpdate != nullptr)
 		{
-			this->onLocaleChange(this);
+			this->onStringUpdate(this);
 		}
 	}));
 }
 
 std::string LocalizedString::getString()
 {
+	std::string localizedString;
+
 	switch (Localization::getLanguage())
 	{
 		case LanguageType::ARABIC:
 		{
-			return this->getStringAr();
+			localizedString = this->getStringAr();
+			break;
 		}
 		case LanguageType::BULGARIAN:
 		{
-			return this->getStringBg();
+			localizedString = this->getStringBg();
+			break;
 		}
 		case LanguageType::CHINESE_SIMPLIFIED:
 		{
-			return this->getStringZhCn();
+			localizedString = this->getStringZhCn();
+			break;
 		}
 		case LanguageType::CHINESE_TRADITIONAL:
 		{
-			return this->getStringZhTw();
+			localizedString = this->getStringZhTw();
+			break;
 		}
 		case LanguageType::CZECH:
 		{
-			return this->getStringCs();
+			localizedString = this->getStringCs();
+			break;
 		}
 		case LanguageType::DANISH:
 		{
-			return this->getStringDa();
+			localizedString = this->getStringDa();
+			break;
 		}
 		case LanguageType::DUTCH:
 		{
-			return this->getStringNl();
+			localizedString = this->getStringNl();
+			break;
 		}
 		case LanguageType::FINNISH:
 		{
-			return this->getStringFi();
+			localizedString = this->getStringFi();
+			break;
 		}
 		case LanguageType::FRENCH:
 		{
-			return this->getStringFr();
+			localizedString = this->getStringFr();
+			break;
 		}
 		case LanguageType::GERMAN:
 		{
-			return this->getStringDe();
+			localizedString = this->getStringDe();
+			break;
 		}
 		case LanguageType::GREEK:
 		{
-			return this->getStringEl();
+			localizedString = this->getStringEl();
+			break;
 		}
 		case LanguageType::HUNGARIAN:
 		{
-			return this->getStringHu();
+			localizedString = this->getStringHu();
+			break;
 		}
 		case LanguageType::ITALIAN:
 		{
-			return this->getStringIt();
+			localizedString = this->getStringIt();
+			break;
 		}
 		case LanguageType::JAPANESE:
 		{
-			return this->getStringJa();
+			localizedString = this->getStringJa();
+			break;
 		}
 		case LanguageType::KOREAN:
 		{
-			return this->getStringKo();
+			localizedString = this->getStringKo();
+			break;
 		}
 		case LanguageType::NORWEGIAN:
 		{
-			return this->getStringNo();
+			localizedString = this->getStringNo();
+			break;
 		}
 		case LanguageType::POLISH:
 		{
-			return this->getStringPl();
+			localizedString = this->getStringPl();
+			break;
 		}
 		case LanguageType::PORTUGUESE:
 		{
-			return this->getStringPt();
+			localizedString = this->getStringPt();
+			break;
 		}
 		case LanguageType::PORTUGUESE_BRAZIL:
 		{
-			return this->getStringPtBr();
+			localizedString = this->getStringPtBr();
+			break;
 		}
 		case LanguageType::ROMANIAN:
 		{
-			return this->getStringRo();
+			localizedString = this->getStringRo();
+			break;
 		}
 		case LanguageType::RUSSIAN:
 		{
-			return this->getStringRu();
+			localizedString = this->getStringRu();
+			break;
 		}
 		case LanguageType::SPANISH:
 		{
-			return this->getStringEs();
+			localizedString = this->getStringEs();
+			break;
 		}
 		case LanguageType::SPANISH_LATIN_AMERICAN:
 		{
-			return this->getStringEs419();
+			localizedString = this->getStringEs419();
+			break;
 		}
 		case LanguageType::SWEDISH:
 		{
-			return this->getStringSv();
+			localizedString = this->getStringSv();
+			break;
 		}
 		case LanguageType::THAI:
 		{
-			return this->getStringTh();
+			localizedString = this->getStringTh();
+			break;
 		}
 		case LanguageType::TURKISH:
 		{
-			return this->getStringTr();
+			localizedString = this->getStringTr();
+			break;
 		}
 		case LanguageType::UKRAINIAN:
 		{
-			return this->getStringUk();
+			localizedString = this->getStringUk();
+			break;
 		}
 		case LanguageType::VIETNAMESE:
 		{
-			return this->getStringVi();
+			localizedString = this->getStringVi();
+			break;
 		}
 		case LanguageType::ENGLISH:
 		default:
 		{
-			return this->getStringEn();
+			localizedString = this->getStringEn();
+			break;
 		}
+	}
+
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s", (*it)->getString());
+	}
+
+	return localizedString;
+}
+
+void LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
+{
+	this->setStringReplacementVariables({ stringReplacementVariables });
+}
+
+void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
+{
+	// Release old replacement varaibles
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		this->removeChild(*it);
+	}
+
+	this->stringReplacementVariables = stringReplacementVariables;
+
+	// Retain new replacement variables
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		// Update this string if any of the replacement variables get updated
+		(*it)->setOnStringUpdateCallback([=](LocalizedString*) { if (this->onStringUpdate != nullptr) { this->onStringUpdate(this); } });
+		this->addChild(*it);
+	}
+
+	if (this->onStringUpdate != nullptr)
+	{
+		this->onStringUpdate(this);
 	}
 }
 
-void LocalizedString::setOnLocaleChangeCallback(std::function<void(LocalizedString* newString)> onLocaleChange)
+void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate)
 {
-	this->onLocaleChange = onLocaleChange;
+	this->onStringUpdate = onStringUpdate;
 }

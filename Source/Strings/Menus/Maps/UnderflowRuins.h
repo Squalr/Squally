@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class UnderflowRuins : public LocalizedString
+	class Menus_Maps_UnderflowRuins : public LocalizedString
 	{
 	public:
-		static UnderflowRuins* create();
+		static Menus_Maps_UnderflowRuins* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		UnderflowRuins();
-		~UnderflowRuins();
+		Menus_Maps_UnderflowRuins();
+		~Menus_Maps_UnderflowRuins();
 	};
 }

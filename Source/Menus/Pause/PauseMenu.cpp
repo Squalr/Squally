@@ -7,11 +7,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/HUD/Hud.h"
-#include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Menus/MenuBackground.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -38,7 +35,7 @@ PauseMenu::PauseMenu()
 {
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, LocaleStrings::Pause::create());
+	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Pause::create());
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
 	this->exitClickCallback = nullptr;
@@ -51,14 +48,14 @@ PauseMenu::PauseMenu()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Resume::create());
-	LocalizedLabel*	resumeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Resume::create());
+	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Resume::create());
+	LocalizedLabel*	resumeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Resume::create());
 
-	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Options::create());
-	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Options::create());
+	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
+	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
 
-	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::QuitToTitle::create());
-	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::QuitToTitle::create());
+	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_QuitToTitle::create());
+	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_QuitToTitle::create());
 
 	resumeLabel->setColor(textColor);
 	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);

@@ -4,171 +4,171 @@
 
 #include "LogicalAnd.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	LogicalAnd* LogicalAnd::create()
+	Hexus_Cards_LogicalAnd* Hexus_Cards_LogicalAnd::create()
 	{
-		LogicalAnd* instance = new LogicalAnd();
+		Hexus_Cards_LogicalAnd* instance = new Hexus_Cards_LogicalAnd();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* LogicalAnd::clone()
+	LocalizedString* Hexus_Cards_LogicalAnd::clone()
 	{
-		return LogicalAnd::create();
+		return Hexus_Cards_LogicalAnd::create();
 	}
 
-	LogicalAnd::LogicalAnd() : LocalizedString()
-	{
-	}
-
-	LogicalAnd::~LogicalAnd()
+	Hexus_Cards_LogicalAnd::Hexus_Cards_LogicalAnd() : LocalizedString()
 	{
 	}
 
-	std::string LogicalAnd::getStringAr()
+	Hexus_Cards_LogicalAnd::~Hexus_Cards_LogicalAnd()
+	{
+	}
+
+	std::string Hexus_Cards_LogicalAnd::getStringAr()
 	{
 		return "منطقي و";
 	}
 
-	std::string LogicalAnd::getStringBg()
+	std::string Hexus_Cards_LogicalAnd::getStringBg()
 	{
 		return "Логично И";
 	}
 
-	std::string LogicalAnd::getStringCs()
+	std::string Hexus_Cards_LogicalAnd::getStringCs()
 	{
 		return "Logické AND";
 	}
 
-	std::string LogicalAnd::getStringDa()
+	std::string Hexus_Cards_LogicalAnd::getStringDa()
 	{
 		return "Logisk AND";
 	}
 
-	std::string LogicalAnd::getStringDe()
+	std::string Hexus_Cards_LogicalAnd::getStringDe()
 	{
 		return "Logisches UND";
 	}
 
-	std::string LogicalAnd::getStringEl()
+	std::string Hexus_Cards_LogicalAnd::getStringEl()
 	{
 		return "Λογική AND";
 	}
 
-	std::string LogicalAnd::getStringEn()
+	std::string Hexus_Cards_LogicalAnd::getStringEn()
 	{
 		return "Logical AND";
 	}
 
-	std::string LogicalAnd::getStringEs()
+	std::string Hexus_Cards_LogicalAnd::getStringEs()
 	{
 		return "Y lógico";
 	}
 
-	std::string LogicalAnd::getStringEs419()
+	std::string Hexus_Cards_LogicalAnd::getStringEs419()
 	{
 		return "Y lógico";
 	}
 
-	std::string LogicalAnd::getStringFi()
+	std::string Hexus_Cards_LogicalAnd::getStringFi()
 	{
 		return "Looginen JA";
 	}
 
-	std::string LogicalAnd::getStringFr()
+	std::string Hexus_Cards_LogicalAnd::getStringFr()
 	{
 		return "ET logique";
 	}
 
-	std::string LogicalAnd::getStringHu()
+	std::string Hexus_Cards_LogicalAnd::getStringHu()
 	{
 		return "Logikai ÉS";
 	}
 
-	std::string LogicalAnd::getStringIt()
+	std::string Hexus_Cards_LogicalAnd::getStringIt()
 	{
 		return "AND logico";
 	}
 
-	std::string LogicalAnd::getStringJa()
+	std::string Hexus_Cards_LogicalAnd::getStringJa()
 	{
 		return "論理積";
 	}
 
-	std::string LogicalAnd::getStringKo()
+	std::string Hexus_Cards_LogicalAnd::getStringKo()
 	{
 		return "논리적 AND";
 	}
 
-	std::string LogicalAnd::getStringNl()
+	std::string Hexus_Cards_LogicalAnd::getStringNl()
 	{
 		return "Logisch EN";
 	}
 
-	std::string LogicalAnd::getStringNo()
+	std::string Hexus_Cards_LogicalAnd::getStringNo()
 	{
 		return "Logisk AND";
 	}
 
-	std::string LogicalAnd::getStringPl()
+	std::string Hexus_Cards_LogicalAnd::getStringPl()
 	{
 		return "Logiczne AND";
 	}
 
-	std::string LogicalAnd::getStringPt()
+	std::string Hexus_Cards_LogicalAnd::getStringPt()
 	{
 		return "E lógico";
 	}
 
-	std::string LogicalAnd::getStringPtBr()
+	std::string Hexus_Cards_LogicalAnd::getStringPtBr()
 	{
 		return "E lógico";
 	}
 
-	std::string LogicalAnd::getStringRo()
+	std::string Hexus_Cards_LogicalAnd::getStringRo()
 	{
 		return "Logic AND";
 	}
 
-	std::string LogicalAnd::getStringRu()
+	std::string Hexus_Cards_LogicalAnd::getStringRu()
 	{
 		return "Логическое И";
 	}
 
-	std::string LogicalAnd::getStringSv()
+	std::string Hexus_Cards_LogicalAnd::getStringSv()
 	{
 		return "Logisk OCH";
 	}
 
-	std::string LogicalAnd::getStringTh()
+	std::string Hexus_Cards_LogicalAnd::getStringTh()
 	{
 		return "ตรรกะและ";
 	}
 
-	std::string LogicalAnd::getStringTr()
+	std::string Hexus_Cards_LogicalAnd::getStringTr()
 	{
 		return "Mantıksal VE";
 	}
 
-	std::string LogicalAnd::getStringUk()
+	std::string Hexus_Cards_LogicalAnd::getStringUk()
 	{
 		return "Логічний AND";
 	}
 
-	std::string LogicalAnd::getStringVi()
+	std::string Hexus_Cards_LogicalAnd::getStringVi()
 	{
 		return "Hợp lý VÀ";
 	}
 
-	std::string LogicalAnd::getStringZhCn()
+	std::string Hexus_Cards_LogicalAnd::getStringZhCn()
 	{
 		return "逻辑和";
 	}
 
-	std::string LogicalAnd::getStringZhTw()
+	std::string Hexus_Cards_LogicalAnd::getStringZhTw()
 	{
 		return "邏輯和";
 	}

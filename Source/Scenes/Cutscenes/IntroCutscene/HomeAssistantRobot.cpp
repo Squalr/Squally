@@ -14,6 +14,7 @@
 #include "Resources/StringResources.h"
 
 #include "Strings/Cutscenes/PressEscToSkip.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -43,20 +44,20 @@ HomeAssistantRobot::HomeAssistantRobot(HomeAssistantRobotScene homeAssistantRobo
 		case HomeAssistantRobotScene::Intro:
 		{
 			this->robot = Sprite::create(CutsceneResources::HomeAssistant_Robot);
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobot, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			this->brokenPlate->setVisible(false);
 			break;
 		}
 		case HomeAssistantRobotScene::Singularity:
 		{
 			this->robot = Sprite::create(CutsceneResources::HomeAssistant_RobotEvil);
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneHomeAssistantRobotSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 	}
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, LocaleStrings::PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
+	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 

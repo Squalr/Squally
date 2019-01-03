@@ -4,171 +4,171 @@
 
 #include "Decimal11.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal11* Decimal11::create()
+	Hexus_Cards_Decimal11* Hexus_Cards_Decimal11::create()
 	{
-		Decimal11* instance = new Decimal11();
+		Hexus_Cards_Decimal11* instance = new Hexus_Cards_Decimal11();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal11::clone()
+	LocalizedString* Hexus_Cards_Decimal11::clone()
 	{
-		return Decimal11::create();
+		return Hexus_Cards_Decimal11::create();
 	}
 
-	Decimal11::Decimal11() : LocalizedString()
-	{
-	}
-
-	Decimal11::~Decimal11()
+	Hexus_Cards_Decimal11::Hexus_Cards_Decimal11() : LocalizedString()
 	{
 	}
 
-	std::string Decimal11::getStringAr()
+	Hexus_Cards_Decimal11::~Hexus_Cards_Decimal11()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal11::getStringAr()
 	{
 		return "كلايد";
 	}
 
-	std::string Decimal11::getStringBg()
+	std::string Hexus_Cards_Decimal11::getStringBg()
 	{
 		return "Клайд";
 	}
 
-	std::string Decimal11::getStringCs()
+	std::string Hexus_Cards_Decimal11::getStringCs()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringDa()
+	std::string Hexus_Cards_Decimal11::getStringDa()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringDe()
+	std::string Hexus_Cards_Decimal11::getStringDe()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringEl()
+	std::string Hexus_Cards_Decimal11::getStringEl()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringEn()
+	std::string Hexus_Cards_Decimal11::getStringEn()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringEs()
+	std::string Hexus_Cards_Decimal11::getStringEs()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringEs419()
+	std::string Hexus_Cards_Decimal11::getStringEs419()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringFi()
+	std::string Hexus_Cards_Decimal11::getStringFi()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringFr()
+	std::string Hexus_Cards_Decimal11::getStringFr()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringHu()
+	std::string Hexus_Cards_Decimal11::getStringHu()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringIt()
+	std::string Hexus_Cards_Decimal11::getStringIt()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringJa()
+	std::string Hexus_Cards_Decimal11::getStringJa()
 	{
 		return "クライド";
 	}
 
-	std::string Decimal11::getStringKo()
+	std::string Hexus_Cards_Decimal11::getStringKo()
 	{
 		return "클라이드";
 	}
 
-	std::string Decimal11::getStringNl()
+	std::string Hexus_Cards_Decimal11::getStringNl()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringNo()
+	std::string Hexus_Cards_Decimal11::getStringNo()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringPl()
+	std::string Hexus_Cards_Decimal11::getStringPl()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringPt()
+	std::string Hexus_Cards_Decimal11::getStringPt()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringPtBr()
+	std::string Hexus_Cards_Decimal11::getStringPtBr()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringRo()
+	std::string Hexus_Cards_Decimal11::getStringRo()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringRu()
+	std::string Hexus_Cards_Decimal11::getStringRu()
 	{
 		return "Клайд";
 	}
 
-	std::string Decimal11::getStringSv()
+	std::string Hexus_Cards_Decimal11::getStringSv()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringTh()
+	std::string Hexus_Cards_Decimal11::getStringTh()
 	{
 		return "ไคลด์";
 	}
 
-	std::string Decimal11::getStringTr()
+	std::string Hexus_Cards_Decimal11::getStringTr()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringUk()
+	std::string Hexus_Cards_Decimal11::getStringUk()
 	{
 		return "Клайд";
 	}
 
-	std::string Decimal11::getStringVi()
+	std::string Hexus_Cards_Decimal11::getStringVi()
 	{
 		return "Klide";
 	}
 
-	std::string Decimal11::getStringZhCn()
+	std::string Hexus_Cards_Decimal11::getStringZhCn()
 	{
 		return "克莱德";
 	}
 
-	std::string Decimal11::getStringZhTw()
+	std::string Hexus_Cards_Decimal11::getStringZhTw()
 	{
 		return "克萊德";
 	}

@@ -4,171 +4,171 @@
 
 #include "Hex7.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex7* Hex7::create()
+	Hexus_Cards_Hex7* Hexus_Cards_Hex7::create()
 	{
-		Hex7* instance = new Hex7();
+		Hexus_Cards_Hex7* instance = new Hexus_Cards_Hex7();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex7::clone()
+	LocalizedString* Hexus_Cards_Hex7::clone()
 	{
-		return Hex7::create();
+		return Hexus_Cards_Hex7::create();
 	}
 
-	Hex7::Hex7() : LocalizedString()
-	{
-	}
-
-	Hex7::~Hex7()
+	Hexus_Cards_Hex7::Hexus_Cards_Hex7() : LocalizedString()
 	{
 	}
 
-	std::string Hex7::getStringAr()
+	Hexus_Cards_Hex7::~Hexus_Cards_Hex7()
+	{
+	}
+
+	std::string Hexus_Cards_Hex7::getStringAr()
 	{
 		return "خوف";
 	}
 
-	std::string Hex7::getStringBg()
+	std::string Hexus_Cards_Hex7::getStringBg()
 	{
 		return "страх";
 	}
 
-	std::string Hex7::getStringCs()
+	std::string Hexus_Cards_Hex7::getStringCs()
 	{
 		return "Strach";
 	}
 
-	std::string Hex7::getStringDa()
+	std::string Hexus_Cards_Hex7::getStringDa()
 	{
 		return "Frygt";
 	}
 
-	std::string Hex7::getStringDe()
+	std::string Hexus_Cards_Hex7::getStringDe()
 	{
 		return "Angst";
 	}
 
-	std::string Hex7::getStringEl()
+	std::string Hexus_Cards_Hex7::getStringEl()
 	{
 		return "Φόβος";
 	}
 
-	std::string Hex7::getStringEn()
+	std::string Hexus_Cards_Hex7::getStringEn()
 	{
 		return "Sp00ks";
 	}
 
-	std::string Hex7::getStringEs()
+	std::string Hexus_Cards_Hex7::getStringEs()
 	{
 		return "Temor";
 	}
 
-	std::string Hex7::getStringEs419()
+	std::string Hexus_Cards_Hex7::getStringEs419()
 	{
 		return "Temor";
 	}
 
-	std::string Hex7::getStringFi()
+	std::string Hexus_Cards_Hex7::getStringFi()
 	{
 		return "Pelko";
 	}
 
-	std::string Hex7::getStringFr()
+	std::string Hexus_Cards_Hex7::getStringFr()
 	{
 		return "Peur";
 	}
 
-	std::string Hex7::getStringHu()
+	std::string Hexus_Cards_Hex7::getStringHu()
 	{
 		return "Félelem";
 	}
 
-	std::string Hex7::getStringIt()
+	std::string Hexus_Cards_Hex7::getStringIt()
 	{
 		return "Paura";
 	}
 
-	std::string Hex7::getStringJa()
+	std::string Hexus_Cards_Hex7::getStringJa()
 	{
 		return "恐れ";
 	}
 
-	std::string Hex7::getStringKo()
+	std::string Hexus_Cards_Hex7::getStringKo()
 	{
 		return "무서움";
 	}
 
-	std::string Hex7::getStringNl()
+	std::string Hexus_Cards_Hex7::getStringNl()
 	{
 		return "Angst";
 	}
 
-	std::string Hex7::getStringNo()
+	std::string Hexus_Cards_Hex7::getStringNo()
 	{
 		return "Frykt";
 	}
 
-	std::string Hex7::getStringPl()
+	std::string Hexus_Cards_Hex7::getStringPl()
 	{
 		return "Strach";
 	}
 
-	std::string Hex7::getStringPt()
+	std::string Hexus_Cards_Hex7::getStringPt()
 	{
 		return "Medo";
 	}
 
-	std::string Hex7::getStringPtBr()
+	std::string Hexus_Cards_Hex7::getStringPtBr()
 	{
 		return "Medo";
 	}
 
-	std::string Hex7::getStringRo()
+	std::string Hexus_Cards_Hex7::getStringRo()
 	{
 		return "Frică";
 	}
 
-	std::string Hex7::getStringRu()
+	std::string Hexus_Cards_Hex7::getStringRu()
 	{
 		return "Страх";
 	}
 
-	std::string Hex7::getStringSv()
+	std::string Hexus_Cards_Hex7::getStringSv()
 	{
 		return "Rädsla";
 	}
 
-	std::string Hex7::getStringTh()
+	std::string Hexus_Cards_Hex7::getStringTh()
 	{
 		return "กลัว";
 	}
 
-	std::string Hex7::getStringTr()
+	std::string Hexus_Cards_Hex7::getStringTr()
 	{
 		return "Korku";
 	}
 
-	std::string Hex7::getStringUk()
+	std::string Hexus_Cards_Hex7::getStringUk()
 	{
 		return "Страх";
 	}
 
-	std::string Hex7::getStringVi()
+	std::string Hexus_Cards_Hex7::getStringVi()
 	{
 		return "Nỗi sợ";
 	}
 
-	std::string Hex7::getStringZhCn()
+	std::string Hexus_Cards_Hex7::getStringZhCn()
 	{
 		return "恐惧";
 	}
 
-	std::string Hex7::getStringZhTw()
+	std::string Hexus_Cards_Hex7::getStringZhTw()
 	{
 		return "恐懼";
 	}

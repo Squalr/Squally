@@ -4,171 +4,171 @@
 
 #include "ContinueGame.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	ContinueGame* ContinueGame::create()
+	Menus_ContinueGame* Menus_ContinueGame::create()
 	{
-		ContinueGame* instance = new ContinueGame();
+		Menus_ContinueGame* instance = new Menus_ContinueGame();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* ContinueGame::clone()
+	LocalizedString* Menus_ContinueGame::clone()
 	{
-		return ContinueGame::create();
+		return Menus_ContinueGame::create();
 	}
 
-	ContinueGame::ContinueGame() : LocalizedString()
-	{
-	}
-
-	ContinueGame::~ContinueGame()
+	Menus_ContinueGame::Menus_ContinueGame() : LocalizedString()
 	{
 	}
 
-	std::string ContinueGame::getStringAr()
+	Menus_ContinueGame::~Menus_ContinueGame()
+	{
+	}
+
+	std::string Menus_ContinueGame::getStringAr()
 	{
 		return "تواصل اللعبة";
 	}
 
-	std::string ContinueGame::getStringBg()
+	std::string Menus_ContinueGame::getStringBg()
 	{
 		return "Продължете играта";
 	}
 
-	std::string ContinueGame::getStringCs()
+	std::string Menus_ContinueGame::getStringCs()
 	{
 		return "Pokračujte ve hře";
 	}
 
-	std::string ContinueGame::getStringDa()
+	std::string Menus_ContinueGame::getStringDa()
 	{
 		return "Fortsæt spillet";
 	}
 
-	std::string ContinueGame::getStringDe()
+	std::string Menus_ContinueGame::getStringDe()
 	{
 		return "Spiel fortsetzen";
 	}
 
-	std::string ContinueGame::getStringEl()
+	std::string Menus_ContinueGame::getStringEl()
 	{
 		return "Συνεχίστε το παιχνίδι";
 	}
 
-	std::string ContinueGame::getStringEn()
+	std::string Menus_ContinueGame::getStringEn()
 	{
 		return "Continue Game";
 	}
 
-	std::string ContinueGame::getStringEs()
+	std::string Menus_ContinueGame::getStringEs()
 	{
 		return "Continuar el juego";
 	}
 
-	std::string ContinueGame::getStringEs419()
+	std::string Menus_ContinueGame::getStringEs419()
 	{
 		return "Continuar el juego";
 	}
 
-	std::string ContinueGame::getStringFi()
+	std::string Menus_ContinueGame::getStringFi()
 	{
 		return "Jatka peliä";
 	}
 
-	std::string ContinueGame::getStringFr()
+	std::string Menus_ContinueGame::getStringFr()
 	{
 		return "Continuer le jeu";
 	}
 
-	std::string ContinueGame::getStringHu()
+	std::string Menus_ContinueGame::getStringHu()
 	{
 		return "Folytassa a játékot";
 	}
 
-	std::string ContinueGame::getStringIt()
+	std::string Menus_ContinueGame::getStringIt()
 	{
 		return "Continua il gioco";
 	}
 
-	std::string ContinueGame::getStringJa()
+	std::string Menus_ContinueGame::getStringJa()
 	{
 		return "ゲームを続ける";
 	}
 
-	std::string ContinueGame::getStringKo()
+	std::string Menus_ContinueGame::getStringKo()
 	{
 		return "게임 계속하기";
 	}
 
-	std::string ContinueGame::getStringNl()
+	std::string Menus_ContinueGame::getStringNl()
 	{
 		return "Vervolg het spel";
 	}
 
-	std::string ContinueGame::getStringNo()
+	std::string Menus_ContinueGame::getStringNo()
 	{
 		return "Fortsett spillet";
 	}
 
-	std::string ContinueGame::getStringPl()
+	std::string Menus_ContinueGame::getStringPl()
 	{
 		return "Kontynuuj grę";
 	}
 
-	std::string ContinueGame::getStringPt()
+	std::string Menus_ContinueGame::getStringPt()
 	{
 		return "Continue o jogo";
 	}
 
-	std::string ContinueGame::getStringPtBr()
+	std::string Menus_ContinueGame::getStringPtBr()
 	{
 		return "Continue o jogo";
 	}
 
-	std::string ContinueGame::getStringRo()
+	std::string Menus_ContinueGame::getStringRo()
 	{
 		return "Continuați jocul";
 	}
 
-	std::string ContinueGame::getStringRu()
+	std::string Menus_ContinueGame::getStringRu()
 	{
 		return "Продолжить игру";
 	}
 
-	std::string ContinueGame::getStringSv()
+	std::string Menus_ContinueGame::getStringSv()
 	{
 		return "Fortsätt spelet";
 	}
 
-	std::string ContinueGame::getStringTh()
+	std::string Menus_ContinueGame::getStringTh()
 	{
 		return "ดำเนินการต่อเกม";
 	}
 
-	std::string ContinueGame::getStringTr()
+	std::string Menus_ContinueGame::getStringTr()
 	{
 		return "Oyuna devam et";
 	}
 
-	std::string ContinueGame::getStringUk()
+	std::string Menus_ContinueGame::getStringUk()
 	{
 		return "Продовжуйте гру";
 	}
 
-	std::string ContinueGame::getStringVi()
+	std::string Menus_ContinueGame::getStringVi()
 	{
 		return "Tiếp tục trò chơi";
 	}
 
-	std::string ContinueGame::getStringZhCn()
+	std::string Menus_ContinueGame::getStringZhCn()
 	{
 		return "继续比赛";
 	}
 
-	std::string ContinueGame::getStringZhTw()
+	std::string Menus_ContinueGame::getStringZhTw()
 	{
 		return "繼續比賽";
 	}

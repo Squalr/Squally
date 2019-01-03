@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class Flip4 : public LocalizedString
+	class Hexus_Cards_Flip4 : public LocalizedString
 	{
 	public:
-		static Flip4* create();
+		static Hexus_Cards_Flip4* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Flip4();
-		~Flip4();
+		Hexus_Cards_Flip4();
+		~Hexus_Cards_Flip4();
 	};
 }

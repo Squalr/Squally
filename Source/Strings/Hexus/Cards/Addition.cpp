@@ -4,171 +4,171 @@
 
 #include "Addition.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Addition* Addition::create()
+	Hexus_Cards_Addition* Hexus_Cards_Addition::create()
 	{
-		Addition* instance = new Addition();
+		Hexus_Cards_Addition* instance = new Hexus_Cards_Addition();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Addition::clone()
+	LocalizedString* Hexus_Cards_Addition::clone()
 	{
-		return Addition::create();
+		return Hexus_Cards_Addition::create();
 	}
 
-	Addition::Addition() : LocalizedString()
-	{
-	}
-
-	Addition::~Addition()
+	Hexus_Cards_Addition::Hexus_Cards_Addition() : LocalizedString()
 	{
 	}
 
-	std::string Addition::getStringAr()
+	Hexus_Cards_Addition::~Hexus_Cards_Addition()
+	{
+	}
+
+	std::string Hexus_Cards_Addition::getStringAr()
 	{
 		return "إضافة";
 	}
 
-	std::string Addition::getStringBg()
+	std::string Hexus_Cards_Addition::getStringBg()
 	{
 		return "допълнение";
 	}
 
-	std::string Addition::getStringCs()
+	std::string Hexus_Cards_Addition::getStringCs()
 	{
 		return "Přidání";
 	}
 
-	std::string Addition::getStringDa()
+	std::string Hexus_Cards_Addition::getStringDa()
 	{
 		return "Addition";
 	}
 
-	std::string Addition::getStringDe()
+	std::string Hexus_Cards_Addition::getStringDe()
 	{
 		return "Zusatz";
 	}
 
-	std::string Addition::getStringEl()
+	std::string Hexus_Cards_Addition::getStringEl()
 	{
 		return "Πρόσθεση";
 	}
 
-	std::string Addition::getStringEn()
+	std::string Hexus_Cards_Addition::getStringEn()
 	{
 		return "Addition";
 	}
 
-	std::string Addition::getStringEs()
+	std::string Hexus_Cards_Addition::getStringEs()
 	{
 		return "Adición";
 	}
 
-	std::string Addition::getStringEs419()
+	std::string Hexus_Cards_Addition::getStringEs419()
 	{
 		return "Adición";
 	}
 
-	std::string Addition::getStringFi()
+	std::string Hexus_Cards_Addition::getStringFi()
 	{
 		return "Lisäys";
 	}
 
-	std::string Addition::getStringFr()
+	std::string Hexus_Cards_Addition::getStringFr()
 	{
 		return "Une addition";
 	}
 
-	std::string Addition::getStringHu()
+	std::string Hexus_Cards_Addition::getStringHu()
 	{
 		return "Kiegészítés";
 	}
 
-	std::string Addition::getStringIt()
+	std::string Hexus_Cards_Addition::getStringIt()
 	{
 		return "aggiunta";
 	}
 
-	std::string Addition::getStringJa()
+	std::string Hexus_Cards_Addition::getStringJa()
 	{
 		return "添加";
 	}
 
-	std::string Addition::getStringKo()
+	std::string Hexus_Cards_Addition::getStringKo()
 	{
 		return "부가";
 	}
 
-	std::string Addition::getStringNl()
+	std::string Hexus_Cards_Addition::getStringNl()
 	{
 		return "toevoeging";
 	}
 
-	std::string Addition::getStringNo()
+	std::string Hexus_Cards_Addition::getStringNo()
 	{
 		return "Addisjon";
 	}
 
-	std::string Addition::getStringPl()
+	std::string Hexus_Cards_Addition::getStringPl()
 	{
 		return "Dodanie";
 	}
 
-	std::string Addition::getStringPt()
+	std::string Hexus_Cards_Addition::getStringPt()
 	{
 		return "Adição";
 	}
 
-	std::string Addition::getStringPtBr()
+	std::string Hexus_Cards_Addition::getStringPtBr()
 	{
 		return "Adição";
 	}
 
-	std::string Addition::getStringRo()
+	std::string Hexus_Cards_Addition::getStringRo()
 	{
 		return "Plus";
 	}
 
-	std::string Addition::getStringRu()
+	std::string Hexus_Cards_Addition::getStringRu()
 	{
 		return "прибавление";
 	}
 
-	std::string Addition::getStringSv()
+	std::string Hexus_Cards_Addition::getStringSv()
 	{
 		return "Tillägg";
 	}
 
-	std::string Addition::getStringTh()
+	std::string Hexus_Cards_Addition::getStringTh()
 	{
 		return "การเพิ่ม";
 	}
 
-	std::string Addition::getStringTr()
+	std::string Hexus_Cards_Addition::getStringTr()
 	{
 		return "İlave";
 	}
 
-	std::string Addition::getStringUk()
+	std::string Hexus_Cards_Addition::getStringUk()
 	{
 		return "Додавання";
 	}
 
-	std::string Addition::getStringVi()
+	std::string Hexus_Cards_Addition::getStringVi()
 	{
 		return "Thêm vào";
 	}
 
-	std::string Addition::getStringZhCn()
+	std::string Hexus_Cards_Addition::getStringZhCn()
 	{
 		return "加成";
 	}
 
-	std::string Addition::getStringZhTw()
+	std::string Hexus_Cards_Addition::getStringZhTw()
 	{
 		return "加成";
 	}

@@ -4,171 +4,171 @@
 
 #include "EndianForest.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	EndianForest* EndianForest::create()
+	Menus_Maps_EndianForest* Menus_Maps_EndianForest::create()
 	{
-		EndianForest* instance = new EndianForest();
+		Menus_Maps_EndianForest* instance = new Menus_Maps_EndianForest();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* EndianForest::clone()
+	LocalizedString* Menus_Maps_EndianForest::clone()
 	{
-		return EndianForest::create();
+		return Menus_Maps_EndianForest::create();
 	}
 
-	EndianForest::EndianForest() : LocalizedString()
-	{
-	}
-
-	EndianForest::~EndianForest()
+	Menus_Maps_EndianForest::Menus_Maps_EndianForest() : LocalizedString()
 	{
 	}
 
-	std::string EndianForest::getStringAr()
+	Menus_Maps_EndianForest::~Menus_Maps_EndianForest()
+	{
+	}
+
+	std::string Menus_Maps_EndianForest::getStringAr()
 	{
 		return "الغابة";
 	}
 
-	std::string EndianForest::getStringBg()
+	std::string Menus_Maps_EndianForest::getStringBg()
 	{
 		return "Горска гора";
 	}
 
-	std::string EndianForest::getStringCs()
+	std::string Menus_Maps_EndianForest::getStringCs()
 	{
 		return "Endianský les";
 	}
 
-	std::string EndianForest::getStringDa()
+	std::string Menus_Maps_EndianForest::getStringDa()
 	{
 		return "Endian skov";
 	}
 
-	std::string EndianForest::getStringDe()
+	std::string Menus_Maps_EndianForest::getStringDe()
 	{
 		return "Endian Wald";
 	}
 
-	std::string EndianForest::getStringEl()
+	std::string Menus_Maps_EndianForest::getStringEl()
 	{
 		return "Το δάσος Endian";
 	}
 
-	std::string EndianForest::getStringEn()
+	std::string Menus_Maps_EndianForest::getStringEn()
 	{
 		return "Endian Forest";
 	}
 
-	std::string EndianForest::getStringEs()
+	std::string Menus_Maps_EndianForest::getStringEs()
 	{
 		return "Bosque de endian";
 	}
 
-	std::string EndianForest::getStringEs419()
+	std::string Menus_Maps_EndianForest::getStringEs419()
 	{
 		return "Bosque de endian";
 	}
 
-	std::string EndianForest::getStringFi()
+	std::string Menus_Maps_EndianForest::getStringFi()
 	{
 		return "Endian-metsä";
 	}
 
-	std::string EndianForest::getStringFr()
+	std::string Menus_Maps_EndianForest::getStringFr()
 	{
 		return "Forêt endienne";
 	}
 
-	std::string EndianForest::getStringHu()
+	std::string Menus_Maps_EndianForest::getStringHu()
 	{
 		return "Endian erdő";
 	}
 
-	std::string EndianForest::getStringIt()
+	std::string Menus_Maps_EndianForest::getStringIt()
 	{
 		return "Foresta di Endian";
 	}
 
-	std::string EndianForest::getStringJa()
+	std::string Menus_Maps_EndianForest::getStringJa()
 	{
 		return "エンディアンの森";
 	}
 
-	std::string EndianForest::getStringKo()
+	std::string Menus_Maps_EndianForest::getStringKo()
 	{
 		return "엔디안 숲";
 	}
 
-	std::string EndianForest::getStringNl()
+	std::string Menus_Maps_EndianForest::getStringNl()
 	{
 		return "Endian bos";
 	}
 
-	std::string EndianForest::getStringNo()
+	std::string Menus_Maps_EndianForest::getStringNo()
 	{
 		return "Endian skog";
 	}
 
-	std::string EndianForest::getStringPl()
+	std::string Menus_Maps_EndianForest::getStringPl()
 	{
 		return "Las Endian";
 	}
 
-	std::string EndianForest::getStringPt()
+	std::string Menus_Maps_EndianForest::getStringPt()
 	{
 		return "Floresta endian";
 	}
 
-	std::string EndianForest::getStringPtBr()
+	std::string Menus_Maps_EndianForest::getStringPtBr()
 	{
 		return "Floresta endian";
 	}
 
-	std::string EndianForest::getStringRo()
+	std::string Menus_Maps_EndianForest::getStringRo()
 	{
 		return "Pădurea endiană";
 	}
 
-	std::string EndianForest::getStringRu()
+	std::string Menus_Maps_EndianForest::getStringRu()
 	{
 		return "Endian Forest";
 	}
 
-	std::string EndianForest::getStringSv()
+	std::string Menus_Maps_EndianForest::getStringSv()
 	{
 		return "Endian skog";
 	}
 
-	std::string EndianForest::getStringTh()
+	std::string Menus_Maps_EndianForest::getStringTh()
 	{
 		return "ป่า";
 	}
 
-	std::string EndianForest::getStringTr()
+	std::string Menus_Maps_EndianForest::getStringTr()
 	{
 		return "Endian ormanı";
 	}
 
-	std::string EndianForest::getStringUk()
+	std::string Menus_Maps_EndianForest::getStringUk()
 	{
 		return "Ендіанський ліс";
 	}
 
-	std::string EndianForest::getStringVi()
+	std::string Menus_Maps_EndianForest::getStringVi()
 	{
 		return "Rừng endian";
 	}
 
-	std::string EndianForest::getStringZhCn()
+	std::string Menus_Maps_EndianForest::getStringZhCn()
 	{
 		return "尾数森林";
 	}
 
-	std::string EndianForest::getStringZhTw()
+	std::string Menus_Maps_EndianForest::getStringZhTw()
 	{
 		return "尾數森林";
 	}

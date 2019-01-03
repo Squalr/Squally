@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class PendulumTutorial1 : public LocalizedString
+	class Dialogue_Helpers_Goblin_PendulumTutorial1 : public LocalizedString
 	{
 	public:
-		static PendulumTutorial1* create();
+		static Dialogue_Helpers_Goblin_PendulumTutorial1* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		PendulumTutorial1();
-		~PendulumTutorial1();
+		Dialogue_Helpers_Goblin_PendulumTutorial1();
+		~Dialogue_Helpers_Goblin_PendulumTutorial1();
 	};
 }

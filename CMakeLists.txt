@@ -100,6 +100,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableObject.cpp
 	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
+	Source/Engine/Localization/ConstantString.cpp
 	Source/Engine/Localization/Localization.cpp
 	Source/Engine/Localization/LocalizedLabel.cpp
 	Source/Engine/Localization/LocalizedString.cpp
@@ -126,7 +127,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CProgressBar.cpp
 	Source/Engine/UI/Controls/CRadioButton.cpp
 	Source/Engine/UI/Controls/CSlider.cpp
-	Source/Engine/UI/Controls/EditableTextWindow.cpp
 	Source/Engine/UI/Controls/FocusTakeOver.cpp
 	Source/Engine/UI/Controls/HelpArrow.cpp
 	Source/Engine/UI/Controls/IconMenuSprite.cpp
@@ -134,9 +134,11 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/MenuSprite.cpp
 	Source/Engine/UI/Controls/MouseOverPanel.cpp
 	Source/Engine/UI/Controls/ScrollPane.cpp
+	Source/Engine/UI/Controls/Text/EditableTextWindow.cpp
+	Source/Engine/UI/Controls/Text/TextWindow.cpp
 	Source/Engine/UI/Controls/TextMenuSprite.cpp
-	Source/Engine/UI/Controls/TextWindow.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
+	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
 	Source/Engine/UI/HUD/DeveloperHud.cpp
 	Source/Engine/UI/HUD/HackerModeHud.cpp
@@ -822,12 +824,58 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
 	Source/Sound/MusicDeserializer.cpp
 	Source/Strings/Cutscenes/PressEscToSkip.cpp
+	Source/Strings/Debugging/CameraX.cpp
+	Source/Strings/Debugging/CameraY.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.cpp
-	Source/Strings/Empty.cpp
+	Source/Strings/Generics/Constant.cpp
+	Source/Strings/Generics/Empty.cpp
+	Source/Strings/Generics/Infinity.cpp
+	Source/Strings/Generics/MinusConstant.cpp
+	Source/Strings/Generics/Newline.cpp
+	Source/Strings/Generics/PlusConstant.cpp
+	Source/Strings/Generics/TimesConstant.cpp
+	Source/Strings/Generics/XOverY.cpp
+	Source/Strings/Hexus/Actions/ChooseRow.cpp
+	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
+	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
+	Source/Strings/Hexus/Banners/Defeat.cpp
+	Source/Strings/Hexus/Banners/Draw.cpp
+	Source/Strings/Hexus/Banners/FinalRound.cpp
+	Source/Strings/Hexus/Banners/LastStand.cpp
+	Source/Strings/Hexus/Banners/NextRound.cpp
+	Source/Strings/Hexus/Banners/OpponentFirst.cpp
+	Source/Strings/Hexus/Banners/OpponentPassed.cpp
+	Source/Strings/Hexus/Banners/OpponentRoundWin.cpp
+	Source/Strings/Hexus/Banners/OpponentsTurn.cpp
+	Source/Strings/Hexus/Banners/PlayerFirst.cpp
+	Source/Strings/Hexus/Banners/PlayerPassed.cpp
+	Source/Strings/Hexus/Banners/PlayerRoundWin.cpp
+	Source/Strings/Hexus/Banners/PlayerTurn.cpp
+	Source/Strings/Hexus/Banners/RemainingCardReplacements.cpp
+	Source/Strings/Hexus/Banners/RoundStart.cpp
+	Source/Strings/Hexus/Banners/RoundTied.cpp
+	Source/Strings/Hexus/Banners/Victory.cpp
+	Source/Strings/Hexus/BinCards.cpp
 	Source/Strings/Hexus/BinLabel.cpp
-	Source/Strings/Hexus/BinaryCards.cpp
 	Source/Strings/Hexus/BinaryMax.cpp
+	Source/Strings/Hexus/CardDescriptions/Addition.cpp
+	Source/Strings/Hexus/CardDescriptions/BinStorm.cpp
+	Source/Strings/Hexus/CardDescriptions/Clear.cpp
+	Source/Strings/Hexus/CardDescriptions/DecStorm.cpp
+	Source/Strings/Hexus/CardDescriptions/Flip1.cpp
+	Source/Strings/Hexus/CardDescriptions/Flip2.cpp
+	Source/Strings/Hexus/CardDescriptions/Flip3.cpp
+	Source/Strings/Hexus/CardDescriptions/Flip4.cpp
+	Source/Strings/Hexus/CardDescriptions/HexStorm.cpp
+	Source/Strings/Hexus/CardDescriptions/Inverse.cpp
+	Source/Strings/Hexus/CardDescriptions/LogicalAnd.cpp
+	Source/Strings/Hexus/CardDescriptions/LogicalOr.cpp
+	Source/Strings/Hexus/CardDescriptions/LogicalXor.cpp
+	Source/Strings/Hexus/CardDescriptions/Mov.cpp
+	Source/Strings/Hexus/CardDescriptions/ShiftLeft.cpp
+	Source/Strings/Hexus/CardDescriptions/ShiftRight.cpp
+	Source/Strings/Hexus/CardDescriptions/Subtract.cpp
 	Source/Strings/Hexus/Cards/Addition.cpp
 	Source/Strings/Hexus/Cards/BinStorm.cpp
 	Source/Strings/Hexus/Cards/Binary0.cpp
@@ -889,6 +937,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Cards/LogicalAnd.cpp
 	Source/Strings/Hexus/Cards/LogicalOr.cpp
 	Source/Strings/Hexus/Cards/LogicalXor.cpp
+	Source/Strings/Hexus/Cards/Mov.cpp
 	Source/Strings/Hexus/Cards/ShiftLeft.cpp
 	Source/Strings/Hexus/Cards/ShiftRight.cpp
 	Source/Strings/Hexus/Cards/Subtract.cpp
@@ -896,12 +945,12 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/CardsInStorage.cpp
 	Source/Strings/Hexus/CardsToPlayToolTip.cpp
 	Source/Strings/Hexus/ClaimVictory.cpp
+	Source/Strings/Hexus/DecCards.cpp
 	Source/Strings/Hexus/DecLabel.cpp
-	Source/Strings/Hexus/DecimalCards.cpp
 	Source/Strings/Hexus/Done.cpp
 	Source/Strings/Hexus/DrawToolTip.cpp
+	Source/Strings/Hexus/HexCards.cpp
 	Source/Strings/Hexus/HexLabel.cpp
-	Source/Strings/Hexus/HexadecimalCards.cpp
 	Source/Strings/Hexus/Hexus.cpp
 	Source/Strings/Hexus/HexusPuzzles.cpp
 	Source/Strings/Hexus/LastStand.cpp
@@ -936,12 +985,79 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Accept.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
+	Source/Strings/Menus/CodeEditor/Address.cpp
 	Source/Strings/Menus/CodeEditor/AllocationEditor.cpp
 	Source/Strings/Menus/CodeEditor/Assembler.cpp
+	Source/Strings/Menus/CodeEditor/ByteCount.cpp
+	Source/Strings/Menus/CodeEditor/ByteOverflow.cpp
+	Source/Strings/Menus/CodeEditor/Bytes.cpp
 	Source/Strings/Menus/CodeEditor/ClickToEdit.cpp
 	Source/Strings/Menus/CodeEditor/CodeEditor.cpp
-	Source/Strings/Menus/CodeEditor/Function.cpp
+	Source/Strings/Menus/CodeEditor/CompileErrors.cpp
+	Source/Strings/Menus/CodeEditor/CompileSuccessful.cpp
+	Source/Strings/Menus/CodeEditor/Error.cpp
+	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.cpp
+	Source/Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.cpp
+	Source/Strings/Menus/CodeEditor/Errors/CodeTooLarge.cpp
+	Source/Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddress.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressScale.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArchitecture.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArgument.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidBroadcast.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidDisplacement.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidInstruction.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabel.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabelName.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidMask.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOperandSize.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOption.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidParentLabel.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterType.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidSegment.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidState.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseDouble.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseSingle.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelNameTooLong.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoCodeGenerated.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoHeapMemory.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoVirtualMemory.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NotInitialized.cpp
+	Source/Strings/Menus/CodeEditor/Errors/Ok.cpp
+	Source/Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.cpp
+	Source/Strings/Menus/CodeEditor/Errors/OverlappedRegisters.cpp
+	Source/Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.cpp
+	Source/Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.cpp
+	Source/Strings/Menus/CodeEditor/Errors/SlotOccupied.cpp
+	Source/Strings/Menus/CodeEditor/Errors/UnknownError.cpp
+	Source/Strings/Menus/CodeEditor/FunctionHeader.cpp
+	Source/Strings/Menus/CodeEditor/LineNumber.cpp
 	Source/Strings/Menus/CodeEditor/Status.cpp
+	Source/Strings/Menus/CodeEditor/StatusHeader.cpp
+	Source/Strings/Menus/CodeEditor/UnfilledBytes.cpp
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
@@ -978,8 +1094,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Return.cpp
 	Source/Strings/Menus/StoryMode.cpp
 	Source/Strings/Menus/Tutorials.cpp
-	Source/Strings/Objects/Hackables/MechanicalFlail/FlailTargetAngle.cpp
-	Source/Strings/Objects/Hackables/PendulumBlade/PendulumTargetAngle.cpp
+	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.cpp
+	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.cpp
 
 	####O####O####O####O####O####O####O####O####O####O##
     # END: This is generated by GenerateCMakeFiles.py: #
@@ -1026,6 +1142,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableObject.h
 	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
+	Source/Engine/Localization/ConstantString.h
 	Source/Engine/Localization/Localization.h
 	Source/Engine/Localization/LocalizedLabel.h
 	Source/Engine/Localization/LocalizedString.h
@@ -1053,7 +1170,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CProgressBar.h
 	Source/Engine/UI/Controls/CRadioButton.h
 	Source/Engine/UI/Controls/CSlider.h
-	Source/Engine/UI/Controls/EditableTextWindow.h
 	Source/Engine/UI/Controls/FocusTakeOver.h
 	Source/Engine/UI/Controls/HelpArrow.h
 	Source/Engine/UI/Controls/IconMenuSprite.h
@@ -1061,9 +1177,11 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/MenuSprite.h
 	Source/Engine/UI/Controls/MouseOverPanel.h
 	Source/Engine/UI/Controls/ScrollPane.h
+	Source/Engine/UI/Controls/Text/EditableTextWindow.h
+	Source/Engine/UI/Controls/Text/TextWindow.h
 	Source/Engine/UI/Controls/TextMenuSprite.h
-	Source/Engine/UI/Controls/TextWindow.h
 	Source/Engine/UI/Controls/ToggleGroup.h
+	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h
 	Source/Engine/UI/HUD/DeveloperHud.h
 	Source/Engine/UI/HUD/HackerModeHud.h
@@ -1772,12 +1890,58 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
 	Source/Sound/MusicDeserializer.h
 	Source/Strings/Cutscenes/PressEscToSkip.h
+	Source/Strings/Debugging/CameraX.h
+	Source/Strings/Debugging/CameraY.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.h
-	Source/Strings/Empty.h
+	Source/Strings/Generics/Constant.h
+	Source/Strings/Generics/Empty.h
+	Source/Strings/Generics/Infinity.h
+	Source/Strings/Generics/MinusConstant.h
+	Source/Strings/Generics/Newline.h
+	Source/Strings/Generics/PlusConstant.h
+	Source/Strings/Generics/TimesConstant.h
+	Source/Strings/Generics/XOverY.h
+	Source/Strings/Hexus/Actions/ChooseRow.h
+	Source/Strings/Hexus/Actions/ChooseSourceCard.h
+	Source/Strings/Hexus/Actions/ChooseTargetCard.h
+	Source/Strings/Hexus/Banners/Defeat.h
+	Source/Strings/Hexus/Banners/Draw.h
+	Source/Strings/Hexus/Banners/FinalRound.h
+	Source/Strings/Hexus/Banners/LastStand.h
+	Source/Strings/Hexus/Banners/NextRound.h
+	Source/Strings/Hexus/Banners/OpponentFirst.h
+	Source/Strings/Hexus/Banners/OpponentPassed.h
+	Source/Strings/Hexus/Banners/OpponentRoundWin.h
+	Source/Strings/Hexus/Banners/OpponentsTurn.h
+	Source/Strings/Hexus/Banners/PlayerFirst.h
+	Source/Strings/Hexus/Banners/PlayerPassed.h
+	Source/Strings/Hexus/Banners/PlayerRoundWin.h
+	Source/Strings/Hexus/Banners/PlayerTurn.h
+	Source/Strings/Hexus/Banners/RemainingCardReplacements.h
+	Source/Strings/Hexus/Banners/RoundStart.h
+	Source/Strings/Hexus/Banners/RoundTied.h
+	Source/Strings/Hexus/Banners/Victory.h
+	Source/Strings/Hexus/BinCards.h
 	Source/Strings/Hexus/BinLabel.h
-	Source/Strings/Hexus/BinaryCards.h
 	Source/Strings/Hexus/BinaryMax.h
+	Source/Strings/Hexus/CardDescriptions/Addition.h
+	Source/Strings/Hexus/CardDescriptions/BinStorm.h
+	Source/Strings/Hexus/CardDescriptions/Clear.h
+	Source/Strings/Hexus/CardDescriptions/DecStorm.h
+	Source/Strings/Hexus/CardDescriptions/Flip1.h
+	Source/Strings/Hexus/CardDescriptions/Flip2.h
+	Source/Strings/Hexus/CardDescriptions/Flip3.h
+	Source/Strings/Hexus/CardDescriptions/Flip4.h
+	Source/Strings/Hexus/CardDescriptions/HexStorm.h
+	Source/Strings/Hexus/CardDescriptions/Inverse.h
+	Source/Strings/Hexus/CardDescriptions/LogicalAnd.h
+	Source/Strings/Hexus/CardDescriptions/LogicalOr.h
+	Source/Strings/Hexus/CardDescriptions/LogicalXor.h
+	Source/Strings/Hexus/CardDescriptions/Mov.h
+	Source/Strings/Hexus/CardDescriptions/ShiftLeft.h
+	Source/Strings/Hexus/CardDescriptions/ShiftRight.h
+	Source/Strings/Hexus/CardDescriptions/Subtract.h
 	Source/Strings/Hexus/Cards/Addition.h
 	Source/Strings/Hexus/Cards/BinStorm.h
 	Source/Strings/Hexus/Cards/Binary0.h
@@ -1839,6 +2003,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Cards/LogicalAnd.h
 	Source/Strings/Hexus/Cards/LogicalOr.h
 	Source/Strings/Hexus/Cards/LogicalXor.h
+	Source/Strings/Hexus/Cards/Mov.h
 	Source/Strings/Hexus/Cards/ShiftLeft.h
 	Source/Strings/Hexus/Cards/ShiftRight.h
 	Source/Strings/Hexus/Cards/Subtract.h
@@ -1846,12 +2011,12 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/CardsInStorage.h
 	Source/Strings/Hexus/CardsToPlayToolTip.h
 	Source/Strings/Hexus/ClaimVictory.h
+	Source/Strings/Hexus/DecCards.h
 	Source/Strings/Hexus/DecLabel.h
-	Source/Strings/Hexus/DecimalCards.h
 	Source/Strings/Hexus/Done.h
 	Source/Strings/Hexus/DrawToolTip.h
+	Source/Strings/Hexus/HexCards.h
 	Source/Strings/Hexus/HexLabel.h
-	Source/Strings/Hexus/HexadecimalCards.h
 	Source/Strings/Hexus/Hexus.h
 	Source/Strings/Hexus/HexusPuzzles.h
 	Source/Strings/Hexus/LastStand.h
@@ -1886,12 +2051,79 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Accept.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
+	Source/Strings/Menus/CodeEditor/Address.h
 	Source/Strings/Menus/CodeEditor/AllocationEditor.h
 	Source/Strings/Menus/CodeEditor/Assembler.h
+	Source/Strings/Menus/CodeEditor/ByteCount.h
+	Source/Strings/Menus/CodeEditor/ByteOverflow.h
+	Source/Strings/Menus/CodeEditor/Bytes.h
 	Source/Strings/Menus/CodeEditor/ClickToEdit.h
 	Source/Strings/Menus/CodeEditor/CodeEditor.h
-	Source/Strings/Menus/CodeEditor/Function.h
+	Source/Strings/Menus/CodeEditor/CompileErrors.h
+	Source/Strings/Menus/CodeEditor/CompileSuccessful.h
+	Source/Strings/Menus/CodeEditor/Error.h
+	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.h
+	Source/Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.h
+	Source/Strings/Menus/CodeEditor/Errors/CodeTooLarge.h
+	Source/Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddress.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressScale.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArchitecture.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArgument.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidBroadcast.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidDisplacement.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidInstruction.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabel.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabelName.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidMask.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOperandSize.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOption.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidParentLabel.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterType.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidSegment.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidState.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseDouble.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseSingle.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelNameTooLong.h
+	Source/Strings/Menus/CodeEditor/Errors/NoCodeGenerated.h
+	Source/Strings/Menus/CodeEditor/Errors/NoHeapMemory.h
+	Source/Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.h
+	Source/Strings/Menus/CodeEditor/Errors/NoVirtualMemory.h
+	Source/Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.h
+	Source/Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.h
+	Source/Strings/Menus/CodeEditor/Errors/NotInitialized.h
+	Source/Strings/Menus/CodeEditor/Errors/Ok.h
+	Source/Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.h
+	Source/Strings/Menus/CodeEditor/Errors/OverlappedRegisters.h
+	Source/Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.h
+	Source/Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.h
+	Source/Strings/Menus/CodeEditor/Errors/SlotOccupied.h
+	Source/Strings/Menus/CodeEditor/Errors/UnknownError.h
+	Source/Strings/Menus/CodeEditor/FunctionHeader.h
+	Source/Strings/Menus/CodeEditor/LineNumber.h
 	Source/Strings/Menus/CodeEditor/Status.h
+	Source/Strings/Menus/CodeEditor/StatusHeader.h
+	Source/Strings/Menus/CodeEditor/UnfilledBytes.h
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h
@@ -1928,8 +2160,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Return.h
 	Source/Strings/Menus/StoryMode.h
 	Source/Strings/Menus/Tutorials.h
-	Source/Strings/Objects/Hackables/MechanicalFlail/FlailTargetAngle.h
-	Source/Strings/Objects/Hackables/PendulumBlade/PendulumTargetAngle.h
+	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.h
+	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.h
 
 	####V####V####V####V####V####V####V####V####V####V##
     # END: This is generated by GenerateCMakeFiles.py: #

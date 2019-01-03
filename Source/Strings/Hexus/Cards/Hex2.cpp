@@ -4,171 +4,171 @@
 
 #include "Hex2.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex2* Hex2::create()
+	Hexus_Cards_Hex2* Hexus_Cards_Hex2::create()
 	{
-		Hex2* instance = new Hex2();
+		Hexus_Cards_Hex2* instance = new Hexus_Cards_Hex2();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex2::clone()
+	LocalizedString* Hexus_Cards_Hex2::clone()
 	{
-		return Hex2::create();
+		return Hexus_Cards_Hex2::create();
 	}
 
-	Hex2::Hex2() : LocalizedString()
-	{
-	}
-
-	Hex2::~Hex2()
+	Hexus_Cards_Hex2::Hexus_Cards_Hex2() : LocalizedString()
 	{
 	}
 
-	std::string Hex2::getStringAr()
+	Hexus_Cards_Hex2::~Hexus_Cards_Hex2()
+	{
+	}
+
+	std::string Hexus_Cards_Hex2::getStringAr()
 	{
 		return "دودة شيطانية";
 	}
 
-	std::string Hex2::getStringBg()
+	std::string Hexus_Cards_Hex2::getStringBg()
 	{
 		return "Червеят на демоните";
 	}
 
-	std::string Hex2::getStringCs()
+	std::string Hexus_Cards_Hex2::getStringCs()
 	{
 		return "Demon červ";
 	}
 
-	std::string Hex2::getStringDa()
+	std::string Hexus_Cards_Hex2::getStringDa()
 	{
 		return "Demon orm";
 	}
 
-	std::string Hex2::getStringDe()
+	std::string Hexus_Cards_Hex2::getStringDe()
 	{
 		return "Dämonenwurm";
 	}
 
-	std::string Hex2::getStringEl()
+	std::string Hexus_Cards_Hex2::getStringEl()
 	{
 		return "Blat";
 	}
 
-	std::string Hex2::getStringEn()
+	std::string Hexus_Cards_Hex2::getStringEn()
 	{
 		return "Blat";
 	}
 
-	std::string Hex2::getStringEs()
+	std::string Hexus_Cards_Hex2::getStringEs()
 	{
 		return "Gusano demonio";
 	}
 
-	std::string Hex2::getStringEs419()
+	std::string Hexus_Cards_Hex2::getStringEs419()
 	{
 		return "Gusano demonio";
 	}
 
-	std::string Hex2::getStringFi()
+	std::string Hexus_Cards_Hex2::getStringFi()
 	{
 		return "Demon mato";
 	}
 
-	std::string Hex2::getStringFr()
+	std::string Hexus_Cards_Hex2::getStringFr()
 	{
 		return "Ver démon";
 	}
 
-	std::string Hex2::getStringHu()
+	std::string Hexus_Cards_Hex2::getStringHu()
 	{
 		return "Demon féreg";
 	}
 
-	std::string Hex2::getStringIt()
+	std::string Hexus_Cards_Hex2::getStringIt()
 	{
 		return "Verme demone";
 	}
 
-	std::string Hex2::getStringJa()
+	std::string Hexus_Cards_Hex2::getStringJa()
 	{
 		return "デーモンワーム";
 	}
 
-	std::string Hex2::getStringKo()
+	std::string Hexus_Cards_Hex2::getStringKo()
 	{
 		return "악마 웜";
 	}
 
-	std::string Hex2::getStringNl()
+	std::string Hexus_Cards_Hex2::getStringNl()
 	{
 		return "Blat";
 	}
 
-	std::string Hex2::getStringNo()
+	std::string Hexus_Cards_Hex2::getStringNo()
 	{
 		return "Blat";
 	}
 
-	std::string Hex2::getStringPl()
+	std::string Hexus_Cards_Hex2::getStringPl()
 	{
 		return "Robak demonów";
 	}
 
-	std::string Hex2::getStringPt()
+	std::string Hexus_Cards_Hex2::getStringPt()
 	{
 		return "Verme demoníaco";
 	}
 
-	std::string Hex2::getStringPtBr()
+	std::string Hexus_Cards_Hex2::getStringPtBr()
 	{
 		return "Verme demoníaco";
 	}
 
-	std::string Hex2::getStringRo()
+	std::string Hexus_Cards_Hex2::getStringRo()
 	{
 		return "Demon vierme";
 	}
 
-	std::string Hex2::getStringRu()
+	std::string Hexus_Cards_Hex2::getStringRu()
 	{
 		return "Демон червь";
 	}
 
-	std::string Hex2::getStringSv()
+	std::string Hexus_Cards_Hex2::getStringSv()
 	{
 		return "Demonmask";
 	}
 
-	std::string Hex2::getStringTh()
+	std::string Hexus_Cards_Hex2::getStringTh()
 	{
 		return "หนอนปีศาจ";
 	}
 
-	std::string Hex2::getStringTr()
+	std::string Hexus_Cards_Hex2::getStringTr()
 	{
 		return "İblis kurdu";
 	}
 
-	std::string Hex2::getStringUk()
+	std::string Hexus_Cards_Hex2::getStringUk()
 	{
 		return "Черв'як демон";
 	}
 
-	std::string Hex2::getStringVi()
+	std::string Hexus_Cards_Hex2::getStringVi()
 	{
 		return "Quỷ quỷ";
 	}
 
-	std::string Hex2::getStringZhCn()
+	std::string Hexus_Cards_Hex2::getStringZhCn()
 	{
 		return "恶魔虫";
 	}
 
-	std::string Hex2::getStringZhTw()
+	std::string Hexus_Cards_Hex2::getStringZhTw()
 	{
 		return "惡魔蟲";
 	}

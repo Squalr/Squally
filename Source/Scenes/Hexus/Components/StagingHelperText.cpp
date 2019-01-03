@@ -12,6 +12,11 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Generics/Empty.h"
+#include "Strings/Hexus/Actions/ChooseRow.h"
+#include "Strings/Hexus/Actions/ChooseSourceCard.h"
+#include "Strings/Hexus/Actions/ChooseTargetCard.h"
+
 using namespace cocos2d;
 
 StagingHelperText* StagingHelperText::create()
@@ -25,7 +30,7 @@ StagingHelperText* StagingHelperText::create()
 
 StagingHelperText::StagingHelperText()
 {
-	this->selectionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
+	this->selectionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 
 	this->selectionLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->selectionLabel->setTextColor(Color4B::WHITE);
@@ -116,13 +121,13 @@ void StagingHelperText::updateCombineStatus(GameState* gameState)
 {
 	if (gameState->turn == GameState::Turn::Player && gameState->stateType == GameState::StateType::CombineStaged && gameState->selectedSourceCard == nullptr)
 	{
-		this->selectionLabel->setString("Choose the source card for your operation");
+		this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}
 	else if (gameState->turn == GameState::Turn::Player && gameState->stateType == GameState::StateType::CombineStaged && gameState->selectedDestinationCard == nullptr)
 	{
-		this->selectionLabel->setString("Choose the target card for your operation");
+		this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseTargetCard::create());
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 	}
@@ -141,7 +146,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_SUB:
 			case CardData::CardType::Special_INV:
 			{
-				this->selectionLabel->setString("Choose a source card for the operation");
+				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
 				break;
 			}
 			case CardData::CardType::Binary:
@@ -155,7 +160,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_FLIP4:
 			default:
 			{
-				this->selectionLabel->setString("Choose a row to play the card");
+				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
 				break;
 			}
 		}
@@ -170,7 +175,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 
 void StagingHelperText::clearSelectionStatus()
 {
-	this->selectionLabel->setString("");
+	this->selectionLabel->setLocalizedString(Strings::Generics_Empty::create());
 	this->cancelButton->setClickCallback(nullptr);
 	this->helpButton->setClickCallback(nullptr);
 	this->selectionLabel->runAction(FadeTo::create(0.25f, 0));

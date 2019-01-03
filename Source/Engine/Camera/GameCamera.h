@@ -14,6 +14,7 @@ namespace cocos2d
 	class Vec2;
 }
 
+class ConstantString;
 class Hud;
 class LocalizedLabel;
 
@@ -64,6 +65,8 @@ private:
 	Hud* hud;
 	LocalizedLabel* debugCameraLabelX;
 	LocalizedLabel* debugCameraLabelY;
+	ConstantString* debugCameraStringX;
+	ConstantString* debugCameraStringY;
 	cocos2d::DrawNode* debugCameraRectangle;
 
 	static GameCamera* cameraInstance;

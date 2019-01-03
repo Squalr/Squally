@@ -76,11 +76,11 @@ void MouseState::initializeListeners()
 	mouseListener->onMouseDown = CC_CALLBACK_1(MouseState::onMouseDown, this);
 	mouseListener->onMouseUp = CC_CALLBACK_1(MouseState::onMouseUp, this);
 
-	this->addEventListener(mouseListener);
-	this->addEventListener(clickableMouseOverListener);
-	this->addEventListener(clickableMouseOutListener);
-	this->addEventListener(mouseDragListener);
-	this->addEventListener(mouseScrollListener);
+	this->addGlobalEventListener(mouseListener);
+	this->addGlobalEventListener(clickableMouseOverListener);
+	this->addGlobalEventListener(clickableMouseOutListener);
+	this->addGlobalEventListener(mouseDragListener);
+	this->addGlobalEventListener(mouseScrollListener);
 }
 
 void MouseState::onMouseDown(EventMouse* event)

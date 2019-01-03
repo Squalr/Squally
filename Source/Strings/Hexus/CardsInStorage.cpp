@@ -4,171 +4,171 @@
 
 #include "CardsInStorage.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	CardsInStorage* CardsInStorage::create()
+	Hexus_CardsInStorage* Hexus_CardsInStorage::create()
 	{
-		CardsInStorage* instance = new CardsInStorage();
+		Hexus_CardsInStorage* instance = new Hexus_CardsInStorage();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* CardsInStorage::clone()
+	LocalizedString* Hexus_CardsInStorage::clone()
 	{
-		return CardsInStorage::create();
+		return Hexus_CardsInStorage::create();
 	}
 
-	CardsInStorage::CardsInStorage() : LocalizedString()
-	{
-	}
-
-	CardsInStorage::~CardsInStorage()
+	Hexus_CardsInStorage::Hexus_CardsInStorage() : LocalizedString()
 	{
 	}
 
-	std::string CardsInStorage::getStringAr()
+	Hexus_CardsInStorage::~Hexus_CardsInStorage()
+	{
+	}
+
+	std::string Hexus_CardsInStorage::getStringAr()
 	{
 		return "البطاقات في التخزين";
 	}
 
-	std::string CardsInStorage::getStringBg()
+	std::string Hexus_CardsInStorage::getStringBg()
 	{
 		return "Карти в хранилище";
 	}
 
-	std::string CardsInStorage::getStringCs()
+	std::string Hexus_CardsInStorage::getStringCs()
 	{
 		return "Karty v úložišti";
 	}
 
-	std::string CardsInStorage::getStringDa()
+	std::string Hexus_CardsInStorage::getStringDa()
 	{
 		return "Kort i opbevaring";
 	}
 
-	std::string CardsInStorage::getStringDe()
+	std::string Hexus_CardsInStorage::getStringDe()
 	{
 		return "Karten im Speicher";
 	}
 
-	std::string CardsInStorage::getStringEl()
+	std::string Hexus_CardsInStorage::getStringEl()
 	{
 		return "Κάρτες αποθήκευσης";
 	}
 
-	std::string CardsInStorage::getStringEn()
+	std::string Hexus_CardsInStorage::getStringEn()
 	{
 		return "Cards in Storage";
 	}
 
-	std::string CardsInStorage::getStringEs()
+	std::string Hexus_CardsInStorage::getStringEs()
 	{
 		return "Tarjetas en almacenamiento";
 	}
 
-	std::string CardsInStorage::getStringEs419()
+	std::string Hexus_CardsInStorage::getStringEs419()
 	{
 		return "Tarjetas en almacenamiento";
 	}
 
-	std::string CardsInStorage::getStringFi()
+	std::string Hexus_CardsInStorage::getStringFi()
 	{
 		return "Kortit tallennuksessa";
 	}
 
-	std::string CardsInStorage::getStringFr()
+	std::string Hexus_CardsInStorage::getStringFr()
 	{
 		return "Cartes entreposées";
 	}
 
-	std::string CardsInStorage::getStringHu()
+	std::string Hexus_CardsInStorage::getStringHu()
 	{
 		return "Kártyák a tárolóban";
 	}
 
-	std::string CardsInStorage::getStringIt()
+	std::string Hexus_CardsInStorage::getStringIt()
 	{
 		return "Carte in deposito";
 	}
 
-	std::string CardsInStorage::getStringJa()
+	std::string Hexus_CardsInStorage::getStringJa()
 	{
 		return "収納カード";
 	}
 
-	std::string CardsInStorage::getStringKo()
+	std::string Hexus_CardsInStorage::getStringKo()
 	{
 		return "저장소 카드";
 	}
 
-	std::string CardsInStorage::getStringNl()
+	std::string Hexus_CardsInStorage::getStringNl()
 	{
 		return "Kaarten in opslag";
 	}
 
-	std::string CardsInStorage::getStringNo()
+	std::string Hexus_CardsInStorage::getStringNo()
 	{
 		return "Kort i lagring";
 	}
 
-	std::string CardsInStorage::getStringPl()
+	std::string Hexus_CardsInStorage::getStringPl()
 	{
 		return "Karty w magazynie";
 	}
 
-	std::string CardsInStorage::getStringPt()
+	std::string Hexus_CardsInStorage::getStringPt()
 	{
 		return "Cartões no armazenamento";
 	}
 
-	std::string CardsInStorage::getStringPtBr()
+	std::string Hexus_CardsInStorage::getStringPtBr()
 	{
 		return "Cartões no armazenamento";
 	}
 
-	std::string CardsInStorage::getStringRo()
+	std::string Hexus_CardsInStorage::getStringRo()
 	{
 		return "Carduri în Depozit";
 	}
 
-	std::string CardsInStorage::getStringRu()
+	std::string Hexus_CardsInStorage::getStringRu()
 	{
 		return "Карты в хранилище";
 	}
 
-	std::string CardsInStorage::getStringSv()
+	std::string Hexus_CardsInStorage::getStringSv()
 	{
 		return "Kort i förvaring";
 	}
 
-	std::string CardsInStorage::getStringTh()
+	std::string Hexus_CardsInStorage::getStringTh()
 	{
 		return "การ์ดเก็บข้อมูล";
 	}
 
-	std::string CardsInStorage::getStringTr()
+	std::string Hexus_CardsInStorage::getStringTr()
 	{
 		return "Depolamadaki Kartlar";
 	}
 
-	std::string CardsInStorage::getStringUk()
+	std::string Hexus_CardsInStorage::getStringUk()
 	{
 		return "Карти в сховищі";
 	}
 
-	std::string CardsInStorage::getStringVi()
+	std::string Hexus_CardsInStorage::getStringVi()
 	{
 		return "Thẻ trong kho";
 	}
 
-	std::string CardsInStorage::getStringZhCn()
+	std::string Hexus_CardsInStorage::getStringZhCn()
 	{
 		return "存储卡";
 	}
 
-	std::string CardsInStorage::getStringZhTw()
+	std::string Hexus_CardsInStorage::getStringZhTw()
 	{
 		return "存儲卡";
 	}

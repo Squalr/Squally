@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
+class LocalizedString;
 
 class BannerBase : public ComponentBase
 {
@@ -23,14 +24,14 @@ protected:
 	void initializePositions() override;
 	void onBeforeStateChange(GameState* eventCustom) override;
 	void onAnyStateChange(GameState* eventCustom) override;
-	void setBannerText(std::string text);
+	void setBannerText(LocalizedString* text);
 	void flashBanner();
 	void showBanner();
 	void hideBanner();
 	void addBannerChild(Node* child);
 
 private:
-	cocos2d::LayerColor* statusBanner;
-	LocalizedLabel* statusLabel;
+	cocos2d::LayerColor* bannerOverlay;
+	LocalizedLabel* bannerLabel;
 	cocos2d::Node* bannerChildrenNode;
 };

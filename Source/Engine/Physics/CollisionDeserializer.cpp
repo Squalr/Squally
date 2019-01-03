@@ -41,7 +41,7 @@ void CollisionDeserializer::initializeListeners()
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 
-	this->addEventListener(deserializationRequestListener);
+	this->addGlobalEventListener(deserializationRequestListener);
 }
 
 void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)

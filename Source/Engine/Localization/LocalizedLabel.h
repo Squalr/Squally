@@ -12,6 +12,7 @@ public:
 	{
 		Main,
 		Coding,
+		Monospaced,
 		Pixel,
 	};
 
@@ -36,13 +37,6 @@ public:
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
 	);
-	static LocalizedLabel* create(
-		FontStyle fontStyle,
-		FontSize fontSize,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
-		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
-		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
-	);
 
 	LocalizedLabel* clone();
 	void setLocalizedString(
@@ -50,13 +44,15 @@ public:
 		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
+	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
+	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	float getFontSize();
 	std::string getFont();
-	void runTypeWriterEffect(float speed = LocalizedLabel::DefaultTypeSpeed);
-	void setTypeWriterFinishedCallback(std::function<void()> callback);
 
 private:
 	typedef cocos2d::Label super;
+	friend class TypeWriterEffect;
+
 	LocalizedLabel(
 		FontStyle fontStyle,
 		FontSize fontSize,
@@ -66,9 +62,11 @@ private:
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	~LocalizedLabel();
 
-	void onLocaleChange(LocalizedString* localizedString);
-	void onEnter() override;
+	// Hide methods that we do not want available
+	using super::setString;
 
+	void onEnter() override;
+	void onStringUpdate(LocalizedString* localizedString);
 	static float getFontSizeM1(std::string fontResource);
 	static float getFontSizeM2(std::string fontResource);
 	static float getFontSizeM3(std::string fontResource);
@@ -80,13 +78,10 @@ private:
 
 	static std::string getPixelFont();
 	static std::string getMainFont();
+	static std::string getMonospacedFont();
 	static std::string getCodingFont();
 
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;
-	std::function<void()> typeWriterFinishedCallback;
-
-	static const std::string ScheduleKeyTypeWriterEffect;
-	static const float DefaultTypeSpeed;
 };

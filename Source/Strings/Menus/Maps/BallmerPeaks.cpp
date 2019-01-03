@@ -4,171 +4,171 @@
 
 #include "BallmerPeaks.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	BallmerPeaks* BallmerPeaks::create()
+	Menus_Maps_BallmerPeaks* Menus_Maps_BallmerPeaks::create()
 	{
-		BallmerPeaks* instance = new BallmerPeaks();
+		Menus_Maps_BallmerPeaks* instance = new Menus_Maps_BallmerPeaks();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* BallmerPeaks::clone()
+	LocalizedString* Menus_Maps_BallmerPeaks::clone()
 	{
-		return BallmerPeaks::create();
+		return Menus_Maps_BallmerPeaks::create();
 	}
 
-	BallmerPeaks::BallmerPeaks() : LocalizedString()
-	{
-	}
-
-	BallmerPeaks::~BallmerPeaks()
+	Menus_Maps_BallmerPeaks::Menus_Maps_BallmerPeaks() : LocalizedString()
 	{
 	}
 
-	std::string BallmerPeaks::getStringAr()
+	Menus_Maps_BallmerPeaks::~Menus_Maps_BallmerPeaks()
+	{
+	}
+
+	std::string Menus_Maps_BallmerPeaks::getStringAr()
 	{
 		return "بالمر القمم";
 	}
 
-	std::string BallmerPeaks::getStringBg()
+	std::string Menus_Maps_BallmerPeaks::getStringBg()
 	{
 		return "Балмър Пийкс";
 	}
 
-	std::string BallmerPeaks::getStringCs()
+	std::string Menus_Maps_BallmerPeaks::getStringCs()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringDa()
+	std::string Menus_Maps_BallmerPeaks::getStringDa()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringDe()
+	std::string Menus_Maps_BallmerPeaks::getStringDe()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringEl()
+	std::string Menus_Maps_BallmerPeaks::getStringEl()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringEn()
+	std::string Menus_Maps_BallmerPeaks::getStringEn()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringEs()
+	std::string Menus_Maps_BallmerPeaks::getStringEs()
 	{
 		return "Picos de Ballmer";
 	}
 
-	std::string BallmerPeaks::getStringEs419()
+	std::string Menus_Maps_BallmerPeaks::getStringEs419()
 	{
 		return "Picos de Ballmer";
 	}
 
-	std::string BallmerPeaks::getStringFi()
+	std::string Menus_Maps_BallmerPeaks::getStringFi()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringFr()
+	std::string Menus_Maps_BallmerPeaks::getStringFr()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringHu()
+	std::string Menus_Maps_BallmerPeaks::getStringHu()
 	{
 		return "Ballmer csúcsok";
 	}
 
-	std::string BallmerPeaks::getStringIt()
+	std::string Menus_Maps_BallmerPeaks::getStringIt()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringJa()
+	std::string Menus_Maps_BallmerPeaks::getStringJa()
 	{
 		return "バルマーピークス";
 	}
 
-	std::string BallmerPeaks::getStringKo()
+	std::string Menus_Maps_BallmerPeaks::getStringKo()
 	{
 		return "발머 봉우리";
 	}
 
-	std::string BallmerPeaks::getStringNl()
+	std::string Menus_Maps_BallmerPeaks::getStringNl()
 	{
 		return "Ballmer pieken";
 	}
 
-	std::string BallmerPeaks::getStringNo()
+	std::string Menus_Maps_BallmerPeaks::getStringNo()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringPl()
+	std::string Menus_Maps_BallmerPeaks::getStringPl()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringPt()
+	std::string Menus_Maps_BallmerPeaks::getStringPt()
 	{
 		return "Picos de Ballmer";
 	}
 
-	std::string BallmerPeaks::getStringPtBr()
+	std::string Menus_Maps_BallmerPeaks::getStringPtBr()
 	{
 		return "Picos de Ballmer";
 	}
 
-	std::string BallmerPeaks::getStringRo()
+	std::string Menus_Maps_BallmerPeaks::getStringRo()
 	{
 		return "Vârfurile Ballmer";
 	}
 
-	std::string BallmerPeaks::getStringRu()
+	std::string Menus_Maps_BallmerPeaks::getStringRu()
 	{
 		return "Балмер Пикс";
 	}
 
-	std::string BallmerPeaks::getStringSv()
+	std::string Menus_Maps_BallmerPeaks::getStringSv()
 	{
 		return "Ballmer Peaks";
 	}
 
-	std::string BallmerPeaks::getStringTh()
+	std::string Menus_Maps_BallmerPeaks::getStringTh()
 	{
 		return "ยอด";
 	}
 
-	std::string BallmerPeaks::getStringTr()
+	std::string Menus_Maps_BallmerPeaks::getStringTr()
 	{
 		return "Ballmer Zirveleri";
 	}
 
-	std::string BallmerPeaks::getStringUk()
+	std::string Menus_Maps_BallmerPeaks::getStringUk()
 	{
 		return "Балмер Пікс";
 	}
 
-	std::string BallmerPeaks::getStringVi()
+	std::string Menus_Maps_BallmerPeaks::getStringVi()
 	{
 		return "Đỉnh Ballmer";
 	}
 
-	std::string BallmerPeaks::getStringZhCn()
+	std::string Menus_Maps_BallmerPeaks::getStringZhCn()
 	{
 		return "鲍尔默峰";
 	}
 
-	std::string BallmerPeaks::getStringZhTw()
+	std::string Menus_Maps_BallmerPeaks::getStringZhTw()
 	{
 		return "鮑爾默峰";
 	}

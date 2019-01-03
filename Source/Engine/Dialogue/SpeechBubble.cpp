@@ -7,6 +7,9 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/UI/FX/TypeWriterEffect.h"
+
+#include "Strings/Generics/Empty.h"
 
 using namespace cocos2d;
 
@@ -28,7 +31,7 @@ SpeechBubble::SpeechBubble()
 {
 	this->stem = DrawNode::create(3.0f);
 	this->bubble = DrawNode::create(3.0f);
-	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P);
+	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 
@@ -47,11 +50,18 @@ SpeechBubble::~SpeechBubble()
 
 void SpeechBubble::initializePositions()
 {
+	super::initializePositions();
+
 	const float offsetY = 32.0f;
 
 	this->bubble->setPositionY(offsetY);
 	this->stem->setPositionY(offsetY);
 	this->text->setPositionY(offsetY);
+}
+
+void SpeechBubble::initializeListeners()
+{
+	super::initializeListeners();
 }
 
 void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direction)
@@ -84,7 +94,7 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direc
 	this->text->runAction(FadeTo::create(0.5f, 255));
 
 	this->text->setLocalizedString(localizedString, Size(320.0f, 0.0f));
-	this->text->runTypeWriterEffect();
+	TypeWriterEffect::runTypeWriterEffect(this->text);
 
 	Size textSize = this->text->getContentSize();
 	std::vector<Vec2> trianglePoints = std::vector<Vec2>();

@@ -4,171 +4,171 @@
 
 #include "ShiftLeft.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	ShiftLeft* ShiftLeft::create()
+	Hexus_Cards_ShiftLeft* Hexus_Cards_ShiftLeft::create()
 	{
-		ShiftLeft* instance = new ShiftLeft();
+		Hexus_Cards_ShiftLeft* instance = new Hexus_Cards_ShiftLeft();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* ShiftLeft::clone()
+	LocalizedString* Hexus_Cards_ShiftLeft::clone()
 	{
-		return ShiftLeft::create();
+		return Hexus_Cards_ShiftLeft::create();
 	}
 
-	ShiftLeft::ShiftLeft() : LocalizedString()
-	{
-	}
-
-	ShiftLeft::~ShiftLeft()
+	Hexus_Cards_ShiftLeft::Hexus_Cards_ShiftLeft() : LocalizedString()
 	{
 	}
 
-	std::string ShiftLeft::getStringAr()
+	Hexus_Cards_ShiftLeft::~Hexus_Cards_ShiftLeft()
+	{
+	}
+
+	std::string Hexus_Cards_ShiftLeft::getStringAr()
 	{
 		return "تركت بت القطع";
 	}
 
-	std::string ShiftLeft::getStringBg()
+	std::string Hexus_Cards_ShiftLeft::getStringBg()
 	{
 		return "Остават бита за преместване";
 	}
 
-	std::string ShiftLeft::getStringCs()
+	std::string Hexus_Cards_ShiftLeft::getStringCs()
 	{
 		return "Posunout bity";
 	}
 
-	std::string ShiftLeft::getStringDa()
+	std::string Hexus_Cards_ShiftLeft::getStringDa()
 	{
 		return "Skift bit tilbage";
 	}
 
-	std::string ShiftLeft::getStringDe()
+	std::string Hexus_Cards_ShiftLeft::getStringDe()
 	{
 		return "Bits nach links verschieben";
 	}
 
-	std::string ShiftLeft::getStringEl()
+	std::string Hexus_Cards_ShiftLeft::getStringEl()
 	{
 		return "Αριστερά τα bits αλλαγής";
 	}
 
-	std::string ShiftLeft::getStringEn()
+	std::string Hexus_Cards_ShiftLeft::getStringEn()
 	{
 		return "Shift Bits Left";
 	}
 
-	std::string ShiftLeft::getStringEs()
+	std::string Hexus_Cards_ShiftLeft::getStringEs()
 	{
 		return "Desplazar bits a la izquierda";
 	}
 
-	std::string ShiftLeft::getStringEs419()
+	std::string Hexus_Cards_ShiftLeft::getStringEs419()
 	{
 		return "Desplazar bits a la izquierda";
 	}
 
-	std::string ShiftLeft::getStringFi()
+	std::string Hexus_Cards_ShiftLeft::getStringFi()
 	{
 		return "Vaihtobitit vasemmalle";
 	}
 
-	std::string ShiftLeft::getStringFr()
+	std::string Hexus_Cards_ShiftLeft::getStringFr()
 	{
 		return "Bits de décalage à gauche";
 	}
 
-	std::string ShiftLeft::getStringHu()
+	std::string Hexus_Cards_ShiftLeft::getStringHu()
 	{
 		return "A eltolás bitek maradtak";
 	}
 
-	std::string ShiftLeft::getStringIt()
+	std::string Hexus_Cards_ShiftLeft::getStringIt()
 	{
 		return "Maiuscole a sinistra";
 	}
 
-	std::string ShiftLeft::getStringJa()
+	std::string Hexus_Cards_ShiftLeft::getStringJa()
 	{
 		return "ビットを左にシフト";
 	}
 
-	std::string ShiftLeft::getStringKo()
+	std::string Hexus_Cards_ShiftLeft::getStringKo()
 	{
 		return "왼쪽으로 시프트 비트";
 	}
 
-	std::string ShiftLeft::getStringNl()
+	std::string Hexus_Cards_ShiftLeft::getStringNl()
 	{
 		return "Shift bits over";
 	}
 
-	std::string ShiftLeft::getStringNo()
+	std::string Hexus_Cards_ShiftLeft::getStringNo()
 	{
 		return "Skift bitene igjen";
 	}
 
-	std::string ShiftLeft::getStringPl()
+	std::string Hexus_Cards_ShiftLeft::getStringPl()
 	{
 		return "Pozostały bity Shift";
 	}
 
-	std::string ShiftLeft::getStringPt()
+	std::string Hexus_Cards_ShiftLeft::getStringPt()
 	{
 		return "Bits de mudança restantes";
 	}
 
-	std::string ShiftLeft::getStringPtBr()
+	std::string Hexus_Cards_ShiftLeft::getStringPtBr()
 	{
 		return "Bits de mudança restantes";
 	}
 
-	std::string ShiftLeft::getStringRo()
+	std::string Hexus_Cards_ShiftLeft::getStringRo()
 	{
 		return "Ați pierdut biții";
 	}
 
-	std::string ShiftLeft::getStringRu()
+	std::string Hexus_Cards_ShiftLeft::getStringRu()
 	{
 		return "Сдвиг битов влево";
 	}
 
-	std::string ShiftLeft::getStringSv()
+	std::string Hexus_Cards_ShiftLeft::getStringSv()
 	{
 		return "Skift bitar kvar";
 	}
 
-	std::string ShiftLeft::getStringTh()
+	std::string Hexus_Cards_ShiftLeft::getStringTh()
 	{
 		return "เลื่อนบิตไปทางซ้าย";
 	}
 
-	std::string ShiftLeft::getStringTr()
+	std::string Hexus_Cards_ShiftLeft::getStringTr()
 	{
 		return "Vites değiştirme bitleri sola";
 	}
 
-	std::string ShiftLeft::getStringUk()
+	std::string Hexus_Cards_ShiftLeft::getStringUk()
 	{
 		return "Біти Shift залишені";
 	}
 
-	std::string ShiftLeft::getStringVi()
+	std::string Hexus_Cards_ShiftLeft::getStringVi()
 	{
 		return "Thay đổi bit trái";
 	}
 
-	std::string ShiftLeft::getStringZhCn()
+	std::string Hexus_Cards_ShiftLeft::getStringZhCn()
 	{
 		return "转移位左";
 	}
 
-	std::string ShiftLeft::getStringZhTw()
+	std::string Hexus_Cards_ShiftLeft::getStringZhTw()
 	{
 		return "轉移位左";
 	}

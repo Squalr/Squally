@@ -43,7 +43,7 @@ void ObjectLayerDeserializer::initializeListeners()
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
 	);
 
-	this->addEventListener(deserializationRequestListener);
+	this->addGlobalEventListener(deserializationRequestListener);
 }
 
 void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)

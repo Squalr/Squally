@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/Victory.h"
+
 using namespace cocos2d;
 
 VictoryBanner* VictoryBanner::create()
@@ -23,7 +25,7 @@ VictoryBanner::VictoryBanner()
 	this->victoryBanner1 = Sprite::create(HexusResources::PlayerBanner);
 	this->victoryBanner2 = Sprite::create(HexusResources::PlayerBanner);
 
-	this->setBannerText("VICTORY!");
+	this->setBannerText(Strings::Hexus_Banners_Victory::create());
 
 	this->addBannerChild(this->victoryBanner1);
 	this->addBannerChild(this->victoryBanner2);

@@ -52,7 +52,7 @@ void PlatformerCollisionMapping::initializeListeners()
 		CollisionMappingEvents::RequestCollisionMapKeyMappingEvent,
 		CC_CALLBACK_1(PlatformerCollisionMapping::onMapKeyMappingRequest, this));
 
-	this->addEventListener(mapKeyMappingRequestEventListener);
+	this->addGlobalEventListener(mapKeyMappingRequestEventListener);
 }
 
 void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom)

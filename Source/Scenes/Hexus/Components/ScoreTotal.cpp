@@ -4,11 +4,14 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
 #include "Resources/HexusResources.h"
+
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 
@@ -24,12 +27,12 @@ ScoreTotal* ScoreTotal::create()
 ScoreTotal::ScoreTotal()
 {
 	this->playerTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->playerTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
+	this->playerTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 	this->playerTotal->enableOutline(Color4B::BLACK, 3);
 	this->playerLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
 	this->enemyTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->enemyTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3);
+	this->enemyTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, Strings::Generics_Constant::create());
 	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
@@ -86,8 +89,8 @@ void ScoreTotal::updateTotals(GameState* gameState)
 	int playerTotalAttack = gameState->getPlayerTotal();
 	int enemyTotalAttack = gameState->getEnemyTotal();
 
-	this->playerTotal->setString(std::to_string(playerTotalAttack));
-	this->enemyTotal->setString(std::to_string(enemyTotalAttack));
+	this->playerTotal->setStringReplacementVariables(ConstantString::create(std::to_string(playerTotalAttack)));
+	this->enemyTotal->setStringReplacementVariables(ConstantString::create(std::to_string(enemyTotalAttack)));
 
 	this->playerLeaderEmblem->stopAllActions();
 	this->enemyLeaderEmblem->stopAllActions();

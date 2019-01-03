@@ -40,7 +40,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->passSprite = Sprite::create(HexusResources::Flags);
 	this->passButton = IconMenuSprite::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
-	this->passLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Pass::create());
+	this->passLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Pass::create());
 
 	this->passParticles = ParticleSystemQuad::create(ParticleResources::Hexus_WhiteAura);
 	this->enemyPassSprite = Sprite::create(HexusResources::Flags);
@@ -50,7 +50,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
 	this->lastStandButton = IconMenuSprite::create(HexusResources::ShieldButton, HexusResources::ShieldButtonSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
-	this->lastStandLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::LastStand::create());
+	this->lastStandLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_LastStand::create());
 	
 	this->lastStandParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 	this->enemyLastStandSprite = Sprite::create(HexusResources::ShieldButton);
@@ -60,7 +60,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
 	this->claimVictoryButton = IconMenuSprite::create(HexusResources::Victory, HexusResources::VictorySelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
-	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::ClaimVictory::create());
+	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ClaimVictory::create());
 	
 	this->claimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 	this->enemyClaimVictorySprite = Sprite::create(HexusResources::Victory);

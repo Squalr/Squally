@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/OpponentRoundWin.h"
+
 using namespace cocos2d;
 
 OpponentRoundWinBanner* OpponentRoundWinBanner::create()
@@ -23,7 +25,7 @@ OpponentRoundWinBanner::OpponentRoundWinBanner()
 	this->playerPassBanner1 = Sprite::create(HexusResources::EnemyBanner);
 	this->playerPassBanner2 = Sprite::create(HexusResources::EnemyBanner);
 
-	this->setBannerText("OPPONENT WINS THE ROUND");
+	this->setBannerText(Strings::Hexus_Banners_OpponentRoundWin::create());
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);

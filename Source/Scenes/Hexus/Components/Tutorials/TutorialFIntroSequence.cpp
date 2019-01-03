@@ -2,7 +2,6 @@
 
 #include <vector>
 
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
@@ -18,7 +17,6 @@
 
 #include "Strings/Hexus/Tutorials/F/UseMov.h"
 #include "Strings/Menus/GotIt.h"
-#include "Strings/Menus/Next.h"
 
 using namespace cocos2d;
 
@@ -34,11 +32,11 @@ TutorialFIntroSequence* TutorialFIntroSequence::create()
 TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialF, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_F_UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
 
-	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
-	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
+	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
+	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

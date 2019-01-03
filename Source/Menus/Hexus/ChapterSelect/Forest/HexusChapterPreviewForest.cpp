@@ -22,7 +22,7 @@ HexusChapterPreviewForest* HexusChapterPreviewForest::create()
 	return instance;
 }
 
-HexusChapterPreviewForest::HexusChapterPreviewForest() : HexusChapterPreview(HexusChapterPreviewForest::SaveKeyChapterName, LocaleStrings::EndianForest::create())
+HexusChapterPreviewForest::HexusChapterPreviewForest() : HexusChapterPreview(HexusChapterPreviewForest::SaveKeyChapterName, Strings::Menus_Maps_EndianForest::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest));
 }

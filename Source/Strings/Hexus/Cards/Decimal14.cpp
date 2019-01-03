@@ -4,171 +4,171 @@
 
 #include "Decimal14.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal14* Decimal14::create()
+	Hexus_Cards_Decimal14* Hexus_Cards_Decimal14::create()
 	{
-		Decimal14* instance = new Decimal14();
+		Hexus_Cards_Decimal14* instance = new Hexus_Cards_Decimal14();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal14::clone()
+	LocalizedString* Hexus_Cards_Decimal14::clone()
 	{
-		return Decimal14::create();
+		return Hexus_Cards_Decimal14::create();
 	}
 
-	Decimal14::Decimal14() : LocalizedString()
-	{
-	}
-
-	Decimal14::~Decimal14()
+	Hexus_Cards_Decimal14::Hexus_Cards_Decimal14() : LocalizedString()
 	{
 	}
 
-	std::string Decimal14::getStringAr()
+	Hexus_Cards_Decimal14::~Hexus_Cards_Decimal14()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal14::getStringAr()
 	{
 		return "هائج";
 	}
 
-	std::string Decimal14::getStringBg()
+	std::string Hexus_Cards_Decimal14::getStringBg()
 	{
 		return "неустрашим войн";
 	}
 
-	std::string Decimal14::getStringCs()
+	std::string Hexus_Cards_Decimal14::getStringCs()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringDa()
+	std::string Hexus_Cards_Decimal14::getStringDa()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringDe()
+	std::string Hexus_Cards_Decimal14::getStringDe()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringEl()
+	std::string Hexus_Cards_Decimal14::getStringEl()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringEn()
+	std::string Hexus_Cards_Decimal14::getStringEn()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringEs()
+	std::string Hexus_Cards_Decimal14::getStringEs()
 	{
 		return "frenético";
 	}
 
-	std::string Decimal14::getStringEs419()
+	std::string Hexus_Cards_Decimal14::getStringEs419()
 	{
 		return "frenético";
 	}
 
-	std::string Decimal14::getStringFi()
+	std::string Hexus_Cards_Decimal14::getStringFi()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringFr()
+	std::string Hexus_Cards_Decimal14::getStringFr()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringHu()
+	std::string Hexus_Cards_Decimal14::getStringHu()
 	{
 		return "dühödt";
 	}
 
-	std::string Decimal14::getStringIt()
+	std::string Hexus_Cards_Decimal14::getStringIt()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringJa()
+	std::string Hexus_Cards_Decimal14::getStringJa()
 	{
 		return "バーサーカー";
 	}
 
-	std::string Decimal14::getStringKo()
+	std::string Hexus_Cards_Decimal14::getStringKo()
 	{
 		return "맹렬한";
 	}
 
-	std::string Decimal14::getStringNl()
+	std::string Hexus_Cards_Decimal14::getStringNl()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringNo()
+	std::string Hexus_Cards_Decimal14::getStringNo()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringPl()
+	std::string Hexus_Cards_Decimal14::getStringPl()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringPt()
+	std::string Hexus_Cards_Decimal14::getStringPt()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringPtBr()
+	std::string Hexus_Cards_Decimal14::getStringPtBr()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringRo()
+	std::string Hexus_Cards_Decimal14::getStringRo()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringRu()
+	std::string Hexus_Cards_Decimal14::getStringRu()
 	{
 		return "берсерк";
 	}
 
-	std::string Decimal14::getStringSv()
+	std::string Hexus_Cards_Decimal14::getStringSv()
 	{
 		return "Bärsärk";
 	}
 
-	std::string Decimal14::getStringTh()
+	std::string Hexus_Cards_Decimal14::getStringTh()
 	{
 		return "บ้าบิ่น";
 	}
 
-	std::string Decimal14::getStringTr()
+	std::string Hexus_Cards_Decimal14::getStringTr()
 	{
 		return "vahşi savaşçı";
 	}
 
-	std::string Decimal14::getStringUk()
+	std::string Hexus_Cards_Decimal14::getStringUk()
 	{
 		return "Берсерк";
 	}
 
-	std::string Decimal14::getStringVi()
+	std::string Hexus_Cards_Decimal14::getStringVi()
 	{
 		return "Berserker";
 	}
 
-	std::string Decimal14::getStringZhCn()
+	std::string Hexus_Cards_Decimal14::getStringZhCn()
 	{
 		return "狂战士";
 	}
 
-	std::string Decimal14::getStringZhTw()
+	std::string Hexus_Cards_Decimal14::getStringZhTw()
 	{
 		return "狂戰士";
 	}

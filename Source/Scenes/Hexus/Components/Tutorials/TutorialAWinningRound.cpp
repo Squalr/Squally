@@ -32,11 +32,11 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::WinningRound::create(), Size(420.0f, 0.0f));
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_WinningRound::create(), Size(420.0f, 0.0f));
 	this->helpArrowScoreTotals = HelpArrow::create();
 
-	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
-	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);

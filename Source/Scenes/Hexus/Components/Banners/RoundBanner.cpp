@@ -7,6 +7,10 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/FinalRound.h"
+#include "Strings/Hexus/Banners/NextRound.h"
+#include "Strings/Hexus/Banners/RoundStart.h"
+
 using namespace cocos2d;
 
 RoundBanner* RoundBanner::create()
@@ -55,17 +59,23 @@ void RoundBanner::onAnyStateChange(GameState* gameState)
 		switch (gameState->roundNumber)
 		{
 			case 0:
-				this->setBannerText("ROUND START!");
+			{
+				this->setBannerText(Strings::Hexus_Banners_FinalRound::create());
 				break;
+			}
 			case 1:
-				this->setBannerText("NEXT ROUND!");
+			{
+				this->setBannerText(Strings::Hexus_Banners_NextRound::create());
 				break;
+			}
 			case 2:
 			default:
-				this->setBannerText("FINAL ROUND!");
+			{
+				this->setBannerText(Strings::Hexus_Banners_FinalRound::create());
 				break;
-
+			}
 		}
+
 		this->flashBanner();
 	}
 }

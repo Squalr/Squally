@@ -4,171 +4,171 @@
 
 #include "Hex4.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex4* Hex4::create()
+	Hexus_Cards_Hex4* Hexus_Cards_Hex4::create()
 	{
-		Hex4* instance = new Hex4();
+		Hexus_Cards_Hex4* instance = new Hexus_Cards_Hex4();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex4::clone()
+	LocalizedString* Hexus_Cards_Hex4::clone()
 	{
-		return Hex4::create();
+		return Hexus_Cards_Hex4::create();
 	}
 
-	Hex4::Hex4() : LocalizedString()
-	{
-	}
-
-	Hex4::~Hex4()
+	Hexus_Cards_Hex4::Hexus_Cards_Hex4() : LocalizedString()
 	{
 	}
 
-	std::string Hex4::getStringAr()
+	Hexus_Cards_Hex4::~Hexus_Cards_Hex4()
 	{
-		return "Gnip";
 	}
 
-	std::string Hex4::getStringBg()
+	std::string Hexus_Cards_Hex4::getStringAr()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringCs()
+	std::string Hexus_Cards_Hex4::getStringBg()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringDa()
+	std::string Hexus_Cards_Hex4::getStringCs()
+	{
+		return "Gnip";
+	}
+
+	std::string Hexus_Cards_Hex4::getStringDa()
 	{
 		return "GNIP";
 	}
 
-	std::string Hex4::getStringDe()
+	std::string Hexus_Cards_Hex4::getStringDe()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringEl()
+	std::string Hexus_Cards_Hex4::getStringEl()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringEn()
+	std::string Hexus_Cards_Hex4::getStringEn()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringEs()
+	std::string Hexus_Cards_Hex4::getStringEs()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringEs419()
+	std::string Hexus_Cards_Hex4::getStringEs419()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringFi()
+	std::string Hexus_Cards_Hex4::getStringFi()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringFr()
+	std::string Hexus_Cards_Hex4::getStringFr()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringHu()
+	std::string Hexus_Cards_Hex4::getStringHu()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringIt()
+	std::string Hexus_Cards_Hex4::getStringIt()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringJa()
+	std::string Hexus_Cards_Hex4::getStringJa()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringKo()
+	std::string Hexus_Cards_Hex4::getStringKo()
 	{
 		return "지니";
 	}
 
-	std::string Hex4::getStringNl()
+	std::string Hexus_Cards_Hex4::getStringNl()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringNo()
+	std::string Hexus_Cards_Hex4::getStringNo()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringPl()
+	std::string Hexus_Cards_Hex4::getStringPl()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringPt()
+	std::string Hexus_Cards_Hex4::getStringPt()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringPtBr()
+	std::string Hexus_Cards_Hex4::getStringPtBr()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringRo()
+	std::string Hexus_Cards_Hex4::getStringRo()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringRu()
+	std::string Hexus_Cards_Hex4::getStringRu()
 	{
 		return "Гнип";
 	}
 
-	std::string Hex4::getStringSv()
+	std::string Hexus_Cards_Hex4::getStringSv()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringTh()
+	std::string Hexus_Cards_Hex4::getStringTh()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringTr()
+	std::string Hexus_Cards_Hex4::getStringTr()
 	{
 		return "Gnip";
 	}
 
-	std::string Hex4::getStringUk()
+	std::string Hexus_Cards_Hex4::getStringUk()
 	{
 		return "Гніп";
 	}
 
-	std::string Hex4::getStringVi()
+	std::string Hexus_Cards_Hex4::getStringVi()
 	{
 		return "Thế giới";
 	}
 
-	std::string Hex4::getStringZhCn()
+	std::string Hexus_Cards_Hex4::getStringZhCn()
 	{
 		return "GNIP";
 	}
 
-	std::string Hex4::getStringZhTw()
+	std::string Hexus_Cards_Hex4::getStringZhTw()
 	{
 		return "GNIP";
 	}

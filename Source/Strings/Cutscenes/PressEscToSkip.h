@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class PressEscToSkip : public LocalizedString
+	class Cutscenes_PressEscToSkip : public LocalizedString
 	{
 	public:
-		static PressEscToSkip* create();
+		static Cutscenes_PressEscToSkip* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		PressEscToSkip();
-		~PressEscToSkip();
+		Cutscenes_PressEscToSkip();
+		~Cutscenes_PressEscToSkip();
 	};
 }

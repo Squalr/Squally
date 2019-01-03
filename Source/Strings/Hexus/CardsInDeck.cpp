@@ -4,171 +4,171 @@
 
 #include "CardsInDeck.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	CardsInDeck* CardsInDeck::create()
+	Hexus_CardsInDeck* Hexus_CardsInDeck::create()
 	{
-		CardsInDeck* instance = new CardsInDeck();
+		Hexus_CardsInDeck* instance = new Hexus_CardsInDeck();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* CardsInDeck::clone()
+	LocalizedString* Hexus_CardsInDeck::clone()
 	{
-		return CardsInDeck::create();
+		return Hexus_CardsInDeck::create();
 	}
 
-	CardsInDeck::CardsInDeck() : LocalizedString()
-	{
-	}
-
-	CardsInDeck::~CardsInDeck()
+	Hexus_CardsInDeck::Hexus_CardsInDeck() : LocalizedString()
 	{
 	}
 
-	std::string CardsInDeck::getStringAr()
+	Hexus_CardsInDeck::~Hexus_CardsInDeck()
+	{
+	}
+
+	std::string Hexus_CardsInDeck::getStringAr()
 	{
 		return "بطاقات في الطابق";
 	}
 
-	std::string CardsInDeck::getStringBg()
+	std::string Hexus_CardsInDeck::getStringBg()
 	{
 		return "Карти в палубата";
 	}
 
-	std::string CardsInDeck::getStringCs()
+	std::string Hexus_CardsInDeck::getStringCs()
 	{
 		return "Karty v balíčku";
 	}
 
-	std::string CardsInDeck::getStringDa()
+	std::string Hexus_CardsInDeck::getStringDa()
 	{
 		return "Kort i dæk";
 	}
 
-	std::string CardsInDeck::getStringDe()
+	std::string Hexus_CardsInDeck::getStringDe()
 	{
 		return "Karten im Deck";
 	}
 
-	std::string CardsInDeck::getStringEl()
+	std::string Hexus_CardsInDeck::getStringEl()
 	{
 		return "Κάρτες στο κατάστρωμα";
 	}
 
-	std::string CardsInDeck::getStringEn()
+	std::string Hexus_CardsInDeck::getStringEn()
 	{
 		return "Cards in Deck";
 	}
 
-	std::string CardsInDeck::getStringEs()
+	std::string Hexus_CardsInDeck::getStringEs()
 	{
 		return "Cartas en cubierta";
 	}
 
-	std::string CardsInDeck::getStringEs419()
+	std::string Hexus_CardsInDeck::getStringEs419()
 	{
 		return "Cartas en cubierta";
 	}
 
-	std::string CardsInDeck::getStringFi()
+	std::string Hexus_CardsInDeck::getStringFi()
 	{
 		return "Kortit kannessa";
 	}
 
-	std::string CardsInDeck::getStringFr()
+	std::string Hexus_CardsInDeck::getStringFr()
 	{
 		return "Cartes dans le pont";
 	}
 
-	std::string CardsInDeck::getStringHu()
+	std::string Hexus_CardsInDeck::getStringHu()
 	{
 		return "Kártyák a fedélzeten";
 	}
 
-	std::string CardsInDeck::getStringIt()
+	std::string Hexus_CardsInDeck::getStringIt()
 	{
 		return "Carte nel mazzo";
 	}
 
-	std::string CardsInDeck::getStringJa()
+	std::string Hexus_CardsInDeck::getStringJa()
 	{
 		return "デッキのカード";
 	}
 
-	std::string CardsInDeck::getStringKo()
+	std::string Hexus_CardsInDeck::getStringKo()
 	{
 		return "갑판의 카드";
 	}
 
-	std::string CardsInDeck::getStringNl()
+	std::string Hexus_CardsInDeck::getStringNl()
 	{
 		return "Kaarten in Deck";
 	}
 
-	std::string CardsInDeck::getStringNo()
+	std::string Hexus_CardsInDeck::getStringNo()
 	{
 		return "Kort i dekk";
 	}
 
-	std::string CardsInDeck::getStringPl()
+	std::string Hexus_CardsInDeck::getStringPl()
 	{
 		return "Karty w talii";
 	}
 
-	std::string CardsInDeck::getStringPt()
+	std::string Hexus_CardsInDeck::getStringPt()
 	{
 		return "Cartões no convés";
 	}
 
-	std::string CardsInDeck::getStringPtBr()
+	std::string Hexus_CardsInDeck::getStringPtBr()
 	{
 		return "Cartões no convés";
 	}
 
-	std::string CardsInDeck::getStringRo()
+	std::string Hexus_CardsInDeck::getStringRo()
 	{
 		return "Carduri în punte";
 	}
 
-	std::string CardsInDeck::getStringRu()
+	std::string Hexus_CardsInDeck::getStringRu()
 	{
 		return "Карты в колоде";
 	}
 
-	std::string CardsInDeck::getStringSv()
+	std::string Hexus_CardsInDeck::getStringSv()
 	{
 		return "Kort i däck";
 	}
 
-	std::string CardsInDeck::getStringTh()
+	std::string Hexus_CardsInDeck::getStringTh()
 	{
 		return "ไพ่ในสำรับ";
 	}
 
-	std::string CardsInDeck::getStringTr()
+	std::string Hexus_CardsInDeck::getStringTr()
 	{
 		return "Güverte Kartları";
 	}
 
-	std::string CardsInDeck::getStringUk()
+	std::string Hexus_CardsInDeck::getStringUk()
 	{
 		return "Карти в палубі";
 	}
 
-	std::string CardsInDeck::getStringVi()
+	std::string Hexus_CardsInDeck::getStringVi()
 	{
 		return "Thẻ trong bộ bài";
 	}
 
-	std::string CardsInDeck::getStringZhCn()
+	std::string Hexus_CardsInDeck::getStringZhCn()
 	{
 		return "甲板上的卡片";
 	}
 
-	std::string CardsInDeck::getStringZhTw()
+	std::string Hexus_CardsInDeck::getStringZhTw()
 	{
 		return "甲板上的卡片";
 	}

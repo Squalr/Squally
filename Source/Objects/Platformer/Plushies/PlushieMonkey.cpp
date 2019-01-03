@@ -11,7 +11,9 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Empty.h"
+#include "Strings/Generics/Constant.h"
+#include "Strings/Generics/Empty.h"
+#include "Strings/Generics/PlusConstant.h"
 
 using namespace cocos2d;
 
@@ -30,9 +32,11 @@ PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(UIResources::Menus_Icons_Coins);
-	LocalizedLabel* gold = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
 
-	gold->setString("+200");
+	ConstantString* goldString = ConstantString::create("+200");
+	LocalizedLabel* gold = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_PlusConstant::create());
+
+	gold->setStringReplacementVariables(goldString);
 	gold->enableOutline(Color4B::BLACK, 2);
 
 	coin->setScale(0.5f);
@@ -42,9 +46,12 @@ PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
 	this->sprite->addChild(coin);
 	this->sprite->addChild(gold);
 
-	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2);
+	this->valueString = ConstantString::create();
+	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
 
-	this->valueLabel->setString(std::to_string(PlushieMonkey::lockCountDown));
+	this->valueString->setString(std::to_string(PlushieMonkey::lockCountDown));
+
+	this->valueLabel->setStringReplacementVariables(this->valueString);
 	this->valueLabel->setPosition(-48.0f, 128.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
 
@@ -90,7 +97,7 @@ void PlushieMonkey::update(float dt)
 		PlushieMonkey::lockCountDown = std::max(0, PlushieMonkey::lockCountDown);
 
 		// Update text
-		this->valueLabel->setString(std::to_string(PlushieMonkey::lockCountDown));
+		this->valueString->setString(std::to_string(PlushieMonkey::lockCountDown));
 
 		// Set color
 		if (PlushieMonkey::lockCountDown > 0)
@@ -137,9 +144,9 @@ void PlushieMonkey::registerHackables()
 {
 	Plushie::registerHackables();
 
-	this->puzzleData = HackableData::create( &PlushieMonkey::lockCountDown, LocaleStrings::Empty::create(), typeid(PlushieMonkey::lockCountDown), UIResources::Menus_Icons_Lock);
+	this->puzzleData = HackableData::create( &PlushieMonkey::lockCountDown, Strings::Generics_Empty::create(), typeid(PlushieMonkey::lockCountDown), UIResources::Menus_Icons_Lock);
 	this->registerData(this->puzzleData);
 	
-	this->registerData(HackableData::create(this->chest, LocaleStrings::Empty::create(), typeid((unsigned int)((unsigned long)this->chest)), UIResources::Menus_Icons_Heart));
+	this->registerData(HackableData::create(this->chest, Strings::Generics_Empty::create(), typeid((unsigned int)((unsigned long)this->chest)), UIResources::Menus_Icons_Heart));
 	//this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Menus_HackerModeMenu_Icons_AlchemyPot));
 }

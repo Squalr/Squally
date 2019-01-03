@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class Decimal12 : public LocalizedString
+	class Hexus_Cards_Decimal12 : public LocalizedString
 	{
 	public:
-		static Decimal12* create();
+		static Hexus_Cards_Decimal12* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Decimal12();
-		~Decimal12();
+		Hexus_Cards_Decimal12();
+		~Hexus_Cards_Decimal12();
 	};
 }

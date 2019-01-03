@@ -4,171 +4,171 @@
 
 #include "Hex10.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hex10* Hex10::create()
+	Hexus_Cards_Hex10* Hexus_Cards_Hex10::create()
 	{
-		Hex10* instance = new Hex10();
+		Hexus_Cards_Hex10* instance = new Hexus_Cards_Hex10();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hex10::clone()
+	LocalizedString* Hexus_Cards_Hex10::clone()
 	{
-		return Hex10::create();
+		return Hexus_Cards_Hex10::create();
 	}
 
-	Hex10::Hex10() : LocalizedString()
-	{
-	}
-
-	Hex10::~Hex10()
+	Hexus_Cards_Hex10::Hexus_Cards_Hex10() : LocalizedString()
 	{
 	}
 
-	std::string Hex10::getStringAr()
+	Hexus_Cards_Hex10::~Hexus_Cards_Hex10()
+	{
+	}
+
+	std::string Hexus_Cards_Hex10::getStringAr()
 	{
 		return "كارل";
 	}
 
-	std::string Hex10::getStringBg()
+	std::string Hexus_Cards_Hex10::getStringBg()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringCs()
+	std::string Hexus_Cards_Hex10::getStringCs()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringDa()
+	std::string Hexus_Cards_Hex10::getStringDa()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringDe()
+	std::string Hexus_Cards_Hex10::getStringDe()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringEl()
+	std::string Hexus_Cards_Hex10::getStringEl()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringEn()
+	std::string Hexus_Cards_Hex10::getStringEn()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringEs()
+	std::string Hexus_Cards_Hex10::getStringEs()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringEs419()
+	std::string Hexus_Cards_Hex10::getStringEs419()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringFi()
+	std::string Hexus_Cards_Hex10::getStringFi()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringFr()
+	std::string Hexus_Cards_Hex10::getStringFr()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringHu()
+	std::string Hexus_Cards_Hex10::getStringHu()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringIt()
+	std::string Hexus_Cards_Hex10::getStringIt()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringJa()
+	std::string Hexus_Cards_Hex10::getStringJa()
 	{
 		return "カール";
 	}
 
-	std::string Hex10::getStringKo()
+	std::string Hexus_Cards_Hex10::getStringKo()
 	{
 		return "칼";
 	}
 
-	std::string Hex10::getStringNl()
+	std::string Hexus_Cards_Hex10::getStringNl()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringNo()
+	std::string Hexus_Cards_Hex10::getStringNo()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringPl()
+	std::string Hexus_Cards_Hex10::getStringPl()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringPt()
+	std::string Hexus_Cards_Hex10::getStringPt()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringPtBr()
+	std::string Hexus_Cards_Hex10::getStringPtBr()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringRo()
+	std::string Hexus_Cards_Hex10::getStringRo()
 	{
 		return "șerb";
 	}
 
-	std::string Hex10::getStringRu()
+	std::string Hexus_Cards_Hex10::getStringRu()
 	{
 		return "деревенщина";
 	}
 
-	std::string Hex10::getStringSv()
+	std::string Hexus_Cards_Hex10::getStringSv()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringTh()
+	std::string Hexus_Cards_Hex10::getStringTh()
 	{
 		return "คาร์ล";
 	}
 
-	std::string Hex10::getStringTr()
+	std::string Hexus_Cards_Hex10::getStringTr()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringUk()
+	std::string Hexus_Cards_Hex10::getStringUk()
 	{
 		return "Карл";
 	}
 
-	std::string Hex10::getStringVi()
+	std::string Hexus_Cards_Hex10::getStringVi()
 	{
 		return "Carl";
 	}
 
-	std::string Hex10::getStringZhCn()
+	std::string Hexus_Cards_Hex10::getStringZhCn()
 	{
 		return "卡尔";
 	}
 
-	std::string Hex10::getStringZhTw()
+	std::string Hexus_Cards_Hex10::getStringZhTw()
 	{
 		return "卡爾";
 	}

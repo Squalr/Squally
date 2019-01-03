@@ -4,171 +4,171 @@
 
 #include "Hexus.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Hexus* Hexus::create()
+	Hexus_Hexus* Hexus_Hexus::create()
 	{
-		Hexus* instance = new Hexus();
+		Hexus_Hexus* instance = new Hexus_Hexus();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Hexus::clone()
+	LocalizedString* Hexus_Hexus::clone()
 	{
-		return Hexus::create();
+		return Hexus_Hexus::create();
 	}
 
-	Hexus::Hexus() : LocalizedString()
-	{
-	}
-
-	Hexus::~Hexus()
+	Hexus_Hexus::Hexus_Hexus() : LocalizedString()
 	{
 	}
 
-	std::string Hexus::getStringAr()
+	Hexus_Hexus::~Hexus_Hexus()
+	{
+	}
+
+	std::string Hexus_Hexus::getStringAr()
 	{
 		return "عرافة";
 	}
 
-	std::string Hexus::getStringBg()
+	std::string Hexus_Hexus::getStringBg()
 	{
 		return "магия";
 	}
 
-	std::string Hexus::getStringCs()
+	std::string Hexus_Hexus::getStringCs()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringDa()
+	std::string Hexus_Hexus::getStringDa()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringDe()
+	std::string Hexus_Hexus::getStringDe()
 	{
 		return "Verhexen";
 	}
 
-	std::string Hexus::getStringEl()
+	std::string Hexus_Hexus::getStringEl()
 	{
 		return "Μαγεύω";
 	}
 
-	std::string Hexus::getStringEn()
+	std::string Hexus_Hexus::getStringEn()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringEs()
+	std::string Hexus_Hexus::getStringEs()
 	{
 		return "Maleficio";
 	}
 
-	std::string Hexus::getStringEs419()
+	std::string Hexus_Hexus::getStringEs419()
 	{
 		return "Maleficio";
 	}
 
-	std::string Hexus::getStringFi()
+	std::string Hexus_Hexus::getStringFi()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringFr()
+	std::string Hexus_Hexus::getStringFr()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringHu()
+	std::string Hexus_Hexus::getStringHu()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringIt()
+	std::string Hexus_Hexus::getStringIt()
 	{
 		return "Esadecimale";
 	}
 
-	std::string Hexus::getStringJa()
+	std::string Hexus_Hexus::getStringJa()
 	{
 		return "六角";
 	}
 
-	std::string Hexus::getStringKo()
+	std::string Hexus_Hexus::getStringKo()
 	{
 		return "마녀";
 	}
 
-	std::string Hexus::getStringNl()
+	std::string Hexus_Hexus::getStringNl()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringNo()
+	std::string Hexus_Hexus::getStringNo()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringPl()
+	std::string Hexus_Hexus::getStringPl()
 	{
 		return "Klątwa";
 	}
 
-	std::string Hexus::getStringPt()
+	std::string Hexus_Hexus::getStringPt()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringPtBr()
+	std::string Hexus_Hexus::getStringPtBr()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringRo()
+	std::string Hexus_Hexus::getStringRo()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringRu()
+	std::string Hexus_Hexus::getStringRu()
 	{
 		return "наговор";
 	}
 
-	std::string Hexus::getStringSv()
+	std::string Hexus_Hexus::getStringSv()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringTh()
+	std::string Hexus_Hexus::getStringTh()
 	{
 		return "แม่มด";
 	}
 
-	std::string Hexus::getStringTr()
+	std::string Hexus_Hexus::getStringTr()
 	{
 		return "büyü";
 	}
 
-	std::string Hexus::getStringUk()
+	std::string Hexus_Hexus::getStringUk()
 	{
 		return "Hexus";
 	}
 
-	std::string Hexus::getStringVi()
+	std::string Hexus_Hexus::getStringVi()
 	{
 		return "Lục giác";
 	}
 
-	std::string Hexus::getStringZhCn()
+	std::string Hexus_Hexus::getStringZhCn()
 	{
 		return "十六进制";
 	}
 
-	std::string Hexus::getStringZhTw()
+	std::string Hexus_Hexus::getStringZhTw()
 	{
 		return "十六進制";
 	}

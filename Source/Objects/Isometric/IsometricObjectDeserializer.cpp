@@ -34,7 +34,7 @@ void IsometricObjectDeserializer::initializeListeners()
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
 	);
 
-	this->addEventListener(deserializationRequestListener);
+	this->addGlobalEventListener(deserializationRequestListener);
 }
 
 void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)

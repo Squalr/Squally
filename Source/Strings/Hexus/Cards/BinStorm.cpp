@@ -4,171 +4,171 @@
 
 #include "BinStorm.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	BinStorm* BinStorm::create()
+	Hexus_Cards_BinStorm* Hexus_Cards_BinStorm::create()
 	{
-		BinStorm* instance = new BinStorm();
+		Hexus_Cards_BinStorm* instance = new Hexus_Cards_BinStorm();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* BinStorm::clone()
+	LocalizedString* Hexus_Cards_BinStorm::clone()
 	{
-		return BinStorm::create();
+		return Hexus_Cards_BinStorm::create();
 	}
 
-	BinStorm::BinStorm() : LocalizedString()
-	{
-	}
-
-	BinStorm::~BinStorm()
+	Hexus_Cards_BinStorm::Hexus_Cards_BinStorm() : LocalizedString()
 	{
 	}
 
-	std::string BinStorm::getStringAr()
+	Hexus_Cards_BinStorm::~Hexus_Cards_BinStorm()
+	{
+	}
+
+	std::string Hexus_Cards_BinStorm::getStringAr()
 	{
 		return "عاصفة ثنائية";
 	}
 
-	std::string BinStorm::getStringBg()
+	std::string Hexus_Cards_BinStorm::getStringBg()
 	{
 		return "бинарна буря";
 	}
 
-	std::string BinStorm::getStringCs()
+	std::string Hexus_Cards_BinStorm::getStringCs()
 	{
 		return "binární bouře";
 	}
 
-	std::string BinStorm::getStringDa()
+	std::string Hexus_Cards_BinStorm::getStringDa()
 	{
 		return "binær storm";
 	}
 
-	std::string BinStorm::getStringDe()
+	std::string Hexus_Cards_BinStorm::getStringDe()
 	{
 		return "binärer Sturm";
 	}
 
-	std::string BinStorm::getStringEl()
+	std::string Hexus_Cards_BinStorm::getStringEl()
 	{
 		return "δυαδική καταιγίδα";
 	}
 
-	std::string BinStorm::getStringEn()
+	std::string Hexus_Cards_BinStorm::getStringEn()
 	{
 		return "Bin Storm";
 	}
 
-	std::string BinStorm::getStringEs()
+	std::string Hexus_Cards_BinStorm::getStringEs()
 	{
 		return "tormenta binaria";
 	}
 
-	std::string BinStorm::getStringEs419()
+	std::string Hexus_Cards_BinStorm::getStringEs419()
 	{
 		return "tormenta binaria";
 	}
 
-	std::string BinStorm::getStringFi()
+	std::string Hexus_Cards_BinStorm::getStringFi()
 	{
 		return "binaarinen myrsky";
 	}
 
-	std::string BinStorm::getStringFr()
+	std::string Hexus_Cards_BinStorm::getStringFr()
 	{
 		return "tempête binaire";
 	}
 
-	std::string BinStorm::getStringHu()
+	std::string Hexus_Cards_BinStorm::getStringHu()
 	{
 		return "bináris vihar";
 	}
 
-	std::string BinStorm::getStringIt()
+	std::string Hexus_Cards_BinStorm::getStringIt()
 	{
 		return "tempesta binaria";
 	}
 
-	std::string BinStorm::getStringJa()
+	std::string Hexus_Cards_BinStorm::getStringJa()
 	{
 		return "バイナリストーム";
 	}
 
-	std::string BinStorm::getStringKo()
+	std::string Hexus_Cards_BinStorm::getStringKo()
 	{
 		return "이진 폭풍";
 	}
 
-	std::string BinStorm::getStringNl()
+	std::string Hexus_Cards_BinStorm::getStringNl()
 	{
 		return "binaire storm";
 	}
 
-	std::string BinStorm::getStringNo()
+	std::string Hexus_Cards_BinStorm::getStringNo()
 	{
 		return "binær storm";
 	}
 
-	std::string BinStorm::getStringPl()
+	std::string Hexus_Cards_BinStorm::getStringPl()
 	{
 		return "burza binarna";
 	}
 
-	std::string BinStorm::getStringPt()
+	std::string Hexus_Cards_BinStorm::getStringPt()
 	{
 		return "tempestade binária";
 	}
 
-	std::string BinStorm::getStringPtBr()
+	std::string Hexus_Cards_BinStorm::getStringPtBr()
 	{
 		return "tempestade binária";
 	}
 
-	std::string BinStorm::getStringRo()
+	std::string Hexus_Cards_BinStorm::getStringRo()
 	{
 		return "furtună binară";
 	}
 
-	std::string BinStorm::getStringRu()
+	std::string Hexus_Cards_BinStorm::getStringRu()
 	{
 		return "бинарный шторм";
 	}
 
-	std::string BinStorm::getStringSv()
+	std::string Hexus_Cards_BinStorm::getStringSv()
 	{
 		return "binär storm";
 	}
 
-	std::string BinStorm::getStringTh()
+	std::string Hexus_Cards_BinStorm::getStringTh()
 	{
 		return "พายุไบนารี";
 	}
 
-	std::string BinStorm::getStringTr()
+	std::string Hexus_Cards_BinStorm::getStringTr()
 	{
 		return "ikili fırtına";
 	}
 
-	std::string BinStorm::getStringUk()
+	std::string Hexus_Cards_BinStorm::getStringUk()
 	{
 		return "бінарний шторм";
 	}
 
-	std::string BinStorm::getStringVi()
+	std::string Hexus_Cards_BinStorm::getStringVi()
 	{
 		return "cơn bão nhị phân";
 	}
 
-	std::string BinStorm::getStringZhCn()
+	std::string Hexus_Cards_BinStorm::getStringZhCn()
 	{
 		return "二元风暴";
 	}
 
-	std::string BinStorm::getStringZhTw()
+	std::string Hexus_Cards_BinStorm::getStringZhTw()
 	{
 		return "二元風暴";
 	}
