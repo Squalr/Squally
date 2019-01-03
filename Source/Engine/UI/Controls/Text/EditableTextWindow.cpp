@@ -10,6 +10,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 
+#include "Strings/Generics/Newline.h"
+
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
@@ -179,7 +181,7 @@ void EditableTextWindow::constructTokenizedText(std::string currentText)
 	{
 		EditableTextWindow::token token = *tokenIterator;
 
-		if (token.tokenStr == "\n")
+		if (dynamic_cast<Strings::Generics_Newline*>(token.tokenStr) != nullptr)
 		{
 			this->insertNewline();
 		}

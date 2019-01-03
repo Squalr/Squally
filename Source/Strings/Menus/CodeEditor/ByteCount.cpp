@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_ByteCount::getStringAr()
 	{
-		return "الحالة";
+		return "عدد البايتات: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringBg()
 	{
-		return "Статус";
+		return "Брой на байтовете: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringCs()
 	{
-		return "Postavení";
+		return "Počet bajtů: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringDa()
 	{
-		return "status";
+		return "Byte tæller: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringDe()
 	{
-		return "Status";
+		return "Byte Anzahl: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Αριθμός μετρήσεων: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringEn()
 	{
-		return "Status";
+		return "Byte count: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringEs()
 	{
-		return "Estado";
+		return "Recuento de bytes: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringEs419()
 	{
-		return "Estado";
+		return "Recuento de bytes: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringFi()
 	{
-		return "Status";
+		return "Tavun määrä: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringFr()
 	{
-		return "Statut";
+		return "Nombre d'octets : ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringHu()
 	{
-		return "Állapot";
+		return "Bájtszám: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringIt()
 	{
-		return "Stato";
+		return "Conteggio byte: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringJa()
 	{
-		return "状態";
+		return "バイト数： ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringKo()
 	{
-		return "지위";
+		return "바이트 수: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringNl()
 	{
-		return "staat";
+		return "Byte telling: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringNo()
 	{
-		return "Status";
+		return "Byte teller: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringPl()
 	{
-		return "Status";
+		return "Liczba bajtów: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringPt()
 	{
-		return "Status";
+		return "Contagem de bytes: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringPtBr()
 	{
-		return "Status";
+		return "Contagem de bytes: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringRo()
 	{
-		return "stare";
+		return "Număr de octeți: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringRu()
 	{
-		return "Status";
+		return "Количество байтов: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringSv()
 	{
-		return "Status";
+		return "Byte count: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringTh()
 	{
-		return "สถานะ";
+		return "จำนวนไบต์: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringTr()
 	{
-		return "durum";
+		return "Bayt sayısı: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringUk()
 	{
-		return "Статус";
+		return "Кількість байтів: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringVi()
 	{
-		return "Trạng thái";
+		return "Số lượng byte: ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringZhCn()
 	{
-		return "状态";
+		return "字节数： ";
 	}
 
 	std::string Menus_CodeEditor_ByteCount::getStringZhTw()
 	{
-		return "狀態";
+		return "字節數： ";
 	}
 }

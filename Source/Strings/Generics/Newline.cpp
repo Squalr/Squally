@@ -30,175 +30,146 @@ namespace Strings
 
 	std::string Generics_Newline::getStringAr()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringBg()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringCs()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringDa()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringDe()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringEl()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringEn()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringEs()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringEs419()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringFi()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringFr()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringHu()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringIt()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringJa()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringKo()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringNl()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringNo()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringPl()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringPt()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringPtBr()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringRo()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringRu()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringSv()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringTh()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringTr()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringUk()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringVi()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringZhCn()
 	{
-		return "
-";
+		return "\n";
 	}
 
 	std::string Generics_Newline::getStringZhTw()
 	{
-		return "
-";
+		return "\n";
 	}
 }

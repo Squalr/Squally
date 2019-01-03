@@ -11,6 +11,64 @@
 #include "Engine/asmtk/asmtk.h"
 #include "Engine/Utils/LogUtils.h"
 
+#include "Strings/Menus/CodeEditor/Errors/AlreadyInitialized.h"
+#include "Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.h"
+#include "Strings/Menus/CodeEditor/Errors/CodeTooLarge.h"
+#include "Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidAddress.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidAddressScale.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidArchitecture.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidArgument.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidBroadcast.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidDisplacement.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidInstruction.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidLabel.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidLabelName.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidMask.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidOperandSize.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidOption.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidParentLabel.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRegisterType.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidSegment.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidState.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidUseDouble.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidUseSingle.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.h"
+#include "Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.h"
+#include "Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.h"
+#include "Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.h"
+#include "Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.h"
+#include "Strings/Menus/CodeEditor/Errors/LabelNameTooLong.h"
+#include "Strings/Menus/CodeEditor/Errors/NoCodeGenerated.h"
+#include "Strings/Menus/CodeEditor/Errors/NoHeapMemory.h"
+#include "Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.h"
+#include "Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.h"
+#include "Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.h"
+#include "Strings/Menus/CodeEditor/Errors/NotInitialized.h"
+#include "Strings/Menus/CodeEditor/Errors/NoVirtualMemory.h"
+#include "Strings/Menus/CodeEditor/Errors/Ok.h"
+#include "Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.h"
+#include "Strings/Menus/CodeEditor/Errors/OverlappedRegisters.h"
+#include "Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.h"
+#include "Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.h"
+#include "Strings/Menus/CodeEditor/Errors/SlotOccupied.h"
+#include "Strings/Menus/CodeEditor/Errors/UnknownError.h"
+
 #if __GNUC__ || __clang__
 	#include <unistd.h>
 	#include <sys/mman.h>
@@ -69,9 +127,297 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 	{
 		compileResult.hasError = true;
 		compileResult.errorData.lineNumber = 0;
-		compileResult.errorData.message = DebugUtils::errorAsString(err);
-		// printf("ERROR: %08x (%s)\n", err, DebugUtils::errorAsString(err));
-		LogUtils::logError(DebugUtils::errorAsString(err));
+
+		switch ((CompileResult::ErrorId) err)
+		{
+			case CompileResult::ErrorId::Ok:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_Ok::create();
+				break;
+			}
+			case CompileResult::ErrorId::NoHeapMemory:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NoHeapMemory::create();
+				break;
+			}
+			case CompileResult::ErrorId::NoVirtualMemory:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NoVirtualMemory::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidArgument:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidArgument::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidState:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidState::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidArchitecture:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidArchitecture::create();
+				break;
+			}
+			case CompileResult::ErrorId::NotInitialized:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NotInitialized::create();
+				break;
+			}
+			case CompileResult::ErrorId::AlreadyInitialized:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_AlreadyInitialized::create();
+				break;
+			}
+			case CompileResult::ErrorId::FeatureNotEnabled:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_FeatureNotEnabled::create();
+				break;
+			}
+			case CompileResult::ErrorId::SlotOccupied:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_SlotOccupied::create();
+				break;
+			}
+			case CompileResult::ErrorId::NoCodeGenerated:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NoCodeGenerated::create();
+				break;
+			}
+			case CompileResult::ErrorId::CodeTooLarge:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_CodeTooLarge::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidLabel:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidLabel::create();
+				break;
+			}
+			case CompileResult::ErrorId::LabelIndexOverflow:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_LabelIndexOverflow::create();
+				break;
+			}
+			case CompileResult::ErrorId::LabelAlreadyBound:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_LabelAlreadyBound::create();
+				break;
+			}
+			case CompileResult::ErrorId::LabelAlreadyDefined:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_LabelAlreadyDefined::create();
+				break;
+			}
+			case CompileResult::ErrorId::LabelNameTooLong:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_LabelNameTooLong::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidLabelName:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidLabelName::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidParentLabel:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidParentLabel::create();
+				break;
+			}
+			case CompileResult::ErrorId::NonLocalLabelCantHaveParent:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::create();
+				break;
+			}
+			case CompileResult::ErrorId::RelocationIndexOverflow:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_RelocationIndexOverflow::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRelocationEntry:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRelocationEntry::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidInstruction:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidInstruction::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRegisterType:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRegisterType::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRegisterKind:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRegisterKind::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRegisterPhysicalId:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRegisterVirtualId:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRegisterVirtualId::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidPrefixCombination:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidPrefixCombination::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidLockPrefix:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidLockPrefix::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidXAcquirePrefix:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidXAquirePrefix::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidXReleasePrefix:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidXReleasePrefix::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRepPrefix:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRepPrefix::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidRexPrefix:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidRexPrefix::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidMask:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidMask::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidUseSingle:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidUseSingle::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidUseDouble:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidUseDouble::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidBroadcast:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidBroadcast::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidOption:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidOption::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidAddress:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidAddress::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidAddressIndex:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidAddressIndex::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidAddressScale:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidAddressScale::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidUseOf64BitAddress:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidDisplacement:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidDisplacement::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidSegment:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidSegment::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidImmediateValue:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidImmediateValue::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidOperandSize:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidOperandSize::create();
+				break;
+			}
+			case CompileResult::ErrorId::AmbiguousOperandSize:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_AmbiguousOperandSize::create();
+				break;
+			}
+			case CompileResult::ErrorId::OperandSizeMismatch:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_OperandSizeMismatch::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidTypeInfo:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidTypeInfo::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidUseOf8BitRegister:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidUseOf8BitRegister::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidUseOf64BitRegister:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidUseOf64BitRegister::create();
+				break;
+			}
+			case CompileResult::ErrorId::InvalidUseOf80BitFloat:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_InvalidUseOf80BitFloat::create();
+				break;
+			}
+			case CompileResult::ErrorId::NotConsecutiveRegisters:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NotConsecutiveRegisters::create();
+				break;
+			}
+			case CompileResult::ErrorId::NoPhysicalRegisters:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_NoPhysicalRegisters::create();
+				break;
+			}
+			case CompileResult::ErrorId::OverlappedRegisters:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_OverlappedRegisters::create();
+				break;
+			}
+			case CompileResult::ErrorId::OverlappingRegisterAndArgsRegister:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_OverlappingRegisterAndArgsRegister::create();
+				break;
+			}
+			case CompileResult::ErrorId::UnknownError:
+			default:
+			{
+				compileResult.errorData.message = Strings::Menus_CodeEditor_Errors_UnknownError::create();
+				break;
+			}
+		}
+
 		return compileResult;
 	}
 

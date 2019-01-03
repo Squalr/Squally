@@ -30,146 +30,146 @@ namespace Strings
 
 	std::string Menus_CodeEditor_Error::getStringAr()
 	{
-		return "الحالة";
+		return "خطأ: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringBg()
 	{
-		return "Статус";
+		return "грешка: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringCs()
 	{
-		return "Postavení";
+		return "Chyba: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringDa()
 	{
-		return "status";
+		return "Fejl: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringDe()
 	{
-		return "Status";
+		return "Error: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringEl()
 	{
-		return "Κατάσταση";
+		return "Λάθος: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringEn()
 	{
-		return "Status";
+		return "Error: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringEs()
 	{
-		return "Estado";
+		return "Error: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringEs419()
 	{
-		return "Estado";
+		return "Error: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringFi()
 	{
-		return "Status";
+		return "Virhe: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringFr()
 	{
-		return "Statut";
+		return "Erreur : ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringHu()
 	{
-		return "Állapot";
+		return "Hiba: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringIt()
 	{
-		return "Stato";
+		return "Errore: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringJa()
 	{
-		return "状態";
+		return "エラー： ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringKo()
 	{
-		return "지위";
+		return "오류: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringNl()
 	{
-		return "staat";
+		return "Fout: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringNo()
 	{
-		return "Status";
+		return "Feil: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringPl()
 	{
-		return "Status";
+		return "Błąd: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringPt()
 	{
-		return "Status";
+		return "Erro: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringPtBr()
 	{
-		return "Status";
+		return "Erro: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringRo()
 	{
-		return "stare";
+		return "Eroare: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringRu()
 	{
-		return "Status";
+		return "Ошибка: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringSv()
 	{
-		return "Status";
+		return "Fel: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringTh()
 	{
-		return "สถานะ";
+		return "ข้อผิดพลาด: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringTr()
 	{
-		return "durum";
+		return "Hata: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringUk()
 	{
-		return "Статус";
+		return "Помилка: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringVi()
 	{
-		return "Trạng thái";
+		return "Lỗi: ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringZhCn()
 	{
-		return "状态";
+		return "错误： ";
 	}
 
 	std::string Menus_CodeEditor_Error::getStringZhTw()
 	{
-		return "狀態";
+		return "錯誤： ";
 	}
 }

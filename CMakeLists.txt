@@ -984,13 +984,78 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Accept.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
+	Source/Strings/Menus/CodeEditor/Address.cpp
 	Source/Strings/Menus/CodeEditor/AllocationEditor.cpp
 	Source/Strings/Menus/CodeEditor/Assembler.cpp
+	Source/Strings/Menus/CodeEditor/ByteCount.cpp
+	Source/Strings/Menus/CodeEditor/ByteOverflow.cpp
+	Source/Strings/Menus/CodeEditor/Bytes.cpp
 	Source/Strings/Menus/CodeEditor/ClickToEdit.cpp
 	Source/Strings/Menus/CodeEditor/CodeEditor.cpp
+	Source/Strings/Menus/CodeEditor/CompileSuccessful.cpp
+	Source/Strings/Menus/CodeEditor/Error.cpp
+	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.cpp
+	Source/Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.cpp
+	Source/Strings/Menus/CodeEditor/Errors/CodeTooLarge.cpp
+	Source/Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddress.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressScale.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArchitecture.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArgument.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidBroadcast.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidDisplacement.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidInstruction.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabel.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabelName.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidMask.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOperandSize.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOption.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidParentLabel.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterType.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidSegment.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidState.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseDouble.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseSingle.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.cpp
+	Source/Strings/Menus/CodeEditor/Errors/LabelNameTooLong.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoCodeGenerated.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoHeapMemory.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NoVirtualMemory.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.cpp
+	Source/Strings/Menus/CodeEditor/Errors/NotInitialized.cpp
+	Source/Strings/Menus/CodeEditor/Errors/Ok.cpp
+	Source/Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.cpp
+	Source/Strings/Menus/CodeEditor/Errors/OverlappedRegisters.cpp
+	Source/Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.cpp
+	Source/Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.cpp
+	Source/Strings/Menus/CodeEditor/Errors/SlotOccupied.cpp
+	Source/Strings/Menus/CodeEditor/Errors/UnknownError.cpp
 	Source/Strings/Menus/CodeEditor/FunctionHeader.cpp
+	Source/Strings/Menus/CodeEditor/LineNumber.cpp
 	Source/Strings/Menus/CodeEditor/Status.cpp
 	Source/Strings/Menus/CodeEditor/StatusHeader.cpp
+	Source/Strings/Menus/CodeEditor/UnfilledBytes.cpp
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
@@ -1983,13 +2048,78 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Accept.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
+	Source/Strings/Menus/CodeEditor/Address.h
 	Source/Strings/Menus/CodeEditor/AllocationEditor.h
 	Source/Strings/Menus/CodeEditor/Assembler.h
+	Source/Strings/Menus/CodeEditor/ByteCount.h
+	Source/Strings/Menus/CodeEditor/ByteOverflow.h
+	Source/Strings/Menus/CodeEditor/Bytes.h
 	Source/Strings/Menus/CodeEditor/ClickToEdit.h
 	Source/Strings/Menus/CodeEditor/CodeEditor.h
+	Source/Strings/Menus/CodeEditor/CompileSuccessful.h
+	Source/Strings/Menus/CodeEditor/Error.h
+	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.h
+	Source/Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.h
+	Source/Strings/Menus/CodeEditor/Errors/CodeTooLarge.h
+	Source/Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddress.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressScale.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArchitecture.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidArgument.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidBroadcast.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidDisplacement.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidInstruction.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabel.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLabelName.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidMask.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOperandSize.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidOption.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidParentLabel.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterType.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidSegment.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidState.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseDouble.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidUseSingle.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.h
+	Source/Strings/Menus/CodeEditor/Errors/LabelNameTooLong.h
+	Source/Strings/Menus/CodeEditor/Errors/NoCodeGenerated.h
+	Source/Strings/Menus/CodeEditor/Errors/NoHeapMemory.h
+	Source/Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.h
+	Source/Strings/Menus/CodeEditor/Errors/NoVirtualMemory.h
+	Source/Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.h
+	Source/Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.h
+	Source/Strings/Menus/CodeEditor/Errors/NotInitialized.h
+	Source/Strings/Menus/CodeEditor/Errors/Ok.h
+	Source/Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.h
+	Source/Strings/Menus/CodeEditor/Errors/OverlappedRegisters.h
+	Source/Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.h
+	Source/Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.h
+	Source/Strings/Menus/CodeEditor/Errors/SlotOccupied.h
+	Source/Strings/Menus/CodeEditor/Errors/UnknownError.h
 	Source/Strings/Menus/CodeEditor/FunctionHeader.h
+	Source/Strings/Menus/CodeEditor/LineNumber.h
 	Source/Strings/Menus/CodeEditor/Status.h
 	Source/Strings/Menus/CodeEditor/StatusHeader.h
+	Source/Strings/Menus/CodeEditor/UnfilledBytes.h
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h

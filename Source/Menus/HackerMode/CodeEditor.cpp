@@ -17,14 +17,25 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Generics/Empty.h"
+#include "Strings/Generics/XOverY.h"
 #include "Strings/Menus/Accept.h"
 #include "Strings/Menus/Cancel.h"
+#include "Strings/Menus/CodeEditor/Address.h"
 #include "Strings/Menus/CodeEditor/AllocationEditor.h"
 #include "Strings/Menus/CodeEditor/Assembler.h"
+#include "Strings/Menus/CodeEditor/ByteCount.h"
+#include "Strings/Menus/CodeEditor/ByteOverflow.h"
+#include "Strings/Menus/CodeEditor/Bytes.h"
 #include "Strings/Menus/CodeEditor/ClickToEdit.h"
 #include "Strings/Menus/CodeEditor/CodeEditor.h"
-#include "Strings/Menus/CodeEditor/StatusHeader.h"
+#include "Strings/Menus/CodeEditor/CompileSuccessful.h"
+#include "Strings/Menus/CodeEditor/Error.h"
 #include "Strings/Menus/CodeEditor/FunctionHeader.h"
+#include "Strings/Menus/CodeEditor/LineNumber.h"
+#include "Strings/Menus/CodeEditor/Status.h"
+#include "Strings/Menus/CodeEditor/StatusHeader.h"
+#include "Strings/Menus/CodeEditor/UnfilledBytes.h"
+#include "Engine/Localization/ConstantString.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -254,32 +265,48 @@ void CodeEditor::compile(std::string assemblyText)
 	// Build text and enable/disable the accept button
 	if (!compileResult.hasError)
 	{
-		bool byteOverflow = compileResult.byteCount > this->activeHackableCode->getOriginalLength();
+		bool isByteOverflow = compileResult.byteCount > this->activeHackableCode->getOriginalLength();
 
-		this->statusWindow->insertText("Status:", CodeEditor::headerColor);
-		this->statusWindow->insertText("Compile Successful", CodeEditor::defaultColor);
+		LocalizedString* bytesUsed = Strings::Generics_XOverY::create();
+
+		bytesUsed->setStringReplacementVariables(
+		{
+			ConstantString::create(std::to_string(compileResult.byteCount)),
+			ConstantString::create(std::to_string(this->activeHackableCode->getOriginalLength()))
+		});
+
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_Status::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_CompileSuccessful::create(), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText("Address:", CodeEditor::headerColor);
-		this->statusWindow->insertText(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true), CodeEditor::defaultColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_Address::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText("Byte Count:", CodeEditor::headerColor);
-		this->statusWindow->insertText(std::to_string(compileResult.byteCount) + " / " + std::to_string(this->activeHackableCode->getOriginalLength()), byteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_ByteCount::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(bytesUsed, isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 
 		if (compileResult.byteCount != this->activeHackableCode->getOriginalLength())
 		{
-			this->statusWindow->insertText(byteOverflow ? "Byte overflow! Use allocations to write more assembly." : "Unfilled bytes will be filled with nop (empty) instructions.", byteOverflow ? CodeEditor::errorColor : CodeEditor::subtextColor);
+			if (isByteOverflow)
+			{
+				this->statusWindow->insertText(Strings::Menus_CodeEditor_ByteOverflow::create(), CodeEditor::errorColor);
+			}
+			else
+			{
+				this->statusWindow->insertText(Strings::Menus_CodeEditor_UnfilledBytes::create(), CodeEditor::subtextColor);
+			}
+
 			this->statusWindow->insertNewline();
 			this->statusWindow->insertNewline();
 		}
 
-		this->statusWindow->insertText("Bytes:", CodeEditor::headerColor);
-		this->statusWindow->insertText(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount), CodeEditor::defaultColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_Bytes::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)), CodeEditor::defaultColor);
 
-		if (byteOverflow)
+		if (isByteOverflow)
 		{
 			this->disableAccept();
 		}
@@ -290,16 +317,16 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 	else
 	{
-		this->statusWindow->insertText("Status:", CodeEditor::headerColor);
-		this->statusWindow->insertText("Compile Errors", CodeEditor::errorColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_Status::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_CompileSuccessful::create(), CodeEditor::errorColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText("Error:", CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_Error::create(), CodeEditor::headerColor);
 		this->statusWindow->insertText(compileResult.errorData.message, CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText("Line Number:", CodeEditor::headerColor);
-		this->statusWindow->insertText(std::to_string(compileResult.errorData.lineNumber), CodeEditor::defaultColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_LineNumber::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(ConstantString::create(std::to_string(compileResult.errorData.lineNumber)), CodeEditor::defaultColor);
 
 		this->disableAccept();
 	}
@@ -310,7 +337,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
 	// Also split them down further if they contain comments
 	std::vector<std::string> splitText = StrUtils::splitOn(text, ";\n");
-	std::vector<std::string> textJoined = std::vector <std::string>();
+	std::vector<std::string> textJoined = std::vector<std::string>();
 	std::string currentString = "";
 	bool isJoiningComment = false;
 
@@ -321,7 +348,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 		// Newlines end comments
 		if (next == "\n")
 		{
-			if (currentString != "")
+			if (!currentString.empty())
 			{
 				textJoined.push_back(currentString);
 			}
@@ -340,11 +367,10 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 		{
 			textJoined.push_back(next);
 		}
-
 	}
 
 	// Add final joined comment if exists
-	if (isJoiningComment && currentString != "")
+	if (isJoiningComment && !currentString.empty())
 	{
 		textJoined.push_back(currentString);
 	}
@@ -383,7 +409,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 				color = CodeEditor::commentColor;
 			}
 
-			EditableTextWindow::token nextToken = EditableTextWindow::token(token, color);
+			EditableTextWindow::token nextToken = EditableTextWindow::token(ConstantString::create(token), color);
 			tokens.push_back(nextToken);
 		}
 	}
