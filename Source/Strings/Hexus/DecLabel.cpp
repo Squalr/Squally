@@ -4,172 +4,172 @@
 
 #include "DecLabel.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	DecLabel* DecLabel::create()
+	Hexus_DecLabel* Hexus_DecLabel::create()
 	{
-		DecLabel* instance = new DecLabel();
+		Hexus_DecLabel* instance = new Hexus_DecLabel();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* DecLabel::clone()
+	LocalizedString* Hexus_DecLabel::clone()
 	{
-		return DecLabel::create();
+		return Hexus_DecLabel::create();
 	}
 
-	DecLabel::DecLabel() : LocalizedString()
-	{
-	}
-
-	DecLabel::~DecLabel()
+	Hexus_DecLabel::Hexus_DecLabel() : LocalizedString()
 	{
 	}
 
-	std::string DecLabel::getStringAr()
+	Hexus_DecLabel::~Hexus_DecLabel()
 	{
-		return "DEC:";
 	}
 
-	std::string DecLabel::getStringBg()
+	std::string Hexus_DecLabel::getStringAr()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringCs()
+	std::string Hexus_DecLabel::getStringBg()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringDa()
+	std::string Hexus_DecLabel::getStringCs()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringDe()
+	std::string Hexus_DecLabel::getStringDa()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringEl()
+	std::string Hexus_DecLabel::getStringDe()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringEn()
+	std::string Hexus_DecLabel::getStringEl()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringEs()
+	std::string Hexus_DecLabel::getStringEn()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringEs419()
+	std::string Hexus_DecLabel::getStringEs()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringFi()
+	std::string Hexus_DecLabel::getStringEs419()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringFr()
+	std::string Hexus_DecLabel::getStringFi()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringHu()
+	std::string Hexus_DecLabel::getStringFr()
 	{
-		return "DEC:";
+		return "DEC : %s";
 	}
 
-	std::string DecLabel::getStringIt()
+	std::string Hexus_DecLabel::getStringHu()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringJa()
+	std::string Hexus_DecLabel::getStringIt()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringKo()
+	std::string Hexus_DecLabel::getStringJa()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringNl()
+	std::string Hexus_DecLabel::getStringKo()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringNo()
+	std::string Hexus_DecLabel::getStringNl()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringPl()
+	std::string Hexus_DecLabel::getStringNo()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringPt()
+	std::string Hexus_DecLabel::getStringPl()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringPtBr()
+	std::string Hexus_DecLabel::getStringPt()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringRo()
+	std::string Hexus_DecLabel::getStringPtBr()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringRu()
+	std::string Hexus_DecLabel::getStringRo()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringSv()
+	std::string Hexus_DecLabel::getStringRu()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringTh()
+	std::string Hexus_DecLabel::getStringSv()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringTr()
+	std::string Hexus_DecLabel::getStringTh()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringUk()
+	std::string Hexus_DecLabel::getStringTr()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringVi()
+	std::string Hexus_DecLabel::getStringUk()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringZhCn()
+	std::string Hexus_DecLabel::getStringVi()
 	{
-		return "DEC:";
+		return "DEC: %s";
 	}
 
-	std::string DecLabel::getStringZhTw()
+	std::string Hexus_DecLabel::getStringZhCn()
 	{
-		return "DEC:";
+		return "DEC: %s";
+	}
+
+	std::string Hexus_DecLabel::getStringZhTw()
+	{
+		return "DEC: %s";
 	}
 }

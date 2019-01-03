@@ -22,7 +22,7 @@ HexusChapterPreviewCastle* HexusChapterPreviewCastle::create()
 	return instance;
 }
 
-HexusChapterPreviewCastle::HexusChapterPreviewCastle() : HexusChapterPreview(HexusChapterPreviewCastle::SaveKeyChapterName, LocaleStrings::CastleValgrind::create())
+HexusChapterPreviewCastle::HexusChapterPreviewCastle() : HexusChapterPreview(HexusChapterPreviewCastle::SaveKeyChapterName, Strings::Menus_Maps_CastleValgrind::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle));
 }

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class UseShiftLeft : public LocalizedString
+	class Hexus_Tutorials_E_UseShiftLeft : public LocalizedString
 	{
 	public:
-		static UseShiftLeft* create();
+		static Hexus_Tutorials_E_UseShiftLeft* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		UseShiftLeft();
-		~UseShiftLeft();
+		Hexus_Tutorials_E_UseShiftLeft();
+		~Hexus_Tutorials_E_UseShiftLeft();
 	};
 }

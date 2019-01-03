@@ -4,171 +4,171 @@
 
 #include "Minigames.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Minigames* Minigames::create()
+	Menus_Minigames* Menus_Minigames::create()
 	{
-		Minigames* instance = new Minigames();
+		Menus_Minigames* instance = new Menus_Minigames();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Minigames::clone()
+	LocalizedString* Menus_Minigames::clone()
 	{
-		return Minigames::create();
+		return Menus_Minigames::create();
 	}
 
-	Minigames::Minigames() : LocalizedString()
-	{
-	}
-
-	Minigames::~Minigames()
+	Menus_Minigames::Menus_Minigames() : LocalizedString()
 	{
 	}
 
-	std::string Minigames::getStringAr()
+	Menus_Minigames::~Menus_Minigames()
+	{
+	}
+
+	std::string Menus_Minigames::getStringAr()
 	{
 		return "الألعاب المصغرة";
 	}
 
-	std::string Minigames::getStringBg()
+	std::string Menus_Minigames::getStringBg()
 	{
 		return "Мини-игри";
 	}
 
-	std::string Minigames::getStringCs()
+	std::string Menus_Minigames::getStringCs()
 	{
 		return "Mini hry";
 	}
 
-	std::string Minigames::getStringDa()
+	std::string Menus_Minigames::getStringDa()
 	{
 		return "Mini-spil";
 	}
 
-	std::string Minigames::getStringDe()
+	std::string Menus_Minigames::getStringDe()
 	{
 		return "Minispiele";
 	}
 
-	std::string Minigames::getStringEl()
+	std::string Menus_Minigames::getStringEl()
 	{
 		return "Μίνι παιχνίδια";
 	}
 
-	std::string Minigames::getStringEn()
+	std::string Menus_Minigames::getStringEn()
 	{
 		return "Minigames";
 	}
 
-	std::string Minigames::getStringEs()
+	std::string Menus_Minigames::getStringEs()
 	{
 		return "Mini juegos";
 	}
 
-	std::string Minigames::getStringEs419()
+	std::string Menus_Minigames::getStringEs419()
 	{
 		return "Mini juegos";
 	}
 
-	std::string Minigames::getStringFi()
+	std::string Menus_Minigames::getStringFi()
 	{
 		return "Minipelejä";
 	}
 
-	std::string Minigames::getStringFr()
+	std::string Menus_Minigames::getStringFr()
 	{
 		return "Mini-games";
 	}
 
-	std::string Minigames::getStringHu()
+	std::string Menus_Minigames::getStringHu()
 	{
 		return "Mini játékok";
 	}
 
-	std::string Minigames::getStringIt()
+	std::string Menus_Minigames::getStringIt()
 	{
 		return "Mini-games";
 	}
 
-	std::string Minigames::getStringJa()
+	std::string Menus_Minigames::getStringJa()
 	{
 		return "ミニゲーム";
 	}
 
-	std::string Minigames::getStringKo()
+	std::string Menus_Minigames::getStringKo()
 	{
 		return "미니 게임";
 	}
 
-	std::string Minigames::getStringNl()
+	std::string Menus_Minigames::getStringNl()
 	{
 		return "Minigames";
 	}
 
-	std::string Minigames::getStringNo()
+	std::string Menus_Minigames::getStringNo()
 	{
 		return "Minispill";
 	}
 
-	std::string Minigames::getStringPl()
+	std::string Menus_Minigames::getStringPl()
 	{
 		return "Mini gry";
 	}
 
-	std::string Minigames::getStringPt()
+	std::string Menus_Minigames::getStringPt()
 	{
 		return "Mini jogos";
 	}
 
-	std::string Minigames::getStringPtBr()
+	std::string Menus_Minigames::getStringPtBr()
 	{
 		return "Mini jogos";
 	}
 
-	std::string Minigames::getStringRo()
+	std::string Menus_Minigames::getStringRo()
 	{
 		return "Mini-jocuri";
 	}
 
-	std::string Minigames::getStringRu()
+	std::string Menus_Minigames::getStringRu()
 	{
 		return "Мини игры";
 	}
 
-	std::string Minigames::getStringSv()
+	std::string Menus_Minigames::getStringSv()
 	{
 		return "Mini-spel";
 	}
 
-	std::string Minigames::getStringTh()
+	std::string Menus_Minigames::getStringTh()
 	{
 		return "มินิเกม";
 	}
 
-	std::string Minigames::getStringTr()
+	std::string Menus_Minigames::getStringTr()
 	{
 		return "Küçük oyunlar";
 	}
 
-	std::string Minigames::getStringUk()
+	std::string Menus_Minigames::getStringUk()
 	{
 		return "Міні-ігри";
 	}
 
-	std::string Minigames::getStringVi()
+	std::string Menus_Minigames::getStringVi()
 	{
 		return "Những trò chơi nhỏ";
 	}
 
-	std::string Minigames::getStringZhCn()
+	std::string Menus_Minigames::getStringZhCn()
 	{
 		return "迷你游戏";
 	}
 
-	std::string Minigames::getStringZhTw()
+	std::string Menus_Minigames::getStringZhTw()
 	{
 		return "迷你遊戲";
 	}

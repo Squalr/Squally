@@ -36,7 +36,7 @@ void BackgroundDeserializer::initializeListeners()
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
 	);
 
-	this->addEventListener(deserializationRequestListener);
+	this->addGlobalEventListener(deserializationRequestListener);
 }
 
 void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)

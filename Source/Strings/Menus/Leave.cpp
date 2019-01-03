@@ -4,171 +4,171 @@
 
 #include "Leave.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Leave* Leave::create()
+	Menus_Leave* Menus_Leave::create()
 	{
-		Leave* instance = new Leave();
+		Menus_Leave* instance = new Menus_Leave();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Leave::clone()
+	LocalizedString* Menus_Leave::clone()
 	{
-		return Leave::create();
+		return Menus_Leave::create();
 	}
 
-	Leave::Leave() : LocalizedString()
-	{
-	}
-
-	Leave::~Leave()
+	Menus_Leave::Menus_Leave() : LocalizedString()
 	{
 	}
 
-	std::string Leave::getStringAr()
+	Menus_Leave::~Menus_Leave()
+	{
+	}
+
+	std::string Menus_Leave::getStringAr()
 	{
 		return "غادر";
 	}
 
-	std::string Leave::getStringBg()
+	std::string Menus_Leave::getStringBg()
 	{
 		return "оставям";
 	}
 
-	std::string Leave::getStringCs()
+	std::string Menus_Leave::getStringCs()
 	{
 		return "Zanechat, opustit";
 	}
 
-	std::string Leave::getStringDa()
+	std::string Menus_Leave::getStringDa()
 	{
 		return "Forlade";
 	}
 
-	std::string Leave::getStringDe()
+	std::string Menus_Leave::getStringDe()
 	{
 		return "Verlassen";
 	}
 
-	std::string Leave::getStringEl()
+	std::string Menus_Leave::getStringEl()
 	{
 		return "Αδεια";
 	}
 
-	std::string Leave::getStringEn()
+	std::string Menus_Leave::getStringEn()
 	{
 		return "Leave";
 	}
 
-	std::string Leave::getStringEs()
+	std::string Menus_Leave::getStringEs()
 	{
 		return "Salir";
 	}
 
-	std::string Leave::getStringEs419()
+	std::string Menus_Leave::getStringEs419()
 	{
 		return "Salir";
 	}
 
-	std::string Leave::getStringFi()
+	std::string Menus_Leave::getStringFi()
 	{
 		return "jättää";
 	}
 
-	std::string Leave::getStringFr()
+	std::string Menus_Leave::getStringFr()
 	{
 		return "Laisser";
 	}
 
-	std::string Leave::getStringHu()
+	std::string Menus_Leave::getStringHu()
 	{
 		return "Szabadság";
 	}
 
-	std::string Leave::getStringIt()
+	std::string Menus_Leave::getStringIt()
 	{
 		return "Partire";
 	}
 
-	std::string Leave::getStringJa()
+	std::string Menus_Leave::getStringJa()
 	{
 		return "立ち去る";
 	}
 
-	std::string Leave::getStringKo()
+	std::string Menus_Leave::getStringKo()
 	{
 		return "휴가";
 	}
 
-	std::string Leave::getStringNl()
+	std::string Menus_Leave::getStringNl()
 	{
 		return "Het verlof";
 	}
 
-	std::string Leave::getStringNo()
+	std::string Menus_Leave::getStringNo()
 	{
 		return "Permisjon";
 	}
 
-	std::string Leave::getStringPl()
+	std::string Menus_Leave::getStringPl()
 	{
 		return "Pozostawiać";
 	}
 
-	std::string Leave::getStringPt()
+	std::string Menus_Leave::getStringPt()
 	{
 		return "Sair";
 	}
 
-	std::string Leave::getStringPtBr()
+	std::string Menus_Leave::getStringPtBr()
 	{
 		return "Sair";
 	}
 
-	std::string Leave::getStringRo()
+	std::string Menus_Leave::getStringRo()
 	{
 		return "Părăsi";
 	}
 
-	std::string Leave::getStringRu()
+	std::string Menus_Leave::getStringRu()
 	{
 		return "Покидать";
 	}
 
-	std::string Leave::getStringSv()
+	std::string Menus_Leave::getStringSv()
 	{
 		return "Lämna";
 	}
 
-	std::string Leave::getStringTh()
+	std::string Menus_Leave::getStringTh()
 	{
 		return "ออกจาก";
 	}
 
-	std::string Leave::getStringTr()
+	std::string Menus_Leave::getStringTr()
 	{
 		return "Ayrılmak";
 	}
 
-	std::string Leave::getStringUk()
+	std::string Menus_Leave::getStringUk()
 	{
 		return "Залишати";
 	}
 
-	std::string Leave::getStringVi()
+	std::string Menus_Leave::getStringVi()
 	{
 		return "Rời khỏi";
 	}
 
-	std::string Leave::getStringZhCn()
+	std::string Menus_Leave::getStringZhCn()
 	{
 		return "离开";
 	}
 
-	std::string Leave::getStringZhTw()
+	std::string Menus_Leave::getStringZhTw()
 	{
 		return "離開";
 	}

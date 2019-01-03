@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class Hex14 : public LocalizedString
+	class Hexus_Cards_Hex14 : public LocalizedString
 	{
 	public:
-		static Hex14* create();
+		static Hexus_Cards_Hex14* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Hex14();
-		~Hex14();
+		Hexus_Cards_Hex14();
+		~Hexus_Cards_Hex14();
 	};
 }

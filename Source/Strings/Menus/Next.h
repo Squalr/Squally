@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class Next : public LocalizedString
+	class Menus_Next : public LocalizedString
 	{
 	public:
-		static Next* create();
+		static Menus_Next* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		Next();
-		~Next();
+		Menus_Next();
+		~Menus_Next();
 	};
 }

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class DrawToolTip : public LocalizedString
+	class Hexus_DrawToolTip : public LocalizedString
 	{
 	public:
-		static DrawToolTip* create();
+		static Hexus_DrawToolTip* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		DrawToolTip();
-		~DrawToolTip();
+		Hexus_DrawToolTip();
+		~Hexus_DrawToolTip();
 	};
 }

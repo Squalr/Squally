@@ -4,171 +4,171 @@
 
 #include "Flip3.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Flip3* Flip3::create()
+	Hexus_Cards_Flip3* Hexus_Cards_Flip3::create()
 	{
-		Flip3* instance = new Flip3();
+		Hexus_Cards_Flip3* instance = new Hexus_Cards_Flip3();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Flip3::clone()
+	LocalizedString* Hexus_Cards_Flip3::clone()
 	{
-		return Flip3::create();
+		return Hexus_Cards_Flip3::create();
 	}
 
-	Flip3::Flip3() : LocalizedString()
-	{
-	}
-
-	Flip3::~Flip3()
+	Hexus_Cards_Flip3::Hexus_Cards_Flip3() : LocalizedString()
 	{
 	}
 
-	std::string Flip3::getStringAr()
+	Hexus_Cards_Flip3::~Hexus_Cards_Flip3()
+	{
+	}
+
+	std::string Hexus_Cards_Flip3::getStringAr()
 	{
 		return "قلب الجزء الثالث";
 	}
 
-	std::string Flip3::getStringBg()
+	std::string Hexus_Cards_Flip3::getStringBg()
 	{
 		return "Обърнете третия бит";
 	}
 
-	std::string Flip3::getStringCs()
+	std::string Hexus_Cards_Flip3::getStringCs()
 	{
 		return "Překlopte třetí bit";
 	}
 
-	std::string Flip3::getStringDa()
+	std::string Hexus_Cards_Flip3::getStringDa()
 	{
 		return "Vend den tredje bit";
 	}
 
-	std::string Flip3::getStringDe()
+	std::string Hexus_Cards_Flip3::getStringDe()
 	{
 		return "Drehe das dritte Bit";
 	}
 
-	std::string Flip3::getStringEl()
+	std::string Hexus_Cards_Flip3::getStringEl()
 	{
 		return "Περιστρέψτε το τρίτο κομμάτι";
 	}
 
-	std::string Flip3::getStringEn()
+	std::string Hexus_Cards_Flip3::getStringEn()
 	{
 		return "Flip Bit 3";
 	}
 
-	std::string Flip3::getStringEs()
+	std::string Hexus_Cards_Flip3::getStringEs()
 	{
 		return "Voltear el tercer bit";
 	}
 
-	std::string Flip3::getStringEs419()
+	std::string Hexus_Cards_Flip3::getStringEs419()
 	{
 		return "Voltear el tercer bit";
 	}
 
-	std::string Flip3::getStringFi()
+	std::string Hexus_Cards_Flip3::getStringFi()
 	{
 		return "Käännä kolmas bitti";
 	}
 
-	std::string Flip3::getStringFr()
+	std::string Hexus_Cards_Flip3::getStringFr()
 	{
 		return "Retournez le troisième bit";
 	}
 
-	std::string Flip3::getStringHu()
+	std::string Hexus_Cards_Flip3::getStringHu()
 	{
 		return "Flip a harmadik bit";
 	}
 
-	std::string Flip3::getStringIt()
+	std::string Hexus_Cards_Flip3::getStringIt()
 	{
 		return "Capovolgi il terzo bit";
 	}
 
-	std::string Flip3::getStringJa()
+	std::string Hexus_Cards_Flip3::getStringJa()
 	{
 		return "3番目のビットを反転";
 	}
 
-	std::string Flip3::getStringKo()
+	std::string Hexus_Cards_Flip3::getStringKo()
 	{
 		return "세 번째 비트 뒤집기";
 	}
 
-	std::string Flip3::getStringNl()
+	std::string Hexus_Cards_Flip3::getStringNl()
 	{
 		return "Draai het derde deel";
 	}
 
-	std::string Flip3::getStringNo()
+	std::string Hexus_Cards_Flip3::getStringNo()
 	{
 		return "Vend den tredje biten";
 	}
 
-	std::string Flip3::getStringPl()
+	std::string Hexus_Cards_Flip3::getStringPl()
 	{
 		return "Odwróć trzeci bit";
 	}
 
-	std::string Flip3::getStringPt()
+	std::string Hexus_Cards_Flip3::getStringPt()
 	{
 		return "Virar o terceiro bit";
 	}
 
-	std::string Flip3::getStringPtBr()
+	std::string Hexus_Cards_Flip3::getStringPtBr()
 	{
 		return "Virar o terceiro bit";
 	}
 
-	std::string Flip3::getStringRo()
+	std::string Hexus_Cards_Flip3::getStringRo()
 	{
 		return "Răsturnați al treilea bit";
 	}
 
-	std::string Flip3::getStringRu()
+	std::string Hexus_Cards_Flip3::getStringRu()
 	{
 		return "Отразить третий бит";
 	}
 
-	std::string Flip3::getStringSv()
+	std::string Hexus_Cards_Flip3::getStringSv()
 	{
 		return "Vänd den tredje biten";
 	}
 
-	std::string Flip3::getStringTh()
+	std::string Hexus_Cards_Flip3::getStringTh()
 	{
 		return "พลิกบิตที่สาม";
 	}
 
-	std::string Flip3::getStringTr()
+	std::string Hexus_Cards_Flip3::getStringTr()
 	{
 		return "Üçüncü biti çevir";
 	}
 
-	std::string Flip3::getStringUk()
+	std::string Hexus_Cards_Flip3::getStringUk()
 	{
 		return "Переверніть третій біт";
 	}
 
-	std::string Flip3::getStringVi()
+	std::string Hexus_Cards_Flip3::getStringVi()
 	{
 		return "Lật bit thứ ba";
 	}
 
-	std::string Flip3::getStringZhCn()
+	std::string Hexus_Cards_Flip3::getStringZhCn()
 	{
 		return "翻转第三位";
 	}
 
-	std::string Flip3::getStringZhTw()
+	std::string Hexus_Cards_Flip3::getStringZhTw()
 	{
 		return "翻轉第三位";
 	}

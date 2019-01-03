@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardData.h"
@@ -9,7 +10,25 @@
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
+#include "Strings/Generics/Empty.h"
 #include "Strings/Hexus/BinLabel.h"
+#include "Strings/Hexus/CardDescriptions/Addition.h"
+#include "Strings/Hexus/CardDescriptions/BinStorm.h"
+#include "Strings/Hexus/CardDescriptions/Clear.h"
+#include "Strings/Hexus/CardDescriptions/DecStorm.h"
+#include "Strings/Hexus/CardDescriptions/Flip1.h"
+#include "Strings/Hexus/CardDescriptions/Flip2.h"
+#include "Strings/Hexus/CardDescriptions/Flip3.h"
+#include "Strings/Hexus/CardDescriptions/Flip4.h"
+#include "Strings/Hexus/CardDescriptions/HexStorm.h"
+#include "Strings/Hexus/CardDescriptions/Inverse.h"
+#include "Strings/Hexus/CardDescriptions/LogicalAnd.h"
+#include "Strings/Hexus/CardDescriptions/LogicalOr.h"
+#include "Strings/Hexus/CardDescriptions/LogicalXor.h"
+#include "Strings/Hexus/CardDescriptions/Mov.h"
+#include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
+#include "Strings/Hexus/CardDescriptions/ShiftRight.h"
+#include "Strings/Hexus/CardDescriptions/Subtract.h"
 #include "Strings/Hexus/DecLabel.h"
 #include "Strings/Hexus/HexLabel.h"
 
@@ -159,14 +178,17 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
-				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
-				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, LocaleStrings::BinLabel::create());
+				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_BinLabel::create());
+				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_DecLabel::create());
+				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_HexLabel::create());
 
-				// TODO: Localized labels need to be able to handle appending things (probably parametrized template thing?)
-				binaryLabel->setString(binaryLabel->getString() + " " + HackUtils::toBinary4(attack));
-				decimalLabel->setString(decimalLabel->getString() + " " + std::to_string(attack));
-				hexLabel->setString(hexLabel->getString() + " " + HackUtils::toHex(attack));
+				ConstantString* binaryString = ConstantString::create(HackUtils::toBinary4(attack));
+				ConstantString* decimalString = ConstantString::create(std::to_string(attack));
+				ConstantString* hexString = ConstantString::create(HackUtils::toHex(attack));
+
+				binaryLabel->setStringReplacementVariables(binaryString);
+				decimalLabel->setStringReplacementVariables(decimalString);
+				hexLabel->setStringReplacementVariables(hexString);
 
 				binaryLabel->setAnchorPoint(Vec2::ZERO);
 				decimalLabel->setAnchorPoint(Vec2::ZERO);
@@ -194,7 +216,7 @@ void CardPreview::previewCard(Card* card)
 			}
 			default:
 			{
-				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P);
+				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 
 				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);
@@ -202,81 +224,102 @@ void CardPreview::previewCard(Card* card)
 				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
 				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
 
+				// TODO: Not a fan of allocating memory at runtime like this by calling create, maybe this is fine though
 				switch (card->cardData->cardType)
 				{
 					case CardData::CardType::Special_MOV:
 					{
-						specialLabel->setString("Select one of your cards and MOV its value into another card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Mov::create());
 						break;
 					}
 					case CardData::CardType::Special_AND:
 					{
-						specialLabel->setString("Select one of your cards and AND its value with another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalAnd::create());
 						break;
 					}
 					case CardData::CardType::Special_OR:
 					{
-						specialLabel->setString("Select one of your cards and OR its value with another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalOr::create());
 						break;
 					}
 					case CardData::CardType::Special_XOR:
 					{
-						specialLabel->setString("Select one of your cards and XOR its value with another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalXor::create());
 						break;
 					}
 					case CardData::CardType::Special_SHL:
 					{
-						specialLabel->setString("Shift the bits left of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftLeft::create());
 						break;
 					}
 					case CardData::CardType::Special_SHR:
 					{
-						specialLabel->setString("Shift the bits right of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRight::create());
 						break;
 					}
 					case CardData::CardType::Special_INV:
 					{
-						specialLabel->setString("Invert the bits of the target card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Inverse::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP1:
 					{
-						specialLabel->setString("Flip the 1st bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip1::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP2:
 					{
-						specialLabel->setString("Flip the 2nd bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip2::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP3:
 					{
-						specialLabel->setString("Flip the 3rd bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip3::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP4:
 					{
-						specialLabel->setString("Flip the 4th bit of all cards in a row.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip4::create());
 						break;
 					}
 					case CardData::CardType::Special_ADD:
 					{
-						specialLabel->setString("Select one of your cards and ADD its value to another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Addition::create());
 						break;
 					}
 					case CardData::CardType::Special_SUB:
 					{
-						specialLabel->setString("Select one of your cards and SUB its value from another card, storing the value into the other card.");
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Subtract::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_CLEAR:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Subtract::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_BIN_STORM:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_BinStorm::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_DEC_STORM:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_DecStorm::create());
+						break;
+					}
+					case CardData::CardType::Special_ENV_HEX_STORM:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_HexStorm::create());
 						break;
 					}
 					default:
 					{
 						break;
 					}
-
-					this->previewPanel->addChild(specialLabel);
-					break;
 				}
+
+				this->previewPanel->addChild(specialLabel);
+				break;
 			}
 		}
 	}

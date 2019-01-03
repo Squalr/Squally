@@ -4,171 +4,171 @@
 
 #include "Back.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Back* Back::create()
+	Menus_Back* Menus_Back::create()
 	{
-		Back* instance = new Back();
+		Menus_Back* instance = new Menus_Back();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Back::clone()
+	LocalizedString* Menus_Back::clone()
 	{
-		return Back::create();
+		return Menus_Back::create();
 	}
 
-	Back::Back() : LocalizedString()
-	{
-	}
-
-	Back::~Back()
+	Menus_Back::Menus_Back() : LocalizedString()
 	{
 	}
 
-	std::string Back::getStringAr()
+	Menus_Back::~Menus_Back()
+	{
+	}
+
+	std::string Menus_Back::getStringAr()
 	{
 		return "الى الخلف";
 	}
 
-	std::string Back::getStringBg()
+	std::string Menus_Back::getStringBg()
 	{
 		return "обратно";
 	}
 
-	std::string Back::getStringCs()
+	std::string Menus_Back::getStringCs()
 	{
 		return "Zadní";
 	}
 
-	std::string Back::getStringDa()
+	std::string Menus_Back::getStringDa()
 	{
 		return "Tilbage";
 	}
 
-	std::string Back::getStringDe()
+	std::string Menus_Back::getStringDe()
 	{
 		return "Zurück";
 	}
 
-	std::string Back::getStringEl()
+	std::string Menus_Back::getStringEl()
 	{
 		return "Πίσω";
 	}
 
-	std::string Back::getStringEn()
+	std::string Menus_Back::getStringEn()
 	{
 		return "Back";
 	}
 
-	std::string Back::getStringEs()
+	std::string Menus_Back::getStringEs()
 	{
 		return "Espalda";
 	}
 
-	std::string Back::getStringEs419()
+	std::string Menus_Back::getStringEs419()
 	{
 		return "Espalda";
 	}
 
-	std::string Back::getStringFi()
+	std::string Menus_Back::getStringFi()
 	{
 		return "Takaisin";
 	}
 
-	std::string Back::getStringFr()
+	std::string Menus_Back::getStringFr()
 	{
 		return "Retour";
 	}
 
-	std::string Back::getStringHu()
+	std::string Menus_Back::getStringHu()
 	{
 		return "Hát";
 	}
 
-	std::string Back::getStringIt()
+	std::string Menus_Back::getStringIt()
 	{
 		return "Indietro";
 	}
 
-	std::string Back::getStringJa()
+	std::string Menus_Back::getStringJa()
 	{
 		return "バック";
 	}
 
-	std::string Back::getStringKo()
+	std::string Menus_Back::getStringKo()
 	{
 		return "뒤로";
 	}
 
-	std::string Back::getStringNl()
+	std::string Menus_Back::getStringNl()
 	{
 		return "Terug";
 	}
 
-	std::string Back::getStringNo()
+	std::string Menus_Back::getStringNo()
 	{
 		return "Tilbake";
 	}
 
-	std::string Back::getStringPl()
+	std::string Menus_Back::getStringPl()
 	{
 		return "Z powrotem";
 	}
 
-	std::string Back::getStringPt()
+	std::string Menus_Back::getStringPt()
 	{
 		return "De volta";
 	}
 
-	std::string Back::getStringPtBr()
+	std::string Menus_Back::getStringPtBr()
 	{
 		return "De volta";
 	}
 
-	std::string Back::getStringRo()
+	std::string Menus_Back::getStringRo()
 	{
 		return "Înapoi";
 	}
 
-	std::string Back::getStringRu()
+	std::string Menus_Back::getStringRu()
 	{
 		return "назад";
 	}
 
-	std::string Back::getStringSv()
+	std::string Menus_Back::getStringSv()
 	{
 		return "Tillbaka";
 	}
 
-	std::string Back::getStringTh()
+	std::string Menus_Back::getStringTh()
 	{
 		return "กลับ";
 	}
 
-	std::string Back::getStringTr()
+	std::string Menus_Back::getStringTr()
 	{
 		return "Geri";
 	}
 
-	std::string Back::getStringUk()
+	std::string Menus_Back::getStringUk()
 	{
 		return "Назад";
 	}
 
-	std::string Back::getStringVi()
+	std::string Menus_Back::getStringVi()
 	{
 		return "Trở lại";
 	}
 
-	std::string Back::getStringZhCn()
+	std::string Menus_Back::getStringZhCn()
 	{
 		return "背部";
 	}
 
-	std::string Back::getStringZhTw()
+	std::string Menus_Back::getStringZhTw()
 	{
 		return "背部";
 	}

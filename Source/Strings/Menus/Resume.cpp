@@ -4,171 +4,171 @@
 
 #include "Resume.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Resume* Resume::create()
+	Menus_Resume* Menus_Resume::create()
 	{
-		Resume* instance = new Resume();
+		Menus_Resume* instance = new Menus_Resume();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Resume::clone()
+	LocalizedString* Menus_Resume::clone()
 	{
-		return Resume::create();
+		return Menus_Resume::create();
 	}
 
-	Resume::Resume() : LocalizedString()
-	{
-	}
-
-	Resume::~Resume()
+	Menus_Resume::Menus_Resume() : LocalizedString()
 	{
 	}
 
-	std::string Resume::getStringAr()
+	Menus_Resume::~Menus_Resume()
+	{
+	}
+
+	std::string Menus_Resume::getStringAr()
 	{
 		return "استئنف";
 	}
 
-	std::string Resume::getStringBg()
+	std::string Menus_Resume::getStringBg()
 	{
 		return "Продължи";
 	}
 
-	std::string Resume::getStringCs()
+	std::string Menus_Resume::getStringCs()
 	{
 		return "pokračovat ve hře";
 	}
 
-	std::string Resume::getStringDa()
+	std::string Menus_Resume::getStringDa()
 	{
 		return "Genoptag";
 	}
 
-	std::string Resume::getStringDe()
+	std::string Menus_Resume::getStringDe()
 	{
 		return "Fortsetzen";
 	}
 
-	std::string Resume::getStringEl()
+	std::string Menus_Resume::getStringEl()
 	{
 		return "συνέχιση παιχνιδιού";
 	}
 
-	std::string Resume::getStringEn()
+	std::string Menus_Resume::getStringEn()
 	{
 		return "Resume";
 	}
 
-	std::string Resume::getStringEs()
+	std::string Menus_Resume::getStringEs()
 	{
 		return "Reanudar";
 	}
 
-	std::string Resume::getStringEs419()
+	std::string Menus_Resume::getStringEs419()
 	{
 		return "Reanudar";
 	}
 
-	std::string Resume::getStringFi()
+	std::string Menus_Resume::getStringFi()
 	{
 		return "Jatkaa";
 	}
 
-	std::string Resume::getStringFr()
+	std::string Menus_Resume::getStringFr()
 	{
 		return "Reprendre";
 	}
 
-	std::string Resume::getStringHu()
+	std::string Menus_Resume::getStringHu()
 	{
 		return "Visszanyer";
 	}
 
-	std::string Resume::getStringIt()
+	std::string Menus_Resume::getStringIt()
 	{
 		return "Riprendere";
 	}
 
-	std::string Resume::getStringJa()
+	std::string Menus_Resume::getStringJa()
 	{
 		return "ゲームを再開";
 	}
 
-	std::string Resume::getStringKo()
+	std::string Menus_Resume::getStringKo()
 	{
 		return "게임을 계속하다";
 	}
 
-	std::string Resume::getStringNl()
+	std::string Menus_Resume::getStringNl()
 	{
 		return "Hervatten";
 	}
 
-	std::string Resume::getStringNo()
+	std::string Menus_Resume::getStringNo()
 	{
 		return "Fortsett";
 	}
 
-	std::string Resume::getStringPl()
+	std::string Menus_Resume::getStringPl()
 	{
 		return "Kontynuuj grę";
 	}
 
-	std::string Resume::getStringPt()
+	std::string Menus_Resume::getStringPt()
 	{
 		return "Retomar o jogo";
 	}
 
-	std::string Resume::getStringPtBr()
+	std::string Menus_Resume::getStringPtBr()
 	{
 		return "Retomar o jogo";
 	}
 
-	std::string Resume::getStringRo()
+	std::string Menus_Resume::getStringRo()
 	{
 		return "Relua jocul";
 	}
 
-	std::string Resume::getStringRu()
+	std::string Menus_Resume::getStringRu()
 	{
 		return "продолжить игру";
 	}
 
-	std::string Resume::getStringSv()
+	std::string Menus_Resume::getStringSv()
 	{
 		return "återupptag spelet";
 	}
 
-	std::string Resume::getStringTh()
+	std::string Menus_Resume::getStringTh()
 	{
 		return "กลับสู่เกม";
 	}
 
-	std::string Resume::getStringTr()
+	std::string Menus_Resume::getStringTr()
 	{
 		return "oyuna devam et";
 	}
 
-	std::string Resume::getStringUk()
+	std::string Menus_Resume::getStringUk()
 	{
 		return "відновити гру";
 	}
 
-	std::string Resume::getStringVi()
+	std::string Menus_Resume::getStringVi()
 	{
 		return "tiếp tục trò chơi";
 	}
 
-	std::string Resume::getStringZhCn()
+	std::string Menus_Resume::getStringZhCn()
 	{
 		return "游戏继续";
 	}
 
-	std::string Resume::getStringZhTw()
+	std::string Menus_Resume::getStringZhTw()
 	{
 		return "遊戲繼續";
 	}

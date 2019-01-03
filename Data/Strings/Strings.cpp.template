@@ -2,9 +2,9 @@
 // THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "{{ClassName}}.h"
+#include "{{FileName}}.h"
 
-namespace LocaleStrings
+namespace Strings
 {
 	{{ClassName}}* {{ClassName}}::create()
 	{

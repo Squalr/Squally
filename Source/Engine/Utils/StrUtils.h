@@ -18,4 +18,5 @@ public:
 	static bool startsWith(std::string str, std::string prefix, bool ignoreCase);
 	static bool endsWith(std::string str, std::string suffix, bool ignoreCase);
 	static std::string replaceAll(std::string str, const std::string& from, const std::string& to);
+	static std::string replaceFirstOccurence(std::string str, const std::string& from, const std::string& to);
 };

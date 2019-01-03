@@ -52,12 +52,12 @@ void Goblin::onEnter()
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
-			this->speechBubble->runDialogue(LocaleStrings::PendulumTutorial1::create(), SpeechBubble::Direction::Auto);
+			this->speechBubble->runDialogue(Strings::Dialogue_Helpers_Goblin_PendulumTutorial1::create(), SpeechBubble::Direction::Auto);
 		}),
 		DelayTime::create(5.0f),
 		CallFunc::create([=]()
 		{
-			this->speechBubble->runDialogue(LocaleStrings::PendulumTutorial2::create(), SpeechBubble::Direction::Auto);
+			this->speechBubble->runDialogue(Strings::Dialogue_Helpers_Goblin_PendulumTutorial2::create(), SpeechBubble::Direction::Auto);
 		}),
 		DelayTime::create(2.5f),
 		CallFunc::create([=]()

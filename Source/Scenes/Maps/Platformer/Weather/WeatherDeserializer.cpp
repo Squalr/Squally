@@ -36,7 +36,7 @@ void WeatherDeserializer::initializeListeners()
 		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
 	);
 
-	this->addEventListener(deserializationRequestListener);
+	this->addGlobalEventListener(deserializationRequestListener);
 }
 
 void WeatherDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)

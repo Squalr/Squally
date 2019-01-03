@@ -77,7 +77,7 @@ void DialogueLabel::updateLabels()
 {
 	if (this->currentDialogue != nullptr)
 	{
-		this->label->setString(this->currentDialogue->dialogueText);
+		//this->label->setString(this->currentDialogue->dialogueText);
 		this->runTypeWriterEffect();
 	}
 }

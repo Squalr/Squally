@@ -4,171 +4,171 @@
 
 #include "SeaSharpCaverns.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	SeaSharpCaverns* SeaSharpCaverns::create()
+	Menus_Maps_SeaSharpCaverns* Menus_Maps_SeaSharpCaverns::create()
 	{
-		SeaSharpCaverns* instance = new SeaSharpCaverns();
+		Menus_Maps_SeaSharpCaverns* instance = new Menus_Maps_SeaSharpCaverns();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* SeaSharpCaverns::clone()
+	LocalizedString* Menus_Maps_SeaSharpCaverns::clone()
 	{
-		return SeaSharpCaverns::create();
+		return Menus_Maps_SeaSharpCaverns::create();
 	}
 
-	SeaSharpCaverns::SeaSharpCaverns() : LocalizedString()
-	{
-	}
-
-	SeaSharpCaverns::~SeaSharpCaverns()
+	Menus_Maps_SeaSharpCaverns::Menus_Maps_SeaSharpCaverns() : LocalizedString()
 	{
 	}
 
-	std::string SeaSharpCaverns::getStringAr()
+	Menus_Maps_SeaSharpCaverns::~Menus_Maps_SeaSharpCaverns()
+	{
+	}
+
+	std::string Menus_Maps_SeaSharpCaverns::getStringAr()
 	{
 		return "الكهوف الحادة";
 	}
 
-	std::string SeaSharpCaverns::getStringBg()
+	std::string Menus_Maps_SeaSharpCaverns::getStringBg()
 	{
 		return "Морски остри каверни";
 	}
 
-	std::string SeaSharpCaverns::getStringCs()
+	std::string Menus_Maps_SeaSharpCaverns::getStringCs()
 	{
 		return "Mořské ostré kaverny";
 	}
 
-	std::string SeaSharpCaverns::getStringDa()
+	std::string Menus_Maps_SeaSharpCaverns::getStringDa()
 	{
 		return "Havskarpe huler";
 	}
 
-	std::string SeaSharpCaverns::getStringDe()
+	std::string Menus_Maps_SeaSharpCaverns::getStringDe()
 	{
 		return "Meer scharfe Höhlen";
 	}
 
-	std::string SeaSharpCaverns::getStringEl()
+	std::string Menus_Maps_SeaSharpCaverns::getStringEl()
 	{
 		return "Θάλασσα απότομες σπηλιές";
 	}
 
-	std::string SeaSharpCaverns::getStringEn()
+	std::string Menus_Maps_SeaSharpCaverns::getStringEn()
 	{
 		return "Sea Sharp Caverns";
 	}
 
-	std::string SeaSharpCaverns::getStringEs()
+	std::string Menus_Maps_SeaSharpCaverns::getStringEs()
 	{
 		return "Cavernas marinas";
 	}
 
-	std::string SeaSharpCaverns::getStringEs419()
+	std::string Menus_Maps_SeaSharpCaverns::getStringEs419()
 	{
 		return "Cavernas marinas";
 	}
 
-	std::string SeaSharpCaverns::getStringFi()
+	std::string Menus_Maps_SeaSharpCaverns::getStringFi()
 	{
 		return "Meren terävät luolat";
 	}
 
-	std::string SeaSharpCaverns::getStringFr()
+	std::string Menus_Maps_SeaSharpCaverns::getStringFr()
 	{
 		return "Les cavernes de la mer";
 	}
 
-	std::string SeaSharpCaverns::getStringHu()
+	std::string Menus_Maps_SeaSharpCaverns::getStringHu()
 	{
 		return "Tengeri éles barlangok";
 	}
 
-	std::string SeaSharpCaverns::getStringIt()
+	std::string Menus_Maps_SeaSharpCaverns::getStringIt()
 	{
 		return "Spighe di mare taglienti";
 	}
 
-	std::string SeaSharpCaverns::getStringJa()
+	std::string Menus_Maps_SeaSharpCaverns::getStringJa()
 	{
 		return "海の鋭い洞窟";
 	}
 
-	std::string SeaSharpCaverns::getStringKo()
+	std::string Menus_Maps_SeaSharpCaverns::getStringKo()
 	{
 		return "바다의 날카로운 동굴";
 	}
 
-	std::string SeaSharpCaverns::getStringNl()
+	std::string Menus_Maps_SeaSharpCaverns::getStringNl()
 	{
 		return "Zeespiegelige grotten";
 	}
 
-	std::string SeaSharpCaverns::getStringNo()
+	std::string Menus_Maps_SeaSharpCaverns::getStringNo()
 	{
 		return "Skarpe huler";
 	}
 
-	std::string SeaSharpCaverns::getStringPl()
+	std::string Menus_Maps_SeaSharpCaverns::getStringPl()
 	{
 		return "Jaskinie morskie";
 	}
 
-	std::string SeaSharpCaverns::getStringPt()
+	std::string Menus_Maps_SeaSharpCaverns::getStringPt()
 	{
 		return "Cavernas afiadas do mar";
 	}
 
-	std::string SeaSharpCaverns::getStringPtBr()
+	std::string Menus_Maps_SeaSharpCaverns::getStringPtBr()
 	{
 		return "Cavernas afiadas do mar";
 	}
 
-	std::string SeaSharpCaverns::getStringRo()
+	std::string Menus_Maps_SeaSharpCaverns::getStringRo()
 	{
 		return "Marele cavern ascuțit";
 	}
 
-	std::string SeaSharpCaverns::getStringRu()
+	std::string Menus_Maps_SeaSharpCaverns::getStringRu()
 	{
 		return "Морские острые пещеры";
 	}
 
-	std::string SeaSharpCaverns::getStringSv()
+	std::string Menus_Maps_SeaSharpCaverns::getStringSv()
 	{
 		return "Havsskarpa grottor";
 	}
 
-	std::string SeaSharpCaverns::getStringTh()
+	std::string Menus_Maps_SeaSharpCaverns::getStringTh()
 	{
 		return "ถ้ำทะเลที่คมชัด";
 	}
 
-	std::string SeaSharpCaverns::getStringTr()
+	std::string Menus_Maps_SeaSharpCaverns::getStringTr()
 	{
 		return "Deniz keskin mağaraları";
 	}
 
-	std::string SeaSharpCaverns::getStringUk()
+	std::string Menus_Maps_SeaSharpCaverns::getStringUk()
 	{
 		return "Морські гострі печери";
 	}
 
-	std::string SeaSharpCaverns::getStringVi()
+	std::string Menus_Maps_SeaSharpCaverns::getStringVi()
 	{
 		return "Hang động sắc nét biển";
 	}
 
-	std::string SeaSharpCaverns::getStringZhCn()
+	std::string Menus_Maps_SeaSharpCaverns::getStringZhCn()
 	{
 		return "海上尖锐的洞穴";
 	}
 
-	std::string SeaSharpCaverns::getStringZhTw()
+	std::string Menus_Maps_SeaSharpCaverns::getStringZhTw()
 	{
 		return "海上尖銳的洞穴";
 	}

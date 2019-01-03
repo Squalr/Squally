@@ -4,171 +4,171 @@
 
 #include "HandCards.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	HandCards* HandCards::create()
+	Hexus_Tutorials_A_HandCards* Hexus_Tutorials_A_HandCards::create()
 	{
-		HandCards* instance = new HandCards();
+		Hexus_Tutorials_A_HandCards* instance = new Hexus_Tutorials_A_HandCards();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* HandCards::clone()
+	LocalizedString* Hexus_Tutorials_A_HandCards::clone()
 	{
-		return HandCards::create();
+		return Hexus_Tutorials_A_HandCards::create();
 	}
 
-	HandCards::HandCards() : LocalizedString()
-	{
-	}
-
-	HandCards::~HandCards()
+	Hexus_Tutorials_A_HandCards::Hexus_Tutorials_A_HandCards() : LocalizedString()
 	{
 	}
 
-	std::string HandCards::getStringAr()
+	Hexus_Tutorials_A_HandCards::~Hexus_Tutorials_A_HandCards()
+	{
+	}
+
+	std::string Hexus_Tutorials_A_HandCards::getStringAr()
 	{
 		return "أعطها فرصة! لعب البطاقات الخاصة بك في الصفوف المقابلة لها.";
 	}
 
-	std::string HandCards::getStringBg()
+	std::string Hexus_Tutorials_A_HandCards::getStringBg()
 	{
 		return "Опитай! Играйте картите в съответните им редове.";
 	}
 
-	std::string HandCards::getStringCs()
+	std::string Hexus_Tutorials_A_HandCards::getStringCs()
 	{
 		return "Zkusit to! Zahrajte si karty do odpovídajících řádků.";
 	}
 
-	std::string HandCards::getStringDa()
+	std::string Hexus_Tutorials_A_HandCards::getStringDa()
 	{
 		return "Giv det et skud! Spil dine kort i deres tilsvarende rækker.";
 	}
 
-	std::string HandCards::getStringDe()
+	std::string Hexus_Tutorials_A_HandCards::getStringDe()
 	{
 		return "Versuch es einmal! Spiele deine Karten in die entsprechenden Reihen.";
 	}
 
-	std::string HandCards::getStringEl()
+	std::string Hexus_Tutorials_A_HandCards::getStringEl()
 	{
 		return "Δώστε ένα πλάνο! Παίξτε τις κάρτες σας στις αντίστοιχες σειρές τους.";
 	}
 
-	std::string HandCards::getStringEn()
+	std::string Hexus_Tutorials_A_HandCards::getStringEn()
 	{
 		return "Give it a shot! Play your cards into their corresponding rows.";
 	}
 
-	std::string HandCards::getStringEs()
+	std::string Hexus_Tutorials_A_HandCards::getStringEs()
 	{
 		return "¡Dale un tiro! Juega tus cartas en sus filas correspondientes.";
 	}
 
-	std::string HandCards::getStringEs419()
+	std::string Hexus_Tutorials_A_HandCards::getStringEs419()
 	{
 		return "¡Dale un tiro! Juega tus cartas en sus filas correspondientes.";
 	}
 
-	std::string HandCards::getStringFi()
+	std::string Hexus_Tutorials_A_HandCards::getStringFi()
 	{
 		return "Yritä! Toista korttisi vastaaviin riveihin.";
 	}
 
-	std::string HandCards::getStringFr()
+	std::string Hexus_Tutorials_A_HandCards::getStringFr()
 	{
 		return "Donner un coup de feu! Jouez vos cartes dans les rangées correspondantes.";
 	}
 
-	std::string HandCards::getStringHu()
+	std::string Hexus_Tutorials_A_HandCards::getStringHu()
 	{
 		return "Próbáld meg! Játssza le a kártyáit a megfelelő sorokban.";
 	}
 
-	std::string HandCards::getStringIt()
+	std::string Hexus_Tutorials_A_HandCards::getStringIt()
 	{
 		return "Dagli Un colpo! Gioca le tue carte nelle loro file corrispondenti.";
 	}
 
-	std::string HandCards::getStringJa()
+	std::string Hexus_Tutorials_A_HandCards::getStringJa()
 	{
 		return "試してみます！対応する行にあなたのカードをプレイ。";
 	}
 
-	std::string HandCards::getStringKo()
+	std::string Hexus_Tutorials_A_HandCards::getStringKo()
 	{
 		return "한번 해봐! 카드를 해당 행에 사용하십시오.";
 	}
 
-	std::string HandCards::getStringNl()
+	std::string Hexus_Tutorials_A_HandCards::getStringNl()
 	{
 		return "Probeer het eens! Speel je kaarten in de bijbehorende rijen.";
 	}
 
-	std::string HandCards::getStringNo()
+	std::string Hexus_Tutorials_A_HandCards::getStringNo()
 	{
 		return "Prøv det! Spill kortene dine i de tilsvarende radene.";
 	}
 
-	std::string HandCards::getStringPl()
+	std::string Hexus_Tutorials_A_HandCards::getStringPl()
 	{
 		return "Spróbuj! Zagraj w swoje karty w odpowiednie rzędy.";
 	}
 
-	std::string HandCards::getStringPt()
+	std::string Hexus_Tutorials_A_HandCards::getStringPt()
 	{
 		return "Dê uma chance! Jogue seus cartões em suas linhas correspondentes.";
 	}
 
-	std::string HandCards::getStringPtBr()
+	std::string Hexus_Tutorials_A_HandCards::getStringPtBr()
 	{
 		return "Dê uma chance! Jogue seus cartões em suas linhas correspondentes.";
 	}
 
-	std::string HandCards::getStringRo()
+	std::string Hexus_Tutorials_A_HandCards::getStringRo()
 	{
 		return "Încearcă! Redați cărțile în rândurile lor corespunzătoare.";
 	}
 
-	std::string HandCards::getStringRu()
+	std::string Hexus_Tutorials_A_HandCards::getStringRu()
 	{
 		return "Дать ему шанс! Разыграйте свои карты в соответствующие ряды.";
 	}
 
-	std::string HandCards::getStringSv()
+	std::string Hexus_Tutorials_A_HandCards::getStringSv()
 	{
 		return "Ge det ett försök! Spela dina kort i sina motsvarande rader.";
 	}
 
-	std::string HandCards::getStringTh()
+	std::string Hexus_Tutorials_A_HandCards::getStringTh()
 	{
 		return "ลองยิงดู! เล่นไพ่ของคุณลงในแถวที่เกี่ยวข้อง";
 	}
 
-	std::string HandCards::getStringTr()
+	std::string Hexus_Tutorials_A_HandCards::getStringTr()
 	{
 		return "Bi dene! Kartlarınızı karşılık gelen sıralara oynayın.";
 	}
 
-	std::string HandCards::getStringUk()
+	std::string Hexus_Tutorials_A_HandCards::getStringUk()
 	{
 		return "Дайте йому постріл! Грайте свої карти у відповідні рядки.";
 	}
 
-	std::string HandCards::getStringVi()
+	std::string Hexus_Tutorials_A_HandCards::getStringVi()
 	{
 		return "Cho nó một phát! Chơi bài của bạn thành các hàng tương ứng.";
 	}
 
-	std::string HandCards::getStringZhCn()
+	std::string Hexus_Tutorials_A_HandCards::getStringZhCn()
 	{
 		return "试一试！将您的卡片放入相应的行中。";
 	}
 
-	std::string HandCards::getStringZhTw()
+	std::string Hexus_Tutorials_A_HandCards::getStringZhTw()
 	{
 		return "試一試！將您的卡片放入相應的行中。";
 	}

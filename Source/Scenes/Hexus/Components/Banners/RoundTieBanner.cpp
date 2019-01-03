@@ -7,6 +7,8 @@
 
 #include "Resources/HexusResources.h"
 
+#include "Strings/Hexus/Banners/RoundTied.h"
+
 using namespace cocos2d;
 
 RoundTieBanner* RoundTieBanner::create()
@@ -23,7 +25,7 @@ RoundTieBanner::RoundTieBanner()
 	this->playerPassBanner1 = Sprite::create(HexusResources::RoundBanner);
 	this->playerPassBanner2 = Sprite::create(HexusResources::RoundBanner);
 
-	this->setBannerText("ROUND TIED");
+	this->setBannerText(Strings::Hexus_Banners_RoundTied::create());
 
 	this->addBannerChild(this->playerPassBanner1);
 	this->addBannerChild(this->playerPassBanner2);

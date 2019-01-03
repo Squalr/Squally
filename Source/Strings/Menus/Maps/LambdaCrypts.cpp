@@ -4,171 +4,171 @@
 
 #include "LambdaCrypts.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	LambdaCrypts* LambdaCrypts::create()
+	Menus_Maps_LambdaCrypts* Menus_Maps_LambdaCrypts::create()
 	{
-		LambdaCrypts* instance = new LambdaCrypts();
+		Menus_Maps_LambdaCrypts* instance = new Menus_Maps_LambdaCrypts();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* LambdaCrypts::clone()
+	LocalizedString* Menus_Maps_LambdaCrypts::clone()
 	{
-		return LambdaCrypts::create();
+		return Menus_Maps_LambdaCrypts::create();
 	}
 
-	LambdaCrypts::LambdaCrypts() : LocalizedString()
-	{
-	}
-
-	LambdaCrypts::~LambdaCrypts()
+	Menus_Maps_LambdaCrypts::Menus_Maps_LambdaCrypts() : LocalizedString()
 	{
 	}
 
-	std::string LambdaCrypts::getStringAr()
+	Menus_Maps_LambdaCrypts::~Menus_Maps_LambdaCrypts()
+	{
+	}
+
+	std::string Menus_Maps_LambdaCrypts::getStringAr()
 	{
 		return "الخبايا";
 	}
 
-	std::string LambdaCrypts::getStringBg()
+	std::string Menus_Maps_LambdaCrypts::getStringBg()
 	{
 		return "Ламбда крипти";
 	}
 
-	std::string LambdaCrypts::getStringCs()
+	std::string Menus_Maps_LambdaCrypts::getStringCs()
 	{
 		return "Lambda krypty";
 	}
 
-	std::string LambdaCrypts::getStringDa()
+	std::string Menus_Maps_LambdaCrypts::getStringDa()
 	{
 		return "Lambda krypter";
 	}
 
-	std::string LambdaCrypts::getStringDe()
+	std::string Menus_Maps_LambdaCrypts::getStringDe()
 	{
 		return "Lambda-Krypten";
 	}
 
-	std::string LambdaCrypts::getStringEl()
+	std::string Menus_Maps_LambdaCrypts::getStringEl()
 	{
 		return "Λάμπδα κρυπτά";
 	}
 
-	std::string LambdaCrypts::getStringEn()
+	std::string Menus_Maps_LambdaCrypts::getStringEn()
 	{
 		return "Lambda Crypts";
 	}
 
-	std::string LambdaCrypts::getStringEs()
+	std::string Menus_Maps_LambdaCrypts::getStringEs()
 	{
 		return "Criptas lambda";
 	}
 
-	std::string LambdaCrypts::getStringEs419()
+	std::string Menus_Maps_LambdaCrypts::getStringEs419()
 	{
 		return "Criptas lambda";
 	}
 
-	std::string LambdaCrypts::getStringFi()
+	std::string Menus_Maps_LambdaCrypts::getStringFi()
 	{
 		return "Lambda salaa";
 	}
 
-	std::string LambdaCrypts::getStringFr()
+	std::string Menus_Maps_LambdaCrypts::getStringFr()
 	{
 		return "Cryptes Lambda";
 	}
 
-	std::string LambdaCrypts::getStringHu()
+	std::string Menus_Maps_LambdaCrypts::getStringHu()
 	{
 		return "Lambda crypts";
 	}
 
-	std::string LambdaCrypts::getStringIt()
+	std::string Menus_Maps_LambdaCrypts::getStringIt()
 	{
 		return "Cripte Lambda";
 	}
 
-	std::string LambdaCrypts::getStringJa()
+	std::string Menus_Maps_LambdaCrypts::getStringJa()
 	{
 		return "ラムダ暗号";
 	}
 
-	std::string LambdaCrypts::getStringKo()
+	std::string Menus_Maps_LambdaCrypts::getStringKo()
 	{
 		return "람다 음부";
 	}
 
-	std::string LambdaCrypts::getStringNl()
+	std::string Menus_Maps_LambdaCrypts::getStringNl()
 	{
 		return "Lambda crypten";
 	}
 
-	std::string LambdaCrypts::getStringNo()
+	std::string Menus_Maps_LambdaCrypts::getStringNo()
 	{
 		return "Lambda krypter";
 	}
 
-	std::string LambdaCrypts::getStringPl()
+	std::string Menus_Maps_LambdaCrypts::getStringPl()
 	{
 		return "Krypty Lambda";
 	}
 
-	std::string LambdaCrypts::getStringPt()
+	std::string Menus_Maps_LambdaCrypts::getStringPt()
 	{
 		return "Criptas Lambda";
 	}
 
-	std::string LambdaCrypts::getStringPtBr()
+	std::string Menus_Maps_LambdaCrypts::getStringPtBr()
 	{
 		return "Criptas Lambda";
 	}
 
-	std::string LambdaCrypts::getStringRo()
+	std::string Menus_Maps_LambdaCrypts::getStringRo()
 	{
 		return "Lampda cripte";
 	}
 
-	std::string LambdaCrypts::getStringRu()
+	std::string Menus_Maps_LambdaCrypts::getStringRu()
 	{
 		return "Лямбда склепы";
 	}
 
-	std::string LambdaCrypts::getStringSv()
+	std::string Menus_Maps_LambdaCrypts::getStringSv()
 	{
 		return "Lambda krypter";
 	}
 
-	std::string LambdaCrypts::getStringTh()
+	std::string Menus_Maps_LambdaCrypts::getStringTh()
 	{
 		return "แลมด้า";
 	}
 
-	std::string LambdaCrypts::getStringTr()
+	std::string Menus_Maps_LambdaCrypts::getStringTr()
 	{
 		return "Lambda şifreleri";
 	}
 
-	std::string LambdaCrypts::getStringUk()
+	std::string Menus_Maps_LambdaCrypts::getStringUk()
 	{
 		return "Лямбда-склепи";
 	}
 
-	std::string LambdaCrypts::getStringVi()
+	std::string Menus_Maps_LambdaCrypts::getStringVi()
 	{
 		return "Hầm thịt cừu";
 	}
 
-	std::string LambdaCrypts::getStringZhCn()
+	std::string Menus_Maps_LambdaCrypts::getStringZhCn()
 	{
 		return "Lambda地穴";
 	}
 
-	std::string LambdaCrypts::getStringZhTw()
+	std::string Menus_Maps_LambdaCrypts::getStringZhTw()
 	{
 		return "Lambda地穴";
 	}

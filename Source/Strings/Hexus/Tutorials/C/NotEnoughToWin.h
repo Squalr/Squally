@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class NotEnoughToWin : public LocalizedString
+	class Hexus_Tutorials_C_NotEnoughToWin : public LocalizedString
 	{
 	public:
-		static NotEnoughToWin* create();
+		static Hexus_Tutorials_C_NotEnoughToWin* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		NotEnoughToWin();
-		~NotEnoughToWin();
+		Hexus_Tutorials_C_NotEnoughToWin();
+		~Hexus_Tutorials_C_NotEnoughToWin();
 	};
 }

@@ -22,7 +22,7 @@ HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 	return instance;
 }
 
-HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::SaveKeyChapterName, LocaleStrings::TrainingGrounds::create())
+HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::SaveKeyChapterName, Strings::Menus_Maps_TrainingGrounds::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameTraining));
 }

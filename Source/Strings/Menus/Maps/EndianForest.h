@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class EndianForest : public LocalizedString
+	class Menus_Maps_EndianForest : public LocalizedString
 	{
 	public:
-		static EndianForest* create();
+		static Menus_Maps_EndianForest* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		EndianForest();
-		~EndianForest();
+		Menus_Maps_EndianForest();
+		~Menus_Maps_EndianForest();
 	};
 }

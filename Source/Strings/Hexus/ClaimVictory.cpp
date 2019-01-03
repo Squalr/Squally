@@ -4,171 +4,171 @@
 
 #include "ClaimVictory.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	ClaimVictory* ClaimVictory::create()
+	Hexus_ClaimVictory* Hexus_ClaimVictory::create()
 	{
-		ClaimVictory* instance = new ClaimVictory();
+		Hexus_ClaimVictory* instance = new Hexus_ClaimVictory();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* ClaimVictory::clone()
+	LocalizedString* Hexus_ClaimVictory::clone()
 	{
-		return ClaimVictory::create();
+		return Hexus_ClaimVictory::create();
 	}
 
-	ClaimVictory::ClaimVictory() : LocalizedString()
-	{
-	}
-
-	ClaimVictory::~ClaimVictory()
+	Hexus_ClaimVictory::Hexus_ClaimVictory() : LocalizedString()
 	{
 	}
 
-	std::string ClaimVictory::getStringAr()
+	Hexus_ClaimVictory::~Hexus_ClaimVictory()
+	{
+	}
+
+	std::string Hexus_ClaimVictory::getStringAr()
 	{
 		return "المطالبة النصر";
 	}
 
-	std::string ClaimVictory::getStringBg()
+	std::string Hexus_ClaimVictory::getStringBg()
 	{
 		return "Твърди победата";
 	}
 
-	std::string ClaimVictory::getStringCs()
+	std::string Hexus_ClaimVictory::getStringCs()
 	{
 		return "Vyžádat vítězství";
 	}
 
-	std::string ClaimVictory::getStringDa()
+	std::string Hexus_ClaimVictory::getStringDa()
 	{
 		return "Hævde sejr";
 	}
 
-	std::string ClaimVictory::getStringDe()
+	std::string Hexus_ClaimVictory::getStringDe()
 	{
 		return "Sieg fordern";
 	}
 
-	std::string ClaimVictory::getStringEl()
+	std::string Hexus_ClaimVictory::getStringEl()
 	{
 		return "Ζητήστε τη νίκη";
 	}
 
-	std::string ClaimVictory::getStringEn()
+	std::string Hexus_ClaimVictory::getStringEn()
 	{
 		return "Claim Victory";
 	}
 
-	std::string ClaimVictory::getStringEs()
+	std::string Hexus_ClaimVictory::getStringEs()
 	{
 		return "Victoria de reclamo";
 	}
 
-	std::string ClaimVictory::getStringEs419()
+	std::string Hexus_ClaimVictory::getStringEs419()
 	{
 		return "Victoria de reclamo";
 	}
 
-	std::string ClaimVictory::getStringFi()
+	std::string Hexus_ClaimVictory::getStringFi()
 	{
 		return "Vahvista voitto";
 	}
 
-	std::string ClaimVictory::getStringFr()
+	std::string Hexus_ClaimVictory::getStringFr()
 	{
 		return "Réclamer la victoire";
 	}
 
-	std::string ClaimVictory::getStringHu()
+	std::string Hexus_ClaimVictory::getStringHu()
 	{
 		return "Győzelem követelése";
 	}
 
-	std::string ClaimVictory::getStringIt()
+	std::string Hexus_ClaimVictory::getStringIt()
 	{
 		return "Richiedi la vittoria";
 	}
 
-	std::string ClaimVictory::getStringJa()
+	std::string Hexus_ClaimVictory::getStringJa()
 	{
 		return "申し立ての勝利";
 	}
 
-	std::string ClaimVictory::getStringKo()
+	std::string Hexus_ClaimVictory::getStringKo()
 	{
 		return "승리를 주장하다";
 	}
 
-	std::string ClaimVictory::getStringNl()
+	std::string Hexus_ClaimVictory::getStringNl()
 	{
 		return "Claim overwinning";
 	}
 
-	std::string ClaimVictory::getStringNo()
+	std::string Hexus_ClaimVictory::getStringNo()
 	{
 		return "Gjør krav på seier";
 	}
 
-	std::string ClaimVictory::getStringPl()
+	std::string Hexus_ClaimVictory::getStringPl()
 	{
 		return "Zdobądź Zwycięstwo";
 	}
 
-	std::string ClaimVictory::getStringPt()
+	std::string Hexus_ClaimVictory::getStringPt()
 	{
 		return "Reivindicar a vitória";
 	}
 
-	std::string ClaimVictory::getStringPtBr()
+	std::string Hexus_ClaimVictory::getStringPtBr()
 	{
 		return "Reivindicar a vitória";
 	}
 
-	std::string ClaimVictory::getStringRo()
+	std::string Hexus_ClaimVictory::getStringRo()
 	{
 		return "Cereți Victoria";
 	}
 
-	std::string ClaimVictory::getStringRu()
+	std::string Hexus_ClaimVictory::getStringRu()
 	{
 		return "Претендовать на победу";
 	}
 
-	std::string ClaimVictory::getStringSv()
+	std::string Hexus_ClaimVictory::getStringSv()
 	{
 		return "Påstå seger";
 	}
 
-	std::string ClaimVictory::getStringTh()
+	std::string Hexus_ClaimVictory::getStringTh()
 	{
 		return "รับชัยชนะ";
 	}
 
-	std::string ClaimVictory::getStringTr()
+	std::string Hexus_ClaimVictory::getStringTr()
 	{
 		return "Zafer Talebi";
 	}
 
-	std::string ClaimVictory::getStringUk()
+	std::string Hexus_ClaimVictory::getStringUk()
 	{
 		return "Вимога перемоги";
 	}
 
-	std::string ClaimVictory::getStringVi()
+	std::string Hexus_ClaimVictory::getStringVi()
 	{
 		return "Yêu cầu chiến thắng";
 	}
 
-	std::string ClaimVictory::getStringZhCn()
+	std::string Hexus_ClaimVictory::getStringZhCn()
 	{
 		return "要求胜利";
 	}
 
-	std::string ClaimVictory::getStringZhTw()
+	std::string Hexus_ClaimVictory::getStringZhTw()
 	{
 		return "要求勝利";
 	}

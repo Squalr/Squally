@@ -36,31 +36,31 @@ TutorialCIntroSequence* TutorialCIntroSequence::create()
 TutorialCIntroSequence::TutorialCIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialC, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::OpponentLead::create(), Size(420.0f, 0.0f));
-	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::NotEnoughToWin::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::UseSurrender::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_C_OpponentLead::create(), Size(420.0f, 0.0f));
+	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_C_NotEnoughToWin::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->lastStandTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_C_UseSurrender::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowScoreTotals = HelpArrow::create();
 	this->helpArrowHandCards = HelpArrow::create();
 	this->helpArrowLastStand = HelpArrow::create();
 
-	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
-	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
-	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	LocalizedLabel* lastStandNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
-	LocalizedLabel* lastStandNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::GotIt::create());
+	LocalizedLabel* lastStandNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
+	LocalizedLabel* lastStandNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
 
 	lastStandNextLabel->enableOutline(Color4B::BLACK, 2);
 	lastStandNextLabelSelected->enableOutline(Color4B::BLACK, 2);

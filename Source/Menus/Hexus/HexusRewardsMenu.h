@@ -8,6 +8,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class LocalizedLabel;
 class MenuSprite;
 
@@ -31,6 +32,7 @@ private:
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* goldSprite;
 	cocos2d::Sprite* goldSpriteLesser;
+	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
 	MenuSprite* returnButton;
 

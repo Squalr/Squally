@@ -10,6 +10,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Generics/Constant.h"
+
 using namespace cocos2d;
 
 HexusPuzzleItem* HexusPuzzleItem::create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver)
@@ -30,7 +32,7 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 	this->page = index / HexusPuzzleItem::MaxEntriesPerPage;
 
 	this->frame = Sprite::create(UIResources::Menus_TutorialMenu_TutorialEntry);
-	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3);
+	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 
 	// TODO: Load save data
 	this->isLevelComplete = true;

@@ -14,6 +14,7 @@ namespace cocos2d
 
 class Card;
 class CardData;
+class ConstantString;
 class LocalizedLabel;
 class MenuCard;
 class MenuSprite;
@@ -45,11 +46,11 @@ private:
 	void onHexTabClick();
 	void onSpecialTabClick();
 	void updateAllCardLimits();
-	void updateCardLimitText(LocalizedLabel* label, CardData* cardData);
+	void updateCardLimitText(LocalizedLabel* label, ConstantString* countString, ConstantString* limitString, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
 	void onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
-	void onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* label);
+	void onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
 	void onBackClick(MenuSprite* menuSprite);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
@@ -72,6 +73,7 @@ private:
 	cocos2d::Sprite* storeMenu;
 	cocos2d::Sprite* goldPanel;
 	cocos2d::Sprite* goldIcon;
+	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
 	cocos2d::Node* lootboxesNode;
 	ScrollPane* binaryCardsScrollPane;
@@ -93,7 +95,7 @@ private:
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> decimalCards;
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> hexCards;
 	std::vector<std::tuple<MenuSprite*, MenuCard*, int>> specialCards;
-	std::map<MenuCard*, LocalizedLabel*> limitLabels;
+	std::map<MenuCard*, std::tuple<ConstantString*, ConstantString*, LocalizedLabel*>> limitLabels;
 
 	static HexusStoreMenu* instance;
 	static const float LootBoxScale;

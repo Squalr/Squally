@@ -22,7 +22,7 @@ HexusChapterPreviewRuins* HexusChapterPreviewRuins::create()
 	return instance;
 }
 
-HexusChapterPreviewRuins::HexusChapterPreviewRuins() : HexusChapterPreview(HexusChapterPreviewRuins::SaveKeyChapterName, LocaleStrings::UnderflowRuins::create())
+HexusChapterPreviewRuins::HexusChapterPreviewRuins() : HexusChapterPreview(HexusChapterPreviewRuins::SaveKeyChapterName, Strings::Menus_Maps_UnderflowRuins::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins));
 }

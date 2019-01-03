@@ -19,6 +19,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Hexus/HexusPuzzles.h"
+#include "Strings/Generics/Empty.h"
 
 using namespace cocos2d;
 
@@ -46,9 +47,9 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->currentPage = 0;
 
 	this->tutorialWindow = Sprite::create(UIResources::Menus_TutorialMenu_TutorialSelect);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, LocaleStrings::HexusPuzzles::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_HexusPuzzles::create());
 	this->descriptionBox = Sprite::create(UIResources::Menus_TutorialMenu_TutorialItem);
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small);
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Generics_Empty::create());
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
@@ -221,7 +222,7 @@ void HexusPuzzlesMenu::onMouseOver(HexusPuzzleItem* tutorialItem)
 {
 	if (this->description->getString() != tutorialItem->tutorialDescription)
 	{
-		this->description->setString(tutorialItem->tutorialDescription);
+		// this->description->setLocalizedString(tutorialItem->tutorialDescription);
 	}
 }
 

@@ -4,171 +4,171 @@
 
 #include "StoreLabelBinary.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	StoreLabelBinary* StoreLabelBinary::create()
+	Hexus_StoreLabelBinary* Hexus_StoreLabelBinary::create()
 	{
-		StoreLabelBinary* instance = new StoreLabelBinary();
+		Hexus_StoreLabelBinary* instance = new Hexus_StoreLabelBinary();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* StoreLabelBinary::clone()
+	LocalizedString* Hexus_StoreLabelBinary::clone()
 	{
-		return StoreLabelBinary::create();
+		return Hexus_StoreLabelBinary::create();
 	}
 
-	StoreLabelBinary::StoreLabelBinary() : LocalizedString()
-	{
-	}
-
-	StoreLabelBinary::~StoreLabelBinary()
+	Hexus_StoreLabelBinary::Hexus_StoreLabelBinary() : LocalizedString()
 	{
 	}
 
-	std::string StoreLabelBinary::getStringAr()
+	Hexus_StoreLabelBinary::~Hexus_StoreLabelBinary()
 	{
-		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringBg()
+	std::string Hexus_StoreLabelBinary::getStringAr()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringCs()
+	std::string Hexus_StoreLabelBinary::getStringBg()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringDa()
+	std::string Hexus_StoreLabelBinary::getStringCs()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringDe()
+	std::string Hexus_StoreLabelBinary::getStringDa()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringEl()
+	std::string Hexus_StoreLabelBinary::getStringDe()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringEn()
+	std::string Hexus_StoreLabelBinary::getStringEl()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringEs()
+	std::string Hexus_StoreLabelBinary::getStringEn()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringEs419()
+	std::string Hexus_StoreLabelBinary::getStringEs()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringFi()
+	std::string Hexus_StoreLabelBinary::getStringEs419()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringFr()
+	std::string Hexus_StoreLabelBinary::getStringFi()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringHu()
+	std::string Hexus_StoreLabelBinary::getStringFr()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringIt()
+	std::string Hexus_StoreLabelBinary::getStringHu()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringJa()
+	std::string Hexus_StoreLabelBinary::getStringIt()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringKo()
+	std::string Hexus_StoreLabelBinary::getStringJa()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringNl()
+	std::string Hexus_StoreLabelBinary::getStringKo()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringNo()
+	std::string Hexus_StoreLabelBinary::getStringNl()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringPl()
+	std::string Hexus_StoreLabelBinary::getStringNo()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringPt()
+	std::string Hexus_StoreLabelBinary::getStringPl()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringPtBr()
+	std::string Hexus_StoreLabelBinary::getStringPt()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringRo()
+	std::string Hexus_StoreLabelBinary::getStringPtBr()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringRu()
+	std::string Hexus_StoreLabelBinary::getStringRo()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringSv()
+	std::string Hexus_StoreLabelBinary::getStringRu()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringTh()
+	std::string Hexus_StoreLabelBinary::getStringSv()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringTr()
+	std::string Hexus_StoreLabelBinary::getStringTh()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringUk()
+	std::string Hexus_StoreLabelBinary::getStringTr()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringVi()
+	std::string Hexus_StoreLabelBinary::getStringUk()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringZhCn()
+	std::string Hexus_StoreLabelBinary::getStringVi()
 	{
 		return "1111";
 	}
 
-	std::string StoreLabelBinary::getStringZhTw()
+	std::string Hexus_StoreLabelBinary::getStringZhCn()
+	{
+		return "1111";
+	}
+
+	std::string Hexus_StoreLabelBinary::getStringZhTw()
 	{
 		return "1111";
 	}

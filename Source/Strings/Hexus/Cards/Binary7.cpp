@@ -4,171 +4,171 @@
 
 #include "Binary7.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary7* Binary7::create()
+	Hexus_Cards_Binary7* Hexus_Cards_Binary7::create()
 	{
-		Binary7* instance = new Binary7();
+		Hexus_Cards_Binary7* instance = new Hexus_Cards_Binary7();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary7::clone()
+	LocalizedString* Hexus_Cards_Binary7::clone()
 	{
-		return Binary7::create();
+		return Hexus_Cards_Binary7::create();
 	}
 
-	Binary7::Binary7() : LocalizedString()
-	{
-	}
-
-	Binary7::~Binary7()
+	Hexus_Cards_Binary7::Hexus_Cards_Binary7() : LocalizedString()
 	{
 	}
 
-	std::string Binary7::getStringAr()
+	Hexus_Cards_Binary7::~Hexus_Cards_Binary7()
+	{
+	}
+
+	std::string Hexus_Cards_Binary7::getStringAr()
 	{
 		return "نبتون";
 	}
 
-	std::string Binary7::getStringBg()
+	std::string Hexus_Cards_Binary7::getStringBg()
 	{
 		return "Нептун";
 	}
 
-	std::string Binary7::getStringCs()
+	std::string Hexus_Cards_Binary7::getStringCs()
 	{
 		return "Neptune";
 	}
 
-	std::string Binary7::getStringDa()
+	std::string Hexus_Cards_Binary7::getStringDa()
 	{
 		return "neptune";
 	}
 
-	std::string Binary7::getStringDe()
+	std::string Hexus_Cards_Binary7::getStringDe()
 	{
 		return "Neptun";
 	}
 
-	std::string Binary7::getStringEl()
+	std::string Hexus_Cards_Binary7::getStringEl()
 	{
 		return "Ποσειδώνας";
 	}
 
-	std::string Binary7::getStringEn()
+	std::string Hexus_Cards_Binary7::getStringEn()
 	{
 		return "N.E.P.T.U.N.E.";
 	}
 
-	std::string Binary7::getStringEs()
+	std::string Hexus_Cards_Binary7::getStringEs()
 	{
 		return "Neptuno";
 	}
 
-	std::string Binary7::getStringEs419()
+	std::string Hexus_Cards_Binary7::getStringEs419()
 	{
 		return "Neptuno";
 	}
 
-	std::string Binary7::getStringFi()
+	std::string Hexus_Cards_Binary7::getStringFi()
 	{
 		return "Neptunus";
 	}
 
-	std::string Binary7::getStringFr()
+	std::string Hexus_Cards_Binary7::getStringFr()
 	{
 		return "neptune";
 	}
 
-	std::string Binary7::getStringHu()
+	std::string Hexus_Cards_Binary7::getStringHu()
 	{
 		return "Neptun";
 	}
 
-	std::string Binary7::getStringIt()
+	std::string Hexus_Cards_Binary7::getStringIt()
 	{
 		return "Nettuno";
 	}
 
-	std::string Binary7::getStringJa()
+	std::string Hexus_Cards_Binary7::getStringJa()
 	{
 		return "ネプチューン";
 	}
 
-	std::string Binary7::getStringKo()
+	std::string Hexus_Cards_Binary7::getStringKo()
 	{
 		return "해왕성";
 	}
 
-	std::string Binary7::getStringNl()
+	std::string Hexus_Cards_Binary7::getStringNl()
 	{
 		return "Neptunus";
 	}
 
-	std::string Binary7::getStringNo()
+	std::string Hexus_Cards_Binary7::getStringNo()
 	{
 		return "neptune";
 	}
 
-	std::string Binary7::getStringPl()
+	std::string Hexus_Cards_Binary7::getStringPl()
 	{
 		return "Neptun";
 	}
 
-	std::string Binary7::getStringPt()
+	std::string Hexus_Cards_Binary7::getStringPt()
 	{
 		return "Netuno";
 	}
 
-	std::string Binary7::getStringPtBr()
+	std::string Hexus_Cards_Binary7::getStringPtBr()
 	{
 		return "Netuno";
 	}
 
-	std::string Binary7::getStringRo()
+	std::string Hexus_Cards_Binary7::getStringRo()
 	{
 		return "Neptun";
 	}
 
-	std::string Binary7::getStringRu()
+	std::string Hexus_Cards_Binary7::getStringRu()
 	{
 		return "Нептун";
 	}
 
-	std::string Binary7::getStringSv()
+	std::string Hexus_Cards_Binary7::getStringSv()
 	{
 		return "neptunus";
 	}
 
-	std::string Binary7::getStringTh()
+	std::string Hexus_Cards_Binary7::getStringTh()
 	{
 		return "เกตุ";
 	}
 
-	std::string Binary7::getStringTr()
+	std::string Hexus_Cards_Binary7::getStringTr()
 	{
 		return "Neptün";
 	}
 
-	std::string Binary7::getStringUk()
+	std::string Hexus_Cards_Binary7::getStringUk()
 	{
 		return "нептун";
 	}
 
-	std::string Binary7::getStringVi()
+	std::string Hexus_Cards_Binary7::getStringVi()
 	{
 		return "sao Hải vương";
 	}
 
-	std::string Binary7::getStringZhCn()
+	std::string Hexus_Cards_Binary7::getStringZhCn()
 	{
 		return "海王星";
 	}
 
-	std::string Binary7::getStringZhTw()
+	std::string Hexus_Cards_Binary7::getStringZhTw()
 	{
 		return "海王星";
 	}

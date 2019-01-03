@@ -4,171 +4,171 @@
 
 #include "StoreLabelSpecial.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	StoreLabelSpecial* StoreLabelSpecial::create()
+	Hexus_StoreLabelSpecial* Hexus_StoreLabelSpecial::create()
 	{
-		StoreLabelSpecial* instance = new StoreLabelSpecial();
+		Hexus_StoreLabelSpecial* instance = new Hexus_StoreLabelSpecial();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* StoreLabelSpecial::clone()
+	LocalizedString* Hexus_StoreLabelSpecial::clone()
 	{
-		return StoreLabelSpecial::create();
+		return Hexus_StoreLabelSpecial::create();
 	}
 
-	StoreLabelSpecial::StoreLabelSpecial() : LocalizedString()
-	{
-	}
-
-	StoreLabelSpecial::~StoreLabelSpecial()
+	Hexus_StoreLabelSpecial::Hexus_StoreLabelSpecial() : LocalizedString()
 	{
 	}
 
-	std::string StoreLabelSpecial::getStringAr()
+	Hexus_StoreLabelSpecial::~Hexus_StoreLabelSpecial()
 	{
-		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringBg()
+	std::string Hexus_StoreLabelSpecial::getStringAr()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringCs()
+	std::string Hexus_StoreLabelSpecial::getStringBg()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringDa()
+	std::string Hexus_StoreLabelSpecial::getStringCs()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringDe()
+	std::string Hexus_StoreLabelSpecial::getStringDa()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringEl()
+	std::string Hexus_StoreLabelSpecial::getStringDe()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringEn()
+	std::string Hexus_StoreLabelSpecial::getStringEl()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringEs()
+	std::string Hexus_StoreLabelSpecial::getStringEn()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringEs419()
+	std::string Hexus_StoreLabelSpecial::getStringEs()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringFi()
+	std::string Hexus_StoreLabelSpecial::getStringEs419()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringFr()
+	std::string Hexus_StoreLabelSpecial::getStringFi()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringHu()
+	std::string Hexus_StoreLabelSpecial::getStringFr()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringIt()
+	std::string Hexus_StoreLabelSpecial::getStringHu()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringJa()
+	std::string Hexus_StoreLabelSpecial::getStringIt()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringKo()
+	std::string Hexus_StoreLabelSpecial::getStringJa()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringNl()
+	std::string Hexus_StoreLabelSpecial::getStringKo()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringNo()
+	std::string Hexus_StoreLabelSpecial::getStringNl()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringPl()
+	std::string Hexus_StoreLabelSpecial::getStringNo()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringPt()
+	std::string Hexus_StoreLabelSpecial::getStringPl()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringPtBr()
+	std::string Hexus_StoreLabelSpecial::getStringPt()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringRo()
+	std::string Hexus_StoreLabelSpecial::getStringPtBr()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringRu()
+	std::string Hexus_StoreLabelSpecial::getStringRo()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringSv()
+	std::string Hexus_StoreLabelSpecial::getStringRu()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringTh()
+	std::string Hexus_StoreLabelSpecial::getStringSv()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringTr()
+	std::string Hexus_StoreLabelSpecial::getStringTh()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringUk()
+	std::string Hexus_StoreLabelSpecial::getStringTr()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringVi()
+	std::string Hexus_StoreLabelSpecial::getStringUk()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringZhCn()
+	std::string Hexus_StoreLabelSpecial::getStringVi()
 	{
 		return "OR";
 	}
 
-	std::string StoreLabelSpecial::getStringZhTw()
+	std::string Hexus_StoreLabelSpecial::getStringZhCn()
+	{
+		return "OR";
+	}
+
+	std::string Hexus_StoreLabelSpecial::getStringZhTw()
 	{
 		return "OR";
 	}

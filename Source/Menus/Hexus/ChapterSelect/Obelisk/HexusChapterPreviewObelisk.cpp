@@ -7,7 +7,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Maps/VoidStar.h"
+#include "Strings/Menus/Maps/LambdaCrypts.h"
 
 using namespace cocos2d;
 
@@ -22,7 +22,7 @@ HexusChapterPreviewObelisk* HexusChapterPreviewObelisk::create()
 	return instance;
 }
 
-HexusChapterPreviewObelisk::HexusChapterPreviewObelisk() : HexusChapterPreview(HexusChapterPreviewObelisk::SaveKeyChapterName, LocaleStrings::VoidStar::create())
+HexusChapterPreviewObelisk::HexusChapterPreviewObelisk() : HexusChapterPreview(HexusChapterPreviewObelisk::SaveKeyChapterName, Strings::Menus_Maps_LambdaCrypts::create())
 {
 	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk));
 }

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class CodeEditor : public LocalizedString
+	class Menus_CodeEditor_CodeEditor : public LocalizedString
 	{
 	public:
-		static CodeEditor* create();
+		static Menus_CodeEditor_CodeEditor* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		CodeEditor();
-		~CodeEditor();
+		Menus_CodeEditor_CodeEditor();
+		~Menus_CodeEditor_CodeEditor();
 	};
 }

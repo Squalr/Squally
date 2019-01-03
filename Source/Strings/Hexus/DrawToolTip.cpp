@@ -4,171 +4,171 @@
 
 #include "DrawToolTip.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	DrawToolTip* DrawToolTip::create()
+	Hexus_DrawToolTip* Hexus_DrawToolTip::create()
 	{
-		DrawToolTip* instance = new DrawToolTip();
+		Hexus_DrawToolTip* instance = new Hexus_DrawToolTip();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* DrawToolTip::clone()
+	LocalizedString* Hexus_DrawToolTip::clone()
 	{
-		return DrawToolTip::create();
+		return Hexus_DrawToolTip::create();
 	}
 
-	DrawToolTip::DrawToolTip() : LocalizedString()
-	{
-	}
-
-	DrawToolTip::~DrawToolTip()
+	Hexus_DrawToolTip::Hexus_DrawToolTip() : LocalizedString()
 	{
 	}
 
-	std::string DrawToolTip::getStringAr()
+	Hexus_DrawToolTip::~Hexus_DrawToolTip()
+	{
+	}
+
+	std::string Hexus_DrawToolTip::getStringAr()
 	{
 		return "عدد البطاقات التي سيتم رسمها في الجولة التالية";
 	}
 
-	std::string DrawToolTip::getStringBg()
+	std::string Hexus_DrawToolTip::getStringBg()
 	{
 		return "Броят на картите, които ще бъдат изтеглени следващия кръг";
 	}
 
-	std::string DrawToolTip::getStringCs()
+	std::string Hexus_DrawToolTip::getStringCs()
 	{
 		return "Počet karet, které budou vylosovány v dalším kole";
 	}
 
-	std::string DrawToolTip::getStringDa()
+	std::string Hexus_DrawToolTip::getStringDa()
 	{
 		return "Antallet af kort der vil blive trukket næste runde";
 	}
 
-	std::string DrawToolTip::getStringDe()
+	std::string Hexus_DrawToolTip::getStringDe()
 	{
 		return "Die Anzahl der Karten, die in der nächsten Runde gezogen werden";
 	}
 
-	std::string DrawToolTip::getStringEl()
+	std::string Hexus_DrawToolTip::getStringEl()
 	{
 		return "Ο αριθμός των καρτών που θα σχεδιαστούν στον επόμενο γύρο";
 	}
 
-	std::string DrawToolTip::getStringEn()
+	std::string Hexus_DrawToolTip::getStringEn()
 	{
 		return "The number of cards that will be drawn next round";
 	}
 
-	std::string DrawToolTip::getStringEs()
+	std::string Hexus_DrawToolTip::getStringEs()
 	{
 		return "El número de cartas que se sortearán en la siguiente ronda.";
 	}
 
-	std::string DrawToolTip::getStringEs419()
+	std::string Hexus_DrawToolTip::getStringEs419()
 	{
 		return "El número de cartas que se sortearán en la siguiente ronda.";
 	}
 
-	std::string DrawToolTip::getStringFi()
+	std::string Hexus_DrawToolTip::getStringFi()
 	{
 		return "Seuraavien kierrosten korttien määrä";
 	}
 
-	std::string DrawToolTip::getStringFr()
+	std::string Hexus_DrawToolTip::getStringFr()
 	{
 		return "Le nombre de cartes qui seront tirées au prochain tour";
 	}
 
-	std::string DrawToolTip::getStringHu()
+	std::string Hexus_DrawToolTip::getStringHu()
 	{
 		return "A következő körben levő kártyák száma";
 	}
 
-	std::string DrawToolTip::getStringIt()
+	std::string Hexus_DrawToolTip::getStringIt()
 	{
 		return "Il numero di carte che verranno estratte il prossimo round";
 	}
 
-	std::string DrawToolTip::getStringJa()
+	std::string Hexus_DrawToolTip::getStringJa()
 	{
 		return "次のラウンドで引かれるカードの数";
 	}
 
-	std::string DrawToolTip::getStringKo()
+	std::string Hexus_DrawToolTip::getStringKo()
 	{
 		return "다음 라운드에 그려 질 카드 수";
 	}
 
-	std::string DrawToolTip::getStringNl()
+	std::string Hexus_DrawToolTip::getStringNl()
 	{
 		return "Het aantal kaarten dat de volgende ronde wordt getrokken";
 	}
 
-	std::string DrawToolTip::getStringNo()
+	std::string Hexus_DrawToolTip::getStringNo()
 	{
 		return "Antall kort som skal tegnes neste runde";
 	}
 
-	std::string DrawToolTip::getStringPl()
+	std::string Hexus_DrawToolTip::getStringPl()
 	{
 		return "Liczba kart, które zostaną wylosowane w następnej rundzie";
 	}
 
-	std::string DrawToolTip::getStringPt()
+	std::string Hexus_DrawToolTip::getStringPt()
 	{
 		return "O número de cartas que serão sorteadas na próxima rodada";
 	}
 
-	std::string DrawToolTip::getStringPtBr()
+	std::string Hexus_DrawToolTip::getStringPtBr()
 	{
 		return "O número de cartas que serão sorteadas na próxima rodada";
 	}
 
-	std::string DrawToolTip::getStringRo()
+	std::string Hexus_DrawToolTip::getStringRo()
 	{
 		return "Numărul de cărți care vor fi trase în următoarea rundă";
 	}
 
-	std::string DrawToolTip::getStringRu()
+	std::string Hexus_DrawToolTip::getStringRu()
 	{
 		return "Количество карт, которые будут разыграны в следующем раунде";
 	}
 
-	std::string DrawToolTip::getStringSv()
+	std::string Hexus_DrawToolTip::getStringSv()
 	{
 		return "Antalet kort som kommer att dras nästa runda";
 	}
 
-	std::string DrawToolTip::getStringTh()
+	std::string Hexus_DrawToolTip::getStringTh()
 	{
 		return "จำนวนไพ่ที่จะถูกดึงในรอบถัดไป";
 	}
 
-	std::string DrawToolTip::getStringTr()
+	std::string Hexus_DrawToolTip::getStringTr()
 	{
 		return "Bir sonraki turda çekilecek kartların sayısı";
 	}
 
-	std::string DrawToolTip::getStringUk()
+	std::string Hexus_DrawToolTip::getStringUk()
 	{
 		return "Кількість карт, які будуть розіграні наступного раунду";
 	}
 
-	std::string DrawToolTip::getStringVi()
+	std::string Hexus_DrawToolTip::getStringVi()
 	{
 		return "Số lượng thẻ sẽ được rút trong vòng tiếp theo";
 	}
 
-	std::string DrawToolTip::getStringZhCn()
+	std::string Hexus_DrawToolTip::getStringZhCn()
 	{
 		return "下一轮将被抽出的牌数";
 	}
 
-	std::string DrawToolTip::getStringZhTw()
+	std::string Hexus_DrawToolTip::getStringZhTw()
 	{
 		return "下一輪將被抽出的牌數";
 	}

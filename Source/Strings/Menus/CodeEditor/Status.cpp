@@ -4,172 +4,172 @@
 
 #include "Status.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Status* Status::create()
+	Menus_CodeEditor_Status* Menus_CodeEditor_Status::create()
 	{
-		Status* instance = new Status();
+		Menus_CodeEditor_Status* instance = new Menus_CodeEditor_Status();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Status::clone()
+	LocalizedString* Menus_CodeEditor_Status::clone()
 	{
-		return Status::create();
+		return Menus_CodeEditor_Status::create();
 	}
 
-	Status::Status() : LocalizedString()
-	{
-	}
-
-	Status::~Status()
+	Menus_CodeEditor_Status::Menus_CodeEditor_Status() : LocalizedString()
 	{
 	}
 
-	std::string Status::getStringAr()
+	Menus_CodeEditor_Status::~Menus_CodeEditor_Status()
 	{
-		return "الحالة";
 	}
 
-	std::string Status::getStringBg()
+	std::string Menus_CodeEditor_Status::getStringAr()
 	{
-		return "Статус";
+		return "الحالة: ";
 	}
 
-	std::string Status::getStringCs()
+	std::string Menus_CodeEditor_Status::getStringBg()
 	{
-		return "Postavení";
+		return "Статус: ";
 	}
 
-	std::string Status::getStringDa()
+	std::string Menus_CodeEditor_Status::getStringCs()
 	{
-		return "status";
+		return "Postavení: ";
 	}
 
-	std::string Status::getStringDe()
+	std::string Menus_CodeEditor_Status::getStringDa()
 	{
-		return "Status";
+		return "status: ";
 	}
 
-	std::string Status::getStringEl()
+	std::string Menus_CodeEditor_Status::getStringDe()
 	{
-		return "Κατάσταση";
+		return "Status: ";
 	}
 
-	std::string Status::getStringEn()
+	std::string Menus_CodeEditor_Status::getStringEl()
 	{
-		return "Status";
+		return "Κατάσταση: ";
 	}
 
-	std::string Status::getStringEs()
+	std::string Menus_CodeEditor_Status::getStringEn()
 	{
-		return "Estado";
+		return "Status: ";
 	}
 
-	std::string Status::getStringEs419()
+	std::string Menus_CodeEditor_Status::getStringEs()
 	{
-		return "Estado";
+		return "Estado: ";
 	}
 
-	std::string Status::getStringFi()
+	std::string Menus_CodeEditor_Status::getStringEs419()
 	{
-		return "Status";
+		return "Estado: ";
 	}
 
-	std::string Status::getStringFr()
+	std::string Menus_CodeEditor_Status::getStringFi()
 	{
-		return "Statut";
+		return "Status: ";
 	}
 
-	std::string Status::getStringHu()
+	std::string Menus_CodeEditor_Status::getStringFr()
 	{
-		return "Állapot";
+		return "Statut : ";
 	}
 
-	std::string Status::getStringIt()
+	std::string Menus_CodeEditor_Status::getStringHu()
 	{
-		return "Stato";
+		return "Állapot: ";
 	}
 
-	std::string Status::getStringJa()
+	std::string Menus_CodeEditor_Status::getStringIt()
 	{
-		return "状態";
+		return "Stato: ";
 	}
 
-	std::string Status::getStringKo()
+	std::string Menus_CodeEditor_Status::getStringJa()
 	{
-		return "지위";
+		return "状態： ";
 	}
 
-	std::string Status::getStringNl()
+	std::string Menus_CodeEditor_Status::getStringKo()
 	{
-		return "staat";
+		return "지위: ";
 	}
 
-	std::string Status::getStringNo()
+	std::string Menus_CodeEditor_Status::getStringNl()
 	{
-		return "Status";
+		return "Status: ";
 	}
 
-	std::string Status::getStringPl()
+	std::string Menus_CodeEditor_Status::getStringNo()
 	{
-		return "Status";
+		return "Status: ";
 	}
 
-	std::string Status::getStringPt()
+	std::string Menus_CodeEditor_Status::getStringPl()
 	{
-		return "Status";
+		return "Status: ";
 	}
 
-	std::string Status::getStringPtBr()
+	std::string Menus_CodeEditor_Status::getStringPt()
 	{
-		return "Status";
+		return "Status: ";
 	}
 
-	std::string Status::getStringRo()
+	std::string Menus_CodeEditor_Status::getStringPtBr()
 	{
-		return "stare";
+		return "Status: ";
 	}
 
-	std::string Status::getStringRu()
+	std::string Menus_CodeEditor_Status::getStringRo()
 	{
-		return "Status";
+		return "Stare: ";
 	}
 
-	std::string Status::getStringSv()
+	std::string Menus_CodeEditor_Status::getStringRu()
 	{
-		return "Status";
+		return "Status: ";
 	}
 
-	std::string Status::getStringTh()
+	std::string Menus_CodeEditor_Status::getStringSv()
 	{
-		return "สถานะ";
+		return "Status: ";
 	}
 
-	std::string Status::getStringTr()
+	std::string Menus_CodeEditor_Status::getStringTh()
 	{
-		return "durum";
+		return "สถานะ: ";
 	}
 
-	std::string Status::getStringUk()
+	std::string Menus_CodeEditor_Status::getStringTr()
 	{
-		return "Статус";
+		return "Durum: ";
 	}
 
-	std::string Status::getStringVi()
+	std::string Menus_CodeEditor_Status::getStringUk()
 	{
-		return "Trạng thái";
+		return "Статус: ";
 	}
 
-	std::string Status::getStringZhCn()
+	std::string Menus_CodeEditor_Status::getStringVi()
 	{
-		return "状态";
+		return "Trạng thái: ";
 	}
 
-	std::string Status::getStringZhTw()
+	std::string Menus_CodeEditor_Status::getStringZhCn()
 	{
-		return "狀態";
+		return "状态： ";
+	}
+
+	std::string Menus_CodeEditor_Status::getStringZhTw()
+	{
+		return "狀態： ";
 	}
 }

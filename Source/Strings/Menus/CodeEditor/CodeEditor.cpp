@@ -4,171 +4,171 @@
 
 #include "CodeEditor.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	CodeEditor* CodeEditor::create()
+	Menus_CodeEditor_CodeEditor* Menus_CodeEditor_CodeEditor::create()
 	{
-		CodeEditor* instance = new CodeEditor();
+		Menus_CodeEditor_CodeEditor* instance = new Menus_CodeEditor_CodeEditor();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* CodeEditor::clone()
+	LocalizedString* Menus_CodeEditor_CodeEditor::clone()
 	{
-		return CodeEditor::create();
+		return Menus_CodeEditor_CodeEditor::create();
 	}
 
-	CodeEditor::CodeEditor() : LocalizedString()
-	{
-	}
-
-	CodeEditor::~CodeEditor()
+	Menus_CodeEditor_CodeEditor::Menus_CodeEditor_CodeEditor() : LocalizedString()
 	{
 	}
 
-	std::string CodeEditor::getStringAr()
+	Menus_CodeEditor_CodeEditor::~Menus_CodeEditor_CodeEditor()
+	{
+	}
+
+	std::string Menus_CodeEditor_CodeEditor::getStringAr()
 	{
 		return "محرر الكود";
 	}
 
-	std::string CodeEditor::getStringBg()
+	std::string Menus_CodeEditor_CodeEditor::getStringBg()
 	{
 		return "Редактор на кодове";
 	}
 
-	std::string CodeEditor::getStringCs()
+	std::string Menus_CodeEditor_CodeEditor::getStringCs()
 	{
 		return "Editor kódu";
 	}
 
-	std::string CodeEditor::getStringDa()
+	std::string Menus_CodeEditor_CodeEditor::getStringDa()
 	{
 		return "Kode Editor";
 	}
 
-	std::string CodeEditor::getStringDe()
+	std::string Menus_CodeEditor_CodeEditor::getStringDe()
 	{
 		return "Code-Editor";
 	}
 
-	std::string CodeEditor::getStringEl()
+	std::string Menus_CodeEditor_CodeEditor::getStringEl()
 	{
 		return "Εκδότης κώδικα";
 	}
 
-	std::string CodeEditor::getStringEn()
+	std::string Menus_CodeEditor_CodeEditor::getStringEn()
 	{
 		return "Code Editor";
 	}
 
-	std::string CodeEditor::getStringEs()
+	std::string Menus_CodeEditor_CodeEditor::getStringEs()
 	{
 		return "Editor de código";
 	}
 
-	std::string CodeEditor::getStringEs419()
+	std::string Menus_CodeEditor_CodeEditor::getStringEs419()
 	{
 		return "Editor de código";
 	}
 
-	std::string CodeEditor::getStringFi()
+	std::string Menus_CodeEditor_CodeEditor::getStringFi()
 	{
 		return "Koodieditori";
 	}
 
-	std::string CodeEditor::getStringFr()
+	std::string Menus_CodeEditor_CodeEditor::getStringFr()
 	{
 		return "Code Editor";
 	}
 
-	std::string CodeEditor::getStringHu()
+	std::string Menus_CodeEditor_CodeEditor::getStringHu()
 	{
 		return "Kódszerkesztő";
 	}
 
-	std::string CodeEditor::getStringIt()
+	std::string Menus_CodeEditor_CodeEditor::getStringIt()
 	{
 		return "Editor di codice";
 	}
 
-	std::string CodeEditor::getStringJa()
+	std::string Menus_CodeEditor_CodeEditor::getStringJa()
 	{
 		return "コードエディタ";
 	}
 
-	std::string CodeEditor::getStringKo()
+	std::string Menus_CodeEditor_CodeEditor::getStringKo()
 	{
 		return "코드 편집기";
 	}
 
-	std::string CodeEditor::getStringNl()
+	std::string Menus_CodeEditor_CodeEditor::getStringNl()
 	{
 		return "Code-editor";
 	}
 
-	std::string CodeEditor::getStringNo()
+	std::string Menus_CodeEditor_CodeEditor::getStringNo()
 	{
 		return "Kodeditor";
 	}
 
-	std::string CodeEditor::getStringPl()
+	std::string Menus_CodeEditor_CodeEditor::getStringPl()
 	{
 		return "Edytor kodu";
 	}
 
-	std::string CodeEditor::getStringPt()
+	std::string Menus_CodeEditor_CodeEditor::getStringPt()
 	{
 		return "Editor de Códigos";
 	}
 
-	std::string CodeEditor::getStringPtBr()
+	std::string Menus_CodeEditor_CodeEditor::getStringPtBr()
 	{
 		return "Editor de Códigos";
 	}
 
-	std::string CodeEditor::getStringRo()
+	std::string Menus_CodeEditor_CodeEditor::getStringRo()
 	{
 		return "Editor de coduri";
 	}
 
-	std::string CodeEditor::getStringRu()
+	std::string Menus_CodeEditor_CodeEditor::getStringRu()
 	{
 		return "Редактор кода";
 	}
 
-	std::string CodeEditor::getStringSv()
+	std::string Menus_CodeEditor_CodeEditor::getStringSv()
 	{
 		return "Kodredigerare";
 	}
 
-	std::string CodeEditor::getStringTh()
+	std::string Menus_CodeEditor_CodeEditor::getStringTh()
 	{
 		return "เครื่องมือแก้ไขรหัส";
 	}
 
-	std::string CodeEditor::getStringTr()
+	std::string Menus_CodeEditor_CodeEditor::getStringTr()
 	{
 		return "Kod editörü";
 	}
 
-	std::string CodeEditor::getStringUk()
+	std::string Menus_CodeEditor_CodeEditor::getStringUk()
 	{
 		return "Редактор коду";
 	}
 
-	std::string CodeEditor::getStringVi()
+	std::string Menus_CodeEditor_CodeEditor::getStringVi()
 	{
 		return "Trình chỉnh sửa mã";
 	}
 
-	std::string CodeEditor::getStringZhCn()
+	std::string Menus_CodeEditor_CodeEditor::getStringZhCn()
 	{
 		return "代码编辑器";
 	}
 
-	std::string CodeEditor::getStringZhTw()
+	std::string Menus_CodeEditor_CodeEditor::getStringZhTw()
 	{
 		return "代碼編輯器";
 	}

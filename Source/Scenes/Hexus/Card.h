@@ -12,13 +12,15 @@ namespace cocos2d
 }
 
 class CardEffects;
+class ConstantString;
 class LocalizedLabel;
 class MenuSprite;
 
 class Card : public SmartNode
 {
 public:
-	enum CardStyle {
+	enum CardStyle
+	{
 		Earth,
 		Water,
 		Air,
@@ -100,7 +102,8 @@ private:
 	cocos2d::Sprite* cardSprite;
 	MenuSprite* cardSelect;
 	cocos2d::Sprite* cardFocus;
-	LocalizedLabel* cardText;
+	ConstantString* cardString;
+	LocalizedLabel* cardLabel;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };

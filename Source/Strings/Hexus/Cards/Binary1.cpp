@@ -4,171 +4,171 @@
 
 #include "Binary1.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary1* Binary1::create()
+	Hexus_Cards_Binary1* Hexus_Cards_Binary1::create()
 	{
-		Binary1* instance = new Binary1();
+		Hexus_Cards_Binary1* instance = new Hexus_Cards_Binary1();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary1::clone()
+	LocalizedString* Hexus_Cards_Binary1::clone()
 	{
-		return Binary1::create();
+		return Hexus_Cards_Binary1::create();
 	}
 
-	Binary1::Binary1() : LocalizedString()
-	{
-	}
-
-	Binary1::~Binary1()
+	Hexus_Cards_Binary1::Hexus_Cards_Binary1() : LocalizedString()
 	{
 	}
 
-	std::string Binary1::getStringAr()
+	Hexus_Cards_Binary1::~Hexus_Cards_Binary1()
+	{
+	}
+
+	std::string Hexus_Cards_Binary1::getStringAr()
 	{
 		return "الفول السوداني";
 	}
 
-	std::string Binary1::getStringBg()
+	std::string Hexus_Cards_Binary1::getStringBg()
 	{
 		return "Фъстък";
 	}
 
-	std::string Binary1::getStringCs()
+	std::string Hexus_Cards_Binary1::getStringCs()
 	{
 		return "Arašíd";
 	}
 
-	std::string Binary1::getStringDa()
+	std::string Hexus_Cards_Binary1::getStringDa()
 	{
 		return "Jordnød";
 	}
 
-	std::string Binary1::getStringDe()
+	std::string Hexus_Cards_Binary1::getStringDe()
 	{
 		return "Erdnuss";
 	}
 
-	std::string Binary1::getStringEl()
+	std::string Hexus_Cards_Binary1::getStringEl()
 	{
 		return "Αράπικο φιστίκι";
 	}
 
-	std::string Binary1::getStringEn()
+	std::string Hexus_Cards_Binary1::getStringEn()
 	{
 		return "Peanut";
 	}
 
-	std::string Binary1::getStringEs()
+	std::string Hexus_Cards_Binary1::getStringEs()
 	{
 		return "Maní";
 	}
 
-	std::string Binary1::getStringEs419()
+	std::string Hexus_Cards_Binary1::getStringEs419()
 	{
 		return "Maní";
 	}
 
-	std::string Binary1::getStringFi()
+	std::string Hexus_Cards_Binary1::getStringFi()
 	{
 		return "Maapähkinä";
 	}
 
-	std::string Binary1::getStringFr()
+	std::string Hexus_Cards_Binary1::getStringFr()
 	{
 		return "Cacahuète";
 	}
 
-	std::string Binary1::getStringHu()
+	std::string Hexus_Cards_Binary1::getStringHu()
 	{
 		return "Földimogyoró";
 	}
 
-	std::string Binary1::getStringIt()
+	std::string Hexus_Cards_Binary1::getStringIt()
 	{
 		return "arachide";
 	}
 
-	std::string Binary1::getStringJa()
+	std::string Hexus_Cards_Binary1::getStringJa()
 	{
 		return "落花生";
 	}
 
-	std::string Binary1::getStringKo()
+	std::string Hexus_Cards_Binary1::getStringKo()
 	{
 		return "땅콩";
 	}
 
-	std::string Binary1::getStringNl()
+	std::string Hexus_Cards_Binary1::getStringNl()
 	{
 		return "Pinda";
 	}
 
-	std::string Binary1::getStringNo()
+	std::string Hexus_Cards_Binary1::getStringNo()
 	{
 		return "Peanøtt";
 	}
 
-	std::string Binary1::getStringPl()
+	std::string Hexus_Cards_Binary1::getStringPl()
 	{
 		return "Arachid";
 	}
 
-	std::string Binary1::getStringPt()
+	std::string Hexus_Cards_Binary1::getStringPt()
 	{
 		return "Amendoim";
 	}
 
-	std::string Binary1::getStringPtBr()
+	std::string Hexus_Cards_Binary1::getStringPtBr()
 	{
 		return "Amendoim";
 	}
 
-	std::string Binary1::getStringRo()
+	std::string Hexus_Cards_Binary1::getStringRo()
 	{
 		return "arahidă";
 	}
 
-	std::string Binary1::getStringRu()
+	std::string Hexus_Cards_Binary1::getStringRu()
 	{
 		return "арахис";
 	}
 
-	std::string Binary1::getStringSv()
+	std::string Hexus_Cards_Binary1::getStringSv()
 	{
 		return "Jordnöt";
 	}
 
-	std::string Binary1::getStringTh()
+	std::string Hexus_Cards_Binary1::getStringTh()
 	{
 		return "ถั่วลิสง";
 	}
 
-	std::string Binary1::getStringTr()
+	std::string Hexus_Cards_Binary1::getStringTr()
 	{
 		return "Fıstık";
 	}
 
-	std::string Binary1::getStringUk()
+	std::string Hexus_Cards_Binary1::getStringUk()
 	{
 		return "Арахіс";
 	}
 
-	std::string Binary1::getStringVi()
+	std::string Hexus_Cards_Binary1::getStringVi()
 	{
 		return "Đậu phụng";
 	}
 
-	std::string Binary1::getStringZhCn()
+	std::string Hexus_Cards_Binary1::getStringZhCn()
 	{
 		return "花生";
 	}
 
-	std::string Binary1::getStringZhTw()
+	std::string Hexus_Cards_Binary1::getStringZhTw()
 	{
 		return "花生";
 	}

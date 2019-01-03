@@ -4,171 +4,171 @@
 
 #include "DaemonsHallow.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	DaemonsHallow* DaemonsHallow::create()
+	Menus_Maps_DaemonsHallow* Menus_Maps_DaemonsHallow::create()
 	{
-		DaemonsHallow* instance = new DaemonsHallow();
+		Menus_Maps_DaemonsHallow* instance = new Menus_Maps_DaemonsHallow();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* DaemonsHallow::clone()
+	LocalizedString* Menus_Maps_DaemonsHallow::clone()
 	{
-		return DaemonsHallow::create();
+		return Menus_Maps_DaemonsHallow::create();
 	}
 
-	DaemonsHallow::DaemonsHallow() : LocalizedString()
-	{
-	}
-
-	DaemonsHallow::~DaemonsHallow()
+	Menus_Maps_DaemonsHallow::Menus_Maps_DaemonsHallow() : LocalizedString()
 	{
 	}
 
-	std::string DaemonsHallow::getStringAr()
+	Menus_Maps_DaemonsHallow::~Menus_Maps_DaemonsHallow()
+	{
+	}
+
+	std::string Menus_Maps_DaemonsHallow::getStringAr()
 	{
 		return "شيطان ديمان";
 	}
 
-	std::string DaemonsHallow::getStringBg()
+	std::string Menus_Maps_DaemonsHallow::getStringBg()
 	{
 		return "Освети Демон";
 	}
 
-	std::string DaemonsHallow::getStringCs()
+	std::string Menus_Maps_DaemonsHallow::getStringCs()
 	{
 		return "Demonova posvátná tvář";
 	}
 
-	std::string DaemonsHallow::getStringDa()
+	std::string Menus_Maps_DaemonsHallow::getStringDa()
 	{
 		return "Demon er hellig";
 	}
 
-	std::string DaemonsHallow::getStringDe()
+	std::string Menus_Maps_DaemonsHallow::getStringDe()
 	{
 		return "Demons Heiligtum";
 	}
 
-	std::string DaemonsHallow::getStringEl()
+	std::string Menus_Maps_DaemonsHallow::getStringEl()
 	{
 		return "Η σκιά του Δακώνα";
 	}
 
-	std::string DaemonsHallow::getStringEn()
+	std::string Menus_Maps_DaemonsHallow::getStringEn()
 	{
 		return "Daemon's Hallow";
 	}
 
-	std::string DaemonsHallow::getStringEs()
+	std::string Menus_Maps_DaemonsHallow::getStringEs()
 	{
 		return "Demonio del santuario";
 	}
 
-	std::string DaemonsHallow::getStringEs419()
+	std::string Menus_Maps_DaemonsHallow::getStringEs419()
 	{
 		return "Demonio del santuario";
 	}
 
-	std::string DaemonsHallow::getStringFi()
+	std::string Menus_Maps_DaemonsHallow::getStringFi()
 	{
 		return "Demonin juhla";
 	}
 
-	std::string DaemonsHallow::getStringFr()
+	std::string Menus_Maps_DaemonsHallow::getStringFr()
 	{
 		return "Le sort du démon";
 	}
 
-	std::string DaemonsHallow::getStringHu()
+	std::string Menus_Maps_DaemonsHallow::getStringHu()
 	{
 		return "Demon szentélye";
 	}
 
-	std::string DaemonsHallow::getStringIt()
+	std::string Menus_Maps_DaemonsHallow::getStringIt()
 	{
 		return "Demon's hallow";
 	}
 
-	std::string DaemonsHallow::getStringJa()
+	std::string Menus_Maps_DaemonsHallow::getStringJa()
 	{
 		return "悪魔の秘宝";
 	}
 
-	std::string DaemonsHallow::getStringKo()
+	std::string Menus_Maps_DaemonsHallow::getStringKo()
 	{
 		return "악마의 성기";
 	}
 
-	std::string DaemonsHallow::getStringNl()
+	std::string Menus_Maps_DaemonsHallow::getStringNl()
 	{
 		return "Demon is heilig";
 	}
 
-	std::string DaemonsHallow::getStringNo()
+	std::string Menus_Maps_DaemonsHallow::getStringNo()
 	{
 		return "Demon er hellig";
 	}
 
-	std::string DaemonsHallow::getStringPl()
+	std::string Menus_Maps_DaemonsHallow::getStringPl()
 	{
 		return "Poświęcenie Demona";
 	}
 
-	std::string DaemonsHallow::getStringPt()
+	std::string Menus_Maps_DaemonsHallow::getStringPt()
 	{
 		return "A santidade do demônio";
 	}
 
-	std::string DaemonsHallow::getStringPtBr()
+	std::string Menus_Maps_DaemonsHallow::getStringPtBr()
 	{
 		return "A santidade do demônio";
 	}
 
-	std::string DaemonsHallow::getStringRo()
+	std::string Menus_Maps_DaemonsHallow::getStringRo()
 	{
 		return "Solul lui Demon";
 	}
 
-	std::string DaemonsHallow::getStringRu()
+	std::string Menus_Maps_DaemonsHallow::getStringRu()
 	{
 		return "Храм Демона";
 	}
 
-	std::string DaemonsHallow::getStringSv()
+	std::string Menus_Maps_DaemonsHallow::getStringSv()
 	{
 		return "Demon är hallow";
 	}
 
-	std::string DaemonsHallow::getStringTh()
+	std::string Menus_Maps_DaemonsHallow::getStringTh()
 	{
 		return "ห้องโถงปีศาจ";
 	}
 
-	std::string DaemonsHallow::getStringTr()
+	std::string Menus_Maps_DaemonsHallow::getStringTr()
 	{
 		return "Şeytanın hallow";
 	}
 
-	std::string DaemonsHallow::getStringUk()
+	std::string Menus_Maps_DaemonsHallow::getStringUk()
 	{
 		return "Освячення Демона";
 	}
 
-	std::string DaemonsHallow::getStringVi()
+	std::string Menus_Maps_DaemonsHallow::getStringVi()
 	{
 		return "Quỷ thần";
 	}
 
-	std::string DaemonsHallow::getStringZhCn()
+	std::string Menus_Maps_DaemonsHallow::getStringZhCn()
 	{
 		return "恶魔的神圣";
 	}
 
-	std::string DaemonsHallow::getStringZhTw()
+	std::string Menus_Maps_DaemonsHallow::getStringZhTw()
 	{
 		return "惡魔的神聖";
 	}

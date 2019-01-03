@@ -4,171 +4,171 @@
 
 #include "StoreLabelHex.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	StoreLabelHex* StoreLabelHex::create()
+	Hexus_StoreLabelHex* Hexus_StoreLabelHex::create()
 	{
-		StoreLabelHex* instance = new StoreLabelHex();
+		Hexus_StoreLabelHex* instance = new Hexus_StoreLabelHex();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* StoreLabelHex::clone()
+	LocalizedString* Hexus_StoreLabelHex::clone()
 	{
-		return StoreLabelHex::create();
+		return Hexus_StoreLabelHex::create();
 	}
 
-	StoreLabelHex::StoreLabelHex() : LocalizedString()
-	{
-	}
-
-	StoreLabelHex::~StoreLabelHex()
+	Hexus_StoreLabelHex::Hexus_StoreLabelHex() : LocalizedString()
 	{
 	}
 
-	std::string StoreLabelHex::getStringAr()
+	Hexus_StoreLabelHex::~Hexus_StoreLabelHex()
 	{
-		return "F";
 	}
 
-	std::string StoreLabelHex::getStringBg()
+	std::string Hexus_StoreLabelHex::getStringAr()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringCs()
+	std::string Hexus_StoreLabelHex::getStringBg()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringDa()
+	std::string Hexus_StoreLabelHex::getStringCs()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringDe()
+	std::string Hexus_StoreLabelHex::getStringDa()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringEl()
+	std::string Hexus_StoreLabelHex::getStringDe()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringEn()
+	std::string Hexus_StoreLabelHex::getStringEl()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringEs()
+	std::string Hexus_StoreLabelHex::getStringEn()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringEs419()
+	std::string Hexus_StoreLabelHex::getStringEs()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringFi()
+	std::string Hexus_StoreLabelHex::getStringEs419()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringFr()
+	std::string Hexus_StoreLabelHex::getStringFi()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringHu()
+	std::string Hexus_StoreLabelHex::getStringFr()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringIt()
+	std::string Hexus_StoreLabelHex::getStringHu()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringJa()
+	std::string Hexus_StoreLabelHex::getStringIt()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringKo()
+	std::string Hexus_StoreLabelHex::getStringJa()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringNl()
+	std::string Hexus_StoreLabelHex::getStringKo()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringNo()
+	std::string Hexus_StoreLabelHex::getStringNl()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringPl()
+	std::string Hexus_StoreLabelHex::getStringNo()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringPt()
+	std::string Hexus_StoreLabelHex::getStringPl()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringPtBr()
+	std::string Hexus_StoreLabelHex::getStringPt()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringRo()
+	std::string Hexus_StoreLabelHex::getStringPtBr()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringRu()
+	std::string Hexus_StoreLabelHex::getStringRo()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringSv()
+	std::string Hexus_StoreLabelHex::getStringRu()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringTh()
+	std::string Hexus_StoreLabelHex::getStringSv()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringTr()
+	std::string Hexus_StoreLabelHex::getStringTh()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringUk()
+	std::string Hexus_StoreLabelHex::getStringTr()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringVi()
+	std::string Hexus_StoreLabelHex::getStringUk()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringZhCn()
+	std::string Hexus_StoreLabelHex::getStringVi()
 	{
 		return "F";
 	}
 
-	std::string StoreLabelHex::getStringZhTw()
+	std::string Hexus_StoreLabelHex::getStringZhCn()
+	{
+		return "F";
+	}
+
+	std::string Hexus_StoreLabelHex::getStringZhTw()
 	{
 		return "F";
 	}

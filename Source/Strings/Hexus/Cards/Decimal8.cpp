@@ -4,171 +4,171 @@
 
 #include "Decimal8.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal8* Decimal8::create()
+	Hexus_Cards_Decimal8* Hexus_Cards_Decimal8::create()
 	{
-		Decimal8* instance = new Decimal8();
+		Hexus_Cards_Decimal8* instance = new Hexus_Cards_Decimal8();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal8::clone()
+	LocalizedString* Hexus_Cards_Decimal8::clone()
 	{
-		return Decimal8::create();
+		return Hexus_Cards_Decimal8::create();
 	}
 
-	Decimal8::Decimal8() : LocalizedString()
-	{
-	}
-
-	Decimal8::~Decimal8()
+	Hexus_Cards_Decimal8::Hexus_Cards_Decimal8() : LocalizedString()
 	{
 	}
 
-	std::string Decimal8::getStringAr()
+	Hexus_Cards_Decimal8::~Hexus_Cards_Decimal8()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal8::getStringAr()
 	{
 		return "الثعلب السلطة";
 	}
 
-	std::string Decimal8::getStringBg()
+	std::string Hexus_Cards_Decimal8::getStringBg()
 	{
 		return "лисица";
 	}
 
-	std::string Decimal8::getStringCs()
+	std::string Hexus_Cards_Decimal8::getStringCs()
 	{
 		return "mocní liška";
 	}
 
-	std::string Decimal8::getStringDa()
+	std::string Hexus_Cards_Decimal8::getStringDa()
 	{
 		return "strøm ræv";
 	}
 
-	std::string Decimal8::getStringDe()
+	std::string Hexus_Cards_Decimal8::getStringDe()
 	{
 		return "PowerFox";
 	}
 
-	std::string Decimal8::getStringEl()
+	std::string Hexus_Cards_Decimal8::getStringEl()
 	{
 		return "αλεπού δύναμη";
 	}
 
-	std::string Decimal8::getStringEn()
+	std::string Hexus_Cards_Decimal8::getStringEn()
 	{
 		return "Powerfox";
 	}
 
-	std::string Decimal8::getStringEs()
+	std::string Hexus_Cards_Decimal8::getStringEs()
 	{
 		return "zorro de poder";
 	}
 
-	std::string Decimal8::getStringEs419()
+	std::string Hexus_Cards_Decimal8::getStringEs419()
 	{
 		return "zorro de poder";
 	}
 
-	std::string Decimal8::getStringFi()
+	std::string Hexus_Cards_Decimal8::getStringFi()
 	{
 		return "voimakas kettu";
 	}
 
-	std::string Decimal8::getStringFr()
+	std::string Hexus_Cards_Decimal8::getStringFr()
 	{
 		return "renard de puissance";
 	}
 
-	std::string Decimal8::getStringHu()
+	std::string Hexus_Cards_Decimal8::getStringHu()
 	{
 		return "hatalmas róka";
 	}
 
-	std::string Decimal8::getStringIt()
+	std::string Hexus_Cards_Decimal8::getStringIt()
 	{
 		return "Power Fox";
 	}
 
-	std::string Decimal8::getStringJa()
+	std::string Hexus_Cards_Decimal8::getStringJa()
 	{
 		return "パワーフォックス";
 	}
 
-	std::string Decimal8::getStringKo()
+	std::string Hexus_Cards_Decimal8::getStringKo()
 	{
 		return "파워 폭스";
 	}
 
-	std::string Decimal8::getStringNl()
+	std::string Hexus_Cards_Decimal8::getStringNl()
 	{
 		return "kracht vos";
 	}
 
-	std::string Decimal8::getStringNo()
+	std::string Hexus_Cards_Decimal8::getStringNo()
 	{
 		return "maktfox";
 	}
 
-	std::string Decimal8::getStringPl()
+	std::string Hexus_Cards_Decimal8::getStringPl()
 	{
 		return "moc lisa";
 	}
 
-	std::string Decimal8::getStringPt()
+	std::string Hexus_Cards_Decimal8::getStringPt()
 	{
 		return "raposa de poder";
 	}
 
-	std::string Decimal8::getStringPtBr()
+	std::string Hexus_Cards_Decimal8::getStringPtBr()
 	{
 		return "raposa de poder";
 	}
 
-	std::string Decimal8::getStringRo()
+	std::string Hexus_Cards_Decimal8::getStringRo()
 	{
 		return "putere vulpea";
 	}
 
-	std::string Decimal8::getStringRu()
+	std::string Hexus_Cards_Decimal8::getStringRu()
 	{
 		return "власть лиса";
 	}
 
-	std::string Decimal8::getStringSv()
+	std::string Hexus_Cards_Decimal8::getStringSv()
 	{
 		return "kraft räv";
 	}
 
-	std::string Decimal8::getStringTh()
+	std::string Hexus_Cards_Decimal8::getStringTh()
 	{
 		return "พาวเวอร์ฟ็อกซ์";
 	}
 
-	std::string Decimal8::getStringTr()
+	std::string Hexus_Cards_Decimal8::getStringTr()
 	{
 		return "güç tilki";
 	}
 
-	std::string Decimal8::getStringUk()
+	std::string Hexus_Cards_Decimal8::getStringUk()
 	{
 		return "влада лисиця";
 	}
 
-	std::string Decimal8::getStringVi()
+	std::string Hexus_Cards_Decimal8::getStringVi()
 	{
 		return "cáo điện";
 	}
 
-	std::string Decimal8::getStringZhCn()
+	std::string Hexus_Cards_Decimal8::getStringZhCn()
 	{
 		return "电力狐狸";
 	}
 
-	std::string Decimal8::getStringZhTw()
+	std::string Hexus_Cards_Decimal8::getStringZhTw()
 	{
 		return "電力狐狸";
 	}

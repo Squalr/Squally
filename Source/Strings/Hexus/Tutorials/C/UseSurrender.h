@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class UseSurrender : public LocalizedString
+	class Hexus_Tutorials_C_UseSurrender : public LocalizedString
 	{
 	public:
-		static UseSurrender* create();
+		static Hexus_Tutorials_C_UseSurrender* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		UseSurrender();
-		~UseSurrender();
+		Hexus_Tutorials_C_UseSurrender();
+		~Hexus_Tutorials_C_UseSurrender();
 	};
 }

@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class FullScreen : public LocalizedString
+	class Menus_Options_FullScreen : public LocalizedString
 	{
 	public:
-		static FullScreen* create();
+		static Menus_Options_FullScreen* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		FullScreen();
-		~FullScreen();
+		Menus_Options_FullScreen();
+		~Menus_Options_FullScreen();
 	};
 }

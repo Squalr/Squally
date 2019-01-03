@@ -32,11 +32,11 @@ TutorialAVictory* TutorialAVictory::create()
 TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, LocaleStrings::Victory::create(), Size(420.0f, 0.0f));
+	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_Victory::create(), Size(420.0f, 0.0f));
 	this->helpArrowLossDisplay = HelpArrow::create();
 
-	LocalizedLabel* lossesDisplayNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
-	LocalizedLabel* lossesDisplayNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, LocaleStrings::Next::create());
+	LocalizedLabel* lossesDisplayNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* lossesDisplayNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);

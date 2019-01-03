@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class BallmerPeaks : public LocalizedString
+	class Menus_Maps_BallmerPeaks : public LocalizedString
 	{
 	public:
-		static BallmerPeaks* create();
+		static Menus_Maps_BallmerPeaks* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		BallmerPeaks();
-		~BallmerPeaks();
+		Menus_Maps_BallmerPeaks();
+		~Menus_Maps_BallmerPeaks();
 	};
 }

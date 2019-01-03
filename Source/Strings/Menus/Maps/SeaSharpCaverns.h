@@ -6,12 +6,12 @@
 
 #include "Engine/Localization/LocalizedString.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	class SeaSharpCaverns : public LocalizedString
+	class Menus_Maps_SeaSharpCaverns : public LocalizedString
 	{
 	public:
-		static SeaSharpCaverns* create();
+		static Menus_Maps_SeaSharpCaverns* create();
 		virtual LocalizedString* clone() override;
 		
 	protected:
@@ -46,7 +46,7 @@ namespace LocaleStrings
 		virtual std::string getStringZhTw() override;
 		
 	private:
-		SeaSharpCaverns();
-		~SeaSharpCaverns();
+		Menus_Maps_SeaSharpCaverns();
+		~Menus_Maps_SeaSharpCaverns();
 	};
 }

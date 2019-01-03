@@ -4,171 +4,171 @@
 
 #include "Binary12.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Binary12* Binary12::create()
+	Hexus_Cards_Binary12* Hexus_Cards_Binary12::create()
 	{
-		Binary12* instance = new Binary12();
+		Hexus_Cards_Binary12* instance = new Hexus_Cards_Binary12();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Binary12::clone()
+	LocalizedString* Hexus_Cards_Binary12::clone()
 	{
-		return Binary12::create();
+		return Hexus_Cards_Binary12::create();
 	}
 
-	Binary12::Binary12() : LocalizedString()
-	{
-	}
-
-	Binary12::~Binary12()
+	Hexus_Cards_Binary12::Hexus_Cards_Binary12() : LocalizedString()
 	{
 	}
 
-	std::string Binary12::getStringAr()
+	Hexus_Cards_Binary12::~Hexus_Cards_Binary12()
+	{
+	}
+
+	std::string Hexus_Cards_Binary12::getStringAr()
 	{
 		return "روح الشجرة";
 	}
 
-	std::string Binary12::getStringBg()
+	std::string Hexus_Cards_Binary12::getStringBg()
 	{
 		return "дървесен дух";
 	}
 
-	std::string Binary12::getStringCs()
+	std::string Hexus_Cards_Binary12::getStringCs()
 	{
 		return "ducha stromu";
 	}
 
-	std::string Binary12::getStringDa()
+	std::string Hexus_Cards_Binary12::getStringDa()
 	{
 		return "træ ånd";
 	}
 
-	std::string Binary12::getStringDe()
+	std::string Hexus_Cards_Binary12::getStringDe()
 	{
 		return "Baumgeist";
 	}
 
-	std::string Binary12::getStringEl()
+	std::string Hexus_Cards_Binary12::getStringEl()
 	{
 		return "πνεύμα δέντρων";
 	}
 
-	std::string Binary12::getStringEn()
+	std::string Hexus_Cards_Binary12::getStringEn()
 	{
 		return "Tree Spirit";
 	}
 
-	std::string Binary12::getStringEs()
+	std::string Hexus_Cards_Binary12::getStringEs()
 	{
 		return "espíritu de árbol";
 	}
 
-	std::string Binary12::getStringEs419()
+	std::string Hexus_Cards_Binary12::getStringEs419()
 	{
 		return "espíritu de árbol";
 	}
 
-	std::string Binary12::getStringFi()
+	std::string Hexus_Cards_Binary12::getStringFi()
 	{
 		return "puuhenki";
 	}
 
-	std::string Binary12::getStringFr()
+	std::string Hexus_Cards_Binary12::getStringFr()
 	{
 		return "esprit d'arbre";
 	}
 
-	std::string Binary12::getStringHu()
+	std::string Hexus_Cards_Binary12::getStringHu()
 	{
 		return "fa szelleme";
 	}
 
-	std::string Binary12::getStringIt()
+	std::string Hexus_Cards_Binary12::getStringIt()
 	{
 		return "spirito dell'albero";
 	}
 
-	std::string Binary12::getStringJa()
+	std::string Hexus_Cards_Binary12::getStringJa()
 	{
 		return "木の精神";
 	}
 
-	std::string Binary12::getStringKo()
+	std::string Hexus_Cards_Binary12::getStringKo()
 	{
 		return "나무의 정신";
 	}
 
-	std::string Binary12::getStringNl()
+	std::string Hexus_Cards_Binary12::getStringNl()
 	{
 		return "boomgeest";
 	}
 
-	std::string Binary12::getStringNo()
+	std::string Hexus_Cards_Binary12::getStringNo()
 	{
 		return "tre ånd";
 	}
 
-	std::string Binary12::getStringPl()
+	std::string Hexus_Cards_Binary12::getStringPl()
 	{
 		return "duch drzewa";
 	}
 
-	std::string Binary12::getStringPt()
+	std::string Hexus_Cards_Binary12::getStringPt()
 	{
 		return "espírito de árvore";
 	}
 
-	std::string Binary12::getStringPtBr()
+	std::string Hexus_Cards_Binary12::getStringPtBr()
 	{
 		return "espírito de árvore";
 	}
 
-	std::string Binary12::getStringRo()
+	std::string Hexus_Cards_Binary12::getStringRo()
 	{
 		return "copac spirit";
 	}
 
-	std::string Binary12::getStringRu()
+	std::string Hexus_Cards_Binary12::getStringRu()
 	{
 		return "дух дерева";
 	}
 
-	std::string Binary12::getStringSv()
+	std::string Hexus_Cards_Binary12::getStringSv()
 	{
 		return "trädanda";
 	}
 
-	std::string Binary12::getStringTh()
+	std::string Hexus_Cards_Binary12::getStringTh()
 	{
 		return "วิญญาณต้นไม้";
 	}
 
-	std::string Binary12::getStringTr()
+	std::string Hexus_Cards_Binary12::getStringTr()
 	{
 		return "ağaç ruhu";
 	}
 
-	std::string Binary12::getStringUk()
+	std::string Hexus_Cards_Binary12::getStringUk()
 	{
 		return "дух дерева";
 	}
 
-	std::string Binary12::getStringVi()
+	std::string Hexus_Cards_Binary12::getStringVi()
 	{
 		return "cây linh hồn";
 	}
 
-	std::string Binary12::getStringZhCn()
+	std::string Hexus_Cards_Binary12::getStringZhCn()
 	{
 		return "树精神";
 	}
 
-	std::string Binary12::getStringZhTw()
+	std::string Hexus_Cards_Binary12::getStringZhTw()
 	{
 		return "樹精神";
 	}

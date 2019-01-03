@@ -4,171 +4,171 @@
 
 #include "Decimal3.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal3* Decimal3::create()
+	Hexus_Cards_Decimal3* Hexus_Cards_Decimal3::create()
 	{
-		Decimal3* instance = new Decimal3();
+		Hexus_Cards_Decimal3* instance = new Hexus_Cards_Decimal3();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal3::clone()
+	LocalizedString* Hexus_Cards_Decimal3::clone()
 	{
-		return Decimal3::create();
+		return Hexus_Cards_Decimal3::create();
 	}
 
-	Decimal3::Decimal3() : LocalizedString()
-	{
-	}
-
-	Decimal3::~Decimal3()
+	Hexus_Cards_Decimal3::Hexus_Cards_Decimal3() : LocalizedString()
 	{
 	}
 
-	std::string Decimal3::getStringAr()
+	Hexus_Cards_Decimal3::~Hexus_Cards_Decimal3()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal3::getStringAr()
 	{
 		return "نهاب";
 	}
 
-	std::string Decimal3::getStringBg()
+	std::string Hexus_Cards_Decimal3::getStringBg()
 	{
 		return "мародер";
 	}
 
-	std::string Decimal3::getStringCs()
+	std::string Hexus_Cards_Decimal3::getStringCs()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringDa()
+	std::string Hexus_Cards_Decimal3::getStringDa()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringDe()
+	std::string Hexus_Cards_Decimal3::getStringDe()
 	{
 		return "Marodeur";
 	}
 
-	std::string Decimal3::getStringEl()
+	std::string Hexus_Cards_Decimal3::getStringEl()
 	{
 		return "Αρπαγας";
 	}
 
-	std::string Decimal3::getStringEn()
+	std::string Hexus_Cards_Decimal3::getStringEn()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringEs()
+	std::string Hexus_Cards_Decimal3::getStringEs()
 	{
 		return "Merodeador";
 	}
 
-	std::string Decimal3::getStringEs419()
+	std::string Hexus_Cards_Decimal3::getStringEs419()
 	{
 		return "Merodeador";
 	}
 
-	std::string Decimal3::getStringFi()
+	std::string Hexus_Cards_Decimal3::getStringFi()
 	{
 		return "Rosvo";
 	}
 
-	std::string Decimal3::getStringFr()
+	std::string Hexus_Cards_Decimal3::getStringFr()
 	{
 		return "Maraudeur";
 	}
 
-	std::string Decimal3::getStringHu()
+	std::string Hexus_Cards_Decimal3::getStringHu()
 	{
 		return "Martalóc";
 	}
 
-	std::string Decimal3::getStringIt()
+	std::string Hexus_Cards_Decimal3::getStringIt()
 	{
 		return "predone";
 	}
 
-	std::string Decimal3::getStringJa()
+	std::string Hexus_Cards_Decimal3::getStringJa()
 	{
 		return "マローダー";
 	}
 
-	std::string Decimal3::getStringKo()
+	std::string Hexus_Cards_Decimal3::getStringKo()
 	{
 		return "약탈자";
 	}
 
-	std::string Decimal3::getStringNl()
+	std::string Hexus_Cards_Decimal3::getStringNl()
 	{
 		return "Stroper";
 	}
 
-	std::string Decimal3::getStringNo()
+	std::string Hexus_Cards_Decimal3::getStringNo()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringPl()
+	std::string Hexus_Cards_Decimal3::getStringPl()
 	{
 		return "Maruder";
 	}
 
-	std::string Decimal3::getStringPt()
+	std::string Hexus_Cards_Decimal3::getStringPt()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringPtBr()
+	std::string Hexus_Cards_Decimal3::getStringPtBr()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringRo()
+	std::string Hexus_Cards_Decimal3::getStringRo()
 	{
 		return "Jefuitor";
 	}
 
-	std::string Decimal3::getStringRu()
+	std::string Hexus_Cards_Decimal3::getStringRu()
 	{
 		return "мародер";
 	}
 
-	std::string Decimal3::getStringSv()
+	std::string Hexus_Cards_Decimal3::getStringSv()
 	{
 		return "Marodör";
 	}
 
-	std::string Decimal3::getStringTh()
+	std::string Hexus_Cards_Decimal3::getStringTh()
 	{
 		return "โจรปล้นสะดม";
 	}
 
-	std::string Decimal3::getStringTr()
+	std::string Hexus_Cards_Decimal3::getStringTr()
 	{
 		return "çapulcu";
 	}
 
-	std::string Decimal3::getStringUk()
+	std::string Hexus_Cards_Decimal3::getStringUk()
 	{
 		return "Мародер";
 	}
 
-	std::string Decimal3::getStringVi()
+	std::string Hexus_Cards_Decimal3::getStringVi()
 	{
 		return "Marauder";
 	}
 
-	std::string Decimal3::getStringZhCn()
+	std::string Hexus_Cards_Decimal3::getStringZhCn()
 	{
 		return "掠夺者";
 	}
 
-	std::string Decimal3::getStringZhTw()
+	std::string Hexus_Cards_Decimal3::getStringZhTw()
 	{
 		return "掠奪者";
 	}

@@ -4,11 +4,14 @@
 #include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
+
+#include "Strings/Hexus/Banners/RemainingCardReplacements.h"
 
 using namespace cocos2d;
 
@@ -64,7 +67,12 @@ void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 	{
 		if (gameState->cardReplaceCount > 0)
 		{
-			this->setBannerText("REMAINING CARD REPLACEMENTS: " + std::to_string(gameState->cardReplaceCount));
+			LocalizedString* bannerString = Strings::Hexus_Banners_RemainingCardReplacements::create();
+			ConstantString* cardReplacementsString = ConstantString::create(std::to_string(gameState->cardReplaceCount));
+
+			bannerString->setStringReplacementVariables(cardReplacementsString);
+
+			this->setBannerText(bannerString);
 			this->showBanner();
 
 			this->penaltyIconParticles->start();

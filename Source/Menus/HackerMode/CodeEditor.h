@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "Engine/UI/Controls/EditableTextWindow.h"
+#include "Engine/UI/Controls/Text/EditableTextWindow.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d

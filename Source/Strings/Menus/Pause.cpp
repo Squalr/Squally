@@ -4,171 +4,171 @@
 
 #include "Pause.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Pause* Pause::create()
+	Menus_Pause* Menus_Pause::create()
 	{
-		Pause* instance = new Pause();
+		Menus_Pause* instance = new Menus_Pause();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Pause::clone()
+	LocalizedString* Menus_Pause::clone()
 	{
-		return Pause::create();
+		return Menus_Pause::create();
 	}
 
-	Pause::Pause() : LocalizedString()
-	{
-	}
-
-	Pause::~Pause()
+	Menus_Pause::Menus_Pause() : LocalizedString()
 	{
 	}
 
-	std::string Pause::getStringAr()
+	Menus_Pause::~Menus_Pause()
+	{
+	}
+
+	std::string Menus_Pause::getStringAr()
 	{
 		return "وقفة";
 	}
 
-	std::string Pause::getStringBg()
+	std::string Menus_Pause::getStringBg()
 	{
 		return "пауза";
 	}
 
-	std::string Pause::getStringCs()
+	std::string Menus_Pause::getStringCs()
 	{
 		return "Pauza";
 	}
 
-	std::string Pause::getStringDa()
+	std::string Menus_Pause::getStringDa()
 	{
 		return "Pause";
 	}
 
-	std::string Pause::getStringDe()
+	std::string Menus_Pause::getStringDe()
 	{
 		return "Pause";
 	}
 
-	std::string Pause::getStringEl()
+	std::string Menus_Pause::getStringEl()
 	{
 		return "Παύση";
 	}
 
-	std::string Pause::getStringEn()
+	std::string Menus_Pause::getStringEn()
 	{
 		return "Pause";
 	}
 
-	std::string Pause::getStringEs()
+	std::string Menus_Pause::getStringEs()
 	{
 		return "Pausa";
 	}
 
-	std::string Pause::getStringEs419()
+	std::string Menus_Pause::getStringEs419()
 	{
 		return "Pausa";
 	}
 
-	std::string Pause::getStringFi()
+	std::string Menus_Pause::getStringFi()
 	{
 		return "Tauko";
 	}
 
-	std::string Pause::getStringFr()
+	std::string Menus_Pause::getStringFr()
 	{
 		return "Pause";
 	}
 
-	std::string Pause::getStringHu()
+	std::string Menus_Pause::getStringHu()
 	{
 		return "Szünet";
 	}
 
-	std::string Pause::getStringIt()
+	std::string Menus_Pause::getStringIt()
 	{
 		return "Pausa";
 	}
 
-	std::string Pause::getStringJa()
+	std::string Menus_Pause::getStringJa()
 	{
 		return "一時停止";
 	}
 
-	std::string Pause::getStringKo()
+	std::string Menus_Pause::getStringKo()
 	{
 		return "중지";
 	}
 
-	std::string Pause::getStringNl()
+	std::string Menus_Pause::getStringNl()
 	{
 		return "Pauze";
 	}
 
-	std::string Pause::getStringNo()
+	std::string Menus_Pause::getStringNo()
 	{
 		return "Pause";
 	}
 
-	std::string Pause::getStringPl()
+	std::string Menus_Pause::getStringPl()
 	{
 		return "Pauza";
 	}
 
-	std::string Pause::getStringPt()
+	std::string Menus_Pause::getStringPt()
 	{
 		return "Pausa";
 	}
 
-	std::string Pause::getStringPtBr()
+	std::string Menus_Pause::getStringPtBr()
 	{
 		return "Pausa";
 	}
 
-	std::string Pause::getStringRo()
+	std::string Menus_Pause::getStringRo()
 	{
 		return "Pauză";
 	}
 
-	std::string Pause::getStringRu()
+	std::string Menus_Pause::getStringRu()
 	{
 		return "Пауза";
 	}
 
-	std::string Pause::getStringSv()
+	std::string Menus_Pause::getStringSv()
 	{
 		return "Paus";
 	}
 
-	std::string Pause::getStringTh()
+	std::string Menus_Pause::getStringTh()
 	{
 		return "หยุด";
 	}
 
-	std::string Pause::getStringTr()
+	std::string Menus_Pause::getStringTr()
 	{
 		return "Duraklat";
 	}
 
-	std::string Pause::getStringUk()
+	std::string Menus_Pause::getStringUk()
 	{
 		return "Пауза";
 	}
 
-	std::string Pause::getStringVi()
+	std::string Menus_Pause::getStringVi()
 	{
 		return "Tạm ngừng";
 	}
 
-	std::string Pause::getStringZhCn()
+	std::string Menus_Pause::getStringZhCn()
 	{
 		return "暂停";
 	}
 
-	std::string Pause::getStringZhTw()
+	std::string Menus_Pause::getStringZhTw()
 	{
 		return "暫停";
 	}

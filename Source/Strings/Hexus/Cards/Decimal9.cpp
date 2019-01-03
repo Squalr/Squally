@@ -4,171 +4,171 @@
 
 #include "Decimal9.h"
 
-namespace LocaleStrings
+namespace Strings
 {
-	Decimal9* Decimal9::create()
+	Hexus_Cards_Decimal9* Hexus_Cards_Decimal9::create()
 	{
-		Decimal9* instance = new Decimal9();
+		Hexus_Cards_Decimal9* instance = new Hexus_Cards_Decimal9();
 
 		instance->autorelease();
 
 		return instance;
 	}
 	
-	LocalizedString* Decimal9::clone()
+	LocalizedString* Hexus_Cards_Decimal9::clone()
 	{
-		return Decimal9::create();
+		return Hexus_Cards_Decimal9::create();
 	}
 
-	Decimal9::Decimal9() : LocalizedString()
-	{
-	}
-
-	Decimal9::~Decimal9()
+	Hexus_Cards_Decimal9::Hexus_Cards_Decimal9() : LocalizedString()
 	{
 	}
 
-	std::string Decimal9::getStringAr()
+	Hexus_Cards_Decimal9::~Hexus_Cards_Decimal9()
+	{
+	}
+
+	std::string Hexus_Cards_Decimal9::getStringAr()
 	{
 		return "بارك";
 	}
 
-	std::string Decimal9::getStringBg()
+	std::string Hexus_Cards_Decimal9::getStringBg()
 	{
 		return "благославям";
 	}
 
-	std::string Decimal9::getStringCs()
+	std::string Hexus_Cards_Decimal9::getStringCs()
 	{
 		return "Žehnat";
 	}
 
-	std::string Decimal9::getStringDa()
+	std::string Hexus_Cards_Decimal9::getStringDa()
 	{
 		return "Velsigne";
 	}
 
-	std::string Decimal9::getStringDe()
+	std::string Hexus_Cards_Decimal9::getStringDe()
 	{
 		return "Segnen";
 	}
 
-	std::string Decimal9::getStringEl()
+	std::string Hexus_Cards_Decimal9::getStringEl()
 	{
 		return "Ευλογώ";
 	}
 
-	std::string Decimal9::getStringEn()
+	std::string Hexus_Cards_Decimal9::getStringEn()
 	{
 		return "Blesse";
 	}
 
-	std::string Decimal9::getStringEs()
+	std::string Hexus_Cards_Decimal9::getStringEs()
 	{
 		return "Bendecir";
 	}
 
-	std::string Decimal9::getStringEs419()
+	std::string Hexus_Cards_Decimal9::getStringEs419()
 	{
 		return "Bendecir";
 	}
 
-	std::string Decimal9::getStringFi()
+	std::string Hexus_Cards_Decimal9::getStringFi()
 	{
 		return "Siunata";
 	}
 
-	std::string Decimal9::getStringFr()
+	std::string Hexus_Cards_Decimal9::getStringFr()
 	{
 		return "Bénir";
 	}
 
-	std::string Decimal9::getStringHu()
+	std::string Hexus_Cards_Decimal9::getStringHu()
 	{
 		return "Áldja";
 	}
 
-	std::string Decimal9::getStringIt()
+	std::string Hexus_Cards_Decimal9::getStringIt()
 	{
 		return "benedire";
 	}
 
-	std::string Decimal9::getStringJa()
+	std::string Hexus_Cards_Decimal9::getStringJa()
 	{
 		return "祝福する";
 	}
 
-	std::string Decimal9::getStringKo()
+	std::string Hexus_Cards_Decimal9::getStringKo()
 	{
 		return "신을 하다";
 	}
 
-	std::string Decimal9::getStringNl()
+	std::string Hexus_Cards_Decimal9::getStringNl()
 	{
 		return "Zegenen";
 	}
 
-	std::string Decimal9::getStringNo()
+	std::string Hexus_Cards_Decimal9::getStringNo()
 	{
 		return "Velsigne";
 	}
 
-	std::string Decimal9::getStringPl()
+	std::string Hexus_Cards_Decimal9::getStringPl()
 	{
 		return "Błogosławić";
 	}
 
-	std::string Decimal9::getStringPt()
+	std::string Hexus_Cards_Decimal9::getStringPt()
 	{
 		return "Abençoe";
 	}
 
-	std::string Decimal9::getStringPtBr()
+	std::string Hexus_Cards_Decimal9::getStringPtBr()
 	{
 		return "Abençoe";
 	}
 
-	std::string Decimal9::getStringRo()
+	std::string Hexus_Cards_Decimal9::getStringRo()
 	{
 		return "Binecuvânta";
 	}
 
-	std::string Decimal9::getStringRu()
+	std::string Hexus_Cards_Decimal9::getStringRu()
 	{
 		return "благословить";
 	}
 
-	std::string Decimal9::getStringSv()
+	std::string Hexus_Cards_Decimal9::getStringSv()
 	{
 		return "Välsigna";
 	}
 
-	std::string Decimal9::getStringTh()
+	std::string Hexus_Cards_Decimal9::getStringTh()
 	{
 		return "ให้ศีลให้พร";
 	}
 
-	std::string Decimal9::getStringTr()
+	std::string Hexus_Cards_Decimal9::getStringTr()
 	{
 		return "kutsamak";
 	}
 
-	std::string Decimal9::getStringUk()
+	std::string Hexus_Cards_Decimal9::getStringUk()
 	{
 		return "Благослови";
 	}
 
-	std::string Decimal9::getStringVi()
+	std::string Hexus_Cards_Decimal9::getStringVi()
 	{
 		return "Ban phước";
 	}
 
-	std::string Decimal9::getStringZhCn()
+	std::string Hexus_Cards_Decimal9::getStringZhCn()
 	{
 		return "保佑";
 	}
 
-	std::string Decimal9::getStringZhTw()
+	std::string Hexus_Cards_Decimal9::getStringZhTw()
 	{
 		return "保佑";
 	}
