@@ -32,6 +32,7 @@ private:
 	virtual ~SpeechBubble();
 
 	void initializePositions() override;
+	void initializeListeners() override;
 
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;

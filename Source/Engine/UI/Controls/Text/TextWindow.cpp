@@ -174,7 +174,7 @@ void TextWindow::rebuildText()
 
 	for (auto it = elements.begin(); it != elements.end(); it++)
 	{
-		if (dynamic_cast<Strings::Generics_Newline*>(std::get<0>(*it)) != nullptr)
+		if (std::get<0>(*it)->getString() == "\n")
 		{
 			this->insertNewline();
 		}
