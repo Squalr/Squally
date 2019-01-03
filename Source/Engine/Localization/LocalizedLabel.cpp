@@ -2,7 +2,10 @@
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventDispatcher.h"
 
+#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
 
@@ -53,6 +56,13 @@ LocalizedLabel::~LocalizedLabel()
 void LocalizedLabel::onEnter()
 {
 	super::onEnter();
+
+	// We have to add events the old way -- this class inherits from a cocos label, not a SmartNode
+	this->getEventDispatcher()->addCustomEventListener(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	{
+		// Unschedule the type writer effect to prevent a crash where the language changes and non-existing characters are fading in
+		this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
+	});
 }
 
 LocalizedLabel* LocalizedLabel::clone()
@@ -215,7 +225,6 @@ void LocalizedLabel::runTypeWriterEffect(float speed)
 		}
 	}
 
-	// TODO: It would be cool to introduce some delay upon encountering a period. Of course w/ localization, this may be a unicode period (ie japanese)
 	this->schedule([=](float dt)
 	{
 		if (this->getLetter(it->second) != nullptr)

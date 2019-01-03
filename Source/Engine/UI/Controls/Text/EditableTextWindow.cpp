@@ -181,7 +181,7 @@ void EditableTextWindow::constructTokenizedText(std::string currentText)
 	{
 		EditableTextWindow::token token = *tokenIterator;
 
-		if (dynamic_cast<Strings::Generics_Newline*>(token.tokenStr) != nullptr)
+		if (token.tokenStr->getString() == "\n")
 		{
 			this->insertNewline();
 		}
