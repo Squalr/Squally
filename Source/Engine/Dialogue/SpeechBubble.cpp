@@ -7,8 +7,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/UI/FX/TypeWriterEffect.h"
 
-#include "Strings/Generics/Constant.h"
 #include "Strings/Generics/Empty.h"
 
 using namespace cocos2d;
@@ -94,7 +94,7 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direc
 	this->text->runAction(FadeTo::create(0.5f, 255));
 
 	this->text->setLocalizedString(localizedString, Size(320.0f, 0.0f));
-	this->text->runTypeWriterEffect();
+	TypeWriterEffect::runTypeWriterEffect(this->text);
 
 	Size textSize = this->text->getContentSize();
 	std::vector<Vec2> trianglePoints = std::vector<Vec2>();

@@ -61,6 +61,7 @@ TextWindow::TextWindow(LocalizedString* windowTitle, LocalizedLabel* referenceCo
 
 TextWindow::~TextWindow()
 {
+	this->clearText();
 }
 
 void TextWindow::onEnter()
@@ -127,7 +128,7 @@ void TextWindow::insertText(LocalizedString* text, Color3B color)
 {
 	RichElement* element = RichElementText::create(0, color, 0xFF, text->getString(), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
 
-	this->addChild(text); // Retain the element
+	text->retain();
 	this->textElements.push_back(std::make_tuple(text, color));
 	this->displayedText->pushBackElement(element);
 }
@@ -143,7 +144,7 @@ void TextWindow::insertNewline()
 	LocalizedString* text = Strings::Generics_Newline::create();
 	RichElement* element = RichElementNewLine::create(0, this->fontColor, 0xFF);
 
-	this->addChild(text); // Retain the element
+	text->retain();
 	this->textElements.push_back(std::make_tuple(text, Color3B()));
 	this->displayedText->pushBackElement(element);
 	this->displayedText->formatText();
@@ -153,7 +154,7 @@ void TextWindow::clearText()
 {
 	for (auto it = this->textElements.begin(); it != this->textElements.end(); it++)
 	{
-		this->removeChild(std::get<0>(*it));
+		std::get<0>(*it)->release();
 	}
 
 	this->textElements.clear();
