@@ -568,7 +568,7 @@ MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 {
 	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
 	ConstantString* valueString = ConstantString::create();
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_TimesConstant::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, Strings::Generics_TimesConstant::create());
 
 	label->setStringReplacementVariables(valueString);
 

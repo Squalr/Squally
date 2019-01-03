@@ -52,11 +52,11 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
 	
-	LocalizedLabel* returnButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Return::create());
-	LocalizedLabel* returnButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Return::create());
+	LocalizedLabel* returnButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel* returnButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 
-	returnButtonLabel->enableOutline(Color4B::BLACK, 2);
-	returnButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	returnButtonLabel->enableOutline(Color4B::BLACK, 3);
+	returnButtonLabelHover->enableOutline(Color4B::BLACK, 3);
 
 	this->returnButton = TextMenuSprite::create(
 		returnButtonLabel,

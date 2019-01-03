@@ -178,9 +178,9 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_BinLabel::create());
-				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_DecLabel::create());
-				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_HexLabel::create());
+				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_BinLabel::create());
+				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_DecLabel::create());
+				LocalizedLabel* hexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_HexLabel::create());
 
 				ConstantString* binaryString = ConstantString::create(HackUtils::toBinary4(attack));
 				ConstantString* decimalString = ConstantString::create(std::to_string(attack));
