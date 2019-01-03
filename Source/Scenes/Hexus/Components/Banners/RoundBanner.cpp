@@ -60,7 +60,7 @@ void RoundBanner::onAnyStateChange(GameState* gameState)
 		{
 			case 0:
 			{
-				this->setBannerText(Strings::Hexus_Banners_FinalRound::create());
+				this->setBannerText(Strings::Hexus_Banners_RoundStart::create());
 				break;
 			}
 			case 1:

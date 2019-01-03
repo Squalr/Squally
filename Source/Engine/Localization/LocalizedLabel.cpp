@@ -63,7 +63,7 @@ LocalizedLabel* LocalizedLabel::clone()
 	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
 }
 
-void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const Size& dimensions, TextHAlignment hAlignment, TextVAlignment vAlignment)
+void LocalizedLabel::setLocalizedString(LocalizedString* localizedString)
 {
 	if (this->localizedString != nullptr)
 	{
@@ -76,10 +76,6 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const 
 	{
 		return;
 	}
-
-	this->setDimensions(dimensions.width, dimensions.height);
-	this->setHorizontalAlignment(hAlignment);
-	this->setVerticalAlignment(vAlignment);
 
 	this->onStringUpdate(this->localizedString);
 

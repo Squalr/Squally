@@ -39,11 +39,7 @@ public:
 	);
 
 	LocalizedLabel* clone();
-	void setLocalizedString(
-		LocalizedString* localizedString,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
-		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
-		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
+	void setLocalizedString(LocalizedString* localizedString);
 	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	float getFontSize();

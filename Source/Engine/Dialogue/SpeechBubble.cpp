@@ -93,7 +93,8 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direc
 	this->stem->runAction(FadeTo::create(0.5f, 255));
 	this->text->runAction(FadeTo::create(0.5f, 255));
 
-	this->text->setLocalizedString(localizedString, Size(320.0f, 0.0f));
+	this->text->setLocalizedString(localizedString);
+	this->text->setDimensions(320.0f, 0.0f);
 	TypeWriterEffect::runTypeWriterEffect(this->text);
 
 	Size textSize = this->text->getContentSize();
