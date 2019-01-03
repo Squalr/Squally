@@ -28,6 +28,7 @@
 #include "Strings/Menus/CodeEditor/Bytes.h"
 #include "Strings/Menus/CodeEditor/ClickToEdit.h"
 #include "Strings/Menus/CodeEditor/CodeEditor.h"
+#include "Strings/Menus/CodeEditor/CompileErrors.h"
 #include "Strings/Menus/CodeEditor/CompileSuccessful.h"
 #include "Strings/Menus/CodeEditor/Error.h"
 #include "Strings/Menus/CodeEditor/FunctionHeader.h"
@@ -318,7 +319,7 @@ void CodeEditor::compile(std::string assemblyText)
 	else
 	{
 		this->statusWindow->insertText(Strings::Menus_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_CompileSuccessful::create(), CodeEditor::errorColor);
+		this->statusWindow->insertText(Strings::Menus_CodeEditor_CompileErrors::create(), CodeEditor::errorColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertText(Strings::Menus_CodeEditor_Error::create(), CodeEditor::headerColor);

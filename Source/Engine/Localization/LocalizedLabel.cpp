@@ -2,7 +2,6 @@
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventDispatcher.h"
 
 #include "Engine/Events/LocalizationEvents.h"
@@ -10,9 +9,6 @@
 #include "Engine/Localization/Localization.h"
 
 #include "Resources/FontResources.h"
-
-const std::string LocalizedLabel::ScheduleKeyTypeWriterEffect = "SCHEDULE_TYPE_WRITER_EFFECT";
-const float LocalizedLabel::DefaultTypeSpeed = 0.025f;
 
 using namespace cocos2d;
 
@@ -41,8 +37,7 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->localizedString = localizedString;
-	this->typeWriterFinishedCallback = nullptr;
+	this->localizedString = nullptr;
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
@@ -56,13 +51,6 @@ LocalizedLabel::~LocalizedLabel()
 void LocalizedLabel::onEnter()
 {
 	super::onEnter();
-
-	// We have to add events the old way -- this class inherits from a cocos label, not a SmartNode
-	this->getEventDispatcher()->addCustomEventListener(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-	{
-		// Unschedule the type writer effect to prevent a crash where the language changes and non-existing characters are fading in
-		this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
-	});
 }
 
 LocalizedLabel* LocalizedLabel::clone()
@@ -97,7 +85,7 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString, const 
 
 	this->localizedString->setOnStringUpdateCallback(CC_CALLBACK_1(LocalizedLabel::onStringUpdate, this));
 
-	this->addChild(this->localizedString); // Just adding this to retain it -- this has no visuals
+	this->addChild(this->localizedString); // Retain as a child so it can listen for events (no visuals)
 }
 
 void LocalizedLabel::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
@@ -195,62 +183,6 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 		this->getHorizontalAlignment(),
 		this->getVerticalAlignment()
 	);
-}
-
-void LocalizedLabel::runTypeWriterEffect(float speed)
-{
-	this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
-
-	static std::map<LocalizedLabel*, int> mapTypeIdx;
-	std::map<LocalizedLabel*, int>::iterator it;
-	it = mapTypeIdx.find(this);
-
-	if (it == mapTypeIdx.end())
-	{
-		mapTypeIdx.insert(std::pair<LocalizedLabel*, int>(this, 0));
-		it = mapTypeIdx.find(this);
-	}
-	else
-	{
-		it->second = 0;
-	}
-
-	int max = this->getStringLength();
-
-	for (int i = 0; i < max; i++)
-	{
-		if (this->getLetter(i) != nullptr)
-		{
-			this->getLetter(i)->setOpacity(0);
-		}
-	}
-
-	this->schedule([=](float dt)
-	{
-		if (this->getLetter(it->second) != nullptr)
-		{
-			this->getLetter(it->second)->runAction(FadeTo::create(0.1f, 255));
-		}
-
-		it->second++;
-
-		if (it->second == max)
-		{
-			this->unschedule(LocalizedLabel::ScheduleKeyTypeWriterEffect);
-			mapTypeIdx.erase(it);
-
-			if (this->typeWriterFinishedCallback != nullptr)
-			{
-				this->typeWriterFinishedCallback();
-			}
-		}
-
-	}, speed, max - 1, 0, LocalizedLabel::ScheduleKeyTypeWriterEffect);
-}
-
-void LocalizedLabel::setTypeWriterFinishedCallback(std::function<void()> callback)
-{
-	this->typeWriterFinishedCallback = callback;
 }
 
 std::string LocalizedLabel::getPixelFont()

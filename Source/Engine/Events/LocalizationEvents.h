@@ -17,4 +17,5 @@ public:
 	static void TriggerLocaleChange(LocaleChangeArgs args);
 
 	static const std::string LocaleChangeEvent;
+	static const std::string BeforeLocaleChangeEvent;
 };

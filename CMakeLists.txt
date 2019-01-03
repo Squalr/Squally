@@ -138,6 +138,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/Text/TextWindow.cpp
 	Source/Engine/UI/Controls/TextMenuSprite.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
+	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
 	Source/Engine/UI/HUD/DeveloperHud.cpp
 	Source/Engine/UI/HUD/HackerModeHud.cpp
@@ -992,6 +993,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/CodeEditor/Bytes.cpp
 	Source/Strings/Menus/CodeEditor/ClickToEdit.cpp
 	Source/Strings/Menus/CodeEditor/CodeEditor.cpp
+	Source/Strings/Menus/CodeEditor/CompileErrors.cpp
 	Source/Strings/Menus/CodeEditor/CompileSuccessful.cpp
 	Source/Strings/Menus/CodeEditor/Error.cpp
 	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.cpp
@@ -1179,6 +1181,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/Text/TextWindow.h
 	Source/Engine/UI/Controls/TextMenuSprite.h
 	Source/Engine/UI/Controls/ToggleGroup.h
+	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h
 	Source/Engine/UI/HUD/DeveloperHud.h
 	Source/Engine/UI/HUD/HackerModeHud.h
@@ -2056,6 +2059,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/CodeEditor/Bytes.h
 	Source/Strings/Menus/CodeEditor/ClickToEdit.h
 	Source/Strings/Menus/CodeEditor/CodeEditor.h
+	Source/Strings/Menus/CodeEditor/CompileErrors.h
 	Source/Strings/Menus/CodeEditor/CompileSuccessful.h
 	Source/Strings/Menus/CodeEditor/Error.h
 	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.h

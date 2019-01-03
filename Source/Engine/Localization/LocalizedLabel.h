@@ -48,11 +48,11 @@ public:
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	float getFontSize();
 	std::string getFont();
-	void runTypeWriterEffect(float speed = LocalizedLabel::DefaultTypeSpeed);
-	void setTypeWriterFinishedCallback(std::function<void()> callback);
 
 private:
 	typedef cocos2d::Label super;
+	friend class TypeWriterEffect;
+
 	LocalizedLabel(
 		FontStyle fontStyle,
 		FontSize fontSize,
@@ -84,8 +84,4 @@ private:
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;
-	std::function<void()> typeWriterFinishedCallback;
-
-	static const std::string ScheduleKeyTypeWriterEffect;
-	static const float DefaultTypeSpeed;
 };
