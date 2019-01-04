@@ -66,6 +66,8 @@ namespace UIResources
 	extern const std::string Menus_Buttons_ChatButton;
 	extern const std::string Menus_Buttons_ChatButtonHover;
 	extern const std::string Menus_Buttons_CloseButton;
+	extern const std::string Menus_Buttons_CloseButton2;
+	extern const std::string Menus_Buttons_CloseButton2Select;
 	extern const std::string Menus_Buttons_CloseButtonHover;
 	extern const std::string Menus_Buttons_CloseV2Button;
 	extern const std::string Menus_Buttons_CloseV2ButtonHover;
