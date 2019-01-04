@@ -5,6 +5,7 @@
 
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Resources/UIResources.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
@@ -26,8 +27,6 @@ CSlider::CSlider(float progress)
 	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
 	this->slide = MenuSprite::create(UIResources::Menus_OptionsMenu_Slide, UIResources::Menus_OptionsMenu_Slide);
 
-	this->setCascadeOpacityEnabled(true);
-	this->progressClip->setCascadeOpacityEnabled(true);
 	this->setProgress(progress);
 
 	this->progressBar->setMouseDownCallback(CC_CALLBACK_2(CSlider::onDrag, this));
@@ -60,7 +59,8 @@ void CSlider::setProgressUpdateCallback(std::function<void(float progress)> call
 
 void CSlider::onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args)
 {
-	Vec2 newPosition = Vec2(args->mouseCoords.x - this->getPositionX(), this->slide->getPosition().y);
+	Vec2 thisPosition = GameUtils::getSceneBounds(this).origin;
+	Vec2 newPosition = Vec2(args->mouseCoords.x - thisPosition.x, thisPosition.y);
 
 	if (newPosition.x < -this->frame->getContentSize().width / 2)
 	{
@@ -72,7 +72,7 @@ void CSlider::onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args)
 	}
 
 	this->setProgress((newPosition.x + this->frame->getContentSize().width / 2) / this->frame->getContentSize().width);
-	this->slide->setPosition(newPosition);
+	this->slide->setPositionX(newPosition.x);
 }
 
 void CSlider::setProgress(float newProgress)

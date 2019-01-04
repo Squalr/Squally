@@ -416,8 +416,11 @@ list(APPEND GAME_SOURCE
 	Source/Menus/LoadingScreen/LoadingScreen.cpp
 	Source/Menus/MenuBackground.cpp
 	Source/Menus/MinigamesMenu.cpp
+	Source/Menus/Options/GeneralTab.cpp
+	Source/Menus/Options/LanguageTab.cpp
 	Source/Menus/Options/OptionsMenu.cpp
 	Source/Menus/Options/OptionsScene.cpp
+	Source/Menus/Options/VideoTab.cpp
 	Source/Menus/Pause/PauseMenu.cpp
 	Source/Menus/SaveSelect/SaveSelectMenu.cpp
 	Source/Menus/Title/TitleScreen.cpp
@@ -1076,6 +1079,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/NewGame.cpp
 	Source/Strings/Menus/Next.cpp
 	Source/Strings/Menus/Options/FullScreen.cpp
+	Source/Strings/Menus/Options/GeneralOptions.cpp
+	Source/Strings/Menus/Options/Language.cpp
 	Source/Strings/Menus/Options/Options.cpp
 	Source/Strings/Menus/Options/Resolution1080x768.cpp
 	Source/Strings/Menus/Options/Resolution1152x864.cpp
@@ -1088,6 +1093,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Options/Resolution1920x1080.cpp
 	Source/Strings/Menus/Options/Resolution2560x1440.cpp
 	Source/Strings/Menus/Options/Resolution3840x2160.cpp
+	Source/Strings/Menus/Options/VideoOptions.cpp
 	Source/Strings/Menus/Pause.cpp
 	Source/Strings/Menus/QuitToTitle.cpp
 	Source/Strings/Menus/Resume.cpp
@@ -1465,8 +1471,11 @@ list(APPEND GAME_HEADER
 	Source/Menus/LoadingScreen/LoadingScreen.h
 	Source/Menus/MenuBackground.h
 	Source/Menus/MinigamesMenu.h
+	Source/Menus/Options/GeneralTab.h
+	Source/Menus/Options/LanguageTab.h
 	Source/Menus/Options/OptionsMenu.h
 	Source/Menus/Options/OptionsScene.h
+	Source/Menus/Options/VideoTab.h
 	Source/Menus/Pause/PauseMenu.h
 	Source/Menus/SaveSelect/SaveSelectMenu.h
 	Source/Menus/Title/TitleScreen.h
@@ -2142,6 +2151,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/NewGame.h
 	Source/Strings/Menus/Next.h
 	Source/Strings/Menus/Options/FullScreen.h
+	Source/Strings/Menus/Options/GeneralOptions.h
+	Source/Strings/Menus/Options/Language.h
 	Source/Strings/Menus/Options/Options.h
 	Source/Strings/Menus/Options/Resolution1080x768.h
 	Source/Strings/Menus/Options/Resolution1152x864.h
@@ -2154,6 +2165,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Options/Resolution1920x1080.h
 	Source/Strings/Menus/Options/Resolution2560x1440.h
 	Source/Strings/Menus/Options/Resolution3840x2160.h
+	Source/Strings/Menus/Options/VideoOptions.h
 	Source/Strings/Menus/Pause.h
 	Source/Strings/Menus/QuitToTitle.h
 	Source/Strings/Menus/Resume.h
