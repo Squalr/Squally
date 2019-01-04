@@ -66,7 +66,6 @@ bool DeveloperModeController::isDeveloperModeEnabled()
 
 void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
-	static const LanguageType LastLanguageInEnum = LanguageType::VIETNAMESE;
 	static LanguageType nextLanguage = LanguageType::ENGLISH;
 
 	switch (keyCode)
@@ -100,7 +99,7 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 				{
 					Localization::setLanguage(nextLanguage);
 
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
 				}),
 				DelayTime::create(1.0f),
 				nullptr
@@ -115,7 +114,7 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 				{
 					Localization::setLanguage(nextLanguage);
 
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
 				}),
 				DelayTime::create(0.75f),
 				nullptr
@@ -130,7 +129,7 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 				{
 					Localization::setLanguage(nextLanguage);
 
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
 				}),
 				DelayTime::create(0.5f),
 				nullptr
@@ -146,7 +145,7 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 				{
 					Localization::setLanguage(nextLanguage);
 
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LastLanguageInEnum);
+					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
 				}),
 				DelayTime::create(0.25f),
 				nullptr

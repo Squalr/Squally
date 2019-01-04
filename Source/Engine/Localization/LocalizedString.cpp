@@ -10,6 +10,7 @@ using namespace cocos2d;
 
 LocalizedString::LocalizedString()
 {
+	this->overrideLanguage = LanguageType::NONE;
 	this->onStringUpdate = nullptr;
 	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
@@ -46,7 +47,7 @@ std::string LocalizedString::getString()
 {
 	std::string localizedString;
 
-	switch (Localization::getLanguage())
+	switch (this->overrideLanguage != LanguageType::NONE ? this->overrideLanguage : Localization::getLanguage())
 	{
 		case LanguageType::ARABIC:
 		{
@@ -202,6 +203,16 @@ std::string LocalizedString::getString()
 	}
 
 	return localizedString;
+}
+
+cocos2d::LanguageType LocalizedString::getOverrideLanguage()
+{
+	return this->overrideLanguage;
+}
+
+void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
+{
+	this->overrideLanguage = overrideLanguage;
 }
 
 void LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)

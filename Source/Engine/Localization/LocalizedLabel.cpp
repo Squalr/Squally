@@ -191,9 +191,24 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	}
 }
 
+cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
+{
+	if (this->localizedString == nullptr)
+	{
+		return Localization::getLanguage();
+	}
+
+	if (this->localizedString->getOverrideLanguage() != LanguageType::NONE)
+	{
+		return this->localizedString->getOverrideLanguage();
+	}
+
+	return Localization::getLanguage();
+}
+
 std::string LocalizedLabel::getPixelFont()
 {
-	switch (Localization::getLanguage())
+	switch (this->getCurrentLanguage())
 	{
 		default:
 		case LanguageType::ENGLISH:
@@ -237,7 +252,7 @@ std::string LocalizedLabel::getPixelFont()
 
 std::string LocalizedLabel::getMainFont()
 {
-	switch (Localization::getLanguage())
+	switch (this->getCurrentLanguage())
 	{
 		case LanguageType::CHINESE_SIMPLIFIED:
 		{
@@ -273,7 +288,7 @@ std::string LocalizedLabel::getMainFont()
 
 std::string LocalizedLabel::getMonospacedFont()
 {
-	switch (Localization::getLanguage())
+	switch (this->getCurrentLanguage())
 	{
 		case LanguageType::CHINESE_SIMPLIFIED:
 		{

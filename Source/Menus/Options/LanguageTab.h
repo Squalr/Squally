@@ -9,7 +9,8 @@ namespace cocos2d
 	class Label;
 }
 
-class CSlider;
+class LocalizedString;
+class TextMenuSprite;
 
 class LanguageTab : public SmartNode
 {
@@ -26,4 +27,7 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+	TextMenuSprite* constructLanguageButton(LocalizedString* string);
+
+	std::vector<TextMenuSprite*> languageButtons;
 };

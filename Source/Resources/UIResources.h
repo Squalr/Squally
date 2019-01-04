@@ -343,6 +343,8 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_CheckboxEmpty;
 	extern const std::string Menus_OptionsMenu_CheckboxHover;
 	extern const std::string Menus_OptionsMenu_CheckboxSelected;
+	extern const std::string Menus_OptionsMenu_DarkButton;
+	extern const std::string Menus_OptionsMenu_DarkButtonSelected;
 	extern const std::string Menus_OptionsMenu_IconChatBubble;
 	extern const std::string Menus_OptionsMenu_IconCogs;
 	extern const std::string Menus_OptionsMenu_IconCrown;
