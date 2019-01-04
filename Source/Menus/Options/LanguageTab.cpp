@@ -70,8 +70,8 @@ void LanguageTab::initializePositions()
 {
 	super::initializePositions();
 
-	const Vec2 offset = Vec2(-240.0f, 160.0f);
-	const Vec2 spacing = Vec2(224.0f, 64.0f);
+	const Vec2 offset = Vec2(-240.0f, 212.0f);
+	const Vec2 spacing = Vec2(224.0f, 56.0f);
 	int index = 0;
 
 	for (auto it = this->languageButtons.begin(); it != this->languageButtons.end(); it++)
