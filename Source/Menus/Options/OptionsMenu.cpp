@@ -20,6 +20,7 @@
 #include "Strings/Menus/Options/VideoOptions.h"
 #include "Strings/Menus/Options/Options.h"
 #include "Strings/Menus/Return.h"
+#include "Strings/Menus/Cancel.h"
 
 using namespace cocos2d;
 
@@ -83,6 +84,22 @@ OptionsMenu::OptionsMenu()
 
 	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
+
+	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableGlow(Color4B::BLACK);
+
+	cancelLabelHover->setColor(Color3B::YELLOW);
+	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->cancelButton = TextMenuSprite::create(
+		cancelLabel,
+		cancelLabelHover,
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover);
+
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 
@@ -111,6 +128,7 @@ OptionsMenu::OptionsMenu()
 	this->addChild(this->rightPanel);
 	this->addChild(this->optionsLabel);
 	this->addChild(this->closeButton);
+	this->addChild(this->cancelButton);
 	this->addChild(this->returnButton);
 }
 
@@ -128,7 +146,10 @@ void OptionsMenu::onEnter()
 	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
 	GameUtils::fadeInObject(this->optionsLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->cancelButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+	GameUtils::fadeInObject(this->leftPanel, delay, duration);
+	GameUtils::fadeInObject(this->rightPanel, delay, duration);
 
 	this->setActiveTab(Tab::General);
 }
@@ -137,8 +158,9 @@ void OptionsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->closeButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->cancelButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
 	this->returnButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->closeButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
 	this->generalTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
 	this->videoTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
 	this->languageTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
@@ -158,7 +180,7 @@ void OptionsMenu::initializePositions()
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
-	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 376.0f, visibleSize.height / 2.0f + 276.0f));
+	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 376.0f, visibleSize.height / 2.0f + 278.0f));
 	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 160.0f, visibleSize.height / 2.0f + 52.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 364.0f));
 
@@ -170,7 +192,8 @@ void OptionsMenu::initializePositions()
 
 	const float offsetY = 48.0f;
 
-	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 348.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 80.0f, visibleSize.height / 2.0f - 348.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f - 348.0f));
 }
 
 void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)

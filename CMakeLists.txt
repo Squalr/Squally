@@ -835,6 +835,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Generics/Empty.cpp
 	Source/Strings/Generics/Infinity.cpp
 	Source/Strings/Generics/MinusConstant.cpp
+	Source/Strings/Generics/NativeLanguage.cpp
 	Source/Strings/Generics/Newline.cpp
 	Source/Strings/Generics/PlusConstant.cpp
 	Source/Strings/Generics/TimesConstant.cpp
@@ -1907,6 +1908,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Generics/Empty.h
 	Source/Strings/Generics/Infinity.h
 	Source/Strings/Generics/MinusConstant.h
+	Source/Strings/Generics/NativeLanguage.h
 	Source/Strings/Generics/Newline.h
 	Source/Strings/Generics/PlusConstant.h
 	Source/Strings/Generics/TimesConstant.h

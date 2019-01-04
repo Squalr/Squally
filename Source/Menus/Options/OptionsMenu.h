@@ -54,6 +54,7 @@ private:
 	cocos2d::Sprite* optionsWindow;
 	LocalizedLabel* optionsLabel;
 	MenuSprite* closeButton;
+	TextMenuSprite* cancelButton;
 	TextMenuSprite* returnButton;
 	cocos2d::Node* leftPanel;
 	TextMenuSprite* generalTabButton;

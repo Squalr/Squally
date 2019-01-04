@@ -63,19 +63,20 @@ private:
 
 	void onEnter() override;
 	void onStringUpdate(LocalizedString* localizedString);
-	static float getFontSizeM1(std::string fontResource);
-	static float getFontSizeM2(std::string fontResource);
-	static float getFontSizeM3(std::string fontResource);
-	static float getFontSizeH1(std::string fontResource);
-	static float getFontSizeH2(std::string fontResource);
-	static float getFontSizeH3(std::string fontResource);
-	static float getFontSizeP(std::string fontResource);
-	static float getFontSizeSmall(std::string fontResource);
+	cocos2d::LanguageType getCurrentLanguage();
+	float getFontSizeM1(std::string fontResource);
+	float getFontSizeM2(std::string fontResource);
+	float getFontSizeM3(std::string fontResource);
+	float getFontSizeH1(std::string fontResource);
+	float getFontSizeH2(std::string fontResource);
+	float getFontSizeH3(std::string fontResource);
+	float getFontSizeP(std::string fontResource);
+	float getFontSizeSmall(std::string fontResource);
 
-	static std::string getPixelFont();
-	static std::string getMainFont();
-	static std::string getMonospacedFont();
-	static std::string getCodingFont();
+	std::string getPixelFont();
+	std::string getMainFont();
+	std::string getMonospacedFont();
+	std::string getCodingFont();
 
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
