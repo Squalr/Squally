@@ -6,38 +6,26 @@
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/CCheckbox.h"
-#include "Engine/UI/Controls/CRadioButton.h"
-#include "Engine/UI/Controls/CSlider.h"
 #include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Menus/Options/GeneralTab.h"
+#include "Menus/Options/LanguageTab.h"
+#include "Menus/Options/VideoTab.h"
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Options/FullScreen.h"
+#include "Strings/Menus/Options/GeneralOptions.h"
+#include "Strings/Menus/Options/Language.h"
+#include "Strings/Menus/Options/VideoOptions.h"
 #include "Strings/Menus/Options/Options.h"
-#include "Strings/Menus/Options/Resolution1080x768.h"
-#include "Strings/Menus/Options/Resolution1152x864.h"
-#include "Strings/Menus/Options/Resolution1280x720.h"
-#include "Strings/Menus/Options/Resolution1280x960.h"
-#include "Strings/Menus/Options/Resolution1280x1024.h"
-#include "Strings/Menus/Options/Resolution1440x900.h"
-#include "Strings/Menus/Options/Resolution1600x900.h"
-#include "Strings/Menus/Options/Resolution1600x1024.h"
-#include "Strings/Menus/Options/Resolution1920x1080.h"
-#include "Strings/Menus/Options/Resolution2560x1440.h"
-#include "Strings/Menus/Options/Resolution3840x2160.h"
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
 
 const Color3B OptionsMenu::TitleColor = Color3B(88, 188, 193);
-const int OptionsMenu::ResolutionGroupId = 420;
 
-OptionsMenu * OptionsMenu::create()
+OptionsMenu* OptionsMenu::create()
 {
 	OptionsMenu* instance = new OptionsMenu();
 
@@ -52,68 +40,58 @@ OptionsMenu::OptionsMenu()
 
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
-	this->fullScreenLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_FullScreen::create());
 	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->leftPanel = Node::create();
+	this->rightPanel = Node::create();
+	this->generalTab = GeneralTab::create();
+	this->videoTab = VideoTab::create();
+	this->languageTab = LanguageTab::create();
 	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Options_Options::create());
 
-	this->optionsLabel->setColor(OptionsMenu::TitleColor);
+	LocalizedLabel*	generalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
+	LocalizedLabel*	generalLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
+
+	this->generalTabButton = TextMenuSprite::create(generalLabel, generalLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->generalTabButton->setTextOffset(Vec2(32.0f, 0.0f));
+
+	Sprite* generalSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconLightbulb);
+	generalSprite->setPosition(Vec2(-122.0f, 0.0f));
+
+	this->generalTabButton->addChild(generalSprite);
+
+	LocalizedLabel*	videoLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_VideoOptions::create());
+	LocalizedLabel*	videoLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_VideoOptions::create());
+
+	this->videoTabButton = TextMenuSprite::create(videoLabel, videoLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->videoTabButton->setTextOffset(Vec2(32.0f, 0.0f));
+
+	Sprite* videoSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconCogs);
+	videoSprite->setPosition(Vec2(-122.0f, 0.0f));
+
+	this->videoTabButton->addChild(videoSprite);
+
+	LocalizedLabel*	languageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Language::create());
+	LocalizedLabel*	languageLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Language::create());
+
+	this->languageTabButton = TextMenuSprite::create(languageLabel, languageLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->languageTabButton->setTextOffset(Vec2(32.0f, 0.0f));
+
+	Sprite* languageSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconChatBubble);
+	languageSprite->setPosition(Vec2(-122.0f, 0.0f));
+
+	this->languageTabButton->addChild(languageSprite);
+
 	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
-
-	this->fullScreenLabel->setAlignment(TextHAlignment::LEFT);
-	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2.0f);
-
-	this->musicIcon = Sprite::create(UIResources::Menus_OptionsMenu_MusicIcon);
-	this->soundIcon = Sprite::create(UIResources::Menus_OptionsMenu_SoundIcon);
-
-	this->musicSlider = CSlider::create(SoundManager::getMusicVolume());
-	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
-
-	MenuSprite* uncheckedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
-	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOnHover);
-	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(OptionsMenu::onFullScreenChanged, this));
-
-	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1080x768::create());
-	this->label1152x864 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1152x864::create());
-	this->label1280x720 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1280x720::create());
-	this->label1280x960 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1280x960::create());
-	this->label1280x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1280x1024::create());
-	this->label1440x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1440x900::create());
-	this->label1600x900 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1600x900::create());
-	this->label1600x1024 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1600x1024::create());
-	this->label1920x1080 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1920x1080::create());
-	this->label2560x1440 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution2560x1440::create());
-	this->label3840x2160 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution3840x2160::create());
-
-	this->option1080x768 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1152x864 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1280x720 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1280x960 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1280x1024 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1440x900 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1600x900 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1600x1024 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option1920x1080 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option2560x1440 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-	this->option3840x2160 = CRadioButton::create(OptionsMenu::ResolutionGroupId);
-
-	Size shadowSize = Size(-2.0f, -2.0f);
-	int shadowBlur = 2;
-	int hoverOutlineSize = 2;
-	Color3B textColor = Color3B::WHITE;
-	Color4B shadowColor = Color4B::BLACK;
-	Color3B highlightColor = Color3B::YELLOW;
-	Color4B glowColor = Color4B::ORANGE;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 
-	returnLabel->setColor(textColor);
-	returnLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	returnLabel->enableGlow(shadowColor);
+	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableGlow(Color4B::BLACK);
 
-	returnLabelHover->setColor(highlightColor);
-	returnLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	returnLabelHover->enableGlow(glowColor);
+	returnLabelHover->setColor(Color3B::YELLOW);
+	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = TextMenuSprite::create(
 		returnLabel,
@@ -121,130 +99,19 @@ OptionsMenu::OptionsMenu()
 		UIResources::Menus_Buttons_GenericButton,
 		UIResources::Menus_Buttons_GenericButtonHover);
 
-	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onMusicVolumeUpdate, this));
-	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(OptionsMenu::onSoundVolumeUpdate, this));
-
-	this->option1080x768->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1152x864->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1600x1024->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1280x720->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1280x960->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1280x1024->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1440x900->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1600x900->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1600x1024->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option1920x1080->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option2560x1440->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-	this->option3840x2160->setCheckCallback(CC_CALLBACK_1(OptionsMenu::onResolutionChanged, this));
-
-	this->closeButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
-	this->returnButton->setClickCallback(CC_CALLBACK_1(OptionsMenu::onCloseClick, this));
-
+	this->leftPanel->addChild(this->generalTabButton);
+	this->leftPanel->addChild(this->videoTabButton);
+	this->leftPanel->addChild(this->languageTabButton);
+	this->rightPanel->addChild(this->generalTab);
+	this->rightPanel->addChild(this->videoTab);
+	this->rightPanel->addChild(this->languageTab);
 	this->addChild(this->background);
 	this->addChild(this->optionsWindow);
+	this->addChild(this->leftPanel);
+	this->addChild(this->rightPanel);
 	this->addChild(this->optionsLabel);
 	this->addChild(this->closeButton);
-	this->addChild(this->musicIcon);
-	this->addChild(this->soundIcon);
-	this->addChild(this->soundSlider);
-	this->addChild(this->musicSlider);
-	this->addChild(this->fullScreenLabel);
-	this->addChild(this->fullScreenButton);
-
-	this->addChild(this->label1080x768);
-	this->addChild(this->label1152x864);
-	this->addChild(this->label1280x720);
-	this->addChild(this->label1280x960);
-	this->addChild(this->label1280x1024);
-	this->addChild(this->label1440x900);
-	this->addChild(this->label1600x900);
-	this->addChild(this->label1600x1024);
-	this->addChild(this->label1920x1080);
-	this->addChild(this->label2560x1440);
-	this->addChild(this->label3840x2160);
-
-	this->addChild(this->option1080x768);
-	this->addChild(this->option1152x864);
-	this->addChild(this->option1280x720);
-	this->addChild(this->option1280x960);
-	this->addChild(this->option1280x1024);
-	this->addChild(this->option1440x900);
-	this->addChild(this->option1600x900);
-	this->addChild(this->option1600x1024);
-	this->addChild(this->option1920x1080);
-	this->addChild(this->option2560x1440);
-	this->addChild(this->option3840x2160);
-
 	this->addChild(this->returnButton);
-
-	switch (ConfigManager::getResolution())
-	{
-		case ConfigManager::ResolutionSetting::R1080x768:
-		{
-			this->option1080x768->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1152x864:
-		{
-			this->option1152x864->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1280x720:
-		{
-			this->option1280x720->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1280x960:
-		{
-			this->option1280x960->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1280x1024:
-		{
-			this->option1280x1024->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1440x900:
-		{
-			this->option1440x900->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1600x900:
-		{
-			this->option1600x900->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1600x1024:
-		{
-			this->option1600x1024->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R1920x1080:
-		{
-			this->option1920x1080->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R2560x1440:
-		{
-			this->option2560x1440->check();
-			break;
-		}
-		case ConfigManager::ResolutionSetting::R3840x2160:
-		default:
-		{
-			this->option3840x2160->check();
-			break;
-		}
-	}
-
-	if (ConfigManager::getIsFullScreen())
-	{
-		this->hideResolutionOptions();
-	}
-	else
-	{
-		this->showResolutionOptions();
-	}
 }
 
 OptionsMenu::~OptionsMenu()
@@ -261,40 +128,20 @@ void OptionsMenu::onEnter()
 	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
 	GameUtils::fadeInObject(this->optionsLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->musicIcon, delay, duration);
-	GameUtils::fadeInObject(this->soundIcon, delay, duration);
-	GameUtils::fadeInObject(this->musicSlider, delay, duration);
-	GameUtils::fadeInObject(this->soundSlider, delay, duration);
-	GameUtils::fadeInObject(this->fullScreenLabel, delay, duration);
-	GameUtils::fadeInObject(this->fullScreenButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
 
-	GameUtils::fadeInObject(this->label1080x768, delay, duration);
-	GameUtils::fadeInObject(this->label1152x864, delay, duration);
-	GameUtils::fadeInObject(this->label1280x720, delay, duration);
-	GameUtils::fadeInObject(this->label1280x960, delay, duration);
-	GameUtils::fadeInObject(this->label1280x1024, delay, duration);
-	GameUtils::fadeInObject(this->label1440x900, delay, duration);
-	GameUtils::fadeInObject(this->label1600x900, delay, duration);
-	GameUtils::fadeInObject(this->label1600x1024, delay, duration);
-	GameUtils::fadeInObject(this->label1920x1080, delay, duration);
-
-	GameUtils::fadeInObject(this->option1080x768, delay, duration);
-	GameUtils::fadeInObject(this->option1152x864, delay, duration);
-	GameUtils::fadeInObject(this->option1280x720, delay, duration);
-	GameUtils::fadeInObject(this->option1280x960, delay, duration);
-	GameUtils::fadeInObject(this->option1280x1024, delay, duration);
-	GameUtils::fadeInObject(this->option1440x900, delay, duration);
-	GameUtils::fadeInObject(this->option1600x900, delay, duration);
-	GameUtils::fadeInObject(this->option1600x1024, delay, duration);
-	GameUtils::fadeInObject(this->option1920x1080, delay, duration);
-	GameUtils::fadeInObject(this->option2560x1440, delay, duration);
-	GameUtils::fadeInObject(this->option3840x2160, delay, duration);
+	this->setActiveTab(Tab::General);
 }
 
 void OptionsMenu::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->closeButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->returnButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->generalTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
+	this->videoTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
+	this->languageTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -309,128 +156,26 @@ void OptionsMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 286.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 302.0f, visibleSize.height / 2 + 228.0f));
+	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
+	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 376.0f, visibleSize.height / 2.0f + 276.0f));
+	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 160.0f, visibleSize.height / 2.0f + 52.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f + 364.0f));
 
-	this->soundIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 144.0f));
-	this->musicIcon->setPosition(Vec2(visibleSize.width / 2 - 276.0f, visibleSize.height / 2 + 64.0f));
-	this->soundSlider->setPosition(Vec2(visibleSize.width / 2 + 32.0f, visibleSize.height / 2 + 144.0f));
-	this->musicSlider->setPosition(Vec2(visibleSize.width / 2 + 32.0f, visibleSize.height / 2 + 64.0f));
-	this->fullScreenButton->setPosition(Vec2(visibleSize.width / 2 - 248.0f, visibleSize.height / 2 - 8.0f));
-	this->fullScreenLabel->setPosition(Vec2(visibleSize.width / 2 - 112.0f, visibleSize.height / 2 - 8.0f));
+	const float spacing = -66.0f;
 
-	const float spacing = 160.0f;
-	const float base = 225.0f;
-	const float baseY = -64.0f;
+	this->generalTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
+	this->videoTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
+	this->languageTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
+
 	const float offsetY = 48.0f;
-	const float textOffset = 70.0f;
 
-	this->label1080x768->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY));
-	this->label1152x864->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY));
-	this->label1280x720->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY));
-	this->label1280x960->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY));
-	this->option1080x768->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY));
-	this->option1152x864->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY));
-	this->option1280x720->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY));
-	this->option1280x960->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY));
-
-	this->label1280x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
-	this->label1440x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
-	this->label1600x900->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
-	this->label1600x1024->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
-	this->option1280x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY - offsetY));
-	this->option1440x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY - offsetY));
-	this->option1600x900->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY));
-	this->option1600x1024->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 3, visibleSize.height / 2 + baseY - offsetY));
-
-	this->label1920x1080->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 0, visibleSize.height / 2 + baseY - offsetY * 2));
-	this->label2560x1440->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 1, visibleSize.height / 2 + baseY - offsetY * 2));
-	this->label3840x2160->setPosition(Vec2(visibleSize.width / 2 - base + spacing * 2, visibleSize.height / 2 + baseY - offsetY * 2));
-	this->option1920x1080->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 0, visibleSize.height / 2 + baseY - offsetY * 2));
-	this->option2560x1440->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 1, visibleSize.height / 2 + baseY - offsetY * 2));
-	this->option3840x2160->setPosition(Vec2(visibleSize.width / 2 - (base + textOffset) + spacing * 2, visibleSize.height / 2 + baseY - offsetY * 2));
-
-	this->returnButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - offsetY * 5));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 348.0f));
 }
 
 void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)
 {
 	this->backClickCallback = backClickCallback;
-}
-
-bool OptionsMenu::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
-{
-	ConfigManager::setIsFullScreen(isFullScreen);
-
-	if (isFullScreen)
-	{
-		this->hideResolutionOptions();
-	}
-	else
-	{
-		this->showResolutionOptions();
-	}
-
-	return isFullScreen;
-}
-
-void OptionsMenu::onResolutionChanged(CRadioButton* radioButton)
-{
-	if (radioButton == this->option1080x768)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1080x768);
-	}
-	else if (radioButton == this->option1152x864)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1152x864);
-	}
-	else if (radioButton == this->option1280x720)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1280x720);
-	}
-	else if (radioButton == this->option1280x960)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1280x960);
-	}
-	else if (radioButton == this->option1280x1024)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1280x1024);
-	}
-	else if (radioButton == this->option1440x900)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1440x900);
-	}
-	else if (radioButton == this->option1600x900)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1600x900);
-	}
-	else if (radioButton == this->option1600x1024)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1600x1024);
-	}
-	else if (radioButton == this->option1920x1080)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R1920x1080);
-	}
-	else if (radioButton == this->option2560x1440)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R2560x1440);
-	}
-	else if (radioButton == this->option3840x2160)
-	{
-		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R3840x2160);
-	}
-}
-
-void OptionsMenu::onSoundVolumeUpdate(float soundVolume)
-{
-	SoundManager::setSoundVolume(soundVolume);
-}
-
-void OptionsMenu::onMusicVolumeUpdate(float musicVolume)
-{
-	SoundManager::setMusicVolume(musicVolume);
 }
 
 void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -455,9 +200,41 @@ void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void OptionsMenu::onCloseClick(MenuSprite* menuSprite)
+void OptionsMenu::setActiveTab(Tab tab)
 {
-	this->onMenuExit();
+	this->activeTab = tab;
+
+	this->generalTab->setVisible(false);
+	this->videoTab->setVisible(false);
+	this->languageTab->setVisible(false);
+
+	switch(this->activeTab)
+	{
+		default:
+		case Tab::General:
+		{
+			this->generalTab->setVisible(true);
+			break;
+		}
+		case Tab::Video:
+		{
+			this->videoTab->setVisible(true);
+			break;
+		}
+		case Tab::Language:
+		{
+			this->languageTab->setVisible(true);
+			break;
+		}
+	}
+}
+
+void OptionsMenu::onMenuCancel()
+{
+	if (this->backClickCallback != nullptr)
+	{
+		this->backClickCallback();
+	}
 }
 
 void OptionsMenu::onMenuExit()
@@ -468,59 +245,4 @@ void OptionsMenu::onMenuExit()
 	{
 		this->backClickCallback();
 	}
-}
-
-void OptionsMenu::showResolutionOptions()
-{
-	this->label1080x768->setVisible(true);
-	this->label1152x864->setVisible(true);
-	this->label1280x720->setVisible(true);
-	this->label1280x960->setVisible(true);
-	this->label1280x1024->setVisible(true);
-	this->label1440x900->setVisible(true);
-	this->label1600x900->setVisible(true);
-	this->label1600x1024->setVisible(true);
-	this->label1920x1080->setVisible(true);
-	this->label2560x1440->setVisible(true);
-	this->label3840x2160->setVisible(true);
-
-	this->option1080x768->setVisible(true);
-	this->option1152x864->setVisible(true);
-	this->option1600x1024->setVisible(true);
-	this->option1280x720->setVisible(true);
-	this->option1280x960->setVisible(true);
-	this->option1280x1024->setVisible(true);
-	this->option1440x900->setVisible(true);
-	this->option1600x900->setVisible(true);
-	this->option1600x1024->setVisible(true);
-	this->option1920x1080->setVisible(true);
-	this->option2560x1440->setVisible(true);
-	this->option3840x2160->setVisible(true);
-}
-
-void OptionsMenu::hideResolutionOptions()
-{
-	this->label1080x768->setVisible(false);
-	this->label1152x864->setVisible(false);
-	this->label1280x720->setVisible(false);
-	this->label1280x960->setVisible(false);
-	this->label1280x1024->setVisible(false);
-	this->label1440x900->setVisible(false);
-	this->label1600x900->setVisible(false);
-	this->label1600x1024->setVisible(false);
-	this->label1920x1080->setVisible(false);
-	this->label2560x1440->setVisible(false);
-	this->label3840x2160->setVisible(false);
-
-	this->option1080x768->setVisible(false);
-	this->option1152x864->setVisible(false);
-	this->option1280x720->setVisible(false);
-	this->option1280x960->setVisible(false);
-	this->option1280x1024->setVisible(false);
-	this->option1440x900->setVisible(false);
-	this->option1600x900->setVisible(false);
-	this->option1600x1024->setVisible(false);
-	this->option1920x1080->setVisible(false);
-	this->option2560x1440->setVisible(false);
-	this->option3840x2160->setVisible(false);
 }

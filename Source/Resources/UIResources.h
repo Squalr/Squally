@@ -343,9 +343,17 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_CheckboxEmpty;
 	extern const std::string Menus_OptionsMenu_CheckboxHover;
 	extern const std::string Menus_OptionsMenu_CheckboxSelected;
+	extern const std::string Menus_OptionsMenu_IconChatBubble;
+	extern const std::string Menus_OptionsMenu_IconCogs;
+	extern const std::string Menus_OptionsMenu_IconCrown;
+	extern const std::string Menus_OptionsMenu_IconKey;
+	extern const std::string Menus_OptionsMenu_IconLightbulb;
+	extern const std::string Menus_OptionsMenu_IconShield;
+	extern const std::string Menus_OptionsMenu_IconTools;
+	extern const std::string Menus_OptionsMenu_IconTrophy;
+	extern const std::string Menus_OptionsMenu_IconWeapons;
 	extern const std::string Menus_OptionsMenu_MusicIcon;
 	extern const std::string Menus_OptionsMenu_OptionsMenu;
-	extern const std::string Menus_OptionsMenu_OptionsMenu_orginal;
 	extern const std::string Menus_OptionsMenu_RadioButtonEmpty;
 	extern const std::string Menus_OptionsMenu_RadioButtonHover;
 	extern const std::string Menus_OptionsMenu_RadioButtonSelected;
@@ -354,6 +362,8 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_SliderFill;
 	extern const std::string Menus_OptionsMenu_SliderFrame;
 	extern const std::string Menus_OptionsMenu_SoundIcon;
+	extern const std::string Menus_OptionsMenu_TabButton;
+	extern const std::string Menus_OptionsMenu_TabButtonSelected;
 	extern const std::string Menus_OptionsMenu_ToggleButtonOff;
 	extern const std::string Menus_OptionsMenu_ToggleButtonOffHover;
 	extern const std::string Menus_OptionsMenu_ToggleButtonOn;
