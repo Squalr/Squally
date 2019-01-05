@@ -457,6 +457,7 @@ const std::string UIResources::Menus_TitleScreen_TitleBar = "UI/Menus/TitleScree
 const std::string UIResources::Menus_TitleScreen_TitleButton = "UI/Menus/TitleScreen/TitleButton.png";
 const std::string UIResources::Menus_TitleScreen_TitleButtonClick = "UI/Menus/TitleScreen/TitleButtonClick.png";
 const std::string UIResources::Menus_TitleScreen_TitleButtonHover = "UI/Menus/TitleScreen/TitleButtonHover.png";
+const std::string UIResources::Menus_TranslateMenu_TranslateMenu = "UI/Menus/TranslateMenu/TranslateMenu.png";
 const std::string UIResources::Menus_TutorialMenu_Gem = "UI/Menus/TutorialMenu/Gem.png";
 const std::string UIResources::Menus_TutorialMenu_ObjectBox1 = "UI/Menus/TutorialMenu/ObjectBox1.png";
 const std::string UIResources::Menus_TutorialMenu_ObjectBox2 = "UI/Menus/TutorialMenu/ObjectBox2.png";

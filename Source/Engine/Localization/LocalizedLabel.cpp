@@ -55,7 +55,9 @@ void LocalizedLabel::onEnter()
 {
 	super::onEnter();
 
+	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
 	this->translationButton->setContentSize(this->getContentSize());
+	this->translationButton->setPosition(this->getContentSize()  / 2.0f);
 	this->translationButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
@@ -175,6 +177,18 @@ std::string LocalizedLabel::getFont()
 		{
 			return LocalizedLabel::getPixelFont();
 		}
+	}
+}
+
+void LocalizedLabel::toggleAllowTranslationEdit(bool allowTranslationEdit)
+{
+	if (allowTranslationEdit)
+	{
+		this->translationButton->enableInteraction();
+	}
+	else
+	{
+		this->translationButton->disableInteraction();
 	}
 }
 

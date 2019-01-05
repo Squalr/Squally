@@ -1101,6 +1101,11 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Resume.cpp
 	Source/Strings/Menus/Return.cpp
 	Source/Strings/Menus/StoryMode.cpp
+	Source/Strings/Menus/Submit.cpp
+	Source/Strings/Menus/TranslationEditor/CurrentTranslation.cpp
+	Source/Strings/Menus/TranslationEditor/NewTranslation.cpp
+	Source/Strings/Menus/TranslationEditor/OriginalTextInEnglish.cpp
+	Source/Strings/Menus/TranslationEditor/TranslationEditor.cpp
 	Source/Strings/Menus/Tutorials.cpp
 	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.cpp
 	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.cpp
@@ -2175,6 +2180,11 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Resume.h
 	Source/Strings/Menus/Return.h
 	Source/Strings/Menus/StoryMode.h
+	Source/Strings/Menus/Submit.h
+	Source/Strings/Menus/TranslationEditor/CurrentTranslation.h
+	Source/Strings/Menus/TranslationEditor/NewTranslation.h
+	Source/Strings/Menus/TranslationEditor/OriginalTextInEnglish.h
+	Source/Strings/Menus/TranslationEditor/TranslationEditor.h
 	Source/Strings/Menus/Tutorials.h
 	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.h
 	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.h
