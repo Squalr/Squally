@@ -49,5 +49,6 @@ private:
 	LocalizedString* editTarget;
 
 	static TranslationMenu* instance;
+	static const cocos2d::Size PreviousTranslationSize;
 	static const cocos2d::Size InputSize;
 };

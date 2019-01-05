@@ -28,6 +28,7 @@ using namespace cocos2d;
 using namespace cocos2d::ui;
 
 TranslationMenu* TranslationMenu::instance = nullptr;
+const cocos2d::Size TranslationMenu::PreviousTranslationSize = Size(480.0f, 0.0f);
 const cocos2d::Size TranslationMenu::InputSize = Size(512.0f, 512.0f);
 
 void TranslationMenu::registerGlobalNode()
@@ -56,9 +57,9 @@ TranslationMenu::TranslationMenu()
 	this->menuBackground = Sprite::create(UIResources::Menus_TranslateMenu_TranslateMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_TranslationEditor_TranslationEditor::create());
 	this->englishTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_OriginalTextInEnglish::create());
-	this->englishTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create(), Size(512.0f, 0.0f));
+	this->englishTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create(), TranslationMenu::PreviousTranslationSize);
 	this->nativeTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_CurrentTranslation::create());
-	this->oldTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create(), Size(512.0f, 0.0f));
+	this->oldTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create(), TranslationMenu::PreviousTranslationSize);
 	this->newTranslationTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_NewTranslation::create());
 	this->newTranslation = UICCTextField::create("", this->oldTranslation->getFont(), this->oldTranslation->getFontSize());
 
@@ -68,7 +69,11 @@ TranslationMenu::TranslationMenu()
 	this->newTranslation->enableWrap(true);
 	this->newTranslation->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->englishTranslation->setAlignment(TextHAlignment::LEFT);
+	this->englishTranslation->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->oldTranslation->setAlignment(TextHAlignment::LEFT);
+	this->oldTranslation->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->oldTranslation->setTextColor(Color4B::RED);
 
 	// Disallow editing anything on this page -- this is a bit too meta
 	this->title->toggleAllowTranslationEdit(false);
@@ -120,8 +125,8 @@ void TranslationMenu::initializePositions()
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
 	this->englishTitle->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f, visibleSize.height / 2.0f + 256.0f));
 	this->nativeTitle->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f, visibleSize.height / 2.0f - 48.0f));
-	this->englishTranslation->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f, visibleSize.height / 2.0f + 196.0f));
-	this->oldTranslation->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f, visibleSize.height / 2.0f - 112.0f));
+	this->englishTranslation->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f - TranslationMenu::PreviousTranslationSize.width / 2.0f, visibleSize.height / 2.0f + 212.0f));
+	this->oldTranslation->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f - TranslationMenu::PreviousTranslationSize.width / 2.0f, visibleSize.height / 2.0f - 88.0f));
 	this->newTranslationTitle->setPosition(Vec2(visibleSize.width / 2.0f + 272.0f, visibleSize.height / 2.0f + 256.0f));
 	this->newTranslation->setPosition(Vec2(visibleSize.width / 2.0f + 272.0f - TranslationMenu::InputSize.width / 2.0f, visibleSize.height / 2.0f + 212.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 348.0f));
@@ -175,7 +180,11 @@ void TranslationMenu::onCancelClick()
 
 void TranslationMenu::onSubmitClick()
 {
-	Analytics::sendEvent("TRANSLATION_EDIT", this->editTarget->getStringIdentifier(), this->newTranslation->getString(), (int)Localization::getLanguage());
+	if (this->editTarget != nullptr && this->oldTranslation->getString() != this->newTranslation->getString())
+	{
+		Analytics::sendEvent("TRANSLATION_EDIT", this->editTarget->getStringIdentifier(), this->newTranslation->getString(), (int)Localization::getLanguage());
+	}
+		
 	this->setVisible(false);
 	GameUtils::focus(this->previousFocus);
 }
