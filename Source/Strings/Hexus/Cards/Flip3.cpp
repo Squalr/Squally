@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Flip3::getStringIdentifier()
+	{
+		return "Hexus_Cards_Flip3";
+	}
+
 	std::string Hexus_Cards_Flip3::getStringAr()
 	{
 		return "قلب الجزء الثالث";

@@ -14,6 +14,7 @@ public:
 	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	void setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate);
+	virtual std::string getStringIdentifier() = 0;
 
 protected:
 	LocalizedString();

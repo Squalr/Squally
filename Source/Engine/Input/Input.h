@@ -32,5 +32,5 @@ private:
 	std::unordered_map<int, bool> pressedKeysPrevious;
 	std::unordered_map<int, bool> pressedKeys;
 
-	static Input * instance;
+	static Input* instance;
 };

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_OperandSizeMismatch";
+	}
+
 	std::string Menus_CodeEditor_Errors_OperandSizeMismatch::getStringAr()
 	{
 		return "عدم تطابق حجم المعامل";

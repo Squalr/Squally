@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidRegisterVirtualId";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidRegisterVirtualId::getStringAr()
 	{
 		return "معرف الظاهري غير صالح للتسجيل";

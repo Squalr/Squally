@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Cancel::getStringIdentifier()
+	{
+		return "Menus_Cancel";
+	}
+
 	std::string Menus_Cancel::getStringAr()
 	{
 		return "إلغاء";

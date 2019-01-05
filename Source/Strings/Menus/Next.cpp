@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Next::getStringIdentifier()
+	{
+		return "Menus_Next";
+	}
+
 	std::string Menus_Next::getStringAr()
 	{
 		return "التالى";

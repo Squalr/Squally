@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_ByteOverflow::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_ByteOverflow";
+	}
+
 	std::string Menus_CodeEditor_ByteOverflow::getStringAr()
 	{
 		return "تجاوز البايت! استخدم التوزيعات لكتابة المزيد من التجميع.";

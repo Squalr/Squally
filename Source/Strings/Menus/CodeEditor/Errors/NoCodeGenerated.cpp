@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_NoCodeGenerated";
+	}
+
 	std::string Menus_CodeEditor_Errors_NoCodeGenerated::getStringAr()
 	{
 		return "لا رمز ولدت";

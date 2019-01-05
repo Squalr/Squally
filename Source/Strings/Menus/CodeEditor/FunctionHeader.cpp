@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_FunctionHeader::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_FunctionHeader";
+	}
+
 	std::string Menus_CodeEditor_FunctionHeader::getStringAr()
 	{
 		return "وظيفة: %s";

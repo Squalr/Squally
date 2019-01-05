@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_Subtract::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_Subtract";
+	}
+
 	std::string Hexus_CardDescriptions_Subtract::getStringAr()
 	{
 		return "اختر واحدة من البطاقات واطرح قيمتها من بطاقة أخرى. يتم تخزين النتيجة في بطاقة الهدف.";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidArchitecture";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidArchitecture::getStringAr()
 	{
 		return "بنية غير صالحة";

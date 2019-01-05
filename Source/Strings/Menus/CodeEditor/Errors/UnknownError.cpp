@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_UnknownError::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_UnknownError";
+	}
+
 	std::string Menus_CodeEditor_Errors_UnknownError::getStringAr()
 	{
 		return "خطأ غير معروف";

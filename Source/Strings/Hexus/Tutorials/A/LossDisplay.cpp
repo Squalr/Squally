@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_LossDisplay::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_LossDisplay";
+	}
+
 	std::string Hexus_Tutorials_A_LossDisplay::getStringAr()
 	{
 		return "كل لاعب يبدأ اللعبة مع 2 حياة. اللاعب ذو الدرجة الأقل في نهاية الجولة سيفقد الحياة. في هذه اللعبة ، فقد كلا اللاعبين 1 الحياة.";

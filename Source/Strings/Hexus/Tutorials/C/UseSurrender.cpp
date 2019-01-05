@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_C_UseSurrender::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_C_UseSurrender";
+	}
+
 	std::string Hexus_Tutorials_C_UseSurrender::getStringAr()
 	{
 		return "الخيار الأفضل هو الاستسلام لهذه الجولة ، ومكافحة الجولة القادمة!";

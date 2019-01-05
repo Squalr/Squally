@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidLockPrefix";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidLockPrefix::getStringAr()
 	{
 		return "بادئة القفل غير صالحة";

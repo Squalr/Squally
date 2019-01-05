@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Back::getStringIdentifier()
+	{
+		return "Menus_Back";
+	}
+
 	std::string Menus_Back::getStringAr()
 	{
 		return "الى الخلف";

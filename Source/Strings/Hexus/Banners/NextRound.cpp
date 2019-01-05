@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_NextRound::getStringIdentifier()
+	{
+		return "Hexus_Banners_NextRound";
+	}
+
 	std::string Hexus_Banners_NextRound::getStringAr()
 	{
 		return "الجولة التالية!";

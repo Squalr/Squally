@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Status::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Status";
+	}
+
 	std::string Menus_CodeEditor_Status::getStringAr()
 	{
 		return "الحالة: ";

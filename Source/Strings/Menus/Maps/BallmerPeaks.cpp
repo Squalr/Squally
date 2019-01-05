@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_BallmerPeaks::getStringIdentifier()
+	{
+		return "Menus_Maps_BallmerPeaks";
+	}
+
 	std::string Menus_Maps_BallmerPeaks::getStringAr()
 	{
 		return "بالمر القمم";

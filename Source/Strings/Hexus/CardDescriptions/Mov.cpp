@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_Mov::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_Mov";
+	}
+
 	std::string Hexus_CardDescriptions_Mov::getStringAr()
 	{
 		return "اختر واحدة من بطاقاتك وانقل قيمتها إلى بطاقة أخرى.";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_RelocationIndexOverflow";
+	}
+
 	std::string Menus_CodeEditor_Errors_RelocationIndexOverflow::getStringAr()
 	{
 		return "تجاوز مؤشر إعادة التوزيع";

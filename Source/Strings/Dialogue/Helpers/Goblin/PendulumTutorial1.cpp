@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Dialogue_Helpers_Goblin_PendulumTutorial1::getStringIdentifier()
+	{
+		return "Dialogue_Helpers_Goblin_PendulumTutorial1";
+	}
+
 	std::string Dialogue_Helpers_Goblin_PendulumTutorial1::getStringAr()
 	{
 		return "يا طفل! لا يمكن أن نتمكن من الوصول إلى هنا. ستضطر إلى استخدام الصلاحيات الخاصة بك مرة أخرى.";

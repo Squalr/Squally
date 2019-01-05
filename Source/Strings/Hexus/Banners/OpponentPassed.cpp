@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_OpponentPassed::getStringIdentifier()
+	{
+		return "Hexus_Banners_OpponentPassed";
+	}
+
 	std::string Hexus_Banners_OpponentPassed::getStringAr()
 	{
 		return "مرت الخصم";

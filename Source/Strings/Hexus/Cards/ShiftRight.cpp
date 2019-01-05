@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_ShiftRight::getStringIdentifier()
+	{
+		return "Hexus_Cards_ShiftRight";
+	}
+
 	std::string Hexus_Cards_ShiftRight::getStringAr()
 	{
 		return "تحول بت الحق";

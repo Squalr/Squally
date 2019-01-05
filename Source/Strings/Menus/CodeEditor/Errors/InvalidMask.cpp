@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidMask::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidMask";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidMask::getStringAr()
 	{
 		return "قناع غير صالح ، متوقع %s";

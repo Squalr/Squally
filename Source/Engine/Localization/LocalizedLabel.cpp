@@ -7,6 +7,7 @@
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/UI/Controls/MenuSprite.h"
 
 #include "Resources/FontResources.h"
 
@@ -37,11 +38,13 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
+	this->translationButton = MenuSprite::create(Node::create(), Node::create());
 	this->localizedString = nullptr;
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
+	this->addChild(this->translationButton);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -51,6 +54,12 @@ LocalizedLabel::~LocalizedLabel()
 void LocalizedLabel::onEnter()
 {
 	super::onEnter();
+
+	this->translationButton->setContentSize(this->getContentSize());
+	this->translationButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*)
+	{
+		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
+	});
 }
 
 LocalizedLabel* LocalizedLabel::clone()

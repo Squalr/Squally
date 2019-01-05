@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_ManageCards::getStringIdentifier()
+	{
+		return "Hexus_ManageCards";
+	}
+
 	std::string Hexus_ManageCards::getStringAr()
 	{
 		return "إدارة البطاقات";

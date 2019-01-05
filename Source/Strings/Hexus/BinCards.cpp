@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_BinCards::getStringIdentifier()
+	{
+		return "Hexus_BinCards";
+	}
+
 	std::string Hexus_BinCards::getStringAr()
 	{
 		return "بطاقات ثنائية";

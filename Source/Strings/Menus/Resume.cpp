@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Resume::getStringIdentifier()
+	{
+		return "Menus_Resume";
+	}
+
 	std::string Menus_Resume::getStringAr()
 	{
 		return "استئنف";

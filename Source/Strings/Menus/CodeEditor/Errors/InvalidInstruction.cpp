@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidInstruction";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidInstruction::getStringAr()
 	{
 		return "تعليمات غير صالحة";

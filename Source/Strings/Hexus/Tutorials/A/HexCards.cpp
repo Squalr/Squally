@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_HexCards::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_HexCards";
+	}
+
 	std::string Hexus_Tutorials_A_HexCards::getStringAr()
 	{
 		return "البطاقات الخضراء هي بطاقات سداسية العشرية.";

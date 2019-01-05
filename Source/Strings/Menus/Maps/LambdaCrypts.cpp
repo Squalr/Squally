@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_LambdaCrypts::getStringIdentifier()
+	{
+		return "Menus_Maps_LambdaCrypts";
+	}
+
 	std::string Menus_Maps_LambdaCrypts::getStringAr()
 	{
 		return "الخبايا";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_GotIt::getStringIdentifier()
+	{
+		return "Menus_GotIt";
+	}
+
 	std::string Menus_GotIt::getStringAr()
 	{
 		return "أنا أفهم!";

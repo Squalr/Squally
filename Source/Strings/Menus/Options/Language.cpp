@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Options_Language::getStringIdentifier()
+	{
+		return "Menus_Options_Language";
+	}
+
 	std::string Menus_Options_Language::getStringAr()
 	{
 		return "لغة";

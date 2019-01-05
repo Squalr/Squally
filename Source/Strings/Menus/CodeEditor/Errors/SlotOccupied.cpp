@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_SlotOccupied";
+	}
+
 	std::string Menus_CodeEditor_Errors_SlotOccupied::getStringAr()
 	{
 		return "فتحة مشغولة";

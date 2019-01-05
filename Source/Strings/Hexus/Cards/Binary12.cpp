@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary12::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary12";
+	}
+
 	std::string Hexus_Cards_Binary12::getStringAr()
 	{
 		return "روح الشجرة";

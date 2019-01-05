@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardsInDeck::getStringIdentifier()
+	{
+		return "Hexus_CardsInDeck";
+	}
+
 	std::string Hexus_CardsInDeck::getStringAr()
 	{
 		return "بطاقات في الطابق";

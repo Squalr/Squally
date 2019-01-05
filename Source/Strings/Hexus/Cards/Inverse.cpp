@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Inverse::getStringIdentifier()
+	{
+		return "Hexus_Cards_Inverse";
+	}
+
 	std::string Hexus_Cards_Inverse::getStringAr()
 	{
 		return "بت عكسية";

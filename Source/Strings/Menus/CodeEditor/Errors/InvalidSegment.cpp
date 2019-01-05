@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidSegment";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidSegment::getStringAr()
 	{
 		return "شريحة غير صالحة";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_UnfilledBytes::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_UnfilledBytes";
+	}
+
 	std::string Menus_CodeEditor_UnfilledBytes::getStringAr()
 	{
 		return "سيتم ملء وحدات بايت غير معبأة بتعليمات NOP ، التي لا تفعل شيئًا.";

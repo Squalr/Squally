@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_BinStorm::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_BinStorm";
+	}
+
 	std::string Hexus_CardDescriptions_BinStorm::getStringAr()
 	{
 		return "عاصفة ثنائية";

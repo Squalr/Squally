@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_RowTotals::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_RowTotals";
+	}
+
 	std::string Hexus_Tutorials_A_RowTotals::getStringAr()
 	{
 		return "زيادة درجاتك عن طريق لعب الورق على الصفوف.";

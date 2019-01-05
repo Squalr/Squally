@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidDisplacement";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidDisplacement::getStringAr()
 	{
 		return "النزوح غير صالح";

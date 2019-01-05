@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_LogicalAnd::getStringIdentifier()
+	{
+		return "Hexus_Cards_LogicalAnd";
+	}
+
 	std::string Hexus_Cards_LogicalAnd::getStringAr()
 	{
 		return "منطقي و";

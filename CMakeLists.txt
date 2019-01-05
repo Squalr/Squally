@@ -104,6 +104,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Localization/Localization.cpp
 	Source/Engine/Localization/LocalizedLabel.cpp
 	Source/Engine/Localization/LocalizedString.cpp
+	Source/Engine/Localization/TranslationMenu.cpp
 	Source/Engine/Maps/Backgrounds/Background.cpp
 	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.cpp
 	Source/Engine/Maps/MapLoader.cpp
@@ -1153,6 +1154,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Localization/Localization.h
 	Source/Engine/Localization/LocalizedLabel.h
 	Source/Engine/Localization/LocalizedString.h
+	Source/Engine/Localization/TranslationMenu.h
 	Source/Engine/Maps/Backgrounds/Background.h
 	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.h
 	Source/Engine/Maps/MapLoader.h

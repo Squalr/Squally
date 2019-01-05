@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Debugging_CameraY::getStringIdentifier()
+	{
+		return "Debugging_CameraY";
+	}
+
 	std::string Debugging_CameraY::getStringAr()
 	{
 		return "Camera Y: %s";

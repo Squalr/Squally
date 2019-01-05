@@ -4,6 +4,7 @@
 #include "cocos/2d/CCLabel.h"
 
 class LocalizedString;
+class MenuSprite;
 
 class LocalizedLabel : public cocos2d::Label
 {
@@ -78,6 +79,7 @@ private:
 	std::string getMonospacedFont();
 	std::string getCodingFont();
 
+	MenuSprite* translationButton;
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_ClaimVictory::getStringIdentifier()
+	{
+		return "Hexus_ClaimVictory";
+	}
+
 	std::string Hexus_ClaimVictory::getStringAr()
 	{
 		return "المطالبة النصر";

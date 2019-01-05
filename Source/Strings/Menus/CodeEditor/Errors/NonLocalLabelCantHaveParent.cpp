@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent";
+	}
+
 	std::string Menus_CodeEditor_Errors_NonLocalLabelCantHaveParent::getStringAr()
 	{
 		return "لا يمكن أن يكون للمعلمة غير المحلية ولي الأمر";

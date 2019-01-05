@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_Empty::getStringIdentifier()
+	{
+		return "Generics_Empty";
+	}
+
 	std::string Generics_Empty::getStringAr()
 	{
 		return "";

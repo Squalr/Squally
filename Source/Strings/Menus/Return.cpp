@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Return::getStringIdentifier()
+	{
+		return "Menus_Return";
+	}
+
 	std::string Menus_Return::getStringAr()
 	{
 		return "إرجاع";

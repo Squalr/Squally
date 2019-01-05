@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_D_UseShiftRight::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_D_UseShiftRight";
+	}
+
 	std::string Hexus_Tutorials_D_UseShiftRight::getStringAr()
 	{
 		return "تؤثر بطاقة 'SHR' على جميع البطاقات في صف واحد ، مما يقلل من هجومهم إلى النصف! استخدمها ضد عدوك!";

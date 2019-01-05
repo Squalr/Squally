@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_DecStorm::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_DecStorm";
+	}
+
 	std::string Hexus_CardDescriptions_DecStorm::getStringAr()
 	{
 		return "العاصفة العشرية";

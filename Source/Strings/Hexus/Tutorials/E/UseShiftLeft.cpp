@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_E_UseShiftLeft::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_E_UseShiftLeft";
+	}
+
 	std::string Hexus_Tutorials_E_UseShiftLeft::getStringAr()
 	{
 		return "بطاقة 'SHL' تجعل كل البطاقات الضعيفة في صف أقوى! استخدم هذا لجعل بطاقاتك أكثر قوة! كن حذرا ، الترتيب الذي تلعب به بطاقاتك يهم!";
