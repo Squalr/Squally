@@ -458,6 +458,7 @@ namespace UIResources
 	extern const std::string Menus_TitleScreen_TitleButton;
 	extern const std::string Menus_TitleScreen_TitleButtonClick;
 	extern const std::string Menus_TitleScreen_TitleButtonHover;
+	extern const std::string Menus_TranslateMenu_TranslateMenu;
 	extern const std::string Menus_TutorialMenu_Gem;
 	extern const std::string Menus_TutorialMenu_ObjectBox1;
 	extern const std::string Menus_TutorialMenu_ObjectBox2;

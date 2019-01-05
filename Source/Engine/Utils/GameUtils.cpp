@@ -6,8 +6,6 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 #include "cocos/platform/CCFileUtils.h"
 
-#include "StrUtils.h"
-
 using namespace cocos2d;
 
 // A better pause function that pauses recursively
@@ -61,6 +59,46 @@ void GameUtils::resume(Node *node)
 void GameUtils::resumeAll()
 {
 	GameUtils::resume(Director::getInstance()->getRunningScene());
+}
+
+Node* GameUtils::getFocusedNode()
+{
+	Node* root = Director::getInstance()->getRunningScene();
+	std::function<Node*(Node*)> findUnpausedNodeRecursive;
+
+	findUnpausedNodeRecursive = [=](Node* target)
+	{
+		Node* result = nullptr;
+
+		if (!target->isPaused())
+		{
+			return target;
+		}
+
+		// Check immediate children first (BFS)
+		for (const auto &child : target->getChildren())
+		{
+			if (!child->isPaused())
+			{
+				return child;
+			}
+		}
+
+		// Recurse if nothing found
+		for (const auto &child : target->getChildren())
+		{
+			result = findUnpausedNodeRecursive(child);
+
+			if (result != nullptr)
+			{
+				return result;
+			}
+		}
+
+		return result;
+	};
+
+	return findUnpausedNodeRecursive(root);
 }
 
 bool GameUtils::isFocused(Node *node)

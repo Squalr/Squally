@@ -45,6 +45,7 @@ public:
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	float getFontSize();
 	std::string getFont();
+	void toggleAllowTranslationEdit(bool allowTranslationEdit);
 
 private:
 	typedef cocos2d::Label super;
