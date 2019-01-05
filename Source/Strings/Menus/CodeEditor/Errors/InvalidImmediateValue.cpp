@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidImmediateValue";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidImmediateValue::getStringAr()
 	{
 		return "قيمة فورية غير صالحة";

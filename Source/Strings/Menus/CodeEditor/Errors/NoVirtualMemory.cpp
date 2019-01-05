@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_NoVirtualMemory";
+	}
+
 	std::string Menus_CodeEditor_Errors_NoVirtualMemory::getStringAr()
 	{
 		return "لا توجد ذاكرة افتراضية";

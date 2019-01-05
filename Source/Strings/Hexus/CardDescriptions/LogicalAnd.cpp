@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_LogicalAnd::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_LogicalAnd";
+	}
+
 	std::string Hexus_CardDescriptions_LogicalAnd::getStringAr()
 	{
 		return "اختر واحدة من البطاقات الخاصة بك وأداء منطقي وقيمة مقابل مع بطاقة أخرى. يتم تخزين قيمة النتيجة في البطاقة الهدف.";

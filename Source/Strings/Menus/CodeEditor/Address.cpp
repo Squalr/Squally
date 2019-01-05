@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Address::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Address";
+	}
+
 	std::string Menus_CodeEditor_Address::getStringAr()
 	{
 		return "عنوان: ";

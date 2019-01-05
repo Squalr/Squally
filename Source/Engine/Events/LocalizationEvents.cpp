@@ -7,6 +7,7 @@ using namespace cocos2d;
 
 const std::string LocalizationEvents::BeforeLocaleChangeEvent = "EVENT_BEFORE_LOCALE_CHANGE";
 const std::string LocalizationEvents::LocaleChangeEvent = "EVENT_LOCALE_CHANGE";
+const std::string LocalizationEvents::TranslationBeginEdit = "EVENT_BEGIN_EDIT";
 
 void LocalizationEvents::TriggerLocaleChange(LocaleChangeArgs args)
 {
@@ -16,6 +17,14 @@ void LocalizationEvents::TriggerLocaleChange(LocaleChangeArgs args)
 	);
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		LocalizationEvents::LocaleChangeEvent,
+		&args
+	);
+}
+
+void LocalizationEvents::TriggerTranslationBeginEdit(TranslationBeginEditArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		LocalizationEvents::TranslationBeginEdit,
 		&args
 	);
 }

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_C_NotEnoughToWin";
+	}
+
 	std::string Hexus_Tutorials_C_NotEnoughToWin::getStringAr()
 	{
 		return "لن تكون بطاقاتك كافية للفوز بهذه الجولة!";

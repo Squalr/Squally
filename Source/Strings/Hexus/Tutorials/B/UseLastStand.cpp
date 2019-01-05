@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_B_UseLastStand::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_B_UseLastStand";
+	}
+
 	std::string Hexus_Tutorials_B_UseLastStand::getStringAr()
 	{
 		return "أفضل خيار هو أن تدافع عن نفسك ببساطة حتى الجولة القادمة!";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidOperandSize";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidOperandSize::getStringAr()
 	{
 		return "حجم المعامل غير صالح";

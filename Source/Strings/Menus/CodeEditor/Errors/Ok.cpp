@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_Ok::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_Ok";
+	}
+
 	std::string Menus_CodeEditor_Errors_Ok::getStringAr()
 	{
 		return "حسنا";

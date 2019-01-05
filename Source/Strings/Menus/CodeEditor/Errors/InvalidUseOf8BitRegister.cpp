@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidUseOf8BitRegister::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidUseOf8BitRegister";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidUseOf8BitRegister::getStringAr()
 	{
 		return "استخدام غير صالح لسجل 8 بت منخفض";

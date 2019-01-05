@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_LogicalXor::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_LogicalXor";
+	}
+
 	std::string Hexus_CardDescriptions_LogicalXor::getStringAr()
 	{
 		return "اختر واحدة من البطاقات الخاصة بك وقم بإجراء XOR منطقي مقابل القيمة ببطاقة أخرى. يتم تخزين قيمة النتيجة في البطاقة الهدف.";

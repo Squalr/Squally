@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidRegisterType::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidRegisterType";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidRegisterType::getStringAr()
 	{
 		return "نوع التسجيل غير صالح";

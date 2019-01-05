@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_BinLabel::getStringIdentifier()
+	{
+		return "Hexus_BinLabel";
+	}
+
 	std::string Hexus_BinLabel::getStringAr()
 	{
 		return "BIN: %s";

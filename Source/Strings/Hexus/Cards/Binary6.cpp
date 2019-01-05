@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary6::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary6";
+	}
+
 	std::string Hexus_Cards_Binary6::getStringAr()
 	{
 		return "إنسان آلي";

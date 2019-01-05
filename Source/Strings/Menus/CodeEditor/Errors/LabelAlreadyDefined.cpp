@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_LabelAlreadyDefined";
+	}
+
 	std::string Menus_CodeEditor_Errors_LabelAlreadyDefined::getStringAr()
 	{
 		return "التسمية محددة بالفعل";

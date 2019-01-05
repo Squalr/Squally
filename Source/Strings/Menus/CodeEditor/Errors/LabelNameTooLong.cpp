@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_LabelNameTooLong";
+	}
+
 	std::string Menus_CodeEditor_Errors_LabelNameTooLong::getStringAr()
 	{
 		return "اسم العلامة طويل للغاية";

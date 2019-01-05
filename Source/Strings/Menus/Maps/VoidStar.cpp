@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_VoidStar::getStringIdentifier()
+	{
+		return "Menus_Maps_VoidStar";
+	}
+
 	std::string Menus_Maps_VoidStar::getStringAr()
 	{
 		return "نجم الفراغ";

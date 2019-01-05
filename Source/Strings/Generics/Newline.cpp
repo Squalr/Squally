@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_Newline::getStringIdentifier()
+	{
+		return "Generics_Newline";
+	}
+
 	std::string Generics_Newline::getStringAr()
 	{
 		return "\n";

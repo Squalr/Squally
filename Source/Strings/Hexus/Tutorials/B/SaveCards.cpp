@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_B_SaveCards::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_B_SaveCards";
+	}
+
 	std::string Hexus_Tutorials_B_SaveCards::getStringAr()
 	{
 		return "لقد خسر الخصم 2 أرواح ، لذا فزت بالمباراة!";

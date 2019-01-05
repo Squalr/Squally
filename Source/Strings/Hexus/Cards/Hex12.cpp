@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Hex12::getStringIdentifier()
+	{
+		return "Hexus_Cards_Hex12";
+	}
+
 	std::string Hexus_Cards_Hex12::getStringAr()
 	{
 		return "الكابتن الهيكل العظمي";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Options_VideoOptions::getStringIdentifier()
+	{
+		return "Menus_Options_VideoOptions";
+	}
+
 	std::string Menus_Options_VideoOptions::getStringAr()
 	{
 		return "خيارات الفيديو";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_CodeTooLarge";
+	}
+
 	std::string Menus_CodeEditor_Errors_CodeTooLarge::getStringAr()
 	{
 		return "الرمز كبير جدًا";

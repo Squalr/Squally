@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_NativeLanguage::getStringIdentifier()
+	{
+		return "Generics_NativeLanguage";
+	}
+
 	std::string Generics_NativeLanguage::getStringAr()
 	{
 		return "عربى";

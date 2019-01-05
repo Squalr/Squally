@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidXAquirePrefix";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidXAquirePrefix::getStringAr()
 	{
 		return "Invalid اكتسب البادئة";

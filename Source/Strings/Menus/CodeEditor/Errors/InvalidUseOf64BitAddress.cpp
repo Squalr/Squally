@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidUseOf64BitAddress";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitAddress::getStringAr()
 	{
 		return "استخدام غير صالح لعنوان 64 بت";

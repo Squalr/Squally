@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_CompileErrors::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_CompileErrors";
+	}
+
 	std::string Menus_CodeEditor_CompileErrors::getStringAr()
 	{
 		return "تجميع الأخطاء";

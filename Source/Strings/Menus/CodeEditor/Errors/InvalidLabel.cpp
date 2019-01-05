@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidLabel";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidLabel::getStringAr()
 	{
 		return "تصنيف غير صالح";

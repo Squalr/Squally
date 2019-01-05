@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_B_ScoreLead::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_B_ScoreLead";
+	}
+
 	std::string Hexus_Tutorials_B_ScoreLead::getStringAr()
 	{
 		return "لديك بالفعل تقدم كبير على خصمك.";

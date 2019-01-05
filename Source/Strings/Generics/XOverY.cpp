@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_XOverY::getStringIdentifier()
+	{
+		return "Generics_XOverY";
+	}
+
 	std::string Generics_XOverY::getStringAr()
 	{
 		return "%s / %s";

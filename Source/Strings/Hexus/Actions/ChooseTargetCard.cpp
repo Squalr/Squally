@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Actions_ChooseTargetCard::getStringIdentifier()
+	{
+		return "Hexus_Actions_ChooseTargetCard";
+	}
+
 	std::string Hexus_Actions_ChooseTargetCard::getStringAr()
 	{
 		return "اختر بطاقة مستهدفة.";

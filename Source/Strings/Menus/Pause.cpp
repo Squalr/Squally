@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Pause::getStringIdentifier()
+	{
+		return "Menus_Pause";
+	}
+
 	std::string Menus_Pause::getStringAr()
 	{
 		return "وقفة";

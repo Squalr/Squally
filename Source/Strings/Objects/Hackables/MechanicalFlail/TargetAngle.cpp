@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Objects_Hackables_MechanicalFlail_TargetAngle::getStringIdentifier()
+	{
+		return "Objects_Hackables_MechanicalFlail_TargetAngle";
+	}
+
 	std::string Objects_Hackables_MechanicalFlail_TargetAngle::getStringAr()
 	{
 		return "تعيين الهدف زاوية";

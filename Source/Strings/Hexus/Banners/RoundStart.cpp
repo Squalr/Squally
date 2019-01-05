@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_RoundStart::getStringIdentifier()
+	{
+		return "Hexus_Banners_RoundStart";
+	}
+
 	std::string Hexus_Banners_RoundStart::getStringAr()
 	{
 		return "بداية مستديرة!";

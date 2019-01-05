@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Clear::getStringIdentifier()
+	{
+		return "Hexus_Cards_Clear";
+	}
+
 	std::string Hexus_Cards_Clear::getStringAr()
 	{
 		return "واضح";

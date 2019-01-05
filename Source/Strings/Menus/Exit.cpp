@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Exit::getStringIdentifier()
+	{
+		return "Menus_Exit";
+	}
+
 	std::string Menus_Exit::getStringAr()
 	{
 		return "ىخرج";

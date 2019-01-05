@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_EndianForest::getStringIdentifier()
+	{
+		return "Menus_Maps_EndianForest";
+	}
+
 	std::string Menus_Maps_EndianForest::getStringAr()
 	{
 		return "الغابة";

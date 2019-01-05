@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary10::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary10";
+	}
+
 	std::string Hexus_Cards_Binary10::getStringAr()
 	{
 		return "فرس النبي";

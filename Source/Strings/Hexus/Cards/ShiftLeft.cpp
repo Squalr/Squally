@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_ShiftLeft::getStringIdentifier()
+	{
+		return "Hexus_Cards_ShiftLeft";
+	}
+
 	std::string Hexus_Cards_ShiftLeft::getStringAr()
 	{
 		return "تركت بت القطع";

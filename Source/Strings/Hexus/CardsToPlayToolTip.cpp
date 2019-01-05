@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardsToPlayToolTip::getStringIdentifier()
+	{
+		return "Hexus_CardsToPlayToolTip";
+	}
+
 	std::string Hexus_CardsToPlayToolTip::getStringAr()
 	{
 		return "عدد البطاقات التي يمكن تشغيلها هذا المنعطف";

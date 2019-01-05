@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_CompileSuccessful::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_CompileSuccessful";
+	}
+
 	std::string Menus_CodeEditor_CompileSuccessful::getStringAr()
 	{
 		return "ترجمة ناجحة";

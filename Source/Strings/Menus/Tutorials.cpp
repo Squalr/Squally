@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Tutorials::getStringIdentifier()
+	{
+		return "Menus_Tutorials";
+	}
+
 	std::string Menus_Tutorials::getStringAr()
 	{
 		return "دروس";

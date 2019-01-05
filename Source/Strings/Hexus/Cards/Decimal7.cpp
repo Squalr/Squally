@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Decimal7::getStringIdentifier()
+	{
+		return "Hexus_Cards_Decimal7";
+	}
+
 	std::string Hexus_Cards_Decimal7::getStringAr()
 	{
 		return "جاكس";

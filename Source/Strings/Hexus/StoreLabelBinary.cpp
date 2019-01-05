@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_StoreLabelBinary::getStringIdentifier()
+	{
+		return "Hexus_StoreLabelBinary";
+	}
+
 	std::string Hexus_StoreLabelBinary::getStringAr()
 	{
 		return "1111";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_FeatureNotEnabled";
+	}
+
 	std::string Menus_CodeEditor_Errors_FeatureNotEnabled::getStringAr()
 	{
 		return "الميزة غير ممكّنة";

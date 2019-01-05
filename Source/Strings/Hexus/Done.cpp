@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Done::getStringIdentifier()
+	{
+		return "Hexus_Done";
+	}
+
 	std::string Hexus_Done::getStringAr()
 	{
 		return "فعله";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_DrawToolTip::getStringIdentifier()
+	{
+		return "Hexus_DrawToolTip";
+	}
+
 	std::string Hexus_DrawToolTip::getStringAr()
 	{
 		return "عدد البطاقات التي سيتم رسمها في الجولة التالية";

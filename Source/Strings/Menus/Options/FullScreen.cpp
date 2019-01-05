@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Options_FullScreen::getStringIdentifier()
+	{
+		return "Menus_Options_FullScreen";
+	}
+
 	std::string Menus_Options_FullScreen::getStringAr()
 	{
 		return "شاشة كاملة";

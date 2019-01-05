@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_StoreLabelDecimal::getStringIdentifier()
+	{
+		return "Hexus_StoreLabelDecimal";
+	}
+
 	std::string Hexus_StoreLabelDecimal::getStringAr()
 	{
 		return "15";

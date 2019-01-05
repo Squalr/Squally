@@ -34,6 +34,11 @@ void ConstantString::setString(std::string newString)
 	}
 }
 
+std::string ConstantString::getStringIdentifier()
+{
+	return "ConstantString";
+}
+
 std::string ConstantString::getStringAr()
 {
 	return this->constantString;
