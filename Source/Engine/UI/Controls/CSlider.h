@@ -4,7 +4,7 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Events/MouseEvents.h"
 
-class MenuSprite;
+class ClickableNode;
 
 namespace cocos2d
 {
@@ -27,12 +27,12 @@ protected:
 
 private:
 	typedef SmartNode super;
-	void onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args);
+	void onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args);
 	void setProgress(float newProgress);
 
-	MenuSprite* slide;
+	ClickableNode* slide;
 	cocos2d::Sprite* frame;
-	MenuSprite* progressBar;
+	ClickableNode* progressBar;
 	cocos2d::ClippingRectangleNode* progressClip;
 
 	float progress;

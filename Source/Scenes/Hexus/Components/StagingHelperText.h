@@ -3,7 +3,7 @@
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class StagingHelperText : public ComponentBase
 {
@@ -21,13 +21,13 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void updateSelectionStatus(GameState* gameState);
-	void onHelpClick(MenuSprite* menuSprite, GameState* gameState);
+	void onHelpClick(ClickableNode* menuSprite, GameState* gameState);
 	void updateCombineStatus(GameState* gameState);
-	void onSelectionCancel(MenuSprite* menuSprite, GameState* gameState);
-	void onCombineCancel(MenuSprite* menuSprite, GameState* gameState);
+	void onSelectionCancel(ClickableNode* menuSprite, GameState* gameState);
+	void onCombineCancel(ClickableNode* menuSprite, GameState* gameState);
 	void clearSelectionStatus();
 
 	LocalizedLabel* selectionLabel;
-	MenuSprite* cancelButton;
-	MenuSprite* helpButton;
+	ClickableNode* cancelButton;
+	ClickableNode* helpButton;
 };

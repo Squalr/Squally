@@ -5,11 +5,11 @@
 
 #include "Analytics/AnalyticsCategories.h"
 #include "Engine/Analytics/Analytics.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Config.h"
 
@@ -37,7 +37,7 @@ StateGameEnd::StateGameEnd() : StateBase(GameState::StateType::GameEnd)
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
@@ -72,7 +72,7 @@ void StateGameEnd::initializePositions()
 	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
-void StateGameEnd::onBackClick(MenuSprite* menuSprite, GameState* gameState)
+void StateGameEnd::onBackClick(ClickableNode* menuSprite, GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::EmptyState);
 

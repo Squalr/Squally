@@ -5,9 +5,9 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Options/GeneralTab.h"
 #include "Menus/Options/LanguageTab.h"
@@ -41,7 +41,7 @@ OptionsMenu::OptionsMenu()
 
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
-	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton2, UIResources::Menus_Buttons_CloseButton2Select);
+	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton2, UIResources::Menus_Buttons_CloseButton2Select);
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
 	this->generalTab = GeneralTab::create();
@@ -52,7 +52,7 @@ OptionsMenu::OptionsMenu()
 	LocalizedLabel*	generalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
 	LocalizedLabel*	generalLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
 
-	this->generalTabButton = TextMenuSprite::create(generalLabel, generalLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->generalTabButton = ClickableTextNode::create(generalLabel, generalLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
 	this->generalTabButton->setTextOffset(Vec2(32.0f, 0.0f));
 
 	Sprite* generalSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconLightbulb);
@@ -63,7 +63,7 @@ OptionsMenu::OptionsMenu()
 	LocalizedLabel*	videoLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_VideoOptions::create());
 	LocalizedLabel*	videoLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_VideoOptions::create());
 
-	this->videoTabButton = TextMenuSprite::create(videoLabel, videoLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->videoTabButton = ClickableTextNode::create(videoLabel, videoLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
 	this->videoTabButton->setTextOffset(Vec2(32.0f, 0.0f));
 
 	Sprite* videoSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconCogs);
@@ -74,7 +74,7 @@ OptionsMenu::OptionsMenu()
 	LocalizedLabel*	languageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Language::create());
 	LocalizedLabel*	languageLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Language::create());
 
-	this->languageTabButton = TextMenuSprite::create(languageLabel, languageLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->languageTabButton = ClickableTextNode::create(languageLabel, languageLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
 	this->languageTabButton->setTextOffset(Vec2(32.0f, 0.0f));
 
 	Sprite* languageSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconChatBubble);
@@ -94,7 +94,7 @@ OptionsMenu::OptionsMenu()
 	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	cancelLabelHover->enableGlow(Color4B::ORANGE);
 
-	this->cancelButton = TextMenuSprite::create(
+	this->cancelButton = ClickableTextNode::create(
 		cancelLabel,
 		cancelLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -110,7 +110,7 @@ OptionsMenu::OptionsMenu()
 	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
-	this->returnButton = TextMenuSprite::create(
+	this->returnButton = ClickableTextNode::create(
 		returnLabel,
 		returnLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -158,12 +158,12 @@ void OptionsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cancelButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
-	this->returnButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->closeButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->generalTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
-	this->videoTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
-	this->languageTabButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
+	this->cancelButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
+	this->returnButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->closeButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->generalTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
+	this->videoTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
+	this->languageTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

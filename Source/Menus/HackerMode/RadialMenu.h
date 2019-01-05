@@ -15,7 +15,7 @@ class CodeEditor;
 class HackableCode;
 class HackableData;
 class HackableObject;
-class MenuSprite;
+class ClickableNode;
 
 class RadialMenu : public SmartNode
 {

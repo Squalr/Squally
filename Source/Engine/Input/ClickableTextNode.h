@@ -1,7 +1,6 @@
 #pragma once
-#include "cocos/math/Vec2.h"
 
-#include "MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 
 namespace cocos2d
 {
@@ -9,20 +8,20 @@ namespace cocos2d
 	class Node;
 }
 
-class TextMenuSprite : public MenuSprite
+class ClickableTextNode : public ClickableNode
 {
 public:
-	static TextMenuSprite * create(
+	static ClickableTextNode * create(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel,
 		std::string spriteNormal,
 		std::string spriteSelectedResource);
-	static TextMenuSprite * create(
+	static ClickableTextNode * create(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel,
 		cocos2d::Node* spriteNormal,
 		std::string spriteSelectedResource);
-	static TextMenuSprite * create(
+	static ClickableTextNode * create(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel, 
 		cocos2d::Node* nodeNormal,
@@ -31,12 +30,12 @@ public:
 	void setTextOffset(cocos2d::Vec2 offset);
 
 protected:
-	TextMenuSprite(
+	ClickableTextNode(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel,
 		cocos2d::Node* nodeNormal,
 		cocos2d::Node* nodeSelected);
-	virtual ~TextMenuSprite();
+	virtual ~ClickableTextNode();
 
 	cocos2d::Label* normalContentLabel;
 	cocos2d::Label* selectedContentLabel;
@@ -44,5 +43,5 @@ protected:
 	cocos2d::Node* selectedContent;
 
 private:
-	typedef MenuSprite super;
+	typedef ClickableNode super;
 };

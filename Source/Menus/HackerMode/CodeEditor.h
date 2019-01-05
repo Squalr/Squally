@@ -13,8 +13,8 @@ namespace cocos2d
 
 class HackableCode;
 class MenuLabel;
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 class TextWindow;
 
 class CodeEditor : public SmartNode
@@ -38,8 +38,8 @@ private:
 	void onFunctionTextUpdate(std::string text);
 	void onAllocationTextUpdate(std::string text);
 	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>&);
-	void onAccept(MenuSprite* menuSprite);
-	void onCancel(MenuSprite* menuSprite);
+	void onAccept(ClickableNode* menuSprite);
+	void onCancel(ClickableNode* menuSprite);
 
 	cocos2d::Sprite* codeEditorBackground;
 
@@ -48,8 +48,8 @@ private:
 	EditableTextWindow* functionWindow;
 	EditableTextWindow* secondaryWindow;
 
-	TextMenuSprite* cancelButton;
-	TextMenuSprite* acceptButton;
+	ClickableTextNode* cancelButton;
+	ClickableTextNode* acceptButton;
 	cocos2d::Node* acceptButtonGrayed;
 
 	HackableCode* activeHackableCode;

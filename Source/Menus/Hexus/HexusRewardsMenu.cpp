@@ -5,11 +5,11 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NavigationEvents.h"
@@ -58,7 +58,7 @@ HexusRewardsMenu::HexusRewardsMenu()
 	returnButtonLabel->enableOutline(Color4B::BLACK, 3);
 	returnButtonLabelHover->enableOutline(Color4B::BLACK, 3);
 
-	this->returnButton = TextMenuSprite::create(
+	this->returnButton = ClickableTextNode::create(
 		returnButtonLabel,
 		returnButtonLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
@@ -151,7 +151,7 @@ void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
 	}, interval, ticks, delay, HexusRewardsMenu::KeyScheduleHexusGoldTick);
 }
 
-void HexusRewardsMenu::onReturnClick(MenuSprite* menuSprite)
+void HexusRewardsMenu::onReturnClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack(2);
 }

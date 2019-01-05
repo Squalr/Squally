@@ -5,8 +5,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
@@ -37,10 +37,10 @@ StagingHelperText::StagingHelperText()
 	this->selectionLabel->enableOutline(Color4B::BLACK, 2);
 	this->selectionLabel->setDimensions(Config::statusLabelWidth - 48.0f, 0.0f);
 
-	this->cancelButton = MenuSprite::create(UIResources::Menus_Buttons_CancelV2Button, UIResources::Menus_Buttons_CancelV2ButtonHover);
+	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelV2Button, UIResources::Menus_Buttons_CancelV2ButtonHover);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->helpButton = MenuSprite::create(UIResources::Menus_Buttons_GraphV2Button, UIResources::Menus_Buttons_GraphV2ButtonHover);
+	this->helpButton = ClickableNode::create(UIResources::Menus_Buttons_GraphV2Button, UIResources::Menus_Buttons_GraphV2ButtonHover);
 	this->helpButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->addChild(this->selectionLabel);
@@ -105,7 +105,7 @@ void StagingHelperText::onAnyStateChange(GameState* gameState)
 	}
 }
 
-void StagingHelperText::onSelectionCancel(MenuSprite* menuSprite, GameState* gameState)
+void StagingHelperText::onSelectionCancel(ClickableNode* menuSprite, GameState* gameState)
 {
 	if (gameState->selectedHandCard != nullptr)
 	{
@@ -185,7 +185,7 @@ void StagingHelperText::clearSelectionStatus()
 	this->helpButton->disableInteraction();
 }
 
-void StagingHelperText::onCombineCancel(MenuSprite* menuSprite, GameState* gameState)
+void StagingHelperText::onCombineCancel(ClickableNode* menuSprite, GameState* gameState)
 {
 	if (gameState->selectedSourceCard != nullptr)
 	{
@@ -204,7 +204,7 @@ void StagingHelperText::onCombineCancel(MenuSprite* menuSprite, GameState* gameS
 	GameState::updateState(gameState, GameState::StateType::Neutral);
 }
 
-void StagingHelperText::onHelpClick(MenuSprite* menuSprite, GameState* gameState)
+void StagingHelperText::onHelpClick(ClickableNode* menuSprite, GameState* gameState)
 {
 	// TODO: Show help menu for the type
 	switch (gameState->selectedHandCard->cardData->cardType)

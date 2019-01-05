@@ -5,9 +5,9 @@
 #include "cocos/base/CCEventDispatcher.h"
 
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 
 #include "Resources/FontResources.h"
 
@@ -38,8 +38,10 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->translationButton = MenuSprite::create(Node::create(), Node::create());
+	this->translationButton = ClickableNode::create(Node::create(), Node::create());
 	this->localizedString = nullptr;
+
+	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
@@ -58,7 +60,7 @@ void LocalizedLabel::onEnter()
 	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
 	this->translationButton->setContentSize(this->getContentSize());
 	this->translationButton->setPosition(this->getContentSize()  / 2.0f);
-	this->translationButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*)
+	this->translationButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
 	});

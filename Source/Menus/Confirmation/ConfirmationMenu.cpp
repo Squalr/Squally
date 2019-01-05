@@ -4,10 +4,8 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 
@@ -31,9 +29,9 @@ ConfirmationMenu::ConfirmationMenu()
 	this->onCancelCallback = nullptr;
 
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenuWindow);
-	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->cancelButton = MenuSprite::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
-	this->confirmButton = MenuSprite::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
+	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
+	this->confirmButton = ClickableNode::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 	this->confirmationLabel = nullptr;
 
@@ -131,7 +129,7 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	}
 }
 
-void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
+void ConfirmationMenu::onCloseClick(ClickableNode* menuSprite)
 {
 	if (this->onCancelCallback != nullptr)
 	{
@@ -139,7 +137,7 @@ void ConfirmationMenu::onCloseClick(MenuSprite* menuSprite)
 	}
 }
 
-void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
+void ConfirmationMenu::onCancelClick(ClickableNode* menuSprite)
 {
 	if (this->onCancelCallback != nullptr)
 	{
@@ -147,7 +145,7 @@ void ConfirmationMenu::onCancelClick(MenuSprite* menuSprite)
 	}
 }
 
-void ConfirmationMenu::onConfirmClick(MenuSprite* menuSprite)
+void ConfirmationMenu::onConfirmClick(ClickableNode* menuSprite)
 {
 	if (this->onConfirmCallback != nullptr)
 	{

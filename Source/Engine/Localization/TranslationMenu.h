@@ -16,7 +16,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class TextMenuSprite;
+class ClickableTextNode;
 class TextWindow;
 
 class TranslationMenu : public GlobalNode
@@ -44,8 +44,8 @@ private:
 	LocalizedLabel* oldTranslation;
 	LocalizedLabel* newTranslationTitle;
 	cocos2d::ui::UICCTextField* newTranslation;
-	TextMenuSprite* cancelButton;
-	TextMenuSprite* submitButton;
+	ClickableTextNode* cancelButton;
+	ClickableTextNode* submitButton;
 	LocalizedString* editTarget;
 
 	static TranslationMenu* instance;

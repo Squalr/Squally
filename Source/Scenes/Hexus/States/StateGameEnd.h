@@ -2,8 +2,8 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 
 class StateGameEnd : public StateBase
 {
@@ -23,7 +23,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBackClick(MenuSprite* menuSprite, GameState* gameState);
+	void onBackClick(ClickableNode* menuSprite, GameState* gameState);
 
-	TextMenuSprite* backButton;
+	ClickableTextNode* backButton;
 };

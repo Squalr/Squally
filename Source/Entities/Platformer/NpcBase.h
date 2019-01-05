@@ -4,7 +4,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 
-class MenuSprite;
+class ClickableNode;
 
 class NpcBase : public PlatformerEntity
 {
@@ -21,10 +21,10 @@ protected:
 
 protected:
 	virtual void initializeCollisionEvents() override;
-	virtual void onInteractButtonClick(MenuSprite* menuSprite);
+	virtual void onInteractButtonClick(ClickableNode* menuSprite);
 
 private:
 	typedef PlatformerEntity super;
 	cocos2d::Sprite* chatBubbleSprite;
-	MenuSprite* interactButton;
+	ClickableNode* interactButton;
 };

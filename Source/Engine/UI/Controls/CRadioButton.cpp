@@ -4,7 +4,7 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -23,8 +23,8 @@ CRadioButton::CRadioButton(int groupIdentifier)
 	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
-	this->checked = MenuSprite::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover);
-	this->unchecked = MenuSprite::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover);
+	this->checked = ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover);
+	this->unchecked = ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover);
 
 	this->checked->setClickCallback(CC_CALLBACK_1(CRadioButton::onUncheckClick, this));
 	this->unchecked->setClickCallback(CC_CALLBACK_1(CRadioButton::onCheckClick, this));
@@ -64,12 +64,12 @@ void CRadioButton::onGroupCheck(EventCustom* event)
 	}
 }
 
-void CRadioButton::onCheckClick(MenuSprite* menuSprite)
+void CRadioButton::onCheckClick(ClickableNode* menuSprite)
 {
 	this->check();
 }
 
-void CRadioButton::onUncheckClick(MenuSprite* menuSprite)
+void CRadioButton::onUncheckClick(ClickableNode* menuSprite)
 {
 	// Actually just do nothing because we should always have one radio button selected
 	// this->uncheck();

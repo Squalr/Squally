@@ -9,9 +9,9 @@ namespace cocos2d
 	class Sprite;
 }
 
-class IconMenuSprite;
+class ClickableIconNode;
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class StatePass : public StateBase
 {
@@ -31,7 +31,7 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onPassClick(MenuSprite* menuSprite, GameState* gameState);
+	void onPassClick(ClickableNode* menuSprite, GameState* gameState);
 	void hideOpponenentPassSprites();
 	void hideAndDisableAllButtons();
 	void enablePassButtonInteraction(GameState* gameState);
@@ -47,7 +47,7 @@ private:
 	void onClaimVictoryMouseOver();
 	void onClaimVictoryMouseOut();
 
-	IconMenuSprite* currentVisiblePlayerButton;
+	ClickableIconNode* currentVisiblePlayerButton;
 	bool playerChoiceLocked;
 	bool enemyChoiceLocked;
 
@@ -55,7 +55,7 @@ private:
 	friend class Hexus;
 
 	cocos2d::Sprite* lastStandSprite;
-	IconMenuSprite* lastStandButton;
+	ClickableIconNode* lastStandButton;
 	cocos2d::LayerColor* lastStandPanel;
 	LocalizedLabel* lastStandLabel;
 	cocos2d::ParticleSystemQuad* lastStandParticles;
@@ -65,7 +65,7 @@ private:
 
 	// Surrender
 	cocos2d::Sprite* passSprite;
-	IconMenuSprite* passButton;
+	ClickableIconNode* passButton;
 	cocos2d::LayerColor* passPanel;
 	LocalizedLabel* passLabel;
 	cocos2d::ParticleSystemQuad* passParticles;
@@ -75,7 +75,7 @@ private:
 
 	// Claim victory
 	cocos2d::Sprite* claimVictorySprite;
-	IconMenuSprite* claimVictoryButton;
+	ClickableIconNode* claimVictoryButton;
 	cocos2d::LayerColor* claimVictoryPanel;
 	LocalizedLabel* claimVictoryLabel;
 	cocos2d::ParticleSystemQuad* claimVictoryParticles;

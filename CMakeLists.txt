@@ -98,6 +98,9 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
 	Source/Engine/Hackables/HackableObject.cpp
+	Source/Engine/Input/ClickableIconNode.cpp
+	Source/Engine/Input/ClickableNode.cpp
+	Source/Engine/Input/ClickableTextNode.cpp
 	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/ConstantString.cpp
@@ -130,14 +133,11 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CSlider.cpp
 	Source/Engine/UI/Controls/FocusTakeOver.cpp
 	Source/Engine/UI/Controls/HelpArrow.cpp
-	Source/Engine/UI/Controls/IconMenuSprite.cpp
 	Source/Engine/UI/Controls/MenuLabel.cpp
-	Source/Engine/UI/Controls/MenuSprite.cpp
 	Source/Engine/UI/Controls/MouseOverPanel.cpp
 	Source/Engine/UI/Controls/ScrollPane.cpp
 	Source/Engine/UI/Controls/Text/EditableTextWindow.cpp
 	Source/Engine/UI/Controls/Text/TextWindow.cpp
-	Source/Engine/UI/Controls/TextMenuSprite.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
@@ -1153,6 +1153,9 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
 	Source/Engine/Hackables/HackableObject.h
+	Source/Engine/Input/ClickableIconNode.h
+	Source/Engine/Input/ClickableNode.h
+	Source/Engine/Input/ClickableTextNode.h
 	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/ConstantString.h
@@ -1186,14 +1189,11 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CSlider.h
 	Source/Engine/UI/Controls/FocusTakeOver.h
 	Source/Engine/UI/Controls/HelpArrow.h
-	Source/Engine/UI/Controls/IconMenuSprite.h
 	Source/Engine/UI/Controls/MenuLabel.h
-	Source/Engine/UI/Controls/MenuSprite.h
 	Source/Engine/UI/Controls/MouseOverPanel.h
 	Source/Engine/UI/Controls/ScrollPane.h
 	Source/Engine/UI/Controls/Text/EditableTextWindow.h
 	Source/Engine/UI/Controls/Text/TextWindow.h
-	Source/Engine/UI/Controls/TextMenuSprite.h
 	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h

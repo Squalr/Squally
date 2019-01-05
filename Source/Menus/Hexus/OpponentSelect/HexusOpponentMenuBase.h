@@ -11,9 +11,9 @@ namespace cocos2d
 
 class LocalizedLabel;
 class HexusOpponentPreview;
-class MenuSprite;
+class ClickableNode;
 class ScrollPane;
-class TextMenuSprite;
+class ClickableTextNode;
 
 class HexusOpponentMenuBase : public GlobalScene
 {
@@ -25,9 +25,9 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void loadProgress();
-	void onBackClick(MenuSprite* menuSprite);
-	void onDeckManagementClick(MenuSprite* menuSprite);
-	void onShopClick(MenuSprite* menuSprite);
+	void onBackClick(ClickableNode* menuSprite);
+	void onDeckManagementClick(ClickableNode* menuSprite);
+	void onShopClick(ClickableNode* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
@@ -39,10 +39,10 @@ protected:
 
 	std::string chapterProgressSaveKey;
 	cocos2d::Sprite* background;
-	TextMenuSprite* deckManagementButton;
-	TextMenuSprite* shopButton;
+	ClickableTextNode* deckManagementButton;
+	ClickableTextNode* shopButton;
 	LocalizedLabel* opponentSelectLabel;
-	TextMenuSprite* backButton;
+	ClickableTextNode* backButton;
 private:
 	typedef GlobalScene super;
 };

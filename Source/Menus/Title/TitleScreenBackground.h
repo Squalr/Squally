@@ -4,7 +4,7 @@
 
 class InfiniteParallaxNode;
 class FloatingSprite;
-class MenuSprite;
+class ClickableNode;
 class SmartAnimationNode;
 class SmartAnimationSequenceNode;
 

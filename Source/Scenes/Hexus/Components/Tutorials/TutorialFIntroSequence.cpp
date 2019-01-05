@@ -5,10 +5,10 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/FocusTakeOver.h"
 #include "Engine/UI/Controls/HelpArrow.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/StateOverride.h"
@@ -41,7 +41,7 @@ TutorialFIntroSequence::TutorialFIntroSequence() : TutorialBase(StateOverride::T
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->handCardsNextButton = ClickableTextNode::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->handCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->handCardsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -102,7 +102,7 @@ void TutorialFIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialFIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->handCardsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

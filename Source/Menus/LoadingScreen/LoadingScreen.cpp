@@ -14,8 +14,6 @@
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
 
-#include "Resources/UIResources.h"
-
 using namespace cocos2d;
 using namespace cocos_experimental;
 
