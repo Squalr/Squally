@@ -7,8 +7,8 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Hexus/Puzzles/HexusPuzzleItem.h"
@@ -50,7 +50,7 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_HexusPuzzles::create());
 	this->descriptionBox = Sprite::create(UIResources::Menus_TutorialMenu_TutorialItem);
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Generics_Empty::create());
-	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
 	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
@@ -248,7 +248,7 @@ void HexusPuzzlesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	}
 }
 
-void HexusPuzzlesMenu::onCloseClick(MenuSprite* menuSprite)
+void HexusPuzzlesMenu::onCloseClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }

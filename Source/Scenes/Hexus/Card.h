@@ -14,7 +14,7 @@ namespace cocos2d
 class CardEffects;
 class ConstantString;
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class Card : public SmartNode
 {
@@ -92,15 +92,15 @@ protected:
 
 private:
 	void updateText();
-	void onMouseOver(MenuSprite* menuSprite);
-	void onMouseClick(MenuSprite* menuSprite);
+	void onMouseOver(ClickableNode* menuSprite);
+	void onMouseClick(ClickableNode* menuSprite);
 	int applyOperation(int attack, Operation operation);
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;
 	cocos2d::Sprite* cardFront;
 	cocos2d::Sprite* cardSprite;
-	MenuSprite* cardSelect;
+	ClickableNode* cardSelect;
 	cocos2d::Sprite* cardFocus;
 	ConstantString* cardString;
 	LocalizedLabel* cardLabel;

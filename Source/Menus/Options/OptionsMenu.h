@@ -15,8 +15,8 @@ namespace cocos2d
 class GeneralTab;
 class LanguageTab;
 class LocalizedLabel;
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 class VideoTab;
 
 class OptionsMenu : public Hud
@@ -53,13 +53,13 @@ private:
 	cocos2d::Node* background;
 	cocos2d::Sprite* optionsWindow;
 	LocalizedLabel* optionsLabel;
-	MenuSprite* closeButton;
-	TextMenuSprite* cancelButton;
-	TextMenuSprite* returnButton;
+	ClickableNode* closeButton;
+	ClickableTextNode* cancelButton;
+	ClickableTextNode* returnButton;
 	cocos2d::Node* leftPanel;
-	TextMenuSprite* generalTabButton;
-	TextMenuSprite* videoTabButton;
-	TextMenuSprite* languageTabButton;
+	ClickableTextNode* generalTabButton;
+	ClickableTextNode* videoTabButton;
+	ClickableTextNode* languageTabButton;
 	cocos2d::Node* rightPanel;
 	GeneralTab* generalTab;
 	VideoTab* videoTab;

@@ -6,9 +6,9 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Hexus/ChapterSelect/HexusChapterPreview.h"
@@ -69,7 +69,7 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -82,7 +82,7 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->deckManagementButton = TextMenuSprite::create(
+	this->deckManagementButton = ClickableTextNode::create(
 		manageDeckLabel,
 		manageDeckLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -95,7 +95,7 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	shopLabel->enableOutline(Color4B::BLACK, 2);
 	shopLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->shopButton = TextMenuSprite::create(
+	this->shopButton = ClickableTextNode::create(
 		shopLabel,
 		shopLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -274,17 +274,17 @@ void HexusChapterSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event*
 	}
 }
 
-void HexusChapterSelectMenu::onBackClick(MenuSprite* menuSprite)
+void HexusChapterSelectMenu::onBackClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }
 
-void HexusChapterSelectMenu::onDeckManagementClick(MenuSprite* menuSprite)
+void HexusChapterSelectMenu::onDeckManagementClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateHexusDeckManagement();
 }
 
-void HexusChapterSelectMenu::onShopClick(MenuSprite* menuSprite)
+void HexusChapterSelectMenu::onShopClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateHexusShop();
 }

@@ -4,7 +4,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
@@ -37,7 +37,7 @@ CardRow::CardRow(bool isPlayerRow)
 	this->rowSelectCallback = nullptr;
 	this->rowWidth = Config::rowWidth;
 
-	this->rowSelectSprite = MenuSprite::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);
+	this->rowSelectSprite = ClickableNode::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);
 
 	this->addChild(this->rowSelectSprite);
 }
@@ -229,7 +229,7 @@ void CardRow::disableRowSelection()
 {
 	this->rowSelectCallback = nullptr;
 
-	MenuSprite* sprite = this->rowSelectSprite;
+	ClickableNode* sprite = this->rowSelectSprite;
 
 	this->rowSelectSprite->stopAllActions();
 	this->rowSelectSprite->runAction(Sequence::create(
@@ -363,7 +363,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 	}
 }
 
-void CardRow::onRowSelectClick(MenuSprite* menuSprite)
+void CardRow::onRowSelectClick(ClickableNode* menuSprite)
 {
 	if (this->rowSelectCallback != nullptr)
 	{

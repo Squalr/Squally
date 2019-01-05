@@ -6,9 +6,9 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
@@ -98,25 +98,25 @@ TitleScreen::TitleScreen()
 	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	exitLabelHover->enableGlow(glowColor);
 
-	this->storyModeButton = TextMenuSprite::create(
+	this->storyModeButton = ClickableTextNode::create(
 		storyModeLabel,
 		storyModeLabelHover,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
-	this->minigamesButton = TextMenuSprite::create(
+	this->minigamesButton = ClickableTextNode::create(
 		minigamesLabel,
 		minigamesLabelHover,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
-	this->optionsButton = TextMenuSprite::create(
+	this->optionsButton = ClickableTextNode::create(
 		optionsLabel,
 		optionsLabelHover,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
-	this->exitButton = TextMenuSprite::create(
+	this->exitButton = ClickableTextNode::create(
 		exitLabel,
 		exitLabelHover,
 		UIResources::Menus_TitleScreen_TitleButton,
@@ -207,22 +207,22 @@ void TitleScreen::initializeListeners()
 	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
 }
 
-void TitleScreen::onStoryModeClick(MenuSprite* menuSprite)
+void TitleScreen::onStoryModeClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateSaveSelect();
 }
 
-void TitleScreen::onMinigamesClick(MenuSprite* menuSprite)
+void TitleScreen::onMinigamesClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateMinigames();
 }
 
-void TitleScreen::onOptionsClick(MenuSprite* menuSprite)
+void TitleScreen::onOptionsClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateOptions();
 }
 
-void TitleScreen::onExitClick(MenuSprite* menuSprite)
+void TitleScreen::onExitClick(ClickableNode* menuSprite)
 {
 	Director::getInstance()->end();
 }

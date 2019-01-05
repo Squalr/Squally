@@ -7,11 +7,11 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Hexus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
@@ -40,7 +40,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
 	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->deckManagementButton = TextMenuSprite::create(
+	this->deckManagementButton = ClickableTextNode::create(
 		manageDeckLabel,
 		manageDeckLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -53,7 +53,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	shopLabel->enableOutline(Color4B::BLACK, 2);
 	shopLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->shopButton = TextMenuSprite::create(
+	this->shopButton = ClickableTextNode::create(
 		shopLabel,
 		shopLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -66,7 +66,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -214,17 +214,17 @@ void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* 
 	}
 }
 
-void HexusOpponentMenuBase::onBackClick(MenuSprite* menuSprite)
+void HexusOpponentMenuBase::onBackClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }
 
-void HexusOpponentMenuBase::onDeckManagementClick(MenuSprite* menuSprite)
+void HexusOpponentMenuBase::onDeckManagementClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateHexusDeckManagement();
 }
 
-void HexusOpponentMenuBase::onShopClick(MenuSprite* menuSprite)
+void HexusOpponentMenuBase::onShopClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateHexusShop();
 }

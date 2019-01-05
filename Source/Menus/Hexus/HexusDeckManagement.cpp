@@ -5,13 +5,13 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/CCheckbox.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/ToggleGroup.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -94,28 +94,28 @@ HexusDeckManagement::HexusDeckManagement()
 	this->hexCardsInDeckValueLabel->setStringReplacementVariables(this->hexCardsInDeckValueString);
 	this->specialCardsInDeckValueLabel->setStringReplacementVariables(this->specialCardsInDeckValueString);
 
-	MenuSprite* allButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* allButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	ClickableNode* allButtonUnselected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	ClickableNode* allButtonSelected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	allButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconAll));
 	allButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconAll));
 
-	MenuSprite* specialButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* specialButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	ClickableNode* specialButtonUnselected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	ClickableNode* specialButtonSelected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	specialButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconSpecial));
 	specialButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconSpecial));
 
-	MenuSprite* binaryButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* binaryButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	ClickableNode* binaryButtonUnselected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	ClickableNode* binaryButtonSelected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	binaryButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconBinary));
 	binaryButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconBinary));
 
-	MenuSprite* decimalButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* decimalButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	ClickableNode* decimalButtonUnselected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	ClickableNode* decimalButtonSelected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	decimalButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconDecimal));
 	decimalButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconDecimal));
 
-	MenuSprite* hexButtonUnselected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
-	MenuSprite* hexButtonSelected = MenuSprite::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
+	ClickableNode* hexButtonUnselected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmall, UIResources::Menus_Buttons_WoodSquareButtonSmallSelected);
+	ClickableNode* hexButtonSelected = ClickableNode::create(UIResources::Menus_Buttons_WoodSquareButtonSmallToggled, UIResources::Menus_Buttons_WoodSquareButtonSmallToggled);
 	hexButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconHex));
 	hexButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconHex));
 
@@ -138,7 +138,7 @@ HexusDeckManagement::HexusDeckManagement()
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -396,7 +396,7 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	}
 }
 
-void HexusDeckManagement::onBackClick(MenuSprite* menuSprite)
+void HexusDeckManagement::onBackClick(ClickableNode* menuSprite)
 {
 	this->save(true);
 }

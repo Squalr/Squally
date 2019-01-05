@@ -8,11 +8,11 @@
 
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 
 #include "Resources/UIResources.h"
 
@@ -89,7 +89,7 @@ TranslationMenu::TranslationMenu()
 	cancelLabel->toggleAllowTranslationEdit(false);
 	cancelLabelSelected->toggleAllowTranslationEdit(false);
 
-	this->cancelButton = TextMenuSprite::create(cancelLabel, cancelLabelSelected, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
+	this->cancelButton = ClickableTextNode::create(cancelLabel, cancelLabelSelected, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
 
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Submit::create());
 	LocalizedLabel* labelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Submit::create());
@@ -97,7 +97,7 @@ TranslationMenu::TranslationMenu()
 	label->toggleAllowTranslationEdit(false);
 	labelSelected->toggleAllowTranslationEdit(false);
 
-	this->submitButton = TextMenuSprite::create(label, labelSelected, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
+	this->submitButton = ClickableTextNode::create(label, labelSelected, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->setVisible(false);
 
@@ -145,8 +145,8 @@ void TranslationMenu::initializeListeners()
 		this->onTranslationMenuOpen(static_cast<LocalizationEvents::TranslationBeginEditArgs*>(eventArgs->getUserData()));
 	}));
 
-	cancelButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onCancelClick(); });
-	submitButton->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { this->onSubmitClick(); });
+	cancelButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onCancelClick(); });
+	submitButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onSubmitClick(); });
 }
 
 void TranslationMenu::onTranslationMenuOpen(LocalizationEvents::TranslationBeginEditArgs* args)

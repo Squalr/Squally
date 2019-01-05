@@ -1,6 +1,6 @@
 #include "NpcBase.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 
 #include "Resources/UIResources.h"
 
@@ -11,7 +11,7 @@ NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, PlatformerC
 {
 	this->chatBubbleSprite = Sprite::create(UIResources::Platformer_ChatBubble);
 
-	this->interactButton = MenuSprite::create(Sprite::create(), Sprite::create());
+	this->interactButton = ClickableNode::create(Sprite::create(), Sprite::create());
 	this->interactButton->setClickCallback(CC_CALLBACK_1(NpcBase::onInteractButtonClick, this));
 
 	this->chatBubbleSprite->setPosition(Vec2(0.0f, 196.0f));
@@ -39,7 +39,7 @@ void NpcBase::initializeCollisionEvents()
 	});
 }
 
-void NpcBase::onInteractButtonClick(MenuSprite* menuSprite)
+void NpcBase::onInteractButtonClick(ClickableNode* menuSprite)
 {
 	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->deck, this->deck));
 }

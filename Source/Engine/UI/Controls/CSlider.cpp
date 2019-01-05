@@ -3,9 +3,10 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCClippingRectangleNode.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Resources/UIResources.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -23,9 +24,9 @@ CSlider::CSlider(float progress)
 	this->progressUpdateEvent = nullptr;
 
 	this->frame = Sprite::create(UIResources::Menus_OptionsMenu_SliderFrame);
-	this->progressBar = MenuSprite::create(UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_OptionsMenu_SliderFill);
+	this->progressBar = ClickableNode::create(UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_OptionsMenu_SliderFill);
 	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
-	this->slide = MenuSprite::create(UIResources::Menus_OptionsMenu_Slide, UIResources::Menus_OptionsMenu_Slide);
+	this->slide = ClickableNode::create(UIResources::Menus_OptionsMenu_Slide, UIResources::Menus_OptionsMenu_Slide);
 
 	this->setProgress(progress);
 
@@ -57,7 +58,7 @@ void CSlider::setProgressUpdateCallback(std::function<void(float progress)> call
 	this->progressUpdateEvent = callback;
 }
 
-void CSlider::onDrag(MenuSprite* sprite, MouseEvents::MouseEventArgs* args)
+void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 {
 	Vec2 thisPosition = GameUtils::getSceneBounds(this).origin;
 	Vec2 newPosition = Vec2(args->mouseCoords.x - thisPosition.x, thisPosition.y);

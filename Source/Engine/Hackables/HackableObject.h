@@ -9,7 +9,7 @@
 class HackableCode;
 class HackableData;
 class HackButton;
-class MenuSprite;
+class ClickableNode;
 
 namespace cocos2d
 {
@@ -21,7 +21,7 @@ namespace cocos2d
 class HackableObject : public SerializableObject
 {
 public:
-	void onHackableClick(MenuSprite* backButton);
+	void onHackableClick(ClickableNode* backButton);
 
 	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;

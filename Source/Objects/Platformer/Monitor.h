@@ -9,7 +9,7 @@ namespace cocos2d
 
 class DialogMenu;
 class FloatingSprite;
-class MenuSprite;
+class ClickableNode;
 
 class Monitor : public HackableObject
 {
@@ -24,12 +24,12 @@ protected:
 
 private:
 	typedef HackableObject super;
-	MenuSprite* monitorSprite;
+	ClickableNode* monitorSprite;
 	FloatingSprite* monitorSpriteFloating;
 	cocos2d::ParticleSystem* monitorParticles;
 	cocos2d::ParticleSystem* monitorParticlesBack;
 	cocos2d::ParticleSystem* monitorSparkles;
 	DialogMenu* monitorDialog;
 
-	void onMonitorClick(MenuSprite* menuSprite);
+	void onMonitorClick(ClickableNode* menuSprite);
 };

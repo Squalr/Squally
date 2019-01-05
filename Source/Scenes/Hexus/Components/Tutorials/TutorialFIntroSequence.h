@@ -5,7 +5,7 @@
 class FocusTakeOver;
 class HelpArrow;
 class LocalizedLabel;
-class TextMenuSprite;
+class ClickableTextNode;
 
 class TutorialFIntroSequence : public TutorialBase
 {
@@ -31,6 +31,6 @@ private:
 
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* handCardsTutorialLabel;
-	TextMenuSprite* handCardsNextButton;
+	ClickableTextNode* handCardsNextButton;
 	HelpArrow* helpArrowHandCards;
 };

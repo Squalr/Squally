@@ -1,12 +1,11 @@
-#include "MenuSprite.h"
-
-#include <typeinfo>
+#include "ClickableNode.h"
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/Utils/GameUtils.h"
@@ -23,21 +22,21 @@ This is the worst written class in this entire codebase. If you need to change s
 One day I'll figure out how to refactor this sphagetti garbage fire of state variables.
 */
 
-MenuSprite* MenuSprite::create(std::string spriteNormal, std::string spriteSelectedResource)
+ClickableNode* ClickableNode::create(std::string spriteNormal, std::string spriteSelectedResource)
 {
-	return MenuSprite::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource));
+	return ClickableNode::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource));
 }
 
-MenuSprite* MenuSprite::create(Node* nodeNormal, Node* nodeSelected)
+ClickableNode* ClickableNode::create(Node* nodeNormal, Node* nodeSelected)
 {
-	MenuSprite* instance = new MenuSprite(nodeNormal, nodeSelected);
+	ClickableNode* instance = new ClickableNode(nodeNormal, nodeSelected);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected)
+ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 {
 	this->mouseClickEvent = nullptr;
 	this->mouseDownEvent = nullptr;
@@ -47,6 +46,7 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected)
 	this->isClickInit = false;
 	this->isClicked = false;
 	this->isMousedOver = false;
+	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
 
 	this->clickSound = "";
 	this->mouseOverSound = SoundResources::ButtonRollover1;
@@ -62,11 +62,11 @@ MenuSprite::MenuSprite(Node* nodeNormal, Node* nodeSelected)
 	this->addChild(this->spriteSelected);
 }
 
-MenuSprite::~MenuSprite()
+ClickableNode::~ClickableNode()
 {
 }
 
-void MenuSprite::onEnter()
+void ClickableNode::onEnter()
 {
 	super::onEnter();
 
@@ -79,7 +79,7 @@ void MenuSprite::onEnter()
 	this->scheduleUpdate();
 }
 
-void MenuSprite::onEnterTransitionDidFinish()
+void ClickableNode::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
@@ -88,14 +88,14 @@ void MenuSprite::onEnterTransitionDidFinish()
 	this->mouseMove(&args);
 }
 
-void MenuSprite::initializeListeners()
+void ClickableNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MenuSprite::onMouseMove, this));
-	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(MenuSprite::onMouseRefresh, this));
-	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(MenuSprite::onMouseDown, this));
-	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(MenuSprite::onMouseUp, this));
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(ClickableNode::onMouseMove, this));
+	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, CC_CALLBACK_1(ClickableNode::onMouseRefresh, this));
+	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, CC_CALLBACK_1(ClickableNode::onMouseDown, this));
+	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, CC_CALLBACK_1(ClickableNode::onMouseUp, this));
 
 	this->addEventListener(mouseMoveListener);
 	this->addEventListener(mouseRefreshListener);
@@ -103,7 +103,7 @@ void MenuSprite::initializeListeners()
 	this->addEventListener(mouseUpListener);
 }
 
-void MenuSprite::update(float dt)
+void ClickableNode::update(float dt)
 {
 	super::update(dt);
 
@@ -111,66 +111,71 @@ void MenuSprite::update(float dt)
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
-void MenuSprite::disableInteraction(GLubyte newOpacity)
+void ClickableNode::disableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = false;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
 }
 
-void MenuSprite::enableInteraction(GLubyte newOpacity)
+void ClickableNode::enableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = true;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
 }
 
-void MenuSprite::setContentScale(float scale)
+void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
+{
+	this->modifier = modifier;
+}
+
+void ClickableNode::setContentScale(float scale)
 {
 	this->setContentSize(this->sprite->getContentSize() * scale);
 }
 
-void MenuSprite::setOffsetCorrection(Vec2 newOffsetCorrection)
+void ClickableNode::setOffsetCorrection(Vec2 newOffsetCorrection)
 {
 	this->offsetCorrection = newOffsetCorrection;
 }
 
-void MenuSprite::setClickCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseClick)
+void ClickableNode::setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
 }
 
-void MenuSprite::setMouseDownCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseDown)
+void ClickableNode::setMouseDownCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDown)
 {
 	this->mouseDownEvent = onMouseDown;
 }
 
-void MenuSprite::setMouseDragCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseDrag)
+void ClickableNode::setMouseDragCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDrag)
 {
 	this->mouseDragEvent = onMouseDrag;
 }
 
-void MenuSprite::setMouseOverCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseOver)
+void ClickableNode::setMouseOverCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOver)
 {
 	this->mouseOverEvent = onMouseOver;
 }
 
-void MenuSprite::setMouseOutCallback(std::function<void(MenuSprite*, MouseEvents::MouseEventArgs* args)> onMouseOut)
+void ClickableNode::setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut)
 {
 	this->mouseOutEvent = onMouseOut;
 }
 
-void MenuSprite::setMouseOverSound(std::string soundResource)
+void ClickableNode::setMouseOverSound(std::string soundResource)
 {
 	this->mouseOverSound = soundResource;
 }
 
-void MenuSprite::setClickSound(std::string soundResource)
+void ClickableNode::setClickSound(std::string soundResource)
 {
 	this->clickSound = soundResource;
 }
 
-bool MenuSprite::intersects(Vec2 mousePos)
+bool ClickableNode::intersects(Vec2 mousePos)
 {
 	if (dynamic_cast<const LayerColor*>(this->sprite) != nullptr)
 	{
@@ -180,7 +185,7 @@ bool MenuSprite::intersects(Vec2 mousePos)
 	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 }
 
-void MenuSprite::showSprite(Node* sprite)
+void ClickableNode::showSprite(Node* sprite)
 {
 	// Hide everything
 	this->sprite->setVisible(false);
@@ -200,29 +205,29 @@ void MenuSprite::showSprite(Node* sprite)
 	this->currentSprite = sprite;
 }
 
-void MenuSprite::onMouseMove(EventCustom* event)
+void ClickableNode::onMouseMove(EventCustom* event)
 {
 	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
 }
 
-void MenuSprite::onMouseRefresh(EventCustom* event)
+void ClickableNode::onMouseRefresh(EventCustom* event)
 {
 	this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event, true);
 }
 
-void MenuSprite::onMouseDown(EventCustom* event)
+void ClickableNode::onMouseDown(EventCustom* event)
 {
 	this->mouseDown(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
 }
 
-void MenuSprite::onMouseUp(EventCustom* event)
+void ClickableNode::onMouseUp(EventCustom* event)
 {
 	this->mouseUp(static_cast<MouseEvents::MouseEventArgs*>(event->getUserData()), event);
 }
 
-void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
+void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
-	if (!this->interactionEnabled)
+	if (!this->interactionEnabled || (this->modifier != EventKeyboard::KeyCode::KEY_NONE && !Input::isPressed(this->modifier)))
 	{
 		return;
 	}
@@ -297,9 +302,9 @@ void MenuSprite::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event
 	}
 }
 
-void MenuSprite::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event)
+void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled)
+	if (!this->interactionEnabled || (this->modifier != EventKeyboard::KeyCode::KEY_NONE && !Input::isPressed(this->modifier)))
 	{
 		return;
 	}
@@ -330,9 +335,9 @@ void MenuSprite::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event
 	}
 }
 
-void MenuSprite::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event)
+void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled)
+	if (!this->interactionEnabled || (this->modifier != EventKeyboard::KeyCode::KEY_NONE && !Input::isPressed(this->modifier)))
 	{
 		return;
 	}

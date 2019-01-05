@@ -2,7 +2,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 
 using namespace cocos2d;
 
@@ -18,7 +18,7 @@ MapNode* MapNode::create(std::string mapFile)
 MapNode::MapNode(std::string mapFile)
 {
 	this->nodeMapFile = mapFile;
-	this->mapSprite = MenuSprite::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
+	this->mapSprite = ClickableNode::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 
 	this->setAnchorPoint(Vec2(0.0f, 0.0f));
 
@@ -62,7 +62,7 @@ void MapNode::initializeListeners()
 	this->mapSprite->setClickCallback(CC_CALLBACK_1(MapNode::onNodeClick, this));
 }
 
-void MapNode::onNodeClick(MenuSprite* menuSprite)
+void MapNode::onNodeClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile, [](SerializableMap* map)
 	{

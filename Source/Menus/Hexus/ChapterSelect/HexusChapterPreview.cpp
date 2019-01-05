@@ -2,9 +2,9 @@
 
 #include "cocos/2d/CCClippingNode.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/SoundResources.h"
@@ -25,7 +25,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 {
 	this->chapterSaveKey = chapterSaveKey;
 	this->callback = nullptr;
-	this->frame = MenuSprite::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
+	this->frame = ClickableNode::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedChapterName);
 
@@ -85,7 +85,7 @@ void HexusChapterPreview::setClickCallback(std::function<void()> callback)
 	this->callback = callback;
 }
 
-void HexusChapterPreview::onOpponentClick(MenuSprite* hexusChapterPreview)
+void HexusChapterPreview::onOpponentClick(ClickableNode* hexusChapterPreview)
 {
 	if (this->callback != nullptr)
 	{

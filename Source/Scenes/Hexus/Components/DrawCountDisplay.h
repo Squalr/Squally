@@ -9,7 +9,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class DrawCountDisplay : public ComponentBase
 {
@@ -31,7 +31,7 @@ private:
 	void enableDrawCountDisplayInteraction();
 	void disableDrawCountDisplayInteraction();
 
-	MenuSprite* drawCountSprite;
+	ClickableNode* drawCountSprite;
 	LocalizedLabel* drawCountLabel;
 
 	cocos2d::LayerColor* deckDrawCountMouseOverPanel;

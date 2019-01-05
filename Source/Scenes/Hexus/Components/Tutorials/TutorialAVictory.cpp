@@ -2,14 +2,13 @@
 
 #include <vector>
 
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/FocusTakeOver.h"
 #include "Engine/UI/Controls/HelpArrow.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/StateOverride.h"
 
@@ -41,7 +40,7 @@ TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialMode:
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->lossDisplayNextButton = TextMenuSprite::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->lossDisplayNextButton = ClickableTextNode::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->lossDisplayTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->lossDisplayTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -107,7 +106,7 @@ void TutorialAVictory::onAnyStateChange(GameState* gameState)
 
 void TutorialAVictory::initializeCallbacks(GameState* gameState)
 {
-	this->lossDisplayNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

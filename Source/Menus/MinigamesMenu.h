@@ -4,8 +4,8 @@
 
 #include "Engine/GlobalScene.h"
 
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 class ScrollPane;
 
 class MinigamesMenu : public GlobalScene
@@ -24,22 +24,22 @@ private:
 	void initializePositions() override;
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onBackClick(MenuSprite* menuSprite);
-	void onHexusClick(MenuSprite* menuSprite);
-	void onHexusPuzzlesClick(MenuSprite* menuSprite);
-	TextMenuSprite* createComingSoonButton();
+	void onBackClick(ClickableNode* menuSprite);
+	void onHexusClick(ClickableNode* menuSprite);
+	void onHexusPuzzlesClick(ClickableNode* menuSprite);
+	ClickableTextNode* createComingSoonButton();
 
 	cocos2d::Node* backgroundNode;
 	ScrollPane* scrollPane;
-	TextMenuSprite* hexusButton;
-	TextMenuSprite* hexusPuzzlesButton;
-	TextMenuSprite* comingSoonButton1;
-	TextMenuSprite* comingSoonButton2;
-	TextMenuSprite* comingSoonButton3;
-	TextMenuSprite* comingSoonButton4;
-	TextMenuSprite* comingSoonButton5;
-	TextMenuSprite* comingSoonButton6;
-	TextMenuSprite* backButton;
+	ClickableTextNode* hexusButton;
+	ClickableTextNode* hexusPuzzlesButton;
+	ClickableTextNode* comingSoonButton1;
+	ClickableTextNode* comingSoonButton2;
+	ClickableTextNode* comingSoonButton3;
+	ClickableTextNode* comingSoonButton4;
+	ClickableTextNode* comingSoonButton5;
+	ClickableTextNode* comingSoonButton6;
+	ClickableTextNode* backButton;
 
 	static MinigamesMenu* instance;
 };
