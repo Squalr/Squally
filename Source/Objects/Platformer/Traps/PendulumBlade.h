@@ -2,14 +2,13 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-class HackableData;
-
 namespace cocos2d
 {
 	class Sprite;
 }
 
 class CollisionObject;
+class HackableData;
 
 class PendulumBlade : public HackableObject
 {

@@ -48,6 +48,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = CameraFocus::create(&properties);
 		}
+		else if (name == DartGun::MapKeyDartGun)
+		{
+			newObject = DartGun::create(&properties);
+		}
 		else if (name == PendulumBlade::MapKeyPendulumBlade)
 		{
 			newObject = PendulumBlade::create(&properties);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="486">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="488">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -197,6 +197,11 @@
   <object id="475" name="mechanical-flail" type="object" x="4638.79" y="2538.85" width="42.4242" height="198.303"/>
   <object id="476" name="mechanical-flail" type="object" x="4996.79" y="2445.85" width="42.4242" height="264.303"/>
   <object id="479" name="mechanical-flail" type="object" x="5436.79" y="2502.85" width="42.4242" height="166.303"/>
+  <object id="487" name="dart-gun" type="object" x="3974.61" y="2678" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="entities">
   <properties>
