@@ -306,10 +306,10 @@ namespace ObjectResources
 	extern const std::string War_Machines_Catapult_WHEEL_2;
 	extern const std::string War_Machines_Catapult_WHEEL_3;
 	extern const std::string War_Machines_Catapult_WHEEL_4;
+	extern const std::string War_Machines_Dartgun_Animations;
 	extern const std::string War_Machines_Dartgun_BODY_CANNON;
 	extern const std::string War_Machines_Dartgun_DART_HOLDER;
 	extern const std::string War_Machines_Dartgun_DART;
-	extern const std::string War_Machines_Dartgun_DARTGUN;
 	extern const std::string War_Machines_Dartgun_L_LEG;
 	extern const std::string War_Machines_Dartgun_LEG_M;
 	extern const std::string War_Machines_Dartgun_LEG_R;

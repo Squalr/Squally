@@ -2,8 +2,6 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-class HackableData;
-
 namespace cocos2d
 {
 	class ParticleSystemQuad;
@@ -11,6 +9,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class HackableData;
 
 class MechanicalFlail : public HackableObject
 {

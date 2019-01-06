@@ -7,6 +7,7 @@ namespace cocos2d
 {
 	class DrawNode;
 	class Event;
+	class LayerColor;
 	class Sprite;
 
 	namespace ui
@@ -38,6 +39,7 @@ private:
 	void onSubmitClick();
 
 	cocos2d::Node* previousFocus;
+	cocos2d::LayerColor* background;
 	cocos2d::Sprite* menuBackground;
 	LocalizedLabel* title;
 	LocalizedLabel* englishTitle;

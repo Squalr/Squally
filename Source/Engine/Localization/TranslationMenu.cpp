@@ -1,5 +1,6 @@
 #include "TranslationMenu.h"
 
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -56,6 +57,9 @@ TranslationMenu* TranslationMenu::getInstance()
 
 TranslationMenu::TranslationMenu()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->background = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->menuBackground = Sprite::create(UIResources::Menus_TranslateMenu_TranslateMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_TranslationEditor_TranslationEditor::create());
 	this->englishTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_OriginalTextInEnglish::create());
@@ -103,6 +107,7 @@ TranslationMenu::TranslationMenu()
 
 	this->setVisible(false);
 
+	this->addChild(this->background);
 	this->addChild(this->menuBackground);
 	this->addChild(this->title);
 	this->addChild(this->englishTranslation);
@@ -132,6 +137,7 @@ void TranslationMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->background->setPosition(Vec2::ZERO);
 	this->menuBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
 	this->englishTitle->setPosition(Vec2(visibleSize.width / 2.0f - 272.0f, visibleSize.height / 2.0f + 256.0f));

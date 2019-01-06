@@ -62,6 +62,43 @@ void SmartAnimationNode::playAnimation(std::string animationName, bool repeat, f
 	}
 }
 
+SmartAnimationNode::AnimationPart SmartAnimationNode::getAnimationPart(std::string partName)
+{
+	AnimationPart animationPart = AnimationPart();
+
+	auto animVariable = this->entity->getObjectInstance(partName);
+
+	if (animVariable != nullptr)
+	{
+		animationPart.rotation = animVariable->getAngle();
+	}
+
+	return animationPart;
+}
+
+void SmartAnimationNode::setAnimationPart(std::string partName, AnimationPart animationPart)
+{
+	auto animVariable = this->entity->getObjectInstance(partName);
+
+	if (animVariable != nullptr)
+	{
+		// Detach this part from the timeline -- otherwise our change will just get overwritten later
+		animVariable->toggleTimelineCanUpdate(false);
+
+		animVariable->setAngle(animationPart.rotation);
+	}
+}
+
+void SmartAnimationNode::restoreAnimationPart(std::string partName)
+{
+	auto animVariable = this->entity->getObjectInstance(partName);
+
+	if (animVariable != nullptr)
+	{
+		animVariable->toggleTimelineCanUpdate(true);
+	}
+}
+
 void SmartAnimationNode::setFlippedX(bool flippedX)
 {
 	this->animationNode->setFlippedX(flippedX);
