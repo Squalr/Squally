@@ -381,6 +381,7 @@ list(APPEND GAME_SOURCE
 	Source/Events/NavigationEvents.cpp
 	Source/GameWindow.cpp
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
+	Source/Menus/CursorSets.cpp
 	Source/Menus/Dialog/DialogMenu.cpp
 	Source/Menus/HackerMode/CodeEditor.cpp
 	Source/Menus/HackerMode/RadialMenu.cpp
@@ -1443,6 +1444,7 @@ list(APPEND GAME_HEADER
 	Source/Events/NavigationEvents.h
 	Source/GameWindow.h
 	Source/Menus/Confirmation/ConfirmationMenu.h
+	Source/Menus/CursorSets.h
 	Source/Menus/Dialog/DialogMenu.h
 	Source/Menus/HackerMode/CodeEditor.h
 	Source/Menus/HackerMode/RadialMenu.h

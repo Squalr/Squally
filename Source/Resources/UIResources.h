@@ -6,6 +6,23 @@
 
 namespace UIResources
 {
+	extern const std::string Cursors_Chat;
+	extern const std::string Cursors_Crosshair;
+	extern const std::string Cursors_Dagger;
+	extern const std::string Cursors_Exclaimation;
+	extern const std::string Cursors_Globe;
+	extern const std::string Cursors_Key;
+	extern const std::string Cursors_Lock;
+	extern const std::string Cursors_Map;
+	extern const std::string Cursors_MouseDrag;
+	extern const std::string Cursors_MouseIdle;
+	extern const std::string Cursors_MousePoint;
+	extern const std::string Cursors_MousePointPressed;
+	extern const std::string Cursors_Question;
+	extern const std::string Cursors_Skull;
+	extern const std::string Cursors_Sword;
+	extern const std::string Cursors_ZoomIn;
+	extern const std::string Cursors_ZoomOut;
 	extern const std::string EmptyImage;
 	extern const std::string Fonts_Texture_AlienText;
 	extern const std::string HUD_HealthBar;
@@ -273,10 +290,6 @@ namespace UIResources
 	extern const std::string Menus_MinigamesMenu_Hexus_IconHex;
 	extern const std::string Menus_MinigamesMenu_Hexus_IconSpecial;
 	extern const std::string Menus_MinigamesMenu_Hexus_WoodBackground;
-	extern const std::string Menus_MouseDrag;
-	extern const std::string Menus_MouseIdle;
-	extern const std::string Menus_MousePoint;
-	extern const std::string Menus_MousePointPressed;
 	extern const std::string Menus_Objects_ALCHEMY;
 	extern const std::string Menus_Objects_AMULET;
 	extern const std::string Menus_Objects_BAG_1;
