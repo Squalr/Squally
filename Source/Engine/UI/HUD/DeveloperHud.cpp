@@ -5,8 +5,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Mouse.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Resources/UIResources.h"
 
@@ -26,7 +25,7 @@ DeveloperHud* DeveloperHud::create()
 DeveloperHud::DeveloperHud()
 {
 	this->layerSelectionBackground = LayerColor::create(menuColor, 320.0f, 1280.0f);
-	this->saveButton = MenuSprite::create(UIResources::Menus_Buttons_DownloadV2Button, UIResources::Menus_Buttons_DownloadV2ButtonHover);
+	this->saveButton = ClickableNode::create(UIResources::Menus_Buttons_DownloadV2Button, UIResources::Menus_Buttons_DownloadV2ButtonHover);
 
 	this->layerSelectionBackground->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -87,7 +86,7 @@ void DeveloperHud::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void DeveloperHud::onSaveClick(MenuSprite* menuSprite)
+void DeveloperHud::onSaveClick(ClickableNode* menuSprite)
 {
 	this->serializableMap->serialize();
 }

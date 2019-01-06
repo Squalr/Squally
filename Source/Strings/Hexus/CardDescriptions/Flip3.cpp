@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_Flip3::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_Flip3";
+	}
+
 	std::string Hexus_CardDescriptions_Flip3::getStringAr()
 	{
 		return "قلب 3 بت من جميع البطاقات في صف واحد.";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_ContinueGame::getStringIdentifier()
+	{
+		return "Menus_ContinueGame";
+	}
+
 	std::string Menus_ContinueGame::getStringAr()
 	{
 		return "تواصل اللعبة";

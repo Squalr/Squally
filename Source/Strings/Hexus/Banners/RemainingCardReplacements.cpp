@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_RemainingCardReplacements::getStringIdentifier()
+	{
+		return "Hexus_Banners_RemainingCardReplacements";
+	}
+
 	std::string Hexus_Banners_RemainingCardReplacements::getStringAr()
 	{
 		return "استبدال البطاقة المتبقية: %s";

@@ -12,8 +12,8 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 
 class PauseMenu : public Hud
 {
@@ -34,18 +34,18 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onExitConfirm();
-	void onCloseClick(MenuSprite* menuSprite);
+	void onCloseClick(ClickableNode* menuSprite);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onResumeClick(MenuSprite* menuSprite);
-	void onOptionsClick(MenuSprite* menuSprite);
-	void onExitClick(MenuSprite* menuSprite);
+	void onResumeClick(ClickableNode* menuSprite);
+	void onOptionsClick(ClickableNode* menuSprite);
+	void onExitClick(ClickableNode* menuSprite);
 
 	cocos2d::Sprite* pauseWindow;
 	LocalizedLabel* pauseLabel;
-	MenuSprite* closeButton;
-	TextMenuSprite* resumeButton;
-	TextMenuSprite* optionsButton;
-	TextMenuSprite* exitButton;
+	ClickableNode* closeButton;
+	ClickableTextNode* resumeButton;
+	ClickableTextNode* optionsButton;
+	ClickableTextNode* exitButton;
 
 	std::function<void()> resumeClickCallback;
 	std::function<void()> optionsClickCallback;

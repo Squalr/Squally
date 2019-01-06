@@ -9,8 +9,6 @@
 #include "Engine/Input/MouseState.h"
 #include "Engine/UI/HUD/Hud.h"
 
-#include "Resources/UIResources.h"
-
 using namespace cocos2d;
 
 Mouse* Mouse::instance = nullptr;
@@ -34,10 +32,12 @@ Mouse* Mouse::getInstance()
 Mouse::Mouse()
 {
 	this->mouseHud = Hud::create();
-	this->mouseSpriteIdle = Sprite::create(UIResources::Menus_MouseIdle);
-	this->mouseSpritePoint = Sprite::create(UIResources::Menus_MousePoint);
-	this->mouseSpritePointPressed = Sprite::create(UIResources::Menus_MousePointPressed);
-	this->mouseSpriteDrag = Sprite::create(UIResources::Menus_MouseDrag);
+	this->mouseSpriteIdle = Node::create();
+	this->mouseSpritePoint = Node::create();
+	this->mouseSpritePointPressed = Node::create();
+	this->mouseSpriteDrag = Node::create();
+	this->cursorSets = std::map<int, CursorSet>();
+	this->activeCursorSet = -1;
 
 	// Anchor point is the top left for the mouse -- this is where the click happens
 	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -81,7 +81,38 @@ void Mouse::initializeListeners()
 	this->addGlobalEventListener(mouseStateUpdateListener);
 }
 
-const cocos2d::Vec2& Mouse::getPosition() const
+void Mouse::registerCursorSet(int setId, CursorSet cursorSet)
+{
+	this->cursorSets[setId] = cursorSet;
+}
+
+void Mouse::setActiveCursorSet(int setId)
+{
+	if (this->cursorSets.find(setId) == this->cursorSets.end())
+	{
+		return;
+	}
+
+	this->mouseSpriteIdle->removeAllChildren();
+	this->mouseSpritePoint->removeAllChildren();
+	this->mouseSpritePointPressed->removeAllChildren();
+	this->mouseSpriteDrag->removeAllChildren();
+
+	this->activeCursorSet = setId;
+	CursorSet cursorSet = this->cursorSets[this->activeCursorSet];
+
+	this->mouseSpriteIdle->addChild(Sprite::create(cursorSet.mouseSpriteIdleResource));
+	this->mouseSpritePoint->addChild(Sprite::create(cursorSet.mouseSpritePointResource));
+	this->mouseSpritePointPressed->addChild(Sprite::create(cursorSet.mouseSpritePointPressedResource));
+	this->mouseSpriteDrag->addChild(Sprite::create(cursorSet.mouseSpriteDragResource));
+}
+
+int Mouse::getActiveCursorSet()
+{
+	return this->activeCursorSet;
+}
+
+const Vec2& Mouse::getPosition() const
 {
 	return this->readMousePosition;
 }
@@ -111,7 +142,7 @@ void Mouse::onMouseStateUpdateEvent(EventCustom* eventCustom)
 	this->setSpriteToCursorPosition();
 }
 
-void Mouse::setActiveMouseSprite(Sprite* mouseSprite)
+void Mouse::setActiveMouseSprite(Node* mouseSprite)
 {
 	this->mouseSpriteIdle->setVisible(false);
 	this->mouseSpritePoint->setVisible(false);

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardsInStorage::getStringIdentifier()
+	{
+		return "Hexus_CardsInStorage";
+	}
+
 	std::string Hexus_CardsInStorage::getStringAr()
 	{
 		return "البطاقات في التخزين";

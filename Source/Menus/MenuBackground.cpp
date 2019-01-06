@@ -5,10 +5,9 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
-#include "Engine/UI/Mouse.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 

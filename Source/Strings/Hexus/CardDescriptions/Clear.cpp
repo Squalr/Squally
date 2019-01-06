@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_Clear::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_Clear";
+	}
+
 	std::string Hexus_CardDescriptions_Clear::getStringAr()
 	{
 		return "مسح جميع آثار الطقس.";

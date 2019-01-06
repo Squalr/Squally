@@ -10,7 +10,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"

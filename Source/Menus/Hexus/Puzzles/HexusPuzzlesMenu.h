@@ -12,7 +12,7 @@ namespace cocos2d
 
 class HexusPuzzleItem;
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class HexusPuzzlesMenu : public GlobalScene
 {
@@ -29,7 +29,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onCloseClick(MenuSprite* menuSprite);
+	void onCloseClick(ClickableNode* menuSprite);
 	void onMouseOver(HexusPuzzleItem* tutorialItem);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
@@ -39,7 +39,7 @@ private:
 	LocalizedLabel* titleLabel;
 	cocos2d::Sprite* descriptionBox;
 	LocalizedLabel* description;
-	MenuSprite* closeButton;
+	ClickableNode* closeButton;
 
 	cocos2d::ParticleSystem* nether;
 	cocos2d::ParticleSystem* swirl;

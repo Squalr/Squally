@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidPrefixCombination";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidPrefixCombination::getStringAr()
 	{
 		return "مجموعة بادئة غير صالحة";

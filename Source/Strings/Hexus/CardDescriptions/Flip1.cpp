@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_Flip1::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_Flip1";
+	}
+
 	std::string Hexus_CardDescriptions_Flip1::getStringAr()
 	{
 		return "اقلب الجزء الأول من جميع البطاقات في صف واحد.";

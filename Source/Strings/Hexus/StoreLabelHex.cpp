@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_StoreLabelHex::getStringIdentifier()
+	{
+		return "Hexus_StoreLabelHex";
+	}
+
 	std::string Hexus_StoreLabelHex::getStringAr()
 	{
 		return "F";

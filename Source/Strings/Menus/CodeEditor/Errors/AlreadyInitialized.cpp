@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_AlreadyInitialized";
+	}
+
 	std::string Menus_CodeEditor_Errors_AlreadyInitialized::getStringAr()
 	{
 		return "بالفعل التهيئة";

@@ -23,8 +23,8 @@ class HexusChapterPreviewVolcano;
 class HexusChapterPreviewObelisk;
 class HexusChapterPreviewMech;
 class LocalizedLabel;
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 
 class HexusChapterSelectMenu : public GlobalScene
 {
@@ -41,9 +41,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void loadProgress();
-	void onBackClick(MenuSprite* menuSprite);
-	void onDeckManagementClick(MenuSprite* menuSprite);
-	void onShopClick(MenuSprite* menuSprite);
+	void onBackClick(ClickableNode* menuSprite);
+	void onDeckManagementClick(ClickableNode* menuSprite);
+	void onShopClick(ClickableNode* menuSprite);
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
@@ -61,10 +61,10 @@ private:
 	HexusChapterPreviewVolcano* hexusChapterPreviewVolcano;
 	HexusChapterPreviewObelisk* hexusChapterPreviewObelisk;
 	HexusChapterPreviewMech* hexusChapterPreviewMech;
-	TextMenuSprite* deckManagementButton;
-	TextMenuSprite* shopButton;
+	ClickableTextNode* deckManagementButton;
+	ClickableTextNode* shopButton;
 	LocalizedLabel* chapterSelectLabel;
-	TextMenuSprite* backButton;
+	ClickableTextNode* backButton;
 
 	static HexusChapterSelectMenu* instance;
 };

@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventDispatcher.h"
 
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
 
@@ -37,11 +38,15 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
+	this->translationButton = ClickableNode::create(Node::create(), Node::create());
 	this->localizedString = nullptr;
+
+	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
+	this->addChild(this->translationButton);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -51,6 +56,13 @@ LocalizedLabel::~LocalizedLabel()
 void LocalizedLabel::onEnter()
 {
 	super::onEnter();
+
+	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
+	this->updateTranslationEditHitbox();
+	this->translationButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
+	});
 }
 
 LocalizedLabel* LocalizedLabel::clone()
@@ -169,6 +181,18 @@ std::string LocalizedLabel::getFont()
 	}
 }
 
+void LocalizedLabel::toggleAllowTranslationEdit(bool allowTranslationEdit)
+{
+	if (allowTranslationEdit)
+	{
+		this->translationButton->enableInteraction();
+	}
+	else
+	{
+		this->translationButton->disableInteraction();
+	}
+}
+
 void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 {
 	// Save some state we wish to keep
@@ -189,6 +213,8 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	{
 		this->enableOutline(outlineColor, outlineSize);
 	}
+
+	this->updateTranslationEditHitbox();
 }
 
 cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
@@ -365,4 +391,10 @@ float LocalizedLabel::getFontSizeP(std::string fontResource)
 float LocalizedLabel::getFontSizeSmall(std::string fontResource)
 {
 	return 16.0f;
+}
+
+void LocalizedLabel::updateTranslationEditHitbox()
+{
+	this->translationButton->setContentSize(this->getContentSize());
+	this->translationButton->setPosition(Vec2(this->getContentSize().width / 2.0f, 0.0f));
 }

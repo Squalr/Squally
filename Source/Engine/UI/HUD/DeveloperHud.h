@@ -4,7 +4,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-class MenuSprite;
+class ClickableNode;
 class SerializableMap;
 
 namespace cocos2d
@@ -27,11 +27,11 @@ private:
 	void initializePositions();
 	void initializeListeners();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onSaveClick(MenuSprite* menuSprite);
+	void onSaveClick(ClickableNode* menuSprite);
 
 	SerializableMap* serializableMap;
 	cocos2d::LayerColor* layerSelectionBackground;
-	MenuSprite* saveButton;
+	ClickableNode* saveButton;
 
 	static const cocos2d::Color4B menuColor;
 };

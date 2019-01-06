@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_LastStand::getStringIdentifier()
+	{
+		return "Hexus_Banners_LastStand";
+	}
+
 	std::string Hexus_Banners_LastStand::getStringAr()
 	{
 		return "الموقف الأخير";

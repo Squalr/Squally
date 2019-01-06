@@ -8,12 +8,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackableObject.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/HackerMode/CodeEditor.h"
 
@@ -197,10 +197,10 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 	Node* clickableNode = Node::create();
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
-	MenuSprite* radialNodeClickableSprite = MenuSprite::create(clickableNode, Node::create());
+	ClickableNode* radialNodeClickableSprite = ClickableNode::create(clickableNode, Node::create());
 
 	radialNode->drawCircle(Vec2::ZERO, RadialMenu::IconRadius, 0.0f, 64, false, color);
-	radialNodeClickableSprite->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	radialNodeClickableSprite->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		clickCallback();
 	});

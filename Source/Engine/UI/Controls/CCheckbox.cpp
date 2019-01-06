@@ -2,11 +2,11 @@
 
 #include "cocos/base/ccMacros.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 
 using namespace cocos2d;
 
-CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState,
+CCheckbox* CCheckbox::create(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
 		std::function<bool(CCheckbox*, bool)> callback)
 {
 	CCheckbox* instance = new CCheckbox(uncheckedButton, checkedButton, initialState, callback);
@@ -16,7 +16,7 @@ CCheckbox* CCheckbox::create(MenuSprite* uncheckedButton, MenuSprite* checkedBut
 	return instance;
 }
 
-CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState,
+CCheckbox::CCheckbox(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
 		std::function<bool(CCheckbox*, bool)> callback)
 {
 	this->isToggled = initialState;
@@ -24,7 +24,7 @@ CCheckbox::CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, boo
 	this->offSwitch = uncheckedButton;
 	this->onSwitch = checkedButton;
 
-	this->clickableMenus = new std::vector<MenuSprite*>();
+	this->clickableMenus = new std::vector<ClickableNode*>();
 
 	this->clickableMenus->push_back(this->offSwitch);
 	this->clickableMenus->push_back(this->onSwitch);

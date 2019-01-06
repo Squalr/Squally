@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Leave::getStringIdentifier()
+	{
+		return "Menus_Leave";
+	}
+
 	std::string Menus_Leave::getStringAr()
 	{
 		return "غادر";

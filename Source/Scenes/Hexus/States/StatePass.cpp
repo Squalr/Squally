@@ -7,11 +7,10 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableIconNode.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/IconMenuSprite.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Hexus/Config.h"
 
 #include "Resources/HexusResources.h"
@@ -38,7 +37,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 {
 	// Pass
 	this->passSprite = Sprite::create(HexusResources::Flags);
-	this->passButton = IconMenuSprite::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
+	this->passButton = ClickableIconNode::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->passLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Pass::create());
 
@@ -48,7 +47,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 
 	// Last stand
 	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
-	this->lastStandButton = IconMenuSprite::create(HexusResources::ShieldButton, HexusResources::ShieldButtonSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
+	this->lastStandButton = ClickableIconNode::create(HexusResources::ShieldButton, HexusResources::ShieldButtonSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->lastStandLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_LastStand::create());
 	
@@ -58,7 +57,7 @@ StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 
 	// Claim victory
 	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
-	this->claimVictoryButton = IconMenuSprite::create(HexusResources::Victory, HexusResources::VictorySelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
+	this->claimVictoryButton = ClickableIconNode::create(HexusResources::Victory, HexusResources::VictorySelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ClaimVictory::create());
 	
@@ -188,7 +187,7 @@ void StatePass::initializePositions()
 	this->enemyClaimVictoryParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
 }
 
-void StatePass::onPassClick(MenuSprite* menuSprite, GameState* gameState)
+void StatePass::onPassClick(ClickableNode* menuSprite, GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::Pass);
 }

@@ -3,7 +3,7 @@
 
 #include "Engine/SmartNode.h"
 
-class MenuSprite;
+class ClickableNode;
 
 namespace cocos2d
 {
@@ -28,11 +28,11 @@ private:
 
 	void initializeListeners() override;
 	void onGroupCheck(cocos2d::EventCustom* event);
-	void onUncheckClick(MenuSprite* menuSprite);
-	void onCheckClick(MenuSprite* menuSprite);
+	void onUncheckClick(ClickableNode* menuSprite);
+	void onCheckClick(ClickableNode* menuSprite);
 
-	MenuSprite * unchecked;
-	MenuSprite * checked;
+	ClickableNode * unchecked;
+	ClickableNode * checked;
 	bool isChecked;
 
 	int groupId;

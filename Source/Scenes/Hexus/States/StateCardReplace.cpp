@@ -5,8 +5,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
@@ -36,7 +36,7 @@ StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardRepla
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);
 	doneButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->doneButton = TextMenuSprite::create(
+	this->doneButton = ClickableTextNode::create(
 		doneButtonLabel,
 		doneButtonLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
@@ -65,7 +65,7 @@ void StateCardReplace::initializePositions()
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
 
-void StateCardReplace::onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState)
+void StateCardReplace::onEndReplaceCards(ClickableNode* menuSprite, GameState* gameState)
 {
 	gameState->cardReplaceCount = 0;
 

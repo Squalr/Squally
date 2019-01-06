@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_F_UseMov::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_F_UseMov";
+	}
+
 	std::string Hexus_Tutorials_F_UseMov::getStringAr()
 	{
 		return "تنسخ بطاقة 'MOV' الهجوم من إحدى البطاقات الخاصة بك إلى أي بطاقة أخرى! استخدمه لإضعاف خصمك!";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidRelocationEntry";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidRelocationEntry::getStringAr()
 	{
 		return "إدخال غير صالح للنقل";

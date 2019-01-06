@@ -4,10 +4,10 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/CRadioButton.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/UIResources.h"
@@ -47,9 +47,9 @@ VideoTab::VideoTab()
 	this->fullScreenLabel->setAlignment(TextHAlignment::LEFT);
 	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2);
 
-	MenuSprite* uncheckedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
-	MenuSprite* checkedMenuSprite = MenuSprite::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOnHover);
-	this->fullScreenButton = CCheckbox::create(uncheckedMenuSprite, checkedMenuSprite, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(VideoTab::onFullScreenChanged, this));
+	ClickableNode* uncheckedClickableNode = ClickableNode::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
+	ClickableNode* checkedClickableNode = ClickableNode::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOnHover);
+	this->fullScreenButton = CCheckbox::create(uncheckedClickableNode, checkedClickableNode, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(VideoTab::onFullScreenChanged, this));
 
 	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1080x768::create());
 	this->label1152x864 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1152x864::create());

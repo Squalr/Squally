@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidTypeInfo";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidTypeInfo::getStringAr()
 	{
 		return "معلومات النوع غير صالحة";

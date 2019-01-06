@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_LineNumber::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_LineNumber";
+	}
+
 	std::string Menus_CodeEditor_LineNumber::getStringAr()
 	{
 		return "رقم السطر: ";

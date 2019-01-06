@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Options_Resolution1920x1080::getStringIdentifier()
+	{
+		return "Menus_Options_Resolution1920x1080";
+	}
+
 	std::string Menus_Options_Resolution1920x1080::getStringAr()
 	{
 		return "1920x1080";

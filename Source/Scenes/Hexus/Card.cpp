@@ -5,9 +5,9 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/Config.h"
@@ -101,7 +101,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 		}
 	}
 
-	this->cardSelect = MenuSprite::create(HexusResources::CardUnselected, HexusResources::CardSelect);
+	this->cardSelect = ClickableNode::create(HexusResources::CardUnselected, HexusResources::CardSelect);
 	this->cardSelect->setClickSound(SoundResources::Menus_Card_Game_UI_Button_Light_Reverb_02);
 	this->cardSprite = Sprite::create(data->cardResourceFile);
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
@@ -436,7 +436,7 @@ void Card::setMouseClickCallback(std::function<void(Card*)> callback)
 	this->mouseClickCallback = callback;
 }
 
-void Card::onMouseOver(MenuSprite* menuSprite)
+void Card::onMouseOver(ClickableNode* menuSprite)
 {
 	if (this->mouseOverCallback != nullptr)
 	{
@@ -444,7 +444,7 @@ void Card::onMouseOver(MenuSprite* menuSprite)
 	}
 }
 
-void Card::onMouseClick(MenuSprite* menuSprite)
+void Card::onMouseClick(ClickableNode* menuSprite)
 {
 	if (this->mouseClickCallback != nullptr)
 	{

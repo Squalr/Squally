@@ -4,7 +4,7 @@
 #include "cocos/2d/CCLayer.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
@@ -30,7 +30,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->opponentSprite->playAnimation();
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 
-	this->frame = MenuSprite::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
+	this->frame = ClickableNode::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 
 	DrawNode* clipStencil = DrawNode::create();
@@ -73,7 +73,7 @@ void HexusOpponentPreview::initializePositions()
 	}
 }
 
-void HexusOpponentPreview::onOpponentClick(MenuSprite* HexusOpponentPreview)
+void HexusOpponentPreview::onOpponentClick(ClickableNode* HexusOpponentPreview)
 {
 	NavigationEvents::navigateHexus(NavigationEvents::NavigateHexusArgs(this->hexusOpponentData));
 }

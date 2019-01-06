@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_DecCards::getStringIdentifier()
+	{
+		return "Hexus_DecCards";
+	}
+
 	std::string Hexus_DecCards::getStringAr()
 	{
 		return "بطاقات عشرية";

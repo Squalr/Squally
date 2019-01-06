@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_Victory::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_Victory";
+	}
+
 	std::string Hexus_Tutorials_A_Victory::getStringAr()
 	{
 		return "";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidOption::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidOption";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidOption::getStringAr()
 	{
 		return "خيار %s أو %s غير صالح";

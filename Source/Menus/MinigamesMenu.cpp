@@ -7,10 +7,10 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
@@ -60,7 +60,7 @@ MinigamesMenu::MinigamesMenu()
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -78,7 +78,7 @@ MinigamesMenu::MinigamesMenu()
 	hexusLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	hexusLabelHover->enableGlow(glowColor);
 
-	this->hexusButton = TextMenuSprite::create(
+	this->hexusButton = ClickableTextNode::create(
 		hexusLabel,
 		hexusLabelHover,
 		UIResources::Menus_MinigamesMenu_Banner,
@@ -105,7 +105,7 @@ MinigamesMenu::MinigamesMenu()
 	hexusPuzzlesLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	hexusPuzzlesLabelHover->enableGlow(glowColor);
 
-	this->hexusPuzzlesButton = TextMenuSprite::create(
+	this->hexusPuzzlesButton = ClickableTextNode::create(
 		hexusPuzzlesLabel,
 		hexusPuzzlesLabelHover,
 		UIResources::Menus_MinigamesMenu_Banner,
@@ -224,22 +224,22 @@ void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MinigamesMenu::onBackClick(MenuSprite* menuSprite)
+void MinigamesMenu::onBackClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }
 
-void MinigamesMenu::onHexusClick(MenuSprite* menuSprite)
+void MinigamesMenu::onHexusClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateHexusChapterSelect();
 }
 
-void MinigamesMenu::onHexusPuzzlesClick(MenuSprite* menuSprite)
+void MinigamesMenu::onHexusPuzzlesClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateHexusPuzzles();
 }
 
-TextMenuSprite* MinigamesMenu::createComingSoonButton()
+ClickableTextNode* MinigamesMenu::createComingSoonButton()
 {
 	const Size shadowSize = Size(-2.0f, -2.0f);
 	const int shadowBlur = 2;
@@ -261,7 +261,7 @@ TextMenuSprite* MinigamesMenu::createComingSoonButton()
 	comingSoonLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	comingSoonLabelHover->enableGlow(glowColor);
 
-	TextMenuSprite* comingSoonButton = TextMenuSprite::create(
+	ClickableTextNode* comingSoonButton = ClickableTextNode::create(
 		comingSoonLabel,
 		comingSoonLabelHover,
 		UIResources::Menus_MinigamesMenu_Banner,

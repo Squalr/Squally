@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Actions_ChooseSourceCard::getStringIdentifier()
+	{
+		return "Hexus_Actions_ChooseSourceCard";
+	}
+
 	std::string Hexus_Actions_ChooseSourceCard::getStringAr()
 	{
 		return "اختر بطاقة مصدر.";

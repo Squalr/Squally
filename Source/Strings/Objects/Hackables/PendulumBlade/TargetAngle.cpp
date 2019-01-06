@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Objects_Hackables_PendulumBlade_TargetAngle::getStringIdentifier()
+	{
+		return "Objects_Hackables_PendulumBlade_TargetAngle";
+	}
+
 	std::string Objects_Hackables_PendulumBlade_TargetAngle::getStringAr()
 	{
 		return "تعيين الهدف زاوية";

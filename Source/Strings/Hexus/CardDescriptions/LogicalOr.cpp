@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_LogicalOr::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_LogicalOr";
+	}
+
 	std::string Hexus_CardDescriptions_LogicalOr::getStringAr()
 	{
 		return "حدد واحدة من البطاقات الخاصة بك وقم بإجراء OR منطقي مقابل القيمة باستخدام بطاقة أخرى. يتم تخزين قيمة النتيجة في البطاقة الهدف.";

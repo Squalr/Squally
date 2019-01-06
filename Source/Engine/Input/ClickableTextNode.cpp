@@ -1,4 +1,4 @@
-#include "TextMenuSprite.h"
+#include "ClickableTextNode.h"
 
 #include <typeinfo>
 
@@ -8,13 +8,13 @@
 
 using namespace cocos2d;
 
-TextMenuSprite* TextMenuSprite::create(
+ClickableTextNode* ClickableTextNode::create(
 	Label* normalLabel,
 	Label* selectedLabel,
 	std::string spriteNormal,
 	std::string spriteSelectedResource)
 {
-	return TextMenuSprite::create(
+	return ClickableTextNode::create(
 		normalLabel,
 		selectedLabel,
 		Sprite::create(spriteNormal),
@@ -22,13 +22,13 @@ TextMenuSprite* TextMenuSprite::create(
 	);
 }
 
-TextMenuSprite* TextMenuSprite::create(
+ClickableTextNode* ClickableTextNode::create(
 	Label* normalLabel,
 	Label* selectedLabel,
 	Node* spriteNormal,
 	std::string spriteSelectedResource)
 {
-	TextMenuSprite* instance = new TextMenuSprite(
+	ClickableTextNode* instance = new ClickableTextNode(
 		normalLabel,
 		selectedLabel,
 		spriteNormal, 
@@ -40,13 +40,13 @@ TextMenuSprite* TextMenuSprite::create(
 	return instance;
 }
 
-TextMenuSprite* TextMenuSprite::create(
+ClickableTextNode* ClickableTextNode::create(
 	Label* normalLabel,
 	Label* selectedLabel,
 	Node* nodeNormal, 
 	Node* nodeSelected)
 {
-	TextMenuSprite* instance = new TextMenuSprite(
+	ClickableTextNode* instance = new ClickableTextNode(
 		normalLabel,
 		selectedLabel,
 		nodeNormal,
@@ -57,11 +57,11 @@ TextMenuSprite* TextMenuSprite::create(
 	return instance;
 }
 
-TextMenuSprite::TextMenuSprite(
+ClickableTextNode::ClickableTextNode(
 	Label* normalLabel,
 	Label* selectedLabel,
 	Node* nodeNormal,
-	Node* nodeSelected) : MenuSprite(nodeNormal, nodeSelected)
+	Node* nodeSelected) : ClickableNode(nodeNormal, nodeSelected)
 {
 	this->normalContentLabel = normalLabel;
 	this->selectedContentLabel = selectedLabel;
@@ -79,11 +79,11 @@ TextMenuSprite::TextMenuSprite(
 	nodeSelected->addChild(selectedLabel);
 }
 
-TextMenuSprite::~TextMenuSprite()
+ClickableTextNode::~ClickableTextNode()
 {
 }
 
-void TextMenuSprite::setTextOffset(Vec2 offset)
+void ClickableTextNode::setTextOffset(Vec2 offset)
 {
 	Vec2 center = this->getContentSize() / 2.0f;
 

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Decimal12::getStringIdentifier()
+	{
+		return "Hexus_Cards_Decimal12";
+	}
+
 	std::string Hexus_Cards_Decimal12::getStringAr()
 	{
 		return "Zatrax";

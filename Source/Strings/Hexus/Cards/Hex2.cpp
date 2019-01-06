@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Hex2::getStringIdentifier()
+	{
+		return "Hexus_Cards_Hex2";
+	}
+
 	std::string Hexus_Cards_Hex2::getStringAr()
 	{
 		return "دودة شيطانية";

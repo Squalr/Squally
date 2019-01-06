@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_LogicalOr::getStringIdentifier()
+	{
+		return "Hexus_Cards_LogicalOr";
+	}
+
 	std::string Hexus_Cards_LogicalOr::getStringAr()
 	{
 		return "منطقية أو";

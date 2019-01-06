@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_RoundTied::getStringIdentifier()
+	{
+		return "Hexus_Banners_RoundTied";
+	}
+
 	std::string Hexus_Banners_RoundTied::getStringAr()
 	{
 		return "جولة مرتبطة";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_PlayerFirst::getStringIdentifier()
+	{
+		return "Hexus_Banners_PlayerFirst";
+	}
+
 	std::string Hexus_Banners_PlayerFirst::getStringAr()
 	{
 		return "تذهب أولا";

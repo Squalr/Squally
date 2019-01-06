@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_NotConsecutiveRegisters";
+	}
+
 	std::string Menus_CodeEditor_Errors_NotConsecutiveRegisters::getStringAr()
 	{
 		return "لا سجلات متتالية";

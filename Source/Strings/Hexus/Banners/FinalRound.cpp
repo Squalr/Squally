@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_FinalRound::getStringIdentifier()
+	{
+		return "Hexus_Banners_FinalRound";
+	}
+
 	std::string Hexus_Banners_FinalRound::getStringAr()
 	{
 		return "الجولة النهائية!";

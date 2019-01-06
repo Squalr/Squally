@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_StoryMode::getStringIdentifier()
+	{
+		return "Menus_StoryMode";
+	}
+
 	std::string Menus_StoryMode::getStringAr()
 	{
 		return "وضع القصة";

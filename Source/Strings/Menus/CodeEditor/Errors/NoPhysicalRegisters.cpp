@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_NoPhysicalRegisters";
+	}
+
 	std::string Menus_CodeEditor_Errors_NoPhysicalRegisters::getStringAr()
 	{
 		return "لا مزيد من السجلات المادية";

@@ -8,8 +8,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 class TitleScreenBackground;
 
 class TitleScreen : public GlobalScene
@@ -28,20 +28,20 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	void onStoryModeClick(MenuSprite* menuSprite);
-	void onMinigamesClick(MenuSprite* menuSprite);
-	void onOptionsClick(MenuSprite* menuSprite);
-	void onExitClick(MenuSprite* menuSprite);
+	void onStoryModeClick(ClickableNode* menuSprite);
+	void onMinigamesClick(ClickableNode* menuSprite);
+	void onOptionsClick(ClickableNode* menuSprite);
+	void onExitClick(ClickableNode* menuSprite);
 
 	TitleScreenBackground* background;
 
 	cocos2d::Sprite* ether;
 	cocos2d::ParticleSystem* etherParticles;
 
-	TextMenuSprite* storyModeButton;
-	TextMenuSprite* minigamesButton;
-	TextMenuSprite* optionsButton;
-	TextMenuSprite* exitButton;
+	ClickableTextNode* storyModeButton;
+	ClickableTextNode* minigamesButton;
+	ClickableTextNode* optionsButton;
+	ClickableTextNode* exitButton;
 	cocos2d::Sprite* titleBar;
 	cocos2d::Sprite* title;
 

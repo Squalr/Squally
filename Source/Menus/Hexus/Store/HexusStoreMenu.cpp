@@ -12,11 +12,11 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Special/Shopkeeper.h"
 #include "Events/NavigationEvents.h"
@@ -59,11 +59,11 @@ void HexusStoreMenu::registerGlobalScene()
 
 HexusStoreMenu::HexusStoreMenu()
 {
-	this->lootBoxes = std::vector<std::tuple<MenuSprite*, int>>();
-	this->binaryCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
-	this->decimalCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
-	this->hexCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
-	this->specialCards = std::vector<std::tuple<MenuSprite*, MenuCard*, int>>();
+	this->lootBoxes = std::vector<std::tuple<ClickableNode*, int>>();
+	this->binaryCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
+	this->decimalCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
+	this->hexCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
+	this->specialCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
 	this->limitLabels = std::map<MenuCard*, std::tuple<ConstantString*, ConstantString*, LocalizedLabel*>>();
 
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
@@ -92,7 +92,7 @@ HexusStoreMenu::HexusStoreMenu()
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -109,7 +109,7 @@ HexusStoreMenu::HexusStoreMenu()
 	lootBoxReturnLabel->enableOutline(Color4B::BLACK, 2);
 	lootBoxReturnLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->lootBoxReturnButton = TextMenuSprite::create(
+	this->lootBoxReturnButton = ClickableTextNode::create(
 		lootBoxReturnLabel,
 		lootBoxReturnLabelSelected,
 		UIResources::Menus_Buttons_WoodButton,
@@ -118,11 +118,11 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->lootBoxReturnButton->disableInteraction(0);
 
-	this->lootBoxButton = MenuSprite::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->binaryButton = MenuSprite::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->decimalButton = MenuSprite::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->hexButton = MenuSprite::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->specialButton = MenuSprite::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
+	this->lootBoxButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
+	this->binaryButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
+	this->decimalButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
+	this->hexButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
+	this->specialButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
 
 	const Size scrollPaneSize = Size(840.0f, 720.0f);
 
@@ -221,22 +221,22 @@ HexusStoreMenu::HexusStoreMenu()
 	}
 
 	// Sort cards on price
-	std::sort(this->binaryCards.begin(), this->binaryCards.end(), [](std::tuple<MenuSprite*, MenuCard*, int> a, std::tuple<MenuSprite*, MenuCard*, int> b) -> bool
+	std::sort(this->binaryCards.begin(), this->binaryCards.end(), [](std::tuple<ClickableNode*, MenuCard*, int> a, std::tuple<ClickableNode*, MenuCard*, int> b) -> bool
 	{
 		return std::get<2>(a) < std::get<2>(b);
 	});
 
-	std::sort(this->decimalCards.begin(), this->decimalCards.end(), [](std::tuple<MenuSprite*, MenuCard*, int> a, std::tuple<MenuSprite*, MenuCard*, int> b) -> bool
+	std::sort(this->decimalCards.begin(), this->decimalCards.end(), [](std::tuple<ClickableNode*, MenuCard*, int> a, std::tuple<ClickableNode*, MenuCard*, int> b) -> bool
 	{
 		return std::get<2>(a) < std::get<2>(b);
 	});
 
-	std::sort(this->hexCards.begin(), this->hexCards.end(), [](std::tuple<MenuSprite*, MenuCard*, int> a, std::tuple<MenuSprite*, MenuCard*, int> b) -> bool
+	std::sort(this->hexCards.begin(), this->hexCards.end(), [](std::tuple<ClickableNode*, MenuCard*, int> a, std::tuple<ClickableNode*, MenuCard*, int> b) -> bool
 	{
 		return std::get<2>(a) < std::get<2>(b);
 	});
 
-	std::sort(this->specialCards.begin(), this->specialCards.end(), [](std::tuple<MenuSprite*, MenuCard*, int> a, std::tuple<MenuSprite*, MenuCard*, int> b) -> bool
+	std::sort(this->specialCards.begin(), this->specialCards.end(), [](std::tuple<ClickableNode*, MenuCard*, int> a, std::tuple<ClickableNode*, MenuCard*, int> b) -> bool
 	{
 		return std::get<2>(a) < std::get<2>(b);
 	});
@@ -442,13 +442,13 @@ void HexusStoreMenu::initializePositions()
 	specialCardsScrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
 }
 
-std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices)
+std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices)
 {
 	SmartAnimationNode* animationNode = SmartAnimationNode::create(lootBoxAnimations);
 
 	animationNode->playAnimation();
 
-	MenuSprite* frame = MenuSprite::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
+	ClickableNode* frame = ClickableNode::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
@@ -469,12 +469,12 @@ std::tuple<MenuSprite*, int> HexusStoreMenu::constructLootBoxButton(std::string 
 	frame->addChild(goldIcon);
 	frame->addChild(priceLabel);
 
-	return std::tuple<MenuSprite*, int>(frame, price);
+	return std::tuple<ClickableNode*, int>(frame, price);
 }
 
-std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* cardData)
+std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* cardData)
 {
-	MenuSprite* cardContainer =  MenuSprite::create(UIResources::Menus_StoreMenu_CardPanel, UIResources::Menus_StoreMenu_CardPanelSelected);
+	ClickableNode* cardContainer =  ClickableNode::create(UIResources::Menus_StoreMenu_CardPanel, UIResources::Menus_StoreMenu_CardPanelSelected);
 	MenuCard* menuCard = MenuCard::create(Card::CardStyle::Earth, cardData);
 	int price = 0;
 
@@ -610,12 +610,12 @@ std::tuple<MenuSprite*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* 
 
 	this->limitLabels[menuCard] = std::make_tuple(countString, limitString, cardLimitLabel);
 
-	return std::tuple<MenuSprite*, MenuCard*, int>(cardContainer, menuCard, price);
+	return std::tuple<ClickableNode*, MenuCard*, int>(cardContainer, menuCard, price);
 }
 
 void HexusStoreMenu::updateAllCardLimits()
 {
-	auto iterateAndUpdateCardLimits = [=](std::vector<std::tuple<MenuSprite*, MenuCard*, int>> cards)
+	auto iterateAndUpdateCardLimits = [=](std::vector<std::tuple<ClickableNode*, MenuCard*, int>> cards)
 	{
 		for (auto it = this->binaryCards.begin(); it != this->binaryCards.end(); it++)
 		{
@@ -650,7 +650,7 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, ConstantString* 
 	}
 }
 
-void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
+void HexusStoreMenu::onCardClick(ClickableNode* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
 {
 	int gold = CardStorage::getGold();
 
@@ -671,7 +671,7 @@ void HexusStoreMenu::onCardClick(MenuSprite* card, CardData* cardData, int price
 	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 }
 
-void HexusStoreMenu::onLootBoxClick(MenuSprite* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
+void HexusStoreMenu::onLootBoxClick(ClickableNode* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
 {
 	int gold = CardStorage::getGold();
 
@@ -806,7 +806,7 @@ void HexusStoreMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> ch
 	));
 }
 
-void HexusStoreMenu::onBackClick(MenuSprite* menuSprite)
+void HexusStoreMenu::onBackClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }

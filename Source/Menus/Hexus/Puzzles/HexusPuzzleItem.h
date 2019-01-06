@@ -12,7 +12,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class HexusPuzzleItem;
-class MenuSprite;
+class ClickableNode;
 
 class HexusPuzzleItem : public SmartNode
 {
@@ -20,7 +20,7 @@ public:
 	static HexusPuzzleItem* create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver);
 	void initializePositions();
 
-	MenuSprite* startButton;
+	ClickableNode* startButton;
 
 	std::string tutorialDescription;
 	std::string tutorialMapFile;
@@ -34,8 +34,8 @@ protected:
 
 private:
 	typedef SmartNode super;
-	void onTutorialClick(MenuSprite* HexusPuzzleItem);
-	void onTutorialMouseOver(MenuSprite* HexusPuzzleItem);
+	void onTutorialClick(ClickableNode* HexusPuzzleItem);
+	void onTutorialMouseOver(ClickableNode* HexusPuzzleItem);
 
 	std::function<void(HexusPuzzleItem*)> onMouseOverEvent;
 	bool isLevelComplete;

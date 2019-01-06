@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary2::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary2";
+	}
+
 	std::string Hexus_Cards_Binary2::getStringAr()
 	{
 		return "ممتاز";

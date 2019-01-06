@@ -4,9 +4,9 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 
@@ -34,7 +34,7 @@ PauseMenu* PauseMenu::create()
 PauseMenu::PauseMenu()
 {
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = MenuSprite::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Pause::create());
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
@@ -77,19 +77,19 @@ PauseMenu::PauseMenu()
 	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	exitLabelHover->enableGlow(glowColor);
 
-	this->resumeButton = TextMenuSprite::create(
+	this->resumeButton = ClickableTextNode::create(
 		resumeLabel,
 		resumeLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
 		UIResources::Menus_Buttons_GenericButtonHover);
 
-	this->optionsButton = TextMenuSprite::create(
+	this->optionsButton = ClickableTextNode::create(
 		optionsLabel,
 		optionsLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
 		UIResources::Menus_Buttons_GenericButtonHover);
 
-	this->exitButton = TextMenuSprite::create(
+	this->exitButton = ClickableTextNode::create(
 		exitLabel,
 		exitLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -200,7 +200,7 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void PauseMenu::onCloseClick(MenuSprite* menuSprite)
+void PauseMenu::onCloseClick(ClickableNode* menuSprite)
 {
 	if (this->resumeClickCallback != nullptr)
 	{
@@ -208,7 +208,7 @@ void PauseMenu::onCloseClick(MenuSprite* menuSprite)
 	}
 }
 
-void PauseMenu::onResumeClick(MenuSprite* menuSprite)
+void PauseMenu::onResumeClick(ClickableNode* menuSprite)
 {
 	if (this->resumeClickCallback != nullptr)
 	{
@@ -216,7 +216,7 @@ void PauseMenu::onResumeClick(MenuSprite* menuSprite)
 	}
 }
 
-void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
+void PauseMenu::onOptionsClick(ClickableNode* menuSprite)
 {
 	if (this->optionsClickCallback != nullptr)
 	{
@@ -224,7 +224,7 @@ void PauseMenu::onOptionsClick(MenuSprite* menuSprite)
 	}
 }
 
-void PauseMenu::onExitClick(MenuSprite* menuSprite)
+void PauseMenu::onExitClick(ClickableNode* menuSprite)
 {
 	if (this->exitClickCallback != nullptr)
 	{

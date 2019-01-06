@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Pass::getStringIdentifier()
+	{
+		return "Hexus_Pass";
+	}
+
 	std::string Hexus_Pass::getStringAr()
 	{
 		return "البشري";

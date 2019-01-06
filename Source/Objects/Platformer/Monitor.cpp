@@ -5,9 +5,10 @@
 #include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Menus/Dialog/DialogMenu.h"
+
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 
@@ -31,7 +32,7 @@ Monitor::Monitor(ValueMap* initProperties) : HackableObject(initProperties)
 	this->monitorDialog->retain();
 
 	this->monitorSpriteFloating = FloatingSprite::create(ObjectResources::Monitor, Vec2(2.0f, 24.0f), Vec2(7.0f, 7.0f));
-	this->monitorSprite = MenuSprite::create(this->monitorSpriteFloating, Sprite::create(ObjectResources::MonitorSelected));
+	this->monitorSprite = ClickableNode::create(this->monitorSpriteFloating, Sprite::create(ObjectResources::MonitorSelected));
 	this->monitorParticles = ParticleSystemQuad::create(ParticleResources::Spark);
 	this->monitorParticlesBack = ParticleSystemQuad::create(ParticleResources::Spark);
 	this->monitorSparkles = ParticleSystemQuad::create(ParticleResources::Sparkles);
@@ -74,7 +75,7 @@ Monitor::~Monitor()
 {
 }
 
-void Monitor::onMonitorClick(MenuSprite* menuSprite)
+void Monitor::onMonitorClick(ClickableNode* menuSprite)
 {
 	// this->getEventDispatcher()->dispatchCustomEvent(DialogEvents::DialogOpenEvent, DialogEvents::DialogOpenArgs(this->monitorDialog));
 }

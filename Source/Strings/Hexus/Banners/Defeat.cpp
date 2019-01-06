@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_Defeat::getStringIdentifier()
+	{
+		return "Hexus_Banners_Defeat";
+	}
+
 	std::string Hexus_Banners_Defeat::getStringAr()
 	{
 		return "هزيمة!";

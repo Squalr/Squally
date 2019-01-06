@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidParentLabel";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidParentLabel::getStringAr()
 	{
 		return "تسمية أصل غير صالحة";

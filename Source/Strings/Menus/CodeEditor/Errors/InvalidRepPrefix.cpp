@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidRepPrefix";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidRepPrefix::getStringAr()
 	{
 		return "بادئة تكرار غير صالحة";

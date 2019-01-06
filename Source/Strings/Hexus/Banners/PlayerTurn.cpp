@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_PlayerTurn::getStringIdentifier()
+	{
+		return "Hexus_Banners_PlayerTurn";
+	}
+
 	std::string Hexus_Banners_PlayerTurn::getStringAr()
 	{
 		return "دورك";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_NoHeapMemory";
+	}
+
 	std::string Menus_CodeEditor_Errors_NoHeapMemory::getStringAr()
 	{
 		return "لا ذاكرة كومة";

@@ -10,7 +10,7 @@ namespace cocos2d
 
 class ConstantString;
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class HexusRewardsMenu : public GlobalScene
 {
@@ -27,14 +27,14 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onRewardsOpen(int reward, bool isRewardReduced);
-	void onReturnClick(MenuSprite* menuSprite);
+	void onReturnClick(ClickableNode* menuSprite);
 
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* goldSprite;
 	cocos2d::Sprite* goldSpriteLesser;
 	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
-	MenuSprite* returnButton;
+	ClickableNode* returnButton;
 
 	static HexusRewardsMenu* instance;
 	static const std::string KeyScheduleHexusGoldTick;

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_QuitToTitle::getStringIdentifier()
+	{
+		return "Menus_QuitToTitle";
+	}
+
 	std::string Menus_QuitToTitle::getStringAr()
 	{
 		return "استقال الى العنوان";

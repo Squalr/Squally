@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_DaemonsHallow::getStringIdentifier()
+	{
+		return "Menus_Maps_DaemonsHallow";
+	}
+
 	std::string Menus_Maps_DaemonsHallow::getStringAr()
 	{
 		return "شيطان ديمان";

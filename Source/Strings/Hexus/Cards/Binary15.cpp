@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary15::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary15";
+	}
+
 	std::string Hexus_Cards_Binary15::getStringAr()
 	{
 		return "golem المعدنية";

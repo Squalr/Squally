@@ -10,7 +10,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
-class MenuSprite;
+class ClickableNode;
 class LocalizedLabel;
 
 class HexusChapterPreview : public SmartNode
@@ -30,10 +30,10 @@ protected:
 
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onOpponentClick(MenuSprite* HexusChapterPreview);
+	void onOpponentClick(ClickableNode* HexusChapterPreview);
 	
 	cocos2d::ClippingNode* frameClip;
-	MenuSprite* frame;
+	ClickableNode* frame;
 	LocalizedLabel* text;
 	std::function<void()> callback;
 

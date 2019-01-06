@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_AllocationEditor::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_AllocationEditor";
+	}
+
 	std::string Menus_CodeEditor_AllocationEditor::getStringAr()
 	{
 		return "محرر التخصيص";

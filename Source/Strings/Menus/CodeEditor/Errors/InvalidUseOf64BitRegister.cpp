@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitRegister::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidUseOf64BitRegister";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidUseOf64BitRegister::getStringAr()
 	{
 		return "استخدام غير صالح لسجل 64 بت في وضع 32 بت";

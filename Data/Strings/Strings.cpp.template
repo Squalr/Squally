@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string {{ClassName}}::getStringIdentifier()
+	{
+		return "{{ClassName}}";
+	}
+
 	std::string {{ClassName}}::getStringAr()
 	{
 		return "{{ar}}";

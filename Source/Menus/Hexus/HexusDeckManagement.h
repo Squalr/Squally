@@ -16,8 +16,8 @@ class CCheckbox;
 class ConstantString;
 class LocalizedLabel;
 class MenuCard;
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 class ToggleGroup;
 class ScrollPane;
 
@@ -45,7 +45,7 @@ private:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBackClick(MenuSprite* menuSprite);
+	void onBackClick(ClickableNode* menuSprite);
 	void onToggleSelect(CCheckbox* activeToggle);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void rebuildCardLists();
@@ -67,7 +67,7 @@ private:
 	cocos2d::Sprite* deckSprite;
 	LocalizedLabel* deckLabel;
 	cocos2d::Sprite* titleSprite;
-	TextMenuSprite* backButton;
+	ClickableTextNode* backButton;
 	CCheckbox* allButton;
 	CCheckbox* specialButton;
 	CCheckbox* binaryButton;

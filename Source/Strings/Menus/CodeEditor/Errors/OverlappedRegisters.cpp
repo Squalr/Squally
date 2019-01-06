@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_OverlappedRegisters";
+	}
+
 	std::string Menus_CodeEditor_Errors_OverlappedRegisters::getStringAr()
 	{
 		return "تسجيلات متراكبة";

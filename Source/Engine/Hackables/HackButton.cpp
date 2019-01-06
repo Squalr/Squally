@@ -15,7 +15,7 @@ HackButton* HackButton::create()
 	return instance;
 }
 
-HackButton::HackButton() : MenuSprite(Sprite::create(UIResources::Menus_Buttons_HackButton), Sprite::create(UIResources::Menus_Buttons_HackButtonHover))
+HackButton::HackButton() : ClickableNode(Sprite::create(UIResources::Menus_Buttons_HackButton), Sprite::create(UIResources::Menus_Buttons_HackButtonHover))
 {
 }
 

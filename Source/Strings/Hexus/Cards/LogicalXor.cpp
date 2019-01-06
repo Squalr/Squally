@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_LogicalXor::getStringIdentifier()
+	{
+		return "Hexus_Cards_LogicalXor";
+	}
+
 	std::string Hexus_Cards_LogicalXor::getStringAr()
 	{
 		return "منطقية XOR";

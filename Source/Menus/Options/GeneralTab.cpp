@@ -4,10 +4,10 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/CCheckbox.h"
 #include "Engine/UI/Controls/CSlider.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/UIResources.h"

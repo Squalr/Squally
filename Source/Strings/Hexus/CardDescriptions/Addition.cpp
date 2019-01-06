@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_Addition::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_Addition";
+	}
+
 	std::string Hexus_CardDescriptions_Addition::getStringAr()
 	{
 		return "اختر واحدة من بطاقاتك وأضف قيمتها إلى بطاقة أخرى. يتم تخزين النتيجة في بطاقة الهدف.";

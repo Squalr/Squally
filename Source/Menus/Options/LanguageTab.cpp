@@ -4,10 +4,9 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/UI/Controls/CRadioButton.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 
 #include "Resources/UIResources.h"
 
@@ -27,7 +26,7 @@ LanguageTab* LanguageTab::create()
 
 LanguageTab::LanguageTab()
 {
-	this->languageButtons = std::vector<TextMenuSprite*>();
+	this->languageButtons = std::vector<ClickableTextNode*>();
 
 	for (int index = (int)LanguageType::FIRST_LANGUAGE; index < (int)LanguageType::LAST_LANGUAGE; index++)
 	{
@@ -36,9 +35,9 @@ LanguageTab::LanguageTab()
 
 		nextString->setOverrideLanguage(language);
 
-		TextMenuSprite* button = this->constructLanguageButton(nextString);
+		ClickableTextNode* button = this->constructLanguageButton(nextString);
 
-		button->setClickCallback([=](MenuSprite*, MouseEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+		button->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { Localization::setLanguage(language); });
 
 		this->languageButtons.push_back(button);
 	}
@@ -85,12 +84,12 @@ void LanguageTab::initializePositions()
 	}
 }
 
-TextMenuSprite* LanguageTab::constructLanguageButton(LocalizedString* string)
+ClickableTextNode* LanguageTab::constructLanguageButton(LocalizedString* string)
 {
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, string);
 	LocalizedLabel* labelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, string);
 
-	TextMenuSprite* button = TextMenuSprite::create(label, labelHover, UIResources::Menus_OptionsMenu_DarkButton, UIResources::Menus_OptionsMenu_DarkButtonSelected);
+	ClickableTextNode* button = ClickableTextNode::create(label, labelHover, UIResources::Menus_OptionsMenu_DarkButton, UIResources::Menus_OptionsMenu_DarkButtonSelected);
 
 	return button;
 }

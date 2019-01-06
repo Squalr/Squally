@@ -6,7 +6,7 @@
 #include "Scenes/Hexus/CardEffects.h"
 
 class Card;
-class MenuSprite;
+class ClickableNode;
 
 class CardRow : public SmartNode
 {
@@ -47,11 +47,11 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
-	void onRowSelectClick(MenuSprite* menuSprite);
+	void onRowSelectClick(ClickableNode* menuSprite);
 
 	float rowWidth;
 	float cardScale;
 	bool belongsToPlayer;
-	MenuSprite* rowSelectSprite;
+	ClickableNode* rowSelectSprite;
 	std::function<void(CardRow*)> rowSelectCallback;
 };

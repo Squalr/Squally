@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_UnderflowRuins::getStringIdentifier()
+	{
+		return "Menus_Maps_UnderflowRuins";
+	}
+
 	std::string Menus_Maps_UnderflowRuins::getStringAr()
 	{
 		return "أطلال";

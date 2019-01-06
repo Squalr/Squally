@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_CardDescriptions_ShiftLeft::getStringIdentifier()
+	{
+		return "Hexus_CardDescriptions_ShiftLeft";
+	}
+
 	std::string Hexus_CardDescriptions_ShiftLeft::getStringAr()
 	{
 		return "ﻗم ﺑﺗﻐﯾﯾر اﻟﺑﻘﺎت اﻟﻣوﺟودة ﻟﮐل اﻟﺑطﺎﻗﺎت ﻋﻟﯽ اﻟﺗواﻟﻲ.";

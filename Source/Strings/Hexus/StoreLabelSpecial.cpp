@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_StoreLabelSpecial::getStringIdentifier()
+	{
+		return "Hexus_StoreLabelSpecial";
+	}
+
 	std::string Hexus_StoreLabelSpecial::getStringAr()
 	{
 		return "OR";

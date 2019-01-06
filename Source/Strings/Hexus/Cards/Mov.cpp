@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Mov::getStringIdentifier()
+	{
+		return "Hexus_Cards_Mov";
+	}
+
 	std::string Hexus_Cards_Mov::getStringAr()
 	{
 		return "MOV";

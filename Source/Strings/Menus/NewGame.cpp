@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_NewGame::getStringIdentifier()
+	{
+		return "Menus_NewGame";
+	}
+
 	std::string Menus_NewGame::getStringAr()
 	{
 		return "لعبة جديدة";

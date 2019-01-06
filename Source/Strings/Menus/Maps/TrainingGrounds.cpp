@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_TrainingGrounds::getStringIdentifier()
+	{
+		return "Menus_Maps_TrainingGrounds";
+	}
+
 	std::string Menus_Maps_TrainingGrounds::getStringAr()
 	{
 		return "ملاعب التدريب";
