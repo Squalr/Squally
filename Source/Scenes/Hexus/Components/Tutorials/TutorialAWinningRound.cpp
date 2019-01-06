@@ -2,14 +2,13 @@
 
 #include <vector>
 
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/FocusTakeOver.h"
 #include "Engine/UI/Controls/HelpArrow.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/StateOverride.h"
 
@@ -41,7 +40,7 @@ TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(StateOverride::Tut
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->scoreTotalsNextButton = ClickableTextNode::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->scoreTotalsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->scoreTotalsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -107,7 +106,7 @@ void TutorialAWinningRound::onAnyStateChange(GameState* gameState)
 
 void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_ScoreTotals::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_ScoreTotals";
+	}
+
 	std::string Hexus_Tutorials_A_ScoreTotals::getStringAr()
 	{
 		return "الهدف بسيط. كل من حصل على أعلى نتيجة في نهاية الجولة يفوز بالجولة.";

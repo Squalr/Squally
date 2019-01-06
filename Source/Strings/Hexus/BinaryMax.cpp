@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_BinaryMax::getStringIdentifier()
+	{
+		return "Hexus_BinaryMax";
+	}
+
 	std::string Hexus_BinaryMax::getStringAr()
 	{
 		return "1111";

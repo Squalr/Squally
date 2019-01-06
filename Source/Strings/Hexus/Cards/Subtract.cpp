@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Subtract::getStringIdentifier()
+	{
+		return "Hexus_Cards_Subtract";
+	}
+
 	std::string Hexus_Cards_Subtract::getStringAr()
 	{
 		return "طرح";

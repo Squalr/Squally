@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_Infinity::getStringIdentifier()
+	{
+		return "Generics_Infinity";
+	}
+
 	std::string Generics_Infinity::getStringAr()
 	{
 		return "∞";

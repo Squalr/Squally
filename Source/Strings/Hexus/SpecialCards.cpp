@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_SpecialCards::getStringIdentifier()
+	{
+		return "Hexus_SpecialCards";
+	}
+
 	std::string Hexus_SpecialCards::getStringAr()
 	{
 		return "بطاقات خاصة";

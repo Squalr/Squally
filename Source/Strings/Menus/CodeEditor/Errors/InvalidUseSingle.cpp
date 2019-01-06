@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidUseSingle";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidUseSingle::getStringAr()
 	{
 		return "استخدام غير صالح لـ %s";

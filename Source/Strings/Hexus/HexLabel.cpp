@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_HexLabel::getStringIdentifier()
+	{
+		return "Hexus_HexLabel";
+	}
+
 	std::string Hexus_HexLabel::getStringAr()
 	{
 		return "HEX: %s";

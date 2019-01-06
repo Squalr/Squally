@@ -18,8 +18,8 @@ class CCheckbox;
 class CRadioButton;
 class CSlider;
 class LocalizedLabel;
-class MenuSprite;
-class TextMenuSprite;
+class ClickableNode;
+class ClickableTextNode;
 
 class VideoTab : public SmartNode
 {

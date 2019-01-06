@@ -2,8 +2,8 @@
 
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Scenes/Hexus/Deck.h"
@@ -39,13 +39,13 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 
 	if (this->isLevelComplete)
 	{
-		this->startButton = MenuSprite::create(
+		this->startButton = ClickableNode::create(
 			UIResources::Menus_TutorialMenu_TutorialEntryComplete,
 			UIResources::Menus_TutorialMenu_TutorialEntryCompleteSelected);
 	}
 	else
 	{
-		this->startButton = MenuSprite::create(
+		this->startButton = ClickableNode::create(
 			UIResources::Menus_TutorialMenu_TutorialEntry,
 			UIResources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
@@ -83,12 +83,12 @@ void HexusPuzzleItem::initializePositions()
 	this->indexLabel->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y + 20));
 }
 
-void HexusPuzzleItem::onTutorialClick(MenuSprite* HexusPuzzleItem)
+void HexusPuzzleItem::onTutorialClick(ClickableNode* HexusPuzzleItem)
 {
 	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(deck1, deck2));
 }
 
-void HexusPuzzleItem::onTutorialMouseOver(MenuSprite* HexusPuzzleItem)
+void HexusPuzzleItem::onTutorialMouseOver(ClickableNode* HexusPuzzleItem)
 {
 	this->onMouseOverEvent(this);
 }

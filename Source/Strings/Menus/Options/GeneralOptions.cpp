@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Options_GeneralOptions::getStringIdentifier()
+	{
+		return "Menus_Options_GeneralOptions";
+	}
+
 	std::string Menus_Options_GeneralOptions::getStringAr()
 	{
 		return "خيارات عامة";

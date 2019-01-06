@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Banners_OpponentRoundWin::getStringIdentifier()
+	{
+		return "Hexus_Banners_OpponentRoundWin";
+	}
+
 	std::string Hexus_Banners_OpponentRoundWin::getStringAr()
 	{
 		return "الخصم يفوز بالجولة";

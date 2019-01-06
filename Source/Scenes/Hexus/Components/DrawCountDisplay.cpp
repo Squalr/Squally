@@ -4,9 +4,9 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/GameState.h"
@@ -29,7 +29,7 @@ DrawCountDisplay* DrawCountDisplay::create()
 
 DrawCountDisplay::DrawCountDisplay()
 {
-	this->drawCountSprite = MenuSprite::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
+	this->drawCountSprite = ClickableNode::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
 	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
 	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());

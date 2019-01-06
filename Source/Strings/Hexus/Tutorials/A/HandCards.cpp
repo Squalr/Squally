@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_HandCards::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_HandCards";
+	}
+
 	std::string Hexus_Tutorials_A_HandCards::getStringAr()
 	{
 		return "أعطها فرصة! لعب البطاقات الخاصة بك في الصفوف المقابلة لها.";

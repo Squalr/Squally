@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_LabelIndexOverflow";
+	}
+
 	std::string Menus_CodeEditor_Errors_LabelIndexOverflow::getStringAr()
 	{
 		return "تجاوز فهرس التسمية";

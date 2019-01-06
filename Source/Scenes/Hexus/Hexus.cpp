@@ -7,11 +7,10 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableIconNode.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/IconMenuSprite.h"
-#include "Engine/UI/Controls/MenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"

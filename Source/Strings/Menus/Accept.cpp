@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Accept::getStringIdentifier()
+	{
+		return "Menus_Accept";
+	}
+
 	std::string Menus_Accept::getStringAr()
 	{
 		return "قبول";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_TimesConstant::getStringIdentifier()
+	{
+		return "Generics_TimesConstant";
+	}
+
 	std::string Generics_TimesConstant::getStringAr()
 	{
 		return "x%s";

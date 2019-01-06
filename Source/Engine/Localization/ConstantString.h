@@ -9,8 +9,8 @@ public:
 	static ConstantString* create();
 	static ConstantString* create(std::string constantString);
 	LocalizedString* clone() override;
-
 	void setString(std::string newString);
+	std::string getStringIdentifier() override;
 
 private:
 	typedef LocalizedString super;

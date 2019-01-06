@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_ByteCount::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_ByteCount";
+	}
+
 	std::string Menus_CodeEditor_ByteCount::getStringAr()
 	{
 		return "عدد البايتات: ";

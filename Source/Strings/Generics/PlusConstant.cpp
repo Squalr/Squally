@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Generics_PlusConstant::getStringIdentifier()
+	{
+		return "Generics_PlusConstant";
+	}
+
 	std::string Generics_PlusConstant::getStringAr()
 	{
 		return "+%s";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Dialogue_Helpers_Goblin_PendulumTutorial2::getStringIdentifier()
+	{
+		return "Dialogue_Helpers_Goblin_PendulumTutorial2";
+	}
+
 	std::string Dialogue_Helpers_Goblin_PendulumTutorial2::getStringAr()
 	{
 		return "تذكر ، لا يوجد ملعقة.";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidRexPrefix";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidRexPrefix::getStringAr()
 	{
 		return "بادئة امتداد السجل غير صالحة";

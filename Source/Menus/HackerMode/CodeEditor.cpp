@@ -3,6 +3,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
@@ -10,8 +12,6 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/MenuLabel.h"
-#include "Engine/UI/Controls/MenuSprite.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/UI/Controls/Text/TextWindow.h"
 
 #include "Resources/UIResources.h"
@@ -139,13 +139,13 @@ CodeEditor::CodeEditor()
 	cancelLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	cancelLabelHover->enableGlow(glowColor);
 
-	this->acceptButton = TextMenuSprite::create(
+	this->acceptButton = ClickableTextNode::create(
 		acceptLabel,
 		acceptLabelHover,
 		UIResources::Menus_Buttons_GenericHackButton,
 		UIResources::Menus_Buttons_GenericHackButtonHover);
 
-	this->cancelButton = TextMenuSprite::create(
+	this->cancelButton = ClickableTextNode::create(
 		cancelLabel,
 		cancelLabelHover,
 		UIResources::Menus_Buttons_GenericHackButton,
@@ -428,7 +428,7 @@ void CodeEditor::open(HackableCode* hackableCode)
 	GameUtils::focus(this);
 }
 
-void CodeEditor::onAccept(MenuSprite* menuSprite)
+void CodeEditor::onAccept(ClickableNode* menuSprite)
 {
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getCodePointer());
 
@@ -447,7 +447,7 @@ void CodeEditor::onAccept(MenuSprite* menuSprite)
 	GameUtils::focus(this->getParent());
 }
 
-void CodeEditor::onCancel(MenuSprite* menuSprite)
+void CodeEditor::onCancel(ClickableNode* menuSprite)
 {
 	this->setVisible(false);
 

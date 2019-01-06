@@ -7,8 +7,8 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
@@ -60,7 +60,7 @@ SaveSelectMenu::SaveSelectMenu()
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->backButton = TextMenuSprite::create(
+	this->backButton = ClickableTextNode::create(
 		backButtonLabel,
 		backButtonLabelHover,
 		UIResources::Menus_Buttons_GenericButton,
@@ -79,7 +79,7 @@ SaveSelectMenu::SaveSelectMenu()
 	saveGame1LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame1LabelHover->enableGlow(glowColor);
 
-	this->saveGame1 = TextMenuSprite::create(
+	this->saveGame1 = ClickableTextNode::create(
 		saveGame1Label,
 		saveGame1LabelHover,
 		UIResources::Menus_MinigamesMenu_Banner,
@@ -105,7 +105,7 @@ SaveSelectMenu::SaveSelectMenu()
 	saveGame2LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame2LabelHover->enableGlow(glowColor);
 
-	this->saveGame2 = TextMenuSprite::create(
+	this->saveGame2 = ClickableTextNode::create(
 		saveGame2Label,
 		saveGame2LabelHover,
 		UIResources::Menus_MinigamesMenu_Banner,
@@ -131,7 +131,7 @@ SaveSelectMenu::SaveSelectMenu()
 	saveGame3LabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	saveGame3LabelHover->enableGlow(glowColor);
 
-	this->saveGame3 = TextMenuSprite::create(
+	this->saveGame3 = ClickableTextNode::create(
 		saveGame3Label,
 		saveGame3LabelHover,
 		UIResources::Menus_MinigamesMenu_Banner,
@@ -228,22 +228,22 @@ void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void SaveSelectMenu::onSaveGame1Click(MenuSprite* menuSprite)
+void SaveSelectMenu::onSaveGame1Click(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateWorldMap();
 }
 
-void SaveSelectMenu::onSaveGame2Click(MenuSprite* menuSprite)
+void SaveSelectMenu::onSaveGame2Click(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
 
-void SaveSelectMenu::onSaveGame3Click(MenuSprite* menuSprite)
+void SaveSelectMenu::onSaveGame3Click(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
 
-void SaveSelectMenu::onBackClick(MenuSprite* menuSprite)
+void SaveSelectMenu::onBackClick(ClickableNode* menuSprite)
 {
 	NavigationEvents::navigateBack();
 }

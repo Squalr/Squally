@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 
-class HackButton : public MenuSprite
+class HackButton : public ClickableNode
 {
 public:
 	static HackButton* create();
@@ -11,7 +11,7 @@ protected:
 	virtual void addEventListener(cocos2d::EventListener* listener) override;
 
 private:
-	typedef MenuSprite super;
+	typedef ClickableNode super;
 	HackButton();
 	~HackButton();
 };

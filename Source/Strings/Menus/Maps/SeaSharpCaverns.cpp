@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_SeaSharpCaverns::getStringIdentifier()
+	{
+		return "Menus_Maps_SeaSharpCaverns";
+	}
+
 	std::string Menus_Maps_SeaSharpCaverns::getStringAr()
 	{
 		return "الكهوف الحادة";

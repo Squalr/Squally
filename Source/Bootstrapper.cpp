@@ -2,6 +2,7 @@
 
 #include "Engine/EngineBootstrapper.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
+#include "Menus/CursorSets.h"
 #include "Menus/LoadingScreen/LoadingScreen.h"
 #include "Menus/Hexus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Menus/Hexus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
@@ -83,6 +84,8 @@ void Bootstrapper::initialize()
 	CastleTerrainDeserializer::registerGlobalNode();
 	MusicDeserializer::registerGlobalNode();
 	PlatformerCollisionMapping::registerGlobalNode();
+
+	CursorSets::registerCursorSets();
 }
 
 void Bootstrapper::shutDown()

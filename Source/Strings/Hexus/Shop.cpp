@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Shop::getStringIdentifier()
+	{
+		return "Hexus_Shop";
+	}
+
 	std::string Hexus_Shop::getStringAr()
 	{
 		return "متجر";

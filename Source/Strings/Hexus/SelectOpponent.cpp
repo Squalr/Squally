@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_SelectOpponent::getStringIdentifier()
+	{
+		return "Hexus_SelectOpponent";
+	}
+
 	std::string Hexus_SelectOpponent::getStringAr()
 	{
 		return "اختر الخصم";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_ComingSoon::getStringIdentifier()
+	{
+		return "Menus_ComingSoon";
+	}
+
 	std::string Menus_ComingSoon::getStringAr()
 	{
 		return "قريبا...";

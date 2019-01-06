@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary1::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary1";
+	}
+
 	std::string Hexus_Cards_Binary1::getStringAr()
 	{
 		return "الفول السوداني";

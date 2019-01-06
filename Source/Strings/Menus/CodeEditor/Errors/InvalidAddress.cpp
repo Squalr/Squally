@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidAddress";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidAddress::getStringAr()
 	{
 		return "عنوان خاطئ";

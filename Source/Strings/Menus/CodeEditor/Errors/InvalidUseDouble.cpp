@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidUseDouble::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidUseDouble";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidUseDouble::getStringAr()
 	{
 		return "استخدام غير صالح لـ %s%s";

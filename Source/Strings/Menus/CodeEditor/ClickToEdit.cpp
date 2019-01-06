@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_ClickToEdit::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_ClickToEdit";
+	}
+
 	std::string Menus_CodeEditor_ClickToEdit::getStringAr()
 	{
 		return "إضغط للتعديل";

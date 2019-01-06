@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_HexusPuzzles::getStringIdentifier()
+	{
+		return "Hexus_HexusPuzzles";
+	}
+
 	std::string Hexus_HexusPuzzles::getStringAr()
 	{
 		return "الألغاز الهيكس";

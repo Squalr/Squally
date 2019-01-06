@@ -1,17 +1,17 @@
-#include "IconMenuSprite.h"
+#include "ClickableIconNode.h"
 
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCSprite.h"
 
 using namespace cocos2d;
 
-IconMenuSprite* IconMenuSprite::create(
+ClickableIconNode* ClickableIconNode::create(
 	std::string normalSprite,
 	std::string selectedSprite,
 	std::string spriteNormal,
 	std::string spriteSelectedResource)
 {
-	return IconMenuSprite::create(
+	return ClickableIconNode::create(
 		Sprite::create(normalSprite),
 		Sprite::create(selectedSprite),
 		Sprite::create(spriteNormal),
@@ -19,13 +19,13 @@ IconMenuSprite* IconMenuSprite::create(
 	);
 }
 
-IconMenuSprite* IconMenuSprite::create(
+ClickableIconNode* ClickableIconNode::create(
 	Sprite* normalSprite,
 	Sprite* selectedSprite,
 	std::string spriteNormal,
 	std::string spriteSelectedResource)
 {
-	return IconMenuSprite::create(
+	return ClickableIconNode::create(
 		normalSprite,
 		selectedSprite,
 		Sprite::create(spriteNormal),
@@ -33,13 +33,13 @@ IconMenuSprite* IconMenuSprite::create(
 	);
 }
 
-IconMenuSprite* IconMenuSprite::create(
+ClickableIconNode* ClickableIconNode::create(
 	Sprite* normalSprite,
 	Sprite* selectedSprite,
 	Node* nodeNormal,
 	Node* nodeSelected)
 {
-	IconMenuSprite* instance = new IconMenuSprite(
+	ClickableIconNode* instance = new ClickableIconNode(
 		normalSprite,
 		selectedSprite,
 		nodeNormal,
@@ -50,7 +50,7 @@ IconMenuSprite* IconMenuSprite::create(
 	return instance;
 }
 
-IconMenuSprite::IconMenuSprite(
+ClickableIconNode::ClickableIconNode(
 	Sprite* normalSprite,
 	Sprite* selectedSprite,
 	Node* nodeNormal,
@@ -68,11 +68,11 @@ IconMenuSprite::IconMenuSprite(
 	this->spriteSelected->addChild(this->selectedContentSprite);
 }
 
-IconMenuSprite::~IconMenuSprite()
+ClickableIconNode::~ClickableIconNode()
 {
 }
 
-void IconMenuSprite::setIconOffset(Vec2 offset)
+void ClickableIconNode::setIconOffset(Vec2 offset)
 {
 	Vec2 center = this->getContentSize() / 2.0f;
 

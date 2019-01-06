@@ -5,7 +5,7 @@
 class FocusTakeOver;
 class HelpArrow;
 class LocalizedLabel;
-class TextMenuSprite;
+class ClickableTextNode;
 
 class TutorialAIntroSequence : public TutorialBase
 {
@@ -43,13 +43,13 @@ private:
 	LocalizedLabel* hexCardsTutorialLabel;
 	LocalizedLabel* rowTotalsTutorialLabel;
 	LocalizedLabel* handCardsTutorialLabel;
-	TextMenuSprite* scoreTotalsNextButton;
-	TextMenuSprite* lossDisplayNextButton;
-	TextMenuSprite* binaryCardsNextButton;
-	TextMenuSprite* decimalCardsNextButton;
-	TextMenuSprite* hexCardsNextButton;
-	TextMenuSprite* rowTotalsNextButton;
-	TextMenuSprite* handCardsNextButton;
+	ClickableTextNode* scoreTotalsNextButton;
+	ClickableTextNode* lossDisplayNextButton;
+	ClickableTextNode* binaryCardsNextButton;
+	ClickableTextNode* decimalCardsNextButton;
+	ClickableTextNode* hexCardsNextButton;
+	ClickableTextNode* rowTotalsNextButton;
+	ClickableTextNode* handCardsNextButton;
 
 	HelpArrow* helpArrowScoreTotals;
 	HelpArrow* helpArrowLossDisplay;

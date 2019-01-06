@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Hex3::getStringIdentifier()
+	{
+		return "Hexus_Cards_Hex3";
+	}
+
 	std::string Hexus_Cards_Hex3::getStringAr()
 	{
 		return "يعقوب";

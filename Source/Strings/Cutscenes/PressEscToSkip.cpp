@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Cutscenes_PressEscToSkip::getStringIdentifier()
+	{
+		return "Cutscenes_PressEscToSkip";
+	}
+
 	std::string Cutscenes_PressEscToSkip::getStringAr()
 	{
 		return "اضغط على الهروب للتخطي";

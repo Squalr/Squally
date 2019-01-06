@@ -15,7 +15,9 @@ class Input : public GlobalNode
 public:
 	static void registerGlobalNode();
 
+	static cocos2d::EventKeyboard::KeyCode getActiveModifiers();
 	static bool isKeyJustPressed(cocos2d::EventKeyboard::KeyCode keyCode);
+	static bool isKeyJustReleased(cocos2d::EventKeyboard::KeyCode keyCode);
 	static bool isPressed(cocos2d::EventKeyboard::KeyCode keyCode);
 	static bool isReleased(cocos2d::EventKeyboard::KeyCode keyCode);
 
@@ -32,5 +34,5 @@ private:
 	std::unordered_map<int, bool> pressedKeysPrevious;
 	std::unordered_map<int, bool> pressedKeys;
 
-	static Input * instance;
+	static Input* instance;
 };

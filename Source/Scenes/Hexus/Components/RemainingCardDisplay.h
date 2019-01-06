@@ -10,7 +10,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class RemainingCardDisplay : public ComponentBase
 {
@@ -34,7 +34,7 @@ private:
 
 	cocos2d::ParticleSystemQuad* particles;
 
-	MenuSprite* remainingCardSprite;
+	ClickableNode* remainingCardSprite;
 	LocalizedLabel* remainingCardLabel;
 
 	cocos2d::LayerColor* remainingCardMouseOverPanel;

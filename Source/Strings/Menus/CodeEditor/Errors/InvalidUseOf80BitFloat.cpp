@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidUseOf80BitFloat::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidUseOf80BitFloat";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidUseOf80BitFloat::getStringAr()
 	{
 		return "الاستخدام غير الصحيح لعوم 80 بت";

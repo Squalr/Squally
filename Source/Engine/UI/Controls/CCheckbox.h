@@ -4,12 +4,12 @@
 
 #include "Engine/SmartNode.h"
 
-class MenuSprite;
+class ClickableNode;
 
 class CCheckbox : public SmartNode
 {
 public:
-	static CCheckbox * create(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState,
+	static CCheckbox * create(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
 			std::function<bool(CCheckbox*, bool)> callback = nullptr);
 
 	void setCallback(std::function<bool(CCheckbox*, bool)> callback);
@@ -17,7 +17,7 @@ public:
 	bool getToggled();
 
 protected:
-	CCheckbox(MenuSprite* uncheckedButton, MenuSprite* checkedButton, bool initialState,
+	CCheckbox(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
 			std::function<bool(CCheckbox*, bool)> callback);
 	virtual ~CCheckbox();
 
@@ -27,11 +27,11 @@ private:
 	void onUntoggle();
 	void updateVisuals();
 
-	MenuSprite* onSwitch;
-	MenuSprite* offSwitch;
+	ClickableNode* onSwitch;
+	ClickableNode* offSwitch;
 
 	bool isToggled;
 	std::function<bool(CCheckbox*, bool)> toggleCallback;
-	std::vector<MenuSprite*>* clickableMenus;
+	std::vector<ClickableNode*>* clickableMenus;
 };
 

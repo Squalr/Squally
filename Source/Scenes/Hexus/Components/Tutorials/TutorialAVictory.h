@@ -5,7 +5,7 @@
 class FocusTakeOver;
 class HelpArrow;
 class LocalizedLabel;
-class TextMenuSprite;
+class ClickableTextNode;
 
 class TutorialAVictory : public TutorialBase
 {
@@ -31,6 +31,6 @@ private:
 
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* lossDisplayTutorialLabel;
-	TextMenuSprite* lossDisplayNextButton;
+	ClickableTextNode* lossDisplayNextButton;
 	HelpArrow* helpArrowLossDisplay;
 };

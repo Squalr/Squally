@@ -4,6 +4,7 @@
 #include "cocos/2d/CCLabel.h"
 
 class LocalizedString;
+class ClickableNode;
 
 class LocalizedLabel : public cocos2d::Label
 {
@@ -44,6 +45,7 @@ public:
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	float getFontSize();
 	std::string getFont();
+	void toggleAllowTranslationEdit(bool allowTranslationEdit);
 
 private:
 	typedef cocos2d::Label super;
@@ -72,12 +74,14 @@ private:
 	float getFontSizeH3(std::string fontResource);
 	float getFontSizeP(std::string fontResource);
 	float getFontSizeSmall(std::string fontResource);
+	void updateTranslationEditHitbox();
 
 	std::string getPixelFont();
 	std::string getMainFont();
 	std::string getMonospacedFont();
 	std::string getCodingFont();
 
+	ClickableNode* translationButton;
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Decimal11::getStringIdentifier()
+	{
+		return "Hexus_Cards_Decimal11";
+	}
+
 	std::string Hexus_Cards_Decimal11::getStringAr()
 	{
 		return "كلايد";

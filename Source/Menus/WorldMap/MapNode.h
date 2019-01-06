@@ -3,7 +3,7 @@
 #include "Engine/SmartNode.h"
 #include "Events/NavigationEvents.h"
 
-class MenuSprite;
+class ClickableNode;
 
 class MapNode : public SmartNode
 {
@@ -23,9 +23,9 @@ private:
 	typedef SmartNode super;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onNodeClick(MenuSprite* menuSprite);
+	void onNodeClick(ClickableNode* menuSprite);
 
 	bool locked;
-	MenuSprite* mapSprite;
+	ClickableNode* mapSprite;
 };
 

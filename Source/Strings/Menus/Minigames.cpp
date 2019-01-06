@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Minigames::getStringIdentifier()
+	{
+		return "Menus_Minigames";
+	}
+
 	std::string Menus_Minigames::getStringAr()
 	{
 		return "الألعاب المصغرة";

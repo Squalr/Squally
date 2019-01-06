@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_C_OpponentLead::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_C_OpponentLead";
+	}
+
 	std::string Hexus_Tutorials_C_OpponentLead::getStringAr()
 	{
 		return "خصمك لديه تقدم كبير أكثر من أنت!";

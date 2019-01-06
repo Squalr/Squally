@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidXReleasePrefix";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidXReleasePrefix::getStringAr()
 	{
 		return "بادئة الإصدار غير صالحة";

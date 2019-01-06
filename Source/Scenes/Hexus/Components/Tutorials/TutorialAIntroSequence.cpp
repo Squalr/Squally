@@ -6,10 +6,10 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/FocusTakeOver.h"
 #include "Engine/UI/Controls/HelpArrow.h"
-#include "Engine/UI/Controls/TextMenuSprite.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
@@ -60,7 +60,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->scoreTotalsNextButton = TextMenuSprite::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->scoreTotalsNextButton = ClickableTextNode::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 	
 	LocalizedLabel* lossesDisplayNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* lossesDisplayNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
@@ -68,7 +68,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->lossDisplayNextButton = TextMenuSprite::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->lossDisplayNextButton = ClickableTextNode::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* rowTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* rowTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
@@ -76,7 +76,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	rowTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	rowTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->rowTotalsNextButton = TextMenuSprite::create(rowTotalsNextLabel, rowTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->rowTotalsNextButton = ClickableTextNode::create(rowTotalsNextLabel, rowTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* binaryCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* binaryCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
@@ -84,7 +84,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	binaryCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	binaryCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->binaryCardsNextButton = TextMenuSprite::create(binaryCardsNextLabel, binaryCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->binaryCardsNextButton = ClickableTextNode::create(binaryCardsNextLabel, binaryCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* decimalCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* decimalCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
@@ -92,7 +92,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	decimalCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	decimalCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->decimalCardsNextButton = TextMenuSprite::create(decimalCardsNextLabel, decimalCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->decimalCardsNextButton = ClickableTextNode::create(decimalCardsNextLabel, decimalCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* hexCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* hexCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
@@ -100,7 +100,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	hexCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	hexCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->hexCardsNextButton = TextMenuSprite::create(hexCardsNextLabel, hexCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->hexCardsNextButton = ClickableTextNode::create(hexCardsNextLabel, hexCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
 	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
@@ -108,7 +108,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	this->handCardsNextButton = TextMenuSprite::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->handCardsNextButton = ClickableTextNode::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->scoreTotalsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->lossDisplayTutorialLabel->enableOutline(Color4B::BLACK, 2);
@@ -232,31 +232,31 @@ void TutorialAIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialAIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialLossDisplay(gameState);
 	});
-	this->lossDisplayNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialRowTotals(gameState);
 	});
-	this->rowTotalsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->rowTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialBinaryCards(gameState);
 	});
-	this->binaryCardsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->binaryCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialDecimalCards(gameState);
 	});
-	this->decimalCardsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->decimalCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHexCards(gameState);
 	});
-	this->hexCardsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->hexCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHandCards(gameState);
 	});
-	this->handCardsNextButton->setClickCallback([=](MenuSprite* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

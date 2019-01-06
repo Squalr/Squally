@@ -1,7 +1,4 @@
 #pragma once
-#include <chrono>
-#include <mutex>
-#include <thread>
 #include <future> 
 
 #include "Engine/GlobalScene.h"

@@ -3,8 +3,8 @@
 #include "Scenes/Hexus/States/StateBase.h"
 
 class Card;
-class TextMenuSprite;
-class MenuSprite;
+class ClickableTextNode;
+class ClickableNode;
 
 class StateCardReplace : public StateBase
 {
@@ -23,10 +23,10 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onEndReplaceCards(MenuSprite* menuSprite, GameState* gameState);
+	void onEndReplaceCards(ClickableNode* menuSprite, GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* cardToReplace, GameState* gameState);
 
 	std::vector<Card*> removedCards;
-	TextMenuSprite* doneButton;
+	ClickableTextNode* doneButton;
 };

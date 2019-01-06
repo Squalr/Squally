@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Assembler::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Assembler";
+	}
+
 	std::string Menus_CodeEditor_Assembler::getStringAr()
 	{
 		return "المجمع";

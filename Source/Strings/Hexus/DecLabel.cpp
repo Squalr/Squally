@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_DecLabel::getStringIdentifier()
+	{
+		return "Hexus_DecLabel";
+	}
+
 	std::string Hexus_DecLabel::getStringAr()
 	{
 		return "DEC: %s";

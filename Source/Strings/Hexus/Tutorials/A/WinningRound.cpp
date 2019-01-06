@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Tutorials_A_WinningRound::getStringIdentifier()
+	{
+		return "Hexus_Tutorials_A_WinningRound";
+	}
+
 	std::string Hexus_Tutorials_A_WinningRound::getStringAr()
 	{
 		return "لطيف! الآن درجاتك أعلى من خصومك!";

@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Flip4::getStringIdentifier()
+	{
+		return "Hexus_Cards_Flip4";
+	}
+
 	std::string Hexus_Cards_Flip4::getStringAr()
 	{
 		return "اقلب البت الرابع";

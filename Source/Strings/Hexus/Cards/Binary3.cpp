@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Binary3::getStringIdentifier()
+	{
+		return "Hexus_Cards_Binary3";
+	}
+
 	std::string Hexus_Cards_Binary3::getStringAr()
 	{
 		return "فطر";

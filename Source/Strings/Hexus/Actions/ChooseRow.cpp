@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Actions_ChooseRow::getStringIdentifier()
+	{
+		return "Hexus_Actions_ChooseRow";
+	}
+
 	std::string Hexus_Actions_ChooseRow::getStringAr()
 	{
 		return "اختر صفًا لتشغيل البطاقة فيه.";

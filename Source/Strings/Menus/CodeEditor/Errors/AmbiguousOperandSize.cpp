@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_AmbiguousOperandSize";
+	}
+
 	std::string Menus_CodeEditor_Errors_AmbiguousOperandSize::getStringAr()
 	{
 		return "حجم المشغل غامضة";

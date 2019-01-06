@@ -10,7 +10,7 @@ namespace cocos2d
 
 class LocalizedString;
 class LocalizedLabel;
-class MenuSprite;
+class ClickableNode;
 
 class ConfirmationMenu : public SmartNode
 {
@@ -28,15 +28,15 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onCloseClick(MenuSprite* menuSprite);
-	void onConfirmClick(MenuSprite* menuSprite);
-	void onCancelClick(MenuSprite* menuSprite);
+	void onCloseClick(ClickableNode* menuSprite);
+	void onConfirmClick(ClickableNode* menuSprite);
+	void onCancelClick(ClickableNode* menuSprite);
 
 	cocos2d::Sprite* confirmWindow;
 	LocalizedLabel* confirmationLabel;
-	MenuSprite* closeButton;
-	MenuSprite* confirmButton;
-	MenuSprite* cancelButton;
+	ClickableNode* closeButton;
+	ClickableNode* confirmButton;
+	ClickableNode* cancelButton;
 
 	std::function<void()> onConfirmCallback;
 	std::function<void()> onCancelCallback;

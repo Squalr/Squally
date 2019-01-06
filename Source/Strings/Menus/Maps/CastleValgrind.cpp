@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_Maps_CastleValgrind::getStringIdentifier()
+	{
+		return "Menus_Maps_CastleValgrind";
+	}
+
 	std::string Menus_Maps_CastleValgrind::getStringAr()
 	{
 		return "قلعة";

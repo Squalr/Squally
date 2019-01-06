@@ -5,7 +5,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackButton.h"
-#include "Engine/UI/Controls/MenuSprite.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Events/HackableEvents.h"
 
 #include "Engine/Utils/GameUtils.h"
@@ -69,7 +69,7 @@ Vec2 HackableObject::getButtonOffset()
 	return Vec2::ZERO;
 }
 
-void HackableObject::onHackableClick(MenuSprite* hackButton)
+void HackableObject::onHackableClick(ClickableNode* hackButton)
 {
 	Vec2 screenPosition = GameUtils::getSceneBounds(this).origin;
 

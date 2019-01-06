@@ -12,38 +12,39 @@ namespace Strings
 	{
 	public:
 		static Menus_CodeEditor_Errors_AlreadyInitialized* create();
-		virtual LocalizedString* clone() override;
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
 		
 	protected:
-		virtual std::string getStringAr() override;
-		virtual std::string getStringBg() override;
-		virtual std::string getStringCs() override;
-		virtual std::string getStringDa() override;
-		virtual std::string getStringDe() override;
-		virtual std::string getStringEl() override;
-		virtual std::string getStringEn() override;
-		virtual std::string getStringEs() override;
-		virtual std::string getStringEs419() override;
-		virtual std::string getStringFi() override;
-		virtual std::string getStringFr() override;
-		virtual std::string getStringHu() override;
-		virtual std::string getStringIt() override;
-		virtual std::string getStringJa() override;
-		virtual std::string getStringKo() override;
-		virtual std::string getStringNl() override;
-		virtual std::string getStringNo() override;
-		virtual std::string getStringPl() override;
-		virtual std::string getStringPt() override;
-		virtual std::string getStringPtBr() override;
-		virtual std::string getStringRo() override;
-		virtual std::string getStringRu() override;
-		virtual std::string getStringSv() override;
-		virtual std::string getStringTh() override;
-		virtual std::string getStringTr() override;
-		virtual std::string getStringUk() override;
-		virtual std::string getStringVi() override;
-		virtual std::string getStringZhCn() override;
-		virtual std::string getStringZhTw() override;
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
 		
 	private:
 		Menus_CodeEditor_Errors_AlreadyInitialized();

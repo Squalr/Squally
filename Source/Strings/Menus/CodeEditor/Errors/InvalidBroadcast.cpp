@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidBroadcast";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidBroadcast::getStringAr()
 	{
 		return "البث غير صالح %s";

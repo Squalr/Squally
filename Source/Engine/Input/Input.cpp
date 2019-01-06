@@ -53,19 +53,63 @@ void Input::initializeListeners()
 
 void Input::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	this->pressedKeysPrevious = this->pressedKeys;
+
 	this->pressedKeys[(int)keyCode] = true;
 }
 
 void Input::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	this->pressedKeysPrevious = this->pressedKeys;
+
 	this->pressedKeys[(int)keyCode] = false;
+}
+
+EventKeyboard::KeyCode Input::getActiveModifiers()
+{
+	EventKeyboard::KeyCode modifiers = EventKeyboard::KeyCode::KEY_NONE;
+
+	if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
+	{
+		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_ALT);
+	}
+
+	if (Input::isPressed(EventKeyboard::KeyCode::KEY_CTRL))
+	{
+		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_CTRL);
+	}
+
+	return modifiers;
 }
 
 bool Input::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
 {
-	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
+	// Check key pressed
+	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end() &&
+		Input::getInstance()->pressedKeys[(int)keyCode])
 	{
-		return Input::getInstance()->pressedKeys.at((int)keyCode);
+		// Check if previously not pressed or if previously up
+		if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) == Input::getInstance()->pressedKeysPrevious.end() ||
+			!Input::getInstance()->pressedKeysPrevious[(int)keyCode])
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool Input::isKeyJustReleased(EventKeyboard::KeyCode keyCode)
+{
+	// Both maps should have an entry set
+	if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) != Input::getInstance()->pressedKeysPrevious.end() &&
+		Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
+	{
+		// Check if previously pressed, and currently not pressed
+		if (Input::getInstance()->pressedKeysPrevious[(int)keyCode] && !Input::getInstance()->pressedKeys[(int)keyCode])
+		{
+			return true;
+		}
 	}
 
 	return false;
@@ -75,7 +119,7 @@ bool Input::isPressed(EventKeyboard::KeyCode keyCode)
 {
 	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
 	{
-		return Input::getInstance()->pressedKeys.at((int)keyCode);
+		return Input::getInstance()->pressedKeys[(int)keyCode];
 	}
 
 	return false;
@@ -85,7 +129,7 @@ bool Input::isReleased(EventKeyboard::KeyCode keyCode)
 {
 	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
 	{
-		return !Input::getInstance()->pressedKeys.at((int)keyCode);
+		return !Input::getInstance()->pressedKeys[(int)keyCode];
 	}
 
 	return true;

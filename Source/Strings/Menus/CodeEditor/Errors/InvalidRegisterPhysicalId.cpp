@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringIdentifier()
+	{
+		return "Menus_CodeEditor_Errors_InvalidRegisterPhysicalId";
+	}
+
 	std::string Menus_CodeEditor_Errors_InvalidRegisterPhysicalId::getStringAr()
 	{
 		return "معرف فعلي غير صالح للتسجيل";

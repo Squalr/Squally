@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_Cards_Hex13::getStringIdentifier()
+	{
+		return "Hexus_Cards_Hex13";
+	}
+
 	std::string Hexus_Cards_Hex13::getStringAr()
 	{
 		return "ملك هيكل عظمي";

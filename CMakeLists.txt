@@ -98,12 +98,16 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
 	Source/Engine/Hackables/HackableObject.cpp
+	Source/Engine/Input/ClickableIconNode.cpp
+	Source/Engine/Input/ClickableNode.cpp
+	Source/Engine/Input/ClickableTextNode.cpp
 	Source/Engine/Input/Input.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/ConstantString.cpp
 	Source/Engine/Localization/Localization.cpp
 	Source/Engine/Localization/LocalizedLabel.cpp
 	Source/Engine/Localization/LocalizedString.cpp
+	Source/Engine/Localization/TranslationMenu.cpp
 	Source/Engine/Maps/Backgrounds/Background.cpp
 	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.cpp
 	Source/Engine/Maps/MapLoader.cpp
@@ -129,14 +133,11 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CSlider.cpp
 	Source/Engine/UI/Controls/FocusTakeOver.cpp
 	Source/Engine/UI/Controls/HelpArrow.cpp
-	Source/Engine/UI/Controls/IconMenuSprite.cpp
 	Source/Engine/UI/Controls/MenuLabel.cpp
-	Source/Engine/UI/Controls/MenuSprite.cpp
 	Source/Engine/UI/Controls/MouseOverPanel.cpp
 	Source/Engine/UI/Controls/ScrollPane.cpp
 	Source/Engine/UI/Controls/Text/EditableTextWindow.cpp
 	Source/Engine/UI/Controls/Text/TextWindow.cpp
-	Source/Engine/UI/Controls/TextMenuSprite.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
@@ -380,6 +381,7 @@ list(APPEND GAME_SOURCE
 	Source/Events/NavigationEvents.cpp
 	Source/GameWindow.cpp
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
+	Source/Menus/CursorSets.cpp
 	Source/Menus/Dialog/DialogMenu.cpp
 	Source/Menus/HackerMode/CodeEditor.cpp
 	Source/Menus/HackerMode/RadialMenu.cpp
@@ -1100,6 +1102,11 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/Resume.cpp
 	Source/Strings/Menus/Return.cpp
 	Source/Strings/Menus/StoryMode.cpp
+	Source/Strings/Menus/Submit.cpp
+	Source/Strings/Menus/TranslationEditor/CurrentTranslation.cpp
+	Source/Strings/Menus/TranslationEditor/NewTranslation.cpp
+	Source/Strings/Menus/TranslationEditor/OriginalTextInEnglish.cpp
+	Source/Strings/Menus/TranslationEditor/TranslationEditor.cpp
 	Source/Strings/Menus/Tutorials.cpp
 	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.cpp
 	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.cpp
@@ -1147,12 +1154,16 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
 	Source/Engine/Hackables/HackableObject.h
+	Source/Engine/Input/ClickableIconNode.h
+	Source/Engine/Input/ClickableNode.h
+	Source/Engine/Input/ClickableTextNode.h
 	Source/Engine/Input/Input.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/ConstantString.h
 	Source/Engine/Localization/Localization.h
 	Source/Engine/Localization/LocalizedLabel.h
 	Source/Engine/Localization/LocalizedString.h
+	Source/Engine/Localization/TranslationMenu.h
 	Source/Engine/Maps/Backgrounds/Background.h
 	Source/Engine/Maps/Backgrounds/BackgroundDeserializer.h
 	Source/Engine/Maps/MapLoader.h
@@ -1179,14 +1190,11 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CSlider.h
 	Source/Engine/UI/Controls/FocusTakeOver.h
 	Source/Engine/UI/Controls/HelpArrow.h
-	Source/Engine/UI/Controls/IconMenuSprite.h
 	Source/Engine/UI/Controls/MenuLabel.h
-	Source/Engine/UI/Controls/MenuSprite.h
 	Source/Engine/UI/Controls/MouseOverPanel.h
 	Source/Engine/UI/Controls/ScrollPane.h
 	Source/Engine/UI/Controls/Text/EditableTextWindow.h
 	Source/Engine/UI/Controls/Text/TextWindow.h
-	Source/Engine/UI/Controls/TextMenuSprite.h
 	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h
@@ -1436,6 +1444,7 @@ list(APPEND GAME_HEADER
 	Source/Events/NavigationEvents.h
 	Source/GameWindow.h
 	Source/Menus/Confirmation/ConfirmationMenu.h
+	Source/Menus/CursorSets.h
 	Source/Menus/Dialog/DialogMenu.h
 	Source/Menus/HackerMode/CodeEditor.h
 	Source/Menus/HackerMode/RadialMenu.h
@@ -2173,6 +2182,11 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/Resume.h
 	Source/Strings/Menus/Return.h
 	Source/Strings/Menus/StoryMode.h
+	Source/Strings/Menus/Submit.h
+	Source/Strings/Menus/TranslationEditor/CurrentTranslation.h
+	Source/Strings/Menus/TranslationEditor/NewTranslation.h
+	Source/Strings/Menus/TranslationEditor/OriginalTextInEnglish.h
+	Source/Strings/Menus/TranslationEditor/TranslationEditor.h
 	Source/Strings/Menus/Tutorials.h
 	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.h
 	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.h

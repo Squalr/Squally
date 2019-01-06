@@ -28,6 +28,11 @@ namespace Strings
 	{
 	}
 
+	std::string Hexus_SelectAChapter::getStringIdentifier()
+	{
+		return "Hexus_SelectAChapter";
+	}
+
 	std::string Hexus_SelectAChapter::getStringAr()
 	{
 		return "اختر الفصل";
