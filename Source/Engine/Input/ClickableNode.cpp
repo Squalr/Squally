@@ -227,7 +227,7 @@ void ClickableNode::onMouseUp(EventCustom* event)
 
 void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
-	if (!this->interactionEnabled || (this->modifier != EventKeyboard::KeyCode::KEY_NONE && !Input::isPressed(this->modifier)))
+	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()))
 	{
 		return;
 	}
@@ -304,7 +304,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled || (this->modifier != EventKeyboard::KeyCode::KEY_NONE && !Input::isPressed(this->modifier)))
+	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()))
 	{
 		return;
 	}
@@ -337,7 +337,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled || (this->modifier != EventKeyboard::KeyCode::KEY_NONE && !Input::isPressed(this->modifier)))
+	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()))
 	{
 		return;
 	}

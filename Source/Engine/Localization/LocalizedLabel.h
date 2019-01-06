@@ -74,6 +74,7 @@ private:
 	float getFontSizeH3(std::string fontResource);
 	float getFontSizeP(std::string fontResource);
 	float getFontSizeSmall(std::string fontResource);
+	void updateTranslationEditHitbox();
 
 	std::string getPixelFont();
 	std::string getMainFont();

@@ -5,6 +5,23 @@
 #include "UIResources.h"
 #include <string>
 
+const std::string UIResources::Cursors_Chat = "UI/Cursors/Chat.png";
+const std::string UIResources::Cursors_Crosshair = "UI/Cursors/Crosshair.png";
+const std::string UIResources::Cursors_Dagger = "UI/Cursors/Dagger.png";
+const std::string UIResources::Cursors_Exclaimation = "UI/Cursors/Exclaimation.png";
+const std::string UIResources::Cursors_Globe = "UI/Cursors/Globe.png";
+const std::string UIResources::Cursors_Key = "UI/Cursors/Key.png";
+const std::string UIResources::Cursors_Lock = "UI/Cursors/Lock.png";
+const std::string UIResources::Cursors_Map = "UI/Cursors/Map.png";
+const std::string UIResources::Cursors_MouseDrag = "UI/Cursors/MouseDrag.png";
+const std::string UIResources::Cursors_MouseIdle = "UI/Cursors/MouseIdle.png";
+const std::string UIResources::Cursors_MousePoint = "UI/Cursors/MousePoint.png";
+const std::string UIResources::Cursors_MousePointPressed = "UI/Cursors/MousePointPressed.png";
+const std::string UIResources::Cursors_Question = "UI/Cursors/Question.png";
+const std::string UIResources::Cursors_Skull = "UI/Cursors/Skull.png";
+const std::string UIResources::Cursors_Sword = "UI/Cursors/Sword.png";
+const std::string UIResources::Cursors_ZoomIn = "UI/Cursors/ZoomIn.png";
+const std::string UIResources::Cursors_ZoomOut = "UI/Cursors/ZoomOut.png";
 const std::string UIResources::EmptyImage = "UI/EmptyImage.png";
 const std::string UIResources::Fonts_Texture_AlienText = "UI/Fonts/Texture/AlienText.png";
 const std::string UIResources::HUD_HealthBar = "UI/HUD/HealthBar.png";
@@ -272,10 +289,6 @@ const std::string UIResources::Menus_MinigamesMenu_Hexus_IconDecimal = "UI/Menus
 const std::string UIResources::Menus_MinigamesMenu_Hexus_IconHex = "UI/Menus/MinigamesMenu/Hexus/IconHex.png";
 const std::string UIResources::Menus_MinigamesMenu_Hexus_IconSpecial = "UI/Menus/MinigamesMenu/Hexus/IconSpecial.png";
 const std::string UIResources::Menus_MinigamesMenu_Hexus_WoodBackground = "UI/Menus/MinigamesMenu/Hexus/WoodBackground.png";
-const std::string UIResources::Menus_MouseDrag = "UI/Menus/MouseDrag.png";
-const std::string UIResources::Menus_MouseIdle = "UI/Menus/MouseIdle.png";
-const std::string UIResources::Menus_MousePoint = "UI/Menus/MousePoint.png";
-const std::string UIResources::Menus_MousePointPressed = "UI/Menus/MousePointPressed.png";
 const std::string UIResources::Menus_Objects_ALCHEMY = "UI/Menus/Objects/ALCHEMY.png";
 const std::string UIResources::Menus_Objects_AMULET = "UI/Menus/Objects/AMULET.png";
 const std::string UIResources::Menus_Objects_BAG_1 = "UI/Menus/Objects/BAG 1.png";

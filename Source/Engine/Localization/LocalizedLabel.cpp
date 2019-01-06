@@ -58,8 +58,7 @@ void LocalizedLabel::onEnter()
 	super::onEnter();
 
 	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
-	this->translationButton->setContentSize(this->getContentSize());
-	this->translationButton->setPosition(this->getContentSize()  / 2.0f);
+	this->updateTranslationEditHitbox();
 	this->translationButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
@@ -214,6 +213,8 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	{
 		this->enableOutline(outlineColor, outlineSize);
 	}
+
+	this->updateTranslationEditHitbox();
 }
 
 cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
@@ -390,4 +391,10 @@ float LocalizedLabel::getFontSizeP(std::string fontResource)
 float LocalizedLabel::getFontSizeSmall(std::string fontResource)
 {
 	return 16.0f;
+}
+
+void LocalizedLabel::updateTranslationEditHitbox()
+{
+	this->translationButton->setContentSize(this->getContentSize());
+	this->translationButton->setPosition(Vec2(this->getContentSize().width / 2.0f, 0.0f));
 }

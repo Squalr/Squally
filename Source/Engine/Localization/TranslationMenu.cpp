@@ -23,6 +23,8 @@
 #include "Strings/Menus/TranslationEditor/NewTranslation.h"
 #include "Strings/Menus/TranslationEditor/OriginalTextInEnglish.h"
 #include "Strings/Menus/TranslationEditor/TranslationEditor.h"
+#include "Engine/Input/Input.h"
+#include "Engine/UI/Mouse.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -117,8 +119,17 @@ TranslationMenu::~TranslationMenu()
 {
 }
 
+void TranslationMenu::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
 void TranslationMenu::initializePositions()
 {
+	super::initializePositions();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->menuBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -147,6 +158,21 @@ void TranslationMenu::initializeListeners()
 
 	cancelButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onCancelClick(); });
 	submitButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onSubmitClick(); });
+}
+
+void TranslationMenu::update(float dt)
+{
+	super::update(dt);
+
+	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_ALT))
+	{
+		Mouse::getInstance()->setActiveCursorSet(Mouse::SET_ID_TRANSLATION_CURSOR);
+	}
+
+	if (Input::isKeyJustReleased(EventKeyboard::KeyCode::KEY_ALT))
+	{
+		Mouse::getInstance()->setActiveCursorSet(Mouse::SET_ID_DEFAULT);
+	}
 }
 
 void TranslationMenu::onTranslationMenuOpen(LocalizationEvents::TranslationBeginEditArgs* args)
