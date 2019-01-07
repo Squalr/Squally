@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Engine/Events/LocalizationEvents.h"
-#include "Engine/GlobalNode.h"
+#include "Engine/GlobalHud.h"
 
 namespace cocos2d
 {
@@ -20,12 +20,12 @@ class LocalizedLabel;
 class ClickableTextNode;
 class TextWindow;
 
-class TranslationMenu : public GlobalNode
+class TranslationMenu : public GlobalHud
 {
 public:
 	static void registerGlobalNode();
 private:
-	typedef GlobalNode super;
+	typedef GlobalHud super;
 	TranslationMenu();
 	virtual ~TranslationMenu();
 

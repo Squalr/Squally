@@ -1,18 +1,18 @@
 #pragma once
-#include "Engine/SmartNode.h"
+#include "Engine/UI/HUD/hud.h"
 
 namespace cocos2d
 {
 	class EventListener;
 }
 
-class GlobalNode : public SmartNode
+class GlobalHud : public Hud
 {
 public:
-	virtual ~GlobalNode() = default;
+	virtual ~GlobalHud() = default;
 
 	void pause() override;
 	virtual void addGlobalEventListener(cocos2d::EventListener* listener);
 private:
-	typedef SmartNode super;
+	typedef Hud super;
 };

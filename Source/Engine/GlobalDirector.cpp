@@ -5,6 +5,7 @@
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalNode.h"
+#include "Engine/GlobalHud.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -23,7 +24,7 @@ GlobalDirector* GlobalDirector::getInstance()
 
 GlobalDirector::GlobalDirector()
 {
-	this->globalNodes = std::vector<GlobalNode*>();
+	this->globalNodes = std::vector<SmartNode*>();
 	this->globalScenes = std::vector<GlobalScene*>();
 	this->activeScene = nullptr;
 }
@@ -86,6 +87,15 @@ void GlobalDirector::navigateBack(int backCount)
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)
+{
+	if (node != nullptr)
+	{
+		GlobalDirector::getInstance()->addChild(node);
+		GlobalDirector::getInstance()->globalNodes.push_back(node);
+	}
+}
+
+void GlobalDirector::registerGlobalNode(GlobalHud* node)
 {
 	if (node != nullptr)
 	{

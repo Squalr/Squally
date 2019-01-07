@@ -6,6 +6,8 @@
 
 #include "Resources/EntityResources.h"
 
+using namespace cocos2d;
+
 const std::string SkeletalKnight::MapKeySkeletalKnight = "skeletal-knight";
 
 SkeletalKnight* SkeletalKnight::deserialize(cocos2d::ValueMap* initProperties)
@@ -33,6 +35,32 @@ SkeletalKnight::~SkeletalKnight()
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////X////X////X////X////X////X////X////X////X////X/
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
+#include "Engine/Dialogue/SpeechBubble.h"
+
+#include "Strings/Dialogue/Enemies/BattleCries/DieMortal.h"
+
+void SkeletalKnight::onEnter()
+{
+	PlatformerEntity::onEnter();
+
+	this->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Enemies_BattleCries_DieMortal::create(), SpeechBubble::Direction::Auto);
+		}),
+		DelayTime::create(2.5f),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->hideDialogue();
+		}),
+		nullptr
+	));
+}
 
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

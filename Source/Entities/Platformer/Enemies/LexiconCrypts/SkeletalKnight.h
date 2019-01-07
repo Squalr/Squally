@@ -17,4 +17,6 @@ public:
 private:
 	SkeletalKnight(cocos2d::ValueMap* initProperties);
 	~SkeletalKnight();
+
+	void onEnter() override;
 };
