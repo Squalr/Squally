@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="505">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="507">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -76,13 +76,18 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="506" name="Crypts/Background/background plan 2" type="decor" x="887.879" y="2717.58" width="5000" height="1080">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="decor -768">
   <properties>
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="503" name="Crypts/Background/background plan 2" type="decor" x="900" y="2820" width="5000" height="1080">
+  <object id="505" name="Crypts/Background/background plan 1" type="decor" x="881.818" y="2978.18" width="5000" height="1080">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -93,11 +98,6 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="495" name="Crypts/Background/background plan 1" type="decor" x="892" y="3136" width="5000" height="1080">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="decor -256">
   <properties>
@@ -150,7 +150,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="501" name="Crypts/trunk_3" type="decor" x="2207" y="3266" width="523" height="552"/>
+  <object id="501" name="Crypts/trunk_3" type="decor" x="1958.52" y="3269.03" width="523" height="552"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
