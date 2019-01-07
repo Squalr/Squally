@@ -29,7 +29,10 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
-	void shoot(float angle);
+	void shoot(float dt);
 
+	cocos2d::Node* dartNode;
 	SmartAnimationNode* dartGunAnimations;
+
+	static const std::string PivotBone;
 };

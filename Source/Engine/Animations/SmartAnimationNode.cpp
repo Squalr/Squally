@@ -108,3 +108,13 @@ void SmartAnimationNode::setFlippedY(bool flippedY)
 {
 	this->animationNode->setFlippedY(flippedY);
 }
+
+bool SmartAnimationNode::getFlippedX()
+{
+	return this->animationNode->getFlippedX();
+}
+
+bool SmartAnimationNode::getFlippedY()
+{
+	return this->animationNode->getFlippedY();
+}

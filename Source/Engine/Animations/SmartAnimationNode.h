@@ -34,6 +34,8 @@ public:
 	void restoreAnimationPart(std::string partName);
 	void setFlippedX(bool flippedX);
 	void setFlippedY(bool flippedY);
+	bool getFlippedX();
+	bool getFlippedY();
 
 	static const std::string DefaultAnimationEntityName;
 	static const std::string DefaultAnimationName;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="437">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="505">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -12,7 +12,7 @@
  </objectgroup>
  <objectgroup name="background">
   <properties>
-   <property name="background" value="Dawn"/>
+   <property name="background" value="SkyDread"/>
    <property name="type" value="background"/>
   </properties>
  </objectgroup>
@@ -21,64 +21,43 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="504" name="Crypts/Background/moon1" type="decor" x="2582" y="1968" width="1624" height="1440"/>
  </objectgroup>
  <objectgroup name="decor -3584">
   <properties>
    <property name="depth" type="float" value="-3584"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="396" name="Forest/Background/Mountain2" type="decor" x="2889.5" y="1757.5" width="2237" height="989"/>
  </objectgroup>
  <objectgroup name="decor -3072">
   <properties>
    <property name="depth" type="float" value="-3072"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="430" name="Forest/Background/Mountain1" type="decor" x="5681.5" y="1769.5" width="2237" height="989"/>
  </objectgroup>
  <objectgroup name="decor -2560">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="426" name="Forest/Background/Forest4" type="decor" x="-3664" y="2340" width="40000" height="816">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="decor -2304">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="432" name="Forest/Background/Forest3" type="decor" x="-3664" y="2400" width="40000" height="715">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="decor -2048">
   <properties>
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="431" name="Forest/Background/Forest2" type="decor" x="-3664" y="2432" width="40000" height="941">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="decor -1792">
   <properties>
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="433" name="Forest/Background/Forest1" type="decor" x="-3664" y="2440" width="40000" height="909">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup name="background mist">
   <properties>
@@ -103,7 +82,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="434" name="Forest/Background/Hills2" type="decor" x="-3716" y="3037.5" width="40000" height="537">
+  <object id="503" name="Crypts/Background/background plan 2" type="decor" x="900" y="2820" width="5000" height="1080">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -114,6 +93,11 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="495" name="Crypts/Background/background plan 1" type="decor" x="892" y="3136" width="5000" height="1080">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="decor -256">
   <properties>
@@ -126,72 +110,76 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <layer name="cave" width="80" height="48">
+ <layer name="cave" width="64" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt0DEKgDAURMEfr6Le/3ZqaWETrMQtQmAGtl9eFQAAAAAAAMB/R6s6u11t9KO5rEvV1m1fRj+ai34Z/TL6ZfTL6Jd59/s6Hvpl9Mvol9EPAAAAYB43TMwTrA==
+   eJztzzESgCAAA8HAV9T//04tbSmlAUd2Z9LnEgAAAAAA+JazJFezu8x+NNZWk73ZUWc/Gku/fv369fftL/Tr179uPwAAAO897EUTrA==
   </data>
  </layer>
  <objectgroup name="terrain 2">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="false"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="436" name="solid" type="terrain" x="6092" y="3500">
-   <properties>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 1884,16 1868,288 1896,484 1868,840 2220,824 2548,784 2844,820 3196,804 3496,824 3488,1004 3452,1132 3420,1244 3440,1404 3428,1508 3432,1596 3432,1908 3448,2228 -96,2228 -80,52"/>
-  </object>
  </objectgroup>
  <objectgroup name="terrain">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="false"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="418" name="solid" type="terrain" x="2072" y="2637">
+  <object id="468" name="solid" type="terrain" x="4260.61" y="2063.64">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="-432,304 480,-40 936,80 1264,32 1596,152 1976,396 2136,116 2344,112 2584,88 2712,88 2920,104 3064,152 3944,176 4408,88 4800,40 5128,24 5496,40 5776,56 5744,944 5232,936 -424,1032 -428,632"/>
+   <polyline points="0,0 1975.76,12.1212 1978.79,-590.909 3.0303,-590.909 45.4545,-315.152"/>
   </object>
-  <object id="422" name="solid" type="terrain" x="5064" y="1624">
+  <object id="490" name="solid" type="terrain" x="992" y="3824">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 -348,-84 -652,-8 -928,-120 -1292,-60 -1276,304 4,292 -4,128"/>
-  </object>
-  <object id="423" name="solid" type="terrain" x="2728" y="1800">
-   <properties>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 -360,148 -780,16 -932,-528 -812,-1040 -332,-1176 88,-1168 372,-996 352,-672 -240,-704 -360,-520 -256,-248 256,-252 228,-84"/>
-  </object>
-  <object id="435" name="solid" type="terrain" x="8456" y="1532">
-   <properties>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 -56,596 -20,908 -60,1288 -28,1880 -60,2192 184,2284 740,2224 940,2148 952,-4 432,-92 36,-20"/>
+   <polyline points="0,0 784,-40 1480,-8 2360,8 2800,-32 3056,24 3056,-216 3312,-232 3720,-208 3864,-120 4184,-40 4984,-24 4968,1088 -32,1072 56,496"/>
   </object>
  </objectgroup>
  <objectgroup name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="492" name="Crypts/Foreground/TREE-2" type="decor" x="4214.7" y="3151.3" width="568" height="475"/>
+  <object id="493" name="Crypts/SKULL" type="decor" x="3094" y="3792.5" width="66" height="44"/>
+  <object id="494" name="Crypts/mus-1" type="decor" x="2637.67" y="3782" width="49" height="42">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="501" name="Crypts/trunk_3" type="decor" x="2207" y="3266" width="523" height="552"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="185" name="plushie_monkey" type="object" x="3397.15" y="2524.43" width="196" height="196" rotation="10">
+  <object id="487" name="dart-gun" type="object" x="4094.13" y="3470.97" width="78.7879" height="88">
    <properties>
-    <property name="dialog" value="DialogTutorialExactScanI"/>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
  <objectgroup name="entities">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="180" name="knight" type="entity" x="2390.06" y="2166.73" width="200" height="288"/>
-  <object id="366" name="squally" type="entity" x="4655.15" y="2496.24" width="78.7879" height="88"/>
+  <object id="489" name="skeletal-knight" type="entity" x="3751.03" y="3640.48" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="player_layer">
+  <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="452" name="squally" type="entity" x="3166.36" y="3599.7" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -215,19 +203,15 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="2112" y="2356" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="4230" y="2312" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="2770" y="2232" width="242" height="738"/>
-  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="5282" y="2448" width="270" height="748"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3118" y="2380" width="242" height="738"/>
+  <object id="491" name="Crypts/Foreground/Spear3" type="decor" x="2313.36" y="3787.7" width="510" height="558"/>
+  <object id="496" name="Crypts/Foreground/Spear3" type="decor" x="2821.06" y="3816.52" width="510" height="558"/>
+  <object id="497" name="Crypts/Foreground/Spear3" type="decor" x="3353.06" y="3820.09" width="510" height="558"/>
+  <object id="498" name="Crypts/Foreground/Spear3" type="decor" x="3845.06" y="3782.39" width="510" height="558"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="1948" y="2268" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="3462" y="2216" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="2402" y="2380" width="242" height="738"/>
  </objectgroup>
 </map>

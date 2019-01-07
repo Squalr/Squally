@@ -91,6 +91,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Events/MouseEvents.cpp
 	Source/Engine/Events/SceneEvents.cpp
 	Source/Engine/GlobalDirector.cpp
+	Source/Engine/GlobalHud.cpp
 	Source/Engine/GlobalNode.cpp
 	Source/Engine/GlobalScene.cpp
 	Source/Engine/Hackables/HackButton.cpp
@@ -833,6 +834,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Cutscenes/PressEscToSkip.cpp
 	Source/Strings/Debugging/CameraX.cpp
 	Source/Strings/Debugging/CameraY.cpp
+	Source/Strings/Dialogue/Enemies/BattleCries/DieMortal.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.cpp
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.cpp
 	Source/Strings/Generics/Constant.cpp
@@ -1149,6 +1151,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Events/MouseEvents.h
 	Source/Engine/Events/SceneEvents.h
 	Source/Engine/GlobalDirector.h
+	Source/Engine/GlobalHud.h
 	Source/Engine/GlobalNode.h
 	Source/Engine/GlobalScene.h
 	Source/Engine/Hackables/HackButton.h
@@ -1915,6 +1918,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Cutscenes/PressEscToSkip.h
 	Source/Strings/Debugging/CameraX.h
 	Source/Strings/Debugging/CameraY.h
+	Source/Strings/Dialogue/Enemies/BattleCries/DieMortal.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial1.h
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.h
 	Source/Strings/Generics/Constant.h
