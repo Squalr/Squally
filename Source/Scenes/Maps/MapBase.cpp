@@ -202,7 +202,6 @@ void MapBase::onHackerModeEnable()
 {
 	HackableEvents::TriggerHackerModeEnable();
 
-	this->map->hackerModeEnable();
 	this->mapNode->setVisible(true);
 	this->hud->setVisible(false);
 
@@ -217,7 +216,6 @@ void MapBase::onHackerModeDisable()
 {
 	HackableEvents::TriggerHackerModeDisable();
 
-	this->map->hackerModeDisable();
 	this->mapNode->setVisible(true);
 	this->hud->setVisible(true);
 

@@ -31,10 +31,12 @@ public:
 	static void TriggerHackerModeEnable();
 	static void TriggerHackerModeDisable();
 	static void TriggerEditHackable(HackableObjectEditArgs args);
+	static void TriggerEditHackableDone();
 	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
 
 	static const std::string HackerModeEnable;
 	static const std::string HackerModeDisable;
 	static const std::string HackableObjectEditEvent;
+	static const std::string HackableObjectEditDoneEvent;
 	static const std::string HackableObjectRegisterEvent;
 };

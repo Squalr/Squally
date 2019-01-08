@@ -127,7 +127,6 @@ public:
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
 
 	std::string getAssemblyString();
-	LocalizedString* getFunctionName();
 	void* getCodePointer();
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
@@ -148,7 +147,6 @@ private:
 	virtual ~HackableCode();
 
 	std::string assemblyString;
-	LocalizedString* functionName;
 	void* codePointer;
 	unsigned char* originalCodeCopy;
 	int originalCodeLength;
