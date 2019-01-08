@@ -14,12 +14,6 @@ bool DeveloperModeController::IsDeveloperBuild = true;
 
 void DeveloperModeController::registerGlobalNode()
 {
-	// Prevent registering this for events for non-developer builds
-	if (!DeveloperModeController::IsDeveloperBuild)
-	{
-		return;
-	}
-
 	if (DeveloperModeController::instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
@@ -66,6 +60,12 @@ bool DeveloperModeController::isDeveloperModeEnabled()
 
 void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
+	// Prevent processing events non-developer builds
+	if (!DeveloperModeController::IsDeveloperBuild)
+	{
+		return;
+	}
+
 	static LanguageType nextLanguage = LanguageType::ENGLISH;
 
 	switch (keyCode)
@@ -136,7 +136,6 @@ void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 			)));
 			break;
 		}
-		this->stopAllActions();
 		case EventKeyboard::KeyCode::KEY_F5:
 		{
 			this->stopAllActions();
