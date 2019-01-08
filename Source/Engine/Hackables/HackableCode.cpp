@@ -142,10 +142,9 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedStri
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource) : HackableAttribute(iconResource)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource) : HackableAttribute(iconResource, functionName)
 {
 	this->codePointer = (unsigned char*)codeStart;
-	this->functionName = functionName;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
 	this->originalCodeCopy = nullptr;
@@ -159,9 +158,6 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* func
 
 	// Disassemble starting bytes, strip out NOPs
 	this->assemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
-
-	// Retain
-	this->addChild(this->functionName);
 }
 
 HackableCode::~HackableCode()
@@ -180,11 +176,6 @@ HackableCode::~HackableCode()
 std::string HackableCode::getAssemblyString()
 {
 	return this->assemblyString;
-}
-
-LocalizedString* HackableCode::getFunctionName()
-{
-	return this->functionName;
 }
 
 void* HackableCode::getCodePointer()

@@ -12,7 +12,6 @@ class HackableData : public HackableAttribute
 public:
 	static HackableData* create(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource);
 
-	LocalizedString* variableName;
 	void* dataPointer;
 	HackUtils::DataType dataType;
 

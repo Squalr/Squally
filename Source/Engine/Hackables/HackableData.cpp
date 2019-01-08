@@ -14,9 +14,8 @@ HackableData* HackableData::create(void* dataAddress, LocalizedString* variableN
 	return instance;
 }
 
-HackableData::HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource) : HackableAttribute(iconResource)
+HackableData::HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource) : HackableAttribute(iconResource, variableName)
 {
-	this->variableName = variableName;
 	this->dataPointer = dataAddress;
 	this->dataType = HackUtils::stdTypeToDataType(dataTypeInfo);
 }

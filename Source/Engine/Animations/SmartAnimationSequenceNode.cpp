@@ -56,7 +56,7 @@ void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceF
 	SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
 }
 
-void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
 	Animation* animation = Animation::create();
 	auto animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
@@ -66,7 +66,10 @@ void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResour
 		animation->addSpriteFrameWithFile(*it);
 	}
 
-	animation->addSpriteFrameWithFile(UIResources::EmptyImage);
+	if (insertBlankFrame)
+	{
+		animation->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
 
 	animation->setDelayPerUnit(animationSpeed);
 
@@ -83,7 +86,7 @@ void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResour
 	));
 }
 
-void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay)
+void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay, bool insertBlankFrame)
 {
 	Animation* animation = Animation::create();
 	auto animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
@@ -93,19 +96,25 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequence
 		animation->addSpriteFrameWithFile(*it);
 	}
 
-	animation->addSpriteFrameWithFile(UIResources::EmptyImage);
+	if (insertBlankFrame)
+	{
+		animation->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
 
 	animation->setDelayPerUnit(animationSpeed);
 	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), DelayTime::create(repeatDelay), nullptr)));
 }
 
-void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, std::function<void()> onAnimationComplete)
+void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, std::function<void()> onAnimationComplete)
 {
 	Animation* animationIn = Animation::create();
 	Animation* animationOut = Animation::create();
 	auto animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
 
-	animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
+	if (insertBlankFrame)
+	{
+		animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
 
 	for (auto it = animationFiles.begin(); it != animationFiles.end(); it++)
 	{
@@ -113,7 +122,10 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequ
 		animationOut->addSpriteFrameWithFile(*it);
 	}
 
-	animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
+	if (insertBlankFrame)
+	{
+		animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
 
 	animationIn->setDelayPerUnit(animationSpeedIn);
 	animationOut->setDelayPerUnit(animationSpeedOut);
@@ -133,13 +145,16 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequ
 	));
 }
 
-void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool startReversed)
+void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed)
 {
 	Animation* animationIn = Animation::create();
 	Animation* animationOut = Animation::create();
 	auto animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
 
-	animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
+	if (insertBlankFrame)
+	{
+		animationOut->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
 
 	for (auto it = animationFiles.begin(); it != animationFiles.end(); it++)
 	{
@@ -147,7 +162,10 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initi
 		animationOut->addSpriteFrameWithFile(*it);
 	}
 
-	animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
+	if (insertBlankFrame)
+	{
+		animationIn->addSpriteFrameWithFile(UIResources::EmptyImage);
+	}
 
 	animationIn->setDelayPerUnit(animationSpeedIn);
 	animationOut->setDelayPerUnit(animationSpeedOut);
