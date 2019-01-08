@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/UI/HUD/hud.h"
+#include "Engine/UI/HUD/Hud.h"
 
 namespace cocos2d
 {
