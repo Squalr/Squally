@@ -17,6 +17,7 @@ class CodeEditor;
 class HackableCode;
 class HackableData;
 class HackableObject;
+class LocalizedString;
 
 class RadialMenu : public SmartNode
 {
@@ -36,7 +37,7 @@ private:
 	void onHackableDataClick(HackableData* hackableData);
 	void close();
 	void buildRadialMenu(HackableEvents::HackableObjectEditArgs* args);
-	cocos2d::Node* createRadialNode(std::string iconResource, cocos2d::Vec2 nodePosition, cocos2d::Color4F color, bool drawLine, std::function<void()> clickCallback);
+	cocos2d::Node* createRadialNode(std::string iconResource, cocos2d::Vec2 nodePosition, float angle, LocalizedString* text, cocos2d::Color4F color, bool drawLine, std::function<void()> clickCallback);
 
 	CodeEditor* codeEditor;
 	HackableObject* activeHackableObject;

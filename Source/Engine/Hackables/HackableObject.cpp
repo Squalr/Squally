@@ -14,6 +14,7 @@ using namespace cocos2d;
 
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
+	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackButton = HackButton::create();
@@ -78,12 +79,14 @@ void HackableObject::onHackableClick(ClickableNode* hackButton)
 
 void HackableObject::registerData(HackableData* hackableData)
 {
-	hackableData->retain();
+	this->addChild(hackableData);
+	this->hackableList.push_back(hackableData);
 	this->dataList.push_back(hackableData);
 }
 
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
-	hackableCode->retain();
+	this->addChild(hackableCode);
+	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
 }
