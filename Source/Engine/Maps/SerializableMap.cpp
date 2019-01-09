@@ -69,12 +69,12 @@ void SerializableMap::initializeListeners()
 		this->hackerModeDisable();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectEditEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectOpenEvent, [=](EventCustom* args)
 	{
 		this->hackerModeLayerFade();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectEditDoneEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectCloseEvent, [=](EventCustom* args)
 	{
 		this->hackerModeLayerUnfade();
 	}));

@@ -5,8 +5,6 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-class RadialMenu;
-
 namespace cocos2d
 {
 	class Layer;
@@ -14,6 +12,9 @@ namespace cocos2d
 	class EventCustom;
 	class Node;
 }
+
+class CodeEditor;
+class RadialMenu;
 
 class HackerModeHud : public Hud
 {
@@ -34,6 +35,7 @@ private:
 	void onRadialMenuClose();
 	void registerHackableObject(cocos2d::EventCustom* args);
 
+	CodeEditor* codeEditor;
 	RadialMenu* radialMenu;
 	std::function<void()> callback;
 };
