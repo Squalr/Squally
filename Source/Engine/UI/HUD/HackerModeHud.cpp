@@ -11,6 +11,7 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/GameUtils.h"
 
+#include "Menus/HackerMode/CodeEditor.h"
 #include "Menus/HackerMode/RadialMenu.h"
 
 using namespace cocos2d;
@@ -27,10 +28,13 @@ HackerModeHud* HackerModeHud::create(std::function<void()> toggleHackermodeCallb
 HackerModeHud::HackerModeHud(std::function<void()> toggleHackermodeCallback)
 {
 	this->callback = toggleHackermodeCallback;
+	this->codeEditor = CodeEditor::create();
 	this->radialMenu = RadialMenu::create(CC_CALLBACK_0(HackerModeHud::onRadialMenuClose, this));
 
+	this->codeEditor->setVisible(false);
 	this->radialMenu->setVisible(false);
 
+	this->addChild(this->codeEditor);
 	this->addChild(this->radialMenu);
 }
 
@@ -103,10 +107,4 @@ void HackerModeHud::registerHackableObject(EventCustom* args)
 {
 	HackableEvents::HackableObjectRegisterArgs* innerArgs = (HackableEvents::HackableObjectRegisterArgs*)args->getUserData();
 	HackableObject* hackableObject = innerArgs->hackableObject;
-
-	if (hackableObject != nullptr)
-	{
-		// Zac: Disabled, this was causing stupid crashes
-		// GameUtils::changeParent(hackableObject->hackButton, this->hackableButtonLayer, true);
-	}
 }

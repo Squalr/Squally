@@ -1,6 +1,8 @@
 ﻿#include "CodeEditor.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
@@ -37,6 +39,7 @@
 #include "Strings/Menus/CodeEditor/StatusHeader.h"
 #include "Strings/Menus/CodeEditor/UnfilledBytes.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Events/HackableEvents.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -209,6 +212,30 @@ void CodeEditor::initializeListeners()
 
 	this->acceptButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));
+
+	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
+		HackableEvents::HackableAttributeEditEvent, 
+		[=](EventCustom* args) { this->open((HackableEvents::HackableObjectEditArgs*)args->getUserData()); }
+	);
+
+	this->addEventListenerIgnorePause(hackableEditListener);
+}
+
+void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
+{
+	HackableCode* hackableCode = dynamic_cast<HackableCode*>(args->hackableAttribute);
+
+	if (hackableCode != nullptr)
+	{
+		this->activeHackableCode = hackableCode;
+
+		this->functionWindow->setTitleStringReplaceVariables(hackableCode->getName());
+		this->functionWindow->setText(hackableCode->getAssemblyString());
+		this->functionWindow->focus();
+
+		this->setVisible(true);
+		GameUtils::focus(this);
+	}
 }
 
 void CodeEditor::onFunctionTextUpdate(std::string text)
@@ -416,18 +443,6 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 	}
 }
 
-void CodeEditor::open(HackableCode* hackableCode)
-{
-	this->activeHackableCode = hackableCode;
-
-	this->functionWindow->setTitleStringReplaceVariables(hackableCode->getName());
-	this->functionWindow->setText(hackableCode->getAssemblyString());
-	this->functionWindow->focus();
-
-	this->setVisible(true);
-	GameUtils::focus(this);
-}
-
 void CodeEditor::onAccept(ClickableNode* menuSprite)
 {
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getCodePointer());
@@ -444,12 +459,13 @@ void CodeEditor::onAccept(ClickableNode* menuSprite)
 
 	this->setVisible(false);
 	this->getParent()->setOpacity(0xFF);
-	GameUtils::focus(this->getParent());
+
+	HackableEvents::TriggerEditHackableAttributeDone();
 }
 
 void CodeEditor::onCancel(ClickableNode* menuSprite)
 {
 	this->setVisible(false);
 
-	GameUtils::focus(this->getParent());
+	HackableEvents::TriggerEditHackableAttributeDone();
 }

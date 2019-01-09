@@ -3,20 +3,24 @@
 
 #include "cocos/math/Vec2.h"
 
+class HackableAttribute;
 class HackableObject;
 
 class HackableEvents
 {
 public:
-	struct HackableObjectEditArgs
+	struct HackableObjectOpenArgs
 	{
 		HackableObject* hackableObject;
-		cocos2d::Vec2 sourceLocation;
 
-		HackableObjectEditArgs(HackableObject* hackableObject, cocos2d::Vec2 sourceLocation) :
-			hackableObject(hackableObject), sourceLocation(sourceLocation)
-		{
-		}
+		HackableObjectOpenArgs(HackableObject* hackableObject) :hackableObject(hackableObject) { }
+	};
+
+	struct HackableObjectEditArgs
+	{
+		HackableAttribute* hackableAttribute;
+
+		HackableObjectEditArgs(HackableAttribute* hackableAttribute) :hackableAttribute(hackableAttribute) { }
 	};
 
 	struct HackableObjectRegisterArgs
@@ -30,13 +34,17 @@ public:
 
 	static void TriggerHackerModeEnable();
 	static void TriggerHackerModeDisable();
-	static void TriggerEditHackable(HackableObjectEditArgs args);
-	static void TriggerEditHackableDone();
+	static void TriggerOpenHackable(HackableObjectOpenArgs args);
+	static void TriggerCloseHackable();
+	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
+	static void TriggerEditHackableAttributeDone();
 	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
 
 	static const std::string HackerModeEnable;
 	static const std::string HackerModeDisable;
-	static const std::string HackableObjectEditEvent;
-	static const std::string HackableObjectEditDoneEvent;
+	static const std::string HackableObjectOpenEvent;
+	static const std::string HackableObjectCloseEvent;
+	static const std::string HackableAttributeEditEvent;
+	static const std::string HackableAttributeEditDoneEvent;
 	static const std::string HackableObjectRegisterEvent;
 };

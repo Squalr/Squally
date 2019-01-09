@@ -5,6 +5,7 @@
 
 #include "Engine/UI/Controls/Text/EditableTextWindow.h"
 #include "Engine/SmartNode.h"
+#include "Engine/Events/HackableEvents.h"
 
 namespace cocos2d
 {
@@ -22,8 +23,6 @@ class CodeEditor : public SmartNode
 public:
 	static CodeEditor* create();
 
-	void open(HackableCode* hackableCode);
-
 private:
 	CodeEditor();
 	~CodeEditor();
@@ -32,6 +31,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
+	void open(HackableEvents::HackableObjectEditArgs* args);
 	void enableAccept();
 	void disableAccept();
 	void compile(std::string rawText);

@@ -7,8 +7,10 @@ using namespace cocos2d;
 
 const std::string HackableEvents::HackerModeEnable = "EVENT_HACKERMODE_ENABLE";
 const std::string HackableEvents::HackerModeDisable = "EVENT_HACKERMODE_DISABLE";
-const std::string HackableEvents::HackableObjectEditEvent = "EVENT_EDIT_HACKABLE_OBJECT";
-const std::string HackableEvents::HackableObjectEditDoneEvent = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
+const std::string HackableEvents::HackableObjectOpenEvent = "EVENT_OPEN_HACKABLE_OBJECT";
+const std::string HackableEvents::HackableObjectCloseEvent = "EVENT_CLOSE_HACKABLE_OBJECT";
+const std::string HackableEvents::HackableAttributeEditEvent = "EVENT_EDIT_HACKABLE_OBJECT";
+const std::string HackableEvents::HackableAttributeEditDoneEvent = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
 const std::string HackableEvents::HackableObjectRegisterEvent = "EVENT_REGISTER_HACKABLE_OBJECT";
 
 void HackableEvents::TriggerHackerModeEnable()
@@ -25,18 +27,33 @@ void HackableEvents::TriggerHackerModeDisable()
 	);
 }
 
-void HackableEvents::TriggerEditHackable(HackableObjectEditArgs args)
+void HackableEvents::TriggerOpenHackable(HackableObjectOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableObjectEditEvent,
+		HackableEvents::HackableObjectOpenEvent,
 		&args
 	);
 }
 
-void HackableEvents::TriggerEditHackableDone()
+void HackableEvents::TriggerCloseHackable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableObjectEditDoneEvent
+		HackableEvents::HackableObjectCloseEvent
+	);
+}
+
+void HackableEvents::TriggerEditHackableAttribute(HackableObjectEditArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::HackableAttributeEditEvent,
+		&args
+	);
+}
+
+void HackableEvents::TriggerEditHackableAttributeDone()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::HackableAttributeEditDoneEvent
 	);
 }
 

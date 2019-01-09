@@ -74,7 +74,7 @@ void HackableObject::onHackableClick(ClickableNode* hackButton)
 {
 	Vec2 screenPosition = GameUtils::getSceneBounds(this).origin;
 
-	HackableEvents::TriggerEditHackable(HackableEvents::HackableObjectEditArgs(this, screenPosition));
+	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
 }
 
 void HackableObject::registerData(HackableData* hackableData)
