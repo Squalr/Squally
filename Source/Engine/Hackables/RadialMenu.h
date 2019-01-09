@@ -4,7 +4,7 @@
 #include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/SmartNode.h"
+#include "Engine/GlobalHud.h"
 
 namespace cocos2d
 {
@@ -20,14 +20,14 @@ class HackableData;
 class HackableObject;
 class LocalizedString;
 
-class RadialMenu : public SmartNode
+class RadialMenu : public GlobalHud
 {
 public:
-	static RadialMenu* create(std::function<void()> onCloseCallback);
+	static void registerGlobalNode();
 
 private:
 	typedef SmartNode super;
-	RadialMenu(std::function<void()> onCloseCallback);
+	RadialMenu();
 	~RadialMenu();
 
 	void initializePositions() override;
@@ -44,8 +44,8 @@ private:
 	cocos2d::LayerColor* layerColor;
 	cocos2d::Sprite* background;
 	cocos2d::Node* radialMenuItems;
-	std::function<void()> onRadialMenuCloseCallback;
 
 	static const float Radius;
 	static const float IconRadius;
+	static RadialMenu* instance;
 };

@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 
-#include "Engine/UI/Controls/Text/EditableTextWindow.h"
-#include "Engine/SmartNode.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/GlobalHud.h"
+#include "Engine/UI/Controls/Text/EditableTextWindow.h"
 
 namespace cocos2d
 {
@@ -18,10 +18,10 @@ class ClickableNode;
 class ClickableTextNode;
 class TextWindow;
 
-class CodeEditor : public SmartNode
+class CodeEditor : public GlobalHud
 {
 public:
-	static CodeEditor* create();
+	static void registerGlobalNode();
 
 private:
 	CodeEditor();
@@ -70,6 +70,7 @@ private:
 	static const cocos2d::Color3B numberColor;
 	static const cocos2d::Color3B commentColor;
 	static const std::set<std::string> registers;
+	static CodeEditor* instance;
 private:
 	typedef SmartNode super;
 };

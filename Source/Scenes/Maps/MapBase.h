@@ -50,8 +50,6 @@ private:
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
-	HackerModeHud* hackerModeHud;
-	DeveloperHud* developerHud;
 	Hud* menuBackDrop;
 	Hud* hud;
 	PauseMenu* pauseMenu;

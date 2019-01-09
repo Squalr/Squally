@@ -40,6 +40,7 @@
 #include "Strings/Menus/CodeEditor/UnfilledBytes.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/GlobalDirector.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -90,13 +91,18 @@ const std::set<std::string> CodeEditor::registers =
 	"eip", "rip"
 };
 
-CodeEditor* CodeEditor::create()
+CodeEditor* CodeEditor::instance = nullptr;
+
+void CodeEditor::registerGlobalNode()
 {
-	CodeEditor* instance = new CodeEditor();
+	if (CodeEditor::instance == nullptr)
+	{
+		CodeEditor::instance = new CodeEditor();
 
-	instance->autorelease();
+		CodeEditor::instance->autorelease();
 
-	return instance;
+		GlobalDirector::registerGlobalNode(CodeEditor::instance);
+	}
 }
 
 CodeEditor::CodeEditor()
@@ -167,6 +173,8 @@ CodeEditor::CodeEditor()
 	this->secondaryWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::compile, this));
 	this->functionWindow->setMarginSize(32.0f);
 	this->secondaryWindow->setMarginSize(32.0f);
+
+	this->setVisible(false);
 
 	this->addChild(this->codeEditorBackground);
 	this->addChild(this->codeEditorTitle);

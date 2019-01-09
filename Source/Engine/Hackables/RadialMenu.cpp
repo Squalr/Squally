@@ -9,42 +9,45 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackableAttribute.h"
-#include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Menus/HackerMode/CodeEditor.h"
+#include "Engine/Utils/MathUtils.h"
 
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Exit.h"
-#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
 const float RadialMenu::Radius = 372.0f;
 const float RadialMenu::IconRadius = 36.0f;
+RadialMenu* RadialMenu::instance = nullptr;
 
-RadialMenu* RadialMenu::create(std::function<void()> onCloseCallback)
+void RadialMenu::registerGlobalNode()
 {
-	RadialMenu* instance = new RadialMenu(onCloseCallback);
+	if (RadialMenu::instance == nullptr)
+	{
+		RadialMenu::instance = new RadialMenu();
 
-	instance->autorelease();
+		RadialMenu::instance->autorelease();
 
-	return instance;
+		GlobalDirector::registerGlobalNode(RadialMenu::instance);
+	}
 }
 
-RadialMenu::RadialMenu(std::function<void()> onCloseCallback)
+RadialMenu::RadialMenu()
 {
-	this->onRadialMenuCloseCallback = onCloseCallback;
 	this->activeHackableObject = nullptr;
 
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
 	this->radialMenuItems = Node::create();
+
+	this->setVisible(false);
 
 	this->addChild(this->layerColor);
 	this->addChild(this->background);
@@ -104,7 +107,7 @@ void RadialMenu::onHackableAttributeEditDone()
 	GameUtils::focus(this);
 
 	// Just close out of this when finished editing an attribute
-	HackableEvents::TriggerCloseHackable();
+	this->close();
 }
 
 void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -133,13 +136,9 @@ void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 void RadialMenu::close()
 {
 	this->setVisible(false);
-	GameUtils::focus(this->getParent());
-	HackableEvents::TriggerCloseHackable();
 
-	if (this->onRadialMenuCloseCallback != nullptr)
-	{
-		this->onRadialMenuCloseCallback();
-	}
+	HackableEvents::TriggerCloseHackable();
+	HackableEvents::TriggerHackerModeDisable();
 }
 
 void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)

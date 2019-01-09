@@ -94,11 +94,13 @@ list(APPEND GAME_SOURCE
 	Source/Engine/GlobalHud.cpp
 	Source/Engine/GlobalNode.cpp
 	Source/Engine/GlobalScene.cpp
+	Source/Engine/Hackables/CodeEditor.cpp
 	Source/Engine/Hackables/HackButton.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
 	Source/Engine/Hackables/HackableObject.cpp
+	Source/Engine/Hackables/RadialMenu.cpp
 	Source/Engine/Input/ClickableIconNode.cpp
 	Source/Engine/Input/ClickableNode.cpp
 	Source/Engine/Input/ClickableTextNode.cpp
@@ -142,8 +144,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
-	Source/Engine/UI/HUD/DeveloperHud.cpp
-	Source/Engine/UI/HUD/HackerModeHud.cpp
 	Source/Engine/UI/HUD/Hud.cpp
 	Source/Engine/UI/InfiniteParallaxNode.cpp
 	Source/Engine/UI/Mouse.cpp
@@ -384,8 +384,6 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
 	Source/Menus/CursorSets.cpp
 	Source/Menus/Dialog/DialogMenu.cpp
-	Source/Menus/HackerMode/CodeEditor.cpp
-	Source/Menus/HackerMode/RadialMenu.cpp
 	Source/Menus/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
 	Source/Menus/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.cpp
 	Source/Menus/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.cpp
@@ -1154,11 +1152,13 @@ list(APPEND GAME_HEADER
 	Source/Engine/GlobalHud.h
 	Source/Engine/GlobalNode.h
 	Source/Engine/GlobalScene.h
+	Source/Engine/Hackables/CodeEditor.h
 	Source/Engine/Hackables/HackButton.h
 	Source/Engine/Hackables/HackableAttribute.h
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
 	Source/Engine/Hackables/HackableObject.h
+	Source/Engine/Hackables/RadialMenu.h
 	Source/Engine/Input/ClickableIconNode.h
 	Source/Engine/Input/ClickableNode.h
 	Source/Engine/Input/ClickableTextNode.h
@@ -1203,8 +1203,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h
-	Source/Engine/UI/HUD/DeveloperHud.h
-	Source/Engine/UI/HUD/HackerModeHud.h
 	Source/Engine/UI/HUD/Hud.h
 	Source/Engine/UI/InfiniteParallaxNode.h
 	Source/Engine/UI/Mouse.h
@@ -1451,8 +1449,6 @@ list(APPEND GAME_HEADER
 	Source/Menus/Confirmation/ConfirmationMenu.h
 	Source/Menus/CursorSets.h
 	Source/Menus/Dialog/DialogMenu.h
-	Source/Menus/HackerMode/CodeEditor.h
-	Source/Menus/HackerMode/RadialMenu.h
 	Source/Menus/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
 	Source/Menus/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h
 	Source/Menus/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h

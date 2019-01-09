@@ -18,11 +18,11 @@ public:
 
 	void setFadeSpeed(float newFadeSpeed);
 	float getFadeSpeed();
-	virtual void resume() override;
+	void resume() override;
 
 protected:
-	virtual void pause() override;
-	virtual void onEnter() override;
+	void pause() override;
+	void onEnter() override;
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
 	bool isDeveloperModeEnabled();
@@ -30,6 +30,7 @@ protected:
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
 	virtual void addEventListener(cocos2d::EventListener* listener);
+	virtual void removeEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 
 	Hud* layerColorHud;

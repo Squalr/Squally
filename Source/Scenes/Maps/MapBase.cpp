@@ -2,7 +2,9 @@
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerMouse.h"
 #include "cocos/base/CCEventMouse.h"
 #include "cocos/physics/CCPhysicsWorld.h"
@@ -11,8 +13,6 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/UI/HUD/DeveloperHud.h"
-#include "Engine/UI/HUD/HackerModeHud.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
@@ -37,12 +37,10 @@ MapBase::MapBase()
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->menuBackDrop = Hud::create();
-	this->developerHud = DeveloperHud::create();
 	this->hud = Hud::create();
 
 	this->hackerModeGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
-	this->hackerModeHud = HackerModeHud::create(CC_CALLBACK_0(MapBase::toggleHackerMode, this));
 	
 	Sprite* glow = Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground);
 	glow->setAnchorPoint(Vec2::ZERO);
@@ -52,18 +50,13 @@ MapBase::MapBase()
 
 	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
-	this->hackerModeHud->setVisible(false);
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
-
-	this->developerHud->setVisible(false);
 
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
 	this->addChild(this->hud);
-	this->addChild(this->developerHud);
 	this->addChild(this->hackerModeGlow);
-	this->addChild(this->hackerModeHud);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->pauseMenu);
 	this->addChild(this->optionsMenu);
@@ -98,6 +91,8 @@ void MapBase::initializeListeners()
 {
 	super::initializeListeners();
 
+	EventListenerCustom* hackerModeEnableListener = EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom*) {this->onHackerModeEnable(); });
+	EventListenerCustom* hackerModeDisableListener = EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom*) {this->onHackerModeDisable(); });
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* scrollListener = EventListenerMouse::create();
 
@@ -111,6 +106,8 @@ void MapBase::initializeListeners()
 
 	this->addEventListener(keyboardListener);
 	this->addEventListenerIgnorePause(scrollListener);
+	this->addEventListenerIgnorePause(hackerModeEnableListener);
+	this->addEventListenerIgnorePause(hackerModeDisableListener);
 }
 
 void MapBase::onMouseWheelScroll(EventMouse* event)
@@ -160,8 +157,6 @@ void MapBase::loadMap(SerializableMap* serializableMap)
 		GameUtils::changeParent(this->map, this->mapNode, false);
 		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
-
-	this->developerHud->loadMap(serializableMap);
 }
 
 void MapBase::onDeveloperModeEnable()
@@ -170,8 +165,6 @@ void MapBase::onDeveloperModeEnable()
 	{
 		this->map->setCollisionLayersVisible(true);
 	}
-
-	this->developerHud->setVisible(true);
 
 	if (this->getPhysicsWorld() != nullptr)
 	{
@@ -187,8 +180,6 @@ void MapBase::onDeveloperModeDisable()
 	{
 		this->map->setCollisionLayersVisible(false);
 	}
-
-	this->developerHud->setVisible(false);
 	
 	if (this->getPhysicsWorld() != nullptr)
 	{
@@ -200,30 +191,43 @@ void MapBase::onDeveloperModeDisable()
 
 void MapBase::onHackerModeEnable()
 {
-	HackableEvents::TriggerHackerModeEnable();
+	GameUtils::pause(this);
 
-	this->mapNode->setVisible(true);
 	this->hud->setVisible(false);
-
 	this->hackerModeGlow->setVisible(true);
 	this->hackerModeRain->setVisible(true);
-	this->hackerModeHud->setVisible(true);
 
-	GameUtils::focus(this->hackerModeHud);
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+
+	keyboardListener->onKeyPressed = [=](EventKeyboard::KeyCode keyCode, Event* event)
+	{
+		switch (keyCode)
+		{
+			case EventKeyboard::KeyCode::KEY_ESCAPE:
+			case EventKeyboard::KeyCode::KEY_TAB:
+			{
+				this->toggleHackerMode();
+				event->stopPropagation();
+				this->removeEventListener(keyboardListener);
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	};
+
+	this->addEventListenerIgnorePause(keyboardListener);
 }
 
 void MapBase::onHackerModeDisable()
 {
-	HackableEvents::TriggerHackerModeDisable();
-
-	this->mapNode->setVisible(true);
 	this->hud->setVisible(true);
-
 	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
-	this->hackerModeHud->setVisible(false);
 
-	GameUtils::resumeAll();
+	GameUtils::resume(this);
 }
 
 void MapBase::toggleHackerMode()
@@ -232,11 +236,11 @@ void MapBase::toggleHackerMode()
 
 	if (MapBase::hackerMode)
 	{
-		this->onHackerModeEnable();
+		HackableEvents::TriggerHackerModeEnable();
 	}
 	else
 	{
-		this->onHackerModeDisable();
+		HackableEvents::TriggerHackerModeDisable();
 	}
 }
 
