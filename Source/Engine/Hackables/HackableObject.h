@@ -6,6 +6,7 @@
 
 #include "Engine/Maps/SerializableObject.h"
 
+class HackableAttribute;
 class HackableCode;
 class HackableData;
 class HackButton;
@@ -23,6 +24,7 @@ class HackableObject : public SerializableObject
 public:
 	void onHackableClick(ClickableNode* backButton);
 
+	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
 

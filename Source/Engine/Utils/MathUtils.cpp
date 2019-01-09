@@ -2,6 +2,12 @@
 
 #include <algorithm>
 
+bool MathUtils::fuzzyEquals(float a, float b, float var)
+{ 
+	return a - var <= b && a + var >= b;
+}
+
+
 float MathUtils::clamp(float n, float lower, float upper)
 {
 	return std::max(lower, std::min(n, upper));
