@@ -139,6 +139,8 @@ CodeEditor::CodeEditor()
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
 	this->rightBarBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
+	this->radialEye = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil);
+	this->previewNode = Node::create();
 
 	LocalizedLabel* statusTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 	LocalizedLabel* functionTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
@@ -213,6 +215,8 @@ CodeEditor::CodeEditor()
 
 	this->setVisible(false);
 
+	this->addChild(this->radialEye);
+	this->addChild(this->previewNode);
 	this->addChild(this->functionWindow);
 	this->addChild(this->statusBackground);
 	this->addChild(this->rightBarBackground);
@@ -246,11 +250,13 @@ void CodeEditor::initializePositions()
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
 	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 128.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 128.0f));
+	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
-	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
+	this->radialEye->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 352.0f));
+	this->previewNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 352.0f));
+	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
 }
 
 void CodeEditor::initializeListeners()
@@ -333,6 +339,8 @@ void CodeEditor::buildRegisterWindow()
 	{
 		return;
 	}
+
+	this->registerWindow->clearText();
 
 	auto printRegisterHint = [=](HackableCode::Register reg)
 	{

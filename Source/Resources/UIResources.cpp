@@ -159,6 +159,7 @@ const std::string UIResources::Menus_DialogueMenu_ShipBackground = "UI/Menus/Dia
 const std::string UIResources::Menus_HackerModeMenu_Radial_Lantern = "UI/Menus/HackerModeMenu/Radial/Lantern.png";
 const std::string UIResources::Menus_HackerModeMenu_Radial_LanternDark = "UI/Menus/HackerModeMenu/Radial/LanternDark.png";
 const std::string UIResources::Menus_HackerModeMenu_Radial_RadialEye = "UI/Menus/HackerModeMenu/Radial/RadialEye.png";
+const std::string UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil = "UI/Menus/HackerModeMenu/Radial/RadialEyePupil.png";
 const std::string UIResources::Menus_HackerModeMenu_SideBar = "UI/Menus/HackerModeMenu/SideBar.png";
 const std::string UIResources::Menus_Icons_AlchemyBrew = "UI/Menus/Icons/AlchemyBrew.png";
 const std::string UIResources::Menus_Icons_AlchemyPot = "UI/Menus/Icons/AlchemyPot.png";

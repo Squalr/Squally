@@ -160,6 +160,7 @@ namespace UIResources
 	extern const std::string Menus_HackerModeMenu_Radial_Lantern;
 	extern const std::string Menus_HackerModeMenu_Radial_LanternDark;
 	extern const std::string Menus_HackerModeMenu_Radial_RadialEye;
+	extern const std::string Menus_HackerModeMenu_Radial_RadialEyePupil;
 	extern const std::string Menus_HackerModeMenu_SideBar;
 	extern const std::string Menus_Icons_AlchemyBrew;
 	extern const std::string Menus_Icons_AlchemyPot;

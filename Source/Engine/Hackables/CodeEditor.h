@@ -46,6 +46,8 @@ private:
 
 	cocos2d::Sprite* statusBackground;
 	cocos2d::Sprite* rightBarBackground;
+	cocos2d::Sprite* radialEye;
+	cocos2d::Node* previewNode;
 	EditableTextWindow* functionWindow;
 	TextWindow* statusWindow;
 	TextWindow* registerWindow;
