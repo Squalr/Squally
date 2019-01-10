@@ -17,7 +17,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Objects/Hackables/PendulumBlade/TargetAngle.h"
+#include "Strings/Hacking/Objects/PendulumBlade/TargetAngle.h"
 
 using namespace cocos2d;
 
@@ -67,7 +67,7 @@ void Dart::registerHackables()
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
-		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::Objects_Hackables_PendulumBlade_TargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
 	};
 
 	auto swingFunc = &Dart::dartHeatSeek;

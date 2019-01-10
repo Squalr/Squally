@@ -32,6 +32,8 @@ public:
 	void setTitleStringReplaceVariables(std::vector<LocalizedString*> stringReplaceVariables);
 	void insertText(LocalizedString* text, cocos2d::Color3B color);
 	void setMarginSize(float newMarginSize);
+	void toggleHeader(bool isVisible);
+	void toggleBackground(bool isVisible);
 	virtual void insertNewline();
 	virtual void clearText();
 
