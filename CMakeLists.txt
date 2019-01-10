@@ -932,12 +932,14 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/RegisterR9.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRax.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRbp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRbpWarning.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRbx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRcx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRdi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRdx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRspWarning.cpp
 	Source/Strings/Hacking/CodeEditor/Status.cpp
 	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
@@ -1095,6 +1097,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.cpp
 	Source/Strings/Hexus/Tutorials/F/UseMov.cpp
 	Source/Strings/Menus/Accept.cpp
+	Source/Strings/Menus/ApplyChanges.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
 	Source/Strings/Menus/ComingSoon.cpp
@@ -2043,12 +2046,14 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/RegisterR9.h
 	Source/Strings/Hacking/CodeEditor/RegisterRax.h
 	Source/Strings/Hacking/CodeEditor/RegisterRbp.h
+	Source/Strings/Hacking/CodeEditor/RegisterRbpWarning.h
 	Source/Strings/Hacking/CodeEditor/RegisterRbx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRcx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRdi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRdx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.h
+	Source/Strings/Hacking/CodeEditor/RegisterRspWarning.h
 	Source/Strings/Hacking/CodeEditor/Status.h
 	Source/Strings/Hacking/CodeEditor/StatusHeader.h
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
@@ -2206,6 +2211,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.h
 	Source/Strings/Hexus/Tutorials/F/UseMov.h
 	Source/Strings/Menus/Accept.h
+	Source/Strings/Menus/ApplyChanges.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
 	Source/Strings/Menus/ComingSoon.h

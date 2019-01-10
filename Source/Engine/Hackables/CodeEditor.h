@@ -51,8 +51,8 @@ private:
 	TextWindow* registerWindow;
 
 	ClickableTextNode* cancelButton;
-	ClickableTextNode* acceptButton;
-	cocos2d::Node* acceptButtonGrayed;
+	ClickableTextNode* applyChangesButton;
+	cocos2d::Node* applyChangesButtonGrayed;
 
 	HackableCode* activeHackableCode;
 	float compileDelay;
