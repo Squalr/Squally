@@ -20,37 +20,61 @@
 
 #include "Strings/Generics/Empty.h"
 #include "Strings/Generics/XOverY.h"
+#include "Strings/Hacking/CodeEditor/Address.h"
+#include "Strings/Hacking/CodeEditor/AllocationEditor.h"
+#include "Strings/Hacking/CodeEditor/Assembler.h"
+#include "Strings/Hacking/CodeEditor/ByteCount.h"
+#include "Strings/Hacking/CodeEditor/ByteOverflow.h"
+#include "Strings/Hacking/CodeEditor/Bytes.h"
+#include "Strings/Hacking/CodeEditor/ClickToEdit.h"
+#include "Strings/Hacking/CodeEditor/CodeEditor.h"
+#include "Strings/Hacking/CodeEditor/CompileErrors.h"
+#include "Strings/Hacking/CodeEditor/CompileSuccessful.h"
+#include "Strings/Hacking/CodeEditor/Error.h"
+#include "Strings/Hacking/CodeEditor/FunctionHeader.h"
+#include "Strings/Hacking/CodeEditor/LineNumber.h"
+#include "Strings/Hacking/CodeEditor/RegisterEax.h"
+#include "Strings/Hacking/CodeEditor/RegisterEbp.h"
+#include "Strings/Hacking/CodeEditor/RegisterEbx.h"
+#include "Strings/Hacking/CodeEditor/RegisterEcx.h"
+#include "Strings/Hacking/CodeEditor/RegisterEdi.h"
+#include "Strings/Hacking/CodeEditor/RegisterEdx.h"
+#include "Strings/Hacking/CodeEditor/RegisterEsi.h"
+#include "Strings/Hacking/CodeEditor/RegisterEsp.h"
+#include "Strings/Hacking/CodeEditor/RegisterR8.h"
+#include "Strings/Hacking/CodeEditor/RegisterR9.h"
+#include "Strings/Hacking/CodeEditor/RegisterR10.h"
+#include "Strings/Hacking/CodeEditor/RegisterR11.h"
+#include "Strings/Hacking/CodeEditor/RegisterR12.h"
+#include "Strings/Hacking/CodeEditor/RegisterR13.h"
+#include "Strings/Hacking/CodeEditor/RegisterR14.h"
+#include "Strings/Hacking/CodeEditor/RegisterR15.h"
+#include "Strings/Hacking/CodeEditor/RegisterRax.h"
+#include "Strings/Hacking/CodeEditor/RegisterRbp.h"
+#include "Strings/Hacking/CodeEditor/RegisterRbx.h"
+#include "Strings/Hacking/CodeEditor/RegisterRcx.h"
+#include "Strings/Hacking/CodeEditor/RegisterRbp.h"
+#include "Strings/Hacking/CodeEditor/RegisterRdi.h"
+#include "Strings/Hacking/CodeEditor/RegisterRdx.h"
+#include "Strings/Hacking/CodeEditor/RegisterRsi.h"
+#include "Strings/Hacking/CodeEditor/RegisterRsp.h"
+#include "Strings/Hacking/CodeEditor/Status.h"
+#include "Strings/Hacking/CodeEditor/StatusHeader.h"
+#include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
 #include "Strings/Menus/Accept.h"
 #include "Strings/Menus/Cancel.h"
-#include "Strings/Menus/CodeEditor/Address.h"
-#include "Strings/Menus/CodeEditor/AllocationEditor.h"
-#include "Strings/Menus/CodeEditor/Assembler.h"
-#include "Strings/Menus/CodeEditor/ByteCount.h"
-#include "Strings/Menus/CodeEditor/ByteOverflow.h"
-#include "Strings/Menus/CodeEditor/Bytes.h"
-#include "Strings/Menus/CodeEditor/ClickToEdit.h"
-#include "Strings/Menus/CodeEditor/CodeEditor.h"
-#include "Strings/Menus/CodeEditor/CompileErrors.h"
-#include "Strings/Menus/CodeEditor/CompileSuccessful.h"
-#include "Strings/Menus/CodeEditor/Error.h"
-#include "Strings/Menus/CodeEditor/FunctionHeader.h"
-#include "Strings/Menus/CodeEditor/LineNumber.h"
-#include "Strings/Menus/CodeEditor/Status.h"
-#include "Strings/Menus/CodeEditor/StatusHeader.h"
-#include "Strings/Menus/CodeEditor/UnfilledBytes.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
 const float CodeEditor::compileDelayMaxSeconds = 0.1f;
 const float CodeEditor::lineNumberMargin = 32.0f;;
-const Size CodeEditor::textSize = Size(512.0f, 640.0f);
-const Size CodeEditor::statusSize = Size(512.0f, 640.0f);
-const Size CodeEditor::functionSize = Size(512.0f, 640.0f);
-const Size CodeEditor::secondarySize = Size(512.0f, 640.0f);
+const Size CodeEditor::statusSize = Size(420.0f, 1080.0f);
+const Size CodeEditor::functionSize = Size(512.0f, 320.0f);
 const std::string CodeEditor::delimiters = "[],:; +-*\n\t";
 const Color3B CodeEditor::defaultColor = Color3B(255, 255, 255);
 const Color3B CodeEditor::subtextColor = Color3B(66, 166, 166);
@@ -110,16 +134,14 @@ CodeEditor::CodeEditor()
 	this->compileDelay = CodeEditor::compileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
 
-	this->codeEditorBackground = Sprite::create(UIResources::Menus_HackerModeMenu_EmptyFullScreenMenu);
-	this->codeEditorTitle = MenuLabel::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_CodeEditor_CodeEditor::create()));
+	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
+	this->rightBarBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
 
-	LocalizedLabel* statusTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
+	LocalizedLabel* statusTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 	LocalizedLabel* functionTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
-	LocalizedLabel* allocationTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
 
-	this->statusWindow = TextWindow::create(Strings::Menus_CodeEditor_StatusHeader::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
-	this->functionWindow = EditableTextWindow::create(Strings::Menus_CodeEditor_FunctionHeader::create(), functionTextStyle, CodeEditor::functionSize, CodeEditor::defaultColor);
-	this->secondaryWindow = EditableTextWindow::create(Strings::Menus_CodeEditor_AllocationEditor::create(), allocationTextStyle, CodeEditor::secondarySize, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create(Strings::Hacking_CodeEditor_FunctionHeader::create(), functionTextStyle, CodeEditor::functionSize, CodeEditor::defaultColor);
+	this->statusWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
 	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
@@ -168,19 +190,28 @@ CodeEditor::CodeEditor()
 	this->acceptButtonGrayed->addChild(acceptGray);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
-	this->secondaryWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::compile, this));
-	this->secondaryWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::compile, this));
 	this->functionWindow->setMarginSize(32.0f);
-	this->secondaryWindow->setMarginSize(32.0f);
+
+	this->statusBackground->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->statusWindow->setMarginSize(8.0f);
+	this->statusWindow->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->statusWindow->toggleBackground(false);
+	this->statusWindow->toggleHeader(false);
+
+	this->rightBarBackground->setAnchorPoint(Vec2(1.0f, 0.5f));
+	this->registerWindow->setMarginSize(8.0f);
+	this->registerWindow->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->registerWindow->toggleBackground(false);
+	this->registerWindow->toggleHeader(false);
 
 	this->setVisible(false);
 
-	this->addChild(this->codeEditorBackground);
-	this->addChild(this->codeEditorTitle);
-	this->addChild(this->statusWindow);
 	this->addChild(this->functionWindow);
-	this->addChild(this->secondaryWindow);
+	this->addChild(this->statusBackground);
+	this->addChild(this->rightBarBackground);
+	this->addChild(this->statusWindow);
+	this->addChild(this->registerWindow);
 	this->addChild(this->cancelButton);
 	this->addChild(this->acceptButton);
 	this->addChild(this->acceptButtonGrayed);
@@ -203,15 +234,17 @@ void CodeEditor::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->codeEditorBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->codeEditorTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 444.0f));
-	this->acceptButton->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f, visibleSize.height / 2.0f - 432.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f, visibleSize.height / 2.0f - 432.0f));
+	this->statusBackground->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
+	this->statusWindow->setPosition(Vec2(CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
+
+	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
+
+	this->acceptButton->setPosition(Vec2(visibleSize.width - 420.0f / 2.0f, visibleSize.height / 2.0f - 448.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width - 420.0f / 2.0f, visibleSize.height / 2.0f - 496.0f));
 	this->acceptButtonGrayed->setPosition(this->acceptButton->getPosition());
 
-	this->statusWindow->setPosition(Vec2(visibleSize.width / 2.0f - 560.0f, visibleSize.height / 2.0f - 64.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
-	this->secondaryWindow->setPosition(Vec2(visibleSize.width / 2.0f + 560.0f, visibleSize.height / 2.0f - 64.0f));
 }
 
 void CodeEditor::initializeListeners()
@@ -243,6 +276,8 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 
 		this->setVisible(true);
 		GameUtils::focus(this);
+
+		this->buildRegisterWindow();
 	}
 }
 
@@ -286,6 +321,40 @@ void CodeEditor::disableAccept()
 	this->acceptButton->setVisible(false);
 }
 
+void CodeEditor::buildRegisterWindow()
+{
+	if (sizeof(void*) == 4)
+	{
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEax::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEbx::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEcx::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdx::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdi::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEsi::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEbp::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEsp::create(), CodeEditor::headerColor);
+	}
+	else
+	{
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRax::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRbx::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRcx::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRdx::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRdi::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsi::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR8::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR9::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR10::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR11::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR12::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR13::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR14::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR15::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRbp::create(), CodeEditor::headerColor);
+		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsp::create(), CodeEditor::headerColor);
+	}
+}
+
 void CodeEditor::compile(std::string assemblyText)
 {
 	if (this->activeHackableCode == nullptr)
@@ -293,10 +362,10 @@ void CodeEditor::compile(std::string assemblyText)
 		return;
 	}
 
-	this->statusWindow->clearText();
-
 	// Do the actual compile
 	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->getCodePointer());
+
+	this->statusWindow->clearText();
 
 	// Build text and enable/disable the accept button
 	if (!compileResult.hasError)
@@ -310,38 +379,38 @@ void CodeEditor::compile(std::string assemblyText)
 			ConstantString::create(std::to_string(compileResult.byteCount)),
 			ConstantString::create(std::to_string(this->activeHackableCode->getOriginalLength()))
 		});
-
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_CompileSuccessful::create(), CodeEditor::defaultColor);
+		
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_CompileSuccessful::create(), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_Address::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Address::create(), CodeEditor::headerColor);
 		this->statusWindow->insertText(ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_ByteCount::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_ByteCount::create(), CodeEditor::headerColor);
 		this->statusWindow->insertText(bytesUsed, isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-
+		
 		if (compileResult.byteCount != this->activeHackableCode->getOriginalLength())
 		{
 			if (isByteOverflow)
 			{
-				this->statusWindow->insertText(Strings::Menus_CodeEditor_ByteOverflow::create(), CodeEditor::errorColor);
+				this->statusWindow->insertText(Strings::Hacking_CodeEditor_ByteOverflow::create(), CodeEditor::errorColor);
 			}
 			else
 			{
-				this->statusWindow->insertText(Strings::Menus_CodeEditor_UnfilledBytes::create(), CodeEditor::subtextColor);
+				this->statusWindow->insertText(Strings::Hacking_CodeEditor_UnfilledBytes::create(), CodeEditor::subtextColor);
 			}
 
 			this->statusWindow->insertNewline();
 			this->statusWindow->insertNewline();
 		}
-
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_Bytes::create(), CodeEditor::headerColor);
+		
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Bytes::create(), CodeEditor::headerColor);
 		this->statusWindow->insertText(ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)), CodeEditor::defaultColor);
-
+		
 		if (isByteOverflow)
 		{
 			this->disableAccept();
@@ -353,17 +422,17 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 	else
 	{
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_CompileErrors::create(), CodeEditor::errorColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_CompileErrors::create(), CodeEditor::errorColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_Error::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Error::create(), CodeEditor::headerColor);
 		this->statusWindow->insertText(compileResult.errorData.message, CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Menus_CodeEditor_LineNumber::create(), CodeEditor::headerColor);
+		this->statusWindow->insertText(Strings::Hacking_CodeEditor_LineNumber::create(), CodeEditor::headerColor);
 		this->statusWindow->insertText(ConstantString::create(std::to_string(compileResult.errorData.lineNumber)), CodeEditor::defaultColor);
-
+		
 		this->disableAccept();
 	}
 }

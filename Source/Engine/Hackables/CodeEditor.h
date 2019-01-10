@@ -24,6 +24,8 @@ public:
 	static void registerGlobalNode();
 
 private:
+	typedef SmartNode super;
+
 	CodeEditor();
 	~CodeEditor();
 
@@ -41,12 +43,11 @@ private:
 	void onAccept(ClickableNode* menuSprite);
 	void onCancel(ClickableNode* menuSprite);
 
-	cocos2d::Sprite* codeEditorBackground;
-
-	TextWindow* statusWindow;
-	MenuLabel* codeEditorTitle;
+	cocos2d::Sprite* statusBackground;
+	cocos2d::Sprite* rightBarBackground;
 	EditableTextWindow* functionWindow;
-	EditableTextWindow* secondaryWindow;
+	TextWindow* statusWindow;
+	TextWindow* registerWindow;
 
 	ClickableTextNode* cancelButton;
 	ClickableTextNode* acceptButton;
@@ -57,10 +58,8 @@ private:
 
 	static const float compileDelayMaxSeconds;
 	static const float lineNumberMargin;
-	static const cocos2d::Size textSize;
 	static const cocos2d::Size statusSize;
 	static const cocos2d::Size functionSize;
-	static const cocos2d::Size secondarySize;
 	static const std::string delimiters;
 	static const cocos2d::Color3B defaultColor;
 	static const cocos2d::Color3B subtextColor;
@@ -71,6 +70,4 @@ private:
 	static const cocos2d::Color3B commentColor;
 	static const std::set<std::string> registers;
 	static CodeEditor* instance;
-private:
-	typedef SmartNode super;
 };

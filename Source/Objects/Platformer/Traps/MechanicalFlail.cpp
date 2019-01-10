@@ -18,7 +18,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Objects/Hackables/MechanicalFlail/TargetAngle.h"
+#include "Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h"
 
 using namespace cocos2d;
 
@@ -97,7 +97,7 @@ void MechanicalFlail::registerHackables()
 {
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
-		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::Objects_Hackables_MechanicalFlail_TargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::Hacking_Objects_MechanicalFlail_TargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
 	};
 
 	auto swingFunc = &MechanicalFlail::swingToAngle;
