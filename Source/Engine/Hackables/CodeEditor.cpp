@@ -54,15 +54,17 @@
 #include "Strings/Hacking/CodeEditor/RegisterRbx.h"
 #include "Strings/Hacking/CodeEditor/RegisterRcx.h"
 #include "Strings/Hacking/CodeEditor/RegisterRbp.h"
+#include "Strings/Hacking/CodeEditor/RegisterRbpWarning.h"
 #include "Strings/Hacking/CodeEditor/RegisterRdi.h"
 #include "Strings/Hacking/CodeEditor/RegisterRdx.h"
 #include "Strings/Hacking/CodeEditor/RegisterRsi.h"
 #include "Strings/Hacking/CodeEditor/RegisterRsp.h"
+#include "Strings/Hacking/CodeEditor/RegisterRspWarning.h"
 #include "Strings/Hacking/CodeEditor/Status.h"
 #include "Strings/Hacking/CodeEditor/StatusHeader.h"
 #include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
 #include "Strings/Hacking/CodeEditor/Unknown.h"
-#include "Strings/Menus/Accept.h"
+#include "Strings/Menus/ApplyChanges.h"
 #include "Strings/Menus/Cancel.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Events/HackableEvents.h"
@@ -145,8 +147,8 @@ CodeEditor::CodeEditor()
 	this->statusWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
 	this->registerWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
 
-	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
-	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
+	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
+	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
@@ -172,7 +174,7 @@ CodeEditor::CodeEditor()
 	cancelLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	cancelLabelHover->enableGlow(glowColor);
 
-	this->acceptButton = ClickableTextNode::create(
+	this->applyChangesButton = ClickableTextNode::create(
 		acceptLabel,
 		acceptLabelHover,
 		UIResources::Menus_Buttons_GenericHackButton,
@@ -184,12 +186,12 @@ CodeEditor::CodeEditor()
 		UIResources::Menus_Buttons_GenericHackButton,
 		UIResources::Menus_Buttons_GenericHackButtonHover);
 
-	this->acceptButtonGrayed = Node::create();
-	this->acceptButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
+	this->applyChangesButtonGrayed = Node::create();
+	this->applyChangesButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
 
-	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Accept::create());
+	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
 	acceptGray->setTextColor(Color4B::GRAY);
-	this->acceptButtonGrayed->addChild(acceptGray);
+	this->applyChangesButtonGrayed->addChild(acceptGray);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::compile, this));
@@ -217,8 +219,8 @@ CodeEditor::CodeEditor()
 	this->addChild(this->statusWindow);
 	this->addChild(this->registerWindow);
 	this->addChild(this->cancelButton);
-	this->addChild(this->acceptButton);
-	this->addChild(this->acceptButtonGrayed);
+	this->addChild(this->applyChangesButton);
+	this->addChild(this->applyChangesButtonGrayed);
 }
 
 CodeEditor::~CodeEditor()
@@ -244,18 +246,18 @@ void CodeEditor::initializePositions()
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
 	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->acceptButton->setPosition(Vec2(visibleSize.width - 420.0f / 2.0f, visibleSize.height / 2.0f - 448.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width - 420.0f / 2.0f, visibleSize.height / 2.0f - 496.0f));
-	this->acceptButtonGrayed->setPosition(this->acceptButton->getPosition());
+	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 128.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 128.0f));
+	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
-	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
+	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
 }
 
 void CodeEditor::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->acceptButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
+	this->applyChangesButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
 	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
@@ -315,14 +317,14 @@ void CodeEditor::update(float dt)
 
 void CodeEditor::enableAccept()
 {
-	this->acceptButtonGrayed->setVisible(false);
-	this->acceptButton->setVisible(true);
+	this->applyChangesButtonGrayed->setVisible(false);
+	this->applyChangesButton->setVisible(true);
 }
 
 void CodeEditor::disableAccept()
 {
-	this->acceptButtonGrayed->setVisible(true);
-	this->acceptButton->setVisible(false);
+	this->applyChangesButtonGrayed->setVisible(true);
+	this->applyChangesButton->setVisible(false);
 }
 
 void CodeEditor::buildRegisterWindow()
@@ -346,101 +348,103 @@ void CodeEditor::buildRegisterWindow()
 
 	if (sizeof(void*) == 4)
 	{
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEax::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::eax);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEbx::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::ebx);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEcx::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::ecx);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdx::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::edx);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdi::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::edi);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEsi::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::esi);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEbp::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::ebp);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEsp::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::esp);
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::eax) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEax::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::eax);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::ebx) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEbx::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::ebx);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::ecx) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEcx::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::ecx);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::edx) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdx::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::edx);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::edi) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdi::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::edi);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::esi) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEsi::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::esi);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
 	}
 	else
 	{
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRax::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::eax);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRbx::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::ebx);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRcx::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::ecx);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRdx::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::edx);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRdi::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::edi);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsi::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::esi);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR8::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r8);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR9::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r9);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR10::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r10);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR11::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r11);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR12::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r12);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR13::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r13);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR14::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r14);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterR15::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::r15);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRbp::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::rbp);
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertNewline();
-		this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsp::create(), CodeEditor::registerColor);
-		printRegisterHint(HackableCode::Register::rsp);
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rax) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRax::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rax);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rbx) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRbx::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rbx);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rcx) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEcx::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rcx);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rdx) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRdx::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rdx);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rdi) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRdi::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rdi);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rsi) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsi::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rsi);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
 	}
 }
 
