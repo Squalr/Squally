@@ -100,6 +100,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
 	Source/Engine/Hackables/HackableObject.cpp
+	Source/Engine/Hackables/HackablePreview.cpp
 	Source/Engine/Hackables/RadialMenu.cpp
 	Source/Engine/Input/ClickableIconNode.cpp
 	Source/Engine/Input/ClickableNode.cpp
@@ -843,6 +844,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Generics/Newline.cpp
 	Source/Strings/Generics/PlusConstant.cpp
 	Source/Strings/Generics/TimesConstant.cpp
+	Source/Strings/Generics/XEqualsY.cpp
 	Source/Strings/Generics/XOverY.cpp
 	Source/Strings/Hacking/CodeEditor/Address.cpp
 	Source/Strings/Hacking/CodeEditor/AllocationEditor.cpp
@@ -1190,6 +1192,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
 	Source/Engine/Hackables/HackableObject.h
+	Source/Engine/Hackables/HackablePreview.h
 	Source/Engine/Hackables/RadialMenu.h
 	Source/Engine/Input/ClickableIconNode.h
 	Source/Engine/Input/ClickableNode.h
@@ -1957,6 +1960,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Generics/Newline.h
 	Source/Strings/Generics/PlusConstant.h
 	Source/Strings/Generics/TimesConstant.h
+	Source/Strings/Generics/XEqualsY.h
 	Source/Strings/Generics/XOverY.h
 	Source/Strings/Hacking/CodeEditor/Address.h
 	Source/Strings/Hacking/CodeEditor/AllocationEditor.h

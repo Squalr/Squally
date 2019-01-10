@@ -12,11 +12,12 @@ public:
 	LocalizedString* getName();
 
 protected:
-	typedef cocos2d::Node super;
 	HackableAttribute(std::string iconResource, LocalizedString* name);
 	virtual ~HackableAttribute();
 
 private:
+	typedef SmartNode super;
+
 	LocalizedString* name;
 	std::string iconResource;
 };
