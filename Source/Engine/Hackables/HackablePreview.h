@@ -7,6 +7,8 @@ class HackablePreview : public SmartNode
 public:
 	void setAssemblyTextVisible(bool isVisible);
 
+	virtual HackablePreview* clone() = 0;
+
 protected:
 	HackablePreview();
 	~HackablePreview() = default;

@@ -219,11 +219,13 @@ namespace ObjectResources
 	extern const std::string Traps_FULL_BARREL;
 	extern const std::string Traps_HEAVEN_HUG;
 	extern const std::string Traps_MechanicalFlail_Joint;
+	extern const std::string Traps_MechanicalFlail_PreviewFlail;
 	extern const std::string Traps_MechanicalFlail_STEEL_BALL;
 	extern const std::string Traps_MechanicalFlail_Shaft;
 	extern const std::string Traps_PendulumBlade_Blade;
 	extern const std::string Traps_PendulumBlade_Chain;
 	extern const std::string Traps_PendulumBlade_Neck;
+	extern const std::string Traps_PendulumBlade_PreviewBlade;
 	extern const std::string Traps_STONES;
 	extern const std::string Traps_TNT;
 	extern const std::string Traps_TRAPS;
