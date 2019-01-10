@@ -36,6 +36,7 @@ private:
 	void open(HackableEvents::HackableObjectEditArgs* args);
 	void enableAccept();
 	void disableAccept();
+	void buildRegisterWindow();
 	void compile(std::string rawText);
 	void onFunctionTextUpdate(std::string text);
 	void onAllocationTextUpdate(std::string text);

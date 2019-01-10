@@ -34,6 +34,8 @@ public:
 	void setMarginSize(float newMarginSize);
 	void toggleHeader(bool isVisible);
 	void toggleBackground(bool isVisible);
+	void enableWrapByChar();
+	void enableWrapByWord();
 	virtual void insertNewline();
 	virtual void clearText();
 

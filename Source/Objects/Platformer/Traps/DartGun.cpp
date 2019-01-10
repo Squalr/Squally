@@ -90,7 +90,17 @@ void DartGun::registerHackables()
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
-		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+		{
+			LOCAL_FUNC_ID_SWING,
+			HackableCode::LateBindData(
+				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
+				UIResources::Menus_Icons_CrossHair,
+				{
+					{ HackableCode::Register::eax, nullptr },
+					{ HackableCode::Register::ebx, nullptr }
+				}
+			)
+		},
 	};
 
 	auto swingFunc = &DartGun::update;

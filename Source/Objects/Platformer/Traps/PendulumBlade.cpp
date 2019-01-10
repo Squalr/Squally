@@ -17,6 +17,8 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Hacking/Objects/PendulumBlade/RegisterEax.h"
+#include "Strings/Hacking/Objects/PendulumBlade/RegisterEbx.h"
 #include "Strings/Hacking/Objects/PendulumBlade/TargetAngle.h"
 
 using namespace cocos2d;
@@ -96,7 +98,17 @@ void PendulumBlade::registerHackables()
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
-		{ LOCAL_FUNC_ID_SWING, HackableCode::LateBindData(Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(), UIResources::Menus_Icons_CrossHair)},
+		{
+			LOCAL_FUNC_ID_SWING,
+			HackableCode::LateBindData(
+				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
+				UIResources::Menus_Icons_CrossHair,
+				{
+					{ HackableCode::Register::eax, Strings::Hacking_Objects_PendulumBlade_RegisterEax::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_PendulumBlade_RegisterEbx::create() }
+				}
+			)
+		},
 	};
 
 	auto swingFunc = &PendulumBlade::swingToAngle;
