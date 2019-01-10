@@ -941,7 +941,12 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/Status.cpp
 	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
+	Source/Strings/Hacking/CodeEditor/Unknown.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
 	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
@@ -2047,7 +2052,12 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/Status.h
 	Source/Strings/Hacking/CodeEditor/StatusHeader.h
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
+	Source/Strings/Hacking/CodeEditor/Unknown.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.h
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.h
 	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
 	Source/Strings/Hexus/Actions/ChooseSourceCard.h

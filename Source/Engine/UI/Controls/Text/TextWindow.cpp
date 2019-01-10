@@ -153,6 +153,16 @@ void TextWindow::toggleBackground(bool isVisible)
 	this->background->setVisible(isVisible);
 }
 
+void TextWindow::enableWrapByChar()
+{
+	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
+}
+
+void TextWindow::enableWrapByWord()
+{
+	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_WORD);
+}
+
 void TextWindow::insertNewline()
 {
 	LocalizedString* text = Strings::Generics_Newline::create();

@@ -98,7 +98,7 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 						if (lateBindDataMap.find(funcId) != lateBindDataMap.end())
 						{
 							LateBindData lateBindData = lateBindDataMap[funcId];
-							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource);
+							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource, lateBindData.registerHints);
 
 							extractedHackableCode.push_back(hackableCode);
 						}
@@ -133,21 +133,30 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 	return extractedHackableCode;
 }
 
-HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource)
+HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints)
 {
-	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource);
+	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource, registerHints);
 
 	hackableCode->autorelease();
 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource) : HackableAttribute(iconResource, functionName)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints) : HackableAttribute(iconResource, functionName)
 {
 	this->codePointer = (unsigned char*)codeStart;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
 	this->originalCodeCopy = nullptr;
+	this->registerHints = registerHints;
+
+	for (auto it = this->registerHints.begin(); it != this->registerHints.end(); it++)
+	{
+		if ((*it).second != nullptr)
+		{
+			this->addChild((*it).second);
+		}
+	}
 
 	if (codeStart != nullptr && this->originalCodeLength > 0)
 	{
