@@ -1,6 +1,10 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
+#include "Engine/Hackables/HackableCode.h"
+
+class ConstantString;
+class LocalizedLabel;
 
 class HackablePreview : public SmartNode
 {
@@ -12,6 +16,9 @@ public:
 protected:
 	HackablePreview();
 	~HackablePreview() = default;
+
+	LocalizedLabel* createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, ConstantString* value);
+	LocalizedString* getRegisterString(HackableCode::Register reg);
 
 	cocos2d::Node* assemblyTextNode;
 	cocos2d::Node* previewNode;

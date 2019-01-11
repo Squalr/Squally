@@ -35,7 +35,7 @@ void HeavenHugGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	const float offset = 24.0f;
+	const float offset = 48.0f;
 
 	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
 
