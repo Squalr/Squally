@@ -2,12 +2,12 @@
 #include <map>
 #include <string>
 
-#include "cocos/math/CCGeometry.h"
-
 #include "Engine/Maps/SerializableObject.h"
 
+class HackableAttribute;
 class HackableCode;
 class HackableData;
+class HackablePreview;
 class HackButton;
 class ClickableNode;
 
@@ -22,7 +22,10 @@ class HackableObject : public SerializableObject
 {
 public:
 	void onHackableClick(ClickableNode* backButton);
+	HackablePreview* getDefaultPreview();
+	void setDefaultPreview(HackablePreview* defaultPreview);
 
+	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
 
@@ -40,6 +43,8 @@ protected:
 
 private:
 	typedef SerializableObject super;
+
 	HackButton* hackButton;
 	cocos2d::Vec2 buttonOffset;
+	HackablePreview* defaultPreview;
 };

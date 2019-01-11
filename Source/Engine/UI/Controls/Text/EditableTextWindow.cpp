@@ -42,10 +42,11 @@ EditableTextWindow::EditableTextWindow(LocalizedString* windowTitle, LocalizedLa
 	this->lineNumbers->ignoreContentAdaptWithSize(false);
 	this->editableText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->editableText->setLineBreakWithoutSpace(true);
-	this->editableText->setOpacity(0);
+	this->editableText->setTextColor(Color4B::WHITE);
 	this->editableText->setCascadeOpacityEnabled(false);
 	this->editableText->setCursorEnabled(true);
 	this->editableText->enableWrap(true);
+	this->editableText->setOpacity(0);
 
 	this->scrollView->addChild(this->lineNumbers);
 	this->scrollView->addChild(this->editableText);
@@ -60,6 +61,7 @@ void EditableTextWindow::onEnter()
 {
 	super::onEnter();
 	this->scheduleUpdate();
+	this->editableText->scheduleUpdate();
 }
 
 void EditableTextWindow::initializePositions()

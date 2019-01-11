@@ -98,7 +98,7 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 						if (lateBindDataMap.find(funcId) != lateBindDataMap.end())
 						{
 							LateBindData lateBindData = lateBindDataMap[funcId];
-							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource);
+							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource, lateBindData.hackablePreview, lateBindData.registerHints);
 
 							extractedHackableCode.push_back(hackableCode);
 						}
@@ -133,22 +133,30 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 	return extractedHackableCode;
 }
 
-HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource)
+HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints)
 {
-	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource);
+	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource, hackablePreview, registerHints);
 
 	hackableCode->autorelease();
 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource) : HackableAttribute(iconResource)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) : HackableAttribute(iconResource, functionName, hackablePreview)
 {
 	this->codePointer = (unsigned char*)codeStart;
-	this->functionName = functionName;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
 	this->originalCodeCopy = nullptr;
+	this->registerHints = registerHints;
+
+	for (auto it = this->registerHints.begin(); it != this->registerHints.end(); it++)
+	{
+		if ((*it).second != nullptr)
+		{
+			this->addChild((*it).second);
+		}
+	}
 
 	if (codeStart != nullptr && this->originalCodeLength > 0)
 	{
@@ -159,9 +167,6 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* func
 
 	// Disassemble starting bytes, strip out NOPs
 	this->assemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
-
-	// Retain
-	this->addChild(this->functionName);
 }
 
 HackableCode::~HackableCode()
@@ -180,11 +185,6 @@ HackableCode::~HackableCode()
 std::string HackableCode::getAssemblyString()
 {
 	return this->assemblyString;
-}
-
-LocalizedString* HackableCode::getFunctionName()
-{
-	return this->functionName;
 }
 
 void* HackableCode::getCodePointer()

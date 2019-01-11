@@ -19,8 +19,8 @@ using namespace cocos2d::ui;
 
 const Size TextWindow::Padding = Size(8.0f, 4.0f);
 const float TextWindow::TitleBarHeight = 48.0f;
-const Color4B TextWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 192);
-const Color4B TextWindow::DefaultWindowColor = Color4B(39, 58, 61, 192);
+const Color4B TextWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
+const Color4B TextWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
 
 TextWindow* TextWindow::create(LocalizedString* windowTitle, LocalizedLabel* referenceContentLabel, Size windowSize, Color3B fontColor)
 {
@@ -42,8 +42,11 @@ TextWindow::TextWindow(LocalizedString* windowTitle, LocalizedLabel* referenceCo
 	this->displayedText = RichText::create();
 	this->background = LayerColor::create(TextWindow::DefaultWindowColor, windowSize.width, windowSize.height);
 	this->titleBar = LayerColor::create(TextWindow::DefaultTitleBarColor, windowSize.width, TextWindow::TitleBarHeight);
-	this->windowTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, windowTitle);
+	this->windowTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, windowTitle);
 
+	this->windowTitle->enableOutline(Color4B::BLACK, 2);
+
+	this->windowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->scrollView->setDirection(ScrollView::Direction::BOTH);
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -83,7 +86,7 @@ void TextWindow::initializePositions()
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
 	this->displayedText->setPosition(Vec2(this->marginSize + TextWindow::Padding.width,this->scrollView->getInnerContainerSize().height - TextWindow::Padding.height));
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
-	this->windowTitle->setPosition(0.0f, windowSize.height / 2 + TextWindow::TitleBarHeight / 2.0f);
+	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + TextWindow::TitleBarHeight / 2.0f);
 }
 
 void TextWindow::initializeListeners()
@@ -137,6 +140,27 @@ void TextWindow::setMarginSize(float newMarginSize)
 {
 	this->marginSize = newMarginSize;
 	this->initializePositions();
+}
+
+void TextWindow::toggleHeader(bool isVisible)
+{
+	this->titleBar->setVisible(isVisible);
+	this->windowTitle->setVisible(isVisible);
+}
+
+void TextWindow::toggleBackground(bool isVisible)
+{
+	this->background->setVisible(isVisible);
+}
+
+void TextWindow::enableWrapByChar()
+{
+	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
+}
+
+void TextWindow::enableWrapByWord()
+{
+	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_WORD);
 }
 
 void TextWindow::insertNewline()

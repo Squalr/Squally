@@ -94,11 +94,14 @@ list(APPEND GAME_SOURCE
 	Source/Engine/GlobalHud.cpp
 	Source/Engine/GlobalNode.cpp
 	Source/Engine/GlobalScene.cpp
+	Source/Engine/Hackables/CodeEditor.cpp
 	Source/Engine/Hackables/HackButton.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
 	Source/Engine/Hackables/HackableCode.cpp
 	Source/Engine/Hackables/HackableData.cpp
 	Source/Engine/Hackables/HackableObject.cpp
+	Source/Engine/Hackables/HackablePreview.cpp
+	Source/Engine/Hackables/RadialMenu.cpp
 	Source/Engine/Input/ClickableIconNode.cpp
 	Source/Engine/Input/ClickableNode.cpp
 	Source/Engine/Input/ClickableTextNode.cpp
@@ -142,8 +145,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
-	Source/Engine/UI/HUD/DeveloperHud.cpp
-	Source/Engine/UI/HUD/HackerModeHud.cpp
 	Source/Engine/UI/HUD/Hud.cpp
 	Source/Engine/UI/InfiniteParallaxNode.cpp
 	Source/Engine/UI/Mouse.cpp
@@ -384,8 +385,6 @@ list(APPEND GAME_SOURCE
 	Source/Menus/Confirmation/ConfirmationMenu.cpp
 	Source/Menus/CursorSets.cpp
 	Source/Menus/Dialog/DialogMenu.cpp
-	Source/Menus/HackerMode/CodeEditor.cpp
-	Source/Menus/HackerMode/RadialMenu.cpp
 	Source/Menus/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.cpp
 	Source/Menus/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.cpp
 	Source/Menus/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.cpp
@@ -444,10 +443,17 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/PlatformerObjectDeserializer.cpp
 	Source/Objects/Platformer/Plushies/Plushie.cpp
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
-	Source/Objects/Platformer/Traps/Dart.cpp
-	Source/Objects/Platformer/Traps/DartGun.cpp
-	Source/Objects/Platformer/Traps/MechanicalFlail.cpp
-	Source/Objects/Platformer/Traps/PendulumBlade.cpp
+	Source/Objects/Platformer/Traps/DartGun/Dart.cpp
+	Source/Objects/Platformer/Traps/DartGun/DartGun.cpp
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.cpp
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.cpp
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.cpp
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.cpp
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.cpp
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.cpp
 	Source/Objects/Platformer/Wind.cpp
 	Source/Resources/BackgroundResources.cpp
 	Source/Resources/CutsceneResources.cpp
@@ -845,7 +851,141 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Generics/Newline.cpp
 	Source/Strings/Generics/PlusConstant.cpp
 	Source/Strings/Generics/TimesConstant.cpp
+	Source/Strings/Generics/XEqualsY.cpp
 	Source/Strings/Generics/XOverY.cpp
+	Source/Strings/Hacking/CodeEditor/Address.cpp
+	Source/Strings/Hacking/CodeEditor/AllocationEditor.cpp
+	Source/Strings/Hacking/CodeEditor/Assembler.cpp
+	Source/Strings/Hacking/CodeEditor/ByteCount.cpp
+	Source/Strings/Hacking/CodeEditor/ByteOverflow.cpp
+	Source/Strings/Hacking/CodeEditor/Bytes.cpp
+	Source/Strings/Hacking/CodeEditor/ClickToEdit.cpp
+	Source/Strings/Hacking/CodeEditor/CodeEditor.cpp
+	Source/Strings/Hacking/CodeEditor/CompileErrors.cpp
+	Source/Strings/Hacking/CodeEditor/CompileSuccessful.cpp
+	Source/Strings/Hacking/CodeEditor/Error.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/AlreadyInitialized.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/AmbiguousOperandSize.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/CodeTooLarge.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/FeatureNotEnabled.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidAddress.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidAddressIndex.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidAddressScale.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidArchitecture.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidArgument.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidBroadcast.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidDisplacement.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidImmediateValue.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidInstruction.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidLabel.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidLabelName.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidLockPrefix.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidMask.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidOperandSize.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidOption.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidParentLabel.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidPrefixCombination.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterKind.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterPhysicalId.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterType.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterVirtualId.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRelocationEntry.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRepPrefix.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRexPrefix.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidSegment.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidState.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidTypeInfo.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseDouble.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf64BitAddress.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf64BitRegister.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf80BitFloat.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf8BitRegister.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseSingle.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidXAquirePrefix.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidXReleasePrefix.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/LabelAlreadyBound.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/LabelAlreadyDefined.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/LabelIndexOverflow.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/LabelNameTooLong.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NoCodeGenerated.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NoHeapMemory.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NoPhysicalRegisters.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NoVirtualMemory.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NonLocalLabelCantHaveParent.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NotConsecutiveRegisters.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/NotInitialized.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/Ok.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/OperandSizeMismatch.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/OverlappedRegisters.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/RelocationIndexOverflow.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/SlotOccupied.cpp
+	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.cpp
+	Source/Strings/Hacking/CodeEditor/FunctionHeader.cpp
+	Source/Strings/Hacking/CodeEditor/LineNumber.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEax.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEbp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEbx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEcx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEdi.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEdx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEsi.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEsp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR10.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR11.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR12.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR13.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR14.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR15.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR8.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterR9.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRax.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRbp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRbpWarning.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRbx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRcx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRdi.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRdx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRsi.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRsp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRspWarning.cpp
+	Source/Strings/Hacking/CodeEditor/Status.cpp
+	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
+	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
+	Source/Strings/Hacking/CodeEditor/Unknown.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/SetSpeed.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEbp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEcx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEdi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEdx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEsi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEsp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR10.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR11.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR12.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR13.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR14.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR15.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR8.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR9.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRax.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRbp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRbx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRcx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRdi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRdx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRsi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRsp.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
 	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
 	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
@@ -993,81 +1133,9 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.cpp
 	Source/Strings/Hexus/Tutorials/F/UseMov.cpp
 	Source/Strings/Menus/Accept.cpp
+	Source/Strings/Menus/ApplyChanges.cpp
 	Source/Strings/Menus/Back.cpp
 	Source/Strings/Menus/Cancel.cpp
-	Source/Strings/Menus/CodeEditor/Address.cpp
-	Source/Strings/Menus/CodeEditor/AllocationEditor.cpp
-	Source/Strings/Menus/CodeEditor/Assembler.cpp
-	Source/Strings/Menus/CodeEditor/ByteCount.cpp
-	Source/Strings/Menus/CodeEditor/ByteOverflow.cpp
-	Source/Strings/Menus/CodeEditor/Bytes.cpp
-	Source/Strings/Menus/CodeEditor/ClickToEdit.cpp
-	Source/Strings/Menus/CodeEditor/CodeEditor.cpp
-	Source/Strings/Menus/CodeEditor/CompileErrors.cpp
-	Source/Strings/Menus/CodeEditor/CompileSuccessful.cpp
-	Source/Strings/Menus/CodeEditor/Error.cpp
-	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.cpp
-	Source/Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.cpp
-	Source/Strings/Menus/CodeEditor/Errors/CodeTooLarge.cpp
-	Source/Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidAddress.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressScale.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidArchitecture.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidArgument.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidBroadcast.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidDisplacement.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidInstruction.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidLabel.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidLabelName.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidMask.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidOperandSize.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidOption.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidParentLabel.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterType.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidSegment.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidState.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseDouble.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseSingle.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.cpp
-	Source/Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.cpp
-	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.cpp
-	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.cpp
-	Source/Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.cpp
-	Source/Strings/Menus/CodeEditor/Errors/LabelNameTooLong.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NoCodeGenerated.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NoHeapMemory.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NoVirtualMemory.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.cpp
-	Source/Strings/Menus/CodeEditor/Errors/NotInitialized.cpp
-	Source/Strings/Menus/CodeEditor/Errors/Ok.cpp
-	Source/Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.cpp
-	Source/Strings/Menus/CodeEditor/Errors/OverlappedRegisters.cpp
-	Source/Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.cpp
-	Source/Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.cpp
-	Source/Strings/Menus/CodeEditor/Errors/SlotOccupied.cpp
-	Source/Strings/Menus/CodeEditor/Errors/UnknownError.cpp
-	Source/Strings/Menus/CodeEditor/FunctionHeader.cpp
-	Source/Strings/Menus/CodeEditor/LineNumber.cpp
-	Source/Strings/Menus/CodeEditor/Status.cpp
-	Source/Strings/Menus/CodeEditor/StatusHeader.cpp
-	Source/Strings/Menus/CodeEditor/UnfilledBytes.cpp
 	Source/Strings/Menus/ComingSoon.cpp
 	Source/Strings/Menus/ContinueGame.cpp
 	Source/Strings/Menus/Exit.cpp
@@ -1112,8 +1180,6 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Menus/TranslationEditor/OriginalTextInEnglish.cpp
 	Source/Strings/Menus/TranslationEditor/TranslationEditor.cpp
 	Source/Strings/Menus/Tutorials.cpp
-	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.cpp
-	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.cpp
 
 	####O####O####O####O####O####O####O####O####O####O##
     # END: This is generated by GenerateCMakeFiles.py: #
@@ -1154,11 +1220,14 @@ list(APPEND GAME_HEADER
 	Source/Engine/GlobalHud.h
 	Source/Engine/GlobalNode.h
 	Source/Engine/GlobalScene.h
+	Source/Engine/Hackables/CodeEditor.h
 	Source/Engine/Hackables/HackButton.h
 	Source/Engine/Hackables/HackableAttribute.h
 	Source/Engine/Hackables/HackableCode.h
 	Source/Engine/Hackables/HackableData.h
 	Source/Engine/Hackables/HackableObject.h
+	Source/Engine/Hackables/HackablePreview.h
+	Source/Engine/Hackables/RadialMenu.h
 	Source/Engine/Input/ClickableIconNode.h
 	Source/Engine/Input/ClickableNode.h
 	Source/Engine/Input/ClickableTextNode.h
@@ -1203,8 +1272,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h
-	Source/Engine/UI/HUD/DeveloperHud.h
-	Source/Engine/UI/HUD/HackerModeHud.h
 	Source/Engine/UI/HUD/Hud.h
 	Source/Engine/UI/InfiniteParallaxNode.h
 	Source/Engine/UI/Mouse.h
@@ -1451,8 +1518,6 @@ list(APPEND GAME_HEADER
 	Source/Menus/Confirmation/ConfirmationMenu.h
 	Source/Menus/CursorSets.h
 	Source/Menus/Dialog/DialogMenu.h
-	Source/Menus/HackerMode/CodeEditor.h
-	Source/Menus/HackerMode/RadialMenu.h
 	Source/Menus/Hexus/ChapterSelect/Castle/HexusChapterPreviewCastle.h
 	Source/Menus/Hexus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h
 	Source/Menus/Hexus/ChapterSelect/Forest/HexusChapterPreviewForest.h
@@ -1514,10 +1579,17 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushie.h
 	Source/Objects/Platformer/Plushies/PlushieMonkey.h
 	Source/Objects/Platformer/Plushies/Plushies.h
-	Source/Objects/Platformer/Traps/Dart.h
-	Source/Objects/Platformer/Traps/DartGun.h
-	Source/Objects/Platformer/Traps/MechanicalFlail.h
-	Source/Objects/Platformer/Traps/PendulumBlade.h
+	Source/Objects/Platformer/Traps/DartGun/Dart.h
+	Source/Objects/Platformer/Traps/DartGun/DartGun.h
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.h
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h
 	Source/Objects/Platformer/Wind.h
 	Source/Resources/BackgroundResources.h
 	Source/Resources/CutsceneResources.h
@@ -1929,7 +2001,141 @@ list(APPEND GAME_HEADER
 	Source/Strings/Generics/Newline.h
 	Source/Strings/Generics/PlusConstant.h
 	Source/Strings/Generics/TimesConstant.h
+	Source/Strings/Generics/XEqualsY.h
 	Source/Strings/Generics/XOverY.h
+	Source/Strings/Hacking/CodeEditor/Address.h
+	Source/Strings/Hacking/CodeEditor/AllocationEditor.h
+	Source/Strings/Hacking/CodeEditor/Assembler.h
+	Source/Strings/Hacking/CodeEditor/ByteCount.h
+	Source/Strings/Hacking/CodeEditor/ByteOverflow.h
+	Source/Strings/Hacking/CodeEditor/Bytes.h
+	Source/Strings/Hacking/CodeEditor/ClickToEdit.h
+	Source/Strings/Hacking/CodeEditor/CodeEditor.h
+	Source/Strings/Hacking/CodeEditor/CompileErrors.h
+	Source/Strings/Hacking/CodeEditor/CompileSuccessful.h
+	Source/Strings/Hacking/CodeEditor/Error.h
+	Source/Strings/Hacking/CodeEditor/Errors/AlreadyInitialized.h
+	Source/Strings/Hacking/CodeEditor/Errors/AmbiguousOperandSize.h
+	Source/Strings/Hacking/CodeEditor/Errors/CodeTooLarge.h
+	Source/Strings/Hacking/CodeEditor/Errors/FeatureNotEnabled.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidAddress.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidAddressIndex.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidAddressScale.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidArchitecture.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidArgument.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidBroadcast.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidDisplacement.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidImmediateValue.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidInstruction.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidLabel.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidLabelName.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidLockPrefix.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidMask.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidOperandSize.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidOption.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidParentLabel.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidPrefixCombination.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterKind.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterPhysicalId.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterType.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRegisterVirtualId.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRelocationEntry.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRepPrefix.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidRexPrefix.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidSegment.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidState.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidTypeInfo.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseDouble.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf64BitAddress.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf64BitRegister.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf80BitFloat.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseOf8BitRegister.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidUseSingle.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidXAquirePrefix.h
+	Source/Strings/Hacking/CodeEditor/Errors/InvalidXReleasePrefix.h
+	Source/Strings/Hacking/CodeEditor/Errors/LabelAlreadyBound.h
+	Source/Strings/Hacking/CodeEditor/Errors/LabelAlreadyDefined.h
+	Source/Strings/Hacking/CodeEditor/Errors/LabelIndexOverflow.h
+	Source/Strings/Hacking/CodeEditor/Errors/LabelNameTooLong.h
+	Source/Strings/Hacking/CodeEditor/Errors/NoCodeGenerated.h
+	Source/Strings/Hacking/CodeEditor/Errors/NoHeapMemory.h
+	Source/Strings/Hacking/CodeEditor/Errors/NoPhysicalRegisters.h
+	Source/Strings/Hacking/CodeEditor/Errors/NoVirtualMemory.h
+	Source/Strings/Hacking/CodeEditor/Errors/NonLocalLabelCantHaveParent.h
+	Source/Strings/Hacking/CodeEditor/Errors/NotConsecutiveRegisters.h
+	Source/Strings/Hacking/CodeEditor/Errors/NotInitialized.h
+	Source/Strings/Hacking/CodeEditor/Errors/Ok.h
+	Source/Strings/Hacking/CodeEditor/Errors/OperandSizeMismatch.h
+	Source/Strings/Hacking/CodeEditor/Errors/OverlappedRegisters.h
+	Source/Strings/Hacking/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.h
+	Source/Strings/Hacking/CodeEditor/Errors/RelocationIndexOverflow.h
+	Source/Strings/Hacking/CodeEditor/Errors/SlotOccupied.h
+	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.h
+	Source/Strings/Hacking/CodeEditor/FunctionHeader.h
+	Source/Strings/Hacking/CodeEditor/LineNumber.h
+	Source/Strings/Hacking/CodeEditor/RegisterEax.h
+	Source/Strings/Hacking/CodeEditor/RegisterEbp.h
+	Source/Strings/Hacking/CodeEditor/RegisterEbx.h
+	Source/Strings/Hacking/CodeEditor/RegisterEcx.h
+	Source/Strings/Hacking/CodeEditor/RegisterEdi.h
+	Source/Strings/Hacking/CodeEditor/RegisterEdx.h
+	Source/Strings/Hacking/CodeEditor/RegisterEsi.h
+	Source/Strings/Hacking/CodeEditor/RegisterEsp.h
+	Source/Strings/Hacking/CodeEditor/RegisterR10.h
+	Source/Strings/Hacking/CodeEditor/RegisterR11.h
+	Source/Strings/Hacking/CodeEditor/RegisterR12.h
+	Source/Strings/Hacking/CodeEditor/RegisterR13.h
+	Source/Strings/Hacking/CodeEditor/RegisterR14.h
+	Source/Strings/Hacking/CodeEditor/RegisterR15.h
+	Source/Strings/Hacking/CodeEditor/RegisterR8.h
+	Source/Strings/Hacking/CodeEditor/RegisterR9.h
+	Source/Strings/Hacking/CodeEditor/RegisterRax.h
+	Source/Strings/Hacking/CodeEditor/RegisterRbp.h
+	Source/Strings/Hacking/CodeEditor/RegisterRbpWarning.h
+	Source/Strings/Hacking/CodeEditor/RegisterRbx.h
+	Source/Strings/Hacking/CodeEditor/RegisterRcx.h
+	Source/Strings/Hacking/CodeEditor/RegisterRdi.h
+	Source/Strings/Hacking/CodeEditor/RegisterRdx.h
+	Source/Strings/Hacking/CodeEditor/RegisterRsi.h
+	Source/Strings/Hacking/CodeEditor/RegisterRsp.h
+	Source/Strings/Hacking/CodeEditor/RegisterRspWarning.h
+	Source/Strings/Hacking/CodeEditor/Status.h
+	Source/Strings/Hacking/CodeEditor/StatusHeader.h
+	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
+	Source/Strings/Hacking/CodeEditor/Unknown.h
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEax.h
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEbx.h
+	Source/Strings/Hacking/Objects/HeavenHug/SetSpeed.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.h
+	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.h
+	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEax.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEbp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEbx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEcx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEdi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEdx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEsi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEsp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR10.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR11.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR12.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR13.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR14.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR15.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR8.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR9.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRax.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRbp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRbx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRcx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRdi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRdx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRsi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRsp.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
 	Source/Strings/Hexus/Actions/ChooseSourceCard.h
 	Source/Strings/Hexus/Actions/ChooseTargetCard.h
@@ -2077,81 +2283,9 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hexus/Tutorials/E/UseShiftLeft.h
 	Source/Strings/Hexus/Tutorials/F/UseMov.h
 	Source/Strings/Menus/Accept.h
+	Source/Strings/Menus/ApplyChanges.h
 	Source/Strings/Menus/Back.h
 	Source/Strings/Menus/Cancel.h
-	Source/Strings/Menus/CodeEditor/Address.h
-	Source/Strings/Menus/CodeEditor/AllocationEditor.h
-	Source/Strings/Menus/CodeEditor/Assembler.h
-	Source/Strings/Menus/CodeEditor/ByteCount.h
-	Source/Strings/Menus/CodeEditor/ByteOverflow.h
-	Source/Strings/Menus/CodeEditor/Bytes.h
-	Source/Strings/Menus/CodeEditor/ClickToEdit.h
-	Source/Strings/Menus/CodeEditor/CodeEditor.h
-	Source/Strings/Menus/CodeEditor/CompileErrors.h
-	Source/Strings/Menus/CodeEditor/CompileSuccessful.h
-	Source/Strings/Menus/CodeEditor/Error.h
-	Source/Strings/Menus/CodeEditor/Errors/AlreadyInitialized.h
-	Source/Strings/Menus/CodeEditor/Errors/AmbiguousOperandSize.h
-	Source/Strings/Menus/CodeEditor/Errors/CodeTooLarge.h
-	Source/Strings/Menus/CodeEditor/Errors/FeatureNotEnabled.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidAddress.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressIndex.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidAddressScale.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidArchitecture.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidArgument.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidBroadcast.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidDisplacement.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidImmediateValue.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidInstruction.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidLabel.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidLabelName.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidLockPrefix.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidMask.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidOperandSize.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidOption.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidParentLabel.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidPrefixCombination.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterKind.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterPhysicalId.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterType.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRegisterVirtualId.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRelocationEntry.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRepPrefix.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidRexPrefix.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidSegment.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidState.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidTypeInfo.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseDouble.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitAddress.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf64BitRegister.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf80BitFloat.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseOf8BitRegister.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidUseSingle.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidXAquirePrefix.h
-	Source/Strings/Menus/CodeEditor/Errors/InvalidXReleasePrefix.h
-	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyBound.h
-	Source/Strings/Menus/CodeEditor/Errors/LabelAlreadyDefined.h
-	Source/Strings/Menus/CodeEditor/Errors/LabelIndexOverflow.h
-	Source/Strings/Menus/CodeEditor/Errors/LabelNameTooLong.h
-	Source/Strings/Menus/CodeEditor/Errors/NoCodeGenerated.h
-	Source/Strings/Menus/CodeEditor/Errors/NoHeapMemory.h
-	Source/Strings/Menus/CodeEditor/Errors/NoPhysicalRegisters.h
-	Source/Strings/Menus/CodeEditor/Errors/NoVirtualMemory.h
-	Source/Strings/Menus/CodeEditor/Errors/NonLocalLabelCantHaveParent.h
-	Source/Strings/Menus/CodeEditor/Errors/NotConsecutiveRegisters.h
-	Source/Strings/Menus/CodeEditor/Errors/NotInitialized.h
-	Source/Strings/Menus/CodeEditor/Errors/Ok.h
-	Source/Strings/Menus/CodeEditor/Errors/OperandSizeMismatch.h
-	Source/Strings/Menus/CodeEditor/Errors/OverlappedRegisters.h
-	Source/Strings/Menus/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.h
-	Source/Strings/Menus/CodeEditor/Errors/RelocationIndexOverflow.h
-	Source/Strings/Menus/CodeEditor/Errors/SlotOccupied.h
-	Source/Strings/Menus/CodeEditor/Errors/UnknownError.h
-	Source/Strings/Menus/CodeEditor/FunctionHeader.h
-	Source/Strings/Menus/CodeEditor/LineNumber.h
-	Source/Strings/Menus/CodeEditor/Status.h
-	Source/Strings/Menus/CodeEditor/StatusHeader.h
-	Source/Strings/Menus/CodeEditor/UnfilledBytes.h
 	Source/Strings/Menus/ComingSoon.h
 	Source/Strings/Menus/ContinueGame.h
 	Source/Strings/Menus/Exit.h
@@ -2196,8 +2330,6 @@ list(APPEND GAME_HEADER
 	Source/Strings/Menus/TranslationEditor/OriginalTextInEnglish.h
 	Source/Strings/Menus/TranslationEditor/TranslationEditor.h
 	Source/Strings/Menus/Tutorials.h
-	Source/Strings/Objects/Hackables/MechanicalFlail/TargetAngle.h
-	Source/Strings/Objects/Hackables/PendulumBlade/TargetAngle.h
 
 	####V####V####V####V####V####V####V####V####V####V##
     # END: This is generated by GenerateCMakeFiles.py: #

@@ -1,15 +1,26 @@
 #pragma once
 #include <string>
 
-#include "cocos/2d/CCNode.h"
+#include "Engine/SmartNode.h"
 
-class HackableAttribute : public cocos2d::Node
+class HackablePreview;
+class LocalizedString;
+
+class HackableAttribute : public SmartNode
 {
 public:
-	std::string iconResource;
+	std::string getIconResource();
+	LocalizedString* getName();
+	HackablePreview* getHackablePreview();
 
 protected:
-	typedef cocos2d::Node super;
-	HackableAttribute(std::string iconResource);
+	HackableAttribute(std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview);
 	virtual ~HackableAttribute();
+
+private:
+	typedef SmartNode super;
+
+	LocalizedString* name;
+	std::string iconResource;
+	HackablePreview* hackablePreview;
 };

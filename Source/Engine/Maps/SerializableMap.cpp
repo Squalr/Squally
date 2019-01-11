@@ -3,11 +3,13 @@
 #include "cocos/2d/CCFastTMXLayer.h"
 #include "cocos/2d/CCFastTMXTiledMap.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include <tinyxml2/tinyxml2.h>
 
 #include "Engine/Events/DeserializationEvents.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Maps/ObjectifiedTile.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
@@ -44,6 +46,45 @@ SerializableMap::SerializableMap(std::string mapFileName, const std::vector<Seri
 
 SerializableMap::~SerializableMap()
 {
+}
+
+void SerializableMap::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void SerializableMap::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* args)
+	{
+		this->hackerModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* args)
+	{
+		this->hackerModeDisable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectOpenEvent, [=](EventCustom* args)
+	{
+		this->hackerModeLayerFade();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectCloseEvent, [=](EventCustom* args)
+	{
+		this->hackerModeLayerUnfade();
+	}));
+}
+
+void SerializableMap::update(float dt)
+{
+	super::update(dt);
+
+	this->isometricZSort(this);
 }
 
 SerializableMap* SerializableMap::deserialize(std::string mapFileName)
@@ -195,6 +236,25 @@ void SerializableMap::hackerModeDisable()
 	}
 }
 
+void SerializableMap::hackerModeLayerFade()
+{
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	{
+		if ((*it)->isHackerModeIgnored())
+		{
+			(*it)->setOpacity(128);
+		}
+	}
+}
+
+void SerializableMap::hackerModeLayerUnfade()
+{
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	{
+		(*it)->setOpacity(255);
+	}
+}
+
 Size SerializableMap::getMapSize()
 {
 	Size unitSize = this->getMapUnitSize();
@@ -226,20 +286,6 @@ void SerializableMap::appendLayer(SerializableLayer* layer)
 {
 	this->serializableLayers.push_back(layer);
 	this->addChild(layer);
-}
-
-void SerializableMap::onEnter()
-{
-	Node::onEnter();
-
-	this->scheduleUpdate();
-}
-
-void SerializableMap::update(float dt)
-{
-	Node::update(dt);
-
-	this->isometricZSort(this);
 }
 
 void SerializableMap::setCollisionLayersVisible(bool isVisible)

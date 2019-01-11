@@ -110,29 +110,62 @@
 #define ASM_NOP7() ASM_NOP6() ASM_NOP1()
 #define ASM_NOP8() ASM_NOP7() ASM_NOP1()
 
+class HackablePreview;
 class LocalizedString;
 
 class HackableCode : public HackableAttribute
 {
 public:
+	enum Register
+	{
+		eax,
+		ebx,
+		ecx,
+		edx,
+		edi,
+		esi,
+		ebp,
+		esp,
+		rax,
+		rbx,
+		rcx,
+		rdx,
+		rdi,
+		rsi,
+		rbp,
+		rsp,
+		r8,
+		r9,
+		r10,
+		r11,
+		r12,
+		r13,
+		r14,
+		r15,
+	};
+
 	struct LateBindData
 	{
 		LocalizedString* functionName;
 		std::string iconResource;
+		HackablePreview* hackablePreview;
+		std::map<Register, LocalizedString*> registerHints;
 
-		LateBindData() : functionName(nullptr), iconResource("") { }
-		LateBindData(LocalizedString* functionName, std::string iconResource) : functionName(functionName), iconResource(iconResource) { }
+		LateBindData() : functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }) { }
+		LateBindData(LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) :
+			functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints) { }
 	};
 
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
 
 	std::string getAssemblyString();
-	LocalizedString* getFunctionName();
 	void* getCodePointer();
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
 	void restoreOriginalCode();
 	void* allocateMemory(int allocationSize);
+
+	std::map<Register, LocalizedString*> registerHints;
 
 	static std::map<void*, std::vector<HackableCode*>> HackableCodeCache;
 	static const int StartTagFuncIdIndex;
@@ -142,13 +175,12 @@ public:
 
 private:
 	typedef HackableAttribute super;
-	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource);
+	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints);
 
-	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource);
+	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints);
 	virtual ~HackableCode();
 
 	std::string assemblyString;
-	LocalizedString* functionName;
 	void* codePointer;
 	unsigned char* originalCodeCopy;
 	int originalCodeLength;

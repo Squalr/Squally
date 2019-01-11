@@ -25,20 +25,15 @@ class SerializableMap : public SmartNode
 
 public:
 	static SerializableMap* deserialize(std::string mapFileName);
-	bool serialize();
 
+	bool serialize();
 	void appendLayer(SerializableLayer* layer);
 	void setCollisionLayersVisible(bool isVisible);
-
 	cocos2d::Size getMapSize();
 	cocos2d::Size getMapUnitSize();
 	cocos2d::Size getMapTileSize();
-
 	bool isIsometric();
 	bool isPlatformer();
-
-	void hackerModeEnable();
-	void hackerModeDisable();
 	std::string getMapFileName();
 
 	static const std::string KeyTypeCollision;
@@ -50,9 +45,14 @@ private:
 	virtual ~SerializableMap();
 
 	void onEnter() override;
+	void initializeListeners() override;
 	void update(float dt) override;
 	void isometricZSort(cocos2d::Node* node);
 	void isometricMapPreparation();
+	void hackerModeEnable();
+	void hackerModeDisable();
+	void hackerModeLayerFade();
+	void hackerModeLayerUnfade();
 
 	std::vector<SerializableTileLayer*> collisionLayers;
 	std::vector<SerializableTileLayer*> tileLayers;
