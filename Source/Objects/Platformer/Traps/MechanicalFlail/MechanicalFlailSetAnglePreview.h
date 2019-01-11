@@ -9,22 +9,23 @@ namespace cocos2d
 
 class LocalizedLabel;
 
-class SetAnglePreview : public HackablePreview
+class MechanicalFlailSetAnglePreview : public HackablePreview
 {
 public:
-	static SetAnglePreview* create();
+	static MechanicalFlailSetAnglePreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	SetAnglePreview();
-	~SetAnglePreview() = default;
+	MechanicalFlailSetAnglePreview();
+	~MechanicalFlailSetAnglePreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewBlade;
+	cocos2d::Sprite* previewFlail;
+	cocos2d::Sprite* previewJoint;
 	LocalizedLabel* eax0Degrees;
 	LocalizedLabel* eax90Degrees;
 	LocalizedLabel* eax180Degrees;

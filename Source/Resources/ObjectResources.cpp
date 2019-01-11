@@ -219,6 +219,7 @@ const std::string ObjectResources::Traps_FULL_BARREL = "Platformer/Objects/Traps
 const std::string ObjectResources::Traps_HEAVEN_HUG = "Platformer/Objects/Traps/HEAVEN HUG.png";
 const std::string ObjectResources::Traps_MechanicalFlail_Joint = "Platformer/Objects/Traps/MechanicalFlail/Joint.png";
 const std::string ObjectResources::Traps_MechanicalFlail_PreviewFlail = "Platformer/Objects/Traps/MechanicalFlail/PreviewFlail.png";
+const std::string ObjectResources::Traps_MechanicalFlail_PreviewJoint = "Platformer/Objects/Traps/MechanicalFlail/PreviewJoint.png";
 const std::string ObjectResources::Traps_MechanicalFlail_STEEL_BALL = "Platformer/Objects/Traps/MechanicalFlail/STEEL-BALL.png";
 const std::string ObjectResources::Traps_MechanicalFlail_Shaft = "Platformer/Objects/Traps/MechanicalFlail/Shaft.png";
 const std::string ObjectResources::Traps_PendulumBlade_Blade = "Platformer/Objects/Traps/PendulumBlade/Blade.png";

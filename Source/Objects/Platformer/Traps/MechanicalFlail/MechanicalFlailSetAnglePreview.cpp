@@ -1,4 +1,4 @@
-#include "SetAnglePreview.h"
+#include "MechanicalFlailSetAnglePreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -11,22 +11,22 @@
 
 #include "Strings/Hacking/Objects/Previews/RegisterEax.h"
 #include "Strings/Hacking/Objects/Previews/RegisterRax.h"
-#include "Engine/Hackables/HackableCode.h"
 
 using namespace cocos2d;
 
-SetAnglePreview* SetAnglePreview::create()
+MechanicalFlailSetAnglePreview* MechanicalFlailSetAnglePreview::create()
 {
-	SetAnglePreview* instance = new SetAnglePreview();
+	MechanicalFlailSetAnglePreview* instance = new MechanicalFlailSetAnglePreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SetAnglePreview::SetAnglePreview()
+MechanicalFlailSetAnglePreview::MechanicalFlailSetAnglePreview()
 {
-	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
+	this->previewFlail = Sprite::create(ObjectResources::Traps_MechanicalFlail_PreviewFlail);
+	this->previewJoint = Sprite::create(ObjectResources::Traps_MechanicalFlail_PreviewJoint);
 
 	if (sizeof(void*) == 4)
 	{
@@ -58,27 +58,28 @@ SetAnglePreview::SetAnglePreview()
 	this->eax180Degrees->setStringReplacementVariables(ConstantString::create("180"));
 	this->eax270Degrees->setStringReplacementVariables(ConstantString::create("270"));
 
-	this->previewBlade->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->previewFlail->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	this->previewNode->addChild(this->previewBlade);
+	this->previewNode->addChild(this->previewFlail);
+	this->previewNode->addChild(this->previewJoint);
 	this->assemblyTextNode->addChild(this->eax0Degrees);
 	this->assemblyTextNode->addChild(this->eax90Degrees);
 	this->assemblyTextNode->addChild(this->eax180Degrees);
 	this->assemblyTextNode->addChild(this->eax270Degrees);
 }
 
-HackablePreview* SetAnglePreview::clone()
+HackablePreview* MechanicalFlailSetAnglePreview::clone()
 {
-	return SetAnglePreview::create();
+	return MechanicalFlailSetAnglePreview::create();
 }
 
-void SetAnglePreview::onEnter()
+void MechanicalFlailSetAnglePreview::onEnter()
 {
 	super::onEnter();
 
-	this->previewBlade->setRotation(0.0f);
+	this->previewFlail->setRotation(0.0f);
 
-	this->previewBlade->runAction(
+	this->previewFlail->runAction(
 		RepeatForever::create(Sequence::create(
 			EaseSineInOut::create(RotateTo::create(1.5f, 270.0f)),
 			EaseSineInOut::create(RotateTo::create(1.5f, 180.0f)),
@@ -89,7 +90,7 @@ void SetAnglePreview::onEnter()
 	);
 }
 
-void SetAnglePreview::initializePositions()
+void MechanicalFlailSetAnglePreview::initializePositions()
 {
 	super::initializePositions();
 

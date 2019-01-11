@@ -12,8 +12,8 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Traps/PendulumBlade/GenericPreview.h"
-#include "Objects/Platformer/Traps/PendulumBlade/SetAnglePreview.h"
+#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
+#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -48,7 +48,7 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(GenericPreview::create());
+	this->setDefaultPreview(PendulumBladeGenericPreview::create());
 
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
@@ -106,7 +106,7 @@ void PendulumBlade::registerHackables()
 			HackableCode::LateBindData(
 				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
-				SetAnglePreview::create(),
+				PendulumBladeSetAnglePreview::create(),
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_PendulumBlade_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_PendulumBlade_RegisterEbx::create() }
