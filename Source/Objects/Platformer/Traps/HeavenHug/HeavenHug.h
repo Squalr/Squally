@@ -28,21 +28,14 @@ private:
 	void registerHackables();
 	void onEnter() override;
 	void initializePositions() override;
-	void update(float) override;
-	void startSwing();
-	void swingToAngle(float angle);
-	void buildChain();
-	cocos2d::PhysicsBody* createBladeCollision();
+	void updateHeavenHug();
+	float getTravelHeight();
+	cocos2d::PhysicsBody* createSpikeCollision();
 
-	volatile float targetAngle;
-	cocos2d::Sprite* neck;
-	cocos2d::Node* bladeChain;
-	float chainHeight;
-	HackableData* hackableDataTargetAngle;
-	CollisionObject* bladeCollision;
-	
-	static const float DefaultAngle;
-	static const float SwingsPerSecondAt480Length;
-	static const float MinAngle;
-	static const float MaxAngle;
+	volatile float travelDistance;
+	cocos2d::Node* heavenHugContainer;
+	cocos2d::Sprite* heavenHug;
+	CollisionObject* spikeCollision;
+
+	static const float SpeedPer480Px;
 };

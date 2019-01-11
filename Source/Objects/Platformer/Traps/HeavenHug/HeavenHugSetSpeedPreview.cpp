@@ -25,7 +25,7 @@ HeavenHugSetSpeedPreview* HeavenHugSetSpeedPreview::create()
 
 HeavenHugSetSpeedPreview::HeavenHugSetSpeedPreview()
 {
-	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
+	this->previewHeavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
 
 	if (sizeof(void*) == 4)
 	{
@@ -57,9 +57,9 @@ HeavenHugSetSpeedPreview::HeavenHugSetSpeedPreview()
 	this->eax180Degrees->setStringReplacementVariables(ConstantString::create("180"));
 	this->eax270Degrees->setStringReplacementVariables(ConstantString::create("270"));
 
-	this->previewBlade->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->previewHeavenHug->setAnchorPoint(Vec2(0.5f, 1.0f));
 
-	this->previewNode->addChild(this->previewBlade);
+	this->previewNode->addChild(this->previewHeavenHug);
 	this->assemblyTextNode->addChild(this->eax0Degrees);
 	this->assemblyTextNode->addChild(this->eax90Degrees);
 	this->assemblyTextNode->addChild(this->eax180Degrees);
@@ -75,14 +75,14 @@ void HeavenHugSetSpeedPreview::onEnter()
 {
 	super::onEnter();
 
-	this->previewBlade->setRotation(0.0f);
+	const float offset = 48.0f;
 
-	this->previewBlade->runAction(
+	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
+
+	this->previewHeavenHug->runAction(
 		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(RotateTo::create(1.5f, 270.0f)),
-			EaseSineInOut::create(RotateTo::create(1.5f, 180.0f)),
-			EaseSineInOut::create(RotateTo::create(1.5f, 90.0f)),
-			EaseSineInOut::create(RotateTo::create(1.5f, 0.0f)),
+			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)))),
+			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, HackablePreview::PreviewRadius - offset))),
 			nullptr
 		))
 	);

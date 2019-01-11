@@ -216,6 +216,7 @@ namespace ObjectResources
 	extern const std::string Traps_HeavenHug_CHAIN_HUG_2;
 	extern const std::string Traps_HeavenHug_CHAIN_HUG;
 	extern const std::string Traps_HeavenHug_HEAVEN_HUG;
+	extern const std::string Traps_HeavenHug_PreviewHeavenHug;
 	extern const std::string Traps_MechanicalFlail_Joint;
 	extern const std::string Traps_MechanicalFlail_PreviewFlail;
 	extern const std::string Traps_MechanicalFlail_PreviewJoint;

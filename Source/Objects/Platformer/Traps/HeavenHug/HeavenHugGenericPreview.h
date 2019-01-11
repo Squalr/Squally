@@ -21,5 +21,5 @@ private:
 	~HeavenHugGenericPreview() = default;
 	void onEnter() override;
 
-	cocos2d::Sprite* previewBlade;
+	cocos2d::Sprite* previewHeavenHug;
 };
