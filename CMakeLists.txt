@@ -445,6 +445,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
 	Source/Objects/Platformer/Traps/DartGun/Dart.cpp
 	Source/Objects/Platformer/Traps/DartGun/DartGun.cpp
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.cpp
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.cpp
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.cpp
@@ -950,6 +953,9 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
 	Source/Strings/Hacking/CodeEditor/Unknown.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/SetSpeed.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.cpp
@@ -1575,6 +1581,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushies.h
 	Source/Objects/Platformer/Traps/DartGun/Dart.h
 	Source/Objects/Platformer/Traps/DartGun/DartGun.h
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.h
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h
+	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h
@@ -2094,6 +2103,9 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/StatusHeader.h
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
 	Source/Strings/Hacking/CodeEditor/Unknown.h
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEax.h
+	Source/Strings/Hacking/Objects/HeavenHug/RegisterEbx.h
+	Source/Strings/Hacking/Objects/HeavenHug/SetSpeed.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h
