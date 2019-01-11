@@ -1,4 +1,4 @@
-#include "PendulumBlade.h"
+#include "HeavenHug.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -12,47 +12,47 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
-#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
+#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
+#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/PendulumBlade/RegisterEax.h"
-#include "Strings/Hacking/Objects/PendulumBlade/RegisterEbx.h"
-#include "Strings/Hacking/Objects/PendulumBlade/TargetAngle.h"
+#include "Strings/Hacking/Objects/HeavenHug/RegisterEax.h"
+#include "Strings/Hacking/Objects/HeavenHug/RegisterEbx.h"
+#include "Strings/Hacking/Objects/HeavenHug/SetSpeed.h"
 
 using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string PendulumBlade::MapKeyPendulumBlade = "pendulum-blade";
+const std::string HeavenHug::MapKeyHeavenHug = "pendulum-blade";
 
-const float PendulumBlade::DefaultAngle = 270.0f;
-const float PendulumBlade::SwingsPerSecondAt480Length = 1.5f;
-const float PendulumBlade::MinAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle - 45.0f, 0.0f, 360.0f);
-const float PendulumBlade::MaxAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle + 45.0f, 0.0f, 360.0f);
+const float HeavenHug::DefaultAngle = 270.0f;
+const float HeavenHug::SwingsPerSecondAt480Length = 1.5f;
+const float HeavenHug::MinAngle = MathUtils::wrappingNormalize(HeavenHug::DefaultAngle - 45.0f, 0.0f, 360.0f);
+const float HeavenHug::MaxAngle = MathUtils::wrappingNormalize(HeavenHug::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
-PendulumBlade* PendulumBlade::create(ValueMap* initProperties)
+HeavenHug* HeavenHug::create(ValueMap* initProperties)
 {
-	PendulumBlade* instance = new PendulumBlade(initProperties);
+	HeavenHug* instance = new HeavenHug(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProperties)
+HeavenHug::HeavenHug(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(PendulumBladeGenericPreview::create());
+	this->setDefaultPreview(HeavenHugGenericPreview::create());
 
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
-	this->targetAngle = PendulumBlade::DefaultAngle;
+	this->targetAngle = HeavenHug::DefaultAngle;
 	this->chainHeight = height;
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -66,11 +66,11 @@ PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProp
 	this->addChild(this->bladeChain);
 }
 
-PendulumBlade::~PendulumBlade()
+HeavenHug::~HeavenHug()
 {
 }
 
-void PendulumBlade::onEnter()
+void HeavenHug::onEnter()
 {
 	super::onEnter();
 
@@ -78,7 +78,7 @@ void PendulumBlade::onEnter()
 	this->startSwing();
 }
 
-void PendulumBlade::initializePositions()
+void HeavenHug::initializePositions()
 {
 	super::initializePositions();
 
@@ -89,12 +89,12 @@ void PendulumBlade::initializePositions()
 	this->bladeChain->setPositionY(this->chainHeight / 2.0f);
 }
 
-void PendulumBlade::update(float dt)
+void HeavenHug::update(float dt)
 {
 	super::update(dt);
 }
 
-void PendulumBlade::registerHackables()
+void HeavenHug::registerHackables()
 {
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
@@ -104,18 +104,18 @@ void PendulumBlade::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
-				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
+				Strings::Hacking_Objects_HeavenHug_SetSpeed::create(),
 				UIResources::Menus_Icons_CrossHair,
-				PendulumBladeSetAnglePreview::create(),
+				HeavenHugSetSpeedPreview::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_PendulumBlade_RegisterEax::create() },
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_PendulumBlade_RegisterEbx::create() }
+					{ HackableCode::Register::eax, Strings::Hacking_Objects_HeavenHug_RegisterEax::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_HeavenHug_RegisterEbx::create() }
 				}
 			)
 		},
 	};
 
-	auto swingFunc = &PendulumBlade::swingToAngle;
+	auto swingFunc = &HeavenHug::swingToAngle;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -124,19 +124,19 @@ void PendulumBlade::registerHackables()
 	}
 }
 
-Vec2 PendulumBlade::getButtonOffset()
+Vec2 HeavenHug::getButtonOffset()
 {
 	return Vec2(0.0f, 0.0f);
 }
 
-void PendulumBlade::startSwing()
+void HeavenHug::startSwing()
 {
-	swingToAngle(PendulumBlade::MinAngle);
+	swingToAngle(HeavenHug::MinAngle);
 }
 
-void PendulumBlade::swingToAngle(float angle)
+void HeavenHug::swingToAngle(float angle)
 {
-	const float arc = (PendulumBlade::MaxAngle - PendulumBlade::MinAngle);
+	const float arc = (HeavenHug::MaxAngle - HeavenHug::MinAngle);
 	const float minDuration = 0.5f;
 	const float maxDuration = 5.0f;
 
@@ -161,13 +161,13 @@ void PendulumBlade::swingToAngle(float angle)
 
 	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
 
-	volatile float speedMultiplier = (this->chainHeight / 480.0f) * PendulumBlade::SwingsPerSecondAt480Length;
+	volatile float speedMultiplier = (this->chainHeight / 480.0f) * HeavenHug::SwingsPerSecondAt480Length;
 
 	volatile float angleDelta = std::abs(previousAngle - this->targetAngle);
-	volatile float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / PendulumBlade::SwingsPerSecondAt480Length, minDuration, maxDuration);
+	volatile float duration = MathUtils::clamp((speedMultiplier * (angleDelta / arc)) / HeavenHug::SwingsPerSecondAt480Length, minDuration, maxDuration);
 
 	// Adjust angle to cocos space (inverted Y)
-	volatile float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + PendulumBlade::DefaultAngle, 0.0f, 360.0f);
+	volatile float newAngleAdjusted = MathUtils::wrappingNormalize(-this->targetAngle + HeavenHug::DefaultAngle, 0.0f, 360.0f);
 
 	// Run normal swing
 	this->bladeChain->runAction(
@@ -175,13 +175,13 @@ void PendulumBlade::swingToAngle(float angle)
 			EaseSineInOut::create(RotateTo::create(duration, newAngleAdjusted)),
 			CallFunc::create([=]()
 			{
-				if (this->targetAngle > (PendulumBlade::MaxAngle + PendulumBlade::MinAngle) / 2.0f)
+				if (this->targetAngle > (HeavenHug::MaxAngle + HeavenHug::MinAngle) / 2.0f)
 				{
-					this->swingToAngle(PendulumBlade::MinAngle);
+					this->swingToAngle(HeavenHug::MinAngle);
 				}
 				else
 				{
-					this->swingToAngle(PendulumBlade::MaxAngle);
+					this->swingToAngle(HeavenHug::MaxAngle);
 				}
 			}),
 			nullptr
@@ -191,7 +191,7 @@ void PendulumBlade::swingToAngle(float angle)
 	HACKABLES_STOP_SEARCH();
 }
 
-void PendulumBlade::buildChain()
+void HeavenHug::buildChain()
 {
 	float remainingHeight = this->chainHeight;
 	int index = 0;
@@ -219,7 +219,7 @@ void PendulumBlade::buildChain()
 	this->bladeChain->addChild(blade);
 }
 
-PhysicsBody* PendulumBlade::createBladeCollision()
+PhysicsBody* HeavenHug::createBladeCollision()
 {
 	// Polygons can't be concave, so we get around this by building the left and right sides of the blade separately
 
