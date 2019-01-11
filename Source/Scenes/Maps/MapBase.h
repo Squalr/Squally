@@ -29,11 +29,11 @@ protected:
 	MapBase();
 	~MapBase();
 
-	virtual void onEnter() override;
-	virtual void resume() override;
-	virtual void initializeListeners() override;
-	virtual void onDeveloperModeEnable() override;
-	virtual void onDeveloperModeDisable() override;
+	void onEnter() override;
+	void resume() override;
+	void initializeListeners() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
@@ -50,8 +50,6 @@ private:
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
-	HackerModeHud* hackerModeHud;
-	DeveloperHud* developerHud;
 	Hud* menuBackDrop;
 	Hud* hud;
 	PauseMenu* pauseMenu;

@@ -10,14 +10,13 @@ class LocalizedString;
 class HackableData : public HackableAttribute
 {
 public:
-	static HackableData* create(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource);
+	static HackableData* create(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
 
-	LocalizedString* variableName;
 	void* dataPointer;
 	HackUtils::DataType dataType;
 
 private:
 	typedef HackableAttribute super;
-	HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource);
+	HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
 	virtual ~HackableData();
 };

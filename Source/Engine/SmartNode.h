@@ -12,11 +12,11 @@ public:
 	SmartNode();
 	virtual ~SmartNode();
 
-	virtual void resume() override;
+	void resume() override;
 
 protected:
-	virtual void onEnter() override;
-	virtual void onReenter() override; // Called on parent change
+	void onEnter() override;
+	void onReenter() override; // Called on parent change
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
 	bool isDeveloperModeEnabled();
@@ -24,6 +24,7 @@ protected:
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
 	virtual void addEventListener(cocos2d::EventListener* listener);
+	virtual void removeEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 private:
 	typedef cocos2d::Node super;

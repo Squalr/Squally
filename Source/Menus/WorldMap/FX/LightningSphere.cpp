@@ -63,28 +63,28 @@ void LightningSphere::playNextAnimation()
 	{
 		case 1:
 		default:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere1_Lightning_0000, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere1_Lightning_0000, animationSpeed, true, callback);
 			break;
 		case 2:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere2_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere2_Lightning_01, animationSpeed, true, callback);
 			break;
 		case 3:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere3_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere3_Lightning_01, animationSpeed, true, callback);
 			break;
 		case 4:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere4_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere4_Lightning_01, animationSpeed, true, callback);
 			break;
 		case 5:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere5_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere5_Lightning_01, animationSpeed, true, callback);
 			break;
 		case 6:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere6_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere6_Lightning_01, animationSpeed, true, callback);
 			break;
 		case 7:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere7_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere7_Lightning_01, animationSpeed, true, callback);
 			break;
 		case 8:
-			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere8_Lightning_01, animationSpeed, callback);
+			this->animations->playAnimation(UIResources::Menus_WorldMap_Lightning_LightningSphere8_Lightning_01, animationSpeed, true, callback);
 			break;
 	}
 }

@@ -4,6 +4,7 @@
 
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Events/HackableEvents.h"
@@ -14,9 +15,11 @@ using namespace cocos2d;
 
 HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
 {
+	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackButton = HackButton::create();
+	this->defaultPreview = nullptr;
 	
 	this->hackButton->setVisible(false);
 
@@ -25,6 +28,10 @@ HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(in
 
 HackableObject::~HackableObject()
 {
+	if (this->defaultPreview != nullptr)
+	{
+		this->defaultPreview->release();
+	}
 }
 
 void HackableObject::onEnterTransitionDidFinish()
@@ -73,17 +80,35 @@ void HackableObject::onHackableClick(ClickableNode* hackButton)
 {
 	Vec2 screenPosition = GameUtils::getSceneBounds(this).origin;
 
-	HackableEvents::TriggerEditHackable(HackableEvents::HackableObjectEditArgs(this, screenPosition));
+	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
+}
+
+HackablePreview* HackableObject::getDefaultPreview()
+{
+	return this->defaultPreview;
+}
+
+void HackableObject::setDefaultPreview(HackablePreview* defaultPreview)
+{
+	if (this->defaultPreview != nullptr)
+	{
+		this->defaultPreview->release();
+	}
+
+	this->defaultPreview = defaultPreview;
+	this->defaultPreview->retain();
 }
 
 void HackableObject::registerData(HackableData* hackableData)
 {
-	hackableData->retain();
+	this->addChild(hackableData);
+	this->hackableList.push_back(hackableData);
 	this->dataList.push_back(hackableData);
 }
 
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
-	hackableCode->retain();
+	this->addChild(hackableCode);
+	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
 }

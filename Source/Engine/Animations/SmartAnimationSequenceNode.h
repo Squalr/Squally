@@ -16,10 +16,10 @@ public:
 	static SmartAnimationSequenceNode* create();
 
 	void primeCache(std::string initialSequenceResourceFile);
-	void playAnimation(std::string initialSequenceResourceFile, float animationSpeed, std::function<void()> onAnimationComplete = nullptr);
-	void playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay);
-	void playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, std::function<void()> onAnimationComplete = nullptr);
-	void playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool startReversed = false);
+	void playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
+	void playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay, bool insertBlankFrame = false);
+	void playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
+	void playAnimationAndReverseRepeat(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame = false, bool startReversed = false);
 
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
