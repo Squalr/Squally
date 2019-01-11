@@ -445,12 +445,12 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
 	Source/Objects/Platformer/Traps/DartGun/Dart.cpp
 	Source/Objects/Platformer/Traps/DartGun/DartGun.cpp
-	Source/Objects/Platformer/Traps/MechanicalFlail/GenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
-	Source/Objects/Platformer/Traps/MechanicalFlail/SetAnglePreview.cpp
-	Source/Objects/Platformer/Traps/PendulumBlade/GenericPreview.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.cpp
-	Source/Objects/Platformer/Traps/PendulumBlade/SetAnglePreview.cpp
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.cpp
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.cpp
 	Source/Objects/Platformer/Wind.cpp
 	Source/Resources/BackgroundResources.cpp
 	Source/Resources/CutsceneResources.cpp
@@ -1575,12 +1575,12 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushies.h
 	Source/Objects/Platformer/Traps/DartGun/Dart.h
 	Source/Objects/Platformer/Traps/DartGun/DartGun.h
-	Source/Objects/Platformer/Traps/MechanicalFlail/GenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
-	Source/Objects/Platformer/Traps/MechanicalFlail/SetAnglePreview.h
-	Source/Objects/Platformer/Traps/PendulumBlade/GenericPreview.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h
-	Source/Objects/Platformer/Traps/PendulumBlade/SetAnglePreview.h
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h
+	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h
 	Source/Objects/Platformer/Wind.h
 	Source/Resources/BackgroundResources.h
 	Source/Resources/CutsceneResources.h

@@ -9,18 +9,18 @@ namespace cocos2d
 
 class LocalizedLabel;
 
-class SetAnglePreview : public HackablePreview
+class PendulumBladeSetAnglePreview : public HackablePreview
 {
 public:
-	static SetAnglePreview* create();
+	static PendulumBladeSetAnglePreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	SetAnglePreview();
-	~SetAnglePreview() = default;
+	PendulumBladeSetAnglePreview();
+	~PendulumBladeSetAnglePreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

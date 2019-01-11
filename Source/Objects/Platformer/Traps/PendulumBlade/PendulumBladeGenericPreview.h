@@ -7,18 +7,18 @@ namespace cocos2d
 	class Sprite;
 }
 
-class GenericPreview : public HackablePreview
+class PendulumBladeGenericPreview : public HackablePreview
 {
 public:
-	static GenericPreview* create();
+	static PendulumBladeGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	GenericPreview();
-	~GenericPreview() = default;
+	PendulumBladeGenericPreview();
+	~PendulumBladeGenericPreview() = default;
 	void onEnter() override;
 
 	cocos2d::Sprite* previewBlade;

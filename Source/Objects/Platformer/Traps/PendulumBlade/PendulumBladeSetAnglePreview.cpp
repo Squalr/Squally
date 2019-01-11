@@ -1,4 +1,4 @@
-#include "SetAnglePreview.h"
+#include "PendulumBladeSetAnglePreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -11,22 +11,21 @@
 
 #include "Strings/Hacking/Objects/Previews/RegisterEax.h"
 #include "Strings/Hacking/Objects/Previews/RegisterRax.h"
-#include "Engine/Hackables/HackableCode.h"
 
 using namespace cocos2d;
 
-SetAnglePreview* SetAnglePreview::create()
+PendulumBladeSetAnglePreview* PendulumBladeSetAnglePreview::create()
 {
-	SetAnglePreview* instance = new SetAnglePreview();
+	PendulumBladeSetAnglePreview* instance = new PendulumBladeSetAnglePreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SetAnglePreview::SetAnglePreview()
+PendulumBladeSetAnglePreview::PendulumBladeSetAnglePreview()
 {
-	this->previewBlade = Sprite::create(ObjectResources::Traps_MechanicalFlail_PreviewFlail);
+	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
 
 	if (sizeof(void*) == 4)
 	{
@@ -67,12 +66,12 @@ SetAnglePreview::SetAnglePreview()
 	this->assemblyTextNode->addChild(this->eax270Degrees);
 }
 
-HackablePreview* SetAnglePreview::clone()
+HackablePreview* PendulumBladeSetAnglePreview::clone()
 {
-	return SetAnglePreview::create();
+	return PendulumBladeSetAnglePreview::create();
 }
 
-void SetAnglePreview::onEnter()
+void PendulumBladeSetAnglePreview::onEnter()
 {
 	super::onEnter();
 
@@ -89,7 +88,7 @@ void SetAnglePreview::onEnter()
 	);
 }
 
-void SetAnglePreview::initializePositions()
+void PendulumBladeSetAnglePreview::initializePositions()
 {
 	super::initializePositions();
 

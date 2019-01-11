@@ -1,4 +1,4 @@
-#include "GenericPreview.h"
+#include "PendulumBladeGenericPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -8,30 +8,30 @@
 
 using namespace cocos2d;
 
-GenericPreview* GenericPreview::create()
+PendulumBladeGenericPreview* PendulumBladeGenericPreview::create()
 {
-	GenericPreview* instance = new GenericPreview();
+	PendulumBladeGenericPreview* instance = new PendulumBladeGenericPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GenericPreview::GenericPreview()
+PendulumBladeGenericPreview::PendulumBladeGenericPreview()
 {
-	this->previewBlade = Sprite::create(ObjectResources::Traps_MechanicalFlail_PreviewFlail);
+	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
 
 	this->previewBlade->setAnchorPoint(Vec2(0.5f, 1.0f));
 
 	this->previewNode->addChild(this->previewBlade);
 }
 
-HackablePreview* GenericPreview::clone()
+HackablePreview* PendulumBladeGenericPreview::clone()
 {
-	return GenericPreview::create();
+	return PendulumBladeGenericPreview::create();
 }
 
-void GenericPreview::onEnter()
+void PendulumBladeGenericPreview::onEnter()
 {
 	super::onEnter();
 
