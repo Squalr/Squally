@@ -24,9 +24,10 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewHeavenHug;
-	LocalizedLabel* eax0Degrees;
-	LocalizedLabel* eax90Degrees;
-	LocalizedLabel* eax180Degrees;
-	LocalizedLabel* eax270Degrees;
+	cocos2d::Sprite* previewHeavenHug100;
+	cocos2d::Sprite* previewHeavenHug200;
+	cocos2d::Sprite* previewHeavenHug400;
+	LocalizedLabel* eax100Height;
+	LocalizedLabel* eax200Height;
+	LocalizedLabel* eax400Height;
 };

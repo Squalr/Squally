@@ -9,9 +9,6 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Hacking/Objects/Previews/RegisterEax.h"
-#include "Strings/Hacking/Objects/Previews/RegisterRax.h"
-
 using namespace cocos2d;
 
 HeavenHugSetSpeedPreview* HeavenHugSetSpeedPreview::create()
@@ -25,45 +22,29 @@ HeavenHugSetSpeedPreview* HeavenHugSetSpeedPreview::create()
 
 HeavenHugSetSpeedPreview::HeavenHugSetSpeedPreview()
 {
-	this->previewHeavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
+	this->previewHeavenHug100 = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
+	this->previewHeavenHug200 = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
+	this->previewHeavenHug400 = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
 
 	if (sizeof(void*) == 4)
 	{
-		this->eax0Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterEax::create());
-		this->eax90Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterEax::create());
-		this->eax180Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterEax::create());
-		this->eax270Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterEax::create());
+		this->eax100Height = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("100f"));
+		this->eax200Height = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("200f"));
+		this->eax400Height = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("400f"));
 	}
 	else
 	{
-		this->eax0Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterRax::create());
-		this->eax90Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterRax::create());
-		this->eax180Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterRax::create());
-		this->eax270Degrees = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Objects_Previews_RegisterRax::create());
+		this->eax100Height = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("100f"));
+		this->eax200Height = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("200f"));
+		this->eax400Height = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("400f"));
 	}
 
-	this->eax0Degrees->setTextColor(HackablePreview::RegisterColor);
-	this->eax90Degrees->setTextColor(HackablePreview::RegisterColor);
-	this->eax180Degrees->setTextColor(HackablePreview::RegisterColor);
-	this->eax270Degrees->setTextColor(HackablePreview::RegisterColor);
-
-	this->eax0Degrees->enableOutline(Color4B::BLACK, 2);
-	this->eax90Degrees->enableOutline(Color4B::BLACK, 2);
-	this->eax180Degrees->enableOutline(Color4B::BLACK, 2);
-	this->eax270Degrees->enableOutline(Color4B::BLACK, 2);
-
-	this->eax0Degrees->setStringReplacementVariables(ConstantString::create("0"));
-	this->eax90Degrees->setStringReplacementVariables(ConstantString::create("90"));
-	this->eax180Degrees->setStringReplacementVariables(ConstantString::create("180"));
-	this->eax270Degrees->setStringReplacementVariables(ConstantString::create("270"));
-
-	this->previewHeavenHug->setAnchorPoint(Vec2(0.5f, 1.0f));
-
-	this->previewNode->addChild(this->previewHeavenHug);
-	this->assemblyTextNode->addChild(this->eax0Degrees);
-	this->assemblyTextNode->addChild(this->eax90Degrees);
-	this->assemblyTextNode->addChild(this->eax180Degrees);
-	this->assemblyTextNode->addChild(this->eax270Degrees);
+	this->previewNode->addChild(this->previewHeavenHug100);
+	this->previewNode->addChild(this->previewHeavenHug200);
+	this->previewNode->addChild(this->previewHeavenHug400);
+	this->assemblyTextNode->addChild(this->eax100Height);
+	this->assemblyTextNode->addChild(this->eax200Height);
+	this->assemblyTextNode->addChild(this->eax400Height);
 }
 
 HackablePreview* HeavenHugSetSpeedPreview::clone()
@@ -75,14 +56,34 @@ void HeavenHugSetSpeedPreview::onEnter()
 {
 	super::onEnter();
 
+	const float speed = 1.5f;
 	const float offset = 48.0f;
+	const float topOffset = 48.0f;
 
-	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
+	this->previewHeavenHug100->setPosition(Vec2(-96.0f, HackablePreview::PreviewRadius - offset - topOffset));
+	this->previewHeavenHug400->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset - topOffset));
+	this->previewHeavenHug200->setPosition(Vec2(96.0f, HackablePreview::PreviewRadius - offset - topOffset));
 
-	this->previewHeavenHug->runAction(
+	this->previewHeavenHug100->runAction(
 		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)))),
-			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, HackablePreview::PreviewRadius - offset))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug100->getPositionX(), -(HackablePreview::PreviewRadius - offset) / 4.0f))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug100->getPositionX(), HackablePreview::PreviewRadius - offset - topOffset))),
+			nullptr
+		))
+	);
+
+	this->previewHeavenHug200->runAction(
+		RepeatForever::create(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug200->getPositionX(), -(HackablePreview::PreviewRadius - offset) / 2.0f))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug200->getPositionX(), HackablePreview::PreviewRadius - offset - topOffset))),
+			nullptr
+		))
+	);
+
+	this->previewHeavenHug400->runAction(
+		RepeatForever::create(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug400->getPositionX(), -(HackablePreview::PreviewRadius - offset)))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug400->getPositionX(), HackablePreview::PreviewRadius - offset - topOffset))),
 			nullptr
 		))
 	);
@@ -92,10 +93,7 @@ void HeavenHugSetSpeedPreview::initializePositions()
 {
 	super::initializePositions();
 
-	const float offset = 24.0f;
-
-	this->eax0Degrees->setPosition(Vec2(HackablePreview::PreviewRadius - offset, 0.0f));
-	this->eax90Degrees->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
-	this->eax180Degrees->setPosition(Vec2(-(HackablePreview::PreviewRadius - offset), 0.0f));
-	this->eax270Degrees->setPosition(Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)));
+	this->eax100Height->setPosition(Vec2(-112.0f, HackablePreview::PreviewRadius - 48.0f));
+	this->eax400Height->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius));
+	this->eax200Height->setPosition(Vec2(112.0f, HackablePreview::PreviewRadius - 48.0f));
 }
