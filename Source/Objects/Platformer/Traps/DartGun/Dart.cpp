@@ -71,7 +71,8 @@ void Dart::registerHackables()
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
 				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
-				UIResources::Menus_Icons_CrossHair, 
+				UIResources::Menus_Icons_CrossHair,
+				nullptr,
 				{
 					{ HackableCode::Register::eax, nullptr },
 					{ HackableCode::Register::ebx, nullptr }

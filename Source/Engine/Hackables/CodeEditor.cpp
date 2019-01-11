@@ -10,6 +10,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
+#include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -281,6 +282,13 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 	if (hackableCode != nullptr)
 	{
 		this->activeHackableCode = hackableCode;
+
+		this->previewNode->removeAllChildren();
+
+		if (hackableCode->getHackablePreview() != nullptr)
+		{
+			this->previewNode->addChild(hackableCode->getHackablePreview()->clone());
+		}
 
 		this->functionWindow->setTitleStringReplaceVariables(hackableCode->getName());
 		this->functionWindow->setText(hackableCode->getAssemblyString());

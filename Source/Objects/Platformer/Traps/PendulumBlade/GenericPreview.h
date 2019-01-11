@@ -19,6 +19,7 @@ private:
 
 	GenericPreview();
 	~GenericPreview() = default;
+	void onEnter() override;
 
 	cocos2d::Sprite* previewBlade;
 };

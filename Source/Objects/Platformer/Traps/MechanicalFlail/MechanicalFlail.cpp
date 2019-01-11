@@ -104,6 +104,7 @@ void MechanicalFlail::registerHackables()
 			HackableCode::LateBindData(
 				Strings::Hacking_Objects_MechanicalFlail_TargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
+				nullptr,
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_MechanicalFlail_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MechanicalFlail_RegisterEbx::create() }

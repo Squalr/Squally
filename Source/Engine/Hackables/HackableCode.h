@@ -110,6 +110,7 @@
 #define ASM_NOP7() ASM_NOP6() ASM_NOP1()
 #define ASM_NOP8() ASM_NOP7() ASM_NOP1()
 
+class HackablePreview;
 class LocalizedString;
 
 class HackableCode : public HackableAttribute
@@ -147,11 +148,12 @@ public:
 	{
 		LocalizedString* functionName;
 		std::string iconResource;
+		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
 
-		LateBindData() : functionName(nullptr), iconResource("") { }
-		LateBindData(LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints) :
-			functionName(functionName), iconResource(iconResource), registerHints(registerHints) { }
+		LateBindData() : functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }) { }
+		LateBindData(LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) :
+			functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints) { }
 	};
 
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
@@ -173,9 +175,9 @@ public:
 
 private:
 	typedef HackableAttribute super;
-	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints);
+	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints);
 
-	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints);
+	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints);
 	virtual ~HackableCode();
 
 	std::string assemblyString;
