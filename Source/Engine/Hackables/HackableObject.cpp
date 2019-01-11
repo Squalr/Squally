@@ -4,6 +4,7 @@
 
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Events/HackableEvents.h"
@@ -18,6 +19,7 @@ HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(in
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackButton = HackButton::create();
+	this->defaultPreview = nullptr;
 	
 	this->hackButton->setVisible(false);
 
@@ -26,6 +28,10 @@ HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(in
 
 HackableObject::~HackableObject()
 {
+	if (this->defaultPreview != nullptr)
+	{
+		this->defaultPreview->release();
+	}
 }
 
 void HackableObject::onEnterTransitionDidFinish()
@@ -75,6 +81,22 @@ void HackableObject::onHackableClick(ClickableNode* hackButton)
 	Vec2 screenPosition = GameUtils::getSceneBounds(this).origin;
 
 	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
+}
+
+HackablePreview* HackableObject::getDefaultPreview()
+{
+	return this->defaultPreview;
+}
+
+void HackableObject::setDefaultPreview(HackablePreview* defaultPreview)
+{
+	if (this->defaultPreview != nullptr)
+	{
+		this->defaultPreview->release();
+	}
+
+	this->defaultPreview = defaultPreview;
+	this->defaultPreview->retain();
 }
 
 void HackableObject::registerData(HackableData* hackableData)

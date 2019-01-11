@@ -98,7 +98,7 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 						if (lateBindDataMap.find(funcId) != lateBindDataMap.end())
 						{
 							LateBindData lateBindData = lateBindDataMap[funcId];
-							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource, lateBindData.registerHints);
+							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData.functionName, lateBindData.iconResource, lateBindData.hackablePreview, lateBindData.registerHints);
 
 							extractedHackableCode.push_back(hackableCode);
 						}
@@ -133,16 +133,16 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 	return extractedHackableCode;
 }
 
-HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints)
+HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints)
 {
-	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource, registerHints);
+	HackableCode* hackableCode = new HackableCode(codeStart, codeEnd, functionName, iconResource, hackablePreview, registerHints);
 
 	hackableCode->autorelease();
 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, std::map<Register, LocalizedString*> registerHints) : HackableAttribute(iconResource, functionName)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) : HackableAttribute(iconResource, functionName, hackablePreview)
 {
 	this->codePointer = (unsigned char*)codeStart;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);

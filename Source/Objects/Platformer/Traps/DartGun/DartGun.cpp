@@ -95,6 +95,7 @@ void DartGun::registerHackables()
 			HackableCode::LateBindData(
 				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
+				nullptr,
 				{
 					{ HackableCode::Register::eax, nullptr },
 					{ HackableCode::Register::ebx, nullptr }

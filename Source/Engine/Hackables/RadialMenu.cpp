@@ -13,6 +13,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/Hackables/HackableObject.h"
+#include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -45,12 +46,14 @@ RadialMenu::RadialMenu()
 
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
+	this->previewNode = Node::create();
 	this->radialMenuItems = Node::create();
 
 	this->setVisible(false);
 
 	this->addChild(this->layerColor);
 	this->addChild(this->background);
+	this->addChild(this->previewNode);
 	this->addChild(this->radialMenuItems);
 }
 
@@ -65,6 +68,7 @@ void RadialMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->previewNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->radialMenuItems->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
@@ -143,7 +147,13 @@ void RadialMenu::close()
 
 void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 {
+	this->previewNode->removeAllChildren();
 	this->radialMenuItems->removeAllChildren();
+
+	if (this->activeHackableObject->getDefaultPreview() != nullptr)
+	{
+		this->previewNode->addChild(this->activeHackableObject->getDefaultPreview()->clone());
+	}
 
 	// +1 from the exit node, which is always present
 	float angleStep = (3.14159f * 2.0f) / ((float)(this->activeHackableObject->dataList.size() + this->activeHackableObject->codeList.size() + 1));

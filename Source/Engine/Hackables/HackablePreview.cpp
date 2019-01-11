@@ -7,6 +7,8 @@ HackablePreview::HackablePreview()
 	this->assemblyTextNode = Node::create();
 	this->previewNode = Node::create();
 
+	this->assemblyTextNode->setVisible(false);
+
 	this->addChild(this->previewNode);
 	this->addChild(this->assemblyTextNode);
 }

@@ -3,6 +3,7 @@
 
 #include "Engine/SmartNode.h"
 
+class HackablePreview;
 class LocalizedString;
 
 class HackableAttribute : public SmartNode
@@ -10,9 +11,10 @@ class HackableAttribute : public SmartNode
 public:
 	std::string getIconResource();
 	LocalizedString* getName();
+	HackablePreview* getHackablePreview();
 
 protected:
-	HackableAttribute(std::string iconResource, LocalizedString* name);
+	HackableAttribute(std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview);
 	virtual ~HackableAttribute();
 
 private:
@@ -20,4 +22,5 @@ private:
 
 	LocalizedString* name;
 	std::string iconResource;
+	HackablePreview* hackablePreview;
 };

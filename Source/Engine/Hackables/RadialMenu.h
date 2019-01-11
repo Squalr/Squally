@@ -43,6 +43,7 @@ private:
 	HackableObject* activeHackableObject;
 	cocos2d::LayerColor* layerColor;
 	cocos2d::Sprite* background;
+	cocos2d::Node* previewNode;
 	cocos2d::Node* radialMenuItems;
 
 	static const float Radius;

@@ -19,6 +19,7 @@ private:
 
 	SetAnglePreview();
 	~SetAnglePreview() = default;
+	void onEnter() override;
 
 	cocos2d::Sprite* previewBlade;
 };
