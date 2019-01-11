@@ -287,7 +287,11 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 
 		if (hackableCode->getHackablePreview() != nullptr)
 		{
-			this->previewNode->addChild(hackableCode->getHackablePreview()->clone());
+			HackablePreview* preview = hackableCode->getHackablePreview()->clone();
+
+			preview->setAssemblyTextVisible(true);
+
+			this->previewNode->addChild(preview);
 		}
 
 		this->functionWindow->setTitleStringReplaceVariables(hackableCode->getName());

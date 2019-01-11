@@ -12,6 +12,8 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Traps/MechanicalFlail/GenericPreview.h"
+#include "Objects/Platformer/Traps/MechanicalFlail/SetAnglePreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ParticleResources.h"
@@ -48,6 +50,7 @@ MechanicalFlail::MechanicalFlail(ValueMap* initProperties) : HackableObject(init
 	this->flailChain = Node::create();
 	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
 	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->setDefaultPreview(GenericPreview::create());
 
 	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
@@ -104,7 +107,7 @@ void MechanicalFlail::registerHackables()
 			HackableCode::LateBindData(
 				Strings::Hacking_Objects_MechanicalFlail_TargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
-				nullptr,
+				SetAnglePreview::create(),
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_MechanicalFlail_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MechanicalFlail_RegisterEbx::create() }

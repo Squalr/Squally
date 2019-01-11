@@ -16,6 +16,9 @@ protected:
 	cocos2d::Node* assemblyTextNode;
 	cocos2d::Node* previewNode;
 
+	static const float PreviewRadius;
+	static const cocos2d::Color4B RegisterColor;
+
 private:
 	typedef SmartNode super;
 };

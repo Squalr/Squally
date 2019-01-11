@@ -445,7 +445,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
 	Source/Objects/Platformer/Traps/DartGun/Dart.cpp
 	Source/Objects/Platformer/Traps/DartGun/DartGun.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/GenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
+	Source/Objects/Platformer/Traps/MechanicalFlail/SetAnglePreview.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/GenericPreview.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/SetAnglePreview.cpp
@@ -954,6 +956,30 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEbp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEcx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEdi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEdx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEsi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterEsp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR10.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR11.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR12.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR13.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR14.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR15.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR8.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterR9.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRax.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRbp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRbx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRcx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRdi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRdx.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRsi.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRsp.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
 	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
 	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
@@ -1549,7 +1575,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushies.h
 	Source/Objects/Platformer/Traps/DartGun/Dart.h
 	Source/Objects/Platformer/Traps/DartGun/DartGun.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/GenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
+	Source/Objects/Platformer/Traps/MechanicalFlail/SetAnglePreview.h
 	Source/Objects/Platformer/Traps/PendulumBlade/GenericPreview.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h
 	Source/Objects/Platformer/Traps/PendulumBlade/SetAnglePreview.h
@@ -2072,6 +2100,30 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.h
 	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.h
 	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEax.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEbp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEbx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEcx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEdi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEdx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEsi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterEsp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR10.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR11.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR12.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR13.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR14.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR15.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR8.h
+	Source/Strings/Hacking/Objects/Previews/RegisterR9.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRax.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRbp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRbx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRcx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRdi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRdx.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRsi.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRsp.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
 	Source/Strings/Hexus/Actions/ChooseSourceCard.h
 	Source/Strings/Hexus/Actions/ChooseTargetCard.h
