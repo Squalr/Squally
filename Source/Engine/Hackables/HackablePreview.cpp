@@ -2,6 +2,9 @@
 
 using namespace cocos2d;
 
+const float HackablePreview::PreviewRadius = 156.0f;
+const Color4B HackablePreview::RegisterColor = Color4B(86, 156, 214, 255);
+
 HackablePreview::HackablePreview()
 {
 	this->assemblyTextNode = Node::create();

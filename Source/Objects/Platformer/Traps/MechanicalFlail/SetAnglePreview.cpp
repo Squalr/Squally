@@ -26,7 +26,7 @@ SetAnglePreview* SetAnglePreview::create()
 
 SetAnglePreview::SetAnglePreview()
 {
-	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
+	this->previewBlade = Sprite::create(ObjectResources::Traps_MechanicalFlail_PreviewFlail);
 
 	if (sizeof(void*) == 4)
 	{
