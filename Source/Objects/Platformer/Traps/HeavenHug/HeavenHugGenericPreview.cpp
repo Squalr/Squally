@@ -19,11 +19,11 @@ HeavenHugGenericPreview* HeavenHugGenericPreview::create()
 
 HeavenHugGenericPreview::HeavenHugGenericPreview()
 {
-	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
+	this->previewHeavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
 
-	this->previewBlade->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->previewHeavenHug->setAnchorPoint(Vec2(0.5f, 1.0f));
 
-	this->previewNode->addChild(this->previewBlade);
+	this->previewNode->addChild(this->previewHeavenHug);
 }
 
 HackablePreview* HeavenHugGenericPreview::clone()
@@ -35,12 +35,14 @@ void HeavenHugGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->previewBlade->setRotation(45.0f);
+	const float offset = 24.0f;
 
-	this->previewBlade->runAction(
+	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
+
+	this->previewHeavenHug->runAction(
 		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(RotateTo::create(1.5f, 315.0f)),
-			EaseSineInOut::create(RotateTo::create(1.5f, 45.0f)),
+			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)))),
+			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, HackablePreview::PreviewRadius - offset))),
 			nullptr
 		))
 	);

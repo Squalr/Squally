@@ -52,6 +52,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = DartGun::create(&properties);
 		}
+		else if (name == HeavenHug::MapKeyHeavenHug)
+		{
+			newObject = HeavenHug::create(&properties);
+		}
 		else if (name == PendulumBlade::MapKeyPendulumBlade)
 		{
 			newObject = PendulumBlade::create(&properties);

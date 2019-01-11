@@ -941,21 +941,18 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/RegisterR9.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRax.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRbp.cpp
-	Source/Strings/Hacking/CodeEditor/RegisterRbpWarning.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRbx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRcx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRdi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRdx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.cpp
-	Source/Strings/Hacking/CodeEditor/RegisterRspWarning.cpp
 	Source/Strings/Hacking/CodeEditor/Status.cpp
 	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
 	Source/Strings/Hacking/CodeEditor/Unknown.cpp
-	Source/Strings/Hacking/Objects/HeavenHug/RegisterEax.cpp
-	Source/Strings/Hacking/Objects/HeavenHug/RegisterEbx.cpp
-	Source/Strings/Hacking/Objects/HeavenHug/SetSpeed.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.cpp
+	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.cpp
@@ -980,12 +977,14 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/Objects/Previews/RegisterR9.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRax.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRbp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRbpWarning.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRbx.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRcx.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRdi.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRdx.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRsi.cpp
 	Source/Strings/Hacking/Objects/Previews/RegisterRsp.cpp
+	Source/Strings/Hacking/Objects/Previews/RegisterRspWarning.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
 	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
 	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
@@ -2091,21 +2090,18 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/RegisterR9.h
 	Source/Strings/Hacking/CodeEditor/RegisterRax.h
 	Source/Strings/Hacking/CodeEditor/RegisterRbp.h
-	Source/Strings/Hacking/CodeEditor/RegisterRbpWarning.h
 	Source/Strings/Hacking/CodeEditor/RegisterRbx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRcx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRdi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRdx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.h
-	Source/Strings/Hacking/CodeEditor/RegisterRspWarning.h
 	Source/Strings/Hacking/CodeEditor/Status.h
 	Source/Strings/Hacking/CodeEditor/StatusHeader.h
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
 	Source/Strings/Hacking/CodeEditor/Unknown.h
-	Source/Strings/Hacking/Objects/HeavenHug/RegisterEax.h
-	Source/Strings/Hacking/Objects/HeavenHug/RegisterEbx.h
-	Source/Strings/Hacking/Objects/HeavenHug/SetSpeed.h
+	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h
+	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h
@@ -2130,12 +2126,14 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/Objects/Previews/RegisterR9.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRax.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRbp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRbpWarning.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRbx.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRcx.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRdi.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRdx.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRsi.h
 	Source/Strings/Hacking/Objects/Previews/RegisterRsp.h
+	Source/Strings/Hacking/Objects/Previews/RegisterRspWarning.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
 	Source/Strings/Hexus/Actions/ChooseSourceCard.h
 	Source/Strings/Hexus/Actions/ChooseTargetCard.h

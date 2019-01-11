@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_CodeEditor_RegisterRspWarning : public LocalizedString
+	class Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax : public LocalizedString
 	{
 	public:
-		static Hacking_CodeEditor_RegisterRspWarning* create();
+		static Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_CodeEditor_RegisterRspWarning();
-		~Hacking_CodeEditor_RegisterRspWarning();
+		Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax();
+		~Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax();
 	};
 }

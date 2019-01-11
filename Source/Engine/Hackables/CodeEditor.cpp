@@ -55,12 +55,10 @@
 #include "Strings/Hacking/CodeEditor/RegisterRbx.h"
 #include "Strings/Hacking/CodeEditor/RegisterRcx.h"
 #include "Strings/Hacking/CodeEditor/RegisterRbp.h"
-#include "Strings/Hacking/CodeEditor/RegisterRbpWarning.h"
 #include "Strings/Hacking/CodeEditor/RegisterRdi.h"
 #include "Strings/Hacking/CodeEditor/RegisterRdx.h"
 #include "Strings/Hacking/CodeEditor/RegisterRsi.h"
 #include "Strings/Hacking/CodeEditor/RegisterRsp.h"
-#include "Strings/Hacking/CodeEditor/RegisterRspWarning.h"
 #include "Strings/Hacking/CodeEditor/Status.h"
 #include "Strings/Hacking/CodeEditor/StatusHeader.h"
 #include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
@@ -415,6 +413,22 @@ void CodeEditor::buildRegisterWindow()
 			this->registerWindow->insertNewline();
 			this->registerWindow->insertNewline();
 		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::ebp) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEbp::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::ebp);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::esp) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEsp::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::esp);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
 	}
 	else
 	{
@@ -462,6 +476,22 @@ void CodeEditor::buildRegisterWindow()
 		{
 			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsi::create(), CodeEditor::registerColor);
 			printRegisterHint(HackableCode::Register::rsi);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rbp) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRbp::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rbp);
+			this->registerWindow->insertNewline();
+			this->registerWindow->insertNewline();
+		}
+
+		if (this->activeHackableCode->registerHints.find(HackableCode::Register::rsp) != this->activeHackableCode->registerHints.end())
+		{
+			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterRsp::create(), CodeEditor::registerColor);
+			printRegisterHint(HackableCode::Register::rsp);
 			this->registerWindow->insertNewline();
 			this->registerWindow->insertNewline();
 		}

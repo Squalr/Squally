@@ -185,7 +185,7 @@
   </properties>
   <object id="484" name="Forest/Flower10" type="decor" x="3524.61" y="2688.24" width="199" height="133"/>
  </objectgroup>
- <objectgroup name="objects">
+ <objectgroup name="objects" visible="0">
   <properties>
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -197,12 +197,12 @@
   <object id="475" name="mechanical-flail" type="object" x="4638.79" y="2538.85" width="42.4242" height="198.303"/>
   <object id="476" name="mechanical-flail" type="object" x="4996.79" y="2445.85" width="42.4242" height="264.303"/>
   <object id="479" name="mechanical-flail" type="object" x="5436.79" y="2502.85" width="42.4242" height="166.303"/>
-  <object id="487" name="dart-gun" type="object" x="3974.61" y="2678" width="78.7879" height="88">
+  <object id="487" name="dart-gun" type="object" x="2336.61" y="2544" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="488" name="dart-gun" type="object" x="3164.61" y="2676" width="78.7879" height="88">
+  <object id="488" name="dart-gun" type="object" x="2238.61" y="2542" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
@@ -213,7 +213,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="goblin" type="entity" x="3647.63" y="2637.46" width="78.7879" height="88">
+  <object id="438" name="goblin" type="entity" x="3967.63" y="2621.46" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
