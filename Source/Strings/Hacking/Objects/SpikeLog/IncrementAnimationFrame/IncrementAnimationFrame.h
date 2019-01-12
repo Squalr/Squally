@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Objects_PendulumBlade_RegisterEbx : public LocalizedString
+	class Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
 	{
 	public:
-		static Hacking_Objects_PendulumBlade_RegisterEbx* create();
+		static Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Objects_PendulumBlade_RegisterEbx();
-		~Hacking_Objects_PendulumBlade_RegisterEbx();
+		Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame();
+		~Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame();
 	};
 }

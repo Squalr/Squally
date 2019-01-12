@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Objects_Previews_RegisterRspWarning : public LocalizedString
+	class Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax : public LocalizedString
 	{
 	public:
-		static Hacking_Objects_Previews_RegisterRspWarning* create();
+		static Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Objects_Previews_RegisterRspWarning();
-		~Hacking_Objects_Previews_RegisterRspWarning();
+		Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax();
+		~Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax();
 	};
 }

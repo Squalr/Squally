@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Objects_MechanicalFlail_RegisterEax : public LocalizedString
+	class Hacking_Objects_RegisterRspWarning : public LocalizedString
 	{
 	public:
-		static Hacking_Objects_MechanicalFlail_RegisterEax* create();
+		static Hacking_Objects_RegisterRspWarning* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Objects_MechanicalFlail_RegisterEax();
-		~Hacking_Objects_MechanicalFlail_RegisterEax();
+		Hacking_Objects_RegisterRspWarning();
+		~Hacking_Objects_RegisterRspWarning();
 	};
 }

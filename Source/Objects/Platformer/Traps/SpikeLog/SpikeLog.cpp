@@ -1,4 +1,4 @@
-#include "HeavenHug.h"
+#include "SpikeLog.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -12,39 +12,39 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
+#include "Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h"
+#include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotation.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h"
-#include "Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h"
+#include "Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h"
+#include "Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h"
 #include "Strings/Hacking/Objects/RegisterRbpWarning.h"
 
 using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_TRAVEL_HEIGHT 1
 
-const std::string HeavenHug::MapKeyHeavenHug = "heaven-hug";
-const float HeavenHug::SpeedPer480Px = 2.0f;
+const std::string SpikeLog::MapKeySpikeLog = "spike-log";
+const float SpikeLog::SpeedPer480Px = 2.0f;
 
-HeavenHug* HeavenHug::create(ValueMap* initProperties)
+SpikeLog* SpikeLog::create(ValueMap* initProperties)
 {
-	HeavenHug* instance = new HeavenHug(initProperties);
+	SpikeLog* instance = new SpikeLog(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HeavenHug::HeavenHug(ValueMap* initProperties) : HackableObject(initProperties)
+SpikeLog::SpikeLog(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
 	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(HeavenHugGenericPreview::create());
+	this->setDefaultPreview(SpikeLogGenericPreview::create());
 
 	this->travelDistance = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
 
@@ -55,18 +55,18 @@ HeavenHug::HeavenHug(ValueMap* initProperties) : HackableObject(initProperties)
 	this->addChild(this->heavenHugContainer);
 }
 
-HeavenHug::~HeavenHug()
+SpikeLog::~SpikeLog()
 {
 }
 
-void HeavenHug::onEnter()
+void SpikeLog::onEnter()
 {
 	super::onEnter();
 
-	this->updateHeavenHug();
+	this->updateSpikeLog();
 }
 
-void HeavenHug::initializePositions()
+void SpikeLog::initializePositions()
 {
 	super::initializePositions();
 
@@ -74,7 +74,7 @@ void HeavenHug::initializePositions()
 	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
 }
 
-void HeavenHug::registerHackables()
+void SpikeLog::registerHackables()
 {
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
@@ -84,18 +84,18 @@ void HeavenHug::registerHackables()
 		{
 			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
 			HackableCode::LateBindData(
-				Strings::Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
+				Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
-				HeavenHugSetSpeedPreview::create(),
+				SpikeLogSetRotation::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
+					{ HackableCode::Register::ecx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 					{ HackableCode::Register::ebp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
 				}
 			)
 		},
 	};
 
-	auto getHeightFunc = &HeavenHug::getTravelHeight;
+	auto getHeightFunc = &SpikeLog::getTravelHeight;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -104,14 +104,14 @@ void HeavenHug::registerHackables()
 	}
 }
 
-Vec2 HeavenHug::getButtonOffset()
+Vec2 SpikeLog::getButtonOffset()
 {
 	return Vec2(0.0f, this->heavenHug->getPositionY() + 64.0f);
 }
 
-void HeavenHug::updateHeavenHug()
+void SpikeLog::updateSpikeLog()
 {
-	float duration = MathUtils::clamp(this->travelDistance / (480.0f * HeavenHug::SpeedPer480Px), 0.25f, 10.0f);
+	float duration = MathUtils::clamp(this->travelDistance / (480.0f * SpikeLog::SpeedPer480Px), 0.25f, 10.0f);
 
 	if (this->heavenHug->getPositionY() >= 0.0f)
 	{
@@ -119,7 +119,7 @@ void HeavenHug::updateHeavenHug()
 
 		this->heavenHug->runAction(Sequence::create(
 			EaseSineInOut::create(MoveTo::create(duration, Vec2(0.0f, -delta))),
-			CallFunc::create([=]() { this->updateHeavenHug(); }),
+			CallFunc::create([=]() { this->updateSpikeLog(); }),
 			nullptr
 		));
 	}
@@ -127,13 +127,13 @@ void HeavenHug::updateHeavenHug()
 	{
 		this->heavenHug->runAction(Sequence::create(
 			EaseSineInOut::create(MoveTo::create(duration, Vec2::ZERO)),
-			CallFunc::create([=]() { this->updateHeavenHug(); }),
+			CallFunc::create([=]() { this->updateSpikeLog(); }),
 			nullptr
 		));
 	}
 }
 
-float HeavenHug::getTravelHeight()
+float SpikeLog::getTravelHeight()
 {
 	volatile float* travelDistPtr = &travelDistance;
 
@@ -146,7 +146,7 @@ float HeavenHug::getTravelHeight()
 	HACKABLES_STOP_SEARCH();
 }
 
-PhysicsBody* HeavenHug::createSpikeCollision()
+PhysicsBody* SpikeLog::createSpikeCollision()
 {
 	PhysicsBody* physicsBody = PhysicsBody::createBox(Size(180.0f, 32.0f));
 

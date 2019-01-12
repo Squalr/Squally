@@ -454,6 +454,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.cpp
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLog.cpp
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.cpp
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotation.cpp
 	Source/Objects/Platformer/Wind.cpp
 	Source/Resources/BackgroundResources.cpp
 	Source/Resources/CutsceneResources.cpp
@@ -954,14 +957,16 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/Unknown.cpp
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.cpp
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.cpp
-	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.cpp
-	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.cpp
-	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.cpp
-	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.cpp
-	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.cpp
-	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.cpp
-	Source/Strings/Hacking/Objects/Previews/RegisterRbpWarning.cpp
-	Source/Strings/Hacking/Objects/Previews/RegisterRspWarning.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.cpp
+	Source/Strings/Hacking/Objects/RegisterRbpWarning.cpp
+	Source/Strings/Hacking/Objects/RegisterRspWarning.cpp
+	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.cpp
+	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.cpp
 	Source/Strings/Hacking/RegisterEax.cpp
 	Source/Strings/Hacking/RegisterEbp.cpp
 	Source/Strings/Hacking/RegisterEbx.cpp
@@ -1590,6 +1595,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLog.h
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotation.h
 	Source/Objects/Platformer/Wind.h
 	Source/Resources/BackgroundResources.h
 	Source/Resources/CutsceneResources.h
@@ -2104,14 +2112,16 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/Unknown.h
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h
-	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEax.h
-	Source/Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.h
-	Source/Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h
-	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEax.h
-	Source/Strings/Hacking/Objects/PendulumBlade/RegisterEbx.h
-	Source/Strings/Hacking/Objects/PendulumBlade/TargetAngle.h
-	Source/Strings/Hacking/Objects/Previews/RegisterRbpWarning.h
-	Source/Strings/Hacking/Objects/Previews/RegisterRspWarning.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.h
+	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.h
+	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.h
+	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.h
+	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h
+	Source/Strings/Hacking/Objects/RegisterRbpWarning.h
+	Source/Strings/Hacking/Objects/RegisterRspWarning.h
+	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h
+	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h
 	Source/Strings/Hacking/RegisterEax.h
 	Source/Strings/Hacking/RegisterEbp.h
 	Source/Strings/Hacking/RegisterEbx.h

@@ -17,7 +17,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/PendulumBlade/TargetAngle.h"
+#include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 
 using namespace cocos2d;
 
@@ -70,7 +70,7 @@ void Dart::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
-				Strings::Hacking_Objects_PendulumBlade_TargetAngle::create(),
+				Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
 				{

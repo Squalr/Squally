@@ -20,9 +20,9 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/MechanicalFlail/RegisterEax.h"
-#include "Strings/Hacking/Objects/MechanicalFlail/RegisterEbx.h"
-#include "Strings/Hacking/Objects/MechanicalFlail/TargetAngle.h"
+#include "Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.h"
+#include "Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.h"
 
 using namespace cocos2d;
 
@@ -105,12 +105,12 @@ void MechanicalFlail::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
-				Strings::Hacking_Objects_MechanicalFlail_TargetAngle::create(),
+				Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				MechanicalFlailSetAnglePreview::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_MechanicalFlail_RegisterEax::create() },
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MechanicalFlail_RegisterEbx::create() }
+					{ HackableCode::Register::eax, Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }
 				}
 			)
 		},

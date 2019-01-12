@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Objects_PendulumBlade_TargetAngle : public LocalizedString
+	class Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Hacking_Objects_PendulumBlade_TargetAngle* create();
+		static Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Objects_PendulumBlade_TargetAngle();
-		~Hacking_Objects_PendulumBlade_TargetAngle();
+		Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx();
+		~Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx();
 	};
 }
