@@ -22,7 +22,6 @@
 
 #include "Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h"
 #include "Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h"
-#include "Strings/Hacking/Objects/RegisterRbpWarning.h"
 
 using namespace cocos2d;
 
@@ -47,8 +46,6 @@ SpikeLog::SpikeLog(ValueMap* initProperties) : HackableObject(initProperties)
 	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 128.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->setDefaultPreview(SpikeLogGenericPreview::create());
 
-	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.08f, 0.0f);
-
 	this->registerHackables();
 
 	this->spikedLog->addChild(this->spikeCollision);
@@ -65,14 +62,15 @@ void SpikeLog::onEnter()
 {
 	super::onEnter();
 
-	this->updateSpikeLog();
+	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.08f, 0.0f);
+	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max) { return this->incrementSpikeLogAnimation(count, max); };
 }
 
 void SpikeLog::initializePositions()
 {
 	super::initializePositions();
 
-	this->spikedLog->setPositionY(this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
+	// this->spikedLog->setPositionY(this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
 	this->logCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
 	this->spikeCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
 }
@@ -92,14 +90,13 @@ void SpikeLog::registerHackables()
 				SpikeLogSetRotation::create(),
 				{
 					{ HackableCode::Register::ecx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
-					{ HackableCode::Register::ebp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
 				}
 			)
 		},
 	};
 
-	auto getHeightFunc = &SpikeLog::getTravelHeight;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, lateBindMap);
+	auto incrementAnimationFunc = &SpikeLog::incrementSpikeLogAnimation;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
@@ -109,43 +106,25 @@ void SpikeLog::registerHackables()
 
 Vec2 SpikeLog::getButtonOffset()
 {
-	return Vec2(0.0f, this->spikedLog->getPositionY() + 128.0f);
+	return Vec2(0.0f, 128.0f);
 }
 
-void SpikeLog::updateSpikeLog()
+int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 {
-	// float duration = MathUtils::clamp(this->travelDistance / (480.0f * SpikeLog::SpeedPer480Px), 0.25f, 10.0f);
-
-	if (this->spikedLog->getPositionY() >= 0.0f)
-	{
-		float delta = this->getTravelHeight();
-
-		this->spikedLog->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(1.0f, Vec2(0.0f, -delta))),
-			CallFunc::create([=]() { this->updateSpikeLog(); }),
-			nullptr
-		));
-	}
-	else
-	{
-		this->spikedLog->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(1.0f, Vec2::ZERO)),
-			CallFunc::create([=]() { this->updateSpikeLog(); }),
-			nullptr
-		));
-	}
-}
-
-float SpikeLog::getTravelHeight()
-{
-	return 0;
-	volatile float* travelDistPtr = nullptr;
+	ASM(push ECX)
+	ASM_MOV_REG_VAR(ECX, count);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM_MOV_REG_VAR(EAX, travelDistPtr);
-	ASM(fld[EAX])
-	ASM_NOP8();
+	ASM(inc ECX)
+	ASM_NOP6();
 	HACKABLE_CODE_END();
 
+	ASM_MOV_VAR_REG(count, ECX);
+	ASM(pop ECX);
+
 	HACKABLES_STOP_SEARCH();
+
+	this->spikeCollision->setPositionY(96.0f * std::sin(((float)count / (float)max) * 2.0f * M_PI));
+
+	return count;
 }

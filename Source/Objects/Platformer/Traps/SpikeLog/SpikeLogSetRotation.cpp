@@ -25,20 +25,18 @@ SpikeLogSetRotation::SpikeLogSetRotation()
 {
 	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
 
-	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.5f, 0.0f);
-	this->previewSpikedLog->setScale(0.25f);
+	this->previewSpikedLog->setScale(0.4f);
 
 	this->countString = ConstantString::create("0");
 
 	if (sizeof(void*) == 4)
 	{
-		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::ecx, true, this->countString);
+		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::ecx, false, this->countString);
 	}
 	else
 	{
-		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::rcx, true, this->countString);
+		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::rcx, false, this->countString);
 	}
-
 
 	this->previewNode->addChild(this->previewSpikedLog);
 	this->assemblyTextNode->addChild(this->ecxAnimationCount);
@@ -53,23 +51,20 @@ void SpikeLogSetRotation::onEnter()
 {
 	super::onEnter();
 
-	const float offset = 48.0f;
+	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
+	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.5f, 0.0f);
 
-	this->previewSpikedLog->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius / 2.0f));
+	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max)
+	{
+		this->countString->setString(std::to_string(count));
 
-	/*
-	this->previewSpikedLog->runAction(
-		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug100->getPositionX(), -(HackablePreview::PreviewRadius - offset) / 4.0f))),
-			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewHeavenHug100->getPositionX(), HackablePreview::PreviewRadius - offset - topOffset))),
-			nullptr
-		))
-	);*/
+		return ++count;
+	};
 }
 
 void SpikeLogSetRotation::initializePositions()
 {
 	super::initializePositions();
 
-	this->ecxAnimationCount->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius));
+	this->ecxAnimationCount->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - 64.0f));
 }

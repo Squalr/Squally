@@ -29,10 +29,7 @@ private:
 	void registerHackables();
 	void onEnter() override;
 	void initializePositions() override;
-	void updateSpikeLog();
-	float getTravelHeight();
-	cocos2d::PhysicsBody* createSpikeCollision();
-	cocos2d::PhysicsBody* createLogCollision();
+	int incrementSpikeLogAnimation(int count, int max);
 
 	cocos2d::Sprite* beam;
 	SmartAnimationSequenceNode* spikedLog;

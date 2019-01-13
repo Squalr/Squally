@@ -36,6 +36,8 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
 SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite)
 {
 	this->sprite = Sprite::create(defaultSprite);
+	this->forwardsAnimation = nullptr;
+	this->backwardsAnimation = nullptr;
 
 	this->addChild(this->sprite);
 }
@@ -43,6 +45,8 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 SmartAnimationSequenceNode::SmartAnimationSequenceNode()
 {
 	this->sprite = Sprite::create();
+	this->forwardsAnimation = nullptr;
+	this->backwardsAnimation = nullptr;
 
 	this->addChild(this->sprite);
 }
@@ -73,8 +77,10 @@ void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResour
 
 	animation->setDelayPerUnit(animationSpeed);
 
+	this->forwardsAnimation = Animate::create(animation);
+
 	this->sprite->runAction(Sequence::create(
-		Animate::create(animation),
+		this->forwardsAnimation,
 		CallFunc::create([=]()
 		{
 			if (onAnimationComplete != nullptr)
@@ -102,7 +108,10 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequence
 	}
 
 	animation->setDelayPerUnit(animationSpeed);
-	this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animation), DelayTime::create(repeatDelay), nullptr)));
+
+	this->forwardsAnimation = Animate::create(animation);
+
+	this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), nullptr)));
 }
 
 void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequenceResourceFile, float animationSpeedIn, float reverseDelay, float animationSpeedOut, bool insertBlankFrame, std::function<void()> onAnimationComplete)
@@ -130,10 +139,13 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequ
 	animationIn->setDelayPerUnit(animationSpeedIn);
 	animationOut->setDelayPerUnit(animationSpeedOut);
 
+	this->forwardsAnimation = Animate::create(animationIn);
+	this->backwardsAnimation = Animate::create(animationOut)->reverse();
+
 	this->sprite->runAction(Sequence::create(
-		Animate::create(animationIn),
+		this->forwardsAnimation,
 		DelayTime::create(reverseDelay),
-		Animate::create(animationOut)->reverse(),
+		this->backwardsAnimation,
 		CallFunc::create([=]()
 		{
 			if (onAnimationComplete != nullptr)
@@ -172,11 +184,17 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initi
 
 	if (startReversed)
 	{
-		this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animationIn)->reverse(), DelayTime::create(repeatDelay), Animate::create(animationOut), DelayTime::create(reverseDelay), nullptr)));
+		this->forwardsAnimation = Animate::create(animationIn)->reverse();
+		this->backwardsAnimation = Animate::create(animationOut);
+
+		this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), this->backwardsAnimation, DelayTime::create(reverseDelay), nullptr)));
 	}
 	else
 	{
-		this->sprite->runAction(RepeatForever::create(Sequence::create(Animate::create(animationIn), DelayTime::create(reverseDelay), Animate::create(animationOut)->reverse(), DelayTime::create(repeatDelay), nullptr)));
+		this->forwardsAnimation = Animate::create(animationIn);
+		this->backwardsAnimation = Animate::create(animationOut)->reverse();
+
+		this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(reverseDelay), this->backwardsAnimation, DelayTime::create(repeatDelay), nullptr)));
 	}
 }
 
@@ -188,6 +206,16 @@ void SmartAnimationSequenceNode::setFlippedX(bool isFlipped)
 void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 {
 	this->sprite->setFlippedY(isFlipped);
+}
+
+Animate* SmartAnimationSequenceNode::getForwardsAnimation()
+{
+	return this->forwardsAnimation;
+}
+
+Animate* SmartAnimationSequenceNode::getBackwardsAnimation()
+{
+	return this->backwardsAnimation;
 }
 
 std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::string firstFrameResource)
