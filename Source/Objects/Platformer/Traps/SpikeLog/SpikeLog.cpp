@@ -6,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
@@ -25,10 +26,9 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_TRAVEL_HEIGHT 1
+#define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string SpikeLog::MapKeySpikeLog = "spike-log";
-const float SpikeLog::SpeedPer480Px = 2.0f;
+const std::string SpikeLog::MapKeySpikeLog = "spiked-log";
 
 SpikeLog* SpikeLog::create(ValueMap* initProperties)
 {
@@ -41,18 +41,20 @@ SpikeLog* SpikeLog::create(ValueMap* initProperties)
 
 SpikeLog::SpikeLog(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	this->heavenHugContainer = Node::create();
-	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
-	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
+	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
+	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(480.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 128.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->setDefaultPreview(SpikeLogGenericPreview::create());
 
-	this->travelDistance = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
+	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.08f, 0.0f);
 
 	this->registerHackables();
 
-	this->heavenHugContainer->addChild(this->heavenHug);
-	this->heavenHug->addChild(this->spikeCollision);
-	this->addChild(this->heavenHugContainer);
+	this->spikedLog->addChild(this->spikeCollision);
+	this->spikedLog->addChild(this->logCollision);
+	this->addChild(this->beam);
+	this->addChild(this->spikedLog);
 }
 
 SpikeLog::~SpikeLog()
@@ -70,8 +72,9 @@ void SpikeLog::initializePositions()
 {
 	super::initializePositions();
 
-	this->heavenHugContainer->setPositionY(this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
-	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
+	this->spikedLog->setPositionY(this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
+	this->logCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
+	this->spikeCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
 }
 
 void SpikeLog::registerHackables()
@@ -82,7 +85,7 @@ void SpikeLog::registerHackables()
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
-			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
+			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
@@ -106,27 +109,27 @@ void SpikeLog::registerHackables()
 
 Vec2 SpikeLog::getButtonOffset()
 {
-	return Vec2(0.0f, this->heavenHug->getPositionY() + 64.0f);
+	return Vec2(0.0f, this->spikedLog->getPositionY() + 128.0f);
 }
 
 void SpikeLog::updateSpikeLog()
 {
-	float duration = MathUtils::clamp(this->travelDistance / (480.0f * SpikeLog::SpeedPer480Px), 0.25f, 10.0f);
+	// float duration = MathUtils::clamp(this->travelDistance / (480.0f * SpikeLog::SpeedPer480Px), 0.25f, 10.0f);
 
-	if (this->heavenHug->getPositionY() >= 0.0f)
+	if (this->spikedLog->getPositionY() >= 0.0f)
 	{
 		float delta = this->getTravelHeight();
 
-		this->heavenHug->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(duration, Vec2(0.0f, -delta))),
+		this->spikedLog->runAction(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(1.0f, Vec2(0.0f, -delta))),
 			CallFunc::create([=]() { this->updateSpikeLog(); }),
 			nullptr
 		));
 	}
 	else
 	{
-		this->heavenHug->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(duration, Vec2::ZERO)),
+		this->spikedLog->runAction(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(1.0f, Vec2::ZERO)),
 			CallFunc::create([=]() { this->updateSpikeLog(); }),
 			nullptr
 		));
@@ -135,20 +138,14 @@ void SpikeLog::updateSpikeLog()
 
 float SpikeLog::getTravelHeight()
 {
-	volatile float* travelDistPtr = &travelDistance;
+	return 0;
+	volatile float* travelDistPtr = nullptr;
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
 	ASM_MOV_REG_VAR(EAX, travelDistPtr);
 	ASM(fld[EAX])
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
 	HACKABLES_STOP_SEARCH();
-}
-
-PhysicsBody* SpikeLog::createSpikeCollision()
-{
-	PhysicsBody* physicsBody = PhysicsBody::createBox(Size(180.0f, 32.0f));
-
-	return physicsBody;
 }

@@ -56,13 +56,17 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = HeavenHug::create(&properties);
 		}
+		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
+		{
+			newObject = MechanicalFlail::create(&properties);
+		}
 		else if (name == PendulumBlade::MapKeyPendulumBlade)
 		{
 			newObject = PendulumBlade::create(&properties);
 		}
-		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
+		else if (name == SpikeLog::MapKeySpikeLog)
 		{
-			newObject = MechanicalFlail::create(&properties);
+			newObject = SpikeLog::create(&properties);
 		}
 		else if (name == PlushieMonkey::MapKeyPlushieMonkey)
 		{
