@@ -13,8 +13,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Title/TitleScreenBackground.h"
-#include "Menus/Options/OptionsMenu.h"
 
+#include "Resources/MapResources.h"
 #include "Resources/MusicResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -209,7 +209,12 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick(ClickableNode* menuSprite)
 {
-	NavigationEvents::navigateSaveSelect();
+	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::EndianForest_Forest, [](SerializableMap* map)
+	{
+		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
+	}));
+
+	////NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onMinigamesClick(ClickableNode* menuSprite)

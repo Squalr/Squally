@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class SmartAnimationSequenceNode;
 
 class SpikeLog : public HackableObject
 {
@@ -31,11 +32,10 @@ private:
 	void updateSpikeLog();
 	float getTravelHeight();
 	cocos2d::PhysicsBody* createSpikeCollision();
+	cocos2d::PhysicsBody* createLogCollision();
 
-	volatile float travelDistance;
-	cocos2d::Node* heavenHugContainer;
-	cocos2d::Sprite* heavenHug;
+	cocos2d::Sprite* beam;
+	SmartAnimationSequenceNode* spikedLog;
 	CollisionObject* spikeCollision;
-
-	static const float SpeedPer480Px;
+	CollisionObject* logCollision;
 };

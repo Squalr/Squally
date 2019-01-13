@@ -7,6 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class SmartAnimationSequenceNode;
+
 class SpikeLogGenericPreview : public HackablePreview
 {
 public:
@@ -21,5 +23,5 @@ private:
 	~SpikeLogGenericPreview() = default;
 	void onEnter() override;
 
-	cocos2d::Sprite* previewSpikeLog;
+	SmartAnimationSequenceNode* previewSpikedLog;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="489">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="494">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -121,27 +121,28 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <layer name="cave" width="128" height="48">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20IX6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDXAGAAAAE=
+  </data>
+ </layer>
  <objectgroup name="decor background">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <layer name="cave" width="64" height="48">
-  <data encoding="base64" compression="zlib">
-   eJztzzESgCAAA8HAV9T//04tbSmlAUd2Z9LnEgAAAAAA+JazJFezu8x+NNZWk73ZUWc/Gku/fv369fftL/Tr179uPwAAAO897EUTrA==
-  </data>
- </layer>
+ <objectgroup name="objects background">
+  <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="493" name="spiked-log" type="object" x="3386.42" y="2823.94" width="598" height="140"/>
+ </objectgroup>
  <objectgroup name="terrain 2">
   <properties>
    <property name="ignore_hackermode" type="bool" value="false"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="436" name="solid" type="terrain" x="4300" y="3500">
-   <properties>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 1884,16 1868,288 1896,484 1868,840 2220,824 2548,784 2844,820 3196,804 3496,824 3488,1004 3452,1132 3420,1244 3440,1404 3428,1508 3432,1596 3432,1908 3448,2228 -96,2228 -80,52"/>
-  </object>
  </objectgroup>
  <objectgroup name="terrain">
   <properties>
@@ -160,49 +161,55 @@
    </properties>
    <polyline points="0,0 -360,148 -780,16 -932,-528 -812,-1040 -332,-1176 88,-1168 372,-996 352,-672 -240,-704 -360,-520 -256,-248 256,-252 228,-84"/>
   </object>
-  <object id="435" name="solid" type="terrain" x="6664" y="1532">
-   <properties>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 -56,596 -20,908 -60,1288 -28,1880 -60,2192 184,2284 740,2224 940,2148 952,-4 432,-92 36,-20"/>
-  </object>
-  <object id="468" name="solid" type="terrain" x="4260.61" y="2063.64">
+  <object id="468" name="solid" type="terrain" x="4148.61" y="2295.64">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 1975.76,12.1212 1978.79,-590.909 3.0303,-590.909 45.4545,-315.152"/>
   </object>
-  <object id="482" name="solid" type="terrain" x="-188" y="2808">
+  <object id="489" name="solid" type="terrain" x="-333.576" y="2816">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 1208,-24 1592,24 1848,8 2264,240 2432,240 2424,-88 3136,-112 3368,-8 4232,0 4608,-88 4976,-144 5416,-168 6240,-136 6240,768 24,784"/>
+   <polyline points="0,0 2264,-8 2448,32 2728,8 3016,-16 3736,0 3744,312 3672,784 3064,808 1128,712 -16,624 0,232"/>
+  </object>
+  <object id="490" name="solid" type="terrain" x="3968" y="2824">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 920,-64 1576,-32 2168,-64 2176,272 2176,752 -16,784 -8,96"/>
+  </object>
+  <object id="491" name="solid" type="terrain" x="6520" y="2776">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 424,8 1040,56 1624,128 1616,-144 2144,-64 2776,-48 2664,3056 344,2944 -80,888 -152,16"/>
   </object>
  </objectgroup>
  <objectgroup name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Forest/Flower10" type="decor" x="3524.61" y="2688.24" width="199" height="133"/>
+  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="2703.39" width="199" height="133"/>
  </objectgroup>
- <objectgroup name="objects" visible="0">
+ <objectgroup name="objects">
   <properties>
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="470" name="pendulum-blade" type="object" x="5231.45" y="2068.85" width="42.4242" height="537.636"/>
-  <object id="471" name="pendulum-blade" type="object" x="4434.79" y="2051.52" width="42.4242" height="420.97"/>
-  <object id="472" name="pendulum-blade" type="object" x="4839.45" y="2067.52" width="42.4242" height="304.97"/>
-  <object id="474" name="pendulum-blade" type="object" x="5604.79" y="2068.85" width="42.4242" height="364.97"/>
-  <object id="475" name="mechanical-flail" type="object" x="4638.79" y="2538.85" width="42.4242" height="198.303"/>
-  <object id="476" name="mechanical-flail" type="object" x="4996.79" y="2445.85" width="42.4242" height="264.303"/>
-  <object id="479" name="mechanical-flail" type="object" x="5436.79" y="2502.85" width="42.4242" height="166.303"/>
-  <object id="487" name="dart-gun" type="object" x="2336.61" y="2544" width="78.7879" height="88">
+  <object id="470" name="pendulum-blade" type="object" x="5275.45" y="2294.85" width="42.4242" height="277.636"/>
+  <object id="471" name="pendulum-blade" type="object" x="4584.79" y="2297.58" width="42.4242" height="420.97"/>
+  <object id="472" name="pendulum-blade" type="object" x="4883.45" y="2289.52" width="42.4242" height="304.97"/>
+  <object id="474" name="pendulum-blade" type="object" x="5672.79" y="2300.85" width="42.4242" height="364.97"/>
+  <object id="475" name="mechanical-flail" type="object" x="4742.79" y="2584.85" width="42.4242" height="198.303"/>
+  <object id="476" name="mechanical-flail" type="object" x="5084.79" y="2511.85" width="42.4242" height="264.303"/>
+  <object id="479" name="mechanical-flail" type="object" x="5474.79" y="2634.85" width="42.4242" height="166.303"/>
+  <object id="487" name="dart-gun" type="object" x="5864.61" y="1572" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="488" name="dart-gun" type="object" x="2238.61" y="2542" width="78.7879" height="88">
+  <object id="488" name="dart-gun" type="object" x="8134.61" y="2522" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
@@ -213,7 +220,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="goblin" type="entity" x="3967.63" y="2621.46" width="78.7879" height="88">
+  <object id="438" name="goblin" type="entity" x="4221.63" y="2611.46" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -225,7 +232,7 @@
    </properties>
   </object>
   <object id="445" name="polyphemus" type="entity" x="755.64" y="2475.52" width="200" height="288"/>
-  <object id="480" name="ogre" type="entity" x="2490.91" y="2519.64" width="78.7879" height="88">
+  <object id="480" name="ogre" type="entity" x="2586.91" y="1379.64" width="78.7879" height="88">
    <properties>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -237,7 +244,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="3330.91" y="2567.88" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="3243.03" y="2570.91" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -262,11 +269,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2730" y="2560" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2454.24" y="2599.39" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="974" y="2432" width="242" height="738"/>
-  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3218" y="2614.42" width="270" height="705.576"/>
+  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3924.06" y="2678.06" width="270" height="705.576"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1322" y="2580" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2952.88" y="2583.58" width="270" height="748"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2677.12" y="2622.97" width="270" height="748"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
