@@ -35,6 +35,7 @@ protected:
 
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
+	void initializePositions() override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
 	virtual cocos2d::Vec2 getButtonOffset();

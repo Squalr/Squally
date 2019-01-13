@@ -58,6 +58,13 @@ void HackableObject::initializeListeners()
 	}));
 }
 
+void HackableObject::initializePositions()
+{
+	super::initializePositions();
+
+	this->hackButton->setPosition(this->getButtonOffset());
+}
+
 void HackableObject::onHackerModeEnable()
 {
 	if (!(this->dataList.empty() && this->codeList.empty()))

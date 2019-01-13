@@ -137,11 +137,13 @@ float HeavenHug::getTravelHeight()
 {
 	volatile float* travelDistPtr = &travelDistance;
 
+	ASM(push EAX)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
 	ASM_MOV_REG_VAR(EAX, travelDistPtr);
 	ASM(fld[EAX])
 	ASM_NOP8();
 	HACKABLE_CODE_END();
+	ASM(pop EAX)
 
 	HACKABLES_STOP_SEARCH();
 }
