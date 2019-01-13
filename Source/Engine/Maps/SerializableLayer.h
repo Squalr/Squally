@@ -1,10 +1,10 @@
 #pragma once
+#include <set>
 #include <string>
 
-#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCTMXObjectGroup.h"
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -12,13 +12,15 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
+class SerializableObject;
+
 namespace tinyxml2
 {
 	class XMLDocument;
 	class XMLElement;
 }
 
-class SerializableLayer : public cocos2d::Layer
+class SerializableLayer : public SmartNode
 {
 public:
 	static SerializableLayer* create(cocos2d::ValueMap* initProperties, std::string name,
@@ -41,9 +43,13 @@ protected:
 	SerializableLayer();
 	virtual ~SerializableLayer();
 
+	void initializeListeners() override;
+
 	std::string layerName;
 	std::vector<SerializableObject*> serializableObjects;
+	std::set<SerializableObject*> serializableObjectsSet;
 	cocos2d::ValueMap* properties;
+
 private:
-	typedef cocos2d::Layer super;
+	typedef SmartNode super;
 };

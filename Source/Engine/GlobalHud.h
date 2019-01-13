@@ -9,6 +9,8 @@ namespace cocos2d
 class GlobalHud : public Hud
 {
 public:
+	static GlobalHud* create();
+
 	virtual ~GlobalHud() = default;
 
 	void pause() override;

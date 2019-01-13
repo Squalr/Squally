@@ -10,6 +10,15 @@
 
 using namespace cocos2d;
 
+SmartNode* SmartNode::create()
+{
+	SmartNode* instance = new SmartNode();
+
+	instance->autorelease();
+
+	return instance;
+}
+
 SmartNode::SmartNode()
 {
 }

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Physics/CollisionObject.h"
 
 namespace cocos2d
 {
@@ -8,16 +8,15 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
 class HackableData;
 
-class Dart : public HackableObject
+class Dart : public CollisionObject
 {
 public:
-	static Dart* create(cocos2d::ValueMap* initProperties);
+	static Dart* create(float rotation, float speed);
 
 protected:
-	Dart(cocos2d::ValueMap* initProperties);
+	Dart(float rotation, float speed);
 	~Dart();
 
 	cocos2d::Vec2 getButtonOffset() override;
@@ -29,6 +28,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
-	void dartHeatSeek();
-	cocos2d::PhysicsBody* buildCollision();
+
+	cocos2d::Sprite* dartSprite;
 };

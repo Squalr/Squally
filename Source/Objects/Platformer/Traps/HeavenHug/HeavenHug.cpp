@@ -106,7 +106,7 @@ void HeavenHug::registerHackables()
 
 Vec2 HeavenHug::getButtonOffset()
 {
-	return Vec2(0.0f, this->heavenHug->getPositionY() + 64.0f);
+	return Vec2(0.0f, this->heavenHug->getPositionY() + 196.0f);
 }
 
 void HeavenHug::updateHeavenHug()

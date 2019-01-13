@@ -31,6 +31,7 @@ private:
 	void update(float) override;
 	void shoot(float dt);
 
+	float timeSinceLastShot;
 	cocos2d::Node* dartNode;
 	SmartAnimationNode* dartGunAnimations;
 

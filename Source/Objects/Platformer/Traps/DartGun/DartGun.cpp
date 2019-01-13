@@ -20,6 +20,8 @@
 
 #include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Engine/Events/SpawnEvents.h"
+#include "Dart.h"
 
 using namespace cocos2d;
 
@@ -41,6 +43,7 @@ DartGun::DartGun(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->dartNode = Node::create();
 	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);
+	this->timeSinceLastShot = 0.0f;
 
 	this->dartGunAnimations->playAnimation();
 
@@ -129,6 +132,20 @@ void DartGun::shoot(float dt)
 	cannon.rotation = MathUtils::wrappingNormalize(rotation, 0.0f, 2.0f * M_PI);
 
 	this->dartGunAnimations->setAnimationPart(DartGun::PivotBone, cannon);
+
+	this->timeSinceLastShot += dt;
+
+	if (this->timeSinceLastShot > 4.0f)
+	{
+		this->timeSinceLastShot = 0.0f;
+
+		SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+			this,
+			Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
+			this->getPosition() + Vec2(0.0f, 64.0f),
+			SpawnEvents::SpawnMethod::Below
+		));
+	}
 
 	/*
 	ASM(push EAX);

@@ -15,6 +15,15 @@ const float SmartScene::defaultFadeSpeed = 0.75f;
 
 using namespace cocos2d;
 
+SmartScene* SmartScene::create()
+{
+	SmartScene* instance = new SmartScene();
+
+	instance->autorelease();
+
+	return instance;
+}
+
 SmartScene::SmartScene()
 {
 	this->fadeAction = nullptr;

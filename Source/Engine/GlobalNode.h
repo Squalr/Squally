@@ -9,6 +9,8 @@ namespace cocos2d
 class GlobalNode : public SmartNode
 {
 public:
+	static GlobalNode* create();
+
 	virtual ~GlobalNode() = default;
 
 	void pause() override;

@@ -13,6 +13,8 @@ class Hud;
 class SmartScene : public cocos2d::Scene
 {
 public:
+	static SmartScene* create();
+
 	SmartScene();
 	virtual ~SmartScene();
 

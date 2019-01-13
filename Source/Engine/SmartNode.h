@@ -9,6 +9,8 @@ namespace cocos2d
 class SmartNode : public cocos2d::Node
 {
 public:
+	static SmartNode* create();
+
 	SmartNode();
 	virtual ~SmartNode();
 

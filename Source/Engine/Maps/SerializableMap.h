@@ -4,6 +4,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+#include "Engine/Events/SpawnEvents.h"
 #include "Engine/SmartNode.h"
 
 class SerializableLayer;
@@ -47,6 +48,7 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void spawnObject(SpawnEvents::RequestObjectSpawnDelegatorArgs* args);
 	void isometricZSort(cocos2d::Node* node);
 	void isometricMapPreparation();
 	void hackerModeEnable();
