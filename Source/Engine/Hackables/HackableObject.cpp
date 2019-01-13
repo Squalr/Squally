@@ -67,6 +67,8 @@ void HackableObject::initializePositions()
 
 void HackableObject::onHackerModeEnable()
 {
+	this->hackButton->setPosition(this->getButtonOffset());
+
 	if (!(this->dataList.empty() && this->codeList.empty()))
 	{
 		this->hackButton->setVisible(true);

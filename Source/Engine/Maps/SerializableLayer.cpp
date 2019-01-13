@@ -2,6 +2,11 @@
 
 #include <tinyxml2/tinyxml2.h>
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Maps/SerializableObject.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -12,9 +17,7 @@ const std::string SerializableLayer::MapKeyPropertyValue = "value";
 const std::string SerializableLayer::MapKeyPropertyDepth = "depth";
 const std::string SerializableLayer::MapKeyPropertyIgnoreHackermode = "ignore_hackermode";
 
-
-SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name,
-		const std::vector<SerializableObject*>& objects)
+SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
 	SerializableLayer* instance = new SerializableLayer(initProperties, name, objects);
 
@@ -40,6 +43,7 @@ SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name,
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
+	this->serializableObjectsSet = std::set<SerializableObject*>();
 	this->properties = new ValueMap(*initProperties);
 
 	if (GameUtils::keyExists(this->properties, SerializableLayer::MapKeyPropertyDepth))
@@ -49,12 +53,29 @@ SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name,
 
 	for (auto it = objects.begin(); it != objects.end(); it++)
 	{
+		this->serializableObjectsSet.insert(*it);
 		this->addChild(*it);
 	}
 }
 
 SerializableLayer::~SerializableLayer()
 {
+}
+
+void SerializableLayer::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SpawnEvents::SpawnObjectEvent, [=](EventCustom* eventArgs)
+	{
+		SpawnEvents::RequestObjectSpawnArgs* args = (SpawnEvents::RequestObjectSpawnArgs*)eventArgs->getUserData();
+
+		if (this->serializableObjectsSet.find(args->spawner) != this->serializableObjectsSet.end())
+		{
+			// Delegate the spawning to the map, which will decide where to place the object
+			SpawnEvents::TriggerObjectSpawnDelegator(SpawnEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnPosition, args->spawnMethod));
+		}
+	}));
 }
 
 void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)

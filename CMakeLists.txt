@@ -90,6 +90,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Events/LocalizationEvents.cpp
 	Source/Engine/Events/MouseEvents.cpp
 	Source/Engine/Events/SceneEvents.cpp
+	Source/Engine/Events/SpawnEvents.cpp
 	Source/Engine/GlobalDirector.cpp
 	Source/Engine/GlobalHud.cpp
 	Source/Engine/GlobalNode.cpp
@@ -1221,6 +1222,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Events/LocalizationEvents.h
 	Source/Engine/Events/MouseEvents.h
 	Source/Engine/Events/SceneEvents.h
+	Source/Engine/Events/SpawnEvents.h
 	Source/Engine/GlobalDirector.h
 	Source/Engine/GlobalHud.h
 	Source/Engine/GlobalNode.h

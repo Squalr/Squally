@@ -4,6 +4,15 @@
 
 using namespace cocos2d;
 
+GlobalScene* GlobalScene::create()
+{
+	GlobalScene* instance = new GlobalScene();
+
+	instance->autorelease();
+
+	return instance;
+}
+
 void GlobalScene::addGlobalEventListener(EventListener* listener)
 {
 	if (listener == nullptr)

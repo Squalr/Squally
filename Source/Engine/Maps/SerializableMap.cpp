@@ -3,6 +3,7 @@
 #include "cocos/2d/CCFastTMXLayer.h"
 #include "cocos/2d/CCFastTMXTiledMap.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/platform/CCFileUtils.h"
 
@@ -13,6 +14,7 @@
 #include "Engine/Maps/ObjectifiedTile.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
+#include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
@@ -26,16 +28,16 @@ SerializableMap::SerializableMap(std::string mapFileName, const std::vector<Seri
 		Size unitSize, Size tileSize, MapOrientation orientation)
 {
 	this->collisionLayers = std::vector<SerializableTileLayer*>();
+	this->serializableLayers = std::vector<SerializableLayer*>();
 	this->tileLayers = std::vector<SerializableTileLayer*>();
 	this->levelMapFileName = mapFileName;
-	this->serializableLayers = layers;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
 	for (auto it = layers.begin(); it != layers.end(); it++)
 	{
-		this->addChild(*it);
+		this->appendLayer(*it);
 	}
 
 	if (this->orientation == MapOrientation::Isometric)
@@ -77,6 +79,11 @@ void SerializableMap::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectCloseEvent, [=](EventCustom* args)
 	{
 		this->hackerModeLayerUnfade();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SpawnEvents::SpawnObjectDelegatorEvent, [=](EventCustom* eventArgs)
+	{
+		this->spawnObject((SpawnEvents::RequestObjectSpawnDelegatorArgs*)eventArgs->getUserData());
 	}));
 }
 
@@ -217,6 +224,42 @@ std::string SerializableMap::getMapFileName()
 	return this->levelMapFileName;
 }
 
+void SerializableMap::spawnObject(SpawnEvents::RequestObjectSpawnDelegatorArgs* args)
+{
+	std::vector<SerializableLayer*>::iterator prevIt = this->serializableLayers.end();
+
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	{
+		if (*it == args->sourceLayer)
+		{
+			switch (args->spawnMethod)
+			{
+				default:
+				case SpawnEvents::SpawnMethod::Above:
+				{
+					(*it)->addChild(args->objectToSpawn);
+					args->objectToSpawn->setPosition(args->spawnPosition);
+					break;
+				}
+				case SpawnEvents::SpawnMethod::Below:
+				{
+					if (prevIt != this->serializableLayers.end())
+					{
+						(*prevIt)->addChild(args->objectToSpawn);
+						args->objectToSpawn->setPosition(args->spawnPosition);
+					}
+					else
+					{
+						(*it)->addChild(args->objectToSpawn);
+						args->objectToSpawn->setPosition(args->spawnPosition);
+					}
+					break;
+				}
+			}
+		}
+	}
+}
+
 void SerializableMap::hackerModeEnable()
 {
 	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
@@ -285,6 +328,7 @@ bool SerializableMap::isPlatformer()
 void SerializableMap::appendLayer(SerializableLayer* layer)
 {
 	this->serializableLayers.push_back(layer);
+
 	this->addChild(layer);
 }
 

@@ -23,20 +23,35 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-Dart* Dart::create(ValueMap* initProperties)
+Dart* Dart::create(float rotation, float speed)
 {
-	Dart* instance = new Dart(initProperties);
+	Dart* instance = new Dart(rotation, speed);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dart::Dart(ValueMap* initProperties) : HackableObject(initProperties)
+Dart::Dart(float rotation, float speed) : CollisionObject(nullptr,
+	PhysicsBody::createBox(
+		Size(64.0f, 16.0f),
+		PHYSICSBODY_MATERIAL_DEFAULT,
+		Vec2::ZERO
+	),
+	(int)PlatformerCollisionType::Damage,
+	false,
+	false
+)
 {
-	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
+	this->dartSprite = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
+	this->setRotation(rotation);
+
+	float rotationInRad = (-rotation) * M_PI / 180.0f;
+	this->setVelocity(Vec2(speed * std::cos(rotationInRad), speed * std::sin(rotationInRad)));
 
 	this->registerHackables();
+
+	this->addChild(this->dartSprite);
 }
 
 Dart::~Dart()
@@ -62,84 +77,9 @@ void Dart::update(float dt)
 
 void Dart::registerHackables()
 {
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
-	{
-		{
-			LOCAL_FUNC_ID_SWING,
-			HackableCode::LateBindData(
-				Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
-				UIResources::Menus_Icons_CrossHair,
-				nullptr,
-				{
-					{ HackableCode::Register::eax, nullptr },
-					{ HackableCode::Register::ebx, nullptr }
-				}
-			)
-		},
-	};
-
-	auto swingFunc = &Dart::dartHeatSeek;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
-
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
-	{
-		this->registerCode(*it);
-	}
 }
 
 Vec2 Dart::getButtonOffset()
 {
 	return Vec2(0.0f, 0.0f);
-}
-
-void Dart::dartHeatSeek()
-{
-	/*
-	ASM(push EAX);
-	ASM(push EBX);
-	ASM_MOV_REG_VAR(EAX, angleInt);
-	ASM_MOV_REG_VAR(EBX, previousAngleInt);
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
-	ASM(mov EBX, EAX);
-	ASM_NOP5();
-	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(angleInt, EBX);
-
-	ASM(pop EBX);
-	ASM(pop EAX);
-	*/
-
-	HACKABLES_STOP_SEARCH();
-}
-
-PhysicsBody* Dart::buildCollision()
-{
-	// Polygons can't be concave, so we get around this by building the left and right sides of the blade separately
-
-	std::vector<Vec2> leftPoints = std::vector<Vec2>();
-
-	leftPoints.push_back(Vec2(0.0f, 8.0f));
-	leftPoints.push_back(Vec2(-212.0f, 64.0f));
-	leftPoints.push_back(Vec2(-160.0f, -32.0f));
-	leftPoints.push_back(Vec2(-96.0f, -64.0f));
-	leftPoints.push_back(Vec2(0.0f, -80.0f));
-
-	std::vector<Vec2> rightPoints = std::vector<Vec2>();
-
-	rightPoints.push_back(Vec2(0.0f, 8.0f));
-	rightPoints.push_back(Vec2(212.0f, 64.0f));
-	rightPoints.push_back(Vec2(160.0f, -32.0f));
-	rightPoints.push_back(Vec2(96.0f, -64.0f));
-	rightPoints.push_back(Vec2(0.0f, -80.0f));
-
-	PhysicsBody* physicsBody = PhysicsBody::createPolygon(leftPoints.data(), leftPoints.size());
-
-	physicsBody->addShape(PhysicsShapePolygon::create(rightPoints.data(), rightPoints.size()));
-
-	return physicsBody;
 }
