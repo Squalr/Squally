@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="497">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="501">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -108,6 +108,16 @@
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="497" name="Forest/Background/Hills2" type="decor" x="-2168.48" y="3317.68" width="40000" height="537">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="498" name="Forest/Background/Hills2" type="decor" x="-2150.3" y="3578.29" width="40000" height="537">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="decor -512">
   <properties>
@@ -191,6 +201,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="2703.39" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="2693.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
@@ -209,11 +220,6 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="488" name="dart-gun" type="object" x="8134.61" y="2522" width="78.7879" height="88">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
   <object id="494" name="heaven-hug" type="object" x="7254.55" y="2180.24" width="78.7879" height="603.152">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
@@ -227,6 +233,11 @@
   <object id="496" name="heaven-hug" type="object" x="7933.33" y="2177.21" width="78.7879" height="688.001">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="499" name="dart-gun" type="object" x="8196.61" y="2496" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -259,7 +270,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="6676.36" y="2519.39" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="1756.36" y="2479.39" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -296,7 +307,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="2468" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1666" y="2416" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1875.09" y="2473.58" width="242" height="738"/>
   <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="2580" width="242" height="738"/>
  </objectgroup>
 </map>

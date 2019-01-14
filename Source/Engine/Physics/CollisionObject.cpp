@@ -120,6 +120,28 @@ void CollisionObject::update(float dt)
 			this->setPhysicsEnabled(this->physicsEnabled);
 		}
 	}
+
+	Rect mapBounds = GameCamera::getInstance()->getBounds();
+
+	if (pos.x < mapBounds.getMinX())
+	{
+		this->setPositionX(mapBounds.getMinX());
+	}
+
+	if (pos.x > mapBounds.getMaxX())
+	{
+		this->setPositionX(mapBounds.getMaxX());
+	}
+
+	if (pos.y < mapBounds.getMinY())
+	{
+		this->setPositionY(mapBounds.getMinY());
+	}
+
+	if (pos.y > mapBounds.getMaxY())
+	{
+		this->setPositionY(mapBounds.getMaxY());
+	}
 }
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
