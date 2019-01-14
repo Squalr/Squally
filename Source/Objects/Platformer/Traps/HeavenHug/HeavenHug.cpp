@@ -140,7 +140,7 @@ float HeavenHug::getTravelHeight()
 	ASM(push EAX)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
 	ASM_MOV_REG_VAR(EAX, travelDistPtr);
-	ASM(fld[EAX])
+	ASM(fld dword ptr [EAX])
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 	ASM(pop EAX)
