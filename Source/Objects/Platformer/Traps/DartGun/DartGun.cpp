@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
@@ -107,7 +108,7 @@ void DartGun::registerHackables()
 		},
 	};
 
-	auto swingFunc = &DartGun::update;
+	auto swingFunc = &DartGun::shoot;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -118,7 +119,7 @@ void DartGun::registerHackables()
 
 Vec2 DartGun::getButtonOffset()
 {
-	return Vec2(0.0f, 72.0f);
+	return Vec2(0.0f, 128.0f);
 }
 
 void DartGun::shoot(float dt)
@@ -135,16 +136,22 @@ void DartGun::shoot(float dt)
 
 	this->timeSinceLastShot += dt;
 
-	if (this->timeSinceLastShot > 4.0f)
-	{
-		this->timeSinceLastShot = 0.0f;
+	Rect bounds = GameUtils::getSceneBounds(this);
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-		SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
-			this,
-			Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
-			this->getPosition() + Vec2(0.0f, 64.0f),
-			SpawnEvents::SpawnMethod::Below
-		));
+	if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
+	{
+		if (this->timeSinceLastShot > 4.0f)
+		{
+			this->timeSinceLastShot = 0.0f;
+
+			SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+				this,
+				Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
+				this->getPosition() + Vec2(0.0f, 64.0f),
+				SpawnEvents::SpawnMethod::Below
+			));
+		}
 	}
 
 	/*
