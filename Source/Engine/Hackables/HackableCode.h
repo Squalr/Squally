@@ -146,19 +146,22 @@ public:
 
 	struct LateBindData
 	{
+		std::string hackableObjectIdentifier;
 		LocalizedString* functionName;
 		std::string iconResource;
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
 
-		LateBindData() : functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }) { }
-		LateBindData(LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) :
-			functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints) { }
+		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) :
+			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints) { }
 	};
 
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
 
+	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
+	std::string getOriginalAssemblyString();
 	void* getCodePointer();
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
@@ -175,12 +178,14 @@ public:
 
 private:
 	typedef HackableAttribute super;
-	static HackableCode* create(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints);
+	static HackableCode* create(void* codeStart, void* codeEnd, LateBindData lateBindData);
 
-	HackableCode(void* codeStart, void* codeEnd, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints);
+	HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData);
 	virtual ~HackableCode();
 
+	std::string hackableCodeIdentifier;
 	std::string assemblyString;
+	std::string originalAssemblyString;
 	void* codePointer;
 	unsigned char* originalCodeCopy;
 	int originalCodeLength;

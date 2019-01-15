@@ -105,6 +105,7 @@ void MechanicalFlail::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
+				MechanicalFlail::MapKeyMechanicalFlail,
 				Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				MechanicalFlailSetAnglePreview::create(),

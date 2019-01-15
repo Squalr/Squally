@@ -16,6 +16,7 @@ class HackableCode;
 class MenuLabel;
 class ClickableNode;
 class ClickableTextNode;
+class ScriptList;
 class TextWindow;
 
 class CodeEditor : public GlobalHud
@@ -41,6 +42,7 @@ private:
 	void onFunctionTextUpdate(std::string text);
 	void onAllocationTextUpdate(std::string text);
 	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>&);
+	void onScriptLoad(std::string script);
 	void onAccept(ClickableNode* menuSprite);
 	void onCancel(ClickableNode* menuSprite);
 
@@ -51,6 +53,7 @@ private:
 	EditableTextWindow* functionWindow;
 	TextWindow* statusWindow;
 	TextWindow* registerWindow;
+	ScriptList* scriptList;
 
 	ClickableTextNode* cancelButton;
 	ClickableTextNode* applyChangesButton;

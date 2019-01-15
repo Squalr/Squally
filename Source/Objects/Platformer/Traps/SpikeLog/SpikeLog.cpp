@@ -85,6 +85,7 @@ void SpikeLog::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
+				SpikeLog::MapKeySpikeLog,
 				Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				SpikeLogSetRotation::create(),

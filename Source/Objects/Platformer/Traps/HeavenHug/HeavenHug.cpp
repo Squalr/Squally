@@ -84,6 +84,7 @@ void HeavenHug::registerHackables()
 		{
 			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
 			HackableCode::LateBindData(
+				HeavenHug::MapKeyHeavenHug,
 				Strings::Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				HeavenHugSetSpeedPreview::create(),
