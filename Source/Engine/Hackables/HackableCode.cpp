@@ -149,7 +149,7 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
 	this->originalCodeCopy = nullptr;
-	this->registerHints = registerHints;
+	this->registerHints = lateBindData.registerHints;
 
 	for (auto it = this->registerHints.begin(); it != this->registerHints.end(); it++)
 	{
