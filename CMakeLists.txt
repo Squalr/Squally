@@ -78,8 +78,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Cutscenes/Cutscene.cpp
 	Source/Engine/Cutscenes/CutsceneClip.cpp
 	Source/Engine/DeveloperMode/DeveloperModeController.cpp
-	Source/Engine/Dialogue/DialogueLabel.cpp
-	Source/Engine/Dialogue/DialogueTree.cpp
 	Source/Engine/Dialogue/SpeechBubble.cpp
 	Source/Engine/EngineBootstrapper.cpp
 	Source/Engine/Events/CollisionEventDispatcher.cpp
@@ -1210,8 +1208,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/Cutscenes/Cutscene.h
 	Source/Engine/Cutscenes/CutsceneClip.h
 	Source/Engine/DeveloperMode/DeveloperModeController.h
-	Source/Engine/Dialogue/DialogueLabel.h
-	Source/Engine/Dialogue/DialogueTree.h
 	Source/Engine/Dialogue/SpeechBubble.h
 	Source/Engine/EngineBootstrapper.h
 	Source/Engine/Events/CollisionEventDispatcher.h

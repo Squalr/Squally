@@ -8,7 +8,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Dialogue/DialogueLabel.h"
+// #include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
@@ -50,7 +50,7 @@ IntroSpace::IntroSpace()
 	this->weaver4 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->weaver5 = SmartAnimationSequenceNode::create(CutsceneResources::IntroSpace_Weaver_0000);
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, IntroSpace::dialogueHeight);
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneIntroSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneIntroSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -72,7 +72,7 @@ IntroSpace::IntroSpace()
 	this->weavers->addChild(this->weaver5);
 	this->addChild(this->weavers);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -110,7 +110,7 @@ void IntroSpace::initializePositions()
 	this->weaver5->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height / 2.0f + 160.0f));
 
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -118,11 +118,12 @@ void IntroSpace::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(IntroSpace::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(IntroSpace::onDialogueShown, this));
 }
 
 void IntroSpace::onDialogueShown()
 {
+	/*
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(3.0f),
 		CallFunc::create([=]() {
@@ -132,14 +133,14 @@ void IntroSpace::onDialogueShown()
 			}
 		}),
 		nullptr
-	));
+	));*/
 }
 
 void IntroSpace::runCutscene()
 {
 	float duration = 5.0f;
 
-	this->dialogue->showNextDialogue();
+	//this->dialogue->showNextDialogue();
 
 	CallFunc* scroll = CallFunc::create([=]() {
 		this->earth->runAction(MoveTo::create(duration, this->earth->getPosition() - Vec2(IntroSpace::earthDelta, 0.0f)));

@@ -7,7 +7,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Dialogue/DialogueLabel.h"
+//#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Cutscenes/Objects/Grid.h"
 #include "Scenes/Cutscenes/Objects/GridObject.h"
@@ -45,7 +45,7 @@ VaporWeb::VaporWeb()
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(CutsceneResources::VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	// this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)
@@ -85,7 +85,7 @@ VaporWeb::VaporWeb()
 	this->addChild(this->grid);
 	this->addChild(this->darkLord);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -112,7 +112,7 @@ void VaporWeb::initializePositions()
 
 	this->grid->setPosition(Vec2(0.0f, VaporWeb::dialogueHeight));
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -120,11 +120,12 @@ void VaporWeb::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporWeb::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporWeb::onDialogueShown, this));
 }
 
 void VaporWeb::onDialogueShown()
 {
+	/*
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(6.0f),
 		CallFunc::create([=]() {
@@ -134,6 +135,7 @@ void VaporWeb::onDialogueShown()
 	}),
 	nullptr
 	));
+	*/
 }
 
 void VaporWeb::runCutscene()
@@ -179,7 +181,7 @@ FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
 
 	CallFunc* beginDialogue = CallFunc::create([=]()
 	{
-		this->dialogue->showNextDialogue();
+		//this->dialogue->showNextDialogue();
 	});
 
 	CallFunc* darkLordMoveIn = CallFunc::create([=]()

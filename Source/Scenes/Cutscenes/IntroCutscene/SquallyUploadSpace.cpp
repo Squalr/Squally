@@ -6,7 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Dialogue/DialogueLabel.h"
+// #include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
@@ -37,7 +37,7 @@ SquallyUploadSpace::SquallyUploadSpace()
 	this->mars = Sprite::create(CutsceneResources::IntroSpace_Mars);
 	this->beam = Node::create();
 	this->satellite = Sprite::create(CutsceneResources::SquallyUploadSpace_Satellite);
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
@@ -53,7 +53,7 @@ SquallyUploadSpace::SquallyUploadSpace()
 	this->addChild(this->beam);
 	this->addChild(this->satellite);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -65,7 +65,7 @@ void SquallyUploadSpace::onEnter()
 {
 	CutsceneClip::onEnter();
 
-	this->dialogue->showNextDialogue();
+	//this->dialogue->showNextDialogue();
 
 	this->runCutscene();
 }
@@ -79,7 +79,7 @@ void SquallyUploadSpace::initializePositions()
 	this->mars->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, 48.0f));
 	this->satellite->setPosition(Vec2(visibleSize.width / 2.0f + 64.0f, visibleSize.height / 2.0f + 128.0f));
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 
 	DrawNode* beam1a = DrawNode::create(4.0f);
@@ -104,7 +104,7 @@ void SquallyUploadSpace::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadSpace::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadSpace::onDialogueShown, this));
 }
 
 void SquallyUploadSpace::runCutscene()
@@ -120,6 +120,7 @@ void SquallyUploadSpace::runCutscene()
 
 void SquallyUploadSpace::onDialogueShown()
 {
+	/*
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(3.0f),
 		CallFunc::create([=]() {
@@ -129,5 +130,5 @@ void SquallyUploadSpace::onDialogueShown()
 			}
 		}),
 		nullptr
-	));
+	));*/
 }

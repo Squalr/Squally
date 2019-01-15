@@ -7,7 +7,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Dialogue/DialogueLabel.h"
+//#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Scenes/Cutscenes/Objects/FlyingCar.h"
@@ -76,17 +76,17 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	{
 		case NeonCityScene::Intro:
 		{
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 		case NeonCityScene::Return:
 		{
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCityReturn, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCityReturn, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 		case NeonCityScene::Singularity:
 		{
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCitySingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneNeonCitySingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 	}
@@ -103,7 +103,7 @@ NeonCity::NeonCity(NeonCityScene neonCityScene)
 	this->addChild(this->cityForeground);
 	this->addChild(this->junker1);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -115,7 +115,7 @@ void NeonCity::onEnter()
 {
 	CutsceneClip::onEnter();
 
-	this->dialogue->showNextDialogue();
+	//this->dialogue->showNextDialogue();
 
 	switch (this->activeScene)
 	{
@@ -179,7 +179,7 @@ void NeonCity::initializePositions()
 	this->cityForeground->setPosition(Vec2(0.0f, this->dialoguePlate->getContentSize().height));
 
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -187,7 +187,7 @@ void NeonCity::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(NeonCity::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(NeonCity::onDialogueShown, this));
 }
 
 void NeonCity::onDialogueShown()
@@ -196,6 +196,7 @@ void NeonCity::onDialogueShown()
 	{
 		case NeonCityScene::Intro:
 		{
+				/*
 			this->dialogue->runAction(Sequence::create(
 				DelayTime::create(2.0f),
 				CallFunc::create([=]() {
@@ -205,12 +206,13 @@ void NeonCity::onDialogueShown()
 					}
 				}),
 				nullptr
-			));
+			));*/
 
 			break;
 		}
 		case NeonCityScene::Return:
 		{
+			/*
 			this->dialogue->runAction(Sequence::create(
 				DelayTime::create(3.0f),
 				CallFunc::create([=]() {
@@ -220,12 +222,13 @@ void NeonCity::onDialogueShown()
 					}
 				}),
 				nullptr
-			));
+			));*/
 
 			break;
 		}
 		case NeonCityScene::Singularity:
 		{
+			/*
 			this->dialogue->runAction(Sequence::create(
 				DelayTime::create(8.0f),
 				CallFunc::create([=]() {
@@ -235,7 +238,7 @@ void NeonCity::onDialogueShown()
 					}
 				}),
 				nullptr
-			));
+			));*/
 
 			break;
 		}

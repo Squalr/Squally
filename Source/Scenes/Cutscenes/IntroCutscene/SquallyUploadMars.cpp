@@ -8,7 +8,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Dialogue/DialogueLabel.h"
+//#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
@@ -42,7 +42,7 @@ SquallyUploadMars::SquallyUploadMars()
 	this->squally->setOpacity(0);
 	this->background->setOpacity(0);
 
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadMars, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadMars, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
@@ -52,7 +52,7 @@ SquallyUploadMars::SquallyUploadMars()
 	this->addChild(this->background);
 	this->addChild(this->squally);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -64,7 +64,7 @@ void SquallyUploadMars::onEnter()
 {
 	CutsceneClip::onEnter();
 
-	this->dialogue->showNextDialogue();
+	//this->dialogue->showNextDialogue();
 
 	this->runCutscene();
 }
@@ -78,7 +78,7 @@ void SquallyUploadMars::initializePositions()
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->squally->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -86,7 +86,7 @@ void SquallyUploadMars::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadMars::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(SquallyUploadMars::onDialogueShown, this));
 }
 
 void SquallyUploadMars::runCutscene()
@@ -123,6 +123,7 @@ void SquallyUploadMars::onDialogueShown()
 {
 	this->dialogueCount++;
 
+	/*
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(2.0f),
 		CallFunc::create([=]() {
@@ -148,5 +149,5 @@ void SquallyUploadMars::onDialogueShown()
 			}
 		}),
 		nullptr
-	));
+	));*/
 }
