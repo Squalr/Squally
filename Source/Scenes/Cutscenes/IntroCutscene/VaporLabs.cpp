@@ -8,7 +8,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Dialogue/DialogueLabel.h"
+//#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Cutscenes/Objects/StarLayer.h"
 
@@ -48,7 +48,7 @@ VaporLabs::VaporLabs()
 	this->sky->setContentSize(Size(480.0f, 256.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
-	this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporLabs, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporLabs, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	this->escapeLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -63,7 +63,7 @@ VaporLabs::VaporLabs()
 	this->addChild(this->contentLayer);
 	this->addChild(this->siren);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -75,7 +75,7 @@ void VaporLabs::onEnter()
 {
 	CutsceneClip::onEnter();
 
-	this->dialogue->showNextDialogue();
+	//this->dialogue->showNextDialogue();
 
 	this->runCutscene();
 }
@@ -96,7 +96,7 @@ void VaporLabs::initializePositions()
 	this->monitor->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 320.0f));
 
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -104,11 +104,12 @@ void VaporLabs::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporLabs::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(VaporLabs::onDialogueShown, this));
 }
 
 void VaporLabs::onDialogueShown()
 {
+	/*
 	this->dialogue->runAction(Sequence::create(
 		DelayTime::create(4.0f),
 		CallFunc::create([=]() {
@@ -118,7 +119,7 @@ void VaporLabs::onDialogueShown()
 			}
 		}),
 		nullptr
-	));
+	));*/
 }
 
 void VaporLabs::runCutscene()

@@ -8,7 +8,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/math/Vec2.h"
 
-#include "Engine/Dialogue/DialogueLabel.h"
+//#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/CutsceneResources.h"
@@ -45,13 +45,13 @@ RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 		case RobotDoctorScene::Intro:
 		{
 			this->robot = Sprite::create(CutsceneResources::RobotDoctor_Doctor);
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctor, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctor, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 		case RobotDoctorScene::Singularity:
 		{
 			this->robot = Sprite::create(CutsceneResources::RobotDoctor_DoctorEvil);
-			this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 	}
@@ -65,7 +65,7 @@ RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 	this->addChild(this->robot);
 	this->addChild(this->bed);
 	this->addChild(this->dialoguePlate);
-	this->addChild(this->dialogue);
+	//this->addChild(this->dialogue);
 	this->addChild(this->escapeLabel);
 }
 
@@ -77,7 +77,7 @@ void RobotDoctor::onEnter()
 {
 	CutsceneClip::onEnter();
 
-	this->dialogue->showNextDialogue();
+	//this->dialogue->showNextDialogue();
 
 	const float floatOffset = 16.0f;
 	const float floatDuration = 2.0f;
@@ -100,7 +100,7 @@ void RobotDoctor::initializePositions()
 	this->robot->setPosition(Vec2(visibleSize.width / 2.0f + 24.0f, visibleSize.height / 2.0f + 96.0f));
 	this->bed->setPosition(Vec2(visibleSize.width / 2.0f + 224.0f, visibleSize.height / 2.0f + 8.0f));
 	this->dialoguePlate->setPosition(Vec2(visibleSize.width / 2.0f - this->dialoguePlate->getContentSize().width / 2.0f, 0.0f));
-	this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
+	//this->dialogue->setPosition(Vec2(24.0f, this->dialoguePlate->getContentSize().height - 24.0f));
 	this->escapeLabel->setPosition(Vec2(visibleSize.width - 24.0f, 24.0f));
 }
 
@@ -108,7 +108,7 @@ void RobotDoctor::initializeListeners()
 {
 	CutsceneClip::initializeListeners();
 
-	this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(RobotDoctor::onDialogueShown, this));
+	//this->dialogue->setDialogueShownCallback(CC_CALLBACK_0(RobotDoctor::onDialogueShown, this));
 }
 
 void RobotDoctor::onDialogueShown()
@@ -118,6 +118,7 @@ void RobotDoctor::onDialogueShown()
 		default:
 		case RobotDoctorScene::Intro:
 		{
+				/*
 			this->dialogue->runAction(Sequence::create(
 				DelayTime::create(3.0f),
 				CallFunc::create([=]() {
@@ -127,11 +128,12 @@ void RobotDoctor::onDialogueShown()
 					}
 				}),
 				nullptr
-				));
+				));*/
 			break;
 		}
 		case RobotDoctorScene::Singularity:
 		{
+			/*
 			this->dialogue->runAction(Sequence::create(
 				DelayTime::create(3.0f),
 				CallFunc::create([=]() {
@@ -141,7 +143,7 @@ void RobotDoctor::onDialogueShown()
 					}
 				}),
 				nullptr
-				));
+				));*/
 			break;
 		}
 	}

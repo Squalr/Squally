@@ -3,7 +3,6 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCDrawNode.h"
 
-#include "Engine/Dialogue/DialogueTree.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Camera/GameCamera.h"
