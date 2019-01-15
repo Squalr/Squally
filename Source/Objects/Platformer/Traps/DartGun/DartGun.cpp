@@ -97,6 +97,7 @@ void DartGun::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
+				DartGun::MapKeyDartGun,
 				Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,

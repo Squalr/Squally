@@ -11,6 +11,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Hackables/ScriptList.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -147,6 +148,7 @@ CodeEditor::CodeEditor()
 	this->functionWindow = EditableTextWindow::create(Strings::Hacking_CodeEditor_FunctionHeader::create(), functionTextStyle, CodeEditor::functionSize, CodeEditor::defaultColor);
 	this->statusWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
 	this->registerWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
+	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
 	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
@@ -212,15 +214,18 @@ CodeEditor::CodeEditor()
 	this->registerWindow->toggleBackground(false);
 	this->registerWindow->toggleHeader(false);
 
+	this->scriptList->setAnchorPoint(Vec2(0.0f, 1.0f));
+
 	this->setVisible(false);
 
-	this->addChild(this->radialEye);
-	this->addChild(this->previewNode);
 	this->addChild(this->functionWindow);
 	this->addChild(this->statusBackground);
 	this->addChild(this->rightBarBackground);
+	this->addChild(this->radialEye);
+	this->addChild(this->previewNode);
 	this->addChild(this->statusWindow);
 	this->addChild(this->registerWindow);
+	this->addChild(this->scriptList);
 	this->addChild(this->cancelButton);
 	this->addChild(this->applyChangesButton);
 	this->addChild(this->applyChangesButtonGrayed);
@@ -243,19 +248,21 @@ void CodeEditor::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	const float sidebarWidth = 420.0f;
+
 	this->statusBackground->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
 	this->statusWindow->setPosition(Vec2(CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->scriptList->setPosition(Vec2(sidebarWidth / 2.0f, visibleSize.height / 2.0f + 128.0f));
 
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
-	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
+	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
+	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
 
 	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
-
-	this->radialEye->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 352.0f));
-	this->previewNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 352.0f));
-	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
 }
 
 void CodeEditor::initializeListeners()
@@ -279,6 +286,7 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 
 	if (hackableCode != nullptr)
 	{
+		this->scriptList->loadScripts(hackableCode);
 		this->activeHackableCode = hackableCode;
 
 		this->previewNode->removeAllChildren();
@@ -661,6 +669,11 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 			tokens.push_back(nextToken);
 		}
 	}
+}
+
+void CodeEditor::onScriptLoad(std::string script)
+{
+	this->functionWindow->setText(script);
 }
 
 void CodeEditor::onAccept(ClickableNode* menuSprite)

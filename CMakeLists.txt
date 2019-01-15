@@ -101,6 +101,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableObject.cpp
 	Source/Engine/Hackables/HackablePreview.cpp
 	Source/Engine/Hackables/RadialMenu.cpp
+	Source/Engine/Hackables/ScriptList.cpp
 	Source/Engine/Input/ClickableIconNode.cpp
 	Source/Engine/Input/ClickableNode.cpp
 	Source/Engine/Input/ClickableTextNode.cpp
@@ -926,6 +927,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.cpp
 	Source/Strings/Hacking/CodeEditor/FunctionHeader.cpp
 	Source/Strings/Hacking/CodeEditor/LineNumber.cpp
+	Source/Strings/Hacking/CodeEditor/OriginalCode.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEax.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEbp.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEbx.cpp
@@ -954,6 +956,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
 	Source/Strings/Hacking/CodeEditor/Unknown.cpp
+	Source/Strings/Hacking/CodeEditor/YourScripts.cpp
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.cpp
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.cpp
@@ -1231,6 +1234,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableObject.h
 	Source/Engine/Hackables/HackablePreview.h
 	Source/Engine/Hackables/RadialMenu.h
+	Source/Engine/Hackables/ScriptList.h
 	Source/Engine/Input/ClickableIconNode.h
 	Source/Engine/Input/ClickableNode.h
 	Source/Engine/Input/ClickableTextNode.h
@@ -2080,6 +2084,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.h
 	Source/Strings/Hacking/CodeEditor/FunctionHeader.h
 	Source/Strings/Hacking/CodeEditor/LineNumber.h
+	Source/Strings/Hacking/CodeEditor/OriginalCode.h
 	Source/Strings/Hacking/CodeEditor/RegisterEax.h
 	Source/Strings/Hacking/CodeEditor/RegisterEbp.h
 	Source/Strings/Hacking/CodeEditor/RegisterEbx.h
@@ -2108,6 +2113,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/StatusHeader.h
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
 	Source/Strings/Hacking/CodeEditor/Unknown.h
+	Source/Strings/Hacking/CodeEditor/YourScripts.h
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.h
