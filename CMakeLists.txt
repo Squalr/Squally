@@ -93,7 +93,9 @@ list(APPEND GAME_SOURCE
 	Source/Engine/GlobalHud.cpp
 	Source/Engine/GlobalNode.cpp
 	Source/Engine/GlobalScene.cpp
-	Source/Engine/Hackables/CodeEditor.cpp
+	Source/Engine/Hackables/CodeEditor/CodeEditor.cpp
+	Source/Engine/Hackables/CodeEditor/ScriptEntry.cpp
+	Source/Engine/Hackables/CodeEditor/ScriptList.cpp
 	Source/Engine/Hackables/HackButton.cpp
 	Source/Engine/Hackables/HackableAttribute.cpp
 	Source/Engine/Hackables/HackableCode.cpp
@@ -101,7 +103,6 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Hackables/HackableObject.cpp
 	Source/Engine/Hackables/HackablePreview.cpp
 	Source/Engine/Hackables/RadialMenu.cpp
-	Source/Engine/Hackables/ScriptList.cpp
 	Source/Engine/Input/ClickableIconNode.cpp
 	Source/Engine/Input/ClickableNode.cpp
 	Source/Engine/Input/ClickableTextNode.cpp
@@ -927,6 +928,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.cpp
 	Source/Strings/Hacking/CodeEditor/FunctionHeader.cpp
 	Source/Strings/Hacking/CodeEditor/LineNumber.cpp
+	Source/Strings/Hacking/CodeEditor/NewScript.cpp
 	Source/Strings/Hacking/CodeEditor/OriginalCode.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEax.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEbp.cpp
@@ -934,6 +936,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/RegisterEcx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEdi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEdx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterEip.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEsi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEsp.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterR10.cpp
@@ -950,6 +953,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/RegisterRcx.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRdi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRdx.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterRip.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.cpp
 	Source/Strings/Hacking/CodeEditor/Status.cpp
@@ -975,6 +979,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/RegisterEcx.cpp
 	Source/Strings/Hacking/RegisterEdi.cpp
 	Source/Strings/Hacking/RegisterEdx.cpp
+	Source/Strings/Hacking/RegisterEip.cpp
 	Source/Strings/Hacking/RegisterEsi.cpp
 	Source/Strings/Hacking/RegisterEsp.cpp
 	Source/Strings/Hacking/RegisterR10.cpp
@@ -991,6 +996,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/RegisterRcx.cpp
 	Source/Strings/Hacking/RegisterRdi.cpp
 	Source/Strings/Hacking/RegisterRdx.cpp
+	Source/Strings/Hacking/RegisterRip.cpp
 	Source/Strings/Hacking/RegisterRsi.cpp
 	Source/Strings/Hacking/RegisterRsp.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
@@ -1226,7 +1232,9 @@ list(APPEND GAME_HEADER
 	Source/Engine/GlobalHud.h
 	Source/Engine/GlobalNode.h
 	Source/Engine/GlobalScene.h
-	Source/Engine/Hackables/CodeEditor.h
+	Source/Engine/Hackables/CodeEditor/CodeEditor.h
+	Source/Engine/Hackables/CodeEditor/ScriptEntry.h
+	Source/Engine/Hackables/CodeEditor/ScriptList.h
 	Source/Engine/Hackables/HackButton.h
 	Source/Engine/Hackables/HackableAttribute.h
 	Source/Engine/Hackables/HackableCode.h
@@ -1234,7 +1242,6 @@ list(APPEND GAME_HEADER
 	Source/Engine/Hackables/HackableObject.h
 	Source/Engine/Hackables/HackablePreview.h
 	Source/Engine/Hackables/RadialMenu.h
-	Source/Engine/Hackables/ScriptList.h
 	Source/Engine/Input/ClickableIconNode.h
 	Source/Engine/Input/ClickableNode.h
 	Source/Engine/Input/ClickableTextNode.h
@@ -2084,6 +2091,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.h
 	Source/Strings/Hacking/CodeEditor/FunctionHeader.h
 	Source/Strings/Hacking/CodeEditor/LineNumber.h
+	Source/Strings/Hacking/CodeEditor/NewScript.h
 	Source/Strings/Hacking/CodeEditor/OriginalCode.h
 	Source/Strings/Hacking/CodeEditor/RegisterEax.h
 	Source/Strings/Hacking/CodeEditor/RegisterEbp.h
@@ -2091,6 +2099,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/RegisterEcx.h
 	Source/Strings/Hacking/CodeEditor/RegisterEdi.h
 	Source/Strings/Hacking/CodeEditor/RegisterEdx.h
+	Source/Strings/Hacking/CodeEditor/RegisterEip.h
 	Source/Strings/Hacking/CodeEditor/RegisterEsi.h
 	Source/Strings/Hacking/CodeEditor/RegisterEsp.h
 	Source/Strings/Hacking/CodeEditor/RegisterR10.h
@@ -2107,6 +2116,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/RegisterRcx.h
 	Source/Strings/Hacking/CodeEditor/RegisterRdi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRdx.h
+	Source/Strings/Hacking/CodeEditor/RegisterRip.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.h
 	Source/Strings/Hacking/CodeEditor/Status.h
@@ -2132,6 +2142,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/RegisterEcx.h
 	Source/Strings/Hacking/RegisterEdi.h
 	Source/Strings/Hacking/RegisterEdx.h
+	Source/Strings/Hacking/RegisterEip.h
 	Source/Strings/Hacking/RegisterEsi.h
 	Source/Strings/Hacking/RegisterEsp.h
 	Source/Strings/Hacking/RegisterR10.h
@@ -2148,6 +2159,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/RegisterRcx.h
 	Source/Strings/Hacking/RegisterRdi.h
 	Source/Strings/Hacking/RegisterRdx.h
+	Source/Strings/Hacking/RegisterRip.h
 	Source/Strings/Hacking/RegisterRsi.h
 	Source/Strings/Hacking/RegisterRsp.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
