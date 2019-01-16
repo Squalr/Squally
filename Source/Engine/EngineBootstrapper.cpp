@@ -4,7 +4,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/CollisionEventDispatcher.h"
-#include "Engine/Hackables/CodeEditor.h"
+#include "Engine/Hackables/CodeEditor/CodeEditor.h"
 #include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"

@@ -16,6 +16,7 @@ class HackableCode;
 class MenuLabel;
 class ClickableNode;
 class ClickableTextNode;
+class ScriptEntry;
 class ScriptList;
 class TextWindow;
 
@@ -40,9 +41,8 @@ private:
 	void buildRegisterWindow();
 	void compile(std::string rawText);
 	void onFunctionTextUpdate(std::string text);
-	void onAllocationTextUpdate(std::string text);
 	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>&);
-	void onScriptLoad(std::string script);
+	void onScriptLoad(ScriptEntry* script);
 	void onAccept(ClickableNode* menuSprite);
 	void onCancel(ClickableNode* menuSprite);
 

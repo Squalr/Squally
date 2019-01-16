@@ -10,24 +10,29 @@ namespace cocos2d
 class ConstantString;
 class HackableCode;
 class LocalizedLabel;
+class ScriptEntry;
 
 class ScriptList : public SmartNode
 {
 public:
-	static ScriptList* create(std::function<void(std::string)> onScriptSelect);
+	static ScriptList* create(std::function<void(ScriptEntry*)> onScriptSelect);
 
+	void setActiveScriptText(std::string text);
 	void loadScripts(HackableCode* hackableCode);
 
 protected:
-	ScriptList(std::function<void(std::string)> onScriptSelect);
+	ScriptList(std::function<void(ScriptEntry*)> onScriptSelect);
 	~ScriptList() = default;
 
 private:
 	typedef SmartNode super;
 
 	void initializePositions() override;
+	void onScriptEntryClick(ScriptEntry* scriptEntry);
 	
 	LocalizedLabel* titleLabel;
 	cocos2d::Node* scriptsNode;
-	std::function<void(std::string)> onScriptSelect;
+	std::function<void(ScriptEntry*)> onScriptSelect;
+	std::vector<ScriptEntry*> scripts;
+	ScriptEntry* activeScript;
 };
