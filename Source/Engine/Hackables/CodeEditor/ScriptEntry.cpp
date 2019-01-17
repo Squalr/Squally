@@ -27,11 +27,14 @@ ScriptEntry::ScriptEntry(ConstantString* scriptName, std::string script, std::fu
 	this->scriptUnsaved = script;
 
 	this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
+	this->backPlateSelected = ClickableNode::create(UIResources::Menus_HackerModeMenu_SelectedScriptEntry, UIResources::Menus_HackerModeMenu_SelectedScriptEntrySelected);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->scriptName);
 
 	this->label->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->backPlateSelected->setVisible(false);
 
 	this->addChild(this->backPlate);
+	this->addChild(this->backPlateSelected);
 	this->addChild(this->label);
 }
 
@@ -49,6 +52,13 @@ void ScriptEntry::initializeListeners()
 	super::initializeListeners();
 
 	this->backPlate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
+	this->backPlateSelected->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
+}
+
+void ScriptEntry::toggleSelected(bool isSelected)
+{
+	this->backPlate->setVisible(!isSelected);
+	this->backPlateSelected->setVisible(isSelected);
 }
 
 ConstantString* ScriptEntry::getName()

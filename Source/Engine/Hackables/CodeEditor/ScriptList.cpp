@@ -7,9 +7,11 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Save/SaveManager.h"
 
+#include "Strings/Hacking/CodeEditor/CreateNewScript.h"
 #include "Strings/Hacking/CodeEditor/NewScript.h"
 #include "Strings/Hacking/CodeEditor/OriginalCode.h"
 #include "Strings/Hacking/CodeEditor/YourScripts.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -28,10 +30,14 @@ ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
 	this->scriptsNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_CodeEditor_YourScripts::create());
 	this->scripts = std::vector<ScriptEntry*>();
+	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_NewScriptEntry, UIResources::Menus_HackerModeMenu_NewScriptEntrySelected);
 	this->hackableCode = nullptr;
+
+	this->createNewScriptButton->addChild(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create()));
 
 	this->addChild(this->titleLabel);
 	this->addChild(this->scriptsNode);
+	this->addChild(this->createNewScriptButton);
 }
 
 void ScriptList::initializePositions()
@@ -39,6 +45,7 @@ void ScriptList::initializePositions()
 	super::initializePositions();
 
 	const float titleOffset = 48.0f;
+	const float createNewOffset = 48.0f;
 	const float entrySize = 48.0f;
 	int index = 0;
 
@@ -48,6 +55,15 @@ void ScriptList::initializePositions()
 
 		index++;
 	}
+
+	this->createNewScriptButton->setPosition(Vec2(0.0f, -((float)index * entrySize) - titleOffset - createNewOffset));
+}
+
+void ScriptList::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->createNewScriptButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->addNewScript(); });
 }
 
 void ScriptList::setActiveScriptText(std::string text)
@@ -65,7 +81,13 @@ void ScriptList::addNewScript()
 	this->scripts.push_back(newScript);
 	this->scriptsNode->addChild(newScript);
 
+	for (auto it = this->scripts.begin(); it != this->scripts.end(); it++)
+	{
+		(*it)->toggleSelected(false);
+	}
+
 	this->activeScript = newScript;
+	this->activeScript->toggleSelected(true);
 
 	// Re-initialize positions
 	this->initializePositions();
