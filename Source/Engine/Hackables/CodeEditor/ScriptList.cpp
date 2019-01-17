@@ -18,6 +18,9 @@
 
 using namespace cocos2d;
 
+const std::string ScriptList::ScriptNameKey = "SCRIPT_NAME";
+const std::string ScriptList::ScriptKey = "SCRIPT";
+
 ScriptList* ScriptList::create(std::function<void(ScriptEntry*)> onScriptSelect)
 {
 	ScriptList* instance = new ScriptList(onScriptSelect);
@@ -34,11 +37,16 @@ ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_CodeEditor_YourScripts::create());
 	this->scripts = std::vector<ScriptEntry*>();
 	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
+	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create());
+	this->createNewScriptSprite = Sprite::create(UIResources::Menus_HackerModeMenu_Plus);
 	this->hackableCode = nullptr;
 
+	this->createNewScriptLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->createNewScriptSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->titleLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	// this->createNewScriptButton->addChild(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create()));
-	this->createNewScriptButton->addChild(Sprite::create(UIResources::Menus_HackerModeMenu_Plus));
+
+	this->createNewScriptButton->addChild(this->createNewScriptLabel);
+	this->createNewScriptButton->addChild(this->createNewScriptSprite);
 
 	this->addChild(this->titleLabel);
 	this->addChild(this->scriptsNode);
@@ -56,6 +64,8 @@ void ScriptList::initializePositions()
 	int index = 0;
 
 	this->titleLabel->setPositionX(-panelSize / 2.0f + margin);
+	this->createNewScriptLabel->setPositionX(-this->createNewScriptButton->getContentSize().width / 2.0f + 32.0f + margin);
+	this->createNewScriptSprite->setPositionX(-this->createNewScriptButton->getContentSize().width / 2.0f + margin);
 
 	for (auto it = this->scripts.begin(); it != this->scripts.end(); it++)
 	{
@@ -76,7 +86,7 @@ void ScriptList::setActiveScriptText(std::string text)
 {
 	if (this->activeScript != nullptr)
 	{
-		this->activeScript->setScriptUnsaved(text);
+		this->activeScript->setScript(text);
 	}
 }
 
@@ -95,7 +105,7 @@ void ScriptList::addNewScript()
 		});
 
 		std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
-		ScriptEntry* newScriptEntry = ScriptEntry::create(ConstantString::create(newScriptName->getString()), script, [=](ScriptEntry* entry) { this->onScriptSelect(entry); });
+		ScriptEntry* newScriptEntry = ScriptEntry::create(ConstantString::create(newScriptName->getString()), script, [=](ScriptEntry* entry) { this->onScriptEntryClick(entry); });
 		this->scripts.push_back(newScriptEntry);
 		this->scriptsNode->addChild(newScriptEntry);
 
@@ -122,7 +132,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->scriptsNode->removeAllChildren();
 	this->scripts.clear();
 
-	ValueMap savedScripts = SaveManager::getProfileDataOrDefault(hackableCode->getHackableCodeIdentifier(), Value(ValueMap())).asValueMap();
+	ValueVector savedScripts = SaveManager::getProfileDataOrDefault(hackableCode->getHackableCodeIdentifier(), Value(ValueVector())).asValueVector();
 
 	if (savedScripts.empty())
 	{
@@ -133,14 +143,37 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		// Add user scripts
 		for (auto it = savedScripts.begin(); it != savedScripts.end(); it++)
 		{
-			ScriptEntry* scriptEntry = ScriptEntry::create(ConstantString::create(it->first), it->second.asString(), [=](ScriptEntry* entry) { this->onScriptEntryClick(entry); });
+			ValueMap attributes = it->asValueMap();
+			const std::string scriptName = attributes[ScriptList::ScriptNameKey].asString();
+			const std::string script = attributes[ScriptList::ScriptKey].asString();
+
+			ScriptEntry* scriptEntry = ScriptEntry::create(ConstantString::create(scriptName), script, [=](ScriptEntry* entry) { this->onScriptEntryClick(entry); });
 
 			this->scripts.push_back(scriptEntry);
 			this->scriptsNode->addChild(scriptEntry);
 		}
 	}
 
+	this->initializePositions();
+
 	this->setActiveScript(scripts.front());
+}
+
+void ScriptList::saveScripts()
+{
+	ValueVector scriptsToSave = ValueVector();
+
+	for (auto it = this->scripts.begin(); it != this->scripts.end(); it++)
+	{
+		ValueMap attributes = ValueMap();
+
+		attributes[ScriptList::ScriptNameKey] = Value((*it)->getName());
+		attributes[ScriptList::ScriptKey] = Value((*it)->getScript());
+
+		scriptsToSave.push_back(Value(attributes));
+	}
+
+	SaveManager::saveProfileData(this->hackableCode->getHackableCodeIdentifier(), Value(scriptsToSave));
 }
 
 ScriptEntry* ScriptList::getActiveScript()
@@ -165,4 +198,5 @@ void ScriptList::setActiveScript(ScriptEntry* activeScript)
 	}
 
 	this->activeScript->toggleSelected(true);
+	this->onScriptSelect(this->activeScript);
 }

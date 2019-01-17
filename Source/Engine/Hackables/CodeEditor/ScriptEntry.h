@@ -22,10 +22,7 @@ public:
 	void toggleSelected(bool isSelected);
 	ConstantString* getName();
 	std::string getScript();
-	void setScriptUnsaved(std::string script);
-	void softSave();
-	bool hasUnsavedChanges();
-	void discardUnsavedChanges();
+	void setScript(std::string script);
 
 private:
 	typedef SmartNode super;
@@ -40,7 +37,6 @@ private:
 	LocalizedLabel* label;
 
 	ConstantString* scriptName;
-	std::string scriptUnsaved;
 	std::string script;
 	std::function<void(ScriptEntry*)> onScriptEntryClick;
 };

@@ -19,7 +19,14 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 {
 	if (HackableCode::HackableCodeCache.find(functionStart) != HackableCode::HackableCodeCache.end())
 	{
-		return HackableCode::HackableCodeCache[functionStart];
+		std::vector<HackableCode*> clonedHackables = std::vector<HackableCode*>();
+
+		for (auto it = HackableCode::HackableCodeCache[functionStart].begin(); it != HackableCode::HackableCodeCache[functionStart].end(); it++)
+		{
+			clonedHackables.push_back((*it)->clone());
+		}
+
+		return clonedHackables;
 	}
 
 	std::vector<HackableCode*> extractedHackableCode = std::vector<HackableCode*>();
@@ -99,8 +106,11 @@ std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<un
 						{
 							LateBindData lateBindData = lateBindDataMap[funcId];
 							HackableCode* hackableCode = HackableCode::create(nextHackableCodeStart, nextHackableCodeEnd, lateBindData);
+							HackableCode* hackableClone = hackableCode->clone();
 
-							extractedHackableCode.push_back(hackableCode);
+							hackableClone->retain();
+
+							extractedHackableCode.push_back(hackableClone);
 						}
 						else
 						{
@@ -146,6 +156,8 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 {
 	this->hackableCodeIdentifier = lateBindData.hackableObjectIdentifier + "_" + lateBindData.functionName->getStringIdentifier();
 	this->codePointer = (unsigned char*)codeStart;
+	this->codeEndPointer = (unsigned char*)codeEnd;
+	this->lateBindData = lateBindData;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
 	this->originalCodeCopy = nullptr;
@@ -182,6 +194,11 @@ HackableCode::~HackableCode()
 	{
 		delete(this->originalCodeCopy);
 	}
+}
+
+HackableCode* HackableCode::clone()
+{
+	return HackableCode::create(this->codePointer, this->codeEndPointer, this->lateBindData);
 }
 
 std::string HackableCode::getHackableCodeIdentifier()

@@ -5,9 +5,13 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Hackables/CodeEditor/CodeWindow.h"
 #include "Engine/Hackables/CodeEditor/ScriptEntry.h"
 #include "Engine/Hackables/CodeEditor/ScriptList.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -16,11 +20,12 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Engine/UI/Controls/LabelStack.h"
 #include "Engine/UI/Controls/MenuLabel.h"
-#include "Engine/UI/Controls/Text/TextWindow.h"
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Generics/Constant.h"
 #include "Strings/Generics/Empty.h"
 #include "Strings/Generics/XOverY.h"
 #include "Strings/Hacking/CodeEditor/Address.h"
@@ -68,10 +73,6 @@
 #include "Strings/Hacking/CodeEditor/Unknown.h"
 #include "Strings/Menus/ApplyChanges.h"
 #include "Strings/Menus/Cancel.h"
-#include "Engine/Localization/ConstantString.h"
-#include "Engine/Events/HackableEvents.h"
-#include "Engine/GlobalDirector.h"
-#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -144,12 +145,9 @@ CodeEditor::CodeEditor()
 	this->radialEye = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil);
 	this->previewNode = Node::create();
 
-	LocalizedLabel* statusTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
-	LocalizedLabel* functionTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
-
-	this->functionWindow = EditableTextWindow::create(Strings::Generics_Constant::create(), functionTextStyle, CodeEditor::functionSize, CodeEditor::defaultColor);
-	this->statusWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
-	this->registerWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
+	this->functionWindow = CodeWindow::create(Strings::Generics_Constant::create(), CodeEditor::functionSize, CodeEditor::defaultColor);
+	this->statusWindow = LabelStack::create(CodeEditor::statusSize, 8.0f);
+	this->registerWindow = LabelStack::create(CodeEditor::statusSize, 8.0f);
 	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_CodeEditor_FunctionHeader::create());
 
@@ -206,18 +204,9 @@ CodeEditor::CodeEditor()
 	this->functionWindow->setMarginSize(32.0f);
 
 	this->statusBackground->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->statusWindow->enableWrapByWord();
-	this->statusWindow->setMarginSize(8.0f);
-	this->statusWindow->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->statusWindow->toggleBackground(false);
-	this->statusWindow->toggleHeader(false);
-
 	this->rightBarBackground->setAnchorPoint(Vec2(1.0f, 0.5f));
-	this->registerWindow->enableWrapByWord();
-	this->registerWindow->setMarginSize(8.0f);
+	this->statusWindow->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->registerWindow->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->registerWindow->toggleBackground(false);
-	this->registerWindow->toggleHeader(false);
 
 	this->scriptList->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -270,7 +259,7 @@ void CodeEditor::initializePositions()
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
-	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
 }
 
 void CodeEditor::initializeListeners()
@@ -308,7 +297,6 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			this->previewNode->addChild(preview);
 		}
 
-		this->functionWindow->setTitleStringReplaceVariables(this->scriptList->getActiveScript()->getName()->clone());
 		this->functionWindow->setText(hackableCode->getAssemblyString());
 		this->functionWindow->focus();
 
@@ -366,7 +354,7 @@ void CodeEditor::buildRegisterWindow()
 		return;
 	}
 
-	this->registerWindow->clearText();
+	this->registerWindow->clear();
 
 	auto getRegisterLabel = ([=](HackableCode::Register reg)
 	{
@@ -486,15 +474,15 @@ void CodeEditor::buildRegisterWindow()
 		{
 			LocalizedString* label = getRegisterLabel(reg);
 
-			this->registerWindow->insertText(label, CodeEditor::registerColor);
+			this->registerWindow->insert(label, CodeEditor::registerColor);
 
 			if (this->activeHackableCode->registerHints.find(reg) != this->activeHackableCode->registerHints.end())
 			{
-				this->registerWindow->insertText(this->activeHackableCode->registerHints[reg]->clone(), CodeEditor::defaultColor);
+				this->registerWindow->insert(this->activeHackableCode->registerHints[reg]->clone(), CodeEditor::defaultColor);
 			}
 			else
 			{
-				this->registerWindow->insertText(Strings::Hacking_CodeEditor_Unknown::create(), CodeEditor::defaultColor);
+				this->registerWindow->insert(Strings::Hacking_CodeEditor_Unknown::create(), CodeEditor::defaultColor);
 			}
 
 			this->registerWindow->insertNewline();
@@ -546,7 +534,7 @@ void CodeEditor::compile(std::string assemblyText)
 	// Do the actual compile
 	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->getCodePointer());
 
-	this->statusWindow->clearText();
+	this->statusWindow->clear();
 
 	// Build text and enable/disable the accept button
 	if (!compileResult.hasError)
@@ -561,16 +549,16 @@ void CodeEditor::compile(std::string assemblyText)
 			ConstantString::create(std::to_string(this->activeHackableCode->getOriginalLength()))
 		});
 		
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_CompileSuccessful::create(), CodeEditor::defaultColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_CompileSuccessful::create(), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Address::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)), CodeEditor::defaultColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_Address::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)), CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_ByteCount::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(bytesUsed, isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_ByteCount::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(bytesUsed, isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		
@@ -578,19 +566,19 @@ void CodeEditor::compile(std::string assemblyText)
 		{
 			if (isByteOverflow)
 			{
-				this->statusWindow->insertText(Strings::Hacking_CodeEditor_ByteOverflow::create(), CodeEditor::errorColor);
+				this->statusWindow->insert(Strings::Hacking_CodeEditor_ByteOverflow::create(), CodeEditor::errorColor);
 			}
 			else
 			{
-				this->statusWindow->insertText(Strings::Hacking_CodeEditor_UnfilledBytes::create(), CodeEditor::subtextColor);
+				this->statusWindow->insert(Strings::Hacking_CodeEditor_UnfilledBytes::create(), CodeEditor::subtextColor);
 			}
 
 			this->statusWindow->insertNewline();
 			this->statusWindow->insertNewline();
 		}
 		
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Bytes::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)), CodeEditor::defaultColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_Bytes::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)), CodeEditor::defaultColor);
 		
 		if (isByteOverflow)
 		{
@@ -603,22 +591,22 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 	else
 	{
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_CompileErrors::create(), CodeEditor::errorColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_CompileErrors::create(), CodeEditor::errorColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_Error::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(compileResult.errorData.message, CodeEditor::defaultColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_Error::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(compileResult.errorData.message, CodeEditor::defaultColor);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertText(Strings::Hacking_CodeEditor_LineNumber::create(), CodeEditor::headerColor);
-		this->statusWindow->insertText(ConstantString::create(std::to_string(compileResult.errorData.lineNumber)), CodeEditor::defaultColor);
+		this->statusWindow->insert(Strings::Hacking_CodeEditor_LineNumber::create(), CodeEditor::headerColor);
+		this->statusWindow->insert(ConstantString::create(std::to_string(compileResult.errorData.lineNumber)), CodeEditor::defaultColor);
 		
 		this->disableAccept();
 	}
 }
 
-void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>& tokens)
+void CodeEditor::tokenizeCallback(std::string text, std::vector<CodeWindow::token>& tokens)
 {
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
 	// Also split them down further if they contain comments
@@ -695,7 +683,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 				color = CodeEditor::commentColor;
 			}
 
-			EditableTextWindow::token nextToken = EditableTextWindow::token(ConstantString::create(token), color);
+			CodeWindow::token nextToken = CodeWindow::token(ConstantString::create(token), color);
 			tokens.push_back(nextToken);
 		}
 	}
@@ -703,11 +691,14 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<EditableTextWind
 
 void CodeEditor::onScriptLoad(ScriptEntry* script)
 {
+	this->functionWindow->setTitleStringReplaceVariables(script->getName()->clone());
 	this->functionWindow->setText(script->getScript());
 }
 
 void CodeEditor::onAccept(ClickableNode* menuSprite)
 {
+	this->scriptList->saveScripts();
+
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getCodePointer());
 
 	// Sanity check that the code compiles -- it should at this point
@@ -728,6 +719,8 @@ void CodeEditor::onAccept(ClickableNode* menuSprite)
 
 void CodeEditor::onCancel(ClickableNode* menuSprite)
 {
+	this->scriptList->saveScripts();
+
 	this->setVisible(false);
 
 	HackableEvents::TriggerEditHackableAttributeDone();

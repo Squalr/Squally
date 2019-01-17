@@ -94,6 +94,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/GlobalNode.cpp
 	Source/Engine/GlobalScene.cpp
 	Source/Engine/Hackables/CodeEditor/CodeEditor.cpp
+	Source/Engine/Hackables/CodeEditor/CodeWindow.cpp
 	Source/Engine/Hackables/CodeEditor/ScriptEntry.cpp
 	Source/Engine/Hackables/CodeEditor/ScriptList.cpp
 	Source/Engine/Hackables/HackButton.cpp
@@ -107,6 +108,7 @@ list(APPEND GAME_SOURCE
 	Source/Engine/Input/ClickableNode.cpp
 	Source/Engine/Input/ClickableTextNode.cpp
 	Source/Engine/Input/Input.cpp
+	Source/Engine/Input/InputText.cpp
 	Source/Engine/Input/MouseState.cpp
 	Source/Engine/Localization/ConstantString.cpp
 	Source/Engine/Localization/Localization.cpp
@@ -138,11 +140,10 @@ list(APPEND GAME_SOURCE
 	Source/Engine/UI/Controls/CSlider.cpp
 	Source/Engine/UI/Controls/FocusTakeOver.cpp
 	Source/Engine/UI/Controls/HelpArrow.cpp
+	Source/Engine/UI/Controls/LabelStack.cpp
 	Source/Engine/UI/Controls/MenuLabel.cpp
 	Source/Engine/UI/Controls/MouseOverPanel.cpp
 	Source/Engine/UI/Controls/ScrollPane.cpp
-	Source/Engine/UI/Controls/Text/EditableTextWindow.cpp
-	Source/Engine/UI/Controls/Text/TextWindow.cpp
 	Source/Engine/UI/Controls/ToggleGroup.cpp
 	Source/Engine/UI/FX/TypeWriterEffect.cpp
 	Source/Engine/UI/FloatingSprite.cpp
@@ -1235,6 +1236,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/GlobalNode.h
 	Source/Engine/GlobalScene.h
 	Source/Engine/Hackables/CodeEditor/CodeEditor.h
+	Source/Engine/Hackables/CodeEditor/CodeWindow.h
 	Source/Engine/Hackables/CodeEditor/ScriptEntry.h
 	Source/Engine/Hackables/CodeEditor/ScriptList.h
 	Source/Engine/Hackables/HackButton.h
@@ -1248,6 +1250,7 @@ list(APPEND GAME_HEADER
 	Source/Engine/Input/ClickableNode.h
 	Source/Engine/Input/ClickableTextNode.h
 	Source/Engine/Input/Input.h
+	Source/Engine/Input/InputText.h
 	Source/Engine/Input/MouseState.h
 	Source/Engine/Localization/ConstantString.h
 	Source/Engine/Localization/Localization.h
@@ -1280,11 +1283,10 @@ list(APPEND GAME_HEADER
 	Source/Engine/UI/Controls/CSlider.h
 	Source/Engine/UI/Controls/FocusTakeOver.h
 	Source/Engine/UI/Controls/HelpArrow.h
+	Source/Engine/UI/Controls/LabelStack.h
 	Source/Engine/UI/Controls/MenuLabel.h
 	Source/Engine/UI/Controls/MouseOverPanel.h
 	Source/Engine/UI/Controls/ScrollPane.h
-	Source/Engine/UI/Controls/Text/EditableTextWindow.h
-	Source/Engine/UI/Controls/Text/TextWindow.h
 	Source/Engine/UI/Controls/ToggleGroup.h
 	Source/Engine/UI/FX/TypeWriterEffect.h
 	Source/Engine/UI/FloatingSprite.h

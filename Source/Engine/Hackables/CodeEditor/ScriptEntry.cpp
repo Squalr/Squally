@@ -26,12 +26,12 @@ ScriptEntry::ScriptEntry(ConstantString* scriptName, std::string script, std::fu
 	this->onScriptEntryClick = onScriptEntryClick;
 	this->scriptName = scriptName;
 	this->script = script;
-	this->scriptUnsaved = script;
 
 	this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	this->selectedSprite = Sprite::create(UIResources::Menus_HackerModeMenu_SelectedScriptArrow);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->scriptName);
 
+	this->selectedSprite->setColor(Color3B::YELLOW);
 	this->selectedSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->label->setAnchorPoint(Vec2(0.0f, 0.5f));
 
@@ -64,6 +64,7 @@ void ScriptEntry::toggleSelected(bool isSelected)
 
 	this->selectedSprite->setVisible(isSelected);
 
+	this->label->setTextColor(isSelected ? Color4B::YELLOW : Color4B::WHITE);
 	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin + (isSelected ? selectedOffset : 0.0f));
 }
 
@@ -74,26 +75,10 @@ ConstantString* ScriptEntry::getName()
 
 std::string ScriptEntry::getScript()
 {
-	return this->scriptUnsaved;
+	return this->script;
 }
 
-void ScriptEntry::setScriptUnsaved(std::string script)
+void ScriptEntry::setScript(std::string script)
 {
-	this->scriptUnsaved = script;
-}
-
-void ScriptEntry::softSave()
-{
-	// The script list is responsible for actually saving
-	this->script = this->scriptUnsaved;
-}
-
-bool ScriptEntry::hasUnsavedChanges()
-{
-	return (this->scriptUnsaved != this->script);
-}
-
-void ScriptEntry::discardUnsavedChanges()
-{
-	this->scriptUnsaved = this->script;
+	this->script = script;
 }
