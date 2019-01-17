@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringAr()
 	{
-		return "استخدام غير صالح لـ %s%s";
+		return "استخدام غير صالح لـ %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringBg()
 	{
-		return "Невалидното използване на %s%s";
+		return "Невалидното използване на %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringCs()
 	{
-		return "Neplatné použití %s%s";
+		return "Neplatné použití %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringDa()
 	{
-		return "Ugyldig brug af %s%s";
+		return "Ugyldig brug af %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringDe()
 	{
-		return "Ungültige Verwendung von %s%s";
+		return "Ungültige Verwendung von %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringEl()
 	{
-		return "Μη έγκυρη χρήση %s%s";
+		return "Μη έγκυρη χρήση %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringEn()
 	{
-		return "Invalid use of %s%s";
+		return "Invalid use of %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringEs()
 	{
-		return "Uso inválido de %s%s";
+		return "Uso inválido de %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringEs419()
 	{
-		return "Uso inválido de %s%s";
+		return "Uso inválido de %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringFi()
 	{
-		return "Virheellinen %s%s käyttö";
+		return "Virheellinen %s1%s1 käyttö";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringFr()
 	{
-		return "Utilisation non valide de %s%s";
+		return "Utilisation non valide de %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringHu()
 	{
-		return "A (z) %s%s érvénytelen használata";
+		return "A (z) %s1%s1 érvénytelen használata";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringIt()
 	{
-		return "Uso non valido di %s%s";
+		return "Uso non valido di %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringJa()
 	{
-		return "%s%sの無効な使用";
+		return "%s1%s1の無効な使用";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringKo()
 	{
-		return "%s%s 의 잘못된 사용";
+		return "%s1%s1 의 잘못된 사용";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringNl()
 	{
-		return "Ongeldig gebruik van %s%s";
+		return "Ongeldig gebruik van %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringNo()
 	{
-		return "Ugyldig bruk av %s%s";
+		return "Ugyldig bruk av %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringPl()
 	{
-		return "Błędne użycie %s%s";
+		return "Błędne użycie %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringPt()
 	{
-		return "Uso inválido de %s%s";
+		return "Uso inválido de %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringPtBr()
 	{
-		return "Uso inválido de %s%s";
+		return "Uso inválido de %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringRo()
 	{
-		return "Utilizarea nevalidă a %s%s";
+		return "Utilizarea nevalidă a %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringRu()
 	{
-		return "Неправильное использование %s%s";
+		return "Неправильное использование %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringSv()
 	{
-		return "Ogiltig användning av %s%s";
+		return "Ogiltig användning av %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringTh()
 	{
-		return "การใช้ %s%s ไม่ถูกต้อง";
+		return "การใช้ %s1%s1 ไม่ถูกต้อง";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringTr()
 	{
-		return "%s%s geçersiz kullanımı";
+		return "%s1%s1 geçersiz kullanımı";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringUk()
 	{
-		return "Неправильне використання %s%s";
+		return "Неправильне використання %s1%s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringVi()
 	{
-		return "Sử dụng %s%s không hợp lệ";
+		return "Sử dụng %s1%s1 không hợp lệ";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringZhCn()
 	{
-		return "%s%s的使用无效";
+		return "%s1%s1的使用无效";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidUseDouble::getStringZhTw()
 	{
-		return "%s%s的使用無效";
+		return "%s1%s1的使用無效";
 	}
 }

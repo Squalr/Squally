@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Generics_Constant::getStringAr()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringBg()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringCs()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringDa()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringDe()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringEl()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringEn()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringEs()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringEs419()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringFi()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringFr()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringHu()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringIt()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringJa()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringKo()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringNl()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringNo()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringPl()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringPt()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringPtBr()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringRo()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringRu()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringSv()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringTh()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringTr()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringUk()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringVi()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringZhCn()
 	{
-		return "%s";
+		return "%s1";
 	}
 
 	std::string Generics_Constant::getStringZhTw()
 	{
-		return "%s";
+		return "%s1";
 	}
 }

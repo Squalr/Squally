@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Hexus_BinLabel::getStringAr()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringBg()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringCs()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringDa()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringDe()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringEl()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringEn()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringEs()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringEs419()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringFi()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringFr()
 	{
-		return "BIN : %s";
+		return "BIN : %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringHu()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringIt()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringJa()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringKo()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringNl()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringNo()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringPl()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringPt()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringPtBr()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringRo()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringRu()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringSv()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringTh()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringTr()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringUk()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringVi()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringZhCn()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 
 	std::string Hexus_BinLabel::getStringZhTw()
 	{
-		return "BIN: %s";
+		return "BIN: %s1";
 	}
 }

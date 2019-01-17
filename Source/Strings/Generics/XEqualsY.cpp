@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Generics_XEqualsY::getStringAr()
 	{
-		return "%s = %s";
+		return "%s2 = %s1";
 	}
 
 	std::string Generics_XEqualsY::getStringBg()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringCs()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringDa()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringDe()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringEl()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringEn()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringEs()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringEs419()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringFi()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringFr()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringHu()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringIt()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringJa()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringKo()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringNl()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringNo()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringPl()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringPt()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringPtBr()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringRo()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringRu()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringSv()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringTh()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringTr()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringUk()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringVi()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringZhCn()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 
 	std::string Generics_XEqualsY::getStringZhTw()
 	{
-		return "%s = %s";
+		return "%s1 = %s2";
 	}
 }

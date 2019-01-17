@@ -6,6 +6,7 @@
 namespace cocos2d
 {
 	class Node;
+	class Sprite;
 }
 
 class ConstantString;
@@ -35,7 +36,7 @@ private:
 	void initializeListeners() override;
 
 	ClickableNode* backPlate;
-	ClickableNode* backPlateSelected;
+	cocos2d::Sprite* selectedSprite;
 	LocalizedLabel* label;
 
 	ConstantString* scriptName;

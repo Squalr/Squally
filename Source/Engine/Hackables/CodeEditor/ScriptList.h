@@ -34,6 +34,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onScriptEntryClick(ScriptEntry* scriptEntry);
+	void setActiveScript(ScriptEntry* activeScript);
 	
 	LocalizedLabel* titleLabel;
 	cocos2d::Node* scriptsNode;

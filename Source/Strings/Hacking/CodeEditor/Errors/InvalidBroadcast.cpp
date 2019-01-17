@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringAr()
 	{
-		return "البث غير صالح %s";
+		return "البث غير صالح %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringBg()
 	{
-		return "Невалидното излъчване %s";
+		return "Невалидното излъчване %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringCs()
 	{
-		return "Neplatné vysílání %s";
+		return "Neplatné vysílání %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringDa()
 	{
-		return "Ugyldig udsendelse %s";
+		return "Ugyldig udsendelse %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringDe()
 	{
-		return "Ungültige Übertragung %s";
+		return "Ungültige Übertragung %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringEl()
 	{
-		return "Μη έγκυρη μετάδοση %s";
+		return "Μη έγκυρη μετάδοση %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringEn()
 	{
-		return "Invalid broadcast %s";
+		return "Invalid broadcast %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringEs()
 	{
-		return "Transmisión no válida %s";
+		return "Transmisión no válida %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringEs419()
 	{
-		return "Transmisión no válida %s";
+		return "Transmisión no válida %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringFi()
 	{
-		return "Virheellinen lähetys %s";
+		return "Virheellinen lähetys %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringFr()
 	{
-		return "Diffusion invalide %s";
+		return "Diffusion invalide %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringHu()
 	{
-		return "Érvénytelen broadcast %s";
+		return "Érvénytelen broadcast %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringIt()
 	{
-		return "Trasmissione %s non valida";
+		return "Trasmissione %s1 non valida";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringJa()
 	{
-		return "ブロードキャスト%sが無効です";
+		return "ブロードキャスト%s1が無効です";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringKo()
 	{
-		return "잘못된 브로드 캐스트 %s";
+		return "잘못된 브로드 캐스트 %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringNl()
 	{
-		return "Ongeldige uitzending %s";
+		return "Ongeldige uitzending %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringNo()
 	{
-		return "Ugyldig kringkasting %s";
+		return "Ugyldig kringkasting %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringPl()
 	{
-		return "Niepoprawna transmisja %s";
+		return "Niepoprawna transmisja %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringPt()
 	{
-		return "Transmissão %s inválida";
+		return "Transmissão %s1 inválida";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringPtBr()
 	{
-		return "Transmissão %s inválida";
+		return "Transmissão %s1 inválida";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringRo()
 	{
-		return "Transmisie nevalidă %s";
+		return "Transmisie nevalidă %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringRu()
 	{
-		return "Неверная трансляция %s";
+		return "Неверная трансляция %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringSv()
 	{
-		return "Ogiltig sändning %s";
+		return "Ogiltig sändning %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringTh()
 	{
-		return "การออกอากาศ %s ไม่ถูกต้อง";
+		return "การออกอากาศ %s1 ไม่ถูกต้อง";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringTr()
 	{
-		return "Geçersiz yayın %s";
+		return "Geçersiz yayın %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringUk()
 	{
-		return "Недійсна трансляція %s";
+		return "Недійсна трансляція %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringVi()
 	{
-		return "Phát sóng không hợp lệ %s";
+		return "Phát sóng không hợp lệ %s1";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringZhCn()
 	{
-		return "广播%s无效";
+		return "广播%s1无效";
 	}
 
 	std::string Hacking_CodeEditor_Errors_InvalidBroadcast::getStringZhTw()
 	{
-		return "廣播%s無效";
+		return "廣播%s1無效";
 	}
 }

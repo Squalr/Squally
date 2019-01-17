@@ -849,6 +849,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.cpp
 	Source/Strings/Generics/Brackets.cpp
 	Source/Strings/Generics/Constant.cpp
+	Source/Strings/Generics/Count.cpp
 	Source/Strings/Generics/Empty.cpp
 	Source/Strings/Generics/Infinity.cpp
 	Source/Strings/Generics/MinusConstant.cpp
@@ -929,7 +930,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.cpp
 	Source/Strings/Hacking/CodeEditor/FunctionHeader.cpp
 	Source/Strings/Hacking/CodeEditor/LineNumber.cpp
-	Source/Strings/Hacking/CodeEditor/NewScript.cpp
+	Source/Strings/Hacking/CodeEditor/MyNewScript.cpp
 	Source/Strings/Hacking/CodeEditor/OriginalCode.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEax.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterEbp.cpp
@@ -2013,6 +2014,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Dialogue/Helpers/Goblin/PendulumTutorial2.h
 	Source/Strings/Generics/Brackets.h
 	Source/Strings/Generics/Constant.h
+	Source/Strings/Generics/Count.h
 	Source/Strings/Generics/Empty.h
 	Source/Strings/Generics/Infinity.h
 	Source/Strings/Generics/MinusConstant.h
@@ -2093,7 +2095,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/Errors/UnknownError.h
 	Source/Strings/Hacking/CodeEditor/FunctionHeader.h
 	Source/Strings/Hacking/CodeEditor/LineNumber.h
-	Source/Strings/Hacking/CodeEditor/NewScript.h
+	Source/Strings/Hacking/CodeEditor/MyNewScript.h
 	Source/Strings/Hacking/CodeEditor/OriginalCode.h
 	Source/Strings/Hacking/CodeEditor/RegisterEax.h
 	Source/Strings/Hacking/CodeEditor/RegisterEbp.h

@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_CodeEditor_NewScript : public LocalizedString
+	class Hacking_CodeEditor_MyNewScript : public LocalizedString
 	{
 	public:
-		static Hacking_CodeEditor_NewScript* create();
+		static Hacking_CodeEditor_MyNewScript* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_CodeEditor_NewScript();
-		~Hacking_CodeEditor_NewScript();
+		Hacking_CodeEditor_MyNewScript();
+		~Hacking_CodeEditor_MyNewScript();
 	};
 }
