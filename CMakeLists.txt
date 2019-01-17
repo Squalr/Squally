@@ -868,6 +868,7 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/CodeEditor.cpp
 	Source/Strings/Hacking/CodeEditor/CompileErrors.cpp
 	Source/Strings/Hacking/CodeEditor/CompileSuccessful.cpp
+	Source/Strings/Hacking/CodeEditor/CreateNewScript.cpp
 	Source/Strings/Hacking/CodeEditor/Error.cpp
 	Source/Strings/Hacking/CodeEditor/Errors/AlreadyInitialized.cpp
 	Source/Strings/Hacking/CodeEditor/Errors/AmbiguousOperandSize.cpp
@@ -2031,6 +2032,7 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/CodeEditor.h
 	Source/Strings/Hacking/CodeEditor/CompileErrors.h
 	Source/Strings/Hacking/CodeEditor/CompileSuccessful.h
+	Source/Strings/Hacking/CodeEditor/CreateNewScript.h
 	Source/Strings/Hacking/CodeEditor/Error.h
 	Source/Strings/Hacking/CodeEditor/Errors/AlreadyInitialized.h
 	Source/Strings/Hacking/CodeEditor/Errors/AmbiguousOperandSize.h

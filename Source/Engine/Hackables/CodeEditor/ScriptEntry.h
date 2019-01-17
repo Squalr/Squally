@@ -18,6 +18,7 @@ class ScriptEntry : public SmartNode
 public:
 	static ScriptEntry* create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
 
+	void toggleSelected(bool isSelected);
 	ConstantString* getName();
 	std::string getScript();
 	void setScriptUnsaved(std::string script);
@@ -34,6 +35,7 @@ private:
 	void initializeListeners() override;
 
 	ClickableNode* backPlate;
+	ClickableNode* backPlateSelected;
 	LocalizedLabel* label;
 
 	ConstantString* scriptName;
