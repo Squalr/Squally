@@ -18,7 +18,10 @@ public:
 	static ScriptList* create(std::function<void(ScriptEntry*)> onScriptSelect);
 
 	void setActiveScriptText(std::string text);
+	void addNewScript();
+	void deleteActiveScript();
 	void loadScripts(HackableCode* hackableCode);
+	ScriptEntry* getActiveScript();
 
 protected:
 	ScriptList(std::function<void(ScriptEntry*)> onScriptSelect);
@@ -35,4 +38,5 @@ private:
 	std::function<void(ScriptEntry*)> onScriptSelect;
 	std::vector<ScriptEntry*> scripts;
 	ScriptEntry* activeScript;
+	HackableCode* hackableCode;
 };

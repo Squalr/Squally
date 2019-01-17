@@ -59,6 +59,8 @@ private:
 	ClickableTextNode* applyChangesButton;
 	cocos2d::Node* applyChangesButtonGrayed;
 
+	LocalizedLabel* titleLabel;
+
 	HackableCode* activeHackableCode;
 	float compileDelay;
 

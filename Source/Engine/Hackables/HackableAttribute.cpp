@@ -29,7 +29,7 @@ std::string HackableAttribute::getIconResource()
 
 LocalizedString* HackableAttribute::getName()
 {
-	return this->name->clone();
+	return this->name;
 }
 
 HackablePreview* HackableAttribute::getHackablePreview()

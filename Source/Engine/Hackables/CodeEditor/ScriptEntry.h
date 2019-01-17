@@ -1,13 +1,14 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
+#include "Engine/Localization/LocalizedString.h"
 
 namespace cocos2d
 {
 	class Node;
 }
 
-class LocalizedString;
+class ConstantString;
 class ClickableNode;
 class HackableCode;
 class LocalizedLabel;
@@ -15,9 +16,9 @@ class LocalizedLabel;
 class ScriptEntry : public SmartNode
 {
 public:
-	static ScriptEntry* create(LocalizedString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
+	static ScriptEntry* create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
 
-	LocalizedString* getName();
+	ConstantString* getName();
 	std::string getScript();
 	void setScriptUnsaved(std::string script);
 	void softSave();
@@ -26,7 +27,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	ScriptEntry(LocalizedString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
+	ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
 	~ScriptEntry() = default;
 
 	void initializePositions() override;
@@ -35,7 +36,7 @@ private:
 	ClickableNode* backPlate;
 	LocalizedLabel* label;
 
-	LocalizedString* scriptName;
+	ConstantString* scriptName;
 	std::string scriptUnsaved;
 	std::string script;
 	std::function<void(ScriptEntry*)> onScriptEntryClick;

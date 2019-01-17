@@ -147,10 +147,11 @@ CodeEditor::CodeEditor()
 	LocalizedLabel* statusTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
 	LocalizedLabel* functionTextStyle = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
 
-	this->functionWindow = EditableTextWindow::create(Strings::Hacking_CodeEditor_FunctionHeader::create(), functionTextStyle, CodeEditor::functionSize, CodeEditor::defaultColor);
+	this->functionWindow = EditableTextWindow::create(Strings::Generics_Constant::create(), functionTextStyle, CodeEditor::functionSize, CodeEditor::defaultColor);
 	this->statusWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
 	this->registerWindow = TextWindow::create(Strings::Generics_Empty::create(), statusTextStyle, CodeEditor::statusSize, CodeEditor::defaultColor);
 	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_CodeEditor_FunctionHeader::create());
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
 	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
@@ -198,6 +199,8 @@ CodeEditor::CodeEditor()
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->applyChangesButtonGrayed->addChild(acceptGray);
 
+	this->titleLabel->enableOutline(Color4B::BLACK, 3);
+
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::onFunctionTextUpdate, this));
 	this->functionWindow->setMarginSize(32.0f);
@@ -231,6 +234,7 @@ CodeEditor::CodeEditor()
 	this->addChild(this->cancelButton);
 	this->addChild(this->applyChangesButton);
 	this->addChild(this->applyChangesButtonGrayed);
+	this->addChild(this->titleLabel);
 }
 
 CodeEditor::~CodeEditor()
@@ -265,6 +269,8 @@ void CodeEditor::initializePositions()
 	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
+
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
 }
 
 void CodeEditor::initializeListeners()
@@ -302,9 +308,11 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			this->previewNode->addChild(preview);
 		}
 
-		this->functionWindow->setTitleStringReplaceVariables(hackableCode->getName());
+		this->functionWindow->setTitleStringReplaceVariables(this->scriptList->getActiveScript()->getName()->clone());
 		this->functionWindow->setText(hackableCode->getAssemblyString());
 		this->functionWindow->focus();
+
+		this->titleLabel->setStringReplacementVariables(hackableCode->getName()->clone());
 
 		this->setVisible(true);
 		GameUtils::focus(this);
@@ -478,7 +486,7 @@ void CodeEditor::buildRegisterWindow()
 		{
 			LocalizedString* label = getRegisterLabel(reg);
 
-			this->registerWindow->insertText(Strings::Hacking_CodeEditor_RegisterEdi::create(), CodeEditor::registerColor);
+			this->registerWindow->insertText(label, CodeEditor::registerColor);
 
 			if (this->activeHackableCode->registerHints.find(reg) != this->activeHackableCode->registerHints.end())
 			{
