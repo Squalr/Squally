@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-ScriptEntry* ScriptEntry::create(LocalizedString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick)
+ScriptEntry* ScriptEntry::create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick)
 {
 	ScriptEntry* instance = new ScriptEntry(scriptName, script, onScriptEntryClick);
 
@@ -19,7 +19,7 @@ ScriptEntry* ScriptEntry::create(LocalizedString* scriptName, std::string script
 	return instance;
 }
 
-ScriptEntry::ScriptEntry(LocalizedString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick)
+ScriptEntry::ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick)
 {
 	this->onScriptEntryClick = onScriptEntryClick;
 	this->scriptName = scriptName;
@@ -51,7 +51,7 @@ void ScriptEntry::initializeListeners()
 	this->backPlate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
 }
 
-LocalizedString* ScriptEntry::getName()
+ConstantString* ScriptEntry::getName()
 {
 	return this->scriptName;
 }

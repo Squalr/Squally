@@ -202,6 +202,8 @@ std::string LocalizedString::getString()
 		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s", (*it)->getString());
 	}
 
+	localizedString = StrUtils::replaceAll(localizedString, "%s", "");
+
 	return localizedString;
 }
 
