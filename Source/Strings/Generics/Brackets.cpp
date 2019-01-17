@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Generics_Brackets::getStringAr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringBg()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringCs()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringDa()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringDe()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringEl()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringEn()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringEs()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringEs419()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringFi()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringFr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringHu()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringIt()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringJa()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringKo()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringNl()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringNo()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringPl()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringPt()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringPtBr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringRo()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringRu()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringSv()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringTh()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringTr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringUk()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringVi()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringZhCn()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string Generics_Brackets::getStringZhTw()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 }

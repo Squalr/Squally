@@ -1,5 +1,7 @@
 #include "ScriptList.h"
 
+#include "cocos/2d/CCSprite.h"
+
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -7,8 +9,9 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Save/SaveManager.h"
 
+#include "Strings/Generics/Count.h"
 #include "Strings/Hacking/CodeEditor/CreateNewScript.h"
-#include "Strings/Hacking/CodeEditor/NewScript.h"
+#include "Strings/Hacking/CodeEditor/MyNewScript.h"
 #include "Strings/Hacking/CodeEditor/OriginalCode.h"
 #include "Strings/Hacking/CodeEditor/YourScripts.h"
 #include "Resources/UIResources.h"
@@ -30,10 +33,12 @@ ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
 	this->scriptsNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_CodeEditor_YourScripts::create());
 	this->scripts = std::vector<ScriptEntry*>();
-	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_NewScriptEntry, UIResources::Menus_HackerModeMenu_NewScriptEntrySelected);
+	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	this->hackableCode = nullptr;
 
-	this->createNewScriptButton->addChild(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create()));
+	this->titleLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	// this->createNewScriptButton->addChild(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create()));
+	this->createNewScriptButton->addChild(Sprite::create(UIResources::Menus_HackerModeMenu_Plus));
 
 	this->addChild(this->titleLabel);
 	this->addChild(this->scriptsNode);
@@ -44,19 +49,20 @@ void ScriptList::initializePositions()
 {
 	super::initializePositions();
 
+	const float panelSize = 420.0f;
 	const float titleOffset = 48.0f;
-	const float createNewOffset = 48.0f;
 	const float entrySize = 48.0f;
+	const float margin = 16.0f;
 	int index = 0;
+
+	this->titleLabel->setPositionX(-panelSize / 2.0f + margin);
 
 	for (auto it = this->scripts.begin(); it != this->scripts.end(); it++)
 	{
-		(*it)->setPosition(Vec2(0.0f, -((float)index * entrySize) - titleOffset));
-
-		index++;
+		(*it)->setPosition(Vec2(0.0f, -((float)index++ * entrySize) - titleOffset));
 	}
 
-	this->createNewScriptButton->setPosition(Vec2(0.0f, -((float)index * entrySize) - titleOffset - createNewOffset));
+	this->createNewScriptButton->setPosition(Vec2(0.0f, -((float)index++ * entrySize) - titleOffset - 8.0f));
 }
 
 void ScriptList::initializeListeners()
@@ -76,21 +82,28 @@ void ScriptList::setActiveScriptText(std::string text)
 
 void ScriptList::addNewScript()
 {
-	std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
-	ScriptEntry* newScript = ScriptEntry::create(ConstantString::create(Strings::Hacking_CodeEditor_NewScript::create()->getString()), script, [=](ScriptEntry* entry) { this->onScriptSelect(entry); });
-	this->scripts.push_back(newScript);
-	this->scriptsNode->addChild(newScript);
+	const int maxScripts = 10;
 
-	for (auto it = this->scripts.begin(); it != this->scripts.end(); it++)
+	if (this->scripts.size() < maxScripts)
 	{
-		(*it)->toggleSelected(false);
+		LocalizedString* newScriptName = Strings::Generics_Count::create();
+
+		newScriptName->setStringReplacementVariables(
+		{
+			Strings::Hacking_CodeEditor_MyNewScript::create(),
+			ConstantString::create(std::to_string(this->scripts.size()))
+		});
+
+		std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
+		ScriptEntry* newScriptEntry = ScriptEntry::create(ConstantString::create(newScriptName->getString()), script, [=](ScriptEntry* entry) { this->onScriptSelect(entry); });
+		this->scripts.push_back(newScriptEntry);
+		this->scriptsNode->addChild(newScriptEntry);
+
+		this->setActiveScript(newScriptEntry);
+
+		// Re-initialize positions
+		this->initializePositions();
 	}
-
-	this->activeScript = newScript;
-	this->activeScript->toggleSelected(true);
-
-	// Re-initialize positions
-	this->initializePositions();
 }
 
 void ScriptList::deleteActiveScript()
@@ -98,7 +111,8 @@ void ScriptList::deleteActiveScript()
 	if (this->activeScript != nullptr && this->scripts.size() > 1)
 	{
 		this->scriptsNode->removeChild(this->activeScript);
-		this->activeScript = this->scripts.front();
+
+		this->setActiveScript(scripts.front());
 	}
 }
 
@@ -126,7 +140,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		}
 	}
 
-	this->activeScript = scripts.front();
+	this->setActiveScript(scripts.front());
 }
 
 ScriptEntry* ScriptList::getActiveScript()
@@ -136,7 +150,19 @@ ScriptEntry* ScriptList::getActiveScript()
 
 void ScriptList::onScriptEntryClick(ScriptEntry* scriptEntry)
 {
-	this->activeScript = scriptEntry;
+	this->setActiveScript(scriptEntry);
 
 	this->onScriptSelect(scriptEntry);
+}
+
+void ScriptList::setActiveScript(ScriptEntry* activeScript)
+{
+	this->activeScript = activeScript;
+
+	for (auto it = this->scripts.begin(); it != this->scripts.end(); it++)
+	{
+		(*it)->toggleSelected(false);
+	}
+
+	this->activeScript->toggleSelected(true);
 }

@@ -197,12 +197,12 @@ std::string LocalizedString::getString()
 		}
 	}
 
+	int index = 1;
+
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s", (*it)->getString());
+		localizedString = StrUtils::replaceFirstOccurence(localizedString, "%s" + std::to_string(index++), (*it)->getString());
 	}
-
-	localizedString = StrUtils::replaceAll(localizedString, "%s", "");
 
 	return localizedString;
 }

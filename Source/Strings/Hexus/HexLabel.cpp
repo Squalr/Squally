@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Hexus_HexLabel::getStringAr()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringBg()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringCs()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringDa()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringDe()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringEl()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringEn()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringEs()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringEs419()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringFi()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringFr()
 	{
-		return "HEX : %s";
+		return "HEX : %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringHu()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringIt()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringJa()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringKo()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringNl()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringNo()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringPl()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringPt()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringPtBr()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringRo()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringRu()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringSv()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringTh()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringTr()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringUk()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringVi()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringZhCn()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 
 	std::string Hexus_HexLabel::getStringZhTw()
 	{
-		return "HEX: %s";
+		return "HEX: %s1";
 	}
 }

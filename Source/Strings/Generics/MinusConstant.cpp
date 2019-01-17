@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Generics_MinusConstant::getStringAr()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringBg()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringCs()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringDa()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringDe()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringEl()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringEn()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringEs()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringEs419()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringFi()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringFr()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringHu()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringIt()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringJa()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringKo()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringNl()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringNo()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringPl()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringPt()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringPtBr()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringRo()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringRu()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringSv()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringTh()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringTr()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringUk()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringVi()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringZhCn()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 
 	std::string Generics_MinusConstant::getStringZhTw()
 	{
-		return "+%s";
+		return "+%s1";
 	}
 }

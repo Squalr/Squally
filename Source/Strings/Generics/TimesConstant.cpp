@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Generics_TimesConstant::getStringAr()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringBg()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringCs()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringDa()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringDe()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringEl()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringEn()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringEs()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringEs419()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringFi()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringFr()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringHu()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringIt()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringJa()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringKo()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringNl()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringNo()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringPl()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringPt()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringPtBr()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringRo()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringRu()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringSv()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringTh()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringTr()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringUk()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringVi()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringZhCn()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 
 	std::string Generics_TimesConstant::getStringZhTw()
 	{
-		return "x%s";
+		return "x%s1";
 	}
 }

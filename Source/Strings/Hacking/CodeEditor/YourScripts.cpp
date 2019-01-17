@@ -155,7 +155,7 @@ namespace Strings
 
 	std::string Hacking_CodeEditor_YourScripts::getStringTr()
 	{
-		return "{{tr}}";
+		return "Senaryoların";
 	}
 
 	std::string Hacking_CodeEditor_YourScripts::getStringUk()

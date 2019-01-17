@@ -1,5 +1,7 @@
 #include "ScriptEntry.h"
 
+#include "cocos/2d/CCSprite.h"
+
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -27,14 +29,14 @@ ScriptEntry::ScriptEntry(ConstantString* scriptName, std::string script, std::fu
 	this->scriptUnsaved = script;
 
 	this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
-	this->backPlateSelected = ClickableNode::create(UIResources::Menus_HackerModeMenu_SelectedScriptEntry, UIResources::Menus_HackerModeMenu_SelectedScriptEntrySelected);
+	this->selectedSprite = Sprite::create(UIResources::Menus_HackerModeMenu_SelectedScriptArrow);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->scriptName);
 
+	this->selectedSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->label->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->backPlateSelected->setVisible(false);
 
 	this->addChild(this->backPlate);
-	this->addChild(this->backPlateSelected);
+	this->addChild(this->selectedSprite);
 	this->addChild(this->label);
 }
 
@@ -45,6 +47,7 @@ void ScriptEntry::initializePositions()
 	const float margin = 16.0f;
 
 	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin);
+	this->selectedSprite->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin);
 }
 
 void ScriptEntry::initializeListeners()
@@ -52,13 +55,16 @@ void ScriptEntry::initializeListeners()
 	super::initializeListeners();
 
 	this->backPlate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
-	this->backPlateSelected->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
 }
 
 void ScriptEntry::toggleSelected(bool isSelected)
 {
-	this->backPlate->setVisible(!isSelected);
-	this->backPlateSelected->setVisible(isSelected);
+	const float margin = 16.0f;
+	const float selectedOffset = 32.0f;
+
+	this->selectedSprite->setVisible(isSelected);
+
+	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin + (isSelected ? selectedOffset : 0.0f));
 }
 
 ConstantString* ScriptEntry::getName()
@@ -68,7 +74,7 @@ ConstantString* ScriptEntry::getName()
 
 std::string ScriptEntry::getScript()
 {
-	return this->script;
+	return this->scriptUnsaved;
 }
 
 void ScriptEntry::setScriptUnsaved(std::string script)

@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Generics_XOverY::getStringAr()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringBg()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringCs()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringDa()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringDe()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringEl()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringEn()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringEs()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringEs419()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringFi()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringFr()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringHu()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringIt()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringJa()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringKo()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringNl()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringNo()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringPl()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringPt()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringPtBr()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringRo()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringRu()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringSv()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringTh()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringTr()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringUk()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringVi()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringZhCn()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 
 	std::string Generics_XOverY::getStringZhTw()
 	{
-		return "%s / %s";
+		return "%s1 / %s2";
 	}
 }

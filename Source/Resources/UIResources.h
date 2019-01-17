@@ -159,12 +159,14 @@ namespace UIResources
 	extern const std::string Menus_DialogueMenu_ShipBackground;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntry;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntrySelected;
+	extern const std::string Menus_HackerModeMenu_Plus;
 	extern const std::string Menus_HackerModeMenu_Radial_Lantern;
 	extern const std::string Menus_HackerModeMenu_Radial_LanternDark;
 	extern const std::string Menus_HackerModeMenu_Radial_RadialEye;
 	extern const std::string Menus_HackerModeMenu_Radial_RadialEyePupil;
 	extern const std::string Menus_HackerModeMenu_ScriptEntry;
 	extern const std::string Menus_HackerModeMenu_ScriptEntrySelected;
+	extern const std::string Menus_HackerModeMenu_SelectedScriptArrow;
 	extern const std::string Menus_HackerModeMenu_SelectedScriptEntry;
 	extern const std::string Menus_HackerModeMenu_SelectedScriptEntrySelected;
 	extern const std::string Menus_HackerModeMenu_SideBar;
