@@ -162,6 +162,7 @@ public:
 
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
 
+	HackableCode* clone();
 	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
@@ -190,6 +191,8 @@ private:
 	std::string assemblyString;
 	std::string originalAssemblyString;
 	void* codePointer;
+	void* codeEndPointer;
+	LateBindData lateBindData;
 	unsigned char* originalCodeCopy;
 	int originalCodeLength;
 	std::map<void*, int> allocations;

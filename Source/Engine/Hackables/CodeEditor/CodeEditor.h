@@ -5,17 +5,18 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalHud.h"
-#include "Engine/UI/Controls/Text/EditableTextWindow.h"
+#include "Engine/Hackables/CodeEditor/CodeWindow.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class HackableCode;
-class MenuLabel;
 class ClickableNode;
 class ClickableTextNode;
+class HackableCode;
+class LabelStack;
+class MenuLabel;
 class ScriptEntry;
 class ScriptList;
 class TextWindow;
@@ -41,18 +42,26 @@ private:
 	void buildRegisterWindow();
 	void compile(std::string rawText);
 	void onFunctionTextUpdate(std::string text);
-	void tokenizeCallback(std::string text, std::vector<EditableTextWindow::token>&);
+	void tokenizeCallback(std::string text, std::vector<CodeWindow::token>&);
 	void onScriptLoad(ScriptEntry* script);
 	void onAccept(ClickableNode* menuSprite);
 	void onCancel(ClickableNode* menuSprite);
+
+	void setWindowColor(cocos2d::Color4B windowColor);
+	void setTitleBarColor(cocos2d::Color4B titleBarColor);
+
+	// This is an unused label that is simply kept around to steal attributes from (font size, font style, etc)
+	LocalizedLabel* referenceContentLabel;
+
+	float marginSize;
 
 	cocos2d::Sprite* statusBackground;
 	cocos2d::Sprite* rightBarBackground;
 	cocos2d::Sprite* radialEye;
 	cocos2d::Node* previewNode;
-	EditableTextWindow* functionWindow;
-	TextWindow* statusWindow;
-	TextWindow* registerWindow;
+	CodeWindow* functionWindow;
+	LabelStack* statusWindow;
+	LabelStack* registerWindow;
 	ScriptList* scriptList;
 
 	ClickableTextNode* cancelButton;
@@ -64,18 +73,14 @@ private:
 	HackableCode* activeHackableCode;
 	float compileDelay;
 
-	static const float compileDelayMaxSeconds;
-	static const float lineNumberMargin;
-	static const cocos2d::Size statusSize;
-	static const cocos2d::Size functionSize;
-	static const std::string delimiters;
-	static const cocos2d::Color3B defaultColor;
-	static const cocos2d::Color3B subtextColor;
-	static const cocos2d::Color3B headerColor;
-	static const cocos2d::Color3B errorColor;
-	static const cocos2d::Color3B registerColor;
-	static const cocos2d::Color3B numberColor;
-	static const cocos2d::Color3B commentColor;
-	static const std::set<std::string> registers;
+	static const cocos2d::Size Padding;
+	static const float CompileDelayMaxSeconds;
+	static const float LineNumberMargin;
+	static const cocos2d::Size StatusSize;
+	static const cocos2d::Size FunctionSize;
+	static const cocos2d::Color4B SubtextColor;
+	static const cocos2d::Color4B HeaderColor;
+	static const cocos2d::Color4B ErrorColor;
+	static const cocos2d::Color4B RegisterColor;
 	static CodeEditor* instance;
 };
