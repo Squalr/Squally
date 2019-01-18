@@ -8,8 +8,10 @@
 #include "cocos/ui/UITextField.h"
 
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Strings/Generics/Newline.h"
 #include "Strings/Generics/Constant.h"
@@ -17,22 +19,59 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-const Color3B CodeWindow::lineNumberColor = Color3B(166, 166, 166);
+const std::string CodeWindow::Delimiters = "[],:; +-*\n\t";
+
+const std::set<std::string> CodeWindow::Registers =
+{
+	// General registers
+	"ax", "bx", "cx", "dx", "si", "di", "bp", "sp", "ip",
+	"al", "bl", "cl", "dl", "sil", "dil", "bpl", "spl",
+	"ah", "bh", "ch", "dh",
+	"eax", "ebx", "ecx" ,"edx" ,"esi", "edi", "ebp", "esp",
+	"r8w", "r9w", "r10w", "r11w", "r12w", "r13w", "r14w", "r15w",
+	"r8b", "r9b", "r10b", "r11b", "r12b", "r13b", "r14b", "r15b",
+	"r8d", "r9d", "r10d", "r11d", "r12d", "r13d", "r14d", "r15d",
+	"rax", "rbx", "rcx" ,"rdx" ,"rdi", "rsi", "rbp", "rsp",
+	"r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15",
+
+	// FPU registers
+	"fp0", "fp1", "fp2", "fp3", "fp4", "fp5", "fp6", "fp7",
+
+	// MMX registers
+	"mm0", "mm1", "mm2", "mm3", "mm4", "mm5", "mm6", "mm7",
+	"mm8", "mm9", "mm10", "mm11", "mm12", "mm13", "mm14", "mm15",
+	"xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6", "xmm7",
+	"xmm8", "xmm9", "xmm10", "xmm11", "xmm12", "xmm13", "xmm14", "xmm15",
+	"ymm0", "ymm1", "ymm2", "ymm3", "ymm4", "ymm5", "ymm6", "ymm7",
+	"ymm8", "ymm9", "ymm10", "ymm11", "ymm12", "ymm13", "ymm14", "ymm15",
+
+	// Segment registers
+	"cs", "ds", "es", "fs", "gs", "ss",
+
+	// Instruction pointers
+	"eip", "rip"
+};
+
+const Color3B CodeWindow::DefaultColor = Color3B(255, 255, 255);
+const Color3B CodeWindow::RegisterColor = Color3B(86, 156, 214);
+const Color3B CodeWindow::NumberColor = Color3B(181, 206, 168);
+const Color3B CodeWindow::CommentColor = Color3B(87, 166, 74);
+const Color3B CodeWindow::LineNumberColor = Color3B(166, 166, 166);
 const Size CodeWindow::Padding = Size(8.0f, 4.0f);
 const float CodeWindow::TitleBarHeight = 48.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
 
-CodeWindow* CodeWindow::create(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
+CodeWindow* CodeWindow::create(LocalizedString* windowTitle, Size initWindowSize)
 {
-	CodeWindow* instance = new CodeWindow(windowTitle, initWindowSize, initFontColor);
+	CodeWindow* instance = new CodeWindow(windowTitle, initWindowSize);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize, Color3B initFontColor)
+CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 {
 	this->currentLineNumber = 1;
 	this->tokenizationCallback = nullptr;
@@ -172,8 +211,8 @@ void CodeWindow::focus()
 
 void CodeWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, CodeWindow::lineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
-	RichElement* lineNumberNewLine = RichElementNewLine::create(0, this->fontColor, 0xFF);
+	RichElement* lineNumberText = RichElementText::create(0, CodeWindow::LineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
+	RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
 
 	this->lineNumberElements.push_back(lineNumberText);
 	this->lineNumbers->pushBackElement(lineNumberText);
@@ -181,7 +220,7 @@ void CodeWindow::insertNewline()
 	this->lineNumbers->pushBackElement(lineNumberNewLine);
 
 	LocalizedString* text = Strings::Generics_Newline::create();
-	RichElement* element = RichElementNewLine::create(0, this->fontColor, 0xFF);
+	RichElement* element = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
 
 	text->retain();
 	this->textElements.push_back(std::make_tuple(text, Color3B()));
@@ -218,7 +257,87 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	}
 
 	std::vector<CodeWindow::token> tokens = std::vector<CodeWindow::token>();
-	this->tokenizationCallback(currentText, tokens);
+
+	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
+	// Also split them down further if they contain comments
+	std::vector<std::string> splitText = StrUtils::splitOn(currentText, ";\n");
+	std::vector<std::string> textJoined = std::vector<std::string>();
+	std::string currentString = "";
+	bool isJoiningComment = false;
+
+	for (auto splitTextIterator = splitText.begin(); splitTextIterator != splitText.end(); splitTextIterator++)
+	{
+		std::string next = *splitTextIterator;
+
+		// Newlines end comments
+		if (next == "\n")
+		{
+			if (!currentString.empty())
+			{
+				textJoined.push_back(currentString);
+			}
+
+			textJoined.push_back(next);
+
+			isJoiningComment = false;
+			currentString = "";
+		}
+		else if (next == ";" || isJoiningComment)
+		{
+			isJoiningComment = true;
+			currentString += next;
+		}
+		else
+		{
+			textJoined.push_back(next);
+		}
+	}
+
+	// Add final joined comment if exists
+	if (isJoiningComment && !currentString.empty())
+	{
+		textJoined.push_back(currentString);
+	}
+
+	for (auto joinedTextIterator = textJoined.begin(); joinedTextIterator != textJoined.end(); joinedTextIterator++)
+	{
+		std::vector<std::string> tokenStrings;
+
+		// Tokenize the string if it isn't a comment -- otherwise treat it as one token
+		if (!StrUtils::startsWith(*joinedTextIterator, ";", false))
+		{
+			tokenStrings = StrUtils::tokenize(*joinedTextIterator, CodeWindow::Delimiters);
+		}
+		else
+		{
+			tokenStrings = std::vector<std::string>();
+			tokenStrings.push_back(*joinedTextIterator);
+		}
+
+		// Iterate tokens
+		for (auto tokenIterator = tokenStrings.begin(); tokenIterator != tokenStrings.end(); tokenIterator++)
+		{
+			std::string token = *tokenIterator;
+			Color3B color = CodeWindow::DefaultColor;
+
+			if (CodeWindow::Registers.find(token) != CodeWindow::Registers.end())
+			{
+				color = CodeWindow::RegisterColor;
+			}
+			else if (StrUtils::isInteger(token) || StrUtils::isFloat(token) || StrUtils::isHexNumber(token))
+			{
+				color = CodeWindow::NumberColor;
+			}
+			else if (StrUtils::startsWith(token, ";", false))
+			{
+				color = CodeWindow::CommentColor;
+			}
+
+			CodeWindow::token nextToken = CodeWindow::token(ConstantString::create(token), color);
+			tokens.push_back(nextToken);
+		}
+	}
+
 	this->clearText();
 	this->insertNewline();
 

@@ -77,49 +77,13 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-const float CodeEditor::compileDelayMaxSeconds = 0.1f;
-const float CodeEditor::lineNumberMargin = 32.0f;;
-const Size CodeEditor::statusSize = Size(420.0f, 1080.0f);
-const Size CodeEditor::functionSize = Size(512.0f, 320.0f);
-const std::string CodeEditor::delimiters = "[],:; +-*\n\t";
-const Color3B CodeEditor::defaultColor = Color3B(255, 255, 255);
-const Color3B CodeEditor::subtextColor = Color3B(66, 166, 166);
-const Color3B CodeEditor::headerColor = Color3B(188, 188, 64);
-const Color3B CodeEditor::errorColor = Color3B(196, 82, 82);
-const Color3B CodeEditor::registerColor = Color3B(86, 156, 214);
-const Color3B CodeEditor::numberColor = Color3B(181, 206, 168); // Color3B(78, 201, 176);
-const Color3B CodeEditor::commentColor = Color3B(87, 166, 74);
-
-const std::set<std::string> CodeEditor::registers =
-{
-	// General registers
-	"ax", "bx", "cx", "dx", "si", "di", "bp", "sp", "ip",
-	"al", "bl", "cl", "dl", "sil", "dil", "bpl", "spl",
-	"ah", "bh", "ch", "dh", 
-	"eax", "ebx", "ecx" ,"edx" ,"esi", "edi", "ebp", "esp",
-	"r8w", "r9w", "r10w", "r11w", "r12w", "r13w", "r14w", "r15w",
-	"r8b", "r9b", "r10b", "r11b", "r12b", "r13b", "r14b", "r15b",
-	"r8d", "r9d", "r10d", "r11d", "r12d", "r13d", "r14d", "r15d",
-	"rax", "rbx", "rcx" ,"rdx" ,"rdi", "rsi", "rbp", "rsp",
-	"r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15",
-
-	// FPU registers
-	"fp0", "fp1", "fp2", "fp3", "fp4", "fp5", "fp6", "fp7",
-
-	// MMX registers
-	"mm0", "mm1", "mm2", "mm3", "mm4", "mm5", "mm6", "mm7",
-	"mm8", "mm9", "mm10", "mm11", "mm12", "mm13", "mm14", "mm15",
-	"xmm0", "xmm1", "xmm2", "xmm3", "xmm4", "xmm5", "xmm6", "xmm7",
-	"xmm8", "xmm9", "xmm10", "xmm11", "xmm12", "xmm13", "xmm14", "xmm15",
-	"ymm0", "ymm1", "ymm2", "ymm3", "ymm4", "ymm5", "ymm6", "ymm7",
-	"ymm8", "ymm9", "ymm10", "ymm11", "ymm12", "ymm13", "ymm14", "ymm15",
-
-	// Segment registers
-	"cs", "ds", "es", "fs", "gs", "ss",
-
-	// Instruction pointers
-	"eip", "rip"
-};
+const float CodeEditor::CompileDelayMaxSeconds = 0.1f;
+const float CodeEditor::LineNumberMargin = 32.0f;;
+const Size CodeEditor::StatusSize = Size(420.0f, 1080.0f);
+const Size CodeEditor::FunctionSize = Size(512.0f, 320.0f);
+const Color4B CodeEditor::SubtextColor = Color4B(66, 166, 166, 255);
+const Color4B CodeEditor::HeaderColor = Color4B(188, 188, 64, 255);
+const Color4B CodeEditor::ErrorColor = Color4B(196, 82, 82, 255);
 
 CodeEditor* CodeEditor::instance = nullptr;
 
@@ -137,7 +101,7 @@ void CodeEditor::registerGlobalNode()
 
 CodeEditor::CodeEditor()
 {
-	this->compileDelay = CodeEditor::compileDelayMaxSeconds;
+	this->compileDelay = CodeEditor::CompileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
@@ -145,9 +109,9 @@ CodeEditor::CodeEditor()
 	this->radialEye = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil);
 	this->previewNode = Node::create();
 
-	this->functionWindow = CodeWindow::create(Strings::Generics_Constant::create(), CodeEditor::functionSize, CodeEditor::defaultColor);
-	this->statusWindow = LabelStack::create(CodeEditor::statusSize, 8.0f);
-	this->registerWindow = LabelStack::create(CodeEditor::statusSize, 8.0f);
+	this->functionWindow = CodeWindow::create(Strings::Generics_Constant::create(), CodeEditor::FunctionSize);
+	this->statusWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
+	this->registerWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_CodeEditor_FunctionHeader::create());
 
@@ -253,7 +217,7 @@ void CodeEditor::initializePositions()
 	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
-	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width, visibleSize.height / 2.0f + 128.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::StatusSize.width, visibleSize.height / 2.0f + 128.0f));
 
 	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
@@ -324,11 +288,11 @@ void CodeEditor::update(float dt)
 	super::update(dt);
 
 	// Update compile based on compile delay
-	if (this->compileDelay <= CodeEditor::compileDelayMaxSeconds)
+	if (this->compileDelay <= CodeEditor::CompileDelayMaxSeconds)
 	{
 		this->compileDelay += dt;
 
-		if (this->compileDelay > CodeEditor::compileDelayMaxSeconds)
+		if (this->compileDelay > CodeEditor::CompileDelayMaxSeconds)
 		{
 			this->compile(this->functionWindow->getText());
 		}
@@ -544,22 +508,24 @@ void CodeEditor::compile(std::string assemblyText)
 		});
 
 		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Status::create());
-		// , CodeEditor::headerColor
+		statusLabel->setTextColor(CodeEditor::HeaderColor);
 
 		LocalizedLabel* compileSuccessfulLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CompileSuccessful::create());
-		// , CodeEditor::defaultColor
 
 		LocalizedLabel* addressLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Address::create());
-		// , CodeEditor::headerColor
+		addressLabel->setTextColor(CodeEditor::HeaderColor);
 
 		LocalizedLabel* addressValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)));
-		// , CodeEditor::defaultColor
-
+		
 		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
-		// , CodeEditor::headerColor
+		byteCountLabel->setTextColor(CodeEditor::HeaderColor);
 
 		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
-		// , isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor
+
+		if (isByteOverflow)
+		{
+			bytesUsedLabel->setTextColor(CodeEditor::ErrorColor);
+		}
 
 		this->statusWindow->insert(statusLabel);
 		this->statusWindow->insert(compileSuccessfulLabel);
@@ -576,13 +542,17 @@ void CodeEditor::compile(std::string assemblyText)
 			if (isByteOverflow)
 			{
 				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteOverflow::create());
-				// CodeEditor::errorColor
+				
+				byteOverflowLabel->setTextColor(CodeEditor::ErrorColor);
+
 				this->statusWindow->insert(byteOverflowLabel);
 			}
 			else
 			{
 				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_UnfilledBytes::create());
-				// CodeEditor::subtextColor
+				
+				byteOverflowLabel->setTextColor(CodeEditor::SubtextColor);
+
 				this->statusWindow->insert(byteOverflowLabel);
 			}
 
@@ -590,12 +560,14 @@ void CodeEditor::compile(std::string assemblyText)
 		}
 
 		LocalizedLabel* bytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Bytes::create());
-		// CodeEditor::headerColor
+		
+		bytesLabel->setTextColor(CodeEditor::HeaderColor);
+
 		this->statusWindow->insert(bytesLabel);
 
 		LocalizedLabel* arrayOfBytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)));
-		// CodeEditor::defaultColor
-		this->statusWindow->insert(bytesLabel);
+		
+		this->statusWindow->insert(arrayOfBytesLabel);
 		
 		if (isByteOverflow)
 		{
@@ -609,31 +581,39 @@ void CodeEditor::compile(std::string assemblyText)
 	else
 	{
 		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Status::create());
-		// CodeEditor::headerColor
+		
+		statusLabel->setTextColor(CodeEditor::HeaderColor);
+
 		this->statusWindow->insert(statusLabel);
 
 		LocalizedLabel* compileErrorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CompileErrors::create());
-		// CodeEditor::errorColor
+		
+		compileErrorsLabel->setTextColor(CodeEditor::ErrorColor);
+
 		this->statusWindow->insert(compileErrorsLabel);
 
 		this->statusWindow->insertNewline();
 
 		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Error::create());
-		// CodeEditor::headerColor
+		
+		errorLabel->setTextColor(CodeEditor::HeaderColor);
+
 		this->statusWindow->insert(errorLabel);
 
 		LocalizedLabel* errorMessageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, compileResult.errorData.message);
-		// CodeEditor::defaultColor
+		
 		this->statusWindow->insert(errorMessageLabel);
 
 		this->statusWindow->insertNewline();
 
 		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_LineNumber::create());
-		// CodeEditor::headerColor
+		
+		lineNumberLabel->setTextColor(CodeEditor::HeaderColor);
+
 		this->statusWindow->insert(lineNumberLabel);
 
 		LocalizedLabel* lineNumberValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(std::to_string(compileResult.errorData.lineNumber)));
-		// CodeEditor::defaultColor
+		
 		this->statusWindow->insert(lineNumberValueLabel);
 		
 		this->disableAccept();
@@ -642,85 +622,6 @@ void CodeEditor::compile(std::string assemblyText)
 
 void CodeEditor::tokenizeCallback(std::string text, std::vector<CodeWindow::token>& tokens)
 {
-	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
-	// Also split them down further if they contain comments
-	std::vector<std::string> splitText = StrUtils::splitOn(text, ";\n");
-	std::vector<std::string> textJoined = std::vector<std::string>();
-	std::string currentString = "";
-	bool isJoiningComment = false;
-
-	for (auto splitTextIterator = splitText.begin(); splitTextIterator != splitText.end(); splitTextIterator++)
-	{
-		std::string next = *splitTextIterator;
-
-		// Newlines end comments
-		if (next == "\n")
-		{
-			if (!currentString.empty())
-			{
-				textJoined.push_back(currentString);
-			}
-
-			textJoined.push_back(next);
-
-			isJoiningComment = false;
-			currentString = "";
-		}
-		else if (next == ";" || isJoiningComment)
-		{
-			isJoiningComment = true;
-			currentString += next;
-		}
-		else
-		{
-			textJoined.push_back(next);
-		}
-	}
-
-	// Add final joined comment if exists
-	if (isJoiningComment && !currentString.empty())
-	{
-		textJoined.push_back(currentString);
-	}
-
-	for (auto joinedTextIterator = textJoined.begin(); joinedTextIterator != textJoined.end(); joinedTextIterator++)
-	{
-		std::vector<std::string> tokenStrings;
-
-		// Tokenize the string if it isn't a comment -- otherwise treat it as one token
-		if (!StrUtils::startsWith(*joinedTextIterator, ";", false))
-		{
-			tokenStrings = StrUtils::tokenize(*joinedTextIterator, CodeEditor::delimiters);
-		}
-		else
-		{
-			tokenStrings = std::vector<std::string>();
-			tokenStrings.push_back(*joinedTextIterator);
-		}
-
-		// Iterate tokens
-		for (auto tokenIterator = tokenStrings.begin(); tokenIterator != tokenStrings.end(); tokenIterator++)
-		{
-			std::string token = *tokenIterator;
-			Color3B color = CodeEditor::defaultColor;
-
-			if (CodeEditor::registers.find(token) != CodeEditor::registers.end())
-			{
-				color = CodeEditor::registerColor;
-			}
-			else if (StrUtils::isInteger(token) || StrUtils::isFloat(token) || StrUtils::isHexNumber(token))
-			{
-				color = CodeEditor::numberColor;
-			}
-			else if (StrUtils::startsWith(token, ";", false))
-			{
-				color = CodeEditor::commentColor;
-			}
-
-			CodeWindow::token nextToken = CodeWindow::token(ConstantString::create(token), color);
-			tokens.push_back(nextToken);
-		}
-	}
 }
 
 void CodeEditor::onScriptLoad(ScriptEntry* script)
