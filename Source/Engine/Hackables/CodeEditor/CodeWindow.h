@@ -38,8 +38,7 @@ public:
 		}
 	};
 
-	void setTitleStringReplaceVariables(LocalizedString* stringReplaceVariables);
-	void setTitleStringReplaceVariables(std::vector<LocalizedString*> stringReplaceVariables);
+	void setTitleStringReplaceVariable(LocalizedString* stringReplaceVariables);
 	void insertText(LocalizedString* text, cocos2d::Color3B color);
 	void setMarginSize(float newMarginSize);
 	void toggleHeader(bool isVisible);
@@ -84,6 +83,7 @@ private:
 	cocos2d::Size windowSize;
 	std::string previousText;
 	LocalizedLabel* referenceContentLabel;
+	LocalizedLabel* referenceTitleLabel;
 
 	static const std::string Delimiters;
 	static const std::set<std::string> Registers;

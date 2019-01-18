@@ -81,5 +81,6 @@ private:
 	static const cocos2d::Color4B SubtextColor;
 	static const cocos2d::Color4B HeaderColor;
 	static const cocos2d::Color4B ErrorColor;
+	static const cocos2d::Color4B RegisterColor;
 	static CodeEditor* instance;
 };
