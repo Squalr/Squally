@@ -52,15 +52,25 @@ void LabelStack::initializeListeners()
 	super::initializeListeners();
 }
 
+void LabelStack::setAnchorPoint(const cocos2d::Vec2& anchorPoint)
+{
+	super::setAnchorPoint(anchorPoint);
+
+	this->labelsNode->setAnchorPoint(anchorPoint);
+}
+
 void LabelStack::insert(LocalizedLabel* label)
 {
 	this->labelsNode->addChild(label);
+
+	label->setAnchorPoint(Vec2(0.0f, 0.5f));
+	label->setDimensions(this->windowSize.width, 0.0f);
 
 	if (!this->labels.empty())
 	{
 		LocalizedLabel* previousLabel = this->labels.back();
 
-		label->setPositionY(previousLabel->getContentSize().height + this->spacing + this->currentNewlineSpacing);
+		label->setPositionY(previousLabel->getContentSize().height - this->spacing - this->currentNewlineSpacing);
 
 		this->currentNewlineSpacing = 0.0f;
 	}

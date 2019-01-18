@@ -246,14 +246,14 @@ void CodeEditor::initializePositions()
 	const float sidebarWidth = 420.0f;
 
 	this->statusBackground->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
-	this->statusWindow->setPosition(Vec2(CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->statusWindow->setPosition(Vec2(CodeEditor::statusSize.width / 2.0f, visibleSize.height - 48.0f));
 	this->scriptList->setPosition(Vec2(sidebarWidth / 2.0f, visibleSize.height / 2.0f + 128.0f));
 
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
 	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
-	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, 128.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
 
 	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
@@ -472,18 +472,13 @@ void CodeEditor::buildRegisterWindow()
 	{
 		if (this->activeHackableCode->registerHints.find(reg) != this->activeHackableCode->registerHints.end())
 		{
-			LocalizedString* label = getRegisterLabel(reg);
+			LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, getRegisterLabel(reg));
 
-			this->registerWindow->insert(label, CodeEditor::registerColor);
+			this->registerWindow->insert(registerLabel);
 
-			if (this->activeHackableCode->registerHints.find(reg) != this->activeHackableCode->registerHints.end())
-			{
-				this->registerWindow->insert(this->activeHackableCode->registerHints[reg]->clone(), CodeEditor::defaultColor);
-			}
-			else
-			{
-				this->registerWindow->insert(Strings::Hacking_CodeEditor_Unknown::create(), CodeEditor::defaultColor);
-			}
+			LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->activeHackableCode->registerHints[reg]->clone());
+
+			this->registerWindow->insert(registerHint);
 
 			this->registerWindow->insertNewline();
 			this->registerWindow->insertNewline();
@@ -548,17 +543,35 @@ void CodeEditor::compile(std::string assemblyText)
 			ConstantString::create(std::to_string(compileResult.byteCount)),
 			ConstantString::create(std::to_string(this->activeHackableCode->getOriginalLength()))
 		});
-		
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_CompileSuccessful::create(), CodeEditor::defaultColor);
+
+		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Status::create());
+		// , CodeEditor::headerColor
+
+		LocalizedLabel* compileSuccessfulLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CompileSuccessful::create());
+		// , CodeEditor::defaultColor
+
+		LocalizedLabel* addressLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Address::create());
+		// , CodeEditor::headerColor
+
+		LocalizedLabel* addressValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)));
+		// , CodeEditor::defaultColor
+
+		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
+		// , CodeEditor::headerColor
+
+		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
+		// , isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor
+
+		this->statusWindow->insert(statusLabel);
+		this->statusWindow->insert(compileSuccessfulLabel);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_Address::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)), CodeEditor::defaultColor);
+		this->statusWindow->insert(addressLabel);
+		this->statusWindow->insert(addressValueLabel);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_ByteCount::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(bytesUsed, isByteOverflow ? CodeEditor::errorColor : CodeEditor::defaultColor);
+		this->statusWindow->insert(byteCountLabel);
+		this->statusWindow->insert(bytesUsedLabel);
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		
@@ -566,19 +579,28 @@ void CodeEditor::compile(std::string assemblyText)
 		{
 			if (isByteOverflow)
 			{
-				this->statusWindow->insert(Strings::Hacking_CodeEditor_ByteOverflow::create(), CodeEditor::errorColor);
+				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteOverflow::create());
+				// CodeEditor::errorColor
+				this->statusWindow->insert(byteOverflowLabel);
 			}
 			else
 			{
-				this->statusWindow->insert(Strings::Hacking_CodeEditor_UnfilledBytes::create(), CodeEditor::subtextColor);
+				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_UnfilledBytes::create());
+				// CodeEditor::subtextColor
+				this->statusWindow->insert(byteOverflowLabel);
 			}
 
 			this->statusWindow->insertNewline();
 			this->statusWindow->insertNewline();
 		}
-		
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_Bytes::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)), CodeEditor::defaultColor);
+
+		LocalizedLabel* bytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Bytes::create());
+		// CodeEditor::headerColor
+		this->statusWindow->insert(bytesLabel);
+
+		LocalizedLabel* arrayOfBytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)));
+		// CodeEditor::defaultColor
+		this->statusWindow->insert(bytesLabel);
 		
 		if (isByteOverflow)
 		{
@@ -591,16 +613,35 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 	else
 	{
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_Status::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_CompileErrors::create(), CodeEditor::errorColor);
+		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Status::create());
+		// CodeEditor::headerColor
+		this->statusWindow->insert(statusLabel);
+
+		LocalizedLabel* compileErrorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CompileErrors::create());
+		// CodeEditor::errorColor
+		this->statusWindow->insert(compileErrorsLabel);
+
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_Error::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(compileResult.errorData.message, CodeEditor::defaultColor);
+
+		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Error::create());
+		// CodeEditor::headerColor
+		this->statusWindow->insert(errorLabel);
+
+		LocalizedLabel* errorMessageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, compileResult.errorData.message);
+		// CodeEditor::defaultColor
+		this->statusWindow->insert(errorMessageLabel);
+
 		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
-		this->statusWindow->insert(Strings::Hacking_CodeEditor_LineNumber::create(), CodeEditor::headerColor);
-		this->statusWindow->insert(ConstantString::create(std::to_string(compileResult.errorData.lineNumber)), CodeEditor::defaultColor);
+
+		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_LineNumber::create());
+		// CodeEditor::headerColor
+		this->statusWindow->insert(lineNumberLabel);
+
+		LocalizedLabel* lineNumberValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(std::to_string(compileResult.errorData.lineNumber)));
+		// CodeEditor::defaultColor
+		this->statusWindow->insert(lineNumberValueLabel);
 		
 		this->disableAccept();
 	}

@@ -14,6 +14,7 @@ public:
 	void insert(LocalizedLabel* label);
 	void insertNewline();
 	void clear();
+	void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
 
 private:
 	typedef SmartNode super;
