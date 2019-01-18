@@ -15,6 +15,7 @@ public:
 	void insertNewline();
 	void clear();
 	void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
+	void setPadding(cocos2d::Size padding);
 
 private:
 	typedef SmartNode super;
@@ -30,4 +31,5 @@ private:
 	cocos2d::Size windowSize;
 	float spacing;
 	float cumulativeHeight;
+	cocos2d::Size padding;
 };

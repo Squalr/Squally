@@ -63,16 +63,18 @@ void LabelStack::insert(LocalizedLabel* label)
 {
 	this->labelsNode->addChild(label);
 
-	label->setAnchorPoint(Vec2(0.0f, 0.5f));
-	label->setDimensions(this->windowSize.width, 0.0f);
+	label->setAnchorPoint(Vec2(0.0f, 1.0f));
+	label->setPositionX(this->padding.width);
+	label->setOverflow(Label::Overflow::RESIZE_HEIGHT);
+	label->setDimensions(this->windowSize.width - this->padding.width * 2, 0.0f);
 
 	if (!this->labels.empty())
 	{
-		this->cumulativeHeight += this->labels.front()->getContentSize().height + this->spacing;
+		this->cumulativeHeight += this->labels.back()->getContentSize().height + this->spacing;
 	}
 	else
 	{
-		this->cumulativeHeight += this->spacing;
+		this->cumulativeHeight += this->padding.height + this->spacing;
 	}
 
 	label->setPositionY(-this->cumulativeHeight);
@@ -84,7 +86,7 @@ void LabelStack::insertNewline()
 {
 	if (!this->labels.empty())
 	{
-		this->cumulativeHeight += this->labels.front()->getContentSize().height + this->spacing;
+		this->cumulativeHeight += this->labels.back()->getContentSize().height + this->spacing;
 	}
 	else
 	{
@@ -96,4 +98,12 @@ void LabelStack::clear()
 {
 	this->labelsNode->removeAllChildren();
 	this->labels.clear();
+	this->cumulativeHeight = 0.0f;
+}
+
+void LabelStack::setPadding(cocos2d::Size padding)
+{
+	this->padding = padding;
+
+	// Should probably adjust existing labels, but this shouldn't be an issue in our use cases so im not gonna implement it
 }

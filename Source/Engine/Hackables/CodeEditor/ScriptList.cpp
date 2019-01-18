@@ -105,7 +105,7 @@ void ScriptList::addNewScript()
 		});
 
 		std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
-		ScriptEntry* newScriptEntry = ScriptEntry::create(ConstantString::create(newScriptName->getString()), script, [=](ScriptEntry* entry) { this->onScriptEntryClick(entry); });
+		ScriptEntry* newScriptEntry = ScriptEntry::create(ConstantString::create(newScriptName->getString()), script, CC_CALLBACK_1(ScriptList::onScriptEntryClick, this), CC_CALLBACK_1(ScriptList::onScriptEntryDeleteClick, this));
 		this->scripts.push_back(newScriptEntry);
 		this->scriptsNode->addChild(newScriptEntry);
 
@@ -120,10 +120,33 @@ void ScriptList::deleteActiveScript()
 {
 	if (this->activeScript != nullptr && this->scripts.size() > 1)
 	{
+		this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), this->activeScript), this->scripts.end());
 		this->scriptsNode->removeChild(this->activeScript);
 
 		this->setActiveScript(scripts.front());
 	}
+}
+
+void ScriptList::deleteScript(ScriptEntry* scriptEntry)
+{
+	this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), scriptEntry), this->scripts.end());
+	this->scriptsNode->removeChild(scriptEntry);
+
+	// Re-initialize positions
+	this->initializePositions();
+
+	/*
+	if (scriptEntry == this->activeScript)
+	{
+		if (!this->scripts.empty())
+		{
+			this->setActiveScript(scripts.front());
+		}
+		else
+		{
+			this->addNewScript();
+		}
+	}*/
 }
 
 void ScriptList::loadScripts(HackableCode* hackableCode)
@@ -147,7 +170,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 			const std::string scriptName = attributes[ScriptList::ScriptNameKey].asString();
 			const std::string script = attributes[ScriptList::ScriptKey].asString();
 
-			ScriptEntry* scriptEntry = ScriptEntry::create(ConstantString::create(scriptName), script, [=](ScriptEntry* entry) { this->onScriptEntryClick(entry); });
+			ScriptEntry* scriptEntry = ScriptEntry::create(ConstantString::create(scriptName), script, CC_CALLBACK_1(ScriptList::onScriptEntryClick, this), CC_CALLBACK_1(ScriptList::onScriptEntryDeleteClick, this));
 
 			this->scripts.push_back(scriptEntry);
 			this->scriptsNode->addChild(scriptEntry);
@@ -167,7 +190,7 @@ void ScriptList::saveScripts()
 	{
 		ValueMap attributes = ValueMap();
 
-		attributes[ScriptList::ScriptNameKey] = Value((*it)->getName());
+		attributes[ScriptList::ScriptNameKey] = Value((*it)->getName()->getString());
 		attributes[ScriptList::ScriptKey] = Value((*it)->getScript());
 
 		scriptsToSave.push_back(Value(attributes));
@@ -186,6 +209,11 @@ void ScriptList::onScriptEntryClick(ScriptEntry* scriptEntry)
 	this->setActiveScript(scriptEntry);
 
 	this->onScriptSelect(scriptEntry);
+}
+
+void ScriptList::onScriptEntryDeleteClick(ScriptEntry* scriptEntry)
+{
+	this->deleteScript(scriptEntry);
 }
 
 void ScriptList::setActiveScript(ScriptEntry* activeScript)

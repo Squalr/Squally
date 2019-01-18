@@ -84,6 +84,7 @@ const Size CodeEditor::FunctionSize = Size(512.0f, 320.0f);
 const Color4B CodeEditor::SubtextColor = Color4B(66, 166, 166, 255);
 const Color4B CodeEditor::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeEditor::ErrorColor = Color4B(196, 82, 82, 255);
+const Color4B CodeEditor::RegisterColor = Color4B(86, 156, 214, 255);
 
 CodeEditor* CodeEditor::instance = nullptr;
 
@@ -167,6 +168,9 @@ CodeEditor::CodeEditor()
 	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::onFunctionTextUpdate, this));
 	this->functionWindow->setMarginSize(32.0f);
 
+	this->statusWindow->setPadding(Size(16.0f, 0.0f));
+	this->registerWindow->setPadding(Size(16.0f, 0.0f));
+
 	this->statusBackground->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->rightBarBackground->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->statusWindow->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -217,7 +221,7 @@ void CodeEditor::initializePositions()
 	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
-	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::StatusSize.width, visibleSize.height / 2.0f + 128.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::StatusSize.width, visibleSize.height / 2.0f + 144.0f));
 
 	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
@@ -438,6 +442,8 @@ void CodeEditor::buildRegisterWindow()
 		{
 			LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, getRegisterLabel(reg));
 
+			registerLabel->setTextColor(CodeEditor::RegisterColor);
+
 			this->registerWindow->insert(registerLabel);
 
 			LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->activeHackableCode->registerHints[reg]->clone());
@@ -520,7 +526,13 @@ void CodeEditor::compile(std::string assemblyText)
 		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
 		byteCountLabel->setTextColor(CodeEditor::HeaderColor);
 
-		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
+		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
+
+		bytesUsedLabel->setStringReplacementVariables
+		({
+			ConstantString::create(std::to_string(compileResult.byteCount)),
+			ConstantString::create(std::to_string(this->activeHackableCode->getOriginalLength())),
+		});
 
 		if (isByteOverflow)
 		{
@@ -529,13 +541,10 @@ void CodeEditor::compile(std::string assemblyText)
 
 		this->statusWindow->insert(statusLabel);
 		this->statusWindow->insert(compileSuccessfulLabel);
-		this->statusWindow->insertNewline();
 		this->statusWindow->insert(addressLabel);
 		this->statusWindow->insert(addressValueLabel);
-		this->statusWindow->insertNewline();
 		this->statusWindow->insert(byteCountLabel);
 		this->statusWindow->insert(bytesUsedLabel);
-		this->statusWindow->insertNewline();
 		
 		if (compileResult.byteCount != this->activeHackableCode->getOriginalLength())
 		{
@@ -555,8 +564,6 @@ void CodeEditor::compile(std::string assemblyText)
 
 				this->statusWindow->insert(byteOverflowLabel);
 			}
-
-			this->statusWindow->insertNewline();
 		}
 
 		LocalizedLabel* bytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Bytes::create());
@@ -592,8 +599,6 @@ void CodeEditor::compile(std::string assemblyText)
 
 		this->statusWindow->insert(compileErrorsLabel);
 
-		this->statusWindow->insertNewline();
-
 		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Error::create());
 		
 		errorLabel->setTextColor(CodeEditor::HeaderColor);
@@ -603,8 +608,6 @@ void CodeEditor::compile(std::string assemblyText)
 		LocalizedLabel* errorMessageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, compileResult.errorData.message);
 		
 		this->statusWindow->insert(errorMessageLabel);
-
-		this->statusWindow->insertNewline();
 
 		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_LineNumber::create());
 		
@@ -626,7 +629,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<CodeWindow::toke
 
 void CodeEditor::onScriptLoad(ScriptEntry* script)
 {
-	this->functionWindow->setTitleStringReplaceVariables(script->getName()->clone());
+	this->functionWindow->setTitleStringReplaceVariable(script->getName()->clone());
 	this->functionWindow->setText(script->getScript());
 }
 

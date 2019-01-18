@@ -35,7 +35,9 @@ private:
 
 	void initializePositions() override;
 	void initializeListeners() override;
+	void deleteScript(ScriptEntry* scriptEntry);
 	void onScriptEntryClick(ScriptEntry* scriptEntry);
+	void onScriptEntryDeleteClick(ScriptEntry* scriptEntry);
 	void setActiveScript(ScriptEntry* activeScript);
 	
 	LocalizedLabel* titleLabel;

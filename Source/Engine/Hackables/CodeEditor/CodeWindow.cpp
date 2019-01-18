@@ -78,7 +78,8 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->onEditCallback = nullptr;
 	this->lineNumberElements = std::vector<RichElement*>();
 	this->windowSize = initWindowSize;
-	this->referenceContentLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->referenceContentLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->referenceTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 
 	this->lineNumbers = RichText::create();
 	this->editableText = UICCTextField::create(this->referenceContentLabel->getString(), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
@@ -90,8 +91,8 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, windowSize.width, windowSize.height);
 	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, windowSize.width, CodeWindow::TitleBarHeight);
 	this->windowTitle = windowTitle;
-	this->editableWindowTitle = UICCTextField::create(this->referenceContentLabel->getString(), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
-	this->editableWindowTitle->insertText(this->windowTitle->getString().c_str(), this->windowTitle->getString().size());
+	this->editableWindowTitle = UICCTextField::create(this->referenceTitleLabel->getString(), this->referenceTitleLabel->getFont(), this->referenceTitleLabel->getFontSize());
+	this->editableWindowTitle->setString(this->windowTitle->getString());
 
 	this->editableWindowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -109,6 +110,7 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->editableText->setOpacity(0);
 
 	this->addChild(this->referenceContentLabel);
+	this->addChild(this->referenceTitleLabel);
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
@@ -139,12 +141,12 @@ void CodeWindow::initializePositions()
 	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
 
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width, - CodeWindow::Padding.height));
+	this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->editableWindowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
-	this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, CodeWindow::Padding.height));
-	this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, CodeWindow::Padding.height));
+	this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
+	this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 
 	this->lineNumbers->setContentSize(Size(
 		windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f,
@@ -356,14 +358,10 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	}
 }
 
-void CodeWindow::setTitleStringReplaceVariables(LocalizedString* stringReplaceVariables)
+void CodeWindow::setTitleStringReplaceVariable(LocalizedString* stringReplaceVariables)
 {
 	this->windowTitle->setStringReplacementVariables(stringReplaceVariables);
-}
-
-void CodeWindow::setTitleStringReplaceVariables(std::vector<LocalizedString*> stringReplaceVariables)
-{
-	this->windowTitle->setStringReplacementVariables(stringReplaceVariables);
+	this->editableWindowTitle->setString(this->windowTitle->getString());
 }
 
 void CodeWindow::insertText(LocalizedString* text, Color3B color)
