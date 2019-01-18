@@ -12,32 +12,35 @@
 
 using namespace cocos2d;
 
-ScriptEntry* ScriptEntry::create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick)
+ScriptEntry* ScriptEntry::create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick)
 {
-	ScriptEntry* instance = new ScriptEntry(scriptName, script, onScriptEntryClick);
+	ScriptEntry* instance = new ScriptEntry(scriptName, script, onScriptEntryClick, onDeleteClick);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ScriptEntry::ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick)
+ScriptEntry::ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick)
 {
-	this->onScriptEntryClick = onScriptEntryClick;
 	this->scriptName = scriptName;
 	this->script = script;
-	this->scriptUnsaved = script;
+	this->onScriptEntryClick = onScriptEntryClick;
+	this->onDeleteClick = onDeleteClick;
 
 	this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	this->selectedSprite = Sprite::create(UIResources::Menus_HackerModeMenu_SelectedScriptArrow);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->scriptName);
+	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
 
+	this->selectedSprite->setColor(Color3B::YELLOW);
 	this->selectedSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->label->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->addChild(this->backPlate);
 	this->addChild(this->selectedSprite);
 	this->addChild(this->label);
+	this->addChild(this->deleteButton);
 }
 
 void ScriptEntry::initializePositions()
@@ -48,6 +51,7 @@ void ScriptEntry::initializePositions()
 
 	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin);
 	this->selectedSprite->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin);
+	this->deleteButton->setPositionX(this->backPlate->getContentSize().width / 2.0f - this->deleteButton->getContentSize().width - 8.0f);
 }
 
 void ScriptEntry::initializeListeners()
@@ -55,6 +59,7 @@ void ScriptEntry::initializeListeners()
 	super::initializeListeners();
 
 	this->backPlate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
+	this->deleteButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onDeleteClick(this); });
 }
 
 void ScriptEntry::toggleSelected(bool isSelected)
@@ -64,6 +69,7 @@ void ScriptEntry::toggleSelected(bool isSelected)
 
 	this->selectedSprite->setVisible(isSelected);
 
+	this->label->setTextColor(isSelected ? Color4B::YELLOW : Color4B::WHITE);
 	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + margin + (isSelected ? selectedOffset : 0.0f));
 }
 
@@ -74,26 +80,10 @@ ConstantString* ScriptEntry::getName()
 
 std::string ScriptEntry::getScript()
 {
-	return this->scriptUnsaved;
+	return this->script;
 }
 
-void ScriptEntry::setScriptUnsaved(std::string script)
+void ScriptEntry::setScript(std::string script)
 {
-	this->scriptUnsaved = script;
-}
-
-void ScriptEntry::softSave()
-{
-	// The script list is responsible for actually saving
-	this->script = this->scriptUnsaved;
-}
-
-bool ScriptEntry::hasUnsavedChanges()
-{
-	return (this->scriptUnsaved != this->script);
-}
-
-void ScriptEntry::discardUnsavedChanges()
-{
-	this->scriptUnsaved = this->script;
+	this->script = script;
 }

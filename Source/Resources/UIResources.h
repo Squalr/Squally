@@ -170,6 +170,8 @@ namespace UIResources
 	extern const std::string Menus_HackerModeMenu_SelectedScriptEntry;
 	extern const std::string Menus_HackerModeMenu_SelectedScriptEntrySelected;
 	extern const std::string Menus_HackerModeMenu_SideBar;
+	extern const std::string Menus_HackerModeMenu_TrashCan;
+	extern const std::string Menus_HackerModeMenu_TrashCanSelected;
 	extern const std::string Menus_Icons_AlchemyBrew;
 	extern const std::string Menus_Icons_AlchemyPot;
 	extern const std::string Menus_Icons_Anvil;

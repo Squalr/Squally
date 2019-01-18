@@ -5,6 +5,7 @@
 namespace cocos2d
 {
 	class Node;
+	class Sprite;
 }
 
 class ConstantString;
@@ -22,6 +23,7 @@ public:
 	void addNewScript();
 	void deleteActiveScript();
 	void loadScripts(HackableCode* hackableCode);
+	void saveScripts();
 	ScriptEntry* getActiveScript();
 
 protected:
@@ -33,7 +35,9 @@ private:
 
 	void initializePositions() override;
 	void initializeListeners() override;
+	void deleteScript(ScriptEntry* scriptEntry);
 	void onScriptEntryClick(ScriptEntry* scriptEntry);
+	void onScriptEntryDeleteClick(ScriptEntry* scriptEntry);
 	void setActiveScript(ScriptEntry* activeScript);
 	
 	LocalizedLabel* titleLabel;
@@ -41,6 +45,11 @@ private:
 	std::function<void(ScriptEntry*)> onScriptSelect;
 	std::vector<ScriptEntry*> scripts;
 	ClickableNode* createNewScriptButton;
+	LocalizedLabel* createNewScriptLabel;
+	cocos2d::Sprite* createNewScriptSprite;
 	ScriptEntry* activeScript;
 	HackableCode* hackableCode;
+
+	static const std::string ScriptNameKey;
+	static const std::string ScriptKey;
 };

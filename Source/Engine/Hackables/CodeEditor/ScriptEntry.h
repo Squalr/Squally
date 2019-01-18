@@ -17,19 +17,16 @@ class LocalizedLabel;
 class ScriptEntry : public SmartNode
 {
 public:
-	static ScriptEntry* create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
+	static ScriptEntry* create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick);
 
 	void toggleSelected(bool isSelected);
 	ConstantString* getName();
 	std::string getScript();
-	void setScriptUnsaved(std::string script);
-	void softSave();
-	bool hasUnsavedChanges();
-	void discardUnsavedChanges();
+	void setScript(std::string script);
 
 private:
 	typedef SmartNode super;
-	ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick);
+	ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick);
 	~ScriptEntry() = default;
 
 	void initializePositions() override;
@@ -38,9 +35,10 @@ private:
 	ClickableNode* backPlate;
 	cocos2d::Sprite* selectedSprite;
 	LocalizedLabel* label;
+	ClickableNode* deleteButton;
 
 	ConstantString* scriptName;
-	std::string scriptUnsaved;
 	std::string script;
 	std::function<void(ScriptEntry*)> onScriptEntryClick;
+	std::function<void(ScriptEntry*)> onDeleteClick;
 };
