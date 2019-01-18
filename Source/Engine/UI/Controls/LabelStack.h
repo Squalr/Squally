@@ -29,5 +29,5 @@ private:
 	std::vector<LocalizedLabel*> labels;
 	cocos2d::Size windowSize;
 	float spacing;
-	float currentNewlineSpacing;
+	float cumulativeHeight;
 };

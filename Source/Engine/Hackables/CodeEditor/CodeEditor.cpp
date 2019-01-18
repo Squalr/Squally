@@ -246,14 +246,14 @@ void CodeEditor::initializePositions()
 	const float sidebarWidth = 420.0f;
 
 	this->statusBackground->setPosition(Vec2(0.0f, visibleSize.height / 2.0f));
-	this->statusWindow->setPosition(Vec2(CodeEditor::statusSize.width / 2.0f, visibleSize.height - 48.0f));
+	this->statusWindow->setPosition(Vec2(0.0f, visibleSize.height));
 	this->scriptList->setPosition(Vec2(sidebarWidth / 2.0f, visibleSize.height / 2.0f + 128.0f));
 
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
 	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
-	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::statusSize.width, visibleSize.height / 2.0f + 128.0f));
 
 	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
@@ -481,7 +481,6 @@ void CodeEditor::buildRegisterWindow()
 			this->registerWindow->insert(registerHint);
 
 			this->registerWindow->insertNewline();
-			this->registerWindow->insertNewline();
 		}
 	};
 
@@ -565,14 +564,11 @@ void CodeEditor::compile(std::string assemblyText)
 		this->statusWindow->insert(statusLabel);
 		this->statusWindow->insert(compileSuccessfulLabel);
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertNewline();
 		this->statusWindow->insert(addressLabel);
 		this->statusWindow->insert(addressValueLabel);
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertNewline();
 		this->statusWindow->insert(byteCountLabel);
 		this->statusWindow->insert(bytesUsedLabel);
-		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 		
 		if (compileResult.byteCount != this->activeHackableCode->getOriginalLength())
@@ -590,7 +586,6 @@ void CodeEditor::compile(std::string assemblyText)
 				this->statusWindow->insert(byteOverflowLabel);
 			}
 
-			this->statusWindow->insertNewline();
 			this->statusWindow->insertNewline();
 		}
 
@@ -622,7 +617,6 @@ void CodeEditor::compile(std::string assemblyText)
 		this->statusWindow->insert(compileErrorsLabel);
 
 		this->statusWindow->insertNewline();
-		this->statusWindow->insertNewline();
 
 		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Error::create());
 		// CodeEditor::headerColor
@@ -632,7 +626,6 @@ void CodeEditor::compile(std::string assemblyText)
 		// CodeEditor::defaultColor
 		this->statusWindow->insert(errorMessageLabel);
 
-		this->statusWindow->insertNewline();
 		this->statusWindow->insertNewline();
 
 		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_LineNumber::create());

@@ -30,7 +30,7 @@ LabelStack::LabelStack(cocos2d::Size windowSize, float spacing)
 {
 	this->windowSize = windowSize;
 	this->spacing = spacing;
-	this->currentNewlineSpacing = 0.0f;
+	this->cumulativeHeight = 0.0f;
 	this->labelsNode = Node::create();
 	this->labels = std::vector<LocalizedLabel*>();
 
@@ -68,12 +68,14 @@ void LabelStack::insert(LocalizedLabel* label)
 
 	if (!this->labels.empty())
 	{
-		LocalizedLabel* previousLabel = this->labels.back();
-
-		label->setPositionY(previousLabel->getContentSize().height - this->spacing - this->currentNewlineSpacing);
-
-		this->currentNewlineSpacing = 0.0f;
+		this->cumulativeHeight += this->labels.front()->getContentSize().height + this->spacing;
 	}
+	else
+	{
+		this->cumulativeHeight += this->spacing;
+	}
+
+	label->setPositionY(-this->cumulativeHeight);
 
 	this->labels.push_back(label);
 }
@@ -82,7 +84,11 @@ void LabelStack::insertNewline()
 {
 	if (!this->labels.empty())
 	{
-		this->currentNewlineSpacing += this->labels.back()->getContentSize().height + this->spacing;
+		this->cumulativeHeight += this->labels.front()->getContentSize().height + this->spacing;
+	}
+	else
+	{
+		this->cumulativeHeight += this->spacing;
 	}
 }
 
