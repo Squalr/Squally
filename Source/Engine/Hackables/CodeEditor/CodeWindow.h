@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include <string>
 #include <vector>
 
@@ -24,7 +25,7 @@ class LocalizedString;
 class CodeWindow : public SmartNode
 {
 public:
-	static CodeWindow* create(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
+	static CodeWindow* create(LocalizedString* windowTitle, cocos2d::Size initWindowSize);
 	
 	struct token
 	{
@@ -55,7 +56,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	CodeWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize, cocos2d::Color3B initFontColor);
+	CodeWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
@@ -79,15 +80,20 @@ private:
 	std::function<void(std::string text)> onEditCallback;
 
 	float marginSize;
-	cocos2d::Color3B fontColor;
 	int currentLineNumber;
 	cocos2d::Size windowSize;
 	std::string previousText;
 	LocalizedLabel* referenceContentLabel;
 
+	static const std::string Delimiters;
+	static const std::set<std::string> Registers;
+	static const cocos2d::Color3B DefaultColor;
+	static const cocos2d::Color3B RegisterColor;
+	static const cocos2d::Color3B NumberColor;
+	static const cocos2d::Color3B CommentColor;
 	static const float TitleBarHeight;
 	static const cocos2d::Color4B DefaultTitleBarColor;
 	static const cocos2d::Color4B DefaultWindowColor;
-	static const cocos2d::Color3B lineNumberColor;
+	static const cocos2d::Color3B LineNumberColor;
 	static const cocos2d::Size Padding;
 };

@@ -74,18 +74,12 @@ private:
 	float compileDelay;
 
 	static const cocos2d::Size Padding;
-	static const float compileDelayMaxSeconds;
-	static const float lineNumberMargin;
-	static const cocos2d::Size statusSize;
-	static const cocos2d::Size functionSize;
-	static const std::string delimiters;
-	static const cocos2d::Color3B defaultColor;
-	static const cocos2d::Color3B subtextColor;
-	static const cocos2d::Color3B headerColor;
-	static const cocos2d::Color3B errorColor;
-	static const cocos2d::Color3B registerColor;
-	static const cocos2d::Color3B numberColor;
-	static const cocos2d::Color3B commentColor;
-	static const std::set<std::string> registers;
+	static const float CompileDelayMaxSeconds;
+	static const float LineNumberMargin;
+	static const cocos2d::Size StatusSize;
+	static const cocos2d::Size FunctionSize;
+	static const cocos2d::Color4B SubtextColor;
+	static const cocos2d::Color4B HeaderColor;
+	static const cocos2d::Color4B ErrorColor;
 	static CodeEditor* instance;
 };
