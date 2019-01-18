@@ -85,7 +85,8 @@
 
 	// Clang chokes on intel syntax when dealing with binding C variables -- just use AT&T syntax for these
 	#define ASM_MOV_REG_VAR(register, variable) \
-		__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : : "m"(variable) : )
+		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : : "m"(variable) : )
+		//__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : : "m"(variable) : )
 
 	#define ASM_MOV_VAR_REG(variable, register) \
 		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : : )
