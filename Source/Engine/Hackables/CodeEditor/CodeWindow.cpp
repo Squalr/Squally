@@ -104,8 +104,8 @@ void CodeWindow::initializePositions()
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->editableWindowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
-	this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width, CodeWindow::Padding.height));
-	this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width, CodeWindow::Padding.height));
+	this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, CodeWindow::Padding.height));
+	this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, CodeWindow::Padding.height));
 
 	this->lineNumbers->setContentSize(Size(
 		windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f,
