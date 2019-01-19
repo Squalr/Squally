@@ -85,8 +85,6 @@ void PlatformerEntity::onEnter()
 	CollisionObject::onEnter();
 
 	this->scheduleUpdate();
-
-	this->initializeCollisionEvents();
 }
 
 void PlatformerEntity::initializePositions()
@@ -99,6 +97,8 @@ void PlatformerEntity::initializePositions()
 void PlatformerEntity::initializeListeners()
 {
 	CollisionObject::initializeListeners();
+
+	this->initializeCollisionEvents();
 }
 
 void PlatformerEntity::update(float dt)

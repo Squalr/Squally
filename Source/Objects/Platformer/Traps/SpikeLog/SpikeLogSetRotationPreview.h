@@ -10,18 +10,18 @@ namespace cocos2d
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
-class SpikeLogSetRotation : public HackablePreview
+class SpikeLogSetRotationPreview : public HackablePreview
 {
 public:
-	static SpikeLogSetRotation* create();
+	static SpikeLogSetRotationPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	SpikeLogSetRotation();
-	~SpikeLogSetRotation() = default;
+	SpikeLogSetRotationPreview();
+	~SpikeLogSetRotationPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

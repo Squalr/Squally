@@ -41,7 +41,9 @@ Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, Vec2(0.0f, 72.0f * Squally::squallyScale)), (int)PlatformerCollisionType::Player, false, false);
+	this->squallyCollisionDefaultPosition = Vec2(0.0f, 72.0f * Squally::squallyScale);
+
+	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, this->squallyCollisionDefaultPosition), (int)PlatformerCollisionType::Player, false, false);
 
 	this->registerHackables();
 
@@ -122,6 +124,16 @@ void Squally::update(float dt)
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
 
+	// Handle case where physics acts on Squally's physics body (which is separate)
+	Vec2 squallyDelta = this->squallyCollision->getPosition() - this->squallyCollisionDefaultPosition;
+
+	if (squallyDelta != Vec2::ZERO)
+	{
+		this->setPosition(this->getPosition() + squallyDelta);
+
+		this->squallyCollision->setPosition(this->squallyCollisionDefaultPosition);
+	}
+
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
 		this->movement.x -= 1.0f;
@@ -141,7 +153,7 @@ void Squally::update(float dt)
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		// TODO: Hover height magic (probably just by scaling the main physicsbody)
+		// TODO: Hover height crouch (resize/scale physicsbody)
 	}
 }
 
