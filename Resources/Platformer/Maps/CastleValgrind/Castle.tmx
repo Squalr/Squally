@@ -169,7 +169,7 @@
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="512" name="metal-spikes" type="object" x="3011.79" y="3636.12" width="182.424" height="167.758">
+  <object id="512" name="metal-spikes" type="object" x="3019.45" y="3643.45" width="182.424" height="167.758">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
@@ -181,7 +181,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="skeletal-priest" type="entity" x="4687.39" y="3573.81" width="78.7879" height="88">
+  <object id="489" name="skeletal-priestess" type="entity" x="4687.39" y="3573.81" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -216,10 +216,10 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="491" name="Crypts/Foreground/Spear3" type="decor" x="2313.36" y="3787.7" width="510" height="558"/>
-  <object id="496" name="Crypts/Foreground/Spear3" type="decor" x="2821.06" y="3816.52" width="510" height="558"/>
-  <object id="497" name="Crypts/Foreground/Spear3" type="decor" x="3353.06" y="3820.09" width="510" height="558"/>
-  <object id="498" name="Crypts/Foreground/Spear3" type="decor" x="3845.06" y="3782.39" width="510" height="558"/>
+  <object id="491" name="Crypts/Foreground/Spear3" type="decor" x="1549.72" y="3618" width="510" height="558"/>
+  <object id="496" name="Crypts/Foreground/Spear3" type="decor" x="2057.42" y="3646.82" width="510" height="558"/>
+  <object id="497" name="Crypts/Foreground/Spear3" type="decor" x="4037.91" y="3665.54" width="510" height="558"/>
+  <object id="498" name="Crypts/Foreground/Spear3" type="decor" x="4529.91" y="3627.84" width="510" height="558"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
