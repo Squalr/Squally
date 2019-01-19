@@ -109,7 +109,7 @@ void Wind::registerHackables()
 			HackableCode::LateBindData(
 				Wind::MapKeyWind,
 				Strings::Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
-				UIResources::Menus_Icons_BleedingLimb,
+				UIResources::Menus_Icons_Spell,
 				WindSetSpeedPreview::create(),
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },

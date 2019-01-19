@@ -20,6 +20,7 @@ private:
 	MechanicalFlailGenericPreview();
 	~MechanicalFlailGenericPreview() = default;
 	void onEnter() override;
+	void initializePositions() override;
 
 	cocos2d::Sprite* previewFlail;
 	cocos2d::Sprite* previewJoint;

@@ -1,10 +1,10 @@
 #include "WindGenericPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ParticleResources.h"
 
 using namespace cocos2d;
 
@@ -19,11 +19,14 @@ WindGenericPreview* WindGenericPreview::create()
 
 WindGenericPreview::WindGenericPreview()
 {
-	this->previewHeavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
+	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
 
-	this->previewHeavenHug->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->windParticles->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
+	this->windParticles->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
+	this->windParticles->setScale(0.4f);
 
-	this->previewNode->addChild(this->previewHeavenHug);
+	this->previewNode->addChild(this->windParticles);
 }
 
 HackablePreview* WindGenericPreview::clone()
@@ -34,16 +37,13 @@ HackablePreview* WindGenericPreview::clone()
 void WindGenericPreview::onEnter()
 {
 	super::onEnter();
+}
+
+void WindGenericPreview::initializePositions()
+{
+	super::initializePositions();
 
 	const float offset = 48.0f;
 
-	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
-
-	this->previewHeavenHug->runAction(
-		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)))),
-			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, HackablePreview::PreviewRadius - offset))),
-			nullptr
-		))
-	);
+	this->windParticles->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
 }

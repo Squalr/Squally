@@ -45,3 +45,8 @@ void PendulumBladeGenericPreview::onEnter()
 		))
 	);
 }
+
+void PendulumBladeGenericPreview::initializePositions()
+{
+	super::initializePositions();
+}

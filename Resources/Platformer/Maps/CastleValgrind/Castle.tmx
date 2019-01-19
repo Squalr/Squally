@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="508">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="512">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -132,39 +132,41 @@
    </properties>
    <polyline points="0,0 1975.76,12.1212 1978.79,-590.909 3.0303,-590.909 45.4545,-315.152"/>
   </object>
-  <object id="490" name="solid" type="terrain" x="992" y="3824">
+  <object id="508" name="solid" type="terrain" x="962.182" y="2054.79">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 784,-40 1480,-8 2360,8 2800,-32 3056,24 3056,-216 3312,-232 3720,-208 3864,-120 4184,-40 4984,-24 4968,1088 -32,1072 56,496"/>
+  </object>
+  <object id="509" name="solid" type="terrain" x="1508" y="3792">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 2264,-8 2448,32 2728,8 3016,-16 3736,0 3744,312 3672,784 3064,808 1128,712 -16,624 0,232"/>
   </object>
  </objectgroup>
  <objectgroup name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="492" name="Crypts/Foreground/TREE-2" type="decor" x="4214.7" y="3151.3" width="568" height="475"/>
-  <object id="493" name="Crypts/SKULL" type="decor" x="3094" y="3792.5" width="66" height="44"/>
-  <object id="494" name="Crypts/mus-1" type="decor" x="2637.67" y="3782" width="49" height="42">
+  <object id="492" name="Crypts/Foreground/TREE-2" type="decor" x="4394.7" y="3319.3" width="568" height="475"/>
+  <object id="493" name="Crypts/SKULL" type="decor" x="3093" y="3774.5" width="66" height="44"/>
+  <object id="494" name="Crypts/mus-1" type="decor" x="2636.67" y="3764" width="49" height="42">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="501" name="Crypts/trunk_3" type="decor" x="1958.52" y="3269.03" width="523" height="552"/>
+  <object id="501" name="Crypts/trunk_3" type="decor" x="1898.52" y="3239.7" width="523" height="552"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="487" name="dart-gun" type="object" x="4094.13" y="3470.97" width="78.7879" height="88">
+  <object id="511" name="wind" type="object" x="3196.82" y="3203.21" width="712.424" height="611.758">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="507" name="heaven-hug" type="object" x="1616.61" y="3036" width="78.7879" height="760">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
  </objectgroup>
@@ -173,7 +175,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="skeletal-knight" type="entity" x="3751.03" y="3640.48" width="78.7879" height="88">
+  <object id="489" name="skeletal-priest" type="entity" x="4687.39" y="3573.81" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -184,7 +186,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="3166.36" y="3599.7" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="2902.72" y="3569.4" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

@@ -47,3 +47,8 @@ void MechanicalFlailGenericPreview::onEnter()
 		))
 	);
 }
+
+void MechanicalFlailGenericPreview::initializePositions()
+{
+	super::initializePositions();
+}

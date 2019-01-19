@@ -209,7 +209,7 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick(ClickableNode* menuSprite)
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::EndianForest_Forest, [](SerializableMap* map)
+	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::CastleValgrind_Castle, [](SerializableMap* map)
 	{
 		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
 	}));

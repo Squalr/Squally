@@ -40,3 +40,8 @@ void SpikeLogGenericPreview::onEnter()
 	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
 	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.08f, 0.0f);
 }
+
+void SpikeLogGenericPreview::initializePositions()
+{
+	super::initializePositions();
+}

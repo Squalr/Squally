@@ -4,7 +4,7 @@
 
 namespace cocos2d
 {
-	class Sprite;
+	class ParticleSystem;
 }
 
 class LocalizedLabel;
@@ -24,10 +24,9 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewHeavenHug100;
-	cocos2d::Sprite* previewHeavenHug200;
-	cocos2d::Sprite* previewHeavenHug400;
-	LocalizedLabel* eax100Height;
-	LocalizedLabel* eax200Height;
-	LocalizedLabel* eax400Height;
+	cocos2d::ParticleSystem* windParticles;
+	LocalizedLabel* eaxPositive;
+	LocalizedLabel* eaxNegative;
+	LocalizedLabel* ebxPositive;
+	LocalizedLabel* ebxNegative;
 };

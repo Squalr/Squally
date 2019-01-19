@@ -20,6 +20,7 @@ private:
 	PendulumBladeGenericPreview();
 	~PendulumBladeGenericPreview() = default;
 	void onEnter() override;
+	void initializePositions() override;
 
 	cocos2d::Sprite* previewBlade;
 };

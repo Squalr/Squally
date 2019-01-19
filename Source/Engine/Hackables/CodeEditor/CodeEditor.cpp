@@ -458,8 +458,6 @@ void CodeEditor::buildRegisterWindow()
 			LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->activeHackableCode->registerHints[reg]->clone());
 
 			this->registerWindow->insert(registerHint);
-
-			this->registerWindow->insertNewline();
 		}
 	};
 

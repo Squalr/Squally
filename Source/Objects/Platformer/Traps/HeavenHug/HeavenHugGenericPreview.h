@@ -20,6 +20,7 @@ private:
 	HeavenHugGenericPreview();
 	~HeavenHugGenericPreview() = default;
 	void onEnter() override;
+	void initializePositions() override;
 
 	cocos2d::Sprite* previewHeavenHug;
 };
