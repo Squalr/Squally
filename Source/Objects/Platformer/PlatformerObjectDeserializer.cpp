@@ -56,6 +56,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = HeavenHug::create(&properties);
 		}
+		else if (name == MetalSpikes::MapKeyMetalSpikes)
+		{
+			newObject = MetalSpikes::create(&properties);
+		}
 		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
 		{
 			newObject = MechanicalFlail::create(&properties);

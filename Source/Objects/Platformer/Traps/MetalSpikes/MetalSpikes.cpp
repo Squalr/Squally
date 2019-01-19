@@ -13,6 +13,7 @@
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
+#include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.h"
@@ -39,10 +40,14 @@ MetalSpikes::MetalSpikes(ValueMap* initProperties) : HackableObject(initProperti
 	this->totalTimeUntilSpikesTrigger = 5.0f;
 	this->isRunningAnimation = false;
 
+	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
+
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(480.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->setDefaultPreview(MetalSpikesGenericPreview::create());
 
 	this->registerHackables();
+
+	this->addChild(this->spikes);
 }
 
 MetalSpikes::~MetalSpikes()
@@ -52,6 +57,8 @@ MetalSpikes::~MetalSpikes()
 void MetalSpikes::onEnter()
 {
 	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void MetalSpikes::update(float dt)
@@ -81,7 +88,7 @@ void MetalSpikes::registerHackables()
 				UIResources::Menus_Icons_BleedingLimb,
 				MetalSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::st0, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				}
 			)
 		},
@@ -114,19 +121,30 @@ void MetalSpikes::updateSpikes(float dt)
 	ASM(push EAX);
 	ASM(push EBX);
 	ASM_MOV_REG_VAR(EAX, elapsedPtr);
-	ASM_MOV_REG_VAR(EBX, dt);
+	ASM_MOV_REG_VAR(EBX, deltaTimePtr);
 
-	ASM(fld dword ptr[EAX]);
+	ASM(fld dword ptr [EAX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(fadd dword ptr[EBX]);
+	ASM(fadd dword ptr [EBX]);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(fstp dword ptr[EAX])
+	ASM(fstp dword ptr [EAX])
 
 	ASM(pop EAX);
 	ASM(pop EBX);
 
 	HACKABLES_STOP_SEARCH();
+
+	if (this->currentElapsedTimeForSpikeTrigger > this->totalTimeUntilSpikesTrigger)
+	{
+		this->isRunningAnimation = true;
+		this->currentElapsedTimeForSpikeTrigger = 0.0f;
+
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, 1.0f, 0.025f, false, [=]()
+		{
+			this->isRunningAnimation = false;
+		});
+	}
 }
