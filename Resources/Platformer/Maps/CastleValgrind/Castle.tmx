@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="512">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="513">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -150,7 +150,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="492" name="Crypts/Foreground/TREE-2" type="decor" x="4394.7" y="3319.3" width="568" height="475"/>
-  <object id="493" name="Crypts/SKULL" type="decor" x="3093" y="3774.5" width="66" height="44"/>
+  <object id="493" name="Crypts/SKULL" type="decor" x="2871" y="3754.5" width="66" height="44"/>
   <object id="494" name="Crypts/mus-1" type="decor" x="2636.67" y="3764" width="49" height="42">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
@@ -163,7 +163,13 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="511" name="wind" type="object" x="3196.82" y="3203.21" width="712.424" height="611.758">
+  <object id="511" name="wind" type="object" x="3442.82" y="3199.21" width="712.424" height="611.758">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="512" name="metal-spikes" type="object" x="3011.79" y="3636.12" width="182.424" height="167.758">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
@@ -186,7 +192,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="2902.72" y="3569.4" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="2532.72" y="3597.4" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

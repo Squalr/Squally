@@ -29,6 +29,14 @@
 #include "Strings/Hacking/RegisterR13.h"
 #include "Strings/Hacking/RegisterR14.h"
 #include "Strings/Hacking/RegisterR15.h"
+#include "Strings/Hacking/RegisterSt0.h"
+#include "Strings/Hacking/RegisterSt1.h"
+#include "Strings/Hacking/RegisterSt2.h"
+#include "Strings/Hacking/RegisterSt3.h"
+#include "Strings/Hacking/RegisterSt4.h"
+#include "Strings/Hacking/RegisterSt5.h"
+#include "Strings/Hacking/RegisterSt6.h"
+#include "Strings/Hacking/RegisterSt7.h"
 
 using namespace cocos2d;
 
@@ -174,6 +182,38 @@ LocalizedString* HackablePreview::getRegisterString(HackableCode::Register reg)
 		case HackableCode::Register::r15:
 		{
 			return Strings::Hacking_RegisterR15::create();
+		}
+		case HackableCode::Register::st0:
+		{
+			return Strings::Hacking_RegisterSt0::create();
+		}
+		case HackableCode::Register::st1:
+		{
+			return Strings::Hacking_RegisterSt1::create();
+		}
+		case HackableCode::Register::st2:
+		{
+			return Strings::Hacking_RegisterSt2::create();
+		}
+		case HackableCode::Register::st3:
+		{
+			return Strings::Hacking_RegisterSt3::create();
+		}
+		case HackableCode::Register::st4:
+		{
+			return Strings::Hacking_RegisterSt4::create();
+		}
+		case HackableCode::Register::st5:
+		{
+			return Strings::Hacking_RegisterSt5::create();
+		}
+		case HackableCode::Register::st6:
+		{
+			return Strings::Hacking_RegisterSt6::create();
+		}
+		case HackableCode::Register::st7:
+		{
+			return Strings::Hacking_RegisterSt7::create();
 		}
 	}
 }

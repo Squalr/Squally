@@ -220,6 +220,7 @@ const std::string ObjectResources::Traps_Laser_LaserCapBottom = "Platformer/Obje
 const std::string ObjectResources::Traps_Laser_LaserCapTop = "Platformer/Objects/Traps/Laser/LaserCapTop.png";
 const std::string ObjectResources::Traps_Laser_LaserHead = "Platformer/Objects/Traps/Laser/LaserHead.png";
 const std::string ObjectResources::Traps_Laser_LaserMid = "Platformer/Objects/Traps/Laser/LaserMid.png";
+const std::string ObjectResources::Traps_Laser_LaserWeak = "Platformer/Objects/Traps/Laser/LaserWeak.png";
 const std::string ObjectResources::Traps_MechanicalFlail_Joint = "Platformer/Objects/Traps/MechanicalFlail/Joint.png";
 const std::string ObjectResources::Traps_MechanicalFlail_PreviewFlail = "Platformer/Objects/Traps/MechanicalFlail/PreviewFlail.png";
 const std::string ObjectResources::Traps_MechanicalFlail_PreviewJoint = "Platformer/Objects/Traps/MechanicalFlail/PreviewJoint.png";

@@ -456,6 +456,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.cpp
+	Source/Objects/Platformer/Traps/MetalSpikes/MetalSpikes.cpp
+	Source/Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.cpp
+	Source/Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.cpp
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.cpp
@@ -961,6 +964,14 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/RegisterRip.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.cpp
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt0.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt1.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt2.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt3.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt4.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt5.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt6.cpp
+	Source/Strings/Hacking/CodeEditor/RegisterSt7.cpp
 	Source/Strings/Hacking/CodeEditor/Status.cpp
 	Source/Strings/Hacking/CodeEditor/StatusHeader.cpp
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.cpp
@@ -971,6 +982,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.cpp
+	Source/Strings/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.cpp
+	Source/Strings/Hacking/Objects/MetalSpikes/UpdateTimer/UpdateTimer.cpp
 	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.cpp
@@ -1007,6 +1020,14 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/RegisterRip.cpp
 	Source/Strings/Hacking/RegisterRsi.cpp
 	Source/Strings/Hacking/RegisterRsp.cpp
+	Source/Strings/Hacking/RegisterSt0.cpp
+	Source/Strings/Hacking/RegisterSt1.cpp
+	Source/Strings/Hacking/RegisterSt2.cpp
+	Source/Strings/Hacking/RegisterSt3.cpp
+	Source/Strings/Hacking/RegisterSt4.cpp
+	Source/Strings/Hacking/RegisterSt5.cpp
+	Source/Strings/Hacking/RegisterSt6.cpp
+	Source/Strings/Hacking/RegisterSt7.cpp
 	Source/Strings/Hexus/Actions/ChooseRow.cpp
 	Source/Strings/Hexus/Actions/ChooseSourceCard.cpp
 	Source/Strings/Hexus/Actions/ChooseTargetCard.cpp
@@ -1613,6 +1634,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h
+	Source/Objects/Platformer/Traps/MetalSpikes/MetalSpikes.h
+	Source/Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.h
+	Source/Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h
@@ -2132,6 +2156,14 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/RegisterRip.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsi.h
 	Source/Strings/Hacking/CodeEditor/RegisterRsp.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt0.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt1.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt2.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt3.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt4.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt5.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt6.h
+	Source/Strings/Hacking/CodeEditor/RegisterSt7.h
 	Source/Strings/Hacking/CodeEditor/Status.h
 	Source/Strings/Hacking/CodeEditor/StatusHeader.h
 	Source/Strings/Hacking/CodeEditor/UnfilledBytes.h
@@ -2142,6 +2174,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.h
+	Source/Strings/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.h
+	Source/Strings/Hacking/Objects/MetalSpikes/UpdateTimer/UpdateTimer.h
 	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.h
 	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.h
 	Source/Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h
@@ -2178,6 +2212,14 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/RegisterRip.h
 	Source/Strings/Hacking/RegisterRsi.h
 	Source/Strings/Hacking/RegisterRsp.h
+	Source/Strings/Hacking/RegisterSt0.h
+	Source/Strings/Hacking/RegisterSt1.h
+	Source/Strings/Hacking/RegisterSt2.h
+	Source/Strings/Hacking/RegisterSt3.h
+	Source/Strings/Hacking/RegisterSt4.h
+	Source/Strings/Hacking/RegisterSt5.h
+	Source/Strings/Hacking/RegisterSt6.h
+	Source/Strings/Hacking/RegisterSt7.h
 	Source/Strings/Hexus/Actions/ChooseRow.h
 	Source/Strings/Hexus/Actions/ChooseSourceCard.h
 	Source/Strings/Hexus/Actions/ChooseTargetCard.h
