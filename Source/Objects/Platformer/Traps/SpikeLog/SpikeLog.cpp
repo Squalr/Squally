@@ -14,7 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h"
-#include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotation.h"
+#include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -88,7 +88,7 @@ void SpikeLog::registerHackables()
 				SpikeLog::MapKeySpikeLog,
 				Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
-				SpikeLogSetRotation::create(),
+				SpikeLogSetRotationPreview::create(),
 				{
 					{ HackableCode::Register::ecx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				}

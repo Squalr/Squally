@@ -37,6 +37,7 @@ private:
 	bool isFlipped;
 	bool canJump;
 
+	cocos2d::Vec2 squallyCollisionDefaultPosition;
 	CollisionObject* squallyCollision;
 
 	static const float squallyScale;

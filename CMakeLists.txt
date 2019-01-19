@@ -440,6 +440,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/CameraFocus.cpp
 	Source/Objects/Platformer/Chest.cpp
 	Source/Objects/Platformer/Monitor.cpp
+	Source/Objects/Platformer/Obstructions/Wind/Wind.cpp
+	Source/Objects/Platformer/Obstructions/Wind/WindGenericPreview.cpp
+	Source/Objects/Platformer/Obstructions/Wind/WindSetSpeedPreview.cpp
 	Source/Objects/Platformer/PlatformerDecorDeserializer.cpp
 	Source/Objects/Platformer/PlatformerDecorObject.cpp
 	Source/Objects/Platformer/PlatformerObjectDeserializer.cpp
@@ -458,8 +461,7 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.cpp
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLog.cpp
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.cpp
-	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotation.cpp
-	Source/Objects/Platformer/Wind.cpp
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.cpp
 	Source/Resources/BackgroundResources.cpp
 	Source/Resources/CutsceneResources.cpp
 	Source/Resources/DecorResources.cpp
@@ -976,6 +978,9 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/Objects/RegisterRspWarning.cpp
 	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.cpp
 	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.cpp
+	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.cpp
+	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.cpp
 	Source/Strings/Hacking/RegisterEax.cpp
 	Source/Strings/Hacking/RegisterEbp.cpp
 	Source/Strings/Hacking/RegisterEbx.cpp
@@ -1590,6 +1595,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/CameraFocus.h
 	Source/Objects/Platformer/Chest.h
 	Source/Objects/Platformer/Monitor.h
+	Source/Objects/Platformer/Obstructions/Wind/Wind.h
+	Source/Objects/Platformer/Obstructions/Wind/WindGenericPreview.h
+	Source/Objects/Platformer/Obstructions/Wind/WindSetSpeedPreview.h
 	Source/Objects/Platformer/PlatformerDecorDeserializer.h
 	Source/Objects/Platformer/PlatformerDecorObject.h
 	Source/Objects/Platformer/PlatformerObjectDeserializer.h
@@ -1610,8 +1618,7 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLog.h
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h
-	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotation.h
-	Source/Objects/Platformer/Wind.h
+	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h
 	Source/Resources/BackgroundResources.h
 	Source/Resources/CutsceneResources.h
 	Source/Resources/DecorResources.h
@@ -2142,6 +2149,9 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/Objects/RegisterRspWarning.h
 	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h
 	Source/Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h
+	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h
+	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h
+	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h
 	Source/Strings/Hacking/RegisterEax.h
 	Source/Strings/Hacking/RegisterEbp.h
 	Source/Strings/Hacking/RegisterEbx.h

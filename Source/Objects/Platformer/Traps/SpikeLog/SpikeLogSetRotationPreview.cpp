@@ -1,4 +1,4 @@
-#include "SpikeLogSetRotation.h"
+#include "SpikeLogSetRotationPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -12,16 +12,16 @@
 
 using namespace cocos2d;
 
-SpikeLogSetRotation* SpikeLogSetRotation::create()
+SpikeLogSetRotationPreview* SpikeLogSetRotationPreview::create()
 {
-	SpikeLogSetRotation* instance = new SpikeLogSetRotation();
+	SpikeLogSetRotationPreview* instance = new SpikeLogSetRotationPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpikeLogSetRotation::SpikeLogSetRotation()
+SpikeLogSetRotationPreview::SpikeLogSetRotationPreview()
 {
 	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
 
@@ -42,12 +42,12 @@ SpikeLogSetRotation::SpikeLogSetRotation()
 	this->assemblyTextNode->addChild(this->ecxAnimationCount);
 }
 
-HackablePreview* SpikeLogSetRotation::clone()
+HackablePreview* SpikeLogSetRotationPreview::clone()
 {
-	return SpikeLogSetRotation::create();
+	return SpikeLogSetRotationPreview::create();
 }
 
-void SpikeLogSetRotation::onEnter()
+void SpikeLogSetRotationPreview::onEnter()
 {
 	super::onEnter();
 
@@ -62,7 +62,7 @@ void SpikeLogSetRotation::onEnter()
 	};
 }
 
-void SpikeLogSetRotation::initializePositions()
+void SpikeLogSetRotationPreview::initializePositions()
 {
 	super::initializePositions();
 
