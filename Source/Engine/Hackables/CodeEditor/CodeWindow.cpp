@@ -8,13 +8,14 @@
 #include "cocos/ui/UITextField.h"
 
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Input/InputText.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/StrUtils.h"
 
+#include "Strings/Generics/Empty.h"
 #include "Strings/Generics/Newline.h"
-#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -78,11 +79,9 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->onEditCallback = nullptr;
 	this->lineNumberElements = std::vector<RichElement*>();
 	this->windowSize = initWindowSize;
-	this->referenceContentLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
-	this->referenceTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 
 	this->lineNumbers = RichText::create();
-	this->editableText = UICCTextField::create(this->referenceContentLabel->getString(), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
+	this->editableText = InputText::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create()));
 
 	this->marginSize = 0;
 
@@ -91,7 +90,7 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, windowSize.width, windowSize.height);
 	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, windowSize.width, CodeWindow::TitleBarHeight);
 	this->windowTitle = windowTitle;
-	this->editableWindowTitle = UICCTextField::create(this->referenceTitleLabel->getString(), this->referenceTitleLabel->getFont(), this->referenceTitleLabel->getFontSize());
+	this->editableWindowTitle = InputText::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create()));
 	this->editableWindowTitle->setString(this->windowTitle->getString());
 
 	this->editableWindowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -109,8 +108,6 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->editableText->enableWrap(true);
 	this->editableText->setOpacity(0);
 
-	this->addChild(this->referenceContentLabel);
-	this->addChild(this->referenceTitleLabel);
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
@@ -196,9 +193,14 @@ void CodeWindow::setOnEditCallback(std::function<void(std::string text)> newOnEd
 	this->onEditCallback = newOnEditCallback;
 }
 
-std::string  CodeWindow::getText()
+std::string CodeWindow::getText()
 {
 	return this->editableText->getString();
+}
+
+std::string CodeWindow::getTitle()
+{
+	return this->editableWindowTitle->getString();
 }
 
 void CodeWindow::setText(std::string text)
@@ -213,7 +215,7 @@ void CodeWindow::focus()
 
 void CodeWindow::insertNewline()
 {
-	RichElement* lineNumberText = RichElementText::create(0, CodeWindow::LineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
+	RichElement* lineNumberText = RichElementText::create(0, CodeWindow::LineNumberColor, 0xFF, std::to_string(this->currentLineNumber++), this->editableText->getFont(), this->editableText->getFontSize());
 	RichElement* lineNumberNewLine = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
 
 	this->lineNumberElements.push_back(lineNumberText);
@@ -366,7 +368,7 @@ void CodeWindow::setTitleStringReplaceVariable(LocalizedString* stringReplaceVar
 
 void CodeWindow::insertText(LocalizedString* text, Color3B color)
 {
-	RichElement* element = RichElementText::create(0, color, 0xFF, text->getString(), this->referenceContentLabel->getFont(), this->referenceContentLabel->getFontSize());
+	RichElement* element = RichElementText::create(0, color, 0xFF, text->getString(), this->editableText->getFont(), this->editableText->getFontSize());
 
 	text->retain();
 	this->textElements.push_back(std::make_tuple(text, color));

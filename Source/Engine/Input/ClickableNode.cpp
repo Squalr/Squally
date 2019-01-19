@@ -342,31 +342,30 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 		return;
 	}
 
-	if (GameUtils::isVisible(this) && this->intersects(args->mouseCoords))
-	{
-		if (this->mouseClickEvent != nullptr)
-		{
-			if (!args->isDragging && this->isClicked)
-			{
-				// Mouse click callback
-				this->mouseClickEvent(this, args);
-
-				// Play click sound
-				if (this->clickSound.length() > 0)
-				{
-					SoundManager::playSoundResource(this->clickSound);
-				}
-
-				this->showSprite(this->spriteSelected);
-
-				if (event != nullptr)
-				{
-					event->stopPropagation();
-				}
-			}
-		}
-	}
-
 	this->isClickInit = false;
-	this->isClicked = false;
+
+	if (GameUtils::isVisible(this) && this->intersects(args->mouseCoords) && this->mouseClickEvent != nullptr && !args->isDragging && this->isClicked)
+	{
+		this->isClicked = false;
+
+		// Play click sound
+		if (this->clickSound.length() > 0)
+		{
+			SoundManager::playSoundResource(this->clickSound);
+		}
+
+		this->showSprite(this->spriteSelected);
+
+		if (event != nullptr)
+		{
+			event->stopPropagation();
+		}
+
+		// Mouse click callback. IMPORTANT: Do not access any references to `this` after calling the click callback, in the case where this object is deleted
+		this->mouseClickEvent(this, args);
+	}
+	else
+	{
+		this->isClicked = false;
+	}
 }
