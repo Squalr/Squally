@@ -265,7 +265,9 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			this->previewNode->addChild(preview);
 		}
 
-		this->functionWindow->setText(hackableCode->getAssemblyString());
+		ScriptEntry* activeScript = this->scriptList->getActiveScript();
+
+		this->functionWindow->setText(activeScript == nullptr ? "" : activeScript->getScript());
 		this->functionWindow->focus();
 
 		this->titleLabel->setStringReplacementVariables(hackableCode->getName()->clone());

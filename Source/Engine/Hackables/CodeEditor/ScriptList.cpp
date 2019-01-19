@@ -12,7 +12,6 @@
 #include "Strings/Generics/Count.h"
 #include "Strings/Hacking/CodeEditor/CreateNewScript.h"
 #include "Strings/Hacking/CodeEditor/MyNewScript.h"
-#include "Strings/Hacking/CodeEditor/OriginalCode.h"
 #include "Strings/Hacking/CodeEditor/YourScripts.h"
 #include "Resources/UIResources.h"
 

@@ -35,5 +35,6 @@ private:
 	HackableData* windDataSpeedY;
 	cocos2d::ParticleSystem* windParticles;
 	cocos2d::Size windSize;
+	cocos2d::Vec2 windSpeedDefault;
 	cocos2d::Vec2 windSpeed;
 };
