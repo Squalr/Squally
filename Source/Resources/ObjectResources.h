@@ -221,6 +221,7 @@ namespace ObjectResources
 	extern const std::string Traps_Laser_LaserCapTop;
 	extern const std::string Traps_Laser_LaserHead;
 	extern const std::string Traps_Laser_LaserMid;
+	extern const std::string Traps_Laser_LaserWeak;
 	extern const std::string Traps_MechanicalFlail_Joint;
 	extern const std::string Traps_MechanicalFlail_PreviewFlail;
 	extern const std::string Traps_MechanicalFlail_PreviewJoint;

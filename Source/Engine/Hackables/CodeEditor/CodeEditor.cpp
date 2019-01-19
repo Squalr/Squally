@@ -67,6 +67,14 @@
 #include "Strings/Hacking/CodeEditor/RegisterRip.h"
 #include "Strings/Hacking/CodeEditor/RegisterRsi.h"
 #include "Strings/Hacking/CodeEditor/RegisterRsp.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt0.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt1.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt2.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt3.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt4.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt5.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt6.h"
+#include "Strings/Hacking/CodeEditor/RegisterSt7.h"
 #include "Strings/Hacking/CodeEditor/Status.h"
 #include "Strings/Hacking/CodeEditor/StatusHeader.h"
 #include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
@@ -442,6 +450,38 @@ void CodeEditor::buildRegisterWindow()
 			{
 				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR15::create();
 			}
+			case HackableCode::Register::st0:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt0::create();
+			}
+			case HackableCode::Register::st1:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt1::create();
+			}
+			case HackableCode::Register::st2:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt2::create();
+			}
+			case HackableCode::Register::st3:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt3::create();
+			}
+			case HackableCode::Register::st4:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt4::create();
+			}
+			case HackableCode::Register::st5:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt5::create();
+			}
+			case HackableCode::Register::st6:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt6::create();
+			}
+			case HackableCode::Register::st7:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt7::create();
+			}
 		}
 	});
 
@@ -493,6 +533,15 @@ void CodeEditor::buildRegisterWindow()
 		tryPrintRegisterHint(HackableCode::Register::r14);
 		tryPrintRegisterHint(HackableCode::Register::r15);
 	}
+
+	tryPrintRegisterHint(HackableCode::Register::st0);
+	tryPrintRegisterHint(HackableCode::Register::st1);
+	tryPrintRegisterHint(HackableCode::Register::st2);
+	tryPrintRegisterHint(HackableCode::Register::st3);
+	tryPrintRegisterHint(HackableCode::Register::st4);
+	tryPrintRegisterHint(HackableCode::Register::st5);
+	tryPrintRegisterHint(HackableCode::Register::st6);
+	tryPrintRegisterHint(HackableCode::Register::st7);
 }
 
 void CodeEditor::compile(std::string assemblyText)
