@@ -26,6 +26,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void updateWind(float dt);
 
 	void registerHackables();
 	cocos2d::Vec2 getButtonOffset() override;

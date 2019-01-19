@@ -35,146 +35,146 @@ namespace Strings
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringAr()
 	{
-		return "متغير المخرجات الذي يتم فيه تخزين الزاوية الجديدة.";
+		return "مؤشر للسرعة العمودية للرياح ، بين -1.0 و 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringBg()
 	{
-		return "Изходната променлива, в която се съхранява новия ъгъл.";
+		return "Указател на вертикалната скорост на вятъра, между -1.0 и 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringCs()
 	{
-		return "Výstupní proměnná, ve které je uložen nový úhel.";
+		return "Ukazatel na vertikální rychlost větru, mezi -1,0 a 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringDa()
 	{
-		return "Udgangsvariablen, hvor den nye vinkel er gemt.";
+		return "En peger til vindens lodrette hastighed, mellem -1,0 og 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringDe()
 	{
-		return "Die Ausgangsgröße, in der der neue Winkel gespeichert wird.";
+		return "Ein Zeiger auf die vertikale Geschwindigkeit des Windes zwischen -1.0 und 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringEl()
 	{
-		return "Η μεταβλητή εξόδου στην οποία αποθηκεύεται η νέα γωνία.";
+		return "Ένας δείκτης στην κάθετη ταχύτητα του ανέμου, μεταξύ -1,0 και 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringEn()
 	{
-		return "The output variable in which the new angle is stored.";
+		return "A pointer to the wind's vertical speed, between -1.0 and 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringEs()
 	{
-		return "La variable de salida en la que se almacena el nuevo ángulo.";
+		return "Un puntero a la velocidad vertical del viento, entre -1.0 y 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringEs419()
 	{
-		return "La variable de salida en la que se almacena el nuevo ángulo.";
+		return "Un puntero a la velocidad vertical del viento, entre -1.0 y 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringFi()
 	{
-		return "Lähtömuuttuja, johon uusi kulma on tallennettu.";
+		return "Osoitin tuulen pystysuoraan nopeuteen välillä -1,0 ja 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringFr()
 	{
-		return "La variable de sortie dans laquelle le nouvel angle est stocké.";
+		return "Un pointeur sur la vitesse verticale du vent, entre -1.0 et 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringHu()
 	{
-		return "A kimeneti változó, amelyben az új szög tárolódik.";
+		return "Egy mutató a szél függőleges sebességéhez, -1,0 és 1,0 között.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringIt()
 	{
-		return "La variabile di output in cui è memorizzata la nuova angolazione.";
+		return "Un puntatore alla velocità verticale del vento, tra -1.0 e 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringJa()
 	{
-		return "新しい角度が格納されている出力変数。";
+		return "風の垂直方向の速度へのポインタ、-1.0〜1.0の範囲。";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringKo()
 	{
-		return "새 각도가 저장되는 출력 변수입니다.";
+		return "-1.0에서 1.0 사이의 바람의 수직 속도를 가리키는 포인터입니다.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringNl()
 	{
-		return "De uitvoervariabele waarin de nieuwe hoek is opgeslagen.";
+		return "Een verwijzing naar de verticale snelheid van de wind, tussen -1,0 en 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringNo()
 	{
-		return "Utgangsvariabelen der den nye vinkelen er lagret.";
+		return "En peker på vindens vertikale hastighet, mellom -1,0 og 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringPl()
 	{
-		return "Zmienna wyjściowa, w której zapisywany jest nowy kąt.";
+		return "Wskaźnik do prędkości pionowej wiatru od -1,0 do 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringPt()
 	{
-		return "A variável de saída na qual o novo ângulo é armazenado.";
+		return "Um ponteiro para a velocidade vertical do vento, entre -1,0 e 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringPtBr()
 	{
-		return "A variável de saída na qual o novo ângulo é armazenado.";
+		return "Um ponteiro para a velocidade vertical do vento, entre -1,0 e 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringRo()
 	{
-		return "Variabila de ieșire în care este stocat noul unghi.";
+		return "Un indicator al vitezei verticale a vântului, între -1,0 și 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringRu()
 	{
-		return "Выходная переменная, в которой сохраняется новый угол.";
+		return "Указатель на вертикальную скорость ветра, от -1,0 до 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringSv()
 	{
-		return "Utgångsvariabeln där den nya vinkeln är lagrad.";
+		return "En pekare till vindens vertikala hastighet, mellan -1,0 och 1,0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringTh()
 	{
-		return "ตัวแปรเอาต์พุตที่จัดเก็บมุมใหม่";
+		return "ตัวชี้ไปยังความเร็วแนวตั้งของลมระหว่าง -1.0 และ 1.0";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringTr()
 	{
-		return "Yeni açının kaydedildiği çıkış değişkeni.";
+		return "Rüzgârın dikey hızına bir işaret, -1.0 ile 1.0 arasında.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringUk()
 	{
-		return "Вихідна змінна, в якій зберігається новий кут.";
+		return "Покажчик на вертикальну швидкість вітру, від -1.0 до 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringVi()
 	{
-		return "Biến đầu ra trong đó góc mới được lưu trữ.";
+		return "Một con trỏ tới tốc độ thẳng đứng của gió, giữa -1.0 và 1.0.";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringZhCn()
 	{
-		return "存储新角度的输出变量。";
+		return "指向风的垂直速度的指针，介于-1.0和1.0之间。";
 	}
 
 	std::string Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::getStringZhTw()
 	{
-		return "存儲新角度的輸出變量。";
+		return "指向風的垂直速度的指針，介於-1.0和1.0之間。";
 	}
 }

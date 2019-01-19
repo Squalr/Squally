@@ -110,6 +110,14 @@
 #define ASM_NOP6() ASM_NOP5() ASM_NOP1()
 #define ASM_NOP7() ASM_NOP6() ASM_NOP1()
 #define ASM_NOP8() ASM_NOP7() ASM_NOP1()
+#define ASM_NOP9() ASM_NOP8() ASM_NOP1()
+#define ASM_NOP10() ASM_NOP9() ASM_NOP1()
+#define ASM_NOP11() ASM_NOP10() ASM_NOP1()
+#define ASM_NOP12() ASM_NOP11() ASM_NOP1()
+#define ASM_NOP13() ASM_NOP12() ASM_NOP1()
+#define ASM_NOP14() ASM_NOP13() ASM_NOP1()
+#define ASM_NOP15() ASM_NOP14() ASM_NOP1()
+#define ASM_NOP16() ASM_NOP15() ASM_NOP1()
 
 class HackablePreview;
 class LocalizedString;

@@ -38,6 +38,9 @@ const std::set<std::string> CodeWindow::Registers =
 	// FPU registers
 	"fp0", "fp1", "fp2", "fp3", "fp4", "fp5", "fp6", "fp7",
 
+	// FPU stack registers
+	"st0", "st1", "st2", "st3", "st4", "st5", "st6", "st7",
+
 	// MMX registers
 	"mm0", "mm1", "mm2", "mm3", "mm4", "mm5", "mm6", "mm7",
 	"mm8", "mm9", "mm10", "mm11", "mm12", "mm13", "mm14", "mm15",

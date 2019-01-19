@@ -52,6 +52,7 @@ Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
 	this->windForce = CollisionObject::create(PhysicsBody::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, false, false);
 
+	this->windParticles->setAnchorPoint(Vec2::ZERO);
 	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 
 	this->addChild(this->windForce);
@@ -89,6 +90,13 @@ void Wind::initializeListeners()
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+
+	this->windForce->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	{
+		collisionData.other->setVelocity(Vec2::ZERO);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }
 
 void Wind::registerHackables()
@@ -110,8 +118,8 @@ void Wind::registerHackables()
 		},
 	};
 
-	auto incrementAnimationFunc = &Wind::update;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
+	auto updateWindFunc = &Wind::updateWind;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateWindFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
@@ -132,22 +140,35 @@ void Wind::registerHackables()
 
 Vec2 Wind::getButtonOffset()
 {
-	return Vec2(512.0f, 0.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 void Wind::update(float dt)
 {
-	volatile Vec2 speed = Vec2::ZERO;
-	volatile Vec2 currentSpeed = this->windSpeed;
+	super::update(dt);
+
+	this->updateWind(dt);
+}
+
+void Wind::updateWind(float dt)
+{
+	volatile Vec2 speed = this->windSpeed;
+	volatile float* xSpeedPtr = &speed.x;
+	volatile float* ySpeedPtr = &speed.y;
 
 	ASM(push EAX);
 	ASM(push EBX);
-	ASM_MOV_REG_VAR(eax, currentSpeed.x);
-	ASM_MOV_REG_VAR(ebx, currentSpeed.y);
+
+	ASM_MOV_REG_VAR(EAX, xSpeedPtr);
+	ASM_MOV_REG_VAR(EBX, ySpeedPtr);
+
+	ASM(fld dword ptr [EBX])
+	ASM(fld dword ptr [EAX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WIND_SPEED);
-	ASM_MOV_VAR_REG(speed.x, EAX);
-	ASM_MOV_VAR_REG(speed.y, EBX);
+	ASM(fstp dword ptr [EAX])
+	ASM(fstp dword ptr [EBX])
+	ASM_NOP16()
 	HACKABLE_CODE_END();
 
 	ASM(pop EBX);
@@ -167,7 +188,7 @@ void Wind::update(float dt)
 		}
 	}
 
-	volatile float angle = speed.x == 0.0f ? (speed.y > 0.0f ? -90.0f : 90.0f) : -std::atan(speed.y / speed.x);
+	volatile float angle = std::atan2(speed.y, speed.x) * 180.0f / M_PI;
 
 	this->windParticles->setAngle(angle);
 	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->windSize.width, speed.x == 0.0f ? 0.0f : this->windSize.height));
