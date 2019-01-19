@@ -232,7 +232,6 @@ void CodeWindow::insertNewline()
 	text->retain();
 	this->textElements.push_back(std::make_tuple(text, Color3B()));
 	this->displayedText->pushBackElement(element);
-	this->displayedText->formatText();
 }
 
 void CodeWindow::clearText()
@@ -253,7 +252,6 @@ void CodeWindow::clearText()
 
 	this->textElements.clear();
 	this->displayedText->clearElements();
-	this->displayedText->formatText();
 }
 
 void CodeWindow::constructTokenizedText(std::string currentText)

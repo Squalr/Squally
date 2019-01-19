@@ -147,7 +147,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="493" name="spiked-log" type="object" x="3386.42" y="2823.94" width="598" height="140"/>
-  <object id="501" name="wind" type="object" x="2255.3" y="2253.88" width="594.242" height="580">
+  <object id="501" name="wind" type="object" x="2255.3" y="1997.88" width="594.242" height="836">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0.5"/>

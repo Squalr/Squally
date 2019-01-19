@@ -48,7 +48,8 @@ Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
 	}
 
 	this->windSize = Size(this->properties->at(SerializableObject::MapKeyWidth).asFloat(), this->properties->at(SerializableObject::MapKeyHeight).asFloat());
-	this->windSpeed = Vec2(speedX, speedY);
+	this->windSpeedDefault = Vec2(speedX, speedY);
+	this->windSpeed = this->windSpeedDefault;
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
 	this->windForce = CollisionObject::create(PhysicsBody::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, false, false);
 
@@ -74,7 +75,7 @@ void Wind::initializePositions()
 
 	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{
-		collisionData.other->setVelocity(collisionData.other->getVelocity() + this->windSpeed);
+		collisionData.other->setVelocity(collisionData.other->getVelocity() + this->windSpeedDefault);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -128,9 +129,9 @@ void Wind::registerHackables()
 
 	/*
 	this->windDataSpeedY = HackableData::create(
-		&this->windSpeed.y,
+		&this->windSpeedDefault.y,
 		Strings::Generics_Empty::create(),
-		typeid(this->windSpeed.y),
+		typeid(this->windSpeedDefault.y),
 		UIResources::Menus_Icons_AlchemyPot,
 		nullptr
 	);
@@ -152,9 +153,10 @@ void Wind::update(float dt)
 
 void Wind::updateWind(float dt)
 {
-	volatile Vec2 speed = this->windSpeed;
-	volatile float* xSpeedPtr = &speed.x;
-	volatile float* ySpeedPtr = &speed.y;
+	this->windSpeed = this->windSpeedDefault;
+
+	volatile float* xSpeedPtr = &this->windSpeed.x;
+	volatile float* ySpeedPtr = &this->windSpeed.y;
 
 	ASM(push EAX);
 	ASM(push EBX);
@@ -169,6 +171,7 @@ void Wind::updateWind(float dt)
 	ASM(fstp dword ptr [EAX])
 	ASM(fstp dword ptr [EBX])
 	ASM_NOP16()
+	ASM_NOP16()
 	HACKABLE_CODE_END();
 
 	ASM(pop EBX);
@@ -176,7 +179,7 @@ void Wind::updateWind(float dt)
 
 	HACKABLES_STOP_SEARCH();
 
-	if (speed.x == 0.0f && speed.y == 0.0f)
+	if (this->windSpeed.x == 0.0f && this->windSpeed.y == 0.0f)
 	{
 		this->windParticles->stopSystem();
 	}
@@ -188,8 +191,8 @@ void Wind::updateWind(float dt)
 		}
 	}
 
-	volatile float angle = std::atan2(speed.y, speed.x) * 180.0f / M_PI;
+	volatile float angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / M_PI;
 
 	this->windParticles->setAngle(angle);
-	this->windParticles->setPosVar(Vec2(speed.y == 0.0f ? 0.0f : this->windSize.width, speed.x == 0.0f ? 0.0f : this->windSize.height));
+	this->windParticles->setPosVar(Vec2(this->windSpeed.y == 0.0f ? 0.0f : this->windSize.width, this->windSpeed.x == 0.0f ? 0.0f : this->windSize.height));
 }
