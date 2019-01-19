@@ -1,34 +1,34 @@
 #pragma once
 
+#include "cocos/ui/UITextField.h"
+
 #include "Engine/SmartNode.h"
 
 class MenuLabel;
 
 namespace cocos2d
 {
-	namespace ui
-	{
-		class UICCTextField;
-	}
 }
 
 class ClickableNode;
 class LocalizedLabel;
 
-class InputText : public SmartNode
+class InputText : public cocos2d::ui::UICCTextField
 {
 public:
-	static InputText* create(LocalizedLabel* referenceContentLabel);
+	static InputText* create(LocalizedLabel* referenceLabel);
+
+	std::string getFont();
+	float getFontSize();
 
 private:
-	typedef SmartNode super;
-	InputText(LocalizedLabel* referenceContentLabel);
+	typedef UICCTextField super;
+	InputText(LocalizedLabel* referenceLabel);
 	virtual ~InputText() = default;
 
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
+	void update(float dt) override;
 
-	cocos2d::ui::UICCTextField* editableText;
+	LocalizedLabel* referenceLabel;
 	ClickableNode* hitbox;
 };

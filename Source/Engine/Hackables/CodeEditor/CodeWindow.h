@@ -13,12 +13,12 @@ namespace cocos2d
 
 	namespace ui
 	{
-		class UICCTextField;
 		class RichText;
 		class RichElement;
 	}
 }
 
+class InputText;
 class LocalizedLabel;
 class LocalizedString;
 
@@ -50,6 +50,7 @@ public:
 	void setTokenizationCallback(std::function<void(std::string text, std::vector<CodeWindow::token>&)> newTokenizationCallback);
 	void setOnEditCallback(std::function<void(std::string text)> newOnEditCallback);
 	std::string getText();
+	std::string getTitle();
 	void setText(std::string text);
 	void focus();
 
@@ -68,9 +69,9 @@ private:
 	cocos2d::LayerColor* background;
 	cocos2d::LayerColor* titleBar;
 	LocalizedString* windowTitle;
-	cocos2d::ui::UICCTextField* editableWindowTitle;
+	InputText* editableWindowTitle;
 	cocos2d::ui::RichText* displayedText;
-	cocos2d::ui::UICCTextField* editableText;
+	InputText* editableText;
 	cocos2d::ui::RichText* lineNumbers;
 
 	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textElements;
@@ -82,8 +83,6 @@ private:
 	int currentLineNumber;
 	cocos2d::Size windowSize;
 	std::string previousText;
-	LocalizedLabel* referenceContentLabel;
-	LocalizedLabel* referenceTitleLabel;
 
 	static const std::string Delimiters;
 	static const std::set<std::string> Registers;

@@ -40,6 +40,7 @@ ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
 	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create());
 	this->createNewScriptSprite = Sprite::create(UIResources::Menus_HackerModeMenu_Plus);
 	this->hackableCode = nullptr;
+	this->activeScript = nullptr;
 
 	this->createNewScriptLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->createNewScriptSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -118,24 +119,22 @@ void ScriptList::addNewScript()
 
 void ScriptList::deleteActiveScript()
 {
-	if (this->activeScript != nullptr && this->scripts.size() > 1)
-	{
-		this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), this->activeScript), this->scripts.end());
-		this->scriptsNode->removeChild(this->activeScript);
-
-		this->setActiveScript(scripts.front());
-	}
+	this->deleteScript(this->activeScript);
 }
 
 void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 {
+	if (scriptEntry == nullptr || std::find(this->scripts.begin(), this->scripts.end(), scriptEntry) == this->scripts.end())
+	{
+		return;
+	}
+
 	this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), scriptEntry), this->scripts.end());
 	this->scriptsNode->removeChild(scriptEntry);
 
 	// Re-initialize positions
 	this->initializePositions();
 
-	/*
 	if (scriptEntry == this->activeScript)
 	{
 		if (!this->scripts.empty())
@@ -146,7 +145,7 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 		{
 			this->addNewScript();
 		}
-	}*/
+	}
 }
 
 void ScriptList::loadScripts(HackableCode* hackableCode)

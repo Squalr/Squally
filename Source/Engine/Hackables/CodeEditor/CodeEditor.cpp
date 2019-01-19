@@ -291,6 +291,13 @@ void CodeEditor::update(float dt)
 {
 	super::update(dt);
 
+	ScriptEntry* activeScript = this->scriptList->getActiveScript();
+	
+	if (activeScript != nullptr)
+	{
+		activeScript->getName()->setString(this->functionWindow->getTitle());
+	}
+
 	// Update compile based on compile delay
 	if (this->compileDelay <= CodeEditor::CompileDelayMaxSeconds)
 	{
