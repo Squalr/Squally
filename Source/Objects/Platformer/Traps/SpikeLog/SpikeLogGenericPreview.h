@@ -22,6 +22,7 @@ private:
 	SpikeLogGenericPreview();
 	~SpikeLogGenericPreview() = default;
 	void onEnter() override;
+	void initializePositions() override;
 
 	SmartAnimationSequenceNode* previewSpikedLog;
 };

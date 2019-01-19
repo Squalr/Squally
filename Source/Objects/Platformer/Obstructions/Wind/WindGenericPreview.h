@@ -4,7 +4,7 @@
 
 namespace cocos2d
 {
-	class Sprite;
+	class ParticleSystem;
 }
 
 class WindGenericPreview : public HackablePreview
@@ -20,6 +20,7 @@ private:
 	WindGenericPreview();
 	~WindGenericPreview() = default;
 	void onEnter() override;
+	void initializePositions() override;
 
-	cocos2d::Sprite* previewHeavenHug;
+	cocos2d::ParticleSystem* windParticles;
 };

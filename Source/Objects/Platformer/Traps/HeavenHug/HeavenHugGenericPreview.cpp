@@ -37,8 +37,6 @@ void HeavenHugGenericPreview::onEnter()
 
 	const float offset = 48.0f;
 
-	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
-
 	this->previewHeavenHug->runAction(
 		RepeatForever::create(Sequence::create(
 			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)))),
@@ -46,4 +44,13 @@ void HeavenHugGenericPreview::onEnter()
 			nullptr
 		))
 	);
+}
+
+void HeavenHugGenericPreview::initializePositions()
+{
+	super::initializePositions();
+
+	const float offset = 48.0f;
+
+	this->previewHeavenHug->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
 }
