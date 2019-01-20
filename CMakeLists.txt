@@ -454,6 +454,7 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.cpp
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.cpp
 	Source/Objects/Platformer/Traps/Laser/Laser.cpp
+	Source/Objects/Platformer/Traps/Laser/LaserAnimation.cpp
 	Source/Objects/Platformer/Traps/Laser/LaserCountDownPreview.cpp
 	Source/Objects/Platformer/Traps/Laser/LaserGenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
@@ -1642,6 +1643,7 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h
 	Source/Objects/Platformer/Traps/Laser/Laser.h
+	Source/Objects/Platformer/Traps/Laser/LaserAnimation.h
 	Source/Objects/Platformer/Traps/Laser/LaserCountDownPreview.h
 	Source/Objects/Platformer/Traps/Laser/LaserGenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
