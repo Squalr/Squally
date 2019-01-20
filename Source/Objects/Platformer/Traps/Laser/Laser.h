@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class LaserAnimation;
 class SmartAnimationSequenceNode;
 
 class Laser : public HackableObject
@@ -32,13 +33,9 @@ private:
 	void initializePositions() override;
 	void updateLaser(float dt);
 
-	cocos2d::Sprite* laserHeadTop;
-	cocos2d::Sprite* laserHeadBottom;
-	cocos2d::Sprite* laserWeak;
-	cocos2d::Sprite* laserStrong;
+	LaserAnimation* laserAnimation;
 	CollisionObject* laserCollision;
 
-	float height;
 	float currentLaserCountDown;
 	float maxLaserCountDown;
 	bool isRunningAnimation;

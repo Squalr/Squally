@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class SmartAnimationSequenceNode;
+class LaserAnimation;
 
 class LaserGenericPreview : public HackablePreview
 {
@@ -24,5 +24,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	SmartAnimationSequenceNode* previewSpikes;
+	LaserAnimation* previewLaser;
 };

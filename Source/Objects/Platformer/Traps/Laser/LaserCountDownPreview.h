@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class LaserAnimation;
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
@@ -25,5 +26,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	SmartAnimationSequenceNode* previewSpikes;
+	LaserAnimation* previewLaser;
 };

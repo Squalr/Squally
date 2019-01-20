@@ -1,14 +1,13 @@
 #include "LaserCountDownPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-
-#include "Resources/ObjectResources.h"
+#include "Objects/Platformer/Traps/Laser/LaserAnimation.h"
 
 using namespace cocos2d;
 
@@ -23,11 +22,11 @@ LaserCountDownPreview* LaserCountDownPreview::create()
 
 LaserCountDownPreview::LaserCountDownPreview()
 {
-	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
+	this->previewLaser = LaserAnimation::create(480.0f);
 
-	this->previewSpikes->setScale(0.4f);
+	this->previewLaser->setScale(0.4f);
 
-	this->previewNode->addChild(this->previewSpikes);
+	this->previewNode->addChild(this->previewLaser);
 }
 
 HackablePreview* LaserCountDownPreview::clone()
@@ -39,7 +38,15 @@ void LaserCountDownPreview::onEnter()
 {
 	super::onEnter();
 
-	this->previewSpikes->playAnimationAndReverseRepeat(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f, 0.025f);
+	this->runAction(RepeatForever::create(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			this->previewLaser->runAnimation();
+		}),
+		DelayTime::create(3.0f),
+		nullptr
+	)));
 }
 
 void LaserCountDownPreview::initializePositions()

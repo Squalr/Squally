@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="515">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="524">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -136,13 +136,13 @@
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 784,-40 1480,-8 2360,8 2800,-32 3056,24 3056,-216 3312,-232 3720,-208 3864,-120 4184,-40 4984,-24 4968,1088 -32,1072 56,496"/>
+   <polyline points="0,0 784,-40 1480,-8 2360,8 2800,-32 3056,24 3056,-216 3312,-232 3720,-208 3864,-120 4184,-40 7220,-96 7224,1052 -32,1072 56,496"/>
   </object>
   <object id="509" name="solid" type="terrain" x="1508" y="3792">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 2264,-8 2448,32 3120,-12 3988,-12 5368,4 5356,796 3672,784 3064,808 1128,712 -16,624 0,232"/>
+   <polyline points="0,0 2264,-8 2448,32 3120,-12 3988,-12 6586.18,19.1515 6586.3,780.848 3672,784 3064,808 1128,712 -16,624 0,232"/>
   </object>
  </objectgroup>
  <objectgroup name="decor midground">
@@ -162,25 +162,79 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="511" name="wind" type="object" x="3442.82" y="3199.21" width="712.424" height="611.758">
+  <object id="511" name="wind" type="object" x="2986.82" y="3183.21" width="712.424" height="611.758">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="512" name="metal-spikes" type="object" x="4601.27" y="3656.51" width="182.424" height="167.758">
+  <object id="512" name="metal-spikes" type="object" x="4607.87" y="3662.57" width="291" height="115">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="513" name="wooden-spikes" type="object" x="5516.79" y="3646.12" width="182.424" height="167.758">
+  <object id="513" name="wooden-spikes" type="object" x="5490.3" y="3664.24" width="291" height="115">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="514" name="laser" type="object" x="5082.79" y="3126.12" width="96.424" height="667.758">
+  <object id="514" name="laser" type="object" x="6234.06" y="3118.18" width="96.424" height="671.758">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="515" name="laser" type="object" x="6457.06" y="3124.18" width="96.424" height="667.758">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="516" name="laser" type="object" x="6699.06" y="3118.18" width="96.424" height="674.425">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="517" name="laser" type="object" x="6925.06" y="3118.18" width="96.424" height="674.425">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="518" name="laser" type="object" x="7158.88" y="3120.18" width="96.424" height="678.425">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="519" name="metal-spikes" type="object" x="5784" y="3664.55" width="291" height="115">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="520" name="metal-spikes" type="object" x="5200.18" y="3663.58" width="291" height="115">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="521" name="wooden-spikes" type="object" x="4904.3" y="3663.58" width="291" height="115">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="522" name="laser" type="object" x="7378.82" y="3121.76" width="96.424" height="679.758">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="523" name="laser" type="object" x="7575.79" y="3121.76" width="96.424" height="679.758">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
@@ -192,7 +246,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="skeletal-priestess" type="entity" x="6661.39" y="3575.81" width="78.7879" height="88">
+  <object id="489" name="skeletal-priestess" type="entity" x="7847.69" y="3556.66" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -229,8 +283,6 @@
   </properties>
   <object id="491" name="Crypts/Foreground/Spear3" type="decor" x="1549.72" y="3618" width="510" height="558"/>
   <object id="496" name="Crypts/Foreground/Spear3" type="decor" x="2057.42" y="3646.82" width="510" height="558"/>
-  <object id="497" name="Crypts/Foreground/Spear3" type="decor" x="4037.91" y="3665.54" width="510" height="558"/>
-  <object id="498" name="Crypts/Foreground/Spear3" type="decor" x="4750.58" y="3670.75" width="510" height="558"/>
  </objectgroup>
  <objectgroup name="decor 512">
   <properties>
