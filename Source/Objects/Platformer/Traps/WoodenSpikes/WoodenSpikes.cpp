@@ -37,7 +37,7 @@ WoodenSpikes* WoodenSpikes::create(ValueMap* initProperties)
 
 WoodenSpikes::WoodenSpikes(ValueMap* initProperties) : HackableObject(initProperties)
 {
-	this->currentElapsedTimeForSpikeTrigger = 0.0f;
+	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;
 

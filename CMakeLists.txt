@@ -453,6 +453,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.cpp
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.cpp
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.cpp
+	Source/Objects/Platformer/Traps/Laser/Laser.cpp
+	Source/Objects/Platformer/Traps/Laser/LaserCountDownPreview.cpp
+	Source/Objects/Platformer/Traps/Laser/LaserGenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.cpp
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.cpp
@@ -982,6 +985,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/CodeEditor/YourScripts.cpp
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.cpp
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.cpp
+	Source/Strings/Hacking/Objects/Laser/UpdateCountDown/RegisterSt0.cpp
+	Source/Strings/Hacking/Objects/Laser/UpdateCountDown/UpdateCountDown.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.cpp
@@ -1636,6 +1641,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.h
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h
+	Source/Objects/Platformer/Traps/Laser/Laser.h
+	Source/Objects/Platformer/Traps/Laser/LaserCountDownPreview.h
+	Source/Objects/Platformer/Traps/Laser/LaserGenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h
 	Source/Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h
@@ -2179,6 +2187,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/CodeEditor/YourScripts.h
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h
 	Source/Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h
+	Source/Strings/Hacking/Objects/Laser/UpdateCountDown/RegisterSt0.h
+	Source/Strings/Hacking/Objects/Laser/UpdateCountDown/UpdateCountDown.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.h
 	Source/Strings/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.h
