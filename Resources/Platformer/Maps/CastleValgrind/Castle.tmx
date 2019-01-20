@@ -76,7 +76,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="506" name="Crypts/Background/background plan 2" type="decor" x="-1096.12" y="2733.58" width="15000" height="1080">
+  <object id="506" name="Crypts/Background/background plan 2" type="decor" x="-1116.12" y="2833.58" width="15000" height="1080">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -87,7 +87,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="505" name="Crypts/Background/background plan 1" type="decor" x="-1102.18" y="2994.18" width="15000" height="1080">
+  <object id="505" name="Crypts/Background/background plan 1" type="decor" x="-1122.18" y="3094.18" width="15000" height="1080">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -150,13 +150,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="492" name="Crypts/Foreground/TREE-2" type="decor" x="4394.7" y="3319.3" width="568" height="475"/>
-  <object id="493" name="Crypts/SKULL" type="decor" x="2871" y="3754.5" width="66" height="44"/>
+  <object id="493" name="Crypts/SKULL" type="decor" x="3303" y="3755.5" width="66" height="44"/>
   <object id="494" name="Crypts/mus-1" type="decor" x="2636.67" y="3764" width="49" height="42">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="501" name="Crypts/trunk_3" type="decor" x="1898.52" y="3239.7" width="523" height="552"/>
+  <object id="501" name="Crypts/trunk_3" type="decor" x="1740.52" y="3239.7" width="523" height="552"/>
  </objectgroup>
  <objectgroup name="objects">
   <properties>
@@ -169,7 +169,7 @@
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="512" name="metal-spikes" type="object" x="3019.45" y="3643.45" width="182.424" height="167.758">
+  <object id="512" name="metal-spikes" type="object" x="3019.45" y="3650.45" width="182.424" height="167.758">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
