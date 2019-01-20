@@ -1,4 +1,4 @@
-#include "MetalSpikesGenericPreview.h"
+#include "WoodenSpikesGenericPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-MetalSpikesGenericPreview* MetalSpikesGenericPreview::create()
+WoodenSpikesGenericPreview* WoodenSpikesGenericPreview::create()
 {
-	MetalSpikesGenericPreview* instance = new MetalSpikesGenericPreview();
+	WoodenSpikesGenericPreview* instance = new WoodenSpikesGenericPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MetalSpikesGenericPreview::MetalSpikesGenericPreview()
+WoodenSpikesGenericPreview::WoodenSpikesGenericPreview()
 {
 	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 
@@ -27,19 +27,19 @@ MetalSpikesGenericPreview::MetalSpikesGenericPreview()
 	this->previewNode->addChild(this->previewSpikes);
 }
 
-HackablePreview* MetalSpikesGenericPreview::clone()
+HackablePreview* WoodenSpikesGenericPreview::clone()
 {
-	return MetalSpikesGenericPreview::create();
+	return WoodenSpikesGenericPreview::create();
 }
 
-void MetalSpikesGenericPreview::onEnter()
+void WoodenSpikesGenericPreview::onEnter()
 {
 	super::onEnter();
 
 	this->previewSpikes->playAnimationAndReverseRepeat(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f, 0.025f);
 }
 
-void MetalSpikesGenericPreview::initializePositions()
+void WoodenSpikesGenericPreview::initializePositions()
 {
 	super::initializePositions();
 }

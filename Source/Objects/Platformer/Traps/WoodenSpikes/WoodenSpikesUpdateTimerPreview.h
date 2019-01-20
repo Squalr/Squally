@@ -10,18 +10,18 @@ namespace cocos2d
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
-class MetalSpikesUpdateTimerPreview : public HackablePreview
+class WoodenSpikesUpdateTimerPreview : public HackablePreview
 {
 public:
-	static MetalSpikesUpdateTimerPreview* create();
+	static WoodenSpikesUpdateTimerPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	MetalSpikesUpdateTimerPreview();
-	~MetalSpikesUpdateTimerPreview() = default;
+	WoodenSpikesUpdateTimerPreview();
+	~WoodenSpikesUpdateTimerPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

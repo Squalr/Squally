@@ -9,3 +9,4 @@
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikes.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLog.h"
+#include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikes.h"

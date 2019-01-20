@@ -23,25 +23,11 @@ MetalSpikesUpdateTimerPreview* MetalSpikesUpdateTimerPreview::create()
 
 MetalSpikesUpdateTimerPreview::MetalSpikesUpdateTimerPreview()
 {
-	float currentElapsedTimeForSpikeTrigger;
-	float totalTimeUntilSpikesTrigger;
-	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
+	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 
-	this->previewSpikedLog->setScale(0.4f);
+	this->previewSpikes->setScale(0.4f);
 
-	this->countString = ConstantString::create("0");
-
-	if (sizeof(void*) == 4)
-	{
-		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::ecx, false, this->countString);
-	}
-	else
-	{
-		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::rcx, false, this->countString);
-	}
-
-	this->previewNode->addChild(this->previewSpikedLog);
-	this->assemblyTextNode->addChild(this->ecxAnimationCount);
+	this->previewNode->addChild(this->previewSpikes);
 }
 
 HackablePreview* MetalSpikesUpdateTimerPreview::clone()
@@ -53,20 +39,10 @@ void MetalSpikesUpdateTimerPreview::onEnter()
 {
 	super::onEnter();
 
-	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
-	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.5f, 0.0f);
-
-	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max)
-	{
-		this->countString->setString(std::to_string(count));
-
-		return ++count;
-	};
+	this->previewSpikes->playAnimationAndReverseRepeat(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f, 0.025f);
 }
 
 void MetalSpikesUpdateTimerPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->ecxAnimationCount->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - 64.0f));
 }
