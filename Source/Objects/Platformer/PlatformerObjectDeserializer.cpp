@@ -56,6 +56,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = HeavenHug::create(&properties);
 		}
+		else if (name == Laser::MapKeyLaser)
+		{
+			newObject = Laser::create(&properties);
+		}
 		else if (name == MetalSpikes::MapKeyMetalSpikes)
 		{
 			newObject = MetalSpikes::create(&properties);

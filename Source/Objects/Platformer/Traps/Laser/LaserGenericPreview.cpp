@@ -1,4 +1,4 @@
-#include "WoodenSpikesGenericPreview.h"
+#include "LaserGenericPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-WoodenSpikesGenericPreview* WoodenSpikesGenericPreview::create()
+LaserGenericPreview* LaserGenericPreview::create()
 {
-	WoodenSpikesGenericPreview* instance = new WoodenSpikesGenericPreview();
+	LaserGenericPreview* instance = new LaserGenericPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WoodenSpikesGenericPreview::WoodenSpikesGenericPreview()
+LaserGenericPreview::LaserGenericPreview()
 {
 	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
 
@@ -27,19 +27,19 @@ WoodenSpikesGenericPreview::WoodenSpikesGenericPreview()
 	this->previewNode->addChild(this->previewSpikes);
 }
 
-HackablePreview* WoodenSpikesGenericPreview::clone()
+HackablePreview* LaserGenericPreview::clone()
 {
-	return WoodenSpikesGenericPreview::create();
+	return LaserGenericPreview::create();
 }
 
-void WoodenSpikesGenericPreview::onEnter()
+void LaserGenericPreview::onEnter()
 {
 	super::onEnter();
 
 	this->previewSpikes->playAnimationAndReverseRepeat(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f, 0.025f);
 }
 
-void WoodenSpikesGenericPreview::initializePositions()
+void LaserGenericPreview::initializePositions()
 {
 	super::initializePositions();
 }

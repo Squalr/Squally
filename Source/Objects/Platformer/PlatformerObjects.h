@@ -5,6 +5,7 @@
 #include "Objects/Platformer/Plushies/Plushies.h"
 #include "Objects/Platformer/Traps/DartGun/DartGun.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"
+#include "Objects/Platformer/Traps/Laser/Laser.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikes.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h"
