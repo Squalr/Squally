@@ -465,6 +465,9 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLog.cpp
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.cpp
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.cpp
+	Source/Objects/Platformer/Traps/WoodenSpikes/WoodenSpikes.cpp
+	Source/Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.cpp
+	Source/Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.cpp
 	Source/Resources/BackgroundResources.cpp
 	Source/Resources/CutsceneResources.cpp
 	Source/Resources/DecorResources.cpp
@@ -994,6 +997,8 @@ list(APPEND GAME_SOURCE
 	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.cpp
 	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.cpp
 	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.cpp
+	Source/Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/RegisterSt0.cpp
+	Source/Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/UpdateTimer.cpp
 	Source/Strings/Hacking/RegisterEax.cpp
 	Source/Strings/Hacking/RegisterEbp.cpp
 	Source/Strings/Hacking/RegisterEbx.cpp
@@ -1643,6 +1648,9 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLog.h
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h
 	Source/Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h
+	Source/Objects/Platformer/Traps/WoodenSpikes/WoodenSpikes.h
+	Source/Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.h
+	Source/Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.h
 	Source/Resources/BackgroundResources.h
 	Source/Resources/CutsceneResources.h
 	Source/Resources/DecorResources.h
@@ -2186,6 +2194,8 @@ list(APPEND GAME_HEADER
 	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h
 	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h
 	Source/Strings/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h
+	Source/Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/RegisterSt0.h
+	Source/Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/UpdateTimer.h
 	Source/Strings/Hacking/RegisterEax.h
 	Source/Strings/Hacking/RegisterEbp.h
 	Source/Strings/Hacking/RegisterEbx.h

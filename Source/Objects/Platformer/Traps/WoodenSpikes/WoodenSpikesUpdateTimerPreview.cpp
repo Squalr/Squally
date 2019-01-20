@@ -1,24 +1,27 @@
-#include "MetalSpikesGenericPreview.h"
+#include "WoodenSpikesUpdateTimerPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
-MetalSpikesGenericPreview* MetalSpikesGenericPreview::create()
+WoodenSpikesUpdateTimerPreview* WoodenSpikesUpdateTimerPreview::create()
 {
-	MetalSpikesGenericPreview* instance = new MetalSpikesGenericPreview();
+	WoodenSpikesUpdateTimerPreview* instance = new WoodenSpikesUpdateTimerPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MetalSpikesGenericPreview::MetalSpikesGenericPreview()
+WoodenSpikesUpdateTimerPreview::WoodenSpikesUpdateTimerPreview()
 {
 	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 
@@ -27,19 +30,19 @@ MetalSpikesGenericPreview::MetalSpikesGenericPreview()
 	this->previewNode->addChild(this->previewSpikes);
 }
 
-HackablePreview* MetalSpikesGenericPreview::clone()
+HackablePreview* WoodenSpikesUpdateTimerPreview::clone()
 {
-	return MetalSpikesGenericPreview::create();
+	return WoodenSpikesUpdateTimerPreview::create();
 }
 
-void MetalSpikesGenericPreview::onEnter()
+void WoodenSpikesUpdateTimerPreview::onEnter()
 {
 	super::onEnter();
 
 	this->previewSpikes->playAnimationAndReverseRepeat(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, 1.5f, 0.025f, 0.025f);
 }
 
-void MetalSpikesGenericPreview::initializePositions()
+void WoodenSpikesUpdateTimerPreview::initializePositions()
 {
 	super::initializePositions();
 }

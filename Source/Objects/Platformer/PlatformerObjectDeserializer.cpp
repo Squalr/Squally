@@ -60,6 +60,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = MetalSpikes::create(&properties);
 		}
+		else if (name == WoodenSpikes::MapKeyWoodenSpikes)
+		{
+			newObject = WoodenSpikes::create(&properties);
+		}
 		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
 		{
 			newObject = MechanicalFlail::create(&properties);

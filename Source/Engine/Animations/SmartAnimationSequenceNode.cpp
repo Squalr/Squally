@@ -79,6 +79,7 @@ void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResour
 
 	this->forwardsAnimation = Animate::create(animation);
 
+	this->sprite->stopAllActions();
 	this->sprite->runAction(Sequence::create(
 		this->forwardsAnimation,
 		CallFunc::create([=]()
@@ -111,6 +112,7 @@ void SmartAnimationSequenceNode::playAnimationRepeat(std::string initialSequence
 
 	this->forwardsAnimation = Animate::create(animation);
 
+	this->sprite->stopAllActions();
 	this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), nullptr)));
 }
 
@@ -142,6 +144,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverse(std::string initialSequ
 	this->forwardsAnimation = Animate::create(animationIn);
 	this->backwardsAnimation = Animate::create(animationOut)->reverse();
 
+	this->sprite->stopAllActions();
 	this->sprite->runAction(Sequence::create(
 		this->forwardsAnimation,
 		DelayTime::create(reverseDelay),
@@ -187,6 +190,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initi
 		this->forwardsAnimation = Animate::create(animationIn)->reverse();
 		this->backwardsAnimation = Animate::create(animationOut);
 
+		this->sprite->stopAllActions();
 		this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), this->backwardsAnimation, DelayTime::create(reverseDelay), nullptr)));
 	}
 	else
@@ -194,6 +198,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initi
 		this->forwardsAnimation = Animate::create(animationIn);
 		this->backwardsAnimation = Animate::create(animationOut)->reverse();
 
+		this->sprite->stopAllActions();
 		this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(reverseDelay), this->backwardsAnimation, DelayTime::create(repeatDelay), nullptr)));
 	}
 }

@@ -24,5 +24,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	SmartAnimationSequenceNode* previewSpikedLog;
+	SmartAnimationSequenceNode* previewSpikes;
 };

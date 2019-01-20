@@ -1,4 +1,4 @@
-#include "MetalSpikes.h"
+#include "WoodenSpikes.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -9,42 +9,42 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.h"
-#include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h"
+#include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.h"
+#include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.h"
-#include "Strings/Hacking/Objects/MetalSpikes/UpdateTimer/UpdateTimer.h"
+#include "Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/RegisterSt0.h"
+#include "Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/UpdateTimer.h"
 
 using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string MetalSpikes::MapKeyMetalSpikes = "metal-spikes";
-const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
+const std::string WoodenSpikes::MapKeyWoodenSpikes = "wooden-spikes";
+const Vec2 WoodenSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
-MetalSpikes* MetalSpikes::create(ValueMap* initProperties)
+WoodenSpikes* WoodenSpikes::create(ValueMap* initProperties)
 {
-	MetalSpikes* instance = new MetalSpikes(initProperties);
+	WoodenSpikes* instance = new WoodenSpikes(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MetalSpikes::MetalSpikes(ValueMap* initProperties) : HackableObject(initProperties)
+WoodenSpikes::WoodenSpikes(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->currentElapsedTimeForSpikeTrigger = 0.0f;
 	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;
 
-	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
+	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
 
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(MetalSpikesGenericPreview::create());
+	this->setDefaultPreview(WoodenSpikesGenericPreview::create());
 
 	this->registerHackables();
 
@@ -52,32 +52,32 @@ MetalSpikes::MetalSpikes(ValueMap* initProperties) : HackableObject(initProperti
 	this->addChild(this->spikes);
 }
 
-MetalSpikes::~MetalSpikes()
+WoodenSpikes::~WoodenSpikes()
 {
 }
 
-void MetalSpikes::onEnter()
+void WoodenSpikes::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void MetalSpikes::update(float dt)
+void WoodenSpikes::update(float dt)
 {
 	super::update(dt);
 
 	this->updateSpikes(dt);
 }
 
-void MetalSpikes::initializePositions()
+void WoodenSpikes::initializePositions()
 {
 	super::initializePositions();
 
-	this->spikeCollision->setPosition(MetalSpikes::SpikesDownPosition);
+	this->spikeCollision->setPosition(WoodenSpikes::SpikesDownPosition);
 }
 
-void MetalSpikes::registerHackables()
+void WoodenSpikes::registerHackables()
 {
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
@@ -87,18 +87,18 @@ void MetalSpikes::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
-				MetalSpikes::MapKeyMetalSpikes,
-				Strings::Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
+				WoodenSpikes::MapKeyWoodenSpikes,
+				Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
-				MetalSpikesUpdateTimerPreview::create(),
+				WoodenSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 				}
 			)
 		},
 	};
 
-	auto updateSpikesFunc = &MetalSpikes::updateSpikes;
+	auto updateSpikesFunc = &WoodenSpikes::updateSpikes;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -107,12 +107,12 @@ void MetalSpikes::registerHackables()
 	}
 }
 
-Vec2 MetalSpikes::getButtonOffset()
+Vec2 WoodenSpikes::getButtonOffset()
 {
 	return Vec2(0.0f, 128.0f);
 }
 
-void MetalSpikes::updateSpikes(float dt)
+void WoodenSpikes::updateSpikes(float dt)
 {
 	if (this->isRunningAnimation)
 	{
@@ -152,12 +152,12 @@ void MetalSpikes::updateSpikes(float dt)
 		this->spikeCollision->runAction(Sequence::create(
 			MoveTo::create(0.425, Vec2::ZERO),
 			DelayTime::create(stayUpDuration),
-			MoveTo::create(0.425, MetalSpikes::SpikesDownPosition),
+			MoveTo::create(0.425, WoodenSpikes::SpikesDownPosition),
 			nullptr
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, stayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, stayUpDuration, 0.025f, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});
