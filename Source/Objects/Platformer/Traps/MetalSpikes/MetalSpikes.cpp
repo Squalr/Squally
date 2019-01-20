@@ -24,6 +24,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
 const std::string MetalSpikes::MapKeyMetalSpikes = "metal-spikes";
+const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
 MetalSpikes* MetalSpikes::create(ValueMap* initProperties)
 {
@@ -37,16 +38,17 @@ MetalSpikes* MetalSpikes::create(ValueMap* initProperties)
 MetalSpikes::MetalSpikes(ValueMap* initProperties) : HackableObject(initProperties)
 {
 	this->currentElapsedTimeForSpikeTrigger = 0.0f;
-	this->totalTimeUntilSpikesTrigger = 5.0f;
+	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;
 
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 
-	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(480.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->setDefaultPreview(MetalSpikesGenericPreview::create());
 
 	this->registerHackables();
 
+	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
 }
 
@@ -71,6 +73,8 @@ void MetalSpikes::update(float dt)
 void MetalSpikes::initializePositions()
 {
 	super::initializePositions();
+
+	this->spikeCollision->setPosition(MetalSpikes::SpikesDownPosition);
 }
 
 void MetalSpikes::registerHackables()
@@ -139,10 +143,21 @@ void MetalSpikes::updateSpikes(float dt)
 
 	if (this->currentElapsedTimeForSpikeTrigger > this->totalTimeUntilSpikesTrigger)
 	{
+		const float stayUpDuration = 1.5f;
+
 		this->isRunningAnimation = true;
 		this->currentElapsedTimeForSpikeTrigger = 0.0f;
 
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, 1.0f, 0.025f, false, [=]()
+		// Move collision box
+		this->spikeCollision->runAction(Sequence::create(
+			MoveTo::create(0.425, Vec2::ZERO),
+			DelayTime::create(stayUpDuration),
+			MoveTo::create(0.425, MetalSpikes::SpikesDownPosition),
+			nullptr
+		));
+
+		// Play animation
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, stayUpDuration, 0.025f, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});

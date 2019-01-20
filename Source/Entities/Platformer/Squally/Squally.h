@@ -31,6 +31,7 @@ private:
 
 	void registerHackables();
 	void onEnter() override;
+	void initializePositions() override;
 	void update(float) override;
 	void setFlippedX(bool newIsFlipped);
 

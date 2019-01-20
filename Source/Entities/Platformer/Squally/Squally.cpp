@@ -41,9 +41,9 @@ Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->squallyCollisionDefaultPosition = Vec2(0.0f, 72.0f * Squally::squallyScale);
+	this->squallyCollisionDefaultPosition = Vec2(0.0f, 48.0f * Squally::squallyScale);
 
-	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, this->squallyCollisionDefaultPosition), (int)PlatformerCollisionType::Player, false, false);
+	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, Vec2::ZERO), (int)PlatformerCollisionType::Player, false, false);
 
 	this->registerHackables();
 
@@ -91,6 +91,13 @@ void Squally::initializeCollisionEvents()
 	{
 		return CollisionResult::DoNothing;
 	});
+}
+
+void Squally::initializePositions()
+{
+	super::initializeListeners();
+
+	this->squallyCollision->setPosition(this->squallyCollisionDefaultPosition);
 }
 
 void Squally::registerHackables()
