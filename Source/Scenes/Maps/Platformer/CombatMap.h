@@ -16,6 +16,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 
 	static CombatMap* instance;
 };

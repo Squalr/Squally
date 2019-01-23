@@ -25,11 +25,13 @@ namespace UIResources
 	extern const std::string Cursors_ZoomOut;
 	extern const std::string EmptyImage;
 	extern const std::string Fonts_Texture_AlienText;
+	extern const std::string HUD_BarFrame;
 	extern const std::string HUD_HealthBar;
-	extern const std::string HUD_HealthBarFrame;
 	extern const std::string HUD_Heart;
-	extern const std::string HUD_MindPowerBack;
-	extern const std::string HUD_MindPowerCover;
+	extern const std::string HUD_Leaves;
+	extern const std::string HUD_SpecialBar;
+	extern const std::string HUD_Tear;
+	extern const std::string HUD_TearSlot;
 	extern const std::string HUD_TimeBar;
 	extern const std::string HUD_Timer;
 	extern const std::string HelperArrow;
