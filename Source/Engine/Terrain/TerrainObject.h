@@ -61,6 +61,7 @@ public:
 
 	static std::string MapKeyTypeTexture;
 	static std::string MapKeyTypeTerrain;
+	static std::string MapKeyCollisionDisabled;
 
 private:
 	typedef HackableObject super;

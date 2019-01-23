@@ -133,7 +133,7 @@
  </objectgroup>
  <layer name="cave" width="128" height="48">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20IX6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIDXAGAAAAE=
+   eJzt0UENACAQwLALWvCvEQe8CWuTKdgMAAAAAAAAAAAAAMCf9rrH3/xv87/N/zb/2/xv87/NfwAAAAAAAAAA4BUHKuAJgQ==
   </data>
  </layer>
  <objectgroup name="decor background">
@@ -258,7 +258,7 @@
    </properties>
   </object>
   <object id="445" name="polyphemus" type="entity" x="755.64" y="2475.52" width="200" height="288"/>
-  <object id="480" name="ogre" type="entity" x="2586.91" y="1379.64" width="78.7879" height="88">
+  <object id="480" name="ogre" type="entity" x="2376.24" y="2570.31" width="78.7879" height="88">
    <properties>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -270,7 +270,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="1756.36" y="2479.39" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="1752.36" y="2539.39" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -307,7 +307,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="2468" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1875.09" y="2473.58" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1987.09" y="2547.58" width="242" height="738"/>
   <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="2580" width="242" height="738"/>
  </objectgroup>
 </map>

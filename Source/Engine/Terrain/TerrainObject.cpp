@@ -24,6 +24,7 @@ using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
+std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = M_PI / 6.0f;
@@ -144,6 +145,12 @@ void TerrainObject::rebuildTerrain()
 void TerrainObject::buildCollision()
 {
 	this->collisionNode->removeAllChildren();
+
+	// Check if physics is disabled for this terrain
+	if (GameUtils::keyExists(this->properties, TerrainObject::MapKeyCollisionDisabled) && !(*this->properties)[TerrainObject::MapKeyCollisionDisabled].asBool())
+	{
+		return;
+	}
 
 	ValueMap collisionProperties = ValueMap(*this->properties);
 

@@ -2,6 +2,8 @@
 
 #include "Scenes/Maps/MapBase.h"
 
+class GameHud;
+
 class PlatformerMap : public MapBase
 {
 public:
@@ -17,6 +19,8 @@ private:
 	void initializeListeners() override;
 	void onEnter() override;
 	void update(float dt) override;
+
+	GameHud* gameHud;
 
 	static PlatformerMap* instance;
 };

@@ -9,6 +9,7 @@
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/NavigationEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Maps/Platformer/Huds/GameHud.h"
 
 using namespace cocos2d;
 
@@ -33,8 +34,12 @@ PlatformerMap::PlatformerMap()
 		throw std::uncaught_exception();
 	}
 
+	this->gameHud = GameHud::create();
+
 	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 	this->getPhysicsWorld()->setAutoStep(false);
+
+	this->addChild(this->gameHud);
 }
 
 PlatformerMap::~PlatformerMap()

@@ -846,6 +846,8 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.cpp
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
 	Source/Scenes/Maps/Platformer/CombatMap.cpp
+	Source/Scenes/Maps/Platformer/Huds/Components/StatsBars.cpp
+	Source/Scenes/Maps/Platformer/Huds/GameHud.cpp
 	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.cpp
 	Source/Scenes/Maps/Platformer/PlatformerMap.cpp
 	Source/Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.cpp
@@ -2048,6 +2050,8 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixRain.h
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h
 	Source/Scenes/Maps/Platformer/CombatMap.h
+	Source/Scenes/Maps/Platformer/Huds/Components/StatsBars.h
+	Source/Scenes/Maps/Platformer/Huds/GameHud.h
 	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.h
 	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h
 	Source/Scenes/Maps/Platformer/PlatformerMap.h
