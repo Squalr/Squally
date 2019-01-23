@@ -54,3 +54,8 @@ void GameHud::update(float dt)
 {
 	super::update(dt);
 }
+
+StatsBars* GameHud::getStatsBars()
+{
+	return this->statsBars;
+}

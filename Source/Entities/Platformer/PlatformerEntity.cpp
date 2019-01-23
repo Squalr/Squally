@@ -14,10 +14,18 @@ const float PlatformerEntity::maxMoveSpeed = 360.0f;
 const float PlatformerEntity::maxJumpSpeed = 720.0f;
 const float PlatformerEntity::maxFallSpeed = -1280.0f;
 
+const std::string PlatformerEntity::MapKeyMaxHealth = "health";
+
 using namespace cocos2d;
 
-PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset) :
-	super(
+PlatformerEntity::PlatformerEntity(
+	ValueMap* initProperties, 
+	std::string scmlResource, 
+	PlatformerCollisionType collisionType,
+	Size size,
+	float scale, 
+	Vec2 collisionOffset
+	) : super(
 		initProperties,
 		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,
@@ -68,6 +76,12 @@ PlatformerEntity::PlatformerEntity(ValueMap* initProperties, std::string scmlRes
 		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
 		{
 			this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		}
+
+		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyMaxHealth))
+		{
+			this->maxHealth = (*this->properties)[PlatformerEntity::MapKeyMaxHealth].asBool();
+			this->health = this->maxHealth;
 		}
 	}
 
@@ -147,6 +161,16 @@ void PlatformerEntity::update(float dt)
 			this->animationNode->setFlippedX(false);
 		}
 	}
+}
+
+int PlatformerEntity::getHealth()
+{
+	return this->health;
+}
+
+int PlatformerEntity::getMaxHealth()
+{
+	return this->maxHealth;
 }
 
 bool PlatformerEntity::isOnGround()

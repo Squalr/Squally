@@ -8,6 +8,7 @@ class PlatformerMap : public MapBase
 {
 public:
 	static void registerGlobalScene();
+	void loadMap(SerializableMap* levelMap) override;
 
 protected:
 	PlatformerMap();

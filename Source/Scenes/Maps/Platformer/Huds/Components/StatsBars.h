@@ -4,13 +4,19 @@
 
 namespace cocos2d
 {
+	class ClippingRectangleNode;
 	class Sprite;
 }
+
+class CProgressBar;
+class PlatformerEntity;
 
 class StatsBars : public SmartNode
 {
 public:
 	static StatsBars* create();
+
+	void setStatsTarget(PlatformerEntity* target);
 
 private:
 	typedef SmartNode super;
@@ -22,12 +28,12 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	PlatformerEntity* target;
+
 	cocos2d::Sprite* heart;
-	cocos2d::Sprite* heartFrame;
-	cocos2d::Sprite* heartBar;
+	CProgressBar* heartBar;
 	cocos2d::Sprite* special;
-	cocos2d::Sprite* specialFrame;
-	cocos2d::Sprite* specialBar;
+	CProgressBar* specialBar;
 
 	std::vector<cocos2d::Sprite*> emptyRunes;
 	std::vector<cocos2d::Sprite*> filledRunes;
