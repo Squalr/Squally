@@ -5,6 +5,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 #include "Resources/UIResources.h"
 
@@ -78,16 +79,7 @@ void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 
 void CSlider::setProgress(float newProgress)
 {
-	if (newProgress < 0.0f)
-	{
-		newProgress = 0.0f;
-	}
-	else if (newProgress > 100.0f)
-	{
-		newProgress = 100.0f;
-	}
-
-	this->progress = newProgress;
+	this->progress = MathUtils::clamp(newProgress, 0.0f, 100.0f);
 
 	// Update progress bar
 	Rect newClippingRegion = this->progressClip->getClippingRegion();

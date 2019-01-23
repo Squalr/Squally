@@ -1,5 +1,6 @@
 #include "LoadingScreen.h"
 
+#include "cocos/2d/CCSprite.h"
 #include "cocos/audio/include/AudioEngine.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -13,6 +14,8 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
@@ -35,7 +38,7 @@ void LoadingScreen::registerGlobalScene()
 LoadingScreen::LoadingScreen()
 {
 	this->backgroundNode = Node::create();
-	this->progressBar = CProgressBar::create();
+	this->progressBar = CProgressBar::create(Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrame), Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrameFill));
 
 	this->addChild(this->backgroundNode);
 	this->addChild(this->progressBar);

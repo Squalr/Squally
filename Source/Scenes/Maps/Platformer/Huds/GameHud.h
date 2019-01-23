@@ -9,6 +9,8 @@ class GameHud : public Hud
 public:
 	static GameHud* create();
 
+	StatsBars* getStatsBars();
+
 private:
 	typedef Hud super;
 	GameHud();

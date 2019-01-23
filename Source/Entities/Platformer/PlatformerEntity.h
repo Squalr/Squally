@@ -11,6 +11,10 @@ class SpeechBubble;
 
 class PlatformerEntity : public CollisionObject
 {
+public:
+	int getHealth();
+	int getMaxHealth();
+
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap* initProperties,
@@ -34,6 +38,9 @@ protected:
 	cocos2d::Vec2 spawnCoords;
 
 	bool isOnGround();
+
+	int health;
+	int maxHealth;
 
 	// CURRENT STATE
 	float actualJumpLaunchVelocity;
@@ -61,5 +68,7 @@ private:
 	static const float groundCollisionDetectorPadding;
 	static const float groundCollisionDetectorOffset;
 	static const float capsuleRadius;
+
+	static const std::string MapKeyMaxHealth;
 };
 

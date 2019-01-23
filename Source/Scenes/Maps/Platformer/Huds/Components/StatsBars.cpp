@@ -1,9 +1,14 @@
 #include "StatsBars.h"
 
+#include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/UI/Controls/CProgressBar.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+
 #include "Resources/UIResources.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
@@ -20,12 +25,11 @@ StatsBars* StatsBars::create()
 
 StatsBars::StatsBars()
 {
+	this->target = nullptr;
 	this->heart = Sprite::create(UIResources::HUD_Heart);
 	this->special = Sprite::create(UIResources::HUD_Leaves);
-	this->heartFrame = Sprite::create(UIResources::HUD_BarFrame);
-	this->specialFrame = Sprite::create(UIResources::HUD_BarFrame);
-	this->heartBar = Sprite::create(UIResources::HUD_HealthBar);
-	this->specialBar = Sprite::create(UIResources::HUD_SpecialBar);
+	this->heartBar = CProgressBar::create(Sprite::create(UIResources::HUD_BarFrame), Sprite::create(UIResources::HUD_HealthBar), Vec2(10.0f, 16.0f));
+	this->specialBar = CProgressBar::create(Sprite::create(UIResources::HUD_BarFrame), Sprite::create(UIResources::HUD_SpecialBar), Vec2(10.0f, 16.0f));
 
 	for (int index = 0; index < StatsBars::RuneCount; index++)
 	{
@@ -41,15 +45,11 @@ StatsBars::StatsBars()
 
 	this->heart->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->special->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->heartFrame->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->specialFrame->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->heartBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->specialBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->addChild(this->heart);
 	this->addChild(this->special);
-	this->addChild(this->heartFrame);
-	this->addChild(this->specialFrame);
 	this->addChild(this->heartBar);
 	this->addChild(this->specialBar);
 
@@ -80,11 +80,9 @@ void StatsBars::initializePositions()
 	const float barInset = 64.0f;
 
 	this->heart->setPosition(Vec2(0.0f, -8.0f));
-	this->heartFrame->setPosition(Vec2(barInset, 12.0f));
-	this->heartBar->setPosition(Vec2(barInset + 10.0f, 12.0f));
+	this->heartBar->setPosition(Vec2(barInset, 12.0f));
 	this->special->setPosition(Vec2(barInset + 120.0f, -8.0f));
-	this->specialFrame->setPosition(Vec2(barInset, 12.0f - 32.0f));
-	this->specialBar->setPosition(Vec2(barInset + 10.0f, 12.0f - 32.0f));
+	this->specialBar->setPosition(Vec2(barInset, 12.0f - 32.0f));
 
 	int index = 0;
 
@@ -113,4 +111,22 @@ void StatsBars::initializeListeners()
 void StatsBars::update(float dt)
 {
 	super::update(dt);
+
+	if (this->target == nullptr)
+	{
+		return;
+	}
+
+	int health = this->target->getHealth();
+	int maxHealth = this->target->getMaxHealth();
+	float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
+
+	healthPercent = 0.5f;
+
+	this->heartBar->setProgress(healthPercent);
+}
+
+void StatsBars::setStatsTarget(PlatformerEntity* target)
+{
+	this->target = target;
 }
