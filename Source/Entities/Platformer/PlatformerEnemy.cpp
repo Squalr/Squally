@@ -5,6 +5,9 @@
 using namespace cocos2d;
 
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
+const std::string PlatformerEnemy::MapKeyAlly1 = "ally-1";
+const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
+const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
 	cocos2d::ValueMap* initProperties,
@@ -18,10 +21,26 @@ PlatformerEnemy::PlatformerEnemy(
 	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
 {
 	this->battleMapResource = "";
+	this->allyResources = std::vector<std::string>();
 
 	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyBattleMap))
 	{
 		this->battleMapResource = initProperties->at(PlatformerEnemy::MapKeyBattleMap).asString();
+	}
+
+	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly1))
+	{
+		this->allyResources.push_back(initProperties->at(PlatformerEnemy::MapKeyAlly1).asString());
+	}
+
+	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly2))
+	{
+		this->allyResources.push_back(initProperties->at(PlatformerEnemy::MapKeyAlly2).asString());
+	}
+
+	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly3))
+	{
+		this->allyResources.push_back(initProperties->at(PlatformerEnemy::MapKeyAlly3).asString());
 	}
 }
 
@@ -32,4 +51,9 @@ PlatformerEnemy::~PlatformerEnemy()
 std::string PlatformerEnemy::getBattleMapResource()
 {
 	return "Platformer/Maps/" + this->battleMapResource + ".tmx";
+}
+
+std::vector<std::string> PlatformerEnemy::getAllyResources()
+{
+	return this->allyResources;
 }

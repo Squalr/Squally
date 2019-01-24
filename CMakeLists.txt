@@ -381,6 +381,7 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/PlatformerEntityDeserializer.cpp
 	Source/Entities/Platformer/Squally/Squally.cpp
 	Source/Entities/Special/Shopkeeper.cpp
+	Source/Events/CombatEvents.cpp
 	Source/Events/DialogEvents.cpp
 	Source/Events/NavigationEvents.cpp
 	Source/GameWindow.cpp
@@ -448,6 +449,7 @@ list(APPEND GAME_SOURCE
 	Source/Objects/Platformer/PlatformerObjectDeserializer.cpp
 	Source/Objects/Platformer/Plushies/Plushie.cpp
 	Source/Objects/Platformer/Plushies/PlushieMonkey.cpp
+	Source/Objects/Platformer/Spawns/CombatSpawn.cpp
 	Source/Objects/Platformer/Traps/DartGun/Dart.cpp
 	Source/Objects/Platformer/Traps/DartGun/DartGun.cpp
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.cpp
@@ -1569,6 +1571,7 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/PlatformerEntityDeserializer.h
 	Source/Entities/Platformer/Squally/Squally.h
 	Source/Entities/Special/Shopkeeper.h
+	Source/Events/CombatEvents.h
 	Source/Events/DialogEvents.h
 	Source/Events/NavigationEvents.h
 	Source/GameWindow.h
@@ -1639,6 +1642,7 @@ list(APPEND GAME_HEADER
 	Source/Objects/Platformer/Plushies/Plushie.h
 	Source/Objects/Platformer/Plushies/PlushieMonkey.h
 	Source/Objects/Platformer/Plushies/Plushies.h
+	Source/Objects/Platformer/Spawns/CombatSpawn.h
 	Source/Objects/Platformer/Traps/DartGun/Dart.h
 	Source/Objects/Platformer/Traps/DartGun/DartGun.h
 	Source/Objects/Platformer/Traps/HeavenHug/HeavenHug.h

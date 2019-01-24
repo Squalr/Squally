@@ -122,6 +122,26 @@ void StatsBars::update(float dt)
 	float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
 
 	this->heartBar->setProgress(healthPercent);
+
+	int special = this->target->getSpecial();
+	int maxSpecial = this->target->getMaxSpecial();
+	float specialPercent = MathUtils::clamp((float)special / (maxSpecial == 0 ? 1.0f : (float)maxSpecial), 0.0f, 1.0f);
+
+	this->specialBar->setProgress(specialPercent);
+
+	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+	{
+		if (index < this->target->getRunes())
+		{
+			this->filledRunes[index]->setVisible(true);
+			this->emptyRunes[index]->setVisible(false);
+		}
+		else
+		{
+			this->filledRunes[index]->setVisible(false);
+			this->emptyRunes[index]->setVisible(true);
+		}
+	}
 }
 
 void StatsBars::setStatsTarget(PlatformerEntity* target)

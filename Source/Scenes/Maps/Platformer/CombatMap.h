@@ -7,6 +7,10 @@ class CombatMap : public MapBase
 public:
 	static void registerGlobalScene();
 
+	void loadMap(SerializableMap* levelMap) override;
+
+	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
+
 protected:
 	CombatMap();
 	~CombatMap();
@@ -17,6 +21,11 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+	void loadEntitiesFromKeys();
+
+	std::vector<std::string> playerEntityKeys;
+	std::vector<std::string> enemyEntityKeys;
 
 	static CombatMap* instance;
 };
