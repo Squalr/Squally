@@ -54,9 +54,6 @@ CombatSpawn::~CombatSpawn()
 void CombatSpawn::onEnter()
 {
 	super::onEnter();
-
-	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(0.0f, 0.0f), CameraTrackingData::CameraScrollType::Rectangle, Vec2::ZERO);
-	GameCamera::getInstance()->setTarget(trackingData);
 }
 
 void CombatSpawn::initializeListeners()
