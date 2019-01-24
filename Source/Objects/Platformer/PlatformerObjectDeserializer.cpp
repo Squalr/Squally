@@ -48,7 +48,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = CameraFocus::create(&properties);
 		}
-		if (name == CombatSpawn::MapKeyCombatSpawn)
+		else if (name == CombatSpawn::MapKeyCombatSpawn)
 		{
 			newObject = CombatSpawn::create(&properties);
 		}

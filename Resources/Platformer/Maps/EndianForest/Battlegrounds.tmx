@@ -212,12 +212,14 @@
  </objectgroup>
  <objectgroup name="objects">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="455" name="camera-focus" type="object" x="4724.61" y="2262.67" width="170.788" height="172"/>
  </objectgroup>
  <objectgroup name="entities">
   <properties>
+   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="366" name="spawn" type="object" x="4392.48" y="2321.57" width="78.7879" height="88">
