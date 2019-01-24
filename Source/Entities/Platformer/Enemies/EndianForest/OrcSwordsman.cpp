@@ -22,7 +22,9 @@ OrcSwordsman::OrcSwordsman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 228.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

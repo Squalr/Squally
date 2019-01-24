@@ -22,7 +22,9 @@ MiteBot::MiteBot(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(420.0f, 296.0f),
 	0.4f,
-	cocos2d::Vec2(0.0f, 24.0f))
+	cocos2d::Vec2(0.0f, 24.0f),
+	10,
+	10)
 {
 }
 

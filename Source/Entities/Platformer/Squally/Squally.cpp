@@ -13,6 +13,8 @@ int Squally::health;
 const float Squally::squallyScale = 0.85f;
 
 const std::string Squally::MapKeySqually = "squally";
+const int Squally::SquallyBaseHealth = 10;
+const int Squally::SquallyBaseSpecial = 10;
 
 Squally* Squally::deserialize(ValueMap* initProperties)
 {
@@ -34,7 +36,9 @@ Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	PlatformerCollisionType::Force,
 	Size(128.0f, 224.0f), 
 	Squally::squallyScale,
-	Vec2(0.0f, 48.0f))
+	Vec2(0.0f, 48.0f),
+	Squally::SquallyBaseHealth,
+	Squally::SquallyBaseSpecial)
 {
 	this->actualJumpLaunchVelocity = 1280.0f;
 	this->actualGravityAcceleration = 400.0f;

@@ -22,7 +22,9 @@ Cyclops::Cyclops(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(296.0f, 256.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

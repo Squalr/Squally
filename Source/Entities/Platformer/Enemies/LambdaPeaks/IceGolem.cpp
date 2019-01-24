@@ -22,7 +22,9 @@ IceGolem::IceGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(1680.0f, 996.0f),
 	0.35f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

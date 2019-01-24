@@ -55,6 +55,8 @@ def parseEntity(entityName, entityData):
 	entityScale = entityData["Scale"]
 	entitySize = entityData["Size"]
 	entityOffset = entityData["Offset"]
+	entityHealth = str(entityData["Health"])
+	entitySpecial = str(entityData["Special"])
 	entityEnvironment = entityData["Environment"]
 	
 	# Construct variables from parsed data
@@ -100,7 +102,7 @@ def parseEntity(entityName, entityData):
 		
 		def parseTemplate(template):
 			templateData = template.read()
-			templateData = templateData.replace("{{EntityName}}", entityName).replace("{{EntityBasePath}}", entityBasePath).replace("{{EntityBase}}", entityBase).replace("{{EntityType}}", entityType).replace("{{EntityEnvironment}}", entityEnvironment).replace("{{EntityPrefix}}", entityPrefix).replace("{{EntityCollisionType}}", entityCollisionType).replace("{{MapKeyName}}", mapKeyName).replace("{{EntityScale}}", entityScale).replace("{{EntityWidth}}", entitySize["Width"]).replace("{{EntityHeight}}", entitySize["Height"]).replace("{{EntityOffsetX}}", entityOffset["X"]).replace("{{EntityOffsetY}}", entityOffset["Y"])
+			templateData = templateData.replace("{{EntityName}}", entityName).replace("{{EntityBasePath}}", entityBasePath).replace("{{EntityBase}}", entityBase).replace("{{EntityType}}", entityType).replace("{{EntityEnvironment}}", entityEnvironment).replace("{{EntityPrefix}}", entityPrefix).replace("{{EntityCollisionType}}", entityCollisionType).replace("{{MapKeyName}}", mapKeyName).replace("{{EntityScale}}", entityScale).replace("{{EntityWidth}}", entitySize["Width"]).replace("{{EntityHeight}}", entitySize["Height"]).replace("{{EntityOffsetX}}", entityOffset["X"]).replace("{{EntityOffsetY}}", entityOffset["Y"]).replace("{{EntityHealth}}", entityHealth).replace("{{EntitySpecial}}", entitySpecial)
 			
 			if entityEnvironment == "":
 				templateData = templateData.replace("{{EnvironmentUnderscore}}", "");

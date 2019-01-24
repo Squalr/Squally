@@ -22,7 +22,9 @@ GoblinShaman::GoblinShaman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(96.0f, 204.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

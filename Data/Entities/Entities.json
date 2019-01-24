@@ -1,5 +1,7 @@
 {
   "Abomination": {
+    "Type": "Enemy",
+    "Environment": "LexiconCrypts",
     "Scale": "0.6f",
     "Size": {
       "Width": "296.0f",
@@ -9,8 +11,8 @@
       "X": "0.0f",
       "Y": "0.0f"
     },
-    "Type": "Enemy",
-    "Environment": "LexiconCrypts"
+    "Health": 10,
+    "Special": 10
   },
   "Gargoyle": {
     "Type": "Enemy",
@@ -23,7 +25,9 @@
     "Offset": {
       "X": "-32.0f",
       "Y": "-24.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "KingZul": {
     "Type": "Enemy",
@@ -36,7 +40,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "ReanimatedFighter": {
     "Type": "Enemy",
@@ -49,7 +55,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "ReanimatedPig": {
     "Type": "Enemy",
@@ -62,7 +70,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalBaron": {
     "Type": "Enemy",
@@ -75,7 +85,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalCleaver": {
     "Type": "Enemy",
@@ -88,7 +100,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "16.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalKnight": {
     "Type": "Enemy",
@@ -101,7 +115,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalPriestess": {
     "Type": "Enemy",
@@ -114,7 +130,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Undead": {
     "Type": "Enemy",
@@ -127,7 +145,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "VoidArcher": {
     "Type": "Enemy",
@@ -140,7 +160,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "VoidDemon": {
     "Type": "Enemy",
@@ -153,7 +175,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Agnes": {
     "Type": "Enemy",
@@ -166,7 +190,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Executioner": {
     "Type": "Enemy",
@@ -179,7 +205,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-410.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Guard": {
     "Type": "Enemy",
@@ -192,7 +220,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Jack": {
     "Type": "Enemy",
@@ -205,7 +235,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Reaper": {
     "Type": "Enemy",
@@ -218,7 +250,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-128.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Scarecrow": {
     "Type": "Enemy",
@@ -231,7 +265,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-128.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Shade": {
     "Type": "Enemy",
@@ -244,7 +280,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-128.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "VampireLord": {
     "Type": "Enemy",
@@ -257,7 +295,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Vampiress": {
     "Type": "Enemy",
@@ -270,7 +310,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Wraith": {
     "Type": "Enemy",
@@ -283,7 +325,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "40.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Zombie": {
     "Type": "Enemy",
@@ -296,7 +340,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "ZombieElric": {
     "Type": "Enemy",
@@ -309,7 +355,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "BlackWidow": {
     "Type": "Enemy",
@@ -322,7 +370,9 @@
     "Offset": {
       "X": "-112.0f",
       "Y": "-396.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "EarthElemental": {
     "Type": "Enemy",
@@ -335,7 +385,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-740.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "EarthGolem": {
     "Type": "Enemy",
@@ -348,7 +400,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "ForestGolem": {
     "Type": "Enemy",
@@ -361,7 +415,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-420.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Genie": {
     "Type": "Enemy",
@@ -374,7 +430,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-356.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Krampus": {
     "Type": "Enemy",
@@ -387,7 +445,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "LightningGolem": {
     "Type": "Enemy",
@@ -400,7 +460,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-420.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Shaman": {
     "Type": "Enemy",
@@ -413,7 +475,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalArcher": {
     "Type": "Enemy",
@@ -426,7 +490,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalNecromancer": {
     "Type": "Enemy",
@@ -439,7 +505,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalWarrior": {
     "Type": "Enemy",
@@ -452,7 +520,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "TikiGolem": {
     "Type": "Enemy",
@@ -465,7 +535,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-112.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cyclops": {
     "Type": "Enemy",
@@ -478,7 +550,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ent": {
     "Type": "Enemy",
@@ -491,7 +565,9 @@
     "Offset": {
       "X": "24.0f",
       "Y": "-452.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "GoblinGruntBoar": {
     "Type": "Enemy",
@@ -504,7 +580,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "GoblinShaman": {
     "Type": "Enemy",
@@ -517,7 +595,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "GoblinWarriorPig": {
     "Type": "Enemy",
@@ -530,7 +610,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "KingGrogg": {
     "Type": "Enemy",
@@ -543,7 +625,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ogre": {
     "Type": "Enemy",
@@ -556,7 +640,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "OrcBomber": {
     "Type": "Enemy",
@@ -569,7 +655,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "OrcGrunt": {
     "Type": "Enemy",
@@ -582,7 +670,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "OrcSwordsman": {
     "Type": "Enemy",
@@ -595,7 +685,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "OrcWarrior": {
     "Type": "Enemy",
@@ -608,7 +700,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Troll": {
     "Type": "Enemy",
@@ -621,7 +715,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Gorilla": {
     "Type": "Enemy",
@@ -634,7 +730,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Minotaur": {
     "Type": "Enemy",
@@ -647,7 +745,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Rhinoman": {
     "Type": "Enemy",
@@ -660,7 +760,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SkeletalPirate": {
     "Type": "Enemy",
@@ -673,7 +775,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-112.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Barbarian": {
     "Type": "Enemy",
@@ -686,7 +790,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Centaur": {
     "Type": "Enemy",
@@ -699,7 +805,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Exterminator": {
     "Type": "Enemy",
@@ -712,7 +820,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "EvilEye": {
     "Type": "Enemy",
@@ -725,7 +835,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MechBoxDrone": {
     "Type": "Enemy",
@@ -738,7 +850,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MechDog": {
     "Type": "Enemy",
@@ -751,7 +865,9 @@
     "Offset": {
       "X": "-64.0f",
       "Y": "32.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MechGolem": {
     "Type": "Enemy",
@@ -764,7 +880,9 @@
     "Offset": {
       "X": "-48.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MechGuard": {
     "Type": "Enemy",
@@ -777,7 +895,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-298.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MiteBot": {
     "Type": "Enemy",
@@ -790,7 +910,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "24.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Thug": {
     "Type": "Enemy",
@@ -803,7 +925,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Viking": {
     "Type": "Enemy",
@@ -816,7 +940,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-112.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "VikingBot": {
     "Type": "Enemy",
@@ -829,7 +955,9 @@
     "Offset": {
       "X": "-332.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "VikingBotSmall": {
     "Type": "Enemy",
@@ -842,7 +970,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "160.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "AnubisPup": {
     "Type": "Enemy",
@@ -855,7 +985,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "AnubisWarrior": {
     "Type": "Enemy",
@@ -868,7 +1000,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "LionMan": {
     "Type": "Enemy",
@@ -881,7 +1015,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Lioness": {
     "Type": "Enemy",
@@ -894,7 +1030,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Medusa": {
     "Type": "Enemy",
@@ -907,7 +1045,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Mermaid": {
     "Type": "Enemy",
@@ -920,7 +1060,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-140.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MummyPriest": {
     "Type": "Enemy",
@@ -933,7 +1075,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "MummyWarrior": {
     "Type": "Enemy",
@@ -946,7 +1090,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Osiris": {
     "Type": "Enemy",
@@ -959,7 +1105,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "TigerMan": {
     "Type": "Enemy",
@@ -972,7 +1120,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Tigress": {
     "Type": "Enemy",
@@ -985,7 +1135,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cyrogen": {
     "Type": "Enemy",
@@ -998,7 +1150,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "FrostFiend": {
     "Type": "Enemy",
@@ -1011,7 +1165,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "GoblinElf": {
     "Type": "Enemy",
@@ -1024,7 +1180,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "IceGolem": {
     "Type": "Enemy",
@@ -1037,7 +1195,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PenguinGrunt": {
     "Type": "Enemy",
@@ -1050,7 +1210,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PenguinWarrior": {
     "Type": "Enemy",
@@ -1063,7 +1225,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Santa": {
     "Type": "Enemy",
@@ -1076,7 +1240,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "SnowFiend": {
     "Type": "Enemy",
@@ -1089,7 +1255,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "ToySoldierGoblin": {
     "Type": "Enemy",
@@ -1102,7 +1270,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "WaterElemental": {
     "Type": "Enemy",
@@ -1115,7 +1285,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-740.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Yeti": {
     "Type": "Enemy",
@@ -1128,7 +1300,9 @@
     "Offset": {
       "X": "24.0f",
       "Y": "-280.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "YetiWarrior": {
     "Type": "Enemy",
@@ -1141,7 +1315,9 @@
     "Offset": {
       "X": "24.0f",
       "Y": "-280.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Asmodeus": {
     "Type": "Enemy",
@@ -1154,7 +1330,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "CritterDemon": {
     "Type": "Enemy",
@@ -1167,7 +1345,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonDragon": {
     "Type": "Enemy",
@@ -1180,7 +1360,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonGhost": {
     "Type": "Enemy",
@@ -1193,7 +1375,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "40.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonGrunt": {
     "Type": "Enemy",
@@ -1206,7 +1390,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonRogue": {
     "Type": "Enemy",
@@ -1219,7 +1405,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonShaman": {
     "Type": "Enemy",
@@ -1232,7 +1420,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonSwordsman": {
     "Type": "Enemy",
@@ -1245,7 +1435,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "DemonWarrior": {
     "Type": "Enemy",
@@ -1258,7 +1450,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "FireElemental": {
     "Type": "Enemy",
@@ -1271,7 +1465,9 @@
     "Offset": {
       "X": "64.0f",
       "Y": "-740.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "LavaGolem": {
     "Type": "Enemy",
@@ -1284,7 +1480,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-600.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Garin": {
     "Type": "Npc",
@@ -1297,7 +1495,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "KingRedsong": {
     "Type": "Npc",
@@ -1310,7 +1510,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "KingRedsongSlime": {
     "Type": "Npc",
@@ -1323,7 +1525,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Leroy": {
     "Type": "Npc",
@@ -1336,7 +1540,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Mabel": {
     "Type": "Npc",
@@ -1349,7 +1555,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Merlin": {
     "Type": "Npc",
@@ -1362,7 +1570,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PrincessOpal": {
     "Type": "Npc",
@@ -1375,7 +1585,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Raven": {
     "Type": "Npc",
@@ -1388,7 +1600,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Rogas": {
     "Type": "Npc",
@@ -1401,7 +1615,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Thurstan": {
     "Type": "Npc",
@@ -1414,7 +1630,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Tyracius": {
     "Type": "Npc",
@@ -1427,7 +1645,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Alder": {
     "Type": "Npc",
@@ -1440,7 +1660,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Brock": {
     "Type": "Npc",
@@ -1453,7 +1675,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cypress": {
     "Type": "Npc",
@@ -1466,7 +1690,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Finch": {
     "Type": "Npc",
@@ -1479,7 +1705,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Fraya": {
     "Type": "Npc",
@@ -1492,7 +1720,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Jasper": {
     "Type": "Npc",
@@ -1505,7 +1735,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Mildred": {
     "Type": "Npc",
@@ -1518,7 +1750,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Olive": {
     "Type": "Npc",
@@ -1531,7 +1765,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PrincessDawn": {
     "Type": "Npc",
@@ -1544,7 +1780,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Sarude": {
     "Type": "Npc",
@@ -1557,7 +1795,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Shen": {
     "Type": "Npc",
@@ -1570,7 +1810,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Appolo": {
     "Type": "Npc",
@@ -1583,7 +1825,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Chiron": {
     "Type": "Npc",
@@ -1596,7 +1840,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cooper": {
     "Type": "Npc",
@@ -1609,7 +1855,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Dudly": {
     "Type": "Npc",
@@ -1622,7 +1870,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Lycan": {
     "Type": "Npc",
@@ -1635,7 +1885,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Polyphemus": {
     "Type": "Npc",
@@ -1648,7 +1900,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PrincessMittens": {
     "Type": "Npc",
@@ -1661,7 +1915,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Robin": {
     "Type": "Npc",
@@ -1674,7 +1930,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Rupert": {
     "Type": "Npc",
@@ -1687,7 +1945,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Rusty": {
     "Type": "Npc",
@@ -1700,7 +1960,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Toben": {
     "Type": "Npc",
@@ -1713,7 +1975,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Blackbeard": {
     "Type": "Npc",
@@ -1726,7 +1990,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Bodom": {
     "Type": "Npc",
@@ -1739,7 +2005,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Drak": {
     "Type": "Npc",
@@ -1752,7 +2020,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Elriel": {
     "Type": "Npc",
@@ -1765,7 +2035,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Gramps": {
     "Type": "Npc",
@@ -1778,7 +2050,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Hades": {
     "Type": "Npc",
@@ -1791,7 +2065,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Minos": {
     "Type": "Npc",
@@ -1804,7 +2080,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PrincessMatu": {
     "Type": "Npc",
@@ -1817,7 +2095,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Raka": {
     "Type": "Npc",
@@ -1830,7 +2110,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Thor": {
     "Type": "Npc",
@@ -1843,7 +2125,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Atreus": {
     "Type": "Npc",
@@ -1856,7 +2140,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Illia": {
     "Type": "Npc",
@@ -1869,7 +2155,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Leon": {
     "Type": "Npc",
@@ -1882,7 +2170,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Mara": {
     "Type": "Npc",
@@ -1895,7 +2185,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Marcel": {
     "Type": "Npc",
@@ -1908,7 +2200,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Piper": {
     "Type": "Npc",
@@ -1921,7 +2215,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "QueenElise": {
     "Type": "Npc",
@@ -1934,7 +2230,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Radon": {
     "Type": "Npc",
@@ -1947,7 +2245,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Xenon": {
     "Type": "Npc",
@@ -1960,7 +2260,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ysara": {
     "Type": "Npc",
@@ -1973,7 +2275,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Amelia": {
     "Type": "Npc",
@@ -1986,7 +2290,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Azmus": {
     "Type": "Npc",
@@ -1999,7 +2305,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Garrick": {
     "Type": "Npc",
@@ -2012,7 +2320,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Johann": {
     "Type": "Npc",
@@ -2025,7 +2335,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Necron": {
     "Type": "Npc",
@@ -2038,7 +2350,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PrincessNebea": {
     "Type": "Npc",
@@ -2051,7 +2365,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Roger": {
     "Type": "Npc",
@@ -2064,7 +2380,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Thion": {
     "Type": "Npc",
@@ -2077,7 +2395,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ursula": {
     "Type": "Npc",
@@ -2090,7 +2410,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Viper": {
     "Type": "Npc",
@@ -2103,7 +2425,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Zana": {
     "Type": "Npc",
@@ -2116,7 +2440,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ajax": {
     "Type": "Npc",
@@ -2129,7 +2455,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Aphrodite": {
     "Type": "Npc",
@@ -2142,7 +2470,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ares": {
     "Type": "Npc",
@@ -2155,7 +2485,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Athena": {
     "Type": "Npc",
@@ -2168,7 +2500,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cleopatra": {
     "Type": "Npc",
@@ -2181,7 +2515,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Geryon": {
     "Type": "Npc",
@@ -2194,7 +2530,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Griffin": {
     "Type": "Npc",
@@ -2207,7 +2545,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Hera": {
     "Type": "Npc",
@@ -2220,7 +2560,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Horus": {
     "Type": "Npc",
@@ -2233,7 +2575,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Poseidon": {
     "Type": "Npc",
@@ -2246,7 +2590,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Zeus": {
     "Type": "Npc",
@@ -2259,7 +2605,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Aspen": {
     "Type": "Npc",
@@ -2272,7 +2620,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Aster": {
     "Type": "Npc",
@@ -2285,7 +2635,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cookie": {
     "Type": "Npc",
@@ -2298,7 +2650,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Irmik": {
     "Type": "Npc",
@@ -2311,7 +2665,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Jingles": {
     "Type": "Npc",
@@ -2324,7 +2680,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Juniper": {
     "Type": "Npc",
@@ -2337,7 +2695,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Kringle": {
     "Type": "Npc",
@@ -2350,7 +2710,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Nessie": {
     "Type": "Npc",
@@ -2363,7 +2725,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "PrincessPepper": {
     "Type": "Npc",
@@ -2376,7 +2740,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Theldar": {
     "Type": "Npc",
@@ -2389,7 +2755,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Tinsel": {
     "Type": "Npc",
@@ -2402,7 +2770,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ash": {
     "Type": "Npc",
@@ -2415,7 +2785,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Brine": {
     "Type": "Npc",
@@ -2428,7 +2800,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Celeste": {
     "Type": "Npc",
@@ -2441,7 +2815,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Cindra": {
     "Type": "Npc",
@@ -2454,7 +2830,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Igneus": {
     "Type": "Npc",
@@ -2467,7 +2845,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Lucifer": {
     "Type": "Npc",
@@ -2480,7 +2860,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Magnus": {
     "Type": "Npc",
@@ -2493,7 +2875,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Pan": {
     "Type": "Npc",
@@ -2506,7 +2890,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ragnis": {
     "Type": "Npc",
@@ -2519,7 +2905,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Scaldor": {
     "Type": "Npc",
@@ -2532,7 +2920,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Zelina": {
     "Type": "Npc",
@@ -2545,7 +2935,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Elric": {
     "Type": "Npc",
@@ -2558,7 +2950,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Apple": {
     "Type": "Helper",
@@ -2571,7 +2965,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Gecko": {
     "Type": "Helper",
@@ -2584,7 +2980,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Ghost": {
     "Type": "Helper",
@@ -2597,7 +2995,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Goblin": {
     "Type": "Helper",
@@ -2610,7 +3010,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Knight": {
     "Type": "Helper",
@@ -2623,7 +3025,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Mummy": {
     "Type": "Helper",
@@ -2636,7 +3040,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Princess": {
     "Type": "Helper",
@@ -2649,7 +3055,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Professor": {
     "Type": "Helper",
@@ -2662,7 +3070,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Grim": {
     "Type": "Helper",
@@ -2675,7 +3085,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Robot": {
     "Type": "Helper",
@@ -2688,7 +3100,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Snowman": {
     "Type": "Helper",
@@ -2701,7 +3115,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "Turtle": {
     "Type": "Helper",
@@ -2714,7 +3130,9 @@
     "Offset": {
       "X": "0.0f",
       "Y": "-220.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   },
   "YetiBaby": {
     "Type": "Helper",
@@ -2727,6 +3145,8 @@
     "Offset": {
       "X": "0.0f",
       "Y": "0.0f"
-    }
+    },
+    "Health": 10,
+    "Special": 10
   }
 }

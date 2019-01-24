@@ -22,7 +22,9 @@ Minotaur::Minotaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(278.0f, 288.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

@@ -22,7 +22,9 @@ LightningGolem::LightningGolem(cocos2d::ValueMap* initProperties) : PlatformerEn
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(768.0f, 840.0f),
 	0.30f,
-	cocos2d::Vec2(0.0f, -420.0f))
+	cocos2d::Vec2(0.0f, -420.0f),
+	10,
+	10)
 {
 }
 

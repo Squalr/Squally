@@ -22,7 +22,9 @@ KingGrogg::KingGrogg(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initPr
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(412.0f, 412.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

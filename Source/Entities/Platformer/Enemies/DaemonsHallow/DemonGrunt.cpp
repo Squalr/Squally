@@ -22,7 +22,9 @@ DemonGrunt::DemonGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(init
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(312.0f, 372.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

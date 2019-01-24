@@ -22,7 +22,9 @@ MechBoxDrone::MechBoxDrone(cocos2d::ValueMap* initProperties) : PlatformerEnemy(
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(224.0f, 278.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

@@ -22,7 +22,9 @@ SkeletalBaron::SkeletalBaron(cocos2d::ValueMap* initProperties) : PlatformerEnem
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(112.0f, 368.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

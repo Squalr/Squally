@@ -22,7 +22,9 @@ Santa::Santa(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(420.0f, 452.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

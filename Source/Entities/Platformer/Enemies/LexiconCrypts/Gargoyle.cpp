@@ -22,7 +22,9 @@ Gargoyle::Gargoyle(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 256.0f),
 	0.9f,
-	cocos2d::Vec2(-32.0f, -24.0f))
+	cocos2d::Vec2(-32.0f, -24.0f),
+	10,
+	10)
 {
 }
 

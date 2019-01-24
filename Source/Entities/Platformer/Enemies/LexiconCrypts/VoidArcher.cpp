@@ -22,7 +22,9 @@ VoidArcher::VoidArcher(cocos2d::ValueMap* initProperties) : PlatformerEnemy(init
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 348.0f),
 	0.65f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

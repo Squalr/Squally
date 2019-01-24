@@ -22,7 +22,9 @@ VoidDemon::VoidDemon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initPr
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(338.0f, 342.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

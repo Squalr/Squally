@@ -22,7 +22,9 @@ ReanimatedFighter::ReanimatedFighter(cocos2d::ValueMap* initProperties) : Platfo
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 248.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

@@ -18,6 +18,8 @@ public:
 	static int health;
 
 	static const std::string MapKeySqually;
+	static const int SquallyBaseHealth;
+	static const int SquallyBaseSpecial;
 
 protected:
 	virtual void initializeCollisionEvents() override;

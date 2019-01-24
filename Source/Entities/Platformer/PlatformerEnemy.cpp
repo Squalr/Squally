@@ -12,8 +12,10 @@ PlatformerEnemy::PlatformerEnemy(
 	PlatformerCollisionType collisionType, 
 	cocos2d::Size size, 
 	float scale,
-	cocos2d::Vec2 collisionOffset)
-	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
+	cocos2d::Vec2 collisionOffset,
+	int baseHealth,
+	int baseSpecial)
+	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
 {
 	this->battleMapResource = "";
 

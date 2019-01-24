@@ -22,7 +22,9 @@ MechGolem::MechGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initPr
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(640.0f, 720.0f),
 	0.7f,
-	cocos2d::Vec2(-48.0f, 0.0f))
+	cocos2d::Vec2(-48.0f, 0.0f),
+	10,
+	10)
 {
 }
 
