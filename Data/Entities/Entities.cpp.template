@@ -22,7 +22,9 @@ const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 	PlatformerCollisionType::{{EntityCollisionType}},
 	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
 	{{EntityScale}},
-	cocos2d::Vec2({{EntityOffsetX}}, {{EntityOffsetY}}))
+	cocos2d::Vec2({{EntityOffsetX}}, {{EntityOffsetY}}),
+	{{EntityHealth}},
+	{{EntitySpecial}})
 {
 }
 

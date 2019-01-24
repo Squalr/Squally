@@ -14,7 +14,9 @@ const float PlatformerEntity::maxMoveSpeed = 360.0f;
 const float PlatformerEntity::maxJumpSpeed = 720.0f;
 const float PlatformerEntity::maxFallSpeed = -1280.0f;
 
-const std::string PlatformerEntity::MapKeyMaxHealth = "health";
+const int PlatformerEntity::FallBackMaxHealth = 10;
+const int PlatformerEntity::FallBackMaxSpecial = 10;
+const int PlatformerEntity::MaxRunes = 4;
 
 using namespace cocos2d;
 
@@ -24,7 +26,9 @@ PlatformerEntity::PlatformerEntity(
 	PlatformerCollisionType collisionType,
 	Size size,
 	float scale, 
-	Vec2 collisionOffset
+	Vec2 collisionOffset,
+	int baseHealth,
+	int baseSpecial
 	) : super(
 		initProperties,
 		PlatformerEntity::createCapsulePolygon(size, scale),
@@ -67,23 +71,24 @@ PlatformerEntity::PlatformerEntity(
 	{
 		(*this->properties)[PlatformerEntity::MapKeyWidth] = size.width * scale;
 		(*this->properties)[PlatformerEntity::MapKeyHeight] = size.height * scale;
-
-		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
-		{
-			this->animationNode->setFlippedX((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
-		}
-
-		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
-		{
-			this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
-		}
-
-		if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyMaxHealth))
-		{
-			this->maxHealth = (*this->properties)[PlatformerEntity::MapKeyMaxHealth].asBool();
-			this->health = this->maxHealth;
-		}
 	}
+
+	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
+	{
+		this->animationNode->setFlippedX((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+	}
+
+	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
+	{
+		this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+	}
+
+	this->maxHealth = baseHealth;
+	this->maxSpecial = baseSpecial;
+
+	this->health = this->maxHealth;
+	this->special = this->maxSpecial;
+	this->runes = PlatformerEntity::MaxRunes;
 
 	this->addChild(this->groundCollisionDetector);
 	this->addChild(this->animationNode);
@@ -171,6 +176,26 @@ int PlatformerEntity::getHealth()
 int PlatformerEntity::getMaxHealth()
 {
 	return this->maxHealth;
+}
+
+int PlatformerEntity::getSpecial()
+{
+	return this->health;
+}
+
+int PlatformerEntity::getMaxSpecial()
+{
+	return this->maxHealth;
+}
+
+int PlatformerEntity::getRunes()
+{
+	return this->runes;
+}
+
+int PlatformerEntity::getMaxRunes()
+{
+	return PlatformerEntity::MaxRunes;
 }
 
 bool PlatformerEntity::isOnGround()

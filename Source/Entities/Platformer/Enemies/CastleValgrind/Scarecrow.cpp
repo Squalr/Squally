@@ -22,7 +22,9 @@ Scarecrow::Scarecrow(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initPr
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 512.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, -128.0f))
+	cocos2d::Vec2(0.0f, -128.0f),
+	10,
+	10)
 {
 }
 

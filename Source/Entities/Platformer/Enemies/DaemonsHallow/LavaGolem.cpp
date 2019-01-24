@@ -22,7 +22,9 @@ LavaGolem::LavaGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initPr
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(980.0f, 1200.0f),
 	0.17f,
-	cocos2d::Vec2(0.0f, -600.0f))
+	cocos2d::Vec2(0.0f, -600.0f),
+	10,
+	10)
 {
 }
 

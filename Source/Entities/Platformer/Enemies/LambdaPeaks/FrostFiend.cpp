@@ -22,7 +22,9 @@ FrostFiend::FrostFiend(cocos2d::ValueMap* initProperties) : PlatformerEnemy(init
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(212.0f, 296.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

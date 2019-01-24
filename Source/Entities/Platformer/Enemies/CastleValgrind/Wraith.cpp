@@ -22,7 +22,9 @@ Wraith::Wraith(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperti
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(142.0f, 400.0f),
 	0.5f,
-	cocos2d::Vec2(0.0f, 40.0f))
+	cocos2d::Vec2(0.0f, 40.0f),
+	10,
+	10)
 {
 }
 

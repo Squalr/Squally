@@ -22,7 +22,9 @@ Asmodeus::Asmodeus(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProp
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(480.0f, 480.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

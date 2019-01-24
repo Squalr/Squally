@@ -22,7 +22,9 @@ DemonDragon::DemonDragon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(in
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(340.0f, 360.0f),
 	0.85f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

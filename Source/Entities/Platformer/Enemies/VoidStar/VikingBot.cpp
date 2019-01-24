@@ -22,7 +22,9 @@ VikingBot::VikingBot(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initPr
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(768.0f, 960.0f),
 	0.5f,
-	cocos2d::Vec2(-332.0f, 0.0f))
+	cocos2d::Vec2(-332.0f, 0.0f),
+	10,
+	10)
 {
 }
 

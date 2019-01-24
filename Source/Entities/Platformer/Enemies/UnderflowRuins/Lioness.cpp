@@ -22,7 +22,9 @@ Lioness::Lioness(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 278.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

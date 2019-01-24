@@ -121,8 +121,6 @@ void StatsBars::update(float dt)
 	int maxHealth = this->target->getMaxHealth();
 	float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
 
-	healthPercent = 0.5f;
-
 	this->heartBar->setProgress(healthPercent);
 }
 

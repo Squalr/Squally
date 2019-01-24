@@ -22,7 +22,9 @@ Mermaid::Mermaid(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(172.0f, 296.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, -140.0f))
+	cocos2d::Vec2(0.0f, -140.0f),
+	10,
+	10)
 {
 }
 

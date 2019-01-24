@@ -6,8 +6,24 @@
 
 using namespace cocos2d;
 
-NpcBase::NpcBase(ValueMap* initProperties, std::string scmlResource, PlatformerCollisionType collisionType, Size size, float scale, Vec2 collisionOffset)
-	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset)
+NpcBase::NpcBase(
+	ValueMap* initProperties,
+	std::string scmlResource,
+	PlatformerCollisionType collisionType,
+	Size size,
+	float scale,
+	Vec2 collisionOffset,
+	int baseHealth,
+	int baseSpecial
+) : super(
+	initProperties,
+	scmlResource,
+	collisionType,
+	size,
+	scale,
+	collisionOffset,
+	baseHealth,
+	baseSpecial)
 {
 	this->chatBubbleSprite = Sprite::create(UIResources::Platformer_ChatBubble);
 

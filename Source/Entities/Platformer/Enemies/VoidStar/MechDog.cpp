@@ -22,7 +22,9 @@ MechDog::MechDog(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProper
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(540.0f, 340.0f),
 	0.7f,
-	cocos2d::Vec2(-64.0f, 32.0f))
+	cocos2d::Vec2(-64.0f, 32.0f),
+	10,
+	10)
 {
 }
 

@@ -22,7 +22,9 @@ Lucifer::Lucifer(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f))
+	cocos2d::Vec2(0.0f, 0.0f),
+	10,
+	10)
 {
 }
 

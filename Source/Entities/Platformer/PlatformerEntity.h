@@ -14,15 +14,25 @@ class PlatformerEntity : public CollisionObject
 public:
 	int getHealth();
 	int getMaxHealth();
+	int getSpecial();
+	int getMaxSpecial();
+	int getRunes();
+	int getMaxRunes();
+
+	static const int FallBackMaxHealth;
+	static const int FallBackMaxSpecial;
+	static const int MaxRunes;
 
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap* initProperties,
 		std::string scmlResource,
 		PlatformerCollisionType collisionType,
-		cocos2d::Size size = cocos2d::Size(256.0f, 256.0f),
-		float scale = 1.0f,
-		cocos2d::Vec2 collisionOffset = cocos2d::Vec2(0.0f, 0.0f));
+		cocos2d::Size size,
+		float scale,
+		cocos2d::Vec2 collisionOffset,
+		int baseHealth,
+		int baseSpecial);
 	~PlatformerEntity();
 
 	void onEnter() override;
@@ -41,6 +51,9 @@ protected:
 
 	int health;
 	int maxHealth;
+	int special;
+	int maxSpecial;
+	int runes;
 
 	// CURRENT STATE
 	float actualJumpLaunchVelocity;
@@ -68,7 +81,5 @@ private:
 	static const float groundCollisionDetectorPadding;
 	static const float groundCollisionDetectorOffset;
 	static const float capsuleRadius;
-
-	static const std::string MapKeyMaxHealth;
 };
 
