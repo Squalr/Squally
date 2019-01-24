@@ -73,7 +73,7 @@ void Squally::initializeCollisionEvents()
 
 		if (enemy != nullptr)
 		{
-			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(enemy->getBattleMapResource(), this, enemy));
+			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getAllyResources()));
 		}
 
 		return CollisionResult::DoNothing;

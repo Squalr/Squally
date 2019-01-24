@@ -3,6 +3,7 @@
 #include "Objects/Platformer/Monitor.h"
 #include "Objects/Platformer/Obstructions/Wind/Wind.h"
 #include "Objects/Platformer/Plushies/Plushies.h"
+#include "Objects/Platformer/Spawns/CombatSpawn.h"
 #include "Objects/Platformer/Traps/DartGun/DartGun.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"
 #include "Objects/Platformer/Traps/Laser/Laser.h"

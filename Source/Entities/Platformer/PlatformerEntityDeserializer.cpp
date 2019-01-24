@@ -234,15 +234,20 @@ PlatformerEntityDeserializer* PlatformerEntityDeserializer::instance = nullptr;
 
 void PlatformerEntityDeserializer::registerGlobalNode()
 {
+	// Register this class globally so that it can always listen for events
+	GlobalDirector::getInstance()->registerGlobalNode(PlatformerEntityDeserializer::getInstance());
+}
+
+PlatformerEntityDeserializer* PlatformerEntityDeserializer::getInstance()
+{
 	if (PlatformerEntityDeserializer::instance == nullptr)
 	{
 		PlatformerEntityDeserializer::instance = new PlatformerEntityDeserializer();
 
 		instance->autorelease();
-
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(PlatformerEntityDeserializer::instance);
 	}
+
+	return instance;
 }
 
 PlatformerEntityDeserializer::PlatformerEntityDeserializer()

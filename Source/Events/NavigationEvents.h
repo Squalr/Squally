@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <functional>
+#include <vector>
 
 class Cutscene;
 class HexusOpponentData;
@@ -69,10 +70,10 @@ public:
 	struct NavigateCombatArgs
 	{
 		std::string levelFile;
-		Squally* squally;
-		PlatformerEnemy* enemy;
+		std::vector<std::string> playerTypes;
+		std::vector<std::string> enemyTypes;
 
-		NavigateCombatArgs(std::string levelFile, Squally* squally, PlatformerEnemy* enemy) : levelFile(levelFile), squally(squally), enemy(enemy) { }
+		NavigateCombatArgs(std::string levelFile, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : levelFile(levelFile), playerTypes(playerTypes), enemyTypes(enemyTypes) { }
 	};
 
 	struct NavigateCutsceneArgs

@@ -6,17 +6,20 @@ class PlatformerEntityDeserializer : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
+	static PlatformerEntityDeserializer* getInstance();
+
+	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+
+	static const std::string KeyTypeEntity;
 
 protected:
 	PlatformerEntityDeserializer();
 	virtual ~PlatformerEntityDeserializer();
 
 	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
 
 	static PlatformerEntityDeserializer* instance;
 
-	static const std::string KeyTypeEntity;
 private:
 	typedef GlobalNode super;
 };
