@@ -264,17 +264,19 @@ void PlatformerEntityDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+		[this] (EventCustom* args) {
+			onDeserializationRequest(*reinterpret_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(args->getUserData()));
+		}
 	);
 
-	this->addGlobalEventListener(deserializationRequestListener);
+	addGlobalEventListener(deserializationRequestListener);
 }
 
-void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
+void PlatformerEntityDeserializer::onDeserializationRequest(const DeserializationEvents::ObjectDeserializationRequestArgs& args)
 {
-	if (args->typeName == PlatformerEntityDeserializer::KeyTypeEntity)
+	if (args.typeName == PlatformerEntityDeserializer::KeyTypeEntity)
 	{
-		ValueMap properties = args->properties;
+		ValueMap properties = args.properties;
 		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newEntity = nullptr;
 
@@ -1135,7 +1137,7 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (newEntity != nullptr)
 		{
 			// Fire an event indicating successful deserialization
-			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+			args.onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
 		}
 	}
 }

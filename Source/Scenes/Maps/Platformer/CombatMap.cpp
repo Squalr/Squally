@@ -102,12 +102,15 @@ void CombatMap::loadEntitiesFromKeys()
 			valueMap[SerializableObject::MapKeyName] = Value(*it);
 			valueMap[SerializableObject::MapKeyFlipX] = Value(true);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&DeserializationEvents::ObjectDeserializationRequestArgs(PlatformerEntityDeserializer::KeyTypeEntity, valueMap, [=](DeserializationEvents::ObjectDeserializationArgs args)
+			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest({
+					PlatformerEntityDeserializer::KeyTypeEntity,
+					valueMap,
+					[index] (DeserializationEvents::ObjectDeserializationArgs args)
 			{
 				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
 
 				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
-			}));
+			}});
 
 			index++;
 		}
@@ -123,12 +126,15 @@ void CombatMap::loadEntitiesFromKeys()
 
 			valueMap[SerializableObject::MapKeyName] = Value(*it);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&DeserializationEvents::ObjectDeserializationRequestArgs(PlatformerEntityDeserializer::KeyTypeEntity, valueMap, [=](DeserializationEvents::ObjectDeserializationArgs args)
+			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest({
+					PlatformerEntityDeserializer::KeyTypeEntity,
+					valueMap,
+					[index] (DeserializationEvents::ObjectDeserializationArgs args)
 			{
 				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
 
 				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
-			}));
+			}});
 
 			index++;
 		}
