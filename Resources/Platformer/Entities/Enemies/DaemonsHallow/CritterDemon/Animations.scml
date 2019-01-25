@@ -24,37 +24,37 @@
             </mainline>
             <timeline id="0" name="B LEG 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-54.829609" y="-15.031076" angle="0"/>
+                    <object folder="0" file="0" x="-55.432019" y="59.667719" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="B LEG 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="11.170391" y="-41.031076" angle="0"/>
+                    <object folder="0" file="1" x="10.567981" y="33.667719" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="TAIL">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-121.829609" y="-23.031076" angle="0"/>
+                    <object folder="0" file="2" x="-122.432019" y="51.667719" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="BODY">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-90.829609" y="75.968924" angle="0"/>
+                    <object folder="0" file="3" x="-91.432019" y="150.667719" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="F LEG 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-20.829609" y="-46.031076" angle="0"/>
+                    <object folder="0" file="4" x="-21.432019" y="28.667719" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="F LEG 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-74.829609" y="-21.031076" angle="0"/>
+                    <object folder="0" file="5" x="-75.432019" y="53.667719" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="JAW">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-10.829609" y="-17.031076" angle="0"/>
+                    <object folder="0" file="6" x="-11.432019" y="57.667719" angle="0"/>
                 </key>
             </timeline>
         </animation>

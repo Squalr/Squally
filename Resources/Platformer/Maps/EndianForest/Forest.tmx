@@ -260,9 +260,9 @@
   <object id="445" name="polyphemus" type="entity" x="755.64" y="2475.52" width="200" height="288"/>
   <object id="480" name="ogre" type="entity" x="2376.24" y="2570.31" width="78.7879" height="88">
    <properties>
-    <property name="ally-1" value="cyclops"/>
+    <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
-    <property name="ally-3" value="troll"/>
+    <property name="ally-3" value="orc-bomber"/>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>

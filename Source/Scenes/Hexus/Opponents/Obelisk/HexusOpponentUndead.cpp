@@ -26,7 +26,7 @@ HexusOpponentUndead* HexusOpponentUndead::getInstance()
 }
 
 HexusOpponentUndead::HexusOpponentUndead() : HexusOpponentData(
-	EntityResources::Enemies_LexiconCrypts_Undead_Animations,
+	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.9f,
 	Vec2(-48.0f, -64.0f),

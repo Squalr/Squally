@@ -2,17 +2,17 @@
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
         <file id="0" name="BELT.png" width="280" height="224" pivot_x="0.557252" pivot_y="0.904523"/>
-        <file id="1" name="L ARM 1.png" width="331" height="585" pivot_x="0.018127" pivot_y="0.717949"/>
+        <file id="1" name="L ARM 1.png" width="350" height="420" pivot_x="0.018127" pivot_y="0.717949"/>
         <file id="2" name="L ARM 2.png" width="372" height="562" pivot_x="0.361823" pivot_y="0.932234"/>
         <file id="3" name="L LEG 2.png" width="210" height="360" pivot_x="0.581152" pivot_y="0.82659"/>
-        <file id="4" name="R ARM 1.png" width="324" height="382" pivot_x="0.978395" pivot_y="0.620419"/>
+        <file id="4" name="R ARM 1.png" width="342" height="400" pivot_x="0.978395" pivot_y="0.620419"/>
         <file id="5" name="R ARM 2.png" width="344" height="570" pivot_x="0.591331" pivot_y="0.979964"/>
         <file id="6" name="R LEG 2.png" width="180" height="370" pivot_x="0.63522" pivot_y="0.823034"/>
         <file id="7" name="TORSO.png" width="713" height="543" pivot_x="0.546985" pivot_y="0.0368324"/>
         <file id="8" name="CLOAK 1.png" width="510" height="740" pivot_x="0.889412" pivot_y="0.9632"/>
-        <file id="9" name="CLOAK 2.png" width="509" height="678" pivot_x="0.889412" pivot_y="0.9632"/>
-        <file id="10" name="R LEG 1.png" width="161" height="236" pivot_x="0.652174" pivot_y="0.987288"/>
-        <file id="11" name="L LEG 1.png" width="154" height="242" pivot_x="0.454545" pivot_y="1"/>
+        <file id="9" name="CLOAK 2.png" width="528" height="692" pivot_x="0.889412" pivot_y="0.9632"/>
+        <file id="10" name="R LEG 1.png" width="180" height="250" pivot_x="0.652174" pivot_y="0.987288"/>
+        <file id="11" name="L LEG 1.png" width="170" height="258" pivot_x="0.454545" pivot_y="1"/>
         <file id="12" name="evilEye_head_3.png" width="173" height="175" pivot_x="0.323699" pivot_y="0.16"/>
         <file id="13" name="evilEye_head_1.png" width="173" height="175" pivot_x="0.323699" pivot_y="0.16"/>
         <file id="14" name="evilEye_cape.png" width="107" height="108" pivot_x="0.373832" pivot_y="0.861111"/>
@@ -179,10 +179,10 @@
             </timeline>
             <timeline id="15" obj="0" name="bone_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="11.002747" y="36.936813" angle="97.980114"/>
+                    <bone x="12.565247" y="343.186813" angle="97.980114"/>
                 </key>
                 <key id="1" time="800" spin="0">
-                    <bone x="12.495285" y="39.921888" angle="97.980114"/>
+                    <bone x="14.057785" y="346.171888" angle="97.980114"/>
                 </key>
             </timeline>
             <timeline id="16" obj="1" name="bone_001" object_type="bone">

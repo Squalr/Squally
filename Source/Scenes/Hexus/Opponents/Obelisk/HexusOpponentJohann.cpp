@@ -26,7 +26,7 @@ HexusOpponentJohann* HexusOpponentJohann::getInstance()
 }
 
 HexusOpponentJohann::HexusOpponentJohann() : HexusOpponentData(
-	EntityResources::Npcs_LexiconCrypts_Johann_Animations,
+	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

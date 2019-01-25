@@ -26,7 +26,7 @@ HexusOpponentWaterElemental* HexusOpponentWaterElemental::getInstance()
 }
 
 HexusOpponentWaterElemental::HexusOpponentWaterElemental() : HexusOpponentData(
-	EntityResources::Enemies_LambdaPeaks_WaterElemental_Animations,
+	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-32.0f, -48.0f),

@@ -8,18 +8,17 @@
         <file id="4" name="FACE.png" width="97" height="65" pivot_x="0" pivot_y="1"/>
         <file id="5" name="HELMET.png" width="169" height="210" pivot_x="0" pivot_y="1"/>
         <file id="6" name="WEAPON.png" width="132" height="303" pivot_x="0" pivot_y="1"/>
-        <file id="7" name="1.jpg" width="725" height="484" pivot_x="0" pivot_y="1"/>
-        <file id="8" name="L ARM CLOTH 1.png" width="50" height="32" pivot_x="0" pivot_y="1"/>
-        <file id="9" name="L GLOVE.png" width="42" height="37" pivot_x="0" pivot_y="1"/>
-        <file id="10" name="L GLOVE 2.png" width="30" height="31" pivot_x="0" pivot_y="1"/>
-        <file id="11" name="L LEG CLOTH 1.png" width="38" height="48" pivot_x="0" pivot_y="1"/>
-        <file id="12" name="L LEG 2 CLOTH.png" width="36" height="21" pivot_x="0" pivot_y="1"/>
-        <file id="13" name="R LEG CLOTH 1.png" width="38" height="48" pivot_x="0" pivot_y="1"/>
-        <file id="14" name="R LEG 2 CLOTH.png" width="36" height="21" pivot_x="0" pivot_y="1"/>
-        <file id="15" name="BELT.png" width="76" height="15" pivot_x="0" pivot_y="1"/>
-        <file id="16" name="R ARM CLOTH 1.png" width="50" height="32" pivot_x="0" pivot_y="1"/>
-        <file id="17" name="R GLOVE.png" width="42" height="38" pivot_x="0" pivot_y="1"/>
-        <file id="18" name="HELMET BACK.png" width="30" height="49" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="L ARM CLOTH 1.png" width="50" height="32" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="L GLOVE.png" width="42" height="37" pivot_x="0" pivot_y="1"/>
+        <file id="9" name="L GLOVE 2.png" width="30" height="31" pivot_x="0" pivot_y="1"/>
+        <file id="10" name="L LEG CLOTH 1.png" width="38" height="48" pivot_x="0" pivot_y="1"/>
+        <file id="11" name="L LEG 2 CLOTH.png" width="36" height="21" pivot_x="0" pivot_y="1"/>
+        <file id="12" name="R LEG CLOTH 1.png" width="38" height="48" pivot_x="0" pivot_y="1"/>
+        <file id="13" name="R LEG 2 CLOTH.png" width="36" height="21" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="BELT.png" width="76" height="15" pivot_x="0" pivot_y="1"/>
+        <file id="15" name="R ARM CLOTH 1.png" width="50" height="32" pivot_x="0" pivot_y="1"/>
+        <file id="16" name="R GLOVE.png" width="42" height="38" pivot_x="0" pivot_y="1"/>
+        <file id="17" name="HELMET BACK.png" width="30" height="49" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
@@ -47,92 +46,92 @@
             </mainline>
             <timeline id="0" name="L ARM CLOTH 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="17.975191" y="4.163406" angle="0"/>
+                    <object folder="0" file="0" x="16.027139" y="96.371198" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="L ARM CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="7.975191" y="12.163406" angle="0"/>
+                    <object folder="0" file="7" x="6.027139" y="104.371198" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="L GLOVE">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="20.975191" y="-24.836594" angle="0"/>
+                    <object folder="0" file="8" x="19.027139" y="67.371198" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="L GLOVE 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="34.975191" y="-35.836594" angle="0"/>
+                    <object folder="0" file="9" x="33.027139" y="56.371198" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="L LEG CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="0.947413" y="-33.305344" angle="0"/>
+                    <object folder="0" file="10" x="-1.000639" y="58.902448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="L LEG 2 CLOTH">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="4.947413" y="-70.305344" angle="0"/>
+                    <object folder="0" file="11" x="2.999361" y="21.902448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="R LEG CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-37.274809" y="-33.305344" angle="0"/>
+                    <object folder="0" file="12" x="-39.222861" y="58.902448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="R LEG 2 CLOTH">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-38.274809" y="-70.305344" angle="0"/>
+                    <object folder="0" file="13" x="-40.222861" y="21.902448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="BELT">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="-38.163698" y="-38.083121" angle="0"/>
+                    <object folder="0" file="14" x="-40.11175" y="54.124671" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="TORSO CLOTH">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-38.719254" y="31.361323" angle="0"/>
+                    <object folder="0" file="1" x="-40.667306" y="123.569115" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-65.368559" y="131.882156" angle="0"/>
+                    <object folder="0" file="3" x="-67.316611" y="224.089948" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="FACE">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-31.774809" y="70.944656" angle="0"/>
+                    <object folder="0" file="4" x="-33.722861" y="163.152448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="HELMET">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-94.274809" y="217.819656" angle="0"/>
+                    <object folder="0" file="5" x="-96.222861" y="310.027448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="R ARM CLOTH 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-66.149809" y="1.413406" angle="0"/>
+                    <object folder="0" file="2" x="-68.097861" y="93.621198" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="R ARM CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="-67.712309" y="12.350906" angle="0"/>
+                    <object folder="0" file="15" x="-69.660361" y="104.558698" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="R GLOVE">
                 <key id="0" spin="0">
-                    <object folder="0" file="17" x="-73.181059" y="-25.930344" angle="0"/>
+                    <object folder="0" file="16" x="-75.129111" y="66.277448" angle="0"/>
                 </key>
             </timeline>
             <timeline id="16" name="HELMET BACK">
                 <key id="0" spin="0">
-                    <object folder="0" file="18" x="47.912691" y="56.100906" angle="0"/>
+                    <object folder="0" file="17" x="45.964639" y="148.308698" angle="0"/>
                 </key>
             </timeline>
             <timeline id="17" name="WEAPON">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="212.303863" y="29.93911" angle="272.98953" scale_y="1"/>
+                    <object folder="0" file="6" x="210.355811" y="122.146902" angle="272.98953"/>
                 </key>
             </timeline>
         </animation>

@@ -26,7 +26,7 @@ HexusOpponentJuniper* HexusOpponentJuniper::getInstance()
 }
 
 HexusOpponentJuniper::HexusOpponentJuniper() : HexusOpponentData(
-	EntityResources::Npcs_LambdaPeaks_Juniper_Animations,
+	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

@@ -15,12 +15,12 @@
             </mainline>
             <timeline id="0" name="SLIMY">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-35" y="30"/>
+                    <object folder="0" file="0" x="-35" y="46.487455" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="EYE">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-4" y="27"/>
+                    <object folder="0" file="2" x="-4" y="43.487455" angle="0"/>
                 </key>
             </timeline>
         </animation>

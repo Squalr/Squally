@@ -52,107 +52,107 @@
             </mainline>
             <timeline id="0" name="L ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="52.551021" y="-21.375" angle="66.218184"/>
+                    <object folder="0" file="7" x="52.551021" y="65.721774" angle="66.218184"/>
                 </key>
             </timeline>
             <timeline id="1" name="L ARM CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="59.535224" y="-27.711613" angle="66.218184"/>
+                    <object folder="0" file="3" x="59.535224" y="59.385161" angle="66.218184"/>
                 </key>
             </timeline>
             <timeline id="2" name="L HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="92.276156" y="-30.997104" angle="66.218184"/>
+                    <object folder="0" file="8" x="92.276156" y="56.09967" angle="66.218184"/>
                 </key>
             </timeline>
             <timeline id="3" name="L FINGERS">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="99.128497" y="-30.016352" angle="66.218184"/>
+                    <object folder="0" file="9" x="99.128497" y="57.080422" angle="66.218184"/>
                 </key>
             </timeline>
             <timeline id="4" name="L LEG">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="24.528806" y="-28.391279" angle="0"/>
+                    <object folder="0" file="10" x="24.528806" y="58.705495" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="R LEG">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-8.251806" y="-27.753525" angle="0"/>
+                    <object folder="0" file="11" x="-8.251806" y="59.343249" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="BACK HAIR 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-59.521028" y="143.962909" angle="0"/>
+                    <object folder="0" file="12" x="-59.521028" y="231.059683" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="COVER">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-12.308673" y="-28.443877" angle="0"/>
+                    <object folder="0" file="4" x="-12.308673" y="58.652897" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="BELT">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-5.102041" y="-21.173469" angle="0"/>
+                    <object folder="0" file="5" x="-5.102041" y="65.923305" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="TORSO">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-11.272601" y="41.073666" angle="0"/>
+                    <object folder="0" file="13" x="-11.272601" y="128.17044" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="TORSO CLOTH">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-13.632295" y="4.65785" angle="0"/>
+                    <object folder="0" file="0" x="-13.632295" y="91.754624" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-37.90113" y="142.496073" angle="0"/>
+                    <object folder="0" file="1" x="-37.90113" y="229.592847" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="FACE">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-14.75062" y="78.146583" angle="0"/>
+                    <object folder="0" file="2" x="-14.75062" y="165.243357" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="HAIR">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-57.416436" y="147.598113" angle="0"/>
+                    <object folder="0" file="14" x="-57.416436" y="234.694887" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="R ARM">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="-32.653061" y="11.670919" angle="0"/>
+                    <object folder="0" file="15" x="-32.653061" y="98.767693" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="R ARM CLOTH 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-37.882653" y="2.040817" angle="0"/>
+                    <object folder="0" file="6" x="-37.882653" y="89.137591" angle="0"/>
                 </key>
             </timeline>
             <timeline id="16" name="R HAND">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="-36.607143" y="-26.658164" angle="0"/>
+                    <object folder="0" file="16" x="-36.607143" y="60.43861" angle="0"/>
                 </key>
             </timeline>
             <timeline id="17" name="R SHOE">
                 <key id="0" spin="0">
-                    <object folder="0" file="17" x="-10.6115" y="-51.988218" angle="0"/>
+                    <object folder="0" file="17" x="-10.6115" y="35.108556" angle="0"/>
                 </key>
             </timeline>
             <timeline id="18" name="L SHOE">
                 <key id="0" spin="0">
-                    <object folder="0" file="18" x="25.102786" y="-53.327504" angle="0"/>
+                    <object folder="0" file="18" x="25.102786" y="33.76927" angle="0"/>
                 </key>
             </timeline>
             <timeline id="19" name="STAFF">
                 <key id="0" spin="0">
-                    <object folder="0" file="19" x="109.821429" y="-100.446429" angle="164.744881"/>
+                    <object folder="0" file="19" x="109.821429" y="-13.349655" angle="164.744881"/>
                 </key>
             </timeline>
             <timeline id="20" name="HAT">
                 <key id="0" spin="0">
-                    <object folder="0" file="20" x="-121.576763" y="263.900415" angle="0"/>
+                    <object folder="0" file="20" x="-121.576763" y="350.997189" angle="0"/>
                 </key>
             </timeline>
         </animation>

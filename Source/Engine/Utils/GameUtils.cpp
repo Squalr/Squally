@@ -210,6 +210,20 @@ void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte op
 	node->runAction(sequence);
 }
 
+float GameUtils::getDepth(cocos2d::Node* node)
+{
+	float depth = 0.0f;
+
+	while (node != nullptr)
+	{
+		depth += node->getPositionZ();
+
+		node = node->getParent();
+	}
+
+	return depth;
+}
+
 Rect GameUtils::getSceneBounds(Node* node)
 {
 	Rect resultRect = node->getBoundingBox();

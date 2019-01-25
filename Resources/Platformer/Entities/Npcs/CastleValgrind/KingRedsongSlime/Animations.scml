@@ -18,22 +18,22 @@
             </mainline>
             <timeline id="0" name="SLIME TORSO">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="2.304937" y="4.060288" angle="0"/>
+                    <object folder="0" file="0" x="2.304937" y="41.409686" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="L SLIME EYE">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="14.325229" y="46.199936" angle="0"/>
+                    <object folder="0" file="1" x="14.325229" y="83.549334" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="R SLIME EYE">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-30.188045" y="36.1659" angle="0"/>
+                    <object folder="0" file="2" x="-30.188045" y="73.515298" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="CROWN">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-0.889203" y="100.917431" angle="0"/>
+                    <object folder="0" file="3" x="-0.889203" y="138.266829" angle="0"/>
                 </key>
             </timeline>
         </animation>

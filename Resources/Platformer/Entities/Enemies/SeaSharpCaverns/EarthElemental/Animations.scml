@@ -20,27 +20,27 @@
             </mainline>
             <timeline id="0" name="LEGS">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-98.167754" y="-45.050201" angle="0"/>
+                    <object folder="0" file="0" x="-98.167754" y="139.949799" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="TORSO">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-65.734266" y="73.426573" angle="0"/>
+                    <object folder="0" file="1" x="-65.734266" y="258.426573" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="L ARM 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="33.265617" y="57.338751" angle="0"/>
+                    <object folder="0" file="3" x="33.265617" y="242.338751" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="R ARM 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-123.604329" y="42.391686" angle="0"/>
+                    <object folder="0" file="4" x="-123.604329" y="227.391686" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-64.335664" y="133.277338" angle="0"/>
+                    <object folder="0" file="2" x="-64.335664" y="318.277338" angle="0"/>
                 </key>
             </timeline>
         </animation>

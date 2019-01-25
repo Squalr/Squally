@@ -51,97 +51,97 @@
             </mainline>
             <timeline id="0" name="priest_arm_L_one_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="53.404959" y="5.033058" angle="0"/>
+                    <object folder="0" file="0" x="53.404959" y="151.033058" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="priest_arm_L_two_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="53.752066" y="-34.396694" angle="0"/>
+                    <object folder="0" file="2" x="53.752066" y="111.603306" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="priest_hand_L_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="71.404959" y="-103.438017" angle="0"/>
+                    <object folder="0" file="3" x="71.404959" y="42.561983" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="priest_belt_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-69.652893" y="-65.479339" angle="0"/>
+                    <object folder="0" file="1" x="-69.652893" y="80.520661" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="priest_body_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-79" y="41" angle="0"/>
+                    <object folder="0" file="4" x="-79" y="187" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="priest_scapula_L_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="41.01889" y="58.941474" angle="0"/>
+                    <object folder="0" file="5" x="41.01889" y="204.941474" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="priest_scapula_R_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-143.552201" y="69.03154" angle="0"/>
+                    <object folder="0" file="6" x="-143.552201" y="215.03154" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="priest_arm_R_one_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-118.082645" y="26.438017" angle="0"/>
+                    <object folder="0" file="7" x="-118.082645" y="172.438017" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="priest_arm_R_two_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-150.082645" y="-19.561983" angle="0"/>
+                    <object folder="0" file="8" x="-150.082645" y="126.438017" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="priest_hand_R_0">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-114.77686" y="-107.909091" angle="0"/>
+                    <object folder="0" file="9" x="-114.77686" y="38.090909" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="priest_head_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-95.256198" y="172.338843" angle="0"/>
+                    <object folder="0" file="10" x="-95.256198" y="318.338843" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="priest_weapon_4">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="31.935202" y="-8.69222" angle="303.037949"/>
+                    <object folder="0" file="11" x="31.935202" y="137.30778" angle="303.037949"/>
                 </key>
             </timeline>
             <timeline id="12" name="priest_eye_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-12.785124" y="31.041322" angle="0"/>
+                    <object folder="0" file="13" x="-12.785124" y="177.041322" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="priest_hand_R_2_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="-78.144279" y="-128.179104" angle="0"/>
+                    <object folder="0" file="14" x="-78.144279" y="17.820896" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="priest_hand_R_2_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="-95.059701" y="-123.701493" angle="0"/>
+                    <object folder="0" file="15" x="-95.059701" y="22.298507" angle="0"/>
                 </key>
             </timeline>
             <timeline id="15" name="priest_hand_R_2_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="16" x="-111.477612" y="-129.671642" angle="0"/>
+                    <object folder="0" file="16" x="-111.477612" y="16.328358" angle="0"/>
                 </key>
             </timeline>
             <timeline id="16" name="priest_hand_L_2_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="19" x="68.621891" y="-120.716418" angle="0"/>
+                    <object folder="0" file="19" x="68.621891" y="25.283582" angle="0"/>
                 </key>
             </timeline>
             <timeline id="17" name="priest_hand_L_2_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="20" x="87.029851" y="-120.218905" angle="0"/>
+                    <object folder="0" file="20" x="87.029851" y="25.781095" angle="0"/>
                 </key>
             </timeline>
             <timeline id="18" name="priest_hand_L_2_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="21" x="100.462687" y="-120.218905" angle="0"/>
+                    <object folder="0" file="21" x="100.462687" y="25.781095" angle="0"/>
                 </key>
             </timeline>
         </animation>

@@ -41,77 +41,77 @@
             </mainline>
             <timeline id="0" name="Ghost_R_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="96.706355" y="29.943483" angle="0"/>
+                    <object folder="0" file="1" x="95.706355" y="240.943483" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="Ghost_R_hand_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="94.43564" y="-53.903599" angle="0"/>
+                    <object folder="0" file="2" x="93.43564" y="157.096401" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="Ghost_R_leg_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="15.277444" y="-172.661214" angle="0"/>
+                    <object folder="0" file="3" x="14.277444" y="38.338786" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="Ghost_R_leg_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="17.510526" y="-118.217605" angle="0"/>
+                    <object folder="0" file="4" x="16.510526" y="92.782395" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="Ghost_Body">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-119.072929" y="220.119905" angle="0"/>
+                    <object folder="0" file="6" x="-120.072929" y="431.119905" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="Ghost_L_leg_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-60.567218" y="-175.701642" angle="0"/>
+                    <object folder="0" file="7" x="-61.567218" y="35.298358" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="Ghost_L_leg_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-51.842647" y="-124.138683" angle="0"/>
+                    <object folder="0" file="8" x="-52.842647" y="86.861317" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="Ghost_L_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-139.724793" y="145.050878" angle="9.490954"/>
+                    <object folder="0" file="10" x="-140.724793" y="356.050878" angle="9.490954"/>
                 </key>
             </timeline>
             <timeline id="8" name="Ghost_L_hand_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-135.869826" y="-56.020019" angle="2.562938"/>
+                    <object folder="0" file="11" x="-136.869826" y="154.979981" angle="2.562938"/>
                 </key>
             </timeline>
             <timeline id="9" name="Ghost_L_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-175.702304" y="50.084223" angle="359.87973"/>
+                    <object folder="0" file="12" x="-176.702304" y="261.084223" angle="359.87973"/>
                 </key>
             </timeline>
             <timeline id="10" name="Ghost_Eye_open">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="6.148089" y="227.848703" angle="0"/>
+                    <object folder="0" file="15" x="5.148089" y="438.848703" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="Ghost_Head2">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-74.994779" y="266.178916" angle="0"/>
+                    <object folder="0" file="13" x="-75.994779" y="477.178916" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="Ghost_R_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="92.25038" y="153.954491" angle="0"/>
+                    <object folder="0" file="0" x="91.25038" y="364.954491" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="Ghost_R_leg_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="40.318049" y="-30.436486" angle="0"/>
+                    <object folder="0" file="5" x="39.318049" y="180.563514" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="Ghost_L_leg_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-25.396237" y="-42.940246" angle="0"/>
+                    <object folder="0" file="9" x="-26.396237" y="168.059754" angle="0"/>
                 </key>
             </timeline>
         </animation>

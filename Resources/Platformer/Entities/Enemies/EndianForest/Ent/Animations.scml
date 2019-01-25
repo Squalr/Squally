@@ -40,77 +40,77 @@
             </mainline>
             <timeline id="0" name="Tree_R_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="239" y="247"/>
+                    <object folder="0" file="0" x="76" y="404" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="Tree_R_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="243" y="133"/>
+                    <object folder="0" file="1" x="80" y="290" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="Tree_R_hand_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="232" y="36"/>
+                    <object folder="0" file="2" x="69" y="193" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="Tree_R_leg_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="206" y="31"/>
+                    <object folder="0" file="3" x="43" y="188" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="Tree_R_leg_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="190" y="-125"/>
+                    <object folder="0" file="4" x="27" y="32" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="Tree_R_leg_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="191" y="-58"/>
+                    <object folder="0" file="5" x="28" y="99" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="Tree_Body">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="33" y="282"/>
+                    <object folder="0" file="6" x="-130" y="439" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="Tree_L_leg_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="101" y="-144"/>
+                    <object folder="0" file="7" x="-62" y="13" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="Tree_L_hand_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="12" y="224"/>
+                    <object folder="0" file="9" x="-151" y="381" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="Tree_L_hand_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-29" y="-19"/>
+                    <object folder="0" file="10" x="-192" y="138" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="Tree_L_hand_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-44" y="101"/>
+                    <object folder="0" file="11" x="-207" y="258" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="Tree_L_leg_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="106" y="-60"/>
+                    <object folder="0" file="8" x="-57" y="97" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="Tree_L_leg_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="121" y="17"/>
+                    <object folder="0" file="12" x="-42" y="174" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="Tree_Head">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="78" y="369"/>
+                    <object folder="0" file="13" x="-85" y="526" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="Tree_Eye_open">
                 <key id="0" spin="0">
-                    <object folder="0" file="14" x="153" y="297"/>
+                    <object folder="0" file="14" x="-10" y="454" angle="0"/>
                 </key>
             </timeline>
         </animation>

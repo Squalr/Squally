@@ -26,7 +26,7 @@ HexusOpponentIrmik* HexusOpponentIrmik::getInstance()
 }
 
 HexusOpponentIrmik::HexusOpponentIrmik() : HexusOpponentData(
-	EntityResources::Npcs_LambdaPeaks_Irmik_Animations,
+	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -48.0f),

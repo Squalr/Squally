@@ -26,7 +26,7 @@ HexusOpponentViper* HexusOpponentViper::getInstance()
 }
 
 HexusOpponentViper::HexusOpponentViper() : HexusOpponentData(
-	EntityResources::Npcs_LexiconCrypts_Viper_Animations,
+	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

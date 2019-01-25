@@ -22,7 +22,7 @@ Knight::Knight(cocos2d::ValueMap* initProperties) : PlatformerEntity(initPropert
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,
-	cocos2d::Vec2(0.0f, -220.0f),
+	cocos2d::Vec2(0.0f, 0.0f),
 	10,
 	10)
 {

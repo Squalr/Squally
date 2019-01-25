@@ -50,6 +50,11 @@ PlatformerEnemy::~PlatformerEnemy()
 
 std::string PlatformerEnemy::getBattleMapResource()
 {
+	if (this->battleMapResource == "")
+	{
+		return this->battleMapResource;
+	}
+
 	return "Platformer/Maps/" + this->battleMapResource + ".tmx";
 }
 

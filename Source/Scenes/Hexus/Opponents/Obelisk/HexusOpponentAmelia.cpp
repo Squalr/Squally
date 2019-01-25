@@ -26,7 +26,7 @@ HexusOpponentAmelia* HexusOpponentAmelia::getInstance()
 }
 
 HexusOpponentAmelia::HexusOpponentAmelia() : HexusOpponentData(
-	EntityResources::Npcs_LexiconCrypts_Amelia_Animations,
+	EntityResources::Npcs_LambdaCrypts_Amelia_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

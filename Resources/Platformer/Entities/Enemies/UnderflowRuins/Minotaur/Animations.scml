@@ -180,7 +180,7 @@
             </timeline>
             <timeline id="20" obj="0" name="bone_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="9.629306" y="99.94518" angle="274.421289" scale_y="4.011612"/>
+                    <bone x="9.629306" y="233.94518" angle="274.421289" scale_y="4.011612"/>
                 </key>
             </timeline>
             <timeline id="21" obj="1" name="bone_001" object_type="bone">

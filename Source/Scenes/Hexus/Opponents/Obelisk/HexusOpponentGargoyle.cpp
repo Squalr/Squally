@@ -26,7 +26,7 @@ HexusOpponentGargoyle* HexusOpponentGargoyle::getInstance()
 }
 
 HexusOpponentGargoyle::HexusOpponentGargoyle() : HexusOpponentData(
-	EntityResources::Enemies_LexiconCrypts_Gargoyle_Animations,
+	EntityResources::Enemies_LambdaCrypts_Gargoyle_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

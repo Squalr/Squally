@@ -3,7 +3,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
@@ -32,13 +31,10 @@ void CombatMap::registerGlobalScene()
 
 CombatMap::CombatMap()
 {
-	if (!MapBase::initWithPhysics())
+	if (!MapBase::init())
 	{
 		throw std::uncaught_exception();
 	}
-
-	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
-	this->getPhysicsWorld()->setAutoStep(false);
 }
 
 CombatMap::~CombatMap()
@@ -80,9 +76,6 @@ void CombatMap::initializeListeners()
 void CombatMap::update(float dt)
 {
 	super::update(dt);
-
-	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
-	this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
 void CombatMap::loadMap(SerializableMap* levelMap)

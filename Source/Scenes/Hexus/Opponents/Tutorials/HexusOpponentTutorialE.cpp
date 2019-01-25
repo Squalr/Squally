@@ -27,7 +27,7 @@ HexusOpponentTutorialE* HexusOpponentTutorialE::getInstance()
 }
 
 HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
-	EntityResources::Npcs_LambdaPeaks_Irmik_Animations,
+	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

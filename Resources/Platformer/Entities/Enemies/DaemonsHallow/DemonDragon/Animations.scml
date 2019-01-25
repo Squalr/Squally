@@ -41,77 +41,77 @@
             </mainline>
             <timeline id="0" name="magma_wing_L">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-68" y="173" angle="0"/>
+                    <object folder="0" file="0" x="-76.270677" y="357.210526" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="magma_wing_R">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="-153.833333" y="166.333333" angle="0"/>
+                    <object folder="0" file="1" x="-162.10401" y="350.543859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="magma_tail">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-168.333333" y="45.5" angle="0"/>
+                    <object folder="0" file="2" x="-176.60401" y="229.710526" angle="0"/>
                 </key>
             </timeline>
             <timeline id="3" name="magma_leg_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-61.833333" y="-34.333333" angle="0"/>
+                    <object folder="0" file="3" x="-70.10401" y="149.877193" angle="0"/>
                 </key>
             </timeline>
             <timeline id="4" name="magma_leg_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-69.666667" y="-79.5" angle="0"/>
+                    <object folder="0" file="4" x="-77.937344" y="104.710526" angle="0"/>
                 </key>
             </timeline>
             <timeline id="5" name="magma_leg_L_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-73.5" y="-102.166667" angle="0"/>
+                    <object folder="0" file="5" x="-81.770677" y="82.043859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="6" name="magma_arm_L_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="0.666667" y="5.333333" angle="0"/>
+                    <object folder="0" file="6" x="-7.60401" y="189.543859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="7" name="magma_arm_L_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-4.333333" y="-28" angle="0"/>
+                    <object folder="0" file="7" x="-12.60401" y="156.210526" angle="0"/>
                 </key>
             </timeline>
             <timeline id="8" name="magma_body">
                 <key id="0" spin="0">
-                    <object folder="0" file="10" x="-117.666667" y="100.333333" angle="0"/>
+                    <object folder="0" file="10" x="-125.937344" y="284.543859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="9" name="magma_leg_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="11" x="-117.666667" y="-42.166667" angle="0"/>
+                    <object folder="0" file="11" x="-125.937344" y="142.043859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="10" name="magma_leg_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="12" x="-143.5" y="-83" angle="0"/>
+                    <object folder="0" file="12" x="-151.770677" y="101.210526" angle="0"/>
                 </key>
             </timeline>
             <timeline id="11" name="magma_leg_R_3">
                 <key id="0" spin="0">
-                    <object folder="0" file="13" x="-146.833333" y="-106.333333" angle="0"/>
+                    <object folder="0" file="13" x="-155.10401" y="77.877193" angle="0"/>
                 </key>
             </timeline>
             <timeline id="12" name="magma_head_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="15" x="13.166667" y="177.833333" angle="0"/>
+                    <object folder="0" file="15" x="4.89599" y="362.043859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="13" name="magma_arm_R_1">
                 <key id="0" spin="0">
-                    <object folder="0" file="8" x="-87.666667" y="22.833333" angle="0"/>
+                    <object folder="0" file="8" x="-95.937344" y="207.043859" angle="0"/>
                 </key>
             </timeline>
             <timeline id="14" name="magma_arm_R_2">
                 <key id="0" spin="0">
-                    <object folder="0" file="9" x="-93.5" y="-23" angle="0"/>
+                    <object folder="0" file="9" x="-101.770677" y="161.210526" angle="0"/>
                 </key>
             </timeline>
         </animation>

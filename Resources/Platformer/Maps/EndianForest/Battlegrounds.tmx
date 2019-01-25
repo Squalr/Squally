@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="521">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="538">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -108,9 +108,9 @@
   <object id="477" name="Generic/Background/Cloud_05" type="decor" x="5236.79" y="1669.3" width="864" height="177"/>
   <object id="478" name="Generic/Background/Cloud_02" type="decor" x="3636.24" y="1637.56" width="570" height="271"/>
  </objectgroup>
- <objectgroup name="decor -256">
+ <objectgroup name="decor -312">
   <properties>
-   <property name="depth" type="float" value="-256"/>
+   <property name="depth" type="float" value="-312"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="468" name="Forest/Tree2" type="decor" x="5039.88" y="1869.21" width="679" height="712"/>
@@ -122,148 +122,125 @@
   <object id="475" name="Forest/Background/Tree3" type="decor" x="4070.26" y="1701.11" width="192" height="1240"/>
   <object id="476" name="Forest/Background/Tree3" type="decor" x="4977.94" y="1943.27" width="192" height="1240"/>
  </objectgroup>
- <objectgroup name="decor background">
+ <objectgroup name="terrain -256">
   <properties>
+   <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup name="terrain 2">
-  <properties>
-   <property name="collision-disabled" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="439" name="solid" type="terrain" x="4213.75" y="2500">
+  <object id="440" name="solid" type="terrain" x="3864.03" y="2406.67">
    <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 393.634,0 376.394,212 402.254,360 379.268,624 379.268,960 215.493,1160 8.61972,960 31.6056,664 20.1127,448 51.7183,268 -5.74648,36"/>
-  </object>
-  <object id="447" name="solid" type="terrain" x="4928.61" y="2496">
-   <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 399.13,0 381.65,212 407.87,360 384.563,624 384.563,960 218.502,1160 8.74008,960 32.0469,664 20.3935,448 52.4405,268 -5.82672,36"/>
-  </object>
-  <object id="449" name="solid" type="terrain" x="5529.78" y="2452">
-   <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
-    <property name="texture" value="castle"/>
-   </properties>
-   <polyline points="0,0 403.925,0 386.235,212 412.77,360 389.183,624 389.183,960 221.127,1160 8.84507,960 32.4319,664 20.6385,448 53.0704,268 -5.89671,36"/>
-  </object>
- </objectgroup>
- <objectgroup name="terrain 3">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="440" name="solid" type="terrain" x="3882.03" y="2352">
-   <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 412.93,0 394.845,212 421.972,360 397.859,624 397.859,960 226.056,1160 9.04225,960 33.1549,664 21.0986,448 54.2535,268 -6.02817,36"/>
   </object>
-  <object id="450" name="solid" type="terrain" x="5207.92" y="2248">
+  <object id="450" name="solid" type="terrain" x="5296.58" y="2407.33">
    <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 426.144,0 407.481,212 435.476,360 410.592,624 410.592,960 233.291,1160 9.33163,960 34.216,664 21.7738,448 55.9898,268 -6.22108,36"/>
   </object>
  </objectgroup>
- <objectgroup name="terrain">
+ <objectgroup name="objects -256">
   <properties>
-   <property name="collision-disabled" type="bool" value="true"/>
+   <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="solid" type="terrain" x="3897.86" y="2652">
+  <object id="532" name="spawn" type="object" x="4013.61" y="2314.66" width="78.7879" height="88">
    <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="533" name="spawn" type="object" x="5451.61" y="2319.34" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="terrain -128">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="439" name="solid" type="terrain" x="4163.75" y="2500">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 393.634,0 376.394,212 402.254,360 379.268,624 379.268,960 215.493,1160 8.61972,960 31.6056,664 20.1127,448 51.7183,268 -5.74648,36"/>
+  </object>
+  <object id="447" name="solid" type="terrain" x="4994.61" y="2495">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 399.13,0 381.65,212 407.87,360 384.563,624 384.563,960 218.502,1160 8.74008,960 32.0469,664 20.3935,448 52.4405,268 -5.82672,36"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="objects -128">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="536" name="spawn" type="object" x="5155.34" y="2405.05" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="537" name="spawn" type="object" x="4313.88" y="2408.95" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="terrain +0">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="438" name="solid" type="terrain" x="3886.53" y="2588">
+   <properties>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 401.352,0 383.775,212 410.141,360 386.704,624 386.704,960 219.718,1160 8.78873,960 32.2254,664 20.507,448 52.7324,268 -5.85915,36"/>
   </object>
-  <object id="448" name="solid" type="terrain" x="5219.83" y="2724">
+  <object id="448" name="solid" type="terrain" x="5212.49" y="2589.33">
    <properties>
-    <property name="collision-disabled" type="bool" value="true"/>
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 411.643,0 393.615,212 420.657,360 396.62,624 396.62,960 225.352,1160 9.01408,960 33.0516,664 21.0329,448 54.0845,268 -6.00939,36"/>
   </object>
  </objectgroup>
- <objectgroup name="collision">
+ <objectgroup name="entities +0">
   <properties>
-   <property name="type" value="collision"/>
+   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="type" value="objects"/>
   </properties>
-  <object id="497" name="pass-through" type="collision" x="3884" y="2354" width="414" height="58"/>
-  <object id="510" name="pass-through" type="collision" x="4202.09" y="2498.27" width="414" height="58"/>
-  <object id="511" name="pass-through" type="collision" x="3889.97" y="2658.88" width="414" height="58"/>
-  <object id="512" name="pass-through" type="collision" x="5211.18" y="2252.82" width="414" height="58"/>
-  <object id="513" name="pass-through" type="collision" x="4917.24" y="2492.21" width="414" height="58"/>
-  <object id="514" name="pass-through" type="collision" x="5217.24" y="2722.52" width="414" height="58"/>
-  <object id="515" name="pass-through" type="collision" x="5517.24" y="2449.79" width="414" height="58"/>
+  <object id="518" name="spawn" type="object" x="5371.27" y="2500.67" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="3"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="520" name="spawn" type="object" x="4045.27" y="2499.33" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="3"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup name="objects">
+ <objectgroup name="objects" visible="0">
   <properties>
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="455" name="camera-focus" type="object" x="4724.61" y="2262.67" width="170.788" height="172"/>
- </objectgroup>
- <objectgroup name="entities">
-  <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="366" name="spawn" type="object" x="4392.48" y="2321.57" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="1"/>
-    <property name="spawn-type" value="player"/>
-   </properties>
-  </object>
-  <object id="451" name="spawn" type="object" x="5076.61" y="2313.33" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="1"/>
-    <property name="spawn-type" value="enemy"/>
-   </properties>
-  </object>
-  <object id="516" name="spawn" type="object" x="5379.27" y="2077.33" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="2"/>
-    <property name="spawn-type" value="enemy"/>
-   </properties>
-  </object>
-  <object id="517" name="spawn" type="object" x="5663.27" y="2268" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="4"/>
-    <property name="spawn-type" value="enemy"/>
-   </properties>
-  </object>
-  <object id="518" name="spawn" type="object" x="5393.94" y="2565.33" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="3"/>
-    <property name="spawn-type" value="enemy"/>
-   </properties>
-  </object>
-  <object id="519" name="spawn" type="object" x="4037.94" y="2170.67" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="2"/>
-    <property name="spawn-type" value="player"/>
-   </properties>
-  </object>
-  <object id="520" name="spawn" type="object" x="4041.94" y="2476" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="3"/>
-    <property name="spawn-type" value="player"/>
-   </properties>
-  </object>
+  <object id="455" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

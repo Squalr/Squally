@@ -214,10 +214,10 @@
             </timeline>
             <timeline id="20" obj="0" name="bone_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="5.814361" y="-46.488772" angle="90.960175" scale_y="4.854085"/>
+                    <bone x="5.814361" y="44.511228" angle="90.960175" scale_y="4.854085"/>
                 </key>
                 <key id="1" time="1400" spin="0">
-                    <bone x="5.814361" y="-46.488772" angle="90.960175" scale_x="0.989498" scale_y="4.854085"/>
+                    <bone x="5.814361" y="44.511228" angle="90.960175" scale_x="0.989498" scale_y="4.854085"/>
                 </key>
             </timeline>
             <timeline id="21" obj="1" name="bone_001" object_type="bone">

@@ -27,7 +27,7 @@ HexusOpponentTutorialB* HexusOpponentTutorialB::getInstance()
 }
 
 HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
-	EntityResources::Npcs_LexiconCrypts_PrincessNebea_Animations,
+	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

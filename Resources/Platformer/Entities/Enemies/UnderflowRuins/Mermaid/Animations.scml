@@ -241,10 +241,10 @@
             </timeline>
             <timeline id="18" obj="0" name="bone_000" object_type="bone">
                 <key id="0" spin="0">
-                    <bone x="-6.085521" y="143.909807" angle="272.759108"/>
+                    <bone x="-6.085521" y="153.909807" angle="272.759108"/>
                 </key>
                 <key id="1" time="470" spin="0">
-                    <bone x="-5.737089" y="143.909807" angle="272.759108"/>
+                    <bone x="-5.737089" y="153.909807" angle="272.759108"/>
                 </key>
             </timeline>
             <timeline id="19" obj="1" name="bone_001" object_type="bone">

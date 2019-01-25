@@ -22,7 +22,7 @@ Ent::Ent(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(512.0f, 960.0f),
 	0.9f,
-	cocos2d::Vec2(24.0f, -452.0f),
+	cocos2d::Vec2(24.0f, 0.0f),
 	10,
 	10)
 {

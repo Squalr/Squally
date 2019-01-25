@@ -22,7 +22,7 @@ Executioner::Executioner(cocos2d::ValueMap* initProperties) : PlatformerEnemy(in
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(112.0f, 820.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, -410.0f),
+	cocos2d::Vec2(0.0f, 0.0f),
 	10,
 	10)
 {

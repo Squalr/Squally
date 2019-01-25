@@ -22,7 +22,7 @@ EarthElemental::EarthElemental(cocos2d::ValueMap* initProperties) : PlatformerEn
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(820.0f, 1480.0f),
 	0.20f,
-	cocos2d::Vec2(0.0f, -740.0f),
+	cocos2d::Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
