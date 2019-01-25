@@ -17,6 +17,4 @@ public:
 private:
 	Goblin(cocos2d::ValueMap* initProperties);
 	~Goblin();
-
-	void onEnter() override;
 };

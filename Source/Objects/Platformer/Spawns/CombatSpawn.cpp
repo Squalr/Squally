@@ -45,6 +45,8 @@ CombatSpawn::CombatSpawn(ValueMap* initProperties) : SerializableObject(initProp
 	{
 		this->spawnOrder = (*initProperties)[CombatSpawn::MapKeySpawnOrder].asInt();
 	}
+
+	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 }
 
 CombatSpawn::~CombatSpawn()
@@ -70,7 +72,9 @@ void CombatSpawn::initializeListeners()
 			args->entity != nullptr &&
 			args->entity->getParent() == nullptr)
 		{
-			this->addChild(args->entity);
+			this->getParent()->addChild(args->entity);
+			args->entity->setPosition(this->getPosition());
+			args->entity->setAnchorPoint(Vec2(0.5f, 0.0f));
 		}
 	}));
 }

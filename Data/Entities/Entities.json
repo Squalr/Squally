@@ -1,7 +1,7 @@
 {
   "Abomination": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.6f",
     "Size": {
       "Width": "296.0f",
@@ -16,7 +16,7 @@
   },
   "Gargoyle": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
@@ -24,14 +24,14 @@
     },
     "Offset": {
       "X": "-32.0f",
-      "Y": "-24.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
   },
   "KingZul": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "196.0f",
@@ -46,7 +46,7 @@
   },
   "ReanimatedFighter": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "256.0f",
@@ -61,7 +61,7 @@
   },
   "ReanimatedPig": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "256.0f",
@@ -76,7 +76,7 @@
   },
   "SkeletalBaron": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "112.0f",
@@ -91,7 +91,7 @@
   },
   "SkeletalCleaver": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "128.0f",
@@ -99,14 +99,14 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "16.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
   },
   "SkeletalKnight": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "212.0f",
@@ -121,7 +121,7 @@
   },
   "SkeletalPriestess": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "196.0f",
@@ -136,7 +136,7 @@
   },
   "Undead": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.8f",
     "Size": {
       "Width": "146.0f",
@@ -151,7 +151,7 @@
   },
   "VoidArcher": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.65f",
     "Size": {
       "Width": "196.0f",
@@ -166,7 +166,7 @@
   },
   "VoidDemon": {
     "Type": "Enemy",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.7f",
     "Size": {
       "Width": "338.0f",
@@ -204,7 +204,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-410.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -249,7 +249,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-128.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -264,7 +264,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-128.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -279,7 +279,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-128.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -324,7 +324,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "40.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -369,7 +369,7 @@
     },
     "Offset": {
       "X": "-112.0f",
-      "Y": "-396.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -384,7 +384,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-740.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -414,7 +414,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-420.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -429,7 +429,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-356.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -459,7 +459,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-420.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -534,7 +534,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-112.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -564,7 +564,7 @@
     },
     "Offset": {
       "X": "24.0f",
-      "Y": "-452.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -774,7 +774,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-112.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -864,7 +864,7 @@
     },
     "Offset": {
       "X": "-64.0f",
-      "Y": "32.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -894,7 +894,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-298.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -909,7 +909,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "24.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -939,7 +939,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-112.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -969,7 +969,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "160.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -1059,7 +1059,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-140.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -1141,7 +1141,7 @@
   },
   "Cyrogen": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "420.0f",
@@ -1156,7 +1156,7 @@
   },
   "FrostFiend": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "212.0f",
@@ -1171,7 +1171,7 @@
   },
   "GoblinElf": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.6f",
     "Size": {
       "Width": "140.0f",
@@ -1186,7 +1186,7 @@
   },
   "IceGolem": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.35f",
     "Size": {
       "Width": "1680.0f",
@@ -1201,7 +1201,7 @@
   },
   "PenguinGrunt": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "212.0f",
@@ -1216,7 +1216,7 @@
   },
   "PenguinWarrior": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "212.0f",
@@ -1231,7 +1231,7 @@
   },
   "Santa": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "420.0f",
@@ -1246,7 +1246,7 @@
   },
   "SnowFiend": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.7f",
     "Size": {
       "Width": "420.0f",
@@ -1261,7 +1261,7 @@
   },
   "ToySoldierGoblin": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.8f",
     "Size": {
       "Width": "112.0f",
@@ -1276,7 +1276,7 @@
   },
   "WaterElemental": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.20f",
     "Size": {
       "Width": "820.0f",
@@ -1284,14 +1284,14 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-740.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
   },
   "Yeti": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.4f",
     "Size": {
       "Width": "380.0f",
@@ -1299,14 +1299,14 @@
     },
     "Offset": {
       "X": "24.0f",
-      "Y": "-280.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
   },
   "YetiWarrior": {
     "Type": "Enemy",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.4f",
     "Size": {
       "Width": "380.0f",
@@ -1314,7 +1314,7 @@
     },
     "Offset": {
       "X": "24.0f",
-      "Y": "-280.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -1374,7 +1374,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "40.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -1464,7 +1464,7 @@
     },
     "Offset": {
       "X": "64.0f",
-      "Y": "-740.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -1479,7 +1479,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-600.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -1996,7 +1996,7 @@
   },
   "Bodom": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2281,7 +2281,7 @@
   },
   "Amelia": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2296,7 +2296,7 @@
   },
   "Azmus": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2311,7 +2311,7 @@
   },
   "Garrick": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2326,7 +2326,7 @@
   },
   "Johann": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2341,7 +2341,7 @@
   },
   "Necron": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2356,7 +2356,7 @@
   },
   "PrincessNebea": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2371,7 +2371,7 @@
   },
   "Roger": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2386,7 +2386,7 @@
   },
   "Thion": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2401,7 +2401,7 @@
   },
   "Ursula": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2416,7 +2416,7 @@
   },
   "Viper": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2431,7 +2431,7 @@
   },
   "Zana": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2611,7 +2611,7 @@
   },
   "Aspen": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2626,7 +2626,7 @@
   },
   "Aster": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2641,7 +2641,7 @@
   },
   "Cookie": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2656,7 +2656,7 @@
   },
   "Irmik": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2671,7 +2671,7 @@
   },
   "Jingles": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2686,7 +2686,7 @@
   },
   "Juniper": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2701,7 +2701,7 @@
   },
   "Kringle": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2716,7 +2716,7 @@
   },
   "Nessie": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2731,7 +2731,7 @@
   },
   "PrincessPepper": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2746,7 +2746,7 @@
   },
   "Theldar": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2761,7 +2761,7 @@
   },
   "Tinsel": {
     "Type": "Npc",
-    "Environment": "LambdaPeaks",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2926,7 +2926,7 @@
   },
   "Zelina": {
     "Type": "Npc",
-    "Environment": "LexiconCrypts",
+    "Environment": "LambdaCrypts",
     "Scale": "0.9f",
     "Size": {
       "Width": "112.0f",
@@ -2964,7 +2964,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -2979,7 +2979,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -2994,7 +2994,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3009,7 +3009,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3024,7 +3024,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3039,7 +3039,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3054,7 +3054,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3069,7 +3069,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3084,7 +3084,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3099,7 +3099,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3114,7 +3114,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10
@@ -3129,7 +3129,7 @@
     },
     "Offset": {
       "X": "0.0f",
-      "Y": "-220.0f"
+      "Y": "0.0f"
     },
     "Health": 10,
     "Special": 10

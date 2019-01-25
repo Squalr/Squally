@@ -147,7 +147,7 @@ void TerrainObject::buildCollision()
 	this->collisionNode->removeAllChildren();
 
 	// Check if physics is disabled for this terrain
-	if (GameUtils::keyExists(this->properties, TerrainObject::MapKeyCollisionDisabled) && !(*this->properties)[TerrainObject::MapKeyCollisionDisabled].asBool())
+	if (GameUtils::keyExists(this->properties, TerrainObject::MapKeyCollisionDisabled) && (*this->properties)[TerrainObject::MapKeyCollisionDisabled].asBool())
 	{
 		return;
 	}

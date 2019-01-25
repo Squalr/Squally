@@ -26,7 +26,7 @@ HexusOpponentThion* HexusOpponentThion::getInstance()
 }
 
 HexusOpponentThion::HexusOpponentThion() : HexusOpponentData(
-	EntityResources::Npcs_LexiconCrypts_Thion_Animations,
+	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -165,6 +165,18 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Isometric/Shiftman.cpp
 	Source/Entities/Isometric/Squally/IsometricSqually.cpp
 	Source/Entities/Platformer/Effects/JumpEffect.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/IceGolem.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/PenguinGrunt.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/PenguinWarrior.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/Santa.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/SnowFiend.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/ToySoldierGoblin.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/Yeti.cpp
+	Source/Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.cpp
 	Source/Entities/Platformer/Enemies/CastleValgrind/Agnes.cpp
 	Source/Entities/Platformer/Enemies/CastleValgrind/Executioner.cpp
 	Source/Entities/Platformer/Enemies/CastleValgrind/Guard.cpp
@@ -201,30 +213,18 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Enemies/EndianForest/OrcSwordsman.cpp
 	Source/Entities/Platformer/Enemies/EndianForest/OrcWarrior.cpp
 	Source/Entities/Platformer/Enemies/EndianForest/Troll.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/Cyrogen.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/FrostFiend.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/GoblinElf.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/IceGolem.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/PenguinGrunt.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/PenguinWarrior.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/Santa.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/SnowFiend.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/ToySoldierGoblin.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/WaterElemental.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/Yeti.cpp
-	Source/Entities/Platformer/Enemies/LambdaPeaks/YetiWarrior.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/Abomination.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/Gargoyle.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/KingZul.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/ReanimatedFighter.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/ReanimatedPig.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalBaron.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalCleaver.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalKnight.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalPriestess.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/Undead.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/VoidArcher.cpp
-	Source/Entities/Platformer/Enemies/LexiconCrypts/VoidDemon.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/Abomination.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/KingZul.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/ReanimatedFighter.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/ReanimatedPig.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalBaron.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalCleaver.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalKnight.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalPriestess.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/Undead.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/VoidArcher.cpp
+	Source/Entities/Platformer/Enemies/LambdaCrypts/VoidDemon.cpp
 	Source/Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.cpp
 	Source/Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.cpp
 	Source/Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.cpp
@@ -278,6 +278,18 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Helpers/Turtle.cpp
 	Source/Entities/Platformer/Helpers/YetiBaby.cpp
 	Source/Entities/Platformer/NpcBase.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Aspen.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Aster.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Bodom.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Cookie.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Irmik.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Jingles.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Juniper.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Kringle.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Nessie.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/PrincessPepper.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Theldar.cpp
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Tinsel.cpp
 	Source/Entities/Platformer/Npcs/CastleValgrind/Blackbeard.cpp
 	Source/Entities/Platformer/Npcs/CastleValgrind/Elric.cpp
 	Source/Entities/Platformer/Npcs/CastleValgrind/Garin.cpp
@@ -316,30 +328,18 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Platformer/Npcs/EndianForest/Rupert.cpp
 	Source/Entities/Platformer/Npcs/EndianForest/Rusty.cpp
 	Source/Entities/Platformer/Npcs/EndianForest/Toben.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Aspen.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Aster.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Bodom.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Cookie.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Irmik.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Jingles.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Juniper.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Kringle.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Nessie.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/PrincessPepper.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Theldar.cpp
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Tinsel.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Amelia.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Azmus.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Garrick.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Johann.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Necron.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/PrincessNebea.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Roger.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Thion.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Ursula.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Viper.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Zana.cpp
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Zelina.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Amelia.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Azmus.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Garrick.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Johann.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Necron.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/PrincessNebea.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Roger.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Thion.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Ursula.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Viper.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Zana.cpp
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Zelina.cpp
 	Source/Entities/Platformer/Npcs/SeaSharpCaverns/Alder.cpp
 	Source/Entities/Platformer/Npcs/SeaSharpCaverns/Brock.cpp
 	Source/Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.cpp
@@ -1355,6 +1355,18 @@ list(APPEND GAME_HEADER
 	Source/Entities/Isometric/Shiftman.h
 	Source/Entities/Isometric/Squally/IsometricSqually.h
 	Source/Entities/Platformer/Effects/JumpEffect.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/PenguinGrunt.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/PenguinWarrior.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/Santa.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/SnowFiend.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/ToySoldierGoblin.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/Yeti.h
+	Source/Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.h
 	Source/Entities/Platformer/Enemies/CastleValgrind/Agnes.h
 	Source/Entities/Platformer/Enemies/CastleValgrind/Executioner.h
 	Source/Entities/Platformer/Enemies/CastleValgrind/Guard.h
@@ -1391,30 +1403,18 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Enemies/EndianForest/OrcSwordsman.h
 	Source/Entities/Platformer/Enemies/EndianForest/OrcWarrior.h
 	Source/Entities/Platformer/Enemies/EndianForest/Troll.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/Cyrogen.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/FrostFiend.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/GoblinElf.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/IceGolem.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/PenguinGrunt.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/PenguinWarrior.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/Santa.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/SnowFiend.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/ToySoldierGoblin.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/WaterElemental.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/Yeti.h
-	Source/Entities/Platformer/Enemies/LambdaPeaks/YetiWarrior.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/Abomination.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/Gargoyle.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/KingZul.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/ReanimatedFighter.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/ReanimatedPig.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalBaron.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalCleaver.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalKnight.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/SkeletalPriestess.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/Undead.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/VoidArcher.h
-	Source/Entities/Platformer/Enemies/LexiconCrypts/VoidDemon.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/Abomination.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/KingZul.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/ReanimatedFighter.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/ReanimatedPig.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalBaron.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalCleaver.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalKnight.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/SkeletalPriestess.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/Undead.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/VoidArcher.h
+	Source/Entities/Platformer/Enemies/LambdaCrypts/VoidDemon.h
 	Source/Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h
 	Source/Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h
 	Source/Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h
@@ -1468,6 +1468,18 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Helpers/Turtle.h
 	Source/Entities/Platformer/Helpers/YetiBaby.h
 	Source/Entities/Platformer/NpcBase.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Aspen.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Aster.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Bodom.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Cookie.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Irmik.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Jingles.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Juniper.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Kringle.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Nessie.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/PrincessPepper.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Theldar.h
+	Source/Entities/Platformer/Npcs/BalmerPeaks/Tinsel.h
 	Source/Entities/Platformer/Npcs/CastleValgrind/Blackbeard.h
 	Source/Entities/Platformer/Npcs/CastleValgrind/Elric.h
 	Source/Entities/Platformer/Npcs/CastleValgrind/Garin.h
@@ -1506,30 +1518,18 @@ list(APPEND GAME_HEADER
 	Source/Entities/Platformer/Npcs/EndianForest/Rupert.h
 	Source/Entities/Platformer/Npcs/EndianForest/Rusty.h
 	Source/Entities/Platformer/Npcs/EndianForest/Toben.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Aspen.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Aster.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Bodom.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Cookie.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Irmik.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Jingles.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Juniper.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Kringle.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Nessie.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/PrincessPepper.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Theldar.h
-	Source/Entities/Platformer/Npcs/LambdaPeaks/Tinsel.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Amelia.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Azmus.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Garrick.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Johann.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Necron.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/PrincessNebea.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Roger.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Thion.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Ursula.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Viper.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Zana.h
-	Source/Entities/Platformer/Npcs/LexiconCrypts/Zelina.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Amelia.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Azmus.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Garrick.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Johann.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Necron.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/PrincessNebea.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Roger.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Thion.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Ursula.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Viper.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Zana.h
+	Source/Entities/Platformer/Npcs/LambdaCrypts/Zelina.h
 	Source/Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h
 	Source/Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h
 	Source/Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h

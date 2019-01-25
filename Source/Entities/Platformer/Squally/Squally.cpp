@@ -71,7 +71,7 @@ void Squally::initializeCollisionEvents()
 	{
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other);
 
-		if (enemy != nullptr)
+		if (enemy != nullptr && enemy->getBattleMapResource() != "")
 		{
 			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getAllyResources()));
 		}

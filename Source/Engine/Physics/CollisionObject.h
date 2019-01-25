@@ -76,7 +76,7 @@ private:
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
-
+	
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
 };

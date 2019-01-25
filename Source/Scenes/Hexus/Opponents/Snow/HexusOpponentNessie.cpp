@@ -26,7 +26,7 @@ HexusOpponentNessie* HexusOpponentNessie::getInstance()
 }
 
 HexusOpponentNessie::HexusOpponentNessie() : HexusOpponentData(
-	EntityResources::Npcs_LambdaPeaks_Nessie_Animations,
+	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

@@ -26,7 +26,7 @@ HexusOpponentReanimatedPig* HexusOpponentReanimatedPig::getInstance()
 }
 
 HexusOpponentReanimatedPig::HexusOpponentReanimatedPig() : HexusOpponentData(
-	EntityResources::Enemies_LexiconCrypts_ReanimatedFighter_Animations,
+	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle,
 	1.0f,
 	Vec2(-48.0f, -64.0f),

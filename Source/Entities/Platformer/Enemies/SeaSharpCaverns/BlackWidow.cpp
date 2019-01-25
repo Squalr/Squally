@@ -22,7 +22,7 @@ BlackWidow::BlackWidow(cocos2d::ValueMap* initProperties) : PlatformerEnemy(init
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(1280.0f, 920.0f),
 	0.20f,
-	cocos2d::Vec2(-112.0f, -396.0f),
+	cocos2d::Vec2(-112.0f, 0.0f),
 	10,
 	10)
 {

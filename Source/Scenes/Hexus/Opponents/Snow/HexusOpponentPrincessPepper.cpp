@@ -26,7 +26,7 @@ HexusOpponentPrincessPepper* HexusOpponentPrincessPepper::getInstance()
 }
 
 HexusOpponentPrincessPepper::HexusOpponentPrincessPepper() : HexusOpponentData(
-	EntityResources::Npcs_LambdaPeaks_PrincessPepper_Animations,
+	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps,
 	0.85f,
 	Vec2(-48.0f, -64.0f),

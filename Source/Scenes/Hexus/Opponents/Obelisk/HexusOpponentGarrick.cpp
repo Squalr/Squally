@@ -26,7 +26,7 @@ HexusOpponentGarrick* HexusOpponentGarrick::getInstance()
 }
 
 HexusOpponentGarrick::HexusOpponentGarrick() : HexusOpponentData(
-	EntityResources::Npcs_LexiconCrypts_Garrick_Animations,
+	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk,
 	0.85f,
 	Vec2(-48.0f, -80.0f),
