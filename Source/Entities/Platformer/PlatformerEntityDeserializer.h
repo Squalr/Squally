@@ -8,7 +8,7 @@ public:
 	static void registerGlobalNode();
 	static PlatformerEntityDeserializer* getInstance();
 
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+	void onDeserializationRequest(const DeserializationEvents::ObjectDeserializationRequestArgs& args);
 
 	static const std::string KeyTypeEntity;
 
