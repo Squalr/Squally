@@ -6,9 +6,14 @@
 
 namespace UIResources
 {
+	extern const std::string Combat_SwordFill;
+	extern const std::string Combat_SwordFillRed;
+	extern const std::string Combat_SwordTop;
 	extern const std::string Cursors_Chat;
+	extern const std::string Cursors_Craft;
 	extern const std::string Cursors_Crosshair;
 	extern const std::string Cursors_Dagger;
+	extern const std::string Cursors_Door;
 	extern const std::string Cursors_Exclaimation;
 	extern const std::string Cursors_Globe;
 	extern const std::string Cursors_Key;
@@ -20,6 +25,8 @@ namespace UIResources
 	extern const std::string Cursors_MousePointPressed;
 	extern const std::string Cursors_Question;
 	extern const std::string Cursors_Skull;
+	extern const std::string Cursors_Stash;
+	extern const std::string Cursors_Store;
 	extern const std::string Cursors_Sword;
 	extern const std::string Cursors_ZoomIn;
 	extern const std::string Cursors_ZoomOut;

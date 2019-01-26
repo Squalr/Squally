@@ -29,7 +29,7 @@
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Maps/Platformer/CombatMap.h"
+#include "Scenes/Maps/Platformer/Combat/CombatMap.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.h"
 #include "Scenes/Maps/Platformer/PlatformerMap.h"
 #include "Scenes/Maps/Platformer/Terrain/CastleTerrainDeserializer.h"

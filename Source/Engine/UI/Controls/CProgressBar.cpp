@@ -22,14 +22,12 @@ CProgressBar::CProgressBar(Sprite* frame, Sprite* fill, Vec2 fillOffset)
 {
 	this->frame = frame;
 	this->progressBar = fill;
-	this->progressClip = ClippingRectangleNode::create(Rect(0, -this->progressBar->getContentSize().height / 2.0f, this->progressBar->getContentSize().width, this->progressBar->getContentSize().height));
+	this->progressClip = ClippingRectangleNode::create(Rect(-this->progressBar->getContentSize().width / 2.0f, -this->progressBar->getContentSize().height / 2.0f, this->progressBar->getContentSize().width, this->progressBar->getContentSize().height));
 
-	this->frame->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->progressBar->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->progressClip->setAnchorPoint(Vec2(0.0f, 0.5f));
-
-	this->progressClip->setPosition(Vec2(fillOffset.x, fillOffset.y - this->frame->getContentSize().height / 2.0f));
+	this->progressClip->setPosition(Vec2(fillOffset.x, fillOffset.y));
 	this->setProgress(0.0f);
+
+	this->setContentSize(this->frame->getContentSize());
 
 	this->progressClip->addChild(this->progressBar);
 	this->addChild(this->frame);

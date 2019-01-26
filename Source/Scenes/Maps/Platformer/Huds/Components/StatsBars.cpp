@@ -25,11 +25,13 @@ StatsBars* StatsBars::create()
 
 StatsBars::StatsBars()
 {
+	const Vec2 fillOffset = Vec2(0.0f, 0.0f);
+
 	this->target = nullptr;
 	this->heart = Sprite::create(UIResources::HUD_Heart);
 	this->special = Sprite::create(UIResources::HUD_Leaves);
-	this->heartBar = CProgressBar::create(Sprite::create(UIResources::HUD_BarFrame), Sprite::create(UIResources::HUD_HealthBar), Vec2(10.0f, 16.0f));
-	this->specialBar = CProgressBar::create(Sprite::create(UIResources::HUD_BarFrame), Sprite::create(UIResources::HUD_SpecialBar), Vec2(10.0f, 16.0f));
+	this->heartBar = CProgressBar::create(Sprite::create(UIResources::HUD_BarFrame), Sprite::create(UIResources::HUD_HealthBar), fillOffset);
+	this->specialBar = CProgressBar::create(Sprite::create(UIResources::HUD_BarFrame), Sprite::create(UIResources::HUD_SpecialBar), fillOffset);
 
 	for (int index = 0; index < StatsBars::RuneCount; index++)
 	{
@@ -79,16 +81,16 @@ void StatsBars::initializePositions()
 
 	const float barInset = 64.0f;
 
-	this->heart->setPosition(Vec2(0.0f, -8.0f));
-	this->heartBar->setPosition(Vec2(barInset, 12.0f));
-	this->special->setPosition(Vec2(barInset + 120.0f, -8.0f));
-	this->specialBar->setPosition(Vec2(barInset, 12.0f - 32.0f));
+	this->heart->setPosition(Vec2(0.0f, -32.0f));
+	this->heartBar->setPosition(Vec2(barInset + this->heartBar->getContentSize().width / 2.0f, 0.0f));
+	this->special->setPosition(Vec2(barInset + 120.0f, -32.0f));
+	this->specialBar->setPosition(Vec2(barInset + this->specialBar->getContentSize().width / 2.0f, -32.0f));
 
 	int index = 0;
 
 	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)
 	{
-		(*it)->setPosition(Vec2(barInset + (float)index * 34.0f, -32.0f - 24.0f));
+		(*it)->setPosition(Vec2(barInset + (float)index * 34.0f, -64.0f - 24.0f));
 
 		index++;
 	}
@@ -97,7 +99,7 @@ void StatsBars::initializePositions()
 
 	for (auto it = this->filledRunes.begin(); it != this->filledRunes.end(); it++)
 	{
-		(*it)->setPosition(Vec2(barInset + (float)index * 34.0f, -32.0f - 24.0f));
+		(*it)->setPosition(Vec2(barInset + (float)index * 34.0f, -64.0f - 24.0f));
 
 		index++;
 	}

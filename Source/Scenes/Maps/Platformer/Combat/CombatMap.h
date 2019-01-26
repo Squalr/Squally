@@ -2,6 +2,8 @@
 
 #include "Scenes/Maps/MapBase.h"
 
+class Timeline;
+
 class CombatMap : public MapBase
 {
 public:
@@ -24,6 +26,7 @@ private:
 
 	void loadEntitiesFromKeys();
 
+	Timeline* timeline;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
 

@@ -39,6 +39,8 @@ protected:
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
+	Hud* hud;
+
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode();
@@ -51,7 +53,6 @@ private:
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
 	Hud* menuBackDrop;
-	Hud* hud;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
