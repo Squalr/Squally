@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="502">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="503">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -246,19 +246,19 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="goblin" type="entity" x="4221.63" y="2611.46" width="78.7879" height="88">
+  <object id="438" name="goblin" type="entity" x="4226.96" y="2711.46" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="443" name="lycan" type="entity" x="321.333" y="2485.82" width="200" height="288"/>
+  <object id="443" name="lycan" type="entity" x="326.666" y="2527.15" width="200" height="288"/>
   <object id="444" name="minos" type="entity" x="1359.03" y="2521.58" width="200" height="288">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="445" name="polyphemus" type="entity" x="755.64" y="2475.52" width="200" height="288"/>
-  <object id="480" name="ogre" type="entity" x="2376.24" y="2570.31" width="78.7879" height="88">
+  <object id="445" name="polyphemus" type="entity" x="742.307" y="2527.52" width="200" height="288"/>
+  <object id="480" name="ogre" type="entity" x="2366.91" y="2728.98" width="78.7879" height="88">
    <properties>
     <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
@@ -273,7 +273,7 @@
    <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="1752.36" y="2539.39" width="78.7879" height="88"/>
+  <object id="452" name="squally" type="entity" x="1739.03" y="2719.39" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>
@@ -298,7 +298,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2454.24" y="2599.39" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2408.24" y="2574.72" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="974" y="2432" width="242" height="738"/>
   <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3924.06" y="2678.06" width="270" height="705.576"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1322" y="2580" width="242" height="738"/>
