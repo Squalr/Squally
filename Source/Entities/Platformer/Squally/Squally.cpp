@@ -36,7 +36,7 @@ Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	PlatformerCollisionType::Force,
 	Size(128.0f, 224.0f), 
 	Squally::squallyScale,
-	Vec2(0.0f, 48.0f),
+	Vec2(0.0f, 72.0f),
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial)
 {
@@ -48,6 +48,8 @@ Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	this->squallyCollisionDefaultPosition = Vec2(0.0f, 48.0f * Squally::squallyScale);
 
 	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, Vec2::ZERO), (int)PlatformerCollisionType::Player, false, false);
+	this->squallyCollision->getPhysicsBody()->setPositionOffset(this->getPhysicsBody()->getPositionOffset());
+	this->squallyCollision->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->registerHackables();
 

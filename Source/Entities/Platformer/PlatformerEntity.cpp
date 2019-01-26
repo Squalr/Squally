@@ -41,8 +41,7 @@ PlatformerEntity::PlatformerEntity(
 	this->groundCollisionDetector = CollisionObject::create(
 		PhysicsBody::createBox(
 			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
-			PHYSICSBODY_MATERIAL_DEFAULT,
-			Vec2(0.0f, -(size * scale).height / 2.0f - PlatformerEntity::groundCollisionDetectorOffset)
+			PHYSICSBODY_MATERIAL_DEFAULT
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		false,
@@ -64,7 +63,16 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
 
-	animationNode->setPosition(collisionOffset * scale);
+	float height = (*this->properties)[PlatformerEntity::MapKeyHeight].asFloat();
+
+	this->setPositionY(this->getPositionY());
+
+	this->getPhysicsBody()->setPositionOffset(Vec2(0.0f, (size * scale).height / 2.0f) - Vec2(0.0f, height / 2.0f));
+	this->groundCollisionDetector->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::groundCollisionDetectorOffset) - Vec2(0.0f, height / 2.0f));
+	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->setAnchorPoint(Vec2(0.5f, 0.0f));
+
+	animationNode->setPosition(collisionOffset * scale - Vec2(0.0f, height / 2.0f));
 
 	// Update width to be serialized
 	if (this->properties != nullptr)
