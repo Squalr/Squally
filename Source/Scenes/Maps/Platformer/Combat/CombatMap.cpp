@@ -1,5 +1,6 @@
 #include "CombatMap.h"
 
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -8,10 +9,12 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/Maps/Platformer/Combat/Timeline.h"
 
 using namespace cocos2d;
 
@@ -35,6 +38,10 @@ CombatMap::CombatMap()
 	{
 		throw std::uncaught_exception();
 	}
+
+	this->timeline = Timeline::create();
+
+	this->hud->addChild(this->timeline);
 }
 
 CombatMap::~CombatMap()
@@ -53,6 +60,10 @@ void CombatMap::onEnter()
 void CombatMap::initializePositions()
 {
 	MapBase::initializePositions();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
 }
 
 void CombatMap::initializeListeners()

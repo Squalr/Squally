@@ -42,7 +42,7 @@ void GameHud::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->statsBars->setPosition(24.0f, visibleSize.height - 80.0f);
+	this->statsBars->setPosition(24.0f, visibleSize.height - 64.0f);
 }
 
 void GameHud::initializeListeners()
