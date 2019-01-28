@@ -4,17 +4,19 @@
 
 namespace cocos2d
 {
-	class ClippingRectangleNode;
 	class Sprite;
 }
 
 class CProgressBar;
 class PlatformerEntity;
+class TimelineEntry;
 
 class Timeline : public SmartNode
 {
 public:
 	static Timeline* create();
+
+	void initializeTimeline(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities, bool isPlayerFirstStrike);
 
 private:
 	typedef SmartNode super;
@@ -25,9 +27,17 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void onCastStart(TimelineEntry* entry);
 
 	CProgressBar* swordFill;
 	cocos2d::Sprite* swordTop;
+	cocos2d::Node* timelineNode;
+	std::vector<PlatformerEntity*> playerEntities;
+	std::vector<PlatformerEntity*> enemyEntities;
+	std::vector<TimelineEntry*> timelineEntries;
 
-	static const float CastPercentage;
+	float timelineWidth;
+	TimelineEntry* timelineEntryAwaitingUserAction;
+
+	static const float TimelineSpeed;
 };

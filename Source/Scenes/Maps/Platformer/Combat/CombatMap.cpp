@@ -40,6 +40,8 @@ CombatMap::CombatMap()
 	}
 
 	this->timeline = Timeline::create();
+	this->playerEntities = std::vector<PlatformerEntity*>();
+	this->enemyEntities = std::vector<PlatformerEntity*>();
 
 	this->hud->addChild(this->timeline);
 }
@@ -54,7 +56,7 @@ void CombatMap::onEnter()
 
 	this->scheduleUpdate();
 
-	this->loadEntitiesFromKeys();
+	this->initializeEntities();
 }
 
 void CombatMap::initializePositions()
@@ -76,8 +78,8 @@ void CombatMap::initializeListeners()
 
 		if (combatArgs != nullptr)
 		{
-			CombatMap::instance->setEntityKeys(combatArgs->playerTypes, combatArgs->enemyTypes);
 			CombatMap::instance->loadMap(SerializableMap::deserialize(combatArgs->levelFile));
+			CombatMap::instance->setEntityKeys(combatArgs->playerTypes, combatArgs->enemyTypes);
 
 			GlobalDirector::loadScene(CombatMap::instance);
 		}
@@ -100,13 +102,16 @@ void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::ve
 	this->enemyEntityKeys = enemyEntityKeys;
 }
 
-void CombatMap::loadEntitiesFromKeys()
+void CombatMap::initializeEntities()
 {
+	this->playerEntities.clear();
+	this->enemyEntities.clear();
+
 	// Deserialize all enemies
 	{
 		int index = 1;
 
-		for (auto it = this->enemyEntityKeys.begin(); it != this->enemyEntityKeys.end(); it++)
+		for (auto it = enemyEntityKeys.begin(); it != enemyEntityKeys.end(); it++)
 		{
 			ValueMap valueMap = ValueMap();
 
@@ -116,9 +121,11 @@ void CombatMap::loadEntitiesFromKeys()
 			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest({
 					PlatformerEntityDeserializer::KeyTypeEntity,
 					valueMap,
-					[index] (DeserializationEvents::ObjectDeserializationArgs args)
+					[=] (DeserializationEvents::ObjectDeserializationArgs args)
 			{
 				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+
+				this->enemyEntities.push_back(entity);
 
 				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 			}});
@@ -131,7 +138,7 @@ void CombatMap::loadEntitiesFromKeys()
 	{
 		int index = 1;
 
-		for (auto it = this->playerEntityKeys.begin(); it != this->playerEntityKeys.end(); it++)
+		for (auto it = playerEntityKeys.begin(); it != playerEntityKeys.end(); it++)
 		{
 			ValueMap valueMap = ValueMap();
 
@@ -140,9 +147,11 @@ void CombatMap::loadEntitiesFromKeys()
 			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest({
 					PlatformerEntityDeserializer::KeyTypeEntity,
 					valueMap,
-					[index] (DeserializationEvents::ObjectDeserializationArgs args)
+					[=] (DeserializationEvents::ObjectDeserializationArgs args)
 			{
 				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+
+				this->playerEntities.push_back(entity);
 
 				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 			}});
@@ -150,4 +159,6 @@ void CombatMap::loadEntitiesFromKeys()
 			index++;
 		}
 	}
+
+	this->timeline->initializeTimeline(this->playerEntities, this->enemyEntities, true);
 }
