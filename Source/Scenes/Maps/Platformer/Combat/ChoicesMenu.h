@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
+class ClickableTextNode;
 
 class ChoicesMenu : public SmartNode
 {
@@ -27,9 +27,9 @@ private:
 	void onAttackClick();
 	void onDefendClick();
 
-	ClickableNode* itemsNode;
-	ClickableNode* attackNode;
-	ClickableNode* defendNode;
+	ClickableTextNode* itemsNode;
+	ClickableTextNode* attackNode;
+	ClickableTextNode* defendNode;
 	std::function<void()> onChoiceMadeCallback;
 
 	static const float InnerChoicesRadius;
