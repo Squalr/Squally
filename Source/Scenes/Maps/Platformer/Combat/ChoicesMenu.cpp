@@ -4,12 +4,17 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
-#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 
 #include "Resources/UIResources.h"
+
+#include "Strings/Combat/Attack.h"
+#include "Strings/Combat/Defend.h"
+#include "Strings/Combat/Items.h"
 
 using namespace cocos2d;
 
@@ -27,10 +32,37 @@ ChoicesMenu* ChoicesMenu::create(std::function<void()> onChoiceMadeCallback)
 
 ChoicesMenu::ChoicesMenu(std::function<void()> onChoiceMadeCallback)
 {
-	this->itemsNode = ClickableNode::create(UIResources::Combat_ItemsCircle, UIResources::Combat_ItemsCircle);
-	this->attackNode = ClickableNode::create(UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
-	this->defendNode = ClickableNode::create(UIResources::Combat_DefendCircle, UIResources::Combat_DefendCircle);
+	LocalizedLabel* itemsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Items::create());
+	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Attack::create());
+	LocalizedLabel* defendLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Defend::create());
+	LocalizedLabel* itemsLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Items::create());
+	LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Attack::create());
+	LocalizedLabel* defendLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Defend::create());
+
+	this->itemsNode = ClickableTextNode::create(itemsLabel, itemsLabelSelected, UIResources::Combat_ItemsCircle, UIResources::Combat_ItemsCircle);
+	this->attackNode = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
+	this->defendNode = ClickableTextNode::create(defendLabel, defendLabelSelected, UIResources::Combat_DefendCircle, UIResources::Combat_DefendCircle);
 	this->onChoiceMadeCallback = onChoiceMadeCallback;
+
+	itemsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	defendLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	itemsLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+	attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+	defendLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+	itemsLabel->enableOutline(Color4B::BLACK, 2);
+	attackLabel->enableOutline(Color4B::BLACK, 2);
+	defendLabel->enableOutline(Color4B::BLACK, 2);
+	itemsLabelSelected->enableOutline(Color4B::BLACK, 2);
+	attackLabelSelected->enableOutline(Color4B::BLACK, 2);
+	defendLabelSelected->enableOutline(Color4B::BLACK, 2);
+	itemsLabelSelected->setTextColor(Color4B::YELLOW);
+	attackLabelSelected->setTextColor(Color4B::YELLOW);
+	defendLabelSelected->setTextColor(Color4B::YELLOW);
+
+	this->itemsNode->setTextOffset(Vec2(48.0f, 0.0f));
+	this->attackNode->setTextOffset(Vec2(48.0f, 0.0f));
+	this->defendNode->setTextOffset(Vec2(48.0f, 0.0f));
 
 	this->itemsNode->addChild(Sprite::create(UIResources::Menus_Icons_Dice));
 	this->attackNode->addChild(Sprite::create(UIResources::Menus_Icons_Spear));
@@ -52,9 +84,11 @@ void ChoicesMenu::initializePositions()
 {
 	super::initializePositions();
 
-	this->itemsNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(M_PI / 7), ChoicesMenu::InnerChoicesRadius * std::sin(M_PI / 7)));
+	const float AngleDelta = M_PI / 6.0f;
+
+	this->itemsNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(AngleDelta), ChoicesMenu::InnerChoicesRadius * std::sin(AngleDelta)));
 	this->attackNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(0.0f), ChoicesMenu::InnerChoicesRadius * std::sin(0.0f)));
-	this->defendNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(-M_PI / 7), ChoicesMenu::InnerChoicesRadius * std::sin(-M_PI / 7)));
+	this->defendNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(-AngleDelta), ChoicesMenu::InnerChoicesRadius * std::sin(-AngleDelta)));
 }
 
 void ChoicesMenu::initializeListeners()

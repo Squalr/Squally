@@ -4,12 +4,16 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
+
+#include "Strings/Combat/Cast.h"
+#include "Strings/Combat/Wait.h"
 
 using namespace cocos2d;
 
@@ -34,12 +38,22 @@ Timeline::Timeline(std::function<void(PlatformerEntity*)> onUserActionRequiredCa
 	this->timelineEntries = std::vector<TimelineEntry*>();
 	this->timelineWidth = this->swordFill->getContentSize().width;
 	this->timelineEntryAwaitingUserAction = nullptr;
+	this->waitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Wait::create());
+	this->castLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Cast::create());
+
+	this->waitLabel->enableOutline(Color4B::BLACK, 2);
+	this->castLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->waitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->castLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->swordFill->setProgress(TimelineEntry::CastPercentage);
 
 	this->addChild(this->swordFill);
 	this->addChild(this->swordTop);
 	this->addChild(this->timelineNode);
+	this->addChild(this->waitLabel);
+	this->addChild(this->castLabel);
 }
 
 void Timeline::onEnter()
@@ -56,6 +70,8 @@ void Timeline::initializePositions()
 	const float fillOffsetX = 46.0f;
 
 	this->swordTop->setPositionX(-fillOffsetX);
+	this->waitLabel->setPositionX(-288.0f);
+	this->castLabel->setPositionX(224.0f);
 }
 
 void Timeline::initializeListeners()

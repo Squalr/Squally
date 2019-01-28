@@ -861,6 +861,13 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/Snow.cpp
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
 	Source/Sound/MusicDeserializer.cpp
+	Source/Strings/Combat/Attack.cpp
+	Source/Strings/Combat/Cast.cpp
+	Source/Strings/Combat/Defend.cpp
+	Source/Strings/Combat/Items.cpp
+	Source/Strings/Combat/Skills.cpp
+	Source/Strings/Combat/Spells.cpp
+	Source/Strings/Combat/Wait.cpp
 	Source/Strings/Cutscenes/PressEscToSkip.cpp
 	Source/Strings/Debugging/CameraX.cpp
 	Source/Strings/Debugging/CameraY.cpp
@@ -2071,6 +2078,13 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/Snow.h
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
 	Source/Sound/MusicDeserializer.h
+	Source/Strings/Combat/Attack.h
+	Source/Strings/Combat/Cast.h
+	Source/Strings/Combat/Defend.h
+	Source/Strings/Combat/Items.h
+	Source/Strings/Combat/Skills.h
+	Source/Strings/Combat/Spells.h
+	Source/Strings/Combat/Wait.h
 	Source/Strings/Cutscenes/PressEscToSkip.h
 	Source/Strings/Debugging/CameraX.h
 	Source/Strings/Debugging/CameraY.h

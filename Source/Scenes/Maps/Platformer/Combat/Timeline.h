@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CProgressBar;
+class LocalizedLabel;
 class PlatformerEntity;
 class TimelineEntry;
 
@@ -33,6 +34,8 @@ private:
 	CProgressBar* swordFill;
 	cocos2d::Sprite* swordTop;
 	cocos2d::Node* timelineNode;
+	LocalizedLabel* waitLabel;
+	LocalizedLabel* castLabel;
 	std::vector<PlatformerEntity*> playerEntities;
 	std::vector<PlatformerEntity*> enemyEntities;
 	std::vector<TimelineEntry*> timelineEntries;
