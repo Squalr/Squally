@@ -15,17 +15,19 @@ using namespace cocos2d;
 
 const float Timeline::TimelineSpeed = 0.00025f;
 
-Timeline* Timeline::create()
+Timeline* Timeline::create(std::function<void(PlatformerEntity*)> onUserActionRequiredCallback)
 {
-	Timeline* instance = new Timeline();
+	Timeline* instance = new Timeline(onUserActionRequiredCallback);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Timeline::Timeline()
+Timeline::Timeline(std::function<void(PlatformerEntity*)> onUserActionRequiredCallback)
 {
+	this->onUserActionRequiredCallback = onUserActionRequiredCallback;
+
 	this->swordFill = CProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
 	this->timelineNode = Node::create();
@@ -78,6 +80,10 @@ void Timeline::update(float dt)
 	}
 }
 
+void Timeline::actionMade()
+{
+	this->timelineEntryAwaitingUserAction = nullptr;
+}
 
 void Timeline::initializeTimeline(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities, bool isPlayerFirstStrike)
 {
@@ -113,5 +119,10 @@ void Timeline::onCastStart(TimelineEntry* entry)
 	if (entry->isPlayerTimelineEntry())
 	{
 		this->timelineEntryAwaitingUserAction = entry;
+
+		if (this->onUserActionRequiredCallback != nullptr && this->timelineEntryAwaitingUserAction != nullptr)
+		{
+			this->onUserActionRequiredCallback(this->timelineEntryAwaitingUserAction->getEntity());
+		}
 	}
 }

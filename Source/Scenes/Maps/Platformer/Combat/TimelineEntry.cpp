@@ -25,6 +25,7 @@ TimelineEntry* TimelineEntry::create(PlatformerEntity* entity, bool isPlayerEntr
 
 TimelineEntry::TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry, std::function<void(TimelineEntry*)> onCastingStartCallback)
 {
+	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
 	this->circle = isPlayerEntry ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->emblem = Sprite::create();
@@ -51,17 +52,16 @@ void TimelineEntry::initializePositions()
 	super::initializePositions();
 
 	const float EntryOffsetY = 72.0f;
+	const float LineOffsetY = 48.0f;
 
 	if (this->isPlayerEntry)
 	{
-		this->line->setAnchorPoint(Vec2(0.5f, 0.0f));
-		this->line->setPositionY(-(EntryOffsetY - 8.0f));
+		this->line->setPositionY(-LineOffsetY);
 		this->setPositionY(EntryOffsetY);
 	}
 	else
 	{
-		this->line->setAnchorPoint(Vec2(0.5f, 1.0f));
-		this->line->setPositionY(EntryOffsetY - 8.0f);
+		this->line->setPositionY(LineOffsetY);
 		this->setPositionY(-EntryOffsetY);
 	}
 }
@@ -74,6 +74,11 @@ void TimelineEntry::initializeListeners()
 void TimelineEntry::update(float dt)
 {
 	super::update(dt);
+}
+
+PlatformerEntity* TimelineEntry::getEntity()
+{
+	return this->entity;
 }
 
 bool TimelineEntry::isPlayerTimelineEntry()

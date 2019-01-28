@@ -5,7 +5,10 @@
 #include "UIResources.h"
 #include <string>
 
+const std::string UIResources::Combat_AttackCircle = "UI/Combat/AttackCircle.png";
+const std::string UIResources::Combat_DefendCircle = "UI/Combat/DefendCircle.png";
 const std::string UIResources::Combat_EnemyCircle = "UI/Combat/EnemyCircle.png";
+const std::string UIResources::Combat_ItemsCircle = "UI/Combat/ItemsCircle.png";
 const std::string UIResources::Combat_Line = "UI/Combat/Line.png";
 const std::string UIResources::Combat_PlayerCircle = "UI/Combat/PlayerCircle.png";
 const std::string UIResources::Combat_SwordFill = "UI/Combat/SwordFill.png";

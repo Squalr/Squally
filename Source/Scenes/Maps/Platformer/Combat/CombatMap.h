@@ -2,6 +2,7 @@
 
 #include "Scenes/Maps/MapBase.h"
 
+class ChoicesMenu;
 class PlatformerEntity;
 class Timeline;
 
@@ -24,10 +25,12 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-
+	void onUserActionRequested(PlatformerEntity* entity);
+	void onUserAction();
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 
 	Timeline* timeline;
+	ChoicesMenu* choicesMenu;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
 	std::vector<PlatformerEntity*> playerEntities;
