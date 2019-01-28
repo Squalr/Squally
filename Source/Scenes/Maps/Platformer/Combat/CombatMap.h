@@ -2,6 +2,7 @@
 
 #include "Scenes/Maps/MapBase.h"
 
+class PlatformerEntity;
 class Timeline;
 
 class CombatMap : public MapBase
@@ -11,7 +12,7 @@ public:
 
 	void loadMap(SerializableMap* levelMap) override;
 
-	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
+	void initializeEntities();
 
 protected:
 	CombatMap();
@@ -24,11 +25,13 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	void loadEntitiesFromKeys();
+	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 
 	Timeline* timeline;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
+	std::vector<PlatformerEntity*> playerEntities;
+	std::vector<PlatformerEntity*> enemyEntities;
 
 	static CombatMap* instance;
 };

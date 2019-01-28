@@ -69,11 +69,12 @@ public:
 
 	struct NavigateCombatArgs
 	{
+		bool playerFirstStrike;
 		std::string levelFile;
 		std::vector<std::string> playerTypes;
 		std::vector<std::string> enemyTypes;
 
-		NavigateCombatArgs(std::string levelFile, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : levelFile(levelFile), playerTypes(playerTypes), enemyTypes(enemyTypes) { }
+		NavigateCombatArgs(bool playerFirstStrike, std::string levelFile, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : playerFirstStrike(playerFirstStrike), levelFile(levelFile), playerTypes(playerTypes), enemyTypes(enemyTypes) { }
 	};
 
 	struct NavigateCutsceneArgs
