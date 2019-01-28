@@ -10,10 +10,12 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
 #include "Engine/UI/HUD/Hud.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/Maps/Platformer/Combat/ChoicesMenu.h"
 #include "Scenes/Maps/Platformer/Combat/Timeline.h"
 
 using namespace cocos2d;
@@ -39,11 +41,15 @@ CombatMap::CombatMap()
 		throw std::uncaught_exception();
 	}
 
-	this->timeline = Timeline::create();
+	this->choicesMenu = ChoicesMenu::create(CC_CALLBACK_0(CombatMap::onUserAction, this));
+	this->timeline = Timeline::create(CC_CALLBACK_1(CombatMap::onUserActionRequested, this));
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
+	this->choicesMenu->setVisible(false);
+
 	this->hud->addChild(this->timeline);
+	this->hud->addChild(this->choicesMenu);
 }
 
 CombatMap::~CombatMap()
@@ -65,6 +71,7 @@ void CombatMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
 }
 
@@ -100,6 +107,18 @@ void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::ve
 {
 	this->playerEntityKeys = playerEntityKeys;
 	this->enemyEntityKeys = enemyEntityKeys;
+}
+
+void CombatMap::onUserActionRequested(PlatformerEntity* entity)
+{
+	this->choicesMenu->setPosition(GameUtils::getSceneBounds(entity).origin + Vec2(0.0f, 128.0f));
+	this->choicesMenu->setVisible(true);
+}
+
+void CombatMap::onUserAction()
+{
+	this->choicesMenu->setVisible(false);
+	this->timeline->actionMade();
 }
 
 void CombatMap::initializeEntities()

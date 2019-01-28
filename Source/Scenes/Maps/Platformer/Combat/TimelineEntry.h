@@ -14,11 +14,11 @@ class TimelineEntry : public SmartNode
 public:
 	static TimelineEntry* create(PlatformerEntity* entity, bool isPlayerEntry, std::function<void(TimelineEntry*)> onCastingStartCallback);
 
+	PlatformerEntity* getEntity();
 	bool isPlayerTimelineEntry();
 	bool isCasting();
 	void doCast();
 	void interrupt();
-
 	float cancelProgress();
 	float getProgress();
 	float addProgress(float progressDelta);
@@ -36,6 +36,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	PlatformerEntity* entity;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;

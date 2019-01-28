@@ -14,13 +14,14 @@ class TimelineEntry;
 class Timeline : public SmartNode
 {
 public:
-	static Timeline* create();
+	static Timeline* create(std::function<void(PlatformerEntity*)> onUserActionRequiredCallback);
 
 	void initializeTimeline(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities, bool isPlayerFirstStrike);
+	void actionMade();
 
 private:
 	typedef SmartNode super;
-	Timeline();
+	Timeline(std::function<void(PlatformerEntity*)> onUserActionRequiredCallback);
 	virtual ~Timeline() = default;
 
 	void onEnter() override;
@@ -38,6 +39,7 @@ private:
 
 	float timelineWidth;
 	TimelineEntry* timelineEntryAwaitingUserAction;
+	std::function<void(PlatformerEntity*)> onUserActionRequiredCallback;
 
 	static const float TimelineSpeed;
 };
