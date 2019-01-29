@@ -2,12 +2,15 @@
 
 #include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
@@ -19,19 +22,17 @@ using namespace cocos2d;
 
 const float Timeline::TimelineSpeed = 0.00025f;
 
-Timeline* Timeline::create(std::function<void(PlatformerEntity*)> onUserActionRequiredCallback)
+Timeline* Timeline::create()
 {
-	Timeline* instance = new Timeline(onUserActionRequiredCallback);
+	Timeline* instance = new Timeline();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Timeline::Timeline(std::function<void(PlatformerEntity*)> onUserActionRequiredCallback)
+Timeline::Timeline()
 {
-	this->onUserActionRequiredCallback = onUserActionRequiredCallback;
-
 	this->swordFill = CProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
 	this->timelineNode = Node::create();
@@ -77,6 +78,16 @@ void Timeline::initializePositions()
 void Timeline::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestUserAction, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::RequestUserActionArgs* args = static_cast<CombatEvents::RequestUserActionArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->timelineEntryAwaitingUserAction = args->entry;
+		}
+	}));
 }
 
 void Timeline::update(float dt)
@@ -111,7 +122,7 @@ void Timeline::initializeTimeline(std::vector<PlatformerEntity*> playerEntities,
 
 	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(*it, true, CC_CALLBACK_1(Timeline::onCastStart, this));
+		TimelineEntry* entry = TimelineEntry::create(*it, true);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
@@ -121,24 +132,11 @@ void Timeline::initializeTimeline(std::vector<PlatformerEntity*> playerEntities,
 
 	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(*it, false, CC_CALLBACK_1(Timeline::onCastStart, this));
+		TimelineEntry* entry = TimelineEntry::create(*it, false);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
 		entry->addProgress(RandomHelper::random_real(0.0f, 0.5f));
-	}
-}
-
-void Timeline::onCastStart(TimelineEntry* entry)
-{
-	if (entry->isPlayerTimelineEntry())
-	{
-		this->timelineEntryAwaitingUserAction = entry;
-
-		if (this->onUserActionRequiredCallback != nullptr && this->timelineEntryAwaitingUserAction != nullptr)
-		{
-			this->onUserActionRequiredCallback(this->timelineEntryAwaitingUserAction->getEntity());
-		}
 	}
 }

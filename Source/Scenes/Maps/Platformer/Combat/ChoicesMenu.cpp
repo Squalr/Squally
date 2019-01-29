@@ -9,6 +9,7 @@
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 
 #include "Resources/UIResources.h"
 
@@ -21,16 +22,16 @@ using namespace cocos2d;
 const float ChoicesMenu::InnerChoicesRadius = 240.0f;
 const float ChoicesMenu::OuterChoicesRadius = 480.0f;
 
-ChoicesMenu* ChoicesMenu::create(std::function<void()> onChoiceMadeCallback)
+ChoicesMenu* ChoicesMenu::create()
 {
-	ChoicesMenu* instance = new ChoicesMenu(onChoiceMadeCallback);
+	ChoicesMenu* instance = new ChoicesMenu();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChoicesMenu::ChoicesMenu(std::function<void()> onChoiceMadeCallback)
+ChoicesMenu::ChoicesMenu()
 {
 	LocalizedLabel* itemsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Items::create());
 	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Attack::create());
@@ -42,7 +43,6 @@ ChoicesMenu::ChoicesMenu(std::function<void()> onChoiceMadeCallback)
 	this->itemsNode = ClickableTextNode::create(itemsLabel, itemsLabelSelected, UIResources::Combat_ItemsCircle, UIResources::Combat_ItemsCircle);
 	this->attackNode = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
 	this->defendNode = ClickableTextNode::create(defendLabel, defendLabelSelected, UIResources::Combat_DefendCircle, UIResources::Combat_DefendCircle);
-	this->onChoiceMadeCallback = onChoiceMadeCallback;
 
 	itemsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -107,24 +107,24 @@ void ChoicesMenu::update(float dt)
 
 void ChoicesMenu::onItemsClick()
 {
-	if (this->onChoiceMadeCallback != nullptr)
-	{
-		this->onChoiceMadeCallback();
-	}
+	CombatEvents::TriggerItemSelected();
+
+	// TEMP:
+	CombatEvents::TriggerUserActionMade();
 }
 
 void ChoicesMenu::onAttackClick()
 {
-	if (this->onChoiceMadeCallback != nullptr)
-	{
-		this->onChoiceMadeCallback();
-	}
+	CombatEvents::TriggerAttackSelected();
+
+	// TEMP:
+	CombatEvents::TriggerUserActionMade();
 }
 
 void ChoicesMenu::onDefendClick()
 {
-	if (this->onChoiceMadeCallback != nullptr)
-	{
-		this->onChoiceMadeCallback();
-	}
+	CombatEvents::TriggerDefendSelected();
+
+	// TEMP:
+	CombatEvents::TriggerUserActionMade();
 }

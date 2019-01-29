@@ -12,7 +12,7 @@ class PlatformerEntity;
 class TimelineEntry : public SmartNode
 {
 public:
-	static TimelineEntry* create(PlatformerEntity* entity, bool isPlayerEntry, std::function<void(TimelineEntry*)> onCastingStartCallback);
+	static TimelineEntry* create(PlatformerEntity* entity, bool isPlayerEntry);
 
 	PlatformerEntity* getEntity();
 	bool isPlayerTimelineEntry();
@@ -28,7 +28,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry, std::function<void(TimelineEntry*)> onCastingStartCallback);
+	TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry);
 	virtual ~TimelineEntry() = default;
 
 	void onEnter() override;
@@ -44,5 +44,4 @@ private:
 	float speed;
 	float progress;
 	bool isPlayerEntry;
-	std::function<void(TimelineEntry*)> onCastingStartCallback;
 };
