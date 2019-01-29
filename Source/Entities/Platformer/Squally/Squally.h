@@ -15,8 +15,6 @@ public:
 	static Squally* deserialize(cocos2d::ValueMap* initProperties);
 	static Squally* getInstance();
 
-	static int health;
-
 	static const std::string MapKeySqually;
 	static const int SquallyBaseHealth;
 	static const int SquallyBaseSpecial;

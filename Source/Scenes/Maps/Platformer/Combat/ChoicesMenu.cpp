@@ -3,11 +3,14 @@
 #include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 
@@ -20,7 +23,7 @@
 using namespace cocos2d;
 
 const float ChoicesMenu::InnerChoicesRadius = 240.0f;
-const float ChoicesMenu::OuterChoicesRadius = 480.0f;
+const float ChoicesMenu::OuterChoicesRadius = 384.0f;
 
 ChoicesMenu* ChoicesMenu::create()
 {
@@ -33,6 +36,8 @@ ChoicesMenu* ChoicesMenu::create()
 
 ChoicesMenu::ChoicesMenu()
 {
+	this->selectedEntity = nullptr;
+
 	LocalizedLabel* itemsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Items::create());
 	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Attack::create());
 	LocalizedLabel* defendLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Defend::create());
@@ -43,6 +48,7 @@ ChoicesMenu::ChoicesMenu()
 	this->itemsNode = ClickableTextNode::create(itemsLabel, itemsLabelSelected, UIResources::Combat_ItemsCircle, UIResources::Combat_ItemsCircle);
 	this->attackNode = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
 	this->defendNode = ClickableTextNode::create(defendLabel, defendLabelSelected, UIResources::Combat_DefendCircle, UIResources::Combat_DefendCircle);
+	this->attackListNode = Node::create();
 
 	itemsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -68,9 +74,13 @@ ChoicesMenu::ChoicesMenu()
 	this->attackNode->addChild(Sprite::create(UIResources::Menus_Icons_Spear));
 	this->defendNode->addChild(Sprite::create(UIResources::Menus_Icons_ShieldBroken));
 
+	this->setVisible(false);
+	this->attackListNode->setVisible(false);
+
 	this->addChild(this->itemsNode);
 	this->addChild(this->attackNode);
 	this->addChild(this->defendNode);
+	this->addChild(this->attackListNode);
 }
 
 void ChoicesMenu::onEnter()
@@ -95,6 +105,22 @@ void ChoicesMenu::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestUserAction, [=](EventCustom* args)
+	{
+		CombatEvents::RequestUserActionArgs* combatArgs = static_cast<CombatEvents::RequestUserActionArgs*>(args->getUserData());
+
+		if (combatArgs != nullptr)
+		{
+			this->setSelectedEntity(combatArgs->entity);
+			this->open();
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
+	{
+		this->onUserActionMade();
+	}));
+
 	this->itemsNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onItemsClick(); });
 	this->attackNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onAttackClick(); });
 	this->defendNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onDefendClick(); });
@@ -105,26 +131,76 @@ void ChoicesMenu::update(float dt)
 	super::update(dt);
 }
 
+void ChoicesMenu::open()
+{
+	this->setVisible(true);
+	this->toggleInnerText(true);
+}
+
+void ChoicesMenu::onUserActionMade()
+{
+	this->setVisible(false);
+	this->attackListNode->setVisible(false);
+}
+
 void ChoicesMenu::onItemsClick()
 {
 	CombatEvents::TriggerItemSelected();
-
-	// TEMP:
-	CombatEvents::TriggerUserActionMade();
+	this->toggleInnerText(false);
 }
 
 void ChoicesMenu::onAttackClick()
 {
 	CombatEvents::TriggerAttackSelected();
 
-	// TEMP:
-	CombatEvents::TriggerUserActionMade();
+	this->attackListNode->setVisible(true);
+	this->toggleInnerText(false);
 }
 
 void ChoicesMenu::onDefendClick()
 {
 	CombatEvents::TriggerDefendSelected();
 
-	// TEMP:
-	CombatEvents::TriggerUserActionMade();
+	this->toggleInnerText(false);
+}
+
+void ChoicesMenu::toggleInnerText(bool isVisible)
+{
+	this->itemsNode->setTextVisible(isVisible);
+	this->attackNode->setTextVisible(isVisible);
+	this->defendNode->setTextVisible(isVisible);
+}
+
+void ChoicesMenu::setSelectedEntity(PlatformerEntity* selectedEntity)
+{
+	const float AngleDelta = M_PI / 6.0f;
+	float currentAngle = 0.0f;
+
+	this->attackListNode->removeAllChildren();
+
+	std::vector<PlatformerAttack*> attacks = selectedEntity->getAttacks();
+
+	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	{
+		LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
+		LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
+
+		attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+		attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+		attackLabel->enableOutline(Color4B::BLACK, 2);
+		attackLabelSelected->enableOutline(Color4B::BLACK, 2);
+		attackLabelSelected->setTextColor(Color4B::YELLOW);
+
+		ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
+
+		node->setTextOffset(Vec2(48.0f, 0.0f));
+		node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
+		node->addChild(Sprite::create((*it)->getIconResource()));
+
+		currentAngle = currentAngle >= 0.0f ? (currentAngle * -1.0f + AngleDelta) : (currentAngle * -1.0f);
+
+		this->attackListNode->addChild(node);
+	}
+
+	this->selectedEntity = selectedEntity;
 }

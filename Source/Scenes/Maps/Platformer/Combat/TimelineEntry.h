@@ -15,6 +15,7 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity, bool isPlayerEntry);
 
 	PlatformerEntity* getEntity();
+	void defend();
 	bool isPlayerTimelineEntry();
 	bool isCasting();
 	void doCast();

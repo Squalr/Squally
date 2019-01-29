@@ -25,7 +25,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void onUserActionRequested(PlatformerEntity* entity);
 	void onUserAction();
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 

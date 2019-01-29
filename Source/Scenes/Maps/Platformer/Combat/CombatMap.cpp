@@ -46,8 +46,6 @@ CombatMap::CombatMap()
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
-	this->choicesMenu->setVisible(false);
-
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
 }
@@ -98,7 +96,7 @@ void CombatMap::initializeListeners()
 
 		if (combatArgs != nullptr)
 		{
-			this->onUserActionRequested(combatArgs->entity);
+			this->choicesMenu->setPosition(GameUtils::getSceneBounds(combatArgs->entity).origin + Vec2(0.0f, 128.0f));
 		}
 	}));
 
@@ -122,12 +120,6 @@ void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::ve
 {
 	this->playerEntityKeys = playerEntityKeys;
 	this->enemyEntityKeys = enemyEntityKeys;
-}
-
-void CombatMap::onUserActionRequested(PlatformerEntity* entity)
-{
-	this->choicesMenu->setPosition(GameUtils::getSceneBounds(entity).origin + Vec2(0.0f, 128.0f));
-	this->choicesMenu->setVisible(true);
 }
 
 void CombatMap::onUserAction()

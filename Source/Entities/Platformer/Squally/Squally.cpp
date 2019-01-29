@@ -1,6 +1,7 @@
 #include "Squally.h"
 
 #include "Engine/Input/Input.h"
+#include "Entities/Platformer/Attacks/Basic/BasicSlash.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 
@@ -9,9 +10,7 @@
 using namespace cocos2d;
 
 Squally* Squally::squallyInstance = nullptr;
-int Squally::health;
 const float Squally::squallyScale = 0.85f;
-
 const std::string Squally::MapKeySqually = "squally";
 const int Squally::SquallyBaseHealth = 10;
 const int Squally::SquallyBaseSpecial = 10;
@@ -52,6 +51,7 @@ Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	this->squallyCollision->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->registerHackables();
+	this->registerAttack(BasicSlash::create());
 
 	this->addChild(this->squallyCollision);
 }

@@ -88,6 +88,16 @@ void Timeline::initializeListeners()
 			this->timelineEntryAwaitingUserAction = args->entry;
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDefendSelected, [=](EventCustom* eventCustom)
+	{
+		if (this->timelineEntryAwaitingUserAction != nullptr)
+		{
+			this->timelineEntryAwaitingUserAction->defend();
+		}
+
+		CombatEvents::TriggerUserActionMade();
+	}));
 }
 
 void Timeline::update(float dt)

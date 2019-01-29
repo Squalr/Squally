@@ -83,6 +83,12 @@ ClickableTextNode::~ClickableTextNode()
 {
 }
 
+void ClickableTextNode::setTextVisible(bool isVisible)
+{
+	this->normalContentLabel->setVisible(isVisible);
+	this->selectedContentLabel->setVisible(isVisible);
+}
+
 void ClickableTextNode::setTextOffset(Vec2 offset)
 {
 	Vec2 center = this->getContentSize() / 2.0f;

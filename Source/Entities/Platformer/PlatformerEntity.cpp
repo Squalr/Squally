@@ -4,6 +4,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 
 const float PlatformerEntity::groundCollisionDetectorPadding = 12.0f;
 const float PlatformerEntity::groundCollisionDetectorOffset = 2.0f;
@@ -48,7 +49,7 @@ PlatformerEntity::PlatformerEntity(
 		false
 	);
 	this->speechBubble = SpeechBubble::create();
-
+	this->attacks = std::vector<PlatformerAttack*>();
 	this->groundCollisions = std::set<CollisionObject*>();
 	this->spawnCoords = this->getPosition();
 
@@ -206,6 +207,23 @@ int PlatformerEntity::getMaxRunes()
 	return PlatformerEntity::MaxRunes;
 }
 
+std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
+{
+	return this->attacks;
+}
+
+std::vector<PlatformerAttack*> PlatformerEntity::cloneAttacks()
+{
+	std::vector<PlatformerAttack*> attacksClone = std::vector<PlatformerAttack*>();
+
+	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
+	{
+		attacksClone.push_back((*it)->clone());
+	}
+
+	return attacksClone;
+}
+
 bool PlatformerEntity::isOnGround()
 {
 	return (!this->groundCollisions.empty());
@@ -259,4 +277,10 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::capsuleRadius));
 
 	return PhysicsBody::createPolygon(points.data(), points.size());
+}
+
+void PlatformerEntity::registerAttack(PlatformerAttack* attack)
+{
+	attack->retain();
+	this->attacks.push_back(attack);
 }

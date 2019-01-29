@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
+class PlatformerEntity;
 
 class ChoicesMenu : public SmartNode
 {
@@ -23,13 +24,19 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void open();
+	void onUserActionMade();
 	void onItemsClick();
 	void onAttackClick();
 	void onDefendClick();
+	void toggleInnerText(bool isVisible);
+	void setSelectedEntity(PlatformerEntity* selectedEntity);
 
 	ClickableTextNode* itemsNode;
 	ClickableTextNode* attackNode;
 	ClickableTextNode* defendNode;
+	cocos2d::Node* attackListNode;
+	PlatformerEntity* selectedEntity;
 
 	static const float InnerChoicesRadius;
 	static const float OuterChoicesRadius;
