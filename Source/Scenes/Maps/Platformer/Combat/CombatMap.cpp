@@ -41,8 +41,8 @@ CombatMap::CombatMap()
 		throw std::uncaught_exception();
 	}
 
-	this->choicesMenu = ChoicesMenu::create(CC_CALLBACK_0(CombatMap::onUserAction, this));
-	this->timeline = Timeline::create(CC_CALLBACK_1(CombatMap::onUserActionRequested, this));
+	this->choicesMenu = ChoicesMenu::create();
+	this->timeline = Timeline::create();
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
@@ -79,17 +79,32 @@ void CombatMap::initializeListeners()
 {
 	MapBase::initializeListeners();
 
-	CombatMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [](EventCustom* args)
+	CombatMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* args)
 	{
 		NavigationEvents::NavigateCombatArgs* combatArgs = static_cast<NavigationEvents::NavigateCombatArgs*>(args->getUserData());
 
 		if (combatArgs != nullptr)
 		{
-			CombatMap::instance->loadMap(SerializableMap::deserialize(combatArgs->levelFile));
-			CombatMap::instance->setEntityKeys(combatArgs->playerTypes, combatArgs->enemyTypes);
+			this->loadMap(SerializableMap::deserialize(combatArgs->levelFile));
+			this->setEntityKeys(combatArgs->playerTypes, combatArgs->enemyTypes);
 
-			GlobalDirector::loadScene(CombatMap::instance);
+			GlobalDirector::loadScene(this);
 		}
+	}));
+
+	CombatMap::instance->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestUserAction, [=](EventCustom* args)
+	{
+		CombatEvents::RequestUserActionArgs* combatArgs = static_cast<CombatEvents::RequestUserActionArgs*>(args->getUserData());
+
+		if (combatArgs != nullptr)
+		{
+			this->onUserActionRequested(combatArgs->entity);
+		}
+	}));
+
+	CombatMap::instance->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
+	{
+		this->onUserAction();
 	}));
 }
 

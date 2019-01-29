@@ -5,32 +5,32 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 
 #include "Resources/UIResources.h"
-#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
 const float TimelineEntry::CastPercentage = 0.8f;
 
-TimelineEntry* TimelineEntry::create(PlatformerEntity* entity, bool isPlayerEntry, std::function<void(TimelineEntry*)> onCastingStartCallback)
+TimelineEntry* TimelineEntry::create(PlatformerEntity* entity, bool isPlayerEntry)
 {
-	TimelineEntry* instance = new TimelineEntry(entity, isPlayerEntry, onCastingStartCallback);
+	TimelineEntry* instance = new TimelineEntry(entity, isPlayerEntry);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TimelineEntry::TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry, std::function<void(TimelineEntry*)> onCastingStartCallback)
+TimelineEntry::TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry)
 {
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
 	this->circle = isPlayerEntry ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->emblem = Sprite::create();
 
-	this->onCastingStartCallback = onCastingStartCallback;
 	this->isPlayerEntry = isPlayerEntry;
 
 	this->speed = 1.0f;
@@ -133,9 +133,9 @@ float TimelineEntry::addProgress(float progressDelta)
 		this->doCast();
 	}
 	// Cast started
-	else if (!wasCasting && this->isCasting() && this->onCastingStartCallback != nullptr)
+	else if (!wasCasting && this->isCasting() && this->isPlayerEntry)
 	{
-		this->onCastingStartCallback(this);
+		CombatEvents::TriggerRequestUserAction(CombatEvents::RequestUserActionArgs(this, this->entity));
 	}
 
 	return this->progress;

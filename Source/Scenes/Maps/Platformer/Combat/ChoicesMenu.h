@@ -12,11 +12,11 @@ class ClickableTextNode;
 class ChoicesMenu : public SmartNode
 {
 public:
-	static ChoicesMenu* create(std::function<void()> onChoiceMadeCallback);
+	static ChoicesMenu* create();
 
 private:
 	typedef SmartNode super;
-	ChoicesMenu(std::function<void()> onChoiceMadeCallback);
+	ChoicesMenu();
 	virtual ~ChoicesMenu() = default;
 
 	void onEnter() override;
@@ -30,7 +30,6 @@ private:
 	ClickableTextNode* itemsNode;
 	ClickableTextNode* attackNode;
 	ClickableTextNode* defendNode;
-	std::function<void()> onChoiceMadeCallback;
 
 	static const float InnerChoicesRadius;
 	static const float OuterChoicesRadius;
