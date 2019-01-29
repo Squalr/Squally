@@ -164,6 +164,8 @@ list(APPEND GAME_SOURCE
 	Source/Entities/Isometric/IsometricEntityDeserializer.cpp
 	Source/Entities/Isometric/Shiftman.cpp
 	Source/Entities/Isometric/Squally/IsometricSqually.cpp
+	Source/Entities/Platformer/Attacks/Basic/BasicSlash.cpp
+	Source/Entities/Platformer/Attacks/PlatformerAttack.cpp
 	Source/Entities/Platformer/Effects/JumpEffect.cpp
 	Source/Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.cpp
 	Source/Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.cpp
@@ -862,6 +864,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.cpp
 	Source/Sound/MusicDeserializer.cpp
 	Source/Strings/Combat/Attack.cpp
+	Source/Strings/Combat/Attacks/Basic/BasicSlash.cpp
 	Source/Strings/Combat/Cast.cpp
 	Source/Strings/Combat/Defend.cpp
 	Source/Strings/Combat/Items.cpp
@@ -1364,6 +1367,8 @@ list(APPEND GAME_HEADER
 	Source/Entities/Isometric/IsometricEntityDeserializer.h
 	Source/Entities/Isometric/Shiftman.h
 	Source/Entities/Isometric/Squally/IsometricSqually.h
+	Source/Entities/Platformer/Attacks/Basic/BasicSlash.h
+	Source/Entities/Platformer/Attacks/PlatformerAttack.h
 	Source/Entities/Platformer/Effects/JumpEffect.h
 	Source/Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h
 	Source/Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h
@@ -2079,6 +2084,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Weather/WeatherDeserializer.h
 	Source/Sound/MusicDeserializer.h
 	Source/Strings/Combat/Attack.h
+	Source/Strings/Combat/Attacks/Basic/BasicSlash.h
 	Source/Strings/Combat/Cast.h
 	Source/Strings/Combat/Defend.h
 	Source/Strings/Combat/Items.h

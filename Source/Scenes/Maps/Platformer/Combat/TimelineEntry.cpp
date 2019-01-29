@@ -81,6 +81,11 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
+void TimelineEntry::defend()
+{
+
+}
+
 bool TimelineEntry::isPlayerTimelineEntry()
 {
 	return this->isPlayerEntry;

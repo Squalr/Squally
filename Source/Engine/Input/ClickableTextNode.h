@@ -27,6 +27,7 @@ public:
 		cocos2d::Node* nodeNormal,
 		cocos2d::Node* nodeSelected);
 
+	void setTextVisible(bool isVisible);
 	void setTextOffset(cocos2d::Vec2 offset);
 
 protected:

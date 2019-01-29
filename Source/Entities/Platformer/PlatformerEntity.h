@@ -6,6 +6,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
+class PlatformerAttack;
 class SmartAnimationNode;
 class SpeechBubble;
 
@@ -18,6 +19,8 @@ public:
 	int getMaxSpecial();
 	int getRunes();
 	int getMaxRunes();
+	std::vector<PlatformerAttack*> getAttacks();
+	std::vector<PlatformerAttack*> cloneAttacks();
 
 	static const int FallBackMaxHealth;
 	static const int FallBackMaxSpecial;
@@ -39,7 +42,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
-
+	void registerAttack(PlatformerAttack* attack);
 	virtual void initializeCollisionEvents();
 
 	SpeechBubble* speechBubble;
@@ -48,7 +51,7 @@ protected:
 	cocos2d::Vec2 spawnCoords;
 
 	bool isOnGround();
-
+	
 	int health;
 	int maxHealth;
 	int special;
@@ -75,6 +78,7 @@ private:
 	typedef CollisionObject super;
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
+	std::vector<PlatformerAttack*> attacks;
 	std::set<CollisionObject*> groundCollisions;
 	CollisionObject* groundCollisionDetector;
 
@@ -82,4 +86,3 @@ private:
 	static const float groundCollisionDetectorOffset;
 	static const float capsuleRadius;
 };
-
