@@ -79,24 +79,42 @@ void Timeline::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestUserAction, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
 	{
-		CombatEvents::RequestUserActionArgs* args = static_cast<CombatEvents::RequestUserActionArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->timelineEntryAwaitingUserAction = args->entry;
-		}
+		this->actionMade();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDefendSelected, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
 	{
-		if (this->timelineEntryAwaitingUserAction != nullptr)
-		{
-			this->timelineEntryAwaitingUserAction->defend();
-		}
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
 
-		CombatEvents::TriggerUserActionMade();
+		if (combatArgs != nullptr && combatArgs->entry != nullptr)
+		{
+			switch (combatArgs->currentMenu)
+			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				{
+					this->timelineEntryAwaitingUserAction = combatArgs->entry;
+
+					break;
+				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
+				{
+					if (this->timelineEntryAwaitingUserAction != nullptr)
+					{
+						this->timelineEntryAwaitingUserAction->defend();
+					}
+
+					CombatEvents::TriggerUserActionMade();
+
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
+		}
 	}));
 }
 

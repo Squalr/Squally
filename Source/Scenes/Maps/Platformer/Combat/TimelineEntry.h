@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class PlatformerAttack;
 class PlatformerEntity;
 
 class TimelineEntry : public SmartNode
@@ -18,7 +19,8 @@ public:
 	void defend();
 	bool isPlayerTimelineEntry();
 	bool isCasting();
-	void doCast();
+	void stageCast(PlatformerAttack* attack);
+	void performCast();
 	void interrupt();
 	float cancelProgress();
 	float getProgress();
@@ -37,6 +39,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;

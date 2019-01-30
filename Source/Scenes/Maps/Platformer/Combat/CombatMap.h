@@ -4,6 +4,7 @@
 
 class ChoicesMenu;
 class PlatformerEntity;
+class TargetSelectionMenu;
 class Timeline;
 
 class CombatMap : public MapBase
@@ -29,6 +30,7 @@ private:
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 
 	Timeline* timeline;
+	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;

@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
 
@@ -36,7 +37,7 @@ ChoicesMenu* ChoicesMenu::create()
 
 ChoicesMenu::ChoicesMenu()
 {
-	this->selectedEntity = nullptr;
+	this->selectedEntry = nullptr;
 
 	LocalizedLabel* itemsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Items::create());
 	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Attack::create());
@@ -105,14 +106,26 @@ void ChoicesMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestUserAction, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
 	{
-		CombatEvents::RequestUserActionArgs* combatArgs = static_cast<CombatEvents::RequestUserActionArgs*>(args->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
 
-		if (combatArgs != nullptr)
+		if (combatArgs != nullptr && combatArgs->entry != nullptr)
 		{
-			this->setSelectedEntity(combatArgs->entity);
-			this->open();
+			switch (combatArgs->currentMenu)
+			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				{
+					this->setSelectedEntry(combatArgs->entry);
+					this->open();
+
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
 		}
 	}));
 
@@ -145,13 +158,13 @@ void ChoicesMenu::onUserActionMade()
 
 void ChoicesMenu::onItemsClick()
 {
-	CombatEvents::TriggerItemSelected();
+	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
 	this->toggleInnerText(false);
 }
 
 void ChoicesMenu::onAttackClick()
 {
-	CombatEvents::TriggerAttackSelected();
+	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
 
 	this->attackListNode->setVisible(true);
 	this->toggleInnerText(false);
@@ -159,7 +172,7 @@ void ChoicesMenu::onAttackClick()
 
 void ChoicesMenu::onDefendClick()
 {
-	CombatEvents::TriggerDefendSelected();
+	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
 
 	this->toggleInnerText(false);
 }
@@ -169,38 +182,64 @@ void ChoicesMenu::toggleInnerText(bool isVisible)
 	this->itemsNode->setTextVisible(isVisible);
 	this->attackNode->setTextVisible(isVisible);
 	this->defendNode->setTextVisible(isVisible);
+
+	if (isVisible)
+	{
+		this->itemsNode->setOpacity(255);
+		this->attackNode->setOpacity(255);
+		this->defendNode->setOpacity(255);
+	}
+	else
+	{
+		this->itemsNode->setOpacity(127);
+		this->attackNode->setOpacity(127);
+		this->defendNode->setOpacity(127);
+	}
 }
 
-void ChoicesMenu::setSelectedEntity(PlatformerEntity* selectedEntity)
+void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 {
 	const float AngleDelta = M_PI / 6.0f;
 	float currentAngle = 0.0f;
 
+	this->selectedEntry = selectedEntry;
+
+	PlatformerEntity* entity = this->selectedEntry->getEntity();
+
 	this->attackListNode->removeAllChildren();
 
-	std::vector<PlatformerAttack*> attacks = selectedEntity->getAttacks();
-
-	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	if (entity != nullptr)
 	{
-		LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
-		LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
+		std::vector<PlatformerAttack*> attacks = entity->getAttacks();
 
-		attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-		attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
-		attackLabel->enableOutline(Color4B::BLACK, 2);
-		attackLabelSelected->enableOutline(Color4B::BLACK, 2);
-		attackLabelSelected->setTextColor(Color4B::YELLOW);
+		for (auto it = attacks.begin(); it != attacks.end(); it++)
+		{
+			PlatformerAttack* attack = *it;
+			LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
+			LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
 
-		ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
+			attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+			attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+			attackLabel->enableOutline(Color4B::BLACK, 2);
+			attackLabelSelected->enableOutline(Color4B::BLACK, 2);
+			attackLabelSelected->setTextColor(Color4B::YELLOW);
 
-		node->setTextOffset(Vec2(48.0f, 0.0f));
-		node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
-		node->addChild(Sprite::create((*it)->getIconResource()));
+			ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
 
-		currentAngle = currentAngle >= 0.0f ? (currentAngle * -1.0f + AngleDelta) : (currentAngle * -1.0f);
+			node->setTextOffset(Vec2(48.0f, 0.0f));
+			node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
+			node->addChild(Sprite::create(attack->getIconResource()));
 
-		this->attackListNode->addChild(node);
+			node->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+			{
+				this->selectedEntry->stageCast(attack);
+
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
+			});
+
+			currentAngle = currentAngle >= 0.0f ? (currentAngle * -1.0f + AngleDelta) : (currentAngle * -1.0f);
+
+			this->attackListNode->addChild(node);
+		}
 	}
-
-	this->selectedEntity = selectedEntity;
 }

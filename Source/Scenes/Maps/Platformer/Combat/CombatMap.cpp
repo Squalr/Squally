@@ -16,7 +16,9 @@
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/Combat/ChoicesMenu.h"
+#include "Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h"
 #include "Scenes/Maps/Platformer/Combat/Timeline.h"
+#include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 using namespace cocos2d;
 
@@ -42,10 +44,12 @@ CombatMap::CombatMap()
 	}
 
 	this->choicesMenu = ChoicesMenu::create();
+	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->timeline = Timeline::create();
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
+	this->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
 }
@@ -77,7 +81,7 @@ void CombatMap::initializeListeners()
 {
 	MapBase::initializeListeners();
 
-	CombatMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* args)
+	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* args)
 	{
 		NavigationEvents::NavigateCombatArgs* combatArgs = static_cast<NavigationEvents::NavigateCombatArgs*>(args->getUserData());
 
@@ -90,17 +94,29 @@ void CombatMap::initializeListeners()
 		}
 	}));
 
-	CombatMap::instance->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestUserAction, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
 	{
-		CombatEvents::RequestUserActionArgs* combatArgs = static_cast<CombatEvents::RequestUserActionArgs*>(args->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
 
-		if (combatArgs != nullptr)
+		if (combatArgs != nullptr && combatArgs->entry != nullptr)
 		{
-			this->choicesMenu->setPosition(GameUtils::getSceneBounds(combatArgs->entity).origin + Vec2(0.0f, 128.0f));
+			switch (combatArgs->currentMenu)
+			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				{
+					this->choicesMenu->setPosition(GameUtils::getSceneBounds(combatArgs->entry->getEntity()).origin + Vec2(0.0f, 128.0f));
+
+					break;
+				}
+				default:
+				{
+					break;
+				}
+			}
 		}
 	}));
 
-	CombatMap::instance->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
 	{
 		this->onUserAction();
 	}));
@@ -186,5 +202,6 @@ void CombatMap::initializeEntities()
 		}
 	}
 
+	this->targetSelectionMenu->initializeEntities(this->playerEntities, this->enemyEntities);
 	this->timeline->initializeTimeline(this->playerEntities, this->enemyEntities, true);
 }

@@ -851,6 +851,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.cpp
 	Source/Scenes/Maps/Platformer/Combat/ChoicesMenu.cpp
 	Source/Scenes/Maps/Platformer/Combat/CombatMap.cpp
+	Source/Scenes/Maps/Platformer/Combat/TargetSelectionMenu.cpp
 	Source/Scenes/Maps/Platformer/Combat/Timeline.cpp
 	Source/Scenes/Maps/Platformer/Combat/TimelineEntry.cpp
 	Source/Scenes/Maps/Platformer/Huds/Components/StatsBars.cpp
@@ -2070,6 +2071,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Backgrounds/MatrixRain/MatrixStrand.h
 	Source/Scenes/Maps/Platformer/Combat/ChoicesMenu.h
 	Source/Scenes/Maps/Platformer/Combat/CombatMap.h
+	Source/Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h
 	Source/Scenes/Maps/Platformer/Combat/Timeline.h
 	Source/Scenes/Maps/Platformer/Combat/TimelineEntry.h
 	Source/Scenes/Maps/Platformer/Huds/Components/StatsBars.h
