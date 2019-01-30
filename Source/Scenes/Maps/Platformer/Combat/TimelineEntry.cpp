@@ -96,9 +96,14 @@ bool TimelineEntry::isCasting()
 	return this->progress > TimelineEntry::CastPercentage;
 }
 
-void TimelineEntry::doCast()
+void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
-	// TODO
+	this->currentCast = attack;
+}
+
+void TimelineEntry::performCast()
+{
+	// TODO: Do the actual attack, stop the timeline during the telegraph
 }
 
 void TimelineEntry::interrupt()
@@ -135,12 +140,12 @@ float TimelineEntry::addProgress(float progressDelta)
 	if (this->progress > 1.0f)
 	{
 		this->progress = std::fmod(this->progress, 1.0f);
-		this->doCast();
+		this->performCast();
 	}
 	// Cast started
 	else if (!wasCasting && this->isCasting() && this->isPlayerEntry)
 	{
-		CombatEvents::TriggerRequestUserAction(CombatEvents::RequestUserActionArgs(this, this->entity));
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this));
 	}
 
 	return this->progress;

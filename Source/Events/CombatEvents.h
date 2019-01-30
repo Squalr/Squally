@@ -8,11 +8,7 @@ class CombatEvents
 {
 public:
 	static const std::string EventSpawn;
-	static const std::string EventRequestUserAction;
-	static const std::string EventItemSelected;
-	static const std::string EventAttackSelected;
-	static const std::string EventDefendSelected;
-	static const std::string EventClearSelection;
+	static const std::string EventChangeMenuState;
 	static const std::string EventUserActionMade;
 
 	struct SpawnArgs
@@ -26,21 +22,27 @@ public:
 		}
 	};
 
-	struct RequestUserActionArgs
+	struct MenuStateArgs
 	{
-		TimelineEntry* entry;
-		PlatformerEntity* entity;
+		enum class CurrentMenu
+		{
+			ActionSelect,
+			ItemSelect,
+			AttackSelect,
+			DefendSelect,
+			ChooseAttackTarget,
+			ChooseBuffTarget,
+		};
 
-		RequestUserActionArgs(TimelineEntry* entry, PlatformerEntity* entity) : entry(entry), entity(entity)
+		CurrentMenu currentMenu;
+		TimelineEntry* entry;
+
+		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry) : currentMenu(currentMenu), entry(entry)
 		{
 		}
 	};
 
 	static void TriggerSpawn(SpawnArgs args);
-	static void TriggerRequestUserAction(RequestUserActionArgs args);
-	static void TriggerItemSelected();
-	static void TriggerAttackSelected();
-	static void TriggerDefendSelected();
-	static void TriggerClearSelection();
+	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerUserActionMade();
 };
