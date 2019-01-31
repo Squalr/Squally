@@ -2,9 +2,12 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Attacks/PlatformerAttack.h"
+
+#include "Resources/UIResources.h"
 
 const float PlatformerEntity::groundCollisionDetectorPadding = 12.0f;
 const float PlatformerEntity::groundCollisionDetectorOffset = 2.0f;
@@ -52,6 +55,7 @@ PlatformerEntity::PlatformerEntity(
 	this->attacks = std::vector<PlatformerAttack*>();
 	this->groundCollisions = std::set<CollisionObject*>();
 	this->spawnCoords = this->getPosition();
+	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 
 	this->actualJumpLaunchVelocity = 640.0f;
 	this->actualGravityAcceleration = 1000.0f;
@@ -74,6 +78,9 @@ PlatformerEntity::PlatformerEntity(
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	animationNode->setPosition(collisionOffset * scale - Vec2(0.0f, height / 2.0f));
+
+	this->clickHitbox->setContentSize(size);
+	this->clickHitbox->setOffsetCorrection(Vec2(0.0f, this->clickHitbox->getContentSize().height / 2.0f));
 
 	// Update width to be serialized
 	if (this->properties != nullptr)
@@ -99,6 +106,7 @@ PlatformerEntity::PlatformerEntity(
 	this->special = this->maxSpecial;
 	this->runes = PlatformerEntity::MaxRunes;
 
+	this->animationNode->addChild(this->clickHitbox);
 	this->addChild(this->groundCollisionDetector);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);

@@ -6,6 +6,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
+class ClickableNode;
 class PlatformerAttack;
 class SmartAnimationNode;
 class SpeechBubble;
@@ -21,6 +22,8 @@ public:
 	int getMaxRunes();
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
+
+	ClickableNode* clickHitbox;
 
 	static const int FallBackMaxHealth;
 	static const int FallBackMaxSpecial;

@@ -8,6 +8,7 @@
 
 namespace cocos2d
 {
+	class DrawNode;
 	class EventCustom;
 	class Node;
 }
@@ -18,6 +19,7 @@ public:
 	static ClickableNode * create(std::string spriteNormal, std::string spriteSelectedResource);
 	static ClickableNode * create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
+	void setContentSize(const cocos2d::Size & size) override;
 	void setContentScale(float scale);
 	void setOffsetCorrection(cocos2d::Vec2 newOffsetCorrection);
 	void setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
@@ -34,6 +36,9 @@ public:
 protected:
 	ClickableNode(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 	virtual ~ClickableNode();
+
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 
 	cocos2d::Node* sprite;
 	cocos2d::Node* spriteSelected;
@@ -65,6 +70,7 @@ private:
 	bool isClicked;
 	bool isMousedOver;
 	cocos2d::EventKeyboard::KeyCode modifier;
+	cocos2d::DrawNode* debugHitbox;
 
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseClickEvent;
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDownEvent;
@@ -72,4 +78,3 @@ private:
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOverEvent;
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOutEvent;
 };
-

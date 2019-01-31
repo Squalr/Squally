@@ -416,7 +416,18 @@ void GameCamera::clearTargets()
 
 void GameCamera::updateCameraDebugLabels()
 {
+	static Vec2 cachedCameraPosition = Vec2::ZERO;
+
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+
+	if (cachedCameraPosition == cameraPosition)
+	{
+		return;
+	}
+	else
+	{
+		cachedCameraPosition = cameraPosition;
+	}
 
 	std::stringstream streamX = std::stringstream();
 	std::stringstream streamY = std::stringstream();
