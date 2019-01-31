@@ -208,6 +208,8 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 		this->getVerticalAlignment()
 	);
 
+	this->translationButton->setOffsetCorrection(Vec2(0.0f, this->getContentSize().height / 2.0f));
+
 	// Restore that state
 	if (outlineSize > 0)
 	{

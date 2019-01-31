@@ -47,6 +47,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->isClicked = false;
 	this->isMousedOver = false;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
+	this->debugHitbox = DrawNode::create();
 
 	this->clickSound = "";
 	this->mouseOverSound = SoundResources::ButtonRollover1;
@@ -54,12 +55,15 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
 
+	this->debugHitbox->setVisible(false);
+
 	this->offsetCorrection = Vec2::ZERO;
 
 	this->setContentSize(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
 	this->addChild(this->spriteSelected);
+	this->addChild(this->debugHitbox);
 }
 
 ClickableNode::~ClickableNode()
@@ -111,6 +115,28 @@ void ClickableNode::update(float dt)
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
+void ClickableNode::setContentSize(const Size & size)
+{
+	super::setContentSize(size);
+
+	this->debugHitbox->clear();
+	this->debugHitbox->drawRect(-Vec2(size / 2.0f), Vec2(size / 2.0f), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
+}
+
+void ClickableNode::onDeveloperModeEnable()
+{
+	super::onDeveloperModeEnable();
+
+	this->debugHitbox->setVisible(true);
+}
+
+void ClickableNode::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	this->debugHitbox->setVisible(false);
+}
+
 void ClickableNode::disableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = false;
@@ -138,6 +164,7 @@ void ClickableNode::setContentScale(float scale)
 void ClickableNode::setOffsetCorrection(Vec2 newOffsetCorrection)
 {
 	this->offsetCorrection = newOffsetCorrection;
+	this->debugHitbox->setPosition(this->offsetCorrection);
 }
 
 void ClickableNode::setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick)
