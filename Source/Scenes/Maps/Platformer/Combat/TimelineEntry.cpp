@@ -44,6 +44,9 @@ void TimelineEntry::onEnter()
 {
 	super::onEnter();
 
+	this->currentCast = nullptr;
+	this->target = nullptr;
+
 	this->scheduleUpdate();
 }
 
@@ -96,14 +99,14 @@ bool TimelineEntry::isCasting()
 	return this->progress > TimelineEntry::CastPercentage;
 }
 
+void TimelineEntry::stageTarget(PlatformerEntity* target)
+{
+	this->target = target;
+}
+
 void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
 	this->currentCast = attack;
-}
-
-void TimelineEntry::performCast()
-{
-	// TODO: Do the actual attack, stop the timeline during the telegraph
 }
 
 void TimelineEntry::interrupt()
@@ -139,12 +142,26 @@ float TimelineEntry::addProgress(float progressDelta)
 	// Progress complete, do the cast
 	if (this->progress > 1.0f)
 	{
-		this->progress = std::fmod(this->progress, 1.0f);
-		this->performCast();
+		if (this->entity != nullptr && this->currentCast != nullptr && this->target != nullptr)
+		{
+			CombatEvents::TriggerPauseTimeline();
+
+			this->entity->castAttack(this->currentCast, this->target, [=]()
+			{
+				this->progress = std::fmod(this->progress, 1.0f);
+
+				CombatEvents::TriggerResumeTimeline();
+			});
+		}
+		else
+		{
+			this->progress = std::fmod(this->progress, 1.0f);
+		}
 	}
 	// Cast started
 	else if (!wasCasting && this->isCasting() && this->isPlayerEntry)
 	{
+		CombatEvents::TriggerPauseTimeline();
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this));
 	}
 

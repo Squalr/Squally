@@ -7,7 +7,9 @@ using namespace cocos2d;
 
 const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_CHANGE_MENU_STATE";
-const std::string CombatEvents::EventUserActionMade = "EVENT_USER_ACTION_MADE";
+const std::string CombatEvents::EventSelectCastTarget = "EVENT_SELECT_CAST_TARGET";
+const std::string CombatEvents::EventPauseTimeline = "EVENT_PAUSE_TIMELINE";
+const std::string CombatEvents::EventResumeTimeline = "EVENT_RESUME_TIMELINE";
 
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
@@ -25,9 +27,24 @@ void CombatEvents::TriggerMenuStateChange(MenuStateArgs args)
 	);
 }
 
-void CombatEvents::TriggerUserActionMade()
+void CombatEvents::TriggerSelectCastTarget(CastTargetArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventUserActionMade
+		CombatEvents::EventSelectCastTarget,
+		&args
+	);
+}
+
+void CombatEvents::TriggerPauseTimeline()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventPauseTimeline
+	);
+}
+
+void CombatEvents::TriggerResumeTimeline()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventResumeTimeline
 	);
 }

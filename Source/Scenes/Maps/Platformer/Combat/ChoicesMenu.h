@@ -25,7 +25,6 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 	void open();
-	void onUserActionMade();
 	void onItemsClick();
 	void onAttackClick();
 	void onDefendClick();

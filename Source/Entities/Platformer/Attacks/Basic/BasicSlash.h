@@ -16,6 +16,4 @@ protected:
 
 private:
 	typedef PlatformerAttack super;
-
-	static const std::string AttackKeyBasicSlash;
 };

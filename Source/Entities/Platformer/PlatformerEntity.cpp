@@ -1,5 +1,8 @@
 #include "PlatformerEntity.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Input/ClickableNode.h"
@@ -83,6 +86,7 @@ PlatformerEntity::PlatformerEntity(
 	this->clickHitbox->setContentSize(size * scale);
 	this->clickHitbox->setPosition(Vec2(0.0f, (size * scale).height / 2.0f) + Vec2((size * scale).width / 2.0f, -height / 2.0f));
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->clickHitbox->disableInteraction();
 
 	// Update width to be serialized
 	if (this->properties != nullptr)
@@ -215,6 +219,25 @@ int PlatformerEntity::getRunes()
 int PlatformerEntity::getMaxRunes()
 {
 	return PlatformerEntity::MaxRunes;
+}
+
+void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void()> onCastComplete)
+{
+	this->animationNode->playAnimation(attack->getAttackAnimation());
+
+	this->runAction(Sequence::create(
+		DelayTime::create(attack->getAttackDuration()),
+		CallFunc::create([=]()
+		{
+			// TODO: Target take damage
+		}),
+		DelayTime::create(attack->getRecoverDuration()),
+		CallFunc::create([=]()
+		{
+			onCastComplete();
+		}),
+		nullptr
+	));
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
