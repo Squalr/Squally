@@ -6,8 +6,6 @@
 
 using namespace cocos2d;
 
-const std::string BasicSlash::AttackKeyBasicSlash = "ATTACK_KEY_BASIC_SLASH";
-
 BasicSlash* BasicSlash::create()
 {
 	BasicSlash* instance = new BasicSlash();
@@ -17,7 +15,7 @@ BasicSlash* BasicSlash::create()
 	return instance;
 }
 
-BasicSlash::BasicSlash() : super(UIResources::Menus_Icons_SwordSlash)
+BasicSlash::BasicSlash() : super(UIResources::Menus_Icons_SwordSlash, 1.25f, 0.75f)
 {
 }
 

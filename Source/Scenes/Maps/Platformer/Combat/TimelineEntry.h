@@ -19,8 +19,8 @@ public:
 	void defend();
 	bool isPlayerTimelineEntry();
 	bool isCasting();
+	void stageTarget(PlatformerEntity* target);
 	void stageCast(PlatformerAttack* attack);
-	void performCast();
 	void interrupt();
 	float cancelProgress();
 	float getProgress();
@@ -41,6 +41,7 @@ private:
 
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
+	PlatformerEntity* target;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;

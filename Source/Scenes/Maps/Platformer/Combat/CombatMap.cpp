@@ -108,17 +108,18 @@ void CombatMap::initializeListeners()
 
 					break;
 				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
+				{
+					this->choicesMenu->setVisible(false);
+
+					break;
+				}
 				default:
 				{
 					break;
 				}
 			}
 		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
-	{
-		this->onUserAction();
 	}));
 }
 
@@ -136,12 +137,6 @@ void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::ve
 {
 	this->playerEntityKeys = playerEntityKeys;
 	this->enemyEntityKeys = enemyEntityKeys;
-}
-
-void CombatMap::onUserAction()
-{
-	this->choicesMenu->setVisible(false);
-	this->timeline->actionMade();
 }
 
 void CombatMap::initializeEntities()

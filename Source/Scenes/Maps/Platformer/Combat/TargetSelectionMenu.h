@@ -30,6 +30,14 @@ private:
 	void setEntityClickCallbacks();
 	void clearEntityClickCallbacks();
 
+	enum class AllowedSelection
+	{
+		Player,
+		Enemy,
+		Either
+	};
+
+	AllowedSelection allowedSelection;
 	bool isActive;
 	PlatformerEntity* selectedEntity;
 	cocos2d::Sprite* lightRay;

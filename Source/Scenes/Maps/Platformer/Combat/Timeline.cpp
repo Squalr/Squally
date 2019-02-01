@@ -38,7 +38,6 @@ Timeline::Timeline()
 	this->timelineNode = Node::create();
 	this->timelineEntries = std::vector<TimelineEntry*>();
 	this->timelineWidth = this->swordFill->getContentSize().width;
-	this->timelineEntryAwaitingUserAction = nullptr;
 	this->waitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Wait::create());
 	this->castLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Cast::create());
 
@@ -61,6 +60,10 @@ void Timeline::onEnter()
 {
 	super::onEnter();
 
+	this->timelineEntries.clear();
+	this->isTimelinePaused = false;
+	this->timelineEntryAwaitingUserAction = nullptr;
+
 	this->scheduleUpdate();
 }
 
@@ -79,9 +82,26 @@ void Timeline::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* args)
 	{
-		this->actionMade();
+		CombatEvents::CastTargetArgs* targetArgs = static_cast<CombatEvents::CastTargetArgs*>(args->getUserData());
+
+		if (this->timelineEntryAwaitingUserAction != nullptr)
+		{
+			this->timelineEntryAwaitingUserAction->stageTarget(targetArgs->target);
+		}
+
+		CombatEvents::TriggerResumeTimeline();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* args)
+	{
+		this->isTimelinePaused = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* args)
+	{
+		this->isTimelinePaused = false;
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
@@ -90,14 +110,10 @@ void Timeline::initializeListeners()
 
 		if (combatArgs != nullptr && combatArgs->entry != nullptr)
 		{
+			this->timelineEntryAwaitingUserAction = combatArgs->entry;
+
 			switch (combatArgs->currentMenu)
 			{
-				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
-				{
-					this->timelineEntryAwaitingUserAction = combatArgs->entry;
-
-					break;
-				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
 					if (this->timelineEntryAwaitingUserAction != nullptr)
@@ -105,7 +121,7 @@ void Timeline::initializeListeners()
 						this->timelineEntryAwaitingUserAction->defend();
 					}
 
-					CombatEvents::TriggerUserActionMade();
+					CombatEvents::TriggerResumeTimeline();
 
 					break;
 				}
@@ -122,7 +138,7 @@ void Timeline::update(float dt)
 {
 	super::update(dt);
 
-	if (this->timelineEntryAwaitingUserAction == nullptr)
+	if (!this->isTimelinePaused)
 	{
 		// Update all timeline entries
 		for (auto it = this->timelineEntries.begin(); it != this->timelineEntries.end(); it++)
@@ -135,8 +151,9 @@ void Timeline::update(float dt)
 	}
 }
 
-void Timeline::actionMade()
+void Timeline::resumeTimeline()
 {
+	this->isTimelinePaused = true;
 	this->timelineEntryAwaitingUserAction = nullptr;
 }
 

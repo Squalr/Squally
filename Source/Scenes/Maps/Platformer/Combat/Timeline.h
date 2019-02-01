@@ -18,7 +18,7 @@ public:
 	static Timeline* create();
 
 	void initializeTimeline(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities, bool isPlayerFirstStrike);
-	void actionMade();
+	void resumeTimeline();
 
 private:
 	typedef SmartNode super;
@@ -40,6 +40,7 @@ private:
 	std::vector<TimelineEntry*> timelineEntries;
 
 	float timelineWidth;
+	bool isTimelinePaused;
 	TimelineEntry* timelineEntryAwaitingUserAction;
 
 	static const float TimelineSpeed;

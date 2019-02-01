@@ -9,7 +9,9 @@ class CombatEvents
 public:
 	static const std::string EventSpawn;
 	static const std::string EventChangeMenuState;
-	static const std::string EventUserActionMade;
+	static const std::string EventSelectCastTarget;
+	static const std::string EventPauseTimeline;
+	static const std::string EventResumeTimeline;
 
 	struct SpawnArgs
 	{
@@ -26,6 +28,7 @@ public:
 	{
 		enum class CurrentMenu
 		{
+			Closed,
 			ActionSelect,
 			ItemSelect,
 			AttackSelect,
@@ -42,7 +45,18 @@ public:
 		}
 	};
 
+	struct CastTargetArgs
+	{
+		PlatformerEntity* target;
+
+		CastTargetArgs(PlatformerEntity* target) : target(target)
+		{
+		}
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerMenuStateChange(MenuStateArgs args);
-	static void TriggerUserActionMade();
+	static void TriggerSelectCastTarget(CastTargetArgs args);
+	static void TriggerPauseTimeline();
+	static void TriggerResumeTimeline();
 };

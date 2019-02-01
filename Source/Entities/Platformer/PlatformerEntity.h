@@ -20,6 +20,7 @@ public:
 	int getMaxSpecial();
 	int getRunes();
 	int getMaxRunes();
+	void castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void()> onCastComplete);
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 

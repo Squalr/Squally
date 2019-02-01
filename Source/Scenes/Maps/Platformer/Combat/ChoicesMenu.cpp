@@ -75,9 +75,6 @@ ChoicesMenu::ChoicesMenu()
 	this->attackNode->addChild(Sprite::create(UIResources::Menus_Icons_Spear));
 	this->defendNode->addChild(Sprite::create(UIResources::Menus_Icons_ShieldBroken));
 
-	this->setVisible(false);
-	this->attackListNode->setVisible(false);
-
 	this->addChild(this->itemsNode);
 	this->addChild(this->attackNode);
 	this->addChild(this->defendNode);
@@ -87,6 +84,9 @@ ChoicesMenu::ChoicesMenu()
 void ChoicesMenu::onEnter()
 {
 	super::onEnter();
+
+	this->setVisible(false);
+	this->attackListNode->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -121,17 +121,17 @@ void ChoicesMenu::initializeListeners()
 
 					break;
 				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
+				{
+					this->setVisible(false);
+					this->attackListNode->setVisible(false);
+				}
 				default:
 				{
 					break;
 				}
 			}
 		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventUserActionMade, [=](EventCustom* args)
-	{
-		this->onUserActionMade();
 	}));
 
 	this->itemsNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onItemsClick(); });
@@ -148,12 +148,6 @@ void ChoicesMenu::open()
 {
 	this->setVisible(true);
 	this->toggleInnerText(true);
-}
-
-void ChoicesMenu::onUserActionMade()
-{
-	this->setVisible(false);
-	this->attackListNode->setVisible(false);
 }
 
 void ChoicesMenu::onItemsClick()

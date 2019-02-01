@@ -38,8 +38,6 @@ TargetSelectionMenu::TargetSelectionMenu()
 {
 	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
 
-	this->setVisible(false);
-
 	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->lightRay);
@@ -48,6 +46,8 @@ TargetSelectionMenu::TargetSelectionMenu()
 void TargetSelectionMenu::onEnter()
 {
 	super::onEnter();
+
+	this->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -76,6 +76,7 @@ void TargetSelectionMenu::initializeListeners()
 						this->selectEntity(this->enemyEntities.front());
 					}
 
+					this->allowedSelection = AllowedSelection::Enemy;
 					this->setEntityClickCallbacks();
 					this->isActive = true;
 					this->setVisible(true);
@@ -88,6 +89,7 @@ void TargetSelectionMenu::initializeListeners()
 						this->selectEntity(this->playerEntities.front());
 					}
 
+					this->allowedSelection = AllowedSelection::Player;
 					this->setEntityClickCallbacks();
 					this->isActive = true;
 					this->setVisible(true);
@@ -143,31 +145,37 @@ void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 		case EventKeyboard::KeyCode::KEY_A:
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 		{
-			auto playerEntitiesPos = std::find(this->playerEntities.begin(), this->playerEntities.end(), this->selectedEntity);
-
-			if (playerEntitiesPos != std::end(this->playerEntities))
+			if (this->allowedSelection == AllowedSelection::Player || this->allowedSelection == AllowedSelection::Either)
 			{
-				if (*playerEntitiesPos == this->playerEntities.front())
+				auto playerEntitiesPos = std::find(this->playerEntities.begin(), this->playerEntities.end(), this->selectedEntity);
+
+				if (playerEntitiesPos != std::end(this->playerEntities))
 				{
-					this->selectEntity(this->playerEntities.back());
-				}
-				else
-				{
-					this->selectEntity(*std::prev(playerEntitiesPos));
+					if (*playerEntitiesPos == this->playerEntities.front())
+					{
+						this->selectEntity(this->playerEntities.back());
+					}
+					else
+					{
+						this->selectEntity(*std::prev(playerEntitiesPos));
+					}
 				}
 			}
 
-			auto enemyEntitiesPos = std::find(this->enemyEntities.begin(), this->enemyEntities.end(), this->selectedEntity);
-
-			if (enemyEntitiesPos != std::end(this->enemyEntities))
+			if (this->allowedSelection == AllowedSelection::Enemy || this->allowedSelection == AllowedSelection::Either)
 			{
-				if (*enemyEntitiesPos == this->enemyEntities.front())
+				auto enemyEntitiesPos = std::find(this->enemyEntities.begin(), this->enemyEntities.end(), this->selectedEntity);
+
+				if (enemyEntitiesPos != std::end(this->enemyEntities))
 				{
-					this->selectEntity(this->enemyEntities.back());
-				}
-				else
-				{
-					this->selectEntity(*std::prev(enemyEntitiesPos));
+					if (*enemyEntitiesPos == this->enemyEntities.front())
+					{
+						this->selectEntity(this->enemyEntities.back());
+					}
+					else
+					{
+						this->selectEntity(*std::prev(enemyEntitiesPos));
+					}
 				}
 			}
 
@@ -176,35 +184,41 @@ void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 		case EventKeyboard::KeyCode::KEY_D:
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 		{
-			auto playerEntitiesPos = std::find(this->playerEntities.begin(), this->playerEntities.end(), this->selectedEntity);
-
-			if (playerEntitiesPos != std::end(this->playerEntities))
+			if (this->allowedSelection == AllowedSelection::Player || this->allowedSelection == AllowedSelection::Either)
 			{
-				auto next = std::next(playerEntitiesPos);
+				auto playerEntitiesPos = std::find(this->playerEntities.begin(), this->playerEntities.end(), this->selectedEntity);
 
-				if (next != std::end(this->playerEntities))
+				if (playerEntitiesPos != std::end(this->playerEntities))
 				{
-					this->selectEntity(*next);
-				}
-				else
-				{
-					this->selectEntity(this->playerEntities.front());
+					auto next = std::next(playerEntitiesPos);
+
+					if (next != std::end(this->playerEntities))
+					{
+						this->selectEntity(*next);
+					}
+					else
+					{
+						this->selectEntity(this->playerEntities.front());
+					}
 				}
 			}
 
-			auto enemyEntitiesPos = std::find(this->enemyEntities.begin(), this->enemyEntities.end(), this->selectedEntity);
-
-			if (enemyEntitiesPos != std::end(this->enemyEntities))
+			if (this->allowedSelection == AllowedSelection::Enemy || this->allowedSelection == AllowedSelection::Either)
 			{
-				auto next = std::next(enemyEntitiesPos);
+				auto enemyEntitiesPos = std::find(this->enemyEntities.begin(), this->enemyEntities.end(), this->selectedEntity);
 
-				if (next != std::end(this->enemyEntities))
+				if (enemyEntitiesPos != std::end(this->enemyEntities))
 				{
-					this->selectEntity(*next);
-				}
-				else
-				{
-					this->selectEntity(this->enemyEntities.front());
+					auto next = std::next(enemyEntitiesPos);
+
+					if (next != std::end(this->enemyEntities))
+					{
+						this->selectEntity(*next);
+					}
+					else
+					{
+						this->selectEntity(this->enemyEntities.front());
+					}
 				}
 			}
 
@@ -219,34 +233,40 @@ void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 
 void TargetSelectionMenu::setEntityClickCallbacks()
 {
-	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	if (this->allowedSelection == AllowedSelection::Player || this->allowedSelection == AllowedSelection::Either)
 	{
-		PlatformerEntity* entity = *it;
-
-		entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
 		{
-			this->selectEntity(entity);
-		});
+			PlatformerEntity* entity = *it;
 
-		entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
-		{
-			this->selectEntity(entity);
-		});
+			entity->clickHitbox->enableInteraction();
+			entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+			{
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
+			});
+			entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+			{
+				this->selectEntity(entity);
+			});
+		}
 	}
 
-	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+	if (this->allowedSelection == AllowedSelection::Enemy || this->allowedSelection == AllowedSelection::Either)
 	{
-		PlatformerEntity* entity = *it;
-
-		entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
 		{
-			this->selectEntity(entity);
-		});
+			PlatformerEntity* entity = *it;
 
-		entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
-		{
-			this->selectEntity(entity);
-		});
+			entity->clickHitbox->enableInteraction();
+			entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+			{
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
+			});
+			entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+			{
+				this->selectEntity(entity);
+			});
+		}
 	}
 }
 
@@ -256,6 +276,7 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 	{
 		PlatformerEntity* entity = *it;
 
+		entity->clickHitbox->disableInteraction();
 		entity->clickHitbox->setClickCallback(nullptr);
 		entity->clickHitbox->setMouseOverCallback(nullptr);
 	}
@@ -264,6 +285,7 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 	{
 		PlatformerEntity* entity = *it;
 
+		entity->clickHitbox->disableInteraction();
 		entity->clickHitbox->setClickCallback(nullptr);
 		entity->clickHitbox->setMouseOverCallback(nullptr);
 	}
