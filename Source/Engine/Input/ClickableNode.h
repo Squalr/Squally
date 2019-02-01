@@ -16,8 +16,8 @@ namespace cocos2d
 class ClickableNode : public SmartNode
 {
 public:
-	static ClickableNode * create(std::string spriteNormal, std::string spriteSelectedResource);
-	static ClickableNode * create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
+	static ClickableNode* create(std::string spriteNormal, std::string spriteSelectedResource);
+	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
 	void setContentSize(const cocos2d::Size & size) override;
 	void setContentScale(float scale);
@@ -49,6 +49,7 @@ private:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void update(float) override;
+	void setDebugDrawPosition();
 	bool intersects(cocos2d::Vec2 mousePos);
 	void showSprite(cocos2d::Node* sprite);
 	void onMouseMove(cocos2d::EventCustom* event);
@@ -71,6 +72,7 @@ private:
 	bool isMousedOver;
 	cocos2d::EventKeyboard::KeyCode modifier;
 	cocos2d::DrawNode* debugHitbox;
+	cocos2d::Vec2 debugCachedPos;
 
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseClickEvent;
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDownEvent;

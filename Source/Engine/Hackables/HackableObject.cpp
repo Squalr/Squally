@@ -87,8 +87,6 @@ Vec2 HackableObject::getButtonOffset()
 
 void HackableObject::onHackableClick(ClickableNode* hackButton)
 {
-	Vec2 screenPosition = GameUtils::getSceneBounds(this).origin;
-
 	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
 }
 

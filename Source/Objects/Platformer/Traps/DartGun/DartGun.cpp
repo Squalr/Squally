@@ -137,7 +137,7 @@ void DartGun::shoot(float dt)
 
 	this->timeSinceLastShot += dt;
 
-	Rect bounds = GameUtils::getSceneBounds(this);
+	Rect bounds = GameUtils::getScreenBounds(this);
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)

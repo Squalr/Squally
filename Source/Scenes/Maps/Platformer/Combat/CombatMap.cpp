@@ -104,7 +104,7 @@ void CombatMap::initializeListeners()
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
-					this->choicesMenu->setPosition(GameUtils::getSceneBounds(combatArgs->entry->getEntity()).origin + Vec2(0.0f, 128.0f));
+					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(0.0f, 128.0f));
 
 					break;
 				}

@@ -61,7 +61,7 @@ void CSlider::setProgressUpdateCallback(std::function<void(float progress)> call
 
 void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 {
-	Vec2 thisPosition = GameUtils::getSceneBounds(this).origin;
+	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 	Vec2 newPosition = Vec2(args->mouseCoords.x - thisPosition.x, thisPosition.y);
 
 	if (newPosition.x < -this->frame->getContentSize().width / 2)
