@@ -26,8 +26,10 @@ public:
 	static void accelerateParticles(cocos2d::ParticleSystem* particleSystem, float duration);
 	static void fadeInObject(cocos2d::Node* node, float delay, float duration, uint8_t opacity = 255);
 	static float getDepth(cocos2d::Node* node);
-	static cocos2d::Rect getSceneBounds(cocos2d::Node* node);
-	static cocos2d::Rect getSceneBoundsV2(cocos2d::Node* node);
+	static cocos2d::Rect getWorldBounds(cocos2d::Node* node);
+	static cocos2d::Rect getWorldBoundsV2(cocos2d::Node* node);
+	static cocos2d::Rect getScreenBounds(cocos2d::Node* node);
+	static cocos2d::Rect getScreenBoundsV2(cocos2d::Node* node);
 	static bool isVisible(cocos2d::Node* node);
 	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool intersectsV2(cocos2d::Node* node, cocos2d::Vec2 mousePos);

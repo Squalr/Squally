@@ -40,6 +40,7 @@ Mouse::Mouse()
 	this->activeCursorSet = -1;
 
 	// Anchor point is the top left for the mouse -- this is where the click happens
+	this->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->mouseSpritePointPressed->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -101,10 +102,20 @@ void Mouse::setActiveCursorSet(int setId)
 	this->activeCursorSet = setId;
 	CursorSet cursorSet = this->cursorSets[this->activeCursorSet];
 
-	this->mouseSpriteIdle->addChild(Sprite::create(cursorSet.mouseSpriteIdleResource));
-	this->mouseSpritePoint->addChild(Sprite::create(cursorSet.mouseSpritePointResource));
-	this->mouseSpritePointPressed->addChild(Sprite::create(cursorSet.mouseSpritePointPressedResource));
-	this->mouseSpriteDrag->addChild(Sprite::create(cursorSet.mouseSpriteDragResource));
+	Sprite* mouseSpriteIdle = Sprite::create(cursorSet.mouseSpriteIdleResource);
+	Sprite* mouseSpritePoint = Sprite::create(cursorSet.mouseSpritePointResource);
+	Sprite* mouseSpritePointPressed = Sprite::create(cursorSet.mouseSpritePointPressedResource);
+	Sprite* mouseSpriteDrag = Sprite::create(cursorSet.mouseSpriteDragResource);
+
+	mouseSpriteIdle->setAnchorPoint(Vec2(0.0f, 1.0f));
+	mouseSpritePoint->setAnchorPoint(Vec2(0.0f, 1.0f));
+	mouseSpritePointPressed->setAnchorPoint(Vec2(0.0f, 1.0f));
+	mouseSpriteDrag->setAnchorPoint(Vec2(0.0f, 1.0f));
+
+	this->mouseSpriteIdle->addChild(mouseSpriteIdle);
+	this->mouseSpritePoint->addChild(mouseSpritePoint);
+	this->mouseSpritePointPressed->addChild(mouseSpritePointPressed);
+	this->mouseSpriteDrag->addChild(mouseSpriteDrag);
 }
 
 int Mouse::getActiveCursorSet()

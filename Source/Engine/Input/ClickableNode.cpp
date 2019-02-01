@@ -2,9 +2,11 @@
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Sound/SoundManager.h"
@@ -58,7 +60,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->debugHitbox->setVisible(false);
 
 	this->offsetCorrection = Vec2::ZERO;
-
+	this->debugCachedPos = Vec2::ZERO;
 	this->setContentSize(this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
@@ -115,12 +117,20 @@ void ClickableNode::update(float dt)
 	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
+void ClickableNode::setDebugDrawPosition()
+{
+	this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
+}
+
 void ClickableNode::setContentSize(const Size & size)
 {
 	super::setContentSize(size);
 
 	this->debugHitbox->clear();
-	this->debugHitbox->drawRect(-Vec2(size / 2.0f), Vec2(size / 2.0f), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
+	this->debugHitbox->drawRect(Vec2::ZERO, Vec2(size), Color4F(1.0f, 1.0f, 0.0f, 0.35f));
+	this->debugHitbox->setContentSize(size);
+
+	this->setDebugDrawPosition();
 }
 
 void ClickableNode::onDeveloperModeEnable()

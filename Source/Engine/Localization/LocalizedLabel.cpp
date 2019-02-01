@@ -10,6 +10,7 @@
 #include "Engine/Localization/Localization.h"
 
 #include "Resources/FontResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -38,7 +39,7 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->translationButton = ClickableNode::create(Node::create(), Node::create());
+	this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->localizedString = nullptr;
 
 	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
@@ -207,8 +208,6 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 		this->getHorizontalAlignment(),
 		this->getVerticalAlignment()
 	);
-
-	this->translationButton->setOffsetCorrection(Vec2(0.0f, this->getContentSize().height / 2.0f));
 
 	// Restore that state
 	if (outlineSize > 0)

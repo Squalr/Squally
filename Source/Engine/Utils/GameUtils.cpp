@@ -224,8 +224,13 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	return depth;
 }
 
-Rect GameUtils::getSceneBounds(Node* node)
+Rect GameUtils::getWorldBounds(Node* node)
 {
+	if (node == nullptr)
+	{
+		return Rect::ZERO;
+	}
+
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2);
 	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
@@ -235,14 +240,18 @@ Rect GameUtils::getSceneBounds(Node* node)
 		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
 	}
 
-	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
 	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
 
 	return resultRect;
 }
 
-Rect GameUtils::getSceneBoundsV2(Node* node)
+Rect GameUtils::getWorldBoundsV2(Node* node)
 {
+	if (node == nullptr)
+	{
+		return Rect::ZERO;
+	}
+
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX(), resultRect.getMinY());
 	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
@@ -252,8 +261,39 @@ Rect GameUtils::getSceneBoundsV2(Node* node)
 		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
 	}
 
-	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
 	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
+
+	return resultRect;
+}
+
+Rect GameUtils::getScreenBounds(Node* node)
+{
+	Rect resultRect = GameUtils::getWorldBounds(node);
+	Vec2 resultCoords = resultRect.origin;
+
+	if (Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
+	{
+		return Rect::ZERO;
+	}
+
+	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
+	resultRect.setRect(resultCoords.x, resultCoords.y, resultRect.size.width, resultRect.size.height);
+
+	return resultRect;
+}
+
+Rect GameUtils::getScreenBoundsV2(Node* node)
+{
+	Rect resultRect = GameUtils::getWorldBoundsV2(node);
+	Vec2 resultCoords = resultRect.origin;
+
+	if (Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
+	{
+		return Rect::ZERO;
+	}
+
+	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
+	resultRect.setRect(resultCoords.x, resultCoords.y, resultRect.size.width, resultRect.size.height);
 
 	return resultRect;
 }
@@ -277,7 +317,7 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (GameUtils::getSceneBounds(node).intersectsRect(mouseRect))
+	if (GameUtils::getScreenBounds(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -291,7 +331,7 @@ bool GameUtils::intersectsV2(Node* node, Vec2 mousePos)
 {
 	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (GameUtils::getSceneBoundsV2(node).intersectsRect(mouseRect))
+	if (GameUtils::getScreenBoundsV2(node).intersectsRect(mouseRect))
 	{
 		return true;
 	}

@@ -68,6 +68,7 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
 
+	float width = (*this->properties)[PlatformerEntity::MapKeyWidth].asFloat();
 	float height = (*this->properties)[PlatformerEntity::MapKeyHeight].asFloat();
 
 	this->setPositionY(this->getPositionY());
@@ -79,8 +80,9 @@ PlatformerEntity::PlatformerEntity(
 
 	animationNode->setPosition(collisionOffset * scale - Vec2(0.0f, height / 2.0f));
 
-	this->clickHitbox->setContentSize(size);
-	this->clickHitbox->setOffsetCorrection(Vec2(0.0f, this->clickHitbox->getContentSize().height / 2.0f));
+	this->clickHitbox->setContentSize(size * scale);
+	this->clickHitbox->setPosition(Vec2(0.0f, (size * scale).height / 2.0f) + Vec2((size * scale).width / 2.0f, -height / 2.0f));
+	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	// Update width to be serialized
 	if (this->properties != nullptr)
@@ -91,12 +93,12 @@ PlatformerEntity::PlatformerEntity(
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
-		this->animationNode->setFlippedX((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		this->animationNode->setFlippedX((*this->properties)[PlatformerEntity::MapKeyFlipX].asBool());
 	}
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
 	{
-		this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyFlipY].asBool());
 	}
 
 	this->maxHealth = baseHealth;
@@ -106,10 +108,10 @@ PlatformerEntity::PlatformerEntity(
 	this->special = this->maxSpecial;
 	this->runes = PlatformerEntity::MaxRunes;
 
-	this->animationNode->addChild(this->clickHitbox);
 	this->addChild(this->groundCollisionDetector);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
+	this->addChild(this->clickHitbox);
 }
 
 PlatformerEntity::~PlatformerEntity()

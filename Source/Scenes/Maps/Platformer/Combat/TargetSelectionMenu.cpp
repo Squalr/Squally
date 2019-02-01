@@ -76,6 +76,7 @@ void TargetSelectionMenu::initializeListeners()
 						this->selectEntity(this->enemyEntities.front());
 					}
 
+					this->setEntityClickCallbacks();
 					this->isActive = true;
 					this->setVisible(true);
 					break;
@@ -87,12 +88,14 @@ void TargetSelectionMenu::initializeListeners()
 						this->selectEntity(this->playerEntities.front());
 					}
 
+					this->setEntityClickCallbacks();
 					this->isActive = true;
 					this->setVisible(true);
 					break;
 				}
 				default:
 				{
+					this->clearEntityClickCallbacks();
 					this->setVisible(false);
 					break;
 				}
@@ -211,5 +214,57 @@ void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 		{
 			break;
 		}
+	}
+}
+
+void TargetSelectionMenu::setEntityClickCallbacks()
+{
+	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	{
+		PlatformerEntity* entity = *it;
+
+		entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		{
+			this->selectEntity(entity);
+		});
+
+		entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		{
+			this->selectEntity(entity);
+		});
+	}
+
+	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+	{
+		PlatformerEntity* entity = *it;
+
+		entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		{
+			this->selectEntity(entity);
+		});
+
+		entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		{
+			this->selectEntity(entity);
+		});
+	}
+}
+
+void TargetSelectionMenu::clearEntityClickCallbacks()
+{
+	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	{
+		PlatformerEntity* entity = *it;
+
+		entity->clickHitbox->setClickCallback(nullptr);
+		entity->clickHitbox->setMouseOverCallback(nullptr);
+	}
+
+	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+	{
+		PlatformerEntity* entity = *it;
+
+		entity->clickHitbox->setClickCallback(nullptr);
+		entity->clickHitbox->setMouseOverCallback(nullptr);
 	}
 }

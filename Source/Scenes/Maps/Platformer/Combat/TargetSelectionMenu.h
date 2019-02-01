@@ -27,6 +27,8 @@ private:
 	void update(float dt) override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void selectEntity(PlatformerEntity* entity);
+	void setEntityClickCallbacks();
+	void clearEntityClickCallbacks();
 
 	bool isActive;
 	PlatformerEntity* selectedEntity;
