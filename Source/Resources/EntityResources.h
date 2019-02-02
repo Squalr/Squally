@@ -4145,6 +4145,7 @@ namespace EntityResources
 	extern const std::string Squally_HAND_L_2;
 	extern const std::string Squally_HAND_R_1;
 	extern const std::string Squally_HAND_R_2;
+	extern const std::string Squally_HAT_PLACEHOLDER;
 	extern const std::string Squally_Jump_Jump_00;
 	extern const std::string Squally_Jump_Jump_01;
 	extern const std::string Squally_Jump_Jump_02;
@@ -4158,6 +4159,8 @@ namespace EntityResources
 	extern const std::string Squally_Jump_Jump_10;
 	extern const std::string Squally_Jump_Jump_11;
 	extern const std::string Squally_MOUTH;
-	extern const std::string Squally_STAFF_1;
+	extern const std::string Squally_SHIELD_PLACEHOLDER;
 	extern const std::string Squally_STEM;
+	extern const std::string Squally_WEAPON_MH_PLACEHOLDER;
+	extern const std::string Squally_WEAPON_OH_PLACEHOLDER;
 };

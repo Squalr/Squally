@@ -16,54 +16,32 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
 	this->spriterAnimationPart = entity->getObjectInstance(partName);
-	this->trackedChildren = std::vector<cocos2d::Node*>();
-
-	// Detach the spriter animation part from the timeline such that it is entirely in the user's control
-	this->spriterAnimationPart->toggleTimelineCanUpdate(false);
+	this->initialPosition = Vec2(this->spriterAnimationPart->getPosition().x, this->spriterAnimationPart->getPosition().y);
 
 	this->rotation = this->spriterAnimationPart->getAngle();
 }
 
-void AnimationPart::addSprite(std::string spriteResource)
+void AnimationPart::detachFromTimeline()
 {
-	this->spriterAnimationPart->setImage(new SpriterEngine::ImageFile(spriteResource, SpriterEngine::point()));
+	// Detach the spriter animation part from the timeline such that it is entirely in the user's control
+	this->spriterAnimationPart->toggleTimelineCanUpdate(false);
 }
 
-void AnimationPart::addTrackedChild(Node* child)
+void AnimationPart::replaceSprite(std::string spriteResource)
 {
-	// We create a wrapper such that the passed 'child' argument can still be manipulated by the caller independently of this class
-	// Example) Caller sets the passed 'child' argument's rotation to 180 deg. In this classes update loop, the tracked child's rotation will not overwrite this
-	Node* wrapper = Node::create();
-
-	this->trackedChildren.push_back(wrapper);
-	wrapper->addChild(child);
-	this->addChild(wrapper);
+	this->spriterAnimationPart->getImage()->setPath(spriteResource);
 }
 
 void AnimationPart::setAngle(float rotation)
 {
+	this->detachFromTimeline();
+
 	this->spriterAnimationPart->setAngle(rotation);
 }
 
-void AnimationPart::onEnter()
+void AnimationPart::setOffset(Vec2 offset)
 {
-	super::onEnter();
+	this->detachFromTimeline();
 
-	this->scheduleUpdate();
-}
-
-void AnimationPart::update(float dt)
-{
-	super::update(dt);
-
-	Vec2 position = Vec2(this->spriterAnimationPart->getPosition().x, -this->spriterAnimationPart->getPosition().y);
-	float rotation = this->spriterAnimationPart->getAngle();
-
-	for (auto it = this->trackedChildren.begin(); it != this->trackedChildren.end(); it++)
-	{
-		Node* child = *it;
-
-		child->setRotation(rotation);
-		child->setPosition(position);
-	}
+	this->spriterAnimationPart->setPosition(SpriterEngine::point(this->initialPosition.x + offset.x, this->initialPosition.y + offset.y));
 }
