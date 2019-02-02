@@ -12,19 +12,17 @@ class AnimationPart : public SmartNode
 public:
 	static AnimationPart* create(SpriterEngine::EntityInstance* entity, std::string partName);
 
-	void addSprite(std::string spriteResource);
-	void addTrackedChild(cocos2d::Node* child);
+	void detachFromTimeline();
+	void replaceSprite(std::string spriteResource);
 	void setAngle(float rotation);
+	void setOffset(cocos2d::Vec2 offset);
 
 private:
 	typedef SmartNode super;
 	AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName);
 	virtual ~AnimationPart() = default;
 
-	void onEnter() override;
-	void update(float dt) override;
-
-	std::vector<cocos2d::Node*> trackedChildren;
 	SpriterEngine::UniversalObjectInterface* spriterAnimationPart;
 	float rotation;
+	cocos2d::Vec2 initialPosition;
 };

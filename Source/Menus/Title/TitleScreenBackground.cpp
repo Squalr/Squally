@@ -17,6 +17,7 @@
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
@@ -60,7 +61,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->mainhand->addTrackedChild(staff);
 	*/
 
-	this->mainhand->addSprite(EntityResources::Squally_STAFF_1);
+	this->mainhand->replaceSprite(ObjectResources::Weapons_Weapons_1_STAFF_1);
+	this->mainhand->setOffset(Vec2(64.0f, 12.0f));
 
 	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f);
 	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f);
