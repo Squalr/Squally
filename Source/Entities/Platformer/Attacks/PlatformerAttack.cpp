@@ -11,7 +11,7 @@ PlatformerAttack::PlatformerAttack(std::string iconResource, float attackDuratio
 
 std::string PlatformerAttack::getAttackAnimation()
 {
-	return "jump";
+	return "Attack";
 }
 
 std::string PlatformerAttack::getIconResource()

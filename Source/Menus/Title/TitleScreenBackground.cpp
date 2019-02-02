@@ -8,6 +8,7 @@
 #include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"
@@ -49,7 +50,17 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
-	this->squally->playAnimation("Title", true);
+	this->squally->playAnimation("Idle", true);
+	this->mainhand = this->squally->getAnimationPart("mainhand");
+
+	/*
+	Sprite* staff = Sprite::create(EntityResources::Squally_STAFF_1);
+	staff->setRotation(270.0f);
+
+	this->mainhand->addTrackedChild(staff);
+	*/
+
+	this->mainhand->addSprite(EntityResources::Squally_STAFF_1);
 
 	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f);
 	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f);
@@ -116,13 +127,13 @@ void TitleScreenBackground::onEnter()
 
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
-		this->squally->playAnimation("TitlePoke");
+		this->squally->playAnimation("AttackStab");
 		jiggleSlime->execute();
 	});
 
 	CallFunc* returnToIdle = CallFunc::create([=]
 	{
-		this->squally->playAnimation("Title");
+		this->squally->playAnimation("Idle");
 	});
 
 	pokeSlime->retain();

@@ -2,6 +2,8 @@
 
 #include "SpriterPlusPlus/CCAnimationNode.h"
 
+#include "Engine/Animations/AnimationPart.h"
+
 using namespace cocos2d;
 
 const std::string SmartAnimationNode::DefaultAnimationEntityName = "Entity";
@@ -25,6 +27,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 {
 	this->animationNode = AnimationNode::create(animationResource);
 	this->entity = this->animationNode->play(entityName);
+	this->cachedAnimationParts = std::map<std::string, AnimationPart*>();
 
 	this->addChild(this->animationNode);
 }
@@ -62,31 +65,20 @@ void SmartAnimationNode::playAnimation(std::string animationName, bool repeat, f
 	}
 }
 
-SmartAnimationNode::AnimationPart SmartAnimationNode::getAnimationPart(std::string partName)
+AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 {
-	AnimationPart animationPart = AnimationPart();
-
-	auto animVariable = this->entity->getObjectInstance(partName);
-
-	if (animVariable != nullptr)
+	if (this->cachedAnimationParts.find(partName) != this->cachedAnimationParts.end())
 	{
-		animationPart.rotation = animVariable->getAngle();
+		return this->cachedAnimationParts[partName];
 	}
+
+	AnimationPart* animationPart = AnimationPart::create(this->entity, partName);
+
+	this->cachedAnimationParts[partName] = animationPart;
+
+	this->addChild(animationPart);
 
 	return animationPart;
-}
-
-void SmartAnimationNode::setAnimationPart(std::string partName, AnimationPart animationPart)
-{
-	auto animVariable = this->entity->getObjectInstance(partName);
-
-	if (animVariable != nullptr)
-	{
-		// Detach this part from the timeline -- otherwise our change will just get overwritten later
-		animVariable->toggleTimelineCanUpdate(false);
-
-		animVariable->setAngle(animationPart.rotation);
-	}
 }
 
 void SmartAnimationNode::restoreAnimationPart(std::string partName)

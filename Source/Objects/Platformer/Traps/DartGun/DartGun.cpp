@@ -7,6 +7,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -45,6 +46,7 @@ DartGun::DartGun(ValueMap* initProperties) : HackableObject(initProperties)
 	this->dartNode = Node::create();
 	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);
 	this->timeSinceLastShot = 0.0f;
+	this->cannon = this->dartGunAnimations->getAnimationPart(DartGun::PivotBone);
 
 	this->dartGunAnimations->playAnimation();
 
@@ -126,14 +128,10 @@ Vec2 DartGun::getButtonOffset()
 void DartGun::shoot(float dt)
 {
 	Vec2 squallyPos = Squally::getInstance()->getPosition();
-
-	SmartAnimationNode::AnimationPart cannon = this->dartGunAnimations->getAnimationPart(DartGun::PivotBone);
 	
 	float rotation = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? M_PI : 0.0f);
 	
-	cannon.rotation = MathUtils::wrappingNormalize(rotation, 0.0f, 2.0f * M_PI);
-
-	this->dartGunAnimations->setAnimationPart(DartGun::PivotBone, cannon);
+	cannon->setRotation(MathUtils::wrappingNormalize(rotation, 0.0f, 2.0f * M_PI));
 
 	this->timeSinceLastShot += dt;
 
