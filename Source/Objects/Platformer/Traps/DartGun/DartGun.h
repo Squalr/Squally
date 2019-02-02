@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class AnimationPart;
 class HackableData;
 class SmartAnimationNode;
 
@@ -34,6 +35,7 @@ private:
 	float timeSinceLastShot;
 	cocos2d::Node* dartNode;
 	SmartAnimationNode* dartGunAnimations;
+	AnimationPart* cannon;
 
 	static const std::string PivotBone;
 };

@@ -70,6 +70,7 @@ list(APPEND GAME_SOURCE
 	Source/Bootstrapper.cpp
 	Source/Engine/Analytics/Analytics.cpp
 	Source/Engine/Analytics/TAnalytics.cpp
+	Source/Engine/Animations/AnimationPart.cpp
 	Source/Engine/Animations/SmartAnimationNode.cpp
 	Source/Engine/Animations/SmartAnimationSequenceNode.cpp
 	Source/Engine/Camera/CameraTrackingData.cpp
@@ -1267,6 +1268,7 @@ list(APPEND GAME_HEADER
 	Source/Bootstrapper.h
 	Source/Engine/Analytics/Analytics.h
 	Source/Engine/Analytics/TAnalytics.h
+	Source/Engine/Animations/AnimationPart.h
 	Source/Engine/Animations/SmartAnimationNode.h
 	Source/Engine/Animations/SmartAnimationSequenceNode.h
 	Source/Engine/Camera/CameraTrackingData.h

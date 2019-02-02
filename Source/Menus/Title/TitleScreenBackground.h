@@ -2,17 +2,18 @@
 
 #include "Engine/SmartNode.h"
 
-class InfiniteParallaxNode;
-class FloatingSprite;
-class ClickableNode;
-class SmartAnimationNode;
-class SmartAnimationSequenceNode;
-
 namespace cocos2d
 {
 	class Sprite;
 	class ParticleSystem;
 }
+
+class AnimationPart;
+class ClickableNode;
+class FloatingSprite;
+class InfiniteParallaxNode;
+class SmartAnimationNode;
+class SmartAnimationSequenceNode;
 
 class TitleScreenBackground : public SmartNode
 {
@@ -29,6 +30,7 @@ private:
 	void initializePositions() override;
 
 	SmartAnimationNode* squally;
+	AnimationPart* mainhand;
 	SmartAnimationSequenceNode* slime;
 	cocos2d::Sprite* background;
 	FloatingSprite* backgroundVines;
