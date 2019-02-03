@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_TranslationEditor_TranslationEditor::clone()
 	{
-		return Menus_TranslationEditor_TranslationEditor::create();
+		LocalizedString* clonedString = Menus_TranslationEditor_TranslationEditor::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_TranslationEditor_TranslationEditor::Menus_TranslationEditor_TranslationEditor() : LocalizedString()

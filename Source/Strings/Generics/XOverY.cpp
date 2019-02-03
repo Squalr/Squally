@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_XOverY::clone()
 	{
-		return Generics_XOverY::create();
+		LocalizedString* clonedString = Generics_XOverY::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_XOverY::Generics_XOverY() : LocalizedString()

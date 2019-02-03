@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* {{ClassName}}::clone()
 	{
-		return {{ClassName}}::create();
+		LocalizedString* clonedString = {{ClassName}}::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	{{ClassName}}::{{ClassName}}() : LocalizedString()

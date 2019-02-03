@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Dialogue_Enemies_BattleCries_DieMortal::clone()
 	{
-		return Dialogue_Enemies_BattleCries_DieMortal::create();
+		LocalizedString* clonedString = Dialogue_Enemies_BattleCries_DieMortal::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Dialogue_Enemies_BattleCries_DieMortal::Dialogue_Enemies_BattleCries_DieMortal() : LocalizedString()

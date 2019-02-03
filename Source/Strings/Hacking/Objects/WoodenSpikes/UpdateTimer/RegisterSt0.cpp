@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::clone()
 	{
-		return Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create();
+		LocalizedString* clonedString = Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0() : LocalizedString()

@@ -19,6 +19,7 @@
 #include "Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h"
 #include "Scenes/Maps/Platformer/Combat/Timeline.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
+#include "Scenes/Maps/Platformer/Huds/CombatHud.h"
 
 using namespace cocos2d;
 
@@ -43,12 +44,14 @@ CombatMap::CombatMap()
 		throw std::uncaught_exception();
 	}
 
+	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->timeline = Timeline::create();
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
+	this->addChild(this->combatHud);
 	this->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
@@ -197,6 +200,7 @@ void CombatMap::initializeEntities()
 		}
 	}
 
+	this->combatHud->bindStatsBars(this->playerEntities, this->enemyEntities);
 	this->targetSelectionMenu->initializeEntities(this->playerEntities, this->enemyEntities);
 	this->timeline->initializeTimeline(this->playerEntities, this->enemyEntities, true);
 }

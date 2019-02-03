@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_TimesConstant::clone()
 	{
-		return Generics_TimesConstant::create();
+		LocalizedString* clonedString = Generics_TimesConstant::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_TimesConstant::Generics_TimesConstant() : LocalizedString()

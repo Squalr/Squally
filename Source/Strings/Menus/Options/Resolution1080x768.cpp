@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Options_Resolution1080x768::clone()
 	{
-		return Menus_Options_Resolution1080x768::create();
+		LocalizedString* clonedString = Menus_Options_Resolution1080x768::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Options_Resolution1080x768::Menus_Options_Resolution1080x768() : LocalizedString()

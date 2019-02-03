@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_QuitToTitle::clone()
 	{
-		return Menus_QuitToTitle::create();
+		LocalizedString* clonedString = Menus_QuitToTitle::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_QuitToTitle::Menus_QuitToTitle() : LocalizedString()

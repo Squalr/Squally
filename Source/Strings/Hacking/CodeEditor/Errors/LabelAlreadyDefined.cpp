@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_LabelAlreadyDefined::clone()
 	{
-		return Hacking_CodeEditor_Errors_LabelAlreadyDefined::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_LabelAlreadyDefined::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_LabelAlreadyDefined::Hacking_CodeEditor_Errors_LabelAlreadyDefined() : LocalizedString()

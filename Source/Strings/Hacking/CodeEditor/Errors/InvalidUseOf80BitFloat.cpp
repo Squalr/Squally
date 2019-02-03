@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat::Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat() : LocalizedString()

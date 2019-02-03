@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Cards_Binary15::clone()
 	{
-		return Hexus_Cards_Binary15::create();
+		LocalizedString* clonedString = Hexus_Cards_Binary15::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Cards_Binary15::Hexus_Cards_Binary15() : LocalizedString()

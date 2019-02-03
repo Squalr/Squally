@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister::clone()
 	{
-		return Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister::Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister() : LocalizedString()

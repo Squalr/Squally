@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_EndianForest::clone()
 	{
-		return Menus_Maps_EndianForest::create();
+		LocalizedString* clonedString = Menus_Maps_EndianForest::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_EndianForest::Menus_Maps_EndianForest() : LocalizedString()

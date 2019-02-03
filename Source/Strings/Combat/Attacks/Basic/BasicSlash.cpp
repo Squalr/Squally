@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Combat_Attacks_Basic_BasicSlash::clone()
 	{
-		return Combat_Attacks_Basic_BasicSlash::create();
+		LocalizedString* clonedString = Combat_Attacks_Basic_BasicSlash::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Combat_Attacks_Basic_BasicSlash::Combat_Attacks_Basic_BasicSlash() : LocalizedString()

@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_StoryMode::clone()
 	{
-		return Menus_StoryMode::create();
+		LocalizedString* clonedString = Menus_StoryMode::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_StoryMode::Menus_StoryMode() : LocalizedString()

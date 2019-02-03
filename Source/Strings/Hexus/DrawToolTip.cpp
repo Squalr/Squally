@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_DrawToolTip::clone()
 	{
-		return Hexus_DrawToolTip::create();
+		LocalizedString* clonedString = Hexus_DrawToolTip::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_DrawToolTip::Hexus_DrawToolTip() : LocalizedString()

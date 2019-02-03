@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_Infinity::clone()
 	{
-		return Generics_Infinity::create();
+		LocalizedString* clonedString = Generics_Infinity::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_Infinity::Generics_Infinity() : LocalizedString()

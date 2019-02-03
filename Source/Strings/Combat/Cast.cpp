@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Combat_Cast::clone()
 	{
-		return Combat_Cast::create();
+		LocalizedString* clonedString = Combat_Cast::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Combat_Cast::Combat_Cast() : LocalizedString()

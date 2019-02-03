@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Tutorials_A_LossDisplay::clone()
 	{
-		return Hexus_Tutorials_A_LossDisplay::create();
+		LocalizedString* clonedString = Hexus_Tutorials_A_LossDisplay::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Tutorials_A_LossDisplay::Hexus_Tutorials_A_LossDisplay() : LocalizedString()

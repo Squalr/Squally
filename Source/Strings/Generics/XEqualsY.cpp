@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_XEqualsY::clone()
 	{
-		return Generics_XEqualsY::create();
+		LocalizedString* clonedString = Generics_XEqualsY::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_XEqualsY::Generics_XEqualsY() : LocalizedString()

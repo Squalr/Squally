@@ -2,6 +2,7 @@
 
 #include "Scenes/Maps/MapBase.h"
 
+class CombatHud;
 class ChoicesMenu;
 class PlatformerEntity;
 class TargetSelectionMenu;
@@ -28,6 +29,7 @@ private:
 	void update(float dt) override;
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 
+	CombatHud* combatHud;
 	Timeline* timeline;
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;

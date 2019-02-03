@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_VoidStar::clone()
 	{
-		return Menus_Maps_VoidStar::create();
+		LocalizedString* clonedString = Menus_Maps_VoidStar::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_VoidStar::Menus_Maps_VoidStar() : LocalizedString()

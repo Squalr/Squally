@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_LabelNameTooLong::clone()
 	{
-		return Hacking_CodeEditor_Errors_LabelNameTooLong::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_LabelNameTooLong::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_LabelNameTooLong::Hacking_CodeEditor_Errors_LabelNameTooLong() : LocalizedString()

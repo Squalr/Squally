@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::clone()
 	{
-		return Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create();
+		LocalizedString* clonedString = Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown() : LocalizedString()

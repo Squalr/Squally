@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidRegisterType::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidRegisterType::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidRegisterType::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidRegisterType::Hacking_CodeEditor_Errors_InvalidRegisterType() : LocalizedString()

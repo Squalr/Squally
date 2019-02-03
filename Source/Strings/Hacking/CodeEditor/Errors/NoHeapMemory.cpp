@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_NoHeapMemory::clone()
 	{
-		return Hacking_CodeEditor_Errors_NoHeapMemory::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_NoHeapMemory::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_NoHeapMemory::Hacking_CodeEditor_Errors_NoHeapMemory() : LocalizedString()

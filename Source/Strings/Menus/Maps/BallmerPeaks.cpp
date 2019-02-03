@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_BallmerPeaks::clone()
 	{
-		return Menus_Maps_BallmerPeaks::create();
+		LocalizedString* clonedString = Menus_Maps_BallmerPeaks::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_BallmerPeaks::Menus_Maps_BallmerPeaks() : LocalizedString()

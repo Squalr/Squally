@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Tutorials_E_UseShiftLeft::clone()
 	{
-		return Hexus_Tutorials_E_UseShiftLeft::create();
+		LocalizedString* clonedString = Hexus_Tutorials_E_UseShiftLeft::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Tutorials_E_UseShiftLeft::Hexus_Tutorials_E_UseShiftLeft() : LocalizedString()

@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidRegisterVirtualId::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidRegisterVirtualId::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidRegisterVirtualId::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidRegisterVirtualId::Hacking_CodeEditor_Errors_InvalidRegisterVirtualId() : LocalizedString()

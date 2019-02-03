@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::clone()
 	{
-		return Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create();
+		LocalizedString* clonedString = Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight() : LocalizedString()

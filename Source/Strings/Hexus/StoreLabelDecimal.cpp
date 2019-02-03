@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_StoreLabelDecimal::clone()
 	{
-		return Hexus_StoreLabelDecimal::create();
+		LocalizedString* clonedString = Hexus_StoreLabelDecimal::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_StoreLabelDecimal::Hexus_StoreLabelDecimal() : LocalizedString()

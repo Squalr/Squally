@@ -397,5 +397,5 @@ float LocalizedLabel::getFontSizeSmall(std::string fontResource)
 void LocalizedLabel::updateTranslationEditHitbox()
 {
 	this->translationButton->setContentSize(this->getContentSize());
-	this->translationButton->setPosition(Vec2(this->getContentSize().width / 2.0f, 0.0f));
+	this->translationButton->setPosition(Vec2(this->getContentSize() / 2.0f));
 }

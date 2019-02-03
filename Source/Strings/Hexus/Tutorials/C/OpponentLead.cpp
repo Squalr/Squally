@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Tutorials_C_OpponentLead::clone()
 	{
-		return Hexus_Tutorials_C_OpponentLead::create();
+		LocalizedString* clonedString = Hexus_Tutorials_C_OpponentLead::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Tutorials_C_OpponentLead::Hexus_Tutorials_C_OpponentLead() : LocalizedString()

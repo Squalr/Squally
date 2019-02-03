@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_Brackets::clone()
 	{
-		return Generics_Brackets::create();
+		LocalizedString* clonedString = Generics_Brackets::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_Brackets::Generics_Brackets() : LocalizedString()

@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidRexPrefix::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidRexPrefix::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidRexPrefix::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidRexPrefix::Hacking_CodeEditor_Errors_InvalidRexPrefix() : LocalizedString()

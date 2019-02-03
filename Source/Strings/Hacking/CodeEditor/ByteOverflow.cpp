@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_ByteOverflow::clone()
 	{
-		return Hacking_CodeEditor_ByteOverflow::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_ByteOverflow::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_ByteOverflow::Hacking_CodeEditor_ByteOverflow() : LocalizedString()

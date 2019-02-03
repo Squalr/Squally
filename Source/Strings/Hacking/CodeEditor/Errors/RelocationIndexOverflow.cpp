@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_RelocationIndexOverflow::clone()
 	{
-		return Hacking_CodeEditor_Errors_RelocationIndexOverflow::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_RelocationIndexOverflow::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_RelocationIndexOverflow::Hacking_CodeEditor_Errors_RelocationIndexOverflow() : LocalizedString()

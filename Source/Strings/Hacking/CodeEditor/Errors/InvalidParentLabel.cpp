@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidParentLabel::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidParentLabel::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidParentLabel::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidParentLabel::Hacking_CodeEditor_Errors_InvalidParentLabel() : LocalizedString()

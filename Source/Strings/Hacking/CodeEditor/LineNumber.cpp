@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_LineNumber::clone()
 	{
-		return Hacking_CodeEditor_LineNumber::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_LineNumber::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_LineNumber::Hacking_CodeEditor_LineNumber() : LocalizedString()

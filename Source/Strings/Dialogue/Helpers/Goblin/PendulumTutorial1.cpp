@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Dialogue_Helpers_Goblin_PendulumTutorial1::clone()
 	{
-		return Dialogue_Helpers_Goblin_PendulumTutorial1::create();
+		LocalizedString* clonedString = Dialogue_Helpers_Goblin_PendulumTutorial1::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Dialogue_Helpers_Goblin_PendulumTutorial1::Dialogue_Helpers_Goblin_PendulumTutorial1() : LocalizedString()

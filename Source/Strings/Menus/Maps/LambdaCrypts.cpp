@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_LambdaCrypts::clone()
 	{
-		return Menus_Maps_LambdaCrypts::create();
+		LocalizedString* clonedString = Menus_Maps_LambdaCrypts::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_LambdaCrypts::Menus_Maps_LambdaCrypts() : LocalizedString()

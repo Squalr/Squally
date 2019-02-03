@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Tutorials_F_UseMov::clone()
 	{
-		return Hexus_Tutorials_F_UseMov::create();
+		LocalizedString* clonedString = Hexus_Tutorials_F_UseMov::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Tutorials_F_UseMov::Hexus_Tutorials_F_UseMov() : LocalizedString()

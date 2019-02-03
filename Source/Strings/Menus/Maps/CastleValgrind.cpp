@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_CastleValgrind::clone()
 	{
-		return Menus_Maps_CastleValgrind::create();
+		LocalizedString* clonedString = Menus_Maps_CastleValgrind::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_CastleValgrind::Menus_Maps_CastleValgrind() : LocalizedString()
