@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_BinaryMax::clone()
 	{
-		return Hexus_BinaryMax::create();
+		LocalizedString* clonedString = Hexus_BinaryMax::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_BinaryMax::Hexus_BinaryMax() : LocalizedString()

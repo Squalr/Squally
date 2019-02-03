@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Done::clone()
 	{
-		return Hexus_Done::create();
+		LocalizedString* clonedString = Hexus_Done::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Done::Hexus_Done() : LocalizedString()

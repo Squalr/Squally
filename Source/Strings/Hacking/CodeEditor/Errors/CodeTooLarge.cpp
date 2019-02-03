@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_CodeTooLarge::clone()
 	{
-		return Hacking_CodeEditor_Errors_CodeTooLarge::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_CodeTooLarge::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_CodeTooLarge::Hacking_CodeEditor_Errors_CodeTooLarge() : LocalizedString()

@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_NativeLanguage::clone()
 	{
-		return Generics_NativeLanguage::create();
+		LocalizedString* clonedString = Generics_NativeLanguage::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_NativeLanguage::Generics_NativeLanguage() : LocalizedString()

@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Debugging_CameraY::clone()
 	{
-		return Debugging_CameraY::create();
+		LocalizedString* clonedString = Debugging_CameraY::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Debugging_CameraY::Debugging_CameraY() : LocalizedString()

@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_RegisterR11::clone()
 	{
-		return Hacking_RegisterR11::create();
+		LocalizedString* clonedString = Hacking_RegisterR11::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_RegisterR11::Hacking_RegisterR11() : LocalizedString()

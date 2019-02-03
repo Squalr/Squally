@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_UnderflowRuins::clone()
 	{
-		return Menus_Maps_UnderflowRuins::create();
+		LocalizedString* clonedString = Menus_Maps_UnderflowRuins::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_UnderflowRuins::Menus_Maps_UnderflowRuins() : LocalizedString()

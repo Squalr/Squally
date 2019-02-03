@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::clone()
 	{
-		return Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create();
+		LocalizedString* clonedString = Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax() : LocalizedString()

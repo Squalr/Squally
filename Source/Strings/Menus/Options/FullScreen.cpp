@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Options_FullScreen::clone()
 	{
-		return Menus_Options_FullScreen::create();
+		LocalizedString* clonedString = Menus_Options_FullScreen::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Options_FullScreen::Menus_Options_FullScreen() : LocalizedString()

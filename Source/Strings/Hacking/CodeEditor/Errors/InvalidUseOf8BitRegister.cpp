@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister::Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister() : LocalizedString()

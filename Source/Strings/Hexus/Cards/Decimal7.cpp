@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Cards_Decimal7::clone()
 	{
-		return Hexus_Cards_Decimal7::create();
+		LocalizedString* clonedString = Hexus_Cards_Decimal7::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Cards_Decimal7::Hexus_Cards_Decimal7() : LocalizedString()

@@ -23,6 +23,7 @@ protected:
 	void onEnter() override;
 	void initializeListeners() override;
 
+	void copyAttributesTo(LocalizedString* localizedString);
 	virtual std::string getStringAr() = 0;
 	virtual std::string getStringBg() = 0;
 	virtual std::string getStringCs() = 0;

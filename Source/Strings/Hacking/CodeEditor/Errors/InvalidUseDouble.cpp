@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidUseDouble::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidUseDouble::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidUseDouble::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidUseDouble::Hacking_CodeEditor_Errors_InvalidUseDouble() : LocalizedString()

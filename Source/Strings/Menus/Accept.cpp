@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Accept::clone()
 	{
-		return Menus_Accept::create();
+		LocalizedString* clonedString = Menus_Accept::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Accept::Menus_Accept() : LocalizedString()

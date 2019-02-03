@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_NotConsecutiveRegisters::clone()
 	{
-		return Hacking_CodeEditor_Errors_NotConsecutiveRegisters::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_NotConsecutiveRegisters::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_NotConsecutiveRegisters::Hacking_CodeEditor_Errors_NotConsecutiveRegisters() : LocalizedString()

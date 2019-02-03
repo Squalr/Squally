@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_StoreLabelBinary::clone()
 	{
-		return Hexus_StoreLabelBinary::create();
+		LocalizedString* clonedString = Hexus_StoreLabelBinary::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_StoreLabelBinary::Hexus_StoreLabelBinary() : LocalizedString()

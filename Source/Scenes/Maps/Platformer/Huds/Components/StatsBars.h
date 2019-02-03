@@ -13,13 +13,13 @@ class PlatformerEntity;
 class StatsBars : public SmartNode
 {
 public:
-	static StatsBars* create();
+	static StatsBars* create(bool isFrameOnLeft = true);
 
 	void setStatsTarget(PlatformerEntity* target);
 
 private:
 	typedef SmartNode super;
-	StatsBars();
+	StatsBars(bool isFrameOnLeft = true);
 	virtual ~StatsBars() = default;
 
 	void onEnter() override;
@@ -29,9 +29,9 @@ private:
 
 	PlatformerEntity* target;
 
-	cocos2d::Sprite* heart;
+	bool isFrameOnLeft;
+	cocos2d::Sprite* frame;
 	CProgressBar* heartBar;
-	cocos2d::Sprite* special;
 	CProgressBar* specialBar;
 
 	std::vector<cocos2d::Sprite*> emptyRunes;

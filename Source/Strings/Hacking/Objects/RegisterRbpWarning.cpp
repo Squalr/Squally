@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_RegisterRbpWarning::clone()
 	{
-		return Hacking_Objects_RegisterRbpWarning::create();
+		LocalizedString* clonedString = Hacking_Objects_RegisterRbpWarning::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_RegisterRbpWarning::Hacking_Objects_RegisterRbpWarning() : LocalizedString()

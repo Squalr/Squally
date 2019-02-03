@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::clone()
 	{
-		return Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create();
+		LocalizedString* clonedString = Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed() : LocalizedString()

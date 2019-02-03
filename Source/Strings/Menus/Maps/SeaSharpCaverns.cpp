@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_SeaSharpCaverns::clone()
 	{
-		return Menus_Maps_SeaSharpCaverns::create();
+		LocalizedString* clonedString = Menus_Maps_SeaSharpCaverns::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_SeaSharpCaverns::Menus_Maps_SeaSharpCaverns() : LocalizedString()

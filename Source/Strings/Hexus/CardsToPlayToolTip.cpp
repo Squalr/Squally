@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_CardsToPlayToolTip::clone()
 	{
-		return Hexus_CardsToPlayToolTip::create();
+		LocalizedString* clonedString = Hexus_CardsToPlayToolTip::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_CardsToPlayToolTip::Hexus_CardsToPlayToolTip() : LocalizedString()

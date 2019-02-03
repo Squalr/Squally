@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Combat_Items::clone()
 	{
-		return Combat_Items::create();
+		LocalizedString* clonedString = Combat_Items::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Combat_Items::Combat_Items() : LocalizedString()

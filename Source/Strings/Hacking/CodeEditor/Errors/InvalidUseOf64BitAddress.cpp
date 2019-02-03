@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress::Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress() : LocalizedString()

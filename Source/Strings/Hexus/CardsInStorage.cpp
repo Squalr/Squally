@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_CardsInStorage::clone()
 	{
-		return Hexus_CardsInStorage::create();
+		LocalizedString* clonedString = Hexus_CardsInStorage::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_CardsInStorage::Hexus_CardsInStorage() : LocalizedString()

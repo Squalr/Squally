@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_SelectOpponent::clone()
 	{
-		return Hexus_SelectOpponent::create();
+		LocalizedString* clonedString = Hexus_SelectOpponent::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_SelectOpponent::Hexus_SelectOpponent() : LocalizedString()

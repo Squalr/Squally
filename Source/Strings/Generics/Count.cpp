@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Generics_Count::clone()
 	{
-		return Generics_Count::create();
+		LocalizedString* clonedString = Generics_Count::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Generics_Count::Generics_Count() : LocalizedString()

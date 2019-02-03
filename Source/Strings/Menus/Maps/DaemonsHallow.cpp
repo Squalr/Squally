@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_DaemonsHallow::clone()
 	{
-		return Menus_Maps_DaemonsHallow::create();
+		LocalizedString* clonedString = Menus_Maps_DaemonsHallow::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_DaemonsHallow::Menus_Maps_DaemonsHallow() : LocalizedString()

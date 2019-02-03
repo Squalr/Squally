@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Cutscenes_PressEscToSkip::clone()
 	{
-		return Cutscenes_PressEscToSkip::create();
+		LocalizedString* clonedString = Cutscenes_PressEscToSkip::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Cutscenes_PressEscToSkip::Cutscenes_PressEscToSkip() : LocalizedString()

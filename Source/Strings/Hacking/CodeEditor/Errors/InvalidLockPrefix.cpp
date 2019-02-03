@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidLockPrefix::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidLockPrefix::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidLockPrefix::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidLockPrefix::Hacking_CodeEditor_Errors_InvalidLockPrefix() : LocalizedString()

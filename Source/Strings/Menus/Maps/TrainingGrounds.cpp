@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Maps_TrainingGrounds::clone()
 	{
-		return Menus_Maps_TrainingGrounds::create();
+		LocalizedString* clonedString = Menus_Maps_TrainingGrounds::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Maps_TrainingGrounds::Menus_Maps_TrainingGrounds() : LocalizedString()

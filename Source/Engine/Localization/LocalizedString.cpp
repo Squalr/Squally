@@ -250,3 +250,8 @@ void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedStri
 {
 	this->onStringUpdate = onStringUpdate;
 }
+
+void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
+{
+	localizedString->setOverrideLanguage(this->getOverrideLanguage());
+}

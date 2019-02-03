@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_DecLabel::clone()
 	{
-		return Hexus_DecLabel::create();
+		LocalizedString* clonedString = Hexus_DecLabel::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_DecLabel::Hexus_DecLabel() : LocalizedString()

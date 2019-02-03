@@ -855,6 +855,7 @@ list(APPEND GAME_SOURCE
 	Source/Scenes/Maps/Platformer/Combat/TargetSelectionMenu.cpp
 	Source/Scenes/Maps/Platformer/Combat/Timeline.cpp
 	Source/Scenes/Maps/Platformer/Combat/TimelineEntry.cpp
+	Source/Scenes/Maps/Platformer/Huds/CombatHud.cpp
 	Source/Scenes/Maps/Platformer/Huds/Components/StatsBars.cpp
 	Source/Scenes/Maps/Platformer/Huds/GameHud.cpp
 	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.cpp
@@ -2076,6 +2077,7 @@ list(APPEND GAME_HEADER
 	Source/Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h
 	Source/Scenes/Maps/Platformer/Combat/Timeline.h
 	Source/Scenes/Maps/Platformer/Combat/TimelineEntry.h
+	Source/Scenes/Maps/Platformer/Huds/CombatHud.h
 	Source/Scenes/Maps/Platformer/Huds/Components/StatsBars.h
 	Source/Scenes/Maps/Platformer/Huds/GameHud.h
 	Source/Scenes/Maps/Platformer/Physics/PlatformerCollisionMapping.h

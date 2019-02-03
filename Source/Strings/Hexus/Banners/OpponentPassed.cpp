@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Banners_OpponentPassed::clone()
 	{
-		return Hexus_Banners_OpponentPassed::create();
+		LocalizedString* clonedString = Hexus_Banners_OpponentPassed::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Banners_OpponentPassed::Hexus_Banners_OpponentPassed() : LocalizedString()

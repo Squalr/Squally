@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Tutorials_A_ScoreTotals::clone()
 	{
-		return Hexus_Tutorials_A_ScoreTotals::create();
+		LocalizedString* clonedString = Hexus_Tutorials_A_ScoreTotals::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Tutorials_A_ScoreTotals::Hexus_Tutorials_A_ScoreTotals() : LocalizedString()

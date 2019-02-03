@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::clone()
 	{
-		return Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create();
+		LocalizedString* clonedString = Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx() : LocalizedString()

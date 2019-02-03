@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hacking_CodeEditor_Errors_InvalidOperandSize::clone()
 	{
-		return Hacking_CodeEditor_Errors_InvalidOperandSize::create();
+		LocalizedString* clonedString = Hacking_CodeEditor_Errors_InvalidOperandSize::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hacking_CodeEditor_Errors_InvalidOperandSize::Hacking_CodeEditor_Errors_InvalidOperandSize() : LocalizedString()

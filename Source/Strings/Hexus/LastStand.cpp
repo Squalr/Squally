@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_LastStand::clone()
 	{
-		return Hexus_LastStand::create();
+		LocalizedString* clonedString = Hexus_LastStand::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_LastStand::Hexus_LastStand() : LocalizedString()

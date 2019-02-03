@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Hexus_Tutorials_C_UseSurrender::clone()
 	{
-		return Hexus_Tutorials_C_UseSurrender::create();
+		LocalizedString* clonedString = Hexus_Tutorials_C_UseSurrender::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Hexus_Tutorials_C_UseSurrender::Hexus_Tutorials_C_UseSurrender() : LocalizedString()

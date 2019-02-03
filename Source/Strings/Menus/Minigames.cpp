@@ -17,7 +17,11 @@ namespace Strings
 	
 	LocalizedString* Menus_Minigames::clone()
 	{
-		return Menus_Minigames::create();
+		LocalizedString* clonedString = Menus_Minigames::create();
+		
+		this->copyAttributesTo(clonedString);
+		
+		return clonedString;
 	}
 
 	Menus_Minigames::Menus_Minigames() : LocalizedString()
