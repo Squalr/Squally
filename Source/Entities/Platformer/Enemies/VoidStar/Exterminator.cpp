@@ -19,6 +19,7 @@ Exterminator* Exterminator::deserialize(cocos2d::ValueMap* initProperties)
 
 Exterminator::Exterminator(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
+	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(320.0f, 278.0f),
 	0.9f,

@@ -19,6 +19,7 @@ Horus* Horus::deserialize(cocos2d::ValueMap* initProperties)
 
 Horus::Horus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
+	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

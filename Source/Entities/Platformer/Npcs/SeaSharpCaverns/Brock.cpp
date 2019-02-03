@@ -19,6 +19,7 @@ Brock* Brock::deserialize(cocos2d::ValueMap* initProperties)
 
 Brock::Brock(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

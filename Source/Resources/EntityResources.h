@@ -10,6 +10,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_Cyrogen_BELT;
 	extern const std::string Enemies_BalmerPeaks_Cyrogen_COVER;
 	extern const std::string Enemies_BalmerPeaks_Cyrogen_COVER_1;
+	extern const std::string Enemies_BalmerPeaks_Cyrogen_Emblem;
 	extern const std::string Enemies_BalmerPeaks_Cyrogen_HEAD;
 	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_ARM_1;
 	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_ARM_2;
@@ -29,6 +30,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_Animations;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_BACK_PACKAGE;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_CAP;
+	extern const std::string Enemies_BalmerPeaks_FrostFiend_Emblem;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_HAND_ON_GUN;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_L_ARM_CLOTH_1;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_L_ARM;
@@ -46,6 +48,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_BACK_HAT;
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_BELT;
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_COVER;
+	extern const std::string Enemies_BalmerPeaks_GoblinElf_Emblem;
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_HEAD;
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_L_ARM_1;
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_L_ARM_2;
@@ -62,6 +65,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_TORSO;
 	extern const std::string Enemies_BalmerPeaks_GoblinElf_TREE_SWORD;
 	extern const std::string Enemies_BalmerPeaks_IceGolem_Animations;
+	extern const std::string Enemies_BalmerPeaks_IceGolem_Emblem;
 	extern const std::string Enemies_BalmerPeaks_IceGolem_Head;
 	extern const std::string Enemies_BalmerPeaks_IceGolem_JAW;
 	extern const std::string Enemies_BalmerPeaks_IceGolem_L_ARM_1;
@@ -77,6 +81,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_IceGolem_R_LEG_2;
 	extern const std::string Enemies_BalmerPeaks_IceGolem_TORSO;
 	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_Animations;
+	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_Emblem;
 	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_HEAD;
 	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_HELMET;
 	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_L_ARM;
@@ -89,6 +94,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_TORSO;
 	extern const std::string Enemies_BalmerPeaks_PenguinGrunt_WEAPON;
 	extern const std::string Enemies_BalmerPeaks_PenguinWarrior_Animations;
+	extern const std::string Enemies_BalmerPeaks_PenguinWarrior_Emblem;
 	extern const std::string Enemies_BalmerPeaks_PenguinWarrior_HAT;
 	extern const std::string Enemies_BalmerPeaks_PenguinWarrior_HEAD;
 	extern const std::string Enemies_BalmerPeaks_PenguinWarrior_L_ARM_CLOTH_1;
@@ -105,6 +111,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_Santa_Animations;
 	extern const std::string Enemies_BalmerPeaks_Santa_BELT;
 	extern const std::string Enemies_BalmerPeaks_Santa_COVER;
+	extern const std::string Enemies_BalmerPeaks_Santa_Emblem;
 	extern const std::string Enemies_BalmerPeaks_Santa_HAT;
 	extern const std::string Enemies_BalmerPeaks_Santa_HEAD;
 	extern const std::string Enemies_BalmerPeaks_Santa_L_ARM_1;
@@ -127,6 +134,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_Santa_TORSO;
 	extern const std::string Enemies_BalmerPeaks_SnowFiend_Animations;
 	extern const std::string Enemies_BalmerPeaks_SnowFiend_CANDY_STICK;
+	extern const std::string Enemies_BalmerPeaks_SnowFiend_Emblem;
 	extern const std::string Enemies_BalmerPeaks_SnowFiend_HAT;
 	extern const std::string Enemies_BalmerPeaks_SnowFiend_HEAD;
 	extern const std::string Enemies_BalmerPeaks_SnowFiend_L_ARM_1;
@@ -145,6 +153,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_Animations;
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_BELT;
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_COVER;
+	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_Emblem;
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_HAT;
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_HEAD;
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_L_ARM_CLOTH_1;
@@ -159,12 +168,14 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_TORSO_CLOTH;
 	extern const std::string Enemies_BalmerPeaks_ToySoldierGoblin_WEAPON;
 	extern const std::string Enemies_BalmerPeaks_WaterElemental_Animations;
+	extern const std::string Enemies_BalmerPeaks_WaterElemental_Emblem;
 	extern const std::string Enemies_BalmerPeaks_WaterElemental_HEAD;
 	extern const std::string Enemies_BalmerPeaks_WaterElemental_L_ARM_1;
 	extern const std::string Enemies_BalmerPeaks_WaterElemental_LEGS;
 	extern const std::string Enemies_BalmerPeaks_WaterElemental_R_ARM_1;
 	extern const std::string Enemies_BalmerPeaks_WaterElemental_TORSO;
 	extern const std::string Enemies_BalmerPeaks_YetiWarrior_Animations;
+	extern const std::string Enemies_BalmerPeaks_YetiWarrior_Emblem;
 	extern const std::string Enemies_BalmerPeaks_YetiWarrior_HEAD_ALT;
 	extern const std::string Enemies_BalmerPeaks_YetiWarrior_HEAD;
 	extern const std::string Enemies_BalmerPeaks_YetiWarrior_L_ARM_1;
@@ -175,6 +186,7 @@ namespace EntityResources
 	extern const std::string Enemies_BalmerPeaks_YetiWarrior_R_LEG_1;
 	extern const std::string Enemies_BalmerPeaks_YetiWarrior_TORSO;
 	extern const std::string Enemies_BalmerPeaks_Yeti_Animations;
+	extern const std::string Enemies_BalmerPeaks_Yeti_Emblem;
 	extern const std::string Enemies_BalmerPeaks_Yeti_HEAD_ALT;
 	extern const std::string Enemies_BalmerPeaks_Yeti_HEAD;
 	extern const std::string Enemies_BalmerPeaks_Yeti_L_ARM_1;
@@ -189,6 +201,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Agnes_BAG;
 	extern const std::string Enemies_CastleValgrind_Agnes_BASE_FLYING_PUMPKIN;
 	extern const std::string Enemies_CastleValgrind_Agnes_COVER;
+	extern const std::string Enemies_CastleValgrind_Agnes_Emblem;
 	extern const std::string Enemies_CastleValgrind_Agnes_HAIR;
 	extern const std::string Enemies_CastleValgrind_Agnes_HAT;
 	extern const std::string Enemies_CastleValgrind_Agnes_HEAD;
@@ -207,6 +220,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Agnes_TORSO;
 	extern const std::string Enemies_CastleValgrind_Executioner_Animations;
 	extern const std::string Enemies_CastleValgrind_Executioner_Body;
+	extern const std::string Enemies_CastleValgrind_Executioner_Emblem;
 	extern const std::string Enemies_CastleValgrind_Executioner_Head01;
 	extern const std::string Enemies_CastleValgrind_Executioner_Left_Arm;
 	extern const std::string Enemies_CastleValgrind_Executioner_Left_Calf;
@@ -223,6 +237,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Executioner_Weapon;
 	extern const std::string Enemies_CastleValgrind_Guard_Animations;
 	extern const std::string Enemies_CastleValgrind_Guard_Body;
+	extern const std::string Enemies_CastleValgrind_Guard_Emblem;
 	extern const std::string Enemies_CastleValgrind_Guard_Giant_Axe;
 	extern const std::string Enemies_CastleValgrind_Guard_Head01;
 	extern const std::string Enemies_CastleValgrind_Guard_Head02;
@@ -241,6 +256,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Jack_Animations;
 	extern const std::string Enemies_CastleValgrind_Jack_BELT;
 	extern const std::string Enemies_CastleValgrind_Jack_COVER;
+	extern const std::string Enemies_CastleValgrind_Jack_Emblem;
 	extern const std::string Enemies_CastleValgrind_Jack_HAT;
 	extern const std::string Enemies_CastleValgrind_Jack_HEAD;
 	extern const std::string Enemies_CastleValgrind_Jack_KNIFE;
@@ -259,6 +275,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Jack_R_SHOE;
 	extern const std::string Enemies_CastleValgrind_Jack_TORSO;
 	extern const std::string Enemies_CastleValgrind_Reaper_Animations;
+	extern const std::string Enemies_CastleValgrind_Reaper_Emblem;
 	extern const std::string Enemies_CastleValgrind_Reaper_L_Blob;
 	extern const std::string Enemies_CastleValgrind_Reaper_L_arm_0;
 	extern const std::string Enemies_CastleValgrind_Reaper_L_arm_a_0;
@@ -277,6 +294,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Reaper_L_robe_0;
 	extern const std::string Enemies_CastleValgrind_Reaper_L_staff;
 	extern const std::string Enemies_CastleValgrind_Scarecrow_Animations;
+	extern const std::string Enemies_CastleValgrind_Scarecrow_Emblem;
 	extern const std::string Enemies_CastleValgrind_Scarecrow_Scarecrow_Body;
 	extern const std::string Enemies_CastleValgrind_Scarecrow_Scarecrow_Eye_closed;
 	extern const std::string Enemies_CastleValgrind_Scarecrow_Scarecrow_Eye_open;
@@ -295,6 +313,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Scarecrow_Scarecrow_R_leg_2;
 	extern const std::string Enemies_CastleValgrind_Scarecrow_Scarecrow_R_leg_3;
 	extern const std::string Enemies_CastleValgrind_Shade_Animations;
+	extern const std::string Enemies_CastleValgrind_Shade_Emblem;
 	extern const std::string Enemies_CastleValgrind_Shade_Ghost_Body;
 	extern const std::string Enemies_CastleValgrind_Shade_Ghost_Eye_closed;
 	extern const std::string Enemies_CastleValgrind_Shade_Ghost_Eye_open;
@@ -319,6 +338,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_VampireLord_CAPE_1;
 	extern const std::string Enemies_CastleValgrind_VampireLord_CAPE;
 	extern const std::string Enemies_CastleValgrind_VampireLord_COVER_1;
+	extern const std::string Enemies_CastleValgrind_VampireLord_Emblem;
 	extern const std::string Enemies_CastleValgrind_VampireLord_HEAD;
 	extern const std::string Enemies_CastleValgrind_VampireLord_L_ARM_1;
 	extern const std::string Enemies_CastleValgrind_VampireLord_L_ARM_2;
@@ -335,6 +355,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Vampiress_Animations;
 	extern const std::string Enemies_CastleValgrind_Vampiress_BACK_HAIR;
 	extern const std::string Enemies_CastleValgrind_Vampiress_COVER_1;
+	extern const std::string Enemies_CastleValgrind_Vampiress_Emblem;
 	extern const std::string Enemies_CastleValgrind_Vampiress_HEAD;
 	extern const std::string Enemies_CastleValgrind_Vampiress_L_ARM_1;
 	extern const std::string Enemies_CastleValgrind_Vampiress_L_ARM_2;
@@ -352,6 +373,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Vampiress_TORSO;
 	extern const std::string Enemies_CastleValgrind_Vampiress_WEAPON;
 	extern const std::string Enemies_CastleValgrind_Wraith_Animations;
+	extern const std::string Enemies_CastleValgrind_Wraith_Emblem;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_arm_L;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_arm_R;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_body_1;
@@ -366,6 +388,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_ZombieElric_Animations;
 	extern const std::string Enemies_CastleValgrind_ZombieElric_BELT;
 	extern const std::string Enemies_CastleValgrind_ZombieElric_COVER;
+	extern const std::string Enemies_CastleValgrind_ZombieElric_Emblem;
 	extern const std::string Enemies_CastleValgrind_ZombieElric_HEAD;
 	extern const std::string Enemies_CastleValgrind_ZombieElric_L_ARM_1;
 	extern const std::string Enemies_CastleValgrind_ZombieElric_L_ARM_2;
@@ -385,6 +408,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_ZombieElric_WEAPON;
 	extern const std::string Enemies_CastleValgrind_Zombie_Animations;
 	extern const std::string Enemies_CastleValgrind_Zombie_BELT;
+	extern const std::string Enemies_CastleValgrind_Zombie_Emblem;
 	extern const std::string Enemies_CastleValgrind_Zombie_HEAD;
 	extern const std::string Enemies_CastleValgrind_Zombie_L_ARM;
 	extern const std::string Enemies_CastleValgrind_Zombie_L_FINGERS;
@@ -395,6 +419,7 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Zombie_WEAPON;
 	extern const std::string Enemies_DaemonsHallow_Asmodeus_Animations;
 	extern const std::string Enemies_DaemonsHallow_Asmodeus_BELT;
+	extern const std::string Enemies_DaemonsHallow_Asmodeus_Emblem;
 	extern const std::string Enemies_DaemonsHallow_Asmodeus_HEAD;
 	extern const std::string Enemies_DaemonsHallow_Asmodeus_JAW;
 	extern const std::string Enemies_DaemonsHallow_Asmodeus_L_ARM_1_ARMOR_1;
@@ -422,11 +447,13 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_B_LEG_1;
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_B_LEG_2;
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_BODY;
+	extern const std::string Enemies_DaemonsHallow_CritterDemon_Emblem;
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_F_LEG_1;
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_F_LEG_2;
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_JAW;
 	extern const std::string Enemies_DaemonsHallow_CritterDemon_TAIL;
 	extern const std::string Enemies_DaemonsHallow_DemonDragon_Animations;
+	extern const std::string Enemies_DaemonsHallow_DemonDragon_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonDragon_magma_arm_L_1;
 	extern const std::string Enemies_DaemonsHallow_DemonDragon_magma_arm_L_2;
 	extern const std::string Enemies_DaemonsHallow_DemonDragon_magma_arm_R_1;
@@ -448,6 +475,7 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_Animations;
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_B_WING;
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_BODY;
+	extern const std::string Enemies_DaemonsHallow_DemonGhost_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_F_WING;
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_FRONT_HORN;
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_HELMET;
@@ -463,6 +491,7 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonGhost_WEAPON;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_Animations;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_BELT;
+	extern const std::string Enemies_DaemonsHallow_DemonGrunt_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_HEAD;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_HEAD1;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_HEAD2;
@@ -483,6 +512,7 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_WEAPON;
 	extern const std::string Enemies_DaemonsHallow_DemonRogue_Animations;
 	extern const std::string Enemies_DaemonsHallow_DemonRogue_BELT;
+	extern const std::string Enemies_DaemonsHallow_DemonRogue_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonRogue_HEAD;
 	extern const std::string Enemies_DaemonsHallow_DemonRogue_L_ARM_1_ARMOR_1;
 	extern const std::string Enemies_DaemonsHallow_DemonRogue_L_ARM_1;
@@ -505,6 +535,7 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonRogue_WEAPON;
 	extern const std::string Enemies_DaemonsHallow_DemonShaman_Animations;
 	extern const std::string Enemies_DaemonsHallow_DemonShaman_BELT;
+	extern const std::string Enemies_DaemonsHallow_DemonShaman_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonShaman_HEAD;
 	extern const std::string Enemies_DaemonsHallow_DemonShaman_L_ARM_1_ARMOR_1;
 	extern const std::string Enemies_DaemonsHallow_DemonShaman_L_ARM_1;
@@ -528,6 +559,7 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonShaman_TORSO;
 	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_Animations;
 	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_BELT;
+	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_HEAD;
 	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_L_ARM_1_ARMOR_1;
 	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_L_ARM_1;
@@ -548,6 +580,7 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonSwordsman_WEAPON;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_Animations;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_BELT;
+	extern const std::string Enemies_DaemonsHallow_DemonWarrior_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_HEAD;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_HEAD2;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_JAW;
@@ -567,12 +600,14 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_TORSO;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_WEAPON;
 	extern const std::string Enemies_DaemonsHallow_FireElemental_Animations;
+	extern const std::string Enemies_DaemonsHallow_FireElemental_Emblem;
 	extern const std::string Enemies_DaemonsHallow_FireElemental_HEAD;
 	extern const std::string Enemies_DaemonsHallow_FireElemental_L_ARM_1;
 	extern const std::string Enemies_DaemonsHallow_FireElemental_LEGS;
 	extern const std::string Enemies_DaemonsHallow_FireElemental_R_ARM_1;
 	extern const std::string Enemies_DaemonsHallow_FireElemental_TORSO;
 	extern const std::string Enemies_DaemonsHallow_LavaGolem_Animations;
+	extern const std::string Enemies_DaemonsHallow_LavaGolem_Emblem;
 	extern const std::string Enemies_DaemonsHallow_LavaGolem_HEAD;
 	extern const std::string Enemies_DaemonsHallow_LavaGolem_JAW;
 	extern const std::string Enemies_DaemonsHallow_LavaGolem_L_ARM_1;
@@ -591,6 +626,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Centaur_B_BACK_LEG_1;
 	extern const std::string Enemies_EndianForest_Centaur_B_BACK_LEG_2;
 	extern const std::string Enemies_EndianForest_Centaur_BELT;
+	extern const std::string Enemies_EndianForest_Centaur_Emblem;
 	extern const std::string Enemies_EndianForest_Centaur_F_BACK_LEG_1;
 	extern const std::string Enemies_EndianForest_Centaur_F_BACK_LEG_2;
 	extern const std::string Enemies_EndianForest_Centaur_F_FRONT_LEG_1;
@@ -615,6 +651,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Centaur_WEAPON_3;
 	extern const std::string Enemies_EndianForest_Cyclops_Animations;
 	extern const std::string Enemies_EndianForest_Cyclops_COVER;
+	extern const std::string Enemies_EndianForest_Cyclops_Emblem;
 	extern const std::string Enemies_EndianForest_Cyclops_HEAD;
 	extern const std::string Enemies_EndianForest_Cyclops_JAW;
 	extern const std::string Enemies_EndianForest_Cyclops_L_ARM_1;
@@ -630,6 +667,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Cyclops_R_LEG_2;
 	extern const std::string Enemies_EndianForest_Cyclops_TORSO;
 	extern const std::string Enemies_EndianForest_Ent_Animations;
+	extern const std::string Enemies_EndianForest_Ent_Emblem;
 	extern const std::string Enemies_EndianForest_Ent_Tree_Body;
 	extern const std::string Enemies_EndianForest_Ent_Tree_Eye_closed;
 	extern const std::string Enemies_EndianForest_Ent_Tree_Eye_open;
@@ -654,6 +692,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_Boar_F_BACK_LEG;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_Boar_F_FRONT_LEG;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_Boar_TORSO;
+	extern const std::string Enemies_EndianForest_GoblinGruntBoar_Emblem;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_HEAD;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_L_ARM_CLOTH;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_L_ARM;
@@ -669,6 +708,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_WEAPON;
 	extern const std::string Enemies_EndianForest_GoblinShaman_Animations;
 	extern const std::string Enemies_EndianForest_GoblinShaman_BELT;
+	extern const std::string Enemies_EndianForest_GoblinShaman_Emblem;
 	extern const std::string Enemies_EndianForest_GoblinShaman_HEAD;
 	extern const std::string Enemies_EndianForest_GoblinShaman_L_ARM_CLOTH;
 	extern const std::string Enemies_EndianForest_GoblinShaman_L_ARM;
@@ -684,6 +724,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_GoblinShaman_VOODO_DOLL;
 	extern const std::string Enemies_EndianForest_GoblinWarriorPig_Animations;
 	extern const std::string Enemies_EndianForest_GoblinWarriorPig_BELT;
+	extern const std::string Enemies_EndianForest_GoblinWarriorPig_Emblem;
 	extern const std::string Enemies_EndianForest_GoblinWarriorPig_HEAD;
 	extern const std::string Enemies_EndianForest_GoblinWarriorPig_HELMET;
 	extern const std::string Enemies_EndianForest_GoblinWarriorPig_L_ARM;
@@ -733,6 +774,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_KingGrogg_Dragon_SADDLE;
 	extern const std::string Enemies_EndianForest_KingGrogg_Dragon_TAIL;
 	extern const std::string Enemies_EndianForest_KingGrogg_Dragon_TORSO;
+	extern const std::string Enemies_EndianForest_KingGrogg_Emblem;
 	extern const std::string Enemies_EndianForest_KingGrogg_HEAD;
 	extern const std::string Enemies_EndianForest_KingGrogg_JAW;
 	extern const std::string Enemies_EndianForest_KingGrogg_L_ARM_1;
@@ -748,6 +790,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Ogre_Animations;
 	extern const std::string Enemies_EndianForest_Ogre_BELT;
 	extern const std::string Enemies_EndianForest_Ogre_COVER_1;
+	extern const std::string Enemies_EndianForest_Ogre_Emblem;
 	extern const std::string Enemies_EndianForest_Ogre_HEAD;
 	extern const std::string Enemies_EndianForest_Ogre_JAW;
 	extern const std::string Enemies_EndianForest_Ogre_L_ARM_1;
@@ -765,6 +808,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcBomber_BELT;
 	extern const std::string Enemies_EndianForest_OrcBomber_BOMB;
 	extern const std::string Enemies_EndianForest_OrcBomber_COVER;
+	extern const std::string Enemies_EndianForest_OrcBomber_Emblem;
 	extern const std::string Enemies_EndianForest_OrcBomber_HAIR;
 	extern const std::string Enemies_EndianForest_OrcBomber_HEAD;
 	extern const std::string Enemies_EndianForest_OrcBomber_L_ARM_1;
@@ -784,6 +828,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcBomber_WEAPON;
 	extern const std::string Enemies_EndianForest_OrcGrunt_Animations;
 	extern const std::string Enemies_EndianForest_OrcGrunt_BELT;
+	extern const std::string Enemies_EndianForest_OrcGrunt_Emblem;
 	extern const std::string Enemies_EndianForest_OrcGrunt_HEAD;
 	extern const std::string Enemies_EndianForest_OrcGrunt_JAW;
 	extern const std::string Enemies_EndianForest_OrcGrunt_L_ARM_1;
@@ -799,6 +844,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcGrunt_WEAPON_4;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_Animations;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_BELT;
+	extern const std::string Enemies_EndianForest_OrcSwordsman_Emblem;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_HEAD;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_JAW;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_L_ARM_1;
@@ -818,6 +864,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcSwordsman_WEAPON;
 	extern const std::string Enemies_EndianForest_OrcWarrior_Animations;
 	extern const std::string Enemies_EndianForest_OrcWarrior_BELT;
+	extern const std::string Enemies_EndianForest_OrcWarrior_Emblem;
 	extern const std::string Enemies_EndianForest_OrcWarrior_HEAD;
 	extern const std::string Enemies_EndianForest_OrcWarrior_HELMET;
 	extern const std::string Enemies_EndianForest_OrcWarrior_JAW;
@@ -836,6 +883,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcWarrior_WEAPON_2;
 	extern const std::string Enemies_EndianForest_Troll_Animations;
 	extern const std::string Enemies_EndianForest_Troll_COVER_1;
+	extern const std::string Enemies_EndianForest_Troll_Emblem;
 	extern const std::string Enemies_EndianForest_Troll_HEAD;
 	extern const std::string Enemies_EndianForest_Troll_JAW;
 	extern const std::string Enemies_EndianForest_Troll_L_ARM_1;
@@ -852,6 +900,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Troll_TORSO;
 	extern const std::string Enemies_EndianForest_Troll_WEAPON;
 	extern const std::string Enemies_LambdaCrypts_Abomination_Animations;
+	extern const std::string Enemies_LambdaCrypts_Abomination_Emblem;
 	extern const std::string Enemies_LambdaCrypts_Abomination_caveman_arm_L_1;
 	extern const std::string Enemies_LambdaCrypts_Abomination_caveman_arm_L_2;
 	extern const std::string Enemies_LambdaCrypts_Abomination_caveman_arm_R_1;
@@ -867,6 +916,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_Abomination_caveman_weapon;
 	extern const std::string Enemies_LambdaCrypts_Gargoyle_Animations;
 	extern const std::string Enemies_LambdaCrypts_Gargoyle_BELT;
+	extern const std::string Enemies_LambdaCrypts_Gargoyle_Emblem;
 	extern const std::string Enemies_LambdaCrypts_Gargoyle_HEAD;
 	extern const std::string Enemies_LambdaCrypts_Gargoyle_JAW;
 	extern const std::string Enemies_LambdaCrypts_Gargoyle_L_ARM_1;
@@ -888,6 +938,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_KingZul_CAPE;
 	extern const std::string Enemies_LambdaCrypts_KingZul_COVER_1;
 	extern const std::string Enemies_LambdaCrypts_KingZul_CROWN;
+	extern const std::string Enemies_LambdaCrypts_KingZul_Emblem;
 	extern const std::string Enemies_LambdaCrypts_KingZul_HEAD;
 	extern const std::string Enemies_LambdaCrypts_KingZul_JAW;
 	extern const std::string Enemies_LambdaCrypts_KingZul_L_ARM_1;
@@ -910,6 +961,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_Animations;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_BACK_HAIR;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_BELT;
+	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_Emblem;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_HEAD;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_L_ARM_1;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_L_ARM_2;
@@ -926,6 +978,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_TORSO;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedFighter_WEAPON;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_Animations;
+	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_Emblem;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_arm_L;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_arm_R;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_body;
@@ -939,6 +992,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_shadow;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_weapon;
 	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_Animations;
+	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_Emblem;
 	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_Horse_undeadHorse_belt;
 	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_Horse_undeadHorse_body;
 	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_Horse_undeadHorse_cape;
@@ -961,6 +1015,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_blackKnight_shadow;
 	extern const std::string Enemies_LambdaCrypts_SkeletalBaron_blackKnight_weapon;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Animations;
+	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Emblem;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Skeleton_Devil;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Skeleton_Devil_Armor_ArmD_L;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Skeleton_Devil_Armor_ArmD_R;
@@ -970,6 +1025,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Skeleton_Head_Devil;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Skeleton_Weapon_Sickle1;
 	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Animations;
+	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Emblem;
 	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Skeleton_Cloak_KnightBoss;
 	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Skeleton_Eyes_LightRed;
 	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Skeleton_Head_KnightBoss;
@@ -983,6 +1039,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Skeleton_Shield_KnightBoss;
 	extern const std::string Enemies_LambdaCrypts_SkeletalKnight_Skeleton_Weapon_KnightBossSword;
 	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Animations;
+	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Emblem;
 	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Skeleton_Eyes_LightRed;
 	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Skeleton_Head_Wizard;
 	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Skeleton_Weapon_WizardWand;
@@ -993,6 +1050,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Skeleton_Wizard_Armor_ArmU_L;
 	extern const std::string Enemies_LambdaCrypts_SkeletalPriestess_Skeleton_Wizard_Armor_ArmU_R;
 	extern const std::string Enemies_LambdaCrypts_Undead_Animations;
+	extern const std::string Enemies_LambdaCrypts_Undead_Emblem;
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_arm_L;
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_arm_R;
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_belt;
@@ -1011,6 +1069,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_BACK_HAIR_1;
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_BELT;
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_CROSSBOW;
+	extern const std::string Enemies_LambdaCrypts_VoidArcher_Emblem;
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_HEAD;
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_L_ARM_1;
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_L_ARM_2;
@@ -1031,6 +1090,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_TORSO_CLOTH;
 	extern const std::string Enemies_LambdaCrypts_VoidArcher_TORSO;
 	extern const std::string Enemies_LambdaCrypts_VoidDemon_Animations;
+	extern const std::string Enemies_LambdaCrypts_VoidDemon_Emblem;
 	extern const std::string Enemies_LambdaCrypts_VoidDemon_shadowFiend_arm_L1_1;
 	extern const std::string Enemies_LambdaCrypts_VoidDemon_shadowFiend_arm_L1_2;
 	extern const std::string Enemies_LambdaCrypts_VoidDemon_shadowFiend_arm_L1_3;
@@ -1051,6 +1111,7 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_VoidDemon_shadowFiend_head;
 	extern const std::string Enemies_LambdaCrypts_VoidDemon_shadowFiend_shadow;
 	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_body;
 	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_feet_l;
 	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_feet;
@@ -1066,12 +1127,14 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_upper_leg;
 	extern const std::string Enemies_SeaSharpCaverns_BlackWidow_upper_leg_l;
 	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_L_ARM_1;
 	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_LEGS;
 	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_R_ARM_1;
 	extern const std::string Enemies_SeaSharpCaverns_EarthElemental_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_JAW;
 	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_L_ARM_1;
@@ -1083,6 +1146,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_R_LEG_1;
 	extern const std::string Enemies_SeaSharpCaverns_EarthGolem_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_ForestGolem_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_ForestGolem_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_ForestGolem_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_ForestGolem_JAW;
 	extern const std::string Enemies_SeaSharpCaverns_ForestGolem_L_ARM_1;
@@ -1106,6 +1170,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_Genie_2_SMOKE_LEG;
 	extern const std::string Enemies_SeaSharpCaverns_Genie_2_SMOKE;
 	extern const std::string Enemies_SeaSharpCaverns_Genie_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_Genie_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_Genie_ICE_BOLL_1;
 	extern const std::string Enemies_SeaSharpCaverns_Genie_ICE_BOLL_2;
 	extern const std::string Enemies_SeaSharpCaverns_Genie_ICE_BOLL_3;
@@ -1117,6 +1182,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_BASKET;
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_BELT;
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_CAGE;
+	extern const std::string Enemies_SeaSharpCaverns_Krampus_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_JAW;
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_L_ARM_1;
@@ -1141,6 +1207,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_Krampus_WEAPON;
 	extern const std::string Enemies_SeaSharpCaverns_LightningGolem_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_LightningGolem_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_LightningGolem_Lighting_Body;
 	extern const std::string Enemies_SeaSharpCaverns_LightningGolem_Lighting_Eye_closed;
 	extern const std::string Enemies_SeaSharpCaverns_LightningGolem_Lighting_Eye_open;
@@ -1178,6 +1245,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_Elephant_TAIL;
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_Elephant_TORSO_SADDLE;
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_Elephant_TORSO;
+	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_L_ARM_1;
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_L_ARM_2;
@@ -1193,6 +1261,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_Rhinoman_WEAPON;
 	extern const std::string Enemies_SeaSharpCaverns_Shaman_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_Shaman_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_Shaman_priest_arm_L_one_4;
 	extern const std::string Enemies_SeaSharpCaverns_Shaman_priest_arm_L_two_4;
 	extern const std::string Enemies_SeaSharpCaverns_Shaman_priest_arm_R_one_4;
@@ -1227,6 +1296,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_BOW_1;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_BOW_2;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_EYES_BLIND;
+	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_L_ARM;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_L_FINGERS;
@@ -1242,6 +1312,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalArcher_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_CAPE;
+	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_L_ARM_CLOTH;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_L_ARM;
@@ -1260,6 +1331,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalNecromancer_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_Animations;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_BELT;
+	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_HEAD_BAN;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_HEAD;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_L_ARM;
@@ -1275,6 +1347,7 @@ namespace EntityResources
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_TORSO;
 	extern const std::string Enemies_SeaSharpCaverns_SkeletalWarrior_WEAPON;
 	extern const std::string Enemies_SeaSharpCaverns_TikiGolem_Animations;
+	extern const std::string Enemies_SeaSharpCaverns_TikiGolem_Emblem;
 	extern const std::string Enemies_SeaSharpCaverns_TikiGolem_arm_0;
 	extern const std::string Enemies_SeaSharpCaverns_TikiGolem_arm_a;
 	extern const std::string Enemies_SeaSharpCaverns_TikiGolem_blur_0;
@@ -1294,6 +1367,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_AnubisPup_Animations;
 	extern const std::string Enemies_UnderflowRuins_AnubisPup_BELT;
 	extern const std::string Enemies_UnderflowRuins_AnubisPup_COVER;
+	extern const std::string Enemies_UnderflowRuins_AnubisPup_Emblem;
 	extern const std::string Enemies_UnderflowRuins_AnubisPup_HEAD;
 	extern const std::string Enemies_UnderflowRuins_AnubisPup_L_ARM_1_ARMOR_1;
 	extern const std::string Enemies_UnderflowRuins_AnubisPup_L_ARM_1;
@@ -1314,6 +1388,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_Animations;
 	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_BELT;
 	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_COVER;
+	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_Emblem;
 	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_HEAD;
 	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_L_ARM_1_ARMOR_1;
 	extern const std::string Enemies_UnderflowRuins_AnubisWarrior_L_ARM_1;
@@ -1337,6 +1412,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_LionMan_BELT;
 	extern const std::string Enemies_UnderflowRuins_LionMan_COVER_1;
 	extern const std::string Enemies_UnderflowRuins_LionMan_COVER_2;
+	extern const std::string Enemies_UnderflowRuins_LionMan_Emblem;
 	extern const std::string Enemies_UnderflowRuins_LionMan_HEAD;
 	extern const std::string Enemies_UnderflowRuins_LionMan_L_ARM_1;
 	extern const std::string Enemies_UnderflowRuins_LionMan_L_ARM_2_ARMOR_2;
@@ -1359,6 +1435,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Lioness_BELT;
 	extern const std::string Enemies_UnderflowRuins_Lioness_COVER_2;
 	extern const std::string Enemies_UnderflowRuins_Lioness_COVER_2_1;
+	extern const std::string Enemies_UnderflowRuins_Lioness_Emblem;
 	extern const std::string Enemies_UnderflowRuins_Lioness_HAIR_DOT;
 	extern const std::string Enemies_UnderflowRuins_Lioness_HAIR_KNOT;
 	extern const std::string Enemies_UnderflowRuins_Lioness_HEAD;
@@ -1390,6 +1467,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Medusa_BOW;
 	extern const std::string Enemies_UnderflowRuins_Medusa_COMPLETE_HEAD;
 	extern const std::string Enemies_UnderflowRuins_Medusa_EAR;
+	extern const std::string Enemies_UnderflowRuins_Medusa_Emblem;
 	extern const std::string Enemies_UnderflowRuins_Medusa_HEAD_PARTS_H1_2;
 	extern const std::string Enemies_UnderflowRuins_Medusa_HEAD_PARTS_H1;
 	extern const std::string Enemies_UnderflowRuins_Medusa_HEAD_PARTS_H10_2;
@@ -1437,6 +1515,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Mermaid_Animations;
 	extern const std::string Enemies_UnderflowRuins_Mermaid_BACK_HAIR;
 	extern const std::string Enemies_UnderflowRuins_Mermaid_BELT;
+	extern const std::string Enemies_UnderflowRuins_Mermaid_Emblem;
 	extern const std::string Enemies_UnderflowRuins_Mermaid_HEAD;
 	extern const std::string Enemies_UnderflowRuins_Mermaid_L_ARM_CLOTH;
 	extern const std::string Enemies_UnderflowRuins_Mermaid_L_ARM;
@@ -1461,6 +1540,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Minotaur_Animations;
 	extern const std::string Enemies_UnderflowRuins_Minotaur_BELT;
 	extern const std::string Enemies_UnderflowRuins_Minotaur_COVER_1;
+	extern const std::string Enemies_UnderflowRuins_Minotaur_Emblem;
 	extern const std::string Enemies_UnderflowRuins_Minotaur_HEAD;
 	extern const std::string Enemies_UnderflowRuins_Minotaur_L_ARM_1;
 	extern const std::string Enemies_UnderflowRuins_Minotaur_L_ARM_2;
@@ -1481,6 +1561,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Minotaur_WEAPON;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_Animations;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_COVER;
+	extern const std::string Enemies_UnderflowRuins_MummyPriest_Emblem;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_IDK_2;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_IDK_3;
 	extern const std::string Enemies_UnderflowRuins_MummyPriest_IDK;
@@ -1505,6 +1586,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_Animations;
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_COVER;
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_EgyptianSword;
+	extern const std::string Enemies_UnderflowRuins_MummyWarrior_Emblem;
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_L_ARM_1;
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_L_ARM_2;
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_L_ARM_3;
@@ -1525,6 +1607,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_MummyWarrior_ZombieEyes2;
 	extern const std::string Enemies_UnderflowRuins_Osiris_Animations;
 	extern const std::string Enemies_UnderflowRuins_Osiris_BELT;
+	extern const std::string Enemies_UnderflowRuins_Osiris_Emblem;
 	extern const std::string Enemies_UnderflowRuins_Osiris_HEAD;
 	extern const std::string Enemies_UnderflowRuins_Osiris_L_ARM_1;
 	extern const std::string Enemies_UnderflowRuins_Osiris_L_ARM_2_ARMOR_2;
@@ -1546,6 +1629,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_TigerMan_COVER_2;
 	extern const std::string Enemies_UnderflowRuins_TigerMan_COVER_3;
 	extern const std::string Enemies_UnderflowRuins_TigerMan_COVER;
+	extern const std::string Enemies_UnderflowRuins_TigerMan_Emblem;
 	extern const std::string Enemies_UnderflowRuins_TigerMan_HEAD;
 	extern const std::string Enemies_UnderflowRuins_TigerMan_L_ARM_1;
 	extern const std::string Enemies_UnderflowRuins_TigerMan_L_ARM_2_ARMOR_2;
@@ -1570,6 +1654,7 @@ namespace EntityResources
 	extern const std::string Enemies_UnderflowRuins_Tigress_COVER_2;
 	extern const std::string Enemies_UnderflowRuins_Tigress_COVER_3;
 	extern const std::string Enemies_UnderflowRuins_Tigress_COVER;
+	extern const std::string Enemies_UnderflowRuins_Tigress_Emblem;
 	extern const std::string Enemies_UnderflowRuins_Tigress_HEAD;
 	extern const std::string Enemies_UnderflowRuins_Tigress_L_ARM_1;
 	extern const std::string Enemies_UnderflowRuins_Tigress_L_ARM_2_ARMOR_2;
@@ -1591,6 +1676,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Barbarian_Animations;
 	extern const std::string Enemies_VoidStar_Barbarian_BELT;
 	extern const std::string Enemies_VoidStar_Barbarian_COVER;
+	extern const std::string Enemies_VoidStar_Barbarian_Emblem;
 	extern const std::string Enemies_VoidStar_Barbarian_HEAD;
 	extern const std::string Enemies_VoidStar_Barbarian_L_ARM_1;
 	extern const std::string Enemies_VoidStar_Barbarian_L_ARM_2;
@@ -1613,6 +1699,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_EvilEye_BELT;
 	extern const std::string Enemies_VoidStar_EvilEye_CLOAK_1;
 	extern const std::string Enemies_VoidStar_EvilEye_CLOAK_2;
+	extern const std::string Enemies_VoidStar_EvilEye_Emblem;
 	extern const std::string Enemies_VoidStar_EvilEye_L_ARM_1;
 	extern const std::string Enemies_VoidStar_EvilEye_L_ARM_2;
 	extern const std::string Enemies_VoidStar_EvilEye_L_LEG_1;
@@ -1633,6 +1720,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Exterminator_BELLY;
 	extern const std::string Enemies_VoidStar_Exterminator_BELT;
 	extern const std::string Enemies_VoidStar_Exterminator_COVER;
+	extern const std::string Enemies_VoidStar_Exterminator_Emblem;
 	extern const std::string Enemies_VoidStar_Exterminator_HEAD;
 	extern const std::string Enemies_VoidStar_Exterminator_L_ARM_1;
 	extern const std::string Enemies_VoidStar_Exterminator_L_ARM_2;
@@ -1651,6 +1739,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Exterminator_R_LEG_2;
 	extern const std::string Enemies_VoidStar_Exterminator_TORSO;
 	extern const std::string Enemies_VoidStar_Gorilla_Animations;
+	extern const std::string Enemies_VoidStar_Gorilla_Emblem;
 	extern const std::string Enemies_VoidStar_Gorilla_HEAD;
 	extern const std::string Enemies_VoidStar_Gorilla_L_ARM_1;
 	extern const std::string Enemies_VoidStar_Gorilla_L_ARM_2;
@@ -1665,6 +1754,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_MechBoxDrone_BackLeg__2_;
 	extern const std::string Enemies_VoidStar_MechBoxDrone_BackLeg__3_;
 	extern const std::string Enemies_VoidStar_MechBoxDrone_Body1;
+	extern const std::string Enemies_VoidStar_MechBoxDrone_Emblem;
 	extern const std::string Enemies_VoidStar_MechBoxDrone_FrontLeg__1_;
 	extern const std::string Enemies_VoidStar_MechBoxDrone_FrontLeg__2_;
 	extern const std::string Enemies_VoidStar_MechBoxDrone_FrontLeg__3_;
@@ -1672,6 +1762,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_MechBoxDrone_MiddleLeg__2_;
 	extern const std::string Enemies_VoidStar_MechDog_Animations;
 	extern const std::string Enemies_VoidStar_MechDog_Body;
+	extern const std::string Enemies_VoidStar_MechDog_Emblem;
 	extern const std::string Enemies_VoidStar_MechDog_Head;
 	extern const std::string Enemies_VoidStar_MechDog_LeftBackFoot__1_;
 	extern const std::string Enemies_VoidStar_MechDog_LeftBackFoot__2_;
@@ -1690,6 +1781,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_MechDog_Tail__3_;
 	extern const std::string Enemies_VoidStar_MechGolem_Animations;
 	extern const std::string Enemies_VoidStar_MechGolem_Body;
+	extern const std::string Enemies_VoidStar_MechGolem_Emblem;
 	extern const std::string Enemies_VoidStar_MechGolem_Head;
 	extern const std::string Enemies_VoidStar_MechGolem_LeftFoot__1_;
 	extern const std::string Enemies_VoidStar_MechGolem_LeftFoot__2_;
@@ -1707,6 +1799,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_MechGuard_Animations;
 	extern const std::string Enemies_VoidStar_MechGuard_Axe;
 	extern const std::string Enemies_VoidStar_MechGuard_Body;
+	extern const std::string Enemies_VoidStar_MechGuard_Emblem;
 	extern const std::string Enemies_VoidStar_MechGuard_Head01;
 	extern const std::string Enemies_VoidStar_MechGuard_Head02;
 	extern const std::string Enemies_VoidStar_MechGuard_Left_Arm;
@@ -1726,6 +1819,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_MechGuard_Weapon01;
 	extern const std::string Enemies_VoidStar_MiteBot_Animations;
 	extern const std::string Enemies_VoidStar_MiteBot_Body;
+	extern const std::string Enemies_VoidStar_MiteBot_Emblem;
 	extern const std::string Enemies_VoidStar_MiteBot_LeftBackLeg__1_;
 	extern const std::string Enemies_VoidStar_MiteBot_LeftBackLeg__2_;
 	extern const std::string Enemies_VoidStar_MiteBot_LeftFrontLeg__1_;
@@ -1735,6 +1829,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_MiteBot_RightFrontLeg__1_;
 	extern const std::string Enemies_VoidStar_MiteBot_RightFrontLeg__2_;
 	extern const std::string Enemies_VoidStar_RoboGolem_Animations;
+	extern const std::string Enemies_VoidStar_RoboGolem_Emblem;
 	extern const std::string Enemies_VoidStar_RoboGolem_L_ARM_1;
 	extern const std::string Enemies_VoidStar_RoboGolem_L_ARM_2;
 	extern const std::string Enemies_VoidStar_RoboGolem_L_ARM_3;
@@ -1755,6 +1850,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_SkeletalPirate_Animations;
 	extern const std::string Enemies_VoidStar_SkeletalPirate_BELT;
 	extern const std::string Enemies_VoidStar_SkeletalPirate_COVER;
+	extern const std::string Enemies_VoidStar_SkeletalPirate_Emblem;
 	extern const std::string Enemies_VoidStar_SkeletalPirate_L_ARM_1;
 	extern const std::string Enemies_VoidStar_SkeletalPirate_L_LEG_1;
 	extern const std::string Enemies_VoidStar_SkeletalPirate_L_LEG_2;
@@ -1773,6 +1869,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_SkeletalPirate_TORSO;
 	extern const std::string Enemies_VoidStar_Thug_Animations;
 	extern const std::string Enemies_VoidStar_Thug_BELT;
+	extern const std::string Enemies_VoidStar_Thug_Emblem;
 	extern const std::string Enemies_VoidStar_Thug_HEAD;
 	extern const std::string Enemies_VoidStar_Thug_L_ARM_1;
 	extern const std::string Enemies_VoidStar_Thug_L_ARM_2;
@@ -1788,6 +1885,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Thug_TORSO;
 	extern const std::string Enemies_VoidStar_Thug_WEAPON;
 	extern const std::string Enemies_VoidStar_VikingBotSmall_Animations;
+	extern const std::string Enemies_VoidStar_VikingBotSmall_Emblem;
 	extern const std::string Enemies_VoidStar_VikingBotSmall_axe;
 	extern const std::string Enemies_VoidStar_VikingBotSmall_head;
 	extern const std::string Enemies_VoidStar_VikingBotSmall_left_arm;
@@ -1798,6 +1896,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_VikingBotSmall_torso_2;
 	extern const std::string Enemies_VoidStar_VikingBotSmall_torso;
 	extern const std::string Enemies_VoidStar_VikingBot_Animations;
+	extern const std::string Enemies_VoidStar_VikingBot_Emblem;
 	extern const std::string Enemies_VoidStar_VikingBot_arm_2;
 	extern const std::string Enemies_VoidStar_VikingBot_axe;
 	extern const std::string Enemies_VoidStar_VikingBot_blade_2;
@@ -1816,6 +1915,7 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Viking_Animations;
 	extern const std::string Enemies_VoidStar_Viking_BELT;
 	extern const std::string Enemies_VoidStar_Viking_COVER_1;
+	extern const std::string Enemies_VoidStar_Viking_Emblem;
 	extern const std::string Enemies_VoidStar_Viking_HEAD;
 	extern const std::string Enemies_VoidStar_Viking_HELMET;
 	extern const std::string Enemies_VoidStar_Viking_L_ARM_1;
@@ -1835,6 +1935,7 @@ namespace EntityResources
 	extern const std::string Helpers_Apple_Animations;
 	extern const std::string Helpers_Apple_Body___Back;
 	extern const std::string Helpers_Apple_Body;
+	extern const std::string Helpers_Apple_Emblem;
 	extern const std::string Helpers_Apple_Face_01;
 	extern const std::string Helpers_Apple_Face_02;
 	extern const std::string Helpers_Apple_Face_03;
@@ -1870,6 +1971,7 @@ namespace EntityResources
 	extern const std::string Helpers_Gecko_Blade;
 	extern const std::string Helpers_Gecko_Body___Back;
 	extern const std::string Helpers_Gecko_Body;
+	extern const std::string Helpers_Gecko_Emblem;
 	extern const std::string Helpers_Gecko_Face_01;
 	extern const std::string Helpers_Gecko_Face_02;
 	extern const std::string Helpers_Gecko_Face_03;
@@ -1900,6 +2002,7 @@ namespace EntityResources
 	extern const std::string Helpers_Gecko_Tail___Back;
 	extern const std::string Helpers_Gecko_Tail;
 	extern const std::string Helpers_Ghost_Animations;
+	extern const std::string Helpers_Ghost_Emblem;
 	extern const std::string Helpers_Ghost_Eyes01;
 	extern const std::string Helpers_Ghost_Eyes02;
 	extern const std::string Helpers_Ghost_Head;
@@ -1911,6 +2014,7 @@ namespace EntityResources
 	extern const std::string Helpers_Goblin_Animations;
 	extern const std::string Helpers_Goblin_Axe;
 	extern const std::string Helpers_Goblin_Body;
+	extern const std::string Helpers_Goblin_Emblem;
 	extern const std::string Helpers_Goblin_Head_01;
 	extern const std::string Helpers_Goblin_Head_02;
 	extern const std::string Helpers_Goblin_Left_Arm;
@@ -1923,10 +2027,12 @@ namespace EntityResources
 	extern const std::string Helpers_Grim_Arm01;
 	extern const std::string Helpers_Grim_Arm02;
 	extern const std::string Helpers_Grim_Body;
+	extern const std::string Helpers_Grim_Emblem;
 	extern const std::string Helpers_Grim_Head;
 	extern const std::string Helpers_Grim_Weapon02;
 	extern const std::string Helpers_Knight_Animations;
 	extern const std::string Helpers_Knight_Body;
+	extern const std::string Helpers_Knight_Emblem;
 	extern const std::string Helpers_Knight_Head;
 	extern const std::string Helpers_Knight_Left_Arm;
 	extern const std::string Helpers_Knight_Left_Hand;
@@ -1939,6 +2045,7 @@ namespace EntityResources
 	extern const std::string Helpers_Knight_Sword;
 	extern const std::string Helpers_Mummy_Animations;
 	extern const std::string Helpers_Mummy_Body;
+	extern const std::string Helpers_Mummy_Emblem;
 	extern const std::string Helpers_Mummy_Face_01;
 	extern const std::string Helpers_Mummy_Face_02;
 	extern const std::string Helpers_Mummy_Face_03;
@@ -1955,6 +2062,7 @@ namespace EntityResources
 	extern const std::string Helpers_Princess_Back_Hair;
 	extern const std::string Helpers_Princess_Body;
 	extern const std::string Helpers_Princess_Dress;
+	extern const std::string Helpers_Princess_Emblem;
 	extern const std::string Helpers_Princess_Face_01;
 	extern const std::string Helpers_Princess_Face_02;
 	extern const std::string Helpers_Princess_Face_03;
@@ -1980,6 +2088,7 @@ namespace EntityResources
 	extern const std::string Helpers_Professor_Animations;
 	extern const std::string Helpers_Professor_Body_Back;
 	extern const std::string Helpers_Professor_Body;
+	extern const std::string Helpers_Professor_Emblem;
 	extern const std::string Helpers_Professor_Face_01;
 	extern const std::string Helpers_Professor_Face_02;
 	extern const std::string Helpers_Professor_Face_03;
@@ -2003,6 +2112,7 @@ namespace EntityResources
 	extern const std::string Helpers_Professor_SlashFX_002;
 	extern const std::string Helpers_Robot_Animations;
 	extern const std::string Helpers_Robot_Body;
+	extern const std::string Helpers_Robot_Emblem;
 	extern const std::string Helpers_Robot_Eyes_01;
 	extern const std::string Helpers_Robot_Eyes_02;
 	extern const std::string Helpers_Robot_Eyes_03;
@@ -2020,6 +2130,7 @@ namespace EntityResources
 	extern const std::string Helpers_Robot_SlashFX_003;
 	extern const std::string Helpers_Snowman_Animations;
 	extern const std::string Helpers_Snowman_Body;
+	extern const std::string Helpers_Snowman_Emblem;
 	extern const std::string Helpers_Snowman_Eyes_01;
 	extern const std::string Helpers_Snowman_Eyes_02;
 	extern const std::string Helpers_Snowman_Eyes_03;
@@ -2034,6 +2145,7 @@ namespace EntityResources
 	extern const std::string Helpers_Turtle_Animations;
 	extern const std::string Helpers_Turtle_Blade;
 	extern const std::string Helpers_Turtle_Body;
+	extern const std::string Helpers_Turtle_Emblem;
 	extern const std::string Helpers_Turtle_Face_01;
 	extern const std::string Helpers_Turtle_Face_02;
 	extern const std::string Helpers_Turtle_Face_03;
@@ -2065,6 +2177,7 @@ namespace EntityResources
 	extern const std::string Helpers_YetiBaby_1_10;
 	extern const std::string Helpers_YetiBaby_Animations;
 	extern const std::string Helpers_YetiBaby_BELT;
+	extern const std::string Helpers_YetiBaby_Emblem;
 	extern const std::string Helpers_YetiBaby_HEAD;
 	extern const std::string Helpers_YetiBaby_JAW;
 	extern const std::string Helpers_YetiBaby_L_ARM_1;
@@ -2075,6 +2188,7 @@ namespace EntityResources
 	extern const std::string Helpers_YetiBaby_R_LEG_1;
 	extern const std::string Helpers_YetiBaby_TORSO;
 	extern const std::string Misc_Bat_Animations;
+	extern const std::string Misc_Bat_Emblem;
 	extern const std::string Misc_Bat_FACE_2;
 	extern const std::string Misc_Bat_FACE;
 	extern const std::string Misc_Bat_L_EAR;
@@ -2089,6 +2203,7 @@ namespace EntityResources
 	extern const std::string Misc_Bear_B_BACK_LEG_2;
 	extern const std::string Misc_Bear_B_FRONT_LEG_1;
 	extern const std::string Misc_Bear_B_FRONT_LEG_2;
+	extern const std::string Misc_Bear_Emblem;
 	extern const std::string Misc_Bear_F_BACK_LEG_1;
 	extern const std::string Misc_Bear_F_BACK_LEG_2;
 	extern const std::string Misc_Bear_F_FRONT_LEG_1;
@@ -2101,6 +2216,7 @@ namespace EntityResources
 	extern const std::string Misc_Bee_BACK_BODY;
 	extern const std::string Misc_Bee_BACK_LEG_1;
 	extern const std::string Misc_Bee_BACK_LEG_2;
+	extern const std::string Misc_Bee_Emblem;
 	extern const std::string Misc_Bee_FRONT_LEG_1;
 	extern const std::string Misc_Bee_FRONT_LEG_2;
 	extern const std::string Misc_Bee_HEAD;
@@ -2113,6 +2229,7 @@ namespace EntityResources
 	extern const std::string Misc_Bug_BACK_LEG_1;
 	extern const std::string Misc_Bug_BACK_LEG_2;
 	extern const std::string Misc_Bug_BACK_LEG_3;
+	extern const std::string Misc_Bug_Emblem;
 	extern const std::string Misc_Bug_FRONT_LEG_1;
 	extern const std::string Misc_Bug_FRONT_LEG_2;
 	extern const std::string Misc_Bug_FRONT_LEG_3;
@@ -2124,6 +2241,7 @@ namespace EntityResources
 	extern const std::string Misc_Horse_B_FRONT_LEG_1;
 	extern const std::string Misc_Horse_B_FRONT_LEG_2;
 	extern const std::string Misc_Horse_BACK_LEG_SWITCH;
+	extern const std::string Misc_Horse_Emblem;
 	extern const std::string Misc_Horse_F_BACK_LEG_1;
 	extern const std::string Misc_Horse_F_BACK_LEG_2;
 	extern const std::string Misc_Horse_F_FRONT_LEG_1;
@@ -2140,6 +2258,7 @@ namespace EntityResources
 	extern const std::string Misc_Lion_B_BACK_LEG_3;
 	extern const std::string Misc_Lion_B_FRONT_LEG_1;
 	extern const std::string Misc_Lion_B_FRONT_LEG_2;
+	extern const std::string Misc_Lion_Emblem;
 	extern const std::string Misc_Lion_F_BACK_LEG_1;
 	extern const std::string Misc_Lion_F_BACK_LEG_2;
 	extern const std::string Misc_Lion_F_BACK_LEG_3;
@@ -2163,6 +2282,7 @@ namespace EntityResources
 	extern const std::string Misc_Reindeer_B_FRONT_FOOT;
 	extern const std::string Misc_Reindeer_B_FRONT_LEG_1;
 	extern const std::string Misc_Reindeer_B_FRONT_LEG_2;
+	extern const std::string Misc_Reindeer_Emblem;
 	extern const std::string Misc_Reindeer_F_ANTLER;
 	extern const std::string Misc_Reindeer_F_BACK_FOOT;
 	extern const std::string Misc_Reindeer_F_BACK_LEG_1;
@@ -2188,6 +2308,7 @@ namespace EntityResources
 	extern const std::string Misc_Sheep_DETAIL_4;
 	extern const std::string Misc_Sheep_DETAIL_5;
 	extern const std::string Misc_Sheep_EXEBROWS;
+	extern const std::string Misc_Sheep_Emblem;
 	extern const std::string Misc_Sheep_F_BACK_LEG;
 	extern const std::string Misc_Sheep_F_FRONT_LEG;
 	extern const std::string Misc_Sheep_HEAD;
@@ -2206,6 +2327,7 @@ namespace EntityResources
 	extern const std::string Misc_Sheep_TORSO;
 	extern const std::string Misc_Shopkeeper_Animations;
 	extern const std::string Misc_Shopkeeper_COAT_BACK;
+	extern const std::string Misc_Shopkeeper_Emblem;
 	extern const std::string Misc_Shopkeeper_HEAD;
 	extern const std::string Misc_Shopkeeper_L_ARM;
 	extern const std::string Misc_Shopkeeper_L_LEG;
@@ -2217,6 +2339,7 @@ namespace EntityResources
 	extern const std::string Misc_Spider_1_BACK_LEG_1;
 	extern const std::string Misc_Spider_1_BACK_LEG_2;
 	extern const std::string Misc_Spider_1_BACK_LEG_3;
+	extern const std::string Misc_Spider_1_Emblem;
 	extern const std::string Misc_Spider_1_FRONT_LEG_1_1;
 	extern const std::string Misc_Spider_1_FRONT_LEG_1_2;
 	extern const std::string Misc_Spider_1_FRONT_LEG_2_1;
@@ -2230,11 +2353,13 @@ namespace EntityResources
 	extern const std::string Misc_Spider_2_BACK_LEG_1;
 	extern const std::string Misc_Spider_2_BACK_LEG_2;
 	extern const std::string Misc_Spider_2_BACK_LEG_3;
+	extern const std::string Misc_Spider_2_Emblem;
 	extern const std::string Misc_Spider_2_FRONT_LEG_1;
 	extern const std::string Misc_Spider_2_FRONT_LEG_2;
 	extern const std::string Misc_Spider_2_FRONT_LEG_3;
 	extern const std::string Misc_Spider_2_TORSO;
 	extern const std::string Misc_TrainingDummy_Animations;
+	extern const std::string Misc_TrainingDummy_Emblem;
 	extern const std::string Misc_TrainingDummy_HEAD;
 	extern const std::string Misc_TrainingDummy_L_ARM;
 	extern const std::string Misc_TrainingDummy_LEG;
@@ -2249,6 +2374,7 @@ namespace EntityResources
 	extern const std::string Misc_Wolf_B_BACK_LEG_3;
 	extern const std::string Misc_Wolf_B_FRONT_LEG_1;
 	extern const std::string Misc_Wolf_B_FRONT_LEG_2;
+	extern const std::string Misc_Wolf_Emblem;
 	extern const std::string Misc_Wolf_F_BACK_LEG_1;
 	extern const std::string Misc_Wolf_F_BACK_LEG_2;
 	extern const std::string Misc_Wolf_F_BACK_LEG_3;
@@ -2261,6 +2387,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Aspen_BACK_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Aspen_BELT;
 	extern const std::string Npcs_BalmerPeaks_Aspen_COVER_1;
+	extern const std::string Npcs_BalmerPeaks_Aspen_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Aspen_FACE;
 	extern const std::string Npcs_BalmerPeaks_Aspen_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Aspen_HEAD;
@@ -2281,6 +2408,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Aspen_WEAPON;
 	extern const std::string Npcs_BalmerPeaks_Aster_Animations;
 	extern const std::string Npcs_BalmerPeaks_Aster_BELT;
+	extern const std::string Npcs_BalmerPeaks_Aster_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Aster_FACE;
 	extern const std::string Npcs_BalmerPeaks_Aster_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Aster_HAT;
@@ -2300,6 +2428,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Aster_WEAPON;
 	extern const std::string Npcs_BalmerPeaks_Bodom_Animations;
 	extern const std::string Npcs_BalmerPeaks_Bodom_BELT;
+	extern const std::string Npcs_BalmerPeaks_Bodom_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Bodom_FACE;
 	extern const std::string Npcs_BalmerPeaks_Bodom_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Bodom_HEAD;
@@ -2322,6 +2451,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Cookie_Animations;
 	extern const std::string Npcs_BalmerPeaks_Cookie_BELT;
 	extern const std::string Npcs_BalmerPeaks_Cookie_COVER;
+	extern const std::string Npcs_BalmerPeaks_Cookie_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Cookie_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Cookie_HAT;
 	extern const std::string Npcs_BalmerPeaks_Cookie_HEAD;
@@ -2341,6 +2471,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Irmik_BELT;
 	extern const std::string Npcs_BalmerPeaks_Irmik_CAPE;
 	extern const std::string Npcs_BalmerPeaks_Irmik_COVER_1;
+	extern const std::string Npcs_BalmerPeaks_Irmik_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Irmik_FACE;
 	extern const std::string Npcs_BalmerPeaks_Irmik_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Irmik_HEAD;
@@ -2364,6 +2495,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Jingles_Animations;
 	extern const std::string Npcs_BalmerPeaks_Jingles_BELT;
 	extern const std::string Npcs_BalmerPeaks_Jingles_COVER;
+	extern const std::string Npcs_BalmerPeaks_Jingles_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Jingles_FACE;
 	extern const std::string Npcs_BalmerPeaks_Jingles_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Jingles_HAT;
@@ -2383,6 +2515,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Juniper_BACK_HAIR_1;
 	extern const std::string Npcs_BalmerPeaks_Juniper_BELT;
 	extern const std::string Npcs_BalmerPeaks_Juniper_COVER;
+	extern const std::string Npcs_BalmerPeaks_Juniper_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Juniper_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Juniper_HAT;
 	extern const std::string Npcs_BalmerPeaks_Juniper_HEAD;
@@ -2405,6 +2538,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Kringle_BELT;
 	extern const std::string Npcs_BalmerPeaks_Kringle_CAPE;
 	extern const std::string Npcs_BalmerPeaks_Kringle_COVER;
+	extern const std::string Npcs_BalmerPeaks_Kringle_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Kringle_FACE;
 	extern const std::string Npcs_BalmerPeaks_Kringle_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Kringle_HAT;
@@ -2426,6 +2560,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Nessie_Animations;
 	extern const std::string Npcs_BalmerPeaks_Nessie_BACK_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Nessie_BELT;
+	extern const std::string Npcs_BalmerPeaks_Nessie_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Nessie_FACE;
 	extern const std::string Npcs_BalmerPeaks_Nessie_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Nessie_HEAD;
@@ -2447,6 +2582,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_PrincessPepper_BACK_HAIR;
 	extern const std::string Npcs_BalmerPeaks_PrincessPepper_COVER;
 	extern const std::string Npcs_BalmerPeaks_PrincessPepper_CROWN;
+	extern const std::string Npcs_BalmerPeaks_PrincessPepper_Emblem;
 	extern const std::string Npcs_BalmerPeaks_PrincessPepper_FACE;
 	extern const std::string Npcs_BalmerPeaks_PrincessPepper_HAIR_PART;
 	extern const std::string Npcs_BalmerPeaks_PrincessPepper_HAIR;
@@ -2470,6 +2606,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Theldar_Animations;
 	extern const std::string Npcs_BalmerPeaks_Theldar_BELT;
 	extern const std::string Npcs_BalmerPeaks_Theldar_COVER;
+	extern const std::string Npcs_BalmerPeaks_Theldar_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Theldar_FACE;
 	extern const std::string Npcs_BalmerPeaks_Theldar_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Theldar_HEAD;
@@ -2490,6 +2627,7 @@ namespace EntityResources
 	extern const std::string Npcs_BalmerPeaks_Tinsel_Animations;
 	extern const std::string Npcs_BalmerPeaks_Tinsel_BELT;
 	extern const std::string Npcs_BalmerPeaks_Tinsel_COVER;
+	extern const std::string Npcs_BalmerPeaks_Tinsel_Emblem;
 	extern const std::string Npcs_BalmerPeaks_Tinsel_FACE;
 	extern const std::string Npcs_BalmerPeaks_Tinsel_HAIR;
 	extern const std::string Npcs_BalmerPeaks_Tinsel_HAT;
@@ -2508,6 +2646,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Blackbeard_Animations;
 	extern const std::string Npcs_CastleValgrind_Blackbeard_BANDANA;
 	extern const std::string Npcs_CastleValgrind_Blackbeard_BELT;
+	extern const std::string Npcs_CastleValgrind_Blackbeard_Emblem;
 	extern const std::string Npcs_CastleValgrind_Blackbeard_FACE;
 	extern const std::string Npcs_CastleValgrind_Blackbeard_HAIR;
 	extern const std::string Npcs_CastleValgrind_Blackbeard_HEAD;
@@ -2526,6 +2665,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Elric_Animations;
 	extern const std::string Npcs_CastleValgrind_Elric_BELT;
 	extern const std::string Npcs_CastleValgrind_Elric_COVER;
+	extern const std::string Npcs_CastleValgrind_Elric_Emblem;
 	extern const std::string Npcs_CastleValgrind_Elric_HEAD;
 	extern const std::string Npcs_CastleValgrind_Elric_L_ARM_1;
 	extern const std::string Npcs_CastleValgrind_Elric_L_ARM_2;
@@ -2548,6 +2688,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Garin_BELT;
 	extern const std::string Npcs_CastleValgrind_Garin_COVER;
 	extern const std::string Npcs_CastleValgrind_Garin_EAR;
+	extern const std::string Npcs_CastleValgrind_Garin_Emblem;
 	extern const std::string Npcs_CastleValgrind_Garin_FACE;
 	extern const std::string Npcs_CastleValgrind_Garin_HEAD;
 	extern const std::string Npcs_CastleValgrind_Garin_HELMET;
@@ -2564,6 +2705,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Garin_WEAPON;
 	extern const std::string Npcs_CastleValgrind_KingRedsongSlime_Animations;
 	extern const std::string Npcs_CastleValgrind_KingRedsongSlime_CROWN;
+	extern const std::string Npcs_CastleValgrind_KingRedsongSlime_Emblem;
 	extern const std::string Npcs_CastleValgrind_KingRedsongSlime_L_SLIME_EYE;
 	extern const std::string Npcs_CastleValgrind_KingRedsongSlime_R_SLIME_EYE;
 	extern const std::string Npcs_CastleValgrind_KingRedsongSlime_SLIME_TORSO;
@@ -2573,6 +2715,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_KingRedsong_COVER_1;
 	extern const std::string Npcs_CastleValgrind_KingRedsong_CROWN_1;
 	extern const std::string Npcs_CastleValgrind_KingRedsong_CROWN_2;
+	extern const std::string Npcs_CastleValgrind_KingRedsong_Emblem;
 	extern const std::string Npcs_CastleValgrind_KingRedsong_HEAD;
 	extern const std::string Npcs_CastleValgrind_KingRedsong_L_ARM;
 	extern const std::string Npcs_CastleValgrind_KingRedsong_L_FINGERS;
@@ -2590,11 +2733,13 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Leroy_Animations;
 	extern const std::string Npcs_CastleValgrind_Leroy_EVIL_EYE;
 	extern const std::string Npcs_CastleValgrind_Leroy_EYE;
+	extern const std::string Npcs_CastleValgrind_Leroy_Emblem;
 	extern const std::string Npcs_CastleValgrind_Leroy_SLIMY;
 	extern const std::string Npcs_CastleValgrind_Mabel_Animations;
 	extern const std::string Npcs_CastleValgrind_Mabel_BACK_HAIR_1;
 	extern const std::string Npcs_CastleValgrind_Mabel_BELT;
 	extern const std::string Npcs_CastleValgrind_Mabel_COVER;
+	extern const std::string Npcs_CastleValgrind_Mabel_Emblem;
 	extern const std::string Npcs_CastleValgrind_Mabel_FACE;
 	extern const std::string Npcs_CastleValgrind_Mabel_HAIR;
 	extern const std::string Npcs_CastleValgrind_Mabel_HAT;
@@ -2617,6 +2762,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Merlin_BELT;
 	extern const std::string Npcs_CastleValgrind_Merlin_BOLT;
 	extern const std::string Npcs_CastleValgrind_Merlin_BOOK;
+	extern const std::string Npcs_CastleValgrind_Merlin_Emblem;
 	extern const std::string Npcs_CastleValgrind_Merlin_FACE;
 	extern const std::string Npcs_CastleValgrind_Merlin_HAIR;
 	extern const std::string Npcs_CastleValgrind_Merlin_HAT;
@@ -2637,6 +2783,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_PrincessOpal_BACK_HAIR;
 	extern const std::string Npcs_CastleValgrind_PrincessOpal_CROWN;
 	extern const std::string Npcs_CastleValgrind_PrincessOpal_EYES;
+	extern const std::string Npcs_CastleValgrind_PrincessOpal_Emblem;
 	extern const std::string Npcs_CastleValgrind_PrincessOpal_HAIR;
 	extern const std::string Npcs_CastleValgrind_PrincessOpal_HEAD;
 	extern const std::string Npcs_CastleValgrind_PrincessOpal_L_ARM_DRESS;
@@ -2656,6 +2803,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Raven_BELT_BAG;
 	extern const std::string Npcs_CastleValgrind_Raven_BELT;
 	extern const std::string Npcs_CastleValgrind_Raven_COVER;
+	extern const std::string Npcs_CastleValgrind_Raven_Emblem;
 	extern const std::string Npcs_CastleValgrind_Raven_FACE;
 	extern const std::string Npcs_CastleValgrind_Raven_HAIR;
 	extern const std::string Npcs_CastleValgrind_Raven_HEAD;
@@ -2673,6 +2821,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Raven_WEAPON;
 	extern const std::string Npcs_CastleValgrind_Rogas_Animations;
 	extern const std::string Npcs_CastleValgrind_Rogas_BELT;
+	extern const std::string Npcs_CastleValgrind_Rogas_Emblem;
 	extern const std::string Npcs_CastleValgrind_Rogas_FACE;
 	extern const std::string Npcs_CastleValgrind_Rogas_HEAD;
 	extern const std::string Npcs_CastleValgrind_Rogas_HELMET_BACK;
@@ -2691,6 +2840,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Rogas_TORSO_CLOTH;
 	extern const std::string Npcs_CastleValgrind_Rogas_WEAPON;
 	extern const std::string Npcs_CastleValgrind_Thurstan_Animations;
+	extern const std::string Npcs_CastleValgrind_Thurstan_Emblem;
 	extern const std::string Npcs_CastleValgrind_Thurstan_FACE;
 	extern const std::string Npcs_CastleValgrind_Thurstan_HEAD;
 	extern const std::string Npcs_CastleValgrind_Thurstan_HELMET;
@@ -2712,6 +2862,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Tyracius_BELT;
 	extern const std::string Npcs_CastleValgrind_Tyracius_CAPE;
 	extern const std::string Npcs_CastleValgrind_Tyracius_COVER;
+	extern const std::string Npcs_CastleValgrind_Tyracius_Emblem;
 	extern const std::string Npcs_CastleValgrind_Tyracius_FACE;
 	extern const std::string Npcs_CastleValgrind_Tyracius_HAIR;
 	extern const std::string Npcs_CastleValgrind_Tyracius_HEAD;
@@ -2731,6 +2882,7 @@ namespace EntityResources
 	extern const std::string Npcs_CastleValgrind_Tyracius_WEAPON;
 	extern const std::string Npcs_DaemonsHallow_Ash_Animations;
 	extern const std::string Npcs_DaemonsHallow_Ash_BELT;
+	extern const std::string Npcs_DaemonsHallow_Ash_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Ash_FACE_36;
 	extern const std::string Npcs_DaemonsHallow_Ash_HAIR_36_1;
 	extern const std::string Npcs_DaemonsHallow_Ash_HAIR_36_2;
@@ -2753,6 +2905,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Brine_Animations;
 	extern const std::string Npcs_DaemonsHallow_Brine_BELT;
 	extern const std::string Npcs_DaemonsHallow_Brine_COVER_1;
+	extern const std::string Npcs_DaemonsHallow_Brine_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Brine_FACE;
 	extern const std::string Npcs_DaemonsHallow_Brine_HEAD;
 	extern const std::string Npcs_DaemonsHallow_Brine_HELMET_BACK_PART;
@@ -2774,6 +2927,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Celeste_BACK_HAIR_1;
 	extern const std::string Npcs_DaemonsHallow_Celeste_BELT;
 	extern const std::string Npcs_DaemonsHallow_Celeste_COVER;
+	extern const std::string Npcs_DaemonsHallow_Celeste_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Celeste_FACE;
 	extern const std::string Npcs_DaemonsHallow_Celeste_HAIR;
 	extern const std::string Npcs_DaemonsHallow_Celeste_HEAD;
@@ -2797,6 +2951,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Cindra_Animations;
 	extern const std::string Npcs_DaemonsHallow_Cindra_BACK_HAIR_1;
 	extern const std::string Npcs_DaemonsHallow_Cindra_COVER;
+	extern const std::string Npcs_DaemonsHallow_Cindra_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Cindra_FACE;
 	extern const std::string Npcs_DaemonsHallow_Cindra_HAIR;
 	extern const std::string Npcs_DaemonsHallow_Cindra_HEAD_HORNS;
@@ -2821,6 +2976,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Cindra_WEAPON;
 	extern const std::string Npcs_DaemonsHallow_Drak_Animations;
 	extern const std::string Npcs_DaemonsHallow_Drak_EAR;
+	extern const std::string Npcs_DaemonsHallow_Drak_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Drak_FACE;
 	extern const std::string Npcs_DaemonsHallow_Drak_HEAD;
 	extern const std::string Npcs_DaemonsHallow_Drak_L_ARM_CLOTH;
@@ -2841,6 +2997,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Drak_TORSO;
 	extern const std::string Npcs_DaemonsHallow_Drak_WEAPON;
 	extern const std::string Npcs_DaemonsHallow_Igneus_Animations;
+	extern const std::string Npcs_DaemonsHallow_Igneus_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Igneus_FACE;
 	extern const std::string Npcs_DaemonsHallow_Igneus_HAIR;
 	extern const std::string Npcs_DaemonsHallow_Igneus_HEAD;
@@ -2860,6 +3017,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Lucifer_BELT;
 	extern const std::string Npcs_DaemonsHallow_Lucifer_BODY;
 	extern const std::string Npcs_DaemonsHallow_Lucifer_COVER;
+	extern const std::string Npcs_DaemonsHallow_Lucifer_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Lucifer_HEAD;
 	extern const std::string Npcs_DaemonsHallow_Lucifer_L_ARM;
 	extern const std::string Npcs_DaemonsHallow_Lucifer_L_HAND;
@@ -2875,6 +3033,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Lucifer_WEAPON;
 	extern const std::string Npcs_DaemonsHallow_Magnus_Animations;
 	extern const std::string Npcs_DaemonsHallow_Magnus_COVER;
+	extern const std::string Npcs_DaemonsHallow_Magnus_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Magnus_FRONT_TORSO_ARMOR;
 	extern const std::string Npcs_DaemonsHallow_Magnus_HELMET;
 	extern const std::string Npcs_DaemonsHallow_Magnus_L_ARM_CLOTH_1;
@@ -2895,6 +3054,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Pan_BELT;
 	extern const std::string Npcs_DaemonsHallow_Pan_BODY;
 	extern const std::string Npcs_DaemonsHallow_Pan_COVER;
+	extern const std::string Npcs_DaemonsHallow_Pan_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Pan_HEAD;
 	extern const std::string Npcs_DaemonsHallow_Pan_L_ARM;
 	extern const std::string Npcs_DaemonsHallow_Pan_L_HAND;
@@ -2912,6 +3072,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_PrincessMittens_COVER_1;
 	extern const std::string Npcs_DaemonsHallow_PrincessMittens_COVER_2;
 	extern const std::string Npcs_DaemonsHallow_PrincessMittens_CROWN;
+	extern const std::string Npcs_DaemonsHallow_PrincessMittens_Emblem;
 	extern const std::string Npcs_DaemonsHallow_PrincessMittens_FACE;
 	extern const std::string Npcs_DaemonsHallow_PrincessMittens_HAIR;
 	extern const std::string Npcs_DaemonsHallow_PrincessMittens_HEAD;
@@ -2932,6 +3093,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Ragnis_BELT;
 	extern const std::string Npcs_DaemonsHallow_Ragnis_COVER;
 	extern const std::string Npcs_DaemonsHallow_Ragnis_EAR;
+	extern const std::string Npcs_DaemonsHallow_Ragnis_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Ragnis_FACE_29;
 	extern const std::string Npcs_DaemonsHallow_Ragnis_HAIR_29_1;
 	extern const std::string Npcs_DaemonsHallow_Ragnis_HAIR_29_2;
@@ -2955,6 +3117,7 @@ namespace EntityResources
 	extern const std::string Npcs_DaemonsHallow_Scaldor_Animations;
 	extern const std::string Npcs_DaemonsHallow_Scaldor_BELT;
 	extern const std::string Npcs_DaemonsHallow_Scaldor_CAPE;
+	extern const std::string Npcs_DaemonsHallow_Scaldor_Emblem;
 	extern const std::string Npcs_DaemonsHallow_Scaldor_HEAD;
 	extern const std::string Npcs_DaemonsHallow_Scaldor_HELMET;
 	extern const std::string Npcs_DaemonsHallow_Scaldor_L_ARM_CLOTH;
@@ -2975,6 +3138,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Appolo_BELT;
 	extern const std::string Npcs_EndianForest_Appolo_BODY;
 	extern const std::string Npcs_EndianForest_Appolo_BOW;
+	extern const std::string Npcs_EndianForest_Appolo_Emblem;
 	extern const std::string Npcs_EndianForest_Appolo_HEAD;
 	extern const std::string Npcs_EndianForest_Appolo_L_ARM;
 	extern const std::string Npcs_EndianForest_Appolo_L_HAND;
@@ -2989,6 +3153,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Chiron_BODY_CHEST;
 	extern const std::string Npcs_EndianForest_Chiron_BODY;
 	extern const std::string Npcs_EndianForest_Chiron_BOW;
+	extern const std::string Npcs_EndianForest_Chiron_Emblem;
 	extern const std::string Npcs_EndianForest_Chiron_FRONT_BODY_PART;
 	extern const std::string Npcs_EndianForest_Chiron_FRONT_LEG_1;
 	extern const std::string Npcs_EndianForest_Chiron_FRONT_LEG_2;
@@ -3004,6 +3169,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Cooper_BELT;
 	extern const std::string Npcs_EndianForest_Cooper_COVER_FACE_1;
 	extern const std::string Npcs_EndianForest_Cooper_COVER_FACE_2;
+	extern const std::string Npcs_EndianForest_Cooper_Emblem;
 	extern const std::string Npcs_EndianForest_Cooper_FACE;
 	extern const std::string Npcs_EndianForest_Cooper_HAIR;
 	extern const std::string Npcs_EndianForest_Cooper_HEAD;
@@ -3023,6 +3189,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Cooper_WEAPON;
 	extern const std::string Npcs_EndianForest_Dudly_Animations;
 	extern const std::string Npcs_EndianForest_Dudly_BELT;
+	extern const std::string Npcs_EndianForest_Dudly_Emblem;
 	extern const std::string Npcs_EndianForest_Dudly_HEAD;
 	extern const std::string Npcs_EndianForest_Dudly_HELMET;
 	extern const std::string Npcs_EndianForest_Dudly_L_ARM;
@@ -3039,6 +3206,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Dudly_WEAPON;
 	extern const std::string Npcs_EndianForest_Gramps_Animations;
 	extern const std::string Npcs_EndianForest_Gramps_BODY;
+	extern const std::string Npcs_EndianForest_Gramps_Emblem;
 	extern const std::string Npcs_EndianForest_Gramps_GROIN;
 	extern const std::string Npcs_EndianForest_Gramps_HAT;
 	extern const std::string Npcs_EndianForest_Gramps_HEAD;
@@ -3054,6 +3222,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Lycan_Animations;
 	extern const std::string Npcs_EndianForest_Lycan_BELT;
 	extern const std::string Npcs_EndianForest_Lycan_BODY;
+	extern const std::string Npcs_EndianForest_Lycan_Emblem;
 	extern const std::string Npcs_EndianForest_Lycan_HEAD;
 	extern const std::string Npcs_EndianForest_Lycan_L_ARM;
 	extern const std::string Npcs_EndianForest_Lycan_L_LEG;
@@ -3068,6 +3237,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Minos_BELT;
 	extern const std::string Npcs_EndianForest_Minos_BODY;
 	extern const std::string Npcs_EndianForest_Minos_COVER;
+	extern const std::string Npcs_EndianForest_Minos_Emblem;
 	extern const std::string Npcs_EndianForest_Minos_HEAD;
 	extern const std::string Npcs_EndianForest_Minos_L_ARM;
 	extern const std::string Npcs_EndianForest_Minos_L_HAND;
@@ -3078,6 +3248,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Minos_TAIL;
 	extern const std::string Npcs_EndianForest_Polyphemus_Animations;
 	extern const std::string Npcs_EndianForest_Polyphemus_BODY;
+	extern const std::string Npcs_EndianForest_Polyphemus_Emblem;
 	extern const std::string Npcs_EndianForest_Polyphemus_HEAD;
 	extern const std::string Npcs_EndianForest_Polyphemus_L_ARM;
 	extern const std::string Npcs_EndianForest_Polyphemus_L_HAND;
@@ -3088,6 +3259,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Polyphemus_R_LEG;
 	extern const std::string Npcs_EndianForest_Polyphemus_WEAPON;
 	extern const std::string Npcs_EndianForest_PrincessMatu_Animations;
+	extern const std::string Npcs_EndianForest_PrincessMatu_Emblem;
 	extern const std::string Npcs_EndianForest_PrincessMatu_FACE;
 	extern const std::string Npcs_EndianForest_PrincessMatu_HAIR;
 	extern const std::string Npcs_EndianForest_PrincessMatu_HEAD;
@@ -3113,6 +3285,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Robin_Animations;
 	extern const std::string Npcs_EndianForest_Robin_BELT;
 	extern const std::string Npcs_EndianForest_Robin_CAPE;
+	extern const std::string Npcs_EndianForest_Robin_Emblem;
 	extern const std::string Npcs_EndianForest_Robin_FACE;
 	extern const std::string Npcs_EndianForest_Robin_HAIR;
 	extern const std::string Npcs_EndianForest_Robin_HEAD;
@@ -3139,6 +3312,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Robin_WEAPON;
 	extern const std::string Npcs_EndianForest_Rupert_Animations;
 	extern const std::string Npcs_EndianForest_Rupert_BELT;
+	extern const std::string Npcs_EndianForest_Rupert_Emblem;
 	extern const std::string Npcs_EndianForest_Rupert_HAT;
 	extern const std::string Npcs_EndianForest_Rupert_HEAD;
 	extern const std::string Npcs_EndianForest_Rupert_L_ARM;
@@ -3155,6 +3329,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Rusty_Animations;
 	extern const std::string Npcs_EndianForest_Rusty_BELT;
 	extern const std::string Npcs_EndianForest_Rusty_COVER_1;
+	extern const std::string Npcs_EndianForest_Rusty_Emblem;
 	extern const std::string Npcs_EndianForest_Rusty_HEAD;
 	extern const std::string Npcs_EndianForest_Rusty_L_ARM;
 	extern const std::string Npcs_EndianForest_Rusty_L_FINGERS;
@@ -3175,6 +3350,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Toben_BOOK;
 	extern const std::string Npcs_EndianForest_Toben_COVER_1;
 	extern const std::string Npcs_EndianForest_Toben_EAR;
+	extern const std::string Npcs_EndianForest_Toben_Emblem;
 	extern const std::string Npcs_EndianForest_Toben_FACE;
 	extern const std::string Npcs_EndianForest_Toben_HAIR;
 	extern const std::string Npcs_EndianForest_Toben_HEAD;
@@ -3192,6 +3368,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Amelia_Animations;
 	extern const std::string Npcs_LambdaCrypts_Amelia_BACK_CAPE;
 	extern const std::string Npcs_LambdaCrypts_Amelia_CAPE;
+	extern const std::string Npcs_LambdaCrypts_Amelia_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Amelia_FACE;
 	extern const std::string Npcs_LambdaCrypts_Amelia_GLASSES;
 	extern const std::string Npcs_LambdaCrypts_Amelia_HAIR;
@@ -3213,6 +3390,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Azmus_BELT;
 	extern const std::string Npcs_LambdaCrypts_Azmus_BODY;
 	extern const std::string Npcs_LambdaCrypts_Azmus_COVER;
+	extern const std::string Npcs_LambdaCrypts_Azmus_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Azmus_HEAD;
 	extern const std::string Npcs_LambdaCrypts_Azmus_L_ARM;
 	extern const std::string Npcs_LambdaCrypts_Azmus_L_HAND;
@@ -3227,6 +3405,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Garrick_BELT;
 	extern const std::string Npcs_LambdaCrypts_Garrick_COVER;
 	extern const std::string Npcs_LambdaCrypts_Garrick_EAR;
+	extern const std::string Npcs_LambdaCrypts_Garrick_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Garrick_FACE;
 	extern const std::string Npcs_LambdaCrypts_Garrick_HAIR;
 	extern const std::string Npcs_LambdaCrypts_Garrick_HEAD;
@@ -3246,6 +3425,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Johann_BELT;
 	extern const std::string Npcs_LambdaCrypts_Johann_COVER_1;
 	extern const std::string Npcs_LambdaCrypts_Johann_EAR;
+	extern const std::string Npcs_LambdaCrypts_Johann_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Johann_FACE;
 	extern const std::string Npcs_LambdaCrypts_Johann_HEAD;
 	extern const std::string Npcs_LambdaCrypts_Johann_HELMET;
@@ -3267,6 +3447,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Johann_WEAPON;
 	extern const std::string Npcs_LambdaCrypts_Necron_Animations;
 	extern const std::string Npcs_LambdaCrypts_Necron_BELT;
+	extern const std::string Npcs_LambdaCrypts_Necron_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Necron_FACE;
 	extern const std::string Npcs_LambdaCrypts_Necron_HEAD;
 	extern const std::string Npcs_LambdaCrypts_Necron_L_ARM_CLOTH;
@@ -3286,6 +3467,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_BACK_HAIR;
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_BELT;
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_CROWN;
+	extern const std::string Npcs_LambdaCrypts_PrincessNebea_Emblem;
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_FACE;
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_HAIR;
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_HEAD;
@@ -3306,6 +3488,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_PrincessNebea_TORSO;
 	extern const std::string Npcs_LambdaCrypts_Roger_Animations;
 	extern const std::string Npcs_LambdaCrypts_Roger_BELT;
+	extern const std::string Npcs_LambdaCrypts_Roger_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Roger_FACE;
 	extern const std::string Npcs_LambdaCrypts_Roger_HEAD_CLOTH;
 	extern const std::string Npcs_LambdaCrypts_Roger_HEAD;
@@ -3330,6 +3513,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Thion_Animations;
 	extern const std::string Npcs_LambdaCrypts_Thion_BELT;
 	extern const std::string Npcs_LambdaCrypts_Thion_COVER_1;
+	extern const std::string Npcs_LambdaCrypts_Thion_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Thion_FACE;
 	extern const std::string Npcs_LambdaCrypts_Thion_HEAD;
 	extern const std::string Npcs_LambdaCrypts_Thion_HELMET;
@@ -3349,6 +3533,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Ursula_Animations;
 	extern const std::string Npcs_LambdaCrypts_Ursula_BELT;
 	extern const std::string Npcs_LambdaCrypts_Ursula_BODY;
+	extern const std::string Npcs_LambdaCrypts_Ursula_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Ursula_HEAD;
 	extern const std::string Npcs_LambdaCrypts_Ursula_L_ARM;
 	extern const std::string Npcs_LambdaCrypts_Ursula_L_HAND;
@@ -3368,6 +3553,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Viper_CAPE;
 	extern const std::string Npcs_LambdaCrypts_Viper_COVER;
 	extern const std::string Npcs_LambdaCrypts_Viper_COWL;
+	extern const std::string Npcs_LambdaCrypts_Viper_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Viper_FACE_SHADOW;
 	extern const std::string Npcs_LambdaCrypts_Viper_FACE;
 	extern const std::string Npcs_LambdaCrypts_Viper_HAIR;
@@ -3392,6 +3578,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Zana_BACK_HAIR;
 	extern const std::string Npcs_LambdaCrypts_Zana_BELT;
 	extern const std::string Npcs_LambdaCrypts_Zana_COVER_1;
+	extern const std::string Npcs_LambdaCrypts_Zana_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Zana_FACE;
 	extern const std::string Npcs_LambdaCrypts_Zana_HAIR;
 	extern const std::string Npcs_LambdaCrypts_Zana_HEAD;
@@ -3413,6 +3600,7 @@ namespace EntityResources
 	extern const std::string Npcs_LambdaCrypts_Zelina_Animations;
 	extern const std::string Npcs_LambdaCrypts_Zelina_BACK_HAIR;
 	extern const std::string Npcs_LambdaCrypts_Zelina_BELT;
+	extern const std::string Npcs_LambdaCrypts_Zelina_Emblem;
 	extern const std::string Npcs_LambdaCrypts_Zelina_FACE;
 	extern const std::string Npcs_LambdaCrypts_Zelina_HAIR_PIN_;
 	extern const std::string Npcs_LambdaCrypts_Zelina_HAIR;
@@ -3441,6 +3629,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Alder_BELT;
 	extern const std::string Npcs_SeaSharpCaverns_Alder_COVER;
 	extern const std::string Npcs_SeaSharpCaverns_Alder_EAR;
+	extern const std::string Npcs_SeaSharpCaverns_Alder_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Alder_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Alder_HAT_BACK;
 	extern const std::string Npcs_SeaSharpCaverns_Alder_HAT;
@@ -3459,6 +3648,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Brock_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Brock_BELT;
 	extern const std::string Npcs_SeaSharpCaverns_Brock_EAR;
+	extern const std::string Npcs_SeaSharpCaverns_Brock_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Brock_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Brock_HEAD;
 	extern const std::string Npcs_SeaSharpCaverns_Brock_HELMET;
@@ -3480,6 +3670,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_BACK_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_BELT;
+	extern const std::string Npcs_SeaSharpCaverns_Cypress_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_HEAD_LEAF;
@@ -3498,6 +3689,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Cypress_WEAPON;
 	extern const std::string Npcs_SeaSharpCaverns_Finch_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Finch_BELT;
+	extern const std::string Npcs_SeaSharpCaverns_Finch_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Finch_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Finch_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Finch_HEAD;
@@ -3523,6 +3715,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Finch_WOLF_HAT;
 	extern const std::string Npcs_SeaSharpCaverns_Fraya_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Fraya_BELT;
+	extern const std::string Npcs_SeaSharpCaverns_Fraya_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Fraya_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Fraya_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Fraya_HAT;
@@ -3545,6 +3738,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Fraya_TORSO;
 	extern const std::string Npcs_SeaSharpCaverns_Jasper_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Jasper_BELT;
+	extern const std::string Npcs_SeaSharpCaverns_Jasper_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Jasper_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Jasper_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Jasper_HAT;
@@ -3572,6 +3766,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Mildred_BACK_SCARF;
 	extern const std::string Npcs_SeaSharpCaverns_Mildred_BELT;
 	extern const std::string Npcs_SeaSharpCaverns_Mildred_COVER;
+	extern const std::string Npcs_SeaSharpCaverns_Mildred_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Mildred_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Mildred_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Mildred_HAT;
@@ -3597,6 +3792,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Olive_BELT;
 	extern const std::string Npcs_SeaSharpCaverns_Olive_CAPE;
 	extern const std::string Npcs_SeaSharpCaverns_Olive_COVER_1;
+	extern const std::string Npcs_SeaSharpCaverns_Olive_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Olive_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Olive_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_Olive_HEAD;
@@ -3617,6 +3813,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_BACK_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_CROWN;
+	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_HAIR;
 	extern const std::string Npcs_SeaSharpCaverns_PrincessDawn_HEAD;
@@ -3637,6 +3834,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Raka_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Raka_Body;
 	extern const std::string Npcs_SeaSharpCaverns_Raka_EAR;
+	extern const std::string Npcs_SeaSharpCaverns_Raka_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Raka_HEAD;
 	extern const std::string Npcs_SeaSharpCaverns_Raka_L_ARM_CLOTH_2;
 	extern const std::string Npcs_SeaSharpCaverns_Raka_L_ARM;
@@ -3656,6 +3854,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Sarude_Animations;
 	extern const std::string Npcs_SeaSharpCaverns_Sarude_BELT;
 	extern const std::string Npcs_SeaSharpCaverns_Sarude_COVER;
+	extern const std::string Npcs_SeaSharpCaverns_Sarude_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Sarude_HEAD;
 	extern const std::string Npcs_SeaSharpCaverns_Sarude_HOOD_BACK;
 	extern const std::string Npcs_SeaSharpCaverns_Sarude_HOOD;
@@ -3677,6 +3876,7 @@ namespace EntityResources
 	extern const std::string Npcs_SeaSharpCaverns_Shen_BELT;
 	extern const std::string Npcs_SeaSharpCaverns_Shen_COVER_1;
 	extern const std::string Npcs_SeaSharpCaverns_Shen_EAR;
+	extern const std::string Npcs_SeaSharpCaverns_Shen_Emblem;
 	extern const std::string Npcs_SeaSharpCaverns_Shen_FACE;
 	extern const std::string Npcs_SeaSharpCaverns_Shen_HAIR_TAIL;
 	extern const std::string Npcs_SeaSharpCaverns_Shen_HAIR;
@@ -3699,6 +3899,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Ajax_BELT;
 	extern const std::string Npcs_UnderflowRuins_Ajax_CAPE;
 	extern const std::string Npcs_UnderflowRuins_Ajax_EAR;
+	extern const std::string Npcs_UnderflowRuins_Ajax_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Ajax_FACE;
 	extern const std::string Npcs_UnderflowRuins_Ajax_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Ajax_HELMET;
@@ -3719,6 +3920,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_Animations;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_BELT;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_BODY;
+	extern const std::string Npcs_UnderflowRuins_Aphrodite_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Aphrodite_L_HAND;
@@ -3731,6 +3933,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Ares_Animations;
 	extern const std::string Npcs_UnderflowRuins_Ares_BELT;
 	extern const std::string Npcs_UnderflowRuins_Ares_BODY;
+	extern const std::string Npcs_UnderflowRuins_Ares_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Ares_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Ares_HELMET;
 	extern const std::string Npcs_UnderflowRuins_Ares_L_ARM;
@@ -3746,6 +3949,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Athena_ARMOR;
 	extern const std::string Npcs_UnderflowRuins_Athena_Animations;
 	extern const std::string Npcs_UnderflowRuins_Athena_BODY;
+	extern const std::string Npcs_UnderflowRuins_Athena_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Athena_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Athena_HELMET_PART;
 	extern const std::string Npcs_UnderflowRuins_Athena_HELMET;
@@ -3765,6 +3969,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Cleopatra_BACK_MIDDLE_HAIR;
 	extern const std::string Npcs_UnderflowRuins_Cleopatra_BELT;
 	extern const std::string Npcs_UnderflowRuins_Cleopatra_COVER;
+	extern const std::string Npcs_UnderflowRuins_Cleopatra_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Cleopatra_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Cleopatra_L_ARM_1_ARMOR_1;
 	extern const std::string Npcs_UnderflowRuins_Cleopatra_L_ARM_1;
@@ -3789,6 +3994,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Geryon_BELT;
 	extern const std::string Npcs_UnderflowRuins_Geryon_BODY;
 	extern const std::string Npcs_UnderflowRuins_Geryon_COVER;
+	extern const std::string Npcs_UnderflowRuins_Geryon_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Geryon_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Geryon_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Geryon_L_HAND;
@@ -3811,6 +4017,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Griffin_BELT;
 	extern const std::string Npcs_UnderflowRuins_Griffin_BODY;
 	extern const std::string Npcs_UnderflowRuins_Griffin_COVER;
+	extern const std::string Npcs_UnderflowRuins_Griffin_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Griffin_GRIFFIN;
 	extern const std::string Npcs_UnderflowRuins_Griffin_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Griffin_L_HAND;
@@ -3824,6 +4031,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Hades_Animations;
 	extern const std::string Npcs_UnderflowRuins_Hades_BELT;
 	extern const std::string Npcs_UnderflowRuins_Hades_BODY;
+	extern const std::string Npcs_UnderflowRuins_Hades_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Hades_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Hades_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Hades_L_HAND;
@@ -3835,6 +4043,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Hera_Animations;
 	extern const std::string Npcs_UnderflowRuins_Hera_BELT;
 	extern const std::string Npcs_UnderflowRuins_Hera_BODY;
+	extern const std::string Npcs_UnderflowRuins_Hera_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Hera_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Hera_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Hera_L_HAND;
@@ -3847,6 +4056,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Horus_Animations;
 	extern const std::string Npcs_UnderflowRuins_Horus_BELT;
 	extern const std::string Npcs_UnderflowRuins_Horus_BODY;
+	extern const std::string Npcs_UnderflowRuins_Horus_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Horus_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Horus_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Horus_L_HAND;
@@ -3859,6 +4069,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Horus_STAFF;
 	extern const std::string Npcs_UnderflowRuins_Poseidon_Animations;
 	extern const std::string Npcs_UnderflowRuins_Poseidon_BODY;
+	extern const std::string Npcs_UnderflowRuins_Poseidon_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Poseidon_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Poseidon_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Poseidon_L_HAND;
@@ -3872,6 +4083,7 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Zeus_BELT;
 	extern const std::string Npcs_UnderflowRuins_Zeus_BODY;
 	extern const std::string Npcs_UnderflowRuins_Zeus_BOLT;
+	extern const std::string Npcs_UnderflowRuins_Zeus_Emblem;
 	extern const std::string Npcs_UnderflowRuins_Zeus_HEAD;
 	extern const std::string Npcs_UnderflowRuins_Zeus_L_ARM;
 	extern const std::string Npcs_UnderflowRuins_Zeus_L_HAND;
@@ -3883,6 +4095,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Atreus_BELT;
 	extern const std::string Npcs_VoidStar_Atreus_CAPE;
 	extern const std::string Npcs_VoidStar_Atreus_COVER;
+	extern const std::string Npcs_VoidStar_Atreus_Emblem;
 	extern const std::string Npcs_VoidStar_Atreus_FACE;
 	extern const std::string Npcs_VoidStar_Atreus_HAIR;
 	extern const std::string Npcs_VoidStar_Atreus_HEAD;
@@ -3901,6 +4114,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Elriel_Animations;
 	extern const std::string Npcs_VoidStar_Elriel_BELT;
 	extern const std::string Npcs_VoidStar_Elriel_COVER;
+	extern const std::string Npcs_VoidStar_Elriel_Emblem;
 	extern const std::string Npcs_VoidStar_Elriel_HAIR_BACK;
 	extern const std::string Npcs_VoidStar_Elriel_HEAD;
 	extern const std::string Npcs_VoidStar_Elriel_L_ARM_1;
@@ -3922,6 +4136,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Illia_BACK_HAIR_1;
 	extern const std::string Npcs_VoidStar_Illia_COVER;
 	extern const std::string Npcs_VoidStar_Illia_CROWN;
+	extern const std::string Npcs_VoidStar_Illia_Emblem;
 	extern const std::string Npcs_VoidStar_Illia_FACE;
 	extern const std::string Npcs_VoidStar_Illia_HAIR;
 	extern const std::string Npcs_VoidStar_Illia_HEAD;
@@ -3948,6 +4163,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Leon_BELT;
 	extern const std::string Npcs_VoidStar_Leon_CAPE;
 	extern const std::string Npcs_VoidStar_Leon_COVER;
+	extern const std::string Npcs_VoidStar_Leon_Emblem;
 	extern const std::string Npcs_VoidStar_Leon_FACE;
 	extern const std::string Npcs_VoidStar_Leon_HAIR;
 	extern const std::string Npcs_VoidStar_Leon_HEAD;
@@ -3973,6 +4189,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Mara_BOW;
 	extern const std::string Npcs_VoidStar_Mara_COVER_1;
 	extern const std::string Npcs_VoidStar_Mara_EAR;
+	extern const std::string Npcs_VoidStar_Mara_Emblem;
 	extern const std::string Npcs_VoidStar_Mara_FACE_47;
 	extern const std::string Npcs_VoidStar_Mara_HAIR_47_1;
 	extern const std::string Npcs_VoidStar_Mara_HEAD;
@@ -3997,6 +4214,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Marcel_BACK_ROBE;
 	extern const std::string Npcs_VoidStar_Marcel_BELT;
 	extern const std::string Npcs_VoidStar_Marcel_COVER_1;
+	extern const std::string Npcs_VoidStar_Marcel_Emblem;
 	extern const std::string Npcs_VoidStar_Marcel_FACE;
 	extern const std::string Npcs_VoidStar_Marcel_HAIR;
 	extern const std::string Npcs_VoidStar_Marcel_HAT;
@@ -4017,6 +4235,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Piper_Animations;
 	extern const std::string Npcs_VoidStar_Piper_BACK_HAIR;
 	extern const std::string Npcs_VoidStar_Piper_CAPE;
+	extern const std::string Npcs_VoidStar_Piper_Emblem;
 	extern const std::string Npcs_VoidStar_Piper_FACE;
 	extern const std::string Npcs_VoidStar_Piper_HAIR;
 	extern const std::string Npcs_VoidStar_Piper_HAT;
@@ -4047,6 +4266,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_QueenElise_COVER;
 	extern const std::string Npcs_VoidStar_QueenElise_CROWN;
 	extern const std::string Npcs_VoidStar_QueenElise_EAR;
+	extern const std::string Npcs_VoidStar_QueenElise_Emblem;
 	extern const std::string Npcs_VoidStar_QueenElise_FACE_34;
 	extern const std::string Npcs_VoidStar_QueenElise_FRONT_SLEEVE;
 	extern const std::string Npcs_VoidStar_QueenElise_HAIR_33_3;
@@ -4074,6 +4294,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_QueenElise_TORSO;
 	extern const std::string Npcs_VoidStar_Radon_Animations;
 	extern const std::string Npcs_VoidStar_Radon_BODY;
+	extern const std::string Npcs_VoidStar_Radon_Emblem;
 	extern const std::string Npcs_VoidStar_Radon_GROIN;
 	extern const std::string Npcs_VoidStar_Radon_L_ARM_1;
 	extern const std::string Npcs_VoidStar_Radon_L_ARM_2;
@@ -4086,6 +4307,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Thor_Animations;
 	extern const std::string Npcs_VoidStar_Thor_BELT;
 	extern const std::string Npcs_VoidStar_Thor_BODY;
+	extern const std::string Npcs_VoidStar_Thor_Emblem;
 	extern const std::string Npcs_VoidStar_Thor_HAMMER;
 	extern const std::string Npcs_VoidStar_Thor_HEAD;
 	extern const std::string Npcs_VoidStar_Thor_L_ARM;
@@ -4098,6 +4320,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Thor_R_LEG;
 	extern const std::string Npcs_VoidStar_Xenon_Animations;
 	extern const std::string Npcs_VoidStar_Xenon_BODY;
+	extern const std::string Npcs_VoidStar_Xenon_Emblem;
 	extern const std::string Npcs_VoidStar_Xenon_GROIN;
 	extern const std::string Npcs_VoidStar_Xenon_L_ARM_1;
 	extern const std::string Npcs_VoidStar_Xenon_L_ARM_2;
@@ -4114,6 +4337,7 @@ namespace EntityResources
 	extern const std::string Npcs_VoidStar_Ysara_COVER_2;
 	extern const std::string Npcs_VoidStar_Ysara_COVER;
 	extern const std::string Npcs_VoidStar_Ysara_EARINGS;
+	extern const std::string Npcs_VoidStar_Ysara_Emblem;
 	extern const std::string Npcs_VoidStar_Ysara_FACE;
 	extern const std::string Npcs_VoidStar_Ysara_HAIR;
 	extern const std::string Npcs_VoidStar_Ysara_HEAD;
@@ -4140,6 +4364,7 @@ namespace EntityResources
 	extern const std::string Squally_BODY;
 	extern const std::string Squally_CEREBELLUM;
 	extern const std::string Squally_EYE_L;
+	extern const std::string Squally_Emblem;
 	extern const std::string Squally_Eye_R;
 	extern const std::string Squally_HAND_L_1;
 	extern const std::string Squally_HAND_L_2;

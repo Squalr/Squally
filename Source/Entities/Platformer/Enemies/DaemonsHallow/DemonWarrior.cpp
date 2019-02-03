@@ -19,6 +19,7 @@ DemonWarrior* DemonWarrior::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonWarrior::DemonWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(320.0f, 372.0f),
 	0.7f,

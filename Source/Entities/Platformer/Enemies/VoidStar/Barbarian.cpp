@@ -19,6 +19,7 @@ Barbarian* Barbarian::deserialize(cocos2d::ValueMap* initProperties)
 
 Barbarian::Barbarian(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Barbarian_Animations,
+	EntityResources::Enemies_VoidStar_Barbarian_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(278.0f, 288.0f),
 	0.9f,

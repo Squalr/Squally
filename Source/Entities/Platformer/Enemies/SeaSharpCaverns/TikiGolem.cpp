@@ -19,6 +19,7 @@ TikiGolem* TikiGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 TikiGolem::TikiGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(284.0f, 256.0f),
 	0.9f,

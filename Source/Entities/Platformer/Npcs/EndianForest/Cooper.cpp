@@ -19,6 +19,7 @@ Cooper* Cooper::deserialize(cocos2d::ValueMap* initProperties)
 
 Cooper::Cooper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Cooper_Animations,
+	EntityResources::Npcs_EndianForest_Cooper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

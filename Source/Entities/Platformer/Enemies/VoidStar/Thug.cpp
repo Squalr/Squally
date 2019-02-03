@@ -19,6 +19,7 @@ Thug* Thug::deserialize(cocos2d::ValueMap* initProperties)
 
 Thug::Thug(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Thug_Animations,
+	EntityResources::Enemies_VoidStar_Thug_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 248.0f),
 	0.9f,

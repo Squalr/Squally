@@ -19,6 +19,7 @@ EvilEye* EvilEye::deserialize(cocos2d::ValueMap* initProperties)
 
 EvilEye::EvilEye(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_EvilEye_Animations,
+	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(720.0f, 840.0f),
 	0.6f,

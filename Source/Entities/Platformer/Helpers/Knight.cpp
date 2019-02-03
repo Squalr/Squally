@@ -19,6 +19,7 @@ Knight* Knight::deserialize(cocos2d::ValueMap* initProperties)
 
 Knight::Knight(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Knight_Animations,
+	EntityResources::Helpers_Knight_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

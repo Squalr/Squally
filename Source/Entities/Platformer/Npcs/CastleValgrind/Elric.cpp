@@ -19,6 +19,7 @@ Elric* Elric::deserialize(cocos2d::ValueMap* initProperties)
 
 Elric::Elric(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Elric_Animations,
+	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

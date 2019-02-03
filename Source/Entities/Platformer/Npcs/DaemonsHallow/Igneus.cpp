@@ -19,6 +19,7 @@ Igneus* Igneus::deserialize(cocos2d::ValueMap* initProperties)
 
 Igneus::Igneus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
+	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

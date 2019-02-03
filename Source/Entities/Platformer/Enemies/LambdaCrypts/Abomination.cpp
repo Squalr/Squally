@@ -19,6 +19,7 @@ Abomination* Abomination::deserialize(cocos2d::ValueMap* initProperties)
 
 Abomination::Abomination(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Abomination_Animations,
+	EntityResources::Enemies_LambdaCrypts_Abomination_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(296.0f, 356.0f),
 	0.6f,

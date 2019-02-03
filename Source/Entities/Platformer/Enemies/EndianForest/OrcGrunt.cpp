@@ -19,6 +19,7 @@ OrcGrunt* OrcGrunt::deserialize(cocos2d::ValueMap* initProperties)
 
 OrcGrunt::OrcGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
+	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 218.0f),
 	0.9f,

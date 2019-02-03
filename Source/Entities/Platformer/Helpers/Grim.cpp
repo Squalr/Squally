@@ -19,6 +19,7 @@ Grim* Grim::deserialize(cocos2d::ValueMap* initProperties)
 
 Grim::Grim(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Grim_Animations,
+	EntityResources::Helpers_Grim_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

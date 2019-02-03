@@ -19,6 +19,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(cocos2d::ValueMap* initPropert
 
 ReanimatedFighter::ReanimatedFighter(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
+	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 248.0f),
 	0.9f,

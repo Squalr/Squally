@@ -19,6 +19,7 @@ Minotaur* Minotaur::deserialize(cocos2d::ValueMap* initProperties)
 
 Minotaur::Minotaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
+	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(278.0f, 288.0f),
 	0.9f,

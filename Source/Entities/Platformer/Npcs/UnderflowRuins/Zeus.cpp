@@ -19,6 +19,7 @@ Zeus* Zeus::deserialize(cocos2d::ValueMap* initProperties)
 
 Zeus::Zeus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
+	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

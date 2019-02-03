@@ -19,6 +19,7 @@ Cookie* Cookie::deserialize(cocos2d::ValueMap* initProperties)
 
 Cookie::Cookie(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
+	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

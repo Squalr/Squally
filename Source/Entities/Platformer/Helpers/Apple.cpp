@@ -19,6 +19,7 @@ Apple* Apple::deserialize(cocos2d::ValueMap* initProperties)
 
 Apple::Apple(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Apple_Animations,
+	EntityResources::Helpers_Apple_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

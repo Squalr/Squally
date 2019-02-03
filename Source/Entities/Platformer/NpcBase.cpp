@@ -9,6 +9,7 @@ using namespace cocos2d;
 NpcBase::NpcBase(
 	ValueMap* initProperties,
 	std::string scmlResource,
+	std::string emblemResource,
 	PlatformerCollisionType collisionType,
 	Size size,
 	float scale,
@@ -18,6 +19,7 @@ NpcBase::NpcBase(
 ) : super(
 	initProperties,
 	scmlResource,
+	emblemResource,
 	collisionType,
 	size,
 	scale,

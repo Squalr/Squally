@@ -19,6 +19,7 @@ AnubisWarrior* AnubisWarrior::deserialize(cocos2d::ValueMap* initProperties)
 
 AnubisWarrior::AnubisWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
+	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 292.0f),
 	0.9f,

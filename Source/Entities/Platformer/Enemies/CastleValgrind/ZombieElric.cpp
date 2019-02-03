@@ -19,6 +19,7 @@ ZombieElric* ZombieElric::deserialize(cocos2d::ValueMap* initProperties)
 
 ZombieElric::ZombieElric(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
+	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(114.0f, 208.0f),
 	0.9f,

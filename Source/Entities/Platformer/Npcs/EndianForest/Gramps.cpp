@@ -19,6 +19,7 @@ Gramps* Gramps::deserialize(cocos2d::ValueMap* initProperties)
 
 Gramps::Gramps(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
+	EntityResources::Npcs_EndianForest_Gramps_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.7f,

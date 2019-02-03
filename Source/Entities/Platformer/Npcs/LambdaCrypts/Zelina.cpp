@@ -19,6 +19,7 @@ Zelina* Zelina::deserialize(cocos2d::ValueMap* initProperties)
 
 Zelina::Zelina(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
+	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

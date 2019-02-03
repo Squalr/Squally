@@ -29,7 +29,8 @@ using namespace cocos2d;
 
 PlatformerEntity::PlatformerEntity(
 	ValueMap* initProperties, 
-	std::string scmlResource, 
+	std::string scmlResource,
+	std::string emblemResource,
 	PlatformerCollisionType collisionType,
 	Size size,
 	float scale, 
@@ -45,6 +46,7 @@ PlatformerEntity::PlatformerEntity(
 	)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
+	this->emblemResource = emblemResource;
 	this->groundCollisionDetector = CollisionObject::create(
 		PhysicsBody::createBox(
 			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
@@ -316,4 +318,9 @@ void PlatformerEntity::registerAttack(PlatformerAttack* attack)
 {
 	attack->retain();
 	this->attacks.push_back(attack);
+}
+
+std::string PlatformerEntity::getEmblemResource()
+{
+	return this->emblemResource;
 }

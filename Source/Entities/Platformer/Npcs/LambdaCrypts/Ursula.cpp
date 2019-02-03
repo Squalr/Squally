@@ -19,6 +19,7 @@ Ursula* Ursula::deserialize(cocos2d::ValueMap* initProperties)
 
 Ursula::Ursula(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
+	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

@@ -19,6 +19,7 @@ Scaldor* Scaldor::deserialize(cocos2d::ValueMap* initProperties)
 
 Scaldor::Scaldor(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
+	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

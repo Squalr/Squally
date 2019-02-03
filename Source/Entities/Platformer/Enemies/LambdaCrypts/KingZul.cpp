@@ -19,6 +19,7 @@ KingZul* KingZul::deserialize(cocos2d::ValueMap* initProperties)
 
 KingZul::KingZul(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
+	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 320.0f),
 	0.9f,

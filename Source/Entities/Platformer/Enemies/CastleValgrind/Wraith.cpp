@@ -19,6 +19,7 @@ Wraith* Wraith::deserialize(cocos2d::ValueMap* initProperties)
 
 Wraith::Wraith(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
+	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(142.0f, 400.0f),
 	0.5f,

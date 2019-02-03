@@ -19,6 +19,7 @@ Shaman* Shaman::deserialize(cocos2d::ValueMap* initProperties)
 
 Shaman::Shaman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 288.0f),
 	0.75f,

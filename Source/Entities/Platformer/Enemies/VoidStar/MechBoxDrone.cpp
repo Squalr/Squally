@@ -19,6 +19,7 @@ MechBoxDrone* MechBoxDrone::deserialize(cocos2d::ValueMap* initProperties)
 
 MechBoxDrone::MechBoxDrone(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechBoxDrone_Animations,
+	EntityResources::Enemies_VoidStar_MechBoxDrone_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(224.0f, 278.0f),
 	0.7f,

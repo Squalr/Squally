@@ -19,6 +19,7 @@ Cypress* Cypress::deserialize(cocos2d::ValueMap* initProperties)
 
 Cypress::Cypress(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

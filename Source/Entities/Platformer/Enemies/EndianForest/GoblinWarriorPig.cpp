@@ -19,6 +19,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(cocos2d::ValueMap* initPropertie
 
 GoblinWarriorPig::GoblinWarriorPig(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
+	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 296.0f),
 	0.8f,

@@ -19,6 +19,7 @@ Appolo* Appolo::deserialize(cocos2d::ValueMap* initProperties)
 
 Appolo::Appolo(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Appolo_Animations,
+	EntityResources::Npcs_EndianForest_Appolo_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

@@ -19,6 +19,7 @@ PenguinWarrior* PenguinWarrior::deserialize(cocos2d::ValueMap* initProperties)
 
 PenguinWarrior::PenguinWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
+	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(212.0f, 296.0f),
 	0.7f,

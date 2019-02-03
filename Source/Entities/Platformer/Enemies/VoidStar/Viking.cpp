@@ -19,6 +19,7 @@ Viking* Viking::deserialize(cocos2d::ValueMap* initProperties)
 
 Viking::Viking(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Viking_Animations,
+	EntityResources::Enemies_VoidStar_Viking_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(284.0f, 256.0f),
 	0.9f,

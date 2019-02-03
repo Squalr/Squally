@@ -19,6 +19,7 @@ Leroy* Leroy::deserialize(cocos2d::ValueMap* initProperties)
 
 Leroy::Leroy(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
+	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

@@ -19,6 +19,7 @@ DemonDragon* DemonDragon::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonDragon::DemonDragon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(340.0f, 360.0f),
 	0.85f,

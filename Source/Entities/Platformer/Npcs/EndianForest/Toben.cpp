@@ -19,6 +19,7 @@ Toben* Toben::deserialize(cocos2d::ValueMap* initProperties)
 
 Toben::Toben(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
+	EntityResources::Npcs_EndianForest_Toben_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

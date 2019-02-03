@@ -19,6 +19,7 @@ Mabel* Mabel::deserialize(cocos2d::ValueMap* initProperties)
 
 Mabel::Mabel(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
+	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

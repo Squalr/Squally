@@ -19,6 +19,7 @@ Sarude* Sarude::deserialize(cocos2d::ValueMap* initProperties)
 
 Sarude::Sarude(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

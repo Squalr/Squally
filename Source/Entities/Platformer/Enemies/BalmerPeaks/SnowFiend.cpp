@@ -19,6 +19,7 @@ SnowFiend* SnowFiend::deserialize(cocos2d::ValueMap* initProperties)
 
 SnowFiend::SnowFiend(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
+	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(420.0f, 420.0f),
 	0.7f,

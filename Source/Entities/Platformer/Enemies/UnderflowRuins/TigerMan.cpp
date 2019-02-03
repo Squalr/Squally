@@ -19,6 +19,7 @@ TigerMan* TigerMan::deserialize(cocos2d::ValueMap* initProperties)
 
 TigerMan::TigerMan(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
+	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 308.0f),
 	0.9f,

@@ -19,6 +19,7 @@ Robot* Robot::deserialize(cocos2d::ValueMap* initProperties)
 
 Robot::Robot(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Robot_Animations,
+	EntityResources::Helpers_Robot_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

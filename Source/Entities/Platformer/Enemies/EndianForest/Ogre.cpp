@@ -19,6 +19,7 @@ Ogre* Ogre::deserialize(cocos2d::ValueMap* initProperties)
 
 Ogre::Ogre(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Ogre_Animations,
+	EntityResources::Enemies_EndianForest_Ogre_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 248.0f),
 	1.0f,

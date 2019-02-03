@@ -19,6 +19,7 @@ CritterDemon* CritterDemon::deserialize(cocos2d::ValueMap* initProperties)
 
 CritterDemon::CritterDemon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_CritterDemon_Animations,
+	EntityResources::Enemies_DaemonsHallow_CritterDemon_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(188.0f, 160.0f),
 	0.7f,

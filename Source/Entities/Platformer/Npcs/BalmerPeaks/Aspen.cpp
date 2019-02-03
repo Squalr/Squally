@@ -19,6 +19,7 @@ Aspen* Aspen::deserialize(cocos2d::ValueMap* initProperties)
 
 Aspen::Aspen(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
+	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

@@ -19,6 +19,7 @@ Lycan* Lycan::deserialize(cocos2d::ValueMap* initProperties)
 
 Lycan::Lycan(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Lycan_Animations,
+	EntityResources::Npcs_EndianForest_Lycan_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	.9f,

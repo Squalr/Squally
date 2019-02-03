@@ -19,6 +19,7 @@ Raven* Raven::deserialize(cocos2d::ValueMap* initProperties)
 
 Raven::Raven(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
+	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

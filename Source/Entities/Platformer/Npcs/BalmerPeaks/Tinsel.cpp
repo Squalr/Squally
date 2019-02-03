@@ -19,6 +19,7 @@ Tinsel* Tinsel::deserialize(cocos2d::ValueMap* initProperties)
 
 Tinsel::Tinsel(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
+	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

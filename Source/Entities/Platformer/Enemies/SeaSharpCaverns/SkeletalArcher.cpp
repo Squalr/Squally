@@ -19,6 +19,7 @@ SkeletalArcher* SkeletalArcher::deserialize(cocos2d::ValueMap* initProperties)
 
 SkeletalArcher::SkeletalArcher(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 216.0f),
 	0.8f,

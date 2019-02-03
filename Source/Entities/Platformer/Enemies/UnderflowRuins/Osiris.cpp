@@ -19,6 +19,7 @@ Osiris* Osiris::deserialize(cocos2d::ValueMap* initProperties)
 
 Osiris::Osiris(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
+	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(324.0f, 316.0f),
 	0.9f,

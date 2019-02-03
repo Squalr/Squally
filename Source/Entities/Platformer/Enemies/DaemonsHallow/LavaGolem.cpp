@@ -19,6 +19,7 @@ LavaGolem* LavaGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 LavaGolem::LavaGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
+	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(980.0f, 1200.0f),
 	0.17f,

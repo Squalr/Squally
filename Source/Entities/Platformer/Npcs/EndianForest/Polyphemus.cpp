@@ -19,6 +19,7 @@ Polyphemus* Polyphemus::deserialize(cocos2d::ValueMap* initProperties)
 
 Polyphemus::Polyphemus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
+	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

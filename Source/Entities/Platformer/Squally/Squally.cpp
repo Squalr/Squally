@@ -32,6 +32,7 @@ Squally* Squally::getInstance()
 
 Squally::Squally(ValueMap* initProperties) : super(initProperties,
 	EntityResources::Squally_Animations,
+	EntityResources::Squally_Emblem,
 	PlatformerCollisionType::Force,
 	Size(128.0f, 224.0f), 
 	Squally::squallyScale,

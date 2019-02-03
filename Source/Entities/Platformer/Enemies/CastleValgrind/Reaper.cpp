@@ -19,6 +19,7 @@ Reaper* Reaper::deserialize(cocos2d::ValueMap* initProperties)
 
 Reaper::Reaper(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
+	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 512.0f),
 	0.8f,

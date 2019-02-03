@@ -19,6 +19,7 @@ KingGrogg* KingGrogg::deserialize(cocos2d::ValueMap* initProperties)
 
 KingGrogg::KingGrogg(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
+	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(412.0f, 412.0f),
 	0.9f,

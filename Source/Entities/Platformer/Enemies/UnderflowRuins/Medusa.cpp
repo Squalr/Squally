@@ -19,6 +19,7 @@ Medusa* Medusa::deserialize(cocos2d::ValueMap* initProperties)
 
 Medusa::Medusa(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
+	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(224.0f, 304.0f),
 	0.8f,

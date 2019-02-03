@@ -19,6 +19,7 @@ Gargoyle* Gargoyle::deserialize(cocos2d::ValueMap* initProperties)
 
 Gargoyle::Gargoyle(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Gargoyle_Animations,
+	EntityResources::Enemies_LambdaCrypts_Gargoyle_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 256.0f),
 	0.9f,

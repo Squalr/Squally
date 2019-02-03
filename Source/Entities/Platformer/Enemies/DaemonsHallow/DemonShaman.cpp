@@ -19,6 +19,7 @@ DemonShaman* DemonShaman::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonShaman::DemonShaman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonShaman_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(212.0f, 280.0f),
 	0.65f,

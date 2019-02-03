@@ -19,6 +19,7 @@ YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap* initProperties)
 
 YetiBaby::YetiBaby(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_YetiBaby_Animations,
+	EntityResources::Helpers_YetiBaby_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	1.0f,

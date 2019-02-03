@@ -19,6 +19,7 @@ WaterElemental* WaterElemental::deserialize(cocos2d::ValueMap* initProperties)
 
 WaterElemental::WaterElemental(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
+	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(820.0f, 1480.0f),
 	0.20f,

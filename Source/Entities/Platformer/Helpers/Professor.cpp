@@ -19,6 +19,7 @@ Professor* Professor::deserialize(cocos2d::ValueMap* initProperties)
 
 Professor::Professor(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Professor_Animations,
+	EntityResources::Helpers_Professor_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

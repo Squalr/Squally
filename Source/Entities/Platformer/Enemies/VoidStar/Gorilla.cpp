@@ -19,6 +19,7 @@ Gorilla* Gorilla::deserialize(cocos2d::ValueMap* initProperties)
 
 Gorilla::Gorilla(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Gorilla_Animations,
+	EntityResources::Enemies_VoidStar_Gorilla_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(278.0f, 288.0f),
 	0.9f,

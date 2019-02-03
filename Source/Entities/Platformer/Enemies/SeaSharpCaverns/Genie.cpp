@@ -19,6 +19,7 @@ Genie* Genie::deserialize(cocos2d::ValueMap* initProperties)
 
 Genie::Genie(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Genie_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_Genie_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(512.0f, 1126.0f),
 	0.20f,

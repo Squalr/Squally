@@ -19,6 +19,7 @@ Jack* Jack::deserialize(cocos2d::ValueMap* initProperties)
 
 Jack::Jack(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
+	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(432.0f, 768.0f),
 	0.25f,

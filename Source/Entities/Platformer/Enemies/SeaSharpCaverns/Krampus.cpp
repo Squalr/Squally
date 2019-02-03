@@ -19,6 +19,7 @@ Krampus* Krampus::deserialize(cocos2d::ValueMap* initProperties)
 
 Krampus::Krampus(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(396.0f, 412.0f),
 	0.9f,

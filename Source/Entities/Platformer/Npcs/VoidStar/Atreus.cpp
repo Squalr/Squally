@@ -19,6 +19,7 @@ Atreus* Atreus::deserialize(cocos2d::ValueMap* initProperties)
 
 Atreus::Atreus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
+	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

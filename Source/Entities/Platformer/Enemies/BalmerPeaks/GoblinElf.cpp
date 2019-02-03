@@ -19,6 +19,7 @@ GoblinElf* GoblinElf::deserialize(cocos2d::ValueMap* initProperties)
 
 GoblinElf::GoblinElf(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
+	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(140.0f, 296.0f),
 	0.6f,

@@ -19,6 +19,7 @@ VikingBotSmall* VikingBotSmall::deserialize(cocos2d::ValueMap* initProperties)
 
 VikingBotSmall::VikingBotSmall(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_VikingBotSmall_Animations,
+	EntityResources::Enemies_VoidStar_VikingBotSmall_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(768.0f, 768.0f),
 	0.25f,

@@ -19,6 +19,7 @@ LionMan* LionMan::deserialize(cocos2d::ValueMap* initProperties)
 
 LionMan::LionMan(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
+	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 326.0f),
 	0.9f,

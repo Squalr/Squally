@@ -11,14 +11,15 @@ const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
 	cocos2d::ValueMap* initProperties,
-	std::string scmlResource, 
+	std::string scmlResource,
+	std::string emblemResource,
 	PlatformerCollisionType collisionType, 
 	cocos2d::Size size, 
 	float scale,
 	cocos2d::Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial)
-	: super(initProperties, scmlResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
+	: super(initProperties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
 {
 	this->battleMapResource = "";
 	this->allyResources = std::vector<std::string>();

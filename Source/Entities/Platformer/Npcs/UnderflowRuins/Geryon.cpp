@@ -19,6 +19,7 @@ Geryon* Geryon::deserialize(cocos2d::ValueMap* initProperties)
 
 Geryon::Geryon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
+	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

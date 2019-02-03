@@ -19,6 +19,7 @@ Mermaid* Mermaid::deserialize(cocos2d::ValueMap* initProperties)
 
 Mermaid::Mermaid(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
+	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(172.0f, 296.0f),
 	0.8f,

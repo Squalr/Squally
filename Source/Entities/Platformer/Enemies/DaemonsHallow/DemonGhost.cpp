@@ -19,6 +19,7 @@ DemonGhost* DemonGhost::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonGhost::DemonGhost(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonGhost_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 320.0f),
 	0.7f,

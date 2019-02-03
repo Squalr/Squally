@@ -19,6 +19,7 @@ KingRedsong* KingRedsong::deserialize(cocos2d::ValueMap* initProperties)
 
 KingRedsong::KingRedsong(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
+	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(160.0f, 192.0f),
 	0.9f,

@@ -19,6 +19,7 @@ VoidDemon* VoidDemon::deserialize(cocos2d::ValueMap* initProperties)
 
 VoidDemon::VoidDemon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_VoidDemon_Animations,
+	EntityResources::Enemies_LambdaCrypts_VoidDemon_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(338.0f, 342.0f),
 	0.7f,

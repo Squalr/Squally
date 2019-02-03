@@ -19,6 +19,7 @@ Agnes* Agnes::deserialize(cocos2d::ValueMap* initProperties)
 
 Agnes::Agnes(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
+	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(360.0f, 420.0f),
 	0.9f,

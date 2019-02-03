@@ -19,6 +19,7 @@ Cindra* Cindra::deserialize(cocos2d::ValueMap* initProperties)
 
 Cindra::Cindra(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
+	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,
