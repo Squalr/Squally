@@ -148,4 +148,12 @@ void StatsBars::update(float dt)
 void StatsBars::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
+
+	this->frame->removeAllChildren();
+
+	Sprite* emblem = Sprite::create(target->getEmblemResource());
+
+	this->frame->addChild(emblem);
+
+	emblem->setPosition(this->frame->getContentSize() / 2.0f);
 }

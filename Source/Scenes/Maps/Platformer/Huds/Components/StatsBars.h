@@ -31,6 +31,7 @@ private:
 
 	bool isFrameOnLeft;
 	cocos2d::Sprite* frame;
+	cocos2d::Sprite* emblem;
 	CProgressBar* heartBar;
 	CProgressBar* specialBar;
 
