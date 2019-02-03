@@ -29,7 +29,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry)
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
 	this->circle = isPlayerEntry ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
-	this->emblem = Sprite::create();
+	this->emblem = Sprite::create(entity->getEmblemResource());
 
 	this->isPlayerEntry = isPlayerEntry;
 
@@ -38,6 +38,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, bool isPlayerEntry)
 
 	this->addChild(this->line);
 	this->addChild(this->circle);
+	this->addChild(this->emblem);
 }
 
 void TimelineEntry::onEnter()
