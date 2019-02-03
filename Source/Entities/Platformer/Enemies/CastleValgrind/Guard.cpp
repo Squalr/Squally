@@ -19,6 +19,7 @@ Guard* Guard::deserialize(cocos2d::ValueMap* initProperties)
 
 Guard::Guard(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Guard_Animations,
+	EntityResources::Enemies_CastleValgrind_Guard_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

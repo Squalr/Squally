@@ -19,6 +19,7 @@ Theldar* Theldar::deserialize(cocos2d::ValueMap* initProperties)
 
 Theldar::Theldar(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
+	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

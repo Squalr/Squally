@@ -19,6 +19,7 @@ Shen* Shen::deserialize(cocos2d::ValueMap* initProperties)
 
 Shen::Shen(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

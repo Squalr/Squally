@@ -19,6 +19,7 @@ Asmodeus* Asmodeus::deserialize(cocos2d::ValueMap* initProperties)
 
 Asmodeus::Asmodeus(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
+	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(480.0f, 480.0f),
 	0.7f,

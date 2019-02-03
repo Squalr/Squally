@@ -19,6 +19,7 @@ VoidArcher* VoidArcher::deserialize(cocos2d::ValueMap* initProperties)
 
 VoidArcher::VoidArcher(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_VoidArcher_Animations,
+	EntityResources::Enemies_LambdaCrypts_VoidArcher_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 348.0f),
 	0.65f,

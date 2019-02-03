@@ -19,6 +19,7 @@ MechGuard* MechGuard::deserialize(cocos2d::ValueMap* initProperties)
 
 MechGuard::MechGuard(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechGuard_Animations,
+	EntityResources::Enemies_VoidStar_MechGuard_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(112.0f, 596.0f),
 	0.9f,

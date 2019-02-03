@@ -19,6 +19,7 @@ Zombie* Zombie::deserialize(cocos2d::ValueMap* initProperties)
 
 Zombie::Zombie(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
+	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(114.0f, 208.0f),
 	0.9f,

@@ -19,6 +19,7 @@ Radon* Radon::deserialize(cocos2d::ValueMap* initProperties)
 
 Radon::Radon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Radon_Animations,
+	EntityResources::Npcs_VoidStar_Radon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

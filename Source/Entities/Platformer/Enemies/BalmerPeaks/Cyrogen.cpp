@@ -19,6 +19,7 @@ Cyrogen* Cyrogen::deserialize(cocos2d::ValueMap* initProperties)
 
 Cyrogen::Cyrogen(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Animations,
+	EntityResources::Enemies_BalmerPeaks_Cyrogen_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(420.0f, 420.0f),
 	0.7f,

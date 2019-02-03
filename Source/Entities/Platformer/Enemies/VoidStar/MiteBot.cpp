@@ -19,6 +19,7 @@ MiteBot* MiteBot::deserialize(cocos2d::ValueMap* initProperties)
 
 MiteBot::MiteBot(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MiteBot_Animations,
+	EntityResources::Enemies_VoidStar_MiteBot_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(420.0f, 296.0f),
 	0.4f,

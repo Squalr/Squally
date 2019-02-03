@@ -19,6 +19,7 @@ Rupert* Rupert::deserialize(cocos2d::ValueMap* initProperties)
 
 Rupert::Rupert(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Rupert_Animations,
+	EntityResources::Npcs_EndianForest_Rupert_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

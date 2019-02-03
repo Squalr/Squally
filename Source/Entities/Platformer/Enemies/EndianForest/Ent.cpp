@@ -19,6 +19,7 @@ Ent* Ent::deserialize(cocos2d::ValueMap* initProperties)
 
 Ent::Ent(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Ent_Animations,
+	EntityResources::Enemies_EndianForest_Ent_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(512.0f, 960.0f),
 	0.9f,

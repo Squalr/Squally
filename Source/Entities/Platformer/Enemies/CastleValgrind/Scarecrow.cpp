@@ -19,6 +19,7 @@ Scarecrow* Scarecrow::deserialize(cocos2d::ValueMap* initProperties)
 
 Scarecrow::Scarecrow(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
+	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 512.0f),
 	0.8f,

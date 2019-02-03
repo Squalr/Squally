@@ -19,6 +19,7 @@ Thurstan* Thurstan::deserialize(cocos2d::ValueMap* initProperties)
 
 Thurstan::Thurstan(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
+	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(124.0f, 160.0f),
 	0.9f,

@@ -19,6 +19,7 @@ ForestGolem* ForestGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 ForestGolem::ForestGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(768.0f, 840.0f),
 	0.30f,

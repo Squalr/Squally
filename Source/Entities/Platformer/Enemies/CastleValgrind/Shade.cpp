@@ -19,6 +19,7 @@ Shade* Shade::deserialize(cocos2d::ValueMap* initProperties)
 
 Shade::Shade(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Shade_Animations,
+	EntityResources::Enemies_CastleValgrind_Shade_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 512.0f),
 	0.8f,

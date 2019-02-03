@@ -19,6 +19,7 @@ Necron* Necron::deserialize(cocos2d::ValueMap* initProperties)
 
 Necron::Necron(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
+	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

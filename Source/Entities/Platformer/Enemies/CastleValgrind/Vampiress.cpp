@@ -19,6 +19,7 @@ Vampiress* Vampiress::deserialize(cocos2d::ValueMap* initProperties)
 
 Vampiress::Vampiress(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
+	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(96.0f, 236.0f),
 	0.9f,

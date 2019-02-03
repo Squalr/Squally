@@ -19,6 +19,7 @@ Leon* Leon::deserialize(cocos2d::ValueMap* initProperties)
 
 Leon::Leon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Leon_Animations,
+	EntityResources::Npcs_VoidStar_Leon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

@@ -19,6 +19,7 @@ DemonSwordsman* DemonSwordsman::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonSwordsman::DemonSwordsman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(212.0f, 268.0f),
 	0.65f,

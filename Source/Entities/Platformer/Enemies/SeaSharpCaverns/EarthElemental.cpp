@@ -19,6 +19,7 @@ EarthElemental* EarthElemental::deserialize(cocos2d::ValueMap* initProperties)
 
 EarthElemental::EarthElemental(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(820.0f, 1480.0f),
 	0.20f,

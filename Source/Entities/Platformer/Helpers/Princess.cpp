@@ -19,6 +19,7 @@ Princess* Princess::deserialize(cocos2d::ValueMap* initProperties)
 
 Princess::Princess(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Princess_Animations,
+	EntityResources::Helpers_Princess_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

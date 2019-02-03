@@ -19,6 +19,7 @@ Cyclops* Cyclops::deserialize(cocos2d::ValueMap* initProperties)
 
 Cyclops::Cyclops(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
+	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(296.0f, 256.0f),
 	0.9f,

@@ -19,6 +19,7 @@ Tigress* Tigress::deserialize(cocos2d::ValueMap* initProperties)
 
 Tigress::Tigress(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
+	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 256.0f),
 	0.8f,

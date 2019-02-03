@@ -19,6 +19,7 @@ ReanimatedPig* ReanimatedPig::deserialize(cocos2d::ValueMap* initProperties)
 
 ReanimatedPig::ReanimatedPig(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
+	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 240.0f),
 	0.8f,

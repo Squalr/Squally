@@ -19,6 +19,7 @@ Rhinoman* Rhinoman::deserialize(cocos2d::ValueMap* initProperties)
 
 Rhinoman::Rhinoman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(592.0f, 592.0f),
 	0.9f,

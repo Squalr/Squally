@@ -19,6 +19,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(cocos2d::ValueMap* initPropert
 
 SkeletalPriestess::SkeletalPriestess(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
+	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(196.0f, 312.0f),
 	0.8f,

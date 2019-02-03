@@ -19,6 +19,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(cocos2d::ValueMap* initProperties)
 
 GoblinGruntBoar::GoblinGruntBoar(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
+	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 296.0f),
 	0.8f,

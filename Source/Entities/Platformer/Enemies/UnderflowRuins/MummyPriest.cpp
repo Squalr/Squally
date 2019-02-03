@@ -19,6 +19,7 @@ MummyPriest* MummyPriest::deserialize(cocos2d::ValueMap* initProperties)
 
 MummyPriest::MummyPriest(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
+	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 256.0f),
 	0.8f,

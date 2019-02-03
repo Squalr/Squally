@@ -19,6 +19,7 @@ PrincessMittens* PrincessMittens::deserialize(cocos2d::ValueMap* initProperties)
 
 PrincessMittens::PrincessMittens(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
+	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

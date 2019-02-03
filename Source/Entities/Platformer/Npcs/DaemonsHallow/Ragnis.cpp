@@ -19,6 +19,7 @@ Ragnis* Ragnis::deserialize(cocos2d::ValueMap* initProperties)
 
 Ragnis::Ragnis(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
+	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

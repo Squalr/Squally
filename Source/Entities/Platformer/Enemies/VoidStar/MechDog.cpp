@@ -19,6 +19,7 @@ MechDog* MechDog::deserialize(cocos2d::ValueMap* initProperties)
 
 MechDog::MechDog(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechDog_Animations,
+	EntityResources::Enemies_VoidStar_MechDog_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(540.0f, 340.0f),
 	0.7f,

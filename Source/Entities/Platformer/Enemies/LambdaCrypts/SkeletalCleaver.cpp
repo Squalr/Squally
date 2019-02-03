@@ -19,6 +19,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(cocos2d::ValueMap* initProperties)
 
 SkeletalCleaver::SkeletalCleaver(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
+	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 312.0f),
 	0.8f,

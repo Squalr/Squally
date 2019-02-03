@@ -19,6 +19,7 @@ Aster* Aster::deserialize(cocos2d::ValueMap* initProperties)
 
 Aster::Aster(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
+	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

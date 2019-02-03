@@ -19,6 +19,7 @@ GoblinShaman* GoblinShaman::deserialize(cocos2d::ValueMap* initProperties)
 
 GoblinShaman::GoblinShaman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
+	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(96.0f, 204.0f),
 	0.8f,

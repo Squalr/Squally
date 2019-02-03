@@ -19,6 +19,7 @@ Alder* Alder::deserialize(cocos2d::ValueMap* initProperties)
 
 Alder::Alder(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

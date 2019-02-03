@@ -19,6 +19,7 @@ OrcWarrior* OrcWarrior::deserialize(cocos2d::ValueMap* initProperties)
 
 OrcWarrior::OrcWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
+	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 228.0f),
 	0.9f,

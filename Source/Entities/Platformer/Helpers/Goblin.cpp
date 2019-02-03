@@ -19,6 +19,7 @@ Goblin* Goblin::deserialize(cocos2d::ValueMap* initProperties)
 
 Goblin::Goblin(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Goblin_Animations,
+	EntityResources::Helpers_Goblin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

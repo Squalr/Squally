@@ -19,6 +19,7 @@ Jingles* Jingles::deserialize(cocos2d::ValueMap* initProperties)
 
 Jingles::Jingles(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
+	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

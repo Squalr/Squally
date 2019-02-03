@@ -19,6 +19,7 @@ Viper* Viper::deserialize(cocos2d::ValueMap* initProperties)
 
 Viper::Viper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
+	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

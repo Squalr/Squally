@@ -19,6 +19,7 @@ FireElemental* FireElemental::deserialize(cocos2d::ValueMap* initProperties)
 
 FireElemental::FireElemental(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
+	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(820.0f, 1480.0f),
 	0.20f,

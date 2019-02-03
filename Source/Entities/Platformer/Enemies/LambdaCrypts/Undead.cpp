@@ -19,6 +19,7 @@ Undead* Undead::deserialize(cocos2d::ValueMap* initProperties)
 
 Undead::Undead(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
+	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(146.0f, 248.0f),
 	0.8f,

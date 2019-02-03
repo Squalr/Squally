@@ -19,6 +19,7 @@ Ajax* Ajax::deserialize(cocos2d::ValueMap* initProperties)
 
 Ajax::Ajax(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
+	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

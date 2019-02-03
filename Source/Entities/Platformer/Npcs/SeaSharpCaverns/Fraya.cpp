@@ -19,6 +19,7 @@ Fraya* Fraya::deserialize(cocos2d::ValueMap* initProperties)
 
 Fraya::Fraya(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
+	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

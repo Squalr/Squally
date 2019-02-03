@@ -19,6 +19,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(cocos2d::ValueMap* initProperties)
 
 SkeletalWarrior::SkeletalWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(128.0f, 216.0f),
 	0.8f,

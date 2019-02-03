@@ -19,6 +19,7 @@ LightningGolem* LightningGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 LightningGolem::LightningGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(768.0f, 840.0f),
 	0.30f,

@@ -19,6 +19,7 @@ PrincessPepper* PrincessPepper::deserialize(cocos2d::ValueMap* initProperties)
 
 PrincessPepper::PrincessPepper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
+	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

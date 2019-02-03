@@ -23,6 +23,7 @@ public:
 	void castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void()> onCastComplete);
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
+	std::string getEmblemResource();
 
 	ClickableNode* clickHitbox;
 
@@ -34,6 +35,7 @@ protected:
 	PlatformerEntity(
 		cocos2d::ValueMap* initProperties,
 		std::string scmlResource,
+		std::string emblemResource,
 		PlatformerCollisionType collisionType,
 		cocos2d::Size size,
 		float scale,
@@ -82,6 +84,7 @@ private:
 	typedef CollisionObject super;
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
+	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
 	std::set<CollisionObject*> groundCollisions;
 	CollisionObject* groundCollisionDetector;

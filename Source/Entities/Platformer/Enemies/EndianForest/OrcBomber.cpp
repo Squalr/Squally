@@ -19,6 +19,7 @@ OrcBomber* OrcBomber::deserialize(cocos2d::ValueMap* initProperties)
 
 OrcBomber::OrcBomber(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
+	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 218.0f),
 	0.9f,

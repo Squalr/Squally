@@ -19,6 +19,7 @@ Yeti* Yeti::deserialize(cocos2d::ValueMap* initProperties)
 
 Yeti::Yeti(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
+	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(380.0f, 572.0f),
 	0.4f,

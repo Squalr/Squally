@@ -19,6 +19,7 @@ MechGolem* MechGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 MechGolem::MechGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechGolem_Animations,
+	EntityResources::Enemies_VoidStar_MechGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(640.0f, 720.0f),
 	0.7f,

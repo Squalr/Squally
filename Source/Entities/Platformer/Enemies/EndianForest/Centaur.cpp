@@ -19,6 +19,7 @@ Centaur* Centaur::deserialize(cocos2d::ValueMap* initProperties)
 
 Centaur::Centaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
+	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(296.0f, 256.0f),
 	0.9f,

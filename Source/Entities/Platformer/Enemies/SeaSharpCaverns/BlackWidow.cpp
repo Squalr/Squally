@@ -19,6 +19,7 @@ BlackWidow* BlackWidow::deserialize(cocos2d::ValueMap* initProperties)
 
 BlackWidow::BlackWidow(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_BlackWidow_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_BlackWidow_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(1280.0f, 920.0f),
 	0.20f,

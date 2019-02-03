@@ -19,6 +19,7 @@ VampireLord* VampireLord::deserialize(cocos2d::ValueMap* initProperties)
 
 VampireLord::VampireLord(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
+	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(240.0f, 312.0f),
 	0.9f,

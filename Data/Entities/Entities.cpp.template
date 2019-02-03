@@ -19,6 +19,7 @@ const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 
 {{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
 	EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Animations,
+	EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Emblem,
 	PlatformerCollisionType::{{EntityCollisionType}},
 	cocos2d::Size({{EntityWidth}}, {{EntityHeight}}),
 	{{EntityScale}},

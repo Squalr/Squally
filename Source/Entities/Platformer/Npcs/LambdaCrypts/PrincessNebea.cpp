@@ -19,6 +19,7 @@ PrincessNebea* PrincessNebea::deserialize(cocos2d::ValueMap* initProperties)
 
 PrincessNebea::PrincessNebea(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
+	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(112.0f, 160.0f),
 	0.9f,

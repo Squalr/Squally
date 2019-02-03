@@ -19,6 +19,7 @@ DemonGrunt* DemonGrunt::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonGrunt::DemonGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(312.0f, 372.0f),
 	0.7f,

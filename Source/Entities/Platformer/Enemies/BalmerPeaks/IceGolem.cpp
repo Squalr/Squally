@@ -19,6 +19,7 @@ IceGolem* IceGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 IceGolem::IceGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
+	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(1680.0f, 996.0f),
 	0.35f,

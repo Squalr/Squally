@@ -19,6 +19,7 @@ EarthGolem* EarthGolem::deserialize(cocos2d::ValueMap* initProperties)
 
 EarthGolem::EarthGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
+	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(256.0f, 224.0f),
 	0.9f,

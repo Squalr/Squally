@@ -19,6 +19,7 @@ DemonRogue* DemonRogue::deserialize(cocos2d::ValueMap* initProperties)
 
 DemonRogue::DemonRogue(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonRogue_Animations,
+	EntityResources::Enemies_DaemonsHallow_DemonRogue_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(212.0f, 268.0f),
 	0.65f,
