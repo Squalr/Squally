@@ -17,6 +17,7 @@
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/Combat/ChoicesMenu.h"
 #include "Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h"
+#include "Scenes/Maps/Platformer/Combat/TextOverlays.h"
 #include "Scenes/Maps/Platformer/Combat/Timeline.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 #include "Scenes/Maps/Platformer/Huds/CombatHud.h"
@@ -47,10 +48,12 @@ CombatMap::CombatMap()
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
 	this->targetSelectionMenu = TargetSelectionMenu::create();
+	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
+	this->addChild(this->textOverlays);
 	this->addChild(this->targetSelectionMenu);
 	this->addChild(this->combatHud);
 	this->hud->addChild(this->timeline);

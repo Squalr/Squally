@@ -12,6 +12,7 @@ public:
 	static const std::string EventSelectCastTarget;
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
+	static const std::string EventDamageDelt;
 
 	struct SpawnArgs
 	{
@@ -54,9 +55,20 @@ public:
 		}
 	};
 
+	struct DamageDeltArgs
+	{
+		int delta;
+		PlatformerEntity* target;
+
+		DamageDeltArgs(int delta, PlatformerEntity* target) : delta(delta), target(target)
+		{
+		}
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerSelectCastTarget(CastTargetArgs args);
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
+	static void TriggerDamageDelt(DamageDeltArgs args);
 };

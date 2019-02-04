@@ -24,6 +24,7 @@ public:
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	std::string getEmblemResource();
+	cocos2d::Size getEntitySize();
 
 	ClickableNode* clickHitbox;
 
@@ -63,6 +64,8 @@ protected:
 	int special;
 	int maxSpecial;
 	int runes;
+
+	cocos2d::Size entitySize;
 
 	// CURRENT STATE
 	float actualJumpLaunchVelocity;

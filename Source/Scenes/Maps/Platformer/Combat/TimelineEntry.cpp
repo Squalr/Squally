@@ -6,6 +6,7 @@
 
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 
@@ -151,6 +152,7 @@ float TimelineEntry::addProgress(float progressDelta)
 			{
 				this->progress = std::fmod(this->progress, 1.0f);
 
+				CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(-this->currentCast->getBaseDamageMin(), this->target));
 				CombatEvents::TriggerResumeTimeline();
 			});
 		}
