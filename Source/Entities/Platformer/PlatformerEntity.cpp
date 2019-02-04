@@ -75,6 +75,7 @@ PlatformerEntity::PlatformerEntity(
 
 	float width = (*this->properties)[PlatformerEntity::MapKeyWidth].asFloat();
 	float height = (*this->properties)[PlatformerEntity::MapKeyHeight].asFloat();
+	this->entitySize = size * scale;
 
 	this->setPositionY(this->getPositionY());
 
@@ -85,7 +86,7 @@ PlatformerEntity::PlatformerEntity(
 
 	animationNode->setPosition(collisionOffset * scale - Vec2(0.0f, height / 2.0f));
 
-	this->clickHitbox->setContentSize(size * scale);
+	this->clickHitbox->setContentSize(this->entitySize);
 	this->clickHitbox->setPosition(Vec2(0.0f, (size * scale).height / 2.0f) + Vec2((size * scale).width / 2.0f, -height / 2.0f));
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
@@ -221,6 +222,11 @@ int PlatformerEntity::getRunes()
 int PlatformerEntity::getMaxRunes()
 {
 	return PlatformerEntity::MaxRunes;
+}
+
+Size PlatformerEntity::getEntitySize()
+{
+	return this->entitySize;
 }
 
 void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void()> onCastComplete)

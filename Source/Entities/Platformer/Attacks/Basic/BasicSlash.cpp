@@ -15,7 +15,7 @@ BasicSlash* BasicSlash::create()
 	return instance;
 }
 
-BasicSlash::BasicSlash() : super(UIResources::Menus_Icons_SwordSlash, 1.25f, 0.75f)
+BasicSlash::BasicSlash() : super(UIResources::Menus_Icons_SwordSlash, 3, 5, 0, 1.5f, 0.15f)
 {
 }
 

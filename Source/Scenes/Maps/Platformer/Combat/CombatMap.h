@@ -6,6 +6,7 @@ class CombatHud;
 class ChoicesMenu;
 class PlatformerEntity;
 class TargetSelectionMenu;
+class TextOverlays;
 class Timeline;
 
 class CombatMap : public MapBase
@@ -32,6 +33,7 @@ private:
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
 	CombatHud* combatHud;
+	TextOverlays* textOverlays;
 	Timeline* timeline;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
