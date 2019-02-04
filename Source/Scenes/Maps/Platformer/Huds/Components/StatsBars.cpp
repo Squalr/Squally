@@ -155,5 +155,6 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 
 	this->frame->addChild(emblem);
 
+	emblem->setFlippedX(!this->isFrameOnLeft);
 	emblem->setPosition(this->frame->getContentSize() / 2.0f);
 }

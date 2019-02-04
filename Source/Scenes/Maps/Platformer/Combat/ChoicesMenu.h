@@ -24,18 +24,22 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void open();
 	void onItemsClick();
 	void onAttackClick();
 	void onDefendClick();
 	void toggleInnerText(bool isVisible);
+	void toggleOuterText(bool isVisible);
 	void setSelectedEntry(TimelineEntry* selectedEntry);
 
 	ClickableTextNode* itemsNode;
 	ClickableTextNode* attackNode;
 	ClickableTextNode* defendNode;
 	cocos2d::Node* attackListNode;
+	cocos2d::Node* itemListNode;
+	cocos2d::Node* defendListNode;
 	TimelineEntry* selectedEntry;
+
+	std::vector<ClickableTextNode*> attackListNodes;
 
 	static const float InnerChoicesRadius;
 	static const float OuterChoicesRadius;

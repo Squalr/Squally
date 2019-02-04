@@ -242,6 +242,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 			entity->clickHitbox->enableInteraction();
 			entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 			{
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
 			});
 			entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
@@ -260,6 +261,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 			entity->clickHitbox->enableInteraction();
 			entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 			{
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
 			});
 			entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)

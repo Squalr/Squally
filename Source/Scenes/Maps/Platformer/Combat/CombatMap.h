@@ -29,10 +29,10 @@ private:
 	void update(float dt) override;
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 
-	CombatHud* combatHud;
-	Timeline* timeline;
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
+	CombatHud* combatHud;
+	Timeline* timeline;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
 	std::vector<PlatformerEntity*> playerEntities;
