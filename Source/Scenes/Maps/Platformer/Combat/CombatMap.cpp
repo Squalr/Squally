@@ -51,8 +51,8 @@ CombatMap::CombatMap()
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
-	this->addChild(this->combatHud);
 	this->addChild(this->targetSelectionMenu);
+	this->addChild(this->combatHud);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
 }
