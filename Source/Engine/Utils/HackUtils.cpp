@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <sstream>
 
-#include "asmjit.h"
+#include <asmjit/asmjit.h>
 #include "udis86.h"
 
 #include "Engine/asmtk/asmtk.h"
