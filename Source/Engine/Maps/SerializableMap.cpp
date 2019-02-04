@@ -7,7 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/platform/CCFileUtils.h"
 
-#include <tinyxml2/tinyxml2.h>
+#include <tinyxml2.h>
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/Events/HackableEvents.h"

@@ -11,13 +11,7 @@ Mihai Gosa, email:pintea@inthekillhouse.com  twitter: @gosamihai
 */
 
 #include "TAnalytics.h"
-#ifdef _WIN32
-	#include "curl/include/win32/curl/curl.h"
-#elif __APPLE__
-	#include "curl/include/mac/curl/curl.h"
-#elif __linux__
-	#include <curl/curl.h>
-#endif
+#include <curl/curl.h>
 #include <cstdlib>
 #include <cstdio>
 #include <cstdarg>
