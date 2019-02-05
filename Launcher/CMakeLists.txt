@@ -41,12 +41,14 @@ target_compile_options(Launcher PRIVATE
 set_target_properties(Launcher PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     RUNTIME_OUTPUT_DIRECTORY $<TARGET_FILE_DIR:${PROJECT_NAME}>
-    LINK_FLAGS $<$<PLATFORM_ID:Linux>:"-Wl,-rpath,'$ORIGIN/lib'">
 )
 
-# On Windows, mark launcher as a win32 executable
-if(WIN32)
+# Platform Specific Properties
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set_target_properties(Launcher PROPERTIES WIN32_EXECUTABLE ON)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    # set rpath on linux so launcher can search for gtk relative to itself
+    set_target_properties(Launcher PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")
 endif()
 
 # Include directories
