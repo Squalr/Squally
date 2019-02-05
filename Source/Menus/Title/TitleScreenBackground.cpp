@@ -51,7 +51,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
-	this->squally->playAnimation("Idle", true);
+	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat);
 	this->mainhand = this->squally->getAnimationPart("mainhand");
 
 	/*

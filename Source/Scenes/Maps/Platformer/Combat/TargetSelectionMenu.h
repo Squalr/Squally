@@ -29,6 +29,8 @@ private:
 	void selectEntity(PlatformerEntity* entity);
 	void setEntityClickCallbacks();
 	void clearEntityClickCallbacks();
+	void selectNextLeft(int callCount = 0);
+	void selectNextRight(int callCount = 0);
 
 	enum class AllowedSelection
 	{
@@ -44,4 +46,5 @@ private:
 
 	std::vector<PlatformerEntity*> playerEntities;
 	std::vector<PlatformerEntity*> enemyEntities;
+	std::vector<PlatformerEntity*> completeEntityList;
 };
