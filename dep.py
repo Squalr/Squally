@@ -27,21 +27,25 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('command', nargs='+')
     parser.add_argument("-c", "--common", help="operation operates on the common set", action="store_true")
+    parser.add_argument("-t", "--triplet", help="vcpkg triplet (use vcpkg default is not specified")
 
     args = parser.parse_args()
 
+    if args.triplet is None:
+        args.triplet=""
+
     func = FUNCTION_MAP[args.command[0]]
     if args.command[0] == "install":
-        install(args.command[1], args.common)
+        install(args.command[1], args.common, args.triplet)
     else:
         if (len(args.command) > 1):
-            func(args.command[1])
+            func(args.command[1], args.triplet)
         else:
-            func()
+            func(args.triplet)
 
     return 0
 
-def bootstrap():
+def bootstrap(triplet):
     p = ""
     # linux
     if _platform == "linux" or _platform == "linux2":
@@ -60,30 +64,40 @@ def bootstrap():
         p = Popen(["./vcpkg/bootstrap-vcpkg.bat"], bufsize=1)
     p.wait()
 
-def init():
-    bootstrap()
-    update()
+def init(triplet):
+    bootstrap(triplet)
+    update(triplet)
 
-def update():
+def update(triplet):
     with open('requirements.json', 'r+') as fp:
         manifest = json.load(fp)
-        requirements = manifest["common"]
+
+        # install common deps
+        for line in manifest["common"]:
+            print ("installing: " + line)
+            install(line.strip(), True, triplet)
+            
+        # install platform deps
         if _platform == "linux" or _platform == "linux2":
-            requirements.extend(manifest["linux"])
+            requirements = manifest["linux"]
         elif _platform == "darwin":
-            requirements.extend(manifest["darwin"])
+            requirements = manifest["darwin"]
         elif _platform == "win32" or _platform == "win64":
-            requirements.extend(manifest["windows"])
+            requirements = manifest["windows"]
 
         for line in requirements:
             print ("installing: " + line)
-            install(line.strip())
+            install(line.strip(), False, triplet)
 
-def search(searchString):
+def search(searchString, triplet):
     print(shell_exec(["./vcpkg/vcpkg", "search" , searchString]).decode('utf-8'))
 
-def install(packageString, common=False):
-    p = Popen(["./vcpkg/vcpkg", "install" , packageString], bufsize=1)
+def install(packageString, common, triplet):
+    s = packageString;
+    if len(triplet) > 0:
+        s += ":" + triplet
+
+    p = Popen(["./vcpkg/vcpkg", "install" , s], bufsize=1)
     p.wait()
     if p.returncode != 0:
         return
