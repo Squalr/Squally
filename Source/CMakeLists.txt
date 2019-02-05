@@ -64,7 +64,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # setup rpath so binaries can search relative to themselves for libs
-    set_target_properties(Launcher PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")
 endif()
 
 # Install steam appid file
