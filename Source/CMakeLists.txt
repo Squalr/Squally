@@ -1,5 +1,5 @@
 # Copyright 2019 Squalr
-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Squally executable
 include(manifest.cmake)
@@ -72,7 +72,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 )
 
 # Copy steamworks runtime (regex is to switch lib for dll on Windows)
-string(REGEX REPLACE "\\.lib$" "dll" STEAMWORKS_API_LIBRARY_RUNTIME ${STEAMWORKS_API_LIBRARY})
+string(REGEX REPLACE "\\.lib$" ".dll" STEAMWORKS_API_LIBRARY_RUNTIME ${STEAMWORKS_API_LIBRARY})
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${STEAMWORKS_API_LIBRARY_RUNTIME}
