@@ -14,37 +14,17 @@
       "ctestCommandArgs": "",
       "variables": [
         {
-          "name": "BUILD_LUA_LIBS",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_JS_LIBS",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_EDITOR_SPINE",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_EDITOR_COCOSTUDIO",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_EDITOR_COCOSBUILDER",
+          "name": "BUILD_SHARED_LIBS",
           "value": "OFF"
         },
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
           "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
-        },
-        {
-          "name": "CMAKE_FIND_ROOT_PATH",
-          "value": "${workspaceRoot}/vcpkg/packages"
         }
       ]
     },
     {
-      "name": "x86-Release",
+      "name": "x86-RelWithDebInfo",
       "generator": "Ninja",
       "configurationType": "RelWithDebInfo",
       "inheritEnvironments": [
@@ -57,32 +37,35 @@
       "ctestCommandArgs": "",
       "variables": [
         {
-          "name": "BUILD_LUA_LIBS",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_JS_LIBS",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_EDITOR_SPINE",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_EDITOR_COCOSTUDIO",
-          "value": "OFF"
-        },
-        {
-          "name": "BUILD_EDITOR_COCOSBUILDER",
+          "name": "BUILD_SHARED_LIBS",
           "value": "OFF"
         },
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
           "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        }
+      ]
+    },
+    {
+      "name": "x86-Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "inheritEnvironments": [
+        "msvc_x86"
+      ],
+      "buildRoot": "${workspaceRoot}/build/${workspaceHash}/${name}",
+      "installRoot": "${workspaceRoot}/install/${workspaceHash}/${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "-v",
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "BUILD_SHARED_LIBS",
+          "value": "OFF"
         },
         {
-          "name": "CMAKE_FIND_ROOT_PATH",
-          "value": "${workspaceRoot}/vcpkg/packages"
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake"
         }
       ]
     }

@@ -9,7 +9,7 @@
 #define _ASMTK_GLOBALS_H
 
 // [Dependencies]
-#include "asmjit.h"
+#include <asmjit/asmjit.h>
 
 namespace asmtk {
 } // asmtk namespace

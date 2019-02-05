@@ -1,6 +1,6 @@
 #include "SerializableLayer.h"
 
-#include <tinyxml2/tinyxml2.h>
+#include <tinyxml2.h>
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"

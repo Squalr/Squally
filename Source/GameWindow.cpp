@@ -51,7 +51,7 @@ bool GameWindow::applicationDidFinishLaunching()
 	Director* director = Director::getInstance();
 	GLViewImpl* glView;
 
-	Size resolutionSize = ConfigManager::getResolutionSize();
+	cocos2d::Size resolutionSize = ConfigManager::getResolutionSize();
 
 	if (ConfigManager::getIsFullScreen())
 	{
@@ -60,7 +60,7 @@ bool GameWindow::applicationDidFinishLaunching()
 	}
 	else
 	{
-		glView = GLViewImpl::createWithRect(GameWindow::GameWindowTitle, Rect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
+		glView = GLViewImpl::createWithRect(GameWindow::GameWindowTitle, cocos2d::Rect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 	

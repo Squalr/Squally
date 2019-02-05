@@ -1,6 +1,0 @@
-# CMake generation dependency list for this directory.
-F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/asmjit/CMakeLists.txt
-F:/Users/Zachary/Documents/Visual Studio 2017/Projects/Squally/cocos2d/external/asmjit/CxxProject.cmake
-F:/Program Files/CMake/share/cmake-3.11/Modules/CheckCXXCompilerFlag.cmake
-F:/Program Files/CMake/share/cmake-3.11/Modules/CheckCXXSourceCompiles.cmake
-F:/Program Files/CMake/share/cmake-3.11/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake
