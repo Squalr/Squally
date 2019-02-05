@@ -150,6 +150,11 @@ void PlatformerEntity::update(float dt)
 {
 	CollisionObject::update(dt);
 
+	if (this->isDead())
+	{
+		return;
+	}
+
 	Vec2 velocity = this->getVelocity();
 
 	velocity.x += this->movement.x * PlatformerEntity::moveAcceleration * dt;
@@ -194,6 +199,21 @@ void PlatformerEntity::update(float dt)
 	}
 }
 
+void PlatformerEntity::takeDamage(int healthDelta)
+{
+	if (this->isDead())
+	{
+		return;
+	}
+
+	this->health = std::max(0, healthDelta + this->health);
+
+	if (this->health <= 0)
+	{
+		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+	}
+}
+
 int PlatformerEntity::getHealth()
 {
 	return this->health;
@@ -204,14 +224,19 @@ int PlatformerEntity::getMaxHealth()
 	return this->maxHealth;
 }
 
+bool PlatformerEntity::isDead()
+{
+	return this->health <= 0;
+}
+
 int PlatformerEntity::getSpecial()
 {
-	return this->health;
+	return this->special;
 }
 
 int PlatformerEntity::getMaxSpecial()
 {
-	return this->maxHealth;
+	return this->maxSpecial;
 }
 
 int PlatformerEntity::getRunes()
@@ -229,7 +254,7 @@ Size PlatformerEntity::getEntitySize()
 	return this->entitySize;
 }
 
-void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void()> onCastComplete)
+void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void(CastResult)> onCastComplete)
 {
 	this->animationNode->playAnimation(attack->getAttackAnimation());
 
@@ -242,7 +267,11 @@ void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* ta
 		DelayTime::create(attack->getRecoverDuration()),
 		CallFunc::create([=]()
 		{
-			onCastComplete();
+			int damage = -RandomHelper::random_int(attack->getBaseDamageMin(), attack->getBaseDamageMax());
+
+			target->takeDamage(damage);
+
+			onCastComplete(CastResult(damage));
 		}),
 		nullptr
 	));

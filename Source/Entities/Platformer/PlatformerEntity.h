@@ -14,13 +14,22 @@ class SpeechBubble;
 class PlatformerEntity : public CollisionObject
 {
 public:
+	struct CastResult
+	{
+		int damageDelta;
+
+		CastResult(int damageDelta) : damageDelta(damageDelta) { }
+	};
+
 	int getHealth();
+	void takeDamage(int healthDelta);
 	int getMaxHealth();
+	bool isDead();
 	int getSpecial();
 	int getMaxSpecial();
 	int getRunes();
 	int getMaxRunes();
-	void castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void()> onCastComplete);
+	void castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void(CastResult)> onCastComplete);
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	std::string getEmblemResource();

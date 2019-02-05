@@ -20,9 +20,16 @@ public:
 	static SmartAnimationNode* create(std::string animationResource);
 	static SmartAnimationNode* create(std::string animationResource, std::string entityName);
 
-	void playAnimation(bool repeat = false, float blendTime = 0.25f);
-	void playAnimation(const char* animationName, bool repeat = false, float blendTime = 0.25f);
-	void playAnimation(std::string animationName, bool repeat = false, float blendTime = 0.25f);
+	enum class AnimationPlayMode
+	{
+		ReturnToIdle,
+		Repeat,
+		PauseOnAnimationComplete
+	};
+
+	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
+	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
+	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
 	AnimationPart* getAnimationPart(std::string partName);
 	void restoreAnimationPart(std::string partName);
 	void setFlippedX(bool flippedX);
