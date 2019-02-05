@@ -19,6 +19,7 @@ add_executable(${PROJECT_NAME}
 set_target_properties(${PROJECT_NAME} PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    LINK_FLAGS $<$<PLATFORM_ID:Linux>:"-Wl,-rpath,'$ORIGIN/lib'">
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
