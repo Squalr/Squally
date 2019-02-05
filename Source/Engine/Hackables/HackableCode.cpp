@@ -198,7 +198,19 @@ HackableCode::~HackableCode()
 
 HackableCode* HackableCode::clone()
 {
-	return HackableCode::create(this->codePointer, this->codeEndPointer, this->lateBindData);
+	LateBindData clonedData = this->lateBindData;
+	std::map<Register, LocalizedString*> registerHintsClone = std::map<Register, LocalizedString*>();
+
+	clonedData.functionName = this->lateBindData.functionName->clone();
+
+	for (auto it = this->lateBindData.registerHints.begin(); it != this->lateBindData.registerHints.begin(); it++)
+	{
+		registerHintsClone[it->first] = it->second;
+	}
+
+	clonedData.registerHints = registerHintsClone;
+
+	return HackableCode::create(this->codePointer, this->codeEndPointer, clonedData);
 }
 
 std::string HackableCode::getHackableCodeIdentifier()
