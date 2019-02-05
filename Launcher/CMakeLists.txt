@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Find platform specific dependencies
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
