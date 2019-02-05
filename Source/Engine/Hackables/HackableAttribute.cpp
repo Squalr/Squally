@@ -19,7 +19,10 @@ HackableAttribute::HackableAttribute(std::string iconResource, LocalizedString* 
 
 HackableAttribute::~HackableAttribute()
 {
-	this->hackablePreview->release();
+	if (this->hackablePreview != nullptr)
+	{
+		this->hackablePreview->release();
+	}
 }
 
 std::string HackableAttribute::getIconResource()
