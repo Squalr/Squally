@@ -50,7 +50,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 )
 
 # Platform specific target options
-if(APPLE)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE YES
         MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/proj.mac/Info.plist
@@ -58,10 +58,13 @@ if(APPLE)
     set_source_files_properties(${PROJECT_SOURCE_DIR}/proj.mac/Icon.icns PROPERTIES
         MACOSX_PACKAGE_LOCATION Resources
     )
-elseif(WIN32)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE YES
     )
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    # setup rpath so binaries can search relative to themselves for libs
+    set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")
 endif()
 
 # Install steam appid file
