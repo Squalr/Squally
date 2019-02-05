@@ -1,10 +1,10 @@
 #include "DialogMenu.h"
 
-#include "allocators.h"
-#include "encodings.h"
-#include "document.h"
-#include "stringbuffer.h"
-#include "writer.h"
+#include <rapidjson/allocators.h>
+#include <rapidjson/encodings.h>
+#include <rapidjson/document.h>
+#include <rapidjson/stringbuffer.h>
+#include <rapidjson/writer.h>
 
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCDrawNode.h"

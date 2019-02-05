@@ -96,9 +96,8 @@
     "C_Cpp.configurationWarnings": "Disabled",
     "cmake.generator": "Ninja",
     "cmake.configureSettings": {
-        "CMAKE_MAKE_PROGRAM": "ninja",
-        "BUILD_LUA_LIBS": "OFF",
-        "BUILD_JS_LIBS": "OFF",
+        "CMAKE_TOOLCHAIN_FILE": "${workspaceRoot}/vcpkg/scripts/buildsystems/vcpkg.cmake",
+        "BUILD_SHARED_LIBS": "OFF",
         "BUILD_EDITOR_SPINE": "OFF",
         "BUILD_EDITOR_COCOSTUDIO": "OFF",
         "BUILD_EDITOR_COCOSBUILDER": "OFF"

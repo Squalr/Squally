@@ -1,0 +1,29 @@
+{
+    "common": [
+        "asmjit", 
+        "cereal", 
+        "curl", 
+        "freetype", 
+        "glew", 
+        "glfw3", 
+        "libjpeg-turbo", 
+        "libogg", 
+        "libpng", 
+        "libvorbis", 
+        "libwebp", 
+        "mpg123", 
+        "rapidjson", 
+        "tiff", 
+        "tinyxml2", 
+        "xxhash", 
+        "zlib", 
+        "sqlite3"
+    ], 
+    "darwin": [], 
+    "linux": [
+        "fontconfig"
+    ], 
+    "windows": [
+        "openal-soft"
+    ]
+}

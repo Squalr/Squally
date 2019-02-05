@@ -4,7 +4,7 @@
 #include "cocos/2d/CCFastTMXTiledMap.h"
 #include "cocos/base/CCValue.h"
 
-#include <tinyxml2/tinyxml2.h>
+#include <tinyxml2.h>
 
 #include "Engine/Maps/ObjectifiedTile.h"
 #include "Engine/Utils/GameUtils.h"

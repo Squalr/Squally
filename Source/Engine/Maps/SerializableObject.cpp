@@ -2,7 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
-#include <tinyxml2/tinyxml2.h>
+#include <tinyxml2.h>
 
 #include "Engine/Utils/GameUtils.h"
 
