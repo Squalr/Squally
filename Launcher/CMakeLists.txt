@@ -41,6 +41,7 @@ target_compile_options(Launcher PRIVATE
 set_target_properties(Launcher PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     RUNTIME_OUTPUT_DIRECTORY $<TARGET_FILE_DIR:${PROJECT_NAME}>
+    LINK_FLAGS $<$<PLATFORM_ID:Linux>:"-Wl,-rpath,'$ORIGIN/lib'">
 )
 
 # On Windows, mark launcher as a win32 executable
