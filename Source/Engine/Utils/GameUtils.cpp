@@ -224,76 +224,74 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	return depth;
 }
 
-Rect GameUtils::getWorldBounds(Node* node)
+Vec3 GameUtils::getWorldCoords(Node* node)
 {
 	if (node == nullptr)
 	{
-		return Rect::ZERO;
+		return Vec3::ZERO;
 	}
 
 	Rect resultRect = node->getBoundingBox();
-	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2);
-	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
+	Vec3 resultCoords = Vec3(resultRect.getMinX() - resultRect.size.width / 2, resultRect.getMinY() - resultRect.size.height / 2, node->getPositionZ());
 
 	if (node->getParent() != nullptr)
 	{
-		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
+		resultCoords = node->getParent()->convertToWorldSpace3(resultCoords);
 	}
 
-	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
-
-	return resultRect;
+	return resultCoords;
 }
 
-Rect GameUtils::getWorldBoundsV2(Node* node)
+Vec3 GameUtils::getWorldCoordsV2(Node* node)
 {
 	if (node == nullptr)
 	{
-		return Rect::ZERO;
+		return Vec3::ZERO;
 	}
 
 	Rect resultRect = node->getBoundingBox();
-	Vec2 resultCoords = Vec2(resultRect.getMinX(), resultRect.getMinY());
-	Vec2 resultSize = Vec2(resultRect.size.width, resultRect.size.height);
+	Vec3 resultCoords = Vec3(resultRect.getMinX(), resultRect.getMinY(), node->getPositionZ());
 
 	if (node->getParent() != nullptr)
 	{
-		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
+		resultCoords = node->getParent()->convertToWorldSpace3(resultCoords);
 	}
 
-	resultRect.setRect(resultCoords.x, resultCoords.y, resultSize.x, resultSize.y);
-
-	return resultRect;
+	return resultCoords;
 }
 
 Rect GameUtils::getScreenBounds(Node* node)
 {
-	Rect resultRect = GameUtils::getWorldBounds(node);
-	Vec2 resultCoords = resultRect.origin;
-
 	if (Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
 	{
 		return Rect::ZERO;
 	}
 
-	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
-	resultRect.setRect(resultCoords.x, resultCoords.y, resultRect.size.width, resultRect.size.height);
+	Rect worldRect = node->getBoundingBox();
+	Vec3 worldCoordsA = GameUtils::getWorldCoords(node);
+	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f);
+
+	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
+	Vec2 resultCoordsB = Camera::getDefaultCamera()->projectGL(worldCoordsB);
+	Rect resultRect = Rect(resultCoordsA, Size(resultCoordsB - resultCoordsA));
 
 	return resultRect;
 }
 
 Rect GameUtils::getScreenBoundsV2(Node* node)
 {
-	Rect resultRect = GameUtils::getWorldBoundsV2(node);
-	Vec2 resultCoords = resultRect.origin;
-
 	if (Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
 	{
 		return Rect::ZERO;
 	}
 
-	resultCoords -= (Camera::getDefaultCamera()->getPosition() - Director::getInstance()->getVisibleSize() / 2.0f);
-	resultRect.setRect(resultCoords.x, resultCoords.y, resultRect.size.width, resultRect.size.height);
+	Rect worldRect = node->getBoundingBox();
+	Vec3 worldCoordsA = GameUtils::getWorldCoordsV2(node);
+	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f);
+
+	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
+	Vec2 resultCoordsB = Camera::getDefaultCamera()->projectGL(worldCoordsB);
+	Rect resultRect = Rect(resultCoordsA, Size(resultCoordsB - resultCoordsA));
 
 	return resultRect;
 }
