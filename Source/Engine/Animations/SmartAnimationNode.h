@@ -2,7 +2,7 @@
 #include "Engine/SmartNode.h"
 
 // forward declarations
-namespace cocos2d
+namespace Spriter2dX
 {
 	class AnimationNode;
 }
@@ -41,7 +41,7 @@ public:
 	static const std::string DefaultAnimationName;
 
 protected:
-	cocos2d::AnimationNode* animationNode;
+	Spriter2dX::AnimationNode* animationNode;
 	SpriterEngine::EntityInstance* entity;
 
 private:
