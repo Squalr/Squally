@@ -38,7 +38,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     cocos2d::cocos2d
     udis86::udis86
     SteamWorks::API
-    spriterengine::spriterengine
+    spriter2dx::spriter2dx
 
     # platform dependencies
     $<$<PLATFORM_ID:Windows>:iphlpapi>

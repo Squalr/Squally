@@ -44,8 +44,8 @@ set_target_properties(tinyxml2::tinyxml2 PROPERTIES
 ###############################################################################
 
 # Bundled Dependencies
-add_subdirectory(${PROJECT_SOURCE_DIR}/external)
 add_subdirectory(${PROJECT_SOURCE_DIR}/cocos2d)
+add_subdirectory(${PROJECT_SOURCE_DIR}/external)
 
 # Capture configuration to header
 configure_file(

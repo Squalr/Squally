@@ -1,6 +1,6 @@
 #include "AnimationPart.h"
 
-#include "SpriterPlusPlus/CCAnimationNode.h"
+#include <spriter2dx/AnimationNode.h>
 
 using namespace cocos2d;
 
