@@ -11,3 +11,9 @@
 [submodule "vcpkg"]
 	path = vcpkg
 	url = git@github.com:mattbucci/vcpkg.git
+[submodule "external/spriter2dx"]
+	path = external/spriter2dx
+	url = git@github.com:zcanann/Spriter2dX
+[submodule "external/spriterplusplus"]
+	path = external/spriterplusplus
+	url = git@github.com:zcanann/SpriterPlusPlus
