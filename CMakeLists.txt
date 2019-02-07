@@ -5,6 +5,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 # External dependencies
+find_package(udis86)
 find_package(asmjit)
 find_package(RapidJSON REQUIRED)
 find_package(tinyxml2 REQUIRED)
@@ -44,8 +45,8 @@ set_target_properties(tinyxml2::tinyxml2 PROPERTIES
 ###############################################################################
 
 # Bundled Dependencies
-add_subdirectory(${PROJECT_SOURCE_DIR}/external)
 add_subdirectory(${PROJECT_SOURCE_DIR}/cocos2d)
+add_subdirectory(${PROJECT_SOURCE_DIR}/external)
 
 # Capture configuration to header
 configure_file(
