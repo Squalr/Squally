@@ -492,8 +492,6 @@ const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations =
 const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_BELT = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/BELT.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/Emblem.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_HEAD = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/HEAD.png";
-const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_HEAD1 = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/HEAD1.png";
-const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_HEAD2 = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/HEAD2.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_JAW = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/JAW.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_L_ARM_1 = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/L ARM 1.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonGrunt_L_ARM_2 = "Platformer/Entities/Enemies/DaemonsHallow/DemonGrunt/L ARM 2.png";
@@ -581,7 +579,6 @@ const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations
 const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_BELT = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/BELT.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/Emblem.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_HEAD = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/HEAD.png";
-const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_HEAD2 = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/HEAD2.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_JAW = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/JAW.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_L_ARM_1 = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/L ARM 1.png";
 const std::string EntityResources::Enemies_DaemonsHallow_DemonWarrior_L_ARM_2 = "Platformer/Entities/Enemies/DaemonsHallow/DemonWarrior/L ARM 2.png";

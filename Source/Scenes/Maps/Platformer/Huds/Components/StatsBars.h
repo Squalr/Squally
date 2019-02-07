@@ -7,7 +7,9 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class CProgressBar;
+class LocalizedLabel;
 class PlatformerEntity;
 
 class StatsBars : public SmartNode
@@ -32,11 +34,12 @@ private:
 	bool isFrameOnLeft;
 	cocos2d::Sprite* frame;
 	cocos2d::Sprite* emblem;
-	CProgressBar* heartBar;
-	CProgressBar* specialBar;
-
-	std::vector<cocos2d::Sprite*> emptyRunes;
-	std::vector<cocos2d::Sprite*> filledRunes;
-
-	static const int RuneCount;
+	CProgressBar* healthBar;
+	CProgressBar* manaBar;
+	LocalizedLabel* healthLabel;
+	ConstantString* healthNumerator;
+	ConstantString* healthDenominator;
+	LocalizedLabel* manaLabel;
+	ConstantString* manaNumerator;
+	ConstantString* manaDenominator;
 };

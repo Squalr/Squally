@@ -11,6 +11,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Maps/Platformer/Huds/Components/HackableBar.h"
 #include "Scenes/Maps/Platformer/Huds/Components/StatsBars.h"
 #include "Scenes/Maps/Platformer/Huds/GameHud.h"
 
@@ -92,5 +93,6 @@ void PlatformerMap::loadMap(SerializableMap* levelMap)
 {
 	super::loadMap(levelMap);
 
+	this->gameHud->getHackableBar()->setStatsTarget(Squally::getInstance());
 	this->gameHud->getStatsBars()->setStatsTarget(Squally::getInstance());
 }
