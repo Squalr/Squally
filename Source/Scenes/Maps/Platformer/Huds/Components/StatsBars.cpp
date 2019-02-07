@@ -4,15 +4,17 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 
 #include "Resources/UIResources.h"
-#include "Engine/Utils/MathUtils.h"
+
+#include "Strings/Generics/XOverY.h"
 
 using namespace cocos2d;
-
-const int StatsBars::RuneCount = 4;
 
 StatsBars* StatsBars::create(bool isFrameOnLeft)
 {
@@ -30,38 +32,29 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->target = nullptr;
 	this->frame = Sprite::create(UIResources::HUD_Frame);
-	this->heartBar = CProgressBar::create(Sprite::create(UIResources::HUD_HPBarFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
-	this->specialBar = CProgressBar::create(Sprite::create(UIResources::HUD_MPBarFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
+	this->healthBar = CProgressBar::create(Sprite::create(UIResources::HUD_HPBarFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
+	this->manaBar = CProgressBar::create(Sprite::create(UIResources::HUD_MPBarFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
+	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
+	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
+	this->healthNumerator = ConstantString::create();
+	this->healthDenominator = ConstantString::create();
+	this->manaNumerator = ConstantString::create();
+	this->manaDenominator = ConstantString::create();
 
-	for (int index = 0; index < StatsBars::RuneCount; index++)
-	{
-		Sprite* emptyRune = Sprite::create(UIResources::HUD_TearSlot);
-		Sprite* rune = Sprite::create(UIResources::HUD_Tear);
+	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
+	this->manaLabel->setStringReplacementVariables({ this->manaNumerator, this->manaDenominator });
 
-		emptyRune->setAnchorPoint(Vec2(0.0f, 0.5f));
-		rune->setAnchorPoint(Vec2(0.0f, 0.5f));
-
-		emptyRunes.push_back(emptyRune);
-		filledRunes.push_back(rune);
-	}
-
+	this->healthLabel->enableOutline(Color4B::BLACK, 2);
+	this->manaLabel->enableOutline(Color4B::BLACK, 2);
 	this->frame->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->heartBar->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->specialBar->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->healthBar->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->manaBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 
+	this->healthBar->addChild(this->healthLabel);
+	this->manaBar->addChild(this->manaLabel);
 	this->addChild(this->frame);
-	this->addChild(this->heartBar);
-	this->addChild(this->specialBar);
-
-	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)
-	{
-		this->addChild(*it);
-	}
-
-	for (auto it = this->filledRunes.begin(); it != this->filledRunes.end(); it++)
-	{
-		this->addChild(*it);
-	}
+	this->addChild(this->healthBar);
+	this->addChild(this->manaBar);
 }
 
 void StatsBars::onEnter()
@@ -79,29 +72,11 @@ void StatsBars::initializePositions()
 
 	float barInset = this->isFrameOnLeft ? 80.0f : 0.0f;
 	float runeInset = this->isFrameOnLeft ? 8.0f : 64.0f;
-	float frameOffset = this->isFrameOnLeft ? 0.0f : (this->heartBar->getContentSize().width + 12.0f);
+	float frameOffset = this->isFrameOnLeft ? 0.0f : (this->healthBar->getContentSize().width + 12.0f);
 
-	this->frame->setPosition(Vec2(frameOffset, -this->heartBar->getContentSize().height));
-	this->heartBar->setPosition(Vec2(barInset + this->heartBar->getContentSize().width / 2.0f, 0.0f));
-	this->specialBar->setPosition(Vec2(barInset + this->specialBar->getContentSize().width / 2.0f, -this->heartBar->getContentSize().height));
-
-	int index = 0;
-
-	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)
-	{
-		(*it)->setPosition(Vec2(barInset + runeInset + (float)index * 34.0f, -this->heartBar->getContentSize().height - this->specialBar->getContentSize().height - 24.0f));
-
-		index++;
-	}
-
-	index = 0;
-
-	for (auto it = this->filledRunes.begin(); it != this->filledRunes.end(); it++)
-	{
-		(*it)->setPosition(Vec2(barInset + runeInset + (float)index * 34.0f, -this->heartBar->getContentSize().height - this->specialBar->getContentSize().height - 24.0f));
-
-		index++;
-	}
+	this->frame->setPosition(Vec2(frameOffset, -this->healthBar->getContentSize().height));
+	this->healthBar->setPosition(Vec2(barInset + this->healthBar->getContentSize().width / 2.0f, 0.0f));
+	this->manaBar->setPosition(Vec2(barInset + this->manaBar->getContentSize().width / 2.0f, -this->healthBar->getContentSize().height));
 }
 
 void StatsBars::initializeListeners()
@@ -121,28 +96,18 @@ void StatsBars::update(float dt)
 	int health = this->target->getHealth();
 	int maxHealth = this->target->getMaxHealth();
 	float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
+	this->healthNumerator->setString(std::to_string(health));
+	this->healthDenominator->setString(std::to_string(maxHealth));
 
-	this->heartBar->setProgress(healthPercent);
+	this->healthBar->setProgress(healthPercent);
 
-	int special = this->target->getSpecial();
-	int maxSpecial = this->target->getMaxSpecial();
-	float specialPercent = MathUtils::clamp((float)special / (maxSpecial == 0 ? 1.0f : (float)maxSpecial), 0.0f, 1.0f);
+	int mana = this->target->getMana();
+	int maxMana = this->target->getMaxMana();
+	float manaPercent = MathUtils::clamp((float)mana / (maxMana == 0 ? 1.0f : (float)maxMana), 0.0f, 1.0f);
+	this->manaNumerator->setString(std::to_string(mana));
+	this->manaDenominator->setString(std::to_string(maxMana));
 
-	this->specialBar->setProgress(specialPercent);
-
-	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
-	{
-		if (index < this->target->getRunes())
-		{
-			this->filledRunes[index]->setVisible(true);
-			this->emptyRunes[index]->setVisible(false);
-		}
-		else
-		{
-			this->filledRunes[index]->setVisible(false);
-			this->emptyRunes[index]->setVisible(true);
-		}
-	}
+	this->manaBar->setProgress(manaPercent);
 }
 
 void StatsBars::setStatsTarget(PlatformerEntity* target)

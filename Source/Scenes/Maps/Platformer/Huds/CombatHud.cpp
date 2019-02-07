@@ -50,7 +50,7 @@ void CombatHud::initializePositions()
 
 	for (auto it = this->playerPartyStatsBars.begin(); it != this->playerPartyStatsBars.end(); it++)
 	{
-		(*it)->setPositionY((float)index * -72.0f);
+		(*it)->setPositionY((float)index * -128.0f);
 
 		index++;
 	}
@@ -60,7 +60,7 @@ void CombatHud::initializePositions()
 	for (auto it = this->enemyPartyStatsBars.begin(); it != this->enemyPartyStatsBars.end(); it++)
 	{
 		(*it)->setAnchorPoint(Vec2(1.0f, 0.5f));
-		(*it)->setPositionY((float)index * -160.0f);
+		(*it)->setPositionY((float)index * -128.0f);
 
 		index++;
 	}

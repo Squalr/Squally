@@ -25,8 +25,8 @@ public:
 	void takeDamage(int healthDelta);
 	int getMaxHealth();
 	bool isDead();
-	int getSpecial();
-	int getMaxSpecial();
+	int getMana();
+	int getMaxMana();
 	int getRunes();
 	int getMaxRunes();
 	void castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void(CastResult)> onCastComplete);
@@ -38,7 +38,7 @@ public:
 	ClickableNode* clickHitbox;
 
 	static const int FallBackMaxHealth;
-	static const int FallBackMaxSpecial;
+	static const int FallBackMaxMana;
 	static const int MaxRunes;
 
 protected:
@@ -70,8 +70,8 @@ protected:
 	
 	int health;
 	int maxHealth;
-	int special;
-	int maxSpecial;
+	int mana;
+	int maxMana;
 	int runes;
 
 	cocos2d::Size entitySize;

@@ -61,6 +61,7 @@ void TextOverlays::initializeListeners()
 			this->addChild(deltaLabel);
 
 			deltaLabel->setPosition(damageArgs->target->getPosition() + Vec2(0.0f, damageArgs->target->getEntitySize().height + 16.0f));
+			deltaLabel->setPositionZ(damageArgs->target->getPositionZ());
 			deltaLabel->enableOutline(Color4B::BLACK, 2);
 			deltaLabel->setTextColor(damageArgs->delta < 0 ? Color4B::RED : Color4B::BLUE);
 

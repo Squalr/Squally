@@ -493,8 +493,6 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_BELT;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_HEAD;
-	extern const std::string Enemies_DaemonsHallow_DemonGrunt_HEAD1;
-	extern const std::string Enemies_DaemonsHallow_DemonGrunt_HEAD2;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_JAW;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_L_ARM_1;
 	extern const std::string Enemies_DaemonsHallow_DemonGrunt_L_ARM_2;
@@ -582,7 +580,6 @@ namespace EntityResources
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_BELT;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_Emblem;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_HEAD;
-	extern const std::string Enemies_DaemonsHallow_DemonWarrior_HEAD2;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_JAW;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_L_ARM_1;
 	extern const std::string Enemies_DaemonsHallow_DemonWarrior_L_ARM_2;

@@ -22,7 +22,7 @@ const float PlatformerEntity::maxJumpSpeed = 720.0f;
 const float PlatformerEntity::maxFallSpeed = -1280.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
-const int PlatformerEntity::FallBackMaxSpecial = 10;
+const int PlatformerEntity::FallBackMaxMana = 10;
 const int PlatformerEntity::MaxRunes = 4;
 
 using namespace cocos2d;
@@ -109,10 +109,10 @@ PlatformerEntity::PlatformerEntity(
 	}
 
 	this->maxHealth = baseHealth;
-	this->maxSpecial = baseSpecial;
+	this->maxMana = baseSpecial;
 
 	this->health = this->maxHealth;
-	this->special = this->maxSpecial;
+	this->mana = this->maxMana;
 	this->runes = PlatformerEntity::MaxRunes;
 
 	this->addChild(this->groundCollisionDetector);
@@ -229,14 +229,14 @@ bool PlatformerEntity::isDead()
 	return this->health <= 0;
 }
 
-int PlatformerEntity::getSpecial()
+int PlatformerEntity::getMana()
 {
-	return this->special;
+	return this->mana;
 }
 
-int PlatformerEntity::getMaxSpecial()
+int PlatformerEntity::getMaxMana()
 {
-	return this->maxSpecial;
+	return this->maxMana;
 }
 
 int PlatformerEntity::getRunes()
