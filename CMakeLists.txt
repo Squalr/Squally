@@ -5,6 +5,7 @@ set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 # External dependencies
+find_package(udis86)
 find_package(asmjit)
 find_package(RapidJSON REQUIRED)
 find_package(tinyxml2 REQUIRED)
