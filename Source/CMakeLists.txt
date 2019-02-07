@@ -29,16 +29,16 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
     # vcpkg resources
     asmjit::asmjit
+    udis86::udis86
     tinyxml2::tinyxml2
     RapidJSON::RapidJSON
     CURL::libcurl
 
     # internal dependencies
-    breakpad::client
     cocos2d::cocos2d
-    udis86::udis86
+    spriter2dx::spriter2dx
     SteamWorks::API
-    spriterengine::spriterengine
+    breakpad::client
 
     # platform dependencies
     $<$<PLATFORM_ID:Windows>:iphlpapi>
