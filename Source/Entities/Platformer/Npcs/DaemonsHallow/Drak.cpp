@@ -8,7 +8,7 @@
 
 const std::string Drak::MapKeyDrak = "drak";
 
-Drak* Drak::deserialize(cocos2d::ValueMap* initProperties)
+Drak* Drak::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Drak* instance = new Drak(initProperties);
 
@@ -17,7 +17,7 @@ Drak* Drak::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Drak::Drak(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Drak::Drak(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Drak_Animations,
 	EntityResources::Npcs_DaemonsHallow_Drak_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string Ogre::MapKeyOgre = "ogre";
 
-Ogre* Ogre::deserialize(cocos2d::ValueMap* initProperties)
+Ogre* Ogre::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ogre* instance = new Ogre(initProperties);
 
@@ -17,7 +17,7 @@ Ogre* Ogre::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ogre::Ogre(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Ogre::Ogre(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Ogre_Animations,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,
 	PlatformerCollisionType::Enemy,

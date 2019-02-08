@@ -10,11 +10,11 @@
 class Leon : public NpcBase
 {
 public:
-	static Leon* deserialize(cocos2d::ValueMap* initProperties);
+	static Leon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLeon;
 
 private:
-	Leon(cocos2d::ValueMap* initProperties);
+	Leon(cocos2d::ValueMap& initProperties);
 	~Leon();
 };

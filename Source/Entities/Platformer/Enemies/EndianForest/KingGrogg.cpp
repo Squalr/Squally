@@ -8,7 +8,7 @@
 
 const std::string KingGrogg::MapKeyKingGrogg = "king-grogg";
 
-KingGrogg* KingGrogg::deserialize(cocos2d::ValueMap* initProperties)
+KingGrogg* KingGrogg::deserialize(cocos2d::ValueMap& initProperties)
 {
 	KingGrogg* instance = new KingGrogg(initProperties);
 
@@ -17,7 +17,7 @@ KingGrogg* KingGrogg::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-KingGrogg::KingGrogg(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+KingGrogg::KingGrogg(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	PlatformerCollisionType::Enemy,

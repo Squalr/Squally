@@ -8,7 +8,7 @@
 
 const std::string Grim::MapKeyGrim = "grim";
 
-Grim* Grim::deserialize(cocos2d::ValueMap* initProperties)
+Grim* Grim::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Grim* instance = new Grim(initProperties);
 
@@ -17,7 +17,7 @@ Grim* Grim::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Grim::Grim(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Grim::Grim(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Grim_Animations,
 	EntityResources::Helpers_Grim_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

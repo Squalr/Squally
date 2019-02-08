@@ -10,11 +10,11 @@
 class DemonGhost : public PlatformerEnemy
 {
 public:
-	static DemonGhost* deserialize(cocos2d::ValueMap* initProperties);
+	static DemonGhost* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyDemonGhost;
 
 private:
-	DemonGhost(cocos2d::ValueMap* initProperties);
+	DemonGhost(cocos2d::ValueMap& initProperties);
 	~DemonGhost();
 };

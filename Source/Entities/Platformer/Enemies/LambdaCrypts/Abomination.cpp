@@ -8,7 +8,7 @@
 
 const std::string Abomination::MapKeyAbomination = "abomination";
 
-Abomination* Abomination::deserialize(cocos2d::ValueMap* initProperties)
+Abomination* Abomination::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Abomination* instance = new Abomination(initProperties);
 
@@ -17,7 +17,7 @@ Abomination* Abomination::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Abomination::Abomination(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Abomination::Abomination(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Abomination_Animations,
 	EntityResources::Enemies_LambdaCrypts_Abomination_Emblem,
 	PlatformerCollisionType::Enemy,

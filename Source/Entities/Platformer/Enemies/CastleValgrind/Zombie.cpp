@@ -8,7 +8,7 @@
 
 const std::string Zombie::MapKeyZombie = "zombie";
 
-Zombie* Zombie::deserialize(cocos2d::ValueMap* initProperties)
+Zombie* Zombie::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Zombie* instance = new Zombie(initProperties);
 
@@ -17,7 +17,7 @@ Zombie* Zombie::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Zombie::Zombie(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Zombie::Zombie(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
 	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
 	PlatformerCollisionType::Enemy,

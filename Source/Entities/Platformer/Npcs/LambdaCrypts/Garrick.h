@@ -10,11 +10,11 @@
 class Garrick : public NpcBase
 {
 public:
-	static Garrick* deserialize(cocos2d::ValueMap* initProperties);
+	static Garrick* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGarrick;
 
 private:
-	Garrick(cocos2d::ValueMap* initProperties);
+	Garrick(cocos2d::ValueMap& initProperties);
 	~Garrick();
 };

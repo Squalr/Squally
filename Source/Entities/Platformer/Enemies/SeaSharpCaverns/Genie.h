@@ -10,11 +10,11 @@
 class Genie : public PlatformerEnemy
 {
 public:
-	static Genie* deserialize(cocos2d::ValueMap* initProperties);
+	static Genie* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGenie;
 
 private:
-	Genie(cocos2d::ValueMap* initProperties);
+	Genie(cocos2d::ValueMap& initProperties);
 	~Genie();
 };

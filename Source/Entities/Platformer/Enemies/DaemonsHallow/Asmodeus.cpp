@@ -8,7 +8,7 @@
 
 const std::string Asmodeus::MapKeyAsmodeus = "asmodeus";
 
-Asmodeus* Asmodeus::deserialize(cocos2d::ValueMap* initProperties)
+Asmodeus* Asmodeus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Asmodeus* instance = new Asmodeus(initProperties);
 
@@ -17,7 +17,7 @@ Asmodeus* Asmodeus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Asmodeus::Asmodeus(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Asmodeus::Asmodeus(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	PlatformerCollisionType::Enemy,

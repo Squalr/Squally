@@ -8,7 +8,7 @@
 
 const std::string PrincessMatu::MapKeyPrincessMatu = "princess-matu";
 
-PrincessMatu* PrincessMatu::deserialize(cocos2d::ValueMap* initProperties)
+PrincessMatu* PrincessMatu::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PrincessMatu* instance = new PrincessMatu(initProperties);
 
@@ -17,7 +17,7 @@ PrincessMatu* PrincessMatu::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PrincessMatu::PrincessMatu(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+PrincessMatu::PrincessMatu(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_PrincessMatu_Animations,
 	EntityResources::Npcs_EndianForest_PrincessMatu_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

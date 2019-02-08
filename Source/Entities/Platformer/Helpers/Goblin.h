@@ -10,11 +10,11 @@
 class Goblin : public PlatformerEntity
 {
 public:
-	static Goblin* deserialize(cocos2d::ValueMap* initProperties);
+	static Goblin* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGoblin;
 
 private:
-	Goblin(cocos2d::ValueMap* initProperties);
+	Goblin(cocos2d::ValueMap& initProperties);
 	~Goblin();
 };

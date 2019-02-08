@@ -23,7 +23,7 @@ namespace tinyxml2
 class SerializableLayer : public SmartNode
 {
 public:
-	static SerializableLayer* create(cocos2d::ValueMap* initProperties, std::string name,
+	static SerializableLayer* create(cocos2d::ValueMap& initProperties, std::string name,
 			const std::vector<SerializableObject*>& objects);
 	virtual void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement,
 			cocos2d::Size mapUnitSize, cocos2d::Size mapTileSize);
@@ -37,8 +37,8 @@ public:
 	static const std::string MapKeyPropertyDepth;
 
 protected:
-	SerializableLayer(cocos2d::ValueMap* initProperties, std::string name);
-	SerializableLayer(cocos2d::ValueMap* initProperties, std::string name,
+	SerializableLayer(cocos2d::ValueMap& initProperties, std::string name);
+	SerializableLayer(cocos2d::ValueMap& initProperties, std::string name,
 			const std::vector<SerializableObject*>& objects);
 	SerializableLayer();
 	virtual ~SerializableLayer();
@@ -48,7 +48,7 @@ protected:
 	std::string layerName;
 	std::vector<SerializableObject*> serializableObjects;
 	std::set<SerializableObject*> serializableObjectsSet;
-	cocos2d::ValueMap* properties;
+	cocos2d::ValueMap properties;
 
 private:
 	typedef SmartNode super;

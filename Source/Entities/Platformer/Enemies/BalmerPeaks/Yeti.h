@@ -10,11 +10,11 @@
 class Yeti : public PlatformerEnemy
 {
 public:
-	static Yeti* deserialize(cocos2d::ValueMap* initProperties);
+	static Yeti* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyYeti;
 
 private:
-	Yeti(cocos2d::ValueMap* initProperties);
+	Yeti(cocos2d::ValueMap& initProperties);
 	~Yeti();
 };

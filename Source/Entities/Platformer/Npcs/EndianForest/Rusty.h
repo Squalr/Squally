@@ -10,11 +10,11 @@
 class Rusty : public NpcBase
 {
 public:
-	static Rusty* deserialize(cocos2d::ValueMap* initProperties);
+	static Rusty* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRusty;
 
 private:
-	Rusty(cocos2d::ValueMap* initProperties);
+	Rusty(cocos2d::ValueMap& initProperties);
 	~Rusty();
 };

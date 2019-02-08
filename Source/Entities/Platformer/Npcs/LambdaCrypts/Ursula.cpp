@@ -8,7 +8,7 @@
 
 const std::string Ursula::MapKeyUrsula = "ursula";
 
-Ursula* Ursula::deserialize(cocos2d::ValueMap* initProperties)
+Ursula* Ursula::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ursula* instance = new Ursula(initProperties);
 
@@ -17,7 +17,7 @@ Ursula* Ursula::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ursula::Ursula(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Ursula::Ursula(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

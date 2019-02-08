@@ -10,11 +10,11 @@
 class Finch : public NpcBase
 {
 public:
-	static Finch* deserialize(cocos2d::ValueMap* initProperties);
+	static Finch* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyFinch;
 
 private:
-	Finch(cocos2d::ValueMap* initProperties);
+	Finch(cocos2d::ValueMap& initProperties);
 	~Finch();
 };

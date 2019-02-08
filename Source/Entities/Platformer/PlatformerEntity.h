@@ -43,7 +43,7 @@ public:
 
 protected:
 	PlatformerEntity(
-		cocos2d::ValueMap* initProperties,
+		cocos2d::ValueMap& initProperties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,

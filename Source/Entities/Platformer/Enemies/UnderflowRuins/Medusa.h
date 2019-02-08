@@ -10,11 +10,11 @@
 class Medusa : public PlatformerEnemy
 {
 public:
-	static Medusa* deserialize(cocos2d::ValueMap* initProperties);
+	static Medusa* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMedusa;
 
 private:
-	Medusa(cocos2d::ValueMap* initProperties);
+	Medusa(cocos2d::ValueMap& initProperties);
 	~Medusa();
 };

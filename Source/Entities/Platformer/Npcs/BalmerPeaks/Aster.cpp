@@ -8,7 +8,7 @@
 
 const std::string Aster::MapKeyAster = "aster";
 
-Aster* Aster::deserialize(cocos2d::ValueMap* initProperties)
+Aster* Aster::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Aster* instance = new Aster(initProperties);
 
@@ -17,7 +17,7 @@ Aster* Aster::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Aster::Aster(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Aster::Aster(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

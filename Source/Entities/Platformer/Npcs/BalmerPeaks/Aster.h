@@ -10,11 +10,11 @@
 class Aster : public NpcBase
 {
 public:
-	static Aster* deserialize(cocos2d::ValueMap* initProperties);
+	static Aster* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAster;
 
 private:
-	Aster(cocos2d::ValueMap* initProperties);
+	Aster(cocos2d::ValueMap& initProperties);
 	~Aster();
 };

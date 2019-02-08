@@ -13,12 +13,12 @@ class HackableData;
 class PendulumBlade : public HackableObject
 {
 public:
-	static PendulumBlade* create(cocos2d::ValueMap* initProperties);
+	static PendulumBlade* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPendulumBlade;
 
 protected:
-	PendulumBlade(cocos2d::ValueMap* initProperties);
+	PendulumBlade(cocos2d::ValueMap& initProperties);
 	~PendulumBlade();
 
 	cocos2d::Vec2 getButtonOffset() override;

@@ -8,7 +8,7 @@
 
 const std::string GoblinElf::MapKeyGoblinElf = "goblin-elf";
 
-GoblinElf* GoblinElf::deserialize(cocos2d::ValueMap* initProperties)
+GoblinElf* GoblinElf::deserialize(cocos2d::ValueMap& initProperties)
 {
 	GoblinElf* instance = new GoblinElf(initProperties);
 
@@ -17,7 +17,7 @@ GoblinElf* GoblinElf::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-GoblinElf::GoblinElf(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+GoblinElf::GoblinElf(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,
 	PlatformerCollisionType::Enemy,

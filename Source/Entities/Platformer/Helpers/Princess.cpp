@@ -8,7 +8,7 @@
 
 const std::string Princess::MapKeyPrincess = "princess";
 
-Princess* Princess::deserialize(cocos2d::ValueMap* initProperties)
+Princess* Princess::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Princess* instance = new Princess(initProperties);
 
@@ -17,7 +17,7 @@ Princess* Princess::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Princess::Princess(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Princess::Princess(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Princess_Animations,
 	EntityResources::Helpers_Princess_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

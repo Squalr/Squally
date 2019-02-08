@@ -10,11 +10,11 @@
 class Magnus : public NpcBase
 {
 public:
-	static Magnus* deserialize(cocos2d::ValueMap* initProperties);
+	static Magnus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMagnus;
 
 private:
-	Magnus(cocos2d::ValueMap* initProperties);
+	Magnus(cocos2d::ValueMap& initProperties);
 	~Magnus();
 };

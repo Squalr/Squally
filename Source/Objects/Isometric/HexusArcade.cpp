@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-HexusArcade* HexusArcade::create(ValueMap* initProperties)
+HexusArcade* HexusArcade::create(ValueMap& initProperties)
 {
 	HexusArcade* instance = new HexusArcade(initProperties);
 
@@ -15,7 +15,7 @@ HexusArcade* HexusArcade::create(ValueMap* initProperties)
 	return instance;
 }
 
-HexusArcade::HexusArcade(ValueMap* initProperties) : HackableObject(initProperties)
+HexusArcade::HexusArcade(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->arcadeMachine = Sprite::create();
 

@@ -10,11 +10,11 @@
 class Geryon : public NpcBase
 {
 public:
-	static Geryon* deserialize(cocos2d::ValueMap* initProperties);
+	static Geryon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGeryon;
 
 private:
-	Geryon(cocos2d::ValueMap* initProperties);
+	Geryon(cocos2d::ValueMap& initProperties);
 	~Geryon();
 };

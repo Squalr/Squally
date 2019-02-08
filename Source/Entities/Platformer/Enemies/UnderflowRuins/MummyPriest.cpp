@@ -8,7 +8,7 @@
 
 const std::string MummyPriest::MapKeyMummyPriest = "mummy-priest";
 
-MummyPriest* MummyPriest::deserialize(cocos2d::ValueMap* initProperties)
+MummyPriest* MummyPriest::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MummyPriest* instance = new MummyPriest(initProperties);
 
@@ -17,7 +17,7 @@ MummyPriest* MummyPriest::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MummyPriest::MummyPriest(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MummyPriest::MummyPriest(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
 	PlatformerCollisionType::Enemy,

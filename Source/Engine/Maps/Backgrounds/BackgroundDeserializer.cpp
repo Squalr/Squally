@@ -44,7 +44,7 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 	std::string name = args->objectGroup->getGroupName();
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(&properties, SerializableLayer::KeyType))
+	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
 	{
 		return;
 	}
@@ -58,7 +58,7 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(&properties, BackgroundDeserializer::MapKeyBackgroundLayer))
+	if (!GameUtils::keyExists(properties, BackgroundDeserializer::MapKeyBackgroundLayer))
 	{
 		CCLOG("No background property on background layer");
 		return;
@@ -75,5 +75,5 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 		return;
 	}
 
-	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Background::create(&properties, name, sprite), args->objectGroup->layerIndex));
+	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Background::create(properties, name, sprite), args->objectGroup->layerIndex));
 }

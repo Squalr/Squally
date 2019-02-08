@@ -8,7 +8,7 @@
 
 const std::string Rogas::MapKeyRogas = "rogas";
 
-Rogas* Rogas::deserialize(cocos2d::ValueMap* initProperties)
+Rogas* Rogas::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Rogas* instance = new Rogas(initProperties);
 
@@ -17,7 +17,7 @@ Rogas* Rogas::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Rogas::Rogas(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Rogas::Rogas(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

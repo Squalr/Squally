@@ -8,7 +8,7 @@
 
 const std::string ReanimatedPig::MapKeyReanimatedPig = "reanimated-pig";
 
-ReanimatedPig* ReanimatedPig::deserialize(cocos2d::ValueMap* initProperties)
+ReanimatedPig* ReanimatedPig::deserialize(cocos2d::ValueMap& initProperties)
 {
 	ReanimatedPig* instance = new ReanimatedPig(initProperties);
 
@@ -17,7 +17,7 @@ ReanimatedPig* ReanimatedPig::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-ReanimatedPig::ReanimatedPig(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+ReanimatedPig::ReanimatedPig(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
 	PlatformerCollisionType::Enemy,

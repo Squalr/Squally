@@ -8,7 +8,7 @@
 
 const std::string ReanimatedFighter::MapKeyReanimatedFighter = "reanimated-fighter";
 
-ReanimatedFighter* ReanimatedFighter::deserialize(cocos2d::ValueMap* initProperties)
+ReanimatedFighter* ReanimatedFighter::deserialize(cocos2d::ValueMap& initProperties)
 {
 	ReanimatedFighter* instance = new ReanimatedFighter(initProperties);
 
@@ -17,7 +17,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(cocos2d::ValueMap* initPropert
 	return instance;
 }
 
-ReanimatedFighter::ReanimatedFighter(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+ReanimatedFighter::ReanimatedFighter(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -8,7 +8,7 @@
 
 const std::string Aspen::MapKeyAspen = "aspen";
 
-Aspen* Aspen::deserialize(cocos2d::ValueMap* initProperties)
+Aspen* Aspen::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Aspen* instance = new Aspen(initProperties);
 
@@ -17,7 +17,7 @@ Aspen* Aspen::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Aspen::Aspen(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Aspen::Aspen(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

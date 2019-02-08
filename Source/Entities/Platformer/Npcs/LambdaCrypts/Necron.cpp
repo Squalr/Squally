@@ -8,7 +8,7 @@
 
 const std::string Necron::MapKeyNecron = "necron";
 
-Necron* Necron::deserialize(cocos2d::ValueMap* initProperties)
+Necron* Necron::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Necron* instance = new Necron(initProperties);
 
@@ -17,7 +17,7 @@ Necron* Necron::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Necron::Necron(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Necron::Necron(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
 	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

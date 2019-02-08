@@ -11,7 +11,7 @@ using namespace cocos2d;
 
 const std::string Fireflies::MapKeyWeatherLayerFireflies = "fireflies";
 
-Fireflies* Fireflies::create(ValueMap* properties, std::string name)
+Fireflies* Fireflies::create(ValueMap& properties, std::string name)
 {
 	Fireflies* instance = new Fireflies(properties, name);
 
@@ -20,7 +20,7 @@ Fireflies* Fireflies::create(ValueMap* properties, std::string name)
 	return instance;
 }
 
-Fireflies::Fireflies(ValueMap* properties, std::string name) : SerializableLayer(properties, name)
+Fireflies::Fireflies(ValueMap& properties, std::string name) : SerializableLayer(properties, name)
 {
 	this->fireflies = ParticleSystemQuad::create(ParticleResources::Fireflies2);
 	this->fireflies->setPositionType(ParticleSystem::PositionType::GROUPED);

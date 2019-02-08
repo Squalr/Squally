@@ -10,11 +10,11 @@
 class Vampiress : public PlatformerEnemy
 {
 public:
-	static Vampiress* deserialize(cocos2d::ValueMap* initProperties);
+	static Vampiress* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyVampiress;
 
 private:
-	Vampiress(cocos2d::ValueMap* initProperties);
+	Vampiress(cocos2d::ValueMap& initProperties);
 	~Vampiress();
 };

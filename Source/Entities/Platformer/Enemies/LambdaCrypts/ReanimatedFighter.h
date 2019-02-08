@@ -10,11 +10,11 @@
 class ReanimatedFighter : public PlatformerEnemy
 {
 public:
-	static ReanimatedFighter* deserialize(cocos2d::ValueMap* initProperties);
+	static ReanimatedFighter* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyReanimatedFighter;
 
 private:
-	ReanimatedFighter(cocos2d::ValueMap* initProperties);
+	ReanimatedFighter(cocos2d::ValueMap& initProperties);
 	~ReanimatedFighter();
 };

@@ -10,11 +10,11 @@
 class KingGrogg : public PlatformerEnemy
 {
 public:
-	static KingGrogg* deserialize(cocos2d::ValueMap* initProperties);
+	static KingGrogg* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyKingGrogg;
 
 private:
-	KingGrogg(cocos2d::ValueMap* initProperties);
+	KingGrogg(cocos2d::ValueMap& initProperties);
 	~KingGrogg();
 };

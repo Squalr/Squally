@@ -10,11 +10,11 @@
 class Wraith : public PlatformerEnemy
 {
 public:
-	static Wraith* deserialize(cocos2d::ValueMap* initProperties);
+	static Wraith* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyWraith;
 
 private:
-	Wraith(cocos2d::ValueMap* initProperties);
+	Wraith(cocos2d::ValueMap& initProperties);
 	~Wraith();
 };

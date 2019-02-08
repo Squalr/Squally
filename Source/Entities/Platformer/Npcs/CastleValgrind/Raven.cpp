@@ -8,7 +8,7 @@
 
 const std::string Raven::MapKeyRaven = "raven";
 
-Raven* Raven::deserialize(cocos2d::ValueMap* initProperties)
+Raven* Raven::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Raven* instance = new Raven(initProperties);
 
@@ -17,7 +17,7 @@ Raven* Raven::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Raven::Raven(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Raven::Raven(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

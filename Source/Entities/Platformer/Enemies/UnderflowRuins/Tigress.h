@@ -10,11 +10,11 @@
 class Tigress : public PlatformerEnemy
 {
 public:
-	static Tigress* deserialize(cocos2d::ValueMap* initProperties);
+	static Tigress* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTigress;
 
 private:
-	Tigress(cocos2d::ValueMap* initProperties);
+	Tigress(cocos2d::ValueMap& initProperties);
 	~Tigress();
 };

@@ -8,7 +8,7 @@
 
 const std::string Athena::MapKeyAthena = "athena";
 
-Athena* Athena::deserialize(cocos2d::ValueMap* initProperties)
+Athena* Athena::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Athena* instance = new Athena(initProperties);
 
@@ -17,7 +17,7 @@ Athena* Athena::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Athena::Athena(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Athena::Athena(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Athena_Animations,
 	EntityResources::Npcs_UnderflowRuins_Athena_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

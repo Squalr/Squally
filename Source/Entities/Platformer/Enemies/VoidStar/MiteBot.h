@@ -10,11 +10,11 @@
 class MiteBot : public PlatformerEnemy
 {
 public:
-	static MiteBot* deserialize(cocos2d::ValueMap* initProperties);
+	static MiteBot* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMiteBot;
 
 private:
-	MiteBot(cocos2d::ValueMap* initProperties);
+	MiteBot(cocos2d::ValueMap& initProperties);
 	~MiteBot();
 };

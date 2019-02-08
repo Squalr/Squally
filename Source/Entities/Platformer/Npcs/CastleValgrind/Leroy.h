@@ -10,11 +10,11 @@
 class Leroy : public NpcBase
 {
 public:
-	static Leroy* deserialize(cocos2d::ValueMap* initProperties);
+	static Leroy* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLeroy;
 
 private:
-	Leroy(cocos2d::ValueMap* initProperties);
+	Leroy(cocos2d::ValueMap& initProperties);
 	~Leroy();
 };

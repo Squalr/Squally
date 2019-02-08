@@ -8,7 +8,7 @@
 
 const std::string GoblinWarriorPig::MapKeyGoblinWarriorPig = "goblin-warrior-pig";
 
-GoblinWarriorPig* GoblinWarriorPig::deserialize(cocos2d::ValueMap* initProperties)
+GoblinWarriorPig* GoblinWarriorPig::deserialize(cocos2d::ValueMap& initProperties)
 {
 	GoblinWarriorPig* instance = new GoblinWarriorPig(initProperties);
 
@@ -17,7 +17,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(cocos2d::ValueMap* initPropertie
 	return instance;
 }
 
-GoblinWarriorPig::GoblinWarriorPig(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+GoblinWarriorPig::GoblinWarriorPig(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class Gramps : public NpcBase
 {
 public:
-	static Gramps* deserialize(cocos2d::ValueMap* initProperties);
+	static Gramps* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGramps;
 
 private:
-	Gramps(cocos2d::ValueMap* initProperties);
+	Gramps(cocos2d::ValueMap& initProperties);
 	~Gramps();
 };

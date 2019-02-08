@@ -10,11 +10,11 @@
 class Thion : public NpcBase
 {
 public:
-	static Thion* deserialize(cocos2d::ValueMap* initProperties);
+	static Thion* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyThion;
 
 private:
-	Thion(cocos2d::ValueMap* initProperties);
+	Thion(cocos2d::ValueMap& initProperties);
 	~Thion();
 };

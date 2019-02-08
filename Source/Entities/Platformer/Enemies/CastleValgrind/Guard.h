@@ -10,11 +10,11 @@
 class Guard : public PlatformerEnemy
 {
 public:
-	static Guard* deserialize(cocos2d::ValueMap* initProperties);
+	static Guard* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGuard;
 
 private:
-	Guard(cocos2d::ValueMap* initProperties);
+	Guard(cocos2d::ValueMap& initProperties);
 	~Guard();
 };

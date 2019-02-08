@@ -10,11 +10,11 @@
 class Ares : public NpcBase
 {
 public:
-	static Ares* deserialize(cocos2d::ValueMap* initProperties);
+	static Ares* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAres;
 
 private:
-	Ares(cocos2d::ValueMap* initProperties);
+	Ares(cocos2d::ValueMap& initProperties);
 	~Ares();
 };

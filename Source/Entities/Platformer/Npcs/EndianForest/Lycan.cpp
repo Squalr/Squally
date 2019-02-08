@@ -8,7 +8,7 @@
 
 const std::string Lycan::MapKeyLycan = "lycan";
 
-Lycan* Lycan::deserialize(cocos2d::ValueMap* initProperties)
+Lycan* Lycan::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Lycan* instance = new Lycan(initProperties);
 
@@ -17,7 +17,7 @@ Lycan* Lycan::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Lycan::Lycan(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Lycan::Lycan(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Lycan_Animations,
 	EntityResources::Npcs_EndianForest_Lycan_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

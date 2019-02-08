@@ -10,11 +10,11 @@
 class BlackWidow : public PlatformerEnemy
 {
 public:
-	static BlackWidow* deserialize(cocos2d::ValueMap* initProperties);
+	static BlackWidow* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyBlackWidow;
 
 private:
-	BlackWidow(cocos2d::ValueMap* initProperties);
+	BlackWidow(cocos2d::ValueMap& initProperties);
 	~BlackWidow();
 };

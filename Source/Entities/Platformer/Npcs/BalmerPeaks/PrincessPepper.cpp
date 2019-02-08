@@ -8,7 +8,7 @@
 
 const std::string PrincessPepper::MapKeyPrincessPepper = "princess-pepper";
 
-PrincessPepper* PrincessPepper::deserialize(cocos2d::ValueMap* initProperties)
+PrincessPepper* PrincessPepper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PrincessPepper* instance = new PrincessPepper(initProperties);
 
@@ -17,7 +17,7 @@ PrincessPepper* PrincessPepper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PrincessPepper::PrincessPepper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+PrincessPepper::PrincessPepper(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

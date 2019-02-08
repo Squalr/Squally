@@ -10,11 +10,11 @@
 class Thor : public NpcBase
 {
 public:
-	static Thor* deserialize(cocos2d::ValueMap* initProperties);
+	static Thor* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyThor;
 
 private:
-	Thor(cocos2d::ValueMap* initProperties);
+	Thor(cocos2d::ValueMap& initProperties);
 	~Thor();
 };

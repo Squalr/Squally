@@ -8,7 +8,7 @@
 
 const std::string Jingles::MapKeyJingles = "jingles";
 
-Jingles* Jingles::deserialize(cocos2d::ValueMap* initProperties)
+Jingles* Jingles::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Jingles* instance = new Jingles(initProperties);
 
@@ -17,7 +17,7 @@ Jingles* Jingles::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Jingles::Jingles(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Jingles::Jingles(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

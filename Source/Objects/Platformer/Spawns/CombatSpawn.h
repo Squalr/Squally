@@ -5,7 +5,7 @@
 class CombatSpawn : public SerializableObject
 {
 public:
-	static CombatSpawn* create(cocos2d::ValueMap* initProperties);
+	static CombatSpawn* create(cocos2d::ValueMap& initProperties);
 
 	enum SpawnType
 	{
@@ -20,7 +20,7 @@ public:
 
 private:
 	typedef SerializableObject super;
-	CombatSpawn(cocos2d::ValueMap* initProperties);
+	CombatSpawn(cocos2d::ValueMap& initProperties);
 	~CombatSpawn();
 
 	void onEnter() override;

@@ -10,11 +10,11 @@
 class Juniper : public NpcBase
 {
 public:
-	static Juniper* deserialize(cocos2d::ValueMap* initProperties);
+	static Juniper* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyJuniper;
 
 private:
-	Juniper(cocos2d::ValueMap* initProperties);
+	Juniper(cocos2d::ValueMap& initProperties);
 	~Juniper();
 };

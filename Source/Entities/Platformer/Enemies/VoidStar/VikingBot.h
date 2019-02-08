@@ -10,11 +10,11 @@
 class VikingBot : public PlatformerEnemy
 {
 public:
-	static VikingBot* deserialize(cocos2d::ValueMap* initProperties);
+	static VikingBot* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyVikingBot;
 
 private:
-	VikingBot(cocos2d::ValueMap* initProperties);
+	VikingBot(cocos2d::ValueMap& initProperties);
 	~VikingBot();
 };

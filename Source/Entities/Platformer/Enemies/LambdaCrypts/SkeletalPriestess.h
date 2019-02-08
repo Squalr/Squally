@@ -10,11 +10,11 @@
 class SkeletalPriestess : public PlatformerEnemy
 {
 public:
-	static SkeletalPriestess* deserialize(cocos2d::ValueMap* initProperties);
+	static SkeletalPriestess* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySkeletalPriestess;
 
 private:
-	SkeletalPriestess(cocos2d::ValueMap* initProperties);
+	SkeletalPriestess(cocos2d::ValueMap& initProperties);
 	~SkeletalPriestess();
 };

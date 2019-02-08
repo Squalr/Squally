@@ -8,7 +8,7 @@
 
 const std::string Cooper::MapKeyCooper = "cooper";
 
-Cooper* Cooper::deserialize(cocos2d::ValueMap* initProperties)
+Cooper* Cooper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Cooper* instance = new Cooper(initProperties);
 
@@ -17,7 +17,7 @@ Cooper* Cooper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Cooper::Cooper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Cooper::Cooper(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Cooper_Animations,
 	EntityResources::Npcs_EndianForest_Cooper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

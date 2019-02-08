@@ -8,7 +8,7 @@
 
 const std::string SnowFiend::MapKeySnowFiend = "snow-fiend";
 
-SnowFiend* SnowFiend::deserialize(cocos2d::ValueMap* initProperties)
+SnowFiend* SnowFiend::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SnowFiend* instance = new SnowFiend(initProperties);
 
@@ -17,7 +17,7 @@ SnowFiend* SnowFiend::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-SnowFiend::SnowFiend(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SnowFiend::SnowFiend(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
 	PlatformerCollisionType::Enemy,

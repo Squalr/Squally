@@ -10,11 +10,11 @@
 class Johann : public NpcBase
 {
 public:
-	static Johann* deserialize(cocos2d::ValueMap* initProperties);
+	static Johann* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyJohann;
 
 private:
-	Johann(cocos2d::ValueMap* initProperties);
+	Johann(cocos2d::ValueMap& initProperties);
 	~Johann();
 };

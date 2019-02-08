@@ -8,7 +8,7 @@
 
 const std::string Gorilla::MapKeyGorilla = "gorilla";
 
-Gorilla* Gorilla::deserialize(cocos2d::ValueMap* initProperties)
+Gorilla* Gorilla::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Gorilla* instance = new Gorilla(initProperties);
 
@@ -17,7 +17,7 @@ Gorilla* Gorilla::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Gorilla::Gorilla(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Gorilla::Gorilla(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Gorilla_Animations,
 	EntityResources::Enemies_VoidStar_Gorilla_Emblem,
 	PlatformerCollisionType::Enemy,

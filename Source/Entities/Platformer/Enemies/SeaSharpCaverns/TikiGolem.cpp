@@ -8,7 +8,7 @@
 
 const std::string TikiGolem::MapKeyTikiGolem = "tiki-golem";
 
-TikiGolem* TikiGolem::deserialize(cocos2d::ValueMap* initProperties)
+TikiGolem* TikiGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	TikiGolem* instance = new TikiGolem(initProperties);
 
@@ -17,7 +17,7 @@ TikiGolem* TikiGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-TikiGolem::TikiGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+TikiGolem::TikiGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -8,7 +8,7 @@
 
 const std::string DemonDragon::MapKeyDemonDragon = "demon-dragon";
 
-DemonDragon* DemonDragon::deserialize(cocos2d::ValueMap* initProperties)
+DemonDragon* DemonDragon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	DemonDragon* instance = new DemonDragon(initProperties);
 
@@ -17,7 +17,7 @@ DemonDragon* DemonDragon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-DemonDragon::DemonDragon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+DemonDragon::DemonDragon(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
 	PlatformerCollisionType::Enemy,

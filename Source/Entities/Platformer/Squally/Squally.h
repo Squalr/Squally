@@ -12,7 +12,7 @@ class CollisionObject;
 class Squally : public PlatformerEntity
 {
 public:
-	static Squally* deserialize(cocos2d::ValueMap* initProperties);
+	static Squally* deserialize(cocos2d::ValueMap& initProperties);
 	static Squally* getInstance();
 
 	static const std::string MapKeySqually;
@@ -26,7 +26,7 @@ protected:
 
 private:
 	typedef PlatformerEntity super;
-	Squally(cocos2d::ValueMap* initProperties);
+	Squally(cocos2d::ValueMap& initProperties);
 	~Squally();
 
 	void registerHackables();

@@ -8,7 +8,7 @@
 
 const std::string Robin::MapKeyRobin = "robin";
 
-Robin* Robin::deserialize(cocos2d::ValueMap* initProperties)
+Robin* Robin::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Robin* instance = new Robin(initProperties);
 
@@ -17,7 +17,7 @@ Robin* Robin::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Robin::Robin(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Robin::Robin(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Robin_Animations,
 	EntityResources::Npcs_EndianForest_Robin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -10,11 +10,11 @@
 class Gargoyle : public PlatformerEnemy
 {
 public:
-	static Gargoyle* deserialize(cocos2d::ValueMap* initProperties);
+	static Gargoyle* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGargoyle;
 
 private:
-	Gargoyle(cocos2d::ValueMap* initProperties);
+	Gargoyle(cocos2d::ValueMap& initProperties);
 	~Gargoyle();
 };

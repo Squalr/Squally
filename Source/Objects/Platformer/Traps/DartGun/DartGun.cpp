@@ -32,7 +32,7 @@ using namespace cocos2d;
 const std::string DartGun::MapKeyDartGun = "dart-gun";
 const std::string DartGun::PivotBone = "pivot_bone";
 
-DartGun* DartGun::create(ValueMap* initProperties)
+DartGun* DartGun::create(ValueMap& initProperties)
 {
 	DartGun* instance = new DartGun(initProperties);
 
@@ -41,7 +41,7 @@ DartGun* DartGun::create(ValueMap* initProperties)
 	return instance;
 }
 
-DartGun::DartGun(ValueMap* initProperties) : HackableObject(initProperties)
+DartGun::DartGun(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->dartNode = Node::create();
 	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);
@@ -52,12 +52,12 @@ DartGun::DartGun(ValueMap* initProperties) : HackableObject(initProperties)
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
-		this->dartGunAnimations->setFlippedX((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		this->dartGunAnimations->setFlippedX(this->properties[PlatformerEntity::MapKeyWidth].asBool());
 	}
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
 	{
-		this->dartGunAnimations->setFlippedY((*this->properties)[PlatformerEntity::MapKeyWidth].asBool());
+		this->dartGunAnimations->setFlippedY(this->properties[PlatformerEntity::MapKeyWidth].asBool());
 	}
 
 	this->registerHackables();

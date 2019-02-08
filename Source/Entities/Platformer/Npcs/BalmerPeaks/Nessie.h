@@ -10,11 +10,11 @@
 class Nessie : public NpcBase
 {
 public:
-	static Nessie* deserialize(cocos2d::ValueMap* initProperties);
+	static Nessie* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyNessie;
 
 private:
-	Nessie(cocos2d::ValueMap* initProperties);
+	Nessie(cocos2d::ValueMap& initProperties);
 	~Nessie();
 };

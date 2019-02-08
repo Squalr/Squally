@@ -8,7 +8,7 @@
 
 const std::string Ares::MapKeyAres = "ares";
 
-Ares* Ares::deserialize(cocos2d::ValueMap* initProperties)
+Ares* Ares::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ares* instance = new Ares(initProperties);
 
@@ -17,7 +17,7 @@ Ares* Ares::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ares::Ares(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Ares::Ares(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

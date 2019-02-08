@@ -10,11 +10,11 @@
 class Azmus : public NpcBase
 {
 public:
-	static Azmus* deserialize(cocos2d::ValueMap* initProperties);
+	static Azmus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAzmus;
 
 private:
-	Azmus(cocos2d::ValueMap* initProperties);
+	Azmus(cocos2d::ValueMap& initProperties);
 	~Azmus();
 };

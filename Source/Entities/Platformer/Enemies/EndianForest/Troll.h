@@ -10,11 +10,11 @@
 class Troll : public PlatformerEnemy
 {
 public:
-	static Troll* deserialize(cocos2d::ValueMap* initProperties);
+	static Troll* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTroll;
 
 private:
-	Troll(cocos2d::ValueMap* initProperties);
+	Troll(cocos2d::ValueMap& initProperties);
 	~Troll();
 };

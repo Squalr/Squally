@@ -25,7 +25,7 @@ using namespace cocos2d;
 
 const std::string Laser::MapKeyLaser = "laser";
 
-Laser* Laser::create(ValueMap* initProperties)
+Laser* Laser::create(ValueMap& initProperties)
 {
 	Laser* instance = new Laser(initProperties);
 
@@ -34,13 +34,13 @@ Laser* Laser::create(ValueMap* initProperties)
 	return instance;
 }
 
-Laser::Laser(ValueMap* initProperties) : HackableObject(initProperties)
+Laser::Laser(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->currentLaserCountDown = RandomHelper::random_real(0.0f, 3.0f);
 	this->maxLaserCountDown = 4.0f;
 	this->isRunningAnimation = false;
 
-	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
+	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
 	this->laserAnimation = LaserAnimation::create(height);
 	this->laserCollision = CollisionObject::create(PhysicsBody::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, false, false);

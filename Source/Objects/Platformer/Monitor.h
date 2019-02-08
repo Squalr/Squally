@@ -14,12 +14,12 @@ class ClickableNode;
 class Monitor : public HackableObject
 {
 public:
-	static Monitor* create(cocos2d::ValueMap* initProperties);
+	static Monitor* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMonitor;
 
 protected:
-	Monitor(cocos2d::ValueMap* initProperties);
+	Monitor(cocos2d::ValueMap& initProperties);
 	~Monitor();
 
 private:

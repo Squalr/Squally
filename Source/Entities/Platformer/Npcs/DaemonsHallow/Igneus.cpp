@@ -8,7 +8,7 @@
 
 const std::string Igneus::MapKeyIgneus = "igneus";
 
-Igneus* Igneus::deserialize(cocos2d::ValueMap* initProperties)
+Igneus* Igneus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Igneus* instance = new Igneus(initProperties);
 
@@ -17,7 +17,7 @@ Igneus* Igneus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Igneus::Igneus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Igneus::Igneus(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

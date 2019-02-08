@@ -8,7 +8,7 @@
 
 const std::string PrincessDawn::MapKeyPrincessDawn = "princess-dawn";
 
-PrincessDawn* PrincessDawn::deserialize(cocos2d::ValueMap* initProperties)
+PrincessDawn* PrincessDawn::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PrincessDawn* instance = new PrincessDawn(initProperties);
 
@@ -17,7 +17,7 @@ PrincessDawn* PrincessDawn::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PrincessDawn::PrincessDawn(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+PrincessDawn::PrincessDawn(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

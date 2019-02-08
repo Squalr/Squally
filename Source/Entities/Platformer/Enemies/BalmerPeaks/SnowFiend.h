@@ -10,11 +10,11 @@
 class SnowFiend : public PlatformerEnemy
 {
 public:
-	static SnowFiend* deserialize(cocos2d::ValueMap* initProperties);
+	static SnowFiend* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySnowFiend;
 
 private:
-	SnowFiend(cocos2d::ValueMap* initProperties);
+	SnowFiend(cocos2d::ValueMap& initProperties);
 	~SnowFiend();
 };

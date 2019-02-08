@@ -8,7 +8,7 @@
 
 const std::string Celeste::MapKeyCeleste = "celeste";
 
-Celeste* Celeste::deserialize(cocos2d::ValueMap* initProperties)
+Celeste* Celeste::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Celeste* instance = new Celeste(initProperties);
 
@@ -17,7 +17,7 @@ Celeste* Celeste::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Celeste::Celeste(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Celeste::Celeste(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Animations,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

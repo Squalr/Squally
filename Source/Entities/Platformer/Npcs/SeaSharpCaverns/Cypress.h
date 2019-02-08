@@ -10,11 +10,11 @@
 class Cypress : public NpcBase
 {
 public:
-	static Cypress* deserialize(cocos2d::ValueMap* initProperties);
+	static Cypress* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCypress;
 
 private:
-	Cypress(cocos2d::ValueMap* initProperties);
+	Cypress(cocos2d::ValueMap& initProperties);
 	~Cypress();
 };

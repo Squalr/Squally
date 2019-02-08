@@ -10,11 +10,11 @@
 class Snowman : public PlatformerEntity
 {
 public:
-	static Snowman* deserialize(cocos2d::ValueMap* initProperties);
+	static Snowman* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySnowman;
 
 private:
-	Snowman(cocos2d::ValueMap* initProperties);
+	Snowman(cocos2d::ValueMap& initProperties);
 	~Snowman();
 };

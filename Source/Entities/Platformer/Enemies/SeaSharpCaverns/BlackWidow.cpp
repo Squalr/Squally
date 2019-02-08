@@ -8,7 +8,7 @@
 
 const std::string BlackWidow::MapKeyBlackWidow = "black-widow";
 
-BlackWidow* BlackWidow::deserialize(cocos2d::ValueMap* initProperties)
+BlackWidow* BlackWidow::deserialize(cocos2d::ValueMap& initProperties)
 {
 	BlackWidow* instance = new BlackWidow(initProperties);
 
@@ -17,7 +17,7 @@ BlackWidow* BlackWidow::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-BlackWidow::BlackWidow(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+BlackWidow::BlackWidow(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_BlackWidow_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_BlackWidow_Emblem,
 	PlatformerCollisionType::Enemy,

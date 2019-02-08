@@ -8,7 +8,7 @@
 
 const std::string Rupert::MapKeyRupert = "rupert";
 
-Rupert* Rupert::deserialize(cocos2d::ValueMap* initProperties)
+Rupert* Rupert::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Rupert* instance = new Rupert(initProperties);
 
@@ -17,7 +17,7 @@ Rupert* Rupert::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Rupert::Rupert(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Rupert::Rupert(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Rupert_Animations,
 	EntityResources::Npcs_EndianForest_Rupert_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

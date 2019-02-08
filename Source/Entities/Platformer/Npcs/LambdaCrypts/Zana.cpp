@@ -8,7 +8,7 @@
 
 const std::string Zana::MapKeyZana = "zana";
 
-Zana* Zana::deserialize(cocos2d::ValueMap* initProperties)
+Zana* Zana::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Zana* instance = new Zana(initProperties);
 
@@ -17,7 +17,7 @@ Zana* Zana::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Zana::Zana(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Zana::Zana(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

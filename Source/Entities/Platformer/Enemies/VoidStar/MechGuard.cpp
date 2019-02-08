@@ -8,7 +8,7 @@
 
 const std::string MechGuard::MapKeyMechGuard = "mech-guard";
 
-MechGuard* MechGuard::deserialize(cocos2d::ValueMap* initProperties)
+MechGuard* MechGuard::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MechGuard* instance = new MechGuard(initProperties);
 
@@ -17,7 +17,7 @@ MechGuard* MechGuard::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MechGuard::MechGuard(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MechGuard::MechGuard(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechGuard_Animations,
 	EntityResources::Enemies_VoidStar_MechGuard_Emblem,
 	PlatformerCollisionType::Enemy,

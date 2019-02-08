@@ -10,11 +10,11 @@
 class Athena : public NpcBase
 {
 public:
-	static Athena* deserialize(cocos2d::ValueMap* initProperties);
+	static Athena* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAthena;
 
 private:
-	Athena(cocos2d::ValueMap* initProperties);
+	Athena(cocos2d::ValueMap& initProperties);
 	~Athena();
 };

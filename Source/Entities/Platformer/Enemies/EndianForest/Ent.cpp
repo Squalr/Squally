@@ -8,7 +8,7 @@
 
 const std::string Ent::MapKeyEnt = "ent";
 
-Ent* Ent::deserialize(cocos2d::ValueMap* initProperties)
+Ent* Ent::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ent* instance = new Ent(initProperties);
 
@@ -17,7 +17,7 @@ Ent* Ent::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ent::Ent(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Ent::Ent(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Ent_Animations,
 	EntityResources::Enemies_EndianForest_Ent_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class PenguinGrunt : public PlatformerEnemy
 {
 public:
-	static PenguinGrunt* deserialize(cocos2d::ValueMap* initProperties);
+	static PenguinGrunt* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPenguinGrunt;
 
 private:
-	PenguinGrunt(cocos2d::ValueMap* initProperties);
+	PenguinGrunt(cocos2d::ValueMap& initProperties);
 	~PenguinGrunt();
 };

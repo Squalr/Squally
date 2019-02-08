@@ -30,25 +30,23 @@ const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = M_PI / 6.0f;
 const float TerrainObject::BottomThreshold = 7 * M_PI / 6.0f;
 
-TerrainObject* TerrainObject::deserialize(ValueMap* initProperties, TerrainData terrainData)
+TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData terrainData)
 {
 	TerrainObject* instance = new TerrainObject(initProperties, terrainData);
 
 	instance->autorelease();
 
-	ValueMap* properties = new ValueMap(*initProperties);
-
-	if (!GameUtils::keyExists(properties, SerializableObject::MapKeyPolyLinePoints))
+	if (!GameUtils::keyExists(initProperties, SerializableObject::MapKeyPolyLinePoints))
 	{
 		LogUtils::logError("Missing polyline on terrain");
 
 		return instance;
 	}
 
-	ValueVector* polygonPointsRaw = &(properties->at(SerializableObject::MapKeyPolyLinePoints).asValueVector());
+	ValueVector polygonPointsRaw = initProperties.at(SerializableObject::MapKeyPolyLinePoints).asValueVector();
 	std::vector<Vec2> polygonPoints;
 
-	for (auto it = polygonPointsRaw->begin(); it != polygonPointsRaw->end(); ++it)
+	for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
 	{
 		auto point = it->asValueMap();
 
@@ -66,7 +64,7 @@ TerrainObject* TerrainObject::deserialize(ValueMap* initProperties, TerrainData 
 	return instance;
 }
 
-TerrainObject::TerrainObject(ValueMap* initProperties, TerrainData terrainData) : HackableObject(initProperties)
+TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : HackableObject(initProperties)
 {
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
@@ -147,24 +145,22 @@ void TerrainObject::buildCollision()
 	this->collisionNode->removeAllChildren();
 
 	// Check if physics is disabled for this terrain
-	if (GameUtils::keyExists(this->properties, TerrainObject::MapKeyCollisionDisabled) && (*this->properties)[TerrainObject::MapKeyCollisionDisabled].asBool())
+	if (GameUtils::keyExists(this->properties, TerrainObject::MapKeyCollisionDisabled) && this->properties[TerrainObject::MapKeyCollisionDisabled].asBool())
 	{
 		return;
 	}
 
-	ValueMap collisionProperties = ValueMap(*this->properties);
-
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
-	collisionProperties[SerializableObject::MapKeyXPosition] = 0.0f;
-	collisionProperties[SerializableObject::MapKeyYPosition] = 0.0f;
+	this->properties[SerializableObject::MapKeyXPosition] = 0.0f;
+	this->properties[SerializableObject::MapKeyYPosition] = 0.0f;
 
-	std::string deserializedCollisionName = collisionProperties.at(SerializableObject::MapKeyName).asString();
+	std::string deserializedCollisionName = this->properties.at(SerializableObject::MapKeyName).asString();
 
 	// Create terrain collision as a series of triangles -- the other option is 1 giant EdgePolgyon, but this lacks internal collision
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
 		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, PhysicsMaterial(0.0f, 0.0f, 0.0f));
-		CollisionObject* collisionObject = new CollisionObject(&collisionProperties, physicsBody, deserializedCollisionName, false, false);
+		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}

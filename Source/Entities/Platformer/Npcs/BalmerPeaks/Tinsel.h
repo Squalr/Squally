@@ -10,11 +10,11 @@
 class Tinsel : public NpcBase
 {
 public:
-	static Tinsel* deserialize(cocos2d::ValueMap* initProperties);
+	static Tinsel* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTinsel;
 
 private:
-	Tinsel(cocos2d::ValueMap* initProperties);
+	Tinsel(cocos2d::ValueMap& initProperties);
 	~Tinsel();
 };

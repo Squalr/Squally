@@ -10,11 +10,11 @@
 class FrostFiend : public PlatformerEnemy
 {
 public:
-	static FrostFiend* deserialize(cocos2d::ValueMap* initProperties);
+	static FrostFiend* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyFrostFiend;
 
 private:
-	FrostFiend(cocos2d::ValueMap* initProperties);
+	FrostFiend(cocos2d::ValueMap& initProperties);
 	~FrostFiend();
 };

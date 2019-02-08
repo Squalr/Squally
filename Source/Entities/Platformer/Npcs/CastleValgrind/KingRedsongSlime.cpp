@@ -8,7 +8,7 @@
 
 const std::string KingRedsongSlime::MapKeyKingRedsongSlime = "king-redsong-slime";
 
-KingRedsongSlime* KingRedsongSlime::deserialize(cocos2d::ValueMap* initProperties)
+KingRedsongSlime* KingRedsongSlime::deserialize(cocos2d::ValueMap& initProperties)
 {
 	KingRedsongSlime* instance = new KingRedsongSlime(initProperties);
 
@@ -17,7 +17,7 @@ KingRedsongSlime* KingRedsongSlime::deserialize(cocos2d::ValueMap* initPropertie
 	return instance;
 }
 
-KingRedsongSlime::KingRedsongSlime(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+KingRedsongSlime::KingRedsongSlime(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

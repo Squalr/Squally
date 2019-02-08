@@ -10,11 +10,11 @@
 class Ursula : public NpcBase
 {
 public:
-	static Ursula* deserialize(cocos2d::ValueMap* initProperties);
+	static Ursula* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyUrsula;
 
 private:
-	Ursula(cocos2d::ValueMap* initProperties);
+	Ursula(cocos2d::ValueMap& initProperties);
 	~Ursula();
 };

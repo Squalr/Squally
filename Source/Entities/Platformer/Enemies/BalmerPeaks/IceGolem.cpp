@@ -8,7 +8,7 @@
 
 const std::string IceGolem::MapKeyIceGolem = "ice-golem";
 
-IceGolem* IceGolem::deserialize(cocos2d::ValueMap* initProperties)
+IceGolem* IceGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	IceGolem* instance = new IceGolem(initProperties);
 
@@ -17,7 +17,7 @@ IceGolem* IceGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-IceGolem::IceGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+IceGolem::IceGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
 	PlatformerCollisionType::Enemy,

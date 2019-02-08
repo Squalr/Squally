@@ -50,7 +50,7 @@ void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::La
 {
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(&properties, SerializableLayer::KeyType))
+	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
 	{
 		return;
 	}
@@ -85,37 +85,37 @@ void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::La
 			object[SerializableObject::MapKeyMetaMapWidth] = args->mapMeta.mapSize.width;
 			object[SerializableObject::MapKeyMetaMapHeight] = args->mapMeta.mapSize.height;
 
-			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyType))
+			if (!GameUtils::keyExists(object, SerializableObject::MapKeyType))
 			{
 				CCLOG("Missing type on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyName))
+			if (!GameUtils::keyExists(object, SerializableObject::MapKeyName))
 			{
 				CCLOG("Missing name on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyWidth))
+			if (!GameUtils::keyExists(object, SerializableObject::MapKeyWidth))
 			{
 				CCLOG("Missing width on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyHeight))
+			if (!GameUtils::keyExists(object, SerializableObject::MapKeyHeight))
 			{
 				CCLOG("Missing height on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyXPosition))
+			if (!GameUtils::keyExists(object, SerializableObject::MapKeyXPosition))
 			{
 				CCLOG("Missing x position on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(&object, SerializableObject::MapKeyYPosition))
+			if (!GameUtils::keyExists(object, SerializableObject::MapKeyYPosition))
 			{
 				CCLOG("Missing y position on object");
 				continue;
@@ -132,5 +132,5 @@ void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::La
 		}
 	}
 
-	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SerializableLayer::create(&properties, name, deserializedObjects), args->objectGroup->layerIndex));
+	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SerializableLayer::create(properties, name, deserializedObjects), args->objectGroup->layerIndex));
 }

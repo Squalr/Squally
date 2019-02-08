@@ -10,11 +10,11 @@
 class Ragnis : public NpcBase
 {
 public:
-	static Ragnis* deserialize(cocos2d::ValueMap* initProperties);
+	static Ragnis* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRagnis;
 
 private:
-	Ragnis(cocos2d::ValueMap* initProperties);
+	Ragnis(cocos2d::ValueMap& initProperties);
 	~Ragnis();
 };

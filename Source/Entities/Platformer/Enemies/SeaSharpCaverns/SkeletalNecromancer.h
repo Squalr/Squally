@@ -10,11 +10,11 @@
 class SkeletalNecromancer : public PlatformerEnemy
 {
 public:
-	static SkeletalNecromancer* deserialize(cocos2d::ValueMap* initProperties);
+	static SkeletalNecromancer* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySkeletalNecromancer;
 
 private:
-	SkeletalNecromancer(cocos2d::ValueMap* initProperties);
+	SkeletalNecromancer(cocos2d::ValueMap& initProperties);
 	~SkeletalNecromancer();
 };

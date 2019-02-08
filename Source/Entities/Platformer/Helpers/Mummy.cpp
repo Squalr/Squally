@@ -8,7 +8,7 @@
 
 const std::string Mummy::MapKeyMummy = "mummy";
 
-Mummy* Mummy::deserialize(cocos2d::ValueMap* initProperties)
+Mummy* Mummy::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Mummy* instance = new Mummy(initProperties);
 
@@ -17,7 +17,7 @@ Mummy* Mummy::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Mummy::Mummy(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Mummy::Mummy(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Mummy_Animations,
 	EntityResources::Helpers_Mummy_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

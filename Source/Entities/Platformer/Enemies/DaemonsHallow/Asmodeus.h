@@ -10,11 +10,11 @@
 class Asmodeus : public PlatformerEnemy
 {
 public:
-	static Asmodeus* deserialize(cocos2d::ValueMap* initProperties);
+	static Asmodeus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAsmodeus;
 
 private:
-	Asmodeus(cocos2d::ValueMap* initProperties);
+	Asmodeus(cocos2d::ValueMap& initProperties);
 	~Asmodeus();
 };

@@ -10,11 +10,11 @@
 class Knight : public PlatformerEntity
 {
 public:
-	static Knight* deserialize(cocos2d::ValueMap* initProperties);
+	static Knight* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyKnight;
 
 private:
-	Knight(cocos2d::ValueMap* initProperties);
+	Knight(cocos2d::ValueMap& initProperties);
 	~Knight();
 };

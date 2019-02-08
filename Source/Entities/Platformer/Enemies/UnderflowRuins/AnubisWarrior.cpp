@@ -8,7 +8,7 @@
 
 const std::string AnubisWarrior::MapKeyAnubisWarrior = "anubis-warrior";
 
-AnubisWarrior* AnubisWarrior::deserialize(cocos2d::ValueMap* initProperties)
+AnubisWarrior* AnubisWarrior::deserialize(cocos2d::ValueMap& initProperties)
 {
 	AnubisWarrior* instance = new AnubisWarrior(initProperties);
 
@@ -17,7 +17,7 @@ AnubisWarrior* AnubisWarrior::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-AnubisWarrior::AnubisWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+AnubisWarrior::AnubisWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
 	PlatformerCollisionType::Enemy,

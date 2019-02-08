@@ -10,11 +10,11 @@
 class Poseidon : public NpcBase
 {
 public:
-	static Poseidon* deserialize(cocos2d::ValueMap* initProperties);
+	static Poseidon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPoseidon;
 
 private:
-	Poseidon(cocos2d::ValueMap* initProperties);
+	Poseidon(cocos2d::ValueMap& initProperties);
 	~Poseidon();
 };

@@ -10,11 +10,11 @@
 class Shen : public NpcBase
 {
 public:
-	static Shen* deserialize(cocos2d::ValueMap* initProperties);
+	static Shen* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyShen;
 
 private:
-	Shen(cocos2d::ValueMap* initProperties);
+	Shen(cocos2d::ValueMap& initProperties);
 	~Shen();
 };

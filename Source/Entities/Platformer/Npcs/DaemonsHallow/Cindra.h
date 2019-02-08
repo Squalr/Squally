@@ -10,11 +10,11 @@
 class Cindra : public NpcBase
 {
 public:
-	static Cindra* deserialize(cocos2d::ValueMap* initProperties);
+	static Cindra* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCindra;
 
 private:
-	Cindra(cocos2d::ValueMap* initProperties);
+	Cindra(cocos2d::ValueMap& initProperties);
 	~Cindra();
 };

@@ -10,11 +10,11 @@
 class Radon : public NpcBase
 {
 public:
-	static Radon* deserialize(cocos2d::ValueMap* initProperties);
+	static Radon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRadon;
 
 private:
-	Radon(cocos2d::ValueMap* initProperties);
+	Radon(cocos2d::ValueMap& initProperties);
 	~Radon();
 };

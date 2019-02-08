@@ -10,11 +10,11 @@
 class Krampus : public PlatformerEnemy
 {
 public:
-	static Krampus* deserialize(cocos2d::ValueMap* initProperties);
+	static Krampus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyKrampus;
 
 private:
-	Krampus(cocos2d::ValueMap* initProperties);
+	Krampus(cocos2d::ValueMap& initProperties);
 	~Krampus();
 };

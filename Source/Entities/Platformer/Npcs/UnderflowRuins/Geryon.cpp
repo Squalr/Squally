@@ -8,7 +8,7 @@
 
 const std::string Geryon::MapKeyGeryon = "geryon";
 
-Geryon* Geryon::deserialize(cocos2d::ValueMap* initProperties)
+Geryon* Geryon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Geryon* instance = new Geryon(initProperties);
 
@@ -17,7 +17,7 @@ Geryon* Geryon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Geryon::Geryon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Geryon::Geryon(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

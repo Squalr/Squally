@@ -8,7 +8,7 @@
 
 const std::string Juniper::MapKeyJuniper = "juniper";
 
-Juniper* Juniper::deserialize(cocos2d::ValueMap* initProperties)
+Juniper* Juniper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Juniper* instance = new Juniper(initProperties);
 
@@ -17,7 +17,7 @@ Juniper* Juniper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Juniper::Juniper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Juniper::Juniper(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

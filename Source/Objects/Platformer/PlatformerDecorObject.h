@@ -5,10 +5,10 @@
 class PlatformerDecorObject : public HackableObject
 {
 public:
-	static PlatformerDecorObject* create(cocos2d::ValueMap* initProperties);
+	static PlatformerDecorObject* create(cocos2d::ValueMap& initProperties);
 
 private:
 	typedef HackableObject super;
-	PlatformerDecorObject(cocos2d::ValueMap* initProperties);
+	PlatformerDecorObject(cocos2d::ValueMap& initProperties);
 	~PlatformerDecorObject();
 };

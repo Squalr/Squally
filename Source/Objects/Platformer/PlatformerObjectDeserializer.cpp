@@ -46,55 +46,55 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 
 		if (name == CameraFocus::MapKeyCameraFocus)
 		{
-			newObject = CameraFocus::create(&properties);
+			newObject = CameraFocus::create(properties);
 		}
 		else if (name == CombatSpawn::MapKeyCombatSpawn)
 		{
-			newObject = CombatSpawn::create(&properties);
+			newObject = CombatSpawn::create(properties);
 		}
 		else if (name == DartGun::MapKeyDartGun)
 		{
-			newObject = DartGun::create(&properties);
+			newObject = DartGun::create(properties);
 		}
 		else if (name == HeavenHug::MapKeyHeavenHug)
 		{
-			newObject = HeavenHug::create(&properties);
+			newObject = HeavenHug::create(properties);
 		}
 		else if (name == Laser::MapKeyLaser)
 		{
-			newObject = Laser::create(&properties);
+			newObject = Laser::create(properties);
 		}
 		else if (name == MetalSpikes::MapKeyMetalSpikes)
 		{
-			newObject = MetalSpikes::create(&properties);
+			newObject = MetalSpikes::create(properties);
 		}
 		else if (name == WoodenSpikes::MapKeyWoodenSpikes)
 		{
-			newObject = WoodenSpikes::create(&properties);
+			newObject = WoodenSpikes::create(properties);
 		}
 		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
 		{
-			newObject = MechanicalFlail::create(&properties);
+			newObject = MechanicalFlail::create(properties);
 		}
 		else if (name == PendulumBlade::MapKeyPendulumBlade)
 		{
-			newObject = PendulumBlade::create(&properties);
+			newObject = PendulumBlade::create(properties);
 		}
 		else if (name == SpikeLog::MapKeySpikeLog)
 		{
-			newObject = SpikeLog::create(&properties);
+			newObject = SpikeLog::create(properties);
 		}
 		else if (name == PlushieMonkey::MapKeyPlushieMonkey)
 		{
-			newObject = PlushieMonkey::create(&properties);
+			newObject = PlushieMonkey::create(properties);
 		}
 		else if (name == Monitor::MapKeyMonitor)
 		{
-			newObject = Monitor::create(&properties);
+			newObject = Monitor::create(properties);
 		}
 		else if (name == Wind::MapKeyWind)
 		{
-			newObject = Wind::create(&properties);
+			newObject = Wind::create(properties);
 		}
 		else
 		{

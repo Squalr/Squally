@@ -8,7 +8,7 @@
 
 const std::string Theldar::MapKeyTheldar = "theldar";
 
-Theldar* Theldar::deserialize(cocos2d::ValueMap* initProperties)
+Theldar* Theldar::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Theldar* instance = new Theldar(initProperties);
 
@@ -17,7 +17,7 @@ Theldar* Theldar::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Theldar::Theldar(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Theldar::Theldar(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

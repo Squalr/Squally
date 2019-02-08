@@ -8,7 +8,7 @@
 
 const std::string Jasper::MapKeyJasper = "jasper";
 
-Jasper* Jasper::deserialize(cocos2d::ValueMap* initProperties)
+Jasper* Jasper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Jasper* instance = new Jasper(initProperties);
 
@@ -17,7 +17,7 @@ Jasper* Jasper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Jasper::Jasper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Jasper::Jasper(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

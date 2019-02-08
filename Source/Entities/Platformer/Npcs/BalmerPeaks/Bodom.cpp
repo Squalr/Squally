@@ -8,7 +8,7 @@
 
 const std::string Bodom::MapKeyBodom = "bodom";
 
-Bodom* Bodom::deserialize(cocos2d::ValueMap* initProperties)
+Bodom* Bodom::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Bodom* instance = new Bodom(initProperties);
 
@@ -17,7 +17,7 @@ Bodom* Bodom::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Bodom::Bodom(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Bodom::Bodom(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string LightningGolem::MapKeyLightningGolem = "lightning-golem";
 
-LightningGolem* LightningGolem::deserialize(cocos2d::ValueMap* initProperties)
+LightningGolem* LightningGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	LightningGolem* instance = new LightningGolem(initProperties);
 
@@ -17,7 +17,7 @@ LightningGolem* LightningGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-LightningGolem::LightningGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+LightningGolem::LightningGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
 	PlatformerCollisionType::Enemy,

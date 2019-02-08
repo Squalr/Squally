@@ -8,7 +8,7 @@
 
 const std::string PrincessOpal::MapKeyPrincessOpal = "princess-opal";
 
-PrincessOpal* PrincessOpal::deserialize(cocos2d::ValueMap* initProperties)
+PrincessOpal* PrincessOpal::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PrincessOpal* instance = new PrincessOpal(initProperties);
 
@@ -17,7 +17,7 @@ PrincessOpal* PrincessOpal::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PrincessOpal::PrincessOpal(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+PrincessOpal::PrincessOpal(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

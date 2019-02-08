@@ -8,7 +8,7 @@
 
 const std::string Xenon::MapKeyXenon = "xenon";
 
-Xenon* Xenon::deserialize(cocos2d::ValueMap* initProperties)
+Xenon* Xenon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Xenon* instance = new Xenon(initProperties);
 
@@ -17,7 +17,7 @@ Xenon* Xenon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Xenon::Xenon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Xenon::Xenon(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

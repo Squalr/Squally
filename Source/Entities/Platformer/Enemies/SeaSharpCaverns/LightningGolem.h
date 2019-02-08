@@ -10,11 +10,11 @@
 class LightningGolem : public PlatformerEnemy
 {
 public:
-	static LightningGolem* deserialize(cocos2d::ValueMap* initProperties);
+	static LightningGolem* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLightningGolem;
 
 private:
-	LightningGolem(cocos2d::ValueMap* initProperties);
+	LightningGolem(cocos2d::ValueMap& initProperties);
 	~LightningGolem();
 };

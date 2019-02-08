@@ -8,7 +8,7 @@
 
 const std::string ZombieElric::MapKeyZombieElric = "zombie-elric";
 
-ZombieElric* ZombieElric::deserialize(cocos2d::ValueMap* initProperties)
+ZombieElric* ZombieElric::deserialize(cocos2d::ValueMap& initProperties)
 {
 	ZombieElric* instance = new ZombieElric(initProperties);
 
@@ -17,7 +17,7 @@ ZombieElric* ZombieElric::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-ZombieElric::ZombieElric(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+ZombieElric::ZombieElric(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
 	PlatformerCollisionType::Enemy,

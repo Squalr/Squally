@@ -8,7 +8,7 @@
 
 const std::string Olive::MapKeyOlive = "olive";
 
-Olive* Olive::deserialize(cocos2d::ValueMap* initProperties)
+Olive* Olive::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Olive* instance = new Olive(initProperties);
 
@@ -17,7 +17,7 @@ Olive* Olive::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Olive::Olive(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Olive::Olive(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

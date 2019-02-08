@@ -10,11 +10,11 @@
 class Cleopatra : public NpcBase
 {
 public:
-	static Cleopatra* deserialize(cocos2d::ValueMap* initProperties);
+	static Cleopatra* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCleopatra;
 
 private:
-	Cleopatra(cocos2d::ValueMap* initProperties);
+	Cleopatra(cocos2d::ValueMap& initProperties);
 	~Cleopatra();
 };

@@ -10,11 +10,11 @@
 class Xenon : public NpcBase
 {
 public:
-	static Xenon* deserialize(cocos2d::ValueMap* initProperties);
+	static Xenon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyXenon;
 
 private:
-	Xenon(cocos2d::ValueMap* initProperties);
+	Xenon(cocos2d::ValueMap& initProperties);
 	~Xenon();
 };

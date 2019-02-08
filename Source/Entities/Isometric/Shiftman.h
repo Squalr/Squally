@@ -5,7 +5,7 @@
 class Shiftman : public IsometricEntity
 {
 public:
-	static Shiftman* deserialize(cocos2d::ValueMap* initProperties);
+	static Shiftman* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string KeyShiftmanProperty;
 
@@ -14,7 +14,7 @@ protected:
 
 private:
 	typedef IsometricEntity super;
-	Shiftman(cocos2d::ValueMap* initProperties);
+	Shiftman(cocos2d::ValueMap& initProperties);
 	~Shiftman();
 
 	void registerHackables();

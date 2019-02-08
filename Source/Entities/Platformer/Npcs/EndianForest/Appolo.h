@@ -10,11 +10,11 @@
 class Appolo : public NpcBase
 {
 public:
-	static Appolo* deserialize(cocos2d::ValueMap* initProperties);
+	static Appolo* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAppolo;
 
 private:
-	Appolo(cocos2d::ValueMap* initProperties);
+	Appolo(cocos2d::ValueMap& initProperties);
 	~Appolo();
 };

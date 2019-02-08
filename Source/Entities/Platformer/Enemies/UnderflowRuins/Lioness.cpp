@@ -8,7 +8,7 @@
 
 const std::string Lioness::MapKeyLioness = "lioness";
 
-Lioness* Lioness::deserialize(cocos2d::ValueMap* initProperties)
+Lioness* Lioness::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Lioness* instance = new Lioness(initProperties);
 
@@ -17,7 +17,7 @@ Lioness* Lioness::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Lioness::Lioness(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Lioness::Lioness(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Animations,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Emblem,
 	PlatformerCollisionType::Enemy,

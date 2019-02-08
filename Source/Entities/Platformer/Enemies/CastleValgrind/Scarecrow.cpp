@@ -8,7 +8,7 @@
 
 const std::string Scarecrow::MapKeyScarecrow = "scarecrow";
 
-Scarecrow* Scarecrow::deserialize(cocos2d::ValueMap* initProperties)
+Scarecrow* Scarecrow::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Scarecrow* instance = new Scarecrow(initProperties);
 
@@ -17,7 +17,7 @@ Scarecrow* Scarecrow::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Scarecrow::Scarecrow(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Scarecrow::Scarecrow(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -8,7 +8,7 @@ class IsometricEntity : public HackableObject
 {
 protected:
 	IsometricEntity(
-		cocos2d::ValueMap* initProperties,
+		cocos2d::ValueMap& initProperties,
 		std::string scmlResource,
 		float scale = 1.0f,
 		cocos2d::Vec2 offset = cocos2d::Vec2(0.0f, 0.0f),

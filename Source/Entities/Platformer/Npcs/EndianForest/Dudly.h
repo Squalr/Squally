@@ -10,11 +10,11 @@
 class Dudly : public NpcBase
 {
 public:
-	static Dudly* deserialize(cocos2d::ValueMap* initProperties);
+	static Dudly* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyDudly;
 
 private:
-	Dudly(cocos2d::ValueMap* initProperties);
+	Dudly(cocos2d::ValueMap& initProperties);
 	~Dudly();
 };

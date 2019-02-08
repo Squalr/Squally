@@ -8,7 +8,7 @@
 
 const std::string VoidArcher::MapKeyVoidArcher = "void-archer";
 
-VoidArcher* VoidArcher::deserialize(cocos2d::ValueMap* initProperties)
+VoidArcher* VoidArcher::deserialize(cocos2d::ValueMap& initProperties)
 {
 	VoidArcher* instance = new VoidArcher(initProperties);
 
@@ -17,7 +17,7 @@ VoidArcher* VoidArcher::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-VoidArcher::VoidArcher(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+VoidArcher::VoidArcher(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_VoidArcher_Animations,
 	EntityResources::Enemies_LambdaCrypts_VoidArcher_Emblem,
 	PlatformerCollisionType::Enemy,

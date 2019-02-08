@@ -8,7 +8,7 @@
 
 const std::string SkeletalNecromancer::MapKeySkeletalNecromancer = "skeletal-necromancer";
 
-SkeletalNecromancer* SkeletalNecromancer::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalNecromancer* SkeletalNecromancer::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalNecromancer* instance = new SkeletalNecromancer(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(cocos2d::ValueMap* initPro
 	return instance;
 }
 
-SkeletalNecromancer::SkeletalNecromancer(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalNecromancer::SkeletalNecromancer(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
 	PlatformerCollisionType::Enemy,

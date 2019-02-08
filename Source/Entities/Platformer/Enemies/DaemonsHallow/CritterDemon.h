@@ -10,11 +10,11 @@
 class CritterDemon : public PlatformerEnemy
 {
 public:
-	static CritterDemon* deserialize(cocos2d::ValueMap* initProperties);
+	static CritterDemon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCritterDemon;
 
 private:
-	CritterDemon(cocos2d::ValueMap* initProperties);
+	CritterDemon(cocos2d::ValueMap& initProperties);
 	~CritterDemon();
 };

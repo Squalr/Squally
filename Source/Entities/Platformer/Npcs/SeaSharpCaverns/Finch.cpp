@@ -8,7 +8,7 @@
 
 const std::string Finch::MapKeyFinch = "finch";
 
-Finch* Finch::deserialize(cocos2d::ValueMap* initProperties)
+Finch* Finch::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Finch* instance = new Finch(initProperties);
 
@@ -17,7 +17,7 @@ Finch* Finch::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Finch::Finch(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Finch::Finch(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

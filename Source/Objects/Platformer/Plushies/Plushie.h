@@ -10,7 +10,7 @@ public:
 
 protected:
 	typedef HackableObject super;
-	Plushie(cocos2d::ValueMap* initProperties);
+	Plushie(cocos2d::ValueMap& initProperties);
 	~Plushie();
 
 	virtual void registerHackables();

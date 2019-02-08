@@ -17,7 +17,7 @@ const std::string SerializableLayer::MapKeyPropertyValue = "value";
 const std::string SerializableLayer::MapKeyPropertyDepth = "depth";
 const std::string SerializableLayer::MapKeyPropertyIgnoreHackermode = "ignore_hackermode";
 
-SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::string name, const std::vector<SerializableObject*>& objects)
+SerializableLayer* SerializableLayer::create(ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
 	SerializableLayer* instance = new SerializableLayer(initProperties, name, objects);
 
@@ -28,27 +28,23 @@ SerializableLayer* SerializableLayer::create(ValueMap* initProperties, std::stri
 
 SerializableLayer::SerializableLayer()
 {
-	if (this->properties != nullptr)
-	{
-		delete(this->properties);
-	}
 }
 
-SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name) : SerializableLayer(initProperties, name, std::vector<SerializableObject*>())
+SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name) : SerializableLayer(initProperties, name, std::vector<SerializableObject*>())
 {
 }
 
-SerializableLayer::SerializableLayer(ValueMap* initProperties, std::string name,
+SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name,
 		const std::vector<SerializableObject*>& objects)
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
 	this->serializableObjectsSet = std::set<SerializableObject*>();
-	this->properties = new ValueMap(*initProperties);
+	this->properties = initProperties;
 
 	if (GameUtils::keyExists(this->properties, SerializableLayer::MapKeyPropertyDepth))
 	{
-		this->setPositionZ(this->properties->at(SerializableLayer::MapKeyPropertyDepth).asFloat());
+		this->setPositionZ(this->properties.at(SerializableLayer::MapKeyPropertyDepth).asFloat());
 	}
 
 	for (auto it = objects.begin(); it != objects.end(); it++)
@@ -83,11 +79,11 @@ void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2:
 	tinyxml2::XMLElement* objectGroupElement = documentRoot->NewElement("objectgroup");
 	objectGroupElement->SetAttribute(SerializableLayer::MapKeyPropertyName.c_str(), this->layerName.c_str());
 
-	if (this->properties != nullptr && this->properties->size() > 0)
+	if (this->properties.size() > 0)
 	{
 		tinyxml2::XMLElement* propertiesElement = documentRoot->NewElement("properties");
 
-		for (auto it = this->properties->begin(); it != this->properties->end(); it++)
+		for (auto it = this->properties.begin(); it != this->properties.end(); it++)
 		{
 			tinyxml2::XMLElement* propertyElement = documentRoot->NewElement("property");
 
@@ -112,7 +108,7 @@ bool SerializableLayer::isHackerModeIgnored()
 {
 	if (GameUtils::keyExists(this->properties, SerializableLayer::MapKeyPropertyIgnoreHackermode))
 	{
-		return this->properties->at(SerializableLayer::MapKeyPropertyIgnoreHackermode).asBool();
+		return this->properties.at(SerializableLayer::MapKeyPropertyIgnoreHackermode).asBool();
 	}
 	
 	return false;

@@ -8,7 +8,7 @@
 
 const std::string Viking::MapKeyViking = "viking";
 
-Viking* Viking::deserialize(cocos2d::ValueMap* initProperties)
+Viking* Viking::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Viking* instance = new Viking(initProperties);
 
@@ -17,7 +17,7 @@ Viking* Viking::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Viking::Viking(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Viking::Viking(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Viking_Animations,
 	EntityResources::Enemies_VoidStar_Viking_Emblem,
 	PlatformerCollisionType::Enemy,

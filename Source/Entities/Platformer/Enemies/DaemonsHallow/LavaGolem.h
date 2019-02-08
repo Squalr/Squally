@@ -10,11 +10,11 @@
 class LavaGolem : public PlatformerEnemy
 {
 public:
-	static LavaGolem* deserialize(cocos2d::ValueMap* initProperties);
+	static LavaGolem* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLavaGolem;
 
 private:
-	LavaGolem(cocos2d::ValueMap* initProperties);
+	LavaGolem(cocos2d::ValueMap& initProperties);
 	~LavaGolem();
 };

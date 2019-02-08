@@ -10,11 +10,11 @@
 class Mara : public NpcBase
 {
 public:
-	static Mara* deserialize(cocos2d::ValueMap* initProperties);
+	static Mara* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMara;
 
 private:
-	Mara(cocos2d::ValueMap* initProperties);
+	Mara(cocos2d::ValueMap& initProperties);
 	~Mara();
 };

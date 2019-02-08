@@ -10,11 +10,11 @@
 class Minotaur : public PlatformerEnemy
 {
 public:
-	static Minotaur* deserialize(cocos2d::ValueMap* initProperties);
+	static Minotaur* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMinotaur;
 
 private:
-	Minotaur(cocos2d::ValueMap* initProperties);
+	Minotaur(cocos2d::ValueMap& initProperties);
 	~Minotaur();
 };

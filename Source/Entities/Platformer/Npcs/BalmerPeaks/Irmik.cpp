@@ -8,7 +8,7 @@
 
 const std::string Irmik::MapKeyIrmik = "irmik";
 
-Irmik* Irmik::deserialize(cocos2d::ValueMap* initProperties)
+Irmik* Irmik::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Irmik* instance = new Irmik(initProperties);
 
@@ -17,7 +17,7 @@ Irmik* Irmik::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Irmik::Irmik(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Irmik::Irmik(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

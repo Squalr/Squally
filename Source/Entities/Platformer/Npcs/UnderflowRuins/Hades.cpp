@@ -8,7 +8,7 @@
 
 const std::string Hades::MapKeyHades = "hades";
 
-Hades* Hades::deserialize(cocos2d::ValueMap* initProperties)
+Hades* Hades::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Hades* instance = new Hades(initProperties);
 
@@ -17,7 +17,7 @@ Hades* Hades::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Hades::Hades(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Hades::Hades(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

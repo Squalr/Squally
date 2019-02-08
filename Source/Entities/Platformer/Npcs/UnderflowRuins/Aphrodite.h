@@ -10,11 +10,11 @@
 class Aphrodite : public NpcBase
 {
 public:
-	static Aphrodite* deserialize(cocos2d::ValueMap* initProperties);
+	static Aphrodite* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAphrodite;
 
 private:
-	Aphrodite(cocos2d::ValueMap* initProperties);
+	Aphrodite(cocos2d::ValueMap& initProperties);
 	~Aphrodite();
 };

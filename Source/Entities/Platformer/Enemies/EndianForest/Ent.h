@@ -10,11 +10,11 @@
 class Ent : public PlatformerEnemy
 {
 public:
-	static Ent* deserialize(cocos2d::ValueMap* initProperties);
+	static Ent* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyEnt;
 
 private:
-	Ent(cocos2d::ValueMap* initProperties);
+	Ent(cocos2d::ValueMap& initProperties);
 	~Ent();
 };

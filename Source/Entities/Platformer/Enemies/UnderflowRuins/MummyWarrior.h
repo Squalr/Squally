@@ -10,11 +10,11 @@
 class MummyWarrior : public PlatformerEnemy
 {
 public:
-	static MummyWarrior* deserialize(cocos2d::ValueMap* initProperties);
+	static MummyWarrior* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMummyWarrior;
 
 private:
-	MummyWarrior(cocos2d::ValueMap* initProperties);
+	MummyWarrior(cocos2d::ValueMap& initProperties);
 	~MummyWarrior();
 };

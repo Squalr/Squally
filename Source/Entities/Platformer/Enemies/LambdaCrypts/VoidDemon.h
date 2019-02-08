@@ -10,11 +10,11 @@
 class VoidDemon : public PlatformerEnemy
 {
 public:
-	static VoidDemon* deserialize(cocos2d::ValueMap* initProperties);
+	static VoidDemon* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyVoidDemon;
 
 private:
-	VoidDemon(cocos2d::ValueMap* initProperties);
+	VoidDemon(cocos2d::ValueMap& initProperties);
 	~VoidDemon();
 };

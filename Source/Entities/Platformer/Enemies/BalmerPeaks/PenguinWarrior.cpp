@@ -8,7 +8,7 @@
 
 const std::string PenguinWarrior::MapKeyPenguinWarrior = "penguin-warrior";
 
-PenguinWarrior* PenguinWarrior::deserialize(cocos2d::ValueMap* initProperties)
+PenguinWarrior* PenguinWarrior::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PenguinWarrior* instance = new PenguinWarrior(initProperties);
 
@@ -17,7 +17,7 @@ PenguinWarrior* PenguinWarrior::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PenguinWarrior::PenguinWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+PenguinWarrior::PenguinWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,
 	PlatformerCollisionType::Enemy,

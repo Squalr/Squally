@@ -8,7 +8,7 @@
 
 const std::string PrincessMittens::MapKeyPrincessMittens = "princess-mittens";
 
-PrincessMittens* PrincessMittens::deserialize(cocos2d::ValueMap* initProperties)
+PrincessMittens* PrincessMittens::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PrincessMittens* instance = new PrincessMittens(initProperties);
 
@@ -17,7 +17,7 @@ PrincessMittens* PrincessMittens::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PrincessMittens::PrincessMittens(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+PrincessMittens::PrincessMittens(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

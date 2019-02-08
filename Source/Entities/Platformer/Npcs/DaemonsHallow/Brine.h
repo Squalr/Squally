@@ -10,11 +10,11 @@
 class Brine : public NpcBase
 {
 public:
-	static Brine* deserialize(cocos2d::ValueMap* initProperties);
+	static Brine* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyBrine;
 
 private:
-	Brine(cocos2d::ValueMap* initProperties);
+	Brine(cocos2d::ValueMap& initProperties);
 	~Brine();
 };

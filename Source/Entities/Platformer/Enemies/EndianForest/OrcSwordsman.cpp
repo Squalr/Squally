@@ -8,7 +8,7 @@
 
 const std::string OrcSwordsman::MapKeyOrcSwordsman = "orc-swordsman";
 
-OrcSwordsman* OrcSwordsman::deserialize(cocos2d::ValueMap* initProperties)
+OrcSwordsman* OrcSwordsman::deserialize(cocos2d::ValueMap& initProperties)
 {
 	OrcSwordsman* instance = new OrcSwordsman(initProperties);
 
@@ -17,7 +17,7 @@ OrcSwordsman* OrcSwordsman::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-OrcSwordsman::OrcSwordsman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+OrcSwordsman::OrcSwordsman(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,
 	PlatformerCollisionType::Enemy,

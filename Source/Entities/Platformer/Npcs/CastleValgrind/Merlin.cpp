@@ -8,7 +8,7 @@
 
 const std::string Merlin::MapKeyMerlin = "merlin";
 
-Merlin* Merlin::deserialize(cocos2d::ValueMap* initProperties)
+Merlin* Merlin::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Merlin* instance = new Merlin(initProperties);
 
@@ -17,7 +17,7 @@ Merlin* Merlin::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Merlin::Merlin(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Merlin::Merlin(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

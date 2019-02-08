@@ -11,7 +11,7 @@ using namespace cocos2d;
 
 const std::string Snow::MapKeyWeatherLayerSnow = "snow";
 
-Snow* Snow::create(ValueMap* properties, std::string name)
+Snow* Snow::create(ValueMap& properties, std::string name)
 {
 	Snow* instance = new Snow(properties, name);
 
@@ -20,7 +20,7 @@ Snow* Snow::create(ValueMap* properties, std::string name)
 	return instance;
 }
 
-Snow::Snow(ValueMap* properties, std::string name) : SerializableLayer(properties, name)
+Snow::Snow(ValueMap& properties, std::string name) : SerializableLayer(properties, name)
 {
 	this->snow = ParticleSystemQuad::create(ParticleResources::Rain);
 	this->snow->setPositionType(ParticleSystem::PositionType::GROUPED);

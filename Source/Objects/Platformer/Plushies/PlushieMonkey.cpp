@@ -20,7 +20,7 @@ using namespace cocos2d;
 const std::string PlushieMonkey::MapKeyPlushieMonkey = "plushie_monkey";
 int PlushieMonkey::lockCountDown = 234900;
 
-PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
+PlushieMonkey* PlushieMonkey::create(ValueMap& initProperties)
 {
 	PlushieMonkey* instance = new PlushieMonkey(initProperties);
 
@@ -29,7 +29,7 @@ PlushieMonkey* PlushieMonkey::create(ValueMap* initProperties)
 	return instance;
 }
 
-PlushieMonkey::PlushieMonkey(ValueMap* initProperties) : Plushie(initProperties)
+PlushieMonkey::PlushieMonkey(ValueMap& initProperties) : Plushie(initProperties)
 {
 	Sprite* coin = Sprite::create(UIResources::Menus_Icons_Coins);
 

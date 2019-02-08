@@ -10,11 +10,11 @@
 class EvilEye : public PlatformerEnemy
 {
 public:
-	static EvilEye* deserialize(cocos2d::ValueMap* initProperties);
+	static EvilEye* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyEvilEye;
 
 private:
-	EvilEye(cocos2d::ValueMap* initProperties);
+	EvilEye(cocos2d::ValueMap& initProperties);
 	~EvilEye();
 };

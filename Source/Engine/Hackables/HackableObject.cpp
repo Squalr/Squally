@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-HackableObject::HackableObject(ValueMap* initProperties) : SerializableObject(initProperties)
+HackableObject::HackableObject(ValueMap& initProperties) : SerializableObject(initProperties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();

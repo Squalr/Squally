@@ -10,11 +10,11 @@
 class Pan : public NpcBase
 {
 public:
-	static Pan* deserialize(cocos2d::ValueMap* initProperties);
+	static Pan* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPan;
 
 private:
-	Pan(cocos2d::ValueMap* initProperties);
+	Pan(cocos2d::ValueMap& initProperties);
 	~Pan();
 };

@@ -8,7 +8,7 @@
 
 const std::string Azmus::MapKeyAzmus = "azmus";
 
-Azmus* Azmus::deserialize(cocos2d::ValueMap* initProperties)
+Azmus* Azmus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Azmus* instance = new Azmus(initProperties);
 
@@ -17,7 +17,7 @@ Azmus* Azmus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Azmus::Azmus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Azmus::Azmus(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Animations,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

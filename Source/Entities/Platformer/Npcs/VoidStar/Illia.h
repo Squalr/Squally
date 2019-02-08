@@ -10,11 +10,11 @@
 class Illia : public NpcBase
 {
 public:
-	static Illia* deserialize(cocos2d::ValueMap* initProperties);
+	static Illia* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyIllia;
 
 private:
-	Illia(cocos2d::ValueMap* initProperties);
+	Illia(cocos2d::ValueMap& initProperties);
 	~Illia();
 };

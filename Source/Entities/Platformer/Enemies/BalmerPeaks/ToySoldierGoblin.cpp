@@ -8,7 +8,7 @@
 
 const std::string ToySoldierGoblin::MapKeyToySoldierGoblin = "toy-soldier-goblin";
 
-ToySoldierGoblin* ToySoldierGoblin::deserialize(cocos2d::ValueMap* initProperties)
+ToySoldierGoblin* ToySoldierGoblin::deserialize(cocos2d::ValueMap& initProperties)
 {
 	ToySoldierGoblin* instance = new ToySoldierGoblin(initProperties);
 
@@ -17,7 +17,7 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(cocos2d::ValueMap* initPropertie
 	return instance;
 }
 
-ToySoldierGoblin::ToySoldierGoblin(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+ToySoldierGoblin::ToySoldierGoblin(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,
 	PlatformerCollisionType::Enemy,

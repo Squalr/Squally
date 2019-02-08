@@ -10,11 +10,11 @@
 class Igneus : public NpcBase
 {
 public:
-	static Igneus* deserialize(cocos2d::ValueMap* initProperties);
+	static Igneus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyIgneus;
 
 private:
-	Igneus(cocos2d::ValueMap* initProperties);
+	Igneus(cocos2d::ValueMap& initProperties);
 	~Igneus();
 };

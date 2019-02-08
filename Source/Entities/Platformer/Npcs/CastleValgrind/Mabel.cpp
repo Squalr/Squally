@@ -8,7 +8,7 @@
 
 const std::string Mabel::MapKeyMabel = "mabel";
 
-Mabel* Mabel::deserialize(cocos2d::ValueMap* initProperties)
+Mabel* Mabel::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Mabel* instance = new Mabel(initProperties);
 
@@ -17,7 +17,7 @@ Mabel* Mabel::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Mabel::Mabel(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Mabel::Mabel(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

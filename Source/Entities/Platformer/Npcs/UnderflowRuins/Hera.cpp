@@ -8,7 +8,7 @@
 
 const std::string Hera::MapKeyHera = "hera";
 
-Hera* Hera::deserialize(cocos2d::ValueMap* initProperties)
+Hera* Hera::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Hera* instance = new Hera(initProperties);
 
@@ -17,7 +17,7 @@ Hera* Hera::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Hera::Hera(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Hera::Hera(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hera_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

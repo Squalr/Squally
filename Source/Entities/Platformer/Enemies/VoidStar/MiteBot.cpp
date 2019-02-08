@@ -8,7 +8,7 @@
 
 const std::string MiteBot::MapKeyMiteBot = "mite-bot";
 
-MiteBot* MiteBot::deserialize(cocos2d::ValueMap* initProperties)
+MiteBot* MiteBot::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MiteBot* instance = new MiteBot(initProperties);
 
@@ -17,7 +17,7 @@ MiteBot* MiteBot::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MiteBot::MiteBot(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MiteBot::MiteBot(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MiteBot_Animations,
 	EntityResources::Enemies_VoidStar_MiteBot_Emblem,
 	PlatformerCollisionType::Enemy,

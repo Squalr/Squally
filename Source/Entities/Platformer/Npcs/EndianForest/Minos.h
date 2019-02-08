@@ -10,11 +10,11 @@
 class Minos : public NpcBase
 {
 public:
-	static Minos* deserialize(cocos2d::ValueMap* initProperties);
+	static Minos* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMinos;
 
 private:
-	Minos(cocos2d::ValueMap* initProperties);
+	Minos(cocos2d::ValueMap& initProperties);
 	~Minos();
 };

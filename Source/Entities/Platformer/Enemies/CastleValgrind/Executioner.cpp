@@ -8,7 +8,7 @@
 
 const std::string Executioner::MapKeyExecutioner = "executioner";
 
-Executioner* Executioner::deserialize(cocos2d::ValueMap* initProperties)
+Executioner* Executioner::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Executioner* instance = new Executioner(initProperties);
 
@@ -17,7 +17,7 @@ Executioner* Executioner::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Executioner::Executioner(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Executioner::Executioner(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Executioner_Animations,
 	EntityResources::Enemies_CastleValgrind_Executioner_Emblem,
 	PlatformerCollisionType::Enemy,

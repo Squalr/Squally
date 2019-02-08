@@ -8,7 +8,7 @@
 
 const std::string Horus::MapKeyHorus = "horus";
 
-Horus* Horus::deserialize(cocos2d::ValueMap* initProperties)
+Horus* Horus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Horus* instance = new Horus(initProperties);
 
@@ -17,7 +17,7 @@ Horus* Horus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Horus::Horus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Horus::Horus(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

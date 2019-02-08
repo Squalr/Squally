@@ -10,11 +10,11 @@
 class Merlin : public NpcBase
 {
 public:
-	static Merlin* deserialize(cocos2d::ValueMap* initProperties);
+	static Merlin* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMerlin;
 
 private:
-	Merlin(cocos2d::ValueMap* initProperties);
+	Merlin(cocos2d::ValueMap& initProperties);
 	~Merlin();
 };

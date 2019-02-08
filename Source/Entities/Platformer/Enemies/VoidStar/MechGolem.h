@@ -10,11 +10,11 @@
 class MechGolem : public PlatformerEnemy
 {
 public:
-	static MechGolem* deserialize(cocos2d::ValueMap* initProperties);
+	static MechGolem* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMechGolem;
 
 private:
-	MechGolem(cocos2d::ValueMap* initProperties);
+	MechGolem(cocos2d::ValueMap& initProperties);
 	~MechGolem();
 };

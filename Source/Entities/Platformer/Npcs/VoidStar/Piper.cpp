@@ -8,7 +8,7 @@
 
 const std::string Piper::MapKeyPiper = "piper";
 
-Piper* Piper::deserialize(cocos2d::ValueMap* initProperties)
+Piper* Piper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Piper* instance = new Piper(initProperties);
 
@@ -17,7 +17,7 @@ Piper* Piper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Piper::Piper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Piper::Piper(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Piper_Animations,
 	EntityResources::Npcs_VoidStar_Piper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string Thurstan::MapKeyThurstan = "thurstan";
 
-Thurstan* Thurstan::deserialize(cocos2d::ValueMap* initProperties)
+Thurstan* Thurstan::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Thurstan* instance = new Thurstan(initProperties);
 
@@ -17,7 +17,7 @@ Thurstan* Thurstan::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Thurstan::Thurstan(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Thurstan::Thurstan(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

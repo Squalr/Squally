@@ -10,11 +10,11 @@
 class Cyrogen : public PlatformerEnemy
 {
 public:
-	static Cyrogen* deserialize(cocos2d::ValueMap* initProperties);
+	static Cyrogen* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCyrogen;
 
 private:
-	Cyrogen(cocos2d::ValueMap* initProperties);
+	Cyrogen(cocos2d::ValueMap& initProperties);
 	~Cyrogen();
 };

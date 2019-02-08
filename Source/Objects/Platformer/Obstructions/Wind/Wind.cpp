@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 const std::string Wind::MapKeyWind = "wind";
 
-Wind* Wind::create(ValueMap* initProperties)
+Wind* Wind::create(ValueMap& initProperties)
 {
 	Wind* instance = new Wind(initProperties);
 
@@ -32,22 +32,22 @@ Wind* Wind::create(ValueMap* initProperties)
 	return instance;
 }
 
-Wind::Wind(ValueMap* initProperties) : HackableObject(initProperties)
+Wind::Wind(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	float speedX = 0.0f;
 	float speedY = 0.0f;
 
 	if (GameUtils::keyExists(this->properties, "speed-x"))
 	{
-		speedX = this->properties->at("speed-x").asFloat();
+		speedX = this->properties.at("speed-x").asFloat();
 	}
 
 	if (GameUtils::keyExists(this->properties, "speed-y"))
 	{
-		speedY = this->properties->at("speed-y").asFloat();
+		speedY = this->properties.at("speed-y").asFloat();
 	}
 
-	this->windSize = Size(this->properties->at(SerializableObject::MapKeyWidth).asFloat(), this->properties->at(SerializableObject::MapKeyHeight).asFloat());
+	this->windSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);

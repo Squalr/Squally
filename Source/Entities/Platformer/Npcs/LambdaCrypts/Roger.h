@@ -10,11 +10,11 @@
 class Roger : public NpcBase
 {
 public:
-	static Roger* deserialize(cocos2d::ValueMap* initProperties);
+	static Roger* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRoger;
 
 private:
-	Roger(cocos2d::ValueMap* initProperties);
+	Roger(cocos2d::ValueMap& initProperties);
 	~Roger();
 };

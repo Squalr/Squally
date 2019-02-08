@@ -8,7 +8,7 @@
 
 const std::string Shen::MapKeyShen = "shen";
 
-Shen* Shen::deserialize(cocos2d::ValueMap* initProperties)
+Shen* Shen::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Shen* instance = new Shen(initProperties);
 
@@ -17,7 +17,7 @@ Shen* Shen::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Shen::Shen(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Shen::Shen(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

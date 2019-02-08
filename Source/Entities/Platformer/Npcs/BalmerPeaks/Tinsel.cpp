@@ -8,7 +8,7 @@
 
 const std::string Tinsel::MapKeyTinsel = "tinsel";
 
-Tinsel* Tinsel::deserialize(cocos2d::ValueMap* initProperties)
+Tinsel* Tinsel::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Tinsel* instance = new Tinsel(initProperties);
 
@@ -17,7 +17,7 @@ Tinsel* Tinsel::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Tinsel::Tinsel(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Tinsel::Tinsel(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

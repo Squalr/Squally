@@ -8,7 +8,7 @@
 
 const std::string VikingBot::MapKeyVikingBot = "viking-bot";
 
-VikingBot* VikingBot::deserialize(cocos2d::ValueMap* initProperties)
+VikingBot* VikingBot::deserialize(cocos2d::ValueMap& initProperties)
 {
 	VikingBot* instance = new VikingBot(initProperties);
 
@@ -17,7 +17,7 @@ VikingBot* VikingBot::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-VikingBot::VikingBot(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+VikingBot::VikingBot(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_VikingBot_Animations,
 	EntityResources::Enemies_VoidStar_VikingBot_Emblem,
 	PlatformerCollisionType::Enemy,

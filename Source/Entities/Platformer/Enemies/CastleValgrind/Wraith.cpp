@@ -8,7 +8,7 @@
 
 const std::string Wraith::MapKeyWraith = "wraith";
 
-Wraith* Wraith::deserialize(cocos2d::ValueMap* initProperties)
+Wraith* Wraith::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Wraith* instance = new Wraith(initProperties);
 
@@ -17,7 +17,7 @@ Wraith* Wraith::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Wraith::Wraith(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Wraith::Wraith(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class OrcBomber : public PlatformerEnemy
 {
 public:
-	static OrcBomber* deserialize(cocos2d::ValueMap* initProperties);
+	static OrcBomber* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyOrcBomber;
 
 private:
-	OrcBomber(cocos2d::ValueMap* initProperties);
+	OrcBomber(cocos2d::ValueMap& initProperties);
 	~OrcBomber();
 };

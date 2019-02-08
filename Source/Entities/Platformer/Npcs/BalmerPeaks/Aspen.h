@@ -10,11 +10,11 @@
 class Aspen : public NpcBase
 {
 public:
-	static Aspen* deserialize(cocos2d::ValueMap* initProperties);
+	static Aspen* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAspen;
 
 private:
-	Aspen(cocos2d::ValueMap* initProperties);
+	Aspen(cocos2d::ValueMap& initProperties);
 	~Aspen();
 };

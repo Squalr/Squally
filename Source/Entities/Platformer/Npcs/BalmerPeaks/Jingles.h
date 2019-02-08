@@ -10,11 +10,11 @@
 class Jingles : public NpcBase
 {
 public:
-	static Jingles* deserialize(cocos2d::ValueMap* initProperties);
+	static Jingles* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyJingles;
 
 private:
-	Jingles(cocos2d::ValueMap* initProperties);
+	Jingles(cocos2d::ValueMap& initProperties);
 	~Jingles();
 };

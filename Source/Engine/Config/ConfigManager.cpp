@@ -59,12 +59,12 @@ void ConfigManager::save()
 
 bool ConfigManager::hasLanguageSaved()
 {
-	return GameUtils::keyExists(&ConfigManager::getInstance()->valueMap, ConfigManager::LanguageKey);
+	return GameUtils::keyExists(ConfigManager::getInstance()->valueMap, ConfigManager::LanguageKey);
 }
 
 std::string ConfigManager::getLanguage()
 {
-	if (GameUtils::keyExists(&ConfigManager::getInstance()->valueMap, ConfigManager::LanguageKey))
+	if (GameUtils::keyExists(ConfigManager::getInstance()->valueMap, ConfigManager::LanguageKey))
 	{
 		return ConfigManager::getInstance()->valueMap[ConfigManager::LanguageKey].asString();
 	}
@@ -218,7 +218,7 @@ ConfigManager::ResolutionSetting ConfigManager::getResolution()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (!GameUtils::keyExists(&instance->valueMap, ConfigManager::ResolutionKey))
+	if (!GameUtils::keyExists(instance->valueMap, ConfigManager::ResolutionKey))
 	{
 		return ResolutionSetting::R1080x768;
 	}
@@ -232,7 +232,7 @@ bool ConfigManager::getIsFullScreen()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (!GameUtils::keyExists(&instance->valueMap, ConfigManager::FullScreenKey))
+	if (!GameUtils::keyExists(instance->valueMap, ConfigManager::FullScreenKey))
 	{
 		return false;
 	}
@@ -246,7 +246,7 @@ float ConfigManager::getSoundVolume()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (GameUtils::keyExists(&instance->valueMap, ConfigManager::SoundVolumeKey))
+	if (GameUtils::keyExists(instance->valueMap, ConfigManager::SoundVolumeKey))
 	{
 		return instance->valueMap[ConfigManager::SoundVolumeKey].asFloat();
 	}
@@ -260,7 +260,7 @@ float ConfigManager::getMusicVolume()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (GameUtils::keyExists(&instance->valueMap, ConfigManager::MusicVolumeKey))
+	if (GameUtils::keyExists(instance->valueMap, ConfigManager::MusicVolumeKey))
 	{
 		return instance->valueMap[ConfigManager::MusicVolumeKey].asFloat();
 	}

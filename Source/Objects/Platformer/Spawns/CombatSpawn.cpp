@@ -17,7 +17,7 @@ const std::string CombatSpawn::MapKeySpawnOrder = "spawn-order";
 const std::string CombatSpawn::MapKeyPlayerSpawn = "player";
 const std::string CombatSpawn::MapKeyEnemySpawn = "enemy";
 
-CombatSpawn* CombatSpawn::create(ValueMap* initProperties)
+CombatSpawn* CombatSpawn::create(ValueMap& initProperties)
 {
 	CombatSpawn* instance = new CombatSpawn(initProperties);
 
@@ -26,14 +26,14 @@ CombatSpawn* CombatSpawn::create(ValueMap* initProperties)
 	return instance;
 }
 
-CombatSpawn::CombatSpawn(ValueMap* initProperties) : SerializableObject(initProperties)
+CombatSpawn::CombatSpawn(ValueMap& initProperties) : SerializableObject(initProperties)
 {
 	this->spawnType = SpawnType::Player;
 	this->spawnOrder = 1;
 
 	if (GameUtils::keyExists(initProperties, CombatSpawn::MapKeySpawnType))
 	{
-		std::string spawnType = (*initProperties)[CombatSpawn::MapKeySpawnType].asString();
+		std::string spawnType = initProperties[CombatSpawn::MapKeySpawnType].asString();
 
 		if (spawnType == CombatSpawn::MapKeyEnemySpawn)
 		{
@@ -43,7 +43,7 @@ CombatSpawn::CombatSpawn(ValueMap* initProperties) : SerializableObject(initProp
 
 	if (GameUtils::keyExists(initProperties, CombatSpawn::MapKeySpawnOrder))
 	{
-		this->spawnOrder = (*initProperties)[CombatSpawn::MapKeySpawnOrder].asInt();
+		this->spawnOrder = initProperties[CombatSpawn::MapKeySpawnOrder].asInt();
 	}
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -74,7 +74,7 @@ void CombatSpawn::initializeListeners()
 		{
 			this->getParent()->addChild(args->entity);
 
-			float height = (*this->properties)[PlatformerEntity::MapKeyHeight].asFloat();
+			float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
 			args->entity->setPosition(this->getPosition() - Vec2(0.0f, height / 2.0f));
 			args->entity->setAnchorPoint(Vec2(0.5f, 0.0f));
 		}

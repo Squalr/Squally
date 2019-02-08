@@ -10,11 +10,11 @@
 class Exterminator : public PlatformerEnemy
 {
 public:
-	static Exterminator* deserialize(cocos2d::ValueMap* initProperties);
+	static Exterminator* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyExterminator;
 
 private:
-	Exterminator(cocos2d::ValueMap* initProperties);
+	Exterminator(cocos2d::ValueMap& initProperties);
 	~Exterminator();
 };

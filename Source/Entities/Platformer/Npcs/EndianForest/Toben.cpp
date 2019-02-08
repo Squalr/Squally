@@ -8,7 +8,7 @@
 
 const std::string Toben::MapKeyToben = "toben";
 
-Toben* Toben::deserialize(cocos2d::ValueMap* initProperties)
+Toben* Toben::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Toben* instance = new Toben(initProperties);
 
@@ -17,7 +17,7 @@ Toben* Toben::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Toben::Toben(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Toben::Toben(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
 	EntityResources::Npcs_EndianForest_Toben_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

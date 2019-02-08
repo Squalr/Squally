@@ -8,7 +8,7 @@
 
 const std::string Snowman::MapKeySnowman = "snowman";
 
-Snowman* Snowman::deserialize(cocos2d::ValueMap* initProperties)
+Snowman* Snowman::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Snowman* instance = new Snowman(initProperties);
 
@@ -17,7 +17,7 @@ Snowman* Snowman::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Snowman::Snowman(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Snowman::Snowman(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Snowman_Animations,
 	EntityResources::Helpers_Snowman_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

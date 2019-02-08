@@ -8,7 +8,7 @@
 
 const std::string Professor::MapKeyProfessor = "professor";
 
-Professor* Professor::deserialize(cocos2d::ValueMap* initProperties)
+Professor* Professor::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Professor* instance = new Professor(initProperties);
 
@@ -17,7 +17,7 @@ Professor* Professor::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Professor::Professor(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Professor::Professor(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Professor_Animations,
 	EntityResources::Helpers_Professor_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

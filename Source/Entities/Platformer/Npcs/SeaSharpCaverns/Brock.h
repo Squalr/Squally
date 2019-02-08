@@ -10,11 +10,11 @@
 class Brock : public NpcBase
 {
 public:
-	static Brock* deserialize(cocos2d::ValueMap* initProperties);
+	static Brock* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyBrock;
 
 private:
-	Brock(cocos2d::ValueMap* initProperties);
+	Brock(cocos2d::ValueMap& initProperties);
 	~Brock();
 };

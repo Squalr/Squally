@@ -8,7 +8,7 @@
 
 const std::string MechBoxDrone::MapKeyMechBoxDrone = "mech-box-drone";
 
-MechBoxDrone* MechBoxDrone::deserialize(cocos2d::ValueMap* initProperties)
+MechBoxDrone* MechBoxDrone::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MechBoxDrone* instance = new MechBoxDrone(initProperties);
 
@@ -17,7 +17,7 @@ MechBoxDrone* MechBoxDrone::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MechBoxDrone::MechBoxDrone(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MechBoxDrone::MechBoxDrone(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechBoxDrone_Animations,
 	EntityResources::Enemies_VoidStar_MechBoxDrone_Emblem,
 	PlatformerCollisionType::Enemy,

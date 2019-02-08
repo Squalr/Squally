@@ -10,11 +10,11 @@
 class Centaur : public PlatformerEnemy
 {
 public:
-	static Centaur* deserialize(cocos2d::ValueMap* initProperties);
+	static Centaur* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCentaur;
 
 private:
-	Centaur(cocos2d::ValueMap* initProperties);
+	Centaur(cocos2d::ValueMap& initProperties);
 	~Centaur();
 };

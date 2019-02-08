@@ -8,7 +8,7 @@
 
 const std::string Ash::MapKeyAsh = "ash";
 
-Ash* Ash::deserialize(cocos2d::ValueMap* initProperties)
+Ash* Ash::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ash* instance = new Ash(initProperties);
 
@@ -17,7 +17,7 @@ Ash* Ash::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ash::Ash(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Ash::Ash(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Ash_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ash_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

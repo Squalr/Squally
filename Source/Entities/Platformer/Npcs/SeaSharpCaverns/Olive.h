@@ -10,11 +10,11 @@
 class Olive : public NpcBase
 {
 public:
-	static Olive* deserialize(cocos2d::ValueMap* initProperties);
+	static Olive* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyOlive;
 
 private:
-	Olive(cocos2d::ValueMap* initProperties);
+	Olive(cocos2d::ValueMap& initProperties);
 	~Olive();
 };

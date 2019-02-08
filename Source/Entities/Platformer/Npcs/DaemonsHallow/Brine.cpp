@@ -8,7 +8,7 @@
 
 const std::string Brine::MapKeyBrine = "brine";
 
-Brine* Brine::deserialize(cocos2d::ValueMap* initProperties)
+Brine* Brine::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Brine* instance = new Brine(initProperties);
 
@@ -17,7 +17,7 @@ Brine* Brine::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Brine::Brine(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Brine::Brine(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

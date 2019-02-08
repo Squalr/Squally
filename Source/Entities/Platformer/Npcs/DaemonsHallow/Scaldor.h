@@ -10,11 +10,11 @@
 class Scaldor : public NpcBase
 {
 public:
-	static Scaldor* deserialize(cocos2d::ValueMap* initProperties);
+	static Scaldor* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyScaldor;
 
 private:
-	Scaldor(cocos2d::ValueMap* initProperties);
+	Scaldor(cocos2d::ValueMap& initProperties);
 	~Scaldor();
 };

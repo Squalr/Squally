@@ -8,7 +8,7 @@
 
 const std::string ForestGolem::MapKeyForestGolem = "forest-golem";
 
-ForestGolem* ForestGolem::deserialize(cocos2d::ValueMap* initProperties)
+ForestGolem* ForestGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	ForestGolem* instance = new ForestGolem(initProperties);
 
@@ -17,7 +17,7 @@ ForestGolem* ForestGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-ForestGolem::ForestGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+ForestGolem::ForestGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,
 	PlatformerCollisionType::Enemy,

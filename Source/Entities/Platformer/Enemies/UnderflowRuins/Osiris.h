@@ -10,11 +10,11 @@
 class Osiris : public PlatformerEnemy
 {
 public:
-	static Osiris* deserialize(cocos2d::ValueMap* initProperties);
+	static Osiris* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyOsiris;
 
 private:
-	Osiris(cocos2d::ValueMap* initProperties);
+	Osiris(cocos2d::ValueMap& initProperties);
 	~Osiris();
 };

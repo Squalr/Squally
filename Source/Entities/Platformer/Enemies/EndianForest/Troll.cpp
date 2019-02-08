@@ -8,7 +8,7 @@
 
 const std::string Troll::MapKeyTroll = "troll";
 
-Troll* Troll::deserialize(cocos2d::ValueMap* initProperties)
+Troll* Troll::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Troll* instance = new Troll(initProperties);
 
@@ -17,7 +17,7 @@ Troll* Troll::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Troll::Troll(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Troll::Troll(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
 	PlatformerCollisionType::Enemy,

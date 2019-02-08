@@ -8,7 +8,7 @@
 
 const std::string Viper::MapKeyViper = "viper";
 
-Viper* Viper::deserialize(cocos2d::ValueMap* initProperties)
+Viper* Viper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Viper* instance = new Viper(initProperties);
 
@@ -17,7 +17,7 @@ Viper* Viper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Viper::Viper(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Viper::Viper(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

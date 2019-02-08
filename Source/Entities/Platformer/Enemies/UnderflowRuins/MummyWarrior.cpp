@@ -8,7 +8,7 @@
 
 const std::string MummyWarrior::MapKeyMummyWarrior = "mummy-warrior";
 
-MummyWarrior* MummyWarrior::deserialize(cocos2d::ValueMap* initProperties)
+MummyWarrior* MummyWarrior::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MummyWarrior* instance = new MummyWarrior(initProperties);
 
@@ -17,7 +17,7 @@ MummyWarrior* MummyWarrior::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MummyWarrior::MummyWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MummyWarrior::MummyWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
 	PlatformerCollisionType::Enemy,

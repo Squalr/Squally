@@ -8,7 +8,7 @@
 
 const std::string Mara::MapKeyMara = "mara";
 
-Mara* Mara::deserialize(cocos2d::ValueMap* initProperties)
+Mara* Mara::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Mara* instance = new Mara(initProperties);
 
@@ -17,7 +17,7 @@ Mara* Mara::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Mara::Mara(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Mara::Mara(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Mara_Animations,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string Cindra::MapKeyCindra = "cindra";
 
-Cindra* Cindra::deserialize(cocos2d::ValueMap* initProperties)
+Cindra* Cindra::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Cindra* instance = new Cindra(initProperties);
 
@@ -17,7 +17,7 @@ Cindra* Cindra::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Cindra::Cindra(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Cindra::Cindra(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string Brock::MapKeyBrock = "brock";
 
-Brock* Brock::deserialize(cocos2d::ValueMap* initProperties)
+Brock* Brock::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Brock* instance = new Brock(initProperties);
 
@@ -17,7 +17,7 @@ Brock* Brock::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Brock::Brock(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Brock::Brock(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

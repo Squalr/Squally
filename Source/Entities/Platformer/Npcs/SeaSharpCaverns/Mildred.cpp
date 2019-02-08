@@ -8,7 +8,7 @@
 
 const std::string Mildred::MapKeyMildred = "mildred";
 
-Mildred* Mildred::deserialize(cocos2d::ValueMap* initProperties)
+Mildred* Mildred::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Mildred* instance = new Mildred(initProperties);
 
@@ -17,7 +17,7 @@ Mildred* Mildred::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Mildred::Mildred(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Mildred::Mildred(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

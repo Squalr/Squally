@@ -8,7 +8,7 @@
 
 const std::string Robot::MapKeyRobot = "robot";
 
-Robot* Robot::deserialize(cocos2d::ValueMap* initProperties)
+Robot* Robot::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Robot* instance = new Robot(initProperties);
 
@@ -17,7 +17,7 @@ Robot* Robot::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Robot::Robot(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Robot::Robot(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Robot_Animations,
 	EntityResources::Helpers_Robot_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

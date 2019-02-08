@@ -10,11 +10,11 @@
 class Kringle : public NpcBase
 {
 public:
-	static Kringle* deserialize(cocos2d::ValueMap* initProperties);
+	static Kringle* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyKringle;
 
 private:
-	Kringle(cocos2d::ValueMap* initProperties);
+	Kringle(cocos2d::ValueMap& initProperties);
 	~Kringle();
 };

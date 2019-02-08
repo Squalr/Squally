@@ -8,7 +8,7 @@
 
 const std::string Rhinoman::MapKeyRhinoman = "rhinoman";
 
-Rhinoman* Rhinoman::deserialize(cocos2d::ValueMap* initProperties)
+Rhinoman* Rhinoman::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Rhinoman* instance = new Rhinoman(initProperties);
 
@@ -17,7 +17,7 @@ Rhinoman* Rhinoman::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Rhinoman::Rhinoman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Rhinoman::Rhinoman(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	PlatformerCollisionType::Enemy,

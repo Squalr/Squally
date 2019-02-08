@@ -8,7 +8,7 @@
 
 const std::string Garrick::MapKeyGarrick = "garrick";
 
-Garrick* Garrick::deserialize(cocos2d::ValueMap* initProperties)
+Garrick* Garrick::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Garrick* instance = new Garrick(initProperties);
 
@@ -17,7 +17,7 @@ Garrick* Garrick::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Garrick::Garrick(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Garrick::Garrick(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

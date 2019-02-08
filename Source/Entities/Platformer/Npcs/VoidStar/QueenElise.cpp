@@ -8,7 +8,7 @@
 
 const std::string QueenElise::MapKeyQueenElise = "queen-elise";
 
-QueenElise* QueenElise::deserialize(cocos2d::ValueMap* initProperties)
+QueenElise* QueenElise::deserialize(cocos2d::ValueMap& initProperties)
 {
 	QueenElise* instance = new QueenElise(initProperties);
 
@@ -17,7 +17,7 @@ QueenElise* QueenElise::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-QueenElise::QueenElise(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+QueenElise::QueenElise(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -10,11 +10,11 @@
 class Ash : public NpcBase
 {
 public:
-	static Ash* deserialize(cocos2d::ValueMap* initProperties);
+	static Ash* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAsh;
 
 private:
-	Ash(cocos2d::ValueMap* initProperties);
+	Ash(cocos2d::ValueMap& initProperties);
 	~Ash();
 };

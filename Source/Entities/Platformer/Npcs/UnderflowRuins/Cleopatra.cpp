@@ -8,7 +8,7 @@
 
 const std::string Cleopatra::MapKeyCleopatra = "cleopatra";
 
-Cleopatra* Cleopatra::deserialize(cocos2d::ValueMap* initProperties)
+Cleopatra* Cleopatra::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Cleopatra* instance = new Cleopatra(initProperties);
 
@@ -17,7 +17,7 @@ Cleopatra* Cleopatra::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Cleopatra::Cleopatra(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Cleopatra::Cleopatra(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
