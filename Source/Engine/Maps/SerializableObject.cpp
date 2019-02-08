@@ -28,6 +28,7 @@ const std::string SerializableObject::MapKeyGid = "gid";
 const std::string SerializableObject::MapKeyMetaIsIsometric = "meta_is_isometric";
 const std::string SerializableObject::MapKeyMetaMapHeight = "meta_map_height";
 const std::string SerializableObject::MapKeyMetaMapWidth = "meta_map_width";
+const std::string SerializableObject::MapKeyMetaMapIdentifier = "meta_map_identifier";
 
 const std::vector<std::string> SerializableObject::AttributeKeys =
 {
@@ -48,6 +49,11 @@ const std::string SerializableObject::MapKeyPropertyValue = "value";
 SerializableObject::SerializableObject(ValueMap& initProperties)
 {
 	this->properties = initProperties;
+
+	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapIdentifier))
+	{
+		this->uniqueIdentifier = (this->properties.at(SerializableObject::MapKeyMetaMapIdentifier).asString()) + "_" + (this->properties.at(SerializableObject::MapKeyId).asString());
+	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
 	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaIsIsometric) && this->properties.at(SerializableObject::MapKeyMetaIsIsometric).asBool())
@@ -125,6 +131,11 @@ SerializableObject::SerializableObject(ValueMap& initProperties)
 
 SerializableObject::~SerializableObject()
 {
+}
+
+std::string SerializableObject::getUniqueIdentifier()
+{
+	return this->uniqueIdentifier;
 }
 
 void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)

@@ -23,6 +23,8 @@ public:
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, cocos2d::Size mapUnitSize,
 			cocos2d::Size mapTileSize);
 
+	std::string getUniqueIdentifier();
+
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
 	static const std::string MapKeyPoints;
@@ -43,6 +45,7 @@ public:
 	static const std::string MapKeyMetaIsIsometric;
 	static const std::string MapKeyMetaMapHeight;
 	static const std::string MapKeyMetaMapWidth;
+	static const std::string MapKeyMetaMapIdentifier;
 
 	static const std::vector<std::string> AttributeKeys;
 
@@ -61,4 +64,6 @@ private:
 	bool isAttributeOrHiddenProperty(std::string propertyName);
 	bool containsAttributes();
 	bool containsProperties();
+
+	std::string uniqueIdentifier;
 };
