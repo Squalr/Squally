@@ -8,7 +8,7 @@
 
 const std::string Undead::MapKeyUndead = "undead";
 
-Undead* Undead::deserialize(cocos2d::ValueMap* initProperties)
+Undead* Undead::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Undead* instance = new Undead(initProperties);
 
@@ -17,7 +17,7 @@ Undead* Undead::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Undead::Undead(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Undead::Undead(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class Reaper : public PlatformerEnemy
 {
 public:
-	static Reaper* deserialize(cocos2d::ValueMap* initProperties);
+	static Reaper* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyReaper;
 
 private:
-	Reaper(cocos2d::ValueMap* initProperties);
+	Reaper(cocos2d::ValueMap& initProperties);
 	~Reaper();
 };

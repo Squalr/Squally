@@ -8,7 +8,7 @@
 
 const std::string OrcBomber::MapKeyOrcBomber = "orc-bomber";
 
-OrcBomber* OrcBomber::deserialize(cocos2d::ValueMap* initProperties)
+OrcBomber* OrcBomber::deserialize(cocos2d::ValueMap& initProperties)
 {
 	OrcBomber* instance = new OrcBomber(initProperties);
 
@@ -17,7 +17,7 @@ OrcBomber* OrcBomber::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-OrcBomber::OrcBomber(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+OrcBomber::OrcBomber(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
 	PlatformerCollisionType::Enemy,

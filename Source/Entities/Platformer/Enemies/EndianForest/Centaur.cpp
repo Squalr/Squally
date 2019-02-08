@@ -8,7 +8,7 @@
 
 const std::string Centaur::MapKeyCentaur = "centaur";
 
-Centaur* Centaur::deserialize(cocos2d::ValueMap* initProperties)
+Centaur* Centaur::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Centaur* instance = new Centaur(initProperties);
 
@@ -17,7 +17,7 @@ Centaur* Centaur::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Centaur::Centaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Centaur::Centaur(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	PlatformerCollisionType::Enemy,

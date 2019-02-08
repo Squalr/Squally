@@ -10,11 +10,11 @@
 class Apple : public PlatformerEntity
 {
 public:
-	static Apple* deserialize(cocos2d::ValueMap* initProperties);
+	static Apple* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyApple;
 
 private:
-	Apple(cocos2d::ValueMap* initProperties);
+	Apple(cocos2d::ValueMap& initProperties);
 	~Apple();
 };

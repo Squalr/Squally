@@ -10,11 +10,11 @@
 class SkeletalCleaver : public PlatformerEnemy
 {
 public:
-	static SkeletalCleaver* deserialize(cocos2d::ValueMap* initProperties);
+	static SkeletalCleaver* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySkeletalCleaver;
 
 private:
-	SkeletalCleaver(cocos2d::ValueMap* initProperties);
+	SkeletalCleaver(cocos2d::ValueMap& initProperties);
 	~SkeletalCleaver();
 };

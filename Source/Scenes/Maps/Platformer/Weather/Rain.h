@@ -10,13 +10,13 @@ namespace cocos2d
 class Rain : public SerializableLayer
 {
 public:
-	static Rain* create(cocos2d::ValueMap* properties, std::string name);
+	static Rain* create(cocos2d::ValueMap& properties, std::string name);
 
 	static const std::string MapKeyWeatherLayerRain;
 
 private:
 	typedef SerializableLayer super;
-	Rain(cocos2d::ValueMap* properties, std::string name);
+	Rain(cocos2d::ValueMap& properties, std::string name);
 	~Rain();
 
 	void onEnter() override;

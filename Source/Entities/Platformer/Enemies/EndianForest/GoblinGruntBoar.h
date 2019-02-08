@@ -10,11 +10,11 @@
 class GoblinGruntBoar : public PlatformerEnemy
 {
 public:
-	static GoblinGruntBoar* deserialize(cocos2d::ValueMap* initProperties);
+	static GoblinGruntBoar* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGoblinGruntBoar;
 
 private:
-	GoblinGruntBoar(cocos2d::ValueMap* initProperties);
+	GoblinGruntBoar(cocos2d::ValueMap& initProperties);
 	~GoblinGruntBoar();
 };

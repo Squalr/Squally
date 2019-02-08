@@ -10,11 +10,11 @@
 class Sarude : public NpcBase
 {
 public:
-	static Sarude* deserialize(cocos2d::ValueMap* initProperties);
+	static Sarude* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySarude;
 
 private:
-	Sarude(cocos2d::ValueMap* initProperties);
+	Sarude(cocos2d::ValueMap& initProperties);
 	~Sarude();
 };

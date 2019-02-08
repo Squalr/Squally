@@ -57,27 +57,27 @@ void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents:
 			return;
 		}
 
-		SerializableObject* newObject = IsometricDecorObject::create(&properties);
+		SerializableObject* newObject = IsometricDecorObject::create(properties);
 		newObject->addChild(sprite);
 
-		if (GameUtils::keyExists(&properties, "flip-x"))
+		if (GameUtils::keyExists(properties, "flip-x"))
 		{
 			bool flipX = properties.at("flip-x").asBool();
 			sprite->setFlippedX(flipX);
 		}
 
-		if (GameUtils::keyExists(&properties, "flip-y"))
+		if (GameUtils::keyExists(properties, "flip-y"))
 		{
 			bool flipY = properties.at("flip-y").asBool();
 			sprite->setFlippedY(flipY);
 		}
 
-		if (GameUtils::keyExists(&properties, "float-x"))
+		if (GameUtils::keyExists(properties, "float-x"))
 		{
 			float floatX = properties.at("float-x").asFloat();
 			float timeX = 1.0f;
 
-			if (GameUtils::keyExists(&properties, "float-time-x"))
+			if (GameUtils::keyExists(properties, "float-time-x"))
 			{
 				timeX = properties.at("float-time-x").asFloat();
 			}
@@ -88,12 +88,12 @@ void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents:
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
 		}
 
-		if (GameUtils::keyExists(&properties, "float-y"))
+		if (GameUtils::keyExists(properties, "float-y"))
 		{
 			float floatY = properties.at("float-y").asFloat();
 			float timeY = 1.0f;
 
-			if (GameUtils::keyExists(&properties, "float-time-y"))
+			if (GameUtils::keyExists(properties, "float-time-y"))
 			{
 				timeY = properties.at("float-time-y").asFloat();
 			}

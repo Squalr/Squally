@@ -8,7 +8,7 @@
 
 const std::string OrcGrunt::MapKeyOrcGrunt = "orc-grunt";
 
-OrcGrunt* OrcGrunt::deserialize(cocos2d::ValueMap* initProperties)
+OrcGrunt* OrcGrunt::deserialize(cocos2d::ValueMap& initProperties)
 {
 	OrcGrunt* instance = new OrcGrunt(initProperties);
 
@@ -17,7 +17,7 @@ OrcGrunt* OrcGrunt::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-OrcGrunt::OrcGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+OrcGrunt::OrcGrunt(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	PlatformerCollisionType::Enemy,

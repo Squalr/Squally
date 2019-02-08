@@ -10,11 +10,11 @@
 class Barbarian : public PlatformerEnemy
 {
 public:
-	static Barbarian* deserialize(cocos2d::ValueMap* initProperties);
+	static Barbarian* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyBarbarian;
 
 private:
-	Barbarian(cocos2d::ValueMap* initProperties);
+	Barbarian(cocos2d::ValueMap& initProperties);
 	~Barbarian();
 };

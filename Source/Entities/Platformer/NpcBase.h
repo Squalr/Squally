@@ -9,7 +9,7 @@ class ClickableNode;
 class NpcBase : public PlatformerEntity
 {
 protected:
-	NpcBase(cocos2d::ValueMap* initProperties,
+	NpcBase(cocos2d::ValueMap& initProperties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,

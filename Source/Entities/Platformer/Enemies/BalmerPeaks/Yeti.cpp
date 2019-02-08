@@ -8,7 +8,7 @@
 
 const std::string Yeti::MapKeyYeti = "yeti";
 
-Yeti* Yeti::deserialize(cocos2d::ValueMap* initProperties)
+Yeti* Yeti::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Yeti* instance = new Yeti(initProperties);
 
@@ -17,7 +17,7 @@ Yeti* Yeti::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Yeti::Yeti(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Yeti::Yeti(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
 	PlatformerCollisionType::Enemy,

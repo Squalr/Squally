@@ -8,7 +8,7 @@
 
 const std::string Elriel::MapKeyElriel = "elriel";
 
-Elriel* Elriel::deserialize(cocos2d::ValueMap* initProperties)
+Elriel* Elriel::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Elriel* instance = new Elriel(initProperties);
 
@@ -17,7 +17,7 @@ Elriel* Elriel::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Elriel::Elriel(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Elriel::Elriel(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Elriel_Animations,
 	EntityResources::Npcs_VoidStar_Elriel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

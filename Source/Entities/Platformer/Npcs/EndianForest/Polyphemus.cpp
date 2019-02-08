@@ -8,7 +8,7 @@
 
 const std::string Polyphemus::MapKeyPolyphemus = "polyphemus";
 
-Polyphemus* Polyphemus::deserialize(cocos2d::ValueMap* initProperties)
+Polyphemus* Polyphemus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Polyphemus* instance = new Polyphemus(initProperties);
 
@@ -17,7 +17,7 @@ Polyphemus* Polyphemus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Polyphemus::Polyphemus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Polyphemus::Polyphemus(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

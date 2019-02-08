@@ -8,7 +8,7 @@
 
 const std::string Leon::MapKeyLeon = "leon";
 
-Leon* Leon::deserialize(cocos2d::ValueMap* initProperties)
+Leon* Leon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Leon* instance = new Leon(initProperties);
 
@@ -17,7 +17,7 @@ Leon* Leon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Leon::Leon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Leon::Leon(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Leon_Animations,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

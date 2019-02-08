@@ -10,11 +10,11 @@
 class Raka : public NpcBase
 {
 public:
-	static Raka* deserialize(cocos2d::ValueMap* initProperties);
+	static Raka* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRaka;
 
 private:
-	Raka(cocos2d::ValueMap* initProperties);
+	Raka(cocos2d::ValueMap& initProperties);
 	~Raka();
 };

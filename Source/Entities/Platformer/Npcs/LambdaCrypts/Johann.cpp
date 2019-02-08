@@ -8,7 +8,7 @@
 
 const std::string Johann::MapKeyJohann = "johann";
 
-Johann* Johann::deserialize(cocos2d::ValueMap* initProperties)
+Johann* Johann::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Johann* instance = new Johann(initProperties);
 
@@ -17,7 +17,7 @@ Johann* Johann::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Johann::Johann(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Johann::Johann(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

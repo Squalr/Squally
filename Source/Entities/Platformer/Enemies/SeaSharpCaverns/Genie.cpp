@@ -8,7 +8,7 @@
 
 const std::string Genie::MapKeyGenie = "genie";
 
-Genie* Genie::deserialize(cocos2d::ValueMap* initProperties)
+Genie* Genie::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Genie* instance = new Genie(initProperties);
 
@@ -17,7 +17,7 @@ Genie* Genie::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Genie::Genie(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Genie::Genie(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Genie_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Genie_Emblem,
 	PlatformerCollisionType::Enemy,

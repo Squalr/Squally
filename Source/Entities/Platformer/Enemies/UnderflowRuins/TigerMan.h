@@ -10,11 +10,11 @@
 class TigerMan : public PlatformerEnemy
 {
 public:
-	static TigerMan* deserialize(cocos2d::ValueMap* initProperties);
+	static TigerMan* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTigerMan;
 
 private:
-	TigerMan(cocos2d::ValueMap* initProperties);
+	TigerMan(cocos2d::ValueMap& initProperties);
 	~TigerMan();
 };

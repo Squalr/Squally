@@ -10,11 +10,11 @@
 class Polyphemus : public NpcBase
 {
 public:
-	static Polyphemus* deserialize(cocos2d::ValueMap* initProperties);
+	static Polyphemus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPolyphemus;
 
 private:
-	Polyphemus(cocos2d::ValueMap* initProperties);
+	Polyphemus(cocos2d::ValueMap& initProperties);
 	~Polyphemus();
 };

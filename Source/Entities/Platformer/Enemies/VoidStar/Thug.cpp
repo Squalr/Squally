@@ -8,7 +8,7 @@
 
 const std::string Thug::MapKeyThug = "thug";
 
-Thug* Thug::deserialize(cocos2d::ValueMap* initProperties)
+Thug* Thug::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Thug* instance = new Thug(initProperties);
 
@@ -17,7 +17,7 @@ Thug* Thug::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Thug::Thug(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Thug::Thug(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Thug_Animations,
 	EntityResources::Enemies_VoidStar_Thug_Emblem,
 	PlatformerCollisionType::Enemy,

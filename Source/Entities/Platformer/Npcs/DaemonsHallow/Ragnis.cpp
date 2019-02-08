@@ -8,7 +8,7 @@
 
 const std::string Ragnis::MapKeyRagnis = "ragnis";
 
-Ragnis* Ragnis::deserialize(cocos2d::ValueMap* initProperties)
+Ragnis* Ragnis::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ragnis* instance = new Ragnis(initProperties);
 
@@ -17,7 +17,7 @@ Ragnis* Ragnis::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ragnis::Ragnis(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Ragnis::Ragnis(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

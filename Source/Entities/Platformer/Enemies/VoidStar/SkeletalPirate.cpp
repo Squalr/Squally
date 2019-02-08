@@ -8,7 +8,7 @@
 
 const std::string SkeletalPirate::MapKeySkeletalPirate = "skeletal-pirate";
 
-SkeletalPirate* SkeletalPirate::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalPirate* SkeletalPirate::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalPirate* instance = new SkeletalPirate(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalPirate* SkeletalPirate::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-SkeletalPirate::SkeletalPirate(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalPirate::SkeletalPirate(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_SkeletalPirate_Animations,
 	EntityResources::Enemies_VoidStar_SkeletalPirate_Emblem,
 	PlatformerCollisionType::Enemy,

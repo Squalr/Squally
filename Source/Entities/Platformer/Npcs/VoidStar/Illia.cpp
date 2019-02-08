@@ -8,7 +8,7 @@
 
 const std::string Illia::MapKeyIllia = "illia";
 
-Illia* Illia::deserialize(cocos2d::ValueMap* initProperties)
+Illia* Illia::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Illia* instance = new Illia(initProperties);
 
@@ -17,7 +17,7 @@ Illia* Illia::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Illia::Illia(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Illia::Illia(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

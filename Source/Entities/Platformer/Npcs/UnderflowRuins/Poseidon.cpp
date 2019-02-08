@@ -8,7 +8,7 @@
 
 const std::string Poseidon::MapKeyPoseidon = "poseidon";
 
-Poseidon* Poseidon::deserialize(cocos2d::ValueMap* initProperties)
+Poseidon* Poseidon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Poseidon* instance = new Poseidon(initProperties);
 
@@ -17,7 +17,7 @@ Poseidon* Poseidon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Poseidon::Poseidon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Poseidon::Poseidon(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

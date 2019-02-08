@@ -10,11 +10,11 @@
 class VikingBotSmall : public PlatformerEnemy
 {
 public:
-	static VikingBotSmall* deserialize(cocos2d::ValueMap* initProperties);
+	static VikingBotSmall* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyVikingBotSmall;
 
 private:
-	VikingBotSmall(cocos2d::ValueMap* initProperties);
+	VikingBotSmall(cocos2d::ValueMap& initProperties);
 	~VikingBotSmall();
 };

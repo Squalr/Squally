@@ -8,7 +8,7 @@
 
 const std::string Agnes::MapKeyAgnes = "agnes";
 
-Agnes* Agnes::deserialize(cocos2d::ValueMap* initProperties)
+Agnes* Agnes::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Agnes* instance = new Agnes(initProperties);
 
@@ -17,7 +17,7 @@ Agnes* Agnes::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Agnes::Agnes(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Agnes::Agnes(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	PlatformerCollisionType::Enemy,

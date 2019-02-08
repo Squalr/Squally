@@ -30,7 +30,7 @@ using namespace cocos2d;
 const std::string HeavenHug::MapKeyHeavenHug = "heaven-hug";
 const float HeavenHug::SpeedPer480Px = 2.0f;
 
-HeavenHug* HeavenHug::create(ValueMap* initProperties)
+HeavenHug* HeavenHug::create(ValueMap& initProperties)
 {
 	HeavenHug* instance = new HeavenHug(initProperties);
 
@@ -39,14 +39,14 @@ HeavenHug* HeavenHug::create(ValueMap* initProperties)
 	return instance;
 }
 
-HeavenHug::HeavenHug(ValueMap* initProperties) : HackableObject(initProperties)
+HeavenHug::HeavenHug(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
 	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->setDefaultPreview(HeavenHugGenericPreview::create());
 
-	this->travelDistance = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
+	this->travelDistance = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
 	this->registerHackables();
 
@@ -70,7 +70,7 @@ void HeavenHug::initializePositions()
 {
 	super::initializePositions();
 
-	this->heavenHugContainer->setPositionY(this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
+	this->heavenHugContainer->setPositionY(this->properties.at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
 	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
 }
 

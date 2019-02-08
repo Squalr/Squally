@@ -10,11 +10,11 @@
 class Cookie : public NpcBase
 {
 public:
-	static Cookie* deserialize(cocos2d::ValueMap* initProperties);
+	static Cookie* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCookie;
 
 private:
-	Cookie(cocos2d::ValueMap* initProperties);
+	Cookie(cocos2d::ValueMap& initProperties);
 	~Cookie();
 };

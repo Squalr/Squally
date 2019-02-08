@@ -10,11 +10,11 @@
 class Hades : public NpcBase
 {
 public:
-	static Hades* deserialize(cocos2d::ValueMap* initProperties);
+	static Hades* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyHades;
 
 private:
-	Hades(cocos2d::ValueMap* initProperties);
+	Hades(cocos2d::ValueMap& initProperties);
 	~Hades();
 };

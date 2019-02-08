@@ -8,7 +8,7 @@
 
 const std::string Exterminator::MapKeyExterminator = "exterminator";
 
-Exterminator* Exterminator::deserialize(cocos2d::ValueMap* initProperties)
+Exterminator* Exterminator::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Exterminator* instance = new Exterminator(initProperties);
 
@@ -17,7 +17,7 @@ Exterminator* Exterminator::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Exterminator::Exterminator(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Exterminator::Exterminator(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
 	PlatformerCollisionType::Enemy,

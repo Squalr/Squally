@@ -8,7 +8,7 @@
 
 const std::string WaterElemental::MapKeyWaterElemental = "water-elemental";
 
-WaterElemental* WaterElemental::deserialize(cocos2d::ValueMap* initProperties)
+WaterElemental* WaterElemental::deserialize(cocos2d::ValueMap& initProperties)
 {
 	WaterElemental* instance = new WaterElemental(initProperties);
 
@@ -17,7 +17,7 @@ WaterElemental* WaterElemental::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-WaterElemental::WaterElemental(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+WaterElemental::WaterElemental(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
 	PlatformerCollisionType::Enemy,

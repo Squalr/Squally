@@ -30,7 +30,7 @@ def generateDeserializationCode(entityData):
 		for nextEntity in entityData:
 			generatedContent += "\t\t" + "if (name == " + nextEntity["MapKey"] + ")\n"
 			generatedContent += "\t\t" + "{\n"
-			generatedContent += "\t\t\t" + "newEntity = " + nextEntity["EntityName"] + "::deserialize(&properties);\n"
+			generatedContent += "\t\t\t" + "newEntity = " + nextEntity["EntityName"] + "::deserialize(properties);\n"
 			generatedContent += "\t\t" + "}\n"
 		
 		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")

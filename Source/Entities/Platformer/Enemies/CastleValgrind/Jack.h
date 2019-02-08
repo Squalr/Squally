@@ -10,11 +10,11 @@
 class Jack : public PlatformerEnemy
 {
 public:
-	static Jack* deserialize(cocos2d::ValueMap* initProperties);
+	static Jack* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyJack;
 
 private:
-	Jack(cocos2d::ValueMap* initProperties);
+	Jack(cocos2d::ValueMap& initProperties);
 	~Jack();
 };

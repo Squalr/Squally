@@ -8,7 +8,7 @@
 
 const std::string Gramps::MapKeyGramps = "gramps";
 
-Gramps* Gramps::deserialize(cocos2d::ValueMap* initProperties)
+Gramps* Gramps::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Gramps* instance = new Gramps(initProperties);
 
@@ -17,7 +17,7 @@ Gramps* Gramps::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Gramps::Gramps(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Gramps::Gramps(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

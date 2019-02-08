@@ -8,7 +8,7 @@
 
 const std::string Kringle::MapKeyKringle = "kringle";
 
-Kringle* Kringle::deserialize(cocos2d::ValueMap* initProperties)
+Kringle* Kringle::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Kringle* instance = new Kringle(initProperties);
 
@@ -17,7 +17,7 @@ Kringle* Kringle::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Kringle::Kringle(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Kringle::Kringle(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

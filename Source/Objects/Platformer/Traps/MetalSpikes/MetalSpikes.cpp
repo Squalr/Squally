@@ -26,7 +26,7 @@ using namespace cocos2d;
 const std::string MetalSpikes::MapKeyMetalSpikes = "metal-spikes";
 const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
-MetalSpikes* MetalSpikes::create(ValueMap* initProperties)
+MetalSpikes* MetalSpikes::create(ValueMap& initProperties)
 {
 	MetalSpikes* instance = new MetalSpikes(initProperties);
 
@@ -35,7 +35,7 @@ MetalSpikes* MetalSpikes::create(ValueMap* initProperties)
 	return instance;
 }
 
-MetalSpikes::MetalSpikes(ValueMap* initProperties) : HackableObject(initProperties)
+MetalSpikes::MetalSpikes(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;

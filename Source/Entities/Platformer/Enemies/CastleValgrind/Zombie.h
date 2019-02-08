@@ -10,11 +10,11 @@
 class Zombie : public PlatformerEnemy
 {
 public:
-	static Zombie* deserialize(cocos2d::ValueMap* initProperties);
+	static Zombie* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyZombie;
 
 private:
-	Zombie(cocos2d::ValueMap* initProperties);
+	Zombie(cocos2d::ValueMap& initProperties);
 	~Zombie();
 };

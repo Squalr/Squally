@@ -10,11 +10,11 @@
 class Atreus : public NpcBase
 {
 public:
-	static Atreus* deserialize(cocos2d::ValueMap* initProperties);
+	static Atreus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAtreus;
 
 private:
-	Atreus(cocos2d::ValueMap* initProperties);
+	Atreus(cocos2d::ValueMap& initProperties);
 	~Atreus();
 };

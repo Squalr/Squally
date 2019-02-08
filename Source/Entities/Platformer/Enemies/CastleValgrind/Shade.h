@@ -10,11 +10,11 @@
 class Shade : public PlatformerEnemy
 {
 public:
-	static Shade* deserialize(cocos2d::ValueMap* initProperties);
+	static Shade* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyShade;
 
 private:
-	Shade(cocos2d::ValueMap* initProperties);
+	Shade(cocos2d::ValueMap& initProperties);
 	~Shade();
 };

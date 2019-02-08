@@ -10,11 +10,11 @@
 class Santa : public PlatformerEnemy
 {
 public:
-	static Santa* deserialize(cocos2d::ValueMap* initProperties);
+	static Santa* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySanta;
 
 private:
-	Santa(cocos2d::ValueMap* initProperties);
+	Santa(cocos2d::ValueMap& initProperties);
 	~Santa();
 };

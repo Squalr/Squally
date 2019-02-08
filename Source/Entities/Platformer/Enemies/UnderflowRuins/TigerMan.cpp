@@ -8,7 +8,7 @@
 
 const std::string TigerMan::MapKeyTigerMan = "tiger-man";
 
-TigerMan* TigerMan::deserialize(cocos2d::ValueMap* initProperties)
+TigerMan* TigerMan::deserialize(cocos2d::ValueMap& initProperties)
 {
 	TigerMan* instance = new TigerMan(initProperties);
 
@@ -17,7 +17,7 @@ TigerMan* TigerMan::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-TigerMan::TigerMan(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+TigerMan::TigerMan(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	PlatformerCollisionType::Enemy,

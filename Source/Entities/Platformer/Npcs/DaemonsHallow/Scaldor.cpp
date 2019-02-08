@@ -8,7 +8,7 @@
 
 const std::string Scaldor::MapKeyScaldor = "scaldor";
 
-Scaldor* Scaldor::deserialize(cocos2d::ValueMap* initProperties)
+Scaldor* Scaldor::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Scaldor* instance = new Scaldor(initProperties);
 
@@ -17,7 +17,7 @@ Scaldor* Scaldor::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Scaldor::Scaldor(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Scaldor::Scaldor(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string PenguinGrunt::MapKeyPenguinGrunt = "penguin-grunt";
 
-PenguinGrunt* PenguinGrunt::deserialize(cocos2d::ValueMap* initProperties)
+PenguinGrunt* PenguinGrunt::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PenguinGrunt* instance = new PenguinGrunt(initProperties);
 
@@ -17,7 +17,7 @@ PenguinGrunt* PenguinGrunt::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PenguinGrunt::PenguinGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+PenguinGrunt::PenguinGrunt(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class ForestGolem : public PlatformerEnemy
 {
 public:
-	static ForestGolem* deserialize(cocos2d::ValueMap* initProperties);
+	static ForestGolem* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyForestGolem;
 
 private:
-	ForestGolem(cocos2d::ValueMap* initProperties);
+	ForestGolem(cocos2d::ValueMap& initProperties);
 	~ForestGolem();
 };

@@ -10,11 +10,11 @@
 class Mabel : public NpcBase
 {
 public:
-	static Mabel* deserialize(cocos2d::ValueMap* initProperties);
+	static Mabel* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMabel;
 
 private:
-	Mabel(cocos2d::ValueMap* initProperties);
+	Mabel(cocos2d::ValueMap& initProperties);
 	~Mabel();
 };

@@ -10,11 +10,11 @@
 class Cyclops : public PlatformerEnemy
 {
 public:
-	static Cyclops* deserialize(cocos2d::ValueMap* initProperties);
+	static Cyclops* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCyclops;
 
 private:
-	Cyclops(cocos2d::ValueMap* initProperties);
+	Cyclops(cocos2d::ValueMap& initProperties);
 	~Cyclops();
 };

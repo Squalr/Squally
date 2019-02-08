@@ -79,7 +79,7 @@ cocos2d::Value SaveManager::getGlobalDataOrDefault(std::string key, cocos2d::Val
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	if (!GameUtils::keyExists(&instance->globalSaveData, key))
+	if (!GameUtils::keyExists(instance->globalSaveData, key))
 	{
 		return defaultValue;
 	}
@@ -93,7 +93,7 @@ cocos2d::Value SaveManager::getGlobalData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	if (!GameUtils::keyExists(&instance->globalSaveData, key))
+	if (!GameUtils::keyExists(instance->globalSaveData, key))
 	{
 		return cocos2d::Value();
 	}
@@ -107,7 +107,7 @@ cocos2d::Value SaveManager::getProfileDataOrDefault(std::string key, cocos2d::Va
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	if (!GameUtils::keyExists(&instance->profileSaveData, key))
+	if (!GameUtils::keyExists(instance->profileSaveData, key))
 	{
 		return defaultValue;
 	}
@@ -121,7 +121,7 @@ cocos2d::Value SaveManager::getProfileData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	if (!GameUtils::keyExists(&instance->profileSaveData, key))
+	if (!GameUtils::keyExists(instance->profileSaveData, key))
 	{
 		return cocos2d::Value();
 	}
@@ -139,7 +139,7 @@ SaveManager::ActiveSaveProfile SaveManager::getActiveSaveProfile()
 void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::string cloudSavePath)
 {
 	// Increment save counter
-	if (GameUtils::keyExists(&valueMap, SaveManager::SaveKeyIncrement))
+	if (GameUtils::keyExists(valueMap, SaveManager::SaveKeyIncrement))
 	{
 		valueMap[SaveManager::SaveKeyIncrement] = cocos2d::Value((unsigned int)(valueMap[SaveManager::SaveKeyIncrement].asUnsignedInt() + (unsigned int)1));
 	}
@@ -229,7 +229,7 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 	}
 
 	// Choose local or cloud depending on which has the higher save key increment
-	if (GameUtils::keyExists(&cloudValueMap, SaveManager::SaveKeyIncrement) && GameUtils::keyExists(&localValueMap, SaveManager::SaveKeyIncrement))
+	if (GameUtils::keyExists(cloudValueMap, SaveManager::SaveKeyIncrement) && GameUtils::keyExists(localValueMap, SaveManager::SaveKeyIncrement))
 	{
 		unsigned int cloudIncrement = cloudValueMap.at(SaveManager::SaveKeyIncrement).asUnsignedInt();
 		unsigned int localIncrement = localValueMap.at(SaveManager::SaveKeyIncrement).asUnsignedInt();
@@ -258,14 +258,14 @@ bool SaveManager::hasGlobalData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	return GameUtils::keyExists(&instance->globalSaveData, key);
+	return GameUtils::keyExists(instance->globalSaveData, key);
 }
 
 bool SaveManager::hasProfileData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
-	return GameUtils::keyExists(&instance->profileSaveData, key);
+	return GameUtils::keyExists(instance->profileSaveData, key);
 }
 
 std::string SaveManager::getLocalGlobalSaveFilePath()

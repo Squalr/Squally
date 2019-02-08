@@ -8,7 +8,7 @@
 
 const std::string Rusty::MapKeyRusty = "rusty";
 
-Rusty* Rusty::deserialize(cocos2d::ValueMap* initProperties)
+Rusty* Rusty::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Rusty* instance = new Rusty(initProperties);
 
@@ -17,7 +17,7 @@ Rusty* Rusty::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Rusty::Rusty(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Rusty::Rusty(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Rusty_Animations,
 	EntityResources::Npcs_EndianForest_Rusty_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

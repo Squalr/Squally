@@ -10,11 +10,11 @@
 class Jasper : public NpcBase
 {
 public:
-	static Jasper* deserialize(cocos2d::ValueMap* initProperties);
+	static Jasper* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyJasper;
 
 private:
-	Jasper(cocos2d::ValueMap* initProperties);
+	Jasper(cocos2d::ValueMap& initProperties);
 	~Jasper();
 };

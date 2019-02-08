@@ -8,7 +8,7 @@
 
 const std::string VampireLord::MapKeyVampireLord = "vampire-lord";
 
-VampireLord* VampireLord::deserialize(cocos2d::ValueMap* initProperties)
+VampireLord* VampireLord::deserialize(cocos2d::ValueMap& initProperties)
 {
 	VampireLord* instance = new VampireLord(initProperties);
 
@@ -17,7 +17,7 @@ VampireLord* VampireLord::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-VampireLord::VampireLord(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+VampireLord::VampireLord(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -28,7 +28,7 @@ const int PlatformerEntity::MaxRunes = 4;
 using namespace cocos2d;
 
 PlatformerEntity::PlatformerEntity(
-	ValueMap* initProperties, 
+	ValueMap& initProperties, 
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType,
@@ -73,8 +73,8 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
 
-	float width = (*this->properties)[PlatformerEntity::MapKeyWidth].asFloat();
-	float height = (*this->properties)[PlatformerEntity::MapKeyHeight].asFloat();
+	float width = this->properties[PlatformerEntity::MapKeyWidth].asFloat();
+	float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
 	this->entitySize = size * scale;
 
 	this->setPositionY(this->getPositionY());
@@ -92,20 +92,17 @@ PlatformerEntity::PlatformerEntity(
 	this->clickHitbox->disableInteraction();
 
 	// Update width to be serialized
-	if (this->properties != nullptr)
-	{
-		(*this->properties)[PlatformerEntity::MapKeyWidth] = size.width * scale;
-		(*this->properties)[PlatformerEntity::MapKeyHeight] = size.height * scale;
-	}
+	this->properties[PlatformerEntity::MapKeyWidth] = size.width * scale;
+	this->properties[PlatformerEntity::MapKeyHeight] = size.height * scale;
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
-		this->animationNode->setFlippedX((*this->properties)[PlatformerEntity::MapKeyFlipX].asBool());
+		this->animationNode->setFlippedX(this->properties[PlatformerEntity::MapKeyFlipX].asBool());
 	}
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
 	{
-		this->animationNode->setFlippedY((*this->properties)[PlatformerEntity::MapKeyFlipY].asBool());
+		this->animationNode->setFlippedY(this->properties[PlatformerEntity::MapKeyFlipY].asBool());
 	}
 
 	this->maxHealth = baseHealth;
@@ -136,7 +133,7 @@ void PlatformerEntity::initializePositions()
 {
 	CollisionObject::initializePositions();
 
-	this->speechBubble->setPositionY(((*this->properties)[PlatformerEntity::MapKeyHeight].asFloat() * this->getScaleY()) / 2.0f);
+	this->speechBubble->setPositionY((this->properties[PlatformerEntity::MapKeyHeight].asFloat() * this->getScaleY()) / 2.0f);
 }
 
 void PlatformerEntity::initializeListeners()

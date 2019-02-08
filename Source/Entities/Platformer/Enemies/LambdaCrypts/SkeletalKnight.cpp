@@ -8,7 +8,7 @@
 
 const std::string SkeletalKnight::MapKeySkeletalKnight = "skeletal-knight";
 
-SkeletalKnight* SkeletalKnight::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalKnight* SkeletalKnight::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalKnight* instance = new SkeletalKnight(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalKnight* SkeletalKnight::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-SkeletalKnight::SkeletalKnight(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalKnight::SkeletalKnight(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,
 	PlatformerCollisionType::Enemy,

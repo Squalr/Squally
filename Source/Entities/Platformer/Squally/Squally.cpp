@@ -15,7 +15,7 @@ const std::string Squally::MapKeySqually = "squally";
 const int Squally::SquallyBaseHealth = 10;
 const int Squally::SquallyBaseSpecial = 10;
 
-Squally* Squally::deserialize(ValueMap* initProperties)
+Squally* Squally::deserialize(ValueMap& initProperties)
 {
 	Squally* instance = new Squally(initProperties);
 
@@ -30,7 +30,7 @@ Squally* Squally::getInstance()
 	return Squally::squallyInstance;
 }
 
-Squally::Squally(ValueMap* initProperties) : super(initProperties,
+Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
 	PlatformerCollisionType::Force,

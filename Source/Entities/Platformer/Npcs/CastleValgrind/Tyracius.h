@@ -10,11 +10,11 @@
 class Tyracius : public NpcBase
 {
 public:
-	static Tyracius* deserialize(cocos2d::ValueMap* initProperties);
+	static Tyracius* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTyracius;
 
 private:
-	Tyracius(cocos2d::ValueMap* initProperties);
+	Tyracius(cocos2d::ValueMap& initProperties);
 	~Tyracius();
 };

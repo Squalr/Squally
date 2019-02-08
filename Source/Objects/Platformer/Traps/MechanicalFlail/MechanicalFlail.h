@@ -14,12 +14,12 @@ class HackableData;
 class MechanicalFlail : public HackableObject
 {
 public:
-	static MechanicalFlail* create(cocos2d::ValueMap* initProperties);
+	static MechanicalFlail* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMechanicalFlail;
 
 protected:
-	MechanicalFlail(cocos2d::ValueMap* initProperties);
+	MechanicalFlail(cocos2d::ValueMap& initProperties);
 	~MechanicalFlail();
 
 	cocos2d::Vec2 getButtonOffset() override;

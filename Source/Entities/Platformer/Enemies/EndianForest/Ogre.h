@@ -10,11 +10,11 @@
 class Ogre : public PlatformerEnemy
 {
 public:
-	static Ogre* deserialize(cocos2d::ValueMap* initProperties);
+	static Ogre* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyOgre;
 
 private:
-	Ogre(cocos2d::ValueMap* initProperties);
+	Ogre(cocos2d::ValueMap& initProperties);
 	~Ogre();
 };

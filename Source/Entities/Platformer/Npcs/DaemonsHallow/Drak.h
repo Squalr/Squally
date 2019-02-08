@@ -10,11 +10,11 @@
 class Drak : public NpcBase
 {
 public:
-	static Drak* deserialize(cocos2d::ValueMap* initProperties);
+	static Drak* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyDrak;
 
 private:
-	Drak(cocos2d::ValueMap* initProperties);
+	Drak(cocos2d::ValueMap& initProperties);
 	~Drak();
 };

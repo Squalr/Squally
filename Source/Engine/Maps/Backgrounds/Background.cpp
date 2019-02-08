@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-Background* Background::create(ValueMap* initProperties, std::string name, Node* child)
+Background* Background::create(ValueMap& initProperties, std::string name, Node* child)
 {
 	Background* instance = new Background(initProperties, name, child);
 
@@ -13,7 +13,7 @@ Background* Background::create(ValueMap* initProperties, std::string name, Node*
 	return instance;
 }
 
-Background::Background(ValueMap* properties, std::string name, Node* child) : SerializableLayer(properties, name)
+Background::Background(ValueMap& properties, std::string name, Node* child) : SerializableLayer(properties, name)
 {
 	this->background = Hud::create();
 

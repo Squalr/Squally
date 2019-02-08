@@ -8,7 +8,7 @@
 
 const std::string Griffin::MapKeyGriffin = "griffin";
 
-Griffin* Griffin::deserialize(cocos2d::ValueMap* initProperties)
+Griffin* Griffin::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Griffin* instance = new Griffin(initProperties);
 
@@ -17,7 +17,7 @@ Griffin* Griffin::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Griffin::Griffin(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Griffin::Griffin(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

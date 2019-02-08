@@ -10,11 +10,11 @@
 class Toben : public NpcBase
 {
 public:
-	static Toben* deserialize(cocos2d::ValueMap* initProperties);
+	static Toben* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyToben;
 
 private:
-	Toben(cocos2d::ValueMap* initProperties);
+	Toben(cocos2d::ValueMap& initProperties);
 	~Toben();
 };

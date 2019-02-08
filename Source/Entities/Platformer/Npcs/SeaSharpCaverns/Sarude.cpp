@@ -8,7 +8,7 @@
 
 const std::string Sarude::MapKeySarude = "sarude";
 
-Sarude* Sarude::deserialize(cocos2d::ValueMap* initProperties)
+Sarude* Sarude::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Sarude* instance = new Sarude(initProperties);
 
@@ -17,7 +17,7 @@ Sarude* Sarude::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Sarude::Sarude(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Sarude::Sarude(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

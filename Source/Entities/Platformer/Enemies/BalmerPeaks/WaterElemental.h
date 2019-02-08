@@ -10,11 +10,11 @@
 class WaterElemental : public PlatformerEnemy
 {
 public:
-	static WaterElemental* deserialize(cocos2d::ValueMap* initProperties);
+	static WaterElemental* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyWaterElemental;
 
 private:
-	WaterElemental(cocos2d::ValueMap* initProperties);
+	WaterElemental(cocos2d::ValueMap& initProperties);
 	~WaterElemental();
 };

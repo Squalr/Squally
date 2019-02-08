@@ -8,7 +8,7 @@
 
 const std::string Raka::MapKeyRaka = "raka";
 
-Raka* Raka::deserialize(cocos2d::ValueMap* initProperties)
+Raka* Raka::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Raka* instance = new Raka(initProperties);
 
@@ -17,7 +17,7 @@ Raka* Raka::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Raka::Raka(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Raka::Raka(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

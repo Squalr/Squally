@@ -10,11 +10,11 @@
 class Garin : public NpcBase
 {
 public:
-	static Garin* deserialize(cocos2d::ValueMap* initProperties);
+	static Garin* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGarin;
 
 private:
-	Garin(cocos2d::ValueMap* initProperties);
+	Garin(cocos2d::ValueMap& initProperties);
 	~Garin();
 };

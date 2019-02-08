@@ -8,7 +8,7 @@
 
 const std::string Cyrogen::MapKeyCyrogen = "cyrogen";
 
-Cyrogen* Cyrogen::deserialize(cocos2d::ValueMap* initProperties)
+Cyrogen* Cyrogen::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Cyrogen* instance = new Cyrogen(initProperties);
 
@@ -17,7 +17,7 @@ Cyrogen* Cyrogen::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Cyrogen::Cyrogen(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Cyrogen::Cyrogen(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Animations,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Emblem,
 	PlatformerCollisionType::Enemy,

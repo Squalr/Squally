@@ -8,7 +8,7 @@
 
 const std::string Knight::MapKeyKnight = "knight";
 
-Knight* Knight::deserialize(cocos2d::ValueMap* initProperties)
+Knight* Knight::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Knight* instance = new Knight(initProperties);
 
@@ -17,7 +17,7 @@ Knight* Knight::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Knight::Knight(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Knight::Knight(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Knight_Animations,
 	EntityResources::Helpers_Knight_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

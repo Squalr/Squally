@@ -8,7 +8,7 @@
 
 const std::string PrincessNebea::MapKeyPrincessNebea = "princess-nebea";
 
-PrincessNebea* PrincessNebea::deserialize(cocos2d::ValueMap* initProperties)
+PrincessNebea* PrincessNebea::deserialize(cocos2d::ValueMap& initProperties)
 {
 	PrincessNebea* instance = new PrincessNebea(initProperties);
 
@@ -17,7 +17,7 @@ PrincessNebea* PrincessNebea::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-PrincessNebea::PrincessNebea(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+PrincessNebea::PrincessNebea(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

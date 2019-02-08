@@ -10,11 +10,11 @@
 class SkeletalArcher : public PlatformerEnemy
 {
 public:
-	static SkeletalArcher* deserialize(cocos2d::ValueMap* initProperties);
+	static SkeletalArcher* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySkeletalArcher;
 
 private:
-	SkeletalArcher(cocos2d::ValueMap* initProperties);
+	SkeletalArcher(cocos2d::ValueMap& initProperties);
 	~SkeletalArcher();
 };

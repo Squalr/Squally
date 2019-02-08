@@ -8,7 +8,7 @@
 
 const std::string Goblin::MapKeyGoblin = "goblin";
 
-Goblin* Goblin::deserialize(cocos2d::ValueMap* initProperties)
+Goblin* Goblin::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Goblin* instance = new Goblin(initProperties);
 
@@ -17,7 +17,7 @@ Goblin* Goblin::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Goblin::Goblin(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Goblin::Goblin(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Goblin_Animations,
 	EntityResources::Helpers_Goblin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

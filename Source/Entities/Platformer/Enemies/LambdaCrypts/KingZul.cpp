@@ -8,7 +8,7 @@
 
 const std::string KingZul::MapKeyKingZul = "king-zul";
 
-KingZul* KingZul::deserialize(cocos2d::ValueMap* initProperties)
+KingZul* KingZul::deserialize(cocos2d::ValueMap& initProperties)
 {
 	KingZul* instance = new KingZul(initProperties);
 
@@ -17,7 +17,7 @@ KingZul* KingZul::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-KingZul::KingZul(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+KingZul::KingZul(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -8,7 +8,7 @@
 
 const std::string Aphrodite::MapKeyAphrodite = "aphrodite";
 
-Aphrodite* Aphrodite::deserialize(cocos2d::ValueMap* initProperties)
+Aphrodite* Aphrodite::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Aphrodite* instance = new Aphrodite(initProperties);
 
@@ -17,7 +17,7 @@ Aphrodite* Aphrodite::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Aphrodite::Aphrodite(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Aphrodite::Aphrodite(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

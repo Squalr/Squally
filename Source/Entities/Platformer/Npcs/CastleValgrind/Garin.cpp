@@ -8,7 +8,7 @@
 
 const std::string Garin::MapKeyGarin = "garin";
 
-Garin* Garin::deserialize(cocos2d::ValueMap* initProperties)
+Garin* Garin::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Garin* instance = new Garin(initProperties);
 
@@ -17,7 +17,7 @@ Garin* Garin::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Garin::Garin(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Garin::Garin(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -47,7 +47,7 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 
 		if (name == "hexus")
 		{
-			newObject = HexusArcade::create(&properties);
+			newObject = HexusArcade::create(properties);
 		}
 		else
 		{

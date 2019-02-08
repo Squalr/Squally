@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-ObjectifiedTile* ObjectifiedTile::create(Sprite* sprite, ValueMap* initProperties)
+ObjectifiedTile* ObjectifiedTile::create(Sprite* sprite, ValueMap initProperties)
 {
 	ObjectifiedTile* instance = new ObjectifiedTile(sprite, initProperties);
 
@@ -16,7 +16,7 @@ ObjectifiedTile* ObjectifiedTile::create(Sprite* sprite, ValueMap* initPropertie
 	return instance;
 }
 
-ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap* initProperties) : HackableObject(initProperties)
+ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap initProperties) : SerializableObject(initProperties)
 {
 	this->innerSprite = sprite;
 

@@ -8,7 +8,7 @@
 
 const std::string Nessie::MapKeyNessie = "nessie";
 
-Nessie* Nessie::deserialize(cocos2d::ValueMap* initProperties)
+Nessie* Nessie::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Nessie* instance = new Nessie(initProperties);
 
@@ -17,7 +17,7 @@ Nessie* Nessie::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Nessie::Nessie(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Nessie::Nessie(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

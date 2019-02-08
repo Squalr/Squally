@@ -8,7 +8,7 @@
 
 const std::string Turtle::MapKeyTurtle = "turtle";
 
-Turtle* Turtle::deserialize(cocos2d::ValueMap* initProperties)
+Turtle* Turtle::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Turtle* instance = new Turtle(initProperties);
 
@@ -17,7 +17,7 @@ Turtle* Turtle::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Turtle::Turtle(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Turtle::Turtle(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Turtle_Animations,
 	EntityResources::Helpers_Turtle_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

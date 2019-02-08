@@ -54,7 +54,7 @@ public:
 		}
 	};
 
-	static TerrainObject* deserialize(cocos2d::ValueMap* initProperties, TerrainData terrainData);
+	static TerrainObject* deserialize(cocos2d::ValueMap& initProperties, TerrainData terrainData);
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain();
@@ -65,7 +65,7 @@ public:
 
 private:
 	typedef HackableObject super;
-	TerrainObject(cocos2d::ValueMap* initProperties, TerrainData terrainData);
+	TerrainObject(cocos2d::ValueMap& initProperties, TerrainData terrainData);
 	virtual ~TerrainObject();
 
 	void onEnter() override;

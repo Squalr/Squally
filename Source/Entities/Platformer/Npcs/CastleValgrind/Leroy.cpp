@@ -8,7 +8,7 @@
 
 const std::string Leroy::MapKeyLeroy = "leroy";
 
-Leroy* Leroy::deserialize(cocos2d::ValueMap* initProperties)
+Leroy* Leroy::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Leroy* instance = new Leroy(initProperties);
 
@@ -17,7 +17,7 @@ Leroy* Leroy::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Leroy::Leroy(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Leroy::Leroy(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

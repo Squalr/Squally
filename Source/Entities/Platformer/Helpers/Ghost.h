@@ -10,11 +10,11 @@
 class Ghost : public PlatformerEntity
 {
 public:
-	static Ghost* deserialize(cocos2d::ValueMap* initProperties);
+	static Ghost* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGhost;
 
 private:
-	Ghost(cocos2d::ValueMap* initProperties);
+	Ghost(cocos2d::ValueMap& initProperties);
 	~Ghost();
 };

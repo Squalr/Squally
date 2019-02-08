@@ -10,11 +10,11 @@
 class Zelina : public NpcBase
 {
 public:
-	static Zelina* deserialize(cocos2d::ValueMap* initProperties);
+	static Zelina* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyZelina;
 
 private:
-	Zelina(cocos2d::ValueMap* initProperties);
+	Zelina(cocos2d::ValueMap& initProperties);
 	~Zelina();
 };

@@ -10,11 +10,11 @@
 class Professor : public PlatformerEntity
 {
 public:
-	static Professor* deserialize(cocos2d::ValueMap* initProperties);
+	static Professor* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyProfessor;
 
 private:
-	Professor(cocos2d::ValueMap* initProperties);
+	Professor(cocos2d::ValueMap& initProperties);
 	~Professor();
 };

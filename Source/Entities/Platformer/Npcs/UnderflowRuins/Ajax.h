@@ -10,11 +10,11 @@
 class Ajax : public NpcBase
 {
 public:
-	static Ajax* deserialize(cocos2d::ValueMap* initProperties);
+	static Ajax* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAjax;
 
 private:
-	Ajax(cocos2d::ValueMap* initProperties);
+	Ajax(cocos2d::ValueMap& initProperties);
 	~Ajax();
 };

@@ -8,7 +8,7 @@
 
 const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
 
-YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap* initProperties)
+YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap& initProperties)
 {
 	YetiBaby* instance = new YetiBaby(initProperties);
 
@@ -17,7 +17,7 @@ YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-YetiBaby::YetiBaby(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+YetiBaby::YetiBaby(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_YetiBaby_Animations,
 	EntityResources::Helpers_YetiBaby_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

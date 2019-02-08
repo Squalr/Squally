@@ -8,7 +8,7 @@
 
 const std::string EarthGolem::MapKeyEarthGolem = "earth-golem";
 
-EarthGolem* EarthGolem::deserialize(cocos2d::ValueMap* initProperties)
+EarthGolem* EarthGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	EarthGolem* instance = new EarthGolem(initProperties);
 
@@ -17,7 +17,7 @@ EarthGolem* EarthGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-EarthGolem::EarthGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+EarthGolem::EarthGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	PlatformerCollisionType::Enemy,

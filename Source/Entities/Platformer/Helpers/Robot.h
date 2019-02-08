@@ -10,11 +10,11 @@
 class Robot : public PlatformerEntity
 {
 public:
-	static Robot* deserialize(cocos2d::ValueMap* initProperties);
+	static Robot* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRobot;
 
 private:
-	Robot(cocos2d::ValueMap* initProperties);
+	Robot(cocos2d::ValueMap& initProperties);
 	~Robot();
 };

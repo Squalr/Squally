@@ -8,7 +8,7 @@
 
 const std::string Guard::MapKeyGuard = "guard";
 
-Guard* Guard::deserialize(cocos2d::ValueMap* initProperties)
+Guard* Guard::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Guard* instance = new Guard(initProperties);
 
@@ -17,7 +17,7 @@ Guard* Guard::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Guard::Guard(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Guard::Guard(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Guard_Animations,
 	EntityResources::Enemies_CastleValgrind_Guard_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class Abomination : public PlatformerEnemy
 {
 public:
-	static Abomination* deserialize(cocos2d::ValueMap* initProperties);
+	static Abomination* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAbomination;
 
 private:
-	Abomination(cocos2d::ValueMap* initProperties);
+	Abomination(cocos2d::ValueMap& initProperties);
 	~Abomination();
 };

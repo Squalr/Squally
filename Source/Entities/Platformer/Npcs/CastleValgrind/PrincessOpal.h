@@ -10,11 +10,11 @@
 class PrincessOpal : public NpcBase
 {
 public:
-	static PrincessOpal* deserialize(cocos2d::ValueMap* initProperties);
+	static PrincessOpal* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPrincessOpal;
 
 private:
-	PrincessOpal(cocos2d::ValueMap* initProperties);
+	PrincessOpal(cocos2d::ValueMap& initProperties);
 	~PrincessOpal();
 };

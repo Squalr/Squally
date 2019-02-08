@@ -8,7 +8,7 @@
 
 const std::string Jack::MapKeyJack = "jack";
 
-Jack* Jack::deserialize(cocos2d::ValueMap* initProperties)
+Jack* Jack::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Jack* instance = new Jack(initProperties);
 
@@ -17,7 +17,7 @@ Jack* Jack::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Jack::Jack(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Jack::Jack(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -8,7 +8,7 @@
 
 const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 
-{{EntityName}}* {{EntityName}}::deserialize(cocos2d::ValueMap* initProperties)
+{{EntityName}}* {{EntityName}}::deserialize(cocos2d::ValueMap& initProperties)
 {
 	{{EntityName}}* instance = new {{EntityName}}(initProperties);
 
@@ -17,7 +17,7 @@ const std::string {{EntityName}}::MapKey{{EntityName}} = "{{MapKeyName}}";
 	return instance;
 }
 
-{{EntityName}}::{{EntityName}}(cocos2d::ValueMap* initProperties) : {{EntityBase}}(initProperties,
+{{EntityName}}::{{EntityName}}(cocos2d::ValueMap& initProperties) : {{EntityBase}}(initProperties,
 	EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Animations,
 	EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Emblem,
 	PlatformerCollisionType::{{EntityCollisionType}},

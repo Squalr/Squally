@@ -8,7 +8,7 @@
 
 const std::string SkeletalCleaver::MapKeySkeletalCleaver = "skeletal-cleaver";
 
-SkeletalCleaver* SkeletalCleaver::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalCleaver* SkeletalCleaver::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalCleaver* instance = new SkeletalCleaver(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-SkeletalCleaver::SkeletalCleaver(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalCleaver::SkeletalCleaver(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	PlatformerCollisionType::Enemy,

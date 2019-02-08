@@ -10,11 +10,11 @@
 class Turtle : public PlatformerEntity
 {
 public:
-	static Turtle* deserialize(cocos2d::ValueMap* initProperties);
+	static Turtle* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTurtle;
 
 private:
-	Turtle(cocos2d::ValueMap* initProperties);
+	Turtle(cocos2d::ValueMap& initProperties);
 	~Turtle();
 };

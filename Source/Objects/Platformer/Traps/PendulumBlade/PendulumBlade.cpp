@@ -34,7 +34,7 @@ const float PendulumBlade::SwingsPerSecondAt480Length = 1.5f;
 const float PendulumBlade::MinAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle - 45.0f, 0.0f, 360.0f);
 const float PendulumBlade::MaxAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
-PendulumBlade* PendulumBlade::create(ValueMap* initProperties)
+PendulumBlade* PendulumBlade::create(ValueMap& initProperties)
 {
 	PendulumBlade* instance = new PendulumBlade(initProperties);
 
@@ -43,14 +43,14 @@ PendulumBlade* PendulumBlade::create(ValueMap* initProperties)
 	return instance;
 }
 
-PendulumBlade::PendulumBlade(ValueMap* initProperties) : HackableObject(initProperties)
+PendulumBlade::PendulumBlade(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->setDefaultPreview(PendulumBladeGenericPreview::create());
 
-	float height = this->properties->at(SerializableObject::MapKeyHeight).asFloat();
+	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
 	this->targetAngle = PendulumBlade::DefaultAngle;
 	this->chainHeight = height;

@@ -10,11 +10,11 @@
 class Lycan : public NpcBase
 {
 public:
-	static Lycan* deserialize(cocos2d::ValueMap* initProperties);
+	static Lycan* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLycan;
 
 private:
-	Lycan(cocos2d::ValueMap* initProperties);
+	Lycan(cocos2d::ValueMap& initProperties);
 	~Lycan();
 };

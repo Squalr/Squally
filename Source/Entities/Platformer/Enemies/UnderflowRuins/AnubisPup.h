@@ -10,11 +10,11 @@
 class AnubisPup : public PlatformerEnemy
 {
 public:
-	static AnubisPup* deserialize(cocos2d::ValueMap* initProperties);
+	static AnubisPup* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAnubisPup;
 
 private:
-	AnubisPup(cocos2d::ValueMap* initProperties);
+	AnubisPup(cocos2d::ValueMap& initProperties);
 	~AnubisPup();
 };

@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-PlatformerDecorObject* PlatformerDecorObject::create(ValueMap* initProperties)
+PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& initProperties)
 {
 	PlatformerDecorObject* instance = new PlatformerDecorObject(initProperties);
 
@@ -11,7 +11,7 @@ PlatformerDecorObject* PlatformerDecorObject::create(ValueMap* initProperties)
 	return instance;
 }
 
-PlatformerDecorObject::PlatformerDecorObject(ValueMap* initProperties) : HackableObject(initProperties)
+PlatformerDecorObject::PlatformerDecorObject(ValueMap& initProperties) : HackableObject(initProperties)
 {
 }
 

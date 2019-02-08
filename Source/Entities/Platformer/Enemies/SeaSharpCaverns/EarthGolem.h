@@ -10,11 +10,11 @@
 class EarthGolem : public PlatformerEnemy
 {
 public:
-	static EarthGolem* deserialize(cocos2d::ValueMap* initProperties);
+	static EarthGolem* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyEarthGolem;
 
 private:
-	EarthGolem(cocos2d::ValueMap* initProperties);
+	EarthGolem(cocos2d::ValueMap& initProperties);
 	~EarthGolem();
 };

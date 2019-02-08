@@ -10,11 +10,11 @@
 class Cooper : public NpcBase
 {
 public:
-	static Cooper* deserialize(cocos2d::ValueMap* initProperties);
+	static Cooper* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCooper;
 
 private:
-	Cooper(cocos2d::ValueMap* initProperties);
+	Cooper(cocos2d::ValueMap& initProperties);
 	~Cooper();
 };

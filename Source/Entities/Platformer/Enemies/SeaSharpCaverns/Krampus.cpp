@@ -8,7 +8,7 @@
 
 const std::string Krampus::MapKeyKrampus = "krampus";
 
-Krampus* Krampus::deserialize(cocos2d::ValueMap* initProperties)
+Krampus* Krampus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Krampus* instance = new Krampus(initProperties);
 
@@ -17,7 +17,7 @@ Krampus* Krampus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Krampus::Krampus(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Krampus::Krampus(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
 	PlatformerCollisionType::Enemy,

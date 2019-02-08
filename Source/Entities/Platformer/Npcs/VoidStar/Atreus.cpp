@@ -8,7 +8,7 @@
 
 const std::string Atreus::MapKeyAtreus = "atreus";
 
-Atreus* Atreus::deserialize(cocos2d::ValueMap* initProperties)
+Atreus* Atreus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Atreus* instance = new Atreus(initProperties);
 
@@ -17,7 +17,7 @@ Atreus* Atreus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Atreus::Atreus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Atreus::Atreus(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

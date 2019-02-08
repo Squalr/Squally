@@ -8,7 +8,7 @@
 
 const std::string Ghost::MapKeyGhost = "ghost";
 
-Ghost* Ghost::deserialize(cocos2d::ValueMap* initProperties)
+Ghost* Ghost::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ghost* instance = new Ghost(initProperties);
 
@@ -17,7 +17,7 @@ Ghost* Ghost::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ghost::Ghost(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Ghost::Ghost(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Ghost_Animations,
 	EntityResources::Helpers_Ghost_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

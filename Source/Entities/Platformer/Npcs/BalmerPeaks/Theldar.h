@@ -10,11 +10,11 @@
 class Theldar : public NpcBase
 {
 public:
-	static Theldar* deserialize(cocos2d::ValueMap* initProperties);
+	static Theldar* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyTheldar;
 
 private:
-	Theldar(cocos2d::ValueMap* initProperties);
+	Theldar(cocos2d::ValueMap& initProperties);
 	~Theldar();
 };

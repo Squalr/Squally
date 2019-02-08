@@ -10,11 +10,11 @@
 class QueenElise : public NpcBase
 {
 public:
-	static QueenElise* deserialize(cocos2d::ValueMap* initProperties);
+	static QueenElise* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyQueenElise;
 
 private:
-	QueenElise(cocos2d::ValueMap* initProperties);
+	QueenElise(cocos2d::ValueMap& initProperties);
 	~QueenElise();
 };

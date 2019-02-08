@@ -13,12 +13,12 @@ class HackableData;
 class HeavenHug : public HackableObject
 {
 public:
-	static HeavenHug* create(cocos2d::ValueMap* initProperties);
+	static HeavenHug* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyHeavenHug;
 
 protected:
-	HeavenHug(cocos2d::ValueMap* initProperties);
+	HeavenHug(cocos2d::ValueMap& initProperties);
 	~HeavenHug();
 
 	cocos2d::Vec2 getButtonOffset() override;

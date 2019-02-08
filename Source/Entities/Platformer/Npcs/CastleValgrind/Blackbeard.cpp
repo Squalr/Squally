@@ -8,7 +8,7 @@
 
 const std::string Blackbeard::MapKeyBlackbeard = "blackbeard";
 
-Blackbeard* Blackbeard::deserialize(cocos2d::ValueMap* initProperties)
+Blackbeard* Blackbeard::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Blackbeard* instance = new Blackbeard(initProperties);
 
@@ -17,7 +17,7 @@ Blackbeard* Blackbeard::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Blackbeard::Blackbeard(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Blackbeard::Blackbeard(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Blackbeard_Animations,
 	EntityResources::Npcs_CastleValgrind_Blackbeard_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

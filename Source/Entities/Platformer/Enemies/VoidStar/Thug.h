@@ -10,11 +10,11 @@
 class Thug : public PlatformerEnemy
 {
 public:
-	static Thug* deserialize(cocos2d::ValueMap* initProperties);
+	static Thug* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyThug;
 
 private:
-	Thug(cocos2d::ValueMap* initProperties);
+	Thug(cocos2d::ValueMap& initProperties);
 	~Thug();
 };

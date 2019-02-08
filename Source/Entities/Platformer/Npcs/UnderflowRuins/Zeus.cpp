@@ -8,7 +8,7 @@
 
 const std::string Zeus::MapKeyZeus = "zeus";
 
-Zeus* Zeus::deserialize(cocos2d::ValueMap* initProperties)
+Zeus* Zeus::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Zeus* instance = new Zeus(initProperties);
 
@@ -17,7 +17,7 @@ Zeus* Zeus::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Zeus::Zeus(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Zeus::Zeus(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

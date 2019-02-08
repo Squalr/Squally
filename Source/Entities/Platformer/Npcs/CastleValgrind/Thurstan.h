@@ -10,11 +10,11 @@
 class Thurstan : public NpcBase
 {
 public:
-	static Thurstan* deserialize(cocos2d::ValueMap* initProperties);
+	static Thurstan* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyThurstan;
 
 private:
-	Thurstan(cocos2d::ValueMap* initProperties);
+	Thurstan(cocos2d::ValueMap& initProperties);
 	~Thurstan();
 };

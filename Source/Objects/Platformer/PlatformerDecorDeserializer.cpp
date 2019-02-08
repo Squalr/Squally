@@ -64,14 +64,14 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		float y = properties.at(SerializableObject::MapKeyYPosition).asFloat();
 		bool repeatX = false;
 		bool repeatY = false;
-		SerializableObject* newObject = PlatformerDecorObject::create(&properties);
+		SerializableObject* newObject = PlatformerDecorObject::create(properties);
 
-		if (GameUtils::keyExists(&properties, SerializableObject::MapKeyRepeatX))
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyRepeatX))
 		{
 			repeatX = properties.at(SerializableObject::MapKeyRepeatX).asBool();
 		}
 
-		if (GameUtils::keyExists(&properties, SerializableObject::MapKeyRepeatY))
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyRepeatY))
 		{
 			repeatY = properties.at(SerializableObject::MapKeyRepeatY).asBool();
 		}
@@ -125,30 +125,30 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
 		newObject->setPosition(Vec2(x, y + height));
 
-		if (GameUtils::keyExists(&properties, SerializableObject::MapKeyRotation))
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyRotation))
 		{
 			float rotation = properties.at(SerializableObject::MapKeyRotation).asFloat();
 			newObject->setRotation(rotation);
 		}
 
-		if (GameUtils::keyExists(&properties, "flip-x"))
+		if (GameUtils::keyExists(properties, "flip-x"))
 		{
 			bool flipX = properties.at("flip-x").asBool();
 			sprite->setFlippedX(flipX);
 		}
 
-		if (GameUtils::keyExists(&properties, "flip-y"))
+		if (GameUtils::keyExists(properties, "flip-y"))
 		{
 			bool flipY = properties.at("flip-y").asBool();
 			sprite->setFlippedY(flipY);
 		}
 
-		if (GameUtils::keyExists(&properties, "float-x"))
+		if (GameUtils::keyExists(properties, "float-x"))
 		{
 			float floatX = properties.at("float-x").asFloat();
 			float timeX = 1.0f;
 
-			if (GameUtils::keyExists(&properties, "float-time-x"))
+			if (GameUtils::keyExists(properties, "float-time-x"))
 			{
 				timeX = properties.at("float-time-x").asFloat();
 			}
@@ -159,12 +159,12 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 			newObject->runAction(RepeatForever::create(Sequence::create(bounceX1, bounceX2, nullptr)));
 		}
 
-		if (GameUtils::keyExists(&properties, "float-y"))
+		if (GameUtils::keyExists(properties, "float-y"))
 		{
 			float floatY = properties.at("float-y").asFloat();
 			float timeY = 1.0f;
 
-			if (GameUtils::keyExists(&properties, "float-time-y"))
+			if (GameUtils::keyExists(properties, "float-time-y"))
 			{
 				timeY = properties.at("float-time-y").asFloat();
 			}

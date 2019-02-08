@@ -8,7 +8,7 @@
 
 const std::string Appolo::MapKeyAppolo = "appolo";
 
-Appolo* Appolo::deserialize(cocos2d::ValueMap* initProperties)
+Appolo* Appolo::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Appolo* instance = new Appolo(initProperties);
 
@@ -17,7 +17,7 @@ Appolo* Appolo::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Appolo::Appolo(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Appolo::Appolo(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Appolo_Animations,
 	EntityResources::Npcs_EndianForest_Appolo_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

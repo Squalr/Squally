@@ -10,11 +10,11 @@
 class Mildred : public NpcBase
 {
 public:
-	static Mildred* deserialize(cocos2d::ValueMap* initProperties);
+	static Mildred* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMildred;
 
 private:
-	Mildred(cocos2d::ValueMap* initProperties);
+	Mildred(cocos2d::ValueMap& initProperties);
 	~Mildred();
 };

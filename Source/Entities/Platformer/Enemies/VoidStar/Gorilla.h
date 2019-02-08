@@ -10,11 +10,11 @@
 class Gorilla : public PlatformerEnemy
 {
 public:
-	static Gorilla* deserialize(cocos2d::ValueMap* initProperties);
+	static Gorilla* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGorilla;
 
 private:
-	Gorilla(cocos2d::ValueMap* initProperties);
+	Gorilla(cocos2d::ValueMap& initProperties);
 	~Gorilla();
 };

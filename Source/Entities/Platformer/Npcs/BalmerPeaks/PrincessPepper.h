@@ -10,11 +10,11 @@
 class PrincessPepper : public NpcBase
 {
 public:
-	static PrincessPepper* deserialize(cocos2d::ValueMap* initProperties);
+	static PrincessPepper* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPrincessPepper;
 
 private:
-	PrincessPepper(cocos2d::ValueMap* initProperties);
+	PrincessPepper(cocos2d::ValueMap& initProperties);
 	~PrincessPepper();
 };

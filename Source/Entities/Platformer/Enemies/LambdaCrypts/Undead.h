@@ -10,11 +10,11 @@
 class Undead : public PlatformerEnemy
 {
 public:
-	static Undead* deserialize(cocos2d::ValueMap* initProperties);
+	static Undead* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyUndead;
 
 private:
-	Undead(cocos2d::ValueMap* initProperties);
+	Undead(cocos2d::ValueMap& initProperties);
 	~Undead();
 };

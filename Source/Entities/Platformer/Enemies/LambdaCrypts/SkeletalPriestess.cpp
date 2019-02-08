@@ -8,7 +8,7 @@
 
 const std::string SkeletalPriestess::MapKeySkeletalPriestess = "skeletal-priestess";
 
-SkeletalPriestess* SkeletalPriestess::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalPriestess* SkeletalPriestess::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalPriestess* instance = new SkeletalPriestess(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(cocos2d::ValueMap* initPropert
 	return instance;
 }
 
-SkeletalPriestess::SkeletalPriestess(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalPriestess::SkeletalPriestess(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
 	PlatformerCollisionType::Enemy,

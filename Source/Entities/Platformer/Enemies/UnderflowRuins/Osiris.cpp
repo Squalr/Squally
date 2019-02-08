@@ -8,7 +8,7 @@
 
 const std::string Osiris::MapKeyOsiris = "osiris";
 
-Osiris* Osiris::deserialize(cocos2d::ValueMap* initProperties)
+Osiris* Osiris::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Osiris* instance = new Osiris(initProperties);
 
@@ -17,7 +17,7 @@ Osiris* Osiris::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Osiris::Osiris(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Osiris::Osiris(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	PlatformerCollisionType::Enemy,

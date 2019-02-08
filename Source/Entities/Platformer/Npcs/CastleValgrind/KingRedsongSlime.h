@@ -10,11 +10,11 @@
 class KingRedsongSlime : public NpcBase
 {
 public:
-	static KingRedsongSlime* deserialize(cocos2d::ValueMap* initProperties);
+	static KingRedsongSlime* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyKingRedsongSlime;
 
 private:
-	KingRedsongSlime(cocos2d::ValueMap* initProperties);
+	KingRedsongSlime(cocos2d::ValueMap& initProperties);
 	~KingRedsongSlime();
 };

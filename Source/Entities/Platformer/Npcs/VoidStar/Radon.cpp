@@ -8,7 +8,7 @@
 
 const std::string Radon::MapKeyRadon = "radon";
 
-Radon* Radon::deserialize(cocos2d::ValueMap* initProperties)
+Radon* Radon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Radon* instance = new Radon(initProperties);
 
@@ -17,7 +17,7 @@ Radon* Radon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Radon::Radon(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Radon::Radon(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Radon_Animations,
 	EntityResources::Npcs_VoidStar_Radon_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

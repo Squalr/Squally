@@ -10,11 +10,11 @@
 class Rhinoman : public PlatformerEnemy
 {
 public:
-	static Rhinoman* deserialize(cocos2d::ValueMap* initProperties);
+	static Rhinoman* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRhinoman;
 
 private:
-	Rhinoman(cocos2d::ValueMap* initProperties);
+	Rhinoman(cocos2d::ValueMap& initProperties);
 	~Rhinoman();
 };

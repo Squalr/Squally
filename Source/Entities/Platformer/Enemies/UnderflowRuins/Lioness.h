@@ -10,11 +10,11 @@
 class Lioness : public PlatformerEnemy
 {
 public:
-	static Lioness* deserialize(cocos2d::ValueMap* initProperties);
+	static Lioness* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLioness;
 
 private:
-	Lioness(cocos2d::ValueMap* initProperties);
+	Lioness(cocos2d::ValueMap& initProperties);
 	~Lioness();
 };

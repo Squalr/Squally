@@ -10,11 +10,11 @@
 class Griffin : public NpcBase
 {
 public:
-	static Griffin* deserialize(cocos2d::ValueMap* initProperties);
+	static Griffin* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGriffin;
 
 private:
-	Griffin(cocos2d::ValueMap* initProperties);
+	Griffin(cocos2d::ValueMap& initProperties);
 	~Griffin();
 };

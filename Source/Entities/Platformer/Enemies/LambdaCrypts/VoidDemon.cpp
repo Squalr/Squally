@@ -8,7 +8,7 @@
 
 const std::string VoidDemon::MapKeyVoidDemon = "void-demon";
 
-VoidDemon* VoidDemon::deserialize(cocos2d::ValueMap* initProperties)
+VoidDemon* VoidDemon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	VoidDemon* instance = new VoidDemon(initProperties);
 
@@ -17,7 +17,7 @@ VoidDemon* VoidDemon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-VoidDemon::VoidDemon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+VoidDemon::VoidDemon(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_VoidDemon_Animations,
 	EntityResources::Enemies_LambdaCrypts_VoidDemon_Emblem,
 	PlatformerCollisionType::Enemy,

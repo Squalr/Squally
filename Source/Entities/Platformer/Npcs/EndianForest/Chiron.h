@@ -10,11 +10,11 @@
 class Chiron : public NpcBase
 {
 public:
-	static Chiron* deserialize(cocos2d::ValueMap* initProperties);
+	static Chiron* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyChiron;
 
 private:
-	Chiron(cocos2d::ValueMap* initProperties);
+	Chiron(cocos2d::ValueMap& initProperties);
 	~Chiron();
 };

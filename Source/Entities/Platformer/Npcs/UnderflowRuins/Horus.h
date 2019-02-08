@@ -10,11 +10,11 @@
 class Horus : public NpcBase
 {
 public:
-	static Horus* deserialize(cocos2d::ValueMap* initProperties);
+	static Horus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyHorus;
 
 private:
-	Horus(cocos2d::ValueMap* initProperties);
+	Horus(cocos2d::ValueMap& initProperties);
 	~Horus();
 };

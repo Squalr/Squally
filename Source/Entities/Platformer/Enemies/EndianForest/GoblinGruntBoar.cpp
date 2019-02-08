@@ -8,7 +8,7 @@
 
 const std::string GoblinGruntBoar::MapKeyGoblinGruntBoar = "goblin-grunt-boar";
 
-GoblinGruntBoar* GoblinGruntBoar::deserialize(cocos2d::ValueMap* initProperties)
+GoblinGruntBoar* GoblinGruntBoar::deserialize(cocos2d::ValueMap& initProperties)
 {
 	GoblinGruntBoar* instance = new GoblinGruntBoar(initProperties);
 
@@ -17,7 +17,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-GoblinGruntBoar::GoblinGruntBoar(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+GoblinGruntBoar::GoblinGruntBoar(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	PlatformerCollisionType::Enemy,

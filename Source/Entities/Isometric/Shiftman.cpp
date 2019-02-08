@@ -8,7 +8,7 @@ using namespace cocos2d;
 
 const std::string Shiftman::KeyShiftmanProperty = "shiftman";
 
-Shiftman* Shiftman::deserialize(ValueMap* initProperties)
+Shiftman* Shiftman::deserialize(ValueMap& initProperties)
 {
 	Shiftman* instance = new Shiftman(initProperties);
 
@@ -17,7 +17,7 @@ Shiftman* Shiftman::deserialize(ValueMap* initProperties)
 	return instance;
 }
 
-Shiftman::Shiftman(ValueMap* initProperties) : super::IsometricEntity(initProperties,
+Shiftman::Shiftman(ValueMap& initProperties) : super::IsometricEntity(initProperties,
 	"", //// EntityResources::Isometric_Shiftman_Animations,
 	1.0f,
 	Vec2(0.0f, 0.0f))

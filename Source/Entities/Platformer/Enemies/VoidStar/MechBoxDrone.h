@@ -10,11 +10,11 @@
 class MechBoxDrone : public PlatformerEnemy
 {
 public:
-	static MechBoxDrone* deserialize(cocos2d::ValueMap* initProperties);
+	static MechBoxDrone* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMechBoxDrone;
 
 private:
-	MechBoxDrone(cocos2d::ValueMap* initProperties);
+	MechBoxDrone(cocos2d::ValueMap& initProperties);
 	~MechBoxDrone();
 };

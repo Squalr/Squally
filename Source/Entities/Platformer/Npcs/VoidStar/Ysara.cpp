@@ -8,7 +8,7 @@
 
 const std::string Ysara::MapKeyYsara = "ysara";
 
-Ysara* Ysara::deserialize(cocos2d::ValueMap* initProperties)
+Ysara* Ysara::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ysara* instance = new Ysara(initProperties);
 
@@ -17,7 +17,7 @@ Ysara* Ysara::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ysara::Ysara(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Ysara::Ysara(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

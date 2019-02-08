@@ -10,11 +10,11 @@
 class Mermaid : public PlatformerEnemy
 {
 public:
-	static Mermaid* deserialize(cocos2d::ValueMap* initProperties);
+	static Mermaid* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMermaid;
 
 private:
-	Mermaid(cocos2d::ValueMap* initProperties);
+	Mermaid(cocos2d::ValueMap& initProperties);
 	~Mermaid();
 };

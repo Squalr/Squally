@@ -8,7 +8,7 @@
 
 const std::string Elric::MapKeyElric = "elric";
 
-Elric* Elric::deserialize(cocos2d::ValueMap* initProperties)
+Elric* Elric::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Elric* instance = new Elric(initProperties);
 
@@ -17,7 +17,7 @@ Elric* Elric::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Elric::Elric(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Elric::Elric(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Elric_Animations,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

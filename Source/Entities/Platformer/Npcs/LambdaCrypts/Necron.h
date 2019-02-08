@@ -10,11 +10,11 @@
 class Necron : public NpcBase
 {
 public:
-	static Necron* deserialize(cocos2d::ValueMap* initProperties);
+	static Necron* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyNecron;
 
 private:
-	Necron(cocos2d::ValueMap* initProperties);
+	Necron(cocos2d::ValueMap& initProperties);
 	~Necron();
 };

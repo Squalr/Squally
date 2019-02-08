@@ -10,11 +10,11 @@
 class Scarecrow : public PlatformerEnemy
 {
 public:
-	static Scarecrow* deserialize(cocos2d::ValueMap* initProperties);
+	static Scarecrow* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyScarecrow;
 
 private:
-	Scarecrow(cocos2d::ValueMap* initProperties);
+	Scarecrow(cocos2d::ValueMap& initProperties);
 	~Scarecrow();
 };

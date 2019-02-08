@@ -10,11 +10,11 @@
 class Amelia : public NpcBase
 {
 public:
-	static Amelia* deserialize(cocos2d::ValueMap* initProperties);
+	static Amelia* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAmelia;
 
 private:
-	Amelia(cocos2d::ValueMap* initProperties);
+	Amelia(cocos2d::ValueMap& initProperties);
 	~Amelia();
 };

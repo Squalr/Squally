@@ -8,7 +8,7 @@ using namespace cocos2d;
 IsometricSqually* IsometricSqually::squallyInstance = nullptr;
 const std::string IsometricSqually::KeySquallyProperty = "squally";
 
-IsometricSqually* IsometricSqually::deserialize(ValueMap* initProperties)
+IsometricSqually* IsometricSqually::deserialize(ValueMap& initProperties)
 {
 	IsometricSqually* instance = new IsometricSqually(initProperties);
 
@@ -23,7 +23,7 @@ IsometricSqually* IsometricSqually::getInstance()
 	return IsometricSqually::squallyInstance;
 }
 
-IsometricSqually::IsometricSqually(ValueMap* initProperties) : super::IsometricEntity(initProperties,
+IsometricSqually::IsometricSqually(ValueMap& initProperties) : super::IsometricEntity(initProperties,
 	"", //// EntityResources::Isometric_Squally_Animations,
 	1.0f,
 	Vec2(-128.0f, 0.0f))

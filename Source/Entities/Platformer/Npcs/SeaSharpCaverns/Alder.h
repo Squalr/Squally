@@ -10,11 +10,11 @@
 class Alder : public NpcBase
 {
 public:
-	static Alder* deserialize(cocos2d::ValueMap* initProperties);
+	static Alder* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAlder;
 
 private:
-	Alder(cocos2d::ValueMap* initProperties);
+	Alder(cocos2d::ValueMap& initProperties);
 	~Alder();
 };

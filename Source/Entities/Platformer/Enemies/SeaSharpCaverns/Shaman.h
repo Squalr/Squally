@@ -10,11 +10,11 @@
 class Shaman : public PlatformerEnemy
 {
 public:
-	static Shaman* deserialize(cocos2d::ValueMap* initProperties);
+	static Shaman* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyShaman;
 
 private:
-	Shaman(cocos2d::ValueMap* initProperties);
+	Shaman(cocos2d::ValueMap& initProperties);
 	~Shaman();
 };

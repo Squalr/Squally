@@ -8,7 +8,7 @@
 
 const std::string Lucifer::MapKeyLucifer = "lucifer";
 
-Lucifer* Lucifer::deserialize(cocos2d::ValueMap* initProperties)
+Lucifer* Lucifer::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Lucifer* instance = new Lucifer(initProperties);
 
@@ -17,7 +17,7 @@ Lucifer* Lucifer::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Lucifer::Lucifer(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Lucifer::Lucifer(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

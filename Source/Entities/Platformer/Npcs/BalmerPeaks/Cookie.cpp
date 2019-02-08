@@ -8,7 +8,7 @@
 
 const std::string Cookie::MapKeyCookie = "cookie";
 
-Cookie* Cookie::deserialize(cocos2d::ValueMap* initProperties)
+Cookie* Cookie::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Cookie* instance = new Cookie(initProperties);
 
@@ -17,7 +17,7 @@ Cookie* Cookie::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Cookie::Cookie(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Cookie::Cookie(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

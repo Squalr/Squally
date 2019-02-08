@@ -8,7 +8,7 @@
 
 const std::string MechDog::MapKeyMechDog = "mech-dog";
 
-MechDog* MechDog::deserialize(cocos2d::ValueMap* initProperties)
+MechDog* MechDog::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MechDog* instance = new MechDog(initProperties);
 
@@ -17,7 +17,7 @@ MechDog* MechDog::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MechDog::MechDog(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MechDog::MechDog(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechDog_Animations,
 	EntityResources::Enemies_VoidStar_MechDog_Emblem,
 	PlatformerCollisionType::Enemy,

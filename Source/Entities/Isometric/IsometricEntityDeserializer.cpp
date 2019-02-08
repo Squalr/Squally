@@ -54,11 +54,11 @@ void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents
 
 		if (name == IsometricSqually::KeySquallyProperty)
 		{
-			newEntity = IsometricSqually::deserialize(&properties);
+			newEntity = IsometricSqually::deserialize(properties);
 		}
 		else if (name == Shiftman::KeyShiftmanProperty)
 		{
-			newEntity = Shiftman::deserialize(&properties);
+			newEntity = Shiftman::deserialize(properties);
 		}
 		else
 		{

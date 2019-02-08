@@ -8,7 +8,7 @@
 
 const std::string Thor::MapKeyThor = "thor";
 
-Thor* Thor::deserialize(cocos2d::ValueMap* initProperties)
+Thor* Thor::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Thor* instance = new Thor(initProperties);
 
@@ -17,7 +17,7 @@ Thor* Thor::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Thor::Thor(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Thor::Thor(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Thor_Animations,
 	EntityResources::Npcs_VoidStar_Thor_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

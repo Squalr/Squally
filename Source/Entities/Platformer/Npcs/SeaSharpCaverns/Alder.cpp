@@ -8,7 +8,7 @@
 
 const std::string Alder::MapKeyAlder = "alder";
 
-Alder* Alder::deserialize(cocos2d::ValueMap* initProperties)
+Alder* Alder::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Alder* instance = new Alder(initProperties);
 
@@ -17,7 +17,7 @@ Alder* Alder::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Alder::Alder(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Alder::Alder(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

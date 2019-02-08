@@ -10,11 +10,11 @@
 class Zana : public NpcBase
 {
 public:
-	static Zana* deserialize(cocos2d::ValueMap* initProperties);
+	static Zana* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyZana;
 
 private:
-	Zana(cocos2d::ValueMap* initProperties);
+	Zana(cocos2d::ValueMap& initProperties);
 	~Zana();
 };

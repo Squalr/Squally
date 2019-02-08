@@ -8,7 +8,7 @@
 
 const std::string Marcel::MapKeyMarcel = "marcel";
 
-Marcel* Marcel::deserialize(cocos2d::ValueMap* initProperties)
+Marcel* Marcel::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Marcel* instance = new Marcel(initProperties);
 
@@ -17,7 +17,7 @@ Marcel* Marcel::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Marcel::Marcel(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Marcel::Marcel(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Marcel_Animations,
 	EntityResources::Npcs_VoidStar_Marcel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

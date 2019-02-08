@@ -10,11 +10,11 @@
 class Bodom : public NpcBase
 {
 public:
-	static Bodom* deserialize(cocos2d::ValueMap* initProperties);
+	static Bodom* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyBodom;
 
 private:
-	Bodom(cocos2d::ValueMap* initProperties);
+	Bodom(cocos2d::ValueMap& initProperties);
 	~Bodom();
 };

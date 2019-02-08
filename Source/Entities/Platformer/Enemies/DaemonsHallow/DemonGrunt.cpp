@@ -8,7 +8,7 @@
 
 const std::string DemonGrunt::MapKeyDemonGrunt = "demon-grunt";
 
-DemonGrunt* DemonGrunt::deserialize(cocos2d::ValueMap* initProperties)
+DemonGrunt* DemonGrunt::deserialize(cocos2d::ValueMap& initProperties)
 {
 	DemonGrunt* instance = new DemonGrunt(initProperties);
 
@@ -17,7 +17,7 @@ DemonGrunt* DemonGrunt::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-DemonGrunt::DemonGrunt(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+DemonGrunt::DemonGrunt(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
 	PlatformerCollisionType::Enemy,

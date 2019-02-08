@@ -10,11 +10,11 @@
 class Lucifer : public NpcBase
 {
 public:
-	static Lucifer* deserialize(cocos2d::ValueMap* initProperties);
+	static Lucifer* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLucifer;
 
 private:
-	Lucifer(cocos2d::ValueMap* initProperties);
+	Lucifer(cocos2d::ValueMap& initProperties);
 	~Lucifer();
 };

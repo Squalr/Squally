@@ -8,7 +8,7 @@
 
 const std::string Pan::MapKeyPan = "pan";
 
-Pan* Pan::deserialize(cocos2d::ValueMap* initProperties)
+Pan* Pan::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Pan* instance = new Pan(initProperties);
 
@@ -17,7 +17,7 @@ Pan* Pan::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Pan::Pan(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Pan::Pan(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Pan_Animations,
 	EntityResources::Npcs_DaemonsHallow_Pan_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -8,7 +8,7 @@
 
 const std::string Gecko::MapKeyGecko = "gecko";
 
-Gecko* Gecko::deserialize(cocos2d::ValueMap* initProperties)
+Gecko* Gecko::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Gecko* instance = new Gecko(initProperties);
 
@@ -17,7 +17,7 @@ Gecko* Gecko::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Gecko::Gecko(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Gecko::Gecko(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Gecko_Animations,
 	EntityResources::Helpers_Gecko_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

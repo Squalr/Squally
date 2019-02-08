@@ -8,7 +8,7 @@
 
 const std::string FrostFiend::MapKeyFrostFiend = "frost-fiend";
 
-FrostFiend* FrostFiend::deserialize(cocos2d::ValueMap* initProperties)
+FrostFiend* FrostFiend::deserialize(cocos2d::ValueMap& initProperties)
 {
 	FrostFiend* instance = new FrostFiend(initProperties);
 
@@ -17,7 +17,7 @@ FrostFiend* FrostFiend::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-FrostFiend::FrostFiend(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+FrostFiend::FrostFiend(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Emblem,
 	PlatformerCollisionType::Enemy,

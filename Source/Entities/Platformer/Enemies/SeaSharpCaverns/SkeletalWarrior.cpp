@@ -8,7 +8,7 @@
 
 const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
 
-SkeletalWarrior* SkeletalWarrior::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalWarrior* SkeletalWarrior::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalWarrior* instance = new SkeletalWarrior(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-SkeletalWarrior::SkeletalWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalWarrior::SkeletalWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	PlatformerCollisionType::Enemy,

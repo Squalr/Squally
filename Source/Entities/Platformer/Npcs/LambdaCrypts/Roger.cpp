@@ -8,7 +8,7 @@
 
 const std::string Roger::MapKeyRoger = "roger";
 
-Roger* Roger::deserialize(cocos2d::ValueMap* initProperties)
+Roger* Roger::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Roger* instance = new Roger(initProperties);
 
@@ -17,7 +17,7 @@ Roger* Roger::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Roger::Roger(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Roger::Roger(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Roger_Animations,
 	EntityResources::Npcs_LambdaCrypts_Roger_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -10,11 +10,11 @@
 class LionMan : public PlatformerEnemy
 {
 public:
-	static LionMan* deserialize(cocos2d::ValueMap* initProperties);
+	static LionMan* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyLionMan;
 
 private:
-	LionMan(cocos2d::ValueMap* initProperties);
+	LionMan(cocos2d::ValueMap& initProperties);
 	~LionMan();
 };

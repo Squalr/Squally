@@ -14,12 +14,12 @@ class SmartAnimationSequenceNode;
 class SpikeLog : public HackableObject
 {
 public:
-	static SpikeLog* create(cocos2d::ValueMap* initProperties);
+	static SpikeLog* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySpikeLog;
 
 protected:
-	SpikeLog(cocos2d::ValueMap* initProperties);
+	SpikeLog(cocos2d::ValueMap& initProperties);
 	~SpikeLog();
 
 	cocos2d::Vec2 getButtonOffset() override;

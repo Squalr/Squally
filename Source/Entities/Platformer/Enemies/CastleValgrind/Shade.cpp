@@ -8,7 +8,7 @@
 
 const std::string Shade::MapKeyShade = "shade";
 
-Shade* Shade::deserialize(cocos2d::ValueMap* initProperties)
+Shade* Shade::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Shade* instance = new Shade(initProperties);
 
@@ -17,7 +17,7 @@ Shade* Shade::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Shade::Shade(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Shade::Shade(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Shade_Animations,
 	EntityResources::Enemies_CastleValgrind_Shade_Emblem,
 	PlatformerCollisionType::Enemy,

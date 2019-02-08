@@ -8,7 +8,7 @@
 
 const std::string GoblinShaman::MapKeyGoblinShaman = "goblin-shaman";
 
-GoblinShaman* GoblinShaman::deserialize(cocos2d::ValueMap* initProperties)
+GoblinShaman* GoblinShaman::deserialize(cocos2d::ValueMap& initProperties)
 {
 	GoblinShaman* instance = new GoblinShaman(initProperties);
 
@@ -17,7 +17,7 @@ GoblinShaman* GoblinShaman::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-GoblinShaman::GoblinShaman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+GoblinShaman::GoblinShaman(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
 	PlatformerCollisionType::Enemy,

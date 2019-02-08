@@ -10,11 +10,11 @@
 class OrcGrunt : public PlatformerEnemy
 {
 public:
-	static OrcGrunt* deserialize(cocos2d::ValueMap* initProperties);
+	static OrcGrunt* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyOrcGrunt;
 
 private:
-	OrcGrunt(cocos2d::ValueMap* initProperties);
+	OrcGrunt(cocos2d::ValueMap& initProperties);
 	~OrcGrunt();
 };

@@ -8,7 +8,7 @@
 
 const std::string Barbarian::MapKeyBarbarian = "barbarian";
 
-Barbarian* Barbarian::deserialize(cocos2d::ValueMap* initProperties)
+Barbarian* Barbarian::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Barbarian* instance = new Barbarian(initProperties);
 
@@ -17,7 +17,7 @@ Barbarian* Barbarian::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Barbarian::Barbarian(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Barbarian::Barbarian(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Barbarian_Animations,
 	EntityResources::Enemies_VoidStar_Barbarian_Emblem,
 	PlatformerCollisionType::Enemy,

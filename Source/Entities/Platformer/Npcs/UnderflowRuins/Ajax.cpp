@@ -8,7 +8,7 @@
 
 const std::string Ajax::MapKeyAjax = "ajax";
 
-Ajax* Ajax::deserialize(cocos2d::ValueMap* initProperties)
+Ajax* Ajax::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Ajax* instance = new Ajax(initProperties);
 
@@ -17,7 +17,7 @@ Ajax* Ajax::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Ajax::Ajax(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Ajax::Ajax(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

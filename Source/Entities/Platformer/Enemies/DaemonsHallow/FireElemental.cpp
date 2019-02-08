@@ -8,7 +8,7 @@
 
 const std::string FireElemental::MapKeyFireElemental = "fire-elemental";
 
-FireElemental* FireElemental::deserialize(cocos2d::ValueMap* initProperties)
+FireElemental* FireElemental::deserialize(cocos2d::ValueMap& initProperties)
 {
 	FireElemental* instance = new FireElemental(initProperties);
 
@@ -17,7 +17,7 @@ FireElemental* FireElemental::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-FireElemental::FireElemental(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+FireElemental::FireElemental(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
 	PlatformerCollisionType::Enemy,

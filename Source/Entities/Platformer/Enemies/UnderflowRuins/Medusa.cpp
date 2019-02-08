@@ -8,7 +8,7 @@
 
 const std::string Medusa::MapKeyMedusa = "medusa";
 
-Medusa* Medusa::deserialize(cocos2d::ValueMap* initProperties)
+Medusa* Medusa::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Medusa* instance = new Medusa(initProperties);
 
@@ -17,7 +17,7 @@ Medusa* Medusa::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Medusa::Medusa(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Medusa::Medusa(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	PlatformerCollisionType::Enemy,

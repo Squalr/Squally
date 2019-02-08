@@ -10,11 +10,11 @@
 class Ysara : public NpcBase
 {
 public:
-	static Ysara* deserialize(cocos2d::ValueMap* initProperties);
+	static Ysara* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyYsara;
 
 private:
-	Ysara(cocos2d::ValueMap* initProperties);
+	Ysara(cocos2d::ValueMap& initProperties);
 	~Ysara();
 };

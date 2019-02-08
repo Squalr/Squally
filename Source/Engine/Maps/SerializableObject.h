@@ -51,10 +51,10 @@ public:
 	static const std::string MapKeyPropertyValue;
 
 protected:
-	SerializableObject(cocos2d::ValueMap* initProperties);
+	SerializableObject(cocos2d::ValueMap& initProperties);
 	virtual ~SerializableObject();
 
-	cocos2d::ValueMap* properties;
+	cocos2d::ValueMap properties;
 
 private:
 	typedef SmartNode super;

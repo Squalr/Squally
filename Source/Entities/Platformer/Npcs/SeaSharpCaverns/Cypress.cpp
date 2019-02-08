@@ -8,7 +8,7 @@
 
 const std::string Cypress::MapKeyCypress = "cypress";
 
-Cypress* Cypress::deserialize(cocos2d::ValueMap* initProperties)
+Cypress* Cypress::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Cypress* instance = new Cypress(initProperties);
 
@@ -17,7 +17,7 @@ Cypress* Cypress::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Cypress::Cypress(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Cypress::Cypress(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

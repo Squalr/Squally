@@ -10,11 +10,11 @@
 class Zeus : public NpcBase
 {
 public:
-	static Zeus* deserialize(cocos2d::ValueMap* initProperties);
+	static Zeus* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyZeus;
 
 private:
-	Zeus(cocos2d::ValueMap* initProperties);
+	Zeus(cocos2d::ValueMap& initProperties);
 	~Zeus();
 };

@@ -10,11 +10,11 @@
 class Celeste : public NpcBase
 {
 public:
-	static Celeste* deserialize(cocos2d::ValueMap* initProperties);
+	static Celeste* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCeleste;
 
 private:
-	Celeste(cocos2d::ValueMap* initProperties);
+	Celeste(cocos2d::ValueMap& initProperties);
 	~Celeste();
 };

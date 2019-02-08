@@ -8,7 +8,7 @@
 
 const std::string Dudly::MapKeyDudly = "dudly";
 
-Dudly* Dudly::deserialize(cocos2d::ValueMap* initProperties)
+Dudly* Dudly::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Dudly* instance = new Dudly(initProperties);
 
@@ -17,7 +17,7 @@ Dudly* Dudly::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Dudly::Dudly(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Dudly::Dudly(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Dudly_Animations,
 	EntityResources::Npcs_EndianForest_Dudly_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

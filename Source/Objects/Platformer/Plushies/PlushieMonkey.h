@@ -9,12 +9,12 @@ class LocalizedLabel;
 class PlushieMonkey : public Plushie
 {
 public:
-	static PlushieMonkey* create(cocos2d::ValueMap* initProperties);
+	static PlushieMonkey* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPlushieMonkey;
 
 protected:
-	PlushieMonkey(cocos2d::ValueMap* initProperties);
+	PlushieMonkey(cocos2d::ValueMap& initProperties);
 	~PlushieMonkey();
 
 	void update(float) override;

@@ -10,11 +10,11 @@
 class Blackbeard : public NpcBase
 {
 public:
-	static Blackbeard* deserialize(cocos2d::ValueMap* initProperties);
+	static Blackbeard* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyBlackbeard;
 
 private:
-	Blackbeard(cocos2d::ValueMap* initProperties);
+	Blackbeard(cocos2d::ValueMap& initProperties);
 	~Blackbeard();
 };

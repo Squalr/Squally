@@ -10,11 +10,11 @@
 class KingZul : public PlatformerEnemy
 {
 public:
-	static KingZul* deserialize(cocos2d::ValueMap* initProperties);
+	static KingZul* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyKingZul;
 
 private:
-	KingZul(cocos2d::ValueMap* initProperties);
+	KingZul(cocos2d::ValueMap& initProperties);
 	~KingZul();
 };

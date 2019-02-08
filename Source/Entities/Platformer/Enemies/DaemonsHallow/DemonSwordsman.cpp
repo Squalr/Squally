@@ -8,7 +8,7 @@
 
 const std::string DemonSwordsman::MapKeyDemonSwordsman = "demon-swordsman";
 
-DemonSwordsman* DemonSwordsman::deserialize(cocos2d::ValueMap* initProperties)
+DemonSwordsman* DemonSwordsman::deserialize(cocos2d::ValueMap& initProperties)
 {
 	DemonSwordsman* instance = new DemonSwordsman(initProperties);
 
@@ -17,7 +17,7 @@ DemonSwordsman* DemonSwordsman::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-DemonSwordsman::DemonSwordsman(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+DemonSwordsman::DemonSwordsman(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
 	PlatformerCollisionType::Enemy,

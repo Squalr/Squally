@@ -8,7 +8,7 @@
 
 const std::string Apple::MapKeyApple = "apple";
 
-Apple* Apple::deserialize(cocos2d::ValueMap* initProperties)
+Apple* Apple::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Apple* instance = new Apple(initProperties);
 
@@ -17,7 +17,7 @@ Apple* Apple::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Apple::Apple(cocos2d::ValueMap* initProperties) : PlatformerEntity(initProperties,
+Apple::Apple(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_Apple_Animations,
 	EntityResources::Helpers_Apple_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

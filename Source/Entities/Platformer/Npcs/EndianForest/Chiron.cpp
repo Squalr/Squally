@@ -8,7 +8,7 @@
 
 const std::string Chiron::MapKeyChiron = "chiron";
 
-Chiron* Chiron::deserialize(cocos2d::ValueMap* initProperties)
+Chiron* Chiron::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Chiron* instance = new Chiron(initProperties);
 
@@ -17,7 +17,7 @@ Chiron* Chiron::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Chiron::Chiron(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Chiron::Chiron(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

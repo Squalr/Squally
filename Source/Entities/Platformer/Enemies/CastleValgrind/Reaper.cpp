@@ -8,7 +8,7 @@
 
 const std::string Reaper::MapKeyReaper = "reaper";
 
-Reaper* Reaper::deserialize(cocos2d::ValueMap* initProperties)
+Reaper* Reaper::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Reaper* instance = new Reaper(initProperties);
 
@@ -17,7 +17,7 @@ Reaper* Reaper::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Reaper::Reaper(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Reaper::Reaper(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
 	PlatformerCollisionType::Enemy,

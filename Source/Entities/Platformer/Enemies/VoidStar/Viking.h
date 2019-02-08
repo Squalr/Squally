@@ -10,11 +10,11 @@
 class Viking : public PlatformerEnemy
 {
 public:
-	static Viking* deserialize(cocos2d::ValueMap* initProperties);
+	static Viking* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyViking;
 
 private:
-	Viking(cocos2d::ValueMap* initProperties);
+	Viking(cocos2d::ValueMap& initProperties);
 	~Viking();
 };

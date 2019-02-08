@@ -8,7 +8,7 @@
 
 const std::string EarthElemental::MapKeyEarthElemental = "earth-elemental";
 
-EarthElemental* EarthElemental::deserialize(cocos2d::ValueMap* initProperties)
+EarthElemental* EarthElemental::deserialize(cocos2d::ValueMap& initProperties)
 {
 	EarthElemental* instance = new EarthElemental(initProperties);
 
@@ -17,7 +17,7 @@ EarthElemental* EarthElemental::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-EarthElemental::EarthElemental(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+EarthElemental::EarthElemental(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,
 	PlatformerCollisionType::Enemy,

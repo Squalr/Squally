@@ -8,7 +8,7 @@
 
 const std::string DemonWarrior::MapKeyDemonWarrior = "demon-warrior";
 
-DemonWarrior* DemonWarrior::deserialize(cocos2d::ValueMap* initProperties)
+DemonWarrior* DemonWarrior::deserialize(cocos2d::ValueMap& initProperties)
 {
 	DemonWarrior* instance = new DemonWarrior(initProperties);
 
@@ -17,7 +17,7 @@ DemonWarrior* DemonWarrior::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-DemonWarrior::DemonWarrior(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+DemonWarrior::DemonWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,
 	PlatformerCollisionType::Enemy,

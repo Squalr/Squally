@@ -8,7 +8,7 @@
 
 const std::string Tyracius::MapKeyTyracius = "tyracius";
 
-Tyracius* Tyracius::deserialize(cocos2d::ValueMap* initProperties)
+Tyracius* Tyracius::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Tyracius* instance = new Tyracius(initProperties);
 
@@ -17,7 +17,7 @@ Tyracius* Tyracius::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Tyracius::Tyracius(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Tyracius::Tyracius(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

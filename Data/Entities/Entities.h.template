@@ -10,11 +10,11 @@
 class {{EntityName}} : public {{EntityBase}}
 {
 public:
-	static {{EntityName}}* deserialize(cocos2d::ValueMap* initProperties);
+	static {{EntityName}}* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKey{{EntityName}};
 
 private:
-	{{EntityName}}(cocos2d::ValueMap* initProperties);
+	{{EntityName}}(cocos2d::ValueMap& initProperties);
 	~{{EntityName}}();
 };

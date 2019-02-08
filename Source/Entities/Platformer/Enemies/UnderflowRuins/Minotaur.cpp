@@ -8,7 +8,7 @@
 
 const std::string Minotaur::MapKeyMinotaur = "minotaur";
 
-Minotaur* Minotaur::deserialize(cocos2d::ValueMap* initProperties)
+Minotaur* Minotaur::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Minotaur* instance = new Minotaur(initProperties);
 
@@ -17,7 +17,7 @@ Minotaur* Minotaur::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Minotaur::Minotaur(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Minotaur::Minotaur(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
 	PlatformerCollisionType::Enemy,

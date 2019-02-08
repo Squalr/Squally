@@ -10,11 +10,11 @@
 class Executioner : public PlatformerEnemy
 {
 public:
-	static Executioner* deserialize(cocos2d::ValueMap* initProperties);
+	static Executioner* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyExecutioner;
 
 private:
-	Executioner(cocos2d::ValueMap* initProperties);
+	Executioner(cocos2d::ValueMap& initProperties);
 	~Executioner();
 };

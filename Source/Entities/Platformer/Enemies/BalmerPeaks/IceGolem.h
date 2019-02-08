@@ -10,11 +10,11 @@
 class IceGolem : public PlatformerEnemy
 {
 public:
-	static IceGolem* deserialize(cocos2d::ValueMap* initProperties);
+	static IceGolem* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyIceGolem;
 
 private:
-	IceGolem(cocos2d::ValueMap* initProperties);
+	IceGolem(cocos2d::ValueMap& initProperties);
 	~IceGolem();
 };

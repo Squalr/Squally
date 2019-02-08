@@ -6,7 +6,7 @@ using namespace cocos2d;
 
 const std::string CameraFocus::MapKeyCameraFocus = "camera-focus";
 
-CameraFocus* CameraFocus::create(ValueMap* initProperties)
+CameraFocus* CameraFocus::create(ValueMap& initProperties)
 {
 	CameraFocus* instance = new CameraFocus(initProperties);
 
@@ -15,7 +15,7 @@ CameraFocus* CameraFocus::create(ValueMap* initProperties)
 	return instance;
 }
 
-CameraFocus::CameraFocus(ValueMap* initProperties) : SerializableObject(initProperties)
+CameraFocus::CameraFocus(ValueMap& initProperties) : SerializableObject(initProperties)
 {
 }
 

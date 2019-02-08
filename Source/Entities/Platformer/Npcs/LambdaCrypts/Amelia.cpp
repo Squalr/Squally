@@ -8,7 +8,7 @@
 
 const std::string Amelia::MapKeyAmelia = "amelia";
 
-Amelia* Amelia::deserialize(cocos2d::ValueMap* initProperties)
+Amelia* Amelia::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Amelia* instance = new Amelia(initProperties);
 
@@ -17,7 +17,7 @@ Amelia* Amelia::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Amelia::Amelia(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Amelia::Amelia(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Animations,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

@@ -10,11 +10,11 @@
 class Princess : public PlatformerEntity
 {
 public:
-	static Princess* deserialize(cocos2d::ValueMap* initProperties);
+	static Princess* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyPrincess;
 
 private:
-	Princess(cocos2d::ValueMap* initProperties);
+	Princess(cocos2d::ValueMap& initProperties);
 	~Princess();
 };

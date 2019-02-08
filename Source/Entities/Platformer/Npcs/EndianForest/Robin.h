@@ -10,11 +10,11 @@
 class Robin : public NpcBase
 {
 public:
-	static Robin* deserialize(cocos2d::ValueMap* initProperties);
+	static Robin* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyRobin;
 
 private:
-	Robin(cocos2d::ValueMap* initProperties);
+	Robin(cocos2d::ValueMap& initProperties);
 	~Robin();
 };

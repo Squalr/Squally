@@ -8,7 +8,7 @@
 
 const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
 
-CritterDemon* CritterDemon::deserialize(cocos2d::ValueMap* initProperties)
+CritterDemon* CritterDemon::deserialize(cocos2d::ValueMap& initProperties)
 {
 	CritterDemon* instance = new CritterDemon(initProperties);
 
@@ -17,7 +17,7 @@ CritterDemon* CritterDemon::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-CritterDemon::CritterDemon(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+CritterDemon::CritterDemon(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Enemies_DaemonsHallow_CritterDemon_Emblem,
 	PlatformerCollisionType::Enemy,

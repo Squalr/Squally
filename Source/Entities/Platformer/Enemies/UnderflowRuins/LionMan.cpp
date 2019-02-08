@@ -8,7 +8,7 @@
 
 const std::string LionMan::MapKeyLionMan = "lion-man";
 
-LionMan* LionMan::deserialize(cocos2d::ValueMap* initProperties)
+LionMan* LionMan::deserialize(cocos2d::ValueMap& initProperties)
 {
 	LionMan* instance = new LionMan(initProperties);
 
@@ -17,7 +17,7 @@ LionMan* LionMan::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-LionMan::LionMan(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+LionMan::LionMan(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	PlatformerCollisionType::Enemy,

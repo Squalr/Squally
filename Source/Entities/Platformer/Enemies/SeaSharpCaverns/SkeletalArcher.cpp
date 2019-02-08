@@ -8,7 +8,7 @@
 
 const std::string SkeletalArcher::MapKeySkeletalArcher = "skeletal-archer";
 
-SkeletalArcher* SkeletalArcher::deserialize(cocos2d::ValueMap* initProperties)
+SkeletalArcher* SkeletalArcher::deserialize(cocos2d::ValueMap& initProperties)
 {
 	SkeletalArcher* instance = new SkeletalArcher(initProperties);
 
@@ -17,7 +17,7 @@ SkeletalArcher* SkeletalArcher::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-SkeletalArcher::SkeletalArcher(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+SkeletalArcher::SkeletalArcher(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class Elric : public NpcBase
 {
 public:
-	static Elric* deserialize(cocos2d::ValueMap* initProperties);
+	static Elric* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyElric;
 
 private:
-	Elric(cocos2d::ValueMap* initProperties);
+	Elric(cocos2d::ValueMap& initProperties);
 	~Elric();
 };

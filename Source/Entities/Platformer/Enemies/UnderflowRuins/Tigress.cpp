@@ -8,7 +8,7 @@
 
 const std::string Tigress::MapKeyTigress = "tigress";
 
-Tigress* Tigress::deserialize(cocos2d::ValueMap* initProperties)
+Tigress* Tigress::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Tigress* instance = new Tigress(initProperties);
 
@@ -17,7 +17,7 @@ Tigress* Tigress::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Tigress::Tigress(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Tigress::Tigress(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
 	PlatformerCollisionType::Enemy,

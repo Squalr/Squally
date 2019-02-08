@@ -10,11 +10,11 @@
 class Marcel : public NpcBase
 {
 public:
-	static Marcel* deserialize(cocos2d::ValueMap* initProperties);
+	static Marcel* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyMarcel;
 
 private:
-	Marcel(cocos2d::ValueMap* initProperties);
+	Marcel(cocos2d::ValueMap& initProperties);
 	~Marcel();
 };

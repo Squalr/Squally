@@ -8,7 +8,7 @@
 
 const std::string MechGolem::MapKeyMechGolem = "mech-golem";
 
-MechGolem* MechGolem::deserialize(cocos2d::ValueMap* initProperties)
+MechGolem* MechGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	MechGolem* instance = new MechGolem(initProperties);
 
@@ -17,7 +17,7 @@ MechGolem* MechGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-MechGolem::MechGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+MechGolem::MechGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_MechGolem_Animations,
 	EntityResources::Enemies_VoidStar_MechGolem_Emblem,
 	PlatformerCollisionType::Enemy,

@@ -10,11 +10,11 @@
 class Agnes : public PlatformerEnemy
 {
 public:
-	static Agnes* deserialize(cocos2d::ValueMap* initProperties);
+	static Agnes* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyAgnes;
 
 private:
-	Agnes(cocos2d::ValueMap* initProperties);
+	Agnes(cocos2d::ValueMap& initProperties);
 	~Agnes();
 };

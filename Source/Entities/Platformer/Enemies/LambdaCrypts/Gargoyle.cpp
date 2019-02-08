@@ -8,7 +8,7 @@
 
 const std::string Gargoyle::MapKeyGargoyle = "gargoyle";
 
-Gargoyle* Gargoyle::deserialize(cocos2d::ValueMap* initProperties)
+Gargoyle* Gargoyle::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Gargoyle* instance = new Gargoyle(initProperties);
 
@@ -17,7 +17,7 @@ Gargoyle* Gargoyle::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Gargoyle::Gargoyle(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Gargoyle::Gargoyle(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Gargoyle_Animations,
 	EntityResources::Enemies_LambdaCrypts_Gargoyle_Emblem,
 	PlatformerCollisionType::Enemy,

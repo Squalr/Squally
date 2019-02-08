@@ -10,11 +10,11 @@
 class GoblinElf : public PlatformerEnemy
 {
 public:
-	static GoblinElf* deserialize(cocos2d::ValueMap* initProperties);
+	static GoblinElf* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGoblinElf;
 
 private:
-	GoblinElf(cocos2d::ValueMap* initProperties);
+	GoblinElf(cocos2d::ValueMap& initProperties);
 	~GoblinElf();
 };

@@ -10,11 +10,11 @@
 class SkeletalPirate : public PlatformerEnemy
 {
 public:
-	static SkeletalPirate* deserialize(cocos2d::ValueMap* initProperties);
+	static SkeletalPirate* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeySkeletalPirate;
 
 private:
-	SkeletalPirate(cocos2d::ValueMap* initProperties);
+	SkeletalPirate(cocos2d::ValueMap& initProperties);
 	~SkeletalPirate();
 };

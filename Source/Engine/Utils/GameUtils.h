@@ -33,5 +33,5 @@ public:
 	static bool isVisible(cocos2d::Node* node);
 	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool intersectsV2(cocos2d::Node* node, cocos2d::Vec2 mousePos);
-	static bool keyExists(cocos2d::ValueMap* valueMap, std::string key);
+	static bool keyExists(cocos2d::ValueMap& valueMap, std::string key);
 };

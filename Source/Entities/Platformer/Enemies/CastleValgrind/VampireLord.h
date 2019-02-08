@@ -10,11 +10,11 @@
 class VampireLord : public PlatformerEnemy
 {
 public:
-	static VampireLord* deserialize(cocos2d::ValueMap* initProperties);
+	static VampireLord* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyVampireLord;
 
 private:
-	VampireLord(cocos2d::ValueMap* initProperties);
+	VampireLord(cocos2d::ValueMap& initProperties);
 	~VampireLord();
 };

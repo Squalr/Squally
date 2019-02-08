@@ -8,7 +8,7 @@
 
 const std::string EvilEye::MapKeyEvilEye = "evil-eye";
 
-EvilEye* EvilEye::deserialize(cocos2d::ValueMap* initProperties)
+EvilEye* EvilEye::deserialize(cocos2d::ValueMap& initProperties)
 {
 	EvilEye* instance = new EvilEye(initProperties);
 
@@ -17,7 +17,7 @@ EvilEye* EvilEye::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-EvilEye::EvilEye(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+EvilEye::EvilEye(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_EvilEye_Animations,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
 	PlatformerCollisionType::Enemy,

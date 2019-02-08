@@ -10,11 +10,11 @@
 class Fraya : public NpcBase
 {
 public:
-	static Fraya* deserialize(cocos2d::ValueMap* initProperties);
+	static Fraya* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyFraya;
 
 private:
-	Fraya(cocos2d::ValueMap* initProperties);
+	Fraya(cocos2d::ValueMap& initProperties);
 	~Fraya();
 };

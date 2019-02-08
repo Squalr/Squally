@@ -8,7 +8,7 @@
 
 const std::string Mermaid::MapKeyMermaid = "mermaid";
 
-Mermaid* Mermaid::deserialize(cocos2d::ValueMap* initProperties)
+Mermaid* Mermaid::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Mermaid* instance = new Mermaid(initProperties);
 
@@ -17,7 +17,7 @@ Mermaid* Mermaid::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Mermaid::Mermaid(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+Mermaid::Mermaid(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
 	PlatformerCollisionType::Enemy,

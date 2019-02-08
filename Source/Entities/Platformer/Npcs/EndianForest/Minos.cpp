@@ -8,7 +8,7 @@
 
 const std::string Minos::MapKeyMinos = "minos";
 
-Minos* Minos::deserialize(cocos2d::ValueMap* initProperties)
+Minos* Minos::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Minos* instance = new Minos(initProperties);
 
@@ -17,7 +17,7 @@ Minos* Minos::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Minos::Minos(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Minos::Minos(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Minos_Animations,
 	EntityResources::Npcs_EndianForest_Minos_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

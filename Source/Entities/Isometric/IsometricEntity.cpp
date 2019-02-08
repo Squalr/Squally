@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResource, float scale, Vec2 offset, Size size) : HackableObject(initProperties)
+IsometricEntity::IsometricEntity(ValueMap& initProperties, std::string scmlResource, float scale, Vec2 offset, Size size) : HackableObject(initProperties)
 {
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
@@ -20,11 +20,8 @@ IsometricEntity::IsometricEntity(ValueMap* initProperties, std::string scmlResou
 	this->animationNode->setPosition(offset * scale);
 
 	// Update width to be serialized
-	if (this->properties != nullptr)
-	{
-		(*this->properties)[IsometricEntity::MapKeyWidth] = size.width * scale;
-		(*this->properties)[IsometricEntity::MapKeyHeight] = size.height * scale;
-	}
+	this->properties[IsometricEntity::MapKeyWidth] = size.width * scale;
+	this->properties[IsometricEntity::MapKeyHeight] = size.height * scale;
 
 	this->addChild(this->animationNode);
 }

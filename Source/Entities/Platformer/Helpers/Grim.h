@@ -10,11 +10,11 @@
 class Grim : public PlatformerEntity
 {
 public:
-	static Grim* deserialize(cocos2d::ValueMap* initProperties);
+	static Grim* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyGrim;
 
 private:
-	Grim(cocos2d::ValueMap* initProperties);
+	Grim(cocos2d::ValueMap& initProperties);
 	~Grim();
 };

@@ -8,7 +8,7 @@
 
 const std::string LavaGolem::MapKeyLavaGolem = "lava-golem";
 
-LavaGolem* LavaGolem::deserialize(cocos2d::ValueMap* initProperties)
+LavaGolem* LavaGolem::deserialize(cocos2d::ValueMap& initProperties)
 {
 	LavaGolem* instance = new LavaGolem(initProperties);
 
@@ -17,7 +17,7 @@ LavaGolem* LavaGolem::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-LavaGolem::LavaGolem(cocos2d::ValueMap* initProperties) : PlatformerEnemy(initProperties,
+LavaGolem::LavaGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,
 	PlatformerCollisionType::Enemy,

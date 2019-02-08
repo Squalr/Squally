@@ -8,7 +8,7 @@
 
 const std::string Thion::MapKeyThion = "thion";
 
-Thion* Thion::deserialize(cocos2d::ValueMap* initProperties)
+Thion* Thion::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Thion* instance = new Thion(initProperties);
 
@@ -17,7 +17,7 @@ Thion* Thion::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Thion::Thion(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Thion::Thion(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	EntityResources::Npcs_LambdaCrypts_Thion_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

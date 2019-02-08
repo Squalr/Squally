@@ -10,11 +10,11 @@
 class Irmik : public NpcBase
 {
 public:
-	static Irmik* deserialize(cocos2d::ValueMap* initProperties);
+	static Irmik* deserialize(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyIrmik;
 
 private:
-	Irmik(cocos2d::ValueMap* initProperties);
+	Irmik(cocos2d::ValueMap& initProperties);
 	~Irmik();
 };

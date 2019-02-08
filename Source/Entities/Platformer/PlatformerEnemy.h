@@ -15,7 +15,7 @@ public:
 	static const std::string MapKeyAlly3;
 
 protected:
-	PlatformerEnemy(cocos2d::ValueMap* initProperties,
+	PlatformerEnemy(cocos2d::ValueMap& initProperties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,

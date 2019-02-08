@@ -8,7 +8,7 @@
 
 const std::string Fraya::MapKeyFraya = "fraya";
 
-Fraya* Fraya::deserialize(cocos2d::ValueMap* initProperties)
+Fraya* Fraya::deserialize(cocos2d::ValueMap& initProperties)
 {
 	Fraya* instance = new Fraya(initProperties);
 
@@ -17,7 +17,7 @@ Fraya* Fraya::deserialize(cocos2d::ValueMap* initProperties)
 	return instance;
 }
 
-Fraya::Fraya(cocos2d::ValueMap* initProperties) : NpcBase(initProperties,
+Fraya::Fraya(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,
 	PlatformerCollisionType::FriendlyNpc,

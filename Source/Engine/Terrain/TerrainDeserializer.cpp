@@ -34,11 +34,11 @@ void TerrainDeserializer::onDeserializationRequest(DeserializationEvents::Object
 {
 	if (args->typeName == TerrainObject::MapKeyTypeTerrain)
 	{
-		if (GameUtils::keyExists(&args->properties, TerrainObject::MapKeyTypeTexture))
+		if (GameUtils::keyExists(args->properties, TerrainObject::MapKeyTypeTexture))
 		{
 			if (args->properties[TerrainObject::MapKeyTypeTexture].asString() == this->terrainData.textureMapKeyValue)
 			{
-				TerrainObject* terrainObject = TerrainObject::deserialize(&args->properties, this->terrainData);
+				TerrainObject* terrainObject = TerrainObject::deserialize(args->properties, this->terrainData);
 
 				// Fire an event indicating successful deserialization
 				args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(terrainObject));
