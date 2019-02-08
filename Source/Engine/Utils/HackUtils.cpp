@@ -6,9 +6,9 @@
 #include <sstream>
 
 #include <asmjit/asmjit.h>
-#include "udis86.h"
 
 #include "Engine/asmtk/asmtk.h"
+#include "Engine/libudis86/udis86.h"
 #include "Engine/Utils/LogUtils.h"
 
 #include "Strings/Hacking/CodeEditor/Errors/AlreadyInitialized.h"

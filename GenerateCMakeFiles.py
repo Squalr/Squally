@@ -27,7 +27,7 @@ def generateCmakeFile():
 			pathStr = join(relpath(root, sourcePath), filename).replace("\\", "/").lstrip(".").lstrip("/")
 			
 			print(pathStr)
-			if filename.lower().endswith("cpp"):
+			if filename.lower().endswith("cpp") or filename.lower().endswith("c"):
 				cppFiles.append(pathStr)
 				continue
 			if filename.lower().endswith("h"):

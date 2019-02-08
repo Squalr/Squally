@@ -29,7 +29,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
     # vcpkg resources
     asmjit::asmjit
-    udis86::udis86
     tinyxml2::tinyxml2
     RapidJSON::RapidJSON
     CURL::libcurl
