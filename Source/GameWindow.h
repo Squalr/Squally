@@ -1,7 +1,14 @@
 #pragma once
-#include <string>
 
 #include "cocos/platform/CCApplication.h"
+
+namespace cocos2d
+{ 
+	class GLViewImpl;
+}
+
+class GlobalNode;
+class LocalizedString;
 
 /**
 @brief The cocos2d Application.
@@ -37,5 +44,7 @@ public:
 
 private:
 	typedef cocos2d::Application super;
-	static const std::string GameWindowTitle;
+	GlobalNode* gameWindowTitleContainer;
+	LocalizedString* gameWindowTitle;
+	cocos2d::GLViewImpl* glView;
 };

@@ -1,5 +1,7 @@
 #include "GameWindow.h"
 
+#include <GLFW/glfw3.h>
+
 #include "cocos/audio/include/AudioEngine.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
@@ -9,17 +11,36 @@
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/GlobalNode.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Menus/Title/TitleScreen.h"
 
+#include "Strings/Game/Squally.h"
+
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;
 
-const std::string GameWindow::GameWindowTitle = "Squally";
-
 GameWindow::GameWindow()
 {
+	this->gameWindowTitleContainer = GlobalNode::create();
+	this->gameWindowTitle = Strings::Game_Squally::create();
+	this->glView = nullptr;
+
+	// Listen for locale change events and update the window title
+	this->gameWindowTitle->setOnStringUpdateCallback([=](LocalizedString* newString)
+	{
+		if (this->glView != nullptr)
+		{
+			this->glView->setViewName(newString->getString());
+			glfwSetWindowTitle(this->glView->getWindow(), newString->getString().c_str());
+		}
+	});
+
+	// The string needs to be in a global node so that it can utilize the cocos event system
+	this->gameWindowTitleContainer->addChild(this->gameWindowTitle);
+	GlobalDirector::getInstance()->registerGlobalNode(this->gameWindowTitleContainer);
 }
 
 GameWindow::~GameWindow()
@@ -48,24 +69,21 @@ bool GameWindow::applicationDidFinishLaunching()
 		return false;
 	}
 
-	Director* director = Director::getInstance();
-	GLViewImpl* glView;
-
 	cocos2d::Size resolutionSize = ConfigManager::getResolutionSize();
 
 	if (ConfigManager::getIsFullScreen())
 	{
-		glView = GLViewImpl::createWithFullScreen(GameWindow::GameWindowTitle);
-		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
+		this->glView = GLViewImpl::createWithFullScreen(this->gameWindowTitle->getString());
+		this->glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 	else
 	{
-		glView = GLViewImpl::createWithRect(GameWindow::GameWindowTitle, cocos2d::Rect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
-		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
+		this->glView = GLViewImpl::createWithRect(this->gameWindowTitle->getString(), cocos2d::Rect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
+		this->glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 	
-	glView->setCursorVisible(false);
-	director->setOpenGLView(glView);
+	this->glView->setCursorVisible(false);
+	Director::getInstance()->setOpenGLView(this->glView);
 
 	// Initialize the game
 	Bootstrapper::initialize();

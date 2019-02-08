@@ -177,7 +177,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 			hackable->getIconResource(),
 			nextDataIconPosition,
 			currentAngle,
-			hackable->getName(), 
+			hackable->getName()->clone(), 
 			[=]() { this->onHackableAttributeEdit(hackable); }
 		);
 
