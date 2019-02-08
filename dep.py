@@ -19,17 +19,29 @@ def main():
 
     # Parse args
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', nargs='+')
+    parser.add_argument('command', nargs='+', help="accepted commands: init, update, search, install")
     parser.add_argument("-c", "--common", help="operation operates on the common set", action="store_true")
     parser.add_argument("-t", "--triplet", help="vcpkg triplet (use vcpkg default is not specified", default="")
-
-    args = parser.parse_args()
+	
+    try:
+    	args = parser.parse_args()
+    except:
+        parser.print_help()
+        return 0
+		
+    if len(args.command) <= 0:
+        parser.print_help()
+        return 0
 
     # Command
     if args.command[0] == "init":
         init(args.triplet)
     
     elif args.command[0] == "install":
+        if len(args.command) <= 1:
+            print("please specify a package to install")
+            parser.print_help()
+            return 0
         install(args.command[1], args.common, args.triplet)
 
     elif args.command[0] == "search":
@@ -37,6 +49,9 @@ def main():
 
     elif args.command[0] == "update":
         update(args.triplet)
+	
+    else:
+        parser.print_help()
 
     return 0
 
@@ -52,12 +67,7 @@ def bootstrap():
 
     # Windows
     elif _platform == "win32":
-        p = Popen(["./vcpkg/bootstrap-vcpkg.bat"], bufsize=1)
-
-    # Windows 64-bit 
-    elif _platform == "win64":
-        p = Popen(["./vcpkg/bootstrap-vcpkg.bat"], bufsize=1)
-    p.wait()
+        p = Popen(".\\vcpkg\\bootstrap-vcpkg.bat", shell=True, bufsize=1)
 
 def init(triplet=""):
     bootstrap()
