@@ -13,15 +13,8 @@ namespace cocos2d
 class DeserializationEvents
 {
 public:
-	// Forward declarations
-	struct LayerDeserializationArgs;
-	struct ObjectDeserializationArgs;
-	struct DeserializationMapMeta;
-	struct LayerDeserializationRequestArgs;
-	struct ObjectDeserializationRequestArgs;
-
-	static void TriggerRequestLayerDeserialize(LayerDeserializationRequestArgs args);
-	static void TriggerRequestObjectDeserialize(ObjectDeserializationRequestArgs args);
+	static const std::string RequestLayerDeserializeEvent;
+	static const std::string RequestObjectDeserializeEvent;
 
 	struct LayerDeserializationArgs
 	{
@@ -45,10 +38,11 @@ public:
 	// Additional info used to help layer deserialization
 	struct DeserializationMapMeta
 	{
+		std::string mapIdentifier;
 		cocos2d::Size mapSize;
 		bool isIsometric;
 
-		DeserializationMapMeta(cocos2d::Size mapSize, bool isIsometric) : mapSize(mapSize), isIsometric(isIsometric)
+		DeserializationMapMeta(std::string mapIdentifier, cocos2d::Size mapSize, bool isIsometric) : mapIdentifier(mapIdentifier), mapSize(mapSize), isIsometric(isIsometric)
 		{
 		}
 	};
@@ -85,6 +79,6 @@ public:
 		}
 	};
 
-	static const std::string RequestLayerDeserializeEvent;
-	static const std::string RequestObjectDeserializeEvent;
+	static void TriggerRequestLayerDeserialize(LayerDeserializationRequestArgs args);
+	static void TriggerRequestObjectDeserialize(ObjectDeserializationRequestArgs args);
 };

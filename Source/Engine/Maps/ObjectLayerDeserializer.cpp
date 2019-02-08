@@ -84,6 +84,7 @@ void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::La
 			object[SerializableObject::MapKeyMetaIsIsometric] = args->mapMeta.isIsometric;
 			object[SerializableObject::MapKeyMetaMapWidth] = args->mapMeta.mapSize.width;
 			object[SerializableObject::MapKeyMetaMapHeight] = args->mapMeta.mapSize.height;
+			object[SerializableObject::MapKeyMetaMapIdentifier] = args->mapMeta.mapIdentifier;
 
 			if (!GameUtils::keyExists(object, SerializableObject::MapKeyType))
 			{

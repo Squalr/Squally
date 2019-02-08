@@ -119,6 +119,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 		DeserializationEvents::TriggerRequestLayerDeserialize(DeserializationEvents::LayerDeserializationRequestArgs(
 			*it,
 			DeserializationEvents::DeserializationMapMeta(
+				mapFileName,
 				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
 				mapRaw->getMapOrientation() == MapOrientation::Isometric
 			),
