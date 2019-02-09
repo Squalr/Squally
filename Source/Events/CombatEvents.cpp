@@ -11,6 +11,9 @@ const std::string CombatEvents::EventSelectCastTarget = "EVENT_SELECT_CAST_TARGE
 const std::string CombatEvents::EventPauseTimeline = "EVENT_PAUSE_TIMELINE"; 
 const std::string CombatEvents::EventResumeTimeline = "EVENT_RESUME_TIMELINE";
 const std::string CombatEvents::EventDamageDelt = "EVENT_DAMAGE_DELT";
+const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_FINISHED";
+const std::string CombatEvents::EventGiveRewards = "EVENT_GIVE_REWARDS";
+const std::string CombatEvents::EventReturnToMap = "EVENT_RETURN_TO_MAP";
 
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
@@ -55,5 +58,27 @@ void CombatEvents::TriggerDamageDelt(DamageDeltArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventDamageDelt,
 		&args
+	);
+}
+
+void CombatEvents::TriggerCombatFinished(CombatFinishedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventCombatFinished,
+		&args
+	);
+}
+
+void CombatEvents::TriggerGiveRewards()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventGiveRewards
+	);
+}
+
+void CombatEvents::TriggerReturnToMap()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventReturnToMap
 	);
 }

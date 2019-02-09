@@ -5,6 +5,7 @@
 class CombatHud;
 class ChoicesMenu;
 class PlatformerEntity;
+class RewardsMenu;
 class TargetSelectionMenu;
 class TextOverlays;
 class Timeline;
@@ -34,11 +35,13 @@ private:
 	ChoicesMenu* choicesMenu;
 	CombatHud* combatHud;
 	TextOverlays* textOverlays;
+	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
 	std::vector<PlatformerEntity*> playerEntities;
 	std::vector<PlatformerEntity*> enemyEntities;
+	std::string enemyIdentifier;
 
 	static CombatMap* instance;
 };

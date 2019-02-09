@@ -262,7 +262,6 @@
    <properties>
     <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
-    <property name="ally-3" value="orc-bomber"/>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>

@@ -62,6 +62,7 @@ void Timeline::onEnter()
 
 	this->timelineEntries.clear();
 	this->isTimelinePaused = false;
+	this->isCombatComplete = false;
 	this->timelineEntryAwaitingUserAction = nullptr;
 
 	this->scheduleUpdate();
@@ -138,7 +139,62 @@ void Timeline::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->isTimelinePaused)
+	this->checkCombatComplete();
+	this->updateTimeline(dt);
+}
+
+void Timeline::checkCombatComplete()
+{
+	if (isCombatComplete)
+	{
+		return;
+	}
+
+	bool allEnemiesDead = true;
+	bool allPlayersDead = true;
+
+	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+	{
+		PlatformerEntity* entity = *it;
+
+		allEnemiesDead &= entity->isDead();
+	}
+
+	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	{
+		PlatformerEntity* entity = *it;
+
+		allPlayersDead &= entity->isDead();
+	}
+
+	if (allEnemiesDead)
+	{
+		this->isCombatComplete = true;
+		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
+	}
+	else if (allPlayersDead)
+	{
+		this->isCombatComplete = true;
+		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(false));
+	}
+}
+
+void Timeline::updateTimeline(float dt)
+{
+	// Remove dead entities
+	this->timelineEntries.erase(std::remove_if(this->timelineEntries.begin(), this->timelineEntries.end(), [=](TimelineEntry* entry)
+	{
+		if (entry->getEntity()->isDead())
+		{
+			// TODO: Make timeline entry grayed out or something
+
+			return true;
+		}
+
+		return false;
+	}), this->timelineEntries.end());
+
+	if (!this->isTimelinePaused && !isCombatComplete)
 	{
 		// Update all timeline entries
 		for (auto it = this->timelineEntries.begin(); it != this->timelineEntries.end(); it++)

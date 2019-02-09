@@ -30,6 +30,9 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	void checkCombatComplete();
+	void updateTimeline(float dt);
+
 	CProgressBar* swordFill;
 	cocos2d::Sprite* swordTop;
 	cocos2d::Node* timelineNode;
@@ -41,6 +44,7 @@ private:
 
 	float timelineWidth;
 	bool isTimelinePaused;
+	bool isCombatComplete;
 	TimelineEntry* timelineEntryAwaitingUserAction;
 
 	static const float TimelineSpeed;

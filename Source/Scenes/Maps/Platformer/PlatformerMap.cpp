@@ -6,6 +6,7 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Maps/SerializableMap.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -56,6 +57,7 @@ void PlatformerMap::onEnter()
 
 	CameraTrackingData trackingData = CameraTrackingData(Squally::getInstance(), Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData);
+	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 
 	this->scheduleUpdate();
 }

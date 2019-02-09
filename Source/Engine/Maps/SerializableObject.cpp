@@ -250,6 +250,21 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 	parentElement->LinkEndChild(objectElement);
 }
 
+void SerializableObject::onObjectStateLoad(cocos2d::ValueMap saveProperties)
+{
+	this->saveProperties = saveProperties;
+}
+
+void SerializableObject::saveAnonymousObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
+{
+
+}
+
+void SerializableObject::saveObjectState(std::string key, cocos2d::Value value)
+{
+	this->saveProperties[key] = value;
+}
+
 bool SerializableObject::containsAttributes()
 {
 	for (auto it = SerializableObject::AttributeKeys.begin(); it != SerializableObject::AttributeKeys.end(); it++)

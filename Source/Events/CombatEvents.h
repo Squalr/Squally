@@ -13,6 +13,9 @@ public:
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
 	static const std::string EventDamageDelt;
+	static const std::string EventCombatFinished;
+	static const std::string EventGiveRewards;
+	static const std::string EventReturnToMap;
 
 	struct SpawnArgs
 	{
@@ -65,10 +68,22 @@ public:
 		}
 	};
 
+	struct CombatFinishedArgs
+	{
+		bool playerVictory;
+
+		CombatFinishedArgs(bool playerVictory) : playerVictory(playerVictory)
+		{
+		}
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerSelectCastTarget(CastTargetArgs args);
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerDamageDelt(DamageDeltArgs args);
+	static void TriggerCombatFinished(CombatFinishedArgs args);
+	static void TriggerGiveRewards();
+	static void TriggerReturnToMap();
 };
