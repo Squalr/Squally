@@ -1,7 +1,10 @@
 #include "PlatformerEnemy.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -25,6 +28,8 @@ PlatformerEnemy::PlatformerEnemy(
 {
 	this->battleMapResource = "";
 	this->combatEntityList = std::vector<std::string>();
+	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);
+	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 
 	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyBattleMap))
 	{
@@ -47,10 +52,57 @@ PlatformerEnemy::PlatformerEnemy(
 	{
 		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly3).asString());
 	}
+
+	this->resurrectButton->setVisible(false);
+	this->killButton->setVisible(false);
+
+	this->addChild(this->resurrectButton);
+	this->addChild(this->killButton);
 }
 
 PlatformerEnemy::~PlatformerEnemy()
 {
+}
+
+void PlatformerEnemy::onDeveloperModeEnable()
+{
+	super::onDeveloperModeEnable();
+
+	this->resurrectButton->setVisible(true);
+	this->killButton->setVisible(true);
+}
+
+void PlatformerEnemy::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	this->resurrectButton->setVisible(false);
+	this->killButton->setVisible(false);
+}
+
+void PlatformerEnemy::initializePositions()
+{
+	super::initializePositions();
+
+	this->resurrectButton->setPosition(Vec2(-48.0f, this->getEntitySize().height + 32.0f));
+	this->killButton->setPosition(Vec2(48.0f, this->getEntitySize().height + 32.0f));
+}
+
+void PlatformerEnemy::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->resurrectButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
+		this->health = std::max(this->getMaxHealth(), 1);
+	});
+
+	this->killButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+		this->health = 0;
+	});
 }
 
 std::string PlatformerEnemy::getBattleMapResource()

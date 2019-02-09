@@ -17,7 +17,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Menus/Title/TitleScreen.h"
 
-#include "Strings/Game/Squally.h"
+#include "Strings/Generics/Squally.h"
 
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;
@@ -25,7 +25,7 @@ using namespace cocos2d::cocos_experimental;
 GameWindow::GameWindow()
 {
 	this->gameWindowTitleContainer = GlobalNode::create();
-	this->gameWindowTitle = Strings::Game_Squally::create();
+	this->gameWindowTitle = Strings::Generics_Squally::create();
 	this->glView = nullptr;
 
 	// Listen for locale change events and update the window title
