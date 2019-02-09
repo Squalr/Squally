@@ -23,7 +23,7 @@ public:
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, cocos2d::Size mapUnitSize,
 			cocos2d::Size mapTileSize);
 
-	static void saveAnonymousObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
+	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
 
 	static const std::string MapKeyId;
@@ -57,9 +57,12 @@ public:
 protected:
 	SerializableObject(cocos2d::ValueMap& initProperties);
 	virtual ~SerializableObject();
+	void onEnter() override;
 
-	virtual void onObjectStateLoad(cocos2d::ValueMap saveProperties);
 	void saveObjectState(std::string key, cocos2d::Value value);
+	cocos2d::Value& getObjectStateOrDefault(std::string key, cocos2d::Value& defaultValue);
+	void loadObjectState();
+	virtual void onObjectStateLoaded();
 
 	cocos2d::ValueMap properties;
 

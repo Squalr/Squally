@@ -149,6 +149,7 @@ void PlatformerEntity::update(float dt)
 
 	if (this->isDead())
 	{
+		this->setVelocity(Vec2::ZERO);
 		return;
 	}
 
@@ -165,7 +166,6 @@ void PlatformerEntity::update(float dt)
 		velocity.x *= PlatformerEntity::airDragFactor;
 	}
 
-	// Gravity
 	if (this->movement.y > 0.0f && this->isOnGround())
 	{
 		this->groundCollisions.clear();

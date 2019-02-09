@@ -9,6 +9,7 @@ public:
 	std::string getBattleMapResource();
 	std::vector<std::string> getCombatEntityList();
 
+	static const std::string SaveKeyIsDead;
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyAlly1;
 	static const std::string MapKeyAlly2;
@@ -24,8 +25,9 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial);
-
 	~PlatformerEnemy();
+
+	void onObjectStateLoaded() override;
 
 	std::string battleMapResource;
 	std::vector<std::string> combatEntityList;

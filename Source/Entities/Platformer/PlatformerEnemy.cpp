@@ -1,9 +1,11 @@
 #include "PlatformerEnemy.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
+const std::string PlatformerEnemy::SaveKeyIsDead = "is_dead";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
 const std::string PlatformerEnemy::MapKeyAlly1 = "ally-1";
 const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
@@ -64,4 +66,15 @@ std::string PlatformerEnemy::getBattleMapResource()
 std::vector<std::string> PlatformerEnemy::getCombatEntityList()
 {
 	return this->combatEntityList;
+}
+
+void PlatformerEnemy::onObjectStateLoaded()
+{
+	super::onObjectStateLoaded();
+
+	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
+	{
+		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+		this->health = 0;
+	}
 }
