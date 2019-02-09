@@ -11,6 +11,7 @@
 #include "Engine/Maps/SerializableObject.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Events/CombatEvents.h"
@@ -107,6 +108,7 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* args)
 	{
+		PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 		CombatEvents::TriggerGiveRewards();
 	}));
 

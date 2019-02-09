@@ -74,7 +74,7 @@ void Squally::initializeCollisionEvents()
 	{
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other);
 
-		if (enemy != nullptr && enemy->getBattleMapResource() != "")
+		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
 		{
 			// TODO: First strike detection
 			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(true, enemy->getUniqueIdentifier(), enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getCombatEntityList()));

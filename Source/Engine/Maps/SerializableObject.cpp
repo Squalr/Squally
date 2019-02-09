@@ -4,6 +4,7 @@
 
 #include <tinyxml2.h>
 
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -133,6 +134,13 @@ SerializableObject::~SerializableObject()
 {
 }
 
+void SerializableObject::onEnter()
+{
+	super::onEnter();
+
+	this->loadObjectState();
+}
+
 std::string SerializableObject::getUniqueIdentifier()
 {
 	return this->uniqueIdentifier;
@@ -250,19 +258,36 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 	parentElement->LinkEndChild(objectElement);
 }
 
-void SerializableObject::onObjectStateLoad(cocos2d::ValueMap saveProperties)
+void SerializableObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
-	this->saveProperties = saveProperties;
-}
+	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
 
-void SerializableObject::saveAnonymousObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
-{
+	saveData[key] = value;
 
+	SaveManager::saveProfileData(uniqueIdentifier, Value(saveData));
 }
 
 void SerializableObject::saveObjectState(std::string key, cocos2d::Value value)
 {
 	this->saveProperties[key] = value;
+
+	SaveManager::saveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
+}
+
+Value& SerializableObject::getObjectStateOrDefault(std::string key, Value& defaultValue)
+{
+	return GameUtils::getKeyOrDefault(this->saveProperties, key, defaultValue);
+}
+
+void SerializableObject::loadObjectState()
+{
+	this->saveProperties = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
+
+	this->onObjectStateLoaded();
+}
+
+void SerializableObject::onObjectStateLoaded()
+{
 }
 
 bool SerializableObject::containsAttributes()
