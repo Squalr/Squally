@@ -2,6 +2,8 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 
+class ClickableNode;
+
 // Base class for enemies
 class PlatformerEnemy : public PlatformerEntity
 {
@@ -27,6 +29,10 @@ protected:
 		int baseSpecial);
 	~PlatformerEnemy();
 
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onObjectStateLoaded() override;
 
 	std::string battleMapResource;
@@ -34,4 +40,7 @@ protected:
 
 private:
 	typedef PlatformerEntity super;
+
+	ClickableNode* resurrectButton;
+	ClickableNode* killButton;
 };

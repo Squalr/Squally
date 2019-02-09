@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Game_Squally : public LocalizedString
+	class Generics_Squally : public LocalizedString
 	{
 	public:
-		static Game_Squally* create();
+		static Generics_Squally* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Game_Squally();
-		~Game_Squally();
+		Generics_Squally();
+		~Generics_Squally();
 	};
 }
