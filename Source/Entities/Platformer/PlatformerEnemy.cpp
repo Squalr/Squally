@@ -22,26 +22,28 @@ PlatformerEnemy::PlatformerEnemy(
 	: super(initProperties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
 {
 	this->battleMapResource = "";
-	this->allyResources = std::vector<std::string>();
+	this->combatEntityList = std::vector<std::string>();
 
 	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyBattleMap))
 	{
 		this->battleMapResource = initProperties.at(PlatformerEnemy::MapKeyBattleMap).asString();
 	}
 
+	this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyName).asString());
+
 	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly1))
 	{
-		this->allyResources.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly1).asString());
+		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly1).asString());
 	}
 
 	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly2))
 	{
-		this->allyResources.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly2).asString());
+		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly2).asString());
 	}
 
 	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly3))
 	{
-		this->allyResources.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly3).asString());
+		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly3).asString());
 	}
 }
 
@@ -59,7 +61,7 @@ std::string PlatformerEnemy::getBattleMapResource()
 	return "Platformer/Maps/" + this->battleMapResource + ".tmx";
 }
 
-std::vector<std::string> PlatformerEnemy::getAllyResources()
+std::vector<std::string> PlatformerEnemy::getCombatEntityList()
 {
-	return this->allyResources;
+	return this->combatEntityList;
 }

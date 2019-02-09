@@ -7,7 +7,7 @@ class PlatformerEnemy : public PlatformerEntity
 {
 public:
 	std::string getBattleMapResource();
-	std::vector<std::string> getAllyResources();
+	std::vector<std::string> getCombatEntityList();
 
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyAlly1;
@@ -28,7 +28,7 @@ protected:
 	~PlatformerEnemy();
 
 	std::string battleMapResource;
-	std::vector<std::string> allyResources;
+	std::vector<std::string> combatEntityList;
 
 private:
 	typedef PlatformerEntity super;

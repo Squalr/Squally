@@ -16,6 +16,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/Combat/ChoicesMenu.h"
+#include "Scenes/Maps/Platformer/Combat/RewardsMenu.h"
 #include "Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h"
 #include "Scenes/Maps/Platformer/Combat/TextOverlays.h"
 #include "Scenes/Maps/Platformer/Combat/Timeline.h"
@@ -50,6 +51,7 @@ CombatMap::CombatMap()
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->rewardsMenu = RewardsMenu::create();
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
@@ -58,6 +60,7 @@ CombatMap::CombatMap()
 	this->addChild(this->combatHud);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->rewardsMenu);
 }
 
 CombatMap::~CombatMap()
@@ -79,6 +82,7 @@ void CombatMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
 }
@@ -95,9 +99,20 @@ void CombatMap::initializeListeners()
 		{
 			this->loadMap(SerializableMap::deserialize(combatArgs->levelFile));
 			this->setEntityKeys(combatArgs->playerTypes, combatArgs->enemyTypes);
+			this->enemyIdentifier = combatArgs->enemyIdentifier;
 
 			GlobalDirector::loadScene(this);
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* args)
+	{
+		CombatEvents::TriggerGiveRewards();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* args)
+	{
+		NavigationEvents::navigateBack();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)

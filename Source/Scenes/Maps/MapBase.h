@@ -40,6 +40,7 @@ protected:
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
 	Hud* hud;
+	SerializableMap* map;
 
 private:
 	typedef GlobalScene super;
@@ -58,8 +59,6 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;
-
-	SerializableMap* map;
 
 	static bool hackerMode;
 };

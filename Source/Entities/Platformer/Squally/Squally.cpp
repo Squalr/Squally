@@ -77,7 +77,7 @@ void Squally::initializeCollisionEvents()
 		if (enemy != nullptr && enemy->getBattleMapResource() != "")
 		{
 			// TODO: First strike detection
-			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(true, enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getAllyResources()));
+			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(true, enemy->getUniqueIdentifier(), enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getCombatEntityList()));
 		}
 
 		return CollisionResult::DoNothing;
