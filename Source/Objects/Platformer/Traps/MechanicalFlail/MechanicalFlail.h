@@ -20,7 +20,7 @@ public:
 
 protected:
 	MechanicalFlail(cocos2d::ValueMap& initProperties);
-	~MechanicalFlail();
+	virtual ~MechanicalFlail();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

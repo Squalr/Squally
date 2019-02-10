@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	MetalSpikesGenericPreview();
-	~MetalSpikesGenericPreview() = default;
+	virtual ~MetalSpikesGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

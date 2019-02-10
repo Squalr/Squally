@@ -21,7 +21,7 @@ private:
 	typedef HackablePreview super;
 
 	MetalSpikesUpdateTimerPreview();
-	~MetalSpikesUpdateTimerPreview() = default;
+	virtual	~MetalSpikesUpdateTimerPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

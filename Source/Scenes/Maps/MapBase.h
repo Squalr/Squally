@@ -40,6 +40,8 @@ protected:
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
 	Hud* hud;
+	Hud* menuBackDrop;
+	Hud* menuHud;
 	SerializableMap* map;
 
 private:
@@ -53,7 +55,6 @@ private:
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
-	Hud* menuBackDrop;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;

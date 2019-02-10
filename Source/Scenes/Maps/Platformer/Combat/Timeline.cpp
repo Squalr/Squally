@@ -170,11 +170,13 @@ void Timeline::checkCombatComplete()
 	if (allEnemiesDead)
 	{
 		this->isCombatComplete = true;
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
 	}
 	else if (allPlayersDead)
 	{
 		this->isCombatComplete = true;
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(false));
 	}
 }

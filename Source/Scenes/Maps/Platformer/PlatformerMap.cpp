@@ -5,6 +5,7 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -55,8 +56,15 @@ void PlatformerMap::onEnter()
 {
 	super::onEnter();
 
-	CameraTrackingData trackingData = CameraTrackingData(Squally::getInstance(), Vec2(128.0f, 96.0f));
-	GameCamera::getInstance()->setTarget(trackingData);
+	ObjectEvents::TriggerQueryObject(ObjectEvents::QueryObjectsArgs<Squally>([=](Squally* squally)
+	{
+		this->gameHud->getHackableBar()->setStatsTarget(squally);
+		this->gameHud->getStatsBars()->setStatsTarget(squally);
+
+		CameraTrackingData trackingData = CameraTrackingData(squally, Vec2(128.0f, 96.0f));
+		GameCamera::getInstance()->setTarget(trackingData);
+	}));
+
 	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 
 	this->scheduleUpdate();
@@ -94,7 +102,4 @@ void PlatformerMap::update(float dt)
 void PlatformerMap::loadMap(SerializableMap* levelMap)
 {
 	super::loadMap(levelMap);
-
-	this->gameHud->getHackableBar()->setStatsTarget(Squally::getInstance());
-	this->gameHud->getStatsBars()->setStatsTarget(Squally::getInstance());
 }

@@ -20,7 +20,7 @@ public:
 
 protected:
 	WoodenSpikes(cocos2d::ValueMap& initProperties);
-	~WoodenSpikes();
+	virtual ~WoodenSpikes();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

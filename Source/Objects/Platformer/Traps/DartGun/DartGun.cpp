@@ -9,6 +9,7 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
@@ -127,31 +128,34 @@ Vec2 DartGun::getButtonOffset()
 
 void DartGun::shoot(float dt)
 {
-	Vec2 squallyPos = Squally::getInstance()->getPosition();
-	
-	float rotation = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? M_PI : 0.0f);
-	
-	cannon->setRotation(MathUtils::wrappingNormalize(rotation, 0.0f, 2.0f * M_PI));
-
-	this->timeSinceLastShot += dt;
-
-	Rect bounds = GameUtils::getScreenBounds(this);
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
+	ObjectEvents::TriggerQueryObject(ObjectEvents::QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
-		if (this->timeSinceLastShot > 4.0f)
-		{
-			this->timeSinceLastShot = 0.0f;
+		Vec2 squallyPos = squally->getPosition();
 
-			SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
-				this,
-				Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
-				this->getPosition() + Vec2(0.0f, 64.0f),
-				SpawnEvents::SpawnMethod::Below
-			));
+		float rotation = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? M_PI : 0.0f);
+
+		cannon->setRotation(MathUtils::wrappingNormalize(rotation, 0.0f, 2.0f * M_PI));
+
+		this->timeSinceLastShot += dt;
+
+		Rect bounds = GameUtils::getScreenBounds(this);
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+
+		if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
+		{
+			if (this->timeSinceLastShot > 4.0f)
+			{
+				this->timeSinceLastShot = 0.0f;
+
+				SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+					this,
+					Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
+					this->getPosition() + Vec2(0.0f, 64.0f),
+					SpawnEvents::SpawnMethod::Below
+				));
+			}
 		}
-	}
+	}));
 
 	/*
 	ASM(push EAX);

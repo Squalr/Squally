@@ -11,7 +11,8 @@ class GlobalNode : public SmartNode
 public:
 	static GlobalNode* create();
 
-	virtual ~GlobalNode() = default;
+	GlobalNode();
+	virtual ~GlobalNode();
 
 	void pause() override;
 	virtual void addGlobalEventListener(cocos2d::EventListener* listener);

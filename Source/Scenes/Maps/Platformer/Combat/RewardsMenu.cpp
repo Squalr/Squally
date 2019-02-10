@@ -11,6 +11,7 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Combat/Rewards.h"
 #include "Strings/Menus/Okay.h"
 
 using namespace cocos2d;
@@ -27,6 +28,7 @@ RewardsMenu* RewardsMenu::create()
 RewardsMenu::RewardsMenu()
 {
 	this->rewardsMenu = Sprite::create(UIResources::Combat_RewardsMenu);
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Rewards::create());
 	this->rewardsNode = Node::create();
 
 	LocalizedLabel*	okayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Okay::create());
@@ -34,7 +36,10 @@ RewardsMenu::RewardsMenu()
 
 	this->okayButton = ClickableTextNode::create(okayLabel, okayLabelHover, Sprite::create(UIResources::Menus_Buttons_GenericButton), Sprite::create(UIResources::Menus_Buttons_GenericButtonHover));
 
+	this->titleLabel->enableOutline(Color4B::BLACK, 2);
+
 	this->addChild(this->rewardsMenu);
+	this->addChild(this->titleLabel);
 	this->addChild(this->rewardsNode);
 	this->addChild(this->okayButton);
 }
@@ -52,6 +57,7 @@ void RewardsMenu::initializePositions()
 {
 	super::initializePositions();
 
+	this->titleLabel->setPositionY(392.0f);
 	this->okayButton->setPositionY(-352.0f);
 }
 
@@ -61,7 +67,6 @@ void RewardsMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* args)
 	{
-		this->setVisible(true);
 	}));
 
 	this->okayButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)

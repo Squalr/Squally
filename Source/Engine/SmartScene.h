@@ -25,6 +25,7 @@ public:
 protected:
 	void pause() override;
 	void onEnter() override;
+	void onExit() override;
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
 	bool isDeveloperModeEnabled();

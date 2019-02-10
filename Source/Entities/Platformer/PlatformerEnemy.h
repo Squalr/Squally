@@ -27,7 +27,7 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial);
-	~PlatformerEnemy();
+	virtual ~PlatformerEnemy();
 
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;

@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	WindSetSpeedPreview();
-	~WindSetSpeedPreview() = default;
+	virtual ~WindSetSpeedPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	LaserGenericPreview();
-	~LaserGenericPreview() = default;
+	virtual ~LaserGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

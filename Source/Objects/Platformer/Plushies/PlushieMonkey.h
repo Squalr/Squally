@@ -15,7 +15,7 @@ public:
 
 protected:
 	PlushieMonkey(cocos2d::ValueMap& initProperties);
-	~PlushieMonkey();
+	virtual ~PlushieMonkey();
 
 	void update(float) override;
 	void onEnter() override;

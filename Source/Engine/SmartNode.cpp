@@ -40,6 +40,13 @@ void SmartNode::onEnter()
 	}
 }
 
+void SmartNode::onExit()
+{
+	super::onExit();
+
+	this->removeAllListeners();
+}
+
 void SmartNode::onReenter()
 {
 	super::onReenter();

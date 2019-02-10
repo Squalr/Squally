@@ -18,7 +18,7 @@ private:
 	typedef HackablePreview super;
 
 	HeavenHugGenericPreview();
-	~HeavenHugGenericPreview() = default;
+	virtual ~HeavenHugGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

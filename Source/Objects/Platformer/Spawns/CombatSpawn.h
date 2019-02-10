@@ -21,7 +21,7 @@ public:
 private:
 	typedef SerializableObject super;
 	CombatSpawn(cocos2d::ValueMap& initProperties);
-	~CombatSpawn();
+	virtual ~CombatSpawn();
 
 	void onEnter() override;
 	void initializeListeners() override;

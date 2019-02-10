@@ -20,7 +20,7 @@ public:
 
 protected:
 	SpikeLog(cocos2d::ValueMap& initProperties);
-	~SpikeLog();
+	virtual ~SpikeLog();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

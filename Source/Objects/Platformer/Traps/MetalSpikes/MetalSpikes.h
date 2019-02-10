@@ -20,7 +20,7 @@ public:
 
 protected:
 	MetalSpikes(cocos2d::ValueMap& initProperties);
-	~MetalSpikes();
+	virtual ~MetalSpikes();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

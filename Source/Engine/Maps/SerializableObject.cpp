@@ -1,9 +1,12 @@
 #include "SerializableObject.h"
 
 #include "cocos/base/CCValue.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include <tinyxml2.h>
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -139,6 +142,21 @@ void SerializableObject::onEnter()
 	super::onEnter();
 
 	this->loadObjectState();
+}
+
+void SerializableObject::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
+	{
+		ObjectEvents::QueryObjectsArgs<SerializableObject>* args = static_cast<ObjectEvents::QueryObjectsArgs<SerializableObject>*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			args->tryInvoke(this);
+		}
+	}));
 }
 
 std::string SerializableObject::getUniqueIdentifier()

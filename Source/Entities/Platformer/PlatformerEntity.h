@@ -52,7 +52,7 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial);
-	~PlatformerEntity();
+	virtual ~PlatformerEntity();
 
 	void onEnter() override;
 	void initializePositions() override;

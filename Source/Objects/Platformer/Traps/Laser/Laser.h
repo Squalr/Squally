@@ -21,7 +21,7 @@ public:
 
 protected:
 	Laser(cocos2d::ValueMap& initProperties);
-	~Laser();
+	virtual ~Laser();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

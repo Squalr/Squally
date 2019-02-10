@@ -66,6 +66,13 @@ void SmartScene::onEnter()
 	this->initializeListeners();
 }
 
+void SmartScene::onExit()
+{
+	super::onExit();
+
+	this->removeAllListeners();
+}
+
 void SmartScene::initializePositions()
 {
 }
