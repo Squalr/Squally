@@ -18,7 +18,7 @@ private:
 	typedef HackablePreview super;
 
 	WindGenericPreview();
-	~WindGenericPreview() = default;
+	virtual ~WindGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

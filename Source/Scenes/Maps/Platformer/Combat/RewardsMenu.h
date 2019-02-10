@@ -27,7 +27,7 @@ private:
 	void update(float dt) override;
 
 	cocos2d::Sprite* rewardsMenu;
+	LocalizedLabel* titleLabel;
 	cocos2d::Node* rewardsNode;
-	LocalizedLabel* windowTitle;
 	ClickableTextNode* okayButton;
 };

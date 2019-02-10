@@ -17,7 +17,7 @@ public:
 
 protected:
 	Dart(float rotation, float speed);
-	~Dart();
+	virtual	~Dart();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

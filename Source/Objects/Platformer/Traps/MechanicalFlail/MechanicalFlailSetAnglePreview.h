@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	MechanicalFlailSetAnglePreview();
-	~MechanicalFlailSetAnglePreview() = default;
+	virtual ~MechanicalFlailSetAnglePreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

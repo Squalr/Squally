@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	HeavenHugSetSpeedPreview();
-	~HeavenHugSetSpeedPreview() = default;
+	virtual ~HeavenHugSetSpeedPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

@@ -13,6 +13,14 @@ GlobalHud* GlobalHud::create()
 	return instance;
 }
 
+GlobalHud::GlobalHud()
+{
+}
+
+GlobalHud::~GlobalHud()
+{
+}
+
 void GlobalHud::pause()
 {
 	// Do nothing -- global nodes should not get paused

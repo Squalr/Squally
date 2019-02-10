@@ -13,6 +13,14 @@ GlobalNode* GlobalNode::create()
 	return instance;
 }
 
+GlobalNode::GlobalNode()
+{
+}
+
+GlobalNode::~GlobalNode()
+{
+}
+
 void GlobalNode::pause()
 {
 	// Do nothing -- global nodes should not get paused

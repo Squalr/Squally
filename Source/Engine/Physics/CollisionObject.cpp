@@ -112,7 +112,7 @@ void CollisionObject::update(float dt)
 			pos.y < cameraPosition.y - STOP_PHYSICS_OFFSET.height)
 		{
 			// Bypass setter to force disable physics for this object
-			this->physicsBody->setEnabled(false);
+			//this->physicsBody->setEnabled(false);
 		}
 		else
 		{

@@ -22,7 +22,7 @@ private:
 	typedef HackablePreview super;
 
 	LaserCountDownPreview();
-	~LaserCountDownPreview() = default;
+	virtual ~LaserCountDownPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

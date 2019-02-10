@@ -7,6 +7,9 @@ class GlobalScene : public SmartScene
 public:
 	static GlobalScene* create();
 
+	GlobalScene();
+	virtual ~GlobalScene();
+
 	virtual void addGlobalEventListener(cocos2d::EventListener* listener);
 
 private:

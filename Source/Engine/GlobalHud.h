@@ -11,7 +11,8 @@ class GlobalHud : public Hud
 public:
 	static GlobalHud* create();
 
-	virtual ~GlobalHud() = default;
+	GlobalHud();
+	virtual ~GlobalHud();
 
 	void pause() override;
 	virtual void addGlobalEventListener(cocos2d::EventListener* listener);

@@ -36,8 +36,9 @@ MapBase::MapBase()
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
-	this->menuBackDrop = Hud::create();
 	this->hud = Hud::create();
+	this->menuBackDrop = Hud::create();
+	this->menuHud = Hud::create();
 
 	this->hackerModeGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
@@ -53,14 +54,15 @@ MapBase::MapBase()
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
+	this->menuHud->addChild(this->pauseMenu);
+	this->menuHud->addChild(this->optionsMenu);
+	this->menuHud->addChild(this->confirmationMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->menuBackDrop);
-	this->addChild(this->pauseMenu);
-	this->addChild(this->optionsMenu);
-	this->addChild(this->confirmationMenu);
+	this->addChild(this->menuHud);
 }
 
 MapBase::~MapBase()

@@ -19,7 +19,7 @@ public:
 
 protected:
 	HeavenHug(cocos2d::ValueMap& initProperties);
-	~HeavenHug();
+	virtual ~HeavenHug();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

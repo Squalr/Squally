@@ -84,8 +84,8 @@ void PlatformerEnemy::initializePositions()
 {
 	super::initializePositions();
 
-	this->resurrectButton->setPosition(Vec2(-48.0f, this->getEntitySize().height + 32.0f));
-	this->killButton->setPosition(Vec2(48.0f, this->getEntitySize().height + 32.0f));
+	this->killButton->setPosition(Vec2(-64.0f, this->getEntitySize().height + 32.0f));
+	this->resurrectButton->setPosition(Vec2(64.0f, this->getEntitySize().height + 32.0f));
 }
 
 void PlatformerEnemy::initializeListeners()

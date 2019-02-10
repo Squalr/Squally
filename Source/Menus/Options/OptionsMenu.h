@@ -3,7 +3,7 @@
 
 #include "cocos/base/CCEventKeyboard.h"
 
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -19,7 +19,7 @@ class ClickableNode;
 class ClickableTextNode;
 class VideoTab;
 
-class OptionsMenu : public Hud
+class OptionsMenu : public SmartNode
 {
 public:
 	static OptionsMenu* create();
@@ -31,7 +31,7 @@ protected:
 	~OptionsMenu();
 
 private:
-	typedef Hud super;
+	typedef SmartNode super;
 
 	enum class Tab
 	{

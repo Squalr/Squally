@@ -18,7 +18,7 @@ private:
 	typedef HackablePreview super;
 
 	PendulumBladeGenericPreview();
-	~PendulumBladeGenericPreview() = default;
+	virtual ~PendulumBladeGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

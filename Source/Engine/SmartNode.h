@@ -18,6 +18,7 @@ public:
 
 protected:
 	void onEnter() override;
+	void onExit() override;
 	void onReenter() override; // Called on parent change
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();

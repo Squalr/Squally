@@ -9,7 +9,6 @@
 
 using namespace cocos2d;
 
-Squally* Squally::squallyInstance = nullptr;
 const float Squally::squallyScale = 0.85f;
 const std::string Squally::MapKeySqually = "squally";
 const int Squally::SquallyBaseHealth = 10;
@@ -19,15 +18,9 @@ Squally* Squally::deserialize(ValueMap& initProperties)
 {
 	Squally* instance = new Squally(initProperties);
 
-	Squally::squallyInstance = instance;
 	instance->autorelease();
 	
 	return instance;
-}
-
-Squally* Squally::getInstance()
-{
-	return Squally::squallyInstance;
 }
 
 Squally::Squally(ValueMap& initProperties) : super(initProperties,
@@ -110,21 +103,6 @@ void Squally::initializePositions()
 
 void Squally::registerHackables()
 {
-	//HackableData* hackableDataHealth = HackableData::create("Health", &this->health, &typeid(this->health));
-	//HackableData* hackableDataPositionX = HackableData::create("X Position", &this->position.x, &typeid(this->position.x));
-	//HackableData* hackableDataPositionY = HackableData::create("Y Position", &this->position.y, &typeid(this->position.y));
-
-	//HackableCode* hackableVelocity = HackableCode::create("Take Damage", &this->_displayedColor, 8);
-	//HackableCode* hackableVelocityA = HackableCode::create("Set X Velocity", &this->_actionManager, 4);
-	//HackableCode* hackableVelocityB = HackableCode::create("Set Y Velocity", &this->_scaleX, 7);
-
-	//this->registerData(hackableDataHealth);
-	//this->registerData(hackableDataPositionX);
-	//this->registerData(hackableDataPositionY);
-
-	//this->registerCode(hackableVelocity);
-	//this->registerCode(hackableVelocityA);
-	//this->registerCode(hackableVelocityB);
 }
 
 Vec2 Squally::getButtonOffset()

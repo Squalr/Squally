@@ -19,7 +19,7 @@ public:
 
 protected:
 	PendulumBlade(cocos2d::ValueMap& initProperties);
-	~PendulumBlade();
+	virtual ~PendulumBlade();
 
 	cocos2d::Vec2 getButtonOffset() override;
 

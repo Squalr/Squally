@@ -11,7 +11,7 @@ public:
 protected:
 	typedef HackableObject super;
 	Plushie(cocos2d::ValueMap& initProperties);
-	~Plushie();
+	virtual ~Plushie();
 
 	virtual void registerHackables();
 	cocos2d::Vec2 getButtonOffset() override;

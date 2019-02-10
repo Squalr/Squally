@@ -20,7 +20,7 @@ public:
 private:
 	typedef HackableObject super;
 	Wind(cocos2d::ValueMap& initProperties);
-	~Wind() = default;
+	virtual ~Wind() = default;
 
 	void onEnter() override;
 	void initializePositions() override;

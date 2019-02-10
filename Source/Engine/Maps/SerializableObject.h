@@ -58,6 +58,7 @@ protected:
 	SerializableObject(cocos2d::ValueMap& initProperties);
 	virtual ~SerializableObject();
 	void onEnter() override;
+	void initializeListeners() override;
 
 	void saveObjectState(std::string key, cocos2d::Value value);
 	cocos2d::Value& getObjectStateOrDefault(std::string key, cocos2d::Value& defaultValue);

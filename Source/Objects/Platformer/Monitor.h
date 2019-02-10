@@ -20,7 +20,7 @@ public:
 
 protected:
 	Monitor(cocos2d::ValueMap& initProperties);
-	~Monitor();
+	virtual ~Monitor();
 
 private:
 	typedef HackableObject super;

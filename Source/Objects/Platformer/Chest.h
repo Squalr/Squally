@@ -15,7 +15,7 @@ public:
 protected:
 	typedef SmartNode super;
 	Chest(cocos2d::Node* contentNode);
-	~Chest();
+	virtual ~Chest();
 
 	cocos2d::Node* content;
 	cocos2d::Node* chestOpen;

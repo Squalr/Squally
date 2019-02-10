@@ -17,7 +17,7 @@ public:
 private:
 	typedef SmartNode super;
 	LaserAnimation(float height);
-	~LaserAnimation();
+	virtual	~LaserAnimation();
 
 	void onEnter() override;
 	void initializePositions() override;

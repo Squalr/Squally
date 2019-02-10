@@ -4,7 +4,7 @@
 #include "cocos/base/CCEventKeyboard.h"
 #include "cocos/base/ccTypes.h"
 
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -15,10 +15,10 @@ class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
 
-class PauseMenu : public Hud
+class PauseMenu : public SmartNode
 {
 public:
-	static PauseMenu * create();
+	static PauseMenu* create();
 
 	void setResumeCallback(std::function<void()> resumeClickCallback);
 	void setOptionsCallback(std::function<void()> optionsClickCallback);
@@ -29,7 +29,7 @@ protected:
 	~PauseMenu();
 
 private:
-	typedef Hud super;
+	typedef SmartNode super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

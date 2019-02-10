@@ -21,7 +21,7 @@ private:
 	typedef HackablePreview super;
 
 	SpikeLogSetRotationPreview();
-	~SpikeLogSetRotationPreview() = default;
+	virtual ~SpikeLogSetRotationPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

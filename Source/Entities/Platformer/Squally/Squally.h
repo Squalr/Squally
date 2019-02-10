@@ -13,7 +13,6 @@ class Squally : public PlatformerEntity
 {
 public:
 	static Squally* deserialize(cocos2d::ValueMap& initProperties);
-	static Squally* getInstance();
 
 	static const std::string MapKeySqually;
 	static const int SquallyBaseHealth;
@@ -27,7 +26,7 @@ protected:
 private:
 	typedef PlatformerEntity super;
 	Squally(cocos2d::ValueMap& initProperties);
-	~Squally();
+	virtual ~Squally();
 
 	void registerHackables();
 	void onEnter() override;
@@ -42,5 +41,4 @@ private:
 	CollisionObject* squallyCollision;
 
 	static const float squallyScale;
-	static Squally* squallyInstance;
 };

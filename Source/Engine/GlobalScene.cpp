@@ -13,6 +13,14 @@ GlobalScene* GlobalScene::create()
 	return instance;
 }
 
+GlobalScene::GlobalScene()
+{
+}
+
+GlobalScene::~GlobalScene()
+{
+}
+
 void GlobalScene::addGlobalEventListener(EventListener* listener)
 {
 	if (listener == nullptr)

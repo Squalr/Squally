@@ -25,6 +25,8 @@ HackableBar* HackableBar::create(bool isFrameOnLeft)
 
 HackableBar::HackableBar(bool isFrameOnLeft)
 {
+	this->target = nullptr;
+
 	for (int index = 0; index < HackableBar::RuneCount; index++)
 	{
 		Sprite* emptyRune = Sprite::create(UIResources::HUD_EyeSlot);

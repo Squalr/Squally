@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	SpikeLogGenericPreview();
-	~SpikeLogGenericPreview() = default;
+	virtual ~SpikeLogGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

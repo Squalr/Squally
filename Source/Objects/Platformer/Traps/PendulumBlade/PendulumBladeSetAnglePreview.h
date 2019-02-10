@@ -20,7 +20,7 @@ private:
 	typedef HackablePreview super;
 
 	PendulumBladeSetAnglePreview();
-	~PendulumBladeSetAnglePreview() = default;
+	virtual ~PendulumBladeSetAnglePreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 

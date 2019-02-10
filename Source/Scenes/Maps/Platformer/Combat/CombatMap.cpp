@@ -61,7 +61,7 @@ CombatMap::CombatMap()
 	this->addChild(this->combatHud);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
-	this->hud->addChild(this->rewardsMenu);
+	this->menuHud->addChild(this->rewardsMenu);
 }
 
 CombatMap::~CombatMap()
@@ -71,9 +71,10 @@ CombatMap::~CombatMap()
 void CombatMap::onEnter()
 {
 	MapBase::onEnter();
+	
+	this->rewardsMenu->setVisible(false);
 
 	this->scheduleUpdate();
-
 	this->initializeEntities();
 }
 
@@ -109,6 +110,10 @@ void CombatMap::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* args)
 	{
 		PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
+
+		this->menuBackDrop->setOpacity(196);
+		this->rewardsMenu->setVisible(true);
+
 		CombatEvents::TriggerGiveRewards();
 	}));
 

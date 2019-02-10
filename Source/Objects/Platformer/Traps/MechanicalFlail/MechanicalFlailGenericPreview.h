@@ -18,7 +18,7 @@ private:
 	typedef HackablePreview super;
 
 	MechanicalFlailGenericPreview();
-	~MechanicalFlailGenericPreview() = default;
+	virtual ~MechanicalFlailGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 
