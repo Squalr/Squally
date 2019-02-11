@@ -70,7 +70,7 @@ void SmartScene::onExit()
 {
 	super::onExit();
 
-	this->removeAllListeners();
+	this->removeNonGlobalListeners();
 }
 
 void SmartScene::initializePositions()
@@ -108,6 +108,14 @@ bool SmartScene::isDeveloperModeEnabled()
 void SmartScene::removeAllListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
+}
+
+void SmartScene::removeNonGlobalListeners()
+{
+	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
+	{
+		return !listener->isGlobal();
+	});
 }
 
 void SmartScene::addEventListener(EventListener* listener)

@@ -128,7 +128,7 @@ Vec2 DartGun::getButtonOffset()
 
 void DartGun::shoot(float dt)
 {
-	ObjectEvents::TriggerQueryObject(ObjectEvents::QueryObjectsArgs<Squally>([=](Squally* squally)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
 		Vec2 squallyPos = squally->getPosition();
 

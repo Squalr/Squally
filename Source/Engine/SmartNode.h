@@ -26,6 +26,7 @@ protected:
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
+	virtual void removeNonGlobalListeners();
 	virtual void addEventListener(cocos2d::EventListener* listener);
 	virtual void removeEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);

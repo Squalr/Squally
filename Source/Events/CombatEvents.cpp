@@ -8,6 +8,7 @@ using namespace cocos2d;
 const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_CHANGE_MENU_STATE";
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_SELECT_CAST_TARGET";
+const std::string CombatEvents::EventRequestAIAction = "EVENT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_PAUSE_TIMELINE"; 
 const std::string CombatEvents::EventResumeTimeline = "EVENT_RESUME_TIMELINE";
 const std::string CombatEvents::EventDamageDelt = "EVENT_DAMAGE_DELT";
@@ -35,6 +36,14 @@ void CombatEvents::TriggerSelectCastTarget(CastTargetArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventSelectCastTarget,
+		&args
+	);
+}
+
+void CombatEvents::TriggerRequestAIAction(AIRequestArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventRequestAIAction,
 		&args
 	);
 }

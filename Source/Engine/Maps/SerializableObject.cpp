@@ -150,7 +150,7 @@ void SerializableObject::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::QueryObjectsArgs<SerializableObject>* args = static_cast<ObjectEvents::QueryObjectsArgs<SerializableObject>*>(eventCustom->getUserData());
+		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
