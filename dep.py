@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 ###################################################################################
 # This script will bootstrap vspkg and grab any neccessary dependencies           #
 # Run this script every time you pull                                             #
