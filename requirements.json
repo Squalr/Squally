@@ -18,9 +18,11 @@
         "xxhash",
         "zlib",
         "sqlite3",
-        "chipmunk"
+        "chipmunk",
+        "libudis86"
     ],
-    "darwin": [],
+    "darwin": [
+    ],
     "linux": [
         "fontconfig"
     ],
