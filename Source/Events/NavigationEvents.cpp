@@ -1,6 +1,5 @@
 #include "NavigationEvents.h"
 
-#include "cocos/2d/CCScene.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 

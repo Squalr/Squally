@@ -8,7 +8,6 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/HUD/Hud.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
@@ -56,7 +55,7 @@ void PlatformerMap::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerQueryObject(ObjectEvents::QueryObjectsArgs<Squally>([=](Squally* squally)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
 		this->gameHud->getHackableBar()->setStatsTarget(squally);
 		this->gameHud->getStatsBars()->setStatsTarget(squally);

@@ -9,7 +9,6 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
-#include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -17,6 +16,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Maps/Platformer/Combat/ChoicesMenu.h"
+#include "Scenes/Maps/Platformer/Combat/EnemyAIHelper.h"
 #include "Scenes/Maps/Platformer/Combat/RewardsMenu.h"
 #include "Scenes/Maps/Platformer/Combat/TargetSelectionMenu.h"
 #include "Scenes/Maps/Platformer/Combat/TextOverlays.h"
@@ -53,12 +53,14 @@ CombatMap::CombatMap()
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
 	this->rewardsMenu = RewardsMenu::create();
+	this->enemyAIHelper = EnemyAIHelper::create();
 	this->playerEntities = std::vector<PlatformerEntity*>();
 	this->enemyEntities = std::vector<PlatformerEntity*>();
 
 	this->addChild(this->textOverlays);
 	this->addChild(this->targetSelectionMenu);
 	this->addChild(this->combatHud);
+	this->addChild(this->enemyAIHelper);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->rewardsMenu);
@@ -93,21 +95,21 @@ void CombatMap::initializeListeners()
 {
 	MapBase::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* args)
+	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* eventCustom)
 	{
-		NavigationEvents::NavigateCombatArgs* combatArgs = static_cast<NavigationEvents::NavigateCombatArgs*>(args->getUserData());
+		NavigationEvents::NavigateCombatArgs* args = static_cast<NavigationEvents::NavigateCombatArgs*>(eventCustom->getUserData());
 
-		if (combatArgs != nullptr)
+		if (args != nullptr)
 		{
-			this->loadMap(SerializableMap::deserialize(combatArgs->levelFile));
-			this->setEntityKeys(combatArgs->playerTypes, combatArgs->enemyTypes);
-			this->enemyIdentifier = combatArgs->enemyIdentifier;
+			this->loadMap(SerializableMap::deserialize(args->levelFile));
+			this->setEntityKeys(args->playerTypes, args->enemyTypes);
+			this->enemyIdentifier = args->enemyIdentifier;
 
 			GlobalDirector::loadScene(this);
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{
 		PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 
@@ -117,14 +119,14 @@ void CombatMap::initializeListeners()
 		CombatEvents::TriggerGiveRewards();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)
 	{
 		NavigationEvents::navigateBack();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
 		if (combatArgs != nullptr && combatArgs->entry != nullptr)
 		{

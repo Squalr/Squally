@@ -4,6 +4,8 @@
 
 #include "Ogre.h"
 
+#include "Entities/Platformer/Attacks/Basic/BasicSlash.h"
+
 #include "Resources/EntityResources.h"
 
 const std::string Ogre::MapKeyOgre = "ogre";
@@ -27,6 +29,7 @@ Ogre::Ogre(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	10,
 	10)
 {
+	this->registerAttack(BasicSlash::create());
 }
 
 Ogre::~Ogre()

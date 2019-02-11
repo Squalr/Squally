@@ -162,10 +162,18 @@ float TimelineEntry::addProgress(float progressDelta)
 		}
 	}
 	// Cast started
-	else if (!wasCasting && this->isCasting() && this->isPlayerEntry)
+	else if (!wasCasting && this->isCasting())
 	{
-		CombatEvents::TriggerPauseTimeline();
-		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this));
+		if (this->isPlayerEntry)
+		{
+			CombatEvents::TriggerPauseTimeline();
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this));
+		}
+		else
+		{
+			CombatEvents::TriggerPauseTimeline();
+			CombatEvents::TriggerRequestAIAction(CombatEvents::AIRequestArgs(this));
+		}
 	}
 
 	return this->progress;

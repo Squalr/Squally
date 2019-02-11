@@ -44,7 +44,7 @@ void SmartNode::onExit()
 {
 	super::onExit();
 
-	this->removeAllListeners();
+	this->removeNonGlobalListeners();
 }
 
 void SmartNode::onReenter()
@@ -90,6 +90,14 @@ bool SmartNode::isDeveloperModeEnabled()
 void SmartNode::removeAllListeners()
 {
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
+}
+
+void SmartNode::removeNonGlobalListeners()
+{
+	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
+	{
+		return !listener->isGlobal();
+	});
 }
 
 void SmartNode::addEventListener(EventListener* listener)

@@ -8,20 +8,12 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Input/ClickableTextNode.h"
-#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"
-
-#include "Strings/Combat/Attack.h"
-#include "Strings/Combat/Defend.h"
-#include "Strings/Combat/Items.h"
 
 using namespace cocos2d;
 

@@ -4,6 +4,7 @@
 
 class CombatHud;
 class ChoicesMenu;
+class EnemyAIHelper;
 class PlatformerEntity;
 class RewardsMenu;
 class TargetSelectionMenu;
@@ -37,6 +38,8 @@ private:
 	TextOverlays* textOverlays;
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
+	EnemyAIHelper* enemyAIHelper;
+
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
 	std::vector<PlatformerEntity*> playerEntities;

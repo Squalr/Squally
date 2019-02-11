@@ -4,6 +4,8 @@
 
 #include "OrcBomber.h"
 
+#include "Entities/Platformer/Attacks/Basic/BasicSlash.h"
+
 #include "Resources/EntityResources.h"
 
 const std::string OrcBomber::MapKeyOrcBomber = "orc-bomber";
@@ -27,6 +29,7 @@ OrcBomber::OrcBomber(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initPr
 	10,
 	10)
 {
+	this->registerAttack(BasicSlash::create());
 }
 
 OrcBomber::~OrcBomber()
