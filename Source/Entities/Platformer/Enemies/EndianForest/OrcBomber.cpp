@@ -41,7 +41,7 @@ OrcBomber::OrcBomber(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initPr
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
-	this->registerAttack(BasicSlash::create());
+	this->registerAttack(BasicSlash::create(0.7f, 0.2f));
 
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

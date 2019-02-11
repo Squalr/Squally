@@ -45,7 +45,7 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->squallyCollision->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->registerHackables();
-	this->registerAttack(BasicSlash::create());
+	this->registerAttack(BasicSlash::create(1.5f, 0.15f));
 
 	this->addChild(this->squallyCollision);
 }
