@@ -90,12 +90,38 @@ def parseEntity(entityName, entityData):
 		return {}
 	
 	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityName))).lower()
-	pathRoot = ("Source/Entities/Platformer/" + entityPrefix + "/" + entityEnvironment).rstrip("/") + "/"
+	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityPrefix + "/" + entityEnvironment).rstrip("/"))) + "/"
 	animationFile = "Resources/Platformer/Entities/" + entityPrefix + "/" + "entityName"
 	outputHeader = entityName + ".h"
 	outputClass = entityName + ".cpp"
 	templateOutputHeader = abspath(join(join(realpath(__file__), ".."), "Entities.h.template"))
 	templateOutputClass = abspath(join(join(realpath(__file__), ".."), "Entities.cpp.template"))
+	
+	cppPrefixA = hPrefixA = "////A////A////A////A////A////A////A////A////A////A/"
+	cppSuffixA = hSuffixA = "////B////B////B////B////B////B////B////B////B////B/"
+	cppPrefixB = hPrefixB = "////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/"
+	cppSuffixB = hSuffixB = "////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/"
+	cppPrefixC = hPrefixC = "////X////X////X////X////X////X////X////X////X////X/"
+	cppSuffixC = hSuffixC = "////O////O////O////O////O////O////O////O////O////O/"
+	
+	hUserContentA = ""
+	hUserContentB = ""
+	hUserContentC = ""
+	cppUserContentA = ""
+	cppUserContentB = ""
+	cppUserContentC = ""
+	
+	# Parse any user code in non-generated sections
+	if os.path.isfile(pathRoot + outputHeader) and os.path.isfile(pathRoot + outputClass):
+		with open(pathRoot + outputHeader,'r') as h, open(pathRoot + outputClass,'r') as cpp:
+			hContent = h.read()
+			cppContent = cpp.read()
+			hUserContentA = getTextBetween(hPrefixA, hSuffixA, hContent)
+			hUserContentB = getTextBetween(hPrefixB, hSuffixB, hContent)
+			hUserContentC = getTextBetween(hPrefixC, hSuffixC, hContent)
+			cppUserContentA = getTextBetween(cppPrefixA, cppSuffixA, cppContent)
+			cppUserContentB = getTextBetween(cppPrefixB, cppSuffixB, cppContent)
+			cppUserContentC = getTextBetween(cppPrefixC, cppSuffixC, cppContent)
 	
 	os.makedirs(pathRoot, exist_ok=True)
 	with open(pathRoot + outputHeader,'w+') as h, open(pathRoot + outputClass,'w+') as cpp, open(templateOutputHeader,'r') as hTemplate, open(templateOutputClass,'r') as cppTemplate:
@@ -111,8 +137,18 @@ def parseEntity(entityName, entityData):
 			
 			return templateData
 			
-		h.write(parseTemplate(hTemplate))
-		cpp.write(parseTemplate(cppTemplate))
+		hContent = parseTemplate(hTemplate)
+		cppContent = parseTemplate(cppTemplate)
+		
+		hContent = replaceTextBetween(hPrefixA, hSuffixA, hContent, hUserContentA)
+		hContent = replaceTextBetween(hPrefixB, hSuffixB, hContent, hUserContentB)
+		hContent = replaceTextBetween(hPrefixC, hSuffixC, hContent, hUserContentC)
+		cppContent = replaceTextBetween(cppPrefixA, cppSuffixA, cppContent, cppUserContentA)
+		cppContent = replaceTextBetween(cppPrefixB, cppSuffixB, cppContent, cppUserContentB)
+		cppContent = replaceTextBetween(cppPrefixC, cppSuffixC, cppContent, cppUserContentC)
+			
+		h.write(hContent)
+		cpp.write(cppContent)
 	
 	return {
 		"EntityName": entityName,
@@ -120,11 +156,14 @@ def parseEntity(entityName, entityData):
 		"Include": ("#include \"Entities/Platformer/" + entityPrefix + "/" + entityEnvironment).rstrip("/") + "/" + outputHeader + "\""
 	}
 
-def replaceTextBetween(delimeterA, delimterB, contents, innerContent):
+def replaceTextBetween(delimeterA, delimeterB, contents, innerContent):
 	contentsPrefix = contents.split(delimeterA)[0]
-	contentsSuffix = contents.split(delimterB)[1]
+	contentsSuffix = contents.split(delimeterB)[1]
 	
-	return contentsPrefix + delimeterA + innerContent + delimterB + contentsSuffix
+	return contentsPrefix + delimeterA + innerContent + delimeterB + contentsSuffix
+
+def getTextBetween(delimeterA, delimeterB, contents):
+	return contents.split(delimeterA)[1].split(delimeterB)[0]
 	
 if __name__ == '__main__':
     main()
