@@ -40,7 +40,7 @@ public:
 	template<class T>
 	static void QueryObjects(QueryObjectsArgs<T> args)
 	{
-		Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 			ObjectEvents::EventQueryObject,
 			&args
 		);
