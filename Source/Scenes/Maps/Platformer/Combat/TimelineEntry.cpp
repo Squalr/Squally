@@ -148,11 +148,14 @@ float TimelineEntry::addProgress(float progressDelta)
 		{
 			CombatEvents::TriggerPauseTimeline();
 
-			this->entity->castAttack(this->currentCast, this->target, [=](PlatformerEntity::CastResult result)
+			this->entity->castAttack(this->currentCast, this->target, [=](PlatformerEntity::DamageArgs args)
 			{
 				this->progress = std::fmod(this->progress, 1.0f);
 
-				CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(result.damageDelta, this->target));
+				CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(args.damageDelta, this->target));
+			},
+			[=]()
+			{
 				CombatEvents::TriggerResumeTimeline();
 			});
 		}

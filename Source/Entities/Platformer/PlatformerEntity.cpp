@@ -251,24 +251,24 @@ Size PlatformerEntity::getEntitySize()
 	return this->entitySize;
 }
 
-void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void(CastResult)> onCastComplete)
+void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void(DamageArgs)> onDamageDelt, std::function<void()> onCastComplete)
 {
 	this->animationNode->playAnimation(attack->getAttackAnimation());
+
+	int damage = -RandomHelper::random_int(attack->getBaseDamageMin(), attack->getBaseDamageMax());
 
 	this->runAction(Sequence::create(
 		DelayTime::create(attack->getAttackDuration()),
 		CallFunc::create([=]()
 		{
-			// TODO: Target take damage
+			target->takeDamage(damage);
+			onDamageDelt(DamageArgs(damage));
 		}),
 		DelayTime::create(attack->getRecoverDuration()),
 		CallFunc::create([=]()
 		{
-			int damage = -RandomHelper::random_int(attack->getBaseDamageMin(), attack->getBaseDamageMax());
 
-			target->takeDamage(damage);
-
-			onCastComplete(CastResult(damage));
+			onCastComplete();
 		}),
 		nullptr
 	));

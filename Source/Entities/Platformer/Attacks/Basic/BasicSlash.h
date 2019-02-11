@@ -5,13 +5,13 @@
 class BasicSlash : public PlatformerAttack
 {
 public:
-	static BasicSlash* create();
+	static BasicSlash* create(float attackDuration, float recoverDuration);
 
 	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
 
 protected:
-	BasicSlash();
+	BasicSlash(float attackDuration, float recoverDuration);
 	~BasicSlash() = default;
 
 private:

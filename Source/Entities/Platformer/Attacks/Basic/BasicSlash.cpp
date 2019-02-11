@@ -6,22 +6,22 @@
 
 using namespace cocos2d;
 
-BasicSlash* BasicSlash::create()
+BasicSlash* BasicSlash::create(float attackDuration, float recoverDuration)
 {
-	BasicSlash* instance = new BasicSlash();
+	BasicSlash* instance = new BasicSlash(attackDuration, recoverDuration);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BasicSlash::BasicSlash() : super(UIResources::Menus_Icons_SwordSlash, 3, 5, 0, 1.5f, 0.15f)
+BasicSlash::BasicSlash(float attackDuration, float recoverDuration) : super(UIResources::Menus_Icons_SwordSlash, 3, 5, 0, attackDuration, recoverDuration)
 {
 }
 
 PlatformerAttack* BasicSlash::clone()
 {
-	return BasicSlash::create();
+	return BasicSlash::create(this->getAttackDuration(), this->getRecoverDuration());
 }
 
 LocalizedString* BasicSlash::getString()

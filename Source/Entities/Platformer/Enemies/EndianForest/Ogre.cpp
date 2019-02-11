@@ -41,7 +41,7 @@ Ogre::Ogre(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
-	this->registerAttack(BasicSlash::create());
+	this->registerAttack(BasicSlash::create(1.2f, 0.4f));
 
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
