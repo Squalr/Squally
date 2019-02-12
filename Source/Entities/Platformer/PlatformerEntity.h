@@ -33,6 +33,7 @@ public:
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	std::string getEmblemResource();
+	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
 
 	ClickableNode* clickHitbox;

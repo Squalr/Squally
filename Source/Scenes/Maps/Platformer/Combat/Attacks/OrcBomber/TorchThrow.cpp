@@ -1,7 +1,10 @@
 #include "TorchThrow.h"
 
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Engine/Animations/AnimationPart.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/SpawnEvents.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/BomberTorch.h"
 
 #include "Resources/UIResources.h"
@@ -37,10 +40,16 @@ void TorchThrow::spawnProjectiles(PlatformerEntity* owner)
 {
 	super::spawnProjectiles(owner);
 
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("WEAPON");
+	BomberTorch* torch = BomberTorch::create();
+
+	weapon->setOpacity(0);
+	torch->setRotation(weapon->getRotation());
+	torch->setPosition3D(GameUtils::getWorldCoords(weapon));
+
 	SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
 		owner,
-		BomberTorch::create(),
-		owner->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f),
+		torch,
 		SpawnEvents::SpawnMethod::Below
 	));
 }

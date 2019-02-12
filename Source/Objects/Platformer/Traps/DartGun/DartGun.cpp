@@ -51,14 +51,14 @@ DartGun::DartGun(ValueMap& initProperties) : HackableObject(initProperties)
 
 	this->dartGunAnimations->playAnimation();
 
-	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
+	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyFlipX))
 	{
-		this->dartGunAnimations->setFlippedX(this->properties[PlatformerEntity::MapKeyWidth].asBool());
+		this->dartGunAnimations->setFlippedX(this->properties[SerializableObject::MapKeyWidth].asBool());
 	}
 
-	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
+	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyFlipY))
 	{
-		this->dartGunAnimations->setFlippedY(this->properties[PlatformerEntity::MapKeyWidth].asBool());
+		this->dartGunAnimations->setFlippedY(this->properties[SerializableObject::MapKeyWidth].asBool());
 	}
 
 	this->registerHackables();
@@ -147,10 +147,13 @@ void DartGun::shoot(float dt)
 			{
 				this->timeSinceLastShot = 0.0f;
 
+				Dart* dart = Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f);
+
+				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
+
 				SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
 					this,
-					Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
-					this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f),
+					dart,
 					SpawnEvents::SpawnMethod::Below
 				));
 			}

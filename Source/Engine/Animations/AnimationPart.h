@@ -14,8 +14,14 @@ public:
 
 	void detachFromTimeline();
 	void replaceSprite(std::string spriteResource);
-	void setAngle(float rotation);
+	void setRotation(float rotation) override;
 	void setOffset(cocos2d::Vec2 offset);
+	void setOpacity(GLubyte opacity) override;
+	void setVisible(bool visible) override;
+
+	const cocos2d::Vec2& getPosition() const override;
+	cocos2d::Vec3 getPosition3D() const override;
+	float getRotation() const override;
 
 private:
 	typedef SmartNode super;
