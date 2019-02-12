@@ -53,16 +53,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->squally->setFlippedX(true);
 	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat);
 	this->mainhand = this->squally->getAnimationPart("mainhand");
-
-	/*
-	Sprite* staff = Sprite::create(EntityResources::Squally_STAFF_1);
-	staff->setRotation(270.0f);
-
-	this->mainhand->addTrackedChild(staff);
-	*/
-
 	this->mainhand->replaceSprite(ObjectResources::Weapons_Weapons_1_STAFF_1);
-	this->mainhand->setOffset(Vec2(64.0f, 12.0f));
+	this->mainhand->setOffset(Vec2(-64.0f, 0.0f));
 
 	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f);
 	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f);
@@ -79,8 +71,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->tree);
 	this->addChild(this->eyes1);
 	this->addChild(this->eyes2);
-	this->addChild(this->squally);
 	this->addChild(this->slime);
+	this->addChild(this->squally);
 	this->addChild(this->fireflyParticles);
 	this->addChild(this->windParticles);
 	this->addChild(this->foregroundFog);
@@ -111,7 +103,7 @@ void TitleScreenBackground::onEnter()
 	const float sinkSpeed = 6.0f;
 	const float floatDelta = 64.0f;
 	const float floatDeltaPostSink = 8.0f;
-	const float sinkOffset = 432.0f;
+	const float sinkOffset = 462.0f;
 
 	FiniteTimeAction* bounceDown = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y - floatDelta)));
 	FiniteTimeAction* bounceUp = EaseSineInOut::create(MoveTo::create(floatSpeed, Vec2(base.x, base.y)));
@@ -129,13 +121,8 @@ void TitleScreenBackground::onEnter()
 
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
-		this->squally->playAnimation("AttackStab");
+		this->squally->playAnimation("AttackStabLite");
 		jiggleSlime->execute();
-	});
-
-	CallFunc* returnToIdle = CallFunc::create([=]
-	{
-		this->squally->playAnimation("Idle");
 	});
 
 	pokeSlime->retain();
@@ -150,13 +137,11 @@ void TitleScreenBackground::onEnter()
 			bounceUp,
 			sinkDown,
 			pokeSlime,
-			DelayTime::create(0.3f),
-			returnToIdle,
+			DelayTime::create(0.4f),
 			bounceUpPostSink,
 			bounceDownPostSink,
 			pokeSlime,
-			DelayTime::create(0.3f),
-			returnToIdle,
+			DelayTime::create(0.4f),
 			sinkUp,
 			bounceDown,
 			bounceUp,

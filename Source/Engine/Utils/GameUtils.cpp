@@ -351,7 +351,7 @@ bool GameUtils::keyExists(ValueMap& valueMap, std::string key)
 	return false;
 }
 
-cocos2d::Value& GameUtils::getKeyOrDefault(cocos2d::ValueMap& valueMap, std::string key, cocos2d::Value& defaultValue)
+cocos2d::Value& GameUtils::getKeyOrDefault(cocos2d::ValueMap& valueMap, std::string key, cocos2d::Value defaultValue)
 {
 	if (GameUtils::keyExists(valueMap, key))
 	{

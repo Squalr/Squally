@@ -49,5 +49,5 @@ private:
 	SmartAnimationNode(std::string animationResource, std::string entityName);
 	virtual ~SmartAnimationNode();
 
-	std::map<std::string, AnimationPart*> cachedAnimationParts;
+	std::map<std::string, AnimationPart*> animationParts;
 };
