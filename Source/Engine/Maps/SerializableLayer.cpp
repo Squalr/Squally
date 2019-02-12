@@ -39,7 +39,6 @@ SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name,
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
-	this->serializableObjectsSet = std::set<SerializableObject*>();
 	this->properties = initProperties;
 
 	if (GameUtils::keyExists(this->properties, SerializableLayer::MapKeyPropertyDepth))
@@ -49,7 +48,6 @@ SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name,
 
 	for (auto it = objects.begin(); it != objects.end(); it++)
 	{
-		this->serializableObjectsSet.insert(*it);
 		this->addChild(*it);
 	}
 }
@@ -66,9 +64,8 @@ void SerializableLayer::initializeListeners()
 	{
 		SpawnEvents::RequestObjectSpawnArgs* args = (SpawnEvents::RequestObjectSpawnArgs*)eventArgs->getUserData();
 
-		if (this->serializableObjectsSet.find(args->spawner) != this->serializableObjectsSet.end())
-		{
-			// Delegate the spawning to the map, which will decide where to place the object
+		if (GameUtils::getFirstParentOfType<SerializableLayer>(args->spawner) == this)
+		{	// Delegate the spawning to the map, which will decide where to place the object
 			SpawnEvents::TriggerObjectSpawnDelegator(SpawnEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnPosition, args->spawnMethod));
 		}
 	}));

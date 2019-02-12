@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entities/Platformer/Attacks/PlatformerAttack.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
 
 class BasicSlash : public PlatformerAttack
 {

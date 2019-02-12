@@ -150,7 +150,7 @@ void DartGun::shoot(float dt)
 				SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
 					this,
 					Dart::create(180.0f + rotation * 180.0f / M_PI, 256.0f),
-					this->getPosition() + Vec2(0.0f, 64.0f),
+					this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f),
 					SpawnEvents::SpawnMethod::Below
 				));
 			}

@@ -2,8 +2,9 @@
 
 using namespace cocos2d;
 
-PlatformerAttack::PlatformerAttack(std::string iconResource, int baseDamageMin, int baseDamageMax, int specialCost, float attackDuration, float recoverDuration)
+PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, int baseDamageMin, int baseDamageMax, int specialCost, float attackDuration, float recoverDuration)
 {
+	this->attackType = attackType;
 	this->iconResource = iconResource;
 	this->baseDamageMin = baseDamageMin;
 	this->baseDamageMax = baseDamageMax;
@@ -12,9 +13,18 @@ PlatformerAttack::PlatformerAttack(std::string iconResource, int baseDamageMin, 
 	this->recoverDuration = recoverDuration;
 }
 
+void PlatformerAttack::spawnProjectiles(PlatformerEntity* owner)
+{
+}
+
 std::string PlatformerAttack::getAttackAnimation()
 {
 	return "Attack";
+}
+
+PlatformerAttack::AttackType PlatformerAttack::getAttackType()
+{
+	return this->attackType;
 }
 
 std::string PlatformerAttack::getIconResource()

@@ -4,10 +4,10 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/ObjectEvents.h"
-#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 using namespace cocos2d;

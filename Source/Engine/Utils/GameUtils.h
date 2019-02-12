@@ -35,4 +35,20 @@ public:
 	static bool intersectsV2(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool keyExists(cocos2d::ValueMap& valueMap, std::string key);
 	static cocos2d::Value& getKeyOrDefault(cocos2d::ValueMap& valueMap, std::string key, cocos2d::Value defaultValue);
+
+	template <class T>
+	static T* getFirstParentOfType(cocos2d::Node *node)
+	{
+		while (node != nullptr)
+		{
+			if (dynamic_cast<T*>(node) != nullptr)
+			{
+				return dynamic_cast<T*>(node);
+			}
+
+			node = node->getParent();
+		}
+
+		return nullptr;
+	}
 };

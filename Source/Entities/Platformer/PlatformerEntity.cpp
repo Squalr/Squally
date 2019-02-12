@@ -8,7 +8,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Attacks/PlatformerAttack.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
 
@@ -255,23 +255,51 @@ void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* ta
 {
 	this->animationNode->playAnimation(attack->getAttackAnimation());
 
-	int damage = -RandomHelper::random_int(attack->getBaseDamageMin(), attack->getBaseDamageMax());
-
-	this->runAction(Sequence::create(
-		DelayTime::create(attack->getAttackDuration()),
-		CallFunc::create([=]()
+	switch(attack->getAttackType())
+	{
+		default:
+		case PlatformerAttack::AttackType::Direct:
 		{
-			target->takeDamage(damage);
-			onDamageDelt(DamageArgs(damage));
-		}),
-		DelayTime::create(attack->getRecoverDuration()),
-		CallFunc::create([=]()
-		{
+			int damage = -RandomHelper::random_int(attack->getBaseDamageMin(), attack->getBaseDamageMax());
 
-			onCastComplete();
-		}),
-		nullptr
-	));
+			this->runAction(Sequence::create(
+				DelayTime::create(attack->getAttackDuration()),
+				CallFunc::create([=]()
+				{
+					target->takeDamage(damage);
+					onDamageDelt(DamageArgs(damage));
+				}),
+				DelayTime::create(attack->getRecoverDuration()),
+				CallFunc::create([=]()
+				{
+					onCastComplete();
+				}),
+				nullptr
+			));
+
+			break;
+		}
+		case PlatformerAttack::AttackType::Projectile:
+		{
+			this->runAction(Sequence::create(
+				DelayTime::create(attack->getAttackDuration()),
+				CallFunc::create([=]()
+				{
+					attack->spawnProjectiles(this);
+				}),
+				DelayTime::create(attack->getRecoverDuration()),
+				CallFunc::create([=]()
+				{
+					// TODO: Despawn projectiles after recover duration? Or perhaps after a timeout
+					// call onCastComplete either when the projectiles land (hard for multiple) or after a hard timeout
+					onCastComplete();
+				}),
+				nullptr
+			));
+
+			break;
+		}
+	}
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()

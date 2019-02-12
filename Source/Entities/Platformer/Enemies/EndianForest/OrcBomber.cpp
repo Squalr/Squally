@@ -10,7 +10,8 @@
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////A////A////A////A////A////A////A////A////A////A/
 
-#include "Entities/Platformer/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/OrcBomber/TorchThrow.h"
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -41,7 +42,8 @@ OrcBomber::OrcBomber(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initPr
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
-	this->registerAttack(BasicSlash::create(0.7f, 0.2f));
+	//this->registerAttack(BasicSlash::create(0.7f, 0.2f));
+	this->registerAttack(TorchThrow::create(0.7f, 5.0f));
 
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

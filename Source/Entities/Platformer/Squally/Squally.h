@@ -19,7 +19,7 @@ public:
 	static const int SquallyBaseSpecial;
 
 protected:
-	virtual void initializeCollisionEvents() override;
+	void initializeCollisionEvents() override;
 
 	cocos2d::Vec2 getButtonOffset() override;
 
