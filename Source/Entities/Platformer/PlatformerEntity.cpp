@@ -246,6 +246,11 @@ int PlatformerEntity::getMaxRunes()
 	return PlatformerEntity::MaxRunes;
 }
 
+SmartAnimationNode* PlatformerEntity::getAnimations()
+{
+	return this->animationNode;
+}
+
 Size PlatformerEntity::getEntitySize()
 {
 	return this->entitySize;
