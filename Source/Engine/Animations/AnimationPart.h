@@ -24,5 +24,4 @@ private:
 
 	SpriterEngine::UniversalObjectInterface* spriterAnimationPart;
 	float rotation;
-	cocos2d::Vec2 initialPosition;
 };

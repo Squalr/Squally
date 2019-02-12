@@ -16,7 +16,6 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
 	this->spriterAnimationPart = entity->getObjectInstance(partName);
-	this->initialPosition = Vec2(this->spriterAnimationPart->getPosition().x, this->spriterAnimationPart->getPosition().y);
 
 	this->rotation = this->spriterAnimationPart->getAngle();
 }
@@ -41,7 +40,5 @@ void AnimationPart::setAngle(float rotation)
 
 void AnimationPart::setOffset(Vec2 offset)
 {
-	this->detachFromTimeline();
-
-	this->spriterAnimationPart->setPosition(SpriterEngine::point(this->initialPosition.x + offset.x, this->initialPosition.y + offset.y));
+	this->spriterAnimationPart->setOffset(SpriterEngine::point(offset.x, offset.y));
 }

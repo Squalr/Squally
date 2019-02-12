@@ -28,7 +28,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 {
 	this->animationNode = AnimationNode::create(animationResource);
 	this->entity = this->animationNode->play(entityName);
-	this->cachedAnimationParts = std::map<std::string, AnimationPart*>();
+	this->animationParts = std::map<std::string, AnimationPart*>();
 
 	this->addChild(this->animationNode);
 }
@@ -86,14 +86,14 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 
 AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 {
-	if (this->cachedAnimationParts.find(partName) != this->cachedAnimationParts.end())
+	if (this->animationParts.find(partName) != this->animationParts.end())
 	{
-		return this->cachedAnimationParts[partName];
+		return this->animationParts[partName];
 	}
 
 	AnimationPart* animationPart = AnimationPart::create(this->entity, partName);
 
-	this->cachedAnimationParts[partName] = animationPart;
+	this->animationParts[partName] = animationPart;
 
 	this->addChild(animationPart);
 
