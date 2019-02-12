@@ -19,6 +19,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Menus/Demo.h"
 #include "Strings/Menus/Exit.h"
 #include "Strings/Menus/Minigames.h"
 #include "Strings/Menus/Options/Options.h"
@@ -60,8 +61,8 @@ TitleScreen::TitleScreen()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
-	LocalizedLabel*	storyModeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
+	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Demo::create());
+	LocalizedLabel*	storyModeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Demo::create());
 
 	LocalizedLabel*	minigamesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Minigames::create());
 	LocalizedLabel*	minigamesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Minigames::create());
