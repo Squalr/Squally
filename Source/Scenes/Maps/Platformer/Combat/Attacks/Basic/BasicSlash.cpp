@@ -15,7 +15,7 @@ BasicSlash* BasicSlash::create(float attackDuration, float recoverDuration)
 	return instance;
 }
 
-BasicSlash::BasicSlash(float attackDuration, float recoverDuration) : super(UIResources::Menus_Icons_SwordSlash, 3, 5, 0, attackDuration, recoverDuration)
+BasicSlash::BasicSlash(float attackDuration, float recoverDuration) : super(AttackType::Direct, UIResources::Menus_Icons_SwordSlash, 3, 5, 0, attackDuration, recoverDuration)
 {
 }
 

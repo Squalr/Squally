@@ -239,7 +239,7 @@ void SerializableMap::spawnObject(SpawnEvents::RequestObjectSpawnDelegatorArgs* 
 				case SpawnEvents::SpawnMethod::Above:
 				{
 					(*it)->addChild(args->objectToSpawn);
-					args->objectToSpawn->setPosition(args->spawnPosition);
+					args->objectToSpawn->setPosition3D(args->spawnPosition);
 					break;
 				}
 				case SpawnEvents::SpawnMethod::Below:
@@ -247,12 +247,12 @@ void SerializableMap::spawnObject(SpawnEvents::RequestObjectSpawnDelegatorArgs* 
 					if (prevIt != this->serializableLayers.end())
 					{
 						(*prevIt)->addChild(args->objectToSpawn);
-						args->objectToSpawn->setPosition(args->spawnPosition);
+						args->objectToSpawn->setPosition3D(args->spawnPosition);
 					}
 					else
 					{
 						(*it)->addChild(args->objectToSpawn);
-						args->objectToSpawn->setPosition(args->spawnPosition);
+						args->objectToSpawn->setPosition3D(args->spawnPosition);
 					}
 					break;
 				}

@@ -10,9 +10,9 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
 #include "Resources/UIResources.h"

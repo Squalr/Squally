@@ -6,9 +6,9 @@
 
 #include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Attacks/PlatformerAttack.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
 
@@ -150,12 +150,12 @@ float TimelineEntry::addProgress(float progressDelta)
 
 			this->entity->castAttack(this->currentCast, this->target, [=](PlatformerEntity::DamageArgs args)
 			{
-				this->progress = std::fmod(this->progress, 1.0f);
-
 				CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(args.damageDelta, this->target));
 			},
 			[=]()
 			{
+				this->progress = std::fmod(this->progress, 1.0f);
+
 				CombatEvents::TriggerResumeTimeline();
 			});
 		}

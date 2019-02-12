@@ -1,7 +1,12 @@
 #pragma once
 #include <string>
 
-#include "cocos/math/Vec2.h"
+#include "cocos/math/Vec3.h"
+
+namespace cocos2d
+{
+	class Node;
+}
 
 class SerializableLayer;
 class SerializableObject;
@@ -17,25 +22,25 @@ public:
 
 	struct RequestObjectSpawnArgs
 	{
-		SerializableObject* spawner;
-		SerializableObject* objectToSpawn;
-		cocos2d::Vec2 spawnPosition;
+		cocos2d::Node* spawner;
+		cocos2d::Node* objectToSpawn;
+		cocos2d::Vec3 spawnPosition;
 		SpawnMethod spawnMethod;
 
 		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnArgs(SerializableObject* spawner, SerializableObject* objectToSpawn, cocos2d::Vec2 spawnPosition, SpawnMethod spawnMethod) : spawner(spawner), objectToSpawn(objectToSpawn), spawnPosition(spawnPosition), spawnMethod(spawnMethod) { }
+		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, cocos2d::Vec3 spawnPosition, SpawnMethod spawnMethod) : spawner(spawner), objectToSpawn(objectToSpawn), spawnPosition(spawnPosition), spawnMethod(spawnMethod) { }
 	};
 
 	struct RequestObjectSpawnDelegatorArgs
 	{
 		SerializableLayer* sourceLayer;
-		SerializableObject* spawner;
-		SerializableObject* objectToSpawn;
-		cocos2d::Vec2 spawnPosition;
+		cocos2d::Node* spawner;
+		cocos2d::Node* objectToSpawn;
+		cocos2d::Vec3 spawnPosition;
 		SpawnMethod spawnMethod;
 
 		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnDelegatorArgs(SerializableLayer* sourceLayer, SerializableObject* spawner, SerializableObject* objectToSpawn, cocos2d::Vec2 spawnPosition, SpawnMethod spawnMethod) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnPosition(spawnPosition), spawnMethod(spawnMethod) { }
+		RequestObjectSpawnDelegatorArgs(SerializableLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, cocos2d::Vec3 spawnPosition, SpawnMethod spawnMethod) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnPosition(spawnPosition), spawnMethod(spawnMethod) { }
 	};
 
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
