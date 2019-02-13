@@ -2,6 +2,12 @@
 
 #include <spriter2dx/AnimationNode.h>
 
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Utils/GameUtils.h"
+
+#include "Resources/UIResources.h"
+
 using namespace cocos2d;
 
 AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std::string partName)
@@ -16,8 +22,27 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
 	this->spriterAnimationPart = entity->getObjectInstance(partName);
+	this->ghostSprite = Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 
+	this->ghostSprite->setColor(Color3B::BLUE);
+	this->ghostSprite->setVisible(false);
 	this->rotation = this->spriterAnimationPart->getAngle();
+
+	this->addChild(this->ghostSprite);
+}
+
+void AnimationPart::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void AnimationPart::update(float dt)
+{
+	super::update(dt);
+
+	this->updateTrackedAttributes();
 }
 
 void AnimationPart::detachFromTimeline()
@@ -34,7 +59,9 @@ void AnimationPart::replaceSprite(std::string spriteResource)
 void AnimationPart::setRotation(float rotation)
 {
 	this->detachFromTimeline();
-	this->spriterAnimationPart->setAngle(rotation);
+	this->spriterAnimationPart->setAngle(rotation / 180.0f * M_PI);
+
+	this->updateTrackedAttributes();
 }
 
 void AnimationPart::setOffset(Vec2 offset)
@@ -47,6 +74,11 @@ void AnimationPart::setOpacity(GLubyte opacity)
 	this->spriterAnimationPart->setAlphaOverride((float)opacity / 255.0f);
 }
 
+GLubyte AnimationPart::getOpacity() const
+{
+	return (GLubyte)(this->spriterAnimationPart->getAlphaOverride() * 255.0f);
+}
+
 void AnimationPart::setVisible(bool visible)
 {
 	static const float ClearOverride = -1.0f;
@@ -54,17 +86,32 @@ void AnimationPart::setVisible(bool visible)
 	this->spriterAnimationPart->setAlphaOverride(visible ? 1.0f : ClearOverride);
 }
 
-const cocos2d::Vec2& AnimationPart::getPosition() const
+void AnimationPart::updateTrackedAttributes()
 {
-	return Vec2(this->spriterAnimationPart->getPosition().x, this->spriterAnimationPart->getPosition().y);
+	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
+
+	Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
+	Vec3 thisCords = GameUtils::getWorldCoords3D(this);
+	Vec3 delta = thisCords - spriteCoords;
+
+	// In order to make the game think that this AnimationPart class is the Spriter object, we need to keep certain things in sync
+	super::setRotation(this->spriterAnimationPart->getAngle() * 180.0f / M_PI);
+	super::setPosition(Vec2(this->spriterAnimationPart->getPosition().x, -this->spriterAnimationPart->getPosition().y) - Vec2(delta.x, delta.y));
+	super::setAnchorPoint(Vec2(float(this->spriterAnimationPart->getPivot().x), float(this->spriterAnimationPart->getPivot().y)));
+
+	this->ghostSprite->setPosition(Vec2::ZERO);
 }
 
-Vec3 AnimationPart::getPosition3D() const
+void AnimationPart::onDeveloperModeEnable()
 {
-	return Vec3(this->spriterAnimationPart->getPosition().x, this->spriterAnimationPart->getPosition().y, 0.0f);
+	super::onDeveloperModeEnable();
+
+	this->ghostSprite->setVisible(true);
 }
 
-float AnimationPart::getRotation() const
+void AnimationPart::onDeveloperModeDisable()
 {
-	return this->spriterAnimationPart->getAngle();
+	super::onDeveloperModeDisable();
+
+	this->ghostSprite->setVisible(false);
 }

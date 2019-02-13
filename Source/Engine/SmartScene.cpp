@@ -32,7 +32,6 @@ SmartScene::SmartScene()
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
 
 	this->layerColor->setContentSize(Director::getInstance()->getVisibleSize());
-	this->layerColorHud->setAnchorPoint(Vec2(0.5f, 0.5f));
 
 	this->layerColorHud->setZOrder(99999);
 

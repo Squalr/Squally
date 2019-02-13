@@ -214,11 +214,6 @@ void ClickableNode::setClickSound(std::string soundResource)
 
 bool ClickableNode::intersects(Vec2 mousePos)
 {
-	if (dynamic_cast<const LayerColor*>(this->sprite) != nullptr)
-	{
-		return GameUtils::intersectsV2(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
-	}
-
 	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 }
 

@@ -60,7 +60,7 @@ void MouseOverPanel::onMouseMove(EventCustom* event)
 {
 	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
 
-	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->content, args->mouseCoords))
+	if (GameUtils::isVisible(this) && GameUtils::intersects(this->content, args->mouseCoords))
 	{
 		this->panelBackgroundFrame->setVisible(true);
 		this->panelBackground->setVisible(true);
