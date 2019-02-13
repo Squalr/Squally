@@ -290,7 +290,7 @@ void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* ta
 				DelayTime::create(attack->getAttackDuration()),
 				CallFunc::create([=]()
 				{
-					attack->spawnProjectiles(this);
+					attack->spawnProjectiles(this, target);
 				}),
 				DelayTime::create(attack->getRecoverDuration()),
 				CallFunc::create([=]()

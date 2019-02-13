@@ -1,21 +1,12 @@
 #include "BomberTorch.h"
 
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/EntityResources.h"
-
-#include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 
 using namespace cocos2d;
 

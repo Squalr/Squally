@@ -1,6 +1,5 @@
 #include "TorchThrow.h"
 
-#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Animations/AnimationPart.h"
@@ -39,26 +38,20 @@ LocalizedString* TorchThrow::getString()
 	return Strings::Generics_Empty::create();
 }
 
-void TorchThrow::spawnProjectiles(PlatformerEntity* owner)
+void TorchThrow::spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::spawnProjectiles(owner);
+	super::spawnProjectiles(owner, target);
 
 	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("WEAPON");
 	BomberTorch* torch = BomberTorch::create();
 
-	weapon->setOpacity(0);
-	torch->setRotation(weapon->getRotation());
-	torch->setPosition(GameUtils::getWorldCoords(weapon));
-
-	weapon->runAction(Sequence::create(
-		DelayTime::create(2.0f),
-		FadeTo::create(0.5f, 255),
-		nullptr
-	));
+	weapon->replaceWithObject(torch, 2.0f);
 
 	SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
 		owner,
 		torch,
 		SpawnEvents::SpawnMethod::Below
 	));
+
+	torch->launchTowardsTarget(target, 2.0f);
 }
