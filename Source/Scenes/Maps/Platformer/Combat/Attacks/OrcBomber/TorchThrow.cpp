@@ -1,5 +1,8 @@
 #include "TorchThrow.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/SpawnEvents.h"
@@ -45,7 +48,13 @@ void TorchThrow::spawnProjectiles(PlatformerEntity* owner)
 
 	weapon->setOpacity(0);
 	torch->setRotation(weapon->getRotation());
-	torch->setPosition3D(GameUtils::getWorldCoords(weapon));
+	torch->setPosition(GameUtils::getWorldCoords(weapon));
+
+	weapon->runAction(Sequence::create(
+		DelayTime::create(2.0f),
+		FadeTo::create(0.5f, 255),
+		nullptr
+	));
 
 	SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
 		owner,

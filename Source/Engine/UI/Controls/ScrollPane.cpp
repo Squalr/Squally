@@ -132,7 +132,7 @@ void ScrollPane::fitSizeToContent(Rect padding)
 
 void ScrollPane::onMouseScroll(EventMouse* event)
 {
-	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(),
+	if (GameUtils::isVisible(this) && GameUtils::intersects(this->background, Vec2(event->getCursorX(),
 			event->getCursorY())))
 	{
 		this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
@@ -144,7 +144,7 @@ void ScrollPane::onMouseScroll(EventMouse* event)
 
 void ScrollPane::onScrollViewMouseMove(EventMouse* event)
 {
-	if (GameUtils::isVisible(this) && GameUtils::intersectsV2(this->background, Vec2(event->getCursorX(),
+	if (GameUtils::isVisible(this) && GameUtils::intersects(this->background, Vec2(event->getCursorX(),
 			event->getCursorY())))
 	{
 		// Start drag animation

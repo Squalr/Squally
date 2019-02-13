@@ -28,8 +28,6 @@ BannerBase::BannerBase()
 	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Generics_Empty::create());
 	this->bannerChildrenNode = Node::create();
 
-	this->bannerOverlay->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->bannerLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->bannerLabel->enableOutline(Color4B::BLACK, 4);
 
 	this->addChild(this->bannerOverlay);
