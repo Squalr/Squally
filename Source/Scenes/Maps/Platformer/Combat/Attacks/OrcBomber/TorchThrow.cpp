@@ -43,7 +43,7 @@ void TorchThrow::spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* tar
 	super::spawnProjectiles(owner, target);
 
 	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("WEAPON");
-	BomberTorch* torch = BomberTorch::create();
+	BomberTorch* torch = BomberTorch::create(this);
 
 	weapon->replaceWithObject(torch, 2.0f);
 

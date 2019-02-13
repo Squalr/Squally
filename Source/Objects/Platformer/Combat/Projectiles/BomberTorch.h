@@ -1,23 +1,23 @@
 #pragma once
 
-#include "Engine/Physics/ProximityObject.h"
+#include "Objects/Platformer/Combat/Projectiles/Projectile.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class BomberTorch : public ProximityObject
+class BomberTorch : public Projectile
 {
 public:
-	static BomberTorch* create();
+	static BomberTorch* create(PlatformerAttack* associatedAttack);
 
 protected:
-	BomberTorch();
+	BomberTorch(PlatformerAttack* associatedAttack);
 	virtual	~BomberTorch();
 
 private:
-	typedef ProximityObject super;
+	typedef Projectile super;
 
 	void onEnter() override;
 	void initializePositions() override;
