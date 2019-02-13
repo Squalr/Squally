@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_TORCH_ARC 1
 
-BomberTorch* BomberTorch::create()
+BomberTorch* BomberTorch::create(PlatformerAttack* associatedAttack)
 {
-	BomberTorch* instance = new BomberTorch();
+	BomberTorch* instance = new BomberTorch(associatedAttack);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BomberTorch::BomberTorch() : ProximityObject(32.0f)
+BomberTorch::BomberTorch(PlatformerAttack* associatedAttack) : Projectile(associatedAttack, 128.0f, 1.0f)
 {
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
 

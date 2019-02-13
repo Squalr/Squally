@@ -24,13 +24,13 @@ public:
 	{
 		std::vector<T*> result = std::vector<T*>();
 
-		ObjectEvents::QueryObjects<T>([&](T* object)
+		ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object)
 		{
 			if (this->isInProximityTo(dynamic_cast<cocos2d::Node*>(object)))
 			{
 				result.push_back(object);
 			}
-		});
+		}));
 
 		return result;
 	};
