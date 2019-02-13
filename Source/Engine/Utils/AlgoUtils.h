@@ -9,6 +9,7 @@ class AlgoUtils
 public:
 	struct Triangle;
 
+	static cocos2d::Vec3 computeArcVelocity(cocos2d::Vec3 source, cocos2d::Vec3 destination, cocos2d::Vec3 acceleration, float time);
 	static cocos2d::Vec2 pointOnEllipse(cocos2d::Vec2 center, float rx, float ry, cocos2d::Vec2 closestPoint);
 	static std::vector<int> subsetSum(const std::vector<int>& numbers, int sum, int requiredLength);
 	static std::vector<Triangle> trianglefyPolygon(const std::vector<cocos2d::Vec2>& polygonPoints);

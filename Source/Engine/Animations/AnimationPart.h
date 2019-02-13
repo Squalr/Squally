@@ -20,6 +20,7 @@ class AnimationPart : public SmartNode
 public:
 	static AnimationPart* create(SpriterEngine::EntityInstance* entity, std::string partName);
 
+	void replaceWithObject(cocos2d::Node* replacement, float disappearDuration = 2.0f, float fadeInDuration = 0.5f);
 	void detachFromTimeline();
 	void replaceSprite(std::string spriteResource);
 	void setRotation(float rotation) override;

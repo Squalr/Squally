@@ -2,6 +2,8 @@
 
 #include <spriter2dx/AnimationNode.h>
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Utils/GameUtils.h"
@@ -49,6 +51,19 @@ void AnimationPart::detachFromTimeline()
 {
 	// Detach the spriter animation part from the timeline such that it is entirely in the user's control
 	this->spriterAnimationPart->toggleTimelineCanUpdate(false);
+}
+
+void AnimationPart::replaceWithObject(cocos2d::Node* replacement, float disappearDuration, float fadeInDuration)
+{
+	this->setOpacity(0);
+	replacement->setRotation(this->getRotation());
+	replacement->setPosition(GameUtils::getWorldCoords(this));
+
+	this->runAction(Sequence::create(
+		DelayTime::create(disappearDuration),
+		FadeTo::create(fadeInDuration, 255),
+		nullptr
+	));
 }
 
 void AnimationPart::replaceSprite(std::string spriteResource)

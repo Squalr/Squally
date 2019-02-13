@@ -17,5 +17,5 @@ protected:
 private:
 	typedef PlatformerAttack super;
 
-	void spawnProjectiles(PlatformerEntity* owner) override;
+	void spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
 };

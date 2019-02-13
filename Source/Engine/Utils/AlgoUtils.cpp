@@ -9,6 +9,18 @@
 
 using namespace cocos2d;
 
+cocos2d::Vec3 AlgoUtils::computeArcVelocity(cocos2d::Vec3 source, cocos2d::Vec3 destination, cocos2d::Vec3 acceleration, float time)
+{
+	if (time == 0.0f)
+	{
+		return Vec3::ZERO;
+	}
+
+	Vec3 velocity = (destination - source - 0.5f * acceleration * time * time) / time;
+
+	return velocity;
+}
+
 Vec2 AlgoUtils::pointOnEllipse(Vec2 center, float rx, float ry, Vec2 closestPoint)
 {
 	int maxIterations = 10;

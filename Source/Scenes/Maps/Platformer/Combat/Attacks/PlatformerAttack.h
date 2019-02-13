@@ -24,7 +24,7 @@ public:
 	float getAttackDuration();
 	float getRecoverDuration();
 
-	virtual void spawnProjectiles(PlatformerEntity* owner);
+	virtual void spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* target);
 
 protected:
 	PlatformerAttack(AttackType attackType, std::string iconResource, int baseDamageMin, int baseDamageMax, int specialCost, float attackDuration, float recoverDuration);

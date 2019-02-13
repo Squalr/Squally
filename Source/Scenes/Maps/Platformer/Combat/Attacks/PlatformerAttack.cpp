@@ -13,7 +13,7 @@ PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResour
 	this->recoverDuration = recoverDuration;
 }
 
-void PlatformerAttack::spawnProjectiles(PlatformerEntity* owner)
+void PlatformerAttack::spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
 }
 
