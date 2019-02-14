@@ -63,8 +63,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageCards = std::map<CardData*, int>();
 
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
-	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f), Color4B(0, 0, 0, 196));
+	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f));
+	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f));
 	this->storageSprite = Sprite::create(UIResources::Menus_Icons_TreasureChest);
 	this->storageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_CardsInStorage::create(), Size::ZERO, cocos2d::TextHAlignment::LEFT);
 	this->deckSprite = Sprite::create(UIResources::Menus_Icons_Satchel);

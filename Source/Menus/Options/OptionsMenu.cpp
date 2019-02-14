@@ -11,12 +11,14 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Options/GeneralTab.h"
 #include "Menus/Options/LanguageTab.h"
+#include "Menus/Options/MemesTab.h"
 #include "Menus/Options/VideoTab.h"
 
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Options/GeneralOptions.h"
 #include "Strings/Menus/Options/Language.h"
+#include "Strings/Menus/Options/Memes.h"
 #include "Strings/Menus/Options/VideoOptions.h"
 #include "Strings/Menus/Options/Options.h"
 #include "Strings/Menus/Return.h"
@@ -47,6 +49,7 @@ OptionsMenu::OptionsMenu()
 	this->generalTab = GeneralTab::create();
 	this->videoTab = VideoTab::create();
 	this->languageTab = LanguageTab::create();
+	this->memesTab = MemesTab::create();
 	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Options_Options::create());
 
 	LocalizedLabel*	generalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
@@ -81,6 +84,17 @@ OptionsMenu::OptionsMenu()
 	languageSprite->setPosition(Vec2(-122.0f, 0.0f));
 
 	this->languageTabButton->addChild(languageSprite);
+
+	LocalizedLabel*	memesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Memes::create());
+	LocalizedLabel*	memesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Memes::create());
+
+	this->memesTabButton = ClickableTextNode::create(memesLabel, memesLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	this->memesTabButton->setTextOffset(Vec2(32.0f, 0.0f));
+
+	Sprite* memesSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconWeapons);
+	memesSprite->setPosition(Vec2(-122.0f, 0.0f));
+
+	this->memesTabButton->addChild(memesSprite);
 
 	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
@@ -119,9 +133,11 @@ OptionsMenu::OptionsMenu()
 	this->leftPanel->addChild(this->generalTabButton);
 	this->leftPanel->addChild(this->videoTabButton);
 	this->leftPanel->addChild(this->languageTabButton);
+	this->leftPanel->addChild(this->memesTabButton);
 	this->rightPanel->addChild(this->generalTab);
 	this->rightPanel->addChild(this->videoTab);
 	this->rightPanel->addChild(this->languageTab);
+	this->rightPanel->addChild(this->memesTab);
 	this->addChild(this->background);
 	this->addChild(this->optionsWindow);
 	this->addChild(this->leftPanel);
@@ -164,6 +180,7 @@ void OptionsMenu::initializeListeners()
 	this->generalTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
 	this->videoTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
 	this->languageTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
+	this->memesTabButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -189,6 +206,7 @@ void OptionsMenu::initializePositions()
 	this->generalTabButton->setPosition(Vec2(0.0f, spacing * 0.0f));
 	this->videoTabButton->setPosition(Vec2(0.0f, spacing * 1.0f));
 	this->languageTabButton->setPosition(Vec2(0.0f, spacing * 2.0f));
+	this->memesTabButton->setPosition(Vec2(0.0f, spacing * 3.0f));
 
 	const float offsetY = 48.0f;
 
@@ -230,6 +248,7 @@ void OptionsMenu::setActiveTab(Tab tab)
 	this->generalTab->setVisible(false);
 	this->videoTab->setVisible(false);
 	this->languageTab->setVisible(false);
+	this->memesTab->setVisible(false);
 
 	switch(this->activeTab)
 	{
@@ -247,6 +266,11 @@ void OptionsMenu::setActiveTab(Tab tab)
 		case Tab::Language:
 		{
 			this->languageTab->setVisible(true);
+			break;
+		}
+		case Tab::Memes:
+		{
+			this->memesTab->setVisible(true);
 			break;
 		}
 	}

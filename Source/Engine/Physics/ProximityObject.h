@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/SmartNode.h"
+#include "Engine/Hackables/HackableObject.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 }
 
 // This is a pseudo-physics object used to detect proximity to other objects
-class ProximityObject : public SmartNode
+class ProximityObject : public HackableObject
 {
 public:
 	static ProximityObject* create(float radius);

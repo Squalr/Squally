@@ -30,7 +30,7 @@ public:
 	std::vector<HackableCode*> codeList;
 
 protected:
-	HackableObject(cocos2d::ValueMap& initProperties);
+	HackableObject(const cocos2d::ValueMap& initProperties);
 	virtual ~HackableObject();
 
 	void onEnterTransitionDidFinish() override;

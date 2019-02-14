@@ -21,9 +21,9 @@ class CollisionObject : public HackableObject
 public:
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
 
-	CollisionObject(cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* initPhysicsBody,
+	CollisionObject(const cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* initPhysicsBody,
 		std::string deserializedCollisionName, bool isDynamic, bool canRotate);
-	CollisionObject(cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* initPhysicsBody,
+	CollisionObject(const cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* initPhysicsBody,
 		CollisionType collisionType, bool isDynamic, bool canRotate);
 	virtual ~CollisionObject();
 
@@ -55,7 +55,6 @@ public:
 	static const std::string MapKeyTypeCollision;
 
 protected:
-
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;

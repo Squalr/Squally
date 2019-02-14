@@ -26,7 +26,8 @@ Dart* Dart::create(float rotation, float speed)
 	return instance;
 }
 
-Dart::Dart(float rotation, float speed) : CollisionObject(ValueMap(),
+Dart::Dart(float rotation, float speed) : CollisionObject(
+	ValueMap(),
 	PhysicsBody::createBox(
 		Size(64.0f, 16.0f),
 		PHYSICSBODY_MATERIAL_DEFAULT,

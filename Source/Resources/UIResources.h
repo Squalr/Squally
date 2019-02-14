@@ -165,6 +165,9 @@ namespace UIResources
 	extern const std::string Menus_Buttons_WoodSquareButtonSmallSelected;
 	extern const std::string Menus_Buttons_WoodSquareButtonSmallToggled;
 	extern const std::string Menus_ConfirmMenu_ConfirmMenuWindow;
+	extern const std::string Menus_CreditsMenu_Matt;
+	extern const std::string Menus_CreditsMenu_Nathan;
+	extern const std::string Menus_CreditsMenu_Zac;
 	extern const std::string Menus_DeveloperMenu_VisibleCheckBoxChecked;
 	extern const std::string Menus_DeveloperMenu_VisibleCheckBoxEmpty;
 	extern const std::string Menus_DeveloperMenu_VisibleCheckBoxHover;

@@ -9,14 +9,14 @@ namespace cocos2d
 {
 	class Node;
 	class Sprite;
-	class Label;
 }
 
+class ClickableNode;
+class ClickableTextNode;
 class GeneralTab;
 class LanguageTab;
 class LocalizedLabel;
-class ClickableNode;
-class ClickableTextNode;
+class MemesTab;
 class VideoTab;
 
 class OptionsMenu : public SmartNode
@@ -38,6 +38,7 @@ private:
 		General,
 		Video,
 		Language,
+		Memes,
 	};
 
 	void onEnter() override;
@@ -60,10 +61,12 @@ private:
 	ClickableTextNode* generalTabButton;
 	ClickableTextNode* videoTabButton;
 	ClickableTextNode* languageTabButton;
+	ClickableTextNode* memesTabButton;
 	cocos2d::Node* rightPanel;
 	GeneralTab* generalTab;
 	VideoTab* videoTab;
 	LanguageTab* languageTab;
+	MemesTab* memesTab;
 
 	Tab activeTab;
 

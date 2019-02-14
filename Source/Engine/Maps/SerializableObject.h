@@ -55,7 +55,7 @@ public:
 	static const std::string MapKeyPropertyValue;
 
 protected:
-	SerializableObject(cocos2d::ValueMap& initProperties);
+	SerializableObject(const cocos2d::ValueMap& initProperties);
 	virtual ~SerializableObject();
 	void onEnter() override;
 	void initializeListeners() override;

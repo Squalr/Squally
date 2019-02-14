@@ -50,7 +50,7 @@ const std::string SerializableObject::MapKeyPropertyName = "name";
 const std::string SerializableObject::MapKeyPropertyType = "type";
 const std::string SerializableObject::MapKeyPropertyValue = "value";
 
-SerializableObject::SerializableObject(ValueMap& initProperties)
+SerializableObject::SerializableObject(const ValueMap& initProperties)
 {
 	this->properties = initProperties;
 
