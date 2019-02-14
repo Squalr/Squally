@@ -28,14 +28,14 @@ CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, Coll
 	return instance;
 }
 
-CollisionObject::CollisionObject(ValueMap& initProperties, PhysicsBody* initPhysicsBody, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
+CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* initPhysicsBody, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
 	CollisionObject(initProperties, initPhysicsBody, (CollisionType)0, isDynamic, canRotate)
 {
 	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
 	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(deserializedCollisionName, this));
 }
 
-CollisionObject::CollisionObject(ValueMap& initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
+CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
 	super(initProperties)
 {
 	this->physicsBody = initPhysicsBody;

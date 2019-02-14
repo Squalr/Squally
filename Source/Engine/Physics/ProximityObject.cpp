@@ -16,7 +16,7 @@ ProximityObject* ProximityObject::create(float radius)
 	return instance;
 }
 
-ProximityObject::ProximityObject(float radius)
+ProximityObject::ProximityObject(float radius) : HackableObject(ValueMap())
 {
 	this->radius = radius;
 	this->velocity = Vec3::ZERO;

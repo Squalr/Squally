@@ -126,10 +126,10 @@ HexusStoreMenu::HexusStoreMenu()
 
 	const Size scrollPaneSize = Size(840.0f, 720.0f);
 
-	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize, Color4B(0, 0, 0, 196));
-	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize, Color4B(0, 0, 0, 196));
-	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize, Color4B(0, 0, 0, 196));
-	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, Color4B(0, 0, 0, 196));
+	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize);
+	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize);
+	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize);
+	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize);
 
 	Sprite* lootBoxIcon = Sprite::create(UIResources::Menus_StoreMenu_IconLootBox);
 	Sprite* binaryIcon = Sprite::create(UIResources::Menus_StoreMenu_IconBin);

@@ -18,7 +18,7 @@ namespace cocos2d
 class ScrollPane : public SmartNode
 {
 public:
-	static ScrollPane * create(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor);
+	static ScrollPane * create(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor = cocos2d::Color4B(0, 0, 0, 196));
 
 	cocos2d::Size getPaneSize();
 	cocos2d::Size getContentSize();
