@@ -47,10 +47,10 @@ void ProximityObject::update(float dt)
 	this->setPosition3D(this->getPosition3D() + this->velocity * dt);
 }
 
-void ProximityObject::launchTowardsTarget(Node* target, float spinSpeed, float secondsPer256pxLinearDistance, Vec3 gravity)
+void ProximityObject::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed, float secondsPer256pxLinearDistance, Vec3 gravity)
 {
 	Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
-	Vec3 targetPosition = GameUtils::getWorldCoords3D(target);
+	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);
 	float duration = targetPosition.distance(thisPosition) / 480.0f * secondsPer256pxLinearDistance;
 	bool isLeft = targetPosition.x < thisPosition.x;
 
