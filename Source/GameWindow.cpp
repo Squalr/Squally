@@ -15,7 +15,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/LogUtils.h"
-#include "Menus/Title/TitleScreen.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Strings/Generics/Squally.h"
 

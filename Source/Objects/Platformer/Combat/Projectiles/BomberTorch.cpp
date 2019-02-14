@@ -21,7 +21,7 @@ BomberTorch* BomberTorch::create(PlatformerAttack* associatedAttack)
 	return instance;
 }
 
-BomberTorch::BomberTorch(PlatformerAttack* associatedAttack) : Projectile(associatedAttack, 128.0f, 1.0f)
+BomberTorch::BomberTorch(PlatformerAttack* associatedAttack) : Projectile(associatedAttack, 256.0f, 1.0f)
 {
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
 
