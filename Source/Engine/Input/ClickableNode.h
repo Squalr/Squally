@@ -16,6 +16,7 @@ namespace cocos2d
 class ClickableNode : public SmartNode
 {
 public:
+	static ClickableNode* create();
 	static ClickableNode* create(std::string spriteNormal, std::string spriteSelectedResource);
 	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 

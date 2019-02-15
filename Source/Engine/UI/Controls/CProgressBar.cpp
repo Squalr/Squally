@@ -9,21 +9,27 @@
 
 using namespace cocos2d;
 
-CProgressBar* CProgressBar::create(Sprite* frame, Sprite* fill, Vec2 fillOffset)
+CProgressBar* CProgressBar::create(std::string frameResource, std::string fillResource, cocos2d::Vec2 fillOffset, bool isHorizontal)
 {
-	CProgressBar* instance = new CProgressBar(frame, fill, fillOffset);
+	return CProgressBar::create(Sprite::create(frameResource), Sprite::create(fillResource), fillOffset, isHorizontal);
+}
+
+CProgressBar* CProgressBar::create(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizontal)
+{
+	CProgressBar* instance = new CProgressBar(frame, fill, fillOffset, isHorizontal);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CProgressBar::CProgressBar(Sprite* frame, Sprite* fill, Vec2 fillOffset)
+CProgressBar::CProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizontal)
 {
+	this->isHorizontal = isHorizontal;
 	this->frame = frame;
 	this->progressBar = fill;
-	this->progressClip = ClippingRectangleNode::create(Rect(-this->progressBar->getContentSize().width / 2.0f, -this->progressBar->getContentSize().height / 2.0f, this->progressBar->getContentSize().width, this->progressBar->getContentSize().height));
-
+	this->progressClip = ClippingRectangleNode::create(Rect(-Vec2(this->progressBar->getContentSize() / 2.0f), this->progressBar->getContentSize()));
+	
 	this->progressClip->setPosition(Vec2(fillOffset.x, fillOffset.y));
 	this->setProgress(0.0f);
 
@@ -49,6 +55,15 @@ void CProgressBar::setProgress(float newProgress)
 
 	// Update progress bar
 	Rect newClippingRegion = this->progressClip->getClippingRegion();
-	newClippingRegion.size = Size(this->progressBar->getContentSize().width * this->progress, newClippingRegion.size.height);
+
+	if (this->isHorizontal)
+	{
+		newClippingRegion.size = Size(this->progressBar->getContentSize().width * this->progress, this->progressBar->getContentSize().height);
+	}
+	else
+	{
+		newClippingRegion.size = Size(this->progressBar->getContentSize().width, this->progressBar->getContentSize().height * this->progress);
+	}
+	
 	this->progressClip->setClippingRegion(newClippingRegion);
 }

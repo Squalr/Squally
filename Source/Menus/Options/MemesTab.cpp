@@ -67,6 +67,6 @@ void MemesTab::initializePositions()
 
 	this->developersTitle->setPosition(Vec2(paneSize.width / 2.0f, 0.0f));
 	this->zacSprite->setPosition(Vec2(paneSize.width / 2.0f - 224.0f, -128.0f));
-	this->mattSprite->setPosition(Vec2(paneSize.width / 2.0f, -128.0f));
-	this->nathanSprite->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -128.0f));
+	this->mattSprite->setPosition(Vec2(paneSize.width / 2.0f, -2128.0f));
+	this->nathanSprite->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -1280.0f));
 }

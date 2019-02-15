@@ -28,8 +28,8 @@ GeneralTab::GeneralTab()
 	this->musicIcon = Sprite::create(UIResources::Menus_OptionsMenu_MusicIcon);
 	this->soundIcon = Sprite::create(UIResources::Menus_OptionsMenu_SoundIcon);
 
-	this->musicSlider = CSlider::create(SoundManager::getMusicVolume());
-	this->soundSlider = CSlider::create(SoundManager::getSoundVolume());
+	this->musicSlider = CSlider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_Scroll, UIResources::Menus_Buttons_Scroll, SoundManager::getMusicVolume());
+	this->soundSlider = CSlider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_Scroll, UIResources::Menus_Buttons_Scroll, SoundManager::getSoundVolume());
 
 	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(GeneralTab::onMusicVolumeUpdate, this));
 	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(GeneralTab::onSoundVolumeUpdate, this));

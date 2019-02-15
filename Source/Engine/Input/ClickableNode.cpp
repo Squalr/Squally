@@ -24,6 +24,11 @@ This is the worst written class in this entire codebase. If you need to change s
 One day I'll figure out how to refactor this sphagetti garbage fire of state variables.
 */
 
+ClickableNode* ClickableNode::create()
+{
+	return ClickableNode::create(Node::create(), Node::create());
+}
+
 ClickableNode* ClickableNode::create(std::string spriteNormal, std::string spriteSelectedResource)
 {
 	return ClickableNode::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource));
