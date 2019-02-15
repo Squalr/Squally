@@ -6,8 +6,8 @@
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/CCheckbox.h"
-#include "Engine/UI/Controls/CRadioButton.h"
+#include "Engine/UI/Controls/Checkbox.h"
+#include "Engine/UI/Controls/RadioButton.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/UIResources.h"
@@ -49,7 +49,7 @@ VideoTab::VideoTab()
 
 	ClickableNode* uncheckedClickableNode = ClickableNode::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);
 	ClickableNode* checkedClickableNode = ClickableNode::create(UIResources::Menus_OptionsMenu_ToggleButtonOn, UIResources::Menus_OptionsMenu_ToggleButtonOnHover);
-	this->fullScreenButton = CCheckbox::create(uncheckedClickableNode, checkedClickableNode, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(VideoTab::onFullScreenChanged, this));
+	this->fullScreenButton = Checkbox::create(uncheckedClickableNode, checkedClickableNode, ConfigManager::getIsFullScreen(), CC_CALLBACK_2(VideoTab::onFullScreenChanged, this));
 
 	this->label1080x768 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1080x768::create());
 	this->label1152x864 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution1152x864::create());
@@ -63,17 +63,17 @@ VideoTab::VideoTab()
 	this->label2560x1440 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution2560x1440::create());
 	this->label3840x2160 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution3840x2160::create());
 
-	this->option1080x768 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1152x864 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1280x720 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1280x960 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1280x1024 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1440x900 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1600x900 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1600x1024 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1920x1080 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option2560x1440 = CRadioButton::create(VideoTab::ResolutionGroupId);
-	this->option3840x2160 = CRadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1080x768 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1152x864 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1280x720 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1280x960 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1280x1024 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1440x900 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1600x900 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1600x1024 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1920x1080 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option2560x1440 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option3840x2160 = RadioButton::create(VideoTab::ResolutionGroupId);
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -284,7 +284,7 @@ void VideoTab::initializePositions()
 	this->option3840x2160->setPosition(Vec2((base + textOffset) + spacing * 2, baseY - offsetY * 2));
 }
 
-bool VideoTab::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
+bool VideoTab::onFullScreenChanged(Checkbox* checkbox, bool isFullScreen)
 {
 	ConfigManager::setIsFullScreen(isFullScreen);
 
@@ -300,7 +300,7 @@ bool VideoTab::onFullScreenChanged(CCheckbox* checkbox, bool isFullScreen)
 	return isFullScreen;
 }
 
-void VideoTab::onResolutionChanged(CRadioButton* radioButton)
+void VideoTab::onResolutionChanged(RadioButton* radioButton)
 {
 	if (radioButton == this->option1080x768)
 	{

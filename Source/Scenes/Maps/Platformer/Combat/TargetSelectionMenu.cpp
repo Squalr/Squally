@@ -8,7 +8,6 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Input/ClickableTextNode.h"
-#include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"

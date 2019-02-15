@@ -4,7 +4,7 @@
 
 namespace cocos2d
 {
-	class Sprite;
+	class Node;
 }
 
 class ClickableTextNode;

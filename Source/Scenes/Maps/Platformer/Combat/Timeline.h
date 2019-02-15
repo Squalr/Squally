@@ -7,9 +7,9 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CProgressBar;
 class LocalizedLabel;
 class PlatformerEntity;
+class ProgressBar;
 class TimelineEntry;
 
 class Timeline : public SmartNode
@@ -33,7 +33,7 @@ private:
 	void checkCombatComplete();
 	void updateTimeline(float dt);
 
-	CProgressBar* swordFill;
+	ProgressBar* swordFill;
 	cocos2d::Sprite* swordTop;
 	cocos2d::Node* timelineNode;
 	LocalizedLabel* waitLabel;

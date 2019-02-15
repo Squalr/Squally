@@ -3,7 +3,7 @@
 
 #include "Engine/GlobalScene.h"
 
-class CProgressBar;
+class ProgressBar;
 class SerializableMap;
 
 class LoadingScreen : public GlobalScene
@@ -33,7 +33,7 @@ private:
 	static bool isPreloadableSound(std::string filePath);
 
 	cocos2d::Node* backgroundNode;
-	CProgressBar* progressBar;
+	ProgressBar* progressBar;
 	SerializableMap* map;
 	std::function<void(SerializableMap*)> onLoadCallback;
 

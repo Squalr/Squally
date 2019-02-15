@@ -9,7 +9,7 @@ namespace cocos2d
 	class Label;
 }
 
-class CSlider;
+class Slider;
 
 class GeneralTab : public SmartNode
 {
@@ -31,6 +31,6 @@ private:
 
 	cocos2d::Sprite* musicIcon;
 	cocos2d::Sprite* soundIcon;
-	CSlider* musicSlider;
-	CSlider* soundSlider;
+	Slider* musicSlider;
+	Slider* soundSlider;
 };

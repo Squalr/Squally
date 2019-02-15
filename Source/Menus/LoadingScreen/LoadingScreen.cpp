@@ -10,7 +10,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
-#include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
@@ -38,7 +38,7 @@ void LoadingScreen::registerGlobalScene()
 LoadingScreen::LoadingScreen()
 {
 	this->backgroundNode = Node::create();
-	this->progressBar = CProgressBar::create(Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrame), Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrameFill));
+	this->progressBar = ProgressBar::create(Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrame), Sprite::create(UIResources::Menus_LoadingMenu_LoadingFrameFill));
 
 	this->addChild(this->backgroundNode);
 	this->addChild(this->progressBar);

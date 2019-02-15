@@ -2,13 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Node;
-	class Sprite;
-	class Label;
-}
-
 class LocalizedString;
 class ClickableTextNode;
 

@@ -147,13 +147,10 @@ namespace UIResources
 	extern const std::string Menus_Buttons_ReturnButtonHover;
 	extern const std::string Menus_Buttons_SaveButton;
 	extern const std::string Menus_Buttons_SaveButtonHover;
-	extern const std::string Menus_Buttons_Scroll;
-	extern const std::string Menus_Buttons_ScrollAlt;
-	extern const std::string Menus_Buttons_ScrollAltHover;
 	extern const std::string Menus_Buttons_SettingsButton;
 	extern const std::string Menus_Buttons_SettingsButtonHover;
 	extern const std::string Menus_Buttons_SliderButton;
-	extern const std::string Menus_Buttons_SliderButtonHover;
+	extern const std::string Menus_Buttons_SliderButtonSelected;
 	extern const std::string Menus_Buttons_StarButton;
 	extern const std::string Menus_Buttons_StarButtonHover;
 	extern const std::string Menus_Buttons_TrashV2Button;

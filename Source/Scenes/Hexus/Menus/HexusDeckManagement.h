@@ -12,12 +12,12 @@ namespace cocos2d
 
 class Card;
 class CardData;
-class CCheckbox;
+class Checkbox;
+class ClickableNode;
+class ClickableTextNode;
 class ConstantString;
 class LocalizedLabel;
 class MenuCard;
-class ClickableNode;
-class ClickableTextNode;
 class ToggleGroup;
 class ScrollPane;
 
@@ -46,7 +46,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onBackClick(ClickableNode* menuSprite);
-	void onToggleSelect(CCheckbox* activeToggle);
+	void onToggleSelect(Checkbox* activeToggle);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void rebuildCardLists();
 	void rebuildCardList(std::map<CardData*, int> cards, std::map<CardData*, MenuCard*> displayCards);
@@ -68,11 +68,11 @@ private:
 	LocalizedLabel* deckLabel;
 	cocos2d::Sprite* titleSprite;
 	ClickableTextNode* backButton;
-	CCheckbox* allButton;
-	CCheckbox* specialButton;
-	CCheckbox* binaryButton;
-	CCheckbox* decimalButton;
-	CCheckbox* hexButton;
+	Checkbox* allButton;
+	Checkbox* specialButton;
+	Checkbox* binaryButton;
+	Checkbox* decimalButton;
+	Checkbox* hexButton;
 	ToggleGroup* filters;
 
 	LocalizedLabel* totalCardsInDeckLabel;

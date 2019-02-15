@@ -1,48 +1,66 @@
 ﻿#include "ScrollPane.h"
 
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCClippingRectangleNode.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCEventListenerMouse.h"
-#include "cocos/ui/UIScrollView.h"
 
 #include "Engine/Events/MouseEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Engine/UI/Controls/Slider.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-const Size ScrollPane::marginSize = Size(24.0f, 24.0f);
-const float ScrollPane::scrollSpeed = 64.0f;
+const float ScrollPane::DragSpeed = 2.0f;
+const float ScrollPane::ScrollSpeed = 64.0f;
 
-ScrollPane* ScrollPane::create(Size initPaneSize, Color4B initBackgroundColor)
+ScrollPane* ScrollPane::create(Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, Color4B initBackgroundColor)
 {
-	ScrollPane* instance = new ScrollPane(initPaneSize, initBackgroundColor);
+	ScrollPane* instance = new ScrollPane(paneSize, sliderResource, sliderResourceSelected, paddingSize, marginSize, initBackgroundColor);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ScrollPane::ScrollPane(Size initPaneSize, Color4B initBackgroundColor)
+ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, Color4B initBackgroundColor)
 {
-	this->paneSize = initPaneSize;
-	this->backgroundColor = initBackgroundColor;
+	this->paneSize = paneSize;
+	this->paddingSize = paddingSize;
+	this->marginSize = marginSize;
 
-	this->background = LayerColor::create(this->backgroundColor, initPaneSize.width + marginSize.width * 2.0f,
-			initPaneSize.height + marginSize.height * 2.0f);
-	this->scrollView = ScrollView::create();
+	this->initialDragDepth = 0.0f;
+	this->background = LayerColor::create(initBackgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
+	this->dragHitbox = ClickableNode::create();
+	this->contentClip = ClippingRectangleNode::create(Rect(Vec2::ZERO, this->paneSize));
+	this->content = Node::create();
 
-	this->scrollView->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->scrollView->setDirection(ScrollView::Direction::VERTICAL);
-	this->scrollView->setContentSize(Size(initPaneSize.width, initPaneSize.height));
-	this->scrollView->setScrollBarAutoHideEnabled(false);
-	this->scrollView->setScrollBarOpacity(196);
-	this->scrollView->setCascadeOpacityEnabled(true);
-	this->setCascadeOpacityEnabled(true);
+	DrawNode* scrollBounds = DrawNode::create();
+	const float scrollTrackWidth = 16.0f;
+	const float scrollTrackStopOffset = 24.0f;
+	const float dragHorizontalOffset = 32.0f;
 
-	// We override addchild to pass through to the scrollview -- but in this case we want to avoid that
+	scrollBounds->drawSolidRect(Vec2(-scrollTrackWidth / 2.0f, -this->paneSize.height / 2.0f - this->paddingSize.height / 2.0f), Vec2(scrollTrackWidth / 2.0f, this->paneSize.height / 2.0f + this->paddingSize.height / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
+	scrollBounds->setContentSize(Size(scrollTrackWidth, this->paneSize.height + this->paddingSize.height - scrollTrackStopOffset));
+
+	this->scrollBar = Slider::create(scrollBounds, Node::create(), sliderResource, sliderResourceSelected, 0.0f, false);
+
+	this->dragHitbox->setContentSize(Size(this->paneSize.width - dragHorizontalOffset, this->paneSize.height));
+	this->content->setContentSize(Size(this->paneSize.width, this->paneSize.height));
+
+	this->dragHitbox->setMouseOverSound("");
+
+	// Note: We override addChild to pass through to the clipping node. Do not call directly for these, call through the parent class.
 	super::addChild(this->background);
-	super::addChild(this->scrollView);
+	super::addChild(this->dragHitbox);
+	super::addChild(this->contentClip);
+	super::addChild(this->scrollBar);
+	this->contentClip->addChild(this->content);
 }
 
 ScrollPane::~ScrollPane()
@@ -53,31 +71,83 @@ void ScrollPane::onEnter()
 {
 	super::onEnter();
 
-	this->scrollView->scrollToPercentVertical(100.0f, 0.0f, false);
+	this->setScrollPercentage(0.0f);
+}
+
+void ScrollPane::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->updateScrollBounds();
 }
 
 void ScrollPane::initializePositions()
 {
 	super::initializePositions();
 
-	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width,
-			-this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
+	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
+	this->contentClip->setPosition(Vec2(-this->paneSize.width / 2.0f, -this->paneSize.height / 2.0f));
+	this->content->setPosition(Vec2(this->paneSize.width / 2.0f, this->paneSize.height));
+	this->scrollBar->setPosition(Vec2(this->paneSize.width / 2.0f, 0.0f));
 }
 
 void ScrollPane::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
-
-	mouseScrollListener->onMouseScroll = CC_CALLBACK_1(ScrollPane::onMouseScroll, this);
-	mouseScrollListener->onMouseMove = CC_CALLBACK_1(ScrollPane::onScrollViewMouseMove, this);
-
-	this->scrollView->addEventListener([] (Ref* target, ScrollView::EventType event) {
-		(void) target;
-		(void) event;
+	this->scrollBar->setProgressUpdateCallback([=](float progress)
+	{
+		this->setScrollPercentage(progress, false);
 	});
-	this->addEventListener(mouseScrollListener);
+
+	this->dragHitbox->setMouseScrollCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	{
+		this->scrollBy(args->scrollDelta.y * ScrollPane::ScrollSpeed);
+	});
+
+	this->dragHitbox->setMouseDownCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	{
+		this->initialDragDepth = this->getScrollDepth();
+	});
+
+	this->dragHitbox->setMouseDragCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	{
+		float dragDelta = (args->mouseCoords.y - args->mouseInitialCoords.y) * ScrollPane::DragSpeed;
+
+		this->scrollTo(this->initialDragDepth + dragDelta);
+	});
+}
+
+void ScrollPane::setScrollPercentage(float percentage, bool updateScrollBars)
+{
+	this->scrollTo((this->maxScrollDepth - this->minScrollDepth) * percentage, updateScrollBars);
+}
+
+void ScrollPane::scrollBy(float delta, bool updateScrollBars)
+{
+	this->scrollTo(this->getScrollDepth() + delta, updateScrollBars);
+}
+
+void ScrollPane::scrollTo(float position, bool updateScrollBars)
+{
+	this->content->setPositionY(MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth));
+
+	if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+	{
+		this->scrollBar->setProgress(this->getScrollPercentage());
+	}
+}
+
+float ScrollPane::getScrollPercentage()
+{
+	float denominator = this->maxScrollDepth - this->minScrollDepth;
+
+	return denominator == 0.0f ? 0.0f : (this->content->getPositionY() - this->minScrollDepth) / denominator;
+}
+
+float ScrollPane::getScrollDepth()
+{
+	return this->content->getPositionY() - this->minScrollDepth;
 }
 
 Size ScrollPane::getPaneSize()
@@ -85,72 +155,38 @@ Size ScrollPane::getPaneSize()
 	return this->paneSize;
 }
 
-Size ScrollPane::getContentSize()
-{
-	return this->scrollView->getInnerContainerSize();
-}
-
 void ScrollPane::addChild(Node* child)
 {
-	this->scrollView->addChild(child);
+	this->content->addChild(child);
+
+	this->updateScrollBounds();
 }
 
 void ScrollPane::removeChild(Node* child, bool cleanup)
 {
-	this->scrollView->removeChild(child, cleanup);
+	this->content->removeChild(child, cleanup);
+
+	this->updateScrollBounds();
 }
 
 void ScrollPane::removeAllChildren()
 {
-	this->scrollView->removeAllChildren();
+	this->content->removeAllChildren();
+
+	this->updateScrollBounds();
 }
 
-void ScrollPane::fitSizeToContent(Rect padding)
+void ScrollPane::updateScrollBounds()
 {
-	Vec2 oldScrollDepth = this->scrollView->getInnerContainerPosition();
-	bool firstLoad = this->scrollView->getScrolledPercentVertical() == 0.0f;
-	float minHeight = this->scrollView->getChildren().size() > 0
-			? (this->scrollView->getChildren().front()->getPositionY() -
-			this->scrollView->getChildren().front()->getContentSize().height / 2.0f) : 0.0f;
-	float maxHeight = this->paneSize.height;
+	this->minScrollDepth = this->paneSize.height - this->paddingSize.height;
 
-	for (auto it = this->scrollView->getChildren().begin(); it != this->scrollView->getChildren().end(); it++)
+	auto children = this->content->getChildren();
+	float discoveredLowestItem = 0.0f;
+
+	for (auto it = children.begin(); it != children.end(); it++)
 	{
-		(*it)->setPosition((*it)->getPosition() + padding.origin);
-		minHeight = std::min((*it)->getPositionY() - (*it)->getContentSize().height / 2.0f, minHeight);
-		maxHeight = std::max((*it)->getPositionY() + (*it)->getContentSize().height / 2.0f, maxHeight);
+		discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY());
 	}
-	
-	this->scrollView->setInnerContainerSize(Size(this->paneSize.width + padding.origin.y + padding.size.width,
-			maxHeight + minHeight + padding.origin.x + padding.size.height));
-	this->scrollView->setInnerContainerPosition(oldScrollDepth);
 
-	this->scrollView->scrollToPercentVertical(firstLoad ? 0.0f : this->scrollView->getScrolledPercentVertical(), 0.0f,
-			false);
-}
-
-void ScrollPane::onMouseScroll(EventMouse* event)
-{
-	if (GameUtils::isVisible(this) && GameUtils::intersects(this->background, Vec2(event->getCursorX(),
-			event->getCursorY())))
-	{
-		this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
-
-		MouseEvents::TriggerClickableMouseOutEvent();
-		// MouseEvents::TriggerMouseScroll();
-	}
-}
-
-void ScrollPane::onScrollViewMouseMove(EventMouse* event)
-{
-	if (GameUtils::isVisible(this) && GameUtils::intersects(this->background, Vec2(event->getCursorX(),
-			event->getCursorY())))
-	{
-		// Start drag animation
-		if (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
-		{
-			MouseEvents::TriggerDragEvent();
-			MouseEvents::TriggerClickableMouseOutEvent();
-		}
-	}
+	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
 }

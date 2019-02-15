@@ -8,7 +8,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class BetterScrollPane;
+class ScrollPane;
 
 class MemesTab : public SmartNode
 {
@@ -26,7 +26,7 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	BetterScrollPane* contentScrollPane;
+	ScrollPane* contentScrollPane;
 	LocalizedLabel* developersTitle;
 	cocos2d::Sprite* zacSprite;
 	cocos2d::Sprite* mattSprite;

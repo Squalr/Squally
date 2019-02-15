@@ -96,8 +96,15 @@ void MouseState::onMouseDown(EventMouse* event)
 
 void MouseState::onMouseUp(EventMouse* event)
 {
+	const float NonDragTolerance = 4.0f;
+
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
 	MouseState::isLeftClicked = (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT);
+
+	if (MouseState::mousePosition.distance(MouseState::mouseInitialPosition) < NonDragTolerance)
+	{
+		MouseState::isDragging = false;
+	}
 
 	MouseEvents::TriggerMouseUp(MouseState::getMouseState());
 

@@ -1,10 +1,10 @@
-#include "CSlider.h"
+#include "Slider.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCClippingRectangleNode.h"
 
 #include "Engine/Input/ClickableNode.h"
-#include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -12,65 +12,65 @@
 
 using namespace cocos2d;
 
-CSlider* CSlider::create(std::string frameResource, std::string fillResource, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
+Slider* Slider::create(std::string frameResource, std::string fillResource, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
 {
-	return CSlider::create(Sprite::create(frameResource), Sprite::create(fillResource), slideResource, slideResourceSelected, progress, isHorizontal);
+	return Slider::create(Sprite::create(frameResource), Sprite::create(fillResource), slideResource, slideResourceSelected, progress, isHorizontal);
 }
 
-CSlider* CSlider::create(Node* frame, Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
+Slider* Slider::create(Node* frame, Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
 {
-	CSlider* instance = new CSlider(frame, fill, slideResource, slideResourceSelected, progress, isHorizontal);
+	Slider* instance = new Slider(frame, fill, slideResource, slideResourceSelected, progress, isHorizontal);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CSlider::CSlider(Node* frame, Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
+Slider::Slider(Node* frame, Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
 {
 	this->progress = progress;
 	this->isHorizontal = isHorizontal;
 	this->progressUpdateEvent = nullptr;
-	this->progressBar = CProgressBar::create(frame, fill);
+	this->progressBar = ProgressBar::create(frame, fill);
 	this->progressBarHitBox = ClickableNode::create();
 	this->slide = ClickableNode::create(slideResource, slideResourceSelected);
 
 	this->setProgress(this->progress);
 
 	this->progressBarHitBox->setContentSize(this->progressBar->getContentSize());
-	this->progressBarHitBox->setMouseDownCallback(CC_CALLBACK_2(CSlider::onDrag, this));
-	this->progressBarHitBox->setMouseDragCallback(CC_CALLBACK_2(CSlider::onDrag, this));
-	this->slide->setMouseDragCallback(CC_CALLBACK_2(CSlider::onDrag, this));
+	this->progressBarHitBox->setMouseDownCallback(CC_CALLBACK_2(Slider::onDrag, this));
+	this->progressBarHitBox->setMouseDragCallback(CC_CALLBACK_2(Slider::onDrag, this));
+	this->slide->setMouseDragCallback(CC_CALLBACK_2(Slider::onDrag, this));
 
 	this->progressBar->addChild(this->progressBarHitBox);
 	this->addChild(this->progressBar);
 	this->addChild(this->slide);
 }
 
-CSlider::~CSlider()
+Slider::~Slider()
 {
 }
 
-void CSlider::onEnter()
+void Slider::onEnter()
 {
 	super::onEnter();
 
 	this->setProgress(progress);
 }
 
-void CSlider::initializePositions()
+void Slider::initializePositions()
 {
 	super::initializePositions();
 
 	this->updateSliderPosition();
 }
 
-void CSlider::setProgressUpdateCallback(std::function<void(float progress)> callback)
+void Slider::setProgressUpdateCallback(std::function<void(float progress)> callback)
 {
 	this->progressUpdateEvent = callback;
 }
 
-void CSlider::updateSliderPosition()
+void Slider::updateSliderPosition()
 {
 	if (this->isHorizontal)
 	{
@@ -82,7 +82,7 @@ void CSlider::updateSliderPosition()
 	}
 }
 
-void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
+void Slider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 {
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 
@@ -102,7 +102,7 @@ void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 	}
 }
 
-void CSlider::setProgress(float newProgress)
+void Slider::setProgress(float newProgress)
 {
 	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
 

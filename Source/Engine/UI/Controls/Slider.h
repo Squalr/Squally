@@ -11,20 +11,20 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class CProgressBar;
+class ProgressBar;
 
-class CSlider : public SmartNode
+class Slider : public SmartNode
 {
 public:
-	static CSlider* create(std::string frameResource, std::string fillResource, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
-	static CSlider* create(cocos2d::Node* frame, cocos2d::Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
+	static Slider* create(std::string frameResource, std::string fillResource, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
+	static Slider* create(cocos2d::Node* frame, cocos2d::Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
 
 	void setProgress(float newProgress);
 	void setProgressUpdateCallback(std::function<void(float progress)> callback);
 
 protected:
-	CSlider(cocos2d::Node* frame, cocos2d::Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
-	virtual ~CSlider();
+	Slider(cocos2d::Node* frame, cocos2d::Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
+	virtual ~Slider();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -35,7 +35,7 @@ private:
 	void onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args);
 
 	ClickableNode* slide;
-	CProgressBar* progressBar;
+	ProgressBar* progressBar;
 	ClickableNode* progressBarHitBox;
 
 	bool isHorizontal;

@@ -52,7 +52,7 @@ MinigamesMenu::MinigamesMenu()
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
 	this->backgroundNode = Node::create();
-	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), Color4B(0, 0, 0, 127));
+	this->scrollPane = ScrollPane::create(Size(1152.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 
 	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 	LocalizedLabel*	backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
@@ -186,20 +186,18 @@ void MinigamesMenu::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Size paneSize = this->scrollPane->getPaneSize();
 
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->hexusButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 7 + 128.0f));
-	this->hexusPuzzlesButton->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 6 + 128.0f));
-	this->comingSoonButton1->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 5 + 128.0f));
-	this->comingSoonButton2->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 4 + 128.0f));
-	this->comingSoonButton3->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 3 + 128.0f));
-	this->comingSoonButton4->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 2 + 128.0f));
-	this->comingSoonButton5->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 1 + 128.0f));
-	this->comingSoonButton6->setPosition(Vec2(paneSize.width / 2.0f, 192.0f * 0 + 128.0f));
+	this->hexusButton->setPosition(Vec2(0.0f, -192.0f * 0 - 128.0f));
+	this->hexusPuzzlesButton->setPosition(Vec2(0.0f, -192.0f * 1 - 128.0f));
+	this->comingSoonButton1->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
+	this->comingSoonButton2->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
+	this->comingSoonButton3->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
+	this->comingSoonButton4->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
+	this->comingSoonButton5->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
+	this->comingSoonButton6->setPosition(Vec2(0.0f, -192.0f * 7 - 128.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
-	this->scrollPane->fitSizeToContent();
 }
 
 void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
