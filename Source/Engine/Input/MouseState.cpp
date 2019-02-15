@@ -10,7 +10,9 @@
 using namespace cocos2d;
 
 MouseState* MouseState::instance = nullptr;
+Vec2 MouseState::mouseInitialPosition = Vec2::ZERO;
 Vec2 MouseState::mousePosition = Vec2::ZERO;
+Vec2 MouseState::scrollDelta = Vec2::ZERO;
 bool MouseState::canClick = false;
 bool MouseState::isDragging = false;
 bool MouseState::isLeftClicked = false;
@@ -38,7 +40,7 @@ MouseState::~MouseState()
 
 MouseEvents::MouseEventArgs MouseState::getMouseState()
 {
-	return MouseEvents::MouseEventArgs(MouseState::mousePosition, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
+	return MouseEvents::MouseEventArgs(MouseState::mouseInitialPosition, MouseState::mousePosition, MouseState::scrollDelta, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
 }
 
 Vec2 MouseState::getMousePosition()
@@ -67,26 +69,26 @@ void MouseState::initializeListeners()
 		CC_CALLBACK_1(MouseState::onMouseDragEvent, this)
 	);
 
-	EventListenerCustom* mouseScrollListener = EventListenerCustom::create(
-		MouseEvents::MouseScrollEvent,
-		CC_CALLBACK_0(MouseState::onMouseScroll, this)
-	);
-
 	mouseListener->onMouseMove = CC_CALLBACK_1(MouseState::onMouseMove, this);
 	mouseListener->onMouseDown = CC_CALLBACK_1(MouseState::onMouseDown, this);
 	mouseListener->onMouseUp = CC_CALLBACK_1(MouseState::onMouseUp, this);
+	mouseListener->onMouseScroll = CC_CALLBACK_1(MouseState::onMouseScroll, this);
 
 	this->addGlobalEventListener(mouseListener);
 	this->addGlobalEventListener(clickableMouseOverListener);
 	this->addGlobalEventListener(clickableMouseOutListener);
 	this->addGlobalEventListener(mouseDragListener);
-	this->addGlobalEventListener(mouseScrollListener);
 }
 
 void MouseState::onMouseDown(EventMouse* event)
 {
 	MouseState::mousePosition = Vec2(event->getCursorX(), event->getCursorY());
 	MouseState::isLeftClicked = (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT);
+
+	if (!MouseState::isDragging)
+	{
+		MouseState::mouseInitialPosition = MouseState::mousePosition;
+	}
 
 	MouseEvents::TriggerMouseDown(MouseState::getMouseState());
 	MouseEvents::TriggerStateChange(MouseState::getMouseState());
@@ -116,9 +118,14 @@ void MouseState::onMouseMove(EventMouse* event)
 	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
-void MouseState::onMouseScroll()
+void MouseState::onMouseScroll(cocos2d::EventMouse* event)
 {
+	MouseState::scrollDelta = Vec2(event->getScrollX(), event->getScrollY());
+
+	MouseEvents::TriggerMouseScroll(MouseState::getMouseState());
 	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
+
+	MouseState::scrollDelta = Vec2::ZERO;
 }
 
 void MouseState::onClickableMouseOverEvent(EventCustom* eventCustom)

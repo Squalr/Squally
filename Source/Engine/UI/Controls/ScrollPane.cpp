@@ -137,7 +137,7 @@ void ScrollPane::onMouseScroll(EventMouse* event)
 		this->scrollView->scrollChildren(Vec2(0.0f, event->getScrollY() * ScrollPane::scrollSpeed));
 
 		MouseEvents::TriggerClickableMouseOutEvent();
-		MouseEvents::TriggerMouseScroll();
+		// MouseEvents::TriggerMouseScroll();
 	}
 }
 
