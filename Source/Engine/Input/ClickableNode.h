@@ -21,8 +21,6 @@ public:
 	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
 	void setContentSize(const cocos2d::Size & size) override;
-	void setContentScale(float scale);
-	void setOffsetCorrection(cocos2d::Vec2 newOffsetCorrection);
 	void setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseOverCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut);
@@ -52,7 +50,6 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void update(float) override;
 	void setDebugDrawPosition();
-	bool intersects(cocos2d::Vec2 mousePos);
 	void showSprite(cocos2d::Node* sprite);
 	void clearState();
 	void mouseMove(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr, bool isRefresh = false);
@@ -64,7 +61,6 @@ private:
 	std::string clickSound;
 
 	cocos2d::Node* currentSprite;
-	cocos2d::Vec2 offsetCorrection;
 
 	bool interactionEnabled;
 	bool isClickInit;
