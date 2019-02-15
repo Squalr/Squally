@@ -65,7 +65,6 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 
 	this->debugHitbox->setVisible(false);
 
-	this->offsetCorrection = Vec2::ZERO;
 	this->debugCachedPos = Vec2::ZERO;
 	this->setContentSize(this->sprite->getContentSize());
 
@@ -193,17 +192,6 @@ void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
 	this->modifier = modifier;
 }
 
-void ClickableNode::setContentScale(float scale)
-{
-	this->setContentSize(this->sprite->getContentSize() * scale);
-}
-
-void ClickableNode::setOffsetCorrection(Vec2 newOffsetCorrection)
-{
-	this->offsetCorrection = newOffsetCorrection;
-	this->debugHitbox->setPosition(this->offsetCorrection);
-}
-
 void ClickableNode::setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
@@ -242,11 +230,6 @@ void ClickableNode::setMouseOverSound(std::string soundResource)
 void ClickableNode::setClickSound(std::string soundResource)
 {
 	this->clickSound = soundResource;
-}
-
-bool ClickableNode::intersects(Vec2 mousePos)
-{
-	return GameUtils::intersects(this, Vec2(mousePos.x, mousePos.y) + this->offsetCorrection);
 }
 
 void ClickableNode::showSprite(Node* sprite)
@@ -296,7 +279,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		this->clearState();
 	}
 
-	if (!args->handled && this->intersects(args->mouseCoords))
+	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
 		MouseEvents::TriggerClickableMouseOverEvent();
 
@@ -347,7 +330,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		return;
 	}
 
-	if (this->intersects(args->mouseCoords) && args->isLeftClicked)
+	if (GameUtils::intersects(this, Vec2(args->mouseCoords)) && args->isLeftClicked)
 	{
 		if (this->mouseDownEvent != nullptr)
 		{
@@ -381,7 +364,7 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 
 	this->isClickInit = false;
 
-	if (this->intersects(args->mouseCoords) && this->mouseClickEvent != nullptr && !args->isDragging && this->isClicked)
+	if (GameUtils::intersects(this, Vec2(args->mouseCoords)) && this->mouseClickEvent != nullptr && !args->isDragging && this->isClicked)
 	{
 		this->isClicked = false;
 
@@ -414,7 +397,7 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 		return;
 	}
 
-	if (this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
+	if (this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
 		this->mouseScrollEvent(this, args);
 	}

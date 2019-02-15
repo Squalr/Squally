@@ -224,6 +224,20 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	return depth;
 }
 
+float GameUtils::getScale(cocos2d::Node* node)
+{
+	float scale = 1.0f;
+
+	while (node != nullptr)
+	{
+		scale *= node->getScale();
+
+		node = node->getParent();
+	}
+
+	return scale;
+}
+
 Vec2 GameUtils::getWorldCoords(Node* node)
 {
 	if (node == nullptr)
@@ -267,9 +281,9 @@ Rect GameUtils::getScreenBounds(Node* node)
 		return Rect::ZERO;
 	}
 
-	Rect worldRect = node->getBoundingBox();
+	Rect worldRect = node->getBoundingBoxNoTransform();
 	Vec3 worldCoordsA = GameUtils::getWorldCoords3D(node);
-	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f);
+	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f) * GameUtils::getScale(node);
 
 	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
 	Vec2 resultCoordsB = Camera::getDefaultCamera()->projectGL(worldCoordsB);

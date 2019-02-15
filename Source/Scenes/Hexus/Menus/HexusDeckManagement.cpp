@@ -320,7 +320,7 @@ void HexusDeckManagement::initializePositions()
 			int x = index % cardsPerRow;
 			int y = index / cardsPerRow;
 
-			card->setPosition(Vec2((x - 2) * cardGridSize.width, y * -cardGridSize.height - 128.0f));
+			card->setPosition(Vec2((float(x) - 1.5f) * cardGridSize.width, y * -cardGridSize.height - 128.0f));
 
 			if (card->isVisible())
 			{

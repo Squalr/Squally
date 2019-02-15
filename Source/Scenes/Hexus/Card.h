@@ -63,7 +63,6 @@ public:
 	void addOperation(Operation operation);
 	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
-	void setScale(float scale) override;
 	void disableInteraction();
 	void enableInteraction();
 	void setMouseOverCallback(std::function<void(Card*)> callback);

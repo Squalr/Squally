@@ -173,16 +173,6 @@ void Card::enableInteraction()
 	this->cardSelect->enableInteraction();
 }
 
-void Card::setScale(float scale)
-{
-	SmartNode::setScale(scale);
-	this->cardSelect->setContentScale(scale);
-
-	// Seriously I do not understand why this is needed. Cocos2d-x is pretty shitty when it comes to dealing with scale.
-	const Vec2 cardOffsetCorrection = Vec2(28.0f, 36.0f);
-	this->cardSelect->setOffsetCorrection(cardOffsetCorrection);
-}
-
 Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned int immediate)
 {
 	switch (playedCardType)
