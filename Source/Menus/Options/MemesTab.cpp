@@ -6,7 +6,7 @@
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/BetterScrollPane.h"
+#include "Engine/UI/Controls/ScrollPane.h"
 
 #include "Resources/UIResources.h"
 
@@ -25,7 +25,7 @@ MemesTab* MemesTab::create()
 
 MemesTab::MemesTab()
 {
-	this->contentScrollPane = BetterScrollPane::create(Size (672.0f, 544.0f));
+	this->contentScrollPane = ScrollPane::create(Size(672.0f, 544.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->developersTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Credits_Developers::create());
 	this->zacSprite = Sprite::create(UIResources::Menus_CreditsMenu_Zac);
 	this->mattSprite = Sprite::create(UIResources::Menus_CreditsMenu_Matt);
@@ -67,6 +67,6 @@ void MemesTab::initializePositions()
 
 	this->developersTitle->setPosition(Vec2(paneSize.width / 2.0f, 0.0f));
 	this->zacSprite->setPosition(Vec2(paneSize.width / 2.0f - 224.0f, -128.0f));
-	this->mattSprite->setPosition(Vec2(paneSize.width / 2.0f, -2128.0f));
-	this->nathanSprite->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -1280.0f));
+	this->mattSprite->setPosition(Vec2(paneSize.width / 2.0f, -128.0f));
+	this->nathanSprite->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -128.0f));
 }

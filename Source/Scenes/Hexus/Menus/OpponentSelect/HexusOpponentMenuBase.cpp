@@ -30,7 +30,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
-	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), Color4B(0, 0, 0, 196));
+	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
 	this->opponentSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_SelectOpponent::create());
 
@@ -143,8 +143,6 @@ void HexusOpponentMenuBase::initializePositions()
 	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 64.0f));
 
-	Size scrollPaneSize = this->scrollPane->getPaneSize();
-
 	int index = 0;
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
@@ -152,12 +150,11 @@ void HexusOpponentMenuBase::initializePositions()
 		int x = index % 3;
 		int y = (this->opponents.size() - 1 - index + (3 - this->opponents.size() % 3)) / 3 - (this->opponents.size() % 3 == 0 ? 1 : 0);
 
-		(*it)->setPosition(Vec2(scrollPaneSize.width / 2.0f - 496.0f + 496.0f * x, y * 480.0f + 240.0f));
+		(*it)->setPosition(Vec2(496.0f * float(x - 1), y * -480.0f - 240.0f));
 
 		index++;
 	}
 
-	this->scrollPane->fitSizeToContent();
 	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
 	this->shopButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f - 256.0f, visibleSize.height - 64.0f));
 	this->opponentSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));

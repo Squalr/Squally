@@ -15,14 +15,13 @@ namespace cocos2d
 class Card;
 class CardData;
 class ConstantString;
+class ClickableNode;
+class ClickableTextNode;
 class LocalizedLabel;
 class MenuCard;
-class ClickableNode;
-class ClickableNode;
 class ScrollPane;
 class Shopkeeper;
 class SmartAnimationNode;
-class ClickableTextNode;
 
 class HexusStoreMenu : public GlobalScene
 {

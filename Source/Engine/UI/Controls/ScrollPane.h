@@ -5,45 +5,54 @@
 
 namespace cocos2d
 {
+	class ClippingRectangleNode;
+	class DrawNode;
 	class EventMouse;
 	class LayerColor;
-	class Node;
-
-	namespace ui
-	{
-		class ScrollView;
-	}
 }
+
+class ClickableNode;
+class Slider;
 
 class ScrollPane : public SmartNode
 {
 public:
-	static ScrollPane * create(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor = cocos2d::Color4B(0, 0, 0, 196));
+	static ScrollPane* create(cocos2d::Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize = cocos2d::Size(0.0f, 24.0f), cocos2d::Size marginSize = cocos2d::Size(24.0f, 24.0f), cocos2d::Color4B initBackgroundColor = cocos2d::Color4B(0, 0, 0, 196));
+
+	void setScrollPercentage(float percentage, bool updateScrollBars = true);
+	void scrollBy(float delta, bool updateScrollBars = true);
+	void scrollTo(float position, bool updateScrollBars = true);
+	float getScrollPercentage();
+	float getScrollDepth();
 
 	cocos2d::Size getPaneSize();
-	cocos2d::Size getContentSize();
-	void fitSizeToContent(cocos2d::Rect padding = cocos2d::Rect::ZERO);
 	void addChild(cocos2d::Node* child) override;
 	void removeChild(cocos2d::Node* child, bool cleanup = true) override;
 	void removeAllChildren() override;
 
 private:
 	typedef SmartNode super;
-	ScrollPane(cocos2d::Size initPaneSize, cocos2d::Color4B initBackgroundColor);
+	ScrollPane(cocos2d::Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, cocos2d::Color4B initBackgroundColor);
 	virtual ~ScrollPane();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void initializePositions() override;
-	void onMouseScroll(cocos2d::EventMouse* event);
-	void onScrollViewMouseMove(cocos2d::EventMouse* event);
+	void updateScrollBounds();
 
+	float initialDragDepth;
+	float minScrollDepth;
+	float maxScrollDepth;
+	cocos2d::Size paddingSize;
+	cocos2d::Size marginSize;
 	cocos2d::Size paneSize;
-	cocos2d::Color4B backgroundColor;
 	cocos2d::LayerColor* background;
-	cocos2d::ui::ScrollView* scrollView;
-	
-	static const cocos2d::Size marginSize;
-	static const float scrollSpeed;
-};
+	ClickableNode* dragHitbox;
+	cocos2d::ClippingRectangleNode* contentClip;
+	cocos2d::Node* content;
+	Slider* scrollBar;
 
+	static const float DragSpeed;
+	static const float ScrollSpeed;
+};

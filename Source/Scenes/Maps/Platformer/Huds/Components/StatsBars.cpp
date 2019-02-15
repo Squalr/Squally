@@ -6,7 +6,7 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 
@@ -32,8 +32,8 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->target = nullptr;
 	this->frame = Sprite::create(UIResources::HUD_Frame);
-	this->healthBar = CProgressBar::create(Sprite::create(UIResources::HUD_HPBarFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
-	this->manaBar = CProgressBar::create(Sprite::create(UIResources::HUD_MPBarFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
+	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_HPBarFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
+	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_MPBarFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
 	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
 	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
 	this->healthNumerator = ConstantString::create();

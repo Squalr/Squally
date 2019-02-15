@@ -1,4 +1,4 @@
-#include "CCheckbox.h"
+#include "Checkbox.h"
 
 #include "cocos/base/ccMacros.h"
 
@@ -6,18 +6,18 @@
 
 using namespace cocos2d;
 
-CCheckbox* CCheckbox::create(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
-		std::function<bool(CCheckbox*, bool)> callback)
+Checkbox* Checkbox::create(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
+		std::function<bool(Checkbox*, bool)> callback)
 {
-	CCheckbox* instance = new CCheckbox(uncheckedButton, checkedButton, initialState, callback);
+	Checkbox* instance = new Checkbox(uncheckedButton, checkedButton, initialState, callback);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CCheckbox::CCheckbox(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
-		std::function<bool(CCheckbox*, bool)> callback)
+Checkbox::Checkbox(ClickableNode* uncheckedButton, ClickableNode* checkedButton, bool initialState,
+		std::function<bool(Checkbox*, bool)> callback)
 {
 	this->isToggled = initialState;
 	this->toggleCallback = callback;
@@ -29,8 +29,8 @@ CCheckbox::CCheckbox(ClickableNode* uncheckedButton, ClickableNode* checkedButto
 	this->clickableMenus->push_back(this->offSwitch);
 	this->clickableMenus->push_back(this->onSwitch);
 
-	this->offSwitch->setClickCallback(CC_CALLBACK_0(CCheckbox::onToggle, this));
-	this->onSwitch->setClickCallback(CC_CALLBACK_0(CCheckbox::onUntoggle, this));
+	this->offSwitch->setClickCallback(CC_CALLBACK_0(Checkbox::onToggle, this));
+	this->onSwitch->setClickCallback(CC_CALLBACK_0(Checkbox::onUntoggle, this));
 
 	this->addChild(this->offSwitch);
 	this->addChild(this->onSwitch);
@@ -45,28 +45,28 @@ CCheckbox::CCheckbox(ClickableNode* uncheckedButton, ClickableNode* checkedButto
 	}
 }
 
-CCheckbox::~CCheckbox()
+Checkbox::~Checkbox()
 {
 }
 
-void CCheckbox::setCallback(std::function<bool(CCheckbox*, bool)> callback)
+void Checkbox::setCallback(std::function<bool(Checkbox*, bool)> callback)
 {
 	this->toggleCallback = callback;
 }
 
-void CCheckbox::setToggled(bool isToggled)
+void Checkbox::setToggled(bool isToggled)
 {
 	this->isToggled = isToggled;
 
 	this->updateVisuals();
 }
 
-bool CCheckbox::getToggled()
+bool Checkbox::getToggled()
 {
 	return this->isToggled;
 }
 
-void CCheckbox::onToggle()
+void Checkbox::onToggle()
 {
 	if (this->toggleCallback != nullptr)
 	{
@@ -81,7 +81,7 @@ void CCheckbox::onToggle()
 	this->updateVisuals();
 }
 
-void CCheckbox::onUntoggle()
+void Checkbox::onUntoggle()
 {
 	if (this->toggleCallback != nullptr)
 	{
@@ -96,7 +96,7 @@ void CCheckbox::onUntoggle()
 	this->updateVisuals();
 }
 
-void CCheckbox::updateVisuals()
+void Checkbox::updateVisuals()
 {
 	if (this->isToggled)
 	{

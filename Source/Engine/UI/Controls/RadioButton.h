@@ -10,21 +10,21 @@ namespace cocos2d
 	class EventCustom;
 }
 
-class CRadioButton : public SmartNode
+class RadioButton : public SmartNode
 {
 public:
-	static CRadioButton * create(int groupIdentifier);
+	static RadioButton * create(int groupIdentifier);
 
 	void check();
 	void uncheck();
-	void setCheckCallback(std::function<void(CRadioButton*)> callback);
+	void setCheckCallback(std::function<void(RadioButton*)> callback);
 
 	const std::string RadioButtonCheckEvent = "radio_button_check_event";
 
 private:
 	typedef SmartNode super;
-	CRadioButton(int groupIdentifier);
-	virtual ~CRadioButton();
+	RadioButton(int groupIdentifier);
+	virtual ~RadioButton();
 
 	void initializeListeners() override;
 	void onGroupCheck(cocos2d::EventCustom* event);
@@ -36,6 +36,6 @@ private:
 	bool isChecked;
 
 	int groupId;
-	std::function<void(CRadioButton*)> onCheckCallback;
+	std::function<void(RadioButton*)> onCheckCallback;
 };
 

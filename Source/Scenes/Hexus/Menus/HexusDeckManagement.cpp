@@ -10,7 +10,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
-#include "Engine/UI/Controls/CCheckbox.h"
+#include "Engine/UI/Controls/Checkbox.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/ToggleGroup.h"
 #include "Engine/Utils/GameUtils.h"
@@ -63,8 +63,8 @@ HexusDeckManagement::HexusDeckManagement()
 	this->storageCards = std::map<CardData*, int>();
 
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
-	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f));
-	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f));
+	this->storageScrollPane = ScrollPane::create(Size(720.0f, 820.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->deckScrollPane = ScrollPane::create(Size(720.0f, 820.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->storageSprite = Sprite::create(UIResources::Menus_Icons_TreasureChest);
 	this->storageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_CardsInStorage::create(), Size::ZERO, cocos2d::TextHAlignment::LEFT);
 	this->deckSprite = Sprite::create(UIResources::Menus_Icons_Satchel);
@@ -119,11 +119,11 @@ HexusDeckManagement::HexusDeckManagement()
 	hexButtonUnselected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconHex));
 	hexButtonSelected->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_IconHex));
 
-	this->allButton = CCheckbox::create(allButtonUnselected, allButtonSelected, true, nullptr);
-	this->specialButton = CCheckbox::create(specialButtonUnselected, specialButtonSelected, false, nullptr);
-	this->binaryButton = CCheckbox::create(binaryButtonUnselected, binaryButtonSelected, false, nullptr);
-	this->decimalButton = CCheckbox::create(decimalButtonUnselected, decimalButtonSelected, false, nullptr);
-	this->hexButton = CCheckbox::create(hexButtonUnselected, hexButtonSelected, false, nullptr);
+	this->allButton = Checkbox::create(allButtonUnselected, allButtonSelected, true, nullptr);
+	this->specialButton = Checkbox::create(specialButtonUnselected, specialButtonSelected, false, nullptr);
+	this->binaryButton = Checkbox::create(binaryButtonUnselected, binaryButtonSelected, false, nullptr);
+	this->decimalButton = Checkbox::create(decimalButtonUnselected, decimalButtonSelected, false, nullptr);
+	this->hexButton = Checkbox::create(hexButtonUnselected, hexButtonSelected, false, nullptr);
 
 	this->filters->addToggle(this->allButton);
 	this->filters->addToggle(this->specialButton);
@@ -311,44 +311,29 @@ void HexusDeckManagement::initializePositions()
 		// Position cards
 		const Size cardGridSize = Size(176.0f, 256.0f);
 		const int cardsPerRow = 4;
-		Size paneSize = scrollPane->getContentSize();
-		Size marginSize = (paneSize - (cardGridSize * cardsPerRow)) / 2.0f;
 		int index = 0;
-		int visibleCardCount = 0;
-
-		for (auto it = displayCards.begin(); it != displayCards.end(); it++)
-		{
-			MenuCard* card = (*it).second;
-
-			if (card->isVisible())
-			{
-				visibleCardCount++;
-			}
-		}
 
 		for (auto it = CardList::getInstance()->sortedCardList.begin(); it != CardList::getInstance()->sortedCardList.end(); it++)
 		{
 			MenuCard* card = displayCards[*it];
 
 			int x = index % cardsPerRow;
-			int y = (visibleCardCount - 1 - index + (cardsPerRow - visibleCardCount % cardsPerRow)) / cardsPerRow - (visibleCardCount % cardsPerRow == 0 ? 1 : 0);
+			int y = index / cardsPerRow;
 
-			card->setPosition(Vec2(paneSize.width / 2.0f + marginSize.width - (((cardsPerRow - 1) - x) - cardsPerRow / 2 + 1) * cardGridSize.width, y * cardGridSize.height + 128.0f));
+			card->setPosition(Vec2((x - 2) * cardGridSize.width, y * -cardGridSize.height - 128.0f));
 
 			if (card->isVisible())
 			{
 				index++;
 			}
 		}
-
-		scrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
 	};
 
 	positionCards(this->storageScrollPane, this->displayStorageCards);
 	positionCards(this->deckScrollPane, this->displayDeckCards);
 }
 
-void HexusDeckManagement::onToggleSelect(CCheckbox* activeToggle)
+void HexusDeckManagement::onToggleSelect(Checkbox* activeToggle)
 {
 	if (activeToggle == this->allButton)
 	{

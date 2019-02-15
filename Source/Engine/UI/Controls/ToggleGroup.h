@@ -4,24 +4,24 @@
 
 #include "Engine/SmartNode.h"
 
-class CCheckbox;
+class Checkbox;
 
 class ToggleGroup : public SmartNode
 {
 public:
-	static ToggleGroup * create(std::function<void(CCheckbox*)> callback);
+	static ToggleGroup * create(std::function<void(Checkbox*)> callback);
 
-	void addToggle(CCheckbox* toggle);
+	void addToggle(Checkbox* toggle);
 
 private:
 	typedef SmartNode super;
-	ToggleGroup(std::function<void(CCheckbox*)> callback);
+	ToggleGroup(std::function<void(Checkbox*)> callback);
 	virtual ~ToggleGroup();
 
-	bool onToggleClick(CCheckbox* toggle, bool isToggled);
+	bool onToggleClick(Checkbox* toggle, bool isToggled);
 
-	std::function<void(CCheckbox*)> callback;
-	CCheckbox* activeToggle;
-	std::vector<CCheckbox*> toggles;
+	std::function<void(Checkbox*)> callback;
+	Checkbox* activeToggle;
+	std::vector<Checkbox*> toggles;
 };
 

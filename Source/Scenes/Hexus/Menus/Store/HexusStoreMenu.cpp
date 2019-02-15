@@ -126,10 +126,10 @@ HexusStoreMenu::HexusStoreMenu()
 
 	const Size scrollPaneSize = Size(840.0f, 720.0f);
 
-	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize);
-	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize);
-	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize);
-	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize);
+	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
 
 	Sprite* lootBoxIcon = Sprite::create(UIResources::Menus_StoreMenu_IconLootBox);
 	Sprite* binaryIcon = Sprite::create(UIResources::Menus_StoreMenu_IconBin);
@@ -435,11 +435,6 @@ void HexusStoreMenu::initializePositions()
 
 		index++;
 	}
-
-	binaryCardsScrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
-	decimalCardsScrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
-	hexCardsScrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
-	specialCardsScrollPane->fitSizeToContent(Rect(0.0f, 64.0f, 0.0f, 0.0f));
 }
 
 std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::string lootBoxAnimations, int price, std::map<CardData*, float> cardChoices)

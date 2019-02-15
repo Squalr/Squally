@@ -302,7 +302,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 		this->isMousedOver = true;
 
-		if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr)
+		if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
 		{
 			// Play mouse over sound
 			if (!args->isDragging && !isRefresh && this->currentSprite != this->spriteSelected)
@@ -414,7 +414,7 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 		return;
 	}
 
-	if (this->intersects(args->mouseCoords))
+	if (this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
 	{
 		this->mouseScrollEvent(this, args);
 	}

@@ -1,4 +1,4 @@
-#include "CProgressBar.h"
+#include "ProgressBar.h"
 
 #include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCSprite.h"
@@ -9,21 +9,21 @@
 
 using namespace cocos2d;
 
-CProgressBar* CProgressBar::create(std::string frameResource, std::string fillResource, cocos2d::Vec2 fillOffset, bool isHorizontal)
+ProgressBar* ProgressBar::create(std::string frameResource, std::string fillResource, cocos2d::Vec2 fillOffset, bool isHorizontal)
 {
-	return CProgressBar::create(Sprite::create(frameResource), Sprite::create(fillResource), fillOffset, isHorizontal);
+	return ProgressBar::create(Sprite::create(frameResource), Sprite::create(fillResource), fillOffset, isHorizontal);
 }
 
-CProgressBar* CProgressBar::create(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizontal)
+ProgressBar* ProgressBar::create(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizontal)
 {
-	CProgressBar* instance = new CProgressBar(frame, fill, fillOffset, isHorizontal);
+	ProgressBar* instance = new ProgressBar(frame, fill, fillOffset, isHorizontal);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CProgressBar::CProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizontal)
+ProgressBar::ProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizontal)
 {
 	this->isHorizontal = isHorizontal;
 	this->frame = frame;
@@ -40,16 +40,16 @@ CProgressBar::CProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHori
 	this->addChild(this->progressClip);
 }
 
-CProgressBar::~CProgressBar()
+ProgressBar::~ProgressBar()
 {
 }
 
-void CProgressBar::initializePositions()
+void ProgressBar::initializePositions()
 {
 	super::initializePositions();
 }
 
-void CProgressBar::setProgress(float newProgress)
+void ProgressBar::setProgress(float newProgress)
 {
 	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
 

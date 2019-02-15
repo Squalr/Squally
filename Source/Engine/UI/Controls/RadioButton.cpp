@@ -1,4 +1,4 @@
-#include "CRadioButton.h"
+#include "RadioButton.h"
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventDispatcher.h"
@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-CRadioButton* CRadioButton::create(int groupIdentifier)
+RadioButton* RadioButton::create(int groupIdentifier)
 {
-	CRadioButton* instance = new CRadioButton(groupIdentifier);
+	RadioButton* instance = new RadioButton(groupIdentifier);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CRadioButton::CRadioButton(int groupIdentifier)
+RadioButton::RadioButton(int groupIdentifier)
 {
 	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
@@ -26,8 +26,8 @@ CRadioButton::CRadioButton(int groupIdentifier)
 	this->checked = ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover);
 	this->unchecked = ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover);
 
-	this->checked->setClickCallback(CC_CALLBACK_1(CRadioButton::onUncheckClick, this));
-	this->unchecked->setClickCallback(CC_CALLBACK_1(CRadioButton::onCheckClick, this));
+	this->checked->setClickCallback(CC_CALLBACK_1(RadioButton::onUncheckClick, this));
+	this->unchecked->setClickCallback(CC_CALLBACK_1(RadioButton::onCheckClick, this));
 
 	this->isChecked = false;
 	this->checked->setVisible(false);
@@ -36,25 +36,25 @@ CRadioButton::CRadioButton(int groupIdentifier)
 	this->addChild(this->checked);
 }
 
-CRadioButton::~CRadioButton()
+RadioButton::~RadioButton()
 {
 }
 
-void CRadioButton::initializeListeners()
+void RadioButton::initializeListeners()
 {
 	SmartNode::initializeListeners();
 
-	EventListenerCustom* customListener = EventListenerCustom::create(this->RadioButtonCheckEvent, CC_CALLBACK_1(CRadioButton::onGroupCheck, this));
+	EventListenerCustom* customListener = EventListenerCustom::create(this->RadioButtonCheckEvent, CC_CALLBACK_1(RadioButton::onGroupCheck, this));
 
 	this->addEventListener(customListener);
 }
 
-void CRadioButton::setCheckCallback(std::function<void(CRadioButton*)> callback)
+void RadioButton::setCheckCallback(std::function<void(RadioButton*)> callback)
 {
 	this->onCheckCallback = callback;
 }
 
-void CRadioButton::onGroupCheck(EventCustom* event)
+void RadioButton::onGroupCheck(EventCustom* event)
 {
 	int* eventGroupId = static_cast<int*>(event->getUserData());
 
@@ -64,18 +64,18 @@ void CRadioButton::onGroupCheck(EventCustom* event)
 	}
 }
 
-void CRadioButton::onCheckClick(ClickableNode* menuSprite)
+void RadioButton::onCheckClick(ClickableNode* menuSprite)
 {
 	this->check();
 }
 
-void CRadioButton::onUncheckClick(ClickableNode* menuSprite)
+void RadioButton::onUncheckClick(ClickableNode* menuSprite)
 {
 	// Actually just do nothing because we should always have one radio button selected
 	// this->uncheck();
 }
 
-void CRadioButton::check()
+void RadioButton::check()
 {
 	if (!this->isChecked)
 	{
@@ -93,7 +93,7 @@ void CRadioButton::check()
 	}
 }
 
-void CRadioButton::uncheck()
+void RadioButton::uncheck()
 {
 	this->checked->setVisible(false);
 	this->unchecked->setVisible(true);

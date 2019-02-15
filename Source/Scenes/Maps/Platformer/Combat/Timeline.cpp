@@ -7,7 +7,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/CProgressBar.h"
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
@@ -32,7 +32,7 @@ Timeline* Timeline::create()
 
 Timeline::Timeline()
 {
-	this->swordFill = CProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
+	this->swordFill = ProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
 	this->timelineNode = Node::create();
 	this->timelineEntries = std::vector<TimelineEntry*>();

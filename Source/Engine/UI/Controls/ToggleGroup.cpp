@@ -3,11 +3,11 @@
 #include "cocos/base/ccMacros.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/Controls/CCheckbox.h"
+#include "Engine/UI/Controls/Checkbox.h"
 
 using namespace cocos2d;
 
-ToggleGroup* ToggleGroup::create(std::function<void(CCheckbox*)> callback)
+ToggleGroup* ToggleGroup::create(std::function<void(Checkbox*)> callback)
 {
 	ToggleGroup* instance = new ToggleGroup(callback);
 
@@ -16,9 +16,9 @@ ToggleGroup* ToggleGroup::create(std::function<void(CCheckbox*)> callback)
 	return instance;
 }
 
-ToggleGroup::ToggleGroup(std::function<void(CCheckbox*)> callback)
+ToggleGroup::ToggleGroup(std::function<void(Checkbox*)> callback)
 {
-	this->toggles = std::vector<CCheckbox*>();
+	this->toggles = std::vector<Checkbox*>();
 	this->callback = callback;
 }
 
@@ -26,7 +26,7 @@ ToggleGroup::~ToggleGroup()
 {
 }
 
-void ToggleGroup::addToggle(CCheckbox* toggle)
+void ToggleGroup::addToggle(Checkbox* toggle)
 {
 	toggle->setCallback(CC_CALLBACK_2(ToggleGroup::onToggleClick, this));
 
@@ -35,7 +35,7 @@ void ToggleGroup::addToggle(CCheckbox* toggle)
 	this->addChild(toggle);
 }
 
-bool ToggleGroup::onToggleClick(CCheckbox* toggle, bool willToggle)
+bool ToggleGroup::onToggleClick(Checkbox* toggle, bool willToggle)
 {
 	// Disable all other toggles
 	for (auto it = this->toggles.begin(); it != this->toggles.end(); it++)

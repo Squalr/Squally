@@ -8,9 +8,9 @@ namespace cocos2d
 }
 
 class ConstantString;
-class CProgressBar;
 class LocalizedLabel;
 class PlatformerEntity;
+class ProgressBar;
 
 class StatsBars : public SmartNode
 {
@@ -34,8 +34,8 @@ private:
 	bool isFrameOnLeft;
 	cocos2d::Sprite* frame;
 	cocos2d::Sprite* emblem;
-	CProgressBar* healthBar;
-	CProgressBar* manaBar;
+	ProgressBar* healthBar;
+	ProgressBar* manaBar;
 	LocalizedLabel* healthLabel;
 	ConstantString* healthNumerator;
 	ConstantString* healthDenominator;
