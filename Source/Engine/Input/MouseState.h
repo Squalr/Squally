@@ -25,12 +25,14 @@ private:
 	void onMouseMove(cocos2d::EventMouse* event);
 	void onMouseDown(cocos2d::EventMouse* event);
 	void onMouseUp(cocos2d::EventMouse* event);
-	void onMouseScroll();
+	void onMouseScroll(cocos2d::EventMouse* event);
 	void onClickableMouseOverEvent(cocos2d::EventCustom* eventCustom);
 	void onClickableMouseOutEvent(cocos2d::EventCustom* eventCustom);
 	void onMouseDragEvent(cocos2d::EventCustom* eventCustom);
 
+	static cocos2d::Vec2 mouseInitialPosition;
 	static cocos2d::Vec2 mousePosition;
+	static cocos2d::Vec2 scrollDelta;
 	static bool canClick;
 	static bool isDragging;
 	static bool isLeftClicked;

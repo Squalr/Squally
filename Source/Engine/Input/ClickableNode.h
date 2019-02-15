@@ -28,6 +28,7 @@ public:
 	void setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut);
 	void setMouseDownCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDown);
 	void setMouseDragCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onDrag);
+	void setMouseScrollCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onScroll);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
 	void disableInteraction(uint8_t newOpacity = 255);
@@ -53,13 +54,11 @@ private:
 	void setDebugDrawPosition();
 	bool intersects(cocos2d::Vec2 mousePos);
 	void showSprite(cocos2d::Node* sprite);
-	void onMouseMove(cocos2d::EventCustom* event);
-	void onMouseRefresh(cocos2d::EventCustom* event);
-	void onMouseDown(cocos2d::EventCustom* event);
-	void onMouseUp(cocos2d::EventCustom* event);
+	void clearState();
 	void mouseMove(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr, bool isRefresh = false);
 	void mouseDown(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseUp(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
+	void mouseScroll(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 
 	std::string mouseOverSound;
 	std::string clickSound;
@@ -80,4 +79,5 @@ private:
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDragEvent;
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOverEvent;
 	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOutEvent;
+	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseScrollEvent;
 };

@@ -39,6 +39,7 @@ CSlider::CSlider(Node* frame, Node* fill, std::string slideResource, std::string
 
 	this->progressBarHitBox->setContentSize(this->progressBar->getContentSize());
 	this->progressBarHitBox->setMouseDownCallback(CC_CALLBACK_2(CSlider::onDrag, this));
+	this->progressBarHitBox->setMouseDragCallback(CC_CALLBACK_2(CSlider::onDrag, this));
 	this->slide->setMouseDragCallback(CC_CALLBACK_2(CSlider::onDrag, this));
 
 	this->progressBar->addChild(this->progressBarHitBox);
@@ -99,8 +100,6 @@ void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 
 		this->setProgress(1.0f - (newPosition.y + this->progressBar->getContentSize().height / 2.0f) / this->progressBar->getContentSize().height);
 	}
-
-	this->updateSliderPosition();
 }
 
 void CSlider::setProgress(float newProgress)
@@ -113,4 +112,6 @@ void CSlider::setProgress(float newProgress)
 	{
 		this->progressUpdateEvent(this->progress);
 	}
+
+	this->updateSliderPosition();
 }

@@ -47,6 +47,14 @@ void MouseEvents::TriggerMouseUp(MouseEventArgs args)
 	);
 }
 
+void MouseEvents::TriggerMouseScroll(MouseEventArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		MouseEvents::MouseScrollEvent,
+		&args
+	);
+}
+
 void MouseEvents::TriggerStateChange(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -73,12 +81,5 @@ void MouseEvents::TriggerDragEvent()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		MouseEvents::MouseDragEvent
-	);
-}
-
-void MouseEvents::TriggerMouseScroll()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseScrollEvent
 	);
 }
