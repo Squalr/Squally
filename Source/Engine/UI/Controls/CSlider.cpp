@@ -4,6 +4,7 @@
 #include "cocos/2d/CCClippingRectangleNode.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/UI/Controls/CProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -11,33 +12,37 @@
 
 using namespace cocos2d;
 
-CSlider* CSlider::create(float progress)
+CSlider* CSlider::create(std::string frameResource, std::string fillResource, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
 {
-	CSlider* instance = new CSlider(progress);
+	return CSlider::create(Sprite::create(frameResource), Sprite::create(fillResource), slideResource, slideResourceSelected, progress, isHorizontal);
+}
+
+CSlider* CSlider::create(Node* frame, Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
+{
+	CSlider* instance = new CSlider(frame, fill, slideResource, slideResourceSelected, progress, isHorizontal);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CSlider::CSlider(float progress)
+CSlider::CSlider(Node* frame, Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal)
 {
+	this->progress = progress;
+	this->isHorizontal = isHorizontal;
 	this->progressUpdateEvent = nullptr;
+	this->progressBar = CProgressBar::create(frame, fill);
+	this->progressBarHitBox = ClickableNode::create();
+	this->slide = ClickableNode::create(slideResource, slideResourceSelected);
 
-	this->frame = Sprite::create(UIResources::Menus_OptionsMenu_SliderFrame);
-	this->progressBar = ClickableNode::create(UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_OptionsMenu_SliderFill);
-	this->progressClip = ClippingRectangleNode::create(Rect(0, -32, this->progressBar->getContentSize().width, 64));
-	this->slide = ClickableNode::create(UIResources::Menus_OptionsMenu_Slide, UIResources::Menus_OptionsMenu_Slide);
+	this->setProgress(this->progress);
 
-	this->setProgress(progress);
-
-	this->progressBar->setMouseDownCallback(CC_CALLBACK_2(CSlider::onDrag, this));
+	this->progressBarHitBox->setContentSize(this->progressBar->getContentSize());
+	this->progressBarHitBox->setMouseDownCallback(CC_CALLBACK_2(CSlider::onDrag, this));
 	this->slide->setMouseDragCallback(CC_CALLBACK_2(CSlider::onDrag, this));
 
-	this->progressClip->addChild(this->progressBar);
-
-	this->addChild(this->frame);
-	this->addChild(this->progressClip);
+	this->progressBar->addChild(this->progressBarHitBox);
+	this->addChild(this->progressBar);
 	this->addChild(this->slide);
 }
 
@@ -45,13 +50,18 @@ CSlider::~CSlider()
 {
 }
 
+void CSlider::onEnter()
+{
+	super::onEnter();
+
+	this->setProgress(progress);
+}
+
 void CSlider::initializePositions()
 {
 	super::initializePositions();
 
-	this->progressBar->setPosition(Vec2(this->progressBar->getContentSize().width / 2.0f, 0.0f));
-	this->progressClip->setPosition(Vec2(-this->progressBar->getContentSize().width / 2.0f, 0.0f));
-	this->slide->setPosition(Vec2(this->progress * this->frame->getContentSize().width - this->frame->getContentSize().width / 2, 0));
+	this->updateSliderPosition();
 }
 
 void CSlider::setProgressUpdateCallback(std::function<void(float progress)> callback)
@@ -59,32 +69,45 @@ void CSlider::setProgressUpdateCallback(std::function<void(float progress)> call
 	this->progressUpdateEvent = callback;
 }
 
+void CSlider::updateSliderPosition()
+{
+	if (this->isHorizontal)
+	{
+		this->slide->setPosition(Vec2(this->progress * this->progressBar->getContentSize().width - this->progressBar->getContentSize().width / 2.0f, 0.0f));
+	}
+	else
+	{
+		this->slide->setPosition(Vec2(0.0f, this->progressBar->getContentSize().height / 2.0f - this->progress * this->progressBar->getContentSize().height));
+	}
+}
+
 void CSlider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
 {
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
-	Vec2 newPosition = Vec2(args->mouseCoords.x - thisPosition.x, thisPosition.y);
 
-	if (newPosition.x < -this->frame->getContentSize().width / 2)
+	if (this->isHorizontal)
 	{
-		newPosition.x = -this->frame->getContentSize().width / 2;
+		float newX = MathUtils::clamp(args->mouseCoords.x - thisPosition.x, -this->progressBar->getContentSize().width / 2.0f, this->progressBar->getContentSize().width / 2.0f);
+		Vec2 newPosition = Vec2(newX, thisPosition.y);
+
+		this->setProgress((newPosition.x + this->progressBar->getContentSize().width / 2.0f) / this->progressBar->getContentSize().width);
 	}
-	else if (newPosition.x > this->frame->getContentSize().width / 2)
+	else
 	{
-		newPosition.x = this->frame->getContentSize().width / 2;
+		float newY = MathUtils::clamp(args->mouseCoords.y - thisPosition.y, -this->progressBar->getContentSize().height / 2.0f, this->progressBar->getContentSize().height / 2.0f);
+		Vec2 newPosition = Vec2(thisPosition.x, newY);
+
+		this->setProgress(1.0f - (newPosition.y + this->progressBar->getContentSize().height / 2.0f) / this->progressBar->getContentSize().height);
 	}
 
-	this->setProgress((newPosition.x + this->frame->getContentSize().width / 2) / this->frame->getContentSize().width);
-	this->slide->setPositionX(newPosition.x);
+	this->updateSliderPosition();
 }
 
 void CSlider::setProgress(float newProgress)
 {
-	this->progress = MathUtils::clamp(newProgress, 0.0f, 100.0f);
+	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
 
-	// Update progress bar
-	Rect newClippingRegion = this->progressClip->getClippingRegion();
-	newClippingRegion.size = Size(this->progressBar->getContentSize().width * this->progress, newClippingRegion.size.height);
-	this->progressClip->setClippingRegion(newClippingRegion);
+	this->progressBar->setProgress(this->progress);
 
 	if (this->progressUpdateEvent != nullptr)
 	{

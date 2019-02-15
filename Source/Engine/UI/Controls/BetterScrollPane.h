@@ -11,6 +11,8 @@ namespace cocos2d
 	class LayerColor;
 }
 
+class CSlider;
+
 class BetterScrollPane : public SmartNode
 {
 public:
@@ -31,6 +33,7 @@ private:
 	virtual ~BetterScrollPane();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	void updateScrollBounds();
@@ -45,6 +48,7 @@ private:
 	cocos2d::LayerColor* background;
 	cocos2d::ClippingRectangleNode* contentClip;
 	cocos2d::Node* content;
+	CSlider* scrollBar;
 	
 	static const float scrollSpeed;
 };

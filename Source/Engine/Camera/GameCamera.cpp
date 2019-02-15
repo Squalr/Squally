@@ -418,6 +418,11 @@ void GameCamera::updateCameraDebugLabels()
 {
 	static Vec2 cachedCameraPosition = Vec2::ZERO;
 
+	if (Camera::getDefaultCamera() == nullptr)
+	{
+		return;
+	}
+
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 
 	if (cachedCameraPosition == cameraPosition)

@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCClippingRectangleNode.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCEventListenerMouse.h"
@@ -9,6 +10,9 @@
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Engine/UI/Controls/CSlider.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -34,11 +38,20 @@ BetterScrollPane::BetterScrollPane(Size paneSize, cocos2d::Size paddingSize, coc
 	this->contentClip = ClippingRectangleNode::create(Rect(Vec2::ZERO, this->paneSize));
 	this->content = Node::create();
 
+	DrawNode* scrollBounds = DrawNode::create();
+	const float scrollTrackWidth = 16.0f;
+
+	scrollBounds->drawSolidRect(Vec2(-scrollTrackWidth / 2.0f, -this->paneSize.height / 2.0f - this->paddingSize.height / 2.0f), Vec2(scrollTrackWidth / 2.0f, this->paneSize.height / 2.0f + this->paddingSize.height / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
+	scrollBounds->setContentSize(Size(scrollTrackWidth, this->paneSize.height + this->paddingSize.height));
+
+	this->scrollBar = CSlider::create(scrollBounds, Node::create(), UIResources::Menus_Buttons_Scroll, UIResources::Menus_Buttons_Scroll, 0.0f, false);
+
 	this->content->setContentSize(Size(this->paneSize.width, this->paneSize.height));
 
 	// Note: We override addChild to pass through to the clipping node. Do not call directly for these, call through the parent class.
 	super::addChild(this->background);
 	super::addChild(this->contentClip);
+	super::addChild(this->scrollBar);
 	this->contentClip->addChild(this->content);
 }
 
@@ -50,8 +63,14 @@ void BetterScrollPane::onEnter()
 {
 	super::onEnter();
 
-	this->updateScrollBounds();
 	this->setScrollPercentage(0.0f);
+}
+
+void BetterScrollPane::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->updateScrollBounds();
 }
 
 void BetterScrollPane::initializePositions()
@@ -61,11 +80,17 @@ void BetterScrollPane::initializePositions()
 	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - BetterScrollPane::marginSize.width, -this->paneSize.height / 2.0f - BetterScrollPane::marginSize.height));
 	this->contentClip->setPosition(Vec2(-this->paneSize.width / 2.0f, -this->paneSize.height / 2.0f));
 	this->content->setPosition(Vec2(this->paneSize.width / 2.0f, this->paneSize.height));
+	this->scrollBar->setPosition(Vec2(this->paneSize.width / 2.0f, 0.0f));
 }
 
 void BetterScrollPane::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->scrollBar->setProgressUpdateCallback([=](float progress)
+	{
+		this->setScrollPercentage(progress);
+	});
 
 	EventListenerMouse* mouseScrollListener = EventListenerMouse::create();
 
@@ -77,7 +102,7 @@ void BetterScrollPane::initializeListeners()
 
 void BetterScrollPane::setScrollPercentage(float percentage)
 {
-	this->scrollTo((this->maxScrollDepth - this->minScrollDepth) * percentage);
+	this->scrollTo(this->minScrollDepth + (this->maxScrollDepth - this->minScrollDepth) * percentage);
 }
 
 void BetterScrollPane::scrollBy(float delta)
