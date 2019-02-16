@@ -3,7 +3,10 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/ObjectEvents.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Scenes/Maps/Platformer/Huds/Components/StatsBars.h"
 
 using namespace cocos2d;
@@ -33,8 +36,6 @@ CombatHud::~CombatHud()
 void CombatHud::onEnter()
 {
 	super::onEnter();
-
-	this->scheduleUpdate();
 }
 
 void CombatHud::initializePositions()
@@ -71,35 +72,30 @@ void CombatHud::initializeListeners()
 	super::initializeListeners();
 }
 
-void CombatHud::update(float dt)
-{
-	super::update(dt);
-}
-
-void CombatHud::bindStatsBars(std::vector<PlatformerEntity*> playerParty, std::vector<PlatformerEntity*> enemyParty)
+void CombatHud::bindStatsBars()
 {
 	this->playerPartyStatsNode->removeAllChildren();
 	this->enemyPartyStatsNode->removeAllChildren();
 	this->playerPartyStatsBars.clear();
 	this->enemyPartyStatsBars.clear();
 
-	for (auto it = playerParty.begin(); it != playerParty.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
 	{
 		StatsBars* statsBars = StatsBars::create();
 
-		statsBars->setStatsTarget(*it);
+		statsBars->setStatsTarget(entity);
 		this->playerPartyStatsBars.push_back(statsBars);
 		this->playerPartyStatsNode->addChild(statsBars);
-	}
+	}));
 
-	for (auto it = enemyParty.begin(); it != enemyParty.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity)
 	{
 		StatsBars* statsBars = StatsBars::create(false);
 
-		statsBars->setStatsTarget(*it);
+		statsBars->setStatsTarget(entity);
 		this->enemyPartyStatsBars.push_back(statsBars);
 		this->enemyPartyStatsNode->addChild(statsBars);
-	}
+	}));
 
 	this->initializePositions();
 }
