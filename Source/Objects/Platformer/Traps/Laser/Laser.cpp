@@ -46,7 +46,6 @@ Laser::Laser(ValueMap& initProperties) : HackableObject(initProperties)
 	this->laserCollision = CollisionObject::create(PhysicsBody::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
 	this->setDefaultPreview(LaserGenericPreview::create());
-	this->registerHackables();
 
 	this->addChild(this->laserCollision);
 	this->addChild(this->laserAnimation);
@@ -77,8 +76,15 @@ void Laser::initializePositions()
 	this->laserCollision->setPosition(Vec2::ZERO);
 }
 
+Vec2 Laser::getButtonOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 void Laser::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -105,11 +111,6 @@ void Laser::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 Laser::getButtonOffset()
-{
-	return Vec2(0.0f, 0.0f);
 }
 
 void Laser::updateLaser(float dt)

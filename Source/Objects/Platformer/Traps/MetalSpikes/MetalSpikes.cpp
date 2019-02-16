@@ -46,8 +46,6 @@ MetalSpikes::MetalSpikes(ValueMap& initProperties) : HackableObject(initProperti
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->setDefaultPreview(MetalSpikesGenericPreview::create());
 
-	this->registerHackables();
-
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
 }
@@ -77,8 +75,15 @@ void MetalSpikes::initializePositions()
 	this->spikeCollision->setPosition(MetalSpikes::SpikesDownPosition);
 }
 
+Vec2 MetalSpikes::getButtonOffset()
+{
+	return Vec2(0.0f, 128.0f);
+}
+
 void MetalSpikes::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -105,11 +110,6 @@ void MetalSpikes::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 MetalSpikes::getButtonOffset()
-{
-	return Vec2(0.0f, 128.0f);
 }
 
 void MetalSpikes::updateSpikes(float dt)

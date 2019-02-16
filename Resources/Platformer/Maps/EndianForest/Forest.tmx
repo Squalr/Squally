@@ -143,20 +143,18 @@
  </objectgroup>
  <objectgroup name="objects background">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="493" name="spiked-log" type="object" x="3386.42" y="2823.94" width="598" height="140"/>
  </objectgroup>
  <objectgroup name="terrain 2">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="false"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup name="terrain">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="false"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="422" name="solid" type="terrain" x="3272" y="1624">
@@ -205,7 +203,7 @@
  </objectgroup>
  <objectgroup name="objects">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="470" name="pendulum-blade" type="object" x="5275.45" y="2294.85" width="42.4242" height="277.636"/>
@@ -243,7 +241,7 @@
  </objectgroup>
  <objectgroup name="entities">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="438" name="goblin" type="entity" x="4226.96" y="2711.46" width="78.7879" height="88">
@@ -262,6 +260,7 @@
    <properties>
     <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
+    <property name="ally-3" value="orc-bomber"/>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -269,10 +268,10 @@
  </objectgroup>
  <objectgroup name="player_layer">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="452" name="squally" type="entity" x="3220.85" y="2716.36" width="78.7879" height="88"/>
+  <object id="503" name="squally" type="entity" x="1980.61" y="2704" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup name="fireflies">
   <properties>

@@ -33,11 +33,13 @@ protected:
 	HackableObject(const cocos2d::ValueMap& initProperties);
 	virtual ~HackableObject();
 
+	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
+	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
 	void registerData(HackableData* hackableData);
 	void registerCode(HackableCode* hackableCode);

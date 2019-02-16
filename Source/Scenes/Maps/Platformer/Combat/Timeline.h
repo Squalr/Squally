@@ -17,7 +17,7 @@ class Timeline : public SmartNode
 public:
 	static Timeline* create();
 
-	void initializeTimeline(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities, bool isPlayerFirstStrike);
+	void initializeTimeline(bool isPlayerFirstStrike);
 	void resumeTimeline();
 
 private:
@@ -38,8 +38,6 @@ private:
 	cocos2d::Node* timelineNode;
 	LocalizedLabel* waitLabel;
 	LocalizedLabel* castLabel;
-	std::vector<PlatformerEntity*> playerEntities;
-	std::vector<PlatformerEntity*> enemyEntities;
 	std::vector<TimelineEntry*> timelineEntries;
 
 	float timelineWidth;

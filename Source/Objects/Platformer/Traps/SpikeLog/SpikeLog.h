@@ -22,13 +22,13 @@ protected:
 	SpikeLog(cocos2d::ValueMap& initProperties);
 	virtual ~SpikeLog();
 
+	void onEnter() override;
+	void initializePositions() override;
 	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
 
 private:
 	typedef HackableObject super;
-	void registerHackables();
-	void onEnter() override;
-	void initializePositions() override;
 	int incrementSpikeLogAnimation(int count, int max);
 
 	cocos2d::Sprite* beam;

@@ -17,6 +17,9 @@ public:
 
 	static const std::string MapKeyWind;
 
+protected:
+	void registerHackables() override;
+
 private:
 	typedef HackableObject super;
 	Wind(cocos2d::ValueMap& initProperties);
@@ -28,7 +31,6 @@ private:
 	void update(float dt) override;
 	void updateWind(float dt);
 
-	void registerHackables();
 	cocos2d::Vec2 getButtonOffset() override;
 
 	CollisionObject* windForce;

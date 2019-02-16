@@ -4,6 +4,7 @@
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/SpawnEvents.h"
 #include "Engine/Maps/SerializableObject.h"
@@ -15,7 +16,7 @@ const std::string SerializableLayer::KeyType = "type";
 const std::string SerializableLayer::MapKeyPropertyName = "name";
 const std::string SerializableLayer::MapKeyPropertyValue = "value";
 const std::string SerializableLayer::MapKeyPropertyDepth = "depth";
-const std::string SerializableLayer::MapKeyPropertyIgnoreHackermode = "ignore_hackermode";
+const std::string SerializableLayer::MapKeyPropertyIsHackable = "is_hackable";
 
 SerializableLayer* SerializableLayer::create(ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
@@ -26,7 +27,7 @@ SerializableLayer* SerializableLayer::create(ValueMap& initProperties, std::stri
 	return instance;
 }
 
-SerializableLayer::SerializableLayer()
+SerializableLayer::SerializableLayer() 
 {
 }
 
@@ -34,8 +35,7 @@ SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name)
 {
 }
 
-SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name,
-		const std::vector<SerializableObject*>& objects)
+SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
@@ -102,12 +102,7 @@ void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2:
 	parentElement->LinkEndChild(objectGroupElement);
 }
 
-bool SerializableLayer::isHackerModeIgnored()
+bool SerializableLayer::isHackable()
 {
-	if (GameUtils::keyExists(this->properties, SerializableLayer::MapKeyPropertyIgnoreHackermode))
-	{
-		return this->properties.at(SerializableLayer::MapKeyPropertyIgnoreHackermode).asBool();
-	}
-	
-	return false;
+	return GameUtils::getKeyOrDefault(this->properties, SerializableLayer::MapKeyPropertyIsHackable, Value(false)).asBool();
 }

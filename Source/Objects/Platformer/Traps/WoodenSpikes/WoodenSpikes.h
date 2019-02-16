@@ -22,14 +22,14 @@ protected:
 	WoodenSpikes(cocos2d::ValueMap& initProperties);
 	virtual ~WoodenSpikes();
 
-	cocos2d::Vec2 getButtonOffset() override;
-
-private:
-	typedef HackableObject super;
-	void registerHackables();
 	void onEnter() override;
 	void update(float dt) override;
 	void initializePositions() override;
+	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
+
+private:
+	typedef HackableObject super;
 	void updateSpikes(float dt);
 
 	SmartAnimationSequenceNode* spikes;

@@ -140,9 +140,10 @@
    <polyline points="0,0 426.144,0 407.481,212 435.476,360 410.592,624 410.592,960 233.291,1160 9.33163,960 34.216,664 21.7738,448 55.9898,268 -6.22108,36"/>
   </object>
  </objectgroup>
- <objectgroup name="objects -256">
+ <objectgroup name="entities -256">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="532" name="spawn" type="object" x="4013.61" y="2314.66" width="78.7879" height="88">
@@ -176,9 +177,10 @@
    <polyline points="0,0 399.13,0 381.65,212 407.87,360 384.563,624 384.563,960 218.502,1160 8.74008,960 32.0469,664 20.3935,448 52.4405,268 -5.82672,36"/>
   </object>
  </objectgroup>
- <objectgroup name="objects -128">
+ <objectgroup name="entities -128">
   <properties>
    <property name="depth" type="float" value="-128"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="536" name="spawn" type="object" x="5155.34" y="2405.05" width="78.7879" height="88">
@@ -214,7 +216,7 @@
  </objectgroup>
  <objectgroup name="entities +0">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="518" name="spawn" type="object" x="5371.27" y="2500.67" width="78.7879" height="88">
@@ -235,9 +237,8 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup name="objects" visible="0">
+ <objectgroup name="objects">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="455" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>

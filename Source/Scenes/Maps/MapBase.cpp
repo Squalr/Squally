@@ -93,8 +93,8 @@ void MapBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* hackerModeEnableListener = EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom*) {this->onHackerModeEnable(); });
-	EventListenerCustom* hackerModeDisableListener = EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom*) {this->onHackerModeDisable(); });
+	EventListenerCustom* hackerModeEnableListener = EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom*) { this->onHackerModeEnable(); });
+	EventListenerCustom* hackerModeDisableListener = EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom*) { this->onHackerModeDisable(); });
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* scrollListener = EventListenerMouse::create();
 

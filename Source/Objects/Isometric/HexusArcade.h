@@ -20,7 +20,6 @@ protected:
 
 private:
 	typedef HackableObject super;
-	void registerHackables();
 
 	cocos2d::Sprite* arcadeMachine;
 };

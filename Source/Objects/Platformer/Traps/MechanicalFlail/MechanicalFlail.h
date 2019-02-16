@@ -22,14 +22,14 @@ protected:
 	MechanicalFlail(cocos2d::ValueMap& initProperties);
 	virtual ~MechanicalFlail();
 
-	cocos2d::Vec2 getButtonOffset() override;
-
-private:
-	typedef HackableObject super;
-	void registerHackables();
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
+	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
+
+private:
+	typedef HackableObject super;
 	void startSwing();
 	void swingToAngle(float angle);
 	void buildChain();

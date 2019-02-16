@@ -2,11 +2,11 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/math/Vec2.h"
 
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 class ClickableNode;
 
-class NpcBase : public PlatformerEntity
+class NpcBase : public PlatformerFriendly
 {
 protected:
 	NpcBase(cocos2d::ValueMap& initProperties,
@@ -27,7 +27,7 @@ protected:
 	virtual void onInteractButtonClick(ClickableNode* menuSprite);
 
 private:
-	typedef PlatformerEntity super;
+	typedef PlatformerFriendly super;
 	cocos2d::Sprite* chatBubbleSprite;
 	ClickableNode* interactButton;
 };

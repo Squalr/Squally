@@ -18,7 +18,6 @@ private:
 	IsometricSqually(cocos2d::ValueMap& initProperties);
 	~IsometricSqually();
 
-	void registerHackables();
 	void onEnter() override;
 	void update(float) override;
 

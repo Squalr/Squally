@@ -21,13 +21,13 @@ protected:
 	HeavenHug(cocos2d::ValueMap& initProperties);
 	virtual ~HeavenHug();
 
+	void onEnter() override;
+	void initializePositions() override;
 	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
 
 private:
 	typedef HackableObject super;
-	void registerHackables();
-	void onEnter() override;
-	void initializePositions() override;
 	void updateHeavenHug();
 	float getTravelHeight();
 	cocos2d::PhysicsBody* createSpikeCollision();

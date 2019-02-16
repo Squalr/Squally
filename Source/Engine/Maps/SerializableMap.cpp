@@ -262,7 +262,7 @@ void SerializableMap::hackerModeEnable()
 {
 	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
 	{
-		if (!(*it)->isHackerModeIgnored())
+		if (!(*it)->isHackable())
 		{
 			(*it)->setVisible(false);
 		}
@@ -281,7 +281,7 @@ void SerializableMap::hackerModeLayerFade()
 {
 	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
 	{
-		if ((*it)->isHackerModeIgnored())
+		if ((*it)->isHackable())
 		{
 			(*it)->setOpacity(128);
 		}

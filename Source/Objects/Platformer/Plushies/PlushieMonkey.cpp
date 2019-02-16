@@ -55,8 +55,6 @@ PlushieMonkey::PlushieMonkey(ValueMap& initProperties) : Plushie(initProperties)
 	this->valueLabel->setPosition(-48.0f, 128.0f);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
 
-	this->registerHackables();
-
 	this->addChild(this->valueLabel);
 }
 
@@ -66,7 +64,7 @@ PlushieMonkey::~PlushieMonkey()
 
 void PlushieMonkey::onEnter()
 {
-	Plushie::onEnter();
+	super::onEnter();
 
 	CallFunc* decCountdown = CallFunc::create([=]
 	{
@@ -88,7 +86,7 @@ void PlushieMonkey::onEnter()
 
 void PlushieMonkey::update(float dt)
 {
-	Plushie::update(dt);
+	super::update(dt);
 
 	// Update text if values have changed
 	if (~previousValue != PlushieMonkey::lockCountDown)
@@ -142,7 +140,7 @@ void PlushieMonkey::decreaseLockTimer()
 
 void PlushieMonkey::registerHackables()
 {
-	Plushie::registerHackables();
+	super::registerHackables();
 
 	this->puzzleData = HackableData::create(
 		&PlushieMonkey::lockCountDown,
@@ -160,5 +158,4 @@ void PlushieMonkey::registerHackables()
 		UIResources::Menus_Icons_Heart,
 		nullptr
 	));
-	//this->registerCode(HackableCode::create("Test", this->chest, 10, Resources::Menus_HackerModeMenu_Icons_AlchemyPot));
 }

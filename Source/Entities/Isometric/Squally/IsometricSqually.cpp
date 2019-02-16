@@ -28,7 +28,6 @@ IsometricSqually::IsometricSqually(ValueMap& initProperties) : super::IsometricE
 	1.0f,
 	Vec2(-128.0f, 0.0f))
 {
-	this->registerHackables();
 }
 
 IsometricSqually::~IsometricSqually()
@@ -38,10 +37,6 @@ IsometricSqually::~IsometricSqually()
 void IsometricSqually::onEnter()
 {
 	super::onEnter();
-}
-
-void IsometricSqually::registerHackables()
-{
 }
 
 Vec2 IsometricSqually::getButtonOffset()

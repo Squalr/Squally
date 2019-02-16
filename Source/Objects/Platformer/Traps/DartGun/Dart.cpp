@@ -44,8 +44,6 @@ Dart::Dart(float rotation, float speed) : CollisionObject(
 	float rotationInRad = (-rotation) * M_PI / 180.0f;
 	this->setVelocity(Vec2(speed * std::cos(rotationInRad), speed * std::sin(rotationInRad)));
 
-	this->registerHackables();
-
 	this->addChild(this->dartSprite);
 }
 
@@ -72,6 +70,7 @@ void Dart::update(float dt)
 
 void Dart::registerHackables()
 {
+	super::registerHackables();
 }
 
 Vec2 Dart::getButtonOffset()

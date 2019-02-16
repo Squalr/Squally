@@ -1,8 +1,6 @@
 #pragma once
-#include <set>
-#include <string>
 
-#include "cocos/2d/CCTMXObjectGroup.h"
+#include <string>
 
 #include "Engine/SmartNode.h"
 
@@ -28,13 +26,13 @@ public:
 	virtual void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement,
 			cocos2d::Size mapUnitSize, cocos2d::Size mapTileSize);
 
-	bool isHackerModeIgnored();
+	bool isHackable();
 
 	static const std::string KeyType;
 	static const std::string MapKeyPropertyName;
 	static const std::string MapKeyPropertyValue;
-	static const std::string MapKeyPropertyIgnoreHackermode;
 	static const std::string MapKeyPropertyDepth;
+	static const std::string MapKeyPropertyIsHackable;
 
 protected:
 	SerializableLayer(cocos2d::ValueMap& initProperties, std::string name);

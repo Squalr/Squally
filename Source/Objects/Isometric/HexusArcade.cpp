@@ -26,10 +26,6 @@ HexusArcade::~HexusArcade()
 {
 }
 
-void HexusArcade::registerHackables()
-{
-}
-
 Vec2 HexusArcade::getButtonOffset()
 {
 	return Vec2(0, -128.0f);

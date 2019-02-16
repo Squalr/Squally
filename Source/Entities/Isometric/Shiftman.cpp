@@ -36,10 +36,6 @@ void Shiftman::onEnter()
 	super::onEnter();
 }
 
-void Shiftman::registerHackables()
-{
-}
-
 Vec2 Shiftman::getButtonOffset()
 {
 	return Vec2(0, 72.0f);

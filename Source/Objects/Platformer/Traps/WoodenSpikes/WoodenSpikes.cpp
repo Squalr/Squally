@@ -46,8 +46,6 @@ WoodenSpikes::WoodenSpikes(ValueMap& initProperties) : HackableObject(initProper
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->setDefaultPreview(WoodenSpikesGenericPreview::create());
 
-	this->registerHackables();
-
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
 }
@@ -77,8 +75,15 @@ void WoodenSpikes::initializePositions()
 	this->spikeCollision->setPosition(WoodenSpikes::SpikesDownPosition);
 }
 
+Vec2 WoodenSpikes::getButtonOffset()
+{
+	return Vec2(0.0f, 128.0f);
+}
+
 void WoodenSpikes::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -105,11 +110,6 @@ void WoodenSpikes::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 WoodenSpikes::getButtonOffset()
-{
-	return Vec2(0.0f, 128.0f);
 }
 
 void WoodenSpikes::updateSpikes(float dt)

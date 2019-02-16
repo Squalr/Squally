@@ -48,8 +48,6 @@ HeavenHug::HeavenHug(ValueMap& initProperties) : HackableObject(initProperties)
 
 	this->travelDistance = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
-	this->registerHackables();
-
 	this->heavenHugContainer->addChild(this->heavenHug);
 	this->heavenHug->addChild(this->spikeCollision);
 	this->addChild(this->heavenHugContainer);
@@ -74,8 +72,15 @@ void HeavenHug::initializePositions()
 	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
 }
 
+Vec2 HeavenHug::getButtonOffset()
+{
+	return Vec2(0.0f, this->heavenHug->getPositionY() + 196.0f);
+}
+
 void HeavenHug::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -103,11 +108,6 @@ void HeavenHug::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 HeavenHug::getButtonOffset()
-{
-	return Vec2(0.0f, this->heavenHug->getPositionY() + 196.0f);
 }
 
 void HeavenHug::updateHeavenHug()

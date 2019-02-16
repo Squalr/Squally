@@ -58,8 +58,6 @@ Wind::Wind(ValueMap& initProperties) : HackableObject(initProperties)
 
 	this->addChild(this->windForce);
 	this->addChild(this->windParticles);
-
-	this->registerHackables();
 }
 
 void Wind::onEnter()
@@ -102,6 +100,8 @@ void Wind::initializeListeners()
 
 void Wind::registerHackables()
 {
+	super::registerHackables();
+
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
@@ -126,17 +126,6 @@ void Wind::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-
-	/*
-	this->windDataSpeedY = HackableData::create(
-		&this->windSpeedDefault.y,
-		Strings::Generics_Empty::create(),
-		typeid(this->windSpeedDefault.y),
-		UIResources::Menus_Icons_AlchemyPot,
-		nullptr
-	);
-	this->registerData(this->windDataSpeedY);
-	*/
 }
 
 Vec2 Wind::getButtonOffset()

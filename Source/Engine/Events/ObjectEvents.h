@@ -18,8 +18,14 @@ class QueryObjectsArgs : QueryObjectsArgsBase
 {
 public:
 	std::function<void(T*)> onObjectQueriedCallback;
+	std::function<void(T*, bool*)> onObjectQueriedCallbackWithHandled;
+	bool isHandled;
 
-	QueryObjectsArgs(std::function<void(T*)> onObjectQueriedCallback) : onObjectQueriedCallback(onObjectQueriedCallback)
+	QueryObjectsArgs(std::function<void(T*)> onObjectQueriedCallback) : onObjectQueriedCallback(onObjectQueriedCallback), onObjectQueriedCallbackWithHandled(nullptr), isHandled(false)
+	{
+	}
+
+	QueryObjectsArgs(std::function<void(T*, bool*)> onObjectQueriedCallbackWithHandled) : onObjectQueriedCallback(nullptr), onObjectQueriedCallbackWithHandled(onObjectQueriedCallbackWithHandled), isHandled(false)
 	{
 	}
 
@@ -27,7 +33,14 @@ public:
 	{
 		if (dynamic_cast<T*>(object) != nullptr)
 		{
-			this->onObjectQueriedCallback((T*)object);
+			if (onObjectQueriedCallback != nullptr)
+			{
+				this->onObjectQueriedCallback((T*)object);
+			}
+			else if (onObjectQueriedCallbackWithHandled != nullptr && !this->isHandled)
+			{
+				this->onObjectQueriedCallbackWithHandled((T*)object, &this->isHandled);
+			}
 		}
 	}
 };
