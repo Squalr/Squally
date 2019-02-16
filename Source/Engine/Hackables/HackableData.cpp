@@ -23,3 +23,8 @@ HackableData::HackableData(void* dataAddress, LocalizedString* variableName, con
 HackableData::~HackableData()
 {
 }
+
+void* HackableData::getDataPointer()
+{
+	return this->dataPointer;
+}

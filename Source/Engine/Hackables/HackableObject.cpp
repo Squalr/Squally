@@ -121,6 +121,14 @@ void HackableObject::setDefaultPreview(HackablePreview* defaultPreview)
 
 void HackableObject::registerData(HackableData* hackableData)
 {
+	for (auto it = this->dataList.begin(); it != this->dataList.end(); it++)
+	{
+		if ((*it)->getDataPointer() == hackableData->getDataPointer())
+		{
+			return;
+		}
+	}
+
 	this->addChild(hackableData);
 	this->hackableList.push_back(hackableData);
 	this->dataList.push_back(hackableData);
@@ -128,6 +136,14 @@ void HackableObject::registerData(HackableData* hackableData)
 
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
+	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+	{
+		if ((*it)->getCodePointer() == hackableCode->getCodePointer())
+		{
+			return;
+		}
+	}
+
 	this->addChild(hackableCode);
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);

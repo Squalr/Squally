@@ -29,6 +29,7 @@ public:
 	void setMouseScrollCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onScroll);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
+	void setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible);
 	void disableInteraction(uint8_t newOpacity = 255);
 	void enableInteraction(uint8_t newOpacity = 255);
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
@@ -62,6 +63,7 @@ private:
 
 	cocos2d::Node* currentSprite;
 
+	bool allowCollisionWhenInvisible;
 	bool interactionEnabled;
 	bool isClickInit;
 	bool isClicked;

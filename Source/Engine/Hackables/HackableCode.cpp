@@ -17,6 +17,8 @@ const unsigned char HackableCode::StopSearchTagSignature[] = { 0x52, 0x6A, 0x45,
 
 std::vector<HackableCode*> HackableCode::create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap)
 {
+	functionStart = HackUtils::resolveVTableAddress(functionStart);
+
 	if (HackableCode::HackableCodeCache.find(functionStart) != HackableCode::HackableCodeCache.end())
 	{
 		std::vector<HackableCode*> clonedHackables = std::vector<HackableCode*>();

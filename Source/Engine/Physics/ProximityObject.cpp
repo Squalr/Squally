@@ -52,7 +52,7 @@ void ProximityObject::update(float dt)
 {
 	super::update(dt);
 
-	this->setVelocity(this->getVelocity() + this->acceleration * dt);
+	this->setVelocity(this->getVelocity() + this->getAcceleration() * dt);
 	this->setPosition3D(this->getPosition3D() + this->getVelocity() * dt);
 }
 
@@ -118,14 +118,17 @@ Vec3 ProximityObject::getVelocity()
 	const volatile float* velocityPtrX = &this->velocity.x;
 	const volatile float* velocityPtrY = &this->velocity.y;
 	const volatile float* velocityPtrZ = &this->velocity.z;
+	static const volatile int* freeMemory = new int[128];
 
 	// Push velocity variables onto FPU stack
 	ASM(push EAX)
 	ASM(push EBX)
 	ASM(push ECX)
+	ASM(push ESI)
 	ASM_MOV_REG_VAR(EAX, velocityPtrX);
 	ASM_MOV_REG_VAR(EBX, velocityPtrY);
 	ASM_MOV_REG_VAR(ECX, velocityPtrZ);
+	ASM_MOV_REG_VAR(ESI, freeMemory);
 	ASM(fld dword ptr[EAX])
 	ASM(fld dword ptr[EBX])
 	ASM(fld dword ptr[ECX])
@@ -140,9 +143,10 @@ Vec3 ProximityObject::getVelocity()
 	ASM_MOV_VAR_REG(velocityPtrY, EBX);
 	ASM_MOV_VAR_REG(velocityPtrZ, ECX);
 
-	ASM(pop EAX)
-	ASM(pop EBX)
+	ASM(pop ESI)
 	ASM(pop ECX)
+	ASM(pop EBX)
+	ASM(pop EAX)
 
 	HACKABLES_STOP_SEARCH();
 

@@ -7,7 +7,9 @@
 #include "cocos/ui/UIScrollView.h"
 #include "cocos/ui/UITextField.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/InputText.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -66,37 +68,42 @@ const float CodeWindow::TitleBarHeight = 48.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
 
-CodeWindow* CodeWindow::create(LocalizedString* windowTitle, Size initWindowSize)
+CodeWindow* CodeWindow::create(cocos2d::Size windowSize, float marginSize)
 {
-	CodeWindow* instance = new CodeWindow(windowTitle, initWindowSize);
+	CodeWindow* instance = new CodeWindow(windowSize, marginSize);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
+CodeWindow::CodeWindow(cocos2d::Size windowSize, float marginSize)
 {
+	this->windowSize = windowSize;
+	this->marginSize = marginSize;
 	this->currentLineNumber = 1;
 	this->tokenizationCallback = nullptr;
 	this->onEditCallback = nullptr;
 	this->lineNumberElements = std::vector<RichElement*>();
-	this->windowSize = initWindowSize;
 
 	this->lineNumbers = RichText::create();
-	this->editableText = InputText::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create()));
-
-	this->marginSize = 0;
+	this->editableText = InputText::create(
+		Size(windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f, this->windowSize.height - CodeWindow::Padding.height * 2.0f),
+		LocalizedLabel::FontStyle::Coding,
+		LocalizedLabel::FontSize::H3
+	);
 
 	this->textElements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
 	this->displayedText = RichText::create();
-	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, windowSize.width, windowSize.height);
-	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, windowSize.width, CodeWindow::TitleBarHeight);
-	this->windowTitle = windowTitle;
-	this->editableWindowTitle = InputText::create(LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create()));
-	this->editableWindowTitle->setString(this->windowTitle->getString());
+	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, this->windowSize.width, this->windowSize.height);
+	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, this->windowSize.width, CodeWindow::TitleBarHeight);
+	this->windowTitle = InputText::create(
+		Size(this->windowSize.width - 16.0f, CodeWindow::TitleBarHeight - 16.0f),
+		LocalizedLabel::FontStyle::Main,
+		LocalizedLabel::FontSize::H3
+	);
 
-	this->editableWindowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->windowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->displayedText->setWrapMode(RichText::WrapMode::WRAP_PER_CHAR);
 	this->displayedText->ignoreContentAdaptWithSize(false);
@@ -114,7 +121,6 @@ CodeWindow::CodeWindow(LocalizedString* windowTitle, Size initWindowSize)
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
-	this->addChild(this->editableWindowTitle);
 	this->addChild(this->lineNumbers);
 	this->addChild(this->editableText);
 	this->addChild(this->displayedText);
@@ -129,6 +135,7 @@ void CodeWindow::onEnter()
 {
 	super::onEnter();
 	this->scheduleUpdate();
+
 	this->editableText->scheduleUpdate();
 }
 
@@ -143,21 +150,12 @@ void CodeWindow::initializePositions()
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
 	this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
-	this->editableWindowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
 	this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 	this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 
-	this->lineNumbers->setContentSize(Size(
-		windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f,
-		windowSize.height - CodeWindow::Padding.height * 2.0f));
-	this->editableText->setContentSize(Size(
-		windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f,
-		windowSize.height - CodeWindow::Padding.height * 2.0f));
-	this->editableText->setDimensions(
-		windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f,
-		windowSize.height - CodeWindow::Padding.height * 2.0f);
-
+	this->lineNumbers->setContentSize(Size(windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
 }
 
 void CodeWindow::initializeListeners()
@@ -167,6 +165,21 @@ void CodeWindow::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
 		this->rebuildText();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableAttributeEditEvent, [=](EventCustom* args)
+	{
+		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(true);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableAttributeEditDoneEvent, [=](EventCustom* args)
+	{
+		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(false);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectCloseEvent, [=](EventCustom* args)
+	{
+		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(false);
 	}));
 }
 
@@ -203,7 +216,7 @@ std::string CodeWindow::getText()
 
 std::string CodeWindow::getTitle()
 {
-	return this->editableWindowTitle->getString();
+	return this->windowTitle->getString();
 }
 
 void CodeWindow::setText(std::string text)
@@ -361,10 +374,9 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	}
 }
 
-void CodeWindow::setTitleStringReplaceVariable(LocalizedString* stringReplaceVariables)
+void CodeWindow::setWindowTitle(std::string windowTitle)
 {
-	this->windowTitle->setStringReplacementVariables(stringReplaceVariables);
-	this->editableWindowTitle->setString(this->windowTitle->getString());
+	this->windowTitle->setString(windowTitle);
 }
 
 void CodeWindow::insertText(LocalizedString* text, Color3B color)
@@ -374,12 +386,6 @@ void CodeWindow::insertText(LocalizedString* text, Color3B color)
 	text->retain();
 	this->textElements.push_back(std::make_tuple(text, color));
 	this->displayedText->pushBackElement(element);
-}
-
-void CodeWindow::setMarginSize(float newMarginSize)
-{
-	this->marginSize = newMarginSize;
-	this->initializePositions();
 }
 
 void CodeWindow::toggleHeader(bool isVisible)
