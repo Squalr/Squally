@@ -20,6 +20,16 @@ MenuCard::~MenuCard()
 {
 }
 
+void MenuCard::initializePositions()
+{
+	super::initializePositions();
+}
+
+void MenuCard::initializeListeners()
+{
+	super::initializeListeners();
+}
+
 void MenuCard::addDisplayItem(Node* node)
 {
 	this->addChild(node);
@@ -36,14 +46,4 @@ void MenuCard::clearDisplayItems()
 	{
 		this->removeChild(*it);
 	}
-}
-
-void MenuCard::initializePositions()
-{
-	Card::initializePositions();
-}
-
-void MenuCard::initializeListeners()
-{
-	Card::initializeListeners();
 }
