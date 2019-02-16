@@ -186,7 +186,10 @@ void ScrollPane::updateScrollBounds()
 
 	for (auto it = children.begin(); it != children.end(); it++)
 	{
-		discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+		if (GameUtils::isVisible(*it))
+		{
+			discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+		}
 	}
 
 	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
