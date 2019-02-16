@@ -258,7 +258,7 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		return false;
 	}
 
-	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes, compileResult.byteCount);
+	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.byteCount);
 
 	int unfilledBytes = this->originalCodeLength - compileResult.byteCount;
 

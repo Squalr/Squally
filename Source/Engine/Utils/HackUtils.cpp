@@ -428,11 +428,16 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 
 	// Now you can print the code, which is stored in the first section (.text).
 	CodeBuffer& buffer = code.getSectionEntry(0)->getBuffer();
+	uint8_t* bufferData = buffer.getData();
 
-	compileResult.byteCount = buffer.getLength();
-	compileResult.compiledBytes = new unsigned char[buffer.getLength()]; // TODO: This is a memleak
-	memcpy(compileResult.compiledBytes, buffer.getData(), buffer.getLength());
 	compileResult.hasError = false;
+	compileResult.byteCount = buffer.getLength();
+	compileResult.compiledBytes = std::vector<unsigned char>();
+	
+	for (int index = 0; index < compileResult.byteCount; index++)
+	{
+		compileResult.compiledBytes.push_back(bufferData[index]);
+	}
 
 	return compileResult;
 }
@@ -715,6 +720,12 @@ std::string HackUtils::arrayOfByteStringOf(void* dataPointer, int length, int ma
 
 	for (int index = 0; index < length; index++)
 	{
+		if (dataPointer == nullptr)
+		{
+			result.append("nullptr");
+			break;
+		}
+
 		if (index >= maxLength)
 		{
 			result.append(" ...");

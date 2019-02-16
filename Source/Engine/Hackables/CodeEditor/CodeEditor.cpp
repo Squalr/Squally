@@ -627,7 +627,7 @@ void CodeEditor::compile(std::string assemblyText)
 
 		this->statusWindow->insert(bytesLabel);
 
-		LocalizedLabel* arrayOfBytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes, compileResult.byteCount, compileResult.byteCount)));
+		LocalizedLabel* arrayOfBytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::arrayOfByteStringOf(compileResult.compiledBytes.data(), compileResult.byteCount, compileResult.byteCount)));
 		
 		this->statusWindow->insert(arrayOfBytesLabel);
 		
