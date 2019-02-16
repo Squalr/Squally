@@ -6,6 +6,7 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCEventListenerMouse.h"
+#include "cocos/math/TransformUtils.h"
 
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -45,8 +46,8 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	const float scrollTrackStopOffset = 24.0f;
 	const float dragHorizontalOffset = 32.0f;
 
-	scrollBounds->drawSolidRect(Vec2(-scrollTrackWidth / 2.0f, -this->paneSize.height / 2.0f - this->paddingSize.height / 2.0f), Vec2(scrollTrackWidth / 2.0f, this->paneSize.height / 2.0f + this->paddingSize.height / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
-	scrollBounds->setContentSize(Size(scrollTrackWidth, this->paneSize.height + this->paddingSize.height - scrollTrackStopOffset));
+	scrollBounds->drawSolidRect(Vec2(-scrollTrackWidth / 2.0f, -this->paneSize.height / 2.0f), Vec2(scrollTrackWidth / 2.0f, this->paneSize.height / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
+	scrollBounds->setContentSize(Size(scrollTrackWidth, this->paneSize.height - scrollTrackStopOffset));
 
 	this->scrollBar = Slider::create(scrollBounds, Node::create(), sliderResource, sliderResourceSelected, 0.0f, false);
 
@@ -185,7 +186,7 @@ void ScrollPane::updateScrollBounds()
 
 	for (auto it = children.begin(); it != children.end(); it++)
 	{
-		discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY());
+		discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
 	}
 
 	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;

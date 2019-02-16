@@ -327,6 +327,8 @@ void HexusDeckManagement::initializePositions()
 				index++;
 			}
 		}
+
+		scrollPane->updateScrollBounds();
 	};
 
 	positionCards(this->storageScrollPane, this->displayStorageCards);

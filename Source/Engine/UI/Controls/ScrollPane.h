@@ -24,6 +24,7 @@ public:
 	void scrollTo(float position, bool updateScrollBars = true);
 	float getScrollPercentage();
 	float getScrollDepth();
+	void updateScrollBounds();
 
 	cocos2d::Size getPaneSize();
 	void addChild(cocos2d::Node* child) override;
@@ -39,7 +40,6 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void initializePositions() override;
-	void updateScrollBounds();
 
 	float initialDragDepth;
 	float minScrollDepth;

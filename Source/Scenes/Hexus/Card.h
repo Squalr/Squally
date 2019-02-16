@@ -90,6 +90,7 @@ protected:
 	void initializeListeners() override;
 
 private:
+	typedef SmartNode super;
 	void updateText();
 	void onMouseOver(ClickableNode* menuSprite);
 	void onMouseClick(ClickableNode* menuSprite);

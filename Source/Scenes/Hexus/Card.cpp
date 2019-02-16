@@ -115,6 +115,7 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->cardLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardLabel->enableOutline(Color4B::BLACK, 6);
 
+	this->setContentSize(this->cardSelect->getContentSize());
 	this->setScale(Card::cardScale);
 
 	this->updateText();
