@@ -10,7 +10,7 @@ class CombatHud : public Hud
 public:
 	static CombatHud* create();
 
-	void bindStatsBars(std::vector<PlatformerEntity*> playerParty, std::vector<PlatformerEntity*> enemyParty);
+	void bindStatsBars();
 
 private:
 	typedef Hud super;
@@ -20,7 +20,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 
 	cocos2d::Node* playerPartyStatsNode;
 	cocos2d::Node* enemyPartyStatsNode;

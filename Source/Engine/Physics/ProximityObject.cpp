@@ -52,7 +52,7 @@ void ProximityObject::update(float dt)
 {
 	super::update(dt);
 
-	this->setVelocity(this->getVelocity() + this->getAcceleration() * dt);
+	this->setVelocity(this->velocity + this->getAcceleration() * dt);
 	this->setPosition3D(this->getPosition3D() + this->getVelocity() * dt);
 }
 
@@ -115,9 +115,10 @@ void ProximityObject::setAcceleration(cocos2d::Vec3 acceleration)
 
 Vec3 ProximityObject::getVelocity()
 {
-	const volatile float* velocityPtrX = &this->velocity.x;
-	const volatile float* velocityPtrY = &this->velocity.y;
-	const volatile float* velocityPtrZ = &this->velocity.z;
+	Vec3 velocityCopy = this->velocity;
+	const volatile float* velocityPtrX = &velocityCopy.x;
+	const volatile float* velocityPtrY = &velocityCopy.y;
+	const volatile float* velocityPtrZ = &velocityCopy.z;
 	static const volatile int* freeMemory = new int[128];
 
 	// Push velocity variables onto FPU stack
@@ -129,9 +130,9 @@ Vec3 ProximityObject::getVelocity()
 	ASM_MOV_REG_VAR(EBX, velocityPtrY);
 	ASM_MOV_REG_VAR(ECX, velocityPtrZ);
 	ASM_MOV_REG_VAR(ESI, freeMemory);
-	ASM(fld dword ptr[EAX])
-	ASM(fld dword ptr[EBX])
 	ASM(fld dword ptr[ECX])
+	ASM(fld dword ptr[EBX])
+	ASM(fld dword ptr[EAX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_VELOCITY);
 	ASM(fstp dword ptr[EAX])
@@ -150,7 +151,7 @@ Vec3 ProximityObject::getVelocity()
 
 	HACKABLES_STOP_SEARCH();
 
-	return this->velocity;
+	return velocityCopy;
 }
 
 Vec3 ProximityObject::getAcceleration()
