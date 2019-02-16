@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 
-class Squally : public PlatformerEntity
+class Squally : public PlatformerFriendly
 {
 public:
 	static Squally* deserialize(cocos2d::ValueMap& initProperties);
@@ -24,11 +24,10 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
-	typedef PlatformerEntity super;
+	typedef PlatformerFriendly super;
 	Squally(cocos2d::ValueMap& initProperties);
 	virtual ~Squally();
 
-	void registerHackables();
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;

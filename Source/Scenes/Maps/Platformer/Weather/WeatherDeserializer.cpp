@@ -1,5 +1,6 @@
 #include "WeatherDeserializer.h"
 
+#include "cocos/2d/CCTMXObjectGroup.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 

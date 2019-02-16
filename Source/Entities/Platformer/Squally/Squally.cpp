@@ -101,10 +101,6 @@ void Squally::initializePositions()
 	this->squallyCollision->setPosition(this->squallyCollisionDefaultPosition);
 }
 
-void Squally::registerHackables()
-{
-}
-
 Vec2 Squally::getButtonOffset()
 {
 	return Vec2(0, 72.0f);

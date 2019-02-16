@@ -34,11 +34,20 @@ HackableObject::~HackableObject()
 	}
 }
 
+void HackableObject::onEnter()
+{
+	super::onEnter();
+
+	this->registerHackables();
+}
+
 void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
 	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
+
+	this->registerHackables();
 
 	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
 }
@@ -73,6 +82,10 @@ void HackableObject::onHackerModeEnable()
 	{
 		this->hackButton->setVisible(true);
 	}
+}
+
+void HackableObject::registerHackables()
+{
 }
 
 void HackableObject::onHackerModeDisable()

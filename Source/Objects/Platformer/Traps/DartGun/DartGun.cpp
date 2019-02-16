@@ -2,7 +2,6 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
@@ -10,13 +9,11 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -61,8 +58,6 @@ DartGun::DartGun(ValueMap& initProperties) : HackableObject(initProperties)
 		this->dartGunAnimations->setFlippedY(this->properties[SerializableObject::MapKeyWidth].asBool());
 	}
 
-	this->registerHackables();
-
 	this->addChild(this->dartNode);
 	this->addChild(this->dartGunAnimations);
 }
@@ -90,8 +85,15 @@ void DartGun::update(float dt)
 	this->shoot(dt);
 }
 
+Vec2 DartGun::getButtonOffset()
+{
+	return Vec2(0.0f, 128.0f);
+}
+
 void DartGun::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -119,11 +121,6 @@ void DartGun::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 DartGun::getButtonOffset()
-{
-	return Vec2(0.0f, 128.0f);
 }
 
 void DartGun::shoot(float dt)

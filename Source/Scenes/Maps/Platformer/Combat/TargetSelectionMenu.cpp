@@ -7,9 +7,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 
 #include "Resources/UIResources.h"
@@ -28,7 +31,6 @@ TargetSelectionMenu* TargetSelectionMenu::create()
 TargetSelectionMenu::TargetSelectionMenu()
 {
 	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
-	this->completeEntityList = std::vector<PlatformerEntity*>();
 
 	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -63,10 +65,17 @@ void TargetSelectionMenu::initializeListeners()
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				{
-					if (!this->enemyEntities.empty())
+					this->selectEntity(nullptr);
+
+					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity, bool* isHandled)
 					{
-						this->selectEntity(this->enemyEntities.front());
-					}
+						if (!entity->isDead())
+						{
+							this->selectEntity(entity);
+
+							*isHandled = true;
+						}
+					}));
 
 					this->allowedSelection = AllowedSelection::Enemy;
 					this->setEntityClickCallbacks();
@@ -76,10 +85,17 @@ void TargetSelectionMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				{
-					if (!this->playerEntities.empty())
+					this->selectEntity(nullptr);
+
+					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity, bool* isHandled)
 					{
-						this->selectEntity(this->playerEntities.front());
-					}
+						if (!entity->isDead())
+						{
+							this->selectEntity(entity);
+
+							*isHandled = true;
+						}
+					}));
 
 					this->allowedSelection = AllowedSelection::Player;
 					this->setEntityClickCallbacks();
@@ -107,14 +123,6 @@ void TargetSelectionMenu::initializeListeners()
 void TargetSelectionMenu::update(float dt)
 {
 	super::update(dt);
-}
-
-void TargetSelectionMenu::initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities)
-{
-	this->playerEntities = playerEntities;
-	this->enemyEntities = enemyEntities;
-
-	this->completeEntityList.clear();
 }
 
 void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
@@ -147,14 +155,14 @@ void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 		case EventKeyboard::KeyCode::KEY_A:
 		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
 		{
-			this->selectNextLeft();
+			this->selectNext(true);
 
 			break;
 		}
 		case EventKeyboard::KeyCode::KEY_D:
 		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
 		{
-			this->selectNextRight();
+			this->selectNext(false);
 
 			break;
 		}
@@ -165,25 +173,46 @@ void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	}
 }
 
-void TargetSelectionMenu::selectNextLeft(int callCount)
+void TargetSelectionMenu::selectNext(bool directionIsLeft)
 {
-	std::vector<PlatformerEntity*>* targetEntityGroup = nullptr;
+	std::vector<PlatformerEntity*> targetEntityGroup = std::vector<PlatformerEntity*>();
 
 	switch (this->allowedSelection)
 	{
 		case AllowedSelection::Player:
 		{
-			targetEntityGroup = &this->playerEntities;
+			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
+			{
+				if (!entity->isDead())
+				{
+					targetEntityGroup.push_back(entity);
+				}
+			}));
+
 			break;
 		}
 		case AllowedSelection::Either:
 		{
-			targetEntityGroup = &this->completeEntityList;
+			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEntity* entity)
+			{
+				if (!entity->isDead())
+				{
+					targetEntityGroup.push_back(entity);
+				}
+			}));
+
 			break;
 		}
 		case AllowedSelection::Enemy:
 		{
-			targetEntityGroup = &this->enemyEntities;
+			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+			{
+				if (!entity->isDead())
+				{
+					targetEntityGroup.push_back(entity);
+				}
+			}));
+
 			break;
 		}
 		default:
@@ -192,163 +221,61 @@ void TargetSelectionMenu::selectNextLeft(int callCount)
 		}
 	}
 
-	if (targetEntityGroup == nullptr)
-	{
-		return;
-	}
+	auto entityPosition = std::find(targetEntityGroup.begin(), targetEntityGroup.end(), this->selectedEntity);
 
-	// Infinite loop breaker
-	if (callCount > targetEntityGroup->size())
+	if (entityPosition != std::end(targetEntityGroup))
+	{
+		if (directionIsLeft)
+		{
+			PlatformerEntity* nextEntity = (*entityPosition == targetEntityGroup.front()) ? targetEntityGroup.back() : *std::prev(entityPosition);
+
+			this->selectEntity(nextEntity);
+		}
+		else
+		{
+			auto next = std::next(entityPosition);
+
+			PlatformerEntity* nextEntity = (next != std::end(targetEntityGroup)) ? *next : targetEntityGroup.front();
+
+			this->selectEntity(nextEntity);
+		}
+	}
+	else
 	{
 		this->selectEntity(nullptr);
-
-		return;
-	}
-
-	auto entityPosition = std::find(targetEntityGroup->begin(), targetEntityGroup->end(), this->selectedEntity);
-
-	if (entityPosition != std::end(*targetEntityGroup))
-	{
-		PlatformerEntity* nextEntity = (*entityPosition == targetEntityGroup->front()) ? this->playerEntities.back() : *std::prev(entityPosition);
-
-		this->selectEntity(nextEntity);
-
-		// Next entity is dead! Try the next left target
-		if (nextEntity->isDead())
-		{
-			this->selectNextLeft(++callCount);
-			return;
-		}
-	}
-}
-
-void TargetSelectionMenu::selectNextRight(int callCount)
-{
-	std::vector<PlatformerEntity*>* targetEntityGroup = nullptr;
-
-	switch (this->allowedSelection)
-	{
-		case AllowedSelection::Player:
-		{
-			targetEntityGroup = &this->playerEntities;
-			break;
-		}
-		case AllowedSelection::Either:
-		{
-			targetEntityGroup = &this->completeEntityList;
-			break;
-		}
-		case AllowedSelection::Enemy:
-		{
-			targetEntityGroup = &this->enemyEntities;
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
-
-	if (targetEntityGroup == nullptr)
-	{
-		return;
-	}
-
-	// Infinite loop breaker
-	if (callCount > targetEntityGroup->size())
-	{
-		this->selectEntity(nullptr);
-
-		return;
-	}
-	
-	auto entityPosition = std::find(targetEntityGroup->begin(), targetEntityGroup->end(), this->selectedEntity);
-
-	if (entityPosition != std::end(*targetEntityGroup))
-	{
-		auto next = std::next(entityPosition);
-
-		PlatformerEntity* nextEntity = (next != std::end(*targetEntityGroup)) ? *next : targetEntityGroup->front();
-
-		this->selectEntity(nextEntity);
-
-		// Next entity is dead! Try the next right target
-		if (nextEntity->isDead())
-		{
-			this->selectNextRight(++callCount);
-			return;
-		}
 	}
 }
 
 void TargetSelectionMenu::setEntityClickCallbacks()
 {
-	if (this->allowedSelection == AllowedSelection::Player || this->allowedSelection == AllowedSelection::Either)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
 	{
-		for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+		if (entity->isDead() 
+			|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
+			|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
 		{
-			PlatformerEntity* entity = *it;
-
-			if (entity->isDead())
-			{
-				continue;
-			}
-
-			entity->clickHitbox->enableInteraction();
-			entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
-			{
-				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
-				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
-			});
-			entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
-			{
-				this->selectEntity(entity);
-			});
+			return;
 		}
-	}
 
-	if (this->allowedSelection == AllowedSelection::Enemy || this->allowedSelection == AllowedSelection::Either)
-	{
-		for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+		entity->clickHitbox->enableInteraction();
+		entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 		{
-			PlatformerEntity* entity = *it;
-
-			if (entity->isDead())
-			{
-				continue;
-			}
-
-			entity->clickHitbox->enableInteraction();
-			entity->clickHitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
-			{
-				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
-				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
-			});
-			entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
-			{
-				this->selectEntity(entity);
-			});
-		}
-	}
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
+		});
+		entity->clickHitbox->setMouseOverCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+		{
+			this->selectEntity(entity);
+		});
+	}));
 }
 
 void TargetSelectionMenu::clearEntityClickCallbacks()
 {
-	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
 	{
-		PlatformerEntity* entity = *it;
-
 		entity->clickHitbox->disableInteraction();
 		entity->clickHitbox->setClickCallback(nullptr);
 		entity->clickHitbox->setMouseOverCallback(nullptr);
-	}
-
-	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
-	{
-		PlatformerEntity* entity = *it;
-
-		entity->clickHitbox->disableInteraction();
-		entity->clickHitbox->setClickCallback(nullptr);
-		entity->clickHitbox->setMouseOverCallback(nullptr);
-	}
+	}));
 }

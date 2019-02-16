@@ -17,7 +17,6 @@ private:
 	Shiftman(cocos2d::ValueMap& initProperties);
 	~Shiftman();
 
-	void registerHackables();
 	void onEnter() override;
 	void update(float) override;
 };

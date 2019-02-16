@@ -11,7 +11,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
-#include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Maps/Platformer/Huds/Components/HackableBar.h"
 #include "Scenes/Maps/Platformer/Huds/Components/StatsBars.h"
 #include "Scenes/Maps/Platformer/Huds/GameHud.h"

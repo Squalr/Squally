@@ -62,7 +62,6 @@ MechanicalFlail::MechanicalFlail(ValueMap& initProperties) : HackableObject(init
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->flailChain->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	this->registerHackables();
 	this->buildChain();
 
 	this->flailChain->addChild(this->flailCollision);
@@ -98,6 +97,11 @@ void MechanicalFlail::update(float dt)
 	super::update(dt);
 }
 
+Vec2 MechanicalFlail::getButtonOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 void MechanicalFlail::registerHackables()
 {
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
@@ -124,11 +128,6 @@ void MechanicalFlail::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 MechanicalFlail::getButtonOffset()
-{
-	return Vec2(0.0f, 0.0f);
 }
 
 void MechanicalFlail::startSwing()

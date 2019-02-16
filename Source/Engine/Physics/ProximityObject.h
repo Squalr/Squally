@@ -17,6 +17,8 @@ public:
 	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, float secondsPer256pxLinearDistance = 0.75f, cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setVelocity(cocos2d::Vec3 velocity);
 	void setAcceleration(cocos2d::Vec3 acceleration);
+	cocos2d::Vec3 getVelocity();
+	cocos2d::Vec3 getAcceleration();
 	bool isInProximityTo(cocos2d::Node* other);
 
 	template<class T>
@@ -42,9 +44,10 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
+	void registerHackables() override;
 
 private:
-	typedef SmartNode super;
+	typedef HackableObject super;
 
 	float radius;
 	cocos2d::Vec3 velocity;

@@ -14,8 +14,6 @@ class TargetSelectionMenu : public SmartNode
 public:
 	static TargetSelectionMenu* create();
 
-	void initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
-
 private:
 	typedef SmartNode super;
 	TargetSelectionMenu();
@@ -29,8 +27,7 @@ private:
 	void selectEntity(PlatformerEntity* entity);
 	void setEntityClickCallbacks();
 	void clearEntityClickCallbacks();
-	void selectNextLeft(int callCount = 0);
-	void selectNextRight(int callCount = 0);
+	void selectNext(bool directionIsLeft);
 
 	enum class AllowedSelection
 	{
@@ -43,8 +40,4 @@ private:
 	bool isActive;
 	PlatformerEntity* selectedEntity;
 	cocos2d::Sprite* lightRay;
-
-	std::vector<PlatformerEntity*> playerEntities;
-	std::vector<PlatformerEntity*> enemyEntities;
-	std::vector<PlatformerEntity*> completeEntityList;
 };

@@ -228,6 +228,5 @@ void CombatMap::initializeEntities()
 	}
 
 	this->combatHud->bindStatsBars(this->playerEntities, this->enemyEntities);
-	this->targetSelectionMenu->initializeEntities(this->playerEntities, this->enemyEntities);
-	this->timeline->initializeTimeline(this->playerEntities, this->enemyEntities, true);
+	this->timeline->initializeTimeline(true); // TODO: First-strike detection
 }

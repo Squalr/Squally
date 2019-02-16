@@ -9,8 +9,6 @@ Plushie::Plushie(ValueMap& initProperties) : HackableObject(initProperties)
 	this->sprite = Node::create();
 	this->chest = Chest::create(this->sprite);
 
-	this->registerHackables();
-
 	chest->close();
 
 	this->addChild(this->chest);
@@ -23,10 +21,6 @@ Plushie::~Plushie()
 void Plushie::update(float dt)
 {
 	super::update(dt);
-}
-
-void Plushie::registerHackables()
-{
 }
 
 Vec2 Plushie::getButtonOffset()

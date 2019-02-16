@@ -6,9 +6,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ProgressBar.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Maps/Platformer/Combat/TimelineEntry.h"
 
@@ -152,19 +155,15 @@ void Timeline::checkCombatComplete()
 	bool allEnemiesDead = true;
 	bool allPlayersDead = true;
 
-	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		PlatformerEntity* entity = *it;
-
 		allEnemiesDead &= entity->isDead();
-	}
+	}));
 
-	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		PlatformerEntity* entity = *it;
-
 		allPlayersDead &= entity->isDead();
-	}
+	}));
 
 	if (allEnemiesDead)
 	{
@@ -214,31 +213,28 @@ void Timeline::resumeTimeline()
 	this->timelineEntryAwaitingUserAction = nullptr;
 }
 
-void Timeline::initializeTimeline(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities, bool isPlayerFirstStrike)
+void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 {
-	this->playerEntities = playerEntities;
-	this->enemyEntities = enemyEntities;
-
 	this->timelineNode->removeAllChildren();
 	this->timelineEntries.clear();
 
-	for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		TimelineEntry* entry = TimelineEntry::create(*it, true);
+		TimelineEntry* entry = TimelineEntry::create(entity, true);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
-		entry->addProgress(RandomHelper::random_real(0.0f, 0.5f));
-	}
+		entry->addProgress(RandomHelper::random_real((isPlayerFirstStrike ? 0.25f : 0.0f), (isPlayerFirstStrike ? 0.5f : 0.25f)));
+	}));
 
-	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		TimelineEntry* entry = TimelineEntry::create(*it, false);
+		TimelineEntry* entry = TimelineEntry::create(entity, false);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
-		entry->addProgress(RandomHelper::random_real(0.0f, 0.5f));
-	}
+		entry->addProgress(RandomHelper::random_real((!isPlayerFirstStrike ? 0.25f : 0.0f), (!isPlayerFirstStrike ? 0.5f : 0.25f)));
+	}));
 }

@@ -7,12 +7,10 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h"
 #include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
@@ -46,8 +44,6 @@ SpikeLog::SpikeLog(ValueMap& initProperties) : HackableObject(initProperties)
 	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 128.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->setDefaultPreview(SpikeLogGenericPreview::create());
 
-	this->registerHackables();
-
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
 	this->addChild(this->beam);
@@ -75,8 +71,15 @@ void SpikeLog::initializePositions()
 	this->spikeCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
 }
 
+Vec2 SpikeLog::getButtonOffset()
+{
+	return Vec2(0.0f, 128.0f);
+}
+
 void SpikeLog::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -103,11 +106,6 @@ void SpikeLog::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 SpikeLog::getButtonOffset()
-{
-	return Vec2(0.0f, 128.0f);
 }
 
 int SpikeLog::incrementSpikeLogAnimation(int count, int max)

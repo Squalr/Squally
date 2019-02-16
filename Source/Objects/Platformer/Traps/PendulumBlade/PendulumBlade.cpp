@@ -58,7 +58,6 @@ PendulumBlade::PendulumBlade(ValueMap& initProperties) : HackableObject(initProp
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->bladeChain->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	this->registerHackables();
 	this->buildChain();
 
 	this->bladeChain->addChild(this->bladeCollision);
@@ -94,8 +93,15 @@ void PendulumBlade::update(float dt)
 	super::update(dt);
 }
 
+Vec2 PendulumBlade::getButtonOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 void PendulumBlade::registerHackables()
 {
+	super::registerHackables();
+
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
@@ -123,11 +129,6 @@ void PendulumBlade::registerHackables()
 	{
 		this->registerCode(*it);
 	}
-}
-
-Vec2 PendulumBlade::getButtonOffset()
-{
-	return Vec2(0.0f, 0.0f);
 }
 
 void PendulumBlade::startSwing()

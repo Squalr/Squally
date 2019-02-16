@@ -23,14 +23,14 @@ protected:
 	Laser(cocos2d::ValueMap& initProperties);
 	virtual ~Laser();
 
-	cocos2d::Vec2 getButtonOffset() override;
-
-private:
-	typedef HackableObject super;
-	void registerHackables();
 	void onEnter() override;
 	void update(float dt) override;
 	void initializePositions() override;
+	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
+
+private:
+	typedef HackableObject super;
 	void updateLaser(float dt);
 
 	LaserAnimation* laserAnimation;

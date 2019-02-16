@@ -13,7 +13,6 @@ protected:
 	Plushie(cocos2d::ValueMap& initProperties);
 	virtual ~Plushie();
 
-	virtual void registerHackables();
 	cocos2d::Vec2 getButtonOffset() override;
 	void update(float) override;
 
