@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 
 class LocalizedString;
 
@@ -91,8 +92,7 @@ public:
 
 		ErrorData errorData;
 		bool hasError;
-
-		unsigned char* compiledBytes;
+		std::vector<unsigned char> compiledBytes;
 		int byteCount;
 	};
 
