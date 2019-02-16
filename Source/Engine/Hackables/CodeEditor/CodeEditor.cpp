@@ -88,7 +88,7 @@ using namespace cocos2d::ui;
 const float CodeEditor::CompileDelayMaxSeconds = 0.1f;
 const float CodeEditor::LineNumberMargin = 32.0f;;
 const Size CodeEditor::StatusSize = Size(420.0f, 1080.0f);
-const Size CodeEditor::FunctionSize = Size(512.0f, 320.0f);
+const Size CodeEditor::FunctionSize = Size(640.0f, 640.0f);
 const Color4B CodeEditor::SubtextColor = Color4B(66, 166, 166, 255);
 const Color4B CodeEditor::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeEditor::ErrorColor = Color4B(196, 82, 82, 255);
@@ -118,7 +118,7 @@ CodeEditor::CodeEditor()
 	this->radialEye = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil);
 	this->previewNode = Node::create();
 
-	this->functionWindow = CodeWindow::create(Strings::Generics_Constant::create(), CodeEditor::FunctionSize);
+	this->functionWindow = CodeWindow::create(CodeEditor::FunctionSize, 32.0f);
 	this->statusWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->registerWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
@@ -174,7 +174,6 @@ CodeEditor::CodeEditor()
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::onFunctionTextUpdate, this));
-	this->functionWindow->setMarginSize(32.0f);
 
 	this->statusWindow->setPadding(Size(16.0f, 0.0f));
 	this->registerWindow->setPadding(Size(16.0f, 0.0f));
@@ -228,11 +227,11 @@ void CodeEditor::initializePositions()
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
 	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
-	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 64.0f));
+	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::StatusSize.width, visibleSize.height / 2.0f + 144.0f));
 
-	this->applyChangesButton->setPosition(Vec2(visibleSize.width / 2.0f + 128.0f, visibleSize.height / 2.0f - 192.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f - 192.0f));
+	this->cancelButton->setPosition(this->functionWindow->getPosition() + Vec2(-160.0f, -CodeEditor::FunctionSize.height / 2.0f - 64.0f));
+	this->applyChangesButton->setPosition(this->functionWindow->getPosition() + Vec2(160.0f, -CodeEditor::FunctionSize.height / 2.0f - 64.0f));
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
@@ -685,7 +684,7 @@ void CodeEditor::tokenizeCallback(std::string text, std::vector<CodeWindow::toke
 
 void CodeEditor::onScriptLoad(ScriptEntry* script)
 {
-	this->functionWindow->setTitleStringReplaceVariable(script->getName()->clone());
+	this->functionWindow->setWindowTitle(script->getName()->getString());
 	this->functionWindow->setText(script->getScript());
 }
 

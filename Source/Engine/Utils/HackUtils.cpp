@@ -10,6 +10,7 @@
 #include "Engine/asmtk/asmtk.h"
 #include "Engine/libudis86/udis86.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Strings/Hacking/CodeEditor/Errors/AlreadyInitialized.h"
 #include "Strings/Hacking/CodeEditor/Errors/AmbiguousOperandSize.h"
@@ -436,12 +437,27 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 	return compileResult;
 }
 
-std::string HackUtils::disassemble(void* bytes, int length)
+void* HackUtils::resolveVTableAddress(void* address)
+{
+	std::string firstInstruction = HackUtils::disassemble(address, 5);
+
+	if (StrUtils::startsWith(firstInstruction, "jmp ", true))
+	{
+		std::string newAddressStr = StrUtils::ltrim(firstInstruction, "jmp ", true);
+		newAddressStr = StrUtils::rtrim(newAddressStr, "\n", true);
+
+		address = HackUtils::hexToPointer(newAddressStr, address);
+	}
+
+	return address;
+}
+
+std::string HackUtils::disassemble(void* address, int length)
 {
 	static ud_t ud_obj;
 	static bool initialized = false;
 
-	if (bytes == nullptr)
+	if (address == nullptr)
 	{
 		return "nullptr";
 	}
@@ -461,7 +477,8 @@ std::string HackUtils::disassemble(void* bytes, int length)
 		initialized = true;
 	}
 
-	ud_set_input_buffer(&ud_obj, (unsigned char*)bytes, length);
+	ud_set_pc(&ud_obj, (uint64_t)address);
+	ud_set_input_buffer(&ud_obj, (unsigned char*)address, length);
 
 	std::string instructions = "";
 
@@ -524,6 +541,22 @@ std::string HackUtils::toBinary4(int value)
 	std::string binaryString = stream.str();
 
 	return binaryString;
+}
+
+void* HackUtils::hexToPointer(std::string hexString, void* fallback)
+{
+	if (!StrUtils::isHexNumber(hexString))
+	{
+		return fallback;
+	}
+
+	void* address;
+	std::stringstream ss;
+
+	ss << std::hex << hexString;
+	ss >> address;
+
+	return address;
 }
 
 HackUtils::DataType HackUtils::stdTypeToDataType(const std::type_info& dataTypeInfo)

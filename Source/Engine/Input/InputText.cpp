@@ -6,30 +6,39 @@
 #include "cocos/ui/UITextField.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Resources/UIResources.h"
+
+#include "Strings/Generics/Constant.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
 
-InputText* InputText::create(LocalizedLabel* referenceLabel)
+InputText* InputText::create(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize)
 {
-	InputText* instance = new InputText(referenceLabel);
+	InputText* instance = new InputText(minimumInputSize, fontStyle, fontSize);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InputText::InputText(LocalizedLabel* referenceLabel)
+InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize)
 {
-	this->referenceLabel = referenceLabel;
-	this->hitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
+	this->minimumInputSize = minimumInputSize;
+	this->labelText = ConstantString::create();
+	this->inputLabel = LocalizedLabel::create(fontStyle, fontSize, this->labelText);
+	this->hitbox = ClickableNode::create();
 
-	this->initWithPlaceHolder(referenceLabel->getString(), referenceLabel->getFont(), referenceLabel->getFontSize());
+	this->inputLabel->setAnchorPoint(Vec2::ZERO);
+	this->hitbox->setAnchorPoint(Vec2::ZERO);
+	this->initWithPlaceHolder(this->inputLabel->getString(), this->inputLabel->getFont(), this->inputLabel->getFontSize());
+	this->inputLabel->setVisible(false);
 
-	this->addChild(this->referenceLabel);
+	this->setDimensions(minimumInputSize.width, minimumInputSize.height);
+
+	this->addChild(this->inputLabel);
 	this->addChild(this->hitbox);
 }
 
@@ -37,30 +46,43 @@ void InputText::onEnter()
 {
 	super::onEnter();
 
-	this->scheduleUpdate();
-
 	this->hitbox->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 	{
 		this->attachWithIME();
 	});
+
+	this->initializePositions();
 }
 
-void InputText::update(float dt)
+void InputText::initializePositions()
 {
-	super::update(dt);
+	Size newSize = Size(std::max(this->minimumInputSize.width, this->getContentSize().width), std::max(this->minimumInputSize.height, this->getContentSize().height));
+	Vec2 offset = Vec2(newSize.width / 2.0f, newSize.height / 2.0f);
 
-	if (!this->hitbox->getContentSize().equals(this->getContentSize()))
-	{
-		this->hitbox->setContentSize(this->getContentSize());
-	}
+	this->hitbox->setContentSize(newSize);
+	this->labelText->setPosition(offset);
+	this->hitbox->setPosition(offset);
+}
+
+void InputText::setString(const std::string& label)
+{
+	super::setString(label);
+
+	this->labelText->setString(label);
+	this->initializePositions();
 }
 
 std::string InputText::getFont()
 {
-	return this->referenceLabel->getFont();
+	return this->inputLabel->getFont();
 }
 
 float InputText::getFontSize()
 {
-	return this->referenceLabel->getFontSize();
+	return this->inputLabel->getFontSize();
+}
+
+ClickableNode* InputText::getHitbox()
+{
+	return this->hitbox;
 }

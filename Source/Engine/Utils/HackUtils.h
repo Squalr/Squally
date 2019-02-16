@@ -99,10 +99,12 @@ public:
 	static void setAllMemoryPermissions(void* address, int length);
 	static void writeMemory(void* to, void* from, int length);
 	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);
-	static std::string disassemble(void* bytes, int length);
+	static void* resolveVTableAddress(void* address);
+	static std::string disassemble(void* address, int length);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
 	static std::string toHex(int value);
 	static std::string toBinary4(int value);
+	static void* hexToPointer(std::string hexString, void* fallback = nullptr);
 	static DataType stdTypeToDataType(const std::type_info& dataTypeInfo);
 	static std::string dataTypeToString(DataType dataType);
 	static std::string valueStringOf(void* dataPointer, DataType dataType);

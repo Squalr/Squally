@@ -12,11 +12,13 @@ class HackableData : public HackableAttribute
 public:
 	static HackableData* create(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
 
-	void* dataPointer;
-	HackUtils::DataType dataType;
+	void* getDataPointer();
 
 private:
 	typedef HackableAttribute super;
 	HackableData(void* dataAddress, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
 	virtual ~HackableData();
+
+	void* dataPointer;
+	HackUtils::DataType dataType;
 };

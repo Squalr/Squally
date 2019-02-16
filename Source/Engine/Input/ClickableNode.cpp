@@ -50,6 +50,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
 	this->mouseScrollEvent = nullptr;
+	this->allowCollisionWhenInvisible = false;
 	this->interactionEnabled = true;
 	this->isClickInit = false;
 	this->isClicked = false;
@@ -173,6 +174,11 @@ void ClickableNode::onDeveloperModeDisable()
 	this->debugHitbox->setVisible(false);
 }
 
+void ClickableNode::setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible)
+{
+	this->allowCollisionWhenInvisible = allowCollisionWhenInvisible;
+}
+
 void ClickableNode::disableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = false;
@@ -260,7 +266,7 @@ void ClickableNode::clearState()
 
 void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
 {
-	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || !GameUtils::isVisible(this))
+	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
 	}
@@ -325,7 +331,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || !GameUtils::isVisible(this))
+	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
 	}
@@ -357,7 +363,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* event)
 {
-	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || !GameUtils::isVisible(this))
+	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
 	}

@@ -37,7 +37,7 @@ std::string StrUtils::rtrim(std::string str, std::string toRemove, bool ignoreCa
 {
 	while (StrUtils::endsWith(str, toRemove, ignoreCase))
 	{
-		str = str.substr(toRemove.size());
+		str = str.substr(0, str.size() - toRemove.size());
 	}
 
 	return str;

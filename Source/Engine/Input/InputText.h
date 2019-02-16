@@ -2,33 +2,32 @@
 
 #include "cocos/ui/UITextField.h"
 
-#include "Engine/SmartNode.h"
+#include "Engine/Localization/LocalizedLabel.h"
 
-class MenuLabel;
-
-namespace cocos2d
-{
-}
-
+class ConstantString;
 class ClickableNode;
-class LocalizedLabel;
 
 class InputText : public cocos2d::ui::UICCTextField
 {
 public:
-	static InputText* create(LocalizedLabel* referenceLabel);
+	static InputText* create(cocos2d::Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize);
 
+	void setString(const std::string& label) override;
 	std::string getFont();
 	float getFontSize();
+	ClickableNode* getHitbox();
 
 private:
 	typedef UICCTextField super;
-	InputText(LocalizedLabel* referenceLabel);
+	InputText(cocos2d::Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize);
 	virtual ~InputText() = default;
 
 	void onEnter() override;
-	void update(float dt) override;
+	void initializePositions();
 
-	LocalizedLabel* referenceLabel;
+	ConstantString* labelText;
+	LocalizedLabel* inputLabel;
 	ClickableNode* hitbox;
+
+	cocos2d::Size minimumInputSize;
 };

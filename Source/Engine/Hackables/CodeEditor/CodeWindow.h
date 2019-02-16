@@ -25,7 +25,7 @@ class LocalizedString;
 class CodeWindow : public SmartNode
 {
 public:
-	static CodeWindow* create(LocalizedString* windowTitle, cocos2d::Size initWindowSize);
+	static CodeWindow* create(cocos2d::Size windowSize, float marginSize = 0.0f);
 	
 	struct token
 	{
@@ -38,9 +38,8 @@ public:
 		}
 	};
 
-	void setTitleStringReplaceVariable(LocalizedString* stringReplaceVariables);
+	void setWindowTitle(std::string windowTitle);
 	void insertText(LocalizedString* text, cocos2d::Color3B color);
-	void setMarginSize(float newMarginSize);
 	void toggleHeader(bool isVisible);
 	void toggleBackground(bool isVisible);
 	void enableWrapByChar();
@@ -56,7 +55,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	CodeWindow(LocalizedString* windowTitle, cocos2d::Size initWindowSize);
+	CodeWindow(cocos2d::Size windowSize, float marginSize = 0.0f);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
@@ -68,8 +67,7 @@ private:
 
 	cocos2d::LayerColor* background;
 	cocos2d::LayerColor* titleBar;
-	LocalizedString* windowTitle;
-	InputText* editableWindowTitle;
+	InputText* windowTitle;
 	cocos2d::ui::RichText* displayedText;
 	InputText* editableText;
 	cocos2d::ui::RichText* lineNumbers;
