@@ -162,7 +162,7 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 	this->lateBindData = lateBindData;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->allocations = std::map<void*, int>();
-	this->originalCodeCopy = nullptr;
+	this->originalCodeCopy = std::vector<unsigned char>();
 	this->registerHints = lateBindData.registerHints;
 
 	for (auto it = this->registerHints.begin(); it != this->registerHints.end(); it++)
@@ -173,11 +173,12 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 		}
 	}
 
-	if (codeStart != nullptr && this->originalCodeLength > 0)
+	if (codeStart != nullptr)
 	{
-		this->originalCodeCopy = new unsigned char[this->originalCodeLength];
-
-		HackUtils::writeMemory(originalCodeCopy, codeStart, this->originalCodeLength);
+		for (int index = 0; index < this->originalCodeLength; index++)
+		{
+			this->originalCodeCopy.push_back(((unsigned char*)codeStart)[index]);
+		}
 	}
 
 	// Disassemble starting bytes, strip out NOPs
@@ -191,11 +192,6 @@ HackableCode::~HackableCode()
 	{
 		delete(iterator->first);
 	}
-
-	if (this->originalCodeCopy != nullptr)
-	{
-		delete(this->originalCodeCopy);
-	}
 }
 
 HackableCode* HackableCode::clone()
@@ -205,9 +201,9 @@ HackableCode* HackableCode::clone()
 
 	clonedData.functionName = this->lateBindData.functionName->clone();
 
-	for (auto it = this->lateBindData.registerHints.begin(); it != this->lateBindData.registerHints.begin(); it++)
+	for (auto it = this->lateBindData.registerHints.begin(); it != this->lateBindData.registerHints.end(); it++)
 	{
-		registerHintsClone[it->first] = it->second;
+		registerHintsClone[it->first] = it->second->clone();
 	}
 
 	clonedData.registerHints = registerHintsClone;
@@ -274,12 +270,18 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 
 void HackableCode::restoreOriginalCode()
 {
-	if (this->codePointer == nullptr || this->originalCodeCopy == nullptr)
+	if (this->codePointer == nullptr)
 	{
 		return;
 	}
 
-	HackUtils::writeMemory(this->codePointer, this->originalCodeCopy,this->originalCodeLength);
+	if (this->codePointer != nullptr)
+	{
+		for (int index = 0; index < this->originalCodeLength; index++)
+		{
+			((unsigned char*)this->codePointer)[index] = this->originalCodeCopy[index];
+		}
+	}
 }
 
 void* HackableCode::allocateMemory(int allocationSize)

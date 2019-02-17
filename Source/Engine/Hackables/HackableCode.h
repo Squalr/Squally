@@ -179,7 +179,7 @@ private:
 	void* codePointer;
 	void* codeEndPointer;
 	LateBindData lateBindData;
-	unsigned char* originalCodeCopy;
+	std::vector<unsigned char> originalCodeCopy;
 	int originalCodeLength;
 	std::map<void*, int> allocations;
 };
