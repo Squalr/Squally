@@ -124,7 +124,8 @@ void PlatformerEnemy::onObjectStateLoaded()
 {
 	super::onObjectStateLoaded();
 
-	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
+    Value EnemyIsDead = Value(false);
+	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, EnemyIsDead).asBool())
 	{
 		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;
