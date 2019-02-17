@@ -8,8 +8,16 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/GetProjectileAcceleration.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEax.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEbx.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEcx.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEsi.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/GetProjectileVelocity.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEax.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEbx.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEcx.h"
+#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEsi.h"
 
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
@@ -66,22 +74,46 @@ void ProximityObject::registerHackables()
 			LOCAL_FUNC_ID_VELOCITY,
 			HackableCode::LateBindData(
 				"proximity-object",
-				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity::create(),
+				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
 				UIResources::Menus_Icons_AxeSlash,
 				nullptr,
 				{
-					{ HackableCode::Register::eax, nullptr },
-					{ HackableCode::Register::ebx, nullptr },
-					{ HackableCode::Register::ecx, nullptr }
+					{ HackableCode::Register::eax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEax::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
+					{ HackableCode::Register::ecx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
+					{ HackableCode::Register::esi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
+				}
+			)
+		},
+		{
+			LOCAL_FUNC_ID_ACCELERATION,
+			HackableCode::LateBindData(
+				"proximity-object",
+				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
+				UIResources::Menus_Icons_Scale,
+				nullptr,
+				{
+					{ HackableCode::Register::eax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEax::create() },
+					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
+					{ HackableCode::Register::ecx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
+					{ HackableCode::Register::esi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				}
 			)
 		},
 	};
 
 	auto velocityFunc = &ProximityObject::getVelocity;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)velocityFunc, lateBindMap);
+	std::vector<HackableCode*> velocityHackables = HackableCode::create((void*&)velocityFunc, lateBindMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto it = velocityHackables.begin(); it != velocityHackables.end(); it++)
+	{
+		this->registerCode(*it);
+	}
+
+	auto accelerationFunc = &ProximityObject::getAcceleration;
+	std::vector<HackableCode*> accelerationHackables = HackableCode::create((void*&)accelerationFunc, lateBindMap);
+
+	for (auto it = accelerationHackables.begin(); it != accelerationHackables.end(); it++)
 	{
 		this->registerCode(*it);
 	}
@@ -156,7 +188,43 @@ Vec3 ProximityObject::getVelocity()
 
 Vec3 ProximityObject::getAcceleration()
 {
-	return this->acceleration;
+	Vec3 accelerationCopy = this->acceleration;
+	const volatile float* accelerationPtrX = &accelerationCopy.x;
+	const volatile float* accelerationPtrY = &accelerationCopy.y;
+	const volatile float* accelerationPtrZ = &accelerationCopy.z;
+	static const volatile int* freeMemory = new int[128];
+
+	// Push acceleration variables onto FPU stack
+	ASM(push EAX)
+	ASM(push EBX)
+	ASM(push ECX)
+	ASM(push ESI)
+	ASM_MOV_REG_VAR(EAX, accelerationPtrX);
+	ASM_MOV_REG_VAR(EBX, accelerationPtrY);
+	ASM_MOV_REG_VAR(ECX, accelerationPtrZ);
+	ASM_MOV_REG_VAR(ESI, freeMemory);
+	ASM(fld dword ptr[ECX])
+	ASM(fld dword ptr[EBX])
+	ASM(fld dword ptr[EAX])
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ACCELERATION);
+	ASM(fstp dword ptr[EAX])
+	ASM(fstp dword ptr[EBX])
+	ASM(fstp dword ptr[ECX])
+	ASM_NOP15();
+	HACKABLE_CODE_END();
+	ASM_MOV_VAR_REG(accelerationPtrX, EAX);
+	ASM_MOV_VAR_REG(accelerationPtrY, EBX);
+	ASM_MOV_VAR_REG(accelerationPtrZ, ECX);
+
+	ASM(pop ESI)
+	ASM(pop ECX)
+	ASM(pop EBX)
+	ASM(pop EAX)
+
+	HACKABLES_STOP_SEARCH();
+
+	return accelerationCopy;
 }
 
 bool ProximityObject::isInProximityTo(Node* other)

@@ -5,7 +5,6 @@
 class CombatHud;
 class ChoicesMenu;
 class EnemyAIHelper;
-class PlatformerEntity;
 class RewardsMenu;
 class TargetSelectionMenu;
 class TextOverlays;
@@ -18,8 +17,6 @@ public:
 
 	void loadMap(SerializableMap* levelMap) override;
 
-	void initializeEntities();
-
 protected:
 	CombatMap();
 	~CombatMap();
@@ -29,8 +26,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
+	void spawnEntities();
 
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
@@ -42,8 +39,6 @@ private:
 
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
-	std::vector<PlatformerEntity*> playerEntities;
-	std::vector<PlatformerEntity*> enemyEntities;
 	std::string enemyIdentifier;
 
 	static CombatMap* instance;

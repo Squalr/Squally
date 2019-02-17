@@ -54,8 +54,6 @@ CombatMap::CombatMap()
 	this->timeline = Timeline::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
-	this->playerEntities = std::vector<PlatformerEntity*>();
-	this->enemyEntities = std::vector<PlatformerEntity*>();
 
 	this->addChild(this->textOverlays);
 	this->addChild(this->targetSelectionMenu);
@@ -76,8 +74,7 @@ void CombatMap::onEnter()
 	
 	this->rewardsMenu->setVisible(false);
 
-	this->scheduleUpdate();
-	this->initializeEntities();
+	this->spawnEntities();
 }
 
 void CombatMap::initializePositions()
@@ -153,11 +150,6 @@ void CombatMap::initializeListeners()
 	}));
 }
 
-void CombatMap::update(float dt)
-{
-	super::update(dt);
-}
-
 void CombatMap::loadMap(SerializableMap* levelMap)
 {
 	super::loadMap(levelMap);
@@ -169,11 +161,8 @@ void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::ve
 	this->enemyEntityKeys = enemyEntityKeys;
 }
 
-void CombatMap::initializeEntities()
+void CombatMap::spawnEntities()
 {
-	this->playerEntities.clear();
-	this->enemyEntities.clear();
-
 	// Deserialize all enemies
 	{
 		int index = 1;
@@ -191,8 +180,6 @@ void CombatMap::initializeEntities()
 					[=] (DeserializationEvents::ObjectDeserializationArgs args)
 			{
 				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
-
-				this->enemyEntities.push_back(entity);
 
 				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 			}});
@@ -218,8 +205,6 @@ void CombatMap::initializeEntities()
 			{
 				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
 
-				this->playerEntities.push_back(entity);
-
 				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 			}});
 
@@ -228,5 +213,5 @@ void CombatMap::initializeEntities()
 	}
 
 	this->combatHud->bindStatsBars();
-	this->timeline->initializeTimeline(true); // TODO: First-strike detection
+	this->timeline->initializeTimeline(true);
 }

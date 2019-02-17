@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration : public LocalizedString
+	class Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration* create();
+		static Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration();
-		~Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration();
+		Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx();
+		~Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx();
 	};
 }

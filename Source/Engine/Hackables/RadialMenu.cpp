@@ -198,8 +198,6 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
 	LayerColor* labelBackground = LayerColor::create(Color4B(0, 0, 0, 196), label->getContentSize().width + padding.width * 2.0f, label->getContentSize().height + padding.height * 2.0f);
 
-	labelBackground->setPosition(Vec2(-label->getContentSize().width / 2.0f - padding.width, -label->getContentSize().height / 2.0f - padding.height));
-
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
 	clickableNode->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
@@ -260,6 +258,8 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 		labelNode->setPosition(Vec2(offset, 0.0f));
 		label->setAnchorPoint(Vec2(0.0f, 0.5f));
 	}
+
+	labelBackground->setPosition(Vec2(-label->getContentSize().width * label->getAnchorPoint().x, -label->getContentSize().height / 2.0f) - padding);
 
 	labelNode->addChild(labelBackground);
 	labelNode->addChild(label);
