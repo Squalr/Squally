@@ -45,8 +45,6 @@ Laser::Laser(ValueMap& initProperties) : HackableObject(initProperties)
 	this->laserAnimation = LaserAnimation::create(height);
 	this->laserCollision = CollisionObject::create(PhysicsBody::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	this->setDefaultPreview(LaserGenericPreview::create());
-
 	this->addChild(this->laserCollision);
 	this->addChild(this->laserAnimation);
 }
@@ -111,6 +109,11 @@ void Laser::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* Laser::createDefaultPreview()
+{
+	return LaserGenericPreview::create();
 }
 
 void Laser::updateLaser(float dt)

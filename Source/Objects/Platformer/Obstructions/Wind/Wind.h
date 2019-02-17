@@ -18,17 +18,18 @@ public:
 	static const std::string MapKeyWind;
 
 protected:
-	void registerHackables() override;
-
-private:
-	typedef HackableObject super;
 	Wind(cocos2d::ValueMap& initProperties);
-	virtual ~Wind() = default;
-
+	virtual ~Wind();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void registerHackables() override;
+	HackablePreview* createDefaultPreview() override;
+
+private:
+	typedef HackableObject super;
+
 	void updateWind(float dt);
 
 	cocos2d::Vec2 getButtonOffset() override;
