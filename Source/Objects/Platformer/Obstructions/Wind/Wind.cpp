@@ -7,6 +7,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Objects/Platformer/Obstructions/Wind/WindGenericPreview.h"
 #include "Objects/Platformer/Obstructions/Wind/WindSetSpeedPreview.h"
 
 #include "Resources/ParticleResources.h"
@@ -60,6 +61,10 @@ Wind::Wind(ValueMap& initProperties) : HackableObject(initProperties)
 	this->addChild(this->windParticles);
 }
 
+Wind::~Wind()
+{
+}
+
 void Wind::onEnter()
 {
 	super::onEnter();
@@ -98,6 +103,18 @@ void Wind::initializeListeners()
 	});
 }
 
+void Wind::update(float dt)
+{
+	super::update(dt);
+
+	this->updateWind(dt);
+}
+
+Vec2 Wind::getButtonOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 void Wind::registerHackables()
 {
 	super::registerHackables();
@@ -128,16 +145,9 @@ void Wind::registerHackables()
 	}
 }
 
-Vec2 Wind::getButtonOffset()
+HackablePreview* Wind::createDefaultPreview()
 {
-	return Vec2(0.0f, 0.0f);
-}
-
-void Wind::update(float dt)
-{
-	super::update(dt);
-
-	this->updateWind(dt);
+	return WindGenericPreview::create();
 }
 
 void Wind::updateWind(float dt)

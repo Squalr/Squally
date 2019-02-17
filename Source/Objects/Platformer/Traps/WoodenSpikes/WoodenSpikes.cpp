@@ -44,7 +44,6 @@ WoodenSpikes::WoodenSpikes(ValueMap& initProperties) : HackableObject(initProper
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
 
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(WoodenSpikesGenericPreview::create());
 
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
@@ -110,6 +109,11 @@ void WoodenSpikes::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* WoodenSpikes::createDefaultPreview()
+{
+	return WoodenSpikesGenericPreview::create();
 }
 
 void WoodenSpikes::updateSpikes(float dt)

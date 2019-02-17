@@ -44,7 +44,6 @@ HeavenHug::HeavenHug(ValueMap& initProperties) : HackableObject(initProperties)
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
 	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(HeavenHugGenericPreview::create());
 
 	this->travelDistance = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
@@ -108,6 +107,11 @@ void HeavenHug::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* HeavenHug::createDefaultPreview()
+{
+	return HeavenHugGenericPreview::create();
 }
 
 void HeavenHug::updateHeavenHug()

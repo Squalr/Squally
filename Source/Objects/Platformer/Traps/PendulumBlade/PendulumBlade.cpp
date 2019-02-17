@@ -48,7 +48,6 @@ PendulumBlade::PendulumBlade(ValueMap& initProperties) : HackableObject(initProp
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(PendulumBladeGenericPreview::create());
 
 	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
@@ -129,6 +128,11 @@ void PendulumBlade::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* PendulumBlade::createDefaultPreview()
+{
+	return PendulumBladeGenericPreview::create();
 }
 
 void PendulumBlade::startSwing()

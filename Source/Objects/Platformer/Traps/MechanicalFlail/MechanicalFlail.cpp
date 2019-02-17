@@ -50,7 +50,6 @@ MechanicalFlail::MechanicalFlail(ValueMap& initProperties) : HackableObject(init
 	this->flailChain = Node::create();
 	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
 	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(MechanicalFlailGenericPreview::create());
 
 	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
 
@@ -128,6 +127,11 @@ void MechanicalFlail::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* MechanicalFlail::createDefaultPreview()
+{
+	return MechanicalFlailGenericPreview::create();
 }
 
 void MechanicalFlail::startSwing()

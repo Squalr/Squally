@@ -44,7 +44,6 @@ MetalSpikes::MetalSpikes(ValueMap& initProperties) : HackableObject(initProperti
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->setDefaultPreview(MetalSpikesGenericPreview::create());
 
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
@@ -110,6 +109,11 @@ void MetalSpikes::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* MetalSpikes::createDefaultPreview()
+{
+	return MetalSpikesGenericPreview::create();
 }
 
 void MetalSpikes::updateSpikes(float dt)

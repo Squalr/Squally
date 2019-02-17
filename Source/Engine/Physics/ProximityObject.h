@@ -8,6 +8,8 @@ namespace cocos2d
 	class Node;
 }
 
+class HackablePreview;
+
 // This is a pseudo-physics object used to detect proximity to other objects
 class ProximityObject : public HackableObject
 {
@@ -45,6 +47,9 @@ protected:
 	void initializePositions() override;
 	void update(float) override;
 	void registerHackables() override;
+	HackablePreview* createDefaultPreview() override;
+	virtual HackablePreview* createVelocityPreview();
+	virtual HackablePreview* createAccelerationPreview();
 
 private:
 	typedef HackableObject super;
