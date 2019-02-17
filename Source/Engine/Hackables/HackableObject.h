@@ -22,8 +22,7 @@ class HackableObject : public SerializableObject
 {
 public:
 	void onHackableClick(ClickableNode* backButton);
-	HackablePreview* getDefaultPreview();
-	void setDefaultPreview(HackablePreview* defaultPreview);
+	virtual HackablePreview* createDefaultPreview();
 
 	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
@@ -49,5 +48,4 @@ private:
 
 	HackButton* hackButton;
 	cocos2d::Vec2 buttonOffset;
-	HackablePreview* defaultPreview;
 };

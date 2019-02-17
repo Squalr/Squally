@@ -4,24 +4,24 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
+	class Sprite;
 }
 
-class WindGenericPreview : public HackablePreview
+class BomberTorchGenericPreview : public HackablePreview
 {
 public:
-	static WindGenericPreview* create();
+	static BomberTorchGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 protected:
-	WindGenericPreview();
-	virtual ~WindGenericPreview();
+	BomberTorchGenericPreview();
+	virtual ~BomberTorchGenericPreview();
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
 
-	cocos2d::ParticleSystem* windParticles;
+	cocos2d::Sprite* bomberTorch;
 };

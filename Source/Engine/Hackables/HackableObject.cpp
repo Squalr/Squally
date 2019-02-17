@@ -19,7 +19,6 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackButton = HackButton::create();
-	this->defaultPreview = nullptr;
 	
 	this->hackButton->setVisible(false);
 
@@ -28,10 +27,6 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 
 HackableObject::~HackableObject()
 {
-	if (this->defaultPreview != nullptr)
-	{
-		this->defaultPreview->release();
-	}
 }
 
 void HackableObject::onEnter()
@@ -103,20 +98,9 @@ void HackableObject::onHackableClick(ClickableNode* hackButton)
 	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
 }
 
-HackablePreview* HackableObject::getDefaultPreview()
+HackablePreview* HackableObject::createDefaultPreview()
 {
-	return this->defaultPreview;
-}
-
-void HackableObject::setDefaultPreview(HackablePreview* defaultPreview)
-{
-	if (this->defaultPreview != nullptr)
-	{
-		this->defaultPreview->release();
-	}
-
-	this->defaultPreview = defaultPreview;
-	this->defaultPreview->retain();
+	return nullptr;
 }
 
 void HackableObject::registerData(HackableData* hackableData)

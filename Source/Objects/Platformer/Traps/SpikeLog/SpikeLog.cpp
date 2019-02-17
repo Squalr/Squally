@@ -42,7 +42,6 @@ SpikeLog::SpikeLog(ValueMap& initProperties) : HackableObject(initProperties)
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(480.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 128.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
-	this->setDefaultPreview(SpikeLogGenericPreview::create());
 
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
@@ -106,6 +105,11 @@ void SpikeLog::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* SpikeLog::createDefaultPreview()
+{
+	return SpikeLogGenericPreview::create();
 }
 
 int SpikeLog::incrementSpikeLogAnimation(int count, int max)

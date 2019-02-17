@@ -76,7 +76,7 @@ void ProximityObject::registerHackables()
 				"proximity-object",
 				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
 				UIResources::Menus_Icons_AxeSlash,
-				nullptr,
+				this->createVelocityPreview(),
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
@@ -91,7 +91,7 @@ void ProximityObject::registerHackables()
 				"proximity-object",
 				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
 				UIResources::Menus_Icons_Scale,
-				nullptr,
+				this->createAccelerationPreview(),
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
@@ -117,6 +117,21 @@ void ProximityObject::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* ProximityObject::createDefaultPreview()
+{
+	return nullptr;
+}
+
+HackablePreview* ProximityObject::createVelocityPreview()
+{
+	return nullptr;
+}
+
+HackablePreview* ProximityObject::createAccelerationPreview()
+{
+	return nullptr;
 }
 
 void ProximityObject::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed, float secondsPer256pxLinearDistance, Vec3 gravity)

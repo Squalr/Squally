@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Objects/Platformer/Combat/BomberTorch/BomberTorchGenericPreview.h"
 
 #include "Resources/EntityResources.h"
 
@@ -47,4 +48,19 @@ void BomberTorch::initializePositions()
 void BomberTorch::update(float dt)
 {
 	super::update(dt);
+}
+
+HackablePreview* BomberTorch::createDefaultPreview()
+{
+	return BomberTorchGenericPreview::create();
+}
+
+HackablePreview* BomberTorch::createVelocityPreview()
+{
+	return BomberTorchGenericPreview::create();
+}
+
+HackablePreview* BomberTorch::createAccelerationPreview()
+{
+	return BomberTorchGenericPreview::create();
 }
