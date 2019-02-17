@@ -26,6 +26,7 @@ protected:
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
+	HackablePreview* createDefaultPreview() override;
 
 private:
 	typedef HackableObject super;

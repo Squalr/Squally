@@ -29,6 +29,10 @@ WindGenericPreview::WindGenericPreview()
 	this->previewNode->addChild(this->windParticles);
 }
 
+WindGenericPreview::~WindGenericPreview()
+{
+}
+
 HackablePreview* WindGenericPreview::clone()
 {
 	return WindGenericPreview::create();

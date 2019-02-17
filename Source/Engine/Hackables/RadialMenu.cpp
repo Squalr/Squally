@@ -150,9 +150,11 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->previewNode->removeAllChildren();
 	this->radialMenuItems->removeAllChildren();
 
-	if (this->activeHackableObject->getDefaultPreview() != nullptr)
+	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
+
+	if (preview != nullptr)
 	{
-		this->previewNode->addChild(this->activeHackableObject->getDefaultPreview()->clone());
+		this->previewNode->addChild(preview);
 	}
 
 	// +1 from the exit node, which is always present
