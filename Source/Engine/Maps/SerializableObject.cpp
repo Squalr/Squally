@@ -281,7 +281,7 @@ void SerializableObject::saveObjectState(std::string key, cocos2d::Value value)
 	SaveManager::saveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
 }
 
-Value& SerializableObject::getObjectStateOrDefault(std::string key, Value& defaultValue)
+Value& SerializableObject::getObjectStateOrDefault(std::string key, const Value& defaultValue)
 {
 	return GameUtils::getKeyOrDefault(this->saveProperties, key, defaultValue);
 }

@@ -230,7 +230,7 @@ void TimelineEntry::tryInterrupt()
 	{
 		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
 		this->isCasting = false;
-		this->progress = 0.5f;
+		this->progress = 0.0f;
 	}
 }
 
