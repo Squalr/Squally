@@ -51,8 +51,12 @@ private:
 	ClickableNode* dragHitbox;
 	cocos2d::ClippingRectangleNode* contentClip;
 	cocos2d::Node* content;
+	cocos2d::DrawNode* scrollBounds;
 	Slider* scrollBar;
 
 	static const float DragSpeed;
 	static const float ScrollSpeed;
+	static const float ScrollTrackWidth;
+	static const float ScrollTrackStopOffset;
+	static const float ScrollTotalWidth;
 };

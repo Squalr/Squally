@@ -21,11 +21,12 @@ namespace cocos2d
 class InputText;
 class LocalizedLabel;
 class LocalizedString;
+class ScrollPane;
 
 class CodeWindow : public SmartNode
 {
 public:
-	static CodeWindow* create(cocos2d::Size windowSize, float marginSize = 0.0f);
+	static CodeWindow* create(cocos2d::Size windowSize);
 	
 	struct token
 	{
@@ -55,7 +56,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	CodeWindow(cocos2d::Size windowSize, float marginSize = 0.0f);
+	CodeWindow(cocos2d::Size windowSize);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
@@ -68,6 +69,7 @@ private:
 	cocos2d::LayerColor* background;
 	cocos2d::LayerColor* titleBar;
 	InputText* windowTitle;
+	ScrollPane* contentPane;
 	cocos2d::ui::RichText* displayedText;
 	InputText* editableText;
 	cocos2d::ui::RichText* lineNumbers;
@@ -77,7 +79,6 @@ private:
 	std::function<void(std::string text, std::vector<CodeWindow::token>&)> tokenizationCallback;
 	std::function<void(std::string text)> onEditCallback;
 
-	float marginSize;
 	int currentLineNumber;
 	cocos2d::Size windowSize;
 	std::string previousText;
@@ -93,4 +94,5 @@ private:
 	static const cocos2d::Color4B DefaultWindowColor;
 	static const cocos2d::Color3B LineNumberColor;
 	static const cocos2d::Size Padding;
+	static const float MarginSize;
 };

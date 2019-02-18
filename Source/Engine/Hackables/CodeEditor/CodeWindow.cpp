@@ -7,6 +7,7 @@
 #include "cocos/ui/UIScrollView.h"
 #include "cocos/ui/UITextField.h"
 
+#include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -16,8 +17,9 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/StrUtils.h"
 
-#include "Strings/Generics/Empty.h"
 #include "Strings/Generics/Newline.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -64,37 +66,43 @@ const Color3B CodeWindow::NumberColor = Color3B(181, 206, 168);
 const Color3B CodeWindow::CommentColor = Color3B(87, 166, 74);
 const Color3B CodeWindow::LineNumberColor = Color3B(166, 166, 166);
 const Size CodeWindow::Padding = Size(8.0f, 4.0f);
+const float CodeWindow::MarginSize = 48.0f;
 const float CodeWindow::TitleBarHeight = 48.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
 
-CodeWindow* CodeWindow::create(cocos2d::Size windowSize, float marginSize)
+CodeWindow* CodeWindow::create(cocos2d::Size windowSize)
 {
-	CodeWindow* instance = new CodeWindow(windowSize, marginSize);
+	CodeWindow* instance = new CodeWindow(windowSize);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CodeWindow::CodeWindow(cocos2d::Size windowSize, float marginSize)
+CodeWindow::CodeWindow(cocos2d::Size windowSize)
 {
 	this->windowSize = windowSize;
-	this->marginSize = marginSize;
 	this->currentLineNumber = 1;
 	this->tokenizationCallback = nullptr;
 	this->onEditCallback = nullptr;
 	this->lineNumberElements = std::vector<RichElement*>();
+	this->textElements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
 
 	this->lineNumbers = RichText::create();
 	this->editableText = InputText::create(
-		Size(windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f, this->windowSize.height - CodeWindow::Padding.height * 2.0f),
+		Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, this->windowSize.height - CodeWindow::Padding.height * 2.0f),
 		LocalizedLabel::FontStyle::Coding,
 		LocalizedLabel::FontSize::H3
 	);
-
-	this->textElements = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
 	this->displayedText = RichText::create();
+	this->contentPane = ScrollPane::create(
+		windowSize,
+		UIResources::Menus_Buttons_SliderButton,
+		UIResources::Menus_Buttons_SliderButtonSelected,
+		CodeWindow::Padding,
+		Size::ZERO
+	);
 	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, this->windowSize.width, this->windowSize.height);
 	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, this->windowSize.width, CodeWindow::TitleBarHeight);
 	this->windowTitle = InputText::create(
@@ -118,12 +126,13 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize, float marginSize)
 	this->editableText->enableWrap(true);
 	this->editableText->setOpacity(0);
 
+	this->contentPane->addChild(this->lineNumbers);
+	this->contentPane->addChild(this->editableText);
+	this->contentPane->addChild(this->displayedText);
 	this->addChild(this->background);
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
-	this->addChild(this->lineNumbers);
-	this->addChild(this->editableText);
-	this->addChild(this->displayedText);
+	this->addChild(this->contentPane);
 }
 
 CodeWindow::~CodeWindow()
@@ -145,17 +154,19 @@ void CodeWindow::initializePositions()
 
 	Size windowSize = this->background->getContentSize();
 
-	this->displayedText->setContentSize(Size(windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
-
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
-	this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
-	this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
-	this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
+	this->displayedText->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
+	this->lineNumbers->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
 
-	this->lineNumbers->setContentSize(Size(windowSize.width - this->marginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
+	this->lineNumbers->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + 20.0f, 0.0f));
+	this->displayedText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
+	this->editableText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
+	//this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
+	//this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
+	//this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
 }
 
 void CodeWindow::initializeListeners()
@@ -196,6 +207,8 @@ void CodeWindow::update(float dt)
 		{
 			this->onEditCallback(currentText);
 		}
+
+		this->contentPane->updateScrollBounds();
 	}
 }
 

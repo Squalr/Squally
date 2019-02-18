@@ -33,6 +33,8 @@ InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle,
 
 	this->inputLabel->setAnchorPoint(Vec2::ZERO);
 	this->hitbox->setAnchorPoint(Vec2::ZERO);
+	this->hitbox->setClickSound("");
+	this->hitbox->setMouseOverSound("");
 	this->initWithPlaceHolder(this->inputLabel->getString(), this->inputLabel->getFont(), this->inputLabel->getFontSize());
 	this->inputLabel->setVisible(false);
 

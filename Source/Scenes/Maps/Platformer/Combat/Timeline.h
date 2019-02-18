@@ -26,6 +26,7 @@ private:
 	virtual ~Timeline() = default;
 
 	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
@@ -42,8 +43,7 @@ private:
 
 	float timelineWidth;
 	bool isTimelinePaused;
+	bool isTimelineInterrupted;
 	bool isCombatComplete;
 	TimelineEntry* timelineEntryAwaitingUserAction;
-
-	static const float TimelineSpeed;
 };

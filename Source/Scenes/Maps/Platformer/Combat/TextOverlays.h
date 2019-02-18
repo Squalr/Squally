@@ -2,6 +2,7 @@
 
 #include "Engine/SmartNode.h"
 
+class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
 
@@ -16,7 +17,9 @@ private:
 	virtual ~TextOverlays() = default;
 
 	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label);
 };

@@ -6,7 +6,6 @@
 
 #include <tinyxml2.h>
 
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -147,16 +146,6 @@ void SerializableObject::onEnter()
 void SerializableObject::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
-	{
-		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			args->tryInvoke(this);
-		}
-	}));
 }
 
 std::string SerializableObject::getUniqueIdentifier()

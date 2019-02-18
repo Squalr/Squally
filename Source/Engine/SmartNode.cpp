@@ -1,11 +1,14 @@
 #include "SmartNode.h"
 
+#include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 
 using namespace cocos2d;
@@ -62,6 +65,16 @@ void SmartNode::initializePositions()
 void SmartNode::initializeListeners()
 {
 	this->removeAllListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
+	{
+		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			args->tryInvoke(this);
+		}
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::DeveloperModeModeEnableEvent, [=](EventCustom* args)
 	{

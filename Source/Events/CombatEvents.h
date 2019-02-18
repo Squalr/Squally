@@ -13,7 +13,9 @@ public:
 	static const std::string EventRequestAIAction;
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
+	static const std::string EventInterruptTimeline;
 	static const std::string EventDamageDelt;
+	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
@@ -68,6 +70,15 @@ public:
 		}
 	};
 
+	struct CastInterruptArgs
+	{
+		PlatformerEntity* target;
+
+		CastInterruptArgs(PlatformerEntity* target) : target(target)
+		{
+		}
+	};
+
 	struct DamageDeltArgs
 	{
 		int delta;
@@ -93,7 +104,9 @@ public:
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
+	static void TriggerInterruptTimeline();
 	static void TriggerDamageDelt(DamageDeltArgs args);
+	static void TriggerCastInterrupt(CastInterruptArgs args);
 	static void TriggerCombatFinished(CombatFinishedArgs args);
 	static void TriggerGiveRewards();
 	static void TriggerReturnToMap();
