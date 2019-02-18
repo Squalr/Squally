@@ -1,12 +1,11 @@
 #pragma once
 #include <map>
 #include <string>
-
+#include "cocos/2d/CCNode.h"
 #include "cocos/math/CCGeometry.h"
 
 namespace cocos2d
 {
-	class Node;
 	class ParticleSystem;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
