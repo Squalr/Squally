@@ -5,6 +5,8 @@
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/renderer/CCTextureCache.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/Utils/StrUtils.h"
@@ -39,6 +41,8 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
 
+	this->primeCache(defaultSprite);
+
 	this->addChild(this->sprite);
 }
 
@@ -57,7 +61,12 @@ SmartAnimationSequenceNode::~SmartAnimationSequenceNode()
 
 void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceFile)
 {
-	SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
+	std::vector<std::string> images = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
+
+	for (auto it = images.begin(); it != images.end(); it++)
+	{
+		Director::getInstance()->getTextureCache()->addImage(*it);
+	}
 }
 
 void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)

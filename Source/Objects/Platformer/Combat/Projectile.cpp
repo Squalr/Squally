@@ -4,12 +4,9 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Hackables/HackableCode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
-
-#include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
@@ -53,7 +50,7 @@ void Projectile::update(float dt)
 
 			int damageDelta = -RandomHelper::random_int(this->associatedAttack->getBaseDamageMin(), this->associatedAttack->getBaseDamageMax());
 
-			target->takeDamage(damageDelta);
+			target->addHealth(damageDelta);
 			CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(damageDelta, target));
 
 			this->hasCollided = true;

@@ -5,12 +5,12 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
-class SerializableObject;
+class SmartNode;
 
 class QueryObjectsArgsBase
 {
 public:
-	virtual void tryInvoke(SerializableObject* object) = 0;
+	virtual void tryInvoke(SmartNode* object) = 0;
 };
 
 template<class T>
@@ -29,7 +29,7 @@ public:
 	{
 	}
 
-	void tryInvoke(SerializableObject* object) override
+	void tryInvoke(SmartNode* object) override
 	{
 		if (dynamic_cast<T*>(object) != nullptr)
 		{

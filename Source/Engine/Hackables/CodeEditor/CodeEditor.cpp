@@ -118,7 +118,7 @@ CodeEditor::CodeEditor()
 	this->radialEye = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil);
 	this->previewNode = Node::create();
 
-	this->functionWindow = CodeWindow::create(CodeEditor::FunctionSize, 32.0f);
+	this->functionWindow = CodeWindow::create(CodeEditor::FunctionSize);
 	this->statusWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->registerWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));

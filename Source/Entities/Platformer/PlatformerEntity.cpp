@@ -1,8 +1,5 @@
 #include "PlatformerEntity.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Input/ClickableNode.h"
@@ -196,7 +193,7 @@ void PlatformerEntity::update(float dt)
 	}
 }
 
-void PlatformerEntity::takeDamage(int healthDelta)
+void PlatformerEntity::addHealth(int healthDelta)
 {
 	if (this->isDead())
 	{
@@ -254,57 +251,6 @@ SmartAnimationNode* PlatformerEntity::getAnimations()
 Size PlatformerEntity::getEntitySize()
 {
 	return this->entitySize;
-}
-
-void PlatformerEntity::castAttack(PlatformerAttack* attack, PlatformerEntity* target, std::function<void(DamageArgs)> onDamageDelt, std::function<void()> onCastComplete)
-{
-	this->animationNode->playAnimation(attack->getAttackAnimation());
-
-	switch(attack->getAttackType())
-	{
-		default:
-		case PlatformerAttack::AttackType::Direct:
-		{
-			int damage = -RandomHelper::random_int(attack->getBaseDamageMin(), attack->getBaseDamageMax());
-
-			this->runAction(Sequence::create(
-				DelayTime::create(attack->getAttackDuration()),
-				CallFunc::create([=]()
-				{
-					target->takeDamage(damage);
-					onDamageDelt(DamageArgs(damage));
-				}),
-				DelayTime::create(attack->getRecoverDuration()),
-				CallFunc::create([=]()
-				{
-					onCastComplete();
-				}),
-				nullptr
-			));
-
-			break;
-		}
-		case PlatformerAttack::AttackType::Projectile:
-		{
-			this->runAction(Sequence::create(
-				DelayTime::create(attack->getAttackDuration()),
-				CallFunc::create([=]()
-				{
-					attack->spawnProjectiles(this, target);
-				}),
-				DelayTime::create(attack->getRecoverDuration()),
-				CallFunc::create([=]()
-				{
-					// TODO: Despawn projectiles after recover duration? Or perhaps after a timeout
-					// call onCastComplete either when the projectiles land (hard for multiple) or after a hard timeout
-					onCastComplete();
-				}),
-				nullptr
-			));
-
-			break;
-		}
-	}
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()

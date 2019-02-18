@@ -22,8 +22,6 @@
 
 using namespace cocos2d;
 
-const float Timeline::TimelineSpeed = 0.00025f;
-
 Timeline* Timeline::create()
 {
 	Timeline* instance = new Timeline();
@@ -62,12 +60,20 @@ void Timeline::onEnter()
 {
 	super::onEnter();
 
-	this->timelineEntries.clear();
 	this->isTimelinePaused = false;
+	this->isTimelineInterrupted = false;
 	this->isCombatComplete = false;
 	this->timelineEntryAwaitingUserAction = nullptr;
 
 	this->scheduleUpdate();
+}
+
+void Timeline::onExit()
+{
+	super::onExit();
+
+	this->timelineNode->removeAllChildren();
+	this->timelineEntries.clear();
 }
 
 void Timeline::initializePositions()
@@ -107,6 +113,11 @@ void Timeline::initializeListeners()
 		this->isTimelinePaused = false;
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventInterruptTimeline, [=](EventCustom* args)
+	{
+		this->isTimelineInterrupted = true;
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
@@ -121,7 +132,7 @@ void Timeline::initializeListeners()
 				{
 					if (this->timelineEntryAwaitingUserAction != nullptr)
 					{
-						this->timelineEntryAwaitingUserAction->defend();
+						// TODO: Trigger defend event
 					}
 
 					CombatEvents::TriggerResumeTimeline();
@@ -181,28 +192,29 @@ void Timeline::checkCombatComplete()
 
 void Timeline::updateTimeline(float dt)
 {
-	// Remove dead entities
-	this->timelineEntries.erase(std::remove_if(this->timelineEntries.begin(), this->timelineEntries.end(), [=](TimelineEntry* entry)
-	{
-		if (entry->getEntity()->isDead())
-		{
-			// TODO: Make timeline entry grayed out or something
-
-			return true;
-		}
-
-		return false;
-	}), this->timelineEntries.end());
-
 	if (!this->isTimelinePaused && !isCombatComplete)
 	{
+		this->isTimelineInterrupted = false;
+
 		// Update all timeline entries
 		for (auto it = this->timelineEntries.begin(); it != this->timelineEntries.end(); it++)
 		{
 			TimelineEntry* entry = *it;
-			float progress = entry->addProgress(dt * entry->getSpeed() * Timeline::TimelineSpeed * this->timelineWidth);
 
-			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * progress);
+			if (!entry->getEntity()->isDead())
+			{
+				if (!this->isTimelineInterrupted)
+				{
+					entry->addTime(dt);
+
+					entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
+				}
+				else
+				{
+					// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
+					entry->addTimeWithoutActions(dt);
+				}
+			}
 		}
 	}
 }
@@ -220,21 +232,21 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		TimelineEntry* entry = TimelineEntry::create(entity, true);
+		TimelineEntry* entry = TimelineEntry::create(entity);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
-		entry->addProgress(RandomHelper::random_real((isPlayerFirstStrike ? 0.25f : 0.0f), (isPlayerFirstStrike ? 0.5f : 0.25f)));
+		entry->setProgress(RandomHelper::random_real((isPlayerFirstStrike ? 0.25f : 0.0f), (isPlayerFirstStrike ? 0.5f : 0.25f)));
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		TimelineEntry* entry = TimelineEntry::create(entity, false);
+		TimelineEntry* entry = TimelineEntry::create(entity);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
-		entry->addProgress(RandomHelper::random_real((!isPlayerFirstStrike ? 0.25f : 0.0f), (!isPlayerFirstStrike ? 0.5f : 0.25f)));
+		entry->setProgress(RandomHelper::random_real((!isPlayerFirstStrike ? 0.25f : 0.0f), (!isPlayerFirstStrike ? 0.5f : 0.25f)));
 	}));
 }

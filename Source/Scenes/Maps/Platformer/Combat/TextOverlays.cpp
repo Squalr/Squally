@@ -10,6 +10,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 
+#include "Strings/Combat/Interrupted.h"
 #include "Strings/Generics/MinusConstant.h"
 #include "Strings/Generics/PlusConstant.h"
 
@@ -31,8 +32,13 @@ TextOverlays::TextOverlays()
 void TextOverlays::onEnter()
 {
 	super::onEnter();
+}
 
-	this->scheduleUpdate();
+void TextOverlays::onExit()
+{
+	super::onExit();
+
+	this->removeAllChildren();
 }
 
 void TextOverlays::initializePositions()
@@ -44,6 +50,20 @@ void TextOverlays::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* args)
+	{
+		CombatEvents::CastInterruptArgs* castInterruptArgs = static_cast<CombatEvents::CastInterruptArgs*>(args->getUserData());
+
+		if (castInterruptArgs != nullptr && castInterruptArgs->target != nullptr)
+		{
+			LocalizedLabel* interruptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Interrupted::create());
+
+			interruptLabel->setTextColor(Color4B::ORANGE);
+			interruptLabel->setPosition(Vec2(0.0f, 64.0f));
+
+			this->runLabelOverEntity(castInterruptArgs->target, interruptLabel);
+		}
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageDelt, [=](EventCustom* args)
 	{
@@ -55,28 +75,10 @@ void TextOverlays::initializeListeners()
 			LocalizedString* deltaString = damageArgs->delta < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
 			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
+			deltaLabel->setTextColor(damageArgs->delta < 0 ? Color4B::RED : Color4B::BLUE);
 			deltaString->setStringReplacementVariables(amount);
 
-			this->addChild(deltaLabel);
-
-			deltaLabel->setPosition(damageArgs->target->getPosition() + Vec2(0.0f, damageArgs->target->getEntitySize().height + 16.0f));
-			deltaLabel->setPositionZ(damageArgs->target->getPositionZ());
-			deltaLabel->enableOutline(Color4B::BLACK, 2);
-			deltaLabel->setTextColor(damageArgs->delta < 0 ? Color4B::RED : Color4B::BLUE);
-
-			deltaLabel->runAction(Sequence::create(
-				FadeTo::create(2.0f, 0),
-				nullptr
-			));
-
-			deltaLabel->runAction(Sequence::create(
-				MoveTo::create(2.01f, deltaLabel->getPosition() + Vec2(0.0f, 128.0f)),
-				CallFunc::create([=]()
-				{
-					this->removeChild(deltaLabel);
-				}),
-				nullptr
-			));
+			this->runLabelOverEntity(damageArgs->target, deltaLabel);
 		}
 	}));
 }
@@ -84,4 +86,27 @@ void TextOverlays::initializeListeners()
 void TextOverlays::update(float dt)
 {
 	super::update(dt);
+}
+
+void TextOverlays::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label)
+{
+	this->addChild(label);
+
+	label->setPosition(label->getPosition() + target->getPosition() + Vec2(0.0f, target->getEntitySize().height + 16.0f));
+	label->setPositionZ(target->getPositionZ());
+	label->enableOutline(Color4B::BLACK, 2);
+
+	label->runAction(Sequence::create(
+		FadeTo::create(2.0f, 0),
+		nullptr
+	));
+
+	label->runAction(Sequence::create(
+		MoveTo::create(2.01f, label->getPosition() + Vec2(0.0f, 128.0f)),
+		CallFunc::create([=]()
+		{
+			this->removeChild(label);
+		}),
+		nullptr
+	));
 }

@@ -19,6 +19,9 @@ using namespace cocos2d::ui;
 
 const float ScrollPane::DragSpeed = 2.0f;
 const float ScrollPane::ScrollSpeed = 64.0f;
+const float ScrollPane::ScrollTrackWidth = 16.0f;
+const float ScrollPane::ScrollTrackStopOffset = 48.0f;
+const float ScrollPane::ScrollTotalWidth = 32.0f;
 
 ScrollPane* ScrollPane::create(Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, Color4B initBackgroundColor)
 {
@@ -40,19 +43,13 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->dragHitbox = ClickableNode::create();
 	this->contentClip = ClippingRectangleNode::create(Rect(Vec2::ZERO, this->paneSize));
 	this->content = Node::create();
+	this->scrollBounds = DrawNode::create();
+	this->scrollBounds->drawSolidRect(Vec2(-ScrollPane::ScrollTrackWidth / 2.0f, -(this->paneSize.height - ScrollPane::ScrollTrackStopOffset) / 2.0f), Vec2(ScrollPane::ScrollTrackWidth / 2.0f, (this->paneSize.height - ScrollPane::ScrollTrackStopOffset) / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
+	this->scrollBounds->setContentSize(Size(ScrollPane::ScrollTrackWidth, this->paneSize.height - ScrollPane::ScrollTrackStopOffset));
+	this->scrollBar = Slider::create(this->scrollBounds, Node::create(), sliderResource, sliderResourceSelected, 0.0f, false);
 
-	DrawNode* scrollBounds = DrawNode::create();
-	const float scrollTrackWidth = 16.0f;
-	const float scrollTrackStopOffset = 24.0f;
-	const float dragHorizontalOffset = 32.0f;
-
-	scrollBounds->drawSolidRect(Vec2(-scrollTrackWidth / 2.0f, -this->paneSize.height / 2.0f), Vec2(scrollTrackWidth / 2.0f, this->paneSize.height / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
-	scrollBounds->setContentSize(Size(scrollTrackWidth, this->paneSize.height - scrollTrackStopOffset));
-
-	this->scrollBar = Slider::create(scrollBounds, Node::create(), sliderResource, sliderResourceSelected, 0.0f, false);
-
-	this->dragHitbox->setContentSize(Size(this->paneSize.width - dragHorizontalOffset, this->paneSize.height));
-	this->content->setContentSize(Size(this->paneSize.width, this->paneSize.height));
+	this->dragHitbox->setContentSize(Size(this->paneSize.width - ScrollTotalWidth, this->paneSize.height));
+	this->content->setContentSize(Size(this->paneSize.width - this->paddingSize.width * 2.0f - ScrollPane::ScrollTrackWidth / 2.0f, this->paneSize.height - this->paddingSize.height * 2.0f));
 
 	this->dragHitbox->setMouseOverSound("");
 
@@ -87,9 +84,10 @@ void ScrollPane::initializePositions()
 	super::initializePositions();
 
 	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
+	this->dragHitbox->setPosition(Vec2(-ScrollPane::ScrollTotalWidth / 2.0f, 0.0f));
 	this->contentClip->setPosition(Vec2(-this->paneSize.width / 2.0f, -this->paneSize.height / 2.0f));
-	this->content->setPosition(Vec2(this->paneSize.width / 2.0f, this->paneSize.height));
-	this->scrollBar->setPosition(Vec2(this->paneSize.width / 2.0f, 0.0f));
+	this->content->setPosition(Vec2(this->paneSize.width / 2.0f - ScrollPane::ScrollTotalWidth / 2.0f, this->paneSize.height));
+	this->scrollBar->setPosition(Vec2(this->paneSize.width / 2.0f + this->marginSize.width - ScrollPane::ScrollTrackWidth, 0.0f));
 }
 
 void ScrollPane::initializeListeners()
