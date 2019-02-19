@@ -2,7 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-class HackableBar;
+class RuneBar;
 class StatsBars;
 
 class GameHud : public Hud
@@ -10,7 +10,7 @@ class GameHud : public Hud
 public:
 	static GameHud* create();
 
-	HackableBar* getHackableBar();
+	RuneBar* getRuneBar();
 	StatsBars* getStatsBars();
 
 private:
@@ -24,5 +24,5 @@ private:
 	void update(float dt) override;
 
 	StatsBars* statsBars;
-	HackableBar* hackableBar;
+	RuneBar* runeBar;
 };

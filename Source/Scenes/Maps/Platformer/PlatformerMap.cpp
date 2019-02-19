@@ -11,7 +11,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
-#include "Scenes/Maps/Platformer/Huds/Components/HackableBar.h"
+#include "Scenes/Maps/Platformer/Huds/Components/RuneBar.h"
 #include "Scenes/Maps/Platformer/Huds/Components/StatsBars.h"
 #include "Scenes/Maps/Platformer/Huds/GameHud.h"
 
@@ -56,7 +56,7 @@ void PlatformerMap::onEnter()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
-		this->gameHud->getHackableBar()->setStatsTarget(squally);
+		this->gameHud->getRuneBar()->setStatsTarget(squally);
 		this->gameHud->getStatsBars()->setStatsTarget(squally);
 
 		CameraTrackingData trackingData = CameraTrackingData(squally, Vec2(128.0f, 96.0f));

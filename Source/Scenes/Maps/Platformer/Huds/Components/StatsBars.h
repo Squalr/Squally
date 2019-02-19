@@ -32,8 +32,10 @@ private:
 	PlatformerEntity* target;
 
 	bool isFrameOnLeft;
+	cocos2d::Sprite* statBackground;
 	cocos2d::Sprite* frame;
 	cocos2d::Sprite* emblem;
+	cocos2d::Sprite* frameTop;
 	ProgressBar* healthBar;
 	ProgressBar* manaBar;
 	LocalizedLabel* healthLabel;

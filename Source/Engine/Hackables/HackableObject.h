@@ -36,6 +36,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+	void addChild(Node* child) override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
 	virtual void registerHackables();
@@ -46,6 +47,8 @@ protected:
 private:
 	typedef SerializableObject super;
 
+	cocos2d::Node* uiElements;
 	HackButton* hackButton;
+
 	cocos2d::Vec2 buttonOffset;
 };

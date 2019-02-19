@@ -9,17 +9,17 @@ namespace cocos2d
 
 class PlatformerEntity;
 
-class HackableBar : public SmartNode
+class RuneBar : public SmartNode
 {
 public:
-	static HackableBar* create(bool isFrameOnLeft = true);
+	static RuneBar* create(bool isFrameOnLeft = true);
 
 	void setStatsTarget(PlatformerEntity* target);
 
 private:
 	typedef SmartNode super;
-	HackableBar(bool isFrameOnLeft = true);
-	virtual ~HackableBar() = default;
+	RuneBar(bool isFrameOnLeft = true);
+	virtual ~RuneBar() = default;
 
 	void onEnter() override;
 	void initializePositions() override;
