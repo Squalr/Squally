@@ -82,7 +82,8 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
 					{ HackableCode::Register::ecx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
 					{ HackableCode::Register::esi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
-				}
+				},
+				3.0f
 			)
 		},
 		{
@@ -97,7 +98,8 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
 					{ HackableCode::Register::ecx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
 					{ HackableCode::Register::esi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
-				}
+				},
+				3.0f
 			)
 		},
 	};

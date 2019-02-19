@@ -109,7 +109,8 @@ void DartGun::registerHackables()
 				{
 					{ HackableCode::Register::eax, nullptr },
 					{ HackableCode::Register::ebx, nullptr }
-				}
+				},
+				20.0f
 			)
 		},
 	};

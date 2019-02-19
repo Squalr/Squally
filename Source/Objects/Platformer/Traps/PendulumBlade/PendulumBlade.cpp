@@ -116,7 +116,8 @@ void PendulumBlade::registerHackables()
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
-				}
+				},
+				20.0f
 			)
 		},
 	};

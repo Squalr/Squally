@@ -140,10 +140,11 @@ public:
 		std::string iconResource;
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
+		float duration;
 
-		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints) { }
+		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration) :
+			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration) { }
 	};
 
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
@@ -155,7 +156,7 @@ public:
 	void* getCodePointer();
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
-	void restoreOriginalCode();
+	void restoreState() override;
 	void* allocateMemory(int allocationSize);
 
 	std::map<Register, LocalizedString*> registerHints;

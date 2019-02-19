@@ -32,6 +32,16 @@ public:
 		}
 	};
 
+	struct HackAppliedArgs
+	{
+		void* address;
+		float duration;
+
+		HackAppliedArgs(void* address, float duration) : address(address), duration(duration)
+		{
+		}
+	};
+
 	static void TriggerHackerModeEnable();
 	static void TriggerHackerModeDisable();
 	static void TriggerOpenHackable(HackableObjectOpenArgs args);
@@ -39,6 +49,7 @@ public:
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
+	static void TriggerOnHackApplied(HackAppliedArgs args);
 
 	static const std::string HackerModeEnable;
 	static const std::string HackerModeDisable;
@@ -47,4 +58,5 @@ public:
 	static const std::string HackableAttributeEditEvent;
 	static const std::string HackableAttributeEditDoneEvent;
 	static const std::string HackableObjectRegisterEvent;
+	static const std::string HackAppliedEvent;
 };

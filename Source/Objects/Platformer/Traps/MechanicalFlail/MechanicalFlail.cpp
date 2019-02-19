@@ -115,7 +115,8 @@ void MechanicalFlail::registerHackables()
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }
-				}
+				},
+				20.0f
 			)
 		},
 	};
