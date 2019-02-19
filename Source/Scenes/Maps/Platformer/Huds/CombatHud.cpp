@@ -45,7 +45,7 @@ void CombatHud::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerPartyStatsNode->setPosition(32.0f, visibleSize.height - 64.0f);
-	this->enemyPartyStatsNode->setPosition(visibleSize.width - 320, visibleSize.height - 64.0f);
+	this->enemyPartyStatsNode->setPosition(visibleSize.width - 352, visibleSize.height - 64.0f);
 
 	int index = 0;
 

@@ -24,7 +24,7 @@ HackableData::~HackableData()
 {
 }
 
-void* HackableData::getDataPointer()
+void* HackableData::getPointer()
 {
 	return this->dataPointer;
 }

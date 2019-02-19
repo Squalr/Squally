@@ -551,7 +551,7 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 
 	// Do the actual compile
-	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->getCodePointer());
+	HackUtils::CompileResult compileResult = HackUtils::assemble(assemblyText, this->activeHackableCode->getPointer());
 
 	this->statusWindow->clear();
 
@@ -576,7 +576,7 @@ void CodeEditor::compile(std::string assemblyText)
 		LocalizedLabel* addressLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Address::create());
 		addressLabel->setTextColor(CodeEditor::HeaderColor);
 
-		LocalizedLabel* addressValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getCodePointer(), true, true)));
+		LocalizedLabel* addressValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getPointer(), true, true)));
 		
 		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
 		byteCountLabel->setTextColor(CodeEditor::HeaderColor);
@@ -692,7 +692,7 @@ void CodeEditor::onAccept(ClickableNode* menuSprite)
 {
 	this->scriptList->saveScripts();
 
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getCodePointer());
+	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getPointer());
 
 	// Sanity check that the code compiles -- it should at this point
 	if (compileResult.hasError || compileResult.byteCount > this->activeHackableCode->getOriginalLength())

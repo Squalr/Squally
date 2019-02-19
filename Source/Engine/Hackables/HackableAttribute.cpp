@@ -58,6 +58,16 @@ void HackableAttribute::restoreState()
 {
 }
 
+void* HackableAttribute::getPointer()
+{
+	return nullptr;
+}
+
+float HackableAttribute::getElapsedDuration()
+{
+	return this->elapsedDuration;
+}
+
 float HackableAttribute::getDuration()
 {
 	return this->duration;

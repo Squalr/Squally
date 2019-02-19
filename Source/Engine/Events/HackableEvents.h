@@ -34,10 +34,9 @@ public:
 
 	struct HackAppliedArgs
 	{
-		void* address;
-		float duration;
+		HackableAttribute* activeAttribute;
 
-		HackAppliedArgs(void* address, float duration) : address(address), duration(duration)
+		HackAppliedArgs(HackableAttribute* activeAttribute) : activeAttribute(activeAttribute)
 		{
 		}
 	};

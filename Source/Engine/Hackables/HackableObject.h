@@ -4,19 +4,20 @@
 
 #include "Engine/Maps/SerializableObject.h"
 
-class HackableAttribute;
-class HackableCode;
-class HackableData;
-class HackablePreview;
-class HackButton;
-class ClickableNode;
-
 namespace cocos2d
 {
 	class Renderer;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
 }
+
+class ClickableNode;
+class HackableAttribute;
+class HackableCode;
+class HackableData;
+class HackablePreview;
+class HackButton;
+class ProgressBar;
 
 class HackableObject : public SerializableObject
 {
@@ -36,6 +37,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+	void update(float dt) override;
 	void addChild(Node* child) override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
@@ -49,6 +51,8 @@ private:
 
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
+	ProgressBar* timeRemainingBar;
+	std::vector<HackableAttribute*> trackedAttributes;
 
 	cocos2d::Vec2 buttonOffset;
 };

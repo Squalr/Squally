@@ -153,7 +153,7 @@ public:
 	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
-	void* getCodePointer();
+	void* getPointer() override;
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
 	void restoreState() override;
