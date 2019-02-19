@@ -231,7 +231,7 @@ std::string HackableCode::getOriginalAssemblyString()
 	return this->originalAssemblyString;
 }
 
-void* HackableCode::getCodePointer()
+void* HackableCode::getPointer()
 {
 	return this->codePointer;
 }
@@ -270,7 +270,7 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
 	}
 
-	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this->codePointer, this->getDuration()));
+	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
 	this->resetTimer();
 
 	return true;

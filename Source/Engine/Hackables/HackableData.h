@@ -12,7 +12,7 @@ class HackableData : public HackableAttribute
 public:
 	static HackableData* create(void* dataAddress, float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
 
-	void* getDataPointer();
+	void* getPointer() override;
 
 protected:
 	void restoreState() override;

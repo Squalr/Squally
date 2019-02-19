@@ -9,10 +9,12 @@ class LocalizedString;
 class HackableAttribute : public SmartNode
 {
 public:
+	float getElapsedDuration();
 	float getDuration();
 	std::string getIconResource();
 	LocalizedString* getName();
 	HackablePreview* getHackablePreview();
+	virtual void* getPointer();
 
 protected:
 	HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview);

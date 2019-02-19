@@ -1,5 +1,6 @@
 #include "HackableObject.h"
 
+#include "base/CCEventCustom.h"
 #include "base/CCEventListenerCustom.h"
 
 #include "Engine/Hackables/HackableCode.h"
@@ -8,8 +9,10 @@
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Events/HackableEvents.h"
-
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -18,12 +21,16 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
+	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
-	
+	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
+
 	this->hackButton->setVisible(false);
+	this->timeRemainingBar->setVisible(false);
 
 	this->uiElements->addChild(this->hackButton);
+	this->uiElements->addChild(this->timeRemainingBar);
 	this->addChild(this->uiElements);
 }
 
@@ -36,6 +43,41 @@ void HackableObject::onEnter()
 	super::onEnter();
 
 	this->registerHackables();
+	this->scheduleUpdate();
+}
+
+void HackableObject::update(float dt)
+{
+	super::update(dt);
+
+	if (!this->trackedAttributes.empty())
+	{
+		float highestRatio = 0.0f;
+
+		if (!this->timeRemainingBar->isVisible())
+		{
+			this->timeRemainingBar->setVisible(true);
+		}
+
+		// Remove attributes that have timed out
+		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
+		{
+			return attribute->getElapsedDuration() >= attribute->getDuration();
+		}), this->trackedAttributes.end());
+
+		if (this->trackedAttributes.empty())
+		{
+			this->timeRemainingBar->setVisible(false);
+		}
+
+		// If multiple hacks are enabled, just pick the highest ratio for now
+		for (auto it = this->trackedAttributes.begin(); it != this->trackedAttributes.end(); it++)
+		{
+			highestRatio = std::max(highestRatio, (*it)->getElapsedDuration() / (*it)->getDuration());
+		}
+
+		this->timeRemainingBar->setProgress(1.0f - highestRatio);
+	}
 }
 
 void HackableObject::onEnterTransitionDidFinish()
@@ -53,12 +95,30 @@ void HackableObject::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackAppliedEvent, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::HackAppliedArgs* args = static_cast<HackableEvents::HackAppliedArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
+			{
+				if ((*it)->getPointer() == args->activeAttribute->getPointer())
+				{
+					this->trackedAttributes.push_back(args->activeAttribute);
+
+					return;
+				}
+			}
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* eventCustom)
 	{
 		this->onHackerModeEnable();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* eventCustom)
 	{
 		this->onHackerModeDisable();
 	}));
@@ -117,7 +177,7 @@ void HackableObject::registerData(HackableData* hackableData)
 {
 	for (auto it = this->dataList.begin(); it != this->dataList.end(); it++)
 	{
-		if ((*it)->getDataPointer() == hackableData->getDataPointer())
+		if ((*it)->getPointer() == hackableData->getPointer())
 		{
 			return;
 		}
@@ -132,7 +192,7 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 {
 	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
 	{
-		if ((*it)->getCodePointer() == hackableCode->getCodePointer())
+		if ((*it)->getPointer() == hackableCode->getPointer())
 		{
 			return;
 		}
