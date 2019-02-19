@@ -93,7 +93,8 @@ void SpikeLog::registerHackables()
 				SpikeLogSetRotationPreview::create(),
 				{
 					{ HackableCode::Register::ecx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
-				}
+				},
+				20.0f
 			)
 		},
 	};

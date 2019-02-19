@@ -95,7 +95,8 @@ void HeavenHug::registerHackables()
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
 					{ HackableCode::Register::ebp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
-				}
+				},
+				20.0f
 			)
 		},
 	};

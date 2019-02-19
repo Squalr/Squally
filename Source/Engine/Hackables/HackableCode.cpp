@@ -1,11 +1,16 @@
 #include "HackableCode.h"
 
-#include <algorithm>
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/StrUtils.h"
+
+using namespace cocos2d;
 
 std::map<void*, std::vector<HackableCode*>> HackableCode::HackableCodeCache = std::map<void*, std::vector<HackableCode*>>();
 
@@ -154,7 +159,7 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LateBindData 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview)
 {
 	this->hackableCodeIdentifier = lateBindData.hackableObjectIdentifier + "_" + lateBindData.functionName->getStringIdentifier();
 	this->codePointer = (unsigned char*)codeStart;
@@ -265,10 +270,13 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
 	}
 
+	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this->codePointer, this->getDuration()));
+	this->resetTimer();
+
 	return true;
 }
 
-void HackableCode::restoreOriginalCode()
+void HackableCode::restoreState()
 {
 	if (this->codePointer == nullptr)
 	{

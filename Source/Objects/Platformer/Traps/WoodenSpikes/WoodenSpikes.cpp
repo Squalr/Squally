@@ -97,7 +97,8 @@ void WoodenSpikes::registerHackables()
 				WoodenSpikesUpdateTimerPreview::create(),
 				{
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
-				}
+				},
+				20.0f
 			)
 		},
 	};

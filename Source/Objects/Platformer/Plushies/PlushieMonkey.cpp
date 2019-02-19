@@ -144,6 +144,7 @@ void PlushieMonkey::registerHackables()
 
 	this->puzzleData = HackableData::create(
 		&PlushieMonkey::lockCountDown,
+		5.0f,
 		Strings::Generics_Empty::create(),
 		typeid(PlushieMonkey::lockCountDown),
 		UIResources::Menus_Icons_Lock,
@@ -153,6 +154,7 @@ void PlushieMonkey::registerHackables()
 	
 	this->registerData(HackableData::create(
 		this->chest,
+		5.0f,
 		Strings::Generics_Empty::create(),
 		typeid((unsigned int)((unsigned long)this->chest)),
 		UIResources::Menus_Icons_Heart,

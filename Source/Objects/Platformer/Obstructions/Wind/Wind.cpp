@@ -131,7 +131,8 @@ void Wind::registerHackables()
 				{
 					{ HackableCode::Register::eax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
-				}
+				},
+				5.0f
 			)
 		},
 	};

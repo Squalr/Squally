@@ -3,11 +3,13 @@
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
 
-HackableAttribute::HackableAttribute(std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview)
+HackableAttribute::HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview)
 {
+	this->duration = duration;
 	this->iconResource = iconResource;
 	this->name = name;
 	this->hackablePreview = hackablePreview;
+	this->elapsedDuration = this->duration;
 
 	if (this->hackablePreview != nullptr)
 	{
@@ -23,6 +25,42 @@ HackableAttribute::~HackableAttribute()
 	{
 		this->hackablePreview->release();
 	}
+}
+
+void HackableAttribute::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void HackableAttribute::update(float dt)
+{
+	super::update(dt);
+
+	if (this->elapsedDuration < this->duration)
+	{
+		this->elapsedDuration += dt;
+
+		if (this->elapsedDuration >= this->duration)
+		{
+			this->restoreState();
+		}
+	}
+}
+
+void HackableAttribute::resetTimer()
+{
+	this->elapsedDuration = 0.0f;
+}
+
+void HackableAttribute::restoreState()
+{
+}
+
+float HackableAttribute::getDuration()
+{
+	return this->duration;
 }
 
 std::string HackableAttribute::getIconResource()

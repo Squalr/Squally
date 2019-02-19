@@ -97,7 +97,8 @@ void Laser::registerHackables()
 				LaserCountDownPreview::create(),
 				{
 					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
-				}
+				},
+				20.0f
 			)
 		},
 	};
