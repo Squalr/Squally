@@ -1,4 +1,4 @@
-#include "HackableBar.h"
+#include "RuneBar.h"
 
 #include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCSprite.h"
@@ -12,22 +12,22 @@
 
 using namespace cocos2d;
 
-const int HackableBar::RuneCount = 4;
+const int RuneBar::RuneCount = 4;
 
-HackableBar* HackableBar::create(bool isFrameOnLeft)
+RuneBar* RuneBar::create(bool isFrameOnLeft)
 {
-	HackableBar* instance = new HackableBar(isFrameOnLeft);
+	RuneBar* instance = new RuneBar(isFrameOnLeft);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackableBar::HackableBar(bool isFrameOnLeft)
+RuneBar::RuneBar(bool isFrameOnLeft)
 {
 	this->target = nullptr;
 
-	for (int index = 0; index < HackableBar::RuneCount; index++)
+	for (int index = 0; index < RuneBar::RuneCount; index++)
 	{
 		Sprite* emptyRune = Sprite::create(UIResources::HUD_EyeSlot);
 		Sprite* rune = Sprite::create(UIResources::HUD_Eye);
@@ -50,14 +50,14 @@ HackableBar::HackableBar(bool isFrameOnLeft)
 	}
 }
 
-void HackableBar::onEnter()
+void RuneBar::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void HackableBar::initializePositions()
+void RuneBar::initializePositions()
 {
 	super::initializePositions();
 
@@ -80,12 +80,12 @@ void HackableBar::initializePositions()
 	}
 }
 
-void HackableBar::initializeListeners()
+void RuneBar::initializeListeners()
 {
 	super::initializeListeners();
 }
 
-void HackableBar::update(float dt)
+void RuneBar::update(float dt)
 {
 	super::update(dt);
 
@@ -109,7 +109,7 @@ void HackableBar::update(float dt)
 	}
 }
 
-void HackableBar::setStatsTarget(PlatformerEntity* target)
+void RuneBar::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
 }

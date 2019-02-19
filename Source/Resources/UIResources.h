@@ -44,11 +44,11 @@ namespace UIResources
 	extern const std::string HUD_Eye;
 	extern const std::string HUD_EyeSlot;
 	extern const std::string HUD_Frame;
+	extern const std::string HUD_FrameTop;
 	extern const std::string HUD_HPBarFill;
-	extern const std::string HUD_HPBarFrame;
+	extern const std::string HUD_HackBarFill;
 	extern const std::string HUD_MPBarFill;
-	extern const std::string HUD_MPBarFrame;
-	extern const std::string HUD_SpecialBar;
+	extern const std::string HUD_StatFrame;
 	extern const std::string HelperArrow;
 	extern const std::string HelperArrowAnimations;
 	extern const std::string Menus_Backgrounds_BottomLeaves;

@@ -18,11 +18,13 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
+	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
 	
 	this->hackButton->setVisible(false);
 
-	this->addChild(this->hackButton);
+	this->uiElements->addChild(this->hackButton);
+	this->addChild(this->uiElements);
 }
 
 HackableObject::~HackableObject()
@@ -67,6 +69,14 @@ void HackableObject::initializePositions()
 	super::initializePositions();
 
 	this->hackButton->setPosition(this->getButtonOffset());
+}
+
+void HackableObject::addChild(Node* child)
+{
+	super::addChild(child);
+
+	// Magic trick to resort-z index
+	GameUtils::changeParent(this->uiElements, this, true);
 }
 
 void HackableObject::onHackerModeEnable()

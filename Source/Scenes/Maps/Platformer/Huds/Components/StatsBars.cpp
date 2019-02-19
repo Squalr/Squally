@@ -31,9 +31,11 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->target = nullptr;
+	this->statBackground = Sprite::create();
 	this->frame = Sprite::create(UIResources::HUD_Frame);
-	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_HPBarFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
-	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_MPBarFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
+	this->frameTop = Sprite::create(UIResources::HUD_FrameTop);
+	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
+	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
 	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
 	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
 	this->healthNumerator = ConstantString::create();
@@ -47,12 +49,15 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->healthLabel->enableOutline(Color4B::BLACK, 2);
 	this->manaLabel->enableOutline(Color4B::BLACK, 2);
 	this->frame->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->frameTop->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->healthBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->manaBar->setAnchorPoint(Vec2(0.0f, 0.5f));
 
+	this->addChild(this->statBackground);
 	this->healthBar->addChild(this->healthLabel);
 	this->manaBar->addChild(this->manaLabel);
 	this->addChild(this->frame);
+	this->addChild(this->frameTop);
 	this->addChild(this->healthBar);
 	this->addChild(this->manaBar);
 }
@@ -70,11 +75,12 @@ void StatsBars::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	float barInset = this->isFrameOnLeft ? 80.0f : 0.0f;
-	float runeInset = this->isFrameOnLeft ? 8.0f : 64.0f;
+	float barInset = this->isFrameOnLeft ? 96.0f : 0.0f;
 	float frameOffset = this->isFrameOnLeft ? 0.0f : (this->healthBar->getContentSize().width + 12.0f);
 
+	this->statBackground->setPosition(Vec2(barInset + this->healthBar->getContentSize().width / 2.0f, -(this->healthBar->getContentSize().height + this->manaBar->getContentSize().height) / 2.0f));
 	this->frame->setPosition(Vec2(frameOffset, -this->healthBar->getContentSize().height));
+	this->frameTop->setPosition(Vec2(frameOffset, -this->healthBar->getContentSize().height));
 	this->healthBar->setPosition(Vec2(barInset + this->healthBar->getContentSize().width / 2.0f, 0.0f));
 	this->manaBar->setPosition(Vec2(barInset + this->manaBar->getContentSize().width / 2.0f, -this->healthBar->getContentSize().height));
 }
