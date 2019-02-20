@@ -51,6 +51,8 @@ protected:
 	virtual HackablePreview* createVelocityPreview();
 	virtual HackablePreview* createAccelerationPreview();
 
+	cocos2d::Node* contentNode;
+
 private:
 	typedef HackableObject super;
 

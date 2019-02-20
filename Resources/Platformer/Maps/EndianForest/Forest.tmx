@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="507">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="128" height="48" tilewidth="128" tileheight="128" nextobjectid="508">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="5760" height="3200"/>
@@ -256,11 +256,10 @@
    </properties>
   </object>
   <object id="445" name="polyphemus" type="entity" x="742.307" y="2527.52" width="200" height="288"/>
-  <object id="480" name="ogre" type="entity" x="2366.91" y="2728.98" width="78.7879" height="88">
+  <object id="480" name="ogre" type="entity" x="1793.58" y="2688.98" width="78.7879" height="88">
    <properties>
     <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
-    <property name="ally-3" value="orc-bomber"/>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -288,6 +287,14 @@
     <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
     <property name="ally-3" value="orc-bomber"/>
+    <property name="battle_map" value="EndianForest/Battlegrounds"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="507" name="troll" type="entity" x="2545.94" y="2669.33" width="78.7879" height="88">
+   <properties>
+    <property name="ally-1" value="goblin-warrior-pig"/>
+    <property name="ally-2" value="orc-swordsman"/>
     <property name="battle_map" value="EndianForest/Battlegrounds"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -323,7 +330,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2408.24" y="2574.72" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2332.24" y="2582.72" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="974" y="2432" width="242" height="738"/>
   <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3924.06" y="2678.06" width="270" height="705.576"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1322" y="2580" width="242" height="738"/>

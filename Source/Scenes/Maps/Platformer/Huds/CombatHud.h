@@ -20,7 +20,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-
+	
 	cocos2d::Node* playerPartyStatsNode;
 	cocos2d::Node* enemyPartyStatsNode;
 

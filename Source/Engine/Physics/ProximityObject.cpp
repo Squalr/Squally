@@ -38,6 +38,10 @@ ProximityObject::ProximityObject(float radius) : HackableObject(ValueMap())
 	this->radius = radius;
 	this->velocity = Vec3::ZERO;
 	this->acceleration = Vec3::ZERO;
+
+	this->contentNode = Node::create();
+
+	this->addChild(this->contentNode);
 }
 
 ProximityObject::~ProximityObject()
@@ -145,7 +149,7 @@ void ProximityObject::launchTowardsTarget(Node* target, Vec2 offset, float spinS
 
 	if (spinSpeed != 0.0f)
 	{
-		this->runAction(RotateBy::create(duration, (isLeft ? -1.0f : 1.0f) * duration * 360.0f * spinSpeed));
+		this->contentNode->runAction(RotateBy::create(duration, (isLeft ? -1.0f : 1.0f) * duration * 360.0f * spinSpeed));
 	}
 
 	this->setAcceleration(gravity);

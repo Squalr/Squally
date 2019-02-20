@@ -28,10 +28,8 @@ BomberTorch::BomberTorch(PlatformerAttack* associatedAttack) : Projectile(associ
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
 	this->fire = SmartAnimationSequenceNode::create(ObjectResources::FX_TorchFire_TorchFire_0000);
 
-	this->fire->setScale(0.15f);
-
-	this->addChild(this->bomberTorchSprite);
-	this->addChild(this->fire);
+	this->contentNode->addChild(this->bomberTorchSprite);
+	this->contentNode->addChild(this->fire);
 }
 
 BomberTorch::~BomberTorch()
@@ -50,6 +48,8 @@ void BomberTorch::onEnter()
 void BomberTorch::initializePositions()
 {
 	super::initializePositions();
+
+	this->fire->setPosition(Vec2(0.0f, 56.0f));
 }
 
 void BomberTorch::update(float dt)
