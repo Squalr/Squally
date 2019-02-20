@@ -256,7 +256,7 @@
    </properties>
   </object>
   <object id="445" name="polyphemus" type="entity" x="742.307" y="2527.52" width="200" height="288"/>
-  <object id="480" name="ogre" type="entity" x="1793.58" y="2688.98" width="78.7879" height="88">
+  <object id="480" name="ogre" type="entity" x="1789.58" y="2722.31" width="78.7879" height="88">
    <properties>
     <property name="ally-1" value="orc-bomber"/>
     <property name="ally-2" value="orc-bomber"/>
@@ -291,7 +291,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="507" name="troll" type="entity" x="2545.94" y="2669.33" width="78.7879" height="88">
+  <object id="507" name="troll" type="entity" x="2533.94" y="2725.33" width="78.7879" height="88">
    <properties>
     <property name="ally-1" value="goblin-warrior-pig"/>
     <property name="ally-2" value="orc-swordsman"/>
