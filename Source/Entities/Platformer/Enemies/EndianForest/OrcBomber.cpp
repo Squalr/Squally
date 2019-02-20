@@ -43,6 +43,7 @@ OrcBomber::OrcBomber(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initPr
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
+	// Force the debug sprite to be rendered in debug mode by grabbing the animation part
 	AnimationPart* weapon = this->getAnimations()->getAnimationPart("WEAPON");
 
 	//this->registerAttack(BasicSlash::create(0.7f, 0.2f));
