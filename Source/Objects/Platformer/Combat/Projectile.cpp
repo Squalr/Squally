@@ -6,7 +6,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 using namespace cocos2d;
 

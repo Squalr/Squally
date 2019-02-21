@@ -11,7 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

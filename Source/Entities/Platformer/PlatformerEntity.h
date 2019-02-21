@@ -4,7 +4,7 @@
 #include "cocos/math/CCGeometry.h"
 
 #include "Engine/Physics/CollisionObject.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 class ClickableNode;
 class PlatformerAttack;

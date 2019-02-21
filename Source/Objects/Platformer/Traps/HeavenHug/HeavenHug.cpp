@@ -14,7 +14,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

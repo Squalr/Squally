@@ -5,7 +5,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Events/NavigationEvents.h"
-#include "Scenes/Maps/Platformer/PlatformerMap.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Hexus/Deck.h"
 
 #include "Resources/UIResources.h"

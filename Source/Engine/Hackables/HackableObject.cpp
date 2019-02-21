@@ -56,7 +56,7 @@ void HackableObject::update(float dt)
 
 		if (!this->timeRemainingBar->isVisible())
 		{
-			this->timeRemainingBar->setVisible(true);
+			// this->timeRemainingBar->setVisible(true);
 		}
 
 		// Remove attributes that have timed out
