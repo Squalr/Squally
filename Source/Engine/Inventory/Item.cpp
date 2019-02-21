@@ -4,9 +4,10 @@
 
 using namespace cocos2d;
 
-Item::Item(LocalizedString* name)
+Item::Item(LocalizedString* name, std::string iconResource)
 {
 	this->name = name;
+	this->iconResource = iconResource;
 
 	this->addChild(this->name);
 }
@@ -28,4 +29,9 @@ void Item::initializeListeners()
 LocalizedString* Item::cloneName()
 {
 	return this->name == nullptr ? nullptr : this->name->clone();
+}
+
+std::string Item::getIconResource()
+{
+	return this->iconResource;
 }
