@@ -644,8 +644,6 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Centaur_TORSO_CLOTH;
 	extern const std::string Enemies_EndianForest_Centaur_TORSO;
 	extern const std::string Enemies_EndianForest_Centaur_WEAPON_1;
-	extern const std::string Enemies_EndianForest_Centaur_WEAPON_2;
-	extern const std::string Enemies_EndianForest_Centaur_WEAPON_3;
 	extern const std::string Enemies_EndianForest_Cyclops_Animations;
 	extern const std::string Enemies_EndianForest_Cyclops_COVER;
 	extern const std::string Enemies_EndianForest_Cyclops_Emblem;
@@ -663,6 +661,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Cyclops_R_LEG_1;
 	extern const std::string Enemies_EndianForest_Cyclops_R_LEG_2;
 	extern const std::string Enemies_EndianForest_Cyclops_TORSO;
+	extern const std::string Enemies_EndianForest_Cyclops_WEAPON;
 	extern const std::string Enemies_EndianForest_Ent_Animations;
 	extern const std::string Enemies_EndianForest_Ent_Emblem;
 	extern const std::string Enemies_EndianForest_Ent_Tree_Body;
