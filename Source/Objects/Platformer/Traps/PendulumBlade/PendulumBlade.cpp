@@ -14,7 +14,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

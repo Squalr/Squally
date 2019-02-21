@@ -13,7 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

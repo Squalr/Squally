@@ -5,7 +5,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Scenes/Maps/Platformer/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
 

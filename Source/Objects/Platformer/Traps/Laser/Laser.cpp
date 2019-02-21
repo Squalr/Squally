@@ -12,7 +12,7 @@
 #include "Objects/Platformer/Traps/Laser/LaserAnimation.h"
 #include "Objects/Platformer/Traps/Laser/LaserCountDownPreview.h"
 #include "Objects/Platformer/Traps/Laser/LaserGenericPreview.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
 

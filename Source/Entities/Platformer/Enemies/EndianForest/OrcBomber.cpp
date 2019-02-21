@@ -11,8 +11,8 @@
 ////A////A////A////A////A////A////A////A////A////A/
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Scenes/Maps/Platformer/Combat/Attacks/Basic/BasicSlash.h"
-#include "Scenes/Maps/Platformer/Combat/Attacks/OrcBomber/TorchThrow.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/OrcBomber/TorchThrow.h"
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

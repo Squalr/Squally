@@ -10,7 +10,7 @@
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////A////A////A////A////A////A////A////A////A////A/
 
-#include "Scenes/Maps/Platformer/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

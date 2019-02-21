@@ -16,7 +16,7 @@
 #include "Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h"
 #include "Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h"
 #include "Strings/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
 

@@ -11,7 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.h"
-#include "Scenes/Maps/Platformer/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

@@ -1,7 +1,7 @@
 #include "Squally.h"
 
 #include "Engine/Input/Input.h"
-#include "Scenes/Maps/Platformer/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 
