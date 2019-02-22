@@ -5,14 +5,17 @@
 class PlayerInventory : public Inventory
 {
 public:
-	PlayerInventory();
-	virtual ~PlayerInventory();
+	static PlayerInventory* getInstance();
 
 protected:
+	PlayerInventory();
+	virtual ~PlayerInventory();
 	void onEnter() override;
 	void initializeListeners() override;
 
 private:
 	typedef Inventory super;
+
+	static PlayerInventory* instance;
 	static const std::string SaveKeyPlayerInventory;
 };

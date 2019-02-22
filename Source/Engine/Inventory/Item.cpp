@@ -11,7 +11,10 @@ Item::Item(LocalizedString* name, std::string iconResource)
 	this->name = name;
 	this->iconResource = iconResource;
 
-	this->addChild(this->name);
+	if (this->name != nullptr)
+	{
+		this->addChild(this->name);
+	}
 }
 
 Item::~Item()
