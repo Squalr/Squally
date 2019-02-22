@@ -33,11 +33,9 @@ void Item::initializeListeners()
 
 cocos2d::ValueMap Item::serialize()
 {
-	return ValueMap();
-}
+	ValueMap result = ValueMap();
 
-void Item::deserialize(ValueMap& valueMap)
-{
+	return result;
 }
 
 LocalizedString* Item::cloneName()

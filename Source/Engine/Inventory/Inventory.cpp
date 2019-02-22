@@ -34,7 +34,7 @@ void Inventory::initializeListeners()
 	super::initializeListeners();
 }
 
-const ValueMap& Inventory::serialize()
+ValueMap Inventory::serialize()
 {
 	ValueMap saveData = ValueMap();
 	ValueMap itemData = ValueMap();
@@ -76,7 +76,7 @@ void Inventory::load()
 {
 	if (!this->saveKey.empty())
 	{
-		this->deserialize(SaveManager::getGlobalData(this->saveKey).asValueMap());
+		this->deserialize(SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
 	}
 }
 

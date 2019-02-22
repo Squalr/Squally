@@ -15,7 +15,7 @@ PlayerInventory* PlayerInventory::getInstance()
 	return instance;
 }
 
-PlayerInventory::PlayerInventory() : super()
+PlayerInventory::PlayerInventory() : super(PlayerInventory::SaveKeyPlayerInventory)
 {
 }
 

@@ -29,7 +29,7 @@ protected:
 
 	void save();
 	void load();
-	const cocos2d::ValueMap& serialize();
+	cocos2d::ValueMap serialize();
 	void deserialize(const cocos2d::ValueMap& valueMap);
 
 	std::vector<Item*> items;

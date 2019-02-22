@@ -7,6 +7,7 @@
 
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
@@ -165,8 +166,17 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 				bool writeSuccess = steamRemoteStorage->FileWrite(file, resultData.c_str(), resultData.size());
 			}
 		}
+		catch (const std::exception& ex)
+		{
+			LogUtils::logError(ex.what());
+		}
+		catch (const std::string& ex)
+		{
+			LogUtils::logError(ex);
+		}
 		catch (...)
 		{
+			LogUtils::logError("Unknown cloud save file write error on file: " + localSavePath);
 		}
 	}
 
@@ -175,8 +185,17 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 	{
 		FileUtils::getInstance()->serializeValueMapToFile(valueMap, localSavePath);
 	}
+	catch (const std::exception& ex)
+	{
+		LogUtils::logError(ex.what());
+	}
+	catch (const std::string& ex)
+	{
+		LogUtils::logError(ex);
+	}
 	catch (...)
 	{
+		LogUtils::logError("Unknown local save file write error on file: " + localSavePath);
 	}
 }
 
@@ -205,8 +224,17 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 					cloudValueMap = FileUtils::getInstance()->deserializeValueMapFromData(result.get(), fileSize);
 					cloudReadSuccess = true;
 				}
+				catch (const std::exception& ex)
+				{
+					LogUtils::logError(ex.what());
+				}
+				catch (const std::string& ex)
+				{
+					LogUtils::logError(ex);
+				}
 				catch (...)
 				{
+					LogUtils::logError("Unknown cloud save file read error on file: " + localSavePath);
 				}
 			}
 		}
@@ -220,8 +248,17 @@ ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudS
 			localValueMap = FileUtils::getInstance()->deserializeValueMapFromFile(localSavePath);
 		}
 	}
+	catch (const std::exception& ex)
+	{
+		LogUtils::logError(ex.what());
+	}
+	catch (const std::string& ex)
+	{
+		LogUtils::logError(ex);
+	}
 	catch (...)
 	{
+		LogUtils::logError("Unknown local save file read error on file: " + localSavePath);
 	}
 
 	if (!cloudReadSuccess)

@@ -9,3 +9,8 @@ Equipable::Equipable(LocalizedString* name, std::string iconResource) : super(na
 Equipable::~Equipable()
 {
 }
+
+Vec2 Equipable::getDisplayOffset()
+{
+	return Vec2::ZERO;
+}
