@@ -4,6 +4,8 @@
 
 using namespace cocos2d;
 
+const std::string HealthPotion::SaveKeyHealthPotion = "health-potion";
+
 HealthPotion* HealthPotion::create()
 {
 	HealthPotion* instance = new HealthPotion();
@@ -19,4 +21,9 @@ HealthPotion::HealthPotion() : Consumable(nullptr, ObjectResources::Items_Consum
 
 HealthPotion::~HealthPotion()
 {
+}
+
+std::string HealthPotion::getSerializationKey()
+{
+	return HealthPotion::SaveKeyHealthPotion;
 }

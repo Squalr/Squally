@@ -58,7 +58,7 @@ void SaveManager::setActiveSaveProfile(ActiveSaveProfile activeSaveProfile)
 	);
 }
 
-void SaveManager::saveGlobalData(std::string key, const cocos2d::Value& data)
+void SaveManager::saveGlobalData(std::string key, const Value& data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -67,7 +67,7 @@ void SaveManager::saveGlobalData(std::string key, const cocos2d::Value& data)
 	SaveManager::doSave(instance->globalSaveData, instance->getLocalGlobalSaveFilePath(), instance->getCloudGlobalSaveFilePath());
 }
 
-void SaveManager::saveProfileData(std::string key, const cocos2d::Value& data)
+void SaveManager::saveProfileData(std::string key, const Value& data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -76,7 +76,7 @@ void SaveManager::saveProfileData(std::string key, const cocos2d::Value& data)
 	SaveManager::doSave(instance->profileSaveData, instance->getLocalActiveProfileSaveFilePath(), instance->getCloudActiveProfileSaveFilePath());
 }
 
-cocos2d::Value SaveManager::getGlobalDataOrDefault(std::string key, const cocos2d::Value& defaultValue)
+Value SaveManager::getGlobalDataOrDefault(std::string key, const Value& defaultValue)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -90,13 +90,13 @@ cocos2d::Value SaveManager::getGlobalDataOrDefault(std::string key, const cocos2
 	}
 }
 
-cocos2d::Value SaveManager::getGlobalData(std::string key)
+Value SaveManager::getGlobalData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
 	if (!GameUtils::keyExists(instance->globalSaveData, key))
 	{
-		return cocos2d::Value();
+		return Value();
 	}
 	else
 	{
@@ -104,7 +104,7 @@ cocos2d::Value SaveManager::getGlobalData(std::string key)
 	}
 }
 
-cocos2d::Value SaveManager::getProfileDataOrDefault(std::string key, const cocos2d::Value& defaultValue)
+Value SaveManager::getProfileDataOrDefault(std::string key, const Value& defaultValue)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -118,13 +118,13 @@ cocos2d::Value SaveManager::getProfileDataOrDefault(std::string key, const cocos
 	}
 }
 
-cocos2d::Value SaveManager::getProfileData(std::string key)
+Value SaveManager::getProfileData(std::string key)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
 	if (!GameUtils::keyExists(instance->profileSaveData, key))
 	{
-		return cocos2d::Value();
+		return Value();
 	}
 	else
 	{
@@ -142,11 +142,11 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 	// Increment save counter
 	if (GameUtils::keyExists(valueMap, SaveManager::SaveKeyIncrement))
 	{
-		valueMap[SaveManager::SaveKeyIncrement] = cocos2d::Value((unsigned int)(valueMap[SaveManager::SaveKeyIncrement].asUnsignedInt() + (unsigned int)1));
+		valueMap[SaveManager::SaveKeyIncrement] = Value((unsigned int)(valueMap[SaveManager::SaveKeyIncrement].asUnsignedInt() + (unsigned int)1));
 	}
 	else
 	{
-		valueMap[SaveManager::SaveKeyIncrement] = cocos2d::Value((unsigned int)1);
+		valueMap[SaveManager::SaveKeyIncrement] = Value((unsigned int)1);
 	}
 
 	// Save to cloud if available

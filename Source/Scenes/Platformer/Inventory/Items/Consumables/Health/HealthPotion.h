@@ -7,7 +7,11 @@ class LocalizedString;
 class HealthPotion : public Consumable
 {
 public:
-	HealthPotion* create();
+	static HealthPotion* create();
+
+	std::string getSerializationKey() override;
+
+	static const std::string SaveKeyHealthPotion;
 
 protected:
 	HealthPotion();

@@ -2,11 +2,16 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/InventoryEvents.h"
+#include "Engine/Inventory/Item.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
 const int Inventory::InfiniteCapacity = -1;
+const std::string Inventory::SaveKeyCapacity = "capacity";
+const std::string Inventory::SaveKeyItems = "items";
 
 Inventory::Inventory(std::string saveKey, int capacity)
 {
@@ -29,16 +34,34 @@ void Inventory::initializeListeners()
 	super::initializeListeners();
 }
 
-cocos2d::ValueMap Inventory::serialize()
+const ValueMap& Inventory::serialize()
 {
-	// TODO
+	ValueMap saveData = ValueMap();
+	ValueMap itemData = ValueMap();
 
-	return cocos2d::ValueMap();
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		itemData[(*it)->getSerializationKey()] = (Value((*it)->serialize()));
+	}
+
+	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
+	saveData[Inventory::SaveKeyItems] = itemData;
+
+	return saveData;
 }
 
-void Inventory::deserialize(cocos2d::ValueMap& valueMap)
+void Inventory::deserialize(const ValueMap& valueMap)
 {
-	// TODO
+	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
+	ValueMap itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueMap())).asValueMap();
+
+	for (auto it = itemData.begin(); it != itemData.end(); it++)
+	{
+		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+		{
+			this->forceInsert(item);
+		}));
+	}
 }
 
 void Inventory::save()
@@ -102,6 +125,12 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 			onInsertFailed(item);
 		}
 	}
+}
+
+void Inventory::forceInsert(Item* item)
+{
+	this->items.push_back(item);
+	this->save();
 }
 
 void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::function<void(Item*, Item*)> onTransact, std::function<void(Item*, Item*)> onTransactFailed)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scenes/Platformer/Level/MapBase.h"
+#include "Scenes/MapBase.h"
 
 class GameHud;
 
