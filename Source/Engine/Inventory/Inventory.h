@@ -13,8 +13,6 @@ class Item;
 class Inventory : public SmartNode
 {
 public:
-	cocos2d::ValueMap serialize();
-	void deserialize(cocos2d::ValueMap& valueMap);
 	std::vector<Item*> getItems();
 	int getCapacity();
 	void tryRemove(Item* item, std::function<void(Item*)> onRemove, std::function<void(Item*)> onRemoveFailed);
@@ -23,10 +21,15 @@ public:
 	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove, std::function<void(Item*)> onMoveFailed);
 
 protected:
-	Inventory(int capacity = InfiniteCapacity);
+	Inventory(std::string saveKey = "", int capacity = InfiniteCapacity);
 	virtual ~Inventory();
 	void onEnter() override;
 	void initializeListeners() override;
+
+	void save();
+	void load();
+	cocos2d::ValueMap serialize();
+	void deserialize(cocos2d::ValueMap& valueMap);
 
 	std::vector<Item*> items;
 	int capacity;
@@ -35,4 +38,6 @@ protected:
 
 private:
 	typedef SmartNode super;
+
+	std::string saveKey;
 };

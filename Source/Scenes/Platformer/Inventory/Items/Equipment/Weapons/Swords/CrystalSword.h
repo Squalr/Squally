@@ -1,10 +1,8 @@
 #pragma once
 
-#include "Engine/Inventory/Item.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 
-class LocalizedString;
-
-class CrystalSword : public Item
+class CrystalSword : public Weapon
 {
 public:
 	CrystalSword* create();
@@ -14,5 +12,5 @@ protected:
 	virtual ~CrystalSword();
 
 private:
-	typedef Item super;
+	typedef Weapon super;
 };

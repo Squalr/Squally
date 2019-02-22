@@ -61,7 +61,7 @@ protected:
 	void initializeListeners() override;
 
 	void saveObjectState(std::string key, cocos2d::Value value);
-	cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
+	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void loadObjectState();
 	virtual void onObjectStateLoaded();
 

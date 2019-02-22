@@ -1,5 +1,7 @@
 #include "CardStorage.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
