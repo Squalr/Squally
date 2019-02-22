@@ -27,6 +27,7 @@
 #include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
 #include "Scenes/Hexus/Menus/Puzzles/HexusPuzzlesMenu.h"
 #include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionMapping.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
@@ -65,6 +66,9 @@ void Bootstrapper::initialize()
 	TitleScreen::registerGlobalScene();
 	WorldMap::registerGlobalScene();
 	SaveSelectMenu::registerGlobalScene();
+
+	// Inventory deserializers
+	PlatformerItemDeserializer::registerGlobalNode();
 
 	// Entity deserializers
 	PlatformerEntityDeserializer::registerGlobalNode();

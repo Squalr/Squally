@@ -7,8 +7,6 @@ class LocalizedString;
 class Equipable : public Item
 {
 public:
-	int getMinAttack();
-	int getMaxAttack();
 
 protected:
 	Equipable(LocalizedString* name, std::string iconResource);

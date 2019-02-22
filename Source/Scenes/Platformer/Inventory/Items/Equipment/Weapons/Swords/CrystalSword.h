@@ -5,7 +5,11 @@
 class CrystalSword : public Weapon
 {
 public:
-	CrystalSword* create();
+	static CrystalSword* create();
+
+	std::string getSerializationKey() override;
+
+	static const std::string SaveKeyCrystalSword;
 
 protected:
 	CrystalSword();

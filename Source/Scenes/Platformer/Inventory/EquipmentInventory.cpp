@@ -1,17 +1,11 @@
 #include "EquipmentInventory.h"
 
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Gear.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+
 using namespace cocos2d;
 
-EquipmentInventory* EquipmentInventory::create()
-{
-	EquipmentInventory* instance = new EquipmentInventory();
-
-	instance->autorelease();
-
-	return instance;
-}
-
-EquipmentInventory::EquipmentInventory() : super()
+EquipmentInventory::EquipmentInventory(std::string saveKey, int capacity) : super(saveKey, capacity)
 {
 }
 
@@ -29,20 +23,75 @@ void EquipmentInventory::initializeListeners()
 	super::initializeListeners();
 }
 
+Weapon* EquipmentInventory::getWeapon()
+{
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Weapon*>(*it) != nullptr)
+		{
+			return dynamic_cast<Weapon*>(*it);
+		}
+	}
+
+	return nullptr;
+}
+
+std::vector<Gear*> EquipmentInventory::getGear()
+{
+	std::vector<Gear*> gear = std::vector<Gear*>();
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Gear*>(*it) != nullptr)
+		{
+			gear.push_back(dynamic_cast<Gear*>(*it));
+		}
+	}
+
+	return gear;
+}
+
 int EquipmentInventory::getTotalMinAttack()
 {
-	// TODO: Iterate items, try cast weapon, sum min attack
-	return 3;
+	int minAttack = 0;
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Weapon*>(*it) != nullptr)
+		{
+			minAttack += dynamic_cast<Weapon*>(*it)->getMinAttack();
+		}
+	}
+
+	return minAttack;
 }
 
 int EquipmentInventory::getTotalMaxAttack()
 {
-	// TODO: Iterate items, try cast weapon, sum max attack
-	return 6;
+	int maxAttack = 0;
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Weapon*>(*it) != nullptr)
+		{
+			maxAttack += dynamic_cast<Weapon*>(*it)->getMinAttack();
+		}
+	}
+
+	return maxAttack;
 }
 
 int EquipmentInventory::getTotalDefense()
 {
-	// TODO: Iterate items, try cast weapon, sum defense
-	return 3;
+	int defense = 0;
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Gear*>(*it) != nullptr)
+		{
+			defense += dynamic_cast<Gear*>(*it)->getDefense();
+		}
+	}
+
+	return defense;
 }
