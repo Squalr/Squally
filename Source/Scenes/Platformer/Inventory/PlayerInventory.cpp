@@ -2,7 +2,9 @@
 
 using namespace cocos2d;
 
-PlayerInventory::PlayerInventory() : Inventory()
+const std::string PlayerInventory::SaveKeyPlayerInventory = "player_inventory";
+
+PlayerInventory::PlayerInventory() : super()
 {
 }
 

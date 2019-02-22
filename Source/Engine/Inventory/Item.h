@@ -2,6 +2,12 @@
 
 #include "Engine/SmartNode.h"
 
+namespace cocos2d
+{
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
+
 class LocalizedString;
 
 class Item : public SmartNode
@@ -9,6 +15,9 @@ class Item : public SmartNode
 public:
 	LocalizedString* cloneName();
 	std::string getIconResource();
+
+	virtual cocos2d::ValueMap serialize();
+	virtual void deserialize(cocos2d::ValueMap& valueMap);
 
 protected:
 	Item(LocalizedString* name, std::string iconResource);

@@ -13,5 +13,6 @@ protected:
 	void initializeListeners() override;
 
 private:
-	typedef SmartNode super;
+	typedef Inventory super;
+	static const std::string SaveKeyPlayerInventory;
 };

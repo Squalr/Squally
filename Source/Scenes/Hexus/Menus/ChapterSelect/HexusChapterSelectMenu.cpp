@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"

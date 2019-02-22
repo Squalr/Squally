@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Inventory/Item.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 
 class LocalizedString;
 
-class HealthPotion : public Item
+class HealthPotion : public Consumable
 {
 public:
 	HealthPotion* create();
@@ -14,5 +14,5 @@ protected:
 	virtual ~HealthPotion();
 
 private:
-	typedef Item super;
+	typedef Consumable super;
 };

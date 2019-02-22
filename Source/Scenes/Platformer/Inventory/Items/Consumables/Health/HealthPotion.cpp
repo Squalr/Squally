@@ -13,7 +13,7 @@ HealthPotion* HealthPotion::create()
 	return instance;
 }
 
-HealthPotion::HealthPotion() : Item(nullptr, ObjectResources::Items_Consumables_HEALTH_1)
+HealthPotion::HealthPotion() : Consumable(nullptr, ObjectResources::Items_Consumables_HEALTH_1)
 {
 }
 

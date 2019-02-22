@@ -1,5 +1,7 @@
 #include "Item.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Localization/LocalizedString.h"
 
 using namespace cocos2d;
@@ -24,6 +26,15 @@ void Item::onEnter()
 void Item::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+cocos2d::ValueMap Item::serialize()
+{
+	return ValueMap();
+}
+
+void Item::deserialize(ValueMap& valueMap)
+{
 }
 
 LocalizedString* Item::cloneName()

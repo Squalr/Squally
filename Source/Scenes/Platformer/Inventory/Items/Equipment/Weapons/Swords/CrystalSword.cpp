@@ -13,7 +13,7 @@ CrystalSword* CrystalSword::create()
 	return instance;
 }
 
-CrystalSword::CrystalSword() : Item(nullptr, ObjectResources::Items_Weapons_Swords_CrystalSword)
+CrystalSword::CrystalSword() : super(nullptr, ObjectResources::Items_Weapons_Swords_CrystalSword, 3, 6)
 {
 }
 

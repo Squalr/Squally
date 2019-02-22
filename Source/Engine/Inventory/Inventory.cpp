@@ -2,12 +2,15 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Save/SaveManager.h"
+
 using namespace cocos2d;
 
 const int Inventory::InfiniteCapacity = -1;
 
-Inventory::Inventory(int capacity)
+Inventory::Inventory(std::string saveKey, int capacity)
 {
+	this->saveKey = saveKey;
 	this->capacity = capacity;
 	this->items = std::vector<Item*>();
 }
@@ -38,6 +41,22 @@ void Inventory::deserialize(cocos2d::ValueMap& valueMap)
 	// TODO
 }
 
+void Inventory::save()
+{
+	if (!this->saveKey.empty())
+	{
+		SaveManager::saveProfileData(this->saveKey, Value(this->serialize()));
+	}
+}
+
+void Inventory::load()
+{
+	if (!this->saveKey.empty())
+	{
+		this->deserialize(SaveManager::getGlobalData(this->saveKey).asValueMap());
+	}
+}
+
 std::vector<Item*> Inventory::getItems()
 {
 	return this->items;
@@ -61,6 +80,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 	}
 
 	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
+	this->save();
 }
 
 void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed)
@@ -71,6 +91,7 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 		if (onInsert != nullptr)
 		{
+			this->save();
 			onInsert(item);
 		}
 	}
@@ -125,5 +146,9 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 	if (onMoveFailed != nullptr)
 	{
 		onMoveFailed(item);
+
+		return;
 	}
+
+	this->save();
 }

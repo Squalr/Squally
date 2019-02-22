@@ -321,7 +321,7 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos)
 	}
 }
 
-bool GameUtils::keyExists(ValueMap& valueMap, std::string key)
+bool GameUtils::keyExists(const ValueMap& valueMap, std::string key)
 {
 	auto pointsIterator = valueMap.find(key);
 
@@ -333,11 +333,11 @@ bool GameUtils::keyExists(ValueMap& valueMap, std::string key)
 	return false;
 }
 
-cocos2d::Value& GameUtils::getKeyOrDefault(cocos2d::ValueMap& valueMap, std::string key, cocos2d::Value defaultValue)
+const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::string key, const Value& defaultValue)
 {
 	if (GameUtils::keyExists(valueMap, key))
 	{
-		return valueMap[key];
+		return valueMap.at(key);
 	}
 
 	return defaultValue;

@@ -1,6 +1,7 @@
 #include "ScriptList.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"

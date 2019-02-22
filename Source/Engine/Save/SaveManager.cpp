@@ -1,5 +1,6 @@
 #include "SaveManager.h"
 
+#include "cocos/base/CCValue.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "steam_api.h"
@@ -57,7 +58,7 @@ void SaveManager::setActiveSaveProfile(ActiveSaveProfile activeSaveProfile)
 	);
 }
 
-void SaveManager::saveGlobalData(std::string key, cocos2d::Value data)
+void SaveManager::saveGlobalData(std::string key, const cocos2d::Value& data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -66,7 +67,7 @@ void SaveManager::saveGlobalData(std::string key, cocos2d::Value data)
 	SaveManager::doSave(instance->globalSaveData, instance->getLocalGlobalSaveFilePath(), instance->getCloudGlobalSaveFilePath());
 }
 
-void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
+void SaveManager::saveProfileData(std::string key, const cocos2d::Value& data)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -75,7 +76,7 @@ void SaveManager::saveProfileData(std::string key, cocos2d::Value data)
 	SaveManager::doSave(instance->profileSaveData, instance->getLocalActiveProfileSaveFilePath(), instance->getCloudActiveProfileSaveFilePath());
 }
 
-cocos2d::Value SaveManager::getGlobalDataOrDefault(std::string key, cocos2d::Value defaultValue)
+cocos2d::Value SaveManager::getGlobalDataOrDefault(std::string key, const cocos2d::Value& defaultValue)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
@@ -103,7 +104,7 @@ cocos2d::Value SaveManager::getGlobalData(std::string key)
 	}
 }
 
-cocos2d::Value SaveManager::getProfileDataOrDefault(std::string key, cocos2d::Value defaultValue)
+cocos2d::Value SaveManager::getProfileDataOrDefault(std::string key, const cocos2d::Value& defaultValue)
 {
 	SaveManager* instance = SaveManager::getInstance();
 
