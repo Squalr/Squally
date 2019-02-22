@@ -1,9 +1,14 @@
 #include "Squally.h"
 
+#include "Engine/Animations/AnimationPart.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h" // Debugging
+#include "Scenes/Platformer/Inventory/PlayerEquipment.h"
+#include "Scenes/Platformer/Inventory/PlayerInventory.h"
 
 #include "Resources/EntityResources.h"
 
@@ -57,6 +62,16 @@ Squally::~Squally()
 void Squally::onEnter()
 {
 	super::onEnter();
+
+	if (PlayerEquipment::getInstance()->getWeapon() == nullptr)
+	{
+		PlayerEquipment::getInstance()->forceInsert(CrystalSword::create());
+	}
+
+	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
+	
+	mainhand->replaceSprite(weapon->getIconResource());
 }
 
 void Squally::initializeCollisionEvents()
