@@ -7,6 +7,7 @@ using namespace cocos2d;
 
 EquipmentInventory::EquipmentInventory(std::string saveKey, int capacity) : super(saveKey, capacity)
 {
+	this->load();
 }
 
 EquipmentInventory::~EquipmentInventory()

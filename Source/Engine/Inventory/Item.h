@@ -18,7 +18,6 @@ public:
 
 	virtual std::string getSerializationKey() = 0;
 	virtual cocos2d::ValueMap serialize();
-	virtual void deserialize(cocos2d::ValueMap& valueMap);
 
 protected:
 	Item(LocalizedString* name, std::string iconResource);

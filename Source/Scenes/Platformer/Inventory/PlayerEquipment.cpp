@@ -15,7 +15,7 @@ PlayerEquipment* PlayerEquipment::getInstance()
 	return instance;
 }
 
-PlayerEquipment::PlayerEquipment() : super()
+PlayerEquipment::PlayerEquipment() : super(PlayerEquipment::SaveKeyPlayerEquipment)
 {
 }
 
