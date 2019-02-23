@@ -10,7 +10,7 @@ public:
 	int getDefense();
 
 protected:
-	Gear(LocalizedString* name, std::string iconResource, int defense);
+	Gear(int defense);
 	virtual ~Gear();
 
 private:

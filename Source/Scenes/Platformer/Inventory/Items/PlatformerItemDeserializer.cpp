@@ -46,6 +46,14 @@ void PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::Reque
 	{
 		result = HealthPotion::create();
 	}
+	else if (serializationKey == ManaPotion::SaveKeyManaPotion)
+	{
+		result = ManaPotion::create();
+	}
+	else if (serializationKey == SpeedPotion::SaveKeySpeedPotion)
+	{
+		result = SpeedPotion::create();
+	}
 	else if (serializationKey == CrystalSword::SaveKeyCrystalSword)
 	{
 		result = CrystalSword::create();

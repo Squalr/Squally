@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-Consumable::Consumable(LocalizedString* name, std::string iconResource) : super(name, iconResource)
+Consumable::Consumable() : super()
 {
 }
 

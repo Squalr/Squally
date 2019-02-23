@@ -13,21 +13,17 @@ class LocalizedString;
 class Item : public SmartNode
 {
 public:
-	LocalizedString* cloneName();
-	std::string getIconResource();
-
 	virtual Item* clone() = 0;
+	virtual LocalizedString* getString() = 0;
+	virtual std::string getIconResource() = 0;
 	virtual std::string getSerializationKey() = 0;
 	virtual cocos2d::ValueMap serialize();
 
 protected:
-	Item(LocalizedString* name, std::string iconResource);
+	Item();
 	virtual ~Item();
 	void onEnter() override;
 	void initializeListeners() override;
-
-	LocalizedString* name;
-	std::string iconResource;
 
 private:
 	typedef SmartNode super;

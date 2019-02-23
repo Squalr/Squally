@@ -6,6 +6,9 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h" // Debugging
+#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h" // Debugging
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h" // Debugging
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
 #include "Scenes/Platformer/Inventory/PlayerInventory.h"
@@ -52,6 +55,8 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->registerHackables();
 	this->registerAttack(BasicSlash::create(1.5f, 0.15f));
 
+	this->inventory = PlayerInventory::getInstance();
+
 	this->addChild(this->squallyCollision);
 }
 
@@ -66,6 +71,13 @@ void Squally::onEnter()
 	if (PlayerEquipment::getInstance()->getWeapon() == nullptr)
 	{
 		PlayerEquipment::getInstance()->forceInsert(CrystalSword::create());
+	}
+
+	if (PlayerInventory::getInstance()->getItems().empty())
+	{
+		PlayerInventory::getInstance()->forceInsert(HealthPotion::create());
+		PlayerInventory::getInstance()->forceInsert(ManaPotion::create());
+		PlayerInventory::getInstance()->forceInsert(SpeedPotion::create());
 	}
 
 	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();

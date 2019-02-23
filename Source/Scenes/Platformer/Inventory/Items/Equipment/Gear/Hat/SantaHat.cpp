@@ -15,7 +15,7 @@ SantaHat* SantaHat::create()
 	return instance;
 }
 
-SantaHat::SantaHat() : super(nullptr, ObjectResources::Items_Equipment_Gear_Hats_SantaHat, 4)
+SantaHat::SantaHat() : super(4)
 {
 }
 
@@ -26,6 +26,16 @@ SantaHat::~SantaHat()
 Item* SantaHat::clone()
 {
 	return SantaHat::create();
+}
+
+LocalizedString* SantaHat::getString()
+{
+	return nullptr;
+}
+
+std::string SantaHat::getIconResource()
+{
+	return ObjectResources::Items_Equipment_Gear_Hats_SantaHat;
 }
 
 std::string SantaHat::getSerializationKey()

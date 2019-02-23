@@ -8,6 +8,8 @@ public:
 	static SantaHat* create();
 
 	Item* clone() override;
+	LocalizedString* getString() override;
+	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeySantaHat;

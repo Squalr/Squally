@@ -42,6 +42,7 @@ public:
 			DefendSelect,
 			ChooseAttackTarget,
 			ChooseBuffTarget,
+			ChooseAnyTarget,
 		};
 
 		CurrentMenu currentMenu;
