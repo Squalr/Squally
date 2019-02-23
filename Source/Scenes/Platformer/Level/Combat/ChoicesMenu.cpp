@@ -7,10 +7,13 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -52,6 +55,7 @@ ChoicesMenu::ChoicesMenu()
 	this->itemListNode = Node::create();
 	this->defendListNode = Node::create();
 	this->attackListNodes = std::vector<ClickableTextNode*>();
+	this->itemListNodes = std::vector<ClickableTextNode*>();
 
 	itemsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -91,6 +95,7 @@ void ChoicesMenu::onEnter()
 
 	this->setVisible(false);
 	this->attackListNode->setVisible(false);
+	this->itemListNode->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -163,10 +168,8 @@ void ChoicesMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 				{
-					this->attackListNode->setVisible(true);
-					this->defendListNode->setVisible(false);
-					this->itemListNode->setVisible(false);
 					this->toggleInnerText(false);
 					this->toggleOuterText(false);
 
@@ -178,6 +181,8 @@ void ChoicesMenu::initializeListeners()
 					this->defendListNode->setVisible(false);
 					this->itemListNode->setVisible(false);
 					this->setVisible(false);
+
+					break;
 				}
 				default:
 				{
@@ -230,14 +235,26 @@ void ChoicesMenu::toggleOuterText(bool isVisible)
 		(*it)->setTextVisible(isVisible);
 		(*it)->setOpacity(isVisible ? 255 : 127);
 	}
+
+	for (auto it = this->itemListNodes.begin(); it != this->itemListNodes.end(); it++)
+	{
+		(*it)->setTextVisible(isVisible);
+		(*it)->setOpacity(isVisible ? 255 : 127);
+	}
 }
 
 void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 {
+	this->selectedEntry = selectedEntry;
+
+	this->buildAttackList();
+	this->buildItemList();
+}
+
+void ChoicesMenu::buildAttackList()
+{
 	const float AngleDelta = M_PI / 6.0f;
 	float currentAngle = 0.0f;
-
-	this->selectedEntry = selectedEntry;
 
 	this->attackListNodes.clear();
 	this->attackListNode->removeAllChildren();
@@ -253,8 +270,8 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 			for (auto it = attacks.begin(); it != attacks.end(); it++)
 			{
 				PlatformerAttack* attack = *it;
-				LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
-				LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
+				LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, attack->getString());
+				LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, attack->getString());
 
 				attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 				attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -275,11 +292,85 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
 				});
 
-				currentAngle = currentAngle >= 0.0f ? (currentAngle * -1.0f + AngleDelta) : (currentAngle * -1.0f);
+				currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + AngleDelta);
 
 				this->attackListNodes.push_back(node);
 				this->attackListNode->addChild(node);
 			}
 		}
+	}
+}
+
+void ChoicesMenu::buildItemList()
+{
+	const float AngleDelta = M_PI / 6.0f;
+	float currentAngle = 0.0f;
+
+	this->itemListNodes.clear();
+	this->itemListNode->removeAllChildren();
+
+	if (this->selectedEntry != nullptr)
+	{
+		PlatformerEntity* entity = this->selectedEntry->getEntity();
+
+		if (entity != nullptr)
+		{
+			Inventory* inventory = entity->getInventory();
+			
+			if (inventory != nullptr)
+			{
+				std::vector<Consumable*> items = inventory->getItemsOfType<Consumable>();
+
+				for (auto it = items.begin(); it != items.end(); it++)
+				{
+					Consumable* item = *it;
+					LocalizedLabel* itemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, item->getString());
+					LocalizedLabel* itemLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, item->getString());
+
+					itemLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+					itemLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+					itemLabel->enableOutline(Color4B::BLACK, 2);
+					itemLabelSelected->enableOutline(Color4B::BLACK, 2);
+					itemLabelSelected->setTextColor(Color4B::YELLOW);
+
+					ClickableTextNode* node = ClickableTextNode::create(itemLabel, itemLabelSelected, UIResources::Combat_ItemsCircle, UIResources::Combat_ItemsCircle);
+
+					node->setTextOffset(Vec2(48.0f, 0.0f));
+					node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
+					node->addChild(Sprite::create(item->getIconResource()));
+
+					node->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+					{
+						this->selectedEntry->stageCast(item->getAssociatedAttack());
+
+						switch (item->getConsumableType())
+						{
+							default:
+							case Consumable::ConsumableType::Buff:
+							{
+								CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, this->selectedEntry));
+								break;
+							}
+							case Consumable::ConsumableType::Debuff:
+							{
+								CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
+								break;
+							}
+							case Consumable::ConsumableType::Either:
+							{
+								CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, this->selectedEntry));
+								break;
+							}
+						}
+					});
+
+					currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + AngleDelta);
+
+					this->itemListNodes.push_back(node);
+					this->itemListNode->addChild(node);
+				}
+			}
+		}
+
 	}
 }

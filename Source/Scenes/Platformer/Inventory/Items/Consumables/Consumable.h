@@ -3,13 +3,23 @@
 #include "Engine/Inventory/Item.h"
 
 class LocalizedString;
+class PlatformerAttack;
 
 class Consumable : public Item
 {
 public:
+	enum ConsumableType
+	{
+		Buff,
+		Debuff,
+		Either
+	};
+
+	virtual PlatformerAttack* getAssociatedAttack() = 0;
+	virtual ConsumableType getConsumableType() = 0;
 
 protected:
-	Consumable(LocalizedString* name, std::string iconResource);
+	Consumable();
 	virtual ~Consumable();
 
 private:

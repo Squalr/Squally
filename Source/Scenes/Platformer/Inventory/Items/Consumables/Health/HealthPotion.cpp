@@ -15,7 +15,7 @@ HealthPotion* HealthPotion::create()
 	return instance;
 }
 
-HealthPotion::HealthPotion() : Consumable(nullptr, ObjectResources::Items_Consumables_HEALTH_1)
+HealthPotion::HealthPotion() : Consumable()
 {
 }
 
@@ -28,7 +28,27 @@ Item* HealthPotion::clone()
 	return HealthPotion::create();
 }
 
+LocalizedString* HealthPotion::getString()
+{
+	return nullptr;
+}
+
+std::string HealthPotion::getIconResource()
+{
+	return ObjectResources::Items_Consumables_HEALTH_2;
+}
+
 std::string HealthPotion::getSerializationKey()
 {
 	return HealthPotion::SaveKeyHealthPotion;
+}
+
+PlatformerAttack* HealthPotion::getAssociatedAttack()
+{
+	return nullptr;
+}
+
+Consumable::ConsumableType HealthPotion::getConsumableType()
+{
+	return ConsumableType::Buff;
 }

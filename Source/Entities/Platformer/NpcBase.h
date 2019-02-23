@@ -8,6 +8,8 @@ class ClickableNode;
 
 class NpcBase : public PlatformerFriendly
 {
+public:
+
 protected:
 	NpcBase(cocos2d::ValueMap& initProperties,
 		std::string scmlResource,

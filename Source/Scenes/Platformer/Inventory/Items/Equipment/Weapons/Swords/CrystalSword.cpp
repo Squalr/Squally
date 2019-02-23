@@ -15,7 +15,7 @@ CrystalSword* CrystalSword::create()
 	return instance;
 }
 
-CrystalSword::CrystalSword() : super(nullptr, ObjectResources::Items_Equipment_Weapons_Swords_CrystalSword, 3, 6)
+CrystalSword::CrystalSword() : super(3, 6)
 {
 }
 
@@ -26,6 +26,16 @@ CrystalSword::~CrystalSword()
 Item* CrystalSword::clone()
 {
 	return CrystalSword::create();
+}
+
+LocalizedString* CrystalSword::getString()
+{
+	return nullptr;
+}
+
+std::string CrystalSword::getIconResource()
+{
+	return ObjectResources::Items_Equipment_Weapons_Swords_CrystalSword;
 }
 
 std::string CrystalSword::getSerializationKey()

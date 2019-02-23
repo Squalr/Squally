@@ -4,10 +4,10 @@
 
 class LocalizedString;
 
-class HealthPotion : public Consumable
+class ManaPotion : public Consumable
 {
 public:
-	static HealthPotion* create();
+	static ManaPotion* create();
 
 	Item* clone() override;
 	LocalizedString* getString() override;
@@ -16,11 +16,11 @@ public:
 	PlatformerAttack* getAssociatedAttack() override;
 	ConsumableType getConsumableType() override;
 
-	static const std::string SaveKeyHealthPotion;
+	static const std::string SaveKeyManaPotion;
 
 protected:
-	HealthPotion();
-	virtual ~HealthPotion();
+	ManaPotion();
+	virtual ~ManaPotion();
 
 private:
 	typedef Consumable super;

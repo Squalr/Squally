@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -53,6 +54,7 @@ PlatformerEntity::PlatformerEntity(
 		false,
 		false
 	);
+	this->inventory = Inventory::create();
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
 	this->groundCollisions = std::set<CollisionObject*>();
@@ -268,6 +270,11 @@ std::vector<PlatformerAttack*> PlatformerEntity::cloneAttacks()
 	}
 
 	return attacksClone;
+}
+
+Inventory* PlatformerEntity::getInventory()
+{
+	return this->inventory;
 }
 
 bool PlatformerEntity::isOnGround()

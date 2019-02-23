@@ -7,6 +7,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 class ClickableNode;
+class Inventory;
 class PlatformerAttack;
 class SmartAnimationNode;
 class SpeechBubble;
@@ -24,6 +25,7 @@ public:
 	int getMaxRunes();
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
+	Inventory* getInventory();
 	std::string getEmblemResource();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
@@ -54,6 +56,7 @@ protected:
 	void registerAttack(PlatformerAttack* attack);
 	virtual void initializeCollisionEvents();
 
+	Inventory* inventory;
 	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;

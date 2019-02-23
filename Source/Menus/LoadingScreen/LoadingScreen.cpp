@@ -90,8 +90,13 @@ void LoadingScreen::loadLevel(std::string levelFile, std::function<void(Serializ
 	this->map = SerializableMap::deserialize(levelFile);
 	this->map->retain();
 
+	if (this->onLoadCallback != nullptr)
+	{
+		this->onLoadCallback(this->map);
+	}
+
 	// Asyncronously get all files under the game, and load them
-	FileUtils::getInstance()->listFilesRecursivelyAsync("Strings", CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
+	// FileUtils::getInstance()->listFilesRecursivelyAsync("Strings", CC_CALLBACK_1(LoadingScreen::onFileEnumerationComplete, this));
 }
 
 void LoadingScreen::onFileEnumerationComplete(std::vector<std::string> files)
@@ -173,6 +178,9 @@ bool LoadingScreen::levelIsLoaded()
 
 bool LoadingScreen::isPreloadableImage(std::string filePath)
 {
+	// TEMP DEBUG:
+	return false;
+
 	if (StrUtils::endsWith(filePath, ".png", true) ||
 		StrUtils::endsWith(filePath, ".jpg", true) ||
 		StrUtils::endsWith(filePath, ".jpeg", true))
@@ -185,6 +193,9 @@ bool LoadingScreen::isPreloadableImage(std::string filePath)
 
 bool LoadingScreen::isPreloadableSound(std::string filePath)
 {
+	// TEMP DEBUG:
+	return false;
+
 	if (StrUtils::endsWith(filePath, ".mp3", true) ||
 		StrUtils::endsWith(filePath, ".wav", true))
 	{

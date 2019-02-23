@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Weapon::Weapon(LocalizedString* name, std::string iconResource, int minAttack, int maxAttack) : super(name, iconResource)
+Weapon::Weapon(int minAttack, int maxAttack) : super()
 {
 	this->minAttack = minAttack;
 	this->maxAttack = maxAttack;

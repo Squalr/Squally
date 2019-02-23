@@ -11,7 +11,7 @@ public:
 	int getMaxAttack();
 
 protected:
-	Weapon(LocalizedString* name, std::string iconResource, int minAttack, int maxAttack);
+	Weapon(int minAttack, int maxAttack);
 	virtual ~Weapon();
 
 private:

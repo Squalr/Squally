@@ -9,7 +9,7 @@ class Equipable : public Item
 public:
 
 protected:
-	Equipable(LocalizedString* name, std::string iconResource);
+	Equipable();
 	virtual ~Equipable();
 
 	virtual cocos2d::Vec2 getDisplayOffset();

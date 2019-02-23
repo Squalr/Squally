@@ -30,6 +30,8 @@ private:
 	void toggleInnerText(bool isVisible);
 	void toggleOuterText(bool isVisible);
 	void setSelectedEntry(TimelineEntry* selectedEntry);
+	void buildAttackList();
+	void buildItemList();
 
 	ClickableTextNode* itemsNode;
 	ClickableTextNode* attackNode;
@@ -40,6 +42,7 @@ private:
 	TimelineEntry* selectedEntry;
 
 	std::vector<ClickableTextNode*> attackListNodes;
+	std::vector<ClickableTextNode*> itemListNodes;
 
 	static const float InnerChoicesRadius;
 	static const float OuterChoicesRadius;

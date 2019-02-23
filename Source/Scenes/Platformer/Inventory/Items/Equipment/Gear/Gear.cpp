@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Gear::Gear(LocalizedString* name, std::string iconResource, int defense) : super(name, iconResource)
+Gear::Gear(int defense) : super()
 {
 	this->defense = defense;
 }

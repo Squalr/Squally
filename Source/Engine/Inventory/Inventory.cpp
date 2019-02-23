@@ -13,6 +13,15 @@ const int Inventory::InfiniteCapacity = -1;
 const std::string Inventory::SaveKeyCapacity = "capacity";
 const std::string Inventory::SaveKeyItems = "items";
 
+Inventory* Inventory::create()
+{
+	Inventory* instance = new Inventory();
+
+	instance->autorelease();
+
+	return instance;
+}
+
 Inventory::Inventory(std::string saveKey, int capacity)
 {
 	this->saveKey = saveKey;

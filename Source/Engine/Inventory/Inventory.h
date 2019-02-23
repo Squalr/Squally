@@ -13,7 +13,26 @@ class Item;
 class Inventory : public SmartNode
 {
 public:
+	static Inventory* create();
+
 	std::vector<Item*> getItems();
+
+	template<class T>
+	std::vector<T*> getItemsOfType()
+	{
+		std::vector<T*> foundItems;
+
+		for (auto it = this->items.begin(); it != this->items.end(); it++)
+		{
+			if (dynamic_cast<T*>(*it) != nullptr)
+			{
+				foundItems.push_back(dynamic_cast<T*>(*it));
+			}
+		}
+
+		return foundItems;
+	};
+
 	int getCapacity();
 	void tryRemove(Item* item, std::function<void(Item*)> onRemove, std::function<void(Item*)> onRemoveFailed);
 	void tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed);
