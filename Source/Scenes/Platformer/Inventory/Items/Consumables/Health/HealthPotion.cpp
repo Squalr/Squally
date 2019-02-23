@@ -23,6 +23,11 @@ HealthPotion::~HealthPotion()
 {
 }
 
+Item* HealthPotion::clone()
+{
+	return HealthPotion::create();
+}
+
 std::string HealthPotion::getSerializationKey()
 {
 	return HealthPotion::SaveKeyHealthPotion;

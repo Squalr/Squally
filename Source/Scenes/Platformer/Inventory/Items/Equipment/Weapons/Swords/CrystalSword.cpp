@@ -23,6 +23,11 @@ CrystalSword::~CrystalSword()
 {
 }
 
+Item* CrystalSword::clone()
+{
+	return CrystalSword::create();
+}
+
 std::string CrystalSword::getSerializationKey()
 {
 	return CrystalSword::SaveKeyCrystalSword;
