@@ -23,6 +23,11 @@ SantaHat::~SantaHat()
 {
 }
 
+Item* SantaHat::clone()
+{
+	return SantaHat::create();
+}
+
 std::string SantaHat::getSerializationKey()
 {
 	return SantaHat::SaveKeySantaHat;

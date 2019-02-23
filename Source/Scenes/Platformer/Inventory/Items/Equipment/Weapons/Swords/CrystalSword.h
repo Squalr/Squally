@@ -7,6 +7,7 @@ class CrystalSword : public Weapon
 public:
 	static CrystalSword* create();
 
+	Item* clone() override;
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeyCrystalSword;

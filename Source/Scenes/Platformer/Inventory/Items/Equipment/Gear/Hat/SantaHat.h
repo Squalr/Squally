@@ -7,6 +7,7 @@ class SantaHat : public Gear
 public:
 	static SantaHat* create();
 
+	Item* clone() override;
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeySantaHat;

@@ -102,6 +102,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 		return;
 	}
 
+	this->removeChild(item);
 	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
 	this->save();
 }
@@ -110,6 +111,7 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 {
 	if (this->capacity == Inventory::InfiniteCapacity || this->items.size() < this->capacity)
 	{
+		this->addChild(item);
 		this->items.push_back(item);
 
 		if (onInsert != nullptr)
@@ -129,6 +131,7 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 void Inventory::forceInsert(Item* item)
 {
+	this->addChild(item);
 	this->items.push_back(item);
 	this->save();
 }

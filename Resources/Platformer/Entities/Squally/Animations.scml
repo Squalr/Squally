@@ -559,7 +559,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="2" name="Attack" length="1800" interval="100">
+        <animation id="2" name="Attack" length="1650" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="10" key="0"/>

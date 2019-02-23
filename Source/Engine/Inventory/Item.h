@@ -16,6 +16,7 @@ public:
 	LocalizedString* cloneName();
 	std::string getIconResource();
 
+	virtual Item* clone() = 0;
 	virtual std::string getSerializationKey() = 0;
 	virtual cocos2d::ValueMap serialize();
 

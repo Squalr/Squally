@@ -9,6 +9,7 @@ class HealthPotion : public Consumable
 public:
 	static HealthPotion* create();
 
+	Item* clone() override;
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeyHealthPotion;
