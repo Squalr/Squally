@@ -2,6 +2,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Items/Consumables/Health/HealthPotion.h"
+
 using namespace cocos2d;
 
 const std::string HealthPotion::SaveKeyHealthPotion = "health-potion";
@@ -30,7 +32,7 @@ Item* HealthPotion::clone()
 
 LocalizedString* HealthPotion::getString()
 {
-	return nullptr;
+	return Strings::Items_Consumables_Health_HealthPotion::create();
 }
 
 std::string HealthPotion::getIconResource()

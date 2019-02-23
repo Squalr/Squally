@@ -2,6 +2,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Items/Equipment/Gear/Hats/SantaHat.h"
+
 using namespace cocos2d;
 
 const std::string SantaHat::SaveKeySantaHat = "santa-hat";
@@ -30,7 +32,7 @@ Item* SantaHat::clone()
 
 LocalizedString* SantaHat::getString()
 {
-	return nullptr;
+	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
 }
 
 std::string SantaHat::getIconResource()

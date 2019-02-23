@@ -2,6 +2,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Items/Consumables/Mana/ManaPotion.h"
+
 using namespace cocos2d;
 
 const std::string ManaPotion::SaveKeyManaPotion = "mana-potion";
@@ -30,7 +32,7 @@ Item* ManaPotion::clone()
 
 LocalizedString* ManaPotion::getString()
 {
-	return nullptr;
+	return Strings::Items_Consumables_Mana_ManaPotion::create();
 }
 
 std::string ManaPotion::getIconResource()
