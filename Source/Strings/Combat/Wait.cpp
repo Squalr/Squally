@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Combat_Wait::getStringEn()
 	{
-		return "Wait";
+		return "WAIT";
 	}
 
 	std::string Combat_Wait::getStringEs()

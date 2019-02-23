@@ -292,7 +292,7 @@ void ChoicesMenu::buildAttackList()
 					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
 				});
 
-				currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + AngleDelta);
+				currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
 
 				this->attackListNodes.push_back(node);
 				this->attackListNode->addChild(node);
@@ -364,7 +364,7 @@ void ChoicesMenu::buildItemList()
 						}
 					});
 
-					currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + AngleDelta);
+					currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
 
 					this->itemListNodes.push_back(node);
 					this->itemListNode->addChild(node);

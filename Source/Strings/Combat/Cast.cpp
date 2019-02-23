@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Combat_Cast::getStringEn()
 	{
-		return "Cast";
+		return "CAST";
 	}
 
 	std::string Combat_Cast::getStringEs()

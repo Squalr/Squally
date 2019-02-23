@@ -2,6 +2,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Items/Equipment/Weapons/Swords/CrystalSword.h"
+
 using namespace cocos2d;
 
 const std::string CrystalSword::SaveKeyCrystalSword = "crystal-sword";
@@ -30,7 +32,7 @@ Item* CrystalSword::clone()
 
 LocalizedString* CrystalSword::getString()
 {
-	return nullptr;
+	return Strings::Items_Equipment_Weapons_Swords_CrystalSword::create();
 }
 
 std::string CrystalSword::getIconResource()

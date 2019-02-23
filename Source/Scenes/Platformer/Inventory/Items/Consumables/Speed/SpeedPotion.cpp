@@ -2,6 +2,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Items/Consumables/Speed/SpeedPotion.h"
+
 using namespace cocos2d;
 
 const std::string SpeedPotion::SaveKeySpeedPotion = "speed-potion";
@@ -30,7 +32,7 @@ Item* SpeedPotion::clone()
 
 LocalizedString* SpeedPotion::getString()
 {
-	return nullptr;
+	return Strings::Items_Consumables_Speed_SpeedPotion::create();
 }
 
 std::string SpeedPotion::getIconResource()
