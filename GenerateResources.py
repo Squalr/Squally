@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ###################################################################################
 # This script will generate all Resources.cpp and Resources.h files.              #
 # Run this script every time files are added to the Squally/Resources/ directory. #
