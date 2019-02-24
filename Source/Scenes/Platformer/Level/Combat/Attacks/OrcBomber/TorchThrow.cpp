@@ -53,5 +53,5 @@ void TorchThrow::spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* tar
 		SpawnEvents::SpawnMethod::Below
 	));
 
-	torch->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f);
+	torch->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 }
