@@ -1,5 +1,7 @@
 #include "HealthPotion.h"
 
+#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowHealthPotion.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Consumables/Health/HealthPotion.h"
@@ -19,6 +21,9 @@ HealthPotion* HealthPotion::create()
 
 HealthPotion::HealthPotion() : Consumable()
 {
+	this->associatedAttack = ThrowHealthPotion::create();
+
+	this->addChild(this->associatedAttack);
 }
 
 HealthPotion::~HealthPotion()
@@ -43,11 +48,6 @@ std::string HealthPotion::getIconResource()
 std::string HealthPotion::getSerializationKey()
 {
 	return HealthPotion::SaveKeyHealthPotion;
-}
-
-PlatformerAttack* HealthPotion::getAssociatedAttack()
-{
-	return nullptr;
 }
 
 Consumable::ConsumableType HealthPotion::getConsumableType()

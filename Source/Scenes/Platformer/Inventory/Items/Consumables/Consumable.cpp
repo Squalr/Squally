@@ -11,3 +11,8 @@ Consumable::Consumable() : super()
 Consumable::~Consumable()
 {
 }
+
+PlatformerAttack* Consumable::getAssociatedAttack()
+{
+	return this->associatedAttack;
+}

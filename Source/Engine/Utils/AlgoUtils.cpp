@@ -9,14 +9,13 @@
 
 using namespace cocos2d;
 
-cocos2d::Vec3 AlgoUtils::computeArcVelocity(cocos2d::Vec3 source, cocos2d::Vec3 destination, cocos2d::Vec3 acceleration, float time)
+Vec3 AlgoUtils::computeArcVelocity(Vec3 source, Vec3 destination, Vec3 acceleration, Vec3 time)
 {
-	if (time == 0.0f)
-	{
-		return Vec3::ZERO;
-	}
+	Vec3 velocity = (destination - source - 0.5f * Vec3(acceleration.x * time.x * time.x, acceleration.y * time.y * time.y, acceleration.z * time.z * time.z));
 
-	Vec3 velocity = (destination - source - 0.5f * acceleration * time * time) / time;
+	velocity.x = time.x == 0.0f ? 0.0f : (velocity.x / time.x);
+	velocity.y = time.y == 0.0f ? 0.0f : (velocity.y / time.y);
+	velocity.z = time.z == 0.0f ? 0.0f : (velocity.z / time.z);
 
 	return velocity;
 }

@@ -1,5 +1,7 @@
 #include "ManaPotion.h"
 
+#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowHealthPotion.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Consumables/Mana/ManaPotion.h"
@@ -19,6 +21,9 @@ ManaPotion* ManaPotion::create()
 
 ManaPotion::ManaPotion() : Consumable()
 {
+	this->associatedAttack = ThrowHealthPotion::create();
+
+	this->addChild(this->associatedAttack);
 }
 
 ManaPotion::~ManaPotion()
@@ -43,11 +48,6 @@ std::string ManaPotion::getIconResource()
 std::string ManaPotion::getSerializationKey()
 {
 	return ManaPotion::SaveKeyManaPotion;
-}
-
-PlatformerAttack* ManaPotion::getAssociatedAttack()
-{
-	return nullptr;
 }
 
 Consumable::ConsumableType ManaPotion::getConsumableType()

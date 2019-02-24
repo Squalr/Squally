@@ -140,16 +140,17 @@ HackablePreview* ProximityObject::createAccelerationPreview()
 	return nullptr;
 }
 
-void ProximityObject::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed, float secondsPer256pxLinearDistance, Vec3 gravity)
+void ProximityObject::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed, Vec3 secondsPer256pxLinearDistance, Vec3 gravity)
 {
 	Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
 	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);
-	float duration = targetPosition.distance(thisPosition) / 480.0f * secondsPer256pxLinearDistance;
+	Vec3 duration = secondsPer256pxLinearDistance * (targetPosition.distance(thisPosition) / 256.0f);
+	float maxDuration = std::max(std::max(duration.x, duration.y), duration.z);
 	bool isLeft = targetPosition.x < thisPosition.x;
 
 	if (spinSpeed != 0.0f)
 	{
-		this->contentNode->runAction(RotateBy::create(duration, (isLeft ? -1.0f : 1.0f) * duration * 360.0f * spinSpeed));
+		this->contentNode->runAction(RotateBy::create(maxDuration, (isLeft ? -1.0f : 1.0f) * maxDuration * 360.0f * spinSpeed));
 	}
 
 	this->setAcceleration(gravity);

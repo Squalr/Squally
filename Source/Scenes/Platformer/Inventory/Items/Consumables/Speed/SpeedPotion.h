@@ -13,7 +13,6 @@ public:
 	LocalizedString* getString() override;
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
-	PlatformerAttack* getAssociatedAttack() override;
 	ConsumableType getConsumableType() override;
 
 	static const std::string SaveKeySpeedPotion;
