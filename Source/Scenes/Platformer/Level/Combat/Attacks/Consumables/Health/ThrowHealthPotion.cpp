@@ -24,7 +24,7 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Projectile, UIResources::Menus_Objects_HEALTH_2, 3, 5, 0, 0.75f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Projectile, UIResources::Menus_Objects_HEALTH_2, -3, -5, 0, 0.75f, 1.5f)
 {
 }
 
@@ -57,7 +57,7 @@ void ThrowHealthPotion::spawnProjectiles(PlatformerEntity* owner, PlatformerEnti
 		SpawnEvents::SpawnMethod::Below
 	));
 
-	potion->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f), cocos2d::Vec3(0.0f, -768.0f * 3.0f, 0.0f));
+	potion->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
 }
 
 std::string ThrowHealthPotion::getAttackAnimation()

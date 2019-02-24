@@ -75,7 +75,7 @@ void TextOverlays::initializeListeners()
 			LocalizedString* deltaString = damageArgs->delta < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
 			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
-			deltaLabel->setTextColor(damageArgs->delta < 0 ? Color4B::RED : Color4B::BLUE);
+			deltaLabel->setTextColor(damageArgs->delta < 0 ? Color4B::RED : Color4B::GREEN);
 			deltaString->setStringReplacementVariables(amount);
 
 			this->runLabelOverEntity(damageArgs->target, deltaLabel);
