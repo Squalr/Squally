@@ -16,7 +16,7 @@ class ProximityObject : public HackableObject
 public:
 	static ProximityObject* create(float radius);
 
-	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, float secondsPer256pxLinearDistance = 0.75f, cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
+	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setVelocity(cocos2d::Vec3 velocity);
 	void setAcceleration(cocos2d::Vec3 acceleration);
 	cocos2d::Vec3 getVelocity();

@@ -334,7 +334,7 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 
 void PlatformerEntity::registerAttack(PlatformerAttack* attack)
 {
-	attack->retain();
+	this->addChild(attack);
 	this->attacks.push_back(attack);
 }
 
