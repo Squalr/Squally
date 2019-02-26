@@ -11,6 +11,9 @@
 ////A////A////A////A////A////A////A////A////A////A/
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/OrcBomber/TorchThrow.h"
 
@@ -48,6 +51,10 @@ OrcBomber::OrcBomber(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initPr
 
 	//this->registerAttack(BasicSlash::create(0.7f, 0.2f));
 	this->registerAttack(TorchThrow::create(0.625f, 3.5f));
+
+	this->dropTable[HealthPotion::SaveKeyHealthPotion] = 0.25f;
+	this->dropTable[ManaPotion::SaveKeyManaPotion] = 0.25f;
+	this->dropTable[SpeedPotion::SaveKeySpeedPotion] = 0.25f;
 
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

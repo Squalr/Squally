@@ -191,4 +191,5 @@ void ScrollPane::updateScrollBounds()
 	}
 
 	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
+	this->setScrollPercentage(this->getScrollPercentage());
 }

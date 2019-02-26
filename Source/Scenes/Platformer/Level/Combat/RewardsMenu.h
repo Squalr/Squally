@@ -10,6 +10,7 @@ namespace cocos2d
 class ClickableTextNode;
 class LocalizedLabel;
 class PlatformerEntity;
+class ScrollPane;
 
 class RewardsMenu : public SmartNode
 {
@@ -25,9 +26,10 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void loadRewards();
 
 	cocos2d::Sprite* rewardsMenu;
 	LocalizedLabel* titleLabel;
-	cocos2d::Node* rewardsNode;
+	ScrollPane* rewardsScroll;
 	ClickableTextNode* okayButton;
 };
