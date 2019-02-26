@@ -115,6 +115,7 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
+	this->addChild(this->inventory);
 }
 
 PlatformerEntity::~PlatformerEntity()
