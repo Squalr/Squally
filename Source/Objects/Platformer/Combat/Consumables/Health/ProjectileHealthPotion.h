@@ -13,10 +13,10 @@ class SmartAnimationSequenceNode;
 class ProjectileHealthPotion : public Projectile
 {
 public:
-	static ProjectileHealthPotion* create(PlatformerAttack* associatedAttack);
+	static ProjectileHealthPotion* create(std::function<void(PlatformerEntity* target)> onTargetHit);
 
 protected:
-	ProjectileHealthPotion(PlatformerAttack* associatedAttack);
+	ProjectileHealthPotion(std::function<void(PlatformerEntity* target)> onTargetHit);
 	virtual	~ProjectileHealthPotion();
 
 	void onEnter() override;

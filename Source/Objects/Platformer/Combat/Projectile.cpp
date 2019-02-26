@@ -6,13 +6,12 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 using namespace cocos2d;
 
-Projectile::Projectile(PlatformerAttack* associatedAttack, float radius, float noCollideDuration) : ProximityObject(radius)
+Projectile::Projectile(std::function<void(PlatformerEntity* target)> onTargetHit, float radius, float noCollideDuration) : ProximityObject(radius)
 {
-	this->associatedAttack = associatedAttack;
+	this->onTargetHit = onTargetHit;
 	this->hasCollided = false;
 	this->noCollideDuration = noCollideDuration;
 	this->elapsedDuration = 0.0f;
@@ -40,7 +39,7 @@ void Projectile::update(float dt)
 
 	this->elapsedDuration += dt;
 
-	if (!this->hasCollided && this->elapsedDuration > this->noCollideDuration)
+	if (this->onTargetHit != nullptr && !this->hasCollided && this->elapsedDuration > this->noCollideDuration)
 	{
 		auto entities = this->getProximityObjects<PlatformerEntity>();
 
@@ -48,10 +47,7 @@ void Projectile::update(float dt)
 		{
 			PlatformerEntity* target = entities.at(0);
 
-			int damageDelta = -RandomHelper::random_int(this->associatedAttack->getBaseDamageMin(), this->associatedAttack->getBaseDamageMax());
-
-			target->addHealth(damageDelta);
-			CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(damageDelta, target));
+			onTargetHit(target);
 
 			this->hasCollided = true;
 		}

@@ -8,6 +8,7 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCScheduler.h"
 
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -23,6 +24,7 @@
 using namespace cocos2d;
 
 GameCamera* GameCamera::cameraInstance = nullptr;
+const std::string GameCamera::SchedulerKeyCameraShake = "SCHEDULER_KEY_CAMERA_SHAKE";
 
 void GameCamera::registerGlobalNode()
 {
@@ -220,6 +222,35 @@ Rect GameCamera::getBounds()
 void GameCamera::setBounds(Rect bounds)
 {
 	this->cameraBounds = bounds;
+}
+
+void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float duration)
+{
+	// Static such that the lambda can access these. These shouldn't create any significant "double usage" issues if this method is called twice.
+	static float elapsed = 0.0f;
+	static int ticks = 0;
+	static int elapsedTicks = 0;
+	float waveLength = (shakesPerSecond / 100.0f);
+
+	// Reset state
+	elapsed = 0.0f;
+	ticks = 60 * duration; // 60fps
+	elapsedTicks = 0;
+
+	Director::getInstance()->getScheduler()->schedule([=](float dt)
+	{
+		elapsed += dt;
+
+		if (++elapsedTicks < ticks)
+		{
+			Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * M_PI) / waveLength)) * magnitude);
+		}
+		else
+		{
+			Camera::getDefaultCamera()->setRotation(0.0f);
+		}
+
+	}, this, 0.0f, ticks, 0.0f, false, GameCamera::SchedulerKeyCameraShake);
 }
 
 Vec2 GameCamera::boundCameraByEllipses()

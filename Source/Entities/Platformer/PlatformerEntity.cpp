@@ -202,7 +202,7 @@ void PlatformerEntity::addHealth(int healthDelta)
 		return;
 	}
 
-	this->health = std::max(0, healthDelta + this->health);
+	this->health = MathUtils::clamp(this->health + healthDelta, 0, this->maxHealth);
 
 	if (this->health <= 0)
 	{

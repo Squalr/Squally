@@ -12,16 +12,16 @@
 
 using namespace cocos2d;
 
-ProjectileHealthPotion* ProjectileHealthPotion::create(PlatformerAttack* associatedAttack)
+ProjectileHealthPotion* ProjectileHealthPotion::create(std::function<void(PlatformerEntity* target)> onTargetHit)
 {
-	ProjectileHealthPotion* instance = new ProjectileHealthPotion(associatedAttack);
+	ProjectileHealthPotion* instance = new ProjectileHealthPotion(onTargetHit);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ProjectileHealthPotion::ProjectileHealthPotion(PlatformerAttack* associatedAttack) : Projectile(associatedAttack, 256.0f, 1.0f)
+ProjectileHealthPotion::ProjectileHealthPotion(std::function<void(PlatformerEntity* target)> onTargetHit) : Projectile(onTargetHit, 256.0f, 1.0f)
 {
 	this->healthPotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
 

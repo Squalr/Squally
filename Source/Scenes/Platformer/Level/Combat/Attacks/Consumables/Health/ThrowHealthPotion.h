@@ -13,10 +13,11 @@ public:
 
 protected:
 	ThrowHealthPotion();
-	virtual ~ThrowHealthPotion();
+	~ThrowHealthPotion();
+
+	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit) override;
+	void onCleanup() override;
 
 private:
 	typedef PlatformerAttack super;
-
-	void spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
 };

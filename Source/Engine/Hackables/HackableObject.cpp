@@ -49,7 +49,7 @@ void HackableObject::onEnter()
 void HackableObject::update(float dt)
 {
 	super::update(dt);
-
+	
 	if (!this->trackedAttributes.empty())
 	{
 		float highestRatio = 0.0f;

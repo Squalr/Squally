@@ -21,9 +21,6 @@ SpeedPotion* SpeedPotion::create()
 
 SpeedPotion::SpeedPotion() : Consumable()
 {
-	this->associatedAttack = ThrowHealthPotion::create();
-
-	this->addChild(this->associatedAttack);
 }
 
 SpeedPotion::~SpeedPotion()
@@ -33,6 +30,11 @@ SpeedPotion::~SpeedPotion()
 Item* SpeedPotion::clone()
 {
 	return SpeedPotion::create();
+}
+
+PlatformerAttack* SpeedPotion::createAssociatedAttack()
+{
+	return ThrowHealthPotion::create();
 }
 
 LocalizedString* SpeedPotion::getString()
