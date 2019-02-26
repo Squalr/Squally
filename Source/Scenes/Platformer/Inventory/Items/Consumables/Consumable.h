@@ -15,14 +15,12 @@ public:
 		Either
 	};
 
-	PlatformerAttack* getAssociatedAttack();
+	virtual PlatformerAttack* createAssociatedAttack() = 0;
 	virtual ConsumableType getConsumableType() = 0;
 
 protected:
 	Consumable();
 	virtual ~Consumable();
-
-	PlatformerAttack* associatedAttack;
 
 private:
 	typedef Item super;

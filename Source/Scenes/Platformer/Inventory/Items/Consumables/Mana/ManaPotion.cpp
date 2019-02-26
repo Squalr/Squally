@@ -21,9 +21,6 @@ ManaPotion* ManaPotion::create()
 
 ManaPotion::ManaPotion() : Consumable()
 {
-	this->associatedAttack = ThrowHealthPotion::create();
-
-	this->addChild(this->associatedAttack);
 }
 
 ManaPotion::~ManaPotion()
@@ -33,6 +30,11 @@ ManaPotion::~ManaPotion()
 Item* ManaPotion::clone()
 {
 	return ManaPotion::create();
+}
+
+PlatformerAttack* ManaPotion::createAssociatedAttack()
+{
+	return ThrowHealthPotion::create();
 }
 
 LocalizedString* ManaPotion::getString()

@@ -36,6 +36,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->line = Sprite::create(UIResources::Combat_Line);
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->emblem = Sprite::create(entity->getEmblemResource());
+	this->orphanedAttackCache = Node::create();
 
 	this->speed = 1.0f;
 	this->progress = 0.0f;
@@ -43,6 +44,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->addChild(this->line);
 	this->addChild(this->circle);
 	this->addChild(this->emblem);
+	this->addChild(this->orphanedAttackCache);
 }
 
 void TimelineEntry::onEnter()
@@ -52,6 +54,7 @@ void TimelineEntry::onEnter()
 	this->currentCast = nullptr;
 	this->target = nullptr;
 	this->isCasting = false;
+	this->orphanedAttackCache->removeAllChildren();
 
 	this->scheduleUpdate();
 }
@@ -92,23 +95,17 @@ PlatformerEntity* TimelineEntry::getEntity()
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)
 {
-	TimelineEntry* targetEntry = nullptr;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<TimelineEntry>([&](TimelineEntry* entry, bool* handled)
-	{
-		if (entry->getEntity() == target)
-		{
-			targetEntry = entry;
-
-			*handled = true;
-		}
-	}));
-
-	this->target = targetEntry;
+	this->target = TimelineEntry::getAssociatedTimelineEntry(target);
 }
 
 void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
+	// If this attach was created by the result of an item, it has no parent, and thus we need to keep a reference to it
+	if (attack->getParent() == nullptr)
+	{
+		this->orphanedAttackCache->addChild(attack);
+	}
+
 	this->currentCast = attack;
 }
 
@@ -172,56 +169,32 @@ void TimelineEntry::performCast()
 	this->isCasting = false;
 	this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation());
 
-	switch(this->currentCast->getAttackType())
-	{
-		default:
-		case PlatformerAttack::AttackType::Direct:
+	this->currentCast->execute(
+		this->entity,
+		this->target->entity,
+		[=](PlatformerEntity* targetEntity, int damageOrHealing)
 		{
-			int damage = -RandomHelper::random_int(this->currentCast->getBaseDamageMin(), this->currentCast->getBaseDamageMax());
+			// It's possible that the target has changed since the attack started. This (should) only occur when the user has hacked a projectile to alter its path from the intended target.
+			TimelineEntry* newTarget = TimelineEntry::getAssociatedTimelineEntry(targetEntity);
 
-			this->runAction(Sequence::create(
-				DelayTime::create(this->currentCast->getAttackDuration()),
-				CallFunc::create([=]()
+			if (newTarget != nullptr)
+			{
+				if (damageOrHealing < 0)
 				{
-					this->target->tryInterrupt();
-					this->target->entity->addHealth(damage);
-					CombatEvents::TriggerDamageDelt(CombatEvents::DamageDeltArgs(damage, this->target->entity));
-				}),
-				DelayTime::create(this->currentCast->getRecoverDuration()),
-				CallFunc::create([=]()
-				{
-					this->progress = std::fmod(this->progress, 1.0f);
+					newTarget->tryInterrupt();
+				}
 
-					CombatEvents::TriggerResumeTimeline();
-				}),
-				nullptr
-			));
-
-			break;
-		}
-		case PlatformerAttack::AttackType::Projectile:
+				newTarget->entity->addHealth(damageOrHealing);
+				CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(damageOrHealing, newTarget->entity));
+			}
+		},
+		[=]()
 		{
-			this->runAction(Sequence::create(
-				DelayTime::create(this->currentCast->getAttackDuration()),
-				CallFunc::create([=]()
-				{
-					this->currentCast->spawnProjectiles(this->entity, target->entity);
-				}),
-				DelayTime::create(this->currentCast->getRecoverDuration()),
-				CallFunc::create([=]()
-				{
-					// TODO: Despawn projectiles after recover duration? Or perhaps after a timeout
-					// call onCastComplete either when the projectiles land (hard for multiple) or after a hard timeout
-					this->progress = std::fmod(this->progress, 1.0f);
+			this->progress = std::fmod(this->progress, 1.0f);
 
-					CombatEvents::TriggerResumeTimeline();
-				}),
-				nullptr
-			));
-
-			break;
+			CombatEvents::TriggerResumeTimeline();
 		}
-	}
+	);
 }
 
 void TimelineEntry::tryInterrupt()
@@ -237,4 +210,21 @@ void TimelineEntry::tryInterrupt()
 bool TimelineEntry::isPlayerEntry()
 {
 	return (dynamic_cast<PlatformerEnemy*>(this->entity) == nullptr);
+}
+
+TimelineEntry* TimelineEntry::getAssociatedTimelineEntry(PlatformerEntity* entity)
+{
+	TimelineEntry* associatedEntry = nullptr;
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<TimelineEntry>([&](TimelineEntry* entry, bool* handled)
+	{
+		if (entry->getEntity() == entity)
+		{
+			associatedEntry = entry;
+
+			*handled = true;
+		}
+	}));
+
+	return associatedEntry;
 }

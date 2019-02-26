@@ -13,10 +13,10 @@ class SmartAnimationSequenceNode;
 class BomberTorch : public Projectile
 {
 public:
-	static BomberTorch* create(PlatformerAttack* associatedAttack);
+	static BomberTorch* create(std::function<void(PlatformerEntity* target)> onTargetHit);
 
 protected:
-	BomberTorch(PlatformerAttack* associatedAttack);
+	BomberTorch(std::function<void(PlatformerEntity* target)> onTargetHit);
 	virtual	~BomberTorch();
 
 	void onEnter() override;

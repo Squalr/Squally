@@ -10,6 +10,7 @@ public:
 	static SpeedPotion* create();
 
 	Item* clone() override;
+	PlatformerAttack* createAssociatedAttack() override;
 	LocalizedString* getString() override;
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;

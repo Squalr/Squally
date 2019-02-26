@@ -23,6 +23,8 @@ public:
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
 
+	static TimelineEntry* getAssociatedTimelineEntry(PlatformerEntity* entity);
+
 	static const float CastPercentage;
 
 private:
@@ -51,6 +53,7 @@ private:
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;
+	cocos2d::Node* orphanedAttackCache;
 
 	float speed;
 	float progress;

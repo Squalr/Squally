@@ -65,20 +65,20 @@ void TextOverlays::initializeListeners()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageDelt, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealingDelt, [=](EventCustom* args)
 	{
-		CombatEvents::DamageDeltArgs* damageArgs = static_cast<CombatEvents::DamageDeltArgs*>(args->getUserData());
+		CombatEvents::DamageOrHealingDeltArgs* damageOrHealingArgs = static_cast<CombatEvents::DamageOrHealingDeltArgs*>(args->getUserData());
 
-		if (damageArgs != nullptr && damageArgs->target != nullptr)
+		if (damageOrHealingArgs != nullptr && damageOrHealingArgs->target != nullptr)
 		{
-			ConstantString* amount = ConstantString::create(std::to_string(std::abs(damageArgs->delta)));
-			LocalizedString* deltaString = damageArgs->delta < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
+			ConstantString* amount = ConstantString::create(std::to_string(std::abs(damageOrHealingArgs->damageOrHealing)));
+			LocalizedString* deltaString = damageOrHealingArgs->damageOrHealing < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
 			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
-			deltaLabel->setTextColor(damageArgs->delta < 0 ? Color4B::RED : Color4B::GREEN);
+			deltaLabel->setTextColor(damageOrHealingArgs->damageOrHealing < 0 ? Color4B::RED : Color4B::GREEN);
 			deltaString->setStringReplacementVariables(amount);
 
-			this->runLabelOverEntity(damageArgs->target, deltaLabel);
+			this->runLabelOverEntity(damageOrHealingArgs->target, deltaLabel);
 		}
 	}));
 }
@@ -92,17 +92,19 @@ void TextOverlays::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* 
 {
 	this->addChild(label);
 
+	static const float LabelDuration = 2.0f;
+
 	label->setPosition(label->getPosition() + target->getPosition() + Vec2(0.0f, target->getEntitySize().height + 16.0f));
 	label->setPositionZ(target->getPositionZ());
 	label->enableOutline(Color4B::BLACK, 2);
 
 	label->runAction(Sequence::create(
-		FadeTo::create(2.0f, 0),
-		nullptr
-	));
-
-	label->runAction(Sequence::create(
-		MoveTo::create(2.01f, label->getPosition() + Vec2(0.0f, 128.0f)),
+		CallFunc::create([=]()
+		{
+			label->runAction(FadeTo::create(LabelDuration, 0));
+			label->runAction(MoveTo::create(LabelDuration, label->getPosition() + Vec2(0.0f, 128.0f)));
+		}),
+		DelayTime::create(LabelDuration + 0.5f),
 		CallFunc::create([=]()
 		{
 			this->removeChild(label);

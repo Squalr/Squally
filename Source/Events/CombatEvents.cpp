@@ -12,7 +12,7 @@ const std::string CombatEvents::EventRequestAIAction = "EVENT_REQUEST_AI_ACTION"
 const std::string CombatEvents::EventPauseTimeline = "EVENT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventResumeTimeline = "EVENT_RESUME_TIMELINE";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_INTERRUPT_TIMELINE";
-const std::string CombatEvents::EventDamageDelt = "EVENT_DAMAGE_DELT";
+const std::string CombatEvents::EventDamageOrHealingDelt = "EVENT_DAMAGE_OR_HEALING_DELT";
 const std::string CombatEvents::EventCastInterrupt = "EVENT_CAST_INTERRUPT";
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_FINISHED";
 const std::string CombatEvents::EventGiveRewards = "EVENT_GIVE_REWARDS";
@@ -71,10 +71,10 @@ void CombatEvents::TriggerInterruptTimeline()
 	);
 }
 
-void CombatEvents::TriggerDamageDelt(DamageDeltArgs args)
+void CombatEvents::TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventDamageDelt,
+		CombatEvents::EventDamageOrHealingDelt,
 		&args
 	);
 }

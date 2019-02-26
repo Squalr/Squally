@@ -7,12 +7,12 @@ namespace cocos2d
 	class Sprite;
 }
 
-class PlatformerAttack;
+class PlatformerEntity;
 
 class Projectile : public ProximityObject
 {
 protected:
-	Projectile(PlatformerAttack* associatedAttack, float radius, float noCollideDuration);
+	Projectile(std::function<void(PlatformerEntity* target)> onTargetHit, float radius, float noCollideDuration);
 	virtual	~Projectile();
 
 	void onEnter() override;
@@ -22,7 +22,7 @@ protected:
 private:
 	typedef ProximityObject super;
 
-	PlatformerAttack* associatedAttack;
+	std::function<void(PlatformerEntity* target)> onTargetHit;
 	bool hasCollided;
 	float noCollideDuration;
 	float elapsedDuration;

@@ -341,7 +341,7 @@ void ChoicesMenu::buildItemList()
 
 					node->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 					{
-						this->selectedEntry->stageCast(item->getAssociatedAttack());
+						this->selectedEntry->stageCast(item->createAssociatedAttack());
 
 						switch (item->getConsumableType())
 						{

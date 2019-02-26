@@ -21,9 +21,6 @@ HealthPotion* HealthPotion::create()
 
 HealthPotion::HealthPotion() : Consumable()
 {
-	this->associatedAttack = ThrowHealthPotion::create();
-
-	this->addChild(this->associatedAttack);
 }
 
 HealthPotion::~HealthPotion()
@@ -33,6 +30,11 @@ HealthPotion::~HealthPotion()
 Item* HealthPotion::clone()
 {
 	return HealthPotion::create();
+}
+
+PlatformerAttack* HealthPotion::createAssociatedAttack()
+{
+	return ThrowHealthPotion::create();
 }
 
 LocalizedString* HealthPotion::getString()
