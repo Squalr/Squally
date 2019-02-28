@@ -115,6 +115,7 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
+	this->addChild(this->inventory);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -202,7 +203,7 @@ void PlatformerEntity::addHealth(int healthDelta)
 		return;
 	}
 
-	this->health = std::max(0, healthDelta + this->health);
+	this->health = MathUtils::clamp(this->health + healthDelta, 0, this->maxHealth);
 
 	if (this->health <= 0)
 	{
@@ -334,7 +335,7 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 
 void PlatformerEntity::registerAttack(PlatformerAttack* attack)
 {
-	attack->retain();
+	this->addChild(attack);
 	this->attacks.push_back(attack);
 }
 

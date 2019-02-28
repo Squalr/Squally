@@ -15,7 +15,7 @@ public:
 		Either
 	};
 
-	virtual PlatformerAttack* getAssociatedAttack() = 0;
+	virtual PlatformerAttack* createAssociatedAttack() = 0;
 	virtual ConsumableType getConsumableType() = 0;
 
 protected:

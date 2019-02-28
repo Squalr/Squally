@@ -2,7 +2,10 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/UIResources.h"
 
@@ -62,6 +65,13 @@ PlatformerEnemy::PlatformerEnemy(
 
 PlatformerEnemy::~PlatformerEnemy()
 {
+}
+
+void PlatformerEnemy::onEnter()
+{
+	super::onEnter();
+
+	this->buildDropInventory();
 }
 
 void PlatformerEnemy::onDeveloperModeEnable()
@@ -128,5 +138,19 @@ void PlatformerEnemy::onObjectStateLoaded()
 	{
 		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;
+	}
+}
+
+void PlatformerEnemy::buildDropInventory()
+{
+	for (auto it = this->dropTable.begin(); it != this->dropTable.end(); it++)
+	{
+		if (RandomHelper::random_real(0.0f, 1.0f) <= it->second)
+		{
+			PlatformerItemDeserializer::onDeserializationRequest(&InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+			{
+				this->getInventory()->forceInsert(item);
+			}));
+		}
 	}
 }

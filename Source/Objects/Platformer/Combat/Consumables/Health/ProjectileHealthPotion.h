@@ -10,14 +10,14 @@ namespace cocos2d
 class HackablePreview;
 class SmartAnimationSequenceNode;
 
-class BomberTorch : public Projectile
+class ProjectileHealthPotion : public Projectile
 {
 public:
-	static BomberTorch* create(std::function<void(PlatformerEntity* target)> onTargetHit);
+	static ProjectileHealthPotion* create(std::function<void(PlatformerEntity* target)> onTargetHit);
 
 protected:
-	BomberTorch(std::function<void(PlatformerEntity* target)> onTargetHit);
-	virtual	~BomberTorch();
+	ProjectileHealthPotion(std::function<void(PlatformerEntity* target)> onTargetHit);
+	virtual	~ProjectileHealthPotion();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -30,6 +30,5 @@ protected:
 private:
 	typedef Projectile super;
 
-	cocos2d::Sprite* bomberTorchSprite;
-	SmartAnimationSequenceNode* fire;
+	cocos2d::Sprite* healthPotionSprite;
 };
