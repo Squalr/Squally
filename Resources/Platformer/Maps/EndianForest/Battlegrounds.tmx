@@ -283,7 +283,7 @@
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="4247.7" y="2352.61" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="4339.7" y="2422.61" width="242" height="738"/>
   <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="4682.85" y="2481.64" width="242" height="738"/>
   <object id="463" name="Forest/Foreground/Grass1" type="decor" x="4187.61" y="2487.61" width="1920" height="306"/>
  </objectgroup>

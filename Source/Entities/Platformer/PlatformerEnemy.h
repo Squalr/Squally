@@ -31,15 +31,19 @@ protected:
 
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;
 
 	std::string battleMapResource;
 	std::vector<std::string> combatEntityList;
+	std::map<std::string, float> dropTable = std::map<std::string, float>();
 
 private:
 	typedef PlatformerEntity super;
+
+	void buildDropInventory();
 
 	ClickableNode* resurrectButton;
 	ClickableNode* killButton;

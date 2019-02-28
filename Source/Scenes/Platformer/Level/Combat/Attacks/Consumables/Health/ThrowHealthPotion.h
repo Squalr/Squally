@@ -2,17 +2,18 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class TorchThrow : public PlatformerAttack
+class ThrowHealthPotion : public PlatformerAttack
 {
 public:
-	static TorchThrow* create(float attackDuration, float recoverDuration);
+	static ThrowHealthPotion* create();
 
 	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
+	std::string getAttackAnimation() override;
 
 protected:
-	TorchThrow(float attackDuration, float recoverDuration);
-	~TorchThrow() = default;
+	ThrowHealthPotion();
+	~ThrowHealthPotion();
 
 	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit) override;
 	void onCleanup() override;

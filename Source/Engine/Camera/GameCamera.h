@@ -30,6 +30,7 @@ public:
 	void setCameraPosition(cocos2d::Vec2 position, bool addTrackOffset = false);
 	cocos2d::Rect getBounds();
 	void setBounds(cocos2d::Rect bounds);
+	void shakeCamera(float magnitude, float shakesPerSecond, float duration);
 	CameraTrackingData* getCurrentTrackingData();
 	void setTarget(CameraTrackingData trackingData);
 	void pushTarget(CameraTrackingData trackingData);
@@ -70,4 +71,5 @@ private:
 	cocos2d::DrawNode* debugCameraRectangle;
 
 	static GameCamera* cameraInstance;
+	static const std::string SchedulerKeyCameraShake;
 };

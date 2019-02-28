@@ -31,7 +31,7 @@ void PlatformerItemDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		InventoryEvents::RequestItemDeserializationEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest(static_cast<InventoryEvents::RequestItemDeserializationArgs*>(args->getUserData())); }
+		[=](EventCustom* args) { PlatformerItemDeserializer::onDeserializationRequest(static_cast<InventoryEvents::RequestItemDeserializationArgs*>(args->getUserData())); }
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);

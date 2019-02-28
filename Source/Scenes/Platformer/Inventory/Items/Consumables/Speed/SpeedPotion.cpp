@@ -1,5 +1,7 @@
 #include "SpeedPotion.h"
 
+#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowHealthPotion.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Consumables/Speed/SpeedPotion.h"
@@ -30,6 +32,11 @@ Item* SpeedPotion::clone()
 	return SpeedPotion::create();
 }
 
+PlatformerAttack* SpeedPotion::createAssociatedAttack()
+{
+	return ThrowHealthPotion::create();
+}
+
 LocalizedString* SpeedPotion::getString()
 {
 	return Strings::Items_Consumables_Speed_SpeedPotion::create();
@@ -43,11 +50,6 @@ std::string SpeedPotion::getIconResource()
 std::string SpeedPotion::getSerializationKey()
 {
 	return SpeedPotion::SaveKeySpeedPotion;
-}
-
-PlatformerAttack* SpeedPotion::getAssociatedAttack()
-{
-	return nullptr;
 }
 
 Consumable::ConsumableType SpeedPotion::getConsumableType()

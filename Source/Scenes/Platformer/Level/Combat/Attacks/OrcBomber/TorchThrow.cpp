@@ -24,7 +24,7 @@ TorchThrow* TorchThrow::create(float attackDuration, float recoverDuration)
 	return instance;
 }
 
-TorchThrow::TorchThrow(float attackDuration, float recoverDuration) : super(AttackType::Projectile, UIResources::Menus_Icons_FireBalls, 3, 5, 0, attackDuration, recoverDuration)
+TorchThrow::TorchThrow(float attackDuration, float recoverDuration) : super(AttackType::Projectile, UIResources::Menus_Icons_FireBalls, -3, -5, 0, attackDuration, recoverDuration)
 {
 }
 
@@ -38,12 +38,12 @@ LocalizedString* TorchThrow::getString()
 	return Strings::Generics_Empty::create();
 }
 
-void TorchThrow::spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void TorchThrow::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit)
 {
-	super::spawnProjectiles(owner, target);
+	super::generateProjectiles(owner, target, onTargetHit);
 
 	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("WEAPON");
-	BomberTorch* torch = BomberTorch::create(this);
+	BomberTorch* torch = BomberTorch::create(onTargetHit);
 
 	weapon->replaceWithObject(torch, 2.0f);
 
@@ -53,5 +53,9 @@ void TorchThrow::spawnProjectiles(PlatformerEntity* owner, PlatformerEntity* tar
 		SpawnEvents::SpawnMethod::Below
 	));
 
-	torch->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f);
+	torch->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+}
+
+void TorchThrow::onCleanup()
+{
 }

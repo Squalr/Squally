@@ -14,7 +14,7 @@ public:
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
 	static const std::string EventInterruptTimeline;
-	static const std::string EventDamageDelt;
+	static const std::string EventDamageOrHealingDelt;
 	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
 	static const std::string EventGiveRewards;
@@ -80,12 +80,12 @@ public:
 		}
 	};
 
-	struct DamageDeltArgs
+	struct DamageOrHealingDeltArgs
 	{
-		int delta;
+		int damageOrHealing;
 		PlatformerEntity* target;
 
-		DamageDeltArgs(int delta, PlatformerEntity* target) : delta(delta), target(target)
+		DamageOrHealingDeltArgs(int damageOrHealing, PlatformerEntity* target) : damageOrHealing(damageOrHealing), target(target)
 		{
 		}
 	};
@@ -106,7 +106,7 @@ public:
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerInterruptTimeline();
-	static void TriggerDamageDelt(DamageDeltArgs args);
+	static void TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);
 	static void TriggerCombatFinished(CombatFinishedArgs args);
 	static void TriggerGiveRewards();
