@@ -1,5 +1,7 @@
 #include "PlatformerEnemy.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Inventory.h"

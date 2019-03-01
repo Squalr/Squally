@@ -23,6 +23,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_WIND_SPEED 1
 
 const std::string Wind::MapKeyWind = "wind";
+const float Wind::BaseWindSpeed = 1.0f;
 
 Wind* Wind::create(ValueMap& initProperties)
 {
@@ -88,17 +89,15 @@ void Wind::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->windForce->setContactUpdateCallback(CC_CALLBACK_2(Wind::applyWindForce, this));
+
 	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{
-		collisionData.other->setVelocity(collisionData.other->getVelocity() + this->windSpeed * 256.0f);
-
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->windForce->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{
-		collisionData.other->setVelocity(Vec2::ZERO);
-
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
@@ -195,4 +194,12 @@ void Wind::updateWind(float dt)
 
 	this->windParticles->setAngle(angle);
 	this->windParticles->setPosVar(Vec2(this->windSpeed.y == 0.0f ? 0.0f : this->windSize.width, this->windSpeed.x == 0.0f ? 0.0f : this->windSize.height));
+}
+
+void Wind::applyWindForce(std::set<CollisionObject*>* targets, float dt)
+{
+	for (auto it = targets->begin(); it != targets->end(); it++)
+	{
+		(*it)->setVelocity((*it)->getVelocity() + this->windSpeed * Wind::BaseWindSpeed * dt);
+	}
 }

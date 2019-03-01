@@ -1,6 +1,7 @@
 #include "NpcBase.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Physics/CollisionObject.h"
 
 #include "Resources/UIResources.h"
 
@@ -51,9 +52,9 @@ void NpcBase::initializeCollisionEvents()
 {
 	super::initializeCollisionEvents();
 
-	this->whenCollidesWith({ (int)PlatformerCollisionType::Player, }, [=](CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
 

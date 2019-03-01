@@ -41,7 +41,10 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	this->physicsBody = initPhysicsBody;
 	this->collisionEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
+	this->currentCollisions = std::set<CollisionObject*>();
 	this->physicsEnabled = true;
+	this->bindTarget = nullptr;
+	this->contactUpdateCallback = nullptr;
 
 	if (this->physicsBody != nullptr)
 	{
@@ -62,6 +65,8 @@ CollisionObject::~CollisionObject()
 void CollisionObject::onEnter()
 {
 	super::onEnter();
+
+	this->currentCollisions.clear();
 
 	this->scheduleUpdate();
 }
@@ -99,8 +104,15 @@ void CollisionObject::setCollisionType(CollisionType collisionType)
 void CollisionObject::update(float dt)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 worldPos = GameUtils::getWorldCoords(this);
 	Vec2 pos = this->getPosition();
+	Vec2 deltaPos = pos - worldPos;
 	Size STOP_PHYSICS_OFFSET = visibleSize / 2.0f;
+
+	if (this->contactUpdateCallback != nullptr)
+	{
+		this->contactUpdateCallback(&this->currentCollisions, dt);
+	}
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
@@ -122,26 +134,43 @@ void CollisionObject::update(float dt)
 
 		Rect mapBounds = GameCamera::getInstance()->getBounds();
 
-		if (pos.x < mapBounds.getMinX())
+		if (worldPos.x < mapBounds.getMinX())
 		{
-			this->setPositionX(mapBounds.getMinX());
+			this->setPositionX(deltaPos.x + mapBounds.getMinX());
 		}
 
-		if (pos.x > mapBounds.getMaxX())
+		if (worldPos.x > mapBounds.getMaxX())
 		{
-			this->setPositionX(mapBounds.getMaxX());
+			this->setPositionX(deltaPos.x + mapBounds.getMaxX());
 		}
 
-		if (pos.y < mapBounds.getMinY())
+		if (worldPos.y < mapBounds.getMinY())
 		{
-			this->setPositionY(mapBounds.getMinY());
+			this->setPositionY(deltaPos.y + mapBounds.getMinY());
 		}
 
-		if (pos.y > mapBounds.getMaxY())
+		if (worldPos.y > mapBounds.getMaxY())
 		{
-			this->setPositionY(mapBounds.getMaxY());
+			this->setPositionY(deltaPos.y + mapBounds.getMaxY());
 		}
 	}
+
+	if (this->bindTarget != nullptr)
+	{
+		Vec2 positionDelta = this->getPosition() - this->bindOffset;
+
+		if (positionDelta != Vec2::ZERO)
+		{
+			this->bindTarget->setPosition(this->bindTarget->getPosition() + positionDelta);
+
+			this->setPosition(this->bindOffset);
+		}
+	}
+}
+
+void CollisionObject::setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback)
+{
+	this->contactUpdateCallback = contactUpdateCallback;
 }
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
@@ -182,12 +211,23 @@ CollisionType CollisionObject::getCollisionType()
 	return this->physicsBody == nullptr ? (CollisionType)0 : (CollisionType)this->physicsBody->getCategoryBitmask();
 }
 
+std::set<CollisionObject*> CollisionObject::getCurrentCollisions()
+{
+	return this->currentCollisions;
+}
+
 void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 {
 	if (this->physicsBody != nullptr)
 	{
 		this->physicsBody->addShape(shape);
 	}
+}
+
+void CollisionObject::bindTo(cocos2d::Node* bindTarget, cocos2d::Vec2 bindOffset)
+{
+	this->bindTarget = bindTarget;
+	this->bindOffset = bindOffset;
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
@@ -243,17 +283,27 @@ bool CollisionObject::onContactBegin(PhysicsContact &contact)
 
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
-	return this->runContactEvents(contact, this->collisionEvents, CollisionResult::CollideWithPhysics);
+	CollisionData collisionData = this->constructCollisionData(contact);
+
+	this->currentCollisions.insert(collisionData.other);
+
+	return this->runContactEvents(contact, this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
 }
 
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
-	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing);
+	CollisionData collisionData = this->constructCollisionData(contact);
+
+	if (this->currentCollisions.find(collisionData.other) != this->currentCollisions.end())
+	{
+		this->currentCollisions.erase(collisionData.other);
+	}
+
+	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
-bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult)
+bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
-	CollisionData collisionData = this->constructCollisionData(contact);
 	CollisionResult result = defaultResult;
 
 	if (collisionData.other != nullptr)
