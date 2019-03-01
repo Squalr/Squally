@@ -1,23 +1,27 @@
 #include "PlatformerEntity.h"
 
+#include "cocos/base/CCDirector.h"
+#include "cocos/physics/CCPhysicsWorld.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Inventory.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
 
-const float PlatformerEntity::groundCollisionDetectorPadding = 12.0f;
-const float PlatformerEntity::groundCollisionDetectorOffset = 2.0f;
-const float PlatformerEntity::capsuleRadius = 8.0f;
-const float PlatformerEntity::groundDragFactor = .58f;
-const float PlatformerEntity::airDragFactor = 0.65f;
-const float PlatformerEntity::maxMoveSpeed = 360.0f;
-const float PlatformerEntity::maxJumpSpeed = 720.0f;
-const float PlatformerEntity::maxFallSpeed = -1280.0f;
+const float PlatformerEntity::GroundCollisionPadding = 12.0f;
+const float PlatformerEntity::GroundCollisionOffset = 2.0f;
+const float PlatformerEntity::CapsuleRadius = 8.0f;
+const float PlatformerEntity::GroundDragFactor = .58f;
+const float PlatformerEntity::AirDragFactor = 0.65f;
+const float PlatformerEntity::MaxMoveSpeed = 360.0f;
+const float PlatformerEntity::MaxJumpSpeed = 720.0f;
+const float PlatformerEntity::MaxFallSpeed = -480.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
@@ -35,29 +39,29 @@ PlatformerEntity::PlatformerEntity(
 	Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial
-	) : super(
-		initProperties,
+	) : super(initProperties)
+{
+	this->animationNode = SmartAnimationNode::create(scmlResource);
+	this->emblemResource = emblemResource;
+	this->entityCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,
 		true,
 		false
-	)
-{
-	this->animationNode = SmartAnimationNode::create(scmlResource);
-	this->emblemResource = emblemResource;
-	this->groundCollisionDetector = CollisionObject::create(
+	);
+	this->groundCollision = CollisionObject::create(
 		PhysicsBody::createBox(
-			Size(std::max((size * scale).width - PlatformerEntity::groundCollisionDetectorPadding * 2.0f, 8.0f), 8.0f),
+			Size(std::max((size * scale).width - PlatformerEntity::GroundCollisionPadding * 2.0f, 8.0f), 8.0f),
 			PHYSICSBODY_MATERIAL_DEFAULT
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		false,
 		false
 	);
+
 	this->inventory = Inventory::create();
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
-	this->groundCollisions = std::set<CollisionObject*>();
 	this->spawnCoords = this->getPosition();
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 
@@ -78,12 +82,11 @@ PlatformerEntity::PlatformerEntity(
 
 	this->setPositionY(this->getPositionY());
 
-	this->getPhysicsBody()->setPositionOffset(Vec2(0.0f, (size * scale).height / 2.0f) - Vec2(0.0f, height / 2.0f));
-	this->groundCollisionDetector->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::groundCollisionDetectorOffset) - Vec2(0.0f, height / 2.0f));
+	this->entityCollision->bindTo(this, Vec2::ZERO);
+	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, (size * scale).height / 2.0f));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
-
-	animationNode->setPosition(collisionOffset * scale - Vec2(0.0f, height / 2.0f));
 
 	this->clickHitbox->setContentSize(this->entitySize);
 	this->clickHitbox->setPosition(Vec2(0.0f, (size * scale).height / 2.0f) + Vec2((size * scale).width / 2.0f, -height / 2.0f));
@@ -111,7 +114,8 @@ PlatformerEntity::PlatformerEntity(
 	this->mana = this->maxMana;
 	this->runes = PlatformerEntity::MaxRunes;
 
-	this->addChild(this->groundCollisionDetector);
+	this->addChild(this->entityCollision);
+	this->addChild(this->groundCollision);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
@@ -124,63 +128,61 @@ PlatformerEntity::~PlatformerEntity()
 
 void PlatformerEntity::onEnter()
 {
-	CollisionObject::onEnter();
+	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
 void PlatformerEntity::initializePositions()
 {
-	CollisionObject::initializePositions();
+	super::initializePositions();
 
 	this->speechBubble->setPositionY((this->properties[PlatformerEntity::MapKeyHeight].asFloat() * this->getScaleY()) / 2.0f);
 }
 
 void PlatformerEntity::initializeListeners()
 {
-	CollisionObject::initializeListeners();
+	super::initializeListeners();
 
 	this->initializeCollisionEvents();
 }
 
 void PlatformerEntity::update(float dt)
 {
-	CollisionObject::update(dt);
+	super::update(dt);
 
 	if (this->isDead())
 	{
-		this->setVelocity(Vec2::ZERO);
+		this->entityCollision->setVelocity(Vec2::ZERO);
 		return;
 	}
 
-	Vec2 velocity = this->getVelocity();
+	Vec2 velocity = this->entityCollision->getVelocity();
 
 	velocity.x += this->movement.x * PlatformerEntity::moveAcceleration * dt;
 
 	if (this->isOnGround())
 	{
-		velocity.x *= PlatformerEntity::groundDragFactor;
+		velocity.x *= PlatformerEntity::GroundDragFactor;
 	}
 	else
 	{
-		velocity.x *= PlatformerEntity::airDragFactor;
+		velocity.x *= PlatformerEntity::AirDragFactor;
 	}
 
 	if (this->movement.y > 0.0f && this->isOnGround())
 	{
-		this->groundCollisions.clear();
-
 		velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
 
 		this->animationNode->playAnimation("Jump");
 	}
 
 	// Prevent fast speeds
-	velocity.x = MathUtils::clamp(velocity.x, -PlatformerEntity::maxMoveSpeed, PlatformerEntity::maxMoveSpeed);
-	velocity.y = MathUtils::clamp(velocity.y, PlatformerEntity::maxFallSpeed, PlatformerEntity::maxJumpSpeed);
+	velocity.x = MathUtils::clamp(velocity.x, -PlatformerEntity::MaxMoveSpeed, PlatformerEntity::MaxMoveSpeed);
+	velocity.y = MathUtils::clamp(velocity.y, PlatformerEntity::MaxFallSpeed, PlatformerEntity::MaxJumpSpeed);
 
 	// Apply velocity
-	this->setVelocity(velocity);
+	this->entityCollision->setVelocity(velocity);
 
 	// Update flip
 	if (this->animationNode != nullptr)
@@ -280,31 +282,25 @@ Inventory* PlatformerEntity::getInventory()
 
 bool PlatformerEntity::isOnGround()
 {
-	return (!this->groundCollisions.empty());
+	return (!this->groundCollision->getCurrentCollisions().empty());
 }
 
 void PlatformerEntity::initializeCollisionEvents()
 {
-	this->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionResult::CollideWithPhysics;
+		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->groundCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->groundCollisions.insert(collisionData.other);
 
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->groundCollisionDetector->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
+	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->groundCollisions.find(collisionData.other) != this->groundCollisions.end())
-		{
-			this->groundCollisions.erase(collisionData.other);
-		}
-
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
 
@@ -312,7 +308,7 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 {
 	Size newSize = size * scale;
 
-	newSize.height = std::max(0.0f, newSize.height - PlatformerEntity::capsuleRadius * 2.0f);
+	newSize.height = std::max(0.0f, newSize.height - PlatformerEntity::CapsuleRadius * 2.0f);
 
 	std::vector<Vec2> points = std::vector<Vec2>();
 
@@ -321,14 +317,14 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 	points.push_back(Vec2(newSize.width / 2.0f, -newSize.height / 2.0f));
 
 	// Bottom capsule
-	points.push_back(Vec2(0.0f, -newSize.height / 2.0f - PlatformerEntity::capsuleRadius));
+	points.push_back(Vec2(0.0f, -newSize.height / 2.0f - PlatformerEntity::CapsuleRadius));
 
 	// Left side
 	points.push_back(Vec2(-newSize.width / 2.0f, -newSize.height / 2.0f));
 	points.push_back(Vec2(-newSize.width / 2.0f, newSize.height / 2.0f));
 
 	// Top capsule
-	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::capsuleRadius));
+	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::CapsuleRadius));
 
 	return PhysicsBody::createPolygon(points.data(), points.size());
 }

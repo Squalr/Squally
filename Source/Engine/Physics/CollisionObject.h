@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 #include <string>
 
 #include "cocos/math/Vec2.h"
@@ -43,6 +44,7 @@ public:
 	};
 
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
+	void bindTo(cocos2d::Node* bindTarget, cocos2d::Vec2 bindOffset);
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	void setCollisionType(CollisionType collisionType);
@@ -50,7 +52,9 @@ public:
 	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
+	std::set<CollisionObject*> getCurrentCollisions();
 	virtual void setPhysicsEnabled(bool enabled);
+	virtual void setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback);
 
 	static const std::string MapKeyTypeCollision;
 
@@ -69,13 +73,16 @@ private:
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	bool onContactUpdate(cocos2d::PhysicsContact& contact);
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
-	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult);
+	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
-	
+	cocos2d::Node* bindTarget;
+	cocos2d::Vec2 bindOffset;
+	std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback;
+	std::set<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
 };
