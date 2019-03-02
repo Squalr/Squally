@@ -50,57 +50,66 @@
 	#define ASM_MOV_VAR_REG(variable, register) \
 		ASM(mov variable, register)
 
-	// Directly emitting bytes wasn't working, so we just produce the assembly required for the signatures
-
-	// 56 6A * BE DE C0 ED FE 5E 5E
-	#define HACKABLE_CODE_BEGIN(func_id) \
-		ASM(push EDI) \
-		ASM(push func_id) \
-		ASM(mov EDI, 0xFEEDC0DE) \
-		ASM(pop EDI) \
-		ASM(pop EDI)
-
-	// 56 6A 45 BE DE C0 AD DE 5E 5E
-	#define HACKABLE_CODE_END() \
-		ASM(push ESI) \
-		ASM(push 69) \
-		ASM(mov ESI, 0xDEADC0DE) \
-		ASM(pop ESI) \
-		ASM(pop ESI)
-
-	// 56 6A 45 BE 5E EA 5E D1 5E 5E
-	#define HACKABLES_STOP_SEARCH() \
-		ASM(push EDX) \
-		ASM(push 69) \
-		ASM(mov EDX, 0x0D15EA5E) \
-		ASM(pop EDX) \
-		ASM(pop EDX)
 #elif __GNUC__ || __clang__
-	#define ASM1(asm_literal) \
-		ASM_GCC(#asm_literal)
-	#define ASM2(asm_literal1, asm_literal2) \
-		ASM_GCC(#asm_literal1 ", " #asm_literal2)
-	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
-		ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
 
-	// Clang chokes on intel syntax when dealing with binding C variables -- just use AT&T syntax for these
-	#define ASM_MOV_REG_VAR(register, variable) \
-		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : : "m"(variable) : )
-		//__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : : "m"(variable) : )
+	#ifdef __clang__
+		#define ASM1(asm_literal) \
+			ASM_GCC(#asm_literal)
+		#define ASM2(asm_literal1, asm_literal2) \
+			ASM_GCC(#asm_literal1 ", " #asm_literal2)
+		#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
+			ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
+		
+		#define ASM_MOV_REG_VAR(register, variable) \
+			__asm__ __volatile__("push %0;"  : /* no outputs */ : "m"(variable) : ); \
+			__asm__ ("pop %" EXPAND_AND_QUOTE(register) ";");
 
-	#define ASM_MOV_VAR_REG(variable, register) \
-		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : : )
+		#define ASM_MOV_VAR_REG(variable, register) \
+			__asm__ __volatile__("push %%" EXPAND_AND_QUOTE(register) ";" : /* no outputs */ : "m"(variable) : ); \
+			__asm__ ("pop %0;"  : /* no outputs */ : "m"(variable) : );
+	#else
+		#define ASM1(asm_literal) \
+			ASM_GCC(#asm_literal)
+		#define ASM2(asm_literal1, asm_literal2) \
+			ASM_GCC(#asm_literal1 ", " #asm_literal2)
+		#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
+			ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
+
+		#define ASM_MOV_REG_VAR(register, variable) \
+			__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
+
+		#define ASM_MOV_VAR_REG(variable, register) \
+			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
+	#endif
 
 	#define ASM_GCC(asm_string) \
 		__asm__ __volatile__(".intel_syntax noprefix;" asm_string ";.att_syntax prefix"); \
-
-	#define HACKABLE_CODE_BEGIN(func_id) \
-		__asm__ __volatile__(".byte 0x57, 0x6A, " EXPAND_AND_QUOTE(func_id) ", 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F")
-	#define HACKABLE_CODE_END() \
-		__asm__ __volatile__(".byte 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E")
-	#define HACKABLES_STOP_SEARCH() \
-		__asm__ __volatile__(".byte 0x52, 0x6A, 0x45, 0xBA, 0x5E, 0xEA, 0x15, 0x0D, 0x5A, 0x5A")
+	
 #endif
+
+// 56 6A * BE DE C0 ED FE 5E 5E
+#define HACKABLE_CODE_BEGIN(func_id) \
+	ASM(push EDI) \
+	ASM(push func_id) \
+	ASM(mov edi, 0xFEEDC0DE) \
+	ASM(pop EDI) \
+	ASM(pop EDI)
+
+// 56 6A 45 BE DE C0 AD DE 5E 5E
+#define HACKABLE_CODE_END() \
+	ASM(push ESI) \
+	ASM(push 69) \
+	ASM(mov esi, 0xDEADC0DE) \
+	ASM(pop ESI) \
+	ASM(pop ESI)
+
+// 56 6A 45 BE 5E EA 5E D1 5E 5E
+#define HACKABLES_STOP_SEARCH() \
+	ASM(push EDX) \
+	ASM(push 69) \
+	ASM(mov edx, 0x0D15EA5E) \
+	ASM(pop EDX) \
+	ASM(pop EDX)
 
 #define ASM_NOP1() ASM(nop)
 #define ASM_NOP2() ASM_NOP1() ASM_NOP1()
