@@ -82,7 +82,7 @@ PlatformerEntity::PlatformerEntity(
 
 	this->setPositionY(this->getPositionY());
 
-	this->entityCollision->bindTo(this, Vec2::ZERO);
+	this->entityCollision->bindTo(this);
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, (size * scale).height / 2.0f));
 	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));

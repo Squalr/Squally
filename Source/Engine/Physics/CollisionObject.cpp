@@ -44,6 +44,8 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	this->currentCollisions = std::set<CollisionObject*>();
 	this->physicsEnabled = true;
 	this->bindTarget = nullptr;
+	this->forceBindTarget = nullptr;
+	this->forceBounceFactor = 0.0f;
 	this->contactUpdateCallback = nullptr;
 
 	if (this->physicsBody != nullptr)
@@ -157,13 +159,25 @@ void CollisionObject::update(float dt)
 
 	if (this->bindTarget != nullptr)
 	{
-		Vec2 positionDelta = this->getPosition() - this->bindOffset;
+		Vec2 positionDelta = this->getPosition();
 
 		if (positionDelta != Vec2::ZERO)
 		{
 			this->bindTarget->setPosition(this->bindTarget->getPosition() + positionDelta);
 
-			this->setPosition(this->bindOffset);
+			this->setPosition(Vec2::ZERO);
+		}
+	}
+
+	if (this->forceBindTarget != nullptr)
+	{
+		Vec2 positionDelta = this->getPosition();
+
+		if (positionDelta != Vec2::ZERO)
+		{
+			this->forceBindTarget->setPosition(this->forceBindTarget->getPosition() + positionDelta * this->forceBounceFactor);
+
+			this->setPosition(Vec2::ZERO);
 		}
 	}
 }
@@ -183,13 +197,21 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 	}
 }
 
+void CollisionObject::setGravityEnabled(bool isEnabled)
+{
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setGravityEnable(isEnabled);
+	}
+}
+
 void CollisionObject::setPosition(const cocos2d::Vec2& position)
 {
 	super::setPosition(position);
 
 	if (this->physicsBody != nullptr)
 	{
-		this->physicsBody->setPositionInterruptPhysics(position);
+		this->physicsBody->setPositionInterruptPhysics(Vec2::ZERO);
 	}
 }
 
@@ -224,10 +246,19 @@ void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 	}
 }
 
-void CollisionObject::bindTo(cocos2d::Node* bindTarget, cocos2d::Vec2 bindOffset)
+void CollisionObject::bindTo(cocos2d::Node* bindTarget)
 {
 	this->bindTarget = bindTarget;
-	this->bindOffset = bindOffset;
+}
+
+void CollisionObject::forceBindTo(cocos2d::Node* forceBindTarget, float forceBounceFactor)
+{
+	// Tragically, the `forceBounceFactor` parameter is a hack that prevents physicsbodies from overlapping. Use 0.0f to see how this is broken.
+	// I can't seem to diagnose the underlying math issues, so this hack fix is fine enough by me.
+
+	this->setGravityEnabled(false);
+	this->forceBindTarget = forceBindTarget;
+	this->forceBounceFactor = forceBounceFactor;
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
