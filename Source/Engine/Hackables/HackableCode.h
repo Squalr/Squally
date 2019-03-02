@@ -52,31 +52,20 @@
 
 #elif __GNUC__ || __clang__
 
-	#ifdef __clang__
-		#define ASM1(asm_literal) \
-			ASM_GCC(#asm_literal)
-		#define ASM2(asm_literal1, asm_literal2) \
-			ASM_GCC(#asm_literal1 ", " #asm_literal2)
-		#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
-			ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
-		
+	#define ASM1(asm_literal) \
+		ASM_GCC(#asm_literal)
+	#define ASM2(asm_literal1, asm_literal2) \
+		ASM_GCC(#asm_literal1 ", " #asm_literal2)
+	#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
+		ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
+	
+	#ifdef __x86_64__
 		#define ASM_MOV_REG_VAR(register, variable) \
-			__asm__ __volatile__("push %0;"  : /* no outputs */ : "m"(variable) : ); \
-			__asm__ ("pop %" EXPAND_AND_QUOTE(register) ";");
-		// __asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register) : "=m"(variable) : : )
+			__asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
 
 		#define ASM_MOV_VAR_REG(variable, register) \
-			__asm__ __volatile__("push %%" EXPAND_AND_QUOTE(register) ";" : /* no outputs */ : "m"(variable) : ); \
-			__asm__ ("pop %0;"  : /* no outputs */ : "m"(variable) : );
-		//__asm__ __volatile__("movq %%" EXPAND_AND_QUOTE(register) ", %0"  :  :  "m"(variable) : )
+			__asm__ __volatile__("movq %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : /* no inputs */ : )
 	#else
-		#define ASM1(asm_literal) \
-			ASM_GCC(#asm_literal)
-		#define ASM2(asm_literal1, asm_literal2) \
-			ASM_GCC(#asm_literal1 ", " #asm_literal2)
-		#define ASM3(asm_literal1, asm_literal2, asm_literal3) \
-			ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
-
 		#define ASM_MOV_REG_VAR(register, variable) \
 			__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : /* no outputs */ : "m"(variable) : )
 
