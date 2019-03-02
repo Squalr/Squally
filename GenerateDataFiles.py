@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 ####################################################################################
 # This script will generate all cpp/h files from data in the Data directory.       #
 # Run this script every time data files are updated in the Squally/Data directory. #

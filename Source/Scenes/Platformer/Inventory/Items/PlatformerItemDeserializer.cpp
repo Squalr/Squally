@@ -31,16 +31,19 @@ void PlatformerItemDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		InventoryEvents::RequestItemDeserializationEvent,
-		[=](EventCustom* args) { PlatformerItemDeserializer::onDeserializationRequest(static_cast<InventoryEvents::RequestItemDeserializationArgs*>(args->getUserData())); }
+		[=](EventCustom* args) {
+			InventoryEvents::RequestItemDeserializationArgs* data_ptr = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(args->getUserData()); 
+			PlatformerItemDeserializer::onDeserializationRequest(*data_ptr); 
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
 }
 
-void PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs* args)
+void PlatformerItemDeserializer::onDeserializationRequest(const InventoryEvents::RequestItemDeserializationArgs& args)
 {
 	Item* result = nullptr;
-	std::string serializationKey = args->itemSerializationKey;
+	std::string serializationKey = args.itemSerializationKey;
 
 	if (serializationKey == HealthPotion::SaveKeyHealthPotion)
 	{
@@ -59,8 +62,8 @@ void PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::Reque
 		result = CrystalSword::create();
 	}
 
-	if (result != nullptr && args->onItemDeserializedCallback != nullptr)
+	if (result != nullptr && args.onItemDeserializedCallback != nullptr)
 	{
-		args->onItemDeserializedCallback(result);
+		args.onItemDeserializedCallback(result);
 	}
 }

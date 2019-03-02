@@ -149,7 +149,7 @@ void PlatformerEnemy::buildDropInventory()
 	{
 		if (RandomHelper::random_real(0.0f, 1.0f) <= it->second)
 		{
-			PlatformerItemDeserializer::onDeserializationRequest(&InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+			PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
 			{
 				this->getInventory()->forceInsert(item);
 			}));
