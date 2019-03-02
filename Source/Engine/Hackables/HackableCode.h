@@ -84,12 +84,17 @@
 		ASM_GCC(#asm_literal1 ", " #asm_literal2 ", " #asm_literal3)
 
 	// Clang chokes on intel syntax when dealing with binding C variables -- just use AT&T syntax for these
-	#define ASM_MOV_REG_VAR(register, variable) \
-		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : : "m"(variable) : )
-		//__asm__ __volatile__("mov %0, %%" EXPAND_AND_QUOTE(register)  : : "m"(variable) : )
-
-	#define ASM_MOV_VAR_REG(variable, register) \
-		__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : : )
+	#if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
+		#define ASM_MOV_REG_VAR(register, variable) \
+			__asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register) : "=m"(variable) : : )
+		#define ASM_MOV_VAR_REG(variable, register) \
+			__asm__ __volatile__("movq %%" EXPAND_AND_QUOTE(register) ", %0"  :  :  "m"(variable) : )
+	#else
+		#define ASM_MOV_REG_VAR(register, variable) \
+			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : : "m"(variable) : )
+		#define ASM_MOV_VAR_REG(variable, register) \
+			__asm__ __volatile__("mov %%" EXPAND_AND_QUOTE(register) ", %0"  : "=m"(variable) : : )
+	#endif
 
 	#define ASM_GCC(asm_string) \
 		__asm__ __volatile__(".intel_syntax noprefix;" asm_string ";.att_syntax prefix"); \
