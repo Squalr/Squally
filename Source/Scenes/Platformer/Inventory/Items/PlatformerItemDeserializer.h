@@ -8,7 +8,7 @@ class PlatformerItemDeserializer : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	static void onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs* args);
+	static void onDeserializationRequest(const InventoryEvents::RequestItemDeserializationArgs& args);
 
 private:
 	typedef GlobalNode super;
