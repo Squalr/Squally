@@ -44,11 +44,13 @@ public:
 	};
 
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
-	void bindTo(cocos2d::Node* bindTarget, cocos2d::Vec2 bindOffset);
+	void bindTo(cocos2d::Node* bindTarget);
+	void forceBindTo(cocos2d::Node* bindTarget, float forceBounceFactor);
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	void setCollisionType(CollisionType collisionType);
 	CollisionType getCollisionType();
+	void setGravityEnabled(bool isEnabled);
 	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -80,7 +82,8 @@ private:
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
 	cocos2d::Node* bindTarget;
-	cocos2d::Vec2 bindOffset;
+	cocos2d::Node* forceBindTarget;
+	float forceBounceFactor;
 	std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback;
 	std::set<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;

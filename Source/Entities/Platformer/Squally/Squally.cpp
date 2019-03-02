@@ -36,9 +36,9 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
 	PlatformerCollisionType::Force,
-	Size(112.0f, 112.0f),
+	Size(128.0f, 128.0f),
 	Squally::squallyScale,
-	Vec2(0.0f, 48.0f),
+	Vec2(0.0f, 24.0f),
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial)
 {
@@ -47,16 +47,16 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 192.0f), Squally::squallyScale), (int)PlatformerCollisionType::Player, true, false);
-	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -0.0f * Squally::squallyScale));
-	this->hoverCollision->bindTo(this->entityCollision, Vec2(0.0f, 0.0f));
+	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::Player, true, false);
+	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, 0.0f));
+	this->hoverCollision->forceBindTo(this, 8.0f);
 
 	this->registerHackables();
 	this->registerAttack(BasicSlash::create(1.5f, 0.15f));
 
 	this->inventory = PlayerInventory::getInstance();
 
-	this->entityCollision->addChild(this->hoverCollision);
+	this->addChild(this->hoverCollision);
 }
 
 Squally::~Squally()
