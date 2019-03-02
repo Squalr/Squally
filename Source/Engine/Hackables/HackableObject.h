@@ -25,6 +25,8 @@ public:
 	void onHackableClick(ClickableNode* backButton);
 	virtual HackablePreview* createDefaultPreview();
 
+	void addChild(Node* child) override;
+
 	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
@@ -38,7 +40,6 @@ protected:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	void addChild(Node* child) override;
 	virtual void onHackerModeEnable();
 	virtual void onHackerModeDisable();
 	virtual void registerHackables();
