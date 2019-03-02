@@ -63,10 +63,12 @@
 		#define ASM_MOV_REG_VAR(register, variable) \
 			__asm__ __volatile__("push %0;"  : /* no outputs */ : "m"(variable) : ); \
 			__asm__ ("pop %" EXPAND_AND_QUOTE(register) ";");
+		// __asm__ __volatile__("movq %0, %%" EXPAND_AND_QUOTE(register) : "=m"(variable) : : )
 
 		#define ASM_MOV_VAR_REG(variable, register) \
 			__asm__ __volatile__("push %%" EXPAND_AND_QUOTE(register) ";" : /* no outputs */ : "m"(variable) : ); \
 			__asm__ ("pop %0;"  : /* no outputs */ : "m"(variable) : );
+		//__asm__ __volatile__("movq %%" EXPAND_AND_QUOTE(register) ", %0"  :  :  "m"(variable) : )
 	#else
 		#define ASM1(asm_literal) \
 			ASM_GCC(#asm_literal)

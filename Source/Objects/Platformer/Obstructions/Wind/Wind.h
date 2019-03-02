@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 
 #include "Engine/Hackables/HackableObject.h"
 
@@ -24,6 +25,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void applyWindForce(std::set<CollisionObject*>* targets, float dt);
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
 
@@ -40,4 +42,6 @@ private:
 	cocos2d::Size windSize;
 	cocos2d::Vec2 windSpeedDefault;
 	cocos2d::Vec2 windSpeed;
+
+	static const float BaseWindSpeed;
 };
