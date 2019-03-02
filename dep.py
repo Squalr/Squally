@@ -106,7 +106,11 @@ def install(packageString, common=True, triplet=""):
     # We ignore the error stream as vcpkg reports error on stdout and all we get is a spam of
     # complaints about some vcpkg lock file not being present (this happens when vcpkg is run
     # quickly).
-    p = Popen(["./vcpkg/vcpkg", "install" , s], stderr=subprocess.DEVNULL)
+    if _platform == "linux" or _platform == "linux2":
+        p = Popen(["./vcpkg/vcpkg", "install" , s], stderr=subprocess.DEVNULL)
+    else:
+        p = Popen(["./vcpkg/vcpkg", "install" , s])
+
     p.wait()
     if p.returncode != 0:
         print()
