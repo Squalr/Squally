@@ -1,18 +1,18 @@
 #pragma once
-#include <set>
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Hackables/HackableObject.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
+class CollisionObject;
 class ClickableNode;
 class Inventory;
 class PlatformerAttack;
 class SmartAnimationNode;
 class SpeechBubble;
 
-class PlatformerEntity : public CollisionObject
+class PlatformerEntity : public HackableObject
 {
 public:
 	int getHealth();
@@ -56,6 +56,10 @@ protected:
 	void registerAttack(PlatformerAttack* attack);
 	virtual void initializeCollisionEvents();
 
+	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
+
+	CollisionObject* entityCollision;
+	CollisionObject* groundCollision;
 	Inventory* inventory;
 	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
@@ -82,22 +86,19 @@ protected:
 
 	float moveAcceleration;
 
-	static const float groundDragFactor;
-	static const float airDragFactor;
-	static const float maxMoveSpeed;
-	static const float maxJumpSpeed;
-	static const float maxFallSpeed;
+	static const float GroundDragFactor;
+	static const float AirDragFactor;
+	static const float MaxMoveSpeed;
+	static const float MaxJumpSpeed;
+	static const float MaxFallSpeed;
 
 private:
-	typedef CollisionObject super;
-	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
+	typedef HackableObject super;
 
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
-	std::set<CollisionObject*> groundCollisions;
-	CollisionObject* groundCollisionDetector;
 
-	static const float groundCollisionDetectorPadding;
-	static const float groundCollisionDetectorOffset;
-	static const float capsuleRadius;
+	static const float GroundCollisionPadding;
+	static const float GroundCollisionOffset;
+	static const float CapsuleRadius;
 };

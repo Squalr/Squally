@@ -3,6 +3,7 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
@@ -35,9 +36,9 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
 	PlatformerCollisionType::Force,
-	Size(128.0f, 224.0f), 
+	Size(128.0f, 128.0f),
 	Squally::squallyScale,
-	Vec2(0.0f, 72.0f),
+	Vec2(0.0f, 24.0f),
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial)
 {
@@ -46,18 +47,16 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->actualMaxFallSpeed = 600.0f;
 	this->moveAcceleration = 14000.0f;
 
-	this->squallyCollisionDefaultPosition = Vec2(0.0f, 48.0f * Squally::squallyScale);
-
-	this->squallyCollision = CollisionObject::create(PhysicsBody::createCircle(72.0f * Squally::squallyScale, PHYSICSBODY_MATERIAL_DEFAULT, Vec2::ZERO), (int)PlatformerCollisionType::Player, false, false);
-	this->squallyCollision->getPhysicsBody()->setPositionOffset(this->getPhysicsBody()->getPositionOffset());
-	this->squallyCollision->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::Player, true, false);
+	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, 0.0f));
+	this->hoverCollision->forceBindTo(this, 8.0f);
 
 	this->registerHackables();
 	this->registerAttack(BasicSlash::create(1.5f, 0.15f));
 
 	this->inventory = PlayerInventory::getInstance();
 
-	this->addChild(this->squallyCollision);
+	this->addChild(this->hoverCollision);
 }
 
 Squally::~Squally()
@@ -90,7 +89,7 @@ void Squally::initializeCollisionEvents()
 {
 	super::initializeCollisionEvents();
 
-	this->squallyCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
 	{
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other);
 
@@ -100,32 +99,35 @@ void Squally::initializeCollisionEvents()
 			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(true, enemy->getUniqueIdentifier(), enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getCombatEntityList()));
 		}
 
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->squallyCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->setPosition(this->spawnCoords);
 
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->squallyCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionData collisionData)
+	this->hoverCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionResult::DoNothing;
+		return CollisionObject::CollisionResult::CollideWithPhysics;
+	});
+
+	this->hoverCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
 
 void Squally::initializePositions()
 {
 	super::initializeListeners();
-
-	this->squallyCollision->setPosition(this->squallyCollisionDefaultPosition);
 }
 
 Vec2 Squally::getButtonOffset()
@@ -139,16 +141,6 @@ void Squally::update(float dt)
 
 	this->movement.x = 0.0f;
 	this->movement.y = 0.0f;
-
-	// Handle case where physics acts on Squally's physics body (which is separate)
-	Vec2 squallyDelta = this->squallyCollision->getPosition() - this->squallyCollisionDefaultPosition;
-
-	if (squallyDelta != Vec2::ZERO)
-	{
-		this->setPosition(this->getPosition() + squallyDelta);
-
-		this->squallyCollision->setPosition(this->squallyCollisionDefaultPosition);
-	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
