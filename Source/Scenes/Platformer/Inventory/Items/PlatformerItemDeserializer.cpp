@@ -57,9 +57,17 @@ void PlatformerItemDeserializer::onDeserializationRequest(const InventoryEvents:
 	{
 		result = SpeedPotion::create();
 	}
+	else if (serializationKey == BlueAxe::SaveKeyBlueAxe)
+	{
+		result = BlueAxe::create();
+	}
 	else if (serializationKey == CrystalSword::SaveKeyCrystalSword)
 	{
 		result = CrystalSword::create();
+	}
+	else if (serializationKey == CandySword::SaveKeyCandySword)
+	{
+		result = CandySword::create();
 	}
 
 	if (result != nullptr && args.onItemDeserializedCallback != nullptr)

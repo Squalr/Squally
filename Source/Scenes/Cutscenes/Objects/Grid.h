@@ -23,11 +23,12 @@ public:
 	static const int lineColumns;
 
 private:
+	typedef SmartNode super;
 	Grid();
 	~Grid();
 
-	void initializePositions();
 	void onEnter() override;
+	void initializePositions() override;
 	void update(float dt) override;
 
 	cocos2d::Node* createLine(cocos2d::Vec2 source, cocos2d::Vec2 destination, cocos2d::Color4F color);

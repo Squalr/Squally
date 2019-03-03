@@ -96,7 +96,7 @@ Grid::~Grid()
 
 void Grid::onEnter()
 {
-	Node::onEnter();
+	super::onEnter();
 
 	CallFunc* gridFadeIn = CallFunc::create([=]()
 	{
@@ -173,6 +173,8 @@ void Grid::onEnter()
 
 void Grid::initializePositions()
 {
+	super::initializePositions();
+	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float noShadowDistance = 96.0f;

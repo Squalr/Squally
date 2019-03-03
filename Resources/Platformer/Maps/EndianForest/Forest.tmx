@@ -268,7 +268,7 @@
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="517" name="wind" type="object" x="9311.71" y="5227.65" width="2587.29" height="409.566">
+  <object id="517" name="wind" type="object" x="9311.71" y="5227.65" width="2652.48" height="409.566">
    <properties>
     <property name="speed-x" type="float" value="5"/>
     <property name="speed-y" type="float" value="0"/>
