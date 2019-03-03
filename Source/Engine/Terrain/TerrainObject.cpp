@@ -202,6 +202,9 @@ void TerrainObject::buildInnerTextures()
 
 void TerrainObject::buildInfill(Color4B infillColor)
 {
+	// Temp until the shader is fixed
+	return;
+
 	this->infillNode->removeAllChildren();
 
 	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::InfillDistance);

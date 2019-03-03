@@ -91,7 +91,14 @@
         "xutility": "cpp",
         "cinttypes": "cpp",
         "cwctype": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "__debug": "cpp",
+        "__functional_base": "cpp",
+        "__locale": "cpp",
+        "__mutex_base": "cpp",
+        "__string": "cpp",
+        "__threading_support": "cpp",
+        "__tuple": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled",
     "cmake.generator": "Ninja",

@@ -139,7 +139,7 @@
  </objectgroup>
  <layer id="17" name="cave" width="128" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt0QEJACAQwEAxi/0zmuKZwh0swdYCAAAAAAAAAAAAAPjf2e/GvPqx/636sf+t+rH/rfqx/636sf+t+rH/rfqx/636sf+t+rH/rfqx/636sf+t+rH/rfqx/636sf+t+rH/rfqx/636sf+t+rH/rfqx/636sf+t+rH/rfqx/636sf/ApAsH5Yrx
+   eJzt0QEJACAQwEAxi/0zmuKZyB0swdYCAAAAAAAAgL+d/W7Mqx/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/vfqh/736of+9+qH/sPTLr8bbN3
   </data>
  </layer>
  <objectgroup id="18" name="decor background">
@@ -197,7 +197,7 @@
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 424,8 1040,56 1624,128 1616,-144 2144,-64 2776,-48 2664,3056 344,2944 -80,888 -152,16"/>
+   <polyline points="0,0 424,8 1040,56 1624,128 1616,-144 2144,-64 2776,-48 2765.04,3038.68 344,2944 -80,888 -152,16"/>
   </object>
   <object id="510" name="solid" type="terrain" x="8123.13" y="5628">
    <properties>
@@ -209,13 +209,13 @@
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 -52,348 -32,784 -248,960 -632,928 -668,484 -584,-228 -604,-540 212,-580 860,-540 1196,-568 1432,-528 1472,136 1428,628 1388,916 1196,980 888,920 692,816 612,604 628,316 644,-28 829.333,-29.3333 982.667,-28 981.333,-176 976,-321.333 376,-316 -52,-320 -48,-124"/>
+   <polyline points="-21.3356,134.913 -52,348 -32,784 -248,960 -632,928 -668,484 -584,-228 -604,-540 209.914,-598.773 862.086,-562.945 1196,-568 1432,-528 1472,136 1428,628 1408.42,921.568 1216.42,933.601 893.798,920.214 589.773,936.638 582.156,663.161 971.356,674.203 1247.19,662.423 1280.34,447.653 1261.06,183.581 1207.99,-96.9764 1046.19,-310.104 737.542,-433.392 235.344,-247.44 -2.1093,-46.8202"/>
   </object>
-  <object id="512" name="solid" type="terrain" x="12650.8" y="3108.42">
+  <object id="512" name="solid" type="terrain" x="12298.6" y="2027.22">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 -288,4 -360,228 -340,808 -340,1388 -312,1712 -296,2068 48,2084 412,2064 672,2068 1188,2028 1372,2060 1444,1388 1360,780 1376,108 1280,-8 136,0"/>
+   <polyline points="0,0 -288,6.12511 -360,349.131 -340,1237.27 -340,2125.41 -326.434,2590.6 -342.189,3175.52 48,3191.18 412,3160.56 672,3166.68 1188,3105.43 1372,3154.43 1444,2125.41 1360,1194.4 1376,165.378 1280,-12.2502 136,0"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -262,57 +262,57 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="513" name="wind" type="object" x="9577.9" y="3328" width="2666.1" height="424">
+  <object id="513" name="wind" type="object" x="9525.94" y="3328" width="2457.86" height="424">
    <properties>
-    <property name="speed-x" type="float" value="-3"/>
+    <property name="speed-x" type="float" value="-5"/>
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="517" name="wind" type="object" x="9311.71" y="5227.65" width="2623.48" height="424">
+  <object id="517" name="wind" type="object" x="9311.71" y="5227.65" width="2587.29" height="409.566">
    <properties>
-    <property name="speed-x" type="float" value="3"/>
+    <property name="speed-x" type="float" value="5"/>
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
-  <object id="518" name="wind" type="object" x="9314" y="3348" width="356" height="2008">
+  <object id="518" name="wind" type="object" x="9314" y="3327.79" width="356" height="2097.49">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-3"/>
    </properties>
   </object>
-  <object id="519" name="wind" type="object" x="11760.8" y="3516.94" width="531.657" height="2080">
+  <object id="519" name="wind" type="object" x="11760.8" y="3516.94" width="208.004" height="2120.42">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="5"/>
    </properties>
   </object>
-  <object id="520" name="wind" type="object" x="10298" y="3910" width="700" height="1452">
+  <object id="520" name="wind" type="object" x="10298" y="3886.91" width="614.476" height="1475.09">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-2"/>
    </properties>
   </object>
-  <object id="521" name="stone-button" type="object" x="11072.7" y="4203.33" width="160" height="108">
+  <object id="521" name="stone-button" type="object" x="11229.8" y="4923.24" width="258.367" height="85.7283">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="525" name="wooden-crate" type="object" x="10644" y="5384" width="160" height="160">
+  <object id="525" name="wooden-crate" type="object" x="10912.3" y="5403.17" width="160" height="160">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="526" name="wooden-crate" type="object" x="9419.65" y="3603.11" width="160" height="160">
+  <object id="526" name="wooden-crate" type="object" x="9390.9" y="3780.4" width="160" height="160">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="527" name="wooden-crate" type="object" x="11917.9" y="3092.34" width="160" height="160">
+  <object id="527" name="wooden-crate" type="object" x="11721.4" y="3097.13" width="160" height="160">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="532" name="castle-door" type="object" x="12474.7" y="5178.4" width="441.081" height="440.261">
+  <object id="532" name="castle-door" type="object" x="12275.1" y="5192.77" width="441.081" height="440.261">
    <properties>
     <property name="event" value="door-open"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -393,7 +393,7 @@
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="12153.2" y="5357.48" width="78.7879" height="88"/>
+  <object id="523" name="squally" type="entity" x="11067.8" y="4756.16" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup id="26" name="fireflies">
   <properties>
@@ -405,7 +405,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="528" name="castle-door-front" type="object" x="12478.4" y="5181.13" width="438.016" height="442.095">
+  <object id="528" name="castle-door-front" type="object" x="12278.7" y="5195.5" width="438.016" height="442.095">
    <properties>
     <property name="event" value="door-open"/>
     <property name="flip-x" type="bool" value="true"/>
