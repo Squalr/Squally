@@ -40,16 +40,16 @@ CastleDoor* CastleDoor::create(ValueMap& initProperties)
 
 CastleDoor::CastleDoor(ValueMap& initProperties) : HackableObject(initProperties)
 {
-	DrawNode* clipStencil = DrawNode::create();
-	
-	clipStencil->drawSolidRect(Vec2(-64.0f, -224.0f), Vec2(96.0f, 192.0f), Color4F::GREEN);
 
 	this->castleBack = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_BACK);
 	this->bridge1 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_1);
 	this->bridge2 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_2);
-	this->doorClip = ClippingNode::create(clipStencil);
 	this->door = Sprite::create(ObjectResources::Doors_CastleGate_STELL_FENCE);
 	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(96.0f, 420.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+
+	DrawNode* clipStencil = DrawNode::create();
+	clipStencil->drawSolidRect(Vec2(-64.0f, -224.0f), Vec2(96.0f, 192.0f), Color4F::GREEN);
+	this->doorClip = ClippingNode::create(clipStencil);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
 	this->doorOpenEventName = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyEvent, Value("")).asString();

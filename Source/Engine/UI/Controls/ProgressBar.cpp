@@ -1,6 +1,6 @@
 #include "ProgressBar.h"
 
-#include "cocos/2d/CCClippingRectangleNode.h"
+#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Utils/MathUtils.h"
@@ -28,8 +28,10 @@ ProgressBar::ProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizo
 	this->isHorizontal = isHorizontal;
 	this->frame = frame;
 	this->progressBar = fill;
-	this->progressClip = ClippingRectangleNode::create(Rect(-Vec2(this->progressBar->getContentSize() / 2.0f), this->progressBar->getContentSize()));
-	
+
+	this->clipStencil = DrawNode::create();
+	this->progressClip = ClippingNode::create(clipStencil);
+
 	this->progressClip->setPosition(Vec2(fillOffset.x, fillOffset.y));
 	this->setProgress(0.0f);
 
@@ -38,6 +40,9 @@ ProgressBar::ProgressBar(Node* frame, Node* fill, Vec2 fillOffset, bool isHorizo
 	this->progressClip->addChild(this->progressBar);
 	this->addChild(this->frame);
 	this->addChild(this->progressClip);
+
+	// Enable to debug clipping:
+	// this->addChild(clipStencil);
 }
 
 ProgressBar::~ProgressBar()
@@ -54,16 +59,22 @@ void ProgressBar::setProgress(float newProgress)
 	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
 
 	// Update progress bar
-	Rect newClippingRegion = this->progressClip->getClippingRegion();
+	this->clipStencil->clear();
 
 	if (this->isHorizontal)
 	{
-		newClippingRegion.size = Size(this->progressBar->getContentSize().width * this->progress, this->progressBar->getContentSize().height);
+		this->clipStencil->drawSolidRect(
+			-Vec2(this->progressBar->getContentSize() / 2.0f),
+			Size(this->progressBar->getContentSize().width * this->progress, this->progressBar->getContentSize().height) - this->progressBar->getContentSize() / 2.0f,
+			Color4F::GREEN
+		);
 	}
 	else
 	{
-		newClippingRegion.size = Size(this->progressBar->getContentSize().width, this->progressBar->getContentSize().height * this->progress);
+		this->clipStencil->drawSolidRect(
+			-Vec2(this->progressBar->getContentSize() / 2.0f),
+			Size(this->progressBar->getContentSize().width, this->progressBar->getContentSize().height * this->progress) - this->progressBar->getContentSize() / 2.0f,
+			Color4F::GREEN
+		);
 	}
-	
-	this->progressClip->setClippingRegion(newClippingRegion);
 }

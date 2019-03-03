@@ -6,7 +6,6 @@
 
 namespace cocos2d
 {
-	class ClippingRectangleNode;
 	class Sprite;
 }
 

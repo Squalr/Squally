@@ -1,7 +1,6 @@
 ﻿#include "ScrollPane.h"
 
 #include "cocos/2d/CCClippingNode.h"
-#include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCNode.h"
@@ -41,7 +40,8 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->initialDragDepth = 0.0f;
 	this->background = LayerColor::create(initBackgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 	this->dragHitbox = ClickableNode::create();
-	this->contentClip = ClippingRectangleNode::create(Rect(Vec2::ZERO, this->paneSize));
+	this->clipStencil = DrawNode::create();
+	this->contentClip = ClippingNode::create(this->clipStencil);
 	this->content = Node::create();
 	this->scrollBounds = DrawNode::create();
 	this->scrollBounds->drawSolidRect(Vec2(-ScrollPane::ScrollTrackWidth / 2.0f, -(this->paneSize.height - ScrollPane::ScrollTrackStopOffset) / 2.0f), Vec2(ScrollPane::ScrollTrackWidth / 2.0f, (this->paneSize.height - ScrollPane::ScrollTrackStopOffset) / 2.0f), Color4F(0.2f, 0.2f, 0.2f, 0.25f));
@@ -52,6 +52,11 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->content->setContentSize(Size(this->paneSize.width - this->paddingSize.width * 2.0f - ScrollPane::ScrollTrackWidth / 2.0f, this->paneSize.height - this->paddingSize.height * 2.0f));
 
 	this->dragHitbox->setMouseOverSound("");
+
+	// this->clipStencil->drawSolidRect(Vec2::ZERO, this->paneSize, Color4F::GREEN);
+
+	// Enable to debug clipping:
+	super::addChild(this->clipStencil);
 
 	// Note: We override addChild to pass through to the clipping node. Do not call directly for these, call through the parent class.
 	super::addChild(this->background);

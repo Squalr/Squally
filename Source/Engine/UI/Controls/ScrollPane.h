@@ -5,7 +5,7 @@
 
 namespace cocos2d
 {
-	class ClippingRectangleNode;
+	class ClippingNode;
 	class DrawNode;
 	class EventMouse;
 	class LayerColor;
@@ -49,7 +49,8 @@ private:
 	cocos2d::Size paneSize;
 	cocos2d::LayerColor* background;
 	ClickableNode* dragHitbox;
-	cocos2d::ClippingRectangleNode* contentClip;
+	cocos2d::DrawNode* clipStencil;
+	cocos2d::ClippingNode* contentClip;
 	cocos2d::Node* content;
 	cocos2d::DrawNode* scrollBounds;
 	Slider* scrollBar;
