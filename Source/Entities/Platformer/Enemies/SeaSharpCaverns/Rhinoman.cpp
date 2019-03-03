@@ -32,8 +32,8 @@ Rhinoman::Rhinoman(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProp
 	cocos2d::Size(592.0f, 592.0f),
 	0.9f,
 	cocos2d::Vec2(0.0f, 0.0f),
-	10,
-	10)
+	35,
+	8)
 {
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //

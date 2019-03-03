@@ -27,7 +27,7 @@ const std::string WoodenCrate::MapKeyWoodenCrate = "wooden-crate";
 WoodenCrate* WoodenCrate::create(ValueMap& initProperties)
 {
 	WoodenCrate* instance = new WoodenCrate(initProperties);
-
+	
 	instance->autorelease();
 
 	return instance;

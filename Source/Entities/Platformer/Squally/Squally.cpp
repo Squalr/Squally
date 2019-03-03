@@ -75,10 +75,9 @@ void Squally::onEnter()
 		PlayerInventory::getInstance()->forceInsert(SpeedPotion::create());
 	}
 
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
-	PlayerEquipment::getInstance()->tryRemove(weapon, nullptr, nullptr);
-
+	PlayerEquipment::getInstance()->tryRemove(PlayerEquipment::getInstance()->getWeapon(), nullptr, nullptr);
 	PlayerEquipment::getInstance()->forceInsert(BlueAxe::create());
+	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
 
 	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
 	
@@ -91,7 +90,7 @@ void Squally::initializeCollisionEvents()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
 	{
-		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other);
+		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
 
 		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
 		{
