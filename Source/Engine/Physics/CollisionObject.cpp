@@ -169,7 +169,7 @@ void CollisionObject::updateBinds()
 	if (this->bindTarget != nullptr)
 	{
 		Vec2 positionDelta = this->getPosition();
-
+		
 		if (positionDelta != Vec2::ZERO)
 		{
 			this->bindTarget->setPosition(this->bindTarget->getPosition() + positionDelta);
