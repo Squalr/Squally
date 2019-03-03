@@ -15,7 +15,7 @@
 #include "Resources/UIResources.h"
 
 const float PlatformerEntity::MoveAcceleration = 14000.0f;
-const float PlatformerEntity::JumpVelocity = 2048.0f;
+const float PlatformerEntity::JumpVelocity = 4096.0f;
 const float PlatformerEntity::GroundCollisionPadding = 12.0f;
 const float PlatformerEntity::GroundCollisionOffset = 2.0f;
 const float PlatformerEntity::CapsuleRadius = 8.0f;
@@ -75,7 +75,7 @@ PlatformerEntity::PlatformerEntity(
 	this->setPositionY(this->getPositionY());
 
 	this->entityCollision->bindTo(this);
-	this->entityCollision->getPhysicsBody()->setLinearDamping(0.05f);
+	this->entityCollision->getPhysicsBody()->setLinearDamping(1.0f);
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, (size * scale).height / 2.0f));
 	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -306,7 +306,7 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 	// Top capsule
 	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::CapsuleRadius));
 
-	return PhysicsBody::createPolygon(points.data(), points.size());
+	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.5f, 0.5f));
 }
 
 void PlatformerEntity::registerAttack(PlatformerAttack* attack)

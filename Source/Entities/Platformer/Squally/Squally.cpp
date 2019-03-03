@@ -100,6 +100,8 @@ void Squally::initializeCollisionEvents()
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->setPosition(this->spawnCoords);
+		this->entityCollision->setPosition(Vec2::ZERO);
+		this->hoverCollision->setPosition(Vec2::ZERO);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
