@@ -1,3 +1,4 @@
+import argparse
 from os import listdir
 from os import path
 from os.path import isfile, dirname, join, splitext, abspath, realpath, basename, relpath
@@ -5,11 +6,27 @@ import json
 import os
 import re
 import sys
+import base64
 
 def main():
+	parser = argparse.ArgumentParser()
+	parser.add_argument("-b64", "--base64", help="A base64 encoded string containing the encoded translatr string json", default="")
+	encodedJson = ""
+
+	try:
+		args = parser.parse_args()
+
+		encodedJson = args.base64
+	except:
+		pass
+
 	while(True):
-		print("Paste in the translation json from https://translatr.varunmalhotra.xyz/")
-		inputStr = input().replace("&#39;", "'").replace("&#39;", "'").replace("&quot;", "'")
+		if (encodedJson):
+			inputStr = base64.b64decode(encodedJson)
+			encodedJson = ""
+		else:
+			print("Paste in the translation json from https://translatr.varunmalhotra.xyz/")
+			inputStr = input().replace("&#39;", "'").replace("&#39;", "'").replace("&quot;", "'")
 		
 		translations = json.loads(inputStr)
 		
@@ -23,9 +40,9 @@ def main():
 			
 			if (key['locale'] == "pt"):
 				resultDict["pt-BR"] = key['string']
-		print()
+		print
 		print(json.dumps(resultDict, indent=4, ensure_ascii=False))
-		print()
+		print
 
 if __name__ == '__main__':
     main()

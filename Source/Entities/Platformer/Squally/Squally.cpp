@@ -10,6 +10,7 @@
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h" // Debugging
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h" // Debugging
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
 #include "Scenes/Platformer/Inventory/PlayerInventory.h"
@@ -75,6 +76,10 @@ void Squally::onEnter()
 	}
 
 	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+	PlayerEquipment::getInstance()->tryRemove(weapon, nullptr, nullptr);
+
+	PlayerEquipment::getInstance()->forceInsert(BlueAxe::create());
+
 	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
 	
 	mainhand->replaceSprite(weapon->getIconResource());

@@ -30,7 +30,7 @@ protected:
 private:
 	typedef SmartNode super;
 	void onEnter() override;
-	void initializeListeners();
+	void initializeListeners() override;
 	void onMouseMove(cocos2d::EventMouse* event);
 	void onMouseDown(cocos2d::EventMouse* event);
 

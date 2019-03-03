@@ -197,6 +197,10 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 			break;
 		}
+		default:
+		{
+			break;
+		}
 	}
 }
 
