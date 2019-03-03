@@ -36,18 +36,17 @@ WoodenCrate* WoodenCrate::create(ValueMap& initProperties)
 WoodenCrate::WoodenCrate(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->box = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
-	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 256.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(128.0f, 128.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 
-	this->boxCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->boxCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->boxCollision->getPhysicsBody()->setLinearDamping(0.05f);
-	this->boxCollision->bindTo(this->box);
+	this->boxCollision->getPhysicsBody()->setLinearDamping(0.5f);
 
-	this->box->addChild(this->boxCollision);
-	this->addChild(this->box);
+	this->boxCollision->addChild(this->box);
+	this->addChild(this->boxCollision);
 }
 
 WoodenCrate::~WoodenCrate()

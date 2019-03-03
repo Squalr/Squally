@@ -48,6 +48,14 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = CameraFocus::create(properties);
 		}
+		else if (name == CastleDoor::MapKeyCastleDoor)
+		{
+			newObject = CastleDoor::create(properties);
+		}
+		else if (name == CastleDoorFront::MapKeyCastleDoorFront)
+		{
+			newObject = CastleDoorFront::create(properties);
+		}
 		else if (name == CombatSpawn::MapKeyCombatSpawn)
 		{
 			newObject = CombatSpawn::create(properties);
