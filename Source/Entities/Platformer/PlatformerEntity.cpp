@@ -14,14 +14,11 @@
 
 #include "Resources/UIResources.h"
 
+const float PlatformerEntity::MoveAcceleration = 14000.0f;
+const float PlatformerEntity::JumpVelocity = 2048.0f;
 const float PlatformerEntity::GroundCollisionPadding = 12.0f;
 const float PlatformerEntity::GroundCollisionOffset = 2.0f;
 const float PlatformerEntity::CapsuleRadius = 8.0f;
-const float PlatformerEntity::GroundDragFactor = .58f;
-const float PlatformerEntity::AirDragFactor = 0.65f;
-const float PlatformerEntity::MaxMoveSpeed = 360.0f;
-const float PlatformerEntity::MaxJumpSpeed = 720.0f;
-const float PlatformerEntity::MaxFallSpeed = -480.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
@@ -65,11 +62,6 @@ PlatformerEntity::PlatformerEntity(
 	this->spawnCoords = this->getPosition();
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 
-	this->actualJumpLaunchVelocity = 640.0f;
-	this->actualGravityAcceleration = 1000.0f;
-	this->actualMaxFallSpeed = 1280.0f;
-	this->moveAcceleration = 14000.0f;
-
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
@@ -83,6 +75,7 @@ PlatformerEntity::PlatformerEntity(
 	this->setPositionY(this->getPositionY());
 
 	this->entityCollision->bindTo(this);
+	this->entityCollision->getPhysicsBody()->setLinearDamping(0.05f);
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, (size * scale).height / 2.0f));
 	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -159,27 +152,14 @@ void PlatformerEntity::update(float dt)
 
 	Vec2 velocity = this->entityCollision->getVelocity();
 
-	velocity.x += this->movement.x * PlatformerEntity::moveAcceleration * dt;
-
-	if (this->isOnGround())
-	{
-		velocity.x *= PlatformerEntity::GroundDragFactor;
-	}
-	else
-	{
-		velocity.x *= PlatformerEntity::AirDragFactor;
-	}
+	velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
 
 	if (this->movement.y > 0.0f && this->isOnGround())
 	{
-		velocity.y = this->movement.y * this->actualJumpLaunchVelocity;
+		velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
 
 		this->animationNode->playAnimation("Jump");
 	}
-
-	// Prevent fast speeds
-	velocity.x = MathUtils::clamp(velocity.x, -PlatformerEntity::MaxMoveSpeed, PlatformerEntity::MaxMoveSpeed);
-	velocity.y = MathUtils::clamp(velocity.y, PlatformerEntity::MaxFallSpeed, PlatformerEntity::MaxJumpSpeed);
 
 	// Apply velocity
 	this->entityCollision->setVelocity(velocity);
@@ -287,18 +267,18 @@ bool PlatformerEntity::isOnGround()
 
 void PlatformerEntity::initializeCollisionEvents()
 {
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});

@@ -9,13 +9,19 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
-#include "Engine/Utils/LogUtils.h"
+const float CollisionObject::DefaultGroundDragFactor = .58f;
+const float CollisionObject::DefaultAirDragFactor = 0.65f;
+const float CollisionObject::DefaultMaxHorizontalSpeed = 360.0f;
+const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
+const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 
 CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -156,7 +162,10 @@ void CollisionObject::update(float dt)
 			this->setPositionY(deltaPos.y + mapBounds.getMaxY());
 		}
 	}
+}
 
+void CollisionObject::updateBinds()
+{
 	if (this->bindTarget != nullptr)
 	{
 		Vec2 positionDelta = this->getPosition();
@@ -178,6 +187,7 @@ void CollisionObject::update(float dt)
 			this->forceBindTarget->setPosition(this->forceBindTarget->getPosition() + positionDelta * this->forceBounceFactor);
 
 			this->setPosition(Vec2::ZERO);
+			this->getPhysicsBody()->setVelocity(Vec2::ZERO);
 		}
 	}
 }
@@ -222,6 +232,10 @@ Vec2 CollisionObject::getVelocity()
 
 void CollisionObject::setVelocity(Vec2 velocity)
 {
+	// Prevent fast speeds
+	velocity.x = MathUtils::clamp(velocity.x, -CollisionObject::DefaultMaxHorizontalSpeed, CollisionObject::DefaultMaxHorizontalSpeed);
+	velocity.y = MathUtils::clamp(velocity.y, CollisionObject::DefaultMaxFallSpeed, CollisionObject::DefaultMaxLaunchSpeed);
+
 	if (this->physicsBody != nullptr)
 	{
 		this->physicsBody->setVelocity(velocity);
@@ -377,4 +391,11 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 	}
 
 	return CollisionObject::CollisionData(dynamic_cast<CollisionObject*>(other->getBody()->getNode()));
+}
+
+void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
+{
+	super::visit(renderer, parentTransform, parentFlags);
+
+	this->updateBinds();
 }

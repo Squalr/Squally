@@ -35,19 +35,14 @@ Squally* Squally::deserialize(ValueMap& initProperties)
 Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
-	PlatformerCollisionType::Force,
+	PlatformerCollisionType::Player,
 	Size(128.0f, 128.0f),
 	Squally::squallyScale,
 	Vec2(0.0f, 24.0f),
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial)
 {
-	this->actualJumpLaunchVelocity = 1280.0f;
-	this->actualGravityAcceleration = 400.0f;
-	this->actualMaxFallSpeed = 600.0f;
-	this->moveAcceleration = 14000.0f;
-
-	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::Player, true, false);
+	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::PlayerHover, true, false);
 	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, 0.0f));
 	this->hoverCollision->forceBindTo(this, 8.0f);
 

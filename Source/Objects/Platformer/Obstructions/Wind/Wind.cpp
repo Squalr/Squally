@@ -23,7 +23,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_WIND_SPEED 1
 
 const std::string Wind::MapKeyWind = "wind";
-const float Wind::BaseWindSpeed = 1.0f;
+const float Wind::BaseWindSpeed = 1024.0f;
 
 Wind* Wind::create(ValueMap& initProperties)
 {
@@ -76,13 +76,6 @@ void Wind::onEnter()
 void Wind::initializePositions()
 {
 	super::initializePositions();
-
-	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
-	{
-		collisionData.other->setVelocity(collisionData.other->getVelocity() + this->windSpeedDefault);
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
 }
 
 void Wind::initializeListeners()
@@ -91,13 +84,10 @@ void Wind::initializeListeners()
 
 	this->windForce->setContactUpdateCallback(CC_CALLBACK_2(Wind::applyWindForce, this));
 
-	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+		// Speed is applied in the update applyWindForce
 
-	this->windForce->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
-	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
@@ -107,6 +97,14 @@ void Wind::update(float dt)
 	super::update(dt);
 
 	this->updateWind(dt);
+}
+
+void Wind::applyWindForce(std::set<CollisionObject*>* targets, float dt)
+{
+	for (auto it = targets->begin(); it != targets->end(); it++)
+	{
+		(*it)->setVelocity((*it)->getVelocity() + this->windSpeed * Wind::BaseWindSpeed * dt);
+	}
 }
 
 Vec2 Wind::getButtonOffset()
@@ -194,12 +192,4 @@ void Wind::updateWind(float dt)
 
 	this->windParticles->setAngle(angle);
 	this->windParticles->setPosVar(Vec2(this->windSpeed.y == 0.0f ? 0.0f : this->windSize.width, this->windSpeed.x == 0.0f ? 0.0f : this->windSize.height));
-}
-
-void Wind::applyWindForce(std::set<CollisionObject*>* targets, float dt)
-{
-	for (auto it = targets->begin(); it != targets->end(); it++)
-	{
-		(*it)->setVelocity((*it)->getVelocity() + this->windSpeed * Wind::BaseWindSpeed * dt);
-	}
 }

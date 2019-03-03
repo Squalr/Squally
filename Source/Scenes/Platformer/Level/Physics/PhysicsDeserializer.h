@@ -3,7 +3,7 @@
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/GlobalNode.h"
 
-class WeatherDeserializer : public GlobalNode
+class PhysicsDeserializer : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
@@ -13,7 +13,6 @@ private:
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
-	static const std::string MapKeyWeatherLayer;
-	static const std::string MapKeyWeather;
-	static WeatherDeserializer* instance;
+	static const std::string MapKeyPhysicsLayer;
+	static PhysicsDeserializer* instance;
 };
