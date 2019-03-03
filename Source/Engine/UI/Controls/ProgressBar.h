@@ -3,7 +3,8 @@
 
 namespace cocos2d
 {
-	class ClippingRectangleNode;
+	class ClippingNode;
+	class DrawNode;
 	class Sprite;
 }
 
@@ -25,7 +26,8 @@ private:
 	typedef SmartNode super;
 	cocos2d::Node* frame;
 	cocos2d::Node* progressBar;
-	cocos2d::ClippingRectangleNode* progressClip;
+	cocos2d::DrawNode* clipStencil;
+	cocos2d::ClippingNode* progressClip;
 
 	bool isHorizontal;
 	float progress;

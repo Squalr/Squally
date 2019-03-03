@@ -1,6 +1,5 @@
 #include "RuneBar.h"
 
-#include "cocos/2d/CCClippingRectangleNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
