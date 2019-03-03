@@ -26,7 +26,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(cocos2d::ValueMap& initPropertie
 	GoblinWarriorPig* instance = new GoblinWarriorPig(initProperties);
 
 	instance->autorelease();
-	
+
 	return instance;
 }
 
