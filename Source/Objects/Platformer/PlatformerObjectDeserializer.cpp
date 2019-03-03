@@ -92,6 +92,14 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = Monitor::create(properties);
 		}
+		else if (name == StoneButton::MapKeyStoneButton)
+		{
+			newObject = StoneButton::create(properties);
+		}
+		else if (name == WoodenCrate::MapKeyWoodenCrate)
+		{
+			newObject = WoodenCrate::create(properties);
+		}
 		else if (name == Wind::MapKeyWind)
 		{
 			newObject = Wind::create(properties);

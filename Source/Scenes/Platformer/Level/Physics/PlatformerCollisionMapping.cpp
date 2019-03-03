@@ -10,9 +10,11 @@
 
 using namespace cocos2d;
 
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypePhysics = "physics";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolid = "solid";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypePassThrough = "pass-through";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypePlayer = "player";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypePlayerHover = "player-hover";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeNpc = "npc";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeEnemy = "enemy";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeEnemyFlying = "enemy-flying";
@@ -20,7 +22,6 @@ const std::string PlatformerCollisionMapping::MapKeyCollisionTypeForce = "force"
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc = "solid-npc";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpcFlying = "solid-npc-flying";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeWater = "water";
-const std::string PlatformerCollisionMapping::MapKeyCollisionTypeLava = "lava";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeDamage = "damage";
 
 PlatformerCollisionMapping* PlatformerCollisionMapping::instance = nullptr;
@@ -66,7 +67,11 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 		return;
 	}
 
-	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
+	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePhysics)
+	{
+		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Physics);
+	}
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Solid);
 	}
@@ -77,6 +82,10 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePlayer)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Player);
+	}
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePlayerHover)
+	{
+		args->collisionObject->setCollisionType((int)PlatformerCollisionType::PlayerHover);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeNpc)
 	{
@@ -105,10 +114,6 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeWater)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Water);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeLava)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Lava);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeDamage)
 	{

@@ -14,6 +14,7 @@ using namespace cocos2d;
 
 WeatherDeserializer* WeatherDeserializer::instance = nullptr;
 const std::string WeatherDeserializer::MapKeyWeatherLayer = "weather";
+const std::string WeatherDeserializer::MapKeyWeather = "weather";
 
 void WeatherDeserializer::registerGlobalNode()
 {
@@ -59,13 +60,13 @@ void WeatherDeserializer::onDeserializationRequest(DeserializationEvents::LayerD
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(properties, WeatherDeserializer::MapKeyWeatherLayer))
+	if (!GameUtils::keyExists(properties, WeatherDeserializer::MapKeyWeather))
 	{
 		CCLOG("No weather property on weather layer");
 		return;
 	}
 
-	std::string weather = properties.at(WeatherDeserializer::MapKeyWeatherLayer).asString();
+	std::string weather = properties.at(WeatherDeserializer::MapKeyWeather).asString();
 
 	if (weather == Fireflies::MapKeyWeatherLayerFireflies)
 	{

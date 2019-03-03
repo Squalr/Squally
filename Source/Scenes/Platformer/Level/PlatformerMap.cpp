@@ -40,7 +40,6 @@ PlatformerMap::PlatformerMap()
 
 	this->gameHud = GameHud::create();
 
-	this->getPhysicsWorld()->setGravity(Vec2(0.0f, -768.0f));
 	this->getPhysicsWorld()->setAutoStep(false);
 
 	this->addChild(this->gameHud);

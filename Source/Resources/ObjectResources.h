@@ -405,6 +405,7 @@ namespace ObjectResources
 	extern const std::string Items_Misc_MAP;
 	extern const std::string Monitor;
 	extern const std::string MonitorSelected;
+	extern const std::string Physics_WoodenCrate_WoodenCrate;
 	extern const std::string SLEEPING_BAG_FOR_PIG;
 	extern const std::string Spells_aura01;
 	extern const std::string Spells_aura02;
@@ -419,6 +420,10 @@ namespace ObjectResources
 	extern const std::string Spells_circle03;
 	extern const std::string Spells_circle04;
 	extern const std::string Spells_circle05;
+	extern const std::string Switches_MetalButton_MetalButtonBase;
+	extern const std::string Switches_MetalButton_MetalButtonTop;
+	extern const std::string Switches_StoneButton_StoneButtonBase;
+	extern const std::string Switches_StoneButton_StoneButtonTop;
 	extern const std::string Traps_BARRICADE;
 	extern const std::string Traps_HeavenHug_CHAIN_HUG_2;
 	extern const std::string Traps_HeavenHug_CHAIN_HUG;

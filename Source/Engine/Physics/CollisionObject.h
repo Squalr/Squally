@@ -65,6 +65,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
 private:
 	typedef HackableObject super;
@@ -77,6 +78,7 @@ private:
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
 	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
+	void updateBinds();
 
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;
 	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
@@ -88,4 +90,10 @@ private:
 	std::set<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
+
+	static const float DefaultGroundDragFactor;
+	static const float DefaultAirDragFactor;
+	static const float DefaultMaxHorizontalSpeed;
+	static const float DefaultMaxLaunchSpeed;
+	static const float DefaultMaxFallSpeed;
 };

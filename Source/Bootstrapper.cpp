@@ -29,6 +29,7 @@
 #include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Level/Physics/PhysicsDeserializer.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionMapping.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Terrain/CastleTerrainDeserializer.h"
@@ -84,6 +85,7 @@ void Bootstrapper::initialize()
 
 	// Environment deserializers
 	WeatherDeserializer::registerGlobalNode();
+	PhysicsDeserializer::registerGlobalNode();
 
 	CastleTerrainDeserializer::registerGlobalNode();
 	MusicDeserializer::registerGlobalNode();

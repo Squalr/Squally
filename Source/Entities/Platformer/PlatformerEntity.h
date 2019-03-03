@@ -76,21 +76,6 @@ protected:
 
 	cocos2d::Size entitySize;
 
-	// CURRENT STATE
-	float actualJumpLaunchVelocity;
-	float actualGravityAcceleration;
-	float actualMaxFallSpeed;
-
-	float jumpLaunchVelocity;
-	float gravityAcceleration;
-
-	float moveAcceleration;
-
-	static const float GroundDragFactor;
-	static const float AirDragFactor;
-	static const float MaxMoveSpeed;
-	static const float MaxJumpSpeed;
-	static const float MaxFallSpeed;
 
 private:
 	typedef HackableObject super;
@@ -98,6 +83,8 @@ private:
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
 
+	static const float MoveAcceleration;
+	static const float JumpVelocity;
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float CapsuleRadius;
