@@ -134,6 +134,17 @@ namespace ObjectResources
 	extern const std::string Collectables_Plushies_WORMY;
 	extern const std::string Collectables_Plushies_YETY;
 	extern const std::string Collectables_Plushies_ZEBRY;
+	extern const std::string Doors_CastleGate_BRIDGE_1;
+	extern const std::string Doors_CastleGate_BRIDGE_2;
+	extern const std::string Doors_CastleGate_CASTLE_BACK;
+	extern const std::string Doors_CastleGate_CASTLE_FRONT;
+	extern const std::string Doors_CastleGate_G_STONES_1;
+	extern const std::string Doors_CastleGate_G_STONES_2;
+	extern const std::string Doors_CastleGate_G_STONES_2_1;
+	extern const std::string Doors_CastleGate_G_STONES_3;
+	extern const std::string Doors_CastleGate_G_STONES_3_1;
+	extern const std::string Doors_CastleGate_G_STONES_4;
+	extern const std::string Doors_CastleGate_STELL_FENCE;
 	extern const std::string FX_FireBall_Fire_2_00000;
 	extern const std::string FX_FireBall_Fire_2_00001;
 	extern const std::string FX_FireBall_Fire_2_00002;
