@@ -6,6 +6,7 @@
 
 #include <tinyxml2.h>
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -22,6 +23,7 @@ const std::string SerializableObject::MapKeyFlipX = "flip-x";
 const std::string SerializableObject::MapKeyFlipY = "flip-y";
 const std::string SerializableObject::MapKeyRepeatX = "repeat-x";
 const std::string SerializableObject::MapKeyRepeatY = "repeat-y";
+const std::string SerializableObject::MapKeyEvent = "event";
 const std::string SerializableObject::MapKeyRotation = "rotation";
 const std::string SerializableObject::MapKeyPoints = "points";
 const std::string SerializableObject::MapKeyPolyLinePoints = "polylinePoints";
@@ -175,9 +177,9 @@ void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2
 			else
 			{
 				// Width/Height/Rotation are not encoded if zero
-				if (*it == SerializableObject::MapKeyWidth && this->properties.at(*it).asFloat() == 0.0f ||
-					*it == SerializableObject::MapKeyHeight && this->properties.at(*it).asFloat() == 0.0f ||
-					*it == SerializableObject::MapKeyRotation && this->properties.at(*it).asFloat() == 0.0f)
+				if ((*it == SerializableObject::MapKeyWidth && this->properties.at(*it).asFloat() == 0.0f) ||
+					(*it == SerializableObject::MapKeyHeight && this->properties.at(*it).asFloat() == 0.0f) ||
+					(*it == SerializableObject::MapKeyRotation && this->properties.at(*it).asFloat() == 0.0f))
 				{
 					continue;
 				}
@@ -331,4 +333,19 @@ bool SerializableObject::isAttributeOrHiddenProperty(std::string propertyName)
 	}
 
 	return std::find(SerializableObject::AttributeKeys.begin(), SerializableObject::AttributeKeys.end(), propertyName) != SerializableObject::AttributeKeys.end();
+}
+
+void SerializableObject::listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback)
+{
+	if (eventName.empty())
+	{
+		return;
+	}
+
+	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
+	{
+		cocos2d::ValueMap* args = static_cast<cocos2d::ValueMap*>(eventCustom->getUserData());
+
+		callback(*args);
+	}));
 }

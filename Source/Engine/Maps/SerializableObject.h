@@ -40,6 +40,7 @@ public:
 	static const std::string MapKeyFlipY;
 	static const std::string MapKeyRepeatX;
 	static const std::string MapKeyRepeatY;
+	static const std::string MapKeyEvent;
 
 	static const std::string MapKeyGid;
 
@@ -57,12 +58,13 @@ public:
 protected:
 	SerializableObject(const cocos2d::ValueMap& initProperties);
 	virtual ~SerializableObject();
+	
 	void onEnter() override;
 	void initializeListeners() override;
-
 	void saveObjectState(std::string key, cocos2d::Value value);
 	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void loadObjectState();
+	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	virtual void onObjectStateLoaded();
 
 	cocos2d::ValueMap properties;

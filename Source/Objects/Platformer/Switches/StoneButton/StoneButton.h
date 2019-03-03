@@ -23,6 +23,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
@@ -30,6 +31,12 @@ protected:
 private:
 	typedef HackableObject super;
 
-	cocos2d::Sprite* box;
-	CollisionObject* boxCollision;
+	std::string stoneButtonEventName;
+	float maxDefaultButtonPosition;
+	cocos2d::Sprite* buttonBase;
+	cocos2d::Sprite* button;
+	CollisionObject* buttonCollision;
+
+	static const float ButtonPressureSpeed;
+	static const float ButtonPressureOffsetMin;
 };

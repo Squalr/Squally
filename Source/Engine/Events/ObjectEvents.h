@@ -5,6 +5,12 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
+namespace cocos2d
+{
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
+
 class SmartNode;
 
 class QueryObjectsArgsBase
@@ -49,6 +55,9 @@ class ObjectEvents
 {
 public:
 	static const std::string EventQueryObject;
+	static const std::string EventBroadCastMapObjectStatePrefix;
+
+	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 
 	template<class T>
 	static void QueryObjects(QueryObjectsArgs<T> args)
