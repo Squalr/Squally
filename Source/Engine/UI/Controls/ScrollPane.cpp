@@ -53,10 +53,10 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 
 	this->dragHitbox->setMouseOverSound("");
 
-	// this->clipStencil->drawSolidRect(Vec2::ZERO, this->paneSize, Color4F::GREEN);
+	this->clipStencil->drawSolidRect(Vec2::ZERO, this->paneSize, Color4F::GREEN);
 
 	// Enable to debug clipping:
-	super::addChild(this->clipStencil);
+	// super::addChild(this->clipStencil);
 
 	// Note: We override addChild to pass through to the clipping node. Do not call directly for these, call through the parent class.
 	super::addChild(this->background);
