@@ -16,6 +16,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/RenderUtils.h"
 
 #include "Resources/ShaderResources.h"
@@ -159,7 +160,9 @@ void TerrainObject::buildCollision()
 	// Create terrain collision as a series of triangles -- the other option is 1 giant EdgePolgyon, but this lacks internal collision
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
 	{
-		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, PhysicsMaterial(0.0f, 0.0f, 0.0f));
+		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
+		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
+		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, material);
 		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
 
 		this->collisionNode->addChild(collisionObject);
