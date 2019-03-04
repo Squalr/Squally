@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include "cocos/math/Vec2.h"
 
 class MouseEvents

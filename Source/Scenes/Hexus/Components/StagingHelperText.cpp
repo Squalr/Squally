@@ -57,8 +57,8 @@ void StagingHelperText::onEnter()
 	ComponentBase::onEnter();
 
 	this->selectionLabel->setOpacity(0);
-	this->cancelButton->setOpacity(0.0f);
-	this->helpButton->setOpacity(0.0f);
+	this->cancelButton->setOpacity(0);
+	this->helpButton->setOpacity(0);
 }
 
 void StagingHelperText::initializePositions()

@@ -87,7 +87,7 @@ void RemainingCardDisplay::initializePositions()
 
 	this->remainingCardMouseOverPanel->setPosition(
 		visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX - this->remainingCardMouseOverPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->remainingCardMouseOverPanel->getContentSize().height / 2.0 + 96.0f
+		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->remainingCardMouseOverPanel->getContentSize().height / 2.0f + 96.0f
 	);
 	this->remainingCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY + 96.0f);
 }
