@@ -54,6 +54,7 @@ public:
 	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
+	void setHorizontalDampening(float horizontalDampening);
 	std::set<CollisionObject*> getCurrentCollisions();
 	virtual void setPhysicsEnabled(bool enabled);
 	virtual void setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback);
@@ -85,15 +86,15 @@ private:
 	cocos2d::PhysicsBody* physicsBody;
 	cocos2d::Node* bindTarget;
 	cocos2d::Node* forceBindTarget;
+	float horizontalDampening;
 	float forceBounceFactor;
 	std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback;
 	std::set<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
 
-	static const float DefaultGroundDragFactor;
-	static const float DefaultAirDragFactor;
 	static const float DefaultMaxHorizontalSpeed;
 	static const float DefaultMaxLaunchSpeed;
 	static const float DefaultMaxFallSpeed;
+	static const float DefaultHorizontalDampening;
 };
