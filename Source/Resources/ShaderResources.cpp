@@ -13,6 +13,7 @@ const std::string ShaderResources::Fragment_Glow = "Shaders/Fragment/Glow.frag";
 const std::string ShaderResources::Fragment_Gray = "Shaders/Fragment/Gray.frag";
 const std::string ShaderResources::Fragment_GrayBlur = "Shaders/Fragment/GrayBlur.frag";
 const std::string ShaderResources::Fragment_Inverse = "Shaders/Fragment/Inverse.frag";
+const std::string ShaderResources::Fragment_Lighting_PointLight = "Shaders/Fragment/Lighting/PointLight.frag";
 const std::string ShaderResources::Fragment_NightVision = "Shaders/Fragment/NightVision.frag";
 const std::string ShaderResources::Fragment_PassThrough = "Shaders/Fragment/PassThrough.frag";
 const std::string ShaderResources::Fragment_Sobel = "Shaders/Fragment/Sobel.frag";
