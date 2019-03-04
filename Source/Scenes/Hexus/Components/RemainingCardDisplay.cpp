@@ -193,5 +193,9 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 			this->enemyRemainingCardSprite->runAction(FadeTo::create(0.25f, 0));
 			break;
 		}
+		default:
+		{
+			break;
+		}
 	}
 }
