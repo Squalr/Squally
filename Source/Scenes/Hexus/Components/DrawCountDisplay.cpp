@@ -34,9 +34,6 @@ DrawCountDisplay::DrawCountDisplay()
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
 	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
-	LayerColor* deckDrawCountMouseOverPanel;
-	Label* deckDrawCountCardMouseOverLabel;
-
 	this->deckDrawCountMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
 	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_DrawToolTip::create());
 
@@ -83,7 +80,7 @@ void DrawCountDisplay::initializePositions()
 
 	this->deckDrawCountMouseOverPanel->setPosition(
 		visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - this->deckDrawCountMouseOverPanel->getContentSize().width / 2.0f + panelXOffset,
-		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->deckDrawCountMouseOverPanel->getContentSize().height / 2.0 + 96.0f
+		visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY - this->deckDrawCountMouseOverPanel->getContentSize().height / 2.0f + 96.0f
 	);
 	this->deckDrawCountCardMouseOverLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX + panelXOffset, visibleSize.height / 2.0f - Config::deckOffsetY + spriteOffsetY + 96.0f);
 }

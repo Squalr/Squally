@@ -35,6 +35,10 @@ StatePass* StatePass::create()
 
 StatePass::StatePass() : StateBase(GameState::StateType::Pass)
 {
+	this->currentVisiblePlayerButton = nullptr;
+	this->playerChoiceLocked = false;
+	this->enemyChoiceLocked = false;
+
 	// Pass
 	this->passSprite = Sprite::create(HexusResources::Flags);
 	this->passButton = ClickableIconNode::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
@@ -147,7 +151,7 @@ void StatePass::initializePositions()
 	this->passButton->setIconOffset(Vec2(0.0f, playerPassCorrectionY));
 	this->passPanel->setPosition(
 		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->passPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->passPanel->getContentSize().height / 2.0
+		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->passPanel->getContentSize().height / 2.0f
 	);
 	this->passLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f);
 
@@ -163,7 +167,7 @@ void StatePass::initializePositions()
 	this->lastStandButton->setIconOffset(Vec2(0.0f, playerLastStandCorrectionY));
 	this->lastStandPanel->setPosition(
 		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->lastStandPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->lastStandPanel->getContentSize().height / 2.0
+		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->lastStandPanel->getContentSize().height / 2.0f
 	);
 	this->lastStandLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f);
 
@@ -179,7 +183,7 @@ void StatePass::initializePositions()
 	this->claimVictoryButton->setIconOffset(Vec2(0.0f, playerClaimVictoryCorrectionY));
 	this->claimVictoryPanel->setPosition(
 		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->claimVictoryPanel->getContentSize().width / 2.0f,
-		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->claimVictoryPanel->getContentSize().height / 2.0
+		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->claimVictoryPanel->getContentSize().height / 2.0f
 	);
 	this->claimVictoryLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f);
 

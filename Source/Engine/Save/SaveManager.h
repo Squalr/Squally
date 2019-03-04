@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <string>
 
 namespace cocos2d
 {

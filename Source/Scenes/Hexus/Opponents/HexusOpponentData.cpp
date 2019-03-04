@@ -76,7 +76,7 @@ CardData* HexusOpponentData::getStrongestCard()
 int HexusOpponentData::generateReward(float deckStrength)
 {
 	float strengthPercent = deckStrength * 100.0f;
-	int adjusted = (strengthPercent * strengthPercent) / 10 + 15;
+	int adjusted = int((strengthPercent * strengthPercent) / 10.0f) + 15;
 
 	return adjusted;
 }
@@ -104,7 +104,7 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 	float adjustedDeckStrength = MathUtils::clamp(deckStrength * (2.0f - deckStrength), 0.0f, 1.0f);
 
 	// Calculate the total attack this deck should have
-	int generatedDeckAttack = HexusOpponentData::getBestPossibleDeckAttack(deckSize) * adjustedDeckStrength;
+	int generatedDeckAttack = int(float(HexusOpponentData::getBestPossibleDeckAttack(deckSize)) * adjustedDeckStrength);
 
 	std::vector<int> possibleCards = std::vector<int>();
 
