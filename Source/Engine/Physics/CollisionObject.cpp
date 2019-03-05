@@ -17,11 +17,10 @@ using namespace cocos2d;
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
-const float CollisionObject::DefaultGroundDragFactor = .58f;
-const float CollisionObject::DefaultAirDragFactor = 0.65f;
 const float CollisionObject::DefaultMaxHorizontalSpeed = 360.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
+const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 
 CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -64,6 +63,7 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	}
 
 	this->setCollisionType(collisionType);
+	this->setHorizontalDampening(CollisionObject::DefaultHorizontalDampening);
 }
 
 CollisionObject::~CollisionObject()
@@ -124,6 +124,14 @@ void CollisionObject::update(float dt)
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
+		// Apply horizontal dampening
+		Vec2 velocity = this->getVelocity();
+
+		velocity.x *= this->horizontalDampening;
+
+		this->setVelocity(velocity);
+
+		// Bound physics objects to camera bounds
 		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
 		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET.width ||
@@ -242,6 +250,11 @@ void CollisionObject::setVelocity(Vec2 velocity)
 	}
 }
 
+void CollisionObject::setHorizontalDampening(float horizontalDampening)
+{
+	this->horizontalDampening =  MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);
+}
+	
 CollisionType CollisionObject::getCollisionType()
 {
 	return this->physicsBody == nullptr ? (CollisionType)0 : (CollisionType)this->physicsBody->getCategoryBitmask();

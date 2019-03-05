@@ -24,6 +24,7 @@ void CastleTerrainDeserializer::registerGlobalNode()
 
 CastleTerrainDeserializer::CastleTerrainDeserializer() : TerrainDeserializer(
 	TerrainObject::TerrainData(
+		0.5f,
 		CastleTerrainDeserializer::MapKeyTerrainTypeCastle,
 		TerrainResources::CastleTexture,
 		TerrainResources::Castle,

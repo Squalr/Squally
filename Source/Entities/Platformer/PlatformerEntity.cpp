@@ -160,7 +160,7 @@ void PlatformerEntity::update(float dt)
 
 		this->animationNode->playAnimation("Jump");
 	}
-
+	
 	// Apply velocity
 	this->entityCollision->setVelocity(velocity);
 
@@ -306,7 +306,7 @@ PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 	// Top capsule
 	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::CapsuleRadius));
 
-	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.5f, 0.5f));
+	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, 0.5f));
 }
 
 void PlatformerEntity::registerAttack(PlatformerAttack* attack)
