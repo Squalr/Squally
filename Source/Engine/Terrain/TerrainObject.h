@@ -11,6 +11,7 @@ class TerrainObject : public HackableObject
 public:
 	struct TerrainData
 	{
+		float friction;
 		std::string textureMapKeyValue;
 		std::string textureResource;
 		std::string topResource;
@@ -24,6 +25,7 @@ public:
 		cocos2d::Color4B infillColor;
 
 		TerrainData(
+			float friction,
 			std::string textureMapKeyValue,
 			std::string textureResource,
 			std::string topResource,
@@ -35,6 +37,7 @@ public:
 			std::string leftResource,
 			std::string rightResource,
 			cocos2d::Color4B infillColor) :
+			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
 			textureResource(textureResource),
 			topResource(topResource),

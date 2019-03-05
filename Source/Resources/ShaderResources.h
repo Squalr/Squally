@@ -14,6 +14,7 @@ namespace ShaderResources
 	extern const std::string Fragment_Gray;
 	extern const std::string Fragment_GrayBlur;
 	extern const std::string Fragment_Inverse;
+	extern const std::string Fragment_Lighting_PointLight;
 	extern const std::string Fragment_NightVision;
 	extern const std::string Fragment_PassThrough;
 	extern const std::string Fragment_Sobel;
