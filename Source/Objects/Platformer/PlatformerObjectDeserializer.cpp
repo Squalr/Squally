@@ -104,6 +104,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = StoneButton::create(properties);
 		}
+		else if (name == Water::MapKeyWater)
+		{
+			newObject = Water::create(properties);
+		}
 		else if (name == WoodenCrate::MapKeyWoodenCrate)
 		{
 			newObject = WoodenCrate::create(properties);

@@ -3,6 +3,7 @@
 #include "Objects/Platformer/Collectables/Animals/Animals.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoor.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoorFront.h"
+#include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/Monitor.h"
 #include "Objects/Platformer/Obstructions/Wind/Wind.h"
 #include "Objects/Platformer/Physics/WoodenCrate/WoodenCrate.h"

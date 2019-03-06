@@ -110,6 +110,22 @@ void Squally::initializeCollisionEvents()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->entityCollision->setGravityEnabled(false);
+		this->controlState = ControlState::Swimming;
+		
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->entityCollision->setGravityEnabled(true);
+		this->controlState = ControlState::Normal;
+		
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
@@ -140,29 +156,28 @@ void Squally::update(float dt)
 {
 	super::update(dt);
 
-	this->movement.x = 0.0f;
-	this->movement.y = 0.0f;
+	this->movement = Vec2::ZERO;
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
-		this->movement.x -= 1.0f;
+		this->movement.x = -1.0f;
 		this->setFlippedX(true);
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
-		this->movement.x += 1.0f;
+		this->movement.x = 1.0f;
 		this->setFlippedX(false);
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W) || Input::isPressed(EventKeyboard::KeyCode::KEY_SPACE))
 	{
-		this->movement.y += 1.0f;
+		this->movement.y = 1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		// TODO: Hover height crouch (resize/scale physicsbody)
+		this->movement.y = -1.0f;
 	}
 }
 

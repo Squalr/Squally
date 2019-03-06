@@ -21,6 +21,7 @@ const float CollisionObject::DefaultMaxHorizontalSpeed = 360.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
+const float CollisionObject::DefaultVerticalDampening = 0.98f;
 
 CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -64,6 +65,7 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 
 	this->setCollisionType(collisionType);
 	this->setHorizontalDampening(CollisionObject::DefaultHorizontalDampening);
+	this->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 }
 
 CollisionObject::~CollisionObject()
@@ -124,10 +126,13 @@ void CollisionObject::update(float dt)
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
-		// Apply horizontal dampening
+		// Apply dampening
 		Vec2 velocity = this->getVelocity();
 
 		velocity.x *= this->horizontalDampening;
+		velocity.y *= this->verticalDampening;
+		//velocity.x = (velocity.x * (this->horizontalDampening * (dt / (1.0f / 60.0f))));
+		//velocity.y = (velocity.y * (this->verticalDampening * (dt / (1.0f / 60.0f))));
 
 		this->setVelocity(velocity);
 
@@ -253,6 +258,11 @@ void CollisionObject::setVelocity(Vec2 velocity)
 void CollisionObject::setHorizontalDampening(float horizontalDampening)
 {
 	this->horizontalDampening =  MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);
+}
+
+void CollisionObject::setVerticalDampening(float verticalDampening)
+{
+	this->verticalDampening =  MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
 }
 	
 CollisionType CollisionObject::getCollisionType()
