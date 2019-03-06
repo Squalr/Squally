@@ -1,5 +1,4 @@
 #pragma once
-#include <cmath>
 
 class MathUtils
 {

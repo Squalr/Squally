@@ -26,8 +26,8 @@ Krampus* Krampus::deserialize(cocos2d::ValueMap& initProperties)
 }
 
 Krampus::Krampus(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
-	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
+	EntityResources::Enemies_BalmerPeaks_Krampus_Animations,
+	EntityResources::Enemies_BalmerPeaks_Krampus_Emblem,
 	PlatformerCollisionType::Enemy,
 	cocos2d::Size(396.0f, 412.0f),
 	0.9f,
@@ -38,7 +38,7 @@ Krampus::Krampus(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProper
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
