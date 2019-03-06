@@ -40,7 +40,7 @@
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Krampus.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Krampus.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalArcher.h"

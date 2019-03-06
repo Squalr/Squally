@@ -1,6 +1,7 @@
 #include "MathUtils.h"
 
 #include <algorithm>
+#include <cmath>
 
 bool MathUtils::fuzzyEquals(float a, float b, float var)
 { 
@@ -20,11 +21,6 @@ float MathUtils::clamp(float n, float lower, float upper)
 
 int MathUtils::clamp(int n, int lower, int upper)
 {
-	if (std::isnan(n) || !std::isfinite(n))
-	{
-		return lower;
-	}
-
 	return std::max(lower, std::min(n, upper));
 }
 

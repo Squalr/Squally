@@ -436,7 +436,7 @@
   },
   "Krampus": {
     "Type": "Enemy",
-    "Environment": "SeaSharpCaverns",
+    "Environment": "BalmerPeaks",
     "Scale": "0.9f",
     "Size": {
       "Width": "396.0f",
