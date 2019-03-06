@@ -92,9 +92,9 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = SpikeLog::create(properties);
 		}
-		else if (name == PlushieMonkey::MapKeyPlushieMonkey)
+		else if (name == Monkey::MapKeyMonkey)
 		{
-			newObject = PlushieMonkey::create(properties);
+			newObject = Monkey::create(properties);
 		}
 		else if (name == Monitor::MapKeyMonitor)
 		{
