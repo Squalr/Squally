@@ -55,6 +55,7 @@ public:
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 	void setHorizontalDampening(float horizontalDampening);
+	void setVerticalDampening(float verticalDampening);
 	std::set<CollisionObject*> getCurrentCollisions();
 	virtual void setPhysicsEnabled(bool enabled);
 	virtual void setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback);
@@ -87,6 +88,7 @@ private:
 	cocos2d::Node* bindTarget;
 	cocos2d::Node* forceBindTarget;
 	float horizontalDampening;
+	float verticalDampening;
 	float forceBounceFactor;
 	std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback;
 	std::set<CollisionObject*> currentCollisions;
@@ -97,4 +99,5 @@ private:
 	static const float DefaultMaxLaunchSpeed;
 	static const float DefaultMaxFallSpeed;
 	static const float DefaultHorizontalDampening;
+	static const float DefaultVerticalDampening;
 };

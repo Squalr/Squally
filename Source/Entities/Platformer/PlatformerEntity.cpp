@@ -15,7 +15,7 @@
 #include "Resources/UIResources.h"
 
 const float PlatformerEntity::MoveAcceleration = 14000.0f;
-const float PlatformerEntity::JumpVelocity = 4096.0f;
+const float PlatformerEntity::JumpVelocity = 7680.0f;
 const float PlatformerEntity::GroundCollisionPadding = 12.0f;
 const float PlatformerEntity::GroundCollisionOffset = 2.0f;
 const float PlatformerEntity::CapsuleRadius = 8.0f;
@@ -61,6 +61,7 @@ PlatformerEntity::PlatformerEntity(
 	this->attacks = std::vector<PlatformerAttack*>();
 	this->spawnCoords = this->getPosition();
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
+	this->controlState = ControlState::Normal;
 
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
@@ -152,13 +153,34 @@ void PlatformerEntity::update(float dt)
 
 	Vec2 velocity = this->entityCollision->getVelocity();
 
-	velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
-
-	if (this->movement.y > 0.0f && this->isOnGround())
+	switch (this->controlState)
 	{
-		velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
+		default:
+		case ControlState::Normal:
+		{
+			velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
 
-		this->animationNode->playAnimation("Jump");
+			if (this->movement.y > 0.0f && this->isOnGround())
+			{
+				velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
+
+				this->animationNode->playAnimation("Jump");
+			}
+
+			break;
+		}
+		case ControlState::Swimming:
+		{
+			velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
+			velocity.y += this->movement.y * PlatformerEntity::MoveAcceleration * dt;
+
+			if (this->movement != Vec2::ZERO)
+			{
+				this->animationNode->playAnimation("Swim");
+			}
+
+			break;
+		}
 	}
 	
 	// Apply velocity

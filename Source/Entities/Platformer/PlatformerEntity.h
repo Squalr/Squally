@@ -49,6 +49,12 @@ protected:
 		int baseSpecial);
 	virtual ~PlatformerEntity();
 
+	enum class ControlState
+	{
+		Normal,
+		Swimming,
+	};
+
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -65,6 +71,7 @@ protected:
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;
+	ControlState controlState;
 
 	bool isOnGround();
 	
@@ -75,7 +82,6 @@ protected:
 	int runes;
 
 	cocos2d::Size entitySize;
-
 
 private:
 	typedef HackableObject super;

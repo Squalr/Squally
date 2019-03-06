@@ -51,8 +51,11 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 {
 	if (this->entity->hasAnimation(animationName))
 	{
-		this->entity->setCurrentTime(0.0f);
-		this->entity->setCurrentAnimation(animationName, blendTime);
+		// if (this->entity->currentAnimationName() != animationName)
+		{
+			this->entity->setCurrentTime(0.0f);
+			this->entity->setCurrentAnimation(animationName, blendTime);
+		}
 
 		switch (animationPlayMode)
 		{
