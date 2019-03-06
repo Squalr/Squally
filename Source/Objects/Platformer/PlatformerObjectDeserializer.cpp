@@ -117,7 +117,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 			CCLOG("Missing properties on platformer object");
 			return;
 		}
-
+		
 		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }
