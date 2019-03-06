@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from os import listdir
 from os import path
 from os.path import isfile, dirname, join, splitext, abspath, realpath, basename, relpath
