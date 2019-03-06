@@ -1,28 +1,28 @@
 #pragma once
 
-#include "Objects/Platformer/Plushies/Plushie.h"
+#include "Objects/Platformer/Collectables/Animals/Animal.h"
 #include "Engine/Localization/ConstantString.h"
 
 class ConstantString;
 class LocalizedLabel;
 
-class PlushieMonkey : public Plushie
+class Monkey : public Animal
 {
 public:
-	static PlushieMonkey* create(cocos2d::ValueMap& initProperties);
+	static Monkey* create(cocos2d::ValueMap& initProperties);
 
-	static const std::string MapKeyPlushieMonkey;
+	static const std::string MapKeyMonkey;
 
 protected:
-	PlushieMonkey(cocos2d::ValueMap& initProperties);
-	virtual ~PlushieMonkey();
+	Monkey(cocos2d::ValueMap& initProperties);
+	virtual ~Monkey();
 
 	void update(float) override;
 	void onEnter() override;
 	void registerHackables() override;
 
 private:
-	typedef HackableObject super;
+	typedef Animal super;
 	HackableData* puzzleData;
 
 	void decreaseLockTimer();
