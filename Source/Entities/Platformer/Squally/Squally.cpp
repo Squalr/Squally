@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const float Squally::squallyScale = 0.85f;
+const float Squally::squallyScale = 0.92f;
 const std::string Squally::MapKeySqually = "squally";
 const int Squally::SquallyBaseHealth = 25;
 const int Squally::SquallyBaseSpecial = 15;
@@ -107,22 +107,6 @@ void Squally::initializeCollisionEvents()
 		this->entityCollision->setPosition(Vec2::ZERO);
 		this->hoverCollision->setPosition(Vec2::ZERO);
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		this->entityCollision->setGravityEnabled(false);
-		this->controlState = ControlState::Swimming;
-		
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		this->entityCollision->setGravityEnabled(true);
-		this->controlState = ControlState::Normal;
-		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
