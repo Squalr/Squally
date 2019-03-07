@@ -61,6 +61,11 @@ public:
 	virtual void setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback);
 
 	static const std::string MapKeyTypeCollision;
+	static const float DefaultMaxHorizontalSpeed;
+	static const float DefaultMaxLaunchSpeed;
+	static const float DefaultMaxFallSpeed;
+	static const float DefaultHorizontalDampening;
+	static const float DefaultVerticalDampening;
 
 protected:
 	void onEnter() override;
@@ -94,10 +99,4 @@ private:
 	std::set<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
-
-	static const float DefaultMaxHorizontalSpeed;
-	static const float DefaultMaxLaunchSpeed;
-	static const float DefaultMaxFallSpeed;
-	static const float DefaultHorizontalDampening;
-	static const float DefaultVerticalDampening;
 };

@@ -14,8 +14,11 @@
 
 #include "Resources/UIResources.h"
 
+using namespace cocos2d;
+
 const float PlatformerEntity::MoveAcceleration = 14000.0f;
-const float PlatformerEntity::SwimVerticalAcceleration = 6000.0f;
+const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
+const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
 const float PlatformerEntity::GroundCollisionPadding = 12.0f;
 const float PlatformerEntity::GroundCollisionOffset = 2.0f;
@@ -24,8 +27,6 @@ const float PlatformerEntity::CapsuleRadius = 8.0f;
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
 const int PlatformerEntity::MaxRunes = 4;
-
-using namespace cocos2d;
 
 PlatformerEntity::PlatformerEntity(
 	ValueMap& initProperties, 
@@ -172,8 +173,20 @@ void PlatformerEntity::update(float dt)
 		}
 		case ControlState::Swimming:
 		{
-			velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
-			velocity.y += this->movement.y * PlatformerEntity::SwimVerticalAcceleration * dt;
+			const float minSpeed = PlatformerEntity::SwimAcceleration.y;
+
+			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
+			if (velocity.y < minSpeed && this->movement.y > 0.0f)
+			{
+				velocity.y = minSpeed;
+			}
+			else if (velocity.y > -minSpeed && this->movement.y < 0.0f)
+			{
+				velocity.y = -minSpeed;
+			}
+
+			velocity.x += this->movement.x * PlatformerEntity::SwimAcceleration.x * dt;
+			velocity.y += this->movement.y * PlatformerEntity::SwimAcceleration.y * dt;
 
 			if (this->movement != Vec2::ZERO)
 			{
@@ -295,8 +308,37 @@ void PlatformerEntity::initializeCollisionEvents()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->entityCollision->setGravityEnabled(false);
+		this->controlState = ControlState::Swimming;
+		this->entityCollision->setVerticalDampening(PlatformerEntity::SwimVerticalDrag);
+
+		// Clear current animation
+		this->animationNode->playAnimation("Idle");
+		
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->entityCollision->setGravityEnabled(true);
+		this->controlState = ControlState::Normal;
+		this->entityCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
+
+		// Animate jumping out of water
+		if (this->entityCollision->getVelocity().y > 0.0f)
+		{
+			this->animationNode->playAnimation("Jump");
+		}
+		
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
+		// Clear current animation
+		this->animationNode->playAnimation("Idle");
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

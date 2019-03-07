@@ -21,7 +21,7 @@ const float CollisionObject::DefaultMaxHorizontalSpeed = 360.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
-const float CollisionObject::DefaultVerticalDampening = 0.98f;
+const float CollisionObject::DefaultVerticalDampening = 1.0f;
 
 CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
