@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="33" nextobjectid="550">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="33" nextobjectid="566">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -376,6 +376,82 @@
     <property name="speed-y" type="float" value="5"/>
    </properties>
   </object>
+  <object id="551" name="floating-rock" type="object" x="15379.1" y="4839.26" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="552" name="floating-bomb" type="object" x="15650.8" y="5277.06" width="208.004" height="200.71">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="553" name="floating-crate" type="object" x="15650.8" y="4842.28" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="554" name="floating-asteroid" type="object" x="16122.5" y="4818.12" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.69999999999999996"/>
+   </properties>
+  </object>
+  <object id="555" name="floating-rock" type="object" x="16345.3" y="4818.12" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="556" name="floating-bomb" type="object" x="16164.1" y="4893.61" width="208.004" height="200.71">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="557" name="floating-bomb" type="object" x="16532.5" y="5328.39" width="208.004" height="200.71">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="558" name="floating-bomb" type="object" x="16858.6" y="4905.68" width="208.004" height="200.71">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="559" name="floating-bomb" type="object" x="17220.9" y="5364.62" width="208.004" height="200.71">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="560" name="floating-bomb" type="object" x="17540.9" y="5364.62" width="208.004" height="200.71">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="561" name="floating-rock" type="object" x="17140.7" y="4837.22" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.40000000000000002"/>
+   </properties>
+  </object>
+  <object id="562" name="floating-asteroid" type="object" x="16855.5" y="4837.22" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.80000000000000004"/>
+   </properties>
+  </object>
+  <object id="563" name="floating-crate" type="object" x="15890.7" y="4833.46" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="564" name="floating-crate" type="object" x="16566.4" y="4829.71" width="208.004" height="798.536">
+   <properties>
+    <property name="density" type="float" value="0.20000000000000001"/>
+   </properties>
+  </object>
+  <object id="565" name="water" type="object" x="14336" y="2475.79" width="5104" height="3384.42">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -459,7 +535,7 @@
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="13471.8" y="5326.88" width="78.7879" height="88"/>
+  <object id="523" name="squally" type="entity" x="14838.2" y="5244.3" width="78.7879" height="88"/>
  </objectgroup>
  <layer id="26" name="water" width="196" height="48">
   <data encoding="base64" compression="zlib">
@@ -475,6 +551,12 @@
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 -88.7627,6.21782 -110.953,354.415 -104.789,1256 -104.789,2157.58 -100.608,2629.81 -105.464,3223.58 14.7938,3239.48 126.98,3208.4 207.113,3214.61 295.146,3210.43 422.856,3202.17 445.047,2157.58 419.157,1212.48 424.089,167.881 394.501,-12.4356 41.9157,0"/>
+  </object>
+  <object id="550" name="solid" type="terrain" x="15723.8" y="1604.38">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -397.256,6.21782 -496.568,354.415 -468.981,1256 -468.981,2157.58 -450.269,2629.81 -472.002,3223.58 66.2094,3239.48 568.297,3208.4 926.93,3214.61 1320.92,3210.43 1892.48,3202.17 1991.8,2157.58 1875.93,1212.48 1898,167.881 1765.58,-12.4356 187.593,0"/>
   </object>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
