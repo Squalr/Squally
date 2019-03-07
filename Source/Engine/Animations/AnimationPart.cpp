@@ -68,7 +68,10 @@ void AnimationPart::replaceWithObject(cocos2d::Node* replacement, float disappea
 
 void AnimationPart::replaceSprite(std::string spriteResource)
 {
-	this->spriterAnimationPart->getImage()->setPath(spriteResource);
+	if (this->spriterAnimationPart->getImage() != nullptr)
+	{
+		this->spriterAnimationPart->getImage()->setPath(spriteResource);
+	}
 }
 
 void AnimationPart::setRotation(float rotation)

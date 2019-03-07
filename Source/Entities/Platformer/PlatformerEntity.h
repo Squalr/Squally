@@ -90,6 +90,7 @@ private:
 	std::vector<PlatformerAttack*> attacks;
 
 	static const float MoveAcceleration;
+	static const float SwimVerticalAcceleration;
 	static const float JumpVelocity;
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;

@@ -29,6 +29,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->animationNode = AnimationNode::create(animationResource);
 	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
+	this->initialized = false;
 
 	this->addChild(this->animationNode);
 }
@@ -51,8 +52,9 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 {
 	if (this->entity->hasAnimation(animationName))
 	{
-		// if (this->entity->currentAnimationName() != animationName)
+		if (!this->initialized || this->entity->currentAnimationName() != animationName)
 		{
+			this->initialized = true;
 			this->entity->setCurrentTime(0.0f);
 			this->entity->setCurrentAnimation(animationName, blendTime);
 		}
