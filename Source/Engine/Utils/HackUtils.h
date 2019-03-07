@@ -8,7 +8,7 @@ class LocalizedString;
 class HackUtils
 {
 public:
-	enum DataType
+	enum class DataType
 	{
 		Byte,
 		SByte,
@@ -99,11 +99,12 @@ public:
 
 	static void setAllMemoryPermissions(void* address, int length);
 	static void writeMemory(void* to, void* from, int length);
+	static std::string preProcessAssembly(std::string assembly);
 	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);
 	static void* resolveVTableAddress(void* address);
 	static std::string disassemble(void* address, int length);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
-	static std::string toHex(int value);
+	static std::string toHex(int value, bool prefix = false);
 	static std::string toBinary4(int value);
 	static void* hexToPointer(std::string hexString, void* fallback = nullptr);
 	static DataType stdTypeToDataType(const std::type_info& dataTypeInfo);

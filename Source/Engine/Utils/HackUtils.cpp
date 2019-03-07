@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <bitset>
 #include <iomanip>
+#include <regex>
 #include <sstream>
 
 #include <asmjit/asmjit.h>
@@ -106,6 +107,32 @@ void HackUtils::writeMemory(void* to, void* from, int length)
 	}
 }
 
+std::string HackUtils::preProcessAssembly(std::string assembly)
+{
+	std::string processedAssembly;
+
+	auto callback = [&](std::string const& match) {
+        std::istringstream iss(match);
+        float parsedFloat;
+
+        if(iss >> parsedFloat)
+        {
+			int floatAsRawIntBytes = *(int*)(&parsedFloat);
+            processedAssembly += HackUtils::toHex(floatAsRawIntBytes, true);
+        }
+        else
+        {
+            processedAssembly += match;
+        }
+    };
+
+    std::regex reg("[-]?[0-9]*\\.[0-9]+");
+    std::sregex_token_iterator begin(assembly.begin(), assembly.end(), reg, {-1, 0}), end;
+    std::for_each(begin, end, callback);
+
+    return processedAssembly;
+}
+
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
 	CompileResult compileResult;
@@ -121,6 +148,7 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 	AsmParser p(&a);
 
 	// Parse the assembly.
+	assembly = preProcessAssembly(assembly);
 	Error err = p.parse(assembly.c_str());
 
 	// Error handling (use asmjit::ErrorHandler for more robust error handling).
@@ -523,7 +551,7 @@ std::string HackUtils::hexAddressOf(void* address, bool zeroPad, bool prefix)
 	return hexAddress;
 }
 
-std::string HackUtils::toHex(int value)
+std::string HackUtils::toHex(int value, bool prefix)
 {
 	std::stringstream stream;
 
@@ -534,7 +562,7 @@ std::string HackUtils::toHex(int value)
 	// Convert to upper
 	std::transform(hexString.begin(), hexString.end(), hexString.begin(), ::toupper);
 
-	return hexString;
+	return prefix ? ("0x" + hexString) : hexString;
 }
 
 std::string HackUtils::toBinary4(int value)
