@@ -64,6 +64,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = DartGun::create(properties);
 		}
+		else if (name == FloatingRock::MapKeyFloatingRock)
+		{
+			newObject = FloatingRock::create(properties);
+		}
 		else if (name == HeavenHug::MapKeyHeavenHug)
 		{
 			newObject = HeavenHug::create(properties);

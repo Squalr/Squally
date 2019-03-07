@@ -6,6 +6,7 @@
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/Monitor.h"
 #include "Objects/Platformer/Obstructions/Wind/Wind.h"
+#include "Objects/Platformer/Physics/FloatingRock/FloatingRock.h"
 #include "Objects/Platformer/Physics/WoodenCrate/WoodenCrate.h"
 #include "Objects/Platformer/Spawns/CombatSpawn.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"

@@ -43,8 +43,6 @@ WoodenCrate::WoodenCrate(ValueMap& initProperties) : HackableObject(initProperti
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->boxCollision->getPhysicsBody()->setLinearDamping(0.5f);
-
 	this->boxCollision->addChild(this->box);
 	this->addChild(this->boxCollision);
 }
