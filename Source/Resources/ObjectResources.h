@@ -405,6 +405,9 @@ namespace ObjectResources
 	extern const std::string Items_Misc_MAP;
 	extern const std::string Monitor;
 	extern const std::string MonitorSelected;
+	extern const std::string Physics_Asteroid_Asteroid;
+	extern const std::string Physics_RollingStone_RollingStone;
+	extern const std::string Physics_WoodenBeam_WoodenBeam;
 	extern const std::string Physics_WoodenCrate_WoodenCrate;
 	extern const std::string SLEEPING_BAG_FOR_PIG;
 	extern const std::string Spells_aura01;
@@ -425,6 +428,15 @@ namespace ObjectResources
 	extern const std::string Switches_StoneButton_StoneButtonBase;
 	extern const std::string Switches_StoneButton_StoneButtonTop;
 	extern const std::string Traps_BARRICADE;
+	extern const std::string Traps_FloatingBomb_FloatingBomb;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0000;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0001;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0002;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0003;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0004;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0005;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0006;
+	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0007;
 	extern const std::string Traps_HeavenHug_CHAIN_HUG_2;
 	extern const std::string Traps_HeavenHug_CHAIN_HUG;
 	extern const std::string Traps_HeavenHug_HEAVEN_HUG;
@@ -464,6 +476,7 @@ namespace ObjectResources
 	extern const std::string Traps_PendulumBlade_Chain;
 	extern const std::string Traps_PendulumBlade_Neck;
 	extern const std::string Traps_PendulumBlade_PreviewBlade;
+	extern const std::string Traps_SpikeBall_SpikeBall;
 	extern const std::string Traps_SpikeLogAvoidable_SpikedLog_01;
 	extern const std::string Traps_SpikeLogAvoidable_SpikedLog_02;
 	extern const std::string Traps_SpikeLogAvoidable_SpikedLog_03;
