@@ -15,6 +15,7 @@
 #include "Resources/UIResources.h"
 
 const float PlatformerEntity::MoveAcceleration = 14000.0f;
+const float PlatformerEntity::SwimVerticalAcceleration = 6000.0f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
 const float PlatformerEntity::GroundCollisionPadding = 12.0f;
 const float PlatformerEntity::GroundCollisionOffset = 2.0f;
@@ -172,7 +173,7 @@ void PlatformerEntity::update(float dt)
 		case ControlState::Swimming:
 		{
 			velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
-			velocity.y += this->movement.y * PlatformerEntity::MoveAcceleration * dt;
+			velocity.y += this->movement.y * PlatformerEntity::SwimVerticalAcceleration * dt;
 
 			if (this->movement != Vec2::ZERO)
 			{

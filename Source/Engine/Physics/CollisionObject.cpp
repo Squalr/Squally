@@ -131,8 +131,6 @@ void CollisionObject::update(float dt)
 
 		velocity.x *= this->horizontalDampening;
 		velocity.y *= this->verticalDampening;
-		//velocity.x = (velocity.x * (this->horizontalDampening * (dt / (1.0f / 60.0f))));
-		//velocity.y = (velocity.y * (this->verticalDampening * (dt / (1.0f / 60.0f))));
 
 		this->setVelocity(velocity);
 
