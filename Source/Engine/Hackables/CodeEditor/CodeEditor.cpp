@@ -75,6 +75,14 @@
 #include "Strings/Hacking/CodeEditor/RegisterSt5.h"
 #include "Strings/Hacking/CodeEditor/RegisterSt6.h"
 #include "Strings/Hacking/CodeEditor/RegisterSt7.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm0.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm1.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm2.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm3.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm4.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm5.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm6.h"
+#include "Strings/Hacking/CodeEditor/RegisterXmm7.h"
 #include "Strings/Hacking/CodeEditor/Status.h"
 #include "Strings/Hacking/CodeEditor/StatusHeader.h"
 #include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
@@ -345,77 +353,41 @@ void CodeEditor::buildRegisterWindow()
 		switch (reg)
 		{
 			default:
-			case HackableCode::Register::eax:
+			case HackableCode::Register::zax:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEax::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEax::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRax::create()));
 			}
-			case HackableCode::Register::ebx:
+			case HackableCode::Register::zbx:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEbx::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEbx::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRbx::create()));
 			}
-			case HackableCode::Register::ecx:
+			case HackableCode::Register::zcx:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEcx::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEcx::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRcx::create()));
 			}
-			case HackableCode::Register::edx:
+			case HackableCode::Register::zdx:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEdx::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEdx::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRdx::create()));
 			}
-			case HackableCode::Register::edi:
+			case HackableCode::Register::zdi:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEdi::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEdi::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRdi::create()));
 			}
-			case HackableCode::Register::esi:
+			case HackableCode::Register::zsi:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEsi::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEsi::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRsi::create()));
 			}
-			case HackableCode::Register::ebp:
+			case HackableCode::Register::zbp:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEbp::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEbp::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRbp::create()));
 			}
-			case HackableCode::Register::esp:
+			case HackableCode::Register::zsp:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEsp::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEsp::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRsp::create()));
 			}
-			case HackableCode::Register::eip:
+			case HackableCode::Register::zip:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEip::create();
-			}
-			case HackableCode::Register::rax:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRax::create();
-			}
-			case HackableCode::Register::rbx:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRbx::create();
-			}
-			case HackableCode::Register::rcx:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRcx::create();
-			}
-			case HackableCode::Register::rdx:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRdx::create();
-			}
-			case HackableCode::Register::rdi:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRdi::create();
-			}
-			case HackableCode::Register::rsi:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRsi::create();
-			}
-			case HackableCode::Register::rbp:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRbp::create();
-			}
-			case HackableCode::Register::rsp:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRsp::create();
-			}
-			case HackableCode::Register::rip:
-			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRip::create();
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEip::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRip::create()));
 			}
 			case HackableCode::Register::r8:
 			{
@@ -481,6 +453,38 @@ void CodeEditor::buildRegisterWindow()
 			{
 				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt7::create();
 			}
+			case HackableCode::Register::xmm0:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm0::create();
+			}
+			case HackableCode::Register::xmm1:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm1::create();
+			}
+			case HackableCode::Register::xmm2:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm2::create();
+			}
+			case HackableCode::Register::xmm3:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm3::create();
+			}
+			case HackableCode::Register::xmm4:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm4::create();
+			}
+			case HackableCode::Register::xmm5:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm5::create();
+			}
+			case HackableCode::Register::xmm6:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm6::create();
+			}
+			case HackableCode::Register::xmm7:
+			{
+				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm7::create();
+			}
 		}
 	});
 
@@ -500,29 +504,18 @@ void CodeEditor::buildRegisterWindow()
 		}
 	};
 
-	if (sizeof(void*) == 4)
+	tryPrintRegisterHint(HackableCode::Register::zax);
+	tryPrintRegisterHint(HackableCode::Register::zbx);
+	tryPrintRegisterHint(HackableCode::Register::zcx);
+	tryPrintRegisterHint(HackableCode::Register::zdx);
+	tryPrintRegisterHint(HackableCode::Register::zdi);
+	tryPrintRegisterHint(HackableCode::Register::zsi);
+	tryPrintRegisterHint(HackableCode::Register::zbp);
+	tryPrintRegisterHint(HackableCode::Register::zsp);
+	tryPrintRegisterHint(HackableCode::Register::zip);
+
+	if (sizeof(void*) == 8)
 	{
-		tryPrintRegisterHint(HackableCode::Register::eax);
-		tryPrintRegisterHint(HackableCode::Register::ebx);
-		tryPrintRegisterHint(HackableCode::Register::ecx);
-		tryPrintRegisterHint(HackableCode::Register::edx);
-		tryPrintRegisterHint(HackableCode::Register::edi);
-		tryPrintRegisterHint(HackableCode::Register::esi);
-		tryPrintRegisterHint(HackableCode::Register::ebp);
-		tryPrintRegisterHint(HackableCode::Register::esp);
-		tryPrintRegisterHint(HackableCode::Register::eip);
-	}
-	else
-	{
-		tryPrintRegisterHint(HackableCode::Register::rax);
-		tryPrintRegisterHint(HackableCode::Register::rbx);
-		tryPrintRegisterHint(HackableCode::Register::rcx);
-		tryPrintRegisterHint(HackableCode::Register::rdx);
-		tryPrintRegisterHint(HackableCode::Register::rdi);
-		tryPrintRegisterHint(HackableCode::Register::rsi);
-		tryPrintRegisterHint(HackableCode::Register::rbp);
-		tryPrintRegisterHint(HackableCode::Register::rsp);
-		tryPrintRegisterHint(HackableCode::Register::rip);
 		tryPrintRegisterHint(HackableCode::Register::r8);
 		tryPrintRegisterHint(HackableCode::Register::r9);
 		tryPrintRegisterHint(HackableCode::Register::r10);
@@ -541,6 +534,14 @@ void CodeEditor::buildRegisterWindow()
 	tryPrintRegisterHint(HackableCode::Register::st5);
 	tryPrintRegisterHint(HackableCode::Register::st6);
 	tryPrintRegisterHint(HackableCode::Register::st7);
+	tryPrintRegisterHint(HackableCode::Register::xmm0);
+	tryPrintRegisterHint(HackableCode::Register::xmm1);
+	tryPrintRegisterHint(HackableCode::Register::xmm2);
+	tryPrintRegisterHint(HackableCode::Register::xmm3);
+	tryPrintRegisterHint(HackableCode::Register::xmm4);
+	tryPrintRegisterHint(HackableCode::Register::xmm5);
+	tryPrintRegisterHint(HackableCode::Register::xmm6);
+	tryPrintRegisterHint(HackableCode::Register::xmm7);
 }
 
 void CodeEditor::compile(std::string assemblyText)

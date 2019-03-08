@@ -96,7 +96,7 @@ void Laser::registerHackables()
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LaserCountDownPreview::create(),
 				{
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
 				20.0f
 			)

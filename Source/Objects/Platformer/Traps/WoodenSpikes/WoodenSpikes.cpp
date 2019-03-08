@@ -96,7 +96,7 @@ void WoodenSpikes::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				WoodenSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				20.0f
 			)

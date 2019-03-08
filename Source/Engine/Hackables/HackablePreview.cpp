@@ -13,6 +13,7 @@
 #include "Strings/Hacking/RegisterEsi.h"
 #include "Strings/Hacking/RegisterEbp.h"
 #include "Strings/Hacking/RegisterEsp.h"
+#include "Strings/Hacking/RegisterEip.h"
 #include "Strings/Hacking/RegisterRax.h"
 #include "Strings/Hacking/RegisterRbx.h"
 #include "Strings/Hacking/RegisterRcx.h"
@@ -21,6 +22,7 @@
 #include "Strings/Hacking/RegisterRsi.h"
 #include "Strings/Hacking/RegisterRbp.h"
 #include "Strings/Hacking/RegisterRsp.h"
+#include "Strings/Hacking/RegisterRip.h"
 #include "Strings/Hacking/RegisterR8.h"
 #include "Strings/Hacking/RegisterR9.h"
 #include "Strings/Hacking/RegisterR10.h"
@@ -87,69 +89,41 @@ LocalizedString* HackablePreview::getRegisterString(HackableCode::Register reg)
 	switch (reg)
 	{
 		default:
-		case HackableCode::Register::eax:
+		case HackableCode::Register::zax:
 		{
-			return Strings::Hacking_RegisterEax::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEax::create(): (LocalizedString*)Strings::Hacking_RegisterRax::create()));
 		}
-		case HackableCode::Register::ebx:
+		case HackableCode::Register::zbx:
 		{
-			return Strings::Hacking_RegisterEbx::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEbx::create(): (LocalizedString*)Strings::Hacking_RegisterRbx::create()));
 		}
-		case HackableCode::Register::ecx:
+		case HackableCode::Register::zcx:
 		{
-			return Strings::Hacking_RegisterEcx::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEcx::create(): (LocalizedString*)Strings::Hacking_RegisterRcx::create()));
 		}
-		case HackableCode::Register::edx:
+		case HackableCode::Register::zdx:
 		{
-			return Strings::Hacking_RegisterEdx::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEdx::create(): (LocalizedString*)Strings::Hacking_RegisterRdx::create()));
 		}
-		case HackableCode::Register::edi:
+		case HackableCode::Register::zdi:
 		{
-			return Strings::Hacking_RegisterEdi::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEdi::create(): (LocalizedString*)Strings::Hacking_RegisterRdi::create()));
 		}
-		case HackableCode::Register::esi:
+		case HackableCode::Register::zsi:
 		{
-			return Strings::Hacking_RegisterEsi::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEsi::create(): (LocalizedString*)Strings::Hacking_RegisterRsi::create()));
 		}
-		case HackableCode::Register::ebp:
+		case HackableCode::Register::zbp:
 		{
-			return Strings::Hacking_RegisterEbp::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEbp::create(): (LocalizedString*)Strings::Hacking_RegisterRbp::create()));
 		}
-		case HackableCode::Register::esp:
+		case HackableCode::Register::zsp:
 		{
-			return Strings::Hacking_RegisterEsp::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEsp::create(): (LocalizedString*)Strings::Hacking_RegisterRsp::create()));
 		}
-		case HackableCode::Register::rax:
+		case HackableCode::Register::zip:
 		{
-			return Strings::Hacking_RegisterRax::create();
-		}
-		case HackableCode::Register::rbx:
-		{
-			return Strings::Hacking_RegisterRbx::create();
-		}
-		case HackableCode::Register::rcx:
-		{
-			return Strings::Hacking_RegisterRcx::create();
-		}
-		case HackableCode::Register::rdx:
-		{
-			return Strings::Hacking_RegisterRdx::create();
-		}
-		case HackableCode::Register::rdi:
-		{
-			return Strings::Hacking_RegisterRdi::create();
-		}
-		case HackableCode::Register::rsi:
-		{
-			return Strings::Hacking_RegisterRsi::create();
-		}
-		case HackableCode::Register::rbp:
-		{
-			return Strings::Hacking_RegisterRbp::create();
-		}
-		case HackableCode::Register::rsp:
-		{
-			return Strings::Hacking_RegisterRsp::create();
+			return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_RegisterEip::create(): (LocalizedString*)Strings::Hacking_RegisterRip::create()));
 		}
 		case HackableCode::Register::r8:
 		{

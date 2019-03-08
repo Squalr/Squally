@@ -96,7 +96,7 @@ void MetalSpikes::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				MetalSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				20.0f
 			)

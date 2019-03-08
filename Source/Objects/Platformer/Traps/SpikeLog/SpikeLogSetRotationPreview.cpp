@@ -29,14 +29,7 @@ SpikeLogSetRotationPreview::SpikeLogSetRotationPreview()
 
 	this->countString = ConstantString::create("0");
 
-	if (sizeof(void*) == 4)
-	{
-		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::ecx, false, this->countString);
-	}
-	else
-	{
-		this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::rcx, false, this->countString);
-	}
+	this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::zcx, false, this->countString);
 
 	this->previewNode->addChild(this->previewSpikedLog);
 	this->assemblyTextNode->addChild(this->ecxAnimationCount);

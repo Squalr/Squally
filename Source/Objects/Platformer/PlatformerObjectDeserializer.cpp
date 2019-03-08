@@ -64,9 +64,25 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = DartGun::create(properties);
 		}
+		else if (name == FloatingAsteroid::MapKeyFloatingAsteroid)
+		{
+			newObject = FloatingAsteroid::create(properties);
+		}
+		else if (name == FloatingBomb::MapKeyFloatingBomb)
+		{
+			newObject = FloatingBomb::create(properties);
+		}
+		else if (name == FloatingCrate::MapKeyFloatingCrate)
+		{
+			newObject = FloatingCrate::create(properties);
+		}
 		else if (name == FloatingRock::MapKeyFloatingRock)
 		{
 			newObject = FloatingRock::create(properties);
+		}
+		else if (name == FloatingWoodenBeam::MapKeyFloatingWoodenBeam)
+		{
+			newObject = FloatingWoodenBeam::create(properties);
 		}
 		else if (name == HeavenHug::MapKeyHeavenHug)
 		{
@@ -91,6 +107,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == PendulumBlade::MapKeyPendulumBlade)
 		{
 			newObject = PendulumBlade::create(properties);
+		}
+		else if (name == SpikedBall::MapKeySpikedBall)
+		{
+			newObject = SpikedBall::create(properties);
 		}
 		else if (name == SpikeLog::MapKeySpikeLog)
 		{

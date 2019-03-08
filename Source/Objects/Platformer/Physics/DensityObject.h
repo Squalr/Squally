@@ -15,6 +15,7 @@ protected:
 	void initializePositions() override;
 	void update(float dt) override;
 	virtual float getDensity() = 0;
+	virtual float getObjectHeight() = 0;
 
 	float currentDensity;
 	float loadedDensity;
@@ -24,7 +25,7 @@ protected:
 private:
 	typedef HackableObject super;
 
-	float height;
+	float heightRange;
 
 	static const float DensityFloatSpeed;
 };

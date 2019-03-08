@@ -26,18 +26,9 @@ HeavenHugSetSpeedPreview::HeavenHugSetSpeedPreview()
 	this->previewHeavenHug200 = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
 	this->previewHeavenHug400 = Sprite::create(ObjectResources::Traps_HeavenHug_PreviewHeavenHug);
 
-	if (sizeof(void*) == 4)
-	{
-		this->eax100Height = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("100f"));
-		this->eax200Height = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("200f"));
-		this->eax400Height = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("400f"));
-	}
-	else
-	{
-		this->eax100Height = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("100f"));
-		this->eax200Height = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("200f"));
-		this->eax400Height = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("400f"));
-	}
+	this->eax100Height = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("100f"));
+	this->eax200Height = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("200f"));
+	this->eax400Height = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("400f"));
 
 	this->previewNode->addChild(this->previewHeavenHug100);
 	this->previewNode->addChild(this->previewHeavenHug200);

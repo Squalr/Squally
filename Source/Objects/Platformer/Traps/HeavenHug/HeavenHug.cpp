@@ -93,8 +93,8 @@ void HeavenHug::registerHackables()
 				UIResources::Menus_Icons_BleedingLimb,
 				HeavenHugSetSpeedPreview::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
-					{ HackableCode::Register::ebp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
+					{ HackableCode::Register::zax, Strings::Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
+					{ HackableCode::Register::zbp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
 				},
 				20.0f
 			)

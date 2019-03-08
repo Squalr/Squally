@@ -107,8 +107,8 @@ void DartGun::registerHackables()
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
 				{
-					{ HackableCode::Register::eax, nullptr },
-					{ HackableCode::Register::ebx, nullptr }
+					{ HackableCode::Register::zax, nullptr },
+					{ HackableCode::Register::zbx, nullptr }
 				},
 				20.0f
 			)

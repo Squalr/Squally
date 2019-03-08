@@ -129,8 +129,8 @@ void Wind::registerHackables()
 				UIResources::Menus_Icons_Spell,
 				WindSetSpeedPreview::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
+					{ HackableCode::Register::zax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
 				5.0f
 			)
