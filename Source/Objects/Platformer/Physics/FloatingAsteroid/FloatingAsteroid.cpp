@@ -13,10 +13,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-// TEMP DEBUG:
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
-
+#include "Objects/Platformer/Physics/FloatingAsteroid/FloatingAsteroidGenericPreview.h"
+#include "Objects/Platformer/Physics/FloatingAsteroid/FloatingAsteroidGetDensityPreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -94,7 +92,7 @@ void FloatingAsteroid::registerHackables()
 				FloatingAsteroid::MapKeyFloatingAsteroid,
 				Strings::Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
-				HeavenHugSetSpeedPreview::create(),
+				FloatingAsteroidGetDensityPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
@@ -112,6 +110,11 @@ void FloatingAsteroid::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* FloatingAsteroid::createDefaultPreview()
+{
+	return FloatingAsteroidGenericPreview::create();
 }
 
 float FloatingAsteroid::getDensity()

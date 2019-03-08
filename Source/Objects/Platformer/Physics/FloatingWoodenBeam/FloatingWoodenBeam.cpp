@@ -13,10 +13,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-// TEMP DEBUG:
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
-
+#include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeamGenericPreview.h"
+#include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeamGetDensityPreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -94,7 +92,7 @@ void FloatingWoodenBeam::registerHackables()
 				FloatingWoodenBeam::MapKeyFloatingWoodenBeam,
 				Strings::Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
-				HeavenHugSetSpeedPreview::create(),
+				FloatingWoodenBeamGetDensityPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
@@ -112,6 +110,11 @@ void FloatingWoodenBeam::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* FloatingWoodenBeam::createDefaultPreview()
+{
+	return FloatingWoodenBeamGenericPreview::create();
 }
 
 float FloatingWoodenBeam::getDensity()
