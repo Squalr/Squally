@@ -155,7 +155,7 @@ HexusDeckManagement::HexusDeckManagement()
 		{
 			MenuCard* card = this->createCard(cardData, 0);
 
-			displayDeckCards.emplace(cardData, card);
+			displayDeckCards[cardData] = card;
 
 			this->deckScrollPane->addChild(card);
 		}
@@ -171,7 +171,7 @@ HexusDeckManagement::HexusDeckManagement()
 		{
 			MenuCard* card = this->createCard(cardData, 0);
 
-			displayStorageCards.emplace(cardData, card);
+			displayStorageCards[cardData] = card;
 
 			this->storageScrollPane->addChild(card);
 		}

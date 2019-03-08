@@ -151,11 +151,11 @@ void HexusChapterSelectMenu::onEnter()
 	{
 		if (*it == this->chapters.front())
 		{
-			this->dependencies.emplace((*it), nullptr);
+			this->dependencies[*it] = nullptr;
 		}
 		else
 		{
-			this->dependencies.emplace((*it), (*prevIt));
+			this->dependencies[*it] = *prevIt;
 		}
 	}
 

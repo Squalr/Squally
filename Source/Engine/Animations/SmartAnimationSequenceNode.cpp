@@ -236,25 +236,27 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 {
 	if (SmartAnimationSequenceNode::AnimationFileCache.find(firstFrameResource) != SmartAnimationSequenceNode::AnimationFileCache.end())
 	{
-		return SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource];
+		if (!SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource].empty())
+		{
+			return SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource];
+		}
 	}
 
 	// Normalize directory seperator
 	firstFrameResource = StrUtils::replaceAll(firstFrameResource, "\\", "/");
-
-	size_t extensionIndex = firstFrameResource.find_last_of(".");
+	std::string containingFolder = FileUtils::getInstance()->fullPathForFilename(firstFrameResource);
+	containingFolder = containingFolder.substr(0, containingFolder.find_last_of("/\\")) + "/";
 
 	// Extract the base animation name from the provided animation resource (ie HARPY_WALKING_0001.png > HARPY_WALKING)
 	// Note: The animations must follow the format of {ANIMATION_BASE}{INDEX}{EXTENSION}, with the index optionally leading w/ zeros
-	std::string extensionlessBaseName = firstFrameResource.substr(0, extensionIndex);
-	std::string extension = firstFrameResource.substr(extensionIndex, firstFrameResource.size());
-	size_t lastIndex = extensionlessBaseName.find_last_not_of("0123456789");
-	std::string animationNameBase = FileUtils::getInstance()->getDefaultResourceRootPath() + extensionlessBaseName.substr(0, lastIndex);
-	std::string directoryName = FileUtils::getInstance()->getDefaultResourceRootPath() + firstFrameResource.substr(0, firstFrameResource.find_last_of("/\\"));
+	std::string extensionlessBaseName = firstFrameResource.substr(firstFrameResource.find_last_of("/\\") + 1, std::string::npos);
+	extensionlessBaseName = extensionlessBaseName.substr(0, extensionlessBaseName.find_last_of("."));
+	std::string extension = firstFrameResource.substr(firstFrameResource.find_last_of("."), std::string::npos);
+	std::string animationNameBase = containingFolder + extensionlessBaseName.substr(0, extensionlessBaseName.find_last_not_of("0123456789"));
 
 	// These files wont be sorted on the filesystem because strings do not sort like ints -- build an ordered map of int to string
 	std::map<int, std::string> orderedAnimationFileMap = std::map<int, std::string>();
-	std::vector<std::string> files = FileUtils::getInstance()->listFiles(directoryName);
+	std::vector<std::string> files = FileUtils::getInstance()->listFiles(containingFolder);
 
 	for (auto it = files.begin(); it != files.end(); it++)
 	{
@@ -273,7 +275,7 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 				int index = std::stoi(animationFrameIndex);
 
 				// Now that we have the actual index as an integer, store it in our mapping
-				orderedAnimationFileMap.emplace(index, fileName);
+				orderedAnimationFileMap[index] = fileName;
 			}
 		}
 	}

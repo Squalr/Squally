@@ -119,11 +119,11 @@ void HexusOpponentMenuBase::onEnter()
 	{
 		if (*it == this->opponents.front())
 		{
-			this->dependencies.emplace((*it), nullptr);
+			this->dependencies[*it] = nullptr;
 		}
 		else
 		{
-			this->dependencies.emplace((*it), (*prevIt));
+			this->dependencies[*it] = *prevIt;
 		}
 	}
 
