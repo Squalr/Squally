@@ -20,6 +20,7 @@ public:
 
 protected:
 	void initializeCollisionEvents() override;
+	void performSwimAnimation() override;
 
 	cocos2d::Vec2 getButtonOffset() override;
 

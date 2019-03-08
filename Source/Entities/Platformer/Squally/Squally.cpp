@@ -11,6 +11,7 @@
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h" // Debugging
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Maces/CrystalMace.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h" // Debugging
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
 #include "Scenes/Platformer/Inventory/PlayerInventory.h"
@@ -76,7 +77,7 @@ void Squally::onEnter()
 	}
 
 	PlayerEquipment::getInstance()->tryRemove(PlayerEquipment::getInstance()->getWeapon(), nullptr, nullptr);
-	PlayerEquipment::getInstance()->forceInsert(BlueAxe::create());
+	PlayerEquipment::getInstance()->forceInsert(CrystalMace::create());
 	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
 
 	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
@@ -106,6 +107,24 @@ void Squally::initializeCollisionEvents()
 		this->setPosition(this->spawnCoords);
 		this->entityCollision->setPosition(Vec2::ZERO);
 		this->hoverCollision->setPosition(Vec2::ZERO);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		AnimationPart* mouth = this->getAnimations()->getAnimationPart("MOUTH");
+
+		mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		AnimationPart* mouth = this->getAnimations()->getAnimationPart("MOUTH");
+
+		mouth->replaceSprite(EntityResources::Squally_MOUTH);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -162,6 +181,18 @@ void Squally::update(float dt)
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
 		this->movement.y = -1.0f;
+	}
+}
+
+void Squally::performSwimAnimation()
+{
+	if (PlayerEquipment::getInstance()->getWeapon() != nullptr)
+	{
+		this->animationNode->playAnimation("SwimWithWeapon");
+	}
+	else
+	{
+		this->animationNode->playAnimation("Swim");
 	}
 }
 

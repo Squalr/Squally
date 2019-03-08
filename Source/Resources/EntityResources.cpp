@@ -4383,6 +4383,7 @@ const std::string EntityResources::Squally_Jump_Jump_08 = "Platformer/Entities/S
 const std::string EntityResources::Squally_Jump_Jump_09 = "Platformer/Entities/Squally/Jump/Jump_09.png";
 const std::string EntityResources::Squally_Jump_Jump_10 = "Platformer/Entities/Squally/Jump/Jump_10.png";
 const std::string EntityResources::Squally_Jump_Jump_11 = "Platformer/Entities/Squally/Jump/Jump_11.png";
+const std::string EntityResources::Squally_MOUTH_SWIMMING = "Platformer/Entities/Squally/MOUTH SWIMMING.png";
 const std::string EntityResources::Squally_MOUTH = "Platformer/Entities/Squally/MOUTH.png";
 const std::string EntityResources::Squally_SHIELD_PLACEHOLDER = "Platformer/Entities/Squally/SHIELD_PLACEHOLDER.png";
 const std::string EntityResources::Squally_STEM = "Platformer/Entities/Squally/STEM.png";
