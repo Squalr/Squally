@@ -113,8 +113,8 @@ void Squally::initializeCollisionEvents()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		AnimationPart* mouth = this->getAnimations()->getAnimationPart("MOUTH");
-
+		AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
+		
 		mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
 
 		return CollisionObject::CollisionResult::DoNothing;
@@ -122,7 +122,7 @@ void Squally::initializeCollisionEvents()
 
 	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		AnimationPart* mouth = this->getAnimations()->getAnimationPart("MOUTH");
+		AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
 
 		mouth->replaceSprite(EntityResources::Squally_MOUTH);
 
