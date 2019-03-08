@@ -13,10 +13,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-// TEMP DEBUG:
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
-
+#include "Objects/Platformer/Physics/FloatingRock/FloatingRockGenericPreview.h"
+#include "Objects/Platformer/Physics/FloatingRock/FloatingRockGetDensityPreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -94,7 +92,7 @@ void FloatingRock::registerHackables()
 				FloatingRock::MapKeyFloatingRock,
 				Strings::Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
-				HeavenHugSetSpeedPreview::create(),
+				FloatingRockGetDensityPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
@@ -112,6 +110,11 @@ void FloatingRock::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* FloatingRock::createDefaultPreview()
+{
+	return FloatingRockGenericPreview::create();
 }
 
 float FloatingRock::getDensity()

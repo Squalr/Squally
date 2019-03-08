@@ -373,22 +373,26 @@
   <object id="551" name="floating-rock" type="object" x="15394.1" y="5214.63" width="208.004" height="420">
    <properties>
     <property name="density" type="float" value="0.20000000000000001"/>
+    <property name="rotation" type="float" value="33"/>
    </properties>
   </object>
   <object id="552" name="spiked-ball" type="object" x="15654.6" y="5408.44" width="208.004" height="200.71"/>
   <object id="553" name="floating-crate" type="object" x="15665.8" y="5206.95" width="208.004" height="430.704">
    <properties>
     <property name="density" type="float" value="0.20000000000000001"/>
+    <property name="rotation" type="float" value="50"/>
    </properties>
   </object>
   <object id="554" name="floating-asteroid" type="object" x="16192.7" y="5196.57" width="208.004" height="420">
    <properties>
     <property name="density" type="float" value="0.69999999999999996"/>
+    <property name="rotation" type="float" value="32"/>
    </properties>
   </object>
   <object id="555" name="floating-rock" type="object" x="16461.5" y="5199.63" width="208.004" height="420">
    <properties>
     <property name="density" type="float" value="0.20000000000000001"/>
+    <property name="rotation" type="float" value="180"/>
    </properties>
   </object>
   <object id="556" name="spiked-ball" type="object" x="16189.3" y="5200.73" width="208.004" height="200.71"/>
@@ -398,16 +402,19 @@
   <object id="561" name="floating-rock" type="object" x="17155.8" y="5212.59" width="208.004" height="420">
    <properties>
     <property name="density" type="float" value="0.75"/>
+    <property name="rotation" type="float" value="135"/>
    </properties>
   </object>
   <object id="563" name="floating-crate" type="object" x="15905.8" y="5208.84" width="208.004" height="420">
    <properties>
     <property name="density" type="float" value="0.20000000000000001"/>
+    <property name="rotation" type="float" value="-25"/>
    </properties>
   </object>
   <object id="564" name="floating-crate" type="object" x="16740.9" y="5202.02" width="208.004" height="420">
    <properties>
     <property name="density" type="float" value="0.20000000000000001"/>
+    <property name="rotation" type="float" value="15"/>
    </properties>
   </object>
   <object id="565" name="water" type="object" x="14737.7" y="2475.79" width="4702.35" height="3384.42">
