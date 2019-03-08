@@ -83,6 +83,7 @@ void Squally::onEnter()
 	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
 	
 	mainhand->replaceSprite(weapon->getIconResource());
+	mainhand->setOffset(weapon->getDisplayOffset());
 }
 
 void Squally::initializeCollisionEvents()
@@ -110,7 +111,7 @@ void Squally::initializeCollisionEvents()
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-
+	
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");

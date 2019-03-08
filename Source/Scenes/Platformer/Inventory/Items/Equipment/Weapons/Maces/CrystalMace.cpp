@@ -44,3 +44,8 @@ std::string CrystalMace::getSerializationKey()
 {
 	return CrystalMace::SaveKeyCrystalMace;
 }
+
+Vec2 CrystalMace::getDisplayOffset()
+{
+	return Vec2(-24.0f, 0.0f);
+}

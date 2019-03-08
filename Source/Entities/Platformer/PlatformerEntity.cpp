@@ -339,6 +339,9 @@ void PlatformerEntity::initializeCollisionEvents()
 		// Animate jumping out of water
 		if (this->entityCollision->getVelocity().y > 0.0f)
 		{
+			// Give a velocity boost for jumping out of water
+			this->entityCollision->setVelocity(Vec2(this->entityCollision->getVelocity().x, PlatformerEntity::JumpVelocity));
+
 			this->animationNode->playAnimation("Jump");
 		}
 		

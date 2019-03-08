@@ -327,7 +327,7 @@ void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<Co
 		CollisionObject::InverseCollisionMap[collisionType] = this->getCollisionType();
 	}
 
-	if (eventMap.find(collisionType) != eventMap.end())
+	if (eventMap.find(collisionType) == eventMap.end())
 	{
 		eventMap[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
 	}
