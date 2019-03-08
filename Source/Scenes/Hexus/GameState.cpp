@@ -194,7 +194,7 @@ std::vector<Card*> GameState::getAllCards()
 		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
-			cards.emplace_back(card);
+			cards.push_back(card);
 		}
 	}
 
@@ -213,7 +213,7 @@ std::vector<Card*> GameState::getEnemyCards()
 		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
-			cards.emplace_back(card);
+			cards.push_back(card);
 		}
 	}
 
@@ -232,7 +232,7 @@ std::vector<Card*> GameState::getPlayerCards()
 		for (auto it = row->rowCards.begin(); it != row->rowCards.end(); it++)
 		{
 			Card* card = *it;
-			cards.emplace_back(card);
+			cards.push_back(card);
 		}
 	}
 
@@ -255,9 +255,9 @@ std::vector<CardRow*> GameState::getEnemyRows()
 {
 	std::vector<CardRow*> cardRows;
 
-	cardRows.emplace_back(this->enemyBinaryCards);
-	cardRows.emplace_back(this->enemyDecimalCards);
-	cardRows.emplace_back(this->enemyHexCards);
+	cardRows.push_back(this->enemyBinaryCards);
+	cardRows.push_back(this->enemyDecimalCards);
+	cardRows.push_back(this->enemyHexCards);
 
 	return cardRows;
 }
@@ -266,9 +266,9 @@ std::vector<CardRow*> GameState::getPlayerRows()
 {
 	std::vector<CardRow*> cardRows = std::vector<CardRow*>();
 
-	cardRows.emplace_back(this->playerBinaryCards);
-	cardRows.emplace_back(this->playerDecimalCards);
-	cardRows.emplace_back(this->playerHexCards);
+	cardRows.push_back(this->playerBinaryCards);
+	cardRows.push_back(this->playerDecimalCards);
+	cardRows.push_back(this->playerHexCards);
 
 	return cardRows;
 }

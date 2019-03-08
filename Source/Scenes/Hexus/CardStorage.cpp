@@ -162,7 +162,7 @@ std::map<CardData*, int> CardStorage::getDeckCardsByCount()
 		if (deckCards.find(*it) == deckCards.end())
 		{
 			// First occurrence, insert 1
-			deckCards.emplace(*it, 1);
+			deckCards[*it] = 1;
 		}
 		else
 		{
@@ -237,7 +237,7 @@ std::map<CardData*, int> CardStorage::getStorageCardsByCount()
 		if (storageCards.find(*it) == storageCards.end())
 		{
 			// First occurrence, insert 1
-			storageCards.emplace(*it, 1);
+			storageCards[*it] = 1;
 		}
 		else
 		{

@@ -129,7 +129,7 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 		if (addedCards.find(*it) == addedCards.end())
 		{
 			// Start zero-indexed counter
-			addedCards.emplace(*it, 0);
+			addedCards[*it] = 0;
 		}
 		else
 		{
