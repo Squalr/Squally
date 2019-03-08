@@ -31,9 +31,6 @@ Doubloon::Doubloon(ValueMap& initProperties) : super(initProperties)
 	this->doubloon = SmartAnimationSequenceNode::create(ObjectResources::Collectables_Doubloon_Doubloon_0000);
 	this->doubloonCollision = CollisionObject::create(PhysicsBody::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
-	this->DoubloonEventName = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyEvent, Value("")).asString();
-	this->maxDefaultButtonPosition = 48.0f;
-
 	this->doubloonCollision->addChild(this->doubloon);
 	this->addChild(this->doubloonCollision);
 }
@@ -46,7 +43,7 @@ void Doubloon::onEnter()
 {
 	super::onEnter();
 
-	this->doubloon->playAnimation(ObjectResources::Collectables_Doubloon_Doubloon_0000, 0.1f);
+	this->doubloon->playAnimationRepeat(ObjectResources::Collectables_Doubloon_Doubloon_0000, 0.1f);
 
 	this->scheduleUpdate();
 }
@@ -54,8 +51,6 @@ void Doubloon::onEnter()
 void Doubloon::initializePositions()
 {
 	super::initializePositions();
-
-	this->buttonCollision->setPosition(Vec2(0.0f, this->maxDefaultButtonPosition));
 }
 
 void Doubloon::initializeListeners()

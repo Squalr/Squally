@@ -64,6 +64,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = DartGun::create(properties);
 		}
+		else if (name == Doubloon::MapKeyDoubloon)
+		{
+			newObject = Doubloon::create(properties);
+		}
 		else if (name == FloatingAsteroid::MapKeyFloatingAsteroid)
 		{
 			newObject = FloatingAsteroid::create(properties);
