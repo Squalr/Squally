@@ -1,6 +1,7 @@
 #pragma once
 #include "Objects/Platformer/CameraFocus.h"
 #include "Objects/Platformer/Collectables/Animals/Animals.h"
+#include "Objects/Platformer/Collectables/Doubloon/Doubloon.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoor.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoorFront.h"
 #include "Objects/Platformer/Liquids/Water.h"
