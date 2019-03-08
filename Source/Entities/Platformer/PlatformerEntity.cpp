@@ -166,7 +166,7 @@ void PlatformerEntity::update(float dt)
 			{
 				velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
 
-				this->animationNode->playAnimation("Jump");
+				this->performJumpAnimation();
 			}
 
 			break;
@@ -190,7 +190,7 @@ void PlatformerEntity::update(float dt)
 
 			if (this->movement != Vec2::ZERO)
 			{
-				this->animationNode->playAnimation("Swim");
+				this->performSwimAnimation();
 			}
 
 			break;
@@ -212,6 +212,16 @@ void PlatformerEntity::update(float dt)
 			this->animationNode->setFlippedX(false);
 		}
 	}
+}
+
+void PlatformerEntity::performSwimAnimation()
+{
+	this->animationNode->playAnimation("Swim");
+}
+
+void PlatformerEntity::performJumpAnimation()
+{
+	this->animationNode->playAnimation("Jump");
 }
 
 void PlatformerEntity::addHealth(int healthDelta)

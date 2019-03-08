@@ -4384,6 +4384,7 @@ namespace EntityResources
 	extern const std::string Squally_Jump_Jump_09;
 	extern const std::string Squally_Jump_Jump_10;
 	extern const std::string Squally_Jump_Jump_11;
+	extern const std::string Squally_MOUTH_SWIMMING;
 	extern const std::string Squally_MOUTH;
 	extern const std::string Squally_SHIELD_PLACEHOLDER;
 	extern const std::string Squally_STEM;

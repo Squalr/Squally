@@ -61,6 +61,8 @@ protected:
 	void update(float) override;
 	void registerAttack(PlatformerAttack* attack);
 	virtual void initializeCollisionEvents();
+	virtual void performSwimAnimation();
+	virtual void performJumpAnimation();
 
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
