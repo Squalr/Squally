@@ -124,21 +124,11 @@ float FloatingRock::getDensity()
 
 float FloatingRock::getDensityNonVirtual()
 {
-	static float* xmm0Storage = new float[4];
-	static float* xmm1Storage = new float[4];
-	static float* freeMemoryForUser = new float[4];
+	static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;
 	volatile float* densityRetPtr = &densityRet;
 	volatile float densityCopy = this->loadedDensity;
 	volatile float* densityCopyPtr = &densityCopy;
-
-	// Save XMM registers
-	ASM(push EDI);
-	ASM(push ESI);
-	ASM_MOV_REG_VAR(EDI, xmm0Storage);
-	ASM(movaps [EDI], xmm0);
-	ASM_MOV_REG_VAR(ESI, xmm1Storage);
-	ASM(movaps [ESI], xmm1);
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
 	ASM(push EAX);
@@ -161,12 +151,6 @@ float FloatingRock::getDensityNonVirtual()
 	ASM_MOV_REG_VAR(EAX, densityRetPtr);
 	ASM(movss dword ptr [EAX], xmm0);
 	ASM(pop EAX);
-
-	// Restore XMM registers
-	ASM(movaps xmm0, [EDI]);
-	ASM(movaps xmm1, [ESI]);
-	ASM(pop ESI);
-	ASM(pop EDI);
 
 	HACKABLES_STOP_SEARCH();
 
