@@ -56,8 +56,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Staves_WoodenWand);
 	this->mainhand->setOffset(Vec2(-16.0f, 0.0f));
 
-	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f);
-	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f);
+	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
+	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
 
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Wind);
 	this->fireflyParticles = ParticleSystemQuad::create(ParticleResources::Fireflies2);
