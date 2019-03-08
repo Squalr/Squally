@@ -236,10 +236,7 @@ std::vector<std::string> SmartAnimationSequenceNode::getAllAnimationFiles(std::s
 {
 	if (SmartAnimationSequenceNode::AnimationFileCache.find(firstFrameResource) != SmartAnimationSequenceNode::AnimationFileCache.end())
 	{
-		if (!SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource].empty())
-		{
-			return SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource];
-		}
+		return SmartAnimationSequenceNode::AnimationFileCache[firstFrameResource];
 	}
 
 	// Normalize directory seperator
