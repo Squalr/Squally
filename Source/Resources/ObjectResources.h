@@ -60,6 +60,18 @@ namespace ObjectResources
 	extern const std::string Collectables_Animals_WORMY;
 	extern const std::string Collectables_Animals_YETY;
 	extern const std::string Collectables_Animals_ZEBRY;
+	extern const std::string Collectables_Doubloon_Doubloon_0000;
+	extern const std::string Collectables_Doubloon_Doubloon_0001;
+	extern const std::string Collectables_Doubloon_Doubloon_0002;
+	extern const std::string Collectables_Doubloon_Doubloon_0003;
+	extern const std::string Collectables_Doubloon_Doubloon_0004;
+	extern const std::string Collectables_Doubloon_Doubloon_0005;
+	extern const std::string Collectables_Doubloon_Doubloon_0006;
+	extern const std::string Collectables_Doubloon_Doubloon_0007;
+	extern const std::string Collectables_Doubloon_Doubloon_0008;
+	extern const std::string Collectables_Doubloon_Doubloon_0009;
+	extern const std::string Collectables_Doubloon_Doubloon_0010;
+	extern const std::string Collectables_Doubloon_Doubloon_0011;
 	extern const std::string Doors_BugDoor_3;
 	extern const std::string Doors_BugDoor_MAIN_BASE;
 	extern const std::string Doors_BugDoor_STONES_S1;
