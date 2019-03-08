@@ -7,12 +7,11 @@ class LocalizedString;
 class Equipable : public Item
 {
 public:
+	virtual cocos2d::Vec2 getDisplayOffset();
 
 protected:
 	Equipable();
 	virtual ~Equipable();
-
-	virtual cocos2d::Vec2 getDisplayOffset();
 
 private:
 	typedef Item super;
