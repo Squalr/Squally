@@ -92,7 +92,7 @@ void SpikeLog::registerHackables()
 				UIResources::Menus_Icons_BleedingLimb,
 				SpikeLogSetRotationPreview::create(),
 				{
-					{ HackableCode::Register::ecx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
+					{ HackableCode::Register::zcx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
 				20.0f
 			)

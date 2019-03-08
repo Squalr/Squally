@@ -127,10 +127,10 @@ class HackableCode : public HackableAttribute
 public:
 	enum Register
 	{
-		eax, ebx, ecx, edx, edi, esi, ebp, esp, eip,
-		rax, rbx, rcx, rdx, rdi, rsi, rbp, rsp, rip,
+		zax, zbx, zcx, zdx, zdi, zsi, zbp, zsp, zip,
 		r8, r9, r10, r11, r12, r13, r14, r15,
 		st0, st1, st2, st3, st4, st5, st6, st7,
+		xmm0, xmm1, xmm2, xmm3, xmm4, xmm5, xmm6, xmm7,
 	};
 
 	struct LateBindData

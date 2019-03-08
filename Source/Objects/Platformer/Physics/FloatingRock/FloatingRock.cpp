@@ -13,17 +13,19 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
+// TEMP DEBUG:
+#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
+#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
+
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-// TEMP DEBUG:
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
-#include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
-#include "Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h"
-#include "Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h"
-#include "Strings/Hacking/Objects/RegisterRbpWarning.h"
+#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/GetDensity.h"
+#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/RegisterEax.h"
+#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm0.h"
+#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm1.h"
 
 using namespace cocos2d;
 
@@ -90,12 +92,13 @@ void FloatingRock::registerHackables()
 			LOCAL_FUNC_ID_GET_DENSITY,
 			HackableCode::LateBindData(
 				FloatingRock::MapKeyFloatingRock,
-				Strings::Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
-				UIResources::Menus_Icons_BleedingLimb,
+				Strings::Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
+				UIResources::Menus_Icons_Anvil,
 				HeavenHugSetSpeedPreview::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
-					{ HackableCode::Register::ebp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
+					{ HackableCode::Register::zax, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
 				20.0f
 			)
@@ -142,10 +145,13 @@ float FloatingRock::getDensityNonVirtual()
 	ASM(movss xmm1, dword ptr [EAX]);
 	ASM(pop EAX);
 
+	ASM(push EAX);
+	ASM_MOV_REG_VAR(EAX, freeMemoryForUser);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GET_DENSITY);
 	ASM(movss xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
+	ASM(pop EAX);
 
 	// Copy from xmm0 to the output variable
 	ASM(push EAX);
@@ -162,4 +168,9 @@ float FloatingRock::getDensityNonVirtual()
 	HACKABLES_STOP_SEARCH();
 
 	return MathUtils::clamp(densityRet, 0.0f, 1.0f);
+}
+
+float FloatingRock::getObjectHeight()
+{
+	return this->sprite == nullptr ? 0.0f : this->sprite->getContentSize().height;
 }

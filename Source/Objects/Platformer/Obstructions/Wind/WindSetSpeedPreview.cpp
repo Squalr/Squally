@@ -29,20 +29,10 @@ WindSetSpeedPreview::WindSetSpeedPreview()
 	this->windParticles->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
 	this->windParticles->setScale(0.4f);
 
-	if (sizeof(void*) == 4)
-	{
-		this->eaxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("-1.0f"));
-		this->eaxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, true, ConstantString::create("1.0f"));
-		this->ebxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::ebx, true, ConstantString::create("-1.0f"));
-		this->ebxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::ebx, true, ConstantString::create("1.0f"));
-	}
-	else
-	{
-		this->eaxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("-1.0f"));
-		this->eaxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, true, ConstantString::create("1.0f"));
-		this->ebxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::rbx, true, ConstantString::create("-1.0f"));
-		this->ebxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::rbx, true, ConstantString::create("1.0f"));
-	}
+	this->eaxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("-1.0f"));
+	this->eaxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, true, ConstantString::create("1.0f"));
+	this->ebxNegative = this->createRegisterEqualsValueLabel(HackableCode::Register::zbx, true, ConstantString::create("-1.0f"));
+	this->ebxPositive = this->createRegisterEqualsValueLabel(HackableCode::Register::zbx, true, ConstantString::create("1.0f"));
 
 	this->previewNode->addChild(this->windParticles);
 	this->assemblyTextNode->addChild(this->eaxNegative);

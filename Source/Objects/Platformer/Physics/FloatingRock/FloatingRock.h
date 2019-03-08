@@ -25,6 +25,7 @@ protected:
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
+	float getObjectHeight() override;
 
 private:
 	typedef DensityObject super;

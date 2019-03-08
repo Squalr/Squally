@@ -114,8 +114,8 @@ void PendulumBlade::registerHackables()
 				UIResources::Menus_Icons_CrossHair,
 				PendulumBladeSetAnglePreview::create(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+					{ HackableCode::Register::zax, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
 				},
 				20.0f
 			)

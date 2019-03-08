@@ -24,20 +24,10 @@ PendulumBladeSetAnglePreview::PendulumBladeSetAnglePreview()
 {
 	this->previewBlade = Sprite::create(ObjectResources::Traps_PendulumBlade_PreviewBlade);
 
-	if (sizeof(void*) == 4)
-	{
-		this->eax0Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, false, ConstantString::create("0"));
-		this->eax90Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, false, ConstantString::create("90"));
-		this->eax180Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, false, ConstantString::create("180"));
-		this->eax270Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::eax, false, ConstantString::create("270"));
-	}
-	else
-	{
-		this->eax0Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, false, ConstantString::create("0"));
-		this->eax90Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, false, ConstantString::create("90"));
-		this->eax180Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, false, ConstantString::create("180"));
-		this->eax270Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::rax, false, ConstantString::create("270"));
-	}
+	this->eax0Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, ConstantString::create("0"));
+	this->eax90Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, ConstantString::create("90"));
+	this->eax180Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, ConstantString::create("180"));
+	this->eax270Degrees = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, ConstantString::create("270"));
 
 	this->previewBlade->setAnchorPoint(Vec2(0.5f, 1.0f));
 

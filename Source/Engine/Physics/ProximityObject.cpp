@@ -82,10 +82,10 @@ void ProximityObject::registerHackables()
 				UIResources::Menus_Icons_AxeSlash,
 				this->createVelocityPreview(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEax::create() },
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
-					{ HackableCode::Register::ecx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
-					{ HackableCode::Register::esi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
+					{ HackableCode::Register::zax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
+					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
+					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
 				},
 				3.0f
 			)
@@ -98,10 +98,10 @@ void ProximityObject::registerHackables()
 				UIResources::Menus_Icons_Scale,
 				this->createAccelerationPreview(),
 				{
-					{ HackableCode::Register::eax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEax::create() },
-					{ HackableCode::Register::ebx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
-					{ HackableCode::Register::ecx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
-					{ HackableCode::Register::esi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
+					{ HackableCode::Register::zax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
+					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
+					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				},
 				3.0f
 			)
