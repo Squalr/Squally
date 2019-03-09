@@ -306,6 +306,11 @@ Inventory* PlatformerEntity::getInventory()
 	return this->inventory;
 }
 
+CurrencyInventory* PlatformerEntity::getCurrencyInventory()
+{
+	return this->currencyInventory;
+}
+
 bool PlatformerEntity::isOnGround()
 {
 	return (!this->groundCollision->getCurrentCollisions().empty());

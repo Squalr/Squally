@@ -49,6 +49,10 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 	}
 }
 
+RuneBar::~RuneBar()
+{
+}
+
 void RuneBar::onEnter()
 {
 	super::onEnter();

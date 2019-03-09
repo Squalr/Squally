@@ -61,6 +61,10 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->addChild(this->manaBar);
 }
 
+StatsBars::~StatsBars()
+{
+}
+
 void StatsBars::onEnter()
 {
 	super::onEnter();

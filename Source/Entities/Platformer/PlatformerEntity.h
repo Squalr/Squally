@@ -7,6 +7,7 @@
 
 class CollisionObject;
 class ClickableNode;
+class CurrencyInventory;
 class Inventory;
 class PlatformerAttack;
 class SmartAnimationNode;
@@ -26,6 +27,7 @@ public:
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	Inventory* getInventory();
+	CurrencyInventory* getCurrencyInventory();
 	std::string getEmblemResource();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
@@ -69,6 +71,7 @@ protected:
 	CollisionObject* entityCollision;
 	CollisionObject* groundCollision;
 	Inventory* inventory;
+	CurrencyInventory* currencyInventory;
 	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;

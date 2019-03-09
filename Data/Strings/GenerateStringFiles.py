@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
-from os import listdir
-from os import path
-from os.path import isfile, dirname, join, splitext, abspath, realpath, basename, relpath
+import io
 import json
 import os
 import re
 import shutil
+import sys
+
+from os import listdir
+from os import path
+from os.path import isfile, dirname, join, splitext, abspath, realpath, basename, relpath
 
 def main():
 	generateStringFiles()
@@ -45,8 +48,16 @@ def generateStringFiles():
 			hOutputFile = join(outputPath, fileName + ".h")
 			cppOutputFile = join(outputPath, fileName + ".cpp")
 			
-			os.makedirs(dirname(hOutputFile), exist_ok=True)
-			with open(stringFile, 'r', encoding="utf-8") as stringData, open(hOutputFile, 'w+', encoding="utf-8") as hWriter, open(cppOutputFile, 'w+', encoding="utf-8") as cppWriter:
+			outputDir = dirname(hOutputFile)
+
+			if sys.version_info >= (3, 0):
+				os.makedirs(outputDir, exist_ok=True)
+			else:
+				# Python 2 support, although it creates a race condition
+				if not os.path.exists(outputDir):
+					os.makedirs(outputDir)
+			
+			with io.open(stringFile, 'r', encoding="utf-8") as stringData, io.open(hOutputFile, 'w+', encoding="utf-8") as hWriter, io.open(cppOutputFile, 'w+', encoding="utf-8") as cppWriter:
 				languageDictionary = json.load(stringData)
 				hContent = hTemplateContent.replace("{{ClassName}}", className).replace("{{FileName}}", fileName)
 				cppContent = cppTemplateContent.replace("{{ClassName}}", className).replace("{{FileName}}", fileName)
@@ -54,8 +65,11 @@ def generateStringFiles():
 				for langKey, value in languageDictionary.items():
 					cppContent = cppContent.replace("{{" + langKey + "}}", value)
 					
-				hWriter.write(hContent)
-				cppWriter.write(cppContent)
+				hContent = hContent.encode("utf-8")
+				cppContent = cppContent.encode("utf-8")
+
+				hWriter.write(hContent.decode("utf-8"))
+				cppWriter.write(cppContent.decode("utf-8"))
 		
 if __name__ == '__main__':
     main()
