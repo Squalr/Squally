@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableTextNode;
 class LocalizedLabel;
 class ScrollPane;
 
@@ -31,4 +32,7 @@ private:
 	cocos2d::Sprite* zacSprite;
 	cocos2d::Sprite* mattSprite;
 	cocos2d::Sprite* nathanSprite;
+	ClickableTextNode* twitterButtonZac;
+	ClickableTextNode* twitterButtonMatt;
+	ClickableTextNode* twitterButtonNate;
 };
