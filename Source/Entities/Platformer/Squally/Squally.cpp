@@ -13,6 +13,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Maces/CrystalMace.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h" // Debugging
+#include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
 #include "Scenes/Platformer/Inventory/PlayerInventory.h"
 
@@ -51,6 +52,7 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->registerHackables();
 	this->registerAttack(BasicSlash::create(1.5f, 0.15f));
 
+	this->currencyInventory = PlayerCurrencyInventory::getInstance();
 	this->inventory = PlayerInventory::getInstance();
 
 	this->addChild(this->hoverCollision);

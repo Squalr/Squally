@@ -19,7 +19,7 @@ public:
 private:
 	typedef SmartNode super;
 	RuneBar(bool isFrameOnLeft = true);
-	virtual ~RuneBar() = default;
+	virtual ~RuneBar();
 
 	void onEnter() override;
 	void initializePositions() override;

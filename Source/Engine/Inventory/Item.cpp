@@ -6,8 +6,10 @@
 
 using namespace cocos2d;
 
-Item::Item()
+Item::Item(int stackSize)
 {
+	this->count = 1;
+	this->stackSize = stackSize;
 }
 
 Item::~Item()
@@ -24,9 +26,19 @@ void Item::initializeListeners()
 	super::initializeListeners();
 }
 
-cocos2d::ValueMap Item::serialize()
+ValueMap Item::serialize()
 {
 	ValueMap result = ValueMap();
 
 	return result;
+}
+
+int Item::getCount()
+{
+	return this->count;
+}
+
+int Item::getStackSize()
+{
+	return this->stackSize;
 }

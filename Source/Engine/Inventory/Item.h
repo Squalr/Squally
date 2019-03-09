@@ -18,13 +18,18 @@ public:
 	virtual std::string getIconResource() = 0;
 	virtual std::string getSerializationKey() = 0;
 	virtual cocos2d::ValueMap serialize();
+	int getCount();
+	int getStackSize();
 
 protected:
-	Item();
+	Item(int stackSize = 1);
 	virtual ~Item();
 	void onEnter() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
+
+	int count;
+	int stackSize;
 };

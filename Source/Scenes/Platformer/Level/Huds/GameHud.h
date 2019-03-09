@@ -2,6 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+class CurrencyDisplay;
 class RuneBar;
 class StatsBars;
 
@@ -10,6 +11,7 @@ class GameHud : public Hud
 public:
 	static GameHud* create();
 
+	CurrencyDisplay* getCurrencyDisplay();
 	RuneBar* getRuneBar();
 	StatsBars* getStatsBars();
 
@@ -23,6 +25,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	CurrencyDisplay* currencyDisplay;
 	StatsBars* statsBars;
 	RuneBar* runeBar;
 };

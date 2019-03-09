@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
@@ -19,6 +20,7 @@ GameHud* GameHud::create()
 
 GameHud::GameHud()
 {
+	this->currencyDisplay = CurrencyDisplay::create();
 	this->runeBar = RuneBar::create();
 	this->statsBars = StatsBars::create();
 
@@ -26,6 +28,7 @@ GameHud::GameHud()
 
 	this->addChild(this->statsBars);
 	this->addChild(this->runeBar);
+	this->addChild(this->currencyDisplay);
 }
 
 GameHud::~GameHud()
@@ -47,6 +50,7 @@ void GameHud::initializePositions()
 
 	this->statsBars->setPosition(24.0f, visibleSize.height - 64.0f);
 	this->runeBar->setPosition(24.0f + 104.0f, visibleSize.height - 64.0f - 88.0f);
+	this->currencyDisplay->setPosition(48.0f + 88.0f, visibleSize.height - 64.0f - 88.0f - 32.0f);
 }
 
 void GameHud::initializeListeners()
@@ -57,6 +61,11 @@ void GameHud::initializeListeners()
 void GameHud::update(float dt)
 {
 	super::update(dt);
+}
+
+CurrencyDisplay* GameHud::getCurrencyDisplay()
+{
+	return this->currencyDisplay;
 }
 
 RuneBar* GameHud::getRuneBar()

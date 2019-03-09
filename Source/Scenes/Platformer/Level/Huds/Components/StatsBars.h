@@ -22,7 +22,7 @@ public:
 private:
 	typedef SmartNode super;
 	StatsBars(bool isFrameOnLeft = true);
-	virtual ~StatsBars() = default;
+	virtual ~StatsBars();
 
 	void onEnter() override;
 	void initializePositions() override;

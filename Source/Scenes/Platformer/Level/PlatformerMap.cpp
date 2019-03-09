@@ -11,6 +11,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
@@ -55,6 +56,7 @@ void PlatformerMap::onEnter()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
+		this->gameHud->getCurrencyDisplay()->setCurrencyInventory(squally->getCurrencyInventory());
 		this->gameHud->getRuneBar()->setStatsTarget(squally);
 		this->gameHud->getStatsBars()->setStatsTarget(squally);
 
