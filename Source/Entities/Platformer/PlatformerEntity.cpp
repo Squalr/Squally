@@ -20,7 +20,7 @@ const float PlatformerEntity::MoveAcceleration = 14000.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
-const float PlatformerEntity::GroundCollisionPadding = 12.0f;
+const float PlatformerEntity::GroundCollisionPadding = 22.0f;
 const float PlatformerEntity::GroundCollisionOffset = 2.0f;
 const float PlatformerEntity::CapsuleRadius = 8.0f;
 

@@ -389,6 +389,8 @@ bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::ma
 			}
 		}
 	}
+	
+	this->updateBinds();
 
 	return (result == CollisionResult::CollideWithPhysics ? true : false);
 }
