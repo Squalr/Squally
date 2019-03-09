@@ -6,6 +6,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/UIResources.h"
@@ -106,7 +107,19 @@ void AnimationPart::setVisible(bool visible)
 
 void AnimationPart::updateTrackedAttributes()
 {
+	SmartAnimationNode* parent = dynamic_cast<SmartAnimationNode*>(this->getParent());
 	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
+
+	if (parent != nullptr)
+	{
+		this->ghostSprite->setFlippedX(parent->getFlippedX());
+
+		if (!parent->getFlippedX())
+		{
+			// TODO: This logic is wrong and only results in quasi-accuracy (Enter debug mode and watch the ghost sprites visually to see the bug)
+			this->ghostSprite->setPositionX(this->ghostSprite->getPositionX() * 2.0f);
+		}
+	}
 
 	Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
 	Vec3 thisCords = GameUtils::getWorldCoords3D(this);
