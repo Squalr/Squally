@@ -11,6 +11,7 @@ public:
 	static Doubloon* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyDoubloon;
+	static const std::string SaveKeyIsCollected;
 
 protected:
 	Doubloon(cocos2d::ValueMap& initProperties);
@@ -20,10 +21,14 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
+	void onObjectStateLoaded() override;
 
 private:
 	typedef SerializableObject super;
 
+	void disableCollection();
 	SmartAnimationSequenceNode* doubloon;
 	CollisionObject* doubloonCollision;
+
+	bool isCollected;
 };
