@@ -25,6 +25,7 @@ GameHud::GameHud()
 	this->statsBars = StatsBars::create();
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->runeBar->setVisible(false);
 
 	this->addChild(this->statsBars);
 	this->addChild(this->runeBar);
@@ -49,8 +50,8 @@ void GameHud::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->statsBars->setPosition(24.0f, visibleSize.height - 64.0f);
-	this->runeBar->setPosition(24.0f + 104.0f, visibleSize.height - 64.0f - 88.0f);
-	this->currencyDisplay->setPosition(48.0f + 88.0f, visibleSize.height - 64.0f - 88.0f - 32.0f);
+	this->runeBar->setPosition(24.0f + 0.0f, visibleSize.height - 64.0f - 88.0f);
+	this->currencyDisplay->setPosition(24.0f + 112.0f, visibleSize.height - 64.0f - 88.0f);
 }
 
 void GameHud::initializeListeners()

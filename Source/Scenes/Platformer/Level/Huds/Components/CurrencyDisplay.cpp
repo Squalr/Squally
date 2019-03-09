@@ -53,7 +53,7 @@ void CurrencyDisplay::initializePositions()
 {
 	super::initializePositions();
 
-	this->label->setPosition(Vec2(16.0f, 0.0f));
+	this->label->setPosition(Vec2(20.0f, 0.0f));
 }
 
 void CurrencyDisplay::initializeListeners()
