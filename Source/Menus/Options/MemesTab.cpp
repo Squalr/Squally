@@ -37,10 +37,8 @@ MemesTab::MemesTab()
 
 	LocalizedLabel* zacLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Credits_ZacTwitter::create());
 	LocalizedLabel* mattLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Credits_MattTwitter::create());
-	LocalizedLabel* nateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Credits_NateTwitter::create());
+	LocalizedLabel* nateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Credits_NateTwitter::create());
 
-	zacLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	mattLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	nateLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	
 	this->twitterButtonZac = ClickableTextNode::create(zacLabel, zacLabel->clone(), UIResources::Menus_Buttons_SmallGenericButton, UIResources::Menus_Buttons_SmallGenericButtonSelected);
@@ -118,7 +116,5 @@ void MemesTab::initializePositions()
 	this->twitterButtonZac->setPosition(Vec2(paneSize.width / 2.0f - 224.0f, -256.0f));
 	this->twitterButtonMatt->setPosition(Vec2(paneSize.width / 2.0f, -256.0f));
 	this->twitterButtonNate->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -256.0f));
-	this->twitterButtonZac->setTextOffset(Vec2(-48.0f, 0.0f));
-	this->twitterButtonMatt->setTextOffset(Vec2(-48.0f, 0.0f));
-	this->twitterButtonNate->setTextOffset(Vec2(-48.0f, 0.0f));
+	this->twitterButtonNate->setTextOffset(Vec2(-64.0f, 0.0f));
 }

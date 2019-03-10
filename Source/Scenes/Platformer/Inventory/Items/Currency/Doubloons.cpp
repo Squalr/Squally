@@ -32,6 +32,7 @@ Item* Doubloons::clone()
 
 LocalizedString* Doubloons::getString()
 {
+	return Strings::Items_Currency_Doubloons::create();
 }
 
 std::string Doubloons::getIconResource()

@@ -63,6 +63,11 @@ void AnimationPart::replaceWithObject(cocos2d::Node* replacement, float disappea
 	this->runAction(Sequence::create(
 		DelayTime::create(disappearDuration),
 		FadeTo::create(fadeInDuration, 255),
+		CallFunc::create([=]()
+		{
+			// -1 means to use whatever value is on the timeline (no longer overriding)
+			this->spriterAnimationPart->setAlphaOverride(-1.0f);
+		}),
 		nullptr
 	));
 }

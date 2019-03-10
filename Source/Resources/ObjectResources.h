@@ -581,10 +581,9 @@ namespace ObjectResources
 	extern const std::string War_Machines_Cannon_NECK_2;
 	extern const std::string War_Machines_Cannon_WHEEL_1;
 	extern const std::string War_Machines_Cannon_WHEEL_2;
+	extern const std::string War_Machines_Catapult_Animations;
 	extern const std::string War_Machines_Catapult_BALL;
-	extern const std::string War_Machines_Catapult_BODY_BACK;
-	extern const std::string War_Machines_Catapult_BODY_FRONT;
-	extern const std::string War_Machines_Catapult_CATAPULT;
+	extern const std::string War_Machines_Catapult_BALL2;
 	extern const std::string War_Machines_Catapult_FURRY_BALL;
 	extern const std::string War_Machines_Catapult_HEAD_1;
 	extern const std::string War_Machines_Catapult_HEAD_2;
