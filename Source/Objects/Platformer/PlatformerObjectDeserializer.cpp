@@ -48,6 +48,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = CameraFocus::create(properties);
 		}
+		else if (name == CombatSpawn::MapKeyCombatSpawn)
+		{
+			newObject = CombatSpawn::create(properties);
+		}
 		else if (name == CastleDoor::MapKeyCastleDoor)
 		{
 			newObject = CastleDoor::create(properties);
@@ -56,9 +60,9 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = CastleDoorFront::create(properties);
 		}
-		else if (name == CombatSpawn::MapKeyCombatSpawn)
+		else if (name == Catapult::MapKeyCatapult)
 		{
-			newObject = CombatSpawn::create(properties);
+			newObject = Catapult::create(properties);
 		}
 		else if (name == DartGun::MapKeyDartGun)
 		{

@@ -20,8 +20,6 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_SWING 1
-
 const std::string WoodenCrate::MapKeyWoodenCrate = "wooden-crate";
 
 WoodenCrate* WoodenCrate::create(ValueMap& initProperties)
