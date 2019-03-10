@@ -1,16 +1,20 @@
 #include "MemesTab.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/platform/CCApplication.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Config/ConfigManager.h"
-#include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Credits/Developers.h"
+#include "Strings/Menus/Credits/MattTwitter.h"
+#include "Strings/Menus/Credits/NateTwitter.h"
+#include "Strings/Menus/Credits/ZacTwitter.h"
 
 using namespace cocos2d;
 
@@ -31,12 +35,37 @@ MemesTab::MemesTab()
 	this->mattSprite = Sprite::create(UIResources::Menus_CreditsMenu_Matt);
 	this->nathanSprite = Sprite::create(UIResources::Menus_CreditsMenu_Nathan);
 
+	LocalizedLabel* zacLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Credits_ZacTwitter::create());
+	LocalizedLabel* mattLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Credits_MattTwitter::create());
+	LocalizedLabel* nateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Credits_NateTwitter::create());
+
+	nateLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	
+	this->twitterButtonZac = ClickableTextNode::create(zacLabel, zacLabel->clone(), UIResources::Menus_Buttons_SmallGenericButton, UIResources::Menus_Buttons_SmallGenericButtonSelected);
+	this->twitterButtonMatt = ClickableTextNode::create(mattLabel, mattLabel->clone(), UIResources::Menus_Buttons_SmallGenericButton, UIResources::Menus_Buttons_SmallGenericButtonSelected);
+	this->twitterButtonNate = ClickableTextNode::create(nateLabel, nateLabel->clone(), UIResources::Menus_Buttons_SmallGenericButton, UIResources::Menus_Buttons_SmallGenericButtonSelected);
+
+	Sprite* twitterZac = Sprite::create(UIResources::Menus_CreditsMenu_Twitter);
+	Sprite* twitterMatt = Sprite::create(UIResources::Menus_CreditsMenu_Twitter);
+	Sprite* twitterNate = Sprite::create(UIResources::Menus_CreditsMenu_Twitter);
+
+	this->twitterButtonZac->addChild(twitterZac);
+	this->twitterButtonMatt->addChild(twitterMatt);
+	this->twitterButtonNate->addChild(twitterNate);
+
+	twitterZac->setPosition(Vec2(-72.0f, 0.0f));
+	twitterMatt->setPosition(Vec2(-72.0f, 0.0f));
+	twitterNate->setPosition(Vec2(-72.0f, 0.0f));
+
 	this->developersTitle->enableOutline(Color4B::BLACK, 3);
 
 	this->contentScrollPane->addChild(this->developersTitle);
 	this->contentScrollPane->addChild(this->zacSprite);
 	this->contentScrollPane->addChild(this->mattSprite);
 	this->contentScrollPane->addChild(this->nathanSprite);
+	this->contentScrollPane->addChild(this->twitterButtonZac);
+	this->contentScrollPane->addChild(this->twitterButtonMatt);
+	this->contentScrollPane->addChild(this->twitterButtonNate);
 	this->addChild(this->contentScrollPane);
 }
 
@@ -55,6 +84,21 @@ void MemesTab::onEnter()
 void MemesTab::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->twitterButtonZac->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		Application::getInstance()->openURL("https://twitter.com/zcanann");
+	});
+
+	this->twitterButtonMatt->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		Application::getInstance()->openURL("https://twitter.com/letsRTFM");
+	});
+
+	this->twitterButtonNate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		Application::getInstance()->openURL("https://twitter.com/Teknoman117");
+	});
 }
 
 void MemesTab::initializePositions()
@@ -69,4 +113,8 @@ void MemesTab::initializePositions()
 	this->zacSprite->setPosition(Vec2(paneSize.width / 2.0f - 224.0f, -128.0f));
 	this->mattSprite->setPosition(Vec2(paneSize.width / 2.0f, -128.0f));
 	this->nathanSprite->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -128.0f));
+	this->twitterButtonZac->setPosition(Vec2(paneSize.width / 2.0f - 224.0f, -256.0f));
+	this->twitterButtonMatt->setPosition(Vec2(paneSize.width / 2.0f, -256.0f));
+	this->twitterButtonNate->setPosition(Vec2(paneSize.width / 2.0f + 224.0f, -256.0f));
+	this->twitterButtonNate->setTextOffset(Vec2(-64.0f, 0.0f));
 }

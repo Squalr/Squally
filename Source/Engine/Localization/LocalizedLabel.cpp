@@ -68,12 +68,21 @@ void LocalizedLabel::onEnter()
 
 LocalizedLabel* LocalizedLabel::clone()
 {
+	LocalizedLabel* result = nullptr;
+
 	if (this->localizedString == nullptr)
 	{
-		return LocalizedLabel::create(this->fontStyle, this->fontSize, nullptr);
+		result = LocalizedLabel::create(this->fontStyle, this->fontSize, nullptr);
+	}
+	else
+	{
+		result = LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
 	}
 
-	return LocalizedLabel::create(this->fontStyle, this->fontSize, this->localizedString->clone());
+	result->setAnchorPoint(this->getAnchorPoint());
+	result->setPosition(this->getPosition());
+
+	return result;
 }
 
 void LocalizedLabel::setLocalizedString(LocalizedString* localizedString)

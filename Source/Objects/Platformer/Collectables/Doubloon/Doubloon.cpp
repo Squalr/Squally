@@ -69,9 +69,9 @@ void Doubloon::initializeListeners()
 
 			PlayerCurrencyInventory::getInstance()->forceInsert(Doubloons::create());
 			this->saveObjectState(Doubloon::SaveKeyIsCollected, Value(true));
-
-			return CollisionObject::CollisionResult::DoNothing;
 		}
+
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
 

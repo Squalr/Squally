@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="33" nextobjectid="573">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="33" nextobjectid="583">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -80,7 +80,7 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2128" y="2520" width="40000" height="909">
+  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2078.15" y="2082.88" width="40000" height="909" rotation="90">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -139,7 +139,7 @@
  </objectgroup>
  <layer id="17" name="cave" width="196" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt06ENw0AABEFjxzgJt/uvMQ5a/E/8YEa6Bk7abQMAAAAAAAAAAGA1+72XTe8Yv5yFve99bHrf8ctZmB70QPSgB6IHPRA96IHoQQ9ED3ogetAD0YMeiB70QPSgB6IHPRA96IHoQQ9ED3ogetAD0YMeiB70QPSgB6IHPRA96IHoQQ9ED3ogetAD0YMeiB70QPSgB6IHPRA96IHoQQ9ED3ogetAD0YMeiB70QP49nDa9a/zyx/0ANA8GAA==
+   eJzt2TFqREEMBNGf27G9ue9/x8UHkCLjFvQrqHygVdE8Dya+GfEj5OeDjfRd8H99PdhI70M9XCK9D/VwifQ+1MMl0vtQD5dI70M9XCK9D/VwifQ+1MMl0vtQD5dI70M9XCK9D/VwifQ+1MMl0vtQD5f4evIbpX0deIMebqCHLvWwo4cu9bCjhy71sKOHLvWwo4cu9bCjhy71sKOHLvWwo4cu9bCjhy71sKOHPjGjhz4xo4c+MaOHPjGjhz4xo4c+MaOHPjGjhy79P+zooUs97OihSz3s6KFLPezooUs97OihSz3s6KFPzOihT8zooU/M6KFPzOihT8zooU/M6KFPzOihT8zooU/M6KFPzPz28MPV9P3+tW+PoR0Y
   </data>
  </layer>
  <objectgroup id="18" name="decor background">
@@ -262,6 +262,24 @@
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 737.189,4 1809.47,-8 2821.42,24 3752.96,-8 4503.55,0 5408.28,-16 5394.88,440 5354.66,752 5267.55,792 140.704,804 -73.6371,740 -35.7969,434.667 -20.8897,178.667"/>
+  </object>
+  <object id="577" name="solid" type="terrain" x="20227.4" y="3860.17">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -551.535,4.49097 -689.416,255.985 -651.115,907.174 -651.115,1558.36 -625.136,1899.44 -655.309,2328.31 91.9226,2339.79 789.002,2317.35 1286.91,2321.83 1833.91,2318.81 2627.45,2312.84 2765.34,1558.36 2604.47,875.743 2635.11,121.256 2451.26,-8.98194 260.447,0"/>
+  </object>
+  <object id="578" name="solid" type="terrain" x="23954.1" y="1387.6">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="-15.9236,-167.197 -587.407,-161.58 -598.906,598.859 -495.305,1015.31 -17.5976,922.193 346.427,1117.94 265.528,1678.27 -217.916,1676.71 -504.338,1608.83 -542.869,3063.48 709.545,3306.52 1841.16,2996.5 2091.52,2084.61 1941.42,1087.45 2038.63,16.3218 1487.2,-178.432 328.696,-175.159"/>
+  </object>
+  <object id="579" name="solid" type="terrain" x="23529.8" y="5381.79">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -634.154,1.44631 -792.689,82.4393 -748.65,292.153 -748.65,501.865 -718.78,611.71 -753.472,749.827 105.692,753.524 907.193,746.297 1479.68,747.738 2108.63,746.768 3021.04,744.845 3179.59,501.865 2994.61,282.032 3029.85,39.0501 2818.45,-2.89261 299.461,0"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -465,6 +483,21 @@
     <property name="rotation" type="float" value="33"/>
    </properties>
   </object>
+  <object id="580" name="stone-button" type="object" x="23867.6" y="2974.65" width="258.367" height="85.7283">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="581" name="catapult" type="object" x="21829.4" y="3531.98" width="512" height="320">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="582" name="grate" type="object" x="22852.7" y="3979.48" width="586.579" height="85.7283">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -548,7 +581,7 @@
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="13491.2" y="5358.27" width="78.7879" height="88"/>
+  <object id="523" name="squally" type="entity" x="20976.2" y="3521.94" width="78.7879" height="88"/>
  </objectgroup>
  <layer id="26" name="water" width="196" height="48">
   <data encoding="base64" compression="zlib">
@@ -570,6 +603,12 @@
     <property name="texture" value="castle"/>
    </properties>
    <polyline points="0,0 -397.256,6.9212 -496.568,394.508 -468.981,1398.08 -468.981,2401.65 -450.269,2927.3 -472.002,3588.24 66.2094,3605.94 568.297,3571.35 926.93,3578.26 1320.92,3573.6 1892.48,3564.41 1991.8,2401.65 1875.93,1349.64 1898,186.872 1765.58,-13.8424 187.593,0"/>
+  </object>
+  <object id="573" name="solid" type="terrain" x="18483.7" y="2390">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -248.53,8.37684 -310.662,477.479 -293.403,1692.12 -293.403,2906.76 -281.696,3542.96 -295.293,4342.91 41.4218,4364.33 355.536,4322.46 579.904,4330.83 826.391,4325.19 1183.97,4314.07 1246.11,2906.76 1173.61,1633.49 1187.42,226.175 1104.58,-16.7536 117.361,0"/>
   </object>
  </objectgroup>
  <objectgroup id="28" name="fireflies">

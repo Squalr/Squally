@@ -9,16 +9,16 @@ namespace cocos2d
 
 class CollisionObject;
 
-class WoodenCrate : public HackableObject
+class CatapultBall : public HackableObject
 {
 public:
-	static WoodenCrate* create(cocos2d::ValueMap& initProperties);
+	static CatapultBall* create(const cocos2d::ValueMap& initProperties);
 
-	static const std::string MapKeyWoodenCrate;
+	static const std::string MapKeyCatapultBall;
 
 protected:
-	WoodenCrate(cocos2d::ValueMap& initProperties);
-	virtual ~WoodenCrate();
+	CatapultBall(const cocos2d::ValueMap& initProperties);
+	virtual ~CatapultBall();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -29,6 +29,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	cocos2d::Sprite* box;
-	CollisionObject* boxCollision;
+	cocos2d::Sprite* ball;
+	CollisionObject* ballCollision;
 };
