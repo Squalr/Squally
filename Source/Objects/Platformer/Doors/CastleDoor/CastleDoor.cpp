@@ -25,8 +25,6 @@ using namespace cocos2d;
 
 const float CastleDoor::DoorOpenDelta = 320.0f;
 
-#define LOCAL_FUNC_ID_SWING 1
-
 const std::string CastleDoor::MapKeyCastleDoor = "castle-door";
 
 CastleDoor* CastleDoor::create(ValueMap& initProperties)
@@ -40,7 +38,6 @@ CastleDoor* CastleDoor::create(ValueMap& initProperties)
 
 CastleDoor::CastleDoor(ValueMap& initProperties) : HackableObject(initProperties)
 {
-
 	this->castleBack = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_BACK);
 	this->bridge1 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_1);
 	this->bridge2 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_2);

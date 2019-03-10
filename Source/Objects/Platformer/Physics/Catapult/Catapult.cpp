@@ -201,10 +201,10 @@ void Catapult::launchBall()
 
 cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 {
-	static float* freeMemoryForUser = new float[16];
-	float resultSpeedY = this->launchPower;
-	float* launchPowerPtr = &resultSpeedY;
-	float* ySpeedPtr = &baseSpeed.y;
+	volatile static float* freeMemoryForUser = new float[16];
+	volatile float resultSpeedY = this->launchPower;
+	volatile float* launchPowerPtr = &resultSpeedY;
+	volatile float* ySpeedPtr = &baseSpeed.y;
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
 	ASM(push EAX);
@@ -221,7 +221,7 @@ cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 	ASM(pop EAX);
-
+	
 	// Copy from xmm0 to the output variable
 	ASM(push EAX);
 	ASM_MOV_REG_VAR(EAX, launchPowerPtr);

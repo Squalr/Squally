@@ -136,6 +136,14 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = StoneButton::create(properties);
 		}
+		else if (name == TrapDoor::MapKeyTrapDoor)
+		{
+			newObject = TrapDoor::create(properties);
+		}
+		else if (name == TrapDoorFrame::MapKeyTrapDoorFrame)
+		{
+			newObject = TrapDoorFrame::create(properties);
+		}
 		else if (name == Water::MapKeyWater)
 		{
 			newObject = Water::create(properties);
