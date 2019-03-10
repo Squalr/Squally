@@ -4,6 +4,8 @@
 #include "Objects/Platformer/Collectables/Doubloon/Doubloon.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoor.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoorFront.h"
+#include "Objects/Platformer/Doors/TrapDoor/TrapDoor.h"
+#include "Objects/Platformer/Doors/TrapDoor/TrapDoorFrame.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/Monitor.h"
 #include "Objects/Platformer/Obstructions/Wind/Wind.h"

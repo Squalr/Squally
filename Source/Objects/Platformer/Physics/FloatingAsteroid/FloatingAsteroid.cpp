@@ -124,7 +124,7 @@ float FloatingAsteroid::getDensity()
 
 float FloatingAsteroid::getDensityNonVirtual()
 {
-	static float* freeMemoryForUser = new float[16];
+	volatile static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;
 	volatile float* densityRetPtr = &densityRet;
 	volatile float densityCopy = this->loadedDensity;
