@@ -7,6 +7,7 @@
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/Monitor.h"
 #include "Objects/Platformer/Obstructions/Wind/Wind.h"
+#include "Objects/Platformer/Physics/Catapult/Catapult.h"
 #include "Objects/Platformer/Physics/FloatingAsteroid/FloatingAsteroid.h"
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrate.h"
 #include "Objects/Platformer/Physics/FloatingRock/FloatingRock.h"
