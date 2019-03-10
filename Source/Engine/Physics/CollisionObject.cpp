@@ -253,6 +253,24 @@ void CollisionObject::setVelocity(Vec2 velocity)
 	}
 }
 
+void CollisionObject::setVelocityX(float velocityX)
+{
+	this->setVelocity(Vec2(velocityX, this->getVelocity().y));
+}
+
+void CollisionObject::setVelocityY(float velocityY)
+{
+	this->setVelocity(Vec2(this->getVelocity().x, velocityY));
+}
+
+void CollisionObject::setAngularVelocity(float angularVelocity)
+{
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setAngularVelocity(angularVelocity);
+	}
+}
+
 void CollisionObject::setHorizontalDampening(float horizontalDampening)
 {
 	this->horizontalDampening =  MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);

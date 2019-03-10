@@ -53,7 +53,7 @@ GameCamera::GameCamera()
 	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraY::create());
 	this->debugCameraStringX = ConstantString::create();
 	this->debugCameraStringY = ConstantString::create();
-	this->hud->setZOrder(9999);
+	this->hud->setLocalZOrder(9999);
 	this->hud->setVisible(false);
 
 	this->debugCameraLabelX->setStringReplacementVariables(this->debugCameraStringX);

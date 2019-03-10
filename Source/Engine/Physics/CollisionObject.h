@@ -54,6 +54,9 @@ public:
 	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
+	void setVelocityX(float velocityX);
+	void setVelocityY(float velocityY);
+	void setAngularVelocity(float angularVelocity);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
 	std::set<CollisionObject*> getCurrentCollisions();
