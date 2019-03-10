@@ -12,12 +12,12 @@ class CollisionObject;
 class CatapultBall : public HackableObject
 {
 public:
-	static CatapultBall* create(const cocos2d::ValueMap& initProperties);
+	static CatapultBall* create(const cocos2d::ValueMap& initProperties, cocos2d::Vec2 velocity);
 
 	static const std::string MapKeyCatapultBall;
 
 protected:
-	CatapultBall(const cocos2d::ValueMap& initProperties);
+	CatapultBall(const cocos2d::ValueMap& initProperties, cocos2d::Vec2 velocity);
 	virtual ~CatapultBall();
 
 	void onEnter() override;
@@ -29,6 +29,8 @@ protected:
 private:
 	typedef HackableObject super;
 
+	bool isAccelerating;
 	cocos2d::Sprite* ball;
 	CollisionObject* ballCollision;
+	cocos2d::Vec2 velocity;
 };

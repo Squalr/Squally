@@ -410,7 +410,7 @@ void StatePass::onAnyStateChange(GameState* gameState)
 				{
 					if (this->currentVisiblePlayerButton != this->lastStandButton)
 					{
-						this->currentVisiblePlayerButton = currentVisiblePlayerButton;
+						this->currentVisiblePlayerButton = this->lastStandButton;
 						this->hideAndDisableAllButtons();
 					}
 
@@ -420,7 +420,7 @@ void StatePass::onAnyStateChange(GameState* gameState)
 				{
 					if (this->currentVisiblePlayerButton != this->claimVictoryButton)
 					{
-						this->currentVisiblePlayerButton = currentVisiblePlayerButton;
+						this->currentVisiblePlayerButton = this->claimVictoryButton;
 						this->hideAndDisableAllButtons();
 					}
 
@@ -430,7 +430,7 @@ void StatePass::onAnyStateChange(GameState* gameState)
 				{
 					if (this->currentVisiblePlayerButton != this->passButton)
 					{
-						this->currentVisiblePlayerButton = currentVisiblePlayerButton;
+						this->currentVisiblePlayerButton = this->passButton;
 						this->hideAndDisableAllButtons();
 					}
 
