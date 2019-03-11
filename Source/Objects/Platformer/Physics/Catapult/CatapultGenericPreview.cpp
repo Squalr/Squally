@@ -4,6 +4,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
@@ -19,11 +21,11 @@ CatapultGenericPreview* CatapultGenericPreview::create()
 
 CatapultGenericPreview::CatapultGenericPreview()
 {
-	this->previewAsteroid = Sprite::create(ObjectResources::Physics_Asteroid_Asteroid);
+	this->previewCatapult = SmartAnimationNode::create(ObjectResources::War_Machines_Catapult_Animations);
 
-	this->previewAsteroid->setScale(0.35f);
+	this->previewCatapult->setScale(0.35f);
 
-	this->previewNode->addChild(this->previewAsteroid);
+	this->previewNode->addChild(this->previewCatapult);
 }
 
 HackablePreview* CatapultGenericPreview::clone()
@@ -34,23 +36,11 @@ HackablePreview* CatapultGenericPreview::clone()
 void CatapultGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	const float offset = 48.0f;
-
-	this->previewAsteroid->runAction(
-		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, -(HackablePreview::PreviewRadius - offset)))),
-			EaseSineInOut::create(MoveTo::create(1.5f, Vec2(0.0f, HackablePreview::PreviewRadius - offset))),
-			nullptr
-		))
-	);
 }
 
 void CatapultGenericPreview::initializePositions()
 {
 	super::initializePositions();
 
-	const float offset = 48.0f;
-
-	this->previewAsteroid->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
+	this->previewCatapult->setPosition(Vec2(0.0f, -48.0f));
 }

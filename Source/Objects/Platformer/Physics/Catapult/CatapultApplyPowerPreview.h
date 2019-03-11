@@ -24,7 +24,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewAsteroid;
-	LocalizedLabel* xmm0Top;
-	LocalizedLabel* xmm0Bottom;
+	cocos2d::Sprite* catapultBall1;
+	cocos2d::Sprite* catapultBall2;
+	LocalizedLabel* xmm1Low;
+	LocalizedLabel* xmm1High;
 };

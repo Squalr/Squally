@@ -193,7 +193,7 @@
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="583" name="trap-door-frame" type="object" x="23051.7" y="3927.14" width="301" height="215">
+  <object id="583" name="trap-door-frame" type="object" x="23051.7" y="3971.14" width="301" height="215">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
@@ -268,11 +268,11 @@
    </properties>
    <polyline points="0,0 737.189,4 1809.47,-8 2821.42,24 3752.96,-8 4503.55,0 5408.28,-16 5394.88,440 5354.66,752 5267.55,792 140.704,804 -73.6371,740 -35.7969,434.667 -20.8897,178.667"/>
   </object>
-  <object id="578" name="solid" type="terrain" x="23954.1" y="1387.6">
+  <object id="578" name="solid" type="terrain" x="23918.5" y="1387.6">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="-15.9236,-167.197 -587.407,-161.58 -765.348,625.85 -681.411,1374.78 -65.5264,1223.46 233.09,1412.36 107.269,2015.78 -190.992,2014.66 -194.718,1860.29 -554.869,1847.48 -558.455,2546.52 -546.84,3484.5 2047.52,3480.61 2113.42,2131.45 2066.63,692.322 2087.2,-170.432 328.696,-175.159"/>
+   <polyline points="-16.1918,-167.197 -597.3,-161.58 -778.238,625.85 -692.887,1374.78 -66.63,1223.46 237.016,1412.36 109.076,2015.78 -194.209,2014.66 -197.997,1860.29 -564.214,1847.48 -567.861,2546.52 -556.05,3484.5 2082,3480.61 2149.01,2131.45 2101.44,692.322 2122.35,-170.432 334.232,-175.159"/>
   </object>
   <object id="579" name="solid" type="terrain" x="23529.8" y="5381.79">
    <properties>
@@ -498,7 +498,7 @@
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="582" name="trap-door" type="object" x="23091.7" y="3981.48" width="299.579" height="85.7283">
+  <object id="582" name="trap-door" type="object" x="23091.7" y="4025.48" width="299.579" height="85.7283">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
@@ -586,7 +586,7 @@
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="21623.2" y="3573.29" width="78.7879" height="88"/>
+  <object id="523" name="squally" type="entity" x="13351.2" y="5365.29" width="78.7879" height="88"/>
  </objectgroup>
  <layer name="water" width="196" height="48">
   <data encoding="base64" compression="zlib">
@@ -631,7 +631,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="584" name="trap-door-frame" type="object" x="23089.5" y="3967.5" width="301" height="215">
+  <object id="584" name="trap-door-frame" type="object" x="23089.5" y="4011.5" width="301" height="215">
    <properties>
     <property name="event" value="door-open"/>
    </properties>

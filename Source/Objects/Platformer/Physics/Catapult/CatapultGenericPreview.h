@@ -7,6 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class SmartAnimationNode;
+
 class CatapultGenericPreview : public HackablePreview
 {
 public:
@@ -22,5 +24,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewAsteroid;
+	SmartAnimationNode* previewCatapult;
 };

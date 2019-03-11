@@ -22,16 +22,19 @@ CatapultApplyPowerPreview* CatapultApplyPowerPreview::create()
 
 CatapultApplyPowerPreview::CatapultApplyPowerPreview()
 {
-	this->previewAsteroid = Sprite::create(ObjectResources::Physics_Asteroid_Asteroid);
+	this->catapultBall1 = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
+	this->catapultBall2 = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
 
-	this->xmm0Top = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm0, false, ConstantString::create("0.0f"));
-	this->xmm0Bottom = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm0, false, ConstantString::create("1.0f"));
+	this->xmm1Low = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("0.5f"));
+	this->xmm1High = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("1.0f"));
 
-	this->previewAsteroid->setScale(0.35f);
+	this->catapultBall1->setScale(0.35f);
+	this->catapultBall2->setScale(0.35f);
 
-	this->previewNode->addChild(this->previewAsteroid);
-	this->assemblyTextNode->addChild(this->xmm0Top);
-	this->assemblyTextNode->addChild(this->xmm0Bottom);
+	this->previewNode->addChild(this->catapultBall1);
+	this->previewNode->addChild(this->catapultBall2);
+	this->assemblyTextNode->addChild(this->xmm1Low);
+	this->assemblyTextNode->addChild(this->xmm1High);
 }
 
 HackablePreview* CatapultApplyPowerPreview::clone()
@@ -43,15 +46,38 @@ void CatapultApplyPowerPreview::onEnter()
 {
 	super::onEnter();
 
-	const float speed = 1.5f;
-	const float offset = 48.0f;
+	const float speed = 0.75f;
 
-	this->previewAsteroid->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
+	this->catapultBall1->setPosition(Vec2(-HackablePreview::PreviewRadius + 64.0f, 80.0f));
+	this->catapultBall2->setPosition(Vec2(-HackablePreview::PreviewRadius + 16.0f, -32.0f));
 
-	this->previewAsteroid->runAction(
+	Vec2 catapultBall1Spawn = this->catapultBall1->getPosition();
+	Vec2 catapultBall2Spawn = this->catapultBall2->getPosition();
+
+	this->catapultBall1->runAction(
 		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewAsteroid->getPositionX(), -(HackablePreview::PreviewRadius - offset)))),
-			EaseSineInOut::create(MoveTo::create(speed, Vec2(this->previewAsteroid->getPositionX(), HackablePreview::PreviewRadius - offset))),
+			FadeTo::create(0.25f, 255),
+			Spawn::createWithTwoActions(
+				MoveBy::create(speed, Vec2(128.0f, 0.0f)),
+				EaseSineIn::create(MoveBy::create(speed, Vec2(0.0f, -48.0f)))
+			),
+			FadeTo::create(0.25f, 0),
+			MoveTo::create(0.0f, catapultBall1Spawn),
+			DelayTime::create(0.25f),
+			nullptr
+		))
+	);
+
+	this->catapultBall2->runAction(
+		RepeatForever::create(Sequence::create(
+			FadeTo::create(0.25f, 255),
+			Spawn::createWithTwoActions(
+				MoveBy::create(speed, Vec2(256.0f, 0.0f)),
+				EaseSineIn::create(MoveBy::create(speed, Vec2(0.0f, -48.0f)))
+			),
+			FadeTo::create(0.25f, 0),
+			MoveTo::create(0.0f, catapultBall2Spawn),
+			DelayTime::create(0.25f),
 			nullptr
 		))
 	);
@@ -63,6 +89,6 @@ void CatapultApplyPowerPreview::initializePositions()
 
 	const float offset = 32.0f;
 
-	this->xmm0Bottom->setPosition(Vec2(0.0f, -HackablePreview::PreviewRadius + offset));
-	this->xmm0Top->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
+	this->xmm1Low->setPosition(Vec2(0.0f, 0.0f));
+	this->xmm1High->setPosition(Vec2(0.0f, -HackablePreview::PreviewRadius + offset));
 }
