@@ -1,0 +1,17 @@
+{
+  "Scale": "0.7f",
+  "Size": {
+    "Width": "540.0f",
+    "Height": "340.0f"
+  },
+  "Offset": {
+    "X": "-64.0f",
+    "Y": "0.0f"
+  },
+  "FrameOffset": {
+    "X": "0.0f",
+    "Y": "0.0f"
+  },
+  "Health": 10,
+  "Special": 10
+}
