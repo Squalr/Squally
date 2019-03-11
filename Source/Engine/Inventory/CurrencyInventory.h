@@ -11,8 +11,9 @@ public:
 	int getCurrencyCount()
 	{
 		int count = 0;
+		std::vector<Item*> items = this->getItems();
 
-		for (auto it = this->getItems().begin(); it != this->getItems().end(); it++)
+		for (auto it = items.begin(); it != items.end(); it++)
 		{
 			if (dynamic_cast<T*>(*it) != nullptr && dynamic_cast<Currency*>(*it) != nullptr)
 			{
