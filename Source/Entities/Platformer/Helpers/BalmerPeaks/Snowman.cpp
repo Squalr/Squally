@@ -26,8 +26,8 @@ Snowman* Snowman::deserialize(cocos2d::ValueMap& initProperties)
 }
 
 Snowman::Snowman(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
-	EntityResources::Helpers_Snowman_Animations,
-	EntityResources::Helpers_Snowman_Emblem,
+	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
+	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

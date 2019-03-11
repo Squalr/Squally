@@ -26,8 +26,8 @@ Gecko* Gecko::deserialize(cocos2d::ValueMap& initProperties)
 }
 
 Gecko::Gecko(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
-	EntityResources::Helpers_Gecko_Animations,
-	EntityResources::Helpers_Gecko_Emblem,
+	EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
+	EntityResources::Helpers_SeaSharpCaverns_Gecko_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

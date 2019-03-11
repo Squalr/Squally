@@ -4,6 +4,7 @@ from os.path import isfile, dirname, join, splitext, abspath, realpath, basename
 import json
 import os
 import re
+import sys
 
 def main():
 	generateEntityFiles()
@@ -26,8 +27,9 @@ def generateEntityFiles():
 	# Parse each one and generate the file data
 	for entityDataFile in files:
 		entityData = parseEntityFile(entityDataFile)
-		
+
 		if entityData:
+			generateEntityCode(entityData)
 			allEntityData.append(entityData)
 
 	generateEntityDeserializationCode(allEntityData)
@@ -43,23 +45,27 @@ def parseEntityFile(entityDataPath):
 		entityData["Name"] = relpath(entityDataPath).split("/")[2][:-len(".json")]
 
 		if entityData["Prefix"] == "Enemies":
+			entityData["Type"] = "Enemy"
 			entityData["Collision"] = "Enemy"
 			entityData["Base"] = "PlatformerEnemy"
 			entityData["Path"] = "Entities/Platformer/PlatformerEnemy.h"
 		elif entityData["Prefix"] == "Helpers":
+			entityData["Type"] = "Helper"
 			entityData["Collision"] = "FriendlyNpc"
 			entityData["Base"] = "PlatformerEntity"
 			entityData["Path"] = "Entities/Platformer/PlatformerEntity.h"
 		elif entityData["Prefix"] == "Npcs":
+			entityData["Type"] = "Npc"
 			entityData["Collision"] = "FriendlyNpc"
 			entityData["Base"] = "NpcBase"
 			entityData["Path"] = "Entities/Platformer/NpcBase.h"
 		elif entityData["Prefix"] == "Misc":
+			entityData["Type"] = "Misc"
 			entityData["Collision"] = "FriendlyNpc"
 			entityData["Base"] = "PlatformerEntity"
 			entityData["Path"] = "Entities/Platformer/PlatformerEntity.h"
 		else:
-			print("unknown entity type: " + entityData["Type"])
+			print("unknown entity type: " + entityData["Prefix"])
 			return {}
 		
 		return entityData
@@ -96,11 +102,10 @@ def generateEntityDeserializationCode(allEntityData):
 			contentWriter.write(contents)
 	
 def generateEntityCode(entityData):
-	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityName))).lower()
-	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityPrefix + "/" + entityEnvironment).rstrip("/"))) + "/"
-	animationFile = "Resources/Platformer/Entities/" + entityPrefix + "/" + "entityName"
-	outputHeader = entityName + ".h"
-	outputClass = entityName + ".cpp"
+	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).lower()
+	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityData["Prefix"] + "/" + entityData["Environment"]).rstrip("/"))) + "/"
+	outputHeader = entityData["Name"] + ".h"
+	outputClass = entityData["Name"] + ".cpp"
 	templateOutputHeader = abspath(join(join(realpath(__file__), ".."), "Entities.h.template"))
 	templateOutputClass = abspath(join(join(realpath(__file__), ".."), "Entities.cpp.template"))
 	
@@ -130,7 +135,12 @@ def generateEntityCode(entityData):
 			cppUserContentB = getTextBetween(cppPrefixB, cppSuffixB, cppContent)
 			cppUserContentC = getTextBetween(cppPrefixC, cppSuffixC, cppContent)
 	
-	os.makedirs(pathRoot, exist_ok=True)
+	if sys.version_info >= (3, 0):
+		os.makedirs(pathRoot, exist_ok=True)
+	else:
+		# Python 2 support, although it creates a race condition
+		if not os.path.exists(pathRoot):
+			os.makedirs(pathRoot)
 	with open(pathRoot + outputHeader,"w+") as h, open(pathRoot + outputClass,"w+") as cpp, open(templateOutputHeader,"r") as hTemplate, open(templateOutputClass,"r") as cppTemplate:
 		
 		def parseTemplate(template):
@@ -145,14 +155,14 @@ def generateEntityCode(entityData):
 				.replace("{{EntityCollisionType}}", entityData["Collision"]) \
 				.replace("{{MapKeyName}}", mapKeyName) \
 				.replace("{{EntityScale}}", entityData["Scale"]) \
-				.replace("{{EntityWidth}}", entitySize["Width"]) \
-				.replace("{{EntityHeight}}", entitySize["Height"]) \
-				.replace("{{EntityOffsetX}}", entityOffset["X"]) \
-				.replace("{{EntityOffsetY}}", entityOffset["Y"]) \
-				.replace("{{EntityHealth}}", str(entityOffset["Health"])) \
-				.replace("{{EntitySpecial}}", str(entityOffset["Special"]))
+				.replace("{{EntityWidth}}", entityData["Size"]["Width"]) \
+				.replace("{{EntityHeight}}", entityData["Size"]["Height"]) \
+				.replace("{{EntityOffsetX}}", entityData["Offset"]["X"]) \
+				.replace("{{EntityOffsetY}}", entityData["Offset"]["Y"]) \
+				.replace("{{EntityHealth}}", str(entityData["Health"])) \
+				.replace("{{EntitySpecial}}", str(entityData["Special"]))
 			
-			if entityEnvironment == "":
+			if entityData["Environment"] == "":
 				templateData = templateData.replace("{{EnvironmentUnderscore}}", "");
 			else:
 				templateData = templateData.replace("{{EnvironmentUnderscore}}", "_");

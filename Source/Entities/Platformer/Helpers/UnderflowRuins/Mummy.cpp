@@ -26,8 +26,8 @@ Mummy* Mummy::deserialize(cocos2d::ValueMap& initProperties)
 }
 
 Mummy::Mummy(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
-	EntityResources::Helpers_Mummy_Animations,
-	EntityResources::Helpers_Mummy_Emblem,
+	EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
+	EntityResources::Helpers_UnderflowRuins_Mummy_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,

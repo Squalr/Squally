@@ -29,8 +29,8 @@ Zombie::Zombie(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperti
 	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
 	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(114.0f, 208.0f),
-	0.9f,
+	cocos2d::Size(146.0f, 248.0f),
+	0.8f,
 	cocos2d::Vec2(0.0f, 0.0f),
 	10,
 	10)

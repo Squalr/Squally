@@ -26,8 +26,8 @@ Turtle* Turtle::deserialize(cocos2d::ValueMap& initProperties)
 }
 
 Turtle::Turtle(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
-	EntityResources::Helpers_Turtle_Animations,
-	EntityResources::Helpers_Turtle_Emblem,
+	EntityResources::Helpers_EndianForest_Turtle_Animations,
+	EntityResources::Helpers_EndianForest_Turtle_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,
