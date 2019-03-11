@@ -13,16 +13,15 @@
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Castle/HexusOpponentMenuCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Caverns/HexusOpponentMenuCaverns.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Forest/HexusOpponentMenuForest.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/IceCaps/HexusOpponentMenuIceCaps.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Jungle/HexusOpponentMenuJungle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Mech/HexusOpponentMenuMech.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Obelisk/HexusOpponentMenuObelisk.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Ruins/HexusOpponentMenuRuins.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/BalmerPeaks/HexusOpponentMenuBalmerPeaks.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/CastleValgrind/HexusOpponentMenuCastleValgrind.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/DaemonsHallow/HexusOpponentMenuDaemonsHallow.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/EndianForest/HexusOpponentMenuEndianForest.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/LambdaCrypts/HexusOpponentMenuLambdaCrypts.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/SeaSharpCaverns/HexusOpponentMenuSeaSharpCaverns.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/Volcano/HexusOpponentMenuVolcano.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/UnderflowRuins/HexusOpponentMenuUnderflowRuins.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/VoidStar/HexusOpponentMenuVoidStar.h"
 #include "Scenes/Hexus/Menus/HexusDeckManagement.h"
 #include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
 #include "Scenes/Hexus/Menus/Puzzles/HexusPuzzlesMenu.h"
@@ -48,16 +47,15 @@ void Bootstrapper::initialize()
 	LoadingScreen::registerGlobalScene();
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
-	HexusOpponentMenuCastle::registerGlobalScene();
-	HexusOpponentMenuCaverns::registerGlobalScene();
-	HexusOpponentMenuForest::registerGlobalScene();
-	HexusOpponentMenuIceCaps::registerGlobalScene();
-	HexusOpponentMenuJungle::registerGlobalScene();
-	HexusOpponentMenuMech::registerGlobalScene();
-	HexusOpponentMenuObelisk::registerGlobalScene();
-	HexusOpponentMenuRuins::registerGlobalScene();
+	HexusOpponentMenuBalmerPeaks::registerGlobalScene();
+	HexusOpponentMenuCastleValgrind::registerGlobalScene();
+	HexusOpponentMenuDaemonsHallow::registerGlobalScene();
+	HexusOpponentMenuEndianForest::registerGlobalScene();
+	HexusOpponentMenuLambdaCrypts::registerGlobalScene();
+	HexusOpponentMenuSeaSharpCaverns::registerGlobalScene();
 	HexusOpponentMenuTraining::registerGlobalScene();
-	HexusOpponentMenuVolcano::registerGlobalScene();
+	HexusOpponentMenuUnderflowRuins::registerGlobalScene();
+	HexusOpponentMenuVoidStar::registerGlobalScene();
 	HexusDeckManagement::registerGlobalScene();
 	HexusRewardsMenu::registerGlobalScene();
 	HexusPuzzlesMenu::registerGlobalScene();

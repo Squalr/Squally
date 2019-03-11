@@ -1,0 +1,48 @@
+////////////////////////////////////////////////////////////////////////////////////////////
+// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
+////////////////////////////////////////////////////////////////////////////////////////////
+
+#include "{{MenuName}}.h"
+
+#include "Engine/GlobalDirector.h"
+#include "Engine/UI/Controls/ScrollPane.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
+
+////X////X////X////X////X////X////X////X////X////X/
+
+////O////O////O////O////O////O////O////O////O////O/
+
+using namespace cocos2d;
+
+{{MenuName}}* {{MenuName}}::instance = nullptr;
+
+void {{MenuName}}::registerGlobalScene()
+{
+	if ({{MenuName}}::instance == nullptr)
+	{
+		{{MenuName}}::instance = new {{MenuName}}();
+
+		{{MenuName}}::instance->autorelease();
+		{{MenuName}}::instance->initializeListeners();
+	}
+
+	GlobalDirector::registerGlobalScene({{MenuName}}::instance);
+}
+
+{{MenuName}}::{{MenuName}}() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+{
+	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
+
+	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
+
+	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
+	{
+		this->scrollPane->addChild(*it);
+	}
+}
+
+{{MenuName}}::~{{MenuName}}()
+{
+}
