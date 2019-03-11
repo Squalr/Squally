@@ -26,8 +26,8 @@ Ghost* Ghost::deserialize(cocos2d::ValueMap& initProperties)
 }
 
 Ghost::Ghost(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
-	EntityResources::Helpers_Ghost_Animations,
-	EntityResources::Helpers_Ghost_Emblem,
+	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
+	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	cocos2d::Size(224.0f, 440.0f),
 	0.3f,
