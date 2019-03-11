@@ -31,14 +31,13 @@ public:
 	///////////////////////////////////////////////////
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
+	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKeyKringle;
 
 private:
 	Kringle(cocos2d::ValueMap& initProperties);
 	~Kringle();
-
-	static HexusOpponentData* getHexusOpponentData();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

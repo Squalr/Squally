@@ -31,14 +31,13 @@ public:
 	///////////////////////////////////////////////////
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
+	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKeyAmelia;
 
 private:
 	Amelia(cocos2d::ValueMap& initProperties);
 	~Amelia();
-
-	static HexusOpponentData* getHexusOpponentData();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

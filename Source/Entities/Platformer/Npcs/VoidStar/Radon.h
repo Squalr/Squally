@@ -31,14 +31,13 @@ public:
 	///////////////////////////////////////////////////
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
+	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKeyRadon;
 
 private:
 	Radon(cocos2d::ValueMap& initProperties);
 	~Radon();
-
-	static HexusOpponentData* getHexusOpponentData();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

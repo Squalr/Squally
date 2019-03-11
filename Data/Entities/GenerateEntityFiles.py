@@ -33,6 +33,7 @@ def generateEntityFiles():
 			allEntityData.append(entityData)
 
 	generateEntityDeserializationCode(allEntityData)
+	generateHexusMenuCode(allEntityData)
 
 def parseEntityFile(entityDataPath):
 	# Load the entity JSON file
@@ -73,35 +74,6 @@ def parseEntityFile(entityDataPath):
 		return entityData
 
 	return []
-
-def generateEntityDeserializationCode(allEntityData):
-	deserializerClass = abspath(join(join(realpath(__file__), ".."), "../../Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))
-	
-	with open(deserializerClass,"r+") as contentReader:
-		includesPrefixDelimiter = "////V////V////V////V////V////V////V/"
-		includesSuffixDelimiter = "////Y////Y////Y////Y////Y////Y////Y/"
-		prefixDelimiter = "////X////X////X////X////X////X////X/"
-		suffixDelimiter = "////O////O////O////O////O////O////O/"
-		contents = contentReader.read()
-		
-		generatedIncludes = "\n\n"
-		
-		for nextEntity in allEntityData:
-			generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
-		
-		contents = replaceTextBetween(includesPrefixDelimiter, includesSuffixDelimiter, contents, generatedIncludes + "\n")
-		generatedContent = "\n\n"
-		
-		for nextEntity in allEntityData:
-			generatedContent += "\t\t" + "if (name == " + nextEntity["Name"] + "::" + "MapKey" + nextEntity["Name"] + ")\n"
-			generatedContent += "\t\t" + "{\n"
-			generatedContent += "\t\t\t" + "newEntity = " + nextEntity["Name"] + "::deserialize(properties);\n"
-			generatedContent += "\t\t" + "}\n"
-		
-		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")
-		
-		with open(deserializerClass,"w+") as contentWriter:
-			contentWriter.write(contents)
 	
 def generateEntityCode(entityData):
 	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityData["Prefix"] + "/" + entityData["Environment"]).rstrip("/"))) + "/"
@@ -185,6 +157,88 @@ def generateEntityCode(entityData):
 			
 		h.write(hContent)
 		cpp.write(cppContent)
+
+def generateEntityDeserializationCode(allEntityData):
+	menuRoot = abspath(join(join(realpath(__file__), ".."), "../../Source/Scenes/Hexus/Menus/OpponentSelect/"))
+
+	cppTemplateFile = "HexusOpponentMenu.cpp.template"
+	hTemplateFile = "HexusOpponentMenu.h.template"
+	prefixDelimiter = "////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/"
+	suffixDelimiter = "////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/"
+	includePrefixDelimiter = "////X////X////X////X////X////X////X////X////X////X/"
+	includeSuffixDelimiter = "////O////O////O////O////O////O////O////O////O////O/"
+
+	sortedEntities = {}
+
+	for entity in allEntityData:
+		if not entity["Environment"] in sortedEntities:
+			sortedEntities[entity["Environment"]] = []
+		
+		sortedEntities[entity["Environment"]].append(entity)
+
+	with open(hTemplateFile, "r+") as hTemplateReader, open(cppTemplateFile, "r+") as cppTemplateReader:
+		hTemplateContent = hTemplateReader.read()
+		cppTemplateContent = cppTemplateReader.read()
+
+		for environment in sortedEntities:
+			entities = sortedEntities[environment]
+			menuName = "HexusOpponentMenu" + environment
+			hOutFile = menuRoot + "/" + environment + "/" + menuName + ".h"
+			cppOutFile = menuRoot + "/" + environment + "/" + menuName + ".cpp"
+
+			if sys.version_info >= (3, 0):
+				os.makedirs(dirname(cppOutFile), exist_ok=True)
+			else:
+				# Python 2 support, although it creates a race condition
+				if not os.path.exists(dirname(cppOutFile)):
+					os.makedirs(dirname(cppOutFile))
+
+			hContent = hTemplateContent
+			cppContent = cppTemplateContent
+			generatedEnemyList = "\n\n"
+			generatedIncludes = "\n\n"
+
+			for nextEntity in entities:
+				generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
+				generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
+
+			cppContent = replaceTextBetween(includePrefixDelimiter, includeSuffixDelimiter, cppContent, generatedIncludes + "\n")
+			cppContent = replaceTextBetween(prefixDelimiter, suffixDelimiter, cppContent, generatedEnemyList + "\n\t")
+			cppContent = cppContent.replace("{{MenuName}}", menuName)
+			hContent = hContent.replace("{{MenuName}}", menuName)
+
+			with open(hOutFile, "w+") as hWriter, open(cppOutFile, "w+") as cppWriter:
+				hWriter.write(hContent)
+				cppWriter.write(cppContent)
+
+def generateHexusMenuCode(allEntityData):
+	deserializerClass = abspath(join(join(realpath(__file__), ".."), "../../Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))
+	
+	with open(deserializerClass,"r+") as contentReader:
+		includesPrefixDelimiter = "////V////V////V////V////V////V////V/"
+		includesSuffixDelimiter = "////Y////Y////Y////Y////Y////Y////Y/"
+		prefixDelimiter = "////X////X////X////X////X////X////X/"
+		suffixDelimiter = "////O////O////O////O////O////O////O/"
+		contents = contentReader.read()
+		
+		generatedIncludes = "\n\n"
+		
+		for nextEntity in allEntityData:
+			generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
+		
+		contents = replaceTextBetween(includesPrefixDelimiter, includesSuffixDelimiter, contents, generatedIncludes + "\n")
+		generatedContent = "\n\n"
+		
+		for nextEntity in allEntityData:
+			generatedContent += "\t\t" + "if (name == " + nextEntity["Name"] + "::" + "MapKey" + nextEntity["Name"] + ")\n"
+			generatedContent += "\t\t" + "{\n"
+			generatedContent += "\t\t\t" + "newEntity = " + nextEntity["Name"] + "::deserialize(properties);\n"
+			generatedContent += "\t\t" + "}\n"
+		
+		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")
+		
+		with open(deserializerClass,"w+") as contentWriter:
+			contentWriter.write(contents)
 
 def replaceTextBetween(delimeterA, delimeterB, contents, innerContent):
 	contentsPrefix = contents.split(delimeterA)[0]
