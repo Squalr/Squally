@@ -43,6 +43,8 @@ def parseEntityFile(entityDataPath):
 		entityData["Environment"] = relpath(entityDataPath).split("/")[0]
 		entityData["Prefix"] = relpath(entityDataPath).split("/")[1]
 		entityData["Name"] = relpath(entityDataPath).split("/")[2][:-len(".json")]
+		entityData["MapKeyName"] = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).lower()
+		entityData["HexusSaveKey"] = "HEXUS_OPPONENT_SAVE_KEY_" + "_".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).upper()
 
 		if entityData["Prefix"] == "Enemies":
 			entityData["Type"] = "Enemy"
@@ -102,7 +104,6 @@ def generateEntityDeserializationCode(allEntityData):
 			contentWriter.write(contents)
 	
 def generateEntityCode(entityData):
-	mapKeyName = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).lower()
 	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityData["Prefix"] + "/" + entityData["Environment"]).rstrip("/"))) + "/"
 	outputHeader = entityData["Name"] + ".h"
 	outputClass = entityData["Name"] + ".cpp"
@@ -153,14 +154,17 @@ def generateEntityCode(entityData):
 				.replace("{{EntityEnvironment}}", entityData["Environment"]) \
 				.replace("{{EntityPrefix}}", entityData["Prefix"]) \
 				.replace("{{EntityCollisionType}}", entityData["Collision"]) \
-				.replace("{{MapKeyName}}", mapKeyName) \
+				.replace("{{MapKeyName}}", entityData["MapKeyName"]) \
 				.replace("{{EntityScale}}", entityData["Scale"]) \
 				.replace("{{EntityWidth}}", entityData["Size"]["Width"]) \
 				.replace("{{EntityHeight}}", entityData["Size"]["Height"]) \
 				.replace("{{EntityOffsetX}}", entityData["Offset"]["X"]) \
 				.replace("{{EntityOffsetY}}", entityData["Offset"]["Y"]) \
 				.replace("{{EntityHealth}}", str(entityData["Health"])) \
-				.replace("{{EntitySpecial}}", str(entityData["Special"]))
+				.replace("{{EntitySpecial}}", str(entityData["Special"])) \
+				.replace("{{EntityFrameOffsetX}}", str(entityData["FrameOffset"]["X"])) \
+				.replace("{{EntityFrameOffsetY}}", str(entityData["FrameOffset"]["Y"])) \
+				.replace("{{HexusSaveKey}}", entityData["HexusSaveKey"] )
 			
 			if entityData["Environment"] == "":
 				templateData = templateData.replace("{{EnvironmentUnderscore}}", "");

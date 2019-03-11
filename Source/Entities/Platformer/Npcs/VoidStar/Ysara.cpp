@@ -4,7 +4,16 @@
 
 #include "Ysara.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Ysara::MapKeyYsara = "ysara";
+using namespace cocos2d;
 
-Ysara* Ysara::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Ysara::MapKeyYsara = "ysara";
+HexusOpponentData* Ysara::HexusOpponentDataInstance = nullptr;
+const std::string Ysara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YSARA";
+
+Ysara* Ysara::deserialize(ValueMap& initProperties)
 {
 	Ysara* instance = new Ysara(initProperties);
 
@@ -25,16 +38,18 @@ Ysara* Ysara::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Ysara::Ysara(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Ysara::Ysara(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Ysara::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Ysara::~Ysara()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Ysara::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Ysara::getHexusOpponentData()
+{
+	if (Ysara::HexusOpponentDataInstance == nullptr)
+	{
+		Ysara::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_VoidStar_Ysara_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Ysara::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Ysara::HexusOpponentDataInstance;
+}

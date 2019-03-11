@@ -4,7 +4,16 @@
 
 #include "Zana.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Zana::MapKeyZana = "zana";
+using namespace cocos2d;
 
-Zana* Zana::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Zana::MapKeyZana = "zana";
+HexusOpponentData* Zana::HexusOpponentDataInstance = nullptr;
+const std::string Zana::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZANA";
+
+Zana* Zana::deserialize(ValueMap& initProperties)
 {
 	Zana* instance = new Zana(initProperties);
 
@@ -25,16 +38,18 @@ Zana* Zana::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Zana::Zana(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Zana::Zana(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Zana::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Zana::~Zana()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Zana::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Zana::getHexusOpponentData()
+{
+	if (Zana::HexusOpponentDataInstance == nullptr)
+	{
+		Zana::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_LambdaCrypts_Zana_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Zana::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Zana::HexusOpponentDataInstance;
+}

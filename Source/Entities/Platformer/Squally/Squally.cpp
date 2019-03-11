@@ -158,6 +158,11 @@ Vec2 Squally::getButtonOffset()
 	return Vec2(0, 72.0f);
 }
 
+cocos2d::Vec2 Squally::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
 void Squally::update(float dt)
 {
 	super::update(dt);

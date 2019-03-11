@@ -4,7 +4,16 @@
 
 #include "DemonDragon.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string DemonDragon::MapKeyDemonDragon = "demon-dragon";
+using namespace cocos2d;
 
-DemonDragon* DemonDragon::deserialize(cocos2d::ValueMap& initProperties)
+const std::string DemonDragon::MapKeyDemonDragon = "demon-dragon";
+HexusOpponentData* DemonDragon::HexusOpponentDataInstance = nullptr;
+const std::string DemonDragon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_DRAGON";
+
+DemonDragon* DemonDragon::deserialize(ValueMap& initProperties)
 {
 	DemonDragon* instance = new DemonDragon(initProperties);
 
@@ -25,16 +38,18 @@ DemonDragon* DemonDragon::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-DemonDragon::DemonDragon(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DemonDragon::DemonDragon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(340.0f, 360.0f),
+	Size(340.0f, 360.0f),
 	0.85f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = DemonDragon::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ DemonDragon::~DemonDragon()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 DemonDragon::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* DemonDragon::getHexusOpponentData()
+{
+	if (DemonDragon::HexusOpponentDataInstance == nullptr)
+	{
+		DemonDragon::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.85f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			DemonDragon::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return DemonDragon::HexusOpponentDataInstance;
+}

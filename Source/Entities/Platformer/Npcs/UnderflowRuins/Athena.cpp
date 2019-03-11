@@ -4,7 +4,16 @@
 
 #include "Athena.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Athena::MapKeyAthena = "athena";
+using namespace cocos2d;
 
-Athena* Athena::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Athena::MapKeyAthena = "athena";
+HexusOpponentData* Athena::HexusOpponentDataInstance = nullptr;
+const std::string Athena::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ATHENA";
+
+Athena* Athena::deserialize(ValueMap& initProperties)
 {
 	Athena* instance = new Athena(initProperties);
 
@@ -25,16 +38,18 @@ Athena* Athena::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Athena::Athena(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Athena::Athena(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Athena_Animations,
 	EntityResources::Npcs_UnderflowRuins_Athena_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Athena::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Athena::~Athena()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Athena::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Athena::getHexusOpponentData()
+{
+	if (Athena::HexusOpponentDataInstance == nullptr)
+	{
+		Athena::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_UnderflowRuins_Athena_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Athena::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Athena::HexusOpponentDataInstance;
+}

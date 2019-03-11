@@ -13,5 +13,46 @@
     "Y": "0.0f"
   },
   "Health": 10,
-  "Special": 10
+  "Special": 10,
+  "Hexus": {
+      "Strength": "0.7f",
+      "Reward": "200",
+      "Puzzle": {
+        "PlayerLosses": "1",
+        "EnemyLosses": "0",
+        "PlayersTurn": "true",
+        "EnemyPassed": "true",
+        "PlayerDeck": {
+
+        },
+        "EnemyDeck": {
+
+        },
+        "PlayerHand": {
+
+        },
+        "EnemyHand": {
+
+        },
+        "PlayerBinaryCards": {
+
+        },
+        "PlayerDecimalCards": {
+
+        },
+        "PlayerHexCards": {
+
+        },
+        "EnemyBinaryCards": {
+
+        },
+        "EnemyDecimalCards": {
+
+        },
+        "EnemyHexCards": {
+
+        },
+        "TutorialKey": ""
+      }
+  }
 }

@@ -4,7 +4,16 @@
 
 #include "SkeletalNecromancer.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string SkeletalNecromancer::MapKeySkeletalNecromancer = "skeletal-necromancer";
+using namespace cocos2d;
 
-SkeletalNecromancer* SkeletalNecromancer::deserialize(cocos2d::ValueMap& initProperties)
+const std::string SkeletalNecromancer::MapKeySkeletalNecromancer = "skeletal-necromancer";
+HexusOpponentData* SkeletalNecromancer::HexusOpponentDataInstance = nullptr;
+const std::string SkeletalNecromancer::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_NECROMANCER";
+
+SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& initProperties)
 {
 	SkeletalNecromancer* instance = new SkeletalNecromancer(initProperties);
 
@@ -25,16 +38,18 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(cocos2d::ValueMap& initPro
 	return instance;
 }
 
-SkeletalNecromancer::SkeletalNecromancer(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalNecromancer::SkeletalNecromancer(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(128.0f, 228.0f),
+	Size(128.0f, 228.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = SkeletalNecromancer::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ SkeletalNecromancer::~SkeletalNecromancer()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 SkeletalNecromancer::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
+{
+	if (SkeletalNecromancer::HexusOpponentDataInstance == nullptr)
+	{
+		SkeletalNecromancer::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			SkeletalNecromancer::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return SkeletalNecromancer::HexusOpponentDataInstance;
+}

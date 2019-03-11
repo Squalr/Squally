@@ -4,7 +4,16 @@
 
 #include "Santa.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Santa::MapKeySanta = "santa";
+using namespace cocos2d;
 
-Santa* Santa::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Santa::MapKeySanta = "santa";
+HexusOpponentData* Santa::HexusOpponentDataInstance = nullptr;
+const std::string Santa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SANTA";
+
+Santa* Santa::deserialize(ValueMap& initProperties)
 {
 	Santa* instance = new Santa(initProperties);
 
@@ -25,16 +38,18 @@ Santa* Santa::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Santa::Santa(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Santa::Santa(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BalmerPeaks_Santa_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(420.0f, 452.0f),
+	Size(420.0f, 452.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Santa::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Santa::~Santa()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Santa::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Santa::getHexusOpponentData()
+{
+	if (Santa::HexusOpponentDataInstance == nullptr)
+	{
+		Santa::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_BalmerPeaks_Santa_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.7f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Santa::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Santa::HexusOpponentDataInstance;
+}

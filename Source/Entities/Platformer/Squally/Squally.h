@@ -18,6 +18,8 @@ public:
 	static const int SquallyBaseHealth;
 	static const int SquallyBaseSpecial;
 
+	cocos2d::Vec2 getAvatarFrameOffset() override;
+
 protected:
 	void initializeCollisionEvents() override;
 	void performSwimAnimation() override;

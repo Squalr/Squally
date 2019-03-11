@@ -13,15 +13,32 @@ class StateOverride;
 class HexusOpponentData
 {
 public:
-	Deck* getDeck();
-	CardData* getStrongestCard();
-
 	enum Strategy
 	{
 		Random,
 		StrongestCardsFirst,
 		WeakestCardsFirst,
 	};
+
+	HexusOpponentData(
+		std::string animationResourceFile,
+		std::string backgroundResourceFile,
+		float animationScale,
+		cocos2d::Vec2 animationOffset,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyNameKey,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		int reward,
+		std::vector<CardData*> cards,
+		StateOverride* stateOverride = nullptr);
+	~HexusOpponentData();
+
+	Deck* getDeck();
+	CardData* getStrongestCard();
+
+	static int generateReward(float deckStrength);
+	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
 
 	std::string backgroundResourceFile;
 	std::string animationResourceFile;
@@ -37,23 +54,6 @@ public:
 	static const std::string lossesPrefix;
 
 protected:
-	HexusOpponentData(
-		std::string animationResourceFile,
-		std::string backgroundResourceFile,
-		float animationScale,
-		cocos2d::Vec2 animationOffset,
-		cocos2d::Vec2 avatarOffset,
-		std::string enemyNameKey,
-		HexusOpponentData::Strategy strategy,
-		Card::CardStyle cardStyle,
-		int reward,
-		std::vector<CardData*> cards,
-		StateOverride* stateOverride = nullptr);
-	~HexusOpponentData();
-
-	static int generateReward(float deckStrength);
-	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
-
 	Card::CardStyle cardStyle;
 	std::vector<CardData*> cards;
 

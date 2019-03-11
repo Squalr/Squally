@@ -4,7 +4,16 @@
 
 #include "SkeletalCleaver.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string SkeletalCleaver::MapKeySkeletalCleaver = "skeletal-cleaver";
+using namespace cocos2d;
 
-SkeletalCleaver* SkeletalCleaver::deserialize(cocos2d::ValueMap& initProperties)
+const std::string SkeletalCleaver::MapKeySkeletalCleaver = "skeletal-cleaver";
+HexusOpponentData* SkeletalCleaver::HexusOpponentDataInstance = nullptr;
+const std::string SkeletalCleaver::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_CLEAVER";
+
+SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& initProperties)
 {
 	SkeletalCleaver* instance = new SkeletalCleaver(initProperties);
 
@@ -25,16 +38,18 @@ SkeletalCleaver* SkeletalCleaver::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-SkeletalCleaver::SkeletalCleaver(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalCleaver::SkeletalCleaver(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(128.0f, 312.0f),
+	Size(128.0f, 312.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = SkeletalCleaver::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ SkeletalCleaver::~SkeletalCleaver()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 SkeletalCleaver::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* SkeletalCleaver::getHexusOpponentData()
+{
+	if (SkeletalCleaver::HexusOpponentDataInstance == nullptr)
+	{
+		SkeletalCleaver::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			SkeletalCleaver::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return SkeletalCleaver::HexusOpponentDataInstance;
+}

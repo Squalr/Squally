@@ -4,7 +4,16 @@
 
 #include "Ent.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Ent::MapKeyEnt = "ent";
+using namespace cocos2d;
 
-Ent* Ent::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Ent::MapKeyEnt = "ent";
+HexusOpponentData* Ent::HexusOpponentDataInstance = nullptr;
+const std::string Ent::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ENT";
+
+Ent* Ent::deserialize(ValueMap& initProperties)
 {
 	Ent* instance = new Ent(initProperties);
 
@@ -30,16 +43,18 @@ Ent* Ent::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Ent::Ent(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Ent::Ent(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Ent_Animations,
 	EntityResources::Enemies_EndianForest_Ent_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(512.0f, 960.0f),
+	Size(512.0f, 960.0f),
 	0.9f,
-	cocos2d::Vec2(24.0f, 0.0f),
+	Vec2(24.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Ent::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ Ent::~Ent()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Ent::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Ent::getHexusOpponentData()
+{
+	if (Ent::HexusOpponentDataInstance == nullptr)
+	{
+		Ent::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_EndianForest_Ent_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(24.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Ent::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Ent::HexusOpponentDataInstance;
+}

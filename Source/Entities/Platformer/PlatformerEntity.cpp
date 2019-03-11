@@ -57,7 +57,7 @@ PlatformerEntity::PlatformerEntity(
 		false,
 		false
 	);
-
+	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create();
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
@@ -282,6 +282,11 @@ SmartAnimationNode* PlatformerEntity::getAnimations()
 Size PlatformerEntity::getEntitySize()
 {
 	return this->entitySize;
+}
+
+HexusOpponentData* PlatformerEntity::getHexusOpponentData()
+{
+	return this->hexusOpponentData;
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()

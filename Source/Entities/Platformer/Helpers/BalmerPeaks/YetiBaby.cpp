@@ -4,7 +4,16 @@
 
 #include "YetiBaby.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
+using namespace cocos2d;
 
-YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap& initProperties)
+const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
+HexusOpponentData* YetiBaby::HexusOpponentDataInstance = nullptr;
+const std::string YetiBaby::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI_BABY";
+
+YetiBaby* YetiBaby::deserialize(ValueMap& initProperties)
 {
 	YetiBaby* instance = new YetiBaby(initProperties);
 
@@ -25,16 +38,18 @@ YetiBaby* YetiBaby::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-YetiBaby::YetiBaby(cocos2d::ValueMap& initProperties) : PlatformerEntity(initProperties,
+YetiBaby::YetiBaby(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(224.0f, 440.0f),
+	Size(224.0f, 440.0f),
 	0.3f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = YetiBaby::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ YetiBaby::~YetiBaby()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 YetiBaby::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* YetiBaby::getHexusOpponentData()
+{
+	if (YetiBaby::HexusOpponentDataInstance == nullptr)
+	{
+		YetiBaby::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.3f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			YetiBaby::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return YetiBaby::HexusOpponentDataInstance;
+}
