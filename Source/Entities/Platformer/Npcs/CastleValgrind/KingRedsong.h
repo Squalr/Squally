@@ -15,6 +15,8 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
+class HexusOpponentData;
+
 class KingRedsong : public NpcBase
 {
 public:
@@ -28,11 +30,18 @@ public:
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
 
+	cocos2d::Vec2 getAvatarFrameOffset() override;
+
 	static const std::string MapKeyKingRedsong;
 
 private:
 	KingRedsong(cocos2d::ValueMap& initProperties);
 	~KingRedsong();
+
+	static HexusOpponentData* getHexusOpponentData();
+
+	static HexusOpponentData* HexusOpponentDataInstance;
+	static const std::string HexusSaveKey;
 	
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //

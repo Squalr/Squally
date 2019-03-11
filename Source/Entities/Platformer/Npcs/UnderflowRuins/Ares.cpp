@@ -4,7 +4,16 @@
 
 #include "Ares.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Ares::MapKeyAres = "ares";
+using namespace cocos2d;
 
-Ares* Ares::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Ares::MapKeyAres = "ares";
+HexusOpponentData* Ares::HexusOpponentDataInstance = nullptr;
+const std::string Ares::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ARES";
+
+Ares* Ares::deserialize(ValueMap& initProperties)
 {
 	Ares* instance = new Ares(initProperties);
 
@@ -25,16 +38,18 @@ Ares* Ares::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Ares::Ares(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Ares::Ares(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Ares::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Ares::~Ares()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Ares::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Ares::getHexusOpponentData()
+{
+	if (Ares::HexusOpponentDataInstance == nullptr)
+	{
+		Ares::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_UnderflowRuins_Ares_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Ares::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Ares::HexusOpponentDataInstance;
+}

@@ -15,6 +15,8 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
+class HexusOpponentData;
+
 class DemonSwordsman : public PlatformerEnemy
 {
 public:
@@ -28,11 +30,18 @@ public:
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
 
+	cocos2d::Vec2 getAvatarFrameOffset() override;
+
 	static const std::string MapKeyDemonSwordsman;
 
 private:
 	DemonSwordsman(cocos2d::ValueMap& initProperties);
 	~DemonSwordsman();
+
+	static HexusOpponentData* getHexusOpponentData();
+
+	static HexusOpponentData* HexusOpponentDataInstance;
+	static const std::string HexusSaveKey;
 	
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //

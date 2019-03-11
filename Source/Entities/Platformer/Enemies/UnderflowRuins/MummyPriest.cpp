@@ -4,7 +4,16 @@
 
 #include "MummyPriest.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string MummyPriest::MapKeyMummyPriest = "mummy-priest";
+using namespace cocos2d;
 
-MummyPriest* MummyPriest::deserialize(cocos2d::ValueMap& initProperties)
+const std::string MummyPriest::MapKeyMummyPriest = "mummy-priest";
+HexusOpponentData* MummyPriest::HexusOpponentDataInstance = nullptr;
+const std::string MummyPriest::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_PRIEST";
+
+MummyPriest* MummyPriest::deserialize(ValueMap& initProperties)
 {
 	MummyPriest* instance = new MummyPriest(initProperties);
 
@@ -30,16 +43,18 @@ MummyPriest* MummyPriest::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-MummyPriest::MummyPriest(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+MummyPriest::MummyPriest(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(128.0f, 256.0f),
+	Size(128.0f, 256.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = MummyPriest::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ MummyPriest::~MummyPriest()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 MummyPriest::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* MummyPriest::getHexusOpponentData()
+{
+	if (MummyPriest::HexusOpponentDataInstance == nullptr)
+	{
+		MummyPriest::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			MummyPriest::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return MummyPriest::HexusOpponentDataInstance;
+}

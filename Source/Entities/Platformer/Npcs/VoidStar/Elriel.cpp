@@ -4,7 +4,16 @@
 
 #include "Elriel.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Elriel::MapKeyElriel = "elriel";
+using namespace cocos2d;
 
-Elriel* Elriel::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Elriel::MapKeyElriel = "elriel";
+HexusOpponentData* Elriel::HexusOpponentDataInstance = nullptr;
+const std::string Elriel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIEL";
+
+Elriel* Elriel::deserialize(ValueMap& initProperties)
 {
 	Elriel* instance = new Elriel(initProperties);
 
@@ -25,16 +38,18 @@ Elriel* Elriel::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Elriel::Elriel(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Elriel::Elriel(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Elriel_Animations,
 	EntityResources::Npcs_VoidStar_Elriel_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Elriel::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Elriel::~Elriel()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Elriel::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Elriel::getHexusOpponentData()
+{
+	if (Elriel::HexusOpponentDataInstance == nullptr)
+	{
+		Elriel::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_VoidStar_Elriel_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Elriel::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Elriel::HexusOpponentDataInstance;
+}

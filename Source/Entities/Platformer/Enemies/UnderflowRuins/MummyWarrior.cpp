@@ -4,7 +4,16 @@
 
 #include "MummyWarrior.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string MummyWarrior::MapKeyMummyWarrior = "mummy-warrior";
+using namespace cocos2d;
 
-MummyWarrior* MummyWarrior::deserialize(cocos2d::ValueMap& initProperties)
+const std::string MummyWarrior::MapKeyMummyWarrior = "mummy-warrior";
+HexusOpponentData* MummyWarrior::HexusOpponentDataInstance = nullptr;
+const std::string MummyWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_WARRIOR";
+
+MummyWarrior* MummyWarrior::deserialize(ValueMap& initProperties)
 {
 	MummyWarrior* instance = new MummyWarrior(initProperties);
 
@@ -30,16 +43,18 @@ MummyWarrior* MummyWarrior::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-MummyWarrior::MummyWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+MummyWarrior::MummyWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(128.0f, 256.0f),
+	Size(128.0f, 256.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = MummyWarrior::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ MummyWarrior::~MummyWarrior()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 MummyWarrior::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* MummyWarrior::getHexusOpponentData()
+{
+	if (MummyWarrior::HexusOpponentDataInstance == nullptr)
+	{
+		MummyWarrior::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			MummyWarrior::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return MummyWarrior::HexusOpponentDataInstance;
+}

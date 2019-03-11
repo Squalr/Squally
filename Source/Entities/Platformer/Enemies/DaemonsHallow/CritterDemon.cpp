@@ -4,7 +4,16 @@
 
 #include "CritterDemon.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
+using namespace cocos2d;
 
-CritterDemon* CritterDemon::deserialize(cocos2d::ValueMap& initProperties)
+const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
+HexusOpponentData* CritterDemon::HexusOpponentDataInstance = nullptr;
+const std::string CritterDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CRITTER_DEMON";
+
+CritterDemon* CritterDemon::deserialize(ValueMap& initProperties)
 {
 	CritterDemon* instance = new CritterDemon(initProperties);
 
@@ -25,16 +38,18 @@ CritterDemon* CritterDemon::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-CritterDemon::CritterDemon(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Enemies_DaemonsHallow_CritterDemon_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(188.0f, 160.0f),
+	Size(188.0f, 160.0f),
 	0.7f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = CritterDemon::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ CritterDemon::~CritterDemon()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 CritterDemon::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* CritterDemon::getHexusOpponentData()
+{
+	if (CritterDemon::HexusOpponentDataInstance == nullptr)
+	{
+		CritterDemon::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_DaemonsHallow_CritterDemon_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.7f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			CritterDemon::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return CritterDemon::HexusOpponentDataInstance;
+}

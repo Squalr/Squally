@@ -8,6 +8,7 @@
 class CollisionObject;
 class ClickableNode;
 class CurrencyInventory;
+class HexusOpponentData;
 class Inventory;
 class PlatformerAttack;
 class SmartAnimationNode;
@@ -31,6 +32,8 @@ public:
 	std::string getEmblemResource();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
+	HexusOpponentData* getHexusOpponentData();
+	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
 
 	ClickableNode* clickHitbox;
 
@@ -70,6 +73,7 @@ protected:
 
 	CollisionObject* entityCollision;
 	CollisionObject* groundCollision;
+	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	CurrencyInventory* currencyInventory;
 	SpeechBubble* speechBubble;

@@ -4,7 +4,16 @@
 
 #include "Alder.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Alder::MapKeyAlder = "alder";
+using namespace cocos2d;
 
-Alder* Alder::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Alder::MapKeyAlder = "alder";
+HexusOpponentData* Alder::HexusOpponentDataInstance = nullptr;
+const std::string Alder::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ALDER";
+
+Alder* Alder::deserialize(ValueMap& initProperties)
 {
 	Alder* instance = new Alder(initProperties);
 
@@ -25,16 +38,18 @@ Alder* Alder::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Alder::Alder(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Alder::Alder(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Alder::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Alder::~Alder()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Alder::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Alder::getHexusOpponentData()
+{
+	if (Alder::HexusOpponentDataInstance == nullptr)
+	{
+		Alder::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Alder::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Alder::HexusOpponentDataInstance;
+}

@@ -4,7 +4,16 @@
 
 #include "Hades.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Hades::MapKeyHades = "hades";
+using namespace cocos2d;
 
-Hades* Hades::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Hades::MapKeyHades = "hades";
+HexusOpponentData* Hades::HexusOpponentDataInstance = nullptr;
+const std::string Hades::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HADES";
+
+Hades* Hades::deserialize(ValueMap& initProperties)
 {
 	Hades* instance = new Hades(initProperties);
 
@@ -25,16 +38,18 @@ Hades* Hades::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Hades::Hades(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Hades::Hades(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Hades::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Hades::~Hades()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Hades::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Hades::getHexusOpponentData()
+{
+	if (Hades::HexusOpponentDataInstance == nullptr)
+	{
+		Hades::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_UnderflowRuins_Hades_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Hades::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Hades::HexusOpponentDataInstance;
+}

@@ -4,7 +4,16 @@
 
 #include "Abomination.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Abomination::MapKeyAbomination = "abomination";
+using namespace cocos2d;
 
-Abomination* Abomination::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Abomination::MapKeyAbomination = "abomination";
+HexusOpponentData* Abomination::HexusOpponentDataInstance = nullptr;
+const std::string Abomination::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ABOMINATION";
+
+Abomination* Abomination::deserialize(ValueMap& initProperties)
 {
 	Abomination* instance = new Abomination(initProperties);
 
@@ -25,16 +38,18 @@ Abomination* Abomination::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Abomination::Abomination(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_Abomination_Animations,
 	EntityResources::Enemies_LambdaCrypts_Abomination_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(296.0f, 356.0f),
+	Size(296.0f, 356.0f),
 	0.6f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Abomination::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Abomination::~Abomination()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Abomination::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Abomination::getHexusOpponentData()
+{
+	if (Abomination::HexusOpponentDataInstance == nullptr)
+	{
+		Abomination::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_LambdaCrypts_Abomination_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.6f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Abomination::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Abomination::HexusOpponentDataInstance;
+}

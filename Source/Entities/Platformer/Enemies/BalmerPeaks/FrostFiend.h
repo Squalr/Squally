@@ -15,6 +15,8 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
+class HexusOpponentData;
+
 class FrostFiend : public PlatformerEnemy
 {
 public:
@@ -28,11 +30,18 @@ public:
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
 
+	cocos2d::Vec2 getAvatarFrameOffset() override;
+
 	static const std::string MapKeyFrostFiend;
 
 private:
 	FrostFiend(cocos2d::ValueMap& initProperties);
 	~FrostFiend();
+
+	static HexusOpponentData* getHexusOpponentData();
+
+	static HexusOpponentData* HexusOpponentDataInstance;
+	static const std::string HexusSaveKey;
 	
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //

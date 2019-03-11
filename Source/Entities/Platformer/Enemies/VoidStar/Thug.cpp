@@ -4,7 +4,16 @@
 
 #include "Thug.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Thug::MapKeyThug = "thug";
+using namespace cocos2d;
 
-Thug* Thug::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Thug::MapKeyThug = "thug";
+HexusOpponentData* Thug::HexusOpponentDataInstance = nullptr;
+const std::string Thug::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THUG";
+
+Thug* Thug::deserialize(ValueMap& initProperties)
 {
 	Thug* instance = new Thug(initProperties);
 
@@ -25,16 +38,18 @@ Thug* Thug::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Thug::Thug(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Thug::Thug(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Thug_Animations,
 	EntityResources::Enemies_VoidStar_Thug_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(256.0f, 248.0f),
+	Size(256.0f, 248.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Thug::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Thug::~Thug()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Thug::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Thug::getHexusOpponentData()
+{
+	if (Thug::HexusOpponentDataInstance == nullptr)
+	{
+		Thug::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_VoidStar_Thug_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Thug::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Thug::HexusOpponentDataInstance;
+}

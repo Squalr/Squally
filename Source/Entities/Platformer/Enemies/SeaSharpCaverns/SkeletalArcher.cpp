@@ -4,7 +4,16 @@
 
 #include "SkeletalArcher.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string SkeletalArcher::MapKeySkeletalArcher = "skeletal-archer";
+using namespace cocos2d;
 
-SkeletalArcher* SkeletalArcher::deserialize(cocos2d::ValueMap& initProperties)
+const std::string SkeletalArcher::MapKeySkeletalArcher = "skeletal-archer";
+HexusOpponentData* SkeletalArcher::HexusOpponentDataInstance = nullptr;
+const std::string SkeletalArcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_ARCHER";
+
+SkeletalArcher* SkeletalArcher::deserialize(ValueMap& initProperties)
 {
 	SkeletalArcher* instance = new SkeletalArcher(initProperties);
 
@@ -25,16 +38,18 @@ SkeletalArcher* SkeletalArcher::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-SkeletalArcher::SkeletalArcher(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalArcher::SkeletalArcher(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(128.0f, 216.0f),
+	Size(128.0f, 216.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = SkeletalArcher::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ SkeletalArcher::~SkeletalArcher()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 SkeletalArcher::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* SkeletalArcher::getHexusOpponentData()
+{
+	if (SkeletalArcher::HexusOpponentDataInstance == nullptr)
+	{
+		SkeletalArcher::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			SkeletalArcher::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return SkeletalArcher::HexusOpponentDataInstance;
+}

@@ -4,7 +4,16 @@
 
 #include "LionMan.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string LionMan::MapKeyLionMan = "lion-man";
+using namespace cocos2d;
 
-LionMan* LionMan::deserialize(cocos2d::ValueMap& initProperties)
+const std::string LionMan::MapKeyLionMan = "lion-man";
+HexusOpponentData* LionMan::HexusOpponentDataInstance = nullptr;
+const std::string LionMan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LION_MAN";
+
+LionMan* LionMan::deserialize(ValueMap& initProperties)
 {
 	LionMan* instance = new LionMan(initProperties);
 
@@ -30,16 +43,18 @@ LionMan* LionMan::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-LionMan::LionMan(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+LionMan::LionMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(256.0f, 326.0f),
+	Size(256.0f, 326.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = LionMan::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ LionMan::~LionMan()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 LionMan::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* LionMan::getHexusOpponentData()
+{
+	if (LionMan::HexusOpponentDataInstance == nullptr)
+	{
+		LionMan::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			LionMan::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return LionMan::HexusOpponentDataInstance;
+}

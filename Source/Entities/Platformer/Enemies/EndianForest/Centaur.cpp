@@ -4,7 +4,16 @@
 
 #include "Centaur.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Centaur::MapKeyCentaur = "centaur";
+using namespace cocos2d;
 
-Centaur* Centaur::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Centaur::MapKeyCentaur = "centaur";
+HexusOpponentData* Centaur::HexusOpponentDataInstance = nullptr;
+const std::string Centaur::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CENTAUR";
+
+Centaur* Centaur::deserialize(ValueMap& initProperties)
 {
 	Centaur* instance = new Centaur(initProperties);
 
@@ -30,16 +43,18 @@ Centaur* Centaur::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Centaur::Centaur(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Centaur::Centaur(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(296.0f, 256.0f),
+	Size(296.0f, 256.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Centaur::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ Centaur::~Centaur()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Centaur::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Centaur::getHexusOpponentData()
+{
+	if (Centaur::HexusOpponentDataInstance == nullptr)
+	{
+		Centaur::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_EndianForest_Centaur_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Centaur::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Centaur::HexusOpponentDataInstance;
+}

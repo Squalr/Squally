@@ -4,7 +4,16 @@
 
 #include "Medusa.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Medusa::MapKeyMedusa = "medusa";
+using namespace cocos2d;
 
-Medusa* Medusa::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Medusa::MapKeyMedusa = "medusa";
+HexusOpponentData* Medusa::HexusOpponentDataInstance = nullptr;
+const std::string Medusa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MEDUSA";
+
+Medusa* Medusa::deserialize(ValueMap& initProperties)
 {
 	Medusa* instance = new Medusa(initProperties);
 
@@ -30,16 +43,18 @@ Medusa* Medusa::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Medusa::Medusa(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Medusa::Medusa(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(224.0f, 304.0f),
+	Size(224.0f, 304.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Medusa::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ Medusa::~Medusa()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Medusa::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Medusa::getHexusOpponentData()
+{
+	if (Medusa::HexusOpponentDataInstance == nullptr)
+	{
+		Medusa::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Medusa::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Medusa::HexusOpponentDataInstance;
+}

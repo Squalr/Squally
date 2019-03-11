@@ -4,7 +4,16 @@
 
 #include "Merlin.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Merlin::MapKeyMerlin = "merlin";
+using namespace cocos2d;
 
-Merlin* Merlin::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Merlin::MapKeyMerlin = "merlin";
+HexusOpponentData* Merlin::HexusOpponentDataInstance = nullptr;
+const std::string Merlin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERLIN";
+
+Merlin* Merlin::deserialize(ValueMap& initProperties)
 {
 	Merlin* instance = new Merlin(initProperties);
 
@@ -25,16 +38,18 @@ Merlin* Merlin::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Merlin::Merlin(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Merlin::Merlin(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Merlin::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Merlin::~Merlin()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Merlin::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Merlin::getHexusOpponentData()
+{
+	if (Merlin::HexusOpponentDataInstance == nullptr)
+	{
+		Merlin::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_CastleValgrind_Merlin_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Merlin::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Merlin::HexusOpponentDataInstance;
+}

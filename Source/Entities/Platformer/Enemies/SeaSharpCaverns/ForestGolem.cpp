@@ -4,7 +4,16 @@
 
 #include "ForestGolem.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string ForestGolem::MapKeyForestGolem = "forest-golem";
+using namespace cocos2d;
 
-ForestGolem* ForestGolem::deserialize(cocos2d::ValueMap& initProperties)
+const std::string ForestGolem::MapKeyForestGolem = "forest-golem";
+HexusOpponentData* ForestGolem::HexusOpponentDataInstance = nullptr;
+const std::string ForestGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FOREST_GOLEM";
+
+ForestGolem* ForestGolem::deserialize(ValueMap& initProperties)
 {
 	ForestGolem* instance = new ForestGolem(initProperties);
 
@@ -25,16 +38,18 @@ ForestGolem* ForestGolem::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-ForestGolem::ForestGolem(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ForestGolem::ForestGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(768.0f, 840.0f),
+	Size(768.0f, 840.0f),
 	0.30f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = ForestGolem::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ ForestGolem::~ForestGolem()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 ForestGolem::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* ForestGolem::getHexusOpponentData()
+{
+	if (ForestGolem::HexusOpponentDataInstance == nullptr)
+	{
+		ForestGolem::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.30f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			ForestGolem::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return ForestGolem::HexusOpponentDataInstance;
+}

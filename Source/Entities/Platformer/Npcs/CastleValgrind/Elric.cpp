@@ -4,7 +4,16 @@
 
 #include "Elric.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Elric::MapKeyElric = "elric";
+using namespace cocos2d;
 
-Elric* Elric::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Elric::MapKeyElric = "elric";
+HexusOpponentData* Elric::HexusOpponentDataInstance = nullptr;
+const std::string Elric::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIC";
+
+Elric* Elric::deserialize(ValueMap& initProperties)
 {
 	Elric* instance = new Elric(initProperties);
 
@@ -25,16 +38,18 @@ Elric* Elric::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Elric::Elric(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Elric::Elric(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Elric_Animations,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Elric::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Elric::~Elric()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Elric::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Elric::getHexusOpponentData()
+{
+	if (Elric::HexusOpponentDataInstance == nullptr)
+	{
+		Elric::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_CastleValgrind_Elric_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Elric::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Elric::HexusOpponentDataInstance;
+}

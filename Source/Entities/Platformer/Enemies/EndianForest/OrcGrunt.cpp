@@ -4,7 +4,16 @@
 
 #include "OrcGrunt.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -19,9 +28,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string OrcGrunt::MapKeyOrcGrunt = "orc-grunt";
+using namespace cocos2d;
 
-OrcGrunt* OrcGrunt::deserialize(cocos2d::ValueMap& initProperties)
+const std::string OrcGrunt::MapKeyOrcGrunt = "orc-grunt";
+HexusOpponentData* OrcGrunt::HexusOpponentDataInstance = nullptr;
+const std::string OrcGrunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_GRUNT";
+
+OrcGrunt* OrcGrunt::deserialize(ValueMap& initProperties)
 {
 	OrcGrunt* instance = new OrcGrunt(initProperties);
 
@@ -30,16 +43,18 @@ OrcGrunt* OrcGrunt::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-OrcGrunt::OrcGrunt(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(256.0f, 218.0f),
+	Size(256.0f, 218.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = OrcGrunt::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -66,3 +81,37 @@ OrcGrunt::~OrcGrunt()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 OrcGrunt::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* OrcGrunt::getHexusOpponentData()
+{
+	if (OrcGrunt::HexusOpponentDataInstance == nullptr)
+	{
+		OrcGrunt::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			OrcGrunt::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return OrcGrunt::HexusOpponentDataInstance;
+}

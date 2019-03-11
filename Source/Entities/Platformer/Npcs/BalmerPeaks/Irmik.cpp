@@ -4,7 +4,16 @@
 
 #include "Irmik.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string Irmik::MapKeyIrmik = "irmik";
+using namespace cocos2d;
 
-Irmik* Irmik::deserialize(cocos2d::ValueMap& initProperties)
+const std::string Irmik::MapKeyIrmik = "irmik";
+HexusOpponentData* Irmik::HexusOpponentDataInstance = nullptr;
+const std::string Irmik::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IRMIK";
+
+Irmik* Irmik::deserialize(ValueMap& initProperties)
 {
 	Irmik* instance = new Irmik(initProperties);
 
@@ -25,16 +38,18 @@ Irmik* Irmik::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-Irmik::Irmik(cocos2d::ValueMap& initProperties) : NpcBase(initProperties,
+Irmik::Irmik(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
-	cocos2d::Size(112.0f, 160.0f),
+	Size(112.0f, 160.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = Irmik::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ Irmik::~Irmik()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 Irmik::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* Irmik::getHexusOpponentData()
+{
+	if (Irmik::HexusOpponentDataInstance == nullptr)
+	{
+		Irmik::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			Irmik::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return Irmik::HexusOpponentDataInstance;
+}

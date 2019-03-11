@@ -4,7 +4,16 @@
 
 #include "ReanimatedFighter.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string ReanimatedFighter::MapKeyReanimatedFighter = "reanimated-fighter";
+using namespace cocos2d;
 
-ReanimatedFighter* ReanimatedFighter::deserialize(cocos2d::ValueMap& initProperties)
+const std::string ReanimatedFighter::MapKeyReanimatedFighter = "reanimated-fighter";
+HexusOpponentData* ReanimatedFighter::HexusOpponentDataInstance = nullptr;
+const std::string ReanimatedFighter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_FIGHTER";
+
+ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& initProperties)
 {
 	ReanimatedFighter* instance = new ReanimatedFighter(initProperties);
 
@@ -25,16 +38,18 @@ ReanimatedFighter* ReanimatedFighter::deserialize(cocos2d::ValueMap& initPropert
 	return instance;
 }
 
-ReanimatedFighter::ReanimatedFighter(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ReanimatedFighter::ReanimatedFighter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(256.0f, 248.0f),
+	Size(256.0f, 248.0f),
 	0.9f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = ReanimatedFighter::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ ReanimatedFighter::~ReanimatedFighter()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 ReanimatedFighter::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* ReanimatedFighter::getHexusOpponentData()
+{
+	if (ReanimatedFighter::HexusOpponentDataInstance == nullptr)
+	{
+		ReanimatedFighter::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.9f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			ReanimatedFighter::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return ReanimatedFighter::HexusOpponentDataInstance;
+}

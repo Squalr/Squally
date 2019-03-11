@@ -4,7 +4,16 @@
 
 #include "SkeletalWarrior.h"
 
+#include "cocos/math/CCGeometry.h"
+
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -14,9 +23,13 @@
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
+using namespace cocos2d;
 
-SkeletalWarrior* SkeletalWarrior::deserialize(cocos2d::ValueMap& initProperties)
+const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
+HexusOpponentData* SkeletalWarrior::HexusOpponentDataInstance = nullptr;
+const std::string SkeletalWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_WARRIOR";
+
+SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& initProperties)
 {
 	SkeletalWarrior* instance = new SkeletalWarrior(initProperties);
 
@@ -25,16 +38,18 @@ SkeletalWarrior* SkeletalWarrior::deserialize(cocos2d::ValueMap& initProperties)
 	return instance;
 }
 
-SkeletalWarrior::SkeletalWarrior(cocos2d::ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalWarrior::SkeletalWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
-	cocos2d::Size(128.0f, 216.0f),
+	Size(128.0f, 216.0f),
 	0.8f,
-	cocos2d::Vec2(0.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
+	this->hexusOpponentData = SkeletalWarrior::getHexusOpponentData();
+
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
@@ -55,3 +70,37 @@ SkeletalWarrior::~SkeletalWarrior()
 ////O////O////O////O////O////O////O////O////O////O/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
+
+Vec2 SkeletalWarrior::getAvatarFrameOffset()
+{
+	return Vec2(0.0f, 0.0f);
+}
+
+HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
+{
+	if (SkeletalWarrior::HexusOpponentDataInstance == nullptr)
+	{
+		SkeletalWarrior::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
+			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			0.8f,
+			Vec2(0.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
+			SkeletalWarrior::HexusSaveKey,
+			HexusOpponentData::Strategy::Random,
+			Card::CardStyle::Shadow,
+			HexusOpponentData::generateReward(0.62f),
+			HexusOpponentData::generateDeck(25, 0.62f,
+			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			})
+		);
+	}
+
+	return SkeletalWarrior::HexusOpponentDataInstance;
+}
