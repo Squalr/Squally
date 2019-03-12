@@ -25,6 +25,7 @@ public:
 		std::string backgroundResourceFile,
 		float animationScale,
 		cocos2d::Vec2 animationOffset,
+		cocos2d::Vec2 frameOffset,
 		cocos2d::Vec2 avatarOffset,
 		std::string enemyNameKey,
 		HexusOpponentData::Strategy strategy,
@@ -46,6 +47,7 @@ public:
 	float animationScale;
 	cocos2d::Vec2 animationOffset;
 	cocos2d::Vec2 avatarOffset;
+	cocos2d::Vec2 frameOffset;
 	int reward;
 	Strategy strategy;
 	StateOverride* stateOverride;

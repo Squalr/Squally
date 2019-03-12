@@ -19,13 +19,6 @@
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////A////A////A////A////A////A////A////A////A////A/
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/OrcBomber/TorchThrow.h"
-
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
@@ -61,16 +54,6 @@ OrcBomber::OrcBomber(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
-	// Force the debug sprite to be rendered in debug mode by grabbing the animation part
-	AnimationPart* weapon = this->getAnimations()->getAnimationPart("WEAPON");
-
-	//this->registerAttack(BasicSlash::create(0.7f, 0.2f));
-	this->registerAttack(TorchThrow::create(0.625f, 3.5f));
-
-	this->dropTable[HealthPotion::SaveKeyHealthPotion] = 0.25f;
-	this->dropTable[ManaPotion::SaveKeyManaPotion] = 0.25f;
-	this->dropTable[SpeedPotion::SaveKeySpeedPotion] = 0.25f;
-
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -90,7 +73,7 @@ OrcBomber::~OrcBomber()
 
 Vec2 OrcBomber::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* OrcBomber::getHexusOpponentData()
@@ -102,7 +85,8 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			OrcBomber::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

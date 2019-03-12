@@ -8,13 +8,17 @@
     "X": "24.0f",
     "Y": "0.0f"
   },
-  "FrameOffset": {
-    "X": "0.0f",
-    "Y": "0.0f"
+  "AvatarOffset": {
+    "X": "-32.0f",
+    "Y": "-112.0f"
   },
   "Health": "10",
   "Special": "10",
   "Hexus": {
+    "FrameOffset": {
+      "X": "-48.0f",
+      "Y": "-144.0f"
+    },
     "DeckSize": "25",
     "Strength": "0.615f",
     "Strategy": "Random",

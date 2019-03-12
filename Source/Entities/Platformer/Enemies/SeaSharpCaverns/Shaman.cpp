@@ -73,7 +73,7 @@ Shaman::~Shaman()
 
 Vec2 Shaman::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Shaman::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns,
 			0.75f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Shaman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

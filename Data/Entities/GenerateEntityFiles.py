@@ -170,15 +170,17 @@ def generateEntityCode(entityData):
 				.replace("{{EntityOffsetY}}", entityData["Offset"]["Y"]) \
 				.replace("{{EntityHealth}}", entityData["Health"]) \
 				.replace("{{EntitySpecial}}", entityData["Special"]) \
-				.replace("{{EntityFrameOffsetX}}", entityData["FrameOffset"]["X"]) \
-				.replace("{{EntityFrameOffsetY}}", entityData["FrameOffset"]["Y"]) \
+				.replace("{{EntityAvatarOffsetX}}", entityData["AvatarOffset"]["X"]) \
+				.replace("{{EntityAvatarOffsetY}}", entityData["AvatarOffset"]["Y"]) \
 				.replace("{{HexusSaveKey}}", entityData["HexusSaveKey"]) \
 				.replace("{{HexusStrategy}}", entityData["Hexus"]["Strategy"]) \
 				.replace("{{HexusStrength}}", entityData["Hexus"]["Strength"]) \
 				.replace("{{HexusDeckSize}}", entityData["Hexus"]["DeckSize"]) \
 				.replace("{{HexusPresetCards}}", entityData["Hexus"]["PresetCards"]) \
 				.replace("{{HexusCardStyle}}", entityData["Hexus"]["CardStyle"]) \
-				.replace("{{HexusPuzzleData}}", entityData["Hexus"]["PuzzleData"])
+				.replace("{{HexusPuzzleData}}", entityData["Hexus"]["PuzzleData"]) \
+				.replace("{{HexusFrameOffsetX}}", entityData["Hexus"]["FrameOffset"]["X"]) \
+				.replace("{{HexusFrameOffsetY}}", entityData["Hexus"]["FrameOffset"]["Y"])
 
 			if entityData["Environment"] == "":
 				templateData = templateData.replace("{{EnvironmentUnderscore}}", "");
@@ -283,12 +285,16 @@ def generateEntityDeserializationCode(allEntityData):
 			contentWriter.write(contents)
 
 def replaceTextBetween(delimeterA, delimeterB, contents, innerContent):
+	if not delimeterA in contents or delimeterB in contents:
+		return contents
 	contentsPrefix = contents.split(delimeterA)[0]
 	contentsSuffix = contents.split(delimeterB)[1]
 	
 	return contentsPrefix + delimeterA + innerContent + delimeterB + contentsSuffix
 
 def getTextBetween(delimeterA, delimeterB, contents):
+	if not delimeterA in contents or delimeterB in contents:
+		return ""
 	return contents.split(delimeterA)[1].split(delimeterB)[0]
 	
 if __name__ == "__main__":

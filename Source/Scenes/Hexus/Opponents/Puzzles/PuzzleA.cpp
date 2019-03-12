@@ -32,6 +32,7 @@ PuzzleA::PuzzleA() : HexusOpponentData(
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(0.0f, -48.0f),
+	Vec2(0.0f, -48.0f),
 	PuzzleA::OpponentSaveKey,
 	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Light,

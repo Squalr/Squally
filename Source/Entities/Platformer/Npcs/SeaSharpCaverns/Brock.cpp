@@ -73,7 +73,7 @@ Brock::~Brock()
 
 Vec2 Brock::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Brock::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Brock::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Brock::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

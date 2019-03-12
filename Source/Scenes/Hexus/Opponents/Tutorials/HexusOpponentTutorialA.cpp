@@ -31,6 +31,7 @@ HexusOpponentTutorialA::HexusOpponentTutorialA() : HexusOpponentData(
 	UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
+	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -48.0f),
 	HexusOpponentTutorialA::OpponentSaveKey,
 	HexusOpponentData::Strategy::Random,

@@ -73,7 +73,7 @@ ToySoldierGoblin::~ToySoldierGoblin()
 
 Vec2 ToySoldierGoblin::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
 			0.8f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			ToySoldierGoblin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,

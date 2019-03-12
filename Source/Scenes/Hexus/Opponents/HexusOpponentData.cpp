@@ -19,6 +19,7 @@ HexusOpponentData::HexusOpponentData(
 	std::string backgroundResourceFile,
 	float animationScale,
 	Vec2 animationOffset,
+	Vec2 frameOffset,
 	Vec2 avatarOffset,
 	std::string enemyNameKey,
 	HexusOpponentData::Strategy strategy,
@@ -31,6 +32,7 @@ HexusOpponentData::HexusOpponentData(
 	this->backgroundResourceFile = backgroundResourceFile;
 	this->animationScale = animationScale;
 	this->animationOffset = animationOffset;
+	this->frameOffset = frameOffset;
 	this->avatarOffset = avatarOffset;
 	this->enemyNameKey = enemyNameKey;
 	this->strategy = strategy;

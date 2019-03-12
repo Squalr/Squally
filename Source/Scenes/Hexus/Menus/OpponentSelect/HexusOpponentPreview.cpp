@@ -69,7 +69,7 @@ void HexusOpponentPreview::initializePositions()
 
 	if (this->hexusOpponentData != nullptr)
 	{
-		this->opponentSprite->setPosition(this->hexusOpponentData->animationOffset);
+		this->opponentSprite->setPosition(this->hexusOpponentData->frameOffset);
 	}
 }
 

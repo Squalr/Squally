@@ -31,6 +31,7 @@ HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
+	Vec2(-48.0f, -144.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentTutorialC::OpponentSaveKey,
 	HexusOpponentData::Strategy::Random,

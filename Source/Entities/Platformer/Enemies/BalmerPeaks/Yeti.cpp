@@ -73,7 +73,7 @@ Yeti::~Yeti()
 
 Vec2 Yeti::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Yeti::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
 			0.4f,
 			Vec2(24.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Yeti::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,

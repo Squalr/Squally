@@ -73,7 +73,7 @@ Magnus::~Magnus()
 
 Vec2 Magnus::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Magnus::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Magnus::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameDaemonsHallow,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Magnus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,

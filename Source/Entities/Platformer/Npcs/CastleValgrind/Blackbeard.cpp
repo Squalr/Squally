@@ -73,7 +73,7 @@ Blackbeard::~Blackbeard()
 
 Vec2 Blackbeard::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Blackbeard::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Blackbeard::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Blackbeard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,

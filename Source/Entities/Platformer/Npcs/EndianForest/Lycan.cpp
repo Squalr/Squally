@@ -73,7 +73,7 @@ Lycan::~Lycan()
 
 Vec2 Lycan::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Lycan::getHexusOpponentData()
@@ -85,12 +85,13 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Lycan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.100f + 0.125f * 08.0f),
-			HexusOpponentData::generateDeck(25, 0.100f + 0.125f * 08.0f,
+			HexusOpponentData::generateReward(0.000f + 0.125f * 08.0f),
+			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 08.0f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
