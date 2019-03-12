@@ -1,7 +1,7 @@
 {
   "Type": "Npc",
   "Environment": "EndianForest",
-  "Scale": "0.7f",
+  "Scale": "0.85f",
   "Size": {
     "Width": "112.0f",
     "Height": "160.0f"

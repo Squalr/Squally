@@ -43,7 +43,7 @@ Roger::Roger(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Roger_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -83,7 +83,7 @@ HexusOpponentData* Roger::getHexusOpponentData()
 		Roger::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_LambdaCrypts_Roger_Animations,
 			UIResources::Menus_Hexus_HexusFrameLambdaCrypts,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

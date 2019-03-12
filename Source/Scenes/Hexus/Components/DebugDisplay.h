@@ -2,6 +2,7 @@
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
+class ClickableNode;
 class GameState;
 class LocalizedLabel;
 
@@ -21,8 +22,14 @@ private:
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
+
+	GameState* activeGameState;
 	LocalizedLabel* stateLabel;
+	ClickableNode* loseButton;
+	ClickableNode* drawButton;
+	ClickableNode* winButton;
 
 	static const bool enabled;
 };

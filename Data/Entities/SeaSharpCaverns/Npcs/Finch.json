@@ -1,5 +1,5 @@
 {
-  "Scale": "0.9f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "112.0f",
     "Height": "160.0f"
@@ -17,7 +17,7 @@
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-144.0f"
+      "Y": "-160.0f"
     },
     "DeckSize": "25",
     "Strength": "0.615f",

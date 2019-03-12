@@ -10,14 +10,14 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-144.0f"
   },
   "Health": "10",
   "Special": "10",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-144.0f"
+      "Y": "-172.0f"
     },
     "DeckSize": "25",
     "Strength": "0.615f",

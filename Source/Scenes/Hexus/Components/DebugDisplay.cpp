@@ -2,12 +2,15 @@
 
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
 #include "Strings/Generics/Constant.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -23,12 +26,18 @@ DebugDisplay* DebugDisplay::create()
 DebugDisplay::DebugDisplay()
 {
 	this->stateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->loseButton = ClickableNode::create(UIResources::Menus_Icons_BloodGoblet, UIResources::Menus_Icons_BloodGoblet);
+	this->drawButton = ClickableNode::create(UIResources::Menus_Icons_YinYang, UIResources::Menus_Icons_YinYang);
+	this->winButton = ClickableNode::create(UIResources::Menus_Icons_Medals, UIResources::Menus_Icons_Medals);
 
 	this->stateLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->setVisible(false);
 
 	this->addChild(this->stateLabel);
+	this->addChild(this->loseButton);
+	this->addChild(this->drawButton);
+	this->addChild(this->winButton);
 }
 
 DebugDisplay::~DebugDisplay()
@@ -56,6 +65,36 @@ void DebugDisplay::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->stateLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter, visibleSize.height - 32.0f);
+	this->loseButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter - 64.0f - 112.0f, visibleSize.height - 372.0f);
+	this->drawButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter - 64.0f, visibleSize.height - 372.0f);
+	this->winButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter - 64.0f + 112.0f, visibleSize.height - 372.0f);
+}
+
+void DebugDisplay::initializeListeners()
+{
+	ComponentBase::initializeListeners();
+
+	this->loseButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		this->activeGameState->playerLosses = 2;
+		this->activeGameState->enemyLosses = 0;
+
+		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
+	});
+	this->drawButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		this->activeGameState->playerLosses = 2;
+		this->activeGameState->enemyLosses = 2;
+
+		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
+	});
+	this->winButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	{
+		this->activeGameState->playerLosses = 0;
+		this->activeGameState->enemyLosses = 2;
+		
+		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
+	});
 }
 
 void DebugDisplay::onBeforeStateChange(GameState* gameState)
@@ -66,6 +105,8 @@ void DebugDisplay::onBeforeStateChange(GameState* gameState)
 void DebugDisplay::onAnyStateChange(GameState* gameState)
 {
 	ComponentBase::onAnyStateChange(gameState);
+
+	this->activeGameState = gameState;
 
 	switch (gameState->stateType)
 	{

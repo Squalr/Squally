@@ -43,7 +43,7 @@ Aphrodite::Aphrodite(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -83,7 +83,7 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 		Aphrodite::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 			UIResources::Menus_Hexus_HexusFrameUnderflowRuins,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

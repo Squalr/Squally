@@ -1,7 +1,5 @@
 {
-  "Type": "Npc",
-  "Environment": "VoidStar",
-  "Scale": "0.9f",
+  "Scale": "0.85f",
   "Size": {
     "Width": "112.0f",
     "Height": "160.0f"
