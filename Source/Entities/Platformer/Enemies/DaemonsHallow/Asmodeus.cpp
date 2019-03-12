@@ -73,7 +73,7 @@ Asmodeus::~Asmodeus()
 
 Vec2 Asmodeus::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Asmodeus::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Asmodeus::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameDaemonsHallow,
 			0.7f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Asmodeus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,

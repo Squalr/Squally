@@ -31,8 +31,7 @@ Avatars::Avatars()
 	this->avatarEnemy = Node::create();
 	this->playerSprite = SmartAnimationNode::create(EntityResources::Squally_Animations);
 
-	playerSprite->setPosition(Vec2(-24.0f, -48.0f));
-	playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
+	this->playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
 
 	DrawNode* stencilLeft = DrawNode::create();
 	DrawNode* stencilRight = DrawNode::create();
@@ -88,7 +87,8 @@ void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 	this->playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
 
 	this->opponentSprite->setScale(opponentData->animationScale);
-	this->opponentSprite->setPosition(opponentData->avatarOffset);
+	this->opponentSprite->setPosition(opponentData->animationOffset + opponentData->avatarOffset);
+	this->playerSprite->setPosition(Vec2(-24.0f, -112.0f));
 }
 
 void Avatars::onBeforeStateChange(GameState* gameState)

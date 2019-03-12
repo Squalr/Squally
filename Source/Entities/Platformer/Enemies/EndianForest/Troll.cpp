@@ -19,11 +19,6 @@
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////A////A////A////A////A////A////A////A////A////A/
 
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
-
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
@@ -59,12 +54,6 @@ Troll::Troll(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
-	this->registerAttack(BasicSlash::create(0.7f, 0.2f));
-
-	this->dropTable[HealthPotion::SaveKeyHealthPotion] = 0.25f;
-	this->dropTable[ManaPotion::SaveKeyManaPotion] = 0.25f;
-	this->dropTable[SpeedPotion::SaveKeySpeedPotion] = 0.25f;
-
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -84,7 +73,7 @@ Troll::~Troll()
 
 Vec2 Troll::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Troll::getHexusOpponentData()
@@ -96,7 +85,8 @@ HexusOpponentData* Troll::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Troll::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

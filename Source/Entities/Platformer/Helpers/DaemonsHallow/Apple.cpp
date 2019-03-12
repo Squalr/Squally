@@ -73,7 +73,7 @@ Apple::~Apple()
 
 Vec2 Apple::getAvatarFrameOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
 HexusOpponentData* Apple::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* Apple::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameDaemonsHallow,
 			0.3f,
 			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
 			Apple::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,

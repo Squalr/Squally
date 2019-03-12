@@ -73,7 +73,7 @@ const std::string {{EntityName}}::HexusSaveKey = "{{HexusSaveKey}}";
 
 Vec2 {{EntityName}}::getAvatarFrameOffset()
 {
-	return Vec2({{EntityFrameOffsetX}}, {{EntityFrameOffsetY}});
+	return Vec2({{EntityAvatarOffsetX}}, {{EntityAvatarOffsetY}});
 }
 
 HexusOpponentData* {{EntityName}}::getHexusOpponentData()
@@ -85,7 +85,8 @@ HexusOpponentData* {{EntityName}}::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrame{{EntityEnvironment}},
 			{{EntityScale}},
 			Vec2({{EntityOffsetX}}, {{EntityOffsetY}}),
-			Vec2({{EntityFrameOffsetX}}, {{EntityFrameOffsetY}}),
+			Vec2({{HexusFrameOffsetX}}, {{HexusFrameOffsetY}}),
+			Vec2({{EntityAvatarOffsetX}}, {{EntityAvatarOffsetY}}),
 			{{EntityName}}::HexusSaveKey,
 			HexusOpponentData::Strategy::{{HexusStrategy}},
 			Card::CardStyle::{{HexusCardStyle}},

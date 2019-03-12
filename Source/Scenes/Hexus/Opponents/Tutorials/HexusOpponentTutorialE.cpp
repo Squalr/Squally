@@ -31,6 +31,7 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 	UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
+	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialE::OpponentSaveKey,
 	HexusOpponentData::Strategy::Random,
