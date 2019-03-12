@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
 #include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
 #include "Entities/Platformer/Enemies/EndianForest/Ent.h"
@@ -38,7 +34,36 @@
 #include "Entities/Platformer/Npcs/EndianForest/Rupert.h"
 #include "Entities/Platformer/Npcs/EndianForest/Rusty.h"
 #include "Entities/Platformer/Npcs/EndianForest/Toben.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
+#include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
+#include "Entities/Platformer/Enemies/EndianForest/Ent.h"
+#include "Entities/Platformer/Enemies/EndianForest/GoblinGruntBoar.h"
+#include "Entities/Platformer/Enemies/EndianForest/GoblinShaman.h"
+#include "Entities/Platformer/Enemies/EndianForest/GoblinWarriorPig.h"
+#include "Entities/Platformer/Enemies/EndianForest/KingGrogg.h"
+#include "Entities/Platformer/Enemies/EndianForest/Ogre.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcBomber.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcGrunt.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcSwordsman.h"
+#include "Entities/Platformer/Enemies/EndianForest/OrcWarrior.h"
+#include "Entities/Platformer/Enemies/EndianForest/Troll.h"
+#include "Entities/Platformer/Helpers/EndianForest/Goblin.h"
+#include "Entities/Platformer/Helpers/EndianForest/Turtle.h"
+#include "Entities/Platformer/Npcs/EndianForest/Appolo.h"
+#include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
+#include "Entities/Platformer/Npcs/EndianForest/Cooper.h"
+#include "Entities/Platformer/Npcs/EndianForest/Dudly.h"
+#include "Entities/Platformer/Npcs/EndianForest/Gramps.h"
+#include "Entities/Platformer/Npcs/EndianForest/Lycan.h"
+#include "Entities/Platformer/Npcs/EndianForest/Minos.h"
+#include "Entities/Platformer/Npcs/EndianForest/Polyphemus.h"
+#include "Entities/Platformer/Npcs/EndianForest/PrincessMatu.h"
+#include "Entities/Platformer/Npcs/EndianForest/Robin.h"
+#include "Entities/Platformer/Npcs/EndianForest/Rupert.h"
+#include "Entities/Platformer/Npcs/EndianForest/Rusty.h"
+#include "Entities/Platformer/Npcs/EndianForest/Toben.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/EndianForest/HexusChapterPreviewEndianForest.h"
 
 using namespace cocos2d;
 
@@ -57,7 +82,7 @@ void HexusOpponentMenuEndianForest::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuEndianForest::instance);
 }
 
-HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::EndianForest, HexusChapterPreviewEndianForest::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Centaur::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Cyclops::getHexusOpponentData()));

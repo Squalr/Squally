@@ -51,15 +51,14 @@ public:
 		enum class Chapter
 		{
 			Training,
-			Jungle,
-			Ruins,
-			Forest,
-			Caverns,
-			Castle,
-			IceCaps,
-			Volcano,
-			Void,
-			Mech
+			BalmerPeaks,
+			CastleValgrind,
+			DaemonsHallow,
+			EndianForest,
+			LambdaCrypts,
+			SeaSharpCaverns,
+			UnderflowRuins,
+			VoidStar,
 		};
 
 		Chapter chapter;

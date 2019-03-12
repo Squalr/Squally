@@ -6,11 +6,8 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
-{{HexusOpponentIncludes}}
+{{HexusOpponentIncludes}}#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+{{HexusOpponentIncludes}}#include "Scenes/Hexus/Menus/ChapterSelect/{{Environment}}/HexusChapterPreview{{Environment}}.h"
 
 using namespace cocos2d;
 
@@ -29,7 +26,7 @@ void {{MenuName}}::registerGlobalScene()
 	GlobalDirector::registerGlobalScene({{MenuName}}::instance);
 }
 
-{{MenuName}}::{{MenuName}}() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+{{MenuName}}::{{MenuName}}() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::{{Environment}}, HexusChapterPreview{{Environment}}::SaveKeyChapterName)
 {
 {{HexusOpponents}}
 

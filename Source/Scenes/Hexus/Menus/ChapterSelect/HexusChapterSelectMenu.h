@@ -13,15 +13,14 @@ namespace cocos2d
 
 class HexusChapterPreview;
 class HexusChapterPreviewTraining;
-class HexusChapterPreviewJungle;
-class HexusChapterPreviewRuins;
-class HexusChapterPreviewForest;
-class HexusChapterPreviewCaverns;
-class HexusChapterPreviewCastle;
-class HexusChapterPreviewIceCaps;
-class HexusChapterPreviewVolcano;
-class HexusChapterPreviewObelisk;
-class HexusChapterPreviewMech;
+class HexusChapterPreviewBalmerPeaks;
+class HexusChapterPreviewCastleValgrind;
+class HexusChapterPreviewDaemonsHallow;
+class HexusChapterPreviewEndianForest;
+class HexusChapterPreviewLambdaCrypts;
+class HexusChapterPreviewSeaSharpCaverns;
+class HexusChapterPreviewUnderflowRuins;
+class HexusChapterPreviewVoidStar;
 class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
@@ -51,16 +50,17 @@ private:
 	std::map<HexusChapterPreview*, HexusChapterPreview*> dependencies;
 
 	cocos2d::Sprite* background;
+
 	HexusChapterPreviewTraining* hexusChapterPreviewTraining;
-	HexusChapterPreviewJungle* hexusChapterPreviewJungle;
-	HexusChapterPreviewRuins* hexusChapterPreviewRuins;
-	HexusChapterPreviewForest* hexusChapterPreviewForest;
-	HexusChapterPreviewCaverns* hexusChapterPreviewCaverns;
-	HexusChapterPreviewCastle* hexusChapterPreviewCastle;
-	HexusChapterPreviewIceCaps* hexusChapterPreviewIceCaps;
-	HexusChapterPreviewVolcano* hexusChapterPreviewVolcano;
-	HexusChapterPreviewObelisk* hexusChapterPreviewObelisk;
-	HexusChapterPreviewMech* hexusChapterPreviewMech;
+	HexusChapterPreviewBalmerPeaks* hexusChapterPreviewBalmerPeaks;
+	HexusChapterPreviewCastleValgrind* hexusChapterPreviewCastleValgrind;
+	HexusChapterPreviewDaemonsHallow* hexusChapterPreviewDaemonsHallow;
+	HexusChapterPreviewEndianForest* hexusChapterPreviewEndianForest;
+	HexusChapterPreviewLambdaCrypts* hexusChapterPreviewLambdaCrypts;
+	HexusChapterPreviewSeaSharpCaverns* hexusChapterPreviewSeaSharpCaverns;
+	HexusChapterPreviewUnderflowRuins* hexusChapterPreviewUnderflowRuins;
+	HexusChapterPreviewVoidStar* hexusChapterPreviewVoidStar;
+
 	ClickableTextNode* deckManagementButton;
 	ClickableTextNode* shopButton;
 	LocalizedLabel* chapterSelectLabel;

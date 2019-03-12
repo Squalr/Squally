@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
@@ -38,7 +34,36 @@
 #include "Entities/Platformer/Npcs/VoidStar/Thor.h"
 #include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
 #include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
+#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
+#include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
+#include "Entities/Platformer/Enemies/VoidStar/Gorilla.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechBoxDrone.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechDog.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechGolem.h"
+#include "Entities/Platformer/Enemies/VoidStar/MechGuard.h"
+#include "Entities/Platformer/Enemies/VoidStar/MiteBot.h"
+#include "Entities/Platformer/Enemies/VoidStar/SkeletalPirate.h"
+#include "Entities/Platformer/Enemies/VoidStar/Thug.h"
+#include "Entities/Platformer/Enemies/VoidStar/Viking.h"
+#include "Entities/Platformer/Enemies/VoidStar/VikingBot.h"
+#include "Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h"
+#include "Entities/Platformer/Helpers/VoidStar/Professor.h"
+#include "Entities/Platformer/Helpers/VoidStar/Robot.h"
+#include "Entities/Platformer/Npcs/VoidStar/Atreus.h"
+#include "Entities/Platformer/Npcs/VoidStar/Elriel.h"
+#include "Entities/Platformer/Npcs/VoidStar/Illia.h"
+#include "Entities/Platformer/Npcs/VoidStar/Leon.h"
+#include "Entities/Platformer/Npcs/VoidStar/Mara.h"
+#include "Entities/Platformer/Npcs/VoidStar/Marcel.h"
+#include "Entities/Platformer/Npcs/VoidStar/Piper.h"
+#include "Entities/Platformer/Npcs/VoidStar/QueenElise.h"
+#include "Entities/Platformer/Npcs/VoidStar/Radon.h"
+#include "Entities/Platformer/Npcs/VoidStar/Thor.h"
+#include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
+#include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStar.h"
 
 using namespace cocos2d;
 
@@ -57,7 +82,7 @@ void HexusOpponentMenuVoidStar::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuVoidStar::instance);
 }
 
-HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::VoidStar, HexusChapterPreviewVoidStar::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Barbarian::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EvilEye::getHexusOpponentData()));

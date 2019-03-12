@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
@@ -37,7 +33,35 @@
 #include "Entities/Platformer/Npcs/BalmerPeaks/PrincessPepper.h"
 #include "Entities/Platformer/Npcs/BalmerPeaks/Theldar.h"
 #include "Entities/Platformer/Npcs/BalmerPeaks/Tinsel.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Krampus.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/PenguinGrunt.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/PenguinWarrior.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Santa.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/SnowFiend.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/ToySoldierGoblin.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Yeti.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.h"
+#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/BalmerPeaks/YetiBaby.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Aspen.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Bodom.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Cookie.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Irmik.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Jingles.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Juniper.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Kringle.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Nessie.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/PrincessPepper.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Theldar.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Tinsel.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaks.h"
 
 using namespace cocos2d;
 
@@ -56,7 +80,7 @@ void HexusOpponentMenuBalmerPeaks::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuBalmerPeaks::instance);
 }
 
-HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::BalmerPeaks, HexusChapterPreviewBalmerPeaks::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Cyrogen::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FrostFiend::getHexusOpponentData()));
