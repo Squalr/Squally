@@ -82,7 +82,7 @@ HexusOpponentData* Johann::getHexusOpponentData()
 	{
 		Johann::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_LambdaCrypts_Johann_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameLambdaCrypts,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),

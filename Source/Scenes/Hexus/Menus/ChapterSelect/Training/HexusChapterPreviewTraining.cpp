@@ -24,7 +24,7 @@ HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 
 HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::SaveKeyChapterName, Strings::Menus_Maps_TrainingGrounds::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameTraining));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameTraining));
 }
 
 HexusChapterPreviewTraining::~HexusChapterPreviewTraining()

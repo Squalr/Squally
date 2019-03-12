@@ -82,7 +82,7 @@ HexusOpponentData* Apple::getHexusOpponentData()
 	{
 		Apple::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Helpers_DaemonsHallow_Apple_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameDaemonsHallow,
 			0.3f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),

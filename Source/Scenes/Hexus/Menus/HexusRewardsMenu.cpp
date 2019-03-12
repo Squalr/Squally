@@ -43,7 +43,7 @@ void HexusRewardsMenu::registerGlobalScene()
 
 HexusRewardsMenu::HexusRewardsMenu()
 {
-	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
+	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
 	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 	this->goldString = ConstantString::create();

@@ -82,7 +82,7 @@ HexusOpponentData* PrincessOpal::getHexusOpponentData()
 	{
 		PrincessOpal::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),

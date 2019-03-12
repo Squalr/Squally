@@ -24,7 +24,7 @@ HexusChapterPreviewEndianForest* HexusChapterPreviewEndianForest::create()
 
 HexusChapterPreviewEndianForest::HexusChapterPreviewEndianForest() : HexusChapterPreview(HexusChapterPreviewEndianForest::SaveKeyChapterName, Strings::Menus_Maps_EndianForest::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameForest));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameEndianForest));
 }
 
 HexusChapterPreviewEndianForest::~HexusChapterPreviewEndianForest()

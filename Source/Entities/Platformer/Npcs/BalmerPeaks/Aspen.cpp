@@ -82,7 +82,7 @@ HexusOpponentData* Aspen::getHexusOpponentData()
 	{
 		Aspen::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),

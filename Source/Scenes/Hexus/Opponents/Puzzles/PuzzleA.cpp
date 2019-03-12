@@ -28,7 +28,7 @@ PuzzleA* PuzzleA::getInstance()
 
 PuzzleA::PuzzleA() : HexusOpponentData(
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
-	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+	UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(0.0f, -48.0f),

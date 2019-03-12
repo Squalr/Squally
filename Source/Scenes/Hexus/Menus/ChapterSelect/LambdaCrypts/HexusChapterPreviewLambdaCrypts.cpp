@@ -24,7 +24,7 @@ HexusChapterPreviewLambdaCrypts* HexusChapterPreviewLambdaCrypts::create()
 
 HexusChapterPreviewLambdaCrypts::HexusChapterPreviewLambdaCrypts() : HexusChapterPreview(HexusChapterPreviewLambdaCrypts::SaveKeyChapterName, Strings::Menus_Maps_LambdaCrypts::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameJungle));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameLambdaCrypts));
 }
 
 HexusChapterPreviewLambdaCrypts::~HexusChapterPreviewLambdaCrypts()

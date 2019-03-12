@@ -24,7 +24,7 @@ HexusChapterPreviewVoidStar* HexusChapterPreviewVoidStar::create()
 
 HexusChapterPreviewVoidStar::HexusChapterPreviewVoidStar() : HexusChapterPreview(HexusChapterPreviewVoidStar::SaveKeyChapterName, Strings::Menus_Maps_VoidStar::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameObelisk));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameVoidStar));
 }
 
 HexusChapterPreviewVoidStar::~HexusChapterPreviewVoidStar()

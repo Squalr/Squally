@@ -25,7 +25,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 {
 	this->chapterSaveKey = chapterSaveKey;
 	this->callback = nullptr;
-	this->frame = ClickableNode::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
+	this->frame = ClickableNode::create(UIResources::Menus_Hexus_EnemyFrame, UIResources::Menus_Hexus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedChapterName);
 

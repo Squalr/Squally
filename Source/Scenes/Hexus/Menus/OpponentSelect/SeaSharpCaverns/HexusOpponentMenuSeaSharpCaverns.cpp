@@ -6,19 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Rhinoman.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalArcher.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/TikiGolem.h"
-#include "Entities/Platformer/Helpers/SeaSharpCaverns/Gecko.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
@@ -32,19 +19,6 @@
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Rhinoman.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalArcher.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/TikiGolem.h"
-#include "Entities/Platformer/Helpers/SeaSharpCaverns/Gecko.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
@@ -78,19 +52,6 @@ void HexusOpponentMenuSeaSharpCaverns::registerGlobalScene()
 
 HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::SeaSharpCaverns, HexusChapterPreviewSeaSharpCaverns::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(BlackWidow::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(EarthElemental::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(EarthGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(ForestGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Genie::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(LightningGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Rhinoman::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Shaman::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(SkeletalArcher::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(SkeletalNecromancer::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(SkeletalWarrior::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(TikiGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Gecko::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Alder::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Brock::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Cypress::getHexusOpponentData()));
@@ -103,7 +64,6 @@ HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(Nav
 	this->opponents.push_back(HexusOpponentPreview::create(Raka::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Sarude::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Shen::getHexusOpponentData()));
-
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

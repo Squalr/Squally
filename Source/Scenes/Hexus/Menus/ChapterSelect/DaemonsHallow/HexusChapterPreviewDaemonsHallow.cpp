@@ -24,7 +24,7 @@ HexusChapterPreviewDaemonsHallow* HexusChapterPreviewDaemonsHallow::create()
 
 HexusChapterPreviewDaemonsHallow::HexusChapterPreviewDaemonsHallow() : HexusChapterPreview(HexusChapterPreviewDaemonsHallow::SaveKeyChapterName, Strings::Menus_Maps_DaemonsHallow::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameVolcano));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameDaemonsHallow));
 }
 
 HexusChapterPreviewDaemonsHallow::~HexusChapterPreviewDaemonsHallow()

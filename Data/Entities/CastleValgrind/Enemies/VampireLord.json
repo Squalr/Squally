@@ -19,12 +19,43 @@
     "Strength": "0.615f",
     "Strategy": "Random",
     "PresetCards": [
-      "Addition",
-      "LogicalAnd",
-      "LogicalOr",
-      "LogicalXor",
-      "ShiftLeft",
-      "ShiftRight"
-    ]
+    ],
+    "PuzzleData": {
+      "PlayerLosses": "1",
+      "EnemyLosses": "0",
+      "PlayersTurn": "true",
+      "EnemyPassed": "true",
+      "PlayerDeck": {
+
+      },
+      "EnemyDeck": {
+
+      },
+      "PlayerHand": {
+
+      },
+      "EnemyHand": {
+
+      },
+      "PlayerBinaryCards": {
+
+      },
+      "PlayerDecimalCards": {
+
+      },
+      "PlayerHexCards": {
+
+      },
+      "EnemyBinaryCards": {
+
+      },
+      "EnemyDecimalCards": {
+
+      },
+      "EnemyHexCards": {
+
+      },
+      "TutorialKey": ""
+    }
   }
 }

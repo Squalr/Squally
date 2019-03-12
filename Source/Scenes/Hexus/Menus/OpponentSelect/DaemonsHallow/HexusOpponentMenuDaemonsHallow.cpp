@@ -6,18 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonRogue.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonShaman.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
@@ -30,19 +18,8 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
+#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonRogue.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonShaman.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
@@ -55,6 +32,7 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
+#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallow.h"
 
 using namespace cocos2d;
@@ -76,18 +54,6 @@ void HexusOpponentMenuDaemonsHallow::registerGlobalScene()
 
 HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::DaemonsHallow, HexusChapterPreviewDaemonsHallow::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(Asmodeus::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(CritterDemon::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonDragon::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonGhost::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonGrunt::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonRogue::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonShaman::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonSwordsman::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(DemonWarrior::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(FireElemental::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(LavaGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Apple::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ash::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Brine::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Celeste::getHexusOpponentData()));
@@ -100,7 +66,7 @@ HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(Navigat
 	this->opponents.push_back(HexusOpponentPreview::create(PrincessMittens::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ragnis::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Scaldor::getHexusOpponentData()));
-
+	this->opponents.push_back(HexusOpponentPreview::create(Apple::getHexusOpponentData()));
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

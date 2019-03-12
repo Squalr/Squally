@@ -6,22 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
-#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
-#include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
-#include "Entities/Platformer/Enemies/VoidStar/Gorilla.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechBoxDrone.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechDog.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechGolem.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechGuard.h"
-#include "Entities/Platformer/Enemies/VoidStar/MiteBot.h"
-#include "Entities/Platformer/Enemies/VoidStar/SkeletalPirate.h"
-#include "Entities/Platformer/Enemies/VoidStar/Thug.h"
-#include "Entities/Platformer/Enemies/VoidStar/Viking.h"
-#include "Entities/Platformer/Enemies/VoidStar/VikingBot.h"
-#include "Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h"
-#include "Entities/Platformer/Helpers/VoidStar/Professor.h"
-#include "Entities/Platformer/Helpers/VoidStar/Robot.h"
 #include "Entities/Platformer/Npcs/VoidStar/Atreus.h"
 #include "Entities/Platformer/Npcs/VoidStar/Elriel.h"
 #include "Entities/Platformer/Npcs/VoidStar/Illia.h"
@@ -35,22 +19,6 @@
 #include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
 #include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
-#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
-#include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
-#include "Entities/Platformer/Enemies/VoidStar/Gorilla.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechBoxDrone.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechDog.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechGolem.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechGuard.h"
-#include "Entities/Platformer/Enemies/VoidStar/MiteBot.h"
-#include "Entities/Platformer/Enemies/VoidStar/SkeletalPirate.h"
-#include "Entities/Platformer/Enemies/VoidStar/Thug.h"
-#include "Entities/Platformer/Enemies/VoidStar/Viking.h"
-#include "Entities/Platformer/Enemies/VoidStar/VikingBot.h"
-#include "Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h"
-#include "Entities/Platformer/Helpers/VoidStar/Professor.h"
-#include "Entities/Platformer/Helpers/VoidStar/Robot.h"
 #include "Entities/Platformer/Npcs/VoidStar/Atreus.h"
 #include "Entities/Platformer/Npcs/VoidStar/Elriel.h"
 #include "Entities/Platformer/Npcs/VoidStar/Illia.h"
@@ -84,22 +52,6 @@ void HexusOpponentMenuVoidStar::registerGlobalScene()
 
 HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::VoidStar, HexusChapterPreviewVoidStar::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(Barbarian::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(EvilEye::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Exterminator::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Gorilla::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MechBoxDrone::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MechDog::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MechGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MechGuard::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MiteBot::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(SkeletalPirate::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Thug::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Viking::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(VikingBot::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(VikingBotSmall::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Professor::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Robot::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Atreus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Elriel::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Illia::getHexusOpponentData()));
@@ -112,7 +64,6 @@ HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents:
 	this->opponents.push_back(HexusOpponentPreview::create(Thor::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Xenon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ysara::getHexusOpponentData()));
-
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

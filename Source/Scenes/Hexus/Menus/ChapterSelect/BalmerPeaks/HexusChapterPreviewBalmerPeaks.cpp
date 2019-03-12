@@ -24,7 +24,7 @@ HexusChapterPreviewBalmerPeaks* HexusChapterPreviewBalmerPeaks::create()
 
 HexusChapterPreviewBalmerPeaks::HexusChapterPreviewBalmerPeaks() : HexusChapterPreview(HexusChapterPreviewBalmerPeaks::SaveKeyChapterName, Strings::Menus_Maps_BallmerPeaks::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameIceCaps));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameBalmerPeaks));
 }
 
 HexusChapterPreviewBalmerPeaks::~HexusChapterPreviewBalmerPeaks()
