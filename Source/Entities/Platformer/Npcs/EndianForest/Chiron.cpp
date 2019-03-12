@@ -43,7 +43,7 @@ Chiron::Chiron(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(160.0f, 224.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -73,7 +73,7 @@ Chiron::~Chiron()
 
 Vec2 Chiron::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-48.0f, -128.0f);
 }
 
 HexusOpponentData* Chiron::getHexusOpponentData()
@@ -83,10 +83,10 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 		Chiron::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_EndianForest_Chiron_Animations,
 			UIResources::Menus_Hexus_HexusFrameEndianForest,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -128.0f),
 			Chiron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

@@ -43,7 +43,7 @@ KingRedsongSlime::KingRedsongSlime(ValueMap& initProperties) : NpcBase(initPrope
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -73,7 +73,7 @@ KingRedsongSlime::~KingRedsongSlime()
 
 Vec2 KingRedsongSlime::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -96.0f);
 }
 
 HexusOpponentData* KingRedsongSlime::getHexusOpponentData()
@@ -83,10 +83,10 @@ HexusOpponentData* KingRedsongSlime::getHexusOpponentData()
 		KingRedsongSlime::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -128.0f),
+			Vec2(-32.0f, -96.0f),
 			KingRedsongSlime::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,

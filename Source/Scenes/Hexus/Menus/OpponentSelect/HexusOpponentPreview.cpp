@@ -26,8 +26,6 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 {
 	this->hexusOpponentData = opponentData;
 	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
-	this->opponentSprite->setScale(opponentData->animationScale);
-	this->opponentSprite->playAnimation();
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 
 	this->frame = ClickableNode::create(UIResources::Menus_Hexus_EnemyFrame, UIResources::Menus_Hexus_EnemyFrameHover);
@@ -44,6 +42,9 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->frameClip = ClippingNode::create(clipStencil);
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
 
+	this->opponentSprite->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->opponentSprite->setScale(opponentData->animationScale);
+	this->opponentSprite->playAnimation();
 	this->opponentSprite->setCascadeOpacityEnabled(false);
 
 	this->setContentSize(this->frame->getContentSize());

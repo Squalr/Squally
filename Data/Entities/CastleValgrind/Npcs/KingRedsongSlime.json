@@ -1,5 +1,5 @@
 {
-  "Scale": "0.9f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "112.0f",
     "Height": "160.0f"
@@ -10,14 +10,14 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-96.0f"
   },
   "Health": "10",
   "Special": "10",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-144.0f"
+      "Y": "-128.0f"
     },
     "DeckSize": "25",
     "Strength": "0.615f",

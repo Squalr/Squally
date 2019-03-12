@@ -43,7 +43,7 @@ Horus::Horus(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -73,7 +73,7 @@ Horus::~Horus()
 
 Vec2 Horus::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -128.0f);
 }
 
 HexusOpponentData* Horus::getHexusOpponentData()
@@ -83,10 +83,10 @@ HexusOpponentData* Horus::getHexusOpponentData()
 		Horus::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 			UIResources::Menus_Hexus_HexusFrameUnderflowRuins,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -160.0f),
+			Vec2(-32.0f, -128.0f),
 			Horus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,

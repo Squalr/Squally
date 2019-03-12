@@ -18,7 +18,6 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
@@ -32,7 +31,6 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallow.h"
 
 using namespace cocos2d;
@@ -66,7 +64,6 @@ HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(Navigat
 	this->opponents.push_back(HexusOpponentPreview::create(PrincessMittens::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ragnis::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Scaldor::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Apple::getHexusOpponentData()));
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

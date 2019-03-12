@@ -43,7 +43,7 @@ Atreus::Atreus(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.9f,
+	0.85f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -83,7 +83,7 @@ HexusOpponentData* Atreus::getHexusOpponentData()
 		Atreus::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_VoidStar_Atreus_Animations,
 			UIResources::Menus_Hexus_HexusFrameVoidStar,
-			0.9f,
+			0.85f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

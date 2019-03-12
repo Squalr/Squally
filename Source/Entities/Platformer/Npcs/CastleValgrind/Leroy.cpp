@@ -73,7 +73,7 @@ Leroy::~Leroy()
 
 Vec2 Leroy::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -96.0f);
 }
 
 HexusOpponentData* Leroy::getHexusOpponentData()
@@ -85,8 +85,8 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 			0.9f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -128.0f),
+			Vec2(-32.0f, -96.0f),
 			Leroy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,

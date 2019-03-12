@@ -43,7 +43,7 @@ Bodom::Bodom(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -83,7 +83,7 @@ HexusOpponentData* Bodom::getHexusOpponentData()
 		Bodom::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
 			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

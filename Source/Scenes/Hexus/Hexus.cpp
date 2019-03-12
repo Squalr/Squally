@@ -288,11 +288,6 @@ void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			this->openPauseMenu();
 			break;
 		}
-		case EventKeyboard::KeyCode::KEY_SPACE:
-		{
-			// this->gameState->onGameEndCallback(HexusEvents::HexusGameResultEventArgs(true, this->gameState->opponentData, 0));
-			break;
-		}
 		default:
 		{
 			break;
