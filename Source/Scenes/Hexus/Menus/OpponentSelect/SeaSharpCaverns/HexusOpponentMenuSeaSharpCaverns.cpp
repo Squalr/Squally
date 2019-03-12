@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
@@ -35,7 +31,33 @@
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Raka.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Rhinoman.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalArcher.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/TikiGolem.h"
+#include "Entities/Platformer/Helpers/SeaSharpCaverns/Gecko.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Finch.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Fraya.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Jasper.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Mildred.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Olive.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/PrincessDawn.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Raka.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/SeaSharpCaverns/HexusChapterPreviewSeaSharpCaverns.h"
 
 using namespace cocos2d;
 
@@ -54,7 +76,7 @@ void HexusOpponentMenuSeaSharpCaverns::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuSeaSharpCaverns::instance);
 }
 
-HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::SeaSharpCaverns, HexusChapterPreviewSeaSharpCaverns::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(BlackWidow::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthElemental::getHexusOpponentData()));

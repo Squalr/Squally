@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
@@ -34,7 +30,32 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonRogue.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonShaman.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
+#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Cindra.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Drak.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Lucifer.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Magnus.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Pan.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallow.h"
 
 using namespace cocos2d;
 
@@ -53,7 +74,7 @@ void HexusOpponentMenuDaemonsHallow::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuDaemonsHallow::instance);
 }
 
-HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::DaemonsHallow, HexusChapterPreviewDaemonsHallow::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Asmodeus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(CritterDemon::getHexusOpponentData()));

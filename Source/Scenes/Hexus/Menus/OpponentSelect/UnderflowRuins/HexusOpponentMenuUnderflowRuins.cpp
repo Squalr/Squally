@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
@@ -35,7 +31,33 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Horus.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Lioness.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Mermaid.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Minotaur.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/MummyPriest.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/MummyWarrior.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
+#include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
+#include "Entities/Platformer/Helpers/UnderflowRuins/Mummy.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Ares.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Athena.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Cleopatra.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Geryon.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Griffin.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Hades.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Horus.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuins.h"
 
 using namespace cocos2d;
 
@@ -54,7 +76,7 @@ void HexusOpponentMenuUnderflowRuins::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuUnderflowRuins::instance);
 }
 
-HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins, HexusChapterPreviewUnderflowRuins::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(AnubisPup::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(AnubisWarrior::getHexusOpponentData()));

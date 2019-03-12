@@ -13,16 +13,15 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterPreview.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Caverns/HexusChapterPreviewCaverns.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Forest/HexusChapterPreviewForest.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/IceCaps/HexusChapterPreviewIceCaps.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Jungle/HexusChapterPreviewJungle.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Mech/HexusChapterPreviewMech.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Obelisk/HexusChapterPreviewObelisk.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Ruins/HexusChapterPreviewRuins.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaks.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/CastleValgrind/HexusChapterPreviewCastleValgrind.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallow.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/EndianForest/HexusChapterPreviewEndianForest.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/LambdaCrypts/HexusChapterPreviewLambdaCrypts.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/SeaSharpCaverns/HexusChapterPreviewSeaSharpCaverns.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/Training/HexusChapterPreviewTraining.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Volcano/HexusChapterPreviewVolcano.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuins.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStar.h"
 
 #include "Resources/UIResources.h"
 
@@ -52,16 +51,19 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 {
 	this->chapters = std::vector<HexusChapterPreview*>();
 	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
+
+
 	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();
-	this->hexusChapterPreviewJungle = HexusChapterPreviewJungle::create();
-	this->hexusChapterPreviewRuins = HexusChapterPreviewRuins::create();
-	this->hexusChapterPreviewForest = HexusChapterPreviewForest::create();
-	this->hexusChapterPreviewCaverns = HexusChapterPreviewCaverns::create();
-	this->hexusChapterPreviewCastle = HexusChapterPreviewCastle::create();
-	this->hexusChapterPreviewIceCaps = HexusChapterPreviewIceCaps::create();
-	this->hexusChapterPreviewVolcano = HexusChapterPreviewVolcano::create();
-	this->hexusChapterPreviewObelisk = HexusChapterPreviewObelisk::create();
-	this->hexusChapterPreviewMech = HexusChapterPreviewMech::create();
+	this->hexusChapterPreviewBalmerPeaks = HexusChapterPreviewBalmerPeaks::create();
+	this->hexusChapterPreviewCastleValgrind = HexusChapterPreviewCastleValgrind::create();
+	this->hexusChapterPreviewDaemonsHallow = HexusChapterPreviewDaemonsHallow::create();
+	this->hexusChapterPreviewEndianForest = HexusChapterPreviewEndianForest::create();
+	this->hexusChapterPreviewLambdaCrypts = HexusChapterPreviewLambdaCrypts::create();
+	this->hexusChapterPreviewSeaSharpCaverns = HexusChapterPreviewSeaSharpCaverns::create();
+	this->hexusChapterPreviewUnderflowRuins = HexusChapterPreviewUnderflowRuins::create();
+	this->hexusChapterPreviewVoidStar = HexusChapterPreviewVoidStar::create();
+	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();
+
 	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_SelectAChapter::create());
 
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
@@ -107,15 +109,14 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->setCascadeOpacityEnabled(true);
 
 	this->chapters.push_back(this->hexusChapterPreviewTraining);
-	this->chapters.push_back(this->hexusChapterPreviewJungle);
-	this->chapters.push_back(this->hexusChapterPreviewRuins);
-	this->chapters.push_back(this->hexusChapterPreviewForest);
-	this->chapters.push_back(this->hexusChapterPreviewCaverns);
-	this->chapters.push_back(this->hexusChapterPreviewCastle);
-	this->chapters.push_back(this->hexusChapterPreviewIceCaps);
-	this->chapters.push_back(this->hexusChapterPreviewVolcano);
-	this->chapters.push_back(this->hexusChapterPreviewObelisk);
-	this->chapters.push_back(this->hexusChapterPreviewMech);
+	this->chapters.push_back(this->hexusChapterPreviewEndianForest);
+	this->chapters.push_back(this->hexusChapterPreviewUnderflowRuins);
+	this->chapters.push_back(this->hexusChapterPreviewSeaSharpCaverns);
+	this->chapters.push_back(this->hexusChapterPreviewCastleValgrind);
+	this->chapters.push_back(this->hexusChapterPreviewBalmerPeaks);
+	this->chapters.push_back(this->hexusChapterPreviewDaemonsHallow);
+	this->chapters.push_back(this->hexusChapterPreviewLambdaCrypts);
+	this->chapters.push_back(this->hexusChapterPreviewVoidStar);
 
 	this->addChild(this->background);
 
@@ -180,15 +181,14 @@ void HexusChapterSelectMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenu::onKeyPressed, this);
 	this->hexusChapterPreviewTraining->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training)); } );
-	this->hexusChapterPreviewJungle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Jungle)); } );
-	this->hexusChapterPreviewRuins->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Ruins)); } );
-	this->hexusChapterPreviewForest->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Forest)); } );
-	this->hexusChapterPreviewCaverns->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Caverns)); } );
-	this->hexusChapterPreviewCastle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle)); } );
-	this->hexusChapterPreviewIceCaps->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::IceCaps)); } );
-	this->hexusChapterPreviewVolcano->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Volcano)); } );
-	this->hexusChapterPreviewObelisk->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Void)); } );
-	this->hexusChapterPreviewMech->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Mech)); } );
+	this->hexusChapterPreviewBalmerPeaks->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::BalmerPeaks)); } );
+	this->hexusChapterPreviewCastleValgrind->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::CastleValgrind)); } );
+	this->hexusChapterPreviewDaemonsHallow->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::DaemonsHallow)); } );
+	this->hexusChapterPreviewEndianForest->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::EndianForest)); } );
+	this->hexusChapterPreviewLambdaCrypts->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::LambdaCrypts)); } );
+	this->hexusChapterPreviewSeaSharpCaverns->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::SeaSharpCaverns)); } );
+	this->hexusChapterPreviewUnderflowRuins->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins)); } );
+	this->hexusChapterPreviewVoidStar->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::VoidStar)); } );
 	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onDeckManagementClick, this));
 	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onShopClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onBackClick, this));

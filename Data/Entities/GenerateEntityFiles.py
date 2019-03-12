@@ -203,10 +203,6 @@ def generateHexusMenuCode(allEntityData):
 
 	hTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.h.template"))
 	cppTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.cpp.template"))
-	prefixDelimiter = "////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/"
-	suffixDelimiter = "////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/"
-	includePrefixDelimiter = "////X////X////X////X////X////X////X////X////X////X/"
-	includeSuffixDelimiter = "////O////O////O////O////O////O////O////O////O////O/"
 
 	sortedEntities = {}
 
@@ -225,7 +221,7 @@ def generateHexusMenuCode(allEntityData):
 			menuName = "HexusOpponentMenu" + environment
 			hOutFile = menuRoot + "/" + environment + "/" + menuName + ".h"
 			cppOutFile = menuRoot + "/" + environment + "/" + menuName + ".cpp"
-
+			
 			if sys.version_info >= (3, 0):
 				os.makedirs(dirname(cppOutFile), exist_ok=True)
 			else:
@@ -242,6 +238,7 @@ def generateHexusMenuCode(allEntityData):
 				generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
 				generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
 
+			cppContent = cppContent.replace("{{Environment}}", environment)
 			cppContent = cppContent.replace("{{HexusOpponentIncludes}}", generatedIncludes)
 			cppContent = cppContent.replace("{{HexusOpponents}}", generatedEnemyList)
 			cppContent = cppContent.replace("{{MenuName}}", menuName)

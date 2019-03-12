@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/LambdaCrypts/Abomination.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
@@ -36,7 +32,34 @@
 #include "Entities/Platformer/Npcs/LambdaCrypts/Viper.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zana.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zelina.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Abomination.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedFighter.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedPig.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalBaron.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalCleaver.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalKnight.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalPriestess.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Undead.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/VoidArcher.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/VoidDemon.h"
+#include "Entities/Platformer/Helpers/LambdaCrypts/Ghost.h"
+#include "Entities/Platformer/Helpers/LambdaCrypts/Grim.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Amelia.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Azmus.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Garrick.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Johann.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Necron.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/PrincessNebea.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Roger.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Thion.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Ursula.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Viper.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Zana.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Zelina.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/LambdaCrypts/HexusChapterPreviewLambdaCrypts.h"
 
 using namespace cocos2d;
 
@@ -55,7 +78,7 @@ void HexusOpponentMenuLambdaCrypts::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuLambdaCrypts::instance);
 }
 
-HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::LambdaCrypts, HexusChapterPreviewLambdaCrypts::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Abomination::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Gargoyle::getHexusOpponentData()));

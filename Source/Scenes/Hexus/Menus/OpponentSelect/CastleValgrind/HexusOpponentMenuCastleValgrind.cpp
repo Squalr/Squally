@@ -6,10 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Castle/HexusChapterPreviewCastle.h"
-#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
-
 #include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Executioner.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Guard.h"
@@ -37,7 +33,35 @@
 #include "Entities/Platformer/Npcs/CastleValgrind/Rogas.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Thurstan.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Tyracius.h"
-
+#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Executioner.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Guard.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Jack.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Reaper.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Scarecrow.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Shade.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/VampireLord.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Vampiress.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Wraith.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Zombie.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/ZombieElric.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Knight.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Princess.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Blackbeard.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Elric.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Garin.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/KingRedsong.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/KingRedsongSlime.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Leroy.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Mabel.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/PrincessOpal.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Raven.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Rogas.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Thurstan.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Tyracius.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/CastleValgrind/HexusChapterPreviewCastleValgrind.h"
 
 using namespace cocos2d;
 
@@ -56,7 +80,7 @@ void HexusOpponentMenuCastleValgrind::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(HexusOpponentMenuCastleValgrind::instance);
 }
 
-HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
+HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::CastleValgrind, HexusChapterPreviewCastleValgrind::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Agnes::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Executioner::getHexusOpponentData()));
