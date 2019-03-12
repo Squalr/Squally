@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
@@ -37,7 +35,6 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -58,8 +55,6 @@ void HexusOpponentMenuDaemonsHallow::registerGlobalScene()
 
 HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(Asmodeus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(CritterDemon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(DemonDragon::getHexusOpponentData()));
@@ -85,7 +80,6 @@ HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(Navigat
 	this->opponents.push_back(HexusOpponentPreview::create(Ragnis::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Scaldor::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

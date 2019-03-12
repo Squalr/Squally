@@ -10,9 +10,7 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
-////O////O////O////O////O////O////O////O////O////O/
+{{HexusOpponentIncludes}}
 
 using namespace cocos2d;
 
@@ -33,9 +31,7 @@ void {{MenuName}}::registerGlobalScene()
 
 {{MenuName}}::{{MenuName}}() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
+{{HexusOpponents}}
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

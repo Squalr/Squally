@@ -99,9 +99,9 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 			Vec2(0.0f, 0.0f),
 			OrcWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Shadow,
-			HexusOpponentData::generateReward(0.62f),
-			HexusOpponentData::generateDeck(25, 0.62f,
+			Card::CardStyle::Earth,
+			HexusOpponentData::generateReward(0.615f),
+			HexusOpponentData::generateDeck(25, 0.615f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
@@ -109,7 +109,9 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-			})
+
+			}),
+			nullptr
 		);
 	}
 

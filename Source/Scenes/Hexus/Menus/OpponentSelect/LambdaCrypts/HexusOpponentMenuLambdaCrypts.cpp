@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/LambdaCrypts/Abomination.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
@@ -39,7 +37,6 @@
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zana.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zelina.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -60,8 +57,6 @@ void HexusOpponentMenuLambdaCrypts::registerGlobalScene()
 
 HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(Abomination::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Gargoyle::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(KingZul::getHexusOpponentData()));
@@ -89,7 +84,6 @@ HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(Navigatio
 	this->opponents.push_back(HexusOpponentPreview::create(Zana::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zelina::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

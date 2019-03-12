@@ -89,8 +89,8 @@ HexusOpponentData* Elriel::getHexusOpponentData()
 			Elriel::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			HexusOpponentData::generateReward(0.62f),
-			HexusOpponentData::generateDeck(25, 0.62f,
+			HexusOpponentData::generateReward(0.615f),
+			HexusOpponentData::generateDeck(25, 0.615f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
@@ -98,7 +98,9 @@ HexusOpponentData* Elriel::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-			})
+
+			}),
+			nullptr
 		);
 	}
 

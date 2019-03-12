@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
@@ -38,7 +36,6 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -59,8 +56,6 @@ void HexusOpponentMenuUnderflowRuins::registerGlobalScene()
 
 HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(AnubisPup::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(AnubisWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(LionMan::getHexusOpponentData()));
@@ -87,7 +82,6 @@ HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(Navig
 	this->opponents.push_back(HexusOpponentPreview::create(Poseidon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zeus::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

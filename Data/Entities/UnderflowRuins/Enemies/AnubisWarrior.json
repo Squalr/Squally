@@ -12,6 +12,19 @@
     "X": "0.0f",
     "Y": "0.0f"
   },
-  "Health": 27,
-  "Special": 17
+  "Health": "27",
+  "Special": "17",
+  "Hexus": {
+    "DeckSize": "25",
+    "Strength": "0.615f",
+    "Strategy": "Random",
+    "PresetCards": [
+      "Addition",
+      "LogicalAnd",
+      "LogicalOr",
+      "LogicalXor",
+      "ShiftLeft",
+      "ShiftRight"
+    ]
+  }
 }
