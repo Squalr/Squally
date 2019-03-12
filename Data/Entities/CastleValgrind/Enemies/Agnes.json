@@ -19,12 +19,6 @@
     "Strength": "0.615f",
     "Strategy": "Random",
     "PresetCards": [
-      "Addition",
-      "LogicalAnd",
-      "LogicalOr",
-      "LogicalXor",
-      "ShiftLeft",
-      "ShiftRight"
     ],
     "PuzzleData": {
       "PlayerLosses": "1",

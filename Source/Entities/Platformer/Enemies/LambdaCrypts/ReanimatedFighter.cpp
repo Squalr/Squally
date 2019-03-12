@@ -82,7 +82,7 @@ HexusOpponentData* ReanimatedFighter::getHexusOpponentData()
 	{
 		ReanimatedFighter::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameLambdaCrypts,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),
@@ -92,12 +92,6 @@ HexusOpponentData* ReanimatedFighter::getHexusOpponentData()
 			HexusOpponentData::generateReward(0.615f),
 			HexusOpponentData::generateDeck(25, 0.615f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 
 			}),
 			nullptr

@@ -93,7 +93,7 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 	{
 		GoblinGruntBoar::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameEndianForest,
 			0.8f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),
@@ -103,12 +103,6 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 			HexusOpponentData::generateReward(0.615f),
 			HexusOpponentData::generateDeck(25, 0.615f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 
 			}),
 			nullptr

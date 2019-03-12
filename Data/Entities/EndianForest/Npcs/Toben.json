@@ -16,7 +16,7 @@
   "Special": "10",
   "Hexus": {
     "DeckSize": "25",
-    "Strength": "0.615f",
+    "Strength": "0.100f + 0.125f * 01.0f",
     "Strategy": "Random",
     "PresetCards": [
       "Addition",

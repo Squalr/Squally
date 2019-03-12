@@ -50,7 +50,7 @@ void HexusChapterSelectMenu::registerGlobalScene()
 HexusChapterSelectMenu::HexusChapterSelectMenu()
 {
 	this->chapters = std::vector<HexusChapterPreview*>();
-	this->background = Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_WoodBackground);
+	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
 
 
 	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();

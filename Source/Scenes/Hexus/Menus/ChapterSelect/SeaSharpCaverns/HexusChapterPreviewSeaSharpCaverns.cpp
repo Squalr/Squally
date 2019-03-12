@@ -24,7 +24,7 @@ HexusChapterPreviewSeaSharpCaverns* HexusChapterPreviewSeaSharpCaverns::create()
 
 HexusChapterPreviewSeaSharpCaverns::HexusChapterPreviewSeaSharpCaverns() : HexusChapterPreview(HexusChapterPreviewSeaSharpCaverns::SaveKeyChapterName, Strings::Menus_Maps_SeaSharpCaverns::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns));
 }
 
 HexusChapterPreviewSeaSharpCaverns::~HexusChapterPreviewSeaSharpCaverns()

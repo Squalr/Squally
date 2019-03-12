@@ -6,19 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Lioness.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Mermaid.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Minotaur.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/MummyPriest.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/MummyWarrior.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
-#include "Entities/Platformer/Helpers/UnderflowRuins/Mummy.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ares.h"
@@ -32,19 +19,6 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Lioness.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Mermaid.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Minotaur.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/MummyPriest.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/MummyWarrior.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
-#include "Entities/Platformer/Helpers/UnderflowRuins/Mummy.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ares.h"
@@ -78,19 +52,6 @@ void HexusOpponentMenuUnderflowRuins::registerGlobalScene()
 
 HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins, HexusChapterPreviewUnderflowRuins::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(AnubisPup::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(AnubisWarrior::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(LionMan::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Lioness::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Medusa::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Mermaid::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Minotaur::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MummyPriest::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(MummyWarrior::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Osiris::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(TigerMan::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Tigress::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Mummy::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ajax::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Aphrodite::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ares::getHexusOpponentData()));
@@ -103,7 +64,6 @@ HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(Navig
 	this->opponents.push_back(HexusOpponentPreview::create(Horus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Poseidon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zeus::getHexusOpponentData()));
-
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

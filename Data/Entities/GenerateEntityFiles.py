@@ -67,8 +67,10 @@ def parseEntityFile(entityDataPath):
 			entityData["Hexus"]["CardStyle"] = "Shadow"
 		
 		if not "PuzzleData" in entityData["Hexus"]:
+			entityData["IsHexusPuzzle"] = False
 			entityData["Hexus"]["PuzzleData"] = "nullptr"
 		else:
+			entityData["IsHexusPuzzle"] = True
 			# TODO
 			entityData["Hexus"]["PuzzleData"] = "nullptr"
 
@@ -218,6 +220,8 @@ def generateHexusMenuCode(allEntityData):
 
 		for environment in sortedEntities:
 			entities = sortedEntities[environment]
+			entities.sort()
+			
 			menuName = "HexusOpponentMenu" + environment
 			hOutFile = menuRoot + "/" + environment + "/" + menuName + ".h"
 			cppOutFile = menuRoot + "/" + environment + "/" + menuName + ".cpp"
@@ -235,8 +239,9 @@ def generateHexusMenuCode(allEntityData):
 			generatedIncludes = ""
 
 			for nextEntity in entities:
-				generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
-				generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
+				if not nextEntity["IsHexusPuzzle"]:
+					generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
+					generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
 
 			cppContent = cppContent.replace("{{Environment}}", environment)
 			cppContent = cppContent.replace("{{HexusOpponentIncludes}}", generatedIncludes)

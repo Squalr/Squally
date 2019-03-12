@@ -82,15 +82,15 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 	{
 		Lycan::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_EndianForest_Lycan_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),
 			Lycan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			HexusOpponentData::generateReward(0.100f + 0.125f * 08.0f),
+			HexusOpponentData::generateDeck(25, 0.100f + 0.125f * 08.0f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

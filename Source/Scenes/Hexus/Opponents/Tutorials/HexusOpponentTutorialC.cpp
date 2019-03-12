@@ -28,7 +28,7 @@ HexusOpponentTutorialC* HexusOpponentTutorialC::getInstance()
 
 HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
-	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCaverns,
+	UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-16.0f, -32.0f),

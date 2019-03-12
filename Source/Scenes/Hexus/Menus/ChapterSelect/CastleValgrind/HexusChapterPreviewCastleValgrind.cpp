@@ -24,7 +24,7 @@ HexusChapterPreviewCastleValgrind* HexusChapterPreviewCastleValgrind::create()
 
 HexusChapterPreviewCastleValgrind::HexusChapterPreviewCastleValgrind() : HexusChapterPreview(HexusChapterPreviewCastleValgrind::SaveKeyChapterName, Strings::Menus_Maps_CastleValgrind::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameCastleValgrind));
 }
 
 HexusChapterPreviewCastleValgrind::~HexusChapterPreviewCastleValgrind()

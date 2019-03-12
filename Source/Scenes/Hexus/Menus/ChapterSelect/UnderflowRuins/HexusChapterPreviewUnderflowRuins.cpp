@@ -24,7 +24,7 @@ HexusChapterPreviewUnderflowRuins* HexusChapterPreviewUnderflowRuins::create()
 
 HexusChapterPreviewUnderflowRuins::HexusChapterPreviewUnderflowRuins() : HexusChapterPreview(HexusChapterPreviewUnderflowRuins::SaveKeyChapterName, Strings::Menus_Maps_UnderflowRuins::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins));
+	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameUnderflowRuins));
 }
 
 HexusChapterPreviewUnderflowRuins::~HexusChapterPreviewUnderflowRuins()

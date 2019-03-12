@@ -82,15 +82,15 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 	{
 		Rupert::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_EndianForest_Rupert_Animations,
-			UIResources::Menus_MinigamesMenu_Hexus_HexusFrameCastle,
+			UIResources::Menus_Hexus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(0.0f, 0.0f),
 			Rupert::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			HexusOpponentData::generateReward(0.100f + 0.125f * 03.0f),
+			HexusOpponentData::generateDeck(25, 0.100f + 0.125f * 03.0f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

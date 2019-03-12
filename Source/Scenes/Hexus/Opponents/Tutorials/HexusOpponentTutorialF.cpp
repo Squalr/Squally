@@ -28,7 +28,7 @@ HexusOpponentTutorialF* HexusOpponentTutorialF::getInstance()
 
 HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
-	UIResources::Menus_MinigamesMenu_Hexus_HexusFrameRuins,
+	UIResources::Menus_Hexus_HexusFrameUnderflowRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(0.0f, -24.0f),

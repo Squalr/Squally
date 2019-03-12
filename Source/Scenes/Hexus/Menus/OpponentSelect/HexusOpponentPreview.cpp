@@ -30,7 +30,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->opponentSprite->playAnimation();
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 
-	this->frame = ClickableNode::create(UIResources::Menus_MinigamesMenu_Hexus_EnemyFrame, UIResources::Menus_MinigamesMenu_Hexus_EnemyFrameHover);
+	this->frame = ClickableNode::create(UIResources::Menus_Hexus_EnemyFrame, UIResources::Menus_Hexus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 
 	DrawNode* clipStencil = DrawNode::create();
