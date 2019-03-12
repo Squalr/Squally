@@ -40,12 +40,45 @@ def parseEntityFile(entityDataPath):
 	with open(entityDataPath, "r") as dataFile:
 		entityData = json.load(dataFile)
 
+		pathSplit = relpath(entityDataPath).split("/")
+
 		# Construct meta-variables
-		entityData["Environment"] = relpath(entityDataPath).split("/")[0]
-		entityData["Prefix"] = relpath(entityDataPath).split("/")[1]
-		entityData["Name"] = relpath(entityDataPath).split("/")[2][:-len(".json")]
+		entityData["Environment"] = pathSplit[len(pathSplit) - 3]
+		entityData["Prefix"] = pathSplit[len(pathSplit) - 2]
+		entityData["Name"] = pathSplit[len(pathSplit) - 1][:-len(".json")]
 		entityData["MapKeyName"] = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).lower()
 		entityData["HexusSaveKey"] = "HEXUS_OPPONENT_SAVE_KEY_" + "_".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).upper()
+
+		if entityData["Environment"] == "BalmerPeaks":
+			entityData["Hexus"]["CardStyle"] = "Water"
+		elif entityData["Environment"] == "CastleValgrind":
+			entityData["Hexus"]["CardStyle"] = "Air"
+		elif entityData["Environment"] == "DaemonsHallow":
+			entityData["Hexus"]["CardStyle"] = "Fire"
+		elif entityData["Environment"] == "EndianForest":
+			entityData["Hexus"]["CardStyle"] = "Earth"
+		elif entityData["Environment"] == "LambdaCrypts":
+			entityData["Hexus"]["CardStyle"] = "Shadow"
+		elif entityData["Environment"] == "SeaSharpCaverns":
+			entityData["Hexus"]["CardStyle"] = "Earth"
+		elif entityData["Environment"] == "UnderflowRuins":
+			entityData["Hexus"]["CardStyle"] = "Light"
+		elif entityData["Environment"] == "VoidStar":
+			entityData["Hexus"]["CardStyle"] = "Shadow"
+		
+		if not "PuzzleData" in entityData["Hexus"]:
+			entityData["Hexus"]["PuzzleData"] = "nullptr"
+		else:
+			# TODO
+			entityData["Hexus"]["PuzzleData"] = "nullptr"
+
+		# Reformat preset card list to match C++ needs
+		presetCards = ""
+
+		for presetCard in entityData["Hexus"]["PresetCards"]:
+			presetCards += "\t\t\t\tCardList::getInstance()->cardListByName.at(CardKeys::" + presetCard + "),\n"
+
+		entityData["Hexus"]["PresetCards"] = presetCards
 
 		if entityData["Prefix"] == "Enemies":
 			entityData["Type"] = "Enemy"
@@ -68,6 +101,7 @@ def parseEntityFile(entityDataPath):
 			entityData["Base"] = "PlatformerEntity"
 			entityData["Path"] = "Entities/Platformer/PlatformerEntity.h"
 		else:
+			print(entityDataPath)
 			print("unknown entity type: " + entityData["Prefix"])
 			return {}
 		
@@ -132,12 +166,18 @@ def generateEntityCode(entityData):
 				.replace("{{EntityHeight}}", entityData["Size"]["Height"]) \
 				.replace("{{EntityOffsetX}}", entityData["Offset"]["X"]) \
 				.replace("{{EntityOffsetY}}", entityData["Offset"]["Y"]) \
-				.replace("{{EntityHealth}}", str(entityData["Health"])) \
-				.replace("{{EntitySpecial}}", str(entityData["Special"])) \
-				.replace("{{EntityFrameOffsetX}}", str(entityData["FrameOffset"]["X"])) \
-				.replace("{{EntityFrameOffsetY}}", str(entityData["FrameOffset"]["Y"])) \
-				.replace("{{HexusSaveKey}}", entityData["HexusSaveKey"] )
-			
+				.replace("{{EntityHealth}}", entityData["Health"]) \
+				.replace("{{EntitySpecial}}", entityData["Special"]) \
+				.replace("{{EntityFrameOffsetX}}", entityData["FrameOffset"]["X"]) \
+				.replace("{{EntityFrameOffsetY}}", entityData["FrameOffset"]["Y"]) \
+				.replace("{{HexusSaveKey}}", entityData["HexusSaveKey"]) \
+				.replace("{{HexusStrategy}}", entityData["Hexus"]["Strategy"]) \
+				.replace("{{HexusStrength}}", entityData["Hexus"]["Strength"]) \
+				.replace("{{HexusDeckSize}}", entityData["Hexus"]["DeckSize"]) \
+				.replace("{{HexusPresetCards}}", entityData["Hexus"]["PresetCards"]) \
+				.replace("{{HexusCardStyle}}", entityData["Hexus"]["CardStyle"]) \
+				.replace("{{HexusPuzzleData}}", entityData["Hexus"]["PuzzleData"])
+
 			if entityData["Environment"] == "":
 				templateData = templateData.replace("{{EnvironmentUnderscore}}", "");
 			else:
@@ -158,11 +198,11 @@ def generateEntityCode(entityData):
 		h.write(hContent)
 		cpp.write(cppContent)
 
-def generateEntityDeserializationCode(allEntityData):
+def generateHexusMenuCode(allEntityData):
 	menuRoot = abspath(join(join(realpath(__file__), ".."), "../../Source/Scenes/Hexus/Menus/OpponentSelect/"))
 
-	cppTemplateFile = "HexusOpponentMenu.cpp.template"
-	hTemplateFile = "HexusOpponentMenu.h.template"
+	hTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.h.template"))
+	cppTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.cpp.template"))
 	prefixDelimiter = "////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/"
 	suffixDelimiter = "////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/"
 	includePrefixDelimiter = "////X////X////X////X////X////X////X////X////X////X/"
@@ -195,15 +235,15 @@ def generateEntityDeserializationCode(allEntityData):
 
 			hContent = hTemplateContent
 			cppContent = cppTemplateContent
-			generatedEnemyList = "\n\n"
-			generatedIncludes = "\n\n"
+			generatedEnemyList = ""
+			generatedIncludes = ""
 
 			for nextEntity in entities:
 				generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
 				generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
 
-			cppContent = replaceTextBetween(includePrefixDelimiter, includeSuffixDelimiter, cppContent, generatedIncludes + "\n")
-			cppContent = replaceTextBetween(prefixDelimiter, suffixDelimiter, cppContent, generatedEnemyList + "\n\t")
+			cppContent = cppContent.replace("{{HexusOpponentIncludes}}", generatedIncludes)
+			cppContent = cppContent.replace("{{HexusOpponents}}", generatedEnemyList)
 			cppContent = cppContent.replace("{{MenuName}}", menuName)
 			hContent = hContent.replace("{{MenuName}}", menuName)
 
@@ -211,7 +251,7 @@ def generateEntityDeserializationCode(allEntityData):
 				hWriter.write(hContent)
 				cppWriter.write(cppContent)
 
-def generateHexusMenuCode(allEntityData):
+def generateEntityDeserializationCode(allEntityData):
 	deserializerClass = abspath(join(join(realpath(__file__), ".."), "../../Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))
 	
 	with open(deserializerClass,"r+") as contentReader:

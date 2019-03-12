@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
@@ -40,7 +38,6 @@
 #include "Entities/Platformer/Npcs/BalmerPeaks/Theldar.h"
 #include "Entities/Platformer/Npcs/BalmerPeaks/Tinsel.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -61,8 +58,6 @@ void HexusOpponentMenuBalmerPeaks::registerGlobalScene()
 
 HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(Cyrogen::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FrostFiend::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(GoblinElf::getHexusOpponentData()));
@@ -91,7 +86,6 @@ HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(NavigationE
 	this->opponents.push_back(HexusOpponentPreview::create(Theldar::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Tinsel::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

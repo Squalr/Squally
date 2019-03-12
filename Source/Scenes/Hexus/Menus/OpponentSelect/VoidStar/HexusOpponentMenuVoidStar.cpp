@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
@@ -41,7 +39,6 @@
 #include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
 #include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -62,8 +59,6 @@ void HexusOpponentMenuVoidStar::registerGlobalScene()
 
 HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(Barbarian::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EvilEye::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Exterminator::getHexusOpponentData()));
@@ -93,7 +88,6 @@ HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents:
 	this->opponents.push_back(HexusOpponentPreview::create(Xenon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ysara::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
 #include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
 #include "Entities/Platformer/Enemies/EndianForest/Ent.h"
@@ -41,7 +39,6 @@
 #include "Entities/Platformer/Npcs/EndianForest/Rusty.h"
 #include "Entities/Platformer/Npcs/EndianForest/Toben.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -62,8 +59,6 @@ void HexusOpponentMenuEndianForest::registerGlobalScene()
 
 HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(Centaur::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Cyclops::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ent::getHexusOpponentData()));
@@ -93,7 +88,6 @@ HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(Navigatio
 	this->opponents.push_back(HexusOpponentPreview::create(Rusty::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Toben::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

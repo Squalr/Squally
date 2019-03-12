@@ -12,47 +12,56 @@
     "X": "0.0f",
     "Y": "0.0f"
   },
-  "Health": 10,
-  "Special": 10,
+  "Health": "10",
+  "Special": "10",
   "Hexus": {
-      "Strength": "0.7f",
-      "Reward": "200",
-      "Puzzle": {
-        "PlayerLosses": "1",
-        "EnemyLosses": "0",
-        "PlayersTurn": "true",
-        "EnemyPassed": "true",
-        "PlayerDeck": {
+    "DeckSize": "25",
+    "Strength": "0.615f",
+    "Strategy": "Random",
+    "PresetCards": [
+      "Addition",
+      "LogicalAnd",
+      "LogicalOr",
+      "LogicalXor",
+      "ShiftLeft",
+      "ShiftRight"
+    ],
+    "PuzzleData": {
+      "PlayerLosses": "1",
+      "EnemyLosses": "0",
+      "PlayersTurn": "true",
+      "EnemyPassed": "true",
+      "PlayerDeck": {
 
-        },
-        "EnemyDeck": {
+      },
+      "EnemyDeck": {
 
-        },
-        "PlayerHand": {
+      },
+      "PlayerHand": {
 
-        },
-        "EnemyHand": {
+      },
+      "EnemyHand": {
 
-        },
-        "PlayerBinaryCards": {
+      },
+      "PlayerBinaryCards": {
 
-        },
-        "PlayerDecimalCards": {
+      },
+      "PlayerDecimalCards": {
 
-        },
-        "PlayerHexCards": {
+      },
+      "PlayerHexCards": {
 
-        },
-        "EnemyBinaryCards": {
+      },
+      "EnemyBinaryCards": {
 
-        },
-        "EnemyDecimalCards": {
+      },
+      "EnemyDecimalCards": {
 
-        },
-        "EnemyHexCards": {
+      },
+      "EnemyHexCards": {
 
-        },
-        "TutorialKey": ""
-      }
+      },
+      "TutorialKey": ""
+    }
   }
 }

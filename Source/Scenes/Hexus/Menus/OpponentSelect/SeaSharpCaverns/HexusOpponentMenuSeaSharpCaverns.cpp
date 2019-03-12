@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
@@ -38,7 +36,6 @@
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -59,8 +56,6 @@ void HexusOpponentMenuSeaSharpCaverns::registerGlobalScene()
 
 HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(BlackWidow::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthElemental::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthGolem::getHexusOpponentData()));
@@ -87,7 +82,6 @@ HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(Nav
 	this->opponents.push_back(HexusOpponentPreview::create(Sarude::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Shen::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{

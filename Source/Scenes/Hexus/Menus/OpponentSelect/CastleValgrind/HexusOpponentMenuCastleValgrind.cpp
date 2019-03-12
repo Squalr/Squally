@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/Castle/CastleHexusOpponents.h"
 
-////X////X////X////X////X////X////X////X////X////X/
-
 #include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Executioner.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Guard.h"
@@ -40,7 +38,6 @@
 #include "Entities/Platformer/Npcs/CastleValgrind/Thurstan.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Tyracius.h"
 
-////O////O////O////O////O////O////O////O////O////O/
 
 using namespace cocos2d;
 
@@ -61,8 +58,6 @@ void HexusOpponentMenuCastleValgrind::registerGlobalScene()
 
 HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Castle, HexusChapterPreviewCastle::SaveKeyChapterName)
 {
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->opponents.push_back(HexusOpponentPreview::create(Agnes::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Executioner::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Guard::getHexusOpponentData()));
@@ -91,7 +86,6 @@ HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(Navig
 	this->opponents.push_back(HexusOpponentPreview::create(Thurstan::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Tyracius::getHexusOpponentData()));
 
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{
