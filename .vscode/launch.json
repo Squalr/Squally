@@ -28,6 +28,18 @@
             "MIMode": "lldb"
         },
         {
+            "name": "(Mac) LLDB Launch",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/Squally.app/Contents/MacOS/Squally",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "lldb"
+        },
+        {
             "name": "(Linux) Launch",
             "type": "cppdbg",
             "request": "launch",

@@ -36,8 +36,6 @@ GlobalDirector::~GlobalDirector()
 void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 {
 	auto director = Director::getInstance();
-	auto glview = director->getOpenGLView();
-	glview->setCursorVisible(false);
 	SceneEvents::TriggerBeforeSceneChange();
 
 	// Although this is counter-intuitive, add the Global Director as a child to whichever scene is active.
