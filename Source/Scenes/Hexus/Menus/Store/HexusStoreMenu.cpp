@@ -126,10 +126,10 @@ HexusStoreMenu::HexusStoreMenu()
 
 	const Size scrollPaneSize = Size(840.0f, 720.0f);
 
-	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 
 	Sprite* lootBoxIcon = Sprite::create(UIResources::Menus_StoreMenu_IconLootBox);
 	Sprite* binaryIcon = Sprite::create(UIResources::Menus_StoreMenu_IconBin);
@@ -392,10 +392,10 @@ void HexusStoreMenu::initializePositions()
 
 	for (auto it = this->binaryCards.begin(); it != this->binaryCards.end(); it++)
 	{
-		int x = index % 3 - 1;
-		int y = (this->binaryCards.size() - 1 - index + (3 - this->binaryCards.size() % 3)) / 3 - (this->binaryCards.size() % 3 == 0 ? 1 : 0);
+		int x = index % 3;
+		int y = index / 3;
 
-		std::get<0>(*it)->setPosition(Vec2(x * cardGridSize.width + this->binaryCardsScrollPane->getPaneSize().width / 2.0f, 128.0f + y * cardGridSize.height));
+		std::get<0>(*it)->setPosition(Vec2((x - 1) * cardGridSize.width, y * -cardGridSize.height - 160.0f));
 
 		index++;
 	}
@@ -404,10 +404,10 @@ void HexusStoreMenu::initializePositions()
 
 	for (auto it = this->decimalCards.begin(); it != this->decimalCards.end(); it++)
 	{
-		int x = index % 3 - 1;
-		int y = (this->decimalCards.size() - 1 - index + (3 - this->decimalCards.size() % 3)) / 3 - (this->decimalCards.size() % 3 == 0 ? 1 : 0);
+		int x = index % 3;
+		int y = index / 3;
 
-		std::get<0>((*it))->setPosition(Vec2(x * cardGridSize.width + this->decimalCardsScrollPane->getPaneSize().width / 2.0f, 128.0f + y * cardGridSize.height));
+		std::get<0>((*it))->setPosition(Vec2((x - 1) * cardGridSize.width, y * -cardGridSize.height - 160.0f));
 
 		index++;
 	}
@@ -416,10 +416,10 @@ void HexusStoreMenu::initializePositions()
 
 	for (auto it = this->hexCards.begin(); it != this->hexCards.end(); it++)
 	{
-		int x = index % 3 - 1;
-		int y = (this->hexCards.size() - 1 - index + (3 - this->hexCards.size() % 3)) / 3 - (this->hexCards.size() % 3 == 0 ? 1 : 0);
+		int x = index % 3;
+		int y = index / 3;
 
-		std::get<0>(*it)->setPosition(Vec2(x * cardGridSize.width + this->hexCardsScrollPane->getPaneSize().width / 2.0f, 128.0f + y * cardGridSize.height));
+		std::get<0>(*it)->setPosition(Vec2((x - 1) * cardGridSize.width, y * -cardGridSize.height - 160.0f));
 
 		index++;
 	}
@@ -428,10 +428,10 @@ void HexusStoreMenu::initializePositions()
 
 	for (auto it = this->specialCards.begin(); it != this->specialCards.end(); it++)
 	{
-		int x = index % 3 - 1;
-		int y = (this->specialCards.size() - 1 - index + (3 - this->specialCards.size() % 3)) / 3 - (this->specialCards.size() % 3 == 0 ? 1 : 0);
+		int x = index % 3;
+		int y = index / 3;
 
-		std::get<0>(*it)->setPosition(Vec2(x * cardGridSize.width + this->specialCardsScrollPane->getPaneSize().width / 2.0f, 128.0f + y * cardGridSize.height));
+		std::get<0>(*it)->setPosition(Vec2((x - 1) * cardGridSize.width, y * -cardGridSize.height - 160.0f));
 
 		index++;
 	}
