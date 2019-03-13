@@ -8,6 +8,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class SmartAnimationSequenceNode;
+
 class StateCoinFlip : public StateBase
 {
 public:
@@ -26,10 +28,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* coin;
-	cocos2d::Animation* skeletonInAnimation;
-	cocos2d::Animation* skeletonOutAnimation;
-	cocos2d::Animation* lionInAnimation;
-	cocos2d::Animation* lionOutAnimation;
-	cocos2d::Animation* neutralAnimation;
+	SmartAnimationSequenceNode* coinAnimation;
 };
