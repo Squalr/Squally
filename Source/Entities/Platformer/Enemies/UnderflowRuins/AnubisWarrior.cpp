@@ -90,8 +90,8 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 			AnubisWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			1.000f,
+			HexusOpponentData::generateDeck(25, 1.000f,
 			{
 
 			}),

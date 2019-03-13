@@ -90,8 +90,8 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 			Aphrodite::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.146f,
+			HexusOpponentData::generateDeck(25, 0.146f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

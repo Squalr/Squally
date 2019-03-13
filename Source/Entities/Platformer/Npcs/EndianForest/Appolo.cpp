@@ -90,8 +90,8 @@ HexusOpponentData* Appolo::getHexusOpponentData()
 			Appolo::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 13.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 13.0f,
+			0.125f,
+			HexusOpponentData::generateDeck(25, 0.125f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

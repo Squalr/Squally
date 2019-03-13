@@ -65,10 +65,7 @@ HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(NavigationE
 	this->opponents.push_back(HexusOpponentPreview::create(Theldar::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Tinsel::getHexusOpponentData()));
 
-	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
-	{
-		this->scrollPane->addChild(*it);
-	}
+	this->buildOpponentList();
 }
 
 HexusOpponentMenuBalmerPeaks::~HexusOpponentMenuBalmerPeaks()

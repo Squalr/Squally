@@ -90,8 +90,8 @@ HexusOpponentData* Jingles::getHexusOpponentData()
 			Jingles::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.562f,
+			HexusOpponentData::generateDeck(25, 0.562f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

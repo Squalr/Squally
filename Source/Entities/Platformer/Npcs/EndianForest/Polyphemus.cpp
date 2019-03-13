@@ -90,8 +90,8 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 			Polyphemus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 06.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 06.0f,
+			0.058f,
+			HexusOpponentData::generateDeck(25, 0.058f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

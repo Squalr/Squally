@@ -250,3 +250,16 @@ void HexusOpponentMenuBase::loadProgress()
 		}
 	}
 }
+
+void HexusOpponentMenuBase::buildOpponentList()
+{
+	std::sort(this->opponents.begin(), this->opponents.end(), [](HexusOpponentPreview* a, const HexusOpponentPreview* b) -> bool
+	{ 
+		return a->hexusOpponentData->strength < b->hexusOpponentData->strength; 
+	});
+
+	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
+	{
+		this->scrollPane->addChild(*it);
+	}
+}

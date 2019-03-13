@@ -90,8 +90,8 @@ HexusOpponentData* PrincessPepper::getHexusOpponentData()
 			PrincessPepper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.604f,
+			HexusOpponentData::generateDeck(25, 0.604f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

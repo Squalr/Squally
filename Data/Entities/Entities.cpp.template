@@ -90,7 +90,7 @@ HexusOpponentData* {{EntityName}}::getHexusOpponentData()
 			{{EntityName}}::HexusSaveKey,
 			HexusOpponentData::Strategy::{{HexusStrategy}},
 			Card::CardStyle::{{HexusCardStyle}},
-			HexusOpponentData::generateReward({{HexusStrength}}),
+			{{HexusStrength}},
 			HexusOpponentData::generateDeck({{HexusDeckSize}}, {{HexusStrength}},
 			{
 {{HexusPresetCards}}

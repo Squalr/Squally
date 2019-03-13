@@ -90,8 +90,8 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 			Lycan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 08.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 08.0f,
+			0.077f,
+			HexusOpponentData::generateDeck(25, 0.077f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

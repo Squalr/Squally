@@ -90,8 +90,8 @@ HexusOpponentData* Minos::getHexusOpponentData()
 			Minos::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 07.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 07.0f,
+			0.067f,
+			HexusOpponentData::generateDeck(25, 0.067f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

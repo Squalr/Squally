@@ -65,10 +65,7 @@ HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents:
 	this->opponents.push_back(HexusOpponentPreview::create(Xenon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ysara::getHexusOpponentData()));
 
-	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
-	{
-		this->scrollPane->addChild(*it);
-	}
+	this->buildOpponentList();
 }
 
 HexusOpponentMenuVoidStar::~HexusOpponentMenuVoidStar()

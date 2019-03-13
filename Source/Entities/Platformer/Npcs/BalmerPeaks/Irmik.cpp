@@ -90,8 +90,8 @@ HexusOpponentData* Irmik::getHexusOpponentData()
 			Irmik::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.552f,
+			HexusOpponentData::generateDeck(25, 0.552f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
