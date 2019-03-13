@@ -90,8 +90,8 @@ HexusOpponentData* Cleopatra::getHexusOpponentData()
 			Cleopatra::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.250f,
+			HexusOpponentData::generateDeck(25, 0.250f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

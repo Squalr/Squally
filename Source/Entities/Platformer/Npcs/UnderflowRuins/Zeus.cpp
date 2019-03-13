@@ -90,8 +90,8 @@ HexusOpponentData* Zeus::getHexusOpponentData()
 			Zeus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.240f,
+			HexusOpponentData::generateDeck(25, 0.240f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

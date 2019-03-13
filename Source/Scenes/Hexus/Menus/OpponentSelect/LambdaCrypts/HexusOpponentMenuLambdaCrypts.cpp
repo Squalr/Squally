@@ -65,10 +65,7 @@ HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(Navigatio
 	this->opponents.push_back(HexusOpponentPreview::create(Zana::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zelina::getHexusOpponentData()));
 
-	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
-	{
-		this->scrollPane->addChild(*it);
-	}
+	this->buildOpponentList();
 }
 
 HexusOpponentMenuLambdaCrypts::~HexusOpponentMenuLambdaCrypts()

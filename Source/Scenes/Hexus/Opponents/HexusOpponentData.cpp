@@ -24,7 +24,7 @@ HexusOpponentData::HexusOpponentData(
 	std::string enemyNameKey,
 	HexusOpponentData::Strategy strategy,
 	Card::CardStyle cardStyle,
-	int reward,
+	float strength,
 	std::vector<CardData*> cards,
 	StateOverride* stateOverride)
 {
@@ -37,7 +37,8 @@ HexusOpponentData::HexusOpponentData(
 	this->enemyNameKey = enemyNameKey;
 	this->strategy = strategy;
 	this->cardStyle = cardStyle;
-	this->reward = reward;
+	this->strength = strength;
+	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
 	this->stateOverride = stateOverride;
 

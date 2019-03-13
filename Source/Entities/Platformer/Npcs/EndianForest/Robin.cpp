@@ -90,8 +90,8 @@ HexusOpponentData* Robin::getHexusOpponentData()
 			Robin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 04.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 04.0f,
+			0.038f,
+			HexusOpponentData::generateDeck(25, 0.038f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

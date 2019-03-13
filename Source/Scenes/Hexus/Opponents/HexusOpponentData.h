@@ -30,7 +30,7 @@ public:
 		std::string enemyNameKey,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
-		int reward,
+		float strength,
 		std::vector<CardData*> cards,
 		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
@@ -48,6 +48,7 @@ public:
 	cocos2d::Vec2 animationOffset;
 	cocos2d::Vec2 avatarOffset;
 	cocos2d::Vec2 frameOffset;
+	float strength;
 	int reward;
 	Strategy strategy;
 	StateOverride* stateOverride;

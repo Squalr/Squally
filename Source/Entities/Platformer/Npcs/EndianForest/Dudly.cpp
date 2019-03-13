@@ -90,8 +90,8 @@ HexusOpponentData* Dudly::getHexusOpponentData()
 			Dudly::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 10.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 10.0f,
+			0.096f,
+			HexusOpponentData::generateDeck(25, 0.096f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

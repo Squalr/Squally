@@ -90,8 +90,8 @@ HexusOpponentData* Rusty::getHexusOpponentData()
 			Rusty::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 02.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 02.0f,
+			0.019f,
+			HexusOpponentData::generateDeck(25, 0.019f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

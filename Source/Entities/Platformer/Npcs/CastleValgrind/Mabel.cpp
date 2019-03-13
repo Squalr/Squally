@@ -90,8 +90,8 @@ HexusOpponentData* Mabel::getHexusOpponentData()
 			Mabel::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.438f,
+			HexusOpponentData::generateDeck(25, 0.438f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

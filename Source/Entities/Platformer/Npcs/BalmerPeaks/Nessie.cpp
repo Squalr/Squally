@@ -90,8 +90,8 @@ HexusOpponentData* Nessie::getHexusOpponentData()
 			Nessie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.594f,
+			HexusOpponentData::generateDeck(25, 0.594f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

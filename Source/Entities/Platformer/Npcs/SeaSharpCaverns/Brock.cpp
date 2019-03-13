@@ -90,8 +90,8 @@ HexusOpponentData* Brock::getHexusOpponentData()
 			Brock::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.271f,
+			HexusOpponentData::generateDeck(25, 0.271f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

@@ -82,6 +82,9 @@ def parseEntityFile(entityDataPath):
 
 		entityData["Hexus"]["MatchData"]["PresetCards"] = presetCards
 
+		# Evaluate strength equations
+		entityData["Hexus"]["MatchData"]["Strength"] = "%.3f"%(eval(entityData["Hexus"]["MatchData"]["Strength"].replace("f", ""))) + "f"
+
 		if entityData["Prefix"] == "Enemies":
 			entityData["Type"] = "Enemy"
 			entityData["Collision"] = "Enemy"
@@ -222,7 +225,6 @@ def generateHexusMenuCode(allEntityData):
 
 		for environment in sortedEntities:
 			entities = sortedEntities[environment]
-			entities.sort()
 			
 			menuName = "HexusOpponentMenu" + environment
 			hOutFile = menuRoot + "/" + environment + "/" + menuName + ".h"

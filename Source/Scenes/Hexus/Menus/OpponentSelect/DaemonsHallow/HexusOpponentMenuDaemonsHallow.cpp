@@ -65,10 +65,7 @@ HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(Navigat
 	this->opponents.push_back(HexusOpponentPreview::create(Ragnis::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Scaldor::getHexusOpponentData()));
 
-	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
-	{
-		this->scrollPane->addChild(*it);
-	}
+	this->buildOpponentList();
 }
 
 HexusOpponentMenuDaemonsHallow::~HexusOpponentMenuDaemonsHallow()

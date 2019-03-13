@@ -90,8 +90,8 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 			Chiron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.000f + 0.125f * 12.0f),
-			HexusOpponentData::generateDeck(25, 0.000f + 0.125f * 12.0f,
+			0.115f,
+			HexusOpponentData::generateDeck(25, 0.115f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

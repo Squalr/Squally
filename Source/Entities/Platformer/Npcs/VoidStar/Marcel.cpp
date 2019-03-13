@@ -90,8 +90,8 @@ HexusOpponentData* Marcel::getHexusOpponentData()
 			Marcel::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.948f,
+			HexusOpponentData::generateDeck(25, 0.948f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

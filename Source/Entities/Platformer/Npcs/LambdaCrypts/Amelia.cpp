@@ -90,8 +90,8 @@ HexusOpponentData* Amelia::getHexusOpponentData()
 			Amelia::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.760f,
+			HexusOpponentData::generateDeck(25, 0.760f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

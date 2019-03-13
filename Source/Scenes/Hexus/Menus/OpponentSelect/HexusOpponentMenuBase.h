@@ -30,6 +30,7 @@ protected:
 	void onShopClick(ClickableNode* menuSprite);
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void buildOpponentList();
 
 	NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter;
 

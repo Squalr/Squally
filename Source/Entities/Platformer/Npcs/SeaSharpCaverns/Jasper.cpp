@@ -90,8 +90,8 @@ HexusOpponentData* Jasper::getHexusOpponentData()
 			Jasper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.312f,
+			HexusOpponentData::generateDeck(25, 0.312f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

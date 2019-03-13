@@ -90,8 +90,8 @@ HexusOpponentData* Cypress::getHexusOpponentData()
 			Cypress::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			HexusOpponentData::generateReward(0.615f),
-			HexusOpponentData::generateDeck(25, 0.615f,
+			0.281f,
+			HexusOpponentData::generateDeck(25, 0.281f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
