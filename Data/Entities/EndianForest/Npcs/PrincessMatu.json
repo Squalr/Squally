@@ -19,16 +19,18 @@
       "X": "-48.0f",
       "Y": "-144.0f"
     },
-    "DeckSize": "25",
-    "Strength": "0.000f + 0.125f * 05.0f",
-    "Strategy": "Random",
-    "PresetCards": [
-      "Addition",
-      "LogicalAnd",
-      "LogicalOr",
-      "LogicalXor",
-      "ShiftLeft",
-      "ShiftRight"
-    ]
+    "MatchData": {
+      "DeckSize": "25",
+      "Strength": "0.000f + 0.125f * 05.0f",
+      "Strategy": "Random",
+      "PresetCards": [
+        "Addition",
+        "LogicalAnd",
+        "LogicalOr",
+        "LogicalXor",
+        "ShiftLeft",
+        "ShiftRight"
+      ]
+    }
   }
 }

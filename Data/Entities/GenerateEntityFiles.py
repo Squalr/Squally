@@ -77,10 +77,10 @@ def parseEntityFile(entityDataPath):
 		# Reformat preset card list to match C++ needs
 		presetCards = ""
 
-		for presetCard in entityData["Hexus"]["PresetCards"]:
+		for presetCard in entityData["Hexus"]["MatchData"]["PresetCards"]:
 			presetCards += "\t\t\t\tCardList::getInstance()->cardListByName.at(CardKeys::" + presetCard + "),\n"
 
-		entityData["Hexus"]["PresetCards"] = presetCards
+		entityData["Hexus"]["MatchData"]["PresetCards"] = presetCards
 
 		if entityData["Prefix"] == "Enemies":
 			entityData["Type"] = "Enemy"
@@ -173,10 +173,10 @@ def generateEntityCode(entityData):
 				.replace("{{EntityAvatarOffsetX}}", entityData["AvatarOffset"]["X"]) \
 				.replace("{{EntityAvatarOffsetY}}", entityData["AvatarOffset"]["Y"]) \
 				.replace("{{HexusSaveKey}}", entityData["HexusSaveKey"]) \
-				.replace("{{HexusStrategy}}", entityData["Hexus"]["Strategy"]) \
-				.replace("{{HexusStrength}}", entityData["Hexus"]["Strength"]) \
-				.replace("{{HexusDeckSize}}", entityData["Hexus"]["DeckSize"]) \
-				.replace("{{HexusPresetCards}}", entityData["Hexus"]["PresetCards"]) \
+				.replace("{{HexusStrategy}}", entityData["Hexus"]["MatchData"]["Strategy"]) \
+				.replace("{{HexusStrength}}", entityData["Hexus"]["MatchData"]["Strength"]) \
+				.replace("{{HexusDeckSize}}", entityData["Hexus"]["MatchData"]["DeckSize"]) \
+				.replace("{{HexusPresetCards}}", entityData["Hexus"]["MatchData"]["PresetCards"]) \
 				.replace("{{HexusCardStyle}}", entityData["Hexus"]["CardStyle"]) \
 				.replace("{{HexusPuzzleData}}", entityData["Hexus"]["PuzzleData"]) \
 				.replace("{{HexusFrameOffsetX}}", entityData["Hexus"]["FrameOffset"]["X"]) \

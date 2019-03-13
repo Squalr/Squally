@@ -20,11 +20,13 @@
       "X": "-48.0f",
       "Y": "-144.0f"
     },
-    "DeckSize": "25",
-    "Strength": "0.615f",
-    "Strategy": "Random",
-    "PresetCards": [
-    ],
+    "MatchData": {
+      "DeckSize": "25",
+      "Strength": "0.615f",
+      "Strategy": "Random",
+      "PresetCards": [
+      ]
+    },
     "PuzzleData": {
       "PlayerLosses": "1",
       "EnemyLosses": "0",
