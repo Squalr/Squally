@@ -35,6 +35,27 @@ public:
 	static const cocos2d::Value& getKeyOrDefault(const cocos2d::ValueMap& valueMap, std::string key, const cocos2d::Value& defaultValue);
 
 	template <class T>
+	static bool isVisibleUntil(cocos2d::Node* node)
+	{
+		while (node != nullptr)
+		{
+			if (dynamic_cast<T*>(node) != nullptr)
+			{
+				return true;
+			}
+
+			if (!node->isVisible() || node->getOpacity() <= 0)
+			{
+				return false;
+			}
+
+			node = node->getParent();
+		}
+
+		return true;
+	}
+
+	template <class T>
 	static T* getFirstParentOfType(cocos2d::Node *node)
 	{
 		while (node != nullptr)
