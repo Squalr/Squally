@@ -29,7 +29,7 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 
 	this->ghostSprite->setColor(Color3B::BLUE);
 	this->ghostSprite->setVisible(false);
-	this->rotation = this->spriterAnimationPart->getAngle();
+	this->rotation = float(this->spriterAnimationPart->getAngle());
 
 	this->addChild(this->ghostSprite);
 }
@@ -131,8 +131,8 @@ void AnimationPart::updateTrackedAttributes()
 	Vec3 delta = thisCords - spriteCoords;
 
 	// In order to make the game think that this AnimationPart class is the Spriter object, we need to keep certain things in sync
-	super::setRotation(this->spriterAnimationPart->getAngle() * 180.0f / M_PI);
-	super::setPosition(Vec2(this->spriterAnimationPart->getPosition().x, -this->spriterAnimationPart->getPosition().y) - Vec2(delta.x, delta.y));
+	super::setRotation(float(this->spriterAnimationPart->getAngle()) * 180.0f / float(M_PI));
+	super::setPosition(Vec2(float(this->spriterAnimationPart->getPosition().x), -float(this->spriterAnimationPart->getPosition().y)) - Vec2(delta.x, delta.y));
 	super::setAnchorPoint(Vec2(float(this->spriterAnimationPart->getPivot().x), float(this->spriterAnimationPart->getPivot().y)));
 
 	this->ghostSprite->setPosition(Vec2::ZERO);

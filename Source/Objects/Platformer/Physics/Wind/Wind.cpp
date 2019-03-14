@@ -70,7 +70,7 @@ void Wind::onEnter()
 {
 	super::onEnter();
 
-	this->windParticles->setTotalParticles(this->windSize.width * this->windSize.height / 4096.0f);
+	this->windParticles->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
 	this->windParticles->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
 
 	this->scheduleUpdate();
@@ -196,7 +196,7 @@ void Wind::updateWind(float dt)
 
 	static volatile float angle;
 
-	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / M_PI;
+	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / float(M_PI);
 
 	this->windParticles->setAngle(angle);
 }

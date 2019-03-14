@@ -28,8 +28,8 @@ std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
-const float TerrainObject::TopThreshold = M_PI / 6.0f;
-const float TerrainObject::BottomThreshold = 7 * M_PI / 6.0f;
+const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
+const float TerrainObject::BottomThreshold = 7 * float(M_PI) / 6.0f;
 
 TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData terrainData)
 {
@@ -267,7 +267,7 @@ void TerrainObject::buildSurfaceShadow()
 		float currentSegmentLength = source.distance(dest);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, shadowTriangles);
 
-		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold)
+		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold)
 		{
 			shadowLine->drawLine(source, dest, Color4F::BLACK);
 		}
@@ -319,11 +319,11 @@ void TerrainObject::buildSurfaceTextures()
 		float angleDelta = nextAngle - angle;
 
 		std::stringstream angleStream;
-		angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / M_PI);
+		angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / float(M_PI));
 		ConstantString* angleString = ConstantString::create(angleStream.str());
 
 		std::stringstream bisectingAngleStream;
-		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / M_PI);
+		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / float(M_PI));
 		ConstantString* bisectingAngleString = ConstantString::create(bisectingAngleStream.str());
 
 		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, angleString);
@@ -385,7 +385,7 @@ void TerrainObject::buildSurfaceTextures()
 			}
 
 			sprite->setPosition(source.getMidpoint(dest) + offset);
-			sprite->setRotation(initialAngle - angle * 180.0f / M_PI);
+			sprite->setRotation(initialAngle - angle * 180.0f / float(M_PI));
 
 			// Advance the seamless segment distance (with wrap around on overflow)
 			seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, isTextureHorizontal ? textureSize.width : textureSize.height);
@@ -442,7 +442,7 @@ void TerrainObject::buildSurfaceTextures()
 				
 				topLeft->setAnchorPoint(Vec2(1.0f - TOP_ANCHOR_X_OFFSET, 1.0f));
 				topLeft->setPosition(dest + Vec2(0.0f, topLeft->getContentSize().height / 2.0f));
-				topLeft->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / M_PI);
+				topLeft->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->topCornersNode->addChild(topLeft);
 			}
@@ -453,7 +453,7 @@ void TerrainObject::buildSurfaceTextures()
 
 				topRight->setAnchorPoint(Vec2(0.0f + TOP_ANCHOR_X_OFFSET, 1.0f));
 				topRight->setPosition(dest + Vec2(0.0f, topRight->getContentSize().height / 2.0f));
-				topRight->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / M_PI);
+				topRight->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->topCornersNode->addChild(topRight);
 			}
@@ -471,7 +471,7 @@ void TerrainObject::buildSurfaceTextures()
 
 				bottomLeft->setAnchorPoint(Vec2(0.0f, 0.0f));
 				bottomLeft->setPosition(dest + Vec2(0.0f, -bottomLeft->getContentSize().height / 2.0f));
-				bottomLeft->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / M_PI);
+				bottomLeft->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->bottomCornersNode->addChild(bottomLeft);
 			}
@@ -482,7 +482,7 @@ void TerrainObject::buildSurfaceTextures()
 
 				bottomRight->setAnchorPoint(Vec2(1.0f, 0.0f));
 				bottomRight->setPosition(dest + Vec2(0.0f, -bottomRight->getContentSize().height / 2.0f));
-				bottomRight->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / M_PI);
+				bottomRight->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->bottomCornersNode->addChild(bottomRight);
 			}
@@ -494,12 +494,12 @@ void TerrainObject::buildSurfaceTextures()
 
 bool TerrainObject::isTopAngle(float normalAngle)
 {
-	return normalAngle >= TerrainObject::TopThreshold && normalAngle <= M_PI - TerrainObject::TopThreshold;
+	return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
 }
 
 bool TerrainObject::isBottomAngle(float normalAngle)
 {
-	return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * M_PI - (TerrainObject::BottomThreshold - M_PI);
+	return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
 }
 
 bool TerrainObject::isLeftAngle(float normalAngle)

@@ -39,7 +39,7 @@ Monkey::Monkey(ValueMap& initProperties) : super(initProperties)
 
 	this->valueLabel->setStringReplacementVariables(this->valueString);
 	this->valueLabel->setPosition(-48.0f, 128.0f);
-	this->valueLabel->enableOutline(Color4B::BLACK, 2.0f);
+	this->valueLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->valueLabel);
 }
