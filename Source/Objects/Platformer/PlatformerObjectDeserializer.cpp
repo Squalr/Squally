@@ -64,6 +64,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = Catapult::create(properties);
 		}
+		else if (name == Chest::MapKeyChest)
+		{
+			newObject = Chest::create(properties);
+		}
 		else if (name == DartGun::MapKeyDartGun)
 		{
 			newObject = DartGun::create(properties);
@@ -127,10 +131,6 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == Monkey::MapKeyMonkey)
 		{
 			newObject = Monkey::create(properties);
-		}
-		else if (name == Monitor::MapKeyMonitor)
-		{
-			newObject = Monitor::create(properties);
 		}
 		else if (name == StoneButton::MapKeyStoneButton)
 		{

@@ -36,7 +36,7 @@ PuzzleA::PuzzleA() : HexusOpponentData(
 	PuzzleA::OpponentSaveKey,
 	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Light,
-	HexusOpponentData::generateReward(0.07f),
+	0.07f,
 	HexusOpponentData::generateDeck(25, 0.07f,
 	{
 	}),

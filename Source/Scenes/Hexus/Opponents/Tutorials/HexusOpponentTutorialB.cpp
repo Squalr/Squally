@@ -36,7 +36,7 @@ HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
 	HexusOpponentTutorialB::OpponentSaveKey,
 	HexusOpponentData::Strategy::Random,
 	Card::CardStyle::Air,
-	HexusOpponentData::generateReward(0.075f),
+	0.075f,
 	HexusOpponentData::generateDeck(25, 0.075f,
 	{
 	}),

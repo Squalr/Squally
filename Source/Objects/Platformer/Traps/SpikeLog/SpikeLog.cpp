@@ -128,7 +128,7 @@ int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 
 	HACKABLES_STOP_SEARCH();
 
-	this->spikeCollision->setPositionY(96.0f * std::sin(((float)count / (float)max) * 2.0f * M_PI));
+	this->spikeCollision->setPositionY(96.0f * std::sin(((float)count / (float)max) * 2.0f * float(M_PI)));
 
 	return count;
 }

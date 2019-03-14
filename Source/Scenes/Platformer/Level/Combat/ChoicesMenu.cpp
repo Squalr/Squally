@@ -103,7 +103,7 @@ void ChoicesMenu::initializePositions()
 {
 	super::initializePositions();
 
-	const float AngleDelta = M_PI / 6.0f;
+	const float AngleDelta = float(M_PI) / 6.0f;
 
 	this->itemsNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(AngleDelta), ChoicesMenu::InnerChoicesRadius * std::sin(AngleDelta)));
 	this->attackNode->setPosition(Vec2(ChoicesMenu::InnerChoicesRadius * std::cos(0.0f), ChoicesMenu::InnerChoicesRadius * std::sin(0.0f)));
@@ -252,7 +252,7 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 
 void ChoicesMenu::buildAttackList()
 {
-	const float AngleDelta = M_PI / 6.0f;
+	const float AngleDelta = float(M_PI) / 6.0f;
 	float currentAngle = 0.0f;
 
 	this->attackListNodes.clear();
@@ -302,7 +302,7 @@ void ChoicesMenu::buildAttackList()
 
 void ChoicesMenu::buildItemList()
 {
-	const float AngleDelta = M_PI / 6.0f;
+	const float AngleDelta = float(M_PI) / 6.0f;
 	float currentAngle = 0.0f;
 
 	this->itemListNodes.clear();

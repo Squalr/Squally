@@ -206,7 +206,7 @@ void LocalizedLabel::toggleAllowTranslationEdit(bool allowTranslationEdit)
 void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 {
 	// Save some state we wish to keep
-	int outlineSize = this->getOutlineSize();
+	int outlineSize = int(this->getOutlineSize());
 	Color4B outlineColor = Color4B(_effectColorF);
 
 	this->initWithTTF(

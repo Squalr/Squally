@@ -110,8 +110,8 @@ void MatrixLetter::randomizeLetter()
 {
 	Size spriteSheetSize = this->getTexture()->getContentSize();
 
-	int x = RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize;
-	int y = RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize;
+	float x = float(RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize);
+	float y = float(RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize);
 
 	this->setTextureRect(Rect(x, y, MatrixLetter::letterSize, MatrixLetter::letterSize));
 }

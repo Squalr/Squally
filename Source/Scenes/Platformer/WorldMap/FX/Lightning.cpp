@@ -104,7 +104,7 @@ void Lightning::playNextAnimation()
 	this->runAction(Sequence::create(DelayTime::create(delay), CallFunc::create([=]()
 	{
 		float cameraDistance = GameCamera::getInstance()->getCameraPosition().distance(this->getPosition());
-		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4 * M_PI * cameraDistance);
+		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4 * float(M_PI) * cameraDistance);
 
 		SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy, soundIntensity);
 

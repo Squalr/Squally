@@ -5,18 +5,21 @@
 
 #include "Resources/ObjectResources.h"
 
-Chest* Chest::create(Node* contentNode)
+using namespace cocos2d;
+
+const std::string Chest::MapKeyChest = "chest";
+
+Chest* Chest::create(cocos2d::ValueMap& initProperties)
 {
-	Chest* instance = new Chest(contentNode);
+	Chest* instance = new Chest(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Chest::Chest(Node* contentNode) : SmartNode()
+Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 {
-	this->content = contentNode;
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 
@@ -25,11 +28,8 @@ Chest::Chest(Node* contentNode) : SmartNode()
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::ChestClosed);
 
 	this->chestOpen->addChild(chestOpenLidSprite);
-	this->chestOpen->addChild(this->content);
 	this->chestOpen->addChild(chestOpenFrontSprite);
 	this->chestClosed->addChild(chestClosedSprite);
-
-	this->content->setCascadeOpacityEnabled(true);
 
 	this->close();
 
@@ -45,8 +45,6 @@ void Chest::open()
 {
 	this->chestClosed->setVisible(false);
 	this->chestOpen->setVisible(true);
-	this->content->runAction(FadeOut::create(2.0f));
-	this->content->runAction(MoveBy::create(2.0f, Vec2(0.0f, 128.0f)));
 }
 
 void Chest::close()
