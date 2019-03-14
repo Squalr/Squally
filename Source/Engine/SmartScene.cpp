@@ -33,7 +33,7 @@ SmartScene::SmartScene()
 
 	this->layerColor->setContentSize(Director::getInstance()->getVisibleSize());
 
-	this->layerColorHud->setZOrder(99999);
+	this->layerColorHud->setLocalZOrder(99999);
 
 	this->layerColorHud->addChild(this->layerColor);
 	this->addChild(this->layerColorHud);
