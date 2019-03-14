@@ -141,20 +141,25 @@ void HeavenHug::updateHeavenHug()
 
 float HeavenHug::getTravelHeight()
 {
-	volatile float* travelDistPtr = &travelDistance;
+	static volatile float* travelDistPtr = new float();
+	static volatile float retVal;
+
+	*travelDistPtr = this->travelDistance;
+	retVal = *travelDistPtr;
 
 	ASM(push EAX)
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
 	ASM_MOV_REG_VAR(EAX, travelDistPtr);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
 	ASM(fld dword ptr [EAX])
-	ASM_NOP8();
+	ASM_NOP12();
 	HACKABLE_CODE_END();
 	ASM(fstp dword ptr [EAX])
+	ASM(mov EAX, [EAX])
+	ASM_MOV_VAR_REG(retVal, EAX);
 	ASM(pop EAX)
-
 	HACKABLES_STOP_SEARCH();
 
-	return travelDistance;
+	return retVal;
 }
 
 PhysicsBody* HeavenHug::createSpikeCollision()

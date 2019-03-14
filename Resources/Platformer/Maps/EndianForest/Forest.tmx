@@ -193,11 +193,7 @@
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="583" name="trap-door-frame" type="object" x="23051.7" y="3971.14" width="301" height="215">
-   <properties>
-    <property name="event" value="door-open"/>
-   </properties>
-  </object>
+  <object id="583" name="trap-door-frame" type="object" x="23051.7" y="3971.14" width="301" height="215"/>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
@@ -306,11 +302,6 @@
   <object id="475" name="mechanical-flail" type="object" x="4742.79" y="2584.85" width="42.4242" height="198.303"/>
   <object id="476" name="mechanical-flail" type="object" x="5084.79" y="2511.85" width="42.4242" height="264.303"/>
   <object id="479" name="mechanical-flail" type="object" x="5474.79" y="2634.85" width="42.4242" height="166.303"/>
-  <object id="487" name="dart-gun" type="object" x="5864.61" y="1572" width="78.7879" height="88">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="494" name="heaven-hug" type="object" x="7254.55" y="2180.24" width="78.7879" height="603.152">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
@@ -324,11 +315,6 @@
   <object id="496" name="heaven-hug" type="object" x="7933.33" y="2177.21" width="78.7879" height="688.001">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="499" name="dart-gun" type="object" x="8196.61" y="2496" width="78.7879" height="88">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="513" name="wind" type="object" x="9525.94" y="3328" width="2457.86" height="424">
@@ -490,7 +476,7 @@
   </object>
   <object id="580" name="stone-button" type="object" x="23802" y="3316.16" width="258.367" height="85.7283">
    <properties>
-    <property name="event" value="door-open"/>
+    <property name="event" value="door-open-2"/>
    </properties>
   </object>
   <object id="581" name="catapult" type="object" x="21829.4" y="3531.98" width="512" height="320">
@@ -500,7 +486,7 @@
   </object>
   <object id="582" name="trap-door" type="object" x="23091.7" y="4025.48" width="299.579" height="85.7283">
    <properties>
-    <property name="event" value="door-open"/>
+    <property name="event" value="door-open-2"/>
    </properties>
   </object>
  </objectgroup>
@@ -514,79 +500,13 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="443" name="lycan" type="entity" x="326.666" y="2527.15" width="200" height="288"/>
-  <object id="444" name="minos" type="entity" x="1359.03" y="2521.58" width="200" height="288">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="445" name="polyphemus" type="entity" x="742.307" y="2527.52" width="200" height="288"/>
-  <object id="480" name="ogre" type="entity" x="1299.58" y="2646.31" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="orc-bomber"/>
-    <property name="ally-2" value="orc-bomber"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="504" name="ogre" type="entity" x="2306.06" y="1410.55" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="orc-bomber"/>
-    <property name="ally-2" value="orc-bomber"/>
-    <property name="ally-3" value="orc-bomber"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="505" name="ogre" type="entity" x="2739.39" y="1419.64" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="orc-bomber"/>
-    <property name="ally-2" value="orc-bomber"/>
-    <property name="ally-3" value="orc-bomber"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="506" name="ogre" type="entity" x="2530.3" y="1471.15" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="orc-bomber"/>
-    <property name="ally-2" value="orc-bomber"/>
-    <property name="ally-3" value="orc-bomber"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="507" name="troll" type="entity" x="2533.94" y="2725.33" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="goblin-warrior-pig"/>
-    <property name="ally-2" value="orc-swordsman"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="508" name="goblin-grunt-boar" type="entity" x="2932.12" y="2718.06" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="goblin-warrior-pig"/>
-    <property name="ally-2" value="centaur"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="533" name="anubis-warrior" type="entity" x="1730.61" y="2650" width="78.7879" height="88">
-   <properties>
-    <property name="ally-1" value="minotaur"/>
-    <property name="ally-2" value="tiger-man"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="13351.2" y="5365.29" width="78.7879" height="88"/>
+  <object id="523" name="squally" type="entity" x="1646.69" y="2520.27" width="78.7879" height="88"/>
  </objectgroup>
  <layer id="26" name="water" width="196" height="48">
   <data encoding="base64" compression="zlib">
@@ -631,11 +551,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="584" name="trap-door-frame" type="object" x="23089.5" y="4011.5" width="301" height="215">
-   <properties>
-    <property name="event" value="door-open"/>
-   </properties>
-  </object>
+  <object id="584" name="trap-door-frame" type="object" x="23089.5" y="4011.5" width="301" height="215"/>
  </objectgroup>
  <objectgroup id="31" name="rain">
   <properties>
@@ -661,7 +577,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="2468" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1987.09" y="2547.58" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1835.99" y="2547.58" width="242" height="738"/>
   <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="2580" width="242" height="738"/>
  </objectgroup>
 </map>

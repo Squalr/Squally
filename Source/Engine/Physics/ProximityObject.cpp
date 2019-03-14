@@ -170,10 +170,10 @@ void ProximityObject::setAcceleration(cocos2d::Vec3 acceleration)
 Vec3 ProximityObject::getVelocity()
 {
 	Vec3 velocityCopy = this->velocity;
+	static const volatile int* freeMemory = new int[128];
 	const volatile float* velocityPtrX = &velocityCopy.x;
 	const volatile float* velocityPtrY = &velocityCopy.y;
 	const volatile float* velocityPtrZ = &velocityCopy.z;
-	static const volatile int* freeMemory = new int[128];
 
 	// Push velocity variables onto FPU stack
 	ASM(push EAX)

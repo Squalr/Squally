@@ -7,8 +7,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/Obstructions/Wind/WindGenericPreview.h"
-#include "Objects/Platformer/Obstructions/Wind/WindSetSpeedPreview.h"
+#include "Objects/Platformer/Physics/Wind/WindGenericPreview.h"
+#include "Objects/Platformer/Physics/Wind/WindSetSpeedPreview.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
@@ -155,8 +155,11 @@ void Wind::updateWind(float dt)
 {
 	this->windSpeed = this->windSpeedDefault;
 
-	volatile float* xSpeedPtr = &this->windSpeed.x;
-	volatile float* ySpeedPtr = &this->windSpeed.y;
+	static volatile float* xSpeedPtr;
+	static volatile float* ySpeedPtr;
+
+	xSpeedPtr = &this->windSpeed.x;
+	ySpeedPtr = &this->windSpeed.y;
 
 	ASM(push EAX);
 	ASM(push EBX);
@@ -191,7 +194,9 @@ void Wind::updateWind(float dt)
 		}
 	}
 
-	volatile float angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / M_PI;
+	static volatile float angle;
+
+	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / M_PI;
 
 	this->windParticles->setAngle(angle);
 }

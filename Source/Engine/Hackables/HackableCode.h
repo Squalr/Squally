@@ -157,7 +157,6 @@ public:
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
 	void restoreState() override;
-	void* allocateMemory(int allocationSize);
 
 	std::map<Register, LocalizedString*> registerHints;
 
@@ -182,5 +181,4 @@ private:
 	LateBindData lateBindData;
 	std::vector<unsigned char> originalCodeCopy;
 	int originalCodeLength;
-	std::map<void*, int> allocations;
 };

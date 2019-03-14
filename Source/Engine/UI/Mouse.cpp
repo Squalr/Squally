@@ -49,7 +49,7 @@ Mouse::Mouse()
 	this->setActiveMouseSprite(this->mouseSpriteIdle);
 
 	// Nothing should ever go higher in Z index than the mouse
-	this->mouseHud->setZOrder(std::numeric_limits<int>().max());
+	this->mouseHud->setLocalZOrder(std::numeric_limits<int>().max());
 
 	this->addChild(this->mouseHud);
 	this->mouseHud->addChild(this->mouseSpriteIdle);

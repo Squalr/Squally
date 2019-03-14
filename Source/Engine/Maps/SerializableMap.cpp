@@ -357,7 +357,7 @@ void SerializableMap::isometricZSort(Node* node)
 			position.y += this->mapTileSize.height;
 		}
 
-		node->setZOrder((int)(-position.y));
+		node->setLocalZOrder((int)(-position.y));
 	}
 
 	// Recurse

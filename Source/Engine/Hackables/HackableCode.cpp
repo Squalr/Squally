@@ -166,7 +166,6 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 	this->codeEndPointer = (unsigned char*)codeEnd;
 	this->lateBindData = lateBindData;
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
-	this->allocations = std::map<void*, int>();
 	this->originalCodeCopy = std::vector<unsigned char>();
 	this->registerHints = lateBindData.registerHints;
 
@@ -193,10 +192,6 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 
 HackableCode::~HackableCode()
 {
-	for (auto iterator = this->allocations.begin(); iterator != this->allocations.end(); iterator++)
-	{
-		delete(iterator->first);
-	}
 }
 
 HackableCode* HackableCode::clone()
@@ -290,12 +285,4 @@ void HackableCode::restoreState()
 			((unsigned char*)this->codePointer)[index] = this->originalCodeCopy[index];
 		}
 	}
-}
-
-void* HackableCode::allocateMemory(int allocationSize)
-{
-	void* allocation = malloc(allocationSize);
-	this->allocations[allocation] = allocationSize;
-
-	return allocation;
 }
