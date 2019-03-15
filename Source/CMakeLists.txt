@@ -73,6 +73,20 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
 
+# Install itch file
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${PROJECT_SOURCE_DIR}/.itch.toml
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+)
+
+# Install no-steam file
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${PROJECT_SOURCE_DIR}/no_steam.txt
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>
+)
+
 # Copy steamworks runtime (regex is to switch lib for dll on Windows)
 string(REGEX REPLACE "\\.lib$" ".dll" STEAMWORKS_API_LIBRARY_RUNTIME ${STEAMWORKS_API_LIBRARY})
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

@@ -4,6 +4,8 @@
 
 #include "steam_api.h"
 
+#include "cocos/platform/CCFileUtils.h"
+
 #include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
@@ -52,8 +54,20 @@ bool Steam::init()
 
 bool Steam::isSquallySteamBuild()
 {
-	// TODO: Make this compiler flag dependent or something
-	return true;
+	static bool init = false;
+	static bool isSteamBuild = true;
+
+	if (!init)
+	{
+		init = true;
+
+		if (FileUtils::getInstance()->isFileExist("no_steam.txt") && !FileUtils::getInstance()->isFileExist("steam_appid.txt"))
+		{
+			isSteamBuild = false;
+		}
+	}
+
+	return isSteamBuild;
 }
 
 bool Steam::isCloudSaveAvailable()
