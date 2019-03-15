@@ -3,6 +3,7 @@
 #include "base/CCEventCustom.h"
 #include "base/CCEventListenerCustom.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackablePreview.h"
@@ -23,6 +24,7 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->codeList = std::vector<HackableCode*>();
 	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->uiElements = Node::create();
+	this->uiElementsBindings = UIBoundObject::create(this->uiElements);
 	this->hackButton = HackButton::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 
@@ -32,6 +34,7 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
 	this->addChild(this->uiElements);
+	this->addChild(this->uiElementsBindings);
 }
 
 HackableObject::~HackableObject()
@@ -41,6 +44,11 @@ HackableObject::~HackableObject()
 void HackableObject::onEnter()
 {
 	super::onEnter();
+
+	// Move the UI elements to the top-most layer
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
+		this->uiElementsBindings
+	));
 
 	this->registerHackables();
 	this->scheduleUpdate();
@@ -128,20 +136,12 @@ void HackableObject::initializePositions()
 {
 	super::initializePositions();
 
-	this->hackButton->setPosition(this->getButtonOffset());
-}
-
-void HackableObject::addChild(Node* child)
-{
-	super::addChild(child);
-
-	// Magic trick to resort-z index
-	GameUtils::changeParent(this->uiElements, this, true);
+	this->uiElementsBindings->setPosition(this->getButtonOffset());
 }
 
 void HackableObject::onHackerModeEnable()
 {
-	this->hackButton->setPosition(this->getButtonOffset());
+	this->uiElementsBindings->setPosition(this->getButtonOffset());
 
 	if (!(this->dataList.empty() && this->codeList.empty()))
 	{

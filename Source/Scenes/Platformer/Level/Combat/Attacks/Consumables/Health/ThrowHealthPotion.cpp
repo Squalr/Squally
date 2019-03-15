@@ -4,7 +4,7 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotion.h"
@@ -56,10 +56,10 @@ void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerE
 
 	weapon->replaceWithObject(potion, 2.0f);
 
-	SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,
 		potion,
-		SpawnEvents::SpawnMethod::Below
+		ObjectEvents::SpawnMethod::Below
 	));
 
 	potion->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));

@@ -6,7 +6,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/SerializableObject.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -18,7 +18,7 @@ const std::string SerializableLayer::MapKeyPropertyValue = "value";
 const std::string SerializableLayer::MapKeyPropertyDepth = "depth";
 const std::string SerializableLayer::MapKeyPropertyIsHackable = "is_hackable";
 
-SerializableLayer* SerializableLayer::create(ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
+SerializableLayer* SerializableLayer::create(const ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
 	SerializableLayer* instance = new SerializableLayer(initProperties, name, objects);
 
@@ -31,11 +31,11 @@ SerializableLayer::SerializableLayer()
 {
 }
 
-SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name) : SerializableLayer(initProperties, name, std::vector<SerializableObject*>())
+SerializableLayer::SerializableLayer(const ValueMap& initProperties, std::string name) : SerializableLayer(initProperties, name, std::vector<SerializableObject*>())
 {
 }
 
-SerializableLayer::SerializableLayer(ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
+SerializableLayer::SerializableLayer(const ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
 	this->layerName = name;
 	this->serializableObjects = objects;
@@ -60,14 +60,14 @@ void SerializableLayer::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SpawnEvents::SpawnObjectEvent, [=](EventCustom* eventArgs)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObject, [=](EventCustom* eventArgs)
 	{
-		SpawnEvents::RequestObjectSpawnArgs* args = (SpawnEvents::RequestObjectSpawnArgs*)eventArgs->getUserData();
+		ObjectEvents::RequestObjectSpawnArgs* args = (ObjectEvents::RequestObjectSpawnArgs*)eventArgs->getUserData();
 
 		if (GameUtils::getFirstParentOfType<SerializableLayer>(args->spawner) == this)
 		{
 			// Delegate the spawning to the map, which will decide where to place the object
-			SpawnEvents::TriggerObjectSpawnDelegator(SpawnEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnMethod));
+			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnMethod));
 		}
 	}));
 }

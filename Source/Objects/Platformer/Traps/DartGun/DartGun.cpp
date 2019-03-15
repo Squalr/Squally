@@ -20,7 +20,7 @@
 
 #include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Dart.h"
 
 using namespace cocos2d;
@@ -149,10 +149,10 @@ void DartGun::shoot(float dt)
 
 				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
 
-				SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 					this,
 					dart,
-					SpawnEvents::SpawnMethod::Below
+					ObjectEvents::SpawnMethod::Below
 				));
 			}
 		}

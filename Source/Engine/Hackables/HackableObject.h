@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Engine/Maps/SerializableObject.h"
+#include "Engine/UI/UIBoundObject.h"
 
 namespace cocos2d
 {
@@ -17,6 +18,7 @@ class HackableCode;
 class HackableData;
 class HackablePreview;
 class HackButton;
+class UIBoundObject;
 class ProgressBar;
 
 class HackableObject : public SerializableObject
@@ -24,8 +26,6 @@ class HackableObject : public SerializableObject
 public:
 	void onHackableClick(ClickableNode* backButton);
 	virtual HackablePreview* createDefaultPreview();
-
-	void addChild(Node* child) override;
 
 	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
@@ -50,6 +50,7 @@ protected:
 private:
 	typedef SerializableObject super;
 
+	UIBoundObject* uiElementsBindings;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
