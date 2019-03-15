@@ -4,6 +4,9 @@
 
 using namespace cocos2d;
 
+class CollisionObject;
+class InteractMenu;
+
 class Chest : public SerializableObject
 {
 public:
@@ -14,13 +17,18 @@ public:
 
 	static const std::string MapKeyChest;
 
-protected:
+private:
+	typedef SerializableObject super;
 	Chest(cocos2d::ValueMap& initProperties);
 	virtual ~Chest();
 
+	void initializePositions() override;
+	void initializeListeners() override;
+
+	CollisionObject* interactCollision;
 	cocos2d::Node* chestOpen;
 	cocos2d::Node* chestClosed;
+	InteractMenu* interactMenu;
 
-private:
-	typedef SerializableObject super;
+	std::string chestOpenEvent;
 };
