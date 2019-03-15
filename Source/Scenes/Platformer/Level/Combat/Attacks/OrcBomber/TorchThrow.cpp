@@ -4,7 +4,7 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/BomberTorch/BomberTorch.h"
@@ -47,10 +47,10 @@ void TorchThrow::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* 
 
 	weapon->replaceWithObject(torch, 2.0f);
 
-	SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,
 		torch,
-		SpawnEvents::SpawnMethod::Below
+		ObjectEvents::SpawnMethod::Below
 	));
 
 	torch->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f, Vec3(0.5f, 0.5f, 0.5f));

@@ -7,6 +7,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -28,14 +29,18 @@ InteractMenu* InteractMenu::create(LocalizedString* displayString)
 
 InteractMenu::InteractMenu(LocalizedString* displayString)
 {
+	this->uiElements = Node::create();
+	this->uiElementsBinding = UIBoundObject::create(this->uiElements);
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
-	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 196, 64);
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 128, 48);
 
-	this->setOpacity(0);
+	this->uiElements->setOpacity(0);
 
-	this->addChild(this->backdrop);
-	this->addChild(this->displayLabel);
+	this->uiElements->addChild(this->backdrop);
+	this->uiElements->addChild(this->displayLabel);
+	this->addChild(this->uiElements);
+	this->addChild(this->uiElementsBinding);
 }
 
 InteractMenu::~InteractMenu()
@@ -46,6 +51,11 @@ void InteractMenu::onEnter()
 {
 	super::onEnter();
 
+	// Move the UI elements to the top-most layer
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
+		this->uiElementsBinding
+	));
+
 	this->setOpacity(0);
 }
 
@@ -55,8 +65,8 @@ void InteractMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backdrop->setPositionX(-196.0f / 2.0f);
-	this->displayLabel->setPositionX(-196.0f / 2.0f);
+	this->backdrop->setPosition(Vec2(-128.0f / 2.0f, -48.0f / 2.0f));
+	this->uiElementsBinding->setPosition(Vec2(0.0f, 144.0f));
 }
 
 void InteractMenu::initializeListeners()
@@ -66,12 +76,12 @@ void InteractMenu::initializeListeners()
 
 void InteractMenu::show()
 {
-	this->stopAllActions();
-	this->runAction(FadeTo::create(0.5f, 255));
+	this->uiElements->stopAllActions();
+	this->uiElements->runAction(FadeTo::create(0.15f, 255));
 }
 
 void InteractMenu::hide()
 {
-	this->stopAllActions();
-	this->runAction(FadeTo::create(0.5f, 0));
+	this->uiElements->stopAllActions();
+	this->uiElements->runAction(FadeTo::create(0.15f, 0));
 }

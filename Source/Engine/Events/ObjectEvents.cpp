@@ -8,6 +8,9 @@ using namespace cocos2d;
 
 const std::string ObjectEvents::EventQueryObject = "EVENT_QUERY_OBJECT";
 const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROADCAST_MAP_OBJECT_STATE_";
+const std::string ObjectEvents::EventMoveObjectToTopLayer = "EVENT_MOVE_OBJECT_TO_TOP_LAYER";
+const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
+const std::string ObjectEvents::EventSpawnObjectDelegator = "EVENT_SPAWN_OBJECT_DELEGATOR";
 
 void ObjectEvents::TriggerBroadCastMapObjectState(std::string eventName, ValueMap args)
 {
@@ -18,4 +21,28 @@ void ObjectEvents::TriggerBroadCastMapObjectState(std::string eventName, ValueMa
             &args
         );
     }
+}
+
+void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		ObjectEvents::EventSpawnObject,
+		&args
+	);
+}
+
+void ObjectEvents::TriggerMoveObjectToTopLayer(RelocateObjectArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		ObjectEvents::EventMoveObjectToTopLayer,
+		&args
+	);
+}
+
+void ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		ObjectEvents::EventSpawnObjectDelegator,
+		&args
+	);
 }

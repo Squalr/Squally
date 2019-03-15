@@ -98,7 +98,9 @@ void MechanicalFlail::update(float dt)
 
 Vec2 MechanicalFlail::getButtonOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	float angle = float(M_PI) * this->flailChain->getRotation() / 180.0f;
+
+	return Vec2(0.0f, -this->flailHeight / 2.0f) + Vec2(std::sin(angle) * this->flailHeight, std::cos(angle) * this->flailHeight);
 }
 
 void MechanicalFlail::registerHackables()

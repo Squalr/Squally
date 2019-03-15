@@ -11,6 +11,9 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
+class UIBoundObject;
+class SerializableLayer;
+class SerializableObject;
 class SmartNode;
 
 class QueryObjectsArgsBase
@@ -54,10 +57,51 @@ public:
 class ObjectEvents
 {
 public:
-	static const std::string EventQueryObject;
-	static const std::string EventBroadCastMapObjectStatePrefix;
+	enum class SpawnMethod
+	{
+		Below,
+		Above,
+	};
+
+	struct RequestObjectSpawnArgs
+	{
+		cocos2d::Node* spawner;
+		cocos2d::Node* objectToSpawn;
+		SpawnMethod spawnMethod;
+
+		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
+		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod) : spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod) { }
+	};
+
+	struct RequestObjectSpawnDelegatorArgs
+	{
+		SerializableLayer* sourceLayer;
+		cocos2d::Node* spawner;
+		cocos2d::Node* objectToSpawn;
+		SpawnMethod spawnMethod;
+
+		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
+		RequestObjectSpawnDelegatorArgs(SerializableLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod) { }
+	};
+
+	struct RelocateObjectArgs
+	{
+		UIBoundObject* uiBoundObject;
+
+		RelocateObjectArgs() : uiBoundObject(nullptr) { }
+		RelocateObjectArgs(UIBoundObject* uiBoundObject) : uiBoundObject(uiBoundObject) { }
+	};
 
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
+	static void TriggerMoveObjectToTopLayer(RelocateObjectArgs args);
+	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
+	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
+
+	static const std::string EventQueryObject;
+	static const std::string EventBroadCastMapObjectStatePrefix;
+	static const std::string EventSpawnObject;
+	static const std::string EventSpawnObjectDelegator;
+	static const std::string EventMoveObjectToTopLayer;
 
 	template<class T>
 	static void QueryObjects(QueryObjectsArgs<T> args)

@@ -8,7 +8,7 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -190,10 +190,10 @@ void Catapult::launchBall()
 	this->ballAnimationPart->replaceWithObject(catapultBall, 0.0f, 0.0f);
 	catapultBall->setScale(this->catapultAnimations->getScale());
 
-	SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
-		SpawnEvents::SpawnMethod::Above
+		ObjectEvents::SpawnMethod::Above
 	));
 
 	catapultBall->setRotation(0.0f);

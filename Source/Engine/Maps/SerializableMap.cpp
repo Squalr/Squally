@@ -11,10 +11,12 @@
 
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/ObjectifiedTile.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 #include "Engine/SmartNode.h"
+#include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
@@ -81,9 +83,14 @@ void SerializableMap::initializeListeners()
 		this->hackerModeLayerUnfade();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SpawnEvents::SpawnObjectDelegatorEvent, [=](EventCustom* eventArgs)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventArgs)
 	{
-		this->spawnObject((SpawnEvents::RequestObjectSpawnDelegatorArgs*)eventArgs->getUserData());
+		this->spawnObject(static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventArgs->getUserData()));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventArgs)
+	{
+		this->moveObjectToTopLayer(static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData()));
 	}));
 }
 
@@ -149,6 +156,9 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	{
 		deserializedLayers.push_back(it->second);
 	}
+
+	// Create a special hud_target layer for top-level display items
+	deserializedLayers.push_back(SerializableLayer::create({ { SerializableLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target", { }));
 	
 	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
@@ -225,37 +235,62 @@ std::string SerializableMap::getMapFileName()
 	return this->levelMapFileName;
 }
 
-void SerializableMap::spawnObject(SpawnEvents::RequestObjectSpawnDelegatorArgs* args)
+void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 {
-	std::vector<SerializableLayer*>::iterator prevIt = this->serializableLayers.end();
-
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	if (this->serializableLayers.empty())
 	{
-		if (*it == args->sourceLayer)
+		return;
+	}
+
+	switch (args->spawnMethod)
+	{
+		case ObjectEvents::SpawnMethod::Below:
 		{
-			switch (args->spawnMethod)
+			std::vector<SerializableLayer*>::iterator prevIt = this->serializableLayers.end();
+
+			for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
 			{
-				default:
-				case SpawnEvents::SpawnMethod::Above:
-				{
-					(*it)->addChild(args->objectToSpawn);
-					break;
-				}
-				case SpawnEvents::SpawnMethod::Below:
+				if (*it == args->sourceLayer)
 				{
 					if (prevIt != this->serializableLayers.end())
 					{
-						(*prevIt)->addChild(args->objectToSpawn);
+						GameUtils::changeParent(args->objectToSpawn, (*prevIt), true);
 					}
 					else
 					{
-						(*it)->addChild(args->objectToSpawn);
+						GameUtils::changeParent(args->objectToSpawn, (*it), true);
 					}
-					break;
+				}
+
+				prevIt = it;
+			}
+
+			break;
+		}
+		default:
+		case ObjectEvents::SpawnMethod::Above:
+		{
+			for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+			{
+				if (*it == args->sourceLayer)
+				{
+					GameUtils::changeParent(args->objectToSpawn, (*it), true);
 				}
 			}
+			
+			break;
 		}
 	}
+}
+
+void SerializableMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
+{
+	if (this->serializableLayers.empty())
+	{
+		return;
+	}
+
+	GameUtils::changeParent(args->uiBoundObject->getObjectReference(), this->serializableLayers.back(), true);
 }
 
 void SerializableMap::hackerModeEnable()
