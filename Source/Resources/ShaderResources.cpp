@@ -6,6 +6,7 @@
 #include <string>
 
 const std::string ShaderResources::Fragment_Blur = "Shaders/Fragment/Blur.frag";
+const std::string ShaderResources::Fragment_Cipher_Disort = "Shaders/Fragment/Cipher/Disort.frag";
 const std::string ShaderResources::Fragment_ColorTransition = "Shaders/Fragment/ColorTransition.frag";
 const std::string ShaderResources::Fragment_CrossHatch = "Shaders/Fragment/CrossHatch.frag";
 const std::string ShaderResources::Fragment_Freichen = "Shaders/Fragment/Freichen.frag";

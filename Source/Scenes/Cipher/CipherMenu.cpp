@@ -11,16 +11,19 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/RenderUtils.h"
 #include "Events/CipherEvents.h"
 #include "Menus/Options/GeneralTab.h"
 #include "Menus/Options/LanguageTab.h"
 #include "Menus/Options/MemesTab.h"
 #include "Menus/Options/VideoTab.h"
 
+#include "Resources/ShaderResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Cancel.h"
-#include "Strings/Menus/Options/Options.h"
+#include "Strings/Menus/Cipher/Cipher.h"
+#include "Strings/Menus/Cipher/Tools.h"
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
@@ -41,13 +44,26 @@ CipherMenu::CipherMenu()
 	this->backClickCallback = nullptr;
 
 	this->background = Node::create();
-	this->optionsWindow = Sprite::create(UIResources::Menus_CipherMenu_CipherMenu);
+	this->cipherWindow = Sprite::create(UIResources::Menus_CipherMenu_CipherMenu);
+	this->cipherToolsWindow = Sprite::create(UIResources::Menus_CipherMenu_CipherToolsMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton2, UIResources::Menus_Buttons_CloseButton2Select);
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
-	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Options_Options::create());
+	this->cipherLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Menus_Cipher_Cipher::create());
+	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Cipher_Tools::create());
 
-	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->cipherToolsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->cipherLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->cipherLabel->setTextColor(Color4B(11, 102, 35, 255));
+
+	// Important: Render the label to a sprite or the shader effects will be deeply broken
+	const Size padding = Size(32.0f, 32.0f);
+	this->cipherLabelRendered = RenderUtils::renderNodeToSprite(this->cipherLabel, -Vec2(this->cipherLabel->getContentSize()) / 2.0f, this->cipherLabel->getContentSize(), padding);
+	this->cipherLabel = nullptr;
+
+	RenderUtils::applyShader(this->cipherLabelRendered, ShaderResources::Vertex_Generic, ShaderResources::Fragment_Cipher_Disort, [=](GLProgramState* state)
+	{
+	});
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
@@ -82,10 +98,12 @@ CipherMenu::CipherMenu()
 		UIResources::Menus_Buttons_GenericButtonHover);
 
 	this->addChild(this->background);
-	this->addChild(this->optionsWindow);
+	this->addChild(this->cipherWindow);
+	this->addChild(this->cipherToolsWindow);
 	this->addChild(this->leftPanel);
 	this->addChild(this->rightPanel);
-	this->addChild(this->optionsLabel);
+	this->addChild(this->cipherLabelRendered);
+	this->addChild(this->cipherToolsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->cancelButton);
 	this->addChild(this->returnButton);
@@ -99,11 +117,13 @@ void CipherMenu::onEnter()
 {
 	super::onEnter();
 
+	this->setVisible(false);
+
 	float delay = 0.1f;
 	float duration = 0.25f;
 
-	GameUtils::fadeInObject(this->optionsWindow, delay, duration);
-	GameUtils::fadeInObject(this->optionsLabel, delay, duration);
+	GameUtils::fadeInObject(this->cipherWindow, delay, duration);
+	GameUtils::fadeInObject(this->cipherLabelRendered, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->cancelButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
@@ -114,11 +134,6 @@ void CipherMenu::onEnter()
 void CipherMenu::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
-	{
-		this->setVisible(true);
-	}));
 
 	this->cancelButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
 	this->returnButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
@@ -137,11 +152,13 @@ void CipherMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
+	this->cipherWindow->setPosition(Vec2(visibleSize.width / 2.0f - 224.0f - 64.0f, visibleSize.height / 2.0f));
+	this->cipherToolsWindow->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 64.0f, visibleSize.height / 2.0f - 14.0f));
+	this->cipherLabelRendered->setPosition(Vec2(visibleSize.width / 2.0f - 224.0f - 64.0f, visibleSize.height / 2.0f + 320.0f) + Vec2(16.0f, 16.0f)); // eh? padding/2?
+	this->cipherToolsLabel->setPosition(Vec2(visibleSize.width / 2.0f + 512.0f + 64.0f, visibleSize.height / 2.0f + 358.0f - 14.0f));
 	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 376.0f, visibleSize.height / 2.0f + 278.0f));
 	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 160.0f, visibleSize.height / 2.0f + 52.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 510.0f, visibleSize.height / 2.0f + 364.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 510.0f - 224.0f - 64.0f, visibleSize.height / 2.0f + 364.0f));
 
 	const float offsetY = 48.0f;
 
