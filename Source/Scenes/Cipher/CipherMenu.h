@@ -33,22 +33,23 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onMenuCancel();
 	void onMenuExit();
 
 	std::function<void()> backClickCallback;
 
-	cocos2d::Node* background;
-	cocos2d::Sprite* cipherWindow;
-	cocos2d::Sprite* cipherToolsWindow;
-	LocalizedLabel* cipherLabel;
-	cocos2d::Sprite* cipherLabelRendered;
-	LocalizedLabel* cipherToolsLabel;
-	ClickableNode* closeButton;
-	ClickableTextNode* cancelButton;
-	ClickableTextNode* returnButton;
 	cocos2d::Node* leftPanel;
 	cocos2d::Node* rightPanel;
+	cocos2d::Sprite* cipherWindow;
+	cocos2d::Sprite* cipherLabel;
+	
+	LocalizedLabel* cipherToolsLabel;
+	ClickableTextNode* quitButton;
+
+	ClickableTextNode* executeButton;
+	ClickableNode* toggleButtonBin;
+	ClickableNode* toggleButtonDec;
+	ClickableNode* toggleButtonHex;
+	ClickableNode* toggleButtonAscii;
 
 	static const cocos2d::Color3B TitleColor;
 };

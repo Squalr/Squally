@@ -19,6 +19,7 @@ const std::string ShaderResources::Fragment_NightVision = "Shaders/Fragment/Nigh
 const std::string ShaderResources::Fragment_PassThrough = "Shaders/Fragment/PassThrough.frag";
 const std::string ShaderResources::Fragment_Sobel = "Shaders/Fragment/Sobel.frag";
 const std::string ShaderResources::Vertex_Blur = "Shaders/Vertex/Blur.vert";
+const std::string ShaderResources::Vertex_Cipher_Disort = "Shaders/Vertex/Cipher/Disort.vert";
 const std::string ShaderResources::Vertex_CrossHatch = "Shaders/Vertex/CrossHatch.vert";
 const std::string ShaderResources::Vertex_Generic = "Shaders/Vertex/Generic.vert";
 const std::string ShaderResources::Vertex_Gray = "Shaders/Vertex/Gray.vert";

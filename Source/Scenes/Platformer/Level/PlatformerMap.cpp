@@ -43,7 +43,7 @@ PlatformerMap::PlatformerMap()
 
 	this->getPhysicsWorld()->setAutoStep(false);
 
-	this->addChild(this->gameHud);
+	this->hud->addChild(this->gameHud);
 }
 
 PlatformerMap::~PlatformerMap()

@@ -241,6 +241,8 @@ void TerrainObject::buildInfill(Color4B infillColor)
 		state->setUniformFloat("blurRadius", 112.0f);
 		state->setUniformFloat("sampleNum", 24.0f);
 	});
+	rasterizedInfill->setAnchorPoint(Vec2::ZERO);
+	rasterizedInfill->setPosition(infillRect.origin);
 
 	this->infillNode->addChild(rasterizedInfill);
 }
@@ -282,6 +284,8 @@ void TerrainObject::buildSurfaceShadow()
 		state->setUniformFloat("blurRadius", 32.0f);
 		state->setUniformFloat("sampleNum", 12.0f);
 	});
+	rasterizedShadowLine->setAnchorPoint(Vec2::ZERO);
+	rasterizedShadowLine->setPosition(shadowRect.origin);
 
 	this->shadowsNode->addChild(rasterizedShadowLine);
 }
