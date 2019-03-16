@@ -39,8 +39,11 @@ private:
 	std::function<void()> backClickCallback;
 
 	cocos2d::Node* background;
-	cocos2d::Sprite* optionsWindow;
-	LocalizedLabel* optionsLabel;
+	cocos2d::Sprite* cipherWindow;
+	cocos2d::Sprite* cipherToolsWindow;
+	LocalizedLabel* cipherLabel;
+	cocos2d::Sprite* cipherLabelRendered;
+	LocalizedLabel* cipherToolsLabel;
 	ClickableNode* closeButton;
 	ClickableTextNode* cancelButton;
 	ClickableTextNode* returnButton;

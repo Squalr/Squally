@@ -233,15 +233,14 @@ void TerrainObject::buildInfill(Color4B infillColor)
 
 	// Render the infill to a texture (Note: using outer points, not the infill points, due to the earlier padding)
 	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
-	GLProgram* blur = GLProgram::createWithFilenames(ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur);
-	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(blur);
 
-	state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
-	state->setUniformFloat("blurRadius", 112.0f);
-	state->setUniformFloat("sampleNum", 24.0f);
-
-	Sprite* renderedInfill = RenderUtils::renderDrawNode(infill, infillRect.origin, infillRect.size);
-	Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, blur, state);
+	Sprite* renderedInfill = RenderUtils::renderNodeToSprite(infill, infillRect.origin, infillRect.size);
+	Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
+	{
+		state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
+		state->setUniformFloat("blurRadius", 112.0f);
+		state->setUniformFloat("sampleNum", 24.0f);
+	});
 
 	this->infillNode->addChild(rasterizedInfill);
 }
@@ -275,15 +274,14 @@ void TerrainObject::buildSurfaceShadow()
 
 	// Render the infill to a texture (Note: using outer points for padding)
 	Rect shadowRect = AlgoUtils::getPolygonRect(this->points);
-	GLProgram* blur = GLProgram::createWithFilenames(ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur);
-	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(blur);
 
-	state->setUniformVec2("resolution", Vec2(shadowRect.size.width, shadowRect.size.height));
-	state->setUniformFloat("blurRadius", 32.0f);
-	state->setUniformFloat("sampleNum", 12.0f);
-
-	Sprite* renderedShadowLine = RenderUtils::renderDrawNode(shadowLine, shadowRect.origin, shadowRect.size);
-	Sprite* rasterizedShadowLine = RenderUtils::applyShaderOnce(renderedShadowLine, blur, state);
+	Sprite* renderedShadowLine = RenderUtils::renderNodeToSprite(shadowLine, shadowRect.origin, shadowRect.size);
+	Sprite* rasterizedShadowLine = RenderUtils::applyShaderOnce(renderedShadowLine, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
+	{
+		state->setUniformVec2("resolution", Vec2(shadowRect.size.width, shadowRect.size.height));
+		state->setUniformFloat("blurRadius", 32.0f);
+		state->setUniformFloat("sampleNum", 12.0f);
+	});
 
 	this->shadowsNode->addChild(rasterizedShadowLine);
 }

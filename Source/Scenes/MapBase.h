@@ -53,6 +53,8 @@ private:
 	void onResumeClick();
 	void onOptionsClick();
 	void onExitClick();
+	void openCipherMenu();
+	void onCipherMenuClose();
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;

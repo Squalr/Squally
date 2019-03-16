@@ -3,8 +3,12 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
 
@@ -13,6 +17,7 @@
 using namespace cocos2d;
 
 const std::string Chest::MapKeyChest = "chest";
+const std::string Chest::MapKeyCipherEvent = "open-cipher";
 
 Chest* Chest::create(cocos2d::ValueMap& initProperties)
 {
@@ -29,6 +34,8 @@ Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
+
+	this->chestOpenEvent = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyEvent, Value("")).asString();
 
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);
 	Sprite* chestOpenLidSprite = Sprite::create(ObjectResources::ChestLid);
@@ -48,6 +55,13 @@ Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 
 Chest::~Chest()
 {
+}
+
+void Chest::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void Chest::initializePositions()
@@ -70,6 +84,19 @@ void Chest::initializeListeners()
 		this->interactMenu->hide();
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+}
+
+void Chest::update(float dt)
+{
+	super::update(dt);
+
+	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
+	{
+		if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
+		{
+			CipherEvents::TriggerOpenCipher();
+		}
+	}
 }
 
 void Chest::open()

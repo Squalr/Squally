@@ -22,8 +22,10 @@ private:
 	Chest(cocos2d::ValueMap& initProperties);
 	virtual ~Chest();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 
 	CollisionObject* interactCollision;
 	cocos2d::Node* chestOpen;
@@ -31,4 +33,6 @@ private:
 	InteractMenu* interactMenu;
 
 	std::string chestOpenEvent;
+
+	static const std::string MapKeyCipherEvent;
 };
