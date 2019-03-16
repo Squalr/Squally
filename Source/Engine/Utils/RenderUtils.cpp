@@ -15,7 +15,7 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 {
 	RenderTexture* renderedNode = RenderTexture::create(renderSize.width + padding.width * 2.0f, renderSize.height + padding.height * 2.0f);
 
-	target->setPosition(-offset + Vec2(padding));
+	target->setPosition(-offset + padding);
 	renderedNode->begin();
 	target->visit();
 	renderedNode->end();
@@ -27,7 +27,6 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 	GameUtils::changeParent(renderSprite, nullptr, false);
 	
 	renderSprite->setAnchorPoint(Vec2(0.5f, 0.5f));
-	renderSprite->setContentSize(renderSize);
 
 	return renderSprite;
 }
