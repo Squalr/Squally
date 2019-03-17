@@ -18,6 +18,7 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StateCardReplace();
 	~StateCardReplace();
 

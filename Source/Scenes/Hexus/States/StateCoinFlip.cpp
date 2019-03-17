@@ -23,7 +23,7 @@ StateCoinFlip* StateCoinFlip::create()
 	return instance;
 }
 
-StateCoinFlip::StateCoinFlip() : StateBase(GameState::StateType::CoinFlip)
+StateCoinFlip::StateCoinFlip() : super(GameState::StateType::CoinFlip)
 {
 	this->coinAnimation = SmartAnimationSequenceNode::create(HexusResources::CoinFlip_0000);
 
@@ -36,14 +36,14 @@ StateCoinFlip::~StateCoinFlip()
 
 void StateCoinFlip::onEnter()
 {
-	StateBase::onEnter();
+	super::onEnter();
 
 	this->coinAnimation->setOpacity(0);
 }
 
 void StateCoinFlip::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,12 +52,12 @@ void StateCoinFlip::initializePositions()
 
 void StateCoinFlip::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateCoinFlip::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	// No coin flip after the first round
 	if (gameState->roundNumber >= 1)
@@ -161,10 +161,10 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 
 void StateCoinFlip::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateCoinFlip::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

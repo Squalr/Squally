@@ -17,7 +17,7 @@ StateRoundEnd* StateRoundEnd::create()
 	return instance;
 }
 
-StateRoundEnd::StateRoundEnd() : StateBase(GameState::StateType::RoundEnd)
+StateRoundEnd::StateRoundEnd() : super(GameState::StateType::RoundEnd)
 {
 }
 
@@ -27,12 +27,12 @@ StateRoundEnd::~StateRoundEnd()
 
 void StateRoundEnd::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateRoundEnd::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	GameState::StateType nextState = GameState::StateType::RoundStart;
 
@@ -85,10 +85,10 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 
 void StateRoundEnd::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateRoundEnd::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

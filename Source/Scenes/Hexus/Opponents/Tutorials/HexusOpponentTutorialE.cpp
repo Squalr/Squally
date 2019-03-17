@@ -26,7 +26,7 @@ HexusOpponentTutorialE* HexusOpponentTutorialE::getInstance()
 	return HexusOpponentTutorialE::instance;
 }
 
-HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
+HexusOpponentTutorialE::HexusOpponentTutorialE() : super(
 	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
 	1.0f,
@@ -34,10 +34,10 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : HexusOpponentData(
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialE::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Water,
 	0.095f,
-	HexusOpponentData::generateDeck(25, 0.095f,
+	super::generateDeck(25, 0.095f,
 	{
 	}),
 	StateOverride::create(

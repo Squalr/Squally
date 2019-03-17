@@ -197,7 +197,7 @@ Hexus::~Hexus()
 
 void Hexus::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
 	SoundManager::playMusicResource(MusicResources::LastMarch);
 
@@ -211,7 +211,7 @@ void Hexus::onEnter()
 
 void Hexus::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -220,7 +220,7 @@ void Hexus::initializePositions()
 
 void Hexus::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexus, [](EventCustom* args)
 	{

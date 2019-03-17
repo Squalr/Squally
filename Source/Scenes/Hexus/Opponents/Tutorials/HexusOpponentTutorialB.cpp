@@ -26,7 +26,7 @@ HexusOpponentTutorialB* HexusOpponentTutorialB::getInstance()
 	return HexusOpponentTutorialB::instance;
 }
 
-HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
+HexusOpponentTutorialB::HexusOpponentTutorialB() : super(
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	UIResources::Menus_Hexus_HexusFrameVoidStar,
 	1.0f,
@@ -34,10 +34,10 @@ HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -48.0f),
 	HexusOpponentTutorialB::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Air,
 	0.075f,
-	HexusOpponentData::generateDeck(25, 0.075f,
+	super::generateDeck(25, 0.075f,
 	{
 	}),
 	StateOverride::create(

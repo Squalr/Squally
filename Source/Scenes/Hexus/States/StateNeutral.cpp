@@ -17,7 +17,7 @@ StateNeutral* StateNeutral::create()
 	return instance;
 }
 
-StateNeutral::StateNeutral() : StateBase(GameState::StateType::Neutral)
+StateNeutral::StateNeutral() : super(GameState::StateType::Neutral)
 {
 }
 
@@ -27,12 +27,12 @@ StateNeutral::~StateNeutral()
 
 void StateNeutral::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateNeutral::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	this->activeGameState = gameState;
 
@@ -48,12 +48,12 @@ void StateNeutral::onStateEnter(GameState* gameState)
 
 void StateNeutral::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateNeutral::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }
 
 void StateNeutral::initializeCallbacks(GameState* gameState)

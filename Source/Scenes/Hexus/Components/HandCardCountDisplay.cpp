@@ -58,7 +58,7 @@ HandCardCountDisplay::~HandCardCountDisplay()
 
 void HandCardCountDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -73,7 +73,7 @@ void HandCardCountDisplay::initializePositions()
 
 void HandCardCountDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void HandCardCountDisplay::onAnyStateChange(GameState* gameState)

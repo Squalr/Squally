@@ -26,7 +26,7 @@ HexusOpponentTutorialF* HexusOpponentTutorialF::getInstance()
 	return HexusOpponentTutorialF::instance;
 }
 
-HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
+HexusOpponentTutorialF::HexusOpponentTutorialF() : super(
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	UIResources::Menus_Hexus_HexusFrameUnderflowRuins,
 	1.0f,
@@ -34,10 +34,10 @@ HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialF::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Light,
 	0.1f,
-	HexusOpponentData::generateDeck(25, 0.1f,
+	super::generateDeck(25, 0.1f,
 	{
 	}),
 	StateOverride::create(

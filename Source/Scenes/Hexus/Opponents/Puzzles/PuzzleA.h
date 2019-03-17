@@ -9,6 +9,7 @@ public:
 	static PuzzleA* getInstance();
 
 private:
+	typedef HexusOpponentData super;
 	PuzzleA();
 	~PuzzleA();
 

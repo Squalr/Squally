@@ -48,7 +48,7 @@ CardRow::~CardRow()
 
 void CardRow::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->rowSelectSprite->setOpacity(0);
 	this->rowSelectSprite->setVisible(false);
@@ -57,7 +57,7 @@ void CardRow::onEnter()
 
 void CardRow::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
 }

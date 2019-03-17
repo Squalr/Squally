@@ -12,10 +12,11 @@ public:
 	static PlayerFirstBanner* create();
 
 protected:
-	void onBeforeStateChange(GameState* eventCustom) override;
-	void onAnyStateChange(GameState* eventCustom) override;
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 
 private:
+	typedef BannerBase super;
 	PlayerFirstBanner();
 	~PlayerFirstBanner();
 

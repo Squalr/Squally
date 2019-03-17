@@ -14,13 +14,15 @@ public:
 	static CardReplaceBanner* create();
 
 protected:
-	void onBeforeStateChange(GameState* eventCustom) override;
-	void onAnyStateChange(GameState* eventCustom) override;
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 
 	cocos2d::Sprite* penaltyIcon;
 	cocos2d::ParticleSystemQuad* penaltyIconParticles;
 
 private:
+	typedef BannerBase super;
+
 	CardReplaceBanner();
 	~CardReplaceBanner();
 

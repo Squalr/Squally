@@ -32,7 +32,7 @@ TutorialBIntroSequence* TutorialBIntroSequence::create()
 	return instance;
 }
 
-TutorialBIntroSequence::TutorialBIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialB, GameState::StateType::Neutral)
+TutorialBIntroSequence::TutorialBIntroSequence() : super(StateOverride::TutorialMode::TutorialB, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_B_ScoreLead::create(), Size(420.0f, 0.0f));
@@ -98,7 +98,7 @@ TutorialBIntroSequence::~TutorialBIntroSequence()
 
 void TutorialBIntroSequence::onEnter()
 {
-	TutorialBase::onEnter();
+	super::onEnter();
 
 	this->scoreTotalsTutorialLabel->setOpacity(0);
 	this->handCardsTutorialLabel->setOpacity(0);
@@ -111,7 +111,7 @@ void TutorialBIntroSequence::onEnter()
 
 void TutorialBIntroSequence::initializePositions()
 {
-	TutorialBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -130,7 +130,7 @@ void TutorialBIntroSequence::initializePositions()
 
 void TutorialBIntroSequence::initializeListeners()
 {
-	TutorialBase::initializeListeners();
+	super::initializeListeners();
 }
 
 bool TutorialBIntroSequence::tryHijackState(GameState* gameState)
@@ -143,12 +143,12 @@ bool TutorialBIntroSequence::tryHijackState(GameState* gameState)
 
 void TutorialBIntroSequence::onBeforeStateChange(GameState* gameState)
 {
-	TutorialBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void TutorialBIntroSequence::onAnyStateChange(GameState* gameState)
 {
-	TutorialBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void TutorialBIntroSequence::initializeCallbacks(GameState* gameState)

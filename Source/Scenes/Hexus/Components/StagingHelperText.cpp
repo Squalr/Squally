@@ -54,7 +54,7 @@ StagingHelperText::~StagingHelperText()
 
 void StagingHelperText::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->selectionLabel->setOpacity(0);
 	this->cancelButton->setOpacity(0);
@@ -63,7 +63,7 @@ void StagingHelperText::onEnter()
 
 void StagingHelperText::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -74,12 +74,12 @@ void StagingHelperText::initializePositions()
 
 void StagingHelperText::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void StagingHelperText::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{

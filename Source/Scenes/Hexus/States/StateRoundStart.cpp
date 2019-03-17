@@ -19,7 +19,7 @@ StateRoundStart* StateRoundStart::create()
 	return instance;
 }
 
-StateRoundStart::StateRoundStart() : StateBase(GameState::StateType::RoundStart)
+StateRoundStart::StateRoundStart() : super(GameState::StateType::RoundStart)
 {
 }
 
@@ -29,12 +29,12 @@ StateRoundStart::~StateRoundStart()
 
 void StateRoundStart::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateRoundStart::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->turnNumber = 0;
 	gameState->playerPassed = false;
@@ -54,10 +54,10 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 
 void StateRoundStart::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateRoundStart::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

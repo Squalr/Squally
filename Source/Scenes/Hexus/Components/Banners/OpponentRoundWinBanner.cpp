@@ -37,7 +37,7 @@ OpponentRoundWinBanner::~OpponentRoundWinBanner()
 
 void OpponentRoundWinBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -57,5 +57,5 @@ void OpponentRoundWinBanner::onBeforeStateChange(GameState* gameState)
 
 void OpponentRoundWinBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }

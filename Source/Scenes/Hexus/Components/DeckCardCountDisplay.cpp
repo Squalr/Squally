@@ -52,7 +52,7 @@ DeckCardCountDisplay::~DeckCardCountDisplay()
 
 void DeckCardCountDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -65,7 +65,7 @@ void DeckCardCountDisplay::initializePositions()
 
 void DeckCardCountDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void DeckCardCountDisplay::onAnyStateChange(GameState* gameState)

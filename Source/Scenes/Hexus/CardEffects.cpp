@@ -53,21 +53,21 @@ CardEffects::~CardEffects()
 
 void CardEffects::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->clearEffects();
 }
 
 void CardEffects::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void CardEffects::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 }
 
 void CardEffects::runEffect(CardEffect effect)

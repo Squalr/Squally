@@ -60,7 +60,7 @@ Avatars::~Avatars()
 
 void Avatars::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -93,12 +93,12 @@ void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 
 void Avatars::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void Avatars::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void Avatars::setAvatars(GameState* gameState)

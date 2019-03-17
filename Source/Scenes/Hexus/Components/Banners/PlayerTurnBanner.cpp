@@ -37,7 +37,7 @@ PlayerTurnBanner::~PlayerTurnBanner()
 
 void PlayerTurnBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,7 +52,7 @@ void PlayerTurnBanner::onBeforeStateChange(GameState* gameState)
 
 void PlayerTurnBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	// Only show after the first turn -- first turn is reserved for PlayerFirstBanner
 	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::StateType::PlayerTurnStart && (gameState->roundNumber >= 1 || gameState->turnNumber >= 1))

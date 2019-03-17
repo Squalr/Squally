@@ -22,7 +22,7 @@ StateAIDecideCardReplace* StateAIDecideCardReplace::create()
 	return instance;
 }
 
-StateAIDecideCardReplace::StateAIDecideCardReplace() : StateBase(GameState::StateType::AIDecideCardReplace)
+StateAIDecideCardReplace::StateAIDecideCardReplace() : super(GameState::StateType::AIDecideCardReplace)
 {
 	this->removedCards = std::vector<Card*>();
 }
@@ -33,7 +33,7 @@ StateAIDecideCardReplace::~StateAIDecideCardReplace()
 
 void StateAIDecideCardReplace::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	if (gameState->roundNumber == 0)
 	{
@@ -47,7 +47,7 @@ void StateAIDecideCardReplace::onBeforeStateEnter(GameState* gameState)
 
 void StateAIDecideCardReplace::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	// TODO: AI card replace logic here
 
@@ -63,12 +63,12 @@ void StateAIDecideCardReplace::onStateEnter(GameState* gameState)
 
 void StateAIDecideCardReplace::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateAIDecideCardReplace::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }
 
 void StateAIDecideCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)

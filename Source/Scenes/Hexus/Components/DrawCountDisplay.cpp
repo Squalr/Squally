@@ -56,7 +56,7 @@ DrawCountDisplay::~DrawCountDisplay()
 
 void DrawCountDisplay::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->deckDrawCountMouseOverPanel->setOpacity(0);
 	this->deckDrawCountCardMouseOverLabel->setOpacity(0);
@@ -65,7 +65,7 @@ void DrawCountDisplay::onEnter()
 
 void DrawCountDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -112,12 +112,12 @@ void DrawCountDisplay::disableDrawCountDisplayInteraction()
 
 void DrawCountDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	// Hide on last round -- there will be no next turn, thus draw count is irrelevent
 	if (gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)

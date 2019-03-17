@@ -17,7 +17,7 @@ StateSelectionStaged* StateSelectionStaged::create()
 	return instance;
 }
 
-StateSelectionStaged::StateSelectionStaged() : StateBase(GameState::StateType::SelectionStaged)
+StateSelectionStaged::StateSelectionStaged() : super(GameState::StateType::SelectionStaged)
 {
 }
 
@@ -27,17 +27,17 @@ StateSelectionStaged::~StateSelectionStaged()
 
 void StateSelectionStaged::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 }
 
 void StateSelectionStaged::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateSelectionStaged::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->playerHand->enableRowCardInteraction();
 
@@ -57,7 +57,7 @@ void StateSelectionStaged::onStateEnter(GameState* gameState)
 
 void StateSelectionStaged::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 
 	switch (gameState->turn)
 	{
@@ -79,7 +79,7 @@ void StateSelectionStaged::onStateReload(GameState* gameState)
 
 void StateSelectionStaged::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 
 	gameState->playerHand->clearEffects();
 	gameState->enemyHand->clearEffects();

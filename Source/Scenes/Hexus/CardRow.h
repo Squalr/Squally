@@ -41,6 +41,7 @@ public:
 	std::vector<Card*> rowCards;
 
 private:
+	typedef SmartNode super;
 	CardRow(bool isPlayerRow);
 	~CardRow();
 

@@ -17,7 +17,7 @@ StateAIDecideCard* StateAIDecideCard::create()
 	return instance;
 }
 
-StateAIDecideCard::StateAIDecideCard() : StateBase(GameState::StateType::AIDecideCard)
+StateAIDecideCard::StateAIDecideCard() : super(GameState::StateType::AIDecideCard)
 {
 }
 
@@ -27,12 +27,12 @@ StateAIDecideCard::~StateAIDecideCard()
 
 void StateAIDecideCard::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateAIDecideCard::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->selectedHandCard = nullptr;
 
@@ -68,12 +68,12 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 void StateAIDecideCard::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateAIDecideCard::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }
 
 void StateAIDecideCard::decideCardRandom(GameState* gameState)

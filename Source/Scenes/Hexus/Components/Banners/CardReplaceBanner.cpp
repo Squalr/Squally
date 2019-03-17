@@ -39,14 +39,14 @@ CardReplaceBanner::~CardReplaceBanner()
 
 void CardReplaceBanner::onEnter()
 {
-	BannerBase::onEnter();
+	super::onEnter();
 
 	this->penaltyIconParticles->setVisible(false);
 }
 
 void CardReplaceBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -61,7 +61,7 @@ void CardReplaceBanner::onBeforeStateChange(GameState* gameState)
 
 void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::CardReplace)
 	{

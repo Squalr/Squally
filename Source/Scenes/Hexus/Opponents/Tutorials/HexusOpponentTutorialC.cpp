@@ -26,7 +26,7 @@ HexusOpponentTutorialC* HexusOpponentTutorialC::getInstance()
 	return HexusOpponentTutorialC::instance;
 }
 
-HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
+HexusOpponentTutorialC::HexusOpponentTutorialC() : super(
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns,
 	0.85f,
@@ -34,10 +34,10 @@ HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
 	Vec2(-48.0f, -144.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentTutorialC::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Earth,
 	0.085f,
-	HexusOpponentData::generateDeck(25, 0.085f,
+	super::generateDeck(25, 0.085f,
 	{
 	}),
 	StateOverride::create(

@@ -27,7 +27,7 @@ StateCardReplace* StateCardReplace::create()
 	return instance;
 }
 
-StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardReplace)
+StateCardReplace::StateCardReplace() : super(GameState::StateType::CardReplace)
 {
 	LocalizedLabel* doneButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
 	LocalizedLabel* doneButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
@@ -52,14 +52,14 @@ StateCardReplace::~StateCardReplace()
 
 void StateCardReplace::onEnter()
 {
-	StateBase::onEnter();
+	super::onEnter();
 
 	this->doneButton->setOpacity(0);
 }
 
 void StateCardReplace::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
@@ -74,7 +74,7 @@ void StateCardReplace::onEndReplaceCards(ClickableNode* menuSprite, GameState* g
 
 void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	if (gameState->roundNumber == 0)
 	{
@@ -88,7 +88,7 @@ void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 
 void StateCardReplace::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	if (gameState->cardReplaceCount > 0)
 	{
@@ -122,7 +122,7 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 
 void StateCardReplace::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 
 	if (gameState->cardReplaceCount > 0)
 	{
@@ -146,7 +146,7 @@ void StateCardReplace::onStateReload(GameState* gameState)
 
 void StateCardReplace::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 
 	// Restore hand to proper position
 	Size visibleSize = Director::getInstance()->getVisibleSize();

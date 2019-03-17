@@ -19,11 +19,13 @@
 #include "Menus/Options/VideoTab.h"
 
 #include "Resources/ShaderResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/CipherResources.h"
 
 #include "Strings/Menus/Cancel.h"
 #include "Strings/Menus/Cipher/Cipher.h"
 #include "Strings/Menus/Cipher/Execute.h"
+#include "Strings/Menus/Cipher/Inputs.h"
+#include "Strings/Menus/Cipher/Outputs.h"
 #include "Strings/Menus/Cipher/Tools.h"
 #include "Strings/Menus/Return.h"
 
@@ -44,12 +46,16 @@ CipherMenu::CipherMenu()
 {
 	this->backClickCallback = nullptr;
 
-	this->cipherWindow = Sprite::create(UIResources::Menus_CipherMenu_CipherMenu);
+	this->cipherWindow = Sprite::create(CipherResources::CipherMenu);
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
 	Label* tempCipherLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M1, Strings::Menus_Cipher_Cipher::create());
-	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Cipher_Tools::create());
-
+	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cipher_Tools::create());
+	this->inputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Inputs::create());
+	this->outputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Outputs::create());
+	
+	this->inputsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->outputsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 	this->cipherToolsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
 	tempCipherLabel->enableShadow(Color4B::BLACK, Size(4, -4), 4);
@@ -64,13 +70,14 @@ CipherMenu::CipherMenu()
 	{
 	});
 
-	this->toggleButtonBin = ClickableNode::create(UIResources::Menus_CipherMenu_BinaryButton, UIResources::Menus_CipherMenu_BinaryButtonSelected);
-	this->toggleButtonDec = ClickableNode::create(UIResources::Menus_CipherMenu_DecimalButton, UIResources::Menus_CipherMenu_DecimalButtonSelected);
-	this->toggleButtonHex = ClickableNode::create(UIResources::Menus_CipherMenu_HexButton, UIResources::Menus_CipherMenu_HexButtonSelected);
-	this->toggleButtonAscii = ClickableNode::create(UIResources::Menus_CipherMenu_AsciiButton, UIResources::Menus_CipherMenu_AsciiButtonSelected);
+	this->toggleButtonBin = ClickableNode::create(CipherResources::BinaryButton, CipherResources::BinaryButtonSelected);
+	this->toggleButtonDec = ClickableNode::create(CipherResources::DecimalButton, CipherResources::DecimalButtonSelected);
+	this->toggleButtonHex = ClickableNode::create(CipherResources::HexButton, CipherResources::HexButtonSelected);
+	this->toggleButtonAscii = ClickableNode::create(CipherResources::AsciiButton, CipherResources::AsciiButtonSelected);
+	this->viewAsciiTableButton = ClickableNode::create(CipherResources::AsciiTableButton, CipherResources::AsciiTableButtonSelected);
 
-	LocalizedLabel*	executeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cipher_Execute::create());
-	LocalizedLabel*	executeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cipher_Execute::create());
+	LocalizedLabel*	executeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Execute::create());
+	LocalizedLabel*	executeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Execute::create());
 
 	executeLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	executeLabel->enableGlow(Color4B::BLACK);
@@ -82,8 +89,8 @@ CipherMenu::CipherMenu()
 	this->executeButton = ClickableTextNode::create(
 		executeLabel,
 		executeLabelHover,
-		UIResources::Menus_CipherMenu_RunButton,
-		UIResources::Menus_CipherMenu_RunButtonSelected);
+		CipherResources::RunButton,
+		CipherResources::RunButtonSelected);
 
 	LocalizedLabel*	quitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	quitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
@@ -98,17 +105,22 @@ CipherMenu::CipherMenu()
 	this->quitButton = ClickableTextNode::create(
 		quitLabel,
 		quitLabelHover,
-		UIResources::Menus_CipherMenu_QuitButton,
-		UIResources::Menus_CipherMenu_QuitButtonSelected);
+		CipherResources::QuitButton,
+		CipherResources::QuitButtonSelected);
 
 	this->leftPanel->addChild(this->cipherLabel);
+	this->leftPanel->addChild(this->inputsLabel);
+	this->leftPanel->addChild(this->outputsLabel);
 	this->leftPanel->addChild(this->toggleButtonBin);
 	this->leftPanel->addChild(this->toggleButtonDec);
 	this->leftPanel->addChild(this->toggleButtonHex);
 	this->leftPanel->addChild(this->toggleButtonAscii);
+	this->leftPanel->addChild(this->viewAsciiTableButton);
 	this->leftPanel->addChild(this->executeButton);
+
 	this->rightPanel->addChild(this->quitButton);
 	this->rightPanel->addChild(this->cipherToolsLabel);
+
 	this->addChild(this->cipherWindow);
 	this->addChild(this->leftPanel);
 	this->addChild(this->rightPanel);
@@ -146,19 +158,22 @@ void CipherMenu::initializePositions()
 
 	this->cipherWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 248.0f, visibleSize.height / 2.0f));
-	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 768.0f, visibleSize.height / 2.0f));
+	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 712.0f, visibleSize.height / 2.0f));
 
 	// Left panel
 	this->cipherLabel->setPosition(0.0f, 420.0f);
-	this->toggleButtonBin->setPosition(Vec2(-512 + 32.0f * 0.0f, 0.0f));
-	this->toggleButtonDec->setPosition(Vec2(-512 + 32.0f * 1.0f, 0.0f));
-	this->toggleButtonHex->setPosition(Vec2(-512 + 32.0f * 2.0f, 0.0f));
-	this->toggleButtonAscii->setPosition(Vec2(-512 + 32.0f * 3.0f, 0.0f));
+	this->inputsLabel->setPosition(-476.0f, 422.0f);
+	this->outputsLabel->setPosition(476.0f, 422.0f);
+	this->toggleButtonBin->setPosition(Vec2(-518.0f + 64.0f * 0.0f, -432.0f));
+	this->toggleButtonDec->setPosition(Vec2(-518.0f + 64.0f * 1.0f, -432.0f));
+	this->toggleButtonHex->setPosition(Vec2(-518.0f + 64.0f * 2.0f, -432.0f));
+	this->toggleButtonAscii->setPosition(Vec2(-518.0f + 64.0f * 3.0f, -432.0f));
+	this->viewAsciiTableButton->setPosition(Vec2(420.0f, -420.0f));
 	this->executeButton->setPosition(Vec2(0.0f, -420.0f));
 	
 	// Right panel
+	this->cipherToolsLabel->setPosition(0.0f, 450.0f);
 	this->quitButton->setPosition(Vec2(0.0f, -420.0f));
-	this->cipherToolsLabel->setPosition(0.0f, 468.0f);
 }
 
 void CipherMenu::setBackClickCallback(std::function<void()> backClickCallback)

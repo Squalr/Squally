@@ -17,7 +17,7 @@ StateCombineStaged* StateCombineStaged::create()
 	return instance;
 }
 
-StateCombineStaged::StateCombineStaged() : StateBase(GameState::StateType::CombineStaged)
+StateCombineStaged::StateCombineStaged() : super(GameState::StateType::CombineStaged)
 {
 }
 
@@ -27,17 +27,17 @@ StateCombineStaged::~StateCombineStaged()
 
 void StateCombineStaged::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 }
 
 void StateCombineStaged::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateCombineStaged::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	switch (gameState->turn)
 	{
@@ -83,12 +83,12 @@ void StateCombineStaged::onStateEnter(GameState* gameState)
 
 void StateCombineStaged::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateCombineStaged::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 
 	gameState->playerHand->clearEffects();
 	gameState->enemyHand->clearEffects();

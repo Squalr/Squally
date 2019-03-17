@@ -41,7 +41,7 @@ BannerBase::~BannerBase()
 
 void BannerBase::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->bannerOverlay->setOpacity(0);
 	this->bannerLabel->setOpacity(0);
@@ -50,7 +50,7 @@ void BannerBase::onEnter()
 
 void BannerBase::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -60,12 +60,12 @@ void BannerBase::initializePositions()
 
 void BannerBase::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void BannerBase::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void BannerBase::setBannerText(LocalizedString* text)
