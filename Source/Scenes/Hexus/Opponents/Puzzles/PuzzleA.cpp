@@ -26,7 +26,7 @@ PuzzleA* PuzzleA::getInstance()
 	return PuzzleA::instance;
 }
 
-PuzzleA::PuzzleA() : HexusOpponentData(
+PuzzleA::PuzzleA() : super(
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 	1.0f,
@@ -34,10 +34,10 @@ PuzzleA::PuzzleA() : HexusOpponentData(
 	Vec2(0.0f, -48.0f),
 	Vec2(0.0f, -48.0f),
 	PuzzleA::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Light,
 	0.07f,
-	HexusOpponentData::generateDeck(25, 0.07f,
+	super::generateDeck(25, 0.07f,
 	{
 	}),
 	StateOverride::create(

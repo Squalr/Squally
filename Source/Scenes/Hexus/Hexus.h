@@ -82,6 +82,7 @@ public:
 	static void registerGlobalScene();
 
 private:
+	typedef GlobalScene super;
 	Hexus();
 	~Hexus();
 

@@ -51,7 +51,7 @@ ScoreTotal::~ScoreTotal()
 
 void ScoreTotal::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->playerLeaderEmblem->setOpacity(0);
 	this->enemyLeaderEmblem->setOpacity(0);
@@ -59,7 +59,7 @@ void ScoreTotal::onEnter()
 
 void ScoreTotal::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -74,12 +74,12 @@ void ScoreTotal::initializePositions()
 
 void ScoreTotal::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void ScoreTotal::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	this->updateTotals(gameState);
 }

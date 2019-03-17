@@ -41,15 +41,18 @@ private:
 	cocos2d::Node* rightPanel;
 	cocos2d::Sprite* cipherWindow;
 	cocos2d::Sprite* cipherLabel;
-	
+
 	LocalizedLabel* cipherToolsLabel;
 	ClickableTextNode* quitButton;
 
+	LocalizedLabel* inputsLabel;
+	LocalizedLabel* outputsLabel;
 	ClickableTextNode* executeButton;
 	ClickableNode* toggleButtonBin;
 	ClickableNode* toggleButtonDec;
 	ClickableNode* toggleButtonHex;
 	ClickableNode* toggleButtonAscii;
+	ClickableNode* viewAsciiTableButton;
 
 	static const cocos2d::Color3B TitleColor;
 };

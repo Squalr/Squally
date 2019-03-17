@@ -31,6 +31,7 @@ public:
 	std::vector<Card*> deckCards;
 
 private:
+	typedef SmartNode super;
 	Deck();
 	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData);
 	~Deck();

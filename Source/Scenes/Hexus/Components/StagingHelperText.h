@@ -11,10 +11,11 @@ public:
 	static StagingHelperText* create();
 
 protected:
-	void onBeforeStateChange(GameState* eventCustom) override;
-	void onAnyStateChange(GameState* eventCustom) override;
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 
 private:
+	typedef ComponentBase super;
 	StagingHelperText();
 	~StagingHelperText();
 

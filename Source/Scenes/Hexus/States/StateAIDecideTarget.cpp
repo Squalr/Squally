@@ -16,7 +16,7 @@ StateAIDecideTarget* StateAIDecideTarget::create()
 	return instance;
 }
 
-StateAIDecideTarget::StateAIDecideTarget() : StateBase(GameState::StateType::AIDecideTarget)
+StateAIDecideTarget::StateAIDecideTarget() : super(GameState::StateType::AIDecideTarget)
 {
 }
 
@@ -26,12 +26,12 @@ StateAIDecideTarget::~StateAIDecideTarget()
 
 void StateAIDecideTarget::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateAIDecideTarget::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	// Unable to find a card to play (ie it would be disadvantageous to play any card for the opponent)
 	if (gameState->selectedHandCard == nullptr)
@@ -110,10 +110,10 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 
 void StateAIDecideTarget::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateAIDecideTarget::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

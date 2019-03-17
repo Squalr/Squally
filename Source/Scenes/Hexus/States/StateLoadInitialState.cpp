@@ -15,7 +15,7 @@ StateLoadInitialState* StateLoadInitialState::create()
 	return instance;
 }
 
-StateLoadInitialState::StateLoadInitialState() : StateBase(GameState::StateType::LoadInitialState)
+StateLoadInitialState::StateLoadInitialState() : super(GameState::StateType::LoadInitialState)
 {
 }
 
@@ -25,24 +25,24 @@ StateLoadInitialState::~StateLoadInitialState()
 
 void StateLoadInitialState::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateLoadInitialState::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	this->loadStateOverrides(gameState, gameState->opponentData->stateOverride);
 }
 
 void StateLoadInitialState::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateLoadInitialState::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }
 
 void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverride* stateOverride)

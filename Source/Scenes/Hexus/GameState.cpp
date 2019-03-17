@@ -91,7 +91,7 @@ GameState::~GameState()
 
 void GameState::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

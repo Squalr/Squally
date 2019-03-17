@@ -57,14 +57,14 @@ CardPreview::~CardPreview()
 
 void CardPreview::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->clearPreview();
 }
 
 void CardPreview::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -73,12 +73,12 @@ void CardPreview::initializePositions()
 
 void CardPreview::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void CardPreview::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{

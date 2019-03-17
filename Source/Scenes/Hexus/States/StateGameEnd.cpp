@@ -29,7 +29,7 @@ StateGameEnd* StateGameEnd::create()
 	return instance;
 }
 
-StateGameEnd::StateGameEnd() : StateBase(GameState::StateType::GameEnd)
+StateGameEnd::StateGameEnd() : super(GameState::StateType::GameEnd)
 {
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
 	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
@@ -55,19 +55,19 @@ StateGameEnd::~StateGameEnd()
 
 void StateGameEnd::onEnter()
 {
-	StateBase::onEnter();
+	super::onEnter();
 
 	this->backButton->setOpacity(0);
 }
 
 void StateGameEnd::initializeListeners()
 {
-	StateBase::initializeListeners();
+	super::initializeListeners();
 }
 
 void StateGameEnd::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
@@ -138,12 +138,12 @@ void StateGameEnd::onBackClick(ClickableNode* menuSprite, GameState* gameState)
 
 void StateGameEnd::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateGameEnd::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	if (gameState->playerLosses >= 2)
 	{
@@ -161,12 +161,12 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 void StateGameEnd::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateGameEnd::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 
 	this->backButton->disableInteraction(0);
 	this->backButton->setClickCallback(nullptr);

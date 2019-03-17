@@ -139,7 +139,9 @@ public:
 	static const std::string requestStateUpdateEvent;
 	static const std::string beforeStateUpdateEvent;
 	static const std::string onStateUpdateEvent;
+
 private:
+	typedef SmartNode super;
 	GameState();
 	~GameState();
 

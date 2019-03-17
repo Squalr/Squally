@@ -46,21 +46,21 @@ DebugDisplay::~DebugDisplay()
 
 void DebugDisplay::onDeveloperModeEnable()
 {
-	ComponentBase::onDeveloperModeEnable();
+	super::onDeveloperModeEnable();
 
 	this->setVisible(true);
 }
 
 void DebugDisplay::onDeveloperModeDisable()
 {
-	ComponentBase::onDeveloperModeEnable();
+	super::onDeveloperModeEnable();
 
 	this->setVisible(false);
 }
 
 void DebugDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -72,7 +72,7 @@ void DebugDisplay::initializePositions()
 
 void DebugDisplay::initializeListeners()
 {
-	ComponentBase::initializeListeners();
+	super::initializeListeners();
 
 	this->loseButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
 	{
@@ -99,12 +99,12 @@ void DebugDisplay::initializeListeners()
 
 void DebugDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void DebugDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	this->activeGameState = gameState;
 

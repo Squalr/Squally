@@ -33,7 +33,7 @@ StatePass* StatePass::create()
 	return instance;
 }
 
-StatePass::StatePass() : StateBase(GameState::StateType::Pass)
+StatePass::StatePass() : super(GameState::StateType::Pass)
 {
 	this->currentVisiblePlayerButton = nullptr;
 	this->playerChoiceLocked = false;
@@ -100,7 +100,7 @@ StatePass::~StatePass()
 
 void StatePass::onEnter()
 {
-	StateBase::onEnter();
+	super::onEnter();
 
 	this->currentVisiblePlayerButton = nullptr;
 	this->playerChoiceLocked = false;
@@ -138,7 +138,7 @@ void StatePass::onEnter()
 
 void StatePass::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -321,7 +321,7 @@ void StatePass::onClaimVictoryMouseOut()
 
 void StatePass::onAnyStateChange(GameState* gameState)
 {
-	StateBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->playerPassed && !this->playerChoiceLocked)
 	{
@@ -445,12 +445,12 @@ void StatePass::onAnyStateChange(GameState* gameState)
 
 void StatePass::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StatePass::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	switch (gameState->turn)
 	{
@@ -506,10 +506,10 @@ void StatePass::onStateEnter(GameState* gameState)
 
 void StatePass::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StatePass::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

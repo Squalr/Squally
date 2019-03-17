@@ -1,6 +1,6 @@
 #include "TutorialBase.h"
 
-TutorialBase::TutorialBase(StateOverride::TutorialMode tutorialMode, GameState::StateType stateToHijack) : ComponentBase()
+TutorialBase::TutorialBase(StateOverride::TutorialMode tutorialMode, GameState::StateType stateToHijack) : super()
 {
 	this->tutorialMode = tutorialMode;
 	this->stateToHijack = stateToHijack;
@@ -12,14 +12,14 @@ TutorialBase::~TutorialBase()
 
 void TutorialBase::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->tutorialShown = false;
 }
 
 void TutorialBase::onAnyRequestStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyRequestStateChange(gameState);
+	super::onAnyRequestStateChange(gameState);
 
 	GameState::StateType previousState = gameState->previousStateType;
 

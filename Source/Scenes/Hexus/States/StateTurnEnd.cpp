@@ -16,7 +16,7 @@ StateTurnEnd* StateTurnEnd::create()
 	return instance;
 }
 
-StateTurnEnd::StateTurnEnd() : StateBase(GameState::StateType::TurnEnd)
+StateTurnEnd::StateTurnEnd() : super(GameState::StateType::TurnEnd)
 {
 }
 
@@ -26,14 +26,14 @@ StateTurnEnd::~StateTurnEnd()
 
 void StateTurnEnd::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	gameState->turnNumber++;
 }
 
 void StateTurnEnd::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->clearInteraction();
 
@@ -151,10 +151,10 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 void StateTurnEnd::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateTurnEnd::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

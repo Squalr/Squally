@@ -16,7 +16,7 @@ StateGameStart* StateGameStart::create()
 	return instance;
 }
 
-StateGameStart::StateGameStart() : StateBase(GameState::StateType::GameStart)
+StateGameStart::StateGameStart() : super(GameState::StateType::GameStart)
 {
 }
 
@@ -26,7 +26,7 @@ StateGameStart::~StateGameStart()
 
 void StateGameStart::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	// Clear all state variables before game start
 	gameState->playerLosses = 0;
@@ -44,7 +44,7 @@ void StateGameStart::onBeforeStateEnter(GameState* gameState)
 
 void StateGameStart::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	if (gameState->opponentData->stateOverride != nullptr)
 	{
@@ -68,10 +68,10 @@ void StateGameStart::onStateEnter(GameState* gameState)
 
 void StateGameStart::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateGameStart::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

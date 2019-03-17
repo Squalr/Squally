@@ -50,6 +50,8 @@ protected:
 	void initializeListeners() override;
 
 private:
+	typedef SmartNode super;
+	
 	cocos2d::ParticleSystemQuad* getBite();
 	cocos2d::ParticleSystemQuad* getDustPoof();
 	cocos2d::ParticleSystemQuad* getDustStorm();
