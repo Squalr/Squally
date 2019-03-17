@@ -17,7 +17,7 @@ CipherComponentBase::~CipherComponentBase()
 
 void CipherComponentBase::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	EventListenerCustom* requestStateChangeListener = EventListenerCustom::create(CipherState::requestStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onRequestStateChangeEvent, this));
 	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(CipherState::beforeStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onBeforeStateChangeEvent, this));

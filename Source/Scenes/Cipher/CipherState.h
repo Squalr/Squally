@@ -2,8 +2,6 @@
 #include <chrono>
 #include <vector>
 
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-#include "Scenes/Hexus/StateOverride.h"
 #include "Engine/SmartNode.h"
 
 class Card;
