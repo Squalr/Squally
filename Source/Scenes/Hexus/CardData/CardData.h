@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+class LocalizedString;
+
 class CardData
 {
 public:
@@ -31,7 +33,7 @@ public:
 	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack);
 	~CardData();
 
-	std::string getCardTypeString();
+	LocalizedString* getCardTypeString();
 	bool isAttackCard();
 	bool isSpecialCard();
 

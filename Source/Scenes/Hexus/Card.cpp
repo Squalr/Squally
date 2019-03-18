@@ -398,7 +398,7 @@ void Card::updateText()
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		{
-			this->cardString->setString(this->cardData->getCardTypeString());
+			this->cardString->setString(this->cardData->getCardTypeString()->getString());
 			this->cardLabel->setTextColor(Card::specialColor);
 		}
 		default:

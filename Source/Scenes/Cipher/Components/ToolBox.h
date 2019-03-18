@@ -2,7 +2,22 @@
 
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
+class AddBlock;
+class AndBlock;
+class BlockBase;
+class BruteForceBlock;
+class CshlBlock;
+class CshrBlock;
+class DivBlock;
+class ImmediateBlock;
+class InvBlock;
 class LocalizedLabel;
+class ModBlock;
+class MulBlock;
+class OrBlock;
+class ShlBlock;
+class ShrBlock;
+class SubBlock;
 class XorBlock;
 
 class ToolBox : public CipherComponentBase
@@ -22,6 +37,22 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
-	LocalizedLabel* cipherToolsLabel;
+	AddBlock* addBlock;
+	AndBlock* andBlock;
+	BruteForceBlock* bruteForceBlock;
+	CshlBlock* cshlBlock;
+	CshrBlock* cshrBlock;
+	DivBlock* divBlock;
+	ImmediateBlock* immediateBlock;
+	InvBlock* invBlock;
+	ModBlock* modBlock;
+	MulBlock* mulBlock;
+	OrBlock* orBlock;
+	ShlBlock* shlBlock;
+	ShrBlock* shrBlock;
+	SubBlock* subBlock;
 	XorBlock* xorBlock;
+	LocalizedLabel* cipherToolsLabel;
+
+	std::vector<BlockBase*> blocks;
 };

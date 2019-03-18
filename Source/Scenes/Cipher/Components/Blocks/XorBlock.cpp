@@ -9,6 +9,8 @@
 
 #include "Resources/CipherResources.h"
 
+#include "Strings/Cipher/Operations/XOR.h"
+
 using namespace cocos2d;
 
 XorBlock* XorBlock::create()
@@ -20,7 +22,7 @@ XorBlock* XorBlock::create()
 	return instance;
 }
 
-XorBlock::XorBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec))
+XorBlock::XorBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_XOR::create())
 {
 }
 
