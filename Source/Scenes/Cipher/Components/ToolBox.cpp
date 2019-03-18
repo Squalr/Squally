@@ -1,57 +1,55 @@
-#include "InputsOutputs.h"
+#include "ToolBox.h"
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/Components/Blocks/XorBlock.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
 
 using namespace cocos2d;
 
-InputsOutputs* InputsOutputs::create()
+ToolBox* ToolBox::create()
 {
-	InputsOutputs* instance = new InputsOutputs();
+	ToolBox* instance = new ToolBox();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InputsOutputs::InputsOutputs()
+ToolBox::ToolBox()
+{
+	this->xorBlock = XorBlock::create();
+
+	this->addChild(this->xorBlock);
+}
+
+ToolBox::~ToolBox()
 {
 }
 
-InputsOutputs::~InputsOutputs()
-{
-}
-
-void InputsOutputs::onEnter()
+void ToolBox::onEnter()
 {
 	super::onEnter();
 }
 
-void InputsOutputs::initializePositions()
+void ToolBox::initializePositions()
 {
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-void InputsOutputs::onBeforeStateChange(CipherState* cipherState)
+void ToolBox::onBeforeStateChange(CipherState* cipherState)
 {
 	super::onBeforeStateChange(cipherState);
 }
 
-void InputsOutputs::onAnyStateChange(CipherState* cipherState)
+void ToolBox::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
-
-	this->updateDisplayedLosses(cipherState);
-}
-
-void InputsOutputs::updateDisplayedLosses(CipherState* cipherState)
-{
 }

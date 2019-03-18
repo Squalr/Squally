@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Cipher_Cipher : public LocalizedString
+	class Cipher_Outputs : public LocalizedString
 	{
 	public:
-		static Menus_Cipher_Cipher* create();
+		static Cipher_Outputs* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Cipher_Cipher();
-		~Menus_Cipher_Cipher();
+		Cipher_Outputs();
+		~Cipher_Outputs();
 	};
 }

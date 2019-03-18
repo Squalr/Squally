@@ -7,6 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
+
 class BlockBase : public CipherComponentBase
 {
 protected:
@@ -18,6 +20,8 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	cocos2d::Sprite* blockFrame;
-	cocos2d::Sprite* blockFill;
+	ClickableNode* blockFrameBinary;
+	ClickableNode* blockFrameDecimal;
+	ClickableNode* blockFrameHex;
+	ClickableNode* blockFrameAscii;
 };
