@@ -113,10 +113,10 @@ void ToolBox::initializePositions()
 		int x = index % 4;
 		int y = index / 4;
 
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + float(x - 2) * 72.0f, visibleSize.height / 2.0f + 356.0f - float(y) * 72.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + (float(x) - 1.5f) * 80.0f, visibleSize.height / 2.0f + 336.0f - float(y) * 72.0f));
 	}
 
-	this->immediateBlock->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + 3.5f * 72.0f, visibleSize.height / 2.0f + 356.0f - float(4) * 72.0f));
+	this->immediateBlock->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + (float(3) - 1.5f - 0.5f) * 80.0f, visibleSize.height / 2.0f + 336.0f - float(3) * 72.0f));
 }
 
 void ToolBox::onBeforeStateChange(CipherState* cipherState)

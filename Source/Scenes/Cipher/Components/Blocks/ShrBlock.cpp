@@ -22,7 +22,7 @@ ShrBlock* ShrBlock::create()
 	return instance;
 }
 
-ShrBlock::ShrBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_SHR::create())
+ShrBlock::ShrBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftRight, Strings::Cipher_Operations_SHR::create())
 {
 }
 

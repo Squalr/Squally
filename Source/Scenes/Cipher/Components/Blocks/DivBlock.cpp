@@ -22,7 +22,7 @@ DivBlock* DivBlock::create()
 	return instance;
 }
 
-DivBlock::DivBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_DIV::create())
+DivBlock::DivBlock() : super(ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Division, Strings::Cipher_Operations_DIV::create())
 {
 }
 

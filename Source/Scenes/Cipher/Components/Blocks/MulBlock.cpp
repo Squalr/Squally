@@ -22,7 +22,7 @@ MulBlock* MulBlock::create()
 	return instance;
 }
 
-MulBlock::MulBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_MUL::create())
+MulBlock::MulBlock() : super(ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Multiplication, Strings::Cipher_Operations_MUL::create())
 {
 }
 

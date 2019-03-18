@@ -22,7 +22,7 @@ AndBlock* AndBlock::create()
 	return instance;
 }
 
-AndBlock::AndBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_AND::create())
+AndBlock::AndBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalAnd, Strings::Cipher_Operations_AND::create())
 {
 }
 

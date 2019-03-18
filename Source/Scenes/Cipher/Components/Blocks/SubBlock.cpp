@@ -22,7 +22,7 @@ SubBlock* SubBlock::create()
 	return instance;
 }
 
-SubBlock::SubBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_SUB::create())
+SubBlock::SubBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), CipherResources::Icons_Subtraction, Strings::Cipher_Operations_SUB::create())
 {
 }
 

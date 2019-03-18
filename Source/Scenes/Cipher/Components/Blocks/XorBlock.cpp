@@ -22,7 +22,7 @@ XorBlock* XorBlock::create()
 	return instance;
 }
 
-XorBlock::XorBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_XOR::create())
+XorBlock::XorBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalXor, Strings::Cipher_Operations_XOR::create())
 {
 }
 

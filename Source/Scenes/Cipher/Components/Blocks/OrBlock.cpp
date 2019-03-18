@@ -22,7 +22,7 @@ OrBlock* OrBlock::create()
 	return instance;
 }
 
-OrBlock::OrBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_OR::create())
+OrBlock::OrBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalOr, Strings::Cipher_Operations_OR::create())
 {
 }
 

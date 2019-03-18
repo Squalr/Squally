@@ -22,7 +22,7 @@ ImmediateBlock* ImmediateBlock::create()
 	return instance;
 }
 
-ImmediateBlock::ImmediateBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_Immediate::create())
+ImmediateBlock::ImmediateBlock() : super(ClickableNode::create(CipherResources::BlockDecLong, CipherResources::BlockDecLong), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
 {
 }
 
