@@ -34,8 +34,8 @@ protected:
 
 private:
 	typedef SmartNode super;
-	void onTutorialClick(ClickableNode* HexusPuzzleItem);
-	void onTutorialMouseOver(ClickableNode* HexusPuzzleItem);
+	void onTutorialClick();
+	void onTutorialMouseOver();
 
 	std::function<void(HexusPuzzleItem*)> onMouseOverEvent;
 	bool isLevelComplete;

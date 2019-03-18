@@ -232,31 +232,31 @@ void TutorialAIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialAIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialLossDisplay(gameState);
 	});
-	this->lossDisplayNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialRowTotals(gameState);
 	});
-	this->rowTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->rowTotalsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialBinaryCards(gameState);
 	});
-	this->binaryCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->binaryCardsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialDecimalCards(gameState);
 	});
-	this->decimalCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->decimalCardsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHexCards(gameState);
 	});
-	this->hexCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->hexCardsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHandCards(gameState);
 	});
-	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

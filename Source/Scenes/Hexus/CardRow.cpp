@@ -59,7 +59,7 @@ void CardRow::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
+	this->rowSelectSprite->setClickCallback(CC_CALLBACK_0(CardRow::onRowSelectClick, this));
 }
 
 void CardRow::setRowWidth(float newRowWidth, float duration)
@@ -363,7 +363,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 	}
 }
 
-void CardRow::onRowSelectClick(ClickableNode* menuSprite)
+void CardRow::onRowSelectClick()
 {
 	if (this->rowSelectCallback != nullptr)
 	{

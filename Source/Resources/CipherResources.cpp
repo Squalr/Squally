@@ -5,6 +5,7 @@
 #include "CipherResources.h"
 #include <string>
 
+const std::string CipherResources::AsciiBlock = "Cipher/AsciiBlock.png";
 const std::string CipherResources::AsciiButton = "Cipher/AsciiButton.png";
 const std::string CipherResources::AsciiButtonActive = "Cipher/AsciiButtonActive.png";
 const std::string CipherResources::AsciiButtonSelected = "Cipher/AsciiButtonSelected.png";

@@ -101,7 +101,7 @@ void HexusRewardsMenu::initializeListeners()
 		}
 	}));
 
-	this->returnButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onReturnClick, this));
+	this->returnButton->setClickCallback(CC_CALLBACK_0(HexusRewardsMenu::onReturnClick, this));
 }
 
 void HexusRewardsMenu::initializePositions()
@@ -151,7 +151,7 @@ void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
 	}, interval, ticks, delay, HexusRewardsMenu::KeyScheduleHexusGoldTick);
 }
 
-void HexusRewardsMenu::onReturnClick(ClickableNode* menuSprite)
+void HexusRewardsMenu::onReturnClick()
 {
 	NavigationEvents::navigateBack(2);
 }

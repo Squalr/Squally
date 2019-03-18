@@ -191,9 +191,9 @@ void ChoicesMenu::initializeListeners()
 		}
 	}));
 
-	this->itemsNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onItemsClick(); });
-	this->attackNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onAttackClick(); });
-	this->defendNode->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onDefendClick(); });
+	this->itemsNode->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onItemsClick(); });
+	this->attackNode->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onAttackClick(); });
+	this->defendNode->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onDefendClick(); });
 }
 
 void ChoicesMenu::update(float dt)
@@ -284,7 +284,7 @@ void ChoicesMenu::buildAttackList()
 				node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
 				node->addChild(Sprite::create(attack->getIconResource()));
 
-				node->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+				node->setClickCallback([=](MouseEvents::MouseEventArgs*)
 				{
 					this->selectedEntry->stageCast(attack);
 
@@ -338,7 +338,7 @@ void ChoicesMenu::buildItemList()
 					node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
 					node->addChild(Sprite::create(item->getIconResource()));
 
-					node->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+					node->setClickCallback([=](MouseEvents::MouseEventArgs*)
 					{
 						this->selectedEntry->stageCast(item->createAssociatedAttack());
 

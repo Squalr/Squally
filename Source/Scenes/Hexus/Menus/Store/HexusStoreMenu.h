@@ -48,9 +48,9 @@ private:
 	void updateCardLimitText(LocalizedLabel* label, ConstantString* countString, ConstantString* limitString, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
-	void onLootBoxClick(ClickableNode* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
-	void onCardClick(ClickableNode* card, CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
-	void onBackClick(ClickableNode* menuSprite);
+	void onLootBoxClick(int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
+	void onCardClick(CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
+	void onBackClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
 	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);

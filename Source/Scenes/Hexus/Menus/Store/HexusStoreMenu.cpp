@@ -335,7 +335,7 @@ void HexusStoreMenu::initializeListeners()
 	this->hexButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onHexTabClick, this));
 	this->specialButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onSpecialTabClick, this));
 
-	this->backButton->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onBackClick, this));
+	this->backButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBackClick, this));
 }
 
 void HexusStoreMenu::initializePositions()
@@ -453,7 +453,7 @@ std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::stri
 	animationNode->setScale(HexusStoreMenu::LootBoxScale);
 	animationNode->setPosition(Vec2(0.0f, 16.0f));
 
-	frame->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
+	frame->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -72.0f));
 	priceLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -597,7 +597,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	menuCard->setPosition(Vec2(0.0f, 16.0f));
 	menuCard->setScale(0.8f);
 
-	cardContainer->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
+	cardContainer->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
 
 	cardContainer->addChild(goldIcon);
 	cardContainer->addChild(priceLabel);
@@ -645,7 +645,7 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, ConstantString* 
 	}
 }
 
-void HexusStoreMenu::onCardClick(ClickableNode* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
+void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
 {
 	int gold = CardStorage::getGold();
 
@@ -666,7 +666,7 @@ void HexusStoreMenu::onCardClick(ClickableNode* card, CardData* cardData, int pr
 	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 }
 
-void HexusStoreMenu::onLootBoxClick(ClickableNode* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
+void HexusStoreMenu::onLootBoxClick(int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
 {
 	int gold = CardStorage::getGold();
 
@@ -801,7 +801,7 @@ void HexusStoreMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> ch
 	));
 }
 
-void HexusStoreMenu::onBackClick(ClickableNode* menuSprite)
+void HexusStoreMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
 }

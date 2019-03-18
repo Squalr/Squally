@@ -50,8 +50,8 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 			UIResources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 
-	this->startButton->setClickCallback(CC_CALLBACK_1(HexusPuzzleItem::onTutorialClick, this));
-	this->startButton->setMouseOverCallback(CC_CALLBACK_1(HexusPuzzleItem::onTutorialMouseOver, this));
+	this->startButton->setClickCallback(CC_CALLBACK_0(HexusPuzzleItem::onTutorialClick, this));
+	this->startButton->setMouseOverCallback(CC_CALLBACK_0(HexusPuzzleItem::onTutorialMouseOver, this));
 	this->setContentSize(this->frame->getContentSize());
 	this->setCascadeOpacityEnabled(true);
 
@@ -83,12 +83,12 @@ void HexusPuzzleItem::initializePositions()
 	this->indexLabel->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y + 20));
 }
 
-void HexusPuzzleItem::onTutorialClick(ClickableNode* HexusPuzzleItem)
+void HexusPuzzleItem::onTutorialClick()
 {
 	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(deck1, deck2));
 }
 
-void HexusPuzzleItem::onTutorialMouseOver(ClickableNode* HexusPuzzleItem)
+void HexusPuzzleItem::onTutorialMouseOver()
 {
 	this->onMouseOverEvent(this);
 }

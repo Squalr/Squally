@@ -29,7 +29,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onCloseClick(ClickableNode* menuSprite);
+	void onCloseClick();
 	void onMouseOver(HexusPuzzleItem* tutorialItem);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 

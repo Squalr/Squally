@@ -37,7 +37,7 @@ LanguageTab::LanguageTab()
 
 		ClickableTextNode* button = this->constructLanguageButton(nextString);
 
-		button->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+		button->setClickCallback([=](MouseEvents::MouseEventArgs*) { Localization::setLanguage(language); });
 
 		this->languageButtons.push_back(button);
 	}

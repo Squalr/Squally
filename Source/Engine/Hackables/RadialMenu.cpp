@@ -202,20 +202,9 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
-	clickableNode->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
-	{
-		clickCallback();
-	});
-
-	clickableNode->setMouseOverCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
-	{
-		label->setTextColor(Color4B::YELLOW);
-	});
-
-	clickableNode->setMouseOutCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
-	{
-		label->setTextColor(Color4B::WHITE);
-	});
+	clickableNode->setClickCallback([=](MouseEvents::MouseEventArgs*) {	clickCallback(); });
+	clickableNode->setMouseOverCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
+	clickableNode->setMouseOutCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
 
 	const float tolerance = float(M_PI) / 64.0f;
 	const float offset = 64.0f;

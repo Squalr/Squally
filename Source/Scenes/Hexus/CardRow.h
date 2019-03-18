@@ -48,7 +48,7 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
-	void onRowSelectClick(ClickableNode* menuSprite);
+	void onRowSelectClick();
 
 	float rowWidth;
 	float cardScale;

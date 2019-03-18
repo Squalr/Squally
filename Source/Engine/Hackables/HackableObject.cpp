@@ -92,7 +92,7 @@ void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
+	this->hackButton->setClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
 
 	this->registerHackables();
 
@@ -163,7 +163,7 @@ Vec2 HackableObject::getButtonOffset()
 	return Vec2::ZERO;
 }
 
-void HackableObject::onHackableClick(ClickableNode* hackButton)
+void HackableObject::onHackableClick()
 {
 	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
 }

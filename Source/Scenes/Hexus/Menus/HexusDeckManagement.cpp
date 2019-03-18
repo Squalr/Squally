@@ -265,7 +265,7 @@ void HexusDeckManagement::initializeListeners()
 		(*it).second->setMouseOverCallback(CC_CALLBACK_1(HexusDeckManagement::onStorageCardMouseOver, this));
 	}
 
-	this->backButton->setClickCallback(CC_CALLBACK_1(HexusDeckManagement::onBackClick, this));
+	this->backButton->setClickCallback(CC_CALLBACK_0(HexusDeckManagement::onBackClick, this));
 	this->addEventListener(keyboardListener);
 }
 
@@ -383,7 +383,7 @@ void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* ev
 	}
 }
 
-void HexusDeckManagement::onBackClick(ClickableNode* menuSprite)
+void HexusDeckManagement::onBackClick()
 {
 	this->save(true);
 }

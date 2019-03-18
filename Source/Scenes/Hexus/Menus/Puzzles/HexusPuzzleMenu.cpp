@@ -69,7 +69,7 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 
 	this->loadLevels();
 
-	this->closeButton->setClickCallback(CC_CALLBACK_1(HexusPuzzlesMenu::onCloseClick, this));
+	this->closeButton->setClickCallback(CC_CALLBACK_0(HexusPuzzlesMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
@@ -248,7 +248,7 @@ void HexusPuzzlesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	}
 }
 
-void HexusPuzzlesMenu::onCloseClick(ClickableNode* menuSprite)
+void HexusPuzzlesMenu::onCloseClick()
 {
 	NavigationEvents::navigateBack();
 }

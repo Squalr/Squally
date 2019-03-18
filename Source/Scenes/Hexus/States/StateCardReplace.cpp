@@ -65,7 +65,7 @@ void StateCardReplace::initializePositions()
 	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
 }
 
-void StateCardReplace::onEndReplaceCards(ClickableNode* menuSprite, GameState* gameState)
+void StateCardReplace::onEndReplaceCards(GameState* gameState)
 {
 	gameState->cardReplaceCount = 0;
 
@@ -166,7 +166,7 @@ void StateCardReplace::onStateExit(GameState* gameState)
 void StateCardReplace::initializeCallbacks(GameState* gameState)
 {
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCardReplace::replaceCard, this, gameState));
-	this->doneButton->setClickCallback(CC_CALLBACK_1(StateCardReplace::onEndReplaceCards, this, gameState));
+	this->doneButton->setClickCallback(CC_CALLBACK_0(StateCardReplace::onEndReplaceCards, this, gameState));
 }
 
 void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)

@@ -32,7 +32,7 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onPassClick(ClickableNode* menuSprite, GameState* gameState);
+	void onPassClick(GameState* gameState);
 	void hideOpponenentPassSprites();
 	void hideAndDisableAllButtons();
 	void enablePassButtonInteraction(GameState* gameState);

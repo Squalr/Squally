@@ -72,7 +72,7 @@ void StateGameEnd::initializePositions()
 	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f);
 }
 
-void StateGameEnd::onBackClick(ClickableNode* menuSprite, GameState* gameState)
+void StateGameEnd::onBackClick(GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::EmptyState);
 
@@ -156,7 +156,7 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	this->backButton->enableInteraction(0);
 	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-	this->backButton->setClickCallback(CC_CALLBACK_1(StateGameEnd::onBackClick, this, gameState));
+	this->backButton->setClickCallback(CC_CALLBACK_0(StateGameEnd::onBackClick, this, gameState));
 }
 
 void StateGameEnd::onStateReload(GameState* gameState)

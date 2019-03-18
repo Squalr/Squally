@@ -102,7 +102,7 @@ void TutorialFIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialFIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

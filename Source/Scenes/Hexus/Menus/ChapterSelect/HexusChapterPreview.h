@@ -30,7 +30,7 @@ protected:
 
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onOpponentClick(ClickableNode* HexusChapterPreview);
+	void onOpponentClick();
 	
 	cocos2d::ClippingNode* frameClip;
 	ClickableNode* frame;

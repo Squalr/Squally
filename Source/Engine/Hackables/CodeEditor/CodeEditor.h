@@ -44,8 +44,8 @@ private:
 	void onFunctionTextUpdate(std::string text);
 	void tokenizeCallback(std::string text, std::vector<CodeWindow::token>&);
 	void onScriptLoad(ScriptEntry* script);
-	void onAccept(ClickableNode* menuSprite);
-	void onCancel(ClickableNode* menuSprite);
+	void onAccept();
+	void onCancel();
 
 	void setWindowColor(cocos2d::Color4B windowColor);
 	void setTitleBarColor(cocos2d::Color4B titleBarColor);

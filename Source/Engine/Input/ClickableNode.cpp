@@ -198,32 +198,32 @@ void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
 	this->modifier = modifier;
 }
 
-void ClickableNode::setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick)
+void ClickableNode::setClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
 }
 
-void ClickableNode::setMouseDownCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDown)
+void ClickableNode::setMouseDownCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDown)
 {
 	this->mouseDownEvent = onMouseDown;
 }
 
-void ClickableNode::setMouseDragCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDrag)
+void ClickableNode::setMouseDragCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDrag)
 {
 	this->mouseDragEvent = onMouseDrag;
 }
 
-void ClickableNode::setMouseOverCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOver)
+void ClickableNode::setMouseOverCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOver)
 {
 	this->mouseOverEvent = onMouseOver;
 }
 
-void ClickableNode::setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut)
+void ClickableNode::setMouseOutCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOut)
 {
 	this->mouseOutEvent = onMouseOut;
 }
 
-void ClickableNode::setMouseScrollCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onScroll)
+void ClickableNode::setMouseScrollCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onScroll)
 {
 	this->mouseScrollEvent = onScroll;
 }
@@ -277,7 +277,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		if (this->isClicked && this->mouseDragEvent != nullptr)
 		{
 			MouseEvents::TriggerDragEvent();
-			this->mouseDragEvent(this, args);
+			this->mouseDragEvent(args);
 		}
 	}
 	else
@@ -308,7 +308,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		// Mouse over callback
 		if (this->mouseOverEvent != nullptr)
 		{
-			this->mouseOverEvent(this, args);
+			this->mouseOverEvent(args);
 		}
 
 		// For the use cases of this game, I see no case in which we want to mouse over two things at once
@@ -320,7 +320,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		// Mouse out event
 		if (this->isMousedOver && this->mouseOutEvent != nullptr)
 		{
-			this->mouseOutEvent(this, args);
+			this->mouseOutEvent(args);
 		}
 
 		this->isMousedOver = false;
@@ -341,7 +341,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		if (this->mouseDownEvent != nullptr)
 		{
 			// Mouse down callback
-			this->mouseDownEvent(this, args);
+			this->mouseDownEvent(args);
 		}
 
 		if (!this->isClickInit)
@@ -388,7 +388,7 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 		}
 
 		// Mouse click callback. IMPORTANT: Do not access any references to 'this' from here to the end of the function, in the case where this object is deleted in a callback
-		this->mouseClickEvent(this, args);
+		this->mouseClickEvent(args);
 	}
 	else
 	{
@@ -405,6 +405,6 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 
 	if (this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
-		this->mouseScrollEvent(this, args);
+		this->mouseScrollEvent(args);
 	}
 }

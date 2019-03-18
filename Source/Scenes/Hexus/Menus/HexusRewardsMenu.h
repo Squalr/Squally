@@ -27,7 +27,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onRewardsOpen(int reward, bool isRewardReduced);
-	void onReturnClick(ClickableNode* menuSprite);
+	void onReturnClick();
 
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* goldSprite;

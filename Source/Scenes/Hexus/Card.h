@@ -92,8 +92,8 @@ protected:
 private:
 	typedef SmartNode super;
 	void updateText();
-	void onMouseOver(ClickableNode* menuSprite);
-	void onMouseClick(ClickableNode* menuSprite);
+	void onMouseOver();
+	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
 
 	std::vector<Operation> operations;

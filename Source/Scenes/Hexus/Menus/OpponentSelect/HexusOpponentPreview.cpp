@@ -49,7 +49,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 
 	this->setContentSize(this->frame->getContentSize());
 
-	this->frame->setClickCallback(CC_CALLBACK_1(HexusOpponentPreview::onOpponentClick, this));
+	this->frame->setClickCallback(CC_CALLBACK_0(HexusOpponentPreview::onOpponentClick, this));
 
 	this->frameClip->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->frameClip->addChild(this->opponentSprite);
@@ -74,7 +74,7 @@ void HexusOpponentPreview::initializePositions()
 	}
 }
 
-void HexusOpponentPreview::onOpponentClick(ClickableNode* HexusOpponentPreview)
+void HexusOpponentPreview::onOpponentClick()
 {
 	NavigationEvents::navigateHexus(NavigationEvents::NavigateHexusArgs(this->hexusOpponentData));
 }

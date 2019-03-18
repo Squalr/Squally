@@ -189,9 +189,9 @@ void HexusChapterSelectMenu::initializeListeners()
 	this->hexusChapterPreviewSeaSharpCaverns->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::SeaSharpCaverns)); } );
 	this->hexusChapterPreviewUnderflowRuins->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins)); } );
 	this->hexusChapterPreviewVoidStar->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::VoidStar)); } );
-	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onDeckManagementClick, this));
-	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onShopClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_1(HexusChapterSelectMenu::onBackClick, this));
+	this->deckManagementButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onDeckManagementClick, this));
+	this->shopButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onShopClick, this));
+	this->backButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }
@@ -275,17 +275,17 @@ void HexusChapterSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event*
 	}
 }
 
-void HexusChapterSelectMenu::onBackClick(ClickableNode* menuSprite)
+void HexusChapterSelectMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
 }
 
-void HexusChapterSelectMenu::onDeckManagementClick(ClickableNode* menuSprite)
+void HexusChapterSelectMenu::onDeckManagementClick()
 {
 	NavigationEvents::navigateHexusDeckManagement();
 }
 
-void HexusChapterSelectMenu::onShopClick(ClickableNode* menuSprite)
+void HexusChapterSelectMenu::onShopClick()
 {
 	NavigationEvents::navigateHexusShop();
 }

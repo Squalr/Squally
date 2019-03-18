@@ -147,11 +147,11 @@ void PauseMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(PauseMenu::onKeyPressed, this);
 
-	this->resumeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onResumeClick, this));
-	this->optionsButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onOptionsClick, this));
-	this->exitButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onExitClick, this));
+	this->resumeButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onResumeClick, this));
+	this->optionsButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onOptionsClick, this));
+	this->exitButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onExitClick, this));
 
-	this->closeButton->setClickCallback(CC_CALLBACK_1(PauseMenu::onCloseClick, this));
+	this->closeButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	this->addEventListener(keyboardListener);
@@ -204,7 +204,7 @@ void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void PauseMenu::onCloseClick(ClickableNode* menuSprite)
+void PauseMenu::onCloseClick()
 {
 	if (this->resumeClickCallback != nullptr)
 	{
@@ -212,7 +212,7 @@ void PauseMenu::onCloseClick(ClickableNode* menuSprite)
 	}
 }
 
-void PauseMenu::onResumeClick(ClickableNode* menuSprite)
+void PauseMenu::onResumeClick()
 {
 	if (this->resumeClickCallback != nullptr)
 	{
@@ -220,7 +220,7 @@ void PauseMenu::onResumeClick(ClickableNode* menuSprite)
 	}
 }
 
-void PauseMenu::onOptionsClick(ClickableNode* menuSprite)
+void PauseMenu::onOptionsClick()
 {
 	if (this->optionsClickCallback != nullptr)
 	{
@@ -228,7 +228,7 @@ void PauseMenu::onOptionsClick(ClickableNode* menuSprite)
 	}
 }
 
-void PauseMenu::onExitClick(ClickableNode* menuSprite)
+void PauseMenu::onExitClick()
 {
 	if (this->exitClickCallback != nullptr)
 	{

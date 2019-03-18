@@ -28,10 +28,10 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	void onStoryModeClick(ClickableNode* menuSprite);
-	void onMinigamesClick(ClickableNode* menuSprite);
-	void onOptionsClick(ClickableNode* menuSprite);
-	void onExitClick(ClickableNode* menuSprite);
+	void onStoryModeClick();
+	void onMinigamesClick();
+	void onOptionsClick();
+	void onExitClick();
 
 	TitleScreenBackground* background;
 
