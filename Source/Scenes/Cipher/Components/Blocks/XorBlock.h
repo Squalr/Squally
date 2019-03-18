@@ -2,11 +2,6 @@
 
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class XorBlock : public BlockBase
 {
 public:

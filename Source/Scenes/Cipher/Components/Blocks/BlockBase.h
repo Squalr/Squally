@@ -2,23 +2,22 @@
 
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class ClickableNode;
+class LocalizedLabel;
+class LocalizedString;
 
 class BlockBase : public CipherComponentBase
 {
 protected:
-	BlockBase(ClickableNode* block);
+	BlockBase(ClickableNode* block, LocalizedString* label);
 	~BlockBase();
 
+	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef CipherComponentBase super;
 
 	ClickableNode* block;
+	LocalizedLabel* label;
 };
