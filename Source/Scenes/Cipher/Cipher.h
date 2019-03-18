@@ -13,6 +13,8 @@ namespace cocos2d
 
 class AsciiTable;
 class CipherBackground;
+class CipherDecor;
+class CipherFrame;
 class ClickableNode;
 class ClickableTextNode;
 class DisplayModeToggles;
@@ -46,6 +48,8 @@ private:
 
 	AsciiTable* asciiTable;
 	CipherBackground* cipherBackground;
+	CipherFrame* cipherFrame;
+	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;
 	ExecuteButton* executeButton;
 	InputsOutputs* inputsOutputs;

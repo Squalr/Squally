@@ -7,10 +7,10 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CipherBackground : public CipherComponentBase
+class CipherFrame : public CipherComponentBase
 {
 public:
-	static CipherBackground* create();
+	static CipherFrame* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -18,11 +18,12 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	CipherBackground();
-	~CipherBackground();
+	CipherFrame();
+	~CipherFrame();
 
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* cipherBackground;
+	cocos2d::Sprite* cipherFrame;
+	cocos2d::Sprite* furnace;
 };

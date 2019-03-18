@@ -44,7 +44,7 @@ void AsciiTable::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->viewAsciiTableButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 420.0f, visibleSize.height / 2.0f - 420.0f));
+	this->viewAsciiTableButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 448.0f, visibleSize.height / 2.0f + 420.0f));
 }
 
 void AsciiTable::onBeforeStateChange(CipherState* cipherState)
