@@ -1,4 +1,4 @@
-#include "CipherBackground.h"
+#include "CipherFrame.h"
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
@@ -17,46 +17,46 @@
 
 using namespace cocos2d;
 
-CipherBackground* CipherBackground::create()
+CipherFrame* CipherFrame::create()
 {
-	CipherBackground* instance = new CipherBackground();
+	CipherFrame* instance = new CipherFrame();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CipherBackground::CipherBackground()
+CipherFrame::CipherFrame()
 {
-	this->cipherBackground = Sprite::create(CipherResources::CipherMenuBase);
+	this->cipherFrame = Sprite::create(CipherResources::CipherMenuFrame);
 
-	this->addChild(this->cipherBackground);
+	this->addChild(this->cipherFrame);
 }
 
-CipherBackground::~CipherBackground()
+CipherFrame::~CipherFrame()
 {
 }
 
-void CipherBackground::onEnter()
+void CipherFrame::onEnter()
 {
 	super::onEnter();
 }
 
-void CipherBackground::initializePositions()
+void CipherFrame::initializePositions()
 {
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->cipherBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->cipherFrame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
-void CipherBackground::onBeforeStateChange(CipherState* cipherState)
+void CipherFrame::onBeforeStateChange(CipherState* cipherState)
 {
 	super::onBeforeStateChange(cipherState);
 }
 
-void CipherBackground::onAnyStateChange(CipherState* cipherState)
+void CipherFrame::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
 }

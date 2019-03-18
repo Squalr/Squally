@@ -51,8 +51,8 @@ void InputsOutputs::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->inputsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter - 476.0f, visibleSize.height / 2.0f + 422.0f));
-	this->outputsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 476.0f, visibleSize.height / 2.0f + 422.0f));
+	this->inputsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f - 32.0f));
+	this->outputsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f - 32.0f));
 }
 
 void InputsOutputs::onBeforeStateChange(CipherState* cipherState)

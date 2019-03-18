@@ -12,7 +12,7 @@ class ClickableNode;
 class BlockBase : public CipherComponentBase
 {
 protected:
-	BlockBase();
+	BlockBase(ClickableNode* block);
 	~BlockBase();
 
 	void initializeListeners() override;
@@ -20,8 +20,5 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	ClickableNode* blockFrameBinary;
-	ClickableNode* blockFrameDecimal;
-	ClickableNode* blockFrameHex;
-	ClickableNode* blockFrameAscii;
+	ClickableNode* block;
 };

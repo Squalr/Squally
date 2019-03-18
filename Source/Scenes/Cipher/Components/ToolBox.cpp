@@ -50,7 +50,7 @@ void ToolBox::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cipherToolsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + 450.0f));
-	this->xorBlock->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + 64.0f));
+	this->xorBlock->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + 128.0f));
 }
 
 void ToolBox::onBeforeStateChange(CipherState* cipherState)

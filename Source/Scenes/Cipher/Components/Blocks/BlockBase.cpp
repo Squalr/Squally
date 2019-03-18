@@ -10,17 +10,11 @@
 
 using namespace cocos2d;
 
-BlockBase::BlockBase()
+BlockBase::BlockBase(ClickableNode* block)
 {
-	this->blockFrameBinary = ClickableNode::create(CipherResources::BinaryBlock, CipherResources::BinaryBlock);
-	this->blockFrameDecimal = ClickableNode::create(CipherResources::DecimalBlock, CipherResources::DecimalBlock);
-	this->blockFrameHex = ClickableNode::create(CipherResources::HexBlock, CipherResources::HexBlock);
-	this->blockFrameAscii = ClickableNode::create(CipherResources::AsciiBlock, CipherResources::AsciiBlock);
+	this->block = block;
 
-	this->addChild(this->blockFrameBinary);
-	this->addChild(this->blockFrameDecimal);
-	this->addChild(this->blockFrameHex);
-	this->addChild(this->blockFrameAscii);
+	this->addChild(this->block);
 }
 
 BlockBase::~BlockBase()
@@ -31,9 +25,8 @@ void BlockBase::initializeListeners()
 {
 	super::initializeListeners();
 
-
-	this->blockFrameAscii->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+	this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
 	{
-
+		this->setPosition(args->mouseCoords);
 	});
 }

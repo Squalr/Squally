@@ -4,6 +4,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -19,7 +20,7 @@ XorBlock* XorBlock::create()
 	return instance;
 }
 
-XorBlock::XorBlock()
+XorBlock::XorBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec))
 {
 }
 

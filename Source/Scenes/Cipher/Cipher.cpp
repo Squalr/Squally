@@ -19,6 +19,8 @@
 #include "Menus/Options/VideoTab.h"
 #include "Scenes/Cipher/Components/AsciiTable.h"
 #include "Scenes/Cipher/Components/CipherBackground.h"
+#include "Scenes/Cipher/Components/CipherDecor.h"
+#include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/ExecuteButton.h"
 #include "Scenes/Cipher/Components/InputsOutputs.h"
@@ -49,6 +51,8 @@ Cipher::Cipher()
 	this->backClickCallback = nullptr;
 
 	this->cipherBackground = CipherBackground::create();
+	this->cipherFrame = CipherFrame::create();
+	this->cipherDecor = CipherDecor::create();
 	this->inputsOutputs = InputsOutputs::create();
 	this->toolBox = ToolBox::create();
 	this->displayModeToggles = DisplayModeToggles::create();
@@ -57,6 +61,8 @@ Cipher::Cipher()
 	this->asciiTable = AsciiTable::create();
 
 	this->addChild(this->cipherBackground);
+	this->addChild(this->cipherFrame);
+	this->addChild(this->cipherDecor);
 	this->addChild(this->inputsOutputs);
 	this->addChild(this->toolBox);
 	this->addChild(this->displayModeToggles);
