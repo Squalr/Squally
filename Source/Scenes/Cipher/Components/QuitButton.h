@@ -2,13 +2,12 @@
 
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
-class LocalizedLabel;
-class XorBlock;
+class ClickableTextNode;
 
-class ToolBox : public CipherComponentBase
+class QuitButton : public CipherComponentBase
 {
 public:
-	static ToolBox* create();
+	static QuitButton* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -16,12 +15,12 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	ToolBox();
-	~ToolBox();
+	QuitButton();
+	~QuitButton();
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
-	LocalizedLabel* cipherToolsLabel;
-	XorBlock* xorBlock;
+	ClickableTextNode* quitButton;
 };

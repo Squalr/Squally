@@ -7,12 +7,10 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedLabel;
-
-class InputsOutputs : public CipherComponentBase
+class CipherBackground : public CipherComponentBase
 {
 public:
-	static InputsOutputs* create();
+	static CipherBackground* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -20,15 +18,12 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	InputsOutputs();
-	~InputsOutputs();
+	CipherBackground();
+	~CipherBackground();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void updateDisplayedLosses(CipherState* cipherState);
 
-	LocalizedLabel* inputsLabel;
-	LocalizedLabel* outputsLabel;
-
-	std::vector<std::tuple<std::string, std::string>> inputs;
+	cocos2d::Sprite* cipherWindow;
+	cocos2d::Sprite* cipherLabel;
 };

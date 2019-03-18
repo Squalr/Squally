@@ -11,8 +11,15 @@ namespace cocos2d
 	class Sprite;
 }
 
+class AsciiTable;
+class CipherBackground;
 class ClickableNode;
 class ClickableTextNode;
+class DisplayModeToggles;
+class ExecuteButton;
+class InputsOutputs;
+class QuitButton;
+class ToolBox;
 class LocalizedLabel;
 
 class Cipher : public SmartNode
@@ -37,22 +44,13 @@ private:
 
 	std::function<void()> backClickCallback;
 
-	cocos2d::Node* leftPanel;
-	cocos2d::Node* rightPanel;
-	cocos2d::Sprite* cipherWindow;
-	cocos2d::Sprite* cipherLabel;
-
-	LocalizedLabel* cipherToolsLabel;
-	ClickableTextNode* quitButton;
-
-	LocalizedLabel* inputsLabel;
-	LocalizedLabel* outputsLabel;
-	ClickableTextNode* executeButton;
-	ClickableNode* toggleButtonBin;
-	ClickableNode* toggleButtonDec;
-	ClickableNode* toggleButtonHex;
-	ClickableNode* toggleButtonAscii;
-	ClickableNode* viewAsciiTableButton;
+	AsciiTable* asciiTable;
+	CipherBackground* cipherBackground;
+	DisplayModeToggles* displayModeToggles;
+	ExecuteButton* executeButton;
+	InputsOutputs* inputsOutputs;
+	QuitButton* quitButton;
+	ToolBox* toolBox;
 
 	static const cocos2d::Color3B TitleColor;
 };
