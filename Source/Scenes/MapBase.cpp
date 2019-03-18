@@ -19,7 +19,7 @@
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-#include "Scenes/Cipher/CipherMenu.h"
+#include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
 
 #include "Resources/BackgroundResources.h"
@@ -35,7 +35,7 @@ MapBase::MapBase()
 	this->map = nullptr;;
 	this->mapNode = Node::create();
 
-	this->cipherMenu = CipherMenu::create();
+	this->cipher = Cipher::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -57,7 +57,7 @@ MapBase::MapBase()
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
-	this->menuHud->addChild(this->cipherMenu);
+	this->menuHud->addChild(this->cipher);
 	this->menuHud->addChild(this->pauseMenu);
 	this->menuHud->addChild(this->optionsMenu);
 	this->menuHud->addChild(this->confirmationMenu);
@@ -110,7 +110,7 @@ void MapBase::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
 		this->menuBackDrop->setOpacity(196);
-		this->cipherMenu->setVisible(true);
+		this->cipher->setVisible(true);
 	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();

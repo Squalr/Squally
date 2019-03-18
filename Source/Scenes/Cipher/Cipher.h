@@ -15,16 +15,16 @@ class ClickableNode;
 class ClickableTextNode;
 class LocalizedLabel;
 
-class CipherMenu : public SmartNode
+class Cipher : public SmartNode
 {
 public:
-	static CipherMenu* create();
+	static Cipher* create();
 
 	void setBackClickCallback(std::function<void()> backClickCallback);
 
 protected:
-	CipherMenu();
-	~CipherMenu();
+	Cipher();
+	~Cipher();
 
 private:
 	typedef SmartNode super;

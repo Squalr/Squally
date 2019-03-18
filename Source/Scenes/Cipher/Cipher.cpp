@@ -1,4 +1,4 @@
-#include "CipherMenu.h"
+#include "Cipher.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
@@ -21,38 +21,38 @@
 #include "Resources/ShaderResources.h"
 #include "Resources/CipherResources.h"
 
+#include "Strings/Cipher/CipherCaps.h"
+#include "Strings/Cipher/Execute.h"
+#include "Strings/Cipher/Inputs.h"
+#include "Strings/Cipher/Outputs.h"
+#include "Strings/Cipher/Tools.h"
 #include "Strings/Menus/Cancel.h"
-#include "Strings/Menus/Cipher/Cipher.h"
-#include "Strings/Menus/Cipher/Execute.h"
-#include "Strings/Menus/Cipher/Inputs.h"
-#include "Strings/Menus/Cipher/Outputs.h"
-#include "Strings/Menus/Cipher/Tools.h"
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
 
-const Color3B CipherMenu::TitleColor = Color3B(88, 188, 193);
+const Color3B Cipher::TitleColor = Color3B(88, 188, 193);
 
-CipherMenu* CipherMenu::create()
+Cipher* Cipher::create()
 {
-	CipherMenu* instance = new CipherMenu();
+	Cipher* instance = new Cipher();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CipherMenu::CipherMenu()
+Cipher::Cipher()
 {
 	this->backClickCallback = nullptr;
 
 	this->cipherWindow = Sprite::create(CipherResources::CipherMenu);
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
-	Label* tempCipherLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M1, Strings::Menus_Cipher_Cipher::create());
-	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cipher_Tools::create());
-	this->inputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Inputs::create());
-	this->outputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Outputs::create());
+	Label* tempCipherLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M1, Strings::Cipher_CipherCaps::create());
+	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_Tools::create());
+	this->inputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Inputs::create());
+	this->outputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Outputs::create());
 	
 	this->inputsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 	this->outputsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -76,8 +76,8 @@ CipherMenu::CipherMenu()
 	this->toggleButtonAscii = ClickableNode::create(CipherResources::AsciiButton, CipherResources::AsciiButtonSelected);
 	this->viewAsciiTableButton = ClickableNode::create(CipherResources::AsciiTableButton, CipherResources::AsciiTableButtonSelected);
 
-	LocalizedLabel*	executeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Execute::create());
-	LocalizedLabel*	executeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cipher_Execute::create());
+	LocalizedLabel*	executeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Execute::create());
+	LocalizedLabel*	executeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Execute::create());
 
 	executeLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	executeLabel->enableGlow(Color4B::BLACK);
@@ -126,18 +126,18 @@ CipherMenu::CipherMenu()
 	this->addChild(this->rightPanel);
 }
 
-CipherMenu::~CipherMenu()
+Cipher::~Cipher()
 {
 }
 
-void CipherMenu::onEnter()
+void Cipher::onEnter()
 {
 	super::onEnter();
 
 	this->setVisible(false);
 }
 
-void CipherMenu::initializeListeners()
+void Cipher::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -145,12 +145,12 @@ void CipherMenu::initializeListeners()
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(CipherMenu::onKeyPressed, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(Cipher::onKeyPressed, this);
 
 	this->addEventListener(keyboardListener);
 }
 
-void CipherMenu::initializePositions()
+void Cipher::initializePositions()
 {
 	super::initializePositions();
 
@@ -176,12 +176,12 @@ void CipherMenu::initializePositions()
 	this->quitButton->setPosition(Vec2(0.0f, -420.0f));
 }
 
-void CipherMenu::setBackClickCallback(std::function<void()> backClickCallback)
+void Cipher::setBackClickCallback(std::function<void()> backClickCallback)
 {
 	this->backClickCallback = backClickCallback;
 }
 
-void CipherMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void Cipher::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	if (!GameUtils::isVisible(this))
 	{
@@ -203,7 +203,7 @@ void CipherMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void CipherMenu::onMenuExit()
+void Cipher::onMenuExit()
 {
 	ConfigManager::save();
 

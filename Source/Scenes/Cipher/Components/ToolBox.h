@@ -7,22 +7,23 @@ namespace cocos2d
 	class Sprite;
 }
 
-class InputsOutputs : public CipherComponentBase
+class XorBlock;
+
+class ToolBox : public CipherComponentBase
 {
 public:
-	static InputsOutputs* create();
+	static ToolBox* create();
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
 	void onAnyStateChange(CipherState* cipherState) override;
 
 private:
 	typedef CipherComponentBase super;
-	InputsOutputs();
-	~InputsOutputs();
+	ToolBox();
+	~ToolBox();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void updateDisplayedLosses(CipherState* cipherState);
 
-	std::vector<std::tuple<std::string, std::string>> inputs;
+	XorBlock* xorBlock;
 };
