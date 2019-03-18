@@ -22,7 +22,7 @@ ShlBlock* ShlBlock::create()
 	return instance;
 }
 
-ShlBlock::ShlBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_SHL::create())
+ShlBlock::ShlBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftLeft, Strings::Cipher_Operations_SHL::create())
 {
 }
 

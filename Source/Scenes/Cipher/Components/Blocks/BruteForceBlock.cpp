@@ -22,7 +22,7 @@ BruteForceBlock* BruteForceBlock::create()
 	return instance;
 }
 
-BruteForceBlock::BruteForceBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_BruteForce::create())
+BruteForceBlock::BruteForceBlock() : super(ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_BruteForce, Strings::Cipher_Operations_BruteForce::create())
 {
 }
 

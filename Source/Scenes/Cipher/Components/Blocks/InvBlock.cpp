@@ -22,7 +22,7 @@ InvBlock* InvBlock::create()
 	return instance;
 }
 
-InvBlock::InvBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_INV::create())
+InvBlock::InvBlock() : super(ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Invert, Strings::Cipher_Operations_INV::create())
 {
 }
 

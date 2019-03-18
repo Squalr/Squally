@@ -22,7 +22,7 @@ AddBlock* AddBlock::create()
 	return instance;
 }
 
-AddBlock::AddBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_ADD::create())
+AddBlock::AddBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), CipherResources::Icons_Addition, Strings::Cipher_Operations_ADD::create())
 {
 }
 

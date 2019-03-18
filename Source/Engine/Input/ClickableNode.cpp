@@ -46,9 +46,12 @@ ClickableNode* ClickableNode::create(Node* nodeNormal, Node* nodeSelected)
 ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 {
 	this->mouseClickEvent = nullptr;
+	this->mouseInEvent = nullptr;
 	this->mouseDownEvent = nullptr;
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
+	this->mousePressEvent = nullptr;
+	this->mouseReleaseEvent = nullptr;
 	this->mouseScrollEvent = nullptr;
 	this->allowCollisionWhenInvisible = false;
 	this->interactionEnabled = true;
@@ -203,9 +206,24 @@ void ClickableNode::setClickCallback(std::function<void(MouseEvents::MouseEventA
 	this->mouseClickEvent = onMouseClick;
 }
 
+void ClickableNode::setMouseInCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseIn)
+{
+	this->mouseInEvent = onMouseIn;
+}
+
 void ClickableNode::setMouseDownCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDown)
 {
 	this->mouseDownEvent = onMouseDown;
+}
+
+void ClickableNode::setMousePressCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMousePressEvent)
+{
+	this->mousePressEvent = onMousePressEvent;
+}
+
+void ClickableNode::setMouseReleaseCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent)
+{
+	this->mouseReleaseEvent = mouseReleaseEvent;
 }
 
 void ClickableNode::setMouseDragCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDrag)
@@ -289,6 +307,11 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 	{
 		MouseEvents::TriggerClickableMouseOverEvent();
 
+		if (!this->isMousedOver && this->mouseInEvent != nullptr)
+		{
+			this->mouseInEvent(args);
+		}
+
 		this->isMousedOver = true;
 
 		if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
@@ -346,6 +369,11 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 		if (!this->isClickInit)
 		{
+			if (this->mousePressEvent != nullptr)
+			{
+				this->mousePressEvent(args);
+			}
+
 			if (this->mouseDragEvent != nullptr)
 			{
 				MouseEvents::TriggerDragEvent();
@@ -366,6 +394,14 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 	if (!this->interactionEnabled || (this->modifier != Input::getActiveModifiers()) || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
 	{
 		return;
+	}
+
+	if (this->isClicked)
+	{
+		if (this->mouseReleaseEvent != nullptr)
+		{
+			this->mouseReleaseEvent(args);
+		}
 	}
 
 	this->isClickInit = false;

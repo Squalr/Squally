@@ -22,7 +22,7 @@ CshlBlock* CshlBlock::create()
 	return instance;
 }
 
-CshlBlock::CshlBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_CSHL::create())
+CshlBlock::CshlBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_CircularShiftLeft, Strings::Cipher_Operations_CSHL::create())
 {
 }
 

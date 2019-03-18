@@ -22,7 +22,7 @@ ModBlock* ModBlock::create()
 	return instance;
 }
 
-ModBlock::ModBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), Strings::Cipher_Operations_MOD::create())
+ModBlock::ModBlock() : super(ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Modulo, Strings::Cipher_Operations_MOD::create())
 {
 }
 
