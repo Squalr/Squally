@@ -31,7 +31,7 @@ protected:
 private:
 	typedef SmartNode super;
 	void updateSliderPosition();
-	void onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args);
+	void onDrag(MouseEvents::MouseEventArgs* args);
 
 	ClickableNode* slide;
 	ProgressBar* progressBar;

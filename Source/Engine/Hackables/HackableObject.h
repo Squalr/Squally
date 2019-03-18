@@ -24,7 +24,7 @@ class ProgressBar;
 class HackableObject : public SerializableObject
 {
 public:
-	void onHackableClick(ClickableNode* backButton);
+	void onHackableClick();
 	virtual HackablePreview* createDefaultPreview();
 
 	std::vector<HackableAttribute*> hackableList;

@@ -45,7 +45,7 @@ private:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBackClick(ClickableNode* menuSprite);
+	void onBackClick();
 	void onToggleSelect(Checkbox* activeToggle);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void rebuildCardLists();

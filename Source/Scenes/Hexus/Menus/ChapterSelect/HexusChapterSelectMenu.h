@@ -40,9 +40,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void loadProgress();
-	void onBackClick(ClickableNode* menuSprite);
-	void onDeckManagementClick(ClickableNode* menuSprite);
-	void onShopClick(ClickableNode* menuSprite);
+	void onBackClick();
+	void onDeckManagementClick();
+	void onShopClick();
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 

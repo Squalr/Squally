@@ -65,7 +65,7 @@ void HexusChapterPreview::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->frame->setClickCallback(CC_CALLBACK_1(HexusChapterPreview::onOpponentClick, this));
+	this->frame->setClickCallback(CC_CALLBACK_0(HexusChapterPreview::onOpponentClick, this));
 }
 
 void HexusChapterPreview::disableInteraction()
@@ -85,7 +85,7 @@ void HexusChapterPreview::setClickCallback(std::function<void()> callback)
 	this->callback = callback;
 }
 
-void HexusChapterPreview::onOpponentClick(ClickableNode* hexusChapterPreview)
+void HexusChapterPreview::onOpponentClick()
 {
 	if (this->callback != nullptr)
 	{

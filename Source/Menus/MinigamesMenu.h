@@ -25,9 +25,9 @@ private:
 	void initializePositions() override;
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onBackClick(ClickableNode* menuSprite);
-	void onHexusClick(ClickableNode* menuSprite);
-	void onHexusPuzzlesClick(ClickableNode* menuSprite);
+	void onBackClick();
+	void onHexusClick();
+	void onHexusPuzzlesClick();
 	ClickableTextNode* createButton(LocalizedString* text, std::string iconResource);
 	ClickableTextNode* createComingSoonButton();
 

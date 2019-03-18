@@ -21,12 +21,12 @@ public:
 	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
 	void setContentSize(const cocos2d::Size & size) override;
-	void setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
-	void setMouseOverCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
-	void setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut);
-	void setMouseDownCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDown);
-	void setMouseDragCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onDrag);
-	void setMouseScrollCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onScroll);
+	void setClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick);
+	void setMouseOverCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick);
+	void setMouseOutCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOut);
+	void setMouseDownCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDown);
+	void setMouseDragCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onDrag);
+	void setMouseScrollCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onScroll);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
 	void setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible);
@@ -72,10 +72,10 @@ private:
 	cocos2d::DrawNode* debugHitbox;
 	cocos2d::Vec2 debugCachedPos;
 
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseClickEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDownEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDragEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOverEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOutEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseScrollEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseClickEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseDownEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseDragEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseOverEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseOutEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseScrollEvent;
 };

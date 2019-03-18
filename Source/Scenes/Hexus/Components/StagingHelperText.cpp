@@ -86,15 +86,15 @@ void StagingHelperText::onAnyStateChange(GameState* gameState)
 		case GameState::StateType::SelectionStaged:
 		{
 			this->updateSelectionStatus(gameState);
-			this->cancelButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onSelectionCancel, this, gameState));
-			this->helpButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onHelpClick, this, gameState));
+			this->cancelButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onSelectionCancel, this, gameState));
+			this->helpButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onHelpClick, this, gameState));
 			break;
 		}
 		case GameState::StateType::CombineStaged:
 		{
 			this->updateCombineStatus(gameState);
-			this->cancelButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onCombineCancel, this, gameState));
-			this->helpButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onHelpClick, this, gameState));
+			this->cancelButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onCombineCancel, this, gameState));
+			this->helpButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onHelpClick, this, gameState));
 			break;
 		}
 		default:
@@ -105,7 +105,7 @@ void StagingHelperText::onAnyStateChange(GameState* gameState)
 	}
 }
 
-void StagingHelperText::onSelectionCancel(ClickableNode* menuSprite, GameState* gameState)
+void StagingHelperText::onSelectionCancel(GameState* gameState)
 {
 	if (gameState->selectedHandCard != nullptr)
 	{
@@ -185,7 +185,7 @@ void StagingHelperText::clearSelectionStatus()
 	this->helpButton->disableInteraction();
 }
 
-void StagingHelperText::onCombineCancel(ClickableNode* menuSprite, GameState* gameState)
+void StagingHelperText::onCombineCancel(GameState* gameState)
 {
 	if (gameState->selectedSourceCard != nullptr)
 	{
@@ -204,7 +204,7 @@ void StagingHelperText::onCombineCancel(ClickableNode* menuSprite, GameState* ga
 	GameState::updateState(gameState, GameState::StateType::Neutral);
 }
 
-void StagingHelperText::onHelpClick(ClickableNode* menuSprite, GameState* gameState)
+void StagingHelperText::onHelpClick(GameState* gameState)
 {
 	// TODO: Show help menu for the type
 	switch (gameState->selectedHandCard->cardData->cardType)

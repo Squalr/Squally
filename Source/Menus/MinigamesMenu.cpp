@@ -126,9 +126,9 @@ void MinigamesMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(MinigamesMenu::onKeyPressed, this);
-	this->hexusButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusClick, this));
-	this->hexusPuzzlesButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusPuzzlesClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onBackClick, this));
+	this->hexusButton->setClickCallback(CC_CALLBACK_0(MinigamesMenu::onHexusClick, this));
+	this->hexusPuzzlesButton->setClickCallback(CC_CALLBACK_0(MinigamesMenu::onHexusPuzzlesClick, this));
+	this->backButton->setClickCallback(CC_CALLBACK_0(MinigamesMenu::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }
@@ -174,17 +174,17 @@ void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MinigamesMenu::onBackClick(ClickableNode* menuSprite)
+void MinigamesMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
 }
 
-void MinigamesMenu::onHexusClick(ClickableNode* menuSprite)
+void MinigamesMenu::onHexusClick()
 {
 	NavigationEvents::navigateHexusChapterSelect();
 }
 
-void MinigamesMenu::onHexusPuzzlesClick(ClickableNode* menuSprite)
+void MinigamesMenu::onHexusPuzzlesClick()
 {
 	NavigationEvents::navigateHexusPuzzles();
 }

@@ -58,8 +58,8 @@ void ScriptEntry::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->backPlate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
-	this->deleteButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onDeleteClick(this); });
+	this->backPlate->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onScriptEntryClick(this); });
+	this->deleteButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onDeleteClick(this); });
 }
 
 void ScriptEntry::toggleSelected(bool isSelected)

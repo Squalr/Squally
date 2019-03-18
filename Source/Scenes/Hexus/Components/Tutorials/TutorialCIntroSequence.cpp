@@ -153,15 +153,15 @@ void TutorialCIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialCIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHandCards(gameState);
 	});
-	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialLastStand(gameState);
 	});
-	this->lastStandNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->lastStandNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

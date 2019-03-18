@@ -202,13 +202,13 @@ void TitleScreen::initializeListeners()
 		GlobalDirector::loadScene(TitleScreen::instance);
 	}));
 
-	this->storyModeButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onStoryModeClick, this));
-	this->minigamesButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onMinigamesClick, this));
-	this->optionsButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onOptionsClick, this));
-	this->exitButton->setClickCallback(CC_CALLBACK_1(TitleScreen::onExitClick, this));
+	this->storyModeButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onStoryModeClick, this));
+	this->minigamesButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onMinigamesClick, this));
+	this->optionsButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onOptionsClick, this));
+	this->exitButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onExitClick, this));
 }
 
-void TitleScreen::onStoryModeClick(ClickableNode* menuSprite)
+void TitleScreen::onStoryModeClick()
 {
 	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::EndianForest_Forest, [](SerializableMap* map)
 	{
@@ -218,17 +218,17 @@ void TitleScreen::onStoryModeClick(ClickableNode* menuSprite)
 	////NavigationEvents::navigateSaveSelect();
 }
 
-void TitleScreen::onMinigamesClick(ClickableNode* menuSprite)
+void TitleScreen::onMinigamesClick()
 {
 	NavigationEvents::navigateMinigames();
 }
 
-void TitleScreen::onOptionsClick(ClickableNode* menuSprite)
+void TitleScreen::onOptionsClick()
 {
 	NavigationEvents::navigateOptions();
 }
 
-void TitleScreen::onExitClick(ClickableNode* menuSprite)
+void TitleScreen::onExitClick()
 {
 	Director::getInstance()->end();
 }

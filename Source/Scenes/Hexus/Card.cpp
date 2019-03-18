@@ -154,8 +154,8 @@ void Card::initializeListeners()
 {
 	SmartNode::initializeListeners();
 
-	this->cardSelect->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
-	this->cardSelect->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
+	this->cardSelect->setMouseOverCallback(CC_CALLBACK_0(Card::onMouseOver, this));
+	this->cardSelect->setClickCallback(CC_CALLBACK_0(Card::onMouseClick, this));
 }
 
 void Card::addOperation(Operation operation)
@@ -427,7 +427,7 @@ void Card::setMouseClickCallback(std::function<void(Card*)> callback)
 	this->mouseClickCallback = callback;
 }
 
-void Card::onMouseOver(ClickableNode* menuSprite)
+void Card::onMouseOver()
 {
 	if (this->mouseOverCallback != nullptr)
 	{
@@ -435,7 +435,7 @@ void Card::onMouseOver(ClickableNode* menuSprite)
 	}
 }
 
-void Card::onMouseClick(ClickableNode* menuSprite)
+void Card::onMouseClick()
 {
 	if (this->mouseClickCallback != nullptr)
 	{

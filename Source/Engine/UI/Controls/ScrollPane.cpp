@@ -104,17 +104,17 @@ void ScrollPane::initializeListeners()
 		this->setScrollPercentage(progress, false);
 	});
 
-	this->dragHitbox->setMouseScrollCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	this->dragHitbox->setMouseScrollCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->scrollBy(args->scrollDelta.y * ScrollPane::ScrollSpeed);
 	});
 
-	this->dragHitbox->setMouseDownCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	this->dragHitbox->setMouseDownCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->initialDragDepth = this->getScrollDepth();
 	});
 
-	this->dragHitbox->setMouseDragCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	this->dragHitbox->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		float dragDelta = (args->mouseCoords.y - args->mouseInitialCoords.y) * ScrollPane::DragSpeed;
 

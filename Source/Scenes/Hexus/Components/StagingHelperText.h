@@ -22,10 +22,10 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void updateSelectionStatus(GameState* gameState);
-	void onHelpClick(ClickableNode* menuSprite, GameState* gameState);
+	void onHelpClick(GameState* gameState);
 	void updateCombineStatus(GameState* gameState);
-	void onSelectionCancel(ClickableNode* menuSprite, GameState* gameState);
-	void onCombineCancel(ClickableNode* menuSprite, GameState* gameState);
+	void onSelectionCancel(GameState* gameState);
+	void onCombineCancel(GameState* gameState);
 	void clearSelectionStatus();
 
 	LocalizedLabel* selectionLabel;

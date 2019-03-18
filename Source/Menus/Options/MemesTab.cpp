@@ -85,17 +85,17 @@ void MemesTab::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->twitterButtonZac->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->twitterButtonZac->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		Application::getInstance()->openURL("https://twitter.com/zcanann");
 	});
 
-	this->twitterButtonMatt->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->twitterButtonMatt->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		Application::getInstance()->openURL("https://twitter.com/letsRTFM");
 	});
 
-	this->twitterButtonNate->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->twitterButtonNate->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		Application::getInstance()->openURL("https://twitter.com/Teknoman117");
 	});

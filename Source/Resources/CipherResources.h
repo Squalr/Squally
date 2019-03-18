@@ -6,6 +6,7 @@
 
 namespace CipherResources
 {
+	extern const std::string AsciiBlock;
 	extern const std::string AsciiButton;
 	extern const std::string AsciiButtonActive;
 	extern const std::string AsciiButtonSelected;

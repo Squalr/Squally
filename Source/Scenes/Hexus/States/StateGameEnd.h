@@ -24,7 +24,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBackClick(ClickableNode* menuSprite, GameState* gameState);
+	void onBackClick(GameState* gameState);
 
 	ClickableTextNode* backButton;
 };

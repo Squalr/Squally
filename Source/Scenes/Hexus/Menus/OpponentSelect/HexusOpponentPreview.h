@@ -30,7 +30,7 @@ protected:
 private:
 	typedef SmartNode super;
 	void initializePositions() override;
-	void onOpponentClick(ClickableNode* HexusOpponentPreview);
+	void onOpponentClick();
 
 	std::function<void(HexusOpponentPreview*)> onMouseOverEvent;
 

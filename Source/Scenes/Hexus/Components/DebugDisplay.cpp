@@ -74,21 +74,21 @@ void DebugDisplay::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->loseButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->loseButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->activeGameState->playerLosses = 2;
 		this->activeGameState->enemyLosses = 0;
 
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
-	this->drawButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->drawButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->activeGameState->playerLosses = 2;
 		this->activeGameState->enemyLosses = 2;
 
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
-	this->winButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->winButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->activeGameState->playerLosses = 0;
 		this->activeGameState->enemyLosses = 2;

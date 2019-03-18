@@ -28,9 +28,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onCloseClick(ClickableNode* menuSprite);
-	void onConfirmClick(ClickableNode* menuSprite);
-	void onCancelClick(ClickableNode* menuSprite);
+	void onCloseClick();
+	void onConfirmClick();
+	void onCancelClick();
 
 	cocos2d::Sprite* confirmWindow;
 	LocalizedLabel* confirmationLabel;

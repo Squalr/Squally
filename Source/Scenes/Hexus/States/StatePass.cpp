@@ -191,7 +191,7 @@ void StatePass::initializePositions()
 	this->enemyClaimVictoryParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
 }
 
-void StatePass::onPassClick(ClickableNode* menuSprite, GameState* gameState)
+void StatePass::onPassClick(GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::Pass);
 }
@@ -243,7 +243,7 @@ void StatePass::hideOpponenentPassSprites()
 
 void StatePass::enablePassButtonInteraction(GameState* gameState)
 {
-	this->passButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
+	this->passButton->setClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->passButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onPassMouseOver, this));
 	this->passButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onPassMouseOut, this));
 	this->passButton->enableInteraction();
@@ -251,7 +251,7 @@ void StatePass::enablePassButtonInteraction(GameState* gameState)
 
 void StatePass::enableLastStandButtonInteraction(GameState* gameState)
 {
-	this->lastStandButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
+	this->lastStandButton->setClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->lastStandButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onLastStandMouseOver, this));
 	this->lastStandButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onLastStandMouseOut, this));
 	this->lastStandButton->enableInteraction();
@@ -259,7 +259,7 @@ void StatePass::enableLastStandButtonInteraction(GameState* gameState)
 
 void StatePass::enableClaimVictoryButtonInteraction(GameState* gameState)
 {
-	this->claimVictoryButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
+	this->claimVictoryButton->setClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->claimVictoryButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onClaimVictoryMouseOver, this));
 	this->claimVictoryButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onClaimVictoryMouseOut, this));
 	this->claimVictoryButton->enableInteraction();
