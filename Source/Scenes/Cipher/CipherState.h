@@ -45,7 +45,7 @@ public:
 	CardRow* enemyHexCards;
 
 	// Tutorial node pointers
-	cocos2d::Node* inputsOutputsPointer;
+	cocos2d::Node* inputsOutputsPanelPointer;
 
 	static const std::string requestStateUpdateEvent;
 	static const std::string beforeStateUpdateEvent;

@@ -36,6 +36,7 @@ Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 
 	this->chestOpenEvent = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyEvent, Value("")).asString();
+	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyArgs, Value("")).asString();
 
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);
 	Sprite* chestOpenLidSprite = Sprite::create(ObjectResources::ChestLid);
@@ -94,7 +95,7 @@ void Chest::update(float dt)
 	{
 		if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
 		{
-			CipherEvents::TriggerOpenCipher();
+			CipherEvents::TriggerLoadCipher(CipherEvents::CipherLoadArgs(this->chestOpenArgs));
 		}
 	}
 }

@@ -20,6 +20,7 @@ BlockBase::BlockBase(ClickableNode* block, std::string iconResource, LocalizedSt
 	this->icon = Sprite::create(iconResource);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, label);
 	this->originalPosition = Vec2::ZERO;
+	this->clickDelta = Vec2::ZERO;
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
@@ -48,6 +49,7 @@ void BlockBase::initializeListeners()
 	this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->originalPosition = this->getPosition();
+		this->clickDelta = this->originalPosition - args->mouseCoords;
 	});
 
 	this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
@@ -64,7 +66,7 @@ void BlockBase::initializeListeners()
 
 	this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
 	{
-		this->setPosition(args->mouseCoords);
+		this->setPosition(args->mouseCoords + this->clickDelta);
 	});
 
 	this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
