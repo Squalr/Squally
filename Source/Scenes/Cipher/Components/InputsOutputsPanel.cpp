@@ -1,4 +1,4 @@
-#include "InputsOutputs.h"
+#include "InputsOutputsPanel.h"
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
@@ -15,16 +15,16 @@
 
 using namespace cocos2d;
 
-InputsOutputs* InputsOutputs::create()
+InputsOutputsPanel* InputsOutputsPanel::create()
 {
-	InputsOutputs* instance = new InputsOutputs();
+	InputsOutputsPanel* instance = new InputsOutputsPanel();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InputsOutputs::InputsOutputs()
+InputsOutputsPanel::InputsOutputsPanel()
 {
 	this->inputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Inputs::create());
 	this->outputsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Outputs::create());
@@ -36,16 +36,16 @@ InputsOutputs::InputsOutputs()
 	this->addChild(this->outputsLabel);
 }
 
-InputsOutputs::~InputsOutputs()
+InputsOutputsPanel::~InputsOutputsPanel()
 {
 }
 
-void InputsOutputs::onEnter()
+void InputsOutputsPanel::onEnter()
 {
 	super::onEnter();
 }
 
-void InputsOutputs::initializePositions()
+void InputsOutputsPanel::initializePositions()
 {
 	super::initializePositions();
 
@@ -55,18 +55,18 @@ void InputsOutputs::initializePositions()
 	this->outputsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + 80.0f, visibleSize.height / 2.0f - 16.0f));
 }
 
-void InputsOutputs::onBeforeStateChange(CipherState* cipherState)
+void InputsOutputsPanel::onBeforeStateChange(CipherState* cipherState)
 {
 	super::onBeforeStateChange(cipherState);
 }
 
-void InputsOutputs::onAnyStateChange(CipherState* cipherState)
+void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
 
 	this->updateDisplayedLosses(cipherState);
 }
 
-void InputsOutputs::updateDisplayedLosses(CipherState* cipherState)
+void InputsOutputsPanel::updateDisplayedLosses(CipherState* cipherState)
 {
 }

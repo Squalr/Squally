@@ -33,6 +33,7 @@ private:
 	InteractMenu* interactMenu;
 
 	std::string chestOpenEvent;
+	std::string chestOpenArgs;
 
 	static const std::string MapKeyCipherEvent;
 };

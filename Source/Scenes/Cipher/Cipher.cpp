@@ -17,13 +17,14 @@
 #include "Menus/Options/LanguageTab.h"
 #include "Menus/Options/MemesTab.h"
 #include "Menus/Options/VideoTab.h"
+#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/Components/AsciiTable.h"
 #include "Scenes/Cipher/Components/CipherBackground.h"
 #include "Scenes/Cipher/Components/CipherDecor.h"
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/ExecuteButton.h"
-#include "Scenes/Cipher/Components/InputsOutputs.h"
+#include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/ToolBox.h"
 
@@ -53,7 +54,7 @@ Cipher::Cipher()
 	this->cipherBackground = CipherBackground::create();
 	this->cipherFrame = CipherFrame::create();
 	this->cipherDecor = CipherDecor::create();
-	this->inputsOutputs = InputsOutputs::create();
+	this->inputsOutputsPanel = InputsOutputsPanel::create();
 	this->toolBox = ToolBox::create();
 	this->displayModeToggles = DisplayModeToggles::create();
 	this->executeButton = ExecuteButton::create();
@@ -63,7 +64,7 @@ Cipher::Cipher()
 	this->addChild(this->cipherBackground);
 	this->addChild(this->cipherFrame);
 	this->addChild(this->cipherDecor);
-	this->addChild(this->inputsOutputs);
+	this->addChild(this->inputsOutputsPanel);
 	this->addChild(this->toolBox);
 	this->addChild(this->displayModeToggles);
 	this->addChild(this->executeButton);
@@ -96,6 +97,11 @@ void Cipher::initializeListeners()
 void Cipher::initializePositions()
 {
 	super::initializePositions();
+}
+
+void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
+{
+
 }
 
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)

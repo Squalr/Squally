@@ -9,10 +9,10 @@ namespace cocos2d
 
 class LocalizedLabel;
 
-class InputsOutputs : public CipherComponentBase
+class InputsOutputsPanel : public CipherComponentBase
 {
 public:
-	static InputsOutputs* create();
+	static InputsOutputsPanel* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -20,8 +20,8 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	InputsOutputs();
-	~InputsOutputs();
+	InputsOutputsPanel();
+	~InputsOutputsPanel();
 
 	void onEnter() override;
 	void initializePositions() override;

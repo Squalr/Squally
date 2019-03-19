@@ -15,11 +15,12 @@ class AsciiTable;
 class CipherBackground;
 class CipherDecor;
 class CipherFrame;
+class CipherPuzzleData;
 class ClickableNode;
 class ClickableTextNode;
 class DisplayModeToggles;
 class ExecuteButton;
-class InputsOutputs;
+class InputsOutputsPanel;
 class QuitButton;
 class ToolBox;
 class LocalizedLabel;
@@ -29,6 +30,7 @@ class Cipher : public SmartNode
 public:
 	static Cipher* create();
 
+	void openCipher(CipherPuzzleData* cipherPuzzleData);
 	void setBackClickCallback(std::function<void()> backClickCallback);
 
 protected:
@@ -52,7 +54,7 @@ private:
 	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;
 	ExecuteButton* executeButton;
-	InputsOutputs* inputsOutputs;
+	InputsOutputsPanel* inputsOutputsPanel;
 	QuitButton* quitButton;
 	ToolBox* toolBox;
 

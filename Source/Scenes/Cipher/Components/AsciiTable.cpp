@@ -6,7 +6,6 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Scenes/Cipher/Config.h"
-#include "Scenes/Cipher/Components/Blocks/XorBlock.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"

@@ -109,8 +109,14 @@ void MapBase::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
-		this->menuBackDrop->setOpacity(196);
-		this->cipher->setVisible(true);
+		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->menuBackDrop->setOpacity(196);
+			this->cipher->setVisible(true);
+			this->cipher->openCipher(args->cipherPuzzleData);
+		}
 	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();

@@ -491,7 +491,7 @@
   </object>
   <object id="586" name="chest" type="object" x="896.121" y="2648.18" width="174.424" height="166.303">
    <properties>
-    <property name="args" value="easy"/>
+    <property name="args" value="atbash"/>
     <property name="event" value="open-cipher"/>
    </properties>
   </object>

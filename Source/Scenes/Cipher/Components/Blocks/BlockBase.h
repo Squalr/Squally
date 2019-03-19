@@ -27,4 +27,5 @@ private:
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
 	cocos2d::Vec2 originalPosition;
+	cocos2d::Vec2 clickDelta;
 };
