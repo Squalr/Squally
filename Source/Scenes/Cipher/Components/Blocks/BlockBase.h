@@ -13,6 +13,9 @@ class LocalizedString;
 
 class BlockBase : public CipherComponentBase
 {
+public:
+	void removeConnections();
+
 protected:
 	BlockBase(bool isToolBoxItem, ClickableNode* block, std::string iconResource, LocalizedString* label);
 	~BlockBase();
@@ -20,6 +23,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	virtual BlockBase* spawn() = 0;
+	bool isInGameArea();
 
 	bool isToolBoxItem;
 	bool isStaticObject;

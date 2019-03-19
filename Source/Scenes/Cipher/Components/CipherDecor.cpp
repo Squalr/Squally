@@ -64,9 +64,9 @@ void CipherDecor::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->furnace->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 468.0f, visibleSize.height / 2.0f - 394.0f));
-	this->logo->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f + 456.0f));
-	this->cipherLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter - 16.0f, visibleSize.height / 2.0f + 456.0f - 16.0f));
+	this->furnace->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 478.0f, visibleSize.height / 2.0f - 394.0f));
+	this->logo->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 16.0f, visibleSize.height / 2.0f + 456.0f + 16.0f));
+	this->cipherLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f + 456.0f));
 }
 
 void CipherDecor::onBeforeStateChange(CipherState* cipherState)

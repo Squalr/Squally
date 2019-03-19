@@ -2,6 +2,11 @@
 
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
+namespace cocos2d
+{
+	class LayerColor;
+}
+
 class BlockBase;
 class CipherPuzzleData;
 class ClickableNode;
@@ -26,6 +31,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 
 	std::vector<BlockBase*> inputBlocks;
 	std::vector<BlockBase*> outputBlocks;
@@ -33,6 +40,8 @@ private:
 	cocos2d::Node* inputContent;
 	cocos2d::Node* outputContent;
 	cocos2d::Node* userContent;
+	
+	cocos2d::LayerColor* gameAreaDebug;
 
 	CipherPuzzleData* cipherPuzzleData;
 	std::string currentInput;

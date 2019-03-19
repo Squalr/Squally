@@ -359,7 +359,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		return;
 	}
 
-	if (GameUtils::intersects(this, Vec2(args->mouseCoords)) && args->isLeftClicked)
+	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)) && args->isLeftClicked)
 	{
 		if (this->mouseDownEvent != nullptr)
 		{
@@ -380,6 +380,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 			}
 
 			this->isClicked = true;
+			args->handled = true;
 		}
 	}
 
