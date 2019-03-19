@@ -1,6 +1,7 @@
 #include "GameBoard.h"
 
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -35,6 +36,7 @@ GameBoard::GameBoard()
 	this->inputContent = Node::create();
 	this->outputContent = Node::create();
 	this->userContent = Node::create();
+	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
 	this->cipherPuzzleData = nullptr;
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
@@ -53,6 +55,8 @@ GameBoard::GameBoard()
 		this->outputContent->addChild(*it);
 	}
 
+	this->addChild(this->gameAreaDebug);
+	this->addChild(this->userContent);
 	this->addChild(this->inputContent);
 	this->addChild(this->outputContent);
 }
@@ -71,6 +75,8 @@ void GameBoard::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->gameAreaDebug->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter - Config::GameAreaWidth / 2.0f, visibleSize.height / 2.0f - Config::GameAreaHeight / 2.0f));
 
 	int index = 0;
 
@@ -106,6 +112,20 @@ void GameBoard::initializeListeners()
 			}
 		}
 	}));
+}
+
+void GameBoard::onDeveloperModeEnable()
+{
+	super::onDeveloperModeEnable();
+
+	this->gameAreaDebug->setVisible(true);
+}
+
+void GameBoard::onDeveloperModeDisable()
+{
+	super::onDeveloperModeEnable();
+
+	this->gameAreaDebug->setVisible(false);
 }
 
 void GameBoard::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)

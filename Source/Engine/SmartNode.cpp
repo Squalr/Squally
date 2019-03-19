@@ -41,6 +41,11 @@ void SmartNode::onEnter()
 	{
 		this->onDeveloperModeEnable();
 	}
+	else
+	{
+		this->onDeveloperModeDisable();
+	}
+	
 }
 
 void SmartNode::onExit()

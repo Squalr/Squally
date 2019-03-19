@@ -182,6 +182,10 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	{
 		newParent->addChildAsReentry(node);
 	}
+	else if (node->getParent() != nullptr)
+	{
+		node->getParent()->removeChild(node);
+	}
 
 	node->setPosition(newPosition);
 
