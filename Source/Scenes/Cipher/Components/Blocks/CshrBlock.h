@@ -5,11 +5,14 @@
 class CshrBlock : public BlockBase
 {
 public:
-	static CshrBlock* create();
+	static CshrBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	CshrBlock();
+	CshrBlock(bool isToolBoxItem);
 	~CshrBlock();
 
 	void onEnter() override;

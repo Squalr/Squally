@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-CshrBlock* CshrBlock::create()
+CshrBlock* CshrBlock::create(bool isToolBoxItem)
 {
-	CshrBlock* instance = new CshrBlock();
+	CshrBlock* instance = new CshrBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CshrBlock::CshrBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_CircularShiftRight, Strings::Cipher_Operations_CSHR::create())
+CshrBlock::CshrBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_CircularShiftRight, Strings::Cipher_Operations_CSHR::create())
 {
 }
 
@@ -40,4 +40,9 @@ void CshrBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* CshrBlock::spawn()
+{
+	return CshrBlock::create();
 }

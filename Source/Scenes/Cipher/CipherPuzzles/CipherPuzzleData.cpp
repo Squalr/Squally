@@ -7,9 +7,9 @@
 
 using namespace cocos2d;
 
-CipherPuzzleData::CipherPuzzleData(std::map<std::string, std::string> inputsOutputsPanel)
+CipherPuzzleData::CipherPuzzleData(std::vector<std::tuple<std::string, std::string>> inputOutputMap)
 {
-	this->inputsOutputsPanel = inputsOutputsPanel;
+	this->inputOutputMap = inputOutputMap;
 }
 
 CipherPuzzleData::~CipherPuzzleData()
@@ -19,4 +19,9 @@ CipherPuzzleData::~CipherPuzzleData()
 void CipherPuzzleData::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+std::vector<std::tuple<std::string, std::string>> CipherPuzzleData::getInputOutputMap()
+{
+	return this->inputOutputMap;
 }

@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-XorBlock* XorBlock::create()
+XorBlock* XorBlock::create(bool isToolBoxItem)
 {
-	XorBlock* instance = new XorBlock();
+	XorBlock* instance = new XorBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-XorBlock::XorBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalXor, Strings::Cipher_Operations_XOR::create())
+XorBlock::XorBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalXor, Strings::Cipher_Operations_XOR::create())
 {
 }
 
@@ -40,4 +40,9 @@ void XorBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* XorBlock::spawn()
+{
+	return XorBlock::create();
 }

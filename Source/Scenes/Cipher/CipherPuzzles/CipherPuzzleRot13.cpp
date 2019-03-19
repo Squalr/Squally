@@ -18,7 +18,7 @@ CipherPuzzleRot13* CipherPuzzleRot13::create()
 	return instance;
 }
 
-CipherPuzzleRot13::CipherPuzzleRot13() : super(std::map<std::string, std::string>({
+CipherPuzzleRot13::CipherPuzzleRot13() : super(std::vector<std::tuple<std::string, std::string>>({
 	 { "yvsr", "life" },
 	 { "ybir", "love" },
 	 { "JnK", "WaX" },

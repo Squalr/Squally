@@ -5,11 +5,14 @@
 class ModBlock : public BlockBase
 {
 public:
-	static ModBlock* create();
+	static ModBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	ModBlock();
+	ModBlock(bool isToolBoxItem);
 	~ModBlock();
 
 	void onEnter() override;

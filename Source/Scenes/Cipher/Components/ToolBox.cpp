@@ -42,21 +42,21 @@ ToolBox* ToolBox::create()
 ToolBox::ToolBox()
 {
 	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_Tools::create());
-	this->addBlock = AddBlock::create();
-	this->andBlock = AndBlock::create();
-	this->bruteForceBlock = BruteForceBlock::create();
-	this->cshlBlock = CshlBlock::create();
-	this->cshrBlock = CshrBlock::create();
-	this->divBlock = DivBlock::create();
-	this->immediateBlock = ImmediateBlock::create();
-	this->invBlock = InvBlock::create();
-	this->modBlock = ModBlock::create();
-	this->mulBlock = MulBlock::create();
-	this->orBlock = OrBlock::create();
-	this->shlBlock = ShlBlock::create();
-	this->shrBlock = ShrBlock::create();
-	this->subBlock = SubBlock::create();
-	this->xorBlock = XorBlock::create();
+	this->addBlock = AddBlock::create(true);
+	this->andBlock = AndBlock::create(true);
+	this->bruteForceBlock = BruteForceBlock::create(true);
+	this->cshlBlock = CshlBlock::create(true);
+	this->cshrBlock = CshrBlock::create(true);
+	this->divBlock = DivBlock::create(true);
+	this->immediateBlock = ImmediateBlock::create(true);
+	this->invBlock = InvBlock::create(true);
+	this->modBlock = ModBlock::create(true);
+	this->mulBlock = MulBlock::create(true);
+	this->orBlock = OrBlock::create(true);
+	this->shlBlock = ShlBlock::create(true);
+	this->shrBlock = ShrBlock::create(true);
+	this->subBlock = SubBlock::create(true);
+	this->xorBlock = XorBlock::create(true);
 
 	this->blocks = std::vector<BlockBase*>(
 	{

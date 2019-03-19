@@ -5,11 +5,14 @@
 class AndBlock : public BlockBase
 {
 public:
-	static AndBlock* create();
+	static AndBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	AndBlock();
+	AndBlock(bool isToolBoxItem);
 	~AndBlock();
 
 	void onEnter() override;

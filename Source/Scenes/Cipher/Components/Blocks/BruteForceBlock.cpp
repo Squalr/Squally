@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-BruteForceBlock* BruteForceBlock::create()
+BruteForceBlock* BruteForceBlock::create(bool isToolBoxItem)
 {
-	BruteForceBlock* instance = new BruteForceBlock();
+	BruteForceBlock* instance = new BruteForceBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BruteForceBlock::BruteForceBlock() : super(ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_BruteForce, Strings::Cipher_Operations_BruteForce::create())
+BruteForceBlock::BruteForceBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_BruteForce, Strings::Cipher_Operations_BruteForce::create())
 {
 }
 
@@ -40,4 +40,9 @@ void BruteForceBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* BruteForceBlock::spawn()
+{
+	return BruteForceBlock::create();
 }

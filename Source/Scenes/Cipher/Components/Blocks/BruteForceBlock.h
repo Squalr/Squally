@@ -5,11 +5,14 @@
 class BruteForceBlock : public BlockBase
 {
 public:
-	static BruteForceBlock* create();
+	static BruteForceBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	BruteForceBlock();
+	BruteForceBlock(bool isToolBoxItem);
 	~BruteForceBlock();
 
 	void onEnter() override;

@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-MulBlock* MulBlock::create()
+MulBlock* MulBlock::create(bool isToolBoxItem)
 {
-	MulBlock* instance = new MulBlock();
+	MulBlock* instance = new MulBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MulBlock::MulBlock() : super(ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Multiplication, Strings::Cipher_Operations_MUL::create())
+MulBlock::MulBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Multiplication, Strings::Cipher_Operations_MUL::create())
 {
 }
 
@@ -40,4 +40,9 @@ void MulBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* MulBlock::spawn()
+{
+	return MulBlock::create();
 }

@@ -28,7 +28,7 @@ void CipherPuzzleDeserializer::initializeListeners()
 	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		CipherEvents::EventOpenCipher,
+		CipherEvents::EventLoadCipher,
 		[=](EventCustom* args) { this->onDeserializationRequest(static_cast<CipherEvents::CipherLoadArgs*>(args->getUserData())); }
 	);
 

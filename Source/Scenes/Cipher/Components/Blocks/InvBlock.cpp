@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-InvBlock* InvBlock::create()
+InvBlock* InvBlock::create(bool isToolBoxItem)
 {
-	InvBlock* instance = new InvBlock();
+	InvBlock* instance = new InvBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InvBlock::InvBlock() : super(ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Invert, Strings::Cipher_Operations_INV::create())
+InvBlock::InvBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Invert, Strings::Cipher_Operations_INV::create())
 {
 }
 
@@ -40,4 +40,9 @@ void InvBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* InvBlock::spawn()
+{
+	return InvBlock::create();
 }

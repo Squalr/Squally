@@ -11,6 +11,7 @@
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
+#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/BalmerPeaks/HexusOpponentMenuBalmerPeaks.h"
@@ -45,6 +46,7 @@ void Bootstrapper::initialize()
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	CipherPuzzleDeserializer::registerGlobalNode();
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
 	HexusOpponentMenuBalmerPeaks::registerGlobalScene();

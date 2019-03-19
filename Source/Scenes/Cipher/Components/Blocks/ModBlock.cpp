@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-ModBlock* ModBlock::create()
+ModBlock* ModBlock::create(bool isToolBoxItem)
 {
-	ModBlock* instance = new ModBlock();
+	ModBlock* instance = new ModBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ModBlock::ModBlock() : super(ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Modulo, Strings::Cipher_Operations_MOD::create())
+ModBlock::ModBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Modulo, Strings::Cipher_Operations_MOD::create())
 {
 }
 
@@ -40,4 +40,9 @@ void ModBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* ModBlock::spawn()
+{
+	return ModBlock::create();
 }
