@@ -20,6 +20,7 @@
 #include "Scenes/Cipher/Components/Blocks/OrBlock.h"
 #include "Scenes/Cipher/Components/Blocks/ShlBlock.h"
 #include "Scenes/Cipher/Components/Blocks/ShrBlock.h"
+#include "Scenes/Cipher/Components/Blocks/SplitterBlock.h"
 #include "Scenes/Cipher/Components/Blocks/SubBlock.h"
 #include "Scenes/Cipher/Components/Blocks/XorBlock.h"
 #include "Scenes/Cipher/CipherState.h"
@@ -42,21 +43,22 @@ ToolBox* ToolBox::create()
 ToolBox::ToolBox()
 {
 	this->cipherToolsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_Tools::create());
-	this->addBlock = AddBlock::create(true);
-	this->andBlock = AndBlock::create(true);
-	this->bruteForceBlock = BruteForceBlock::create(true);
-	this->cshlBlock = CshlBlock::create(true);
-	this->cshrBlock = CshrBlock::create(true);
-	this->divBlock = DivBlock::create(true);
-	this->immediateBlock = ImmediateBlock::create(true);
-	this->invBlock = InvBlock::create(true);
-	this->modBlock = ModBlock::create(true);
-	this->mulBlock = MulBlock::create(true);
-	this->orBlock = OrBlock::create(true);
-	this->shlBlock = ShlBlock::create(true);
-	this->shrBlock = ShrBlock::create(true);
-	this->subBlock = SubBlock::create(true);
-	this->xorBlock = XorBlock::create(true);
+	this->addBlock = AddBlock::create(BlockBase::BlockType::Toolbox);
+	this->andBlock = AndBlock::create(BlockBase::BlockType::Toolbox);
+	this->bruteForceBlock = BruteForceBlock::create(BlockBase::BlockType::Toolbox);
+	this->cshlBlock = CshlBlock::create(BlockBase::BlockType::Toolbox);
+	this->cshrBlock = CshrBlock::create(BlockBase::BlockType::Toolbox);
+	this->divBlock = DivBlock::create(BlockBase::BlockType::Toolbox);
+	this->immediateBlock = ImmediateBlock::create(BlockBase::BlockType::Toolbox);
+	this->invBlock = InvBlock::create(BlockBase::BlockType::Toolbox);
+	this->modBlock = ModBlock::create(BlockBase::BlockType::Toolbox);
+	this->mulBlock = MulBlock::create(BlockBase::BlockType::Toolbox);
+	this->orBlock = OrBlock::create(BlockBase::BlockType::Toolbox);
+	this->shlBlock = ShlBlock::create(BlockBase::BlockType::Toolbox);
+	this->shrBlock = ShrBlock::create(BlockBase::BlockType::Toolbox);
+	this->splitterBlock = SplitterBlock::create(BlockBase::BlockType::Toolbox);
+	this->subBlock = SubBlock::create(BlockBase::BlockType::Toolbox);
+	this->xorBlock = XorBlock::create(BlockBase::BlockType::Toolbox);
 
 	this->blocks = std::vector<BlockBase*>(
 	{
@@ -77,6 +79,7 @@ ToolBox::ToolBox()
 
 		this->invBlock,
 		this->bruteForceBlock,
+		this->splitterBlock,
 		this->immediateBlock,
 	});
 
@@ -115,8 +118,6 @@ void ToolBox::initializePositions()
 
 		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + (float(x) - 1.5f) * 80.0f, visibleSize.height / 2.0f + 336.0f - float(y) * 72.0f));
 	}
-
-	this->immediateBlock->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + (float(3) - 1.5f - 0.5f) * 80.0f, visibleSize.height / 2.0f + 336.0f - float(3) * 72.0f));
 }
 
 void ToolBox::onBeforeStateChange(CipherState* cipherState)

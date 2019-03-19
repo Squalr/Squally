@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-OrBlock* OrBlock::create(bool isToolBoxItem)
+OrBlock* OrBlock::create(BlockType blockType)
 {
-	OrBlock* instance = new OrBlock(isToolBoxItem);
+	OrBlock* instance = new OrBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrBlock::OrBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalOr, Strings::Cipher_Operations_OR::create())
+OrBlock::OrBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalOr, Strings::Cipher_Operations_OR::create())
 {
 }
 

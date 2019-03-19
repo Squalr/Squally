@@ -12,7 +12,9 @@
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
+#include "Scenes/Cipher/Components/Blocks/DestinationBlock.h"
 #include "Scenes/Cipher/Components/Blocks/ImmediateBlock.h"
+#include "Scenes/Cipher/Components/Blocks/SourceBlock.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -30,8 +32,8 @@ GameBoard* GameBoard::create()
 
 GameBoard::GameBoard()
 {
-	this->inputBlocks = std::vector<BlockBase*>();
-	this->outputBlocks = std::vector<BlockBase*>();
+	this->inputBlocks = std::vector<SourceBlock*>();
+	this->outputBlocks = std::vector<DestinationBlock*>();
 	this->userBlocks = std::vector<BlockBase*>();
 	this->inputContent = Node::create();
 	this->outputContent = Node::create();
@@ -41,8 +43,8 @@ GameBoard::GameBoard()
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
 	{
-		this->inputBlocks.push_back(ImmediateBlock::create(false, true));
-		this->outputBlocks.push_back(ImmediateBlock::create(false, true));
+		this->inputBlocks.push_back(SourceBlock::create());
+		this->outputBlocks.push_back(DestinationBlock::create());
 	}
 
 	for (auto it = this->inputBlocks.begin(); it != this->inputBlocks.end(); it++)

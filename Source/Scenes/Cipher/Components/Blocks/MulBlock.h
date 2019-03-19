@@ -5,14 +5,14 @@
 class MulBlock : public BlockBase
 {
 public:
-	static MulBlock* create(bool isToolBoxItem = false);
+	static MulBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
 	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	MulBlock(bool isToolBoxItem);
+	MulBlock(BlockType blockType);
 	~MulBlock();
 
 	void onEnter() override;

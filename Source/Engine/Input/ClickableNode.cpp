@@ -440,8 +440,10 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 		return;
 	}
 
-	if (this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
+	if (!args->handled && this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
+		args->handled = true;
+
 		this->mouseScrollEvent(args);
 	}
 }

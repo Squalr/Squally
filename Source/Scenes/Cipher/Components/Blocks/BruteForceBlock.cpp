@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-BruteForceBlock* BruteForceBlock::create(bool isToolBoxItem)
+BruteForceBlock* BruteForceBlock::create(BlockType blockType)
 {
-	BruteForceBlock* instance = new BruteForceBlock(isToolBoxItem);
+	BruteForceBlock* instance = new BruteForceBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BruteForceBlock::BruteForceBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_BruteForce, Strings::Cipher_Operations_BruteForce::create())
+BruteForceBlock::BruteForceBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_BruteForce, Strings::Cipher_Operations_BruteForce::create())
 {
 }
 

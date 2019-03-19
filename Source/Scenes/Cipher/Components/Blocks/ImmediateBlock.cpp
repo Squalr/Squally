@@ -13,18 +13,17 @@
 
 using namespace cocos2d;
 
-ImmediateBlock* ImmediateBlock::create(bool isToolBoxItem, bool isStaticObject)
+ImmediateBlock* ImmediateBlock::create(BlockType blockType)
 {
-	ImmediateBlock* instance = new ImmediateBlock(isToolBoxItem, isStaticObject);
+	ImmediateBlock* instance = new ImmediateBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ImmediateBlock::ImmediateBlock(bool isToolBoxItem, bool isStaticObject) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockDecLong, CipherResources::BlockDecLong), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
+ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
 {
-	this->isStaticObject = isStaticObject;
 }
 
 ImmediateBlock::~ImmediateBlock()
@@ -45,5 +44,5 @@ void ImmediateBlock::initializePositions()
 
 BlockBase* ImmediateBlock::spawn()
 {
-	return ImmediateBlock::create();
+	return ImmediateBlock::create(BlockType::Normal);
 }

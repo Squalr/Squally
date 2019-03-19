@@ -10,6 +10,8 @@ namespace cocos2d
 class BlockBase;
 class CipherPuzzleData;
 class ClickableNode;
+class DestinationBlock;
+class SourceBlock;
 
 class GameBoard : public CipherComponentBase
 {
@@ -34,8 +36,8 @@ private:
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 
-	std::vector<BlockBase*> inputBlocks;
-	std::vector<BlockBase*> outputBlocks;
+	std::vector<SourceBlock*> inputBlocks;
+	std::vector<DestinationBlock*> outputBlocks;
 	std::vector<BlockBase*> userBlocks;
 	cocos2d::Node* inputContent;
 	cocos2d::Node* outputContent;

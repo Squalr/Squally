@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-CshlBlock* CshlBlock::create(bool isToolBoxItem)
+CshlBlock* CshlBlock::create(BlockType blockType)
 {
-	CshlBlock* instance = new CshlBlock(isToolBoxItem);
+	CshlBlock* instance = new CshlBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CshlBlock::CshlBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_CircularShiftLeft, Strings::Cipher_Operations_CSHL::create())
+CshlBlock::CshlBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_CircularShiftLeft, Strings::Cipher_Operations_CSHL::create())
 {
 }
 
