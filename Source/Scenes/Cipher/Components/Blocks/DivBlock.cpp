@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-DivBlock* DivBlock::create()
+DivBlock* DivBlock::create(bool isToolBoxItem)
 {
-	DivBlock* instance = new DivBlock();
+	DivBlock* instance = new DivBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DivBlock::DivBlock() : super(ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Division, Strings::Cipher_Operations_DIV::create())
+DivBlock::DivBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Division, Strings::Cipher_Operations_DIV::create())
 {
 }
 
@@ -40,4 +40,9 @@ void DivBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* DivBlock::spawn()
+{
+	return DivBlock::create();
 }

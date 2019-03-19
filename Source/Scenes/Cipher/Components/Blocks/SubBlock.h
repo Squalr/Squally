@@ -5,11 +5,14 @@
 class SubBlock : public BlockBase
 {
 public:
-	static SubBlock* create();
+	static SubBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	SubBlock();
+	SubBlock(bool isToolBoxItem);
 	~SubBlock();
 
 	void onEnter() override;

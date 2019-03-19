@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-AndBlock* AndBlock::create()
+AndBlock* AndBlock::create(bool isToolBoxItem)
 {
-	AndBlock* instance = new AndBlock();
+	AndBlock* instance = new AndBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AndBlock::AndBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalAnd, Strings::Cipher_Operations_AND::create())
+AndBlock::AndBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalAnd, Strings::Cipher_Operations_AND::create())
 {
 }
 
@@ -40,4 +40,9 @@ void AndBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* AndBlock::spawn()
+{
+	return AndBlock::create();
 }

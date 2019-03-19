@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-OrBlock* OrBlock::create()
+OrBlock* OrBlock::create(bool isToolBoxItem)
 {
-	OrBlock* instance = new OrBlock();
+	OrBlock* instance = new OrBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrBlock::OrBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalOr, Strings::Cipher_Operations_OR::create())
+OrBlock::OrBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalOr, Strings::Cipher_Operations_OR::create())
 {
 }
 
@@ -40,4 +40,9 @@ void OrBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* OrBlock::spawn()
+{
+	return OrBlock::create();
 }

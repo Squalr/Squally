@@ -5,11 +5,14 @@
 class OrBlock : public BlockBase
 {
 public:
-	static OrBlock* create();
+	static OrBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	OrBlock();
+	OrBlock(bool isToolBoxItem);
 	~OrBlock();
 
 	void onEnter() override;

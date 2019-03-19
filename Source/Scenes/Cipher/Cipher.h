@@ -20,6 +20,7 @@ class ClickableNode;
 class ClickableTextNode;
 class DisplayModeToggles;
 class ExecuteButton;
+class GameBoard;
 class InputsOutputsPanel;
 class QuitButton;
 class ToolBox;
@@ -54,6 +55,7 @@ private:
 	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;
 	ExecuteButton* executeButton;
+	GameBoard* gameBoard;
 	InputsOutputsPanel* inputsOutputsPanel;
 	QuitButton* quitButton;
 	ToolBox* toolBox;

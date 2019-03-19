@@ -18,7 +18,7 @@ CipherPuzzleAtbash* CipherPuzzleAtbash::create()
 	return instance;
 }
 
-CipherPuzzleAtbash::CipherPuzzleAtbash() : super(std::map<std::string, std::string>({
+CipherPuzzleAtbash::CipherPuzzleAtbash() : super(std::vector<std::tuple<std::string, std::string>>({
 	 { "hzw", "sad" },
 	 { "trm", "gin" },
 	 { "YRIW", "BIRD" },

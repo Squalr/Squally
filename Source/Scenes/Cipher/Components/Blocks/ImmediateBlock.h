@@ -5,11 +5,14 @@
 class ImmediateBlock : public BlockBase
 {
 public:
-	static ImmediateBlock* create();
+	static ImmediateBlock* create(bool isToolBoxItem = false, bool isStaticObject = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	ImmediateBlock();
+	ImmediateBlock(bool isToolBoxItem, bool isStaticObject);
 	~ImmediateBlock();
 
 	void onEnter() override;

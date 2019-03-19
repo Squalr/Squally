@@ -5,11 +5,14 @@
 class ShrBlock : public BlockBase
 {
 public:
-	static ShrBlock* create();
+	static ShrBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	ShrBlock();
+	ShrBlock(bool isToolBoxItem);
 	~ShrBlock();
 
 	void onEnter() override;

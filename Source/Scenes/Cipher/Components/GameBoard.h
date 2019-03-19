@@ -12,6 +12,7 @@ public:
 	static GameBoard* create();
 
 	void loadPuzzleData(CipherPuzzleData* cipherPuzzleData);
+	void loadCipherAtIndex(int index);
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -24,6 +25,16 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
-	std::vector<BlockBase*> inputOutputBlocks;
+	std::vector<BlockBase*> inputBlocks;
+	std::vector<BlockBase*> outputBlocks;
+	std::vector<BlockBase*> userBlocks;
+	cocos2d::Node* inputContent;
+	cocos2d::Node* outputContent;
+	cocos2d::Node* userContent;
+
+	CipherPuzzleData* cipherPuzzleData;
+	std::string currentInput;
+	std::string currentOutput;
 };

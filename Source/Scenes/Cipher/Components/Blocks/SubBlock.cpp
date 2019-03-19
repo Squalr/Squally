@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-SubBlock* SubBlock::create()
+SubBlock* SubBlock::create(bool isToolBoxItem)
 {
-	SubBlock* instance = new SubBlock();
+	SubBlock* instance = new SubBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SubBlock::SubBlock() : super(ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), CipherResources::Icons_Subtraction, Strings::Cipher_Operations_SUB::create())
+SubBlock::SubBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), CipherResources::Icons_Subtraction, Strings::Cipher_Operations_SUB::create())
 {
 }
 
@@ -40,4 +40,9 @@ void SubBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* SubBlock::spawn()
+{
+	return SubBlock::create();
 }

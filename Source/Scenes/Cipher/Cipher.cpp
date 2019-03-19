@@ -24,6 +24,7 @@
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/ExecuteButton.h"
+#include "Scenes/Cipher/Components/GameBoard.h"
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/ToolBox.h"
@@ -50,9 +51,9 @@ Cipher* Cipher::create()
 Cipher::Cipher()
 {
 	this->backClickCallback = nullptr;
-
 	this->cipherBackground = CipherBackground::create();
 	this->cipherFrame = CipherFrame::create();
+	this->gameBoard = GameBoard::create();
 	this->cipherDecor = CipherDecor::create();
 	this->inputsOutputsPanel = InputsOutputsPanel::create();
 	this->toolBox = ToolBox::create();
@@ -63,6 +64,7 @@ Cipher::Cipher()
 
 	this->addChild(this->cipherBackground);
 	this->addChild(this->cipherFrame);
+	this->addChild(this->gameBoard);
 	this->addChild(this->cipherDecor);
 	this->addChild(this->inputsOutputsPanel);
 	this->addChild(this->toolBox);
@@ -101,7 +103,7 @@ void Cipher::initializePositions()
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
-
+	this->gameBoard->loadPuzzleData(cipherPuzzleData);
 }
 
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)

@@ -9,16 +9,19 @@
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Events/CipherEvents.h"
 
 #include "Resources/CipherResources.h"
 
 using namespace cocos2d;
 
-BlockBase::BlockBase(ClickableNode* block, std::string iconResource, LocalizedString* label)
+BlockBase::BlockBase(bool isToolBoxItem, ClickableNode* block, std::string iconResource, LocalizedString* label)
 {
 	this->block = block;
 	this->icon = Sprite::create(iconResource);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, label);
+	this->isToolBoxItem = isToolBoxItem;
+	this->isStaticObject = false;
 	this->originalPosition = Vec2::ZERO;
 	this->clickDelta = Vec2::ZERO;
 
@@ -46,38 +49,53 @@ void BlockBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+	if (this->isStaticObject)
 	{
-		this->originalPosition = this->getPosition();
-		this->clickDelta = this->originalPosition - args->mouseCoords;
-	});
+		this->block->disableInteraction();
+	}
 
-	this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+	// Mouse dragging effects
+	if (!this->isStaticObject)
 	{
-		this->setOpacity(0);
-		this->label->stopAllActions();
-		this->label->setOpacity(0);
+		this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->originalPosition = this->getPosition();
+			this->clickDelta = this->originalPosition - args->mouseCoords;
+		});
 
-		this->runAction(FadeTo::create(0.5f, 255));
-		this->setPosition(this->originalPosition);
+		this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->setPosition(args->mouseCoords + this->clickDelta);
+		});
+	}
 
-		MouseEvents::TriggerMouseRefresh(*args);
-	});
-
-	this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+	// Spawn + Mouse over effects
+	if (this->isToolBoxItem)
 	{
-		this->setPosition(args->mouseCoords + this->clickDelta);
-	});
+		this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->setOpacity(0);
+			this->label->stopAllActions();
+			this->label->setOpacity(0);
 
-	this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
-	{
-		this->label->stopAllActions();
-		this->label->runAction(FadeTo::create(0.25f, 255));
-	});
+			this->runAction(FadeTo::create(0.5f, 255));
+			this->setPosition(this->originalPosition);
 
-	this->block->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
-	{
-		this->label->stopAllActions();
-		this->label->runAction(FadeTo::create(0.25f, 0));
-	});
+			MouseEvents::TriggerMouseRefresh(*args);
+			
+			CipherEvents::TriggerRequestToolSpawn(CipherEvents::CipherSpawnArgs([=](){ return this->spawn(); }, args->mouseCoords + this->clickDelta));
+		});
+
+		this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->label->stopAllActions();
+			this->label->runAction(FadeTo::create(0.25f, 255));
+		});
+
+		this->block->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->label->stopAllActions();
+			this->label->runAction(FadeTo::create(0.25f, 0));
+		});
+	}
 }

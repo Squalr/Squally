@@ -5,11 +5,14 @@
 class InvBlock : public BlockBase
 {
 public:
-	static InvBlock* create();
+	static InvBlock* create(bool isToolBoxItem = false);
+	
+protected:
+	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	InvBlock();
+	InvBlock(bool isToolBoxItem);
 	~InvBlock();
 
 	void onEnter() override;

@@ -1,12 +1,15 @@
 #pragma once
-#include <map>
+#include <tuple>
 
 #include "Engine/SmartNode.h"
 
 class CipherPuzzleData : public SmartNode
 {
+public:
+	std::vector<std::tuple<std::string, std::string>> getInputOutputMap();
+
 protected:
-	CipherPuzzleData(std::map<std::string, std::string> inputsOutputsPanel);
+	CipherPuzzleData(std::vector<std::tuple<std::string, std::string>> inputOutputMap);
 	~CipherPuzzleData();
 
 	void initializeListeners() override;
@@ -14,5 +17,5 @@ protected:
 private:
 	typedef SmartNode super;
 
-	std::map<std::string, std::string> inputsOutputsPanel;
+	std::vector<std::tuple<std::string, std::string>> inputOutputMap;
 };

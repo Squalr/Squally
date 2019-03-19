@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-ShrBlock* ShrBlock::create()
+ShrBlock* ShrBlock::create(bool isToolBoxItem)
 {
-	ShrBlock* instance = new ShrBlock();
+	ShrBlock* instance = new ShrBlock(isToolBoxItem);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShrBlock::ShrBlock() : super(ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftRight, Strings::Cipher_Operations_SHR::create())
+ShrBlock::ShrBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftRight, Strings::Cipher_Operations_SHR::create())
 {
 }
 
@@ -40,4 +40,9 @@ void ShrBlock::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+}
+
+BlockBase* ShrBlock::spawn()
+{
+	return ShrBlock::create();
 }

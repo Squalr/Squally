@@ -14,11 +14,15 @@ class LocalizedString;
 class BlockBase : public CipherComponentBase
 {
 protected:
-	BlockBase(ClickableNode* block, std::string iconResource, LocalizedString* label);
+	BlockBase(bool isToolBoxItem, ClickableNode* block, std::string iconResource, LocalizedString* label);
 	~BlockBase();
 
 	void initializePositions() override;
 	void initializeListeners() override;
+	virtual BlockBase* spawn() = 0;
+
+	bool isToolBoxItem;
+	bool isStaticObject;
 
 private:
 	typedef CipherComponentBase super;
@@ -26,6 +30,7 @@ private:
 	ClickableNode* block;
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
+	
 	cocos2d::Vec2 originalPosition;
 	cocos2d::Vec2 clickDelta;
 };
