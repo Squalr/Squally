@@ -27,6 +27,9 @@ namespace CipherResources
 	extern const std::string Clock;
 	extern const std::string ClockHourHand;
 	extern const std::string ClockMinutehand;
+	extern const std::string ConnectionBolt;
+	extern const std::string ConnectionSegment;
+	extern const std::string ConnectionSegmentCap;
 	extern const std::string DecimalButton;
 	extern const std::string DecimalButtonActive;
 	extern const std::string DecimalButtonSelected;

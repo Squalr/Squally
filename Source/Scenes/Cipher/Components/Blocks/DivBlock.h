@@ -5,14 +5,14 @@
 class DivBlock : public BlockBase
 {
 public:
-	static DivBlock* create(bool isToolBoxItem = false);
+	static DivBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
 	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	DivBlock(bool isToolBoxItem);
+	DivBlock(BlockType blockType);
 	~DivBlock();
 
 	void onEnter() override;

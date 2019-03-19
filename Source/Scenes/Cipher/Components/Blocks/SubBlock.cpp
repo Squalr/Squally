@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-SubBlock* SubBlock::create(bool isToolBoxItem)
+SubBlock* SubBlock::create(BlockType blockType)
 {
-	SubBlock* instance = new SubBlock(isToolBoxItem);
+	SubBlock* instance = new SubBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SubBlock::SubBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), CipherResources::Icons_Subtraction, Strings::Cipher_Operations_SUB::create())
+SubBlock::SubBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockDec, CipherResources::BlockDec), CipherResources::Icons_Subtraction, Strings::Cipher_Operations_SUB::create())
 {
 }
 

@@ -2,18 +2,18 @@
 
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
-class SubBlock : public BlockBase
+class SourceBlock : public BlockBase
 {
 public:
-	static SubBlock* create(BlockType blockType = BlockType::Normal);
+	static SourceBlock* create();
 	
 protected:
 	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	SubBlock(BlockType blockType);
-	~SubBlock();
+	SourceBlock();
+	~SourceBlock();
 
 	void onEnter() override;
 	void initializePositions() override;

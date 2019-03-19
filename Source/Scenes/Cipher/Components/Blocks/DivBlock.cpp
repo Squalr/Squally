@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-DivBlock* DivBlock::create(bool isToolBoxItem)
+DivBlock* DivBlock::create(BlockType blockType)
 {
-	DivBlock* instance = new DivBlock(isToolBoxItem);
+	DivBlock* instance = new DivBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DivBlock::DivBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Division, Strings::Cipher_Operations_DIV::create())
+DivBlock::DivBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Division, Strings::Cipher_Operations_DIV::create())
 {
 }
 

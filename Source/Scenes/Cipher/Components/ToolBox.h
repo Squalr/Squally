@@ -17,6 +17,7 @@ class MulBlock;
 class OrBlock;
 class ShlBlock;
 class ShrBlock;
+class SplitterBlock;
 class SubBlock;
 class XorBlock;
 
@@ -50,6 +51,7 @@ private:
 	OrBlock* orBlock;
 	ShlBlock* shlBlock;
 	ShrBlock* shrBlock;
+	SplitterBlock* splitterBlock;
 	SubBlock* subBlock;
 	XorBlock* xorBlock;
 	LocalizedLabel* cipherToolsLabel;

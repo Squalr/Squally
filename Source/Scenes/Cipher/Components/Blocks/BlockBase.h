@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class Bolt;
 class ClickableNode;
 class LocalizedLabel;
 class LocalizedString;
@@ -14,10 +15,24 @@ class LocalizedString;
 class BlockBase : public CipherComponentBase
 {
 public:
+	enum class BlockType
+	{
+		Toolbox,
+		Normal,
+		Static,
+	};
+
 	void removeConnections();
 
 protected:
-	BlockBase(bool isToolBoxItem, ClickableNode* block, std::string iconResource, LocalizedString* label);
+	enum class ConnectionType
+	{
+		None,
+		Single,
+		Double
+	};
+
+	BlockBase(BlockType blockType, ConnectionType inputType, ConnectionType outputType, ClickableNode* block, std::string iconResource, LocalizedString* label);
 	~BlockBase();
 
 	void initializePositions() override;
@@ -25,8 +40,7 @@ protected:
 	virtual BlockBase* spawn() = 0;
 	bool isInGameArea();
 
-	bool isToolBoxItem;
-	bool isStaticObject;
+	BlockType blockType;
 
 private:
 	typedef CipherComponentBase super;
@@ -34,7 +48,11 @@ private:
 	ClickableNode* block;
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
+	std::vector<Bolt*> inputBolts;
+	std::vector<Bolt*> outputBolts;
 	
+	ConnectionType inputType;
+	ConnectionType outputType;
 	cocos2d::Vec2 originalPosition;
 	cocos2d::Vec2 clickDelta;
 };

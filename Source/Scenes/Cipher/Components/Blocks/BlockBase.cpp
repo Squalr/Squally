@@ -11,27 +11,62 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/Bolt.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 
 using namespace cocos2d;
 
-BlockBase::BlockBase(bool isToolBoxItem, ClickableNode* block, std::string iconResource, LocalizedString* label)
+BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionType outputType, ClickableNode* block, std::string iconResource, LocalizedString* label)
 {
 	this->block = block;
 	this->icon = Sprite::create(iconResource);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, label);
-	this->isToolBoxItem = isToolBoxItem;
-	this->isStaticObject = false;
+	this->blockType = blockType;
+	this->inputType = inputType;
+	this->outputType = outputType;
 	this->originalPosition = Vec2::ZERO;
 	this->clickDelta = Vec2::ZERO;
+	this->inputBolts = std::vector<Bolt*>();
+	this->outputBolts = std::vector<Bolt*>();
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
 
+	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
+	{
+		this->inputBolts.push_back(Bolt::create(true));
+	}
+	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
+	{
+		this->inputBolts.push_back(Bolt::create(true));
+		this->inputBolts.push_back(Bolt::create(true));
+	}
+
+	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
+	{
+		this->outputBolts.push_back(Bolt::create(false));
+	}
+	else if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Double)
+	{
+		this->outputBolts.push_back(Bolt::create(false));
+		this->outputBolts.push_back(Bolt::create(false));
+	}
+
+	for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)
+	{
+		this->addChild(*it);
+	}
+
 	this->addChild(this->block);
 	this->addChild(this->icon);
+
+	for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+	{
+		this->addChild(*it);
+	}
+
 	this->addChild(this->label);
 }
 
@@ -43,7 +78,28 @@ void BlockBase::initializePositions()
 {
 	super::initializePositions();
 
+	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
+	{
+		this->inputBolts[0]->setPosition(Vec2(0.0f, 32.0f));
+	}
+	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
+	{
+		this->inputBolts[0]->setPosition(Vec2(-16.0f, 32.0f));
+		this->inputBolts[1]->setPosition(Vec2(16.0f, 32.0f));
+	}
+
 	this->icon->setPosition(Vec2(0.0f, 4.0f));
+
+	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
+	{
+		this->outputBolts[0]->setPosition(Vec2(0.0f, -32.0f));
+	}
+	else if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Double)
+	{
+		this->outputBolts[0]->setPosition(Vec2(-16.0f, -32.0f));
+		this->outputBolts[1]->setPosition(Vec2(16.0f, -32.0f));
+	}
+	
 	this->label->setPosition(Vec2(0.0f, 48.0f));
 }
 
@@ -51,28 +107,31 @@ void BlockBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	if (this->isStaticObject)
+	switch (this->blockType)
 	{
-		this->block->disableInteraction();
-	}
-
-	// Mouse dragging effects
-	if (!this->isStaticObject)
-	{
-		this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+		default:
+		case BlockType::Static:
 		{
-			this->originalPosition = this->getPosition();
-			this->clickDelta = this->originalPosition - args->mouseCoords;
-		});
-
-		this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->disableInteraction();
+			break;
+		}
+		case BlockType::Normal:
 		{
-			this->setPosition(args->mouseCoords + this->clickDelta);
-		});
+			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				if (!this->isInGameArea())
+				{
+					this->removeConnections();
 
-		this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+					// Despawn out-of-bounds nodes
+					GameUtils::changeParent(this, nullptr, false);
+				}
+			});
+			break;
+		}
+		case BlockType::Toolbox:
 		{
-			if (this->isToolBoxItem)
+			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
 			{
 				if (this->isInGameArea())
 				{
@@ -86,35 +145,45 @@ void BlockBase::initializeListeners()
 				this->setPosition(this->originalPosition);
 
 				MouseEvents::TriggerMouseRefresh(*args);
-			}
-			else
-			{
-				if (!this->isInGameArea())
-				{
-					this->removeConnections();
+			});
 
-					// Despawn out-of-bounds nodes
-					GameUtils::changeParent(this, nullptr, false);
-				}
-			}
-			
-		});
+			this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				this->label->stopAllActions();
+				this->label->runAction(FadeTo::create(0.25f, 255));
+			});
+
+			this->block->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				this->label->stopAllActions();
+				this->label->runAction(FadeTo::create(0.25f, 0));
+			});
+			break;
+		}
 	}
 
-	// Mouse over effects
-	if (this->isToolBoxItem)
+	switch (this->blockType)
 	{
-		this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
+		default:
+		case BlockType::Static:
 		{
-			this->label->stopAllActions();
-			this->label->runAction(FadeTo::create(0.25f, 255));
-		});
+			break;
+		}
+		case BlockType::Normal:
+		case BlockType::Toolbox:
+		{
+			this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				this->originalPosition = this->getPosition();
+				this->clickDelta = this->originalPosition - args->mouseCoords;
+			});
 
-		this->block->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
-		{
-			this->label->stopAllActions();
-			this->label->runAction(FadeTo::create(0.25f, 0));
-		});
+			this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				this->setPosition(args->mouseCoords + this->clickDelta);
+			});
+			break;
+		}
 	}
 }
 

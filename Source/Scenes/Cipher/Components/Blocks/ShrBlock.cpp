@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-ShrBlock* ShrBlock::create(bool isToolBoxItem)
+ShrBlock* ShrBlock::create(BlockType blockType)
 {
-	ShrBlock* instance = new ShrBlock(isToolBoxItem);
+	ShrBlock* instance = new ShrBlock(blockType);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShrBlock::ShrBlock(bool isToolBoxItem) : super(isToolBoxItem, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftRight, Strings::Cipher_Operations_SHR::create())
+ShrBlock::ShrBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftRight, Strings::Cipher_Operations_SHR::create())
 {
 }
 

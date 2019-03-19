@@ -5,14 +5,14 @@
 class XorBlock : public BlockBase
 {
 public:
-	static XorBlock* create(bool isToolBoxItem = false);
+	static XorBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
 	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	XorBlock(bool isToolBoxItem);
+	XorBlock(BlockType blockType);
 	~XorBlock();
 
 	void onEnter() override;

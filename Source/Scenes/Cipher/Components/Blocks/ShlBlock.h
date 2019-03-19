@@ -5,14 +5,14 @@
 class ShlBlock : public BlockBase
 {
 public:
-	static ShlBlock* create(bool isToolBoxItem = false);
+	static ShlBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
 	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;
-	ShlBlock(bool isToolBoxItem);
+	ShlBlock(BlockType blockType);
 	~ShlBlock();
 
 	void onEnter() override;
