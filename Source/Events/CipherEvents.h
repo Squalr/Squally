@@ -13,6 +13,7 @@ public:
 	static const std::string EventLoadCipher;
 	static const std::string EventOpenCipher;
 	static const std::string EventRequestToolSpawn;
+	static const std::string EventShowAsciiTable;
 
 	struct CipherLoadArgs
 	{
@@ -45,4 +46,5 @@ public:
 	static void TriggerLoadCipher(CipherLoadArgs args);
 	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerRequestToolSpawn(CipherSpawnArgs args);
+	static void TriggerShowAsciiTable();
 };

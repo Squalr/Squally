@@ -7,6 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
+
 class Bolt : public SmartNode
 {
 public:
@@ -21,4 +23,7 @@ private:
 	void initializePositions() override;
 
 	cocos2d::Sprite* bolt;
+	cocos2d::Sprite* helperArrow;
+	ClickableNode* connectButton;
+	bool isInput;
 };

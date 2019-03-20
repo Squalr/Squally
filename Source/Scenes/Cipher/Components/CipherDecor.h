@@ -27,6 +27,4 @@ private:
 	cocos2d::Sprite* furnace;
 	cocos2d::Sprite* logo;
 	cocos2d::Sprite* cipherLabel;
-	std::vector<cocos2d::Sprite*> inputStuds;
-	std::vector<cocos2d::Sprite*> outputStuds;
 };

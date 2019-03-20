@@ -75,4 +75,18 @@ void CipherLock::onBeforeStateChange(CipherState* cipherState)
 void CipherLock::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Running:
+		{
+			this->setVisible(true);
+			break;
+		}
+		default:
+		{
+			this->setVisible(false);
+			break;
+		}
+	}
 }

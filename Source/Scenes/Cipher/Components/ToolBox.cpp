@@ -128,4 +128,18 @@ void ToolBox::onBeforeStateChange(CipherState* cipherState)
 void ToolBox::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Running:
+		{
+			this->setVisible(false);
+			break;
+		}
+		default:
+		{
+			this->setVisible(true);
+			break;
+		}
+	}
 }

@@ -17,7 +17,9 @@
 #include "Menus/Options/LanguageTab.h"
 #include "Menus/Options/MemesTab.h"
 #include "Menus/Options/VideoTab.h"
+#include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/Components/AsciiButton.h"
 #include "Scenes/Cipher/Components/AsciiTable.h"
 #include "Scenes/Cipher/Components/CipherBackground.h"
 #include "Scenes/Cipher/Components/CipherDecor.h"
@@ -55,26 +57,30 @@ Cipher::Cipher()
 	this->cipherBackground = CipherBackground::create();
 	this->gameBoard = GameBoard::create();
 	this->cipherLock = CipherLock::create();
-	this->toolBox = ToolBox::create();
 	this->cipherFrame = CipherFrame::create();
 	this->cipherDecor = CipherDecor::create();
 	this->inputsOutputsPanel = InputsOutputsPanel::create();
+	this->toolBox = ToolBox::create();
 	this->displayModeToggles = DisplayModeToggles::create();
 	this->executeButton = ExecuteButton::create();
 	this->quitButton = QuitButton::create();
+	this->asciiButton = AsciiButton::create();
 	this->asciiTable = AsciiTable::create();
+	this->cipherState = CipherState::create();
 
 	this->addChild(this->cipherBackground);
 	this->addChild(this->gameBoard);
-	this->addChild(this->toolBox);
 	this->addChild(this->cipherLock);
 	this->addChild(this->cipherFrame);
 	this->addChild(this->cipherDecor);
 	this->addChild(this->inputsOutputsPanel);
+	this->addChild(this->toolBox);
 	this->addChild(this->displayModeToggles);
 	this->addChild(this->executeButton);
 	this->addChild(this->quitButton);
+	this->addChild(this->asciiButton);
 	this->addChild(this->asciiTable);
+	this->addChild(this->cipherState);
 }
 
 Cipher::~Cipher()
@@ -106,7 +112,10 @@ void Cipher::initializePositions()
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
+	this->cipherState->updateState(this->cipherState, CipherState::StateType::LoadInitialState);
+
 	this->gameBoard->loadPuzzleData(cipherPuzzleData);
+	this->inputsOutputsPanel->loadPuzzleData(cipherPuzzleData);
 }
 
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)
