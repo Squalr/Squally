@@ -14,6 +14,8 @@ public:
 	static const std::string EventOpenCipher;
 	static const std::string EventRequestToolSpawn;
 	static const std::string EventShowAsciiTable;
+	static const std::string EventChangeActiveCipher;
+	static const std::string EventChangeDisplayDataType;
 
 	struct CipherLoadArgs
 	{
@@ -43,8 +45,37 @@ public:
 		}
 	};
 
+	struct CipherChangeActiveCipherArgs
+	{
+		std::string input;
+		std::string output;
+
+		CipherChangeActiveCipherArgs(std::string input, std::string output) : input(input), output(output)
+		{
+		}
+	};
+
+	enum class DisplayDataType
+	{
+		Ascii,
+		Bin,
+		Dec,
+		Hex
+	};
+
+	struct CipherChangeDisplayDataTypeArgs
+	{
+		DisplayDataType displayDataType;
+
+		CipherChangeDisplayDataTypeArgs(DisplayDataType displayDataType) : displayDataType(displayDataType)
+		{
+		}
+	};
+
 	static void TriggerLoadCipher(CipherLoadArgs args);
 	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerRequestToolSpawn(CipherSpawnArgs args);
 	static void TriggerShowAsciiTable();
+	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
+	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);
 };

@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class ClickableNode;
+class RadioButton;
 
 class DisplayModeToggles : public CipherComponentBase
 {
@@ -25,9 +26,12 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
-	ClickableNode* toggleButtonBin;
-	ClickableNode* toggleButtonDec;
-	ClickableNode* toggleButtonHex;
-	ClickableNode* toggleButtonAscii;
+	RadioButton* toggleButtonBin;
+	RadioButton* toggleButtonDec;
+	RadioButton* toggleButtonHex;
+	RadioButton* toggleButtonAscii;
+
+	static const int GroupIdDisplayModeToggles;
 };

@@ -43,8 +43,8 @@ GameBoard::GameBoard()
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
 	{
-		this->inputBlocks.push_back(SourceBlock::create());
-		this->outputBlocks.push_back(DestinationBlock::create());
+		this->inputBlocks.push_back(SourceBlock::create(index));
+		this->outputBlocks.push_back(DestinationBlock::create(index));
 	}
 
 	for (auto it = this->inputBlocks.begin(); it != this->inputBlocks.end(); it++)

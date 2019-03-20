@@ -13,7 +13,7 @@ namespace cocos2d
 class RadioButton : public SmartNode
 {
 public:
-	static RadioButton * create(int groupIdentifier);
+	static RadioButton* create(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier);
 
 	void check();
 	void uncheck();
@@ -23,7 +23,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	RadioButton(int groupIdentifier);
+	RadioButton(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier);
 	virtual ~RadioButton();
 
 	void initializeListeners() override;
@@ -31,8 +31,8 @@ private:
 	void onUncheckClick();
 	void onCheckClick();
 
-	ClickableNode * unchecked;
-	ClickableNode * checked;
+	ClickableNode* checked;
+	ClickableNode* unchecked;
 	bool isChecked;
 
 	int groupId;

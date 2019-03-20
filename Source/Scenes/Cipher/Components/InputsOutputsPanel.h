@@ -29,7 +29,8 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
-
+	void selectInputOutputPairAtIndex(int index);
+	
 	LocalizedLabel* inputsHeaderLabel;
 	LocalizedLabel* outputsHeaderLabel;
 	ScrollPane* scrollPane;

@@ -9,6 +9,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherState.h"
@@ -100,14 +101,9 @@ void InputsOutputsPanel::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)
 		inputLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 		outputLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
-		if (index == 0)
-		{
-			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
-		}
-
 		ioPanel->setClickCallback([=](MouseEvents::MouseEventArgs*)
 		{
-			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
+			this->selectInputOutputPairAtIndex(index);
 		});
 
 		ioPanel->setContentSize(Size(scrollPaneWidth, 56.0f));
@@ -124,5 +120,21 @@ void InputsOutputsPanel::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)
 		this->outputLabels.push_back(outputLabel);
 	}
 
+	this->selectInputOutputPairAtIndex(0);
 	this->scrollPane->updateScrollBounds();
+}
+
+void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
+{
+	if (index < 0 || index > this->inputOutputMap.size())
+	{
+		return;
+	}
+
+	this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
+
+	CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
+		std::get<0>(this->inputOutputMap[index]),
+		std::get<1>(this->inputOutputMap[index])
+	));
 }
