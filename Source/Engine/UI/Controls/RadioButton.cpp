@@ -11,22 +11,22 @@ using namespace cocos2d;
 
 const std::string RadioButton::RadioButtonCheckEvent = "EVENT_CHECK_RADIO_BUTTON";
 
-RadioButton* RadioButton::create(int groupIdentifier)
+RadioButton* RadioButton::create(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier)
 {
-	RadioButton* instance = new RadioButton(groupIdentifier);
+	RadioButton* instance = new RadioButton(checked, unchecked, groupIdentifier);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RadioButton::RadioButton(int groupIdentifier)
+RadioButton::RadioButton(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier)
 {
 	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
-	this->checked = ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover);
-	this->unchecked = ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover);
+	this->checked = checked;
+	this->unchecked = unchecked;
 
 	this->checked->setClickCallback(CC_CALLBACK_0(RadioButton::onUncheckClick, this));
 	this->unchecked->setClickCallback(CC_CALLBACK_0(RadioButton::onCheckClick, this));
@@ -73,8 +73,7 @@ void RadioButton::onCheckClick()
 
 void RadioButton::onUncheckClick()
 {
-	// Actually just do nothing because we should always have one radio button selected
-	// this->uncheck();
+	// No actions required
 }
 
 void RadioButton::check()

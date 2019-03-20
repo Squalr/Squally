@@ -2,6 +2,9 @@
 
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
+class ConstantString;
+class LocalizedLabel;
+
 class ImmediateBlock : public BlockBase
 {
 public:
@@ -17,4 +20,8 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
+
+	ConstantString* displayValue;
+	LocalizedLabel* displayLabel;
 };
