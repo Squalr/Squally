@@ -22,7 +22,7 @@ ShlBlock* ShlBlock::create(BlockType blockType)
 	return instance;
 }
 
-ShlBlock::ShlBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_ShiftLeft, Strings::Cipher_Operations_SHL::create())
+ShlBlock::ShlBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockBin, CipherResources::Blocks_BlockBin), CipherResources::Icons_ShiftLeft, Strings::Cipher_Operations_SHL::create())
 {
 }
 

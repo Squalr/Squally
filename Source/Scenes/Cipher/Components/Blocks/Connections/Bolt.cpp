@@ -22,7 +22,7 @@ Bolt* Bolt::create(bool isInput)
 
 Bolt::Bolt(bool isInput)
 {
-	this->bolt = Sprite::create(CipherResources::ConnectionBolt);
+	this->bolt = Sprite::create(CipherResources::Connections_ConnectionPlug);
 
 	bolt->setFlippedY(isInput);
 

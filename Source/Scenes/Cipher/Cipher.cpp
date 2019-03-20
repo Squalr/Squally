@@ -21,6 +21,7 @@
 #include "Scenes/Cipher/Components/AsciiTable.h"
 #include "Scenes/Cipher/Components/CipherBackground.h"
 #include "Scenes/Cipher/Components/CipherDecor.h"
+#include "Scenes/Cipher/Components/CipherLock.h"
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/ExecuteButton.h"
@@ -52,22 +53,24 @@ Cipher::Cipher()
 {
 	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
-	this->cipherFrame = CipherFrame::create();
 	this->gameBoard = GameBoard::create();
+	this->cipherLock = CipherLock::create();
+	this->toolBox = ToolBox::create();
+	this->cipherFrame = CipherFrame::create();
 	this->cipherDecor = CipherDecor::create();
 	this->inputsOutputsPanel = InputsOutputsPanel::create();
-	this->toolBox = ToolBox::create();
 	this->displayModeToggles = DisplayModeToggles::create();
 	this->executeButton = ExecuteButton::create();
 	this->quitButton = QuitButton::create();
 	this->asciiTable = AsciiTable::create();
 
 	this->addChild(this->cipherBackground);
-	this->addChild(this->cipherFrame);
 	this->addChild(this->gameBoard);
+	this->addChild(this->toolBox);
+	this->addChild(this->cipherLock);
+	this->addChild(this->cipherFrame);
 	this->addChild(this->cipherDecor);
 	this->addChild(this->inputsOutputsPanel);
-	this->addChild(this->toolBox);
 	this->addChild(this->displayModeToggles);
 	this->addChild(this->executeButton);
 	this->addChild(this->quitButton);

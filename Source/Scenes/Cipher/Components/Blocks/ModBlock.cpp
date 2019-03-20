@@ -22,7 +22,7 @@ ModBlock* ModBlock::create(BlockType blockType)
 	return instance;
 }
 
-ModBlock::ModBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Modulo, Strings::Cipher_Operations_MOD::create())
+ModBlock::ModBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockAscii, CipherResources::Blocks_BlockAscii), CipherResources::Icons_Modulo, Strings::Cipher_Operations_MOD::create())
 {
 }
 

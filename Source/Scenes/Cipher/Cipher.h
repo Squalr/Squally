@@ -15,6 +15,7 @@ class AsciiTable;
 class CipherBackground;
 class CipherDecor;
 class CipherFrame;
+class CipherLock;
 class CipherPuzzleData;
 class ClickableNode;
 class ClickableTextNode;
@@ -51,6 +52,7 @@ private:
 
 	AsciiTable* asciiTable;
 	CipherBackground* cipherBackground;
+	CipherLock* cipherLock;
 	CipherFrame* cipherFrame;
 	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;

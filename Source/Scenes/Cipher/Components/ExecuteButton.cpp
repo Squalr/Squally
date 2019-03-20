@@ -39,8 +39,8 @@ ExecuteButton::ExecuteButton()
 	this->executeButton = ClickableTextNode::create(
 		executeLabel,
 		executeLabelHover,
-		CipherResources::RunButton,
-		CipherResources::RunButtonSelected);
+		CipherResources::Buttons_RunButton,
+		CipherResources::Buttons_RunButtonSelected);
 
 	this->addChild(this->executeButton);
 }

@@ -23,7 +23,7 @@ AsciiTable* AsciiTable::create()
 
 AsciiTable::AsciiTable()
 {
-	this->viewAsciiTableButton = ClickableNode::create(CipherResources::AsciiTableButton, CipherResources::AsciiTableButtonSelected);
+	this->viewAsciiTableButton = ClickableNode::create(CipherResources::Buttons_AsciiTableButton, CipherResources::Buttons_AsciiTableButtonSelected);
 
 	this->addChild(this->viewAsciiTableButton);
 }
