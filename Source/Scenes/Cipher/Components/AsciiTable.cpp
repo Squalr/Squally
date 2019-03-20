@@ -23,9 +23,6 @@ AsciiTable* AsciiTable::create()
 
 AsciiTable::AsciiTable()
 {
-	this->viewAsciiTableButton = ClickableNode::create(CipherResources::Buttons_AsciiTableButton, CipherResources::Buttons_AsciiTableButtonSelected);
-
-	this->addChild(this->viewAsciiTableButton);
 }
 
 AsciiTable::~AsciiTable()
@@ -42,8 +39,6 @@ void AsciiTable::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->viewAsciiTableButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 448.0f, visibleSize.height / 2.0f + 420.0f));
 }
 
 void AsciiTable::onBeforeStateChange(CipherState* cipherState)

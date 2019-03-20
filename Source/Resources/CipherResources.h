@@ -39,12 +39,15 @@ namespace CipherResources
 	extern const std::string Connections_ConnectionPlug;
 	extern const std::string Connections_ConnectionSegment;
 	extern const std::string Connections_ConnectionSegmentCap;
+	extern const std::string Connections_HelperArrowInput;
+	extern const std::string Connections_HelperArrowOutput;
 	extern const std::string Decor_Clock;
 	extern const std::string Decor_ClockHourHand;
 	extern const std::string Decor_ClockMinutehand;
 	extern const std::string Decor_Furnace;
-	extern const std::string Decor_Stud;
 	extern const std::string IOPanel;
+	extern const std::string IOPanelSelected;
+	extern const std::string IOSelectionMarker;
 	extern const std::string Icons_Addition;
 	extern const std::string Icons_BruteForce;
 	extern const std::string Icons_CircularShiftLeft;

@@ -11,12 +11,14 @@ namespace cocos2d
 	class Sprite;
 }
 
+class AsciiButton;
 class AsciiTable;
 class CipherBackground;
 class CipherDecor;
 class CipherFrame;
 class CipherLock;
 class CipherPuzzleData;
+class CipherState;
 class ClickableNode;
 class ClickableTextNode;
 class DisplayModeToggles;
@@ -50,6 +52,7 @@ private:
 
 	std::function<void()> backClickCallback;
 
+	AsciiButton* asciiButton;
 	AsciiTable* asciiTable;
 	CipherBackground* cipherBackground;
 	CipherLock* cipherLock;
@@ -61,6 +64,8 @@ private:
 	InputsOutputsPanel* inputsOutputsPanel;
 	QuitButton* quitButton;
 	ToolBox* toolBox;
+
+	CipherState* cipherState;
 
 	static const cocos2d::Color3B TitleColor;
 };

@@ -29,8 +29,6 @@ CipherDecor::CipherDecor()
 {
 	this->furnace = Sprite::create(CipherResources::Decor_Furnace);
 	this->logo = Sprite::create(CipherResources::Logo);
-	this->inputStuds = std::vector<cocos2d::Sprite*>();
-	this->outputStuds = std::vector<cocos2d::Sprite*>();
 
 	LocalizedLabel* tempCipherLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Cipher_CipherCaps::create());
 
@@ -44,24 +42,7 @@ CipherDecor::CipherDecor()
 
 	RenderUtils::applyShader(this->cipherLabel, ShaderResources::Vertex_Cipher_Disort, ShaderResources::Fragment_Cipher_Disort);
 
-	for (int index = 0; index < Config::MaxInputOutputCount; index++)
-	{
-		this->inputStuds.push_back(Sprite::create(CipherResources::Decor_Stud));
-		this->outputStuds.push_back(Sprite::create(CipherResources::Decor_Stud));
-	}
-
-	for (auto it = this->inputStuds.begin(); it != this->inputStuds.end(); it++)
-	{
-		this->addChild(*it);
-	}
-
-	for (auto it = this->outputStuds.begin(); it != this->outputStuds.end(); it++)
-	{
-		this->addChild(*it);
-	}
-
 	this->addChild(this->furnace);
-	
 	this->addChild(this->logo);
 	this->addChild(this->cipherLabel);
 }
@@ -81,21 +62,7 @@ void CipherDecor::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	int index = 0;
-
-	for (auto it = this->inputStuds.begin(); it != this->inputStuds.end(); it++, index++)
-	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f + Config::IOVerticalOffset + 24.0f));
-	}
-
-	index = 0;
-
-	for (auto it = this->outputStuds.begin(); it != this->outputStuds.end(); it++, index++)
-	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f - Config::IOVerticalOffset - 24.0f));
-	}
-
-	this->furnace->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 478.0f, visibleSize.height / 2.0f - 394.0f));
+	this->furnace->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 492.0f, visibleSize.height / 2.0f - 394.0f));
 	this->logo->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 16.0f, visibleSize.height / 2.0f + 456.0f + 16.0f));
 	this->cipherLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f + 456.0f));
 }

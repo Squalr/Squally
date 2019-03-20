@@ -2,12 +2,12 @@
 
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
-class ClickableNode;
+class ClickableTextNode;
 
-class AsciiTable : public CipherComponentBase
+class AsciiButton : public CipherComponentBase
 {
 public:
-	static AsciiTable* create();
+	static AsciiButton* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -15,9 +15,12 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	AsciiTable();
-	~AsciiTable();
+	AsciiButton();
+	~AsciiButton();
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
+
+	ClickableTextNode* asciiButton;
 };
