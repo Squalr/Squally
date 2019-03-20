@@ -22,7 +22,7 @@ XorBlock* XorBlock::create(BlockType blockType)
 	return instance;
 }
 
-XorBlock::XorBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockBin, CipherResources::BlockBin), CipherResources::Icons_LogicalXor, Strings::Cipher_Operations_XOR::create())
+XorBlock::XorBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockBin, CipherResources::Blocks_BlockBin), CipherResources::Icons_LogicalXor, Strings::Cipher_Operations_XOR::create())
 {
 }
 

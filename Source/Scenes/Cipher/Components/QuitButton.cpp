@@ -39,8 +39,8 @@ QuitButton::QuitButton()
 	this->quitButton = ClickableTextNode::create(
 		quitLabel,
 		quitLabelHover,
-		CipherResources::QuitButton,
-		CipherResources::QuitButtonSelected);
+		CipherResources::Buttons_QuitButton,
+		CipherResources::Buttons_QuitButtonSelected);
 
 	this->addChild(this->quitButton);
 }

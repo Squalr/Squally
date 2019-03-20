@@ -22,7 +22,7 @@ MulBlock* MulBlock::create(BlockType blockType)
 	return instance;
 }
 
-MulBlock::MulBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::BlockHex, CipherResources::BlockHex), CipherResources::Icons_Multiplication, Strings::Cipher_Operations_MUL::create())
+MulBlock::MulBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockHex, CipherResources::Blocks_BlockHex), CipherResources::Icons_Multiplication, Strings::Cipher_Operations_MUL::create())
 {
 }
 

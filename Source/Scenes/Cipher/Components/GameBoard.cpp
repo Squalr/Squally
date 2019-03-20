@@ -84,14 +84,14 @@ void GameBoard::initializePositions()
 
 	for (auto it = this->inputBlocks.begin(); it != this->inputBlocks.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - 2) * 212.0f, visibleSize.height / 2.0f + 304.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f + Config::IOVerticalOffset));
 	}
 
 	index = 0;
 
 	for (auto it = this->outputBlocks.begin(); it != this->outputBlocks.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - 2) * 212.0f, visibleSize.height / 2.0f - 304.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f - Config::IOVerticalOffset));
 	}
 }
 

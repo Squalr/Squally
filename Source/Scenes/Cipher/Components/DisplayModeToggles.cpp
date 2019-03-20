@@ -23,10 +23,10 @@ DisplayModeToggles* DisplayModeToggles::create()
 
 DisplayModeToggles::DisplayModeToggles()
 {
-	this->toggleButtonBin = ClickableNode::create(CipherResources::BinaryButton, CipherResources::BinaryButtonSelected);
-	this->toggleButtonDec = ClickableNode::create(CipherResources::DecimalButton, CipherResources::DecimalButtonSelected);
-	this->toggleButtonHex = ClickableNode::create(CipherResources::HexButton, CipherResources::HexButtonSelected);
-	this->toggleButtonAscii = ClickableNode::create(CipherResources::AsciiButton, CipherResources::AsciiButtonSelected);
+	this->toggleButtonBin = ClickableNode::create(CipherResources::Buttons_BinaryButton, CipherResources::Buttons_BinaryButtonSelected);
+	this->toggleButtonDec = ClickableNode::create(CipherResources::Buttons_DecimalButton, CipherResources::Buttons_DecimalButtonSelected);
+	this->toggleButtonHex = ClickableNode::create(CipherResources::Buttons_HexButton, CipherResources::Buttons_HexButtonSelected);
+	this->toggleButtonAscii = ClickableNode::create(CipherResources::Buttons_AsciiButton, CipherResources::Buttons_AsciiButtonSelected);
 
 	this->addChild(this->toggleButtonBin);
 	this->addChild(this->toggleButtonDec);

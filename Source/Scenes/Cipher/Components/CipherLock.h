@@ -7,10 +7,10 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CipherDecor : public CipherComponentBase
+class CipherLock : public CipherComponentBase
 {
 public:
-	static CipherDecor* create();
+	static CipherLock* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -18,15 +18,18 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	CipherDecor();
-	~CipherDecor();
+	CipherLock();
+	~CipherLock();
 
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* furnace;
-	cocos2d::Sprite* logo;
-	cocos2d::Sprite* cipherLabel;
-	std::vector<cocos2d::Sprite*> inputStuds;
-	std::vector<cocos2d::Sprite*> outputStuds;
+	cocos2d::Sprite* background;
+	cocos2d::Sprite* steelGear;
+	cocos2d::Sprite* woodGearTop;
+	cocos2d::Sprite* woodGearBottom;
+	cocos2d::Sprite* shaft;
+	cocos2d::Sprite* pinboardBack;
+	cocos2d::Sprite* stoppingBlock;
+	cocos2d::Sprite* pinboardFront;
 };

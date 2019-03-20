@@ -8,6 +8,7 @@
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Cipher/Operations/Immediate.h"
 
@@ -22,7 +23,7 @@ DestinationBlock* DestinationBlock::create()
 	return instance;
 }
 
-DestinationBlock::DestinationBlock() : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::BlockDecLong, CipherResources::BlockDecLong), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
+DestinationBlock::DestinationBlock() : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 }
 

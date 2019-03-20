@@ -22,7 +22,7 @@ ImmediateBlock* ImmediateBlock::create(BlockType blockType)
 	return instance;
 }
 
-ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::BlockAscii, CipherResources::BlockAscii), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
+ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockAscii, CipherResources::Blocks_BlockAscii), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
 {
 }
 
