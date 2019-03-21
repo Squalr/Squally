@@ -11,7 +11,8 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/Components/Blocks/Connections/Bolt.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -28,30 +29,30 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->outputType = outputType;
 	this->originalPosition = Vec2::ZERO;
 	this->clickDelta = Vec2::ZERO;
-	this->inputBolts = std::vector<Bolt*>();
-	this->outputBolts = std::vector<Bolt*>();
+	this->inputBolts = std::vector<InputBolt*>();
+	this->outputBolts = std::vector<OutputBolt*>();
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
 
 	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
 	{
-		this->inputBolts.push_back(Bolt::create(true));
+		this->inputBolts.push_back(InputBolt::create());
 	}
 	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
 	{
-		this->inputBolts.push_back(Bolt::create(true));
-		this->inputBolts.push_back(Bolt::create(true));
+		this->inputBolts.push_back(InputBolt::create());
+		this->inputBolts.push_back(InputBolt::create());
 	}
 
 	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
 	{
-		this->outputBolts.push_back(Bolt::create(false));
+		this->outputBolts.push_back(OutputBolt::create());
 	}
 	else if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Double)
 	{
-		this->outputBolts.push_back(Bolt::create(false));
-		this->outputBolts.push_back(Bolt::create(false));
+		this->outputBolts.push_back(OutputBolt::create());
+		this->outputBolts.push_back(OutputBolt::create());
 	}
 
 	for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)

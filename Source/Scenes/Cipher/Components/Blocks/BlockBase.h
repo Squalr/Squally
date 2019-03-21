@@ -7,7 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class Bolt;
+class InputBolt;
+class OutputBolt;
 class ClickableNode;
 class LocalizedLabel;
 class LocalizedString;
@@ -40,16 +41,16 @@ protected:
 	virtual BlockBase* spawn() = 0;
 	bool isInGameArea();
 
+	ClickableNode* block;
 	BlockType blockType;
 
 private:
 	typedef CipherComponentBase super;
 
-	ClickableNode* block;
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
-	std::vector<Bolt*> inputBolts;
-	std::vector<Bolt*> outputBolts;
+	std::vector<InputBolt*> inputBolts;
+	std::vector<OutputBolt*> outputBolts;
 	
 	ConnectionType inputType;
 	ConnectionType outputType;

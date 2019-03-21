@@ -447,3 +447,13 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 		this->mouseScrollEvent(args);
 	}
 }
+
+cocos2d::Node* ClickableNode::getSprite()
+{
+	return this->sprite;
+}
+
+cocos2d::Node* ClickableNode::getSpriteSelected()
+{
+	return this->spriteSelected;
+}
