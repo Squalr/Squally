@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
 class ConstantString;
@@ -27,4 +28,11 @@ private:
 	LocalizedLabel* displayLabel;
 
 	int cipherIndex;
+	std::string input;
+	CipherEvents::DisplayDataType displayDataType;
+
+	cocos2d::Sprite* spriteAscii;
+	cocos2d::Sprite* spriteBin;
+	cocos2d::Sprite* spriteDec;
+	cocos2d::Sprite* spriteHex;
 };

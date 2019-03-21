@@ -9,21 +9,19 @@ namespace cocos2d
 
 class ClickableNode;
 
-class Bolt : public SmartNode
+class BoltBase : public SmartNode
 {
 public:
-	static Bolt* create(bool isInput);
 
-private:
-	typedef SmartNode super;
-	Bolt(bool isInput);
-	~Bolt();
+protected:
+	BoltBase();
+	~BoltBase();
 
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* bolt;
-	cocos2d::Sprite* helperArrow;
+private:
+	typedef SmartNode super;
+
 	ClickableNode* connectButton;
-	bool isInput;
 };

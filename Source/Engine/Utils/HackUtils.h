@@ -106,6 +106,7 @@ public:
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
 	static std::string toHex(int value, bool prefix = false);
 	static std::string toBinary4(int value);
+	static std::string toBinary8(int value);
 	static void* hexToPointer(std::string hexString, void* fallback = nullptr);
 	static DataType stdTypeToDataType(const std::type_info& dataTypeInfo);
 	static std::string dataTypeToString(DataType dataType);

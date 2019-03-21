@@ -576,6 +576,17 @@ std::string HackUtils::toBinary4(int value)
 	return binaryString;
 }
 
+std::string HackUtils::toBinary8(int value)
+{
+	std::stringstream stream;
+
+	// Convert to hex
+	stream << std::bitset<8>(value);
+	std::string binaryString = stream.str();
+
+	return binaryString;
+}
+
 void* HackUtils::hexToPointer(std::string hexString, void* fallback)
 {
 	if (!StrUtils::isHexNumber(hexString))
