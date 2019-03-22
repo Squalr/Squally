@@ -8,13 +8,14 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class OutputBolt;
+class InputBolt;
 
 class Connection : public SmartNode
 {
 public:
 	static Connection* create();
 
+	void trackTarget(InputBolt* target);
 	void stretchToLocation(cocos2d::Vec2 location);
 
 protected:
@@ -31,4 +32,6 @@ private:
 
 	cocos2d::Sprite* connectionLine;
 	cocos2d::Sprite* connectionCap;
+
+	InputBolt* target;
 };

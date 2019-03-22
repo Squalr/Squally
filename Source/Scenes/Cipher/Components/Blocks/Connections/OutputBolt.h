@@ -14,6 +14,8 @@ class OutputBolt : public BoltBase
 public:
 	static OutputBolt* create();
 
+	void setConnection(Connection* connection) override;
+
 private:
 	typedef BoltBase super;
 	OutputBolt();

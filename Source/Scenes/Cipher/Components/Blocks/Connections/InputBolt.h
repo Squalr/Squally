@@ -14,6 +14,9 @@ class InputBolt : public BoltBase
 public:
 	static InputBolt* create();
 
+	void setConnection(Connection* connection) override;
+	void hideHelp();
+
 private:
 	typedef BoltBase super;
 	InputBolt();

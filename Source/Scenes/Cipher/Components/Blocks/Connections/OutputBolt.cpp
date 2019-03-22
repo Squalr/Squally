@@ -3,9 +3,14 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -63,4 +68,28 @@ void OutputBolt::initializePositions()
 void OutputBolt::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionCreate, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled)
+		{
+			// Source bolt is input bolt
+			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
+			{
+				this->setConnection(args->connection);
+				this->connection->trackTarget(dynamic_cast<InputBolt*>(args->sourceBolt));
+
+				args->handled = true;
+			}
+		}
+	}));
+}
+
+void OutputBolt::setConnection(Connection* connection)
+{
+	super::setConnection(connection);
+
+	this->helperArrow->setVisible(this->connection == nullptr);
 }

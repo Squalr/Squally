@@ -8,6 +8,7 @@
 
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
 #include "Scenes/Cipher/Config.h"
@@ -20,8 +21,8 @@ BoltBase::BoltBase()
 {
 	this->connectButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->isCreatingConnection = false;
-	this->isInClickCreateMode = false;
 	this->connection = nullptr;
+	this->inputDebug = false;
 
 	this->connectButton->setContentSize(Size(48.0f, 48.0f));
 
@@ -46,45 +47,26 @@ void BoltBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	// Method 1: Click source, click destination
-	this->connectButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
-	{
-		if (this->connection == nullptr)
-		{
-			this->connection = Connection::create();
-			this->isCreatingConnection = true;
-			this->isInClickCreateMode = true;
-
-			this->addChild(this->connection);
-		}
-	});
-
-	// Method 2: Drag from source to destination
 	this->connectButton->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
 	{
-		if (this->connection == nullptr)
+		if (!this->isCreatingConnection)
 		{
-			this->connection = Connection::create();
+			this->setConnection(nullptr);
+
 			this->isCreatingConnection = true;
-			
-			this->addChild(this->connection);
+
+			this->setConnection(Connection::create());
 		}
-		else
+
+		if (this->isCreatingConnection && this->connection != nullptr)
 		{
-			if (this->isCreatingConnection && this->connection != nullptr)
-			{
-				if (args != nullptr)
-				{
-					this->connection->stretchToLocation(args->mouseCoords);
-				}
-			}
-		}
-		
+			this->connection->stretchToLocation(args->mouseCoords);
+		}		
 	});
 
 	this->addEventListener(EventListenerCustom::create(MouseEvents::EventMouseMove, ([=](EventCustom* eventCustom)
 	{
-		if (this->isInClickCreateMode && this->connection != nullptr)
+		if (this->connection != nullptr)
 		{
 			MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData());
 
@@ -95,8 +77,32 @@ void BoltBase::initializeListeners()
 		}
 	})));
 
-	this->connectButton->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs*)
+	this->connectButton->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
 	{
+		if (this->isCreatingConnection && this->connection != nullptr)
+		{
+			this->isCreatingConnection = false;
 
+			// Release the connection (it will be re-added to the OutputBolt if a destionation is found)
+			Connection* connection = this->connection;
+			this->setConnection(nullptr);
+
+			CipherEvents::TriggerRequestConnectionCreate(CipherEvents::CipherConnectionCreateArgs(this, connection, args->mouseCoords));
+		}
 	});
+}
+
+void BoltBase::setConnection(Connection* connection)
+{
+	if (this->connection != nullptr)
+	{
+		GameUtils::changeParent(this->connection, nullptr, false);
+	}
+
+	this->connection = connection;
+
+	if (this->connection != nullptr)
+	{
+		this->addChild(this->connection);
+	}
 }

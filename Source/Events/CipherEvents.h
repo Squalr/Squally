@@ -7,6 +7,7 @@
 class BlockBase;
 class BoltBase;
 class CipherPuzzleData;
+class Connection;
 class InputBolt;
 class OutputBolt;
 
@@ -16,7 +17,7 @@ public:
 	static const std::string EventLoadCipher;
 	static const std::string EventOpenCipher;
 	static const std::string EventRequestBlockSpawn;
-	static const std::string EventRequestConnectionSpawn;
+	static const std::string EventRequestConnectionCreate;
 	static const std::string EventShowAsciiTable;
 	static const std::string EventChangeActiveCipher;
 	static const std::string EventChangeDisplayDataType;
@@ -49,11 +50,14 @@ public:
 		}
 	};
 
-	struct CipherConnectionSpawnArgs
+	struct CipherConnectionCreateArgs
 	{
 		BoltBase* sourceBolt;
+		Connection* connection;
+		cocos2d::Vec2 destination;
+		bool handled;
 
-		CipherConnectionSpawnArgs(BoltBase* sourceBolt) : sourceBolt(sourceBolt)
+		CipherConnectionCreateArgs(BoltBase* sourceBolt, Connection* connection, cocos2d::Vec2 destination) : sourceBolt(sourceBolt), connection(connection), destination(destination), handled(false)
 		{
 		}
 	};
@@ -88,7 +92,7 @@ public:
 	static void TriggerLoadCipher(CipherLoadArgs args);
 	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
-	static void TriggerRequestConnectionSpawn(CipherConnectionSpawnArgs args);
+	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
 	static void TriggerShowAsciiTable();
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);

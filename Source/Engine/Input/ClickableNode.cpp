@@ -397,7 +397,7 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 		return;
 	}
 
-	if (this->isClicked)
+	if (this->isClickInit && this->isClicked)
 	{
 		if (this->mouseReleaseEvent != nullptr)
 		{

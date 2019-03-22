@@ -121,18 +121,6 @@ void GameBoard::initializeListeners()
 			}
 		}
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionSpawn, [=](EventCustom* eventCustom)
-	{
-		CipherEvents::CipherConnectionSpawnArgs* args = static_cast<CipherEvents::CipherConnectionSpawnArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			//Connection* newConnection = Connection::create(args->sourceBolt);
-
-			//this->connectionContent->addChild(newConnection);
-		}
-	}));
 }
 
 void GameBoard::onDeveloperModeEnable()
