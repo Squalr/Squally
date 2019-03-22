@@ -83,7 +83,8 @@ void InputBolt::initializeListeners()
 			if (dynamic_cast<OutputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
 			{
 				args->sourceBolt->setConnection(args->connection);
-				args->connection->trackTarget(this);
+				args->connection->setInputBolt(this);
+
 				args->handled = true;
 			}
 		}
@@ -100,4 +101,14 @@ void InputBolt::setConnection(Connection* connection)
 void InputBolt::hideHelp()
 {
 	this->helperArrow->setVisible(false);
+}
+
+void InputBolt::onConnectionStarted()
+{
+	if (this->connection != nullptr)
+	{
+		this->connection->setInputBolt(this, false);
+		
+		CipherEvents::TriggerConnectionStarted(CipherEvents::CipherConnectionStartedArgs(this->connection));
+	}
 }

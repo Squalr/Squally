@@ -69,6 +69,20 @@ void OutputBolt::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionStarted, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherConnectionStartedArgs* args = static_cast<CipherEvents::CipherConnectionStartedArgs*>(eventCustom->getUserData());
+
+		// Enforce that every input only has one output flowing into it
+		if (args != nullptr && this->connection != nullptr && args->connection != this->connection)
+		{
+			if (args->connection->getInputBolt() == this->connection->getInputBolt())
+			{
+				this->setConnection(nullptr);
+			}
+		}
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionCreate, [=](EventCustom* eventCustom)
 	{
 		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
@@ -79,7 +93,7 @@ void OutputBolt::initializeListeners()
 			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
 			{
 				this->setConnection(args->connection);
-				this->connection->trackTarget(dynamic_cast<InputBolt*>(args->sourceBolt));
+				this->connection->setInputBolt(dynamic_cast<InputBolt*>(args->sourceBolt));
 
 				args->handled = true;
 			}

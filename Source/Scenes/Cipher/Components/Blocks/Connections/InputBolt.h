@@ -16,6 +16,7 @@ public:
 
 	void setConnection(Connection* connection) override;
 	void hideHelp();
+	void onConnectionStarted() override;
 
 private:
 	typedef BoltBase super;
