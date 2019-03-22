@@ -30,6 +30,15 @@ void CipherStateVictory::onBeforeStateEnter(CipherState* cipherState)
 void CipherStateVictory::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
+
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			CipherState::updateState(cipherState, CipherState::StateType::GameEnd);
+		}),
+		nullptr
+	));
 }
 
 void CipherStateVictory::onStateReload(CipherState* cipherState)

@@ -27,7 +27,6 @@
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/ExecuteButton.h"
-#include "Scenes/Cipher/Components/GameBoard.h"
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/ToolBox.h"
@@ -61,7 +60,6 @@ Cipher::Cipher()
 {
 	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
-	this->gameBoard = GameBoard::create();
 	this->cipherLock = CipherLock::create();
 	this->cipherFrame = CipherFrame::create();
 	this->cipherDecor = CipherDecor::create();
@@ -81,7 +79,6 @@ Cipher::Cipher()
 	this->cipherStateVictory = CipherStateVictory::create();
 
 	this->addChild(this->cipherBackground);
-	this->addChild(this->gameBoard);
 	this->addChild(this->cipherLock);
 	this->addChild(this->cipherFrame);
 	this->addChild(this->cipherDecor);
@@ -130,6 +127,7 @@ void Cipher::initializePositions()
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
+	this->cipherState->puzzleData = cipherPuzzleData;
 	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
 }
 

@@ -28,13 +28,15 @@ void CipherStateStartGame::onBeforeStateEnter(CipherState* cipherState)
 
 	// Clear all state variables before game start
 	cipherState->inputOutputMap = std::vector<std::tuple<std::string, std::string>>();
+	cipherState->blockContent->removeAllChildren();
+	cipherState->connectionContent->removeAllChildren();
 }
 
 void CipherStateStartGame::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
 
-	CipherState::updateState(cipherState, CipherState::StateType::GameStart);
+	CipherState::updateState(cipherState, CipherState::StateType::LoadInitialState);
 }
 
 void CipherStateStartGame::onStateReload(CipherState* cipherState)
