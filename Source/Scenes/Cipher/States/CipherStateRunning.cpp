@@ -30,6 +30,15 @@ void CipherStateRunning::onBeforeStateEnter(CipherState* cipherState)
 void CipherStateRunning::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
+
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			CipherState::updateState(cipherState, CipherState::StateType::Neutral);
+		}),
+		nullptr
+	));
 }
 
 void CipherStateRunning::onStateReload(CipherState* cipherState)

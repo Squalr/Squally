@@ -27,15 +27,28 @@ CipherStateLoadInitialState::~CipherStateLoadInitialState()
 void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 {
 	super::onBeforeStateEnter(cipherState);
+
+	// Load initial state variables
+	if (cipherState->puzzleData != nullptr)
+	{
+		cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMap();
+	}
+	
+	cipherState->loadCipherAtIndex(0);
 }
 
 void CipherStateLoadInitialState::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
 
-	cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMap();
-
-	CipherState::updateState(cipherState, CipherState::StateType::LoadInitialState);
+	this->runAction(Sequence::create(
+		DelayTime::create(0.1f),
+		CallFunc::create([=]()
+		{
+			CipherState::updateState(cipherState, CipherState::StateType::Neutral);
+		}),
+		nullptr
+	));
 }
 
 void CipherStateLoadInitialState::onStateReload(CipherState* cipherState)
