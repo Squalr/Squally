@@ -13,6 +13,7 @@ class Connection;
 class BoltBase : public SmartNode
 {
 public:
+	virtual void setConnection(Connection* connection);
 
 protected:
 	BoltBase();
@@ -23,11 +24,11 @@ protected:
 	void initializeListeners() override;
 
 	Connection* connection;
+	ClickableNode* connectButton;
+	bool inputDebug;
 
 private:
 	typedef SmartNode super;
 
-	ClickableNode* connectButton;
 	bool isCreatingConnection;
-	bool isInClickCreateMode;
 };

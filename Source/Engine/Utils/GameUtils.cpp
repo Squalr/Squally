@@ -280,7 +280,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 
 Rect GameUtils::getScreenBounds(Node* node)
 {
-	if (Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
+	if (node == nullptr || Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
 	{
 		return Rect::ZERO;
 	}

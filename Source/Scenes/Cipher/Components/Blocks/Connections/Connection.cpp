@@ -7,6 +7,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -27,6 +28,7 @@ Connection::Connection()
 {
 	this->connectionLine = Sprite::create(CipherResources::Connections_ConnectionSegment);
 	this->connectionCap = Sprite::create(CipherResources::Connections_ConnectionSegmentCap);
+	this->target = nullptr;
 
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;
@@ -65,6 +67,21 @@ void Connection::initializeListeners()
 void Connection::update(float dt)
 {
 	super::update(dt);
+
+	if (this->target != nullptr)
+	{
+		this->stretchToLocation(GameUtils::getScreenBounds(this->target).origin);
+	}
+}
+
+void Connection::trackTarget(InputBolt* target)
+{
+	this->target = target;
+	
+	if (this->target != nullptr)
+	{
+		this->target->hideHelp();
+	}
 }
 
 void Connection::stretchToLocation(cocos2d::Vec2 location)

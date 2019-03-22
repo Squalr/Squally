@@ -3,9 +3,14 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -26,6 +31,7 @@ InputBolt::InputBolt()
 {
 	this->bolt = Sprite::create(CipherResources::Connections_ConnectionPlug);
 	this->helperArrow = Sprite::create(CipherResources::Connections_HelperArrowInput);
+	this->inputDebug = true;
 
 	bolt->setFlippedY(true);
 	helperArrow->setFlippedY(true);
@@ -66,4 +72,32 @@ void InputBolt::initializePositions()
 void InputBolt::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionCreate, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled)
+		{
+			// Source bolt is output bolt
+			if (dynamic_cast<OutputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
+			{
+				args->sourceBolt->setConnection(args->connection);
+				args->connection->trackTarget(this);
+				args->handled = true;
+			}
+		}
+	}));
+}
+
+void InputBolt::setConnection(Connection* connection)
+{
+	super::setConnection(connection);
+
+	this->helperArrow->setVisible(this->connection == nullptr);
+}
+
+void InputBolt::hideHelp()
+{
+	this->helperArrow->setVisible(false);
 }
