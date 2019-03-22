@@ -31,6 +31,12 @@
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/ToolBox.h"
+#include "Scenes/Cipher/States/CipherStateGameEnd.h"
+#include "Scenes/Cipher/States/CipherStateLoadInitialState.h"
+#include "Scenes/Cipher/States/CipherStateNeutral.h"
+#include "Scenes/Cipher/States/CipherStateRunning.h"
+#include "Scenes/Cipher/States/CipherStateStartGame.h"
+#include "Scenes/Cipher/States/CipherStateVictory.h"
 
 #include "Resources/ShaderResources.h"
 #include "Resources/CipherResources.h"
@@ -67,6 +73,12 @@ Cipher::Cipher()
 	this->asciiButton = AsciiButton::create();
 	this->asciiTable = AsciiTable::create();
 	this->cipherState = CipherState::create();
+	this->cipherStateGameEnd = CipherStateGameEnd::create();
+	this->cipherStateLoadInitialState = CipherStateLoadInitialState::create();
+	this->cipherStateNeutral = CipherStateNeutral::create();
+	this->cipherStateRunning = CipherStateRunning::create();
+	this->cipherStateStartGame = CipherStateStartGame::create();
+	this->cipherStateVictory = CipherStateVictory::create();
 
 	this->addChild(this->cipherBackground);
 	this->addChild(this->gameBoard);
@@ -81,6 +93,12 @@ Cipher::Cipher()
 	this->addChild(this->asciiButton);
 	this->addChild(this->asciiTable);
 	this->addChild(this->cipherState);
+	this->addChild(this->cipherStateGameEnd);
+	this->addChild(this->cipherStateLoadInitialState);
+	this->addChild(this->cipherStateNeutral);
+	this->addChild(this->cipherStateRunning);
+	this->addChild(this->cipherStateStartGame);
+	this->addChild(this->cipherStateVictory);
 }
 
 Cipher::~Cipher()
@@ -112,10 +130,7 @@ void Cipher::initializePositions()
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
-	this->cipherState->updateState(this->cipherState, CipherState::StateType::LoadInitialState);
-
-	this->gameBoard->loadPuzzleData(cipherPuzzleData);
-	this->inputsOutputsPanel->loadPuzzleData(cipherPuzzleData);
+	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
 }
 
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)

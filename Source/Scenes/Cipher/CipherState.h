@@ -4,9 +4,7 @@
 
 #include "Engine/SmartNode.h"
 
-class Card;
-class CardRow;
-class Deck;
+class CipherPuzzleData;
 
 class CipherState : public SmartNode
 {
@@ -14,42 +12,33 @@ public:
 	enum class StateType
 	{
 		EmptyState,
-		LoadInitialState,
 		GameStart,
-		GameEnd,
+		LoadInitialState,
+		Neutral,
 		Running,
+		Wrong,
 		Victory,
-		Wrong
+		GameEnd,
 	};
 
 	static CipherState* create();
 	static void updateState(CipherState* gameState, StateType newState);
+	void loadPuzzleData(CipherPuzzleData* puzzleData);
 
 	StateType stateType;
 	StateType previousStateType;
 	int gameDurationInSeconds;
 	std::function<void(bool)> updateStateCallback;
 
-	Deck* playerDeck;
-	CardRow* playerHand;
-	Deck* playerGraveyard;
-	CardRow* playerBinaryCards;
-	CardRow* playerDecimalCards;
-	CardRow* playerHexCards;
-
-	Deck* enemyDeck;
-	CardRow* enemyHand;
-	Deck* enemyGraveyard;
-	CardRow* enemyBinaryCards;
-	CardRow* enemyDecimalCards;
-	CardRow* enemyHexCards;
+	CipherPuzzleData* puzzleData;
+	std::vector<std::tuple<std::string, std::string>> inputOutputMap;
 
 	// Tutorial node pointers
 	cocos2d::Node* inputsOutputsPanelPointer;
 
-	static const std::string requestStateUpdateEvent;
-	static const std::string beforeStateUpdateEvent;
-	static const std::string onStateUpdateEvent;
+	static const std::string RequestStateUpdateEvent;
+	static const std::string BeforeStateUpdateEvent;
+	static const std::string OnStateUpdateEvent;
 private:
 	CipherState();
 	~CipherState();

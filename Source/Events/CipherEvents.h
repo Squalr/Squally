@@ -18,7 +18,7 @@ public:
 	static const std::string EventOpenCipher;
 	static const std::string EventRequestBlockSpawn;
 	static const std::string EventRequestConnectionCreate;
-	static const std::string EventConnectionStarted;
+	static const std::string EventConnectionUpdated;
 	static const std::string EventShowAsciiTable;
 	static const std::string EventChangeActiveCipher;
 	static const std::string EventChangeDisplayDataType;
@@ -63,11 +63,11 @@ public:
 		}
 	};
 
-	struct CipherConnectionStartedArgs
+	struct CipherConnectionUpdatedArgs
 	{
 		Connection* connection;
 
-		CipherConnectionStartedArgs(Connection* connection) : connection(connection)
+		CipherConnectionUpdatedArgs(Connection* connection) : connection(connection)
 		{
 		}
 	};
@@ -103,7 +103,7 @@ public:
 	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
-	static void TriggerConnectionStarted(CipherConnectionStartedArgs args);
+	static void TriggerConnectionUpdated(CipherConnectionUpdatedArgs args);
 	static void TriggerShowAsciiTable();
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);

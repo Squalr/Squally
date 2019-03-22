@@ -19,6 +19,12 @@ class CipherFrame;
 class CipherLock;
 class CipherPuzzleData;
 class CipherState;
+class CipherStateGameEnd;
+class CipherStateLoadInitialState;
+class CipherStateNeutral;
+class CipherStateRunning;
+class CipherStateStartGame;
+class CipherStateVictory;
 class ClickableNode;
 class ClickableTextNode;
 class DisplayModeToggles;
@@ -66,6 +72,12 @@ private:
 	ToolBox* toolBox;
 
 	CipherState* cipherState;
+	CipherStateGameEnd* cipherStateGameEnd;
+	CipherStateLoadInitialState* cipherStateLoadInitialState;
+	CipherStateNeutral* cipherStateNeutral;
+	CipherStateRunning* cipherStateRunning;
+	CipherStateStartGame* cipherStateStartGame;
+	CipherStateVictory* cipherStateVictory;
 
 	static const cocos2d::Color3B TitleColor;
 };

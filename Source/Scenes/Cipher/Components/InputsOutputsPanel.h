@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CipherPuzzleData;
+class CipherState;
 class LocalizedLabel;
 class ScrollPane;
 
@@ -15,8 +15,6 @@ class InputsOutputsPanel : public CipherComponentBase
 {
 public:
 	static InputsOutputsPanel* create();
-
-	void loadPuzzleData(CipherPuzzleData* cipherPuzzleData);
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -29,6 +27,7 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void loadPuzzleData();
 	void selectInputOutputPairAtIndex(int index);
 	
 	LocalizedLabel* inputsHeaderLabel;
@@ -37,7 +36,7 @@ private:
 	cocos2d::Node* ioPanelsNode;
 	cocos2d::Sprite* ioSelectionMarker;
 
+	CipherState* currentCipherState;
 	std::vector<LocalizedLabel*> inputLabels;
 	std::vector<LocalizedLabel*> outputLabels;
-	std::vector<std::tuple<std::string, std::string>> inputOutputMap;
 };

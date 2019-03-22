@@ -84,6 +84,7 @@ void InputBolt::initializeListeners()
 			{
 				args->sourceBolt->setConnection(args->connection);
 				args->connection->setInputBolt(this);
+				CipherEvents::TriggerConnectionUpdated(CipherEvents::CipherConnectionUpdatedArgs(args->connection));
 
 				args->handled = true;
 			}
@@ -103,12 +104,12 @@ void InputBolt::hideHelp()
 	this->helperArrow->setVisible(false);
 }
 
-void InputBolt::onConnectionStarted()
+void InputBolt::onConnectionUpdated()
 {
 	if (this->connection != nullptr)
 	{
 		this->connection->setInputBolt(this, false);
 		
-		CipherEvents::TriggerConnectionStarted(CipherEvents::CipherConnectionStartedArgs(this->connection));
+		CipherEvents::TriggerConnectionUpdated(CipherEvents::CipherConnectionUpdatedArgs(this->connection));
 	}
 }

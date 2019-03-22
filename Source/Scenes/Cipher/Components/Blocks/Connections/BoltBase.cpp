@@ -56,7 +56,7 @@ void BoltBase::initializeListeners()
 			this->isCreatingConnection = true;
 
 			this->setConnection(Connection::create());
-			this->onConnectionStarted();
+			this->onConnectionUpdated();
 		}
 
 		if (this->isCreatingConnection && this->connection != nullptr)
@@ -108,6 +108,6 @@ void BoltBase::setConnection(Connection* connection)
 	}
 }
 
-void BoltBase::onConnectionStarted()
+void BoltBase::onConnectionUpdated()
 {
 }

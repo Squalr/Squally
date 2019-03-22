@@ -14,9 +14,9 @@
 
 using namespace cocos2d;
 
-const std::string GameState::requestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
-const std::string GameState::beforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
-const std::string GameState::onStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
+const std::string GameState::RequestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
+const std::string GameState::BeforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
+const std::string GameState::OnStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
 
 GameState* GameState::create()
 {
@@ -138,9 +138,9 @@ void GameState::updateState(GameState* gameState, StateType newState)
 		}
 	}
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::requestStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::RequestStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::BeforeStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::OnStateUpdateEvent, gameState);
 }
 
 void GameState::clearInteraction()

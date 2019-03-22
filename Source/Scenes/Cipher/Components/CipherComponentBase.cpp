@@ -19,9 +19,9 @@ void CipherComponentBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* requestStateChangeListener = EventListenerCustom::create(CipherState::requestStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onRequestStateChangeEvent, this));
-	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(CipherState::beforeStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onBeforeStateChangeEvent, this));
-	EventListenerCustom* stateChangeListener = EventListenerCustom::create(CipherState::onStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onStateChangeEvent, this));
+	EventListenerCustom* requestStateChangeListener = EventListenerCustom::create(CipherState::RequestStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onRequestStateChangeEvent, this));
+	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(CipherState::BeforeStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onBeforeStateChangeEvent, this));
+	EventListenerCustom* stateChangeListener = EventListenerCustom::create(CipherState::OnStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onStateChangeEvent, this));
 
 	this->addEventListener(requestStateChangeListener);
 	this->addEventListener(beforeStateChangeListener);

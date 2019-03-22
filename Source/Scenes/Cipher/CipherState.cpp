@@ -4,15 +4,16 @@
 #include "cocos/base/CCEventDispatcher.h"
 
 #include "Engine/Utils/StrUtils.h"
+#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string CipherState::requestStateUpdateEvent = "EVENT_CIPHER_REQUEST_UPDATE_STATE";
-const std::string CipherState::beforeStateUpdateEvent = "EVENT_CIPHER_BEFORE_UPDATE_STATE";
-const std::string CipherState::onStateUpdateEvent = "EVENT_CIPHER_ON_UPDATE_STATE";
+const std::string CipherState::RequestStateUpdateEvent = "EVENT_CIPHER_REQUEST_UPDATE_STATE";
+const std::string CipherState::BeforeStateUpdateEvent = "EVENT_CIPHER_BEFORE_UPDATE_STATE";
+const std::string CipherState::OnStateUpdateEvent = "EVENT_CIPHER_ON_UPDATE_STATE";
 
 CipherState* CipherState::create()
 {
@@ -66,9 +67,9 @@ void CipherState::updateState(CipherState* gameState, StateType newState)
 		}
 	}
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::requestStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::beforeStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::onStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::RequestStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::BeforeStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::OnStateUpdateEvent, gameState);
 }
 
 void CipherState::clearInteraction()

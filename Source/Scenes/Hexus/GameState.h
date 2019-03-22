@@ -136,9 +136,9 @@ public:
 	cocos2d::Node* lastStandButtonPointer;
 	cocos2d::Node* claimVictoryButtonPointer;
 
-	static const std::string requestStateUpdateEvent;
-	static const std::string beforeStateUpdateEvent;
-	static const std::string onStateUpdateEvent;
+	static const std::string RequestStateUpdateEvent;
+	static const std::string BeforeStateUpdateEvent;
+	static const std::string OnStateUpdateEvent;
 
 private:
 	typedef SmartNode super;
