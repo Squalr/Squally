@@ -28,7 +28,8 @@ Connection::Connection()
 {
 	this->connectionLine = Sprite::create(CipherResources::Connections_ConnectionSegment);
 	this->connectionCap = Sprite::create(CipherResources::Connections_ConnectionSegmentCap);
-	this->target = nullptr;
+	this->inputBolt = nullptr;
+	this->trackBolt = false;
 
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;
@@ -68,19 +69,20 @@ void Connection::update(float dt)
 {
 	super::update(dt);
 
-	if (this->target != nullptr)
+	if (this->inputBolt != nullptr && this->trackBolt)
 	{
-		this->stretchToLocation(GameUtils::getScreenBounds(this->target).origin);
+		this->stretchToLocation(GameUtils::getScreenBounds(this->inputBolt).origin);
 	}
 }
 
-void Connection::trackTarget(InputBolt* target)
+void Connection::setInputBolt(InputBolt* inputBolt, bool trackBolt)
 {
-	this->target = target;
+	this->inputBolt = inputBolt;
+	this->trackBolt = trackBolt;
 	
-	if (this->target != nullptr)
+	if (this->inputBolt != nullptr)
 	{
-		this->target->hideHelp();
+		this->inputBolt->hideHelp();
 	}
 }
 
@@ -96,4 +98,9 @@ void Connection::stretchToLocation(cocos2d::Vec2 location)
 	this->connectionLine->setRotation(angleBetween * 180.0f / float(M_PI));
 	this->connectionCap->setRotation(this->connectionLine->getRotation());
 	this->connectionCap->setPosition(location - thisPosition);
+}
+
+InputBolt* Connection::getInputBolt()
+{
+	return this->inputBolt;
 }

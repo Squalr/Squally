@@ -22,7 +22,8 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-
+	virtual void onConnectionStarted();
+	
 	Connection* connection;
 	ClickableNode* connectButton;
 	bool inputDebug;

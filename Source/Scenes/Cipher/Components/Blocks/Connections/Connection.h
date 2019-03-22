@@ -15,8 +15,9 @@ class Connection : public SmartNode
 public:
 	static Connection* create();
 
-	void trackTarget(InputBolt* target);
+	void setInputBolt(InputBolt* target, bool trackBolt = true);
 	void stretchToLocation(cocos2d::Vec2 location);
+	InputBolt* getInputBolt();
 
 protected:
 	Connection();
@@ -33,5 +34,6 @@ private:
 	cocos2d::Sprite* connectionLine;
 	cocos2d::Sprite* connectionCap;
 
-	InputBolt* target;
+	bool trackBolt;
+	InputBolt* inputBolt;
 };
