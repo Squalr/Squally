@@ -9,7 +9,7 @@ const std::string CipherEvents::EventLoadCipher = "EVENT_LOAD_CIPHER";
 const std::string CipherEvents::EventOpenCipher = "EVENT_OPEN_CIPHER";
 const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SPAWN";
 const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_REQUEST_CONNECTION_SPAWN";
-const std::string CipherEvents::EventConnectionStarted = "EVENT_CONNECTION_MADE";
+const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDATED";
 const std::string CipherEvents::EventShowAsciiTable = "EVENT_SHOW_ASCII_TABLE";
 const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_CIPHER";
 const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
@@ -46,10 +46,10 @@ void CipherEvents::TriggerRequestConnectionCreate(CipherConnectionCreateArgs arg
 	);
 }
 
-void CipherEvents::TriggerConnectionStarted(CipherConnectionStartedArgs args)
+void CipherEvents::TriggerConnectionUpdated(CipherConnectionUpdatedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CipherEvents::EventConnectionStarted,
+		CipherEvents::EventConnectionUpdated,
 		&args
 	);
 }

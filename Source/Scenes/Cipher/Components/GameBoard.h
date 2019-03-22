@@ -8,7 +8,7 @@ namespace cocos2d
 }
 
 class BlockBase;
-class CipherPuzzleData;
+class CipherState;
 class ClickableNode;
 class Connection;
 class DestinationBlock;
@@ -19,7 +19,6 @@ class GameBoard : public CipherComponentBase
 public:
 	static GameBoard* create();
 
-	void loadPuzzleData(CipherPuzzleData* cipherPuzzleData);
 	void loadCipherAtIndex(int index);
 
 protected:
@@ -48,7 +47,7 @@ private:
 	
 	cocos2d::LayerColor* gameAreaDebug;
 
-	CipherPuzzleData* cipherPuzzleData;
+	CipherState* currentCipherState;
 	std::string currentInput;
 	std::string currentOutput;
 };

@@ -33,6 +33,7 @@ InputsOutputsPanel* InputsOutputsPanel::create()
 
 InputsOutputsPanel::InputsOutputsPanel()
 {
+	this->currentCipherState = nullptr;
 	this->inputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Inputs::create());
 	this->outputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Outputs::create());
 	this->scrollPane = ScrollPane::create(Size(312.0f, 312.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
@@ -40,7 +41,6 @@ InputsOutputsPanel::InputsOutputsPanel()
 	this->ioSelectionMarker = Sprite::create(CipherResources::IOSelectionMarker);
 	this->inputLabels = std::vector<LocalizedLabel*>();
 	this->outputLabels = std::vector<LocalizedLabel*>();
-	this->inputOutputMap = std::vector<std::tuple<std::string, std::string>>();
 	
 	this->inputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 	this->outputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -80,11 +80,25 @@ void InputsOutputsPanel::onBeforeStateChange(CipherState* cipherState)
 void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	this->currentCipherState = cipherState;
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::LoadInitialState:
+		{
+			this->loadPuzzleData();
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
 }
 
-void InputsOutputsPanel::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)
+void InputsOutputsPanel::loadPuzzleData()
 {
-	this->inputOutputMap = cipherPuzzleData->getInputOutputMap();
 	this->inputLabels.clear();
 	this->outputLabels.clear();
 	this->ioPanelsNode->removeAllChildren();
@@ -92,7 +106,7 @@ void InputsOutputsPanel::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)
 	int index = 0;
 	float scrollPaneWidth = this->scrollPane->getPaneSize().width;
 
-	for (auto it = inputOutputMap.begin(); it != inputOutputMap.end(); it++, index++)
+	for (auto it = this->currentCipherState->inputOutputMap.begin(); it != this->currentCipherState->inputOutputMap.end(); it++, index++)
 	{
 		ClickableNode* ioPanel = ClickableNode::create(CipherResources::IOPanel, CipherResources::IOPanelSelected);
 		LocalizedLabel* inputLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(std::get<0>(*it)));
@@ -126,7 +140,7 @@ void InputsOutputsPanel::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)
 
 void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
 {
-	if (index < 0 || index > this->inputOutputMap.size())
+	if (index < 0 || index > this->currentCipherState->inputOutputMap.size())
 	{
 		return;
 	}
@@ -134,7 +148,7 @@ void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
 	this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
 
 	CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
-		std::get<0>(this->inputOutputMap[index]),
-		std::get<1>(this->inputOutputMap[index])
+		std::get<0>(this->currentCipherState->inputOutputMap[index]),
+		std::get<1>(this->currentCipherState->inputOutputMap[index])
 	));
 }

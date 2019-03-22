@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ClickableNode;
 class InputBolt;
+class Lightning;
 
 class Connection : public SmartNode
 {
@@ -18,6 +19,7 @@ public:
 	void setInputBolt(InputBolt* target, bool trackBolt = true);
 	void stretchToLocation(cocos2d::Vec2 location);
 	InputBolt* getInputBolt();
+	void runElectricityEffect();
 
 protected:
 	Connection();
@@ -33,6 +35,9 @@ private:
 
 	cocos2d::Sprite* connectionLine;
 	cocos2d::Sprite* connectionCap;
+	cocos2d::Vec2 currentStretchPosition;
+	int lightningProgress;
+	Lightning* lightningEffect;
 
 	bool trackBolt;
 	InputBolt* inputBolt;

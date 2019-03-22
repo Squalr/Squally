@@ -42,7 +42,6 @@ GameBoard::GameBoard()
 	this->blockContent = Node::create();
 	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
-	this->cipherPuzzleData = nullptr;
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
 	{
@@ -137,21 +136,6 @@ void GameBoard::onDeveloperModeDisable()
 	this->gameAreaDebug->setVisible(false);
 }
 
-void GameBoard::loadPuzzleData(CipherPuzzleData* cipherPuzzleData)
-{
-	this->cipherPuzzleData = cipherPuzzleData;
-
-	this->loadCipherAtIndex(0);
-}
-
-void GameBoard::loadCipherAtIndex(int index)
-{
-	std::vector<std::tuple<std::string, std::string>> inputOutputMap = this->cipherPuzzleData->getInputOutputMap();
-
-	this->currentInput = std::get<0>(inputOutputMap[index]);
-	this->currentOutput = std::get<1>(inputOutputMap[index]);
-}
-
 void GameBoard::onBeforeStateChange(CipherState* cipherState)
 {
 	super::onBeforeStateChange(cipherState);
@@ -160,4 +144,25 @@ void GameBoard::onBeforeStateChange(CipherState* cipherState)
 void GameBoard::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	this->currentCipherState = cipherState;
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::LoadInitialState:
+		{
+			this->loadCipherAtIndex(0);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
+void GameBoard::loadCipherAtIndex(int index)
+{
+	this->currentInput = std::get<0>(this->currentCipherState->inputOutputMap[index]);
+	this->currentOutput = std::get<1>(this->currentCipherState->inputOutputMap[index]);
 }

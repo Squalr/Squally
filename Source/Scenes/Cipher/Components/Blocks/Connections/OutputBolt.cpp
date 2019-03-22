@@ -69,9 +69,9 @@ void OutputBolt::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionStarted, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionUpdated, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionStartedArgs* args = static_cast<CipherEvents::CipherConnectionStartedArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionUpdatedArgs* args = static_cast<CipherEvents::CipherConnectionUpdatedArgs*>(eventCustom->getUserData());
 
 		// Enforce that every input only has one output flowing into it
 		if (args != nullptr && this->connection != nullptr && args->connection != this->connection)
@@ -94,6 +94,7 @@ void OutputBolt::initializeListeners()
 			{
 				this->setConnection(args->connection);
 				this->connection->setInputBolt(dynamic_cast<InputBolt*>(args->sourceBolt));
+				CipherEvents::TriggerConnectionUpdated(CipherEvents::CipherConnectionUpdatedArgs(this->connection));
 
 				args->handled = true;
 			}
