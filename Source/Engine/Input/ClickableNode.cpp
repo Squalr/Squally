@@ -107,27 +107,27 @@ void ClickableNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::EventMouseMove, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
 
-	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom, true);
 	});
 
-	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::EventMouseDown, [=](EventCustom* eventCustom)
 	{
 		this->mouseDown(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
 
-	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::EventMouseUp, [=](EventCustom* eventCustom)
 	{
 		this->mouseUp(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
 
-	EventListenerCustom* mouseScrollListener = EventListenerCustom::create(MouseEvents::MouseScrollEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseScrollListener = EventListenerCustom::create(MouseEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
 		this->mouseScroll(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
@@ -305,7 +305,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
-		MouseEvents::TriggerClickableMouseOverEvent();
+		MouseEvents::TriggerEventClickableMouseOver();
 
 		if (!this->isMousedOver && this->mouseInEvent != nullptr)
 		{

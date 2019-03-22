@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class ClickableNode;
+class Connection;
 
 class BoltBase : public SmartNode
 {
@@ -19,9 +20,14 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
+
+	Connection* connection;
 
 private:
 	typedef SmartNode super;
 
 	ClickableNode* connectButton;
+	bool isCreatingConnection;
+	bool isInClickCreateMode;
 };

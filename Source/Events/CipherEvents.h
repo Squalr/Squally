@@ -5,14 +5,18 @@
 #include "cocos/math/CCGeometry.h"
 
 class BlockBase;
+class BoltBase;
 class CipherPuzzleData;
+class InputBolt;
+class OutputBolt;
 
 class CipherEvents
 {
 public:
 	static const std::string EventLoadCipher;
 	static const std::string EventOpenCipher;
-	static const std::string EventRequestToolSpawn;
+	static const std::string EventRequestBlockSpawn;
+	static const std::string EventRequestConnectionSpawn;
 	static const std::string EventShowAsciiTable;
 	static const std::string EventChangeActiveCipher;
 	static const std::string EventChangeDisplayDataType;
@@ -35,12 +39,21 @@ public:
 		}
 	};
 
-	struct CipherSpawnArgs
+	struct CipherBlockSpawnArgs
 	{
 		std::function<BlockBase*()> spawnBlockFunc;
 		cocos2d::Vec2 spawnCoords;
 
-		CipherSpawnArgs(std::function<BlockBase*()> spawnBlockFunc, cocos2d::Vec2 spawnCoords) : spawnBlockFunc(spawnBlockFunc), spawnCoords(spawnCoords)
+		CipherBlockSpawnArgs(std::function<BlockBase*()> spawnBlockFunc, cocos2d::Vec2 spawnCoords) : spawnBlockFunc(spawnBlockFunc), spawnCoords(spawnCoords)
+		{
+		}
+	};
+
+	struct CipherConnectionSpawnArgs
+	{
+		BoltBase* sourceBolt;
+
+		CipherConnectionSpawnArgs(BoltBase* sourceBolt) : sourceBolt(sourceBolt)
 		{
 		}
 	};
@@ -74,7 +87,8 @@ public:
 
 	static void TriggerLoadCipher(CipherLoadArgs args);
 	static void TriggerOpenCipher(CipherOpenArgs args);
-	static void TriggerRequestToolSpawn(CipherSpawnArgs args);
+	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
+	static void TriggerRequestConnectionSpawn(CipherConnectionSpawnArgs args);
 	static void TriggerShowAsciiTable();
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);

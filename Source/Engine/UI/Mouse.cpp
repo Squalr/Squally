@@ -75,8 +75,8 @@ void Mouse::initializeListeners()
 	super::initializeListeners();
 
 	EventListenerCustom* mouseStateUpdateListener = EventListenerCustom::create(
-		MouseEvents::MouseStateUpdateEvent,
-		CC_CALLBACK_1(Mouse::onMouseStateUpdateEvent, this)
+		MouseEvents::EventMouseStateUpdate,
+		CC_CALLBACK_1(Mouse::onEventMouseStateUpdate, this)
 	);
 
 	this->addGlobalEventListener(mouseStateUpdateListener);
@@ -128,7 +128,7 @@ const Vec2& Mouse::getPosition() const
 	return this->readMousePosition;
 }
 
-void Mouse::onMouseStateUpdateEvent(EventCustom* eventCustom)
+void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
 {
 	MouseEvents::MouseEventArgs* args = (MouseEvents::MouseEventArgs*)(eventCustom->getUserData());
 

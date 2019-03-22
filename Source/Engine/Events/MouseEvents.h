@@ -15,7 +15,7 @@ public:
 	static void TriggerMouseUp(MouseEventArgs args);
 	static void TriggerMouseScroll(MouseEventArgs args);
 	static void TriggerStateChange(MouseEventArgs args);
-	static void TriggerClickableMouseOverEvent();
+	static void TriggerEventClickableMouseOver();
 	static void TriggerClickableMouseOutEvent();
 	static void TriggerDragEvent();
 
@@ -35,13 +35,13 @@ public:
 		}
 	};
 
-	static const std::string MouseMoveEvent;
-	static const std::string MouseRefreshEvent;
-	static const std::string MouseDownEvent;
-	static const std::string MouseUpEvent;
-	static const std::string MouseScrollEvent;
-	static const std::string MouseStateUpdateEvent;
-	static const std::string ClickableMouseOverEvent;
+	static const std::string EventMouseMove;
+	static const std::string EventMouseRefresh;
+	static const std::string EventMouseDown;
+	static const std::string EventMouseUp;
+	static const std::string EventMouseScroll;
+	static const std::string EventMouseStateUpdate;
+	static const std::string EventClickableMouseOver;
 	static const std::string ClickableMouseOutEvent;
-	static const std::string MouseDragEvent;
+	static const std::string EventMouseDrag;
 };

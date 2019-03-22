@@ -10,6 +10,7 @@ namespace cocos2d
 class BlockBase;
 class CipherPuzzleData;
 class ClickableNode;
+class Connection;
 class DestinationBlock;
 class SourceBlock;
 
@@ -39,9 +40,11 @@ private:
 	std::vector<SourceBlock*> inputBlocks;
 	std::vector<DestinationBlock*> outputBlocks;
 	std::vector<BlockBase*> userBlocks;
+	std::vector<Connection*> userConnections;
 	cocos2d::Node* inputContent;
 	cocos2d::Node* outputContent;
-	cocos2d::Node* userContent;
+	cocos2d::Node* blockContent;
+	cocos2d::Node* connectionContent;
 	
 	cocos2d::LayerColor* gameAreaDebug;
 

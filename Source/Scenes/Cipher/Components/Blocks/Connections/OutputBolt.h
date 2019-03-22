@@ -21,6 +21,7 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 	cocos2d::Sprite* bolt;
 	cocos2d::Sprite* helperArrow;

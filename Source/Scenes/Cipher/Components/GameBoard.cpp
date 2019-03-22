@@ -12,6 +12,7 @@
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
 #include "Scenes/Cipher/Components/Blocks/DestinationBlock.h"
 #include "Scenes/Cipher/Components/Blocks/ImmediateBlock.h"
 #include "Scenes/Cipher/Components/Blocks/SourceBlock.h"
@@ -35,9 +36,11 @@ GameBoard::GameBoard()
 	this->inputBlocks = std::vector<SourceBlock*>();
 	this->outputBlocks = std::vector<DestinationBlock*>();
 	this->userBlocks = std::vector<BlockBase*>();
+	this->userConnections = std::vector<Connection*>();
 	this->inputContent = Node::create();
 	this->outputContent = Node::create();
-	this->userContent = Node::create();
+	this->blockContent = Node::create();
+	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
 	this->cipherPuzzleData = nullptr;
 
@@ -58,9 +61,10 @@ GameBoard::GameBoard()
 	}
 
 	this->addChild(this->gameAreaDebug);
-	this->addChild(this->userContent);
-	this->addChild(this->inputContent);
 	this->addChild(this->outputContent);
+	this->addChild(this->inputContent);
+	this->addChild(this->blockContent);
+	this->addChild(this->connectionContent);
 }
 
 GameBoard::~GameBoard()
@@ -70,6 +74,9 @@ GameBoard::~GameBoard()
 void GameBoard::onEnter()
 {
 	super::onEnter();
+
+	this->blockContent->removeAllChildren();
+	this->connectionContent->removeAllChildren();
 }
 
 void GameBoard::initializePositions()
@@ -99,9 +106,9 @@ void GameBoard::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestToolSpawn, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestBlockSpawn, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherSpawnArgs* args = static_cast<CipherEvents::CipherSpawnArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherBlockSpawnArgs* args = static_cast<CipherEvents::CipherBlockSpawnArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
@@ -109,9 +116,21 @@ void GameBoard::initializeListeners()
 
 			if (newBlock != nullptr)
 			{
-				this->addChild(newBlock);
+				this->blockContent->addChild(newBlock);
 				newBlock->setPosition(args->spawnCoords);
 			}
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionSpawn, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherConnectionSpawnArgs* args = static_cast<CipherEvents::CipherConnectionSpawnArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			//Connection* newConnection = Connection::create(args->sourceBolt);
+
+			//this->connectionContent->addChild(newConnection);
 		}
 	}));
 }
