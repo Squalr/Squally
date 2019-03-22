@@ -136,7 +136,7 @@ void BlockBase::initializeListeners()
 			{
 				if (this->isInGameArea())
 				{
-					CipherEvents::TriggerRequestToolSpawn(CipherEvents::CipherSpawnArgs([=](){ return this->spawn(); }, args->mouseCoords + this->clickDelta));
+					CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs([=](){ return this->spawn(); }, args->mouseCoords + this->clickDelta));
 				}
 
 				this->setOpacity(0);

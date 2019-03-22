@@ -45,7 +45,7 @@ private:
 	typedef GlobalNode super;
 	void onEnter() override;
 	void initializeListeners() override;
-	void onMouseStateUpdateEvent(cocos2d::EventCustom* eventCustom);
+	void onEventMouseStateUpdate(cocos2d::EventCustom* eventCustom);
 	void setActiveMouseSprite(cocos2d::Node* mouseSprite);
 	void setSpriteToCursorPosition();
 

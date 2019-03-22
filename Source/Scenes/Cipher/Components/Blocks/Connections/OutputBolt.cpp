@@ -5,9 +5,11 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -56,4 +58,9 @@ void OutputBolt::initializePositions()
 			)
 		)
 	);
+}
+
+void OutputBolt::initializeListeners()
+{
+	super::initializeListeners();
 }

@@ -8,26 +8,27 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class InputBolt;
 class OutputBolt;
 
 class Connection : public SmartNode
 {
 public:
-	static Connection* create(InputBolt* source, OutputBolt* dest);
+	static Connection* create();
+
+	void stretchToLocation(cocos2d::Vec2 location);
 
 protected:
-	Connection(InputBolt* source, OutputBolt* dest);
+	Connection();
 	~Connection();
 
 	void onEnter() override;
+	void update(float dt) override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
 
 	cocos2d::Sprite* connectionLine;
 	cocos2d::Sprite* connectionCap;
-	InputBolt* source;
-	OutputBolt* dest;
 };
