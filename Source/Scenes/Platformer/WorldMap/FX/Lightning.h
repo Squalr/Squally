@@ -9,8 +9,8 @@ class Lightning : public SmartNode
 public:
 	static Lightning* create();
 
+	void playAnimations(bool repeat = true);
 	void setManualDelay(float manualDelay);
-	void setLightningCallback(std::function<void()> onLightningCallback);
 
 private:
 	typedef SmartNode super;
@@ -18,11 +18,9 @@ private:
 	~Lightning();
 
 	void onEnter() override;
-	void playNextAnimation();
+	void playAnimationsInternal(bool repeat, bool isFirstRun = false);
 
 	SmartAnimationSequenceNode* animations;
-	bool firstRun;
 	float manualDelay;
-	std::function<void()> onLightningCallback;
 };
 

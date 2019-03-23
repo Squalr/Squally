@@ -29,7 +29,6 @@ Lightning::Lightning()
 {
 	this->animations = SmartAnimationSequenceNode::create(UIResources::EmptyImage);
 	this->manualDelay = -1.0f;
-	this->onLightningCallback = nullptr;
 
 	static bool runOnce = true;
 
@@ -86,10 +85,6 @@ Lightning::~Lightning()
 void Lightning::onEnter()
 {
 	super::onEnter();
-
-	this->firstRun = true;
-
-	this->playNextAnimation();
 }
 
 void Lightning::setManualDelay(float manualDelay)
@@ -97,20 +92,25 @@ void Lightning::setManualDelay(float manualDelay)
 	this->manualDelay = manualDelay;
 }
 
-void Lightning::setLightningCallback(std::function<void()> onLightningCallback)
+void Lightning::playAnimations(bool repeat)
 {
-	this->onLightningCallback = onLightningCallback;
+	this->playAnimationsInternal(repeat, true);
 }
 
-void Lightning::playNextAnimation()
+void Lightning::playAnimationsInternal(bool repeat, bool isFirstRun)
 {
 	const float animationSpeed = 0.035f;
-	auto callback = CC_CALLBACK_0(Lightning::playNextAnimation, this);
+
+	auto callback = [=]()
+	{
+		if (repeat)
+		{
+			this->playAnimationsInternal(repeat);
+		}
+	};
 
 	int animationIndex = RandomHelper::random_int(1, 36);
-	float delay = this->manualDelay >= 0.0f ? this->manualDelay : (this->firstRun ? RandomHelper::random_real(0.1f, 5.0f) : RandomHelper::random_real(1.0f, 5.0f));
-
-	this->firstRun = false;
+	float delay = this->manualDelay >= 0.0f ? this->manualDelay : (isFirstRun ? RandomHelper::random_real(0.1f, 5.0f) : RandomHelper::random_real(1.0f, 5.0f));
 
 	this->runAction(Sequence::create(DelayTime::create(delay), CallFunc::create([=]()
 	{
@@ -118,11 +118,6 @@ void Lightning::playNextAnimation()
 		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4 * float(M_PI) * cameraDistance);
 
 		SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy, soundIntensity);
-
-		if (this->onLightningCallback != nullptr)
-		{
-			this->onLightningCallback();
-		}
 
 		switch (animationIndex)
 		{
