@@ -16,10 +16,11 @@ class Connection : public SmartNode
 public:
 	static Connection* create();
 
+	void execute(char value, std::function<void()> onExecuteComplete);
 	void setInputBolt(InputBolt* target, bool trackBolt = true);
 	void stretchToLocation(cocos2d::Vec2 location);
 	InputBolt* getInputBolt();
-	void runElectricityEffect();
+	void runElectricityEffect(std::function<void()> onEffectComplete);
 
 protected:
 	Connection();

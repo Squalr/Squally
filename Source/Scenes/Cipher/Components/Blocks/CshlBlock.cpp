@@ -42,6 +42,16 @@ void CshlBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char CshlBlock::compute()
+{
+	if (this->currentInputs.size() < 2)
+	{
+		return char(0);
+	}
+
+	return this->currentInputs[0] << this->currentInputs[1];
+}
+
 BlockBase* CshlBlock::spawn()
 {
 	return CshlBlock::create();

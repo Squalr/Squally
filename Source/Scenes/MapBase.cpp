@@ -14,12 +14,10 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
-#include "Events/CipherEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-#include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
 
 #include "Resources/BackgroundResources.h"
@@ -35,7 +33,6 @@ MapBase::MapBase()
 	this->map = nullptr;;
 	this->mapNode = Node::create();
 
-	this->cipher = Cipher::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -57,7 +54,6 @@ MapBase::MapBase()
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
-	this->menuHud->addChild(this->cipher);
 	this->menuHud->addChild(this->pauseMenu);
 	this->menuHud->addChild(this->optionsMenu);
 	this->menuHud->addChild(this->confirmationMenu);
@@ -106,18 +102,6 @@ void MapBase::initializeListeners()
 	{
 		this->onHackerModeDisable();
 	});
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
-	{
-		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->menuBackDrop->setOpacity(196);
-			this->cipher->setVisible(true);
-			this->cipher->openCipher(args->cipherPuzzleData);
-		}
-	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* scrollListener = EventListenerMouse::create();

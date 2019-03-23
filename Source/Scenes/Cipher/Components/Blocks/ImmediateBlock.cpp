@@ -69,6 +69,11 @@ void ImmediateBlock::initializeListeners()
 	}));
 }
 
+char ImmediateBlock::compute()
+{
+	return char(0);
+}
+
 BlockBase* ImmediateBlock::spawn()
 {
 	return ImmediateBlock::create(BlockType::Normal);

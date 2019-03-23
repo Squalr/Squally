@@ -26,6 +26,8 @@ ExecuteButton* ExecuteButton::create()
 
 ExecuteButton::ExecuteButton()
 {
+	this->activeCipherState = nullptr;
+
 	LocalizedLabel*	executeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Execute::create());
 	LocalizedLabel*	executeLabelHover = executeLabel->clone();
 
@@ -63,6 +65,19 @@ void ExecuteButton::initializePositions()
 	this->executeButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f - 420.0f));
 }
 
+void ExecuteButton::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->executeButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
+	{
+		if (this->activeCipherState != nullptr)
+		{
+			this->activeCipherState->updateState(this->activeCipherState, CipherState::StateType::Running);
+		}
+	});
+}
+
 void ExecuteButton::onBeforeStateChange(CipherState* cipherState)
 {
 	super::onBeforeStateChange(cipherState);
@@ -71,4 +86,20 @@ void ExecuteButton::onBeforeStateChange(CipherState* cipherState)
 void ExecuteButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->executeButton->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->executeButton->disableInteraction();
+			break;
+		}
+	}
+
+	this->activeCipherState = cipherState;
 }

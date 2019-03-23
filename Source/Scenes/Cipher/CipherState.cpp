@@ -117,6 +117,7 @@ void CipherState::initializeListeners()
 
 			if (newBlock != nullptr)
 			{
+				this->userBlocks.push_back(newBlock);
 				this->blockContent->addChild(newBlock);
 				newBlock->setPosition(args->spawnCoords);
 			}

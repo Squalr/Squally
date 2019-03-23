@@ -42,6 +42,16 @@ void ShrBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char ShrBlock::compute()
+{
+	if (this->currentInputs.size() < 2)
+	{
+		return char(0);
+	}
+
+	return this->currentInputs[0] >> this->currentInputs[1];
+}
+
 BlockBase* ShrBlock::spawn()
 {
 	return ShrBlock::create();

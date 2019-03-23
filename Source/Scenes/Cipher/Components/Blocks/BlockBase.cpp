@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
 #include "Scenes/Cipher/Config.h"
@@ -31,18 +32,19 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->clickDelta = Vec2::ZERO;
 	this->inputBolts = std::vector<InputBolt*>();
 	this->outputBolts = std::vector<OutputBolt*>();
+	this->currentInputs = std::vector<char>();
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
 
 	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
 	{
-		this->inputBolts.push_back(InputBolt::create());
+		this->inputBolts.push_back(InputBolt::create(this));
 	}
 	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
 	{
-		this->inputBolts.push_back(InputBolt::create());
-		this->inputBolts.push_back(InputBolt::create());
+		this->inputBolts.push_back(InputBolt::create(this));
+		this->inputBolts.push_back(InputBolt::create(this));
 	}
 
 	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
@@ -188,6 +190,22 @@ void BlockBase::initializeListeners()
 	}
 }
 
+void BlockBase::onBeforeStateChange(CipherState* cipherState)
+{
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Running:
+		{
+			this->currentInputs.clear();
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
 bool BlockBase::isInGameArea()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -203,6 +221,29 @@ bool BlockBase::isInGameArea()
 	}
 
 	return false;
+}
+
+void BlockBase::pushInput(char input)
+{
+	this->currentInputs.push_back(input);
+}
+
+void BlockBase::execute(std::function<void()> onExecuteComplete)
+{
+	// Only perform execution when the total input count has been reached
+	if (this->outputBolts.size() > 0 && this->currentInputs.size() == this->inputBolts.size())
+	{
+		char value = this->compute();
+
+		for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+		{
+			(*it)->execute(value, onExecuteComplete);
+		}
+	}
+	else
+	{
+		onExecuteComplete();
+	}
 }
 
 void BlockBase::removeConnections()

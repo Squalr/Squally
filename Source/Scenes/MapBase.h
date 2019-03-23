@@ -5,7 +5,6 @@
 #include "Engine/GlobalScene.h"
 
 // Forward declarations
-class Cipher;
 class ConfirmationMenu;
 class DeveloperHud;
 class Hud;
@@ -53,14 +52,11 @@ private:
 	void onResumeClick();
 	void onOptionsClick();
 	void onExitClick();
-	void openCipher();
-	void onCipherClose();
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
-	Cipher* cipher;
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;

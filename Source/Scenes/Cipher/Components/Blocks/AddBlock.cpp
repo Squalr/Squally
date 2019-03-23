@@ -42,6 +42,16 @@ void AddBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char AddBlock::compute()
+{
+	if (this->currentInputs.size() < 2)
+	{
+		return char(0);
+	}
+
+	return this->currentInputs[0] + this->currentInputs[1];
+}
+
 BlockBase* AddBlock::spawn()
 {
 	return AddBlock::create();

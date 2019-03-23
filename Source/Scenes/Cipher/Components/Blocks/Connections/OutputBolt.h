@@ -14,6 +14,7 @@ class OutputBolt : public BoltBase
 public:
 	static OutputBolt* create();
 
+	void execute(char value, std::function<void()> onExecuteComplete);
 	void setConnection(Connection* connection) override;
 
 private:

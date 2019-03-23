@@ -2,6 +2,8 @@
 
 #include "Scenes/Cipher/States/CipherStateBase.h"
 
+class BlockBase;
+
 class CipherStateRunning : public CipherStateBase
 {
 public:
@@ -17,4 +19,6 @@ private:
 	typedef CipherStateBase super;
 	CipherStateRunning();
 	~CipherStateRunning();
+
+	void performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index = 0);
 };

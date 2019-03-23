@@ -42,6 +42,11 @@ void BruteForceBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char BruteForceBlock::compute()
+{
+	return char(0);
+}
+
 BlockBase* BruteForceBlock::spawn()
 {
 	return BruteForceBlock::create();

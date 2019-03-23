@@ -8,6 +8,7 @@ public:
 	static BruteForceBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	char compute() override;
 	BlockBase* spawn() override;
 
 private:
