@@ -187,6 +187,9 @@ void ClickableNode::disableInteraction(GLubyte newOpacity)
 	this->interactionEnabled = false;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
+
+	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
+	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void ClickableNode::enableInteraction(GLubyte newOpacity)
@@ -194,6 +197,9 @@ void ClickableNode::enableInteraction(GLubyte newOpacity)
 	this->interactionEnabled = true;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
+
+	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
+	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)

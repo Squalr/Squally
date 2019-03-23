@@ -37,6 +37,7 @@ namespace CipherResources
 	extern const std::string Connections_ConnectButton;
 	extern const std::string Connections_ConnectionBolt;
 	extern const std::string Connections_ConnectionPlug;
+	extern const std::string Connections_ConnectionPulse;
 	extern const std::string Connections_ConnectionSegment;
 	extern const std::string Connections_ConnectionSegmentCap;
 	extern const std::string Connections_HelperArrowInput;

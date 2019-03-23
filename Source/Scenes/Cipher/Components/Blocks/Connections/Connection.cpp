@@ -1,5 +1,6 @@
 #include "Connection.h"
 
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
@@ -29,11 +30,12 @@ Connection::Connection()
 {
 	this->connectionLine = Sprite::create(CipherResources::Connections_ConnectionSegment);
 	this->connectionCap = Sprite::create(CipherResources::Connections_ConnectionSegmentCap);
-	this->lightningEffect = Lightning::create();
+	this->connectionPulse = Sprite::create(CipherResources::Connections_ConnectionPulse);
+	this->lightningEffectSource = Lightning::create();
+	this->lightningEffectDest = Lightning::create();
 	this->inputBolt = nullptr;
 	this->trackBolt = false;
 	this->currentStretchPosition = Vec2::ZERO;
-	this->lightningProgress = 0;
 
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;
@@ -43,14 +45,17 @@ Connection::Connection()
 	this->connectionLine->getTexture()->setTexParameters(params);
 	this->connectionLine->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->connectionCap->setFlippedY(true);
-	this->lightningEffect->setVisible(false);
 
-	this->lightningEffect->setManualDelay(0.0f);
-	this->lightningEffect->setScale(0.35f);
+	this->lightningEffectSource->setManualDelay(0.0f);
+	this->lightningEffectDest->setManualDelay(0.0f);
+	this->lightningEffectSource->setScale(0.35f);
+	this->lightningEffectDest->setScale(0.35f);
 
 	this->addChild(this->connectionLine);
 	this->addChild(this->connectionCap);
-	this->addChild(this->lightningEffect);
+	this->addChild(this->connectionPulse);
+	this->addChild(this->lightningEffectSource);
+	this->addChild(this->lightningEffectDest);
 }
 
 Connection::~Connection()
@@ -60,6 +65,8 @@ Connection::~Connection()
 void Connection::onEnter()
 {
 	super::onEnter();
+
+	this->connectionPulse->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -122,7 +129,6 @@ void Connection::stretchToLocation(cocos2d::Vec2 location)
 	this->connectionLine->setRotation(angleBetween * 180.0f / float(M_PI));
 	this->connectionCap->setRotation(this->connectionLine->getRotation());
 	this->connectionCap->setPosition(location - thisPosition);
-	this->lightningEffect->setRotation(this->connectionLine->getRotation());
 
 	this->currentStretchPosition = location;
 }
@@ -135,40 +141,23 @@ InputBolt* Connection::getInputBolt()
 void Connection::runElectricityEffect(std::function<void()> onEffectComplete)
 {
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
-	this->lightningEffect->setVisible(true);
-	this->lightningProgress = 0;
 
-	this->lightningEffect->setLightningCallback([=]
-	{
-		switch(this->lightningProgress++)
+	this->connectionPulse->runAction(Sequence::create(
+		CallFunc::create([=]()
 		{
-			case 0:
-			{
-				this->lightningEffect->setPosition(Vec2::ZERO);
-				break;
-			}
-			case 1:
-			{
-				this->lightningEffect->setPosition((this->currentStretchPosition - thisPosition) / 2.0f);
-				break;
-			}
-			case 2:
-			{
-				this->lightningEffect->setPosition(this->currentStretchPosition - thisPosition);
-				break;
-			}
-			case 3:
-			{
-				onEffectComplete();
-				this->lightningEffect->setVisible(false);
-				break;
-			}
-			default:
-			{
-				this->lightningEffect->setVisible(false);
-				break;
-			}
-		}
-	});
-
+			this->lightningEffectSource->setPosition(Vec2::ZERO);
+			this->lightningEffectDest->setPosition(this->currentStretchPosition - thisPosition);
+			this->connectionPulse->setPosition(Vec2::ZERO);
+			this->connectionPulse->setVisible(true);
+			this->lightningEffectSource->playAnimations(false);
+		}),
+		MoveTo::create(0.25f, this->currentStretchPosition - thisPosition),
+		CallFunc::create([=]()
+		{
+			this->connectionPulse->setVisible(false);
+			this->lightningEffectDest->playAnimations(false);
+			onEffectComplete();
+		}),
+		nullptr
+	));
 }

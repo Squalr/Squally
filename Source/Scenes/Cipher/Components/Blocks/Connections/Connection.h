@@ -37,8 +37,10 @@ private:
 	cocos2d::Sprite* connectionLine;
 	cocos2d::Sprite* connectionCap;
 	cocos2d::Vec2 currentStretchPosition;
-	int lightningProgress;
-	Lightning* lightningEffect;
+
+	cocos2d::Sprite* connectionPulse;
+	Lightning* lightningEffectSource;
+	Lightning* lightningEffectDest;
 
 	bool trackBolt;
 	InputBolt* inputBolt;

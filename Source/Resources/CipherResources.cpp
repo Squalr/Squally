@@ -36,6 +36,7 @@ const std::string CipherResources::CipherMenuFrame = "Cipher/CipherMenuFrame.png
 const std::string CipherResources::Connections_ConnectButton = "Cipher/Connections/ConnectButton.png";
 const std::string CipherResources::Connections_ConnectionBolt = "Cipher/Connections/ConnectionBolt.png";
 const std::string CipherResources::Connections_ConnectionPlug = "Cipher/Connections/ConnectionPlug.png";
+const std::string CipherResources::Connections_ConnectionPulse = "Cipher/Connections/ConnectionPulse.png";
 const std::string CipherResources::Connections_ConnectionSegment = "Cipher/Connections/ConnectionSegment.png";
 const std::string CipherResources::Connections_ConnectionSegmentCap = "Cipher/Connections/ConnectionSegmentCap.png";
 const std::string CipherResources::Connections_HelperArrowInput = "Cipher/Connections/HelperArrowInput.png";
