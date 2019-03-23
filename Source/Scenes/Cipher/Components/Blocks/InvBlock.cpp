@@ -42,6 +42,16 @@ void InvBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char InvBlock::compute()
+{
+	if (this->currentInputs.size() < 1)
+	{
+		return char(0);
+	}
+
+	return ~this->currentInputs[0];
+}
+
 BlockBase* InvBlock::spawn()
 {
 	return InvBlock::create();

@@ -42,6 +42,16 @@ void AndBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char AndBlock::compute()
+{
+	if (this->currentInputs.size() < 2)
+	{
+		return char(0);
+	}
+
+	return this->currentInputs[0] & this->currentInputs[1];
+}
+
 BlockBase* AndBlock::spawn()
 {
 	return AndBlock::create();

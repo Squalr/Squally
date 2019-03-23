@@ -23,6 +23,8 @@ public:
 		Static,
 	};
 
+	void pushInput(char input);
+	void execute(std::function<void()> onExecuteComplete);
 	void removeConnections();
 
 protected:
@@ -38,11 +40,15 @@ protected:
 
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onBeforeStateChange(CipherState* cipherState) override;
+	virtual char compute() = 0;
 	virtual BlockBase* spawn() = 0;
 	bool isInGameArea();
 
 	ClickableNode* block;
 	BlockType blockType;
+
+	std::vector<char> currentInputs;
 
 private:
 	typedef CipherComponentBase super;

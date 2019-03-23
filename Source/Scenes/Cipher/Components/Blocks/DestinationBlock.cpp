@@ -32,7 +32,7 @@ DestinationBlock* DestinationBlock::create(int cipherIndex)
 DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 	this->cipherIndex = cipherIndex;
-	this->output = "";
+	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 	this->displayValue = ConstantString::create();
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->displayValue);
@@ -93,7 +93,7 @@ void DestinationBlock::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadDisplayValue(args->output);
+			this->charValue = this->cipherIndex < args->output.size() ? args->output[this->cipherIndex] : char(0);
 		}
 	}));
 
@@ -105,16 +105,13 @@ void DestinationBlock::initializeListeners()
 		{
 			this->displayDataType = args->displayDataType;
 
-			this->loadDisplayValue(this->output);
+			this->loadDisplayValue();
 		}
 	}));
 }
 
-void DestinationBlock::loadDisplayValue(std::string output)
+void DestinationBlock::loadDisplayValue()
 {
-	this->output = output;
-
-	char character = this->output[this->cipherIndex];
 	this->spriteAscii->setVisible(false);
 	this->spriteBin->setVisible(false);
 	this->spriteDec->setVisible(false);
@@ -125,29 +122,34 @@ void DestinationBlock::loadDisplayValue(std::string output)
 		default:
 		case CipherEvents::DisplayDataType::Ascii:
 		{
-			this->displayValue->setString(std::string(1, character));
+			this->displayValue->setString(std::string(1, this->charValue));
 			this->spriteAscii->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Bin:
 		{
-			this->displayValue->setString(HackUtils::toBinary8(int(character)));
+			this->displayValue->setString(HackUtils::toBinary8(int(this->charValue)));
 			this->spriteBin->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Dec:
 		{
-			this->displayValue->setString(std::to_string(int(character)));
+			this->displayValue->setString(std::to_string(int(this->charValue)));
 			this->spriteDec->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Hex:
 		{
-			this->displayValue->setString(HackUtils::toHex(int(character)));
+			this->displayValue->setString(HackUtils::toHex(int(this->charValue)));
 			this->spriteHex->setVisible(true);
 			break;
 		}
 	}
+}
+
+char DestinationBlock::compute()
+{
+	return this->charValue;
 }
 
 BlockBase* DestinationBlock::spawn()

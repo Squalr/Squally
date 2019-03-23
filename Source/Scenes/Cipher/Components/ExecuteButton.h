@@ -20,6 +20,8 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 	ClickableTextNode* executeButton;
+	CipherState* activeCipherState;
 };

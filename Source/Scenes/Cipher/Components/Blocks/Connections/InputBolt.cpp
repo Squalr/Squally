@@ -9,6 +9,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
 #include "Scenes/Cipher/Config.h"
@@ -18,17 +19,18 @@
 
 using namespace cocos2d;
 
-InputBolt* InputBolt::create()
+InputBolt* InputBolt::create(BlockBase* parentBlock)
 {
-	InputBolt* instance = new InputBolt();
+	InputBolt* instance = new InputBolt(parentBlock);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InputBolt::InputBolt()
+InputBolt::InputBolt(BlockBase* parentBlock)
 {
+	this->parentBlock = parentBlock;
 	this->bolt = Sprite::create(CipherResources::Connections_ConnectionPlug);
 	this->helperArrow = Sprite::create(CipherResources::Connections_HelperArrowInput);
 	this->inputDebug = true;
@@ -90,6 +92,19 @@ void InputBolt::initializeListeners()
 			}
 		}
 	}));
+}
+
+void InputBolt::execute(char value, std::function<void()> onExecuteComplete)
+{
+	if (this->parentBlock != nullptr)
+	{
+		this->parentBlock->pushInput(value);
+		this->parentBlock->execute(onExecuteComplete);
+	}
+	else
+	{
+		onExecuteComplete();
+	}
 }
 
 void InputBolt::setConnection(Connection* connection)

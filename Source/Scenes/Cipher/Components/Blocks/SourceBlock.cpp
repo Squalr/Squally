@@ -32,7 +32,7 @@ SourceBlock* SourceBlock::create(int cipherIndex)
 SourceBlock::SourceBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 	this->cipherIndex = cipherIndex;
-	this->input = "";
+	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 	this->displayValue = ConstantString::create();
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->displayValue);
@@ -82,17 +82,19 @@ void SourceBlock::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeActiveCipher, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeActiveCipher, [&](EventCustom* eventCustom)
 	{
 		CipherEvents::CipherChangeActiveCipherArgs* args = static_cast<CipherEvents::CipherChangeActiveCipherArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
-			this->loadDisplayValue(args->input);
+			this->charValue = this->cipherIndex < args->input.size() ? args->input[this->cipherIndex] : char(0);
+
+			this->loadDisplayValue();
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
 	{
 		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
 
@@ -100,15 +102,13 @@ void SourceBlock::initializeListeners()
 		{
 			this->displayDataType = args->displayDataType;
 
-			this->loadDisplayValue(this->input);
+			this->loadDisplayValue();
 		}
 	}));
 }
 
-void SourceBlock::loadDisplayValue(std::string input)
+void SourceBlock::loadDisplayValue()
 {
-	this->input = input;
-	char character = this->input[this->cipherIndex];
 	this->spriteAscii->setVisible(false);
 	this->spriteBin->setVisible(false);
 	this->spriteDec->setVisible(false);
@@ -119,29 +119,34 @@ void SourceBlock::loadDisplayValue(std::string input)
 		default:
 		case CipherEvents::DisplayDataType::Ascii:
 		{
-			this->displayValue->setString(std::string(1, character));
+			this->displayValue->setString(std::string(1, this->charValue));
 			this->spriteAscii->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Bin:
 		{
-			this->displayValue->setString(HackUtils::toBinary8(int(character)));
+			this->displayValue->setString(HackUtils::toBinary8(int(this->charValue)));
 			this->spriteBin->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Dec:
 		{
-			this->displayValue->setString(std::to_string(int(character)));
+			this->displayValue->setString(std::to_string(int(this->charValue)));
 			this->spriteDec->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Hex:
 		{
-			this->displayValue->setString(HackUtils::toHex(int(character)));
+			this->displayValue->setString(HackUtils::toHex(int(this->charValue)));
 			this->spriteHex->setVisible(true);
 			break;
 		}
 	}
+}
+
+char SourceBlock::compute()
+{
+	return this->charValue;
 }
 
 BlockBase* SourceBlock::spawn()

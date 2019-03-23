@@ -42,6 +42,16 @@ void OrBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char OrBlock::compute()
+{
+	if (this->currentInputs.size() < 2)
+	{
+		return char(0);
+	}
+
+	return this->currentInputs[0] | this->currentInputs[1];
+}
+
 BlockBase* OrBlock::spawn()
 {
 	return OrBlock::create();

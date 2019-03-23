@@ -84,6 +84,21 @@ void Connection::update(float dt)
 	}
 }
 
+void Connection::execute(char value, std::function<void()> onExecuteComplete)
+{
+	if (this->inputBolt != nullptr)
+	{
+		this->runElectricityEffect([=]()
+		{
+			this->inputBolt->execute(value, onExecuteComplete);
+		});
+	}
+	else
+	{
+		onExecuteComplete();
+	}
+}
+
 void Connection::setInputBolt(InputBolt* inputBolt, bool trackBolt)
 {
 	this->inputBolt = inputBolt;
@@ -117,7 +132,7 @@ InputBolt* Connection::getInputBolt()
 	return this->inputBolt;
 }
 
-void Connection::runElectricityEffect()
+void Connection::runElectricityEffect(std::function<void()> onEffectComplete)
 {
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 	this->lightningEffect->setVisible(true);
@@ -143,6 +158,11 @@ void Connection::runElectricityEffect()
 				break;
 			}
 			case 3:
+			{
+				onEffectComplete();
+				this->lightningEffect->setVisible(false);
+				break;
+			}
 			default:
 			{
 				this->lightningEffect->setVisible(false);

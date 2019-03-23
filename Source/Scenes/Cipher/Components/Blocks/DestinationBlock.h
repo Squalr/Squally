@@ -12,6 +12,7 @@ public:
 	static DestinationBlock* create(int cipherIndex);
 	
 protected:
+	char compute() override;
 	BlockBase* spawn() override;
 
 private:
@@ -22,13 +23,13 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void loadDisplayValue(std::string output);
+	void loadDisplayValue();
 
 	ConstantString* displayValue;
 	LocalizedLabel* displayLabel;
 
 	int cipherIndex;
-	std::string output;
+	char charValue;
 	CipherEvents::DisplayDataType displayDataType;
 
 	cocos2d::Sprite* spriteAscii;

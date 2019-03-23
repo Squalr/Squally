@@ -42,6 +42,16 @@ void SplitterBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
+char SplitterBlock::compute()
+{
+	if (this->currentInputs.size() < 1)
+	{
+		return char(0);
+	}
+
+	return this->currentInputs[0];
+}
+
 BlockBase* SplitterBlock::spawn()
 {
 	return SplitterBlock::create();

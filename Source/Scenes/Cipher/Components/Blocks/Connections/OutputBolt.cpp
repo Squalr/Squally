@@ -102,6 +102,18 @@ void OutputBolt::initializeListeners()
 	}));
 }
 
+void OutputBolt::execute(char value, std::function<void()> onExecuteComplete)
+{
+	if (this->connection != nullptr)
+	{
+		this->connection->execute(value, onExecuteComplete);
+	}
+	else
+	{
+		onExecuteComplete();
+	}
+}
+
 void OutputBolt::setConnection(Connection* connection)
 {
 	super::setConnection(connection);

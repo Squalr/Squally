@@ -8,6 +8,7 @@ public:
 	static ShlBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	char compute() override;
 	BlockBase* spawn() override;
 
 private:
