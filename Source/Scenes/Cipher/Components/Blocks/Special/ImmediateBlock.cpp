@@ -27,7 +27,7 @@ ImmediateBlock* ImmediateBlock::create(BlockType blockType)
 	return instance;
 }
 
-ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockAscii, CipherResources::Blocks_BlockAscii), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
+ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
 {
 	this->displayValue = ConstantString::create();
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->displayValue);

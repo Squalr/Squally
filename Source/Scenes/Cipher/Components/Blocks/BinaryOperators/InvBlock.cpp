@@ -22,7 +22,7 @@ InvBlock* InvBlock::create(BlockType blockType)
 	return instance;
 }
 
-InvBlock::InvBlock(BlockType blockType) : super(blockType, ConnectionType::Single, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockBin, CipherResources::Blocks_BlockBin), CipherResources::Icons_Invert, Strings::Cipher_Operations_INV::create())
+InvBlock::InvBlock(BlockType blockType) : super(blockType, ConnectionType::Single, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockPink, CipherResources::Blocks_BlockPink), CipherResources::Icons_Invert, Strings::Cipher_Operations_INV::create())
 {
 }
 
