@@ -10,6 +10,7 @@ const std::string CipherEvents::EventOpenCipher = "EVENT_OPEN_CIPHER";
 const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SPAWN";
 const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_REQUEST_CONNECTION_SPAWN";
 const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDATED";
+const std::string CipherEvents::EventConnectionDestroy = "EVENT_CONNECTION_DESTROY";
 const std::string CipherEvents::EventShowAsciiTable = "EVENT_SHOW_ASCII_TABLE";
 const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_CIPHER";
 const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
@@ -50,6 +51,14 @@ void CipherEvents::TriggerConnectionUpdated(CipherConnectionUpdatedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventConnectionUpdated,
+		&args
+	);
+}
+
+void CipherEvents::TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventConnectionDestroy,
 		&args
 	);
 }
