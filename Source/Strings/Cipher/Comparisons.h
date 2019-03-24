@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Cipher_Numeric : public LocalizedString
+	class Cipher_Comparisons : public LocalizedString
 	{
 	public:
-		static Cipher_Numeric* create();
+		static Cipher_Comparisons* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Numeric();
-		~Cipher_Numeric();
+		Cipher_Comparisons();
+		~Cipher_Comparisons();
 	};
 }

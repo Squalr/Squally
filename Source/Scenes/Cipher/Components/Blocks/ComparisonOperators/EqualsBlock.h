@@ -2,10 +2,10 @@
 
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
-class Equals : public BlockBase
+class EqualsBlock : public BlockBase
 {
 public:
-	static Equals* create(BlockType blockType = BlockType::Normal);
+	static EqualsBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
 	char compute() override;
@@ -13,8 +13,8 @@ protected:
 
 private:
 	typedef BlockBase super;
-	Equals(BlockType blockType);
-	~Equals();
+	EqualsBlock(BlockType blockType);
+	~EqualsBlock();
 
 	void onEnter() override;
 	void initializePositions() override;

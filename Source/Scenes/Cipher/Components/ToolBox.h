@@ -9,6 +9,7 @@ class BruteForceBlock;
 class CshlBlock;
 class CshrBlock;
 class DivBlock;
+class EqualsBlock;
 class ImmediateBlock;
 class InvBlock;
 class LocalizedLabel;
@@ -46,6 +47,7 @@ private:
 	CshlBlock* cshlBlock;
 	CshrBlock* cshrBlock;
 	DivBlock* divBlock;
+	EqualsBlock* equalsBlock;
 	ImmediateBlock* immediateBlock;
 	InvBlock* invBlock;
 	ModBlock* modBlock;
@@ -57,13 +59,13 @@ private:
 	SubBlock* subBlock;
 	XorBlock* xorBlock;
 	LocalizedLabel* cipherToolsLabel;
-	LocalizedLabel* numericLabel;
+	LocalizedLabel* specialLabel;
 	LocalizedLabel* binaryOperatorsLabel;
 	LocalizedLabel* basicOperatorsLabel;
-	LocalizedLabel* specialLabel;
+	LocalizedLabel* comparisonLabel;
 
-	std::vector<BlockBase*> numericBlocks;
-	std::vector<BlockBase*> binaryOperatorBlocks;
-	std::vector<BlockBase*> basicOperatorsBlocks;
 	std::vector<BlockBase*> specialBlocks;
+	std::vector<BlockBase*> binaryOperatorBlocks;
+	std::vector<BlockBase*> basicOperatorBlocks;
+	std::vector<BlockBase*> comparisonBlocks;
 };
