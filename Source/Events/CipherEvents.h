@@ -19,6 +19,7 @@ public:
 	static const std::string EventRequestBlockSpawn;
 	static const std::string EventRequestConnectionCreate;
 	static const std::string EventConnectionUpdated;
+	static const std::string EventConnectionDestroy;
 	static const std::string EventShowAsciiTable;
 	static const std::string EventChangeActiveCipher;
 	static const std::string EventChangeDisplayDataType;
@@ -72,6 +73,15 @@ public:
 		}
 	};
 
+	struct CipherConnectionDestroyArgs
+	{
+		InputBolt* inputBolt;
+
+		CipherConnectionDestroyArgs(InputBolt* inputBolt) : inputBolt(inputBolt)
+		{
+		}
+	};
+
 	struct CipherChangeActiveCipherArgs
 	{
 		std::string input;
@@ -104,6 +114,7 @@ public:
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
 	static void TriggerConnectionUpdated(CipherConnectionUpdatedArgs args);
+	static void TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs args);
 	static void TriggerShowAsciiTable();
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);

@@ -7,13 +7,23 @@
 namespace CipherResources
 {
 	extern const std::string Blocks_BlockAscii;
+	extern const std::string Blocks_BlockAsciiHuge;
 	extern const std::string Blocks_BlockAsciiLong;
 	extern const std::string Blocks_BlockBin;
+	extern const std::string Blocks_BlockBinHuge;
 	extern const std::string Blocks_BlockBinLong;
 	extern const std::string Blocks_BlockDec;
+	extern const std::string Blocks_BlockDecHuge;
 	extern const std::string Blocks_BlockDecLong;
+	extern const std::string Blocks_BlockGreen;
 	extern const std::string Blocks_BlockHex;
+	extern const std::string Blocks_BlockHexHuge;
 	extern const std::string Blocks_BlockHexLong;
+	extern const std::string Blocks_BlockPink;
+	extern const std::string Blocks_BlockPurple;
+	extern const std::string Blocks_BlockRed;
+	extern const std::string Blocks_BlockTeal;
+	extern const std::string Blocks_BlockYellow;
 	extern const std::string Buttons_AsciiButton;
 	extern const std::string Buttons_AsciiButtonActive;
 	extern const std::string Buttons_AsciiButtonSelected;

@@ -6,13 +6,23 @@
 #include <string>
 
 const std::string CipherResources::Blocks_BlockAscii = "Cipher/Blocks/BlockAscii.png";
+const std::string CipherResources::Blocks_BlockAsciiHuge = "Cipher/Blocks/BlockAsciiHuge.png";
 const std::string CipherResources::Blocks_BlockAsciiLong = "Cipher/Blocks/BlockAsciiLong.png";
 const std::string CipherResources::Blocks_BlockBin = "Cipher/Blocks/BlockBin.png";
+const std::string CipherResources::Blocks_BlockBinHuge = "Cipher/Blocks/BlockBinHuge.png";
 const std::string CipherResources::Blocks_BlockBinLong = "Cipher/Blocks/BlockBinLong.png";
 const std::string CipherResources::Blocks_BlockDec = "Cipher/Blocks/BlockDec.png";
+const std::string CipherResources::Blocks_BlockDecHuge = "Cipher/Blocks/BlockDecHuge.png";
 const std::string CipherResources::Blocks_BlockDecLong = "Cipher/Blocks/BlockDecLong.png";
+const std::string CipherResources::Blocks_BlockGreen = "Cipher/Blocks/BlockGreen.png";
 const std::string CipherResources::Blocks_BlockHex = "Cipher/Blocks/BlockHex.png";
+const std::string CipherResources::Blocks_BlockHexHuge = "Cipher/Blocks/BlockHexHuge.png";
 const std::string CipherResources::Blocks_BlockHexLong = "Cipher/Blocks/BlockHexLong.png";
+const std::string CipherResources::Blocks_BlockPink = "Cipher/Blocks/BlockPink.png";
+const std::string CipherResources::Blocks_BlockPurple = "Cipher/Blocks/BlockPurple.png";
+const std::string CipherResources::Blocks_BlockRed = "Cipher/Blocks/BlockRed.png";
+const std::string CipherResources::Blocks_BlockTeal = "Cipher/Blocks/BlockTeal.png";
+const std::string CipherResources::Blocks_BlockYellow = "Cipher/Blocks/BlockYellow.png";
 const std::string CipherResources::Buttons_AsciiButton = "Cipher/Buttons/AsciiButton.png";
 const std::string CipherResources::Buttons_AsciiButtonActive = "Cipher/Buttons/AsciiButtonActive.png";
 const std::string CipherResources::Buttons_AsciiButtonSelected = "Cipher/Buttons/AsciiButtonSelected.png";

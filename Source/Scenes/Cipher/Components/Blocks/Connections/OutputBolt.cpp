@@ -100,6 +100,19 @@ void OutputBolt::initializeListeners()
 			}
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionDestroy, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherConnectionDestroyArgs* args = static_cast<CipherEvents::CipherConnectionDestroyArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			if (this->connection != nullptr && this->connection->getInputBolt() == args->inputBolt)
+			{
+				this->setConnection(nullptr);
+			}
+		}
+	}));
 }
 
 void OutputBolt::execute(char value, std::function<void()> onExecuteComplete)

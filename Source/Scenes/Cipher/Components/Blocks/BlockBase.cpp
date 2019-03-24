@@ -83,24 +83,24 @@ void BlockBase::initializePositions()
 
 	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
 	{
-		this->inputBolts[0]->setPosition(Vec2(0.0f, 32.0f));
+		this->inputBolts[0]->setPosition(Vec2(0.0f, this->getBoltOffsetY()));
 	}
 	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
 	{
-		this->inputBolts[0]->setPosition(Vec2(-16.0f, 32.0f));
-		this->inputBolts[1]->setPosition(Vec2(16.0f, 32.0f));
+		this->inputBolts[0]->setPosition(Vec2(-16.0f, this->getBoltOffsetY()));
+		this->inputBolts[1]->setPosition(Vec2(16.0f, this->getBoltOffsetY()));
 	}
 
 	this->icon->setPosition(Vec2(0.0f, 4.0f));
 
 	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
 	{
-		this->outputBolts[0]->setPosition(Vec2(0.0f, -32.0f));
+		this->outputBolts[0]->setPosition(Vec2(0.0f, -this->getBoltOffsetY()));
 	}
 	else if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Double)
 	{
-		this->outputBolts[0]->setPosition(Vec2(-16.0f, -32.0f));
-		this->outputBolts[1]->setPosition(Vec2(16.0f, -32.0f));
+		this->outputBolts[0]->setPosition(Vec2(-16.0f, -this->getBoltOffsetY()));
+		this->outputBolts[1]->setPosition(Vec2(16.0f, -this->getBoltOffsetY()));
 	}
 	
 	this->label->setPosition(Vec2(0.0f, 48.0f));
@@ -230,14 +230,14 @@ void BlockBase::pushInput(char input)
 
 void BlockBase::execute(std::function<void()> onExecuteComplete)
 {
+	this->receivedValue = this->compute();
+	
 	// Only perform execution when the total input count has been reached
 	if (this->outputBolts.size() > 0 && this->currentInputs.size() == this->inputBolts.size())
 	{
-		char value = this->compute();
-
 		for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
 		{
-			(*it)->execute(value, onExecuteComplete);
+			(*it)->execute(this->receivedValue, onExecuteComplete);
 		}
 	}
 	else
@@ -248,4 +248,19 @@ void BlockBase::execute(std::function<void()> onExecuteComplete)
 
 void BlockBase::removeConnections()
 {
+	for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)
+	{
+		CipherEvents::TriggerDestroyConnectionToInput(*it);
+		(*it)->setConnection(nullptr);
+	}
+
+	for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+	{
+		(*it)->setConnection(nullptr);
+	}
+}
+
+float BlockBase::getBoltOffsetY()
+{
+	return 32.0f;
 }
