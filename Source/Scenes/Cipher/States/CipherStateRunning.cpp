@@ -3,8 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Scenes/Cipher/Components/Blocks/SourceBlock.h"
-#include "Scenes/Cipher/Components/Blocks/ImmediateBlock.h"
+#include "Scenes/Cipher/Components/Blocks/Blocks.h"
 
 using namespace cocos2d;
 

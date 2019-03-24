@@ -22,7 +22,7 @@ SplitterBlock* SplitterBlock::create(BlockType blockType)
 	return instance;
 }
 
-SplitterBlock::SplitterBlock(BlockType blockType) : super(blockType, ConnectionType::Single, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockBin, CipherResources::Blocks_BlockBin), CipherResources::Icons_Splitter, Strings::Cipher_Operations_SHR::create())
+SplitterBlock::SplitterBlock(BlockType blockType) : super(blockType, ConnectionType::Single, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockYellow, CipherResources::Blocks_BlockYellow), CipherResources::Icons_Splitter, Strings::Cipher_Operations_SHR::create())
 {
 }
 

@@ -15,6 +15,7 @@ class LocalizedLabel;
 class ModBlock;
 class MulBlock;
 class OrBlock;
+class ScrollPane;
 class ShlBlock;
 class ShrBlock;
 class SplitterBlock;
@@ -38,6 +39,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 
+	ScrollPane* scrollPane;
 	AddBlock* addBlock;
 	AndBlock* andBlock;
 	BruteForceBlock* bruteForceBlock;
@@ -55,6 +57,13 @@ private:
 	SubBlock* subBlock;
 	XorBlock* xorBlock;
 	LocalizedLabel* cipherToolsLabel;
+	LocalizedLabel* numericLabel;
+	LocalizedLabel* binaryOperatorsLabel;
+	LocalizedLabel* basicOperatorsLabel;
+	LocalizedLabel* specialLabel;
 
-	std::vector<BlockBase*> blocks;
+	std::vector<BlockBase*> numericBlocks;
+	std::vector<BlockBase*> binaryOperatorBlocks;
+	std::vector<BlockBase*> basicOperatorsBlocks;
+	std::vector<BlockBase*> specialBlocks;
 };
