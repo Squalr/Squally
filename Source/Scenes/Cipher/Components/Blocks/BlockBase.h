@@ -55,6 +55,7 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
+	BlockBase* spawningBlock;
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
 	std::vector<InputBolt*> inputBolts;

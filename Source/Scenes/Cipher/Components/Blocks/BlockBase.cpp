@@ -33,6 +33,7 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->inputBolts = std::vector<InputBolt*>();
 	this->outputBolts = std::vector<OutputBolt*>();
 	this->currentInputs = std::vector<char>();
+	this->spawningBlock = nullptr;
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
@@ -120,6 +121,12 @@ void BlockBase::initializeListeners()
 		}
 		case BlockType::Normal:
 		{
+			this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				this->originalPosition = this->getPosition();
+				this->clickDelta = this->originalPosition - args->mouseCoords;
+			});
+
 			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
 			{
 				if (!this->isInGameArea())
@@ -130,24 +137,50 @@ void BlockBase::initializeListeners()
 					GameUtils::changeParent(this, nullptr, false);
 				}
 			});
+
+			this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				this->setPosition(args->mouseCoords + this->clickDelta);
+			});
 			break;
 		}
 		case BlockType::Toolbox:
 		{
-			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
 			{
-				if (this->isInGameArea())
-				{
-					CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs([=](){ return this->spawn(); }, args->mouseCoords + this->clickDelta));
-				}
+				this->originalPosition = GameUtils::getScreenBounds(this).origin;
+				this->clickDelta = this->originalPosition - args->mouseCoords;
 
-				this->setOpacity(0);
+				CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs([=]()
+				{
+					this->spawningBlock = this->spawn();
+
+					return this->spawningBlock;
+				}, args->mouseCoords + this->clickDelta));
+
 				this->label->stopAllActions();
 				this->label->setOpacity(0);
-				this->runAction(FadeTo::create(0.5f, 255));
-				this->setPosition(this->originalPosition);
 
 				MouseEvents::TriggerMouseRefresh(*args);
+			});
+
+			this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				if (this->spawningBlock != nullptr)
+				{
+					this->spawningBlock->setPosition(args->mouseCoords + this->clickDelta);
+				}
+			});
+
+			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+			{
+				if (this->spawningBlock != nullptr && !this->spawningBlock->isInGameArea())
+				{
+					// Despawn out-of-bounds nodes
+					GameUtils::changeParent(this->spawningBlock, nullptr, false);
+				}
+
+				this->spawningBlock = nullptr;
 			});
 
 			this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
@@ -160,30 +193,6 @@ void BlockBase::initializeListeners()
 			{
 				this->label->stopAllActions();
 				this->label->runAction(FadeTo::create(0.25f, 0));
-			});
-			break;
-		}
-	}
-
-	switch (this->blockType)
-	{
-		default:
-		case BlockType::Static:
-		{
-			break;
-		}
-		case BlockType::Normal:
-		case BlockType::Toolbox:
-		{
-			this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
-			{
-				this->originalPosition = this->getPosition();
-				this->clickDelta = this->originalPosition - args->mouseCoords;
-			});
-
-			this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
-			{
-				this->setPosition(args->mouseCoords + this->clickDelta);
 			});
 			break;
 		}
@@ -210,7 +219,7 @@ bool BlockBase::isInGameArea()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 center = Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f);
-	Vec2 thisPosition = this->getPosition();
+	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 
 	if (thisPosition.x > center.x - Config::GameAreaWidth / 2.0f &&
 		thisPosition.x < center.x + Config::GameAreaWidth / 2.0f &&

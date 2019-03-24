@@ -12,7 +12,7 @@
 #include "Scenes/Cipher/Components/Blocks/BinaryOperators/ShlBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BinaryOperators/ShrBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BinaryOperators/XorBlock.h"
-#include "Scenes/Cipher/Components/Blocks/ComparisonOperators/Equals.h"
+#include "Scenes/Cipher/Components/Blocks/ComparisonOperators/EqualsBlock.h"
 #include "Scenes/Cipher/Components/Blocks/Numeric/BruteForceBlock.h"
 #include "Scenes/Cipher/Components/Blocks/Numeric/DestinationBlock.h"
 #include "Scenes/Cipher/Components/Blocks/Numeric/ImmediateBlock.h"

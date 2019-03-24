@@ -377,6 +377,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		{
 			if (this->mousePressEvent != nullptr)
 			{
+				GameUtils::intersects(this, Vec2(args->mouseCoords));
 				this->mousePressEvent(args);
 			}
 

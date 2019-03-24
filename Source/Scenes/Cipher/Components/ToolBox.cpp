@@ -16,7 +16,7 @@
 
 #include "Strings/Cipher/BasicOperators.h"
 #include "Strings/Cipher/BinaryOperators.h"
-#include "Strings/Cipher/Numeric.h"
+#include "Strings/Cipher/Comparisons.h"
 #include "Strings/Cipher/Special.h"
 #include "Strings/Cipher/Tools.h"
 
@@ -40,6 +40,7 @@ ToolBox::ToolBox()
 	this->cshlBlock = CshlBlock::create(BlockBase::BlockType::Toolbox);
 	this->cshrBlock = CshrBlock::create(BlockBase::BlockType::Toolbox);
 	this->divBlock = DivBlock::create(BlockBase::BlockType::Toolbox);
+	this->equalsBlock = EqualsBlock::create(BlockBase::BlockType::Toolbox);
 	this->immediateBlock = ImmediateBlock::create(BlockBase::BlockType::Toolbox);
 	this->invBlock = InvBlock::create(BlockBase::BlockType::Toolbox);
 	this->modBlock = ModBlock::create(BlockBase::BlockType::Toolbox);
@@ -51,15 +52,16 @@ ToolBox::ToolBox()
 	this->subBlock = SubBlock::create(BlockBase::BlockType::Toolbox);
 	this->xorBlock = XorBlock::create(BlockBase::BlockType::Toolbox);
 	this->scrollPane = ScrollPane::create(Size(312.0f, 312.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
-	this->numericLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_Numeric::create());
-	this->binaryOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_BinaryOperators::create());
-	this->basicOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_BasicOperators::create());
-	this->specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_Special::create());
-
-	this->numericBlocks = std::vector<BlockBase*>(
+	this->specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Special::create());
+	this->binaryOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_BinaryOperators::create());
+	this->basicOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_BasicOperators::create());
+	this->comparisonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Comparisons::create());
+	
+	this->specialBlocks = std::vector<BlockBase*>(
 	{
 		this->immediateBlock,
 		this->bruteForceBlock,
+		this->splitterBlock,
 	});
 
 	this->binaryOperatorBlocks = std::vector<BlockBase*>(
@@ -75,7 +77,7 @@ ToolBox::ToolBox()
 		this->cshrBlock,
 	});
 
-	this->basicOperatorsBlocks = std::vector<BlockBase*>(
+	this->basicOperatorBlocks = std::vector<BlockBase*>(
 	{
 		this->addBlock,
 		this->subBlock,
@@ -84,18 +86,23 @@ ToolBox::ToolBox()
 		this->modBlock,
 	});
 
-	this->specialBlocks = std::vector<BlockBase*>(
+	this->comparisonBlocks = std::vector<BlockBase*>(
 	{
-		this->splitterBlock,
+		this->equalsBlock,
 	});
 
 	this->cipherToolsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
-	this->numericLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->specialLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->binaryOperatorsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->basicOperatorsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->specialLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->comparisonLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
-	for (auto it = this->numericBlocks.begin(); it != this->numericBlocks.end(); it++)
+	this->scrollPane->addChild(this->specialLabel);
+	this->scrollPane->addChild(this->basicOperatorsLabel);
+	this->scrollPane->addChild(this->binaryOperatorsLabel);
+	this->scrollPane->addChild(this->comparisonLabel);
+
+	for (auto it = this->specialBlocks.begin(); it != this->specialBlocks.end(); it++)
 	{
 		this->scrollPane->addChild(*it);
 	}
@@ -105,20 +112,16 @@ ToolBox::ToolBox()
 		this->scrollPane->addChild(*it);
 	}
 	
-	for (auto it = this->basicOperatorsBlocks.begin(); it != this->basicOperatorsBlocks.end(); it++)
+	for (auto it = this->basicOperatorBlocks.begin(); it != this->basicOperatorBlocks.end(); it++)
 	{
 		this->scrollPane->addChild(*it);
 	}
 	
-	for (auto it = this->specialBlocks.begin(); it != this->specialBlocks.end(); it++)
+	for (auto it = this->comparisonBlocks.begin(); it != this->comparisonBlocks.end(); it++)
 	{
 		this->scrollPane->addChild(*it);
 	}
 
-	this->scrollPane->addChild(this->numericLabel);
-	this->scrollPane->addChild(this->basicOperatorsLabel);
-	this->scrollPane->addChild(this->binaryOperatorsLabel);
-	this->scrollPane->addChild(this->specialLabel);
 	this->addChild(this->scrollPane);
 	this->addChild(this->cipherToolsLabel);
 }
@@ -141,10 +144,10 @@ void ToolBox::initializePositions()
 	this->cipherToolsLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + 450.0f));
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f +  232.0f));
 
-	this->numericLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, 0.0f));
+	this->specialLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, 0.0f));
 	int index = 0;
 
-	for (auto it = this->numericBlocks.begin(); it != this->numericBlocks.end(); it++, index++)
+	for (auto it = this->specialBlocks.begin(); it != this->specialBlocks.end(); it++, index++)
 	{
 		int x = index % 4;
 		int y = index / 4;
@@ -155,10 +158,10 @@ void ToolBox::initializePositions()
 	this->basicOperatorsLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, -128.0f));
 	index = 0;
 
-	for (auto it = this->basicOperatorsBlocks.begin(); it != this->basicOperatorsBlocks.end(); it++, index++)
+	for (auto it = this->basicOperatorBlocks.begin(); it != this->basicOperatorBlocks.end(); it++, index++)
 	{
-		int x = index % 4;
-		int y = index / 4;
+		int x = (index >= 2 ? index + 2 : index) % 4;
+		int y = (index >= 2 ? index + 2 : index) / 4;
 
 		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -128.0f - 56.0f - float(y) * 72.0f));
 	}
@@ -174,10 +177,10 @@ void ToolBox::initializePositions()
 		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -328.0f - 56.0f - float(y) * 72.0f));
 	}
 
-	this->specialLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, -512.0f));
+	this->comparisonLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, -512.0f));
 	index = 0;
 
-	for (auto it = this->specialBlocks.begin(); it != this->specialBlocks.end(); it++, index++)
+	for (auto it = this->comparisonBlocks.begin(); it != this->comparisonBlocks.end(); it++, index++)
 	{
 		int x = index % 4;
 		int y = index / 4;
