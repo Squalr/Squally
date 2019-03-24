@@ -51,6 +51,8 @@ protected:
 	char receivedValue;
 
 	std::vector<char> currentInputs;
+	std::vector<InputBolt*> inputBolts;
+	std::vector<OutputBolt*> outputBolts;
 
 private:
 	typedef CipherComponentBase super;
@@ -58,8 +60,6 @@ private:
 	BlockBase* spawningBlock;
 	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
-	std::vector<InputBolt*> inputBolts;
-	std::vector<OutputBolt*> outputBolts;
 	
 	ConnectionType inputType;
 	ConnectionType outputType;

@@ -22,24 +22,12 @@ EqualsBlock* EqualsBlock::create(BlockType blockType)
 	return instance;
 }
 
-EqualsBlock::EqualsBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_Equals, Strings::Cipher_Operations_SHR::create())
+EqualsBlock::EqualsBlock(BlockType blockType) : super(blockType, CipherResources::Icons_Equals, Strings::Cipher_Operations_SHR::create())
 {
 }
 
 EqualsBlock::~EqualsBlock()
 {
-}
-
-void EqualsBlock::onEnter()
-{
-	super::onEnter();
-}
-
-void EqualsBlock::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 char EqualsBlock::compute()
@@ -55,4 +43,9 @@ char EqualsBlock::compute()
 BlockBase* EqualsBlock::spawn()
 {
 	return EqualsBlock::create();
+}
+
+bool EqualsBlock::compare(char inputA, char inputB)
+{
+	return inputA == inputB;
 }

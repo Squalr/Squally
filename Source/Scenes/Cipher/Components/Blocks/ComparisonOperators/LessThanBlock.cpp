@@ -22,24 +22,12 @@ LessThanBlock* LessThanBlock::create(BlockType blockType)
 	return instance;
 }
 
-LessThanBlock::LessThanBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_LessThan, Strings::Cipher_Operations_SHR::create())
+LessThanBlock::LessThanBlock(BlockType blockType) : super(blockType, CipherResources::Icons_LessThan, Strings::Cipher_Operations_SHR::create())
 {
 }
 
 LessThanBlock::~LessThanBlock()
 {
-}
-
-void LessThanBlock::onEnter()
-{
-	super::onEnter();
-}
-
-void LessThanBlock::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 char LessThanBlock::compute()
@@ -55,4 +43,9 @@ char LessThanBlock::compute()
 BlockBase* LessThanBlock::spawn()
 {
 	return LessThanBlock::create();
+}
+
+bool LessThanBlock::compare(char inputA, char inputB)
+{
+	return inputA < inputB;
 }

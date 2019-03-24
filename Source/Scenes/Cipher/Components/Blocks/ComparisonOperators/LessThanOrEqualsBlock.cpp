@@ -22,24 +22,12 @@ LessThanOrEqualsBlock* LessThanOrEqualsBlock::create(BlockType blockType)
 	return instance;
 }
 
-LessThanOrEqualsBlock::LessThanOrEqualsBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_LessThanOrEquals, Strings::Cipher_Operations_SHR::create())
+LessThanOrEqualsBlock::LessThanOrEqualsBlock(BlockType blockType) : super(blockType, CipherResources::Icons_LessThanOrEquals, Strings::Cipher_Operations_SHR::create())
 {
 }
 
 LessThanOrEqualsBlock::~LessThanOrEqualsBlock()
 {
-}
-
-void LessThanOrEqualsBlock::onEnter()
-{
-	super::onEnter();
-}
-
-void LessThanOrEqualsBlock::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 char LessThanOrEqualsBlock::compute()
@@ -55,4 +43,9 @@ char LessThanOrEqualsBlock::compute()
 BlockBase* LessThanOrEqualsBlock::spawn()
 {
 	return LessThanOrEqualsBlock::create();
+}
+
+bool LessThanOrEqualsBlock::compare(char inputA, char inputB)
+{
+	return inputA <= inputB;
 }
