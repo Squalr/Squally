@@ -22,7 +22,7 @@ EqualsBlock* EqualsBlock::create(BlockType blockType)
 	return instance;
 }
 
-EqualsBlock::EqualsBlock(BlockType blockType) : super(blockType, ConnectionType::Single, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockYellow, CipherResources::Blocks_BlockYellow), CipherResources::Icons_Splitter, Strings::Cipher_Operations_SHR::create())
+EqualsBlock::EqualsBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_Equals, Strings::Cipher_Operations_SHR::create())
 {
 }
 

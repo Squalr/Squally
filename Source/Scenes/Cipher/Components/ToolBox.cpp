@@ -41,10 +41,15 @@ ToolBox::ToolBox()
 	this->cshrBlock = CshrBlock::create(BlockBase::BlockType::Toolbox);
 	this->divBlock = DivBlock::create(BlockBase::BlockType::Toolbox);
 	this->equalsBlock = EqualsBlock::create(BlockBase::BlockType::Toolbox);
+	this->greaterThanBlock = GreaterThanBlock::create(BlockBase::BlockType::Toolbox);
+	this->greaterThanOrEqualsBlock = GreaterThanOrEqualsBlock::create(BlockBase::BlockType::Toolbox);
 	this->immediateBlock = ImmediateBlock::create(BlockBase::BlockType::Toolbox);
 	this->invBlock = InvBlock::create(BlockBase::BlockType::Toolbox);
+	this->lessThanBlock = LessThanBlock::create(BlockBase::BlockType::Toolbox);
+	this->lessThanOrEqualsBlock = LessThanOrEqualsBlock::create(BlockBase::BlockType::Toolbox);
 	this->modBlock = ModBlock::create(BlockBase::BlockType::Toolbox);
 	this->mulBlock = MulBlock::create(BlockBase::BlockType::Toolbox);
+	this->notEqualsBlock = NotEqualsBlock::create(BlockBase::BlockType::Toolbox);
 	this->orBlock = OrBlock::create(BlockBase::BlockType::Toolbox);
 	this->shlBlock = ShlBlock::create(BlockBase::BlockType::Toolbox);
 	this->shrBlock = ShrBlock::create(BlockBase::BlockType::Toolbox);
@@ -89,6 +94,12 @@ ToolBox::ToolBox()
 	this->comparisonBlocks = std::vector<BlockBase*>(
 	{
 		this->equalsBlock,
+		this->notEqualsBlock,
+		
+		this->lessThanOrEqualsBlock,
+		this->lessThanBlock,
+		this->greaterThanBlock,
+		this->greaterThanOrEqualsBlock,
 	});
 
 	this->cipherToolsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -182,8 +193,8 @@ void ToolBox::initializePositions()
 
 	for (auto it = this->comparisonBlocks.begin(); it != this->comparisonBlocks.end(); it++, index++)
 	{
-		int x = index % 4;
-		int y = index / 4;
+		int x = (index >= 2 ? index + 2 : index) % 4;
+		int y = (index >= 2 ? index + 2 : index) / 4;
 
 		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -512.0f - 56.0f - float(y) * 72.0f));
 	}
