@@ -22,24 +22,12 @@ NotEqualsBlock* NotEqualsBlock::create(BlockType blockType)
 	return instance;
 }
 
-NotEqualsBlock::NotEqualsBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_NotEquals, Strings::Cipher_Operations_SHR::create())
+NotEqualsBlock::NotEqualsBlock(BlockType blockType) : super(blockType, CipherResources::Icons_NotEquals, Strings::Cipher_Operations_SHR::create())
 {
 }
 
 NotEqualsBlock::~NotEqualsBlock()
 {
-}
-
-void NotEqualsBlock::onEnter()
-{
-	super::onEnter();
-}
-
-void NotEqualsBlock::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 char NotEqualsBlock::compute()
@@ -55,4 +43,9 @@ char NotEqualsBlock::compute()
 BlockBase* NotEqualsBlock::spawn()
 {
 	return NotEqualsBlock::create();
+}
+
+bool NotEqualsBlock::compare(char inputA, char inputB)
+{
+	return inputA != inputB;
 }

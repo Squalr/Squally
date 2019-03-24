@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Cipher/Components/Blocks/BlockBase.h"
+#include "Scenes/Cipher/Components/Blocks/ComparisonOperators/ComparisonBlockBase.h"
 
-class EqualsBlock : public BlockBase
+class EqualsBlock : public ComparisonBlockBase
 {
 public:
 	static EqualsBlock* create(BlockType blockType = BlockType::Normal);
@@ -10,12 +10,10 @@ public:
 protected:
 	char compute() override;
 	BlockBase* spawn() override;
+	bool compare(char inputA, char inputB) override;
 
 private:
-	typedef BlockBase super;
+	typedef ComparisonBlockBase super;
 	EqualsBlock(BlockType blockType);
 	~EqualsBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

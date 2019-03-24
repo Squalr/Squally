@@ -22,24 +22,12 @@ GreaterThanBlock* GreaterThanBlock::create(BlockType blockType)
 	return instance;
 }
 
-GreaterThanBlock::GreaterThanBlock(BlockType blockType) : super(blockType, ConnectionType::Double, ConnectionType::Double, ClickableNode::create(CipherResources::Blocks_BlockDec, CipherResources::Blocks_BlockDec), CipherResources::Icons_GreaterThan, Strings::Cipher_Operations_SHR::create())
+GreaterThanBlock::GreaterThanBlock(BlockType blockType) : super(blockType, CipherResources::Icons_GreaterThan, Strings::Cipher_Operations_SHR::create())
 {
 }
 
 GreaterThanBlock::~GreaterThanBlock()
 {
-}
-
-void GreaterThanBlock::onEnter()
-{
-	super::onEnter();
-}
-
-void GreaterThanBlock::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 char GreaterThanBlock::compute()
@@ -55,4 +43,9 @@ char GreaterThanBlock::compute()
 BlockBase* GreaterThanBlock::spawn()
 {
 	return GreaterThanBlock::create();
+}
+
+bool GreaterThanBlock::compare(char inputA, char inputB)
+{
+	return inputA > inputB;
 }
