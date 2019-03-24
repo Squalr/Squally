@@ -14,10 +14,8 @@
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
+#include "Scenes/Cipher/Components/Blocks/Blocks.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
-#include "Scenes/Cipher/Components/Blocks/DestinationBlock.h"
-#include "Scenes/Cipher/Components/Blocks/ImmediateBlock.h"
-#include "Scenes/Cipher/Components/Blocks/SourceBlock.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
