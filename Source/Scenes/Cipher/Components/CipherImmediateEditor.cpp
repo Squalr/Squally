@@ -2,6 +2,8 @@
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Events/MouseEvents.h"
@@ -11,6 +13,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/RadioButton.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/Special/ImmediateBlock.h"
 #include "Scenes/Cipher/Config.h"
@@ -134,6 +137,18 @@ void CipherImmediateEditor::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->displayDataType = args->displayDataType;
+
+			this->onTextChanged(this->inputText->getString());
+		}
+	}));
+
 	this->toggleButtonBin->setCheckCallback([=](RadioButton*)
 	{
 		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Bin));
@@ -154,6 +169,7 @@ void CipherImmediateEditor::initializeListeners()
 	{
 		this->close();
 	});
+	this->inputText->setStringChangeCallback(CC_CALLBACK_1(CipherImmediateEditor::onTextChanged, this));
 }
 
 void CipherImmediateEditor::onBeforeStateChange(CipherState* cipherState)
@@ -166,6 +182,106 @@ void CipherImmediateEditor::onAnyStateChange(CipherState* cipherState)
 	super::onAnyStateChange(cipherState);
 }
 
+void CipherImmediateEditor::onTextChanged(std::string newString)
+{	
+	unsigned char value = (unsigned char)(0);
+
+	if (!newString.empty())
+	{
+		switch(this->displayDataType)
+		{
+			default:
+			case CipherEvents::DisplayDataType::Ascii:
+			{
+				if (newString.size() == 1)
+				{
+					value = newString[0];
+					this->inputText->setTextColor(Color4B::WHITE);
+				}
+				else
+				{
+					this->inputText->setTextColor(Color4B::RED);
+				}
+				break;
+			}
+			case CipherEvents::DisplayDataType::Bin:
+			{
+				if (newString.find_last_not_of("01") == std::string::npos)
+				{
+					int temp = std::stoi(newString, nullptr, 2);
+
+					if (temp <= 255)
+					{
+						value = (unsigned char)(temp);
+						this->inputText->setTextColor(Color4B::WHITE);
+					}
+					else
+					{
+						this->inputText->setTextColor(Color4B::RED);
+					}
+				}
+				else
+				{
+					this->inputText->setTextColor(Color4B::RED);
+				}
+				break;
+			}
+			case CipherEvents::DisplayDataType::Dec:
+			{
+				if (newString.find_last_not_of("0123456789") == std::string::npos)
+				{
+					int temp = std::stoi(newString, nullptr, 10);
+
+					if (temp <= 255)
+					{
+						value = (unsigned char)(temp);
+						this->inputText->setTextColor(Color4B::WHITE);
+					}
+					else
+					{
+						this->inputText->setTextColor(Color4B::RED);
+					}
+				}
+				else
+				{
+					this->inputText->setTextColor(Color4B::RED);
+				}
+				break;
+			}
+			case CipherEvents::DisplayDataType::Hex:
+			{
+				if (StrUtils::startsWith(newString, "0x", true))
+				{
+					newString = newString.substr(0, 2);
+				}
+
+				if (newString.size() <= 2 && newString.find_last_not_of("0123456789abcdefABCDEF") == std::string::npos)
+				{
+					int temp = std::stoi(newString, nullptr, 16);
+
+					if (temp <= 255)
+					{
+						value = (unsigned char)(temp);
+						this->inputText->setTextColor(Color4B::WHITE);
+					}
+					else
+					{
+						this->inputText->setTextColor(Color4B::RED);
+					}
+				}
+				else
+				{
+					this->inputText->setTextColor(Color4B::RED);
+				}
+
+				break;
+			}
+		}
+	}
+
+	this->previewImmediate->setValue(value);
+}
+
 void CipherImmediateEditor::open(ImmediateBlock* immediateBlock, std::function<void()> onCloseCallback)
 {
 	this->immediateBlock = immediateBlock;
@@ -174,6 +290,7 @@ void CipherImmediateEditor::open(ImmediateBlock* immediateBlock, std::function<v
 	this->setVisible(true);
 	GameUtils::focus(this);
 
+	this->inputText->setString(this->immediateBlock->getString());
 	this->inputText->attachWithIME();
 }
 
@@ -182,6 +299,8 @@ void CipherImmediateEditor::close()
 	this->setVisible(false);
 	GameUtils::focus(this->getParent());
 	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
+
+	this->immediateBlock->setValue(this->previewImmediate->getValue());
 
 	if (this->onCloseCallback != nullptr)
 	{

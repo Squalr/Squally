@@ -42,11 +42,11 @@ void InvBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-char InvBlock::compute()
+unsigned char InvBlock::compute()
 {
 	if (this->currentInputs.size() < 1)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return ~this->currentInputs[0];

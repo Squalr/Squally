@@ -42,11 +42,11 @@ void SplitterBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-char SplitterBlock::compute()
+unsigned char SplitterBlock::compute()
 {
 	if (this->currentInputs.size() < 1)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return this->currentInputs[0];

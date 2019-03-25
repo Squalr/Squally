@@ -13,7 +13,7 @@ public:
 	
 protected:
 	void execute(std::function<void()> onExecuteComplete) override;
-	char compute() override;
+	unsigned char compute() override;
 	BlockBase* spawn() override;
 
 private:
@@ -33,7 +33,7 @@ private:
 	LocalizedLabel* receivedDisplayLabel;
 
 	int cipherIndex;
-	char charValue;
+	unsigned char charValue;
 	CipherEvents::DisplayDataType displayDataType;
 
 	cocos2d::Sprite* spriteAscii;

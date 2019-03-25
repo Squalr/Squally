@@ -8,9 +8,9 @@ public:
 	static LessThanBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
-	char compute() override;
+	unsigned char compute() override;
 	BlockBase* spawn() override;
-	bool compare(char inputA, char inputB) override;
+	bool compare(unsigned char inputA, unsigned char inputB) override;
 
 private:
 	typedef ComparisonBlockBase super;

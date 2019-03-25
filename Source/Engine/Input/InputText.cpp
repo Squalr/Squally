@@ -31,6 +31,8 @@ InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle,
 	this->inputLabel = LocalizedLabel::create(fontStyle, fontSize, this->labelText);
 	this->hitBox = ClickableNode::create();
 	this->initCoords = Vec2::ZERO;
+	this->stringCache = this->labelText->getString();
+	this->stringChangeCallback = nullptr;
 
 	this->inputLabel->setAnchorPoint(Vec2::ZERO);
 	this->hitBox->setAnchorPoint(Vec2::ZERO);
@@ -75,6 +77,26 @@ cocos2d::Size InputText::resize()
 	this->hitBox->setContentSize(newSize);
 
 	return newSize;
+}
+
+void InputText::update(float dt)
+{
+	super::update(dt);
+
+	if (this->getString() != this->stringCache)
+	{
+		this->stringCache = this->getString();
+
+		if (this->stringChangeCallback != nullptr)
+		{
+			this->stringChangeCallback(this->stringCache);
+		}
+	}
+}
+
+void InputText::setStringChangeCallback(std::function<void(std::string)> stringChangeCallback)
+{
+	this->stringChangeCallback = stringChangeCallback;
 }
 
 void InputText::setString(const std::string& label)

@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
 namespace cocos2d
@@ -33,6 +34,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onTextChanged(std::string newString);
 	void close();
 
 	cocos2d::Sprite* background;
@@ -47,6 +49,7 @@ private:
 	LocalizedLabel* enterAValueLabel;
 	LocalizedLabel* immediateEditorLabel;
 	ClickableTextNode* acceptButton;
+	CipherEvents::DisplayDataType displayDataType;
 
 	ImmediateBlock* immediateBlock;
 	std::function<void()> onCloseCallback;
