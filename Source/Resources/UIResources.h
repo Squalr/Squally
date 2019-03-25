@@ -41,6 +41,7 @@ namespace UIResources
 	extern const std::string Cursors_ZoomOut;
 	extern const std::string EmptyImage;
 	extern const std::string Fonts_Texture_AlienText;
+	extern const std::string Fonts_Texture_AsciiTable;
 	extern const std::string HUD_Eye;
 	extern const std::string HUD_EyeSlot;
 	extern const std::string HUD_Frame;
