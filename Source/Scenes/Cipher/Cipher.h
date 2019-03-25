@@ -8,6 +8,7 @@
 namespace cocos2d
 {
 	class Node;
+	class LayerColor;
 	class Sprite;
 }
 
@@ -16,6 +17,7 @@ class AsciiTable;
 class CipherBackground;
 class CipherDecor;
 class CipherFrame;
+class CipherImmediateEditor;
 class CipherLock;
 class CipherPuzzleData;
 class CipherState;
@@ -76,6 +78,9 @@ private:
 	CipherStateRunning* cipherStateRunning;
 	CipherStateStartGame* cipherStateStartGame;
 	CipherStateVictory* cipherStateVictory;
+
+	cocos2d::LayerColor* backdrop;
+	CipherImmediateEditor* cipherImmediateEditor;
 
 	static const cocos2d::Color3B TitleColor;
 };

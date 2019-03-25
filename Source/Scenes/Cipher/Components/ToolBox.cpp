@@ -56,7 +56,7 @@ ToolBox::ToolBox()
 	this->splitterBlock = SplitterBlock::create(BlockBase::BlockType::Toolbox);
 	this->subBlock = SubBlock::create(BlockBase::BlockType::Toolbox);
 	this->xorBlock = XorBlock::create(BlockBase::BlockType::Toolbox);
-	this->scrollPane = ScrollPane::create(Size(312.0f, 312.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
+	this->scrollPane = ScrollPane::create(Size(312.0f, 316.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
 	this->specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Special::create());
 	this->binaryOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_BinaryOperators::create());
 	this->basicOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_BasicOperators::create());
@@ -163,7 +163,9 @@ void ToolBox::initializePositions()
 		int x = index % 4;
 		int y = index / 4;
 
-		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -56.0f - float(y) * 72.0f));
+		float offset = (index <= 0 ? 0.5f : 1.0f);
+
+		(*it)->setPosition(Vec2(12.0f + (float(x) - 1.5f + offset) * 76.0f, -56.0f - float(y) * 72.0f));
 	}
 
 	this->basicOperatorsLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, -128.0f));
@@ -174,7 +176,7 @@ void ToolBox::initializePositions()
 		int x = (index >= 2 ? index + 2 : index) % 4;
 		int y = (index >= 2 ? index + 2 : index) / 4;
 
-		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -128.0f - 56.0f - float(y) * 72.0f));
+		(*it)->setPosition(Vec2(12.0f + (float(x) - 1.5f) * 76.0f, -128.0f - 56.0f - float(y) * 72.0f));
 	}
 
 	this->binaryOperatorsLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, -328.0f));
@@ -185,7 +187,7 @@ void ToolBox::initializePositions()
 		int x = index % 4;
 		int y = index / 4;
 
-		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -328.0f - 56.0f - float(y) * 72.0f));
+		(*it)->setPosition(Vec2(12.0f + (float(x) - 1.5f) * 76.0f, -328.0f - 56.0f - float(y) * 72.0f));
 	}
 
 	this->comparisonLabel->setPosition(Vec2(-this->scrollPane->getPaneSize().width / 2.0f + 16.0f, -512.0f));
@@ -196,7 +198,7 @@ void ToolBox::initializePositions()
 		int x = (index >= 2 ? index + 2 : index) % 4;
 		int y = (index >= 2 ? index + 2 : index) / 4;
 
-		(*it)->setPosition(Vec2(8.0f + (float(x) - 1.5f) * 76.0f, -512.0f - 56.0f - float(y) * 72.0f));
+		(*it)->setPosition(Vec2(12.0f + (float(x) - 1.5f) * 76.0f, -512.0f - 56.0f - float(y) * 72.0f));
 	}
 }
 

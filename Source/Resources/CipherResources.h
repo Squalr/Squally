@@ -42,6 +42,8 @@ namespace CipherResources
 	extern const std::string Buttons_QuitButtonSelected;
 	extern const std::string Buttons_RunButton;
 	extern const std::string Buttons_RunButtonSelected;
+	extern const std::string Buttons_TestRunButton;
+	extern const std::string Buttons_TestRunButtonSelected;
 	extern const std::string CipherMenuBase;
 	extern const std::string CipherMenuFrame;
 	extern const std::string Connections_ConnectButton;
@@ -81,6 +83,7 @@ namespace CipherResources
 	extern const std::string Icons_ShiftRight;
 	extern const std::string Icons_Splitter;
 	extern const std::string Icons_Subtraction;
+	extern const std::string InputFrame;
 	extern const std::string Lock_Background;
 	extern const std::string Lock_GearSteel;
 	extern const std::string Lock_GearWood;
@@ -91,4 +94,6 @@ namespace CipherResources
 	extern const std::string Lock_Shaft;
 	extern const std::string Lock_StoppingBlock;
 	extern const std::string Logo;
+	extern const std::string PopupPanelBack;
+	extern const std::string PopupPanelFrame;
 };

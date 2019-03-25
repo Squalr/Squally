@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
 class ConstantString;
@@ -22,7 +23,20 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void loadDisplayValue();
+
+	char charValue;
+	CipherEvents::DisplayDataType displayDataType;
 
 	ConstantString* displayValue;
 	LocalizedLabel* displayLabel;
+
+	cocos2d::Sprite* spriteAscii;
+	cocos2d::Sprite* spriteBin;
+	cocos2d::Sprite* spriteDec;
+	cocos2d::Sprite* spriteHex;
+	cocos2d::Sprite* spriteAsciiSelected;
+	cocos2d::Sprite* spriteBinSelected;
+	cocos2d::Sprite* spriteDecSelected;
+	cocos2d::Sprite* spriteHexSelected;
 };

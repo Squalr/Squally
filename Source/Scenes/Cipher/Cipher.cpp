@@ -1,5 +1,6 @@
 #include "Cipher.h"
 
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -23,6 +24,7 @@
 #include "Scenes/Cipher/Components/AsciiTable.h"
 #include "Scenes/Cipher/Components/CipherBackground.h"
 #include "Scenes/Cipher/Components/CipherDecor.h"
+#include "Scenes/Cipher/Components/CipherImmediateEditor.h"
 #include "Scenes/Cipher/Components/CipherLock.h"
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
@@ -58,6 +60,8 @@ Cipher* Cipher::create()
 
 Cipher::Cipher()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
 	this->cipherLock = CipherLock::create();
@@ -77,6 +81,8 @@ Cipher::Cipher()
 	this->cipherStateRunning = CipherStateRunning::create();
 	this->cipherStateStartGame = CipherStateStartGame::create();
 	this->cipherStateVictory = CipherStateVictory::create();
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
+	this->cipherImmediateEditor = CipherImmediateEditor::create();
 
 	this->addChild(this->cipherBackground);
 	this->addChild(this->cipherLock);
@@ -96,6 +102,8 @@ Cipher::Cipher()
 	this->addChild(this->cipherStateRunning);
 	this->addChild(this->cipherStateStartGame);
 	this->addChild(this->cipherStateVictory);
+	this->addChild(this->backdrop);
+	this->addChild(this->cipherImmediateEditor);
 }
 
 Cipher::~Cipher()
@@ -107,11 +115,27 @@ void Cipher::onEnter()
 	super::onEnter();
 
 	this->setVisible(false);
+	this->backdrop->setVisible(false);
+	this->cipherImmediateEditor->setVisible(false);
 }
 
 void Cipher::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenImmediateEditor, ([=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherEditImmediateArgs* args = static_cast<CipherEvents::CipherEditImmediateArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->backdrop->setVisible(true);
+			this->cipherImmediateEditor->open(args->immediateBlock, [=]()
+			{
+				this->backdrop->setVisible(false);
+			});
+		}
+	})));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -123,6 +147,10 @@ void Cipher::initializeListeners()
 void Cipher::initializePositions()
 {
 	super::initializePositions();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->backdrop->setPosition(Vec2::ZERO);
 }
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
