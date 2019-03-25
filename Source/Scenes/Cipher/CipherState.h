@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Engine/SmartNode.h"
+#include "Events/CipherEvents.h"
 
 namespace cocos2d
 {
@@ -53,6 +54,7 @@ public:
 	cocos2d::Node* outputContent;
 	cocos2d::Node* blockContent;
 	cocos2d::Node* connectionContent;
+	CipherEvents::DisplayDataType displayDataType;
 	
 	cocos2d::LayerColor* gameAreaDebug;
 

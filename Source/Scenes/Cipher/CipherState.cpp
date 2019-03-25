@@ -10,7 +10,6 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
@@ -50,6 +49,7 @@ CipherState::CipherState()
 	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
 	this->puzzleData = nullptr;
+	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
 	{
@@ -121,6 +121,16 @@ void CipherState::initializeListeners()
 			}
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->displayDataType = args->displayDataType;
+		}
+	}));
 }
 
 void CipherState::onDeveloperModeEnable()
@@ -148,6 +158,8 @@ void CipherState::updateState(CipherState* cipherState, StateType newState)
 		case StateType::GameStart:
 		{
 			cipherState->gameStartTime = std::chrono::high_resolution_clock::now();
+
+			CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(cipherState->displayDataType));
 			break;
 		}
 		case StateType::GameEnd:
