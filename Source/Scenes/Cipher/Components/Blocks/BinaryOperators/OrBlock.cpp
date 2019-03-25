@@ -42,11 +42,11 @@ void OrBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-char OrBlock::compute()
+unsigned char OrBlock::compute()
 {
 	if (this->currentInputs.size() < 2)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return this->currentInputs[0] | this->currentInputs[1];

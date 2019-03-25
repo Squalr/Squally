@@ -42,14 +42,14 @@ void DivBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-char DivBlock::compute()
+unsigned char DivBlock::compute()
 {
 	if (this->currentInputs.size() < 2)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
-	return this->currentInputs[1] == char(0) ? char(0) : (this->currentInputs[0] / this->currentInputs[1]);
+	return this->currentInputs[1] == (unsigned char)(0) ? (unsigned char)(0) : (this->currentInputs[0] / this->currentInputs[1]);
 }
 
 BlockBase* DivBlock::spawn()

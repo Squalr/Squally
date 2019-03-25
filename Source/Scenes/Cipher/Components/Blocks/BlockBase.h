@@ -23,7 +23,7 @@ public:
 		Static,
 	};
 
-	void pushInput(char input);
+	void pushInput(unsigned char input);
 	virtual void execute(std::function<void()> onExecuteComplete);
 	void removeConnections();
 
@@ -41,16 +41,16 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onBeforeStateChange(CipherState* cipherState) override;
-	virtual char compute() = 0;
+	virtual unsigned char compute() = 0;
 	virtual BlockBase* spawn() = 0;
 	virtual float getBoltOffsetY();
 	bool isInGameArea();
 
 	ClickableNode* block;
 	BlockType blockType;
-	char receivedValue;
+	unsigned char receivedValue;
 
-	std::vector<char> currentInputs;
+	std::vector<unsigned char> currentInputs;
 	std::vector<InputBolt*> inputBolts;
 	std::vector<OutputBolt*> outputBolts;
 

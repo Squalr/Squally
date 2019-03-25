@@ -32,7 +32,7 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->clickDelta = Vec2::ZERO;
 	this->inputBolts = std::vector<InputBolt*>();
 	this->outputBolts = std::vector<OutputBolt*>();
-	this->currentInputs = std::vector<char>();
+	this->currentInputs = std::vector<unsigned char>();
 	this->spawningBlock = nullptr;
 
 	this->label->enableOutline(Color4B::BLACK, 2);
@@ -232,7 +232,7 @@ bool BlockBase::isInGameArea()
 	return false;
 }
 
-void BlockBase::pushInput(char input)
+void BlockBase::pushInput(unsigned char input)
 {
 	this->currentInputs.push_back(input);
 }

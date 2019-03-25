@@ -42,11 +42,11 @@ void MulBlock::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
-char MulBlock::compute()
+unsigned char MulBlock::compute()
 {
 	if (this->currentInputs.size() < 2)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return this->currentInputs[0] * this->currentInputs[1];

@@ -144,7 +144,7 @@ void SourceBlock::loadDisplayValue()
 	}
 }
 
-char SourceBlock::compute()
+unsigned char SourceBlock::compute()
 {
 	return this->charValue;
 }

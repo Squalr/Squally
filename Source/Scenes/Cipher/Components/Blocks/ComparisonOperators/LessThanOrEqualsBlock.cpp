@@ -30,11 +30,11 @@ LessThanOrEqualsBlock::~LessThanOrEqualsBlock()
 {
 }
 
-char LessThanOrEqualsBlock::compute()
+unsigned char LessThanOrEqualsBlock::compute()
 {
 	if (this->currentInputs.size() < 1)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return this->currentInputs[0];
@@ -45,7 +45,7 @@ BlockBase* LessThanOrEqualsBlock::spawn()
 	return LessThanOrEqualsBlock::create();
 }
 
-bool LessThanOrEqualsBlock::compare(char inputA, char inputB)
+bool LessThanOrEqualsBlock::compare(unsigned char inputA, unsigned char inputB)
 {
 	return inputA <= inputB;
 }

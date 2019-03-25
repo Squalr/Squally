@@ -127,6 +127,23 @@ void ImmediateBlock::initializeListeners()
 	}
 }
 
+void ImmediateBlock::setValue(unsigned char value)
+{
+	this->charValue = value;
+
+	this->loadDisplayValue();
+}
+
+unsigned char ImmediateBlock::getValue()
+{
+	return this->charValue;
+}
+
+std::string ImmediateBlock::getString()
+{
+	return this->displayValue->getString();
+}
+
 void ImmediateBlock::loadDisplayValue()
 {
 	this->spriteAscii->setVisible(false);
@@ -177,7 +194,7 @@ void ImmediateBlock::loadDisplayValue()
 	}
 }
 
-char ImmediateBlock::compute()
+unsigned char ImmediateBlock::compute()
 {
 	return this->charValue;
 }

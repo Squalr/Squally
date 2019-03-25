@@ -10,9 +10,13 @@ class ImmediateBlock : public BlockBase
 {
 public:
 	static ImmediateBlock* create(BlockType blockType = BlockType::Normal);
+
+	void setValue(unsigned char value);
+	unsigned char getValue();
+	std::string getString();
 	
 protected:
-	char compute() override;
+	unsigned char compute() override;
 	BlockBase* spawn() override;
 
 private:
@@ -25,7 +29,7 @@ private:
 	void initializeListeners() override;
 	void loadDisplayValue();
 
-	char charValue;
+	unsigned char charValue;
 	CipherEvents::DisplayDataType displayDataType;
 
 	ConstantString* displayValue;

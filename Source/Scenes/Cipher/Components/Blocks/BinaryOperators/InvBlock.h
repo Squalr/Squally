@@ -8,7 +8,7 @@ public:
 	static InvBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
-	char compute() override;
+	unsigned char compute() override;
 	BlockBase* spawn() override;
 
 private:

@@ -16,11 +16,11 @@ ComparisonBlockBase::~ComparisonBlockBase()
 {
 }
 
-char ComparisonBlockBase::compute()
+unsigned char ComparisonBlockBase::compute()
 {
 	if (this->currentInputs.size() < 2)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return this->compare(this->currentInputs[0], this->currentInputs[1]) ? this->currentInputs[0] : this->currentInputs[1];

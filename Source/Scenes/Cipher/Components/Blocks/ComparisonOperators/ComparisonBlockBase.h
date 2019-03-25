@@ -11,8 +11,8 @@ protected:
 	~ComparisonBlockBase();
 
 	void execute(std::function<void()> onExecuteComplete) override;
-	char compute() override;
-	virtual bool compare(char inputA, char inputB) = 0;
+	unsigned char compute() override;
+	virtual bool compare(unsigned char inputA, unsigned char inputB) = 0;
 
 private:
 	typedef BlockBase super;

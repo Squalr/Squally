@@ -195,11 +195,11 @@ void DestinationBlock::execute(std::function<void()> onExecuteComplete)
 	this->loadDisplayValue();
 }
 
-char DestinationBlock::compute()
+unsigned char DestinationBlock::compute()
 {
 	if (this->currentInputs.size() < 1)
 	{
-		return char(0);
+		return (unsigned char)(0);
 	}
 
 	return this->currentInputs[0];
