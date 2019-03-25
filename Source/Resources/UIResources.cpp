@@ -40,6 +40,7 @@ const std::string UIResources::Cursors_ZoomIn = "UI/Cursors/ZoomIn.png";
 const std::string UIResources::Cursors_ZoomOut = "UI/Cursors/ZoomOut.png";
 const std::string UIResources::EmptyImage = "UI/EmptyImage.png";
 const std::string UIResources::Fonts_Texture_AlienText = "UI/Fonts/Texture/AlienText.png";
+const std::string UIResources::Fonts_Texture_AsciiTable = "UI/Fonts/Texture/AsciiTable.png";
 const std::string UIResources::HUD_Eye = "UI/HUD/Eye.png";
 const std::string UIResources::HUD_EyeSlot = "UI/HUD/EyeSlot.png";
 const std::string UIResources::HUD_Frame = "UI/HUD/Frame.png";
