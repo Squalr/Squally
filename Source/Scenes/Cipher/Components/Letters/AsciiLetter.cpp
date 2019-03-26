@@ -13,6 +13,11 @@ const int AsciiLetter::LetterSize = 32;
 const int AsciiLetter::GridWidth = 16;
 const int AsciiLetter::GridHeight = 16;
 
+AsciiLetter* AsciiLetter::create()
+{
+	return AsciiLetter::create((unsigned char)(0));
+}
+
 AsciiLetter* AsciiLetter::create(unsigned char letter)
 {
 	AsciiLetter* matrixLetter = new AsciiLetter(letter);

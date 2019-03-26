@@ -5,7 +5,10 @@
 class AsciiLetter : public cocos2d::Sprite
 {
 public:
+	static AsciiLetter* create();
 	static AsciiLetter* create(unsigned char letter);
+	
+	void loadLetter(unsigned char letter);
 
 	static const int LetterSize;
 	static const int GridWidth;
@@ -15,6 +18,4 @@ private:
 	typedef cocos2d::Sprite super;
 	AsciiLetter(unsigned char letter);
 	~AsciiLetter();
-
-	void loadLetter(unsigned char letter);
 };

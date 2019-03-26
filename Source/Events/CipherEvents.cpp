@@ -13,7 +13,6 @@ const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDAT
 const std::string CipherEvents::EventConnectionDestroy = "EVENT_CONNECTION_DESTROY";
 const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_CIPHER";
 const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
-const std::string CipherEvents::EventOpenImmediateEditor = "EVENT_OPEN_IMMEDIATE_EDITOR";
 const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
 
 void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
@@ -76,14 +75,6 @@ void CipherEvents::TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs 
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventChangeDisplayDataType,
-		&args
-	);
-}
-
-void CipherEvents::TriggerOpenImmediateEditor(CipherEditImmediateArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CipherEvents::EventOpenImmediateEditor,
 		&args
 	);
 }

@@ -576,13 +576,18 @@ std::string HackUtils::toBinary4(int value)
 	return binaryString;
 }
 
-std::string HackUtils::toBinary8(int value)
+std::string HackUtils::toBinary8(int value, bool spaceNibbles)
 {
 	std::stringstream stream;
 
 	// Convert to hex
 	stream << std::bitset<8>(value);
 	std::string binaryString = stream.str();
+
+	if (spaceNibbles)
+	{
+		binaryString = binaryString.substr(0, 4) + " " + binaryString.substr(4, 4);
+	}
 
 	return binaryString;
 }

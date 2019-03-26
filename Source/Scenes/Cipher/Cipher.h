@@ -17,7 +17,6 @@ class AsciiTable;
 class CipherBackground;
 class CipherDecor;
 class CipherFrame;
-class CipherImmediateEditor;
 class CipherLock;
 class CipherPuzzleData;
 class CipherState;
@@ -79,7 +78,6 @@ private:
 	CipherStateVictory* cipherStateVictory;
 
 	cocos2d::LayerColor* backdrop;
-	CipherImmediateEditor* cipherImmediateEditor;
 	AsciiTable* asciiTable;
 
 	static const cocos2d::Color3B TitleColor;
