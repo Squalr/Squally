@@ -44,17 +44,17 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringBg()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringCs()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringDa()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringDe()
@@ -64,22 +64,22 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringEl()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringEn()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringEs()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringEs419()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringFi()
@@ -89,7 +89,7 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringFr()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringHu()
@@ -99,7 +99,7 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringIt()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringJa()
@@ -119,22 +119,22 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringNo()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringPl()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringPt()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringPtBr()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringRo()
@@ -144,12 +144,12 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringRu()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringSv()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringTh()
@@ -164,7 +164,7 @@ namespace Strings
 
 	std::string Cipher_Ascii::getStringUk()
 	{
-		return "Ascii";
+		return "ASCII";
 	}
 
 	std::string Cipher_Ascii::getStringVi()

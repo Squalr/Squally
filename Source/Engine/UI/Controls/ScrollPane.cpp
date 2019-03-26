@@ -130,13 +130,13 @@ void ScrollPane::setBackgroundColor(cocos2d::Color4B backgroundColor)
 	this->background->initWithColor(backgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 }
 
-void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size totalSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc)
+void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size paneSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc)
 {
 	if (drawFunc != nullptr)
 	{
 		this->background->setVisible(false);
 
-		drawFunc(this->customBackground, this->paneSize + this->marginSize * 2.0f + this->paddingSize * 2.0f, this->paddingSize, this->marginSize);
+		drawFunc(this->customBackground, this->paneSize, this->paddingSize, this->marginSize);
 	}
 }
 
@@ -202,17 +202,24 @@ void ScrollPane::updateScrollBounds()
 {
 	this->minScrollDepth = this->paneSize.height - this->paddingSize.height;
 
-	auto children = this->content->getChildren();
-	float discoveredLowestItem = 0.0f;
+	float discoveredLowestItem = this->getLowestChild(this->content->getChildren());
 
+	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
+	this->setScrollPercentage(this->getScrollPercentage());
+}
+
+float ScrollPane::getLowestChild(Vector<cocos2d::Node*>& children, float lowestItem)
+{
 	for (auto it = children.begin(); it != children.end(); it++)
 	{
 		if (GameUtils::isVisibleUntil<ScrollPane>(*it))
 		{
-			discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+			lowestItem = std::min(lowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+
+			// Recurse
+			lowestItem = this->getLowestChild((*it)->getChildren(), lowestItem);
 		}
 	}
 
-	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
-	this->setScrollPercentage(this->getScrollPercentage());
+	return lowestItem;
 }

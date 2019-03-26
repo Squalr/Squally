@@ -22,11 +22,11 @@ const float MatrixLetter::letterChangePercentage = 25.0f;
 
 MatrixLetter* MatrixLetter::create()
 {
-	MatrixLetter* matrixLetter = new MatrixLetter();
+	MatrixLetter* instance = new MatrixLetter();
 
-	matrixLetter->autorelease();
+	instance->autorelease();
 
-	return matrixLetter;
+	return instance;
 }
 
 MatrixLetter::MatrixLetter()

@@ -3,8 +3,7 @@
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
-class ConstantString;
-class LocalizedLabel;
+class SmartAsciiLabel;
 
 class ImmediateBlock : public BlockBase
 {
@@ -13,7 +12,6 @@ public:
 
 	void setValue(unsigned char value);
 	unsigned char getValue();
-	std::string getString();
 	
 protected:
 	unsigned char compute() override;
@@ -32,8 +30,7 @@ private:
 	unsigned char charValue;
 	CipherEvents::DisplayDataType displayDataType;
 
-	ConstantString* displayValue;
-	LocalizedLabel* displayLabel;
+	SmartAsciiLabel* displayLabel;
 
 	cocos2d::Sprite* spriteAscii;
 	cocos2d::Sprite* spriteBin;

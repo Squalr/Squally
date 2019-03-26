@@ -3,8 +3,7 @@
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
-class ConstantString;
-class LocalizedLabel;
+class SmartAsciiLabel;
 
 class SourceBlock : public BlockBase
 {
@@ -25,8 +24,7 @@ private:
 	void initializeListeners() override;
 	void loadDisplayValue();
 
-	ConstantString* displayValue;
-	LocalizedLabel* displayLabel;
+	SmartAsciiLabel* displayLabel;
 
 	int cipherIndex;
 	unsigned char charValue;

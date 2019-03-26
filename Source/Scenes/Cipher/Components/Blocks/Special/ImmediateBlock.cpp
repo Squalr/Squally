@@ -14,6 +14,7 @@
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
+#include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -34,8 +35,7 @@ ImmediateBlock* ImmediateBlock::create(BlockType blockType)
 ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
 {
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
-	this->displayValue = ConstantString::create();
-	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->displayValue);
+	this->displayLabel = SmartAsciiLabel::create();
 	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
 	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);
 	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecLong);
@@ -53,7 +53,6 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	this->spriteBinSelected->setAnchorPoint(Vec2::ZERO);
 	this->spriteDecSelected->setAnchorPoint(Vec2::ZERO);
 	this->spriteHexSelected->setAnchorPoint(Vec2::ZERO);
-	this->displayLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->block->getSprite()->setOpacity(1);
 	this->block->getSprite()->setCascadeOpacityEnabled(false);
@@ -71,6 +70,11 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 		{
 			(*it)->setVisible(false);
 		}
+	}
+
+	if (this->blockType == BlockBase::BlockType::Normal || this->blockType == BlockBase::BlockType::Static)
+	{
+		this->icon->setVisible(false);
 	}
 
 	this->block->getSprite()->addChild(this->spriteAscii);
@@ -125,6 +129,7 @@ void ImmediateBlock::initializeListeners()
 			CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(this));
 		});
 	}
+	
 }
 
 void ImmediateBlock::setValue(unsigned char value)
@@ -139,11 +144,6 @@ unsigned char ImmediateBlock::getValue()
 	return this->charValue;
 }
 
-std::string ImmediateBlock::getString()
-{
-	return this->displayValue->getString();
-}
-
 void ImmediateBlock::loadDisplayValue()
 {
 	this->spriteAscii->setVisible(false);
@@ -154,34 +154,32 @@ void ImmediateBlock::loadDisplayValue()
 	this->spriteBinSelected->setVisible(false);
 	this->spriteDecSelected->setVisible(false);
 	this->spriteHexSelected->setVisible(false);
+
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
 	
 	switch(this->displayDataType)
 	{
 		default:
 		case CipherEvents::DisplayDataType::Ascii:
 		{
-			this->displayValue->setString(std::string(1, this->charValue));
 			this->spriteAscii->setVisible(true);
 			this->spriteAsciiSelected->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Bin:
 		{
-			this->displayValue->setString(HackUtils::toBinary8(int(this->charValue)));
 			this->spriteBin->setVisible(true);
 			this->spriteBinSelected->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Dec:
 		{
-			this->displayValue->setString(std::to_string(int(this->charValue)));
 			this->spriteDec->setVisible(true);
 			this->spriteDecSelected->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Hex:
 		{
-			this->displayValue->setString(HackUtils::toHex(int(this->charValue)));
 			this->spriteHex->setVisible(true);
 			this->spriteHexSelected->setVisible(true);
 			break;

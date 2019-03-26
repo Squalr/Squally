@@ -199,6 +199,11 @@ void BlockBase::initializeListeners()
 	}
 }
 
+ClickableNode* BlockBase::getBlock()
+{
+	return this->block;
+}
+
 void BlockBase::onBeforeStateChange(CipherState* cipherState)
 {
 	switch(cipherState->stateType)

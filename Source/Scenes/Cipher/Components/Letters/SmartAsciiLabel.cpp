@@ -21,26 +21,20 @@ using namespace cocos2d;
 
 SmartAsciiLabel* SmartAsciiLabel::create()
 {
-	return SmartAsciiLabel::create((unsigned char)(0));
-}
-
-SmartAsciiLabel* SmartAsciiLabel::create(unsigned char charValue)
-{
-	SmartAsciiLabel* instance = new SmartAsciiLabel(charValue);
+	SmartAsciiLabel* instance = new SmartAsciiLabel();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SmartAsciiLabel::SmartAsciiLabel(unsigned char charValue)
+SmartAsciiLabel::SmartAsciiLabel()
 {
-	this->charValue = charValue;
 	this->asciiLetterLabel = AsciiLetter::create();
 	this->displayValue = ConstantString::create();
-	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->displayValue);
+	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->displayValue);
 
-	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
+	this->displayLabel->enableOutline(Color4B::BLACK, 3);
 
 	this->addChild(this->asciiLetterLabel);
 	this->addChild(this->displayLabel);
@@ -53,8 +47,6 @@ SmartAsciiLabel::~SmartAsciiLabel()
 void SmartAsciiLabel::onEnter()
 {
 	super::onEnter();
-
-	this->loadDisplayValue();
 }
 
 void SmartAsciiLabel::initializePositions()
@@ -67,55 +59,38 @@ void SmartAsciiLabel::initializePositions()
 void SmartAsciiLabel::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
-	{
-		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->displayDataType = args->displayDataType;
-
-			this->loadDisplayValue();
-		}
-	}));
 }
 
-void SmartAsciiLabel::setValue(unsigned char value)
-{
-	this->charValue = value;
-}
-
-void SmartAsciiLabel::loadDisplayValue()
+void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType)
 {
 	this->asciiLetterLabel->setVisible(false);
 	this->displayLabel->setVisible(false);
 
-	switch(this->displayDataType)
+	switch(displayDataType)
 	{
 		default:
 		case CipherEvents::DisplayDataType::Ascii:
 		{
-			this->asciiLetterLabel->loadLetter(this->charValue);
+			this->asciiLetterLabel->loadLetter(charValue);
 			this->asciiLetterLabel->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Bin:
 		{
 			this->displayLabel->setVisible(true);
-			this->displayValue->setString(HackUtils::toBinary8(int(this->charValue)));
+			this->displayValue->setString(HackUtils::toBinary8(int(charValue)));
 			break;
 		}
 		case CipherEvents::DisplayDataType::Dec:
 		{
 			this->displayLabel->setVisible(true);
-			this->displayValue->setString(std::to_string(int(this->charValue)));
+			this->displayValue->setString(std::to_string(int(charValue)));
 			break;
 		}
 		case CipherEvents::DisplayDataType::Hex:
 		{
 			this->displayLabel->setVisible(true);
-			this->displayValue->setString(HackUtils::toHex(int(this->charValue)));
+			this->displayValue->setString(HackUtils::toHex(int(charValue)));
 			break;
 		}
 	}
