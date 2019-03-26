@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Cipher_ValueEditor::getStringEn()
 	{
-		return "Value editor";
+		return "Value Editor";
 	}
 
 	std::string Cipher_ValueEditor::getStringEs()

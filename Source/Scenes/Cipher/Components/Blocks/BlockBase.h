@@ -26,6 +26,7 @@ public:
 	void pushInput(unsigned char input);
 	virtual void execute(std::function<void()> onExecuteComplete);
 	void removeConnections();
+	ClickableNode* getBlock();
 
 protected:
 	enum class ConnectionType
@@ -47,6 +48,7 @@ protected:
 	bool isInGameArea();
 
 	ClickableNode* block;
+	cocos2d::Sprite* icon;
 	BlockType blockType;
 	unsigned char receivedValue;
 
@@ -58,7 +60,6 @@ private:
 	typedef CipherComponentBase super;
 
 	BlockBase* spawningBlock;
-	cocos2d::Sprite* icon;
 	LocalizedLabel* label;
 	
 	ConnectionType inputType;

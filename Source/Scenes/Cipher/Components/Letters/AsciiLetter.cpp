@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const int AsciiLetter::LetterSize = 32;
+const int AsciiLetter::LetterSize = 48;
 const int AsciiLetter::GridWidth = 16;
 const int AsciiLetter::GridHeight = 16;
 
@@ -20,11 +20,11 @@ AsciiLetter* AsciiLetter::create()
 
 AsciiLetter* AsciiLetter::create(unsigned char letter)
 {
-	AsciiLetter* matrixLetter = new AsciiLetter(letter);
+	AsciiLetter* instance = new AsciiLetter(letter);
 
-	matrixLetter->autorelease();
+	instance->autorelease();
 
-	return matrixLetter;
+	return instance;
 }
 
 AsciiLetter::AsciiLetter(unsigned char letter)

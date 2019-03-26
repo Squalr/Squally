@@ -13,24 +13,19 @@ class SmartAsciiLabel : public SmartNode
 {
 public:
 	static SmartAsciiLabel* create();
-	static SmartAsciiLabel* create(unsigned char charValue);
 
-	void setValue(unsigned char value);
+	void loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType);
 
 private:
 	typedef SmartNode super;
-	SmartAsciiLabel(unsigned char charValue);
+	SmartAsciiLabel();
 	~SmartAsciiLabel();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void loadDisplayValue();
 
 	AsciiLetter* asciiLetterLabel;
 	ConstantString* displayValue;
 	LocalizedLabel* displayLabel;
-
-	unsigned char charValue;
-	CipherEvents::DisplayDataType displayDataType;
 };

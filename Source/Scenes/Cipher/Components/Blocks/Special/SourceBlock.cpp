@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -34,8 +35,7 @@ SourceBlock::SourceBlock(int cipherIndex) : super(BlockType::Static, ConnectionT
 	this->cipherIndex = cipherIndex;
 	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
-	this->displayValue = ConstantString::create();
-	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->displayValue);
+	this->displayLabel = SmartAsciiLabel::create();
 	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
 	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);
 	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecLong);
@@ -46,8 +46,6 @@ SourceBlock::SourceBlock(int cipherIndex) : super(BlockType::Static, ConnectionT
 	this->spriteDec->setAnchorPoint(Vec2::ZERO);
 	this->spriteHex->setAnchorPoint(Vec2::ZERO);
 
-	this->displayLabel->setTextColor(Color4B::WHITE);
-	this->displayLabel->enableOutline(Color4B::BLACK, 2);
 	this->block->getSprite()->setOpacity(1);
 	this->block->getSprite()->setCascadeOpacityEnabled(false);
 	this->block->getSpriteSelected()->setOpacity(1);
@@ -114,30 +112,28 @@ void SourceBlock::loadDisplayValue()
 	this->spriteDec->setVisible(false);
 	this->spriteHex->setVisible(false);
 	
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
+	
 	switch(this->displayDataType)
 	{
 		default:
 		case CipherEvents::DisplayDataType::Ascii:
 		{
-			this->displayValue->setString(std::string(1, this->charValue));
 			this->spriteAscii->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Bin:
 		{
-			this->displayValue->setString(HackUtils::toBinary8(int(this->charValue)));
 			this->spriteBin->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Dec:
 		{
-			this->displayValue->setString(std::to_string(int(this->charValue)));
 			this->spriteDec->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Hex:
 		{
-			this->displayValue->setString(HackUtils::toHex(int(this->charValue)));
 			this->spriteHex->setVisible(true);
 			break;
 		}

@@ -10,6 +10,7 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class ImmediateBlock;
+class LocalizedLabel;
 class RadioButton;
 class ScrollPane;
 class SmartAsciiLabel;
@@ -30,22 +31,27 @@ private:
 	AsciiTable();
 	~AsciiTable();
 
-	std::vector<SmartAsciiLabel*> asciiLetters;
+	std::vector<ImmediateBlock*> asciiLetters;
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void select(ImmediateBlock* block);
 	void close();
 
 	cocos2d::Sprite* background;
 	ScrollPane* scrollPane;
+	cocos2d::Sprite* selectionSprite;
 	RadioButton* toggleButtonBin;
 	RadioButton* toggleButtonDec;
 	RadioButton* toggleButtonHex;
 	RadioButton* toggleButtonAscii;
 	cocos2d::Sprite* frame;
 	ClickableTextNode* returnButton;
+	LocalizedLabel* asciiTableTitle;
+	LocalizedLabel* chooseANewValueTitle;
 
+	ImmediateBlock* selectedBlock;
 	ImmediateBlock* immediateBlock;
 	std::function<void()> onCloseCallback;
 

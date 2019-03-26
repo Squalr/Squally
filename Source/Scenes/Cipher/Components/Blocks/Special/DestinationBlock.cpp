@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -35,10 +36,8 @@ DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, C
 	this->receivedValue = char(0);
 	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
-	this->displayValue = ConstantString::create();
-	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->displayValue);
-	this->receivedDisplayValue = ConstantString::create();
-	this->receivedDisplayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->receivedDisplayValue);
+	this->displayLabel = SmartAsciiLabel::create();
+	this->receivedDisplayLabel = SmartAsciiLabel::create();
 	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiHuge);
 	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinHuge);
 	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecHuge);
@@ -49,10 +48,6 @@ DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, C
 	this->spriteDec->setAnchorPoint(Vec2::ZERO);
 	this->spriteHex->setAnchorPoint(Vec2::ZERO);
 
-	this->displayLabel->setTextColor(Color4B::WHITE);
-	this->displayLabel->enableOutline(Color4B::BLACK, 2);
-	this->receivedDisplayLabel->setTextColor(Color4B::WHITE);
-	this->receivedDisplayLabel->enableOutline(Color4B::BLACK, 2);
 	this->block->getSprite()->setOpacity(1);
 	this->block->getSprite()->setCascadeOpacityEnabled(false);
 	this->block->getSpriteSelected()->setOpacity(1);
@@ -125,61 +120,33 @@ void DestinationBlock::loadDisplayValue()
 	this->spriteBin->setVisible(false);
 	this->spriteDec->setVisible(false);
 	this->spriteHex->setVisible(false);
+
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
+	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType);
 	
 	switch(this->displayDataType)
 	{
 		default:
 		case CipherEvents::DisplayDataType::Ascii:
 		{
-			this->displayValue->setString(std::string(1, this->charValue));
-			this->receivedDisplayValue->setString(std::string(1, this->receivedValue));
 			this->spriteAscii->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Bin:
 		{
-			this->displayValue->setString(HackUtils::toBinary8(int(this->charValue)));
-			this->receivedDisplayValue->setString(HackUtils::toBinary8(int(this->receivedValue)));
 			this->spriteBin->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Dec:
 		{
-			this->displayValue->setString(std::to_string(int(this->charValue)));
-			this->receivedDisplayValue->setString(std::to_string(int(this->receivedValue)));
 			this->spriteDec->setVisible(true);
 			break;
 		}
 		case CipherEvents::DisplayDataType::Hex:
 		{
-			this->displayValue->setString(HackUtils::toHex(int(this->charValue)));
-			this->receivedDisplayValue->setString(HackUtils::toHex(int(this->receivedValue)));
 			this->spriteHex->setVisible(true);
 			break;
 		}
-	}
-
-	std::string displayString = this->displayValue->getString();
-	std::string receivedString = this->receivedDisplayValue->getString();
-
-	for (int index = 0; index < displayString.size() && index < receivedString.size(); index++)
-	{
-		Sprite* next = this->receivedDisplayLabel->getLetter(index);
-
-		if (next == nullptr)
-		{
-			continue;
-		}
-
-		if (displayString[index] != receivedString[index])
-		{
-			next->setColor(Color3B::RED);
-		}
-		else
-		{
-			next->setColor(Color3B::GREEN);
-		}
-		
 	}
 }
 

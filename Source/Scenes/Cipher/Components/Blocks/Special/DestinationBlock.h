@@ -3,8 +3,7 @@
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 
-class ConstantString;
-class LocalizedLabel;
+class SmartAsciiLabel;
 
 class DestinationBlock : public BlockBase
 {
@@ -27,10 +26,8 @@ private:
 	float getBoltOffsetY() override;
 	void loadDisplayValue();
 
-	ConstantString* displayValue;
-	LocalizedLabel* displayLabel;
-	ConstantString* receivedDisplayValue;
-	LocalizedLabel* receivedDisplayLabel;
+	SmartAsciiLabel* displayLabel;
+	SmartAsciiLabel* receivedDisplayLabel;
 
 	int cipherIndex;
 	unsigned char charValue;
