@@ -60,7 +60,6 @@ private:
 	std::function<void()> backClickCallback;
 
 	AsciiButton* asciiButton;
-	AsciiTable* asciiTable;
 	CipherBackground* cipherBackground;
 	CipherLock* cipherLock;
 	CipherFrame* cipherFrame;
@@ -81,6 +80,7 @@ private:
 
 	cocos2d::LayerColor* backdrop;
 	CipherImmediateEditor* cipherImmediateEditor;
+	AsciiTable* asciiTable;
 
 	static const cocos2d::Color3B TitleColor;
 };
