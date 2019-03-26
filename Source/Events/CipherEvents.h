@@ -21,10 +21,10 @@ public:
 	static const std::string EventRequestConnectionCreate;
 	static const std::string EventConnectionUpdated;
 	static const std::string EventConnectionDestroy;
-	static const std::string EventShowAsciiTable;
 	static const std::string EventChangeActiveCipher;
 	static const std::string EventChangeDisplayDataType;
 	static const std::string EventOpenImmediateEditor;
+	static const std::string EventOpenAsciiTable;
 
 	struct CipherLoadArgs
 	{
@@ -120,14 +120,23 @@ public:
 		}
 	};
 
+	struct CipherOpenAsciiTableArgs
+	{
+		ImmediateBlock* immediateBlock;
+
+		CipherOpenAsciiTableArgs(ImmediateBlock* immediateBlock) : immediateBlock(immediateBlock)
+		{
+		}
+	};
+
 	static void TriggerLoadCipher(CipherLoadArgs args);
 	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
 	static void TriggerConnectionUpdated(CipherConnectionUpdatedArgs args);
 	static void TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs args);
-	static void TriggerShowAsciiTable();
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);
 	static void TriggerOpenImmediateEditor(CipherEditImmediateArgs args);
+	static void TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args);
 };

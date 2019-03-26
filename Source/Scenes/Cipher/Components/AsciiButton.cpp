@@ -6,6 +6,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
 
@@ -67,7 +68,10 @@ void AsciiButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	// this->asciiButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->asciiButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(nullptr));
+	});
 }
 
 void AsciiButton::onBeforeStateChange(CipherState* cipherState)

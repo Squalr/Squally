@@ -11,10 +11,10 @@ const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SP
 const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_REQUEST_CONNECTION_SPAWN";
 const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDATED";
 const std::string CipherEvents::EventConnectionDestroy = "EVENT_CONNECTION_DESTROY";
-const std::string CipherEvents::EventShowAsciiTable = "EVENT_SHOW_ASCII_TABLE";
 const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_CIPHER";
 const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
 const std::string CipherEvents::EventOpenImmediateEditor = "EVENT_OPEN_IMMEDIATE_EDITOR";
+const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
 
 void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
 {
@@ -64,13 +64,6 @@ void CipherEvents::TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs a
 	);
 }
 
-void CipherEvents::TriggerShowAsciiTable()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CipherEvents::EventShowAsciiTable
-	);
-}
-
 void CipherEvents::TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -91,6 +84,14 @@ void CipherEvents::TriggerOpenImmediateEditor(CipherEditImmediateArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventOpenImmediateEditor,
+		&args
+	);
+}
+
+void CipherEvents::TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventOpenAsciiTable,
 		&args
 	);
 }

@@ -94,7 +94,6 @@ Cipher::Cipher()
 	this->addChild(this->executeButton);
 	this->addChild(this->quitButton);
 	this->addChild(this->asciiButton);
-	this->addChild(this->asciiTable);
 	this->addChild(this->cipherState);
 	this->addChild(this->cipherStateGameEnd);
 	this->addChild(this->cipherStateLoadInitialState);
@@ -104,6 +103,7 @@ Cipher::Cipher()
 	this->addChild(this->cipherStateVictory);
 	this->addChild(this->backdrop);
 	this->addChild(this->cipherImmediateEditor);
+	this->addChild(this->asciiTable);
 }
 
 Cipher::~Cipher()
@@ -117,6 +117,7 @@ void Cipher::onEnter()
 	this->setVisible(false);
 	this->backdrop->setVisible(false);
 	this->cipherImmediateEditor->setVisible(false);
+	this->asciiTable->setVisible(false);
 }
 
 void Cipher::initializeListeners()
@@ -131,6 +132,20 @@ void Cipher::initializeListeners()
 		{
 			this->backdrop->setVisible(true);
 			this->cipherImmediateEditor->open(args->immediateBlock, [=]()
+			{
+				this->backdrop->setVisible(false);
+			});
+		}
+	})));
+
+	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenAsciiTable, ([=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherEditImmediateArgs* args = static_cast<CipherEvents::CipherEditImmediateArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->backdrop->setVisible(true);
+			this->asciiTable->open(args->immediateBlock, [=]()
 			{
 				this->backdrop->setVisible(false);
 			});

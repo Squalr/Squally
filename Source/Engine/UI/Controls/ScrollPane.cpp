@@ -38,6 +38,7 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->marginSize = marginSize;
 
 	this->initialDragDepth = 0.0f;
+	this->customBackground = DrawNode::create();
 	this->background = LayerColor::create(initBackgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 	this->dragHitbox = ClickableNode::create();
 	this->clipStencil = DrawNode::create();
@@ -60,6 +61,7 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 
 	// Note: We override addChild to pass through to the clipping node. Do not call directly for these, call through the parent class.
 	super::addChild(this->background);
+	super::addChild(this->customBackground);
 	super::addChild(this->dragHitbox);
 	super::addChild(this->contentClip);
 	super::addChild(this->scrollBar);
@@ -88,6 +90,7 @@ void ScrollPane::initializePositions()
 {
 	super::initializePositions();
 
+	this->customBackground->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
 	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
 	this->dragHitbox->setPosition(Vec2(-ScrollPane::ScrollTotalWidth / 2.0f, 0.0f));
 	this->contentClip->setPosition(Vec2(-this->paneSize.width / 2.0f, -this->paneSize.height / 2.0f));
@@ -120,6 +123,21 @@ void ScrollPane::initializeListeners()
 
 		this->scrollTo(this->initialDragDepth + dragDelta);
 	});
+}
+
+void ScrollPane::setBackgroundColor(cocos2d::Color4B backgroundColor)
+{
+	this->background->initWithColor(backgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
+}
+
+void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size totalSize)> drawFunc)
+{
+	if (drawFunc != nullptr)
+	{
+		this->background->setVisible(false);
+
+		drawFunc(this->customBackground, this->paneSize + this->marginSize * 2.0f + this->paddingSize * 2.0f);
+	}
 }
 
 void ScrollPane::setScrollPercentage(float percentage, bool updateScrollBars)
