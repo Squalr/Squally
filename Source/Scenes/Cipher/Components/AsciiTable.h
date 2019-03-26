@@ -7,12 +7,12 @@ namespace cocos2d
 	class Sprite;
 }
 
-class AsciiLetter;
 class ClickableNode;
 class ClickableTextNode;
 class ImmediateBlock;
 class RadioButton;
 class ScrollPane;
+class SmartAsciiLabel;
 
 class AsciiTable : public CipherComponentBase
 {
@@ -30,7 +30,7 @@ private:
 	AsciiTable();
 	~AsciiTable();
 
-	std::vector<AsciiLetter*> asciiLetters;
+	std::vector<SmartAsciiLabel*> asciiLetters;
 
 	void onEnter() override;
 	void initializePositions() override;

@@ -122,7 +122,7 @@ void ImmediateBlock::initializeListeners()
 	{
 		this->block->setClickCallback([=](MouseEvents::MouseEventArgs*)
 		{
-			CipherEvents::TriggerOpenImmediateEditor(CipherEvents::CipherEditImmediateArgs(this));
+			CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(this));
 		});
 	}
 }

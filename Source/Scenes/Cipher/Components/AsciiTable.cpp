@@ -12,7 +12,7 @@
 #include "Engine/UI/Controls/RadioButton.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Cipher/Components/Letters/AsciiLetter.h"
+#include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
 
@@ -36,7 +36,7 @@ AsciiTable* AsciiTable::create()
 
 AsciiTable::AsciiTable()
 {
-	this->asciiLetters = std::vector<AsciiLetter*>();
+	this->asciiLetters = std::vector<SmartAsciiLabel*>();
 	this->immediateBlock = nullptr;
 	this->onCloseCallback = nullptr;
 
@@ -45,7 +45,7 @@ AsciiTable::AsciiTable()
 
 	for (int next = 0; next < 256; next++)
 	{
-		this->asciiLetters.push_back(AsciiLetter::create((unsigned char)(next)));
+		this->asciiLetters.push_back(SmartAsciiLabel::create((unsigned char)(next)));
 	}
 
 	this->frame = Sprite::create(CipherResources::PopupPanelFrame);
@@ -83,7 +83,7 @@ AsciiTable::AsciiTable()
 
 	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelSelected, CipherResources::Buttons_TestRunButton, CipherResources::Buttons_TestRunButtonSelected);	
 
-	this->scrollPane->renderCustomBackground([=](DrawNode* customBackground, Size totalSize)
+	this->scrollPane->renderCustomBackground([=](DrawNode* customBackground, Size totalSize, Size paddingSize, Size marginSize)
 	{
 		std::vector<Vec2> verticies = std::vector<Vec2>();
 
@@ -105,6 +105,11 @@ AsciiTable::AsciiTable()
 		// Bottom right
 		verticies.push_back(Vec2(totalSize.width, CornerSize));
 		verticies.push_back(Vec2(totalSize.width - CornerSizeInner, 0.0f));
+
+		for (auto it = verticies.begin(); it != verticies.end(); it++)
+		{
+			it->y -= marginSize.height;
+		}
 
 		customBackground->drawSolidPoly(verticies.data(), verticies.size(), Color4F(Color4B(0, 0, 0, 128)));
 	});
@@ -143,16 +148,17 @@ void AsciiTable::initializePositions()
 	int index = 0;
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 52.0f));
+	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 52.0f + 24.0f));
 
 	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++, index++)
 	{
 		const int GridWidth = 8;
+		const int GridHeight = 32;
 
-		int x = index % GridWidth;
-		int y = index / GridWidth;
+		int x = index / GridHeight;
+		int y = index % GridHeight;
 
-		(*it)->setPosition(Vec2((float(x - GridWidth / 2) + 0.5f) * 144.0f, float(-y) * 32.0f));
+		(*it)->setPosition(Vec2((float(x - GridWidth / 2) + 0.5f) * 136.0f, float(-y) * 40.0f));
 	}
 
 	this->frame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -167,6 +173,23 @@ void AsciiTable::initializePositions()
 void AsciiTable::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->toggleButtonBin->setCheckCallback([=](RadioButton*)
+	{
+		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Bin));
+	});
+	this->toggleButtonDec->setCheckCallback([=](RadioButton*)
+	{
+		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Dec));
+	});
+	this->toggleButtonHex->setCheckCallback([=](RadioButton*)
+	{
+		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Hex));
+	});
+	this->toggleButtonAscii->setCheckCallback([=](RadioButton*)
+	{
+		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Ascii));
+	});
 
 	this->returnButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
 	{

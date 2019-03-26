@@ -111,15 +111,6 @@ public:
 		}
 	};
 
-	struct CipherEditImmediateArgs
-	{
-		ImmediateBlock* immediateBlock;
-
-		CipherEditImmediateArgs(ImmediateBlock* immediateBlock) : immediateBlock(immediateBlock)
-		{
-		}
-	};
-
 	struct CipherOpenAsciiTableArgs
 	{
 		ImmediateBlock* immediateBlock;
@@ -137,6 +128,5 @@ public:
 	static void TriggerDestroyConnectionToInput(CipherConnectionDestroyArgs args);
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);
-	static void TriggerOpenImmediateEditor(CipherEditImmediateArgs args);
 	static void TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args);
 };

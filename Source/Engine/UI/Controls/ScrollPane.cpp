@@ -130,13 +130,13 @@ void ScrollPane::setBackgroundColor(cocos2d::Color4B backgroundColor)
 	this->background->initWithColor(backgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 }
 
-void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size totalSize)> drawFunc)
+void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size totalSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc)
 {
 	if (drawFunc != nullptr)
 	{
 		this->background->setVisible(false);
 
-		drawFunc(this->customBackground, this->paneSize + this->marginSize * 2.0f + this->paddingSize * 2.0f);
+		drawFunc(this->customBackground, this->paneSize + this->marginSize * 2.0f + this->paddingSize * 2.0f, this->paddingSize, this->marginSize);
 	}
 }
 

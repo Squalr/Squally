@@ -24,7 +24,6 @@
 #include "Scenes/Cipher/Components/AsciiTable.h"
 #include "Scenes/Cipher/Components/CipherBackground.h"
 #include "Scenes/Cipher/Components/CipherDecor.h"
-#include "Scenes/Cipher/Components/CipherImmediateEditor.h"
 #include "Scenes/Cipher/Components/CipherLock.h"
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
@@ -73,7 +72,6 @@ Cipher::Cipher()
 	this->executeButton = ExecuteButton::create();
 	this->quitButton = QuitButton::create();
 	this->asciiButton = AsciiButton::create();
-	this->asciiTable = AsciiTable::create();
 	this->cipherState = CipherState::create();
 	this->cipherStateGameEnd = CipherStateGameEnd::create();
 	this->cipherStateLoadInitialState = CipherStateLoadInitialState::create();
@@ -82,7 +80,7 @@ Cipher::Cipher()
 	this->cipherStateStartGame = CipherStateStartGame::create();
 	this->cipherStateVictory = CipherStateVictory::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
-	this->cipherImmediateEditor = CipherImmediateEditor::create();
+	this->asciiTable = AsciiTable::create();
 
 	this->addChild(this->cipherBackground);
 	this->addChild(this->cipherLock);
@@ -102,7 +100,6 @@ Cipher::Cipher()
 	this->addChild(this->cipherStateStartGame);
 	this->addChild(this->cipherStateVictory);
 	this->addChild(this->backdrop);
-	this->addChild(this->cipherImmediateEditor);
 	this->addChild(this->asciiTable);
 }
 
@@ -116,7 +113,6 @@ void Cipher::onEnter()
 
 	this->setVisible(false);
 	this->backdrop->setVisible(false);
-	this->cipherImmediateEditor->setVisible(false);
 	this->asciiTable->setVisible(false);
 }
 
@@ -124,23 +120,9 @@ void Cipher::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenImmediateEditor, ([=](EventCustom* eventCustom)
-	{
-		CipherEvents::CipherEditImmediateArgs* args = static_cast<CipherEvents::CipherEditImmediateArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->backdrop->setVisible(true);
-			this->cipherImmediateEditor->open(args->immediateBlock, [=]()
-			{
-				this->backdrop->setVisible(false);
-			});
-		}
-	})));
-
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenAsciiTable, ([=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherEditImmediateArgs* args = static_cast<CipherEvents::CipherEditImmediateArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherOpenAsciiTableArgs* args = static_cast<CipherEvents::CipherOpenAsciiTableArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
