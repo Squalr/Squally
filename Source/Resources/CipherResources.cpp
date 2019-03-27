@@ -82,7 +82,6 @@ const std::string CipherResources::Icons_ShiftLeft = "Cipher/Icons/ShiftLeft.png
 const std::string CipherResources::Icons_ShiftRight = "Cipher/Icons/ShiftRight.png";
 const std::string CipherResources::Icons_Splitter = "Cipher/Icons/Splitter.png";
 const std::string CipherResources::Icons_Subtraction = "Cipher/Icons/Subtraction.png";
-const std::string CipherResources::InputFrame = "Cipher/InputFrame.png";
 const std::string CipherResources::Lock_Background = "Cipher/Lock/Background.png";
 const std::string CipherResources::Lock_GearSteel = "Cipher/Lock/GearSteel.png";
 const std::string CipherResources::Lock_GearWood = "Cipher/Lock/GearWood.png";

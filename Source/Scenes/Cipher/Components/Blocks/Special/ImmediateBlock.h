@@ -30,8 +30,6 @@ private:
 	unsigned char charValue;
 	CipherEvents::DisplayDataType displayDataType;
 
-	SmartAsciiLabel* displayLabel;
-
 	cocos2d::Sprite* spriteAscii;
 	cocos2d::Sprite* spriteBin;
 	cocos2d::Sprite* spriteDec;
@@ -40,4 +38,6 @@ private:
 	cocos2d::Sprite* spriteBinSelected;
 	cocos2d::Sprite* spriteDecSelected;
 	cocos2d::Sprite* spriteHexSelected;
+
+	SmartAsciiLabel* displayLabel;
 };

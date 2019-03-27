@@ -83,7 +83,6 @@ namespace CipherResources
 	extern const std::string Icons_ShiftRight;
 	extern const std::string Icons_Splitter;
 	extern const std::string Icons_Subtraction;
-	extern const std::string InputFrame;
 	extern const std::string Lock_Background;
 	extern const std::string Lock_GearSteel;
 	extern const std::string Lock_GearWood;

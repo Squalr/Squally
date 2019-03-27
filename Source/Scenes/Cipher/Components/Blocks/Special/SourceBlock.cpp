@@ -35,11 +35,11 @@ SourceBlock::SourceBlock(int cipherIndex) : super(BlockType::Static, ConnectionT
 	this->cipherIndex = cipherIndex;
 	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
-	this->displayLabel = SmartAsciiLabel::create();
 	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
 	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);
 	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecLong);
 	this->spriteHex = Sprite::create(CipherResources::Blocks_BlockHexLong);
+	this->displayLabel = SmartAsciiLabel::create();
 
 	this->spriteAscii->setAnchorPoint(Vec2::ZERO);
 	this->spriteBin->setAnchorPoint(Vec2::ZERO);
@@ -147,5 +147,7 @@ unsigned char SourceBlock::compute()
 
 BlockBase* SourceBlock::spawn()
 {
-	return SourceBlock::create(this->cipherIndex);
+	SourceBlock* spawn = SourceBlock::create(this->cipherIndex);
+
+	return spawn;
 }

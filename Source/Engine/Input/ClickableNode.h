@@ -27,6 +27,7 @@ public:
 	void setMouseOutCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOut);
 	void setMouseDownCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDown);
 	void setMousePressCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mousePressEvent);
+	void setMouseReleaseNoHitTestCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent);
 	void setMouseReleaseCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent);
 	void setMouseDragCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onDrag);
 	void setMouseScrollCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onScroll);
@@ -81,6 +82,7 @@ private:
 	std::function<void(MouseEvents::MouseEventArgs* args)> mouseInEvent;
 	std::function<void(MouseEvents::MouseEventArgs* args)> mouseDownEvent;
 	std::function<void(MouseEvents::MouseEventArgs* args)> mousePressEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent;
 	std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent;
 	std::function<void(MouseEvents::MouseEventArgs* args)> mouseDragEvent;
 	std::function<void(MouseEvents::MouseEventArgs* args)> mouseOverEvent;

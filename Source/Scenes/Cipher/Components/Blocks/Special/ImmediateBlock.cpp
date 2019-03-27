@@ -35,7 +35,6 @@ ImmediateBlock* ImmediateBlock::create(BlockType blockType)
 ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, ConnectionType::None, ConnectionType::Single, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), CipherResources::Icons_Immediate, Strings::Cipher_Operations_Immediate::create())
 {
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
-	this->displayLabel = SmartAsciiLabel::create();
 	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
 	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);
 	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecLong);
@@ -44,6 +43,8 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	this->spriteBinSelected = Sprite::create(CipherResources::Blocks_BlockBinLong);
 	this->spriteDecSelected = Sprite::create(CipherResources::Blocks_BlockDecLong);
 	this->spriteHexSelected = Sprite::create(CipherResources::Blocks_BlockHexLong);
+	this->displayLabel = SmartAsciiLabel::create();
+	this->charValue = (unsigned char)(0);
 
 	this->spriteAscii->setAnchorPoint(Vec2::ZERO);
 	this->spriteBin->setAnchorPoint(Vec2::ZERO);
@@ -76,6 +77,9 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	{
 		this->icon->setVisible(false);
 	}
+
+	// Huh? I think we've got a bug where this isn't called on spawned objects, just patch it in
+	this->initializePositions();
 
 	this->block->getSprite()->addChild(this->spriteAscii);
 	this->block->getSprite()->addChild(this->spriteBin);
@@ -129,7 +133,6 @@ void ImmediateBlock::initializeListeners()
 			CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(this));
 		});
 	}
-	
 }
 
 void ImmediateBlock::setValue(unsigned char value)
@@ -199,10 +202,10 @@ unsigned char ImmediateBlock::compute()
 
 BlockBase* ImmediateBlock::spawn()
 {
-	ImmediateBlock* spawm = ImmediateBlock::create(BlockType::Normal);
+	ImmediateBlock* spawn = ImmediateBlock::create(BlockType::Normal);
 
-	spawm->displayDataType = this->displayDataType;
-	spawm->loadDisplayValue();
+	spawn->displayDataType = this->displayDataType;
+	spawn->loadDisplayValue();
 
-	return spawm;
+	return spawn;
 }

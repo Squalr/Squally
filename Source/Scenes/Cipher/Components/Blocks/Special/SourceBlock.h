@@ -24,8 +24,6 @@ private:
 	void initializeListeners() override;
 	void loadDisplayValue();
 
-	SmartAsciiLabel* displayLabel;
-
 	int cipherIndex;
 	unsigned char charValue;
 	CipherEvents::DisplayDataType displayDataType;
@@ -34,4 +32,5 @@ private:
 	cocos2d::Sprite* spriteBin;
 	cocos2d::Sprite* spriteDec;
 	cocos2d::Sprite* spriteHex;
+	SmartAsciiLabel* displayLabel;
 };

@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 #include "Scenes/Cipher/Config.h"
 
@@ -68,11 +69,6 @@ DestinationBlock::~DestinationBlock()
 void DestinationBlock::onEnter()
 {
 	super::onEnter();
-
-	this->spriteAscii->setVisible(true);
-	this->spriteBin->setVisible(false);
-	this->spriteDec->setVisible(false);
-	this->spriteHex->setVisible(false);
 }
 
 void DestinationBlock::initializePositions()
@@ -81,8 +77,8 @@ void DestinationBlock::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->displayLabel->setPositionY(4.0f - 16.0f);
-	this->receivedDisplayLabel->setPositionY(4.0f + 16.0f);
+	this->receivedDisplayLabel->setPositionY(4.0f + 20.0f);
+	this->displayLabel->setPositionY(4.0f - 20.0f);
 }
 
 void DestinationBlock::initializeListeners()
@@ -155,6 +151,25 @@ float DestinationBlock::getBoltOffsetY()
 	return 48.0f;
 }
 
+void DestinationBlock::onBeforeStateChange(CipherState* cipherState)
+{
+	super::onBeforeStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Running:
+		{
+			this->receivedValue = (unsigned char)(0);
+			this->loadDisplayValue();
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
 void DestinationBlock::execute(std::function<void()> onExecuteComplete)
 {
 	super::execute(onExecuteComplete);
@@ -174,5 +189,7 @@ unsigned char DestinationBlock::compute()
 
 BlockBase* DestinationBlock::spawn()
 {
-	return DestinationBlock::create(this->cipherIndex);
+	DestinationBlock* spawn = DestinationBlock::create(this->cipherIndex);
+
+	return spawn;
 }

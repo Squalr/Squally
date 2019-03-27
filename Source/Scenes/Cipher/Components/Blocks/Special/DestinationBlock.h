@@ -11,6 +11,7 @@ public:
 	static DestinationBlock* create(int cipherIndex);
 	
 protected:
+	void onBeforeStateChange(CipherState* cipherState) override;
 	void execute(std::function<void()> onExecuteComplete) override;
 	unsigned char compute() override;
 	BlockBase* spawn() override;
@@ -26,9 +27,6 @@ private:
 	float getBoltOffsetY() override;
 	void loadDisplayValue();
 
-	SmartAsciiLabel* displayLabel;
-	SmartAsciiLabel* receivedDisplayLabel;
-
 	int cipherIndex;
 	unsigned char charValue;
 	CipherEvents::DisplayDataType displayDataType;
@@ -37,4 +35,10 @@ private:
 	cocos2d::Sprite* spriteBin;
 	cocos2d::Sprite* spriteDec;
 	cocos2d::Sprite* spriteHex;
+	cocos2d::Sprite* displayFrameAscii;
+	cocos2d::Sprite* displayFrameBin;
+	cocos2d::Sprite* displayFrameDec;
+	cocos2d::Sprite* displayFrameHex;
+	SmartAsciiLabel* displayLabel;
+	SmartAsciiLabel* receivedDisplayLabel;
 };
