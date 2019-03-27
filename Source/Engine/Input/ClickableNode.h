@@ -71,8 +71,8 @@ private:
 
 	bool allowCollisionWhenInvisible;
 	bool interactionEnabled;
-	bool isClickInit;
-	bool isClicked;
+	bool wasAnywhereClicked;
+	bool wasClickedDirectly;
 	bool isMousedOver;
 	cocos2d::EventKeyboard::KeyCode modifier;
 	cocos2d::DrawNode* debugHitbox;

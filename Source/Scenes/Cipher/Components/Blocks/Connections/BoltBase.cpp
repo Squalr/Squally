@@ -78,7 +78,7 @@ void BoltBase::initializeListeners()
 		}
 	})));
 
-	this->connectButton->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+	this->connectButton->setMouseReleaseNoHitTestCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		if (this->isCreatingConnection && this->connection != nullptr)
 		{

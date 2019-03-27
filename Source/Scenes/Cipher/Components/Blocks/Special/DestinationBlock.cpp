@@ -118,7 +118,7 @@ void DestinationBlock::loadDisplayValue()
 	this->spriteHex->setVisible(false);
 
 	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
-	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType);
+	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType, SmartAsciiLabel::Contrast(this->charValue));
 	
 	switch(this->displayDataType)
 	{
@@ -157,7 +157,8 @@ void DestinationBlock::onBeforeStateChange(CipherState* cipherState)
 
 	switch(cipherState->stateType)
 	{
-		case CipherState::StateType::Running:
+		case CipherState::StateType::Testing:
+		case CipherState::StateType::Unlocking:
 		{
 			this->receivedValue = (unsigned char)(0);
 			this->loadDisplayValue();

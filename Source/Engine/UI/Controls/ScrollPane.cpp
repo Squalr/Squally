@@ -1,5 +1,8 @@
 ﻿#include "ScrollPane.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
@@ -140,23 +143,56 @@ void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* cu
 	}
 }
 
-void ScrollPane::setScrollPercentage(float percentage, bool updateScrollBars)
+void ScrollPane::setScrollPercentage(float percentage, bool updateScrollBars, float duration)
 {
-	this->scrollTo((this->maxScrollDepth - this->minScrollDepth) * percentage, updateScrollBars);
+	this->scrollTo((this->maxScrollDepth - this->minScrollDepth) * percentage, updateScrollBars, duration);
 }
 
-void ScrollPane::scrollBy(float delta, bool updateScrollBars)
+void ScrollPane::scrollBy(float delta, bool updateScrollBars, float duration)
 {
-	this->scrollTo(this->getScrollDepth() + delta, updateScrollBars);
+	this->scrollTo(this->getScrollDepth() + delta, updateScrollBars, duration);
 }
 
-void ScrollPane::scrollTo(float position, bool updateScrollBars)
+void ScrollPane::scrollTo(float position, bool updateScrollBars, float duration)
 {
-	this->content->setPositionY(MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth));
-
-	if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+	if (duration <= 0.0f)
 	{
-		this->scrollBar->setProgress(this->getScrollPercentage());
+		this->content->setPositionY(MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth));
+
+		if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+		{
+			this->scrollBar->setProgress(this->getScrollPercentage());
+		}
+	}
+	else
+	{
+		this->content->runAction(Sequence::create(
+			MoveTo::create(duration, Vec2(this->content->getPositionX(), MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth))),
+			CallFunc::create([=]()
+			{
+				if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+				{
+					this->scrollBar->setProgress(this->getScrollPercentage());
+				}
+			}),
+			nullptr
+		));
+
+		int ticks = duration / (1.0f / 60.0f);
+		
+		this->content->runAction(
+			Repeat::create(Sequence::create(
+				DelayTime::create(1.0f / 60.0f),
+				CallFunc::create([=]()
+				{
+					if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+					{
+						this->scrollBar->setProgress(this->getScrollPercentage());
+					}
+				}),
+				nullptr
+			), ticks)
+		);
 	}
 }
 

@@ -27,6 +27,7 @@ private:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void loadPuzzleData();
 	void selectInputOutputPairAtIndex(int index);
 	

@@ -127,7 +127,7 @@ void BlockBase::initializeListeners()
 				this->clickDelta = this->originalPosition - args->mouseCoords;
 			});
 
-			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseReleaseNoHitTestCallback([=](MouseEvents::MouseEventArgs* args)
 			{
 				if (!this->isInGameArea())
 				{
@@ -214,7 +214,8 @@ void BlockBase::onBeforeStateChange(CipherState* cipherState)
 {
 	switch(cipherState->stateType)
 	{
-		case CipherState::StateType::Running:
+		case CipherState::StateType::Testing:
+		case CipherState::StateType::Unlocking:
 		{
 			this->currentInputs.clear();
 			break;

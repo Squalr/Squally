@@ -1,4 +1,4 @@
-#include "CipherStateRunning.h"
+#include "CipherStateTesting.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -7,29 +7,29 @@
 
 using namespace cocos2d;
 
-CipherStateRunning* CipherStateRunning::create()
+CipherStateTesting* CipherStateTesting::create()
 {
-	CipherStateRunning* instance = new CipherStateRunning();
+	CipherStateTesting* instance = new CipherStateTesting();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CipherStateRunning::CipherStateRunning() : super(CipherState::StateType::Running)
+CipherStateTesting::CipherStateTesting() : super(CipherState::StateType::Testing)
 {
 }
 
-CipherStateRunning::~CipherStateRunning()
+CipherStateTesting::~CipherStateTesting()
 {
 }
 
-void CipherStateRunning::onBeforeStateEnter(CipherState* cipherState)
+void CipherStateTesting::onBeforeStateEnter(CipherState* cipherState)
 {
 	super::onBeforeStateEnter(cipherState);
 }
 
-void CipherStateRunning::onStateEnter(CipherState* cipherState)
+void CipherStateTesting::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
 
@@ -66,17 +66,17 @@ void CipherStateRunning::onStateEnter(CipherState* cipherState)
 	});
 }
 
-void CipherStateRunning::onStateReload(CipherState* cipherState)
+void CipherStateTesting::onStateReload(CipherState* cipherState)
 {
 	super::onStateReload(cipherState);
 }
 
-void CipherStateRunning::onStateExit(CipherState* cipherState)
+void CipherStateTesting::onStateExit(CipherState* cipherState)
 {
 	super::onStateExit(cipherState);
 }
 
-void CipherStateRunning::performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index)
+void CipherStateTesting::performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index)
 {
 	if (index < blocks.size())
 	{
