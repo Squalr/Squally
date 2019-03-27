@@ -78,7 +78,8 @@ void CipherLock::onAnyStateChange(CipherState* cipherState)
 
 	switch(cipherState->stateType)
 	{
-		case CipherState::StateType::Running:
+		case CipherState::StateType::Testing:
+		case CipherState::StateType::Unlocking:
 		{
 			this->setVisible(true);
 			break;

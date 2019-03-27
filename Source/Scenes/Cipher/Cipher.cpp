@@ -27,15 +27,17 @@
 #include "Scenes/Cipher/Components/CipherLock.h"
 #include "Scenes/Cipher/Components/CipherFrame.h"
 #include "Scenes/Cipher/Components/DisplayModeToggles.h"
-#include "Scenes/Cipher/Components/ExecuteButton.h"
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
+#include "Scenes/Cipher/Components/TestButton.h"
 #include "Scenes/Cipher/Components/ToolBox.h"
+#include "Scenes/Cipher/Components/UnlockButton.h"
 #include "Scenes/Cipher/States/CipherStateGameEnd.h"
 #include "Scenes/Cipher/States/CipherStateLoadInitialState.h"
 #include "Scenes/Cipher/States/CipherStateNeutral.h"
-#include "Scenes/Cipher/States/CipherStateRunning.h"
 #include "Scenes/Cipher/States/CipherStateStartGame.h"
+#include "Scenes/Cipher/States/CipherStateTesting.h"
+#include "Scenes/Cipher/States/CipherStateUnlocking.h"
 #include "Scenes/Cipher/States/CipherStateVictory.h"
 
 #include "Resources/ShaderResources.h"
@@ -69,15 +71,17 @@ Cipher::Cipher()
 	this->inputsOutputsPanel = InputsOutputsPanel::create();
 	this->toolBox = ToolBox::create();
 	this->displayModeToggles = DisplayModeToggles::create();
-	this->executeButton = ExecuteButton::create();
+	this->testButton = TestButton::create();
+	this->unlockButton = UnlockButton::create();
 	this->quitButton = QuitButton::create();
 	this->asciiButton = AsciiButton::create();
 	this->cipherState = CipherState::create();
 	this->cipherStateGameEnd = CipherStateGameEnd::create();
 	this->cipherStateLoadInitialState = CipherStateLoadInitialState::create();
 	this->cipherStateNeutral = CipherStateNeutral::create();
-	this->cipherStateRunning = CipherStateRunning::create();
 	this->cipherStateStartGame = CipherStateStartGame::create();
+	this->cipherStateTesting = CipherStateTesting::create();
+	this->cipherStateUnlocking = CipherStateUnlocking::create();
 	this->cipherStateVictory = CipherStateVictory::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->asciiTable = AsciiTable::create();
@@ -89,14 +93,16 @@ Cipher::Cipher()
 	this->addChild(this->inputsOutputsPanel);
 	this->addChild(this->toolBox);
 	this->addChild(this->displayModeToggles);
-	this->addChild(this->executeButton);
+	this->addChild(this->testButton);
+	this->addChild(this->unlockButton);
 	this->addChild(this->quitButton);
 	this->addChild(this->asciiButton);
 	this->addChild(this->cipherState);
 	this->addChild(this->cipherStateGameEnd);
 	this->addChild(this->cipherStateLoadInitialState);
 	this->addChild(this->cipherStateNeutral);
-	this->addChild(this->cipherStateRunning);
+	this->addChild(this->cipherStateTesting);
+	this->addChild(this->cipherStateUnlocking);
 	this->addChild(this->cipherStateStartGame);
 	this->addChild(this->cipherStateVictory);
 	this->addChild(this->backdrop);

@@ -4,6 +4,8 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -70,6 +72,39 @@ void InputsOutputsPanel::initializePositions()
 	this->inputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter - 80.0f, visibleSize.height / 2.0f - 16.0f));
 	this->outputsHeaderLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter + 80.0f, visibleSize.height / 2.0f - 16.0f));
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f -  232.0f));
+}
+
+void InputsOutputsPanel::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeActiveCipher, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherChangeActiveCipherArgs* args = static_cast<CipherEvents::CipherChangeActiveCipherArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			int index = 0;
+
+			for (index = 0; index < this->currentCipherState->inputOutputMap.size(); index++)
+			{
+				std::string input = std::get<0>(this->currentCipherState->inputOutputMap[index]);
+				std::string output = std::get<1>(this->currentCipherState->inputOutputMap[index]);
+
+				if (input == args->input && output == args->output)
+				{
+					break;
+				}
+			}
+
+			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
+			
+			if (args->autoScroll)
+			{
+				this->scrollPane->scrollTo(-this->ioSelectionMarker->getPositionY(), true, 0.5f);
+			}
+		}
+	}));
 }
 
 void InputsOutputsPanel::onBeforeStateChange(CipherState* cipherState)
@@ -144,8 +179,6 @@ void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
 	{
 		return;
 	}
-
-	this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
 
 	CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
 		std::get<0>(this->currentCipherState->inputOutputMap[index]),

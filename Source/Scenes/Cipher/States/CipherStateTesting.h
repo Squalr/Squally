@@ -4,10 +4,10 @@
 
 class BlockBase;
 
-class CipherStateRunning : public CipherStateBase
+class CipherStateTesting : public CipherStateBase
 {
 public:
-	static CipherStateRunning* create();
+	static CipherStateTesting* create();
 
 protected:
 	void onBeforeStateEnter(CipherState* cipherState) override;
@@ -17,8 +17,8 @@ protected:
 
 private:
 	typedef CipherStateBase super;
-	CipherStateRunning();
-	~CipherStateRunning();
+	CipherStateTesting();
+	~CipherStateTesting();
 
 	void performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index = 0);
 };

@@ -88,8 +88,12 @@ public:
 	{
 		std::string input;
 		std::string output;
+		bool autoScroll;
 
-		CipherChangeActiveCipherArgs(std::string input, std::string output) : input(input), output(output)
+		CipherChangeActiveCipherArgs(std::string input, std::string output) : input(input), output(output), autoScroll(false)
+		{
+		}
+		CipherChangeActiveCipherArgs(std::string input, std::string output, bool autoScroll) : input(input), output(output), autoScroll(autoScroll)
 		{
 		}
 	};

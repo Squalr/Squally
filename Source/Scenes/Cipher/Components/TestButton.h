@@ -4,10 +4,10 @@
 
 class ClickableTextNode;
 
-class ExecuteButton : public CipherComponentBase
+class TestButton : public CipherComponentBase
 {
 public:
-	static ExecuteButton* create();
+	static TestButton* create();
 
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;
@@ -15,13 +15,13 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
-	ExecuteButton();
-	~ExecuteButton();
+	TestButton();
+	~TestButton();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	ClickableTextNode* executeButton;
+	ClickableTextNode* testButton;
 	CipherState* activeCipherState;
 };

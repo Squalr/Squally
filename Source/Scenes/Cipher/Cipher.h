@@ -23,17 +23,19 @@ class CipherState;
 class CipherStateGameEnd;
 class CipherStateLoadInitialState;
 class CipherStateNeutral;
-class CipherStateRunning;
 class CipherStateStartGame;
+class CipherStateTesting;
+class CipherStateUnlocking;
 class CipherStateVictory;
 class ClickableNode;
 class ClickableTextNode;
 class DisplayModeToggles;
-class ExecuteButton;
 class InputsOutputsPanel;
-class QuitButton;
-class ToolBox;
 class LocalizedLabel;
+class QuitButton;
+class TestButton;
+class ToolBox;
+class UnlockButton;
 
 class Cipher : public SmartNode
 {
@@ -64,7 +66,8 @@ private:
 	CipherFrame* cipherFrame;
 	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;
-	ExecuteButton* executeButton;
+	TestButton* testButton;
+	UnlockButton* unlockButton;
 	InputsOutputsPanel* inputsOutputsPanel;
 	QuitButton* quitButton;
 	ToolBox* toolBox;
@@ -73,8 +76,9 @@ private:
 	CipherStateGameEnd* cipherStateGameEnd;
 	CipherStateLoadInitialState* cipherStateLoadInitialState;
 	CipherStateNeutral* cipherStateNeutral;
-	CipherStateRunning* cipherStateRunning;
 	CipherStateStartGame* cipherStateStartGame;
+	CipherStateTesting* cipherStateTesting;
+	CipherStateUnlocking* cipherStateUnlocking;
 	CipherStateVictory* cipherStateVictory;
 
 	cocos2d::LayerColor* backdrop;
