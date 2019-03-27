@@ -153,9 +153,14 @@ void BlockBase::initializeListeners()
 
 				CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs([=]()
 				{
-					this->spawningBlock = this->spawn();
+					if (this->spawningBlock == nullptr)
+					{
+						this->spawningBlock = this->spawn();
 
-					return this->spawningBlock;
+						return this->spawningBlock;
+					}
+
+					return (BlockBase*)nullptr;
 				}, args->mouseCoords + this->clickDelta));
 
 				this->label->stopAllActions();
@@ -172,12 +177,13 @@ void BlockBase::initializeListeners()
 				}
 			});
 
-			this->block->setMouseReleaseCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseReleaseNoHitTestCallback([=](MouseEvents::MouseEventArgs* args)
 			{
+				args->handled = true;
+
 				if (this->spawningBlock != nullptr && !this->spawningBlock->isInGameArea())
 				{
-					// Despawn out-of-bounds nodes
-					GameUtils::changeParent(this->spawningBlock, nullptr, false);
+					GameUtils::changeParent(this->spawningBlock, nullptr, true);
 				}
 
 				this->spawningBlock = nullptr;

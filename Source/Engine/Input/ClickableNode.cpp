@@ -51,6 +51,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
 	this->mousePressEvent = nullptr;
+	this->mouseReleaseNoHitTestEvent = nullptr;
 	this->mouseReleaseEvent = nullptr;
 	this->mouseScrollEvent = nullptr;
 	this->allowCollisionWhenInvisible = false;
@@ -225,6 +226,11 @@ void ClickableNode::setMouseDownCallback(std::function<void(MouseEvents::MouseEv
 void ClickableNode::setMousePressCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMousePressEvent)
 {
 	this->mousePressEvent = onMousePressEvent;
+}
+
+void ClickableNode::setMouseReleaseNoHitTestCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent)
+{
+	this->mouseReleaseNoHitTestEvent = mouseReleaseNoHitTestEvent;
 }
 
 void ClickableNode::setMouseReleaseCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent)
@@ -404,7 +410,16 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 		return;
 	}
 
-	if (this->isClickInit && this->isClicked)
+	if (this->isClickInit)
+	{
+		// This event is called despite any arg handled flags
+		if (this->mouseReleaseNoHitTestEvent != nullptr)
+		{
+			this->mouseReleaseNoHitTestEvent(args);
+		}
+	}
+
+	if (!args->handled && this->isClickInit && this->isClicked)
 	{
 		if (this->mouseReleaseEvent != nullptr)
 		{
@@ -414,7 +429,7 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 
 	this->isClickInit = false;
 
-	if (GameUtils::intersects(this, Vec2(args->mouseCoords)) && this->mouseClickEvent != nullptr && !args->isDragging && this->isClicked)
+	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)) && this->mouseClickEvent != nullptr && !args->isDragging && this->isClicked)
 	{
 		this->isClicked = false;
 

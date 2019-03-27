@@ -178,18 +178,19 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	if (newParent != nullptr && index != -1)
 	{
 		newParent->addChildInsert(node, index, true);
+		node->setPosition(newPosition);
 	}
 	else if (newParent != nullptr)
 	{
 		newParent->addChildAsReentry(node);
+		node->setPosition(newPosition);
 	}
 	else if (node->getParent() != nullptr)
 	{
 		node->getParent()->removeChild(node);
+		node = nullptr;
 	}
-
-	node->setPosition(newPosition);
-
+	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.
 	return node;
 }
