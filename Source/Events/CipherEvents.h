@@ -25,6 +25,7 @@ public:
 	static const std::string EventChangeDisplayDataType;
 	static const std::string EventOpenImmediateEditor;
 	static const std::string EventOpenAsciiTable;
+	static const std::string EventTryUnlockCurrentCipher;
 
 	struct CipherLoadArgs
 	{
@@ -124,6 +125,17 @@ public:
 		}
 	};
 
+	struct UnlockArgs
+	{
+		int cipherIndex;
+		bool success;
+		std::function<void()> callback;
+
+		UnlockArgs(int cipherIndex, bool success, std::function<void()> callback) : cipherIndex(cipherIndex), success(success), callback(callback)
+		{
+		}
+	};
+
 	static void TriggerLoadCipher(CipherLoadArgs args);
 	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
@@ -133,4 +145,5 @@ public:
 	static void TriggerChangeActiveCipher(CipherChangeActiveCipherArgs args);
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);
 	static void TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args);
+	static void TriggerTryUnlockCurrentCipher(UnlockArgs args);
 };
