@@ -14,6 +14,7 @@ const std::string CipherEvents::EventConnectionDestroy = "EVENT_CONNECTION_DESTR
 const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_CIPHER";
 const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
 const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
+const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_TRY_UNLOCK_CURRENT_CIPHER";
 
 void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
 {
@@ -83,6 +84,14 @@ void CipherEvents::TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventOpenAsciiTable,
+		&args
+	);
+}
+
+void CipherEvents::TriggerTryUnlockCurrentCipher(UnlockArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventTryUnlockCurrentCipher,
 		&args
 	);
 }

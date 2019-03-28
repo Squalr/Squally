@@ -87,14 +87,17 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 		{
 			this->performExecuteLoop(immediateBlocks, [=]()
 			{
-				if (index >= cipherState->inputOutputMap.size() - 1)
+				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, true, [=]()
 				{
-					onExecuteComplete();
-				}
-				else
-				{
-					this->performUnlockLoop(cipherState, inputBlocks, immediateBlocks, onExecuteComplete, index + 1);
-				}
+					if (index >= cipherState->inputOutputMap.size() - 1)
+					{
+						onExecuteComplete();
+					}
+					else
+					{
+						this->performUnlockLoop(cipherState, inputBlocks, immediateBlocks, onExecuteComplete, index + 1);
+					}
+				}));
 			});
 		});
 	}
