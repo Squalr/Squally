@@ -110,6 +110,16 @@ void DestinationBlock::initializeListeners()
 	}));
 }
 
+unsigned char DestinationBlock::getValue()
+{
+	return this->charValue;
+}
+
+bool DestinationBlock::isMatchedValues()
+{
+	return this->receivedValue == this->charValue;
+}
+
 void DestinationBlock::loadDisplayValue()
 {
 	this->spriteAscii->setVisible(false);

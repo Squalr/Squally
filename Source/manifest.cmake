@@ -1245,6 +1245,8 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Menus/TranslationEditor/OriginalTextInEnglish.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Menus/TranslationEditor/TranslationEditor.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Menus/Tutorials.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Strings/PointerTrace/PointerTrace.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Strings/Stacks/Stacks.cpp"
 )
 
 set(GAME_HEADERS
@@ -2512,5 +2514,7 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Menus/TranslationEditor/OriginalTextInEnglish.h"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Menus/TranslationEditor/TranslationEditor.h"
     "${CMAKE_CURRENT_LIST_DIR}/Strings/Menus/Tutorials.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Strings/PointerTrace/PointerTrace.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Strings/Stacks/Stacks.h"
 )
 

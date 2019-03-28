@@ -87,7 +87,14 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 		{
 			this->performExecuteLoop(immediateBlocks, [=]()
 			{
-				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, true, [=]()
+				bool unlockSuccessful = true;
+				
+				for (auto it = cipherState->outputBlocks.begin(); it != cipherState->outputBlocks.end(); it++)
+				{
+					unlockSuccessful &= (*it)->isMatchedValues();
+				}
+
+				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, unlockSuccessful, [=]()
 				{
 					if (index >= cipherState->inputOutputMap.size() - 1)
 					{

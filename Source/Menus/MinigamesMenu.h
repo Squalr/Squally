@@ -36,8 +36,8 @@ private:
 	ClickableTextNode* hexusButton;
 	ClickableTextNode* hexusPuzzlesButton;
 	ClickableTextNode* cipherButton;
-	ClickableTextNode* comingSoonButton2;
-	ClickableTextNode* comingSoonButton3;
+	ClickableTextNode* pointerTraceButton;
+	ClickableTextNode* stacksButton;
 	ClickableTextNode* comingSoonButton4;
 	ClickableTextNode* comingSoonButton5;
 	ClickableTextNode* comingSoonButton6;
