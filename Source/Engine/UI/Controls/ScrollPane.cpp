@@ -165,6 +165,11 @@ void ScrollPane::scrollBy(float delta, bool updateScrollBars, float duration)
 	this->scrollTo(this->getScrollDepth() + delta, updateScrollBars, duration);
 }
 
+void ScrollPane::scrollToCenter(Node* target, bool updateScrollBars, float duration)
+{
+	this->scrollTo(-target->getPositionY() - this->getPaneSize().height / 2.0f, updateScrollBars, duration);
+}
+
 void ScrollPane::scrollTo(float position, bool updateScrollBars, float duration)
 {
 	if (duration <= 0.0f)
