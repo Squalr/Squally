@@ -19,10 +19,12 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Cipher/Cipher.h"
-#include "Strings/Menus/Back.h"
-#include "Strings/Menus/ComingSoon.h"
 #include "Strings/Hexus/Hexus.h"
 #include "Strings/Hexus/HexusPuzzles.h"
+#include "Strings/Menus/Back.h"
+#include "Strings/Menus/ComingSoon.h"
+#include "Strings/PointerTrace/PointerTrace.h"
+#include "Strings/Stacks/Stacks.h"
 
 using namespace cocos2d;
 
@@ -71,13 +73,14 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusButton = this->createButton(Strings::Hexus_Hexus::create(), UIResources::Menus_Icons_Banner);
 	this->hexusPuzzlesButton = this->createButton(Strings::Hexus_HexusPuzzles::create(), UIResources::Menus_Icons_Gauntlet);
 	this->cipherButton = this->createButton(Strings::Cipher_Cipher::create(), UIResources::Menus_Icons_KeyGold);
+	this->pointerTraceButton = this->createButton(Strings::PointerTrace_PointerTrace::create(), UIResources::Menus_Icons_SpellCast);
+	this->stacksButton = this->createButton(Strings::Stacks_Stacks::create(), UIResources::Menus_Icons_SpellCast);
 
-	// TODO: Temp for demo
 	this->hexusPuzzlesButton->disableInteraction(128);
 	this->cipherButton->disableInteraction(128);
+	this->pointerTraceButton->disableInteraction(128);
+	this->stacksButton->disableInteraction(128);
 
-	this->comingSoonButton2 = this->createComingSoonButton();
-	this->comingSoonButton3 = this->createComingSoonButton();
 	this->comingSoonButton4 = this->createComingSoonButton();
 	this->comingSoonButton5 = this->createComingSoonButton();
 	this->comingSoonButton6 = this->createComingSoonButton();
@@ -86,8 +89,8 @@ MinigamesMenu::MinigamesMenu()
 	this->scrollPane->addChild(this->hexusButton);
 	this->scrollPane->addChild(this->hexusPuzzlesButton);
 	this->scrollPane->addChild(this->cipherButton);
-	this->scrollPane->addChild(this->comingSoonButton2);
-	this->scrollPane->addChild(this->comingSoonButton3);
+	this->scrollPane->addChild(this->pointerTraceButton);
+	this->scrollPane->addChild(this->stacksButton);
 	this->scrollPane->addChild(this->comingSoonButton4);
 	this->scrollPane->addChild(this->comingSoonButton5);
 	this->scrollPane->addChild(this->comingSoonButton6);
@@ -144,8 +147,8 @@ void MinigamesMenu::initializePositions()
 	this->hexusButton->setPosition(Vec2(0.0f, -192.0f * 0 - 128.0f));
 	this->hexusPuzzlesButton->setPosition(Vec2(0.0f, -192.0f * 1 - 128.0f));
 	this->cipherButton->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
-	this->comingSoonButton2->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
-	this->comingSoonButton3->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
+	this->pointerTraceButton->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
+	this->stacksButton->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
 	this->comingSoonButton4->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
 	this->comingSoonButton5->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
 	this->comingSoonButton6->setPosition(Vec2(0.0f, -192.0f * 7 - 128.0f));

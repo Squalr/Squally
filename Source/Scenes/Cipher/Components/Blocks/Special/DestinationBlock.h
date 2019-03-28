@@ -9,6 +9,9 @@ class DestinationBlock : public BlockBase
 {
 public:
 	static DestinationBlock* create(int cipherIndex);
+
+	unsigned char getValue();
+	bool isMatchedValues();
 	
 protected:
 	void onBeforeStateChange(CipherState* cipherState) override;

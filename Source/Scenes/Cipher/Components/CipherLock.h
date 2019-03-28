@@ -4,6 +4,7 @@
 
 namespace cocos2d
 {
+	class ClippingNode;
 	class Sprite;
 }
 
@@ -25,8 +26,10 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	std::vector<cocos2d::Sprite*> cipherPinholes;
 	std::vector<cocos2d::Sprite*> cipherPins;
 
+	cocos2d::ClippingNode* contentClip;
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* steelGear;
 	cocos2d::Sprite* woodGearTop;
@@ -37,5 +40,8 @@ private:
 	cocos2d::Sprite* stoppingBlock;
 	cocos2d::Sprite* pinboardFront;
 
+	bool hasAnyPinFailed;
+
 	static const int PinSpacing;
+	static const int PinUnlockDistance;
 };
