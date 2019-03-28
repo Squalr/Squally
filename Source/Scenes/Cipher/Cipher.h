@@ -19,12 +19,15 @@ class CipherDecor;
 class CipherFrame;
 class CipherLock;
 class CipherPuzzleData;
+class CipherTransitionPanel;
 class CipherState;
 class CipherStateGameEnd;
 class CipherStateLoadInitialState;
 class CipherStateNeutral;
 class CipherStateStartGame;
 class CipherStateTesting;
+class CipherStateTransitionNeutral;
+class CipherStateTransitionUnlocking;
 class CipherStateUnlocking;
 class CipherStateVictory;
 class ClickableNode;
@@ -63,6 +66,7 @@ private:
 	AsciiButton* asciiButton;
 	CipherBackground* cipherBackground;
 	CipherLock* cipherLock;
+	ToolBox* toolBox;
 	CipherFrame* cipherFrame;
 	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;
@@ -70,7 +74,6 @@ private:
 	UnlockButton* unlockButton;
 	InputsOutputsPanel* inputsOutputsPanel;
 	QuitButton* quitButton;
-	ToolBox* toolBox;
 
 	CipherState* cipherState;
 	CipherStateGameEnd* cipherStateGameEnd;
@@ -78,6 +81,8 @@ private:
 	CipherStateNeutral* cipherStateNeutral;
 	CipherStateStartGame* cipherStateStartGame;
 	CipherStateTesting* cipherStateTesting;
+	CipherStateTransitionNeutral* cipherStateTransitionNeutral;
+	CipherStateTransitionUnlocking* cipherStateTransitionUnlocking;
 	CipherStateUnlocking* cipherStateUnlocking;
 	CipherStateVictory* cipherStateVictory;
 

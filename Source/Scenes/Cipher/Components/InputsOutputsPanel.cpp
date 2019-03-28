@@ -125,6 +125,11 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 			this->loadPuzzleData();
 			break;
 		}
+		case CipherState::StateType::TransitionUnlocking:
+		{
+			this->scrollPane->setScrollPercentage(0.0f, true, 0.5f);
+			break;
+		}
 		default:
 		{
 			break;

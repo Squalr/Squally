@@ -95,4 +95,5 @@ namespace CipherResources
 	extern const std::string Logo;
 	extern const std::string PopupPanelBack;
 	extern const std::string PopupPanelFrame;
+	extern const std::string TransitionPanel;
 };

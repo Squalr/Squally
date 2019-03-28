@@ -73,7 +73,7 @@ void UnlockButton::initializeListeners()
 	{
 		if (this->activeCipherState != nullptr)
 		{
-			this->activeCipherState->updateState(this->activeCipherState, CipherState::StateType::Unlocking);
+			this->activeCipherState->updateState(this->activeCipherState, CipherState::StateType::TransitionUnlocking);
 		}
 	});
 }

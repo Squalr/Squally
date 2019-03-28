@@ -80,6 +80,8 @@ CipherLock::~CipherLock()
 void CipherLock::onEnter()
 {
 	super::onEnter();
+
+	this->setVisible(false);
 }
 
 void CipherLock::initializePositions()
@@ -246,8 +248,6 @@ void CipherLock::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
 
-	this->setVisible(false);
-
 	switch(cipherState->stateType)
 	{
 		case CipherState::StateType::LoadInitialState:
@@ -273,12 +273,6 @@ void CipherLock::onAnyStateChange(CipherState* cipherState)
 		case CipherState::StateType::Neutral:
 		{
 			this->hasAnyPinFailed = false;
-			break;
-		}
-		case CipherState::StateType::Testing:
-		case CipherState::StateType::Unlocking:
-		{
-			this->setVisible(true);
 			break;
 		}
 		default:

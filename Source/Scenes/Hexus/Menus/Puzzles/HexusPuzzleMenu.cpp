@@ -25,7 +25,6 @@ using namespace cocos2d;
 
 HexusPuzzlesMenu* HexusPuzzlesMenu::instance = nullptr;
 const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
-const std::string HexusPuzzlesMenu::StringKeyHexusPuzzles = "Menu_Hexus_Puzzles";
 
 void HexusPuzzlesMenu::registerGlobalScene()
 {

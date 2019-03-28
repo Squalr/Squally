@@ -144,6 +144,8 @@ ToolBox::~ToolBox()
 void ToolBox::onEnter()
 {
 	super::onEnter();
+
+	this->setVisible(false);
 }
 
 void ToolBox::initializePositions()
@@ -210,19 +212,4 @@ void ToolBox::onBeforeStateChange(CipherState* cipherState)
 void ToolBox::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
-
-	switch(cipherState->stateType)
-	{
-		case CipherState::StateType::Testing:
-		case CipherState::StateType::Unlocking:
-		{
-			this->setVisible(false);
-			break;
-		}
-		default:
-		{
-			this->setVisible(true);
-			break;
-		}
-	}
 }
