@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CipherState;
+class ClickableNode;
 class LocalizedLabel;
 class ScrollPane;
 
@@ -38,6 +39,7 @@ private:
 	cocos2d::Sprite* ioSelectionMarker;
 
 	CipherState* currentCipherState;
+	std::vector<ClickableNode*> ioPanels;
 	std::vector<LocalizedLabel*> inputLabels;
 	std::vector<LocalizedLabel*> outputLabels;
 };

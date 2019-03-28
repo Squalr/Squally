@@ -64,6 +64,16 @@ void Slider::initializePositions()
 	this->updateSliderPosition();
 }
 
+void Slider::enableInteraction()
+{
+	this->slide->enableInteraction();
+}
+
+void Slider::disableInteraction()
+{
+	this->slide->disableInteraction();
+}
+
 void Slider::setProgressUpdateCallback(std::function<void(float progress)> callback)
 {
 	this->progressUpdateEvent = callback;

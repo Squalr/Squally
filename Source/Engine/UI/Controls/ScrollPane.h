@@ -20,6 +20,8 @@ class ScrollPane : public SmartNode
 public:
 	static ScrollPane* create(cocos2d::Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize = cocos2d::Size(0.0f, 24.0f), cocos2d::Size marginSize = cocos2d::Size(24.0f, 24.0f), cocos2d::Color4B initBackgroundColor = cocos2d::Color4B(0, 0, 0, 196));
 
+	void enableInteraction();
+	void disableInteraction();
 	void setBackgroundColor(cocos2d::Color4B backgroundColor);
 	void renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size paneSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc);
 	void setScrollPercentage(float percentage, bool updateScrollBars = true, float duration = 0.0f);
