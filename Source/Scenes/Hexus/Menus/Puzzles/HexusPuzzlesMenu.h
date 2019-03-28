@@ -48,5 +48,4 @@ private:
 
 	static HexusPuzzlesMenu* instance;
 	static const cocos2d::Color3B TitleColor;
-	static const std::string StringKeyHexusPuzzles;
 };

@@ -26,7 +26,9 @@ public:
 		EmptyState,
 		GameStart,
 		LoadInitialState,
+		TransitionNeutral,
 		Neutral,
+		TransitionUnlocking,
 		Unlocking,
 		Testing,
 		Wrong,
@@ -63,7 +65,8 @@ public:
 	std::string currentOutput;
 
 	// Tutorial node pointers
-	cocos2d::Node* inputsOutputsPanelPointer;
+	cocos2d::Node* lockPointer;
+	cocos2d::Node* toolBoxPointer;
 
 	static const std::string RequestStateUpdateEvent;
 	static const std::string BeforeStateUpdateEvent;

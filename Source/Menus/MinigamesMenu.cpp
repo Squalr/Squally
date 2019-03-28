@@ -76,8 +76,6 @@ MinigamesMenu::MinigamesMenu()
 	this->pointerTraceButton = this->createButton(Strings::PointerTrace_PointerTrace::create(), UIResources::Menus_Icons_SpellCast);
 	this->stacksButton = this->createButton(Strings::Stacks_Stacks::create(), UIResources::Menus_Icons_SpellCast);
 
-	this->hexusPuzzlesButton->disableInteraction(128);
-	this->cipherButton->disableInteraction(128);
 	this->pointerTraceButton->disableInteraction(128);
 	this->stacksButton->disableInteraction(128);
 
@@ -117,25 +115,6 @@ void MinigamesMenu::onEnter()
 	this->scheduleUpdate();
 }
 
-void MinigamesMenu::initializeListeners()
-{
-	super::initializeListeners();
-
-	MinigamesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMinigames, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(MinigamesMenu::instance);
-	}));
-
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(MinigamesMenu::onKeyPressed, this);
-	this->hexusButton->setClickCallback(CC_CALLBACK_0(MinigamesMenu::onHexusClick, this));
-	this->hexusPuzzlesButton->setClickCallback(CC_CALLBACK_0(MinigamesMenu::onHexusPuzzlesClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_0(MinigamesMenu::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
-}
-
 void MinigamesMenu::initializePositions()
 {
 	super::initializePositions();
@@ -153,6 +132,29 @@ void MinigamesMenu::initializePositions()
 	this->comingSoonButton5->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
 	this->comingSoonButton6->setPosition(Vec2(0.0f, -192.0f * 7 - 128.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
+}
+
+void MinigamesMenu::initializeListeners()
+{
+	super::initializeListeners();
+
+	MinigamesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMinigames, [](EventCustom* args)
+	{
+		GlobalDirector::loadScene(MinigamesMenu::instance);
+	}));
+
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(MinigamesMenu::onKeyPressed, this);
+
+	this->hexusButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
+	this->hexusPuzzlesButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzles(); });
+	this->cipherButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzles(); });
+	this->pointerTraceButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzles(); });
+	this->stacksButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzles(); });
+	this->backButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
+
+	this->addEventListener(keyboardListener);
 }
 
 void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -175,21 +177,6 @@ void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 			break;
 		}
 	}
-}
-
-void MinigamesMenu::onBackClick()
-{
-	NavigationEvents::navigateBack();
-}
-
-void MinigamesMenu::onHexusClick()
-{
-	NavigationEvents::navigateHexusChapterSelect();
-}
-
-void MinigamesMenu::onHexusPuzzlesClick()
-{
-	NavigationEvents::navigateHexusPuzzles();
 }
 
 ClickableTextNode* MinigamesMenu::createButton(LocalizedString* text, std::string iconResource)

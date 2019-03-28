@@ -94,3 +94,4 @@ const std::string CipherResources::Lock_StoppingBlock = "Cipher/Lock/StoppingBlo
 const std::string CipherResources::Logo = "Cipher/Logo.png";
 const std::string CipherResources::PopupPanelBack = "Cipher/PopupPanelBack.png";
 const std::string CipherResources::PopupPanelFrame = "Cipher/PopupPanelFrame.png";
+const std::string CipherResources::TransitionPanel = "Cipher/TransitionPanel.png";
