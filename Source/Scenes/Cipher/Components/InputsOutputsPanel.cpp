@@ -38,7 +38,7 @@ InputsOutputsPanel::InputsOutputsPanel()
 	this->currentCipherState = nullptr;
 	this->inputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Inputs::create());
 	this->outputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Outputs::create());
-	this->scrollPane = ScrollPane::create(Size(312.0f, 312.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
+	this->scrollPane = ScrollPane::create(Size(312.0f, 312.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 0.0f), Size(12.0f, 12.0f));
 	this->ioPanelsNode = Node::create();
 	this->ioSelectionMarker = Sprite::create(CipherResources::IOSelectionMarker);
 	this->inputLabels = std::vector<LocalizedLabel*>();
@@ -98,11 +98,11 @@ void InputsOutputsPanel::initializeListeners()
 				}
 			}
 
-			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) + 4.0f));
+			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) - 32.0f + 4.0f));
 			
 			if (args->autoScroll)
 			{
-				this->scrollPane->scrollTo(-this->ioSelectionMarker->getPositionY(), true, 0.5f);
+				this->scrollPane->scrollToCenter(this->ioSelectionMarker, true, 0.5f);
 			}
 		}
 	}));
@@ -132,6 +132,8 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 			{
 				(*it)->disableInteraction();
 			}
+
+			this->selectInputOutputPairAtIndex(0);
 
 			this->scrollPane->disableInteraction();
 			this->scrollPane->setScrollPercentage(0.0f, true, 0.35f);
@@ -179,9 +181,9 @@ void InputsOutputsPanel::loadPuzzleData()
 
 		ioPanel->setContentSize(Size(scrollPaneWidth, 56.0f));
 
-		ioPanel->setPosition(Vec2(16.0f, float(index) * -(56.0f + 8.0f)));
-		inputLabel->setPosition(Vec2(-48.0f, float(index) * -(56.0f + 8.0f)));
-		outputLabel->setPosition(Vec2(48.0f + 24.0f, float(index) * -(56.0f + 8.0f)));
+		ioPanel->setPosition(Vec2(16.0f, float(index) * -(56.0f + 8.0f) - 32.0f));
+		inputLabel->setPosition(Vec2(-48.0f, float(index) * -(56.0f + 8.0f) - 32.0f));
+		outputLabel->setPosition(Vec2(48.0f + 24.0f, float(index) * -(56.0f + 8.0f) - 32.0f));
 
 		this->ioPanelsNode->addChild(ioPanel);
 		this->ioPanelsNode->addChild(inputLabel);

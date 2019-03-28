@@ -26,6 +26,7 @@ public:
 	void renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size paneSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc);
 	void setScrollPercentage(float percentage, bool updateScrollBars = true, float duration = 0.0f);
 	void scrollBy(float delta, bool updateScrollBars = true, float duration = 0.0f);
+	void scrollToCenter(cocos2d::Node* target, bool updateScrollBars = true, float duration = 0.0f);
 	void scrollTo(float position, bool updateScrollBars = true, float duration = 0.0f);
 	float getScrollPercentage();
 	float getScrollDepth();
