@@ -18,6 +18,8 @@ public:
 	static Slider* create(std::string frameResource, std::string fillResource, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
 	static Slider* create(cocos2d::Node* frame, cocos2d::Node* fill, std::string slideResource, std::string slideResourceSelected, float progress, bool isHorizontal = true);
 
+	void enableInteraction();
+	void disableInteraction();
 	void setProgress(float newProgress);
 	void setProgressUpdateCallback(std::function<void(float progress)> callback);
 

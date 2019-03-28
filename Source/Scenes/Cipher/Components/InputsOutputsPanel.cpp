@@ -43,6 +43,7 @@ InputsOutputsPanel::InputsOutputsPanel()
 	this->ioSelectionMarker = Sprite::create(CipherResources::IOSelectionMarker);
 	this->inputLabels = std::vector<LocalizedLabel*>();
 	this->outputLabels = std::vector<LocalizedLabel*>();
+	this->ioPanels = std::vector<ClickableNode*>();
 	
 	this->inputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 	this->outputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
@@ -127,8 +128,23 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 		}
 		case CipherState::StateType::TransitionUnlocking:
 		{
-			this->scrollPane->setScrollPercentage(0.0f, true, 0.5f);
+			for (auto it = this->ioPanels.begin(); it != this->ioPanels.end(); it++)
+			{
+				(*it)->disableInteraction();
+			}
+
+			this->scrollPane->disableInteraction();
+			this->scrollPane->setScrollPercentage(0.0f, true, 0.35f);
 			break;
+		}
+		case CipherState::StateType::Neutral:
+		{
+			for (auto it = this->ioPanels.begin(); it != this->ioPanels.end(); it++)
+			{
+				(*it)->enableInteraction();
+			}
+
+			this->scrollPane->enableInteraction();
 		}
 		default:
 		{
@@ -139,6 +155,7 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 
 void InputsOutputsPanel::loadPuzzleData()
 {
+	this->ioPanels.clear();
 	this->inputLabels.clear();
 	this->outputLabels.clear();
 	this->ioPanelsNode->removeAllChildren();
@@ -170,6 +187,7 @@ void InputsOutputsPanel::loadPuzzleData()
 		this->ioPanelsNode->addChild(inputLabel);
 		this->ioPanelsNode->addChild(outputLabel);
 
+		this->ioPanels.push_back(ioPanel);
 		this->inputLabels.push_back(inputLabel);
 		this->outputLabels.push_back(outputLabel);
 	}

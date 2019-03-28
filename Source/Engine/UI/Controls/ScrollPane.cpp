@@ -128,6 +128,18 @@ void ScrollPane::initializeListeners()
 	});
 }
 
+void ScrollPane::enableInteraction()
+{
+	this->scrollBar->enableInteraction();
+	this->dragHitbox->enableInteraction();
+}
+
+void ScrollPane::disableInteraction()
+{
+	this->scrollBar->disableInteraction();
+	this->dragHitbox->disableInteraction();
+}
+
 void ScrollPane::setBackgroundColor(cocos2d::Color4B backgroundColor)
 {
 	this->background->initWithColor(backgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);

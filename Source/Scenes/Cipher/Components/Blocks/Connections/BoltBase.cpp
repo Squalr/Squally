@@ -65,19 +65,6 @@ void BoltBase::initializeListeners()
 		}		
 	});
 
-	this->addEventListener(EventListenerCustom::create(MouseEvents::EventMouseMove, ([=](EventCustom* eventCustom)
-	{
-		if (this->connection != nullptr)
-		{
-			MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData());
-
-			if (args != nullptr)
-			{
-				this->connection->stretchToLocation(args->mouseCoords);
-			}
-		}
-	})));
-
 	this->connectButton->setMouseReleaseNoHitTestCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		if (this->isCreatingConnection && this->connection != nullptr)
