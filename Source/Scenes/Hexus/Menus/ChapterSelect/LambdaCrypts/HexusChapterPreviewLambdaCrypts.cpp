@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string HexusChapterPreviewLambdaCrypts::SaveKeyChapterName = "HEXUS_CHAPTER_JUNGLE";
+const std::string HexusChapterPreviewLambdaCrypts::SaveKeyChapterName = "HEXUS_CHAPTER_LAMBDA_CRYPTS";
 
 HexusChapterPreviewLambdaCrypts* HexusChapterPreviewLambdaCrypts::create()
 {

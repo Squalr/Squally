@@ -10,18 +10,18 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HexusPuzzleItem;
+class CipherLevelItem;
 class LocalizedLabel;
 class ClickableNode;
 
-class HexusPuzzlesMenu : public GlobalScene
+class CipherSelectMenu : public GlobalScene
 {
 public:
 	static void registerGlobalScene();
 
 protected:
-	HexusPuzzlesMenu();
-	~HexusPuzzlesMenu();
+	CipherSelectMenu();
+	~CipherSelectMenu();
 
 private:
 	typedef GlobalScene super;
@@ -30,7 +30,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick();
-	void onMouseOver(HexusPuzzleItem* tutorialItem);
+	void onMouseOver(CipherLevelItem* tutorialItem);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	int currentPage;
@@ -44,8 +44,8 @@ private:
 	cocos2d::ParticleSystem* nether;
 	cocos2d::ParticleSystem* swirl;
 
-	std::vector<HexusPuzzleItem*> hexusOpponentItems;
+	std::vector<CipherLevelItem*> hexusOpponentItems;
 
-	static HexusPuzzlesMenu* instance;
+	static CipherSelectMenu* instance;
 	static const cocos2d::Color3B TitleColor;
 };

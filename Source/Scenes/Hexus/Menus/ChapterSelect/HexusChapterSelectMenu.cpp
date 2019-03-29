@@ -52,7 +52,6 @@ HexusChapterSelectMenu::HexusChapterSelectMenu()
 	this->chapters = std::vector<HexusChapterPreview*>();
 	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
 
-
 	this->hexusChapterPreviewTraining = HexusChapterPreviewTraining::create();
 	this->hexusChapterPreviewBalmerPeaks = HexusChapterPreviewBalmerPeaks::create();
 	this->hexusChapterPreviewCastleValgrind = HexusChapterPreviewCastleValgrind::create();
@@ -180,6 +179,7 @@ void HexusChapterSelectMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenu::onKeyPressed, this);
+
 	this->hexusChapterPreviewTraining->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training)); } );
 	this->hexusChapterPreviewBalmerPeaks->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::BalmerPeaks)); } );
 	this->hexusChapterPreviewCastleValgrind->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::CastleValgrind)); } );
@@ -189,6 +189,7 @@ void HexusChapterSelectMenu::initializeListeners()
 	this->hexusChapterPreviewSeaSharpCaverns->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::SeaSharpCaverns)); } );
 	this->hexusChapterPreviewUnderflowRuins->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins)); } );
 	this->hexusChapterPreviewVoidStar->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::VoidStar)); } );
+	
 	this->deckManagementButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onDeckManagementClick, this));
 	this->shopButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onShopClick, this));
 	this->backButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onBackClick, this));

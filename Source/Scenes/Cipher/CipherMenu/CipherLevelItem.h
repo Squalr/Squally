@@ -11,13 +11,13 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class HexusPuzzleItem;
+class CipherLevelItem;
 class ClickableNode;
 
-class HexusPuzzleItem : public SmartNode
+class CipherLevelItem : public SmartNode
 {
 public:
-	static HexusPuzzleItem* create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver);
+	static CipherLevelItem* create(std::string description, std::string mapFile, int index, std::function<void(CipherLevelItem*)> onMouseOver);
 	void initializePositions();
 
 	ClickableNode* startButton;
@@ -26,18 +26,18 @@ public:
 	std::string tutorialMapFile;
 
 	const int MaxEntriesPerRow = 5;
-	const int MaxEntriesPerPage = HexusPuzzleItem::MaxEntriesPerRow * 2;
+	const int MaxEntriesPerPage = CipherLevelItem::MaxEntriesPerRow * 2;
 
 protected:
-	HexusPuzzleItem(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver);
-	~HexusPuzzleItem();
+	CipherLevelItem(std::string description, std::string mapFile, int index, std::function<void(CipherLevelItem*)> onMouseOver);
+	~CipherLevelItem();
 
 private:
 	typedef SmartNode super;
 	void onTutorialClick();
 	void onTutorialMouseOver();
 
-	std::function<void(HexusPuzzleItem*)> onMouseOverEvent;
+	std::function<void(CipherLevelItem*)> onMouseOverEvent;
 	bool isLevelComplete;
 	int levelIndex;
 	int page;

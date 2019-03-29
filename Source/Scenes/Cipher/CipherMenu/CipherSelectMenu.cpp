@@ -1,4 +1,4 @@
-#include "HexusPuzzlesMenu.h"
+#include "CipherSelectMenu.h"
 
 #include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
@@ -11,7 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Scenes/Hexus/Menus/Puzzles/HexusPuzzleItem.h"
+#include "Scenes/Cipher/CipherMenu/CipherLevelItem.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/ParticleResources.h"
@@ -23,25 +23,25 @@
 
 using namespace cocos2d;
 
-HexusPuzzlesMenu* HexusPuzzlesMenu::instance = nullptr;
-const Color3B HexusPuzzlesMenu::TitleColor = Color3B(88, 188, 193);
+CipherSelectMenu* CipherSelectMenu::instance = nullptr;
+const Color3B CipherSelectMenu::TitleColor = Color3B(88, 188, 193);
 
-void HexusPuzzlesMenu::registerGlobalScene()
+void CipherSelectMenu::registerGlobalScene()
 {
-	if (HexusPuzzlesMenu::instance == nullptr)
+	if (CipherSelectMenu::instance == nullptr)
 	{
-		HexusPuzzlesMenu::instance = new HexusPuzzlesMenu();
+		CipherSelectMenu::instance = new CipherSelectMenu();
 
-		HexusPuzzlesMenu::instance->autorelease();
-		HexusPuzzlesMenu::instance->initializeListeners();
+		CipherSelectMenu::instance->autorelease();
+		CipherSelectMenu::instance->initializeListeners();
 	}
 
-	GlobalDirector::registerGlobalScene(HexusPuzzlesMenu::instance);
+	GlobalDirector::registerGlobalScene(CipherSelectMenu::instance);
 }
 
-HexusPuzzlesMenu::HexusPuzzlesMenu()
+CipherSelectMenu::CipherSelectMenu()
 {
-	this->hexusOpponentItems = std::vector<HexusPuzzleItem*>();
+	this->hexusOpponentItems = std::vector<CipherLevelItem*>();
 
 	this->currentPage = 0;
 
@@ -54,7 +54,7 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
 	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
 
-	this->titleLabel->setColor(HexusPuzzlesMenu::TitleColor);
+	this->titleLabel->setColor(CipherSelectMenu::TitleColor);
 	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
 	this->addChild(this->nether);
@@ -68,20 +68,20 @@ HexusPuzzlesMenu::HexusPuzzlesMenu()
 
 	this->loadLevels();
 
-	this->closeButton->setClickCallback(CC_CALLBACK_0(HexusPuzzlesMenu::onCloseClick, this));
+	this->closeButton->setClickCallback(CC_CALLBACK_0(CipherSelectMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
-	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
+	for (std::vector<CipherLevelItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
 	{
 		this->addChild(*it);
 	}
 }
 
-HexusPuzzlesMenu::~HexusPuzzlesMenu()
+CipherSelectMenu::~CipherSelectMenu()
 {
 }
 
-void HexusPuzzlesMenu::onEnter()
+void CipherSelectMenu::onEnter()
 {
 	GlobalScene::onEnter();
 
@@ -94,7 +94,7 @@ void HexusPuzzlesMenu::onEnter()
 	GameUtils::fadeInObject(this->description, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 
-	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
+	for (std::vector<CipherLevelItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
 	{
 		GameUtils::fadeInObject(*it, delay, duration);
 	}
@@ -104,7 +104,7 @@ void HexusPuzzlesMenu::onEnter()
 	GameUtils::accelerateParticles(this->nether, 1.0f);
 }
 
-void HexusPuzzlesMenu::initializePositions()
+void CipherSelectMenu::initializePositions()
 {
 	GlobalScene::initializePositions();
 
@@ -119,97 +119,97 @@ void HexusPuzzlesMenu::initializePositions()
 	this->descriptionBox->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 	this->description->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
 
-	for (std::vector<HexusPuzzleItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
+	for (std::vector<CipherLevelItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)
 	{
 		(*it)->initializePositions();
 	}
 }
 
-void HexusPuzzlesMenu::initializeListeners()
+void CipherSelectMenu::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	HexusPuzzlesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusPuzzles, [](EventCustom* args)
+	CipherSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCipher, [](EventCustom* args)
 	{
-		GlobalDirector::loadScene(HexusPuzzlesMenu::instance);
+		GlobalDirector::loadScene(CipherSelectMenu::instance);
 	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusPuzzlesMenu::onKeyPressed, this);
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(CipherSelectMenu::onKeyPressed, this);
 
 	this->addEventListener(keyboardListener);
 }
 
-void HexusPuzzlesMenu::loadLevels()
+void CipherSelectMenu::loadLevels()
 {
-	auto callback = CC_CALLBACK_1(HexusPuzzlesMenu::onMouseOver, this);
+	auto callback = CC_CALLBACK_1(CipherSelectMenu::onMouseOver, this);
 	int index = 0;
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Exact Value Scan I",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Exact Value Scan II",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Unknown Value Scan",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Data Types - Float",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Data Types - Double",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Godmode",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Position I",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Position II",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Blink Godmode I",
 		MapResources::EndianForest_Forest,
 		index++,
 		callback
 	));
 
-	this->hexusOpponentItems.push_back(HexusPuzzleItem::create(
+	this->hexusOpponentItems.push_back(CipherLevelItem::create(
 		"Blink Godmode II",
 		MapResources::EndianForest_Forest,
 		index++,
@@ -217,7 +217,7 @@ void HexusPuzzlesMenu::loadLevels()
 	));
 }
 
-void HexusPuzzlesMenu::onMouseOver(HexusPuzzleItem* tutorialItem)
+void CipherSelectMenu::onMouseOver(CipherLevelItem* tutorialItem)
 {
 	if (this->description->getString() != tutorialItem->tutorialDescription)
 	{
@@ -225,7 +225,7 @@ void HexusPuzzlesMenu::onMouseOver(HexusPuzzleItem* tutorialItem)
 	}
 }
 
-void HexusPuzzlesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+void CipherSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	if (!GameUtils::isVisible(this))
 	{
@@ -247,7 +247,7 @@ void HexusPuzzlesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	}
 }
 
-void HexusPuzzlesMenu::onCloseClick()
+void CipherSelectMenu::onCloseClick()
 {
 	NavigationEvents::navigateBack();
 }

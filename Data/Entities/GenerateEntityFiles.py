@@ -207,6 +207,7 @@ def generateEntityCode(entityData):
 
 def generateHexusMenuCode(allEntityData):
 	menuRoot = abspath(join(join(realpath(__file__), ".."), "../../Source/Scenes/Hexus/Menus/OpponentSelect/"))
+	puzzleMenuRoot = abspath(join(join(realpath(__file__), ".."), "../../Source/Scenes/Hexus/Menus/PuzzleSelect/"))
 
 	hTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.h.template"))
 	cppTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.cpp.template"))
@@ -227,35 +228,58 @@ def generateHexusMenuCode(allEntityData):
 			entities = sortedEntities[environment]
 			
 			menuName = "HexusOpponentMenu" + environment
+			menuNamePuzzle = "HexusOpponentMenu" + environment + "Puzzle"
 			hOutFile = menuRoot + "/" + environment + "/" + menuName + ".h"
 			cppOutFile = menuRoot + "/" + environment + "/" + menuName + ".cpp"
+			hOutFilePuzzle = puzzleMenuRoot + "/" + environment + "/" + menuNamePuzzle + ".h"
+			cppOutFilePuzzle = puzzleMenuRoot + "/" + environment + "/" + menuNamePuzzle + ".cpp"
 			
 			if sys.version_info >= (3, 0):
 				os.makedirs(dirname(cppOutFile), exist_ok=True)
+				os.makedirs(dirname(cppOutFilePuzzle), exist_ok=True)
 			else:
 				# Python 2 support, although it creates a race condition
 				if not os.path.exists(dirname(cppOutFile)):
 					os.makedirs(dirname(cppOutFile))
+				if not os.path.exists(dirname(cppOutFilePuzzle)):
+					os.makedirs(dirname(cppOutFilePuzzle))
 
 			hContent = hTemplateContent
 			cppContent = cppTemplateContent
+			hContentPuzzle = hTemplateContent
+			cppContentPuzzle = cppTemplateContent
 			generatedEnemyList = ""
 			generatedIncludes = ""
+			generatedPuzzleEnemyList = ""
+			generatedPuzzleIncludes = ""
 
 			for nextEntity in entities:
 				if not nextEntity["IsHexusPuzzle"]:
 					generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
 					generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
-
-			cppContent = cppContent.replace("{{Environment}}", environment)
-			cppContent = cppContent.replace("{{HexusOpponentIncludes}}", generatedIncludes)
-			cppContent = cppContent.replace("{{HexusOpponents}}", generatedEnemyList)
-			cppContent = cppContent.replace("{{MenuName}}", menuName)
+				else:
+					generatedPuzzleIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
+					generatedPuzzleEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
+			
+			cppContent = cppContent.replace("{{Environment}}", environment) \
+				.replace("{{HexusOpponentIncludes}}", generatedIncludes) \
+				.replace("{{HexusOpponents}}", generatedEnemyList) \
+				.replace("{{MenuName}}", menuName) \
+				.replace("{{PuzzleTag}}", "")
 			hContent = hContent.replace("{{MenuName}}", menuName)
 
-			with open(hOutFile, "w+") as hWriter, open(cppOutFile, "w+") as cppWriter:
+			cppContentPuzzle = cppContentPuzzle.replace("{{Environment}}", environment) \
+				.replace("{{HexusOpponentIncludes}}", generatedPuzzleIncludes) \
+				.replace("{{HexusOpponents}}", generatedPuzzleEnemyList) \
+				.replace("{{MenuName}}", menuNamePuzzle) \
+				.replace("{{PuzzleTag}}", "Puzzle")
+			hContentPuzzle = hContentPuzzle.replace("{{MenuName}}", menuNamePuzzle)
+
+			with open(hOutFile, "w+") as hWriter, open(cppOutFile, "w+") as cppWriter, open(hOutFilePuzzle, "w+") as hWriterPuzzle, open(cppOutFilePuzzle, "w+") as cppWriterPuzzle:
 				hWriter.write(hContent)
 				cppWriter.write(cppContent)
+				hWriterPuzzle.write(hContentPuzzle)
+				cppWriterPuzzle.write(cppContentPuzzle)
 
 def generateEntityDeserializationCode(allEntityData):
 	deserializerClass = abspath(join(join(realpath(__file__), ".."), "../../Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))

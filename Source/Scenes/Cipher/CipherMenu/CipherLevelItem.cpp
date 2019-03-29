@@ -1,4 +1,4 @@
-#include "HexusPuzzleItem.h"
+#include "CipherLevelItem.h"
 
 #include "cocos/base/CCDirector.h"
 
@@ -14,22 +14,22 @@
 
 using namespace cocos2d;
 
-HexusPuzzleItem* HexusPuzzleItem::create(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver)
+CipherLevelItem* CipherLevelItem::create(std::string description, std::string mapFile, int index, std::function<void(CipherLevelItem*)> onMouseOver)
 {
-	HexusPuzzleItem* instance = new HexusPuzzleItem(description, mapFile, index, onMouseOver);
+	CipherLevelItem* instance = new CipherLevelItem(description, mapFile, index, onMouseOver);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, int index, std::function<void(HexusPuzzleItem*)> onMouseOver)
+CipherLevelItem::CipherLevelItem(std::string description, std::string mapFile, int index, std::function<void(CipherLevelItem*)> onMouseOver)
 {
 	this->tutorialMapFile = mapFile;
 	this->tutorialDescription = description;
 	this->onMouseOverEvent = onMouseOver;
 	this->levelIndex = index;
-	this->page = index / HexusPuzzleItem::MaxEntriesPerPage;
+	this->page = index / CipherLevelItem::MaxEntriesPerPage;
 
 	this->frame = Sprite::create(UIResources::Menus_TutorialMenu_TutorialEntry);
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
@@ -50,8 +50,8 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 			UIResources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 
-	this->startButton->setClickCallback(CC_CALLBACK_0(HexusPuzzleItem::onTutorialClick, this));
-	this->startButton->setMouseOverCallback(CC_CALLBACK_0(HexusPuzzleItem::onTutorialMouseOver, this));
+	this->startButton->setClickCallback(CC_CALLBACK_0(CipherLevelItem::onTutorialClick, this));
+	this->startButton->setMouseOverCallback(CC_CALLBACK_0(CipherLevelItem::onTutorialMouseOver, this));
 	this->setContentSize(this->frame->getContentSize());
 	this->setCascadeOpacityEnabled(true);
 
@@ -60,22 +60,22 @@ HexusPuzzleItem::HexusPuzzleItem(std::string description, std::string mapFile, i
 	this->addChild(this->indexLabel);
 }
 
-HexusPuzzleItem::~HexusPuzzleItem()
+CipherLevelItem::~CipherLevelItem()
 {
 }
 
-void HexusPuzzleItem::initializePositions()
+void CipherLevelItem::initializePositions()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	// Adjust index to be relative to the current page
-	int orderIndex = this->levelIndex % HexusPuzzleItem::MaxEntriesPerPage;
+	int orderIndex = this->levelIndex % CipherLevelItem::MaxEntriesPerPage;
 
 	// Set position based on order index
 	Vec2 position = Vec2(
-		origin.x + visibleSize.width / 2 - 272.0f + (orderIndex % HexusPuzzleItem::MaxEntriesPerRow) * 136.0f,
-		origin.y + visibleSize.height / 2 + 104.0f + ((orderIndex / HexusPuzzleItem::MaxEntriesPerRow) * -160.0f)
+		origin.x + visibleSize.width / 2 - 272.0f + (orderIndex % CipherLevelItem::MaxEntriesPerRow) * 136.0f,
+		origin.y + visibleSize.height / 2 + 104.0f + ((orderIndex / CipherLevelItem::MaxEntriesPerRow) * -160.0f)
 	);
 
 	this->frame->setPosition(position);
@@ -83,12 +83,12 @@ void HexusPuzzleItem::initializePositions()
 	this->indexLabel->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y + 20));
 }
 
-void HexusPuzzleItem::onTutorialClick()
+void CipherLevelItem::onTutorialClick()
 {
 	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(deck1, deck2));
 }
 
-void HexusPuzzleItem::onTutorialMouseOver()
+void CipherLevelItem::onTutorialMouseOver()
 {
 	this->onMouseOverEvent(this);
 }
