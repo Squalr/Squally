@@ -15,13 +15,14 @@ const std::string NavigationEvents::EventNavigateSaveSelect = "EVENT_NAVIGATE_SA
 const std::string NavigationEvents::EventNavigateMinigames = "EVENT_NAVIGATE_MINIGAMES";
 const std::string NavigationEvents::EventNavigateOptions = "EVENT_NAVIGATE_OPTIONS";
 const std::string NavigationEvents::EventNavigateWorldMap = "EVENT_NAVIGATE_WORLD_MAP";
+const std::string NavigationEvents::EventNavigateCipher = "EVENT_NAVIGATE_CIPHER";
 const std::string NavigationEvents::EventNavigateHexus = "EVENT_NAVIGATE_HEXUS";
-const std::string NavigationEvents::EventNavigateHexusPuzzles = "EVENT_NAVIGATE_HEXUS_PUZZLES";
 const std::string NavigationEvents::EventNavigateHexusRewards = "EVENT_NAVIGATE_HEXUS_REWARDS";
 const std::string NavigationEvents::EventNavigateHexusDeckManagement = "EVENT_NAVIGATE_HEXUS_DECK_MANAGEMENT";
 const std::string NavigationEvents::EventNavigateHexusShop = "EVENT_NAVIGATE_HEXUS_SHOP";
 const std::string NavigationEvents::EventNavigateHexusChapterSelect = "EVENT_NAVIGATE_HEXUS_CHAPTER_SELECT";
 const std::string NavigationEvents::EventNavigateHexusOpponentSelect = "EVENT_NAVIGATE_HEXUS_OPPONENT_SELECT";
+const std::string NavigationEvents::EventNavigateHexusPuzzlesChapterSelect = "EVENT_NAVIGATE_HEXUS_PUZZLES_CHAPTER_SELECT";
 const std::string NavigationEvents::EventNavigateCombat = "EVENT_NAVIGATE_COMBAT";
 const std::string NavigationEvents::EventNavigateCutscene = "EVENT_NAVIGATE_CUTSCENE";
 
@@ -81,18 +82,19 @@ void NavigationEvents::navigateWorldMap()
 	);
 }
 
+void NavigationEvents::navigateCipher(NavigateCipherArgs args)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigateCipher,
+		&args
+	);
+}
+
 void NavigationEvents::navigateHexus(NavigateHexusArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::EventNavigateHexus,
 		&args
-	);
-}
-
-void NavigationEvents::navigateHexusPuzzles()
-{
-	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateHexusPuzzles
 	);
 }
 
@@ -122,6 +124,13 @@ void NavigationEvents::navigateHexusChapterSelect()
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::EventNavigateHexusChapterSelect
+	);
+}
+
+void NavigationEvents::navigateHexusPuzzlesChapterSelect()
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigateHexusPuzzlesChapterSelect
 	);
 }
 

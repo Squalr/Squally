@@ -1,4 +1,4 @@
-#include "PuzzleA.h"
+#include "HexusOpponentPuzzleTutorialA.h"
 
 #include "cocos/math/Vec2.h"
 
@@ -13,27 +13,27 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleA::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PUZZLE_A";
-PuzzleA* PuzzleA::instance = nullptr;
+const std::string HexusOpponentPuzzleTutorialA::OpponentSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PUZZLE_TUTORIAL_A";
+HexusOpponentPuzzleTutorialA* HexusOpponentPuzzleTutorialA::instance = nullptr;
 
-PuzzleA* PuzzleA::getInstance()
+HexusOpponentPuzzleTutorialA* HexusOpponentPuzzleTutorialA::getInstance()
 {
-	if (PuzzleA::instance == nullptr)
+	if (HexusOpponentPuzzleTutorialA::instance == nullptr)
 	{
-		PuzzleA::instance = new PuzzleA();
+		HexusOpponentPuzzleTutorialA::instance = new HexusOpponentPuzzleTutorialA();
 	}
 
-	return PuzzleA::instance;
+	return HexusOpponentPuzzleTutorialA::instance;
 }
 
-PuzzleA::PuzzleA() : super(
+HexusOpponentPuzzleTutorialA::HexusOpponentPuzzleTutorialA() : super(
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	UIResources::Menus_Hexus_HexusFrameCastleValgrind,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
+	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -48.0f),
-	Vec2(0.0f, -48.0f),
-	PuzzleA::OpponentSaveKey,
+	HexusOpponentPuzzleTutorialA::OpponentSaveKey,
 	super::Strategy::Random,
 	Card::CardStyle::Light,
 	0.07f,
@@ -122,6 +122,6 @@ PuzzleA::PuzzleA() : super(
 {
 }
 
-PuzzleA::~PuzzleA()
+HexusOpponentPuzzleTutorialA::~HexusOpponentPuzzleTutorialA()
 {
 }

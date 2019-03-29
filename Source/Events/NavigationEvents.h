@@ -20,6 +20,15 @@ public:
 		NavigateLoadingScreenArgs(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback) : levelFile(levelFile), onLoadCallback(onLoadCallback) { }
 	};
 
+	struct NavigateCipherArgs
+	{
+		bool todo;
+
+		NavigateCipherArgs(bool todo) : todo(todo)
+		{
+		}
+	};
+
 	struct NavigateHexusArgs
 	{
 		HexusOpponentData* opponentData;
@@ -59,6 +68,15 @@ public:
 			SeaSharpCaverns,
 			UnderflowRuins,
 			VoidStar,
+			PuzzleTraining,
+			PuzzleBalmerPeaks,
+			PuzzleCastleValgrind,
+			PuzzleDaemonsHallow,
+			PuzzleEndianForest,
+			PuzzleLambdaCrypts,
+			PuzzleSeaSharpCaverns,
+			PuzzleUnderflowRuins,
+			PuzzleVoidStar,
 		};
 
 		Chapter chapter;
@@ -92,13 +110,14 @@ public:
 	static void navigateMinigames();
 	static void navigateOptions();
 	static void navigateWorldMap();
+	static void navigateCipher(NavigateCipherArgs args);
 	static void navigateHexus(NavigateHexusArgs args);
-	static void navigateHexusPuzzles();
 	static void navigateHexusRewards(NavigateHexusRewardArgs args);
 	static void navigateHexusDeckManagement();
 	static void navigateHexusShop();
 	static void navigateHexusChapterSelect();
 	static void navigateHexusOpponentSelect(NavigateHexusOpponentSelectArgs args);
+	static void navigateHexusPuzzlesChapterSelect();
 	static void navigateCombat(NavigateCombatArgs args);
 	static void navigateCutscene(NavigateCutsceneArgs args);
 	
@@ -109,13 +128,14 @@ public:
 	static const std::string EventNavigateMinigames;
 	static const std::string EventNavigateOptions;
 	static const std::string EventNavigateWorldMap;
+	static const std::string EventNavigateCipher;
 	static const std::string EventNavigateHexus;
-	static const std::string EventNavigateHexusPuzzles;
 	static const std::string EventNavigateHexusRewards;
 	static const std::string EventNavigateHexusDeckManagement;
 	static const std::string EventNavigateHexusShop;
 	static const std::string EventNavigateHexusChapterSelect;
 	static const std::string EventNavigateHexusOpponentSelect;
+	static const std::string EventNavigateHexusPuzzlesChapterSelect;
 	static const std::string EventNavigateCombat;
 	static const std::string EventNavigateCutscene;
 };
