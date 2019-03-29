@@ -37,6 +37,9 @@ SerializableMap::SerializableMap(std::string mapFileName, const std::vector<Seri
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
+	// Initialize in constructor to pick up early object spawn events
+	this->initializeListeners();
+
 	for (auto it = layers.begin(); it != layers.end(); it++)
 	{
 		this->appendLayer(*it);
