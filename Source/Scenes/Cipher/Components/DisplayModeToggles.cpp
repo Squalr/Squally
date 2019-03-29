@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/RadioButton.h"
@@ -16,17 +17,18 @@ using namespace cocos2d;
 
 const int DisplayModeToggles::GroupIdDisplayModeToggles = 985703765; // RNG based to avoid conflicts
 
-DisplayModeToggles* DisplayModeToggles::create()
+DisplayModeToggles* DisplayModeToggles::create(bool inAsciiMenu)
 {
-	DisplayModeToggles* instance = new DisplayModeToggles();
+	DisplayModeToggles* instance = new DisplayModeToggles(inAsciiMenu);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DisplayModeToggles::DisplayModeToggles()
+DisplayModeToggles::DisplayModeToggles(bool inAsciiMenu)
 {
+	this->inAsciiMenu = inAsciiMenu;
 	this->toggleButtonBin = RadioButton::create(
 		ClickableNode::create(CipherResources::Buttons_BinaryButtonActive, CipherResources::Buttons_BinaryButtonActive),
 		ClickableNode::create(CipherResources::Buttons_BinaryButton, CipherResources::Buttons_BinaryButtonSelected),
@@ -71,10 +73,20 @@ void DisplayModeToggles::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->toggleButtonDec->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 0.0f, visibleSize.height / 2.0f + 416.0f));
-	this->toggleButtonHex->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 1.0f, visibleSize.height / 2.0f + 416.0f));
-	this->toggleButtonBin->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 2.0f, visibleSize.height / 2.0f + 416.0f));
-	this->toggleButtonAscii->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 3.0f, visibleSize.height / 2.0f + 416.0f));
+	if (this->inAsciiMenu)
+	{
+		this->toggleButtonDec->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 0.0f, visibleSize.height / 2.0f - 356.0f));
+		this->toggleButtonHex->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 1.0f, visibleSize.height / 2.0f - 356.0f));
+		this->toggleButtonBin->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 2.0f, visibleSize.height / 2.0f - 356.0f));
+		this->toggleButtonAscii->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 3.0f, visibleSize.height / 2.0f - 356.0f));
+	}
+	else
+	{
+		this->toggleButtonDec->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 0.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonHex->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 1.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonBin->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 2.0f, visibleSize.height / 2.0f + 416.0f));
+		this->toggleButtonAscii->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + -532.0f + 64.0f * 3.0f, visibleSize.height / 2.0f + 416.0f));
+	}
 }
 
 void DisplayModeToggles::initializeListeners()
@@ -97,6 +109,12 @@ void DisplayModeToggles::initializeListeners()
 	{
 		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Ascii));
 	});
+
+	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+
+	keyboardListener->onKeyPressed = CC_CALLBACK_2(DisplayModeToggles::onKeyPressed, this);
+
+	this->addEventListener(keyboardListener);
 }
 
 void DisplayModeToggles::onBeforeStateChange(CipherState* cipherState)
@@ -107,4 +125,35 @@ void DisplayModeToggles::onBeforeStateChange(CipherState* cipherState)
 void DisplayModeToggles::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+}
+
+void DisplayModeToggles::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
+{
+	switch (keyCode)
+	{
+		case EventKeyboard::KeyCode::KEY_1:
+		{
+			this->toggleButtonDec->check();
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_2:
+		{
+			this->toggleButtonHex->check();
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_3:
+		{
+			this->toggleButtonBin->check();
+			break;
+		}
+		case EventKeyboard::KeyCode::KEY_4:
+		{
+			this->toggleButtonAscii->check();
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
 }

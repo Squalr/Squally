@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
+class DisplayModeToggles;
 class ImmediateBlock;
 class LocalizedLabel;
 class RadioButton;
@@ -42,10 +43,7 @@ private:
 	cocos2d::Sprite* background;
 	ScrollPane* scrollPane;
 	cocos2d::Sprite* selectionSprite;
-	RadioButton* toggleButtonBin;
-	RadioButton* toggleButtonDec;
-	RadioButton* toggleButtonHex;
-	RadioButton* toggleButtonAscii;
+	DisplayModeToggles* displayModeToggles;
 	cocos2d::Sprite* frame;
 	ClickableTextNode* returnButton;
 	LocalizedLabel* asciiTableTitle;
@@ -54,6 +52,4 @@ private:
 	ImmediateBlock* selectedBlock;
 	ImmediateBlock* immediateBlock;
 	std::function<void()> onCloseCallback;
-
-	static const int GroupIdAsciiTable;
 };
