@@ -58,6 +58,8 @@ namespace CipherResources
 	extern const std::string Decor_ClockHourHand;
 	extern const std::string Decor_ClockMinutehand;
 	extern const std::string Decor_Furnace;
+	extern const std::string IOCorrect;
+	extern const std::string IOFailed;
 	extern const std::string IOPanel;
 	extern const std::string IOPanelSelected;
 	extern const std::string IOSelectionMarker;
