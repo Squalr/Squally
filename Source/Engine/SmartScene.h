@@ -20,7 +20,6 @@ public:
 
 	void setFadeSpeed(float newFadeSpeed);
 	float getFadeSpeed();
-	void resume() override;
 
 protected:
 	void pause() override;
