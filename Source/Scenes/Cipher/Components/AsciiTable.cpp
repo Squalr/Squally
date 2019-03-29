@@ -13,6 +13,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Cipher/Components/Blocks/Special/ImmediateBlock.h"
+#include "Scenes/Cipher/Components/DisplayModeToggles.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
@@ -25,8 +26,6 @@
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
-
-const int AsciiTable::GroupIdAsciiTable = 843638392; // RNG based to avoid conflicts
 
 AsciiTable* AsciiTable::create()
 {
@@ -60,26 +59,7 @@ AsciiTable::AsciiTable()
 
 	this->frame = Sprite::create(CipherResources::PopupPanelFrame);
 
-	this->toggleButtonBin = RadioButton::create(
-		ClickableNode::create(CipherResources::Buttons_BinaryButtonActive, CipherResources::Buttons_BinaryButtonActive),
-		ClickableNode::create(CipherResources::Buttons_BinaryButton, CipherResources::Buttons_BinaryButtonSelected),
-		AsciiTable::GroupIdAsciiTable
-	);
-	this->toggleButtonDec = RadioButton::create(
-		ClickableNode::create(CipherResources::Buttons_DecimalButtonActive, CipherResources::Buttons_DecimalButtonActive),
-		ClickableNode::create(CipherResources::Buttons_DecimalButton, CipherResources::Buttons_DecimalButtonSelected),
-		AsciiTable::GroupIdAsciiTable
-	);
-	this->toggleButtonHex = RadioButton::create(
-		ClickableNode::create(CipherResources::Buttons_HexButtonActive, CipherResources::Buttons_HexButtonActive),
-		ClickableNode::create(CipherResources::Buttons_HexButton, CipherResources::Buttons_HexButtonSelected),
-		AsciiTable::GroupIdAsciiTable
-	);
-	this->toggleButtonAscii = RadioButton::create(
-		ClickableNode::create(CipherResources::Buttons_AsciiButtonActive, CipherResources::Buttons_AsciiButtonActive),
-		ClickableNode::create(CipherResources::Buttons_AsciiButton, CipherResources::Buttons_AsciiButtonSelected),
-		AsciiTable::GroupIdAsciiTable
-	);
+	this->displayModeToggles = DisplayModeToggles::create(true);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();
@@ -143,10 +123,7 @@ AsciiTable::AsciiTable()
 
 	this->addChild(this->scrollPane);
 	this->addChild(this->frame);
-	this->addChild(this->toggleButtonBin);
-	this->addChild(this->toggleButtonDec);
-	this->addChild(this->toggleButtonHex);
-	this->addChild(this->toggleButtonAscii);
+	this->addChild(this->displayModeToggles);
 	this->addChild(this->returnButton);
 	this->addChild(this->asciiTableTitle);
 	this->addChild(this->chooseANewValueTitle);
@@ -185,10 +162,6 @@ void AsciiTable::initializePositions()
 
 	this->frame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
-	this->toggleButtonDec->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 0.0f, visibleSize.height / 2.0f - 356.0f));
-	this->toggleButtonHex->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 1.0f, visibleSize.height / 2.0f - 356.0f));
-	this->toggleButtonBin->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 2.0f, visibleSize.height / 2.0f - 356.0f));
-	this->toggleButtonAscii->setPosition(Vec2(visibleSize.width / 2.0f - 512.0f + 64.0f * 3.0f, visibleSize.height / 2.0f - 356.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 336.0f));
 	this->asciiTableTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->chooseANewValueTitle->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
@@ -197,23 +170,6 @@ void AsciiTable::initializePositions()
 void AsciiTable::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->toggleButtonBin->setCheckCallback([=](RadioButton*)
-	{
-		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Bin));
-	});
-	this->toggleButtonDec->setCheckCallback([=](RadioButton*)
-	{
-		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Dec));
-	});
-	this->toggleButtonHex->setCheckCallback([=](RadioButton*)
-	{
-		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Hex));
-	});
-	this->toggleButtonAscii->setCheckCallback([=](RadioButton*)
-	{
-		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Ascii));
-	});
 
 	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
 	{

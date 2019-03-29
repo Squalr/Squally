@@ -56,7 +56,7 @@ ToolBox::ToolBox()
 	this->splitterBlock = SplitterBlock::create(BlockBase::BlockType::Toolbox);
 	this->subBlock = SubBlock::create(BlockBase::BlockType::Toolbox);
 	this->xorBlock = XorBlock::create(BlockBase::BlockType::Toolbox);
-	this->scrollPane = ScrollPane::create(Size(312.0f, 316.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
+	this->scrollPane = ScrollPane::create(Size(312.0f + 40.0f, 318.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 32.0f), Size(12.0f, 12.0f));
 	this->specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Special::create());
 	this->binaryOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_BinaryOperators::create());
 	this->basicOperatorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_BasicOperators::create());
