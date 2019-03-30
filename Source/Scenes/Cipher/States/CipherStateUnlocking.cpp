@@ -83,9 +83,9 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 			true
 		));
 
-		this->performExecuteLoop(inputBlocks, [=]()
+		this->performExecuteLoop(cipherState, inputBlocks, [=]()
 		{
-			this->performExecuteLoop(immediateBlocks, [=]()
+			this->performExecuteLoop(cipherState, immediateBlocks, [=]()
 			{
 				bool unlockSuccessful = true;
 				
@@ -96,6 +96,9 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 
 				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, unlockSuccessful, [=]()
 				{
+					// Re-enter the unlocking state
+					CipherState::updateState(cipherState, CipherState::StateType::Unlocking);
+
 					if (index >= cipherState->inputOutputMap.size() - 1)
 					{
 						onExecuteComplete();
@@ -110,7 +113,7 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 	}
 }
 
-void CipherStateUnlocking::performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index)
+void CipherStateUnlocking::performExecuteLoop(CipherState* cipherState, std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index)
 {
 	if (index < blocks.size())
 	{
@@ -118,7 +121,7 @@ void CipherStateUnlocking::performExecuteLoop(std::vector<BlockBase*> blocks, st
 		blocks[index]->execute([=]
 		{
 			// Afterwards, execute the next input
-			this->performExecuteLoop(blocks, onExecuteComplete, index + 1);
+			this->performExecuteLoop(cipherState, blocks, onExecuteComplete, index + 1);
 		});
 	}
 	else

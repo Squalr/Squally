@@ -21,5 +21,5 @@ private:
 	~CipherStateUnlocking();
 
 	void performUnlockLoop(CipherState* cipherState, std::vector<BlockBase*> inputBlocks, std::vector<BlockBase*> immediateBlocks, std::function<void()> onExecuteComplete, int index = 0);
-	void performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index = 0);
+	void performExecuteLoop(CipherState* cipherState, std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index = 0);
 };

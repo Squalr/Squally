@@ -18,7 +18,7 @@
 using namespace cocos2d;
 
 const int CipherLock::PinSpacing = 48.0f;
-const int CipherLock::PinUnlockDistance = 112.0f;
+const int CipherLock::PinUnlockDistance = 104.0f;
 
 CipherLock* CipherLock::create()
 {
@@ -230,8 +230,7 @@ void CipherLock::onBeforeStateChange(CipherState* cipherState)
 
 	switch(cipherState->stateType)
 	{
-		case CipherState::StateType::Testing:
-		case CipherState::StateType::Unlocking:
+		case CipherState::StateType::TransitionUnlocking:
 		{
 			// Reset positions
 			this->initializePositions();
