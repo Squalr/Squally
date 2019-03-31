@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 
+#include "cocos/base/CCEventKeyboard.h"
+
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
@@ -11,8 +13,10 @@ namespace cocos2d
 }
 
 class CipherLevelItem;
-class LocalizedLabel;
 class ClickableNode;
+class ClickableTextNode;
+class LocalizedLabel;
+class LocalizedString;
 
 class CipherSelectMenu : public GlobalScene
 {
@@ -32,17 +36,27 @@ private:
 	void onCloseClick();
 	void onMouseOver(CipherLevelItem* tutorialItem);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	ClickableTextNode* buildTabButton(std::string iconResource, LocalizedString* localizedString);
 
-	int currentPage;
+	cocos2d::ParticleSystem* nether;
+	cocos2d::ParticleSystem* swirl;
 
-	cocos2d::Sprite* tutorialWindow;
+	cocos2d::Sprite* window;
 	LocalizedLabel* titleLabel;
 	cocos2d::Sprite* descriptionBox;
 	LocalizedLabel* description;
 	ClickableNode* closeButton;
 
-	cocos2d::ParticleSystem* nether;
-	cocos2d::ParticleSystem* swirl;
+	ClickableTextNode* tutorialsTabButton;
+	ClickableTextNode* easyTabButton;
+	ClickableTextNode* mediumTabButton;
+	ClickableTextNode* hardTabButton;
+	cocos2d::Node* leftPanel;
+	cocos2d::Node* rightPanel;
+	cocos2d::Node* tutorialsTab;
+	cocos2d::Node* easyTab;
+	cocos2d::Node* mediumTab;
+	cocos2d::Node* hardTab;
 
 	std::vector<CipherLevelItem*> hexusOpponentItems;
 

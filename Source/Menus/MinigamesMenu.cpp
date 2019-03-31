@@ -149,9 +149,9 @@ void MinigamesMenu::initializeListeners()
 
 	this->hexusButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
 	this->hexusPuzzlesButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzlesChapterSelect(); });
-	this->cipherButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
-	this->pointerTraceButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
-	this->stacksButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
+	this->cipherButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->pointerTraceButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->stacksButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
 	this->backButton->setClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
 
 	this->addEventListener(keyboardListener);

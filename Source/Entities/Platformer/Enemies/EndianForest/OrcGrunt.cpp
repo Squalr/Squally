@@ -11,6 +11,7 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
@@ -90,12 +91,78 @@ HexusOpponentData* OrcGrunt::getHexusOpponentData()
 			OrcGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(25, 1.000f,
+			0.000f,
+			HexusOpponentData::generateDeck(25, 0.000f,
 			{
 
 			}),
-			nullptr
+			StateOverride::create(
+				// Player losses
+				1,
+				// Enemy losses
+				0,
+				// Player's turn
+				true,
+				// Player passed
+				true,
+				// Enemy passed
+				true,
+				// Player deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hand
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+				},
+				// Enemy hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player binary cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player decimal cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+				},
+				// Player hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy binary cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy decimal cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+				},
+				// Enemy hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				StateOverride::TutorialMode::NoTutorial
+			)
 		);
 	}
 

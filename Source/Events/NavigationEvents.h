@@ -110,6 +110,7 @@ public:
 	static void navigateMinigames();
 	static void navigateOptions();
 	static void navigateWorldMap();
+	static void navigateCipherPuzzleSelect();
 	static void navigateCipher(NavigateCipherArgs args);
 	static void navigateHexus(NavigateHexusArgs args);
 	static void navigateHexusRewards(NavigateHexusRewardArgs args);
@@ -129,6 +130,7 @@ public:
 	static const std::string EventNavigateOptions;
 	static const std::string EventNavigateWorldMap;
 	static const std::string EventNavigateCipher;
+	static const std::string EventNavigateCipherPuzzleSelect;
 	static const std::string EventNavigateHexus;
 	static const std::string EventNavigateHexusRewards;
 	static const std::string EventNavigateHexusDeckManagement;

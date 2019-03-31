@@ -28,39 +28,39 @@
     },
     "PuzzleData": {
       "PlayerLosses": "1",
-      "EnemyLosses": "0",
+      "EnemyLosses": "1",
       "PlayersTurn": "true",
       "EnemyPassed": "true",
-      "PlayerDeck": {
+      "PlayerDeck": [
+        
+      ],
+      "EnemyDeck": [
 
-      },
-      "EnemyDeck": {
+      ],
+      "PlayerHand": [
+        
+      ],
+      "EnemyHand": [
 
-      },
-      "PlayerHand": {
+      ],
+      "PlayerBinaryCards": [
 
-      },
-      "EnemyHand": {
+      ],
+      "PlayerDecimalCards": [
 
-      },
-      "PlayerBinaryCards": {
+      ],
+      "PlayerHexCards": [
 
-      },
-      "PlayerDecimalCards": {
+      ],
+      "EnemyBinaryCards": [
 
-      },
-      "PlayerHexCards": {
+      ],
+      "EnemyDecimalCards": [
 
-      },
-      "EnemyBinaryCards": {
+      ],
+      "EnemyHexCards": [
 
-      },
-      "EnemyDecimalCards": {
-
-      },
-      "EnemyHexCards": {
-
-      },
+      ],
       "TutorialKey": ""
     }
   }

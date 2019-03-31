@@ -40,8 +40,6 @@ private:
 	std::function<void(CipherLevelItem*)> onMouseOverEvent;
 	bool isLevelComplete;
 	int levelIndex;
-	int page;
 
 	cocos2d::Sprite* frame;
-	LocalizedLabel* indexLabel;
 };

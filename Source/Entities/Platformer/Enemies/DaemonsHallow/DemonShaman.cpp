@@ -11,6 +11,7 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
@@ -95,7 +96,69 @@ HexusOpponentData* DemonShaman::getHexusOpponentData()
 			{
 
 			}),
-			nullptr
+			StateOverride::create(
+				// Player losses
+				1,
+				// Enemy losses
+				0,
+				// Player's turn
+				true,
+				// Player passed
+				true,
+				// Enemy passed
+				true,
+				// Player deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player binary cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy binary cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				StateOverride::TutorialMode::NoTutorial
+			)
 		);
 	}
 

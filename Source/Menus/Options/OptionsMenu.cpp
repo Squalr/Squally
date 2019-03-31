@@ -51,55 +51,15 @@ OptionsMenu::OptionsMenu()
 	this->languageTab = LanguageTab::create();
 	this->memesTab = MemesTab::create();
 	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Options_Options::create());
-
-	LocalizedLabel*	generalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
-	LocalizedLabel*	generalLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GeneralOptions::create());
-
-	this->generalTabButton = ClickableTextNode::create(generalLabel, generalLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
-	this->generalTabButton->setTextOffset(Vec2(32.0f, 0.0f));
-
-	Sprite* generalSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconLightbulb);
-	generalSprite->setPosition(Vec2(-122.0f, 0.0f));
-
-	this->generalTabButton->addChild(generalSprite);
-
-	LocalizedLabel*	videoLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_VideoOptions::create());
-	LocalizedLabel*	videoLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_VideoOptions::create());
-
-	this->videoTabButton = ClickableTextNode::create(videoLabel, videoLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
-	this->videoTabButton->setTextOffset(Vec2(32.0f, 0.0f));
-
-	Sprite* videoSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconCogs);
-	videoSprite->setPosition(Vec2(-122.0f, 0.0f));
-
-	this->videoTabButton->addChild(videoSprite);
-
-	LocalizedLabel*	languageLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Language::create());
-	LocalizedLabel*	languageLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Language::create());
-
-	this->languageTabButton = ClickableTextNode::create(languageLabel, languageLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
-	this->languageTabButton->setTextOffset(Vec2(32.0f, 0.0f));
-
-	Sprite* languageSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconChatBubble);
-	languageSprite->setPosition(Vec2(-122.0f, 0.0f));
-
-	this->languageTabButton->addChild(languageSprite);
-
-	LocalizedLabel*	memesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Memes::create());
-	LocalizedLabel*	memesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_Memes::create());
-
-	this->memesTabButton = ClickableTextNode::create(memesLabel, memesLabelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
-	this->memesTabButton->setTextOffset(Vec2(32.0f, 0.0f));
-
-	Sprite* memesSprite = Sprite::create(UIResources::Menus_OptionsMenu_IconWeapons);
-	memesSprite->setPosition(Vec2(-122.0f, 0.0f));
-
-	this->memesTabButton->addChild(memesSprite);
+	this->generalTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconLightbulb, Strings::Menus_Options_GeneralOptions::create());
+	this->videoTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCogs, Strings::Menus_Options_VideoOptions::create());
+	this->languageTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconChatBubble, Strings::Menus_Options_Language::create());
+	this->memesTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Options_Memes::create());
 
 	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
-	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
 	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	cancelLabel->enableGlow(Color4B::BLACK);
@@ -115,7 +75,7 @@ OptionsMenu::OptionsMenu()
 		UIResources::Menus_Buttons_GenericButtonHover);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
-	LocalizedLabel*	returnLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
@@ -292,4 +252,20 @@ void OptionsMenu::onMenuExit()
 	{
 		this->backClickCallback();
 	}
+}
+
+ClickableTextNode* OptionsMenu::buildTabButton(std::string iconResource, LocalizedString* localizedString)
+{
+	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedString);
+	LocalizedLabel*	labelHover = label->clone();
+
+	ClickableTextNode* button = ClickableTextNode::create(label, labelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	button->setTextOffset(Vec2(32.0f, 0.0f));
+
+	Sprite* icon = Sprite::create(iconResource);
+	icon->setPosition(Vec2(-122.0f, 0.0f));
+
+	button->addChild(icon);
+
+	return button;
 }
