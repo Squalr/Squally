@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Clear::getStringAr()
 	{
-		return "مسح جميع آثار الطقس.";
+		return "استعادة جميع البطاقات في الصف المحدد لهجومهم الأصلي.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringBg()
 	{
-		return "Изчистете всички метеорологични ефекти.";
+		return "Възстановете всички карти в избрания ред в първоначалната им атака.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringCs()
 	{
-		return "Vyčistěte všechny účinky počasí.";
+		return "Obnovte všechny karty ve vybraném řádku na původní útok.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringDa()
 	{
-		return "Ryd alle vejrvirkninger.";
+		return "Gendan alle kort i den valgte række til deres oprindelige angreb.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringDe()
 	{
-		return "Alle Wettereffekte löschen.";
+		return "Stellen Sie alle Karten in der ausgewählten Reihe auf ihren ursprünglichen Angriff zurück.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringEl()
 	{
-		return "Καθαρίστε όλα τα καιρικά φαινόμενα.";
+		return "Επαναφέρετε όλες τις κάρτες στην επιλεγμένη σειρά στην αρχική τους επίθεση.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringEn()
 	{
-		return "Clear all weather effects.";
+		return "Restore all cards in the selected row to their original attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringEs()
 	{
-		return "Borrar todos los efectos del clima.";
+		return "Restaura todas las cartas en la fila seleccionada a su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringEs419()
 	{
-		return "Borrar todos los efectos del clima.";
+		return "Restaura todas las cartas en la fila seleccionada a su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringFi()
 	{
-		return "Poista kaikki säätiedot.";
+		return "Palauta kaikki valitun rivin kortit alkuperäiseen hyökkäykseen.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringFr()
 	{
-		return "Effacer tous les effets météorologiques.";
+		return "Restaurez toutes les cartes de la rangée sélectionnée à leur attaque d&#39;origine.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringHu()
 	{
-		return "Az összes időjárási hatás törlése.";
+		return "Helyezze vissza a kiválasztott sorban lévő összes kártyát az eredeti támadásra.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringIt()
 	{
-		return "Cancella tutti gli effetti meteorologici.";
+		return "Ripristina tutte le carte nella riga selezionata all&#39;attacco originale.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringJa()
 	{
-		return "すべての気象効果をクリアしてください。";
+		return "選択した行のすべてのカードを元の攻撃に戻します。";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringKo()
 	{
-		return "모든 날씨 효과를 지 웁니다.";
+		return "선택한 행에있는 모든 카드를 원래의 공격으로 복원하십시오.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringNl()
 	{
-		return "Wis alle weerseffecten.";
+		return "Herstel alle kaarten in de geselecteerde rij in hun oorspronkelijke aanval.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringNo()
 	{
-		return "Fjern alle værvirkninger.";
+		return "Gjenopprett alle kortene i den valgte raden til deres opprinnelige angrep.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringPl()
 	{
-		return "Wyczyść wszystkie efekty pogodowe.";
+		return "Przywróć wszystkie karty z wybranego wiersza do oryginalnego ataku.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringPt()
 	{
-		return "Apague todos os efeitos climáticos.";
+		return "Restaure todos os cartões na linha selecionada para o ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringPtBr()
 	{
-		return "Apague todos os efeitos climáticos.";
+		return "Restaure todos os cartões na linha selecionada para o ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringRo()
 	{
-		return "Ștergeți toate efectele meteorologice.";
+		return "Restaurați toate cardurile din rândul selectat până la atacul original.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringRu()
 	{
-		return "Очистить все погодные эффекты.";
+		return "Восстановите все карты в выбранном ряду для их первоначальной атаки";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringSv()
 	{
-		return "Rensa alla väder effekter.";
+		return "Återställ alla kort i den valda raden till deras ursprungliga attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringTh()
 	{
-		return "ล้างเอฟเฟกต์สภาพอากาศทั้งหมด";
+		return "กู้คืนไพ่ทั้งหมดในแถวที่เลือกเป็นการโจมตีเริ่มต้น";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringTr()
 	{
-		return "Tüm hava efektlerini temizleyin.";
+		return "Seçilen satırdaki tüm kartları ilk saldırılarına geri yükleyin.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringUk()
 	{
-		return "Очистити всі погодні ефекти.";
+		return "Відновити всі карти у вибраному рядку до початкової атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringVi()
 	{
-		return "Xóa tất cả các hiệu ứng thời tiết.";
+		return "Khôi phục tất cả các thẻ trong hàng đã chọn để tấn công ban đầu của chúng.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringZhCn()
 	{
-		return "清除所有天气影响。";
+		return "将所选行中的所有卡恢复为原始攻击。";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringZhTw()
 	{
-		return "清除所有天氣影響。";
+		return "將所選行中的所有卡恢復為原始攻擊。";
 	}
 }

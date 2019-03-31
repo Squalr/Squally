@@ -525,26 +525,6 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 640;
 			break;
 		}
-		case CardData::CardType::Special_ENV_BIN_STORM:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_ENV_CLEAR:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_ENV_DEC_STORM:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_ENV_HEX_STORM:
-		{
-			price = 500;
-			break;
-		}
 		case CardData::CardType::Special_INV:
 		{
 			price = 2500;
@@ -560,9 +540,74 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 250;
 			break;
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_ABSORB:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_DRANK:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_GREED:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_HEAL:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_HIBERNATE:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_KILL:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_PEEK:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_POISON:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_PROTECT:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_RESURRECT:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		{
+			price = 500;
+			break;
+		}
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		{
+			price = 500;
+			break;
+		}
 		default:
 		{
-			price = cardData->attack * cardData->attack * 10 + 6;
+			price = cardData->attack == 0 ? 666 : (cardData->attack * cardData->attack * 10 + 6);
 			break;
 		}
 	}
