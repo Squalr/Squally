@@ -104,13 +104,13 @@ void PlatformerEnemy::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->resurrectButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->resurrectButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
 		this->health = std::max(this->getMaxHealth(), 1);
 	});
 
-	this->killButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->killButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;

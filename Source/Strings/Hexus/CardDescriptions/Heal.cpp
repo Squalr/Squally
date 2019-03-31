@@ -89,7 +89,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Heal::getStringFr()
 	{
-		return "OR toutes les cartes d&#39;affilée avec la valeur binaire 0011.";
+		return "OR toutes les cartes d'affilée avec la valeur binaire 0011.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringHu()

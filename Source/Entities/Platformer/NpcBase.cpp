@@ -31,7 +31,7 @@ NpcBase::NpcBase(
 	this->chatBubbleSprite = Sprite::create(UIResources::Platformer_ChatBubble);
 
 	this->interactButton = ClickableNode::create(Sprite::create(), Sprite::create());
-	this->interactButton->setClickCallback(CC_CALLBACK_0(NpcBase::onInteractButtonClick, this));
+	this->interactButton->setMouseClickCallback(CC_CALLBACK_0(NpcBase::onInteractButtonClick, this));
 
 	this->chatBubbleSprite->setPosition(Vec2(0.0f, 196.0f));
 

@@ -166,7 +166,7 @@ void StateCardReplace::onStateExit(GameState* gameState)
 void StateCardReplace::initializeCallbacks(GameState* gameState)
 {
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCardReplace::replaceCard, this, gameState));
-	this->doneButton->setClickCallback(CC_CALLBACK_0(StateCardReplace::onEndReplaceCards, this, gameState));
+	this->doneButton->setMouseClickCallback(CC_CALLBACK_0(StateCardReplace::onEndReplaceCards, this, gameState));
 }
 
 void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)

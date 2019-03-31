@@ -175,13 +175,13 @@ void AsciiTable::initializeListeners()
 	{
 		ImmediateBlock* block = *it;
 
-		block->getBlock()->setClickCallback([=](MouseEvents::MouseEventArgs*)
+		block->getBlock()->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 		{
 			this->select(block);
 		});
 	}
 
-	this->returnButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->close();
 	});

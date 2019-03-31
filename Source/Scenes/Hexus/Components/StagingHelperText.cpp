@@ -86,15 +86,15 @@ void StagingHelperText::onAnyStateChange(GameState* gameState)
 		case GameState::StateType::SelectionStaged:
 		{
 			this->updateSelectionStatus(gameState);
-			this->cancelButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onSelectionCancel, this, gameState));
-			this->helpButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onHelpClick, this, gameState));
+			this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(StagingHelperText::onSelectionCancel, this, gameState));
+			this->helpButton->setMouseClickCallback(CC_CALLBACK_0(StagingHelperText::onHelpClick, this, gameState));
 			break;
 		}
 		case GameState::StateType::CombineStaged:
 		{
 			this->updateCombineStatus(gameState);
-			this->cancelButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onCombineCancel, this, gameState));
-			this->helpButton->setClickCallback(CC_CALLBACK_0(StagingHelperText::onHelpClick, this, gameState));
+			this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(StagingHelperText::onCombineCancel, this, gameState));
+			this->helpButton->setMouseClickCallback(CC_CALLBACK_0(StagingHelperText::onHelpClick, this, gameState));
 			break;
 		}
 		default:
@@ -205,8 +205,8 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 void StagingHelperText::clearSelectionStatus()
 {
 	this->selectionLabel->setLocalizedString(Strings::Generics_Empty::create());
-	this->cancelButton->setClickCallback(nullptr);
-	this->helpButton->setClickCallback(nullptr);
+	this->cancelButton->setMouseClickCallback(nullptr);
+	this->helpButton->setMouseClickCallback(nullptr);
 	this->selectionLabel->runAction(FadeTo::create(0.25f, 0));
 	this->cancelButton->runAction(FadeTo::create(0.25f, 0));
 	this->cancelButton->disableInteraction();

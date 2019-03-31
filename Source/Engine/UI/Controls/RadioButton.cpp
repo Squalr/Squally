@@ -28,8 +28,8 @@ RadioButton::RadioButton(ClickableNode* checked, ClickableNode* unchecked, int g
 	this->checked = checked;
 	this->unchecked = unchecked;
 
-	this->checked->setClickCallback(CC_CALLBACK_0(RadioButton::onUncheckClick, this));
-	this->unchecked->setClickCallback(CC_CALLBACK_0(RadioButton::onCheckClick, this));
+	this->checked->setMouseClickCallback(CC_CALLBACK_0(RadioButton::onUncheckClick, this));
+	this->unchecked->setMouseClickCallback(CC_CALLBACK_0(RadioButton::onCheckClick, this));
 
 	this->isChecked = false;
 	this->checked->setVisible(false);

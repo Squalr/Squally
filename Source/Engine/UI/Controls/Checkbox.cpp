@@ -29,8 +29,8 @@ Checkbox::Checkbox(ClickableNode* uncheckedButton, ClickableNode* checkedButton,
 	this->clickableMenus->push_back(this->offSwitch);
 	this->clickableMenus->push_back(this->onSwitch);
 
-	this->offSwitch->setClickCallback(CC_CALLBACK_0(Checkbox::onToggle, this));
-	this->onSwitch->setClickCallback(CC_CALLBACK_0(Checkbox::onUntoggle, this));
+	this->offSwitch->setMouseClickCallback(CC_CALLBACK_0(Checkbox::onToggle, this));
+	this->onSwitch->setMouseClickCallback(CC_CALLBACK_0(Checkbox::onUntoggle, this));
 
 	this->addChild(this->offSwitch);
 	this->addChild(this->onSwitch);

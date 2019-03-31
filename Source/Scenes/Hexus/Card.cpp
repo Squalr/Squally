@@ -155,7 +155,7 @@ void Card::initializeListeners()
 	SmartNode::initializeListeners();
 
 	this->cardSelect->setMouseOverCallback(CC_CALLBACK_0(Card::onMouseOver, this));
-	this->cardSelect->setClickCallback(CC_CALLBACK_0(Card::onMouseClick, this));
+	this->cardSelect->setMouseClickCallback(CC_CALLBACK_0(Card::onMouseClick, this));
 }
 
 void Card::addOperation(Operation operation)

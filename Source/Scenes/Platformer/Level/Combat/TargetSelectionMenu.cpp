@@ -257,7 +257,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 		}
 
 		entity->clickHitbox->enableInteraction();
-		entity->clickHitbox->setClickCallback([=](MouseEvents::MouseEventArgs*)
+		entity->clickHitbox->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 		{
 			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
@@ -274,7 +274,7 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
 	{
 		entity->clickHitbox->disableInteraction();
-		entity->clickHitbox->setClickCallback(nullptr);
+		entity->clickHitbox->setMouseClickCallback(nullptr);
 		entity->clickHitbox->setMouseOverCallback(nullptr);
 	}));
 }

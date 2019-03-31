@@ -59,7 +59,7 @@ void CardRow::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->rowSelectSprite->setClickCallback(CC_CALLBACK_0(CardRow::onRowSelectClick, this));
+	this->rowSelectSprite->setMouseClickCallback(CC_CALLBACK_0(CardRow::onRowSelectClick, this));
 }
 
 void CardRow::setRowWidth(float newRowWidth, float duration)

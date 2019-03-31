@@ -147,11 +147,11 @@ void PauseMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(PauseMenu::onKeyPressed, this);
 
-	this->resumeButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onResumeClick, this));
-	this->optionsButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onOptionsClick, this));
-	this->exitButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onExitClick, this));
+	this->resumeButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onResumeClick, this));
+	this->optionsButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onOptionsClick, this));
+	this->exitButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onExitClick, this));
 
-	this->closeButton->setClickCallback(CC_CALLBACK_0(PauseMenu::onCloseClick, this));
+	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	this->addEventListener(keyboardListener);

@@ -60,7 +60,7 @@ void LocalizedLabel::onEnter()
 
 	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
 	this->updateTranslationEditHitbox();
-	this->translationButton->setClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->translationButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
 	});

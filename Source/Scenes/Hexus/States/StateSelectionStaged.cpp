@@ -5,6 +5,7 @@
 
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Deck.h"
 
 using namespace cocos2d;
 
@@ -225,7 +226,7 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 		}
 		case CardData::CardType::Special_RESURRECT:
 		{
-			// TODO
+			gameState->playerGraveyard->enableDeckSelection(nullptr);
 			break;
 		}
 		default:

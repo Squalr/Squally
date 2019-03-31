@@ -71,9 +71,9 @@ void ConfirmationMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cancelButton->setClickCallback(CC_CALLBACK_0(ConfirmationMenu::onCancelClick, this));
-	this->confirmButton->setClickCallback(CC_CALLBACK_0(ConfirmationMenu::onConfirmClick, this));
-	this->closeButton->setClickCallback(CC_CALLBACK_0(ConfirmationMenu::onCloseClick, this));
+	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::onCancelClick, this));
+	this->confirmButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::onConfirmClick, this));
+	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::onCloseClick, this));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 

@@ -48,7 +48,7 @@ CipherLevelItem::CipherLevelItem(std::string description, std::string mapFile, i
 			UIResources::Menus_TutorialMenu_TutorialEntrySelected);
 	}
 
-	this->startButton->setClickCallback(CC_CALLBACK_0(CipherLevelItem::onTutorialClick, this));
+	this->startButton->setMouseClickCallback(CC_CALLBACK_0(CipherLevelItem::onTutorialClick, this));
 	this->startButton->setMouseOverCallback(CC_CALLBACK_0(CipherLevelItem::onTutorialMouseOver, this));
 	this->setContentSize(this->frame->getContentSize());
 	this->setCascadeOpacityEnabled(true);

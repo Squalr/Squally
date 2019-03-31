@@ -106,7 +106,7 @@ void TutorialAVictory::onAnyStateChange(GameState* gameState)
 
 void TutorialAVictory::initializeCallbacks(GameState* gameState)
 {
-	this->lossDisplayNextButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

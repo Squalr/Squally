@@ -202,10 +202,10 @@ void TitleScreen::initializeListeners()
 		GlobalDirector::loadScene(TitleScreen::instance);
 	}));
 
-	this->storyModeButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onStoryModeClick, this));
-	this->minigamesButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onMinigamesClick, this));
-	this->optionsButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onOptionsClick, this));
-	this->exitButton->setClickCallback(CC_CALLBACK_0(TitleScreen::onExitClick, this));
+	this->storyModeButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onStoryModeClick, this));
+	this->minigamesButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onMinigamesClick, this));
+	this->optionsButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onOptionsClick, this));
+	this->exitButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onExitClick, this));
 }
 
 void TitleScreen::onStoryModeClick()

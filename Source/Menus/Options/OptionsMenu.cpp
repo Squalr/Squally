@@ -134,13 +134,13 @@ void OptionsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cancelButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
-	this->returnButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->closeButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->generalTabButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
-	this->videoTabButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
-	this->languageTabButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
-	this->memesTabButton->setClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
+	this->cancelButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
+	this->returnButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->closeButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->generalTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
+	this->videoTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
+	this->languageTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
+	this->memesTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
