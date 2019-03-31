@@ -29,11 +29,9 @@ CipherLevelItem::CipherLevelItem(std::string description, std::string mapFile, i
 	this->tutorialDescription = description;
 	this->onMouseOverEvent = onMouseOver;
 	this->levelIndex = index;
-	this->page = index / CipherLevelItem::MaxEntriesPerPage;
 
 	this->frame = Sprite::create(UIResources::Menus_TutorialMenu_TutorialEntry);
-	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
-
+	
 	// TODO: Load save data
 	this->isLevelComplete = true;
 
@@ -57,7 +55,6 @@ CipherLevelItem::CipherLevelItem(std::string description, std::string mapFile, i
 
 	this->addChild(this->frame);
 	this->addChild(this->startButton);
-	this->addChild(this->indexLabel);
 }
 
 CipherLevelItem::~CipherLevelItem()
@@ -80,7 +77,6 @@ void CipherLevelItem::initializePositions()
 
 	this->frame->setPosition(position);
 	this->startButton->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y));
-	this->indexLabel->setPosition(Vec2(position.x + this->frame->getContentSize().width / 2 - this->startButton->getContentSize().width / 2, position.y + 20));
 }
 
 void CipherLevelItem::onTutorialClick()

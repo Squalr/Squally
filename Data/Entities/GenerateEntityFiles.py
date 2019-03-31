@@ -71,8 +71,7 @@ def parseEntityFile(entityDataPath):
 			entityData["Hexus"]["PuzzleData"] = "nullptr"
 		else:
 			entityData["IsHexusPuzzle"] = True
-			# TODO
-			entityData["Hexus"]["PuzzleData"] = "nullptr"
+			entityData["Hexus"]["PuzzleData"] = buildPuzzleContent(entityData)
 
 		# Reformat preset card list to match C++ needs
 		presetCards = ""
@@ -113,6 +112,44 @@ def parseEntityFile(entityDataPath):
 		return entityData
 
 	return []
+
+def buildPuzzleContent(entityData):
+	puzzleDataTemplateFile = abspath(join(join(realpath(__file__), ".."), "PuzzleData.template"))
+
+	def buildCardList(cardList):
+		cppCardList = ""
+
+		for card in cardList:
+			cppCardList += "CardList::getInstance()->cardListByName.at(CardKeys::" + card + "),\n"
+			pass
+		
+		return cppCardList.rstrip()
+	
+	if not entityData["Hexus"]["PuzzleData"]["TutorialKey"]:
+		entityData["Hexus"]["PuzzleData"]["TutorialKey"] = "StateOverride::TutorialMode::NoTutorial"
+
+	with open(puzzleDataTemplateFile, "r") as puzzleDataTemplateReader:
+		puzzleContent = puzzleDataTemplateReader.read()
+		puzzleContent = puzzleContent \
+		.replace("{{PlayerLosses}}", entityData["Hexus"]["PuzzleData"]["PlayerLosses"]) \
+		.replace("{{EnemyLosses}}", entityData["Hexus"]["PuzzleData"]["EnemyLosses"]) \
+		.replace("{{PlayersTurn}}", entityData["Hexus"]["PuzzleData"]["PlayersTurn"]) \
+		.replace("{{PlayerPassed}}", entityData["Hexus"]["PuzzleData"]["EnemyPassed"]) \
+		.replace("{{EnemyPassed}}", entityData["Hexus"]["PuzzleData"]["EnemyPassed"]) \
+		.replace("{{PlayerDeck}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerDeck"])) \
+		.replace("{{EnemyDeck}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyDeck"])) \
+		.replace("{{PlayerHand}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerHand"])) \
+		.replace("{{EnemyHand}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyHand"])) \
+		.replace("{{PlayerBinaryCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerBinaryCards"])) \
+		.replace("{{PlayerDecimalCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerDecimalCards"])) \
+		.replace("{{PlayerHexCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerHexCards"])) \
+		.replace("{{EnemyBinaryCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyBinaryCards"])) \
+		.replace("{{EnemyDecimalCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyDecimalCards"])) \
+		.replace("{{EnemyHexCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyHexCards"]))\
+		.replace("{{TutorialKey}}", entityData["Hexus"]["PuzzleData"]["TutorialKey"])
+
+		return puzzleContent
+	return ""
 	
 def generateEntityCode(entityData):
 	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityData["Prefix"] + "/" + entityData["Environment"]).rstrip("/"))) + "/"

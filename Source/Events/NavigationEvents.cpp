@@ -16,6 +16,7 @@ const std::string NavigationEvents::EventNavigateMinigames = "EVENT_NAVIGATE_MIN
 const std::string NavigationEvents::EventNavigateOptions = "EVENT_NAVIGATE_OPTIONS";
 const std::string NavigationEvents::EventNavigateWorldMap = "EVENT_NAVIGATE_WORLD_MAP";
 const std::string NavigationEvents::EventNavigateCipher = "EVENT_NAVIGATE_CIPHER";
+const std::string NavigationEvents::EventNavigateCipherPuzzleSelect = "EVENT_NAVIGATE_CIPHER_PUZZLE_SELECT";
 const std::string NavigationEvents::EventNavigateHexus = "EVENT_NAVIGATE_HEXUS";
 const std::string NavigationEvents::EventNavigateHexusRewards = "EVENT_NAVIGATE_HEXUS_REWARDS";
 const std::string NavigationEvents::EventNavigateHexusDeckManagement = "EVENT_NAVIGATE_HEXUS_DECK_MANAGEMENT";
@@ -79,6 +80,13 @@ void NavigationEvents::navigateWorldMap()
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::EventNavigateWorldMap
+	);
+}
+
+void NavigationEvents::navigateCipherPuzzleSelect()
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigateCipherPuzzleSelect
 	);
 }
 

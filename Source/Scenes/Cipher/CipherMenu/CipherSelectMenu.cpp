@@ -8,6 +8,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
@@ -43,13 +44,15 @@ CipherSelectMenu::CipherSelectMenu()
 {
 	this->hexusOpponentItems = std::vector<CipherLevelItem*>();
 
-	this->currentPage = 0;
-
-	this->tutorialWindow = Sprite::create(UIResources::Menus_TutorialMenu_TutorialSelect);
+	this->window = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_HexusPuzzles::create());
 	this->descriptionBox = Sprite::create(UIResources::Menus_TutorialMenu_TutorialItem);
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Generics_Empty::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->tutorialsTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconLightbulb, Strings::Hexus_HexusPuzzles::create());
+	this->easyTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCogs, Strings::Hexus_HexusPuzzles::create());
+	this->mediumTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconChatBubble, Strings::Hexus_HexusPuzzles::create());
+	this->hardTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Hexus_HexusPuzzles::create());
 
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
 	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
@@ -60,7 +63,7 @@ CipherSelectMenu::CipherSelectMenu()
 	this->addChild(this->nether);
 	this->addChild(this->swirl);
 
-	this->addChild(this->tutorialWindow);
+	this->addChild(this->window);
 	this->addChild(this->titleLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->descriptionBox);
@@ -88,7 +91,7 @@ void CipherSelectMenu::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	GameUtils::fadeInObject(this->tutorialWindow, delay, duration);
+	GameUtils::fadeInObject(this->window, delay, duration);
 	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 	GameUtils::fadeInObject(this->descriptionBox, delay, duration);
 	GameUtils::fadeInObject(this->description, delay, duration);
@@ -113,7 +116,7 @@ void CipherSelectMenu::initializePositions()
 	this->nether->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->swirl->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
-	this->tutorialWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->window->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 248.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 308.0f, visibleSize.height / 2 + 222.0f));
 	this->descriptionBox->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 196.0f));
@@ -129,7 +132,7 @@ void CipherSelectMenu::initializeListeners()
 {
 	GlobalScene::initializeListeners();
 
-	CipherSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCipher, [](EventCustom* args)
+	CipherSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCipherPuzzleSelect, [](EventCustom* args)
 	{
 		GlobalDirector::loadScene(CipherSelectMenu::instance);
 	}));
@@ -250,4 +253,20 @@ void CipherSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 void CipherSelectMenu::onCloseClick()
 {
 	NavigationEvents::navigateBack();
+}
+
+ClickableTextNode* CipherSelectMenu::buildTabButton(std::string iconResource, LocalizedString* localizedString)
+{
+	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedString);
+	LocalizedLabel*	labelHover = label->clone();
+
+	ClickableTextNode* button = ClickableTextNode::create(label, labelHover, UIResources::Menus_OptionsMenu_TabButton, UIResources::Menus_OptionsMenu_TabButtonSelected);
+	button->setTextOffset(Vec2(32.0f, 0.0f));
+
+	Sprite* icon = Sprite::create(iconResource);
+	icon->setPosition(Vec2(-122.0f, 0.0f));
+
+	button->addChild(icon);
+
+	return button;
 }

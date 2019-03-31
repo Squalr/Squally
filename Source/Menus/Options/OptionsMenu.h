@@ -16,6 +16,7 @@ class ClickableTextNode;
 class GeneralTab;
 class LanguageTab;
 class LocalizedLabel;
+class LocalizedString;
 class MemesTab;
 class VideoTab;
 
@@ -48,6 +49,7 @@ private:
 	void setActiveTab(Tab tab);
 	void onMenuCancel();
 	void onMenuExit();
+	ClickableTextNode* buildTabButton(std::string iconResource, LocalizedString* localizedString);
 
 	std::function<void()> backClickCallback;
 
