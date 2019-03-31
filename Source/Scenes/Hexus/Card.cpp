@@ -206,6 +206,10 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 		{
 			return Operation(Operation::OperationType::MOV, immediate);
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Operation(Operation::OperationType::MOV, immediate);
+		}
 		case CardData::CardType::Special_AND:
 		{
 			return Operation(Operation::OperationType::AND, immediate);
@@ -230,11 +234,28 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 		{
 			return Operation(Operation::OperationType::XOR, 0b1111);
 		}
+		case CardData::CardType::Special_HEAL:
+		{
+			return Operation(Operation::OperationType::OR, 0b0011);
+		}
+		case CardData::CardType::Special_POISON:
+		{
+			return Operation(Operation::OperationType::AND, 0b0011);
+		}
+		case CardData::CardType::Special_DRANK:
+		{
+			return Operation(Operation::OperationType::XOR, 0b0011);
+		}
 		default:
 		{
 			return Operation(Operation::OperationType::AND, 0b000);
 		}
 	}
+}
+
+unsigned int Card::getOriginalAttack()
+{
+	return this->cardData->attack;
 }
 
 unsigned int Card::getAttack()
@@ -384,25 +405,10 @@ void Card::updateText()
 			this->cardLabel->setTextColor(Card::hexColor);
 			break;
 		}
-		case CardData::CardType::Special_MOV:
-		case CardData::CardType::Special_AND:
-		case CardData::CardType::Special_OR:
-		case CardData::CardType::Special_XOR:
-		case CardData::CardType::Special_SHL:
-		case CardData::CardType::Special_SHR:
-		case CardData::CardType::Special_INV:
-		case CardData::CardType::Special_FLIP1:
-		case CardData::CardType::Special_FLIP2:
-		case CardData::CardType::Special_FLIP3:
-		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_ADD:
-		case CardData::CardType::Special_SUB:
+		default:
 		{
 			this->cardString->setString(this->cardData->getCardTypeString()->getString());
 			this->cardLabel->setTextColor(Card::specialColor);
-		}
-		default:
-		{
 			break;
 		}
 	}

@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Kill::getStringEn()
 	{
-		return "Choose one of your opponent&#39;s cards to destroy.";
+		return "Choose one of your opponent's cards to destroy.";
 	}
 
 	std::string Hexus_CardDescriptions_Kill::getStringEs()
@@ -89,7 +89,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Kill::getStringFr()
 	{
-		return "Choisissez l&#39;une des cartes de votre adversaire à détruire.";
+		return "Choisissez l'une des cartes de votre adversaire à détruire.";
 	}
 
 	std::string Hexus_CardDescriptions_Kill::getStringHu()

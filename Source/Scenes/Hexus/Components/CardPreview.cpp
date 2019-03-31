@@ -114,6 +114,7 @@ void CardPreview::onAnyStateChange(GameState* gameState)
 				case CardData::CardType::Hexidecimal:
 				case CardData::CardType::Special_SHL:
 				case CardData::CardType::Special_SHR:
+				case CardData::CardType::Special_CLEAR:
 				{
 					// Do not enable intraction for rows when these card types are staged
 					break;

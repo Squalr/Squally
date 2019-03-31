@@ -53,7 +53,7 @@ public:
 	};
 
 	static Card* create(CardStyle cardStyle, CardData* data);
-	static Operation toOperation(CardData::CardType playedCardType, unsigned int immediate);
+	static Operation toOperation(CardData::CardType playedCardType, unsigned int immediate = 0);
 
 	void reveal();
 	void hide();
@@ -61,6 +61,7 @@ public:
 	void unfocus();
 	void setFocusTint(cocos2d::Color3B color);
 	void addOperation(Operation operation);
+	unsigned int getOriginalAttack();
 	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
 	void disableInteraction();
