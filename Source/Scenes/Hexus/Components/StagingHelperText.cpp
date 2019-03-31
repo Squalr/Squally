@@ -149,6 +149,15 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
 				break;
 			}
+			case CardData::CardType::Special_HIBERNATE:
+			case CardData::CardType::Special_KILL:
+			case CardData::CardType::Special_RETURN_TO_HAND:
+			case CardData::CardType::Special_STEAL:
+			case CardData::CardType::Special_PROTECT:
+			{
+				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseTargetCard::create());
+				break;
+			}
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
@@ -158,8 +167,28 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_CLEAR:
+			case CardData::CardType::Special_ABSORB:
+			case CardData::CardType::Special_HEAL:
+			case CardData::CardType::Special_POISON:
+			case CardData::CardType::Special_DRANK:
 			default:
 			{
+				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
+				break;
+			}
+			case CardData::CardType::Special_RESURRECT:
+			{
+				// TODO: Choose from graveyard
+				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
+				break;
+			}
+			case CardData::CardType::Special_SUDDEN_DEATH:
+			case CardData::CardType::Special_GREED:
+			case CardData::CardType::Special_BONUS_MOVES:
+			case CardData::CardType::Special_PEEK:
+			{
+				// TODO: This is new -- these should just be a confirm/deny useage message since they have no targets
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
 				break;
 			}

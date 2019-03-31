@@ -392,6 +392,10 @@ int CardRow::simulateCardEffect(Card* card)
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_HEAL:
+		case CardData::CardType::Special_POISON:
+		case CardData::CardType::Special_DRANK:
+		case CardData::CardType::Special_CLEAR:
 		{
 			Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
 

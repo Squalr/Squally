@@ -71,6 +71,10 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_CLEAR:
+		case CardData::CardType::Special_HEAL:
+		case CardData::CardType::Special_POISON:
+		case CardData::CardType::Special_DRANK:
 		{
 			gameState->selectedRow = std::get<0>(gameState->cachedBestRowPlay);
 			break;

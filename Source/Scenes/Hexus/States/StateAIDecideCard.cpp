@@ -100,8 +100,12 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_CLEAR:
+			case CardData::CardType::Special_HEAL:
+			case CardData::CardType::Special_POISON:
+			case CardData::CardType::Special_DRANK:
 			{
-				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);;
+				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
 
 				if (std::get<1>(bestPlay) > 0)
 				{
@@ -189,6 +193,10 @@ void StateAIDecideCard::decideCardStrongestFirst(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_CLEAR:
+			case CardData::CardType::Special_HEAL:
+			case CardData::CardType::Special_POISON:
+			case CardData::CardType::Special_DRANK:
 			{
 				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
 				int diff = std::get<1>(bestPlay);
@@ -295,6 +303,10 @@ void StateAIDecideCard::decideCardWeakestFirst(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_CLEAR:
+			case CardData::CardType::Special_HEAL:
+			case CardData::CardType::Special_POISON:
+			case CardData::CardType::Special_DRANK:
 			{
 				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
 				int diff = std::get<1>(bestPlay);
