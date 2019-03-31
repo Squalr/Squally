@@ -128,7 +128,7 @@ void ImmediateBlock::initializeListeners()
 
 	if (this->blockType != BlockBase::BlockType::Static)
 	{
-		this->block->setClickCallback([=](MouseEvents::MouseEventArgs*)
+		this->block->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 		{
 			CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(this));
 		});

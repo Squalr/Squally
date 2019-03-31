@@ -89,7 +89,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Drank::getStringFr()
 	{
-		return "XOR toutes les cartes d&#39;affilée avec la valeur binaire 0011.";
+		return "XOR toutes les cartes d'affilée avec la valeur binaire 0011.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringHu()

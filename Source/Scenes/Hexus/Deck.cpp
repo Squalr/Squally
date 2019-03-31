@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/HexusResources.h"
@@ -35,9 +36,12 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
 {
 	this->style = cardStyle;
 	this->deckCards = std::vector<Card*>();
-	this->pad = Sprite::create(HexusResources::CardPad);
+	this->pad = ClickableNode::create(HexusResources::CardPad, HexusResources::CardPad);
+	this->cardsNode = Node::create();
+	this->deckFocus = Sprite::create(HexusResources::CardSelect);
 
 	this->pad->setScale(Card::cardScale);
+	this->deckFocus->setScale(Card::cardScale);
 
 	this->addChild(this->pad);
 
@@ -45,6 +49,9 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
 	{
 		this->insertCardBottom(Card::create(this->style, *it), false, 0.0f);
 	}
+
+	this->addChild(this->cardsNode);
+	this->addChild(this->deckFocus);
 }
 
 Deck::~Deck()
@@ -104,7 +111,7 @@ void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this, true);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	this->deckCards.push_back(card);
 	this->setCardOrder();
@@ -120,7 +127,7 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this, true);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	this->deckCards.insert(this->deckCards.begin(), card);
 	this->setCardOrder();
@@ -136,7 +143,7 @@ void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this, true);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	int index = RandomHelper::random_int(0, (int)this->deckCards.size());
 	this->deckCards.insert(this->deckCards.begin() + index, card);
@@ -199,6 +206,25 @@ void Deck::setCardOrder()
 	{
 		(*it)->setLocalZOrder(zIndex++);
 	}
+}
+
+void Deck::enableDeckSelection(std::function<void(Deck*)> callback)
+{
+	this->pad->enableInteraction();
+	this->pad->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		callback(this);
+	});
+
+	this->deckFocus->setOpacity(196);
+}
+
+void Deck::disableDeckSelection()
+{
+	this->pad->disableInteraction();
+	this->pad->setMouseClickCallback(nullptr);
+
+	this->deckFocus->setOpacity(0);
 }
 
 void Deck::removeCardsWhere(std::function<bool(Card*)> predicate)

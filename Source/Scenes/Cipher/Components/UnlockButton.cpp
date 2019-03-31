@@ -69,7 +69,7 @@ void UnlockButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->unlockButton->setClickCallback([=](MouseEvents::MouseEventArgs* args)
+	this->unlockButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		if (this->activeCipherState != nullptr)
 		{

@@ -208,7 +208,7 @@ void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
 	this->modifier = modifier;
 }
 
-void ClickableNode::setClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick)
+void ClickableNode::setMouseClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
 }

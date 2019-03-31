@@ -179,9 +179,9 @@ void HexusOpponentMenuBase::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusOpponentMenuBase::onKeyPressed, this);
-	this->deckManagementButton->setClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onDeckManagementClick, this));
-	this->shopButton->setClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onShopClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onBackClick, this));
+	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onDeckManagementClick, this));
+	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onShopClick, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }

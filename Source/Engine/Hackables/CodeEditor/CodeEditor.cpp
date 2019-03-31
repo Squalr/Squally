@@ -249,8 +249,8 @@ void CodeEditor::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->applyChangesButton->setClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
-	this->cancelButton->setClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
+	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
+	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
 		HackableEvents::HackableAttributeEditEvent, 

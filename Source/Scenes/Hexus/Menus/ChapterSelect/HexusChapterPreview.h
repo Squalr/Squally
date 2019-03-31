@@ -18,7 +18,7 @@ class HexusChapterPreview : public SmartNode
 public:
 	static HexusChapterPreview* create(std::string chapterSaveKey, LocalizedString* localizedChapterName);
 
-	void setClickCallback(std::function<void()> callback);
+	void setMouseClickCallback(std::function<void()> callback);
 	void disableInteraction();
 	void enableInteraction();
 

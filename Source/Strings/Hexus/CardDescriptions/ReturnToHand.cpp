@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_ReturnToHand::getStringEn()
 	{
-		return "Return the selected card to its owner&#39;s hand.";
+		return "Return the selected card to its owner's hand.";
 	}
 
 	std::string Hexus_CardDescriptions_ReturnToHand::getStringEs()

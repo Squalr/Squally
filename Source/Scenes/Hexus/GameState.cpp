@@ -150,6 +150,11 @@ void GameState::clearInteraction()
 	this->enemyHand->setMouseClickCallback(nullptr);
 	this->enemyHand->setMouseOverCallback(nullptr);
 
+	this->playerDeck->disableDeckSelection();
+	this->enemyDeck->disableDeckSelection();
+	this->playerGraveyard->disableDeckSelection();
+	this->enemyGraveyard->disableDeckSelection();
+
 	this->enemyHand->disableRowSelection();
 	this->enemyHand->disableRowCardSelection();
 	this->enemyHand->disableRowCardInteraction();

@@ -65,7 +65,7 @@ void HexusChapterPreview::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->frame->setClickCallback(CC_CALLBACK_0(HexusChapterPreview::onOpponentClick, this));
+	this->frame->setMouseClickCallback(CC_CALLBACK_0(HexusChapterPreview::onOpponentClick, this));
 }
 
 void HexusChapterPreview::disableInteraction()
@@ -80,7 +80,7 @@ void HexusChapterPreview::enableInteraction()
 	this->frameClip->setOpacity(255);
 }
 
-void HexusChapterPreview::setClickCallback(std::function<void()> callback)
+void HexusChapterPreview::setMouseClickCallback(std::function<void()> callback)
 {
 	this->callback = callback;
 }

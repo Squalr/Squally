@@ -101,7 +101,7 @@ void HexusRewardsMenu::initializeListeners()
 		}
 	}));
 
-	this->returnButton->setClickCallback(CC_CALLBACK_0(HexusRewardsMenu::onReturnClick, this));
+	this->returnButton->setMouseClickCallback(CC_CALLBACK_0(HexusRewardsMenu::onReturnClick, this));
 }
 
 void HexusRewardsMenu::initializePositions()

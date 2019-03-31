@@ -49,7 +49,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 
 	this->setContentSize(this->frame->getContentSize());
 
-	this->frame->setClickCallback(CC_CALLBACK_0(HexusOpponentPreview::onOpponentClick, this));
+	this->frame->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentPreview::onOpponentClick, this));
 
 	this->frameClip->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->frameClip->addChild(this->opponentSprite);

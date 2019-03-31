@@ -186,10 +186,10 @@ void SaveSelectMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(SaveSelectMenu::onKeyPressed, this);
-	this->saveGame1->setClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame1Click, this));
-	this->saveGame2->setClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame2Click, this));
-	this->saveGame3->setClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame3Click, this));
-	this->backButton->setClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
+	this->saveGame1->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame1Click, this));
+	this->saveGame2->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame2Click, this));
+	this->saveGame3->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame3Click, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }

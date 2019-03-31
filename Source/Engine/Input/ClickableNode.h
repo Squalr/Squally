@@ -21,7 +21,7 @@ public:
 	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
 	void setContentSize(const cocos2d::Size & size) override;
-	void setClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick);
+	void setMouseClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseInCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseIn);
 	void setMouseOverCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOver);
 	void setMouseOutCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOut);

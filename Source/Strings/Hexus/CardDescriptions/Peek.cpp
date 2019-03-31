@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Peek::getStringEn()
 	{
-		return "View the cards in your opponent&#39;s hand.";
+		return "View the cards in your opponent's hand.";
 	}
 
 	std::string Hexus_CardDescriptions_Peek::getStringEs()

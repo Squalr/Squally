@@ -71,7 +71,7 @@ CipherSelectMenu::CipherSelectMenu()
 
 	this->loadLevels();
 
-	this->closeButton->setClickCallback(CC_CALLBACK_0(CipherSelectMenu::onCloseClick, this));
+	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(CipherSelectMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	for (std::vector<CipherLevelItem*>::iterator it = this->hexusOpponentItems.begin(); it != this->hexusOpponentItems.end(); ++it)

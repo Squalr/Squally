@@ -9,7 +9,7 @@
     "es": "OR todas las cartas en una fila con el valor binario 0011.",
     "es-419": "OR todas las cartas en una fila con el valor binario 0011.",
     "fi": "OR kaikki kortit rivissä binääriarvolla 0011.",
-    "fr": "OR toutes les cartes d&#39;affilée avec la valeur binaire 0011.",
+    "fr": "OR toutes les cartes d'affilée avec la valeur binaire 0011.",
     "hu": "OR minden kártya egy sorban a 0011 bináris értékkel.",
     "it": "OR tutte le carte di fila con il valore binario 0011.",
     "ja": "2進値0011を持つ行のすべてのカードの排他的論理和。",

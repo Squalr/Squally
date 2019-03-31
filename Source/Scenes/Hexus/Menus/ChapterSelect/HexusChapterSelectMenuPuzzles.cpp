@@ -180,19 +180,19 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenuPuzzles::onKeyPressed, this);
 
-	this->hexusChapterPreviewTrainingPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleTraining)); } );
-	this->hexusChapterPreviewBalmerPeaksPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleBalmerPeaks)); } );
-	this->hexusChapterPreviewCastleValgrindPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleCastleValgrind)); } );
-	this->hexusChapterPreviewDaemonsHallowPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleDaemonsHallow)); } );
-	this->hexusChapterPreviewEndianForestPuzzle->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleEndianForest)); } );
-	this->hexusChapterPreviewLambdaCryptsPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleLambdaCrypts)); } );
-	this->hexusChapterPreviewSeaSharpCavernsPuzzle->setClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleSeaSharpCaverns)); } );
-	this->hexusChapterPreviewUnderflowRuinsPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleUnderflowRuins)); } );
-	this->hexusChapterPreviewVoidStarPuzzle->setClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar)); } );
+	this->hexusChapterPreviewTrainingPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleTraining)); } );
+	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleBalmerPeaks)); } );
+	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleCastleValgrind)); } );
+	this->hexusChapterPreviewDaemonsHallowPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleDaemonsHallow)); } );
+	this->hexusChapterPreviewEndianForestPuzzle->setMouseClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleEndianForest)); } );
+	this->hexusChapterPreviewLambdaCryptsPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleLambdaCrypts)); } );
+	this->hexusChapterPreviewSeaSharpCavernsPuzzle->setMouseClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleSeaSharpCaverns)); } );
+	this->hexusChapterPreviewUnderflowRuinsPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleUnderflowRuins)); } );
+	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar)); } );
 	
-	this->deckManagementButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onDeckManagementClick, this));
-	this->shopButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onShopClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onBackClick, this));
+	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onDeckManagementClick, this));
+	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onShopClick, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }

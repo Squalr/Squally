@@ -156,7 +156,7 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	this->backButton->enableInteraction(0);
 	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-	this->backButton->setClickCallback(CC_CALLBACK_0(StateGameEnd::onBackClick, this, gameState));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(StateGameEnd::onBackClick, this, gameState));
 }
 
 void StateGameEnd::onStateReload(GameState* gameState)
@@ -169,5 +169,5 @@ void StateGameEnd::onStateExit(GameState* gameState)
 	super::onStateExit(gameState);
 
 	this->backButton->disableInteraction(0);
-	this->backButton->setClickCallback(nullptr);
+	this->backButton->setMouseClickCallback(nullptr);
 }

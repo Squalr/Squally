@@ -89,7 +89,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Absorb::getStringFr()
 	{
-		return "Placez cette carte sur n&#39;importe quelle ligne. La prochaine carte spéciale ciblant une carte de cette ligne sera bloquée et cette carte sera détruite.";
+		return "Placez cette carte sur n'importe quelle ligne. La prochaine carte spéciale ciblant une carte de cette ligne sera bloquée et cette carte sera détruite.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringHu()

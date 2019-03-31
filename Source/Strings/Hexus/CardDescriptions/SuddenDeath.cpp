@@ -99,7 +99,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringIt()
 	{
-		return "Alla fine del tuo turno successivo, i tuoi avversari passeranno automaticamente. Passerai automaticamente all&#39;inizio del tuo prossimo turno.";
+		return "Alla fine del tuo turno successivo, i tuoi avversari passeranno automaticamente. Passerai automaticamente all'inizio del tuo prossimo turno.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringJa()

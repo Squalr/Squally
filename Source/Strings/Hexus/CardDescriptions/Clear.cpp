@@ -89,7 +89,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Clear::getStringFr()
 	{
-		return "Restaurez toutes les cartes de la rangée sélectionnée à leur attaque d&#39;origine.";
+		return "Restaurez toutes les cartes de la rangée sélectionnée à leur attaque d'origine.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringHu()
@@ -99,7 +99,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Clear::getStringIt()
 	{
-		return "Ripristina tutte le carte nella riga selezionata all&#39;attacco originale.";
+		return "Ripristina tutte le carte nella riga selezionata all'attacco originale.";
 	}
 
 	std::string Hexus_CardDescriptions_Clear::getStringJa()

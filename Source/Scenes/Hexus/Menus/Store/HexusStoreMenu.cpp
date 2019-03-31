@@ -329,13 +329,13 @@ void HexusStoreMenu::initializeListeners()
 
 	this->addEventListener(keyboardListener);
 
-	this->lootBoxButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxTabClick, this));
-	this->binaryButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
-	this->decimalButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onDecimalTabClick, this));
-	this->hexButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onHexTabClick, this));
-	this->specialButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onSpecialTabClick, this));
+	this->lootBoxButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxTabClick, this));
+	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
+	this->decimalButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onDecimalTabClick, this));
+	this->hexButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onHexTabClick, this));
+	this->specialButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onSpecialTabClick, this));
 
-	this->backButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBackClick, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBackClick, this));
 }
 
 void HexusStoreMenu::initializePositions()
@@ -453,7 +453,7 @@ std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::stri
 	animationNode->setScale(HexusStoreMenu::LootBoxScale);
 	animationNode->setPosition(Vec2(0.0f, 16.0f));
 
-	frame->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
+	frame->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -72.0f));
 	priceLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -647,7 +647,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	menuCard->setPosition(Vec2(0.0f, 16.0f));
 	menuCard->setScale(0.8f);
 
-	cardContainer->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
+	cardContainer->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
 
 	cardContainer->addChild(goldIcon);
 	cardContainer->addChild(priceLabel);
@@ -765,7 +765,7 @@ void HexusStoreMenu::onLootBoxClick(int price, std::map<CardData*, float> cardCh
 	animationNode->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
-			this->lootBoxReturnButton->setClickCallback(nullptr);
+			this->lootBoxReturnButton->setMouseClickCallback(nullptr);
 
 			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
 			{
@@ -795,7 +795,7 @@ void HexusStoreMenu::onLootBoxClick(int price, std::map<CardData*, float> cardCh
 				FadeIn::create(0.5f),
 				CallFunc::create([=]()
 				{
-					this->lootBoxReturnButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxReturnButtonClick, this, price, chosenCards));
+					this->lootBoxReturnButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxReturnButtonClick, this, price, chosenCards));
 					this->lootBoxReturnButton->enableInteraction();
 				}),
 				nullptr

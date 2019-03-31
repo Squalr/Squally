@@ -202,7 +202,7 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
-	clickableNode->setClickCallback([=](MouseEvents::MouseEventArgs*) {	clickCallback(); });
+	clickableNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) {	clickCallback(); });
 	clickableNode->setMouseOverCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
 	clickableNode->setMouseOutCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
 
