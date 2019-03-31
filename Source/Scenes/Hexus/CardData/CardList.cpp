@@ -50,23 +50,34 @@
 #include "Scenes/Hexus/CardData/Hex/CardHex13.h"
 #include "Scenes/Hexus/CardData/Hex/CardHex14.h"
 #include "Scenes/Hexus/CardData/Hex/CardHex15.h"
+#include "Scenes/Hexus/CardData/Special/CardAbsorb.h"
 #include "Scenes/Hexus/CardData/Special/CardAddition.h"
-#include "Scenes/Hexus/CardData/Special/CardEnvironmentBinStorm.h"
-#include "Scenes/Hexus/CardData/Special/CardEnvironmentClear.h"
-#include "Scenes/Hexus/CardData/Special/CardEnvironmentDecStorm.h"
-#include "Scenes/Hexus/CardData/Special/CardEnvironmentHexStorm.h"
+#include "Scenes/Hexus/CardData/Special/CardBonusMoves.h"
+#include "Scenes/Hexus/CardData/Special/CardClear.h"
+#include "Scenes/Hexus/CardData/Special/CardDrank.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip1.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip2.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip3.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip4.h"
+#include "Scenes/Hexus/CardData/Special/CardGreed.h"
+#include "Scenes/Hexus/CardData/Special/CardHeal.h"
+#include "Scenes/Hexus/CardData/Special/CardHibernate.h"
 #include "Scenes/Hexus/CardData/Special/CardInverse.h"
+#include "Scenes/Hexus/CardData/Special/CardKill.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalAnd.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalOr.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalXor.h"
 #include "Scenes/Hexus/CardData/Special/CardMov.h"
+#include "Scenes/Hexus/CardData/Special/CardPeek.h"
+#include "Scenes/Hexus/CardData/Special/CardPoison.h"
+#include "Scenes/Hexus/CardData/Special/CardProtect.h"
+#include "Scenes/Hexus/CardData/Special/CardResurrect.h"
+#include "Scenes/Hexus/CardData/Special/CardReturnToHand.h"
 #include "Scenes/Hexus/CardData/Special/CardShiftLeft.h"
 #include "Scenes/Hexus/CardData/Special/CardShiftRight.h"
+#include "Scenes/Hexus/CardData/Special/CardSteal.h"
 #include "Scenes/Hexus/CardData/Special/CardSubtraction.h"
+#include "Scenes/Hexus/CardData/Special/CardSuddenDeath.h"
 
 CardList* CardList::instance = nullptr;
 
@@ -150,6 +161,22 @@ CardList::CardList()
 	this->cardListByName[CardKeys::ShiftLeft] = new CardShiftLeft();
 	this->cardListByName[CardKeys::ShiftRight] = new CardShiftRight();
 	this->cardListByName[CardKeys::Subtraction] = new CardSubtraction();
+
+	this->cardListByName[CardKeys::Absorb] = new CardAbsorb();
+	this->cardListByName[CardKeys::BonusMoves] = new CardBonusMoves();
+	this->cardListByName[CardKeys::Clear] = new CardClear();
+	this->cardListByName[CardKeys::Drank] = new CardDrank();
+	this->cardListByName[CardKeys::Greed] = new CardGreed();
+	this->cardListByName[CardKeys::Heal] = new CardHeal();
+	this->cardListByName[CardKeys::Hibernate] = new CardHibernate();
+	this->cardListByName[CardKeys::Kill] = new CardKill();
+	this->cardListByName[CardKeys::Peek] = new CardPeek();
+	this->cardListByName[CardKeys::Poison] = new CardPoison();
+	this->cardListByName[CardKeys::Protect] = new CardProtect();
+	this->cardListByName[CardKeys::Resurrect] = new CardResurrect();
+	this->cardListByName[CardKeys::ReturnToHand] = new CardReturnToHand();
+	this->cardListByName[CardKeys::Steal] = new CardSteal();
+	this->cardListByName[CardKeys::SuddenDeath] = new CardSuddenDeath();
 
 	for (auto it = this->cardListByName.begin(); it != this->cardListByName.end(); it++)
 	{
