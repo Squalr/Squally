@@ -39,6 +39,8 @@ Card* Card::create(CardStyle cardStyle, CardData* data)
 Card::Card(CardStyle cardStyle, CardData* data)
 {
 	this->mouseOverCallback = nullptr;
+	this->isHibernating = false;
+	this->isProtected = false;
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
@@ -164,6 +166,12 @@ void Card::addOperation(Operation operation)
 	this->updateText();
 }
 
+void Card::clearOperations()
+{
+	this->operations.clear();
+	this->updateText();
+}
+
 void Card::disableInteraction()
 {
 	this->cardSelect->disableInteraction();
@@ -271,7 +279,28 @@ unsigned int Card::getAttack()
 	return attack;
 }
 
-int Card::applyOperation(int attack, Operation operation) {
+void Card::setHibernating(bool isHibernating)
+{
+	this->isHibernating = isHibernating;
+}
+
+void Card::setProtected(bool isProtected)
+{
+	this->isProtected = isProtected;
+}
+
+bool Card::getHibernating()
+{
+	return this->isHibernating;
+}
+
+bool Card::getProtected()
+{
+	return this->isProtected;
+}
+
+int Card::applyOperation(int attack, Operation operation)
+{
 	const unsigned int attackMask = 0b1111;
 
 	switch (operation.operationType)

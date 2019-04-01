@@ -94,6 +94,7 @@ void CardPreview::onAnyStateChange(GameState* gameState)
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::Neutral:
+		case GameState::StateType::PeekCards:
 		{
 			this->initializeCallbacks(gameState);
 			break;

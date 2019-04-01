@@ -107,6 +107,8 @@ void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float
 
 		GameUtils::changeParent(card, this, true);
 
+		card->clearOperations();
+
 		card->setMouseOverCallback(nullptr);
 		card->setMouseClickCallback(nullptr);
 		card->reveal();
@@ -126,6 +128,8 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 
 	GameUtils::changeParent(card, this, true);
 
+	card->clearOperations();
+
 	card->setMouseOverCallback(nullptr);
 	card->setMouseClickCallback(nullptr);
 	card->reveal();
@@ -144,6 +148,8 @@ Card* CardRow::removeCard(Card* card)
 
 	this->rowCards.erase(std::remove(this->rowCards.begin(), this->rowCards.end(), card), this->rowCards.end());
 	this->setCardPositions(Config::insertDelay);
+
+	card->clearOperations();
 
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }
@@ -259,7 +265,6 @@ void CardRow::disableRowCardSelection()
 	}
 }
 
-// TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::disableRowCardInteraction()
 {
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
@@ -269,7 +274,6 @@ void CardRow::disableRowCardInteraction()
 	}
 }
 
-// TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::enableRowCardInteraction()
 {
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)

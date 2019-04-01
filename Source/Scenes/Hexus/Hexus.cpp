@@ -72,6 +72,7 @@ Hexus::Hexus()
 	this->stateAIDecidePass = StateAIDecidePass::create();
 	this->stateAIDecideTarget = StateAIDecideTarget::create();
 	this->stateCardReplace = StateCardReplace::create();
+	this->statePeekCards = StatePeekCards::create();
 	this->stateCoinFlip = StateCoinFlip::create();
 	this->stateCombineStaged = StateCombineStaged::create();
 	this->stateDraw = StateDraw::create();
@@ -147,6 +148,7 @@ Hexus::Hexus()
 	this->addChild(this->stateAIDecidePass);
 	this->addChild(this->stateAIDecideTarget);
 	this->addChild(this->stateCardReplace);
+	this->addChild(this->statePeekCards);
 	this->addChild(this->stateCoinFlip);
 	this->addChild(this->stateCombineStaged);
 	this->addChild(this->stateDraw);

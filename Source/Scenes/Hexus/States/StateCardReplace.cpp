@@ -30,7 +30,7 @@ StateCardReplace* StateCardReplace::create()
 StateCardReplace::StateCardReplace() : super(GameState::StateType::CardReplace)
 {
 	LocalizedLabel* doneButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
-	LocalizedLabel* doneButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
+	LocalizedLabel* doneButtonLabelHover = doneButtonLabel->clone();
 	
 	this->removedCards = std::vector<Card*>();
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);

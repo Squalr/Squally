@@ -27,6 +27,7 @@ class StateNeutral;
 class StateOpponentTurnStart;
 class StatePlayCard;
 class StatePass;
+class StatePeekCards;
 class StatePlayerTurnStart;
 class StateRoundEnd;
 class StateRoundStart;
@@ -111,6 +112,7 @@ private:
 	StateAIDecidePass* stateAIDecidePass;
 	StateAIDecideTarget* stateAIDecideTarget;
 	StateCardReplace* stateCardReplace;
+	StatePeekCards* statePeekCards;
 	StateCoinFlip* stateCoinFlip;
 	StateCombineStaged* stateCombineStaged;
 	StateDraw* stateDraw;

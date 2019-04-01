@@ -61,8 +61,13 @@ public:
 	void unfocus();
 	void setFocusTint(cocos2d::Color3B color);
 	void addOperation(Operation operation);
+	void clearOperations();
 	unsigned int getOriginalAttack();
 	unsigned int getAttack();
+	void setHibernating(bool isHibernating);
+	void setProtected(bool isProtected);
+	bool getHibernating();
+	bool getProtected();
 	void doDrawAnimation(float cardDrawDelay);
 	void disableInteraction();
 	void enableInteraction();
@@ -96,6 +101,9 @@ private:
 	void onMouseOver();
 	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
+
+	bool isHibernating;
+	bool isProtected;
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;

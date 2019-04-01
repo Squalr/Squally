@@ -55,6 +55,8 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	// Destroy existing state -- just the deck needs to be cleared because this method should be called at the start of the game
 	gameState->playerDeck->clear();
 	gameState->enemyDeck->clear();
+	gameState->playerGraveyard->clear();
+	gameState->enemyGraveyard->clear();
 
 	gameState->enemyPassed = stateOverride->enemyPassed;
 	gameState->playerPassed = stateOverride->playerPassed;

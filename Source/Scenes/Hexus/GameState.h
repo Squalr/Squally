@@ -25,6 +25,7 @@ public:
 		CoinFlip,
 		RoundStart,
 		CardReplace,
+		PeekCards,
 		PlayerTurnStart,
 		OpponentTurnStart,
 		Neutral,
@@ -66,6 +67,7 @@ public:
 	bool isEnemyLastStandCondition();
 	bool isEnemyClaimVictoryCondition();
 	bool isEnemyPassCondition();
+	CardRow* getRowForCard(Card* card);
 	std::vector<CardRow*> getAllRows();
 	std::vector<CardRow*> getPlayerRows();
 	std::vector<CardRow*> getEnemyRows();

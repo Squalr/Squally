@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/States/StateNeutral.h"
 #include "Scenes/Hexus/States/StateOpponentTurnStart.h"
 #include "Scenes/Hexus/States/StatePass.h"
+#include "Scenes/Hexus/States/StatePeekCards.h"
 #include "Scenes/Hexus/States/StatePlayCard.h"
 #include "Scenes/Hexus/States/StatePlayerTurnStart.h"
 #include "Scenes/Hexus/States/StateRoundEnd.h"

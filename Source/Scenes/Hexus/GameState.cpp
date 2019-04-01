@@ -68,7 +68,6 @@ GameState::GameState()
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
 
-	this->enemyHand->setVisible(false);
 	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
 	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
 
@@ -189,6 +188,26 @@ void GameState::removeFieldCards()
 	}
 
 	roundNumber++;
+}
+
+CardRow* GameState::getRowForCard(Card* card)
+{
+	std::vector<CardRow*> rows = this->getAllRows();
+
+	for (auto it = rows.begin(); it != rows.end(); it++)
+	{
+		CardRow* row = *it;
+
+		for (auto cardIt = row->rowCards.begin(); cardIt != row->rowCards.end(); cardIt++)
+		{
+			if ((*cardIt) == card)
+			{
+				return *it;
+			}
+		}
+	}
+
+	return nullptr;
 }
 
 std::vector<Card*> GameState::getAllCards() 
