@@ -71,6 +71,13 @@ GameState::GameState()
 	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
 	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
 
+	this->playerHand->enableClearOperationsOnInsert();
+	this->enemyHand->enableClearOperationsOnInsert();
+	this->playerGraveyard->enableClearOperationsOnInsert();
+	this->enemyGraveyard->enableClearOperationsOnInsert();
+	this->playerDeck->enableClearOperationsOnInsert();
+	this->enemyDeck->enableClearOperationsOnInsert();
+
 	this->addChild(this->enemyGraveyard);
 	this->addChild(this->enemyDeck);
 	this->addChild(this->enemyHexCards);

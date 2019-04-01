@@ -35,6 +35,7 @@ CardRow::CardRow(bool isPlayerRow)
 	this->belongsToPlayer = isPlayerRow;
 	this->rowCards = std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
+	this->clearOperationsOnInsert = false;
 	this->rowWidth = Config::rowWidth;
 
 	this->rowSelectSprite = ClickableNode::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);
@@ -107,13 +108,16 @@ void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float
 
 		GameUtils::changeParent(card, this, true);
 
-		card->clearOperations();
-
 		card->setMouseOverCallback(nullptr);
 		card->setMouseClickCallback(nullptr);
 		card->reveal();
 
 		this->rowCards.push_back(card);
+
+		if (this->clearOperationsOnInsert)
+		{
+			card->clearOperations();
+		}
 	}
 
 	this->setCardPositions(cardInsertDelay, indexDelay);
@@ -128,14 +132,22 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 
 	GameUtils::changeParent(card, this, true);
 
-	card->clearOperations();
-
 	card->setMouseOverCallback(nullptr);
 	card->setMouseClickCallback(nullptr);
 	card->reveal();
 
 	this->rowCards.push_back(card);
 	this->setCardPositions(cardInsertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
+}
+
+void CardRow::enableClearOperationsOnInsert()
+{
+	this->clearOperationsOnInsert = true;
 }
 
 Card* CardRow::removeCard(Card* card)
@@ -148,8 +160,6 @@ Card* CardRow::removeCard(Card* card)
 
 	this->rowCards.erase(std::remove(this->rowCards.begin(), this->rowCards.end(), card), this->rowCards.end());
 	this->setCardPositions(Config::insertDelay);
-
-	card->clearOperations();
 
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }

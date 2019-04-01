@@ -15,6 +15,7 @@ public:
 
 	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
 	void insertCard(Card* card, float cardInsertDelay);
+	void enableClearOperationsOnInsert();
 	Card* removeCard(Card* card);
 	int getCardCount();
 	int getRowAttack();
@@ -55,4 +56,5 @@ private:
 	bool belongsToPlayer;
 	ClickableNode* rowSelectSprite;
 	std::function<void(CardRow*)> rowSelectCallback;
+	bool clearOperationsOnInsert;
 };

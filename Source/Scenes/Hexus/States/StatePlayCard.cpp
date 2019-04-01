@@ -541,6 +541,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			return;
 		}
 	}
+	
+	gameState->playableCardsThisTurn = std::max(0, gameState->playableCardsThisTurn - 1);
 
 	StatePlayCard::DoNextTransition(gameState, playedPeekCard);
 }
@@ -560,7 +562,6 @@ void StatePlayCard::onStateExit(GameState* gameState)
 
 void StatePlayCard::DoNextTransition(GameState* gameState, bool enterPeekState)
 {
-	gameState->playableCardsThisTurn = std::max(0, gameState->playableCardsThisTurn - 1);
 	gameState->selectedHandCard = nullptr;
 	CallFunc* stateTransition = nullptr;
 
