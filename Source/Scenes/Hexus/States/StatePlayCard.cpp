@@ -59,6 +59,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 	Deck* otherGraveyard = nullptr;
 	Deck* otherDeck = nullptr;
 
+	bool playedPeekCard = false;
+
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
@@ -107,6 +109,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Hexidecimal:
+		case CardData::CardType::Special_ABSORB:
 		{
 			if (gameState->selectedRow == nullptr)
 			{
@@ -127,31 +130,22 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
-
-			for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
+			if (!tryAbsorb(gameState, gameState->selectedRow))
 			{
-				Card* card = *it;
+				selfHand->removeCard(gameState->selectedHandCard);
+				selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
-				Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType, card->getOriginalAttack());
-
-				card->addOperation(operation);
-			}
-
-			// Decide which effect and sounds to play
-			switch (gameState->selectedHandCard->cardData->cardType)
-			{
-				case CardData::CardType::Special_CLEAR:
+				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
 				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
-					break;
+					Card* card = *it;
+
+					Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType, card->getOriginalAttack());
+
+					card->addOperation(operation);
 				}
-				default:
-				{
-					break;
-				}
+
+				gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
+				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
 			}
 
 			break;
@@ -175,75 +169,78 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
-			for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
+			if (!tryAbsorb(gameState, gameState->selectedRow))
 			{
-				Card* card = *it;
+				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
+				{
+					Card* card = *it;
 
-				Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType);
+					Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType);
 
-				card->addOperation(operation);
-			}
+					card->addOperation(operation);
+				}
 
-			// Decide which effect and sounds to play
-			switch (gameState->selectedHandCard->cardData->cardType)
-			{
-				case CardData::CardType::Special_SHL:
+				// Decide which effect and sounds to play
+				switch (gameState->selectedHandCard->cardData->cardType)
 				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorPurple);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GlitterSpell);
-					break;
-				}
-				case CardData::CardType::Special_SHR:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorBlue);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Downgrade);
-					break;
-				}
-				case CardData::CardType::Special_FLIP1:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_MagicSlash);
-					break;
-				}
-				case CardData::CardType::Special_FLIP2:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::FrostCirlce);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Freeze);
-					break;
-				}
-				case CardData::CardType::Special_FLIP3:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialGalaxy);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
-					break;
-				}
-				case CardData::CardType::Special_FLIP4:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
-					break;
-				}
-				case CardData::CardType::Special_HEAL:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::Lightning);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy);
-					break;
-				}
-				case CardData::CardType::Special_POISON:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
-					break;
-				}
-				case CardData::CardType::Special_DRANK:
-				{
-					gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialStorm);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
-					break;
-				}
-				default:
-				{
-					break;
+					case CardData::CardType::Special_SHL:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorPurple);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GlitterSpell);
+						break;
+					}
+					case CardData::CardType::Special_SHR:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::MeteorBlue);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Downgrade);
+						break;
+					}
+					case CardData::CardType::Special_FLIP1:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_MagicSlash);
+						break;
+					}
+					case CardData::CardType::Special_FLIP2:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::FrostCirlce);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Freeze);
+						break;
+					}
+					case CardData::CardType::Special_FLIP3:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialGalaxy);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
+						break;
+					}
+					case CardData::CardType::Special_FLIP4:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
+						break;
+					}
+					case CardData::CardType::Special_HEAL:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::Lightning);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy);
+						break;
+					}
+					case CardData::CardType::Special_POISON:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
+						break;
+					}
+					case CardData::CardType::Special_DRANK:
+					{
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialStorm);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
+						break;
+					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 
@@ -265,55 +262,58 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
-			Card::Operation operation = Card::toOperation(
-				gameState->selectedHandCard->cardData->cardType,
-				gameState->selectedSourceCard->getAttack()
-			);
-
-			gameState->selectedDestinationCard->addOperation(operation);
-
-			// Decide which effect and sounds to play
-			switch (gameState->selectedHandCard->cardData->cardType)
+			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
-				case CardData::CardType::Special_MOV:
+				Card::Operation operation = Card::toOperation(
+					gameState->selectedHandCard->cardData->cardType,
+					gameState->selectedSourceCard->getAttack()
+				);
+
+				gameState->selectedDestinationCard->addOperation(operation);
+
+				// Decide which effect and sounds to play
+				switch (gameState->selectedHandCard->cardData->cardType)
 				{
-					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
-					break;
-				}
-				case CardData::CardType::Special_AND:
-				{
-					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::FireBlast);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Burning);
-					break;
-				}
-				case CardData::CardType::Special_OR:
-				{
-					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Lightning);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy);
-					break;
-				}
-				case CardData::CardType::Special_XOR:
-				{
-					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::RadialStorm);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
-					break;
-				}
-				case CardData::CardType::Special_ADD:
-				{
-					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::MagicBurst);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_ChimeShimmer);
-					break;
-				}
-				case CardData::CardType::Special_SUB:
-				{
-					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_AcidHit);
-					break;
-				}
-				default:
-				{
-					break;
+					case CardData::CardType::Special_MOV:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
+						break;
+					}
+					case CardData::CardType::Special_AND:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::FireBlast);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Burning);
+						break;
+					}
+					case CardData::CardType::Special_OR:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Lightning);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy);
+						break;
+					}
+					case CardData::CardType::Special_XOR:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::RadialStorm);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
+						break;
+					}
+					case CardData::CardType::Special_ADD:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::MagicBurst);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_ChimeShimmer);
+						break;
+					}
+					case CardData::CardType::Special_SUB:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_AcidHit);
+						break;
+					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 
@@ -330,15 +330,18 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
-			Card::Operation operation = Card::toOperation(
-				gameState->selectedHandCard->cardData->cardType,
-				gameState->selectedDestinationCard->getAttack()
-			);
+			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
+			{
+				Card::Operation operation = Card::toOperation(
+					gameState->selectedHandCard->cardData->cardType,
+					gameState->selectedDestinationCard->getAttack()
+				);
 
-			gameState->selectedDestinationCard->addOperation(operation);
+				gameState->selectedDestinationCard->addOperation(operation);
 
-			gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
-			SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+				gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
+				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+			}
 
 			break;
 		}
@@ -364,6 +367,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			playedPeekCard = true;
 			break;
 		}
 		case CardData::CardType::Special_SUDDEN_DEATH:
@@ -373,19 +378,22 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			auto removeWeakCards = [=](CardRow* targetRow, Deck* targetGraveyard)
 			{
-				std::vector<Card*> toRemove = std::vector<Card*>();
-
-				for (auto it = targetRow->rowCards.begin(); it != targetRow->rowCards.end(); it++)
+				if (!tryAbsorb(gameState, targetRow))
 				{
-					if ((*it)->getAttack() <= 0b0100)
+					std::vector<Card*> toRemove = std::vector<Card*>();
+
+					for (auto it = targetRow->rowCards.begin(); it != targetRow->rowCards.end(); it++)
 					{
-						toRemove.push_back(*it);
+						if ((*it)->getAttack() <= 0b0100)
+						{
+							toRemove.push_back(*it);
+						}
 					}
-				}
 
-				for (auto it = toRemove.begin(); it != toRemove.end(); it++)
-				{
-					targetGraveyard->insertCardTop(targetRow->removeCard(*it), true, Config::insertDelay);
+					for (auto it = toRemove.begin(); it != toRemove.end(); it++)
+					{
+						targetGraveyard->insertCardTop(targetRow->removeCard(*it), true, Config::insertDelay);
+					}
 				}
 			};
 
@@ -398,6 +406,135 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			break;
 		}
+		case CardData::CardType::Special_KILL:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			CardRow* targetRow = gameState->getRowForCard(gameState->selectedDestinationCard);
+
+			if (targetRow == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			if (!tryAbsorb(gameState, targetRow))
+			{
+				if (targetRow->isPlayerRow())
+				{
+					gameState->playerGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+				}
+				else
+				{
+					gameState->enemyGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+				}
+
+				gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
+				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+			}
+
+			break;
+		}
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			CardRow* targetRow = gameState->getRowForCard(gameState->selectedDestinationCard);
+
+			if (targetRow == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			if (!tryAbsorb(gameState, targetRow))
+			{
+				if (targetRow->isPlayerRow())
+				{
+					gameState->playerHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), Config::insertDelay);
+				}
+				else
+				{
+					gameState->enemyHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), Config::insertDelay);
+				}
+
+				gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
+				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
+			}
+
+			break;
+		}
+		case CardData::CardType::Special_STEAL:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			CardRow* targetRow = gameState->getRowForCard(gameState->selectedDestinationCard);
+
+			if (targetRow == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			if (!tryAbsorb(gameState, targetRow))
+			{
+				auto tryStealCard = [=](CardRow* sourceRow, CardRow* destRow, Card* targetCard)
+				{
+					destRow->insertCard(sourceRow->removeCard(targetCard), Config::insertDelay);
+				};
+
+				tryStealCard(selfBinaryRow, otherBinaryRow, gameState->selectedDestinationCard);
+				tryStealCard(selfDecimalRow, otherDecimalRow, gameState->selectedDestinationCard);
+				tryStealCard(selfHexRow, otherHexRow, gameState->selectedDestinationCard);
+				tryStealCard(otherBinaryRow, selfBinaryRow, gameState->selectedDestinationCard);
+				tryStealCard(otherDecimalRow, selfDecimalRow, gameState->selectedDestinationCard);
+				tryStealCard(otherHexRow, selfHexRow, gameState->selectedDestinationCard);
+
+				gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::DustPoof);
+				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
+			}
+
+			break;
+		}
+		case CardData::CardType::Special_PROTECT:
+		{
+			if (gameState->selectedDestinationCard == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
+			{
+				gameState->selectedDestinationCard->setProtected(true);
+			}
+
+			break;
+		}
+		case CardData::CardType::Special_HIBERNATE:
+		{
+			if (gameState->selectedDestinationCard == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
+			{
+				gameState->selectedDestinationCard->setHibernating(true);
+			}
+			
+			break;
+		}
 		default:
 		{
 			this->passFromError(gameState);
@@ -405,13 +542,39 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 	}
 
+	StatePlayCard::DoNextTransition(gameState, playedPeekCard);
+}
+
+void StatePlayCard::onStateReload(GameState* gameState)
+{
+	super::onStateReload(gameState);
+}
+
+void StatePlayCard::onStateExit(GameState* gameState)
+{
+	super::onStateExit(gameState);
+
+	gameState->selectedSourceCard = nullptr;
+	gameState->selectedDestinationCard = nullptr;
+}
+
+void StatePlayCard::DoNextTransition(GameState* gameState, bool enterPeekState)
+{
 	gameState->playableCardsThisTurn = std::max(0, gameState->playableCardsThisTurn - 1);
 	gameState->selectedHandCard = nullptr;
 	CallFunc* stateTransition = nullptr;
 
 	if (gameState->turn == GameState::Turn::Player)
 	{
-		if (gameState->playerHand->getCardCount() <= 0)
+		if (enterPeekState)
+		{
+			// Note this case is not covered for the opponent. Considering this into the AI is too much work.
+			stateTransition = CallFunc::create([=]()
+			{
+				GameState::updateState(gameState, GameState::StateType::PeekCards);
+			});
+		}
+		else if (gameState->playerHand->getCardCount() <= 0)
 		{
 			stateTransition = CallFunc::create([=]()
 			{
@@ -464,24 +627,11 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 	}
 
-	this->runAction(Sequence::create(
+	gameState->runAction(Sequence::create(
 		DelayTime::create(0.5f),
 		stateTransition,
 		nullptr
 	));
-}
-
-void StatePlayCard::onStateReload(GameState* gameState)
-{
-	super::onStateReload(gameState);
-}
-
-void StatePlayCard::onStateExit(GameState* gameState)
-{
-	super::onStateExit(gameState);
-
-	gameState->selectedSourceCard = nullptr;
-	gameState->selectedDestinationCard = nullptr;
 }
 
 void StatePlayCard::passFromError(GameState* gameState)
@@ -494,4 +644,31 @@ void StatePlayCard::passFromError(GameState* gameState)
 		}),
 		nullptr
 	));
+}
+
+bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
+{
+	if (cardRow == nullptr)
+	{
+		return false;
+	}
+
+	for (auto it = cardRow->rowCards.begin(); it != cardRow->rowCards.end(); it++)
+	{
+		if ((*it)->cardData->cardType == CardData::CardType::Special_ABSORB)
+		{
+			if (cardRow->isPlayerRow())
+			{
+				gameState->playerGraveyard->insertCardTop(cardRow->removeCard(*it), true, Config::insertDelay);
+			}
+			else
+			{
+				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(*it), true, Config::insertDelay);
+			}
+			
+			return true;
+		}
+	}
+
+	return false;
 }

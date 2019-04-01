@@ -139,6 +139,7 @@ bool CardData::isAttackCard()
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Hexidecimal:
+		case CardData::CardType::Special_ABSORB:
 		{
 			return true;
 		}

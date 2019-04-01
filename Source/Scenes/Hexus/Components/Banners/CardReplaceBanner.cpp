@@ -63,21 +63,22 @@ void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 {
 	super::onAnyStateChange(gameState);
 
+	if (gameState->stateType == GameState::StateType::CardReplace || gameState->previousStateType == GameState::StateType::CardReplace)
+	{
+		LocalizedString* bannerString = Strings::Hexus_Banners_RemainingCardReplacements::create();
+		ConstantString* cardReplacementsString = ConstantString::create(std::to_string(gameState->cardReplaceCount));
+
+		bannerString->setStringReplacementVariables(cardReplacementsString);
+
+		this->setBannerText(bannerString);
+	}
+
 	if (gameState->stateType == GameState::StateType::CardReplace)
 	{
-		if (gameState->cardReplaceCount > 0)
-		{
-			LocalizedString* bannerString = Strings::Hexus_Banners_RemainingCardReplacements::create();
-			ConstantString* cardReplacementsString = ConstantString::create(std::to_string(gameState->cardReplaceCount));
+		this->showBanner();
 
-			bannerString->setStringReplacementVariables(cardReplacementsString);
-
-			this->setBannerText(bannerString);
-			this->showBanner();
-
-			this->penaltyIconParticles->start();
-			this->penaltyIconParticles->setVisible(true);
-		}
+		this->penaltyIconParticles->start();
+		this->penaltyIconParticles->setVisible(true);
 	}
 	else if (gameState->previousStateType == GameState::StateType::CardReplace)
 	{
