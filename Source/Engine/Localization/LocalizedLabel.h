@@ -85,4 +85,7 @@ private:
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;
+	cocos2d::Size dimensions;
+	cocos2d::TextHAlignment hAlignment;
+	cocos2d::TextVAlignment vAlignment;
 };
