@@ -118,7 +118,6 @@ namespace HexusResources
 	extern const std::string Special_Greed;
 	extern const std::string Special_Greed2;
 	extern const std::string Special_HealthPotion;
-	extern const std::string Special_Hibernate;
 	extern const std::string Special_Inverse;
 	extern const std::string Special_Kill;
 	extern const std::string Special_LogicalAnd;
@@ -127,8 +126,6 @@ namespace HexusResources
 	extern const std::string Special_Mov;
 	extern const std::string Special_Peek;
 	extern const std::string Special_Poison;
-	extern const std::string Special_Protect;
-	extern const std::string Special_ResurrectionStone;
 	extern const std::string Special_ReturnToHand;
 	extern const std::string Special_ShiftLeft;
 	extern const std::string Special_ShiftRight;
@@ -144,7 +141,9 @@ namespace HexusResources
 	extern const std::string Special_Unused_Dwelling;
 	extern const std::string Special_Unused_Fish;
 	extern const std::string Special_Unused_Frog;
+	extern const std::string Special_Unused_FrozenFish;
 	extern const std::string Special_Unused_Gween;
+	extern const std::string Special_Unused_Helmet;
 	extern const std::string Special_Unused_HoneyJar;
 	extern const std::string Special_Unused_House;
 	extern const std::string Special_Unused_Hut;

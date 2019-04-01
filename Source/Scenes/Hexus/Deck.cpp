@@ -208,7 +208,7 @@ void Deck::clear()
 {
 	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 	{
-		this->removeChild(*it);
+		this->cardsNode->removeChild(*it);
 	}
 
 	this->deckCards.clear();

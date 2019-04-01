@@ -112,8 +112,6 @@ LocalizedString* CardData::getCardTypeString()
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
 		case CardData::CardType::Special_KILL:
-		case CardData::CardType::Special_HIBERNATE:
-		case CardData::CardType::Special_RESURRECT:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:
@@ -121,7 +119,6 @@ LocalizedString* CardData::getCardTypeString()
 		case CardData::CardType::Special_HEAL:
 		case CardData::CardType::Special_POISON:
 		case CardData::CardType::Special_DRANK:
-		case CardData::CardType::Special_PROTECT:
 		{
 			return Strings::Generics_Empty::create();
 		}

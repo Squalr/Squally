@@ -499,49 +499,13 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			break;
 		}
-		case CardData::CardType::Special_PROTECT:
-		{
-			if (gameState->selectedDestinationCard == nullptr)
-			{
-				this->passFromError(gameState);
-				return;
-			}
-
-			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
-
-			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
-			{
-				gameState->selectedDestinationCard->setProtected(true);
-			}
-
-			break;
-		}
-		case CardData::CardType::Special_HIBERNATE:
-		{
-			if (gameState->selectedDestinationCard == nullptr)
-			{
-				this->passFromError(gameState);
-				return;
-			}
-
-			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
-
-			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
-			{
-				gameState->selectedDestinationCard->setHibernating(true);
-			}
-			
-			break;
-		}
 		default:
 		{
 			this->passFromError(gameState);
 			return;
 		}
 	}
-	
+
 	gameState->playableCardsThisTurn = std::max(0, gameState->playableCardsThisTurn - 1);
 
 	StatePlayCard::DoNextTransition(gameState, playedPeekCard);
