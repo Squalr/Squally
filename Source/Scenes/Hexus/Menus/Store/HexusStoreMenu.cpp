@@ -570,11 +570,6 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 500;
 			break;
 		}
-		case CardData::CardType::Special_HIBERNATE:
-		{
-			price = 500;
-			break;
-		}
 		case CardData::CardType::Special_KILL:
 		{
 			price = 500;
@@ -586,16 +581,6 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			break;
 		}
 		case CardData::CardType::Special_POISON:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_PROTECT:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_RESURRECT:
 		{
 			price = 500;
 			break;

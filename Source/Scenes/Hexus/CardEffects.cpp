@@ -239,11 +239,13 @@ void CardEffects::clearEffects()
 
 	if (this->selectionPulse != nullptr)
 	{
+		this->getSelectionPulse()->setVisible(false);
 		this->getSelectionPulse()->stopAllActions();
 	}
 
 	if (this->targetPulse != nullptr)
 	{
+		this->getTargetPulse()->setVisible(false);
 		this->getTargetPulse()->stopAllActions();
 	}
 }

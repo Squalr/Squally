@@ -29,8 +29,6 @@ public:
 		Special_GREED,
 		Special_ABSORB,
 		Special_KILL,
-		Special_HIBERNATE,
-		Special_RESURRECT,
 		Special_RETURN_TO_HAND,
 		Special_STEAL,
 		Special_BONUS_MOVES,
@@ -38,7 +36,6 @@ public:
 		Special_HEAL,
 		Special_POISON,
 		Special_DRANK,
-		Special_PROTECT,
 	};
 
 	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack);

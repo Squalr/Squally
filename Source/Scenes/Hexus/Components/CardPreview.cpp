@@ -23,7 +23,6 @@
 #include "Strings/Hexus/CardDescriptions/Flip4.h"
 #include "Strings/Hexus/CardDescriptions/Greed.h"
 #include "Strings/Hexus/CardDescriptions/Heal.h"
-#include "Strings/Hexus/CardDescriptions/Hibernate.h"
 #include "Strings/Hexus/CardDescriptions/Inverse.h"
 #include "Strings/Hexus/CardDescriptions/Kill.h"
 #include "Strings/Hexus/CardDescriptions/LogicalAnd.h"
@@ -32,8 +31,6 @@
 #include "Strings/Hexus/CardDescriptions/Mov.h"
 #include "Strings/Hexus/CardDescriptions/Peek.h"
 #include "Strings/Hexus/CardDescriptions/Poison.h"
-#include "Strings/Hexus/CardDescriptions/Protect.h"
-#include "Strings/Hexus/CardDescriptions/Resurrect.h"
 #include "Strings/Hexus/CardDescriptions/ReturnToHand.h"
 #include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
 #include "Strings/Hexus/CardDescriptions/ShiftRight.h"
@@ -330,16 +327,6 @@ void CardPreview::previewCard(Card* card)
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Kill::create());
 						break;
 					}
-					case CardData::CardType::Special_HIBERNATE:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Hibernate::create());
-						break;
-					}
-					case CardData::CardType::Special_RESURRECT:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Resurrect::create());
-						break;
-					}
 					case CardData::CardType::Special_RETURN_TO_HAND:
 					{
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ReturnToHand::create());
@@ -373,11 +360,6 @@ void CardPreview::previewCard(Card* card)
 					case CardData::CardType::Special_DRANK:
 					{
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Drank::create());
-						break;
-					}
-					case CardData::CardType::Special_PROTECT:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Protect::create());
 						break;
 					}
 					default:

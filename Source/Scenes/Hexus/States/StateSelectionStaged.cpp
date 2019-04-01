@@ -185,26 +185,8 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 			gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
 			break;
 		}
-		case CardData::CardType::Special_HIBERNATE:
-		{
-			std::vector<Card*> ignoreList = std::vector<Card*>
-			{
-				gameState->selectedHandCard,
-				gameState->selectedSourceCard,
-			};
-
-			gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-			gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-			gameState->playerHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
-
-			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
-			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
-			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::immediatelyPlayCard, this, gameState));
-			break;
-		}
 		case CardData::CardType::Special_INV:
 		case CardData::CardType::Special_KILL:
-		case CardData::CardType::Special_PROTECT:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		{
 			std::vector<Card*> ignoreList = std::vector<Card*>
@@ -237,14 +219,6 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 			gameState->boardSelection->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 			{
 				this->immediatelyPlayCard(gameState->selectedHandCard, gameState);
-			});
-			break;
-		}
-		case CardData::CardType::Special_RESURRECT:
-		{
-			gameState->playerGraveyard->enableDeckSelection([=](Deck*)
-			{
-
 			});
 			break;
 		}
