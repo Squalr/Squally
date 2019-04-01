@@ -8,6 +8,7 @@
 
 class Card;
 class CardRow;
+class ClickableNode;
 class Deck;
 class HexusOpponentData;
 
@@ -116,6 +117,8 @@ public:
 	CardRow* enemyBinaryCards;
 	CardRow* enemyDecimalCards;
 	CardRow* enemyHexCards;
+
+	ClickableNode* boardSelection;
 
 	HexusOpponentData* opponentData;
 

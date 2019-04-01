@@ -50,6 +50,14 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 	CardRow* selfDecimalRow = nullptr;
 	CardRow* selfHexRow = nullptr;
 	Deck* selfGraveyard = nullptr;
+	Deck* selfDeck = nullptr;
+
+	CardRow* otherHand = nullptr;
+	CardRow* otherBinaryRow = nullptr;
+	CardRow* otherDecimalRow = nullptr;
+	CardRow* otherHexRow = nullptr;
+	Deck* otherGraveyard = nullptr;
+	Deck* otherDeck = nullptr;
 
 	switch (gameState->turn)
 	{
@@ -60,6 +68,14 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfDecimalRow = gameState->playerDecimalCards;
 			selfHexRow = gameState->playerHexCards;
 			selfGraveyard = gameState->playerGraveyard;
+			selfDeck = gameState->playerDeck;
+
+			otherHand = gameState->enemyHand;
+			otherBinaryRow = gameState->enemyBinaryCards;
+			otherDecimalRow = gameState->enemyDecimalCards;
+			otherHexRow = gameState->enemyHexCards;
+			otherGraveyard = gameState->enemyGraveyard;
+			otherDeck = gameState->enemyDeck;
 			break;
 		}
 		case GameState::Turn::Enemy:
@@ -69,6 +85,14 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfDecimalRow = gameState->enemyDecimalCards;
 			selfHexRow = gameState->enemyHexCards;
 			selfGraveyard = gameState->enemyGraveyard;
+			selfDeck = gameState->enemyDeck;
+
+			otherHand = gameState->playerHand;
+			otherBinaryRow = gameState->playerBinaryCards;
+			otherDecimalRow = gameState->playerDecimalCards;
+			otherHexRow = gameState->playerHexCards;
+			otherGraveyard = gameState->playerGraveyard;
+			otherDeck = gameState->playerDeck;
 			break;
 		}
 		default:
@@ -315,6 +339,62 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
 			SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+
+			break;
+		}
+		case CardData::CardType::Special_GREED:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			selfHand->insertCard(selfDeck->drawCard(), 0.5f);
+			selfHand->insertCard(selfDeck->drawCard(), 0.5f);
+
+			break;
+		}
+		case CardData::CardType::Special_BONUS_MOVES:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			
+			gameState->playableCardsThisTurn += 3;
+			break;
+		}
+		case CardData::CardType::Special_PEEK:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			break;
+		}
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		{
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+
+			auto removeWeakCards = [=](CardRow* targetRow, Deck* targetGraveyard)
+			{
+				std::vector<Card*> toRemove = std::vector<Card*>();
+
+				for (auto it = targetRow->rowCards.begin(); it != targetRow->rowCards.end(); it++)
+				{
+					if ((*it)->getAttack() <= 0b0100)
+					{
+						toRemove.push_back(*it);
+					}
+				}
+
+				for (auto it = toRemove.begin(); it != toRemove.end(); it++)
+				{
+					targetGraveyard->insertCardTop(targetRow->removeCard(*it), true, Config::insertDelay);
+				}
+			};
+
+			removeWeakCards(selfBinaryRow, selfGraveyard);
+			removeWeakCards(selfDecimalRow, selfGraveyard);
+			removeWeakCards(selfHexRow, selfGraveyard);
+			removeWeakCards(otherBinaryRow, otherGraveyard);
+			removeWeakCards(otherDecimalRow, otherGraveyard);
+			removeWeakCards(otherHexRow, otherGraveyard);
 
 			break;
 		}

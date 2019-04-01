@@ -22,6 +22,7 @@ const std::string HexusResources::Binary_6 = "Hexus/Binary/6.png";
 const std::string HexusResources::Binary_7 = "Hexus/Binary/7.png";
 const std::string HexusResources::Binary_8 = "Hexus/Binary/8.png";
 const std::string HexusResources::Binary_9 = "Hexus/Binary/9.png";
+const std::string HexusResources::BoardSelection = "Hexus/BoardSelection.png";
 const std::string HexusResources::CardBackAir = "Hexus/CardBackAir.png";
 const std::string HexusResources::CardBackEarth = "Hexus/CardBackEarth.png";
 const std::string HexusResources::CardBackFire = "Hexus/CardBackFire.png";

@@ -9,6 +9,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
+
 class StateAIDecideCard;
 class StateAIDecideCardReplace;
 class StateAIDecidePass;
@@ -31,7 +33,6 @@ class StateRoundStart;
 class StateSelectionStaged;
 class StateTurnEnd;
 class StateTutorial;
-
 
 class CardReplaceBanner;
 class OpponentFirstBanner;
@@ -145,6 +146,7 @@ private:
 	DefeatBanner* defeatBanner;
 	DrawBanner* drawBanner;
 
+	ClickableNode* boardSelection;
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	RemainingCardDisplay* remainingCardDisplay;

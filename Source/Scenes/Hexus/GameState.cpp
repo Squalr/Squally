@@ -3,12 +3,14 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 
@@ -161,6 +163,8 @@ void GameState::clearInteraction()
 	this->playerHand->disableRowSelection();
 	this->playerHand->disableRowCardSelection();
 	this->playerHand->disableRowCardInteraction();
+
+	this->boardSelection->disableInteraction(0);
 
 	std::vector<CardRow*> rows = this->getAllRows();
 
