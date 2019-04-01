@@ -100,7 +100,7 @@ HexusOpponentData* SkeletalCleaver::getHexusOpponentData()
 				// Player losses
 				1,
 				// Enemy losses
-				0,
+				1,
 				// Player's turn
 				true,
 				// Player passed

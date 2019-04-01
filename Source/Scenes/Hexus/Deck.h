@@ -23,6 +23,7 @@ public:
 
 	void enableDeckSelection(std::function<void(Deck*)> callback);
 	void disableDeckSelection();
+	void enableClearOperationsOnInsert();
 	void removeCardsWhere(std::function<bool(Card*)> predicate);
 	Card* removeCard(Card* card);
 	Card* drawCard();
@@ -43,6 +44,8 @@ private:
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
+	bool clearOperationsOnInsert;
+	
 	ClickableNode* pad;
 	cocos2d::Node* cardsNode;
 	cocos2d::Sprite* deckFocus;

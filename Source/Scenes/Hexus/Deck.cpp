@@ -39,6 +39,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
 	this->pad = ClickableNode::create(HexusResources::CardPad, HexusResources::CardPad);
 	this->cardsNode = Node::create();
 	this->deckFocus = Sprite::create(HexusResources::CardSelect);
+	this->clearOperationsOnInsert = false;
 
 	this->pad->setScale(Card::cardScale);
 	this->deckFocus->setScale(Card::cardScale);
@@ -116,6 +117,11 @@ void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 	this->deckCards.push_back(card);
 	this->setCardOrder();
 	this->doInsertAnimation(card, faceUp, insertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
 }
 
 void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
@@ -132,6 +138,11 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 	this->deckCards.insert(this->deckCards.begin(), card);
 	this->setCardOrder();
 	this->doInsertAnimation(card, faceUp, insertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
 }
 
 void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
@@ -149,6 +160,16 @@ void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 	this->deckCards.insert(this->deckCards.begin() + index, card);
 	this->setCardOrder();
 	this->doInsertAnimation(card, faceUp, insertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
+}
+
+void Deck::enableClearOperationsOnInsert()
+{
+	this->clearOperationsOnInsert = true;
 }
 
 void Deck::doInsertAnimation(Card* card, bool faceUp, float insertDelay)
