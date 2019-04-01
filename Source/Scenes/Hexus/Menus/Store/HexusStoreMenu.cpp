@@ -605,6 +605,11 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 500;
 			break;
 		}
+		case CardData::CardType::Special_STEAL:
+		{
+			price = 500;
+			break;
+		}
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
 			price = 500;

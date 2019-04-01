@@ -3,6 +3,8 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Input/ClickableNode.h"
+
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Deck.h"
@@ -221,12 +223,19 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 		case CardData::CardType::Special_PEEK:
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
-			// TODO
+			gameState->boardSelection->enableInteraction();
+			gameState->boardSelection->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+			{
+				this->immediatelyPlayCard(gameState->selectedHandCard, gameState);
+			});
 			break;
 		}
 		case CardData::CardType::Special_RESURRECT:
 		{
-			gameState->playerGraveyard->enableDeckSelection(nullptr);
+			gameState->playerGraveyard->enableDeckSelection([=](Deck*)
+			{
+
+			});
 			break;
 		}
 		default:

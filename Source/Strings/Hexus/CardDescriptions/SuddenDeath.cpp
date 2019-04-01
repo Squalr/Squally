@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringAr()
 	{
-		return "في نهاية دور خصومك التالي ، سوف يمرون تلقائيًا. سوف تمر تلقائيًا في بداية دورك التالي.";
+		return "تدمير جميع البطاقات مع 0100 هجوم أو أقل.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringBg()
 	{
-		return "В края на следващия завой на противниците те автоматично преминават. Вие автоматично ще преминете в началото на следващия ход.";
+		return "Унищожете всички карти с атака 0100 или по-малко.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringCs()
 	{
-		return "Na konci svého soupeře se zase otočí automaticky. Automaticky přejdete na začátku příštího tahu.";
+		return "Zničte všechny karty s útokem 0100 nebo méně.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringDa()
 	{
-		return "I slutningen af ​​dine modstandere næste tur, vil de automatisk passere. Du vil automatisk passere ved starten af ​​din næste tur.";
+		return "Ødelæg alle kort med 0100 angreb eller mindre.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringDe()
 	{
-		return "Am Ende der nächsten Runde deines Gegners passieren sie automatisch. Sie werden am Beginn Ihrer nächsten Runde automatisch durchfahren.";
+		return "Zerstöre alle Karten mit einem Angriff von 0100 oder weniger.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringEl()
 	{
-		return "Μετά το τέλος των αντιπάλων σας, θα περάσουν αυτόματα. Θα περάσετε αυτόματα στην αρχή της επόμενης στροφής.";
+		return "Καταστρέψτε όλες τις κάρτες με επίθεση 0100 ή λιγότερο.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringEn()
 	{
-		return "At the end of your opponents next turn, they will automatically pass. You will automatically pass at the start of your next turn.";
+		return "Destroy all cards with 0100 attack or less.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringEs()
 	{
-		return "Al final de tus oponentes el próximo turno, ellos pasarán automáticamente. Automáticamente pasarás al comienzo de tu siguiente turno.";
+		return "Destruye todas las cartas con 0100 de ataque o menos.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringEs419()
 	{
-		return "Al final de tus oponentes el próximo turno, ellos pasarán automáticamente. Automáticamente pasarás al comienzo de tu siguiente turno.";
+		return "Destruye todas las cartas con 0100 de ataque o menos.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringFi()
 	{
-		return "Vastustajasi päätteeksi ne kääntyvät automaattisesti. Voit siirtyä automaattisesti seuraavan kierroksen alussa.";
+		return "Tuhoa kaikki kortit, joissa on vähintään 0100 hyökkäystä.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringFr()
 	{
-		return "A la fin du tour suivant, vos adversaires passeront automatiquement. Vous passerez automatiquement au début de votre prochain tour.";
+		return "Détruisez toutes les cartes avec 0100 attaque ou moins.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringHu()
 	{
-		return "Az ellenfelek végén a következő fordulóban automatikusan áthaladnak. Ön automatikusan áthalad a következő forduló elején.";
+		return "Pusztítsd el az összes 0100-as vagy annál kisebb támadást.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringIt()
 	{
-		return "Alla fine del tuo turno successivo, i tuoi avversari passeranno automaticamente. Passerai automaticamente all'inizio del tuo prossimo turno.";
+		return "Distruggi tutte le carte con attacco 0100 o meno.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringJa()
 	{
-		return "あなたの対戦相手の次のターンの終わりに、彼らは自動的に通過するでしょう。あなたはあなたの次のターンの開始時に自動的に通過します。";
+		return "0100以下の攻撃ですべてのカードを破壊する。";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringKo()
 	{
-		return "상대의 다음 턴에 자동으로 패스됩니다. 다음 턴 시작시 자동으로 패스합니다.";
+		return "0100 이하의 공격을 가진 모든 카드를 파괴하십시오.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringNl()
 	{
-		return "Aan het einde van je volgende beurt van je tegenstander passeren ze automatisch. Je passeert automatisch aan het begin van je volgende beurt.";
+		return "Vernietig alle kaarten met 0100-aanval of minder.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringNo()
 	{
-		return "På slutten av dine motstandere neste tur, vil de automatisk passere. Du vil automatisk passere ved starten av neste tur.";
+		return "Ødelegg alle kort med 0100 angrep eller mindre.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringPl()
 	{
-		return "Na końcu następnej tury przeciwników automatycznie przejdą. Automatycznie przejdziesz na początku kolejnej tury.";
+		return "Zniszcz wszystkie karty o ataku 0100 lub mniejszym.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringPt()
 	{
-		return "No final dos seus oponentes no próximo turno, eles passarão automaticamente. Você passará automaticamente no início do seu próximo turno.";
+		return "Destrua todas as cartas com ataque 0100 ou menos.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringPtBr()
 	{
-		return "No final dos seus oponentes no próximo turno, eles passarão automaticamente. Você passará automaticamente no início do seu próximo turno.";
+		return "Destrua todas as cartas com ataque 0100 ou menos.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringRo()
 	{
-		return "La sfârșitul următorului rând, adversarii vor trece automat. Veți trece automat la începutul viitoarei dvs. runde.";
+		return "Distruge toate cărțile cu atac de 0100 sau mai puțin.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringRu()
 	{
-		return "По окончании вашего оппонента на следующем ходу они автоматически пройдут. Вы автоматически пройдете в начале вашего следующего хода.";
+		return "Уничтожьте все карты с атакой 0100 или меньше.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringSv()
 	{
-		return "Vid slutet av dina motståndare nästa tur, kommer de automatiskt att passera. Du kommer automatiskt att passera i början av nästa tur.";
+		return "Förstör alla kort med 0100 attack eller mindre.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringTh()
 	{
-		return "ในตอนท้ายของคู่ต่อสู้ของคุณในเทิร์นถัดไปพวกเขาจะผ่านไปโดยอัตโนมัติ คุณจะผ่านโดยอัตโนมัติเมื่อเริ่มเทิร์นถัดไปของคุณ";
+		return "ทำลายการ์ดทั้งหมดด้วยการโจมตี 0100 หรือน้อยกว่า";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringTr()
 	{
-		return "Bir sonraki sıradaki rakiplerinizin sonunda, otomatik olarak pas geçecekler. Bir sonraki dönüşünüzün başlangıcında otomatik olarak geçeceksiniz.";
+		return "0100 veya daha az saldırı ile tüm kartları yok et.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringUk()
 	{
-		return "Після закінчення наступного повороту супротивників вони автоматично пройдуть. Ви автоматично переходите на початку наступного ходу.";
+		return "Знищити всі карти з атакою 0100 або менше.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringVi()
 	{
-		return "Khi kết thúc lần lượt đối thủ của bạn, họ sẽ tự động vượt qua. Bạn sẽ tự động vượt qua khi bắt đầu lượt tiếp theo của bạn.";
+		return "Phá hủy tất cả các thẻ với 0100 tấn công hoặc ít hơn.";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringZhCn()
 	{
-		return "在下一轮对手结束时，他们会自动通过。您将在下一回合开始时自动通过。";
+		return "销毁0100或更低攻击力的所有牌。";
 	}
 
 	std::string Hexus_CardDescriptions_SuddenDeath::getStringZhTw()
 	{
-		return "在下一輪對手結束時，他們會自動通過。您將在下一回合開始時自動通過。";
+		return "銷毀0100或更低攻擊力的所有牌。";
 	}
 }

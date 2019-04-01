@@ -23,6 +23,7 @@ namespace HexusResources
 	extern const std::string Binary_7;
 	extern const std::string Binary_8;
 	extern const std::string Binary_9;
+	extern const std::string BoardSelection;
 	extern const std::string CardBackAir;
 	extern const std::string CardBackEarth;
 	extern const std::string CardBackFire;
