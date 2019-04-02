@@ -94,12 +94,14 @@ HexusOpponentData* Ash::getHexusOpponentData()
 			0.635f,
 			HexusOpponentData::generateDeck(25, 0.635f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 
 			}),
 			nullptr

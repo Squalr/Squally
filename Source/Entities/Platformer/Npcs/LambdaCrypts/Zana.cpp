@@ -91,8 +91,8 @@ HexusOpponentData* Zana::getHexusOpponentData()
 			Zana::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.865f,
-			HexusOpponentData::generateDeck(25, 0.865f,
+			0.833f,
+			HexusOpponentData::generateDeck(25, 0.833f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

@@ -147,11 +147,26 @@ void StateSelectionStaged::initializeSelectablesAndCallbacks(GameState* gameStat
 			break;
 		}
 		case CardData::CardType::Special_MOV:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+		{
+			std::vector<Card*> ignoreList = gameState->getAbsorbCards();
+			
+			ignoreList.push_back(gameState->selectedHandCard);
+			ignoreList.push_back(gameState->selectedSourceCard);
+
+			gameState->playerBinaryCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->playerDecimalCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+			gameState->playerHexCards->runEffect(CardEffects::CardEffect::SelectionPulse, ignoreList);
+
+			gameState->playerBinaryCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
+			gameState->playerDecimalCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
+			gameState->playerHexCards->enableRowCardSelection(CC_CALLBACK_1(StateSelectionStaged::stageSelectedCombineCard, this, gameState));
+			break;
+		}
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
-		case CardData::CardType::Special_ADD:
-		case CardData::CardType::Special_SUB:
 		{
 			std::vector<Card*> ignoreList = std::vector<Card*>
 			{

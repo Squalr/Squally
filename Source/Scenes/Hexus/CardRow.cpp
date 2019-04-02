@@ -410,6 +410,7 @@ int CardRow::simulateCardEffect(Card* card)
 		case CardData::CardType::Special_POISON:
 		case CardData::CardType::Special_DRANK:
 		case CardData::CardType::Special_CLEAR:
+		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
 			Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
 

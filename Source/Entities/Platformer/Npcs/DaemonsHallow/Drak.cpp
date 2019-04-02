@@ -94,12 +94,14 @@ HexusOpponentData* Drak::getHexusOpponentData()
 			0.677f,
 			HexusOpponentData::generateDeck(25, 0.677f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 
 			}),
 			nullptr

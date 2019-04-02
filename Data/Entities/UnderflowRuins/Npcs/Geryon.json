@@ -25,11 +25,13 @@
       "Strategy": "Random",
       "PresetCards": [
         "Addition",
+        "ShiftLeft",
+        "Flip2",
         "LogicalAnd",
         "LogicalOr",
-        "LogicalXor",
-        "ShiftLeft",
-        "ShiftRight"
+        "Flip2",
+        "Flip2",
+        "Mov"
       ]
     }
   }
