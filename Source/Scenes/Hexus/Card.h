@@ -41,12 +41,19 @@ public:
 			XOR,
 			ADD,
 			SUB,
+
+			// Not true operations, but it's convenient to have them here
+			CLEAR,
+			DRANK,
+			POISON,
+			HEAL,
+			SUDDEN_DEATH,
 		};
 
 		OperationType operationType;
 		unsigned int immediate;
 
-		Operation(OperationType operationType, unsigned int immediate) : operationType(operationType), immediate(immediate)
+		Operation(OperationType operationType, unsigned int immediate = 0b0000) : operationType(operationType), immediate(immediate)
 		{
 
 		}

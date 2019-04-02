@@ -83,7 +83,7 @@ std::tuple<Card*, Card*, int> HexusAIHelper::getBestSourceAndTarget(Card* candid
 	return std::tuple<Card*, Card*, int>(bestSource, bestTarget, bestDiff);
 }
 
-std::tuple<Card*, int> HexusAIHelper::getBestTarget(Card* candidateCardToPlay, GameState* gameState)
+std::tuple<Card*, int> HexusAIHelper::getBestOperationTarget(Card* operationCard, GameState* gameState)
 {
 	std::vector<CardRow*> cardRows = gameState->getAllRows();
 	int bestDiff = std::numeric_limits<int>::min();
@@ -98,13 +98,40 @@ std::tuple<Card*, int> HexusAIHelper::getBestTarget(Card* candidateCardToPlay, G
 			Card* destinationCard = *targetCardIterator;
 
 			Card::Operation operation = Card::toOperation(
-				gameState->selectedHandCard->cardData->cardType,
+				operationCard->cardData->cardType,
 				destinationCard->getAttack()
 			);
 
 			int before = destinationCard->getAttack();
 			int after = destinationCard->simulateOperation(operation);
 			int diff = (after - before) * (targetRow->isPlayerRow() ? -1 : 1);
+
+			if (diff > bestDiff)
+			{
+				bestDiff = diff;
+				bestCard = destinationCard;
+			}
+		}
+	}
+
+	return std::tuple<Card*, int>(bestCard, bestDiff);
+}
+
+std::tuple<Card*, int> HexusAIHelper::getStrongestPlayerCard(GameState* gameState)
+{
+	std::vector<CardRow*> playerRows = gameState->getPlayerRows();
+	int bestDiff = std::numeric_limits<int>::min();
+	Card* bestCard = nullptr;
+
+	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
+	{
+		CardRow* targetRow = *it;
+
+		for (auto targetCardIterator = targetRow->rowCards.begin(); targetCardIterator != targetRow->rowCards.end(); targetCardIterator++)
+		{
+			Card* destinationCard = *targetCardIterator;
+
+			int diff = destinationCard->getAttack();
 
 			if (diff > bestDiff)
 			{

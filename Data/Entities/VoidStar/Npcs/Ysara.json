@@ -25,11 +25,14 @@
       "Strategy": "Random",
       "PresetCards": [
         "Addition",
-        "LogicalAnd",
-        "LogicalOr",
-        "LogicalXor",
-        "ShiftLeft",
-        "ShiftRight"
+        "Inverse",
+        "ReturnToHand",
+        "Absorb",
+        "Drank",
+        "Flip3",
+        "Kill",
+        "Flip1",
+        "Drank"
       ]
     }
   }

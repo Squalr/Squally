@@ -94,12 +94,14 @@ HexusOpponentData* Tyracius::getHexusOpponentData()
 			0.500f,
 			HexusOpponentData::generateDeck(25, 0.500f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 
 			}),
 			nullptr

@@ -19,6 +19,4 @@ private:
 	~StateAIDecideCard();
 
 	void decideCardRandom(GameState* gameState);
-	void decideCardStrongestFirst(GameState* gameState);
-	void decideCardWeakestFirst(GameState* gameState);
 };

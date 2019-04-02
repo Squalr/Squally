@@ -24,12 +24,14 @@
       "Strength": "(1.0f / 8.0f) * (0.0f + (1.0f / 13.0f) * 10.0f)",
       "Strategy": "Random",
       "PresetCards": [
-        "Addition",
-        "LogicalAnd",
+        "Steal",
         "LogicalOr",
+        "ShiftRight",
+        "Greed",
+        "Flip1",
+        "LogicalAnd",
         "LogicalXor",
-        "ShiftLeft",
-        "ShiftRight"
+        "LogicalOr"
       ]
     }
   }

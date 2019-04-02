@@ -94,12 +94,15 @@ HexusOpponentData* Scaldor::getHexusOpponentData()
 			0.750f,
 			HexusOpponentData::generateDeck(25, 0.750f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 
 			}),
 			nullptr

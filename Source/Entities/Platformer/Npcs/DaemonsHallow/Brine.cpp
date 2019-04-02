@@ -94,12 +94,14 @@ HexusOpponentData* Brine::getHexusOpponentData()
 			0.646f,
 			HexusOpponentData::generateDeck(25, 0.646f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
+				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 
 			}),
 			nullptr

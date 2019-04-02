@@ -25,11 +25,14 @@
       "Strategy": "Random",
       "PresetCards": [
         "Addition",
-        "LogicalAnd",
-        "LogicalOr",
+        "Steal",
+        "Greed",
+        "Flip3",
+        "Mov",
+        "Greed",
         "LogicalXor",
-        "ShiftLeft",
-        "ShiftRight"
+        "BonusMoves",
+        "Absorb"
       ]
     }
   }

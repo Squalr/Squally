@@ -94,12 +94,15 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 			0.729f,
 			HexusOpponentData::generateDeck(25, 0.729f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
+				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 
 			}),
 			nullptr

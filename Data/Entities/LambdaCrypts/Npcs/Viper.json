@@ -26,12 +26,15 @@
       "Strength": "(1.0f / 8.0f) * (6.0f + (1.0f / 12.0f) * 10.0f)",
       "Strategy": "Random",
       "PresetCards": [
-        "Addition",
-        "LogicalAnd",
-        "LogicalOr",
-        "LogicalXor",
-        "ShiftLeft",
-        "ShiftRight"
+        "Drank",
+        "SuddenDeath",
+        "Heal",
+        "ReturnToHand",
+        "Subtraction",
+        "Flip3",
+        "SuddenDeath",
+        "Poison",
+        "Drank"
       ]
     }
   }

@@ -6,6 +6,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
 
+#include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
@@ -272,6 +273,22 @@ std::vector<Card*> GameState::getPlayerCards()
 	}
 
 	return cards;
+}
+
+std::vector<Card*> GameState::getAbsorbCards()
+{
+	std::vector<Card*> allCards = this->getAllCards();
+	std::vector<Card*> absorbCards = std::vector<Card*>();
+
+	for (auto it = allCards.begin(); it != allCards.end(); it++)
+	{
+		if ((*it)->cardData->cardType == CardData::CardType::Special_ABSORB)
+		{
+			absorbCards.push_back(*it);
+		}
+	}
+
+	return absorbCards;
 }
 
 std::vector<CardRow*> GameState::getAllRows() 

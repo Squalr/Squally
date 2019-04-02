@@ -214,10 +214,6 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 		{
 			return Operation(Operation::OperationType::MOV, immediate);
 		}
-		case CardData::CardType::Special_CLEAR:
-		{
-			return Operation(Operation::OperationType::MOV, immediate);
-		}
 		case CardData::CardType::Special_AND:
 		{
 			return Operation(Operation::OperationType::AND, immediate);
@@ -242,17 +238,25 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 		{
 			return Operation(Operation::OperationType::XOR, 0b1111);
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Operation(Operation::OperationType::CLEAR);
+		}
 		case CardData::CardType::Special_HEAL:
 		{
-			return Operation(Operation::OperationType::OR, 0b0011);
+			return Operation(Operation::OperationType::HEAL);
 		}
 		case CardData::CardType::Special_POISON:
 		{
-			return Operation(Operation::OperationType::AND, 0b0011);
+			return Operation(Operation::OperationType::POISON);
 		}
 		case CardData::CardType::Special_DRANK:
 		{
-			return Operation(Operation::OperationType::XOR, 0b0011);
+			return Operation(Operation::OperationType::DRANK);
+		}
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		{
+			return Operation(Operation::OperationType::SUDDEN_DEATH);
 		}
 		default:
 		{
@@ -349,6 +353,34 @@ int Card::applyOperation(int attack, Operation operation)
 				attack = 16 - abs(attack);
 			}
 
+			break;
+		}
+		case Operation::OperationType::DRANK:
+		{
+			attack ^= this->getOriginalAttack() / 2;
+			break;
+		}
+		case Operation::OperationType::POISON:
+		{
+			attack &= this->getOriginalAttack() / 2;
+			break;
+		}
+		case Operation::OperationType::HEAL:
+		{
+			attack |= this->getOriginalAttack() / 2;
+			break;
+		}
+		case Operation::OperationType::CLEAR:
+		{
+			attack = this->getOriginalAttack();
+			break;
+		}
+		case Operation::OperationType::SUDDEN_DEATH:
+		{
+			if (attack < this->getOriginalAttack())
+			{
+				attack = 0;
+			}
 			break;
 		}
 		default:

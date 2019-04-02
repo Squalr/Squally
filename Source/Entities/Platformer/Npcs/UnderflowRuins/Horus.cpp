@@ -94,12 +94,14 @@ HexusOpponentData* Horus::getHexusOpponentData()
 			0.219f,
 			HexusOpponentData::generateDeck(25, 0.219f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 
 			}),
 			nullptr

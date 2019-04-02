@@ -74,6 +74,7 @@ public:
 	std::vector<Card*> getAllCards(); 
 	std::vector<Card*> getEnemyCards(); 
 	std::vector<Card*> getPlayerCards();
+	std::vector<Card*> getAbsorbCards();
 
 	StateType stateType;
 	StateType previousStateType;
