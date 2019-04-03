@@ -27,7 +27,7 @@
         "Steal",
         "LogicalOr",
         "ShiftRight",
-        "Greed",
+        "ShiftLeft",
         "Flip1",
         "LogicalAnd",
         "LogicalXor",

@@ -21,6 +21,8 @@ public:
 	void copyTo(Deck* otherDeck);
 	int getCardCount();
 
+	void enableTopCardInteraction(std::function<void(Card*)> mouseOverCallback);
+	void disableInteraction();
 	void enableDeckSelection(std::function<void(Deck*)> callback);
 	void disableDeckSelection();
 	void enableClearOperationsOnInsert();

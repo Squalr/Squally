@@ -630,6 +630,8 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 			{
 				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(*it), true, Config::insertDelay);
 			}
+
+			SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Sheep);
 			
 			return true;
 		}

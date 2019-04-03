@@ -80,7 +80,7 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2078.15" y="2082.88" width="40000" height="909">
+  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2126.46" y="2448.65" width="40000" height="909">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>

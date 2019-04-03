@@ -142,8 +142,6 @@ void HexusChapterSelectMenuPuzzles::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	//SoundManager::playMusicResource(MusicResources::Something_Blue);
-
 	// Just assume linear dependencies for now
 	this->dependencies.clear();
 	std::vector<HexusChapterPreview*>::iterator prevIt;

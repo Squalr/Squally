@@ -52,7 +52,7 @@ public:
 	static GameState* create();
 	static void updateState(GameState* gameState, StateType newState);
 	void clearInteraction();
-	void removeFieldCards();
+	void sendFieldCardsToGraveyard();
 	bool isRoundTied();
 	bool isPlayerWinningRound();
 	bool isEnemyWinningRound();

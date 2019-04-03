@@ -164,6 +164,15 @@ Card* CardRow::removeCard(Card* card)
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
 }
 
+void CardRow::removeCardsWhere(std::function<bool(Card*)> predicate)
+{
+	// Note: If the caller wants the card list, they need to extract it in the predicate
+	// Note: We let the caller remove the child because it allows for control over positioning
+	auto removed = std::remove_if(this->rowCards.begin(), this->rowCards.end(), predicate);
+	this->rowCards.erase(removed, this->rowCards.end());
+	this->setCardPositions(Config::insertDelay);
+}
+
 int CardRow::getCardCount()
 {
 	return this->rowCards.size();

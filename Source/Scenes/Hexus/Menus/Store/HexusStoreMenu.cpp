@@ -333,6 +333,11 @@ void HexusStoreMenu::onEnter()
 	GameUtils::accelerateParticles(this->dustParticles, 5.0f);
 
 	this->updateGoldText();
+
+	if (!binaryCards.empty())
+	{
+		this->cardPreview->previewCard(std::get<1>(binaryCards.front()));
+	}
 }
 
 void HexusStoreMenu::initializeListeners()
@@ -368,7 +373,7 @@ void HexusStoreMenu::initializePositions()
 	const float storeOffsetY = -128.0f;
 	const Vec2 storeMenuOffset = Vec2(192.0f, 0.0f);
 	const Vec2 storeContentOffset = Vec2(64.0f, -48.0f);
-	const Vec2 goldPanelOffset = Vec2(472.0f, 464.0f);
+	const Vec2 goldPanelOffset = Vec2(476.0f, 464.0f);
 
 	this->dustParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY + 144.0f));
@@ -729,7 +734,7 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 		int gold = CardStorage::getGold();
 
 		gold -= price;
-		
+
 		SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
 
 		CardStorage::saveGold(gold);
