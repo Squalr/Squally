@@ -35,7 +35,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 
 	CardData* strongestCardInDeck = gameState->opponentData->getStrongestCard();
 	int strongestAttack = strongestCardInDeck == nullptr ? 1 : int(strongestCardInDeck->attack);
-	int passIfDiffAboveOrEqual = int(strongestAttack * 2.5f);
+	int passIfDiffAboveOrEqual = int(float(strongestAttack) * 2.5f);
 	CallFunc* stateTransition = nullptr;
 
 	if (gameState->enemyHand->rowCards.size() == 0)

@@ -65,7 +65,7 @@ Hexus::Hexus()
 	this->victoryBanner = VictoryBanner::create();
 	this->defeatBanner = DefeatBanner::create();
 	this->drawBanner = DrawBanner::create();
-	this->cardPreview = CardPreview::create();
+	this->cardPreviewComponent = CardPreviewComponent::create();
 	this->stagingHelperText = StagingHelperText::create();
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
@@ -133,7 +133,7 @@ Hexus::Hexus()
 	this->addChild(this->gameBackground);
 	this->addChild(this->boardSelection);
 	this->addChild(this->avatars);
-	this->addChild(this->cardPreview);
+	this->addChild(this->cardPreviewComponent);
 	this->addChild(this->stagingHelperText);
 	this->addChild(this->lossesDisplay);
 	this->addChild(this->deckCardCountDisplay);

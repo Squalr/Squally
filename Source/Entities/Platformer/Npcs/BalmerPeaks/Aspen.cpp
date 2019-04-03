@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* Aspen::getHexusOpponentData()
 	{
 		Aspen::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
-			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
+			HexusResources::Menus_HexusFrameBalmerPeaks,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

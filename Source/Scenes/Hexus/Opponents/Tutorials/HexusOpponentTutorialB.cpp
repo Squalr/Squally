@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -28,7 +28,7 @@ HexusOpponentTutorialB* HexusOpponentTutorialB::getInstance()
 
 HexusOpponentTutorialB::HexusOpponentTutorialB() : super(
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
-	UIResources::Menus_Hexus_HexusFrameVoidStar,
+	HexusResources::Menus_HexusFrameVoidStar,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),

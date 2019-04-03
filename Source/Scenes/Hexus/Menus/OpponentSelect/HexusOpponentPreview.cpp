@@ -8,8 +8,8 @@
 #include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
-#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -28,7 +28,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 
-	this->frame = ClickableNode::create(UIResources::Menus_Hexus_EnemyFrame, UIResources::Menus_Hexus_EnemyFrameHover);
+	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 
 	DrawNode* clipStencil = DrawNode::create();

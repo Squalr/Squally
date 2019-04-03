@@ -89,8 +89,8 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 	deckSize = MathUtils::clamp(deckSize, 20, 60);
 	deckStrength = MathUtils::clamp(deckStrength, 0.0f, 1.0f);
 
-	// Formula: Best possible generated card attack = (DeckStrength + 10%) * 15
-	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)((deckStrength + 0.1f) * 15), 0, 15);
+	// Formula: Best possible card attack for a single card = (DeckStrength + 10%) * 15 (min: 3)
+	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)std::ceil((deckStrength + 0.10f) * 15), 2, 15);
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
 
@@ -100,14 +100,12 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 		deckSize--;
 	}
 
-	// Adjust deck strength via a "quadratic easeOut" function -- solves issues of not being able to properly fill the deck
-	// ie) If the best deck for a size 21 deck is 300, and deckStrength is 10%, we would expect a deck of 30 strength, but this is impossible with 21 cards.
-	// My assumption is that this will be OK -- it makes lower % decks a bit stronger, and higher % decks a bit weaker, however I think that
-	// these imbalances can be made up with intelligently distributed special cards
-	float adjustedDeckStrength = MathUtils::clamp(deckStrength * (2.0f - deckStrength), 0.0f, 1.0f);
+	// Map the space [0.0, 1.0] to [0.10, 1.0]. There are some decks too weak to exist, this solves that problem.
+	const float lowestNewStrength = 0.10f;
+	float adjustedDeckStrength = MathUtils::clamp(lowestNewStrength + (1.0f - lowestNewStrength) * deckStrength, 0.0f, 1.0f);
 
 	// Calculate the total attack this deck should have
-	int generatedDeckAttack = int(float(HexusOpponentData::getBestPossibleDeckAttack(deckSize)) * adjustedDeckStrength);
+	int generatedDeckAttack = int(std::ceil(float(HexusOpponentData::getBestPossibleDeckAttack(deckSize)) * adjustedDeckStrength));
 
 	std::vector<int> possibleCards = std::vector<int>();
 
@@ -121,9 +119,7 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 			}
 		}
 	}
-
-	// TODO: Possible cards should take into account guaranteed cards -- not a huge deal but currently this can result in more than 3 cards of the same type
-
+	
 	std::vector<int> deckCards = AlgoUtils::subsetSum(possibleCards, generatedDeckAttack, deckSize);
 	std::map<int, int> addedCards = std::map<int, int>();
 

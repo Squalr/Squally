@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/CastleValgrind.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewCastleValgrind* HexusChapterPreviewCastleValgrind::create()
 
 HexusChapterPreviewCastleValgrind::HexusChapterPreviewCastleValgrind() : HexusChapterPreview(HexusChapterPreviewCastleValgrind::SaveKeyChapterName, Strings::Menus_Maps_CastleValgrind::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameCastleValgrind));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind));
 }
 
 HexusChapterPreviewCastleValgrind::~HexusChapterPreviewCastleValgrind()

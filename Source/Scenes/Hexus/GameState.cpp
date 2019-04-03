@@ -48,7 +48,7 @@ GameState::GameState()
 	roundNumber(0),
 	selectedHandCard(nullptr),
 	selectedRow(nullptr),
-	cardPreviewCallback(nullptr),
+	cardPreviewComponentCallback(nullptr),
 	updateStateCallback(nullptr),
 	endTurnCallback(nullptr),
 	requestAiCallback(nullptr),

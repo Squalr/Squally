@@ -70,7 +70,7 @@ class TutorialEIntroSequence;
 class TutorialFIntroSequence;
 
 class Avatars;
-class CardPreview;
+class CardPreviewComponent;
 class StagingHelperText;
 class GameState;
 class HexusOpponentData;
@@ -104,7 +104,7 @@ private:
 
 	// Components
 	Avatars* avatars;
-	CardPreview* cardPreview;
+	CardPreviewComponent* cardPreviewComponent;
 	StagingHelperText* stagingHelperText;
 
 	StateAIDecideCard* stateAIDecideCard;

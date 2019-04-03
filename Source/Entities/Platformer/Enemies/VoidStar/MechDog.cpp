@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* MechDog::getHexusOpponentData()
 	{
 		MechDog::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_VoidStar_MechDog_Animations,
-			UIResources::Menus_Hexus_HexusFrameVoidStar,
+			HexusResources::Menus_HexusFrameVoidStar,
 			0.7f,
 			Vec2(-64.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

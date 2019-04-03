@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/DaemonsHallow.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewDaemonsHallowPuzzle* HexusChapterPreviewDaemonsHallowPuzzle::
 
 HexusChapterPreviewDaemonsHallowPuzzle::HexusChapterPreviewDaemonsHallowPuzzle() : HexusChapterPreview(HexusChapterPreviewDaemonsHallowPuzzle::SaveKeyChapterName, Strings::Menus_Maps_DaemonsHallow::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameDaemonsHallow));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow));
 }
 
 HexusChapterPreviewDaemonsHallowPuzzle::~HexusChapterPreviewDaemonsHallowPuzzle()

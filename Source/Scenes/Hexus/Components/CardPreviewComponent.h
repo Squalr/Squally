@@ -2,12 +2,12 @@
 
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
-class Card;
+class CardPreview;
 
-class CardPreview : public ComponentBase
+class CardPreviewComponent : public ComponentBase
 {
 public:
-	static CardPreview * create();
+	static CardPreviewComponent* create();
 
 protected:
 	void onBeforeStateChange(GameState* gameState) override;
@@ -15,15 +15,11 @@ protected:
 
 private:
 	typedef ComponentBase super;
-	CardPreview();
-	~CardPreview();
+	CardPreviewComponent();
+	~CardPreviewComponent();
 
-	void onEnter() override;
 	void initializePositions() override;
 	void initializeCallbacks(GameState* gameState);
-	void clearPreview();
-	void previewCard(Card* card);
 
-	Card* currentPreviewCard;
-	cocos2d::Node* previewPanel;
+	CardPreview* cardPreview;
 };

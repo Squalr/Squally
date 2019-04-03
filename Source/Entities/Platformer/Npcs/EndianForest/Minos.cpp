@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* Minos::getHexusOpponentData()
 	{
 		Minos::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_EndianForest_Minos_Animations,
-			UIResources::Menus_Hexus_HexusFrameEndianForest,
+			HexusResources::Menus_HexusFrameEndianForest,
 			1.1f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* FireElemental::getHexusOpponentData()
 	{
 		FireElemental::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
-			UIResources::Menus_Hexus_HexusFrameDaemonsHallow,
+			HexusResources::Menus_HexusFrameDaemonsHallow,
 			0.20f,
 			Vec2(64.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/BallmerPeaks.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewBalmerPeaksPuzzle* HexusChapterPreviewBalmerPeaksPuzzle::crea
 
 HexusChapterPreviewBalmerPeaksPuzzle::HexusChapterPreviewBalmerPeaksPuzzle() : HexusChapterPreview(HexusChapterPreviewBalmerPeaksPuzzle::SaveKeyChapterName, Strings::Menus_Maps_BallmerPeaks::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameBalmerPeaks));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameBalmerPeaks));
 }
 
 HexusChapterPreviewBalmerPeaksPuzzle::~HexusChapterPreviewBalmerPeaksPuzzle()

@@ -98,7 +98,7 @@ public:
 	Card* selectedHandCard;
 	CardRow* selectedRow;
 	std::string bannerMessage;
-	std::function<void(Card*)> cardPreviewCallback;
+	std::function<void(Card*)> cardPreviewComponentCallback;
 	std::function<void(bool)> updateStateCallback;
 	std::function<void()> endTurnCallback;
 	std::function<void(GameState*)> requestAiCallback;
