@@ -5,6 +5,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
+#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/CardRow.h"
@@ -136,28 +137,55 @@ void CardPreviewComponent::onAnyStateChange(GameState* gameState)
 
 void CardPreviewComponent::initializeCallbacks(GameState* gameState)
 {
-	gameState->playerGraveyard->enableTopCardInteraction([=](Card* card) { this->cardPreview->previewCard(card); });
-	gameState->enemyGraveyard->enableTopCardInteraction([=](Card* card) { this->cardPreview->previewCard(card); });
+	gameState->playerGraveyard->enableTopCardInteraction(CC_CALLBACK_1(CardPreviewComponent::onPreviewCard, this));
+	gameState->enemyGraveyard->enableTopCardInteraction(CC_CALLBACK_1(CardPreviewComponent::onPreviewCard, this));
 
 	gameState->playerHand->enableRowCardInteraction();
 	gameState->enemyHand->enableRowCardInteraction();
 
-	gameState->playerHand->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
-	gameState->enemyHand->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
+	gameState->playerHand->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->enemyHand->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->playerHand->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
+	gameState->enemyHand->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
 
 	gameState->playerBinaryCards->enableRowCardInteraction();
 	gameState->playerDecimalCards->enableRowCardInteraction();
 	gameState->playerHexCards->enableRowCardInteraction();
 
-	gameState->playerBinaryCards->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
-	gameState->playerDecimalCards->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
-	gameState->playerHexCards->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
+	gameState->playerBinaryCards->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->playerDecimalCards->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->playerHexCards->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->playerBinaryCards->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
+	gameState->playerDecimalCards->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
+	gameState->playerHexCards->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
 
 	gameState->enemyBinaryCards->enableRowCardInteraction();
 	gameState->enemyDecimalCards->enableRowCardInteraction();
 	gameState->enemyHexCards->enableRowCardInteraction();
 
-	gameState->enemyBinaryCards->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
-	gameState->enemyDecimalCards->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
-	gameState->enemyHexCards->setMouseOverCallback([=](Card* card) { this->cardPreview->previewCard(card); });
+	gameState->enemyBinaryCards->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->enemyDecimalCards->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->enemyHexCards->setMouseOverCallback(CC_CALLBACK_1(CardPreviewComponent::onPreviewCardBroadcast, this));
+	gameState->enemyBinaryCards->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
+	gameState->enemyDecimalCards->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
+	gameState->enemyHexCards->setMouseOutCallback(CC_CALLBACK_1(CardPreviewComponent::onCardMouseOut, this));
+}
+
+void CardPreviewComponent::onPreviewCard(Card* card)
+{
+	this->cardPreview->previewCard(card);
+
+	HexusEvents::TriggerCardPreviewed(HexusEvents::CardPreviewArgs(card));
+}
+
+void CardPreviewComponent::onPreviewCardBroadcast(Card* card)
+{
+	this->cardPreview->previewCard(card);
+
+	HexusEvents::TriggerCardPreviewed(HexusEvents::CardPreviewArgs(card));
+}
+
+void CardPreviewComponent::onCardMouseOut(Card* card)
+{
+	HexusEvents::TriggerCardMousedOut();
 }

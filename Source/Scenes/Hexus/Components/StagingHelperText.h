@@ -22,7 +22,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void updateSelectionStatus(GameState* gameState);
-	void onHelpClick(GameState* gameState);
 	void updateCombineStatus(GameState* gameState);
 	void onSelectionCancel(GameState* gameState);
 	void onCombineCancel(GameState* gameState);
@@ -30,5 +29,4 @@ private:
 
 	LocalizedLabel* selectionLabel;
 	ClickableNode* cancelButton;
-	ClickableNode* helpButton;
 };

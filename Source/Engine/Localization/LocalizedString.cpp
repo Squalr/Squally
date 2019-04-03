@@ -4,6 +4,7 @@
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
@@ -227,7 +228,26 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	// Release old replacement varaibles
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		this->removeChild(*it);
+		bool isReentry = false;
+
+		for (auto compareIt = stringReplacementVariables.begin(); compareIt != stringReplacementVariables.end(); compareIt++)
+		{
+			if (*it == *compareIt)
+			{
+				isReentry = true;
+			}
+		}
+
+		if (isReentry)
+		{
+			// Remove the child and retain it
+			GameUtils::changeParent(*it, nullptr, true);
+		}
+		else
+		{
+			// Remove the child and release it
+			this->removeChild(*it);
+		}
 	}
 
 	this->stringReplacementVariables = stringReplacementVariables;

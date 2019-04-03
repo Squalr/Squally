@@ -2,7 +2,13 @@
 
 #include "Engine/SmartNode.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class Card;
+class ClickableTextNode;
 
 class CardPreview : public SmartNode
 {
@@ -18,7 +24,10 @@ private:
 	~CardPreview();
 
 	void onEnter() override;
+	void initializePositions() override;
 
+	cocos2d::Sprite* cardPad;
 	Card* currentPreviewCard;
 	cocos2d::Node* previewPanel;
+	ClickableTextNode* helpButton;
 };

@@ -108,8 +108,9 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::FocusRing:
 		{
-			this->getFocusRing()->resumeEmissions();
 			this->getFocusRing()->setVisible(true);
+			this->getFocusRing()->resumeEmissions();
+			this->getFocusRing()->start();
 			break;
 		}
 		case CardEffect::FrostCirlce:
@@ -180,6 +181,7 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::SelectionPulse:
 		{
+			this->getSelectionPulse()->setVisible(true);
 			this->getSelectionPulse()->runAction(RepeatForever::create(Sequence::create(
 				CallFunc::create([=]()
 				{
@@ -218,6 +220,7 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::TargetPulse:
 		{
+			this->getTargetPulse()->setVisible(true);
 			this->getTargetPulse()->resumeEmissions();
 			this->getTargetPulse()->start();
 
@@ -235,18 +238,22 @@ void CardEffects::clearEffects()
 	if (this->focusRing != nullptr)
 	{
 		this->getFocusRing()->setVisible(false);
+		this->getFocusRing()->stopAllActions();
+		this->getFocusRing()->pauseEmissions();
 	}
 
 	if (this->selectionPulse != nullptr)
 	{
 		this->getSelectionPulse()->setVisible(false);
 		this->getSelectionPulse()->stopAllActions();
+		this->getSelectionPulse()->pauseEmissions();
 	}
 
 	if (this->targetPulse != nullptr)
 	{
 		this->getTargetPulse()->setVisible(false);
 		this->getTargetPulse()->stopAllActions();
+		this->getTargetPulse()->pauseEmissions();
 	}
 }
 

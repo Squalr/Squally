@@ -3,11 +3,12 @@
 #include "Scenes/Hexus/States/StateBase.h"
 
 class Card;
+class CardRow;
 
-class StateCombineStaged : public StateBase
+class StateHandCardStaged : public StateBase
 {
 public:
-	static StateCombineStaged* create();
+	static StateHandCardStaged* create();
 
 protected:
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -17,11 +18,13 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateCombineStaged();
-	~StateCombineStaged();
+	StateHandCardStaged();
+	~StateHandCardStaged();
 
 	void initializePositions() override;
-	void initializeCallbacks(GameState* gameState);
+	void initializeSelectablesAndCallbacks(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
-	void stageCombineTarget(Card* card, GameState* gameState);
+	void stageSelectedCombineCard(Card* card, GameState* gameState);
+	void immediatelyPlayCard(Card* card, GameState* gameState);
+	void onRowChosen(CardRow* cardRow, GameState* gameState);
 };

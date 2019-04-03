@@ -151,3 +151,86 @@ bool CardData::isSpecialCard()
 {
 	return !this->isAttackCard();
 }
+
+bool CardData::isMultiTargetCard()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_HEAL:
+		case CardData::CardType::Special_POISON:
+		case CardData::CardType::Special_DRANK:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		{
+			return true;
+		}
+		default:
+		{
+			return false;
+		}
+	}
+}
+
+unsigned int CardData::getIntrinsicImmediate()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Binary:
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Hexidecimal:
+		case CardData::CardType::Special_CLEAR:
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		{
+			return this->attack;
+		}
+		case CardData::CardType::Special_BONUS_MOVES:
+		{
+			return 3;
+		}
+		case CardData::CardType::Special_FLIP1:
+		{
+			return 0b0001;
+		}
+		case CardData::CardType::Special_FLIP2:
+		{
+			return 0b0010;
+		}
+		case CardData::CardType::Special_FLIP3:
+		{
+			return 0b0100;
+		}
+		case CardData::CardType::Special_FLIP4:
+		{
+			return 0b1000;
+		}
+		case CardData::CardType::Special_HEAL:
+		case CardData::CardType::Special_POISON:
+		case CardData::CardType::Special_DRANK:
+		{
+			return this->attack / 2;
+		}
+		case CardData::CardType::Special_MOV:
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+		case CardData::CardType::Special_GREED:
+		case CardData::CardType::Special_ABSORB:
+		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_PEEK:
+		default:
+		{
+			return 0;
+		}
+	}
+}

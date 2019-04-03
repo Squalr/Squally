@@ -67,6 +67,7 @@ Hexus::Hexus()
 	this->drawBanner = DrawBanner::create();
 	this->cardPreviewComponent = CardPreviewComponent::create();
 	this->stagingHelperText = StagingHelperText::create();
+	this->assemblyHelpText = AssemblyHelpText::create();
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
 	this->stateAIDecidePass = StateAIDecidePass::create();
@@ -74,7 +75,7 @@ Hexus::Hexus()
 	this->stateCardReplace = StateCardReplace::create();
 	this->statePeekCards = StatePeekCards::create();
 	this->stateCoinFlip = StateCoinFlip::create();
-	this->stateCombineStaged = StateCombineStaged::create();
+	this->stateSourceCardStaged = StateSourceCardStaged::create();
 	this->stateDraw = StateDraw::create();
 	this->stateDrawInitial = StateDrawInitial::create();
 	this->stateGameEnd = StateGameEnd::create();
@@ -87,7 +88,7 @@ Hexus::Hexus()
 	this->statePlayerTurnStart = StatePlayerTurnStart::create();
 	this->stateRoundEnd = StateRoundEnd::create();
 	this->stateRoundStart = StateRoundStart::create();
-	this->stateSelectionStaged = StateSelectionStaged::create();
+	this->stateHandCardStaged = StateHandCardStaged::create();
 	this->stateTurnEnd = StateTurnEnd::create();
 	this->stateTutorial = StateTutorial::create();
 	this->boardSelection = ClickableNode::create(HexusResources::BoardSelection, HexusResources::BoardSelection);
@@ -135,6 +136,7 @@ Hexus::Hexus()
 	this->addChild(this->avatars);
 	this->addChild(this->cardPreviewComponent);
 	this->addChild(this->stagingHelperText);
+	this->addChild(this->assemblyHelpText);
 	this->addChild(this->lossesDisplay);
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);
@@ -150,7 +152,7 @@ Hexus::Hexus()
 	this->addChild(this->stateCardReplace);
 	this->addChild(this->statePeekCards);
 	this->addChild(this->stateCoinFlip);
-	this->addChild(this->stateCombineStaged);
+	this->addChild(this->stateSourceCardStaged);
 	this->addChild(this->stateDraw);
 	this->addChild(this->stateDrawInitial);
 	this->addChild(this->stateGameEnd);
@@ -163,7 +165,7 @@ Hexus::Hexus()
 	this->addChild(this->statePlayerTurnStart);
 	this->addChild(this->stateRoundEnd);
 	this->addChild(this->stateRoundStart);
-	this->addChild(this->stateSelectionStaged);
+	this->addChild(this->stateHandCardStaged);
 	this->addChild(this->stateTurnEnd);
 	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);

@@ -32,6 +32,7 @@ public:
 	void disableRowSelection();
 	void disableRowCardSelection();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
+	void setMouseOutCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 	void enableRowCardInteraction();
 	void disableRowCardInteraction();

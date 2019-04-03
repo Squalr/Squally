@@ -44,6 +44,8 @@ public:
 	LocalizedString* getCardTypeString();
 	bool isAttackCard();
 	bool isSpecialCard();
+	bool isMultiTargetCard();
+	unsigned int getIntrinsicImmediate();
 
 	std::string cardResourceFile;
 	std::string cardName;
