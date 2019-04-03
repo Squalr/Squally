@@ -205,7 +205,14 @@ void Hexus::onEnter()
 {
 	super::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::LastMarch);
+	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
+	{
+		SoundManager::playMusicResource(MusicResources::Hexus1);
+	}
+	else
+	{
+		SoundManager::playMusicResource(MusicResources::Hexus2);
+	}
 
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);

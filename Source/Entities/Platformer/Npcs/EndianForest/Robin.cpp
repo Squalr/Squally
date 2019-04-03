@@ -95,7 +95,7 @@ HexusOpponentData* Robin::getHexusOpponentData()
 			0.038f,
 			HexusOpponentData::generateDeck(25, 0.038f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

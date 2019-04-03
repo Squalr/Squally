@@ -58,22 +58,11 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	const float fadeSpeed = 0.5f;
 
 	this->runAction(Sequence::create(
-		CallFunc::create([=]()
-		{
-			std::vector<CardRow*> rows = gameState->getAllRows();
-
-			for (auto it = rows.begin(); it != rows.end(); it++)
-			{
-				for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-				{
-					(*cardIt)->runAction(FadeTo::create(fadeSpeed, 0));
-				}
-			}
-		}),
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
-			gameState->removeFieldCards();
+			gameState->sendFieldCardsToGraveyard();
+			gameState->roundNumber++;
 		}),
 		CallFunc::create([=]()
 		{

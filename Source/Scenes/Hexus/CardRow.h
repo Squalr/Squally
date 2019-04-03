@@ -17,6 +17,7 @@ public:
 	void insertCard(Card* card, float cardInsertDelay);
 	void enableClearOperationsOnInsert();
 	Card* removeCard(Card* card);
+	void removeCardsWhere(std::function<bool(Card*)> predicate);
 	int getCardCount();
 	int getRowAttack();
 	bool isPlayerRow();

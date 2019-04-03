@@ -270,3 +270,21 @@ Card* Deck::removeCard(Card* card)
 	// Note: We let the caller remove the child because it allows for control over positioning
 	return card;
 }
+
+void Deck::enableTopCardInteraction(std::function<void(Card*)> mouseOverCallback)
+{
+	if (!this->deckCards.empty())
+	{
+		this->deckCards.back()->enableInteraction();
+		this->deckCards.back()->setMouseOverCallback(mouseOverCallback);
+	}
+}
+
+void Deck::disableInteraction()
+{
+	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
+	{
+		(*it)->disableInteraction();
+		(*it)->setMouseOverCallback(nullptr);
+	}
+}

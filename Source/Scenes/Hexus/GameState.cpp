@@ -163,6 +163,11 @@ void GameState::clearInteraction()
 	this->enemyDeck->disableDeckSelection();
 	this->playerGraveyard->disableDeckSelection();
 	this->enemyGraveyard->disableDeckSelection();
+	
+	this->playerDeck->disableInteraction();
+	this->enemyDeck->disableInteraction();
+	this->playerGraveyard->disableInteraction();
+	this->enemyGraveyard->disableInteraction();
 
 	this->enemyHand->disableRowSelection();
 	this->enemyHand->disableRowCardSelection();
@@ -185,17 +190,40 @@ void GameState::clearInteraction()
 	}
 }
 
-void GameState::removeFieldCards()
+void GameState::sendFieldCardsToGraveyard()
 {
-	std::vector<CardRow*> rows = this->getAllRows();
+	std::vector<CardRow*> playerRows = this->getPlayerRows();
+	std::vector<Card*> playerRemovedCards = std::vector<Card*>();
+	std::vector<CardRow*> enemyRows = this->getEnemyRows();
+	std::vector<Card*> enemyRemovedCards = std::vector<Card*>();
 
-	for (auto it = rows.begin(); it != rows.end(); it++)
+	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
 	{
-		CardRow* row = *it;
-		row->clear();
+		(*it)->removeCardsWhere([&](Card* card)
+		{
+			playerRemovedCards.push_back(card);
+			return true;
+		});
 	}
 
-	roundNumber++;
+	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
+	{
+		(*it)->removeCardsWhere([&](Card* card)
+		{
+			enemyRemovedCards.push_back(card);
+			return true;
+		});
+	}
+
+	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
+	{
+		this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+	}
+
+	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
+	{
+		this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+	}
 }
 
 CardRow* GameState::getRowForCard(Card* card)

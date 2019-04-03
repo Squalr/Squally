@@ -9,6 +9,7 @@
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 
 #include "Strings/Generics/Empty.h"
@@ -135,6 +136,9 @@ void CardPreviewComponent::onAnyStateChange(GameState* gameState)
 
 void CardPreviewComponent::initializeCallbacks(GameState* gameState)
 {
+	gameState->playerGraveyard->enableTopCardInteraction([=](Card* card) { this->cardPreview->previewCard(card); });
+	gameState->enemyGraveyard->enableTopCardInteraction([=](Card* card) { this->cardPreview->previewCard(card); });
+
 	gameState->playerHand->enableRowCardInteraction();
 	gameState->enemyHand->enableRowCardInteraction();
 
