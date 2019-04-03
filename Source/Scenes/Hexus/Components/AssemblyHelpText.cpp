@@ -41,7 +41,7 @@ AssemblyHelpText::AssemblyHelpText()
 	this->destinationString = ConstantString::create();
 	this->gameState = nullptr;
 
-	this->assemblyHelpLabel->enableOutline(Color4B::BLACK, 2);
+	this->assemblyHelpLabel->enableOutline(Color4B::BLACK, 4);
 	this->assemblyHelpLabel->setStringReplacementVariables({ this->operationString, this->sourceString, this->destinationString });
 	
 	this->addChild(this->assemblyHelpLabel);

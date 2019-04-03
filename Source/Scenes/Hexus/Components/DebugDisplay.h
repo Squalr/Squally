@@ -25,7 +25,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-
 	GameState* activeGameState;
 	LocalizedLabel* stateLabel;
 	ClickableNode* loseButton;

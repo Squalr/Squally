@@ -232,7 +232,6 @@ void Hexus::initializePositions()
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
 	this->boardSelection->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY);
-
 }
 
 void Hexus::initializeListeners()
