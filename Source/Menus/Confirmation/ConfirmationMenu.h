@@ -17,7 +17,7 @@ class ConfirmationMenu : public SmartNode
 public:
 	static ConfirmationMenu* create();
 
-	void showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback);
+	void showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback = nullptr);
 
 private:
 	typedef SmartNode super;
@@ -28,9 +28,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onCloseClick();
-	void onConfirmClick();
-	void onCancelClick();
+	void confirm();
+	void close();
 
 	cocos2d::Sprite* confirmWindow;
 	LocalizedLabel* confirmationLabel;

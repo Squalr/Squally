@@ -18,6 +18,7 @@ class CardPreview;
 class ConstantString;
 class ClickableNode;
 class ClickableTextNode;
+class ConfirmationMenu;
 class LocalizedLabel;
 class MenuCard;
 class ScrollPane;
@@ -90,6 +91,8 @@ private:
 	cocos2d::LayerColor* lootBoxRewardBackground;
 	ClickableNode* lootBoxReturnButton;
 	cocos2d::Node* chosenCardsNode;
+	cocos2d::LayerColor* backdrop;
+	ConfirmationMenu* confirmationMenu;
 
 	std::vector<std::tuple<ClickableNode*, int>> lootBoxes;
 	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> binaryCards;

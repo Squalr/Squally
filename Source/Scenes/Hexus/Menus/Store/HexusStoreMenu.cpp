@@ -15,11 +15,13 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Special/Shopkeeper.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Hexus/Menus/MenuCard.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -33,6 +35,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Back.h"
+#include "Strings/Hexus/PurchaseConfirmation.h"
 #include "Strings/Menus/Return.h"
 #include "Strings/Hexus/StoreLabelBinary.h"
 #include "Strings/Hexus/StoreLabelDecimal.h"
@@ -61,6 +64,8 @@ void HexusStoreMenu::registerGlobalScene()
 
 HexusStoreMenu::HexusStoreMenu()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	this->lootBoxes = std::vector<std::tuple<ClickableNode*, int>>();
 	this->binaryCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
 	this->decimalCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
@@ -127,12 +132,17 @@ HexusStoreMenu::HexusStoreMenu()
 	this->hexButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
 	this->specialButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
 
-	const Size scrollPaneSize = Size(780.0f, 740.0f);
+	const Size scrollPaneSize = Size(780.0f, 800.0f);
 
 	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+
+	this->backdrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+	this->confirmationMenu = ConfirmationMenu::create();
+
+	this->backdrop->setOpacity(196);
 
 	Sprite* lootBoxIcon = Sprite::create(HexusResources::StoreMenu_IconLootBox);
 	Sprite* binaryIcon = Sprite::create(HexusResources::StoreMenu_IconBin);
@@ -271,6 +281,8 @@ HexusStoreMenu::HexusStoreMenu()
 	this->addChild(this->lootBoxRewardBackground);
 	this->addChild(this->chosenCardsNode);
 	this->addChild(this->lootBoxReturnButton);
+	this->addChild(this->backdrop);
+	this->addChild(this->confirmationMenu);
 
 	for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
 	{
@@ -310,6 +322,8 @@ void HexusStoreMenu::onEnter()
 
 	const float delay = 0.25f;
 	const float duration = 0.35f;
+
+	this->backdrop->setVisible(false);
 
 	// Disabled for now
 	this->lootBoxButton->setVisible(false);
@@ -700,23 +714,40 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, ConstantString* 
 
 void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
 {
-	int gold = CardStorage::getGold();
-
-	if (gold < price || CardStorage::getOwnedCardCount(cardData) >= 3)
+	if (CardStorage::getGold() < price || CardStorage::getOwnedCardCount(cardData) >= 3)
 	{
 		SoundManager::playSoundResource(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
 		return;
 	}
 
-	gold -= price;
-	SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
+	LocalizedString* message = Strings::Hexus_PurchaseConfirmation::create();
 
-	CardStorage::saveGold(gold);
-	this->updateGoldText();
+	message->setStringReplacementVariables(ConstantString::create(std::to_string(price)));
 
-	CardStorage::addStorageCard(cardData);
+	this->confirmationMenu->showMessage(message, [=]()
+	{
+		int gold = CardStorage::getGold();
 
-	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
+		gold -= price;
+		
+		SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
+
+		CardStorage::saveGold(gold);
+		this->updateGoldText();
+
+		CardStorage::addStorageCard(cardData);
+
+		this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
+		GameUtils::focus(this);
+		this->backdrop->setVisible(false);
+	}, [=]()
+	{
+		GameUtils::focus(this);
+		this->backdrop->setVisible(false);
+	});
+
+	this->backdrop->setVisible(true);
+	GameUtils::focus(this->confirmationMenu);
 }
 
 void HexusStoreMenu::onLootBoxClick(int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
