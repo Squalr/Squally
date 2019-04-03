@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* Merlin::getHexusOpponentData()
 	{
 		Merlin::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_CastleValgrind_Merlin_Animations,
-			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
+			HexusResources::Menus_HexusFrameCastleValgrind,
 			1.05f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

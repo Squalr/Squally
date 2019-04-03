@@ -23,6 +23,7 @@
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuinsPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStarPuzzle.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Back.h"
@@ -50,7 +51,7 @@ void HexusChapterSelectMenuPuzzles::registerGlobalScene()
 HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 {
 	this->chapters = std::vector<HexusChapterPreview*>();
-	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
+	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 
 	this->hexusChapterPreviewTrainingPuzzle = HexusChapterPreviewTrainingPuzzle::create();
 	this->hexusChapterPreviewBalmerPeaksPuzzle = HexusChapterPreviewBalmerPeaksPuzzle::create();

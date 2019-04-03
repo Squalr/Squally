@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* Marcel::getHexusOpponentData()
 	{
 		Marcel::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_VoidStar_Marcel_Animations,
-			UIResources::Menus_Hexus_HexusFrameVoidStar,
+			HexusResources::Menus_HexusFrameVoidStar,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

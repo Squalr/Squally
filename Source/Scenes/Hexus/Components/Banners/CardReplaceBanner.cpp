@@ -75,10 +75,13 @@ void CardReplaceBanner::onAnyStateChange(GameState* gameState)
 
 	if (gameState->stateType == GameState::StateType::CardReplace)
 	{
-		this->showBanner();
+		if (gameState->cardReplaceCount > 0)
+		{
+			this->showBanner();
 
-		this->penaltyIconParticles->start();
-		this->penaltyIconParticles->setVisible(true);
+			this->penaltyIconParticles->start();
+			this->penaltyIconParticles->setVisible(true);
+		}
 	}
 	else if (gameState->previousStateType == GameState::StateType::CardReplace)
 	{

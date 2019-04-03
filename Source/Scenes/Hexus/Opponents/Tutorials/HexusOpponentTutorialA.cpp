@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -28,7 +28,7 @@ HexusOpponentTutorialA* HexusOpponentTutorialA::getInstance()
 
 HexusOpponentTutorialA::HexusOpponentTutorialA() : super(
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
-	UIResources::Menus_Hexus_HexusFrameCastleValgrind,
+	HexusResources::Menus_HexusFrameCastleValgrind,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),

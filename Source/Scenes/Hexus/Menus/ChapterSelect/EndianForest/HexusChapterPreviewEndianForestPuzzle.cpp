@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/EndianForest.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewEndianForestPuzzle* HexusChapterPreviewEndianForestPuzzle::cr
 
 HexusChapterPreviewEndianForestPuzzle::HexusChapterPreviewEndianForestPuzzle() : HexusChapterPreview(HexusChapterPreviewEndianForestPuzzle::SaveKeyChapterName, Strings::Menus_Maps_EndianForest::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameEndianForest));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameEndianForest));
 }
 
 HexusChapterPreviewEndianForestPuzzle::~HexusChapterPreviewEndianForestPuzzle()

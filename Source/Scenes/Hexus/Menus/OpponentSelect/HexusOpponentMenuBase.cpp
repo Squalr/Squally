@@ -17,6 +17,7 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Hexus/ManageCards.h"
@@ -32,7 +33,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
+	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 	this->opponentSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_SelectOpponent::create());
 
 	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ManageCards::create());

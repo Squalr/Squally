@@ -17,6 +17,7 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardStorage.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Menus/Return.h"
@@ -43,7 +44,7 @@ void HexusRewardsMenu::registerGlobalScene()
 
 HexusRewardsMenu::HexusRewardsMenu()
 {
-	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
+	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
 	this->goldString = ConstantString::create();

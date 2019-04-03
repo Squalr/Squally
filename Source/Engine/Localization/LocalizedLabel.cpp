@@ -39,15 +39,13 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->dimensions = dimensions;
-	this->hAlignment = hAlignment;
-	this->vAlignment = vAlignment;
 	this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->localizedString = nullptr; // Do not set here; set via the setter function
 
 	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
-	this->setAlignment(this->hAlignment, this->vAlignment);
+	this->setDimensions(dimensions.width, dimensions.height);
+	this->setAlignment(hAlignment, vAlignment);
 
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
@@ -218,9 +216,9 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 		localizedString->getString(),
 		this->getFont(),
 		this->getFontSize(),
-		this->dimensions, 
-		this->hAlignment,
-		this->vAlignment
+		this->getDimensions(), 
+		this->getHorizontalAlignment(),
+		this->getVerticalAlignment()
 	);
 
 	// Restore that state

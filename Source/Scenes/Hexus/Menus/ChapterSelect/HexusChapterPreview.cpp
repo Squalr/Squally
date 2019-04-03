@@ -8,7 +8,7 @@
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/SoundResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -25,7 +25,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 {
 	this->chapterSaveKey = chapterSaveKey;
 	this->callback = nullptr;
-	this->frame = ClickableNode::create(UIResources::Menus_Hexus_EnemyFrame, UIResources::Menus_Hexus_EnemyFrameHover);
+	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedChapterName);
 

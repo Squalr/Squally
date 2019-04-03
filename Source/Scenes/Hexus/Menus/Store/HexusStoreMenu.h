@@ -14,6 +14,7 @@ namespace cocos2d
 
 class Card;
 class CardData;
+class CardPreview;
 class ConstantString;
 class ClickableNode;
 class ClickableTextNode;
@@ -85,6 +86,7 @@ private:
 	ClickableNode* hexButton;
 	ClickableNode* specialButton;
 	ClickableTextNode* backButton;
+	CardPreview* cardPreview;
 	cocos2d::LayerColor* lootBoxRewardBackground;
 	ClickableNode* lootBoxReturnButton;
 	cocos2d::Node* chosenCardsNode;

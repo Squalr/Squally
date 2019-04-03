@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/TrainingGrounds.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 
 HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::SaveKeyChapterName, Strings::Menus_Maps_TrainingGrounds::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameTraining));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameTraining));
 }
 
 HexusChapterPreviewTraining::~HexusChapterPreviewTraining()

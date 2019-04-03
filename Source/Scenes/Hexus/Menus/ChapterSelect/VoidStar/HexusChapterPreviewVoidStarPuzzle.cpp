@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/VoidStar.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewVoidStarPuzzle* HexusChapterPreviewVoidStarPuzzle::create()
 
 HexusChapterPreviewVoidStarPuzzle::HexusChapterPreviewVoidStarPuzzle() : HexusChapterPreview(HexusChapterPreviewVoidStarPuzzle::SaveKeyChapterName, Strings::Menus_Maps_VoidStar::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameVoidStar));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameVoidStar));
 }
 
 HexusChapterPreviewVoidStarPuzzle::~HexusChapterPreviewVoidStarPuzzle()

@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 	{
 		QueenElise::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_VoidStar_QueenElise_Animations,
-			UIResources::Menus_Hexus_HexusFrameVoidStar,
+			HexusResources::Menus_HexusFrameVoidStar,
 			0.85f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* Ent::getHexusOpponentData()
 	{
 		Ent::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_EndianForest_Ent_Animations,
-			UIResources::Menus_Hexus_HexusFrameEndianForest,
+			HexusResources::Menus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(24.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

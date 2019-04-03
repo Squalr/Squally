@@ -14,6 +14,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -83,7 +84,7 @@ HexusOpponentData* Princess::getHexusOpponentData()
 	{
 		Princess::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Helpers_CastleValgrind_Princess_Animations,
-			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
+			HexusResources::Menus_HexusFrameCastleValgrind,
 			0.3f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
