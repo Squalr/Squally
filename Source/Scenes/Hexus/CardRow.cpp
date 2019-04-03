@@ -328,6 +328,15 @@ void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 	}
 }
 
+void CardRow::setMouseOutCallback(std::function<void(Card*)> callback)
+{
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	{
+		Card* card = *it;
+		card->setMouseOutCallback(callback);
+	}
+}
+
 void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 {
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)

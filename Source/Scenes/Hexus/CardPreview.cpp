@@ -2,13 +2,18 @@
 
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Generics/Empty.h"
 #include "Strings/Hexus/BinLabel.h"
@@ -39,6 +44,7 @@
 #include "Strings/Hexus/CardDescriptions/SuddenDeath.h"
 #include "Strings/Hexus/DecLabel.h"
 #include "Strings/Hexus/HexLabel.h"
+#include "Strings/Menus/Help.h"
 
 using namespace cocos2d;
 
@@ -53,10 +59,26 @@ CardPreview* CardPreview::create()
 
 CardPreview::CardPreview()
 {
+	this->cardPad = Sprite::create(HexusResources::CardPad);
 	this->previewPanel = Node::create();
 	this->currentPreviewCard = nullptr;
 
+	LocalizedLabel* helpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Help::create());
+	LocalizedLabel* helpLabelSelected = helpLabel->clone();
+
+	helpLabel->enableOutline(Color4B::BLACK, 2);
+	helpLabelSelected->enableOutline(Color4B::BLACK, 2);
+
+	this->helpButton = ClickableTextNode::create(
+		helpLabel,
+		helpLabelSelected,
+		UIResources::Menus_Buttons_SmallGenericButton,
+		UIResources::Menus_Buttons_SmallGenericButtonSelected
+	);
+
+	this->addChild(this->cardPad);
 	this->addChild(this->previewPanel);
+	this->addChild(this->helpButton);
 }
 
 CardPreview::~CardPreview()
@@ -70,26 +92,34 @@ void CardPreview::onEnter()
 	this->clearPreview();
 }
 
+void CardPreview::initializePositions()
+{
+	super::initializePositions();
+
+	this->helpButton->setPosition(Vec2(0.0f, -212.0f));
+}
+
 void CardPreview::clearPreview()
 {
-	this->currentPreviewCard = nullptr;
-	this->previewPanel->removeAllChildren();
+	this->previewCard(nullptr);
 }
 
 void CardPreview::previewCard(Card* card)
 {
-	if (card != this->currentPreviewCard)
+	if (card == nullptr || card != this->currentPreviewCard)
 	{
 		this->currentPreviewCard = card;
 		this->previewPanel->removeAllChildren();
 
 		if (card == nullptr)
 		{
+			this->helpButton->setVisible(false);
 			return;
 		}
 
 		Sprite* previewSprite = Sprite::create(card->cardData->cardResourceFile);
 		this->previewPanel->addChild(previewSprite);
+		this->helpButton->setVisible(true);
 
 		switch (card->cardData->cardType)
 		{

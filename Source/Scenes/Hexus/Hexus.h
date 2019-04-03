@@ -17,7 +17,7 @@ class StateAIDecidePass;
 class StateAIDecideTarget;
 class StateCardReplace;
 class StateCoinFlip;
-class StateCombineStaged;
+class StateSourceCardStaged;
 class StateDraw;
 class StateDrawInitial;
 class StateGameEnd;
@@ -31,7 +31,7 @@ class StatePeekCards;
 class StatePlayerTurnStart;
 class StateRoundEnd;
 class StateRoundStart;
-class StateSelectionStaged;
+class StateHandCardStaged;
 class StateTurnEnd;
 class StateTutorial;
 
@@ -71,6 +71,7 @@ class TutorialFIntroSequence;
 
 class Avatars;
 class CardPreviewComponent;
+class AssemblyHelpText;
 class StagingHelperText;
 class GameState;
 class HexusOpponentData;
@@ -106,6 +107,7 @@ private:
 	Avatars* avatars;
 	CardPreviewComponent* cardPreviewComponent;
 	StagingHelperText* stagingHelperText;
+	AssemblyHelpText* assemblyHelpText;
 
 	StateAIDecideCard* stateAIDecideCard;
 	StateAIDecideCardReplace* stateAIDecideCardReplace;
@@ -114,7 +116,7 @@ private:
 	StateCardReplace* stateCardReplace;
 	StatePeekCards* statePeekCards;
 	StateCoinFlip* stateCoinFlip;
-	StateCombineStaged* stateCombineStaged;
+	StateSourceCardStaged* stateSourceCardStaged;
 	StateDraw* stateDraw;
 	StateDrawInitial* stateDrawInitial;
 	StateGameEnd* stateGameEnd;
@@ -127,7 +129,7 @@ private:
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;
-	StateSelectionStaged* stateSelectionStaged;
+	StateHandCardStaged* stateHandCardStaged;
 	StateTurnEnd* stateTurnEnd;
 	StateTutorial* stateTutorial;
 

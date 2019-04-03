@@ -79,6 +79,7 @@ public:
 	void disableInteraction();
 	void enableInteraction();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
+	void setMouseOutCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 	int simulateOperation(Operation operation);
 
@@ -106,6 +107,7 @@ private:
 	typedef SmartNode super;
 	void updateText();
 	void onMouseOver();
+	void onMouseOut();
 	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
 
@@ -121,5 +123,6 @@ private:
 	ConstantString* cardString;
 	LocalizedLabel* cardLabel;
 	std::function<void(Card*)> mouseOverCallback;
+	std::function<void(Card*)> mouseOutCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };

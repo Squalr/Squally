@@ -333,11 +333,6 @@ void HexusStoreMenu::onEnter()
 	GameUtils::accelerateParticles(this->dustParticles, 5.0f);
 
 	this->updateGoldText();
-
-	if (!binaryCards.empty())
-	{
-		this->cardPreview->previewCard(std::get<1>(binaryCards.front()));
-	}
 }
 
 void HexusStoreMenu::initializeListeners()
