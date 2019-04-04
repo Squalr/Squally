@@ -93,7 +93,7 @@ HexusOpponentData* Hades::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.198f,
-			HexusOpponentData::generateDeck(25, 0.198f,
+			HexusOpponentData::generateDeck(32, 0.198f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),

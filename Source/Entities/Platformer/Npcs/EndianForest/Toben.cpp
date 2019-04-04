@@ -93,7 +93,7 @@ HexusOpponentData* Toben::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.010f,
-			HexusOpponentData::generateDeck(25, 0.010f,
+			HexusOpponentData::generateDeck(32, 0.010f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

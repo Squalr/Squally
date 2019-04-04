@@ -93,7 +93,7 @@ HexusOpponentData* Roger::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.823f,
-			HexusOpponentData::generateDeck(25, 0.823f,
+			HexusOpponentData::generateDeck(32, 0.823f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

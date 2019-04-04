@@ -93,7 +93,7 @@ HexusOpponentData* Ysara::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.885f,
-			HexusOpponentData::generateDeck(25, 0.885f,
+			HexusOpponentData::generateDeck(32, 0.885f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),

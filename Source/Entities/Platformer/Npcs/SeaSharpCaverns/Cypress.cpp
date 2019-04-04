@@ -93,7 +93,7 @@ HexusOpponentData* Cypress::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.281f,
-			HexusOpponentData::generateDeck(25, 0.281f,
+			HexusOpponentData::generateDeck(32, 0.281f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

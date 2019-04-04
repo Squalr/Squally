@@ -93,7 +93,7 @@ HexusOpponentData* Thurstan::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.490f,
-			HexusOpponentData::generateDeck(25, 0.490f,
+			HexusOpponentData::generateDeck(32, 0.490f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

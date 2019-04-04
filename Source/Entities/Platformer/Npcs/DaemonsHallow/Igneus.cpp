@@ -93,7 +93,7 @@ HexusOpponentData* Igneus::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.688f,
-			HexusOpponentData::generateDeck(25, 0.688f,
+			HexusOpponentData::generateDeck(32, 0.688f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),

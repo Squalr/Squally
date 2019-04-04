@@ -93,7 +93,7 @@ HexusOpponentData* Aspen::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.510f,
-			HexusOpponentData::generateDeck(25, 0.510f,
+			HexusOpponentData::generateDeck(32, 0.510f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

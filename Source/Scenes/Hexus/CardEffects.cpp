@@ -35,6 +35,8 @@ CardEffects::CardEffects()
 	this->meteorAlt = nullptr;
 	this->meteorBlue = nullptr;
 	this->meteorPurple = nullptr;
+	this->nether = nullptr;
+	this->poison = nullptr;
 	this->radialAura = nullptr;
 	this->radialFire = nullptr;
 	this->radialGalaxy = nullptr;
@@ -153,6 +155,18 @@ void CardEffects::runEffect(CardEffect effect)
 		{
 			this->getMeteorPurple()->resumeEmissions();
 			this->getMeteorPurple()->start();
+			break;
+		}
+		case CardEffect::Nether:
+		{
+			this->getNether()->resumeEmissions();
+			this->getNether()->start();
+			break;
+		}
+		case CardEffect::Poison:
+		{
+			this->getPoison()->resumeEmissions();
+			this->getPoison()->start();
 			break;
 		}
 		case CardEffect::RadialAura:
@@ -453,6 +467,36 @@ ParticleSystemQuad* CardEffects::getMeteorPurple()
 	}
 
 	return this->meteorPurple;
+}
+
+ParticleSystemQuad* CardEffects::getNether()
+{
+	if (this->nether == nullptr)
+	{
+		this->nether = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Nether);
+
+		this->nether->setPositionType(ParticleSystem::PositionType::GROUPED);
+		this->nether->pauseEmissions();
+
+		this->addChild(this->nether);
+	}
+
+	return this->nether;
+}
+
+ParticleSystemQuad* CardEffects::getPoison()
+{
+	if (this->poison == nullptr)
+	{
+		this->poison = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Poison);
+
+		this->poison->setPositionType(ParticleSystem::PositionType::GROUPED);
+		this->poison->pauseEmissions();
+
+		this->addChild(this->poison);
+	}
+
+	return this->poison;
 }
 
 ParticleSystemQuad* CardEffects::getRadialAura()

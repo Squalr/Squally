@@ -93,7 +93,7 @@ HexusOpponentData* Brock::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.271f,
-			HexusOpponentData::generateDeck(25, 0.271f,
+			HexusOpponentData::generateDeck(32, 0.271f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

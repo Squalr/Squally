@@ -93,7 +93,7 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.077f,
-			HexusOpponentData::generateDeck(25, 0.077f,
+			HexusOpponentData::generateDeck(32, 0.077f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

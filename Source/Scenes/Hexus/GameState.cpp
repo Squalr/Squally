@@ -7,6 +7,7 @@
 #include "Engine/Utils/StrUtils.h"
 
 #include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
@@ -219,6 +220,12 @@ void GameState::sendFieldCardsToGraveyard()
 	{
 		(*it)->removeCardsWhere([&](Card* card)
 		{
+			// Special effect for binary 0 card
+			if (card->cardData->cardKey == CardKeys::Binary0)
+			{
+				return false;
+			}
+
 			playerRemovedCards.push_back(card);
 			return true;
 		});
@@ -228,6 +235,12 @@ void GameState::sendFieldCardsToGraveyard()
 	{
 		(*it)->removeCardsWhere([&](Card* card)
 		{
+			// Special effect for binary 0 card
+			if (card->cardData->cardKey == CardKeys::Binary0)
+			{
+				return false;
+			}
+
 			enemyRemovedCards.push_back(card);
 			return true;
 		});

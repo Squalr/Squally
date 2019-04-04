@@ -90,7 +90,7 @@ void CardStorage::saveDeckCards(std::vector<CardData*> deckCards)
 
 	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
 	{
-		deckCardsValueVector.push_back(Value((*it)->cardName));
+		deckCardsValueVector.push_back(Value((*it)->cardKey));
 	}
 
 	SaveManager::saveGlobalData(CardStorage::SaveKeyDeckCards, cocos2d::Value(deckCardsValueVector));
@@ -104,7 +104,7 @@ void CardStorage::saveDeckCardsByCount(std::map<CardData*, int> deckCards)
 	{
 		for (int index = 0; index < (*it).second; index++)
 		{
-			deckCardsValueVector.push_back(Value((*it).first->cardName));
+			deckCardsValueVector.push_back(Value((*it).first->cardKey));
 		}
 	}
 
@@ -183,7 +183,7 @@ void CardStorage::saveStorageCards(std::vector<CardData*> storageCards)
 
 	for (auto it = storageCards.begin(); it != storageCards.end(); it++)
 	{
-		storageCardsValueVector.push_back(Value((*it)->cardName));
+		storageCardsValueVector.push_back(Value((*it)->cardKey));
 	}
 
 	SaveManager::saveGlobalData(CardStorage::SaveKeyStorageCards, cocos2d::Value(storageCardsValueVector));
@@ -197,7 +197,7 @@ void CardStorage::saveStorageCardsByCount(std::map<CardData*, int> storageCards)
 	{
 		for (int index = 0; index < (*it).second; index++)
 		{
-			storageCardsValueVector.push_back(Value((*it).first->cardName));
+			storageCardsValueVector.push_back(Value((*it).first->cardKey));
 		}
 	}
 
@@ -261,7 +261,7 @@ int CardStorage::getOwnedCardCount(CardData* cardData)
 
 	for (auto it = deck.begin(); it != deck.end(); it++)
 	{
-		if ((*it)->cardName == cardData->cardName)
+		if ((*it)->cardKey == cardData->cardKey)
 		{
 			count++;
 		}
@@ -269,7 +269,7 @@ int CardStorage::getOwnedCardCount(CardData* cardData)
 
 	for (auto it = storage.begin(); it != storage.end(); it++)
 	{
-		if ((*it)->cardName == cardData->cardName)
+		if ((*it)->cardKey == cardData->cardKey)
 		{
 			count++;
 		}

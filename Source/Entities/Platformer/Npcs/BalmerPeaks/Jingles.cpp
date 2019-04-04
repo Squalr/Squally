@@ -93,7 +93,7 @@ HexusOpponentData* Jingles::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.562f,
-			HexusOpponentData::generateDeck(25, 0.562f,
+			HexusOpponentData::generateDeck(32, 0.562f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

@@ -93,7 +93,7 @@ HexusOpponentData* Leon::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.969f,
-			HexusOpponentData::generateDeck(25, 0.969f,
+			HexusOpponentData::generateDeck(32, 0.969f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

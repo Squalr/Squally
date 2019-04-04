@@ -93,7 +93,7 @@ HexusOpponentData* Garin::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.406f,
-			HexusOpponentData::generateDeck(25, 0.406f,
+			HexusOpponentData::generateDeck(32, 0.406f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

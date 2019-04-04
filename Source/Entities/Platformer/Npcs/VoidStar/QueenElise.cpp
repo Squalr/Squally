@@ -93,7 +93,7 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.927f,
-			HexusOpponentData::generateDeck(25, 0.927f,
+			HexusOpponentData::generateDeck(32, 0.927f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

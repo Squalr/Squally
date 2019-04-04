@@ -93,7 +93,7 @@ HexusOpponentData* Viper::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.854f,
-			HexusOpponentData::generateDeck(25, 0.854f,
+			HexusOpponentData::generateDeck(32, 0.854f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),

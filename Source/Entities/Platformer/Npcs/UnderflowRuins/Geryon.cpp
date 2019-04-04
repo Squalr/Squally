@@ -93,7 +93,7 @@ HexusOpponentData* Geryon::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.177f,
-			HexusOpponentData::generateDeck(25, 0.177f,
+			HexusOpponentData::generateDeck(32, 0.177f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),

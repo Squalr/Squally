@@ -186,7 +186,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 		// Remove all cards of the same type of the target card
 		gameState->playerDeck->removeCardsWhere([=](Card* card)
 		{
-			if (card->cardData->cardName == cardToReplace->cardData->cardName)
+			if (card->cardData->cardKey == cardToReplace->cardData->cardKey)
 			{
 				this->removedCards.push_back(card);
 				return true;

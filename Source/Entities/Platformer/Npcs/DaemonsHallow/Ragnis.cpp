@@ -93,7 +93,7 @@ HexusOpponentData* Ragnis::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.740f,
-			HexusOpponentData::generateDeck(25, 0.740f,
+			HexusOpponentData::generateDeck(32, 0.740f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

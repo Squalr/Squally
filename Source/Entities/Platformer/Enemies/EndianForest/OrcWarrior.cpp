@@ -93,7 +93,7 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.650f,
-			HexusOpponentData::generateDeck(25, 0.650f,
+			HexusOpponentData::generateDeck(32, 0.650f,
 			{
 
 			}),

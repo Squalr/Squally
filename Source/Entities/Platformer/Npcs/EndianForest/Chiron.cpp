@@ -93,7 +93,7 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.115f,
-			HexusOpponentData::generateDeck(25, 0.115f,
+			HexusOpponentData::generateDeck(32, 0.115f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

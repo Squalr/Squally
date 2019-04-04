@@ -93,7 +93,7 @@ HexusOpponentData* Piper::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.938f,
-			HexusOpponentData::generateDeck(25, 0.938f,
+			HexusOpponentData::generateDeck(32, 0.938f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

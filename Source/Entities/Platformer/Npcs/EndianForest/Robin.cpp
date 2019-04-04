@@ -93,7 +93,7 @@ HexusOpponentData* Robin::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.038f,
-			HexusOpponentData::generateDeck(25, 0.038f,
+			HexusOpponentData::generateDeck(32, 0.038f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

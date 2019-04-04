@@ -93,7 +93,7 @@ HexusOpponentData* PrincessMatu::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.048f,
-			HexusOpponentData::generateDeck(25, 0.048f,
+			HexusOpponentData::generateDeck(32, 0.048f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

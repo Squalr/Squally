@@ -38,7 +38,7 @@ public:
 		Special_DRANK,
 	};
 
-	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack);
+	CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack);
 	~CardData();
 
 	LocalizedString* getCardTypeString();
@@ -48,7 +48,7 @@ public:
 	unsigned int getIntrinsicImmediate();
 
 	std::string cardResourceFile;
-	std::string cardName;
+	std::string cardKey;
 	CardType cardType;
 	unsigned int attack;
 };

@@ -93,7 +93,7 @@ HexusOpponentData* Thion::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.865f,
-			HexusOpponentData::generateDeck(25, 0.865f,
+			HexusOpponentData::generateDeck(32, 0.865f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),

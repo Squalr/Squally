@@ -93,7 +93,7 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.479f,
-			HexusOpponentData::generateDeck(25, 0.479f,
+			HexusOpponentData::generateDeck(32, 0.479f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

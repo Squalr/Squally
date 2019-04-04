@@ -93,7 +93,7 @@ HexusOpponentData* Hera::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.208f,
-			HexusOpponentData::generateDeck(25, 0.208f,
+			HexusOpponentData::generateDeck(32, 0.208f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

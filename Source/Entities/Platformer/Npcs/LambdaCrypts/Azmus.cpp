@@ -93,7 +93,7 @@ HexusOpponentData* Azmus::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.771f,
-			HexusOpponentData::generateDeck(25, 0.771f,
+			HexusOpponentData::generateDeck(32, 0.771f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

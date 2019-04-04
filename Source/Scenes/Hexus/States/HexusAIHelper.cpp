@@ -61,8 +61,7 @@ std::tuple<Card*, Card*, int> HexusAIHelper::getBestSourceAndTarget(Card* candid
 					continue;
 				}
 
-				Card::Operation operation = Card::toOperation(
-					candidateCardToPlay->cardData->cardType,
+				Card::Operation operation = candidateCardToPlay->toOperation(
 					sourceCard->getAttack()
 				);
 
@@ -97,8 +96,7 @@ std::tuple<Card*, int> HexusAIHelper::getBestOperationTarget(Card* operationCard
 		{
 			Card* destinationCard = *targetCardIterator;
 
-			Card::Operation operation = Card::toOperation(
-				operationCard->cardData->cardType,
+			Card::Operation operation = operationCard->toOperation(
 				destinationCard->getAttack()
 			);
 

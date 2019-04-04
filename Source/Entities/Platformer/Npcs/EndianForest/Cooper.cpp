@@ -93,7 +93,7 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.106f,
-			HexusOpponentData::generateDeck(25, 0.106f,
+			HexusOpponentData::generateDeck(32, 0.106f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

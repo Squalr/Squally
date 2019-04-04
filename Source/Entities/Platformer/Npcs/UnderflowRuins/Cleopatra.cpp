@@ -93,7 +93,7 @@ HexusOpponentData* Cleopatra::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.250f,
-			HexusOpponentData::generateDeck(25, 0.250f,
+			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),

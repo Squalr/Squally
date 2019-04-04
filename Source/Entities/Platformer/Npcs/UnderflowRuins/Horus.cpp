@@ -93,7 +93,7 @@ HexusOpponentData* Horus::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.219f,
-			HexusOpponentData::generateDeck(25, 0.219f,
+			HexusOpponentData::generateDeck(32, 0.219f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),

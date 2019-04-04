@@ -93,7 +93,7 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.700f,
-			HexusOpponentData::generateDeck(25, 0.700f,
+			HexusOpponentData::generateDeck(32, 0.700f,
 			{
 
 			}),

@@ -93,7 +93,7 @@ HexusOpponentData* Irmik::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.552f,
-			HexusOpponentData::generateDeck(25, 0.552f,
+			HexusOpponentData::generateDeck(32, 0.552f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

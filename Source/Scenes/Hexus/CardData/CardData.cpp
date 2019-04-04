@@ -27,12 +27,12 @@
 #include "Strings/Hexus/Cards/Abbreviations/SUB.h"
 #include "Strings/Hexus/Cards/Abbreviations/XOR.h"
 
-CardData::CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack)
+CardData::CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack)
 {
-	this->cardResourceFile = newCardResourceFile;
-	this->cardName = newCardName;
-	this->cardType = newCardType;
-	this->attack = newAttack;
+	this->cardResourceFile = cardResourceFile;
+	this->cardKey = cardKey;
+	this->cardType = cardType;
+	this->attack = attack;
 }
 
 CardData::~CardData()

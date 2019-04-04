@@ -93,7 +93,7 @@ HexusOpponentData* Elric::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.396f,
-			HexusOpponentData::generateDeck(25, 0.396f,
+			HexusOpponentData::generateDeck(32, 0.396f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

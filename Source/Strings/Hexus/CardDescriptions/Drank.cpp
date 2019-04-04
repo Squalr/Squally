@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Drank::getStringAr()
 	{
-		return "XOR جميع البطاقات في صف واحد مع القيمة الثنائية 0011.";
+		return "XOR كل بطاقة على التوالي مع نصف الهجوم الأصلي.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringBg()
 	{
-		return "XOR всички карти в ред с двоичната стойност 0011.";
+		return "XOR всяка карта в ред с половината от първоначалната им атака.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringCs()
 	{
-		return "XOR všechny karty v řadě s binární hodnotou 0011.";
+		return "XOR každou kartu v řadě s polovinou jejich původního útoku.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringDa()
 	{
-		return "XOR alle kort i træk med binær værdi 0011.";
+		return "XOR hvert kort i træk med halvdelen af ​​deres oprindelige angreb.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringDe()
 	{
-		return "XOR alle Karten in einer Reihe mit dem Binärwert 0011.";
+		return "XOR jede Karte in einer Reihe mit der Hälfte ihres ursprünglichen Angriffs.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringEl()
 	{
-		return "XOR όλες τις κάρτες στη σειρά με τη δυαδική τιμή 0011.";
+		return "XOR κάθε κάρτα σε σειρά με το ήμισυ της αρχικής τους επίθεσης.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringEn()
 	{
-		return "XOR all cards in a row with the binary value 0011.";
+		return "XOR each card in a row with half of their original attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringEs()
 	{
-		return "XOR todas las cartas en una fila con el valor binario 0011.";
+		return "XOR cada tarjeta en una fila con la mitad de su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringEs419()
 	{
-		return "XOR todas las cartas en una fila con el valor binario 0011.";
+		return "XOR cada tarjeta en una fila con la mitad de su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringFi()
 	{
-		return "XOR kaikki kortit rivissä binääriarvolla 0011.";
+		return "XOR jokainen kortti peräkkäin puolet alkuperäisestä hyökkäyksestään.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringFr()
 	{
-		return "XOR toutes les cartes d'affilée avec la valeur binaire 0011.";
+		return "XOR chaque carte dans une rangée avec la moitié de leur attaque initiale.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringHu()
 	{
-		return "XOR minden kártya egy sorban a 0011 bináris értékkel.";
+		return "XOR minden kártya egy sorban az eredeti támadásuk felével.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringIt()
 	{
-		return "XOR tutte le carte di fila con il valore binario 0011.";
+		return "XOR ogni carta di fila con metà del loro attacco originale.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringJa()
 	{
-		return "2進値0011を持つ行のすべてのカードの排他的論理和。";
+		return "それぞれのカードの攻撃力の半分で、各カードのXORを続けます。";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringKo()
 	{
-		return "행의 모든 ​​카드를 이진 값 0011으로 XOR합니다.";
+		return "각각의 카드를 원래 공격의 반으로 XOR합니다.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringNl()
 	{
-		return "XOR alle kaarten op een rij met de binaire waarde 0011.";
+		return "XOR elke kaart op een rij met de helft van hun oorspronkelijke aanval.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringNo()
 	{
-		return "XOR alle kortene på rad med binærverdien 0011.";
+		return "XOR hvert kort på rad med halvparten av deres opprinnelige angrep.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringPl()
 	{
-		return "XOR wszystkie karty z rzędu o wartości binarnej 0011.";
+		return "XOR każdej karty z rzędu z połową oryginalnego ataku.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringPt()
 	{
-		return "XOR todas as cartas em uma linha com o valor binário 0011.";
+		return "XOR cada cartão em uma linha com metade do seu ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringPtBr()
 	{
-		return "XOR todas as cartas em uma linha com o valor binário 0011.";
+		return "XOR cada cartão em uma linha com metade do seu ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringRo()
 	{
-		return "XOR toate cardurile într-un rând cu valoarea binară 0011.";
+		return "XOR fiecare carte la rând cu jumătate din atacul lor original.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringRu()
 	{
-		return "XOR все карты подряд с двоичным значением 0011.";
+		return "XOR каждой карты подряд с половиной их первоначальной атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringSv()
 	{
-		return "XOR alla kort i rad med binärvärdet 0011.";
+		return "XOR varje kort i rad med hälften av deras ursprungliga attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringTh()
 	{
-		return "XOR ไพ่ทั้งหมดในแถวที่มีค่าไบนารี 0011";
+		return "XORแต่ละใบเรียงต่อกันโดยครึ่งหนึ่งของการโจมตีเริ่มต้น";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringTr()
 	{
-		return "XOR, üst üste tüm kartları 0011 ikili değerine sahip.";
+		return "XOR, her kartın orijinal ataklarının yarısı ile üst üste gelmesini sağlar.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringUk()
 	{
-		return "XOR всі карти в рядку з двійковим значенням 0011.";
+		return "XOR кожну карту в рядку з половиною початкової атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringVi()
 	{
-		return "XOR tất cả các thẻ liên tiếp với giá trị nhị phân 0011.";
+		return "XOR mỗi thẻ liên tiếp với một nửa cuộc tấn công ban đầu của họ.";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringZhCn()
 	{
-		return "使用二进制值0011对连续的所有卡进行异或。";
+		return "将每张卡连续XOR与其原始攻击的一半。";
 	}
 
 	std::string Hexus_CardDescriptions_Drank::getStringZhTw()
 	{
-		return "使用二進制值0011對連續的所有卡進行異或。";
+		return "將每張卡連續XOR與其原始攻擊的一半。";
 	}
 }

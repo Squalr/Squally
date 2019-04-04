@@ -93,7 +93,7 @@ HexusOpponentData* KingRedsong::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.500f,
-			HexusOpponentData::generateDeck(25, 0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),

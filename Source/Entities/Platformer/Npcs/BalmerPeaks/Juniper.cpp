@@ -93,7 +93,7 @@ HexusOpponentData* Juniper::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.573f,
-			HexusOpponentData::generateDeck(25, 0.573f,
+			HexusOpponentData::generateDeck(32, 0.573f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

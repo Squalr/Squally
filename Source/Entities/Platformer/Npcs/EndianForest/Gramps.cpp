@@ -93,7 +93,7 @@ HexusOpponentData* Gramps::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.087f,
-			HexusOpponentData::generateDeck(25, 0.087f,
+			HexusOpponentData::generateDeck(32, 0.087f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),

@@ -93,7 +93,7 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.400f,
-			HexusOpponentData::generateDeck(25, 0.400f,
+			HexusOpponentData::generateDeck(32, 0.400f,
 			{
 
 			}),

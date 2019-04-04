@@ -93,7 +93,7 @@ HexusOpponentData* Johann::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.875f,
-			HexusOpponentData::generateDeck(25, 0.875f,
+			HexusOpponentData::generateDeck(32, 0.875f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),

@@ -8,6 +8,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
@@ -35,6 +36,7 @@
 #include "Strings/Hexus/CardDescriptions/LogicalOr.h"
 #include "Strings/Hexus/CardDescriptions/LogicalXor.h"
 #include "Strings/Hexus/CardDescriptions/Mov.h"
+#include "Strings/Hexus/CardDescriptions/NoDestroyEffect.h"
 #include "Strings/Hexus/CardDescriptions/Peek.h"
 #include "Strings/Hexus/CardDescriptions/Poison.h"
 #include "Strings/Hexus/CardDescriptions/ReturnToHand.h"
@@ -43,6 +45,7 @@
 #include "Strings/Hexus/CardDescriptions/Steal.h"
 #include "Strings/Hexus/CardDescriptions/Subtract.h"
 #include "Strings/Hexus/CardDescriptions/SuddenDeath.h"
+#include "Strings/Hexus/CardDescriptions/TurnGainsEffect.h"
 #include "Strings/Hexus/DecLabel.h"
 #include "Strings/Hexus/HexLabel.h"
 #include "Strings/Menus/Help.h"
@@ -131,10 +134,23 @@ void CardPreview::previewCard(Card* card)
 				int attack = card->getAttack();
 
 				// Show special effects for 0 cards
-				if (card->getOriginalAttack() == 0)
+				if (card->cardData->cardKey == CardKeys::Binary0 || card->cardData->cardKey == CardKeys::Decimal0 || card->cardData->cardKey == CardKeys::Hex0)
 				{
-					LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_DrawEffect::create());
-
+					LocalizedLabel* specialLabel = nullptr;
+					
+					if (card->cardData->cardKey == CardKeys::Binary0)
+					{
+						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_NoDestroyEffect::create());
+					}
+					else if (card->cardData->cardKey == CardKeys::Decimal0)
+					{
+						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_DrawEffect::create());
+					}
+					else
+					{
+						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_TurnGainsEffect::create());
+					}
+					
 					specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 					specialLabel->setTextColor(Card::specialColor);
 					specialLabel->enableOutline(Color4B::BLACK, 2);
