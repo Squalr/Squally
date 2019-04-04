@@ -132,6 +132,8 @@ void ConfirmationMenu::confirm()
 	{
 		this->onConfirmCallback();
 	}
+	
+	this->setVisible(false);
 }
 
 void ConfirmationMenu::close()

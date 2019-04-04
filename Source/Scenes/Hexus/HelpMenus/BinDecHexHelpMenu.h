@@ -2,14 +2,14 @@
 
 #include "Scenes/Hexus/HelpMenus/HelpMenuBase.h"
 
-class BinaryHelpMenu : public HelpMenuBase
+class BinDecHexHelpMenu : public HelpMenuBase
 {
 public:
-	static BinaryHelpMenu* create();
+	static BinDecHexHelpMenu* create();
 
 private:
-	BinaryHelpMenu();
-	~BinaryHelpMenu();
+	BinDecHexHelpMenu();
+	~BinDecHexHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;

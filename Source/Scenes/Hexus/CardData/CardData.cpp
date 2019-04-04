@@ -213,12 +213,15 @@ unsigned int CardData::getIntrinsicImmediate()
 		{
 			return this->attack / 2;
 		}
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		{
+			return 0b0001;
+		}
 		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
-		case CardData::CardType::Special_SHL:
-		case CardData::CardType::Special_SHR:
 		case CardData::CardType::Special_INV:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
