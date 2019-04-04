@@ -119,7 +119,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			// Draw 1 card effect for 0000 attack cards
 			if (gameState->selectedHandCard->getOriginalAttack() == 0)
 			{
-				selfHand->insertCard(selfDeck->drawCard(), 0.5f);
+				selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
 			}
 
 			selfHand->removeCard(gameState->selectedHandCard);
@@ -368,8 +368,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
-			selfHand->insertCard(selfDeck->drawCard(), 0.5f);
-			selfHand->insertCard(selfDeck->drawCard(), 0.5f);
+			selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
+			selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
 
 			break;
 		}

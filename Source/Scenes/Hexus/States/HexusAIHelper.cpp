@@ -143,3 +143,30 @@ std::tuple<Card*, int> HexusAIHelper::getStrongestPlayerCard(GameState* gameStat
 
 	return std::tuple<Card*, int>(bestCard, bestDiff);
 }
+
+std::tuple<Card*, int> HexusAIHelper::getStrongestAugmentedPlayerCard(GameState* gameState)
+{
+	std::vector<CardRow*> playerRows = gameState->getPlayerRows();
+	int bestDiff = std::numeric_limits<int>::min();
+	Card* bestCard = nullptr;
+
+	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
+	{
+		CardRow* targetRow = *it;
+
+		for (auto targetCardIterator = targetRow->rowCards.begin(); targetCardIterator != targetRow->rowCards.end(); targetCardIterator++)
+		{
+			Card* destinationCard = *targetCardIterator;
+
+			int diff = destinationCard->getAttack();
+
+			if (destinationCard->getAttack() > destinationCard->getOriginalAttack() && diff > bestDiff)
+			{
+				bestDiff = diff;
+				bestCard = destinationCard;
+			}
+		}
+	}
+
+	return std::tuple<Card*, int>(bestCard, bestDiff);
+}

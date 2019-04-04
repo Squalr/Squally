@@ -94,6 +94,17 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
 
+	// Always guarantee 0 cards, this seems to actually make for solid gameplay :)
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
+
 	for (auto it = guaranteedCards.begin(); it != guaranteedCards.end(); it++)
 	{
 		deck.push_back(*it);

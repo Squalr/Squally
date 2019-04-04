@@ -75,6 +75,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_HEAL:
 		case CardData::CardType::Special_POISON:
 		case CardData::CardType::Special_DRANK:
+		case CardData::CardType::Special_ABSORB:
 		{
 			gameState->selectedRow = std::get<0>(gameState->cachedBestRowPlay);
 			break;
@@ -91,11 +92,17 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 			break;
 		}
 		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_RETURN_TO_HAND:
 		{
 			gameState->selectedDestinationCard = std::get<0>(gameState->cachedBestTargetPlay);
 
 			break;
 		}
+		case CardData::CardType::Special_GREED:
+		case CardData::CardType::Special_BONUS_MOVES:
+		case CardData::CardType::Special_PEEK:
 		default:
 		{
 			break;

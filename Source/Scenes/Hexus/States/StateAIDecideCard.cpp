@@ -145,6 +145,18 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 
 				break;
 			}
+			case CardData::CardType::Special_RETURN_TO_HAND:
+			{
+				std::tuple<Card*, int> bestPlay = HexusAIHelper::getStrongestAugmentedPlayerCard(gameState);
+
+				if (std::get<1>(bestPlay) > 0)
+				{
+					gameState->cachedBestTargetPlay = bestPlay;
+					gameState->selectedHandCard = card;
+
+					return;
+				}
+			}
 			case CardData::CardType::Special_KILL:
 			case CardData::CardType::Special_STEAL:
 			{
