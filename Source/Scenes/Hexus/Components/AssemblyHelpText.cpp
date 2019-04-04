@@ -75,9 +75,9 @@ void AssemblyHelpText::initializeListeners()
 	{
 		HexusEvents::CardPreviewArgs* args = static_cast<HexusEvents::CardPreviewArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->card != nullptr && this->gameState != nullptr)
+		if (args != nullptr && args->card != nullptr && this->gameState != nullptr && this->gameState->selectedHandCard != nullptr)
 		{
-			bool isMultiTarget = this->gameState->selectedHandCard == nullptr ? false : gameState->selectedHandCard->cardData->isMultiTargetCard();
+			bool isMultiTarget = gameState->selectedHandCard->cardData->isMultiTargetCard();
 			bool noDice = false;
 
 			// Ignore mousing over hand cards
@@ -98,7 +98,7 @@ void AssemblyHelpText::initializeListeners()
 
 			if (isMultiTarget)
 			{
-				this->sourceString->setString(HackUtils::toBinary4(args->card->cardData->getIntrinsicImmediate()));
+				this->sourceString->setString(HackUtils::toBinary4(gameState->selectedHandCard->cardData->getIntrinsicImmediate()));
 				this->destinationString->setString(AssemblyHelpText::ManyOperand);
 			}
 			else if (this->gameState->selectedSourceCard == nullptr && !noDice)
@@ -122,15 +122,14 @@ void AssemblyHelpText::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventCardMousedOut, [=](EventCustom* eventCustom)
 	{
-		if (this->gameState->selectedSourceCard == nullptr)
-		{
-			this->sourceString->setString(AssemblyHelpText::SourceOperand);
-		}
-
 		bool isMultiTarget = this->gameState->selectedHandCard == nullptr ? false : gameState->selectedHandCard->cardData->isMultiTargetCard();
 
 		if (!isMultiTarget)
 		{
+			if (this->gameState->selectedSourceCard == nullptr)
+			{
+				this->sourceString->setString(AssemblyHelpText::SourceOperand);
+			}
 			this->destinationString->setString(AssemblyHelpText::DestOperand);
 		}
 	}));

@@ -22,6 +22,7 @@
 #include "Strings/Hexus/CardDescriptions/BonusMoves.h"
 #include "Strings/Hexus/CardDescriptions/Clear.h"
 #include "Strings/Hexus/CardDescriptions/Drank.h"
+#include "Strings/Hexus/CardDescriptions/DrawEffect.h"
 #include "Strings/Hexus/CardDescriptions/Flip1.h"
 #include "Strings/Hexus/CardDescriptions/Flip2.h"
 #include "Strings/Hexus/CardDescriptions/Flip3.h"
@@ -128,6 +129,20 @@ void CardPreview::previewCard(Card* card)
 			case CardData::CardType::Hexidecimal:
 			{
 				int attack = card->getAttack();
+
+				// Show special effects for 0 cards
+				if (card->getOriginalAttack() == 0)
+				{
+					LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_DrawEffect::create());
+
+					specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
+					specialLabel->setTextColor(Card::specialColor);
+					specialLabel->enableOutline(Color4B::BLACK, 2);
+					specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, 160.0f));
+					specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
+
+					this->previewPanel->addChild(specialLabel);
+				}
 
 				LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_BinLabel::create());
 				LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hexus_DecLabel::create());

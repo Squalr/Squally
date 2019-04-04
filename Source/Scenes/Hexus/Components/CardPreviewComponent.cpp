@@ -85,6 +85,8 @@ void CardPreviewComponent::onAnyStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
+		case GameState::StateType::CoinFlip:
+		case GameState::StateType::CardReplace:
 		case GameState::StateType::Neutral:
 		case GameState::StateType::PeekCards:
 		{

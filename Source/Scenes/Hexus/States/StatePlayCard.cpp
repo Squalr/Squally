@@ -109,6 +109,24 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Hexidecimal:
+		{
+			if (gameState->selectedRow == nullptr)
+			{
+				this->passFromError(gameState);
+				return;
+			}
+
+			// Draw 1 card effect for 0000 attack cards
+			if (gameState->selectedHandCard->getOriginalAttack() == 0)
+			{
+				selfHand->insertCard(selfDeck->drawCard(), 0.5f);
+			}
+
+			selfHand->removeCard(gameState->selectedHandCard);
+			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
+			SoundManager::playSoundResource(SoundResources::Hexus_CardMovement);
+			break;
+		}
 		case CardData::CardType::Special_ABSORB:
 		{
 			if (gameState->selectedRow == nullptr)
