@@ -7,6 +7,7 @@ namespace cocos2d
 {
 	class ClippingNode;
 	class LayerColor;
+	class Sprite;
 }
 
 class HexusOpponentData;
@@ -37,5 +38,6 @@ private:
 	SmartAnimationNode* opponentSprite;
 	cocos2d::LayerColor* disabledLayer;
 	cocos2d::ClippingNode* frameClip;
+	cocos2d::Sprite* lockedSprite;
 	ClickableNode* frame;
 };

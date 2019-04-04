@@ -95,6 +95,8 @@ HexusOpponentData* Hera::getHexusOpponentData()
 			0.208f,
 			HexusOpponentData::generateDeck(32, 0.208f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

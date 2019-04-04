@@ -95,6 +95,8 @@ HexusOpponentData* Brock::getHexusOpponentData()
 			0.271f,
 			HexusOpponentData::generateDeck(32, 0.271f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Poison),

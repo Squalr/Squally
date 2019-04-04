@@ -95,6 +95,8 @@ HexusOpponentData* Mildred::getHexusOpponentData()
 			0.323f,
 			HexusOpponentData::generateDeck(32, 0.323f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

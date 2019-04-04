@@ -95,6 +95,8 @@ HexusOpponentData* Finch::getHexusOpponentData()
 			0.292f,
 			HexusOpponentData::generateDeck(32, 0.292f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),

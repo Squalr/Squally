@@ -95,6 +95,8 @@ HexusOpponentData* Brine::getHexusOpponentData()
 			0.646f,
 			HexusOpponentData::generateDeck(32, 0.646f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

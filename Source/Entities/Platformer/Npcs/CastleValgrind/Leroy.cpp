@@ -95,6 +95,8 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 			0.427f,
 			HexusOpponentData::generateDeck(32, 0.427f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),

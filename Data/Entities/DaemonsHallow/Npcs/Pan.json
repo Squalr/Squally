@@ -24,12 +24,14 @@
       "Strength": "(1.0f / 8.0f) * (5.0f + (1.0f / 12.0f) * 9.0f)",
       "Strategy": "Random",
       "PresetCards": [
+        "Greed",
+        "Greed",
         "Addition",
         "Steal",
         "Greed",
         "Flip3",
         "Mov",
-        "Greed",
+        "Kill",
         "LogicalXor",
         "BonusMoves",
         "Absorb"

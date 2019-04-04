@@ -95,6 +95,8 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 			0.729f,
 			HexusOpponentData::generateDeck(32, 0.729f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

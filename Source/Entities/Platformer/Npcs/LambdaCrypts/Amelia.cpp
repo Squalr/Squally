@@ -95,6 +95,8 @@ HexusOpponentData* Amelia::getHexusOpponentData()
 			0.760f,
 			HexusOpponentData::generateDeck(32, 0.760f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

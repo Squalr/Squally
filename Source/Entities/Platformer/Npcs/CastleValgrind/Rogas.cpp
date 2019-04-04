@@ -95,6 +95,8 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 			0.479f,
 			HexusOpponentData::generateDeck(32, 0.479f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

@@ -95,6 +95,8 @@ HexusOpponentData* Johann::getHexusOpponentData()
 			0.875f,
 			HexusOpponentData::generateDeck(32, 0.875f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),

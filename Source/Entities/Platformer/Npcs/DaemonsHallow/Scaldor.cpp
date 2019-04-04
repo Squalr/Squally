@@ -95,6 +95,8 @@ HexusOpponentData* Scaldor::getHexusOpponentData()
 			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

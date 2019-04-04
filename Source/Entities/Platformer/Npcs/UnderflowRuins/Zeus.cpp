@@ -95,6 +95,8 @@ HexusOpponentData* Zeus::getHexusOpponentData()
 			0.240f,
 			HexusOpponentData::generateDeck(32, 0.240f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

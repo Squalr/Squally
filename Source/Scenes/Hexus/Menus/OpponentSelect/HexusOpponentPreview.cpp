@@ -10,6 +10,7 @@
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -27,6 +28,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->hexusOpponentData = opponentData;
 	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
+	this->lockedSprite = Sprite::create(UIResources::Menus_Icons_Lock);
 
 	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
@@ -46,6 +48,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->opponentSprite->setScale(opponentData->animationScale);
 	this->opponentSprite->playAnimation();
 	this->opponentSprite->setCascadeOpacityEnabled(false);
+	this->lockedSprite->setVisible(false);
 
 	this->setContentSize(this->frame->getContentSize());
 
@@ -56,6 +59,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->frameClip->addChild(this->disabledLayer);
 	this->addChild(this->frameClip);
 	this->addChild(this->frame);
+	this->addChild(this->lockedSprite);
 }
 
 HexusOpponentPreview::~HexusOpponentPreview()
@@ -72,6 +76,8 @@ void HexusOpponentPreview::initializePositions()
 	{
 		this->opponentSprite->setPosition(this->hexusOpponentData->frameOffset);
 	}
+
+	this->lockedSprite->setPosition(Vec2(0.0f, -188.0f));
 }
 
 void HexusOpponentPreview::onOpponentClick()
@@ -84,6 +90,7 @@ void HexusOpponentPreview::disableInteraction()
 	this->frame->disableInteraction();
 	this->frameClip->setOpacity(128);
 	this->disabledLayer->setOpacity(196);
+	this->lockedSprite->setVisible(true);
 }
 
 void HexusOpponentPreview::enableInteraction()
@@ -91,5 +98,5 @@ void HexusOpponentPreview::enableInteraction()
 	this->frame->enableInteraction();
 	this->frameClip->setOpacity(255);
 	this->disabledLayer->setOpacity(0);
+	this->lockedSprite->setVisible(false);
 }
-

@@ -95,6 +95,8 @@ HexusOpponentData* Mara::getHexusOpponentData()
 			0.958f,
 			HexusOpponentData::generateDeck(32, 0.958f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),

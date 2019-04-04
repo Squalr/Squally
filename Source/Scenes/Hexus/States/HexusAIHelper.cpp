@@ -1,6 +1,7 @@
 #include "HexusAIHelper.h"
 
 #include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/States/StateBase.h"
 
@@ -167,4 +168,53 @@ std::tuple<Card*, int> HexusAIHelper::getStrongestAugmentedPlayerCard(GameState*
 	}
 
 	return std::tuple<Card*, int>(bestCard, bestDiff);
+}
+
+void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
+{
+	gameState->enemyHand->shuffle();
+
+	std::vector<Card*> extractedCards = std::vector<Card*>();
+
+	// Pull out high-value cards that should be played early on
+	gameState->enemyHand->removeCardsWhere([&](Card* card)
+	{
+		bool result = false;
+
+		if (card->cardData->cardKey == CardKeys::Binary0)
+		{
+			result = true;
+		}
+		else if (card->cardData->cardKey == CardKeys::Decimal0)
+		{
+			result = true;
+		}
+		else if (card->cardData->cardKey == CardKeys::Hex0)
+		{
+			result = true;
+		}
+
+		if (result)
+		{
+			extractedCards.push_back(card);
+		}
+
+		return result;
+	});
+
+	auto addBackCards = [&](std::string cardKey)
+	{
+		for (auto it = extractedCards.begin(); it != extractedCards.end(); it++)
+		{
+			if ((*it)->cardData->cardKey == cardKey)
+			{
+				gameState->enemyHand->insertCard(*it, 0.0f);
+			}
+		}
+	};
+
+	// Add them back in an optimal order (note this list is in reverse-priority since they are inserted at the beginning)
+	addBackCards(CardKeys::Decimal0);
+	addBackCards(CardKeys::Binary0);
+	addBackCards(CardKeys::Hex0);
 }

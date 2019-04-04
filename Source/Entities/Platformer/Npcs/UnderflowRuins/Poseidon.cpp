@@ -95,6 +95,8 @@ HexusOpponentData* Poseidon::getHexusOpponentData()
 			0.229f,
 			HexusOpponentData::generateDeck(32, 0.229f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

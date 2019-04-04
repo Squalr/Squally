@@ -6,6 +6,7 @@
 namespace cocos2d
 {
 	class ClippingNode;
+	class Sprite;
 }
 
 class LocalizedLabel;
@@ -34,6 +35,7 @@ protected:
 	
 	cocos2d::ClippingNode* frameClip;
 	ClickableNode* frame;
+	cocos2d::Sprite* lockedSprite;
 	LocalizedLabel* text;
 	std::function<void()> callback;
 

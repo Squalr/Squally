@@ -25,7 +25,7 @@
       "Strategy": "Random",
       "PresetCards": [
         "LogicalAnd",
-        "Peek",
+        "ShiftRight",
         "Flip2",
         "LogicalXor",
         "LogicalOr",

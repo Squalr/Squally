@@ -95,6 +95,8 @@ HexusOpponentData* Necron::getHexusOpponentData()
 			0.802f,
 			HexusOpponentData::generateDeck(32, 0.802f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

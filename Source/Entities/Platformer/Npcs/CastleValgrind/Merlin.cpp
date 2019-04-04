@@ -95,6 +95,8 @@ HexusOpponentData* Merlin::getHexusOpponentData()
 			0.458f,
 			HexusOpponentData::generateDeck(32, 0.458f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

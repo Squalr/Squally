@@ -15,6 +15,8 @@ public:
 
 	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
 	void insertCard(Card* card, float cardInsertDelay);
+	void insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
+	void insertCardFront(Card* card, float cardInsertDelay);
 	void enableClearOperationsOnInsert();
 	Card* removeCard(Card* card);
 	void removeCardsWhere(std::function<bool(Card*)> predicate);

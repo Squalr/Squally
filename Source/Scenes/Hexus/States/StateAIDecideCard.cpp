@@ -68,7 +68,8 @@ void StateAIDecideCard::onStateExit(GameState* gameState)
 
 void StateAIDecideCard::decideCardRandom(GameState* gameState)
 {
-	gameState->enemyHand->shuffle();
+	// Intelligently sort the opponent hand cards in order of descending priority (best cards first)
+	HexusAIHelper::applyIntelligentOpponentCardOrdering(gameState);
 
 	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
@@ -156,6 +157,8 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 
 					return;
 				}
+				
+				break;
 			}
 			case CardData::CardType::Special_KILL:
 			case CardData::CardType::Special_STEAL:

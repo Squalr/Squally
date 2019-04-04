@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Heal::getStringAr()
 	{
-		return "OR جميع البطاقات في صف واحد مع القيمة الثنائية 0011.";
+		return "OR كل بطاقة على التوالي مع نصف الهجوم الأصلي.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringBg()
 	{
-		return "OR всички карти в ред с двоичната стойност 0011.";
+		return "OR всяка карта в ред с половината от първоначалната им атака.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringCs()
 	{
-		return "OR všechny karty v řadě s binární hodnotou 0011.";
+		return "OR každou kartu v řadě s polovinou jejich původního útoku.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringDa()
 	{
-		return "OR alle kort i træk med binær værdi 0011.";
+		return "OR hvert kort i træk med halvdelen af ​​deres oprindelige angreb.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringDe()
 	{
-		return "OR alle Karten in einer Reihe mit dem Binärwert 0011.";
+		return "OR jede Karte in einer Reihe mit der Hälfte ihres ursprünglichen Angriffs.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringEl()
 	{
-		return "OR όλες τις κάρτες στη σειρά με τη δυαδική τιμή 0011.";
+		return "OR κάθε κάρτα σε σειρά με το ήμισυ της αρχικής τους επίθεσης.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringEn()
 	{
-		return "OR all cards in a row with the binary value 0011.";
+		return "OR each card in a row with half of their original attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringEs()
 	{
-		return "OR todas las cartas en una fila con el valor binario 0011.";
+		return "OR cada tarjeta en una fila con la mitad de su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringEs419()
 	{
-		return "OR todas las cartas en una fila con el valor binario 0011.";
+		return "OR cada tarjeta en una fila con la mitad de su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringFi()
 	{
-		return "OR kaikki kortit rivissä binääriarvolla 0011.";
+		return "OR jokainen kortti peräkkäin puolet alkuperäisestä hyökkäyksestään.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringFr()
 	{
-		return "OR toutes les cartes d'affilée avec la valeur binaire 0011.";
+		return "OR chaque carte dans une rangée avec la moitié de leur attaque initiale.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringHu()
 	{
-		return "OR minden kártya egy sorban a 0011 bináris értékkel.";
+		return "OR minden kártya egy sorban az eredeti támadásuk felével.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringIt()
 	{
-		return "OR tutte le carte di fila con il valore binario 0011.";
+		return "OR ogni carta di fila con metà del loro attacco originale.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringJa()
 	{
-		return "2進値0011を持つ行のすべてのカードの排他的論理和。";
+		return "それぞれのカードの攻撃力の半分で、各カードのORを続けます。";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringKo()
 	{
-		return "행의 모든 ​​카드를 이진 값 0011으로 OR합니다.";
+		return "각각의 카드를 원래 공격의 반으로 OR합니다.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringNl()
 	{
-		return "OR alle kaarten op een rij met de binaire waarde 0011.";
+		return "OR elke kaart op een rij met de helft van hun oorspronkelijke aanval.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringNo()
 	{
-		return "OR alle kortene på rad med binærverdien 0011.";
+		return "OR hvert kort på rad med halvparten av deres opprinnelige angrep.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringPl()
 	{
-		return "OR wszystkie karty z rzędu o wartości binarnej 0011.";
+		return "OR każdej karty z rzędu z połową oryginalnego ataku.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringPt()
 	{
-		return "OR todas as cartas em uma linha com o valor binário 0011.";
+		return "OR cada cartão em uma linha com metade do seu ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringPtBr()
 	{
-		return "OR todas as cartas em uma linha com o valor binário 0011.";
+		return "OR cada cartão em uma linha com metade do seu ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringRo()
 	{
-		return "OR toate cardurile într-un rând cu valoarea binară 0011.";
+		return "OR fiecare carte la rând cu jumătate din atacul lor original.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringRu()
 	{
-		return "OR все карты подряд с двоичным значением 0011.";
+		return "OR каждой карты подряд с половиной их первоначальной атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringSv()
 	{
-		return "OR alla kort i rad med binärvärdet 0011.";
+		return "OR varje kort i rad med hälften av deras ursprungliga attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringTh()
 	{
-		return "OR ไพ่ทั้งหมดในแถวที่มีค่าไบนารี 0011";
+		return "ORแต่ละใบเรียงต่อกันโดยครึ่งหนึ่งของการโจมตีเริ่มต้น";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringTr()
 	{
-		return "OR, üst üste tüm kartları 0011 ikili değerine sahip.";
+		return "OR, her kartın orijinal ataklarının yarısı ile üst üste gelmesini sağlar.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringUk()
 	{
-		return "OR всі карти в рядку з двійковим значенням 0011.";
+		return "OR кожну карту в рядку з половиною початкової атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringVi()
 	{
-		return "OR tất cả các thẻ liên tiếp với giá trị nhị phân 0011.";
+		return "OR mỗi thẻ liên tiếp với một nửa cuộc tấn công ban đầu của họ.";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringZhCn()
 	{
-		return "使用二进制值0011对连续的所有卡进行异或。";
+		return "将每张卡连续OR与其原始攻击的一半。";
 	}
 
 	std::string Hexus_CardDescriptions_Heal::getStringZhTw()
 	{
-		return "使用二進制值0011對連續的所有卡進行異或。";
+		return "將每張卡連續OR與其原始攻擊的一半。";
 	}
 }
