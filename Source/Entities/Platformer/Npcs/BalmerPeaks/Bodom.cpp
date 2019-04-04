@@ -93,7 +93,7 @@ HexusOpponentData* Bodom::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.531f,
-			HexusOpponentData::generateDeck(25, 0.531f,
+			HexusOpponentData::generateDeck(32, 0.531f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

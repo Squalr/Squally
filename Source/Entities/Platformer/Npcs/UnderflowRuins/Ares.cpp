@@ -93,7 +93,7 @@ HexusOpponentData* Ares::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.156f,
-			HexusOpponentData::generateDeck(25, 0.156f,
+			HexusOpponentData::generateDeck(32, 0.156f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

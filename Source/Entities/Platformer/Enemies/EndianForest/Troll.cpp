@@ -93,7 +93,7 @@ HexusOpponentData* Troll::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.900f,
-			HexusOpponentData::generateDeck(25, 0.900f,
+			HexusOpponentData::generateDeck(32, 0.900f,
 			{
 
 			}),

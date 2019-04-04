@@ -93,7 +93,7 @@ HexusOpponentData* Mildred::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.323f,
-			HexusOpponentData::generateDeck(25, 0.323f,
+			HexusOpponentData::generateDeck(32, 0.323f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

@@ -93,7 +93,7 @@ HexusOpponentData* Illia::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.979f,
-			HexusOpponentData::generateDeck(25, 0.979f,
+			HexusOpponentData::generateDeck(32, 0.979f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

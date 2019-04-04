@@ -93,7 +93,7 @@ HexusOpponentData* Scaldor::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.750f,
-			HexusOpponentData::generateDeck(25, 0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

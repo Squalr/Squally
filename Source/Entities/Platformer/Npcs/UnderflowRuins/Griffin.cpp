@@ -93,7 +93,7 @@ HexusOpponentData* Griffin::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.375f,
-			HexusOpponentData::generateDeck(25, 0.375f,
+			HexusOpponentData::generateDeck(32, 0.375f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

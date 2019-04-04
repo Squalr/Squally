@@ -93,7 +93,7 @@ HexusOpponentData* Ajax::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.135f,
-			HexusOpponentData::generateDeck(25, 0.135f,
+			HexusOpponentData::generateDeck(32, 0.135f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

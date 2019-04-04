@@ -93,7 +93,7 @@ HexusOpponentData* Raka::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.354f,
-			HexusOpponentData::generateDeck(25, 0.354f,
+			HexusOpponentData::generateDeck(32, 0.354f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

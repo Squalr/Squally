@@ -17,4 +17,6 @@ private:
 	typedef StateBase super;
 	StateTurnEnd();
 	~StateTurnEnd();
+
+	void runIncrementHex0Effect(GameState* gameState);
 };

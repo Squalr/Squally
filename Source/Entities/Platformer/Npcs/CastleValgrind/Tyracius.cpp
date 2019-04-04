@@ -93,7 +93,7 @@ HexusOpponentData* Tyracius::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.500f,
-			HexusOpponentData::generateDeck(25, 0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),

@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Sound/SoundManager.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
@@ -116,8 +117,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			// Draw 1 card effect for 0000 attack cards
-			if (gameState->selectedHandCard->getOriginalAttack() == 0)
+			// Draw card effect for decimal 0 card
+			if (gameState->selectedHandCard->cardData->cardKey == CardKeys::Decimal0)
 			{
 				selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
 			}
@@ -157,7 +158,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				{
 					Card* card = *it;
 
-					Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType, card->getOriginalAttack());
+					Card::Operation operation = gameState->selectedHandCard->toOperation(card->cardData->getIntrinsicImmediate());
 
 					card->addOperation(operation);
 				}
@@ -192,8 +193,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
 				{
 					Card* card = *it;
-
-					Card::Operation operation = Card::toOperation(gameState->selectedHandCard->cardData->cardType);
+					
+					Card::Operation operation = gameState->selectedHandCard->toOperation(card->cardData->getIntrinsicImmediate());
 
 					card->addOperation(operation);
 				}
@@ -239,19 +240,19 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					}
 					case CardData::CardType::Special_HEAL:
 					{
-						gameState->selectedRow->runEffect(CardEffects::CardEffect::Lightning);
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy);
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::SpinningMagic);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
 						break;
 					}
 					case CardData::CardType::Special_POISON:
 					{
-						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::Poison);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Acid);
 						break;
 					}
 					case CardData::CardType::Special_DRANK:
 					{
-						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialStorm);
+						gameState->selectedRow->runEffect(CardEffects::CardEffect::StarHit);
 						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
 						break;
 					}
@@ -282,8 +283,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
-				Card::Operation operation = Card::toOperation(
-					gameState->selectedHandCard->cardData->cardType,
+				Card::Operation operation = gameState->selectedHandCard->toOperation(
 					gameState->selectedSourceCard->getAttack()
 				);
 
@@ -350,8 +350,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
-				Card::Operation operation = Card::toOperation(
-					gameState->selectedHandCard->cardData->cardType,
+				Card::Operation operation = gameState->selectedHandCard->toOperation(
 					gameState->selectedDestinationCard->getAttack()
 				);
 
@@ -402,7 +401,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 					for (auto it = targetRow->rowCards.begin(); it != targetRow->rowCards.end(); it++)
 					{
-						if ((*it)->getAttack() <= 0b0100)
+						if ((*it)->cardData->cardKey != CardKeys::Binary0 && (*it)->getAttack() <= (*it)->getOriginalAttack())
 						{
 							toRemove.push_back(*it);
 						}

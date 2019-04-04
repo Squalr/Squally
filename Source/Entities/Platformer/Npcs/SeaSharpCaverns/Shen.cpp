@@ -93,7 +93,7 @@ HexusOpponentData* Shen::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.375f,
-			HexusOpponentData::generateDeck(25, 0.375f,
+			HexusOpponentData::generateDeck(32, 0.375f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

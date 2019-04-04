@@ -36,6 +36,8 @@ namespace ParticleResources
 	extern const std::string Hexus_CardEffects_MeteorAlt;
 	extern const std::string Hexus_CardEffects_MeteorBlue;
 	extern const std::string Hexus_CardEffects_MeteorPurple;
+	extern const std::string Hexus_CardEffects_Nether;
+	extern const std::string Hexus_CardEffects_Poison;
 	extern const std::string Hexus_CardEffects_RadialAura;
 	extern const std::string Hexus_CardEffects_RadialFire;
 	extern const std::string Hexus_CardEffects_RadialGalaxy;
@@ -54,6 +56,7 @@ namespace ParticleResources
 	extern const std::string Hover;
 	extern const std::string MindBlast;
 	extern const std::string Objects_Smoke;
+	extern const std::string Poison;
 	extern const std::string Rain;
 	extern const std::string Rain2;
 	extern const std::string Spark;

@@ -93,7 +93,7 @@ HexusOpponentData* Radon::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.917f,
-			HexusOpponentData::generateDeck(25, 0.917f,
+			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

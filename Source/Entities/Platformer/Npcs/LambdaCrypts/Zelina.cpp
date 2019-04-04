@@ -93,7 +93,7 @@ HexusOpponentData* Zelina::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.792f,
-			HexusOpponentData::generateDeck(25, 0.792f,
+			HexusOpponentData::generateDeck(32, 0.792f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),

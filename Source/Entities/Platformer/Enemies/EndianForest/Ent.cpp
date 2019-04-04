@@ -93,7 +93,7 @@ HexusOpponentData* Ent::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.450f,
-			HexusOpponentData::generateDeck(25, 0.450f,
+			HexusOpponentData::generateDeck(32, 0.450f,
 			{
 
 			}),

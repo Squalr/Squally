@@ -93,7 +93,7 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.800f,
-			HexusOpponentData::generateDeck(25, 0.800f,
+			HexusOpponentData::generateDeck(32, 0.800f,
 			{
 
 			}),

@@ -93,7 +93,7 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.058f,
-			HexusOpponentData::generateDeck(25, 0.058f,
+			HexusOpponentData::generateDeck(32, 0.058f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

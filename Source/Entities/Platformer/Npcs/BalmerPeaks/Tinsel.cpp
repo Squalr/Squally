@@ -93,7 +93,7 @@ HexusOpponentData* Tinsel::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.625f,
-			HexusOpponentData::generateDeck(25, 0.625f,
+			HexusOpponentData::generateDeck(32, 0.625f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

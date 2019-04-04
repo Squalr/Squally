@@ -93,7 +93,7 @@ HexusOpponentData* PrincessDawn::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.344f,
-			HexusOpponentData::generateDeck(25, 0.344f,
+			HexusOpponentData::generateDeck(32, 0.344f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

@@ -93,7 +93,7 @@ HexusOpponentData* Poseidon::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.229f,
-			HexusOpponentData::generateDeck(25, 0.229f,
+			HexusOpponentData::generateDeck(32, 0.229f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),

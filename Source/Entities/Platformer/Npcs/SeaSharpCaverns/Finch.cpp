@@ -93,7 +93,7 @@ HexusOpponentData* Finch::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.292f,
-			HexusOpponentData::generateDeck(25, 0.292f,
+			HexusOpponentData::generateDeck(32, 0.292f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

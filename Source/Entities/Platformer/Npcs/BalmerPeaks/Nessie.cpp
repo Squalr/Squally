@@ -93,7 +93,7 @@ HexusOpponentData* Nessie::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.594f,
-			HexusOpponentData::generateDeck(25, 0.594f,
+			HexusOpponentData::generateDeck(32, 0.594f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

@@ -93,7 +93,7 @@ HexusOpponentData* Blackbeard::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.385f,
-			HexusOpponentData::generateDeck(25, 0.385f,
+			HexusOpponentData::generateDeck(32, 0.385f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

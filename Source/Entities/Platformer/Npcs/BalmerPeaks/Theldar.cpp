@@ -93,7 +93,7 @@ HexusOpponentData* Theldar::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.615f,
-			HexusOpponentData::generateDeck(25, 0.615f,
+			HexusOpponentData::generateDeck(32, 0.615f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

@@ -93,7 +93,7 @@ HexusOpponentData* PrincessNebea::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.812f,
-			HexusOpponentData::generateDeck(25, 0.812f,
+			HexusOpponentData::generateDeck(32, 0.812f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

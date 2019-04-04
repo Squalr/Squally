@@ -93,7 +93,7 @@ HexusOpponentData* Merlin::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.458f,
-			HexusOpponentData::generateDeck(25, 0.458f,
+			HexusOpponentData::generateDeck(32, 0.458f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),

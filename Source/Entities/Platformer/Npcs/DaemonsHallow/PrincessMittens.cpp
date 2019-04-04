@@ -93,7 +93,7 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.729f,
-			HexusOpponentData::generateDeck(25, 0.729f,
+			HexusOpponentData::generateDeck(32, 0.729f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

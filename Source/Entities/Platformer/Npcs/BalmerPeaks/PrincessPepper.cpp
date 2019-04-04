@@ -93,7 +93,7 @@ HexusOpponentData* PrincessPepper::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			0.604f,
-			HexusOpponentData::generateDeck(25, 0.604f,
+			HexusOpponentData::generateDeck(32, 0.604f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

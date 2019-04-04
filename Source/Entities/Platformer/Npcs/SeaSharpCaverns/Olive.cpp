@@ -93,7 +93,7 @@ HexusOpponentData* Olive::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.333f,
-			HexusOpponentData::generateDeck(25, 0.333f,
+			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),

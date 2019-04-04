@@ -93,7 +93,7 @@ HexusOpponentData* Magnus::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.708f,
-			HexusOpponentData::generateDeck(25, 0.708f,
+			HexusOpponentData::generateDeck(32, 0.708f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),

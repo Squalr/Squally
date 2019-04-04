@@ -93,7 +93,7 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.146f,
-			HexusOpponentData::generateDeck(25, 0.146f,
+			HexusOpponentData::generateDeck(32, 0.146f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),

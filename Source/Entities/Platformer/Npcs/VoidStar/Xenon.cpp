@@ -93,7 +93,7 @@ HexusOpponentData* Xenon::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.896f,
-			HexusOpponentData::generateDeck(25, 0.896f,
+			HexusOpponentData::generateDeck(32, 0.896f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),

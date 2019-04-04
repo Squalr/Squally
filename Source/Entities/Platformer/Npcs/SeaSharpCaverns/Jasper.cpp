@@ -93,7 +93,7 @@ HexusOpponentData* Jasper::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.312f,
-			HexusOpponentData::generateDeck(25, 0.312f,
+			HexusOpponentData::generateDeck(32, 0.312f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

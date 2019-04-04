@@ -93,7 +93,7 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.300f,
-			HexusOpponentData::generateDeck(25, 0.300f,
+			HexusOpponentData::generateDeck(32, 0.300f,
 			{
 
 			}),

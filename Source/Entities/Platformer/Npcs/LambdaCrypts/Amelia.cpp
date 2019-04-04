@@ -93,7 +93,7 @@ HexusOpponentData* Amelia::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.760f,
-			HexusOpponentData::generateDeck(25, 0.760f,
+			HexusOpponentData::generateDeck(32, 0.760f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

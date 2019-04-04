@@ -93,7 +93,7 @@ HexusOpponentData* Thor::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.906f,
-			HexusOpponentData::generateDeck(25, 0.906f,
+			HexusOpponentData::generateDeck(32, 0.906f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),

@@ -93,7 +93,7 @@ HexusOpponentData* Mara::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.958f,
-			HexusOpponentData::generateDeck(25, 0.958f,
+			HexusOpponentData::generateDeck(32, 0.958f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),

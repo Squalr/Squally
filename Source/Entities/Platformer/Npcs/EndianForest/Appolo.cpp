@@ -93,7 +93,7 @@ HexusOpponentData* Appolo::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.125f,
-			HexusOpponentData::generateDeck(25, 0.125f,
+			HexusOpponentData::generateDeck(32, 0.125f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

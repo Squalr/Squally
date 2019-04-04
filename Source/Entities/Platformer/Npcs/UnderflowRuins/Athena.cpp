@@ -93,7 +93,7 @@ HexusOpponentData* Athena::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
 			0.167f,
-			HexusOpponentData::generateDeck(25, 0.167f,
+			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

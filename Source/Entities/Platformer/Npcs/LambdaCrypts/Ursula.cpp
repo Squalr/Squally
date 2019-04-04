@@ -93,7 +93,7 @@ HexusOpponentData* Ursula::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
 			0.844f,
-			HexusOpponentData::generateDeck(25, 0.844f,
+			HexusOpponentData::generateDeck(32, 0.844f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),

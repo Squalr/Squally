@@ -93,7 +93,7 @@ HexusOpponentData* Ash::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.635f,
-			HexusOpponentData::generateDeck(25, 0.635f,
+			HexusOpponentData::generateDeck(32, 0.635f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

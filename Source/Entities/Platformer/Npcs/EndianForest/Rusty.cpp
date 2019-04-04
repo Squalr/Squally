@@ -93,7 +93,7 @@ HexusOpponentData* Rusty::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.019f,
-			HexusOpponentData::generateDeck(25, 0.019f,
+			HexusOpponentData::generateDeck(32, 0.019f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

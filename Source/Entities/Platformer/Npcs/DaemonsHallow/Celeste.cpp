@@ -93,7 +93,7 @@ HexusOpponentData* Celeste::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.656f,
-			HexusOpponentData::generateDeck(25, 0.656f,
+			HexusOpponentData::generateDeck(32, 0.656f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

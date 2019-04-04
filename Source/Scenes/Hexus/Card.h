@@ -41,13 +41,6 @@ public:
 			XOR,
 			ADD,
 			SUB,
-
-			// Not true operations, but it's convenient to have them here
-			CLEAR,
-			DRANK,
-			POISON,
-			HEAL,
-			SUDDEN_DEATH,
 		};
 
 		OperationType operationType;
@@ -60,8 +53,8 @@ public:
 	};
 
 	static Card* create(CardStyle cardStyle, CardData* data);
-	static Operation toOperation(CardData::CardType playedCardType, unsigned int immediate = 0);
 
+	Operation toOperation(unsigned int immediate = 0);
 	void reveal();
 	void hide();
 	void focus();

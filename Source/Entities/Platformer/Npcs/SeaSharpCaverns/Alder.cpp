@@ -93,7 +93,7 @@ HexusOpponentData* Alder::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.260f,
-			HexusOpponentData::generateDeck(25, 0.260f,
+			HexusOpponentData::generateDeck(32, 0.260f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),

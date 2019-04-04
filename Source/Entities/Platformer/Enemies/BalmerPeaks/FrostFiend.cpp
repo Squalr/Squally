@@ -93,7 +93,7 @@ HexusOpponentData* FrostFiend::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			1.000f,
-			HexusOpponentData::generateDeck(25, 1.000f,
+			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
 			}),

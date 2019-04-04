@@ -430,11 +430,11 @@ int CardRow::simulateCardEffect(Card* card)
 		case CardData::CardType::Special_CLEAR:
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
-			Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
-
 			for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 			{
 				Card* rowCard = *it;
+
+				Card::Operation operation = card->toOperation(rowCard->cardData->getIntrinsicImmediate());
 				int before = rowCard->getAttack();
 				int after = rowCard->simulateOperation(operation);
 

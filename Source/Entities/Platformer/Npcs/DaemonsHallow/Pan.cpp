@@ -93,7 +93,7 @@ HexusOpponentData* Pan::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.719f,
-			HexusOpponentData::generateDeck(25, 0.719f,
+			HexusOpponentData::generateDeck(32, 0.719f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

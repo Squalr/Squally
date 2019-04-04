@@ -24,11 +24,15 @@ def main():
 
 	while(True):
 		if (encodedJson):
-			inputStr = base64.b64decode(encodedJson)
+			inputStr = str(base64.b64decode(encodedJson).decode('utf-8')
+			)
+
 			encodedJson = ""
 		else:
 			print("Paste in the translation json from https://translatr.varunmalhotra.xyz/")
-			inputStr = input().replace("&#39;", "'").replace("&#39;", "'").replace("&quot;", "'")
+			inputStr = input()
+
+		inputStr = inputStr.replace("&#39;", "'").replace("&#39;", "'").replace("&quot;", "'")
 		
 		translations = json.loads(inputStr)
 		

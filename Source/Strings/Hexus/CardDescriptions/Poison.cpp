@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Poison::getStringAr()
 	{
-		return "AND جميع البطاقات في صف واحد مع القيمة الثنائية 0011.";
+		return "AND كل بطاقة على التوالي مع نصف الهجوم الأصلي.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringBg()
 	{
-		return "AND всички карти в ред с двоичната стойност 0011.";
+		return "AND всяка карта в ред с половината от първоначалната им атака.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringCs()
 	{
-		return "AND všechny karty v řadě s binární hodnotou 0011.";
+		return "AND každou kartu v řadě s polovinou jejich původního útoku.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringDa()
 	{
-		return "AND alle kort i træk med binær værdi 0011.";
+		return "AND hvert kort i træk med halvdelen af ​​deres oprindelige angreb.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringDe()
 	{
-		return "AND alle Karten in einer Reihe mit dem Binärwert 0011.";
+		return "AND jede Karte in einer Reihe mit der Hälfte ihres ursprünglichen Angriffs.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringEl()
 	{
-		return "AND όλες τις κάρτες στη σειρά με τη δυαδική τιμή 0011.";
+		return "AND κάθε κάρτα σε σειρά με το ήμισυ της αρχικής τους επίθεσης.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringEn()
 	{
-		return "AND all cards in a row with the binary value 0011.";
+		return "AND each card in a row with half of their original attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringEs()
 	{
-		return "AND todas las cartas en una fila con el valor binario 0011.";
+		return "AND cada tarjeta en una fila con la mitad de su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringEs419()
 	{
-		return "AND todas las cartas en una fila con el valor binario 0011.";
+		return "AND cada tarjeta en una fila con la mitad de su ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringFi()
 	{
-		return "AND kaikki kortit rivissä binääriarvolla 0011.";
+		return "AND jokainen kortti peräkkäin puolet alkuperäisestä hyökkäyksestään.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringFr()
 	{
-		return "AND toutes les cartes d'affilée avec la valeur binaire 0011.";
+		return "AND chaque carte dans une rangée avec la moitié de leur attaque initiale.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringHu()
 	{
-		return "AND minden kártya egy sorban a 0011 bináris értékkel.";
+		return "AND minden kártya egy sorban az eredeti támadásuk felével.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringIt()
 	{
-		return "AND tutte le carte di fila con il valore binario 0011.";
+		return "AND ogni carta di fila con metà del loro attacco originale.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringJa()
 	{
-		return "2進値0011を持つ行のすべてのカードの排他的論理和。";
+		return "それぞれのカードの攻撃力の半分で、各カードのANDを続けます。";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringKo()
 	{
-		return "행의 모든 ​​카드를 이진 값 0011으로 AND합니다.";
+		return "각각의 카드를 원래 공격의 반으로 AND합니다.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringNl()
 	{
-		return "AND alle kaarten op een rij met de binaire waarde 0011.";
+		return "AND elke kaart op een rij met de helft van hun oorspronkelijke aanval.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringNo()
 	{
-		return "AND alle kortene på rad med binærverdien 0011.";
+		return "AND hvert kort på rad med halvparten av deres opprinnelige angrep.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringPl()
 	{
-		return "AND wszystkie karty z rzędu o wartości binarnej 0011.";
+		return "AND każdej karty z rzędu z połową oryginalnego ataku.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringPt()
 	{
-		return "AND todas as cartas em uma linha com o valor binário 0011.";
+		return "AND cada cartão em uma linha com metade do seu ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringPtBr()
 	{
-		return "AND todas as cartas em uma linha com o valor binário 0011.";
+		return "AND cada cartão em uma linha com metade do seu ataque original.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringRo()
 	{
-		return "AND toate cardurile într-un rând cu valoarea binară 0011.";
+		return "AND fiecare carte la rând cu jumătate din atacul lor original.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringRu()
 	{
-		return "AND все карты подряд с двоичным значением 0011.";
+		return "AND каждой карты подряд с половиной их первоначальной атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringSv()
 	{
-		return "AND alla kort i rad med binärvärdet 0011.";
+		return "AND varje kort i rad med hälften av deras ursprungliga attack.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringTh()
 	{
-		return "AND ไพ่ทั้งหมดในแถวที่มีค่าไบนารี 0011";
+		return "ANDแต่ละใบเรียงต่อกันโดยครึ่งหนึ่งของการโจมตีเริ่มต้น";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringTr()
 	{
-		return "AND, üst üste tüm kartları 0011 ikili değerine sahip.";
+		return "AND, her kartın orijinal ataklarının yarısı ile üst üste gelmesini sağlar.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringUk()
 	{
-		return "AND всі карти в рядку з двійковим значенням 0011.";
+		return "AND кожну карту в рядку з половиною початкової атаки.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringVi()
 	{
-		return "AND tất cả các thẻ liên tiếp với giá trị nhị phân 0011.";
+		return "AND mỗi thẻ liên tiếp với một nửa cuộc tấn công ban đầu của họ.";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringZhCn()
 	{
-		return "使用二进制值0011对连续的所有卡进行异或。";
+		return "将每张卡连续AND与其原始攻击的一半。";
 	}
 
 	std::string Hexus_CardDescriptions_Poison::getStringZhTw()
 	{
-		return "使用二進制值0011對連續的所有卡進行異或。";
+		return "將每張卡連續AND與其原始攻擊的一半。";
 	}
 }

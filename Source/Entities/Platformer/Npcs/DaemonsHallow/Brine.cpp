@@ -93,7 +93,7 @@ HexusOpponentData* Brine::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.646f,
-			HexusOpponentData::generateDeck(25, 0.646f,
+			HexusOpponentData::generateDeck(32, 0.646f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
