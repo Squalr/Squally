@@ -95,6 +95,8 @@ HexusOpponentData* Horus::getHexusOpponentData()
 			0.219f,
 			HexusOpponentData::generateDeck(32, 0.219f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),

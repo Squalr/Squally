@@ -95,6 +95,8 @@ HexusOpponentData* Viper::getHexusOpponentData()
 			0.854f,
 			HexusOpponentData::generateDeck(32, 0.854f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),

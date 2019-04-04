@@ -95,6 +95,8 @@ HexusOpponentData* Shen::getHexusOpponentData()
 			0.375f,
 			HexusOpponentData::generateDeck(32, 0.375f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

@@ -24,6 +24,8 @@
       "Strength": "(1.0f / 8.0f) * (7.0f + (1.0f / 12.0f) * 6.0f)",
       "Strategy": "Random",
       "PresetCards": [
+        "Greed",
+        "Greed",
         "Drank",
         "Steal",
         "Subtraction",
@@ -33,7 +35,6 @@
         "Inverse",
         "ReturnToHand",
         "Subtraction"
-
       ]
     }
   }

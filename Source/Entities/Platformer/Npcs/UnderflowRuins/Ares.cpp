@@ -95,6 +95,8 @@ HexusOpponentData* Ares::getHexusOpponentData()
 			0.156f,
 			HexusOpponentData::generateDeck(32, 0.156f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),

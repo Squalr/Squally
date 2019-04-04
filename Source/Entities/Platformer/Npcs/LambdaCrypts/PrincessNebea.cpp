@@ -95,6 +95,8 @@ HexusOpponentData* PrincessNebea::getHexusOpponentData()
 			0.812f,
 			HexusOpponentData::generateDeck(32, 0.812f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),

@@ -95,6 +95,8 @@ HexusOpponentData* Magnus::getHexusOpponentData()
 			0.708f,
 			HexusOpponentData::generateDeck(32, 0.708f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

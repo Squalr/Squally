@@ -95,6 +95,8 @@ HexusOpponentData* Radon::getHexusOpponentData()
 			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
@@ -103,7 +105,7 @@ HexusOpponentData* Radon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
+				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 
 			}),
 			nullptr

@@ -1,6 +1,7 @@
 #include "HexusChapterPreview.h"
 
 #include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCSprite.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -9,6 +10,7 @@
 
 #include "Resources/SoundResources.h"
 #include "Resources/HexusResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -27,6 +29,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 	this->callback = nullptr;
 	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
+	this->lockedSprite = Sprite::create(UIResources::Menus_Icons_Lock);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedChapterName);
 
 	DrawNode* clipStencil = DrawNode::create();
@@ -41,6 +44,9 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
 	this->frameClip->setCascadeOpacityEnabled(true);
 
+	this->lockedSprite->setVisible(false);
+	this->text->setVisible(false);
+
 	this->text->enableOutline(Color4B::BLACK, 2);
 	this->text->setColor(Color3B::WHITE);
 
@@ -49,6 +55,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 
 	this->addChild(this->frameClip);
 	this->addChild(this->frame);
+	this->addChild(this->lockedSprite);
 	this->addChild(this->text);
 }
 
@@ -58,7 +65,8 @@ HexusChapterPreview::~HexusChapterPreview()
 
 void HexusChapterPreview::initializePositions()
 {
-	 this->text->setPosition(Vec2(0.0f, -188.0f));
+	this->text->setPosition(Vec2(0.0f, -188.0f));
+	this->lockedSprite->setPosition(Vec2(0.0f, -188.0f));
 }
 
 void HexusChapterPreview::initializeListeners()
@@ -70,14 +78,18 @@ void HexusChapterPreview::initializeListeners()
 
 void HexusChapterPreview::disableInteraction()
 {
-	this->frame->disableInteraction(128);
+	this->frame->disableInteraction();
 	this->frameClip->setOpacity(128);
+	this->text->setVisible(false);
+	this->lockedSprite->setVisible(true);
 }
 
 void HexusChapterPreview::enableInteraction()
 {
 	this->frame->enableInteraction();
 	this->frameClip->setOpacity(255);
+	this->text->setVisible(true);
+	this->lockedSprite->setVisible(false);
 }
 
 void HexusChapterPreview::setMouseClickCallback(std::function<void()> callback)

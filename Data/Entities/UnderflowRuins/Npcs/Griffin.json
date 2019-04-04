@@ -24,12 +24,14 @@
       "Strength": "(2.0f / 8.0f) * (1.0f + (1.0f / 12.0f) * 6.0f)",
       "Strategy": "Random",
       "PresetCards": [
+        "Greed",
+        "Greed",
         "Addition",
-        "Peek",
+        "ShiftLeft",
         "LogicalAnd",
         "LogicalOr",
         "Addition",
-        "Peek",
+        "ShiftRight",
         "LogicalXor",
         "Flip2"
       ]

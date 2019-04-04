@@ -95,6 +95,8 @@ HexusOpponentData* Olive::getHexusOpponentData()
 			0.333f,
 			HexusOpponentData::generateDeck(32, 0.333f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Poison),

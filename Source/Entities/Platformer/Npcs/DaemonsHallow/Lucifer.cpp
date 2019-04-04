@@ -95,6 +95,8 @@ HexusOpponentData* Lucifer::getHexusOpponentData()
 			0.698f,
 			HexusOpponentData::generateDeck(32, 0.698f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),

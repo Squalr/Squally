@@ -95,6 +95,8 @@ HexusOpponentData* Zelina::getHexusOpponentData()
 			0.792f,
 			HexusOpponentData::generateDeck(32, 0.792f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),

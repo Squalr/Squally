@@ -95,6 +95,8 @@ HexusOpponentData* Thurstan::getHexusOpponentData()
 			0.490f,
 			HexusOpponentData::generateDeck(32, 0.490f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),

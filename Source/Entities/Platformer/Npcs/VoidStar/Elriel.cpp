@@ -95,6 +95,8 @@ HexusOpponentData* Elriel::getHexusOpponentData()
 			0.990f,
 			HexusOpponentData::generateDeck(32, 0.990f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),

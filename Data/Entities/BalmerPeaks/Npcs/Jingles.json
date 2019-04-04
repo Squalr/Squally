@@ -25,14 +25,16 @@
       "Strategy": "Random",
       "PresetCards": [
         "Greed",
-        "Peek",
-        "Addition",
-        "LogicalAnd",
-        "LogicalOr",
-        "LogicalXor",
+        "Greed",
+        "Kill",
+        "Clear",
+        "Mov",
+        "Steal",
+        "Absorb",
+        "Steal",
         "ShiftLeft",
-        "ShiftRight",
-        "ReturnToHand"
+        "Poison",
+        "Absorb"
       ]
     }
   }

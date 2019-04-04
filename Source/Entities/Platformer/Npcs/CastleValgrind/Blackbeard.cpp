@@ -95,6 +95,8 @@ HexusOpponentData* Blackbeard::getHexusOpponentData()
 			0.385f,
 			HexusOpponentData::generateDeck(32, 0.385f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Poison),

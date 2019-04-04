@@ -95,6 +95,8 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 			0.115f,
 			HexusOpponentData::generateDeck(32, 0.115f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

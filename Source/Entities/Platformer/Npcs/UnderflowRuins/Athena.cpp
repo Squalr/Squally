@@ -95,6 +95,8 @@ HexusOpponentData* Athena::getHexusOpponentData()
 			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),

@@ -43,7 +43,7 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 
 	gameState->clearInteraction();
 
-	if (!gameState->enemyPassed && !gameState->playerPassed)
+	if (!(gameState->enemyPassed && gameState->playerPassed))
 	{
 		this->runIncrementHex0Effect(gameState);
 	}

@@ -95,6 +95,8 @@ HexusOpponentData* Raka::getHexusOpponentData()
 			0.354f,
 			HexusOpponentData::generateDeck(32, 0.354f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Poison),

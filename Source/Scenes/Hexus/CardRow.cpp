@@ -145,6 +145,56 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 	}
 }
 
+void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay)
+{
+	for (auto it = cards.begin(); it != cards.end(); it++)
+	{
+		Card* card = *it;
+
+		if (card == nullptr)
+		{
+			return;
+		}
+
+		GameUtils::changeParent(card, this, true);
+
+		card->setMouseOverCallback(nullptr);
+		card->setMouseClickCallback(nullptr);
+		card->reveal();
+
+		this->rowCards.insert(this->rowCards.begin(), card);
+
+		if (this->clearOperationsOnInsert)
+		{
+			card->clearOperations();
+		}
+	}
+
+	this->setCardPositions(cardInsertDelay, indexDelay);
+}
+
+void CardRow::insertCardFront(Card* card, float cardInsertDelay)
+{
+	if (card == nullptr)
+	{
+		return;
+	}
+
+	GameUtils::changeParent(card, this, true);
+
+	card->setMouseOverCallback(nullptr);
+	card->setMouseClickCallback(nullptr);
+	card->reveal();
+
+	this->rowCards.insert(this->rowCards.begin(), card);
+	this->setCardPositions(cardInsertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
+}
+
 void CardRow::enableClearOperationsOnInsert()
 {
 	this->clearOperationsOnInsert = true;

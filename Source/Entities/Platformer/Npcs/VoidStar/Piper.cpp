@@ -95,6 +95,8 @@ HexusOpponentData* Piper::getHexusOpponentData()
 			0.938f,
 			HexusOpponentData::generateDeck(32, 0.938f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),

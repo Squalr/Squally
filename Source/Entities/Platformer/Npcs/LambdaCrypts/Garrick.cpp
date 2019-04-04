@@ -96,8 +96,10 @@ HexusOpponentData* Garrick::getHexusOpponentData()
 			HexusOpponentData::generateDeck(32, 0.781f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),

@@ -95,6 +95,8 @@ HexusOpponentData* Ursula::getHexusOpponentData()
 			0.844f,
 			HexusOpponentData::generateDeck(32, 0.844f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),

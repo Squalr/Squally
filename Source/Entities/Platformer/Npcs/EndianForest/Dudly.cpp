@@ -95,6 +95,8 @@ HexusOpponentData* Dudly::getHexusOpponentData()
 			0.096f,
 			HexusOpponentData::generateDeck(32, 0.096f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),

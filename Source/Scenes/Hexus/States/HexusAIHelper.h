@@ -13,4 +13,5 @@ public:
 	static std::tuple<Card*, int> getBestOperationTarget(Card* operationCard, GameState* gameState);
 	static std::tuple<Card*, int> getStrongestPlayerCard(GameState* gameState);
 	static std::tuple<Card*, int> getStrongestAugmentedPlayerCard(GameState* gameState);
+	static void applyIntelligentOpponentCardOrdering(GameState* gameState);
 };

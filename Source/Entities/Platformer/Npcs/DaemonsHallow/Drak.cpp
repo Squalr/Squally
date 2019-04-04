@@ -95,6 +95,8 @@ HexusOpponentData* Drak::getHexusOpponentData()
 			0.677f,
 			HexusOpponentData::generateDeck(32, 0.677f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

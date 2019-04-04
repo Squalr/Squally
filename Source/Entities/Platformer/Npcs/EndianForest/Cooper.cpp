@@ -95,6 +95,8 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 			0.106f,
 			HexusOpponentData::generateDeck(32, 0.106f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
@@ -102,7 +104,7 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 
 			}),
 			nullptr

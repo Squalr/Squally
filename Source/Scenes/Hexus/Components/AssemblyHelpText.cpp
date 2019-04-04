@@ -167,6 +167,10 @@ void AssemblyHelpText::onAnyStateChange(GameState* gameState)
 					case CardData::CardType::Special_SHL:
 					case CardData::CardType::Special_SHR:
 					case CardData::CardType::Special_INV:
+					case CardData::CardType::Special_FLIP1:
+					case CardData::CardType::Special_FLIP2:
+					case CardData::CardType::Special_FLIP3:
+					case CardData::CardType::Special_FLIP4:
 					case CardData::CardType::Special_ADD:
 					case CardData::CardType::Special_SUB:
 					case CardData::CardType::Special_HEAL:

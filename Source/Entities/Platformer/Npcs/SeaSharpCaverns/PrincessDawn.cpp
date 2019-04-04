@@ -95,6 +95,8 @@ HexusOpponentData* PrincessDawn::getHexusOpponentData()
 			0.344f,
 			HexusOpponentData::generateDeck(32, 0.344f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

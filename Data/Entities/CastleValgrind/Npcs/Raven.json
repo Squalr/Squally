@@ -24,14 +24,16 @@
       "Strength": "(1.0f / 8.0f) * (3.0f + (1.0f / 12.0f) * 9.0f)",
       "Strategy": "Random",
       "PresetCards": [
+        "Greed",
+        "Greed",
         "Steal",
         "Poison",
         "Greed",
         "ReturnToHand",
-        "Peek",
+        "ShiftRight",
         "Steal",
         "Steal",
-        "Peek"
+        "ShiftLeft"
       ]
     }
   }

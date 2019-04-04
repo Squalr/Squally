@@ -95,6 +95,8 @@ HexusOpponentData* PrincessMatu::getHexusOpponentData()
 			0.048f,
 			HexusOpponentData::generateDeck(32, 0.048f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),

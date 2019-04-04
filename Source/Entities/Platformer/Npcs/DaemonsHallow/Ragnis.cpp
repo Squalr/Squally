@@ -95,6 +95,8 @@ HexusOpponentData* Ragnis::getHexusOpponentData()
 			0.740f,
 			HexusOpponentData::generateDeck(32, 0.740f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),

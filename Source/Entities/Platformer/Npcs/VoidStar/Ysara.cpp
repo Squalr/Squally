@@ -95,6 +95,8 @@ HexusOpponentData* Ysara::getHexusOpponentData()
 			0.885f,
 			HexusOpponentData::generateDeck(32, 0.885f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
@@ -102,8 +104,8 @@ HexusOpponentData* Ysara::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 
 			}),
 			nullptr

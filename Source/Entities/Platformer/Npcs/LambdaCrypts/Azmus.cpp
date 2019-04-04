@@ -95,6 +95,8 @@ HexusOpponentData* Azmus::getHexusOpponentData()
 			0.771f,
 			HexusOpponentData::generateDeck(32, 0.771f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Drank),

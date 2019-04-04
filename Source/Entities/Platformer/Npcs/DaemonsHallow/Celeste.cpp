@@ -95,6 +95,8 @@ HexusOpponentData* Celeste::getHexusOpponentData()
 			0.656f,
 			HexusOpponentData::generateDeck(32, 0.656f,
 			{
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
