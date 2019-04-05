@@ -201,8 +201,6 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 
 ValueMap SaveManager::loadSaveFile(std::string localSavePath, std::string cloudSavePath)
 {
-	return ValueMap();
-	
 	bool cloudReadSuccess = false;
 	ValueMap cloudValueMap = ValueMap();
 	ValueMap localValueMap = ValueMap();
