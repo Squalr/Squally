@@ -198,6 +198,10 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 		{
 			result = true;
 		}
+		else if (card->cardData->cardKey == CardKeys::Decimal1)
+		{
+			result = true;
+		}
 
 		if (result)
 		{
@@ -222,4 +226,5 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 	addBackCards(CardKeys::Decimal0);
 	addBackCards(CardKeys::Binary0);
 	addBackCards(CardKeys::Hex0);
+	addBackCards(CardKeys::Decimal1);
 }

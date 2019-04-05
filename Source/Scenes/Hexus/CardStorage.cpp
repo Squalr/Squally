@@ -48,6 +48,7 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));

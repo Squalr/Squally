@@ -95,8 +95,15 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
 
-		// Half the reward for a draw
-		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward / 2, true));
+		if (gameState->opponentData->stateOverride == nullptr)
+		{
+			// Half the reward for a draw
+			NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward / 2, true));
+		}
+		else
+		{
+			NavigationEvents::navigateBack();
+		}
 	}
 	else if (isWin)
 	{
@@ -116,9 +123,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 			}
 			else
 			{
-				// 20% bonus for first win
-				reward = int(float(reward) * 1.2f);
+				// 2x bonus for first clear
+				reward = int(float(reward) * 2.0f);
 			}
+			
 		}
 
 		if (wins == 1)
@@ -129,7 +137,15 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		// Analytics for winning
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
 
-		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward, false, isLastInChapter));
+
+		if (gameState->opponentData->stateOverride == nullptr)
+		{
+			NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward, false, isLastInChapter));
+		}
+		else
+		{
+			NavigationEvents::navigateBack();
+		}
 	}
 	else
 	{

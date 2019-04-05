@@ -36,8 +36,8 @@ HexusOpponentTutorialB::HexusOpponentTutorialB() : super(
 	HexusOpponentTutorialB::OpponentSaveKey,
 	super::Strategy::Random,
 	Card::CardStyle::Air,
-	0.075f,
-	super::generateDeck(25, 0.075f,
+	0.0f,
+	super::generateDeck(25, 0.0f,
 	{
 	}),
 	StateOverride::create(
