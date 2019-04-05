@@ -19,6 +19,7 @@
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Entities/Special/Shopkeeper.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
@@ -562,11 +563,6 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 480;
 			break;
 		}
-		case CardData::CardType::Special_NOT:
-		{
-			price = 640;
-			break;
-		}
 		case CardData::CardType::Special_FLIP3:
 		{
 			price = 820;
@@ -575,6 +571,11 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 		case CardData::CardType::Special_GREED:
 		{
 			price = 1024;
+			break;
+		}
+		case CardData::CardType::Special_NOT:
+		{
+			price = 1280;
 			break;
 		}
 		case CardData::CardType::Special_SUB:
@@ -599,13 +600,58 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 		}
 		case CardData::CardType::Special_STEAL:
 		{
-			price = 2048;
+			price = 3072;
+			break;
+		}
+		case CardData::CardType::Binary:
+		{
+			// Formula: Lagrange interpolation over 4 price pairs (0, 16), (2, 48), (5, 320), (15, 4096) (Note: 3 pairs produce negative values)
+			float atk = float(cardData->attack);
+			const float alpha = 0.475897f;
+			const float beta = 11.6021f;
+			const float gamma = -9.10769f;
+			const float delta = 16.0f;
+
+			int calculatedPrice = int((atk * atk* atk) * alpha + (atk * atk * beta) + (atk * gamma) + delta);
+
+			price = MathUtils::clamp(calculatedPrice, 16, 4096);
+
+			break;
+		}
+		case CardData::CardType::Decimal:
+		{
+			// Formula: Lagrange interpolation over 4 price pairs (0, 16), (3, 96), (5, 288), (15, 4096) (Note: 3 pairs produce negative values)
+			float atk = float(cardData->attack);
+			const float alpha = 0.657778f;
+			const float beta = 8.604444f;
+			const float gamma = -5.06667f;
+			const float delta = 16.0f;
+
+			int calculatedPrice = int((atk * atk* atk) * alpha + (atk * atk * beta) + (atk * gamma) + delta);
+
+			price = MathUtils::clamp(calculatedPrice, 16, 4096);
+
+			break;
+		}
+		case CardData::CardType::Hexidecimal:
+		{
+			// Formula: Lagrange interpolation over 4 price pairs (0, 16), (4, 192), (6, 480), (15, 4096) (Note: 3 pairs produce negative values)
+			float atk = float(cardData->attack);
+			const float alpha = 0.451178f;
+			const float beta = 12.1549f;
+			const float gamma = -11.8384f;
+			const float delta = 16.0f;
+
+			int calculatedPrice = int((atk * atk* atk) * alpha + (atk * atk * beta) + (atk * gamma) + delta);
+
+			price = MathUtils::clamp(calculatedPrice, 16, 4096);
+
 			break;
 		}
 		default:
 		{
-			// 3 * a^3 + 3 * a^2 + 16
-			price = cardData->isSpecialCard() ? 666 : (3 * cardData->attack * cardData->attack * cardData->attack + 3 * cardData->attack * cardData->attack + 16);
+			// Error value
+			price = 666;
 			break;
 		}
 	}
