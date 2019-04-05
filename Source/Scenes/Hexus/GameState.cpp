@@ -263,7 +263,14 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		}
 		else
 		{
-			this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
 		}
 	}
 
@@ -283,7 +290,14 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		}
 		else
 		{
-			this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
 		}
 	}
 }
