@@ -33,13 +33,13 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));

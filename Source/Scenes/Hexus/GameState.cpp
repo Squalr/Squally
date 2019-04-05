@@ -63,9 +63,9 @@ GameState::GameState()
 	this->playerDecimalCards = CardRow::create(true);
 	this->playerHexCards = CardRow::create(true);
 
-	this->enemyDeck = Deck::create();
+	this->enemyDeck = Deck::create(false);
 	this->enemyHand = CardRow::create(false);
-	this->enemyGraveyard = Deck::create();
+	this->enemyGraveyard = Deck::create(false);
 	this->enemyBinaryCards = CardRow::create(false);
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
@@ -215,13 +215,14 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 	std::vector<Card*> playerRemovedCards = std::vector<Card*>();
 	std::vector<CardRow*> enemyRows = this->getEnemyRows();
 	std::vector<Card*> enemyRemovedCards = std::vector<Card*>();
+	bool isGameOver = this->playerLosses >= 2 || this->enemyLosses >= 2;
 
 	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
 	{
 		(*it)->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
-			if (this->playerLosses < 2 && this->enemyLosses < 2 && card->cardData->cardKey == CardKeys::Binary0)
+			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -236,7 +237,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		(*it)->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
-			if (this->playerLosses < 2 && this->enemyLosses < 2 && card->cardData->cardKey == CardKeys::Binary0)
+			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -248,9 +249,17 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 
 	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
 	{
-		if ((*it)->cardData->cardKey == CardKeys::Decimal1)
+		// Special effect for Dec1 cards
+		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
 		{
-			this->playerHand->insertCard(*it, Config::insertDelay);
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerHand->insertCard(*it, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyHand->insertCard(*it, Config::insertDelay);
+			}
 		}
 		else
 		{
@@ -260,9 +269,17 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 
 	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
 	{
-		if ((*it)->cardData->cardKey == CardKeys::Decimal1)
+		// Special effect for Dec1 cards
+		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
 		{
-			this->enemyHand->insertCard(*it, Config::insertDelay);
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerHand->insertCard(*it, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyHand->insertCard(*it, Config::insertDelay);
+			}
 		}
 		else
 		{

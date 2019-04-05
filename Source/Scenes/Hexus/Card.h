@@ -53,7 +53,7 @@ public:
 		}
 	};
 
-	static Card* create(CardStyle cardStyle, CardData* data);
+	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
 
 	Operation toOperation(unsigned int immediate = 0);
 	void reveal();
@@ -65,10 +65,6 @@ public:
 	void clearOperations();
 	unsigned int getOriginalAttack();
 	unsigned int getAttack();
-	void setHibernating(bool isHibernating);
-	void setProtected(bool isProtected);
-	bool getHibernating();
-	bool getProtected();
 	void doDrawAnimation(float cardDrawDelay);
 	void disableInteraction();
 	void enableInteraction();
@@ -76,6 +72,8 @@ public:
 	void setMouseOutCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 	int simulateOperation(Operation operation);
+	void setIsPlayerOwnedCard(bool isPlayerOwnedCard);
+	bool getIsPlayerOwnedCard();
 
 	CardData* cardData;
 	CardEffects* cardEffects;
@@ -90,7 +88,7 @@ public:
 	static const cocos2d::Color4B buffColor;
 
 protected:
-	Card(CardStyle cardStyle, CardData* data);
+	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
 	~Card();
 
 	void onEnter() override;
@@ -105,8 +103,7 @@ private:
 	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
 
-	bool isHibernating;
-	bool isProtected;
+	bool isPlayerOwnedCard;
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;

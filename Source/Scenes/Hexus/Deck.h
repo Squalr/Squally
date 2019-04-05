@@ -15,8 +15,8 @@ class ClickableNode;
 class Deck : public SmartNode
 {
 public:
-	static Deck* create();
-	static Deck* create(Card::CardStyle cardStyle, std::vector<CardData*> cards);
+	static Deck* create(bool isPlayerOwnedDeck = true);
+	static Deck* create(Card::CardStyle cardStyle, std::vector<CardData*> cards, bool isPlayerOwnedDeck = true);
 
 	void copyTo(Deck* otherDeck);
 	int getCardCount();
@@ -39,14 +39,15 @@ public:
 
 private:
 	typedef SmartNode super;
-	Deck();
-	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData);
+	Deck(bool isPlayerOwnedDeck);
+	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck);
 	~Deck();
 
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);
 
 	bool clearOperationsOnInsert;
+	bool isPlayerOwnedDeck;
 	
 	ClickableNode* pad;
 	cocos2d::Node* cardsNode;
