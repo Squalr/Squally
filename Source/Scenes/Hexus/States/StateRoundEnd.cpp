@@ -36,6 +36,9 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 
 	GameState::StateType nextState = GameState::StateType::RoundStart;
 
+	bool playerWonRound = false;
+	bool enemyWonRound = false;
+
 	if (gameState->isRoundTied())
 	{
 		gameState->enemyLosses++;
@@ -43,10 +46,12 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	}
 	else if (gameState->isPlayerWinningRound())
 	{
+		playerWonRound = true;
 		gameState->enemyLosses++;
 	}
 	else
 	{
+		enemyWonRound = true;
 		gameState->playerLosses++;
 	}
 
@@ -61,7 +66,7 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
-			gameState->sendFieldCardsToGraveyard();
+			gameState->sendFieldCardsToGraveyard(playerWonRound, enemyWonRound);
 			gameState->roundNumber++;
 		}),
 		CallFunc::create([=]()

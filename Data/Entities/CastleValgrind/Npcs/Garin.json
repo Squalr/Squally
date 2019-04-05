@@ -27,10 +27,10 @@
         "Greed",
         "Greed",
         "Steal",
-        "Heal",
-        "Clear",
+        "LogicalXor",
+        "LogicalAnd",
         "LogicalOr",
-        "Clear",
+        "ShiftLeft",
         "ReturnToHand",
         "ShiftRight",
         "ShiftLeft"

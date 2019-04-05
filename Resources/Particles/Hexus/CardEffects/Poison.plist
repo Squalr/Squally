@@ -9,9 +9,9 @@
 	<key>angleVariance</key>
 	<real>57.511768341064453</real>
 	<key>blendFuncDestination</key>
-	<real>1</real>
+	<integer>1</integer>
 	<key>blendFuncSource</key>
-	<real>770</real>
+	<integer>770</integer>
 	<key>configName</key>
 	<string>Poison</string>
 	<key>duration</key>
@@ -78,10 +78,6 @@
 	<real>30</real>
 	<key>sourcePositionVariancey</key>
 	<real>30</real>
-	<key>sourcePositionx</key>
-	<real>160</real>
-	<key>sourcePositiony</key>
-	<real>240</real>
 	<key>speed</key>
 	<real>177.94060000000002</real>
 	<key>speedVariance</key>

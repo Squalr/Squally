@@ -29,9 +29,9 @@
         "Flip2",
         "ShiftLeft",
         "Absorb",
-        "Poison",
-        "Drank",
-        "Poison",
+        "LogicalAnd",
+        "LogicalXor",
+        "LogicalAnd",
         "Greed",
         "Mov"
       ]

@@ -28,15 +28,16 @@
       "PresetCards": [
         "Greed",
         "Greed",
-        "Drank",
+        "LogicalXor",
         "SuddenDeath",
-        "Heal",
+        "LogicalOr",
         "ReturnToHand",
         "Subtraction",
         "Flip3",
         "SuddenDeath",
-        "Poison",
-        "Drank"
+        "LogicalAnd",
+        "ShiftRight",
+        "ShiftLeft"
       ]
     }
   }

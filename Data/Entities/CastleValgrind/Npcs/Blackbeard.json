@@ -26,13 +26,13 @@
       "PresetCards": [
         "Greed",
         "Greed",
-        "Clear",
+        "LogicalAnd",
         "Steal",
-        "Poison",
         "LogicalOr",
-        "Poison",
+        "ShiftLeft",
+        "LogicalXor",
         "ReturnToHand",
-        "Heal",
+        "ShiftRight",
         "Addition"
       ]
     }

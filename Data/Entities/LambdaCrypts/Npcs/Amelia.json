@@ -28,12 +28,13 @@
         "Greed",
         "Mov",
         "LogicalAnd",
-        "Heal",
+        "LogicalOr",
         "Addition",
-        "Drank",
+        "LogicalXor",
         "Kill",
         "BonusMoves",
         "ShiftRight",
+        "ShiftLeft",
         "Subtraction"
       ]
     }

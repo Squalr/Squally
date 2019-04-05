@@ -28,13 +28,14 @@
         "Greed",
         "Subtraction",
         "Inverse",
+        "ShiftLeft",
         "ShiftRight",
         "Greed",
         "LogicalOr",
         "Addition",
         "ShiftRight",
-        "Poison",
-        "Drank"
+        "LogicalAnd",
+        "LogicalXor"
       ]
     }
   }

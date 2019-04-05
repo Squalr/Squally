@@ -120,7 +120,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 	super::onAnyStateChange(gameState);
 
 	// Hide on last round -- there will be no next turn, thus draw count is irrelevent
-	if (gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)
+	if (gameState->stateType == GameState::StateType::CoinFlip && gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)
 	{
 		this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
 		this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));
@@ -154,7 +154,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		default:
 		case GameState::StateType::PlayerTurnStart:
 		{
-			if (!gameState->enemyPassed)
+			if (!gameState->enemyPassed && !(gameState->playerLosses >= 1 && gameState->enemyLosses >= 1))
 			{
 				this->drawCountSprite->runAction(FadeTo::create(0.25f, 255));
 			}
@@ -163,7 +163,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		}
 		case GameState::StateType::OpponentTurnStart:
 		{
-			if (!gameState->playerPassed)
+			if (!gameState->playerPassed && !(gameState->playerLosses >= 1 && gameState->enemyLosses >= 1))
 			{
 				this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 255));
 			}
@@ -172,8 +172,12 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		}
 		case GameState::StateType::TurnEnd:
 		{
-			// this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
-			this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));
+			if (!(gameState->playerLosses >= 1 && gameState->enemyLosses >= 1))
+			{
+				// this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
+				this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));
+			}
+
 			break;
 		}
 	}

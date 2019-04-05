@@ -137,6 +137,11 @@ std::tuple<Card*, int> HexusAIHelper::getStrongestPlayerCard(GameState* gameStat
 				bestDiff = diff;
 				bestCard = destinationCard;
 			}
+			else if (diff == bestDiff && destinationCard->cardData->cardKey == CardKeys::Hex0)
+			{
+				bestDiff = diff;
+				bestCard = destinationCard;
+			}
 		}
 	}
 

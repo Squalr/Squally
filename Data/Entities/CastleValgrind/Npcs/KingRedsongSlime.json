@@ -32,8 +32,8 @@
         "ShiftRight",
         "LogicalXor",
         "Mov",
-        "Heal",
-        "Poison"
+        "LogicalOr",
+        "LogicalAnd"
       ]
     }
   }

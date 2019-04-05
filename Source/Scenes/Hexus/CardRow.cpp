@@ -473,11 +473,7 @@ int CardRow::simulateCardEffect(Card* card)
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_INV:
-		case CardData::CardType::Special_HEAL:
-		case CardData::CardType::Special_POISON:
-		case CardData::CardType::Special_DRANK:
-		case CardData::CardType::Special_CLEAR:
+		case CardData::CardType::Special_NOT:
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
 			for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
@@ -490,6 +486,8 @@ int CardRow::simulateCardEffect(Card* card)
 
 				diff += (after - before);
 			}
+			
+			break;
 		}
 		default:
 		{

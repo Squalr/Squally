@@ -31,7 +31,7 @@
         "Steal",
         "ShiftLeft",
         "ShiftLeft",
-        "Clear",
+        "LogicalOr",
         "ShiftRight",
         "Flip2"
       ]

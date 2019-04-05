@@ -28,13 +28,13 @@
         "Greed",
         "SuddenDeath",
         "Steal",
-        "Peek",
-        "LogicalOr",
-        "Clear",
+        "LogicalAnd",
+        "LogicalXor",
+        "Mov",
         "BonusMoves",
         "Steal",
-        "Heal",
-        "Steal"
+        "LogicalOr",
+        "ShiftLeft"
       ]
     }
   }

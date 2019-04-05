@@ -30,10 +30,10 @@
         "LogicalOr",
         "Steal",
         "Kill",
-        "LogicalOr",
+        "ShiftRight",
         "Greed",
         "Mov",
-        "LogicalOr"
+        "ShiftLeft"
       ]
     }
   }

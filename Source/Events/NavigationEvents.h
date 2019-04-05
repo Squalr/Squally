@@ -42,8 +42,9 @@ public:
 	{
 		int reward;
 		bool isRewardReduced;
+		bool isChapterClear;
 
-		NavigateHexusRewardArgs(int reward, bool isRewardReduced) : reward(reward), isRewardReduced(isRewardReduced)
+		NavigateHexusRewardArgs(int reward, bool isRewardReduced = false, bool isChapterClear = false) : reward(reward), isRewardReduced(isRewardReduced), isChapterClear(isChapterClear)
 		{
 		}
 	};

@@ -101,7 +101,7 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

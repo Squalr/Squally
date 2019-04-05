@@ -30,7 +30,7 @@
         "LogicalXor",
         "LogicalOr",
         "ReturnToHand",
-        "ShiftLeft"
+        "Flip1"
       ]
     }
   }

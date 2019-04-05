@@ -32,7 +32,7 @@
         "ShiftLeft",
         "ReturnToHand",
         "Kill",
-        "Clear",
+        "Mov",
         "Flip3"
       ]
     }

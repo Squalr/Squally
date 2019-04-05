@@ -28,9 +28,9 @@
         "Greed",
         "LogicalOr",
         "LogicalXor",
-        "Poison",
+        "ShiftRight",
         "Flip2",
-        "Drank",
+        "ShiftLeft",
         "Greed",
         "Steal",
         "ShiftRight"

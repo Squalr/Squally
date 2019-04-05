@@ -502,39 +502,54 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 25;
 			break;
 		}
-		case CardData::CardType::Special_FLIP2:
-		{
-			price = 75;
-			break;
-		}
 		case CardData::CardType::Special_PEEK:
 		{
-			price = 115;
+			price = 25;
+			break;
+		}
+		case CardData::CardType::Special_FLIP2:
+		{
+			price = 48;
 			break;
 		}
 		case CardData::CardType::Special_XOR:
 		{
-			price = 127;
-			break;
-		}
-		case CardData::CardType::Special_BONUS_MOVES:
-		{
-			price = 240;
+			price = 64;
 			break;
 		}
 		case CardData::CardType::Special_AND:
 		{
-			price = 255;
+			price = 64;
 			break;
 		}
 		case CardData::CardType::Special_OR:
 		{
-			price = 255;
+			price = 64;
+			break;
+		}
+		case CardData::CardType::Special_ABSORB:
+		{
+			price = 72;
 			break;
 		}
 		case CardData::CardType::Special_MOV:
 		{
-			price = 280;
+			price = 96;
+			break;
+		}
+		case CardData::CardType::Special_SHR:
+		{
+			price = 160;
+			break;
+		}
+		case CardData::CardType::Special_SHL:
+		{
+			price = 160;
+			break;
+		}
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		{
+			price = 224;
 			break;
 		}
 		case CardData::CardType::Special_ADD:
@@ -542,34 +557,14 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 335;
 			break;
 		}
-		case CardData::CardType::Special_SHR:
-		{
-			price = 350;
-			break;
-		}
-		case CardData::CardType::Special_DRANK:
-		{
-			price = 384;
-			break;
-		}
-		case CardData::CardType::Special_ABSORB:
-		{
-			price = 420;
-			break;
-		}
-		case CardData::CardType::Special_RETURN_TO_HAND:
+		case CardData::CardType::Special_BONUS_MOVES:
 		{
 			price = 480;
 			break;
 		}
-		case CardData::CardType::Special_HEAL:
+		case CardData::CardType::Special_NOT:
 		{
 			price = 640;
-			break;
-		}
-		case CardData::CardType::Special_CLEAR:
-		{
-			price = 720;
 			break;
 		}
 		case CardData::CardType::Special_FLIP3:
@@ -577,19 +572,9 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 820;
 			break;
 		}
-		case CardData::CardType::Special_POISON:
-		{
-			price = 960;
-			break;
-		}
-		case CardData::CardType::Special_STEAL:
-		{
-			price = 1024;
-			break;
-		}
 		case CardData::CardType::Special_GREED:
 		{
-			price = 1050;
+			price = 1024;
 			break;
 		}
 		case CardData::CardType::Special_SUB:
@@ -602,14 +587,9 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 1480;
 			break;
 		}
-		case CardData::CardType::Special_SHL:
-		{
-			price = 1580;
-			break;
-		}
 		case CardData::CardType::Special_FLIP4:
 		{
-			price = 1800;
+			price = 1720;
 			break;
 		}
 		case CardData::CardType::Special_SUDDEN_DEATH:
@@ -617,9 +597,9 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 2048;
 			break;
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_STEAL:
 		{
-			price = 3096;
+			price = 2048;
 			break;
 		}
 		default:

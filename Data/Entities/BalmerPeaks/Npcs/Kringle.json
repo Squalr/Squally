@@ -30,8 +30,8 @@
         "Steal",
         "Steal",
         "Flip3",
-        "Steal",
-        "Poison",
+        "LogicalXor",
+        "ShiftRight",
         "ShiftLeft",
         "LogicalOr",
         "LogicalAnd"

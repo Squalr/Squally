@@ -263,4 +263,9 @@ void HexusOpponentMenuBase::buildOpponentList()
 	{
 		this->scrollPane->addChild(*it);
 	}
+
+	if (!opponents.empty())
+	{
+		this->opponents.back()->hexusOpponentData->setIsLastInChapter();
+	}
 }

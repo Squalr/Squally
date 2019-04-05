@@ -41,6 +41,7 @@ HexusOpponentData::HexusOpponentData(
 	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
 	this->stateOverride = stateOverride;
+	this->isLastInChapter = false;
 
 	if (this->stateOverride != nullptr)
 	{
@@ -422,4 +423,14 @@ CardData* HexusOpponentData::getHexCardForAttack(int attack)
 			return CardList::getInstance()->cardListByName.at(CardKeys::Hex15);
 		}
 	}
+}
+
+void HexusOpponentData::setIsLastInChapter()
+{
+	this->isLastInChapter = true;
+}
+
+bool HexusOpponentData::getIsLastInChapter()
+{
+	return this->isLastInChapter;
 }

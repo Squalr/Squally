@@ -125,6 +125,37 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			selfHand->removeCard(gameState->selectedHandCard);
 			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
+
+			// Horde effect for hex 1 card
+			if (gameState->selectedHandCard->cardData->cardKey == CardKeys::Hex1)
+			{
+				std::vector<Card*> hordeCards = std::vector<Card*>();
+
+				selfDeck->removeCardsWhere([&](Card* card)
+				{
+					if (card->cardData->cardKey == CardKeys::Hex1)
+					{
+						hordeCards.push_back(card);
+						return true;
+					}
+
+					return false;
+				});
+
+				selfHand->removeCardsWhere([&](Card* card)
+				{
+					if (card->cardData->cardKey == CardKeys::Hex1)
+					{
+						hordeCards.push_back(card);
+						return true;
+					}
+
+					return false;
+				});
+
+				gameState->selectedRow->insertCards(hordeCards, Config::insertDelay);
+			}
+
 			SoundManager::playSoundResource(SoundResources::Hexus_CardMovement);
 			break;
 		}
@@ -141,43 +172,12 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			SoundManager::playSoundResource(SoundResources::Hexus_CardMovement);
 			break;
 		}
-		case CardData::CardType::Special_CLEAR:
-		{
-			if (gameState->selectedRow == nullptr)
-			{
-				this->passFromError(gameState);
-				return;
-			}
-
-			if (!tryAbsorb(gameState, gameState->selectedRow))
-			{
-				selfHand->removeCard(gameState->selectedHandCard);
-				selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
-
-				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
-				{
-					Card* card = *it;
-
-					Card::Operation operation = gameState->selectedHandCard->toOperation(card->cardData->getIntrinsicImmediate());
-
-					card->addOperation(operation);
-				}
-
-				gameState->selectedRow->runEffect(CardEffects::CardEffect::TargetPulse);
-				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
-			}
-
-			break;
-		}
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
 		case CardData::CardType::Special_FLIP1:
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_HEAL:
-		case CardData::CardType::Special_POISON:
-		case CardData::CardType::Special_DRANK:
 		{
 			if (gameState->selectedRow == nullptr)
 			{
@@ -193,7 +193,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
 				{
 					Card* card = *it;
-					
+
 					Card::Operation operation = gameState->selectedHandCard->toOperation(card->cardData->getIntrinsicImmediate());
 
 					card->addOperation(operation);
@@ -236,24 +236,6 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					{
 						gameState->selectedRow->runEffect(CardEffects::CardEffect::RadialFire);
 						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
-						break;
-					}
-					case CardData::CardType::Special_HEAL:
-					{
-						gameState->selectedRow->runEffect(CardEffects::CardEffect::SpinningMagic);
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
-						break;
-					}
-					case CardData::CardType::Special_POISON:
-					{
-						gameState->selectedRow->runEffect(CardEffects::CardEffect::Poison);
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Acid);
-						break;
-					}
-					case CardData::CardType::Special_DRANK:
-					{
-						gameState->selectedRow->runEffect(CardEffects::CardEffect::StarHit);
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
 						break;
 					}
 					default:
@@ -337,7 +319,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			break;
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_NOT:
 		{
 			if (gameState->selectedDestinationCard == nullptr)
 			{
@@ -438,17 +420,24 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			if (!tryAbsorb(gameState, targetRow))
 			{
-				if (targetRow->isPlayerRow())
+				if (gameState->selectedDestinationCard->cardData->cardKey != CardKeys::Binary0)
 				{
-					gameState->playerGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+					if (targetRow->isPlayerRow())
+					{
+						gameState->playerGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+					}
+					else
+					{
+						gameState->enemyGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+					}
+
+					gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
+					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
 				}
 				else
 				{
-					gameState->enemyGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+					// TODO: Failure sound for unsucessful kill attempt
 				}
-
-				gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
-				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
 			}
 
 			break;
@@ -631,6 +620,16 @@ void StatePlayCard::passFromError(GameState* gameState)
 bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 {
 	if (cardRow == nullptr)
+	{
+		return false;
+	}
+
+	if (cardRow->isPlayerRow() && gameState->turn == GameState::Turn::Player)
+	{
+		return false;
+	}
+
+	if (!cardRow->isPlayerRow() && gameState->turn == GameState::Turn::Enemy)
 	{
 		return false;
 	}

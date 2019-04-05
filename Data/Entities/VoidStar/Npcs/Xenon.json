@@ -30,8 +30,8 @@
         "Flip4",
         "SuddenDeath",
         "Flip3",
-        "Poison",
-        "LogicalXor",
+        "LogicalAnd",
+        "ShiftRight",
         "Greed",
         "LogicalXor",
         "BonusMoves"

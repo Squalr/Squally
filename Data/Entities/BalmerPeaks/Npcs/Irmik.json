@@ -28,12 +28,12 @@
         "Greed",
         "Kill",
         "ShiftRight",
-        "Drank",
+        "LogicalXor",
         "ShiftLeft",
-        "Poison",
+        "LogicalAnd",
         "BonusMoves",
         "ShiftLeft",
-        "Drank",
+        "LogicalOr",
         "LogicalOr"
       ]
     }

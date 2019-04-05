@@ -17,14 +17,13 @@ public:
 		Special_XOR,
 		Special_SHL,
 		Special_SHR,
-		Special_INV,
+		Special_NOT,
 		Special_FLIP1,
 		Special_FLIP2,
 		Special_FLIP3,
 		Special_FLIP4,
 		Special_ADD,
 		Special_SUB,
-		Special_CLEAR,
 		Special_SUDDEN_DEATH,
 		Special_GREED,
 		Special_ABSORB,
@@ -33,15 +32,13 @@ public:
 		Special_STEAL,
 		Special_BONUS_MOVES,
 		Special_PEEK,
-		Special_HEAL,
-		Special_POISON,
-		Special_DRANK,
 	};
 
 	CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack);
 	~CardData();
 
 	LocalizedString* getCardTypeString();
+	LocalizedString* getCardOperationString();
 	bool isAttackCard();
 	bool isSpecialCard();
 	bool isMultiTargetCard();

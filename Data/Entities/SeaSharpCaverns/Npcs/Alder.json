@@ -26,10 +26,10 @@
       "PresetCards": [
         "Greed",
         "Greed",
-        "Poison",
+        "LogicalAnd",
         "Flip2",
         "ShiftLeft",
-        "Heal",
+        "LogicalOr",
         "ShiftRight",
         "Mov",
         "Mov",

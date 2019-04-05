@@ -29,12 +29,12 @@
         "ShiftRight",
         "Flip3",
         "LogicalAnd",
-        "Drank",
-        "Poison",
+        "LogicalXor",
+        "LogicalAnd",
         "Inverse",
-        "Poison",
+        "LogicalOr",
         "ShiftLeft",
-        "Drank"
+        "ShiftLeft"
       ]
     }
   }

@@ -31,7 +31,7 @@
         "LogicalOr",
         "LogicalAnd",
         "ShiftLeft",
-        "Clear",
+        "ShiftRight",
         "LogicalXor",
         "Mov"
       ]

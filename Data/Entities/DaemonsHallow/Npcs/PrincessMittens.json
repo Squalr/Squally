@@ -31,7 +31,7 @@
         "Mov",
         "LogicalOr",
         "Kill",
-        "Clear",
+        "Mov",
         "Greed",
         "LogicalXor",
         "Absorb"

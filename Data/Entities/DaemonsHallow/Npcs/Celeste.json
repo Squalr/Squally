@@ -29,11 +29,11 @@
         "Addition",
         "Absorb",
         "Kill",
-        "Clear",
+        "Mov",
         "Steal",
-        "Poison",
-        "Poison",
-        "Clear"
+        "LogicalAnd",
+        "ShiftLeft",
+        "ShiftRight"
       ]
     }
   }

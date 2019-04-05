@@ -41,6 +41,7 @@ public:
 			XOR,
 			ADD,
 			SUB,
+			NOT,
 		};
 
 		OperationType operationType;

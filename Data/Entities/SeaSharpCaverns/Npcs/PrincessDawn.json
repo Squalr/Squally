@@ -27,13 +27,13 @@
         "Greed",
         "Greed",
         "ShiftRight",
-        "Heal",
+        "ShiftLeft",
         "LogicalAnd",
         "LogicalXor",
         "Addition",
         "Steal",
-        "Peek",
-        "Drank"
+        "ShiftRight",
+        "LogicalOr"
       ]
     }
   }

@@ -96,12 +96,11 @@ HexusOpponentData* Toben::getHexusOpponentData()
 			HexusOpponentData::generateDeck(32, 0.010f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 
 			}),
 			nullptr

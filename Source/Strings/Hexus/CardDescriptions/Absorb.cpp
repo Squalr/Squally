@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Absorb::getStringAr()
 	{
-		return "ضع هذه البطاقة على أي صف. سيتم حظر البطاقة الخاصة التالية التي تستهدف أي بطاقة في هذا الصف ، وسيتم إتلاف هذه البطاقة.";
+		return "ضع في أي صف. ستحظر هذه البطاقة البطاقة الخاصة التالية التي يلعبها خصمك ، إذا كانت تستهدف بطاقة في ذلك الصف.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringBg()
 	{
-		return "Поставете тази карта във всеки ред. Следващата специална карта, която насочва всяка карта от този ред, ще бъде блокирана и тази карта ще бъде унищожена.";
+		return "Поставете във всеки ред. Тази карта ще блокира следващата специална карта, изиграна от опонента ви, ако е насочена към карта в този ред.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringCs()
 	{
-		return "Umístěte tuto kartu na libovolný řádek. Další speciální karta, která cílí na kartu v tomto řádku, bude zablokována a tato karta bude zničena.";
+		return "Umístěte do libovolné řady. Tato karta zablokuje další speciální kartu, kterou hraje váš soupeř, pokud cílí na kartu v daném řádku.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringDa()
 	{
-		return "Placer dette kort på en række. Det næste specielle kort, der er målrettet mod et kort i den række, vil blive blokeret, og dette kort vil blive ødelagt.";
+		return "Placer i en række. Dette kort vil blokere det næste specielle kort, der spilles af din modstander, hvis det målretter et kort i den række.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringDe()
 	{
-		return "Lege diese Karte in eine beliebige Reihe. Die nächste Spezialkarte, die auf eine Karte in dieser Reihe abzielt, wird gesperrt und diese Karte wird zerstört.";
+		return "Platziere in eine beliebige Reihe. Diese Karte blockiert die nächste Spezialkarte, die Ihr Gegner spielt, wenn diese eine Karte dieser Reihe anvisiert.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringEl()
 	{
-		return "Τοποθετήστε αυτήν την κάρτα σε οποιαδήποτε σειρά. Η επόμενη ειδική κάρτα που στοχεύει οποιαδήποτε κάρτα στη γραμμή αυτή θα αποκλειστεί και αυτή η κάρτα θα καταστραφεί.";
+		return "Τοποθετήστε σε οποιαδήποτε σειρά. Αυτή η κάρτα θα εμποδίσει την επόμενη ειδική κάρτα που παίζει ο αντίπαλός σας, εάν στοχεύει μια κάρτα στη συγκεκριμένη σειρά.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringEn()
 	{
-		return "Place this card onto any row. The next special card that targets any card in that row will be blocked, and this card will be destroyed.";
+		return "Place into any row. This card will block the next special card played by your opponent, if it targets a card in that row.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringEs()
 	{
-		return "Coloque esta tarjeta en cualquier fila. La siguiente carta especial que apunta a cualquier carta en esa fila será bloqueada, y esta carta será destruida.";
+		return "Colocar en cualquier fila. Esta carta bloqueará la siguiente carta especial que juegue tu oponente, si se dirige a una carta en esa fila.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringEs419()
 	{
-		return "Coloque esta tarjeta en cualquier fila. La siguiente carta especial que apunta a cualquier carta en esa fila será bloqueada, y esta carta será destruida.";
+		return "Colocar en cualquier fila. Esta carta bloqueará la siguiente carta especial que juegue tu oponente, si se dirige a una carta en esa fila.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringFi()
 	{
-		return "Aseta tämä kortti mihin tahansa riviin. Seuraava erityinen kortti, joka kohdistuu mihin tahansa kyseisen rivin korttiin, estetään, ja tämä kortti tuhoutuu.";
+		return "Aseta mihin tahansa riviin. Tämä kortti estää seuraavan erikoiskortin, jota vastustajasi pelaa, jos se kohdistuu korttiin kyseisessä rivissä.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringFr()
 	{
-		return "Placez cette carte sur n'importe quelle ligne. La prochaine carte spéciale ciblant une carte de cette ligne sera bloquée et cette carte sera détruite.";
+		return "Placez dans n'importe quelle rangée. Cette carte bloquera la prochaine carte spéciale jouée par votre adversaire si elle cible une carte dans cette rangée.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringHu()
 	{
-		return "Helyezze a kártyát bármelyik sorra. A következő különleges kártyát, amely az adott sor bármelyik kártyáját célozza meg, blokkolják, és ez a kártya megsemmisül.";
+		return "Helyezzen egy sorba. Ez a kártya blokkolja az ellenfeled által játszott következő különleges kártyát, ha az a sorban lévő kártyára irányul.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringIt()
 	{
-		return "Metti questa carta su qualsiasi riga. La prossima carta speciale che bersaglia qualsiasi carta in quella fila verrà bloccata e questa carta sarà distrutta.";
+		return "Posto in qualsiasi riga Questa carta bloccherà la prossima carta speciale giocata dal tuo avversario, se bersaglia una carta in quella riga.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringJa()
 	{
-		return "このカードを任意の列に置く。その行のカードを対象とする次の特殊カードはブロックされ、このカードは破壊されます。";
+		return "任意の行に配置してください。それがその列のカードを対象にしている場合、このカードはあなたの対戦相手によってプレイされる次の特別なカードをブロックします。";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringKo()
 	{
-		return "이 카드를 임의의 행에 놓습니다. 해당 행에있는 카드를 대상으로하는 다음 특수 카드는 차단되며이 카드는 파괴됩니다.";
+		return "행에 배치하십시오. 이 카드는 그 행의 카드를 대상으로하는 경우, 상대방이 다음에 플레이하는 특수 카드를 블록합니다.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringNl()
 	{
-		return "Plaats deze kaart op een willekeurige rij. De volgende speciale kaart die elke kaart in die rij raakt, wordt geblokkeerd en deze kaart wordt vernietigd.";
+		return "Plaats in een willekeurige rij. Deze kaart blokkeert de volgende speciale kaart die door je tegenstander wordt gespeeld, als deze op een kaart in die rij is gericht.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringNo()
 	{
-		return "Legg dette kortet på en hvilken som helst rad. Det neste spesielle kortet som retter seg mot et kort i den raden, vil bli blokkert, og dette kortet vil bli ødelagt.";
+		return "Plasser i en hvilken som helst rad. Dette kortet vil blokkere det neste spesielle kortet som spilles av motstanderen din, hvis den retter seg mot et kort i den raden.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringPl()
 	{
-		return "Umieść tę kartę w dowolnym rzędzie. Następna specjalna karta celująca w dowolną kartę w tym rzędzie zostanie zablokowana, a karta zostanie zniszczona.";
+		return "Umieść w dowolnym rzędzie. Ta karta zablokuje następną specjalną kartę zagraną przez przeciwnika, jeśli celuje w kartę w tym rzędzie.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringPt()
 	{
-		return "Coloque este cartão em qualquer linha. A próxima carta especial que tiver como alvo qualquer carta nessa linha será bloqueada e essa carta será destruída.";
+		return "Coloque em qualquer linha. Esta carta irá bloquear a próxima carta especial jogada pelo seu oponente, se ela atingir uma carta nessa linha.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringPtBr()
 	{
-		return "Coloque este cartão em qualquer linha. A próxima carta especial que tiver como alvo qualquer carta nessa linha será bloqueada e essa carta será destruída.";
+		return "Coloque em qualquer linha. Esta carta irá bloquear a próxima carta especial jogada pelo seu oponente, se ela atingir uma carta nessa linha.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringRo()
 	{
-		return "Plasați această carte pe orice rând. Următoarea carte specială care vizează orice carte din rândul respectiv va fi blocată și acest card va fi distrus.";
+		return "Locul în orice rând. Acest card va bloca următorul card special jucat de adversar, dacă vizează o cartelă din rândul respectiv.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringRu()
 	{
-		return "Поместите эту карту в любой ряд. Следующая специальная карта, предназначенная для любой карты в этом ряду, будет заблокирована, и эта карта будет уничтожена.";
+		return "Поместите в любой ряд. Эта карта заблокирует следующую специальную карту, сыгранную вашим противником, если она нацелена на карту в этом ряду.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringSv()
 	{
-		return "Placera detta kort på vilken rad som helst. Nästa specialkort som riktar sig till ett kort i den raden kommer att blockeras, och detta kort kommer att förstöras.";
+		return "Placera i någon rad. Detta kort kommer att blockera nästa specialkort som spelas av din motståndare, om det riktar sig mot ett kort i den raden.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringTh()
 	{
-		return "วางการ์ดนี้ลงในแถวใดก็ได้ การ์ดพิเศษใบถัดไปที่กำหนดเป้าหมายการ์ดใด ๆ ในแถวนั้นจะถูกบล็อกและการ์ดนี้จะถูกทำลาย";
+		return "วางลงในแถวใดก็ได้ การ์ดใบนี้จะบล็อกการ์ดพิเศษใบถัดไปที่ฝ่ายตรงข้ามของคุณเล่นหากการ์ดเป้าหมายในแถวนั้น";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringTr()
 	{
-		return "Bu kartı herhangi bir satıra yerleştirin. Bu sıradaki herhangi bir kartı hedef alan bir sonraki özel kart bloke edilecek ve bu kart imha edilecek.";
+		return "Herhangi bir satıra yerleştirin. Bu kart, eğer o sırada bir kartı hedeflerse, rakibiniz tarafından oynanan bir sonraki özel kartı bloke edecektir.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringUk()
 	{
-		return "Помістіть цю картку на будь-який рядок. Наступна спеціальна картка, яка націлює будь-яку карту в цьому рядку, буде заблокована, і ця карта буде знищена.";
+		return "Місце в будь-якому рядку. Ця карта заблокує наступну спеціальну карту, яку грає ваш опонент, якщо вона націлена на карту в цьому рядку.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringVi()
 	{
-		return "Đặt thẻ này vào bất kỳ hàng nào. Thẻ đặc biệt tiếp theo nhắm vào bất kỳ thẻ nào trong hàng đó sẽ bị chặn và thẻ này sẽ bị hủy.";
+		return "Đặt vào bất kỳ hàng nào. Thẻ này sẽ chặn thẻ đặc biệt tiếp theo do đối thủ của bạn chơi, nếu nó nhắm vào thẻ trong hàng đó.";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringZhCn()
 	{
-		return "将此卡放在任何一行上。针对该行中任何卡的下一张特殊卡将被阻止，此卡将被销毁。";
+		return "放入任何一行。如果该对象针对该行中的一张牌，则此卡将阻止对手播放的下一张特殊牌。";
 	}
 
 	std::string Hexus_CardDescriptions_Absorb::getStringZhTw()
 	{
-		return "將此卡放在任何一行上。針對該行中任何卡的下一張特殊卡將被阻止，此卡將被銷毀。";
+		return "放入任何一行。如果該對象針對該行中的一張牌，則此卡將阻止對手播放的下一張特殊牌。";
 	}
 }

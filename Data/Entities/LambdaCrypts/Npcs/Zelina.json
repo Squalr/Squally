@@ -29,11 +29,11 @@
         "ReturnToHand",
         "Inverse",
         "LogicalOr",
-        "Flip2",
+        "Flip3",
         "Absorb",
-        "Drank",
+        "LogicalXor",
         "LogicalAnd",
-        "Poison",
+        "ShiftLeft",
         "ShiftRight"
       ]
     }

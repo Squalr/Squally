@@ -26,7 +26,7 @@
       "PresetCards": [
         "Greed",
         "Greed",
-        "Flip2",
+        "Flip3",
         "ShiftLeft",
         "ShiftRight",
         "Steal",
@@ -34,6 +34,7 @@
         "Inverse",
         "Steal",
         "Flip3",
+        "LogicalOr",
         "LogicalXor"
       ]
     }

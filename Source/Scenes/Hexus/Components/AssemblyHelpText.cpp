@@ -166,16 +166,13 @@ void AssemblyHelpText::onAnyStateChange(GameState* gameState)
 					case CardData::CardType::Special_MOV:
 					case CardData::CardType::Special_SHL:
 					case CardData::CardType::Special_SHR:
-					case CardData::CardType::Special_INV:
+					case CardData::CardType::Special_NOT:
 					case CardData::CardType::Special_FLIP1:
 					case CardData::CardType::Special_FLIP2:
 					case CardData::CardType::Special_FLIP3:
 					case CardData::CardType::Special_FLIP4:
 					case CardData::CardType::Special_ADD:
 					case CardData::CardType::Special_SUB:
-					case CardData::CardType::Special_HEAL:
-					case CardData::CardType::Special_POISON:
-					case CardData::CardType::Special_DRANK:
 					{
 						if (gameState->selectedHandCard == nullptr)
 						{
@@ -184,7 +181,7 @@ void AssemblyHelpText::onAnyStateChange(GameState* gameState)
 
 						bool isMultiTarget = gameState->selectedHandCard->cardData->isMultiTargetCard();
 						
-						std::string operation = gameState->selectedHandCard->cardData->getCardTypeString()->getString();
+						std::string operation = gameState->selectedHandCard->cardData->getCardOperationString()->getString();
 						std::string immediate = gameState->selectedSourceCard == nullptr ? AssemblyHelpText::SourceOperand : HackUtils::toBinary4(gameState->selectedSourceCard->getAttack());
 						
 						this->operationString->setString(operation);

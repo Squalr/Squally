@@ -33,9 +33,8 @@
         "Inverse",
         "Flip4",
         "Absorb",
-        "Poison",
+        "LogicalAnd",
         "Steal"
-        
       ]
     }
   }

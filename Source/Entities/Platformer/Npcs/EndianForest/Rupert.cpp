@@ -95,7 +95,7 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 			0.029f,
 			HexusOpponentData::generateDeck(32, 0.029f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),

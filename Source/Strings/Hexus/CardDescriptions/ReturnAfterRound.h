@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hexus_Cards_Clear : public LocalizedString
+	class Hexus_CardDescriptions_ReturnAfterRound : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Clear* create();
+		static Hexus_CardDescriptions_ReturnAfterRound* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hexus_Cards_Clear();
-		~Hexus_Cards_Clear();
+		Hexus_CardDescriptions_ReturnAfterRound();
+		~Hexus_CardDescriptions_ReturnAfterRound();
 	};
 }

@@ -28,12 +28,13 @@
         "Greed",
         "SuddenDeath",
         "Flip3",
+        "Flip3",
         "LogicalAnd",
-        "LogicalOr",
+        "ShiftLeft",
         "BonusMoves",
         "Absorb",
         "Addition",
-        "Heal",
+        "ShiftRight",
         "LogicalOr"
       ]
     }

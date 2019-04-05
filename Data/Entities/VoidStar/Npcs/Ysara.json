@@ -30,7 +30,7 @@
         "Inverse",
         "ReturnToHand",
         "Absorb",
-        "Drank",
+        "LogicalXor",
         "Flip3",
         "Kill",
         "Flip4",
