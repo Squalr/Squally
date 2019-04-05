@@ -99,8 +99,10 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_SUDDEN_DEATH:
 			{
 				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
+				CardRow* cardRow = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
 
-				if (std::get<1>(bestPlay) > 0)
+				if (delta > 0)
 				{
 					gameState->cachedBestRowPlay = bestPlay;
 					gameState->selectedHandCard = card;
@@ -118,6 +120,9 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_SUB:
 			{
 				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
+				Card* sourceCard = std::get<0>(bestPlay);
+				Card* targetCard = std::get<1>(bestPlay);
+				int delta = std::get<2>(bestPlay);
 
 				if (std::get<2>(bestPlay) > 0)
 				{
@@ -132,8 +137,10 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_NOT:
 			{
 				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestOperationTarget(card, gameState);
+				Card* bestCard = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
 
-				if (std::get<1>(bestPlay) > 0)
+				if (delta > 0)
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
 					gameState->selectedHandCard = card;
@@ -161,7 +168,10 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 					bestPlay = HexusAIHelper::getStrongestAugmentedPlayerCard(gameState);
 				}
 				
-				if (std::get<1>(bestPlay) > 0)
+				Card* bestCard = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
+				
+				if (delta > 0)
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
 					gameState->selectedHandCard = card;
@@ -175,8 +185,10 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_STEAL:
 			{
 				std::tuple<Card*, int> bestPlay = HexusAIHelper::getStrongestPlayerCard(gameState);
+				Card* bestCard = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
 
-				if (std::get<1>(bestPlay) > 0 || std::get<0>(bestPlay)->cardData->cardKey == CardKeys::Hex0)
+				if (delta > 0 || (bestCard != nullptr && bestCard->cardData->cardKey == CardKeys::Hex0))
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
 					gameState->selectedHandCard = card;

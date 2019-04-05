@@ -79,10 +79,15 @@ CardData* HexusOpponentData::getStrongestCard()
 
 int HexusOpponentData::generateReward(float deckStrength)
 {
-	float strengthPercent = deckStrength * 100.0f;
-	int adjusted = int((strengthPercent * strengthPercent) / 10.0f) + 15;
+	// This should give us a distribution where the mininum is 32 (easiest opponent) the maximum is 512 (hardest opponent), with a healthy weight to early opponents
+	// Formula: Lagrange interpolation over (0.0, 32), (0.3, 240), (1.0, 512)
+	const float alpha = -304.762f;
+	const float beta = 785.762f;
+	const float gamma = 32.0f;
 
-	return adjusted;
+	int adjusted = int((deckStrength * deckStrength) * alpha + (deckStrength * beta) + gamma);
+
+	return MathUtils::clamp(adjusted, 0, 512);
 }
 
 std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)
@@ -137,37 +142,68 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 
 	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
 	{
-		if (addedCards.find(*it) == addedCards.end())
+		int attack = *it;
+
+		if (addedCards.find(attack) == addedCards.end())
 		{
 			// Start zero-indexed counter
-			addedCards[*it] = 0;
+			addedCards[attack] = 0;
 		}
 		else
 		{
-			addedCards[*it] = addedCards[*it] + 1;
+			addedCards[attack] = addedCards[attack] + 1;
 		}
 
-		// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
-		switch (addedCards[*it] % 3)
+		if (attack != 1)
 		{
-			// Binary is 1st priority
-			default:
-			case 0:
+			// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
+			switch (addedCards[attack] % 3)
 			{
-				deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
-				break;
+				// Binary is 1st priority
+				default:
+				case 0:
+				{
+					deck.push_back(HexusOpponentData::getBinaryCardForAttack(attack));
+					break;
+				}
+				// Prioritize hex next
+				case 1:
+				{
+					deck.push_back(HexusOpponentData::getHexCardForAttack(attack));
+					break;
+				}
+				// Finally decimal
+				case 2:
+				{
+					deck.push_back(HexusOpponentData::getDecimalCardForAttack(attack));
+					break;
+				}
 			}
-			// Prioritize hex next
-			case 1:
+		}
+		else
+		{
+			// Special logic for 1 cards! We want to prioritize maxing out 'horde spiders' and 'scared girl'
+			switch (addedCards[attack] / 3)
 			{
-				deck.push_back(HexusOpponentData::getHexCardForAttack(*it));
-				break;
-			}
-			// Finally decimal
-			case 2:
-			{
-				deck.push_back(HexusOpponentData::getDecimalCardForAttack(*it));
-				break;
+				// Hex is 1st priority
+				default:
+				case 0:
+				{
+					deck.push_back(HexusOpponentData::getHexCardForAttack(attack));
+					break;
+				}
+				// Dec hex next
+				case 1:
+				{
+					deck.push_back(HexusOpponentData::getDecimalCardForAttack(attack));
+					break;
+				}
+				// Finally decimal
+				case 2:
+				{
+					deck.push_back(HexusOpponentData::getBinaryCardForAttack(attack));
+					break;
+				}
 			}
 		}
 	}

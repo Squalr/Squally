@@ -92,8 +92,8 @@ HexusOpponentData* Griffin::getHexusOpponentData()
 			Griffin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.375f,
-			HexusOpponentData::generateDeck(32, 0.375f,
+			0.188f,
+			HexusOpponentData::generateDeck(32, 0.188f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
