@@ -54,12 +54,12 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringDa()
 	{
-		return "Vælg et af dine kort og XOR det med et XORet kort.";
+		return "Vælg et af dine kort og XOR det med et andet kort.";
 	}
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringDe()
 	{
-		return "Wähle eine deiner Karten und XOR mit einer XOReren Karte.";
+		return "Wähle eine deiner Karten und XOR mit einer anderen Karte.";
 	}
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringEl()
@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringEn()
 	{
-		return "Select one of your cards XOR XOR it with another card.";
+		return "Select one of your cards and XOR it with another card.";
 	}
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringEs()
@@ -114,7 +114,7 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringNl()
 	{
-		return "Selecteer een van je kaarten en XOR met een XORere kaart.";
+		return "Selecteer een van je kaarten en XOR met een andere kaart.";
 	}
 
 	std::string Hexus_CardDescriptions_LogicalXor::getStringNo()
