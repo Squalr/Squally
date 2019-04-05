@@ -126,7 +126,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 				// 2x bonus for first clear
 				reward = int(float(reward) * 2.0f);
 			}
-			
 		}
 
 		if (wins == 1)

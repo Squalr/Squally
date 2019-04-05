@@ -33,6 +33,7 @@ private:
 	~CardStorage();
 
 	std::vector<CardData*> defaultCards;
+	std::vector<CardData*> defaultStorageCards;
 	static const std::string SaveKeyStorageCards;
 	static const std::string SaveKeyDeckCards;
 	static const std::string SaveKeyGold;

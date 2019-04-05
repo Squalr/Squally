@@ -29,21 +29,28 @@ CardStorage* CardStorage::getInstance()
 CardStorage::CardStorage()
 {
 	this->defaultCards = std::vector<CardData*>();
+	this->defaultStorageCards = std::vector<CardData*>();
 
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
@@ -57,7 +64,10 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Absorb));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Absorb));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Flip1));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Flip1));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Flip1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Flip2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Addition));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Greed));
@@ -70,6 +80,9 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Peek));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Peek));
+	this->defaultStorageCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Peek));
 }
 
 CardStorage::~CardStorage()
@@ -88,7 +101,7 @@ void CardStorage::addGold(int value)
 
 int CardStorage::getGold()
 {
-	const int startingGold = 50;
+	const int startingGold = 250;
 
 	return SaveManager::getGlobalDataOrDefault(CardStorage::SaveKeyGold, cocos2d::Value(startingGold)).asInt();
 }
@@ -235,6 +248,11 @@ std::vector<CardData*> CardStorage::getStorageCards()
 			}
 		}
 	}
+	else
+	{
+		return instance->defaultStorageCards;
+	}
+	
 
 	return storageCards;
 }
