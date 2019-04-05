@@ -99,13 +99,13 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-				CardList::getInstance()->cardListByName.at(CardKeys::Peek),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
-				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 
 			}),
 			nullptr

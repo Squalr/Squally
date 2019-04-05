@@ -31,6 +31,7 @@
         "BonusMoves",
         "Steal",
         "Mov",
+        "LogicalOr",
         "ReturnToHand",
         "Kill",
         "ShiftRight"

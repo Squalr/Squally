@@ -34,7 +34,7 @@
         "ShiftRight",
         "Subtraction",
         "BonusMoves",
-        "Drank"
+        "LogicalXor"
       ]
     }
   }

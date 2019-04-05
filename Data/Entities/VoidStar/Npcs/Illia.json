@@ -30,7 +30,7 @@
         "ShiftLeft",
         "Flip4",
         "Flip3",
-        "Poison",
+        "LogicalAnd",
         "Inverse",
         "Inverse",
         "Flip4",

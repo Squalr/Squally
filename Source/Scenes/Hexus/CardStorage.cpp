@@ -33,12 +33,14 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
-	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Binary4));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
@@ -48,9 +50,12 @@ CardStorage::CardStorage()
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
+	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Absorb));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Flip1));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Flip2));
 	this->defaultCards.push_back(CardList::getInstance()->cardListByName.at(CardKeys::Addition));

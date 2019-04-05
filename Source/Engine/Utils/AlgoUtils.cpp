@@ -99,7 +99,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 		// Memoization (current vote average / sum remainder / # choices)
 		// Note the memoization we use is an admissible heuristic
 		// ie 5 + 5 + 1 is the same as 4 + 4 + 3, but we will give more weight
-		// to the variant with more 5s. This is enforced by carefully ordering
+		// to the variant with less 5s. This is enforced by carefully ordering
 		// our vote choices and recursive calls such that we can greedily memoize.
 		if (votes.size() > 0)
 		{
@@ -131,14 +131,16 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 			return;
 		}
 
-		// Case where we add the value and remove it from our choices
-		std::vector<int> appendedVotes = std::vector<int>(votes);
-		appendedVotes.push_back(next_vote);
-		subset_sum(vote_choice_index + 1, remainder - next_vote, appendedVotes);
+		// Note: Swap the order of these two calls for an uneven distribution (high values preferred)
 
 		// Case where we ignore the value and remove it from our choices
 		std::vector<int> clonedVotes = std::vector<int>(votes);
 		subset_sum(vote_choice_index + 1, remainder, clonedVotes);
+
+		// Case where we add the value and remove it from our choices
+		std::vector<int> appendedVotes = std::vector<int>(votes);
+		appendedVotes.push_back(next_vote);
+		subset_sum(vote_choice_index + 1, remainder - next_vote, appendedVotes);
 	};
 
 	subset_sum(0, sum, std::vector<int>());

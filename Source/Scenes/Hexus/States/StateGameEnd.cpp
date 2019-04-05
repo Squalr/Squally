@@ -83,6 +83,8 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", gameState->opponentData->enemyNameKey, gameState->gameDurationInSeconds);
 	bool isDraw = gameState->playerLosses >= 2 && gameState->enemyLosses >= 2;
 	bool isWin = gameState->playerLosses < 2 && gameState->enemyLosses >= 2;
+	int reward = gameState->opponentData->reward;
+	bool isLastInChapter = gameState->opponentData->getIsLastInChapter();
 
 	if (isDraw)
 	{
@@ -94,7 +96,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
 
 		// Half the reward for a draw
-		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(gameState->opponentData->reward / 2, true));
+		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward / 2, true));
 	}
 	else if (isWin)
 	{
@@ -103,12 +105,22 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
 
-		if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
+		if (wins == 1 && losses == 0)
 		{
 			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 1);
+
+			if (isLastInChapter)
+			{
+				// 8x bonus for first chapter clear
+				reward = int(float(reward) * 8.0f);
+			}
+			else
+			{
+				// 20% bonus for first win
+				reward = int(float(reward) * 1.2f);
+			}
 		}
 
-		// Analytics for first win
 		if (wins == 1)
 		{
 			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", gameState->opponentData->enemyNameKey, losses + wins);
@@ -117,15 +129,16 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		// Analytics for winning
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
 
-		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(gameState->opponentData->reward, false));
+		NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward, false, isLastInChapter));
 	}
 	else
 	{
+		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
 		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 
 		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
 
-		if (!SaveManager::hasGlobalData(winsKey) && !SaveManager::hasGlobalData(lossesKey))
+		if (wins == 0 && losses == 1)
 		{
 			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 0);
 		}

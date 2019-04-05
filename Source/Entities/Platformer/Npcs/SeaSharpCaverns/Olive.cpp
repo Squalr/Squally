@@ -99,12 +99,12 @@ HexusOpponentData* Olive::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 
 			}),
 			nullptr

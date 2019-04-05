@@ -97,15 +97,16 @@ HexusOpponentData* Viper::getHexusOpponentData()
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
-				CardList::getInstance()->cardListByName.at(CardKeys::Heal),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
-				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 
 			}),
 			nullptr

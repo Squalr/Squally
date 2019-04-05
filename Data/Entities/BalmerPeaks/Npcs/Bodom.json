@@ -30,11 +30,11 @@
         "Absorb",
         "ShiftRight",
         "Kill",
-        "Peek",
+        "ShiftLeft",
         "LogicalOr",
         "LogicalXor",
-        "Clear",
-        "Poison"
+        "LogicalAnd",
+        "ShiftRight"
       ]
     }
   }

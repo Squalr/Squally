@@ -33,7 +33,7 @@
         "LogicalAnd",
         "Steal",
         "LogicalAnd",
-        "Steal"
+        "ShiftRight"
       ]
     }
   }

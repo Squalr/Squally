@@ -18,14 +18,11 @@
 #include "Strings/Hexus/CardDescriptions/Absorb.h"
 #include "Strings/Hexus/CardDescriptions/Addition.h"
 #include "Strings/Hexus/CardDescriptions/BonusMoves.h"
-#include "Strings/Hexus/CardDescriptions/Clear.h"
-#include "Strings/Hexus/CardDescriptions/Drank.h"
 #include "Strings/Hexus/CardDescriptions/Flip1.h"
 #include "Strings/Hexus/CardDescriptions/Flip2.h"
 #include "Strings/Hexus/CardDescriptions/Flip3.h"
 #include "Strings/Hexus/CardDescriptions/Flip4.h"
 #include "Strings/Hexus/CardDescriptions/Greed.h"
-#include "Strings/Hexus/CardDescriptions/Heal.h"
 #include "Strings/Hexus/CardDescriptions/Inverse.h"
 #include "Strings/Hexus/CardDescriptions/Kill.h"
 #include "Strings/Hexus/CardDescriptions/LogicalAnd.h"
@@ -33,7 +30,6 @@
 #include "Strings/Hexus/CardDescriptions/LogicalXor.h"
 #include "Strings/Hexus/CardDescriptions/Mov.h"
 #include "Strings/Hexus/CardDescriptions/Peek.h"
-#include "Strings/Hexus/CardDescriptions/Poison.h"
 #include "Strings/Hexus/CardDescriptions/ReturnToHand.h"
 #include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
 #include "Strings/Hexus/CardDescriptions/ShiftRight.h"
@@ -109,10 +105,6 @@ void CardPreviewComponent::onAnyStateChange(GameState* gameState)
 				case CardData::CardType::Hexidecimal:
 				case CardData::CardType::Special_SHL:
 				case CardData::CardType::Special_SHR:
-				case CardData::CardType::Special_CLEAR:
-				case CardData::CardType::Special_HEAL:
-				case CardData::CardType::Special_POISON:
-				case CardData::CardType::Special_DRANK:
 				case CardData::CardType::Special_GREED:
 				case CardData::CardType::Special_BONUS_MOVES:
 				case CardData::CardType::Special_SUDDEN_DEATH:

@@ -27,13 +27,13 @@
         "Greed",
         "Greed",
         "Kill",
-        "Clear",
+        "LogicalAnd",
         "Mov",
         "Steal",
         "Absorb",
         "Steal",
         "ShiftLeft",
-        "Poison",
+        "LogicalOr",
         "Absorb"
       ]
     }

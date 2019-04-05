@@ -102,9 +102,9 @@ HexusOpponentData* Drak::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-				CardList::getInstance()->cardListByName.at(CardKeys::Clear),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 
 			}),
 			nullptr

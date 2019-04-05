@@ -62,7 +62,7 @@ void StateCardReplace::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
+	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 24.0f);
 }
 
 void StateCardReplace::onEndReplaceCards(GameState* gameState)
@@ -99,7 +99,7 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 		GameUtils::changeParent(gameState->playerHand, this, true);
-		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f)));
+		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 192.0f)));
 		gameState->playerHand->setCardScale(0.6f, 0.25f);
 		gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
 		gameState->playerHand->enableRowCardInteraction();

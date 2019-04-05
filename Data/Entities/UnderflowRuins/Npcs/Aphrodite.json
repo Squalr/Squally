@@ -30,7 +30,7 @@
         "Flip2",
         "ShiftLeft",
         "Mov",
-        "Peek",
+        "ShiftRight",
         "ShiftLeft",
         "LogicalXor",
         "Mov"

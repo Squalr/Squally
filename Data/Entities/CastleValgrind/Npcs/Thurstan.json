@@ -30,7 +30,7 @@
         "Mov",
         "Flip2",
         "Addition",
-        "Clear",
+        "LogicalOr",
         "LogicalAnd",
         "Flip2",
         "Steal"

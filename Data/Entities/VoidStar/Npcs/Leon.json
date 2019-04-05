@@ -28,12 +28,12 @@
         "Greed",
         "LogicalOr",
         "LogicalAnd",
-        "Drank",
+        "LogicalXor",
         "Kill",
         "Flip4",
         "Flip3",
         "ShiftLeft",
-        "Poison",
+        "LogicalAnd",
         "ShiftRight"
         
       ]

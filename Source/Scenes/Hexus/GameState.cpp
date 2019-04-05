@@ -209,7 +209,7 @@ void GameState::clearInteraction()
 	}
 }
 
-void GameState::sendFieldCardsToGraveyard()
+void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 {
 	std::vector<CardRow*> playerRows = this->getPlayerRows();
 	std::vector<Card*> playerRemovedCards = std::vector<Card*>();
@@ -220,8 +220,8 @@ void GameState::sendFieldCardsToGraveyard()
 	{
 		(*it)->removeCardsWhere([&](Card* card)
 		{
-			// Special effect for binary 0 card
-			if (card->cardData->cardKey == CardKeys::Binary0)
+			// Special effect for binary 0 card (unless the game is over)
+			if (this->playerLosses < 2 && this->enemyLosses < 2 && card->cardData->cardKey == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -235,8 +235,8 @@ void GameState::sendFieldCardsToGraveyard()
 	{
 		(*it)->removeCardsWhere([&](Card* card)
 		{
-			// Special effect for binary 0 card
-			if (card->cardData->cardKey == CardKeys::Binary0)
+			// Special effect for binary 0 card (unless the game is over)
+			if (this->playerLosses < 2 && this->enemyLosses < 2 && card->cardData->cardKey == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -248,12 +248,26 @@ void GameState::sendFieldCardsToGraveyard()
 
 	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
 	{
-		this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+		if ((*it)->cardData->cardKey == CardKeys::Decimal1)
+		{
+			this->playerHand->insertCard(*it, Config::insertDelay);
+		}
+		else
+		{
+			this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+		}
 	}
 
 	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
 	{
-		this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+		if ((*it)->cardData->cardKey == CardKeys::Decimal1)
+		{
+			this->enemyHand->insertCard(*it, Config::insertDelay);
+		}
+		else
+		{
+			this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+		}
 	}
 }
 

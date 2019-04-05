@@ -9,6 +9,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/Config.h"
 
@@ -235,25 +236,9 @@ Card::Operation Card::toOperation(unsigned int immediate)
 		{
 			return Operation(Operation::OperationType::SUB, immediate);
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_NOT:
 		{
-			return Operation(Operation::OperationType::XOR, 0b1111);
-		}
-		case CardData::CardType::Special_CLEAR:
-		{
-			return Operation(Operation::OperationType::MOV, immediate);
-		}
-		case CardData::CardType::Special_HEAL:
-		{
-			return Operation(Operation::OperationType::OR, immediate);
-		}
-		case CardData::CardType::Special_POISON:
-		{
-			return Operation(Operation::OperationType::AND, immediate);
-		}
-		case CardData::CardType::Special_DRANK:
-		{
-			return Operation(Operation::OperationType::XOR, immediate);
+			return Operation(Operation::OperationType::NOT);
 		}
 		default:
 		{
@@ -302,6 +287,11 @@ bool Card::getProtected()
 
 int Card::applyOperation(int attack, Operation operation)
 {
+	if (this->cardData->cardKey == CardKeys::Absorb)
+	{
+		return 0b0000;
+	}
+
 	const unsigned int attackMask = 0b1111;
 
 	switch (operation.operationType)
@@ -334,6 +324,11 @@ int Card::applyOperation(int attack, Operation operation)
 		case Operation::OperationType::XOR:
 		{
 			attack ^= operation.immediate;
+			break;
+		}
+		case Operation::OperationType::NOT:
+		{
+			attack ^= 0b1111;
 			break;
 		}
 		case Operation::OperationType::ADD:

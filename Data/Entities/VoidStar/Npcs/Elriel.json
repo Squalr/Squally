@@ -27,12 +27,13 @@
         "Greed",
         "Greed",
         "ShiftLeft",
+        "ShiftRight",
         "Kill",
-        "Peek",
+        "LogicalXor",
         "SuddenDeath",
         "ReturnToHand",
-        "ShiftRight",
         "Absorb",
+        "LogicalOr",
         "LogicalAnd",
         "Flip3"
       ]

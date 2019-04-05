@@ -97,7 +97,7 @@ HexusOpponentData* Ursula::getHexusOpponentData()
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
@@ -105,6 +105,7 @@ HexusOpponentData* Ursula::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 
 			}),

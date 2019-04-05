@@ -28,12 +28,12 @@
         "Greed",
         "ReturnToHand",
         "Greed",
-        "Poison",
+        "ShiftRight",
         "Flip2",
         "Steal",
         "LogicalXor",
         "ShiftLeft",
-        "Peek"
+        "LogicalOr"
       ]
     }
   }

@@ -103,7 +103,7 @@ HexusOpponentData* Hera::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 
 			}),

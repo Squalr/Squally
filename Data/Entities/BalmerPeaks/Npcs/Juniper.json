@@ -30,11 +30,11 @@
         "Steal",
         "Addition",
         "Steal",
-        "Steal",
+        "LogicalOr",
         "ShiftRight",
         "LogicalXor",
-        "Clear",
-        "Heal"
+        "LogicalAnd",
+        "LogicalXor"
       ]
     }
   }

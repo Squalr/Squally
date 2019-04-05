@@ -104,7 +104,7 @@ HexusOpponentData* Marcel::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 
 			}),

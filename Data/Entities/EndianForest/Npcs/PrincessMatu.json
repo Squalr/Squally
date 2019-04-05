@@ -26,12 +26,12 @@
       "PresetCards": [
         "Greed",
         "Greed",
-        "Clear",
+        "Mov",
         "LogicalXor",
-        "LogicalXor",
+        "ShiftLeft",
         "LogicalOr",
         "Mov",
-        "LogicalAnd",
+        "ShiftRight",
         "LogicalAnd"
       ]
     }

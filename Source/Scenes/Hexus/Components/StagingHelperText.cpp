@@ -139,7 +139,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_XOR:
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
-			case CardData::CardType::Special_INV:
+			case CardData::CardType::Special_NOT:
 			{
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
 				break;
@@ -160,11 +160,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_CLEAR:
 			case CardData::CardType::Special_ABSORB:
-			case CardData::CardType::Special_HEAL:
-			case CardData::CardType::Special_POISON:
-			case CardData::CardType::Special_DRANK:
 			default:
 			{
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());

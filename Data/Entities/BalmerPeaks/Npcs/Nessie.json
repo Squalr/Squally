@@ -28,7 +28,7 @@
         "Greed",
         "ShiftRight",
         "Addition",
-        "Clear",
+        "LogicalAnd",
         "LogicalOr",
         "Flip3",
         "LogicalXor",

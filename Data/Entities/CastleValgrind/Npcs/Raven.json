@@ -27,11 +27,11 @@
         "Greed",
         "Greed",
         "Steal",
-        "Poison",
+        "LogicalAnd",
         "Greed",
         "ReturnToHand",
         "ShiftRight",
-        "Steal",
+        "LogicalOr",
         "Steal",
         "ShiftLeft"
       ]

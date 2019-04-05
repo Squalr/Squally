@@ -21,15 +21,13 @@
 #include "Strings/Hexus/CardDescriptions/Absorb.h"
 #include "Strings/Hexus/CardDescriptions/Addition.h"
 #include "Strings/Hexus/CardDescriptions/BonusMoves.h"
-#include "Strings/Hexus/CardDescriptions/Clear.h"
-#include "Strings/Hexus/CardDescriptions/Drank.h"
 #include "Strings/Hexus/CardDescriptions/DrawEffect.h"
 #include "Strings/Hexus/CardDescriptions/Flip1.h"
 #include "Strings/Hexus/CardDescriptions/Flip2.h"
 #include "Strings/Hexus/CardDescriptions/Flip3.h"
 #include "Strings/Hexus/CardDescriptions/Flip4.h"
 #include "Strings/Hexus/CardDescriptions/Greed.h"
-#include "Strings/Hexus/CardDescriptions/Heal.h"
+#include "Strings/Hexus/CardDescriptions/Horde.h"
 #include "Strings/Hexus/CardDescriptions/Inverse.h"
 #include "Strings/Hexus/CardDescriptions/Kill.h"
 #include "Strings/Hexus/CardDescriptions/LogicalAnd.h"
@@ -38,7 +36,7 @@
 #include "Strings/Hexus/CardDescriptions/Mov.h"
 #include "Strings/Hexus/CardDescriptions/NoDestroyEffect.h"
 #include "Strings/Hexus/CardDescriptions/Peek.h"
-#include "Strings/Hexus/CardDescriptions/Poison.h"
+#include "Strings/Hexus/CardDescriptions/ReturnAfterRound.h"
 #include "Strings/Hexus/CardDescriptions/ReturnToHand.h"
 #include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
 #include "Strings/Hexus/CardDescriptions/ShiftRight.h"
@@ -133,8 +131,12 @@ void CardPreview::previewCard(Card* card)
 			{
 				int attack = card->getAttack();
 
-				// Show special effects for 0 cards
-				if (card->cardData->cardKey == CardKeys::Binary0 || card->cardData->cardKey == CardKeys::Decimal0 || card->cardData->cardKey == CardKeys::Hex0)
+				// Show special effects
+				if (card->cardData->cardKey == CardKeys::Binary0 
+				|| card->cardData->cardKey == CardKeys::Decimal0 
+				|| card->cardData->cardKey == CardKeys::Hex0
+				|| card->cardData->cardKey == CardKeys::Decimal1
+				|| card->cardData->cardKey == CardKeys::Hex1)
 				{
 					LocalizedLabel* specialLabel = nullptr;
 					
@@ -146,9 +148,17 @@ void CardPreview::previewCard(Card* card)
 					{
 						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_DrawEffect::create());
 					}
-					else
+					else if (card->cardData->cardKey == CardKeys::Hex0)
 					{
 						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_TurnGainsEffect::create());
+					}
+					else if (card->cardData->cardKey == CardKeys::Decimal1)
+					{
+						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_ReturnAfterRound::create());
+					}
+					else if (card->cardData->cardKey == CardKeys::Hex1)
+					{
+						specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_Horde::create());
 					}
 					
 					specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -239,7 +249,7 @@ void CardPreview::previewCard(Card* card)
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRight::create());
 						break;
 					}
-					case CardData::CardType::Special_INV:
+					case CardData::CardType::Special_NOT:
 					{
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Inverse::create());
 						break;
@@ -272,11 +282,6 @@ void CardPreview::previewCard(Card* card)
 					case CardData::CardType::Special_SUB:
 					{
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Subtract::create());
-						break;
-					}
-					case CardData::CardType::Special_CLEAR:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Clear::create());
 						break;
 					}
 					case CardData::CardType::Special_SUDDEN_DEATH:
@@ -317,21 +322,6 @@ void CardPreview::previewCard(Card* card)
 					case CardData::CardType::Special_PEEK:
 					{
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Peek::create());
-						break;
-					}
-					case CardData::CardType::Special_HEAL:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Heal::create());
-						break;
-					}
-					case CardData::CardType::Special_POISON:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Poison::create());
-						break;
-					}
-					case CardData::CardType::Special_DRANK:
-					{
-						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Drank::create());
 						break;
 					}
 					default:

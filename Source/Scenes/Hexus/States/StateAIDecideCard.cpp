@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/States/HexusAIHelper.h"
 
@@ -94,10 +95,6 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
-			case CardData::CardType::Special_CLEAR:
-			case CardData::CardType::Special_HEAL:
-			case CardData::CardType::Special_POISON:
-			case CardData::CardType::Special_DRANK:
 			case CardData::CardType::Special_ABSORB:
 			case CardData::CardType::Special_SUDDEN_DEATH:
 			{
@@ -132,7 +129,7 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 
 				break;
 			}
-			case CardData::CardType::Special_INV:
+			case CardData::CardType::Special_NOT:
 			{
 				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestOperationTarget(card, gameState);
 
@@ -148,8 +145,22 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			}
 			case CardData::CardType::Special_RETURN_TO_HAND:
 			{
-				std::tuple<Card*, int> bestPlay = HexusAIHelper::getStrongestAugmentedPlayerCard(gameState);
+				std::tuple<Card*, int> bestPlay;
 
+				if (gameState->playerPassed && ((gameState->enemyLosses >= 1 && gameState->playerLosses >= 1) || (gameState->enemyLosses >= 1 && gameState->enemyHand->rowCards.size() == 1)))
+				{
+					// Rare situation: case where the player passed and the enemy can return the strongest card without reprocussions
+					// Only used either when:
+					// a) Final round
+					// b) This is the last card the opponent has, and they are about to lose the round
+					bestPlay = HexusAIHelper::getStrongestPlayerCard(gameState);
+				}
+				else
+				{
+					// Standard play: Return the most buffed card
+					bestPlay = HexusAIHelper::getStrongestAugmentedPlayerCard(gameState);
+				}
+				
 				if (std::get<1>(bestPlay) > 0)
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
@@ -165,7 +176,7 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			{
 				std::tuple<Card*, int> bestPlay = HexusAIHelper::getStrongestPlayerCard(gameState);
 
-				if (std::get<1>(bestPlay) > 0)
+				if (std::get<1>(bestPlay) > 0 || std::get<0>(bestPlay)->cardData->cardKey == CardKeys::Hex0)
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
 					gameState->selectedHandCard = card;

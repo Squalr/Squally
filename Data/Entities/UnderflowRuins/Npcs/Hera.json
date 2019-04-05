@@ -32,7 +32,7 @@
         "LogicalAnd",
         "Mov",
         "ReturnToHand",
-        "Greed",
+        "ShiftRight",
         "LogicalXor"
       ]
     }

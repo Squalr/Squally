@@ -138,10 +138,6 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_CLEAR:
-		case CardData::CardType::Special_DRANK:
-		case CardData::CardType::Special_HEAL:
-		case CardData::CardType::Special_POISON:
 		{
 			gameState->playerBinaryCards->enableRowSelection(CC_CALLBACK_1(StateHandCardStaged::onRowChosen, this, gameState));
 			gameState->playerDecimalCards->enableRowSelection(CC_CALLBACK_1(StateHandCardStaged::onRowChosen, this, gameState));
@@ -202,7 +198,7 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 			gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateHandCardStaged::immediatelyPlayCard, this, gameState));
 			break;
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_NOT:
 		case CardData::CardType::Special_KILL:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		{

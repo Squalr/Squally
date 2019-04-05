@@ -100,9 +100,9 @@ HexusOpponentData* Brine::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
-				CardList::getInstance()->cardListByName.at(CardKeys::Drank),
-				CardList::getInstance()->cardListByName.at(CardKeys::Poison),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 

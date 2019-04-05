@@ -27,7 +27,7 @@
         "Greed",
         "Greed",
         "LogicalAnd",
-        "Heal",
+        "LogicalOr",
         "Addition",
         "ShiftRight",
         "ShiftLeft",

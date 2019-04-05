@@ -31,7 +31,7 @@
         "LogicalXor",
         "ShiftLeft",
         "ShiftRight",
-        "Drank",
+        "LogicalAnd",
         "ReturnToHand",
         "LogicalOr"
       ]

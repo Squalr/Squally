@@ -31,9 +31,9 @@
         "Mov",
         "Flip3",
         "Flip3",
-        "Poison",
+        "LogicalAnd",
         "ShiftRight",
-        "Clear"
+        "Mov"
       ]
     }
   }

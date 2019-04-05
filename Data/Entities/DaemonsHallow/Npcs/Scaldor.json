@@ -30,7 +30,7 @@
         "Absorb",
         "Absorb",
         "Addition",
-        "LogicalOr",
+        "ShiftLeft",
         "LogicalOr",
         "LogicalXor",
         "ShiftRight",
