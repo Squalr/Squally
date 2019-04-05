@@ -28,20 +28,19 @@ const Color4B Card::specialColor = Color4B(255, 116, 0, 255);
 const Color4B Card::debuffColor = Color4B(225, 0, 0, 255);
 const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
 
-Card* Card::create(CardStyle cardStyle, CardData* data)
+Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 {
-	Card* instance = new Card(cardStyle, data);
+	Card* instance = new Card(cardStyle, data, isPlayerOwnedCard);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Card::Card(CardStyle cardStyle, CardData* data)
+Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 {
 	this->mouseOverCallback = nullptr;
-	this->isHibernating = false;
-	this->isProtected = false;
+	this->isPlayerOwnedCard = isPlayerOwnedCard;
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
@@ -265,24 +264,14 @@ unsigned int Card::getAttack()
 	return attack;
 }
 
-void Card::setHibernating(bool isHibernating)
+void Card::setIsPlayerOwnedCard(bool isPlayerOwnedCard)
 {
-	this->isHibernating = isHibernating;
+	this->isPlayerOwnedCard = isPlayerOwnedCard;
 }
 
-void Card::setProtected(bool isProtected)
+bool Card::getIsPlayerOwnedCard()
 {
-	this->isProtected = isProtected;
-}
-
-bool Card::getHibernating()
-{
-	return this->isHibernating;
-}
-
-bool Card::getProtected()
-{
-	return this->isProtected;
+	return this->isPlayerOwnedCard;
 }
 
 int Card::applyOperation(int attack, Operation operation)

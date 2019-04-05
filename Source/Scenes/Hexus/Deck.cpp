@@ -9,31 +9,32 @@
 
 using namespace cocos2d;
 
-Deck* Deck::create()
+Deck* Deck::create(bool isPlayerOwnedDeck)
 {
-	Deck* instance = new Deck();
+	Deck* instance = new Deck(isPlayerOwnedDeck);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards)
+Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards, bool isPlayerOwnedDeck)
 {
-	Deck* instance = new Deck(cardStyle, cards);
+	Deck* instance = new Deck(cardStyle, cards, isPlayerOwnedDeck);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Deck::Deck() : Deck(Card::CardStyle::Earth, std::vector<CardData*>())
+Deck::Deck(bool isPlayerOwnedDeck) : Deck(Card::CardStyle::Earth, std::vector<CardData*>(), isPlayerOwnedDeck)
 {
 	this->deckCards = std::vector<Card*>();
 }
 
-Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
+Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck)
 {
+	this->isPlayerOwnedDeck = isPlayerOwnedDeck;
 	this->style = cardStyle;
 	this->deckCards = std::vector<Card*>();
 	this->pad = ClickableNode::create(HexusResources::CardPad, HexusResources::CardPad);
@@ -48,7 +49,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
 
 	for (auto it = cardData.begin(); it != cardData.end(); *it++)
 	{
-		this->insertCardBottom(Card::create(this->style, *it), false, 0.0f);
+		this->insertCardBottom(Card::create(this->style, *it, isPlayerOwnedDeck), false, 0.0f);
 	}
 
 	this->addChild(this->cardsNode);
@@ -68,7 +69,7 @@ void Deck::copyTo(Deck* otherDeck)
 
 		for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
 		{
-			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData), false, 0.0f);
+			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData, this->isPlayerOwnedDeck), false, 0.0f);
 		}
 	}
 }

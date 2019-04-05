@@ -457,7 +457,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			if (!tryAbsorb(gameState, targetRow))
 			{
-				if (targetRow->isPlayerRow())
+				if (gameState->selectedDestinationCard->getIsPlayerOwnedCard())
 				{
 					gameState->playerHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), Config::insertDelay);
 				}

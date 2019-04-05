@@ -59,7 +59,7 @@ HexusOpponentData::~HexusOpponentData()
 
 Deck* HexusOpponentData::getDeck()
 {
-	return Deck::create(this->cardStyle, this->cards);
+	return Deck::create(this->cardStyle, this->cards, false);
 }
 
 CardData* HexusOpponentData::getStrongestCard()
