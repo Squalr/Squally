@@ -45,7 +45,7 @@ KingGrogg::KingGrogg(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(412.0f, 412.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -75,7 +75,7 @@ KingGrogg::~KingGrogg()
 
 Vec2 KingGrogg::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -280.0f);
 }
 
 HexusOpponentData* KingGrogg::getHexusOpponentData()
@@ -85,10 +85,10 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 		KingGrogg::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -160.0f),
+			Vec2(-32.0f, -280.0f),
 			KingGrogg::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
@@ -121,7 +121,9 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,7 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,12 +148,14 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

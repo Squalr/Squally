@@ -45,7 +45,7 @@ Mermaid::Mermaid(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(172.0f, 296.0f),
-	0.8f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* Mermaid::getHexusOpponentData()
 		Mermaid::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.8f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mermaid::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),

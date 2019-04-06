@@ -75,7 +75,7 @@ Ent::~Ent()
 
 Vec2 Ent::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -356.0f);
 }
 
 HexusOpponentData* Ent::getHexusOpponentData()
@@ -87,13 +87,13 @@ HexusOpponentData* Ent::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameEndianForest,
 			0.9f,
 			Vec2(24.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -256.0f),
+			Vec2(-32.0f, -356.0f),
 			Ent::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.450f,
-			HexusOpponentData::generateDeck(32, 0.450f,
+			0.615f,
+			HexusOpponentData::generateDeck(32, 0.615f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* Ent::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +132,9 @@ HexusOpponentData* Ent::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,17 +149,17 @@ HexusOpponentData* Ent::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

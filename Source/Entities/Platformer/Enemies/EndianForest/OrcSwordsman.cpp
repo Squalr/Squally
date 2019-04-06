@@ -92,8 +92,8 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 			OrcSwordsman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.100f,
-			HexusOpponentData::generateDeck(32, 0.100f,
+			0.385f,
+			HexusOpponentData::generateDeck(32, 0.385f,
 			{
 
 			}),
@@ -121,7 +121,7 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +131,8 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +147,8 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

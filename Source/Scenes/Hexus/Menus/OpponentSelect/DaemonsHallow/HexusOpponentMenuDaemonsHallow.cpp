@@ -19,18 +19,6 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Cindra.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Drak.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Lucifer.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Magnus.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Pan.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallow.h"
 
 using namespace cocos2d;

@@ -291,10 +291,10 @@ def generateHexusMenuCode(allEntityData):
 			generatedPuzzleIncludes = ""
 
 			for nextEntity in entities:
-				if not nextEntity["IsHexusPuzzle"]:
+				if not nextEntity["IsHexusPuzzle"] and nextEntity["Type"] == "Npc":
 					generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
 					generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
-				else:
+				elif nextEntity["Type"] == "Enemy":
 					generatedPuzzleIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
 					generatedPuzzleEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
 			

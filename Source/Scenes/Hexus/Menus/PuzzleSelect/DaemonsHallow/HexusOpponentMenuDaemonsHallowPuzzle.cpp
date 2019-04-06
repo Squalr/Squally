@@ -17,20 +17,7 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonRogue.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonShaman.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallowPuzzle.h"
 
 using namespace cocos2d;
@@ -63,7 +50,6 @@ HexusOpponentMenuDaemonsHallowPuzzle::HexusOpponentMenuDaemonsHallowPuzzle() : s
 	this->opponents.push_back(HexusOpponentPreview::create(DemonWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FireElemental::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(LavaGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Apple::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

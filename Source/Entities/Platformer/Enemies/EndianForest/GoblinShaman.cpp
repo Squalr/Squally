@@ -92,8 +92,8 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 			GoblinShaman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.500f,
-			HexusOpponentData::generateDeck(32, 0.500f,
+			0.538f,
+			HexusOpponentData::generateDeck(32, 0.538f,
 			{
 
 			}),
@@ -121,7 +121,9 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,9 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +150,9 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

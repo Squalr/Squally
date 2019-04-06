@@ -45,7 +45,7 @@ LionMan::LionMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 326.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* LionMan::getHexusOpponentData()
 		LionMan::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			LionMan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),

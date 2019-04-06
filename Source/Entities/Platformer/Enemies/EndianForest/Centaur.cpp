@@ -75,7 +75,7 @@ Centaur::~Centaur()
 
 Vec2 Centaur::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -196.0f);
 }
 
 HexusOpponentData* Centaur::getHexusOpponentData()
@@ -88,12 +88,12 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -196.0f),
 			Centaur::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.200f,
-			HexusOpponentData::generateDeck(32, 0.200f,
+			0.231f,
+			HexusOpponentData::generateDeck(32, 0.231f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -141,12 +142,17 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

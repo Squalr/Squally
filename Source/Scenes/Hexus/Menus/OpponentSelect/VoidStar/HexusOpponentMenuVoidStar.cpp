@@ -19,18 +19,6 @@
 #include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
 #include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Npcs/VoidStar/Atreus.h"
-#include "Entities/Platformer/Npcs/VoidStar/Elriel.h"
-#include "Entities/Platformer/Npcs/VoidStar/Illia.h"
-#include "Entities/Platformer/Npcs/VoidStar/Leon.h"
-#include "Entities/Platformer/Npcs/VoidStar/Mara.h"
-#include "Entities/Platformer/Npcs/VoidStar/Marcel.h"
-#include "Entities/Platformer/Npcs/VoidStar/Piper.h"
-#include "Entities/Platformer/Npcs/VoidStar/QueenElise.h"
-#include "Entities/Platformer/Npcs/VoidStar/Radon.h"
-#include "Entities/Platformer/Npcs/VoidStar/Thor.h"
-#include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
-#include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStar.h"
 
 using namespace cocos2d;

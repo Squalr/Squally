@@ -45,7 +45,7 @@ AnubisWarrior::AnubisWarrior(ValueMap& initProperties) : PlatformerEnemy(initPro
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 292.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	27,
 	17)
@@ -85,15 +85,15 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 		AnubisWarrior::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			AnubisWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.917f,
+			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
 			}),
@@ -121,7 +121,9 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +138,7 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -146,17 +148,22 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
