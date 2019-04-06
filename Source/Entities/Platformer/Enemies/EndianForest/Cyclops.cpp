@@ -92,8 +92,8 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 			Cyclops::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.800f,
-			HexusOpponentData::generateDeck(32, 0.800f,
+			0.462f,
+			HexusOpponentData::generateDeck(32, 0.462f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -141,12 +142,16 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

@@ -7,7 +7,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 {{HexusOpponentIncludes}}#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-{{HexusOpponentIncludes}}#include "Scenes/Hexus/Menus/ChapterSelect/{{Environment}}/HexusChapterPreview{{Environment}}{{PuzzleTag}}.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/{{Environment}}/HexusChapterPreview{{Environment}}{{PuzzleTag}}.h"
 
 using namespace cocos2d;
 

@@ -45,7 +45,7 @@ AnubisPup::AnubisPup(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 186.0f),
-	0.8f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 		AnubisPup::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.8f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			AnubisPup::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.083f,
+			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,17 +132,18 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -156,7 +158,11 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

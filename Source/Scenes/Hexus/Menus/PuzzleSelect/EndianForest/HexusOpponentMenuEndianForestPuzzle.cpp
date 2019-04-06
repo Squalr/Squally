@@ -19,24 +19,7 @@
 #include "Entities/Platformer/Enemies/EndianForest/OrcSwordsman.h"
 #include "Entities/Platformer/Enemies/EndianForest/OrcWarrior.h"
 #include "Entities/Platformer/Enemies/EndianForest/Troll.h"
-#include "Entities/Platformer/Helpers/EndianForest/Goblin.h"
-#include "Entities/Platformer/Helpers/EndianForest/Turtle.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
-#include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
-#include "Entities/Platformer/Enemies/EndianForest/Ent.h"
-#include "Entities/Platformer/Enemies/EndianForest/GoblinGruntBoar.h"
-#include "Entities/Platformer/Enemies/EndianForest/GoblinShaman.h"
-#include "Entities/Platformer/Enemies/EndianForest/GoblinWarriorPig.h"
-#include "Entities/Platformer/Enemies/EndianForest/KingGrogg.h"
-#include "Entities/Platformer/Enemies/EndianForest/Ogre.h"
-#include "Entities/Platformer/Enemies/EndianForest/OrcBomber.h"
-#include "Entities/Platformer/Enemies/EndianForest/OrcGrunt.h"
-#include "Entities/Platformer/Enemies/EndianForest/OrcSwordsman.h"
-#include "Entities/Platformer/Enemies/EndianForest/OrcWarrior.h"
-#include "Entities/Platformer/Enemies/EndianForest/Troll.h"
-#include "Entities/Platformer/Helpers/EndianForest/Goblin.h"
-#include "Entities/Platformer/Helpers/EndianForest/Turtle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/EndianForest/HexusChapterPreviewEndianForestPuzzle.h"
 
 using namespace cocos2d;
@@ -71,8 +54,6 @@ HexusOpponentMenuEndianForestPuzzle::HexusOpponentMenuEndianForestPuzzle() : sup
 	this->opponents.push_back(HexusOpponentPreview::create(OrcSwordsman::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(OrcWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Troll::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Goblin::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Turtle::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

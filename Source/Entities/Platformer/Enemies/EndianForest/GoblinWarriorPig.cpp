@@ -92,8 +92,8 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 			GoblinWarriorPig::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.400f,
-			HexusOpponentData::generateDeck(32, 0.400f,
+			0.154f,
+			HexusOpponentData::generateDeck(32, 0.154f,
 			{
 
 			}),
@@ -121,7 +121,7 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +136,9 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -151,7 +153,9 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

@@ -92,8 +92,8 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 			GoblinGruntBoar::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.300f,
-			HexusOpponentData::generateDeck(32, 0.300f,
+			0.308f,
+			HexusOpponentData::generateDeck(32, 0.308f,
 			{
 
 			}),
@@ -121,7 +121,7 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +131,8 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -151,7 +152,8 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

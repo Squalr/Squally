@@ -92,8 +92,8 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 			Ogre::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.846f,
+			HexusOpponentData::generateDeck(32, 0.846f,
 			{
 
 			}),
@@ -121,7 +121,9 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,7 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -151,7 +153,10 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

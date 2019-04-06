@@ -19,18 +19,6 @@
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zana.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zelina.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Amelia.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Azmus.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Garrick.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Johann.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Necron.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/PrincessNebea.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Roger.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Thion.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Ursula.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Viper.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Zana.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Zelina.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/LambdaCrypts/HexusChapterPreviewLambdaCrypts.h"
 
 using namespace cocos2d;

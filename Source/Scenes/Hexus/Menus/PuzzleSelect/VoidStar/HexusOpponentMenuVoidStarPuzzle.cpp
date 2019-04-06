@@ -20,25 +20,7 @@
 #include "Entities/Platformer/Enemies/VoidStar/Viking.h"
 #include "Entities/Platformer/Enemies/VoidStar/VikingBot.h"
 #include "Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h"
-#include "Entities/Platformer/Helpers/VoidStar/Professor.h"
-#include "Entities/Platformer/Helpers/VoidStar/Robot.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/VoidStar/Barbarian.h"
-#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
-#include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
-#include "Entities/Platformer/Enemies/VoidStar/Gorilla.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechBoxDrone.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechDog.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechGolem.h"
-#include "Entities/Platformer/Enemies/VoidStar/MechGuard.h"
-#include "Entities/Platformer/Enemies/VoidStar/MiteBot.h"
-#include "Entities/Platformer/Enemies/VoidStar/SkeletalPirate.h"
-#include "Entities/Platformer/Enemies/VoidStar/Thug.h"
-#include "Entities/Platformer/Enemies/VoidStar/Viking.h"
-#include "Entities/Platformer/Enemies/VoidStar/VikingBot.h"
-#include "Entities/Platformer/Enemies/VoidStar/VikingBotSmall.h"
-#include "Entities/Platformer/Helpers/VoidStar/Professor.h"
-#include "Entities/Platformer/Helpers/VoidStar/Robot.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStarPuzzle.h"
 
 using namespace cocos2d;
@@ -74,8 +56,6 @@ HexusOpponentMenuVoidStarPuzzle::HexusOpponentMenuVoidStarPuzzle() : super(Navig
 	this->opponents.push_back(HexusOpponentPreview::create(Viking::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(VikingBot::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(VikingBotSmall::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Professor::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Robot::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

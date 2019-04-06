@@ -92,8 +92,8 @@ HexusOpponentData* Troll::getHexusOpponentData()
 			Troll::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.900f,
-			HexusOpponentData::generateDeck(32, 0.900f,
+			0.923f,
+			HexusOpponentData::generateDeck(32, 0.923f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* Troll::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -141,7 +142,9 @@ HexusOpponentData* Troll::getHexusOpponentData()
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -151,7 +154,10 @@ HexusOpponentData* Troll::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

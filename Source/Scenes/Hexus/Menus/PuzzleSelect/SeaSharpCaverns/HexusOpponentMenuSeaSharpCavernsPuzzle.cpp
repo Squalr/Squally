@@ -18,21 +18,7 @@
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/TikiGolem.h"
-#include "Entities/Platformer/Helpers/SeaSharpCaverns/Gecko.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Rhinoman.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalArcher.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/TikiGolem.h"
-#include "Entities/Platformer/Helpers/SeaSharpCaverns/Gecko.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/SeaSharpCaverns/HexusChapterPreviewSeaSharpCavernsPuzzle.h"
 
 using namespace cocos2d;
@@ -66,7 +52,6 @@ HexusOpponentMenuSeaSharpCavernsPuzzle::HexusOpponentMenuSeaSharpCavernsPuzzle()
 	this->opponents.push_back(HexusOpponentPreview::create(SkeletalNecromancer::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(SkeletalWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(TikiGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Gecko::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

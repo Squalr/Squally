@@ -19,7 +19,6 @@
 #include "Scenes/Hexus/Menus/ChapterSelect/EndianForest/HexusChapterPreviewEndianForestPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/LambdaCrypts/HexusChapterPreviewLambdaCryptsPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/SeaSharpCaverns/HexusChapterPreviewSeaSharpCavernsPuzzle.h"
-#include "Scenes/Hexus/Menus/ChapterSelect/Training/HexusChapterPreviewTrainingPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuinsPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStarPuzzle.h"
 
@@ -53,7 +52,6 @@ HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 	this->chapters = std::vector<HexusChapterPreview*>();
 	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 
-	this->hexusChapterPreviewTrainingPuzzle = HexusChapterPreviewTrainingPuzzle::create();
 	this->hexusChapterPreviewBalmerPeaksPuzzle = HexusChapterPreviewBalmerPeaksPuzzle::create();
 	this->hexusChapterPreviewCastleValgrindPuzzle = HexusChapterPreviewCastleValgrindPuzzle::create();
 	this->hexusChapterPreviewDaemonsHallowPuzzle = HexusChapterPreviewDaemonsHallowPuzzle::create();
@@ -62,7 +60,6 @@ HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 	this->hexusChapterPreviewSeaSharpCavernsPuzzle = HexusChapterPreviewSeaSharpCavernsPuzzle::create();
 	this->hexusChapterPreviewUnderflowRuinsPuzzle = HexusChapterPreviewUnderflowRuinsPuzzle::create();
 	this->hexusChapterPreviewVoidStarPuzzle = HexusChapterPreviewVoidStarPuzzle::create();
-	this->hexusChapterPreviewTrainingPuzzle = HexusChapterPreviewTrainingPuzzle::create();
 
 	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_SelectAChapter::create());
 
@@ -108,7 +105,6 @@ HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 	this->chapterSelectLabel->enableOutline(Color4B::BLACK, 2);
 	this->setCascadeOpacityEnabled(true);
 
-	this->chapters.push_back(this->hexusChapterPreviewTrainingPuzzle);
 	this->chapters.push_back(this->hexusChapterPreviewEndianForestPuzzle);
 	this->chapters.push_back(this->hexusChapterPreviewUnderflowRuinsPuzzle);
 	this->chapters.push_back(this->hexusChapterPreviewSeaSharpCavernsPuzzle);
@@ -179,7 +175,6 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenuPuzzles::onKeyPressed, this);
 
-	this->hexusChapterPreviewTrainingPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleTraining)); } );
 	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleBalmerPeaks)); } );
 	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleCastleValgrind)); } );
 	this->hexusChapterPreviewDaemonsHallowPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleDaemonsHallow)); } );

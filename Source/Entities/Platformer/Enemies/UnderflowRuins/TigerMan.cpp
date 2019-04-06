@@ -45,7 +45,7 @@ TigerMan::TigerMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 308.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	23,
 	18)
@@ -85,15 +85,15 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 		TigerMan::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			TigerMan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.667f,
+			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),

@@ -18,21 +18,7 @@
 #include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
-#include "Entities/Platformer/Helpers/UnderflowRuins/Mummy.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisPup.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/AnubisWarrior.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/LionMan.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Lioness.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Mermaid.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Minotaur.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/MummyPriest.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/MummyWarrior.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Osiris.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/TigerMan.h"
-#include "Entities/Platformer/Enemies/UnderflowRuins/Tigress.h"
-#include "Entities/Platformer/Helpers/UnderflowRuins/Mummy.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuinsPuzzle.h"
 
 using namespace cocos2d;
@@ -66,7 +52,6 @@ HexusOpponentMenuUnderflowRuinsPuzzle::HexusOpponentMenuUnderflowRuinsPuzzle() :
 	this->opponents.push_back(HexusOpponentPreview::create(Osiris::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(TigerMan::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Tigress::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Mummy::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

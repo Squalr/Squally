@@ -30,7 +30,7 @@ const int   Config::coinFlipCount = 8;
 const float Config::bannerFadeSpeed = 0.15f;
 const float Config::bannerDisplayDuration = 1.25f;
 const float Config::roundBannerDisplayDuration = 2.0f;
-const float Config::bannerIconOffset = 512.0f;
+const float Config::bannerIconOffset = 560.0f;
 
 const float Config::cardSelectSpeed = 0.25f;
 const float Config::cardSelectOffsetY = 24.0f;

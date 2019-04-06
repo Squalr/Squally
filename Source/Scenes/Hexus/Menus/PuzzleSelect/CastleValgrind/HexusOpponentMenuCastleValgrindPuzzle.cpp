@@ -18,23 +18,7 @@
 #include "Entities/Platformer/Enemies/CastleValgrind/Wraith.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Zombie.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/ZombieElric.h"
-#include "Entities/Platformer/Helpers/CastleValgrind/Knight.h"
-#include "Entities/Platformer/Helpers/CastleValgrind/Princess.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Executioner.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Guard.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Jack.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Reaper.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Scarecrow.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Shade.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/VampireLord.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Vampiress.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Wraith.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Zombie.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/ZombieElric.h"
-#include "Entities/Platformer/Helpers/CastleValgrind/Knight.h"
-#include "Entities/Platformer/Helpers/CastleValgrind/Princess.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/CastleValgrind/HexusChapterPreviewCastleValgrindPuzzle.h"
 
 using namespace cocos2d;
@@ -68,8 +52,6 @@ HexusOpponentMenuCastleValgrindPuzzle::HexusOpponentMenuCastleValgrindPuzzle() :
 	this->opponents.push_back(HexusOpponentPreview::create(Wraith::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zombie::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(ZombieElric::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Knight::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Princess::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

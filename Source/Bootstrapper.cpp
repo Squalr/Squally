@@ -31,7 +31,6 @@
 #include "Scenes/Hexus/Menus/PuzzleSelect/EndianForest/HexusOpponentMenuEndianForestPuzzle.h"
 #include "Scenes/Hexus/Menus/PuzzleSelect/LambdaCrypts/HexusOpponentMenuLambdaCryptsPuzzle.h"
 #include "Scenes/Hexus/Menus/PuzzleSelect/SeaSharpCaverns/HexusOpponentMenuSeaSharpCavernsPuzzle.h"
-#include "Scenes/Hexus/Menus/PuzzleSelect/Training/HexusOpponentMenuTrainingPuzzle.h"
 #include "Scenes/Hexus/Menus/PuzzleSelect/UnderflowRuins/HexusOpponentMenuUnderflowRuinsPuzzle.h"
 #include "Scenes/Hexus/Menus/PuzzleSelect/VoidStar/HexusOpponentMenuVoidStarPuzzle.h"
 #include "Scenes/Hexus/Menus/HexusDeckManagement.h"
@@ -76,7 +75,6 @@ void Bootstrapper::initialize()
 	HexusOpponentMenuEndianForestPuzzle::registerGlobalScene();
 	HexusOpponentMenuLambdaCryptsPuzzle::registerGlobalScene();
 	HexusOpponentMenuSeaSharpCavernsPuzzle::registerGlobalScene();
-	HexusOpponentMenuTrainingPuzzle::registerGlobalScene();
 	HexusOpponentMenuUnderflowRuinsPuzzle::registerGlobalScene();
 	HexusOpponentMenuVoidStarPuzzle::registerGlobalScene();
 	HexusDeckManagement::registerGlobalScene();

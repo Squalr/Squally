@@ -92,8 +92,8 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 			OrcBomber::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.700f,
-			HexusOpponentData::generateDeck(32, 0.700f,
+			0.769f,
+			HexusOpponentData::generateDeck(32, 0.769f,
 			{
 
 			}),
@@ -121,7 +121,7 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +131,8 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +147,8 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

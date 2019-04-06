@@ -45,7 +45,7 @@ Tigress::Tigress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 256.0f),
-	0.8f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* Tigress::getHexusOpponentData()
 		Tigress::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.8f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Tigress::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.167f,
+			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),

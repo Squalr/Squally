@@ -45,7 +45,7 @@ Osiris::Osiris(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(324.0f, 316.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* Osiris::getHexusOpponentData()
 		Osiris::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

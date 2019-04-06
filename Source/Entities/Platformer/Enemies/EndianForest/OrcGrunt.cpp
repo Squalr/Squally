@@ -92,8 +92,8 @@ HexusOpponentData* OrcGrunt::getHexusOpponentData()
 			OrcGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.000f,
-			HexusOpponentData::generateDeck(32, 0.000f,
+			0.077f,
+			HexusOpponentData::generateDeck(32, 0.077f,
 			{
 
 			}),
@@ -121,8 +121,7 @@ HexusOpponentData* OrcGrunt::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -137,25 +136,22 @@ CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+					
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

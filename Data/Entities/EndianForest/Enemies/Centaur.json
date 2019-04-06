@@ -10,7 +10,7 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-196.0f"
   },
   "Health": "10",
   "Special": "10",
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "0.2f",
+      "Strength": "3.0f / 13.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -38,7 +38,8 @@
 
       ],
       "PlayerHand": [
-
+        "Hex5",
+        "ShiftLeft"
       ],
       "EnemyHand": [
 
@@ -50,10 +51,15 @@
 
       ],
       "PlayerHexCards": [
-
+        "Hex1",
+        "Hex2",
+        "Hex1"
       ],
       "EnemyBinaryCards": [
-
+        "Binary1",
+        "Binary3",
+        "Binary5",
+        "Binary7"
       ],
       "EnemyDecimalCards": [
 

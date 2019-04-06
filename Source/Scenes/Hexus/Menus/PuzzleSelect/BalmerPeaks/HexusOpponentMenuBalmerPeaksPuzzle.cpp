@@ -19,24 +19,7 @@
 #include "Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Yeti.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/YetiBaby.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Krampus.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/PenguinGrunt.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/PenguinWarrior.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Santa.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/SnowFiend.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/ToySoldierGoblin.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Yeti.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
-#include "Entities/Platformer/Helpers/BalmerPeaks/YetiBaby.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaksPuzzle.h"
 
 using namespace cocos2d;
@@ -71,8 +54,6 @@ HexusOpponentMenuBalmerPeaksPuzzle::HexusOpponentMenuBalmerPeaksPuzzle() : super
 	this->opponents.push_back(HexusOpponentPreview::create(WaterElemental::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Yeti::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(YetiWarrior::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Snowman::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(YetiBaby::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }
