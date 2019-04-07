@@ -121,7 +121,8 @@ HexusOpponentData* Tigress::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Kill),
+CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,12 +132,12 @@ HexusOpponentData* Tigress::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -151,12 +152,14 @@ HexusOpponentData* Tigress::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal11),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
