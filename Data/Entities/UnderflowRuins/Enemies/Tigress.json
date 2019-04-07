@@ -38,16 +38,17 @@
 
       ],
       "PlayerHand": [
-
+        "Kill",
+        "ReturnToHand"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary9"
       ],
       "PlayerDecimalCards": [
-
+        "Decimal12"
       ],
       "PlayerHexCards": [
 
@@ -56,10 +57,12 @@
 
       ],
       "EnemyDecimalCards": [
-
+        "Decimal15",
+        "Decimal11"
       ],
       "EnemyHexCards": [
-
+        "Hex15",
+        "Hex7"
       ],
       "TutorialKey": ""
     }
