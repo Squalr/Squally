@@ -121,7 +121,8 @@ HexusOpponentData* LionMan::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,17 +132,17 @@ HexusOpponentData* LionMan::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -151,7 +152,9 @@ HexusOpponentData* LionMan::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

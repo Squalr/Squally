@@ -92,8 +92,8 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 			MummyPriest::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.333f,
-			HexusOpponentData::generateDeck(32, 0.333f,
+			0.417f,
+			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),
@@ -121,7 +121,10 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +139,7 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -156,7 +159,12 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
