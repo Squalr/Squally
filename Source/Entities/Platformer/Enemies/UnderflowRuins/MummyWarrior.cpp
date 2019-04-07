@@ -92,8 +92,8 @@ HexusOpponentData* MummyWarrior::getHexusOpponentData()
 			MummyWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.417f,
-			HexusOpponentData::generateDeck(32, 0.417f,
+			0.333f,
+			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* MummyWarrior::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +132,7 @@ HexusOpponentData* MummyWarrior::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,12 +147,13 @@ HexusOpponentData* MummyWarrior::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
