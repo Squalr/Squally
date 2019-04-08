@@ -9,8 +9,8 @@
     "Y": "0.0f"
   },
   "AvatarOffset": {
-    "X": "-32.0f",
-    "Y": "-112.0f"
+    "X": "-48.0f",
+    "Y": "-196.0f"
   },
   "Health": "10",
   "Special": "10",
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "7.0f / 12.0f",
+      "Strength": "8.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -32,19 +32,29 @@
       "PlayersTurn": "true",
       "EnemyPassed": "true",
       "PlayerDeck": [
-        
+        "LogicalOr",
+        "Flip3"
       ],
       "EnemyDeck": [
 
       ],
       "PlayerHand": [
-
+        "Greed",
+        "Flip2",
+        "Flip1",
+        "Flip1",
+        "Inverse"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary3",
+        "Binary5",
+        "Binary7",
+        "Binary9",
+        "Binary11",
+        "Binary12"
       ],
       "PlayerDecimalCards": [
 
@@ -53,7 +63,15 @@
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary15",
+        "Binary15",
+        "Binary15",
+        "Binary13",
+        "Binary11",
+        "Binary11",
+        "Absorb",
+        "Absorb",
+        "Absorb"
       ],
       "EnemyDecimalCards": [
 

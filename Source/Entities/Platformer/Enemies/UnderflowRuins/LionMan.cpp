@@ -75,7 +75,7 @@ LionMan::~LionMan()
 
 Vec2 LionMan::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -196.0f);
 }
 
 HexusOpponentData* LionMan::getHexusOpponentData()
@@ -87,8 +87,8 @@ HexusOpponentData* LionMan::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameUnderflowRuins,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -196.0f),
+			Vec2(-32.0f, -196.0f),
 			LionMan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
