@@ -39,7 +39,9 @@
 #include "Strings/Hexus/CardDescriptions/ReturnAfterRound.h"
 #include "Strings/Hexus/CardDescriptions/ReturnToHand.h"
 #include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
+#include "Strings/Hexus/CardDescriptions/ShiftLeftCircular.h"
 #include "Strings/Hexus/CardDescriptions/ShiftRight.h"
+#include "Strings/Hexus/CardDescriptions/ShiftRightCircular.h"
 #include "Strings/Hexus/CardDescriptions/Steal.h"
 #include "Strings/Hexus/CardDescriptions/Subtract.h"
 #include "Strings/Hexus/CardDescriptions/SuddenDeath.h"
@@ -247,6 +249,16 @@ void CardPreview::previewCard(Card* card)
 					case CardData::CardType::Special_SHR:
 					{
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRight::create());
+						break;
+					}
+					case CardData::CardType::Special_ROL:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftLeftCircular::create());
+						break;
+					}
+					case CardData::CardType::Special_ROR:
+					{
+						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRightCircular::create());
 						break;
 					}
 					case CardData::CardType::Special_NOT:

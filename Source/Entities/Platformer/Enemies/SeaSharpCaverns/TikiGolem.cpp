@@ -45,7 +45,7 @@ TikiGolem::TikiGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(284.0f, 256.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 		TikiGolem::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

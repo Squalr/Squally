@@ -45,7 +45,7 @@ SkeletalWarrior::SkeletalWarrior(ValueMap& initProperties) : PlatformerEnemy(ini
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 216.0f),
-	0.8f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 		SkeletalWarrior::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.8f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

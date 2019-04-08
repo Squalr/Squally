@@ -32,46 +32,34 @@
       "PlayersTurn": "true",
       "EnemyPassed": "true",
       "PlayerDeck": [
-
+        
       ],
       "EnemyDeck": [
 
       ],
       "PlayerHand": [
-        "LogicalXor",
-        "LogicalOr",
-        "ShiftLeft"
+
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary9",
-        "Binary7",
-        "Binary5"
+
       ],
       "PlayerDecimalCards": [
-        "Decimal5"
+
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-        "Binary6",
-        "Binary5",
-        "Binary5",
-        "Binary4"
+
       ],
       "EnemyDecimalCards": [
-        "Decimal5",
-        "Decimal4",
-        "Decimal3"
+
       ],
       "EnemyHexCards": [
-        "Hex6",
-        "Hex5",
-        "Hex5",
-        "Hex4"
+
       ],
       "TutorialKey": ""
     }

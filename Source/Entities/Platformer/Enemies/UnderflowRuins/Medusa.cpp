@@ -75,7 +75,7 @@ Medusa::~Medusa()
 
 Vec2 Medusa::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -196.0f);
 }
 
 HexusOpponentData* Medusa::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Medusa::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -196.0f),
 			Medusa::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
@@ -121,9 +121,7 @@ HexusOpponentData* Medusa::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+					
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -133,47 +131,32 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+					
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

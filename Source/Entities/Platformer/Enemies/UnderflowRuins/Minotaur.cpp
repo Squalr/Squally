@@ -111,8 +111,7 @@ HexusOpponentData* Minotaur::getHexusOpponentData()
 				// Player deck
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+					
 				},
 				// Enemy deck
 				std::vector<CardData*>
@@ -122,11 +121,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
+					
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,12 +131,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -156,15 +146,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

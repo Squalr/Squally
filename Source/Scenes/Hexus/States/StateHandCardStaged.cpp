@@ -198,6 +198,8 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 			gameState->enemyHexCards->enableRowCardSelection(CC_CALLBACK_1(StateHandCardStaged::immediatelyPlayCard, this, gameState));
 			break;
 		}
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_NOT:
 		case CardData::CardType::Special_KILL:
 		case CardData::CardType::Special_RETURN_TO_HAND:

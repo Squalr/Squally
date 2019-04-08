@@ -121,8 +121,12 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -132,18 +136,19 @@ CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+					
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -158,11 +163,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

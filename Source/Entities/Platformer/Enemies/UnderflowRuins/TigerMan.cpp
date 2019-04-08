@@ -121,9 +121,7 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -133,14 +131,12 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -150,25 +146,17 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+					
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

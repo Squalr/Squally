@@ -141,12 +141,12 @@ HexusOpponentData* OrcGrunt::getHexusOpponentData()
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

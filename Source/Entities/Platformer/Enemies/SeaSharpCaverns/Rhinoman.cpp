@@ -45,7 +45,7 @@ Rhinoman::Rhinoman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(592.0f, 592.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	35,
 	8)
@@ -75,7 +75,7 @@ Rhinoman::~Rhinoman()
 
 Vec2 Rhinoman::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-64.0f, -288.0f);
 }
 
 HexusOpponentData* Rhinoman::getHexusOpponentData()
@@ -85,10 +85,10 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 		Rhinoman::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -212.0f),
+			Vec2(-64.0f, -288.0f),
 			Rhinoman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

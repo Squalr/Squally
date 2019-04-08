@@ -1,5 +1,5 @@
 {
-  "Scale": "0.9f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "592.0f",
     "Height": "592.0f"
@@ -9,15 +9,15 @@
     "Y": "0.0f"
   },
   "AvatarOffset": {
-    "X": "-32.0f",
-    "Y": "-112.0f"
+    "X": "-64.0f",
+    "Y": "-288.0f"
   },
   "Health": "35",
   "Special": "8",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-144.0f"
+      "Y": "-212.0f"
     },
     "MatchData": {
       "DeckSize": "32",

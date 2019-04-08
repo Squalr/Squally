@@ -67,7 +67,9 @@
 #include "Scenes/Hexus/CardData/Special/CardPeek.h"
 #include "Scenes/Hexus/CardData/Special/CardReturnToHand.h"
 #include "Scenes/Hexus/CardData/Special/CardShiftLeft.h"
+#include "Scenes/Hexus/CardData/Special/CardShiftLeftCircular.h"
 #include "Scenes/Hexus/CardData/Special/CardShiftRight.h"
+#include "Scenes/Hexus/CardData/Special/CardShiftRightCircular.h"
 #include "Scenes/Hexus/CardData/Special/CardSteal.h"
 #include "Scenes/Hexus/CardData/Special/CardSubtraction.h"
 #include "Scenes/Hexus/CardData/Special/CardSuddenDeath.h"
@@ -153,6 +155,8 @@ CardList::CardList()
 	this->cardListByName[CardKeys::Mov] = new CardMov();
 	this->cardListByName[CardKeys::ShiftLeft] = new CardShiftLeft();
 	this->cardListByName[CardKeys::ShiftRight] = new CardShiftRight();
+	this->cardListByName[CardKeys::ShiftLeftCircular] = new CardShiftLeftCircular();
+	this->cardListByName[CardKeys::ShiftRightCircular] = new CardShiftRightCircular();
 	this->cardListByName[CardKeys::Subtraction] = new CardSubtraction();
 
 	this->cardListByName[CardKeys::Absorb] = new CardAbsorb();

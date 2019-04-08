@@ -7,8 +7,6 @@
 #include "Strings/Hexus/Cards/Abbreviations/ADD.h"
 #include "Strings/Hexus/Cards/Abbreviations/AND.h"
 #include "Strings/Hexus/Cards/Abbreviations/BIN.h"
-#include "Strings/Hexus/Cards/Abbreviations/CSHL.h"
-#include "Strings/Hexus/Cards/Abbreviations/CSHR.h"
 #include "Strings/Hexus/Cards/Abbreviations/DEC.h"
 #include "Strings/Hexus/Cards/Abbreviations/DIV.h"
 #include "Strings/Hexus/Cards/Abbreviations/ERR.h"
@@ -22,6 +20,8 @@
 #include "Strings/Hexus/Cards/Abbreviations/MUL.h"
 #include "Strings/Hexus/Cards/Abbreviations/NOT.h"
 #include "Strings/Hexus/Cards/Abbreviations/OR.h"
+#include "Strings/Hexus/Cards/Abbreviations/ROL.h"
+#include "Strings/Hexus/Cards/Abbreviations/ROR.h"
 #include "Strings/Hexus/Cards/Abbreviations/SHL.h"
 #include "Strings/Hexus/Cards/Abbreviations/SHR.h"
 #include "Strings/Hexus/Cards/Abbreviations/SUB.h"
@@ -78,6 +78,14 @@ LocalizedString* CardData::getCardTypeString()
 		case CardData::CardType::Special_SHR:
 		{
 			return Strings::Hexus_Cards_Abbreviations_SHR::create();
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROL::create();
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROR::create();
 		}
 		case CardData::CardType::Special_NOT:
 		{
@@ -156,6 +164,14 @@ LocalizedString* CardData::getCardOperationString()
 		case CardData::CardType::Special_SHR:
 		{
 			return Strings::Hexus_Cards_Abbreviations_SHR::create();
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROL::create();
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROR::create();
 		}
 		case CardData::CardType::Special_NOT:
 		{
@@ -263,6 +279,8 @@ unsigned int CardData::getIntrinsicImmediate()
 		}
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_ROR:
+		case CardData::CardType::Special_ROL:
 		{
 			return 0b0001;
 		}

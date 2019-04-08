@@ -538,6 +538,11 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 96;
 			break;
 		}
+		case CardData::CardType::Special_ROL:
+		{
+			price = 128;
+			break;
+		}
 		case CardData::CardType::Special_SHR:
 		{
 			price = 160;
@@ -563,9 +568,14 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 480;
 			break;
 		}
+		case CardData::CardType::Special_ROR:
+		{
+			price = 768;
+			break;
+		}
 		case CardData::CardType::Special_FLIP3:
 		{
-			price = 820;
+			price = 800;
 			break;
 		}
 		case CardData::CardType::Special_GREED:

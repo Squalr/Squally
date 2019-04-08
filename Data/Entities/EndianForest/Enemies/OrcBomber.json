@@ -38,27 +38,26 @@
 
       ],
       "PlayerHand": [
-        "LogicalXor"
+        "Mov"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary6",
-        "Binary6"
+
       ],
       "PlayerDecimalCards": [
-
+        "Decimal5",
+        "Decimal4"
       ],
       "PlayerHexCards": [
-
+        
       ],
       "EnemyBinaryCards": [
-        "Binary6",
-        "Binary9"
+
       ],
       "EnemyDecimalCards": [
-
+        "Decimal9"
       ],
       "EnemyHexCards": [
 

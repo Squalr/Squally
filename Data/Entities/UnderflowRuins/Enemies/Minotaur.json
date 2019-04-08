@@ -32,29 +32,19 @@
       "PlayersTurn": "true",
       "EnemyPassed": "true",
       "PlayerDeck": [
-        "LogicalOr",
-        "Flip3"
+        
       ],
       "EnemyDeck": [
 
       ],
       "PlayerHand": [
-        "Greed",
-        "Flip2",
-        "Flip1",
-        "Flip1",
-        "Inverse"
+
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary3",
-        "Binary5",
-        "Binary7",
-        "Binary9",
-        "Binary11",
-        "Binary12"
+
       ],
       "PlayerDecimalCards": [
 
@@ -63,15 +53,7 @@
 
       ],
       "EnemyBinaryCards": [
-        "Binary15",
-        "Binary15",
-        "Binary15",
-        "Binary13",
-        "Binary11",
-        "Binary11",
-        "Absorb",
-        "Absorb",
-        "Absorb"
+
       ],
       "EnemyDecimalCards": [
 

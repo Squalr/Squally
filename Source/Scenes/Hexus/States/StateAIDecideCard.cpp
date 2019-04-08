@@ -135,6 +135,8 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 				break;
 			}
 			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_ROL:
+			case CardData::CardType::Special_ROR:
 			{
 				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestOperationTarget(card, gameState);
 				Card* bestCard = std::get<0>(bestPlay);

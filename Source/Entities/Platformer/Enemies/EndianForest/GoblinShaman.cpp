@@ -121,9 +121,7 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -133,14 +131,12 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -150,14 +146,14 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

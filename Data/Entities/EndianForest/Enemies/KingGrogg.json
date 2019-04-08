@@ -38,9 +38,8 @@
 
       ],
       "PlayerHand": [
-        "Flip2",
         "ShiftLeft",
-        "LogicalXor"
+        "ShiftRight"
       ],
       "EnemyHand": [
 
@@ -49,18 +48,18 @@
         "Binary2"
       ],
       "PlayerDecimalCards": [
-
+        "Decimal1"
       ],
       "PlayerHexCards": [
-        
+        "Hex3"
       ],
       "EnemyBinaryCards": [
-        "Binary2",
-        "Binary2",
-        "Binary6"
+
       ],
       "EnemyDecimalCards": [
-        "Decimal3"
+        "Decimal9",
+        "Decimal9",
+        "Decimal9"
       ],
       "EnemyHexCards": [
 

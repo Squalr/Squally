@@ -121,7 +121,7 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,13 +131,12 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -152,8 +151,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

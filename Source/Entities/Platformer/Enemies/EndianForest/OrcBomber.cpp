@@ -121,7 +121,7 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,13 +131,13 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -147,13 +147,12 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

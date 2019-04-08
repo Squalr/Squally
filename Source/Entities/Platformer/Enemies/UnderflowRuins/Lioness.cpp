@@ -121,11 +121,7 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -140,7 +136,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -150,15 +146,12 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

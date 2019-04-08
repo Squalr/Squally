@@ -38,8 +38,7 @@
 
       ],
       "PlayerHand": [
-        "Hex5",
-        "ShiftLeft"
+        "Addition"
       ],
       "EnemyHand": [
 
@@ -48,21 +47,20 @@
 
       ],
       "PlayerDecimalCards": [
-
+        "Decimal7",
+        "Decimal5",
+        "Decimal3"
       ],
       "PlayerHexCards": [
-        "Hex1",
-        "Hex2",
-        "Hex1"
+
       ],
       "EnemyBinaryCards": [
-        "Binary1",
-        "Binary3",
-        "Binary5",
-        "Binary7"
+
       ],
       "EnemyDecimalCards": [
-
+        "Decimal8",
+        "Decimal8",
+        "Decimal5"
       ],
       "EnemyHexCards": [
 

@@ -87,6 +87,8 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 			gameState->selectedDestinationCard = std::get<1>(gameState->cachedBestSourceTargetPlay);
 			break;
 		}
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_NOT:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_KILL:

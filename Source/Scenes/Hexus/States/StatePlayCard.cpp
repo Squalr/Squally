@@ -319,6 +319,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			break;
 		}
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_NOT:
 		{
 			if (gameState->selectedDestinationCard == nullptr)
@@ -337,9 +339,32 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				);
 
 				gameState->selectedDestinationCard->addOperation(operation);
-
-				gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
-				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+				
+				switch (gameState->selectedHandCard->cardData->cardType)
+				{
+					case CardData::CardType::Special_ROL:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::StarBurst);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+						break;
+					}
+					case CardData::CardType::Special_ROR:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::StarHit);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+						break;
+					}
+					case CardData::CardType::Special_NOT:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(CardEffects::CardEffect::Bite);
+						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+						break;
+					}
+					default:
+					{
+						break;
+					}
+				}
 			}
 
 			break;
