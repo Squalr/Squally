@@ -9,8 +9,8 @@
     "Y": "0.0f"
   },
   "AvatarOffset": {
-    "X": "-32.0f",
-    "Y": "-112.0f"
+    "X": "-16.0f",
+    "Y": "-212.0f"
   },
   "Health": "23",
   "Special": "18",
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "8.0f / 12.0f",
+      "Strength": "7.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -32,34 +32,46 @@
       "PlayersTurn": "true",
       "EnemyPassed": "true",
       "PlayerDeck": [
-        
+
       ],
       "EnemyDeck": [
 
       ],
       "PlayerHand": [
-
+        "LogicalXor",
+        "LogicalOr",
+        "ShiftLeft"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary9",
+        "Binary7",
+        "Binary5"
       ],
       "PlayerDecimalCards": [
-
+        "Decimal5"
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary6",
+        "Binary5",
+        "Binary5",
+        "Binary4"
       ],
       "EnemyDecimalCards": [
-
+        "Decimal5",
+        "Decimal4",
+        "Decimal3"
       ],
       "EnemyHexCards": [
-
+        "Hex6",
+        "Hex5",
+        "Hex5",
+        "Hex4"
       ],
       "TutorialKey": ""
     }
