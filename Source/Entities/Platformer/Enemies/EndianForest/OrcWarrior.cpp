@@ -121,8 +121,7 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -132,17 +131,19 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+					
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -152,14 +153,14 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

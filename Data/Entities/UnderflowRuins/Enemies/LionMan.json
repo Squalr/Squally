@@ -38,28 +38,25 @@
 
       ],
       "PlayerHand": [
-        "ShiftLeft",
-        "ShiftRight"
+
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary2"
+
       ],
       "PlayerDecimalCards": [
-        "Decimal1"
+
       ],
       "PlayerHexCards": [
-        "Hex3"
+
       ],
       "EnemyBinaryCards": [
 
       ],
       "EnemyDecimalCards": [
-        "Decimal9",
-        "Decimal9",
-        "Decimal9"
+
       ],
       "EnemyHexCards": [
 

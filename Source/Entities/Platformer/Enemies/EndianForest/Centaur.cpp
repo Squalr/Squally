@@ -121,8 +121,7 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -137,27 +136,26 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+					
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

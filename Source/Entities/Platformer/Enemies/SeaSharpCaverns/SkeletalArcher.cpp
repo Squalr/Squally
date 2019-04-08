@@ -45,7 +45,7 @@ SkeletalArcher::SkeletalArcher(ValueMap& initProperties) : PlatformerEnemy(initP
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 216.0f),
-	0.8f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* SkeletalArcher::getHexusOpponentData()
 		SkeletalArcher::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.8f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

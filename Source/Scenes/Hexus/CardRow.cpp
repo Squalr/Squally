@@ -469,6 +469,8 @@ int CardRow::simulateCardEffect(Card* card)
 		}
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_FLIP1:
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:

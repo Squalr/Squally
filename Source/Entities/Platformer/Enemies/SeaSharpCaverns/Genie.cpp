@@ -45,7 +45,7 @@ Genie::Genie(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Genie_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(512.0f, 1126.0f),
-	0.20f,
+	0.28f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* Genie::getHexusOpponentData()
 		Genie::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_Genie_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.20f,
+			0.28f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

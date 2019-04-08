@@ -121,9 +121,8 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -138,24 +137,24 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

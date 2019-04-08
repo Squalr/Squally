@@ -68,4 +68,6 @@ const std::string CardKeys::LogicalOr = "Hexus_Card_Logical_Or";
 const std::string CardKeys::LogicalXor = "Hexus_Card_Logical_Xor";
 const std::string CardKeys::ShiftLeft = "Hexus_Card_Shift_Left";
 const std::string CardKeys::ShiftRight = "Hexus_Card_Shift_Right";
+const std::string CardKeys::ShiftLeftCircular = "Hexus_Card_Shift_Left_Circular";
+const std::string CardKeys::ShiftRightCircular = "Hexus_Card_Shift_Right_Circular";
 const std::string CardKeys::Subtraction = "Hexus_Card_Subtraction";

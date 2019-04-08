@@ -75,7 +75,7 @@ AnubisWarrior::~AnubisWarrior()
 
 Vec2 AnubisWarrior::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -196.0f);
 }
 
 HexusOpponentData* AnubisWarrior::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -196.0f),
 			AnubisWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
@@ -121,9 +121,7 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+					
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -138,7 +136,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -148,22 +146,17 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+					
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

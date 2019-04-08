@@ -45,7 +45,7 @@ LightningGolem::LightningGolem(ValueMap& initProperties) : PlatformerEnemy(initP
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(768.0f, 840.0f),
-	0.30f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,9 +85,9 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 		LightningGolem::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.30f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
+			Vec2(-48.0f, -224.0f),
 			Vec2(-32.0f, -112.0f),
 			LightningGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,

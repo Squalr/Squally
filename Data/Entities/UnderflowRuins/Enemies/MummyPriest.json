@@ -38,10 +38,7 @@
 
       ],
       "PlayerHand": [
-        "ShiftLeft",
-        "ShiftLeft",
-        "ShiftLeft",
-        "ShiftLeft"
+
       ],
       "EnemyHand": [
 
@@ -50,7 +47,7 @@
 
       ],
       "PlayerDecimalCards": [
-        "Decimal8"
+
       ],
       "PlayerHexCards": [
 
@@ -62,12 +59,7 @@
 
       ],
       "EnemyHexCards": [
-        "Hex1",
-        "Hex1",
-        "Hex1",
-        "Hex2",
-        "Hex2",
-        "Hex2"
+
       ],
       "TutorialKey": ""
     }

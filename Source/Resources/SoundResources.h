@@ -56,7 +56,7 @@ namespace SoundResources
 	extern const std::string Menus_BookPageTurn_PE1014902;
 	extern const std::string Menus_Card_Game_UI_Button_Light_Reverb_02;
 	extern const std::string Menus_Simple_Button;
-	extern const std::string Objects_Ancient_Stone_Mechanism_Movement;
+	extern const std::string Objects_Ancient_Stone_Mechanism_Movement_01;
 	extern const std::string Objects_StoneWall1;
 	extern const std::string Objects_StoneWall2;
 	extern const std::string Objects_StoneWall3;

@@ -189,11 +189,19 @@ Card::Operation Card::toOperation(unsigned int immediate)
 	{
 		case CardData::CardType::Special_SHL:
 		{
-			return Operation(Operation::OperationType::SHL, 1);
+			return Operation(Operation::OperationType::SHL, 0b0001);
 		}
 		case CardData::CardType::Special_SHR:
 		{
-			return Operation(Operation::OperationType::SHR, 1);
+			return Operation(Operation::OperationType::SHR, 0b0001);
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			return Operation(Operation::OperationType::ROL, 0b0001);
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return Operation(Operation::OperationType::ROR, 0b0001);
 		}
 		case CardData::CardType::Special_FLIP1:
 		{
@@ -293,6 +301,16 @@ int Card::applyOperation(int attack, Operation operation)
 		case Operation::OperationType::SHR:
 		{
 			attack >>= operation.immediate;
+			break;
+		}
+		case Operation::OperationType::ROL:
+		{
+			attack = (attack << operation.immediate) | ((attack & 0b1000) >> 3);
+			break;
+		}
+		case Operation::OperationType::ROR:
+		{
+			attack = (attack >> operation.immediate) | ((attack & 0b0001) << 3);
 			break;
 		}
 		case Operation::OperationType::MOV:

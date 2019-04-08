@@ -140,6 +140,8 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
 			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_ROL:
+			case CardData::CardType::Special_ROR:
 			{
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
 				break;

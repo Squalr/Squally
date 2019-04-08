@@ -45,7 +45,7 @@ EarthGolem::EarthGolem(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 224.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 		EarthGolem::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

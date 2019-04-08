@@ -38,36 +38,25 @@
 
       ],
       "PlayerHand": [
-        "Flip4",
-        "ShiftRight",
-        "ShiftLeft"
+
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary15"
+
       ],
       "PlayerDecimalCards": [
-        "Decimal13",
-        "Decimal7"
+
       ],
       "PlayerHexCards": [
-        "Hex11",
-        "Hex10"
+
       ],
       "EnemyBinaryCards": [
-        "Binary15",
-        "Binary13",
-        "Binary13",
-        "Binary12",
-        "Binary10",
-        "Absorb",
-        "Absorb",
-        "Absorb"
+
       ],
       "EnemyDecimalCards": [
-        
+
       ],
       "EnemyHexCards": [
 
