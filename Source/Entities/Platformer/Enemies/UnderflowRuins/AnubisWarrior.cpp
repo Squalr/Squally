@@ -121,7 +121,9 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+CardList::getInstance()->cardListByName.at(CardKeys::Kill),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,8 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,17 +149,20 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
