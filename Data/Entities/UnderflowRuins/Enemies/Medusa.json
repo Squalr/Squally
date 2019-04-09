@@ -38,13 +38,16 @@
 
       ],
       "PlayerHand": [
-
+        "Steal",
+        "Kill",
+        "ShiftRightCircular"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary8",
+        "Binary8"
       ],
       "PlayerDecimalCards": [
 
@@ -53,13 +56,16 @@
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary5",
+        "Binary6"
       ],
       "EnemyDecimalCards": [
-
+        "Decimal6",
+        "Decimal6",
+        "Decimal6"
       ],
       "EnemyHexCards": [
-
+        "Hex8"
       ],
       "TutorialKey": ""
     }

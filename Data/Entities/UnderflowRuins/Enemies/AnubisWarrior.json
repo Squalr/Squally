@@ -38,34 +38,39 @@
 
       ],
       "PlayerHand": [
-        "Steal",
-        "Kill",
-        "ShiftRightCircular"
+        "Flip4",
+        "ShiftRight",
+        "ShiftLeft"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary8",
-        "Binary8"
+        "Binary15"
       ],
       "PlayerDecimalCards": [
-
+        "Decimal13",
+        "Decimal7"
       ],
       "PlayerHexCards": [
-
+        "Hex11",
+        "Hex10"
       ],
       "EnemyBinaryCards": [
-        "Binary5",
-        "Binary6"
+        "Binary15",
+        "Binary13",
+        "Binary13",
+        "Binary12",
+        "Binary10",
+        "Absorb",
+        "Absorb",
+        "Absorb"
       ],
       "EnemyDecimalCards": [
-        "Decimal6",
-        "Decimal6",
-        "Decimal6"
+        
       ],
       "EnemyHexCards": [
-        "Hex8"
+
       ],
       "TutorialKey": ""
     }
