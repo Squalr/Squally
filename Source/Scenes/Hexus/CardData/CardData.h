@@ -44,6 +44,7 @@ public:
 	bool isAttackCard();
 	bool isSpecialCard();
 	bool isMultiTargetCard();
+	bool isFixedImmediateCard();
 	unsigned int getIntrinsicImmediate();
 
 	std::string cardResourceFile;

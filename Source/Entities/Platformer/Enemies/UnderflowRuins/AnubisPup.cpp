@@ -122,10 +122,6 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
@@ -137,8 +133,6 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -153,7 +147,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

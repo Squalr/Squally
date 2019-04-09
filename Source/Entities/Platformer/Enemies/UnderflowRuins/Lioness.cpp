@@ -75,7 +75,7 @@ Lioness::~Lioness()
 
 Vec2 Lioness::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -160.0f);
 }
 
 HexusOpponentData* Lioness::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -160.0f),
 			Lioness::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
@@ -121,7 +121,8 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +132,9 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,17 +149,17 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

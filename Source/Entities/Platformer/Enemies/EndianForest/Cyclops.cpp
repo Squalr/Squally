@@ -75,7 +75,7 @@ Cyclops::~Cyclops()
 
 Vec2 Cyclops::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -160.0f);
 }
 
 HexusOpponentData* Cyclops::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -160.0f),
 			Cyclops::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
@@ -131,8 +131,7 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -148,8 +147,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

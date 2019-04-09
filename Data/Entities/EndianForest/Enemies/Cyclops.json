@@ -10,7 +10,7 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-160.0f"
   },
   "Health": "10",
   "Special": "10",
@@ -44,8 +44,7 @@
 
       ],
       "PlayerBinaryCards": [
-        "Binary6",
-        "Binary6"
+        
       ],
       "PlayerDecimalCards": [
         "Decimal7",
@@ -55,8 +54,7 @@
 
       ],
       "EnemyBinaryCards": [
-        "Binary6",
-        "Binary6"
+        
       ],
       "EnemyDecimalCards": [
         "Decimal7",

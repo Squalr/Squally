@@ -246,6 +246,28 @@ bool CardData::isMultiTargetCard()
 	}
 }
 
+bool CardData::isFixedImmediateCard()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		{
+			return true;
+		}
+		default:
+		{
+			return false;
+		}
+	}
+}
+
 unsigned int CardData::getIntrinsicImmediate()
 {
 	switch (this->cardType)

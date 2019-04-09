@@ -152,12 +152,12 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

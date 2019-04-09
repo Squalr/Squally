@@ -78,6 +78,7 @@ void AssemblyHelpText::initializeListeners()
 		if (args != nullptr && args->card != nullptr && this->gameState != nullptr && this->gameState->selectedHandCard != nullptr)
 		{
 			bool isMultiTarget = gameState->selectedHandCard->cardData->isMultiTargetCard();
+			bool isFixedImmediate = gameState->selectedHandCard->cardData->isFixedImmediateCard();
 			bool noDice = false;
 
 			// Ignore mousing over hand cards
@@ -96,14 +97,20 @@ void AssemblyHelpText::initializeListeners()
 				noDice = true;
 			}
 
-			if (isMultiTarget)
+			// Source string
+			if (isFixedImmediate)
 			{
 				this->sourceString->setString(HackUtils::toBinary4(gameState->selectedHandCard->cardData->getIntrinsicImmediate()));
-				this->destinationString->setString(AssemblyHelpText::ManyOperand);
 			}
 			else if (this->gameState->selectedSourceCard == nullptr && !noDice)
 			{
 				this->sourceString->setString(HackUtils::toBinary4(args->card->getAttack()));
+			}
+
+			// Dest string
+			if (isMultiTarget)
+			{
+				this->destinationString->setString(AssemblyHelpText::ManyOperand);
 			}
 			else if (this->gameState->selectedDestinationCard != nullptr)
 			{
@@ -130,6 +137,7 @@ void AssemblyHelpText::initializeListeners()
 			{
 				this->sourceString->setString(AssemblyHelpText::SourceOperand);
 			}
+
 			this->destinationString->setString(AssemblyHelpText::DestOperand);
 		}
 	}));
@@ -182,6 +190,7 @@ void AssemblyHelpText::onAnyStateChange(GameState* gameState)
 						}
 
 						bool isMultiTarget = gameState->selectedHandCard->cardData->isMultiTargetCard();
+						bool isFixedImmediate = gameState->selectedHandCard->cardData->isFixedImmediateCard();
 						
 						std::string operation = gameState->selectedHandCard->cardData->getCardOperationString()->getString();
 						std::string immediate = gameState->selectedSourceCard == nullptr ? AssemblyHelpText::SourceOperand : HackUtils::toBinary4(gameState->selectedSourceCard->getAttack());
@@ -189,10 +198,18 @@ void AssemblyHelpText::onAnyStateChange(GameState* gameState)
 						this->operationString->setString(operation);
 						this->sourceString->setString(immediate);
 
-						if (isMultiTarget)
+						if (isFixedImmediate)
 						{
 							this->sourceString->setString(HackUtils::toBinary4(gameState->selectedHandCard->cardData->getIntrinsicImmediate()));
-							this->destinationString->setString(AssemblyHelpText::ManyOperand);
+
+							if (isMultiTarget)
+							{
+								this->destinationString->setString(AssemblyHelpText::ManyOperand);
+							}
+							else
+							{
+								this->destinationString->setString(AssemblyHelpText::DestOperand);
+							}
 						}
 						else if (this->gameState->selectedDestinationCard != nullptr)
 						{
