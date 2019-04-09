@@ -87,7 +87,7 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -212.0f),
+			Vec2(-48.0f, -312.0f),
 			Vec2(-64.0f, -288.0f),
 			Rhinoman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,

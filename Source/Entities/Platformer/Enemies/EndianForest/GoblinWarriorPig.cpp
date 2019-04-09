@@ -136,8 +136,8 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -152,9 +152,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

@@ -92,8 +92,8 @@ HexusOpponentData* Genie::getHexusOpponentData()
 			Genie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.833f,
+			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),

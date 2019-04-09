@@ -87,13 +87,13 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -224.0f),
+			Vec2(-48.0f, -280.0f),
 			Vec2(-32.0f, -112.0f),
 			LightningGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),

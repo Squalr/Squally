@@ -92,8 +92,8 @@ HexusOpponentData* EarthElemental::getHexusOpponentData()
 			EarthElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.667f,
+			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),
