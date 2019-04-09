@@ -32,31 +32,37 @@
       "PlayersTurn": "true",
       "EnemyPassed": "true",
       "PlayerDeck": [
-        
+
       ],
       "EnemyDeck": [
 
       ],
       "PlayerHand": [
-
+        "Flip1",
+        "Flip2",
+        "Flip3"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary0",
+        "Binary0",
+        "Binary0"
       ],
       "PlayerDecimalCards": [
-
+        
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary8",
+        "Binary4",
+        "Binary8"
       ],
       "EnemyDecimalCards": [
-
+        
       ],
       "EnemyHexCards": [
 

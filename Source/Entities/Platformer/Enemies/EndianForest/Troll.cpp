@@ -160,9 +160,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
 CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
