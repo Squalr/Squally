@@ -10,7 +10,7 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-212.0f"
   },
   "Health": "10",
   "Special": "10",
@@ -38,36 +38,32 @@
 
       ],
       "PlayerHand": [
-        "Flip4",
-        "ShiftRight",
+        "Binary6",
+        "Flip3",
+        "ShiftRightCircular",
         "ShiftLeft"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary15"
+        "Binary4",
+        "Binary2"
       ],
       "PlayerDecimalCards": [
-        "Decimal13",
-        "Decimal7"
+
       ],
       "PlayerHexCards": [
-        "Hex11",
-        "Hex10"
+
       ],
       "EnemyBinaryCards": [
-        "Binary15",
-        "Binary13",
-        "Binary13",
-        "Binary12",
-        "Binary10",
-        "Absorb",
-        "Absorb",
-        "Absorb"
+        "Binary5",
+        "Binary1",
+        "Binary9",
+        "Binary15"
       ],
       "EnemyDecimalCards": [
-        
+
       ],
       "EnemyHexCards": [
 

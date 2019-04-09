@@ -25,7 +25,9 @@
       "Strategy": "Random",
       "PresetCards": [
       ]
-    },"PuzzleData": {
+    },
+
+    "PuzzleData": {
       "PlayerLosses": "1",
       "EnemyLosses": "1",
       "PlayersTurn": "true",
@@ -37,17 +39,17 @@
 
       ],
       "PlayerHand": [
-        "Flip3",
-        "Flip2",
-        "Steal"
+        "ShiftLeftCircular",
+        "ShiftLeft"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary9",
-        "Binary9",
-        "Binary1"
+        "Binary10",
+        "Binary7",
+        "Binary7",
+        "Binary7"
       ],
       "PlayerDecimalCards": [
 
@@ -56,21 +58,15 @@
 
       ],
       "EnemyBinaryCards": [
-        "Binary6",
-        "Binary6",
-        "Binary6",
-        "Binary12"
+
       ],
       "EnemyDecimalCards": [
-        "Decimal1",
-        "Decimal12"
+        
       ],
       "EnemyHexCards": [
-        "Hex0",
-        "Hex1",
-        "Hex1",
-        "Hex1",
-        "Hex12"
+        "Hex15",
+        "Hex15",
+        "Hex15"
       ],
       "TutorialKey": ""
     }
