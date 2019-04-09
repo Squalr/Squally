@@ -47,8 +47,8 @@
 
       ],
       "PlayerDecimalCards": [
-        "Decimal7",
-        "Decimal7"
+        "Decimal5",
+        "Decimal5"
       ],
       "PlayerHexCards": [
 
@@ -57,9 +57,9 @@
 
       ],
       "EnemyDecimalCards": [
-        "Decimal5",
-        "Decimal5",
-        "Decimal5"
+        "Decimal4",
+        "Decimal4",
+        "Decimal4"
       ],
       "EnemyHexCards": [
 

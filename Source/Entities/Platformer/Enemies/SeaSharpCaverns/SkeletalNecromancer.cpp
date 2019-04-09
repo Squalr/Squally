@@ -92,8 +92,8 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 			SkeletalNecromancer::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),

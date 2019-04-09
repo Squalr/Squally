@@ -6,7 +6,6 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/BlackWidow.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
@@ -40,7 +39,6 @@ void HexusOpponentMenuSeaSharpCavernsPuzzle::registerGlobalScene()
 
 HexusOpponentMenuSeaSharpCavernsPuzzle::HexusOpponentMenuSeaSharpCavernsPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleSeaSharpCaverns, HexusChapterPreviewSeaSharpCavernsPuzzle::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(BlackWidow::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthElemental::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthGolem::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(ForestGolem::getHexusOpponentData()));

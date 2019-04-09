@@ -121,7 +121,9 @@ HexusOpponentData* Mermaid::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,27 +138,30 @@ HexusOpponentData* Mermaid::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

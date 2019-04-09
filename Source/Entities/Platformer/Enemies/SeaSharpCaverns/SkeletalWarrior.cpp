@@ -92,8 +92,8 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 			SkeletalWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.250f,
+			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),
@@ -121,7 +121,7 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +131,8 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +147,8 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

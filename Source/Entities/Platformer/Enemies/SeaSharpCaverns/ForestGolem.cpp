@@ -75,7 +75,7 @@ ForestGolem::~ForestGolem()
 
 Vec2 ForestGolem::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -128.0f);
 }
 
 HexusOpponentData* ForestGolem::getHexusOpponentData()
@@ -88,12 +88,12 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -128.0f),
 			ForestGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.583f,
+			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),

@@ -92,8 +92,8 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 			Shaman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.167f,
+			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),
@@ -121,7 +121,7 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +131,8 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +147,7 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
