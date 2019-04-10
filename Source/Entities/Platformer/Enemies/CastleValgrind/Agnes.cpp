@@ -45,7 +45,7 @@ Agnes::Agnes(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(360.0f, 420.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* Agnes::getHexusOpponentData()
 		Agnes::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

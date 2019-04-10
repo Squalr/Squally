@@ -45,7 +45,7 @@ Executioner::Executioner(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	EntityResources::Enemies_CastleValgrind_Executioner_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(112.0f, 820.0f),
-	0.9f,
+	0.3f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* Executioner::getHexusOpponentData()
 		Executioner::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_CastleValgrind_Executioner_Animations,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
+			0.3f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Executioner::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.333f,
+			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 
 			}),

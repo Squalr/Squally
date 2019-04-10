@@ -38,28 +38,34 @@
 
       ],
       "PlayerHand": [
-
+        "LogicalOr",
+        "LogicalOr",
+        "ShiftRightCircular",
+        "ShiftRightCircular",
+        "ShiftRightCircular"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary5",
+        "Binary3"
       ],
       "PlayerDecimalCards": [
-
+        
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary7"
       ],
       "EnemyDecimalCards": [
-
+        "Decimal7",
+        "Decimal7"
       ],
       "EnemyHexCards": [
-
+        "Hex7"
       ],
       "TutorialKey": ""
     }

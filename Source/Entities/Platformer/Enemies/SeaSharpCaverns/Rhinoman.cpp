@@ -75,7 +75,7 @@ Rhinoman::~Rhinoman()
 
 Vec2 Rhinoman::getAvatarFrameOffset()
 {
-	return Vec2(-64.0f, -288.0f);
+	return Vec2(-16.0f, -380.0f);
 }
 
 HexusOpponentData* Rhinoman::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -312.0f),
-			Vec2(-64.0f, -288.0f),
+			Vec2(-16.0f, -380.0f),
 			Rhinoman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
