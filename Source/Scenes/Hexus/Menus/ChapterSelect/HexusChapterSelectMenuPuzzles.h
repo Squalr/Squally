@@ -61,8 +61,6 @@ private:
 	HexusChapterPreviewUnderflowRuinsPuzzle* hexusChapterPreviewUnderflowRuinsPuzzle;
 	HexusChapterPreviewVoidStarPuzzle* hexusChapterPreviewVoidStarPuzzle;
 
-	ClickableTextNode* deckManagementButton;
-	ClickableTextNode* shopButton;
 	LocalizedLabel* chapterSelectLabel;
 	ClickableTextNode* backButton;
 

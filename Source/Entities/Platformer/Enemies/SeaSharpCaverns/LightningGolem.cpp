@@ -75,7 +75,7 @@ LightningGolem::~LightningGolem()
 
 Vec2 LightningGolem::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -380.0f);
 }
 
 HexusOpponentData* LightningGolem::getHexusOpponentData()
@@ -88,12 +88,12 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -280.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -380.0f),
 			LightningGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.750f,
-			HexusOpponentData::generateDeck(32, 0.750f,
+			0.833f,
+			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),

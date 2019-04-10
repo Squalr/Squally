@@ -121,7 +121,10 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +134,8 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,17 +150,20 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

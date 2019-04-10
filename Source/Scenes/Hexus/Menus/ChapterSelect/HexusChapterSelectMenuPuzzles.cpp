@@ -76,32 +76,6 @@ HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ManageCards::create());
-	LocalizedLabel* manageDeckLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ManageCards::create());
-	
-	manageDeckLabel->enableOutline(Color4B::BLACK, 2);
-	manageDeckLabelHover->enableOutline(Color4B::BLACK, 2);
-
-	this->deckManagementButton = ClickableTextNode::create(
-		manageDeckLabel,
-		manageDeckLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover
-	);
-
-	LocalizedLabel* shopLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Shop::create());
-	LocalizedLabel* shopLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Shop::create());
-
-	shopLabel->enableOutline(Color4B::BLACK, 2);
-	shopLabelHover->enableOutline(Color4B::BLACK, 2);
-
-	this->shopButton = ClickableTextNode::create(
-		shopLabel,
-		shopLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover
-	);
-
 	this->chapterSelectLabel->enableOutline(Color4B::BLACK, 2);
 	this->setCascadeOpacityEnabled(true);
 
@@ -121,8 +95,6 @@ HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 		this->addChild(*it);
 	}
 
-	this->addChild(this->deckManagementButton);
-	this->addChild(this->shopButton);
 	this->addChild(this->chapterSelectLabel);
 	this->addChild(this->backButton);
 }
@@ -184,8 +156,6 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 	this->hexusChapterPreviewUnderflowRuinsPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleUnderflowRuins)); } );
 	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar)); } );
 	
-	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onDeckManagementClick, this));
-	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onShopClick, this));
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
@@ -203,16 +173,14 @@ void HexusChapterSelectMenuPuzzles::initializePositions()
 
 	for (std::vector<HexusChapterPreview*>::iterator it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
-		int x = index % 5;
-		int y = index / 5;
+		int x = index % 4;
+		int y = index / 4;
 
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f - 720.0f + 360.0f * x, visibleSize.height / 2.0f + 240.0f - 480.0f * y - 48.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f - 540.0f + 384.0f * x, visibleSize.height / 2.0f + 240.0f - 480.0f * y - 48.0f));
 
 		index++;
 	}
 
-	this->deckManagementButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f, visibleSize.height - 64.0f));
-	this->shopButton->setPosition(Vec2(visibleSize.width / 2.0f + 756.0f - 256.0f, visibleSize.height - 64.0f));
 	this->chapterSelectLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 64.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }

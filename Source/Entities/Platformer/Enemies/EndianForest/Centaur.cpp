@@ -75,7 +75,7 @@ Centaur::~Centaur()
 
 Vec2 Centaur::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -196.0f);
+	return Vec2(-48.0f, -212.0f);
 }
 
 HexusOpponentData* Centaur::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -196.0f),
+			Vec2(-48.0f, -212.0f),
 			Centaur::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
@@ -154,8 +154,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
