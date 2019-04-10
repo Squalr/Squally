@@ -45,7 +45,7 @@ Guard::Guard(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Guard_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(112.0f, 160.0f),
-	0.9f,
+	0.3f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* Guard::getHexusOpponentData()
 		Guard::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_CastleValgrind_Guard_Animations,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
+			0.3f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Guard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.250f,
+			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),

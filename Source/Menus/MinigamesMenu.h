@@ -35,9 +35,8 @@ private:
 	ClickableTextNode* cipherButton;
 	ClickableTextNode* pointerTraceButton;
 	ClickableTextNode* stacksButton;
-	ClickableTextNode* comingSoonButton4;
-	ClickableTextNode* comingSoonButton5;
-	ClickableTextNode* comingSoonButton6;
+	ClickableTextNode* towerDefenseButton;
+	ClickableTextNode* spaceForceButton;
 	ClickableTextNode* backButton;
 
 	static MinigamesMenu* instance;

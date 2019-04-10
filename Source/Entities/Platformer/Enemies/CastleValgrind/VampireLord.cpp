@@ -92,8 +92,8 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 			VampireLord::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),

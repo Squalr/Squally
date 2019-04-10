@@ -25,6 +25,8 @@
 #include "Strings/Menus/ComingSoon.h"
 #include "Strings/PointerTrace/PointerTrace.h"
 #include "Strings/Stacks/Stacks.h"
+#include "Strings/SpaceForce/SpaceForce.h"
+#include "Strings/TowerDefense/TowerDefense.h"
 
 using namespace cocos2d;
 
@@ -74,14 +76,15 @@ MinigamesMenu::MinigamesMenu()
 	this->hexusPuzzlesButton = this->createButton(Strings::Hexus_HexusPuzzles::create(), UIResources::Menus_Icons_Gauntlet);
 	this->cipherButton = this->createButton(Strings::Cipher_Cipher::create(), UIResources::Menus_Icons_KeyGold);
 	this->pointerTraceButton = this->createButton(Strings::PointerTrace_PointerTrace::create(), UIResources::Menus_Icons_SpellCast);
-	this->stacksButton = this->createButton(Strings::Stacks_Stacks::create(), UIResources::Menus_Icons_SpellCast);
+	this->stacksButton = this->createButton(Strings::Stacks_Stacks::create(), UIResources::Menus_Icons_Scale);
+	this->towerDefenseButton = this->createButton(Strings::TowerDefense_TowerDefense::create(), UIResources::Menus_Icons_Meteor);
+	this->spaceForceButton = this->createButton(Strings::SpaceForce_SpaceForce::create(), UIResources::Menus_Icons_Stars);
 
+	this->cipherButton->disableInteraction(128);
 	this->pointerTraceButton->disableInteraction(128);
 	this->stacksButton->disableInteraction(128);
-
-	this->comingSoonButton4 = this->createComingSoonButton();
-	this->comingSoonButton5 = this->createComingSoonButton();
-	this->comingSoonButton6 = this->createComingSoonButton();
+	this->towerDefenseButton->disableInteraction(128);
+	this->spaceForceButton->disableInteraction(128);
 
 	this->addChild(this->backgroundNode);
 	this->scrollPane->addChild(this->hexusButton);
@@ -89,9 +92,8 @@ MinigamesMenu::MinigamesMenu()
 	this->scrollPane->addChild(this->cipherButton);
 	this->scrollPane->addChild(this->pointerTraceButton);
 	this->scrollPane->addChild(this->stacksButton);
-	this->scrollPane->addChild(this->comingSoonButton4);
-	this->scrollPane->addChild(this->comingSoonButton5);
-	this->scrollPane->addChild(this->comingSoonButton6);
+	this->scrollPane->addChild(this->towerDefenseButton);
+	this->scrollPane->addChild(this->spaceForceButton);
 	this->addChild(this->scrollPane);
 	this->addChild(this->backButton);
 }
@@ -128,9 +130,8 @@ void MinigamesMenu::initializePositions()
 	this->cipherButton->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
 	this->pointerTraceButton->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
 	this->stacksButton->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
-	this->comingSoonButton4->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
-	this->comingSoonButton5->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
-	this->comingSoonButton6->setPosition(Vec2(0.0f, -192.0f * 7 - 128.0f));
+	this->towerDefenseButton->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
+	this->spaceForceButton->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
 
@@ -152,6 +153,8 @@ void MinigamesMenu::initializeListeners()
 	this->cipherButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
 	this->pointerTraceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
 	this->stacksButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->towerDefenseButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->spaceForceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
 	this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
 
 	this->addEventListener(keyboardListener);
