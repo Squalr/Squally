@@ -75,7 +75,7 @@ Genie::~Genie()
 
 Vec2 Genie::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -144.0f);
 }
 
 HexusOpponentData* Genie::getHexusOpponentData()
@@ -88,12 +88,12 @@ HexusOpponentData* Genie::getHexusOpponentData()
 			0.28f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -144.0f),
 			Genie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.833f,
-			HexusOpponentData::generateDeck(32, 0.833f,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
@@ -121,7 +121,11 @@ HexusOpponentData* Genie::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +135,8 @@ HexusOpponentData* Genie::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,17 +151,18 @@ HexusOpponentData* Genie::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

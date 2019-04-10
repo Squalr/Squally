@@ -189,14 +189,27 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
 
 			if (!tryAbsorb(gameState, gameState->selectedRow))
-			{
-				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++)
+			{	
+				int index = 0;
+
+				for (auto it = gameState->selectedRow->rowCards.begin(); it != gameState->selectedRow->rowCards.end(); it++, index++)
 				{
 					Card* card = *it;
 
 					Card::Operation operation = gameState->selectedHandCard->toOperation(card->cardData->getIntrinsicImmediate());
 
+					int previousValue = card->getAttack();
+
 					card->addOperation(operation);
+
+					if (operation.operationType == Card::Operation::OperationType::SHL)
+					{
+						if (card->getAttack() < previousValue)
+						{
+							// Run overflow effect, interlacing odd/even offsets to prevent text overlap
+							card->runOverflowEffect(index % 2 == 1);
+						}
+					}
 				}
 
 				// Decide which effect and sounds to play

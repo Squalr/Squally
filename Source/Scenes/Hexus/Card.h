@@ -77,8 +77,8 @@ public:
 	int simulateOperation(Operation operation);
 	void setIsPlayerOwnedCard(bool isPlayerOwnedCard);
 	bool getIsPlayerOwnedCard();
-	void runOverflowEffect();
-	void runUnderflowEffect();
+	void runOverflowEffect(bool offsetYPosition = false);
+	void runUnderflowEffect(bool offsetYPosition = false);
 
 	CardData* cardData;
 	CardEffects* cardEffects;

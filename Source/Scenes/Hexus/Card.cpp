@@ -527,18 +527,40 @@ int Card::simulateOperation(Operation operation)
 	return this->applyOperation(attack, operation);
 }
 
-void Card::runOverflowEffect()
+void Card::runOverflowEffect(bool offsetYPosition)
 {
-	this->overflowLabel->setPosition(Vec2(0.0f, 64.0f));
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
+
+	this->overflowLabel->setPosition(Vec2(0.0f, isHighOnScreen ? (-64.0f + (offsetYPosition ? -32.0f : 0.0f)) : (64.0f + (offsetYPosition ? 32.0f : 0.0f))));
 	this->overflowLabel->setOpacity(255);
 	this->overflowLabel->runAction(FadeTo::create(1.0f, 0));
-	this->overflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 160.0f)));
+
+	if (isHighOnScreen)
+	{
+		this->overflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, -64.0f - 96.0f - (offsetYPosition ? 32.0f : 0.0f))));
+	}
+	else
+	{
+		this->overflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 64.0f + 96.0f + (offsetYPosition ? 32.0f : 0.0f))));
+	}
 }
 
-void Card::runUnderflowEffect()
+void Card::runUnderflowEffect(bool offsetYPosition)
 {
-	this->underflowLabel->setPosition(Vec2(0.0f, 64.0f));
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
+
+	this->underflowLabel->setPosition(Vec2(0.0f, isHighOnScreen ? (-64.0f + (offsetYPosition ? -32.0f : 0.0f)) : (64.0f + (offsetYPosition ? 32.0f : 0.0f))));
 	this->underflowLabel->setOpacity(255);
 	this->underflowLabel->runAction(FadeTo::create(1.0f, 0));
-	this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 160.0f)));
+
+	if (isHighOnScreen)
+	{
+		this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, -64.0f - 96.0f - (offsetYPosition ? 32.0f : 0.0f))));
+	}
+	else
+	{
+		this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 64.0f + 96.0f + (offsetYPosition ? 32.0f : 0.0f))));
+	}
 }
