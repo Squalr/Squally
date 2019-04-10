@@ -30,7 +30,6 @@ InteractMenu* InteractMenu::create(LocalizedString* displayString)
 InteractMenu::InteractMenu(LocalizedString* displayString)
 {
 	this->uiElements = Node::create();
-	this->uiElementsBinding = UIBoundObject::create(this->uiElements);
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 128, 48);
@@ -40,7 +39,6 @@ InteractMenu::InteractMenu(LocalizedString* displayString)
 	this->uiElements->addChild(this->backdrop);
 	this->uiElements->addChild(this->displayLabel);
 	this->addChild(this->uiElements);
-	this->addChild(this->uiElementsBinding);
 }
 
 InteractMenu::~InteractMenu()
@@ -53,7 +51,7 @@ void InteractMenu::onEnter()
 
 	// Move the UI elements to the top-most layer
 	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
-		this->uiElementsBinding
+		this->uiElements
 	));
 
 	this->setOpacity(0);
@@ -66,7 +64,7 @@ void InteractMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2(-128.0f / 2.0f, -48.0f / 2.0f));
-	this->uiElementsBinding->setPosition(Vec2(0.0f, 144.0f));
+	this->uiElements->setPosition(Vec2(0.0f, 144.0f));
 }
 
 void InteractMenu::initializeListeners()

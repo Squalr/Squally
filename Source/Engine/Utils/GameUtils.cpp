@@ -7,6 +7,8 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 #include "cocos/platform/CCFileUtils.h"
 
+#include "Engine/UI/UIBoundObject.h"
+
 using namespace cocos2d;
 
 // A better pause function that pauses recursively
@@ -253,10 +255,22 @@ Vec2 GameUtils::getWorldCoords(Node* node)
 
 	Rect resultRect = node->getBoundingBox();
 	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f);
+	Node* parent = node->getParent();
+	UIBoundObject* uiBoundObjectParent = GameUtils::getFirstParentOfType<UIBoundObject>(parent);
 
-	if (node->getParent() != nullptr)
+	// Special conditions for a ui-bound object
+	if (uiBoundObjectParent != nullptr)
 	{
-		resultCoords = node->getParent()->convertToWorldSpace(resultCoords);
+		Vec2 relativeCoords = parent->convertToWorldSpace(resultCoords);
+		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
+		Vec2 fixedCoords = Vec2(realCoords.x, realCoords.y) + Vec2(relativeCoords.x, -relativeCoords.y / 2.0f);
+
+		return fixedCoords;
+	}
+
+	if (parent != nullptr)
+	{
+		resultCoords = parent->convertToWorldSpace(resultCoords);
 	}
 
 	return resultCoords;
@@ -271,10 +285,22 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 
 	Rect resultRect = node->getBoundingBox();
 	Vec3 resultCoords = Vec3(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f, node->getPositionZ());
+	Node* parent = node->getParent();
+	UIBoundObject* uiBoundObjectParent = GameUtils::getFirstParentOfType<UIBoundObject>(parent);
 
-	if (node->getParent() != nullptr)
+	// Special conditions for a ui-bound object
+	if (uiBoundObjectParent != nullptr)
 	{
-		resultCoords = node->getParent()->convertToWorldSpace3(resultCoords);
+		Vec3 relativeCoords = parent->convertToWorldSpace3(resultCoords);
+		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
+		Vec3 fixedCoords = realCoords + Vec3(relativeCoords.x, -relativeCoords.y / 4.0f, relativeCoords.z);
+
+		return fixedCoords;
+	}
+
+	if (parent != nullptr)
+	{
+		resultCoords = parent->convertToWorldSpace3(resultCoords);
 	}
 
 	return resultCoords;

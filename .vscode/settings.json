@@ -99,7 +99,8 @@
         "__string": "cpp",
         "__threading_support": "cpp",
         "__tuple": "cpp",
-        "__functional_03": "cpp"
+        "__functional_03": "cpp",
+        "__node_handle": "cpp"
     },
     "C_Cpp.configurationWarnings": "Disabled",
     "cmake.generator": "Ninja",

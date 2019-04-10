@@ -86,10 +86,10 @@ public:
 
 	struct RelocateObjectArgs
 	{
-		UIBoundObject* uiBoundObject;
+		cocos2d::Node* relocatedObject;
 
-		RelocateObjectArgs() : uiBoundObject(nullptr) { }
-		RelocateObjectArgs(UIBoundObject* uiBoundObject) : uiBoundObject(uiBoundObject) { }
+		RelocateObjectArgs() : relocatedObject(nullptr) { }
+		RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
 	};
 
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);

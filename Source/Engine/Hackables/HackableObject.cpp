@@ -24,7 +24,6 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->codeList = std::vector<HackableCode*>();
 	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->uiElements = Node::create();
-	this->uiElementsBindings = UIBoundObject::create(this->uiElements);
 	this->hackButton = HackButton::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 
@@ -34,7 +33,6 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
 	this->addChild(this->uiElements);
-	this->addChild(this->uiElementsBindings);
 }
 
 HackableObject::~HackableObject()
@@ -47,7 +45,7 @@ void HackableObject::onEnter()
 
 	// Move the UI elements to the top-most layer
 	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
-		this->uiElementsBindings
+		this->uiElements
 	));
 
 	this->registerHackables();
@@ -136,12 +134,12 @@ void HackableObject::initializePositions()
 {
 	super::initializePositions();
 
-	this->uiElementsBindings->setPosition(this->getButtonOffset());
+	this->uiElements->setPosition(this->getButtonOffset());
 }
 
 void HackableObject::onHackerModeEnable()
 {
-	this->uiElementsBindings->setPosition(this->getButtonOffset());
+	this->uiElements->setPosition(this->getButtonOffset());
 
 	if (!(this->dataList.empty() && this->codeList.empty()))
 	{

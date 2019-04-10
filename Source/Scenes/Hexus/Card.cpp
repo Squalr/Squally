@@ -5,9 +5,11 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
@@ -17,6 +19,8 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Generics/Constant.h"
+#include "Strings/Hexus/Cards/Effects/Overflow.h"
+#include "Strings/Hexus/Cards/Effects/Underflow.h"
 
 using namespace cocos2d;
 
@@ -111,6 +115,15 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 
 	this->cardString = ConstantString::create();
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
+	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_Cards_Effects_Overflow::create());
+	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_Cards_Effects_Underflow::create());
+
+	this->overflowLabel->enableOutline(Color4B::BLACK, 2);
+	this->underflowLabel->enableOutline(Color4B::BLACK, 2);
+	this->overflowLabel->setTextColor(Color4B::RED);
+	this->underflowLabel->setTextColor(Color4B::GREEN);
+	this->overflowLabel->setOpacity(0);
+	this->underflowLabel->setOpacity(0);
 
 	this->cardLabel->setStringReplacementVariables(this->cardString);
 	this->cardLabel->setAlignment(TextHAlignment::CENTER);
@@ -129,6 +142,8 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 	this->addChild(this->cardSelect);
 	this->addChild(this->cardEffects);
 	this->addChild(this->cardLabel);
+	this->addChild(this->overflowLabel);
+	this->addChild(this->underflowLabel);
 
 	this->hide();
 	this->unfocus();
@@ -140,12 +155,23 @@ Card::~Card()
 
 void Card::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
+
+	this->overflowLabel->setOpacity(0);
+	this->underflowLabel->setOpacity(0);
+}
+
+void Card::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
 }
 
 void Card::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -154,7 +180,7 @@ void Card::initializePositions()
 
 void Card::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
 	this->cardSelect->setMouseOverCallback(CC_CALLBACK_0(Card::onMouseOver, this));
 	this->cardSelect->setMouseOutCallback(CC_CALLBACK_0(Card::onMouseOut, this));
@@ -499,4 +525,20 @@ int Card::simulateOperation(Operation operation)
 	int attack = this->getAttack();
 
 	return this->applyOperation(attack, operation);
+}
+
+void Card::runOverflowEffect()
+{
+	this->overflowLabel->setPosition(Vec2(0.0f, 64.0f));
+	this->overflowLabel->setOpacity(255);
+	this->overflowLabel->runAction(FadeTo::create(1.0f, 0));
+	this->overflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 160.0f)));
+}
+
+void Card::runUnderflowEffect()
+{
+	this->underflowLabel->setPosition(Vec2(0.0f, 64.0f));
+	this->underflowLabel->setOpacity(255);
+	this->underflowLabel->runAction(FadeTo::create(1.0f, 0));
+	this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 160.0f)));
 }

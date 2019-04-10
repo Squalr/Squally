@@ -6,10 +6,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
@@ -108,6 +110,7 @@ Hexus::Hexus()
 	this->tutorialDIntroSequence = TutorialDIntroSequence::create();
 	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
 	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
+	this->relocateLayer = Node::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -145,6 +148,7 @@ Hexus::Hexus()
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
 	this->addChild(this->gameState);
+	this->addChild(this->relocateLayer);
 	this->addChild(this->stateAIDecideCard);
 	this->addChild(this->stateAIDecideCardReplace);
 	this->addChild(this->stateAIDecidePass);
@@ -248,6 +252,16 @@ void Hexus::initializeListeners()
 			GlobalDirector::loadScene(Hexus::instance);
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventArgs)
+	{
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->relocateLayer->addChild(UIBoundObject::create(args->relocatedObject));
+		}
+	}));
 	
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -263,6 +277,8 @@ void Hexus::initializeListeners()
 
 void Hexus::startGame(HexusOpponentData* opponentData)
 {
+	this->relocateLayer->removeAllChildren();
+	
 	this->gameState->opponentData = opponentData;
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;

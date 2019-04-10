@@ -121,7 +121,7 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +136,8 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -151,7 +152,7 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

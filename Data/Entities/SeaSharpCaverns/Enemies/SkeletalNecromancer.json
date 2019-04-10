@@ -38,7 +38,7 @@
 
       ],
       "PlayerHand": [
-
+        "Subtraction"
       ],
       "EnemyHand": [
 
@@ -47,7 +47,8 @@
 
       ],
       "PlayerDecimalCards": [
-
+        "Decimal3",
+        "Decimal4"
       ],
       "PlayerHexCards": [
 
@@ -56,7 +57,7 @@
 
       ],
       "EnemyDecimalCards": [
-
+        "Decimal15"
       ],
       "EnemyHexCards": [
 
