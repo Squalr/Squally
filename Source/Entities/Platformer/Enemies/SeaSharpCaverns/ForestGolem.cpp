@@ -92,8 +92,8 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 			ForestGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.583f,
-			HexusOpponentData::generateDeck(32, 0.583f,
+			0.417f,
+			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +132,8 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -151,7 +153,8 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

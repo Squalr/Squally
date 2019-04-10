@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "7.0f / 12.0f",
+      "Strength": "5.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -38,13 +38,15 @@
 
       ],
       "PlayerHand": [
-
+        "LogicalOr",
+        "ShiftLeftCircular"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary5",
+        "Binary5"
       ],
       "PlayerDecimalCards": [
 
@@ -53,10 +55,11 @@
 
       ],
       "EnemyBinaryCards": [
-
+        
       ],
       "EnemyDecimalCards": [
-
+        "Decimal14",
+        "Decimal10"
       ],
       "EnemyHexCards": [
 

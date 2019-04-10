@@ -75,7 +75,7 @@ EarthElemental::~EarthElemental()
 
 Vec2 EarthElemental::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -224.0f);
 }
 
 HexusOpponentData* EarthElemental::getHexusOpponentData()
@@ -87,8 +87,8 @@ HexusOpponentData* EarthElemental::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -224.0f),
+			Vec2(-32.0f, -224.0f),
 			EarthElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
@@ -121,7 +121,9 @@ HexusOpponentData* EarthElemental::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +138,8 @@ HexusOpponentData* EarthElemental::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -151,7 +154,9 @@ HexusOpponentData* EarthElemental::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

@@ -92,8 +92,8 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 			EarthGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.417f,
-			HexusOpponentData::generateDeck(32, 0.417f,
+			0.583f,
+			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +132,8 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +148,8 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

@@ -5,7 +5,6 @@
 #include "cocos/base/ccTypes.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/UI/UIBoundObject.h"
 
 namespace cocos2d
 {
@@ -35,7 +34,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	UIBoundObject* uiElementsBinding;
 	cocos2d::Node* uiElements;
 	cocos2d::LayerColor* backdrop;
 	LocalizedString* displayString;

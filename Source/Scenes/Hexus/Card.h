@@ -13,8 +13,9 @@ namespace cocos2d
 
 class CardEffects;
 class ConstantString;
-class LocalizedLabel;
 class ClickableNode;
+class LocalizedLabel;
+class UIBoundObject;
 
 class Card : public SmartNode
 {
@@ -76,6 +77,8 @@ public:
 	int simulateOperation(Operation operation);
 	void setIsPlayerOwnedCard(bool isPlayerOwnedCard);
 	bool getIsPlayerOwnedCard();
+	void runOverflowEffect();
+	void runUnderflowEffect();
 
 	CardData* cardData;
 	CardEffects* cardEffects;
@@ -94,6 +97,7 @@ protected:
 	~Card();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
@@ -115,6 +119,8 @@ private:
 	cocos2d::Sprite* cardFocus;
 	ConstantString* cardString;
 	LocalizedLabel* cardLabel;
+	LocalizedLabel* overflowLabel;
+	LocalizedLabel* underflowLabel;
 	std::function<void(Card*)> mouseOverCallback;
 	std::function<void(Card*)> mouseOutCallback;
 	std::function<void(Card*)> mouseClickCallback;

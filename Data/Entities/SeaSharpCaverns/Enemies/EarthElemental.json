@@ -10,14 +10,14 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-224.0f"
   },
   "Health": "10",
   "Special": "10",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-144.0f"
+      "Y": "-224.0f"
     },
     "MatchData": {
       "DeckSize": "32",
@@ -38,7 +38,9 @@
 
       ],
       "PlayerHand": [
-
+        "Addition",
+        "Subtraction",
+        "LogicalOr"
       ],
       "EnemyHand": [
 
@@ -47,7 +49,8 @@
 
       ],
       "PlayerDecimalCards": [
-
+        "Decimal1",
+        "Decimal2"
       ],
       "PlayerHexCards": [
 
@@ -56,7 +59,9 @@
 
       ],
       "EnemyDecimalCards": [
-
+        "Decimal15",
+        "Decimal12",
+        "Decimal12"
       ],
       "EnemyHexCards": [
 

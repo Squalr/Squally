@@ -169,6 +169,8 @@ private:
 	TutorialEIntroSequence* tutorialEIntroSequence;
 	TutorialFIntroSequence* tutorialFIntroSequence;
 
+	cocos2d::Node* relocateLayer;
+
 	cocos2d::LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;

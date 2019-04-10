@@ -269,7 +269,24 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					gameState->selectedSourceCard->getAttack()
 				);
 
+				int previousValue = gameState->selectedDestinationCard->getAttack();
+
 				gameState->selectedDestinationCard->addOperation(operation);
+
+				if (operation.operationType == Card::Operation::OperationType::ADD)
+				{
+					if (gameState->selectedDestinationCard->getAttack() < previousValue)
+					{
+						gameState->selectedDestinationCard->runOverflowEffect();
+					}
+				}
+				else if (operation.operationType == Card::Operation::OperationType::SUB)
+				{
+					if (gameState->selectedDestinationCard->getAttack() > previousValue)
+					{
+						gameState->selectedDestinationCard->runUnderflowEffect();
+					}
+				} 
 
 				// Decide which effect and sounds to play
 				switch (gameState->selectedHandCard->cardData->cardType)

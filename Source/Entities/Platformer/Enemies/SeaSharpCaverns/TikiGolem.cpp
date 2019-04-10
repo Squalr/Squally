@@ -121,7 +121,10 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +134,10 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +152,9 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -156,7 +164,7 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

@@ -293,7 +293,7 @@ void SerializableMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* arg
 		return;
 	}
 
-	GameUtils::changeParent(args->uiBoundObject->getObjectReference(), this->serializableLayers.back(), true);
+	this->serializableLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
 }
 
 void SerializableMap::hackerModeEnable()

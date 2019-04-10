@@ -18,7 +18,6 @@ class HackableCode;
 class HackableData;
 class HackablePreview;
 class HackButton;
-class UIBoundObject;
 class ProgressBar;
 
 class HackableObject : public SerializableObject
@@ -50,7 +49,6 @@ protected:
 private:
 	typedef SerializableObject super;
 
-	UIBoundObject* uiElementsBindings;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
