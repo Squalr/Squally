@@ -6,10 +6,11 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Barbarian.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthElemental.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/EarthGolem.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/ForestGolem.h"
-#include "Entities/Platformer/Enemies/SeaSharpCaverns/Genie.h"
+#include "Entities/Platformer/Enemies/SeaSharpCaverns/Gorilla.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/LightningGolem.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/Rhinoman.h"
 #include "Entities/Platformer/Enemies/SeaSharpCaverns/Shaman.h"
@@ -39,10 +40,11 @@ void HexusOpponentMenuSeaSharpCavernsPuzzle::registerGlobalScene()
 
 HexusOpponentMenuSeaSharpCavernsPuzzle::HexusOpponentMenuSeaSharpCavernsPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleSeaSharpCaverns, HexusChapterPreviewSeaSharpCavernsPuzzle::SaveKeyChapterName)
 {
+	this->opponents.push_back(HexusOpponentPreview::create(Barbarian::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthElemental::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthGolem::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(ForestGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Genie::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Gorilla::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(LightningGolem::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Rhinoman::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Shaman::getHexusOpponentData()));
