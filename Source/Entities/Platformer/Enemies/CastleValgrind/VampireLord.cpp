@@ -75,7 +75,7 @@ VampireLord::~VampireLord()
 
 Vec2 VampireLord::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -144.0f);
 }
 
 HexusOpponentData* VampireLord::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -144.0f),
 			VampireLord::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
@@ -121,7 +121,13 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +137,7 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,17 +152,24 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
