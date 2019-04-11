@@ -47,10 +47,10 @@
 
       ],
       "PlayerBinaryCards": [
-        "Binary1",
-        "Binary2",
+        "Binary8",
         "Binary4",
-        "Binary8"
+        "Binary2",
+        "Binary1"
       ],
       "PlayerDecimalCards": [
         
@@ -65,14 +65,11 @@
         "Binary14"
       ],
       "EnemyDecimalCards": [
-        "Decimal13",
-        "Absorb",
-        "Absorb",
-        "Absorb",
+        "Decimal14",
         "Absorb"
       ],
       "EnemyHexCards": [
-        
+
       ],
       "TutorialKey": ""
     }

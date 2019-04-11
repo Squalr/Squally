@@ -147,7 +147,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				},
 				// Enemy decimal cards

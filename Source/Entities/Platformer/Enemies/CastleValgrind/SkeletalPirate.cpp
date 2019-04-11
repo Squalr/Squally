@@ -121,7 +121,9 @@ HexusOpponentData* SkeletalPirate::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,10 @@ HexusOpponentData* SkeletalPirate::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,12 +151,17 @@ HexusOpponentData* SkeletalPirate::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

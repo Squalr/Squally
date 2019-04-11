@@ -121,7 +121,9 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,9 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +150,10 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -156,7 +163,11 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
