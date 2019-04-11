@@ -1,5 +1,5 @@
 {
-  "Scale": "0.4f",
+  "Scale": "0.5f",
   "Size": {
     "Width": "380.0f",
     "Height": "572.0f"
@@ -38,36 +38,32 @@
 
       ],
       "PlayerHand": [
-        "ShiftLeftCircular",
-        "ShiftLeftCircular",
-        "ShiftLeftCircular",
-        "LogicalXor",
-        "LogicalXor",
+        "Flip2",
+        "ShiftLeft",
         "LogicalXor"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary1"
+        "Binary2"
       ],
       "PlayerDecimalCards": [
-        
-      ],
-      "PlayerHexCards": [
 
       ],
+      "PlayerHexCards": [
+        
+      ],
       "EnemyBinaryCards": [
-        "Binary1",
         "Binary2",
-        "Binary4",
-        "Binary8"
+        "Binary2",
+        "Binary6"
       ],
       "EnemyDecimalCards": [
-        
+        "Decimal3"
       ],
       "EnemyHexCards": [
-        
+
       ],
       "TutorialKey": ""
     }

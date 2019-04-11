@@ -45,7 +45,7 @@ WaterElemental::WaterElemental(ValueMap& initProperties) : PlatformerEnemy(initP
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(820.0f, 1480.0f),
-	0.20f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 		WaterElemental::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.20f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			WaterElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.385f,
+			HexusOpponentData::generateDeck(32, 0.385f,
 			{
 
 			}),
@@ -121,7 +121,9 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +133,7 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -151,7 +153,10 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

@@ -45,7 +45,7 @@ PenguinGrunt::PenguinGrunt(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(212.0f, 296.0f),
-	0.7f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 		PenguinGrunt::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.7f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			PenguinGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.538f,
+			HexusOpponentData::generateDeck(32, 0.538f,
 			{
 
 			}),

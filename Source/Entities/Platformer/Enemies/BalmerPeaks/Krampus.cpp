@@ -92,8 +92,8 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 			Krampus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.769f,
+			HexusOpponentData::generateDeck(32, 0.769f,
 			{
 
 			}),
@@ -121,7 +121,9 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +138,7 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -146,17 +148,22 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

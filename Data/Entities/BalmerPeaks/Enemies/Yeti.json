@@ -1,6 +1,6 @@
 {
   "Environment": "BalmerPeaks",
-  "Scale": "0.4f",
+  "Scale": "0.5f",
   "Size": {
     "Width": "380.0f",
     "Height": "572.0f"
@@ -39,13 +39,14 @@
 
       ],
       "PlayerHand": [
-
+        "LogicalXor"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary6",
+        "Binary6"
       ],
       "PlayerDecimalCards": [
 
@@ -54,7 +55,8 @@
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary6",
+        "Binary9"
       ],
       "EnemyDecimalCards": [
 
