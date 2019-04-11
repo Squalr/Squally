@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0">
+        <file id="0" name="Left Foot.png" width="47" height="68" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="Body.png" width="166" height="184" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="Right Foot.png" width="47" height="68" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="Eyes01.png" width="88" height="40" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="Mouth01.png" width="74" height="43" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="Left Hand.png" width="47" height="78" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="Right Hand.png" width="47" height="77" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="Tail.png" width="43" height="43" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="Entity">
+        <animation id="0" name="Idle" length="2400" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="7" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="0" key="0" z_index="1"/>
+                    <object_ref id="2" timeline="5" key="0" z_index="2"/>
+                    <object_ref id="3" timeline="1" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="2" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="3" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="4" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Left Foot">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="2.181347" y="66.15544"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="Body">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-81.549223" y="207.284974"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="Right Foot">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-48.34715" y="64.637306"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="Eyes01">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-26.626943" y="154.601036"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="Mouth01">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="-18.735751" y="105.518135"/>
+                </key>
+            </timeline>
+            <timeline id="5" name="Left Hand">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="33.678756" y="115.544041"/>
+                </key>
+            </timeline>
+            <timeline id="6" name="Right Hand">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" x="-70.984456" y="121.761658"/>
+                </key>
+            </timeline>
+            <timeline id="7" name="Tail">
+                <key id="0" spin="0">
+                    <object folder="0" file="7" x="-72.020725" y="67.357513"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
