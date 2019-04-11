@@ -9,8 +9,8 @@
     "Y": "0.0f"
   },
   "AvatarOffset": {
-    "X": "-32.0f",
-    "Y": "-112.0f"
+    "X": "-16.0f",
+    "Y": "-288.0f"
   },
   "Health": "10",
   "Special": "10",
@@ -38,7 +38,10 @@
 
       ],
       "PlayerHand": [
-
+        "Steal",
+        "Flip4",
+        "ShiftRightCircular",
+        "LogicalAnd"
       ],
       "EnemyHand": [
 
@@ -47,7 +50,8 @@
 
       ],
       "PlayerDecimalCards": [
-
+        "Decimal7",
+        "Decimal3"
       ],
       "PlayerHexCards": [
 
@@ -56,10 +60,15 @@
 
       ],
       "EnemyDecimalCards": [
-
+        "Decimal8",
+        "Decimal15"
       ],
       "EnemyHexCards": [
-
+        "Hex14",
+        "Hex14",
+        "Hex14",
+        "Absorb",
+        "Absorb"
       ],
       "TutorialKey": ""
     }

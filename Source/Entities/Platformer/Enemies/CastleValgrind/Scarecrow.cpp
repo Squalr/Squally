@@ -75,7 +75,7 @@ Scarecrow::~Scarecrow()
 
 Vec2 Scarecrow::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(0.0f, -312.0f);
 }
 
 HexusOpponentData* Scarecrow::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Scarecrow::getHexusOpponentData()
 			0.8f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -196.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(0.0f, -312.0f),
 			Scarecrow::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
@@ -121,7 +121,10 @@ HexusOpponentData* Scarecrow::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -141,22 +144,27 @@ HexusOpponentData* Scarecrow::getHexusOpponentData()
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
