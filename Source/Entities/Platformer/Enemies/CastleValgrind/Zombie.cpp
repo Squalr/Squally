@@ -45,7 +45,7 @@ Zombie::Zombie(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(146.0f, 248.0f),
-	1.0f,
+	0.9f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -55,7 +55,7 @@ Zombie::Zombie(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -85,7 +85,7 @@ HexusOpponentData* Zombie::getHexusOpponentData()
 		Zombie::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_CastleValgrind_Zombie_Animations,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
+			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

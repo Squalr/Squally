@@ -232,12 +232,12 @@ def generateEntityCode(entityData):
 		hContent = parseTemplate(hTemplate)
 		cppContent = parseTemplate(cppTemplate)
 		
-		hContent = replaceTextBetween(hPrefixA, hSuffixA, hContent, hUserContentA)
-		hContent = replaceTextBetween(hPrefixB, hSuffixB, hContent, hUserContentB)
-		hContent = replaceTextBetween(hPrefixC, hSuffixC, hContent, hUserContentC)
-		cppContent = replaceTextBetween(cppPrefixA, cppSuffixA, cppContent, cppUserContentA)
-		cppContent = replaceTextBetween(cppPrefixB, cppSuffixB, cppContent, cppUserContentB)
-		cppContent = replaceTextBetween(cppPrefixC, cppSuffixC, cppContent, cppUserContentC)
+		hContent = replaceTextBetween(hPrefixA, hSuffixA, hContent, hUserContentA + "\n\n")
+		hContent = replaceTextBetween(hPrefixB, hSuffixB, hContent, hUserContentB + "\n\t\n\t")
+		hContent = replaceTextBetween(hPrefixC, hSuffixC, hContent, hUserContentC + "\n\t\n\t")
+		cppContent = replaceTextBetween(cppPrefixA, cppSuffixA, cppContent, cppUserContentA + "\n\n")
+		cppContent = replaceTextBetween(cppPrefixB, cppSuffixB, cppContent, cppUserContentB + "\n\t\n\t")
+		cppContent = replaceTextBetween(cppPrefixC, cppSuffixC, cppContent, cppUserContentC + "\n\n")
 			
 		h.write(hContent)
 		cpp.write(cppContent)
@@ -320,7 +320,8 @@ def generateHexusMenuCode(allEntityData):
 
 def generateEntityDeserializationCode(allEntityData):
 	deserializerClass = abspath(join(join(realpath(__file__), ".."), "../../Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))
-	
+	contents = ""
+
 	with open(deserializerClass,"r+") as contentReader:
 		includesPrefixDelimiter = "////V////V////V////V////V////V////V/"
 		includesSuffixDelimiter = "////Y////Y////Y////Y////Y////Y////Y/"
@@ -344,12 +345,10 @@ def generateEntityDeserializationCode(allEntityData):
 		
 		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")
 		
-		with open(deserializerClass,"w+") as contentWriter:
-			contentWriter.write(contents)
+	with open(deserializerClass,"w+") as contentWriter:
+		contentWriter.write(contents)
 
 def replaceTextBetween(delimeterA, delimeterB, contents, innerContent):
-	if not delimeterA in contents or delimeterB in contents:
-		return contents
 	contentsPrefix = contents.split(delimeterA)[0]
 	contentsSuffix = contents.split(delimeterB)[1]
 	

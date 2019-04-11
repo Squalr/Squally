@@ -55,7 +55,7 @@ EarthGolem::EarthGolem(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -75,7 +75,7 @@ EarthGolem::~EarthGolem()
 
 Vec2 EarthGolem::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-48.0f, -144.0f);
 }
 
 HexusOpponentData* EarthGolem::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -144.0f),
 			EarthGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,

@@ -55,7 +55,7 @@ ForestGolem::ForestGolem(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -75,7 +75,7 @@ ForestGolem::~ForestGolem()
 
 Vec2 ForestGolem::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -128.0f);
+	return Vec2(-32.0f, -144.0f);
 }
 
 HexusOpponentData* ForestGolem::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -128.0f),
+			Vec2(-32.0f, -144.0f),
 			ForestGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
@@ -132,8 +132,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -143,7 +142,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				// Player hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
