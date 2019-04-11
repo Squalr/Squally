@@ -149,20 +149,22 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

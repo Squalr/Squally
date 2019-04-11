@@ -50,22 +50,24 @@
         "Binary8"
       ],
       "PlayerDecimalCards": [
-
+        
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-        "Binary5",
-        "Binary6"
+        "Binary4",
+        "Binary4"
       ],
       "EnemyDecimalCards": [
-        "Decimal6",
-        "Decimal6",
+        "Decimal5",
         "Decimal6"
       ],
       "EnemyHexCards": [
-        "Hex8"
+        "Hex8",
+        "Hex4",
+        "Hex4",
+        "Hex4"
       ],
       "TutorialKey": ""
     }

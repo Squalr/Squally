@@ -75,7 +75,7 @@ YetiWarrior::~YetiWarrior()
 
 Vec2 YetiWarrior::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-64.0f, -160.0f);
 }
 
 HexusOpponentData* YetiWarrior::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* YetiWarrior::getHexusOpponentData()
 			0.5f,
 			Vec2(24.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-64.0f, -160.0f),
 			YetiWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
