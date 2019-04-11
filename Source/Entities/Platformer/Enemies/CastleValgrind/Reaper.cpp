@@ -87,7 +87,7 @@ HexusOpponentData* Reaper::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameCastleValgrind,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
+			Vec2(-48.0f, -160.0f),
 			Vec2(-32.0f, -112.0f),
 			Reaper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,

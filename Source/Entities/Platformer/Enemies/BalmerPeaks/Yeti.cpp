@@ -92,8 +92,8 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 			Yeti::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.077f,
+			HexusOpponentData::generateDeck(32, 0.077f,
 			{
 
 			}),

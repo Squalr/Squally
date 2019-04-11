@@ -38,14 +38,19 @@
 
       ],
       "PlayerHand": [
-        "Inverse",
+        "LogicalAnd",
+        "LogicalAnd",
+        "LogicalAnd",
         "LogicalAnd"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary5"
+        "Binary1",
+        "Binary2",
+        "Binary4",
+        "Binary8"
       ],
       "PlayerDecimalCards": [
         
@@ -54,10 +59,16 @@
 
       ],
       "EnemyBinaryCards": [
-        "Binary10"
+        "Binary7",
+        "Binary11",
+        "Binary13",
+        "Binary14"
       ],
       "EnemyDecimalCards": [
-        "Decimal7",
+        "Decimal13",
+        "Absorb",
+        "Absorb",
+        "Absorb",
         "Absorb"
       ],
       "EnemyHexCards": [
