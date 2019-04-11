@@ -22,7 +22,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "1.0f",
+      "Strength": "1.0f / 13.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
