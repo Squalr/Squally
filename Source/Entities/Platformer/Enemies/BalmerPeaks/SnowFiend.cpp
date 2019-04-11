@@ -45,7 +45,7 @@ SnowFiend::SnowFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(420.0f, 420.0f),
-	0.7f,
+	0.85f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* SnowFiend::getHexusOpponentData()
 		SnowFiend::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.7f,
+			0.85f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SnowFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.846f,
+			HexusOpponentData::generateDeck(32, 0.846f,
 			{
 
 			}),

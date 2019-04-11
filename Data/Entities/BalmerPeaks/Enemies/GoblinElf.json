@@ -1,5 +1,5 @@
 {
-  "Scale": "0.6f",
+  "Scale": "0.8f",
   "Size": {
     "Width": "140.0f",
     "Height": "296.0f"
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "1.0f",
+      "Strength": "6.0f / 13.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -38,28 +38,36 @@
 
       ],
       "PlayerHand": [
-
+        "ShiftLeftCircular",
+        "ShiftLeftCircular",
+        "ShiftLeftCircular",
+        "LogicalXor",
+        "LogicalXor",
+        "LogicalXor"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary1"
       ],
       "PlayerDecimalCards": [
-
+        
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary1",
+        "Binary2",
+        "Binary4",
+        "Binary8"
       ],
       "EnemyDecimalCards": [
-
+        
       ],
       "EnemyHexCards": [
-
+        
       ],
       "TutorialKey": ""
     }
