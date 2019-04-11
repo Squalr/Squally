@@ -49,7 +49,7 @@ private:
 	std::vector<HexusChapterPreview*> chapters;
 	std::map<HexusChapterPreview*, HexusChapterPreview*> dependencies;
 
-	cocos2d::Sprite* background;
+	cocos2d::Node* backgroundNode;
 
 	HexusChapterPreviewTrainingPuzzle* hexusChapterPreviewTrainingPuzzle;
 	HexusChapterPreviewBalmerPeaksPuzzle* hexusChapterPreviewBalmerPeaksPuzzle;

@@ -93,6 +93,7 @@ namespace HexusResources
 	extern const std::string LeaderEmblem;
 	extern const std::string Menus_AxeLogo;
 	extern const std::string Menus_EnemyFrame;
+	extern const std::string Menus_EnemyFrameBackground;
 	extern const std::string Menus_EnemyFrameGray;
 	extern const std::string Menus_EnemyFrameHover;
 	extern const std::string Menus_HexusFrameBalmerPeaks;

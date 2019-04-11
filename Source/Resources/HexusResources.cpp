@@ -92,6 +92,7 @@ const std::string HexusResources::Hex_9 = "Hexus/Hex/9.png";
 const std::string HexusResources::LeaderEmblem = "Hexus/LeaderEmblem.png";
 const std::string HexusResources::Menus_AxeLogo = "Hexus/Menus/AxeLogo.png";
 const std::string HexusResources::Menus_EnemyFrame = "Hexus/Menus/EnemyFrame.png";
+const std::string HexusResources::Menus_EnemyFrameBackground = "Hexus/Menus/EnemyFrameBackground.png";
 const std::string HexusResources::Menus_EnemyFrameGray = "Hexus/Menus/EnemyFrameGray.png";
 const std::string HexusResources::Menus_EnemyFrameHover = "Hexus/Menus/EnemyFrameHover.png";
 const std::string HexusResources::Menus_HexusFrameBalmerPeaks = "Hexus/Menus/HexusFrameBalmerPeaks.png";

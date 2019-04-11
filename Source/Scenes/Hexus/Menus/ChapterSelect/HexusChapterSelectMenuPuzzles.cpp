@@ -12,6 +12,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/MenuBackground.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaksPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/CastleValgrind/HexusChapterPreviewCastleValgrindPuzzle.h"
@@ -50,7 +51,7 @@ void HexusChapterSelectMenuPuzzles::registerGlobalScene()
 HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 {
 	this->chapters = std::vector<HexusChapterPreview*>();
-	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
+	this->backgroundNode = Node::create();
 
 	this->hexusChapterPreviewBalmerPeaksPuzzle = HexusChapterPreviewBalmerPeaksPuzzle::create();
 	this->hexusChapterPreviewCastleValgrindPuzzle = HexusChapterPreviewCastleValgrindPuzzle::create();
@@ -88,7 +89,7 @@ HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
 	this->chapters.push_back(this->hexusChapterPreviewLambdaCryptsPuzzle);
 	this->chapters.push_back(this->hexusChapterPreviewVoidStarPuzzle);
 
-	this->addChild(this->background);
+	this->addChild(this->backgroundNode);
 
 	for (auto it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
@@ -106,6 +107,8 @@ HexusChapterSelectMenuPuzzles::~HexusChapterSelectMenuPuzzles()
 void HexusChapterSelectMenuPuzzles::onEnter()
 {
 	super::onEnter();
+
+	this->backgroundNode->addChild(MenuBackground::claimInstance());
 
 	float delay = 0.25f;
 	float duration = 0.35f;
@@ -166,8 +169,6 @@ void HexusChapterSelectMenuPuzzles::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
 
 	int index = 0;
 

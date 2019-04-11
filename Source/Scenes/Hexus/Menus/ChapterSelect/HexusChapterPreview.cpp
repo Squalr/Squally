@@ -1,11 +1,13 @@
 #include "HexusChapterPreview.h"
 
 #include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/SoundResources.h"
@@ -27,6 +29,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 {
 	this->chapterSaveKey = chapterSaveKey;
 	this->callback = nullptr;
+	this->frameBackground = Sprite::create(HexusResources::Menus_EnemyFrameBackground);
 	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 	this->lockedSprite = Sprite::create(UIResources::Menus_Icons_Lock);
@@ -42,7 +45,6 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 
 	this->frameClip = ClippingNode::create(clipStencil);
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
-	this->frameClip->setCascadeOpacityEnabled(true);
 
 	this->lockedSprite->setVisible(false);
 	this->text->setVisible(false);
@@ -51,8 +53,8 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 	this->text->setColor(Color3B::WHITE);
 
 	this->setContentSize(this->frame->getContentSize());
-	this->setCascadeOpacityEnabled(true);
 
+	this->addChild(this->frameBackground);
 	this->addChild(this->frameClip);
 	this->addChild(this->frame);
 	this->addChild(this->lockedSprite);
@@ -63,10 +65,18 @@ HexusChapterPreview::~HexusChapterPreview()
 {
 }
 
+void HexusChapterPreview::onEnter()
+{
+	super::onEnter();
+}
+
 void HexusChapterPreview::initializePositions()
 {
+	super::initializePositions();
+
 	this->text->setPosition(Vec2(0.0f, -188.0f));
 	this->lockedSprite->setPosition(Vec2(0.0f, -188.0f));
+	this->frameBackground->setPosition(Vec2(0.0f, 32.0f));
 }
 
 void HexusChapterPreview::initializeListeners()
@@ -79,7 +89,7 @@ void HexusChapterPreview::initializeListeners()
 void HexusChapterPreview::disableInteraction()
 {
 	this->frame->disableInteraction();
-	this->frameClip->setOpacity(128);
+	this->frameClip->setOpacity(96);
 	this->text->setVisible(false);
 	this->lockedSprite->setVisible(true);
 }

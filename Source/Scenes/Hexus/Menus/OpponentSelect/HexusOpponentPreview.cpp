@@ -35,7 +35,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 
 	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);
-	Size clipSize = Size(frameSize.width - 48.0f, frameSize.height - 48.0f);
+	Size clipSize = Size(frameSize.width - 52.0f, frameSize.height - 52.0f);
 	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
 	// Enable to debug clipping:

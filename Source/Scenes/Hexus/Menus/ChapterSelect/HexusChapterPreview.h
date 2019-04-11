@@ -29,10 +29,12 @@ protected:
 	HexusChapterPreview(std::string chapterNameKey, LocalizedString* localizedChapterName);
 	~HexusChapterPreview();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onOpponentClick();
 	
+	cocos2d::Sprite* frameBackground;
 	cocos2d::ClippingNode* frameClip;
 	ClickableNode* frame;
 	cocos2d::Sprite* lockedSprite;
