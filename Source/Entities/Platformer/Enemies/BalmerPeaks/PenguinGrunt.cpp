@@ -75,7 +75,7 @@ PenguinGrunt::~PenguinGrunt()
 
 Vec2 PenguinGrunt::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -128.0f);
 }
 
 HexusOpponentData* PenguinGrunt::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -128.0f),
 			PenguinGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
