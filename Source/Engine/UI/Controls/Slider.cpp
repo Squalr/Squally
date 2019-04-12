@@ -37,9 +37,9 @@ Slider::Slider(Node* frame, Node* fill, std::string slideResource, std::string s
 	this->setProgress(this->progress);
 
 	this->progressBarHitBox->setContentSize(this->progressBar->getContentSize());
-	this->progressBarHitBox->setMouseDownCallback(CC_CALLBACK_2(Slider::onDrag, this));
-	this->progressBarHitBox->setMouseDragCallback(CC_CALLBACK_2(Slider::onDrag, this));
-	this->slide->setMouseDragCallback(CC_CALLBACK_2(Slider::onDrag, this));
+	this->progressBarHitBox->setMouseDownCallback(CC_CALLBACK_1(Slider::onDrag, this));
+	this->progressBarHitBox->setMouseDragCallback(CC_CALLBACK_1(Slider::onDrag, this));
+	this->slide->setMouseDragCallback(CC_CALLBACK_1(Slider::onDrag, this));
 
 	this->progressBar->addChild(this->progressBarHitBox);
 	this->addChild(this->progressBar);
@@ -64,6 +64,16 @@ void Slider::initializePositions()
 	this->updateSliderPosition();
 }
 
+void Slider::enableInteraction()
+{
+	this->slide->enableInteraction();
+}
+
+void Slider::disableInteraction()
+{
+	this->slide->disableInteraction();
+}
+
 void Slider::setProgressUpdateCallback(std::function<void(float progress)> callback)
 {
 	this->progressUpdateEvent = callback;
@@ -81,7 +91,7 @@ void Slider::updateSliderPosition()
 	}
 }
 
-void Slider::onDrag(ClickableNode* sprite, MouseEvents::MouseEventArgs* args)
+void Slider::onDrag(MouseEvents::MouseEventArgs* args)
 {
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 

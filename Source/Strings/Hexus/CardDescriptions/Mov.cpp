@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptions_Mov::getStringAr()
 	{
-		return "اختر واحدة من بطاقاتك وانقل قيمتها إلى بطاقة أخرى.";
+		return "انسخ هجوم إحدى البطاقات الخاصة بك إلى أي بطاقة أخرى.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringBg()
 	{
-		return "Изберете една от вашите карти и преместете стойността й в друга карта.";
+		return "Копирайте атаката на една от вашите карти във всяка друга карта.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringCs()
 	{
-		return "Vyberte jednu z vašich karet a přesuňte její hodnotu na jinou kartu.";
+		return "Zkopírujte útok jedné z vašich karet do jiné karty.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringDa()
 	{
-		return "Vælg et af dine kort og flyt dets værdi til et andet kort.";
+		return "Kopier angrebet af et af dine kort til et andet kort.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringDe()
 	{
-		return "Wählen Sie eine Ihrer Karten aus und verschieben Sie deren Wert in eine andere Karte.";
+		return "Kopiere den Angriff einer deiner Karten in eine andere Karte.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringEl()
 	{
-		return "Επιλέξτε μία από τις κάρτες σας και μετακινήστε την αξία της σε άλλη κάρτα.";
+		return "Αντιγράψτε την επίθεση μιας κάρτας σας σε οποιαδήποτε άλλη κάρτα.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringEn()
 	{
-		return "Select one of your cards and move its value into another card.";
+		return "Copy the attack of one of your cards into any other card.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringEs()
 	{
-		return "Seleccione una de sus tarjetas y mueva su valor a otra tarjeta.";
+		return "Copia el ataque de una de tus cartas en cualquier otra carta.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringEs419()
 	{
-		return "Seleccione una de sus tarjetas y mueva su valor a otra tarjeta.";
+		return "Copia el ataque de una de tus cartas en cualquier otra carta.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringFi()
 	{
-		return "Valitse yksi kortistasi ja siirrä sen arvo toiseen korttiin.";
+		return "Kopioi kortin hyökkäys johonkin muuhun korttiin.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringFr()
 	{
-		return "Sélectionnez l'une de vos cartes et déplacez sa valeur dans une autre carte.";
+		return "Copiez l'attaque d'une de vos cartes dans une autre carte.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringHu()
 	{
-		return "Válasszon ki egy kártyát, és helyezze át az értékét egy másik kártyára.";
+		return "Másolja a kártya egyik támadását bármely más kártyára.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringIt()
 	{
-		return "Seleziona una delle tue carte e sposta il suo valore in un'altra carta.";
+		return "Copia l'attacco di una delle tue carte in qualsiasi altra carta.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringJa()
 	{
-		return "あなたのカードのうちの1枚を選択し、そしてその値を他のカードに移動させる。";
+		return "あなたのカードのうちの１枚の攻撃を他のカードにコピーする。";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringKo()
 	{
-		return "카드 중 하나를 선택하고 그 값을 다른 카드로 옮깁니다.";
+		return "카드 중 하나의 공격을 다른 카드에 복사하십시오.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringNl()
 	{
-		return "Selecteer een van je kaarten en verplaats de waarde naar een andere kaart.";
+		return "Kopieer de aanval van een van je kaarten naar een andere kaart.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringNo()
 	{
-		return "Velg ett av kortene dine og flytt verdien til et annet kort.";
+		return "Kopier angrepet av et av kortene dine til et annet kort.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringPl()
 	{
-		return "Wybierz jedną ze swoich kart i przenieś jej wartość na inną kartę.";
+		return "Skopiuj atak jednej ze swoich kart na dowolną inną kartę.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringPt()
 	{
-		return "Selecione uma das suas cartas e mova seu valor para outra carta.";
+		return "Copie o ataque de uma das suas cartas para qualquer outra carta.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringPtBr()
 	{
-		return "Selecione uma das suas cartas e mova seu valor para outra carta.";
+		return "Copie o ataque de uma das suas cartas para qualquer outra carta.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringRo()
 	{
-		return "Selectați una dintre cartelele dvs. și mutați valoarea în altă cartelă.";
+		return "Copiați atacul uneia dintre cartelele dvs. în orice alt card.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringRu()
 	{
-		return "Выберите одну из своих карт и переместите ее значение в другую карту.";
+		return "Скопируйте атаку одной из ваших карт в любую другую карту.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringSv()
 	{
-		return "Välj ett av dina kort och flytta dess värde till ett annat kort.";
+		return "Kopiera attacken av ett av dina kort till något annat kort.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringTh()
 	{
-		return "เลือกหนึ่งในการ์ดของคุณและย้ายมูลค่าไปยังการ์ดอื่น";
+		return "คัดลอกการโจมตีของหนึ่งในการ์ดของคุณลงในการ์ดอื่น ๆ";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringTr()
 	{
-		return "Kartlarınızdan birini seçin ve değerini başka bir karta taşıyın.";
+		return "Kartlarınızdan birinin saldırısını diğer kartlara kopyalayın.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringUk()
 	{
-		return "Виберіть одну зі своїх карт і перемістіть її значення на іншу картку.";
+		return "Скопіюйте атаку однієї зі своїх карт на будь-яку іншу картку.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringVi()
 	{
-		return "Chọn một trong các thẻ của bạn và di chuyển giá trị của nó vào một thẻ khác.";
+		return "Sao chép cuộc tấn công của một trong các thẻ của bạn vào bất kỳ thẻ nào khác.";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringZhCn()
 	{
-		return "选择一张卡片并将其值移动到另一张卡片中。";
+		return "将其中一张卡的攻击复制到任何其他卡中。";
 	}
 
 	std::string Hexus_CardDescriptions_Mov::getStringZhTw()
 	{
-		return "選擇一張卡片並將其值移動到另一張卡片中。";
+		return "將其中一張卡的攻擊複製到任何其他卡中。";
 	}
 }

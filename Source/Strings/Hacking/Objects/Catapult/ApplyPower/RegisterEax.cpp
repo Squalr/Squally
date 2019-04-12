@@ -164,7 +164,7 @@ namespace Strings
 
 	std::string Hacking_Objects_Catapult_ApplyPower_RegisterEax::getStringUk()
 	{
-		return "Вказівник на вільну пам&#39;ять.";
+		return "Вказівник на вільну пам'ять.";
 	}
 
 	std::string Hacking_Objects_Catapult_ApplyPower_RegisterEax::getStringVi()

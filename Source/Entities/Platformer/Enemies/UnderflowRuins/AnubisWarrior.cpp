@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -43,7 +45,7 @@ AnubisWarrior::AnubisWarrior(ValueMap& initProperties) : PlatformerEnemy(initPro
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 292.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	27,
 	17)
@@ -53,7 +55,7 @@ AnubisWarrior::AnubisWarrior(ValueMap& initProperties) : PlatformerEnemy(initPro
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -73,7 +75,7 @@ AnubisWarrior::~AnubisWarrior()
 
 Vec2 AnubisWarrior::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -196.0f);
 }
 
 HexusOpponentData* AnubisWarrior::getHexusOpponentData()
@@ -82,20 +84,93 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 	{
 		AnubisWarrior::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
-			UIResources::Menus_Hexus_HexusFrameUnderflowRuins,
-			0.9f,
+			HexusResources::Menus_HexusFrameUnderflowRuins,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -196.0f),
 			AnubisWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
-			HexusOpponentData::generateDeck(25, 1.000f,
+			0.917f,
+			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
 			}),
-			nullptr
+			StateOverride::create(
+				// Player losses
+				1,
+				// Enemy losses
+				1,
+				// Player's turn
+				true,
+				// Player passed
+				true,
+				// Enemy passed
+				true,
+				// Player deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hand
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				},
+				// Enemy hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+				},
+				// Player decimal cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+				},
+				// Player hex cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+				},
+				// Enemy binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				},
+				// Enemy decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				StateOverride::TutorialMode::NoTutorial
+			)
 		);
 	}
 

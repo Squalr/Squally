@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -43,7 +45,7 @@ Yeti::Yeti(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(380.0f, 572.0f),
-	0.4f,
+	0.5f,
 	Vec2(24.0f, 0.0f),
 	10,
 	10)
@@ -53,7 +55,7 @@ Yeti::Yeti(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -73,7 +75,7 @@ Yeti::~Yeti()
 
 Vec2 Yeti::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-64.0f, -160.0f);
 }
 
 HexusOpponentData* Yeti::getHexusOpponentData()
@@ -82,20 +84,84 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 	{
 		Yeti::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
-			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
-			0.4f,
+			HexusResources::Menus_HexusFrameBalmerPeaks,
+			0.5f,
 			Vec2(24.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-64.0f, -160.0f),
 			Yeti::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(25, 1.000f,
+			0.077f,
+			HexusOpponentData::generateDeck(32, 0.077f,
 			{
 
 			}),
-			nullptr
+			StateOverride::create(
+				// Player losses
+				1,
+				// Enemy losses
+				1,
+				// Player's turn
+				true,
+				// Player passed
+				true,
+				// Enemy passed
+				true,
+				// Player deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hand
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				},
+				// Enemy hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+				},
+				// Player decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+				},
+				// Enemy decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				StateOverride::TutorialMode::NoTutorial
+			)
 		);
 	}
 

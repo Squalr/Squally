@@ -41,3 +41,4 @@ const std::string FontResources::Main_Thai_NotoSansThai_Medium = "UI/Fonts/Main/
 const std::string FontResources::Main_Thai_NotoSansThai_Regular = "UI/Fonts/Main/Thai/NotoSansThai-Regular.ttf";
 const std::string FontResources::Pixel_Standard_Pixel_Zpix = "UI/Fonts/Pixel/Standard/Pixel_Zpix.ttf";
 const std::string FontResources::Texture_AlienText = "UI/Fonts/Texture/AlienText.png";
+const std::string FontResources::Texture_AsciiTable = "UI/Fonts/Texture/AsciiTable.png";

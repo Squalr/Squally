@@ -9,6 +9,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+// TODO: Deprecate this class, it's very easy to just use ClickableNode and add icons
 class ClickableIconNode : public ClickableNode
 {
 public:

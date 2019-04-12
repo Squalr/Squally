@@ -3,6 +3,7 @@
 #include "base/CCEventCustom.h"
 #include "base/CCEventListenerCustom.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackablePreview.h"
@@ -41,6 +42,11 @@ HackableObject::~HackableObject()
 void HackableObject::onEnter()
 {
 	super::onEnter();
+
+	// Move the UI elements to the top-most layer
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
+		this->uiElements
+	));
 
 	this->registerHackables();
 	this->scheduleUpdate();
@@ -84,7 +90,7 @@ void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->hackButton->setClickCallback(CC_CALLBACK_1(HackableObject::onHackableClick, this));
+	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
 
 	this->registerHackables();
 
@@ -128,20 +134,12 @@ void HackableObject::initializePositions()
 {
 	super::initializePositions();
 
-	this->hackButton->setPosition(this->getButtonOffset());
-}
-
-void HackableObject::addChild(Node* child)
-{
-	super::addChild(child);
-
-	// Magic trick to resort-z index
-	GameUtils::changeParent(this->uiElements, this, true);
+	this->uiElements->setPosition(this->getButtonOffset());
 }
 
 void HackableObject::onHackerModeEnable()
 {
-	this->hackButton->setPosition(this->getButtonOffset());
+	this->uiElements->setPosition(this->getButtonOffset());
 
 	if (!(this->dataList.empty() && this->codeList.empty()))
 	{
@@ -163,7 +161,7 @@ Vec2 HackableObject::getButtonOffset()
 	return Vec2::ZERO;
 }
 
-void HackableObject::onHackableClick(ClickableNode* hackButton)
+void HackableObject::onHackableClick()
 {
 	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
 }

@@ -20,7 +20,7 @@
 
 #include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Engine/Events/SpawnEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Dart.h"
 
 using namespace cocos2d;
@@ -130,9 +130,9 @@ void DartGun::shoot(float dt)
 	{
 		Vec2 squallyPos = squally->getPosition();
 
-		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? M_PI : 0.0f);
+		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? float(M_PI) : 0.0f);
 
-		cannon->setRotation(MathUtils::wrappingNormalize(angleBetween, 0.0f, 2.0f * M_PI) * 180.0f / M_PI);
+		cannon->setRotation(MathUtils::wrappingNormalize(angleBetween, 0.0f, 2.0f * float(M_PI)) * 180.0f / float(M_PI));
 
 		this->timeSinceLastShot += dt;
 
@@ -145,14 +145,14 @@ void DartGun::shoot(float dt)
 			{
 				this->timeSinceLastShot = 0.0f;
 
-				Dart* dart = Dart::create(180.0f + angleBetween * 180.0f / M_PI, 256.0f);
+				Dart* dart = Dart::create(angleBetween * 180.0f / float(M_PI), 256.0f);
 
 				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
 
-				SpawnEvents::TriggerObjectSpawn(SpawnEvents::RequestObjectSpawnArgs(
+				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 					this,
 					dart,
-					SpawnEvents::SpawnMethod::Below
+					ObjectEvents::SpawnMethod::Below
 				));
 			}
 		}

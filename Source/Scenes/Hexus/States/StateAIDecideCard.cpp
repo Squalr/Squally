@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/States/HexusAIHelper.h"
 
@@ -17,7 +18,7 @@ StateAIDecideCard* StateAIDecideCard::create()
 	return instance;
 }
 
-StateAIDecideCard::StateAIDecideCard() : StateBase(GameState::StateType::AIDecideCard)
+StateAIDecideCard::StateAIDecideCard() : super(GameState::StateType::AIDecideCard)
 {
 }
 
@@ -27,27 +28,17 @@ StateAIDecideCard::~StateAIDecideCard()
 
 void StateAIDecideCard::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateAIDecideCard::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->selectedHandCard = nullptr;
 
 	switch (gameState->opponentData->strategy)
 	{
-		case HexusOpponentData::Strategy::StrongestCardsFirst:
-		{
-			this->decideCardStrongestFirst(gameState);
-			break;
-		}
-		case HexusOpponentData::Strategy::WeakestCardsFirst:
-		{
-			this->decideCardWeakestFirst(gameState);
-			break;
-		}
 		case HexusOpponentData::Strategy::Random:
 		default:
 		{
@@ -68,17 +59,18 @@ void StateAIDecideCard::onStateEnter(GameState* gameState)
 
 void StateAIDecideCard::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateAIDecideCard::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }
 
 void StateAIDecideCard::decideCardRandom(GameState* gameState)
 {
-	gameState->enemyHand->shuffle();
+	// Intelligently sort the opponent hand cards in order of descending priority (best cards first)
+	HexusAIHelper::applyIntelligentOpponentCardOrdering(gameState);
 
 	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
 	{
@@ -89,9 +81,12 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
+			case CardData::CardType::Special_BONUS_MOVES:
+			case CardData::CardType::Special_GREED:
+			case CardData::CardType::Special_PEEK:
 			{
+				// No AI required, these are worth playing immediately
 				gameState->selectedHandCard = card;
-
 				break;
 			}
 			case CardData::CardType::Special_SHL:
@@ -100,10 +95,14 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_ABSORB:
+			case CardData::CardType::Special_SUDDEN_DEATH:
 			{
-				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);;
+				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
+				CardRow* cardRow = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
 
-				if (std::get<1>(bestPlay) > 0)
+				if (delta > 0)
 				{
 					gameState->cachedBestRowPlay = bestPlay;
 					gameState->selectedHandCard = card;
@@ -121,6 +120,9 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			case CardData::CardType::Special_SUB:
 			{
 				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
+				Card* sourceCard = std::get<0>(bestPlay);
+				Card* targetCard = std::get<1>(bestPlay);
+				int delta = std::get<2>(bestPlay);
 
 				if (std::get<2>(bestPlay) > 0)
 				{
@@ -132,11 +134,63 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 
 				break;
 			}
-			case CardData::CardType::Special_INV:
+			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_ROL:
+			case CardData::CardType::Special_ROR:
 			{
-				 std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestTarget(card, gameState);
+				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestOperationTarget(card, gameState);
+				Card* bestCard = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
 
-				if (std::get<1>(bestPlay) > 0)
+				if (delta > 0)
+				{
+					gameState->cachedBestTargetPlay = bestPlay;
+					gameState->selectedHandCard = card;
+
+					return;
+				}
+
+				break;
+			}
+			case CardData::CardType::Special_RETURN_TO_HAND:
+			{
+				std::tuple<Card*, int> bestPlay;
+
+				if (gameState->playerPassed && ((gameState->enemyLosses >= 1 && gameState->playerLosses >= 1) || (gameState->enemyLosses >= 1 && gameState->enemyHand->rowCards.size() == 1)))
+				{
+					// Rare situation: case where the player passed and the enemy can return the strongest card without reprocussions
+					// Only used either when:
+					// a) Final round
+					// b) This is the last card the opponent has, and they are about to lose the round
+					bestPlay = HexusAIHelper::getStrongestPlayerCard(gameState);
+				}
+				else
+				{
+					// Standard play: Return the most buffed card
+					bestPlay = HexusAIHelper::getStrongestAugmentedPlayerCard(gameState);
+				}
+				
+				Card* bestCard = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
+				
+				if (delta > 0)
+				{
+					gameState->cachedBestTargetPlay = bestPlay;
+					gameState->selectedHandCard = card;
+
+					return;
+				}
+				
+				break;
+			}
+			case CardData::CardType::Special_KILL:
+			case CardData::CardType::Special_STEAL:
+			{
+				std::tuple<Card*, int> bestPlay = HexusAIHelper::getStrongestPlayerCard(gameState);
+				Card* bestCard = std::get<0>(bestPlay);
+				int delta = std::get<1>(bestPlay);
+
+				if (delta > 0 || (bestCard != nullptr && bestCard->cardData->cardKey == CardKeys::Hex0))
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
 					gameState->selectedHandCard = card;
@@ -151,217 +205,5 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 				break;
 			}
 		}
-	}
-}
-
-void StateAIDecideCard::decideCardStrongestFirst(GameState* gameState)
-{
-	std::function<void()> chooseBestCallback = nullptr;
-	int currentBestDiff = 0;
-
-	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
-	{
-		Card* card = *it;
-
-		switch (card->cardData->cardType)
-		{
-			case CardData::CardType::Binary:
-			case CardData::CardType::Decimal:
-			case CardData::CardType::Hexidecimal:
-			{
-				int diff = card->getAttack();
-
-				if (diff < currentBestDiff)
-				{
-					chooseBestCallback = [gameState, card]()
-					{
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_SHL:
-			case CardData::CardType::Special_SHR:
-			case CardData::CardType::Special_FLIP1:
-			case CardData::CardType::Special_FLIP2:
-			case CardData::CardType::Special_FLIP3:
-			case CardData::CardType::Special_FLIP4:
-			{
-				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
-				int diff = std::get<1>(bestPlay);
-
-				if (diff > currentBestDiff)
-				{
-					chooseBestCallback = [gameState, card, bestPlay]()
-					{
-						gameState->cachedBestRowPlay = bestPlay;
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_MOV:
-			case CardData::CardType::Special_AND:
-			case CardData::CardType::Special_OR:
-			case CardData::CardType::Special_XOR:
-			case CardData::CardType::Special_ADD:
-			case CardData::CardType::Special_SUB:
-			{
-				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
-				int diff = std::get<2>(bestPlay);
-
-				if (diff > currentBestDiff)
-				{
-					chooseBestCallback = [gameState, card, bestPlay]()
-					{
-						gameState->cachedBestSourceTargetPlay = bestPlay;
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_INV:
-			{
-				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestTarget(card, gameState);
-				int diff = std::get<1>(bestPlay);
-
-				if (diff > currentBestDiff)
-				{
-					chooseBestCallback = [gameState, card, bestPlay]()
-					{
-						gameState->cachedBestTargetPlay = bestPlay;
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}
-
-	if (currentBestDiff > 0 && chooseBestCallback != nullptr)
-	{
-		chooseBestCallback();
-	}
-}
-
-void StateAIDecideCard::decideCardWeakestFirst(GameState* gameState)
-{
-	std::function<void()> chooseBestCallback = nullptr;
-	int currentBestDiff = std::numeric_limits<int>::max();
-
-	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
-	{
-		Card* card = *it;
-
-		switch (card->cardData->cardType)
-		{
-			case CardData::CardType::Binary:
-			case CardData::CardType::Decimal:
-			case CardData::CardType::Hexidecimal:
-			{
-				int diff = card->getAttack();
-
-				if (diff < currentBestDiff && diff > 0)
-				{
-					chooseBestCallback = [gameState, card]()
-					{
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_SHL:
-			case CardData::CardType::Special_SHR:
-			case CardData::CardType::Special_FLIP1:
-			case CardData::CardType::Special_FLIP2:
-			case CardData::CardType::Special_FLIP3:
-			case CardData::CardType::Special_FLIP4:
-			{
-				std::tuple<CardRow*, int> bestPlay = HexusAIHelper::getBestRow(card, gameState);
-				int diff = std::get<1>(bestPlay);
-
-				if (diff > currentBestDiff && diff > 0)
-				{
-					chooseBestCallback = [gameState, card, bestPlay]()
-					{
-						gameState->cachedBestRowPlay = bestPlay;
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_MOV:
-			case CardData::CardType::Special_AND:
-			case CardData::CardType::Special_OR:
-			case CardData::CardType::Special_XOR:
-			case CardData::CardType::Special_ADD:
-			case CardData::CardType::Special_SUB:
-			{
-				std::tuple<Card*, Card*, int> bestPlay = HexusAIHelper::getBestSourceAndTarget(card, gameState);
-				int diff = std::get<2>(bestPlay);
-
-				if (diff > currentBestDiff && diff > 0)
-				{
-					chooseBestCallback = [gameState, card, bestPlay]()
-					{
-						gameState->cachedBestSourceTargetPlay = bestPlay;
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			case CardData::CardType::Special_INV:
-			{
-				std::tuple<Card*, int> bestPlay = HexusAIHelper::getBestTarget(card, gameState);
-				int diff = std::get<1>(bestPlay);
-
-				if (diff > currentBestDiff && diff > 0)
-				{
-					chooseBestCallback = [gameState, card, bestPlay]()
-					{
-						gameState->cachedBestTargetPlay = bestPlay;
-						gameState->selectedHandCard = card;
-					};
-
-					currentBestDiff = diff;
-				}
-
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}
-
-	if (currentBestDiff > 0 && chooseBestCallback != nullptr)
-	{
-		chooseBestCallback();
 	}
 }

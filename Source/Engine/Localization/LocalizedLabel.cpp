@@ -44,6 +44,9 @@ LocalizedLabel::LocalizedLabel(
 
 	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
+	this->setDimensions(dimensions.width, dimensions.height);
+	this->setAlignment(hAlignment, vAlignment);
+
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
@@ -60,7 +63,7 @@ void LocalizedLabel::onEnter()
 
 	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
 	this->updateTranslationEditHitbox();
-	this->translationButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->translationButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
 	});
@@ -206,7 +209,7 @@ void LocalizedLabel::toggleAllowTranslationEdit(bool allowTranslationEdit)
 void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 {
 	// Save some state we wish to keep
-	int outlineSize = this->getOutlineSize();
+	int outlineSize = int(this->getOutlineSize());
 	Color4B outlineColor = Color4B(_effectColorF);
 
 	this->initWithTTF(

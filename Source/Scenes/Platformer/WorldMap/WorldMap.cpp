@@ -144,6 +144,17 @@ void WorldMap::onEnter()
 
 	Vec2 startPosition = this->voidCrystalNode->getPosition();
 
+	this->lightning1->playAnimations();
+	this->lightning2->playAnimations();
+	this->lightning3->playAnimations();
+	this->lightning4->playAnimations();
+	this->lightning5->playAnimations();
+	this->lightning6->playAnimations();
+	this->lightning7->playAnimations();
+	this->lightning8->playAnimations();
+	this->lightning9->playAnimations();
+	this->lightning10->playAnimations();
+
 	this->voidCrystalNode->runAction(RepeatForever::create(Sequence::create(
 		EaseSineInOut::create(MoveTo::create(4.0f, startPosition + Vec2(0.0f, -32.0f))),
 		EaseSineInOut::create(MoveTo::create(4.0f, startPosition)),

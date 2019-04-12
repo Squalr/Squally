@@ -37,7 +37,7 @@ PlayerFirstBanner::~PlayerFirstBanner()
 
 void PlayerFirstBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,7 +52,7 @@ void PlayerFirstBanner::onBeforeStateChange(GameState* gameState)
 
 void PlayerFirstBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	// First mover banner does not apply to games with initial states
 	if (gameState->opponentData->stateOverride != nullptr)

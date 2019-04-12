@@ -40,12 +40,8 @@ StagingHelperText::StagingHelperText()
 	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelV2Button, UIResources::Menus_Buttons_CancelV2ButtonHover);
 	this->cancelButton->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->helpButton = ClickableNode::create(UIResources::Menus_Buttons_GraphV2Button, UIResources::Menus_Buttons_GraphV2ButtonHover);
-	this->helpButton->setAnchorPoint(Vec2(0.0f, 1.0f));
-
 	this->addChild(this->selectionLabel);
 	this->addChild(this->cancelButton);
-	this->addChild(this->helpButton);
 }
 
 StagingHelperText::~StagingHelperText()
@@ -54,47 +50,46 @@ StagingHelperText::~StagingHelperText()
 
 void StagingHelperText::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->selectionLabel->setOpacity(0);
 	this->cancelButton->setOpacity(0);
-	this->helpButton->setOpacity(0);
 }
 
 void StagingHelperText::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cancelButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
-	this->helpButton->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::statusLabelWidth / 2.0f + this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 	this->selectionLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - Config::statusLabelWidth / 2.0f - this->cancelButton->getContentSize().width / 2.0f, visibleSize.height / 2.0f + Config::statusLabelOffsetY);
 }
 
 void StagingHelperText::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void StagingHelperText::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
+
+	// Disabled
+	return;
 
 	switch (gameState->stateType)
 	{
 		case GameState::StateType::SelectionStaged:
 		{
 			this->updateSelectionStatus(gameState);
-			this->cancelButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onSelectionCancel, this, gameState));
-			this->helpButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onHelpClick, this, gameState));
+			this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(StagingHelperText::onSelectionCancel, this, gameState));
 			break;
 		}
 		case GameState::StateType::CombineStaged:
 		{
 			this->updateCombineStatus(gameState);
-			this->cancelButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onCombineCancel, this, gameState));
-			this->helpButton->setClickCallback(CC_CALLBACK_1(StagingHelperText::onHelpClick, this, gameState));
+			this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(StagingHelperText::onCombineCancel, this, gameState));
 			break;
 		}
 		default:
@@ -105,7 +100,7 @@ void StagingHelperText::onAnyStateChange(GameState* gameState)
 	}
 }
 
-void StagingHelperText::onSelectionCancel(ClickableNode* menuSprite, GameState* gameState)
+void StagingHelperText::onSelectionCancel(GameState* gameState)
 {
 	if (gameState->selectedHandCard != nullptr)
 	{
@@ -144,9 +139,18 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_XOR:
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
-			case CardData::CardType::Special_INV:
+			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_ROL:
+			case CardData::CardType::Special_ROR:
 			{
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseSourceCard::create());
+				break;
+			}
+			case CardData::CardType::Special_KILL:
+			case CardData::CardType::Special_RETURN_TO_HAND:
+			case CardData::CardType::Special_STEAL:
+			{
+				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseTargetCard::create());
 				break;
 			}
 			case CardData::CardType::Binary:
@@ -158,9 +162,19 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_FLIP2:
 			case CardData::CardType::Special_FLIP3:
 			case CardData::CardType::Special_FLIP4:
+			case CardData::CardType::Special_ABSORB:
 			default:
 			{
 				this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
+				break;
+			}
+			case CardData::CardType::Special_SUDDEN_DEATH:
+			case CardData::CardType::Special_GREED:
+			case CardData::CardType::Special_BONUS_MOVES:
+			case CardData::CardType::Special_PEEK:
+			{
+				// TODO: This is new -- these should just be a confirm/deny useage message since they have no targets
+				// this->selectionLabel->setLocalizedString(Strings::Hexus_Actions_ChooseRow::create());
 				break;
 			}
 		}
@@ -176,16 +190,13 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 void StagingHelperText::clearSelectionStatus()
 {
 	this->selectionLabel->setLocalizedString(Strings::Generics_Empty::create());
-	this->cancelButton->setClickCallback(nullptr);
-	this->helpButton->setClickCallback(nullptr);
+	this->cancelButton->setMouseClickCallback(nullptr);
 	this->selectionLabel->runAction(FadeTo::create(0.25f, 0));
 	this->cancelButton->runAction(FadeTo::create(0.25f, 0));
 	this->cancelButton->disableInteraction();
-	this->helpButton->runAction(FadeTo::create(0.25f, 0));
-	this->helpButton->disableInteraction();
 }
 
-void StagingHelperText::onCombineCancel(ClickableNode* menuSprite, GameState* gameState)
+void StagingHelperText::onCombineCancel(GameState* gameState)
 {
 	if (gameState->selectedSourceCard != nullptr)
 	{
@@ -202,80 +213,4 @@ void StagingHelperText::onCombineCancel(ClickableNode* menuSprite, GameState* ga
 	}
 
 	GameState::updateState(gameState, GameState::StateType::Neutral);
-}
-
-void StagingHelperText::onHelpClick(ClickableNode* menuSprite, GameState* gameState)
-{
-	// TODO: Show help menu for the type
-	switch (gameState->selectedHandCard->cardData->cardType)
-	{
-		case CardData::CardType::Binary:
-		{
-			break;
-		}
-		case CardData::CardType::Decimal:
-		{
-			break;
-		}
-		case CardData::CardType::Hexidecimal:
-		{
-			break;
-		}
-		case CardData::CardType::Special_MOV:
-		{
-			break;
-		}
-		case CardData::CardType::Special_AND:
-		{
-			break;
-		}
-		case CardData::CardType::Special_OR:
-		{
-			break;
-		}
-		case CardData::CardType::Special_XOR:
-		{
-			break;
-		}
-		case CardData::CardType::Special_ADD:
-		{
-			break;
-		}
-		case CardData::CardType::Special_SUB:
-		{
-			break;
-		}
-		case CardData::CardType::Special_SHL:
-		{
-			break;
-		}
-		case CardData::CardType::Special_SHR:
-		{
-			break;
-		}
-		case CardData::CardType::Special_FLIP1:
-		{
-			break;
-		}
-		case CardData::CardType::Special_FLIP2:
-		{
-			break;
-		}
-		case CardData::CardType::Special_FLIP3:
-		{
-			break;
-		}
-		case CardData::CardType::Special_FLIP4:
-		{
-			break;
-		}
-		case CardData::CardType::Special_INV:
-		{
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }

@@ -37,7 +37,7 @@ OpponentTurnBanner::~OpponentTurnBanner()
 
 void OpponentTurnBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,7 +52,7 @@ void OpponentTurnBanner::onBeforeStateChange(GameState* gameState)
 
 void OpponentTurnBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	// Only show after the first turn -- first turn is reserved for OpponentFirstBanner
 	if (!gameState->isRepeatingSameTurn && gameState->stateType == GameState::StateType::OpponentTurnStart && (gameState->roundNumber >=1 || gameState->turnNumber >= 1))

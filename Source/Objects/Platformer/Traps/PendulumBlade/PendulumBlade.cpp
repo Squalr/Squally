@@ -94,7 +94,9 @@ void PendulumBlade::update(float dt)
 
 Vec2 PendulumBlade::getButtonOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	float angle = float(M_PI) * this->bladeChain->getRotation() / 180.0f;
+
+	return Vec2(0.0f, this->chainHeight / 2.0f) - Vec2(std::sin(angle) * this->chainHeight, std::cos(angle) * this->chainHeight);
 }
 
 void PendulumBlade::registerHackables()

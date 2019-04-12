@@ -18,10 +18,15 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Back.h"
-#include "Strings/Menus/ComingSoon.h"
+#include "Strings/Cipher/Cipher.h"
 #include "Strings/Hexus/Hexus.h"
 #include "Strings/Hexus/HexusPuzzles.h"
+#include "Strings/Menus/Back.h"
+#include "Strings/Menus/ComingSoon.h"
+#include "Strings/PointerTrace/PointerTrace.h"
+#include "Strings/Stacks/Stacks.h"
+#include "Strings/SpaceForce/SpaceForce.h"
+#include "Strings/TowerDefense/TowerDefense.h"
 
 using namespace cocos2d;
 
@@ -67,78 +72,28 @@ MinigamesMenu::MinigamesMenu()
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	LocalizedLabel*	hexusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Hexus::create());
-	LocalizedLabel*	hexusLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Hexus::create());
+	this->hexusButton = this->createButton(Strings::Hexus_Hexus::create(), UIResources::Menus_Icons_Banner);
+	this->hexusPuzzlesButton = this->createButton(Strings::Hexus_HexusPuzzles::create(), UIResources::Menus_Icons_Gauntlet);
+	this->cipherButton = this->createButton(Strings::Cipher_Cipher::create(), UIResources::Menus_Icons_KeyGold);
+	this->pointerTraceButton = this->createButton(Strings::PointerTrace_PointerTrace::create(), UIResources::Menus_Icons_SpellCast);
+	this->stacksButton = this->createButton(Strings::Stacks_Stacks::create(), UIResources::Menus_Icons_Scale);
+	this->towerDefenseButton = this->createButton(Strings::TowerDefense_TowerDefense::create(), UIResources::Menus_Icons_Meteor);
+	this->spaceForceButton = this->createButton(Strings::SpaceForce_SpaceForce::create(), UIResources::Menus_Icons_Stars);
 
-	hexusLabel->setColor(textColor);
-	hexusLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	hexusLabel->enableGlow(shadowColor);
-
-	hexusLabelHover->setColor(highlightColor);
-	hexusLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	hexusLabelHover->enableGlow(glowColor);
-
-	this->hexusButton = ClickableTextNode::create(
-		hexusLabel,
-		hexusLabelHover,
-		UIResources::Menus_MinigamesMenu_Banner,
-		UIResources::Menus_MinigamesMenu_BannerHover);
-
-	this->hexusButton->setTextOffset(labelOffset);
-
-	Sprite* hexusIcon = Sprite::create(UIResources::Menus_Icons_Banner);
-
-	hexusIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
-	hexusIcon->setPosition(Vec2(-this->hexusButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
-
-	this->hexusButton->addChild(hexusIcon);
-	this->hexusButton->setClickSound(SoundResources::Menus_Simple_Button);
-
-	LocalizedLabel*	hexusPuzzlesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_HexusPuzzles::create());
-	LocalizedLabel*	hexusPuzzlesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_HexusPuzzles::create());
-
-	hexusPuzzlesLabel->setColor(textColor);
-	hexusPuzzlesLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	hexusPuzzlesLabel->enableGlow(shadowColor);
-
-	hexusPuzzlesLabelHover->setColor(highlightColor);
-	hexusPuzzlesLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	hexusPuzzlesLabelHover->enableGlow(glowColor);
-
-	this->hexusPuzzlesButton = ClickableTextNode::create(
-		hexusPuzzlesLabel,
-		hexusPuzzlesLabelHover,
-		UIResources::Menus_MinigamesMenu_Banner,
-		UIResources::Menus_MinigamesMenu_BannerHover);
-
-	this->hexusPuzzlesButton->setTextOffset(labelOffset);
-
-	// TODO: Temp for demo
-	this->hexusPuzzlesButton->disableInteraction(128);
-
-	Sprite* hexusPuzzlesIcon = Sprite::create(UIResources::Menus_Icons_Gauntlet);
-
-	hexusPuzzlesIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
-	hexusPuzzlesIcon->setPosition(Vec2(-this->hexusPuzzlesButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
-
-	this->hexusPuzzlesButton->addChild(hexusPuzzlesIcon);
-
-	this->comingSoonButton1 = this->createComingSoonButton();
-	this->comingSoonButton2 = this->createComingSoonButton();
-	this->comingSoonButton3 = this->createComingSoonButton();
-	this->comingSoonButton4 = this->createComingSoonButton();
-	this->comingSoonButton5 = this->createComingSoonButton();
-	this->comingSoonButton6 = this->createComingSoonButton();
+	this->cipherButton->disableInteraction(128);
+	this->pointerTraceButton->disableInteraction(128);
+	this->stacksButton->disableInteraction(128);
+	this->towerDefenseButton->disableInteraction(128);
+	this->spaceForceButton->disableInteraction(128);
 
 	this->addChild(this->backgroundNode);
 	this->scrollPane->addChild(this->hexusButton);
 	this->scrollPane->addChild(this->hexusPuzzlesButton);
-	this->scrollPane->addChild(this->comingSoonButton1);
-	this->scrollPane->addChild(this->comingSoonButton2);
-	this->scrollPane->addChild(this->comingSoonButton3);
-	this->scrollPane->addChild(this->comingSoonButton4);
-	this->scrollPane->addChild(this->comingSoonButton5);
-	this->scrollPane->addChild(this->comingSoonButton6);
+	this->scrollPane->addChild(this->cipherButton);
+	this->scrollPane->addChild(this->pointerTraceButton);
+	this->scrollPane->addChild(this->stacksButton);
+	this->scrollPane->addChild(this->towerDefenseButton);
+	this->scrollPane->addChild(this->spaceForceButton);
 	this->addChild(this->scrollPane);
 	this->addChild(this->backButton);
 }
@@ -162,6 +117,24 @@ void MinigamesMenu::onEnter()
 	this->scheduleUpdate();
 }
 
+void MinigamesMenu::initializePositions()
+{
+	super::initializePositions();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+
+	this->hexusButton->setPosition(Vec2(0.0f, -192.0f * 0 - 128.0f));
+	this->hexusPuzzlesButton->setPosition(Vec2(0.0f, -192.0f * 1 - 128.0f));
+	this->cipherButton->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
+	this->pointerTraceButton->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
+	this->stacksButton->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
+	this->towerDefenseButton->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
+	this->spaceForceButton->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
+	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
+}
+
 void MinigamesMenu::initializeListeners()
 {
 	super::initializeListeners();
@@ -174,30 +147,17 @@ void MinigamesMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(MinigamesMenu::onKeyPressed, this);
-	this->hexusButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusClick, this));
-	this->hexusPuzzlesButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onHexusPuzzlesClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_1(MinigamesMenu::onBackClick, this));
+
+	this->hexusButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
+	this->hexusPuzzlesButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzlesChapterSelect(); });
+	this->cipherButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->pointerTraceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->stacksButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->towerDefenseButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->spaceForceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherPuzzleSelect(); });
+	this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
 
 	this->addEventListener(keyboardListener);
-}
-
-void MinigamesMenu::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-
-	this->hexusButton->setPosition(Vec2(0.0f, -192.0f * 0 - 128.0f));
-	this->hexusPuzzlesButton->setPosition(Vec2(0.0f, -192.0f * 1 - 128.0f));
-	this->comingSoonButton1->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
-	this->comingSoonButton2->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
-	this->comingSoonButton3->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
-	this->comingSoonButton4->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
-	this->comingSoonButton5->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
-	this->comingSoonButton6->setPosition(Vec2(0.0f, -192.0f * 7 - 128.0f));
-	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
 
 void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
@@ -222,22 +182,7 @@ void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MinigamesMenu::onBackClick(ClickableNode* menuSprite)
-{
-	NavigationEvents::navigateBack();
-}
-
-void MinigamesMenu::onHexusClick(ClickableNode* menuSprite)
-{
-	NavigationEvents::navigateHexusChapterSelect();
-}
-
-void MinigamesMenu::onHexusPuzzlesClick(ClickableNode* menuSprite)
-{
-	NavigationEvents::navigateHexusPuzzles();
-}
-
-ClickableTextNode* MinigamesMenu::createComingSoonButton()
+ClickableTextNode* MinigamesMenu::createButton(LocalizedString* text, std::string iconResource)
 {
 	const Size shadowSize = Size(-2.0f, -2.0f);
 	const int shadowBlur = 2;
@@ -248,8 +193,8 @@ ClickableTextNode* MinigamesMenu::createComingSoonButton()
 	const Color4B glowColor = Color4B::ORANGE;
 	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
-	LocalizedLabel*	comingSoonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_ComingSoon::create());
-	LocalizedLabel*	comingSoonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_ComingSoon::create());
+	LocalizedLabel*	comingSoonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, text);
+	LocalizedLabel*	comingSoonLabelHover = comingSoonLabel->clone();
 
 	comingSoonLabel->setColor(textColor);
 	comingSoonLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -267,13 +212,21 @@ ClickableTextNode* MinigamesMenu::createComingSoonButton()
 
 	comingSoonButton->setTextOffset(labelOffset);
 
-	Sprite* lockIcon = Sprite::create(UIResources::Menus_Icons_Lock);
+	Sprite* icon = Sprite::create(iconResource);
 
-	comingSoonButton->addChild(lockIcon);
+	comingSoonButton->addChild(icon);
+
+	icon->setAnchorPoint(Vec2(0.0f, 0.5f));
+	icon->setPosition(Vec2(-comingSoonButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
+
+	return comingSoonButton;
+}
+
+ClickableTextNode* MinigamesMenu::createComingSoonButton()
+{
+	ClickableTextNode* comingSoonButton = this->createButton(Strings::Menus_ComingSoon::create(), UIResources::Menus_Icons_Lock);
+	
 	comingSoonButton->disableInteraction(128);
-
-	lockIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
-	lockIcon->setPosition(Vec2(-comingSoonButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
 
 	return comingSoonButton;
 }

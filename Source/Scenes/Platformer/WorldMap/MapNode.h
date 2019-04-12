@@ -23,7 +23,7 @@ private:
 	typedef SmartNode super;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onNodeClick(ClickableNode* menuSprite);
+	void onNodeClick();
 
 	bool locked;
 	ClickableNode* mapSprite;

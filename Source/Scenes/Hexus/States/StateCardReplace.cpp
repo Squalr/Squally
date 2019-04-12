@@ -27,10 +27,10 @@ StateCardReplace* StateCardReplace::create()
 	return instance;
 }
 
-StateCardReplace::StateCardReplace() : StateBase(GameState::StateType::CardReplace)
+StateCardReplace::StateCardReplace() : super(GameState::StateType::CardReplace)
 {
 	LocalizedLabel* doneButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
-	LocalizedLabel* doneButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Done::create());
+	LocalizedLabel* doneButtonLabelHover = doneButtonLabel->clone();
 	
 	this->removedCards = std::vector<Card*>();
 	doneButtonLabel->enableOutline(Color4B::BLACK, 2);
@@ -52,20 +52,20 @@ StateCardReplace::~StateCardReplace()
 
 void StateCardReplace::onEnter()
 {
-	StateBase::onEnter();
+	super::onEnter();
 
 	this->doneButton->setOpacity(0);
 }
 
 void StateCardReplace::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 200.0f);
+	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 24.0f);
 }
 
-void StateCardReplace::onEndReplaceCards(ClickableNode* menuSprite, GameState* gameState)
+void StateCardReplace::onEndReplaceCards(GameState* gameState)
 {
 	gameState->cardReplaceCount = 0;
 
@@ -74,7 +74,7 @@ void StateCardReplace::onEndReplaceCards(ClickableNode* menuSprite, GameState* g
 
 void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	if (gameState->roundNumber == 0)
 	{
@@ -88,7 +88,7 @@ void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 
 void StateCardReplace::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	if (gameState->cardReplaceCount > 0)
 	{
@@ -99,7 +99,7 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 
 		Size visibleSize = Director::getInstance()->getVisibleSize();
 		GameUtils::changeParent(gameState->playerHand, this, true);
-		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f)));
+		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 192.0f)));
 		gameState->playerHand->setCardScale(0.6f, 0.25f);
 		gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
 		gameState->playerHand->enableRowCardInteraction();
@@ -122,7 +122,7 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 
 void StateCardReplace::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 
 	if (gameState->cardReplaceCount > 0)
 	{
@@ -146,7 +146,7 @@ void StateCardReplace::onStateReload(GameState* gameState)
 
 void StateCardReplace::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 
 	// Restore hand to proper position
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -166,7 +166,7 @@ void StateCardReplace::onStateExit(GameState* gameState)
 void StateCardReplace::initializeCallbacks(GameState* gameState)
 {
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateCardReplace::replaceCard, this, gameState));
-	this->doneButton->setClickCallback(CC_CALLBACK_1(StateCardReplace::onEndReplaceCards, this, gameState));
+	this->doneButton->setMouseClickCallback(CC_CALLBACK_0(StateCardReplace::onEndReplaceCards, this, gameState));
 }
 
 void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
@@ -186,7 +186,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 		// Remove all cards of the same type of the target card
 		gameState->playerDeck->removeCardsWhere([=](Card* card)
 		{
-			if (card->cardData->cardName == cardToReplace->cardData->cardName)
+			if (card->cardData->cardKey == cardToReplace->cardData->cardKey)
 			{
 				this->removedCards.push_back(card);
 				return true;

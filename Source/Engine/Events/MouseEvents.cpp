@@ -5,20 +5,20 @@
 
 using namespace cocos2d;
 
-const std::string MouseEvents::MouseMoveEvent = "EVENT_MOUSE_MOVE";
-const std::string MouseEvents::MouseRefreshEvent = "EVENT_MOUSE_REFRESH";
-const std::string MouseEvents::MouseDownEvent = "EVENT_MOUSE_DOWN";
-const std::string MouseEvents::MouseUpEvent = "EVENT_MOUSE_UP";
-const std::string MouseEvents::MouseScrollEvent = "EVENT_MOUSE_SCROLL";
-const std::string MouseEvents::ClickableMouseOverEvent = "EVENT_CLICKABLE_MOUSE_OVER";
+const std::string MouseEvents::EventMouseMove = "EVENT_MOUSE_MOVE";
+const std::string MouseEvents::EventMouseRefresh = "EVENT_MOUSE_REFRESH";
+const std::string MouseEvents::EventMouseDown = "EVENT_MOUSE_DOWN";
+const std::string MouseEvents::EventMouseUp = "EVENT_MOUSE_UP";
+const std::string MouseEvents::EventMouseScroll = "EVENT_MOUSE_SCROLL";
+const std::string MouseEvents::EventClickableMouseOver = "EVENT_CLICKABLE_MOUSE_OVER";
 const std::string MouseEvents::ClickableMouseOutEvent = "EVENT_CLICKABLE_MOUSE_OUT";
-const std::string MouseEvents::MouseDragEvent = "EVENT_MOUSE_DRAG";
-const std::string MouseEvents::MouseStateUpdateEvent = "EVENT_MOUSE_STATE_UPDATE";
+const std::string MouseEvents::EventMouseDrag = "EVENT_MOUSE_DRAG";
+const std::string MouseEvents::EventMouseStateUpdate = "EVENT_MOUSE_STATE_UPDATE";
 
 void MouseEvents::TriggerMouseMove(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseMoveEvent,
+		MouseEvents::EventMouseMove,
 		&args
 	);
 }
@@ -26,7 +26,7 @@ void MouseEvents::TriggerMouseMove(MouseEventArgs args)
 void MouseEvents::TriggerMouseRefresh(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseRefreshEvent,
+		MouseEvents::EventMouseRefresh,
 		&args
 	);
 }
@@ -34,7 +34,7 @@ void MouseEvents::TriggerMouseRefresh(MouseEventArgs args)
 void MouseEvents::TriggerMouseDown(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseDownEvent,
+		MouseEvents::EventMouseDown,
 		&args
 	);
 }
@@ -42,7 +42,7 @@ void MouseEvents::TriggerMouseDown(MouseEventArgs args)
 void MouseEvents::TriggerMouseUp(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseUpEvent,
+		MouseEvents::EventMouseUp,
 		&args
 	);
 }
@@ -50,7 +50,7 @@ void MouseEvents::TriggerMouseUp(MouseEventArgs args)
 void MouseEvents::TriggerMouseScroll(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseScrollEvent,
+		MouseEvents::EventMouseScroll,
 		&args
 	);
 }
@@ -58,15 +58,15 @@ void MouseEvents::TriggerMouseScroll(MouseEventArgs args)
 void MouseEvents::TriggerStateChange(MouseEventArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseStateUpdateEvent,
+		MouseEvents::EventMouseStateUpdate,
 		&args
 	);
 }
 
-void MouseEvents::TriggerClickableMouseOverEvent()
+void MouseEvents::TriggerEventClickableMouseOver()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::ClickableMouseOverEvent
+		MouseEvents::EventClickableMouseOver
 	);
 }
 
@@ -80,6 +80,6 @@ void MouseEvents::TriggerClickableMouseOutEvent()
 void MouseEvents::TriggerDragEvent()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		MouseEvents::MouseDragEvent
+		MouseEvents::EventMouseDrag
 	);
 }

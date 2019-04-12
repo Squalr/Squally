@@ -40,6 +40,8 @@ public:
 
 	static int generateReward(float deckStrength);
 	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
+	void setIsLastInChapter();
+	bool getIsLastInChapter();
 
 	std::string backgroundResourceFile;
 	std::string animationResourceFile;
@@ -65,4 +67,6 @@ private:
 	static CardData* getBinaryCardForAttack(int attack);
 	static CardData* getDecimalCardForAttack(int attack);
 	static CardData* getHexCardForAttack(int attack);
+
+	bool isLastInChapter;
 };

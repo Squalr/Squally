@@ -26,12 +26,13 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StatePass();
 	~StatePass();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onPassClick(ClickableNode* menuSprite, GameState* gameState);
+	void onPassClick(GameState* gameState);
 	void hideOpponenentPassSprites();
 	void hideAndDisableAllButtons();
 	void enablePassButtonInteraction(GameState* gameState);

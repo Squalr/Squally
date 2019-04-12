@@ -99,7 +99,7 @@ namespace Strings
 
 	std::string Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::getStringIt()
 	{
-		return "L&#39;output in cui viene restituita la densità.";
+		return "L'output in cui viene restituita la densità.";
 	}
 
 	std::string Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::getStringJa()

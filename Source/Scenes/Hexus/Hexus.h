@@ -9,13 +9,15 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
+
 class StateAIDecideCard;
 class StateAIDecideCardReplace;
 class StateAIDecidePass;
 class StateAIDecideTarget;
 class StateCardReplace;
 class StateCoinFlip;
-class StateCombineStaged;
+class StateSourceCardStaged;
 class StateDraw;
 class StateDrawInitial;
 class StateGameEnd;
@@ -25,13 +27,13 @@ class StateNeutral;
 class StateOpponentTurnStart;
 class StatePlayCard;
 class StatePass;
+class StatePeekCards;
 class StatePlayerTurnStart;
 class StateRoundEnd;
 class StateRoundStart;
-class StateSelectionStaged;
+class StateHandCardStaged;
 class StateTurnEnd;
 class StateTutorial;
-
 
 class CardReplaceBanner;
 class OpponentFirstBanner;
@@ -68,7 +70,8 @@ class TutorialEIntroSequence;
 class TutorialFIntroSequence;
 
 class Avatars;
-class CardPreview;
+class CardPreviewComponent;
+class AssemblyHelpText;
 class StagingHelperText;
 class GameState;
 class HexusOpponentData;
@@ -82,6 +85,7 @@ public:
 	static void registerGlobalScene();
 
 private:
+	typedef GlobalScene super;
 	Hexus();
 	~Hexus();
 
@@ -101,16 +105,18 @@ private:
 
 	// Components
 	Avatars* avatars;
-	CardPreview* cardPreview;
+	CardPreviewComponent* cardPreviewComponent;
 	StagingHelperText* stagingHelperText;
+	AssemblyHelpText* assemblyHelpText;
 
 	StateAIDecideCard* stateAIDecideCard;
 	StateAIDecideCardReplace* stateAIDecideCardReplace;
 	StateAIDecidePass* stateAIDecidePass;
 	StateAIDecideTarget* stateAIDecideTarget;
 	StateCardReplace* stateCardReplace;
+	StatePeekCards* statePeekCards;
 	StateCoinFlip* stateCoinFlip;
-	StateCombineStaged* stateCombineStaged;
+	StateSourceCardStaged* stateSourceCardStaged;
 	StateDraw* stateDraw;
 	StateDrawInitial* stateDrawInitial;
 	StateGameEnd* stateGameEnd;
@@ -123,7 +129,7 @@ private:
 	StatePlayerTurnStart* statePlayerTurnStart;
 	StateRoundEnd* stateRoundEnd;
 	StateRoundStart* stateRoundStart;
-	StateSelectionStaged* stateSelectionStaged;
+	StateHandCardStaged* stateHandCardStaged;
 	StateTurnEnd* stateTurnEnd;
 	StateTutorial* stateTutorial;
 
@@ -144,6 +150,7 @@ private:
 	DefeatBanner* defeatBanner;
 	DrawBanner* drawBanner;
 
+	ClickableNode* boardSelection;
 	DeckCardCountDisplay* deckCardCountDisplay;
 	HandCardCountDisplay* handCardCountDisplay;
 	RemainingCardDisplay* remainingCardDisplay;
@@ -161,6 +168,8 @@ private:
 	TutorialDIntroSequence* tutorialDIntroSequence;
 	TutorialEIntroSequence* tutorialEIntroSequence;
 	TutorialFIntroSequence* tutorialFIntroSequence;
+
+	cocos2d::Node* relocateLayer;
 
 	cocos2d::LayerColor* menuBackDrop;
 	PauseMenu* pauseMenu;

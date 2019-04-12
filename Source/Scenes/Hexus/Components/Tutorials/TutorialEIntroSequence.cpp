@@ -29,7 +29,7 @@ TutorialEIntroSequence* TutorialEIntroSequence::create()
 	return instance;
 }
 
-TutorialEIntroSequence::TutorialEIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialE, GameState::StateType::Neutral)
+TutorialEIntroSequence::TutorialEIntroSequence() : super(StateOverride::TutorialMode::TutorialE, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_E_UseShiftLeft::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
@@ -59,7 +59,7 @@ TutorialEIntroSequence::~TutorialEIntroSequence()
 
 void TutorialEIntroSequence::onEnter()
 {
-	TutorialBase::onEnter();
+	super::onEnter();
 
 	this->handCardsTutorialLabel->setOpacity(0);
 
@@ -68,7 +68,7 @@ void TutorialEIntroSequence::onEnter()
 
 void TutorialEIntroSequence::initializePositions()
 {
-	TutorialBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -79,7 +79,7 @@ void TutorialEIntroSequence::initializePositions()
 
 void TutorialEIntroSequence::initializeListeners()
 {
-	TutorialBase::initializeListeners();
+	super::initializeListeners();
 }
 
 bool TutorialEIntroSequence::tryHijackState(GameState* gameState)
@@ -92,17 +92,17 @@ bool TutorialEIntroSequence::tryHijackState(GameState* gameState)
 
 void TutorialEIntroSequence::onBeforeStateChange(GameState* gameState)
 {
-	TutorialBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void TutorialEIntroSequence::onAnyStateChange(GameState* gameState)
 {
-	TutorialBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void TutorialEIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

@@ -37,7 +37,7 @@ OpponentPassBanner::~OpponentPassBanner()
 
 void OpponentPassBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,7 +52,7 @@ void OpponentPassBanner::onBeforeStateChange(GameState* gameState)
 
 void OpponentPassBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::Pass && gameState->turn == GameState::Turn::Enemy && gameState->isEnemyPassCondition())
 	{

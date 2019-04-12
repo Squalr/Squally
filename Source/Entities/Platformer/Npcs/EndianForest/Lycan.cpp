@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -53,7 +55,7 @@ Lycan::Lycan(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 	{
 		Lycan::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_EndianForest_Lycan_Animations,
-			UIResources::Menus_Hexus_HexusFrameEndianForest,
+			HexusResources::Menus_HexusFrameEndianForest,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
@@ -91,14 +93,18 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.077f,
-			HexusOpponentData::generateDeck(25, 0.077f,
+			HexusOpponentData::generateDeck(32, 0.077f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 
 			}),
 			nullptr

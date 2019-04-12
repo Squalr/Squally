@@ -16,7 +16,7 @@ StateOpponentTurnStart* StateOpponentTurnStart::create()
 	return instance;
 }
 
-StateOpponentTurnStart::StateOpponentTurnStart() : StateBase(GameState::StateType::OpponentTurnStart)
+StateOpponentTurnStart::StateOpponentTurnStart() : super(GameState::StateType::OpponentTurnStart)
 {
 }
 
@@ -26,14 +26,14 @@ StateOpponentTurnStart::~StateOpponentTurnStart()
 
 void StateOpponentTurnStart::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	gameState->enemyCardsDrawnNextRound += Config::cardBonusPerTurn;
 }
 
 void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->playableCardsThisTurn = Config::playableCardsPerTurn;
 
@@ -49,10 +49,10 @@ void StateOpponentTurnStart::onStateEnter(GameState* gameState)
 
 void StateOpponentTurnStart::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateOpponentTurnStart::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

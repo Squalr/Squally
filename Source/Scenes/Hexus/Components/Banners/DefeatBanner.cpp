@@ -38,7 +38,7 @@ DefeatBanner::~DefeatBanner()
 
 void DefeatBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -53,7 +53,7 @@ void DefeatBanner::onBeforeStateChange(GameState* gameState)
 
 void DefeatBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::GameEnd && gameState->enemyLosses < 2 && gameState->playerLosses >= 2)
 	{

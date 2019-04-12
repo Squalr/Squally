@@ -1,90 +1,204 @@
 #include "CardData.h"
 
+#include "Engine/Localization/LocalizedString.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-CardData::CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack)
+#include "Strings/Generics/Empty.h"
+#include "Strings/Hexus/Cards/Abbreviations/ADD.h"
+#include "Strings/Hexus/Cards/Abbreviations/AND.h"
+#include "Strings/Hexus/Cards/Abbreviations/BIN.h"
+#include "Strings/Hexus/Cards/Abbreviations/DEC.h"
+#include "Strings/Hexus/Cards/Abbreviations/DIV.h"
+#include "Strings/Hexus/Cards/Abbreviations/ERR.h"
+#include "Strings/Hexus/Cards/Abbreviations/FLIP1.h"
+#include "Strings/Hexus/Cards/Abbreviations/FLIP2.h"
+#include "Strings/Hexus/Cards/Abbreviations/FLIP3.h"
+#include "Strings/Hexus/Cards/Abbreviations/FLIP4.h"
+#include "Strings/Hexus/Cards/Abbreviations/HEX.h"
+#include "Strings/Hexus/Cards/Abbreviations/MOD.h"
+#include "Strings/Hexus/Cards/Abbreviations/MOV.h"
+#include "Strings/Hexus/Cards/Abbreviations/MUL.h"
+#include "Strings/Hexus/Cards/Abbreviations/NOT.h"
+#include "Strings/Hexus/Cards/Abbreviations/OR.h"
+#include "Strings/Hexus/Cards/Abbreviations/ROL.h"
+#include "Strings/Hexus/Cards/Abbreviations/ROR.h"
+#include "Strings/Hexus/Cards/Abbreviations/SHL.h"
+#include "Strings/Hexus/Cards/Abbreviations/SHR.h"
+#include "Strings/Hexus/Cards/Abbreviations/SUB.h"
+#include "Strings/Hexus/Cards/Abbreviations/XOR.h"
+
+CardData::CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack)
 {
-	this->cardResourceFile = newCardResourceFile;
-	this->cardName = newCardName;
-	this->cardType = newCardType;
-	this->attack = newAttack;
+	this->cardResourceFile = cardResourceFile;
+	this->cardKey = cardKey;
+	this->cardType = cardType;
+	this->attack = attack;
 }
 
 CardData::~CardData()
 {
 }
 
-std::string CardData::getCardTypeString()
+LocalizedString* CardData::getCardTypeString()
 {
 	switch (this->cardType)
 	{
 		case CardData::CardType::Binary:
 		{
-			return "BIN";
+			return Strings::Hexus_Cards_Abbreviations_BIN::create();
 		}
 		case CardData::CardType::Decimal:
 		{
-			return "DEC";
+			return Strings::Hexus_Cards_Abbreviations_DEC::create();
 		}
 		case CardData::CardType::Hexidecimal:
 		{
-			return "HEX";
+			return Strings::Hexus_Cards_Abbreviations_HEX::create();
 		}
 		case CardData::CardType::Special_MOV:
 		{
-			return "MOV";
+			return Strings::Hexus_Cards_Abbreviations_MOV::create();
 		}
 		case CardData::CardType::Special_AND:
 		{
-			return "AND";
+			return Strings::Hexus_Cards_Abbreviations_AND::create();
 		}
 		case CardData::CardType::Special_OR:
 		{
-			return "OR";
+			return Strings::Hexus_Cards_Abbreviations_OR::create();
 		}
 		case CardData::CardType::Special_XOR:
 		{
-			return "XOR";
+			return Strings::Hexus_Cards_Abbreviations_XOR::create();
 		}
 		case CardData::CardType::Special_SHL:
 		{
-			return "SHL";
+			return Strings::Hexus_Cards_Abbreviations_SHL::create();
 		}
 		case CardData::CardType::Special_SHR:
 		{
-			return "SHR";
+			return Strings::Hexus_Cards_Abbreviations_SHR::create();
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_ROL:
 		{
-			return "INV";
+			return Strings::Hexus_Cards_Abbreviations_ROL::create();
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROR::create();
+		}
+		case CardData::CardType::Special_NOT:
+		{
+			return Strings::Hexus_Cards_Abbreviations_NOT::create();
 		}
 		case CardData::CardType::Special_FLIP1:
 		{
-			return "FLIP1";
+			return Strings::Hexus_Cards_Abbreviations_FLIP1::create();
 		}
 		case CardData::CardType::Special_FLIP2:
 		{
-			return "FLIP2";
+			return Strings::Hexus_Cards_Abbreviations_FLIP2::create();
 		}
 		case CardData::CardType::Special_FLIP3:
 		{
-			return "FLIP3";
+			return Strings::Hexus_Cards_Abbreviations_FLIP3::create();
 		}
 		case CardData::CardType::Special_FLIP4:
 		{
-			return "FLIP4";
+			return Strings::Hexus_Cards_Abbreviations_FLIP4::create();
 		}
 		case CardData::CardType::Special_ADD:
 		{
-			return "ADD";
+			return Strings::Hexus_Cards_Abbreviations_ADD::create();
 		}
 		case CardData::CardType::Special_SUB:
 		{
-			return "SUB";
+			return Strings::Hexus_Cards_Abbreviations_SUB::create();
+		}
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		case CardData::CardType::Special_GREED:
+		case CardData::CardType::Special_ABSORB:
+		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_BONUS_MOVES:
+		case CardData::CardType::Special_PEEK:
+		{
+			return Strings::Generics_Empty::create();
 		}
 		default:
 		{
-			return "ERR";
+			return Strings::Hexus_Cards_Abbreviations_ERR::create();
+		}
+	}
+}
+
+LocalizedString* CardData::getCardOperationString()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Special_MOV:
+		{
+			return Strings::Hexus_Cards_Abbreviations_MOV::create();
+		}
+		case CardData::CardType::Special_AND:
+		{
+			return Strings::Hexus_Cards_Abbreviations_AND::create();
+		}
+		case CardData::CardType::Special_OR:
+		{
+			return Strings::Hexus_Cards_Abbreviations_OR::create();
+		}
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		{
+			return Strings::Hexus_Cards_Abbreviations_XOR::create();
+		}
+		case CardData::CardType::Special_SHL:
+		{
+			return Strings::Hexus_Cards_Abbreviations_SHL::create();
+		}
+		case CardData::CardType::Special_SHR:
+		{
+			return Strings::Hexus_Cards_Abbreviations_SHR::create();
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROL::create();
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ROR::create();
+		}
+		case CardData::CardType::Special_NOT:
+		{
+			return Strings::Hexus_Cards_Abbreviations_NOT::create();
+		}
+		case CardData::CardType::Special_ADD:
+		{
+			return Strings::Hexus_Cards_Abbreviations_ADD::create();
+		}
+		case CardData::CardType::Special_SUB:
+		{
+			return Strings::Hexus_Cards_Abbreviations_SUB::create();
+		}
+		case CardData::CardType::Binary:
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Hexidecimal:
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		case CardData::CardType::Special_GREED:
+		case CardData::CardType::Special_ABSORB:
+		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_BONUS_MOVES:
+		case CardData::CardType::Special_PEEK:
+		default:
+		{
+			return Strings::Generics_Empty::create();
 		}
 	}
 }
@@ -96,6 +210,7 @@ bool CardData::isAttackCard()
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Hexidecimal:
+		case CardData::CardType::Special_ABSORB:
 		{
 			return true;
 		}
@@ -109,4 +224,104 @@ bool CardData::isAttackCard()
 bool CardData::isSpecialCard()
 {
 	return !this->isAttackCard();
+}
+
+bool CardData::isMultiTargetCard()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		{
+			return true;
+		}
+		default:
+		{
+			return false;
+		}
+	}
+}
+
+bool CardData::isFixedImmediateCard()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
+		case CardData::CardType::Special_FLIP1:
+		case CardData::CardType::Special_FLIP2:
+		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_FLIP4:
+		{
+			return true;
+		}
+		default:
+		{
+			return false;
+		}
+	}
+}
+
+unsigned int CardData::getIntrinsicImmediate()
+{
+	switch (this->cardType)
+	{
+		case CardData::CardType::Binary:
+		case CardData::CardType::Decimal:
+		case CardData::CardType::Hexidecimal:
+		case CardData::CardType::Special_SUDDEN_DEATH:
+		{
+			return this->attack;
+		}
+		case CardData::CardType::Special_BONUS_MOVES:
+		{
+			return 3;
+		}
+		case CardData::CardType::Special_FLIP1:
+		{
+			return 0b0001;
+		}
+		case CardData::CardType::Special_FLIP2:
+		{
+			return 0b0010;
+		}
+		case CardData::CardType::Special_FLIP3:
+		{
+			return 0b0100;
+		}
+		case CardData::CardType::Special_FLIP4:
+		{
+			return 0b1000;
+		}
+		case CardData::CardType::Special_SHL:
+		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_ROR:
+		case CardData::CardType::Special_ROL:
+		{
+			return 0b0001;
+		}
+		case CardData::CardType::Special_MOV:
+		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_ADD:
+		case CardData::CardType::Special_SUB:
+		case CardData::CardType::Special_GREED:
+		case CardData::CardType::Special_ABSORB:
+		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_PEEK:
+		default:
+		{
+			return 0;
+		}
+	}
 }

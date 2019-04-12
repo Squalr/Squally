@@ -9,6 +9,8 @@ namespace MusicResources
 	extern const std::string Artrium;
 	extern const std::string BurdenOfTime;
 	extern const std::string HeartBeat;
+	extern const std::string Hexus1;
+	extern const std::string Hexus2;
 	extern const std::string LastMarch;
 	extern const std::string LastMarchFull;
 	extern const std::string Little_Wings_cut;

@@ -1,5 +1,8 @@
 ﻿#include "ScrollPane.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
@@ -38,6 +41,7 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->marginSize = marginSize;
 
 	this->initialDragDepth = 0.0f;
+	this->customBackground = DrawNode::create();
 	this->background = LayerColor::create(initBackgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
 	this->dragHitbox = ClickableNode::create();
 	this->clipStencil = DrawNode::create();
@@ -60,6 +64,7 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 
 	// Note: We override addChild to pass through to the clipping node. Do not call directly for these, call through the parent class.
 	super::addChild(this->background);
+	super::addChild(this->customBackground);
 	super::addChild(this->dragHitbox);
 	super::addChild(this->contentClip);
 	super::addChild(this->scrollBar);
@@ -88,6 +93,7 @@ void ScrollPane::initializePositions()
 {
 	super::initializePositions();
 
+	this->customBackground->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
 	this->background->setPosition(Vec2(-this->paneSize.width / 2.0f - ScrollPane::marginSize.width, -this->paneSize.height / 2.0f - ScrollPane::marginSize.height));
 	this->dragHitbox->setPosition(Vec2(-ScrollPane::ScrollTotalWidth / 2.0f, 0.0f));
 	this->contentClip->setPosition(Vec2(-this->paneSize.width / 2.0f, -this->paneSize.height / 2.0f));
@@ -104,17 +110,17 @@ void ScrollPane::initializeListeners()
 		this->setScrollPercentage(progress, false);
 	});
 
-	this->dragHitbox->setMouseScrollCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	this->dragHitbox->setMouseScrollCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->scrollBy(args->scrollDelta.y * ScrollPane::ScrollSpeed);
 	});
 
-	this->dragHitbox->setMouseDownCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	this->dragHitbox->setMouseDownCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->initialDragDepth = this->getScrollDepth();
 	});
 
-	this->dragHitbox->setMouseDragCallback([=](ClickableNode*, MouseEvents::MouseEventArgs* args)
+	this->dragHitbox->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		float dragDelta = (args->mouseCoords.y - args->mouseInitialCoords.y) * ScrollPane::DragSpeed;
 
@@ -122,23 +128,88 @@ void ScrollPane::initializeListeners()
 	});
 }
 
-void ScrollPane::setScrollPercentage(float percentage, bool updateScrollBars)
+void ScrollPane::enableInteraction()
 {
-	this->scrollTo((this->maxScrollDepth - this->minScrollDepth) * percentage, updateScrollBars);
+	this->scrollBar->enableInteraction();
+	this->dragHitbox->enableInteraction();
 }
 
-void ScrollPane::scrollBy(float delta, bool updateScrollBars)
+void ScrollPane::disableInteraction()
 {
-	this->scrollTo(this->getScrollDepth() + delta, updateScrollBars);
+	this->scrollBar->disableInteraction();
+	this->dragHitbox->disableInteraction();
 }
 
-void ScrollPane::scrollTo(float position, bool updateScrollBars)
+void ScrollPane::setBackgroundColor(cocos2d::Color4B backgroundColor)
 {
-	this->content->setPositionY(MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth));
+	this->background->initWithColor(backgroundColor, this->paneSize.width + this->marginSize.width * 2.0f, this->paneSize.height + this->marginSize.height * 2.0f);
+}
 
-	if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+void ScrollPane::renderCustomBackground(std::function<void(cocos2d::DrawNode* customBackground, cocos2d::Size paneSize, cocos2d::Size paddingSize, cocos2d::Size marginSize)> drawFunc)
+{
+	if (drawFunc != nullptr)
 	{
-		this->scrollBar->setProgress(this->getScrollPercentage());
+		this->background->setVisible(false);
+
+		drawFunc(this->customBackground, this->paneSize, this->paddingSize, this->marginSize);
+	}
+}
+
+void ScrollPane::setScrollPercentage(float percentage, bool updateScrollBars, float duration)
+{
+	this->scrollTo((this->maxScrollDepth - this->minScrollDepth) * percentage, updateScrollBars, duration);
+}
+
+void ScrollPane::scrollBy(float delta, bool updateScrollBars, float duration)
+{
+	this->scrollTo(this->getScrollDepth() + delta, updateScrollBars, duration);
+}
+
+void ScrollPane::scrollToCenter(Node* target, bool updateScrollBars, float duration)
+{
+	this->scrollTo(-target->getPositionY() - this->getPaneSize().height / 2.0f, updateScrollBars, duration);
+}
+
+void ScrollPane::scrollTo(float position, bool updateScrollBars, float duration)
+{
+	if (duration <= 0.0f)
+	{
+		this->content->setPositionY(MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth));
+
+		if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+		{
+			this->scrollBar->setProgress(this->getScrollPercentage());
+		}
+	}
+	else
+	{
+		this->content->runAction(Sequence::create(
+			MoveTo::create(duration, Vec2(this->content->getPositionX(), MathUtils::clamp(position + this->minScrollDepth, this->minScrollDepth, this->maxScrollDepth))),
+			CallFunc::create([=]()
+			{
+				if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+				{
+					this->scrollBar->setProgress(this->getScrollPercentage());
+				}
+			}),
+			nullptr
+		));
+
+		int ticks = duration / (1.0f / 60.0f);
+		
+		this->content->runAction(
+			Repeat::create(Sequence::create(
+				DelayTime::create(1.0f / 60.0f),
+				CallFunc::create([=]()
+				{
+					if (updateScrollBars && this->maxScrollDepth - this->minScrollDepth != 0.0f)
+					{
+						this->scrollBar->setProgress(this->getScrollPercentage());
+					}
+				}),
+				nullptr
+			), ticks)
+		);
 	}
 }
 
@@ -184,17 +255,24 @@ void ScrollPane::updateScrollBounds()
 {
 	this->minScrollDepth = this->paneSize.height - this->paddingSize.height;
 
-	auto children = this->content->getChildren();
-	float discoveredLowestItem = 0.0f;
+	float discoveredLowestItem = this->getLowestChild(this->content->getChildren());
 
+	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
+	this->setScrollPercentage(this->getScrollPercentage());
+}
+
+float ScrollPane::getLowestChild(Vector<cocos2d::Node*>& children, float lowestItem)
+{
 	for (auto it = children.begin(); it != children.end(); it++)
 	{
 		if (GameUtils::isVisibleUntil<ScrollPane>(*it))
 		{
-			discoveredLowestItem = std::min(discoveredLowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+			lowestItem = std::min(lowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+
+			// Recurse
+			lowestItem = this->getLowestChild((*it)->getChildren(), lowestItem);
 		}
 	}
 
-	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
-	this->setScrollPercentage(this->getScrollPercentage());
+	return lowestItem;
 }

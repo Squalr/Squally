@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -53,7 +55,7 @@ Zelina::Zelina(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* Zelina::getHexusOpponentData()
 	{
 		Zelina::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
-			UIResources::Menus_Hexus_HexusFrameLambdaCrypts,
+			HexusResources::Menus_HexusFrameLambdaCrypts,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
@@ -90,13 +92,18 @@ HexusOpponentData* Zelina::getHexusOpponentData()
 			Zelina::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.875f,
-			HexusOpponentData::generateDeck(25, 0.875f,
+			0.792f,
+			HexusOpponentData::generateDeck(32, 0.792f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 

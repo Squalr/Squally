@@ -5,10 +5,13 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/Config.h"
 
@@ -16,6 +19,8 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Generics/Constant.h"
+#include "Strings/Hexus/Cards/Effects/Overflow.h"
+#include "Strings/Hexus/Cards/Effects/Underflow.h"
 
 using namespace cocos2d;
 
@@ -27,18 +32,19 @@ const Color4B Card::specialColor = Color4B(255, 116, 0, 255);
 const Color4B Card::debuffColor = Color4B(225, 0, 0, 255);
 const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
 
-Card* Card::create(CardStyle cardStyle, CardData* data)
+Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 {
-	Card* instance = new Card(cardStyle, data);
+	Card* instance = new Card(cardStyle, data, isPlayerOwnedCard);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Card::Card(CardStyle cardStyle, CardData* data)
+Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 {
 	this->mouseOverCallback = nullptr;
+	this->isPlayerOwnedCard = isPlayerOwnedCard;
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
@@ -109,6 +115,15 @@ Card::Card(CardStyle cardStyle, CardData* data)
 
 	this->cardString = ConstantString::create();
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
+	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_Cards_Effects_Overflow::create());
+	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_Cards_Effects_Underflow::create());
+
+	this->overflowLabel->enableOutline(Color4B::BLACK, 2);
+	this->underflowLabel->enableOutline(Color4B::BLACK, 2);
+	this->overflowLabel->setTextColor(Color4B::RED);
+	this->underflowLabel->setTextColor(Color4B::GREEN);
+	this->overflowLabel->setOpacity(0);
+	this->underflowLabel->setOpacity(0);
 
 	this->cardLabel->setStringReplacementVariables(this->cardString);
 	this->cardLabel->setAlignment(TextHAlignment::CENTER);
@@ -127,6 +142,8 @@ Card::Card(CardStyle cardStyle, CardData* data)
 	this->addChild(this->cardSelect);
 	this->addChild(this->cardEffects);
 	this->addChild(this->cardLabel);
+	this->addChild(this->overflowLabel);
+	this->addChild(this->underflowLabel);
 
 	this->hide();
 	this->unfocus();
@@ -138,12 +155,23 @@ Card::~Card()
 
 void Card::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
+
+	this->overflowLabel->setOpacity(0);
+	this->underflowLabel->setOpacity(0);
+}
+
+void Card::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
 }
 
 void Card::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -152,15 +180,22 @@ void Card::initializePositions()
 
 void Card::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
-	this->cardSelect->setMouseOverCallback(CC_CALLBACK_1(Card::onMouseOver, this));
-	this->cardSelect->setClickCallback(CC_CALLBACK_1(Card::onMouseClick, this));
+	this->cardSelect->setMouseOverCallback(CC_CALLBACK_0(Card::onMouseOver, this));
+	this->cardSelect->setMouseOutCallback(CC_CALLBACK_0(Card::onMouseOut, this));
+	this->cardSelect->setMouseClickCallback(CC_CALLBACK_0(Card::onMouseClick, this));
 }
 
 void Card::addOperation(Operation operation)
 {
 	this->operations.push_back(operation);
+	this->updateText();
+}
+
+void Card::clearOperations()
+{
+	this->operations.clear();
 	this->updateText();
 }
 
@@ -174,17 +209,25 @@ void Card::enableInteraction()
 	this->cardSelect->enableInteraction();
 }
 
-Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned int immediate)
+Card::Operation Card::toOperation(unsigned int immediate)
 {
-	switch (playedCardType)
+	switch (this->cardData->cardType)
 	{
 		case CardData::CardType::Special_SHL:
 		{
-			return Operation(Operation::OperationType::SHL, 1);
+			return Operation(Operation::OperationType::SHL, 0b0001);
 		}
 		case CardData::CardType::Special_SHR:
 		{
-			return Operation(Operation::OperationType::SHR, 1);
+			return Operation(Operation::OperationType::SHR, 0b0001);
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			return Operation(Operation::OperationType::ROL, 0b0001);
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return Operation(Operation::OperationType::ROR, 0b0001);
 		}
 		case CardData::CardType::Special_FLIP1:
 		{
@@ -226,15 +269,20 @@ Card::Operation Card::toOperation(CardData::CardType playedCardType, unsigned in
 		{
 			return Operation(Operation::OperationType::SUB, immediate);
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_NOT:
 		{
-			return Operation(Operation::OperationType::XOR, 0b1111);
+			return Operation(Operation::OperationType::NOT);
 		}
 		default:
 		{
 			return Operation(Operation::OperationType::AND, 0b000);
 		}
 	}
+}
+
+unsigned int Card::getOriginalAttack()
+{
+	return this->cardData->attack;
 }
 
 unsigned int Card::getAttack()
@@ -250,7 +298,23 @@ unsigned int Card::getAttack()
 	return attack;
 }
 
-int Card::applyOperation(int attack, Operation operation) {
+void Card::setIsPlayerOwnedCard(bool isPlayerOwnedCard)
+{
+	this->isPlayerOwnedCard = isPlayerOwnedCard;
+}
+
+bool Card::getIsPlayerOwnedCard()
+{
+	return this->isPlayerOwnedCard;
+}
+
+int Card::applyOperation(int attack, Operation operation)
+{
+	if (this->cardData->cardKey == CardKeys::Absorb)
+	{
+		return 0b0000;
+	}
+
 	const unsigned int attackMask = 0b1111;
 
 	switch (operation.operationType)
@@ -263,6 +327,16 @@ int Card::applyOperation(int attack, Operation operation) {
 		case Operation::OperationType::SHR:
 		{
 			attack >>= operation.immediate;
+			break;
+		}
+		case Operation::OperationType::ROL:
+		{
+			attack = (attack << operation.immediate) | ((attack & 0b1000) >> 3);
+			break;
+		}
+		case Operation::OperationType::ROR:
+		{
+			attack = (attack >> operation.immediate) | ((attack & 0b0001) << 3);
 			break;
 		}
 		case Operation::OperationType::MOV:
@@ -283,6 +357,11 @@ int Card::applyOperation(int attack, Operation operation) {
 		case Operation::OperationType::XOR:
 		{
 			attack ^= operation.immediate;
+			break;
+		}
+		case Operation::OperationType::NOT:
+		{
+			attack ^= 0b1111;
 			break;
 		}
 		case Operation::OperationType::ADD:
@@ -384,25 +463,10 @@ void Card::updateText()
 			this->cardLabel->setTextColor(Card::hexColor);
 			break;
 		}
-		case CardData::CardType::Special_MOV:
-		case CardData::CardType::Special_AND:
-		case CardData::CardType::Special_OR:
-		case CardData::CardType::Special_XOR:
-		case CardData::CardType::Special_SHL:
-		case CardData::CardType::Special_SHR:
-		case CardData::CardType::Special_INV:
-		case CardData::CardType::Special_FLIP1:
-		case CardData::CardType::Special_FLIP2:
-		case CardData::CardType::Special_FLIP3:
-		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_ADD:
-		case CardData::CardType::Special_SUB:
-		{
-			this->cardString->setString(this->cardData->getCardTypeString());
-			this->cardLabel->setTextColor(Card::specialColor);
-		}
 		default:
 		{
+			this->cardString->setString(this->cardData->getCardTypeString()->getString());
+			this->cardLabel->setTextColor(Card::specialColor);
 			break;
 		}
 	}
@@ -422,12 +486,17 @@ void Card::setMouseOverCallback(std::function<void(Card*)> callback)
 	this->mouseOverCallback = callback;
 }
 
+void Card::setMouseOutCallback(std::function<void(Card*)> callback)
+{
+	this->mouseOutCallback = callback;
+}
+
 void Card::setMouseClickCallback(std::function<void(Card*)> callback)
 {
 	this->mouseClickCallback = callback;
 }
 
-void Card::onMouseOver(ClickableNode* menuSprite)
+void Card::onMouseOver()
 {
 	if (this->mouseOverCallback != nullptr)
 	{
@@ -435,7 +504,15 @@ void Card::onMouseOver(ClickableNode* menuSprite)
 	}
 }
 
-void Card::onMouseClick(ClickableNode* menuSprite)
+void Card::onMouseOut()
+{
+	if (this->mouseOutCallback != nullptr)
+	{
+		this->mouseOutCallback(this);
+	}
+}
+
+void Card::onMouseClick()
 {
 	if (this->mouseClickCallback != nullptr)
 	{
@@ -448,4 +525,42 @@ int Card::simulateOperation(Operation operation)
 	int attack = this->getAttack();
 
 	return this->applyOperation(attack, operation);
+}
+
+void Card::runOverflowEffect(bool offsetYPosition)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
+
+	this->overflowLabel->setPosition(Vec2(0.0f, isHighOnScreen ? (-64.0f + (offsetYPosition ? -32.0f : 0.0f)) : (64.0f + (offsetYPosition ? 32.0f : 0.0f))));
+	this->overflowLabel->setOpacity(255);
+	this->overflowLabel->runAction(FadeTo::create(1.0f, 0));
+
+	if (isHighOnScreen)
+	{
+		this->overflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, -64.0f - 96.0f - (offsetYPosition ? 32.0f : 0.0f))));
+	}
+	else
+	{
+		this->overflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 64.0f + 96.0f + (offsetYPosition ? 32.0f : 0.0f))));
+	}
+}
+
+void Card::runUnderflowEffect(bool offsetYPosition)
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
+
+	this->underflowLabel->setPosition(Vec2(0.0f, isHighOnScreen ? (-64.0f + (offsetYPosition ? -32.0f : 0.0f)) : (64.0f + (offsetYPosition ? 32.0f : 0.0f))));
+	this->underflowLabel->setOpacity(255);
+	this->underflowLabel->runAction(FadeTo::create(1.0f, 0));
+
+	if (isHighOnScreen)
+	{
+		this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, -64.0f - 96.0f - (offsetYPosition ? 32.0f : 0.0f))));
+	}
+	else
+	{
+		this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 64.0f + 96.0f + (offsetYPosition ? 32.0f : 0.0f))));
+	}
 }

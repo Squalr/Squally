@@ -28,7 +28,7 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 	return instance;
 }
 
-TutorialAWinningRound::TutorialAWinningRound() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::TurnEnd)
+TutorialAWinningRound::TutorialAWinningRound() : super(StateOverride::TutorialMode::TutorialA, GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_WinningRound::create(), Size(420.0f, 0.0f));
@@ -58,7 +58,7 @@ TutorialAWinningRound::~TutorialAWinningRound()
 
 void TutorialAWinningRound::onEnter()
 {
-	TutorialBase::onEnter();
+	super::onEnter();
 
 	this->scoreTotalsTutorialLabel->setOpacity(0);
 
@@ -67,7 +67,7 @@ void TutorialAWinningRound::onEnter()
 
 void TutorialAWinningRound::initializePositions()
 {
-	TutorialBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -78,7 +78,7 @@ void TutorialAWinningRound::initializePositions()
 
 void TutorialAWinningRound::initializeListeners()
 {
-	TutorialBase::initializeListeners();
+	super::initializeListeners();
 }
 
 bool TutorialAWinningRound::tryHijackState(GameState* gameState)
@@ -96,17 +96,17 @@ bool TutorialAWinningRound::tryHijackState(GameState* gameState)
 
 void TutorialAWinningRound::onBeforeStateChange(GameState* gameState)
 {
-	TutorialBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void TutorialAWinningRound::onAnyStateChange(GameState* gameState)
 {
-	TutorialBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

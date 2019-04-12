@@ -155,9 +155,9 @@ void MetalSpikes::updateSpikes(float dt)
 
 		// Move collision box
 		this->spikeCollision->runAction(Sequence::create(
-			MoveTo::create(0.425, Vec2::ZERO),
+			MoveTo::create(0.425f, Vec2::ZERO),
 			DelayTime::create(stayUpDuration),
-			MoveTo::create(0.425, MetalSpikes::SpikesDownPosition),
+			MoveTo::create(0.425f, MetalSpikes::SpikesDownPosition),
 			nullptr
 		));
 

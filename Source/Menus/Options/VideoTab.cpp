@@ -28,7 +28,7 @@
 
 using namespace cocos2d;
 
-const int VideoTab::ResolutionGroupId = 420;
+const int VideoTab::ResolutionGroupId = 299267945; // RNG based to avoid conflicts
 
 VideoTab* VideoTab::create()
 {
@@ -63,17 +63,61 @@ VideoTab::VideoTab()
 	this->label2560x1440 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution2560x1440::create());
 	this->label3840x2160 = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_Resolution3840x2160::create());
 
-	this->option1080x768 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1152x864 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1280x720 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1280x960 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1280x1024 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1440x900 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1600x900 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1600x1024 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option1920x1080 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option2560x1440 = RadioButton::create(VideoTab::ResolutionGroupId);
-	this->option3840x2160 = RadioButton::create(VideoTab::ResolutionGroupId);
+	this->option1080x768 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1152x864 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1280x720 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1280x960 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1280x1024 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1440x900 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1600x900 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1600x1024 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option1920x1080 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option2560x1440 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
+	this->option3840x2160 = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::ResolutionGroupId
+	);
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;

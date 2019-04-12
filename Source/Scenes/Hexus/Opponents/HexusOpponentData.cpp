@@ -41,6 +41,7 @@ HexusOpponentData::HexusOpponentData(
 	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
 	this->stateOverride = stateOverride;
+	this->isLastInChapter = false;
 
 	if (this->stateOverride != nullptr)
 	{
@@ -58,7 +59,7 @@ HexusOpponentData::~HexusOpponentData()
 
 Deck* HexusOpponentData::getDeck()
 {
-	return Deck::create(this->cardStyle, this->cards);
+	return Deck::create(this->cardStyle, this->cards, false);
 }
 
 CardData* HexusOpponentData::getStrongestCard()
@@ -78,10 +79,15 @@ CardData* HexusOpponentData::getStrongestCard()
 
 int HexusOpponentData::generateReward(float deckStrength)
 {
-	float strengthPercent = deckStrength * 100.0f;
-	int adjusted = int((strengthPercent * strengthPercent) / 10.0f) + 15;
+	// This should give us a distribution where the mininum is 32 (easiest opponent) the maximum is 512 (hardest opponent), with a healthy weight to early opponents
+	// Formula: Lagrange interpolation over (0.0, 32), (0.3, 240), (1.0, 512)
+	const float alpha = -304.762f;
+	const float beta = 785.762f;
+	const float gamma = 32.0f;
 
-	return adjusted;
+	int adjusted = int((deckStrength * deckStrength) * alpha + (deckStrength * beta) + gamma);
+
+	return MathUtils::clamp(adjusted, 0, 512);
 }
 
 std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)
@@ -89,10 +95,21 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 	deckSize = MathUtils::clamp(deckSize, 20, 60);
 	deckStrength = MathUtils::clamp(deckStrength, 0.0f, 1.0f);
 
-	// Formula: Best possible generated card attack = (DeckStrength + 10%) * 15
-	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)((deckStrength + 0.1f) * 15), 0, 15);
+	// Formula: Best possible card attack for a single card = (DeckStrength + 10%) * 15 (min: 3)
+	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)std::ceil((deckStrength + 0.10f) * 15), 2, 15);
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
+
+	// Always guarantee 0 cards, this seems to actually make for solid gameplay :)
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
+	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
 
 	for (auto it = guaranteedCards.begin(); it != guaranteedCards.end(); it++)
 	{
@@ -100,14 +117,12 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 		deckSize--;
 	}
 
-	// Adjust deck strength via a "quadratic easeOut" function -- solves issues of not being able to properly fill the deck
-	// ie) If the best deck for a size 21 deck is 300, and deckStrength is 10%, we would expect a deck of 30 strength, but this is impossible with 21 cards.
-	// My assumption is that this will be OK -- it makes lower % decks a bit stronger, and higher % decks a bit weaker, however I think that
-	// these imbalances can be made up with intelligently distributed special cards
-	float adjustedDeckStrength = MathUtils::clamp(deckStrength * (2.0f - deckStrength), 0.0f, 1.0f);
+	// Map the space [0.0, 1.0] to [0.10, 1.0]. There are some decks too weak to exist, this solves that problem.
+	const float lowestNewStrength = 0.10f;
+	float adjustedDeckStrength = MathUtils::clamp(lowestNewStrength + (1.0f - lowestNewStrength) * deckStrength, 0.0f, 1.0f);
 
 	// Calculate the total attack this deck should have
-	int generatedDeckAttack = int(float(HexusOpponentData::getBestPossibleDeckAttack(deckSize)) * adjustedDeckStrength);
+	int generatedDeckAttack = int(std::ceil(float(HexusOpponentData::getBestPossibleDeckAttack(deckSize)) * adjustedDeckStrength));
 
 	std::vector<int> possibleCards = std::vector<int>();
 
@@ -121,45 +136,74 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 			}
 		}
 	}
-
-	// TODO: Possible cards should take into account guaranteed cards -- not a huge deal but currently this can result in more than 3 cards of the same type
-
+	
 	std::vector<int> deckCards = AlgoUtils::subsetSum(possibleCards, generatedDeckAttack, deckSize);
 	std::map<int, int> addedCards = std::map<int, int>();
 
 	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
 	{
-		if (addedCards.find(*it) == addedCards.end())
+		int attack = *it;
+
+		if (addedCards.find(attack) == addedCards.end())
 		{
 			// Start zero-indexed counter
-			addedCards[*it] = 0;
+			addedCards[attack] = 0;
 		}
 		else
 		{
-			addedCards[*it] = addedCards[*it] + 1;
+			addedCards[attack] = addedCards[attack] + 1;
 		}
 
-		// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
-		switch (addedCards[*it] % 3)
+		if (attack != 1)
 		{
-			// Binary is 1st priority
-			default:
-			case 0:
+			// Alternate between adding bin/hex/dec for cards of the same attack to keep decks diverse
+			switch (addedCards[attack] % 3)
 			{
-				deck.push_back(HexusOpponentData::getBinaryCardForAttack(*it));
-				break;
+				// Binary is 1st priority
+				default:
+				case 0:
+				{
+					deck.push_back(HexusOpponentData::getBinaryCardForAttack(attack));
+					break;
+				}
+				// Prioritize hex next
+				case 1:
+				{
+					deck.push_back(HexusOpponentData::getHexCardForAttack(attack));
+					break;
+				}
+				// Finally decimal
+				case 2:
+				{
+					deck.push_back(HexusOpponentData::getDecimalCardForAttack(attack));
+					break;
+				}
 			}
-			// Prioritize hex next
-			case 1:
+		}
+		else
+		{
+			// Special logic for 1 cards! We want to prioritize maxing out 'horde spiders' and 'scared girl'
+			switch (addedCards[attack] / 3)
 			{
-				deck.push_back(HexusOpponentData::getHexCardForAttack(*it));
-				break;
-			}
-			// Finally decimal
-			case 2:
-			{
-				deck.push_back(HexusOpponentData::getDecimalCardForAttack(*it));
-				break;
+				// Hex is 1st priority
+				default:
+				case 0:
+				{
+					deck.push_back(HexusOpponentData::getHexCardForAttack(attack));
+					break;
+				}
+				// Dec hex next
+				case 1:
+				{
+					deck.push_back(HexusOpponentData::getDecimalCardForAttack(attack));
+					break;
+				}
+				// Finally decimal
+				case 2:
+				{
+					deck.push_back(HexusOpponentData::getBinaryCardForAttack(attack));
+					break;
+				}
 			}
 		}
 	}
@@ -415,4 +459,14 @@ CardData* HexusOpponentData::getHexCardForAttack(int attack)
 			return CardList::getInstance()->cardListByName.at(CardKeys::Hex15);
 		}
 	}
+}
+
+void HexusOpponentData::setIsLastInChapter()
+{
+	this->isLastInChapter = true;
+}
+
+bool HexusOpponentData::getIsLastInChapter()
+{
+	return this->isLastInChapter;
 }

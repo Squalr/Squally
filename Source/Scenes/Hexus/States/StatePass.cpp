@@ -33,7 +33,7 @@ StatePass* StatePass::create()
 	return instance;
 }
 
-StatePass::StatePass() : StateBase(GameState::StateType::Pass)
+StatePass::StatePass() : super(GameState::StateType::Pass)
 {
 	this->currentVisiblePlayerButton = nullptr;
 	this->playerChoiceLocked = false;
@@ -100,7 +100,7 @@ StatePass::~StatePass()
 
 void StatePass::onEnter()
 {
-	StateBase::onEnter();
+	super::onEnter();
 
 	this->currentVisiblePlayerButton = nullptr;
 	this->playerChoiceLocked = false;
@@ -138,7 +138,7 @@ void StatePass::onEnter()
 
 void StatePass::initializePositions()
 {
-	StateBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -191,7 +191,7 @@ void StatePass::initializePositions()
 	this->enemyClaimVictoryParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f - Config::passButtonOffsetY);
 }
 
-void StatePass::onPassClick(ClickableNode* menuSprite, GameState* gameState)
+void StatePass::onPassClick(GameState* gameState)
 {
 	GameState::updateState(gameState, GameState::StateType::Pass);
 }
@@ -203,7 +203,7 @@ void StatePass::hideAndDisableAllButtons()
 	this->passSprite->runAction(FadeTo::create(0.25f, 0));
 	this->passButton->runAction(FadeTo::create(0.25f, 0));
 	this->passButton->disableInteraction();
-	this->passButton->setClickCallback(nullptr);
+	this->passButton->setMouseClickCallback(nullptr);
 	this->passButton->setMouseOverCallback(nullptr);
 	this->passButton->setMouseOutCallback(nullptr);
 	this->onPassMouseOut();
@@ -213,7 +213,7 @@ void StatePass::hideAndDisableAllButtons()
 	this->lastStandSprite->runAction(FadeTo::create(0.25f, 0));
 	this->lastStandButton->runAction(FadeTo::create(0.25f, 0));
 	this->lastStandButton->disableInteraction();
-	this->lastStandButton->setClickCallback(nullptr);
+	this->lastStandButton->setMouseClickCallback(nullptr);
 	this->lastStandButton->setMouseOverCallback(nullptr);
 	this->lastStandButton->setMouseOutCallback(nullptr);
 	this->onLastStandMouseOut();
@@ -223,7 +223,7 @@ void StatePass::hideAndDisableAllButtons()
 	this->claimVictorySprite->runAction(FadeTo::create(0.25f, 0));
 	this->claimVictoryButton->runAction(FadeTo::create(0.25f, 0));
 	this->claimVictoryButton->disableInteraction();
-	this->claimVictoryButton->setClickCallback(nullptr);
+	this->claimVictoryButton->setMouseClickCallback(nullptr);
 	this->claimVictoryButton->setMouseOverCallback(nullptr);
 	this->claimVictoryButton->setMouseOutCallback(nullptr);
 	this->onClaimVictoryMouseOut();
@@ -243,7 +243,7 @@ void StatePass::hideOpponenentPassSprites()
 
 void StatePass::enablePassButtonInteraction(GameState* gameState)
 {
-	this->passButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
+	this->passButton->setMouseClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->passButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onPassMouseOver, this));
 	this->passButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onPassMouseOut, this));
 	this->passButton->enableInteraction();
@@ -251,7 +251,7 @@ void StatePass::enablePassButtonInteraction(GameState* gameState)
 
 void StatePass::enableLastStandButtonInteraction(GameState* gameState)
 {
-	this->lastStandButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
+	this->lastStandButton->setMouseClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->lastStandButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onLastStandMouseOver, this));
 	this->lastStandButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onLastStandMouseOut, this));
 	this->lastStandButton->enableInteraction();
@@ -259,7 +259,7 @@ void StatePass::enableLastStandButtonInteraction(GameState* gameState)
 
 void StatePass::enableClaimVictoryButtonInteraction(GameState* gameState)
 {
-	this->claimVictoryButton->setClickCallback(CC_CALLBACK_1(StatePass::onPassClick, this, gameState));
+	this->claimVictoryButton->setMouseClickCallback(CC_CALLBACK_0(StatePass::onPassClick, this, gameState));
 	this->claimVictoryButton->setMouseOverCallback(CC_CALLBACK_0(StatePass::onClaimVictoryMouseOver, this));
 	this->claimVictoryButton->setMouseOutCallback(CC_CALLBACK_0(StatePass::onClaimVictoryMouseOut, this));
 	this->claimVictoryButton->enableInteraction();
@@ -321,7 +321,7 @@ void StatePass::onClaimVictoryMouseOut()
 
 void StatePass::onAnyStateChange(GameState* gameState)
 {
-	StateBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->playerPassed && !this->playerChoiceLocked)
 	{
@@ -445,12 +445,12 @@ void StatePass::onAnyStateChange(GameState* gameState)
 
 void StatePass::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StatePass::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	switch (gameState->turn)
 	{
@@ -506,10 +506,10 @@ void StatePass::onStateEnter(GameState* gameState)
 
 void StatePass::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StatePass::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

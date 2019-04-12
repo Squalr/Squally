@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Engine/Maps/SerializableObject.h"
+#include "Engine/UI/UIBoundObject.h"
 
 namespace cocos2d
 {
@@ -22,10 +23,8 @@ class ProgressBar;
 class HackableObject : public SerializableObject
 {
 public:
-	void onHackableClick(ClickableNode* backButton);
+	void onHackableClick();
 	virtual HackablePreview* createDefaultPreview();
-
-	void addChild(Node* child) override;
 
 	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;

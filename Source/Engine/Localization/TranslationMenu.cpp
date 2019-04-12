@@ -162,8 +162,8 @@ void TranslationMenu::initializeListeners()
 		this->onTranslationMenuOpen(static_cast<LocalizationEvents::TranslationBeginEditArgs*>(eventArgs->getUserData()));
 	}));
 
-	cancelButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onCancelClick(); });
-	submitButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*) { this->onSubmitClick(); });
+	cancelButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onCancelClick(); });
+	submitButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onSubmitClick(); });
 }
 
 void TranslationMenu::update(float dt)

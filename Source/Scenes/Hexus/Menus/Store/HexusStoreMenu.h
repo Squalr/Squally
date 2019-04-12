@@ -14,9 +14,11 @@ namespace cocos2d
 
 class Card;
 class CardData;
+class CardPreview;
 class ConstantString;
 class ClickableNode;
 class ClickableTextNode;
+class ConfirmationMenu;
 class LocalizedLabel;
 class MenuCard;
 class ScrollPane;
@@ -48,9 +50,9 @@ private:
 	void updateCardLimitText(LocalizedLabel* label, ConstantString* countString, ConstantString* limitString, CardData* cardData);
 	void updateGoldText();
 	void hideMenus();
-	void onLootBoxClick(ClickableNode* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
-	void onCardClick(ClickableNode* card, CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
-	void onBackClick(ClickableNode* menuSprite);
+	void onLootBoxClick(int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode);
+	void onCardClick(CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
+	void onBackClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onLootBoxReturnButtonClick(int price, std::vector<Card*> chosenCards);
 	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);
@@ -85,9 +87,12 @@ private:
 	ClickableNode* hexButton;
 	ClickableNode* specialButton;
 	ClickableTextNode* backButton;
+	CardPreview* cardPreview;
 	cocos2d::LayerColor* lootBoxRewardBackground;
 	ClickableNode* lootBoxReturnButton;
 	cocos2d::Node* chosenCardsNode;
+	cocos2d::LayerColor* backdrop;
+	ConfirmationMenu* confirmationMenu;
 
 	std::vector<std::tuple<ClickableNode*, int>> lootBoxes;
 	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> binaryCards;

@@ -17,6 +17,7 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardStorage.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Menus/Return.h"
@@ -43,9 +44,10 @@ void HexusRewardsMenu::registerGlobalScene()
 
 HexusRewardsMenu::HexusRewardsMenu()
 {
-	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
+	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
+	this->goldSpriteChapterClear = Sprite::create(UIResources::Menus_Objects_GOLD_4);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
@@ -68,6 +70,7 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->addChild(this->background);
 	this->addChild(this->goldSprite);
 	this->addChild(this->goldSpriteLesser);
+	this->addChild(this->goldSpriteChapterClear);
 	this->addChild(this->goldLabel);
 	this->addChild(this->returnButton);
 }
@@ -97,11 +100,11 @@ void HexusRewardsMenu::initializeListeners()
 		if (rewardsArgs != nullptr)
 		{
 			GlobalDirector::loadScene(HexusRewardsMenu::instance);
-			HexusRewardsMenu::instance->onRewardsOpen(rewardsArgs->reward, rewardsArgs->isRewardReduced);
+			HexusRewardsMenu::instance->onRewardsOpen(rewardsArgs->reward, rewardsArgs->isRewardReduced, rewardsArgs->isChapterClear);
 		}
 	}));
 
-	this->returnButton->setClickCallback(CC_CALLBACK_1(HexusRewardsMenu::onReturnClick, this));
+	this->returnButton->setMouseClickCallback(CC_CALLBACK_0(HexusRewardsMenu::onReturnClick, this));
 }
 
 void HexusRewardsMenu::initializePositions()
@@ -113,19 +116,28 @@ void HexusRewardsMenu::initializePositions()
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->goldSprite->setPosition(Vec2(visibleSize.width / 2.0f - 48.0f, visibleSize.height / 2.0f));
 	this->goldSpriteLesser->setPosition(Vec2(visibleSize.width / 2.0f - 48.0f, visibleSize.height / 2.0f));
+	this->goldSpriteChapterClear->setPosition(Vec2(visibleSize.width / 2.0f - 128.0f, visibleSize.height / 2.0f));
 	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
-void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
+void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced, bool isChapterClear)
 {
-	if (isRewardReduced)
+	if (isChapterClear)
 	{
+		this->goldSpriteChapterClear->setVisible(true);
+		this->goldSpriteLesser->setVisible(false);
+		this->goldSprite->setVisible(false);
+	}
+	else if (isRewardReduced)
+	{
+		this->goldSpriteChapterClear->setVisible(false);
 		this->goldSpriteLesser->setVisible(true);
 		this->goldSprite->setVisible(false);
 	}
 	else
 	{
+		this->goldSpriteChapterClear->setVisible(false);
 		this->goldSpriteLesser->setVisible(false);
 		this->goldSprite->setVisible(true);
 	}
@@ -151,7 +163,7 @@ void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced)
 	}, interval, ticks, delay, HexusRewardsMenu::KeyScheduleHexusGoldTick);
 }
 
-void HexusRewardsMenu::onReturnClick(ClickableNode* menuSprite)
+void HexusRewardsMenu::onReturnClick()
 {
 	NavigationEvents::navigateBack(2);
 }

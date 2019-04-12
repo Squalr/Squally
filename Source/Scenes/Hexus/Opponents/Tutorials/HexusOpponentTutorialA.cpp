@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -26,18 +26,18 @@ HexusOpponentTutorialA* HexusOpponentTutorialA::getInstance()
 	return HexusOpponentTutorialA::instance;
 }
 
-HexusOpponentTutorialA::HexusOpponentTutorialA() : HexusOpponentData(
+HexusOpponentTutorialA::HexusOpponentTutorialA() : super(
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
-	UIResources::Menus_Hexus_HexusFrameCastleValgrind,
+	HexusResources::Menus_HexusFrameCastleValgrind,
 	1.0f,
 	Vec2(-32.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -48.0f),
 	HexusOpponentTutorialA::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Light,
-	HexusOpponentData::generateReward(0.07f),
-	HexusOpponentData::generateDeck(25, 0.07f,
+	0.0f,
+	super::generateDeck(25, 0.0f,
 	{
 	}),
 	StateOverride::create(

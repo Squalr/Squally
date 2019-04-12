@@ -37,7 +37,7 @@ RoundBanner::~RoundBanner()
 
 void RoundBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,7 +52,7 @@ void RoundBanner::onBeforeStateChange(GameState* gameState)
 
 void RoundBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::RoundStart)
 	{

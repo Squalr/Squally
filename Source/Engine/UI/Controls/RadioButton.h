@@ -13,29 +13,28 @@ namespace cocos2d
 class RadioButton : public SmartNode
 {
 public:
-	static RadioButton * create(int groupIdentifier);
+	static RadioButton* create(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier);
 
 	void check();
 	void uncheck();
 	void setCheckCallback(std::function<void(RadioButton*)> callback);
 
-	const std::string RadioButtonCheckEvent = "radio_button_check_event";
+	static const std::string RadioButtonCheckEvent;
 
 private:
 	typedef SmartNode super;
-	RadioButton(int groupIdentifier);
+	RadioButton(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier);
 	virtual ~RadioButton();
 
 	void initializeListeners() override;
 	void onGroupCheck(cocos2d::EventCustom* event);
-	void onUncheckClick(ClickableNode* menuSprite);
-	void onCheckClick(ClickableNode* menuSprite);
+	void onUncheckClick();
+	void onCheckClick();
 
-	ClickableNode * unchecked;
-	ClickableNode * checked;
+	ClickableNode* checked;
+	ClickableNode* unchecked;
 	bool isChecked;
 
 	int groupId;
 	std::function<void(RadioButton*)> onCheckCallback;
 };
-

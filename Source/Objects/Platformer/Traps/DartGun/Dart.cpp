@@ -41,7 +41,7 @@ Dart::Dart(float rotation, float speed) : CollisionObject(
 	this->dartSprite = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
 	this->setRotation(rotation);
 
-	float rotationInRad = (-rotation) * M_PI / 180.0f;
+	float rotationInRad = (-rotation) * float(M_PI) / 180.0f;
 	this->setVelocity(Vec2(speed * std::cos(rotationInRad), speed * std::sin(rotationInRad)));
 
 	this->addChild(this->dartSprite);

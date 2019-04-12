@@ -10,57 +10,68 @@
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-112.0f"
+    "Y": "-312.0f"
   },
   "Health": "10",
   "Special": "10",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-144.0f"
+      "Y": "-196.0f"
     },
     "MatchData": {
-      "DeckSize": "25",
-      "Strength": "1.0f",
+      "DeckSize": "32",
+      "Strength": "9.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
     },
     "PuzzleData": {
       "PlayerLosses": "1",
-      "EnemyLosses": "0",
+      "EnemyLosses": "1",
       "PlayersTurn": "true",
       "EnemyPassed": "true",
-      "PlayerDeck": {
+      "PlayerDeck": [
+        
+      ],
+      "EnemyDeck": [
 
-      },
-      "EnemyDeck": {
+      ],
+      "PlayerHand": [
+        "ShiftLeft",
+        "ShiftRight",
+        "Flip4"
+      ],
+      "EnemyHand": [
 
-      },
-      "PlayerHand": {
+      ],
+      "PlayerBinaryCards": [
+        "Binary9",
+        "Binary9",
+        "Binary7",
+        "Binary7"
+      ],
+      "PlayerDecimalCards": [
+        "Decimal12"
+      ],
+      "PlayerHexCards": [
 
-      },
-      "EnemyHand": {
-
-      },
-      "PlayerBinaryCards": {
-
-      },
-      "PlayerDecimalCards": {
-
-      },
-      "PlayerHexCards": {
-
-      },
-      "EnemyBinaryCards": {
-
-      },
-      "EnemyDecimalCards": {
-
-      },
-      "EnemyHexCards": {
-
-      },
+      ],
+      "EnemyBinaryCards": [
+        "Binary7",
+        "Binary6",
+        "Binary7"
+      ],
+      "EnemyDecimalCards": [
+        "Decimal6",
+        "Decimal7",
+        "Decimal6"
+      ],
+      "EnemyHexCards": [
+        "Hex7",
+        "Hex6",
+        "Hex7"
+      ],
       "TutorialKey": ""
     }
   }

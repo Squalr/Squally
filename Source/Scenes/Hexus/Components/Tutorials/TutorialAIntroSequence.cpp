@@ -38,10 +38,10 @@ TutorialAIntroSequence* TutorialAIntroSequence::create()
 	return instance;
 }
 
-TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::Neutral)
+TutorialAIntroSequence::TutorialAIntroSequence() : super(StateOverride::TutorialMode::TutorialA, GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_ScoreTotals::create(), Size(420.0f, 0.0f));
+	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_ScoreTotals::create(), Size(420.0f, 0.0f), TextHAlignment::CENTER);
 	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_LossDisplay::create(), Size(420.0f, 0.0f), TextHAlignment::CENTER);
 	this->rowTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_RowTotals::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->binaryCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_BinCards::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
@@ -55,7 +55,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->helpArrowHandCards = HelpArrow::create();
 
 	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* scoreTotalsNextLabelSelected = scoreTotalsNextLabel->clone();
 
 	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -63,7 +63,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->scoreTotalsNextButton = ClickableTextNode::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 	
 	LocalizedLabel* lossesDisplayNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* lossesDisplayNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* lossesDisplayNextLabelSelected = lossesDisplayNextLabel->clone();
 
 	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
 	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -71,7 +71,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->lossDisplayNextButton = ClickableTextNode::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* rowTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* rowTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* rowTotalsNextLabelSelected = rowTotalsNextLabel->clone();
 
 	rowTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
 	rowTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -79,7 +79,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->rowTotalsNextButton = ClickableTextNode::create(rowTotalsNextLabel, rowTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* binaryCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* binaryCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* binaryCardsNextLabelSelected = binaryCardsNextLabel->clone();
 
 	binaryCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	binaryCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -87,7 +87,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->binaryCardsNextButton = ClickableTextNode::create(binaryCardsNextLabel, binaryCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* decimalCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* decimalCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* decimalCardsNextLabelSelected = decimalCardsNextLabel->clone();
 
 	decimalCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	decimalCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -95,7 +95,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->decimalCardsNextButton = ClickableTextNode::create(decimalCardsNextLabel, decimalCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* hexCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* hexCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
+	LocalizedLabel* hexCardsNextLabelSelected = hexCardsNextLabel->clone();
 
 	hexCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	hexCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -103,7 +103,7 @@ TutorialAIntroSequence::TutorialAIntroSequence() : TutorialBase(StateOverride::T
 	this->hexCardsNextButton = ClickableTextNode::create(hexCardsNextLabel, hexCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
-	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
+	LocalizedLabel* handCardsNextLabelSelected = handCardsNextLabel->clone();
 
 	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
 	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
@@ -160,7 +160,7 @@ TutorialAIntroSequence::~TutorialAIntroSequence()
 
 void TutorialAIntroSequence::onEnter()
 {
-	TutorialBase::onEnter();
+	super::onEnter();
 
 	this->scoreTotalsTutorialLabel->setOpacity(0);
 	this->lossDisplayTutorialLabel->setOpacity(0);
@@ -181,7 +181,7 @@ void TutorialAIntroSequence::onEnter()
 
 void TutorialAIntroSequence::initializePositions()
 {
-	TutorialBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -209,7 +209,7 @@ void TutorialAIntroSequence::initializePositions()
 
 void TutorialAIntroSequence::initializeListeners()
 {
-	TutorialBase::initializeListeners();
+	super::initializeListeners();
 }
 
 bool TutorialAIntroSequence::tryHijackState(GameState* gameState)
@@ -222,41 +222,41 @@ bool TutorialAIntroSequence::tryHijackState(GameState* gameState)
 
 void TutorialAIntroSequence::onBeforeStateChange(GameState* gameState)
 {
-	TutorialBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void TutorialAIntroSequence::onAnyStateChange(GameState* gameState)
 {
-	TutorialBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void TutorialAIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialLossDisplay(gameState);
 	});
-	this->lossDisplayNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialRowTotals(gameState);
 	});
-	this->rowTotalsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->rowTotalsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialBinaryCards(gameState);
 	});
-	this->binaryCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->binaryCardsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialDecimalCards(gameState);
 	});
-	this->decimalCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->decimalCardsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHexCards(gameState);
 	});
-	this->hexCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->hexCardsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->runTutorialHandCards(gameState);
 	});
-	this->handCardsNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

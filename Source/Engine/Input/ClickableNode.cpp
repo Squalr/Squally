@@ -46,14 +46,18 @@ ClickableNode* ClickableNode::create(Node* nodeNormal, Node* nodeSelected)
 ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 {
 	this->mouseClickEvent = nullptr;
+	this->mouseInEvent = nullptr;
 	this->mouseDownEvent = nullptr;
 	this->mouseDragEvent = nullptr;
 	this->mouseOverEvent = nullptr;
+	this->mousePressEvent = nullptr;
+	this->mouseReleaseNoHitTestEvent = nullptr;
+	this->mouseReleaseEvent = nullptr;
 	this->mouseScrollEvent = nullptr;
 	this->allowCollisionWhenInvisible = false;
 	this->interactionEnabled = true;
-	this->isClickInit = false;
-	this->isClicked = false;
+	this->wasAnywhereClicked = false;
+	this->wasClickedDirectly = false;
 	this->isMousedOver = false;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
 	this->debugHitbox = DrawNode::create();
@@ -82,8 +86,8 @@ void ClickableNode::onEnter()
 {
 	super::onEnter();
 
-	this->isClickInit = false;
-	this->isClicked = false;
+	this->wasAnywhereClicked = false;
+	this->wasClickedDirectly = false;
 
 	this->sprite->setVisible(true);
 	this->spriteSelected->setVisible(false);
@@ -104,27 +108,27 @@ void ClickableNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::EventMouseMove, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
 
-	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::MouseRefreshEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseRefreshListener = EventListenerCustom::create(MouseEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
 	{
 		this->mouseMove(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom, true);
 	});
 
-	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::MouseDownEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseDownListener = EventListenerCustom::create(MouseEvents::EventMouseDown, [=](EventCustom* eventCustom)
 	{
 		this->mouseDown(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
 
-	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::MouseUpEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseUpListener = EventListenerCustom::create(MouseEvents::EventMouseUp, [=](EventCustom* eventCustom)
 	{
 		this->mouseUp(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
 
-	EventListenerCustom* mouseScrollListener = EventListenerCustom::create(MouseEvents::MouseScrollEvent, [=](EventCustom* eventCustom)
+	EventListenerCustom* mouseScrollListener = EventListenerCustom::create(MouseEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
 		this->mouseScroll(static_cast<MouseEvents::MouseEventArgs*>(eventCustom->getUserData()), eventCustom);
 	});
@@ -184,6 +188,9 @@ void ClickableNode::disableInteraction(GLubyte newOpacity)
 	this->interactionEnabled = false;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
+
+	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
+	// MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void ClickableNode::enableInteraction(GLubyte newOpacity)
@@ -191,6 +198,9 @@ void ClickableNode::enableInteraction(GLubyte newOpacity)
 	this->interactionEnabled = true;
 	this->showSprite(this->sprite);
 	this->setOpacity(newOpacity);
+
+	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
+	// MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
@@ -198,32 +208,52 @@ void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
 	this->modifier = modifier;
 }
 
-void ClickableNode::setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick)
+void ClickableNode::setMouseClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick)
 {
 	this->mouseClickEvent = onMouseClick;
 }
 
-void ClickableNode::setMouseDownCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDown)
+void ClickableNode::setMouseInCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseIn)
+{
+	this->mouseInEvent = onMouseIn;
+}
+
+void ClickableNode::setMouseDownCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDown)
 {
 	this->mouseDownEvent = onMouseDown;
 }
 
-void ClickableNode::setMouseDragCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDrag)
+void ClickableNode::setMousePressCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMousePressEvent)
+{
+	this->mousePressEvent = onMousePressEvent;
+}
+
+void ClickableNode::setMouseReleaseNoHitTestCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent)
+{
+	this->mouseReleaseNoHitTestEvent = mouseReleaseNoHitTestEvent;
+}
+
+void ClickableNode::setMouseReleaseCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent)
+{
+	this->mouseReleaseEvent = mouseReleaseEvent;
+}
+
+void ClickableNode::setMouseDragCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDrag)
 {
 	this->mouseDragEvent = onMouseDrag;
 }
 
-void ClickableNode::setMouseOverCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOver)
+void ClickableNode::setMouseOverCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOver)
 {
 	this->mouseOverEvent = onMouseOver;
 }
 
-void ClickableNode::setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut)
+void ClickableNode::setMouseOutCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOut)
 {
 	this->mouseOutEvent = onMouseOut;
 }
 
-void ClickableNode::setMouseScrollCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onScroll)
+void ClickableNode::setMouseScrollCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onScroll)
 {
 	this->mouseScrollEvent = onScroll;
 }
@@ -260,8 +290,8 @@ void ClickableNode::showSprite(Node* sprite)
 
 void ClickableNode::clearState()
 {
-	this->isClicked = false;
-	this->isClickInit = false;
+	this->wasClickedDirectly = false;
+	this->wasAnywhereClicked = false;
 }
 
 void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* event, bool isRefresh)
@@ -274,10 +304,10 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 	// Mouse drag callback
 	if (args->isLeftClicked)
 	{
-		if (this->isClicked && this->mouseDragEvent != nullptr)
+		if (this->wasClickedDirectly && this->mouseDragEvent != nullptr)
 		{
 			MouseEvents::TriggerDragEvent();
-			this->mouseDragEvent(this, args);
+			this->mouseDragEvent(args);
 		}
 	}
 	else
@@ -287,7 +317,12 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 
 	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
-		MouseEvents::TriggerClickableMouseOverEvent();
+		MouseEvents::TriggerEventClickableMouseOver();
+
+		if (!this->isMousedOver && this->mouseInEvent != nullptr)
+		{
+			this->mouseInEvent(args);
+		}
 
 		this->isMousedOver = true;
 
@@ -305,22 +340,21 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 			this->showSprite(this->spriteSelected);
 		}
 
+		// Set args as handled. Caller must un-handle in the callback if they choose.
+		args->handled = true;
+
 		// Mouse over callback
 		if (this->mouseOverEvent != nullptr)
 		{
-			this->mouseOverEvent(this, args);
+			this->mouseOverEvent(args);
 		}
-
-		// For the use cases of this game, I see no case in which we want to mouse over two things at once
-		// If this changes, we will have to make this line optional/configurable
-		args->handled = true;
 	}
 	else
 	{
 		// Mouse out event
 		if (this->isMousedOver && this->mouseOutEvent != nullptr)
 		{
-			this->mouseOutEvent(this, args);
+			this->mouseOutEvent(args);
 		}
 
 		this->isMousedOver = false;
@@ -336,28 +370,36 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		return;
 	}
 
-	if (GameUtils::intersects(this, Vec2(args->mouseCoords)) && args->isLeftClicked)
+	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)) && args->isLeftClicked)
 	{
 		if (this->mouseDownEvent != nullptr)
 		{
 			// Mouse down callback
-			this->mouseDownEvent(this, args);
+			this->mouseDownEvent(args);
 		}
 
-		if (!this->isClickInit)
+		if (!this->wasAnywhereClicked)
 		{
+			// Set args as handled. Caller must un-handle in either callback if they choose.
+			args->handled = true;
+
+			if (this->mousePressEvent != nullptr)
+			{
+				this->mousePressEvent(args);
+			}
+
 			if (this->mouseDragEvent != nullptr)
 			{
 				MouseEvents::TriggerDragEvent();
 			}
 
-			this->isClicked = true;
+			this->wasClickedDirectly = true;
 		}
 	}
 
 	if (args->isLeftClicked)
 	{
-		this->isClickInit = true;
+		this->wasAnywhereClicked = true;
 	}
 }
 
@@ -368,11 +410,21 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 		return;
 	}
 
-	this->isClickInit = false;
-
-	if (GameUtils::intersects(this, Vec2(args->mouseCoords)) && this->mouseClickEvent != nullptr && !args->isDragging && this->isClicked)
+	// This event is called despite any arg handled flags
+	if (this->wasClickedDirectly && this->mouseReleaseNoHitTestEvent != nullptr)
 	{
-		this->isClicked = false;
+		this->mouseReleaseNoHitTestEvent(args);
+	}
+
+	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)) && this->mouseClickEvent != nullptr && !args->isDragging && this->wasClickedDirectly)
+	{
+		this->wasClickedDirectly = false;
+		this->wasAnywhereClicked = false;
+
+		if (this->mouseReleaseEvent != nullptr)
+		{
+			this->mouseReleaseEvent(args);
+		}
 
 		// Play click sound
 		if (!this->clickSound.empty())
@@ -387,12 +439,16 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 			event->stopPropagation();
 		}
 
+		// Set args as handled. Caller must un-handle in the callback if they choose.
+		args->handled = true;
+
 		// Mouse click callback. IMPORTANT: Do not access any references to 'this' from here to the end of the function, in the case where this object is deleted in a callback
-		this->mouseClickEvent(this, args);
+		this->mouseClickEvent(args);
 	}
 	else
 	{
-		this->isClicked = false;
+		this->wasClickedDirectly = false;
+		this->wasAnywhereClicked = false;
 	}
 }
 
@@ -403,8 +459,21 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 		return;
 	}
 
-	if (this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
+	if (!args->handled && this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
 	{
-		this->mouseScrollEvent(this, args);
+		// Set args as handled. Caller must un-handle in the callback if they choose.
+		args->handled = true;
+
+		this->mouseScrollEvent(args);
 	}
+}
+
+cocos2d::Node* ClickableNode::getSprite()
+{
+	return this->sprite;
+}
+
+cocos2d::Node* ClickableNode::getSpriteSelected()
+{
+	return this->spriteSelected;
 }

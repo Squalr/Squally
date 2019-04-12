@@ -23,6 +23,7 @@ protected:
 	virtual void onStateExit(GameState* gameState);
 
 private:
+	typedef SmartNode super;
 	void onRequestStateChangeEvent(cocos2d::EventCustom* eventCustom);
 	void onBeforeStateChangeEvent(cocos2d::EventCustom* eventCustom);
 	void onStateChangeEvent(cocos2d::EventCustom* eventCustom);

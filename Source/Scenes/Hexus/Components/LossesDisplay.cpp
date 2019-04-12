@@ -47,7 +47,7 @@ LossesDisplay::~LossesDisplay()
 
 void LossesDisplay::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->playerSkullA->setOpacity(0);
 	this->playerSkullB->setOpacity(0);
@@ -57,7 +57,7 @@ void LossesDisplay::onEnter()
 
 void LossesDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -73,12 +73,12 @@ void LossesDisplay::initializePositions()
 
 void LossesDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void LossesDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	this->updateDisplayedLosses(gameState);
 }

@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -26,18 +26,18 @@ HexusOpponentTutorialF* HexusOpponentTutorialF::getInstance()
 	return HexusOpponentTutorialF::instance;
 }
 
-HexusOpponentTutorialF::HexusOpponentTutorialF() : HexusOpponentData(
+HexusOpponentTutorialF::HexusOpponentTutorialF() : super(
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
-	UIResources::Menus_Hexus_HexusFrameUnderflowRuins,
+	HexusResources::Menus_HexusFrameUnderflowRuins,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -24.0f),
 	HexusOpponentTutorialF::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Light,
-	HexusOpponentData::generateReward(0.1f),
-	HexusOpponentData::generateDeck(25, 0.1f,
+	0.0f,
+	super::generateDeck(25, 0.0f,
 	{
 	}),
 	StateOverride::create(

@@ -9,6 +9,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
+#include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -31,15 +32,10 @@ PlatformerEnemy::PlatformerEnemy(
 	int baseSpecial)
 	: super(initProperties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
 {
-	this->battleMapResource = "";
 	this->combatEntityList = std::vector<std::string>();
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
-
-	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyBattleMap))
-	{
-		this->battleMapResource = initProperties.at(PlatformerEnemy::MapKeyBattleMap).asString();
-	}
+	this->battleMapResource = GameUtils::getKeyOrDefault(initProperties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
 
 	this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyName).asString());
 
@@ -104,13 +100,13 @@ void PlatformerEnemy::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->resurrectButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->resurrectButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
 		this->health = std::max(this->getMaxHealth(), 1);
 	});
 
-	this->killButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->killButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;

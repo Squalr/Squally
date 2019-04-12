@@ -16,6 +16,7 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StateLoadInitialState();
 	~StateLoadInitialState();
 

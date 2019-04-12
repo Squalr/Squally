@@ -37,7 +37,7 @@ PlayerLastStandBanner::~PlayerLastStandBanner()
 
 void PlayerLastStandBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -52,7 +52,7 @@ void PlayerLastStandBanner::onBeforeStateChange(GameState* gameState)
 
 void PlayerLastStandBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::Pass && gameState->turn == GameState::Turn::Player && gameState->isPlayerLastStandCondition())
 	{

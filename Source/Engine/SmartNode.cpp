@@ -41,6 +41,11 @@ void SmartNode::onEnter()
 	{
 		this->onDeveloperModeEnable();
 	}
+	else
+	{
+		this->onDeveloperModeDisable();
+	}
+	
 }
 
 void SmartNode::onExit()
@@ -143,11 +148,4 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	listener->setIgnorePause(true);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-}
-
-void SmartNode::resume()
-{
-	super::resume();
-
-	this->initializeListeners();
 }

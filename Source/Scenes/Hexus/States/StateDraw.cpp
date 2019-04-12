@@ -19,7 +19,7 @@ StateDraw* StateDraw::create()
 	return instance;
 }
 
-StateDraw::StateDraw() : StateBase(GameState::StateType::Draw)
+StateDraw::StateDraw() : super(GameState::StateType::Draw)
 {
 }
 
@@ -29,12 +29,12 @@ StateDraw::~StateDraw()
 
 void StateDraw::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateDraw::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	switch (gameState->turn)
 	{
@@ -100,10 +100,10 @@ void StateDraw::onStateEnter(GameState* gameState)
 
 void StateDraw::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateDraw::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

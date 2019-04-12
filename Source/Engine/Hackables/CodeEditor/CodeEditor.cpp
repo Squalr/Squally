@@ -249,8 +249,8 @@ void CodeEditor::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->applyChangesButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onAccept, this));
-	this->cancelButton->setClickCallback(CC_CALLBACK_1(CodeEditor::onCancel, this));
+	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
+	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
 		HackableEvents::HackableAttributeEditEvent, 
@@ -689,7 +689,7 @@ void CodeEditor::onScriptLoad(ScriptEntry* script)
 	this->functionWindow->setText(script->getScript());
 }
 
-void CodeEditor::onAccept(ClickableNode* menuSprite)
+void CodeEditor::onAccept()
 {
 	this->scriptList->saveScripts();
 
@@ -711,7 +711,7 @@ void CodeEditor::onAccept(ClickableNode* menuSprite)
 	HackableEvents::TriggerEditHackableAttributeDone();
 }
 
-void CodeEditor::onCancel(ClickableNode* menuSprite)
+void CodeEditor::onCancel()
 {
 	this->scriptList->saveScripts();
 

@@ -18,4 +18,7 @@ protected:
 	GameState::StateType cachedPreviousState;
 	StateOverride::TutorialMode tutorialMode;
 	GameState::StateType stateToHijack;
+
+private:
+	typedef ComponentBase super;
 };

@@ -42,4 +42,5 @@ namespace FontResources
 	extern const std::string Main_Thai_NotoSansThai_Regular;
 	extern const std::string Pixel_Standard_Pixel_Zpix;
 	extern const std::string Texture_AlienText;
+	extern const std::string Texture_AsciiTable;
 };

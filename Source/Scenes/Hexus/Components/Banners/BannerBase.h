@@ -22,8 +22,8 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeStateChange(GameState* eventCustom) override;
-	void onAnyStateChange(GameState* eventCustom) override;
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 	void setBannerText(LocalizedString* text);
 	void flashBanner();
 	void showBanner();
@@ -31,6 +31,8 @@ protected:
 	void addBannerChild(Node* child);
 
 private:
+	typedef ComponentBase super;
+
 	cocos2d::LayerColor* bannerOverlay;
 	LocalizedLabel* bannerLabel;
 	cocos2d::Node* bannerChildrenNode;

@@ -35,7 +35,7 @@ DrawCountDisplay::DrawCountDisplay()
 	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 
 	this->deckDrawCountMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
-	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_DrawToolTip::create());
+	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_DrawToolTip::create());
 
 	this->deckDrawCountCardMouseOverLabel->setDimensions(320.0f - 16.0f, 0.0f);
 
@@ -56,7 +56,7 @@ DrawCountDisplay::~DrawCountDisplay()
 
 void DrawCountDisplay::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->deckDrawCountMouseOverPanel->setOpacity(0);
 	this->deckDrawCountCardMouseOverLabel->setOpacity(0);
@@ -65,7 +65,7 @@ void DrawCountDisplay::onEnter()
 
 void DrawCountDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -112,15 +112,15 @@ void DrawCountDisplay::disableDrawCountDisplayInteraction()
 
 void DrawCountDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	// Hide on last round -- there will be no next turn, thus draw count is irrelevent
-	if (gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)
+	if (gameState->stateType == GameState::StateType::CoinFlip && gameState->playerLosses >= 1 && gameState->enemyLosses >= 1)
 	{
 		this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
 		this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));
@@ -154,7 +154,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		default:
 		case GameState::StateType::PlayerTurnStart:
 		{
-			if (!gameState->enemyPassed)
+			if (!gameState->enemyPassed && !(gameState->playerLosses >= 1 && gameState->enemyLosses >= 1))
 			{
 				this->drawCountSprite->runAction(FadeTo::create(0.25f, 255));
 			}
@@ -163,7 +163,7 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		}
 		case GameState::StateType::OpponentTurnStart:
 		{
-			if (!gameState->playerPassed)
+			if (!gameState->playerPassed && !(gameState->playerLosses >= 1 && gameState->enemyLosses >= 1))
 			{
 				this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 255));
 			}
@@ -172,8 +172,12 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		}
 		case GameState::StateType::TurnEnd:
 		{
-			// this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
-			this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));
+			if (!(gameState->playerLosses >= 1 && gameState->enemyLosses >= 1))
+			{
+				// this->drawCountSprite->runAction(FadeTo::create(0.25f, 0));
+				this->enemyDrawCountSprite->runAction(FadeTo::create(0.25f, 0));
+			}
+
 			break;
 		}
 	}

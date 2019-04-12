@@ -35,6 +35,7 @@ CardRow::CardRow(bool isPlayerRow)
 	this->belongsToPlayer = isPlayerRow;
 	this->rowCards = std::vector<Card*>();
 	this->rowSelectCallback = nullptr;
+	this->clearOperationsOnInsert = false;
 	this->rowWidth = Config::rowWidth;
 
 	this->rowSelectSprite = ClickableNode::create(HexusResources::RowSelection, HexusResources::RowSelectionHighlight);
@@ -48,7 +49,7 @@ CardRow::~CardRow()
 
 void CardRow::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->rowSelectSprite->setOpacity(0);
 	this->rowSelectSprite->setVisible(false);
@@ -57,9 +58,9 @@ void CardRow::onEnter()
 
 void CardRow::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
-	this->rowSelectSprite->setClickCallback(CC_CALLBACK_1(CardRow::onRowSelectClick, this));
+	this->rowSelectSprite->setMouseClickCallback(CC_CALLBACK_0(CardRow::onRowSelectClick, this));
 }
 
 void CardRow::setRowWidth(float newRowWidth, float duration)
@@ -112,6 +113,11 @@ void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float
 		card->reveal();
 
 		this->rowCards.push_back(card);
+
+		if (this->clearOperationsOnInsert)
+		{
+			card->clearOperations();
+		}
 	}
 
 	this->setCardPositions(cardInsertDelay, indexDelay);
@@ -132,6 +138,66 @@ void CardRow::insertCard(Card* card, float cardInsertDelay)
 
 	this->rowCards.push_back(card);
 	this->setCardPositions(cardInsertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
+}
+
+void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay)
+{
+	for (auto it = cards.begin(); it != cards.end(); it++)
+	{
+		Card* card = *it;
+
+		if (card == nullptr)
+		{
+			return;
+		}
+
+		GameUtils::changeParent(card, this, true);
+
+		card->setMouseOverCallback(nullptr);
+		card->setMouseClickCallback(nullptr);
+		card->reveal();
+
+		this->rowCards.insert(this->rowCards.begin(), card);
+
+		if (this->clearOperationsOnInsert)
+		{
+			card->clearOperations();
+		}
+	}
+
+	this->setCardPositions(cardInsertDelay, indexDelay);
+}
+
+void CardRow::insertCardFront(Card* card, float cardInsertDelay)
+{
+	if (card == nullptr)
+	{
+		return;
+	}
+
+	GameUtils::changeParent(card, this, true);
+
+	card->setMouseOverCallback(nullptr);
+	card->setMouseClickCallback(nullptr);
+	card->reveal();
+
+	this->rowCards.insert(this->rowCards.begin(), card);
+	this->setCardPositions(cardInsertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
+}
+
+void CardRow::enableClearOperationsOnInsert()
+{
+	this->clearOperationsOnInsert = true;
 }
 
 Card* CardRow::removeCard(Card* card)
@@ -146,6 +212,15 @@ Card* CardRow::removeCard(Card* card)
 	this->setCardPositions(Config::insertDelay);
 
 	return card; // Note: We let the caller remove the child because it allows for control over positioning
+}
+
+void CardRow::removeCardsWhere(std::function<bool(Card*)> predicate)
+{
+	// Note: If the caller wants the card list, they need to extract it in the predicate
+	// Note: We let the caller remove the child because it allows for control over positioning
+	auto removed = std::remove_if(this->rowCards.begin(), this->rowCards.end(), predicate);
+	this->rowCards.erase(removed, this->rowCards.end());
+	this->setCardPositions(Config::insertDelay);
 }
 
 int CardRow::getCardCount()
@@ -259,7 +334,6 @@ void CardRow::disableRowCardSelection()
 	}
 }
 
-// TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::disableRowCardInteraction()
 {
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
@@ -269,7 +343,6 @@ void CardRow::disableRowCardInteraction()
 	}
 }
 
-// TODO, SPLIT OFF methods for hand into seperate class, Card Row on the field is very different than card row in hand
 void CardRow::enableRowCardInteraction()
 {
 	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
@@ -302,6 +375,15 @@ void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 	{
 		Card* card = *it;
 		card->setMouseOverCallback(callback);
+	}
+}
+
+void CardRow::setMouseOutCallback(std::function<void(Card*)> callback)
+{
+	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	{
+		Card* card = *it;
+		card->setMouseOutCallback(callback);
 	}
 }
 
@@ -363,7 +445,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 	}
 }
 
-void CardRow::onRowSelectClick(ClickableNode* menuSprite)
+void CardRow::onRowSelectClick()
 {
 	if (this->rowSelectCallback != nullptr)
 	{
@@ -387,22 +469,27 @@ int CardRow::simulateCardEffect(Card* card)
 		}
 		case CardData::CardType::Special_SHL:
 		case CardData::CardType::Special_SHR:
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_FLIP1:
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
-			Card::Operation operation = Card::toOperation(card->cardData->cardType, 0);
-
 			for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
 			{
 				Card* rowCard = *it;
+
+				Card::Operation operation = card->toOperation(rowCard->cardData->getIntrinsicImmediate());
 				int before = rowCard->getAttack();
 				int after = rowCard->simulateOperation(operation);
 
 				diff += (after - before);
 			}
+			
+			break;
 		}
 		default:
 		{

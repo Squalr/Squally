@@ -3,20 +3,24 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
 
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string GameState::requestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
-const std::string GameState::beforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
-const std::string GameState::onStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
+const std::string GameState::RequestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
+const std::string GameState::BeforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
+const std::string GameState::OnStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
 
 GameState* GameState::create()
 {
@@ -45,7 +49,7 @@ GameState::GameState()
 	roundNumber(0),
 	selectedHandCard(nullptr),
 	selectedRow(nullptr),
-	cardPreviewCallback(nullptr),
+	cardPreviewComponentCallback(nullptr),
 	updateStateCallback(nullptr),
 	endTurnCallback(nullptr),
 	requestAiCallback(nullptr),
@@ -59,16 +63,22 @@ GameState::GameState()
 	this->playerDecimalCards = CardRow::create(true);
 	this->playerHexCards = CardRow::create(true);
 
-	this->enemyDeck = Deck::create();
+	this->enemyDeck = Deck::create(false);
 	this->enemyHand = CardRow::create(false);
-	this->enemyGraveyard = Deck::create();
+	this->enemyGraveyard = Deck::create(false);
 	this->enemyBinaryCards = CardRow::create(false);
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
 
-	this->enemyHand->setVisible(false);
 	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
 	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
+
+	this->playerHand->enableClearOperationsOnInsert();
+	this->enemyHand->enableClearOperationsOnInsert();
+	this->playerGraveyard->enableClearOperationsOnInsert();
+	this->enemyGraveyard->enableClearOperationsOnInsert();
+	this->playerDeck->enableClearOperationsOnInsert();
+	this->enemyDeck->enableClearOperationsOnInsert();
 
 	this->addChild(this->enemyGraveyard);
 	this->addChild(this->enemyDeck);
@@ -91,7 +101,7 @@ GameState::~GameState()
 
 void GameState::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -110,6 +120,24 @@ void GameState::initializePositions()
 	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
 	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
+}
+
+void GameState::onDeveloperModeEnable()
+{
+	super::onDeveloperModeEnable();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY);
+}
+
+void GameState::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f);
 }
 
 void GameState::updateState(GameState* gameState, StateType newState)
@@ -138,9 +166,9 @@ void GameState::updateState(GameState* gameState, StateType newState)
 		}
 	}
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::requestStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::beforeStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::onStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::RequestStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::BeforeStateUpdateEvent, gameState);
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::OnStateUpdateEvent, gameState);
 }
 
 void GameState::clearInteraction()
@@ -150,12 +178,24 @@ void GameState::clearInteraction()
 	this->enemyHand->setMouseClickCallback(nullptr);
 	this->enemyHand->setMouseOverCallback(nullptr);
 
+	this->playerDeck->disableDeckSelection();
+	this->enemyDeck->disableDeckSelection();
+	this->playerGraveyard->disableDeckSelection();
+	this->enemyGraveyard->disableDeckSelection();
+	
+	this->playerDeck->disableInteraction();
+	this->enemyDeck->disableInteraction();
+	this->playerGraveyard->disableInteraction();
+	this->enemyGraveyard->disableInteraction();
+
 	this->enemyHand->disableRowSelection();
 	this->enemyHand->disableRowCardSelection();
 	this->enemyHand->disableRowCardInteraction();
 	this->playerHand->disableRowSelection();
 	this->playerHand->disableRowCardSelection();
 	this->playerHand->disableRowCardInteraction();
+
+	this->boardSelection->disableInteraction(0);
 
 	std::vector<CardRow*> rows = this->getAllRows();
 
@@ -169,17 +209,117 @@ void GameState::clearInteraction()
 	}
 }
 
-void GameState::removeFieldCards()
+void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
+{
+	std::vector<CardRow*> playerRows = this->getPlayerRows();
+	std::vector<Card*> playerRemovedCards = std::vector<Card*>();
+	std::vector<CardRow*> enemyRows = this->getEnemyRows();
+	std::vector<Card*> enemyRemovedCards = std::vector<Card*>();
+	bool isGameOver = this->playerLosses >= 2 || this->enemyLosses >= 2;
+
+	for (auto it = playerRows.begin(); it != playerRows.end(); it++)
+	{
+		(*it)->removeCardsWhere([&](Card* card)
+		{
+			// Special effect for binary 0 card (unless the game is over)
+			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
+			{
+				return false;
+			}
+
+			playerRemovedCards.push_back(card);
+			return true;
+		});
+	}
+
+	for (auto it = enemyRows.begin(); it != enemyRows.end(); it++)
+	{
+		(*it)->removeCardsWhere([&](Card* card)
+		{
+			// Special effect for binary 0 card (unless the game is over)
+			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
+			{
+				return false;
+			}
+
+			enemyRemovedCards.push_back(card);
+			return true;
+		});
+	}
+
+	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
+	{
+		// Special effect for Dec1 cards
+		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
+		{
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerHand->insertCard(*it, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyHand->insertCard(*it, Config::insertDelay);
+			}
+		}
+		else
+		{
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
+		}
+	}
+
+	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
+	{
+		// Special effect for Dec1 cards
+		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
+		{
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerHand->insertCard(*it, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyHand->insertCard(*it, Config::insertDelay);
+			}
+		}
+		else
+		{
+			if ((*it)->getIsPlayerOwnedCard())
+			{
+				this->playerGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
+			else
+			{
+				this->enemyGraveyard->insertCardTop(*it, true, Config::insertDelay);
+			}
+		}
+	}
+}
+
+CardRow* GameState::getRowForCard(Card* card)
 {
 	std::vector<CardRow*> rows = this->getAllRows();
 
 	for (auto it = rows.begin(); it != rows.end(); it++)
 	{
 		CardRow* row = *it;
-		row->clear();
+
+		for (auto cardIt = row->rowCards.begin(); cardIt != row->rowCards.end(); cardIt++)
+		{
+			if ((*cardIt) == card)
+			{
+				return *it;
+			}
+		}
 	}
 
-	roundNumber++;
+	return nullptr;
 }
 
 std::vector<Card*> GameState::getAllCards() 
@@ -239,6 +379,22 @@ std::vector<Card*> GameState::getPlayerCards()
 	return cards;
 }
 
+std::vector<Card*> GameState::getAbsorbCards()
+{
+	std::vector<Card*> allCards = this->getAllCards();
+	std::vector<Card*> absorbCards = std::vector<Card*>();
+
+	for (auto it = allCards.begin(); it != allCards.end(); it++)
+	{
+		if ((*it)->cardData->cardType == CardData::CardType::Special_ABSORB)
+		{
+			absorbCards.push_back(*it);
+		}
+	}
+
+	return absorbCards;
+}
+
 std::vector<CardRow*> GameState::getAllRows() 
 {
 	std::vector<CardRow*> rows = std::vector<CardRow*>();
@@ -255,9 +411,9 @@ std::vector<CardRow*> GameState::getEnemyRows()
 {
 	std::vector<CardRow*> cardRows;
 
-	cardRows.push_back(this->enemyBinaryCards);
 	cardRows.push_back(this->enemyDecimalCards);
 	cardRows.push_back(this->enemyHexCards);
+	cardRows.push_back(this->enemyBinaryCards);
 
 	return cardRows;
 }
@@ -266,9 +422,9 @@ std::vector<CardRow*> GameState::getPlayerRows()
 {
 	std::vector<CardRow*> cardRows = std::vector<CardRow*>();
 
-	cardRows.push_back(this->playerBinaryCards);
 	cardRows.push_back(this->playerDecimalCards);
 	cardRows.push_back(this->playerHexCards);
+	cardRows.push_back(this->playerBinaryCards);
 
 	return cardRows;
 }

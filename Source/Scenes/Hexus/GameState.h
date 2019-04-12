@@ -8,6 +8,7 @@
 
 class Card;
 class CardRow;
+class ClickableNode;
 class Deck;
 class HexusOpponentData;
 
@@ -24,6 +25,7 @@ public:
 		CoinFlip,
 		RoundStart,
 		CardReplace,
+		PeekCards,
 		PlayerTurnStart,
 		OpponentTurnStart,
 		Neutral,
@@ -50,7 +52,7 @@ public:
 	static GameState* create();
 	static void updateState(GameState* gameState, StateType newState);
 	void clearInteraction();
-	void removeFieldCards();
+	void sendFieldCardsToGraveyard(bool playerWon, bool enemyWon);
 	bool isRoundTied();
 	bool isPlayerWinningRound();
 	bool isEnemyWinningRound();
@@ -65,12 +67,14 @@ public:
 	bool isEnemyLastStandCondition();
 	bool isEnemyClaimVictoryCondition();
 	bool isEnemyPassCondition();
+	CardRow* getRowForCard(Card* card);
 	std::vector<CardRow*> getAllRows();
 	std::vector<CardRow*> getPlayerRows();
 	std::vector<CardRow*> getEnemyRows();
 	std::vector<Card*> getAllCards(); 
 	std::vector<Card*> getEnemyCards(); 
 	std::vector<Card*> getPlayerCards();
+	std::vector<Card*> getAbsorbCards();
 
 	StateType stateType;
 	StateType previousStateType;
@@ -94,7 +98,7 @@ public:
 	Card* selectedHandCard;
 	CardRow* selectedRow;
 	std::string bannerMessage;
-	std::function<void(Card*)> cardPreviewCallback;
+	std::function<void(Card*)> cardPreviewComponentCallback;
 	std::function<void(bool)> updateStateCallback;
 	std::function<void()> endTurnCallback;
 	std::function<void(GameState*)> requestAiCallback;
@@ -117,6 +121,8 @@ public:
 	CardRow* enemyDecimalCards;
 	CardRow* enemyHexCards;
 
+	ClickableNode* boardSelection;
+
 	HexusOpponentData* opponentData;
 
 	// Tutorial node pointers
@@ -136,14 +142,18 @@ public:
 	cocos2d::Node* lastStandButtonPointer;
 	cocos2d::Node* claimVictoryButtonPointer;
 
-	static const std::string requestStateUpdateEvent;
-	static const std::string beforeStateUpdateEvent;
-	static const std::string onStateUpdateEvent;
+	static const std::string RequestStateUpdateEvent;
+	static const std::string BeforeStateUpdateEvent;
+	static const std::string OnStateUpdateEvent;
+
 private:
+	typedef SmartNode super;
 	GameState();
 	~GameState();
 
 	void initializePositions() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;

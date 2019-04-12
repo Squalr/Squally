@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -26,18 +26,18 @@ HexusOpponentTutorialD* HexusOpponentTutorialD::getInstance()
 	return HexusOpponentTutorialD::instance;
 }
 
-HexusOpponentTutorialD::HexusOpponentTutorialD() : HexusOpponentData(
+HexusOpponentTutorialD::HexusOpponentTutorialD() : super(
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
-	UIResources::Menus_Hexus_HexusFrameVoidStar,
+	HexusResources::Menus_HexusFrameVoidStar,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),
 	Vec2(-16.0f, -48.0f),
 	HexusOpponentTutorialD::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Earth,
-	HexusOpponentData::generateReward(0.09f),
-	HexusOpponentData::generateDeck(25, 0.09f,
+	0.0f,
+	super::generateDeck(25, 0.0f,
 	{
 	}),
 	StateOverride::create(

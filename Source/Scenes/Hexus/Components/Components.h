@@ -1,3 +1,4 @@
+#include "Scenes/Hexus/Components/AssemblyHelpText.h"
 #include "Scenes/Hexus/Components/Avatars.h"
 #include "Scenes/Hexus/Components/Banners/CardReplaceBanner.h"
 #include "Scenes/Hexus/Components/Banners/DefeatBanner.h"
@@ -15,7 +16,7 @@
 #include "Scenes/Hexus/Components/Banners/RoundBanner.h"
 #include "Scenes/Hexus/Components/Banners/RoundTieBanner.h"
 #include "Scenes/Hexus/Components/Banners/VictoryBanner.h"
-#include "Scenes/Hexus/Components/CardPreview.h"
+#include "Scenes/Hexus/Components/CardPreviewComponent.h"
 #include "Scenes/Hexus/Components/DebugDisplay.h"
 #include "Scenes/Hexus/Components/DeckCardCountDisplay.h"
 #include "Scenes/Hexus/Components/DrawCountDisplay.h"

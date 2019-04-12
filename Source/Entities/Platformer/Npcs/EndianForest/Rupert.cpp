@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -53,7 +55,7 @@ Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 	{
 		Rupert::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_EndianForest_Rupert_Animations,
-			UIResources::Menus_Hexus_HexusFrameEndianForest,
+			HexusResources::Menus_HexusFrameEndianForest,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -160.0f),
@@ -91,13 +93,14 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.029f,
-			HexusOpponentData::generateDeck(25, 0.029f,
+			HexusOpponentData::generateDeck(32, 0.029f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 
 			}),

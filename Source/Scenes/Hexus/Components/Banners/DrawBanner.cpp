@@ -38,7 +38,7 @@ DrawBanner::~DrawBanner()
 
 void DrawBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -53,7 +53,7 @@ void DrawBanner::onBeforeStateChange(GameState* gameState)
 
 void DrawBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->stateType == GameState::StateType::GameEnd && gameState->enemyLosses == 2 && gameState->playerLosses == 2)
 	{

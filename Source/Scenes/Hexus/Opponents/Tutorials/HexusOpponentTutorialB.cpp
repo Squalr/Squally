@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -26,18 +26,18 @@ HexusOpponentTutorialB* HexusOpponentTutorialB::getInstance()
 	return HexusOpponentTutorialB::instance;
 }
 
-HexusOpponentTutorialB::HexusOpponentTutorialB() : HexusOpponentData(
+HexusOpponentTutorialB::HexusOpponentTutorialB() : super(
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
-	UIResources::Menus_Hexus_HexusFrameVoidStar,
+	HexusResources::Menus_HexusFrameVoidStar,
 	1.0f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),
 	Vec2(0.0f, -48.0f),
 	HexusOpponentTutorialB::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Air,
-	HexusOpponentData::generateReward(0.075f),
-	HexusOpponentData::generateDeck(25, 0.075f,
+	0.0f,
+	super::generateDeck(25, 0.0f,
 	{
 	}),
 	StateOverride::create(

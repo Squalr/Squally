@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -53,7 +55,7 @@ Garin::Garin(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* Garin::getHexusOpponentData()
 	{
 		Garin::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_CastleValgrind_Garin_Animations,
-			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
+			HexusResources::Menus_HexusFrameCastleValgrind,
 			0.85f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
@@ -91,14 +93,18 @@ HexusOpponentData* Garin::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
 			0.406f,
-			HexusOpponentData::generateDeck(25, 0.406f,
+			HexusOpponentData::generateDeck(32, 0.406f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 
 			}),
 			nullptr

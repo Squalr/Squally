@@ -2,49 +2,58 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
-Deck* Deck::create()
+Deck* Deck::create(bool isPlayerOwnedDeck)
 {
-	Deck* instance = new Deck();
+	Deck* instance = new Deck(isPlayerOwnedDeck);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards)
+Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards, bool isPlayerOwnedDeck)
 {
-	Deck* instance = new Deck(cardStyle, cards);
+	Deck* instance = new Deck(cardStyle, cards, isPlayerOwnedDeck);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Deck::Deck() : Deck(Card::CardStyle::Earth, std::vector<CardData*>())
+Deck::Deck(bool isPlayerOwnedDeck) : Deck(Card::CardStyle::Earth, std::vector<CardData*>(), isPlayerOwnedDeck)
 {
 	this->deckCards = std::vector<Card*>();
 }
 
-Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData)
+Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck)
 {
+	this->isPlayerOwnedDeck = isPlayerOwnedDeck;
 	this->style = cardStyle;
 	this->deckCards = std::vector<Card*>();
-	this->pad = Sprite::create(HexusResources::CardPad);
+	this->pad = ClickableNode::create(HexusResources::CardPad, HexusResources::CardPad);
+	this->cardsNode = Node::create();
+	this->deckFocus = Sprite::create(HexusResources::CardSelect);
+	this->clearOperationsOnInsert = false;
 
 	this->pad->setScale(Card::cardScale);
+	this->deckFocus->setScale(Card::cardScale);
 
 	this->addChild(this->pad);
 
 	for (auto it = cardData.begin(); it != cardData.end(); *it++)
 	{
-		this->insertCardBottom(Card::create(this->style, *it), false, 0.0f);
+		this->insertCardBottom(Card::create(this->style, *it, isPlayerOwnedDeck), false, 0.0f);
 	}
+
+	this->addChild(this->cardsNode);
+	this->addChild(this->deckFocus);
 }
 
 Deck::~Deck()
@@ -60,7 +69,7 @@ void Deck::copyTo(Deck* otherDeck)
 
 		for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
 		{
-			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData), false, 0.0f);
+			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData, this->isPlayerOwnedDeck), false, 0.0f);
 		}
 	}
 }
@@ -104,11 +113,16 @@ void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this, true);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	this->deckCards.push_back(card);
 	this->setCardOrder();
 	this->doInsertAnimation(card, faceUp, insertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
 }
 
 void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
@@ -120,11 +134,16 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this, true);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	this->deckCards.insert(this->deckCards.begin(), card);
 	this->setCardOrder();
 	this->doInsertAnimation(card, faceUp, insertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
 }
 
 void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
@@ -136,12 +155,22 @@ void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this, true);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	int index = RandomHelper::random_int(0, (int)this->deckCards.size());
 	this->deckCards.insert(this->deckCards.begin() + index, card);
 	this->setCardOrder();
 	this->doInsertAnimation(card, faceUp, insertDelay);
+
+	if (this->clearOperationsOnInsert)
+	{
+		card->clearOperations();
+	}
+}
+
+void Deck::enableClearOperationsOnInsert()
+{
+	this->clearOperationsOnInsert = true;
 }
 
 void Deck::doInsertAnimation(Card* card, bool faceUp, float insertDelay)
@@ -180,7 +209,7 @@ void Deck::clear()
 {
 	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 	{
-		this->removeChild(*it);
+		this->cardsNode->removeChild(*it);
 	}
 
 	this->deckCards.clear();
@@ -199,6 +228,25 @@ void Deck::setCardOrder()
 	{
 		(*it)->setLocalZOrder(zIndex++);
 	}
+}
+
+void Deck::enableDeckSelection(std::function<void(Deck*)> callback)
+{
+	this->pad->enableInteraction();
+	this->pad->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		callback(this);
+	});
+
+	this->deckFocus->setOpacity(196);
+}
+
+void Deck::disableDeckSelection()
+{
+	this->pad->disableInteraction();
+	this->pad->setMouseClickCallback(nullptr);
+
+	this->deckFocus->setOpacity(0);
 }
 
 void Deck::removeCardsWhere(std::function<bool(Card*)> predicate)
@@ -222,4 +270,22 @@ Card* Deck::removeCard(Card* card)
 
 	// Note: We let the caller remove the child because it allows for control over positioning
 	return card;
+}
+
+void Deck::enableTopCardInteraction(std::function<void(Card*)> mouseOverCallback)
+{
+	if (!this->deckCards.empty())
+	{
+		this->deckCards.back()->enableInteraction();
+		this->deckCards.back()->setMouseOverCallback(mouseOverCallback);
+	}
+}
+
+void Deck::disableInteraction()
+{
+	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
+	{
+		(*it)->disableInteraction();
+		(*it)->setMouseOverCallback(nullptr);
+	}
 }

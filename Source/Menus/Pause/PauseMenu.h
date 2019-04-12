@@ -34,11 +34,11 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onExitConfirm();
-	void onCloseClick(ClickableNode* menuSprite);
+	void onCloseClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onResumeClick(ClickableNode* menuSprite);
-	void onOptionsClick(ClickableNode* menuSprite);
-	void onExitClick(ClickableNode* menuSprite);
+	void onResumeClick();
+	void onOptionsClick();
+	void onExitClick();
 
 	cocos2d::Sprite* pauseWindow;
 	LocalizedLabel* pauseLabel;

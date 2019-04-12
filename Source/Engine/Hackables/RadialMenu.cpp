@@ -159,12 +159,12 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 
 	// +1 from the exit node, which is always present
 	float angleStep = (3.14159f * 2.0f) / ((float)(this->activeHackableObject->dataList.size() + this->activeHackableObject->codeList.size() + 1));
-	float currentAngle = 3.0f * M_PI / 2.0f;
+	float currentAngle = 3.0f * float(M_PI) / 2.0f;
 
 	// Create return button
 	Vec2 nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 	Node* returnRadialNode = this->createRadialNode(UIResources::Menus_Icons_Cross, nextDataIconPosition, currentAngle, Strings::Menus_Exit::create(), [=]() { this->close(); });
-	currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * M_PI);
+	currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * float(M_PI));
 
 	this->radialMenuItems->addChild(returnRadialNode);
 
@@ -185,7 +185,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 
 		this->radialMenuItems->addChild(menuNode);
 
-		currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * M_PI);
+		currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * float(M_PI));
 	}
 }
 
@@ -202,55 +202,44 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
-	clickableNode->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
-	{
-		clickCallback();
-	});
+	clickableNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) {	clickCallback(); });
+	clickableNode->setMouseOverCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
+	clickableNode->setMouseOutCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
 
-	clickableNode->setMouseOverCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
-	{
-		label->setTextColor(Color4B::YELLOW);
-	});
-
-	clickableNode->setMouseOutCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
-	{
-		label->setTextColor(Color4B::WHITE);
-	});
-
-	const float tolerance = M_PI / 64.0f;
+	const float tolerance = float(M_PI) / 64.0f;
 	const float offset = 64.0f;
 
 	// Handle the main cardinal directions
-	if (MathUtils::fuzzyEquals(angle, M_PI / 2.0f, tolerance))
+	if (MathUtils::fuzzyEquals(angle, float(M_PI) / 2.0f, tolerance))
 	{
 		labelNode->setPosition(Vec2(0.0f, offset));
 	}
-	else if (MathUtils::fuzzyEquals(angle, 3.0f * M_PI / 2.0f, tolerance))
+	else if (MathUtils::fuzzyEquals(angle, 3.0f * float(M_PI) / 2.0f, tolerance))
 	{
 		labelNode->setPosition(Vec2(0.0f, -offset));
 	}
-	else if (MathUtils::fuzzyEquals(angle, M_PI, tolerance))
+	else if (MathUtils::fuzzyEquals(angle, float(M_PI), tolerance))
 	{
 		labelNode->setPosition(Vec2(-offset, 0.0f));
 		label->setAnchorPoint(Vec2(1.0f, 0.5f));
 	}
-	else if (MathUtils::fuzzyEquals(angle, 2.0f * M_PI, tolerance) || MathUtils::fuzzyEquals(angle, 0.0f, tolerance))
+	else if (MathUtils::fuzzyEquals(angle, 2.0f * float(M_PI), tolerance) || MathUtils::fuzzyEquals(angle, 0.0f, tolerance))
 	{
 		labelNode->setPosition(Vec2(offset, 0.0f));
 		label->setAnchorPoint(Vec2(0.0f, 0.5f));
 	}
 	// Generic cases
-	else if (angle < M_PI / 2.0f)
+	else if (angle < float(M_PI) / 2.0f)
 	{
 		labelNode->setPosition(Vec2(offset, 0.0f));
 		label->setAnchorPoint(Vec2(0.0f, 0.5f));
 	}
-	else if (angle < M_PI)
+	else if (angle < float(M_PI))
 	{
 		labelNode->setPosition(Vec2(-offset, 0.0f));
 		label->setAnchorPoint(Vec2(1.0f, 0.5f));
 	}
-	else if (angle < M_PI)
+	else if (angle < float(M_PI))
 	{
 		labelNode->setPosition(Vec2(-offset, 0.0f));
 		label->setAnchorPoint(Vec2(1.0f, 0.5f));

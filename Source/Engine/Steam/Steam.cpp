@@ -4,11 +4,17 @@
 
 #include "steam_api.h"
 
+#include "cocos/platform/CCFileUtils.h"
+
 #include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 
 const int Steam::SteamAppId = 770200;
+const std::string Steam::SteamLibOSX = "libsteam_api.dylib";
+const std::string Steam::SteamLibWin32 = "steam_api.dll";
+const std::string Steam::SteamLibWin64 = "steam_api64.dll";
+const std::string Steam::SteamLibLinux32 = "libsteam_api.so";
 
 Steam* Steam::instance = nullptr;
 
@@ -52,8 +58,20 @@ bool Steam::init()
 
 bool Steam::isSquallySteamBuild()
 {
-	// TODO: Make this compiler flag dependent or something
-	return true;
+	static bool init = false;
+	static bool isSteamBuild = true;
+
+	if (!init)
+	{
+		init = true;
+
+		if (!Steam::isSteamLibPresent())
+		{
+			isSteamBuild = false;
+		}
+	}
+
+	return isSteamBuild;
 }
 
 bool Steam::isCloudSaveAvailable()
@@ -208,4 +226,17 @@ LanguageType Steam::getLanguage()
 
 	// Fallback default
 	return LanguageType::ENGLISH;
+}
+
+bool Steam::isSteamDebugBuild()
+{
+	return FileUtils::getInstance()->isFileExist("steam_appid.txt");
+}
+
+bool Steam::isSteamLibPresent()
+{
+	return (FileUtils::getInstance()->isFileExist(Steam::SteamLibOSX)
+		|| FileUtils::getInstance()->isFileExist(Steam::SteamLibWin32)
+		|| FileUtils::getInstance()->isFileExist(Steam::SteamLibWin64)
+		|| FileUtils::getInstance()->isFileExist(Steam::SteamLibLinux32));
 }

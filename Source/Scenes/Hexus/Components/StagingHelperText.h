@@ -11,23 +11,22 @@ public:
 	static StagingHelperText* create();
 
 protected:
-	void onBeforeStateChange(GameState* eventCustom) override;
-	void onAnyStateChange(GameState* eventCustom) override;
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 
 private:
+	typedef ComponentBase super;
 	StagingHelperText();
 	~StagingHelperText();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void updateSelectionStatus(GameState* gameState);
-	void onHelpClick(ClickableNode* menuSprite, GameState* gameState);
 	void updateCombineStatus(GameState* gameState);
-	void onSelectionCancel(ClickableNode* menuSprite, GameState* gameState);
-	void onCombineCancel(ClickableNode* menuSprite, GameState* gameState);
+	void onSelectionCancel(GameState* gameState);
+	void onCombineCancel(GameState* gameState);
 	void clearSelectionStatus();
 
 	LocalizedLabel* selectionLabel;
 	ClickableNode* cancelButton;
-	ClickableNode* helpButton;
 };

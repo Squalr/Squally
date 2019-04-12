@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -53,7 +55,7 @@ Igneus::Igneus(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* Igneus::getHexusOpponentData()
 	{
 		Igneus::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
-			UIResources::Menus_Hexus_HexusFrameDaemonsHallow,
+			HexusResources::Menus_HexusFrameDaemonsHallow,
 			1.05f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
@@ -91,14 +93,18 @@ HexusOpponentData* Igneus::getHexusOpponentData()
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			0.688f,
-			HexusOpponentData::generateDeck(25, 0.688f,
+			HexusOpponentData::generateDeck(32, 0.688f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 
 			}),
 			nullptr

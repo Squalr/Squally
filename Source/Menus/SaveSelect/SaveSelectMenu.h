@@ -22,10 +22,10 @@ private:
 	void initializePositions() override;
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onSaveGame1Click(ClickableNode* menuSprite);
-	void onSaveGame2Click(ClickableNode* menuSprite);
-	void onSaveGame3Click(ClickableNode* menuSprite);
-	void onBackClick(ClickableNode* menuSprite);
+	void onSaveGame1Click();
+	void onSaveGame2Click();
+	void onSaveGame3Click();
+	void onBackClick();
 
 	cocos2d::Node* backgroundNode;
 	ClickableTextNode* saveGame1;

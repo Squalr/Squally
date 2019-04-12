@@ -3,7 +3,13 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Sound/SoundManager.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/Config.h"
+
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -16,7 +22,7 @@ StateTurnEnd* StateTurnEnd::create()
 	return instance;
 }
 
-StateTurnEnd::StateTurnEnd() : StateBase(GameState::StateType::TurnEnd)
+StateTurnEnd::StateTurnEnd() : super(GameState::StateType::TurnEnd)
 {
 }
 
@@ -26,16 +32,21 @@ StateTurnEnd::~StateTurnEnd()
 
 void StateTurnEnd::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 
 	gameState->turnNumber++;
 }
 
 void StateTurnEnd::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	gameState->clearInteraction();
+
+	if (!(gameState->enemyPassed && gameState->playerPassed))
+	{
+		this->runIncrementHex0Effect(gameState);
+	}
 
 	float endTurnDelay = Config::endTurnDelay;
 	gameState->isRepeatingSameTurn = false;
@@ -145,16 +156,41 @@ void StateTurnEnd::onStateEnter(GameState* gameState)
 			break;
 		}
 		default:
+		{
 			break;
+		}
 	}
 }
 
 void StateTurnEnd::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateTurnEnd::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
+}
+
+void StateTurnEnd::runIncrementHex0Effect(GameState* gameState)
+{
+	std::vector<Card*> allFieldCards = gameState->getAllCards();
+
+	bool wasEffectRun = false;
+
+	for (auto it = allFieldCards.begin(); it != allFieldCards.end(); it++)
+	{
+		if ((*it)->cardData->cardKey == CardKeys::Hex0)
+		{
+			(*it)->addOperation(Card::Operation(Card::Operation::OperationType::ADD, 0b0001));
+			(*it)->cardEffects->runEffect(CardEffects::CardEffect::Nether);
+
+			wasEffectRun = true;
+		}
+	}
+
+	if (wasEffectRun)
+	{
+		SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
+	}
 }

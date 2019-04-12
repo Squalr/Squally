@@ -20,16 +20,21 @@
       "Y": "-144.0f"
     },
     "MatchData": {
-      "DeckSize": "25",
+      "DeckSize": "32",
       "Strength": "(1.0f / 8.0f) * (4.0f + (1.0f / 12.0f) * 2.0f)",
       "Strategy": "Random",
       "PresetCards": [
+        "Greed",
+        "Greed",
+        "ShiftRight",
+        "BonusMoves",
+        "Kill",
         "Addition",
-        "LogicalAnd",
-        "LogicalOr",
-        "LogicalXor",
-        "ShiftLeft",
-        "ShiftRight"
+        "Steal",
+        "Flip4",
+        "Absorb",
+        "Flip3",
+        "LogicalXor"
       ]
     }
   }

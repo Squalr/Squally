@@ -569,8 +569,17 @@ std::string HackUtils::toBinary4(int value)
 {
 	std::stringstream stream;
 
-	// Convert to hex
 	stream << std::bitset<4>(value);
+	std::string binaryString = stream.str();
+
+	return binaryString;
+}
+
+std::string HackUtils::toBinary8(int value)
+{
+	std::stringstream stream;
+
+	stream << std::bitset<8>(value);
 	std::string binaryString = stream.str();
 
 	return binaryString;
