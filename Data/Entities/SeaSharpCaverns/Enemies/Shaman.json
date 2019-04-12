@@ -53,14 +53,15 @@
       "PlayerHexCards": [
         "Hex2",
         "Hex1",
-        "Hex2"
+        "Hex2",
+        "Hex0"
       ],
       "EnemyBinaryCards": [
 
       ],
       "EnemyDecimalCards": [
         "Absorb",
-        "Decimal3",
+        "Decimal4",
         "Decimal3",
         "Decimal2"
       ],

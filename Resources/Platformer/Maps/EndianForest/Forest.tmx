@@ -506,13 +506,6 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="589" name="orc-bomber" type="entity" x="1219.37" y="2656.7" width="133.348" height="150.354">
-   <properties>
-    <property name="ally-1" value="orc-bomber"/>
-    <property name="ally-2" value="orc-bomber"/>
-    <property name="battle_map" value="EndianForest/Battlegrounds"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

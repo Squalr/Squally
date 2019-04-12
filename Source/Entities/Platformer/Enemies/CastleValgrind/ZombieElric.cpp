@@ -154,7 +154,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
