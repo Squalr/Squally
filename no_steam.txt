@@ -1,6 +1,0 @@
-If this file is present, and steam_appid.txt is not present, Squally will not use Steam.
-
-Cases:
-- Steam		Neither file present
-- Debug		Both files are present, and Steam debug mode is used.
-- Itch		Only `no_steam.txt` is present, and Steam is not used.
