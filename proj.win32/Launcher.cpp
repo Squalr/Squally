@@ -60,9 +60,9 @@ namespace
         std::wstring crashDumpPath = *file_path;
         std::thread([mainThreadId, crashDumpPath] ()
         {
-            const std::wstring& text = L"Squally crashed out of the Vapor Web and his head exploded\n\n"
-                L"Mr Muskrat will be cleaning the walls for weeks, can you send us a bug report so we can"
-                " \"keep this from happening again?\"";
+            const std::wstring& text = L"Squally has destroyed the simulation, oh dear.\n\n"
+                L"If this was caused by editing assembly, ignore this. Otherwise, will you submit a bug"
+                " \"report to keep this from happening again?\"";
 
             // If user denies crash report, exit launcher now
             if (MessageBox(nullptr, text.c_str(), L"Squally Launcher", MB_YESNO | MB_ICONERROR) != IDYES)

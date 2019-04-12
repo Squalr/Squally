@@ -132,8 +132,8 @@ namespace google_breakpad
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Yes"];
     [alert addButtonWithTitle:@"No"];
-    [alert setMessageText:@"Squally crashed out of the Vapor Web and his head exploded"];
-    [alert setInformativeText:@"Mr Muskrat will be cleaning the walls for weeks, can you send us a bug report so we can keep this from happening again?"];
+    [alert setMessageText:@"Squally has destroyed the simulation, oh dear."];
+    [alert setInformativeText:@"If this was caused by editing assembly, ignore this. Otherwise, will you submit a bug report to keep this from happening again?"];
     [alert setAlertStyle:NSWarningAlertStyle];
     [alert setAccessoryView:textView];
 
