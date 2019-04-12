@@ -13,6 +13,19 @@ git submodule update --init --recursive .
 python dep.py update
 ```
 
+Publishing to Itch and Steam
+---------
+
+The gDrive SquallyDeploy folder is used as a repository for deploy files. Git is not effective here, as the binaries are large and change often. Simply run the `deploy.py` script. Currently, we release symbol files because it doesn't really matter.
+
+Note: Itch.io builds and Steam builds are identical. The difference is the files shipped:
+
+Cases:
+- Steam		Steam DLLs are present, `steam_appid.txt` is NOT present.
+- Debug		Both files are present, and Steam debug mode is used.
+- Itch		Neither file is present.
+
+
 Dependencies
 ---------
 Dependencies are managed via vcpkg which is conviently bundled into this repo
