@@ -125,7 +125,6 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>

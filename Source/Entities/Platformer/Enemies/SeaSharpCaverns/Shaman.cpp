@@ -145,6 +145,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -155,7 +156,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
