@@ -10,7 +10,9 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/CipherEvents.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
@@ -40,10 +42,12 @@ PlatformerMap::PlatformerMap()
 	}
 
 	this->gameHud = GameHud::create();
+	this->cipher = Cipher::create();
 
 	this->getPhysicsWorld()->setAutoStep(false);
 
 	this->addChild(this->gameHud);
+	this->menuHud->addChild(this->cipher);
 }
 
 PlatformerMap::~PlatformerMap()
@@ -86,6 +90,18 @@ void PlatformerMap::initializeListeners()
 		{
 			PlatformerMap::instance->loadMap(mapArgs->levelMap);
 			GlobalDirector::loadScene(PlatformerMap::instance);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->menuBackDrop->setOpacity(196);
+			this->cipher->setVisible(true);
+			this->cipher->openCipher(args->cipherPuzzleData);
 		}
 	}));
 }

@@ -17,6 +17,7 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Hexus/ManageCards.h"
@@ -32,7 +33,7 @@ HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOppo
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->background = Sprite::create(UIResources::Menus_Hexus_WoodBackground);
+	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 	this->opponentSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hexus_SelectOpponent::create());
 
 	LocalizedLabel* manageDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ManageCards::create());
@@ -179,9 +180,9 @@ void HexusOpponentMenuBase::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusOpponentMenuBase::onKeyPressed, this);
-	this->deckManagementButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onDeckManagementClick, this));
-	this->shopButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onShopClick, this));
-	this->backButton->setClickCallback(CC_CALLBACK_1(HexusOpponentMenuBase::onBackClick, this));
+	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onDeckManagementClick, this));
+	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onShopClick, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }
@@ -212,17 +213,17 @@ void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* 
 	}
 }
 
-void HexusOpponentMenuBase::onBackClick(ClickableNode* menuSprite)
+void HexusOpponentMenuBase::onBackClick()
 {
 	NavigationEvents::navigateBack();
 }
 
-void HexusOpponentMenuBase::onDeckManagementClick(ClickableNode* menuSprite)
+void HexusOpponentMenuBase::onDeckManagementClick()
 {
 	NavigationEvents::navigateHexusDeckManagement();
 }
 
-void HexusOpponentMenuBase::onShopClick(ClickableNode* menuSprite)
+void HexusOpponentMenuBase::onShopClick()
 {
 	NavigationEvents::navigateHexusShop();
 }
@@ -261,5 +262,10 @@ void HexusOpponentMenuBase::buildOpponentList()
 	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{
 		this->scrollPane->addChild(*it);
+	}
+
+	if (!opponents.empty())
+	{
+		this->opponents.back()->hexusOpponentData->setIsLastInChapter();
 	}
 }

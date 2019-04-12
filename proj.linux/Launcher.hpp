@@ -69,7 +69,7 @@ const std::string& launcherDialogXML = R"END(
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="margin_bottom">10</property>
-                        <property name="label" translatable="yes">&lt;b&gt;Squally crashed out of the Vapor Web and his head exploded&lt;/b&gt;</property>
+                        <property name="label" translatable="yes">&lt;b&gt;Squally has destroyed the simulation, oh dear.&lt;/b&gt;</property>
                         <property name="use_markup">True</property>
                         <property name="wrap">True</property>
                     </object>
@@ -85,7 +85,7 @@ const std::string& launcherDialogXML = R"END(
                         <property name="can_focus">False</property>
                         <property name="halign">start</property>
                         <property name="margin_bottom">10</property>
-                        <property name="label" translatable="yes">Mr Muskrat will be cleaning the walls for weeks, can you send us a bug report so we can "keep this from happening again?"</property>
+                        <property name="label" translatable="yes">If this was caused by editing assembly, ignore this. Otherwise, will you submit a bug report to keep this from happening again?"</property>
                         <property name="use_markup">True</property>
                         <property name="wrap">True</property>
                     </object>

@@ -33,5 +33,5 @@ void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parent
 	this->setPosition(cameraPosition - visibleSize / 2.0f);
 	this->setPositionZ(cameraHeight - initialCameraHeight);
 
-	SmartNode::visit(renderer, parentTransform, parentFlags);
+	super::visit(renderer, parentTransform, parentFlags);
 }

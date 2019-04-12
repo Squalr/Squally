@@ -11,8 +11,11 @@
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
+#include "Scenes/Cipher/CipherMenu/CipherSelectMenu.h"
+#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenuPuzzles.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/BalmerPeaks/HexusOpponentMenuBalmerPeaks.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/CastleValgrind/HexusOpponentMenuCastleValgrind.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/DaemonsHallow/HexusOpponentMenuDaemonsHallow.h"
@@ -22,9 +25,16 @@
 #include "Scenes/Hexus/Menus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/UnderflowRuins/HexusOpponentMenuUnderflowRuins.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/VoidStar/HexusOpponentMenuVoidStar.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/BalmerPeaks/HexusOpponentMenuBalmerPeaksPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/CastleValgrind/HexusOpponentMenuCastleValgrindPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/DaemonsHallow/HexusOpponentMenuDaemonsHallowPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/EndianForest/HexusOpponentMenuEndianForestPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/LambdaCrypts/HexusOpponentMenuLambdaCryptsPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/SeaSharpCaverns/HexusOpponentMenuSeaSharpCavernsPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/UnderflowRuins/HexusOpponentMenuUnderflowRuinsPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/VoidStar/HexusOpponentMenuVoidStarPuzzle.h"
 #include "Scenes/Hexus/Menus/HexusDeckManagement.h"
 #include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
-#include "Scenes/Hexus/Menus/Puzzles/HexusPuzzlesMenu.h"
 #include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -45,8 +55,11 @@ void Bootstrapper::initialize()
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	CipherPuzzleDeserializer::registerGlobalNode();
+	CipherSelectMenu::registerGlobalScene();
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
+	HexusChapterSelectMenuPuzzles::registerGlobalScene();
 	HexusOpponentMenuBalmerPeaks::registerGlobalScene();
 	HexusOpponentMenuCastleValgrind::registerGlobalScene();
 	HexusOpponentMenuDaemonsHallow::registerGlobalScene();
@@ -56,9 +69,16 @@ void Bootstrapper::initialize()
 	HexusOpponentMenuTraining::registerGlobalScene();
 	HexusOpponentMenuUnderflowRuins::registerGlobalScene();
 	HexusOpponentMenuVoidStar::registerGlobalScene();
+	HexusOpponentMenuBalmerPeaksPuzzle::registerGlobalScene();
+	HexusOpponentMenuCastleValgrindPuzzle::registerGlobalScene();
+	HexusOpponentMenuDaemonsHallowPuzzle::registerGlobalScene();
+	HexusOpponentMenuEndianForestPuzzle::registerGlobalScene();
+	HexusOpponentMenuLambdaCryptsPuzzle::registerGlobalScene();
+	HexusOpponentMenuSeaSharpCavernsPuzzle::registerGlobalScene();
+	HexusOpponentMenuUnderflowRuinsPuzzle::registerGlobalScene();
+	HexusOpponentMenuVoidStarPuzzle::registerGlobalScene();
 	HexusDeckManagement::registerGlobalScene();
 	HexusRewardsMenu::registerGlobalScene();
-	HexusPuzzlesMenu::registerGlobalScene();
 	HexusStoreMenu::registerGlobalScene();
 	MinigamesMenu::registerGlobalScene();
 	OptionsScene::registerGlobalScene();

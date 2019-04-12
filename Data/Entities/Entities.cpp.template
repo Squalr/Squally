@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* {{EntityName}}::getHexusOpponentData()
 	{
 		{{EntityName}}::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::{{EntityPrefix}}{{EnvironmentUnderscore}}{{EntityEnvironment}}_{{EntityName}}_Animations,
-			UIResources::Menus_Hexus_HexusFrame{{EntityEnvironment}},
+			HexusResources::Menus_HexusFrame{{EntityEnvironment}},
 			{{EntityScale}},
 			Vec2({{EntityOffsetX}}, {{EntityOffsetY}}),
 			Vec2({{HexusFrameOffsetX}}, {{HexusFrameOffsetY}}),

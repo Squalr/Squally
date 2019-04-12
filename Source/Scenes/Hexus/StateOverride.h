@@ -76,4 +76,7 @@ protected:
 		TutorialMode tutorialMode = TutorialMode::NoTutorial
 	);
 	~StateOverride();
+
+private:
+	typedef SmartNode super;
 };

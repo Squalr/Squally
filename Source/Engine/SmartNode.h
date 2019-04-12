@@ -14,8 +14,6 @@ public:
 	SmartNode();
 	virtual ~SmartNode();
 
-	void resume() override;
-
 protected:
 	void onEnter() override;
 	void onExit() override;
@@ -30,6 +28,7 @@ protected:
 	virtual void addEventListener(cocos2d::EventListener* listener);
 	virtual void removeEventListener(cocos2d::EventListener* listener);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
+
 private:
 	typedef cocos2d::Node super;
 };

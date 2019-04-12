@@ -9,6 +9,7 @@ public:
 	static HexusOpponentTutorialD* getInstance();
 
 private:
+	typedef HexusOpponentData super;
 	HexusOpponentTutorialD();
 	~HexusOpponentTutorialD();
 

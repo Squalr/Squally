@@ -2,6 +2,7 @@
 
 #include "Scenes/MapBase.h"
 
+class Cipher;
 class GameHud;
 
 class PlatformerMap : public MapBase
@@ -20,8 +21,11 @@ private:
 	void initializeListeners() override;
 	void onEnter() override;
 	void update(float dt) override;
+	void openCipher();
+	void onCipherClose();
 
 	GameHud* gameHud;
+	Cipher* cipher;
 
 	static PlatformerMap* instance;
 };

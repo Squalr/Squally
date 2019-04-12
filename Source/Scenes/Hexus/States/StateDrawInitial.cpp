@@ -19,7 +19,7 @@ StateDrawInitial* StateDrawInitial::create()
 	return instance;
 }
 
-StateDrawInitial::StateDrawInitial() : StateBase(GameState::StateType::DrawInitialCards)
+StateDrawInitial::StateDrawInitial() : super(GameState::StateType::DrawInitialCards)
 {
 }
 
@@ -29,12 +29,12 @@ StateDrawInitial::~StateDrawInitial()
 
 void StateDrawInitial::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateDrawInitial::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	const float indexDelay = 0.1f;
 
@@ -88,10 +88,10 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 
 void StateDrawInitial::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateDrawInitial::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

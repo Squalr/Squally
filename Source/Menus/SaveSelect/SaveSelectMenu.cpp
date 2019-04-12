@@ -186,10 +186,10 @@ void SaveSelectMenu::initializeListeners()
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(SaveSelectMenu::onKeyPressed, this);
-	this->saveGame1->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onSaveGame1Click, this));
-	this->saveGame2->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onSaveGame2Click, this));
-	this->saveGame3->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onSaveGame3Click, this));
-	this->backButton->setClickCallback(CC_CALLBACK_1(SaveSelectMenu::onBackClick, this));
+	this->saveGame1->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame1Click, this));
+	this->saveGame2->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame2Click, this));
+	this->saveGame3->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onSaveGame3Click, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
 
 	this->addEventListener(keyboardListener);
 }
@@ -228,22 +228,22 @@ void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void SaveSelectMenu::onSaveGame1Click(ClickableNode* menuSprite)
+void SaveSelectMenu::onSaveGame1Click()
 {
 	NavigationEvents::navigateWorldMap();
 }
 
-void SaveSelectMenu::onSaveGame2Click(ClickableNode* menuSprite)
+void SaveSelectMenu::onSaveGame2Click()
 {
 	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
 
-void SaveSelectMenu::onSaveGame3Click(ClickableNode* menuSprite)
+void SaveSelectMenu::onSaveGame3Click()
 {
 	NavigationEvents::navigateCutscene(NavigationEvents::NavigateCutsceneArgs(IntroCutscene::create([=]() { NavigationEvents::navigateWorldMap(); })));
 }
 
-void SaveSelectMenu::onBackClick(ClickableNode* menuSprite)
+void SaveSelectMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
 }

@@ -41,6 +41,7 @@ public:
 	static const std::string MapKeyRepeatX;
 	static const std::string MapKeyRepeatY;
 	static const std::string MapKeyEvent;
+	static const std::string MapKeyArgs;
 
 	static const std::string MapKeyGid;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="32" height="32" tilewidth="256" tileheight="128" nextobjectid="22">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="16" columns="4">
-  <image source="../TileMapIsometric.png" width="1024" height="1024"/>
+  <image source="TileMap.png" width="1024" height="1024"/>
  </tileset>
  <objectgroup name="music">
   <properties>

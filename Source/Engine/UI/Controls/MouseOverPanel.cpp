@@ -51,7 +51,7 @@ void MouseOverPanel::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::MouseMoveEvent, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::EventMouseMove, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
 
 	this->addEventListener(mouseMoveListener);
 }

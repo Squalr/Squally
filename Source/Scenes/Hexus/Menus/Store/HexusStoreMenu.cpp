@@ -15,22 +15,28 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Entities/Special/Shopkeeper.h"
 #include "Events/NavigationEvents.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Hexus/Menus/MenuCard.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/CardStorage.h"
 
+#include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Back.h"
+#include "Strings/Hexus/PurchaseConfirmation.h"
 #include "Strings/Menus/Return.h"
 #include "Strings/Hexus/StoreLabelBinary.h"
 #include "Strings/Hexus/StoreLabelDecimal.h"
@@ -59,6 +65,8 @@ void HexusStoreMenu::registerGlobalScene()
 
 HexusStoreMenu::HexusStoreMenu()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	this->lootBoxes = std::vector<std::tuple<ClickableNode*, int>>();
 	this->binaryCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
 	this->decimalCards = std::vector<std::tuple<ClickableNode*, MenuCard*, int>>();
@@ -68,7 +76,7 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
 
-	this->goldPanel = Sprite::create(UIResources::Menus_StoreMenu_GoldPanel);
+	this->goldPanel = Sprite::create(HexusResources::StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
@@ -79,12 +87,12 @@ HexusStoreMenu::HexusStoreMenu()
 	this->goldLabel->setAlignment(TextHAlignment::LEFT);
 	this->goldLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
-	this->storeBack = Sprite::create(UIResources::Menus_StoreMenu_StoreBack);
+	this->storeBack = Sprite::create(HexusResources::StoreMenu_StoreBack);
 	this->shopKeeper = Shopkeeper::create();
-	this->storeFront = Sprite::create(UIResources::Menus_StoreMenu_Store);
+	this->storeFront = Sprite::create(HexusResources::StoreMenu_Store);
 	this->storeNode = Node::create();
 	this->lootboxesNode = Node::create();
-	this->storeMenu = Sprite::create(UIResources::Menus_StoreMenu_StoreBoard);
+	this->storeMenu = Sprite::create(HexusResources::StoreMenu_StoreBoard);
 
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
@@ -98,6 +106,7 @@ HexusStoreMenu::HexusStoreMenu()
 		UIResources::Menus_Buttons_GenericButton,
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
+	this->cardPreview = CardPreview::create();
 
 	this->lootBoxRewardBackground = LayerColor::create(Color4B::BLACK);
 	this->lootBoxRewardBackground->setOpacity(0);
@@ -118,30 +127,35 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->lootBoxReturnButton->disableInteraction(0);
 
-	this->lootBoxButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->binaryButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->decimalButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->hexButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
-	this->specialButton = ClickableNode::create(UIResources::Menus_StoreMenu_TabButton, UIResources::Menus_StoreMenu_TabButtonSelected);
+	this->lootBoxButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
+	this->binaryButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
+	this->decimalButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
+	this->hexButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
+	this->specialButton = ClickableNode::create(HexusResources::StoreMenu_TabButton, HexusResources::StoreMenu_TabButtonSelected);
 
-	const Size scrollPaneSize = Size(840.0f, 720.0f);
+	const Size scrollPaneSize = Size(780.0f, 800.0f);
 
 	this->binaryCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->decimalCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->hexCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 
-	Sprite* lootBoxIcon = Sprite::create(UIResources::Menus_StoreMenu_IconLootBox);
-	Sprite* binaryIcon = Sprite::create(UIResources::Menus_StoreMenu_IconBin);
-	Sprite* decimalIcon = Sprite::create(UIResources::Menus_StoreMenu_IconDec);
-	Sprite* hexIcon = Sprite::create(UIResources::Menus_StoreMenu_IconHex);
-	Sprite* specialIcon = Sprite::create(UIResources::Menus_StoreMenu_IconSpecial);
+	this->backdrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+	this->confirmationMenu = ConfirmationMenu::create();
 
-	lootBoxIcon->setPosition(Vec2(-32.0f, 0.0f));
-	binaryIcon->setPosition(Vec2(-32.0f, 0.0f));
-	decimalIcon->setPosition(Vec2(-32.0f, 0.0f));
-	hexIcon->setPosition(Vec2(-32.0f, 0.0f));
-	specialIcon->setPosition(Vec2(-32.0f, 0.0f));
+	this->backdrop->setOpacity(196);
+
+	Sprite* lootBoxIcon = Sprite::create(HexusResources::StoreMenu_IconLootBox);
+	Sprite* binaryIcon = Sprite::create(HexusResources::StoreMenu_IconBin);
+	Sprite* decimalIcon = Sprite::create(HexusResources::StoreMenu_IconDec);
+	Sprite* hexIcon = Sprite::create(HexusResources::StoreMenu_IconHex);
+	Sprite* specialIcon = Sprite::create(HexusResources::StoreMenu_IconSpecial);
+
+	lootBoxIcon->setPosition(Vec2(48.0f, 0.0f));
+	binaryIcon->setPosition(Vec2(48.0f, 0.0f));
+	decimalIcon->setPosition(Vec2(48.0f, 0.0f));
+	hexIcon->setPosition(Vec2(48.0f, 0.0f));
+	specialIcon->setPosition(Vec2(48.0f, 0.0f));
 
 	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelBinary::create());
 	LocalizedLabel* decimalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelDecimal::create());
@@ -149,19 +163,19 @@ HexusStoreMenu::HexusStoreMenu()
 	LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_StoreLabelSpecial::create());
 
 	binaryLabel->enableOutline(Color4B::BLACK, 3);
-	binaryLabel->setPosition(Vec2(-32.0f, 0.0f));
+	binaryLabel->setPosition(Vec2(binaryIcon->getPositionX(), 0.0f));
 	binaryLabel->setAlignment(TextHAlignment::CENTER);
 	binaryLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	decimalLabel->enableOutline(Color4B::BLACK, 3);
-	decimalLabel->setPosition(Vec2(-32.0f, 0.0f));
+	decimalLabel->setPosition(Vec2(decimalIcon->getPositionX(), 0.0f));
 	decimalLabel->setAlignment(TextHAlignment::CENTER);
 	decimalLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	hexLabel->enableOutline(Color4B::BLACK, 3);
-	hexLabel->setPosition(Vec2(-32.0f, 0.0f));
+	hexLabel->setPosition(Vec2(hexIcon->getPositionX(), 0.0f));
 	hexLabel->setAlignment(TextHAlignment::CENTER);
 	hexLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	specialLabel->enableOutline(Color4B::BLACK, 3);
-	specialLabel->setPosition(Vec2(-32.0f, 0.0f));
+	specialLabel->setPosition(Vec2(specialIcon->getPositionX(), 0.0f));
 	specialLabel->setAlignment(TextHAlignment::CENTER);
 	specialLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 
@@ -181,15 +195,15 @@ HexusStoreMenu::HexusStoreMenu()
 	this->hexButton->addChild(hexLabel);
 	this->specialButton->addChild(specialLabel);
 
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Jungle_Animations, 5, HexusStoreMenu::getCardsTier1()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Ruins_Animations, 200, HexusStoreMenu::getCardsTier2()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Forest_Animations, 800, HexusStoreMenu::getCardsTier3()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Caverns_Animations, 1500, HexusStoreMenu::getCardsTier4()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Castle_Animations, 2500, HexusStoreMenu::getCardsTier5()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Ice_Animations, 3200, HexusStoreMenu::getCardsTier6()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Volcano_Animations, 4000, HexusStoreMenu::getCardsTier7()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Obelisk_Animations, 5200, HexusStoreMenu::getCardsTier8()));
-	this->lootBoxes.push_back(this->constructLootBoxButton(UIResources::Menus_StoreMenu_LootBoxes_Vapor_Animations, 6500, HexusStoreMenu::getCardsTier9()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Jungle_Animations, 64, HexusStoreMenu::getCardsTier1()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Ruins_Animations, 128, HexusStoreMenu::getCardsTier2()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Forest_Animations, 256, HexusStoreMenu::getCardsTier3()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Caverns_Animations, 512, HexusStoreMenu::getCardsTier4()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Castle_Animations, 1024, HexusStoreMenu::getCardsTier5()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Ice_Animations, 2048, HexusStoreMenu::getCardsTier6()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Volcano_Animations, 4096, HexusStoreMenu::getCardsTier7()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Obelisk_Animations, 8192, HexusStoreMenu::getCardsTier8()));
+	this->lootBoxes.push_back(this->constructLootBoxButton(HexusResources::StoreMenu_LootBoxes_Vapor_Animations, 16384, HexusStoreMenu::getCardsTier9()));
 
 	for (auto it = CardList::getInstance()->cardListByName.begin(); it != CardList::getInstance()->cardListByName.end(); it++)
 	{
@@ -264,9 +278,12 @@ HexusStoreMenu::HexusStoreMenu()
 	this->storeNode->addChild(this->decimalButton);
 	this->storeNode->addChild(this->specialButton);
 	this->addChild(this->backButton);
+	this->addChild(this->cardPreview);
 	this->addChild(this->lootBoxRewardBackground);
 	this->addChild(this->chosenCardsNode);
 	this->addChild(this->lootBoxReturnButton);
+	this->addChild(this->backdrop);
+	this->addChild(this->confirmationMenu);
 
 	for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
 	{
@@ -293,7 +310,7 @@ HexusStoreMenu::HexusStoreMenu()
 		this->specialCardsScrollPane->addChild(std::get<0>(*it));
 	}
 
-	this->onLootBoxTabClick();
+	this->onBinaryTabClick();
 }
 
 HexusStoreMenu::~HexusStoreMenu()
@@ -306,6 +323,11 @@ void HexusStoreMenu::onEnter()
 
 	const float delay = 0.25f;
 	const float duration = 0.35f;
+
+	this->backdrop->setVisible(false);
+
+	// Disabled for now
+	this->lootBoxButton->setVisible(false);
 
 	GameUtils::fadeInObject(this->backButton, delay, duration);
 
@@ -329,13 +351,13 @@ void HexusStoreMenu::initializeListeners()
 
 	this->addEventListener(keyboardListener);
 
-	this->lootBoxButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxTabClick, this));
-	this->binaryButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
-	this->decimalButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onDecimalTabClick, this));
-	this->hexButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onHexTabClick, this));
-	this->specialButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onSpecialTabClick, this));
+	this->lootBoxButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxTabClick, this));
+	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
+	this->decimalButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onDecimalTabClick, this));
+	this->hexButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onHexTabClick, this));
+	this->specialButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onSpecialTabClick, this));
 
-	this->backButton->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onBackClick, this));
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBackClick, this));
 }
 
 void HexusStoreMenu::initializePositions()
@@ -345,9 +367,9 @@ void HexusStoreMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float storeOffsetY = -128.0f;
-	const Vec2 storeMenuOffset = Vec2(352.0f, 0.0f);
-	const Vec2 storeContentOffset = Vec2(0.0f, -64.0f);
-	const Vec2 goldPanelOffset = Vec2(412.0f, 464.0f);
+	const Vec2 storeMenuOffset = Vec2(192.0f, 0.0f);
+	const Vec2 storeContentOffset = Vec2(64.0f, -48.0f);
+	const Vec2 goldPanelOffset = Vec2(476.0f, 464.0f);
 
 	this->dustParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
 	this->storeBack->setPosition(Vec2(0.0f, visibleSize.height / 2.0f + storeOffsetY + 144.0f));
@@ -360,17 +382,18 @@ void HexusStoreMenu::initializePositions()
 	this->goldLabel->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + goldPanelOffset.x - 8.0f, visibleSize.height / 2.0f + storeMenuOffset.y + goldPanelOffset.y));
 
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
+	this->cardPreview->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 480.0f, visibleSize.height / 2.0f + 160.0f));
 
 	this->lootboxesNode->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + storeContentOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + storeContentOffset.y));
 	this->binaryCardsScrollPane->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + storeContentOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + storeContentOffset.y));
 	this->decimalCardsScrollPane->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + storeContentOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + storeContentOffset.y));
 	this->hexCardsScrollPane->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + storeContentOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + storeContentOffset.y));
 	this->specialCardsScrollPane->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + storeContentOffset.x, visibleSize.height / 2.0f + storeMenuOffset.y + storeContentOffset.y));
-	this->lootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 0));
-	this->binaryButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 1));
-	this->decimalButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 2));
-	this->hexButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 3));
-	this->specialButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x - 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 4));
+	this->binaryButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 0));
+	this->decimalButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 1));
+	this->hexButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 2));
+	this->specialButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 3));
+	this->lootBoxButton->setPosition(Vec2(visibleSize.width / 2.0f + storeMenuOffset.x + 640.0f, visibleSize.height / 2.0f + 256.0f - 144.0f * 4));
 	this->lootBoxReturnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	const Size chestGridSize = Size(288.0f, 240.0f);
@@ -443,7 +466,7 @@ std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::stri
 
 	animationNode->playAnimation();
 
-	ClickableNode* frame = ClickableNode::create(UIResources::Menus_StoreMenu_StoreOption, UIResources::Menus_StoreMenu_StoreOptionSelected);
+	ClickableNode* frame = ClickableNode::create(HexusResources::StoreMenu_StoreOption, HexusResources::StoreMenu_StoreOptionSelected);
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
@@ -453,7 +476,7 @@ std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::stri
 	animationNode->setScale(HexusStoreMenu::LootBoxScale);
 	animationNode->setPosition(Vec2(0.0f, 16.0f));
 
-	frame->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
+	frame->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxClick, this, price, cardChoices, animationNode));
 	goldIcon->setScale(0.75f);
 	goldIcon->setPosition(Vec2(-32.0f, -72.0f));
 	priceLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -469,7 +492,7 @@ std::tuple<ClickableNode*, int> HexusStoreMenu::constructLootBoxButton(std::stri
 
 std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardData* cardData)
 {
-	ClickableNode* cardContainer =  ClickableNode::create(UIResources::Menus_StoreMenu_CardPanel, UIResources::Menus_StoreMenu_CardPanelSelected);
+	ClickableNode* cardContainer =  ClickableNode::create(HexusResources::StoreMenu_CardPanel, HexusResources::StoreMenu_CardPanelSelected);
 	MenuCard* menuCard = MenuCard::create(Card::CardStyle::Earth, cardData);
 	int price = 0;
 
@@ -477,22 +500,62 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	{
 		case CardData::CardType::Special_FLIP1:
 		{
-			price = 50;
+			price = 25;
+			break;
+		}
+		case CardData::CardType::Special_PEEK:
+		{
+			price = 25;
 			break;
 		}
 		case CardData::CardType::Special_FLIP2:
 		{
-			price = 150;
+			price = 48;
 			break;
 		}
-		case CardData::CardType::Special_FLIP3:
+		case CardData::CardType::Special_XOR:
 		{
-			price = 1250;
+			price = 64;
 			break;
 		}
-		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_AND:
 		{
-			price = 1800;
+			price = 64;
+			break;
+		}
+		case CardData::CardType::Special_OR:
+		{
+			price = 64;
+			break;
+		}
+		case CardData::CardType::Special_ABSORB:
+		{
+			price = 72;
+			break;
+		}
+		case CardData::CardType::Special_MOV:
+		{
+			price = 96;
+			break;
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			price = 128;
+			break;
+		}
+		case CardData::CardType::Special_SHR:
+		{
+			price = 160;
+			break;
+		}
+		case CardData::CardType::Special_SHL:
+		{
+			price = 160;
+			break;
+		}
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		{
+			price = 224;
 			break;
 		}
 		case CardData::CardType::Special_ADD:
@@ -500,69 +563,105 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 			price = 335;
 			break;
 		}
+		case CardData::CardType::Special_BONUS_MOVES:
+		{
+			price = 480;
+			break;
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			price = 768;
+			break;
+		}
+		case CardData::CardType::Special_FLIP3:
+		{
+			price = 800;
+			break;
+		}
+		case CardData::CardType::Special_GREED:
+		{
+			price = 1024;
+			break;
+		}
+		case CardData::CardType::Special_NOT:
+		{
+			price = 1280;
+			break;
+		}
 		case CardData::CardType::Special_SUB:
 		{
-			price = 335;
+			price = 1280;
 			break;
 		}
-		case CardData::CardType::Special_MOV:
+		case CardData::CardType::Special_KILL:
 		{
-			price = 280;
+			price = 1480;
 			break;
 		}
-		case CardData::CardType::Special_AND:
+		case CardData::CardType::Special_FLIP4:
 		{
-			price = 640;
+			price = 1720;
 			break;
 		}
-		case CardData::CardType::Special_OR:
+		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
-			price = 640;
+			price = 2048;
 			break;
 		}
-		case CardData::CardType::Special_XOR:
+		case CardData::CardType::Special_STEAL:
 		{
-			price = 640;
+			price = 3072;
 			break;
 		}
-		case CardData::CardType::Special_ENV_BIN_STORM:
+		case CardData::CardType::Binary:
 		{
-			price = 500;
+			// Formula: Lagrange interpolation over 4 price pairs (0, 16), (2, 48), (5, 320), (15, 4096) (Note: 3 pairs produce negative values)
+			float atk = float(cardData->attack);
+			const float alpha = 0.475897f;
+			const float beta = 11.6021f;
+			const float gamma = -9.10769f;
+			const float delta = 16.0f;
+
+			int calculatedPrice = int((atk * atk* atk) * alpha + (atk * atk * beta) + (atk * gamma) + delta);
+
+			price = MathUtils::clamp(calculatedPrice, 16, 4096);
+
 			break;
 		}
-		case CardData::CardType::Special_ENV_CLEAR:
+		case CardData::CardType::Decimal:
 		{
-			price = 500;
+			// Formula: Lagrange interpolation over 4 price pairs (0, 16), (3, 96), (5, 288), (15, 4096) (Note: 3 pairs produce negative values)
+			float atk = float(cardData->attack);
+			const float alpha = 0.657778f;
+			const float beta = 8.604444f;
+			const float gamma = -5.06667f;
+			const float delta = 16.0f;
+
+			int calculatedPrice = int((atk * atk* atk) * alpha + (atk * atk * beta) + (atk * gamma) + delta);
+
+			price = MathUtils::clamp(calculatedPrice, 16, 4096);
+
 			break;
 		}
-		case CardData::CardType::Special_ENV_DEC_STORM:
+		case CardData::CardType::Hexidecimal:
 		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_ENV_HEX_STORM:
-		{
-			price = 500;
-			break;
-		}
-		case CardData::CardType::Special_INV:
-		{
-			price = 2500;
-			break;
-		}
-		case CardData::CardType::Special_SHL:
-		{
-			price = 750;
-			break;
-		}
-		case CardData::CardType::Special_SHR:
-		{
-			price = 250;
+			// Formula: Lagrange interpolation over 4 price pairs (0, 16), (4, 192), (6, 480), (15, 4096) (Note: 3 pairs produce negative values)
+			float atk = float(cardData->attack);
+			const float alpha = 0.451178f;
+			const float beta = 12.1549f;
+			const float gamma = -11.8384f;
+			const float delta = 16.0f;
+
+			int calculatedPrice = int((atk * atk* atk) * alpha + (atk * atk * beta) + (atk * gamma) + delta);
+
+			price = MathUtils::clamp(calculatedPrice, 16, 4096);
+
 			break;
 		}
 		default:
 		{
-			price = cardData->attack * cardData->attack * 10 + 6;
+			// Error value
+			price = 666;
 			break;
 		}
 	}
@@ -597,7 +696,11 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	menuCard->setPosition(Vec2(0.0f, 16.0f));
 	menuCard->setScale(0.8f);
 
-	cardContainer->setClickCallback(CC_CALLBACK_1(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
+	cardContainer->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
+	cardContainer->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->cardPreview->previewCard(menuCard);
+	});
 
 	cardContainer->addChild(goldIcon);
 	cardContainer->addChild(priceLabel);
@@ -645,28 +748,45 @@ void HexusStoreMenu::updateCardLimitText(LocalizedLabel* label, ConstantString* 
 	}
 }
 
-void HexusStoreMenu::onCardClick(ClickableNode* card, CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
+void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* cardLimitLabel, ConstantString* countString, ConstantString* limitString)
 {
-	int gold = CardStorage::getGold();
-
-	if (gold < price || CardStorage::getOwnedCardCount(cardData) >= 3)
+	if (CardStorage::getGold() < price || CardStorage::getOwnedCardCount(cardData) >= 3)
 	{
 		SoundManager::playSoundResource(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
 		return;
 	}
 
-	gold -= price;
-	SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
+	LocalizedString* message = Strings::Hexus_PurchaseConfirmation::create();
 
-	CardStorage::saveGold(gold);
-	this->updateGoldText();
+	message->setStringReplacementVariables(ConstantString::create(std::to_string(price)));
 
-	CardStorage::addStorageCard(cardData);
+	this->confirmationMenu->showMessage(message, [=]()
+	{
+		int gold = CardStorage::getGold();
 
-	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
+		gold -= price;
+
+		SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
+
+		CardStorage::saveGold(gold);
+		this->updateGoldText();
+
+		CardStorage::addStorageCard(cardData);
+
+		this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
+		GameUtils::focus(this);
+		this->backdrop->setVisible(false);
+	}, [=]()
+	{
+		GameUtils::focus(this);
+		this->backdrop->setVisible(false);
+	});
+
+	this->backdrop->setVisible(true);
+	GameUtils::focus(this->confirmationMenu);
 }
 
-void HexusStoreMenu::onLootBoxClick(ClickableNode* sprite, int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
+void HexusStoreMenu::onLootBoxClick(int price, std::map<CardData*, float> cardChoices, SmartAnimationNode* animationNode)
 {
 	int gold = CardStorage::getGold();
 
@@ -715,7 +835,7 @@ void HexusStoreMenu::onLootBoxClick(ClickableNode* sprite, int price, std::map<C
 	animationNode->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
-			this->lootBoxReturnButton->setClickCallback(nullptr);
+			this->lootBoxReturnButton->setMouseClickCallback(nullptr);
 
 			for (auto it = this->lootBoxes.begin(); it != this->lootBoxes.end(); it++)
 			{
@@ -745,7 +865,7 @@ void HexusStoreMenu::onLootBoxClick(ClickableNode* sprite, int price, std::map<C
 				FadeIn::create(0.5f),
 				CallFunc::create([=]()
 				{
-					this->lootBoxReturnButton->setClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxReturnButtonClick, this, price, chosenCards));
+					this->lootBoxReturnButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onLootBoxReturnButtonClick, this, price, chosenCards));
 					this->lootBoxReturnButton->enableInteraction();
 				}),
 				nullptr
@@ -801,7 +921,7 @@ void HexusStoreMenu::onLootBoxReturnButtonClick(int price, std::vector<Card*> ch
 	));
 }
 
-void HexusStoreMenu::onBackClick(ClickableNode* menuSprite)
+void HexusStoreMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
 }

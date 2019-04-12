@@ -20,47 +20,47 @@
       "Y": "-144.0f"
     },
     "MatchData": {
-      "DeckSize": "25",
-      "Strength": "1.0f",
+      "DeckSize": "32",
+      "Strength": "1.0f / 13.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
     },
     "PuzzleData": {
       "PlayerLosses": "1",
-      "EnemyLosses": "0",
+      "EnemyLosses": "1",
       "PlayersTurn": "true",
       "EnemyPassed": "true",
-      "PlayerDeck": {
+      "PlayerDeck": [
+        
+      ],
+      "EnemyDeck": [
 
-      },
-      "EnemyDeck": {
+      ],
+      "PlayerHand": [
+        "Subtraction"
+      ],
+      "EnemyHand": [
 
-      },
-      "PlayerHand": {
+      ],
+      "PlayerBinaryCards": [
 
-      },
-      "EnemyHand": {
+      ],
+      "PlayerDecimalCards": [
 
-      },
-      "PlayerBinaryCards": {
+      ],
+      "PlayerHexCards": [
+        "Decimal6"
+      ],
+      "EnemyBinaryCards": [
+        "Decimal9"
+      ],
+      "EnemyDecimalCards": [
 
-      },
-      "PlayerDecimalCards": {
+      ],
+      "EnemyHexCards": [
 
-      },
-      "PlayerHexCards": {
-
-      },
-      "EnemyBinaryCards": {
-
-      },
-      "EnemyDecimalCards": {
-
-      },
-      "EnemyHexCards": {
-
-      },
+      ],
       "TutorialKey": ""
     }
   }

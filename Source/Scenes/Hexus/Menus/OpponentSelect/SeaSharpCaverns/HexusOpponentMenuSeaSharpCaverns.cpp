@@ -19,18 +19,6 @@
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Finch.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Fraya.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Jasper.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Mildred.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Olive.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/PrincessDawn.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Raka.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Shen.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/SeaSharpCaverns/HexusChapterPreviewSeaSharpCaverns.h"
 
 using namespace cocos2d;

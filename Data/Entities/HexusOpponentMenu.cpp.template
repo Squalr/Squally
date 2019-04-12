@@ -7,7 +7,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 {{HexusOpponentIncludes}}#include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-{{HexusOpponentIncludes}}#include "Scenes/Hexus/Menus/ChapterSelect/{{Environment}}/HexusChapterPreview{{Environment}}.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/{{Environment}}/HexusChapterPreview{{Environment}}{{PuzzleTag}}.h"
 
 using namespace cocos2d;
 
@@ -26,7 +26,7 @@ void {{MenuName}}::registerGlobalScene()
 	GlobalDirector::registerGlobalScene({{MenuName}}::instance);
 }
 
-{{MenuName}}::{{MenuName}}() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::{{Environment}}, HexusChapterPreview{{Environment}}::SaveKeyChapterName)
+{{MenuName}}::{{MenuName}}() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::{{PuzzleTag}}{{Environment}}, HexusChapterPreview{{Environment}}{{PuzzleTag}}::SaveKeyChapterName)
 {
 {{HexusOpponents}}
 	this->buildOpponentList();

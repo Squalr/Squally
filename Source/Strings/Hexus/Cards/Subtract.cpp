@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Hexus_Cards_Subtract::getStringEn()
 	{
-		return "Subtract";
+		return "Subtraction";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringEs()

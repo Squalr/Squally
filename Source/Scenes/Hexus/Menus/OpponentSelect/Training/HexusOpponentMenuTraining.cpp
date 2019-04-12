@@ -31,6 +31,8 @@ HexusOpponentMenuTraining::HexusOpponentMenuTraining() : super(NavigationEvents:
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialD::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialE::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialF::getInstance()));
+
+	this->buildOpponentList();
 }
 
 HexusOpponentMenuTraining::~HexusOpponentMenuTraining()

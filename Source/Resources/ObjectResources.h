@@ -417,8 +417,6 @@ namespace ObjectResources
 	extern const std::string Items_Misc_BAG_1;
 	extern const std::string Items_Misc_BAG_2;
 	extern const std::string Items_Misc_MAP;
-	extern const std::string Monitor;
-	extern const std::string MonitorSelected;
 	extern const std::string Physics_Asteroid_Asteroid;
 	extern const std::string Physics_RollingStone_RollingStone;
 	extern const std::string Physics_WoodenBeam_WoodenBeam;
@@ -671,8 +669,5 @@ namespace ObjectResources
 	extern const std::string War_Machines_Water_Gun_WATERGUN;
 	extern const std::string War_Machines_Wheels_STELL_WHEEL;
 	extern const std::string War_Machines_Wheels_WOODEN_WHEEL;
-	extern const std::string WarpGateClosed;
-	extern const std::string WarpGateClosedLights;
-	extern const std::string WarpGateOpen;
 	extern const std::string balloon;
 };

@@ -47,6 +47,15 @@ def main():
 		'.tif',
 	), "Resources/Hexus")
 
+	# CipherResources
+	createResourceFile("CipherResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Cipher")
+
 	# ObjectResources
 	createResourceFile("ObjectResources", (
 		'.scml',

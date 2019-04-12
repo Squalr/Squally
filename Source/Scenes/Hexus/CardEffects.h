@@ -26,6 +26,8 @@ public:
 		MeteorAlt,
 		MeteorBlue,
 		MeteorPurple,
+		Nether,
+		Poison,
 		RadialAura,
 		RadialFire,
 		RadialGalaxy,
@@ -50,6 +52,8 @@ protected:
 	void initializeListeners() override;
 
 private:
+	typedef SmartNode super;
+	
 	cocos2d::ParticleSystemQuad* getBite();
 	cocos2d::ParticleSystemQuad* getDustPoof();
 	cocos2d::ParticleSystemQuad* getDustStorm();
@@ -63,6 +67,8 @@ private:
 	cocos2d::ParticleSystemQuad* getMeteorAlt();
 	cocos2d::ParticleSystemQuad* getMeteorBlue();
 	cocos2d::ParticleSystemQuad* getMeteorPurple();
+	cocos2d::ParticleSystemQuad* getNether();
+	cocos2d::ParticleSystemQuad* getPoison();
 	cocos2d::ParticleSystemQuad* getRadialAura();
 	cocos2d::ParticleSystemQuad* getRadialFire();
 	cocos2d::ParticleSystemQuad* getRadialGalaxy();
@@ -87,6 +93,8 @@ private:
 	cocos2d::ParticleSystemQuad* meteorAlt;
 	cocos2d::ParticleSystemQuad* meteorBlue;
 	cocos2d::ParticleSystemQuad* meteorPurple;
+	cocos2d::ParticleSystemQuad* nether;
+	cocos2d::ParticleSystemQuad* poison;
 	cocos2d::ParticleSystemQuad* radialAura;
 	cocos2d::ParticleSystemQuad* radialFire;
 	cocos2d::ParticleSystemQuad* radialGalaxy;

@@ -14,10 +14,9 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StateAIDecideCard();
 	~StateAIDecideCard();
 
 	void decideCardRandom(GameState* gameState);
-	void decideCardStrongestFirst(GameState* gameState);
-	void decideCardWeakestFirst(GameState* gameState);
 };

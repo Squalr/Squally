@@ -26,12 +26,13 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onRewardsOpen(int reward, bool isRewardReduced);
-	void onReturnClick(ClickableNode* menuSprite);
+	void onRewardsOpen(int reward, bool isRewardReduced, bool isChapterClear);
+	void onReturnClick();
 
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* goldSprite;
 	cocos2d::Sprite* goldSpriteLesser;
+	cocos2d::Sprite* goldSpriteChapterClear;
 	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
 	ClickableNode* returnButton;

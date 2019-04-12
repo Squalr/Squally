@@ -14,6 +14,9 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StateTurnEnd();
 	~StateTurnEnd();
+
+	void runIncrementHex0Effect(GameState* gameState);
 };

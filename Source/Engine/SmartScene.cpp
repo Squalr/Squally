@@ -149,13 +149,6 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
-void SmartScene::resume()
-{
-	super::resume();
-
-	this->initializeListeners();
-}
-
 void SmartScene::setFadeSpeed(float newFadeSpeed)
 {
 	this->fadeSpeed = newFadeSpeed;

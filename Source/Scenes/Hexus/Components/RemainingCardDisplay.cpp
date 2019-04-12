@@ -62,7 +62,7 @@ RemainingCardDisplay::~RemainingCardDisplay()
 
 void RemainingCardDisplay::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->remainingCardMouseOverPanel->setOpacity(0);
 	this->remainingCardMouseOverLabel->setOpacity(0);
@@ -73,7 +73,7 @@ void RemainingCardDisplay::onEnter()
 
 void RemainingCardDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -121,12 +121,12 @@ void RemainingCardDisplay::disableCardDisplayInteraction()
 
 void RemainingCardDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	if (gameState->enemyPassed || gameState->playerPassed)
 	{

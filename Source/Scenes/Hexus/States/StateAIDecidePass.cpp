@@ -16,7 +16,7 @@ StateAIDecidePass* StateAIDecidePass::create()
 	return instance;
 }
 
-StateAIDecidePass::StateAIDecidePass() : StateBase(GameState::StateType::AIDecidePass)
+StateAIDecidePass::StateAIDecidePass() : super(GameState::StateType::AIDecidePass)
 {
 }
 
@@ -26,16 +26,16 @@ StateAIDecidePass::~StateAIDecidePass()
 
 void StateAIDecidePass::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateAIDecidePass::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	CardData* strongestCardInDeck = gameState->opponentData->getStrongestCard();
 	int strongestAttack = strongestCardInDeck == nullptr ? 1 : int(strongestCardInDeck->attack);
-	int passIfDiffAboveOrEqual = int(strongestAttack * 2.5f);
+	int passIfDiffAboveOrEqual = int(float(strongestAttack) * 2.5f);
 	CallFunc* stateTransition = nullptr;
 
 	if (gameState->enemyHand->rowCards.size() == 0)
@@ -86,10 +86,10 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 
 void StateAIDecidePass::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateAIDecidePass::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

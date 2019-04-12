@@ -13,8 +13,9 @@ namespace cocos2d
 
 class CardEffects;
 class ConstantString;
-class LocalizedLabel;
 class ClickableNode;
+class LocalizedLabel;
+class UIBoundObject;
 
 class Card : public SmartNode
 {
@@ -35,39 +36,49 @@ public:
 		{
 			SHL,
 			SHR,
+			ROL,
+			ROR,
 			MOV,
 			AND,
 			OR,
 			XOR,
 			ADD,
 			SUB,
+			NOT,
 		};
 
 		OperationType operationType;
 		unsigned int immediate;
 
-		Operation(OperationType operationType, unsigned int immediate) : operationType(operationType), immediate(immediate)
+		Operation(OperationType operationType, unsigned int immediate = 0b0000) : operationType(operationType), immediate(immediate)
 		{
 
 		}
 	};
 
-	static Card* create(CardStyle cardStyle, CardData* data);
-	static Operation toOperation(CardData::CardType playedCardType, unsigned int immediate);
+	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
 
+	Operation toOperation(unsigned int immediate = 0);
 	void reveal();
 	void hide();
 	void focus();
 	void unfocus();
 	void setFocusTint(cocos2d::Color3B color);
 	void addOperation(Operation operation);
+	void clearOperations();
+	unsigned int getOriginalAttack();
 	unsigned int getAttack();
 	void doDrawAnimation(float cardDrawDelay);
 	void disableInteraction();
 	void enableInteraction();
 	void setMouseOverCallback(std::function<void(Card*)> callback);
+	void setMouseOutCallback(std::function<void(Card*)> callback);
 	void setMouseClickCallback(std::function<void(Card*)> callback);
 	int simulateOperation(Operation operation);
+	void setIsPlayerOwnedCard(bool isPlayerOwnedCard);
+	bool getIsPlayerOwnedCard();
+	void runOverflowEffect(bool offsetYPosition = false);
+	void runUnderflowEffect(bool offsetYPosition = false);
 
 	CardData* cardData;
 	CardEffects* cardEffects;
@@ -82,19 +93,23 @@ public:
 	static const cocos2d::Color4B buffColor;
 
 protected:
-	Card(CardStyle cardStyle, CardData* data);
+	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
 	~Card();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
 	void updateText();
-	void onMouseOver(ClickableNode* menuSprite);
-	void onMouseClick(ClickableNode* menuSprite);
+	void onMouseOver();
+	void onMouseOut();
+	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
+
+	bool isPlayerOwnedCard;
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;
@@ -104,6 +119,9 @@ private:
 	cocos2d::Sprite* cardFocus;
 	ConstantString* cardString;
 	LocalizedLabel* cardLabel;
+	LocalizedLabel* overflowLabel;
+	LocalizedLabel* underflowLabel;
 	std::function<void(Card*)> mouseOverCallback;
+	std::function<void(Card*)> mouseOutCallback;
 	std::function<void(Card*)> mouseClickCallback;
 };

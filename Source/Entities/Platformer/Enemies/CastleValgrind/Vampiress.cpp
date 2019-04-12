@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -53,7 +55,7 @@ Vampiress::Vampiress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -82,7 +84,7 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 	{
 		Vampiress::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
-			UIResources::Menus_Hexus_HexusFrameCastleValgrind,
+			HexusResources::Menus_HexusFrameCastleValgrind,
 			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
@@ -90,12 +92,85 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 			Vampiress::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			1.000f,
-			HexusOpponentData::generateDeck(25, 1.000f,
+			0.417f,
+			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),
-			nullptr
+			StateOverride::create(
+				// Player losses
+				1,
+				// Enemy losses
+				1,
+				// Player's turn
+				true,
+				// Player passed
+				true,
+				// Enemy passed
+				true,
+				// Player deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hand
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				},
+				// Enemy hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+				},
+				// Player decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+				},
+				// Enemy decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy hex cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				},
+				StateOverride::TutorialMode::NoTutorial
+			)
 		);
 	}
 

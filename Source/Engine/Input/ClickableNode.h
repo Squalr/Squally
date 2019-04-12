@@ -21,18 +21,24 @@ public:
 	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
 	void setContentSize(const cocos2d::Size & size) override;
-	void setClickCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
-	void setMouseOverCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseClick);
-	void setMouseOutCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseOut);
-	void setMouseDownCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onMouseDown);
-	void setMouseDragCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onDrag);
-	void setMouseScrollCallback(std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> onScroll);
+	void setMouseClickCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseClick);
+	void setMouseInCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseIn);
+	void setMouseOverCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOver);
+	void setMouseOutCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseOut);
+	void setMouseDownCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onMouseDown);
+	void setMousePressCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mousePressEvent);
+	void setMouseReleaseNoHitTestCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent);
+	void setMouseReleaseCallback(std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent);
+	void setMouseDragCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onDrag);
+	void setMouseScrollCallback(std::function<void(MouseEvents::MouseEventArgs* args)> onScroll);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
 	void setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible);
 	void disableInteraction(uint8_t newOpacity = 255);
 	void enableInteraction(uint8_t newOpacity = 255);
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
+	cocos2d::Node* getSprite();
+	cocos2d::Node* getSpriteSelected();
 
 protected:
 	ClickableNode(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
@@ -65,17 +71,21 @@ private:
 
 	bool allowCollisionWhenInvisible;
 	bool interactionEnabled;
-	bool isClickInit;
-	bool isClicked;
+	bool wasAnywhereClicked;
+	bool wasClickedDirectly;
 	bool isMousedOver;
 	cocos2d::EventKeyboard::KeyCode modifier;
 	cocos2d::DrawNode* debugHitbox;
 	cocos2d::Vec2 debugCachedPos;
 
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseClickEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDownEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseDragEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOverEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseOutEvent;
-	std::function<void(ClickableNode*, MouseEvents::MouseEventArgs* args)> mouseScrollEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseClickEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseInEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseDownEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mousePressEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseReleaseEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseDragEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseOverEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseOutEvent;
+	std::function<void(MouseEvents::MouseEventArgs* args)> mouseScrollEvent;
 };

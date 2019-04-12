@@ -55,8 +55,8 @@ void MouseState::initializeListeners()
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
 	EventListenerCustom* clickableMouseOverListener = EventListenerCustom::create(
-		MouseEvents::ClickableMouseOverEvent,
-		CC_CALLBACK_1(MouseState::onClickableMouseOverEvent, this)
+		MouseEvents::EventClickableMouseOver,
+		CC_CALLBACK_1(MouseState::onEventClickableMouseOver, this)
 	);
 
 	EventListenerCustom* clickableMouseOutListener = EventListenerCustom::create(
@@ -65,8 +65,8 @@ void MouseState::initializeListeners()
 	);
 
 	EventListenerCustom* mouseDragListener = EventListenerCustom::create(
-		MouseEvents::MouseDragEvent,
-		CC_CALLBACK_1(MouseState::onMouseDragEvent, this)
+		MouseEvents::EventMouseDrag,
+		CC_CALLBACK_1(MouseState::onEventMouseDrag, this)
 	);
 
 	mouseListener->onMouseMove = CC_CALLBACK_1(MouseState::onMouseMove, this);
@@ -135,7 +135,7 @@ void MouseState::onMouseScroll(cocos2d::EventMouse* event)
 	MouseState::scrollDelta = Vec2::ZERO;
 }
 
-void MouseState::onClickableMouseOverEvent(EventCustom* eventCustom)
+void MouseState::onEventClickableMouseOver(EventCustom* eventCustom)
 {
 	MouseState::canClick = true;
 
@@ -149,7 +149,7 @@ void MouseState::onClickableMouseOutEvent(EventCustom* eventCustom)
 	MouseEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
-void MouseState::onMouseDragEvent(EventCustom* eventCustom)
+void MouseState::onEventMouseDrag(EventCustom* eventCustom)
 {
 	MouseState::isDragging = true;
 

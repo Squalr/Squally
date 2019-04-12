@@ -19,18 +19,6 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Ares.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Athena.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Cleopatra.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Geryon.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Griffin.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Hades.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Horus.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuins.h"
 
 using namespace cocos2d;

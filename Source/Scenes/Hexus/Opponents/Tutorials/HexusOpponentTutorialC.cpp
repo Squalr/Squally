@@ -9,7 +9,7 @@
 #include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 using namespace cocos2d;
 
@@ -26,18 +26,18 @@ HexusOpponentTutorialC* HexusOpponentTutorialC::getInstance()
 	return HexusOpponentTutorialC::instance;
 }
 
-HexusOpponentTutorialC::HexusOpponentTutorialC() : HexusOpponentData(
+HexusOpponentTutorialC::HexusOpponentTutorialC() : super(
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
-	UIResources::Menus_Hexus_HexusFrameSeaSharpCaverns,
+	HexusResources::Menus_HexusFrameSeaSharpCaverns,
 	0.85f,
 	Vec2(-48.0f, -64.0f),
 	Vec2(-48.0f, -144.0f),
 	Vec2(-16.0f, -32.0f),
 	HexusOpponentTutorialC::OpponentSaveKey,
-	HexusOpponentData::Strategy::Random,
+	super::Strategy::Random,
 	Card::CardStyle::Earth,
-	HexusOpponentData::generateReward(0.085f),
-	HexusOpponentData::generateDeck(25, 0.085f,
+	0.0f,
+	super::generateDeck(25, 0.0f,
 	{
 	}),
 	StateOverride::create(

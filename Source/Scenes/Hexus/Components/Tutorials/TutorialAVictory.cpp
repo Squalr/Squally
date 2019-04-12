@@ -28,7 +28,7 @@ TutorialAVictory* TutorialAVictory::create()
 	return instance;
 }
 
-TutorialAVictory::TutorialAVictory() : TutorialBase(StateOverride::TutorialMode::TutorialA, GameState::StateType::GameEnd)
+TutorialAVictory::TutorialAVictory() : super(StateOverride::TutorialMode::TutorialA, GameState::StateType::GameEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_Victory::create(), Size(420.0f, 0.0f));
@@ -59,7 +59,7 @@ TutorialAVictory::~TutorialAVictory()
 
 void TutorialAVictory::onEnter()
 {
-	TutorialBase::onEnter();
+	super::onEnter();
 
 	this->lossDisplayTutorialLabel->setOpacity(0);
 	this->lossDisplayNextButton->disableInteraction(0);
@@ -67,7 +67,7 @@ void TutorialAVictory::onEnter()
 
 void TutorialAVictory::initializePositions()
 {
-	TutorialBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -78,7 +78,7 @@ void TutorialAVictory::initializePositions()
 
 void TutorialAVictory::initializeListeners()
 {
-	TutorialBase::initializeListeners();
+	super::initializeListeners();
 }
 
 bool TutorialAVictory::tryHijackState(GameState* gameState)
@@ -96,17 +96,17 @@ bool TutorialAVictory::tryHijackState(GameState* gameState)
 
 void TutorialAVictory::onBeforeStateChange(GameState* gameState)
 {
-	TutorialBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void TutorialAVictory::onAnyStateChange(GameState* gameState)
 {
-	TutorialBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void TutorialAVictory::initializeCallbacks(GameState* gameState)
 {
-	this->lossDisplayNextButton->setClickCallback([=](ClickableNode* menuSprite, MouseEvents::MouseEventArgs* args)
+	this->lossDisplayNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

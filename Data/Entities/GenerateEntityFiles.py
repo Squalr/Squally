@@ -71,8 +71,7 @@ def parseEntityFile(entityDataPath):
 			entityData["Hexus"]["PuzzleData"] = "nullptr"
 		else:
 			entityData["IsHexusPuzzle"] = True
-			# TODO
-			entityData["Hexus"]["PuzzleData"] = "nullptr"
+			entityData["Hexus"]["PuzzleData"] = buildPuzzleContent(entityData)
 
 		# Reformat preset card list to match C++ needs
 		presetCards = ""
@@ -113,6 +112,44 @@ def parseEntityFile(entityDataPath):
 		return entityData
 
 	return []
+
+def buildPuzzleContent(entityData):
+	puzzleDataTemplateFile = abspath(join(join(realpath(__file__), ".."), "PuzzleData.template"))
+
+	def buildCardList(cardList):
+		cppCardList = ""
+
+		for card in cardList:
+			cppCardList += "CardList::getInstance()->cardListByName.at(CardKeys::" + card + "),\n"
+			pass
+		
+		return cppCardList.rstrip()
+	
+	if not entityData["Hexus"]["PuzzleData"]["TutorialKey"]:
+		entityData["Hexus"]["PuzzleData"]["TutorialKey"] = "StateOverride::TutorialMode::NoTutorial"
+
+	with open(puzzleDataTemplateFile, "r") as puzzleDataTemplateReader:
+		puzzleContent = puzzleDataTemplateReader.read()
+		puzzleContent = puzzleContent \
+		.replace("{{PlayerLosses}}", entityData["Hexus"]["PuzzleData"]["PlayerLosses"]) \
+		.replace("{{EnemyLosses}}", entityData["Hexus"]["PuzzleData"]["EnemyLosses"]) \
+		.replace("{{PlayersTurn}}", entityData["Hexus"]["PuzzleData"]["PlayersTurn"]) \
+		.replace("{{PlayerPassed}}", entityData["Hexus"]["PuzzleData"]["EnemyPassed"]) \
+		.replace("{{EnemyPassed}}", entityData["Hexus"]["PuzzleData"]["EnemyPassed"]) \
+		.replace("{{PlayerDeck}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerDeck"])) \
+		.replace("{{EnemyDeck}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyDeck"])) \
+		.replace("{{PlayerHand}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerHand"])) \
+		.replace("{{EnemyHand}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyHand"])) \
+		.replace("{{PlayerBinaryCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerBinaryCards"])) \
+		.replace("{{PlayerDecimalCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerDecimalCards"])) \
+		.replace("{{PlayerHexCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["PlayerHexCards"])) \
+		.replace("{{EnemyBinaryCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyBinaryCards"])) \
+		.replace("{{EnemyDecimalCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyDecimalCards"])) \
+		.replace("{{EnemyHexCards}}", buildCardList(entityData["Hexus"]["PuzzleData"]["EnemyHexCards"]))\
+		.replace("{{TutorialKey}}", entityData["Hexus"]["PuzzleData"]["TutorialKey"])
+
+		return puzzleContent
+	return ""
 	
 def generateEntityCode(entityData):
 	pathRoot = abspath(join(join(realpath(__file__), "../../.."), ("Source/Entities/Platformer/" + entityData["Prefix"] + "/" + entityData["Environment"]).rstrip("/"))) + "/"
@@ -195,18 +232,19 @@ def generateEntityCode(entityData):
 		hContent = parseTemplate(hTemplate)
 		cppContent = parseTemplate(cppTemplate)
 		
-		hContent = replaceTextBetween(hPrefixA, hSuffixA, hContent, hUserContentA)
-		hContent = replaceTextBetween(hPrefixB, hSuffixB, hContent, hUserContentB)
-		hContent = replaceTextBetween(hPrefixC, hSuffixC, hContent, hUserContentC)
-		cppContent = replaceTextBetween(cppPrefixA, cppSuffixA, cppContent, cppUserContentA)
-		cppContent = replaceTextBetween(cppPrefixB, cppSuffixB, cppContent, cppUserContentB)
-		cppContent = replaceTextBetween(cppPrefixC, cppSuffixC, cppContent, cppUserContentC)
+		hContent = replaceTextBetween(hPrefixA, hSuffixA, hContent, hUserContentA + "\n\n")
+		hContent = replaceTextBetween(hPrefixB, hSuffixB, hContent, hUserContentB + "\n\t\n\t")
+		hContent = replaceTextBetween(hPrefixC, hSuffixC, hContent, hUserContentC + "\n\t\n\t")
+		cppContent = replaceTextBetween(cppPrefixA, cppSuffixA, cppContent, cppUserContentA + "\n\n")
+		cppContent = replaceTextBetween(cppPrefixB, cppSuffixB, cppContent, cppUserContentB + "\n\t\n\t")
+		cppContent = replaceTextBetween(cppPrefixC, cppSuffixC, cppContent, cppUserContentC + "\n\n")
 			
 		h.write(hContent)
 		cpp.write(cppContent)
 
 def generateHexusMenuCode(allEntityData):
 	menuRoot = abspath(join(join(realpath(__file__), ".."), "../../Source/Scenes/Hexus/Menus/OpponentSelect/"))
+	puzzleMenuRoot = abspath(join(join(realpath(__file__), ".."), "../../Source/Scenes/Hexus/Menus/PuzzleSelect/"))
 
 	hTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.h.template"))
 	cppTemplateFile = abspath(join(join(realpath(__file__), ".."), "HexusOpponentMenu.cpp.template"))
@@ -227,39 +265,63 @@ def generateHexusMenuCode(allEntityData):
 			entities = sortedEntities[environment]
 			
 			menuName = "HexusOpponentMenu" + environment
+			menuNamePuzzle = "HexusOpponentMenu" + environment + "Puzzle"
 			hOutFile = menuRoot + "/" + environment + "/" + menuName + ".h"
 			cppOutFile = menuRoot + "/" + environment + "/" + menuName + ".cpp"
+			hOutFilePuzzle = puzzleMenuRoot + "/" + environment + "/" + menuNamePuzzle + ".h"
+			cppOutFilePuzzle = puzzleMenuRoot + "/" + environment + "/" + menuNamePuzzle + ".cpp"
 			
 			if sys.version_info >= (3, 0):
 				os.makedirs(dirname(cppOutFile), exist_ok=True)
+				os.makedirs(dirname(cppOutFilePuzzle), exist_ok=True)
 			else:
 				# Python 2 support, although it creates a race condition
 				if not os.path.exists(dirname(cppOutFile)):
 					os.makedirs(dirname(cppOutFile))
+				if not os.path.exists(dirname(cppOutFilePuzzle)):
+					os.makedirs(dirname(cppOutFilePuzzle))
 
 			hContent = hTemplateContent
 			cppContent = cppTemplateContent
+			hContentPuzzle = hTemplateContent
+			cppContentPuzzle = cppTemplateContent
 			generatedEnemyList = ""
 			generatedIncludes = ""
+			generatedPuzzleEnemyList = ""
+			generatedPuzzleIncludes = ""
 
 			for nextEntity in entities:
-				if not nextEntity["IsHexusPuzzle"]:
+				if not nextEntity["IsHexusPuzzle"] and nextEntity["Type"] == "Npc":
 					generatedIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
 					generatedEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
-
-			cppContent = cppContent.replace("{{Environment}}", environment)
-			cppContent = cppContent.replace("{{HexusOpponentIncludes}}", generatedIncludes)
-			cppContent = cppContent.replace("{{HexusOpponents}}", generatedEnemyList)
-			cppContent = cppContent.replace("{{MenuName}}", menuName)
+				elif nextEntity["IsHexusPuzzle"] and nextEntity["Type"] == "Enemy":
+					generatedPuzzleIncludes += ("#include \"Entities/Platformer/" + nextEntity["Prefix"] + "/" + nextEntity["Environment"]).rstrip("/") + "/" + nextEntity["Name"] + ".h\"" + "\n"
+					generatedPuzzleEnemyList += "\t" + "this->opponents.push_back(HexusOpponentPreview::create(" + nextEntity["Name"] + "::getHexusOpponentData()));\n"
+			
+			cppContent = cppContent.replace("{{Environment}}", environment) \
+				.replace("{{HexusOpponentIncludes}}", generatedIncludes) \
+				.replace("{{HexusOpponents}}", generatedEnemyList) \
+				.replace("{{MenuName}}", menuName) \
+				.replace("{{PuzzleTag}}", "")
 			hContent = hContent.replace("{{MenuName}}", menuName)
 
-			with open(hOutFile, "w+") as hWriter, open(cppOutFile, "w+") as cppWriter:
+			cppContentPuzzle = cppContentPuzzle.replace("{{Environment}}", environment) \
+				.replace("{{HexusOpponentIncludes}}", generatedPuzzleIncludes) \
+				.replace("{{HexusOpponents}}", generatedPuzzleEnemyList) \
+				.replace("{{MenuName}}", menuNamePuzzle) \
+				.replace("{{PuzzleTag}}", "Puzzle")
+			hContentPuzzle = hContentPuzzle.replace("{{MenuName}}", menuNamePuzzle)
+
+			with open(hOutFile, "w+") as hWriter, open(cppOutFile, "w+") as cppWriter, open(hOutFilePuzzle, "w+") as hWriterPuzzle, open(cppOutFilePuzzle, "w+") as cppWriterPuzzle:
 				hWriter.write(hContent)
 				cppWriter.write(cppContent)
+				hWriterPuzzle.write(hContentPuzzle)
+				cppWriterPuzzle.write(cppContentPuzzle)
 
 def generateEntityDeserializationCode(allEntityData):
 	deserializerClass = abspath(join(join(realpath(__file__), ".."), "../../Source/Entities/Platformer/PlatformerEntityDeserializer.cpp"))
-	
+	contents = ""
+
 	with open(deserializerClass,"r+") as contentReader:
 		includesPrefixDelimiter = "////V////V////V////V////V////V////V/"
 		includesSuffixDelimiter = "////Y////Y////Y////Y////Y////Y////Y/"
@@ -283,12 +345,10 @@ def generateEntityDeserializationCode(allEntityData):
 		
 		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")
 		
-		with open(deserializerClass,"w+") as contentWriter:
-			contentWriter.write(contents)
+	with open(deserializerClass,"w+") as contentWriter:
+		contentWriter.write(contents)
 
 def replaceTextBetween(delimeterA, delimeterB, contents, innerContent):
-	if not delimeterA in contents or delimeterB in contents:
-		return contents
 	contentsPrefix = contents.split(delimeterA)[0]
 	contentsSuffix = contents.split(delimeterB)[1]
 	

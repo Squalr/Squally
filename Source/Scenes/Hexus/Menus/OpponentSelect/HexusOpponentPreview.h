@@ -7,6 +7,7 @@ namespace cocos2d
 {
 	class ClippingNode;
 	class LayerColor;
+	class Sprite;
 }
 
 class HexusOpponentData;
@@ -30,12 +31,13 @@ protected:
 private:
 	typedef SmartNode super;
 	void initializePositions() override;
-	void onOpponentClick(ClickableNode* HexusOpponentPreview);
+	void onOpponentClick();
 
 	std::function<void(HexusOpponentPreview*)> onMouseOverEvent;
 
 	SmartAnimationNode* opponentSprite;
 	cocos2d::LayerColor* disabledLayer;
 	cocos2d::ClippingNode* frameClip;
+	cocos2d::Sprite* lockedSprite;
 	ClickableNode* frame;
 };

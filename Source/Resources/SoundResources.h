@@ -11,6 +11,7 @@ namespace SoundResources
 	extern const std::string ButtonClick2;
 	extern const std::string ButtonClick3;
 	extern const std::string ButtonRollover1;
+	extern const std::string Cipher_GearTurn;
 	extern const std::string Clean_Interface_Buttons_8;
 	extern const std::string ClickBack1;
 	extern const std::string ClickBack2;
@@ -36,6 +37,7 @@ namespace SoundResources
 	extern const std::string Hexus_Attacks_Hit;
 	extern const std::string Hexus_Attacks_HitSword;
 	extern const std::string Hexus_Attacks_MagicSlash;
+	extern const std::string Hexus_Attacks_Sheep;
 	extern const std::string Hexus_Attacks_Shimmer;
 	extern const std::string Hexus_Attacks_Shimmer2;
 	extern const std::string Hexus_Attacks_WaterSpell;
@@ -54,6 +56,10 @@ namespace SoundResources
 	extern const std::string Menus_BookPageTurn_PE1014902;
 	extern const std::string Menus_Card_Game_UI_Button_Light_Reverb_02;
 	extern const std::string Menus_Simple_Button;
+	extern const std::string Objects_Ancient_Stone_Mechanism_Movement_01;
+	extern const std::string Objects_StoneWall1;
+	extern const std::string Objects_StoneWall2;
+	extern const std::string Objects_StoneWall3;
 	extern const std::string Special1;
 	extern const std::string Special2;
 };

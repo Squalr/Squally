@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 
+class LocalizedString;
+
 class CardData
 {
 public:
@@ -14,29 +16,39 @@ public:
 		Special_OR,
 		Special_XOR,
 		Special_SHL,
+		Special_ROL,
 		Special_SHR,
-		Special_INV,
+		Special_ROR,
+		Special_NOT,
 		Special_FLIP1,
 		Special_FLIP2,
 		Special_FLIP3,
 		Special_FLIP4,
 		Special_ADD,
 		Special_SUB,
-		Special_ENV_CLEAR,
-		Special_ENV_BIN_STORM,
-		Special_ENV_DEC_STORM,
-		Special_ENV_HEX_STORM,
+		Special_SUDDEN_DEATH,
+		Special_GREED,
+		Special_ABSORB,
+		Special_KILL,
+		Special_RETURN_TO_HAND,
+		Special_STEAL,
+		Special_BONUS_MOVES,
+		Special_PEEK,
 	};
 
-	CardData(std::string newCardResourceFile, std::string newCardName, CardType newCardType, unsigned int newAttack);
+	CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack);
 	~CardData();
 
-	std::string getCardTypeString();
+	LocalizedString* getCardTypeString();
+	LocalizedString* getCardOperationString();
 	bool isAttackCard();
 	bool isSpecialCard();
+	bool isMultiTargetCard();
+	bool isFixedImmediateCard();
+	unsigned int getIntrinsicImmediate();
 
 	std::string cardResourceFile;
-	std::string cardName;
+	std::string cardKey;
 	CardType cardType;
 	unsigned int attack;
 };

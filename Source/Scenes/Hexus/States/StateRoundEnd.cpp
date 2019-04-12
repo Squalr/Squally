@@ -17,7 +17,7 @@ StateRoundEnd* StateRoundEnd::create()
 	return instance;
 }
 
-StateRoundEnd::StateRoundEnd() : StateBase(GameState::StateType::RoundEnd)
+StateRoundEnd::StateRoundEnd() : super(GameState::StateType::RoundEnd)
 {
 }
 
@@ -27,14 +27,17 @@ StateRoundEnd::~StateRoundEnd()
 
 void StateRoundEnd::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateRoundEnd::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	GameState::StateType nextState = GameState::StateType::RoundStart;
+
+	bool playerWonRound = false;
+	bool enemyWonRound = false;
 
 	if (gameState->isRoundTied())
 	{
@@ -43,10 +46,12 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	}
 	else if (gameState->isPlayerWinningRound())
 	{
+		playerWonRound = true;
 		gameState->enemyLosses++;
 	}
 	else
 	{
+		enemyWonRound = true;
 		gameState->playerLosses++;
 	}
 
@@ -58,22 +63,11 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 	const float fadeSpeed = 0.5f;
 
 	this->runAction(Sequence::create(
-		CallFunc::create([=]()
-		{
-			std::vector<CardRow*> rows = gameState->getAllRows();
-
-			for (auto it = rows.begin(); it != rows.end(); it++)
-			{
-				for (auto cardIt = (*it)->rowCards.begin(); cardIt != (*it)->rowCards.end(); cardIt++)
-				{
-					(*cardIt)->runAction(FadeTo::create(fadeSpeed, 0));
-				}
-			}
-		}),
 		DelayTime::create(Config::bannerDisplayDuration),
 		CallFunc::create([=]()
 		{
-			gameState->removeFieldCards();
+			gameState->sendFieldCardsToGraveyard(playerWonRound, enemyWonRound);
+			gameState->roundNumber++;
 		}),
 		CallFunc::create([=]()
 		{
@@ -85,10 +79,10 @@ void StateRoundEnd::onStateEnter(GameState* gameState)
 
 void StateRoundEnd::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateRoundEnd::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

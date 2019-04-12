@@ -131,7 +131,7 @@ RowTotals::~RowTotals()
 
 void RowTotals::onEnter()
 {
-	ComponentBase::onEnter();
+	super::onEnter();
 
 	this->enemyBinaryCardIncreaseLabel->setOpacity(0);
 	this->enemyDecimalCardIncreaseLabel->setOpacity(0);
@@ -150,7 +150,7 @@ void RowTotals::onEnter()
 
 void RowTotals::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -191,12 +191,12 @@ void RowTotals::initializePositions()
 
 void RowTotals::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void RowTotals::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	switch (gameState->stateType)
 	{

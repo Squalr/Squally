@@ -16,7 +16,7 @@ StateAIDecideTarget* StateAIDecideTarget::create()
 	return instance;
 }
 
-StateAIDecideTarget::StateAIDecideTarget() : StateBase(GameState::StateType::AIDecideTarget)
+StateAIDecideTarget::StateAIDecideTarget() : super(GameState::StateType::AIDecideTarget)
 {
 }
 
@@ -26,12 +26,12 @@ StateAIDecideTarget::~StateAIDecideTarget()
 
 void StateAIDecideTarget::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateAIDecideTarget::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 
 	// Unable to find a card to play (ie it would be disadvantageous to play any card for the opponent)
 	if (gameState->selectedHandCard == nullptr)
@@ -71,6 +71,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_FLIP2:
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
+		case CardData::CardType::Special_ABSORB:
 		{
 			gameState->selectedRow = std::get<0>(gameState->cachedBestRowPlay);
 			break;
@@ -86,12 +87,20 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 			gameState->selectedDestinationCard = std::get<1>(gameState->cachedBestSourceTargetPlay);
 			break;
 		}
-		case CardData::CardType::Special_INV:
+		case CardData::CardType::Special_ROL:
+		case CardData::CardType::Special_ROR:
+		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_RETURN_TO_HAND:
 		{
 			gameState->selectedDestinationCard = std::get<0>(gameState->cachedBestTargetPlay);
 
 			break;
 		}
+		case CardData::CardType::Special_GREED:
+		case CardData::CardType::Special_BONUS_MOVES:
+		case CardData::CardType::Special_PEEK:
 		default:
 		{
 			break;
@@ -110,10 +119,10 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 
 void StateAIDecideTarget::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateAIDecideTarget::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

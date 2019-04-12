@@ -11,8 +11,10 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -43,7 +45,7 @@ GoblinElf::GoblinElf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(140.0f, 296.0f),
-	0.6f,
+	0.8f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -53,7 +55,7 @@ GoblinElf::GoblinElf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
+	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 	///////////////////////////////////////////////////
@@ -73,7 +75,7 @@ GoblinElf::~GoblinElf()
 
 Vec2 GoblinElf::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-32.0f, -128.0f);
 }
 
 HexusOpponentData* GoblinElf::getHexusOpponentData()
@@ -82,20 +84,90 @@ HexusOpponentData* GoblinElf::getHexusOpponentData()
 	{
 		GoblinElf::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
-			UIResources::Menus_Hexus_HexusFrameBalmerPeaks,
-			0.6f,
+			HexusResources::Menus_HexusFrameBalmerPeaks,
+			0.8f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-32.0f, -128.0f),
 			GoblinElf::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
-			HexusOpponentData::generateDeck(25, 1.000f,
+			0.462f,
+			HexusOpponentData::generateDeck(32, 0.462f,
 			{
 
 			}),
-			nullptr
+			StateOverride::create(
+				// Player losses
+				1,
+				// Enemy losses
+				1,
+				// Player's turn
+				true,
+				// Player passed
+				true,
+				// Enemy passed
+				true,
+				// Player deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy deck
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hand
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				},
+				// Enemy hand
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+				},
+				// Player decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Player hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy binary cards
+				std::vector<CardData*>
+				{
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+				},
+				// Enemy decimal cards
+				std::vector<CardData*>
+				{
+					
+				},
+				// Enemy hex cards
+				std::vector<CardData*>
+				{
+					
+				},
+				StateOverride::TutorialMode::NoTutorial
+			)
 		);
 	}
 

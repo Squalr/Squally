@@ -11,7 +11,7 @@ StateTutorial* StateTutorial::create()
 	return instance;
 }
 
-StateTutorial::StateTutorial() : StateBase(GameState::StateType::Tutorial)
+StateTutorial::StateTutorial() : super(GameState::StateType::Tutorial)
 {
 }
 
@@ -21,30 +21,30 @@ StateTutorial::~StateTutorial()
 
 void StateTutorial::onAnyStateChange(GameState* gameState)
 {
-	StateBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }
 
 void StateTutorial::onAnyRequestStateChange(GameState* gameState)
 {
-	StateBase::onAnyRequestStateChange(gameState);
+	super::onAnyRequestStateChange(gameState);
 }
 
 void StateTutorial::onBeforeStateEnter(GameState* gameState)
 {
-	StateBase::onBeforeStateEnter(gameState);
+	super::onBeforeStateEnter(gameState);
 }
 
 void StateTutorial::onStateEnter(GameState* gameState)
 {
-	StateBase::onStateEnter(gameState);
+	super::onStateEnter(gameState);
 }
 
 void StateTutorial::onStateReload(GameState* gameState)
 {
-	StateBase::onStateReload(gameState);
+	super::onStateReload(gameState);
 }
 
 void StateTutorial::onStateExit(GameState* gameState)
 {
-	StateBase::onStateExit(gameState);
+	super::onStateExit(gameState);
 }

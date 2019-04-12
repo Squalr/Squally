@@ -17,13 +17,14 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StateGameEnd();
 	~StateGameEnd();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBackClick(ClickableNode* menuSprite, GameState* gameState);
+	void onBackClick(GameState* gameState);
 
 	ClickableTextNode* backButton;
 };

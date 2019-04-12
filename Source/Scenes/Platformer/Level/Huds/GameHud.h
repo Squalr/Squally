@@ -3,6 +3,7 @@
 #include "Engine/UI/HUD/Hud.h"
 
 class CurrencyDisplay;
+class LocalizedLabel;
 class RuneBar;
 class StatsBars;
 
@@ -28,4 +29,5 @@ private:
 	CurrencyDisplay* currencyDisplay;
 	StatsBars* statsBars;
 	RuneBar* runeBar;
+	LocalizedLabel* controlsLabel;
 };

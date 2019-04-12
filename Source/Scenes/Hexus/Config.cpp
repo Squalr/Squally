@@ -30,7 +30,7 @@ const int   Config::coinFlipCount = 8;
 const float Config::bannerFadeSpeed = 0.15f;
 const float Config::bannerDisplayDuration = 1.25f;
 const float Config::roundBannerDisplayDuration = 2.0f;
-const float Config::bannerIconOffset = 448.0f;
+const float Config::bannerIconOffset = 560.0f;
 
 const float Config::cardSelectSpeed = 0.25f;
 const float Config::cardSelectOffsetY = 24.0f;
@@ -58,7 +58,7 @@ const float Config::boardCenterOffsetY = 78.0f;
 const float Config::binaryRowOffsetY = 78.0f;
 const float Config::decimalRowOffsetY = 234.0f;
 const float Config::hexRowOffsetY = 390.0f;
-const float Config::previewOffsetY = 128.0f;
+const float Config::previewOffsetY = 32.0f;
 const float Config::statusLabelWidth = 256.0f;
 const float Config::statusLabelOffsetY = -128.0f;
 const float Config::graveyardOffsetX = -64.0f;

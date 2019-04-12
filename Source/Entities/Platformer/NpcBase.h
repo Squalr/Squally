@@ -26,7 +26,7 @@ protected:
 
 protected:
 	virtual void initializeCollisionEvents() override;
-	virtual void onInteractButtonClick(ClickableNode* menuSprite);
+	virtual void onInteractButtonClick();
 
 private:
 	typedef PlatformerFriendly super;

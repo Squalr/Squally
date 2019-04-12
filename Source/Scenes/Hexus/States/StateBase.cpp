@@ -16,11 +16,11 @@ StateBase::~StateBase()
 
 void StateBase::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 
-	EventListenerCustom* requestStateUpdateListener = EventListenerCustom::create(GameState::requestStateUpdateEvent, CC_CALLBACK_1(StateBase::onRequestStateChangeEvent, this));
-	EventListenerCustom* beforeStateUpdateListener = EventListenerCustom::create(GameState::beforeStateUpdateEvent, CC_CALLBACK_1(StateBase::onBeforeStateChangeEvent, this));
-	EventListenerCustom* onStateUpdateListener = EventListenerCustom::create(GameState::onStateUpdateEvent, CC_CALLBACK_1(StateBase::onStateChangeEvent, this));
+	EventListenerCustom* requestStateUpdateListener = EventListenerCustom::create(GameState::RequestStateUpdateEvent, CC_CALLBACK_1(StateBase::onRequestStateChangeEvent, this));
+	EventListenerCustom* beforeStateUpdateListener = EventListenerCustom::create(GameState::BeforeStateUpdateEvent, CC_CALLBACK_1(StateBase::onBeforeStateChangeEvent, this));
+	EventListenerCustom* onStateUpdateListener = EventListenerCustom::create(GameState::OnStateUpdateEvent, CC_CALLBACK_1(StateBase::onStateChangeEvent, this));
 
 	this->addEventListener(requestStateUpdateListener);
 	this->addEventListener(beforeStateUpdateListener);

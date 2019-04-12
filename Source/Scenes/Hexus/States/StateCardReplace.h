@@ -18,12 +18,13 @@ protected:
 	void onStateExit(GameState* gameState) override;
 
 private:
+	typedef StateBase super;
 	StateCardReplace();
 	~StateCardReplace();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onEndReplaceCards(ClickableNode* menuSprite, GameState* gameState);
+	void onEndReplaceCards(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* cardToReplace, GameState* gameState);
 

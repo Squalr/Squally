@@ -35,6 +35,8 @@ CardEffects::CardEffects()
 	this->meteorAlt = nullptr;
 	this->meteorBlue = nullptr;
 	this->meteorPurple = nullptr;
+	this->nether = nullptr;
+	this->poison = nullptr;
 	this->radialAura = nullptr;
 	this->radialFire = nullptr;
 	this->radialGalaxy = nullptr;
@@ -53,21 +55,21 @@ CardEffects::~CardEffects()
 
 void CardEffects::onEnter()
 {
-	SmartNode::onEnter();
+	super::onEnter();
 
 	this->clearEffects();
 }
 
 void CardEffects::initializePositions()
 {
-	SmartNode::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void CardEffects::initializeListeners()
 {
-	SmartNode::initializeListeners();
+	super::initializeListeners();
 }
 
 void CardEffects::runEffect(CardEffect effect)
@@ -108,8 +110,9 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::FocusRing:
 		{
-			this->getFocusRing()->resumeEmissions();
 			this->getFocusRing()->setVisible(true);
+			this->getFocusRing()->resumeEmissions();
+			this->getFocusRing()->start();
 			break;
 		}
 		case CardEffect::FrostCirlce:
@@ -154,6 +157,18 @@ void CardEffects::runEffect(CardEffect effect)
 			this->getMeteorPurple()->start();
 			break;
 		}
+		case CardEffect::Nether:
+		{
+			this->getNether()->resumeEmissions();
+			this->getNether()->start();
+			break;
+		}
+		case CardEffect::Poison:
+		{
+			this->getPoison()->resumeEmissions();
+			this->getPoison()->start();
+			break;
+		}
 		case CardEffect::RadialAura:
 		{
 			this->getRadialAura()->resumeEmissions();
@@ -180,6 +195,7 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::SelectionPulse:
 		{
+			this->getSelectionPulse()->setVisible(true);
 			this->getSelectionPulse()->runAction(RepeatForever::create(Sequence::create(
 				CallFunc::create([=]()
 				{
@@ -218,6 +234,7 @@ void CardEffects::runEffect(CardEffect effect)
 		}
 		case CardEffect::TargetPulse:
 		{
+			this->getTargetPulse()->setVisible(true);
 			this->getTargetPulse()->resumeEmissions();
 			this->getTargetPulse()->start();
 
@@ -235,16 +252,22 @@ void CardEffects::clearEffects()
 	if (this->focusRing != nullptr)
 	{
 		this->getFocusRing()->setVisible(false);
+		this->getFocusRing()->stopAllActions();
+		this->getFocusRing()->pauseEmissions();
 	}
 
 	if (this->selectionPulse != nullptr)
 	{
+		this->getSelectionPulse()->setVisible(false);
 		this->getSelectionPulse()->stopAllActions();
+		this->getSelectionPulse()->pauseEmissions();
 	}
 
 	if (this->targetPulse != nullptr)
 	{
+		this->getTargetPulse()->setVisible(false);
 		this->getTargetPulse()->stopAllActions();
+		this->getTargetPulse()->pauseEmissions();
 	}
 }
 
@@ -444,6 +467,36 @@ ParticleSystemQuad* CardEffects::getMeteorPurple()
 	}
 
 	return this->meteorPurple;
+}
+
+ParticleSystemQuad* CardEffects::getNether()
+{
+	if (this->nether == nullptr)
+	{
+		this->nether = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Nether);
+
+		this->nether->setPositionType(ParticleSystem::PositionType::GROUPED);
+		this->nether->pauseEmissions();
+
+		this->addChild(this->nether);
+	}
+
+	return this->nether;
+}
+
+ParticleSystemQuad* CardEffects::getPoison()
+{
+	if (this->poison == nullptr)
+	{
+		this->poison = ParticleSystemQuad::create(ParticleResources::Hexus_CardEffects_Poison);
+
+		this->poison->setPositionType(ParticleSystem::PositionType::GROUPED);
+		this->poison->pauseEmissions();
+
+		this->addChild(this->poison);
+	}
+
+	return this->poison;
 }
 
 ParticleSystemQuad* CardEffects::getRadialAura()

@@ -61,7 +61,7 @@ void ConfirmationMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
-	this->confirmWindow->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	this->confirmWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 136.0f, visibleSize.height / 2 + 124.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2 - 96.0f, visibleSize.height / 2 - 64.0f));
 	this->confirmButton->setPosition(Vec2(visibleSize.width / 2 + 96.0f, visibleSize.height / 2 - 64.0f));
@@ -71,9 +71,9 @@ void ConfirmationMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cancelButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCancelClick, this));
-	this->confirmButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onConfirmClick, this));
-	this->closeButton->setClickCallback(CC_CALLBACK_1(ConfirmationMenu::onCloseClick, this));
+	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::close, this));
+	this->confirmButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::confirm, this));
+	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::close, this));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -96,7 +96,7 @@ void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::fu
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 + 32.0f));
+	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));
 
 	this->addChild(this->confirmationLabel);
 
@@ -114,10 +114,7 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 		{
-			if (this->onCancelCallback != nullptr)
-			{
-				this->onCancelCallback();
-			}
+			this->close();
 
 			event->stopPropagation();
 			break;
@@ -129,26 +126,22 @@ void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event
 	}
 }
 
-void ConfirmationMenu::onCloseClick(ClickableNode* menuSprite)
-{
-	if (this->onCancelCallback != nullptr)
-	{
-		this->onCancelCallback();
-	}
-}
-
-void ConfirmationMenu::onCancelClick(ClickableNode* menuSprite)
-{
-	if (this->onCancelCallback != nullptr)
-	{
-		this->onCancelCallback();
-	}
-}
-
-void ConfirmationMenu::onConfirmClick(ClickableNode* menuSprite)
+void ConfirmationMenu::confirm()
 {
 	if (this->onConfirmCallback != nullptr)
 	{
 		this->onConfirmCallback();
 	}
+	
+	this->setVisible(false);
+}
+
+void ConfirmationMenu::close()
+{
+	if (this->onCancelCallback != nullptr)
+	{
+		this->onCancelCallback();
+	}
+
+	this->setVisible(false);
 }

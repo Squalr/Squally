@@ -59,10 +59,10 @@ void MapNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->mapSprite->setClickCallback(CC_CALLBACK_1(MapNode::onNodeClick, this));
+	this->mapSprite->setMouseClickCallback(CC_CALLBACK_0(MapNode::onNodeClick, this));
 }
 
-void MapNode::onNodeClick(ClickableNode* menuSprite)
+void MapNode::onNodeClick()
 {
 	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile, [](SerializableMap* map)
 	{

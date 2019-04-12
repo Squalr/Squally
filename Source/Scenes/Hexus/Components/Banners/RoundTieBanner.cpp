@@ -37,7 +37,7 @@ RoundTieBanner::~RoundTieBanner()
 
 void RoundTieBanner::initializePositions()
 {
-	BannerBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -57,5 +57,5 @@ void RoundTieBanner::onBeforeStateChange(GameState* gameState)
 
 void RoundTieBanner::onAnyStateChange(GameState* gameState)
 {
-	BannerBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 }

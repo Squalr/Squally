@@ -5,7 +5,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/HexusResources.h"
 
 #include "Strings/Menus/Maps/UnderflowRuins.h"
 
@@ -24,7 +24,7 @@ HexusChapterPreviewUnderflowRuins* HexusChapterPreviewUnderflowRuins::create()
 
 HexusChapterPreviewUnderflowRuins::HexusChapterPreviewUnderflowRuins() : HexusChapterPreview(HexusChapterPreviewUnderflowRuins::SaveKeyChapterName, Strings::Menus_Maps_UnderflowRuins::create())
 {
-	this->frameClip->addChild(Sprite::create(UIResources::Menus_Hexus_HexusFrameUnderflowRuins));
+	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins));
 }
 
 HexusChapterPreviewUnderflowRuins::~HexusChapterPreviewUnderflowRuins()

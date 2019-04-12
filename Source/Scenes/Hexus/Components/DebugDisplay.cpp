@@ -46,21 +46,21 @@ DebugDisplay::~DebugDisplay()
 
 void DebugDisplay::onDeveloperModeEnable()
 {
-	ComponentBase::onDeveloperModeEnable();
+	super::onDeveloperModeEnable();
 
 	this->setVisible(true);
 }
 
 void DebugDisplay::onDeveloperModeDisable()
 {
-	ComponentBase::onDeveloperModeEnable();
+	super::onDeveloperModeEnable();
 
 	this->setVisible(false);
 }
 
 void DebugDisplay::initializePositions()
 {
-	ComponentBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -72,23 +72,23 @@ void DebugDisplay::initializePositions()
 
 void DebugDisplay::initializeListeners()
 {
-	ComponentBase::initializeListeners();
+	super::initializeListeners();
 
-	this->loseButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->loseButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->activeGameState->playerLosses = 2;
 		this->activeGameState->enemyLosses = 0;
 
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
-	this->drawButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->drawButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->activeGameState->playerLosses = 2;
 		this->activeGameState->enemyLosses = 2;
 
 		GameState::updateState(this->activeGameState, GameState::StateType::GameEnd);
 	});
-	this->winButton->setClickCallback([=](ClickableNode*, MouseEvents::MouseEventArgs*)
+	this->winButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->activeGameState->playerLosses = 0;
 		this->activeGameState->enemyLosses = 2;
@@ -99,12 +99,12 @@ void DebugDisplay::initializeListeners()
 
 void DebugDisplay::onBeforeStateChange(GameState* gameState)
 {
-	ComponentBase::onBeforeStateChange(gameState);
+	super::onBeforeStateChange(gameState);
 }
 
 void DebugDisplay::onAnyStateChange(GameState* gameState)
 {
-	ComponentBase::onAnyStateChange(gameState);
+	super::onAnyStateChange(gameState);
 
 	this->activeGameState = gameState;
 

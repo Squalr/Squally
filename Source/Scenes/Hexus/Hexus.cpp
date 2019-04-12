@@ -6,10 +6,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
@@ -17,6 +19,7 @@
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/CardStorage.h"
+#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -64,15 +67,17 @@ Hexus::Hexus()
 	this->victoryBanner = VictoryBanner::create();
 	this->defeatBanner = DefeatBanner::create();
 	this->drawBanner = DrawBanner::create();
-	this->cardPreview = CardPreview::create();
+	this->cardPreviewComponent = CardPreviewComponent::create();
 	this->stagingHelperText = StagingHelperText::create();
+	this->assemblyHelpText = AssemblyHelpText::create();
 	this->stateAIDecideCard = StateAIDecideCard::create();
 	this->stateAIDecideCardReplace = StateAIDecideCardReplace::create();
 	this->stateAIDecidePass = StateAIDecidePass::create();
 	this->stateAIDecideTarget = StateAIDecideTarget::create();
 	this->stateCardReplace = StateCardReplace::create();
+	this->statePeekCards = StatePeekCards::create();
 	this->stateCoinFlip = StateCoinFlip::create();
-	this->stateCombineStaged = StateCombineStaged::create();
+	this->stateSourceCardStaged = StateSourceCardStaged::create();
 	this->stateDraw = StateDraw::create();
 	this->stateDrawInitial = StateDrawInitial::create();
 	this->stateGameEnd = StateGameEnd::create();
@@ -85,9 +90,10 @@ Hexus::Hexus()
 	this->statePlayerTurnStart = StatePlayerTurnStart::create();
 	this->stateRoundEnd = StateRoundEnd::create();
 	this->stateRoundStart = StateRoundStart::create();
-	this->stateSelectionStaged = StateSelectionStaged::create();
+	this->stateHandCardStaged = StateHandCardStaged::create();
 	this->stateTurnEnd = StateTurnEnd::create();
 	this->stateTutorial = StateTutorial::create();
+	this->boardSelection = ClickableNode::create(HexusResources::BoardSelection, HexusResources::BoardSelection);
 	this->deckCardCountDisplay = DeckCardCountDisplay::create();
 	this->handCardCountDisplay = HandCardCountDisplay::create();
 	this->drawCountDisplay = DrawCountDisplay::create();
@@ -104,12 +110,14 @@ Hexus::Hexus()
 	this->tutorialDIntroSequence = TutorialDIntroSequence::create();
 	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
 	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
+	this->relocateLayer = Node::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
+	this->gameState->boardSelection = this->boardSelection;
 	this->gameState->lossesDisplayPointer = this->lossesDisplay;
 	this->gameState->playerBinaryRowTotalPointer = this->rowTotals->playerBinaryTotalSocket;
 	this->gameState->playerDecimalRowTotalPointer = this->rowTotals->playerDecimalTotalSocket;
@@ -127,9 +135,11 @@ Hexus::Hexus()
 	this->gameState->claimVictoryButtonPointer = this->statePass->claimVictoryButton;
 
 	this->addChild(this->gameBackground);
+	this->addChild(this->boardSelection);
 	this->addChild(this->avatars);
-	this->addChild(this->cardPreview);
+	this->addChild(this->cardPreviewComponent);
 	this->addChild(this->stagingHelperText);
+	this->addChild(this->assemblyHelpText);
 	this->addChild(this->lossesDisplay);
 	this->addChild(this->deckCardCountDisplay);
 	this->addChild(this->handCardCountDisplay);
@@ -138,13 +148,15 @@ Hexus::Hexus()
 	this->addChild(this->rowTotals);
 	this->addChild(this->scoreTotal);
 	this->addChild(this->gameState);
+	this->addChild(this->relocateLayer);
 	this->addChild(this->stateAIDecideCard);
 	this->addChild(this->stateAIDecideCardReplace);
 	this->addChild(this->stateAIDecidePass);
 	this->addChild(this->stateAIDecideTarget);
 	this->addChild(this->stateCardReplace);
+	this->addChild(this->statePeekCards);
 	this->addChild(this->stateCoinFlip);
-	this->addChild(this->stateCombineStaged);
+	this->addChild(this->stateSourceCardStaged);
 	this->addChild(this->stateDraw);
 	this->addChild(this->stateDrawInitial);
 	this->addChild(this->stateGameEnd);
@@ -157,7 +169,7 @@ Hexus::Hexus()
 	this->addChild(this->statePlayerTurnStart);
 	this->addChild(this->stateRoundEnd);
 	this->addChild(this->stateRoundStart);
-	this->addChild(this->stateSelectionStaged);
+	this->addChild(this->stateHandCardStaged);
 	this->addChild(this->stateTurnEnd);
 	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);
@@ -197,9 +209,16 @@ Hexus::~Hexus()
 
 void Hexus::onEnter()
 {
-	GlobalScene::onEnter();
+	super::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::LastMarch);
+	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
+	{
+		SoundManager::playMusicResource(MusicResources::Hexus1);
+	}
+	else
+	{
+		SoundManager::playMusicResource(MusicResources::Hexus2);
+	}
 
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
@@ -211,16 +230,17 @@ void Hexus::onEnter()
 
 void Hexus::initializePositions()
 {
-	GlobalScene::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
+	this->boardSelection->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY);
 }
 
 void Hexus::initializeListeners()
 {
-	GlobalScene::initializeListeners();
+	super::initializeListeners();
 
 	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexus, [](EventCustom* args)
 	{
@@ -230,6 +250,16 @@ void Hexus::initializeListeners()
 		{
 			Hexus::instance->startGame(hexusArgs->opponentData);
 			GlobalDirector::loadScene(Hexus::instance);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventArgs)
+	{
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->relocateLayer->addChild(UIBoundObject::create(args->relocatedObject));
 		}
 	}));
 	
@@ -247,6 +277,8 @@ void Hexus::initializeListeners()
 
 void Hexus::startGame(HexusOpponentData* opponentData)
 {
+	this->relocateLayer->removeAllChildren();
+	
 	this->gameState->opponentData = opponentData;
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;

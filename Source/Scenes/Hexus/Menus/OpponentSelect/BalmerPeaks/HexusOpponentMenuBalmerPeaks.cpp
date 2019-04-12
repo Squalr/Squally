@@ -19,18 +19,6 @@
 #include "Entities/Platformer/Npcs/BalmerPeaks/Theldar.h"
 #include "Entities/Platformer/Npcs/BalmerPeaks/Tinsel.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aspen.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Bodom.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Cookie.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Irmik.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Jingles.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Juniper.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Kringle.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Nessie.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/PrincessPepper.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Theldar.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Tinsel.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaks.h"
 
 using namespace cocos2d;

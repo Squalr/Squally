@@ -7,6 +7,7 @@
 namespace ShaderResources
 {
 	extern const std::string Fragment_Blur;
+	extern const std::string Fragment_Cipher_Disort;
 	extern const std::string Fragment_ColorTransition;
 	extern const std::string Fragment_CrossHatch;
 	extern const std::string Fragment_Freichen;
@@ -19,6 +20,7 @@ namespace ShaderResources
 	extern const std::string Fragment_PassThrough;
 	extern const std::string Fragment_Sobel;
 	extern const std::string Vertex_Blur;
+	extern const std::string Vertex_Cipher_Disort;
 	extern const std::string Vertex_CrossHatch;
 	extern const std::string Vertex_Generic;
 	extern const std::string Vertex_Gray;
