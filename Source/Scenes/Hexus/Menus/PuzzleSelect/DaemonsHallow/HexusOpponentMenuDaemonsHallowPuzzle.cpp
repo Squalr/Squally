@@ -16,8 +16,8 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Viking.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallowPuzzle.h"
 
@@ -50,8 +50,8 @@ HexusOpponentMenuDaemonsHallowPuzzle::HexusOpponentMenuDaemonsHallowPuzzle() : s
 	this->opponents.push_back(HexusOpponentPreview::create(DemonSwordsman::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(DemonWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FireElemental::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Krampus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(LavaGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Viking::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

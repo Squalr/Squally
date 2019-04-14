@@ -10,15 +10,14 @@
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Krampus.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/PenguinGrunt.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/PenguinWarrior.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Santa.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/SnowFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/ToySoldierGoblin.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Viking.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Yeti.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaksPuzzle.h"
 
@@ -45,15 +44,14 @@ HexusOpponentMenuBalmerPeaksPuzzle::HexusOpponentMenuBalmerPeaksPuzzle() : super
 	this->opponents.push_back(HexusOpponentPreview::create(FrostFiend::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(GoblinElf::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(IceGolem::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Krampus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(PenguinGrunt::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(PenguinWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Santa::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(SnowFiend::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(ToySoldierGoblin::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Viking::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(WaterElemental::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Yeti::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(YetiWarrior::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

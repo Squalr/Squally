@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "YetiWarrior.h"
+#include "Viking.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string YetiWarrior::MapKeyYetiWarrior = "yeti-warrior";
-HexusOpponentData* YetiWarrior::HexusOpponentDataInstance = nullptr;
-const std::string YetiWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI_WARRIOR";
+const std::string Viking::MapKeyViking = "viking";
+HexusOpponentData* Viking::HexusOpponentDataInstance = nullptr;
+const std::string Viking::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIKING";
 
-YetiWarrior* YetiWarrior::deserialize(ValueMap& initProperties)
+Viking* Viking::deserialize(ValueMap& initProperties)
 {
-	YetiWarrior* instance = new YetiWarrior(initProperties);
+	Viking* instance = new Viking(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-YetiWarrior::YetiWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_BalmerPeaks_YetiWarrior_Animations,
-	EntityResources::Enemies_BalmerPeaks_YetiWarrior_Emblem,
+Viking::Viking(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
+	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(380.0f, 572.0f),
-	0.5f,
-	Vec2(24.0f, 0.0f),
+	Size(980.0f, 1200.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = YetiWarrior::getHexusOpponentData();
+	this->hexusOpponentData = Viking::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ YetiWarrior::YetiWarrior(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	///////////////////////////////////////////////////
 }
 
-YetiWarrior::~YetiWarrior()
+Viking::~Viking()
 {
 }
 
@@ -73,27 +73,27 @@ YetiWarrior::~YetiWarrior()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 YetiWarrior::getAvatarFrameOffset()
+Vec2 Viking::getAvatarFrameOffset()
 {
-	return Vec2(-64.0f, -160.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* YetiWarrior::getHexusOpponentData()
+HexusOpponentData* Viking::getHexusOpponentData()
 {
-	if (YetiWarrior::HexusOpponentDataInstance == nullptr)
+	if (Viking::HexusOpponentDataInstance == nullptr)
 	{
-		YetiWarrior::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_YetiWarrior_Animations,
+		Viking::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_BalmerPeaks_Viking_Animations,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.5f,
-			Vec2(24.0f, 0.0f),
+			1.0f,
+			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-64.0f, -160.0f),
-			YetiWarrior::HexusSaveKey,
+			Vec2(-32.0f, -112.0f),
+			Viking::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.250f,
-			HexusOpponentData::generateDeck(32, 0.250f,
+			1.000f,
+			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
 			}),
@@ -167,5 +167,5 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 		);
 	}
 
-	return YetiWarrior::HexusOpponentDataInstance;
+	return Viking::HexusOpponentDataInstance;
 }

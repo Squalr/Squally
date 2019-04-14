@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Viking.h"
+#include "Krampus.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Viking::MapKeyViking = "viking";
-HexusOpponentData* Viking::HexusOpponentDataInstance = nullptr;
-const std::string Viking::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIKING";
+const std::string Krampus::MapKeyKrampus = "krampus";
+HexusOpponentData* Krampus::HexusOpponentDataInstance = nullptr;
+const std::string Krampus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRAMPUS";
 
-Viking* Viking::deserialize(ValueMap& initProperties)
+Krampus* Krampus::deserialize(ValueMap& initProperties)
 {
-	Viking* instance = new Viking(initProperties);
+	Krampus* instance = new Krampus(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Viking::Viking(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_DaemonsHallow_Viking_Animations,
-	EntityResources::Enemies_DaemonsHallow_Viking_Emblem,
+Krampus::Krampus(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
+	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(980.0f, 1200.0f),
-	0.17f,
+	Size(396.0f, 412.0f),
+	0.9f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Viking::getHexusOpponentData();
+	this->hexusOpponentData = Krampus::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Viking::Viking(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Viking::~Viking()
+Krampus::~Krampus()
 {
 }
 
@@ -73,27 +73,27 @@ Viking::~Viking()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Viking::getAvatarFrameOffset()
+Vec2 Krampus::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-48.0f, -232.0f);
 }
 
-HexusOpponentData* Viking::getHexusOpponentData()
+HexusOpponentData* Krampus::getHexusOpponentData()
 {
-	if (Viking::HexusOpponentDataInstance == nullptr)
+	if (Krampus::HexusOpponentDataInstance == nullptr)
 	{
-		Viking::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_Viking_Animations,
+		Krampus::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.17f,
+			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
-			Viking::HexusSaveKey,
+			Vec2(-48.0f, -232.0f),
+			Krampus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.846f,
+			HexusOpponentData::generateDeck(32, 0.846f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Viking::getHexusOpponentData()
 		);
 	}
 
-	return Viking::HexusOpponentDataInstance;
+	return Krampus::HexusOpponentDataInstance;
 }

@@ -1,6 +1,5 @@
 {
-  "Environment": "BalmerPeaks",
-  "Scale": "0.5f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "380.0f",
     "Height": "572.0f"
@@ -22,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "1.0f / 13.0f",
+      "Strength": "3.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -39,27 +38,29 @@
 
       ],
       "PlayerHand": [
+        "Flip2",
+        "ShiftLeft",
         "LogicalXor"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-        "Binary6",
-        "Binary6"
+        "Binary2"
       ],
       "PlayerDecimalCards": [
 
       ],
       "PlayerHexCards": [
-
+        
       ],
       "EnemyBinaryCards": [
-        "Binary6",
-        "Binary9"
+        "Binary2",
+        "Binary2",
+        "Binary6"
       ],
       "EnemyDecimalCards": [
-
+        "Decimal3"
       ],
       "EnemyHexCards": [
 
