@@ -92,8 +92,8 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 			Yeti::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.250f,
-			HexusOpponentData::generateDeck(32, 0.250f,
+			0.083f,
+			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
@@ -121,9 +121,7 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -133,7 +131,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -148,14 +147,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

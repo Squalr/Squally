@@ -92,8 +92,8 @@ HexusOpponentData* PenguinWarrior::getHexusOpponentData()
 			PenguinWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.615f,
-			HexusOpponentData::generateDeck(32, 0.615f,
+			0.667f,
+			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),

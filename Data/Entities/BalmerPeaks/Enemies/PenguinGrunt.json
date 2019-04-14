@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "7.0f / 13.0f",
+      "Strength": "7.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -64,7 +64,7 @@
         "Absorb",
         "Absorb",
         "Hex11",
-        "Hex10",
+        "Hex12",
         "Hex14"
       ],
       "TutorialKey": ""

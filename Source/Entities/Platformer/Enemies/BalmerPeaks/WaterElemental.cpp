@@ -92,8 +92,8 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 			WaterElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.385f,
-			HexusOpponentData::generateDeck(32, 0.385f,
+			0.417f,
+			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),

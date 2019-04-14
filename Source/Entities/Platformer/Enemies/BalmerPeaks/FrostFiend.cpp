@@ -92,8 +92,8 @@ HexusOpponentData* FrostFiend::getHexusOpponentData()
 			FrostFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.692f,
-			HexusOpponentData::generateDeck(32, 0.692f,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
