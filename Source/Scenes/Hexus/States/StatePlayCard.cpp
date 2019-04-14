@@ -438,7 +438,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 					for (auto it = targetRow->rowCards.begin(); it != targetRow->rowCards.end(); it++)
 					{
-						if ((*it)->cardData->cardKey != CardKeys::Binary0 && (*it)->getAttack() <= (*it)->getOriginalAttack())
+						if ((*it)->cardData->cardKey != CardKeys::Binary0 && (*it)->getAttack() < (*it)->getOriginalAttack())
 						{
 							toRemove.push_back(*it);
 						}

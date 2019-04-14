@@ -75,7 +75,7 @@ WaterElemental::~WaterElemental()
 
 Vec2 WaterElemental::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -196.0f);
+	return Vec2(-32.0f, -224.0f);
 }
 
 HexusOpponentData* WaterElemental::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -196.0f),
+			Vec2(-32.0f, -224.0f),
 			WaterElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
