@@ -92,8 +92,8 @@ HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
 			ToySoldierGoblin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.154f,
-			HexusOpponentData::generateDeck(32, 0.154f,
+			0.167f,
+			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),

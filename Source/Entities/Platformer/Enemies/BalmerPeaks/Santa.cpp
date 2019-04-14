@@ -92,8 +92,8 @@ HexusOpponentData* Santa::getHexusOpponentData()
 			Santa::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.923f,
-			HexusOpponentData::generateDeck(32, 0.923f,
+			0.917f,
+			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
 			}),

@@ -92,8 +92,8 @@ HexusOpponentData* GoblinElf::getHexusOpponentData()
 			GoblinElf::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.462f,
-			HexusOpponentData::generateDeck(32, 0.462f,
+			0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),

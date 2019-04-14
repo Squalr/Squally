@@ -92,8 +92,8 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 			PenguinGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.538f,
-			HexusOpponentData::generateDeck(32, 0.538f,
+			0.583f,
+			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
@@ -161,7 +161,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 				},
 				StateOverride::TutorialMode::NoTutorial

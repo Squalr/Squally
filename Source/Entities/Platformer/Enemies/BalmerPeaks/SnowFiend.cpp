@@ -92,8 +92,8 @@ HexusOpponentData* SnowFiend::getHexusOpponentData()
 			SnowFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.923f,
-			HexusOpponentData::generateDeck(32, 0.923f,
+			0.833f,
+			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),
