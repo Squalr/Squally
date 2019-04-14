@@ -38,7 +38,8 @@
 
       ],
       "PlayerHand": [
-        
+        "LogicalXor",
+        "Subtraction"
       ],
       "EnemyHand": [
 
@@ -47,19 +48,23 @@
 
       ],
       "PlayerDecimalCards": [
-
+        "Decimal7",
+        "Decimal6"
       ],
       "PlayerHexCards": [
 
       ],
       "EnemyBinaryCards": [
-
+        "Binary0"
       ],
       "EnemyDecimalCards": [
-
+        "Decimal15",
+        "Decimal8"
       ],
       "EnemyHexCards": [
-
+        "Hex0",
+        "Hex13",
+        "Hex0"
       ],
       "TutorialKey": ""
     }
