@@ -1,11 +1,11 @@
 {
-  "Scale": "0.65f",
+  "Scale": "0.9f",
   "Size": {
-    "Width": "196.0f",
-    "Height": "348.0f"
+    "Width": "256.0f",
+    "Height": "256.0f"
   },
   "Offset": {
-    "X": "0.0f",
+    "X": "-32.0f",
     "Y": "0.0f"
   },
   "AvatarOffset": {
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "1.0f",
+      "Strength": "3.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]

@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Ent.h"
+#include "FireTiger.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Ent::MapKeyEnt = "ent";
-HexusOpponentData* Ent::HexusOpponentDataInstance = nullptr;
-const std::string Ent::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ENT";
+const std::string FireTiger::MapKeyFireTiger = "fire-tiger";
+HexusOpponentData* FireTiger::HexusOpponentDataInstance = nullptr;
+const std::string FireTiger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FIRE_TIGER";
 
-Ent* Ent::deserialize(ValueMap& initProperties)
+FireTiger* FireTiger::deserialize(ValueMap& initProperties)
 {
-	Ent* instance = new Ent(initProperties);
+	FireTiger* instance = new FireTiger(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ent::Ent(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_EndianForest_Ent_Animations,
-	EntityResources::Enemies_EndianForest_Ent_Emblem,
+FireTiger::FireTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
+	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(512.0f, 960.0f),
-	0.9f,
-	Vec2(24.0f, 0.0f),
+	Size(256.0f, 320.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Ent::getHexusOpponentData();
+	this->hexusOpponentData = FireTiger::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Ent::Ent(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Ent::~Ent()
+FireTiger::~FireTiger()
 {
 }
 
@@ -73,27 +73,27 @@ Ent::~Ent()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Ent::getAvatarFrameOffset()
+Vec2 FireTiger::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -356.0f);
+	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Ent::getHexusOpponentData()
+HexusOpponentData* FireTiger::getHexusOpponentData()
 {
-	if (Ent::HexusOpponentDataInstance == nullptr)
+	if (FireTiger::HexusOpponentDataInstance == nullptr)
 	{
-		Ent::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_Ent_Animations,
-			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(24.0f, 0.0f),
-			Vec2(-48.0f, -256.0f),
-			Vec2(-32.0f, -356.0f),
-			Ent::HexusSaveKey,
+		FireTiger::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
+			HexusResources::Menus_HexusFrameDaemonsHallow,
+			1.0f,
+			Vec2(0.0f, 0.0f),
+			Vec2(-48.0f, -144.0f),
+			Vec2(-32.0f, -112.0f),
+			FireTiger::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Earth,
-			0.615f,
-			HexusOpponentData::generateDeck(32, 0.615f,
+			Card::CardStyle::Fire,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
@@ -121,10 +121,7 @@ HexusOpponentData* Ent::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -139,7 +136,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -159,17 +156,12 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)
 		);
 	}
 
-	return Ent::HexusOpponentDataInstance;
+	return FireTiger::HexusOpponentDataInstance;
 }

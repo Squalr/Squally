@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Abomination.h"
+#include "VoidArcher.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Abomination::MapKeyAbomination = "abomination";
-HexusOpponentData* Abomination::HexusOpponentDataInstance = nullptr;
-const std::string Abomination::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ABOMINATION";
+const std::string VoidArcher::MapKeyVoidArcher = "void-archer";
+HexusOpponentData* VoidArcher::HexusOpponentDataInstance = nullptr;
+const std::string VoidArcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_ARCHER";
 
-Abomination* Abomination::deserialize(ValueMap& initProperties)
+VoidArcher* VoidArcher::deserialize(ValueMap& initProperties)
 {
-	Abomination* instance = new Abomination(initProperties);
+	VoidArcher* instance = new VoidArcher(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_LambdaCrypts_Abomination_Animations,
-	EntityResources::Enemies_LambdaCrypts_Abomination_Emblem,
+VoidArcher::VoidArcher(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
+	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(296.0f, 356.0f),
-	0.6f,
+	Size(196.0f, 348.0f),
+	0.65f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Abomination::getHexusOpponentData();
+	this->hexusOpponentData = VoidArcher::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	///////////////////////////////////////////////////
 }
 
-Abomination::~Abomination()
+VoidArcher::~VoidArcher()
 {
 }
 
@@ -73,27 +73,27 @@ Abomination::~Abomination()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Abomination::getAvatarFrameOffset()
+Vec2 VoidArcher::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Abomination::getHexusOpponentData()
+HexusOpponentData* VoidArcher::getHexusOpponentData()
 {
-	if (Abomination::HexusOpponentDataInstance == nullptr)
+	if (VoidArcher::HexusOpponentDataInstance == nullptr)
 	{
-		Abomination::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_Abomination_Animations,
-			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.6f,
+		VoidArcher::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_VoidStar_VoidArcher_Animations,
+			HexusResources::Menus_HexusFrameVoidStar,
+			0.65f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Abomination::HexusSaveKey,
+			VoidArcher::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.583f,
+			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Abomination::getHexusOpponentData()
 		);
 	}
 
-	return Abomination::HexusOpponentDataInstance;
+	return VoidArcher::HexusOpponentDataInstance;
 }

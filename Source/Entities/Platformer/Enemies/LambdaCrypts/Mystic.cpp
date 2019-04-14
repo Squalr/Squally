@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Grep.h"
+#include "Mystic.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Grep::MapKeyGrep = "grep";
-HexusOpponentData* Grep::HexusOpponentDataInstance = nullptr;
-const std::string Grep::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GREP";
+const std::string Mystic::MapKeyMystic = "mystic";
+HexusOpponentData* Mystic::HexusOpponentDataInstance = nullptr;
+const std::string Mystic::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MYSTIC";
 
-Grep* Grep::deserialize(ValueMap& initProperties)
+Mystic* Mystic::deserialize(ValueMap& initProperties)
 {
-	Grep* instance = new Grep(initProperties);
+	Mystic* instance = new Mystic(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Grep::Grep(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_VoidStar_Grep_Animations,
-	EntityResources::Enemies_VoidStar_Grep_Emblem,
+Mystic::Mystic(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
+	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(640.0f, 720.0f),
-	0.7f,
-	Vec2(-48.0f, 0.0f),
+	Size(420.0f, 296.0f),
+	1.0f,
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Grep::getHexusOpponentData();
+	this->hexusOpponentData = Mystic::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Grep::Grep(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Grep::~Grep()
+Mystic::~Mystic()
 {
 }
 
@@ -73,27 +73,27 @@ Grep::~Grep()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Grep::getAvatarFrameOffset()
+Vec2 Mystic::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Grep::getHexusOpponentData()
+HexusOpponentData* Mystic::getHexusOpponentData()
 {
-	if (Grep::HexusOpponentDataInstance == nullptr)
+	if (Mystic::HexusOpponentDataInstance == nullptr)
 	{
-		Grep::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Grep_Animations,
-			HexusResources::Menus_HexusFrameVoidStar,
-			0.7f,
-			Vec2(-48.0f, 0.0f),
+		Mystic::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
+			HexusResources::Menus_HexusFrameLambdaCrypts,
+			1.0f,
+			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Grep::HexusSaveKey,
+			Mystic::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.500f,
+			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Grep::getHexusOpponentData()
 		);
 	}
 
-	return Grep::HexusOpponentDataInstance;
+	return Mystic::HexusOpponentDataInstance;
 }

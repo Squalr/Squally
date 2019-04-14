@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Hunter.h"
+#include "Gargoyle.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Hunter::MapKeyHunter = "hunter";
-HexusOpponentData* Hunter::HexusOpponentDataInstance = nullptr;
-const std::string Hunter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HUNTER";
+const std::string Gargoyle::MapKeyGargoyle = "gargoyle";
+HexusOpponentData* Gargoyle::HexusOpponentDataInstance = nullptr;
+const std::string Gargoyle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARGOYLE";
 
-Hunter* Hunter::deserialize(ValueMap& initProperties)
+Gargoyle* Gargoyle::deserialize(ValueMap& initProperties)
 {
-	Hunter* instance = new Hunter(initProperties);
+	Gargoyle* instance = new Gargoyle(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Hunter::Hunter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_VoidStar_Hunter_Animations,
-	EntityResources::Enemies_VoidStar_Hunter_Emblem,
+Gargoyle::Gargoyle(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
+	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(112.0f, 596.0f),
+	Size(256.0f, 256.0f),
 	0.9f,
-	Vec2(0.0f, 0.0f),
+	Vec2(-32.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Hunter::getHexusOpponentData();
+	this->hexusOpponentData = Gargoyle::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Hunter::Hunter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Hunter::~Hunter()
+Gargoyle::~Gargoyle()
 {
 }
 
@@ -73,27 +73,27 @@ Hunter::~Hunter()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Hunter::getAvatarFrameOffset()
+Vec2 Gargoyle::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Hunter::getHexusOpponentData()
+HexusOpponentData* Gargoyle::getHexusOpponentData()
 {
-	if (Hunter::HexusOpponentDataInstance == nullptr)
+	if (Gargoyle::HexusOpponentDataInstance == nullptr)
 	{
-		Hunter::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Hunter_Animations,
+		Gargoyle::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 			HexusResources::Menus_HexusFrameVoidStar,
 			0.9f,
-			Vec2(0.0f, 0.0f),
+			Vec2(-32.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Hunter::HexusSaveKey,
+			Gargoyle::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.250f,
+			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Hunter::getHexusOpponentData()
 		);
 	}
 
-	return Hunter::HexusOpponentDataInstance;
+	return Gargoyle::HexusOpponentDataInstance;
 }

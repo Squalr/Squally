@@ -17,10 +17,10 @@
 
 class HexusOpponentData;
 
-class Ent : public PlatformerEnemy
+class Werewolf : public PlatformerEnemy
 {
 public:
-	static Ent* deserialize(cocos2d::ValueMap& initProperties);
+	static Werewolf* deserialize(cocos2d::ValueMap& initProperties);
 	
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -33,11 +33,11 @@ public:
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyEnt;
+	static const std::string MapKeyWerewolf;
 
 private:
-	Ent(cocos2d::ValueMap& initProperties);
-	~Ent();
+	Werewolf(cocos2d::ValueMap& initProperties);
+	~Werewolf();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

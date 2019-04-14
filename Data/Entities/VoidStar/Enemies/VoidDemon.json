@@ -1,27 +1,27 @@
 {
-  "Scale": "0.9f",
+  "Scale": "0.7f",
   "Size": {
-    "Width": "512.0f",
-    "Height": "960.0f"
+    "Width": "338.0f",
+    "Height": "342.0f"
   },
   "Offset": {
-    "X": "24.0f",
+    "X": "0.0f",
     "Y": "0.0f"
   },
   "AvatarOffset": {
     "X": "-32.0f",
-    "Y": "-356.0f"
+    "Y": "-112.0f"
   },
   "Health": "10",
   "Special": "10",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-256.0f"
+      "Y": "-144.0f"
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "8.0f / 13.0f",
+      "Strength": "1.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -38,10 +38,7 @@
 
       ],
       "PlayerHand": [
-        "ShiftLeft",
-        "ShiftLeft",
-        "ShiftLeft",
-        "ShiftLeft"
+
       ],
       "EnemyHand": [
 
@@ -50,7 +47,7 @@
 
       ],
       "PlayerDecimalCards": [
-        "Decimal8"
+
       ],
       "PlayerHexCards": [
 
@@ -62,12 +59,7 @@
 
       ],
       "EnemyHexCards": [
-        "Hex1",
-        "Hex1",
-        "Hex1",
-        "Hex2",
-        "Hex2",
-        "Hex2"
+
       ],
       "TutorialKey": ""
     }

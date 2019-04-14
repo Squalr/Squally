@@ -6,17 +6,16 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Entities/Platformer/Enemies/VoidStar/Abomination.h"
 #include "Entities/Platformer/Enemies/VoidStar/Assassin.h"
-#include "Entities/Platformer/Enemies/VoidStar/BoneFiend.h"
 #include "Entities/Platformer/Enemies/VoidStar/BoneKnight.h"
+#include "Entities/Platformer/Enemies/VoidStar/DarkTiger.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
-#include "Entities/Platformer/Enemies/VoidStar/Grep.h"
-#include "Entities/Platformer/Enemies/VoidStar/Hunter.h"
-#include "Entities/Platformer/Enemies/VoidStar/Mittens.h"
-#include "Entities/Platformer/Enemies/VoidStar/Mystic.h"
-#include "Entities/Platformer/Enemies/VoidStar/Teddy.h"
-#include "Entities/Platformer/Enemies/VoidStar/Unicorn.h"
+#include "Entities/Platformer/Enemies/VoidStar/Gargoyle.h"
+#include "Entities/Platformer/Enemies/VoidStar/Shade.h"
+#include "Entities/Platformer/Enemies/VoidStar/VoidArcher.h"
+#include "Entities/Platformer/Enemies/VoidStar/VoidDemon.h"
 #include "Entities/Platformer/Enemies/VoidStar/Warlock.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStarPuzzle.h"
@@ -40,17 +39,16 @@ void HexusOpponentMenuVoidStarPuzzle::registerGlobalScene()
 
 HexusOpponentMenuVoidStarPuzzle::HexusOpponentMenuVoidStarPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar, HexusChapterPreviewVoidStarPuzzle::SaveKeyChapterName)
 {
+	this->opponents.push_back(HexusOpponentPreview::create(Abomination::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Assassin::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(BoneFiend::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(BoneKnight::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(DarkTiger::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EvilEye::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Exterminator::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Grep::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Hunter::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Mittens::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Mystic::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Teddy::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Unicorn::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Gargoyle::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Shade::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(VoidArcher::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(VoidDemon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Warlock::getHexusOpponentData()));
 
 	this->buildOpponentList();

@@ -92,8 +92,8 @@ HexusOpponentData* SkeletalPriestess::getHexusOpponentData()
 			SkeletalPriestess::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.917f,
+			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
 			}),

@@ -45,7 +45,7 @@ BoneKnight::BoneKnight(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(540.0f, 340.0f),
-	0.7f,
+	1.0f,
 	Vec2(-64.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* BoneKnight::getHexusOpponentData()
 		BoneKnight::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.7f,
+			1.0f,
 			Vec2(-64.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			BoneKnight::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.333f,
+			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 
 			}),

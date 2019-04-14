@@ -92,8 +92,8 @@ HexusOpponentData* DemonGrunt::getHexusOpponentData()
 			DemonGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.167f,
+			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),

@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Gargoyle.h"
+#include "DarkTiger.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Gargoyle::MapKeyGargoyle = "gargoyle";
-HexusOpponentData* Gargoyle::HexusOpponentDataInstance = nullptr;
-const std::string Gargoyle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARGOYLE";
+const std::string DarkTiger::MapKeyDarkTiger = "dark-tiger";
+HexusOpponentData* DarkTiger::HexusOpponentDataInstance = nullptr;
+const std::string DarkTiger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DARK_TIGER";
 
-Gargoyle* Gargoyle::deserialize(ValueMap& initProperties)
+DarkTiger* DarkTiger::deserialize(ValueMap& initProperties)
 {
-	Gargoyle* instance = new Gargoyle(initProperties);
+	DarkTiger* instance = new DarkTiger(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gargoyle::Gargoyle(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_LambdaCrypts_Gargoyle_Animations,
-	EntityResources::Enemies_LambdaCrypts_Gargoyle_Emblem,
+DarkTiger::DarkTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
+	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(256.0f, 256.0f),
+	Size(256.0f, 248.0f),
 	0.9f,
-	Vec2(-32.0f, 0.0f),
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Gargoyle::getHexusOpponentData();
+	this->hexusOpponentData = DarkTiger::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Gargoyle::Gargoyle(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Gargoyle::~Gargoyle()
+DarkTiger::~DarkTiger()
 {
 }
 
@@ -73,27 +73,27 @@ Gargoyle::~Gargoyle()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Gargoyle::getAvatarFrameOffset()
+Vec2 DarkTiger::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Gargoyle::getHexusOpponentData()
+HexusOpponentData* DarkTiger::getHexusOpponentData()
 {
-	if (Gargoyle::HexusOpponentDataInstance == nullptr)
+	if (DarkTiger::HexusOpponentDataInstance == nullptr)
 	{
-		Gargoyle::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_Gargoyle_Animations,
-			HexusResources::Menus_HexusFrameLambdaCrypts,
+		DarkTiger::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_VoidStar_DarkTiger_Animations,
+			HexusResources::Menus_HexusFrameVoidStar,
 			0.9f,
-			Vec2(-32.0f, 0.0f),
+			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Gargoyle::HexusSaveKey,
+			DarkTiger::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.667f,
+			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Gargoyle::getHexusOpponentData()
 		);
 	}
 
-	return Gargoyle::HexusOpponentDataInstance;
+	return DarkTiger::HexusOpponentDataInstance;
 }

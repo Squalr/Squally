@@ -92,8 +92,8 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 			Krampus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.846f,
-			HexusOpponentData::generateDeck(32, 0.846f,
+			0.917f,
+			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
 			}),

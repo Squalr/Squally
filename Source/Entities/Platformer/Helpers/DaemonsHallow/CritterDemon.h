@@ -5,7 +5,7 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 
 ///////////////////////////////////////////////////
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -17,7 +17,7 @@
 
 class HexusOpponentData;
 
-class CritterDemon : public PlatformerEnemy
+class CritterDemon : public PlatformerEntity
 {
 public:
 	static CritterDemon* deserialize(cocos2d::ValueMap& initProperties);

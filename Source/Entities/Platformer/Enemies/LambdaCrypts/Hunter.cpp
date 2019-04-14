@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Mystic.h"
+#include "Hunter.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Mystic::MapKeyMystic = "mystic";
-HexusOpponentData* Mystic::HexusOpponentDataInstance = nullptr;
-const std::string Mystic::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MYSTIC";
+const std::string Hunter::MapKeyHunter = "hunter";
+HexusOpponentData* Hunter::HexusOpponentDataInstance = nullptr;
+const std::string Hunter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HUNTER";
 
-Mystic* Mystic::deserialize(ValueMap& initProperties)
+Hunter* Hunter::deserialize(ValueMap& initProperties)
 {
-	Mystic* instance = new Mystic(initProperties);
+	Hunter* instance = new Hunter(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mystic::Mystic(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_VoidStar_Mystic_Animations,
-	EntityResources::Enemies_VoidStar_Mystic_Emblem,
+Hunter::Hunter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
+	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(420.0f, 296.0f),
-	0.4f,
+	Size(112.0f, 596.0f),
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Mystic::getHexusOpponentData();
+	this->hexusOpponentData = Hunter::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Mystic::Mystic(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Mystic::~Mystic()
+Hunter::~Hunter()
 {
 }
 
@@ -73,27 +73,27 @@ Mystic::~Mystic()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Mystic::getAvatarFrameOffset()
+Vec2 Hunter::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Mystic::getHexusOpponentData()
+HexusOpponentData* Hunter::getHexusOpponentData()
 {
-	if (Mystic::HexusOpponentDataInstance == nullptr)
+	if (Hunter::HexusOpponentDataInstance == nullptr)
 	{
-		Mystic::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Mystic_Animations,
-			HexusResources::Menus_HexusFrameVoidStar,
-			0.4f,
+		Hunter::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
+			HexusResources::Menus_HexusFrameLambdaCrypts,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Mystic::HexusSaveKey,
+			Hunter::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.417f,
+			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Mystic::getHexusOpponentData()
 		);
 	}
 
-	return Mystic::HexusOpponentDataInstance;
+	return Hunter::HexusOpponentDataInstance;
 }
