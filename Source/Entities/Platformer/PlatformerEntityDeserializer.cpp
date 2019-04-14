@@ -15,15 +15,14 @@
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Krampus.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/PenguinGrunt.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/PenguinWarrior.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Santa.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/SnowFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/ToySoldierGoblin.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Viking.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/WaterElemental.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Yeti.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/YetiWarrior.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/BalmerPeaks/YetiBaby.h"
 #include "Entities/Platformer/Npcs/BalmerPeaks/Aspen.h"
@@ -75,8 +74,8 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Viking.h"
 #include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
@@ -304,10 +303,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = IceGolem::deserialize(properties);
 		}
-		if (name == Krampus::MapKeyKrampus)
-		{
-			newEntity = Krampus::deserialize(properties);
-		}
 		if (name == PenguinGrunt::MapKeyPenguinGrunt)
 		{
 			newEntity = PenguinGrunt::deserialize(properties);
@@ -328,6 +323,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = ToySoldierGoblin::deserialize(properties);
 		}
+		if (name == Viking::MapKeyViking)
+		{
+			newEntity = Viking::deserialize(properties);
+		}
 		if (name == WaterElemental::MapKeyWaterElemental)
 		{
 			newEntity = WaterElemental::deserialize(properties);
@@ -335,10 +334,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		if (name == Yeti::MapKeyYeti)
 		{
 			newEntity = Yeti::deserialize(properties);
-		}
-		if (name == YetiWarrior::MapKeyYetiWarrior)
-		{
-			newEntity = YetiWarrior::deserialize(properties);
 		}
 		if (name == Snowman::MapKeySnowman)
 		{
@@ -544,13 +539,13 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = FireElemental::deserialize(properties);
 		}
+		if (name == Krampus::MapKeyKrampus)
+		{
+			newEntity = Krampus::deserialize(properties);
+		}
 		if (name == LavaGolem::MapKeyLavaGolem)
 		{
 			newEntity = LavaGolem::deserialize(properties);
-		}
-		if (name == Viking::MapKeyViking)
-		{
-			newEntity = Viking::deserialize(properties);
 		}
 		if (name == Apple::MapKeyApple)
 		{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="595">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="597">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -504,6 +504,12 @@
   <object id="438" name="goblin" type="entity" x="4226.96" y="2711.46" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="596" name="ent" type="entity" x="1161.81" y="2584.42" width="174.424" height="166.303">
+   <properties>
+    <property name="args" value="atbash"/>
+    <property name="event" value="open-cipher"/>
    </properties>
   </object>
  </objectgroup>
