@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Mittens.h"
+#include "VoidDemon.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Mittens::MapKeyMittens = "mittens";
-HexusOpponentData* Mittens::HexusOpponentDataInstance = nullptr;
-const std::string Mittens::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MITTENS";
+const std::string VoidDemon::MapKeyVoidDemon = "void-demon";
+HexusOpponentData* VoidDemon::HexusOpponentDataInstance = nullptr;
+const std::string VoidDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_DEMON";
 
-Mittens* Mittens::deserialize(ValueMap& initProperties)
+VoidDemon* VoidDemon::deserialize(ValueMap& initProperties)
 {
-	Mittens* instance = new Mittens(initProperties);
+	VoidDemon* instance = new VoidDemon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mittens::Mittens(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_VoidStar_Mittens_Animations,
-	EntityResources::Enemies_VoidStar_Mittens_Emblem,
+VoidDemon::VoidDemon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
+	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(768.0f, 960.0f),
-	0.5f,
-	Vec2(-332.0f, 0.0f),
+	Size(338.0f, 342.0f),
+	0.7f,
+	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Mittens::getHexusOpponentData();
+	this->hexusOpponentData = VoidDemon::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Mittens::Mittens(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Mittens::~Mittens()
+VoidDemon::~VoidDemon()
 {
 }
 
@@ -73,27 +73,27 @@ Mittens::~Mittens()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Mittens::getAvatarFrameOffset()
+Vec2 VoidDemon::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Mittens::getHexusOpponentData()
+HexusOpponentData* VoidDemon::getHexusOpponentData()
 {
-	if (Mittens::HexusOpponentDataInstance == nullptr)
+	if (VoidDemon::HexusOpponentDataInstance == nullptr)
 	{
-		Mittens::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Mittens_Animations,
+		VoidDemon::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.5f,
-			Vec2(-332.0f, 0.0f),
+			0.7f,
+			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Mittens::HexusSaveKey,
+			VoidDemon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.083f,
+			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* Mittens::getHexusOpponentData()
 		);
 	}
 
-	return Mittens::HexusOpponentDataInstance;
+	return VoidDemon::HexusOpponentDataInstance;
 }

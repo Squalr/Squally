@@ -45,7 +45,7 @@ Asmodeus::Asmodeus(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(480.0f, 480.0f),
-	0.7f,
+	0.8f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,7 +85,7 @@ HexusOpponentData* Asmodeus::getHexusOpponentData()
 		Asmodeus::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.7f,
+			0.8f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),

@@ -8,7 +8,6 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
 #include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
-#include "Entities/Platformer/Enemies/EndianForest/Ent.h"
 #include "Entities/Platformer/Enemies/EndianForest/GoblinGruntBoar.h"
 #include "Entities/Platformer/Enemies/EndianForest/GoblinShaman.h"
 #include "Entities/Platformer/Enemies/EndianForest/GoblinWarriorPig.h"
@@ -43,7 +42,6 @@ HexusOpponentMenuEndianForestPuzzle::HexusOpponentMenuEndianForestPuzzle() : sup
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Centaur::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Cyclops::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Ent::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(GoblinGruntBoar::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(GoblinShaman::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(GoblinWarriorPig::getHexusOpponentData()));

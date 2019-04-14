@@ -122,7 +122,7 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -132,13 +132,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -148,21 +148,20 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

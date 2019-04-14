@@ -17,10 +17,10 @@
 
 class HexusOpponentData;
 
-class Teddy : public PlatformerEnemy
+class DarkTiger : public PlatformerEnemy
 {
 public:
-	static Teddy* deserialize(cocos2d::ValueMap& initProperties);
+	static DarkTiger* deserialize(cocos2d::ValueMap& initProperties);
 	
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -33,11 +33,11 @@ public:
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyTeddy;
+	static const std::string MapKeyDarkTiger;
 
 private:
-	Teddy(cocos2d::ValueMap& initProperties);
-	~Teddy();
+	DarkTiger(cocos2d::ValueMap& initProperties);
+	~DarkTiger();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

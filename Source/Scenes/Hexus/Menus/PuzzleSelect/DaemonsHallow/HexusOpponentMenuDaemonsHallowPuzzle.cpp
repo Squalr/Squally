@@ -7,7 +7,6 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
@@ -16,6 +15,7 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/FireTiger.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
@@ -41,7 +41,6 @@ void HexusOpponentMenuDaemonsHallowPuzzle::registerGlobalScene()
 HexusOpponentMenuDaemonsHallowPuzzle::HexusOpponentMenuDaemonsHallowPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleDaemonsHallow, HexusChapterPreviewDaemonsHallowPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Asmodeus::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(CritterDemon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(DemonDragon::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(DemonGhost::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(DemonGrunt::getHexusOpponentData()));
@@ -50,6 +49,7 @@ HexusOpponentMenuDaemonsHallowPuzzle::HexusOpponentMenuDaemonsHallowPuzzle() : s
 	this->opponents.push_back(HexusOpponentPreview::create(DemonSwordsman::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(DemonWarrior::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FireElemental::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(FireTiger::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Krampus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(LavaGolem::getHexusOpponentData()));
 

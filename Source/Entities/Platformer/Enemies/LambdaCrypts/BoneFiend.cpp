@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "CritterDemon.h"
+#include "BoneFiend.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
-HexusOpponentData* CritterDemon::HexusOpponentDataInstance = nullptr;
-const std::string CritterDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CRITTER_DEMON";
+const std::string BoneFiend::MapKeyBoneFiend = "bone-fiend";
+HexusOpponentData* BoneFiend::HexusOpponentDataInstance = nullptr;
+const std::string BoneFiend::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONE_FIEND";
 
-CritterDemon* CritterDemon::deserialize(ValueMap& initProperties)
+BoneFiend* BoneFiend::deserialize(ValueMap& initProperties)
 {
-	CritterDemon* instance = new CritterDemon(initProperties);
+	BoneFiend* instance = new BoneFiend(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_DaemonsHallow_CritterDemon_Animations,
-	EntityResources::Enemies_DaemonsHallow_CritterDemon_Emblem,
+BoneFiend::BoneFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
+	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(188.0f, 160.0f),
-	0.7f,
+	Size(224.0f, 278.0f),
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = CritterDemon::getHexusOpponentData();
+	this->hexusOpponentData = BoneFiend::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	///////////////////////////////////////////////////
 }
 
-CritterDemon::~CritterDemon()
+BoneFiend::~BoneFiend()
 {
 }
 
@@ -73,27 +73,27 @@ CritterDemon::~CritterDemon()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 CritterDemon::getAvatarFrameOffset()
+Vec2 BoneFiend::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* CritterDemon::getHexusOpponentData()
+HexusOpponentData* BoneFiend::getHexusOpponentData()
 {
-	if (CritterDemon::HexusOpponentDataInstance == nullptr)
+	if (BoneFiend::HexusOpponentDataInstance == nullptr)
 	{
-		CritterDemon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_CritterDemon_Animations,
-			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.7f,
+		BoneFiend::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
+			HexusResources::Menus_HexusFrameLambdaCrypts,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			CritterDemon::HexusSaveKey,
+			BoneFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Fire,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			Card::CardStyle::Shadow,
+			0.333f,
+			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* CritterDemon::getHexusOpponentData()
 		);
 	}
 
-	return CritterDemon::HexusOpponentDataInstance;
+	return BoneFiend::HexusOpponentDataInstance;
 }

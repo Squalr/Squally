@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Unicorn.h"
+#include "CritterDemon.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Unicorn::MapKeyUnicorn = "unicorn";
-HexusOpponentData* Unicorn::HexusOpponentDataInstance = nullptr;
-const std::string Unicorn::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_UNICORN";
+const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
+HexusOpponentData* CritterDemon::HexusOpponentDataInstance = nullptr;
+const std::string CritterDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CRITTER_DEMON";
 
-Unicorn* Unicorn::deserialize(ValueMap& initProperties)
+CritterDemon* CritterDemon::deserialize(ValueMap& initProperties)
 {
-	Unicorn* instance = new Unicorn(initProperties);
+	CritterDemon* instance = new CritterDemon(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Unicorn::Unicorn(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_VoidStar_Unicorn_Animations,
-	EntityResources::Enemies_VoidStar_Unicorn_Emblem,
-	PlatformerCollisionType::Enemy,
-	Size(256.0f, 248.0f),
-	0.9f,
+CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
+	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,
+	PlatformerCollisionType::FriendlyNpc,
+	Size(188.0f, 160.0f),
+	0.7f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Unicorn::getHexusOpponentData();
+	this->hexusOpponentData = CritterDemon::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Unicorn::Unicorn(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Unicorn::~Unicorn()
+CritterDemon::~CritterDemon()
 {
 }
 
@@ -73,25 +73,25 @@ Unicorn::~Unicorn()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Unicorn::getAvatarFrameOffset()
+Vec2 CritterDemon::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-48.0f, -112.0f);
 }
 
-HexusOpponentData* Unicorn::getHexusOpponentData()
+HexusOpponentData* CritterDemon::getHexusOpponentData()
 {
-	if (Unicorn::HexusOpponentDataInstance == nullptr)
+	if (CritterDemon::HexusOpponentDataInstance == nullptr)
 	{
-		Unicorn::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Unicorn_Animations,
-			HexusResources::Menus_HexusFrameVoidStar,
-			0.9f,
+		CritterDemon::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
+			HexusResources::Menus_HexusFrameDaemonsHallow,
+			0.7f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
-			Unicorn::HexusSaveKey,
+			Vec2(-32.0f, -128.0f),
+			Vec2(-48.0f, -112.0f),
+			CritterDemon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Shadow,
+			Card::CardStyle::Fire,
 			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
@@ -163,5 +163,5 @@ HexusOpponentData* Unicorn::getHexusOpponentData()
 		);
 	}
 
-	return Unicorn::HexusOpponentDataInstance;
+	return CritterDemon::HexusOpponentDataInstance;
 }

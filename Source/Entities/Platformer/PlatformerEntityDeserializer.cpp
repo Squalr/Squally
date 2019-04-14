@@ -41,11 +41,11 @@
 #include "Entities/Platformer/Enemies/CastleValgrind/Jack.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Reaper.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Scarecrow.h"
-#include "Entities/Platformer/Enemies/CastleValgrind/Shade.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/SkeletalPirate.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Thug.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/VampireLord.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Vampiress.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Werewolf.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Wraith.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Zombie.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/ZombieElric.h"
@@ -65,7 +65,6 @@
 #include "Entities/Platformer/Npcs/CastleValgrind/Thurstan.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Tyracius.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/CritterDemon.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonDragon.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonGhost.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonGrunt.h"
@@ -74,9 +73,11 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonSwordsman.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/DemonWarrior.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/FireElemental.h"
+#include "Entities/Platformer/Enemies/DaemonsHallow/FireTiger.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
 #include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
+#include "Entities/Platformer/Helpers/DaemonsHallow/CritterDemon.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
@@ -91,7 +92,6 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
 #include "Entities/Platformer/Enemies/EndianForest/Centaur.h"
 #include "Entities/Platformer/Enemies/EndianForest/Cyclops.h"
-#include "Entities/Platformer/Enemies/EndianForest/Ent.h"
 #include "Entities/Platformer/Enemies/EndianForest/GoblinGruntBoar.h"
 #include "Entities/Platformer/Enemies/EndianForest/GoblinShaman.h"
 #include "Entities/Platformer/Enemies/EndianForest/GoblinWarriorPig.h"
@@ -117,9 +117,10 @@
 #include "Entities/Platformer/Npcs/EndianForest/Rupert.h"
 #include "Entities/Platformer/Npcs/EndianForest/Rusty.h"
 #include "Entities/Platformer/Npcs/EndianForest/Toben.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/Abomination.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/BoneFiend.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Hunter.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Mystic.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedFighter.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedPig.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalBaron.h"
@@ -127,8 +128,6 @@
 #include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalKnight.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalPriestess.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Undead.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/VoidArcher.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/VoidDemon.h"
 #include "Entities/Platformer/Helpers/LambdaCrypts/Ghost.h"
 #include "Entities/Platformer/Helpers/LambdaCrypts/Grim.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Amelia.h"
@@ -193,17 +192,16 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Horus.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
+#include "Entities/Platformer/Enemies/VoidStar/Abomination.h"
 #include "Entities/Platformer/Enemies/VoidStar/Assassin.h"
-#include "Entities/Platformer/Enemies/VoidStar/BoneFiend.h"
 #include "Entities/Platformer/Enemies/VoidStar/BoneKnight.h"
+#include "Entities/Platformer/Enemies/VoidStar/DarkTiger.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Enemies/VoidStar/Exterminator.h"
-#include "Entities/Platformer/Enemies/VoidStar/Grep.h"
-#include "Entities/Platformer/Enemies/VoidStar/Hunter.h"
-#include "Entities/Platformer/Enemies/VoidStar/Mittens.h"
-#include "Entities/Platformer/Enemies/VoidStar/Mystic.h"
-#include "Entities/Platformer/Enemies/VoidStar/Teddy.h"
-#include "Entities/Platformer/Enemies/VoidStar/Unicorn.h"
+#include "Entities/Platformer/Enemies/VoidStar/Gargoyle.h"
+#include "Entities/Platformer/Enemies/VoidStar/Shade.h"
+#include "Entities/Platformer/Enemies/VoidStar/VoidArcher.h"
+#include "Entities/Platformer/Enemies/VoidStar/VoidDemon.h"
 #include "Entities/Platformer/Enemies/VoidStar/Warlock.h"
 #include "Entities/Platformer/Helpers/VoidStar/Professor.h"
 #include "Entities/Platformer/Helpers/VoidStar/Robot.h"
@@ -407,10 +405,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = Scarecrow::deserialize(properties);
 		}
-		if (name == Shade::MapKeyShade)
-		{
-			newEntity = Shade::deserialize(properties);
-		}
 		if (name == SkeletalPirate::MapKeySkeletalPirate)
 		{
 			newEntity = SkeletalPirate::deserialize(properties);
@@ -426,6 +420,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		if (name == Vampiress::MapKeyVampiress)
 		{
 			newEntity = Vampiress::deserialize(properties);
+		}
+		if (name == Werewolf::MapKeyWerewolf)
+		{
+			newEntity = Werewolf::deserialize(properties);
 		}
 		if (name == Wraith::MapKeyWraith)
 		{
@@ -503,10 +501,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = Asmodeus::deserialize(properties);
 		}
-		if (name == CritterDemon::MapKeyCritterDemon)
-		{
-			newEntity = CritterDemon::deserialize(properties);
-		}
 		if (name == DemonDragon::MapKeyDemonDragon)
 		{
 			newEntity = DemonDragon::deserialize(properties);
@@ -539,6 +533,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = FireElemental::deserialize(properties);
 		}
+		if (name == FireTiger::MapKeyFireTiger)
+		{
+			newEntity = FireTiger::deserialize(properties);
+		}
 		if (name == Krampus::MapKeyKrampus)
 		{
 			newEntity = Krampus::deserialize(properties);
@@ -550,6 +548,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		if (name == Apple::MapKeyApple)
 		{
 			newEntity = Apple::deserialize(properties);
+		}
+		if (name == CritterDemon::MapKeyCritterDemon)
+		{
+			newEntity = CritterDemon::deserialize(properties);
 		}
 		if (name == Ash::MapKeyAsh)
 		{
@@ -606,10 +608,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		if (name == Cyclops::MapKeyCyclops)
 		{
 			newEntity = Cyclops::deserialize(properties);
-		}
-		if (name == Ent::MapKeyEnt)
-		{
-			newEntity = Ent::deserialize(properties);
 		}
 		if (name == GoblinGruntBoar::MapKeyGoblinGruntBoar)
 		{
@@ -711,17 +709,21 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = Toben::deserialize(properties);
 		}
-		if (name == Abomination::MapKeyAbomination)
+		if (name == BoneFiend::MapKeyBoneFiend)
 		{
-			newEntity = Abomination::deserialize(properties);
+			newEntity = BoneFiend::deserialize(properties);
 		}
-		if (name == Gargoyle::MapKeyGargoyle)
+		if (name == Hunter::MapKeyHunter)
 		{
-			newEntity = Gargoyle::deserialize(properties);
+			newEntity = Hunter::deserialize(properties);
 		}
 		if (name == KingZul::MapKeyKingZul)
 		{
 			newEntity = KingZul::deserialize(properties);
+		}
+		if (name == Mystic::MapKeyMystic)
+		{
+			newEntity = Mystic::deserialize(properties);
 		}
 		if (name == ReanimatedFighter::MapKeyReanimatedFighter)
 		{
@@ -750,14 +752,6 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		if (name == Undead::MapKeyUndead)
 		{
 			newEntity = Undead::deserialize(properties);
-		}
-		if (name == VoidArcher::MapKeyVoidArcher)
-		{
-			newEntity = VoidArcher::deserialize(properties);
-		}
-		if (name == VoidDemon::MapKeyVoidDemon)
-		{
-			newEntity = VoidDemon::deserialize(properties);
 		}
 		if (name == Ghost::MapKeyGhost)
 		{
@@ -1015,17 +1009,21 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = Zeus::deserialize(properties);
 		}
+		if (name == Abomination::MapKeyAbomination)
+		{
+			newEntity = Abomination::deserialize(properties);
+		}
 		if (name == Assassin::MapKeyAssassin)
 		{
 			newEntity = Assassin::deserialize(properties);
 		}
-		if (name == BoneFiend::MapKeyBoneFiend)
-		{
-			newEntity = BoneFiend::deserialize(properties);
-		}
 		if (name == BoneKnight::MapKeyBoneKnight)
 		{
 			newEntity = BoneKnight::deserialize(properties);
+		}
+		if (name == DarkTiger::MapKeyDarkTiger)
+		{
+			newEntity = DarkTiger::deserialize(properties);
 		}
 		if (name == EvilEye::MapKeyEvilEye)
 		{
@@ -1035,29 +1033,21 @@ void PlatformerEntityDeserializer::onDeserializationRequest(const Deserializatio
 		{
 			newEntity = Exterminator::deserialize(properties);
 		}
-		if (name == Grep::MapKeyGrep)
+		if (name == Gargoyle::MapKeyGargoyle)
 		{
-			newEntity = Grep::deserialize(properties);
+			newEntity = Gargoyle::deserialize(properties);
 		}
-		if (name == Hunter::MapKeyHunter)
+		if (name == Shade::MapKeyShade)
 		{
-			newEntity = Hunter::deserialize(properties);
+			newEntity = Shade::deserialize(properties);
 		}
-		if (name == Mittens::MapKeyMittens)
+		if (name == VoidArcher::MapKeyVoidArcher)
 		{
-			newEntity = Mittens::deserialize(properties);
+			newEntity = VoidArcher::deserialize(properties);
 		}
-		if (name == Mystic::MapKeyMystic)
+		if (name == VoidDemon::MapKeyVoidDemon)
 		{
-			newEntity = Mystic::deserialize(properties);
-		}
-		if (name == Teddy::MapKeyTeddy)
-		{
-			newEntity = Teddy::deserialize(properties);
-		}
-		if (name == Unicorn::MapKeyUnicorn)
-		{
-			newEntity = Unicorn::deserialize(properties);
+			newEntity = VoidDemon::deserialize(properties);
 		}
 		if (name == Warlock::MapKeyWarlock)
 		{

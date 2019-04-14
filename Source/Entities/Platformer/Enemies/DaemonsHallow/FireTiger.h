@@ -17,10 +17,10 @@
 
 class HexusOpponentData;
 
-class Unicorn : public PlatformerEnemy
+class FireTiger : public PlatformerEnemy
 {
 public:
-	static Unicorn* deserialize(cocos2d::ValueMap& initProperties);
+	static FireTiger* deserialize(cocos2d::ValueMap& initProperties);
 	
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -33,11 +33,11 @@ public:
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyUnicorn;
+	static const std::string MapKeyFireTiger;
 
 private:
-	Unicorn(cocos2d::ValueMap& initProperties);
-	~Unicorn();
+	FireTiger(cocos2d::ValueMap& initProperties);
+	~FireTiger();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

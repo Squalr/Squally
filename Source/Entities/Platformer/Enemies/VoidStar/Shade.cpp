@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "BoneFiend.h"
+#include "Shade.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string BoneFiend::MapKeyBoneFiend = "bone-fiend";
-HexusOpponentData* BoneFiend::HexusOpponentDataInstance = nullptr;
-const std::string BoneFiend::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONE_FIEND";
+const std::string Shade::MapKeyShade = "shade";
+HexusOpponentData* Shade::HexusOpponentDataInstance = nullptr;
+const std::string Shade::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHADE";
 
-BoneFiend* BoneFiend::deserialize(ValueMap& initProperties)
+Shade* Shade::deserialize(ValueMap& initProperties)
 {
-	BoneFiend* instance = new BoneFiend(initProperties);
+	Shade* instance = new Shade(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BoneFiend::BoneFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
-	EntityResources::Enemies_VoidStar_BoneFiend_Animations,
-	EntityResources::Enemies_VoidStar_BoneFiend_Emblem,
+Shade::Shade(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EntityResources::Enemies_VoidStar_Shade_Animations,
+	EntityResources::Enemies_VoidStar_Shade_Emblem,
 	PlatformerCollisionType::Enemy,
-	Size(224.0f, 278.0f),
-	0.7f,
+	Size(284.0f, 256.0f),
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = BoneFiend::getHexusOpponentData();
+	this->hexusOpponentData = Shade::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ BoneFiend::BoneFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	///////////////////////////////////////////////////
 }
 
-BoneFiend::~BoneFiend()
+Shade::~Shade()
 {
 }
 
@@ -73,27 +73,27 @@ BoneFiend::~BoneFiend()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 BoneFiend::getAvatarFrameOffset()
+Vec2 Shade::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(0.0f, -312.0f);
 }
 
-HexusOpponentData* BoneFiend::getHexusOpponentData()
+HexusOpponentData* Shade::getHexusOpponentData()
 {
-	if (BoneFiend::HexusOpponentDataInstance == nullptr)
+	if (Shade::HexusOpponentDataInstance == nullptr)
 	{
-		BoneFiend::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_BoneFiend_Animations,
+		Shade::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_VoidStar_Shade_Animations,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.7f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
-			BoneFiend::HexusSaveKey,
+			Vec2(-48.0f, -196.0f),
+			Vec2(0.0f, -312.0f),
+			Shade::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
@@ -163,5 +163,5 @@ HexusOpponentData* BoneFiend::getHexusOpponentData()
 		);
 	}
 
-	return BoneFiend::HexusOpponentDataInstance;
+	return Shade::HexusOpponentDataInstance;
 }
