@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
     <folder id="0">
-        <file id="0" name="L ARM 1.png" width="119" height="181" pivot_x="0" pivot_y="1"/>
-        <file id="1" name="L ARM 2.png" width="185" height="203" pivot_x="0" pivot_y="1"/>
-        <file id="2" name="L LEG 1.png" width="114" height="118" pivot_x="0" pivot_y="1"/>
-        <file id="3" name="L LEG 2.png" width="114" height="118" pivot_x="0" pivot_y="1"/>
-        <file id="4" name="TORSO.png" width="289" height="371" pivot_x="0" pivot_y="1"/>
-        <file id="5" name="R ARM 1.png" width="129" height="180" pivot_x="0" pivot_y="1"/>
-        <file id="6" name="R ARM 2.png" width="167" height="222" pivot_x="0" pivot_y="1"/>
-        <file id="7" name="HEAD.png" width="329" height="397" pivot_x="0" pivot_y="1"/>
+        <file id="0" name="L ARM 1.png" width="52" height="72" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="L ARM 2.png" width="92" height="124" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="L LEG 1.png" width="81" height="40" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="TORSO.png" width="167" height="211" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="R ARM 1.png" width="57" height="68" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="R ARM 2.png" width="82" height="124" pivot_x="0" pivot_y="1"/>
+        <file id="6" name="HEAD.png" width="121" height="158" pivot_x="0" pivot_y="1"/>
+        <file id="7" name="JAW.png" width="134" height="93" pivot_x="0" pivot_y="1"/>
+        <file id="8" name="R LEG 1.png" width="92" height="66" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="10" interval="100">
@@ -17,51 +18,57 @@
                     <object_ref id="0" timeline="0" key="0" z_index="0"/>
                     <object_ref id="1" timeline="1" key="0" z_index="1"/>
                     <object_ref id="2" timeline="2" key="0" z_index="2"/>
-                    <object_ref id="3" timeline="4" key="0" z_index="3"/>
-                    <object_ref id="4" timeline="3" key="0" z_index="4"/>
-                    <object_ref id="5" timeline="5" key="0" z_index="5"/>
-                    <object_ref id="6" timeline="6" key="0" z_index="6"/>
-                    <object_ref id="7" timeline="7" key="0" z_index="7"/>
+                    <object_ref id="3" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" timeline="8" key="0" z_index="4"/>
+                    <object_ref id="5" timeline="4" key="0" z_index="5"/>
+                    <object_ref id="6" timeline="5" key="0" z_index="6"/>
+                    <object_ref id="7" timeline="6" key="0" z_index="7"/>
+                    <object_ref id="8" timeline="7" key="0" z_index="8"/>
                 </key>
             </mainline>
             <timeline id="0" name="L ARM 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="0" x="-14.69697" y="370.121212" angle="0"/>
+                    <object folder="0" file="0" x="29.30303" y="210.121212" angle="0"/>
                 </key>
             </timeline>
             <timeline id="1" name="L ARM 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="1" x="8.030303" y="292.575758" angle="0"/>
+                    <object folder="0" file="1" x="22.030303" y="164.575758" angle="0"/>
                 </key>
             </timeline>
             <timeline id="2" name="L LEG 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="2" x="-7.121212" y="116.818182" angle="0"/>
+                    <object folder="0" file="2" x="-8.121212" y="39.818182" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="3" name="L LEG 2">
+            <timeline id="3" name="TORSO">
                 <key id="0" spin="0">
-                    <object folder="0" file="3" x="-106.818182" y="105" angle="0"/>
+                    <object folder="0" file="3" x="-81.212121" y="233.30303" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="4" name="TORSO">
+            <timeline id="4" name="R ARM 1">
                 <key id="0" spin="0">
-                    <object folder="0" file="4" x="-166.212121" y="415.30303" angle="0"/>
+                    <object folder="0" file="4" x="-78.545455" y="194.848485" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="5" name="R ARM 1">
+            <timeline id="5" name="R ARM 2">
                 <key id="0" spin="0">
-                    <object folder="0" file="5" x="-199.545455" y="369.848485" angle="0"/>
+                    <object folder="0" file="5" x="-103" y="160.939394" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="6" name="R ARM 2">
+            <timeline id="6" name="HEAD">
                 <key id="0" spin="0">
-                    <object folder="0" file="6" x="-195" y="278.939394" angle="0"/>
+                    <object folder="0" file="6" x="0.242424" y="255.818182" angle="0"/>
                 </key>
             </timeline>
-            <timeline id="7" name="HEAD">
+            <timeline id="7" name="JAW">
                 <key id="0" spin="0">
-                    <object folder="0" file="7" x="-120.757576" y="566.818182" angle="0"/>
+                    <object folder="0" file="7" x="-2" y="173" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="R LEG 1">
+                <key id="0" spin="0">
+                    <object folder="0" file="8" x="-86" y="65" angle="0"/>
                 </key>
             </timeline>
         </animation>
