@@ -151,6 +151,8 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 
 Card::~Card()
 {
+	ObjectEvents::TriggerUnbindObject(this->overflowLabel);
+	ObjectEvents::TriggerUnbindObject(this->underflowLabel);
 }
 
 void Card::onEnter()

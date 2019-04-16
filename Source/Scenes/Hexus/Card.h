@@ -15,7 +15,6 @@ class CardEffects;
 class ConstantString;
 class ClickableNode;
 class LocalizedLabel;
-class UIBoundObject;
 
 class Card : public SmartNode
 {

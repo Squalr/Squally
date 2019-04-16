@@ -128,44 +128,36 @@ float LocalizedLabel::getFontSize()
 	{
 		case FontSize::M1:
 		{
-			return LocalizedLabel::getFontSizeM1(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeM1();
 		}
 		case FontSize::M2:
 		{
-			return LocalizedLabel::getFontSizeM2(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeM2();
 		}
 		case FontSize::M3:
 		{
-			return LocalizedLabel::getFontSizeM3(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeM3();
 		}
 		case FontSize::H1:
 		{
-			return LocalizedLabel::getFontSizeH1(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeH1();
 		}
 		case FontSize::H2:
 		{
-			return LocalizedLabel::getFontSizeH2(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeH2();
 		}
 		case FontSize::H3:
 		{
-			return LocalizedLabel::getFontSizeH3(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeH3();
 		}
 		default:
 		case FontSize::P:
 		{
-			return LocalizedLabel::getFontSizeP(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeP();
 		}
 		case FontSize::Small:
 		{
-			return LocalizedLabel::getFontSizeSmall(this->getFont());
-			break;
+			return LocalizedLabel::getFontSizeSmall();
 		}
 	}
 }
@@ -366,44 +358,196 @@ std::string LocalizedLabel::getCodingFont()
 	return FontResources::Coding_UbuntuMono_Bold;
 }
 
-float LocalizedLabel::getFontSizeM1(std::string fontResource)
+float LocalizedLabel::getFontSizeM1()
 {
-	return 80.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 80.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 88.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 80.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 80.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeM2(std::string fontResource)
+float LocalizedLabel::getFontSizeM2()
 {
-	return 64.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 64.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 72.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 64.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 64.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeM3(std::string fontResource)
+float LocalizedLabel::getFontSizeM3()
 {
-	return 48.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 48.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 54.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 48.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 48.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeH1(std::string fontResource)
+float LocalizedLabel::getFontSizeH1()
 {
-	return 32.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 32.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 36.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 32.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 32.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeH2(std::string fontResource)
+float LocalizedLabel::getFontSizeH2()
 {
-	return 28.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 28.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 32.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 28.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 28.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeH3(std::string fontResource)
+float LocalizedLabel::getFontSizeH3()
 {
-	return 24.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 24.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 28.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 24.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 24.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeP(std::string fontResource)
+float LocalizedLabel::getFontSizeP()
 {
-	return 20.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 20.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 24.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 20.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 20.0f;
+		}
+	}
 }
 
-float LocalizedLabel::getFontSizeSmall(std::string fontResource)
+float LocalizedLabel::getFontSizeSmall()
 {
-	return 16.0f;
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 16.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 20.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 16.0f;
+		}
+		case FontStyle::Pixel:
+		{
+			return 16.0f;
+		}
+	}
 }
 
 void LocalizedLabel::updateTranslationEditHitbox()
