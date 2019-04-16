@@ -5,6 +5,7 @@
 
 #include "Engine/SmartNode.h"
 #include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardEffects.h"
 
 namespace cocos2d
 {
@@ -78,6 +79,7 @@ public:
 	bool getIsPlayerOwnedCard();
 	void runOverflowEffect(bool offsetYPosition = false);
 	void runUnderflowEffect(bool offsetYPosition = false);
+	CardEffects::CardEffect getCorrespondingCardEffect();
 
 	CardData* cardData;
 	CardEffects* cardEffects;

@@ -475,6 +475,7 @@ void AutoCard::updateToggle()
 
     this->activeCard->setScale(this->cardScale);
     this->activeCard->reveal();
+    this->activeCard->disableInteraction();
 
     this->cardNode->addChild(this->activeCard);
 }

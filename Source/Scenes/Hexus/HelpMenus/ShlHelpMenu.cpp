@@ -42,6 +42,8 @@ ShlHelpMenu::ShlHelpMenu()
 	this->animatedLabel->enableOutline(Color4B::BLACK, 3);
 
 	this->shlCard->reveal();
+	this->shlCard->disableInteraction();
+	this->previewCard->autoCard->setCardScale(0.6f);
 
 	this->addChild(this->shlCard);
 	this->addChild(this->previewCard);
@@ -80,6 +82,7 @@ void ShlHelpMenu::open()
 {
 	this->setVisible(true);
 
+	this->stopAllActions();
 	this->runAnimationLoop();
 }
 
@@ -87,38 +90,38 @@ void ShlHelpMenu::runAnimationLoop()
 {
 	this->initializePositions();
 
-	const Vec2 travelDist = Vec2(-36.0f, -128.0f);
+	const Vec2 travelDist = Vec2(-48.0f, -128.0f);
 	const float newZeroX = 132.0f + travelDist.x;
-	const float newZeroY = -112.0f;
+	const float newZeroY = -116.0f;
 	
 	this->previewCard->autoCard->activeCard->clearOperations();
 	
 	this->animatedLabelValue->setString(HackUtils::toBinary4(this->previewCard->autoCard->getAttack()));
+	this->animatedLabel->getLetter(0)->setOpacity(255);
+	this->newZero->getLetter(0)->setOpacity(0);
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			this->newZero->getLetter(0)->setOpacity(0);
 			this->animatedLabel->runAction(MoveTo::create(0.75f, Vec2(travelDist.x, -160.0f)));
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
 			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHL, 0b0001));
-			this->previewCard->autoCard->activeCard->cardEffects->runEffect(CardEffects::CardEffect::MeteorPurple);
+			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->shlCard->getCorrespondingCardEffect());
 			
 			this->newZero->getLetter(0)->setPosition(Vec2(newZeroX, newZeroY + travelDist.y));
-			this->newZero->getLetter(0)->runAction(MoveTo::create(0.75f, Vec2(newZeroX, newZeroY)));
-			this->newZero->getLetter(0)->runAction(FadeTo::create(0.75f, 255));
+			this->newZero->getLetter(0)->runAction(MoveTo::create(0.5f, Vec2(newZeroX, newZeroY)));
+			this->newZero->getLetter(0)->runAction(FadeTo::create(0.5f, 255));
 		}),
-		DelayTime::create(1.0f),
+		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
 			Vec2 originalPosition = this->animatedLabel->getLetter(0)->getPosition();
 
 			this->animatedLabel->getLetter(0)->runAction(FadeTo::create(0.25f, 0));
-			this->newZero->getLetter(0)->runAction(FadeTo::create(0.25f, 0));
 		}),
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
