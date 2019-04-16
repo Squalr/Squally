@@ -7,6 +7,7 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/HelpMenus/BinDecHexHelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/ShlHelpMenu.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
@@ -34,11 +35,13 @@ HelpMenuComponent::HelpMenuComponent()
 
     this->background = Sprite::create(HexusResources::StoreMenu_StoreBoard);
     this->binDecHexHelpMenu = BinDecHexHelpMenu::create();
+    this->shlHelpMenu = ShlHelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
     this->onExit = nullptr;
 
     this->addChild(this->background);
     this->addChild(this->binDecHexHelpMenu);
+    this->addChild(this->shlHelpMenu);
     this->addChild(this->exitButton);
 }
 
@@ -81,6 +84,7 @@ void HelpMenuComponent::openMenu(Card* card)
 {
     this->setVisible(true);
     this->binDecHexHelpMenu->setVisible(false);
+    this->shlHelpMenu->setVisible(false);
 
     if (card == nullptr)
     {
@@ -94,6 +98,11 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Hexidecimal:
         {
             this->binDecHexHelpMenu->open(card);
+            break;
+        }
+        case CardData::CardType::Special_SHL:
+        {
+            this->shlHelpMenu->open();
             break;
         }
         default:

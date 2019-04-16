@@ -7,6 +7,7 @@ namespace cocos2d
 	class Node;
 }
 
+class AutoCard;
 class Card;
 class LocalizedLabel;
 
@@ -26,12 +27,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* binCardNode;
-	cocos2d::Node* decCardNode;
-	cocos2d::Node* hexCardNode;
-	Card* binCard;
-	Card* decCard;
-	Card* hexCard;
+	AutoCard* binCard;
+	AutoCard* decCard;
+	AutoCard* hexCard;
 	LocalizedLabel* equalsLabelLeft;
 	LocalizedLabel* equalsLabelRight;
 	LocalizedLabel* binHeader;

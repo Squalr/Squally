@@ -2,7 +2,7 @@
 
 #include "Engine/SmartNode.h"
 
-class Card;
+class AutoCard;
 class ClickableNode;
 
 class ToggleCard : public SmartNode
@@ -10,14 +10,15 @@ class ToggleCard : public SmartNode
 public:
 	static ToggleCard* create();
 
-protected:
-	ToggleCard();
-	~ToggleCard();
+	AutoCard* autoCard;
 
 private:
 	typedef SmartNode super;
+	ToggleCard();
+	~ToggleCard();
+
+	void onEnter() override;
+
 	ClickableNode* upToggle;
 	ClickableNode* downToggle;
-
-	Card* activeCard;
 };
