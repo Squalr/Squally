@@ -566,3 +566,78 @@ void Card::runUnderflowEffect(bool offsetYPosition)
 		this->underflowLabel->runAction(MoveTo::create(1.0f, Vec2(0.0f, 64.0f + 96.0f + (offsetYPosition ? 32.0f : 0.0f))));
 	}
 }
+
+CardEffects::CardEffect Card::getCorrespondingCardEffect()
+{
+	switch (this->cardData->cardType)
+	{
+		case CardData::CardType::Special_SHL:
+		{
+			return CardEffects::CardEffect::MeteorPurple;
+		}
+		case CardData::CardType::Special_SHR:
+		{
+			return CardEffects::CardEffect::MeteorBlue;
+		}
+		case CardData::CardType::Special_ROL:
+		{
+			return CardEffects::CardEffect::StarBurst;
+		}
+		case CardData::CardType::Special_ROR:
+		{
+			return CardEffects::CardEffect::StarHit;
+		}
+		case CardData::CardType::Special_FLIP1:
+		{
+			return CardEffects::CardEffect::TargetPulse;
+		}
+		case CardData::CardType::Special_FLIP2:
+		{
+			return CardEffects::CardEffect::FrostCirlce;
+		}
+		case CardData::CardType::Special_FLIP3:
+		{
+			return CardEffects::CardEffect::RadialGalaxy;
+		}
+		case CardData::CardType::Special_FLIP4:
+		{
+			return CardEffects::CardEffect::RadialFire;
+		}
+		case CardData::CardType::Special_MOV:
+		case CardData::CardType::Special_RETURN_TO_HAND:
+		case CardData::CardType::Special_STEAL:
+		{
+			return CardEffects::CardEffect::DustPoof;
+		}
+		case CardData::CardType::Special_AND:
+		{
+			return CardEffects::CardEffect::FireBlast;
+		}
+		case CardData::CardType::Special_OR:
+		{
+			return CardEffects::CardEffect::Lightning;
+		}
+		case CardData::CardType::Special_XOR:
+		{
+			return CardEffects::CardEffect::RadialStorm;
+		}
+		case CardData::CardType::Special_ADD:
+		{
+			return CardEffects::CardEffect::MagicBurst;
+		}
+		case CardData::CardType::Special_SUB:
+		{
+			return CardEffects::CardEffect::StarHit;
+		}
+		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_KILL:
+		{
+			return CardEffects::CardEffect::Bite;
+		}
+		default:
+		{
+			// Just return an unused effect for now for debugging
+			return CardEffects::CardEffect::Poison;
+		}
+	}
+}
