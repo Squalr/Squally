@@ -10,6 +10,7 @@ namespace cocos2d
 class BinDecHexHelpMenu;
 class Card;
 class ClickableNode;
+class ShlHelpMenu;
 
 class HelpMenuComponent : public ComponentBase
 {
@@ -32,5 +33,7 @@ private:
 	cocos2d::Sprite* background;
 	BinDecHexHelpMenu* binDecHexHelpMenu;
 	ClickableNode* exitButton;
+	ShlHelpMenu* shlHelpMenu;
+
 	std::function<void()> onExit;
 };

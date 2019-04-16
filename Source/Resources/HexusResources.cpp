@@ -73,6 +73,7 @@ const std::string HexusResources::EnemyPassBanner = "Hexus/EnemyPassBanner.png";
 const std::string HexusResources::Flags = "Hexus/Flags.png";
 const std::string HexusResources::FlagsSelected = "Hexus/FlagsSelected.png";
 const std::string HexusResources::Gameboard = "Hexus/Gameboard.png";
+const std::string HexusResources::HelperTextFrame = "Hexus/HelperTextFrame.png";
 const std::string HexusResources::Hex_0 = "Hexus/Hex/0.png";
 const std::string HexusResources::Hex_1 = "Hexus/Hex/1.png";
 const std::string HexusResources::Hex_10 = "Hexus/Hex/10.png";
