@@ -182,8 +182,6 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 		this->selectionLabel->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->runAction(FadeTo::create(0.25f, 255));
 		this->cancelButton->enableInteraction();
-		// this->helpButton->runAction(FadeTo::create(0.25f, 255));
-		// this->helpButton->enableInteraction();
 	}
 }
 

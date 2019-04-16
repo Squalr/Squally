@@ -1,17 +1,24 @@
 #pragma once
 
-#include "Scenes/Hexus/HelpMenus/HelpMenuBase.h"
+#include "Engine/SmartNode.h"
 
-class BinDecHexHelpMenu : public HelpMenuBase
+class Card;
+
+class BinDecHexHelpMenu : public SmartNode
 {
 public:
 	static BinDecHexHelpMenu* create();
 
 private:
+	typedef SmartNode super;
 	BinDecHexHelpMenu();
 	~BinDecHexHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+	Card* binCard;
+	Card* decCard;
+	Card* hexCard;
 };

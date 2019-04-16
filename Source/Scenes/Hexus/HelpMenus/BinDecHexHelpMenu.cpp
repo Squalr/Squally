@@ -21,15 +21,15 @@ BinDecHexHelpMenu::~BinDecHexHelpMenu()
 
 void BinDecHexHelpMenu::onEnter()
 {
-	HelpMenuBase::onEnter();
+	super::onEnter();
 }
 
 void BinDecHexHelpMenu::initializePositions()
 {
-	HelpMenuBase::initializePositions();
+	super::initializePositions();
 }
 
 void BinDecHexHelpMenu::initializeListeners()
 {
-	HelpMenuBase::initializeListeners();
+	super::initializeListeners();
 }
