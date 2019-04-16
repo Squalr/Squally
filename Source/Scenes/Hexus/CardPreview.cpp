@@ -103,6 +103,19 @@ void CardPreview::initializePositions()
 	this->helpButton->setPosition(Vec2(0.0f, -212.0f));
 }
 
+void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpClick)
+{
+	this->onHelpClick = onHelpClick;
+
+	this->helpButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		if (this->onHelpClick != nullptr)
+		{
+			this->onHelpClick(this->currentPreviewCard);
+		}
+	});
+}
+
 void CardPreview::clearPreview()
 {
 	this->previewCard(nullptr);

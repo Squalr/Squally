@@ -17,6 +17,7 @@ public:
 	
 	void previewCard(Card* card);
 	void clearPreview();
+	void setHelpClickCallback(std::function<void(Card* card)> onHelpClick);
 
 private:
 	typedef SmartNode super;
@@ -30,4 +31,6 @@ private:
 	Card* currentPreviewCard;
 	cocos2d::Node* previewPanel;
 	ClickableTextNode* helpButton;
+	
+	std::function<void(Card* card)> onHelpClick;
 };
