@@ -93,7 +93,7 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Decimal:
         case CardData::CardType::Hexidecimal:
         {
-            this->binDecHexHelpMenu->setVisible(true);
+            this->binDecHexHelpMenu->open(card);
             break;
         }
         default:

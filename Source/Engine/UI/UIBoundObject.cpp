@@ -1,5 +1,8 @@
 #include "UIBoundObject.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -36,6 +39,24 @@ void UIBoundObject::onEnter()
 
         this->referencedObject->setPosition3D(position);
     }
+}
+
+void UIBoundObject::initializeListeners()
+{
+    super::initializeListeners();
+
+    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObject, [=](EventCustom*)
+    {
+        if (this->referencedObject != nullptr)
+        {
+            this->removeChild(referencedObject);
+        }
+
+        if (this->getParent() != nullptr)
+        {
+            this->getParent()->removeChild(this);
+        }
+    }));
 }
 
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
