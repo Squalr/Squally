@@ -8,6 +8,10 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/HelpMenus/BinDecHexHelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/Flip1HelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/Flip2HelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/Flip3HelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/Flip4HelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShlHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShrHelpMenu.h"
 
@@ -40,12 +44,20 @@ HelpMenuComponent::HelpMenuComponent()
     this->binDecHexHelpMenu = BinDecHexHelpMenu::create();
     this->shlHelpMenu = ShlHelpMenu::create();
     this->shrHelpMenu = ShrHelpMenu::create();
+    this->flip1HelpMenu = Flip1HelpMenu::create();
+    this->flip2HelpMenu = Flip2HelpMenu::create();
+    this->flip3HelpMenu = Flip3HelpMenu::create();
+    this->flip4HelpMenu = Flip4HelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
     this->onExit = nullptr;
 
     this->addChild(this->background);
     this->addChild(this->textPanel);
     this->addChild(this->binDecHexHelpMenu);
+    this->addChild(this->flip1HelpMenu);
+    this->addChild(this->flip2HelpMenu);
+    this->addChild(this->flip3HelpMenu);
+    this->addChild(this->flip4HelpMenu);
     this->addChild(this->shlHelpMenu);
     this->addChild(this->shrHelpMenu);
     this->addChild(this->exitButton);
@@ -91,6 +103,10 @@ void HelpMenuComponent::openMenu(Card* card)
 {
     this->setVisible(true);
     this->binDecHexHelpMenu->setVisible(false);
+    this->flip1HelpMenu->setVisible(false);
+    this->flip2HelpMenu->setVisible(false);
+    this->flip3HelpMenu->setVisible(false);
+    this->flip4HelpMenu->setVisible(false);
     this->shlHelpMenu->setVisible(false);
     this->shrHelpMenu->setVisible(false);
 
@@ -116,6 +132,26 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Special_SHR:
         {
             this->shrHelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_FLIP1:
+        {
+            this->flip1HelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_FLIP2:
+        {
+            this->flip2HelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_FLIP3:
+        {
+            this->flip3HelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_FLIP4:
+        {
+            this->flip4HelpMenu->open();
             break;
         }
         default:
