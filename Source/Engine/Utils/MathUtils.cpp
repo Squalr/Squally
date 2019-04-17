@@ -26,26 +26,25 @@ int MathUtils::clamp(int n, int lower, int upper)
 
 float MathUtils::wrappingNormalize(float value, float start, float end)
 {
-	float width = end - start;
+	float size = end - start;
 	float offsetValue = value - start;
 
-	if (width == 0.0f)
+	if (size == 0.0f)
 	{
 		return 0.0f;
 	}
 
-	return (offsetValue - (std::floor(offsetValue / width) * width)) + start;
+	return (offsetValue - (std::floor(offsetValue / size) * size)) + start;
 }
 
 int MathUtils::wrappingNormalize(int value, int start, int end)
 {
-	int width = end - start;
-	int offsetValue = value - start;
+	int size = end - start + 1;
 
-	if (width == 0)
+    if (value < start)
 	{
-		return 0;
+        value += size * ((start - value) / size + 1);
 	}
 
-	return (offsetValue - ((offsetValue / width) * width)) + start;
+    return start + (value - start) % size;
 }

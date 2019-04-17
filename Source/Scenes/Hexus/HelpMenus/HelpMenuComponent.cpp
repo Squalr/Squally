@@ -9,6 +9,7 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/HelpMenus/BinDecHexHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShlHelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/ShrHelpMenu.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
@@ -38,6 +39,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->textPanel = LayerColor::create(Color4B(0, 0, 0, 196), 1234, 196);
     this->binDecHexHelpMenu = BinDecHexHelpMenu::create();
     this->shlHelpMenu = ShlHelpMenu::create();
+    this->shrHelpMenu = ShrHelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
     this->onExit = nullptr;
 
@@ -45,6 +47,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->addChild(this->textPanel);
     this->addChild(this->binDecHexHelpMenu);
     this->addChild(this->shlHelpMenu);
+    this->addChild(this->shrHelpMenu);
     this->addChild(this->exitButton);
 }
 
@@ -89,6 +92,7 @@ void HelpMenuComponent::openMenu(Card* card)
     this->setVisible(true);
     this->binDecHexHelpMenu->setVisible(false);
     this->shlHelpMenu->setVisible(false);
+    this->shrHelpMenu->setVisible(false);
 
     if (card == nullptr)
     {
@@ -107,6 +111,11 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Special_SHL:
         {
             this->shlHelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_SHR:
+        {
+            this->shrHelpMenu->open();
             break;
         }
         default:

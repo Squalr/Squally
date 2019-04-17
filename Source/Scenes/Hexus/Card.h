@@ -78,7 +78,7 @@ public:
 	void setIsPlayerOwnedCard(bool isPlayerOwnedCard);
 	bool getIsPlayerOwnedCard();
 	void runOverflowEffect(bool offsetYPosition = false);
-	void runUnderflowEffect(bool offsetYPosition = false);
+	void runUnderflowEffect(bool offsetYPosition = false, bool isGoodEffect = true);
 	CardEffects::CardEffect getCorrespondingCardEffect();
 
 	CardData* cardData;

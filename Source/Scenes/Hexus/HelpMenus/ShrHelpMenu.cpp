@@ -1,4 +1,4 @@
-#include "ShlHelpMenu.h"
+#include "ShrHelpMenu.h"
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -17,23 +17,23 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/CardDescriptionsLong/ShiftLeft.h"
+#include "Strings/Hexus/CardDescriptionsLong/ShiftRight.h"
 
 using namespace cocos2d;
 
-ShlHelpMenu* ShlHelpMenu::create()
+ShrHelpMenu* ShrHelpMenu::create()
 {
-	ShlHelpMenu* instance = new ShlHelpMenu();
+	ShrHelpMenu* instance = new ShrHelpMenu();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShlHelpMenu::ShlHelpMenu()
+ShrHelpMenu::ShrHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptionsLong_ShiftLeft::create(), Size(1200.0f, 0.0f));
-	this->shlCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptionsLong_ShiftRight::create(), Size(1200.0f, 0.0f));
+	this->shrCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight));
 	this->previewCard = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);
 	this->animatedLabelValue = ConstantString::create();
@@ -42,34 +42,34 @@ ShlHelpMenu::ShlHelpMenu()
 
 	this->description->enableOutline(Color4B::BLACK, 2);
 	this->description->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->shlCard->setScale(1.0f);
+	this->shrCard->setScale(1.0f);
 	this->newZero->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabel->enableOutline(Color4B::BLACK, 3);
 
-	this->shlCard->reveal();
-	this->shlCard->disableInteraction();
+	this->shrCard->reveal();
+	this->shrCard->disableInteraction();
 	this->previewCard->autoCard->setCardScale(0.6f);
 
 	this->addChild(this->description);
-	this->addChild(this->shlCard);
+	this->addChild(this->shrCard);
 	this->addChild(this->previewCard);
 	this->addChild(this->attackFrame);
 	this->addChild(this->animatedLabel);
 	this->addChild(this->newZero);
 }
 
-ShlHelpMenu::~ShlHelpMenu()
+ShrHelpMenu::~ShrHelpMenu()
 {
 }
 
-void ShlHelpMenu::onEnter()
+void ShrHelpMenu::onEnter()
 {
 	super::onEnter();
 
 	this->newZero->getLetter(0)->setOpacity(0);
 }
 
-void ShlHelpMenu::initializePositions()
+void ShrHelpMenu::initializePositions()
 {
 	super::initializePositions();
 
@@ -77,17 +77,17 @@ void ShlHelpMenu::initializePositions()
 	this->attackFrame->setPosition(Vec2(0.0f, -160.0f));
 	this->animatedLabel->setPosition(Vec2(0.0f, -160.0f));
 	this->newZero->setPosition(Vec2(0.0f, 0.0f));
-	this->shlCard->setPosition(Vec2(356.0f, 0.0f));
+	this->shrCard->setPosition(Vec2(356.0f, 0.0f));
 }
 
-void ShlHelpMenu::initializeListeners()
+void ShrHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
 	this->previewCard->setToggleCallback([=](){ this->resetAnimation(); });
 }
 
-void ShlHelpMenu::open()
+void ShrHelpMenu::open()
 {
 	this->setVisible(true);
 
@@ -95,7 +95,7 @@ void ShlHelpMenu::open()
 	this->runAnimationLoop();
 }
 
-void ShlHelpMenu::resetAnimation()
+void ShrHelpMenu::resetAnimation()
 {
 	this->stopAllActions();
 	this->animatedLabel->setOpacity(0);
@@ -111,19 +111,19 @@ void ShlHelpMenu::resetAnimation()
 	));
 }
 
-void ShlHelpMenu::runAnimationLoop()
+void ShrHelpMenu::runAnimationLoop()
 {
 	this->initializePositions();
 
-	const Vec2 travelDist = Vec2(-48.0f, -128.0f);
-	const float newZeroX = travelDist.x + 132.0f;
+	const Vec2 travelDist = Vec2(48.0f, -128.0f);
+	const float newZeroX = travelDist.x - 132.0f + 40.0f;
 	const float newZeroY = -116.0f;
 	
 	this->previewCard->autoCard->activeCard->clearOperations();
 	
 	this->animatedLabelValue->setString(HackUtils::toBinary4(this->previewCard->autoCard->getAttack()));
-	this->animatedLabel->getLetter(0)->setColor(Color3B::WHITE);
-	this->animatedLabel->getLetter(0)->setOpacity(255);
+	this->animatedLabel->getLetter(3)->setColor(Color3B::WHITE);
+	this->animatedLabel->getLetter(3)->setOpacity(255);
 	this->newZero->getLetter(0)->setOpacity(0);
 	
 	// Restore opacity altered by resetting animation
@@ -139,26 +139,26 @@ void ShlHelpMenu::runAnimationLoop()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHL, 0b0001));
+			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHR, 0b0001));
 
-			if (this->previewCard->autoCard->activeCard->getOriginalAttack() >= 0b1000)
+			if (this->previewCard->autoCard->activeCard->getOriginalAttack() % 2 == 1)
 			{
-				this->previewCard->autoCard->activeCard->runOverflowEffect();
+				this->previewCard->autoCard->activeCard->runUnderflowEffect(false, false);
 			}
 
-			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->shlCard->getCorrespondingCardEffect());
+			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->shrCard->getCorrespondingCardEffect());
 			
 			this->newZero->getLetter(0)->setPosition(Vec2(newZeroX, newZeroY + travelDist.y));
 			this->newZero->getLetter(0)->runAction(MoveTo::create(0.5f, Vec2(newZeroX, newZeroY)));
 			this->newZero->getLetter(0)->runAction(FadeTo::create(0.5f, 255));
-			this->animatedLabel->getLetter(0)->setColor(Color3B::RED);
+			this->animatedLabel->getLetter(3)->setColor(Color3B::RED);
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			Vec2 originalPosition = this->animatedLabel->getLetter(0)->getPosition();
+			Vec2 originalPosition = this->animatedLabel->getLetter(3)->getPosition();
 
-			this->animatedLabel->getLetter(0)->runAction(FadeTo::create(0.25f, 0));
+			this->animatedLabel->getLetter(3)->runAction(FadeTo::create(0.25f, 0));
 		}),
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()

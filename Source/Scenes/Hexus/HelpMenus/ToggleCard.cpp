@@ -54,11 +54,11 @@ ToggleCard::ToggleCard(ToggleMode toggleMode)
         }
     }
 
-    this->addChild(this->autoCard);
     this->addChild(this->upToggle);
     this->addChild(this->downToggle);
     this->addChild(this->leftToggle);
     this->addChild(this->rightToggle);
+    this->addChild(this->autoCard);
 }
 
 ToggleCard::~ToggleCard()
