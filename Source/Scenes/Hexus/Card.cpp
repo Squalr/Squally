@@ -32,19 +32,20 @@ const Color4B Card::specialColor = Color4B(255, 116, 0, 255);
 const Color4B Card::debuffColor = Color4B(225, 0, 0, 255);
 const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
 
-Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
+Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool relocateUI)
 {
-	Card* instance = new Card(cardStyle, data, isPlayerOwnedCard);
+	Card* instance = new Card(cardStyle, data, isPlayerOwnedCard, relocateUI);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
+Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool relocateUI)
 {
 	this->mouseOverCallback = nullptr;
 	this->isPlayerOwnedCard = isPlayerOwnedCard;
+	this->relocateUI = relocateUI;
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
@@ -115,11 +116,11 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 
 	this->cardString = ConstantString::create();
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
-	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_Cards_Effects_Overflow::create());
-	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Hexus_Cards_Effects_Underflow::create());
+	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Overflow::create());
+	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Underflow::create());
 
-	this->overflowLabel->enableOutline(Color4B::BLACK, 2);
-	this->underflowLabel->enableOutline(Color4B::BLACK, 2);
+	this->overflowLabel->enableOutline(Color4B::BLACK, 4);
+	this->underflowLabel->enableOutline(Color4B::BLACK, 4);
 	this->overflowLabel->setTextColor(Color4B::RED);
 	this->underflowLabel->setTextColor(Color4B::GREEN);
 	this->overflowLabel->setOpacity(0);
@@ -151,8 +152,11 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard)
 
 Card::~Card()
 {
-	ObjectEvents::TriggerUnbindObject(this->overflowLabel);
-	ObjectEvents::TriggerUnbindObject(this->underflowLabel);
+	if (this->relocateUI)
+	{
+		ObjectEvents::TriggerUnbindObject(this->overflowLabel);
+		ObjectEvents::TriggerUnbindObject(this->underflowLabel);
+	}
 }
 
 void Card::onEnter()
@@ -167,8 +171,11 @@ void Card::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+	if (this->relocateUI)
+	{
+		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
+		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+	}
 }
 
 void Card::initializePositions()

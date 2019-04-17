@@ -94,17 +94,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary0));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary0), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal0));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal0), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex0));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex0), true, false);
                     break;
                 }
             }
@@ -118,17 +118,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary1));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary1), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal1));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal1), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex1));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex1), true, false);
                     break;
                 }
             }
@@ -142,17 +142,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary2));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary2), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal2));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal2), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex2));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex2), true, false);
                     break;
                 }
             }
@@ -166,17 +166,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary3));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary3), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal3));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal3), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex3));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex3), true, false);
                     break;
                 }
             }
@@ -190,17 +190,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary4));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary4), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal4));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal4), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex4));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex4), true, false);
                     break;
                 }
             }
@@ -214,17 +214,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary5));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary5), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal5));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal5), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex5));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex5), true, false);
                     break;
                 }
             }
@@ -238,17 +238,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary6));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary6), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal6));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal6), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex6));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex6), true, false);
                     break;
                 }
             }
@@ -262,17 +262,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary7));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary7), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal7));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal7), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex7));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex7), true, false);
                     break;
                 }
             }
@@ -286,17 +286,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary8));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary8), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal8));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal8), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex8));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex8), true, false);
                     break;
                 }
             }
@@ -310,17 +310,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary9));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary9), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal9));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal9), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex9));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex9), true, false);
                     break;
                 }
             }
@@ -334,17 +334,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary10));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary10), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal10));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal10), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex10));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex10), true, false);
                     break;
                 }
             }
@@ -358,17 +358,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary11));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary11), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal11));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal11), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex11));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex11), true, false);
                     break;
                 }
             }
@@ -382,17 +382,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary12));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary12), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal12));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal12), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex12));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex12), true, false);
                     break;
                 }
             }
@@ -406,17 +406,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary13));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary13), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal13));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal13), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex13));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex13), true, false);
                     break;
                 }
             }
@@ -430,17 +430,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary14));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary14), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal14));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal14), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex14));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex14), true, false);
                     break;
                 }
             }
@@ -454,17 +454,17 @@ void AutoCard::updateToggle()
                 default:
                 case DisplayType::Binary:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary15));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary15), true, false);
                     break;
                 }
                 case DisplayType::Decimal:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal15));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal15), true, false);
                     break;
                 }
                 case DisplayType::Hex:
                 {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex15));
+                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex15), true, false);
                     break;
                 }
             }
