@@ -2,6 +2,7 @@
 
 #include "Engine/Analytics/TAnalytics.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Steam/Steam.h"
 #include "Engine/Utils/SystemUtils.h"
 
 using namespace cocos2d;
@@ -16,22 +17,34 @@ void Analytics::registerGlobalNode()
 
 void Analytics::sendEvent(std::string category, std::string action, std::string label, int value)
 {
-	TAnalytics_Event(category.c_str(), action.c_str(), label.c_str(), value);
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Event(category.c_str(), action.c_str(), label.c_str(), value);
+	}
 }
 
 void Analytics::sendEvent(std::string category, std::string action, std::string label)
 {
-	TAnalytics_Event(category.c_str(), action.c_str(), label.c_str());
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Event(category.c_str(), action.c_str(), label.c_str());
+	}
 }
 
 void Analytics::sendEvent(std::string category, std::string action)
 {
-	TAnalytics_Event(category.c_str(), action.c_str());
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Event(category.c_str(), action.c_str());
+	}
 }
 
 void Analytics::shutDown()
 {
-	TAnalytics_Shutdown();
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Shutdown();
+	}
 }
 
 Analytics* Analytics::getInstance()
@@ -46,7 +59,10 @@ Analytics* Analytics::getInstance()
 
 Analytics::Analytics()
 {
-	TAnalytics_Init(Analytics::trackingCode.c_str(), SystemUtils::getUniqueSystemIdentifier().c_str());
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Init(Analytics::trackingCode.c_str(), SystemUtils::getUniqueSystemIdentifier().c_str());
+	}
 }
 
 Analytics::~Analytics()
@@ -62,5 +78,19 @@ void Analytics::onEnter()
 
 void Analytics::update(float dt)
 {
-	TAnalytics_Update();
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Update();
+	}
+}
+
+bool Analytics::areAnalyticsEnabled()
+{
+	// Analytics are currently disabled in Steam builds, and only on Itch.io (this is the price of being free for Itch)
+	if (!Steam::isSquallySteamBuild())
+	{
+		return true;
+	}
+
+	return false;
 }
