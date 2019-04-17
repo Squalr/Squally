@@ -14,17 +14,17 @@ class ConstantString;
 class LocalizedLabel;
 class ToggleCard;
 
-class ShlHelpMenu : public SmartNode
+class RolHelpMenu : public SmartNode
 {
 public:
-	static ShlHelpMenu* create();
+	static RolHelpMenu* create();
 
 	void open();
 
 private:
 	typedef SmartNode super;
-	ShlHelpMenu();
-	~ShlHelpMenu();
+	RolHelpMenu();
+	~RolHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -33,10 +33,9 @@ private:
 	void runAnimationLoop();
 
 	LocalizedLabel* description;
-	Card* rolCard;
+	Card* shlCard;
 	ToggleCard* previewCard;
 	cocos2d::Sprite* attackFrame;
-	LocalizedLabel* newZero;
 	LocalizedLabel* animatedLabel;
 	ConstantString* animatedLabelValue;
 };

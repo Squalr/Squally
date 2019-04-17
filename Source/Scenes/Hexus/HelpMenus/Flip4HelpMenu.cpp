@@ -117,7 +117,7 @@ void Flip4HelpMenu::runAnimationLoop()
 	this->animatedLabel->runAction(FadeTo::create(0.25f, 255));
 
 	this->runAction(Sequence::create(
-		DelayTime::create(1.5f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::XOR, 0b1000));
