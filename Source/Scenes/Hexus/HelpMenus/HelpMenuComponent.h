@@ -4,6 +4,7 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
@@ -31,6 +32,7 @@ private:
 	typedef ComponentBase super;
 
 	cocos2d::Sprite* background;
+	cocos2d::LayerColor* textPanel;
 	BinDecHexHelpMenu* binDecHexHelpMenu;
 	ClickableNode* exitButton;
 	ShlHelpMenu* shlHelpMenu;

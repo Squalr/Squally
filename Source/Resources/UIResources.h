@@ -83,6 +83,14 @@ namespace UIResources
 	extern const std::string Menus_Buttons_AcceptV2Button;
 	extern const std::string Menus_Buttons_AcceptV2ButtonGray;
 	extern const std::string Menus_Buttons_AcceptV2ButtonHover;
+	extern const std::string Menus_Buttons_ArrowDown;
+	extern const std::string Menus_Buttons_ArrowDownSelected;
+	extern const std::string Menus_Buttons_ArrowLeft;
+	extern const std::string Menus_Buttons_ArrowLeftSelected;
+	extern const std::string Menus_Buttons_ArrowRight;
+	extern const std::string Menus_Buttons_ArrowRightSelected;
+	extern const std::string Menus_Buttons_ArrowUp;
+	extern const std::string Menus_Buttons_ArrowUpSelected;
 	extern const std::string Menus_Buttons_AudioButton;
 	extern const std::string Menus_Buttons_AudioButtonHover;
 	extern const std::string Menus_Buttons_AudioOffButton;

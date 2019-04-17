@@ -56,7 +56,7 @@ public:
 		}
 	};
 
-	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
+	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
 
 	Operation toOperation(unsigned int immediate = 0);
 	void reveal();
@@ -94,7 +94,7 @@ public:
 	static const cocos2d::Color4B buffColor;
 
 protected:
-	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
+	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
 	~Card();
 
 	void onEnter() override;
@@ -111,6 +111,7 @@ private:
 	int applyOperation(int attack, Operation operation);
 
 	bool isPlayerOwnedCard;
+	bool relocateUI;
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;

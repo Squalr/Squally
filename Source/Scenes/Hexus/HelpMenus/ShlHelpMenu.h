@@ -29,8 +29,10 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void resetAnimation();
 	void runAnimationLoop();
 
+	LocalizedLabel* description;
 	Card* shlCard;
 	ToggleCard* previewCard;
 	cocos2d::Sprite* attackFrame;
