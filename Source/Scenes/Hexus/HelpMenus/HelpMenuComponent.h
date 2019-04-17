@@ -12,6 +12,7 @@ class BinDecHexHelpMenu;
 class Card;
 class ClickableNode;
 class ShlHelpMenu;
+class ShrHelpMenu;
 
 class HelpMenuComponent : public ComponentBase
 {
@@ -36,6 +37,7 @@ private:
 	BinDecHexHelpMenu* binDecHexHelpMenu;
 	ClickableNode* exitButton;
 	ShlHelpMenu* shlHelpMenu;
+	ShrHelpMenu* shrHelpMenu;
 
 	std::function<void()> onExit;
 };

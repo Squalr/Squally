@@ -27,6 +27,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	LocalizedLabel* description;
 	AutoCard* binCard;
 	AutoCard* decCard;
 	AutoCard* hexCard;

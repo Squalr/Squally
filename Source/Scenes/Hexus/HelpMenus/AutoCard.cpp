@@ -65,14 +65,14 @@ void AutoCard::setAttack(int attack)
 
 void AutoCard::incrementAttack()
 {
-    this->currentAttack = (this->currentAttack + 1) % 15;
+    this->currentAttack = MathUtils::wrappingNormalize(this->currentAttack + 1, 0, 15);
 
     this->updateToggle();
 }
 
 void AutoCard::decrementAttack()
 {
-    this->currentAttack = (this->currentAttack - 1) % 15;
+    this->currentAttack = MathUtils::wrappingNormalize(this->currentAttack - 1, 0, 15);
 
     this->updateToggle();
 }
