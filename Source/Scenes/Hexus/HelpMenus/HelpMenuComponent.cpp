@@ -12,6 +12,8 @@
 #include "Scenes/Hexus/HelpMenus/Flip2HelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/Flip3HelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/Flip4HelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/RolHelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/RorHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShlHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShrHelpMenu.h"
 
@@ -42,12 +44,14 @@ HelpMenuComponent::HelpMenuComponent()
     this->background = Sprite::create(HexusResources::StoreMenu_StoreBoard);
     this->textPanel = LayerColor::create(Color4B(0, 0, 0, 196), 1234, 196);
     this->binDecHexHelpMenu = BinDecHexHelpMenu::create();
-    this->shlHelpMenu = ShlHelpMenu::create();
-    this->shrHelpMenu = ShrHelpMenu::create();
     this->flip1HelpMenu = Flip1HelpMenu::create();
     this->flip2HelpMenu = Flip2HelpMenu::create();
     this->flip3HelpMenu = Flip3HelpMenu::create();
     this->flip4HelpMenu = Flip4HelpMenu::create();
+    this->rolHelpMenu = RolHelpMenu::create();
+    this->rorHelpMenu = RorHelpMenu::create();
+    this->shlHelpMenu = ShlHelpMenu::create();
+    this->shrHelpMenu = ShrHelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
     this->onExit = nullptr;
 
@@ -58,6 +62,8 @@ HelpMenuComponent::HelpMenuComponent()
     this->addChild(this->flip2HelpMenu);
     this->addChild(this->flip3HelpMenu);
     this->addChild(this->flip4HelpMenu);
+    this->addChild(this->rolHelpMenu);
+    this->addChild(this->rorHelpMenu);
     this->addChild(this->shlHelpMenu);
     this->addChild(this->shrHelpMenu);
     this->addChild(this->exitButton);
@@ -107,6 +113,8 @@ void HelpMenuComponent::openMenu(Card* card)
     this->flip2HelpMenu->setVisible(false);
     this->flip3HelpMenu->setVisible(false);
     this->flip4HelpMenu->setVisible(false);
+    this->rolHelpMenu->setVisible(false);
+    this->rorHelpMenu->setVisible(false);
     this->shlHelpMenu->setVisible(false);
     this->shrHelpMenu->setVisible(false);
 
@@ -122,16 +130,6 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Hexidecimal:
         {
             this->binDecHexHelpMenu->open(card);
-            break;
-        }
-        case CardData::CardType::Special_SHL:
-        {
-            this->shlHelpMenu->open();
-            break;
-        }
-        case CardData::CardType::Special_SHR:
-        {
-            this->shrHelpMenu->open();
             break;
         }
         case CardData::CardType::Special_FLIP1:
@@ -152,6 +150,26 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Special_FLIP4:
         {
             this->flip4HelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_ROL:
+        {
+            this->rolHelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_ROR:
+        {
+            this->rorHelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_SHL:
+        {
+            this->shlHelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_SHR:
+        {
+            this->shrHelpMenu->open();
             break;
         }
         default:
