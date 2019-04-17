@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringAr()
 	{
-		return "قلب 3 بت من جميع البطاقات في صف واحد.";
+		return "اقلب الجزء الثالث من جميع البطاقات على التوالي. يتم ترقيم البتات من اليمين إلى اليسار.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringBg()
 	{
-		return "Обърнете 3-ия пореден ред на всички карти подред.";
+		return "Обръща 3-то бит от всички карти в един ред. Битовете са номерирани от дясно на ляво.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringCs()
 	{
-		return "Překlopte třetí bit všech karet za sebou.";
+		return "Překlopí 3. bit všech karet v řadě. Bity jsou číslovány zprava doleva.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringDa()
 	{
-		return "Vend den 3. bit af alle kortene i træk.";
+		return "Springer den 3. bit af alle kortene i træk. Bits er nummereret fra højre til venstre.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringDe()
 	{
-		return "Drehe das 3. Bit aller Karten in einer Reihe um.";
+		return "Dreht das 3. Bit aller Karten in einer Reihe. Bits sind von rechts nach links nummeriert.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringEl()
 	{
-		return "Περιστρέψτε το 3ο κομμάτι όλων των καρτών στη σειρά.";
+		return "Ανακατεύει το 3ο κομμάτι όλων των καρτών στη σειρά. Τα κομμάτια αριθμούνται από τα δεξιά προς τα αριστερά.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringEn()
 	{
-		return "Flip the 3rd bit of all cards in a row.";
+		return "Flips the 3rd bit of all cards in a row. Bits are numbered from right to left.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringEs()
 	{
-		return "Voltear el tercer bit de todas las cartas en una fila.";
+		return "Da la vuelta al tercer bit de todas las cartas en una fila. Los bits están numerados de derecha a izquierda.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringEs419()
 	{
-		return "Voltear el tercer bit de todas las cartas en una fila.";
+		return "Da la vuelta al tercer bit de todas las cartas en una fila. Los bits están numerados de derecha a izquierda.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringFi()
 	{
-		return "Käännä kaikkien korttien kolmas bitti peräkkäin.";
+		return "Kääntää kaikkien korttien kolmannen bitin peräkkäin. Bitit numeroidaan oikealta vasemmalle.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringFr()
 	{
-		return "Retournez le 3ème bit de toutes les cartes à la suite.";
+		return "Retourne le troisième bit de toutes les cartes à la suite. Les bits sont numérotés de droite à gauche.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringHu()
 	{
-		return "Hajtsa végre az összes kártya 3. bitjét.";
+		return "Az összes kártya 3. bitjét egymás után elrejti. A bitek jobbról balra vannak számozva.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringIt()
 	{
-		return "Capovolgi il 3 ° bit di tutte le carte di fila.";
+		return "Capovolge il 3 ° bit di tutte le carte di seguito. I bit sono numerati da destra a sinistra.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringJa()
 	{
-		return "行のすべてのカードの3番目のビットを反転します。";
+		return "連続してすべてのカードの3番目のビットを反転します。ビットは右から左に番号が付けられています。";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringKo()
 	{
-		return "연속으로 모든 카드의 세 번째 비트를 뒤집습니다.";
+		return "한 줄에 모든 카드의 세 번째 비트를 뒤집습니다. 비트는 오른쪽에서 왼쪽으로 번호가 매겨집니다.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringNl()
 	{
-		return "Draai het derde deel van alle kaarten op een rij.";
+		return "Flipt het derde deel van alle kaarten op een rij. Bits zijn genummerd van rechts naar links.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringNo()
 	{
-		return "Vri den tredje delen av alle kortene på rad.";
+		return "Vinner den tredje delen av alle kortene på rad. Bits er nummerert fra høyre til venstre.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringPl()
 	{
-		return "Odwróć trzeci bit wszystkich kart w rzędzie.";
+		return "Odwraca trzeci bit wszystkich kart z rzędu. Bity są ponumerowane od prawej do lewej.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringPt()
 	{
-		return "Vire o terceiro bit de todas as cartas seguidas.";
+		return "Inverte o terceiro bit de todas as cartas seguidas. Os bits são numerados da direita para a esquerda.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringPtBr()
 	{
-		return "Vire o terceiro bit de todas as cartas seguidas.";
+		return "Inverte o terceiro bit de todas as cartas seguidas. Os bits são numerados da direita para a esquerda.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringRo()
 	{
-		return "Răsturnați cel de-al treilea rând al tuturor cărților dintr-un rând.";
+		return "Împinge cel de-al treilea bit al tuturor cardurilor într-un rând. Biții sunt numerotați de la dreapta la stânga.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringRu()
 	{
-		return "Переверните 3-й бит всех карт подряд.";
+		return "Переворачивает 3-й бит всех карт подряд. Биты нумеруются справа налево.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringSv()
 	{
-		return "Vänd 3: e biten av alla kort i rad.";
+		return "Vänd 3: e biten av alla kort i rad. Bitar är numrerade från höger till vänster.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringTh()
 	{
-		return "พลิกบิตที่สามของไพ่ทั้งหมดในแถว";
+		return "พลิกบิตที่สามของไพ่ทั้งหมดในแถว บิตจะถูกกำหนดหมายเลขจากขวาไปซ้าย";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringTr()
 	{
-		return "Tüm kartların 3. bitini arka arkaya çevirin.";
+		return "Tüm kartların 3. bitini arka arkaya çevirir. Bitler sağdan sola doğru numaralandırılmıştır.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringUk()
 	{
-		return "Переверніть 3-й біт всіх карт підряд.";
+		return "Перевертає 3-й біт всіх карт поспіль. Біти нумеруються справа наліво.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringVi()
 	{
-		return "Lật bit thứ 3 của tất cả các thẻ liên tiếp.";
+		return "Lật bit thứ 3 của tất cả các thẻ liên tiếp. Các bit được đánh số từ phải sang trái.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringZhCn()
 	{
-		return "连续翻转所有卡的第3位。";
+		return "连续翻转所有卡的第3位。位从右到左编号。";
 	}
 
 	std::string Hexus_CardDescriptionsLong_Flip3::getStringZhTw()
 	{
-		return "連續翻轉所有卡的第3位。";
+		return "連續翻轉所有卡的第3位。位從右到左編號。";
 	}
 }

@@ -115,9 +115,9 @@ void ShlHelpMenu::runAnimationLoop()
 {
 	this->initializePositions();
 
-	const Vec2 travelDist = Vec2(-48.0f, -128.0f);
+	const Vec2 travelDist = Vec2(-44.0f, -128.0f);
 	const float newZeroX = travelDist.x + 132.0f;
-	const float newZeroY = -116.0f;
+	const float newZeroY = -115.0f;
 	
 	this->previewCard->autoCard->activeCard->clearOperations();
 	
