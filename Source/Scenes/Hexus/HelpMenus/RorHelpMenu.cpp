@@ -32,7 +32,7 @@ RorHelpMenu* RorHelpMenu::create()
 
 RorHelpMenu::RorHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptionsLong_ShiftRightCircular::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_ShiftRightCircular::create(), Size(1200.0f, 0.0f));
 	this->rorCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular));
 	this->previewCard = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);

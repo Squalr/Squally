@@ -32,7 +32,7 @@ Flip4HelpMenu* Flip4HelpMenu::create()
 
 Flip4HelpMenu::Flip4HelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptionsLong_Flip4::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Flip4::create(), Size(1200.0f, 0.0f));
 	this->flip4Card = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Flip4));
 	this->previewCard = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);
