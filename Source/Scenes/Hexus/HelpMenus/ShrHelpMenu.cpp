@@ -32,7 +32,7 @@ ShrHelpMenu* ShrHelpMenu::create()
 
 ShrHelpMenu::ShrHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptionsLong_ShiftRight::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_ShiftRight::create(), Size(1200.0f, 0.0f));
 	this->shrCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight));
 	this->previewCard = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);

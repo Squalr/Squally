@@ -12,6 +12,7 @@
 #include "Scenes/Hexus/HelpMenus/Flip2HelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/Flip3HelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/Flip4HelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/NotHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/RolHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/RorHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShlHelpMenu.h"
@@ -48,6 +49,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->flip2HelpMenu = Flip2HelpMenu::create();
     this->flip3HelpMenu = Flip3HelpMenu::create();
     this->flip4HelpMenu = Flip4HelpMenu::create();
+    this->notHelpMenu = NotHelpMenu::create();
     this->rolHelpMenu = RolHelpMenu::create();
     this->rorHelpMenu = RorHelpMenu::create();
     this->shlHelpMenu = ShlHelpMenu::create();
@@ -62,6 +64,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->addChild(this->flip2HelpMenu);
     this->addChild(this->flip3HelpMenu);
     this->addChild(this->flip4HelpMenu);
+    this->addChild(this->notHelpMenu);
     this->addChild(this->rolHelpMenu);
     this->addChild(this->rorHelpMenu);
     this->addChild(this->shlHelpMenu);
@@ -113,6 +116,7 @@ void HelpMenuComponent::openMenu(Card* card)
     this->flip2HelpMenu->setVisible(false);
     this->flip3HelpMenu->setVisible(false);
     this->flip4HelpMenu->setVisible(false);
+    this->notHelpMenu->setVisible(false);
     this->rolHelpMenu->setVisible(false);
     this->rorHelpMenu->setVisible(false);
     this->shlHelpMenu->setVisible(false);
@@ -150,6 +154,11 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Special_FLIP4:
         {
             this->flip4HelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_NOT:
+        {
+            this->notHelpMenu->open();
             break;
         }
         case CardData::CardType::Special_ROL:

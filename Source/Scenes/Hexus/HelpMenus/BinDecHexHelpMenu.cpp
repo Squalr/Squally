@@ -26,7 +26,7 @@ BinDecHexHelpMenu* BinDecHexHelpMenu::create()
 
 BinDecHexHelpMenu::BinDecHexHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptionsLong_BinDecHex::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_BinDecHex::create(), Size(1200.0f, 0.0f));
 	this->binCard = AutoCard::create();
 	this->decCard = AutoCard::create();
 	this->hexCard = AutoCard::create();
