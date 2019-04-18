@@ -59,6 +59,11 @@ public:
 	template <class T>
 	static T* getFirstParentOfType(cocos2d::Node *node)
 	{
+		if (node != nullptr)
+		{
+			node = node->getParent();
+		}
+		
 		while (node != nullptr)
 		{
 			if (dynamic_cast<T*>(node) != nullptr)

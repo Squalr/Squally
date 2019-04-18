@@ -81,11 +81,6 @@ void RewardsMenu::initializeListeners()
 	});
 }
 
-void RewardsMenu::update(float dt)
-{
-	super::update(dt);
-}
-
 void RewardsMenu::loadRewards()
 {
 	int index = 0;

@@ -4,6 +4,8 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/renderer/CCRenderer.h"
 
+#include "Engine/Utils/GameUtils.h"
+
 using namespace cocos2d;
 
 Hud* Hud::create()
@@ -25,13 +27,16 @@ Hud::~Hud()
 
 void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
-	float cameraHeight = Camera::getDefaultCamera()->getPositionZ();
-	float initialCameraHeight = Director::getInstance()->getZEye();
+	if (GameUtils::getFirstParentOfType<Hud>(this) == nullptr)
+	{
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+		Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+		float cameraHeight = Camera::getDefaultCamera()->getPositionZ();
+		float initialCameraHeight = Director::getInstance()->getZEye();
 
-	this->setPosition(cameraPosition - visibleSize / 2.0f);
-	this->setPositionZ(cameraHeight - initialCameraHeight);
+		this->setPosition(cameraPosition - visibleSize / 2.0f);
+		this->setPositionZ(cameraHeight - initialCameraHeight);
+	}
 
 	super::visit(renderer, parentTransform, parentFlags);
 }
