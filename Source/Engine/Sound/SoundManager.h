@@ -17,8 +17,6 @@ public:
 	static float getMusicVolume();
 	static float getSoundVolume();
 
-	void update(float delta);
-
 	enum class BackgroundMusicStates { 
 		PLAYING,
 		PAUSED,
@@ -26,13 +24,16 @@ public:
 		FADING_IN,
 		FADING_OUT,
 	};
+
 private:
 	typedef GlobalNode super;
 	static SoundManager* getInstance();
-	void onEnter();
 
 	SoundManager();
 	~SoundManager();
+
+	void onEnter() override;
+	void update(float dt) override;
 
 	static SoundManager * soundManagerInstance;
 

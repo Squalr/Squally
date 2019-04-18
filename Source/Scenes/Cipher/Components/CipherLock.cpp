@@ -10,10 +10,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -130,6 +132,8 @@ void CipherLock::initializeListeners()
 					// Normal scroll animation
 					if (!this->hasAnyPinFailed)
 					{
+						SoundManager::playSoundResource(SoundResources::Cipher_GearTurn);
+
 						this->woodGearTop->runAction(RotateBy::create(0.5f, 180.0f));
 						this->steelGear->runAction(RotateBy::create(0.5f, -180.0f));
 						this->woodGearBottom->runAction(RotateBy::create(0.5f, 180.0f));
@@ -147,6 +151,8 @@ void CipherLock::initializeListeners()
 					// Failure stall animation
 					else
 					{
+						SoundManager::playSoundResource(SoundResources::Cipher_GearTurn);
+
 						this->woodGearTop->runAction(Sequence::create(
 							RotateBy::create(0.15f, 10.0f),
 							RotateBy::create(0.15f, -10.0f),
