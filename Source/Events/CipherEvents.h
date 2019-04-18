@@ -27,20 +27,21 @@ public:
 	static const std::string EventOpenAsciiTable;
 	static const std::string EventTryUnlockCurrentCipher;
 
-	struct CipherLoadArgs
+	struct CipherOpenArgs
 	{
-		std::string cipherName;
+		std::string cipherJson;
+		bool isHardMode;
 
-		CipherLoadArgs(std::string cipherName) : cipherName(cipherName)
+		CipherOpenArgs(std::string cipherJson, bool isHardMode) : cipherJson(cipherJson), isHardMode(isHardMode)
 		{
 		}
 	};
 
-	struct CipherOpenArgs
+	struct CipherLoadArgs
 	{
 		CipherPuzzleData* cipherPuzzleData;
 
-		CipherOpenArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
+		CipherLoadArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
 		{
 		}
 	};
@@ -136,8 +137,8 @@ public:
 		}
 	};
 
-	static void TriggerLoadCipher(CipherLoadArgs args);
-	static void TriggerOpenCipher(CipherOpenArgs args);
+	static void TriggerLoadCipher(CipherOpenArgs args);
+	static void TriggerOpenCipher(CipherLoadArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
 	static void TriggerConnectionUpdated(CipherConnectionUpdatedArgs args);

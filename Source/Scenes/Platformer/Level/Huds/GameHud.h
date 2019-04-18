@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 class CurrencyDisplay;
 class LocalizedLabel;
 class RuneBar;
 class StatsBars;
 
-class GameHud : public Hud
+class GameHud : public SmartNode
 {
 public:
 	static GameHud* create();
@@ -17,7 +17,7 @@ public:
 	StatsBars* getStatsBars();
 
 private:
-	typedef Hud super;
+	typedef SmartNode super;
 	GameHud();
 	virtual ~GameHud();
 

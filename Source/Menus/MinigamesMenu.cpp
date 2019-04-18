@@ -80,7 +80,6 @@ MinigamesMenu::MinigamesMenu()
 	this->towerDefenseButton = this->createButton(Strings::TowerDefense_TowerDefense::create(), UIResources::Menus_Icons_Meteor);
 	this->spaceForceButton = this->createButton(Strings::SpaceForce_SpaceForce::create(), UIResources::Menus_Icons_Stars);
 
-	this->cipherButton->disableInteraction(128);
 	this->pointerTraceButton->disableInteraction(128);
 	this->stacksButton->disableInteraction(128);
 	this->towerDefenseButton->disableInteraction(128);

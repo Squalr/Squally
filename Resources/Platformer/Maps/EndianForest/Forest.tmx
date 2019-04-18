@@ -491,7 +491,7 @@
   </object>
   <object id="586" name="chest" type="object" x="896.121" y="2648.18" width="174.424" height="166.303">
    <properties>
-    <property name="args" value="atbash"/>
+    <property name="args" value="{&quot;easy&quot;:{&quot;ads&quot;:&quot;sad&quot;,&quot;usb&quot;:&quot;bus&quot;,&quot;wot&quot;:&quot;two&quot;,&quot;lsp&quot;:&quot;pls&quot;,&quot;adm&quot;:&quot;mad&quot;},&quot;hard&quot;:{&quot;ads&quot;:&quot;sad&quot;,&quot;usb&quot;:&quot;bus&quot;,&quot;wot&quot;:&quot;two&quot;,&quot;lsp&quot;:&quot;pls&quot;,&quot;adm&quot;:&quot;mad&quot;},&quot;rewards&quot;:[&quot;health-potion&quot;,&quot;mana-potion&quot;],&quot;bonus-rewards&quot;:[&quot;blue-axe&quot;]}"/>
     <property name="event" value="open-cipher"/>
    </properties>
   </object>
