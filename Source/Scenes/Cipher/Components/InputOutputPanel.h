@@ -9,12 +9,12 @@ namespace cocos2d
 
 class CipherState;
 class ClickableNode;
-class LocalizedLabel;
+class SmartAsciiLabel;
 
 class InputOutputPanel : public SmartNode
 {
 public:
-	static InputOutputPanel* create(std::string input, std::string output, std::function<void(InputOutputPanel*)> selectCallback);
+	static InputOutputPanel* create(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback);
 
 	void enableInteraction();
 	void disableInteraction();
@@ -24,7 +24,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	InputOutputPanel(std::string input, std::string output, std::function<void(InputOutputPanel*)> selectCallback);
+	InputOutputPanel(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback);
 	~InputOutputPanel();
 
 	void onEnter() override;
@@ -32,12 +32,12 @@ private:
 	void initializeListeners() override;
 
 	ClickableNode* panel;
-	LocalizedLabel* inputLabel;
-	LocalizedLabel* outputLabel;
+	SmartAsciiLabel* inputLabel;
+	SmartAsciiLabel* outputLabel;
 	cocos2d::Sprite* failedIcon;
 	cocos2d::Sprite* passedIcon;
 
-	std::string input;
-	std::string output;
+	unsigned char input;
+	unsigned char output;
 	std::function<void(InputOutputPanel*)> selectCallback;
 };

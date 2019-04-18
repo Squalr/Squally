@@ -8,8 +8,8 @@
 using namespace cocos2d;
 
 CipherPuzzleData* CipherPuzzleData::create(
-		std::vector<std::tuple<std::string, std::string>> inputOutputMapEasy,
-		std::vector<std::tuple<std::string, std::string>> inputOutputMapHard,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> rewards,
 		std::vector<std::string> bonusRewards,
 		bool isHardMode)
@@ -22,8 +22,8 @@ CipherPuzzleData* CipherPuzzleData::create(
 }
 
 CipherPuzzleData::CipherPuzzleData(
-		std::vector<std::tuple<std::string, std::string>> inputOutputMapEasy,
-		std::vector<std::tuple<std::string, std::string>> inputOutputMapHard,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> rewards,
 		std::vector<std::string> bonusRewards,
 		bool isHardMode)
@@ -44,12 +44,12 @@ void CipherPuzzleData::initializeListeners()
 	super::initializeListeners();
 }
 
-std::vector<std::tuple<std::string, std::string>> CipherPuzzleData::getInputOutputMapEasy()
+std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMapEasy()
 {
 	return this->inputOutputMapEasy;
 }
 
-std::vector<std::tuple<std::string, std::string>> CipherPuzzleData::getInputOutputMapHard()
+std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMapHard()
 {
 	return this->inputOutputMapHard;
 }

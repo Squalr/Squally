@@ -34,6 +34,7 @@ Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
+	this->canInteract = false;
 
 	this->chestOpenEvent = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyEvent, Value("")).asString();
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyArgs, Value("")).asString();
@@ -77,12 +78,14 @@ void Chest::initializeListeners()
 	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->interactMenu->show();
+		this->canInteract = true;
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->interactMenu->hide();
+		this->canInteract = false;
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
@@ -91,15 +94,14 @@ void Chest::update(float dt)
 {
 	super::update(dt);
 
-	// TODO: Distance check
-	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
+	if (this->canInteract && Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
 	{
 		if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
 		{
-			// TODO: Easy/Hard popup
+			// TODO: Easy/Hard popup, callback indicating chest can no longer be opened
 			CipherEvents::TriggerLoadCipher(CipherEvents::CipherOpenArgs(this->chestOpenArgs, true));
 		}
-	}
+	} 
 }
 
 void Chest::open()

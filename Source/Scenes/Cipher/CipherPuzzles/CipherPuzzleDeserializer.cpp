@@ -1,5 +1,7 @@
 #include "CipherPuzzleDeserializer.h"
 
+#include <limits>
+
 #include "rapidjson/rapidjson.h"
 #include "rapidjson/document.h"
 
@@ -7,6 +9,8 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 
 using namespace cocos2d;
@@ -53,9 +57,33 @@ void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpen
 		return;
 	}
 
+	if (!document["easy"].HasMember("rule") || !document["easy"]["rule"].IsString())
+	{
+		CCLOG("Missing or invalid key 'rule' for easy puzzle.");
+		return;
+	}
+
+	if (!document["easy"].HasMember("inputs") || !document["easy"]["inputs"].IsArray())
+	{
+		CCLOG("Missing or invalid key 'inputs' for easy puzzle.");
+		return;
+	}
+
 	if (!document.HasMember("hard") || !document["hard"].IsObject())
 	{
 		CCLOG("Missing or invalid key 'hard' on cipher json.");
+		return;
+	}
+
+	if (!document["hard"].HasMember("rule") || !document["hard"]["rule"].IsString())
+	{
+		CCLOG("Missing or invalid key 'rule' for hard puzzle.");
+		return;
+	}
+
+	if (!document["hard"].HasMember("inputs") || !document["hard"]["inputs"].IsArray())
+	{
+		CCLOG("Missing or invalid key 'inputs' for hard puzzle.");
 		return;
 	}
 
@@ -71,30 +99,53 @@ void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpen
 		return;
 	}
 
-	std::vector<std::tuple<std::string, std::string>> inputOutputMapEasy = std::vector<std::tuple<std::string, std::string>>();
-	std::vector<std::tuple<std::string, std::string>> inputOutputMapHard = std::vector<std::tuple<std::string, std::string>>();
+	auto getChar = [&](std::string input)
+	{
+		if (input.size() == 1)
+		{
+			return (unsigned char)(input[0]);
+		}
+		else if (MathUtils::isInteger(input))
+		{
+			return (unsigned char)(std::stoi(input));
+		}
+		
+		return (unsigned char)(0);
+	};
+
+	auto applyRule = [&](unsigned char input, std::string rule)
+	{
+		std::string expression = StrUtils::replaceAll(rule, "{i}", std::to_string(input));
+		
+		return (unsigned char)(MathUtils::resolveBinaryMathExpression(expression));
+	};
+
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy = std::vector<std::tuple<unsigned char, unsigned char>>();
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard = std::vector<std::tuple<unsigned char, unsigned char>>();
 	std::vector<std::string> rewards = std::vector<std::string>();
 	std::vector<std::string> bonusRewards = std::vector<std::string>();
+	std::string easyRule = document["easy"]["rule"].GetString();
+	std::string hardRule = document["hard"]["rule"].GetString();
 
-	for (rapidjson::Value::ConstMemberIterator itr = document["easy"].MemberBegin(); itr != document["easy"].MemberEnd(); ++itr)
+	for (SizeType index = 0; index < document["easy"]["inputs"].Size(); index++)
 	{
-		if (itr->value.IsString())
+		if (document["easy"]["inputs"][index].IsString())
 		{
-			std::string key = itr->name.GetString();
-			std::string value = itr->value.GetString();
+			unsigned char input = getChar(document["easy"]["inputs"][index].GetString());
+			unsigned char output = applyRule(input, easyRule);
 
-			inputOutputMapEasy.push_back(std::tuple<std::string, std::string>(key, value));
+			inputOutputMapEasy.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 		}
 	}
 
-	for (rapidjson::Value::ConstMemberIterator itr = document["hard"].MemberBegin(); itr != document["hard"].MemberEnd(); ++itr)
+	for (SizeType index = 0; index < document["hard"]["inputs"].Size(); index++)
 	{
-		if (itr->value.IsString())
+		if (document["hard"]["inputs"][index].IsString())
 		{
-			std::string key = itr->name.GetString();
-			std::string value = itr->value.GetString();
+			unsigned char input = getChar(document["hard"]["inputs"][index].GetString());
+			unsigned char output = applyRule(input, easyRule);
 
-			inputOutputMapHard.push_back(std::tuple<std::string, std::string>(key, value));
+			inputOutputMapEasy.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 		}
 	}
 

@@ -86,7 +86,7 @@ void SourceBlock::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->charValue = this->cipherIndex < args->input.size() ? args->input[this->cipherIndex] : char(0);
+			this->charValue = args->input;
 
 			this->loadDisplayValue();
 		}
