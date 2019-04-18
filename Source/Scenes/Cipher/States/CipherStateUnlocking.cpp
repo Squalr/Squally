@@ -89,6 +89,14 @@ void CipherStateUnlocking::onStateExit(CipherState* cipherState)
 
 void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vector<BlockBase*> inputBlocks, std::vector<BlockBase*> immediateBlocks, std::function<void(bool success)> onExecuteComplete, int index)
 {
+	static bool unlockSuccessful = true;
+
+	// Reset state
+	if (index == 0)
+	{
+		unlockSuccessful = true;
+	}
+
 	if (index < cipherState->inputOutputMap.size())
 	{
 		CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
@@ -101,17 +109,19 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 		{
 			this->performExecuteLoop(cipherState, immediateBlocks, [=]()
 			{
-				bool unlockSuccessful = true;
+				bool currentUnlockSuccessful = true;
 				
 				for (auto it = cipherState->outputBlocks.begin(); it != cipherState->outputBlocks.end(); it++)
 				{
-					unlockSuccessful &= (*it)->isMatchedValues();
+					currentUnlockSuccessful &= (*it)->isMatchedValues();
 				}
 
-				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, unlockSuccessful, [=]()
+				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, currentUnlockSuccessful, [=]()
 				{
 					// Re-enter the unlocking state
 					CipherState::updateState(cipherState, CipherState::StateType::Unlocking);
+
+					unlockSuccessful &= currentUnlockSuccessful;
 
 					if (index >= cipherState->inputOutputMap.size() - 1)
 					{

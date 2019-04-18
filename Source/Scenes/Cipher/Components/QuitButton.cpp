@@ -6,6 +6,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Events/CipherEvents.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
 
@@ -67,7 +68,10 @@ void QuitButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	// this->quitButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->quitButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(false));
+	});
 }
 
 void QuitButton::onBeforeStateChange(CipherState* cipherState)

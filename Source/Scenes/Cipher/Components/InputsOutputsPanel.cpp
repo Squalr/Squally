@@ -211,7 +211,7 @@ void InputsOutputsPanel::loadPuzzleData()
 
 void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
 {
-	if (index < 0 || index > this->currentCipherState->inputOutputMap.size())
+	if (index < 0 || index > this->currentCipherState->inputOutputMap.size() || this->currentCipherState->inputOutputMap.size() == 0)
 	{
 		return;
 	}
