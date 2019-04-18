@@ -107,7 +107,8 @@ void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpen
 		}
 		else if (MathUtils::isInteger(input))
 		{
-			return (unsigned char)(std::stoi(input));
+			int intVal = std::stoi(input);
+			return (unsigned char)(intVal);
 		}
 		
 		return (unsigned char)(0);
@@ -143,9 +144,9 @@ void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpen
 		if (document["hard"]["inputs"][index].IsString())
 		{
 			unsigned char input = getChar(document["hard"]["inputs"][index].GetString());
-			unsigned char output = applyRule(input, easyRule);
+			unsigned char output = applyRule(input, hardRule);
 
-			inputOutputMapEasy.push_back(std::tuple<unsigned char, unsigned char>(input, output));
+			inputOutputMapHard.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 		}
 	}
 

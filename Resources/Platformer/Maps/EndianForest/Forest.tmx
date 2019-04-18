@@ -491,7 +491,7 @@
   </object>
   <object id="586" name="chest" type="object" x="896.121" y="2648.18" width="174.424" height="166.303">
    <properties>
-    <property name="args" value="{&quot;easy&quot;:{&quot;rule&quot;:&quot;{i}+5&quot;,&quot;inputs&quot;:[&quot;s&quot;,&quot;a&quot;,&quot;056&quot;]},&quot;hard&quot;:{&quot;rule&quot;:&quot;{i}+5&quot;,&quot;inputs&quot;:[&quot;s&quot;,&quot;a&quot;,&quot;{212}&quot;]},&quot;rewards&quot;:[&quot;health-potion&quot;,&quot;mana-potion&quot;],&quot;bonus-rewards&quot;:[&quot;blue-axe&quot;]}"/>
+    <property name="args" value="{&quot;easy&quot;:{&quot;rule&quot;:&quot;{i}+5&quot;,&quot;inputs&quot;:[&quot;s&quot;,&quot;a&quot;,&quot;056&quot;]},&quot;hard&quot;:{&quot;rule&quot;:&quot;({i}+5)^8&quot;,&quot;inputs&quot;:[&quot;s&quot;,&quot;a&quot;,&quot;056&quot;]},&quot;rewards&quot;:[&quot;health-potion&quot;,&quot;mana-potion&quot;],&quot;bonus-rewards&quot;:[&quot;blue-axe&quot;]}"/>
     <property name="event" value="open-cipher"/>
    </properties>
   </object>

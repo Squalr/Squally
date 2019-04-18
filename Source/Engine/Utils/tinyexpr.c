@@ -419,10 +419,10 @@ static te_expr *factor(state *s) {
 
 
 static te_expr *term(state *s) {
-    /* <term>      =    <factor> {("*" | "/" | "%") <factor>} */
+    /* <term>      =    <factor> {("*" | "/" | "%" | "^" | "|" | "&") <factor>} */
     te_expr *ret = factor(s);
 
-    while (s->type == TOK_INFIX && (s->function == mul || s->function == divide || s->function == fmod)) {
+    while (s->type == TOK_INFIX && (s->function == mul || s->function == divide || s->function == mod || s->function == xor || s->function == or || s->function == and)) {
         te_fun2 t = s->function;
         next_token(s);
         ret = NEW_EXPR(TE_FUNCTION2 | TE_FLAG_PURE, ret, factor(s));
