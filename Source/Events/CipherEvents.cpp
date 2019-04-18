@@ -7,6 +7,7 @@ using namespace cocos2d;
 
 const std::string CipherEvents::EventLoadCipher = "EVENT_LOAD_CIPHER";
 const std::string CipherEvents::EventOpenCipher = "EVENT_OPEN_CIPHER";
+const std::string CipherEvents::EventExitCipher = "EVENT_EXIT_CIPHER";
 const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SPAWN";
 const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_REQUEST_CONNECTION_SPAWN";
 const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDATED";
@@ -28,6 +29,14 @@ void CipherEvents::TriggerOpenCipher(CipherLoadArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventOpenCipher,
+		&args
+	);
+}
+
+void CipherEvents::TriggerExitCipher(CipherExitArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventExitCipher,
 		&args
 	);
 }

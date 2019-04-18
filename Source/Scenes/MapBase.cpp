@@ -36,6 +36,7 @@ MapBase::MapBase()
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
+	this->hudNode = Node::create();
 	this->hud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
@@ -59,6 +60,7 @@ MapBase::MapBase()
 	this->menuHud->addChild(this->confirmationMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
+	this->addChild(this->hudNode);
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->menuBackDrop);

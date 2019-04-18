@@ -17,6 +17,7 @@ class CipherEvents
 public:
 	static const std::string EventLoadCipher;
 	static const std::string EventOpenCipher;
+	static const std::string EventExitCipher;
 	static const std::string EventRequestBlockSpawn;
 	static const std::string EventRequestConnectionCreate;
 	static const std::string EventConnectionUpdated;
@@ -137,8 +138,18 @@ public:
 		}
 	};
 
+	struct CipherExitArgs
+	{
+		bool victory;
+
+		CipherExitArgs(bool victory) : victory(victory)
+		{
+		}
+	};
+
 	static void TriggerLoadCipher(CipherOpenArgs args);
 	static void TriggerOpenCipher(CipherLoadArgs args);
+	static void TriggerExitCipher(CipherExitArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
 	static void TriggerConnectionUpdated(CipherConnectionUpdatedArgs args);
