@@ -210,6 +210,15 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 							card->runOverflowEffect(index % 2 == 1);
 						}
 					}
+
+					if (operation.operationType == Card::Operation::OperationType::SHR)
+					{
+						if (previousValue % 2 == 1)
+						{
+							// Run underflow effect, interlacing odd/even offsets to prevent text overlap
+							card->runUnderflowEffect(index % 2 == 1, false);
+						}
+					}
 				}
 
 				// Decide which effect and sounds to play

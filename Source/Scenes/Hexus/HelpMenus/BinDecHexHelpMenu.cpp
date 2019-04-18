@@ -11,6 +11,7 @@
 #include "Strings/Hexus/BinHeader.h"
 #include "Strings/Hexus/DecHeader.h"
 #include "Strings/Hexus/HexHeader.h"
+#include "Strings/Hexus/CardDescriptionsLong/BinDecHex.h"
 
 using namespace cocos2d;
 
@@ -25,6 +26,7 @@ BinDecHexHelpMenu* BinDecHexHelpMenu::create()
 
 BinDecHexHelpMenu::BinDecHexHelpMenu()
 {
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_BinDecHex::create(), Size(1200.0f, 0.0f));
 	this->binCard = AutoCard::create();
 	this->decCard = AutoCard::create();
 	this->hexCard = AutoCard::create();
@@ -34,6 +36,8 @@ BinDecHexHelpMenu::BinDecHexHelpMenu()
 	this->decHeader = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Hexus_DecHeader::create());
 	this->hexHeader = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Hexus_HexHeader::create());
 
+	this->description->enableOutline(Color4B::BLACK, 2);
+	this->description->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->equalsLabelLeft->enableOutline(Color4B::BLACK, 4);
 	this->equalsLabelRight->enableOutline(Color4B::BLACK, 4);
 	this->binHeader->enableOutline(Color4B::BLACK, 3);
@@ -52,6 +56,7 @@ BinDecHexHelpMenu::BinDecHexHelpMenu()
 	this->decCard->setCardScale(0.6f);
 	this->hexCard->setCardScale(0.6f);
 
+	this->addChild(this->description);
 	this->addChild(this->binCard);
 	this->addChild(this->decCard);
 	this->addChild(this->hexCard);
@@ -75,6 +80,7 @@ void BinDecHexHelpMenu::initializePositions()
 {
 	super::initializePositions();
 
+	this->description->setPosition(Vec2(-1234 / 2.0f + 16.0f, 420.0f));
 	this->binHeader->setPosition(Vec2(-256.0f, 144.0f));
 	this->decHeader->setPosition(Vec2(0.0f, 144.0f));
 	this->hexHeader->setPosition(Vec2(256.0f, 144.0f));
