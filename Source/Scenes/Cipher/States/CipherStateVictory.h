@@ -4,6 +4,7 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
@@ -32,6 +33,7 @@ private:
 	void giveRewards(CipherState* cipherState);
 
 	CipherState* activeCipherState;
+	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* rewardsMenu;
 	LocalizedLabel* titleLabel;
 	ScrollPane* rewardsScroll;

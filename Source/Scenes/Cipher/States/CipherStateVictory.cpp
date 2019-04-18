@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -36,6 +37,9 @@ CipherStateVictory* CipherStateVictory::create()
 
 CipherStateVictory::CipherStateVictory() : super(CipherState::StateType::Victory)
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->rewardsMenu = Sprite::create(UIResources::Combat_RewardsMenu);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Rewards::create());
 	this->rewardsScroll = ScrollPane::create(Size(480.0f, 640.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
@@ -48,6 +52,7 @@ CipherStateVictory::CipherStateVictory() : super(CipherState::StateType::Victory
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 2);
 
+	this->addChild(this->backdrop);
 	this->addChild(this->rewardsMenu);
 	this->addChild(this->titleLabel);
 	this->addChild(this->rewardsScroll);
@@ -71,6 +76,7 @@ void CipherStateVictory::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
 	this->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->titleLabel->setPositionY(392.0f);
 	this->okayButton->setPositionY(-392.0f);

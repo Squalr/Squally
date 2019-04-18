@@ -89,14 +89,14 @@ public:
 
 	struct CipherChangeActiveCipherArgs
 	{
-		std::string input;
-		std::string output;
+		unsigned char input;
+		unsigned char output;
 		bool autoScroll;
 
-		CipherChangeActiveCipherArgs(std::string input, std::string output) : input(input), output(output), autoScroll(false)
+		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output) : input(input), output(output), autoScroll(false)
 		{
 		}
-		CipherChangeActiveCipherArgs(std::string input, std::string output, bool autoScroll) : input(input), output(output), autoScroll(autoScroll)
+		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output, bool autoScroll) : input(input), output(output), autoScroll(autoScroll)
 		{
 		}
 	};

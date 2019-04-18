@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <cmath>
 
+#include "Engine/Utils/tinyexpr.h"
+
 bool MathUtils::fuzzyEquals(float a, float b, float var)
 { 
 	return a - var <= b && a + var >= b;
@@ -47,4 +49,22 @@ int MathUtils::wrappingNormalize(int value, int start, int end)
 	}
 
     return start + (value - start) % size;
+}
+
+int MathUtils::resolveBinaryMathExpression(const std::string& expression)
+{
+	return te_interp(expression.c_str(), 0);
+}
+
+bool MathUtils::isInteger(const std::string& str)
+{
+   if(str.empty() || ((!isdigit(str[0])) && (str[0] != '-') && (str[0] != '+')))
+   {
+	   return false;
+   }
+
+   char * p;
+   strtol(str.c_str(), &p, 10);
+
+   return (*p == 0);
 }
