@@ -91,11 +91,13 @@ void Chest::update(float dt)
 {
 	super::update(dt);
 
+	// TODO: Distance check
 	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
 	{
 		if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
 		{
-			CipherEvents::TriggerLoadCipher(CipherEvents::CipherLoadArgs(this->chestOpenArgs));
+			// TODO: Easy/Hard popup
+			CipherEvents::TriggerLoadCipher(CipherEvents::CipherOpenArgs(this->chestOpenArgs, true));
 		}
 	}
 }

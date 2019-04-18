@@ -40,11 +40,18 @@ CipherDecor::CipherDecor()
 	this->cipherLabel = RenderUtils::renderNodeToSprite(tempCipherLabel, -Vec2(tempCipherLabel->getContentSize()) / 2.0f, tempCipherLabel->getContentSize(), padding);
 	tempCipherLabel = nullptr;
 
-	RenderUtils::applyShader(this->cipherLabel, ShaderResources::Vertex_Cipher_Disort, ShaderResources::Fragment_Cipher_Disort);
+	if (this->cipherLabel != nullptr)
+	{
+		RenderUtils::applyShader(this->cipherLabel, ShaderResources::Vertex_Cipher_Disort, ShaderResources::Fragment_Cipher_Disort);
+	}
 
 	this->addChild(this->furnace);
 	this->addChild(this->logo);
-	this->addChild(this->cipherLabel);
+	
+	if (this->cipherLabel != nullptr)
+	{
+		this->addChild(this->cipherLabel);
+	}
 }
 
 CipherDecor::~CipherDecor()

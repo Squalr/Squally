@@ -8,6 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Engine/UI/HUD/Hud.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
@@ -46,7 +47,7 @@ PlatformerMap::PlatformerMap()
 
 	this->getPhysicsWorld()->setAutoStep(false);
 
-	this->addChild(this->gameHud);
+	this->hud->addChild(this->gameHud);
 	this->menuHud->addChild(this->cipher);
 }
 
@@ -95,7 +96,7 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherLoadArgs* args = static_cast<CipherEvents::CipherLoadArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{

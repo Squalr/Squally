@@ -16,7 +16,7 @@ const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPL
 const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
 const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_TRY_UNLOCK_CURRENT_CIPHER";
 
-void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
+void CipherEvents::TriggerLoadCipher(CipherOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventLoadCipher,
@@ -24,7 +24,7 @@ void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
 	);
 }
 
-void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
+void CipherEvents::TriggerOpenCipher(CipherLoadArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventOpenCipher,
