@@ -11,6 +11,7 @@ public:
 	cocos2d::Node* getReferencedObject();
 	cocos2d::Node* getOriginalParent();
 	static cocos2d::Vec3 getRealCoords(UIBoundObject* uiBoundObject);
+	static float getRealScale(UIBoundObject* uiBoundObject);
 
 private:
 	typedef SmartNode super;
