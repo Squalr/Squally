@@ -47,13 +47,8 @@ private:
 	ToggleModeLeftRight toggleModeLeftRight;
 	ToggleModeUpDown toggleModeUpDown;
 
-	ClickableNode* upToggleBin;
-	ClickableNode* upToggleDec;
-	ClickableNode* upToggleHex;
-	ClickableNode* downToggleBin;
-	ClickableNode* downToggleDec;
-	ClickableNode* downToggleHex;
-
+	ClickableNode* upToggle;
+	ClickableNode* downToggle;
 	ClickableNode* leftToggle;
 	ClickableNode* rightToggle;
 	std::function<void()> onToggleChange;
