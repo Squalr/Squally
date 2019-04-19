@@ -58,6 +58,9 @@ OrHelpMenu::OrHelpMenu()
 	this->previewCardA->autoCard->setCardScale(0.6f);
 	this->previewCardB->autoCard->setCardScale(0.6f);
 
+	this->previewCardA->autoCard->setAttack(5);
+	this->previewCardB->autoCard->setAttack(3);
+
 	this->addChild(this->description);
 	this->addChild(this->orCard);
 	this->addChild(this->previewCardA);
@@ -159,6 +162,36 @@ void OrHelpMenu::runAnimationLoop()
 	this->animatedLabelA->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelB->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelC->runAction(FadeTo::create(0.25f, 255));
+
+	for (int index = 0; index < 4; index++)
+	{
+		if (this->animatedLabelAValue->getString()[index] == '0')
+		{
+			this->animatedLabelA->getLetter(index)->setColor(Color3B::GRAY);
+		}
+		else
+		{
+			this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
+		}
+		
+		if (this->animatedLabelBValue->getString()[index] == '0')
+		{
+			this->animatedLabelB->getLetter(index)->setColor(Color3B::GRAY);
+		}
+		else
+		{
+			this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
+		}
+
+		if (this->animatedLabelCValue->getString()[index] == '0')
+		{
+			this->animatedLabelC->getLetter(index)->setColor(Color3B::GRAY);
+		}
+		else
+		{
+			this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
+		}
+	}
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
