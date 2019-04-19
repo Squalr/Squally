@@ -8,32 +8,52 @@ class ClickableNode;
 class ToggleCard : public SmartNode
 {
 public:
-	enum class ToggleMode
+	enum class ToggleModeLeftRight
 	{
 		Hidden,
 		LeftRight,
-		UpDown,
 	};
 
-	static ToggleCard* create(ToggleMode toggleMode);
+	enum class ToggleModeUpDown
+	{
+		Hidden,
+		BinDec,
+		DecHex,
+		HexBin,
+		BinDecHex,
+	};
+
+	static ToggleCard* create(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown = ToggleModeUpDown::Hidden);
 
 	void setToggleCallback(std::function<void()> onToggleChange);
-	void toggleNext();
-	void togglePrevious();
+	void toggleNextValue();
+	void togglePreviousValue();
+	void toggleNextDisplayType();
+	void togglePreviousDisplayType();
 
 	AutoCard* autoCard;
 
 private:
 	typedef SmartNode super;
-	ToggleCard(ToggleMode toggleMode);
+	ToggleCard(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown);
 	~ToggleCard();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	ClickableNode* upToggle;
-	ClickableNode* downToggle;
+	void updateUpDownDisplays();
+
+	ToggleModeLeftRight toggleModeLeftRight;
+	ToggleModeUpDown toggleModeUpDown;
+
+	ClickableNode* upToggleBin;
+	ClickableNode* upToggleDec;
+	ClickableNode* upToggleHex;
+	ClickableNode* downToggleBin;
+	ClickableNode* downToggleDec;
+	ClickableNode* downToggleHex;
+
 	ClickableNode* leftToggle;
 	ClickableNode* rightToggle;
 	std::function<void()> onToggleChange;

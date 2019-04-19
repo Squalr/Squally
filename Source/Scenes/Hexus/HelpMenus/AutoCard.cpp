@@ -51,6 +51,11 @@ void AutoCard::setDisplayType(DisplayType displayType)
     this->updateToggle();
 }
 
+AutoCard::DisplayType AutoCard::getDisplayType()
+{
+    return this->displayType;
+}
+
 void AutoCard::setCardScale(float cardScale)
 {
     this->cardScale = cardScale;
