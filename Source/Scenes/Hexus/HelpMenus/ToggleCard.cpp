@@ -11,48 +11,23 @@
 
 using namespace cocos2d;
 
-ToggleCard* ToggleCard::create(ToggleMode toggleMode)
+ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDown toggleModeUpDown)
 {
-    ToggleCard* instance = new ToggleCard(toggleMode);
+    ToggleCard* instance = new ToggleCard(toggleModeLeftRight, toggleModeUpDown);
 
     instance->autorelease();
 
     return instance;
 }
 
-ToggleCard::ToggleCard(ToggleMode toggleMode)
+ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDown toggleModeUpDown)
 {
     this->autoCard = AutoCard::create();
 	this->upToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowUp, UIResources::Menus_Buttons_ArrowUpSelected);
 	this->downToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowDown, UIResources::Menus_Buttons_ArrowDownSelected);
-	this->leftToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowLeft, UIResources::Menus_Buttons_ArrowLeftSelected);
-	this->rightToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowRight, UIResources::Menus_Buttons_ArrowRightSelected);
+    this->toggleModeLeftRight = toggleModeLeftRight;
+    this->toggleModeUpDown = toggleModeUpDown;
     this->onToggleChange = nullptr;
-
-    switch(toggleMode)
-    {
-        default:
-        case ToggleMode::Hidden:
-        {
-            this->upToggle->setVisible(false);
-            this->downToggle->setVisible(false);
-            this->leftToggle->setVisible(false);
-            this->rightToggle->setVisible(false);
-            break;
-        }
-        case ToggleMode::LeftRight:
-        {
-            this->upToggle->setVisible(false);
-            this->downToggle->setVisible(false);
-            break;
-        }
-        case ToggleMode::UpDown:
-        {
-            this->leftToggle->setVisible(false);
-            this->rightToggle->setVisible(false);
-            break;
-        }
-    }
 
     this->addChild(this->upToggle);
     this->addChild(this->downToggle);
@@ -68,30 +43,66 @@ ToggleCard::~ToggleCard()
 void ToggleCard::onEnter()
 {
     super::onEnter();
+
+    switch(this->toggleModeLeftRight)
+    {
+        case ToggleModeLeftRight::Hidden:
+        {
+            this->leftToggle->setVisible(false);
+            this->rightToggle->setVisible(false);
+            break;
+        }
+        default:
+        case ToggleModeLeftRight::LeftRight:
+        {
+            break;
+        }
+    }
+    
+    switch(this->toggleModeUpDown)
+    {
+        case ToggleModeUpDown::Hidden:
+        {
+            this->upToggle->setVisible(false);
+            this->downToggle->setVisible(false);
+            return;
+        }
+        default:
+        case ToggleModeUpDown::BinDecHex:
+        case ToggleModeUpDown::BinDec:
+        case ToggleModeUpDown::DecHex:
+        case ToggleModeUpDown::HexBin:
+        {
+            this->upToggle->setVisible(true);
+            this->downToggle->setVisible(true);
+
+            break;
+        }
+    }
 }
 
 void ToggleCard::initializeListeners()
 {
     super::initializeListeners();
 
-    this->upToggle->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
-    {
-        this->toggleNext();
-    });
-
     this->rightToggle->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
     {
-        this->toggleNext();
+        this->toggleNextValue();
     });
 
     this->leftToggle->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
     {
-        this->togglePrevious();
+        this->togglePreviousValue();
+    });
+
+    this->upToggle->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+    {
+        this->toggleNextDisplayType();
     });
 
     this->downToggle->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
     {
-        this->togglePrevious();
+        this->togglePreviousDisplayType();
     });
 }
 
@@ -99,8 +110,8 @@ void ToggleCard::initializePositions()
 {
     super::initializePositions();
 
-    this->upToggle->setPosition(Vec2(0.0f, 160.0f));
-    this->downToggle->setPosition(Vec2(0.0f, -160.0f));
+    this->upToggle->setPosition(Vec2(0.0f, 144.0f));
+    this->downToggle->setPosition(Vec2(0.0f, -144.0f));
     this->leftToggle->setPosition(Vec2(-112.0f, 0.0f));
     this->rightToggle->setPosition(Vec2(112.0f, 0.0f));
 }
@@ -110,7 +121,7 @@ void ToggleCard::setToggleCallback(std::function<void()> onToggleChange)
     this->onToggleChange = onToggleChange;
 }
 
-void ToggleCard::toggleNext()
+void ToggleCard::toggleNextValue()
 {
     this->autoCard->incrementAttack();
 
@@ -120,12 +131,198 @@ void ToggleCard::toggleNext()
     }
 }
 
-void ToggleCard::togglePrevious()
+void ToggleCard::togglePreviousValue()
 {
     this->autoCard->decrementAttack();
 
     if (this->onToggleChange != nullptr)
     {
         this->onToggleChange();
+    }
+}
+
+void ToggleCard::toggleNextDisplayType()
+{
+    switch(this->toggleModeUpDown)
+    {
+        default:
+        case ToggleModeUpDown::Hidden:
+        {
+            return;
+        }
+        case ToggleModeUpDown::BinDecHex:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Binary:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+                    break;
+                }
+                case AutoCard::DisplayType::Decimal:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Hex);
+                    break;
+                }
+                case AutoCard::DisplayType::Hex:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Binary);
+                    break;
+                }
+            }
+
+            break;
+        }
+        case ToggleModeUpDown::BinDec:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Binary:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+                    break;
+                }
+                case AutoCard::DisplayType::Decimal:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Binary);
+                    break;
+                }
+            }
+
+            break;
+        }
+        case ToggleModeUpDown::DecHex:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Decimal:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Hex);
+                    break;
+                }
+                case AutoCard::DisplayType::Hex:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+                    break;
+                }
+            }
+
+            break;
+        }
+        case ToggleModeUpDown::HexBin:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Hex:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Binary);
+                    break;
+                }
+                case AutoCard::DisplayType::Binary:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Hex);
+                    break;
+                }
+            }
+
+            break;
+        }
+    }
+}
+
+void ToggleCard::togglePreviousDisplayType()
+{
+    switch(this->toggleModeUpDown)
+    {
+        default:
+        case ToggleModeUpDown::Hidden:
+        {
+            return;
+        }
+        case ToggleModeUpDown::BinDecHex:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Binary:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Hex);
+                    break;
+                }
+                case AutoCard::DisplayType::Decimal:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Binary);
+                    break;
+                }
+                case AutoCard::DisplayType::Hex:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+                    break;
+                }
+            }
+
+            break;
+        }
+        case ToggleModeUpDown::BinDec:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Binary:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+                    break;
+                }
+                case AutoCard::DisplayType::Decimal:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Binary);
+                    break;
+                }
+            }
+
+            break;
+        }
+        case ToggleModeUpDown::DecHex:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Decimal:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Hex);
+                    break;
+                }
+                case AutoCard::DisplayType::Hex:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+                    break;
+                }
+            }
+
+            break;
+        }
+        case ToggleModeUpDown::HexBin:
+        {
+            switch(this->autoCard->getDisplayType())
+            {
+                default:
+                case AutoCard::DisplayType::Hex:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Binary);
+                    break;
+                }
+                case AutoCard::DisplayType::Binary:
+                {
+                    this->autoCard->setDisplayType(AutoCard::DisplayType::Hex);
+                    break;
+                }
+            }
+
+            break;
+        }
     }
 }
