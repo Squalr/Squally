@@ -25,7 +25,7 @@ GameHud::GameHud()
 	this->currencyDisplay = CurrencyDisplay::create();
 	this->runeBar = RuneBar::create();
 	this->statsBars = StatsBars::create();
-	this->controlsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create("WASD/Space to move, TAB to view assembly. Demo build!"));
+	this->controlsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(""));
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->controlsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
