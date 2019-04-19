@@ -78,7 +78,7 @@ void RolHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCard->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCard->setToggleAttackCallback([=](){ this->resetAnimation(); });
 }
 
 void RolHelpMenu::open()

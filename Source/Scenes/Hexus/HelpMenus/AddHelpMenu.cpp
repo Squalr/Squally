@@ -18,6 +18,7 @@
 #include "Resources/HexusResources.h"
 
 #include "Strings/Hexus/CardDescriptionsLong/Addition.h"
+#include "Strings/Hexus/Cards/Effects/Overflow.h"
 
 using namespace cocos2d;
 
@@ -45,6 +46,7 @@ AddHelpMenu::AddHelpMenu()
 	this->animatedLabelB = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, this->animatedLabelBValue);
 	this->animatedLabelCValue = ConstantString::create();
 	this->animatedLabelC = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, this->animatedLabelCValue);
+	this->decimalOverflowSubtraction = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, ConstantString::create("-16"));
 
 	this->description->enableOutline(Color4B::BLACK, 2);
 	this->description->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -52,6 +54,8 @@ AddHelpMenu::AddHelpMenu()
 	this->animatedLabelA->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelB->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelC->enableOutline(Color4B::BLACK, 3);
+	this->decimalOverflowSubtraction->enableOutline(Color4B::BLACK, 3);
+	this->decimalOverflowSubtraction->setColor(Color3B::RED);
 
 	this->andCard->reveal();
 	this->andCard->disableInteraction();
@@ -73,6 +77,7 @@ AddHelpMenu::AddHelpMenu()
 	this->addChild(this->animatedLabelA);
 	this->addChild(this->animatedLabelB);
 	this->addChild(this->animatedLabelC);
+	this->addChild(this->decimalOverflowSubtraction);
 }
 
 AddHelpMenu::~AddHelpMenu()
@@ -106,8 +111,20 @@ void AddHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCardA->setToggleCallback([=](){ this->resetAnimation(); });
-	this->previewCardB->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCardA->setToggleAttackCallback([=](){ this->resetAnimation(); });
+	this->previewCardB->setToggleAttackCallback([=](){ this->resetAnimation(); });
+
+	this->previewCardA->setToggleDisplayTypeCallback([=]()
+	{
+		this->previewCardB->setDisplayType(this->previewCardA->autoCard->getDisplayType(), false);
+		this->resetAnimation();
+	});
+
+	this->previewCardB->setToggleDisplayTypeCallback([=]()
+	{
+		this->previewCardA->setDisplayType(this->previewCardB->autoCard->getDisplayType(), false);
+		this->resetAnimation();
+	});
 }
 
 void AddHelpMenu::open()
@@ -124,6 +141,7 @@ void AddHelpMenu::resetAnimation()
 	this->animatedLabelA->setOpacity(0);
 	this->animatedLabelB->setOpacity(0);
 	this->animatedLabelC->setOpacity(0);
+	this->decimalOverflowSubtraction->setOpacity(0);
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
@@ -140,113 +158,165 @@ void AddHelpMenu::runAnimationLoop()
 	this->initializePositions();
 	
 	this->previewCardB->autoCard->activeCard->clearOperations();
-	
-	this->animatedLabelAValue->setString(std::to_string(this->previewCardA->autoCard->getAttack()));
-	this->animatedLabelBValue->setString(std::to_string(this->previewCardB->autoCard->getAttack()));
-	this->animatedLabelCValue->setString(std::to_string(0));
 
-	/*
-	this->animatedLabelA->getLetter(0)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelA->getLetter(1)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelA->getLetter(2)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelA->getLetter(3)->runAction(FadeTo::create(0.25f, 255));
+	this->animatedLabelAValue->setString(HackUtils::toBinary4(this->previewCardA->autoCard->getAttack()));
+	this->animatedLabelBValue->setString(HackUtils::toBinary4(this->previewCardB->autoCard->getAttack()));
+	this->animatedLabelCValue->setString(HackUtils::toBinary4(0));
 
-	this->animatedLabelB->getLetter(0)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelB->getLetter(1)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelB->getLetter(2)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelB->getLetter(3)->runAction(FadeTo::create(0.25f, 255));
-
-	this->animatedLabelC->getLetter(0)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelC->getLetter(1)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelC->getLetter(2)->runAction(FadeTo::create(0.25f, 255));
-	this->animatedLabelC->getLetter(3)->runAction(FadeTo::create(0.25f, 255));
+	for (int index = 0; index < 4; index++)
+	{
+		this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 255));
+		this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 255));
+		this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.25f, 255));
+		this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
+		this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
+		this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
+	}
 	
 	// Restore opacity altered by resetting animation
 	this->animatedLabelA->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelB->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelC->runAction(FadeTo::create(0.25f, 255));
+	this->decimalOverflowSubtraction->setOpacity(0);
 
-	for (int index = 0; index < 4; index++)
+	switch(this->previewCardA->autoCard->getDisplayType())
 	{
-		if (this->animatedLabelAValue->getString()[index] == '0')
+		default:
+		case AutoCard::DisplayType::Decimal:
 		{
-			this->animatedLabelA->getLetter(index)->setColor(Color3B::GRAY);
-		}
-		else
-		{
-			this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
-		}
-		
-		if (this->animatedLabelBValue->getString()[index] == '0')
-		{
-			this->animatedLabelB->getLetter(index)->setColor(Color3B::GRAY);
-		}
-		else
-		{
-			this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
-		}
+			// Override w/ decimal values instead (we do this after binary so that the code above can reset opacity and color of all letters)
+			this->animatedLabelAValue->setString(std::to_string(this->previewCardA->autoCard->getAttack()));
+			this->animatedLabelBValue->setString(std::to_string(this->previewCardB->autoCard->getAttack()));
+			this->animatedLabelCValue->setString(std::to_string(0));
 
-		if (this->animatedLabelCValue->getString()[index] == '0')
-		{
-			this->animatedLabelC->getLetter(index)->setColor(Color3B::GRAY);
-		}
-		else
-		{
-			this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
-		}
-	}
-	*/
+			int attackSum = this->previewCardA->autoCard->getAttack() + this->previewCardB->autoCard->getAttack();
 
-	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
-		CallFunc::create([=]()
+			this->runAction(Sequence::create(
+				DelayTime::create(1.0f),
+				CallFunc::create([=]()
+				{
+					// Phase 1: Run card ord animation
+					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
+					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
+
+					// Set sum label, including possible overflow
+					this->animatedLabelCValue->setString(std::to_string(attackSum));
+
+					if (attackSum >= 16)
+					{
+						this->animatedLabelC->setColor(Color3B::RED);
+						this->previewCardB->autoCard->activeCard->runOverflowEffect();
+					}
+				}),
+				DelayTime::create(attackSum >= 16 ? 1.5f : 0.0f),
+				CallFunc::create([=]()
+				{
+					if (attackSum >= 16)
+					{
+						this->animatedLabelCValue->setString(std::to_string(attackSum - 16));
+						this->animatedLabelC->setColor(Color3B::WHITE);
+
+						this->decimalOverflowSubtraction->setPosition(this->animatedLabelC->getPosition() + Vec2(0.0f, 32.0f));
+						this->decimalOverflowSubtraction->setOpacity(255);
+						this->decimalOverflowSubtraction->runAction(FadeTo::create(0.75f, 0));
+						this->decimalOverflowSubtraction->runAction(MoveBy::create(0.75f, Vec2(0.0f, 64.0f)));
+					}
+				}),
+				DelayTime::create(2.5f),
+				CallFunc::create([=]()
+				{
+					this->runAnimationLoop();
+				}),
+				nullptr
+			));
+
+			break;
+		}
+		case AutoCard::DisplayType::Binary:
 		{
-			// Phase 1: Run card ord animation
-			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
-			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
-		}),
-		/*
-		DelayTime::create(1.5f),
-		CallFunc::create([=]()
-		{
-			// Phase 2, fade out all 0s, color all invalid 1s
 			for (int index = 0; index < 4; index++)
 			{
 				if (this->animatedLabelAValue->getString()[index] == '0')
 				{
-					this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+					this->animatedLabelA->getLetter(index)->setColor(Color3B::GRAY);
 				}
-
+				else
+				{
+					this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
+				}
+				
 				if (this->animatedLabelBValue->getString()[index] == '0')
 				{
-					this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+					this->animatedLabelB->getLetter(index)->setColor(Color3B::GRAY);
 				}
-			}
-		}),
-		DelayTime::create(1.5f),
-		CallFunc::create([=]()
-		{
-			// Phase 3: move all single 1's to their places
-			for (int index = 0; index < 4; index++)
-			{
-				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '0')
+				else
 				{
-					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f * 2.0f)));
-					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+					this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
 				}
 
-				if (this->animatedLabelBValue->getString()[index] == '1' && this->animatedLabelAValue->getString()[index] == '0')
+				if (this->animatedLabelCValue->getString()[index] == '0')
 				{
-					this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f)));
-					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+					this->animatedLabelC->getLetter(index)->setColor(Color3B::GRAY);
+				}
+				else
+				{
+					this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
 				}
 			}
-		}),*/
-		DelayTime::create(2.5f),
-		CallFunc::create([=]()
-		{
-			this->runAnimationLoop();
-		}),
-		nullptr
-	));
+
+			this->runAction(Sequence::create(
+				DelayTime::create(1.0f),
+				CallFunc::create([=]()
+				{
+					// Phase 1: Run card ord animation
+					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
+					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
+				}),
+				
+				DelayTime::create(1.5f),
+				CallFunc::create([=]()
+				{
+					// Phase 2, fade out all 0s, color all invalid 1s
+					for (int index = 0; index < 4; index++)
+					{
+						if (this->animatedLabelAValue->getString()[index] == '0')
+						{
+							this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+						}
+
+						if (this->animatedLabelBValue->getString()[index] == '0')
+						{
+							this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+						}
+					}
+				}),
+				DelayTime::create(1.5f),
+				CallFunc::create([=]()
+				{
+					// Phase 3: move all single 1's to their places
+					for (int index = 0; index < 4; index++)
+					{
+						if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '0')
+						{
+							this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f * 2.0f)));
+							this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+						}
+
+						if (this->animatedLabelBValue->getString()[index] == '1' && this->animatedLabelAValue->getString()[index] == '0')
+						{
+							this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f)));
+							this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+						}
+					}
+				}),
+				DelayTime::create(2.5f),
+				CallFunc::create([=]()
+				{
+					this->runAnimationLoop();
+				}),
+				nullptr
+			));
+			break;
+		}
+	}
 }

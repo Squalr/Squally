@@ -78,7 +78,7 @@ void NotHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCard->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCard->setToggleAttackCallback([=](){ this->resetAnimation(); });
 }
 
 void NotHelpMenu::open()

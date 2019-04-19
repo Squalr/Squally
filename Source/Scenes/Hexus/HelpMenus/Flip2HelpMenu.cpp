@@ -78,7 +78,7 @@ void Flip2HelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCard->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCard->setToggleAttackCallback([=](){ this->resetAnimation(); });
 }
 
 void Flip2HelpMenu::open()

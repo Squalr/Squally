@@ -84,7 +84,7 @@ void ShrHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCard->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCard->setToggleAttackCallback([=](){ this->resetAnimation(); });
 }
 
 void ShrHelpMenu::open()
