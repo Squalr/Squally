@@ -208,7 +208,7 @@ void AddHelpMenu::runAnimationLoop()
 						this->previewCardB->autoCard->activeCard->runOverflowEffect();
 					}
 				}),
-				DelayTime::create(attackSum >= 16 ? 1.5f : 0.0f),
+				DelayTime::create(attackSum >= 16 ? 1.0f : 0.0f),
 				CallFunc::create([=]()
 				{
 					if (attackSum >= 16)
@@ -306,6 +306,74 @@ void AddHelpMenu::runAnimationLoop()
 						{
 							this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f)));
 							this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+						}
+					}
+				}),
+				DelayTime::create(1.5f),
+				CallFunc::create([=]()
+				{
+					// Phase 4: move all double 1's to their places
+					for (int index = 0; index < 4; index++)
+					{
+						if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
+						{
+							this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f * 2.0f)));
+							this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f)));
+							this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+						}
+					}
+				}),
+				DelayTime::create(1.0f),
+				CallFunc::create([=]()
+				{
+					// Phase 5: cascade double 1's into 2s
+					for (int index = 0; index < 4; index++)
+					{
+						if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
+						{
+							this->animatedLabelA->getLetter(index)->setOpacity(0);
+							this->animatedLabelB->getLetter(index)->setOpacity(0);
+
+							std::string cascadeString = this->animatedLabelCValue->getString();
+							cascadeString[index] = '2';
+
+							this->animatedLabelCValue->setString(cascadeString);
+							this->animatedLabelC->getLetter(index)->setOpacity(255);
+							this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
+						}
+					}
+				}),
+				DelayTime::create(1.0f),
+				CallFunc::create([=]()
+				{
+					// Phase 6: set up carries
+					static Vec2* cachedPositions = new Vec2[4];
+					static bool* cachedCarries = new bool[4];
+					std::string splitString = this->animatedLabelAValue->getString();
+
+					for (int index = 0; index < 4; index++)
+					{
+						cachedCarries[index] = false;
+						
+						if (this->animatedLabelCValue->getString()[index] == '2')
+						{
+							cachedCarries[index] = true;
+							splitString[index] = '0';
+							cachedPositions[index] = this->animatedLabelA->getLetter(index)->getPosition();
+
+							this->animatedLabelA->getLetter(index)->setOpacity(255);
+							this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
+						}
+					}
+
+					this->animatedLabelCValue->setString(splitString);
+					
+					for (int index = 0; index < 4; index++)
+					{
+						if (cachedCarries[index])
+						{
+							this->animatedLabelA->getLetter(index)->setPosition(cachedPositions[index]);
+							this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(-44.0f, 64.0f)));
 						}
 					}
 				}),
