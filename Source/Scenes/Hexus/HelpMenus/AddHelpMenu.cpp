@@ -1,4 +1,4 @@
-#include "XorHelpMenu.h"
+#include "AddHelpMenu.h"
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -17,25 +17,25 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/CardDescriptionsLong/LogicalXor.h"
+#include "Strings/Hexus/CardDescriptionsLong/Addition.h"
 
 using namespace cocos2d;
 
-XorHelpMenu* XorHelpMenu::create()
+AddHelpMenu* AddHelpMenu::create()
 {
-	XorHelpMenu* instance = new XorHelpMenu();
+	AddHelpMenu* instance = new AddHelpMenu();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-XorHelpMenu::XorHelpMenu()
+AddHelpMenu::AddHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_LogicalXor::create(), Size(1200.0f, 0.0f));
-	this->xorCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor));
-	this->previewCardA = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
-	this->previewCardB = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Addition::create(), Size(1200.0f, 0.0f));
+	this->andCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Addition));
+	this->previewCardA = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight, ToggleCard::ToggleModeUpDown::BinDec);
+	this->previewCardB = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight, ToggleCard::ToggleModeUpDown::BinDec);
 	this->attackFrameA = Sprite::create(HexusResources::HelperTextFrame);
 	this->attackFrameB = Sprite::create(HexusResources::HelperTextFrame);
 	this->attackFrameC = Sprite::create(HexusResources::HelperTextFrame);
@@ -48,21 +48,23 @@ XorHelpMenu::XorHelpMenu()
 
 	this->description->enableOutline(Color4B::BLACK, 2);
 	this->description->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->xorCard->setScale(1.0f);
+	this->andCard->setScale(1.0f);
 	this->animatedLabelA->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelB->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelC->enableOutline(Color4B::BLACK, 3);
 
-	this->xorCard->reveal();
-	this->xorCard->disableInteraction();
+	this->andCard->reveal();
+	this->andCard->disableInteraction();
 	this->previewCardA->autoCard->setCardScale(0.6f);
 	this->previewCardB->autoCard->setCardScale(0.6f);
+	this->previewCardA->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
+	this->previewCardB->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
 
 	this->previewCardA->autoCard->setAttack(5);
 	this->previewCardB->autoCard->setAttack(3);
 
 	this->addChild(this->description);
-	this->addChild(this->xorCard);
+	this->addChild(this->andCard);
 	this->addChild(this->previewCardA);
 	this->addChild(this->previewCardB);
 	this->addChild(this->attackFrameA);
@@ -73,20 +75,20 @@ XorHelpMenu::XorHelpMenu()
 	this->addChild(this->animatedLabelC);
 }
 
-XorHelpMenu::~XorHelpMenu()
+AddHelpMenu::~AddHelpMenu()
 {
 }
 
-void XorHelpMenu::onEnter()
+void AddHelpMenu::onEnter()
 {
 	super::onEnter();
 }
 
-void XorHelpMenu::initializePositions()
+void AddHelpMenu::initializePositions()
 {
 	super::initializePositions();
 
-	const float offset = -64.0f;
+	const float offset = -80.0f;
 
 	this->description->setPosition(Vec2(-1234 / 2.0f + 16.0f, 420.0f));
 	this->attackFrameA->setPosition(Vec2(-196.0f, 144.0f + offset));
@@ -97,10 +99,10 @@ void XorHelpMenu::initializePositions()
 	this->animatedLabelC->setPosition(Vec2(-196.0f, -144.0f + offset));
 	this->previewCardA->setPosition(Vec2(-448.0f, 144.0f + offset));
 	this->previewCardB->setPosition(Vec2(64.0f, 0.0f + offset));
-	this->xorCard->setPosition(Vec2(356.0f, 0.0f));
+	this->andCard->setPosition(Vec2(356.0f, 0.0f));
 }
 
-void XorHelpMenu::initializeListeners()
+void AddHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -108,7 +110,7 @@ void XorHelpMenu::initializeListeners()
 	this->previewCardB->setToggleCallback([=](){ this->resetAnimation(); });
 }
 
-void XorHelpMenu::open()
+void AddHelpMenu::open()
 {
 	this->setVisible(true);
 
@@ -116,7 +118,7 @@ void XorHelpMenu::open()
 	this->runAnimationLoop();
 }
 
-void XorHelpMenu::resetAnimation()
+void AddHelpMenu::resetAnimation()
 {
 	this->stopAllActions();
 	this->animatedLabelA->setOpacity(0);
@@ -133,16 +135,17 @@ void XorHelpMenu::resetAnimation()
 	));
 }
 
-void XorHelpMenu::runAnimationLoop()
+void AddHelpMenu::runAnimationLoop()
 {
 	this->initializePositions();
 	
 	this->previewCardB->autoCard->activeCard->clearOperations();
 	
-	this->animatedLabelAValue->setString(HackUtils::toBinary4(this->previewCardA->autoCard->getAttack()));
-	this->animatedLabelBValue->setString(HackUtils::toBinary4(this->previewCardB->autoCard->getAttack()));
-	this->animatedLabelCValue->setString(HackUtils::toBinary4(0));
+	this->animatedLabelAValue->setString(std::to_string(this->previewCardA->autoCard->getAttack()));
+	this->animatedLabelBValue->setString(std::to_string(this->previewCardB->autoCard->getAttack()));
+	this->animatedLabelCValue->setString(std::to_string(0));
 
+	/*
 	this->animatedLabelA->getLetter(0)->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelA->getLetter(1)->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelA->getLetter(2)->runAction(FadeTo::create(0.25f, 255));
@@ -192,15 +195,17 @@ void XorHelpMenu::runAnimationLoop()
 			this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
 		}
 	}
+	*/
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			// Phase 1: Run card ord animation
-			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::XOR, this->previewCardA->autoCard->getAttack()));
-			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->xorCard->getCorrespondingCardEffect());
+			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
+			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
 		}),
+		/*
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
@@ -216,32 +221,27 @@ void XorHelpMenu::runAnimationLoop()
 				{
 					this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
 				}
-
-				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
-				{
-					this->animatedLabelA->getLetter(index)->runAction(TintTo::create(0.25f, Color3B::GRAY));
-					this->animatedLabelB->getLetter(index)->runAction(TintTo::create(0.25f, Color3B::GRAY));
-				}
 			}
 		}),
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			// Phase 3: move all 1s to their spot
+			// Phase 3: move all single 1's to their places
 			for (int index = 0; index < 4; index++)
 			{
-				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] != '1')
+				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '0')
 				{
 					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f * 2.0f)));
 					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
 				}
-				else if (this->animatedLabelBValue->getString()[index] == '1' && this->animatedLabelAValue->getString()[index] != '1')
+
+				if (this->animatedLabelBValue->getString()[index] == '1' && this->animatedLabelAValue->getString()[index] == '0')
 				{
 					this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f)));
 					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
 				}
 			}
-		}),
+		}),*/
 		DelayTime::create(2.5f),
 		CallFunc::create([=]()
 		{

@@ -7,6 +7,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/HelpMenus/AddHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/AndHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/BinDecHexHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/Flip1HelpMenu.h"
@@ -47,6 +48,7 @@ HelpMenuComponent::HelpMenuComponent()
     
     this->background = Sprite::create(HexusResources::StoreMenu_StoreBoard);
     this->textPanel = LayerColor::create(Color4B(0, 0, 0, 196), 1234, 196);
+    this->addHelpMenu = AddHelpMenu::create();
     this->andHelpMenu = AndHelpMenu::create();
     this->binDecHexHelpMenu = BinDecHexHelpMenu::create();
     this->flip1HelpMenu = Flip1HelpMenu::create();
@@ -65,6 +67,7 @@ HelpMenuComponent::HelpMenuComponent()
 
     this->addChild(this->background);
     this->addChild(this->textPanel);
+    this->addChild(this->addHelpMenu);
     this->addChild(this->andHelpMenu);
     this->addChild(this->binDecHexHelpMenu);
     this->addChild(this->flip1HelpMenu);
@@ -120,6 +123,7 @@ void HelpMenuComponent::setExitCallback(std::function<void()> onExit)
 void HelpMenuComponent::openMenu(Card* card)
 {
     this->setVisible(true);
+    this->addHelpMenu->setVisible(false);
     this->andHelpMenu->setVisible(false);
     this->binDecHexHelpMenu->setVisible(false);
     this->flip1HelpMenu->setVisible(false);
@@ -146,6 +150,11 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Hexidecimal:
         {
             this->binDecHexHelpMenu->open(card);
+            break;
+        }
+        case CardData::CardType::Special_ADD:
+        {
+            this->addHelpMenu->open();
             break;
         }
         case CardData::CardType::Special_AND:
