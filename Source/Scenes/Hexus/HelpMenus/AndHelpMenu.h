@@ -33,9 +33,16 @@ private:
 	void runAnimationLoop();
 
 	LocalizedLabel* description;
-	Card* notCard;
-	ToggleCard* previewCard;
-	cocos2d::Sprite* attackFrame;
-	LocalizedLabel* animatedLabel;
-	ConstantString* animatedLabelValue;
+	Card* andCard;
+	ToggleCard* previewCardA;
+	ToggleCard* previewCardB;
+	cocos2d::Sprite* attackFrameA;
+	cocos2d::Sprite* attackFrameB;
+	cocos2d::Sprite* attackFrameC;
+	LocalizedLabel* animatedLabelA;
+	ConstantString* animatedLabelAValue;
+	LocalizedLabel* animatedLabelB;
+	ConstantString* animatedLabelBValue;
+	LocalizedLabel* animatedLabelC;
+	ConstantString* animatedLabelCValue;
 };

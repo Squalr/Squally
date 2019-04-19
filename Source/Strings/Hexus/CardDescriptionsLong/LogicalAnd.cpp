@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringAr()
 	{
-		return "اختر واحدة من البطاقات الخاصة بك و AND مع بطاقة أخرى.";
+		return "AND واحدة من البطاقات الخاصة بك مع بطاقة الهدف. تحتفظ هذه العملية بجميع أزواج 1 بت من البطاقة المصدر والبطاقة المستهدفة ، وتتجاهل أي أجزاء أخرى. هذه العملية بشكل عام تجعل البطاقات أضعف.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringBg()
 	{
-		return "Изберете една от картите си и AND с друга карта.";
+		return "AND една от вашите карти с целева карта. Тази операция запазва всички двойки от 1 бита от картата на източника и картата-цел и отхвърля всички други битове. Тази операция обикновено прави картите по-слаби.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringCs()
 	{
-		return "Vyberte jednu z karet a AND ji s jinou kartou.";
+		return "AND jedna z vašich karet s cílovou kartou. Tato operace udržuje všechny páry 1 bitů ze zdrojové karty a cílové karty a zahodí všechny další bity. Tato operace obecně činí karty slabšími.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringDa()
 	{
-		return "Vælg et af dine kort og AND det med et andet kort.";
+		return "AND et af dine kort med et målkort. Denne operation holder alle par på 1 bit fra kildekortet og målkortet og kasserer eventuelle andre bits. Denne operation gør kortet generelt svagere.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringDe()
 	{
-		return "Wähle eine deiner Karten und AND mit einer anderen Karte.";
+		return "AND eine deiner Karten mit einer Zielkarte. Diese Operation hält alle Paare von 1 Bit von der Quellkarte und der Zielkarte und verwirft alle anderen Bits. Diese Operation macht Karten im Allgemeinen schwächer.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringEl()
 	{
-		return "Επιλέξτε μία από τις κάρτες σας και το AND με μια άλλη κάρτα.";
+		return "AND μία από τις κάρτες σας με μια κάρτα στόχου. Αυτή η λειτουργία διατηρεί όλα τα ζεύγη των 1 δυαδικών ψηφίων από την κάρτα πηγής και την κάρτα προορισμού και απορρίπτει οποιαδήποτε άλλα bits. Αυτή η λειτουργία γενικά καθιστά τις κάρτες πιο αδύνατες.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringEn()
 	{
-		return "Select one of your cards and AND it with another card.";
+		return "AND one of your cards with a target card. This operation keeps all pairs of 1 bits from the source card and the target card, and discards any other bits. This operation generally makes cards weaker.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringEs()
 	{
-		return "Seleccione una de sus tarjetas y AND con otra tarjeta.";
+		return "AND una de tus cartas con una carta objetivo. Esta operación mantiene todos los pares de 1 bits de la tarjeta de origen y la tarjeta de destino, y descarta cualquier otro bit. Esta operación generalmente hace que las cartas sean más débiles.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringEs419()
 	{
-		return "Seleccione una de sus tarjetas y AND con otra tarjeta.";
+		return "AND una de tus cartas con una carta objetivo. Esta operación mantiene todos los pares de 1 bits de la tarjeta de origen y la tarjeta de destino, y descarta cualquier otro bit. Esta operación generalmente hace que las cartas sean más débiles.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringFi()
 	{
-		return "Valitse yksi kortistasi ja AND se toisella kortilla.";
+		return "AND yksi kortista kohdekortilla. Tämä toimenpide pitää kaikki 1 bitin parit lähdekortilta ja kohdekortilta ja poistaa kaikki muut bitit. Tämä toimenpide tekee yleensä kortteja heikompia.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringFr()
 	{
-		return "Sélectionnez l'une de vos cartes et AND avec une autre carte.";
+		return "AND une de vos cartes avec une carte cible. Cette opération conserve toutes les paires de bits 1 de la carte source et de la carte cible et supprime tous les autres bits. Cette opération rend généralement les cartes plus faibles.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringHu()
 	{
-		return "Válasszon ki egy kártyát és AND-et egy másik kártyával.";
+		return "AND az egyik kártyája egy célkártyával. Ez a művelet megtartja az 1 bites párokat a forráskártyáról és a célkártyáról, és eldobja az összes többi bitet. Ez a művelet általában gyengébbé teszi a kártyákat.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringIt()
 	{
-		return "Seleziona una delle tue carte e AND con un'altra carta.";
+		return "AND una delle tue carte con una carta bersaglio. Questa operazione mantiene tutte le coppie di 1 bit dalla scheda sorgente e dalla scheda obiettivo e scarta qualsiasi altro bit. Questa operazione generalmente rende le carte più deboli.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringJa()
 	{
-		return "あなたのカードの1つを選び、別のカードとそれをANDする。";
+		return "あなたのカードの1枚を対象のカードとANDする。この操作では、ソースカードとターゲットカードのすべての1ビットペアが保持され、それ以外のビットは破棄されます。この操作は一般にカードを弱くします。";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringKo()
 	{
-		return "카드 중 하나를 선택하고 다른 카드로 AND하십시오.";
+		return "자신의 카드 중 하나를 대상 카드와 함께 AND로 가져옵니다. 이 작업은 소스 카드와 대상 카드의 모든 1 쌍의 비트를 유지하고 다른 비트는 무시합니다. 이 작업은 일반적으로 카드를 약하게 만듭니다.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringNl()
 	{
-		return "Selecteer een van je kaarten en AND met een andere kaart.";
+		return "AND een van je kaarten met een doelkaart. Met deze bewerking worden alle paren van 1 bits van de bronkaart en de doelkaart bewaard en worden alle andere bits verwijderd. Deze bewerking maakt kaarten over het algemeen zwakker.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringNo()
 	{
-		return "Velg ett av kortene dine og AND det med et annet kort.";
+		return "AND ett av kortene dine med et målkort. Denne operasjonen holder alle par på 1 bit fra kildekortet og målkortet, og kasserer eventuelle andre biter. Denne operasjonen gjør kortene generelt svakere.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringPl()
 	{
-		return "Wybierz jedną ze swoich kart i AND z inną kartą.";
+		return "AND jedna z twoich kart z kartą docelową. Ta operacja utrzymuje wszystkie pary 1 bitów z karty źródłowej i karty docelowej i odrzuca wszystkie inne bity. Ta operacja sprawia, że ​​karty są słabsze.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringPt()
 	{
-		return "Selecione um dos seus cartões e AND com outro cartão.";
+		return "AND um dos seus cartões com um cartão de destino. Essa operação mantém todos os pares de 1 bits da placa de origem e da placa de destino e descarta quaisquer outros bits. Esta operação geralmente torna os cartões mais fracos.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringPtBr()
 	{
-		return "Selecione um dos seus cartões e AND com outro cartão.";
+		return "AND um dos seus cartões com um cartão de destino. Essa operação mantém todos os pares de 1 bits da placa de origem e da placa de destino e descarta quaisquer outros bits. Esta operação geralmente torna os cartões mais fracos.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringRo()
 	{
-		return "Selectați una dintre cărțile dvs. și AND-o cu un alt card.";
+		return "AND una dintre cărțile dvs. cu un card țintă. Această operație păstrează toate perechile de 1 biți de pe cardul sursă și cardul țintă și elimină orice alte biți. Această operație face cardurile mai slabe.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringRu()
 	{
-		return "Выберите одну из своих карт и AND ее с другой картой.";
+		return "AND одна из ваших карт с целевой картой. Эта операция удерживает все пары 1 бит из исходной карты и целевой карты и удаляет все остальные биты. Эта операция обычно делает карты слабее.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringSv()
 	{
-		return "Välj ett av dina kort och AND det med ett annat kort.";
+		return "AND ett av dina kort med ett målkort. Denna operation håller alla par på 1 bitar från källkorts- och målkortet och kasserar alla andra bitar. Denna operation gör i allmänhet kort svagare.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringTh()
 	{
-		return "เลือกหนึ่งในการ์ดของคุณและ AND กับการ์ดอื่น";
+		return "AND หนึ่งในการ์ดของคุณที่มีการ์ดเป้าหมาย การดำเนินการนี้จะเก็บ 1 บิตทั้งหมดจากการ์ดต้นทางและการ์ดเป้าหมายและทิ้งบิตอื่น ๆ การดำเนินการนี้โดยทั่วไปทำให้การ์ดอ่อนลง";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringTr()
 	{
-		return "Kartlarınızdan birini seçin ve başka bir kartla AND.";
+		return "Hedef kartla kartlarınızdan birini AND. Bu işlem tüm 1 bit çiftlerini kaynak karttan ve hedef karttan tutar ve diğer bitleri atar. Bu işlem genellikle kartları zayıflatır.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringUk()
 	{
-		return "Виберіть одну зі своїх карт і AND іншою карткою.";
+		return "AND одну з ваших карт з цільовою карткою. Ця операція зберігає всі пари 1 біт з вихідної карти і цільової карти, і відкидає будь-які інші біти. Ця операція зазвичай робить карти слабшими.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringVi()
 	{
-		return "Chọn một trong các thẻ của bạn và AND nó với một thẻ khác.";
+		return "AND một trong những thẻ của bạn với một thẻ mục tiêu. Thao tác này giữ tất cả các cặp 1 bit từ thẻ nguồn và thẻ đích và loại bỏ mọi bit khác. Hoạt động này thường làm cho thẻ yếu hơn.";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringZhCn()
 	{
-		return "选择一张卡片，用另一张卡片选择AND。";
+		return "AND其中一张带有目标卡的卡片。此操作保留源卡和目标卡的所有1位对，并丢弃任何其他位。此操作通常会使卡片变弱。";
 	}
 
 	std::string Hexus_CardDescriptionsLong_LogicalAnd::getStringZhTw()
 	{
-		return "選擇一張卡片，用另一張卡片選擇AND。";
+		return "AND其中一張帶有目標卡的卡片。此操作保留源卡和目標卡的所有1位對，並丟棄任何其他位。此操作通常會使卡片變弱。";
 	}
 }
