@@ -99,8 +99,8 @@ void ToggleCard::initializePositions()
 {
     super::initializePositions();
 
-    this->upToggle->setPosition(Vec2(0.0f, -160.0f));
-    this->downToggle->setPosition(Vec2(0.0f, 160.0f));
+    this->upToggle->setPosition(Vec2(0.0f, 160.0f));
+    this->downToggle->setPosition(Vec2(0.0f, -160.0f));
     this->leftToggle->setPosition(Vec2(-112.0f, 0.0f));
     this->rightToggle->setPosition(Vec2(112.0f, 0.0f));
 }
