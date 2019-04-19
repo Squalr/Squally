@@ -34,8 +34,8 @@ OrHelpMenu::OrHelpMenu()
 {
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_LogicalOr::create(), Size(1200.0f, 0.0f));
 	this->orCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr));
-	this->previewCardA = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
-	this->previewCardB = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
+	this->previewCardA = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
+	this->previewCardB = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->attackFrameA = Sprite::create(HexusResources::HelperTextFrame);
 	this->attackFrameB = Sprite::create(HexusResources::HelperTextFrame);
 	this->attackFrameC = Sprite::create(HexusResources::HelperTextFrame);

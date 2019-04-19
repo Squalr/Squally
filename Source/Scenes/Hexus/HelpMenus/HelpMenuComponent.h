@@ -8,6 +8,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class AddHelpMenu;
 class AndHelpMenu;
 class BinDecHexHelpMenu;
 class Card;
@@ -45,6 +46,7 @@ private:
 	cocos2d::Sprite* background;
 	cocos2d::LayerColor* textPanel;
 	ClickableNode* exitButton;
+	AddHelpMenu* addHelpMenu;
 	AndHelpMenu* andHelpMenu;
 	BinDecHexHelpMenu* binDecHexHelpMenu;
 	Flip1HelpMenu* flip1HelpMenu;

@@ -22,6 +22,7 @@ public:
 	void setAttack(int attack);
 	int getAttack();
 	void setDisplayType(DisplayType displayType);
+	DisplayType getDisplayType();
 	void setCardScale(float cardScale);
 
 	Card* activeCard;

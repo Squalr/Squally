@@ -34,7 +34,7 @@ Flip1HelpMenu::Flip1HelpMenu()
 {
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Flip1::create(), Size(1200.0f, 0.0f));
 	this->flip1Card = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Flip1));
-	this->previewCard = ToggleCard::create(ToggleCard::ToggleMode::LeftRight);
+	this->previewCard = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);
 	this->animatedLabelValue = ConstantString::create();
 	this->animatedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, this->animatedLabelValue);
