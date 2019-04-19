@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
+#include "Scenes/Hexus/HelpMenus/AutoCard.h"
 
-class AutoCard;
 class ClickableNode;
 
 class ToggleCard : public SmartNode
@@ -25,9 +25,11 @@ public:
 
 	static ToggleCard* create(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown = ToggleModeUpDown::Hidden);
 
-	void setToggleCallback(std::function<void()> onToggleChange);
+	void setToggleAttackCallback(std::function<void()> onToggleAttackChange);
+	void setToggleDisplayTypeCallback(std::function<void()> onToggleDisplayTypeChange);
 	void toggleNextValue();
 	void togglePreviousValue();
+	void setDisplayType(AutoCard::DisplayType displayType, bool triggerCallback = true);
 	void toggleNextDisplayType();
 	void togglePreviousDisplayType();
 
@@ -51,5 +53,6 @@ private:
 	ClickableNode* downToggle;
 	ClickableNode* leftToggle;
 	ClickableNode* rightToggle;
-	std::function<void()> onToggleChange;
+	std::function<void()> onToggleAttackChange;
+	std::function<void()> onToggleDisplayTypeChange;
 };

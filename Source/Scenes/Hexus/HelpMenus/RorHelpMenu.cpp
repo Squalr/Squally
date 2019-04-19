@@ -78,7 +78,7 @@ void RorHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCard->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCard->setToggleAttackCallback([=](){ this->resetAnimation(); });
 }
 
 void RorHelpMenu::open()

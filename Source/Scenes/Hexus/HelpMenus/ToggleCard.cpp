@@ -5,7 +5,6 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/HelpMenus/AutoCard.h"
 
 #include "Resources/UIResources.h"
 
@@ -25,9 +24,11 @@ ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDow
     this->autoCard = AutoCard::create();
 	this->upToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowUp, UIResources::Menus_Buttons_ArrowUpSelected);
 	this->downToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowDown, UIResources::Menus_Buttons_ArrowDownSelected);
+	this->leftToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowLeft, UIResources::Menus_Buttons_ArrowLeftSelected);
+	this->rightToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowRight, UIResources::Menus_Buttons_ArrowRightSelected);
     this->toggleModeLeftRight = toggleModeLeftRight;
     this->toggleModeUpDown = toggleModeUpDown;
-    this->onToggleChange = nullptr;
+    this->onToggleAttackChange = nullptr;
 
     this->addChild(this->upToggle);
     this->addChild(this->downToggle);
@@ -116,18 +117,36 @@ void ToggleCard::initializePositions()
     this->rightToggle->setPosition(Vec2(112.0f, 0.0f));
 }
 
-void ToggleCard::setToggleCallback(std::function<void()> onToggleChange)
+void ToggleCard::setToggleAttackCallback(std::function<void()> onToggleAttackChange)
 {
-    this->onToggleChange = onToggleChange;
+    this->onToggleAttackChange = onToggleAttackChange;
+}
+
+void ToggleCard::setToggleDisplayTypeCallback(std::function<void()> onToggleDisplayTypeChange)
+{
+    this->onToggleDisplayTypeChange = onToggleDisplayTypeChange;
+}
+
+void ToggleCard::setDisplayType(AutoCard::DisplayType displayType, bool triggerCallback)
+{
+    this->autoCard->setDisplayType(displayType);
+
+    if (triggerCallback)
+    {
+        if (this->onToggleDisplayTypeChange != nullptr)
+        {
+            this->onToggleDisplayTypeChange();
+        }
+    }
 }
 
 void ToggleCard::toggleNextValue()
 {
     this->autoCard->incrementAttack();
 
-    if (this->onToggleChange != nullptr)
+    if (this->onToggleAttackChange != nullptr)
     {
-        this->onToggleChange();
+        this->onToggleAttackChange();
     }
 }
 
@@ -135,9 +154,9 @@ void ToggleCard::togglePreviousValue()
 {
     this->autoCard->decrementAttack();
 
-    if (this->onToggleChange != nullptr)
+    if (this->onToggleAttackChange != nullptr)
     {
-        this->onToggleChange();
+        this->onToggleAttackChange();
     }
 }
 
@@ -232,6 +251,11 @@ void ToggleCard::toggleNextDisplayType()
             break;
         }
     }
+
+    if (this->onToggleDisplayTypeChange != nullptr)
+    {
+        this->onToggleDisplayTypeChange();
+    }
 }
 
 void ToggleCard::togglePreviousDisplayType()
@@ -324,5 +348,10 @@ void ToggleCard::togglePreviousDisplayType()
 
             break;
         }
+    }
+
+    if (this->onToggleDisplayTypeChange != nullptr)
+    {
+        this->onToggleDisplayTypeChange();
     }
 }

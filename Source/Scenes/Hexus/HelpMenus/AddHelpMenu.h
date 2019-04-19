@@ -45,4 +45,5 @@ private:
 	ConstantString* animatedLabelBValue;
 	LocalizedLabel* animatedLabelC;
 	ConstantString* animatedLabelCValue;
+	LocalizedLabel* decimalOverflowSubtraction;
 };

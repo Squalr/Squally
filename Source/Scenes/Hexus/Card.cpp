@@ -116,8 +116,8 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 
 	this->cardString = ConstantString::create();
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Generics_Constant::create());
-	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Overflow::create());
-	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Underflow::create());
+	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Overflow::create());
+	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Underflow::create());
 
 	this->overflowLabel->enableOutline(Color4B::BLACK, 4);
 	this->underflowLabel->enableOutline(Color4B::BLACK, 4);

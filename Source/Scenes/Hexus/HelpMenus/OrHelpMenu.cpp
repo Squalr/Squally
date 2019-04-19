@@ -104,8 +104,8 @@ void OrHelpMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewCardA->setToggleCallback([=](){ this->resetAnimation(); });
-	this->previewCardB->setToggleCallback([=](){ this->resetAnimation(); });
+	this->previewCardA->setToggleAttackCallback([=](){ this->resetAnimation(); });
+	this->previewCardB->setToggleAttackCallback([=](){ this->resetAnimation(); });
 }
 
 void OrHelpMenu::open()
