@@ -46,6 +46,8 @@ AddHelpMenu::AddHelpMenu()
 	this->animatedLabelB = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, this->animatedLabelBValue);
 	this->animatedLabelCValue = ConstantString::create();
 	this->animatedLabelC = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, this->animatedLabelCValue);
+	this->carryLabelValue = ConstantString::create();
+	this->carryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, this->carryLabelValue);
 	this->decimalOverflowSubtraction = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, ConstantString::create("-16"));
 
 	this->description->enableOutline(Color4B::BLACK, 2);
@@ -54,6 +56,7 @@ AddHelpMenu::AddHelpMenu()
 	this->animatedLabelA->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelB->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelC->enableOutline(Color4B::BLACK, 3);
+	this->carryLabel->enableOutline(Color4B::BLACK, 3);
 	this->decimalOverflowSubtraction->enableOutline(Color4B::BLACK, 3);
 	this->decimalOverflowSubtraction->setColor(Color3B::RED);
 
@@ -77,6 +80,7 @@ AddHelpMenu::AddHelpMenu()
 	this->addChild(this->animatedLabelA);
 	this->addChild(this->animatedLabelB);
 	this->addChild(this->animatedLabelC);
+	this->addChild(this->carryLabel);
 	this->addChild(this->decimalOverflowSubtraction);
 }
 
@@ -102,6 +106,7 @@ void AddHelpMenu::initializePositions()
 	this->animatedLabelA->setPosition(Vec2(-196.0f, 144.0f + offset));
 	this->animatedLabelB->setPosition(Vec2(-196.0f, 0.0f + offset));
 	this->animatedLabelC->setPosition(Vec2(-196.0f, -144.0f + offset));
+	this->carryLabel->setPosition(Vec2(-196.0f, -144.0f + offset));
 	this->previewCardA->setPosition(Vec2(-448.0f, 144.0f + offset));
 	this->previewCardB->setPosition(Vec2(64.0f, 0.0f + offset));
 	this->andCard->setPosition(Vec2(356.0f, 0.0f));
@@ -162,21 +167,25 @@ void AddHelpMenu::runAnimationLoop()
 	this->animatedLabelAValue->setString(HackUtils::toBinary4(this->previewCardA->autoCard->getAttack()));
 	this->animatedLabelBValue->setString(HackUtils::toBinary4(this->previewCardB->autoCard->getAttack()));
 	this->animatedLabelCValue->setString(HackUtils::toBinary4(0));
+	this->carryLabelValue->setString(HackUtils::toBinary4(0));
 
 	for (int index = 0; index < 4; index++)
 	{
 		this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 255));
 		this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 255));
 		this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.25f, 255));
+		this->carryLabel->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
 		this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
 		this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
 		this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
+		this->carryLabel->getLetter(index)->setColor(Color3B::WHITE);
 	}
 	
 	// Restore opacity altered by resetting animation
 	this->animatedLabelA->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelB->runAction(FadeTo::create(0.25f, 255));
 	this->animatedLabelC->runAction(FadeTo::create(0.25f, 255));
+	this->carryLabel->setOpacity(0);
 	this->decimalOverflowSubtraction->setOpacity(0);
 
 	switch(this->previewCardA->autoCard->getDisplayType())
@@ -264,6 +273,9 @@ void AddHelpMenu::runAnimationLoop()
 				}
 			}
 
+			bool hasCarry = ((this->previewCardA->autoCard->activeCard->getAttack() & this->previewCardB->autoCard->activeCard->getAttack()) != 0);
+			bool hasZeros = ((this->previewCardA->autoCard->activeCard->getAttack() ^ 0b1111) != 0 || (this->previewCardB->autoCard->activeCard->getAttack() ^ 0b1111) != 0);
+
 			this->runAction(Sequence::create(
 				DelayTime::create(1.0f),
 				CallFunc::create([=]()
@@ -272,28 +284,30 @@ void AddHelpMenu::runAnimationLoop()
 					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
 					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
 				}),
-				
-				DelayTime::create(1.5f),
+				DelayTime::create(hasZeros ? 1.5f : 0.1f),
 				CallFunc::create([=]()
 				{
 					// Phase 2, fade out all 0s, color all invalid 1s
-					for (int index = 0; index < 4; index++)
+					if (hasZeros)
 					{
-						if (this->animatedLabelAValue->getString()[index] == '0')
+						for (int index = 0; index < 4; index++)
 						{
-							this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
-						}
+							if (this->animatedLabelAValue->getString()[index] == '0')
+							{
+								this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+							}
 
-						if (this->animatedLabelBValue->getString()[index] == '0')
-						{
-							this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+							if (this->animatedLabelBValue->getString()[index] == '0')
+							{
+								this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
+							}
 						}
 					}
 				}),
 				DelayTime::create(1.5f),
 				CallFunc::create([=]()
 				{
-					// Phase 3: move all single 1's to their places
+					// Phase 3: move all 1's to their places
 					for (int index = 0; index < 4; index++)
 					{
 						if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '0')
@@ -308,11 +322,7 @@ void AddHelpMenu::runAnimationLoop()
 							this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
 						}
 					}
-				}),
-				DelayTime::create(1.5f),
-				CallFunc::create([=]()
-				{
-					// Phase 4: move all double 1's to their places
+
 					for (int index = 0; index < 4; index++)
 					{
 						if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
@@ -326,65 +336,129 @@ void AddHelpMenu::runAnimationLoop()
 				DelayTime::create(1.0f),
 				CallFunc::create([=]()
 				{
-					// Phase 5: cascade double 1's into 2s
-					for (int index = 0; index < 4; index++)
-					{
-						if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
-						{
-							this->animatedLabelA->getLetter(index)->setOpacity(0);
-							this->animatedLabelB->getLetter(index)->setOpacity(0);
-
-							std::string cascadeString = this->animatedLabelCValue->getString();
-							cascadeString[index] = '2';
-
-							this->animatedLabelCValue->setString(cascadeString);
-							this->animatedLabelC->getLetter(index)->setOpacity(255);
-							this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
-						}
-					}
-				}),
-				DelayTime::create(1.0f),
-				CallFunc::create([=]()
-				{
-					// Phase 6: set up carries
-					static Vec2* cachedPositions = new Vec2[4];
-					static bool* cachedCarries = new bool[4];
-					std::string splitString = this->animatedLabelAValue->getString();
-
-					for (int index = 0; index < 4; index++)
-					{
-						cachedCarries[index] = false;
-						
-						if (this->animatedLabelCValue->getString()[index] == '2')
-						{
-							cachedCarries[index] = true;
-							splitString[index] = '0';
-							cachedPositions[index] = this->animatedLabelA->getLetter(index)->getPosition();
-
-							this->animatedLabelA->getLetter(index)->setOpacity(255);
-							this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
-						}
-					}
-
-					this->animatedLabelCValue->setString(splitString);
+					this->animatedLabelA->setOpacity(0);
+					this->animatedLabelB->setOpacity(0);
 					
-					for (int index = 0; index < 4; index++)
+					int carry = (this->previewCardA->autoCard->activeCard->getOriginalAttack() & this->previewCardB->autoCard->activeCard->getOriginalAttack());
+					int currentResultValue = (this->previewCardA->autoCard->activeCard->getOriginalAttack() | this->previewCardB->autoCard->activeCard->getOriginalAttack());
+
+					if (carry != 0)
 					{
-						if (cachedCarries[index])
-						{
-							this->animatedLabelA->getLetter(index)->setPosition(cachedPositions[index]);
-							this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(-44.0f, 64.0f)));
-						}
+						this->runCarryLoop(currentResultValue ^ carry, carry);
 					}
-				}),
-				DelayTime::create(2.5f),
-				CallFunc::create([=]()
-				{
-					this->runAnimationLoop();
+					else
+					{
+						this->runAnimationLoop();
+					}
 				}),
 				nullptr
 			));
 			break;
 		}
 	}
+}
+
+void AddHelpMenu::runCarryLoop(int currentResultValue, int carry)
+{
+	if (carry == 0)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(1.5f),
+			CallFunc::create([=]()
+			{
+				this->runAnimationLoop();
+			}),
+			nullptr
+		));
+		return;
+	}
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			// Phase 4: cascade double 1's (indicated by carry bit set) into 2s
+			this->animatedLabelCValue->setString(HackUtils::toBinary4(currentResultValue));
+			this->carryLabelValue->setString(HackUtils::toBinary4(carry));
+			std::string cascadeString = this->animatedLabelCValue->getString();
+
+			for (int index = 0; index < 4; index++)
+			{
+				if (this->carryLabelValue->getString()[index] == '1')
+				{
+					cascadeString[index] = '2';
+
+					this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
+					this->animatedLabelC->getLetter(index)->setOpacity(255);
+				}
+
+				if (cascadeString[index] == '0')
+				{
+					this->animatedLabelC->getLetter(index)->setColor(Color3B::GRAY);
+				}
+				else
+				{
+					this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
+				}
+				
+				this->animatedLabelC->getLetter(index)->setOpacity(255);
+				this->carryLabel->getLetter(index)->setOpacity(0);
+			}
+
+			this->animatedLabelCValue->setString(cascadeString);
+		}),
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			// Phase 5: Move carry string to position, update result string
+			std::string resultString = this->animatedLabelCValue->getString();
+
+			this->carryLabel->setOpacity(255);
+
+			for (int index = 0; index < 4; index++)
+			{
+				if (this->carryLabelValue->getString()[index] == '1')
+				{
+					this->carryLabel->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(-44.0f, 64.0f)));
+					this->carryLabel->getLetter(index)->setOpacity(255);
+					resultString[index] = '0';
+					this->animatedLabelC->getLetter(index)->setColor(Color3B::GRAY);
+				}
+				else
+				{
+					this->carryLabel->getLetter(index)->setOpacity(0);
+				}
+			}
+
+			this->animatedLabelCValue->setString(resultString);
+		}),
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			// Phase 6: move all carry's to their places
+			for (int index = 0; index < 4; index++)
+			{
+				if (this->carryLabelValue->getString()[index] == '1')
+				{
+					this->carryLabel->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -64.0f)));
+
+					if (index == 0)
+					{
+						this->carryLabel->getLetter(index)->runAction(TintTo::create(0.25f, Color3B::RED));
+					}
+					else if (index > 0 && this->animatedLabelCValue->getString()[index - 1] == '0')
+					{
+						this->animatedLabelC->getLetter(index - 1)->runAction(FadeTo::create(0.25f, 0));
+					}
+				}
+			}
+		}),
+		DelayTime::create(0.51f),
+		CallFunc::create([=]()
+		{
+			int nextCarry = (carry << 1) & (currentResultValue);
+
+			this->runCarryLoop(currentResultValue ^ (carry << 1), nextCarry);
+		}),
+		nullptr
+	));
 }

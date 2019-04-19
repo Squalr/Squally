@@ -31,6 +31,7 @@ private:
 	void initializeListeners() override;
 	void resetAnimation();
 	void runAnimationLoop();
+	void runCarryLoop(int currentResultValue, int carry);
 
 	LocalizedLabel* description;
 	Card* andCard;
@@ -45,5 +46,7 @@ private:
 	ConstantString* animatedLabelBValue;
 	LocalizedLabel* animatedLabelC;
 	ConstantString* animatedLabelCValue;
+	LocalizedLabel* carryLabel;
+	ConstantString* carryLabelValue;
 	LocalizedLabel* decimalOverflowSubtraction;
 };
