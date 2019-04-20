@@ -20,6 +20,7 @@
 #include "Scenes/Hexus/HelpMenus/RorHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShlHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/ShrHelpMenu.h"
+#include "Scenes/Hexus/HelpMenus/SubHelpMenu.h"
 #include "Scenes/Hexus/HelpMenus/XorHelpMenu.h"
 
 #include "Resources/HexusResources.h"
@@ -61,6 +62,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->rorHelpMenu = RorHelpMenu::create();
     this->shlHelpMenu = ShlHelpMenu::create();
     this->shrHelpMenu = ShrHelpMenu::create();
+    this->subHelpMenu = SubHelpMenu::create();
     this->xorHelpMenu = XorHelpMenu::create();
     this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
     this->onExit = nullptr;
@@ -80,6 +82,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->addChild(this->rorHelpMenu);
     this->addChild(this->shlHelpMenu);
     this->addChild(this->shrHelpMenu);
+    this->addChild(this->subHelpMenu);
     this->addChild(this->xorHelpMenu);
     this->addChild(this->exitButton);
 }
@@ -136,6 +139,7 @@ void HelpMenuComponent::openMenu(Card* card)
     this->rorHelpMenu->setVisible(false);
     this->shlHelpMenu->setVisible(false);
     this->shrHelpMenu->setVisible(false);
+    this->subHelpMenu->setVisible(false);
     this->xorHelpMenu->setVisible(false);
 
     if (card == nullptr)
@@ -155,6 +159,11 @@ void HelpMenuComponent::openMenu(Card* card)
         case CardData::CardType::Special_ADD:
         {
             this->addHelpMenu->open();
+            break;
+        }
+        case CardData::CardType::Special_SUB:
+        {
+            this->subHelpMenu->open();
             break;
         }
         case CardData::CardType::Special_AND:

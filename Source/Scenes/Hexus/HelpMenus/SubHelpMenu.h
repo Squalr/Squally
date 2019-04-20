@@ -14,27 +14,28 @@ class ConstantString;
 class LocalizedLabel;
 class ToggleCard;
 
-class AddHelpMenu : public SmartNode
+class SubHelpMenu : public SmartNode
 {
 public:
-	static AddHelpMenu* create();
+	static SubHelpMenu* create();
 
 	void open();
 
 private:
 	typedef SmartNode super;
-	AddHelpMenu();
-	~AddHelpMenu();
+	SubHelpMenu();
+	~SubHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void resetAnimation();
 	void runAnimationLoop();
-	void runCarryLoop(int currentResultValue, int carry);
+	void runTrivialSubtraction();
+	void runCarryLoop();
 
 	LocalizedLabel* description;
-	Card* addCard;
+	Card* subCard;
 	ToggleCard* previewCardA;
 	ToggleCard* previewCardB;
 	cocos2d::Sprite* attackFrameA;
@@ -48,5 +49,5 @@ private:
 	ConstantString* animatedLabelCValue;
 	LocalizedLabel* carryLabel;
 	ConstantString* carryLabelValue;
-	LocalizedLabel* decimalOverflowSubtraction;
+	LocalizedLabel* decimalUnderflowAddition;
 };

@@ -34,7 +34,7 @@ AddHelpMenu* AddHelpMenu::create()
 AddHelpMenu::AddHelpMenu()
 {
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Addition::create(), Size(1200.0f, 0.0f));
-	this->andCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Addition));
+	this->addCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Addition));
 	this->previewCardA = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight, ToggleCard::ToggleModeUpDown::BinDec);
 	this->previewCardB = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight, ToggleCard::ToggleModeUpDown::BinDec);
 	this->attackFrameA = Sprite::create(HexusResources::HelperTextFrame);
@@ -52,7 +52,7 @@ AddHelpMenu::AddHelpMenu()
 
 	this->description->enableOutline(Color4B::BLACK, 2);
 	this->description->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->andCard->setScale(1.0f);
+	this->addCard->setScale(1.0f);
 	this->animatedLabelA->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelB->enableOutline(Color4B::BLACK, 3);
 	this->animatedLabelC->enableOutline(Color4B::BLACK, 3);
@@ -60,8 +60,8 @@ AddHelpMenu::AddHelpMenu()
 	this->decimalOverflowSubtraction->enableOutline(Color4B::BLACK, 3);
 	this->decimalOverflowSubtraction->setColor(Color3B::RED);
 
-	this->andCard->reveal();
-	this->andCard->disableInteraction();
+	this->addCard->reveal();
+	this->addCard->disableInteraction();
 	this->previewCardA->autoCard->setCardScale(0.6f);
 	this->previewCardB->autoCard->setCardScale(0.6f);
 	this->previewCardA->autoCard->setDisplayType(AutoCard::DisplayType::Decimal);
@@ -71,7 +71,7 @@ AddHelpMenu::AddHelpMenu()
 	this->previewCardB->autoCard->setAttack(3);
 
 	this->addChild(this->description);
-	this->addChild(this->andCard);
+	this->addChild(this->addCard);
 	this->addChild(this->previewCardA);
 	this->addChild(this->previewCardB);
 	this->addChild(this->attackFrameA);
@@ -109,7 +109,7 @@ void AddHelpMenu::initializePositions()
 	this->carryLabel->setPosition(Vec2(-196.0f, -144.0f + offset));
 	this->previewCardA->setPosition(Vec2(-448.0f, 144.0f + offset));
 	this->previewCardB->setPosition(Vec2(64.0f, 0.0f + offset));
-	this->andCard->setPosition(Vec2(356.0f, 0.0f));
+	this->addCard->setPosition(Vec2(356.0f, 0.0f));
 }
 
 void AddHelpMenu::initializeListeners()
@@ -206,7 +206,7 @@ void AddHelpMenu::runAnimationLoop()
 				{
 					// Phase 1: Run card ord animation
 					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
-					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
+					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->addCard->getCorrespondingCardEffect());
 
 					// Set sum label, including possible overflow
 					this->animatedLabelCValue->setString(std::to_string(attackSum));
@@ -282,7 +282,7 @@ void AddHelpMenu::runAnimationLoop()
 				{
 					// Phase 1: Run card ord animation
 					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
-					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->andCard->getCorrespondingCardEffect());
+					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->addCard->getCorrespondingCardEffect());
 				}),
 				DelayTime::create(hasZeros ? 1.5f : 0.1f),
 				CallFunc::create([=]()
