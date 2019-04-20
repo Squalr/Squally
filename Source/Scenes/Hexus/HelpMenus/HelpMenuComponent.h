@@ -23,6 +23,7 @@ class RolHelpMenu;
 class RorHelpMenu;
 class ShlHelpMenu;
 class ShrHelpMenu;
+class SubHelpMenu;
 class XorHelpMenu;
 
 class HelpMenuComponent : public ComponentBase
@@ -59,6 +60,7 @@ private:
 	RorHelpMenu* rorHelpMenu;
 	ShlHelpMenu* shlHelpMenu;
 	ShrHelpMenu* shrHelpMenu;
+	SubHelpMenu* subHelpMenu;
 	XorHelpMenu* xorHelpMenu;
 
 	std::function<void()> onExit;
