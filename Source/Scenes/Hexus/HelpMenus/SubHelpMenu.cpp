@@ -300,6 +300,13 @@ void SubHelpMenu::runTrivialSubtraction()
 		DelayTime::create(hasZeros ? 1.5f : 0.1f),
 		CallFunc::create([=]()
 		{
+			// Phase 0: fix opacity on carry and the top row
+			for (int index = 0; index < 4; index++)
+			{
+				this->animatedLabelA->getLetter(index)->setOpacity(255);
+				this->carryLabel->getLetter(index)->setOpacity(0);
+			}
+
 			// Phase 1, fade out all 0s, color all invalid 1s
 			if (hasZeros)
 			{
@@ -332,7 +339,7 @@ void SubHelpMenu::runTrivialSubtraction()
 
 			for (int index = 0; index < 4; index++)
 			{
-				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
+				if (this->animatedLabelAValue->getString()[index] != '0' && this->animatedLabelBValue->getString()[index] == '1')
 				{
 					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -144.0f)));
 					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
@@ -344,10 +351,10 @@ void SubHelpMenu::runTrivialSubtraction()
 		{
 			for (int index = 0; index < 4; index++)
 			{
-				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '1')
+				if (this->animatedLabelAValue->getString()[index] != '0' && this->animatedLabelBValue->getString()[index] == '1')
 				{
+					// TODO: Merge into '1=>0, 2=>1', probably on label B (hiding the char[index] at A -- we need A's string intact from other movements)
 					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -144.0f)));
-
 					this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -144.0f)));
 				}
 			}
@@ -395,7 +402,15 @@ void SubHelpMenu::runCarryLoop()
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
+			// Clear carry between each iteration
 			this->carryLabel->setOpacity(255);
+			this->carryLabelValue->setString(HackUtils::toBinary4(0b0000));
+
+			for (int index = 0; index < 4; index++)
+			{
+				this->carryLabel->getLetter(index)->setOpacity(0);
+				this->animatedLabelA->getLetter(index)->setOpacity(255);
+			}
 
 			// Phase 1: Search for carries
 			for (int index = 3; index >= 0; index--)
@@ -405,15 +420,17 @@ void SubHelpMenu::runCarryLoop()
 				{
 					bool found = false;
 
+					std::string carryString = this->carryLabelValue->getString();
+					std::string topString = this->animatedLabelAValue->getString();
+
 					for (int searchIndex = index - 1; searchIndex >= 0; searchIndex--)
 					{
 						if (this->animatedLabelAValue->getString()[searchIndex] == '1' || this->animatedLabelAValue->getString()[searchIndex] == '2')
 						{
-							this->animatedLabelAValue->getString()[searchIndex]--; // 1 => 0, 2 => 1
-							this->carryLabelValue->getString()[searchIndex] = '2';
-							this->animatedLabelAValue->getString()[searchIndex + 1] = '2';
-							this->animatedLabelA->getLetter(searchIndex + 1)->setOpacity(0);
-							this->animatedLabelA->getLetter(searchIndex)->setOpacity(0);
+							carryString[searchIndex] = '2';
+							topString[searchIndex + 1] = '2';
+							topString[searchIndex]--;
+							this->animatedLabelA->getLetter(searchIndex + 1)->runAction(FadeTo::create(0.25, 0));
 							this->carryLabel->getLetter(searchIndex)->setOpacity(255);
 							this->carryLabel->getLetter(searchIndex)->runAction(MoveBy::create(0.5f, Vec2(44.0f, 0.0f)));
 
@@ -427,13 +444,21 @@ void SubHelpMenu::runCarryLoop()
 						// No carry found! Underflow!
 						// Pretty sure the last carry digit never gets used, we can recycle it as the 'first' character ie 0b0001 => 0b1000
 						this->carryLabel->getLetter(3)->setOpacity(255);
-						this->carryLabelValue->getString()[3] = '1';
+						carryString[3] = '1';
 						this->carryLabel->getLetter(3)->setPosition(this->carryLabel->getLetter(3)->getPosition() - Vec2(44.0f * 3.0f, 0.0f));
+						this->carryLabel->getLetter(3)->runAction(MoveBy::create(0.5f, Vec2(44.0f, 0.0f)));
+
+						// This is the new bit getting shifted in
+						topString[0] = '2';
+						this->animatedLabelA->getLetter(0)->setOpacity(0);
 					}
+
+					this->carryLabelValue->setString(carryString);
+					this->animatedLabelAValue->setString(topString);
 				}
 			}
 		}),
-		DelayTime::create(0.51f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			this->runCarryLoop();
