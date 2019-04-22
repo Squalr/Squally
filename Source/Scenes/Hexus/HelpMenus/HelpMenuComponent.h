@@ -17,6 +17,7 @@ class Flip1HelpMenu;
 class Flip2HelpMenu;
 class Flip3HelpMenu;
 class Flip4HelpMenu;
+class MovHelpMenu;
 class NotHelpMenu;
 class OrHelpMenu;
 class RolHelpMenu;
@@ -55,6 +56,7 @@ private:
 	Flip3HelpMenu* flip3HelpMenu;
 	Flip4HelpMenu* flip4HelpMenu;
 	NotHelpMenu* notHelpMenu;
+	MovHelpMenu* movHelpMenu;
 	OrHelpMenu* orHelpMenu;
 	RolHelpMenu* rolHelpMenu;
 	RorHelpMenu* rorHelpMenu;
