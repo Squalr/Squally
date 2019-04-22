@@ -31,7 +31,7 @@ private:
 	void initializeListeners() override;
 	void resetAnimation();
 	void runAnimationLoop();
-	void runTrivialSubtraction();
+	void runTrivialSubtraction(std::function<void()> callback);
 	void runCarryLoop();
 
 	LocalizedLabel* description;
@@ -50,4 +50,7 @@ private:
 	LocalizedLabel* carryLabel;
 	ConstantString* carryLabelValue;
 	LocalizedLabel* decimalUnderflowAddition;
+
+	std::string tempTopString;
+	std::string tempCarryString;
 };

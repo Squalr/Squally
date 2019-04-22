@@ -58,7 +58,7 @@ SubHelpMenu::SubHelpMenu()
 	this->animatedLabelC->enableOutline(Color4B::BLACK, 3);
 	this->carryLabel->enableOutline(Color4B::BLACK, 3);
 	this->decimalUnderflowAddition->enableOutline(Color4B::BLACK, 3);
-	this->decimalUnderflowAddition->setColor(Color3B::RED);
+	this->decimalUnderflowAddition->setColor(Color3B::GREEN);
 
 	this->subCard->reveal();
 	this->subCard->disableInteraction();
@@ -77,8 +77,8 @@ SubHelpMenu::SubHelpMenu()
 	this->addChild(this->attackFrameA);
 	this->addChild(this->attackFrameB);
 	this->addChild(this->attackFrameC);
-	this->addChild(this->animatedLabelA);
 	this->addChild(this->animatedLabelB);
+	this->addChild(this->animatedLabelA);
 	this->addChild(this->animatedLabelC);
 	this->addChild(this->carryLabel);
 	this->addChild(this->decimalUnderflowAddition);
@@ -106,7 +106,7 @@ void SubHelpMenu::initializePositions()
 	this->animatedLabelA->setPosition(Vec2(-196.0f, 144.0f + offset));
 	this->animatedLabelB->setPosition(Vec2(-196.0f, 0.0f + offset));
 	this->animatedLabelC->setPosition(Vec2(-196.0f, -144.0f + offset));
-	this->carryLabel->setPosition(Vec2(-196.0f, 144.0f + offset));
+	this->carryLabel->setPosition(Vec2(-196.0f - 44.0f, 144.0f + offset));
 	this->previewCardA->setPosition(Vec2(64.0f, 144.0f + offset));
 	this->previewCardB->setPosition(Vec2(-448.0f, 0.0f + offset));
 	this->subCard->setPosition(Vec2(356.0f, 0.0f));
@@ -188,6 +188,8 @@ void SubHelpMenu::runAnimationLoop()
 	this->carryLabel->setOpacity(0);
 	this->decimalUnderflowAddition->setOpacity(0);
 
+	int attackDiff = this->previewCardA->autoCard->getAttack() - this->previewCardB->autoCard->getAttack();
+
 	switch(this->previewCardB->autoCard->getDisplayType())
 	{
 		default:
@@ -198,8 +200,6 @@ void SubHelpMenu::runAnimationLoop()
 			this->animatedLabelBValue->setString(std::to_string(this->previewCardB->autoCard->getAttack()));
 			this->animatedLabelCValue->setString(std::to_string(0));
 
-			int attackDiff = this->previewCardA->autoCard->getAttack() - this->previewCardB->autoCard->getAttack();
-
 			this->runAction(Sequence::create(
 				DelayTime::create(1.0f),
 				CallFunc::create([=]()
@@ -208,33 +208,38 @@ void SubHelpMenu::runAnimationLoop()
 					this->previewCardA->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SUB, this->previewCardB->autoCard->getAttack()));
 					this->previewCardA->autoCard->activeCard->cardEffects->runEffect(this->subCard->getCorrespondingCardEffect());
 
-					// Set sum label, including possible overflow
-					this->animatedLabelCValue->setString(std::to_string(attackDiff));
-
 					if (attackDiff < 0)
 					{
-						this->animatedLabelC->setColor(Color3B::RED);
 						this->previewCardA->autoCard->activeCard->runUnderflowEffect();
 					}
 				}),
-				DelayTime::create(attackDiff < 0 ? 1.0f : 0.0f),
 				CallFunc::create([=]()
 				{
-					if (attackDiff < 0)
+					this->runTrivialSubtraction([=]()
 					{
-						this->animatedLabelCValue->setString(std::to_string(attackDiff + 16));
-						this->animatedLabelC->setColor(Color3B::WHITE);
+						this->runAction(Sequence::create(
+							DelayTime::create(0.5f),
+							CallFunc::create([=]()
+							{
+								if (attackDiff < 0)
+								{
+									this->animatedLabelCValue->setString(std::to_string(attackDiff + 16));
+									this->animatedLabelC->setColor(Color3B::WHITE);
 
-						this->decimalUnderflowAddition->setPosition(this->animatedLabelC->getPosition() + Vec2(0.0f, 32.0f));
-						this->decimalUnderflowAddition->setOpacity(255);
-						this->decimalUnderflowAddition->runAction(FadeTo::create(0.75f, 0));
-						this->decimalUnderflowAddition->runAction(MoveBy::create(0.75f, Vec2(0.0f, 64.0f)));
-					}
-				}),
-				DelayTime::create(2.5f),
-				CallFunc::create([=]()
-				{
-					this->runAnimationLoop();
+									this->decimalUnderflowAddition->setPosition(this->animatedLabelC->getPosition() + Vec2(0.0f, 32.0f));
+									this->decimalUnderflowAddition->setOpacity(255);
+									this->decimalUnderflowAddition->runAction(FadeTo::create(0.75f, 0));
+									this->decimalUnderflowAddition->runAction(MoveBy::create(0.75f, Vec2(0.0f, 64.0f)));
+								}
+							}),
+							DelayTime::create(1.5f),
+							CallFunc::create([=]()
+							{
+								this->runAnimationLoop();
+							}),
+							nullptr
+						));
+					});
 				}),
 				nullptr
 			));
@@ -245,41 +250,25 @@ void SubHelpMenu::runAnimationLoop()
 		{
 			for (int index = 0; index < 4; index++)
 			{
-				if (this->animatedLabelAValue->getString()[index] == '0')
-				{
-					this->animatedLabelA->getLetter(index)->setColor(Color3B::GRAY);
-				}
-				else
-				{
-					this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
-				}
-				
-				if (this->animatedLabelBValue->getString()[index] == '0')
-				{
-					this->animatedLabelB->getLetter(index)->setColor(Color3B::GRAY);
-				}
-				else
-				{
-					this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
-				}
-
-				if (this->animatedLabelCValue->getString()[index] == '0')
-				{
-					this->animatedLabelC->getLetter(index)->setColor(Color3B::GRAY);
-				}
-				else
-				{
-					this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
-				}
+				this->animatedLabelA->getLetter(index)->setColor(Color3B::WHITE);
+				this->animatedLabelB->getLetter(index)->setColor(Color3B::WHITE);
+				this->animatedLabelC->getLetter(index)->setColor(Color3B::WHITE);
 			}
 
 			this->runAction(Sequence::create(
 				DelayTime::create(1.0f),
 				CallFunc::create([=]()
 				{
+					int attackDiff = this->previewCardA->autoCard->getAttack() - this->previewCardB->autoCard->getAttack();
+
 					// Phase 1: Run card animation
 					this->previewCardA->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SUB, this->previewCardB->autoCard->getAttack()));
 					this->previewCardA->autoCard->activeCard->cardEffects->runEffect(this->subCard->getCorrespondingCardEffect());
+
+					if (attackDiff < 0)
+					{
+						this->previewCardA->autoCard->activeCard->runUnderflowEffect();
+					}
 				}),
 				DelayTime::create(1.5f),
 				CallFunc::create([=]()
@@ -292,13 +281,16 @@ void SubHelpMenu::runAnimationLoop()
 	}
 }
 
-void SubHelpMenu::runTrivialSubtraction()
+void SubHelpMenu::runTrivialSubtraction(std::function<void()> callback)
 {
-	bool hasZeros = true; //TODO, iter & check
-
-	this->runAction(Sequence::create(
-		DelayTime::create(hasZeros ? 1.5f : 0.1f),
-		CallFunc::create([=]()
+	switch(this->previewCardB->autoCard->getDisplayType())
+	{
+		default:
+		case AutoCard::DisplayType::Decimal:
+		{
+			break;
+		}
+		case AutoCard::DisplayType::Binary:
 		{
 			// Phase 0: fix opacity on carry and the top row
 			for (int index = 0; index < 4; index++)
@@ -306,76 +298,90 @@ void SubHelpMenu::runTrivialSubtraction()
 				this->animatedLabelA->getLetter(index)->setOpacity(255);
 				this->carryLabel->getLetter(index)->setOpacity(0);
 			}
+			break;
+		}
+	}
 
-			// Phase 1, fade out all 0s, color all invalid 1s
-			if (hasZeros)
-			{
-				for (int index = 0; index < 4; index++)
-				{
-					if (this->animatedLabelAValue->getString()[index] == '0')
-					{
-						this->animatedLabelA->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
-					}
-
-					if (this->animatedLabelBValue->getString()[index] == '0')
-					{
-						this->animatedLabelB->getLetter(index)->runAction(FadeTo::create(0.25f, 0));
-					}
-				}
-			}
-		}),
+	int attackDiff = this->previewCardA->autoCard->getAttack() - this->previewCardB->autoCard->getAttack();
+	
+	this->runAction(Sequence::create(
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			// Phase 2: move all 1's to their places
-			for (int index = 0; index < 4; index++)
+			// Phase 1: Move all digits to half way point
+			this->animatedLabelA->runAction(MoveBy::create(0.75f, Vec2(0.0f, -144.0f)));
+			this->animatedLabelC->runAction(FadeTo::create(1.0f, 0));
+		}),
+		DelayTime::create(0.76f),
+		CallFunc::create([=]()
+		{
+			this->animatedLabelA->setOpacity(0);
+
+			switch(this->previewCardB->autoCard->getDisplayType())
 			{
-				if (this->animatedLabelAValue->getString()[index] == '1' && this->animatedLabelBValue->getString()[index] == '0')
+				default:
+				case AutoCard::DisplayType::Decimal:
 				{
-					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f * 2.0f)));
-					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
+					this->animatedLabelBValue->setString(std::to_string(attackDiff));
+
+					if (attackDiff < 0)
+					{
+						this->animatedLabelB->setColor(Color3B::RED);
+					}
+					break;
+				}
+				case AutoCard::DisplayType::Binary:
+				{
+					this->animatedLabelBValue->setString(HackUtils::toBinary4(this->previewCardA->autoCard->activeCard->getAttack()));
+					break;
 				}
 			}
 
-			for (int index = 0; index < 4; index++)
-			{
-				if (this->animatedLabelAValue->getString()[index] != '0' && this->animatedLabelBValue->getString()[index] == '1')
-				{
-					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -144.0f)));
-					this->animatedLabelC->getLetter(index)->runAction(FadeTo::create(0.75f, 0));
-				}
-			}
+			// Phase 2: Hide top row, update mid row, move to bottom
+			this->animatedLabelB->setOpacity(255);
+			this->animatedLabelB->runAction(MoveBy::create(0.75f, Vec2(0.0f, -144.0f)));
 		}),
-		DelayTime::create(1.0f),
+		DelayTime::create(0.76f),
 		CallFunc::create([=]()
 		{
-			for (int index = 0; index < 4; index++)
+			switch(this->previewCardB->autoCard->getDisplayType())
 			{
-				if (this->animatedLabelAValue->getString()[index] != '0' && this->animatedLabelBValue->getString()[index] == '1')
+				default:
+				case AutoCard::DisplayType::Decimal:
 				{
-					// TODO: Merge into '1=>0, 2=>1', probably on label B (hiding the char[index] at A -- we need A's string intact from other movements)
-					this->animatedLabelA->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -144.0f)));
-					this->animatedLabelB->getLetter(index)->runAction(MoveBy::create(0.5f, Vec2(0.0f, -144.0f)));
+					this->animatedLabelCValue->setString(std::to_string(this->previewCardA->autoCard->activeCard->getAttack()));
+
+					// Set sum label, including possible overflow
+					this->animatedLabelCValue->setString(std::to_string(attackDiff));
+
+					if (attackDiff < 0)
+					{
+						this->animatedLabelC->setColor(Color3B::RED);
+					}
+					break;
+				}
+				case AutoCard::DisplayType::Binary:
+				{
+					this->animatedLabelCValue->setString(HackUtils::toBinary4(this->previewCardA->autoCard->activeCard->getAttack()));
+
+					for (int index = 0; index < 4; index++)
+					{
+						this->animatedLabelC->getLetter(index)->setOpacity(255);
+					}
+					break;
 				}
 			}
-		}),
-		DelayTime::create(0.51f),
-		CallFunc::create([=]()
-		{
-			this->animatedLabelCValue->setString(HackUtils::toBinary4(this->previewCardA->autoCard->activeCard->getAttack()));
+			
 			this->animatedLabelA->setOpacity(0);
 			this->animatedLabelB->setOpacity(0);
 			this->animatedLabelC->setOpacity(255);
-
-			for (int index = 0; index < 4; index++)
-			{
-				this->animatedLabelC->getLetter(index)->setOpacity(255);
-			}
 		}),
-		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			this->runAnimationLoop();
+			if (callback != nullptr)
+			{
+				callback();
+			}
 		}),
 		nullptr
 	));
@@ -384,6 +390,8 @@ void SubHelpMenu::runTrivialSubtraction()
 void SubHelpMenu::runCarryLoop()
 {
 	bool hasCarry = false;
+	static std::string* topString = new std::string();
+	static std::string* ghostStringTop = new std::string();
 
 	for (int index = 0; index < 4; index++)
 	{
@@ -395,7 +403,17 @@ void SubHelpMenu::runCarryLoop()
 
 	if (!hasCarry)
 	{
-		this->runTrivialSubtraction();
+		this->runTrivialSubtraction([=]()
+		{
+			this->runAction(Sequence::create(
+				DelayTime::create(1.5f),
+				CallFunc::create([=]()
+				{
+					this->runAnimationLoop();
+				}),
+				nullptr
+			));
+		});
 		return;
 	}
 
@@ -412,27 +430,39 @@ void SubHelpMenu::runCarryLoop()
 				this->animatedLabelA->getLetter(index)->setOpacity(255);
 			}
 
+			std::vector<bool> used { false, false, false, false };
+			std::string carryString = this->carryLabelValue->getString();
+			*topString = this->animatedLabelAValue->getString();
+			*ghostStringTop = *topString;
+
 			// Phase 1: Search for carries
-			for (int index = 3; index >= 0; index--)
+			for (int index = 0; index < 4; index++)
 			{
 				// Bad column! Create a carry
 				if (this->animatedLabelAValue->getString()[index] == '0' && this->animatedLabelBValue->getString()[index] == '1')
 				{
 					bool found = false;
 
-					std::string carryString = this->carryLabelValue->getString();
-					std::string topString = this->animatedLabelAValue->getString();
-
 					for (int searchIndex = index - 1; searchIndex >= 0; searchIndex--)
 					{
+						if (used[searchIndex])
+						{
+							found = true;
+							break;
+						}
+
 						if (this->animatedLabelAValue->getString()[searchIndex] == '1' || this->animatedLabelAValue->getString()[searchIndex] == '2')
 						{
-							carryString[searchIndex] = '2';
-							topString[searchIndex + 1] = '2';
-							topString[searchIndex]--;
+							used[searchIndex] = true;
+							used[searchIndex + 1] = true;
+							carryString[searchIndex + 1] = '2';
+							(*topString)[searchIndex + 1] = '2';
+							(*topString)[searchIndex]--;
+							(*ghostStringTop)[searchIndex + 1] = '0';
+							(*ghostStringTop)[searchIndex]--;
 							this->animatedLabelA->getLetter(searchIndex + 1)->runAction(FadeTo::create(0.25, 0));
-							this->carryLabel->getLetter(searchIndex)->setOpacity(255);
-							this->carryLabel->getLetter(searchIndex)->runAction(MoveBy::create(0.5f, Vec2(44.0f, 0.0f)));
+							this->carryLabel->getLetter(searchIndex + 1)->setOpacity(255);
+							this->carryLabel->getLetter(searchIndex + 1)->runAction(MoveBy::create(0.5f, Vec2(44.0f, 0.0f)));
 
 							found = true;
 							break;
@@ -441,24 +471,34 @@ void SubHelpMenu::runCarryLoop()
 
 					if (!found)
 					{
+						used[0] = true;
+						
 						// No carry found! Underflow!
-						// Pretty sure the last carry digit never gets used, we can recycle it as the 'first' character ie 0b0001 => 0b1000
-						this->carryLabel->getLetter(3)->setOpacity(255);
-						carryString[3] = '1';
-						this->carryLabel->getLetter(3)->setPosition(this->carryLabel->getLetter(3)->getPosition() - Vec2(44.0f * 3.0f, 0.0f));
-						this->carryLabel->getLetter(3)->runAction(MoveBy::create(0.5f, Vec2(44.0f, 0.0f)));
+						this->carryLabel->getLetter(0)->setOpacity(255);
+						carryString[0] = '1';
+						this->carryLabel->getLetter(0)->runAction(MoveBy::create(0.5f, Vec2(44.0f, 0.0f)));
 
 						// This is the new bit getting shifted in
-						topString[0] = '2';
-						this->animatedLabelA->getLetter(0)->setOpacity(0);
+						(*topString)[0] = '2';
+						(*ghostStringTop)[0] = '0';
+						this->animatedLabelA->getLetter(0)->runAction(FadeTo::create(0.25f, 0));
 					}
 
 					this->carryLabelValue->setString(carryString);
-					this->animatedLabelAValue->setString(topString);
+					this->animatedLabelAValue->setString(*topString);
 				}
 			}
+
+			// Temporarily set back to the "ghost string" so that 0s fading out can complete
+			this->animatedLabelAValue->setString(*ghostStringTop);
 		}),
-		DelayTime::create(1.0f),
+		DelayTime::create(0.51f),
+		CallFunc::create([=]()
+		{
+			// Restore the true string
+			this->animatedLabelAValue->setString(*topString);
+		}),
+		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
 			this->runCarryLoop();
