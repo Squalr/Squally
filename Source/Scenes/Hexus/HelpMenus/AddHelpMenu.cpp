@@ -201,43 +201,57 @@ void AddHelpMenu::runAnimationLoop()
 			int attackSum = this->previewCardA->autoCard->getAttack() + this->previewCardB->autoCard->getAttack();
 
 			this->runAction(Sequence::create(
-				DelayTime::create(1.0f),
-				CallFunc::create([=]()
-				{
-					// Phase 1: Run card ord animation
-					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
-					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->addCard->getCorrespondingCardEffect());
-
-					// Set sum label, including possible overflow
-					this->animatedLabelCValue->setString(std::to_string(attackSum));
-
-					if (attackSum >= 16)
+					DelayTime::create(1.5f),
+					CallFunc::create([=]()
 					{
-						this->animatedLabelC->setColor(Color3B::RED);
-						this->previewCardB->autoCard->activeCard->runOverflowEffect();
-					}
-				}),
-				DelayTime::create(attackSum >= 16 ? 1.0f : 0.0f),
-				CallFunc::create([=]()
-				{
-					if (attackSum >= 16)
+						// Phase 1: Move all digits to half way point
+						this->animatedLabelA->runAction(MoveBy::create(0.75f, Vec2(0.0f, -144.0f)));
+						this->animatedLabelC->runAction(FadeTo::create(1.0f, 0));
+					}),
+					DelayTime::create(0.76f),
+					CallFunc::create([=]()
 					{
-						this->animatedLabelCValue->setString(std::to_string(attackSum - 16));
-						this->animatedLabelC->setColor(Color3B::WHITE);
+						this->animatedLabelA->setOpacity(0);
+						this->animatedLabelBValue->setString(std::to_string(attackSum));
 
-						this->decimalOverflowSubtraction->setPosition(this->animatedLabelC->getPosition() + Vec2(0.0f, 32.0f));
-						this->decimalOverflowSubtraction->setOpacity(255);
-						this->decimalOverflowSubtraction->runAction(FadeTo::create(0.75f, 0));
-						this->decimalOverflowSubtraction->runAction(MoveBy::create(0.75f, Vec2(0.0f, 64.0f)));
-					}
-				}),
-				DelayTime::create(2.5f),
-				CallFunc::create([=]()
-				{
-					this->runAnimationLoop();
-				}),
-				nullptr
-			));
+						if (attackSum >= 16)
+						{
+							this->animatedLabelB->setColor(Color3B::RED);
+						}
+
+						// Phase 2: Hide top row, update mid row, move to bottom
+						this->animatedLabelB->setOpacity(255);
+						this->animatedLabelB->runAction(MoveBy::create(0.75f, Vec2(0.0f, -144.0f)));
+					}),
+					DelayTime::create(0.76f),
+					CallFunc::create([=]()
+					{
+						// Run card effect
+						this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
+						this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->addCard->getCorrespondingCardEffect());
+
+						this->animatedLabelCValue->setString(std::to_string(this->previewCardB->autoCard->activeCard->getAttack()));
+
+						// Set sum label, including possible overflow
+						this->animatedLabelCValue->setString(std::to_string(attackSum));
+
+						if (attackSum >= 16)
+						{
+							this->previewCardB->autoCard->activeCard->runUnderflowEffect();
+							this->animatedLabelC->setColor(Color3B::RED);
+						}
+						
+						this->animatedLabelA->setOpacity(0);
+						this->animatedLabelB->setOpacity(0);
+						this->animatedLabelC->setOpacity(255);
+					}),
+					DelayTime::create(1.5f),
+					CallFunc::create([=]()
+					{
+						this->runAnimationLoop();
+					}),
+					nullptr
+				));
 
 			break;
 		}
@@ -277,13 +291,6 @@ void AddHelpMenu::runAnimationLoop()
 			bool hasZeros = ((this->previewCardA->autoCard->activeCard->getAttack() ^ 0b1111) != 0 || (this->previewCardB->autoCard->activeCard->getAttack() ^ 0b1111) != 0);
 
 			this->runAction(Sequence::create(
-				DelayTime::create(1.0f),
-				CallFunc::create([=]()
-				{
-					// Phase 1: Run card ord animation
-					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
-					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->addCard->getCorrespondingCardEffect());
-				}),
 				DelayTime::create(hasZeros ? 1.5f : 0.1f),
 				CallFunc::create([=]()
 				{
@@ -336,6 +343,10 @@ void AddHelpMenu::runAnimationLoop()
 				DelayTime::create(1.0f),
 				CallFunc::create([=]()
 				{
+					// Run card animation
+					this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ADD, this->previewCardA->autoCard->getAttack()));
+					this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->addCard->getCorrespondingCardEffect());
+
 					this->animatedLabelA->setOpacity(0);
 					this->animatedLabelB->setOpacity(0);
 					

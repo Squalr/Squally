@@ -130,10 +130,7 @@ void RorHelpMenu::runAnimationLoop()
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
-		{
-			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ROR, 0b0001));
-			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->rorCard->getCorrespondingCardEffect());
-			
+		{			
 			Vec2 currentPosition = relocatedLetter->getPosition();
 			relocatedLetter->runAction(MoveTo::create(0.5f, currentPosition + Vec2(0.0f, shiftDist.y)));
 		}),
@@ -146,6 +143,9 @@ void RorHelpMenu::runAnimationLoop()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
+			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::ROR, 0b0001));
+			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->rorCard->getCorrespondingCardEffect());
+			
 			Vec2 currentPosition = relocatedLetter->getPosition();
 			relocatedLetter->runAction(MoveTo::create(0.5f, currentPosition - Vec2(0.0f, shiftDist.y)));
 		}),
