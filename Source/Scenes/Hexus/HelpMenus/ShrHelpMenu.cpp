@@ -139,15 +139,6 @@ void ShrHelpMenu::runAnimationLoop()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHR, 0b0001));
-
-			if (this->previewCard->autoCard->activeCard->getOriginalAttack() % 2 == 1)
-			{
-				this->previewCard->autoCard->activeCard->runUnderflowEffect(false, false);
-			}
-
-			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->shrCard->getCorrespondingCardEffect());
-			
 			this->newZero->getLetter(0)->setPosition(Vec2(newZeroX, newZeroY + travelDist.y));
 			this->newZero->getLetter(0)->runAction(MoveTo::create(0.5f, Vec2(newZeroX, newZeroY)));
 			this->newZero->getLetter(0)->runAction(FadeTo::create(0.5f, 255));
@@ -156,8 +147,15 @@ void ShrHelpMenu::runAnimationLoop()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			Vec2 originalPosition = this->animatedLabel->getLetter(3)->getPosition();
+			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHR, 0b0001));
+			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->shrCard->getCorrespondingCardEffect());
 
+			if (this->previewCard->autoCard->activeCard->getOriginalAttack() % 2 == 1)
+			{
+				this->previewCard->autoCard->activeCard->runUnderflowEffect(false, false);
+			}
+
+			Vec2 originalPosition = this->animatedLabel->getLetter(3)->getPosition();
 			this->animatedLabel->getLetter(3)->runAction(FadeTo::create(0.25f, 0));
 		}),
 		DelayTime::create(1.5f),

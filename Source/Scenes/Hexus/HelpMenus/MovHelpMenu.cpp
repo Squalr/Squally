@@ -169,19 +169,19 @@ void MovHelpMenu::runAnimationLoop()
 	this->animatedLabelB->runAction(FadeTo::create(0.25f, 255));
 
 	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
-		CallFunc::create([=]()
-		{
-			// Phase 1: Run card mov animation
-			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::MOV, this->previewCardA->autoCard->getAttack()));
-			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->movCard->getCorrespondingCardEffect());
-		}),
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			// Phase 2: Move the top string to the bottom
+			// Phase 1: Move the top string to the bottom
 			this->animatedLabelA->runAction(MoveBy::create(1.0f, Vec2(0.0f, -144.0f)));
 			this->animatedLabelB->runAction(FadeTo::create(0.75f, 0));
+		}),
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			// Phase 2: Run card mov animation
+			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::MOV, this->previewCardA->autoCard->getAttack()));
+			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->movCard->getCorrespondingCardEffect());
 		}),
 		DelayTime::create(2.0f),
 		CallFunc::create([=]()
