@@ -139,15 +139,6 @@ void ShlHelpMenu::runAnimationLoop()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHL, 0b0001));
-
-			if (this->previewCard->autoCard->activeCard->getOriginalAttack() >= 0b1000)
-			{
-				this->previewCard->autoCard->activeCard->runOverflowEffect();
-			}
-
-			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->rolCard->getCorrespondingCardEffect());
-			
 			this->newZero->getLetter(0)->setPosition(Vec2(newZeroX, newZeroY + travelDist.y));
 			this->newZero->getLetter(0)->runAction(MoveTo::create(0.5f, Vec2(newZeroX, newZeroY)));
 			this->newZero->getLetter(0)->runAction(FadeTo::create(0.5f, 255));
@@ -156,6 +147,14 @@ void ShlHelpMenu::runAnimationLoop()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
+			this->previewCard->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SHL, 0b0001));
+			this->previewCard->autoCard->activeCard->cardEffects->runEffect(this->rolCard->getCorrespondingCardEffect());
+
+			if (this->previewCard->autoCard->activeCard->getOriginalAttack() >= 0b1000)
+			{
+				this->previewCard->autoCard->activeCard->runOverflowEffect();
+			}
+			
 			Vec2 originalPosition = this->animatedLabel->getLetter(0)->getPosition();
 
 			this->animatedLabel->getLetter(0)->runAction(FadeTo::create(0.25f, 0));

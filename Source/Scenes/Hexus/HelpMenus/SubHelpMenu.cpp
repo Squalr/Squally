@@ -201,18 +201,6 @@ void SubHelpMenu::runAnimationLoop()
 			this->animatedLabelCValue->setString(std::to_string(0));
 
 			this->runAction(Sequence::create(
-				DelayTime::create(1.0f),
-				CallFunc::create([=]()
-				{
-					// Phase 1: Run card ord animation
-					this->previewCardA->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SUB, this->previewCardB->autoCard->getAttack()));
-					this->previewCardA->autoCard->activeCard->cardEffects->runEffect(this->subCard->getCorrespondingCardEffect());
-
-					if (attackDiff < 0)
-					{
-						this->previewCardA->autoCard->activeCard->runUnderflowEffect();
-					}
-				}),
 				CallFunc::create([=]()
 				{
 					this->runTrivialSubtraction([=]()
@@ -256,20 +244,6 @@ void SubHelpMenu::runAnimationLoop()
 			}
 
 			this->runAction(Sequence::create(
-				DelayTime::create(1.0f),
-				CallFunc::create([=]()
-				{
-					int attackDiff = this->previewCardA->autoCard->getAttack() - this->previewCardB->autoCard->getAttack();
-
-					// Phase 1: Run card animation
-					this->previewCardA->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SUB, this->previewCardB->autoCard->getAttack()));
-					this->previewCardA->autoCard->activeCard->cardEffects->runEffect(this->subCard->getCorrespondingCardEffect());
-
-					if (attackDiff < 0)
-					{
-						this->previewCardA->autoCard->activeCard->runUnderflowEffect();
-					}
-				}),
 				DelayTime::create(1.5f),
 				CallFunc::create([=]()
 				{
@@ -344,6 +318,15 @@ void SubHelpMenu::runTrivialSubtraction(std::function<void()> callback)
 		DelayTime::create(0.76f),
 		CallFunc::create([=]()
 		{
+			// Run card effect
+			this->previewCardA->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::SUB, this->previewCardB->autoCard->getAttack()));
+			this->previewCardA->autoCard->activeCard->cardEffects->runEffect(this->subCard->getCorrespondingCardEffect());
+
+			if (attackDiff < 0)
+			{
+				this->previewCardA->autoCard->activeCard->runUnderflowEffect();
+			}
+			
 			switch(this->previewCardB->autoCard->getDisplayType())
 			{
 				default:

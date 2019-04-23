@@ -194,17 +194,10 @@ void OrHelpMenu::runAnimationLoop()
 	}
 
 	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
-		CallFunc::create([=]()
-		{
-			// Phase 1: Run card ord animation
-			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::OR, this->previewCardA->autoCard->getAttack()));
-			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->orCard->getCorrespondingCardEffect());
-		}),
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			// Phase 2, fade out all 0s
+			// Phase 1, fade out all 0s
 			for (int index = 0; index < 4; index++)
 			{
 				if (this->animatedLabelAValue->getString()[index] == '0')
@@ -221,7 +214,7 @@ void OrHelpMenu::runAnimationLoop()
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			// Phase 3: move all 1s to their spot
+			// Phase 2: move all 1s to their spot
 			for (int index = 0; index < 4; index++)
 			{
 				if (this->animatedLabelAValue->getString()[index] == '1')
@@ -240,9 +233,19 @@ void OrHelpMenu::runAnimationLoop()
 				}
 			}
 		}),
-		DelayTime::create(2.5f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
+			// Phase 3: Run card animation
+			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::OR, this->previewCardA->autoCard->getAttack()));
+			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->orCard->getCorrespondingCardEffect());
+		}),
+		DelayTime::create(1.5f),
+		CallFunc::create([=]()
+		{
+			// Phase 1: Run card ord animation
+			this->previewCardB->autoCard->activeCard->addOperation(Card::Operation(Card::Operation::OperationType::OR, this->previewCardA->autoCard->getAttack()));
+			this->previewCardB->autoCard->activeCard->cardEffects->runEffect(this->orCard->getCorrespondingCardEffect());
 			this->runAnimationLoop();
 		}),
 		nullptr
