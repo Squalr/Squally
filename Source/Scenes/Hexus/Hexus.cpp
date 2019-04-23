@@ -23,6 +23,7 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 #include "Scenes/Hexus/States/States.h"
 
 #include "Resources/HexusResources.h"
@@ -111,6 +112,7 @@ Hexus::Hexus()
 	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
 	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
 	this->relocateLayer = Node::create();
+	this->helpMenuComponent = HelpMenuComponent::create();
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -198,6 +200,7 @@ Hexus::Hexus()
 	this->addChild(this->defeatBanner);
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
+	this->addChild(this->helpMenuComponent);
 	this->addChild(this->pauseMenu);
 	this->addChild(this->optionsMenu);
 	this->addChild(this->confirmationMenu);
@@ -241,6 +244,20 @@ void Hexus::initializePositions()
 void Hexus::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->cardPreviewComponent->setHelpClickCallback([=](Card* card)
+	{
+		this->menuBackDrop->setOpacity(196);
+		this->helpMenuComponent->openMenu(card);
+		GameUtils::focus(this->helpMenuComponent);
+	});
+
+	this->helpMenuComponent->setExitCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->helpMenuComponent->setVisible(false);
+		GameUtils::focus(this);
+	});
 
 	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexus, [](EventCustom* args)
 	{

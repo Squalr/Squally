@@ -5,6 +5,7 @@
 
 #include "Engine/SmartNode.h"
 #include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardEffects.h"
 
 namespace cocos2d
 {
@@ -15,7 +16,6 @@ class CardEffects;
 class ConstantString;
 class ClickableNode;
 class LocalizedLabel;
-class UIBoundObject;
 
 class Card : public SmartNode
 {
@@ -56,7 +56,7 @@ public:
 		}
 	};
 
-	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
+	static Card* create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
 
 	Operation toOperation(unsigned int immediate = 0);
 	void reveal();
@@ -78,7 +78,8 @@ public:
 	void setIsPlayerOwnedCard(bool isPlayerOwnedCard);
 	bool getIsPlayerOwnedCard();
 	void runOverflowEffect(bool offsetYPosition = false);
-	void runUnderflowEffect(bool offsetYPosition = false);
+	void runUnderflowEffect(bool offsetYPosition = false, bool isGoodEffect = true);
+	CardEffects::CardEffect getCorrespondingCardEffect();
 
 	CardData* cardData;
 	CardEffects* cardEffects;
@@ -93,7 +94,7 @@ public:
 	static const cocos2d::Color4B buffColor;
 
 protected:
-	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true);
+	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
 	~Card();
 
 	void onEnter() override;
@@ -110,6 +111,7 @@ private:
 	int applyOperation(int attack, Operation operation);
 
 	bool isPlayerOwnedCard;
+	bool relocateUI;
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;

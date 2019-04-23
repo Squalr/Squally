@@ -92,8 +92,8 @@ HexusOpponentData* Undead::getHexusOpponentData()
 			Undead::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.167f,
+			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),

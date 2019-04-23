@@ -9,6 +9,8 @@ class CardPreviewComponent : public ComponentBase
 {
 public:
 	static CardPreviewComponent* create();
+	
+	void setHelpClickCallback(std::function<void(Card* card)> onHelpClick);
 
 protected:
 	void onBeforeStateChange(GameState* gameState) override;

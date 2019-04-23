@@ -278,16 +278,24 @@ void TerrainObject::buildSurfaceShadow()
 	Rect shadowRect = AlgoUtils::getPolygonRect(this->points);
 
 	Sprite* renderedShadowLine = RenderUtils::renderNodeToSprite(shadowLine, shadowRect.origin, shadowRect.size);
-	Sprite* rasterizedShadowLine = RenderUtils::applyShaderOnce(renderedShadowLine, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
-	{
-		state->setUniformVec2("resolution", Vec2(shadowRect.size.width, shadowRect.size.height));
-		state->setUniformFloat("blurRadius", 32.0f);
-		state->setUniformFloat("sampleNum", 12.0f);
-	});
-	rasterizedShadowLine->setAnchorPoint(Vec2::ZERO);
-	rasterizedShadowLine->setPosition(shadowRect.origin);
 
-	this->shadowsNode->addChild(rasterizedShadowLine);
+	if (renderedShadowLine != nullptr)
+	{
+		Sprite* rasterizedShadowLine = RenderUtils::applyShaderOnce(renderedShadowLine, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
+		{
+			state->setUniformVec2("resolution", Vec2(shadowRect.size.width, shadowRect.size.height));
+			state->setUniformFloat("blurRadius", 32.0f);
+			state->setUniformFloat("sampleNum", 12.0f);
+		});
+
+		if (rasterizedShadowLine != nullptr)
+		{
+			rasterizedShadowLine->setAnchorPoint(Vec2::ZERO);
+			rasterizedShadowLine->setPosition(shadowRect.origin);
+
+			this->shadowsNode->addChild(rasterizedShadowLine);
+		}
+	}
 }
 
 void TerrainObject::buildSurfaceTextures()

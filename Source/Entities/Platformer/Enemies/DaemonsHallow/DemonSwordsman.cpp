@@ -92,8 +92,8 @@ HexusOpponentData* DemonSwordsman::getHexusOpponentData()
 			DemonSwordsman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.083f,
+			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),

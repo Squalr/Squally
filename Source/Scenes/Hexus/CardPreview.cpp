@@ -103,6 +103,19 @@ void CardPreview::initializePositions()
 	this->helpButton->setPosition(Vec2(0.0f, -212.0f));
 }
 
+void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpClick)
+{
+	this->onHelpClick = onHelpClick;
+
+	this->helpButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		if (this->onHelpClick != nullptr)
+		{
+			this->onHelpClick(this->currentPreviewCard);
+		}
+	});
+}
+
 void CardPreview::clearPreview()
 {
 	this->previewCard(nullptr);
@@ -114,16 +127,15 @@ void CardPreview::previewCard(Card* card)
 	{
 		this->currentPreviewCard = card;
 		this->previewPanel->removeAllChildren();
+		this->helpButton->setVisible(false);
 
 		if (card == nullptr)
 		{
-			this->helpButton->setVisible(false);
 			return;
 		}
 
 		Sprite* previewSprite = Sprite::create(card->cardData->cardResourceFile);
 		this->previewPanel->addChild(previewSprite);
-		this->helpButton->setVisible(true);
 
 		switch (card->cardData->cardType)
 		{
@@ -131,6 +143,7 @@ void CardPreview::previewCard(Card* card)
 			case CardData::CardType::Binary:
 			case CardData::CardType::Hexidecimal:
 			{
+				this->helpButton->setVisible(true);
 				int attack = card->getAttack();
 
 				// Show special effects
@@ -223,76 +236,91 @@ void CardPreview::previewCard(Card* card)
 				{
 					case CardData::CardType::Special_MOV:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Mov::create());
 						break;
 					}
 					case CardData::CardType::Special_AND:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalAnd::create());
 						break;
 					}
 					case CardData::CardType::Special_OR:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalOr::create());
 						break;
 					}
 					case CardData::CardType::Special_XOR:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_LogicalXor::create());
 						break;
 					}
 					case CardData::CardType::Special_SHL:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftLeft::create());
 						break;
 					}
 					case CardData::CardType::Special_SHR:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRight::create());
 						break;
 					}
 					case CardData::CardType::Special_ROL:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftLeftCircular::create());
 						break;
 					}
 					case CardData::CardType::Special_ROR:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_ShiftRightCircular::create());
 						break;
 					}
 					case CardData::CardType::Special_NOT:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Inverse::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP1:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip1::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP2:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip2::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP3:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip3::create());
 						break;
 					}
 					case CardData::CardType::Special_FLIP4:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip4::create());
 						break;
 					}
 					case CardData::CardType::Special_ADD:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Addition::create());
 						break;
 					}
 					case CardData::CardType::Special_SUB:
 					{
+						this->helpButton->setVisible(true);
 						specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Subtract::create());
 						break;
 					}

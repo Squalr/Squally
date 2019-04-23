@@ -75,6 +75,7 @@ class AssemblyHelpText;
 class StagingHelperText;
 class GameState;
 class HexusOpponentData;
+class HelpMenuComponent;
 class PauseMenu;
 class OptionsMenu;
 class ConfirmationMenu;
@@ -172,6 +173,7 @@ private:
 	cocos2d::Node* relocateLayer;
 
 	cocos2d::LayerColor* menuBackDrop;
+	HelpMenuComponent* helpMenuComponent;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;

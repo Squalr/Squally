@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "9.0f / 13.0f",
+      "Strength": "9.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -38,16 +38,18 @@
 
       ],
       "PlayerHand": [
-        
+        "LogicalXor",
+        "Addition"
       ],
       "EnemyHand": [
 
       ],
       "PlayerBinaryCards": [
-
+        "Binary15"
       ],
       "PlayerDecimalCards": [
-
+        "Decimal7",
+        "Decimal15"
       ],
       "PlayerHexCards": [
 
@@ -56,10 +58,14 @@
 
       ],
       "EnemyDecimalCards": [
-
+        "Decimal8"
       ],
       "EnemyHexCards": [
-
+        "Absorb",
+        "Absorb",
+        "Hex11",
+        "Hex12",
+        "Hex14"
       ],
       "TutorialKey": ""
     }

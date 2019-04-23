@@ -6,16 +6,33 @@
 class CipherPuzzleData : public SmartNode
 {
 public:
-	std::vector<std::tuple<std::string, std::string>> getInputOutputMap();
+	static CipherPuzzleData* create(
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
+		std::vector<std::string> rewards,
+		std::vector<std::string> bonusRewards,
+		bool isHardMode);
+	
+	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapEasy();
+	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapHard();
+	std::vector<std::string> getRewards();
+	std::vector<std::string> getBonusRewards();
+	bool isHardModeEnabled();
 
-protected:
-	CipherPuzzleData(std::vector<std::tuple<std::string, std::string>> inputOutputMap);
+private:
+	typedef SmartNode super;
+	CipherPuzzleData(std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
+		std::vector<std::string> rewards,
+		std::vector<std::string> bonusRewards,
+		bool isHardMode);
 	~CipherPuzzleData();
 
 	void initializeListeners() override;
 
-private:
-	typedef SmartNode super;
-
-	std::vector<std::tuple<std::string, std::string>> inputOutputMap;
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy;
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard;
+	std::vector<std::string> rewards;
+	std::vector<std::string> bonusRewards;
+	bool isHardMode;
 };

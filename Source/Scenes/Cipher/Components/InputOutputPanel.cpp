@@ -7,6 +7,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -16,7 +17,7 @@
 
 using namespace cocos2d;
 
-InputOutputPanel* InputOutputPanel::create(std::string input, std::string output, std::function<void(InputOutputPanel*)> selectCallback)
+InputOutputPanel* InputOutputPanel::create(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback)
 {
 	InputOutputPanel* instance = new InputOutputPanel(input, output, selectCallback);
 
@@ -25,20 +26,20 @@ InputOutputPanel* InputOutputPanel::create(std::string input, std::string output
 	return instance;
 }
 
-InputOutputPanel::InputOutputPanel(std::string input, std::string output, std::function<void(InputOutputPanel*)> selectCallback)
+InputOutputPanel::InputOutputPanel(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback)
 {
 	this->input = input;
 	this->output = output;
 	this->selectCallback = selectCallback;
 
 	this->panel = ClickableNode::create(CipherResources::IOPanel, CipherResources::IOPanelSelected);
-	this->inputLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(input));
-	this->outputLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(output));
+	this->inputLabel = SmartAsciiLabel::create();
+	this->outputLabel = SmartAsciiLabel::create();
 	this->failedIcon = Sprite::create(CipherResources::IOFailed);
 	this->passedIcon = Sprite::create(CipherResources::IOCorrect);
 
-	inputLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
-	outputLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->inputLabel->loadDisplayValue(this->input, CipherEvents::DisplayDataType::Ascii);
+	this->outputLabel->loadDisplayValue(this->output, CipherEvents::DisplayDataType::Ascii);
 
 	this->addChild(this->panel);
 	this->addChild(this->inputLabel);

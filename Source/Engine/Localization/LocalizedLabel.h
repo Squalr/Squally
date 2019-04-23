@@ -66,14 +66,14 @@ private:
 	void onEnter() override;
 	void onStringUpdate(LocalizedString* localizedString);
 	cocos2d::LanguageType getCurrentLanguage();
-	float getFontSizeM1(std::string fontResource);
-	float getFontSizeM2(std::string fontResource);
-	float getFontSizeM3(std::string fontResource);
-	float getFontSizeH1(std::string fontResource);
-	float getFontSizeH2(std::string fontResource);
-	float getFontSizeH3(std::string fontResource);
-	float getFontSizeP(std::string fontResource);
-	float getFontSizeSmall(std::string fontResource);
+	float getFontSizeM1();
+	float getFontSizeM2();
+	float getFontSizeM3();
+	float getFontSizeH1();
+	float getFontSizeH2();
+	float getFontSizeH3();
+	float getFontSizeP();
+	float getFontSizeSmall();
 	void updateTranslationEditHitbox();
 
 	std::string getPixelFont();

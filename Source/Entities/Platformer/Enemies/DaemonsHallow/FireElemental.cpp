@@ -45,7 +45,7 @@ FireElemental::FireElemental(ValueMap& initProperties) : PlatformerEnemy(initPro
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(820.0f, 1480.0f),
-	0.20f,
+	1.0f,
 	Vec2(64.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* FireElemental::getHexusOpponentData()
 		FireElemental::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.20f,
+			1.0f,
 			Vec2(64.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			FireElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.667f,
+			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),

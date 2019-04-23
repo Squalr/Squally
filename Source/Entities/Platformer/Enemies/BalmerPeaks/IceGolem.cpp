@@ -92,8 +92,8 @@ HexusOpponentData* IceGolem::getHexusOpponentData()
 			IceGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.308f,
-			HexusOpponentData::generateDeck(32, 0.308f,
+			0.333f,
+			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 
 			}),

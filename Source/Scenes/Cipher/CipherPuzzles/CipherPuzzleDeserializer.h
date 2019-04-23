@@ -11,7 +11,7 @@ public:
 private:
 	typedef GlobalNode super;
 	void initializeListeners() override;
-	void onDeserializationRequest(CipherEvents::CipherLoadArgs* args);
+	void onDeserializationRequest(CipherEvents::CipherOpenArgs* args);
 
 	static CipherPuzzleDeserializer* instance;
 };

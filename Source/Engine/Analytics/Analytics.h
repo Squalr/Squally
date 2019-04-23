@@ -19,6 +19,8 @@ private:
 	void onEnter() override;
 	void update(float dt) override;
 
+	static bool areAnalyticsEnabled();
+
 	static Analytics* instance;
 	static const std::string trackingCode;
 };

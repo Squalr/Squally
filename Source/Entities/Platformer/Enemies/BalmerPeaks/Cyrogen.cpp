@@ -75,7 +75,7 @@ Cyrogen::~Cyrogen()
 
 Vec2 Cyrogen::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(-48.0f, -232.0f);
 }
 
 HexusOpponentData* Cyrogen::getHexusOpponentData()
@@ -88,7 +88,7 @@ HexusOpponentData* Cyrogen::getHexusOpponentData()
 			0.8f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(-48.0f, -232.0f),
 			Cyrogen::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
@@ -121,7 +121,10 @@ HexusOpponentData* Cyrogen::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,7 +134,9 @@ HexusOpponentData* Cyrogen::getHexusOpponentData()
 				// Player binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -146,7 +151,9 @@ HexusOpponentData* Cyrogen::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -156,7 +163,10 @@ HexusOpponentData* Cyrogen::getHexusOpponentData()
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

@@ -31,6 +31,7 @@ private:
 	cocos2d::Node* chestOpen;
 	cocos2d::Node* chestClosed;
 	InteractMenu* interactMenu;
+	bool canInteract;
 
 	std::string chestOpenEvent;
 	std::string chestOpenArgs;

@@ -45,7 +45,7 @@ Assassin::Assassin(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(278.0f, 288.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* Assassin::getHexusOpponentData()
 		Assassin::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_VoidStar_Assassin_Animations,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.9f,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Assassin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.417f,
+			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),

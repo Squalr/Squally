@@ -45,7 +45,7 @@ Yeti::Yeti(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
 	PlatformerCollisionType::Enemy,
 	Size(380.0f, 572.0f),
-	0.5f,
+	1.0f,
 	Vec2(24.0f, 0.0f),
 	10,
 	10)
@@ -85,15 +85,15 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 		Yeti::HexusOpponentDataInstance = new HexusOpponentData(
 			EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.5f,
+			1.0f,
 			Vec2(24.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-64.0f, -160.0f),
 			Yeti::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.077f,
-			HexusOpponentData::generateDeck(32, 0.077f,
+			0.083f,
+			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),

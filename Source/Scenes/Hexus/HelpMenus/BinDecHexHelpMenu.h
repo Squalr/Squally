@@ -1,17 +1,39 @@
 #pragma once
 
-#include "Scenes/Hexus/HelpMenus/HelpMenuBase.h"
+#include "Engine/SmartNode.h"
 
-class BinDecHexHelpMenu : public HelpMenuBase
+namespace cocos2d
+{
+	class Node;
+}
+
+class AutoCard;
+class Card;
+class LocalizedLabel;
+
+class BinDecHexHelpMenu : public SmartNode
 {
 public:
 	static BinDecHexHelpMenu* create();
 
+	void open(Card* card);
+
 private:
+	typedef SmartNode super;
 	BinDecHexHelpMenu();
 	~BinDecHexHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+	LocalizedLabel* description;
+	AutoCard* binCard;
+	AutoCard* decCard;
+	AutoCard* hexCard;
+	LocalizedLabel* equalsLabelLeft;
+	LocalizedLabel* equalsLabelRight;
+	LocalizedLabel* binHeader;
+	LocalizedLabel* decHeader;
+	LocalizedLabel* hexHeader;
 };
