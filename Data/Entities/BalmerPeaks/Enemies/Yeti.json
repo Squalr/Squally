@@ -1,6 +1,5 @@
 {
-  "Environment": "BalmerPeaks",
-  "Scale": "0.5f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "380.0f",
     "Height": "572.0f"
@@ -22,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "1.0f / 13.0f",
+      "Strength": "1.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]
@@ -52,14 +51,14 @@
 
       ],
       "PlayerHexCards": [
-
+        
       ],
       "EnemyBinaryCards": [
         "Binary6",
         "Binary9"
       ],
       "EnemyDecimalCards": [
-
+        
       ],
       "EnemyHexCards": [
 

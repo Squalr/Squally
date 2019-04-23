@@ -94,6 +94,7 @@ public:
 
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerMoveObjectToTopLayer(RelocateObjectArgs args);
+	static void TriggerUnbindObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
 
@@ -102,6 +103,7 @@ public:
 	static const std::string EventSpawnObject;
 	static const std::string EventSpawnObjectDelegator;
 	static const std::string EventMoveObjectToTopLayer;
+	static const std::string EventUnbindObject;
 
 	template<class T>
 	static void QueryObjects(QueryObjectsArgs<T> args)

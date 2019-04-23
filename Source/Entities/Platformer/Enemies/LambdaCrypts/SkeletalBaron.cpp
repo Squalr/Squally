@@ -75,7 +75,7 @@ SkeletalBaron::~SkeletalBaron()
 
 Vec2 SkeletalBaron::getAvatarFrameOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(16.0f, -112.0f);
 }
 
 HexusOpponentData* SkeletalBaron::getHexusOpponentData()
@@ -87,13 +87,13 @@ HexusOpponentData* SkeletalBaron::getHexusOpponentData()
 			HexusResources::Menus_HexusFrameLambdaCrypts,
 			0.8f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
-			Vec2(-32.0f, -112.0f),
+			Vec2(0.0f, -144.0f),
+			Vec2(16.0f, -112.0f),
 			SkeletalBaron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
-			HexusOpponentData::generateDeck(32, 1.000f,
+			0.750f,
+			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),

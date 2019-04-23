@@ -49,18 +49,14 @@ SoundManager::~SoundManager()
 void SoundManager::onEnter()
 {
 	super::onEnter();
+
 	this->scheduleUpdate();
 }
 
-void SoundManager::playMusicResource(std::string musicResource)
+void SoundManager::update(float dt)
 {
-	SoundManager* instance = SoundManager::getInstance();
-	instance->nextMusicResource = musicResource;
-}
+	super::update(dt);
 
-void SoundManager::update(float delta)
-{
-	super::update(delta);
 	// We Need To Change Tracks
 	if (this->currentMusicResource != this->nextMusicResource)
 	{
@@ -82,8 +78,8 @@ void SoundManager::update(float delta)
 			}
 			case SoundManager::BackgroundMusicStates::FADING_OUT:
 			{
-				this->timeRemainingOnTransition -= delta;
-				if (this->timeRemainingOnTransition <= 0) 
+				this->timeRemainingOnTransition -= dt;
+				if (this->timeRemainingOnTransition <= 0)
 				{
 					this->backgroundMusicState = SoundManager::BackgroundMusicStates::STOPPED;
 					AudioEngine::stop(this->backgroundMusicId);
@@ -95,7 +91,8 @@ void SoundManager::update(float delta)
 				}
 				break;
 			}
-			default: {
+			default:
+			{
 				break;
 			}
 		}
@@ -106,7 +103,7 @@ void SoundManager::update(float delta)
 		{
 			case SoundManager::BackgroundMusicStates::FADING_IN:
 			{
-				this->timeRemainingOnTransition -= delta;	
+				this->timeRemainingOnTransition -= dt;	
 				if (this->timeRemainingOnTransition <= 0) 
 				{
 					this->backgroundMusicState = BackgroundMusicStates::PLAYING;
@@ -120,12 +117,19 @@ void SoundManager::update(float delta)
 				break;
 			}
 			case SoundManager::BackgroundMusicStates::PLAYING:
-			default: {
+			default:
+			{
 				// Do Nothing, all is well
 				break;
 			}
 		}
 	}
+}
+
+void SoundManager::playMusicResource(std::string musicResource)
+{
+	SoundManager* instance = SoundManager::getInstance();
+	instance->nextMusicResource = musicResource;
 }
 
 void SoundManager::playSoundResource(std::string soundResource, float volumeMultiplier)

@@ -6,9 +6,10 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/Abomination.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/Gargoyle.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/BoneFiend.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Hunter.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Mystic.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedFighter.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedPig.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalBaron.h"
@@ -16,8 +17,6 @@
 #include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalKnight.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/SkeletalPriestess.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Undead.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/VoidArcher.h"
-#include "Entities/Platformer/Enemies/LambdaCrypts/VoidDemon.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/LambdaCrypts/HexusChapterPreviewLambdaCryptsPuzzle.h"
 
@@ -40,9 +39,10 @@ void HexusOpponentMenuLambdaCryptsPuzzle::registerGlobalScene()
 
 HexusOpponentMenuLambdaCryptsPuzzle::HexusOpponentMenuLambdaCryptsPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleLambdaCrypts, HexusChapterPreviewLambdaCryptsPuzzle::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(Abomination::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Gargoyle::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(BoneFiend::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Hunter::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(KingZul::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Mystic::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(ReanimatedFighter::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(ReanimatedPig::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(SkeletalBaron::getHexusOpponentData()));
@@ -50,8 +50,6 @@ HexusOpponentMenuLambdaCryptsPuzzle::HexusOpponentMenuLambdaCryptsPuzzle() : sup
 	this->opponents.push_back(HexusOpponentPreview::create(SkeletalKnight::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(SkeletalPriestess::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Undead::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(VoidArcher::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(VoidDemon::getHexusOpponentData()));
 
 	this->buildOpponentList();
 }

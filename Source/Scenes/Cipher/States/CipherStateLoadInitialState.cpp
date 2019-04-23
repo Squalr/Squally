@@ -31,7 +31,14 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 	// Load initial state variables
 	if (cipherState->puzzleData != nullptr)
 	{
-		cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMap();
+		if (cipherState->puzzleData->isHardModeEnabled())
+		{
+			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapHard();
+		}
+		else
+		{
+			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapEasy();
+		}
 	}
 	
 	cipherState->loadCipherAtIndex(0);

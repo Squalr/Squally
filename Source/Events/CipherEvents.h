@@ -17,6 +17,7 @@ class CipherEvents
 public:
 	static const std::string EventLoadCipher;
 	static const std::string EventOpenCipher;
+	static const std::string EventExitCipher;
 	static const std::string EventRequestBlockSpawn;
 	static const std::string EventRequestConnectionCreate;
 	static const std::string EventConnectionUpdated;
@@ -27,20 +28,21 @@ public:
 	static const std::string EventOpenAsciiTable;
 	static const std::string EventTryUnlockCurrentCipher;
 
-	struct CipherLoadArgs
+	struct CipherOpenArgs
 	{
-		std::string cipherName;
+		std::string cipherJson;
+		bool isHardMode;
 
-		CipherLoadArgs(std::string cipherName) : cipherName(cipherName)
+		CipherOpenArgs(std::string cipherJson, bool isHardMode) : cipherJson(cipherJson), isHardMode(isHardMode)
 		{
 		}
 	};
 
-	struct CipherOpenArgs
+	struct CipherLoadArgs
 	{
 		CipherPuzzleData* cipherPuzzleData;
 
-		CipherOpenArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
+		CipherLoadArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
 		{
 		}
 	};
@@ -87,14 +89,14 @@ public:
 
 	struct CipherChangeActiveCipherArgs
 	{
-		std::string input;
-		std::string output;
+		unsigned char input;
+		unsigned char output;
 		bool autoScroll;
 
-		CipherChangeActiveCipherArgs(std::string input, std::string output) : input(input), output(output), autoScroll(false)
+		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output) : input(input), output(output), autoScroll(false)
 		{
 		}
-		CipherChangeActiveCipherArgs(std::string input, std::string output, bool autoScroll) : input(input), output(output), autoScroll(autoScroll)
+		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output, bool autoScroll) : input(input), output(output), autoScroll(autoScroll)
 		{
 		}
 	};
@@ -136,8 +138,18 @@ public:
 		}
 	};
 
-	static void TriggerLoadCipher(CipherLoadArgs args);
-	static void TriggerOpenCipher(CipherOpenArgs args);
+	struct CipherExitArgs
+	{
+		bool victory;
+
+		CipherExitArgs(bool victory) : victory(victory)
+		{
+		}
+	};
+
+	static void TriggerLoadCipher(CipherOpenArgs args);
+	static void TriggerOpenCipher(CipherLoadArgs args);
+	static void TriggerExitCipher(CipherExitArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);
 	static void TriggerConnectionUpdated(CipherConnectionUpdatedArgs args);

@@ -7,6 +7,7 @@ using namespace cocos2d;
 
 const std::string CipherEvents::EventLoadCipher = "EVENT_LOAD_CIPHER";
 const std::string CipherEvents::EventOpenCipher = "EVENT_OPEN_CIPHER";
+const std::string CipherEvents::EventExitCipher = "EVENT_EXIT_CIPHER";
 const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SPAWN";
 const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_REQUEST_CONNECTION_SPAWN";
 const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDATED";
@@ -16,7 +17,7 @@ const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPL
 const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
 const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_TRY_UNLOCK_CURRENT_CIPHER";
 
-void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
+void CipherEvents::TriggerLoadCipher(CipherOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventLoadCipher,
@@ -24,10 +25,18 @@ void CipherEvents::TriggerLoadCipher(CipherLoadArgs args)
 	);
 }
 
-void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
+void CipherEvents::TriggerOpenCipher(CipherLoadArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventOpenCipher,
+		&args
+	);
+}
+
+void CipherEvents::TriggerExitCipher(CipherExitArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventExitCipher,
 		&args
 	);
 }

@@ -91,7 +91,7 @@ void DestinationBlock::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->charValue = this->cipherIndex < args->output.size() ? args->output[this->cipherIndex] : char(0);
+			this->charValue = args->output;
 			
 			this->loadDisplayValue();
 		}

@@ -232,14 +232,7 @@ bool ConfigManager::getIsFullScreen()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (!GameUtils::keyExists(instance->valueMap, ConfigManager::FullScreenKey))
-	{
-		return false;
-	}
-	else
-	{
-		return instance->valueMap[ConfigManager::FullScreenKey].asBool();
-	}
+	return GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::FullScreenKey, Value(false)).asBool();
 }
 
 float ConfigManager::getSoundVolume()

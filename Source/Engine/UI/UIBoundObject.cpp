@@ -1,5 +1,8 @@
 #include "UIBoundObject.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -38,6 +41,24 @@ void UIBoundObject::onEnter()
     }
 }
 
+void UIBoundObject::initializeListeners()
+{
+    super::initializeListeners();
+
+    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObject, [=](EventCustom*)
+    {
+        if (this->referencedObject != nullptr)
+        {
+            this->removeChild(referencedObject);
+        }
+
+        if (this->getParent() != nullptr)
+        {
+            this->getParent()->removeChild(this);
+        }
+    }));
+}
+
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
 {
     if (uiBoundObject == nullptr || uiBoundObject->referencedObject == nullptr || uiBoundObject->originalParent == nullptr)
@@ -55,6 +76,18 @@ Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
     return originalCoords + delta;
 }
 
+float UIBoundObject::getRealScale(UIBoundObject* uiBoundObject)
+{
+    if (uiBoundObject == nullptr || uiBoundObject->referencedObject == nullptr || uiBoundObject->originalParent == nullptr)
+    {
+        return 1.0f;
+    }
+
+    float parentScale = GameUtils::getScale(uiBoundObject->originalParent);
+
+    return parentScale * uiBoundObject->referencedObject->getScale();
+}
+
 cocos2d::Node* UIBoundObject::getReferencedObject()
 {
     return this->referencedObject;
@@ -67,18 +100,21 @@ cocos2d::Node* UIBoundObject::getOriginalParent()
 
 void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
+    if (this->referencedObject == nullptr)
+    {
+        return;
+    }
+
     Vec3 originalCoords = this->referencedObject->getPosition3D();
     Vec3 realCoords = UIBoundObject::getRealCoords(this);
+    float realScale = UIBoundObject::getRealScale(this);
+    float originalScale = this->referencedObject->getScale();
 
-    if (this->referencedObject != nullptr)
-    {
-        this->referencedObject->setPosition3D(realCoords);
-    }
+    this->referencedObject->setPosition3D(realCoords);
+    this->referencedObject->setScale(realScale);
 
 	super::visit(renderer, parentTransform, parentFlags);
 
-    if (this->referencedObject != nullptr)
-    {
-        this->referencedObject->setPosition3D(originalCoords);
-    }
+    this->referencedObject->setPosition3D(originalCoords);
+    this->referencedObject->setScale(originalScale);
 }

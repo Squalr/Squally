@@ -1,5 +1,5 @@
 {
-  "Scale": "0.17f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "980.0f",
     "Height": "1200.0f"
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "1.0f",
+      "Strength": "4.0f / 12.0f",
       "Strategy": "Random",
       "PresetCards": [
       ]

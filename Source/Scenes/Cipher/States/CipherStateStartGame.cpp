@@ -3,6 +3,9 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Scenes/Cipher/Components/Blocks/Special/DestinationBlock.h"
+#include "Scenes/Cipher/Components/Blocks/Special/SourceBlock.h"
+
 using namespace cocos2d;
 
 CipherStateStartGame* CipherStateStartGame::create()
@@ -31,6 +34,17 @@ void CipherStateStartGame::onBeforeStateEnter(CipherState* cipherState)
 	cipherState->connectionContent->removeAllChildren();
 	cipherState->inputOutputMap.clear();
 	cipherState->userBlocks.clear();
+	cipherState->userConnections.clear();
+
+	for (auto it = cipherState->inputBlocks.begin(); it != cipherState->inputBlocks.end(); it++)
+	{
+		(*it)->removeConnections();
+	}
+
+	for (auto it = cipherState->outputBlocks.begin(); it != cipherState->outputBlocks.end(); it++)
+	{
+		(*it)->removeConnections();
+	}
 }
 
 void CipherStateStartGame::onStateEnter(CipherState* cipherState)

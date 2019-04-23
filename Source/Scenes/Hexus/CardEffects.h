@@ -11,7 +11,7 @@ class CardEffects : public SmartNode
 public:
 	static CardEffects* create();
 
-	enum CardEffect
+	enum class CardEffect
 	{
 		Bite,
 		DustPoof,

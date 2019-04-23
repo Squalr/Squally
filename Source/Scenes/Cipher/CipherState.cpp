@@ -186,6 +186,17 @@ void CipherState::clearInteraction()
 {
 }
 
+void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData)
+{
+	if (this->puzzleData != nullptr)
+	{
+		this->removeChild(this->puzzleData);
+	}
+
+	this->puzzleData = puzzleData;
+	this->addChild(this->puzzleData);
+}
+
 void CipherState::loadCipherAtIndex(int index)
 {
 	if (index >= 0 && index < this->inputOutputMap.size())

@@ -47,7 +47,7 @@ public:
 	std::function<void(bool)> updateStateCallback;
 
 	CipherPuzzleData* puzzleData;
-	std::vector<std::tuple<std::string, std::string>> inputOutputMap;
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap;
 
 	std::vector<SourceBlock*> inputBlocks;
 	std::vector<DestinationBlock*> outputBlocks;

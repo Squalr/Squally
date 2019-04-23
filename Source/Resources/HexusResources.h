@@ -74,6 +74,7 @@ namespace HexusResources
 	extern const std::string Flags;
 	extern const std::string FlagsSelected;
 	extern const std::string Gameboard;
+	extern const std::string HelperTextFrame;
 	extern const std::string Hex_0;
 	extern const std::string Hex_1;
 	extern const std::string Hex_10;

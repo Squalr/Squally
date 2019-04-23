@@ -167,7 +167,7 @@ void Cipher::initializePositions()
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
-	this->cipherState->puzzleData = cipherPuzzleData;
+	this->cipherState->loadPuzzleData(cipherPuzzleData);
 	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
 }
 

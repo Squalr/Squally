@@ -95,8 +95,8 @@ void InputsOutputsPanel::initializeListeners()
 
 			for (index = 0; index < this->currentCipherState->inputOutputMap.size(); index++)
 			{
-				std::string input = std::get<0>(this->currentCipherState->inputOutputMap[index]);
-				std::string output = std::get<1>(this->currentCipherState->inputOutputMap[index]);
+				unsigned char input = std::get<0>(this->currentCipherState->inputOutputMap[index]);
+				unsigned char output = std::get<1>(this->currentCipherState->inputOutputMap[index]);
 
 				if (input == args->input && output == args->output)
 				{
@@ -211,7 +211,7 @@ void InputsOutputsPanel::loadPuzzleData()
 
 void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
 {
-	if (index < 0 || index > this->currentCipherState->inputOutputMap.size())
+	if (index < 0 || index > this->currentCipherState->inputOutputMap.size() || this->currentCipherState->inputOutputMap.size() == 0)
 	{
 		return;
 	}

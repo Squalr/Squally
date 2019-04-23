@@ -92,8 +92,8 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 			PenguinGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.538f,
-			HexusOpponentData::generateDeck(32, 0.538f,
+			0.583f,
+			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
@@ -121,7 +121,8 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 				// Player hand
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,7 +137,8 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 				// Player decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -146,17 +148,20 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
-					
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

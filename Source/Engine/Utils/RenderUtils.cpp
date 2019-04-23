@@ -15,6 +15,11 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 {
 	RenderTexture* renderedNode = RenderTexture::create(renderSize.width + padding.width * 2.0f, renderSize.height + padding.height * 2.0f);
 
+	if (renderedNode == nullptr)
+	{
+		return nullptr;
+	}
+
 	target->setPosition(-offset + padding);
 	renderedNode->begin();
 	target->visit();

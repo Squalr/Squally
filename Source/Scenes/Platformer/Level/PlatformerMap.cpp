@@ -8,6 +8,8 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Engine/UI/HUD/Hud.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
@@ -46,7 +48,7 @@ PlatformerMap::PlatformerMap()
 
 	this->getPhysicsWorld()->setAutoStep(false);
 
-	this->addChild(this->gameHud);
+	this->hud->addChild(this->gameHud);
 	this->menuHud->addChild(this->cipher);
 }
 
@@ -76,6 +78,8 @@ void PlatformerMap::onEnter()
 void PlatformerMap::initializePositions()
 {
 	super::initializePositions();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void PlatformerMap::initializeListeners()
@@ -95,13 +99,26 @@ void PlatformerMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherOpenArgs* args = static_cast<CipherEvents::CipherOpenArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherLoadArgs* args = static_cast<CipherEvents::CipherLoadArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
 			this->menuBackDrop->setOpacity(196);
 			this->cipher->setVisible(true);
 			this->cipher->openCipher(args->cipherPuzzleData);
+			GameUtils::focus(this->cipher);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventExitCipher, [=](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherExitArgs* args = static_cast<CipherEvents::CipherExitArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->menuBackDrop->setOpacity(0);
+			this->cipher->setVisible(false);
+			GameUtils::focus(this);
 		}
 	}));
 }

@@ -25,7 +25,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	void loadRewards();
 
 	cocos2d::Sprite* rewardsMenu;
