@@ -210,7 +210,7 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::EndianForest_Forest, [](SerializableMap* map)
+	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::CastleValgrind_Castle, [](SerializableMap* map)
 	{
 		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
 	}));
