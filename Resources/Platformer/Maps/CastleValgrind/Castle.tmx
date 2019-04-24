@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="524">
- <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
+<map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" nextobjectid="527">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
-  <image source="../TileMap.png" width="5760" height="3200"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
  </tileset>
  <objectgroup name="music">
   <properties>
@@ -138,11 +138,11 @@
    </properties>
    <polyline points="0,0 784,-40 1480,-8 2360,8 2800,-32 3056,24 3056,-216 3312,-232 3720,-208 3864,-120 4184,-40 7220,-96 7224,1052 -32,1072 56,496"/>
   </object>
-  <object id="509" name="solid" type="terrain" x="1508" y="3792">
+  <object id="509" name="solid" type="terrain" x="115.383" y="3792">
    <properties>
     <property name="texture" value="castle"/>
    </properties>
-   <polyline points="0,0 2264,-8 2448,32 3120,-12 3988,-12 6586.18,19.1515 6586.3,780.848 3672,784 3064,808 1128,712 -16,624 0,232"/>
+   <polyline points="0,0 2742.7,-8 2965.61,32 3779.7,-12 4831.23,-12 7978.77,19.1515 7978.92,780.848 4448.41,784 3711.86,808 1366.51,712 -19.3831,624 0,232"/>
   </object>
  </objectgroup>
  <objectgroup name="decor midground">
@@ -159,7 +159,7 @@
  </objectgroup>
  <objectgroup name="objects">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="511" name="wind" type="object" x="2986.82" y="3183.21" width="712.424" height="611.758">
@@ -240,10 +240,13 @@
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
+  <object id="524" name="heaven-hug" type="object" x="1174.09" y="3142.61" width="182.121" height="645.091"/>
+  <object id="525" name="heaven-hug" type="object" x="1481.67" y="3138.06" width="182.121" height="645.091"/>
+  <object id="526" name="heaven-hug" type="object" x="933.182" y="3132" width="182.121" height="645.091"/>
  </objectgroup>
  <objectgroup name="entities">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="skeletal-priestess" type="entity" x="7847.69" y="3556.66" width="78.7879" height="88">
@@ -254,7 +257,7 @@
  </objectgroup>
  <objectgroup name="player_layer">
   <properties>
-   <property name="ignore_hackermode" type="bool" value="true"/>
+   <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="452" name="squally" type="entity" x="2532.72" y="3597.4" width="78.7879" height="88"/>

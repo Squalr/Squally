@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.0.3" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" nextobjectid="437">
- <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="1125" columns="45">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
-  <image source="../TileMap.png" width="5760" height="3200"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
  </tileset>
  <objectgroup name="music">
   <properties>
@@ -128,7 +128,7 @@
  </objectgroup>
  <layer name="cave" width="80" height="48">
   <data encoding="base64" compression="zlib">
-   eJzt0DEKgDAURMEfr6Le/3ZqaWETrMQtQmAGtl9eFQAAAAAAAMB/R6s6u11t9KO5rEvV1m1fRj+ai34Z/TL6ZfTL6Jd59/s6Hvpl9Mvol9EPAAAAYB43TMwTrA==
+   eJzt0DEKgDAURMHcX63V2yZgE6zELcKHGdh+ea0BAAAAAAAA/LeN7dOOtXfKOceuaffaO+Xol9Evo19Gv4x+mXe/r+OhX0a/jH4Z/QAAAADq6CTzPhg=
   </data>
  </layer>
  <objectgroup name="terrain 2">
