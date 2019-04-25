@@ -160,6 +160,39 @@ void CipherChapterSelectMenu::initializeListeners()
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(CipherChapterSelectMenu::onKeyPressed, this);
 
+	this->chapterEndianForest->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::EndianForest));
+	});
+	this->chapterUnderflowRuins->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::UnderflowRuins));
+	});
+	this->chapterSeaSharpCaverns->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::SeaSharpCaverns));
+	});
+	this->chapterCastleValgrind->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::CastleValgrind));
+	});
+	this->chapterBalmerPeaks->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::BalmerPeaks));
+	});
+	this->chapterDaemonsHallow->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::DaemonsHallow));
+	});
+	this->chapterLambdaCrypts->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::LambdaCrypts));
+	});
+	this->chapterVoidStar->setClickCallback([=]()
+	{
+		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::VoidStar));
+	});
+
 	this->addEventListener(keyboardListener);
 }
 

@@ -28,6 +28,7 @@ protected:
 	void onBackClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void buildOpponentList();
+	static std::string buildCipherJson(std::string rule, std::vector<std::string> inputs);
 
 	NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter chapter;
 

@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherState.h"
 
@@ -47,6 +48,11 @@ void CipherPuzzlePreview::initializePositions()
 void CipherPuzzlePreview::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->previewNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		NavigationEvents::navigateCipher(NavigationEvents::NavigateCipherArgs(this->cipherPuzzleData->clone()));
+	});
 }
 
 void CipherPuzzlePreview::enableInteraction()

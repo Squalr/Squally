@@ -15,11 +15,12 @@ class CipherChapterPreview : public SmartNode
 public:
 	static CipherChapterPreview* create(std::string saveKey, std::string spriteResource, std::string spriteSelectedResource, std::string spriteDisabledResource);
 
-	void enableInteraction();
-	void disableInteraction();
+	void setClickCallback(std::function<void()> callback);
 	CipherPuzzleData* getPuzzleData();
 	std::string getSaveKey();
 	bool isChapterCleared();
+	void enableInteraction();
+	void disableInteraction();
 	
 private:
 	typedef SmartNode super;

@@ -13,6 +13,7 @@ public:
 		std::vector<std::string> bonusRewards,
 		bool isHardMode);
 	
+	CipherPuzzleData* clone();
 	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapEasy();
 	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapHard();
 	std::vector<std::string> getRewards();
