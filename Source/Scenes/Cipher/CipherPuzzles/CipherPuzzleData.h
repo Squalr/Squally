@@ -19,8 +19,6 @@ public:
 	std::vector<std::string> getBonusRewards();
 	bool isHardModeEnabled();
 
-	static const std::string winsPrefix;
-	
 private:
 	typedef SmartNode super;
 	CipherPuzzleData(std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,

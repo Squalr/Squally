@@ -10,7 +10,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
-class CipherPuzzleData;
+class CipherPuzzlePreview;
 class ClickableNode;
 class ScrollPane;
 class ClickableTextNode;
@@ -26,16 +26,14 @@ protected:
 	void initializeListeners() override;
 	void loadProgress();
 	void onBackClick();
-	void onDeckManagementClick();
-	void onShopClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void buildOpponentList();
 
 	NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter chapter;
 
 	ScrollPane* scrollPane;
-	std::vector<CipherPuzzleData*> opponents;
-	std::map<CipherPuzzleData*, CipherPuzzleData*> dependencies;
+	std::vector<CipherPuzzlePreview*> chests;
+	std::map<CipherPuzzlePreview*, CipherPuzzlePreview*> dependencies;
 
 	std::string chapterProgressSaveKey;
 	cocos2d::Sprite* background;

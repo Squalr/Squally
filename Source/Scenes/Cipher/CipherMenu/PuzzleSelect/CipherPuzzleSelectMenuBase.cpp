@@ -15,6 +15,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
@@ -30,7 +31,7 @@ CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(NavigationEvents::Navigat
 {
 	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
-	this->opponents = std::vector<CipherPuzzleData*>();
+	this->chests = std::vector<CipherPuzzlePreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
 	
@@ -62,11 +63,11 @@ void CipherPuzzleSelectMenuBase::onEnter()
 
 	if (!SaveManager::getGlobalDataOrDefault(this->chapterProgressSaveKey, cocos2d::Value(false)).asBool())
 	{
-		std::string lastOpponentWinsKey = CipherPuzzleData::winsPrefix + "TODOOO"; //// this->opponents.back()->hexusOpponentData->enemyNameKey;
+		std::string lastOpponentWinsKey = "TODOOO"; //// this->chests.back()->hexusOpponentData->enemyNameKey;
 
 		if (SaveManager::getGlobalDataOrDefault(lastOpponentWinsKey, cocos2d::Value(0)).asInt() > 0)
 		{
-			// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
+			// Beat the last chest -- save that we beat the chapter and navigate back to chapter select
 			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
 			NavigationEvents::navigateBack(1);
 			return;
@@ -81,11 +82,11 @@ void CipherPuzzleSelectMenuBase::onEnter()
 
 	// Just assume linear dependencies for now
 	this->dependencies.clear();
-	std::vector<CipherPuzzleData*>::iterator prevIt;
+	std::vector<CipherPuzzlePreview*>::iterator prevIt;
 
-	for (auto it = this->opponents.begin(); it != this->opponents.end(); prevIt = it, it++)
+	for (auto it = this->chests.begin(); it != this->chests.end(); prevIt = it, it++)
 	{
-		if (*it == this->opponents.front())
+		if (*it == this->chests.front())
 		{
 			this->dependencies[*it] = nullptr;
 		}
@@ -95,9 +96,9 @@ void CipherPuzzleSelectMenuBase::onEnter()
 		}
 	}
 
-	for (auto it = this->opponents.begin(); it != this->opponents.end(); it++)
+	for (auto it = this->chests.begin(); it != this->chests.end(); it++)
 	{
-		//// (*it)->disableInteraction();
+		(*it)->disableInteraction();
 	}
 
 	this->loadProgress();
@@ -114,7 +115,7 @@ void CipherPuzzleSelectMenuBase::initializePositions()
 
 	int index = 0;
 
-	for (std::vector<CipherPuzzleData*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
+	for (auto it = this->chests.begin(); it != this->chests.end(); ++it)
 	{
 		int x = index % 3;
 		int y = index / 3;
@@ -176,49 +177,39 @@ void CipherPuzzleSelectMenuBase::onBackClick()
 	NavigationEvents::navigateBack();
 }
 
-void CipherPuzzleSelectMenuBase::onDeckManagementClick()
-{
-	NavigationEvents::navigateHexusDeckManagement();
-}
-
-void CipherPuzzleSelectMenuBase::onShopClick()
-{
-	NavigationEvents::navigateHexusShop();
-}
-
 void CipherPuzzleSelectMenuBase::loadProgress()
 {
 	for (auto it = this->dependencies.begin(); it != this->dependencies.end(); it++)
 	{
-		CipherPuzzleData* opponent = (*it).first;
-		CipherPuzzleData* dependsOn = (*it).second;
+		CipherPuzzlePreview* chest = (*it).first;
+		CipherPuzzlePreview* dependsOn = (*it).second;
 
 		if (dependsOn == nullptr)
 		{
-			//// opponent->enableInteraction();
+			chest->enableInteraction();
 			continue;
 		}
 
-		std::string dependencyKey = "TODO"; //// CipherPuzzleData::winsPrefix + dependsOn->hexusOpponentData->enemyNameKey;
+		std::string dependencyKey = "TODO"; //// CipherPuzzlePreview::winsPrefix + dependsOn->hexusOpponentData->enemyNameKey;
 
 		int wins = SaveManager::hasGlobalData(dependencyKey) ? SaveManager::getGlobalData(dependencyKey).asInt() : 0;
 
 		if (wins > 0)
 		{
-			//// opponent->enableInteraction();
+			chest->enableInteraction();
 		}
 	}
 }
 
 void CipherPuzzleSelectMenuBase::buildOpponentList()
 {
-	for (std::vector<CipherPuzzleData*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
+	for (auto it = this->chests.begin(); it != this->chests.end(); ++it)
 	{
 		this->scrollPane->addChild(*it);
 	}
 
-	if (!opponents.empty())
+	if (!chests.empty())
 	{
-		//// this->opponents.back()->hexusOpponentData->setIsLastInChapter();
+		//// this->chests.back()->hexusOpponentData->setIsLastInChapter();
 	}
 }

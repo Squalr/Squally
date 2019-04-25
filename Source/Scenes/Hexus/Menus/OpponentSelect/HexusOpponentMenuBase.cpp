@@ -147,7 +147,7 @@ void HexusOpponentMenuBase::initializePositions()
 
 	int index = 0;
 
-	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
+	for (auto it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{
 		int x = index % 3;
 		int y = index / 3;
@@ -259,7 +259,7 @@ void HexusOpponentMenuBase::buildOpponentList()
 		return a->hexusOpponentData->strength < b->hexusOpponentData->strength; 
 	});
 
-	for (std::vector<HexusOpponentPreview*>::iterator it = this->opponents.begin(); it != this->opponents.end(); ++it)
+	for (auto it = this->opponents.begin(); it != this->opponents.end(); ++it)
 	{
 		this->scrollPane->addChild(*it);
 	}
