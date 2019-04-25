@@ -11,7 +11,7 @@
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
-#include "Scenes/Cipher/CipherMenu/CipherSelectMenu.h"
+#include "Scenes/Cipher/CipherMenu/CipherChapterSelectMenu.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
@@ -56,7 +56,7 @@ void Bootstrapper::initialize()
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
 	CipherPuzzleDeserializer::registerGlobalNode();
-	CipherSelectMenu::registerGlobalScene();
+	CipherChapterSelectMenu::registerGlobalScene();
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
 	HexusChapterSelectMenuPuzzles::registerGlobalScene();
