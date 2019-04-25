@@ -20,6 +20,25 @@ public:
 		NavigateLoadingScreenArgs(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback) : levelFile(levelFile), onLoadCallback(onLoadCallback) { }
 	};
 
+	struct NavigateCipherPuzzleSelectArgs
+	{
+		enum class Chapter
+		{
+			BalmerPeaks,
+			CastleValgrind,
+			DaemonsHallow,
+			EndianForest,
+			LambdaCrypts,
+			SeaSharpCaverns,
+			UnderflowRuins,
+			VoidStar,
+		};
+
+		NavigateCipherPuzzleSelectArgs::Chapter chapter;
+
+		NavigateCipherPuzzleSelectArgs(NavigateCipherPuzzleSelectArgs::Chapter chapter) : chapter(chapter) { }
+	};
+
 	struct NavigateCipherArgs
 	{
 		bool todo;
@@ -80,9 +99,9 @@ public:
 			PuzzleVoidStar,
 		};
 
-		Chapter chapter;
+		NavigateHexusOpponentSelectArgs::Chapter chapter;
 
-		NavigateHexusOpponentSelectArgs(Chapter chapter) : chapter(chapter) { }
+		NavigateHexusOpponentSelectArgs(NavigateHexusOpponentSelectArgs::Chapter chapter) : chapter(chapter) { }
 	};
 
 	struct NavigateCombatArgs
@@ -111,7 +130,8 @@ public:
 	static void navigateMinigames();
 	static void navigateOptions();
 	static void navigateWorldMap();
-	static void navigateCipherPuzzleSelect();
+	static void navigateCipherChapterSelect();
+	static void navigateCipherPuzzleSelect(NavigateCipherPuzzleSelectArgs args);
 	static void navigateCipher(NavigateCipherArgs args);
 	static void navigateHexus(NavigateHexusArgs args);
 	static void navigateHexusRewards(NavigateHexusRewardArgs args);
@@ -131,6 +151,7 @@ public:
 	static const std::string EventNavigateOptions;
 	static const std::string EventNavigateWorldMap;
 	static const std::string EventNavigateCipher;
+	static const std::string EventNavigateCipherChapterSelect;
 	static const std::string EventNavigateCipherPuzzleSelect;
 	static const std::string EventNavigateHexus;
 	static const std::string EventNavigateHexusRewards;

@@ -18,14 +18,14 @@ class ClickableTextNode;
 class LocalizedLabel;
 class LocalizedString;
 
-class CipherSelectMenu : public GlobalScene
+class CipherChapterSelectMenu : public GlobalScene
 {
 public:
 	static void registerGlobalScene();
 
 protected:
-	CipherSelectMenu();
-	~CipherSelectMenu();
+	CipherChapterSelectMenu();
+	~CipherChapterSelectMenu();
 
 private:
 	typedef GlobalScene super;
@@ -34,32 +34,25 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onCloseClick();
-	void onMouseOver(CipherLevelItem* tutorialItem);
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	ClickableTextNode* buildTabButton(std::string iconResource, LocalizedString* localizedString);
 
 	cocos2d::ParticleSystem* nether;
 	cocos2d::ParticleSystem* swirl;
-
-	cocos2d::Sprite* window;
+	
 	LocalizedLabel* titleLabel;
-	cocos2d::Sprite* descriptionBox;
-	LocalizedLabel* description;
-	ClickableNode* closeButton;
+	ClickableNode* backButton;
 
-	ClickableTextNode* tutorialsTabButton;
-	ClickableTextNode* easyTabButton;
-	ClickableTextNode* mediumTabButton;
-	ClickableTextNode* hardTabButton;
-	cocos2d::Node* leftPanel;
-	cocos2d::Node* rightPanel;
-	cocos2d::Node* tutorialsTab;
-	cocos2d::Node* easyTab;
-	cocos2d::Node* mediumTab;
-	cocos2d::Node* hardTab;
+	ClickableNode* chapterEndianForest;
+	ClickableNode* chapterUnderflowRuins;
+	ClickableNode* chapterSeaSharpCaverns;
+	ClickableNode* chapterCastleValgrind;
+	ClickableNode* chapterBalmerPeaks;
+	ClickableNode* chapterDaemonsHallow;
+	ClickableNode* chapterLambdaCrypts;
+	ClickableNode* chapterVoidStar;
 
-	std::vector<CipherLevelItem*> hexusOpponentItems;
+	std::vector<ClickableNode*> chapters;
 
-	static CipherSelectMenu* instance;
+	static CipherChapterSelectMenu* instance;
 	static const cocos2d::Color3B TitleColor;
 };

@@ -16,6 +16,7 @@ const std::string NavigationEvents::EventNavigateMinigames = "EVENT_NAVIGATE_MIN
 const std::string NavigationEvents::EventNavigateOptions = "EVENT_NAVIGATE_OPTIONS";
 const std::string NavigationEvents::EventNavigateWorldMap = "EVENT_NAVIGATE_WORLD_MAP";
 const std::string NavigationEvents::EventNavigateCipher = "EVENT_NAVIGATE_CIPHER";
+const std::string NavigationEvents::EventNavigateCipherChapterSelect = "EVENT_NAVIGATE_CIPHER_CHAPTER_SELECT";
 const std::string NavigationEvents::EventNavigateCipherPuzzleSelect = "EVENT_NAVIGATE_CIPHER_PUZZLE_SELECT";
 const std::string NavigationEvents::EventNavigateHexus = "EVENT_NAVIGATE_HEXUS";
 const std::string NavigationEvents::EventNavigateHexusRewards = "EVENT_NAVIGATE_HEXUS_REWARDS";
@@ -83,10 +84,18 @@ void NavigationEvents::navigateWorldMap()
 	);
 }
 
-void NavigationEvents::navigateCipherPuzzleSelect()
+void NavigationEvents::navigateCipherChapterSelect()
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateCipherPuzzleSelect
+		NavigationEvents::EventNavigateCipherChapterSelect
+	);
+}
+
+void NavigationEvents::navigateCipherPuzzleSelect(NavigateCipherPuzzleSelectArgs args)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigateCipherPuzzleSelect,
+		&args
 	);
 }
 
