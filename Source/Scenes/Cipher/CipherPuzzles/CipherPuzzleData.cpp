@@ -7,8 +7,6 @@
 
 using namespace cocos2d;
 
-const std::string CipherPuzzleData::winsPrefix = "WINS_";
-
 CipherPuzzleData* CipherPuzzleData::create(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,

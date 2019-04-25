@@ -104,6 +104,8 @@ namespace CipherResources
 	extern const std::string Menus_BalmerPeaks_Chest6;
 	extern const std::string Menus_BalmerPeaks_Chest7;
 	extern const std::string Menus_BalmerPeaks_Emblem;
+	extern const std::string Menus_BalmerPeaks_EmblemDisabled;
+	extern const std::string Menus_BalmerPeaks_EmblemSelected;
 	extern const std::string Menus_CastleValgrind_Chest0;
 	extern const std::string Menus_CastleValgrind_Chest1;
 	extern const std::string Menus_CastleValgrind_Chest2;
@@ -113,6 +115,8 @@ namespace CipherResources
 	extern const std::string Menus_CastleValgrind_Chest6;
 	extern const std::string Menus_CastleValgrind_Chest7;
 	extern const std::string Menus_CastleValgrind_Emblem;
+	extern const std::string Menus_CastleValgrind_EmblemDisabled;
+	extern const std::string Menus_CastleValgrind_EmblemSelected;
 	extern const std::string Menus_DaemonsHallow_Chest0;
 	extern const std::string Menus_DaemonsHallow_Chest1;
 	extern const std::string Menus_DaemonsHallow_Chest2;
@@ -122,6 +126,8 @@ namespace CipherResources
 	extern const std::string Menus_DaemonsHallow_Chest6;
 	extern const std::string Menus_DaemonsHallow_Chest7;
 	extern const std::string Menus_DaemonsHallow_Emblem;
+	extern const std::string Menus_DaemonsHallow_EmblemDisabled;
+	extern const std::string Menus_DaemonsHallow_EmblemSelected;
 	extern const std::string Menus_EndianForest_Chest0;
 	extern const std::string Menus_EndianForest_Chest1;
 	extern const std::string Menus_EndianForest_Chest2;
@@ -131,6 +137,8 @@ namespace CipherResources
 	extern const std::string Menus_EndianForest_Chest6;
 	extern const std::string Menus_EndianForest_Chest7;
 	extern const std::string Menus_EndianForest_Emblem;
+	extern const std::string Menus_EndianForest_EmblemDisabled;
+	extern const std::string Menus_EndianForest_EmblemSelected;
 	extern const std::string Menus_LambdaCrypts_Chest0;
 	extern const std::string Menus_LambdaCrypts_Chest1;
 	extern const std::string Menus_LambdaCrypts_Chest2;
@@ -140,6 +148,8 @@ namespace CipherResources
 	extern const std::string Menus_LambdaCrypts_Chest6;
 	extern const std::string Menus_LambdaCrypts_Chest7;
 	extern const std::string Menus_LambdaCrypts_Emblem;
+	extern const std::string Menus_LambdaCrypts_EmblemDisabled;
+	extern const std::string Menus_LambdaCrypts_EmblemSelected;
 	extern const std::string Menus_SeaSharpCaverns_Chest0;
 	extern const std::string Menus_SeaSharpCaverns_Chest1;
 	extern const std::string Menus_SeaSharpCaverns_Chest2;
@@ -149,6 +159,8 @@ namespace CipherResources
 	extern const std::string Menus_SeaSharpCaverns_Chest6;
 	extern const std::string Menus_SeaSharpCaverns_Chest7;
 	extern const std::string Menus_SeaSharpCaverns_Emblem;
+	extern const std::string Menus_SeaSharpCaverns_EmblemDisabled;
+	extern const std::string Menus_SeaSharpCaverns_EmblemSelected;
 	extern const std::string Menus_UnderflowRuins_Chest0;
 	extern const std::string Menus_UnderflowRuins_Chest1;
 	extern const std::string Menus_UnderflowRuins_Chest2;
@@ -158,6 +170,8 @@ namespace CipherResources
 	extern const std::string Menus_UnderflowRuins_Chest6;
 	extern const std::string Menus_UnderflowRuins_Chest7;
 	extern const std::string Menus_UnderflowRuins_Emblem;
+	extern const std::string Menus_UnderflowRuins_EmblemDisabled;
+	extern const std::string Menus_UnderflowRuins_EmblemSelected;
 	extern const std::string Menus_VoidStar_Chest0;
 	extern const std::string Menus_VoidStar_Chest1;
 	extern const std::string Menus_VoidStar_Chest2;
@@ -167,6 +181,8 @@ namespace CipherResources
 	extern const std::string Menus_VoidStar_Chest6;
 	extern const std::string Menus_VoidStar_Chest7;
 	extern const std::string Menus_VoidStar_Emblem;
+	extern const std::string Menus_VoidStar_EmblemDisabled;
+	extern const std::string Menus_VoidStar_EmblemSelected;
 	extern const std::string PopupPanelBack;
 	extern const std::string PopupPanelFrame;
 	extern const std::string TransitionPanel;

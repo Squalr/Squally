@@ -12,6 +12,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class CipherChapterPreview;
 class CipherLevelItem;
 class ClickableNode;
 class ClickableTextNode;
@@ -29,10 +30,10 @@ protected:
 
 private:
 	typedef GlobalScene super;
-	void loadLevels();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void loadLevels();
 	void onCloseClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
@@ -42,16 +43,16 @@ private:
 	LocalizedLabel* titleLabel;
 	ClickableNode* backButton;
 
-	ClickableNode* chapterEndianForest;
-	ClickableNode* chapterUnderflowRuins;
-	ClickableNode* chapterSeaSharpCaverns;
-	ClickableNode* chapterCastleValgrind;
-	ClickableNode* chapterBalmerPeaks;
-	ClickableNode* chapterDaemonsHallow;
-	ClickableNode* chapterLambdaCrypts;
-	ClickableNode* chapterVoidStar;
+	CipherChapterPreview* chapterEndianForest;
+	CipherChapterPreview* chapterUnderflowRuins;
+	CipherChapterPreview* chapterSeaSharpCaverns;
+	CipherChapterPreview* chapterCastleValgrind;
+	CipherChapterPreview* chapterBalmerPeaks;
+	CipherChapterPreview* chapterDaemonsHallow;
+	CipherChapterPreview* chapterLambdaCrypts;
+	CipherChapterPreview* chapterVoidStar;
 
-	std::vector<ClickableNode*> chapters;
+	std::vector<CipherChapterPreview*> chapters;
 
 	static CipherChapterSelectMenu* instance;
 	static const cocos2d::Color3B TitleColor;

@@ -172,7 +172,7 @@ void HexusChapterSelectMenuPuzzles::initializePositions()
 
 	int index = 0;
 
-	for (std::vector<HexusChapterPreview*>::iterator it = this->chapters.begin(); it != this->chapters.end(); ++it)
+	for (auto it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
 		int x = index % 4;
 		int y = index / 4;
