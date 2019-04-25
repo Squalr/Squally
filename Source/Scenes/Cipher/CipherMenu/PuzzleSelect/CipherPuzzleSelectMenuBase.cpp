@@ -14,6 +14,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 
@@ -212,4 +213,22 @@ void CipherPuzzleSelectMenuBase::buildOpponentList()
 	{
 		//// this->chests.back()->hexusOpponentData->setIsLastInChapter();
 	}
+}
+
+std::string CipherPuzzleSelectMenuBase::buildCipherJson(std::string rule, std::vector<std::string> inputs)
+{
+	const std::string templateJson = "{\"easy\":{\"rule\":\"{{rule}}\",\"inputs\":[{{inputs}}]},\"hard\":{\"rule\":\"{{rule}}\",\"inputs\":[{{inputs}}]},\"rewards\":[],\"bonus-rewards\":[]}";
+	
+	std::string inputsList = "";
+
+	for (auto it = inputs.begin(); it != inputs.end(); it++)
+	{
+		inputsList += "\"" + (*it) + "\",";
+	}
+
+	inputsList = StrUtils::trim(inputsList, ",");
+	std::string result = StrUtils::replaceAll(templateJson, "{{rule}}", rule);
+	result = StrUtils::replaceAll(result, "{{inputs}}", inputsList);
+
+	return result;
 }

@@ -12,7 +12,16 @@
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
 #include "Scenes/Cipher/CipherMenu/ChapterSelect/CipherChapterSelectMenu.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/BalmerPeaks/CipherPuzzleMenuBalmerPeaks.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/CastleValgrind/CipherPuzzleMenuCastleValgrind.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/DaemonsHallow/CipherPuzzleMenuDaemonsHallow.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/EndianForest/CipherPuzzleMenuEndianForest.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/LambdaCrypts/CipherPuzzleMenuLambdaCrypts.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/SeaSharpCaverns/CipherPuzzleMenuSeaSharpCaverns.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/UnderflowRuins/CipherPuzzleMenuUnderflowRuins.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/VoidStar/CipherPuzzleMenuVoidStar.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
+#include "Scenes/Cipher/CipherScene.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenuPuzzles.h"
@@ -55,7 +64,16 @@ void Bootstrapper::initialize()
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	CipherScene::registerGlobalScene();
 	CipherPuzzleDeserializer::registerGlobalNode();
+	CipherPuzzleMenuBalmerPeaks::registerGlobalScene();
+	CipherPuzzleMenuCastleValgrind::registerGlobalScene();
+	CipherPuzzleMenuDaemonsHallow::registerGlobalScene();
+	CipherPuzzleMenuEndianForest::registerGlobalScene();
+	CipherPuzzleMenuLambdaCrypts::registerGlobalScene();
+	CipherPuzzleMenuSeaSharpCaverns::registerGlobalScene();
+	CipherPuzzleMenuUnderflowRuins::registerGlobalScene();
+	CipherPuzzleMenuVoidStar::registerGlobalScene();
 	CipherChapterSelectMenu::registerGlobalScene();
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();

@@ -51,6 +51,17 @@ void CipherChapterPreview::initializeListeners()
 	super::initializeListeners();
 }
 
+void CipherChapterPreview::setClickCallback(std::function<void()> callback)
+{
+	this->previewNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		if (callback != nullptr)
+		{
+			callback();
+		}
+	});
+}
+
 std::string CipherChapterPreview::getSaveKey()
 {
 	return this->saveKey;
@@ -60,6 +71,7 @@ bool CipherChapterPreview::isChapterCleared()
 {
 	return SaveManager::getGlobalDataOrDefault(this->saveKey, Value(false)).asBool();
 }
+	void setClickCallback(std::function<void()> callback);
 
 void CipherChapterPreview::enableInteraction()
 {

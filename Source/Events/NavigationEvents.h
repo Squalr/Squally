@@ -4,6 +4,7 @@
 #include <vector>
 
 class Cutscene;
+class CipherPuzzleData;
 class HexusOpponentData;
 class PlatformerEnemy;
 class Squally;
@@ -41,9 +42,9 @@ public:
 
 	struct NavigateCipherArgs
 	{
-		bool todo;
+		CipherPuzzleData* cipherPuzzleData;
 
-		NavigateCipherArgs(bool todo) : todo(todo)
+		NavigateCipherArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
 		{
 		}
 	};
