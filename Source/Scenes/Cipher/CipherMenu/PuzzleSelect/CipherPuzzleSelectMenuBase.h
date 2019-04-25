@@ -6,6 +6,7 @@
 
 namespace cocos2d
 {
+	class ParticleSystem;
 	class Sprite;
 }
 
@@ -27,17 +28,17 @@ protected:
 	void loadProgress();
 	void onBackClick();
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void buildOpponentList();
+	void buildCipherList();
 	static std::string buildCipherJson(std::string rule, std::vector<std::string> inputs);
 
 	NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter chapter;
 
-	ScrollPane* scrollPane;
 	std::vector<CipherPuzzlePreview*> chests;
 	std::map<CipherPuzzlePreview*, CipherPuzzlePreview*> dependencies;
 
 	std::string chapterProgressSaveKey;
-	cocos2d::Sprite* background;
+	cocos2d::ParticleSystem* nether;
+	cocos2d::ParticleSystem* swirl;
 	ClickableTextNode* backButton;
 	
 private:

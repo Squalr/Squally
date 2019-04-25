@@ -83,7 +83,6 @@ CipherChapterSelectMenu::CipherChapterSelectMenu()
 
 	this->addChild(this->nether);
 	this->addChild(this->swirl);
-
 	this->addChild(this->titleLabel);
 	this->addChild(this->backButton);
 

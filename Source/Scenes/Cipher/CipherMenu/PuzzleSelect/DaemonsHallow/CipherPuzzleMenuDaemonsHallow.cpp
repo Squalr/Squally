@@ -24,7 +24,7 @@ void CipherPuzzleMenuDaemonsHallow::registerGlobalScene()
 
 CipherPuzzleMenuDaemonsHallow::CipherPuzzleMenuDaemonsHallow() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::DaemonsHallow, CipherPuzzleMenuDaemonsHallow::ChapterSavekey)
 {
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuDaemonsHallow::~CipherPuzzleMenuDaemonsHallow()

@@ -51,20 +51,20 @@ void CipherPuzzlePreview::initializeListeners()
 
 	this->previewNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		NavigationEvents::navigateCipher(NavigationEvents::NavigateCipherArgs(this->cipherPuzzleData->clone()));
+		NavigationEvents::navigateCipher(NavigationEvents::NavigateCipherArgs(this->cipherPuzzleData));
 	});
 }
 
 void CipherPuzzlePreview::enableInteraction()
 {
 	this->previewNode->enableInteraction(255);
-	this->previewNodeDisabled->setVisible(true);
+	this->previewNodeDisabled->setVisible(false);
 }
 
 void CipherPuzzlePreview::disableInteraction()
 {
 	this->previewNode->disableInteraction(0);
-	this->previewNodeDisabled->setVisible(false);
+	this->previewNodeDisabled->setVisible(true);
 }
 
 CipherPuzzleData* CipherPuzzlePreview::getPuzzleData()

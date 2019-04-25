@@ -38,7 +38,77 @@ CipherPuzzleMenuEndianForest::CipherPuzzleMenuEndianForest() : super(NavigationE
 		CipherResources::Menus_EndianForest_Chest0
 	));
 
-	this->buildOpponentList();
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest1,
+		CipherResources::Menus_EndianForest_Chest1,
+		CipherResources::Menus_EndianForest_Chest1
+	));
+
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest2,
+		CipherResources::Menus_EndianForest_Chest2,
+		CipherResources::Menus_EndianForest_Chest2
+	));
+
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest3,
+		CipherResources::Menus_EndianForest_Chest3,
+		CipherResources::Menus_EndianForest_Chest3
+	));
+
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest4,
+		CipherResources::Menus_EndianForest_Chest4,
+		CipherResources::Menus_EndianForest_Chest4
+	));
+
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest5,
+		CipherResources::Menus_EndianForest_Chest5,
+		CipherResources::Menus_EndianForest_Chest5
+	));
+
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest6,
+		CipherResources::Menus_EndianForest_Chest6,
+		CipherResources::Menus_EndianForest_Chest6
+	));
+
+	this->chests.push_back(CipherPuzzlePreview::create(
+		CipherPuzzleDeserializer::deserialize(
+			super::buildCipherJson("({i}+5)^8", { "a", "b", "c"}),
+			true
+		),
+		CipherResources::Menus_EndianForest_Chest7,
+		CipherResources::Menus_EndianForest_Chest7,
+		CipherResources::Menus_EndianForest_Chest7
+	));
+
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuEndianForest::~CipherPuzzleMenuEndianForest()

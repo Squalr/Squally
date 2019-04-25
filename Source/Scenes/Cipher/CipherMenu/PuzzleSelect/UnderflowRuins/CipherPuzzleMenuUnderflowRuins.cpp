@@ -24,7 +24,7 @@ void CipherPuzzleMenuUnderflowRuins::registerGlobalScene()
 
 CipherPuzzleMenuUnderflowRuins::CipherPuzzleMenuUnderflowRuins() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::UnderflowRuins, CipherPuzzleMenuUnderflowRuins::ChapterSavekey)
 {
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuUnderflowRuins::~CipherPuzzleMenuUnderflowRuins()

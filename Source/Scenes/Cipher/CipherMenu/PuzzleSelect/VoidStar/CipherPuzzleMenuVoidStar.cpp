@@ -24,7 +24,7 @@ void CipherPuzzleMenuVoidStar::registerGlobalScene()
 
 CipherPuzzleMenuVoidStar::CipherPuzzleMenuVoidStar() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::VoidStar, CipherPuzzleMenuVoidStar::ChapterSavekey)
 {
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuVoidStar::~CipherPuzzleMenuVoidStar()

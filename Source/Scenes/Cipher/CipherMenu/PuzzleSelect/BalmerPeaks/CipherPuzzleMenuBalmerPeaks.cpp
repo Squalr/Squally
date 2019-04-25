@@ -26,7 +26,7 @@ CipherPuzzleMenuBalmerPeaks::CipherPuzzleMenuBalmerPeaks() : super(NavigationEve
 {
 	// this->opponents.push_back(CipherPuzzleData::create());
 
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuBalmerPeaks::~CipherPuzzleMenuBalmerPeaks()
