@@ -24,7 +24,7 @@ void CipherPuzzleMenuSeaSharpCaverns::registerGlobalScene()
 
 CipherPuzzleMenuSeaSharpCaverns::CipherPuzzleMenuSeaSharpCaverns() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::SeaSharpCaverns, CipherPuzzleMenuSeaSharpCaverns::ChapterSavekey)
 {
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuSeaSharpCaverns::~CipherPuzzleMenuSeaSharpCaverns()

@@ -187,8 +187,6 @@ void Cipher::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	{
 		case EventKeyboard::KeyCode::KEY_ESCAPE:
 		{
-			event->stopPropagation();
-			this->onMenuExit();
 			break;
 		}
 		default:

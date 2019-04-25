@@ -24,7 +24,7 @@ void CipherPuzzleMenuLambdaCrypts::registerGlobalScene()
 
 CipherPuzzleMenuLambdaCrypts::CipherPuzzleMenuLambdaCrypts() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::LambdaCrypts, CipherPuzzleMenuLambdaCrypts::ChapterSavekey)
 {
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuLambdaCrypts::~CipherPuzzleMenuLambdaCrypts()

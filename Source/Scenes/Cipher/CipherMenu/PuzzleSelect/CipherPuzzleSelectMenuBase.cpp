@@ -1,5 +1,6 @@
 #include "CipherPuzzleSelectMenuBase.h"
 
+#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -19,6 +20,7 @@
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Hexus/ManageCards.h"
@@ -33,8 +35,8 @@ CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(NavigationEvents::Navigat
 	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->chests = std::vector<CipherPuzzlePreview*>();
-	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
+	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
+	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
 	
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
@@ -49,8 +51,8 @@ CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(NavigationEvents::Navigat
 		UIResources::Menus_Buttons_GenericButtonHover
 	);
 
-	this->addChild(this->background);
-	this->addChild(this->scrollPane);
+	this->addChild(this->nether);
+	this->addChild(this->swirl);
 	this->addChild(this->backButton);
 }
 
@@ -78,8 +80,11 @@ void CipherPuzzleSelectMenuBase::onEnter()
 	const float delay = 0.25f;
 	const float duration = 0.35f;
 
-	GameUtils::fadeInObject(this->scrollPane, delay, duration);
 	GameUtils::fadeInObject(this->backButton, delay, duration);
+
+	// Initialize particles to an intermediate state
+	GameUtils::accelerateParticles(this->swirl, 5.0f);
+	GameUtils::accelerateParticles(this->nether, 1.0f);
 
 	// Just assume linear dependencies for now
 	this->dependencies.clear();
@@ -111,17 +116,17 @@ void CipherPuzzleSelectMenuBase::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->scrollPane->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 64.0f));
+	this->nether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->swirl->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	int index = 0;
 
 	for (auto it = this->chests.begin(); it != this->chests.end(); ++it)
 	{
-		int x = index % 3;
-		int y = index / 3;
+		int x = index % 4;
+		int y = index / 4;
 
-		(*it)->setPosition(Vec2(496.0f * float(x - 1), y * -480.0f - 240.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f * (float(x) - 1.5f), visibleSize.height / 2.0f + (float(y) - 0.5f) * -356.0f));
 
 		index++;
 	}
@@ -202,11 +207,11 @@ void CipherPuzzleSelectMenuBase::loadProgress()
 	}
 }
 
-void CipherPuzzleSelectMenuBase::buildOpponentList()
+void CipherPuzzleSelectMenuBase::buildCipherList()
 {
 	for (auto it = this->chests.begin(); it != this->chests.end(); ++it)
 	{
-		this->scrollPane->addChild(*it);
+		this->addChild(*it);
 	}
 
 	if (!chests.empty())

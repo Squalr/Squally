@@ -24,7 +24,7 @@ void CipherPuzzleMenuCastleValgrind::registerGlobalScene()
 
 CipherPuzzleMenuCastleValgrind::CipherPuzzleMenuCastleValgrind() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::CastleValgrind, CipherPuzzleMenuCastleValgrind::ChapterSavekey)
 {
-	this->buildOpponentList();
+	this->buildCipherList();
 }
 
 CipherPuzzleMenuCastleValgrind::~CipherPuzzleMenuCastleValgrind()
