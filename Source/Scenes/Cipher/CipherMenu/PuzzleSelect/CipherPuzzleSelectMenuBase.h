@@ -39,6 +39,7 @@ protected:
 	std::string chapterProgressSaveKey;
 	cocos2d::ParticleSystem* nether;
 	cocos2d::ParticleSystem* swirl;
+	cocos2d::Sprite* backboard;
 	ClickableTextNode* backButton;
 	
 private:
