@@ -15,6 +15,8 @@ const std::string NavigationEvents::EventNavigateSaveSelect = "EVENT_NAVIGATE_SA
 const std::string NavigationEvents::EventNavigateMinigames = "EVENT_NAVIGATE_MINIGAMES";
 const std::string NavigationEvents::EventNavigateOptions = "EVENT_NAVIGATE_OPTIONS";
 const std::string NavigationEvents::EventNavigateWorldMap = "EVENT_NAVIGATE_WORLD_MAP";
+const std::string NavigationEvents::EventNavigatePointerTrace = "EVENT_NAVIGATE_POINTER_TRACE";
+const std::string NavigationEvents::EventNavigatePointerTraceLevelSelect = "EVENT_NAVIGATE_POINTER_TRACE_LEVEL_SELECT";
 const std::string NavigationEvents::EventNavigateCipher = "EVENT_NAVIGATE_CIPHER";
 const std::string NavigationEvents::EventNavigateCipherChapterSelect = "EVENT_NAVIGATE_CIPHER_CHAPTER_SELECT";
 const std::string NavigationEvents::EventNavigateCipherPuzzleSelect = "EVENT_NAVIGATE_CIPHER_PUZZLE_SELECT";
@@ -81,6 +83,20 @@ void NavigationEvents::navigateWorldMap()
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::EventNavigateWorldMap
+	);
+}
+
+void NavigationEvents::navigatePointerTrace()
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigatePointerTrace
+	);
+}
+
+void NavigationEvents::navigatePointerTraceLevelSelect()
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigatePointerTraceLevelSelect
 	);
 }
 

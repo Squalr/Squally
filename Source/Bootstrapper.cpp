@@ -52,6 +52,8 @@
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Terrain/CastleTerrainDeserializer.h"
 #include "Scenes/Platformer/Level/Weather/WeatherDeserializer.h"
+#include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
+#include "Scenes/PointerTrace/PointerTraceScene.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/WorldMap/WorldMap.h"
 #include "Sound/MusicDeserializer.h"
@@ -64,6 +66,8 @@ void Bootstrapper::initialize()
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	PointerTraceLevelSelect::registerGlobalScene();
+	PointerTraceScene::registerGlobalScene();
 	CipherScene::registerGlobalScene();
 	CipherPuzzleDeserializer::registerGlobalNode();
 	CipherPuzzleMenuBalmerPeaks::registerGlobalScene();

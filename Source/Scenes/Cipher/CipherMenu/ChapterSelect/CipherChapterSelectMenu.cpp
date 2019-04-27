@@ -51,13 +51,9 @@ CipherChapterSelectMenu::CipherChapterSelectMenu()
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_SelectAChapter::create());
-	this->backButton = ClickableTextNode::create(
-		backButtonLabel,
-		backButtonLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover
-	);
+	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
+	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
+	this->backboard = Sprite::create(CipherResources::Menus_CipherBackboard);
 	this->chapterEndianForest = CipherChapterPreview::create("CIPHER_CHAPTER_ENDIAN_FOREST", CipherResources::Menus_EndianForest_Emblem, CipherResources::Menus_EndianForest_EmblemSelected, CipherResources::Menus_EndianForest_EmblemDisabled);
 	this->chapterUnderflowRuins = CipherChapterPreview::create("CIPHER_CHAPTER_UNDERFLOW_RUINS", CipherResources::Menus_UnderflowRuins_Emblem, CipherResources::Menus_UnderflowRuins_EmblemSelected, CipherResources::Menus_UnderflowRuins_EmblemDisabled);
 	this->chapterSeaSharpCaverns = CipherChapterPreview::create("CIPHER_CHAPTER_SEA_SHARP_CAVERNS", CipherResources::Menus_SeaSharpCaverns_Emblem, CipherResources::Menus_SeaSharpCaverns_EmblemSelected, CipherResources::Menus_SeaSharpCaverns_EmblemDisabled);
@@ -66,9 +62,13 @@ CipherChapterSelectMenu::CipherChapterSelectMenu()
 	this->chapterDaemonsHallow = CipherChapterPreview::create("CIPHER_CHAPTER_DAEMONS_HALLOW", CipherResources::Menus_DaemonsHallow_Emblem, CipherResources::Menus_DaemonsHallow_EmblemSelected, CipherResources::Menus_DaemonsHallow_EmblemDisabled);
 	this->chapterLambdaCrypts = CipherChapterPreview::create("CIPHER_CHAPTER_LAMBDA_PEAKS", CipherResources::Menus_LambdaCrypts_Emblem, CipherResources::Menus_LambdaCrypts_EmblemSelected, CipherResources::Menus_LambdaCrypts_EmblemDisabled);
 	this->chapterVoidStar = CipherChapterPreview::create("CIPHER_CHAPTER_VOID_STAR", CipherResources::Menus_VoidStar_Emblem, CipherResources::Menus_VoidStar_EmblemSelected, CipherResources::Menus_VoidStar_EmblemDisabled);
-
-	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
-	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Cipher_SelectAChapter::create());
+	this->backButton = ClickableTextNode::create(
+		backButtonLabel,
+		backButtonLabelHover,
+		UIResources::Menus_Buttons_GenericButton,
+		UIResources::Menus_Buttons_GenericButtonHover
+	);
 
 	this->titleLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
@@ -80,19 +80,16 @@ CipherChapterSelectMenu::CipherChapterSelectMenu()
 	this->chapters.push_back(this->chapterDaemonsHallow);
 	this->chapters.push_back(this->chapterLambdaCrypts);
 	this->chapters.push_back(this->chapterVoidStar);
-
 	this->addChild(this->nether);
 	this->addChild(this->swirl);
-	this->addChild(this->titleLabel);
-	this->addChild(this->backButton);
-
-	this->backButton->setMouseClickCallback(CC_CALLBACK_0(CipherChapterSelectMenu::onCloseClick, this));
-	this->backButton->setClickSound(SoundResources::ClickBack1);
+	this->addChild(this->backboard);
 
 	for (auto it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
 		this->addChild(*it);
 	}
+	this->addChild(this->titleLabel);
+	this->addChild(this->backButton);
 }
 
 CipherChapterSelectMenu::~CipherChapterSelectMenu()
@@ -118,6 +115,9 @@ void CipherChapterSelectMenu::onEnter()
 	GameUtils::accelerateParticles(this->swirl, 5.0f);
 	GameUtils::accelerateParticles(this->nether, 1.0f);
 
+	// Kinda looks shitty, disabling for now
+	this->backboard->setVisible(false);
+
 	this->loadLevels();
 }
 
@@ -129,6 +129,7 @@ void CipherChapterSelectMenu::initializePositions()
 	
 	this->nether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->swirl->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->backboard->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 80.0f));
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 128.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
@@ -154,6 +155,9 @@ void CipherChapterSelectMenu::initializeListeners()
 	{
 		GlobalDirector::loadScene(CipherChapterSelectMenu::instance);
 	}));
+
+	this->backButton->setMouseClickCallback(CC_CALLBACK_0(CipherChapterSelectMenu::onCloseClick, this));
+	this->backButton->setClickSound(SoundResources::ClickBack1);
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -200,7 +204,7 @@ void CipherChapterSelectMenu::loadLevels()
 	// Disable all
 	for (auto it = this->chapters.begin(); it != this->chapters.end(); ++it)
 	{
-		(*it)->disableInteraction();
+		(*it)->enableInteraction();
 	}
 
 	// Enable first
