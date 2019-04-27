@@ -47,6 +47,15 @@ def main():
 		'.tif',
 	), "Resources/Hexus")
 
+	# PointerTraceResources
+	createResourceFile("PointerTraceResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/PointerTrace")
+
 	# CipherResources
 	createResourceFile("CipherResources", (
 		'.scml',

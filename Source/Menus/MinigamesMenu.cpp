@@ -74,13 +74,13 @@ MinigamesMenu::MinigamesMenu()
 
 	this->hexusButton = this->createButton(Strings::Hexus_Hexus::create(), UIResources::Menus_Icons_Banner);
 	this->hexusPuzzlesButton = this->createButton(Strings::Hexus_HexusPuzzles::create(), UIResources::Menus_Icons_Gauntlet);
-	this->cipherButton = this->createButton(Strings::Cipher_Cipher::create(), UIResources::Menus_Icons_KeyGold);
 	this->pointerTraceButton = this->createButton(Strings::PointerTrace_PointerTrace::create(), UIResources::Menus_Icons_SpellCast);
+	this->cipherButton = this->createButton(Strings::Cipher_Cipher::create(), UIResources::Menus_Icons_KeyGold);
 	this->stacksButton = this->createButton(Strings::Stacks_Stacks::create(), UIResources::Menus_Icons_Scale);
 	this->towerDefenseButton = this->createButton(Strings::TowerDefense_TowerDefense::create(), UIResources::Menus_Icons_Meteor);
 	this->spaceForceButton = this->createButton(Strings::SpaceForce_SpaceForce::create(), UIResources::Menus_Icons_Stars);
 
-	this->pointerTraceButton->disableInteraction(128);
+	this->cipherButton->disableInteraction(128);
 	this->stacksButton->disableInteraction(128);
 	this->towerDefenseButton->disableInteraction(128);
 	this->spaceForceButton->disableInteraction(128);
@@ -126,8 +126,8 @@ void MinigamesMenu::initializePositions()
 
 	this->hexusButton->setPosition(Vec2(0.0f, -192.0f * 0 - 128.0f));
 	this->hexusPuzzlesButton->setPosition(Vec2(0.0f, -192.0f * 1 - 128.0f));
-	this->cipherButton->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
-	this->pointerTraceButton->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
+	this->pointerTraceButton->setPosition(Vec2(0.0f, -192.0f * 2 - 128.0f));
+	this->cipherButton->setPosition(Vec2(0.0f, -192.0f * 3 - 128.0f));
 	this->stacksButton->setPosition(Vec2(0.0f, -192.0f * 4 - 128.0f));
 	this->towerDefenseButton->setPosition(Vec2(0.0f, -192.0f * 5 - 128.0f));
 	this->spaceForceButton->setPosition(Vec2(0.0f, -192.0f * 6 - 128.0f));
@@ -149,8 +149,8 @@ void MinigamesMenu::initializeListeners()
 
 	this->hexusButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
 	this->hexusPuzzlesButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzlesChapterSelect(); });
+	this->pointerTraceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigatePointerTraceLevelSelect(); });
 	this->cipherButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->pointerTraceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
 	this->stacksButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
 	this->towerDefenseButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
 	this->spaceForceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });

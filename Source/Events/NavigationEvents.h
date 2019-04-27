@@ -131,6 +131,8 @@ public:
 	static void navigateMinigames();
 	static void navigateOptions();
 	static void navigateWorldMap();
+	static void navigatePointerTrace();
+	static void navigatePointerTraceLevelSelect();
 	static void navigateCipherChapterSelect();
 	static void navigateCipherPuzzleSelect(NavigateCipherPuzzleSelectArgs args);
 	static void navigateCipher(NavigateCipherArgs args);
@@ -151,6 +153,8 @@ public:
 	static const std::string EventNavigateMinigames;
 	static const std::string EventNavigateOptions;
 	static const std::string EventNavigateWorldMap;
+	static const std::string EventNavigatePointerTrace;
+	static const std::string EventNavigatePointerTraceLevelSelect;
 	static const std::string EventNavigateCipher;
 	static const std::string EventNavigateCipherChapterSelect;
 	static const std::string EventNavigateCipherPuzzleSelect;
