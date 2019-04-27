@@ -19,7 +19,7 @@
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 
-#include "Resources/HexusResources.h"
+#include "Resources/CipherResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
@@ -37,6 +37,7 @@ CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(NavigationEvents::Navigat
 	this->chests = std::vector<CipherPuzzlePreview*>();
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
 	this->swirl = ParticleSystemQuad::create(ParticleResources::BlueStarCircle);
+	this->backboard = Sprite::create(CipherResources::Menus_CipherBackboard);
 	
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
 	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
@@ -53,6 +54,7 @@ CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(NavigationEvents::Navigat
 
 	this->addChild(this->nether);
 	this->addChild(this->swirl);
+	this->addChild(this->backboard);
 	this->addChild(this->backButton);
 }
 
@@ -118,6 +120,7 @@ void CipherPuzzleSelectMenuBase::initializePositions()
 
 	this->nether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->swirl->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->backboard->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 	int index = 0;
 

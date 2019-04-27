@@ -40,9 +40,7 @@ private:
 	cocos2d::ParticleSystem* nether;
 	cocos2d::ParticleSystem* swirl;
 	
-	LocalizedLabel* titleLabel;
-	ClickableNode* backButton;
-
+	cocos2d::Sprite* backboard;
 	CipherChapterPreview* chapterEndianForest;
 	CipherChapterPreview* chapterUnderflowRuins;
 	CipherChapterPreview* chapterSeaSharpCaverns;
@@ -51,6 +49,8 @@ private:
 	CipherChapterPreview* chapterDaemonsHallow;
 	CipherChapterPreview* chapterLambdaCrypts;
 	CipherChapterPreview* chapterVoidStar;
+	LocalizedLabel* titleLabel;
+	ClickableNode* backButton;
 
 	std::vector<CipherChapterPreview*> chapters;
 
