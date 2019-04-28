@@ -19,9 +19,11 @@ IsometricEntity::IsometricEntity(ValueMap& initProperties, std::string scmlResou
 
 	this->animationNode->setPosition(offset * scale);
 
+	float height = this->properties[super::MapKeyHeight].asFloat();
+
 	// Update width to be serialized
-	this->properties[IsometricEntity::MapKeyWidth] = size.width * scale;
-	this->properties[IsometricEntity::MapKeyHeight] = size.height * scale;
+	this->properties[super::MapKeyWidth] = size.width * scale;
+	this->properties[super::MapKeyHeight] = size.height * scale;
 
 	this->addChild(this->animationNode);
 }

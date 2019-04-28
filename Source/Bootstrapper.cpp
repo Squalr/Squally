@@ -1,6 +1,7 @@
 #include "Bootstrapper.h"
 
 #include "Engine/EngineBootstrapper.h"
+#include "Entities/Isometric/IsometricEntityDeserializer.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Menus/CursorSets.h"
 #include "Menus/LoadingScreen/LoadingScreen.h"
@@ -45,6 +46,7 @@
 #include "Scenes/Hexus/Menus/HexusDeckManagement.h"
 #include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
 #include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
+#include "Scenes/Isometric/IsometricMap.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PhysicsDeserializer.h"
@@ -65,6 +67,7 @@ void Bootstrapper::initialize()
 	// Register scenes
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
+	IsometricMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
 	PointerTraceLevelSelect::registerGlobalScene();
 	PointerTraceScene::registerGlobalScene();
@@ -112,6 +115,7 @@ void Bootstrapper::initialize()
 	PlatformerItemDeserializer::registerGlobalNode();
 
 	// Entity deserializers
+	IsometricEntityDeserializer::registerGlobalNode();
 	PlatformerEntityDeserializer::registerGlobalNode();
 	PlatformerCollisionMapping::registerGlobalNode();
 
