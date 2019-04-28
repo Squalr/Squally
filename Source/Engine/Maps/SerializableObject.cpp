@@ -105,7 +105,7 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 		// Isometric position to screen position conversion magic
 		Vec2 convertedPosition = Vec2(
 			(position.x + position.y) + objectSize.width,
-			(position.y - position.x) / 2.0f + objectSize.height * 1.5f + mapSize.height / 2.0f
+			(position.y - position.x) / 2.0f + mapSize.height / 2.0f
 		);
 
 		this->setPosition(convertedPosition);

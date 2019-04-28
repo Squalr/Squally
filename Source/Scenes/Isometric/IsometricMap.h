@@ -5,7 +5,8 @@
 class IsometricMap : public MapBase
 {
 public:
-	static IsometricMap* create();
+	static void registerGlobalScene();
+	void loadMap(SerializableMap* levelMap) override;
 
 protected:
 	IsometricMap();
@@ -16,4 +17,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEnter() override;
+
+	static IsometricMap* instance;
 };

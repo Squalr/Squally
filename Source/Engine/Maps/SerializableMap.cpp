@@ -392,7 +392,7 @@ void SerializableMap::isometricZSort(Node* node)
 
 		if (dynamic_cast<ObjectifiedTile*>(node) != nullptr)
 		{
-			position.y += this->mapTileSize.height;
+			position.y += this->mapTileSize.height / 2.0f;
 		}
 
 		node->setLocalZOrder((int)(-position.y));

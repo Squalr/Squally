@@ -6,7 +6,7 @@ class IsometricSqually : public IsometricEntity
 {
 public:
 	static IsometricSqually* deserialize(cocos2d::ValueMap& initProperties);
-	static IsometricSqually* getInstance();
+	static IsometricSqually* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string KeySquallyProperty;
 

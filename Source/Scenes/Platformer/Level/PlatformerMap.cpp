@@ -90,7 +90,7 @@ void PlatformerMap::initializeListeners()
 	{
 		NavigationEvents::NavigateMapArgs* mapArgs = static_cast<NavigationEvents::NavigateMapArgs*>(args->getUserData());
 
-		if (mapArgs != nullptr)
+		if (mapArgs != nullptr && !mapArgs->levelMap->isIsometric())
 		{
 			PlatformerMap::instance->loadMap(mapArgs->levelMap);
 			GlobalDirector::loadScene(PlatformerMap::instance);

@@ -312,40 +312,24 @@ void LevelSegment::loadSprite(PieceType pieceType)
 
 Vec2 LevelSegment::calculateMapNodePosition(float progress)
 {
-	/* Lagrange interpolate over coordinates in the map image:
-	Note 1: The x and y coordinates are inverted such that this yields a proper function
-	Note 2: The y coordinate is in photoshop-space, not cocos-space
-	(2432.0, 1362.0), (2216.0, 1146.0), (2048.0, 420.0), (1564.0, 1028.0), (1048.0, 360.0), (728.0, 1566.0), (356.0, 768.0), (158.0, 1248.0)
-	Yielding (plug this bad boy into wolfram alpha over the range 158 to 2432 to validate): 
-		-1.26657*10^(-17)*x^7 +
-		1.16948*10^(-13)* x^6 -
-		4.33678*10^(-10)*x^5 +
-		8.24414*10^(-7)*x^4 -
-		0.000848483*x^3 +
-		0.457377*x^2 -
-		114.196*x +
-		10746.9
-	*/
-	const float min = 158.0f;
-	const float max = 2432.0f;
-	const float realMax = 2588.0f;
+	static const std::vector<Vec2> trailPoints = 
+	{
+		Vec2(1353, 2426), Vec2(1272, 2261), Vec2(1080, 2206), Vec2(885, 2242), Vec2(708, 2261), Vec2(507, 2216),
+		Vec2(420, 2051), Vec2(468, 1875), Vec2(618, 1767), Vec2(804, 1700), Vec2(966, 1655), Vec2(1020, 1556),
+		Vec2(954, 1427), Vec2(798, 1389), Vec2(618, 1350), Vec2(480, 1281), Vec2(376, 1165), Vec2(364, 978),
+		Vec2(474, 858), Vec2(630, 795), Vec2(816, 786), Vec2(988, 826), Vec2(1141, 858), Vec2(1308, 877),
+		Vec2(1528, 807), Vec2(1546, 618), Vec2(1408, 510), Vec2(1223, 488), Vec2(1049, 507), Vec2(879, 491),
+		Vec2(767, 394), Vec2(786, 250), Vec2(942, 166), Vec2(1120, 157), Vec2(1235, 138)
+	};
 
-	// Progress flows the opposite direction from what the interpolation would assume
+	const float realMax = 2561.0f;
+
 	progress = 1.0f - MathUtils::clamp(progress, 0.0f, 1.0f);
 
-	float x = progress * (max - min) + min;
-	// Where is your god now?
-	float y = -1.26657 * std::pow(10, -17) * std::pow(x, 7) +
-		1.16948 * std::pow(10, -13) * std::pow(x, 6) -
-		4.33678 * std::pow(10, -10) * std::pow(x, 5) +
-		8.24414 * std::pow(10, -7) * std::pow(x, 4) -
-		0.000848483 * std::pow(x, 3) +
-		0.457377 * std::pow(x, 2) -
-		114.196 * x +
-		10746.9;
+	int trailIndex = MathUtils::clamp(int(std::round(progress * float(trailPoints.size() - 1))), 0, trailPoints.size() - 1);
 
-	// Re-invert the resulting x/y coordinates, and fix the y coordinate
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	float x = trailPoints[trailIndex].x;
+	float y = trailPoints[trailIndex].y;
 
-	return Vec2(y, realMax - x);
+	return Vec2(x, realMax - y);
 }
