@@ -6,18 +6,19 @@
 
 using namespace cocos2d;
 
-LevelNode* LevelNode::create(std::string mapFile)
+LevelNode* LevelNode::create(std::string mapFile, Vec2 positionOffset)
 {
-	LevelNode* instance = new LevelNode(mapFile);
+	LevelNode* instance = new LevelNode(mapFile, positionOffset);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LevelNode::LevelNode(std::string mapFile)
+LevelNode::LevelNode(std::string mapFile, Vec2 positionOffset)
 {
 	this->nodeMapFile = mapFile;
+	this->positionOffset = positionOffset;
 	this->mapSprite = ClickableNode::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 
 	this->setAnchorPoint(Vec2(0.0f, 0.0f));
@@ -27,6 +28,11 @@ LevelNode::LevelNode(std::string mapFile)
 
 LevelNode::~LevelNode()
 {
+}
+
+Vec2 LevelNode::getPositionOffset()
+{
+	return this->positionOffset;
 }
 
 void LevelNode::setLocked(bool newLocked)

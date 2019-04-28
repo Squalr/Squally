@@ -57,6 +57,66 @@ PointerTraceLevelSelect::PointerTraceLevelSelect()
 	LevelSegment* lambdaCryptsSegment = LevelSegment::create(LevelSegment::SegmentType::LambdaCrypts);
 	LevelSegment* voidStarSegment = LevelSegment::create(LevelSegment::SegmentType::VoidStar);
 
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+	endianForestSegment->pushLevel(LevelNode::create(MapResources::EndianForest_Forest));
+
 	this->addSegment(endianForestSegment);
 	this->addSegment(underflowRuinsSegment);
 	this->addSegment(seaSharpCavernsSegment);
@@ -92,8 +152,8 @@ void PointerTraceLevelSelect::onEnter()
 		totalHeight += (*it)->getContentSize().height;
 	}
 
-	CameraTrackingData trackingData = CameraTrackingData(Mouse::getInstance(), Vec2(416.0f, 234.0f), CameraTrackingData::CameraScrollType::Ellipse);
-	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, visibleSize.width, totalHeight));
+	CameraTrackingData trackingData = CameraTrackingData(Mouse::getInstance(), Vec2(416.0f, 234.0f), CameraTrackingData::CameraScrollType::Rectangle);
+	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, visibleSize.width * 2.0f, totalHeight - visibleSize.height));
 
 	// Because the mouse is a HUD object (and thus unaffected by the camera position), we need a custom function for getting the position to help with camera tracking
 	trackingData.customPositionFunction = [=]()
@@ -115,7 +175,7 @@ void PointerTraceLevelSelect::initializePositions()
 
 	for (auto it = this->levelSegments.begin(); it != this->levelSegments.end(); it++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + totalHeight));
+		(*it)->setPosition(Vec2(0.0f, totalHeight));
 		totalHeight += (*it)->getContentSize().height;
 	}
 }
@@ -161,6 +221,8 @@ void PointerTraceLevelSelect::onKeyPressed(EventKeyboard::KeyCode keyCode, Event
 void PointerTraceLevelSelect::addSegment(LevelSegment* levelSegment)
 {
 	this->levelSegments.push_back(levelSegment);
+
+	levelSegment->setAnchorPoint(Vec2::ZERO);
 
 	this->segmentsNode->addChild(levelSegment);
 }

@@ -47,6 +47,7 @@ private:
 	typedef SmartNode super;
 	void initializePositions() override;
 	void initializeListeners() override;
+	cocos2d::Vec2 calculateMapNodePosition(float progress);
 
 	cocos2d::Node* mapNode;
 	cocos2d::Sprite* mapSprite;
