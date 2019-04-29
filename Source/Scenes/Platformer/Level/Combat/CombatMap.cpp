@@ -174,15 +174,18 @@ void CombatMap::spawnEntities()
 			valueMap[SerializableObject::MapKeyName] = Value(*it);
 			valueMap[SerializableObject::MapKeyFlipX] = Value(true);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest({
-					PlatformerEntityDeserializer::KeyTypeEntity,
-					valueMap,
-					[=] (DeserializationEvents::ObjectDeserializationArgs args)
-			{
-				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+			DeserializationEvents::ObjectDeserializationRequestArgs args = DeserializationEvents::ObjectDeserializationRequestArgs(
+				PlatformerEntityDeserializer::KeyTypeEntity,
+				valueMap,
+				[=] (DeserializationEvents::ObjectDeserializationArgs args)
+				{
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
 
-				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
-			}});
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
+				}
+			);
+
+			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&args);
 
 			index++;
 		}
@@ -197,16 +200,19 @@ void CombatMap::spawnEntities()
 			ValueMap valueMap = ValueMap();
 
 			valueMap[SerializableObject::MapKeyName] = Value(*it);
+			
+			DeserializationEvents::ObjectDeserializationRequestArgs args = DeserializationEvents::ObjectDeserializationRequestArgs(
+				PlatformerEntityDeserializer::KeyTypeEntity,
+				valueMap,
+				[=] (DeserializationEvents::ObjectDeserializationArgs args)
+				{
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest({
-					PlatformerEntityDeserializer::KeyTypeEntity,
-					valueMap,
-					[=] (DeserializationEvents::ObjectDeserializationArgs args)
-			{
-				PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
+				}
+			);
 
-				CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
-			}});
+			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&args);
 
 			index++;
 		}

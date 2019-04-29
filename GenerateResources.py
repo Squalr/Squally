@@ -38,6 +38,15 @@ def main():
 		'.tif',
 	), "Resources/Platformer/Entities")
 
+	# IsometricEntityResources
+	createResourceFile("IsometricEntityResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Isometric/Entities")
+
 	# HexusResources
 	createResourceFile("HexusResources", (
 		'.scml',
@@ -123,6 +132,12 @@ def main():
 		'.tmx',
 		'.png',
 	), "Resources/Platformer/Maps")
+
+	# IsometricMapResources
+	createResourceFile("IsometricMapResources", (
+		'.tmx',
+		'.png',
+	), "Resources/Isometric/Maps")
 
 	# ParticleResources
 	createResourceFile("ParticleResources", (

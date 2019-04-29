@@ -1,4 +1,4 @@
-#include "IsometricSqually.h"
+#include "IsometricBall.h"
 
 #include "Engine/Input/Input.h"
 #include "Events/NavigationEvents.h"
@@ -7,45 +7,49 @@
 
 using namespace cocos2d;
 
-IsometricSqually* IsometricSqually::squallyInstance = nullptr;
-const std::string IsometricSqually::KeySquallyProperty = "squally";
+const std::string IsometricBall::KeyBallProperty = "ball";
 
-IsometricSqually* IsometricSqually::deserialize(ValueMap& initProperties)
+IsometricBall* IsometricBall::deserialize(ValueMap& initProperties)
 {
-	return IsometricSqually::create(initProperties);
-}
+	return IsometricBall::create(initProperties);
 
-IsometricSqually* IsometricSqually::create(cocos2d::ValueMap& initProperties)
-{
-	IsometricSqually* instance = new IsometricSqually(initProperties);
-
+	IsometricBall::instance = instance;
 	instance->autorelease();
 
 	return instance;
 }
 
-IsometricSqually::IsometricSqually(ValueMap& initProperties) : super::IsometricEntity(initProperties,
-	IsometricEntityResources::Squally_Animations,
+IsometricBall* IsometricBall::create(cocos2d::ValueMap& initProperties)
+{
+	IsometricBall* instance = new IsometricBall(initProperties);
+
+	instance->autorelease();
+	
+	return instance;
+}
+
+IsometricBall::IsometricBall(ValueMap& initProperties) : super::IsometricEntity(initProperties,
+	IsometricEntityResources::SquallBall_Animations,
 	1.0f,
-	Vec2(-128.0f, 0.0f))
+	Vec2(0.0f, 0.0f))
 {
 }
 
-IsometricSqually::~IsometricSqually()
+IsometricBall::~IsometricBall()
 {
 }
 
-void IsometricSqually::onEnter()
+void IsometricBall::onEnter()
 {
 	super::onEnter();
 }
 
-Vec2 IsometricSqually::getButtonOffset()
+Vec2 IsometricBall::getButtonOffset()
 {
 	return Vec2(0, 72.0f);
 }
 
-void IsometricSqually::update(float dt)
+void IsometricBall::update(float dt)
 {
 	super::update(dt);
 
