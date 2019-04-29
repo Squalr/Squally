@@ -5,6 +5,7 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/UI/Mouse.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -38,6 +39,8 @@ IsometricMap::~IsometricMap()
 void IsometricMap::onEnter()
 {
 	super::onEnter();
+	
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<IsometricSqually>([=](IsometricSqually* squally)
 	{
@@ -46,16 +49,6 @@ void IsometricMap::onEnter()
 	}));
 
 	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
-
-	CameraTrackingData trackingData = CameraTrackingData(Mouse::getInstance(), Vec2(416.0f, 234.0f), CameraTrackingData::CameraScrollType::Rectangle);
-
-	// Because the mouse is a HUD object (and thus unaffected by the camera position), we need a custom function for getting the position to help with camera tracking
-	trackingData.customPositionFunction = [=]()
-	{
-		return Mouse::getInstance()->getPosition() + GameCamera::getInstance()->getCameraPosition() - visibleSize / 2.0f;
-	};
-
-	GameCamera::getInstance()->setTarget(trackingData);
 
 	this->scheduleUpdate();
 }

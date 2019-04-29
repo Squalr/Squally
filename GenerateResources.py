@@ -83,6 +83,15 @@ def main():
 		'.tif',
 	), "Resources/Platformer/Objects")
 
+	# IsometricObjectResources
+	createResourceFile("IsometricObjectResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Isometric/Objects")
+
 	# TerrainResources
 	createResourceFile("TerrainResources", (
 		'.png',
