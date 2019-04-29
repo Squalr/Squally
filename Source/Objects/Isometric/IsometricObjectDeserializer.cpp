@@ -49,6 +49,10 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = HexusArcade::create(properties);
 		}
+		else if (name == EaxCrystal::MapKeyEaxCrystal)
+		{
+			newObject = EaxCrystal::create(properties);
+		}
 		else
 		{
 			CCLOG("Missing properties on isometric object");
