@@ -6,8 +6,11 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Events/MouseEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 
 #include "Resources/IsometricObjectResources.h"
 
@@ -27,6 +30,7 @@ MemoryGrid* MemoryGrid::create(ValueMap& initProperties)
 MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties)
 {
 	this->addresses = std::vector<LocalizedLabel*>();
+	this->gridHitBoxes = std::vector<ClickableNode*>();
 	this->eaxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxMarker);
 	this->ebxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbxMarker);
 	this->ecxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EcxMarker);
@@ -36,6 +40,8 @@ MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties
 	this->ebpMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbpMarker);
 	this->espMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EspMarker);
 	this->addressesNode = Node::create();
+	this->gridHitBoxesNode = Node::create();
+	this->selector = Sprite::create(IsometricObjectResources::PointerTrace_Selector);
 
 	float width = initProperties[super::MapKeyWidth].asFloat();
 	float height = initProperties[super::MapKeyWidth].asFloat();
@@ -55,8 +61,23 @@ MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties
 			indexLabel->enableOutline(Color4B::BLACK, 2);
 			
 			this->addresses.push_back(indexLabel);
-			this->addressesNode->addChild(indexLabel);
+
+			ClickableNode* gridHitBox = ClickableNode::create();
+
+			gridHitBox->setContentSize(Size(128.0f, 64.0f));
+
+			this->gridHitBoxes.push_back(gridHitBox);
 		}	
+	}
+
+	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
+	{
+		this->addressesNode->addChild(*it);
+	}
+
+	for (auto it = this->gridHitBoxes.begin(); it != this->gridHitBoxes.end(); it++)
+	{
+		this->gridHitBoxesNode->addChild(*it);
 	}
 
 	this->addChild(this->eaxMarker);
@@ -68,6 +89,8 @@ MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties
 	this->addChild(this->ebpMarker);
 	this->addChild(this->espMarker);
 	this->addChild(this->addressesNode);
+	this->addChild(this->gridHitBoxesNode);
+	this->addChild(this->selector);
 }
 
 MemoryGrid::~MemoryGrid()
@@ -77,6 +100,21 @@ MemoryGrid::~MemoryGrid()
 void MemoryGrid::onEnter()
 {
 	super::onEnter();
+
+	this->eaxMarker->setOpacity(0);
+	this->ebxMarker->setOpacity(0);
+	this->ecxMarker->setOpacity(0);
+	this->edxMarker->setOpacity(0);
+	this->ediMarker->setOpacity(0);
+	this->esiMarker->setOpacity(0);
+	this->ebpMarker->setOpacity(0);
+	this->espMarker->setOpacity(0);
+	this->selector->setOpacity(0);
+
+	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
+	{
+		(*it)->setOpacity(0);
+	}
 }
 
 void MemoryGrid::initializePositions()
@@ -94,5 +132,33 @@ void MemoryGrid::initializePositions()
 		float realY = (y - x) / 2.0f;
 
 		(*it)->setPosition(Vec2(realX, realY));
+		this->gridHitBoxes[index]->setPosition(Vec2(realX, realY));
+	}
+}
+
+void MemoryGrid::initializeListeners()
+{
+	super::initializeListeners();
+
+	int index = 0;
+
+	for (auto it = this->gridHitBoxes.begin(); it != this->gridHitBoxes.end(); index++, it++)
+	{
+		(*it)->setMouseOverCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->selector->setPosition((*it)->getPosition());
+			this->selector->setOpacity(255);
+			this->addresses[index]->setOpacity(255);
+		});
+
+		(*it)->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
+		{
+			this->addresses[index]->setOpacity(0);
+		});
+
+		(*it)->setIntersectFunction([=](Vec2 mousePos)
+		{
+			return GameUtils::intersectsIsometric(*it, mousePos);
+		});
 	}
 }

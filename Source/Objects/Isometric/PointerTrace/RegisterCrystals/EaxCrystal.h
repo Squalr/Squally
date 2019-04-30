@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Isometric/PointerTrace/RegisterCrystals/RegisterCrystal.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class EaxCrystal : public HackableObject
+class EaxCrystal : public RegisterCrystal
 {
 public:
 	static EaxCrystal* create(cocos2d::ValueMap& initProperties);
@@ -22,8 +22,7 @@ protected:
 	void initializePositions() override;
 
 private:
-	typedef HackableObject super;
+	typedef RegisterCrystal super;
 
-	cocos2d::Sprite* shadow;
 	cocos2d::Sprite* crystal;
 };

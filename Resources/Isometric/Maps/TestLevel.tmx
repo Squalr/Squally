@@ -121,7 +121,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="27" name="camera-focus" type="object" x="2112" y="2112" width="128" height="128">
+  <object id="27" name="camera-focus" type="object" x="2248" y="2128" width="128" height="128">
    <properties>
     <property name="scroll-bounds-x" type="float" value="1024"/>
     <property name="scroll-bounds-y" type="float" value="1024"/>

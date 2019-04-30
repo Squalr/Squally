@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
 class LocalizedLabel;
 class UIBoundObject;
 
@@ -23,10 +24,12 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef HackableObject super;
 
+	std::vector<ClickableNode*> gridHitBoxes;
 	std::vector<LocalizedLabel*> addresses;
 	std::vector<UIBoundObject*> bindings;
 
@@ -39,6 +42,8 @@ private:
 	cocos2d::Sprite* ebpMarker;
 	cocos2d::Sprite* espMarker;
 	cocos2d::Node* addressesNode;
+	cocos2d::Node* gridHitBoxesNode;
+	cocos2d::Sprite* selector;
 
 	int gridWidth;
 	int gridHeight;

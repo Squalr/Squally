@@ -43,7 +43,11 @@ namespace IsometricObjectResources
 	extern const std::string PointerTrace_Crystals_EsiMarker;
 	extern const std::string PointerTrace_Crystals_EsiPtrJmp;
 	extern const std::string PointerTrace_Crystals_EspCrystal;
+	extern const std::string PointerTrace_Crystals_EspJmp;
+	extern const std::string PointerTrace_Crystals_EspMarker;
+	extern const std::string PointerTrace_Crystals_EspPtrJmp;
 	extern const std::string PointerTrace_Crystals_ExitCrystal;
+	extern const std::string PointerTrace_Crystals_Selector;
 	extern const std::string PointerTrace_Crystals_Shadow;
 	extern const std::string PointerTrace_GrayWater_GrayWater0;
 	extern const std::string PointerTrace_GrayWater_GrayWater1;
@@ -57,6 +61,7 @@ namespace IsometricObjectResources
 	extern const std::string PointerTrace_Lava_RedWater4;
 	extern const std::string PointerTrace_Runes_JmpEax;
 	extern const std::string PointerTrace_Runes_JmpEdi;
+	extern const std::string PointerTrace_Selector;
 	extern const std::string PointerTrace_Shrine;
 	extern const std::string PointerTrace_Water_BlueWater0;
 	extern const std::string PointerTrace_Water_BlueWater1;
