@@ -120,12 +120,12 @@ void Bootstrapper::initialize()
 	PlatformerCollisionMapping::registerGlobalNode();
 
 	// Decor deserializers
+	PlatformerDecorDeserializer::registerGlobalNode();
 	IsometricDecorDeserializer::registerGlobalNode();
-	IsometricObjectDeserializer::registerGlobalNode();
 
 	// Object deserializers
-	PlatformerDecorDeserializer::registerGlobalNode();
 	PlatformerObjectDeserializer::registerGlobalNode();
+	IsometricObjectDeserializer::registerGlobalNode();
 
 	// Environment deserializers
 	WeatherDeserializer::registerGlobalNode();

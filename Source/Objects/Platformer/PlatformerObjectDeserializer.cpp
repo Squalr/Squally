@@ -30,7 +30,15 @@ void PlatformerObjectDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest(static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(args->getUserData())); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);

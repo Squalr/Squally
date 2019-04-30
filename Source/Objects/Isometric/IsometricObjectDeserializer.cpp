@@ -31,7 +31,15 @@ void IsometricObjectDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
@@ -45,13 +53,25 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newObject = nullptr;
 
-		if (name == "hexus")
+		if (name == HexusArcade::MapKeyHexusArcade)
 		{
 			newObject = HexusArcade::create(properties);
+		}
+		else if (name == MemoryGrid::MapKeyMemoryGrid)
+		{
+			newObject = MemoryGrid::create(properties);
 		}
 		else if (name == EaxCrystal::MapKeyEaxCrystal)
 		{
 			newObject = EaxCrystal::create(properties);
+		}
+		else if (name == EaxJmp::MapKeyEaxJmp)
+		{
+			newObject = EaxJmp::create(properties);
+		}
+		else if (name == EaxPtrJmp::MapKeyEaxPtrJmp)
+		{
+			newObject = EaxPtrJmp::create(properties);
 		}
 		else
 		{
