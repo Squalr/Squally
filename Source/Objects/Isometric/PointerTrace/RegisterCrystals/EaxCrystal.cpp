@@ -8,6 +8,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEax.h"
+#include "Strings/PointerTrace/Assembly/RegisterRax.h"
+
 using namespace cocos2d;
 
 const std::string EaxCrystal::MapKeyEaxCrystal = "eax-crystal";
@@ -24,6 +27,12 @@ EaxCrystal* EaxCrystal::create(ValueMap& initProperties)
 EaxCrystal::EaxCrystal(ValueMap& initProperties) : super(initProperties)
 {
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxCrystal);
+	
+	LocalizedString* registerString = (sizeof(void*) == 4)
+		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEax::create()
+		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRax::create();
+
+	this->buildMovString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
