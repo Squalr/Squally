@@ -12,6 +12,8 @@ class HexusArcade : public HackableObject
 public:
 	static HexusArcade* create(cocos2d::ValueMap& initProperties);
 
+	static const std::string MapKeyHexusArcade;
+
 protected:
 	HexusArcade(cocos2d::ValueMap& initProperties);
 	~HexusArcade();

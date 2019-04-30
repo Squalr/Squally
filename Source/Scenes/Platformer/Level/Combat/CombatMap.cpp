@@ -40,7 +40,7 @@ void CombatMap::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(CombatMap::instance);
 }
 
-CombatMap::CombatMap()
+CombatMap::CombatMap() : super(true)
 {
 	if (!MapBase::init())
 	{

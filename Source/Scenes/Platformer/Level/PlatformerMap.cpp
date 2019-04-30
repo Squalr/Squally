@@ -36,7 +36,7 @@ void PlatformerMap::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(PlatformerMap::instance);
 }
 
-PlatformerMap::PlatformerMap()
+PlatformerMap::PlatformerMap() : super(true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{

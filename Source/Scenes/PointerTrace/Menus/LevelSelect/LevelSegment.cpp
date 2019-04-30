@@ -314,7 +314,7 @@ Vec2 LevelSegment::calculateMapNodePosition(float progress)
 {
 	static const std::vector<Vec2> trailPoints = 
 	{
-		Vec2(1353, 2426), Vec2(1272, 2261), Vec2(1080, 2206), Vec2(885, 2242), Vec2(708, 2261), Vec2(507, 2216),
+		Vec2(1272, 2261), Vec2(1080, 2206), Vec2(885, 2242), Vec2(708, 2261), Vec2(507, 2216),
 		Vec2(420, 2051), Vec2(468, 1875), Vec2(618, 1767), Vec2(804, 1700), Vec2(966, 1655), Vec2(1020, 1556),
 		Vec2(954, 1427), Vec2(798, 1389), Vec2(618, 1350), Vec2(480, 1281), Vec2(376, 1165), Vec2(364, 978),
 		Vec2(474, 858), Vec2(630, 795), Vec2(816, 786), Vec2(988, 826), Vec2(1141, 858), Vec2(1308, 877),

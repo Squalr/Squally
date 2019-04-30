@@ -6,6 +6,8 @@
 
 using namespace cocos2d;
 
+const std::string HexusArcade::MapKeyHexusArcade = "hexus-arcade";
+
 HexusArcade* HexusArcade::create(ValueMap& initProperties)
 {
 	HexusArcade* instance = new HexusArcade(initProperties);
