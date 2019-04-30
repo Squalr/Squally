@@ -28,7 +28,7 @@ void IsometricMap::registerGlobalScene()
 	GlobalDirector::registerGlobalScene(IsometricMap::instance);
 }
 
-IsometricMap::IsometricMap()
+IsometricMap::IsometricMap() : super(false)
 {
 }
 
