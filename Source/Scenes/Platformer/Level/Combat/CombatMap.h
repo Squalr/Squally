@@ -15,8 +15,6 @@ class CombatMap : public MapBase
 public:
 	static void registerGlobalScene();
 
-	void loadMap(SerializableMap* levelMap) override;
-
 protected:
 	CombatMap();
 	~CombatMap();

@@ -34,7 +34,15 @@ void MusicDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestLayerDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::LayerDeserializationRequestArgs* args = static_cast<DeserializationEvents::LayerDeserializationRequestArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
@@ -44,14 +52,10 @@ void MusicDeserializer::onDeserializationRequest(DeserializationEvents::LayerDes
 {
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
+	if (GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString() != MusicDeserializer::KeyMusicProperty)
 	{
 		return;
 	}
 
-	if (properties.at(SerializableLayer::KeyType).asString() == MusicDeserializer::KeyMusicProperty)
-	{
-		std::string music = properties.at(MusicDeserializer::KeyMusicProperty).asString();
-		SoundManager::playMusicResource(music);
-	}
+	SoundManager::playMusicResource(GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString());
 }

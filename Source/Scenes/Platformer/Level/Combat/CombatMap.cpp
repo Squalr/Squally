@@ -98,7 +98,8 @@ void CombatMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(SerializableMap::deserialize(args->levelFile));
+			this->loadMap(args->levelFile);
+
 			this->setEntityKeys(args->playerTypes, args->enemyTypes);
 			this->enemyIdentifier = args->enemyIdentifier;
 
@@ -148,11 +149,6 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
-}
-
-void CombatMap::loadMap(SerializableMap* levelMap)
-{
-	super::loadMap(levelMap);
 }
 
 void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys)

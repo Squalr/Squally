@@ -70,8 +70,5 @@ void LevelNode::initializeListeners()
 
 void LevelNode::onNodeClick()
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile, [](SerializableMap* map)
-	{
-		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
-	}));
+	NavigationEvents::navigatePointerTraceMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile));
 }

@@ -57,7 +57,7 @@ MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties
 			int realIndex = x + y * this->gridWidth;
 			std::string indexString = std::to_string(realIndex);
 
-			LocalizedLabel* indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, ConstantString::create(indexString));
+			LocalizedLabel* indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, ConstantString::create(indexString));
 			
 			indexLabel->enableOutline(Color4B::BLACK, 2);
 			

@@ -9,7 +9,7 @@
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
- <objectgroup id="20" name="Registers">
+ <objectgroup id="20" name="RegisterState">
   <properties>
    <property name="eax" type="int" value="88"/>
    <property name="ebp" type="int" value="0"/>
@@ -19,6 +19,7 @@
    <property name="edx" type="int" value="0"/>
    <property name="esi" type="int" value="0"/>
    <property name="esp" type="int" value="0"/>
+   <property name="type" value="register-state"/>
   </properties>
  </objectgroup>
  <layer id="15" name="Level 0" width="40" height="40">

@@ -210,12 +210,9 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::CastleValgrind_Castle, [](SerializableMap* map)
-	{
-		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
-	}));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::CastleValgrind_Castle));
 
-	////NavigationEvents::navigateSaveSelect();
+	//// NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onMinigamesClick()

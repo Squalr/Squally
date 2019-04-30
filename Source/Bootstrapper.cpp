@@ -46,7 +46,6 @@
 #include "Scenes/Hexus/Menus/HexusDeckManagement.h"
 #include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
 #include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
-#include "Scenes/Isometric/IsometricMap.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PhysicsDeserializer.h"
@@ -55,7 +54,9 @@
 #include "Scenes/Platformer/Level/Terrain/CastleTerrainDeserializer.h"
 #include "Scenes/Platformer/Level/Weather/WeatherDeserializer.h"
 #include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
+#include "Scenes/PointerTrace/PointerTraceMap.h"
 #include "Scenes/PointerTrace/PointerTraceScene.h"
+#include "Scenes/PointerTrace/RegisterStateDeserializer.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/WorldMap/WorldMap.h"
 #include "Sound/MusicDeserializer.h"
@@ -67,10 +68,15 @@ void Bootstrapper::initialize()
 	// Register scenes
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
-	IsometricMap::registerGlobalScene();
+	PointerTraceMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	
+	// Pointer trace
 	PointerTraceLevelSelect::registerGlobalScene();
 	PointerTraceScene::registerGlobalScene();
+	RegisterStateDeserializer::registerGlobalNode();
+
+	// Cipher
 	CipherScene::registerGlobalScene();
 	CipherPuzzleDeserializer::registerGlobalNode();
 	CipherPuzzleMenuBalmerPeaks::registerGlobalScene();
@@ -82,6 +88,8 @@ void Bootstrapper::initialize()
 	CipherPuzzleMenuUnderflowRuins::registerGlobalScene();
 	CipherPuzzleMenuVoidStar::registerGlobalScene();
 	CipherChapterSelectMenu::registerGlobalScene();
+
+	// Hexus
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
 	HexusChapterSelectMenuPuzzles::registerGlobalScene();
