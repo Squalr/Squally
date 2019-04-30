@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class PointerTrace_Assembly_Offset : public LocalizedString
+	class PointerTrace_Assembly_OffsetPositive : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Offset* create();
+		static PointerTrace_Assembly_OffsetPositive* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		PointerTrace_Assembly_Offset();
-		~PointerTrace_Assembly_Offset();
+		PointerTrace_Assembly_OffsetPositive();
+		~PointerTrace_Assembly_OffsetPositive();
 	};
 }

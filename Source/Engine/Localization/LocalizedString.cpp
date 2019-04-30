@@ -256,7 +256,14 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
 		// Update this string if any of the replacement variables get updated
-		(*it)->setOnStringUpdateCallback([=](LocalizedString*) { if (this->onStringUpdate != nullptr) { this->onStringUpdate(this); } });
+		(*it)->setOnStringUpdateCallback([=](LocalizedString*)
+		{
+			if (this->onStringUpdate != nullptr)
+			{
+				this->onStringUpdate(this);
+			}
+		});
+		
 		this->addChild(*it);
 	}
 

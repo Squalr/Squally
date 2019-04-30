@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string PointerTrace_Assembly_Ptr::getStringAr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringBg()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringCs()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringDa()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringDe()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringEl()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringEn()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringEs()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringEs419()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringFi()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringFr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringHu()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringIt()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringJa()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringKo()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringNl()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringNo()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringPl()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringPt()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringPtBr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringRo()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringRu()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringSv()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringTh()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringTr()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringUk()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringVi()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringZhCn()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 
 	std::string PointerTrace_Assembly_Ptr::getStringZhTw()
 	{
-		return "[%s]";
+		return "[%s1]";
 	}
 }

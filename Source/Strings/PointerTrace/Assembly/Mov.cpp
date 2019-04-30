@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string PointerTrace_Assembly_Mov::getStringAr()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringBg()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringCs()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringDa()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringDe()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringEl()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringEn()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringEs()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringEs419()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringFi()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringFr()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringHu()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringIt()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringJa()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringKo()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringNl()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringNo()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringPl()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringPt()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringPtBr()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringRo()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringRu()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringSv()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringTh()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringTr()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringUk()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringVi()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringZhCn()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 
 	std::string PointerTrace_Assembly_Mov::getStringZhTw()
 	{
-		return "mov %s";
+		return "mov %s1, %s2";
 	}
 }

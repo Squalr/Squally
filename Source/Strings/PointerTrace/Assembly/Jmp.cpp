@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string PointerTrace_Assembly_Jmp::getStringAr()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringBg()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringCs()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringDa()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringDe()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringEl()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringEn()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringEs()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringEs419()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringFi()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringFr()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringHu()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringIt()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringJa()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringKo()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringNl()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringNo()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringPl()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringPt()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringPtBr()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringRo()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringRu()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringSv()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringTh()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringTr()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringUk()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringVi()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringZhCn()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 
 	std::string PointerTrace_Assembly_Jmp::getStringZhTw()
 	{
-		return "jmp %s";
+		return "jmp %s1";
 	}
 }

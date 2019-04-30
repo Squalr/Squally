@@ -8,6 +8,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEax.h"
+#include "Strings/PointerTrace/Assembly/RegisterRax.h"
+
 using namespace cocos2d;
 
 const std::string EaxJmp::MapKeyEaxJmp = "eax-jmp";
@@ -24,8 +27,14 @@ EaxJmp* EaxJmp::create(ValueMap& initProperties)
 EaxJmp::EaxJmp(ValueMap& initProperties) : super(initProperties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxJmp);
+	
+	LocalizedString* registerString = (sizeof(void*) == 4)
+		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEax::create()
+		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRax::create();
 
-	this->addChild(this->marker);
+	this->buildJmpString(registerString);
+
+	this->markerNode->addChild(this->marker);
 }
 
 EaxJmp::~EaxJmp()

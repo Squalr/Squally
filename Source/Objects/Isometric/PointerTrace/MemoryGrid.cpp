@@ -8,6 +8,7 @@
 
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -161,4 +162,9 @@ void MemoryGrid::initializeListeners()
 			return GameUtils::intersectsIsometric(*it, mousePos);
 		});
 	}
+}
+
+void MemoryGrid::update(float dt)
+{
+	super::update(dt);
 }
