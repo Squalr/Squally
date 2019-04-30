@@ -26,7 +26,7 @@ public:
 	virtual void loadMap(SerializableMap* levelMap);
 
 protected:
-	MapBase();
+	MapBase(bool allowHackerMode);
 	~MapBase();
 
 	void onEnter() override;
@@ -62,5 +62,6 @@ private:
 
 	cocos2d::Node* mapNode;
 
+	bool allowHackerMode;
 	static bool hackerMode;
 };

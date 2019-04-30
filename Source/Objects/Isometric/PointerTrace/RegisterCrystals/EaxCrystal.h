@@ -18,8 +18,12 @@ protected:
 	EaxCrystal(cocos2d::ValueMap& initProperties);
 	~EaxCrystal();
 
+	void onEnter() override;
+	void initializePositions() override;
+
 private:
 	typedef HackableObject super;
 
+	cocos2d::Sprite* shadow;
 	cocos2d::Sprite* crystal;
 };

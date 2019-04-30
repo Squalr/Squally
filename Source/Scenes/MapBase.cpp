@@ -26,8 +26,10 @@ using namespace cocos2d;
 
 bool MapBase::hackerMode = false;
 
-MapBase::MapBase()
+MapBase::MapBase(bool allowHackerMode)
 {
+	this->allowHackerMode = allowHackerMode;
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->map = nullptr;;
@@ -244,6 +246,11 @@ void MapBase::onHackerModeDisable()
 
 void MapBase::toggleHackerMode()
 {
+	if (!this->allowHackerMode)
+	{
+		return;
+	}
+	
 	MapBase::hackerMode = !MapBase::hackerMode;
 
 	if (MapBase::hackerMode)
