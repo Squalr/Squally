@@ -380,6 +380,29 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos)
 	}
 }
 
+bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos)
+{
+	if (GameUtils::isEclipsed(node, mousePos))
+	{
+		return false;
+	}
+
+	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+	Rect nodeBounds = GameUtils::getScreenBounds(node);
+
+	float dx = std::abs(mousePos.x - nodeBounds.getMidX());
+	float dy = std::abs(mousePos.y - nodeBounds.getMidY());
+
+	if (nodeBounds.size.width > 0.0f && nodeBounds.size.height > 0.0f && (dx / nodeBounds.size.width + dy / nodeBounds.size.height <= 1.0f))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 bool GameUtils::keyExists(const ValueMap& valueMap, std::string key)
 {
 	auto pointsIterator = valueMap.find(key);

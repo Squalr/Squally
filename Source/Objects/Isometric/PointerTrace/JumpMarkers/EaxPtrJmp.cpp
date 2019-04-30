@@ -21,7 +21,7 @@ EaxPtrJmp* EaxPtrJmp::create(ValueMap& initProperties)
 	return instance;
 }
 
-EaxPtrJmp::EaxPtrJmp(ValueMap& initProperties) : HackableObject(initProperties)
+EaxPtrJmp::EaxPtrJmp(ValueMap& initProperties) : super(initProperties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxPtrJmp);
 

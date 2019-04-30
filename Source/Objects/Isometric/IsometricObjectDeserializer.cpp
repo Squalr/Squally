@@ -61,9 +61,41 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = MemoryGrid::create(properties);
 		}
+		else if (name == ExitCrystal::MapKeyExitCrystal)
+		{
+			newObject = ExitCrystal::create(properties);
+		}
 		else if (name == EaxCrystal::MapKeyEaxCrystal)
 		{
 			newObject = EaxCrystal::create(properties);
+		}
+		else if (name == EbxCrystal::MapKeyEbxCrystal)
+		{
+			newObject = EbxCrystal::create(properties);
+		}
+		else if (name == EcxCrystal::MapKeyEcxCrystal)
+		{
+			newObject = EcxCrystal::create(properties);
+		}
+		else if (name == EdxCrystal::MapKeyEdxCrystal)
+		{
+			newObject = EdxCrystal::create(properties);
+		}
+		else if (name == EdiCrystal::MapKeyEdiCrystal)
+		{
+			newObject = EdiCrystal::create(properties);
+		}
+		else if (name == EsiCrystal::MapKeyEsiCrystal)
+		{
+			newObject = EsiCrystal::create(properties);
+		}
+		else if (name == EbpCrystal::MapKeyEbpCrystal)
+		{
+			newObject = EbpCrystal::create(properties);
+		}
+		else if (name == EspCrystal::MapKeyEspCrystal)
+		{
+			newObject = EspCrystal::create(properties);
 		}
 		else if (name == EaxJmp::MapKeyEaxJmp)
 		{

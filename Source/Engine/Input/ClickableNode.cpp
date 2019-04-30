@@ -60,6 +60,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->wasClickedDirectly = false;
 	this->isMousedOver = false;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
+	this->intersectFunction = nullptr;
 	this->debugHitbox = DrawNode::create();
 
 	this->clickSound = "";
@@ -315,7 +316,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		this->clearState();
 	}
 
-	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)))
+	if (!args->handled && this->intersects(args->mouseCoords))
 	{
 		MouseEvents::TriggerEventClickableMouseOver();
 
@@ -370,7 +371,7 @@ void ClickableNode::mouseDown(MouseEvents::MouseEventArgs* args, EventCustom* ev
 		return;
 	}
 
-	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)) && args->isLeftClicked)
+	if (!args->handled && this->intersects(args->mouseCoords) && args->isLeftClicked)
 	{
 		if (this->mouseDownEvent != nullptr)
 		{
@@ -416,7 +417,7 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 		this->mouseReleaseNoHitTestEvent(args);
 	}
 
-	if (!args->handled && GameUtils::intersects(this, Vec2(args->mouseCoords)) && this->mouseClickEvent != nullptr && !args->isDragging && this->wasClickedDirectly)
+	if (!args->handled && this->intersects(args->mouseCoords) && this->mouseClickEvent != nullptr && !args->isDragging && this->wasClickedDirectly)
 	{
 		this->wasClickedDirectly = false;
 		this->wasAnywhereClicked = false;
@@ -459,7 +460,7 @@ void ClickableNode::mouseScroll(MouseEvents::MouseEventArgs* args, EventCustom* 
 		return;
 	}
 
-	if (!args->handled && this->mouseScrollEvent != nullptr && GameUtils::intersects(this, Vec2(args->mouseCoords)))
+	if (!args->handled && this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
 	{
 		// Set args as handled. Caller must un-handle in the callback if they choose.
 		args->handled = true;
@@ -476,4 +477,19 @@ cocos2d::Node* ClickableNode::getSprite()
 cocos2d::Node* ClickableNode::getSpriteSelected()
 {
 	return this->spriteSelected;
+}
+
+void ClickableNode::setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction)
+{
+	this->intersectFunction = intersectFunction;
+}
+
+bool ClickableNode::intersects(cocos2d::Vec2 mousePos)
+{
+	if (this->intersectFunction != nullptr)
+	{
+		return this->intersectFunction(mousePos);
+	}
+
+	return GameUtils::intersects(this, mousePos);
 }

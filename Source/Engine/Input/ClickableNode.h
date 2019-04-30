@@ -39,6 +39,7 @@ public:
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
 	cocos2d::Node* getSprite();
 	cocos2d::Node* getSpriteSelected();
+	void setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction);
 
 protected:
 	ClickableNode(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
@@ -63,6 +64,7 @@ private:
 	void mouseDown(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseUp(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseScroll(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
+	bool intersects(cocos2d::Vec2 mousePos);
 
 	std::string mouseOverSound;
 	std::string clickSound;
@@ -74,6 +76,7 @@ private:
 	bool wasAnywhereClicked;
 	bool wasClickedDirectly;
 	bool isMousedOver;
+	std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction;
 	cocos2d::EventKeyboard::KeyCode modifier;
 	cocos2d::DrawNode* debugHitbox;
 	cocos2d::Vec2 debugCachedPos;

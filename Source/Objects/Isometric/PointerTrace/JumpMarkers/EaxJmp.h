@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Isometric/PointerTrace/JumpMarkers/JmpMarker.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class EaxJmp : public HackableObject
+class EaxJmp : public JmpMarker
 {
 public:
 	static EaxJmp* create(cocos2d::ValueMap& initProperties);
@@ -22,7 +22,7 @@ protected:
 	void initializePositions() override;
 
 private:
-	typedef HackableObject super;
+	typedef JmpMarker super;
 
 	cocos2d::Sprite* marker;
 };
