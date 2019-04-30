@@ -2,15 +2,14 @@
 
 #include "Scenes/MapBase.h"
 
-class IsometricMap : public MapBase
+class PointerTraceMap : public MapBase
 {
 public:
 	static void registerGlobalScene();
-	void loadMap(SerializableMap* levelMap) override;
 
 protected:
-	IsometricMap();
-	~IsometricMap();
+	PointerTraceMap();
+	~PointerTraceMap();
 
 private:
 	typedef MapBase super;
@@ -18,5 +17,5 @@ private:
 	void initializeListeners() override;
 	void onEnter() override;
 
-	static IsometricMap* instance;
+	static PointerTraceMap* instance;
 };

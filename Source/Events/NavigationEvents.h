@@ -13,14 +13,6 @@ class SerializableMap;
 class NavigationEvents
 {
 public:
-	struct NavigateLoadingScreenArgs
-	{
-		std::string levelFile;
-		std::function<void(SerializableMap*)> onLoadCallback;
-
-		NavigateLoadingScreenArgs(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback) : levelFile(levelFile), onLoadCallback(onLoadCallback) { }
-	};
-
 	struct NavigateCipherPuzzleSelectArgs
 	{
 		enum class Chapter
@@ -71,9 +63,9 @@ public:
 
 	struct NavigateMapArgs
 	{
-		SerializableMap* levelMap;
+		std::string mapResource;
 
-		NavigateMapArgs(SerializableMap* levelMap) : levelMap(levelMap) { }
+		NavigateMapArgs(std::string mapResource) : mapResource(mapResource) { }
 	};
 
 	struct NavigateHexusOpponentSelectArgs
@@ -125,8 +117,9 @@ public:
 
 	static void navigateBack(int backCount = 1);
 	static void navigateTitle();
-	static void navigateLoadingScreen(NavigateLoadingScreenArgs args);
-	static void navigateMap(NavigateMapArgs args);
+	static void navigatePlatformerMap(NavigateMapArgs args);
+	static void navigateCombatMap(NavigateMapArgs args);
+	static void navigatePointerTraceMap(NavigateMapArgs args);
 	static void navigateSaveSelect();
 	static void navigateMinigames();
 	static void navigateOptions();
@@ -147,8 +140,9 @@ public:
 	static void navigateCutscene(NavigateCutsceneArgs args);
 	
 	static const std::string EventNavigateTitle;
-	static const std::string EventNavigateLoadingScreen;
-	static const std::string EventNavigateMap;
+	static const std::string EventNavigatePlatformerMap;
+	static const std::string EventNavigateCombatMap;
+	static const std::string EventNavigatePointerTraceMap;
 	static const std::string EventNavigateSaveSelect;
 	static const std::string EventNavigateMinigames;
 	static const std::string EventNavigateOptions;

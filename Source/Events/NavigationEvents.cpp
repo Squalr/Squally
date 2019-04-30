@@ -9,8 +9,9 @@
 using namespace cocos2d;
 
 const std::string NavigationEvents::EventNavigateTitle = "EVENT_NAVIGATE_TITLE";
-const std::string NavigationEvents::EventNavigateLoadingScreen = "EVENT_NAVIGATE_LOADING_SCREEN";
-const std::string NavigationEvents::EventNavigateMap = "EVENT_NAVIGATE_MAP";
+const std::string NavigationEvents::EventNavigatePlatformerMap = "EVENT_NAVIGATE_PLATFORMER_MAP";
+const std::string NavigationEvents::EventNavigateCombatMap = "EVENT_NAVIGATE_COMBAT_MAP";
+const std::string NavigationEvents::EventNavigatePointerTraceMap = "EVENT_NAVIGATE_POINTER_TRACE_MAP";
 const std::string NavigationEvents::EventNavigateSaveSelect = "EVENT_NAVIGATE_SAVE_SELECT";
 const std::string NavigationEvents::EventNavigateMinigames = "EVENT_NAVIGATE_MINIGAMES";
 const std::string NavigationEvents::EventNavigateOptions = "EVENT_NAVIGATE_OPTIONS";
@@ -42,18 +43,26 @@ void NavigationEvents::navigateTitle()
 	);
 }
 
-void NavigationEvents::navigateLoadingScreen(NavigateLoadingScreenArgs args)
+void NavigationEvents::navigatePlatformerMap(NavigateMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateLoadingScreen,
+		NavigationEvents::EventNavigatePlatformerMap,
 		&args
 	);
 }
 
-void NavigationEvents::navigateMap(NavigateMapArgs args)
+void NavigationEvents::navigateCombatMap(NavigateMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateMap,
+		NavigationEvents::EventNavigateCombatMap,
+		&args
+	);
+}
+
+void NavigationEvents::navigatePointerTraceMap(NavigateMapArgs args)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigatePointerTraceMap,
 		&args
 	);
 }

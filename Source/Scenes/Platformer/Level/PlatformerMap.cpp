@@ -59,7 +59,7 @@ PlatformerMap::~PlatformerMap()
 void PlatformerMap::onEnter()
 {
 	super::onEnter();
-
+	
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
 		this->gameHud->getCurrencyDisplay()->setCurrencyInventory(squally->getCurrencyInventory());
@@ -70,7 +70,10 @@ void PlatformerMap::onEnter()
 		GameCamera::getInstance()->setTarget(trackingData);
 	}));
 
-	GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	if (this->map != nullptr)
+	{
+		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	}
 
 	this->scheduleUpdate();
 }
@@ -86,14 +89,15 @@ void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	PlatformerMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMap, [](EventCustom* args)
+	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePlatformerMap, [=](EventCustom* eventCustom)
 	{
-		NavigationEvents::NavigateMapArgs* mapArgs = static_cast<NavigationEvents::NavigateMapArgs*>(args->getUserData());
+		NavigationEvents::NavigateMapArgs* args = static_cast<NavigationEvents::NavigateMapArgs*>(eventCustom->getUserData());
 
-		if (mapArgs != nullptr && !mapArgs->levelMap->isIsometric())
+		if (args != nullptr)
 		{
-			PlatformerMap::instance->loadMap(mapArgs->levelMap);
-			GlobalDirector::loadScene(PlatformerMap::instance);
+			this->loadMap(args->mapResource);
+
+			GlobalDirector::loadScene(this);
 		}
 	}));
 
@@ -129,9 +133,4 @@ void PlatformerMap::update(float dt)
 
 	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
 	this->getPhysicsWorld()->step(1.0f / 60.0f);
-}
-
-void PlatformerMap::loadMap(SerializableMap* levelMap)
-{
-	super::loadMap(levelMap);
 }

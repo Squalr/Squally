@@ -32,7 +32,7 @@ MapBase::MapBase(bool allowHackerMode)
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->map = nullptr;;
+	this->map = nullptr;
 	this->mapNode = Node::create();
 
 	this->pauseMenu = PauseMenu::create();
@@ -81,6 +81,11 @@ void MapBase::onEnter()
 	this->pauseMenu->setVisible(false);
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false);
+}
+
+void MapBase::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
 }
 
 void MapBase::resume(void)
@@ -161,14 +166,14 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MapBase::loadMap(SerializableMap* serializableMap)
+void MapBase::loadMap(std::string mapResource)
 {
-	this->map = serializableMap;
+	this->map = SerializableMap::deserialize(mapResource);
 	this->mapNode->removeAllChildren();
 
 	if (this->map != nullptr)
 	{
-		GameUtils::changeParent(this->map, this->mapNode, false);
+		this->mapNode->addChild(this->map);
 		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
 }
@@ -250,7 +255,7 @@ void MapBase::toggleHackerMode()
 	{
 		return;
 	}
-	
+
 	MapBase::hackerMode = !MapBase::hackerMode;
 
 	if (MapBase::hackerMode)

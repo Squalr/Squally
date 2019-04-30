@@ -23,13 +23,14 @@ namespace cocos2d
 class MapBase : public GlobalScene
 {
 public:
-	virtual void loadMap(SerializableMap* levelMap);
+	void loadMap(std::string mapResource);
 
 protected:
 	MapBase(bool allowHackerMode);
 	~MapBase();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void resume() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
