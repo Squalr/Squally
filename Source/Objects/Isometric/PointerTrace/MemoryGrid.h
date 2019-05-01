@@ -18,10 +18,13 @@ public:
 
 	static const std::string MapKeyMemoryGrid;
 
+	int getMaxIndex();
 	int getGridWidth();
 	int getGridHeight();
-	int toGridIndex(cocos2d::Vec2 worldCoordinates);
-	cocos2d::Vec2 gridIndexToPosition(int gridIndex);
+	int relativeCoordsToGridIndex(cocos2d::Vec2 relativeCoordinates);
+	cocos2d::Vec2 gridIndexToRelativePosition(int gridIndex);
+	int worldCoordsToGridIndex(cocos2d::Vec2 worldCoordinates);
+	cocos2d::Vec2 gridIndexToWorldPosition(int gridIndex);
 
 protected:
 	MemoryGrid(cocos2d::ValueMap& initProperties);

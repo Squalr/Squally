@@ -1,4 +1,5 @@
 #pragma once
+#include <set>
 
 #include "Events/PointerTraceEvents.h"
 #include "Scenes/MapBase.h"
@@ -24,8 +25,8 @@ private:
 	void initializeGridObjects();
 	void moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs* args);
 
-	std::map<int, bool> collisionMap;
-	std::map<int, bool> segfaultMap;
+	std::set<int> collisionMap;
+	std::set<int> segfaultMap;
 	MemoryGrid* memoryGrid;
 
 	static PointerTraceMap* instance;
