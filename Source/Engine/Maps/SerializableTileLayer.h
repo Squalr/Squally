@@ -23,11 +23,12 @@ namespace tinyxml2
 class SerializableTileLayer : public SerializableLayer
 {
 public:
-	static SerializableTileLayer * deserialize(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
+	static SerializableTileLayer* deserialize(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
 
 	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement,
 			cocos2d::Size mapUnitSize, cocos2d::Size mapTileSize) override;
 	std::string getType();
+	std::vector<std::vector<int>> getGidMap();
 
 	static const std::string MapKeyPropertyWidth;
 	static const std::string MapKeyPropertyHeight;

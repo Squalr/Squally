@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Isometric/PointerTrace/GridObject.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class ExitCrystal : public HackableObject
+class ExitCrystal : public GridObject
 {
 public:
 	static ExitCrystal* create(cocos2d::ValueMap& initProperties);
@@ -26,7 +26,7 @@ protected:
 
 
 private:
-	typedef HackableObject super;
+	typedef GridObject super;
 
 	cocos2d::Sprite* crystal;
 	cocos2d::Sprite* shadow;

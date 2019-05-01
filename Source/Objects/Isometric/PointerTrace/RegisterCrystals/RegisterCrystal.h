@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Isometric/PointerTrace/GridObject.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class LocalizedLabel;
 class LocalizedString;
 
-class RegisterCrystal : public HackableObject
+class RegisterCrystal : public GridObject
 {
 protected:
 	RegisterCrystal(cocos2d::ValueMap& initProperties);
@@ -30,7 +30,7 @@ protected:
 	LocalizedString* assemblyString;
 
 private:
-	typedef HackableObject super;
+	typedef GridObject super;
 
 	int value;
 	int offset;

@@ -168,3 +168,14 @@ void MemoryGrid::update(float dt)
 {
 	super::update(dt);
 }
+
+int MemoryGrid::getGridWidth()
+{
+	return this->gridWidth;
+}
+
+int MemoryGrid::getGridHeight()
+{
+	return this->gridHeight;
+}
+

@@ -114,3 +114,28 @@ std::string SerializableTileLayer::getType()
 
 	return "";
 }
+
+std::vector<std::vector<int>> SerializableTileLayer::getGidMap()
+{
+	std::vector<std::vector<int>> gidMap = std::vector<std::vector<int>>();
+
+	if (this->tileLayer != nullptr)
+	{
+		int width = this->tileLayer->getLayerSize().width;
+		int height = this->tileLayer->getLayerSize().height;
+
+		for (int y = 0; y < height; y++)
+		{
+			std::vector<int> row = std::vector<int>();
+
+			for (int x = 0; x < width; x++)
+			{
+				row.push_back(this->tileLayer->getTileGIDAt(Vec2(x, y)));
+			}
+
+			gidMap.push_back(row);
+		}
+	}
+
+	return gidMap;
+}

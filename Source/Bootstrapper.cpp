@@ -55,7 +55,6 @@
 #include "Scenes/Platformer/Level/Weather/WeatherDeserializer.h"
 #include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
 #include "Scenes/PointerTrace/PointerTraceMap.h"
-#include "Scenes/PointerTrace/PointerTraceScene.h"
 #include "Scenes/PointerTrace/RegisterStateDeserializer.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/WorldMap/WorldMap.h"
@@ -68,12 +67,11 @@ void Bootstrapper::initialize()
 	// Register scenes
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
-	PointerTraceMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
 	
 	// Pointer trace
+	PointerTraceMap::registerGlobalScene();
 	PointerTraceLevelSelect::registerGlobalScene();
-	PointerTraceScene::registerGlobalScene();
 	RegisterStateDeserializer::registerGlobalNode();
 
 	// Cipher

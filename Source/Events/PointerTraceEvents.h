@@ -4,10 +4,32 @@
 
 #include "cocos/math/CCGeometry.h"
 
+class GridEntity;
+
 class PointerTraceEvents
 {
 public:
+	static const std::string EventRequestMovement;
 	static const std::string EventInitializeRegisters;
+
+	struct PointerTraceRequestMovementArgs
+	{
+		enum Direction
+		{
+			Up,
+			Down,
+			Left,
+			Right
+		};
+
+		GridEntity* gridEntity;
+		Direction direction;
+		int source;
+		float speed;
+
+		PointerTraceRequestMovementArgs(GridEntity* gridEntity, Direction direction, int source, float speed)
+			: gridEntity(gridEntity), direction(direction), source(source), speed(speed) { } 
+	};
 
 	struct PointerTraceInitializeRegistersArgs
 	{
@@ -26,5 +48,6 @@ public:
 		}
 	};
 
+	static void TriggerRequestMovement(PointerTraceRequestMovementArgs args);
 	static void TriggerInitializeRegisters(PointerTraceInitializeRegistersArgs args);
 };

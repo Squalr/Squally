@@ -1,17 +1,17 @@
-#include "GridObject.h"
+#include "GridItem.h"
 
 using namespace cocos2d;
 
-GridObject* GridObject::create(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStatic)
+GridItem* GridItem::create(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStatic)
 {
-	GridObject* instance = new GridObject(inner, spawnCoords, isObjectStatic);
+	GridItem* instance = new GridItem(inner, spawnCoords, isObjectStatic);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GridObject::GridObject(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStatic)
+GridItem::GridItem(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStatic)
 {
 	this->initCoords = spawnCoords;
 	this->isStatic = isObjectStatic;
@@ -23,16 +23,16 @@ GridObject::GridObject(cocos2d::Node* inner, Vec2 spawnCoords, bool isObjectStat
 	this->addChild(inner);
 }
 
-GridObject::~GridObject()
+GridItem::~GridItem()
 {
 }
 
-void GridObject::onEnter()
+void GridItem::onEnter()
 {
 	SmartNode::onEnter();
 }
 
-void GridObject::setCoords(Vec2 coords)
+void GridItem::setCoords(Vec2 coords)
 {
 	if (this->isStatic)
 	{
@@ -42,12 +42,12 @@ void GridObject::setCoords(Vec2 coords)
 	this->gridCoords = coords;
 }
 
-Vec2 GridObject::getCoords()
+Vec2 GridItem::getCoords()
 {
 	return this->gridCoords;
 }
 
-Vec2 GridObject::getSpawnCoords()
+Vec2 GridItem::getSpawnCoords()
 {
 	return this->initCoords;
 }

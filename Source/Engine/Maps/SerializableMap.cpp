@@ -376,6 +376,11 @@ void SerializableMap::setCollisionLayersVisible(bool isVisible)
 	}
 }
 
+std::vector<SerializableTileLayer*> SerializableMap::getCollisionLayers()
+{
+	return this->collisionLayers;
+}
+
 void SerializableMap::isometricZSort(Node* node)
 {
 	if (this->orientation != MapOrientation::Isometric || node == nullptr)

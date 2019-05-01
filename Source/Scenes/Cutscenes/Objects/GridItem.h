@@ -3,18 +3,18 @@
 
 #include "Engine/SmartNode.h"
 
-class GridObject : public SmartNode
+class GridItem : public SmartNode
 {
 public:
-	static GridObject* create(cocos2d::Node* inner, cocos2d::Vec2 spawnCoords, bool isObjectStatic);
+	static GridItem* create(cocos2d::Node* inner, cocos2d::Vec2 spawnCoords, bool isObjectStatic);
 
 	void setCoords(cocos2d::Vec2 coords);
 	cocos2d::Vec2 getCoords();
 	cocos2d::Vec2 getSpawnCoords();
 
 private:
-	GridObject(cocos2d::Node* inner, cocos2d::Vec2 spawnCoords, bool isObjectStatic);
-	~GridObject();
+	GridItem(cocos2d::Node* inner, cocos2d::Vec2 spawnCoords, bool isObjectStatic);
+	~GridItem();
 
 	void onEnter() override;
 
