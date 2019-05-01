@@ -54,8 +54,8 @@ MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties
 	{
 		for (int y = 0; y < this->gridHeight; y++)
 		{
-			int realIndex = x + y * this->gridWidth;
-			std::string indexString = std::to_string(realIndex);
+			int gridIndex = y + x * this->gridWidth;
+			std::string indexString = std::to_string(gridIndex);
 
 			LocalizedLabel* indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, ConstantString::create(indexString));
 			
@@ -126,10 +126,10 @@ void MemoryGrid::initializePositions()
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); index++, it++)
 	{
-		Vec2 gridPosition = this->gridIndexToPosition(index);
+		Vec2 realCoords = this->gridIndexToRelativePosition(index);
 
-		(*it)->setPosition(gridPosition);
-		this->gridHitBoxes[index]->setPosition(gridPosition);
+		(*it)->setPosition(realCoords);
+		this->gridHitBoxes[index]->setPosition(realCoords);
 	}
 }
 
@@ -165,29 +165,42 @@ void MemoryGrid::update(float dt)
 	super::update(dt);
 }
 
-int MemoryGrid::toGridIndex(cocos2d::Vec2 worldCoordinates)
+int MemoryGrid::relativeCoordsToGridIndex(cocos2d::Vec2 relativeCoordinates)
 {
-	Vec2 realPos = this->convertToNodeSpace(worldCoordinates);
-
-	float x = (realPos.x - 128.0f + float(this->getGridWidth()) * 128.0f) / 2.0f - realPos.y;
-	float y = realPos.y * 2.0f + x;
+	float y = (relativeCoordinates.x - 128.0f + float(this->getGridWidth()) * 128.0f) / 2.0f - relativeCoordinates.y;
+	float x = relativeCoordinates.y * 2.0f + y;
 
 	int gridX = std::round(x / 128.0f);
 	int gridY = std::round(y / 128.0f);
-	int gridIndex = this->getGridWidth() * gridY + gridX;
+	int gridIndex = gridX + this->getGridWidth() * gridY;
 
 	return gridIndex;
 }
 
-Vec2 MemoryGrid::gridIndexToPosition(int gridIndex)
+cocos2d::Vec2 MemoryGrid::gridIndexToRelativePosition(int gridIndex)
 {
 	float x = float(gridIndex % this->gridWidth) * 128.0f;
 	float y = float(gridIndex / this->gridWidth) * 128.0f;
 
 	float realX = (x + y) + 128.0f - (this->gridWidth) * 128.0f;
-	float realY = (y - x) / 2.0f;
+	float realY = (x - y) / 2.0f;
 
-	return this->convertToWorldSpace(Vec2(realX, realY));
+	return Vec2(realX, realY);
+}
+
+int MemoryGrid::worldCoordsToGridIndex(cocos2d::Vec2 worldCoordinates)
+{
+	return this->relativeCoordsToGridIndex(this->convertToNodeSpace(worldCoordinates));
+}
+
+cocos2d::Vec2 MemoryGrid::gridIndexToWorldPosition(int gridIndex)
+{
+	return this->convertToWorldSpace(this->gridIndexToRelativePosition(gridIndex));
+}
+
+int MemoryGrid::getMaxIndex()
+{
+	return this->getGridWidth() * this->getGridHeight();
 }
 
 int MemoryGrid::getGridWidth()
