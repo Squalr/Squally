@@ -18,6 +18,9 @@ public:
 
 	static const std::string MapKeyMemoryGrid;
 
+	int getGridWidth();
+	int getGridHeight();
+
 protected:
 	MemoryGrid(cocos2d::ValueMap& initProperties);
 	~MemoryGrid();

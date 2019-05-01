@@ -30,6 +30,7 @@ public:
 	bool serialize();
 	void appendLayer(SerializableLayer* layer);
 	void setCollisionLayersVisible(bool isVisible);
+	std::vector<SerializableTileLayer*> getCollisionLayers();
 	cocos2d::Size getMapSize();
 	cocos2d::Size getMapUnitSize();
 	cocos2d::Size getMapTileSize();

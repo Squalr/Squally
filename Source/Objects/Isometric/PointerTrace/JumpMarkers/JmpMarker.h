@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Isometric/PointerTrace/GridObject.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class LocalizedString;
 class LocalizedLabel;
 
-class JmpMarker : public HackableObject
+class JmpMarker : public GridObject
 {
 protected:
 	JmpMarker(cocos2d::ValueMap& initProperties);
@@ -28,7 +28,7 @@ protected:
 	static const std::string MapKeyOffset;
 
 private:
-	typedef HackableObject super;
+	typedef GridObject super;
 
 	LocalizedLabel* assemblyLabel;
 	int offset;
