@@ -18,6 +18,7 @@
 #include "Entities/Isometric/PointerTrace/GridEntity.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
+#include "Objects/Isometric/PointerTrace/GridObject.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
 
 #include "Resources/IsometricObjectResources.h"
@@ -156,7 +157,28 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 
 void PointerTraceMap::initializeGridObjects()
 {
+	if (this->memoryGrid == nullptr)
+	{
+		return;
+	}
 
+	ObjectEvents::QueryObjects(QueryObjectsArgs<GridObject>([=](GridObject* gridObject)
+	{
+		int gridIndex = this->memoryGrid->toGridIndex(gridObject->getPosition());
+		Vec2 realignedPosition = this->memoryGrid->gridIndexToPosition(gridIndex);
+		
+		gridObject->setPosition(realignedPosition);
+		gridObject->setGridIndex(gridIndex);
+	}));
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
+	{
+		int gridIndex = this->memoryGrid->toGridIndex(gridEntity->getPosition());
+		Vec2 realignedPosition = this->memoryGrid->gridIndexToPosition(gridIndex);
+		
+		gridEntity->setPosition(realignedPosition);
+		gridEntity->setGridIndex(gridIndex);
+	}));
 }
 
 void PointerTraceMap::buildCollisionMaps()

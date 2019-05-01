@@ -126,14 +126,10 @@ void MemoryGrid::initializePositions()
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); index++, it++)
 	{
-		float x = float(index % this->gridWidth) * 128.0f;
-		float y = float(index / this->gridWidth) * 128.0f;
+		Vec2 gridPosition = this->gridIndexToPosition(index);
 
-		float realX = (x + y) + 128.0f - (this->gridWidth) * 128.0f;
-		float realY = (y - x) / 2.0f;
-
-		(*it)->setPosition(Vec2(realX, realY));
-		this->gridHitBoxes[index]->setPosition(Vec2(realX, realY));
+		(*it)->setPosition(gridPosition);
+		this->gridHitBoxes[index]->setPosition(gridPosition);
 	}
 }
 
@@ -167,6 +163,31 @@ void MemoryGrid::initializeListeners()
 void MemoryGrid::update(float dt)
 {
 	super::update(dt);
+}
+
+int MemoryGrid::toGridIndex(cocos2d::Vec2 worldCoordinates)
+{
+	Vec2 realPos = this->convertToNodeSpace(worldCoordinates);
+
+	float x = (realPos.x - 128.0f + float(this->getGridWidth()) * 128.0f) / 2.0f - realPos.y;
+	float y = realPos.y * 2.0f + x;
+
+	int gridX = std::round(x / 128.0f);
+	int gridY = std::round(y / 128.0f);
+	int gridIndex = this->getGridWidth() * gridY + gridX;
+
+	return gridIndex;
+}
+
+Vec2 MemoryGrid::gridIndexToPosition(int gridIndex)
+{
+	float x = float(gridIndex % this->gridWidth) * 128.0f;
+	float y = float(gridIndex / this->gridWidth) * 128.0f;
+
+	float realX = (x + y) + 128.0f - (this->gridWidth) * 128.0f;
+	float realY = (y - x) / 2.0f;
+
+	return this->convertToWorldSpace(Vec2(realX, realY));
 }
 
 int MemoryGrid::getGridWidth()
