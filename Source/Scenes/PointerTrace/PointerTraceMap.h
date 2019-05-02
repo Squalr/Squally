@@ -6,6 +6,7 @@
 
 class GridEntity;
 class MemoryGrid;
+class SegfaultMenu;
 
 class PointerTraceMap : public MapBase
 {
@@ -26,11 +27,13 @@ private:
 	void buildCollisionMaps();
 	void initializeGridObjects();
 	void moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args);
+	void openSegfaultMenu();
 
 	std::set<int> collisionMap;
 	std::set<int> segfaultMap;
 	MemoryGrid* memoryGrid;
 	cocos2d::Node* collisionDebugNode;
+	SegfaultMenu* segfaultMenu;
 
 	static PointerTraceMap* instance;
 };

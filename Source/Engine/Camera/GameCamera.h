@@ -26,6 +26,8 @@ public:
 
 	float getCameraDistance();
 	void setCameraDistance(float distance);
+	float getCameraZoom();
+	void setCameraZoom(float zoom);
 	cocos2d::Vec2 getCameraPosition();
 	void setCameraPosition(cocos2d::Vec2 position, bool addTrackOffset = false);
 	cocos2d::Rect getBounds();
@@ -66,8 +68,10 @@ private:
 	Hud* hud;
 	LocalizedLabel* debugCameraLabelX;
 	LocalizedLabel* debugCameraLabelY;
+	LocalizedLabel* debugCameraLabelZoom;
 	ConstantString* debugCameraStringX;
 	ConstantString* debugCameraStringY;
+	ConstantString* debugCameraStringZoom;
 	cocos2d::DrawNode* debugCameraRectangle;
 
 	static GameCamera* cameraInstance;

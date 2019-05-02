@@ -8,6 +8,7 @@
 using namespace cocos2d;
 
 const std::string CameraFocus::MapKeyCameraFocus = "camera-focus";
+const std::string CameraFocus::MapKeyZoom = "zoom";
 const std::string CameraFocus::MapKeyScrollBoundsX = "scroll-bounds-x";
 const std::string CameraFocus::MapKeyScrollBoundsY = "scroll-bounds-y";
 const std::string CameraFocus::MapKeyScrollSpeedX = "scroll-speed-x";
@@ -25,6 +26,7 @@ CameraFocus* CameraFocus::create(ValueMap& initProperties)
 
 CameraFocus::CameraFocus(ValueMap& initProperties) : SerializableObject(initProperties)
 {
+	this->zoom = GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyZoom, Value(1.0f)).asFloat();
 	this->scrollBounds = Vec2(
 		GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollBoundsX, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollBoundsY, Value(0.0f)).asFloat()
@@ -51,6 +53,14 @@ void CameraFocus::onEnter()
 		scrollTypeValue = CameraTrackingData::CameraScrollType::Ellipse;
 	}
 
-	CameraTrackingData trackingData = CameraTrackingData(this, this->scrollBounds, CameraTrackingData::CameraScrollType::Rectangle, this->scrollSpeed);
+	CameraTrackingData trackingData = CameraTrackingData(
+		this,
+		this->scrollBounds,
+		CameraTrackingData::CameraScrollType::Rectangle,
+		this->scrollSpeed,
+		Vec2::ZERO,
+		this->zoom
+	);
+
 	GameCamera::getInstance()->setTarget(trackingData);
 }
