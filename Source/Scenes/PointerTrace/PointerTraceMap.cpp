@@ -44,6 +44,11 @@ PointerTraceMap::PointerTraceMap() : super(false)
 	this->collisionMap = std::set<int>();
 	this->segfaultMap = std::set<int>();
 	this->memoryGrid = nullptr;
+	this->collisionDebugNode = Node::create();
+
+	this->collisionDebugNode->setVisible(false);
+
+	this->addChild(this->collisionDebugNode);
 }
 
 PointerTraceMap::~PointerTraceMap()
@@ -97,51 +102,97 @@ void PointerTraceMap::initializeListeners()
 	{
 		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getUserData());
 
-		this->moveGridEntity(args);
+		if (args != nullptr)
+		{
+			this->moveGridEntity(*args);
+		}
 	}));
 }
 
-void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs* args)
+void PointerTraceMap::onDeveloperModeEnable()
 {
-	if (args == nullptr || args->gridEntity == nullptr || this->memoryGrid == nullptr)
+	super::onDeveloperModeEnable();
+
+	this->collisionDebugNode->setVisible(true);
+}
+
+void PointerTraceMap::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	this->collisionDebugNode->setVisible(false);
+}
+
+void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args)
+{
+	if (args.gridEntity == nullptr || this->memoryGrid == nullptr)
 	{
 		return;
 	}
 
-	if (!args->gridEntity->isMovementLocked())
+	if (!args.gridEntity->isMovementLocked())
 	{
-		float speed = MathUtils::clamp(args->speed, 0.0f, 1.0f);
-		int sourceIndex = args->gridEntity->getGridIndex();
+		float speed = MathUtils::clamp(args.speed, 0.0f, 1.0f);
+		int gridWidth = this->memoryGrid->getGridWidth();
+		int gridHeight = this->memoryGrid->getGridHeight();
+		int sourceIndex = args.gridEntity->getGridIndex();
 		int destinationIndex = sourceIndex;
+		bool outOfBounds = false;
 
-		switch(args->direction)
+		if (gridWidth == 0 || gridHeight == 0)
+		{
+			return;
+		}
+
+		switch(args.direction)
 		{
 			default:
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Left:
 			{
 				destinationIndex--;
+
+				if (destinationIndex / gridWidth != sourceIndex / gridWidth)
+				{
+					outOfBounds = true;
+				}
 				break;
 			}
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Right:
 			{
 				destinationIndex++;
+				
+				if (destinationIndex / gridWidth != sourceIndex / gridWidth)
+				{
+					outOfBounds = true;
+				}
 				break;
 			}
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Up:
 			{
 				destinationIndex -= this->memoryGrid->getGridWidth();
+
+				if (destinationIndex < 0)
+				{
+					outOfBounds = true;
+				}
 				break;
 			}
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Down:
 			{
 				destinationIndex += this->memoryGrid->getGridWidth();
+				
+				if (destinationIndex >= this->memoryGrid->getMaxIndex())
+				{
+					outOfBounds = true;
+				}
 				break;
 			}
 		}
 
-		// Segfault detection (on source, not dest)
-		if (this->collisionMap.find(sourceIndex) != this->collisionMap.end())
+		// Segfault!
+		if (outOfBounds || this->segfaultMap.find(destinationIndex) != this->segfaultMap.end())
 		{
+			// TODO: finish the movement, run segfault effect, re-load level
 			return;
 		}
 
@@ -158,17 +209,19 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 		}
 
 		// Create a copy or the lambda will botch this variable
-		GridEntity* gridEntity = args->gridEntity;
 		Vec2 destination = this->memoryGrid->gridIndexToWorldPosition(destinationIndex);
-		gridEntity->lockMovement();
+		args.gridEntity->lockMovement();
 
-		gridEntity->runAction(
+		args.gridEntity->runAction(
 			Sequence::create(
 				MoveTo::create(speed, destination),
 				CallFunc::create([=]()
 				{
-					gridEntity->setGridIndex(destinationIndex);
-					gridEntity->unlockMovement();
+					args.gridEntity->setGridIndex(destinationIndex);
+					args.gridEntity->unlockMovement();
+
+					// Keep movin
+					this->moveGridEntity(args);
 				}),
 				nullptr
 			)
@@ -221,8 +274,6 @@ void PointerTraceMap::buildCollisionMaps()
 
 		int width = gidMap.empty() ? 0 : gidMap[0].size();
 		int height = gidMap.size();
-		int xOffset = (width - this->memoryGrid->getGridWidth()) / 2;
-		int yOffset = (height - this->memoryGrid->getGridHeight()) / 2;
 		int y = 0;
 
 		for (auto yIt = gidMap.begin(); yIt != gidMap.end(); y++, yIt++)
@@ -232,17 +283,35 @@ void PointerTraceMap::buildCollisionMaps()
 			for (auto xIt = (*yIt).begin(); xIt != (*yIt).end(); x++, xIt++)
 			{
 				int gid = *xIt;
-				int gridIndex = (x - xOffset) + (y - yOffset) * this->memoryGrid->getGridWidth();
+
+				// Janky garbage math. Seems to work, whatever
+				float newX = float(width - y) * 128.0f;
+				float newY = float(x) * 128.0f;
+				float realX = (newX + newY);
+				float realY = (newX - newY) / 2.0f + this->memoryGrid->getPositionY() - 320.0f;
+				int gridIndex = this->memoryGrid->worldCoordsToGridIndex(Vec2(realX, realY));
 
 				switch(gid)
 				{
 					case 1:
 					{
+						Sprite* debugBox = Sprite::create(IsometricObjectResources::PointerTrace_Selector);
+
+						debugBox->setPosition(this->memoryGrid->gridIndexToWorldPosition(gridIndex));
+
+						this->collisionDebugNode->addChild(debugBox);
+
 						collisionMap.insert(gridIndex);
 						break;
 					}
 					case 2:
 					{
+						Sprite* debugBox = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Selector);
+
+						debugBox->setPosition(this->memoryGrid->gridIndexToWorldPosition(gridIndex));
+
+						this->collisionDebugNode->addChild(debugBox);
+
 						segfaultMap.insert(gridIndex);
 						break;
 					}
