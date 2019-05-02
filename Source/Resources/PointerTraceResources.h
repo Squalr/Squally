@@ -30,6 +30,7 @@ namespace PointerTraceResources
 	extern const std::string SeaSharpCavernsBottom;
 	extern const std::string SeaSharpCavernsMid;
 	extern const std::string SeaSharpCavernsTop;
+	extern const std::string SegfaultMenu;
 	extern const std::string UnderflowRuins;
 	extern const std::string UnderflowRuinsBottom;
 	extern const std::string UnderflowRuinsMid;

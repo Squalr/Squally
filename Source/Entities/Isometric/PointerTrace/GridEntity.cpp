@@ -1,6 +1,7 @@
 #include "GridEntity.h"
 
 #include "Engine/Input/Input.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
 
@@ -25,6 +26,11 @@ GridEntity::~GridEntity()
 void GridEntity::onEnter()
 {
 	super::onEnter();
+}
+
+void GridEntity::initializePositions()
+{
+	super::initializePositions();
 }
 
 void GridEntity::lockMovement()

@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/renderer/CCRenderer.h"
 
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -35,7 +36,11 @@ void Hud::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parent
 		float initialCameraHeight = Director::getInstance()->getZEye();
 
 		this->setPosition(cameraPosition - visibleSize / 2.0f);
-		this->setPositionZ(cameraHeight - initialCameraHeight);
+
+		if (GameUtils::getFirstParentOfType<GameCamera>(this) == nullptr)
+		{
+			this->setPositionZ(cameraHeight - initialCameraHeight);
+		}
 	}
 
 	super::visit(renderer, parentTransform, parentFlags);

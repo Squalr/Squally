@@ -9,17 +9,20 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/UI/Mouse.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/UI/HUD/Hud.h"
+#include "Engine/UI/Mouse.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Isometric/PointerTrace/GridEntity.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
 #include "Objects/Isometric/PointerTrace/GridObject.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
+#include "Scenes/PointerTrace/Menus/SegfaultMenu.h"
 
 #include "Resources/IsometricObjectResources.h"
 
@@ -45,10 +48,12 @@ PointerTraceMap::PointerTraceMap() : super(false)
 	this->segfaultMap = std::set<int>();
 	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
+	this->segfaultMenu = SegfaultMenu::create();
 
 	this->collisionDebugNode->setVisible(false);
 
 	this->addChild(this->collisionDebugNode);
+	this->menuHud->addChild(this->segfaultMenu);
 }
 
 PointerTraceMap::~PointerTraceMap()
@@ -58,8 +63,8 @@ PointerTraceMap::~PointerTraceMap()
 void PointerTraceMap::onEnter()
 {
 	super::onEnter();
-	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->segfaultMenu->setVisible(false);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<MemoryGrid>([=](MemoryGrid* memoryGrid)
 	{
@@ -80,6 +85,10 @@ void PointerTraceMap::onEnter()
 void PointerTraceMap::initializePositions()
 {
 	super::initializePositions();
+	
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->segfaultMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
 void PointerTraceMap::initializeListeners()
@@ -138,6 +147,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 		int sourceIndex = args.gridEntity->getGridIndex();
 		int destinationIndex = sourceIndex;
 		bool outOfBounds = false;
+		Vec2 outOfBoundsMovement = Vec2::ZERO;
 
 		if (gridWidth == 0 || gridHeight == 0)
 		{
@@ -150,6 +160,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Left:
 			{
 				destinationIndex--;
+				outOfBoundsMovement = Vec2(-128.0f, -64.0f);
 
 				if (destinationIndex / gridWidth != sourceIndex / gridWidth)
 				{
@@ -160,6 +171,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Right:
 			{
 				destinationIndex++;
+				outOfBoundsMovement = Vec2(128.0f, 64.0f);
 				
 				if (destinationIndex / gridWidth != sourceIndex / gridWidth)
 				{
@@ -170,6 +182,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Up:
 			{
 				destinationIndex -= this->memoryGrid->getGridWidth();
+				outOfBoundsMovement = Vec2(-128.0f, 64.0f);
 
 				if (destinationIndex < 0)
 				{
@@ -180,11 +193,13 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 			case PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Down:
 			{
 				destinationIndex += this->memoryGrid->getGridWidth();
-				
+				outOfBoundsMovement = Vec2(128.0f, -64.0f);
+
 				if (destinationIndex >= this->memoryGrid->getMaxIndex())
 				{
 					outOfBounds = true;
 				}
+				
 				break;
 			}
 		}
@@ -192,7 +207,18 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 		// Segfault!
 		if (outOfBounds || this->segfaultMap.find(destinationIndex) != this->segfaultMap.end())
 		{
-			// TODO: finish the movement, run segfault effect, re-load level
+			args.gridEntity->lockMovement();
+
+			args.gridEntity->runAction(
+				Sequence::create(
+					MoveBy::create(speed, outOfBoundsMovement),
+					CallFunc::create([=]()
+					{
+						this->openSegfaultMenu();
+					}),
+					nullptr
+				)
+			);
 			return;
 		}
 
@@ -323,4 +349,12 @@ void PointerTraceMap::buildCollisionMaps()
 			}
 		}
 	}
+}
+
+void PointerTraceMap::openSegfaultMenu()
+{
+	this->segfaultMenu->setVisible(true);
+	this->menuBackDrop->setOpacity(196);
+
+	GameUtils::focus(this->segfaultMenu);
 }

@@ -29,6 +29,7 @@ const std::string PointerTraceResources::SeaSharpCaverns = "PointerTrace/SeaShar
 const std::string PointerTraceResources::SeaSharpCavernsBottom = "PointerTrace/SeaSharpCavernsBottom.png";
 const std::string PointerTraceResources::SeaSharpCavernsMid = "PointerTrace/SeaSharpCavernsMid.png";
 const std::string PointerTraceResources::SeaSharpCavernsTop = "PointerTrace/SeaSharpCavernsTop.png";
+const std::string PointerTraceResources::SegfaultMenu = "PointerTrace/SegfaultMenu.png";
 const std::string PointerTraceResources::UnderflowRuins = "PointerTrace/UnderflowRuins.png";
 const std::string PointerTraceResources::UnderflowRuinsBottom = "PointerTrace/UnderflowRuinsBottom.png";
 const std::string PointerTraceResources::UnderflowRuinsMid = "PointerTrace/UnderflowRuinsMid.png";

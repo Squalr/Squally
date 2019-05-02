@@ -8,6 +8,7 @@ public:
 	static CameraFocus* create(cocos2d::ValueMap& initProperties);
 
 	static const std::string MapKeyCameraFocus;
+	static const std::string MapKeyZoom;
 	static const std::string MapKeyScrollBoundsX;
 	static const std::string MapKeyScrollBoundsY;
 	static const std::string MapKeyScrollSpeedX;
@@ -19,6 +20,7 @@ private:
 	CameraFocus(cocos2d::ValueMap& initProperties);
 	~CameraFocus();
 
+	float zoom;
 	cocos2d::Vec2 scrollBounds;
 	cocos2d::Vec2 scrollSpeed;
 	std::string scrollType;

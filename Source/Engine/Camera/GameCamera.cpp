@@ -20,6 +20,7 @@
 
 #include "Strings/Debugging/CameraX.h"
 #include "Strings/Debugging/CameraY.h"
+#include "Strings/Debugging/CameraZoom.h"
 
 using namespace cocos2d;
 
@@ -51,20 +52,25 @@ GameCamera::GameCamera()
 	this->debugCameraRectangle = DrawNode::create();
 	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
 	this->debugCameraLabelY = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraY::create());
+	this->debugCameraLabelZoom = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraZoom::create());
 	this->debugCameraStringX = ConstantString::create();
 	this->debugCameraStringY = ConstantString::create();
+	this->debugCameraStringZoom = ConstantString::create();
 	this->hud->setLocalZOrder(9999);
 	this->hud->setVisible(false);
 
 	this->debugCameraLabelX->setStringReplacementVariables(this->debugCameraStringX);
 	this->debugCameraLabelY->setStringReplacementVariables(this->debugCameraStringY);
+	this->debugCameraLabelZoom->setStringReplacementVariables(this->debugCameraStringZoom);
 
 	this->debugCameraLabelX->setAnchorPoint(Vec2(0.0f, 0.0f));
 	this->debugCameraLabelY->setAnchorPoint(Vec2(0.0f, 0.0f));
+	this->debugCameraLabelZoom->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->hud->addChild(this->debugCameraRectangle);
 	this->hud->addChild(this->debugCameraLabelX);
 	this->hud->addChild(this->debugCameraLabelY);
+	this->hud->addChild(this->debugCameraLabelZoom);
 	this->addChild(this->hud);
 }
 
@@ -104,6 +110,7 @@ void GameCamera::initializePositions()
 	this->debugCameraRectangle->setPosition(visibleSize / 2.0f);
 	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f + 48.0f));
 	this->debugCameraLabelY->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f));
+	this->debugCameraLabelZoom->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f + 96.0f));
 }
 
 void GameCamera::initializeListeners()
@@ -133,6 +140,8 @@ void GameCamera::update(float dt)
 	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
+
+		this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
 
 		switch (trackingData.scrollType)
 		{
@@ -166,6 +175,16 @@ void GameCamera::setCameraDistance(float distance)
 {
 	this->setPositionZ(distance - this->defaultDistance);
 	Camera::getDefaultCamera()->setPositionZ(distance);
+}
+
+float GameCamera::getCameraZoom()
+{
+	return (this->getCameraDistance() / this->defaultDistance);
+}
+
+void GameCamera::setCameraZoom(float zoom)
+{
+	this->setCameraDistance(this->defaultDistance * zoom);
 }
 
 Vec2 GameCamera::getCameraPosition()
@@ -447,14 +466,14 @@ void GameCamera::clearTargets()
 
 void GameCamera::updateCameraDebugLabels()
 {
-	static Vec2 cachedCameraPosition = Vec2::ZERO;
+	static Vec3 cachedCameraPosition = Vec3::ZERO;
 
 	if (Camera::getDefaultCamera() == nullptr)
 	{
 		return;
 	}
 
-	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+	Vec3 cameraPosition = Camera::getDefaultCamera()->getPosition3D();
 
 	if (cachedCameraPosition == cameraPosition)
 	{
@@ -467,10 +486,13 @@ void GameCamera::updateCameraDebugLabels()
 
 	std::stringstream streamX = std::stringstream();
 	std::stringstream streamY = std::stringstream();
+	std::stringstream streamZoom = std::stringstream();
 
 	streamX << std::fixed << std::setprecision(2) << cameraPosition.x;
 	streamY << std::fixed << std::setprecision(2) << cameraPosition.y;
+	streamZoom << std::fixed << std::setprecision(2) << this->getCameraZoom();
 
 	this->debugCameraStringX->setString(streamX.str());
 	this->debugCameraStringY->setString(streamY.str());
+	this->debugCameraStringZoom->setString(streamZoom.str());
 }

@@ -2,9 +2,12 @@
 
 #include "Entities/Isometric/IsometricEntity.h"
 
+class LocalizedLabel;
+
 class GridEntity : public IsometricEntity
 {
 public:
+	void runSegfaultEffect();
 	void lockMovement();
 	void unlockMovement();
 	bool isMovementLocked();
@@ -20,6 +23,7 @@ protected:
 	~GridEntity();
 
 	void onEnter() override;
+	void initializePositions() override;
 	void moveLeft(float speed);
 	void moveRight(float speed);
 	void moveUp(float speed);
