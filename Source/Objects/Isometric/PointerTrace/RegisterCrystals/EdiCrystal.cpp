@@ -6,6 +6,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Scenes/PointerTrace/RegisterState.h"
+
 #include "Resources/IsometricObjectResources.h"
 
 using namespace cocos2d;
@@ -40,4 +42,9 @@ void EdiCrystal::onEnter()
 void EdiCrystal::initializePositions()
 {
 	super::initializePositions();
+}
+
+void EdiCrystal::updateRegister(int value)
+{
+	RegisterState::setRegisterEdi(value);
 }

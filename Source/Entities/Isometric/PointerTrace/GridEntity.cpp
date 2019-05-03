@@ -39,6 +39,11 @@ void GridEntity::interruptMovement()
 	this->movementInterrupted = true;
 }
 
+void GridEntity::uninterruptMovement()
+{
+	this->movementInterrupted = false;
+}
+
 bool GridEntity::isMovementInterrupted()
 {
 	return this->movementInterrupted;

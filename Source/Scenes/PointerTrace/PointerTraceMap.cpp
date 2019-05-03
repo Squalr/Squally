@@ -170,6 +170,9 @@ void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestM
 		return;
 	}
 
+	args.gridEntity->unlockMovement();
+	args.gridEntity->uninterruptMovement();
+	
 	this->moveGridEntity(args);
 }
 
@@ -279,23 +282,30 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 		Vec2 destination = this->memoryGrid->gridIndexToWorldPosition(destinationIndex);
 		args.gridEntity->lockMovement();
 
+		PointerTraceEvents::PointerTraceRequestMovementArgs argsClone = PointerTraceEvents::PointerTraceRequestMovementArgs(
+			args.gridEntity,
+			args.direction,
+			args.source,
+			args.speed
+		);
+
 		args.gridEntity->runAction(
 			Sequence::create(
 				MoveTo::create(speed, destination),
 				CallFunc::create([=]()
 				{
-					args.gridEntity->setGridIndex(destinationIndex);
-					args.gridEntity->unlockMovement();
+					argsClone.gridEntity->setGridIndex(destinationIndex);
+					argsClone.gridEntity->unlockMovement();
 
 					PointerTraceEvents::TriggerEntityMoved(PointerTraceEvents::PointerTraceEntityMovedArgs(
 						this->memoryGrid,
-						args.gridEntity,
-						args
+						argsClone.gridEntity,
+						argsClone
 					));
 
-					if (!args.gridEntity->isMovementInterrupted())
+					if (!argsClone.gridEntity->isMovementInterrupted())
 					{
-						this->moveGridEntity(args);
+						this->moveGridEntity(argsClone);
 					}
 				}),
 				nullptr

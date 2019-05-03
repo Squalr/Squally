@@ -6,6 +6,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Scenes/PointerTrace/RegisterState.h"
+
 #include "Resources/IsometricObjectResources.h"
 
 #include "Strings/PointerTrace/Assembly/RegisterEax.h"
@@ -53,5 +55,5 @@ void EaxJmp::initializePositions()
 
 int EaxJmp::getJumpDestination()
 {
-	return 0;
+	return RegisterState::getRegisterEax();
 }
