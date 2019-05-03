@@ -6,6 +6,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Scenes/PointerTrace/RegisterState.h"
+
 #include "Resources/IsometricObjectResources.h"
 
 using namespace cocos2d;
@@ -41,3 +43,9 @@ void EbxCrystal::initializePositions()
 {
 	super::initializePositions();
 }
+
+void EbxCrystal::updateRegister(int value)
+{
+	RegisterState::setRegisterEbx(value);
+}
+

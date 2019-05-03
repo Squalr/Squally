@@ -5,10 +5,14 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Isometric/PointerTrace/GridEntity.h"
+#include "Events/PointerTraceEvents.h"
 #include "Resources/IsometricObjectResources.h"
 
 #include "Strings/Generics/Constant.h"
@@ -29,12 +33,12 @@ RegisterCrystal::RegisterCrystal(ValueMap& initProperties) : super(initPropertie
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
 	this->crystalNode = Node::create();
 	this->assemblyString = Strings::Generics_Constant::create();
-	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, this->assemblyString);
+	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
 
 	this->value = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
 	this->offset = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
 
-	this->assemblyLabel->enableOutline(Color4B::BLACK, 3);
+	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
 
 	this->addChild(this->shadow);
 	this->addChild(this->crystalNode);
@@ -71,6 +75,24 @@ void RegisterCrystal::initializePositions()
 
 	this->crystalNode->setPosition(Vec2(0.0f, 96.0f));
 	this->assemblyLabel->setPosition(Vec2(0.0f, 160.0f));
+}
+
+void RegisterCrystal::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(
+		PointerTraceEvents::EventEntityMoved,
+		[=](EventCustom* eventCustom)
+		{
+			PointerTraceEvents::PointerTraceEntityMovedArgs* args = static_cast<PointerTraceEvents::PointerTraceEntityMovedArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
+			{
+				this->updateRegister(this->getValue());
+			}
+		}
+	));
 }
 
 void RegisterCrystal::buildMovString(LocalizedString* registerString)

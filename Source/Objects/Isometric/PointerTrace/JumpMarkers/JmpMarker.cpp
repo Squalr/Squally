@@ -31,10 +31,10 @@ JmpMarker::JmpMarker(ValueMap& initProperties) : super(initProperties)
 {
 	this->markerNode = Node::create();
 	this->assemblyString = Strings::Generics_Constant::create();
-	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, this->assemblyString);
+	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
 	this->offset = GameUtils::getKeyOrDefault(initProperties, JmpMarker::MapKeyOffset, Value(0)).asInt();
 
-	this->assemblyLabel->enableOutline(Color4B::BLACK, 3);
+	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
 
 	this->addChild(this->markerNode);
 	this->addChild(this->assemblyLabel);
@@ -68,19 +68,27 @@ void JmpMarker::initializeListeners()
 
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
+				args->gridEntity->lockMovement();
 				args->gridEntity->interruptMovement();
 				args->gridEntity->setGridIndex(this->getJumpDestination());
 
 				Vec2 destPosition = args->memoryGrid->gridIndexToWorldPosition(args->gridEntity->getGridIndex());
 				Vec2 intermediatePosition = args->gridEntity->getPosition() + Vec2(0.0f, 2048.0f);
+				
+				PointerTraceEvents::PointerTraceRequestMovementArgs argsClone = PointerTraceEvents::PointerTraceRequestMovementArgs(
+					args->innerArgs.gridEntity,
+					args->innerArgs.direction,
+					args->innerArgs.source,
+					args->innerArgs.speed
+				);
 
 				args->gridEntity->runAction(Sequence::create(
 					MoveTo::create(0.5f, intermediatePosition),
-					MoveTo::create(0.5f, Vec2(destPosition.x, intermediatePosition.y)),
+					MoveTo::create(0.25f, Vec2(destPosition.x, intermediatePosition.y)),
 					MoveTo::create(0.5f, destPosition),
 					CallFunc::create([=]()
 					{
-						PointerTraceEvents::TriggerResumeMovement(args->innerArgs);
+						PointerTraceEvents::TriggerResumeMovement(argsClone);
 					}),
 					nullptr
 				));

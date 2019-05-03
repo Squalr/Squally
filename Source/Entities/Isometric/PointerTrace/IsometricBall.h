@@ -17,7 +17,5 @@ private:
 	void onEnter() override;
 	void update(float) override;
 
-	bool movementLocked;
-
 	static const float MovementSpeed;
 };

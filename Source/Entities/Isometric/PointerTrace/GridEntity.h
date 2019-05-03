@@ -8,6 +8,7 @@ class GridEntity : public IsometricEntity
 {
 public:
 	void interruptMovement();
+	void uninterruptMovement();
 	bool isMovementInterrupted();
 	void lockMovement();
 	void unlockMovement();

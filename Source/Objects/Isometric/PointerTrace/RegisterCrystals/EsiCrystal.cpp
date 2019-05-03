@@ -6,6 +6,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Scenes/PointerTrace/RegisterState.h"
+
 #include "Resources/IsometricObjectResources.h"
 
 using namespace cocos2d;
@@ -40,4 +42,9 @@ void EsiCrystal::onEnter()
 void EsiCrystal::initializePositions()
 {
 	super::initializePositions();
+}
+
+void EsiCrystal::updateRegister(int value)
+{
+	RegisterState::setRegisterEsi(value);
 }
