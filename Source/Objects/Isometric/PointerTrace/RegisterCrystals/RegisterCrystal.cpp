@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -22,6 +23,7 @@
 #include "Strings/PointerTrace/Assembly/Ptr.h"
 
 #include "Resources/IsometricObjectResources.h"
+#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -31,17 +33,21 @@ const std::string RegisterCrystal::MapKeyRegisterOffset = "offset";
 RegisterCrystal::RegisterCrystal(ValueMap& initProperties) : super(initProperties)
 {
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
+	this->crystalContainerNode = Node::create();
 	this->crystalNode = Node::create();
 	this->assemblyString = Strings::Generics_Constant::create();
 	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
+	this->shineFx = SmartAnimationSequenceNode::create();
 
 	this->value = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
 	this->offset = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
 
 	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
 
+	this->crystalContainerNode->addChild(this->crystalNode);
+	this->crystalContainerNode->addChild(this->shineFx);
 	this->addChild(this->shadow);
-	this->addChild(this->crystalNode);
+	this->addChild(this->crystalContainerNode);
 	this->addChild(this->assemblyLabel);
 }
 
@@ -53,7 +59,7 @@ void RegisterCrystal::onEnter()
 {
 	super::onEnter();
 
-	this->crystalNode->runAction(RepeatForever::create(
+	this->crystalContainerNode->runAction(RepeatForever::create(
 		Sequence::create(
 			EaseSineInOut::create(MoveTo::create(4.0f, Vec2(0.0f, 128.0f))),
 			EaseSineInOut::create(MoveTo::create(4.0f, Vec2(0.0f, 96.0f))),
@@ -73,8 +79,9 @@ void RegisterCrystal::initializePositions()
 {
 	super::initializePositions();
 
-	this->crystalNode->setPosition(Vec2(0.0f, 96.0f));
+	this->crystalContainerNode->setPosition(Vec2(0.0f, 96.0f));
 	this->assemblyLabel->setPosition(Vec2(0.0f, 160.0f));
+	this->shineFx->setPosition(Vec2(-8.0f, 24.0f));
 }
 
 void RegisterCrystal::initializeListeners()
@@ -89,6 +96,7 @@ void RegisterCrystal::initializeListeners()
 
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
+				this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
 				this->updateRegister(this->getValue());
 			}
 		}

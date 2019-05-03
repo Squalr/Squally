@@ -9,6 +9,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
+class SmartAnimationSequenceNode;
 
 class RegisterCrystal : public GridObject
 {
@@ -28,6 +29,7 @@ protected:
 	static const std::string MapKeyRegisterOffset;
 	static const std::string MapKeyRegisterValue;
 
+	cocos2d::Node* crystalContainerNode;
 	cocos2d::Node* crystalNode;
 	LocalizedString* assemblyString;
 
@@ -39,4 +41,5 @@ private:
 
 	cocos2d::Sprite* shadow;
 	LocalizedLabel* assemblyLabel;
+	SmartAnimationSequenceNode* shineFx;
 };

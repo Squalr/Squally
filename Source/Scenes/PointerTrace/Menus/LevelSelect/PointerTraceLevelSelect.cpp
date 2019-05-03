@@ -57,7 +57,7 @@ PointerTraceLevelSelect::PointerTraceLevelSelect()
 	LevelSegment* lambdaCryptsSegment = LevelSegment::create(LevelSegment::SegmentType::LambdaCrypts);
 	LevelSegment* voidStarSegment = LevelSegment::create(LevelSegment::SegmentType::VoidStar);
 
-	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel));
+	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel, Vec2(32.0f, -32.0f)));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel));

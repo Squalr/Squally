@@ -2,6 +2,12 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+namespace cocos2d
+{
+	class LayerColor;
+}
+
+class ConstantString;
 class LocalizedLabel;
 
 class PointerTraceHud : public Hud
@@ -18,6 +24,18 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+	cocos2d::LayerColor* backdrop;
+
+	ConstantString* eaxValue;
+	ConstantString* ebxValue;
+	ConstantString* ecxValue;
+	ConstantString* edxValue;
+	ConstantString* ediValue;
+	ConstantString* esiValue;
+	ConstantString* ebpValue;
+	ConstantString* espValue;
+	ConstantString* eipValue;
 
 	LocalizedLabel* eaxLabel;
 	LocalizedLabel* ebxLabel;
