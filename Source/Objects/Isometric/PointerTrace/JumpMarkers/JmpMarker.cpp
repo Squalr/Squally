@@ -71,9 +71,6 @@ void JmpMarker::initializeListeners()
 				args->gridEntity->lockMovement();
 				args->gridEntity->interruptMovement();
 				args->gridEntity->setGridIndex(this->getJumpDestination());
-
-				Vec2 destPosition = args->memoryGrid->gridIndexToWorldPosition(args->gridEntity->getGridIndex());
-				Vec2 intermediatePosition = args->gridEntity->getPosition() + Vec2(0.0f, 2048.0f);
 				
 				PointerTraceEvents::PointerTraceRequestMovementArgs argsClone = PointerTraceEvents::PointerTraceRequestMovementArgs(
 					args->innerArgs.gridEntity,
@@ -82,16 +79,12 @@ void JmpMarker::initializeListeners()
 					args->innerArgs.speed
 				);
 
-				args->gridEntity->runAction(Sequence::create(
-					MoveTo::create(0.5f, intermediatePosition),
-					MoveTo::create(0.25f, Vec2(destPosition.x, intermediatePosition.y)),
-					MoveTo::create(0.5f, destPosition),
-					CallFunc::create([=]()
-					{
-						PointerTraceEvents::TriggerResumeMovement(argsClone);
-					}),
-					nullptr
-				));
+				Vec2 destPosition = args->memoryGrid->gridIndexToWorldPosition(args->gridEntity->getGridIndex());
+
+				args->gridEntity->runJumpAnimation(destPosition, [=]()
+				{
+					PointerTraceEvents::TriggerResumeMovement(argsClone);
+				});
 			}
 		}
 	));
