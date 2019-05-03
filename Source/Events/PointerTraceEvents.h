@@ -10,6 +10,7 @@ class MemoryGrid;
 class PointerTraceEvents
 {
 public:
+	static const std::string EventVictory;
 	static const std::string EventEntityMoved;
 	static const std::string EventRequestMovement;
 	static const std::string EventResumeMovement;
@@ -61,6 +62,7 @@ public:
 			: memoryGrid(memoryGrid), gridEntity(gridEntity), innerArgs(innerArgs) { } 
 	};
 
+	static void TriggerVictory();
 	static void TriggerEntityMoved(PointerTraceEntityMovedArgs args);
 	static void TriggerRequestMovement(PointerTraceRequestMovementArgs args);
 	static void TriggerResumeMovement(PointerTraceRequestMovementArgs args);

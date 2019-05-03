@@ -7,6 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class SmartAnimationSequenceNode;
+
 class ExitCrystal : public GridObject
 {
 public:
@@ -23,6 +25,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 
 private:
@@ -30,4 +33,5 @@ private:
 
 	cocos2d::Sprite* crystal;
 	cocos2d::Sprite* shadow;
+	SmartAnimationSequenceNode* shineFx;
 };

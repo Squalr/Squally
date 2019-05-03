@@ -1,6 +1,5 @@
 #include "Lightning.h"
 
-#include "cocos/2d/CCAnimation.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionInstant.h"

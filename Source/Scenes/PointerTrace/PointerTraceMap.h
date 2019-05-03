@@ -7,6 +7,7 @@
 class GridEntity;
 class MemoryGrid;
 class SegfaultMenu;
+class VictoryMenu;
 
 class PointerTraceMap : public MapBase
 {
@@ -32,12 +33,14 @@ private:
 	void tryResumeMovement(PointerTraceEvents::PointerTraceRequestMovementArgs args);
 	void moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args);
 	void openSegfaultMenu();
+	void openVictoryMenu();
 
 	std::set<int> collisionMap;
 	std::set<int> segfaultMap;
 	MemoryGrid* memoryGrid;
 	cocos2d::Node* collisionDebugNode;
 	SegfaultMenu* segfaultMenu;
+	VictoryMenu* victoryMenu;
 
 	static PointerTraceMap* instance;
 };
