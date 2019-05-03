@@ -22,6 +22,7 @@
 #include "Events/PointerTraceEvents.h"
 #include "Objects/Isometric/PointerTrace/GridObject.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
+#include "Scenes/PointerTrace/Huds/PointerTraceHud.h"
 #include "Scenes/PointerTrace/Menus/SegfaultMenu.h"
 #include "Scenes/PointerTrace/Menus/VictoryMenu.h"
 
@@ -49,12 +50,14 @@ PointerTraceMap::PointerTraceMap() : super(false)
 	this->segfaultMap = std::set<int>();
 	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
+	this->pointerTraceHud = PointerTraceHud::create();
 	this->segfaultMenu = SegfaultMenu::create();
 	this->victoryMenu = VictoryMenu::create();
 
 	this->collisionDebugNode->setVisible(false);
 
 	this->addChild(this->collisionDebugNode);
+	this->hud->addChild(this->pointerTraceHud);
 	this->menuHud->addChild(this->segfaultMenu);
 	this->menuHud->addChild(this->victoryMenu);
 }

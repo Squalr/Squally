@@ -6,6 +6,7 @@
 
 class GridEntity;
 class MemoryGrid;
+class PointerTraceHud;
 class SegfaultMenu;
 class VictoryMenu;
 
@@ -39,6 +40,7 @@ private:
 	std::set<int> segfaultMap;
 	MemoryGrid* memoryGrid;
 	cocos2d::Node* collisionDebugNode;
+	PointerTraceHud* pointerTraceHud;
 	SegfaultMenu* segfaultMenu;
 	VictoryMenu* victoryMenu;
 

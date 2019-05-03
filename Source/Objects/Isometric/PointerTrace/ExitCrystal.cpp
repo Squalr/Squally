@@ -85,12 +85,15 @@ void ExitCrystal::initializeListeners()
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
 				args->gridEntity->interruptMovement();
-				this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
 
 				this->crystal->stopAllActions();
 				this->crystal->runAction(Sequence::create(
 					MoveBy::create(0.5f, Vec2(0.0f, 196.0f)),
-					DelayTime::create(1.5f),
+					CallFunc::create([=]()
+					{
+						this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
+					}),
+					DelayTime::create(1.0f),
 					CallFunc::create([=]()
 					{
 						PointerTraceEvents::TriggerVictory();
