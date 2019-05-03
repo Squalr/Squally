@@ -116,6 +116,21 @@ void PointerTraceMap::initializeListeners()
 			this->moveGridEntity(*args);
 		}
 	}));
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventResumeMovement, [=](EventCustom* eventCustom)
+	{
+		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->tryResumeMovement(*args);
+		}
+	}));
+}
+
+void PointerTraceMap::update(float dt)
+{
+	super::update(dt);
 }
 
 void PointerTraceMap::onDeveloperModeEnable()
@@ -130,6 +145,32 @@ void PointerTraceMap::onDeveloperModeDisable()
 	super::onDeveloperModeDisable();
 
 	this->collisionDebugNode->setVisible(false);
+}
+
+void PointerTraceMap::loadMap(std::string mapResource)
+{
+	super::loadMap(mapResource);
+
+	this->segfaultMenu->setMapResource(mapResource);
+}
+
+void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestMovementArgs args)
+{
+	if (args.gridEntity == nullptr || this->memoryGrid == nullptr)
+	{
+		return;
+	}
+
+	int sourceIndex = args.gridEntity->getGridIndex();
+
+	if (this->collisionMap.find(sourceIndex) != this->collisionMap.end() || this->segfaultMap.find(sourceIndex) != this->segfaultMap.end())
+	{
+		args.gridEntity->lockMovement();
+		this->openSegfaultMenu();
+		return;
+	}
+
+	this->moveGridEntity(args);
 }
 
 void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args)
@@ -246,8 +287,16 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 					args.gridEntity->setGridIndex(destinationIndex);
 					args.gridEntity->unlockMovement();
 
-					// Keep movin
-					this->moveGridEntity(args);
+					PointerTraceEvents::TriggerEntityMoved(PointerTraceEvents::PointerTraceEntityMovedArgs(
+						this->memoryGrid,
+						args.gridEntity,
+						args
+					));
+
+					if (!args.gridEntity->isMovementInterrupted())
+					{
+						this->moveGridEntity(args);
+					}
 				}),
 				nullptr
 			)

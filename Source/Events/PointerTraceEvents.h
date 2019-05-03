@@ -5,11 +5,14 @@
 #include "cocos/math/CCGeometry.h"
 
 class GridEntity;
+class MemoryGrid;
 
 class PointerTraceEvents
 {
 public:
+	static const std::string EventEntityMoved;
 	static const std::string EventRequestMovement;
+	static const std::string EventResumeMovement;
 	static const std::string EventInitializeRegisters;
 
 	struct PointerTraceRequestMovementArgs
@@ -48,6 +51,18 @@ public:
 		}
 	};
 
+	struct PointerTraceEntityMovedArgs
+	{
+		MemoryGrid* memoryGrid;
+		GridEntity* gridEntity;
+		PointerTraceRequestMovementArgs innerArgs;
+
+		PointerTraceEntityMovedArgs(MemoryGrid* memoryGrid, GridEntity* gridEntity, PointerTraceRequestMovementArgs innerArgs) 
+			: memoryGrid(memoryGrid), gridEntity(gridEntity), innerArgs(innerArgs) { } 
+	};
+
+	static void TriggerEntityMoved(PointerTraceEntityMovedArgs args);
 	static void TriggerRequestMovement(PointerTraceRequestMovementArgs args);
+	static void TriggerResumeMovement(PointerTraceRequestMovementArgs args);
 	static void TriggerInitializeRegisters(PointerTraceInitializeRegistersArgs args);
 };

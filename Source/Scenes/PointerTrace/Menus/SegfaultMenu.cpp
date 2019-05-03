@@ -13,6 +13,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
+#include "Events/NavigationEvents.h"
 
 #include "Resources/PointerTraceResources.h"
 #include "Resources/UIResources.h"
@@ -73,11 +74,21 @@ void SegfaultMenu::initializePositions()
 	super::initializePositions();
 
 	this->titleLabel->setPositionY(224.0f);
-	this->leaveButton->setPositionY(-48.0f + 64.0f);
-	this->retryButton->setPositionY(-48.0f + -64.0f);
+	this->leaveButton->setPositionY(-48.0f + -64.0f);
+	this->retryButton->setPositionY(-48.0f + 64.0f);
 }
 
 void SegfaultMenu::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->leaveButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { NavigationEvents::navigateTitle(); } );
+}
+
+void SegfaultMenu::setMapResource(std::string mapResource)
+{
+	this->retryButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		NavigationEvents::navigatePointerTraceMap(mapResource);
+	});
 }

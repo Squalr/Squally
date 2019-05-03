@@ -29,7 +29,7 @@ RegisterCrystal::RegisterCrystal(ValueMap& initProperties) : super(initPropertie
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
 	this->crystalNode = Node::create();
 	this->assemblyString = Strings::Generics_Constant::create();
-	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->assemblyString);
+	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, this->assemblyString);
 
 	this->value = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
 	this->offset = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
