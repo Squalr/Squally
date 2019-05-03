@@ -2,6 +2,11 @@
 
 #include "Entities/Isometric/IsometricEntity.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class LocalizedLabel;
 
 class GridEntity : public IsometricEntity
@@ -15,6 +20,7 @@ public:
 	bool isMovementLocked();
 	int getGridIndex();
 	void setGridIndex(int gridIndex);
+	void runJumpAnimation(cocos2d::Vec2 destPosition, std::function<void()> callback = nullptr);
 
 protected:
 	GridEntity(cocos2d::ValueMap& initProperties,
@@ -33,6 +39,8 @@ protected:
 
 private:
 	typedef IsometricEntity super;
+
+	cocos2d::Sprite* shadow;
 	
 	bool movementInterrupted;
 	bool movementLocked;

@@ -1,11 +1,19 @@
 #include "GridEntity.h"
 
+#include "cocos/2d/CCAction.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
 
 #include "Resources/IsometricEntityResources.h"
+#include "Resources/IsometricObjectResources.h"
 
 using namespace cocos2d;
 
@@ -18,6 +26,9 @@ GridEntity::GridEntity(cocos2d::ValueMap& initProperties,
 	this->gridIndex = 0;
 	this->movementLocked = false;
 	this->movementInterrupted = false;
+	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
+
+	this->underNode->addChild(this->shadow);
 }
 
 GridEntity::~GridEntity()
@@ -119,5 +130,43 @@ void GridEntity::moveDown(float speed)
 		PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Down,
 		this->getGridIndex(),
 		speed
+	));
+}
+
+void GridEntity::runJumpAnimation(Vec2 destPosition, std::function<void()> callback)
+{
+	Vec2 startAnimPosition = this->animationNode->getPosition();
+	Vec2 delta = (destPosition - startAnimPosition) - this->getPosition();
+	Vec2 peakPosition = startAnimPosition + Vec2(0.0f, 2048.0f);
+	Vec2 destAnimPosition = startAnimPosition + delta;
+	
+	// Move just the animation node (without moving the shadow)
+	this->animationNode->runAction(Sequence::create(
+		MoveTo::create(0.5f, peakPosition),
+		MoveTo::create(0.5f, Vec2(destAnimPosition.x, peakPosition.y)),
+		MoveTo::create(0.5f, destAnimPosition),
+		CallFunc::create([=]()
+		{
+			this->animationNode->setPosition(startAnimPosition);
+			this->setPosition(destPosition);
+
+			if (callback != nullptr)
+			{
+				callback();
+			}
+		}),
+		nullptr
+	));
+
+	// Move and scale the shadow separately
+	this->shadow->runAction(EaseSineInOut::create(MoveBy::create(0.75f, delta)));
+	this->shadow->runAction(Sequence::create(
+		ScaleTo::create(0.75f, 0.5f),
+		ScaleTo::create(0.75f, 1.0f),
+		CallFunc::create([=]()
+		{
+			this->shadow->setPosition(Vec2::ZERO);
+		}),
+		nullptr
 	));
 }

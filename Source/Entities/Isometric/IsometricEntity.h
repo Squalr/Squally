@@ -18,6 +18,7 @@ protected:
 	void onEnter() override;
 	void update(float) override;
 
+	cocos2d::Node* underNode;
 	SmartAnimationNode* animationNode;
 
 	cocos2d::Vec2 movement;
