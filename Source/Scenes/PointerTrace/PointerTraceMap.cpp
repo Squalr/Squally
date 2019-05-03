@@ -23,6 +23,7 @@
 #include "Objects/Isometric/PointerTrace/GridObject.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
 #include "Scenes/PointerTrace/Menus/SegfaultMenu.h"
+#include "Scenes/PointerTrace/Menus/VictoryMenu.h"
 
 #include "Resources/IsometricObjectResources.h"
 
@@ -49,11 +50,13 @@ PointerTraceMap::PointerTraceMap() : super(false)
 	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
 	this->segfaultMenu = SegfaultMenu::create();
+	this->victoryMenu = VictoryMenu::create();
 
 	this->collisionDebugNode->setVisible(false);
 
 	this->addChild(this->collisionDebugNode);
 	this->menuHud->addChild(this->segfaultMenu);
+	this->menuHud->addChild(this->victoryMenu);
 }
 
 PointerTraceMap::~PointerTraceMap()
@@ -65,6 +68,7 @@ void PointerTraceMap::onEnter()
 	super::onEnter();
 
 	this->segfaultMenu->setVisible(false);
+	this->victoryMenu->setVisible(false);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<MemoryGrid>([=](MemoryGrid* memoryGrid)
 	{
@@ -89,6 +93,7 @@ void PointerTraceMap::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->segfaultMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->victoryMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
 void PointerTraceMap::initializeListeners()
@@ -105,6 +110,11 @@ void PointerTraceMap::initializeListeners()
 
 			GlobalDirector::loadScene(this);
 		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventVictory, [=](EventCustom* eventCustom)
+	{
+		this->openVictoryMenu();
 	}));
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventRequestMovement, [=](EventCustom* eventCustom)
@@ -416,4 +426,12 @@ void PointerTraceMap::openSegfaultMenu()
 	this->menuBackDrop->setOpacity(196);
 
 	GameUtils::focus(this->segfaultMenu);
+}
+
+void PointerTraceMap::openVictoryMenu()
+{
+	this->victoryMenu->setVisible(true);
+	this->menuBackDrop->setOpacity(196);
+
+	GameUtils::focus(this->victoryMenu);
 }

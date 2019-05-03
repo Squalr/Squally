@@ -5,10 +5,18 @@
 
 using namespace cocos2d;
 
+const std::string PointerTraceEvents::EventVictory = "EVENT_PTRACE_VICTORY";
 const std::string PointerTraceEvents::EventEntityMoved = "EVENT_PTRACE_ENTITY_MOVED";
 const std::string PointerTraceEvents::EventRequestMovement = "EVENT_PTRACE_REQUEST_MOVEMENT";
 const std::string PointerTraceEvents::EventResumeMovement = "EVENT_PTRACE_RESUME_MOVEMENT";
 const std::string PointerTraceEvents::EventInitializeRegisters = "EVENT_PTRACE_INITIALIZE_REGISTERS";
+
+void PointerTraceEvents::TriggerVictory()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PointerTraceEvents::EventVictory
+	);
+}
 
 void PointerTraceEvents::TriggerEntityMoved(PointerTraceEntityMovedArgs args)
 {
