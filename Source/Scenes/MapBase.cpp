@@ -168,8 +168,12 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 
 void MapBase::loadMap(std::string mapResource)
 {
+	if (this->map != nullptr)
+	{
+		this->mapNode->removeChild(this->map);
+	}
+	
 	this->map = SerializableMap::deserialize(mapResource);
-	this->mapNode->removeAllChildren();
 
 	if (this->map != nullptr)
 	{

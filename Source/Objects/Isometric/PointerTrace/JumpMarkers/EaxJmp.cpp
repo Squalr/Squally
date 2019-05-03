@@ -50,3 +50,8 @@ void EaxJmp::initializePositions()
 {
 	super::initializePositions();
 }
+
+int EaxJmp::getJumpDestination()
+{
+	return 0;
+}

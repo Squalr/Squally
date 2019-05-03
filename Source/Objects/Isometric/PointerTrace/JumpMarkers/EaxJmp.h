@@ -20,6 +20,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	int getJumpDestination() override;
 
 private:
 	typedef JmpMarker super;

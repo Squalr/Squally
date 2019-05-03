@@ -18,9 +18,11 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void buildJmpString(LocalizedString* registerString);
 	void buildJmpPtrString(LocalizedString* registerString);
 	int getOffset();
+	virtual int getJumpDestination() = 0;
 
 	cocos2d::Node* markerNode;
 	LocalizedString* assemblyString;

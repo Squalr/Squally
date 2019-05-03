@@ -23,7 +23,7 @@ namespace cocos2d
 class MapBase : public GlobalScene
 {
 public:
-	void loadMap(std::string mapResource);
+	virtual void loadMap(std::string mapResource);
 
 protected:
 	MapBase(bool allowHackerMode);

@@ -17,6 +17,7 @@ GridEntity::GridEntity(cocos2d::ValueMap& initProperties,
 {
 	this->gridIndex = 0;
 	this->movementLocked = false;
+	this->movementInterrupted = false;
 }
 
 GridEntity::~GridEntity()
@@ -31,6 +32,16 @@ void GridEntity::onEnter()
 void GridEntity::initializePositions()
 {
 	super::initializePositions();
+}
+
+void GridEntity::interruptMovement()
+{
+	this->movementInterrupted = true;
+}
+
+bool GridEntity::isMovementInterrupted()
+{
+	return this->movementInterrupted;
 }
 
 void GridEntity::lockMovement()
@@ -60,6 +71,8 @@ void GridEntity::setGridIndex(int gridIndex)
 
 void GridEntity::moveLeft(float speed)
 {
+	this->movementInterrupted = false;
+
 	PointerTraceEvents::TriggerRequestMovement(PointerTraceEvents::PointerTraceRequestMovementArgs(
 		this,
 		PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Left,
@@ -70,6 +83,8 @@ void GridEntity::moveLeft(float speed)
 
 void GridEntity::moveRight(float speed)
 {
+	this->movementInterrupted = false;
+
 	PointerTraceEvents::TriggerRequestMovement(PointerTraceEvents::PointerTraceRequestMovementArgs(
 		this,
 		PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Right,
@@ -80,6 +95,8 @@ void GridEntity::moveRight(float speed)
 
 void GridEntity::moveUp(float speed)
 {
+	this->movementInterrupted = false;
+
 	PointerTraceEvents::TriggerRequestMovement(PointerTraceEvents::PointerTraceRequestMovementArgs(
 		this,
 		PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Up,
@@ -90,6 +107,8 @@ void GridEntity::moveUp(float speed)
 
 void GridEntity::moveDown(float speed)
 {
+	this->movementInterrupted = false;
+	
 	PointerTraceEvents::TriggerRequestMovement(PointerTraceEvents::PointerTraceRequestMovementArgs(
 		this,
 		PointerTraceEvents::PointerTraceRequestMovementArgs::Direction::Down,

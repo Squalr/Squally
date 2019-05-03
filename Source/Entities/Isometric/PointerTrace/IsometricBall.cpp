@@ -33,6 +33,8 @@ IsometricBall::~IsometricBall()
 void IsometricBall::onEnter()
 {
 	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void IsometricBall::update(float dt)

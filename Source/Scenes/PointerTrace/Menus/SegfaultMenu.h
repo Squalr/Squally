@@ -17,6 +17,8 @@ class SegfaultMenu : public SmartNode
 public:
 	static SegfaultMenu* create();
 
+	void setMapResource(std::string mapResource);
+
 private:
 	typedef SmartNode super;
 	SegfaultMenu();

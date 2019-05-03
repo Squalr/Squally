@@ -7,7 +7,8 @@ class LocalizedLabel;
 class GridEntity : public IsometricEntity
 {
 public:
-	void runSegfaultEffect();
+	void interruptMovement();
+	bool isMovementInterrupted();
 	void lockMovement();
 	void unlockMovement();
 	bool isMovementLocked();
@@ -31,7 +32,8 @@ protected:
 
 private:
 	typedef IsometricEntity super;
-
+	
+	bool movementInterrupted;
 	bool movementLocked;
 	int gridIndex;
 };

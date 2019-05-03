@@ -13,6 +13,8 @@ class PointerTraceMap : public MapBase
 public:
 	static void registerGlobalScene();
 
+	void loadMap(std::string mapResource) override;
+
 protected:
 	PointerTraceMap();
 	~PointerTraceMap();
@@ -24,8 +26,10 @@ private:
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 	void onEnter() override;
+	void update(float dt) override;
 	void buildCollisionMaps();
 	void initializeGridObjects();
+	void tryResumeMovement(PointerTraceEvents::PointerTraceRequestMovementArgs args);
 	void moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args);
 	void openSegfaultMenu();
 
