@@ -87,7 +87,7 @@ void JmpMarker::initializeListeners()
 
 				args->gridEntity->runJumpAnimation(destPosition, [=]()
 				{
-					//// PointerTraceEvents::TriggerResumeMovement(argsClone);
+					PointerTraceEvents::TriggerResumeMovement(argsClone);
 				});
 			}
 		}

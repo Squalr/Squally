@@ -12,11 +12,11 @@
  <objectgroup id="20" name="RegisterState">
   <properties>
    <property name="eax" type="int" value="101"/>
-   <property name="ebp" type="int" value="0"/>
-   <property name="ebx" type="int" value="3"/>
+   <property name="ebp" type="int" value="15"/>
+   <property name="ebx" type="int" value="11"/>
    <property name="ecx" type="int" value="171"/>
-   <property name="edi" type="int" value="6"/>
-   <property name="edx" type="int" value="7"/>
+   <property name="edi" type="int" value="13"/>
+   <property name="edx" type="int" value="177"/>
    <property name="esi" type="int" value="244"/>
    <property name="esp" type="int" value="215"/>
    <property name="type" value="register-state"/>
@@ -158,7 +158,7 @@
     <property name="value" type="int" value="27"/>
    </properties>
   </object>
-  <object id="35" name="rsp-jmp" type="iso_object" x="2567.79" y="1537.06" width="128" height="128">
+  <object id="35" name="esp-jmp" type="iso_object" x="2567.79" y="1537.06" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>

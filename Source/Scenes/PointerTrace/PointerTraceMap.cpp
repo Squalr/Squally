@@ -187,7 +187,7 @@ void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestM
 	args.gridEntity->unlockMovement();
 	args.gridEntity->uninterruptMovement();
 	
-	this->moveGridEntity(args);
+	// this->moveGridEntity(args);
 }
 
 void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args)
