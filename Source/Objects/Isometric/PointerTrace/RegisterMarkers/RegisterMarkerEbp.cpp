@@ -7,6 +7,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEbp.h"
+#include "Strings/PointerTrace/Assembly/RegisterRbp.h"
+
 using namespace cocos2d;
 
 RegisterMarkerEbp* RegisterMarkerEbp::create()
@@ -21,6 +24,15 @@ RegisterMarkerEbp* RegisterMarkerEbp::create()
 RegisterMarkerEbp::RegisterMarkerEbp()
 {
     this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbpMarker);
+
+    if (sizeof(void*) == 4)
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterEbp::create());
+    }
+    else
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterRbp::create());
+    }
 
     this->addChild(this->marker);
 }

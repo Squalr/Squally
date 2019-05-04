@@ -4,13 +4,13 @@
 
 namespace cocos2d
 {
+	class DrawNode;
 	class Sprite;
 }
 
 class ClickableNode;
 class LocalizedLabel;
 class RegisterMarker;
-class UIBoundObject;
 
 class MemoryGrid : public HackableObject
 {
@@ -42,9 +42,10 @@ private:
 	void positionRegisterMarkers();
 
 	std::vector<ClickableNode*> gridHitBoxes;
+	std::vector<LocalizedLabel*> values;
 	std::vector<LocalizedLabel*> addresses;
-	std::vector<UIBoundObject*> bindings;
 
+	cocos2d::DrawNode* gridLines;
 	RegisterMarker* eaxMarker;
 	RegisterMarker* ebxMarker;
 	RegisterMarker* ecxMarker;
@@ -53,12 +54,14 @@ private:
 	RegisterMarker* esiMarker;
 	RegisterMarker* ebpMarker;
 	RegisterMarker* espMarker;
-	cocos2d::Node* addressesNode;
+	cocos2d::Node* labelsNode;
 	cocos2d::Node* gridHitBoxesNode;
 	cocos2d::Sprite* selector;
 
 	std::vector<RegisterMarker*> markers;
 
+	bool isValueFocused;
+	bool isAddressFocused;
 	int gridWidth;
 	int gridHeight;
 };

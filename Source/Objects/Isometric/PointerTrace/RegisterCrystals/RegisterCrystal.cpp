@@ -9,6 +9,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -55,11 +56,14 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 
 RegisterCrystal::~RegisterCrystal()
 {
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void RegisterCrystal::onEnter()
 {
 	super::onEnter();
+
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 
 	this->crystalContainerNode->runAction(RepeatForever::create(
 		Sequence::create(

@@ -7,6 +7,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEdx.h"
+#include "Strings/PointerTrace/Assembly/RegisterRdx.h"
+
 using namespace cocos2d;
 
 RegisterMarkerEdx* RegisterMarkerEdx::create()
@@ -21,6 +24,15 @@ RegisterMarkerEdx* RegisterMarkerEdx::create()
 RegisterMarkerEdx::RegisterMarkerEdx()
 {
     this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdxMarker);
+
+    if (sizeof(void*) == 4)
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterEdx::create());
+    }
+    else
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterRdx::create());
+    }
 
     this->addChild(this->marker);
 }

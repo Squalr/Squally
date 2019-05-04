@@ -41,28 +41,6 @@ void IsometricBall::update(float dt)
 {
 	super::update(dt);
 
-	/*
-	this->movement = Vec2::ZERO;
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
-	{
-		this->movement.x = -1.0f;
-	}
-	else if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
-	{
-		this->movement.x = 1.0f;
-	}
-	else if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W) || Input::isPressed(EventKeyboard::KeyCode::KEY_SPACE))
-	{
-		this->movement.y = 1.0f;
-	}
-	else if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
-	{
-		this->movement.y = -1.0f;
-	}
-
-	return;*/
-
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
 		this->moveUp(IsometricBall::MovementSpeed);

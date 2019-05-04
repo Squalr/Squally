@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -11,9 +12,11 @@
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
+#include "Engine/Input/MouseState.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Events/PointerTraceEvents.h"
 #include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarker.h"
 #include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEax.h"
@@ -44,7 +47,9 @@ MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 {
 	this->addresses = std::vector<LocalizedLabel*>();
+	this->values = std::vector<LocalizedLabel*>();
 	this->gridHitBoxes = std::vector<ClickableNode*>();
+	this->gridLines = DrawNode::create();
 	this->eaxMarker = RegisterMarkerEax::create();
 	this->ebxMarker = RegisterMarkerEbx::create();
 	this->ecxMarker = RegisterMarkerEcx::create();
@@ -53,10 +58,12 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	this->esiMarker = RegisterMarkerEsi::create();
 	this->ebpMarker = RegisterMarkerEbp::create();
 	this->espMarker = RegisterMarkerEsp::create();
-	this->addressesNode = Node::create();
+	this->labelsNode = Node::create();
 	this->gridHitBoxesNode = Node::create();
 	this->selector = Sprite::create(IsometricObjectResources::PointerTrace_Selector);
 	this->markers = std::vector<RegisterMarker*>();
+	this->isAddressFocused = false;
+	this->isValueFocused = false;
 
 	this->markers.push_back(this->eaxMarker);
 	this->markers.push_back(this->ebxMarker);
@@ -79,24 +86,60 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 		{
 			int gridIndex = y + x * this->gridWidth;
 			std::string indexString = std::to_string(gridIndex);
+			std::string valueString = std::to_string(0);
 
 			LocalizedLabel* indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, ConstantString::create(indexString));
-			
-			indexLabel->enableOutline(Color4B::BLACK, 2);
-			
-			this->addresses.push_back(indexLabel);
-
+			LocalizedLabel* valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, ConstantString::create(valueString));
 			ClickableNode* gridHitBox = ClickableNode::create();
 
-			gridHitBox->setContentSize(Size(128.0f, 64.0f));
+			indexLabel->setTextColor(Color4B(224, 224, 224, 255));
+			valueLabel->setTextColor(Color4B(224, 224, 224, 255));
 
+			indexLabel->enableOutline(Color4B::BLACK, 4);
+			valueLabel->enableOutline(Color4B::BLACK, 4);
+			gridHitBox->setContentSize(Size(128.0f, 64.0f));
+			
+			this->addresses.push_back(indexLabel);
+			this->values.push_back(valueLabel);
 			this->gridHitBoxes.push_back(gridHitBox);
 		}	
+	}
+	
+	float totalWidth = float(this->gridWidth) * 128.0f;
+	float totalHeight = float(this->gridHeight) * 128.0f;
+
+	for (int y = 0; y < this->gridWidth; y++)
+	{
+		int gridIndex = y * this->gridWidth;
+
+		Vec2 source = this->gridIndexToRelativePosition(gridIndex) - Vec2(128.0f, 0.0f);
+		Vec2 dest = source + Vec2(totalWidth, totalHeight / 2.0f);
+		Vec2 dropDest = source - Vec2(0.0f, 128.0f);
+
+		this->gridLines->drawSegment(source, dest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
+		this->gridLines->drawSegment(source, dropDest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
+	}
+
+	for (int x = 0; x <= this->gridWidth; x++)
+	{
+		int gridIndex = x;
+
+		Vec2 source = this->gridIndexToRelativePosition(gridIndex) - Vec2(128.0f, 0.0f);
+		Vec2 dest = source + Vec2(totalWidth, - totalHeight / 2.0f);
+		Vec2 dropDest = dest - Vec2(0.0f, 128.0f);
+
+		this->gridLines->drawSegment(source, dest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
+		this->gridLines->drawSegment(dest, dropDest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
 	}
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 	{
-		this->addressesNode->addChild(*it);
+		this->labelsNode->addChild(*it);
+	}
+
+	for (auto it = this->values.begin(); it != this->values.end(); it++)
+	{
+		this->labelsNode->addChild(*it);
 	}
 
 	for (auto it = this->gridHitBoxes.begin(); it != this->gridHitBoxes.end(); it++)
@@ -104,6 +147,7 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 		this->gridHitBoxesNode->addChild(*it);
 	}
 
+	this->addChild(this->gridLines);
 	this->addChild(this->eaxMarker);
 	this->addChild(this->ebxMarker);
 	this->addChild(this->ecxMarker);
@@ -112,13 +156,22 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	this->addChild(this->esiMarker);
 	this->addChild(this->ebpMarker);
 	this->addChild(this->espMarker);
-	this->addChild(this->addressesNode);
+	this->addChild(this->labelsNode);
 	this->addChild(this->gridHitBoxesNode);
 	this->addChild(this->selector);
 }
 
 MemoryGrid::~MemoryGrid()
 {
+	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
+	{
+		ObjectEvents::TriggerUnbindObject(*it);
+	}
+
+	for (auto it = this->values.begin(); it != this->values.end(); it++)
+	{
+		ObjectEvents::TriggerUnbindObject(*it);
+	}
 }
 
 void MemoryGrid::onEnter()
@@ -129,11 +182,18 @@ void MemoryGrid::onEnter()
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 	{
+		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(*it));
+		(*it)->setOpacity(0);
+	}
+
+	for (auto it = this->values.begin(); it != this->values.end(); it++)
+	{
+		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 
 	// This is a shitty hack to ensure the grid has a Z index below all isometric objects
-	this->setLocalZOrder(-12345678);
+	this->setLocalZOrder(-123456789);
 }
 
 void MemoryGrid::initializePositions()
@@ -146,8 +206,9 @@ void MemoryGrid::initializePositions()
 	{
 		Vec2 realCoords = this->gridIndexToRelativePosition(index);
 
-		(*it)->setPosition(realCoords);
+		(*it)->setPosition(realCoords + Vec2(0.0f, 48.0f));
 		this->gridHitBoxes[index]->setPosition(realCoords);
+		this->values[index]->setPosition(realCoords - Vec2(0.0f, 16.0f));
 	}
 }
 
@@ -163,12 +224,22 @@ void MemoryGrid::initializeListeners()
 		{
 			this->selector->setPosition((*it)->getPosition());
 			this->selector->setOpacity(255);
+
+			this->values[index]->setOpacity(255);
 			this->addresses[index]->setOpacity(255);
 		});
 
 		(*it)->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
 		{
-			this->addresses[index]->setOpacity(0);
+			if (!this->isAddressFocused)
+			{
+				this->addresses[index]->setOpacity(0);
+			}
+
+			if (!this->isValueFocused)
+			{
+				this->values[index]->setOpacity(0);
+			}
 		});
 
 		(*it)->setIntersectFunction([=](Vec2 mousePos)
@@ -186,6 +257,50 @@ void MemoryGrid::initializeListeners()
 void MemoryGrid::update(float dt)
 {
 	super::update(dt);
+
+	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_TAB))
+	{
+		this->isAddressFocused = true;
+
+		for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
+		{
+			(*it)->setOpacity(255);
+		}
+	}
+
+	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	{
+		this->isValueFocused = true;
+
+		for (auto it = this->values.begin(); it != this->values.end(); it++)
+		{
+			(*it)->setOpacity(255);
+		}
+	}
+
+	if (Input::isKeyJustReleased(EventKeyboard::KeyCode::KEY_TAB))
+	{
+		this->isAddressFocused = false;
+		
+		for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
+		{
+			(*it)->setOpacity(0);
+		}
+
+		MouseEvents::TriggerMouseRefresh(MouseEvents::MouseEventArgs(MouseState::getMouseState()));
+	}
+
+	if (Input::isKeyJustReleased(EventKeyboard::KeyCode::KEY_SHIFT))
+	{
+		this->isValueFocused = false;
+		
+		for (auto it = this->values.begin(); it != this->values.end(); it++)
+		{
+			(*it)->setOpacity(0);
+		}
+
+		MouseEvents::TriggerMouseRefresh(MouseEvents::MouseEventArgs(MouseState::getMouseState()));
+	}
 }
 
 int MemoryGrid::relativeCoordsToGridIndex(cocos2d::Vec2 relativeCoordinates)
