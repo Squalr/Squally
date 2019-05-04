@@ -33,8 +33,9 @@ JmpMarker::JmpMarker(ValueMap& initProperties) : super(initProperties)
 	this->assemblyString = Strings::Generics_Constant::create();
 	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
 	this->offset = GameUtils::getKeyOrDefault(initProperties, JmpMarker::MapKeyOffset, Value(0)).asInt();
-
 	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
+
+	this->setZSorted(true);
 
 	this->addChild(this->markerNode);
 	this->addChild(this->assemblyLabel);

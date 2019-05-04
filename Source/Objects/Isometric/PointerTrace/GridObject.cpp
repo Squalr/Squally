@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-GridObject::GridObject(ValueMap& initProperties) : super(initProperties)
+GridObject::GridObject(const ValueMap& properties) : super(properties)
 {
 	this->gridIndex = 0;
 }

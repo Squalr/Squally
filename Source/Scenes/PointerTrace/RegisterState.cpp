@@ -26,6 +26,8 @@ int RegisterState::getRegisterEax()
 void RegisterState::setRegisterEax(int value)
 {
 	RegisterState::registerEax = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEbx()
@@ -36,6 +38,8 @@ int RegisterState::getRegisterEbx()
 void RegisterState::setRegisterEbx(int value)
 {
 	RegisterState::registerEbx = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEcx()
@@ -46,6 +50,8 @@ int RegisterState::getRegisterEcx()
 void RegisterState::setRegisterEcx(int value)
 {
 	RegisterState::registerEcx = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEdx()
@@ -56,6 +62,8 @@ int RegisterState::getRegisterEdx()
 void RegisterState::setRegisterEdx(int value)
 {
 	RegisterState::registerEdx = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEdi()
@@ -66,6 +74,8 @@ int RegisterState::getRegisterEdi()
 void RegisterState::setRegisterEdi(int value)
 {
 	RegisterState::registerEdi = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEsi()
@@ -76,6 +86,8 @@ int RegisterState::getRegisterEsi()
 void RegisterState::setRegisterEsi(int value)
 {
 	RegisterState::registerEsi = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEbp()
@@ -86,6 +98,8 @@ int RegisterState::getRegisterEbp()
 void RegisterState::setRegisterEbp(int value)
 {
 	RegisterState::registerEbp = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEsp()
@@ -96,6 +110,8 @@ int RegisterState::getRegisterEsp()
 void RegisterState::setRegisterEsp(int value)
 {
 	RegisterState::registerEsp = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEip()
@@ -106,4 +122,6 @@ int RegisterState::getRegisterEip()
 void RegisterState::setRegisterEip(int value)
 {
 	RegisterState::registerEip = value;
+
+	PointerTraceEvents::TriggerRegisterUpdated();
 }

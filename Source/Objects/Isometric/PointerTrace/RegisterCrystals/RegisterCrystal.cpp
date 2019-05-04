@@ -30,7 +30,7 @@ using namespace cocos2d;
 const std::string RegisterCrystal::MapKeyRegisterValue = "value";
 const std::string RegisterCrystal::MapKeyRegisterOffset = "offset";
 
-RegisterCrystal::RegisterCrystal(ValueMap& initProperties) : super(initProperties)
+RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 {
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
 	this->crystalContainerNode = Node::create();
@@ -39,8 +39,10 @@ RegisterCrystal::RegisterCrystal(ValueMap& initProperties) : super(initPropertie
 	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
 	this->shineFx = SmartAnimationSequenceNode::create();
 
-	this->value = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
-	this->offset = GameUtils::getKeyOrDefault(initProperties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
+	this->setZSorted(true);
+
+	this->value = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
+	this->offset = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
 
 	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
 

@@ -20,20 +20,22 @@ using namespace cocos2d;
 
 const std::string ExitCrystal::MapKeyExitCrystal = "exit-crystal";
 
-ExitCrystal* ExitCrystal::create(ValueMap& initProperties)
+ExitCrystal* ExitCrystal::create(ValueMap& properties)
 {
-	ExitCrystal* instance = new ExitCrystal(initProperties);
+	ExitCrystal* instance = new ExitCrystal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ExitCrystal::ExitCrystal(ValueMap& initProperties) : super(initProperties)
+ExitCrystal::ExitCrystal(ValueMap& properties) : super(properties)
 {
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_ExitCrystal);
 	this->shineFx = SmartAnimationSequenceNode::create();
+
+	this->setZSorted(true);
 
 	this->addChild(this->shadow);
 	this->addChild(this->crystal);
@@ -85,15 +87,16 @@ void ExitCrystal::initializeListeners()
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
 				args->gridEntity->interruptMovement();
+				args->gridEntity->lockMovement();
 
 				this->crystal->stopAllActions();
 				this->crystal->runAction(Sequence::create(
-					MoveBy::create(0.5f, Vec2(0.0f, 196.0f)),
+					MoveBy::create(0.25f, Vec2(0.0f, 128.0f)),
 					CallFunc::create([=]()
 					{
 						this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
 					}),
-					DelayTime::create(1.0f),
+					DelayTime::create(0.75f),
 					CallFunc::create([=]()
 					{
 						PointerTraceEvents::TriggerVictory();

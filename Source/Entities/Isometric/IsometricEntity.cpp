@@ -22,6 +22,8 @@ IsometricEntity::IsometricEntity(ValueMap& initProperties, std::string scmlResou
 
 	float height = this->properties[super::MapKeyHeight].asFloat();
 
+	this->setZSorted(true);
+
 	// Update width to be serialized
 	this->properties[super::MapKeyWidth] = size.width * scale;
 	this->properties[super::MapKeyHeight] = size.height * scale;

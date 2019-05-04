@@ -68,6 +68,8 @@ void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents:
 		SerializableObject* newObject = IsometricDecorObject::create(properties);
 		newObject->addChild(sprite);
 
+		newObject->setZSorted(true);
+
 		if (GameUtils::keyExists(properties, "flip-x"))
 		{
 			bool flipX = properties.at("flip-x").asBool();
