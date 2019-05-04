@@ -10,12 +10,12 @@ namespace cocos2d
 class HexusArcade : public HackableObject
 {
 public:
-	static HexusArcade* create(cocos2d::ValueMap& initProperties);
+	static HexusArcade* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyHexusArcade;
 
 protected:
-	HexusArcade(cocos2d::ValueMap& initProperties);
+	HexusArcade(cocos2d::ValueMap& properties);
 	~HexusArcade();
 
 	cocos2d::Vec2 getButtonOffset() override;

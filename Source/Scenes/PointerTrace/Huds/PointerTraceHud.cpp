@@ -3,9 +3,12 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Events/PointerTraceEvents.h"
 #include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Strings/PointerTrace/Hud/RegisterEax.h"
@@ -40,7 +43,7 @@ PointerTraceHud* PointerTraceHud::create()
 
 PointerTraceHud::PointerTraceHud()
 {
-	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 128, 334);
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 160, 334);
 
 	if (sizeof(void*) == 4)
 	{
@@ -127,7 +130,8 @@ PointerTraceHud::~PointerTraceHud()
 void PointerTraceHud::onEnter()
 {
 	super::onEnter();
-
+	
+	this->updateRegisters();
 	this->scheduleUpdate();
 }
 
@@ -152,9 +156,22 @@ void PointerTraceHud::initializePositions()
 void PointerTraceHud::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventUpdateRegister, [=](EventCustom* eventCustom)
+	{
+		this->updateRegisters();
+	}));
 }
 
-void PointerTraceHud::update(float dt)
+void PointerTraceHud::updateRegisters()
 {
-	super::update(dt);
+	this->eaxValue->setString(std::to_string(RegisterState::getRegisterEax()));
+	this->ebxValue->setString(std::to_string(RegisterState::getRegisterEbx()));
+	this->ecxValue->setString(std::to_string(RegisterState::getRegisterEcx()));
+	this->edxValue->setString(std::to_string(RegisterState::getRegisterEdx()));
+	this->ediValue->setString(std::to_string(RegisterState::getRegisterEdi()));
+	this->esiValue->setString(std::to_string(RegisterState::getRegisterEsi()));
+	this->ebpValue->setString(std::to_string(RegisterState::getRegisterEbp()));
+	this->espValue->setString(std::to_string(RegisterState::getRegisterEsp()));
+	this->eipValue->setString(std::to_string(RegisterState::getRegisterEip()));
 }

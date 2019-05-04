@@ -25,6 +25,8 @@ ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap initProperties) : Seri
 	this->setPosition(spritePosition);
 	sprite->setPosition(Vec2::ZERO);
 
+	this->setZSorted(true);
+
 	GameUtils::changeParent(sprite, this, false);
 }
 

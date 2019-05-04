@@ -5,6 +5,8 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -12,6 +14,17 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Events/PointerTraceEvents.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarker.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEax.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEbp.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEbx.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEcx.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEdi.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEdx.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEsi.h"
+#include "Objects/Isometric/PointerTrace/RegisterMarkers/RegisterMarkerEsp.h"
+#include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricObjectResources.h"
 
@@ -19,33 +32,43 @@ using namespace cocos2d;
 
 const std::string MemoryGrid::MapKeyMemoryGrid = "memory-grid";
 
-MemoryGrid* MemoryGrid::create(ValueMap& initProperties)
+MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 {
-	MemoryGrid* instance = new MemoryGrid(initProperties);
+	MemoryGrid* instance = new MemoryGrid(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MemoryGrid::MemoryGrid(ValueMap& initProperties) : HackableObject(initProperties)
+MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 {
 	this->addresses = std::vector<LocalizedLabel*>();
 	this->gridHitBoxes = std::vector<ClickableNode*>();
-	this->eaxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxMarker);
-	this->ebxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbxMarker);
-	this->ecxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EcxMarker);
-	this->edxMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdxMarker);
-	this->ediMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiMarker);
-	this->esiMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EsiMarker);
-	this->ebpMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbpMarker);
-	this->espMarker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EspMarker);
+	this->eaxMarker = RegisterMarkerEax::create();
+	this->ebxMarker = RegisterMarkerEbx::create();
+	this->ecxMarker = RegisterMarkerEcx::create();
+	this->edxMarker = RegisterMarkerEdx::create();
+	this->ediMarker = RegisterMarkerEdi::create();
+	this->esiMarker = RegisterMarkerEsi::create();
+	this->ebpMarker = RegisterMarkerEbp::create();
+	this->espMarker = RegisterMarkerEsp::create();
 	this->addressesNode = Node::create();
 	this->gridHitBoxesNode = Node::create();
 	this->selector = Sprite::create(IsometricObjectResources::PointerTrace_Selector);
+	this->markers = std::vector<RegisterMarker*>();
 
-	float width = initProperties[super::MapKeyWidth].asFloat();
-	float height = initProperties[super::MapKeyWidth].asFloat();
+	this->markers.push_back(this->eaxMarker);
+	this->markers.push_back(this->ebxMarker);
+	this->markers.push_back(this->ecxMarker);
+	this->markers.push_back(this->edxMarker);
+	this->markers.push_back(this->ediMarker);
+	this->markers.push_back(this->esiMarker);
+	this->markers.push_back(this->ebpMarker);
+	this->markers.push_back(this->espMarker);
+
+	float width = this->properties[super::MapKeyWidth].asFloat();
+	float height = this->properties[super::MapKeyWidth].asFloat();
 
 	this->gridWidth = std::round(width / 128.0f);
 	this->gridHeight = std::round(height / 128.0f);
@@ -102,20 +125,15 @@ void MemoryGrid::onEnter()
 {
 	super::onEnter();
 
-	this->eaxMarker->setOpacity(0);
-	this->ebxMarker->setOpacity(0);
-	this->ecxMarker->setOpacity(0);
-	this->edxMarker->setOpacity(0);
-	this->ediMarker->setOpacity(0);
-	this->esiMarker->setOpacity(0);
-	this->ebpMarker->setOpacity(0);
-	this->espMarker->setOpacity(0);
 	this->selector->setOpacity(0);
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 	{
 		(*it)->setOpacity(0);
 	}
+
+	// This is a shitty hack to ensure the grid has a Z index below all isometric objects
+	this->setLocalZOrder(-12345678);
 }
 
 void MemoryGrid::initializePositions()
@@ -158,6 +176,11 @@ void MemoryGrid::initializeListeners()
 			return GameUtils::intersectsIsometric(*it, mousePos);
 		});
 	}
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventUpdateRegister, [=](EventCustom* eventCustom)
+	{
+		this->positionRegisterMarkers();
+	}));
 }
 
 void MemoryGrid::update(float dt)
@@ -213,3 +236,10 @@ int MemoryGrid::getGridHeight()
 	return this->gridHeight;
 }
 
+void MemoryGrid::positionRegisterMarkers()
+{
+	for (auto it = this->markers.begin(); it != this->markers.end(); it++)
+	{
+		(*it)->moveToRegister(this);
+	}
+}

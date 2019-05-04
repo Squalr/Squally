@@ -12,7 +12,7 @@ class SmartAnimationSequenceNode;
 class ExitCrystal : public GridObject
 {
 public:
-	static ExitCrystal* create(cocos2d::ValueMap& initProperties);
+	static ExitCrystal* create(cocos2d::ValueMap& properties);
 
 	int getValue();
 	int getOffset();
@@ -20,7 +20,7 @@ public:
 	static const std::string MapKeyExitCrystal;
 
 protected:
-	ExitCrystal(cocos2d::ValueMap& initProperties);
+	ExitCrystal(cocos2d::ValueMap& properties);
 	~ExitCrystal();
 
 	void onEnter() override;

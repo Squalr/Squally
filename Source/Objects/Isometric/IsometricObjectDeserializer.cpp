@@ -111,6 +111,9 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 			return;
 		}
 
-		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
+		if (newObject != nullptr)
+		{
+			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
+		}
 	}
 }

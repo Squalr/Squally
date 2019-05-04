@@ -388,8 +388,10 @@ void SerializableMap::isometricZSort(Node* node)
 		return;
 	}
 
-	// Only z sort the objects in the map (top left lowest, bottom right highest)
-	if (dynamic_cast<SerializableObject*>(node) != nullptr)
+	SerializableObject* object = dynamic_cast<SerializableObject*>(node);
+
+	// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
+	if (object != nullptr && object->isZSorted())
 	{
 		// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
 		// TODO: This works for most cases but is incomplete

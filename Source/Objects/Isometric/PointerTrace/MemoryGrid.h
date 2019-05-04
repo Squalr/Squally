@@ -9,12 +9,13 @@ namespace cocos2d
 
 class ClickableNode;
 class LocalizedLabel;
+class RegisterMarker;
 class UIBoundObject;
 
 class MemoryGrid : public HackableObject
 {
 public:
-	static MemoryGrid* create(cocos2d::ValueMap& initProperties);
+	static MemoryGrid* create(const cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyMemoryGrid;
 
@@ -27,7 +28,7 @@ public:
 	cocos2d::Vec2 gridIndexToWorldPosition(int gridIndex);
 
 protected:
-	MemoryGrid(cocos2d::ValueMap& initProperties);
+	MemoryGrid(const cocos2d::ValueMap& properties);
 	~MemoryGrid();
 
 	void onEnter() override;
@@ -38,21 +39,25 @@ protected:
 private:
 	typedef HackableObject super;
 
+	void positionRegisterMarkers();
+
 	std::vector<ClickableNode*> gridHitBoxes;
 	std::vector<LocalizedLabel*> addresses;
 	std::vector<UIBoundObject*> bindings;
 
-	cocos2d::Sprite* eaxMarker;
-	cocos2d::Sprite* ebxMarker;
-	cocos2d::Sprite* ecxMarker;
-	cocos2d::Sprite* edxMarker;
-	cocos2d::Sprite* ediMarker;
-	cocos2d::Sprite* esiMarker;
-	cocos2d::Sprite* ebpMarker;
-	cocos2d::Sprite* espMarker;
+	RegisterMarker* eaxMarker;
+	RegisterMarker* ebxMarker;
+	RegisterMarker* ecxMarker;
+	RegisterMarker* edxMarker;
+	RegisterMarker* ediMarker;
+	RegisterMarker* esiMarker;
+	RegisterMarker* ebpMarker;
+	RegisterMarker* espMarker;
 	cocos2d::Node* addressesNode;
 	cocos2d::Node* gridHitBoxesNode;
 	cocos2d::Sprite* selector;
+
+	std::vector<RegisterMarker*> markers;
 
 	int gridWidth;
 	int gridHeight;

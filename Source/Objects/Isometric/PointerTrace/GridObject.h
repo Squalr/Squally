@@ -9,7 +9,7 @@ public:
 	void setGridIndex(int gridIndex);
 
 protected:
-	GridObject(cocos2d::ValueMap& initProperties);
+	GridObject(const cocos2d::ValueMap& properties);
 	~GridObject();
 
 private:

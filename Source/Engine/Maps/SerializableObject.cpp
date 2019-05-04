@@ -55,6 +55,7 @@ const std::string SerializableObject::MapKeyPropertyValue = "value";
 SerializableObject::SerializableObject(const ValueMap& initProperties)
 {
 	this->properties = initProperties;
+	this->zSorted = false;
 
 	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapIdentifier))
 	{
@@ -154,6 +155,16 @@ void SerializableObject::initializeListeners()
 std::string SerializableObject::getUniqueIdentifier()
 {
 	return this->uniqueIdentifier;
+}
+
+void SerializableObject::setZSorted(bool zSorted)
+{
+	this->zSorted = zSorted;
+}
+
+bool SerializableObject::isZSorted()
+{
+	return this->zSorted;
 }
 
 void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)

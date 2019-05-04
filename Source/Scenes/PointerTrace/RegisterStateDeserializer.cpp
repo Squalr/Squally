@@ -71,12 +71,12 @@ void RegisterStateDeserializer::onDeserializationRequest(DeserializationEvents::
 	args->handled = true;
 
 	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEax, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEbx, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEcx, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEdx, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEdi, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEsi, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEbp, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEsp, Value(0)).asInt());
-	RegisterState::setRegisterEax(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEip, Value(0)).asInt());
+	RegisterState::setRegisterEbx(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEbx, Value(0)).asInt());
+	RegisterState::setRegisterEcx(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEcx, Value(0)).asInt());
+	RegisterState::setRegisterEdx(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEdx, Value(0)).asInt());
+	RegisterState::setRegisterEdi(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEdi, Value(0)).asInt());
+	RegisterState::setRegisterEsi(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEsi, Value(0)).asInt());
+	RegisterState::setRegisterEbp(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEbp, Value(0)).asInt());
+	RegisterState::setRegisterEsp(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEsp, Value(0)).asInt());
+	RegisterState::setRegisterEip(GameUtils::getKeyOrDefault(properties, RegisterStateDeserializer::MapKeyRegisterEip, Value(0)).asInt());
 }

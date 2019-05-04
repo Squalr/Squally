@@ -25,6 +25,8 @@ public:
 
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
+	void setZSorted(bool zSorted);
+	bool isZSorted();
 
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
@@ -76,6 +78,7 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
+	bool zSorted;
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 };
