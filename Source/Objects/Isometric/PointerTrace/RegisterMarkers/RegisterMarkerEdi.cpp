@@ -7,6 +7,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEdi.h"
+#include "Strings/PointerTrace/Assembly/RegisterRdi.h"
+
 using namespace cocos2d;
 
 RegisterMarkerEdi* RegisterMarkerEdi::create()
@@ -21,6 +24,15 @@ RegisterMarkerEdi* RegisterMarkerEdi::create()
 RegisterMarkerEdi::RegisterMarkerEdi()
 {
     this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiMarker);
+
+    if (sizeof(void*) == 4)
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterEdi::create());
+    }
+    else
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterRdi::create());
+    }
 
     this->addChild(this->marker);
 }

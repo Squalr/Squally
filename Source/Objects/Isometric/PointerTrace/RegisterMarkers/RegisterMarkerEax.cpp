@@ -7,6 +7,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEax.h"
+#include "Strings/PointerTrace/Assembly/RegisterRax.h"
+
 using namespace cocos2d;
 
 RegisterMarkerEax* RegisterMarkerEax::create()
@@ -21,6 +24,15 @@ RegisterMarkerEax* RegisterMarkerEax::create()
 RegisterMarkerEax::RegisterMarkerEax()
 {
     this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxMarker);
+
+    if (sizeof(void*) == 4)
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterEax::create());
+    }
+    else
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterRax::create());
+    }
 
     this->addChild(this->marker);
 }

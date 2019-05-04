@@ -7,6 +7,9 @@
 
 #include "Resources/IsometricObjectResources.h"
 
+#include "Strings/PointerTrace/Assembly/RegisterEcx.h"
+#include "Strings/PointerTrace/Assembly/RegisterRcx.h"
+
 using namespace cocos2d;
 
 RegisterMarkerEcx* RegisterMarkerEcx::create()
@@ -21,6 +24,15 @@ RegisterMarkerEcx* RegisterMarkerEcx::create()
 RegisterMarkerEcx::RegisterMarkerEcx()
 {
     this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EcxMarker);
+
+    if (sizeof(void*) == 4)
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterEcx::create());
+    }
+    else
+    {
+        this->registerString->setStringReplacementVariables(Strings::PointerTrace_Assembly_RegisterRcx::create());
+    }
 
     this->addChild(this->marker);
 }
