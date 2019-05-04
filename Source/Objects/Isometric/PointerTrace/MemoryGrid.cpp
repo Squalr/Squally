@@ -34,7 +34,7 @@
 using namespace cocos2d;
 
 const std::string MemoryGrid::MapKeyMemoryGrid = "memory-grid";
-const Color4B MemoryGrid::GridColor = Color4B(0, 0, 0, 255);
+const Color4B MemoryGrid::GridColor = Color4B(0, 0, 0, 128);
 
 MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 {
