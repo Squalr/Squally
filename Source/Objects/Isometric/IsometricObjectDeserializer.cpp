@@ -101,9 +101,65 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = EaxJmp::create(properties);
 		}
+		else if (name == EbxJmp::MapKeyEbxJmp)
+		{
+			newObject = EbxJmp::create(properties);
+		}
+		else if (name == EcxJmp::MapKeyEcxJmp)
+		{
+			newObject = EcxJmp::create(properties);
+		}
+		else if (name == EdxJmp::MapKeyEdxJmp)
+		{
+			newObject = EdxJmp::create(properties);
+		}
+		else if (name == EdiJmp::MapKeyEdiJmp)
+		{
+			newObject = EdiJmp::create(properties);
+		}
+		else if (name == EsiJmp::MapKeyEsiJmp)
+		{
+			newObject = EsiJmp::create(properties);
+		}
+		else if (name == EbpJmp::MapKeyEbpJmp)
+		{
+			newObject = EbpJmp::create(properties);
+		}
+		else if (name == EspJmp::MapKeyEspJmp)
+		{
+			newObject = EspJmp::create(properties);
+		}
 		else if (name == EaxPtrJmp::MapKeyEaxPtrJmp)
 		{
 			newObject = EaxPtrJmp::create(properties);
+		}
+		else if (name == EbxPtrJmp::MapKeyEbxPtrJmp)
+		{
+			newObject = EbxPtrJmp::create(properties);
+		}
+		else if (name == EcxPtrJmp::MapKeyEcxPtrJmp)
+		{
+			newObject = EcxPtrJmp::create(properties);
+		}
+		else if (name == EdxPtrJmp::MapKeyEdxPtrJmp)
+		{
+			newObject = EdxPtrJmp::create(properties);
+		}
+		else if (name == EdiPtrJmp::MapKeyEdiPtrJmp)
+		{
+			newObject = EdiPtrJmp::create(properties);
+		}
+		else if (name == EsiPtrJmp::MapKeyEsiPtrJmp)
+		{
+			newObject = EsiPtrJmp::create(properties);
+		}
+		else if (name == EbpPtrJmp::MapKeyEbpPtrJmp)
+		{
+			newObject = EbpPtrJmp::create(properties);
+		}
+		else if (name == EspPtrJmp::MapKeyEspPtrJmp)
+		{
+			newObject = EspPtrJmp::create(properties);
 		}
 		else
 		{

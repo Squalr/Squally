@@ -19,6 +19,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	void buildJmpString(LocalizedString* registerString);
 	void buildJmpPtrString(LocalizedString* registerString);
 	int getOffset();

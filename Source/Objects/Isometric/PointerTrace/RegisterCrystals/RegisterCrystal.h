@@ -20,6 +20,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	void buildMovString(LocalizedString* registerString);
 	void buildMovPtrString(LocalizedString* registerString);
 	virtual void updateRegister(int value) = 0;

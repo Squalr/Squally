@@ -25,6 +25,7 @@
 #include "Scenes/PointerTrace/Huds/PointerTraceHud.h"
 #include "Scenes/PointerTrace/Menus/SegfaultMenu.h"
 #include "Scenes/PointerTrace/Menus/VictoryMenu.h"
+#include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricObjectResources.h"
 
@@ -285,11 +286,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 			return;
 		}
 
-		// Out of bounds detection
-		if (destinationIndex < 0 || destinationIndex > this->memoryGrid->getMaxIndex())
-		{
-			return;
-		}
+		RegisterState::setRegisterEip(destinationIndex);
 
 		// Create a copy or the lambda will botch this variable
 		Vec2 destination = this->memoryGrid->gridIndexToWorldPosition(destinationIndex);

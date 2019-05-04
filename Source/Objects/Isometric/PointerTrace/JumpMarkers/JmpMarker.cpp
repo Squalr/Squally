@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -48,6 +49,8 @@ JmpMarker::~JmpMarker()
 void JmpMarker::onEnter()
 {
 	super::onEnter();
+	
+	this->scheduleUpdate();
 }
 
 void JmpMarker::initializePositions()
@@ -84,11 +87,25 @@ void JmpMarker::initializeListeners()
 
 				args->gridEntity->runJumpAnimation(destPosition, [=]()
 				{
-					PointerTraceEvents::TriggerResumeMovement(argsClone);
+					//// PointerTraceEvents::TriggerResumeMovement(argsClone);
 				});
 			}
 		}
 	));
+}
+
+void JmpMarker::update(float dt)
+{
+	super::update(dt);
+
+	if (Input::isPressed(EventKeyboard::KeyCode::KEY_TAB) || Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	{
+		this->assemblyLabel->setOpacity(0);
+	}
+	else
+	{
+		this->assemblyLabel->setOpacity(255);
+	}
 }
 
 void JmpMarker::buildJmpString(LocalizedString* registerString)

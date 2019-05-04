@@ -2,6 +2,7 @@
 
 #include "Engine/Input/Input.h"
 #include "Events/NavigationEvents.h"
+#include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricEntityResources.h"
 
@@ -35,6 +36,13 @@ void IsometricBall::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
+}
+
+void IsometricBall::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	RegisterState::setRegisterEip(this->getGridIndex());
 }
 
 void IsometricBall::update(float dt)

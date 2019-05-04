@@ -29,6 +29,8 @@
 #include "Strings/PointerTrace/Hud/RegisterRip.h"
 #include "Strings/PointerTrace/Hud/RegisterRsi.h"
 #include "Strings/PointerTrace/Hud/RegisterRsp.h"
+#include "Strings/PointerTrace/ShiftHint.h"
+#include "Strings/PointerTrace/TabHint.h"
 
 using namespace cocos2d;
 
@@ -70,6 +72,9 @@ PointerTraceHud::PointerTraceHud()
 		this->eipLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::PointerTrace_Hud_RegisterRip::create());
 	}
 
+	this->addressHintLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::PointerTrace_TabHint::create());
+	this->valueHintLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::PointerTrace_ShiftHint::create());
+
 	this->eaxValue = ConstantString::create("0");
 	this->ebxValue = ConstantString::create("0");
 	this->ecxValue = ConstantString::create("0");
@@ -100,6 +105,8 @@ PointerTraceHud::PointerTraceHud()
 	this->ebpLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->espLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->eipLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->addressHintLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->valueHintLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->eaxLabel->enableOutline(Color4B::BLACK, 2);
 	this->ebxLabel->enableOutline(Color4B::BLACK, 2);
@@ -110,6 +117,8 @@ PointerTraceHud::PointerTraceHud()
 	this->ebpLabel->enableOutline(Color4B::BLACK, 2);
 	this->espLabel->enableOutline(Color4B::BLACK, 2);
 	this->eipLabel->enableOutline(Color4B::BLACK, 2);
+	this->addressHintLabel->enableOutline(Color4B::BLACK, 2);
+	this->valueHintLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->backdrop);
 	this->addChild(this->eaxLabel);
@@ -121,6 +130,8 @@ PointerTraceHud::PointerTraceHud()
 	this->addChild(this->ebpLabel);
 	this->addChild(this->espLabel);
 	this->addChild(this->eipLabel);
+	this->addChild(this->addressHintLabel);
+	this->addChild(this->valueHintLabel);
 }
 
 PointerTraceHud::~PointerTraceHud()
@@ -151,6 +162,8 @@ void PointerTraceHud::initializePositions()
 	this->ebpLabel->setPosition(24.0f, visibleSize.height - 36.0f * 6.0f - 24.0f);
 	this->espLabel->setPosition(24.0f, visibleSize.height - 36.0f * 7.0f - 24.0f);
 	this->eipLabel->setPosition(24.0f, visibleSize.height - 36.0f * 8.0f - 24.0f);
+	this->valueHintLabel->setPosition(24.0f, 0.0f + 36.0f * 0.0f + 24.0f);
+	this->addressHintLabel->setPosition(24.0f, 0.0f + 36.0f * 1.0f + 24.0f);
 }
 
 void PointerTraceHud::initializeListeners()

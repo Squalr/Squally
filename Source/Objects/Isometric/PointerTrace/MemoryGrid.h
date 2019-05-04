@@ -32,6 +32,7 @@ protected:
 	~MemoryGrid();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
@@ -64,4 +65,6 @@ private:
 	bool isAddressFocused;
 	int gridWidth;
 	int gridHeight;
+
+	static const cocos2d::Color4B GridColor;
 };

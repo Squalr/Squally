@@ -1,4 +1,4 @@
-#include "EbxCrystal.h"
+#include "EbxJmp.h"
 
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionEase.h"
@@ -15,46 +15,45 @@
 
 using namespace cocos2d;
 
-const std::string EbxCrystal::MapKeyEbxCrystal = "ebx-crystal";
+const std::string EbxJmp::MapKeyEbxJmp = "ebx-jmp";
 
-EbxCrystal* EbxCrystal::create(ValueMap& initProperties)
+EbxJmp* EbxJmp::create(ValueMap& initProperties)
 {
-	EbxCrystal* instance = new EbxCrystal(initProperties);
+	EbxJmp* instance = new EbxJmp(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EbxCrystal::EbxCrystal(ValueMap& initProperties) : super(initProperties)
+EbxJmp::EbxJmp(ValueMap& initProperties) : super(initProperties)
 {
-	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbxCrystal);
+	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbxJmp);
 	
 	LocalizedString* registerString = (sizeof(void*) == 4)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEbx::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRbx::create();
 
-	this->buildMovString(registerString);
+	this->buildJmpString(registerString);
 
-	this->crystalNode->addChild(this->crystal);
+	this->markerNode->addChild(this->marker);
 }
 
-EbxCrystal::~EbxCrystal()
+EbxJmp::~EbxJmp()
 {
 }
 
-void EbxCrystal::onEnter()
+void EbxJmp::onEnter()
 {
 	super::onEnter();
 }
 
-void EbxCrystal::initializePositions()
+void EbxJmp::initializePositions()
 {
 	super::initializePositions();
 }
 
-void EbxCrystal::updateRegister(int value)
+int EbxJmp::getJumpDestination()
 {
-	RegisterState::setRegisterEbx(value);
+	return RegisterState::getRegisterEbx();
 }
-

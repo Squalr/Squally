@@ -1,4 +1,4 @@
-#include "EspCrystal.h"
+#include "EspPtrJmp.h"
 
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionEase.h"
@@ -15,46 +15,45 @@
 
 using namespace cocos2d;
 
-const std::string EspCrystal::MapKeyEspCrystal = "esp-crystal";
+const std::string EspPtrJmp::MapKeyEspPtrJmp = "esp-ptr-jmp";
 
-EspCrystal* EspCrystal::create(ValueMap& initProperties)
+EspPtrJmp* EspPtrJmp::create(ValueMap& initProperties)
 {
-	EspCrystal* instance = new EspCrystal(initProperties);
+	EspPtrJmp* instance = new EspPtrJmp(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EspCrystal::EspCrystal(ValueMap& initProperties) : super(initProperties)
+EspPtrJmp::EspPtrJmp(ValueMap& initProperties) : super(initProperties)
 {
-	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EspCrystal);
+	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EspPtrJmp);
 	
 	LocalizedString* registerString = (sizeof(void*) == 4)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEsp::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRsp::create();
 
-	this->buildMovString(registerString);
+	this->buildJmpPtrString(registerString);
 
-	this->crystalNode->addChild(this->crystal);
+	this->markerNode->addChild(this->marker);
 }
 
-EspCrystal::~EspCrystal()
+EspPtrJmp::~EspPtrJmp()
 {
 }
 
-void EspCrystal::onEnter()
+void EspPtrJmp::onEnter()
 {
 	super::onEnter();
 }
 
-void EspCrystal::initializePositions()
+void EspPtrJmp::initializePositions()
 {
 	super::initializePositions();
 }
 
-void EspCrystal::updateRegister(int value)
+int EspPtrJmp::getJumpDestination()
 {
-	RegisterState::setRegisterEsp(value);
+	return RegisterState::getRegisterEsp();
 }
-

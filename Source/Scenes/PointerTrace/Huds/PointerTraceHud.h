@@ -46,4 +46,7 @@ private:
 	LocalizedLabel* ebpLabel;
 	LocalizedLabel* espLabel;
 	LocalizedLabel* eipLabel;
+
+	LocalizedLabel* addressHintLabel;
+	LocalizedLabel* valueHintLabel;
 };
