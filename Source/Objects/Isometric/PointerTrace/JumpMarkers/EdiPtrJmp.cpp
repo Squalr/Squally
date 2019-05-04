@@ -1,4 +1,4 @@
-#include "EdiCrystal.h"
+#include "EdiPtrJmp.h"
 
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionEase.h"
@@ -15,45 +15,45 @@
 
 using namespace cocos2d;
 
-const std::string EdiCrystal::MapKeyEdiCrystal = "edi-crystal";
+const std::string EdiPtrJmp::MapKeyEdiPtrJmp = "edi-ptr-jmp";
 
-EdiCrystal* EdiCrystal::create(ValueMap& initProperties)
+EdiPtrJmp* EdiPtrJmp::create(ValueMap& initProperties)
 {
-	EdiCrystal* instance = new EdiCrystal(initProperties);
+	EdiPtrJmp* instance = new EdiPtrJmp(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdiCrystal::EdiCrystal(ValueMap& initProperties) : super(initProperties)
+EdiPtrJmp::EdiPtrJmp(ValueMap& initProperties) : super(initProperties)
 {
-	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiCrystal);
+	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiPtrJmp);
 	
 	LocalizedString* registerString = (sizeof(void*) == 4)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEdi::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRdi::create();
 
-	this->buildMovString(registerString);
+	this->buildJmpPtrString(registerString);
 
-	this->crystalNode->addChild(this->crystal);
+	this->markerNode->addChild(this->marker);
 }
 
-EdiCrystal::~EdiCrystal()
+EdiPtrJmp::~EdiPtrJmp()
 {
 }
 
-void EdiCrystal::onEnter()
+void EdiPtrJmp::onEnter()
 {
 	super::onEnter();
 }
 
-void EdiCrystal::initializePositions()
+void EdiPtrJmp::initializePositions()
 {
 	super::initializePositions();
 }
 
-void EdiCrystal::updateRegister(int value)
+int EdiPtrJmp::getJumpDestination()
 {
-	RegisterState::setRegisterEdi(value);
+	return RegisterState::getRegisterEdi();
 }

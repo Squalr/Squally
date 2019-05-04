@@ -12,13 +12,13 @@
  <objectgroup id="20" name="RegisterState">
   <properties>
    <property name="eax" type="int" value="101"/>
-   <property name="ebp" type="int" value="117"/>
-   <property name="ebx" type="int" value="133"/>
-   <property name="ecx" type="int" value="149"/>
-   <property name="edi" type="int" value="165"/>
-   <property name="edx" type="int" value="181"/>
-   <property name="esi" type="int" value="101"/>
-   <property name="esp" type="int" value="85"/>
+   <property name="ebp" type="int" value="0"/>
+   <property name="ebx" type="int" value="3"/>
+   <property name="ecx" type="int" value="5"/>
+   <property name="edi" type="int" value="6"/>
+   <property name="edx" type="int" value="7"/>
+   <property name="esi" type="int" value="244"/>
+   <property name="esp" type="int" value="254"/>
    <property name="type" value="register-state"/>
   </properties>
  </objectgroup>

@@ -1,4 +1,4 @@
-#include "EcxCrystal.h"
+#include "EcxJmp.h"
 
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionEase.h"
@@ -15,46 +15,45 @@
 
 using namespace cocos2d;
 
-const std::string EcxCrystal::MapKeyEcxCrystal = "ecx-crystal";
+const std::string EcxJmp::MapKeyEcxJmp = "ecx-jmp";
 
-EcxCrystal* EcxCrystal::create(ValueMap& initProperties)
+EcxJmp* EcxJmp::create(ValueMap& initProperties)
 {
-	EcxCrystal* instance = new EcxCrystal(initProperties);
+	EcxJmp* instance = new EcxJmp(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EcxCrystal::EcxCrystal(ValueMap& initProperties) : super(initProperties)
+EcxJmp::EcxJmp(ValueMap& initProperties) : super(initProperties)
 {
-	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EcxCrystal);
+	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EcxJmp);
 	
 	LocalizedString* registerString = (sizeof(void*) == 4)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEcx::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRcx::create();
 
-	this->buildMovString(registerString);
+	this->buildJmpString(registerString);
 
-	this->crystalNode->addChild(this->crystal);
+	this->markerNode->addChild(this->marker);
 }
 
-EcxCrystal::~EcxCrystal()
+EcxJmp::~EcxJmp()
 {
 }
 
-void EcxCrystal::onEnter()
+void EcxJmp::onEnter()
 {
 	super::onEnter();
 }
 
-void EcxCrystal::initializePositions()
+void EcxJmp::initializePositions()
 {
 	super::initializePositions();
 }
 
-void EcxCrystal::updateRegister(int value)
+int EcxJmp::getJumpDestination()
 {
-	RegisterState::setRegisterEcx(value);
+	return RegisterState::getRegisterEcx();
 }
-

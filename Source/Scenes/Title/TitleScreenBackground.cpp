@@ -126,7 +126,8 @@ void TitleScreenBackground::onEnter()
 	});
 
 	pokeSlime->retain();
-
+	
+	this->squally->stopAllActions();
 	this->squally->runAction(RepeatForever::create(
 		Sequence::create(
 			bounceDown,
@@ -152,6 +153,9 @@ void TitleScreenBackground::onEnter()
 			nullptr
 		))
 	);
+
+	this->fog->stopAllActions();
+	this->foregroundFog->stopAllActions();
 
 	this->fog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-92.0f, 0))));
 	this->foregroundFog->runAction(RepeatForever::create(MoveBy::create(2.0f, Vec2(-196.0f, 0))));

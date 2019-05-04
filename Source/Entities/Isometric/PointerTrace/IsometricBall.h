@@ -15,6 +15,7 @@ private:
 	~IsometricBall();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void update(float) override;
 
 	static const float MovementSpeed;

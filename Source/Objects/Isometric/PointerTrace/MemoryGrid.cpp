@@ -34,6 +34,7 @@
 using namespace cocos2d;
 
 const std::string MemoryGrid::MapKeyMemoryGrid = "memory-grid";
+const Color4B MemoryGrid::GridColor = Color4B(0, 0, 0, 255);
 
 MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 {
@@ -108,7 +109,7 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	float totalWidth = float(this->gridWidth) * 128.0f;
 	float totalHeight = float(this->gridHeight) * 128.0f;
 
-	for (int y = 0; y < this->gridWidth; y++)
+	for (int y = 0; y <= this->gridWidth; y++)
 	{
 		int gridIndex = y * this->gridWidth;
 
@@ -116,20 +117,23 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 		Vec2 dest = source + Vec2(totalWidth, totalHeight / 2.0f);
 		Vec2 dropDest = source - Vec2(0.0f, 128.0f);
 
-		this->gridLines->drawSegment(source, dest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
-		this->gridLines->drawSegment(source, dropDest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
+		this->gridLines->drawSegment(source, dest, 3.0f, Color4F(MemoryGrid::GridColor));
+		this->gridLines->drawSegment(source, dropDest, 3.0f, Color4F(MemoryGrid::GridColor));
 	}
+
+	Vec2 source = this->gridIndexToRelativePosition(0) - Vec2(128.0f, 0.0f);
 
 	for (int x = 0; x <= this->gridWidth; x++)
 	{
 		int gridIndex = x;
 
-		Vec2 source = this->gridIndexToRelativePosition(gridIndex) - Vec2(128.0f, 0.0f);
 		Vec2 dest = source + Vec2(totalWidth, - totalHeight / 2.0f);
 		Vec2 dropDest = dest - Vec2(0.0f, 128.0f);
 
-		this->gridLines->drawSegment(source, dest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
-		this->gridLines->drawSegment(dest, dropDest, 3.0f, Color4F(Color4B(0, 0, 0, 196)));
+		this->gridLines->drawSegment(source, dest, 3.0f, Color4F(MemoryGrid::GridColor));
+		this->gridLines->drawSegment(dest, dropDest, 3.0f, Color4F(MemoryGrid::GridColor));
+
+		source += Vec2(128.0f, 64.0f);
 	}
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
@@ -194,6 +198,13 @@ void MemoryGrid::onEnter()
 
 	// This is a shitty hack to ensure the grid has a Z index below all isometric objects
 	this->setLocalZOrder(-123456789);
+}
+
+void MemoryGrid::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->positionRegisterMarkers();
 }
 
 void MemoryGrid::initializePositions()

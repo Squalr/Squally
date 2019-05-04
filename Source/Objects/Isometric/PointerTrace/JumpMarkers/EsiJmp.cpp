@@ -1,4 +1,4 @@
-#include "EsiCrystal.h"
+#include "EsiJmp.h"
 
 #include "cocos/2d/CCAction.h"
 #include "cocos/2d/CCActionEase.h"
@@ -15,45 +15,45 @@
 
 using namespace cocos2d;
 
-const std::string EsiCrystal::MapKeyEsiCrystal = "esi-crystal";
+const std::string EsiJmp::MapKeyEsiJmp = "esi-jmp";
 
-EsiCrystal* EsiCrystal::create(ValueMap& initProperties)
+EsiJmp* EsiJmp::create(ValueMap& initProperties)
 {
-	EsiCrystal* instance = new EsiCrystal(initProperties);
+	EsiJmp* instance = new EsiJmp(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EsiCrystal::EsiCrystal(ValueMap& initProperties) : super(initProperties)
+EsiJmp::EsiJmp(ValueMap& initProperties) : super(initProperties)
 {
-	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EsiCrystal);
+	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EsiJmp);
 	
 	LocalizedString* registerString = (sizeof(void*) == 4)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEsi::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRsi::create();
 
-	this->buildMovString(registerString);
+	this->buildJmpString(registerString);
 
-	this->crystalNode->addChild(this->crystal);
+	this->markerNode->addChild(this->marker);
 }
 
-EsiCrystal::~EsiCrystal()
+EsiJmp::~EsiJmp()
 {
 }
 
-void EsiCrystal::onEnter()
+void EsiJmp::onEnter()
 {
 	super::onEnter();
 }
 
-void EsiCrystal::initializePositions()
+void EsiJmp::initializePositions()
 {
 	super::initializePositions();
 }
 
-void EsiCrystal::updateRegister(int value)
+int EsiJmp::getJumpDestination()
 {
-	RegisterState::setRegisterEsi(value);
+	return RegisterState::getRegisterEsi();
 }

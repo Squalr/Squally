@@ -10,6 +10,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -79,6 +80,8 @@ void RegisterCrystal::onEnter()
 			nullptr
 		)
 	));
+	
+	this->scheduleUpdate();
 }
 
 void RegisterCrystal::initializePositions()
@@ -107,6 +110,20 @@ void RegisterCrystal::initializeListeners()
 			}
 		}
 	));
+}
+
+void RegisterCrystal::update(float dt)
+{
+	super::update(dt);
+
+	if (Input::isPressed(EventKeyboard::KeyCode::KEY_TAB) || Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	{
+		this->assemblyLabel->setOpacity(0);
+	}
+	else
+	{
+		this->assemblyLabel->setOpacity(255);
+	}
 }
 
 void RegisterCrystal::buildMovString(LocalizedString* registerString)
