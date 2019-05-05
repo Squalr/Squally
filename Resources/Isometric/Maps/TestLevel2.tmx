@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="69" nextobjectid="36">
+<map version="1.0" tiledversion="1.0.3" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" nextobjectid="36">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="TileMap.png" width="4096" height="3584"/>
  </tileset>
- <objectgroup id="1" name="Music">
+ <objectgroup name="Music">
   <properties>
    <property name="music" value="Music/ISeeYou.mp3"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
- <objectgroup id="20" name="RegisterState">
+ <objectgroup name="RegisterState">
   <properties>
    <property name="eax" type="int" value="101"/>
    <property name="ebp" type="int" value="15"/>
@@ -22,7 +22,7 @@
    <property name="type" value="register-state"/>
   </properties>
  </objectgroup>
- <layer id="65" name="Level 0" width="40" height="40">
+ <layer name="Level 0" width="40" height="40">
   <properties>
    <property name="objectify" type="bool" value="false"/>
    <property name="type" value="tilemap"/>
@@ -70,7 +70,7 @@
 68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68,68
 </data>
  </layer>
- <layer id="66" name="Level 1" width="40" height="40">
+ <layer name="Level 1" width="40" height="40">
   <properties>
    <property name="objectify" type="bool" value="false"/>
    <property name="type" value="tilemap"/>
@@ -118,31 +118,31 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70,70
 </data>
  </layer>
- <objectgroup id="19" name="Grid">
+ <objectgroup name="Grid">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="24" name="memory-grid" type="iso_object" x="1280" y="1279.54" width="2048" height="2048"/>
  </objectgroup>
- <objectgroup id="3" name="Entities">
+ <objectgroup name="Entities">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="18" name="ball" type="iso_entity" x="2683.16" y="2813.16" width="128" height="128"/>
  </objectgroup>
- <objectgroup id="4" name="Objects">
+ <objectgroup name="Objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="27" name="camera-focus" type="object" x="2248" y="2256" width="128" height="128">
    <properties>
-    <property name="zoom" type="float" value="2.1499999999999999"/>
+    <property name="zoom" type="float" value="2.15"/>
    </properties>
   </object>
   <object id="23" name="exit-crystal" type="iso_object" x="2562.84" y="2310.84" width="128" height="128"/>
   <object id="29" name="edx-crystal" type="iso_object" x="2170.23" y="2812.97" width="128" height="128">
    <properties>
-    <property name="value" type="int" value="93"/>
+    <property name="value" type="int" value="77"/>
    </properties>
   </object>
   <object id="30" name="edx-jmp" type="iso_object" x="1666" y="2176" width="128" height="128">
@@ -164,7 +164,7 @@
    </properties>
   </object>
  </objectgroup>
- <layer id="67" name="Level 2" width="40" height="40">
+ <layer name="Level 2" width="40" height="40">
   <properties>
    <property name="objectify" type="bool" value="true"/>
    <property name="type" value="tilemap"/>
@@ -212,7 +212,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="68" name="Collision" width="40" height="40" visible="0">
+ <layer name="Collision" width="40" height="40">
   <properties>
    <property name="type" value="collision"/>
   </properties>

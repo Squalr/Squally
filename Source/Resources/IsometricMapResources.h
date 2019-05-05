@@ -11,6 +11,7 @@ namespace IsometricMapResources
 	extern const std::string SquallyHome;
 	extern const std::string TestLevel;
 	extern const std::string TestLevel2;
+	extern const std::string TestLevel3;
 	extern const std::string TheDarkWeb;
 	extern const std::string TheInternet;
 	extern const std::string TileMap;
