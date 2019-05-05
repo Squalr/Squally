@@ -177,6 +177,8 @@ void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestM
 
 	int sourceIndex = args.gridEntity->getGridIndex();
 
+	RegisterState::setRegisterEip(sourceIndex);
+
 	if (this->collisionMap.find(sourceIndex) != this->collisionMap.end() || this->segfaultMap.find(sourceIndex) != this->segfaultMap.end())
 	{
 		args.gridEntity->lockMovement();
@@ -186,8 +188,12 @@ void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestM
 
 	args.gridEntity->unlockMovement();
 	args.gridEntity->uninterruptMovement();
-	
-	// this->moveGridEntity(args);
+
+	PointerTraceEvents::TriggerEntityMoved(PointerTraceEvents::PointerTraceEntityMovedArgs(
+		this->memoryGrid,
+		args.gridEntity,
+		args
+	));
 }
 
 void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args)

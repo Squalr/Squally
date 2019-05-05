@@ -59,7 +59,7 @@ PointerTraceLevelSelect::PointerTraceLevelSelect()
 
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel, Vec2(48.0f, -48.0f)));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel2));
-	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel2));
+	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel3));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel2));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel2));
 	endianForestSegment->pushLevel(LevelNode::create(IsometricMapResources::TestLevel2));

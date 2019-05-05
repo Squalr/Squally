@@ -323,8 +323,8 @@ Vec2 LevelSegment::calculateMapNodePosition(float progress)
 	};
 
 	const float realMax = 2561.0f;
-
-	progress = 1.0f - MathUtils::clamp(progress, 0.0f, 1.0f);
+	
+	progress = MathUtils::clamp(progress, 0.0f, 1.0f);
 
 	int trailIndex = MathUtils::clamp(int(std::round(progress * float(trailPoints.size() - 1))), 0, trailPoints.size() - 1);
 
