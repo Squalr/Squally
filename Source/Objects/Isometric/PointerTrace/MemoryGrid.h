@@ -17,8 +17,6 @@ class MemoryGrid : public HackableObject
 public:
 	static MemoryGrid* create(const cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyMemoryGrid;
-
 	int getMaxIndex();
 	int getGridWidth();
 	int getGridHeight();
@@ -26,6 +24,8 @@ public:
 	cocos2d::Vec2 gridIndexToRelativePosition(int gridIndex);
 	int worldCoordsToGridIndex(cocos2d::Vec2 worldCoordinates);
 	cocos2d::Vec2 gridIndexToWorldPosition(int gridIndex);
+
+	static const std::string MapKeyMemoryGrid;
 
 protected:
 	MemoryGrid(const cocos2d::ValueMap& properties);

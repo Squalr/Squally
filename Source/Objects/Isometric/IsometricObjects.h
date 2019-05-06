@@ -17,6 +17,7 @@
 #include "Objects/Isometric/PointerTrace/JumpMarkers/EsiPtrJmp.h"
 #include "Objects/Isometric/PointerTrace/JumpMarkers/EbpPtrJmp.h"
 #include "Objects/Isometric/PointerTrace/JumpMarkers/EspPtrJmp.h"
+#include "Objects/Isometric/PointerTrace/LevelNode.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
 #include "Objects/Isometric/PointerTrace/RegisterCrystals/EaxCrystal.h"
 #include "Objects/Isometric/PointerTrace/RegisterCrystals/EbxCrystal.h"

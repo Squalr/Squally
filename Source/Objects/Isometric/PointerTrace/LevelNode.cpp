@@ -1,24 +1,31 @@
 #include "LevelNode.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Resources/UIResources.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Events/NavigationEvents.h"
 
 using namespace cocos2d;
 
-LevelNode* LevelNode::create(std::string mapFile, Vec2 positionOffset)
+const std::string LevelNode::MapKeyLevelNode = "level-node";
+const std::string LevelNode::MapKeyMapFile = "map-file";
+const std::string LevelNode::MapKeyIndex = "index";
+
+LevelNode* LevelNode::create(const cocos2d::ValueMap& properties)
 {
-	LevelNode* instance = new LevelNode(mapFile, positionOffset);
+	LevelNode* instance = new LevelNode(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LevelNode::LevelNode(std::string mapFile, Vec2 positionOffset)
+LevelNode::LevelNode(const cocos2d::ValueMap& properties) : super(properties)
 {
-	this->nodeMapFile = mapFile;
-	this->positionOffset = positionOffset;
+	this->nodeMapFile = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyMapFile, Value("")).asString();
 	this->mapSprite = ClickableNode::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 
 	this->setAnchorPoint(Vec2(0.0f, 0.0f));
@@ -28,11 +35,6 @@ LevelNode::LevelNode(std::string mapFile, Vec2 positionOffset)
 
 LevelNode::~LevelNode()
 {
-}
-
-Vec2 LevelNode::getPositionOffset()
-{
-	return this->positionOffset;
 }
 
 void LevelNode::setLocked(bool newLocked)
@@ -65,10 +67,8 @@ void LevelNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->mapSprite->setMouseClickCallback(CC_CALLBACK_0(LevelNode::onNodeClick, this));
-}
-
-void LevelNode::onNodeClick()
-{
-	NavigationEvents::navigatePointerTraceMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile));
+	this->mapSprite->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		NavigationEvents::navigatePointerTraceMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile));
+	});
 }
