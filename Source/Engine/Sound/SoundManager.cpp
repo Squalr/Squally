@@ -56,8 +56,6 @@ void SoundManager::onEnter()
 void SoundManager::update(float dt)
 {
 	super::update(dt);
-	
-	return;
 
 	// We Need To Change Tracks
 	if (this->currentMusicResource != this->nextMusicResource)
@@ -130,16 +128,12 @@ void SoundManager::update(float dt)
 
 void SoundManager::playMusicResource(std::string musicResource)
 {
-	return;
-
 	SoundManager* instance = SoundManager::getInstance();
 	instance->nextMusicResource = musicResource;
 }
 
 void SoundManager::playSoundResource(std::string soundResource, float volumeMultiplier)
 {
-	return;
-
 	float volume = MathUtils::clamp(volumeMultiplier * SoundManager::getInstance()->getSoundVolume(), 0.0f, SoundManager::getInstance()->getSoundVolume());
 
 	AudioEngine::play2d(soundResource, false, volume);
