@@ -69,6 +69,38 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = ExitCrystal::create(properties);
 		}
+		else if (name == EaxInitializer::MapKeyEaxInitializer)
+		{
+			newObject = EaxInitializer::create(properties);
+		}
+		else if (name == EbxInitializer::MapKeyEbxInitializer)
+		{
+			newObject = EbxInitializer::create(properties);
+		}
+		else if (name == EcxInitializer::MapKeyEcxInitializer)
+		{
+			newObject = EcxInitializer::create(properties);
+		}
+		else if (name == EdxInitializer::MapKeyEdxInitializer)
+		{
+			newObject = EdxInitializer::create(properties);
+		}
+		else if (name == EdiInitializer::MapKeyEdiInitializer)
+		{
+			newObject = EdiInitializer::create(properties);
+		}
+		else if (name == EsiInitializer::MapKeyEsiInitializer)
+		{
+			newObject = EsiInitializer::create(properties);
+		}
+		else if (name == EbpInitializer::MapKeyEbpInitializer)
+		{
+			newObject = EbpInitializer::create(properties);
+		}
+		else if (name == EspInitializer::MapKeyEspInitializer)
+		{
+			newObject = EspInitializer::create(properties);
+		}
 		else if (name == EaxCrystal::MapKeyEaxCrystal)
 		{
 			newObject = EaxCrystal::create(properties);

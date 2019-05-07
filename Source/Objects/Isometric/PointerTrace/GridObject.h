@@ -6,7 +6,7 @@ class GridObject : public HackableObject
 {
 public:
 	int getGridIndex();
-	void setGridIndex(int gridIndex);
+	virtual void setGridIndex(int gridIndex);
 
 protected:
 	GridObject(const cocos2d::ValueMap& properties);
