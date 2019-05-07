@@ -10,6 +10,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Title/TitleScreenBackground.h"
@@ -162,6 +163,11 @@ void TitleScreen::onEnter()
 	const float duration = firstRun ? 0.75f : 0.25f;
 
 	firstRun = false;
+
+	if (!Steam::isSquallySteamBuild())
+	{
+		this->storyModeButton->disableInteraction();
+	}
 
 	GameUtils::fadeInObject(this->ether, delay, duration);
 	GameUtils::fadeInObject(this->etherParticles, delay, duration);
