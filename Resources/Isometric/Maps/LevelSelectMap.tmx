@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="320" height="320" tilewidth="256" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="58">
+<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="320" height="320" tilewidth="256" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="59">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="TileMap.png" width="4096" height="3584"/>
  </tileset>
@@ -715,68 +715,79 @@
   </object>
   <object id="47" name="level-node" type="iso_object" x="19966.9" y="38909.5" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="0"/>
-    <property name="map-file" value="EndianForest/Map1"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="0"/>
+    <property name="map-file" value="EndianForest/Map0"/>
    </properties>
   </object>
   <object id="48" name="level-node" type="iso_object" x="20477.9" y="38528" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="1"/>
-    <property name="map-file" value="EndianForest/Map2"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="1"/>
+    <property name="map-file" value="EndianForest/Map1"/>
    </properties>
   </object>
   <object id="49" name="level-node" type="iso_object" x="21122.5" y="38527.9" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="2"/>
-    <property name="map-file" value="EndianForest/Map3"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="2"/>
+    <property name="map-file" value="EndianForest/Map2"/>
    </properties>
   </object>
   <object id="50" name="level-node" type="iso_object" x="20738" y="38014.4" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="3"/>
-    <property name="map-file" value="EndianForest/Map4"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="3"/>
+    <property name="map-file" value="EndianForest/Map3"/>
    </properties>
   </object>
-  <object id="51" name="level-node" type="iso_object" x="20595.7" y="37497.7" width="128" height="128">
+  <object id="51" name="level-node" type="iso_object" x="20868.2" y="37505.2" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="5"/>
-    <property name="map-file" value="EndianForest/Map6"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="5"/>
+    <property name="map-file" value="EndianForest/Map5"/>
    </properties>
   </object>
   <object id="53" name="level-node" type="iso_object" x="19968.4" y="37883.8" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="4"/>
-    <property name="map-file" value="EndianForest/Map5"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="4"/>
+    <property name="map-file" value="EndianForest/Map4"/>
    </properties>
   </object>
-  <object id="54" name="level-node" type="iso_object" x="21120.2" y="37756.4" width="128" height="128">
+  <object id="54" name="level-node" type="iso_object" x="21120.2" y="37116.4" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="6"/>
-    <property name="map-file" value="EndianForest/Map7"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="6"/>
+    <property name="map-file" value="EndianForest/Map6"/>
    </properties>
   </object>
   <object id="55" name="level-node" type="iso_object" x="20856.7" y="36614.7" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="7"/>
-    <property name="map-file" value="EndianForest/Map8"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="7"/>
+    <property name="map-file" value="EndianForest/Map7"/>
    </properties>
   </object>
   <object id="56" name="level-node" type="iso_object" x="21755" y="36221.2" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="8"/>
-    <property name="map-file" value="EndianForest/Map9"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="8"/>
+    <property name="map-file" value="EndianForest/Map8"/>
    </properties>
   </object>
   <object id="57" name="level-node" type="iso_object" x="20862.7" y="35967.2" width="128" height="128">
    <properties>
-    <property name="index" type="int" value="9"/>
-    <property name="map-file" value="EndianForest/Map10"/>
+    <property name="group-index" type="int" value="0"/>
+    <property name="is-group-finale" type="bool" value="true"/>
+    <property name="level-index" type="int" value="9"/>
+    <property name="map-file" value="EndianForest/Map9"/>
    </properties>
   </object>
  </objectgroup>
  <layer id="75" name="Level 2" width="320" height="320">
   <properties>
-   <property name="objectify" type="bool" value="false"/>
+   <property name="objectify" type="bool" value="true"/>
    <property name="type" value="tilemap"/>
   </properties>
   <data encoding="csv">
@@ -1103,6 +1114,10 @@
 </data>
  </layer>
  <layer id="76" name="Level 3" width="320" height="320">
+  <properties>
+   <property name="objectify" type="bool" value="true"/>
+   <property name="type" value="tilemap"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

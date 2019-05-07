@@ -36,6 +36,7 @@ private:
 	void openSegfaultMenu();
 	void openVictoryMenu();
 
+	std::function<void()> onLevelClearCallback;
 	std::set<int> collisionMap;
 	std::set<int> segfaultMap;
 	MemoryGrid* memoryGrid;

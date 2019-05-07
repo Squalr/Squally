@@ -47,6 +47,7 @@ void PointerTraceMap::registerGlobalScene()
 
 PointerTraceMap::PointerTraceMap() : super(false)
 {
+	this->onLevelClearCallback = nullptr;
 	this->collisionMap = std::set<int>();
 	this->segfaultMap = std::set<int>();
 	this->memoryGrid = nullptr;
@@ -101,11 +102,14 @@ void PointerTraceMap::initializeListeners()
 
 	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePointerTraceMap, [=](EventCustom* eventCustom)
 	{
-		NavigationEvents::NavigateMapArgs* args = static_cast<NavigationEvents::NavigateMapArgs*>(eventCustom->getUserData());
+		NavigationEvents::NavigatePointerTraceMapArgs* args = static_cast<NavigationEvents::NavigatePointerTraceMapArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
 			this->loadMap(args->mapResource);
+
+			this->onLevelClearCallback = args->onLevelClearCallback;
+			this->segfaultMenu->setRetryParams(args->mapResource, args->onLevelClearCallback);
 
 			GlobalDirector::loadScene(this);
 		}
@@ -113,6 +117,11 @@ void PointerTraceMap::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventVictory, [=](EventCustom* eventCustom)
 	{
+		if (this->onLevelClearCallback != nullptr)
+		{
+			this->onLevelClearCallback();
+		}
+		
 		this->openVictoryMenu();
 	}));
 
@@ -159,8 +168,6 @@ void PointerTraceMap::onDeveloperModeDisable()
 void PointerTraceMap::loadMap(std::string mapResource)
 {
 	super::loadMap(mapResource);
-
-	this->segfaultMenu->setMapResource(mapResource);
 }
 
 void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestMovementArgs args)

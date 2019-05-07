@@ -85,10 +85,10 @@ void SegfaultMenu::initializeListeners()
 	this->leaveButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { NavigationEvents::navigateTitle(); } );
 }
 
-void SegfaultMenu::setMapResource(std::string mapResource)
+void SegfaultMenu::setRetryParams(std::string mapResource, std::function<void()> onLevelClearCallback)
 {
 	this->retryButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		NavigationEvents::navigatePointerTraceMap(mapResource);
+		NavigationEvents::navigatePointerTraceMap(NavigationEvents::NavigatePointerTraceMapArgs(mapResource, onLevelClearCallback));
 	});
 }

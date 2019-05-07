@@ -11,11 +11,7 @@ public:
 
 	static const std::string MapKeyCameraScrollTracker;
 	static const std::string MapKeyZoom;
-	static const std::string MapKeyScrollBoundsX;
-	static const std::string MapKeyScrollBoundsY;
-	static const std::string MapKeyScrollSpeedX;
-	static const std::string MapKeyScrollSpeedY;
-	static const std::string MapKeyScrollType;
+	static const std::string MapKeyScrollSpeed;
 
 private:
 	typedef SerializableObject super;
