@@ -18,11 +18,7 @@ using namespace cocos2d;
 
 const std::string CameraScrollTracker::MapKeyCameraScrollTracker = "camera-scroll-tracker";
 const std::string CameraScrollTracker::MapKeyZoom = "zoom";
-const std::string CameraScrollTracker::MapKeyScrollBoundsX = "scroll-bounds-x";
-const std::string CameraScrollTracker::MapKeyScrollBoundsY = "scroll-bounds-y";
-const std::string CameraScrollTracker::MapKeyScrollSpeedX = "scroll-speed-x";
-const std::string CameraScrollTracker::MapKeyScrollSpeedY = "scroll-speed-y";
-const std::string CameraScrollTracker::MapKeyScrollType = "scroll-type";
+const std::string CameraScrollTracker::MapKeyScrollSpeed = "scroll-speed";
 const float CameraScrollTracker::ScrollSpeed = -64.0f;
 
 CameraScrollTracker* CameraScrollTracker::create(ValueMap& initProperties)
@@ -108,9 +104,11 @@ void CameraScrollTracker::initializeListeners()
 
 void CameraScrollTracker::scrollBy(float delta)
 {
+	static const Vec2 TEMPFIX = Vec2(640.0f, 512.0f);
+
 	float totalDistance = this->dest.distance(this->source);
 	Vec2 unit = (source - dest) / totalDistance;
 
 	this->scrollDistance = MathUtils::clamp(this->scrollDistance + delta, 0.0f, totalDistance);
-	this->trackTarget->setPosition(this->source + unit * this->scrollDistance);
+	this->trackTarget->setPosition(this->source + TEMPFIX + unit * this->scrollDistance);
 }

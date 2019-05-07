@@ -59,7 +59,7 @@ void NavigationEvents::navigateCombatMap(NavigateMapArgs args)
 	);
 }
 
-void NavigationEvents::navigatePointerTraceMap(NavigateMapArgs args)
+void NavigationEvents::navigatePointerTraceMap(NavigatePointerTraceMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::EventNavigatePointerTraceMap,

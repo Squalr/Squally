@@ -68,6 +68,14 @@ public:
 		NavigateMapArgs(std::string mapResource) : mapResource(mapResource) { }
 	};
 
+	struct NavigatePointerTraceMapArgs
+	{
+		std::string mapResource;
+		std::function<void()> onLevelClearCallback;
+
+		NavigatePointerTraceMapArgs(std::string mapResource, std::function<void()> onLevelClearCallback) : mapResource(mapResource), onLevelClearCallback(onLevelClearCallback) { }
+	};
+
 	struct NavigateHexusOpponentSelectArgs
 	{
 		enum class Chapter
@@ -119,7 +127,7 @@ public:
 	static void navigateTitle();
 	static void navigatePlatformerMap(NavigateMapArgs args);
 	static void navigateCombatMap(NavigateMapArgs args);
-	static void navigatePointerTraceMap(NavigateMapArgs args);
+	static void navigatePointerTraceMap(NavigatePointerTraceMapArgs args);
 	static void navigateSaveSelect();
 	static void navigateMinigames();
 	static void navigateOptions();
