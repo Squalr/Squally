@@ -34,14 +34,7 @@ CameraScrollTracker::CameraScrollTracker(ValueMap& initProperties) : Serializabl
 {
 	this->zoom = GameUtils::getKeyOrDefault(initProperties, CameraScrollTracker::MapKeyZoom, Value(1.0f)).asFloat();
 	this->trackTarget = Node::create();
-	this->hud = Hud::create();
 	this->scrollDistance = 0.0f;
-
-	Sprite* debug = Sprite::create(HexusResources::Menus_WoodBackground);
-
-	debug->setScale(20.0f);
-
-	this->hud->addChild(debug);
 
 	if (this->polylinePoints.size() >= 2)
 	{
@@ -54,10 +47,7 @@ CameraScrollTracker::CameraScrollTracker(ValueMap& initProperties) : Serializabl
 		this->dest = Vec2::ZERO;
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	this->addChild(this->trackTarget);
-	this->addChild(this->hud);
 }
 
 CameraScrollTracker::~CameraScrollTracker()

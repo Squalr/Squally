@@ -13,6 +13,7 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -28,6 +29,7 @@
 #include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricObjectResources.h"
+#include "Resources/MusicResources.h"
 
 using namespace cocos2d;
 
@@ -71,6 +73,8 @@ PointerTraceMap::~PointerTraceMap()
 void PointerTraceMap::onEnter()
 {
 	super::onEnter();
+
+	SoundManager::playMusicResource(MusicResources::PointerTrace);
 
 	this->segfaultMenu->setVisible(false);
 	this->victoryMenu->setVisible(false);
@@ -121,7 +125,7 @@ void PointerTraceMap::initializeListeners()
 		{
 			this->onLevelClearCallback();
 		}
-		
+
 		this->openVictoryMenu();
 	}));
 
