@@ -57,15 +57,16 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 
 RegisterCrystal::~RegisterCrystal()
 {
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void RegisterCrystal::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 
+	this->crystalContainerNode->stopAllActions();
 	this->crystalContainerNode->runAction(RepeatForever::create(
 		Sequence::create(
 			EaseSineInOut::create(MoveTo::create(4.0f, Vec2(0.0f, 128.0f))),
@@ -73,6 +74,7 @@ void RegisterCrystal::onEnter()
 			nullptr
 		)
 	));
+	this->shadow->stopAllActions();
 	this->shadow->runAction(RepeatForever::create(
 		Sequence::create(
 			ScaleTo::create(4.0f, 0.75f),
