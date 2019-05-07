@@ -45,6 +45,11 @@ CameraFocus::~CameraFocus()
 void CameraFocus::onEnter()
 {
 	super::onEnter();
+}
+
+void CameraFocus::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
 
 	CameraTrackingData::CameraScrollType scrollTypeValue = CameraTrackingData::CameraScrollType::Rectangle;
 
@@ -56,7 +61,7 @@ void CameraFocus::onEnter()
 	CameraTrackingData trackingData = CameraTrackingData(
 		this,
 		this->scrollBounds,
-		CameraTrackingData::CameraScrollType::Rectangle,
+		scrollTypeValue,
 		this->scrollSpeed,
 		Vec2::ZERO,
 		this->zoom

@@ -49,6 +49,7 @@ namespace IsometricObjectResources
 	extern const std::string PointerTrace_Crystals_ExitCrystal;
 	extern const std::string PointerTrace_Crystals_Selector;
 	extern const std::string PointerTrace_Crystals_Shadow;
+	extern const std::string PointerTrace_Diamond;
 	extern const std::string PointerTrace_GrayWater_GrayWater0;
 	extern const std::string PointerTrace_GrayWater_GrayWater1;
 	extern const std::string PointerTrace_GrayWater_GrayWater2;

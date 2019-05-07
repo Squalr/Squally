@@ -44,7 +44,7 @@ SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* initT
 		{
 			for (int x = 0; x < this->tileLayer->getLayerSize().width; x++)
 			{
-				for (int y = 0; y < this->tileLayer->getLayerSize().width; y++)
+				for (int y = 0; y < this->tileLayer->getLayerSize().height; y++)
 				{
 					Sprite* tile = this->tileLayer->getTileAt(Vec2(x, y));
 

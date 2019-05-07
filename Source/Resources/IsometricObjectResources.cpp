@@ -48,6 +48,7 @@ const std::string IsometricObjectResources::PointerTrace_Crystals_EspPtrJmp = "I
 const std::string IsometricObjectResources::PointerTrace_Crystals_ExitCrystal = "Isometric/Objects/PointerTrace/Crystals/ExitCrystal.png";
 const std::string IsometricObjectResources::PointerTrace_Crystals_Selector = "Isometric/Objects/PointerTrace/Crystals/Selector.png";
 const std::string IsometricObjectResources::PointerTrace_Crystals_Shadow = "Isometric/Objects/PointerTrace/Crystals/Shadow.png";
+const std::string IsometricObjectResources::PointerTrace_Diamond = "Isometric/Objects/PointerTrace/Diamond.png";
 const std::string IsometricObjectResources::PointerTrace_GrayWater_GrayWater0 = "Isometric/Objects/PointerTrace/GrayWater/GrayWater0.png";
 const std::string IsometricObjectResources::PointerTrace_GrayWater_GrayWater1 = "Isometric/Objects/PointerTrace/GrayWater/GrayWater1.png";
 const std::string IsometricObjectResources::PointerTrace_GrayWater_GrayWater2 = "Isometric/Objects/PointerTrace/GrayWater/GrayWater2.png";
