@@ -8,7 +8,7 @@ class ClickableNode;
 class LevelNode : public SmartNode
 {
 public:
-	static LevelNode* create(std::string mapFile, cocos2d::Vec2 positionOffset = cocos2d::Vec2::ZERO);
+	static LevelNode* deserialize(std::string mapFile, cocos2d::Vec2 positionOffset = cocos2d::Vec2::ZERO);
 
 	void setLocked(bool newLocked);
 	bool isLocked();

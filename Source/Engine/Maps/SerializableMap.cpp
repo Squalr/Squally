@@ -123,6 +123,14 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 		deserializedLayerMap[args.layerIndex] = args.serializableLayer;
 	};
 
+	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	bool isIsometric = mapRaw->getMapOrientation() == MapOrientation::Isometric;
+
+	if (isIsometric)
+	{
+		mapSize.width /= 2.0f;
+	}
+
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
@@ -130,8 +138,8 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 			*it,
 			DeserializationEvents::DeserializationMapMeta(
 				mapFileName,
-				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
-				mapRaw->getMapOrientation() == MapOrientation::Isometric
+				mapSize,
+				isIsometric
 			),
 			onDeserializeCallback
 		));

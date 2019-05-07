@@ -49,7 +49,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void beforeSceneChange();
 	void setCameraPositionWorkAround();
 	void setCameraPositionReal(cocos2d::Vec2 position, bool addTrackOffset = false);
 	cocos2d::Vec2 boundCameraByEllipses();

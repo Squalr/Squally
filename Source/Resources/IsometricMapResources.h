@@ -6,6 +6,8 @@
 
 namespace IsometricMapResources
 {
+	extern const std::string EndianForest_Map1;
+	extern const std::string LevelSelectMap;
 	extern const std::string Overworld;
 	extern const std::string Sanctum;
 	extern const std::string SquallyHome;

@@ -57,6 +57,10 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = HexusArcade::create(properties);
 		}
+		else if (name == LevelNode::MapKeyLevelNode)
+		{
+			newObject = LevelNode::create(properties);
+		}
 		else if (name == MemoryGrid::MapKeyMemoryGrid)
 		{
 			newObject = MemoryGrid::create(properties);

@@ -210,7 +210,7 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::CastleValgrind_Castle));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::EndianForest_Forest));
 
 	//// NavigationEvents::navigateSaveSelect();
 }

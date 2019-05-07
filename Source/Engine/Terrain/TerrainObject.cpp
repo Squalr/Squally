@@ -37,29 +37,8 @@ TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData 
 
 	instance->autorelease();
 
-	if (!GameUtils::keyExists(initProperties, SerializableObject::MapKeyPolyLinePoints))
-	{
-		LogUtils::logError("Missing polyline on terrain");
-
-		return instance;
-	}
-
-	ValueVector polygonPointsRaw = initProperties.at(SerializableObject::MapKeyPolyLinePoints).asValueVector();
-	std::vector<Vec2> polygonPoints;
-
-	for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
-	{
-		auto point = it->asValueMap();
-
-		float deltaX = point.at(SerializableObject::MapKeyXPosition).asFloat();
-		float deltaY = point.at(SerializableObject::MapKeyYPosition).asFloat();
-
-		// Negate the Y since we're operating in a different coordinate system
-		polygonPoints.push_back(Vec2(deltaX, -deltaY));
-	}
-
 	// Build the terrain from the parsed points
-	instance->setPoints(polygonPoints);
+	instance->setPoints(instance->polylinePoints);
 	instance->rebuildTerrain();
 
 	return instance;
