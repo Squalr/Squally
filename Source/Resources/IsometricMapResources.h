@@ -10,6 +10,14 @@ namespace IsometricMapResources
 	extern const std::string DaemonsHallow_Map0;
 	extern const std::string EndianForest_Map0;
 	extern const std::string EndianForest_Map1;
+	extern const std::string EndianForest_Map2;
+	extern const std::string EndianForest_Map3;
+	extern const std::string EndianForest_Map4;
+	extern const std::string EndianForest_Map5;
+	extern const std::string EndianForest_Map6;
+	extern const std::string EndianForest_Map7;
+	extern const std::string EndianForest_Map8;
+	extern const std::string EndianForest_Map9;
 	extern const std::string LevelSelectMap;
 	extern const std::string Overworld;
 	extern const std::string Sanctum;
