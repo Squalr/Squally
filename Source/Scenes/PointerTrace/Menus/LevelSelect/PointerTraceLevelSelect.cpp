@@ -52,6 +52,8 @@ void PointerTraceLevelSelect::onEnter()
 {
 	super::onEnter();
 
+	SoundManager::playMusicResource(MusicResources::PointerTrace);
+
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 	Size visibleSize = Director::getInstance()->getVisibleSize();
