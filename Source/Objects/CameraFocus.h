@@ -20,10 +20,11 @@ private:
 	CameraFocus(cocos2d::ValueMap& initProperties);
 	~CameraFocus();
 
+	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
+
 	float zoom;
 	cocos2d::Vec2 scrollBounds;
 	cocos2d::Vec2 scrollSpeed;
 	std::string scrollType;
-
-	void onEnter() override;
 };

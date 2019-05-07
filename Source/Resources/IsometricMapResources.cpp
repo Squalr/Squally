@@ -5,6 +5,8 @@
 #include "IsometricMapResources.h"
 #include <string>
 
+const std::string IsometricMapResources::EndianForest_Map1 = "Isometric/Maps/EndianForest/Map1.tmx";
+const std::string IsometricMapResources::LevelSelectMap = "Isometric/Maps/LevelSelectMap.tmx";
 const std::string IsometricMapResources::Overworld = "Isometric/Maps/Overworld.tmx";
 const std::string IsometricMapResources::Sanctum = "Isometric/Maps/Sanctum.tmx";
 const std::string IsometricMapResources::SquallyHome = "Isometric/Maps/SquallyHome.tmx";

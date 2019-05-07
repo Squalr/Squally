@@ -71,6 +71,7 @@ protected:
 	virtual void onObjectStateLoaded();
 
 	cocos2d::ValueMap properties;
+	std::vector<cocos2d::Vec2> polylinePoints;
 
 private:
 	typedef SmartNode super;
