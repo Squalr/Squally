@@ -1,5 +1,4 @@
 #pragma once
-#include "Objects/Platformer/CameraFocus.h"
 #include "Objects/Platformer/Collectables/Animals/Animals.h"
 #include "Objects/Platformer/Collectables/Chest.h"
 #include "Objects/Platformer/Collectables/Doubloon/Doubloon.h"

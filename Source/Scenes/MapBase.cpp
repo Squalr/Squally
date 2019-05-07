@@ -81,6 +81,11 @@ void MapBase::onEnter()
 	this->pauseMenu->setVisible(false);
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false);
+
+	if (this->map != nullptr)
+	{
+		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	}
 }
 
 void MapBase::onEnterTransitionDidFinish()

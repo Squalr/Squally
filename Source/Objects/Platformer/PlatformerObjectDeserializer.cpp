@@ -52,11 +52,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newObject = nullptr;
 
-		if (name == CameraFocus::MapKeyCameraFocus)
-		{
-			newObject = CameraFocus::create(properties);
-		}
-		else if (name == CombatSpawn::MapKeyCombatSpawn)
+		if (name == CombatSpawn::MapKeyCombatSpawn)
 		{
 			newObject = CombatSpawn::create(properties);
 		}

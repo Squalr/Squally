@@ -16,6 +16,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/AlgoUtils.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 #include "Strings/Debugging/CameraX.h"
@@ -117,17 +118,13 @@ void GameCamera::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
+	this->addEventListenerIgnorePause(EventListenerCustom::create(
 		SceneEvents::BeforeSceneChangeEvent,
-		CC_CALLBACK_0(GameCamera::beforeSceneChange, this)
-	);
-
-	this->addEventListenerIgnorePause(beforeSceneChangeListener);
-}
-
-void GameCamera::beforeSceneChange()
-{
-	this->clearTargets();
+		[=](EventCustom* eventCustom)
+		{
+			this->clearTargets();
+		}
+	));
 }
 
 void GameCamera::update(float dt)
@@ -339,7 +336,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 			return cameraPosition;
 		}
 
-		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
 
 		// Handle camera scrolling from target traveling past scroll distance
 		if (cameraPosition.x < targetPosition.x - trackingData.scrollOffset.x)

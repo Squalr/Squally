@@ -18,6 +18,7 @@
 #include "Events/NavigationEvents.h"
 
 #include "Resources/IsometricMapResources.h"
+#include "Resources/IsometricMapResources.h"
 #include "Resources/MusicResources.h"
 #include "Resources/PointerTraceResources.h"
 #include "Resources/UIResources.h"
@@ -54,6 +55,11 @@ void PointerTraceLevelSelect::onEnter()
 	const float delay = 0.5f;
 	const float duration = 0.75f;
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	if (this->map == nullptr)
+	{
+		this->loadMap(IsometricMapResources::LevelSelectMap);
+	}
 }
 
 void PointerTraceLevelSelect::initializePositions()

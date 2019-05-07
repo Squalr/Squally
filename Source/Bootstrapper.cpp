@@ -8,6 +8,7 @@
 #include "Menus/MinigamesMenu.h"
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
+#include "Objects/GenericObjectDeserializer.h"
 #include "Objects/Isometric/IsometricDecorDeserializer.h"
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
@@ -130,6 +131,7 @@ void Bootstrapper::initialize()
 	IsometricDecorDeserializer::registerGlobalNode();
 
 	// Object deserializers
+	GenericObjectDeserializer::registerGlobalNode();
 	PlatformerObjectDeserializer::registerGlobalNode();
 	IsometricObjectDeserializer::registerGlobalNode();
 

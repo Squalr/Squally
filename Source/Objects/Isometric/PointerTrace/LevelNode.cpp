@@ -28,6 +28,11 @@ LevelNode::LevelNode(const cocos2d::ValueMap& properties) : super(properties)
 	this->nodeMapFile = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyMapFile, Value("")).asString();
 	this->mapSprite = ClickableNode::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 
+	if (this->nodeMapFile != "")
+	{
+		this->nodeMapFile = "Isometric/Maps/" + this->nodeMapFile + ".tmx";
+	}
+
 	this->setAnchorPoint(Vec2(0.0f, 0.0f));
 
 	this->addChild(this->mapSprite);

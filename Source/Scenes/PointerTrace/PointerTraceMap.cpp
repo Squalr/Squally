@@ -79,11 +79,6 @@ void PointerTraceMap::onEnter()
 		this->memoryGrid = memoryGrid;
 	}));
 
-	if (this->map != nullptr)
-	{
-		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
-	}
-
 	this->buildCollisionMaps();
 	this->initializeGridObjects();
 
