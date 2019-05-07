@@ -59,6 +59,7 @@ const std::string IsometricObjectResources::PointerTrace_Lava_RedWater1 = "Isome
 const std::string IsometricObjectResources::PointerTrace_Lava_RedWater2 = "Isometric/Objects/PointerTrace/Lava/RedWater2.png";
 const std::string IsometricObjectResources::PointerTrace_Lava_RedWater3 = "Isometric/Objects/PointerTrace/Lava/RedWater3.png";
 const std::string IsometricObjectResources::PointerTrace_Lava_RedWater4 = "Isometric/Objects/PointerTrace/Lava/RedWater4.png";
+const std::string IsometricObjectResources::PointerTrace_MapNode = "Isometric/Objects/PointerTrace/MapNode.png";
 const std::string IsometricObjectResources::PointerTrace_Runes_JmpEax = "Isometric/Objects/PointerTrace/Runes/JmpEax.png";
 const std::string IsometricObjectResources::PointerTrace_Runes_JmpEdi = "Isometric/Objects/PointerTrace/Runes/JmpEdi.png";
 const std::string IsometricObjectResources::PointerTrace_Selector = "Isometric/Objects/PointerTrace/Selector.png";

@@ -20,7 +20,7 @@
 
 #include "Strings/PointerTrace/Segfault.h"
 #include "Strings/Menus/Retry.h"
-#include "Strings/Menus/Leave.h"
+#include "Strings/Menus/QuitToTitle.h"
 
 using namespace cocos2d;
 
@@ -43,21 +43,21 @@ SegfaultMenu::SegfaultMenu()
 
 	this->retryButton = ClickableTextNode::create(retryLabel, retryLabelHover, Sprite::create(UIResources::Menus_Buttons_GenericButton), Sprite::create(UIResources::Menus_Buttons_GenericButtonHover));
 
-	LocalizedLabel*	leaveLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
-	LocalizedLabel*	leaveLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
+	LocalizedLabel*	quitToTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_QuitToTitle::create());
+	LocalizedLabel*	quitToTitleLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_QuitToTitle::create());
 
-	this->leaveButton = ClickableTextNode::create(leaveLabel, leaveLabelHover, Sprite::create(UIResources::Menus_Buttons_GenericButton), Sprite::create(UIResources::Menus_Buttons_GenericButtonHover));
+	this->quitToTitleButton = ClickableTextNode::create(quitToTitleLabel, quitToTitleLabelHover, Sprite::create(UIResources::Menus_Buttons_GenericButton), Sprite::create(UIResources::Menus_Buttons_GenericButtonHover));
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 2);
 	retryLabel->enableOutline(Color4B::BLACK, 2);
 	retryLabelHover->enableOutline(Color4B::BLACK, 2);
-	leaveLabel->enableOutline(Color4B::BLACK, 2);
-	leaveLabelHover->enableOutline(Color4B::BLACK, 2);
+	quitToTitleLabel->enableOutline(Color4B::BLACK, 2);
+	quitToTitleLabelHover->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->segfaultMenu);
 	this->addChild(this->titleLabel);
 	this->addChild(this->retryButton);
-	this->addChild(this->leaveButton);
+	this->addChild(this->quitToTitleButton);
 }
 
 void SegfaultMenu::onEnter()
@@ -74,7 +74,7 @@ void SegfaultMenu::initializePositions()
 	super::initializePositions();
 
 	this->titleLabel->setPositionY(224.0f);
-	this->leaveButton->setPositionY(-48.0f + -64.0f);
+	this->quitToTitleButton->setPositionY(-48.0f + -64.0f);
 	this->retryButton->setPositionY(-48.0f + 64.0f);
 }
 
@@ -82,7 +82,7 @@ void SegfaultMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->leaveButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { NavigationEvents::navigateTitle(); } );
+	this->quitToTitleButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { NavigationEvents::navigateTitle(); } );
 }
 
 void SegfaultMenu::setRetryParams(std::string mapResource, std::function<void()> onLevelClearCallback)

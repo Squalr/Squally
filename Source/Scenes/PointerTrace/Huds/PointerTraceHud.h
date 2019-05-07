@@ -5,6 +5,7 @@
 namespace cocos2d
 {
 	class LayerColor;
+	class Sprite;
 }
 
 class ConstantString;
@@ -49,4 +50,6 @@ private:
 
 	LocalizedLabel* addressHintLabel;
 	LocalizedLabel* valueHintLabel;
+
+	cocos2d::Sprite* movementHelp;
 };

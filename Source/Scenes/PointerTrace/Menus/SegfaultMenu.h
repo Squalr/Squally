@@ -31,5 +31,5 @@ private:
 	cocos2d::Sprite* segfaultMenu;
 	LocalizedLabel* titleLabel;
 	ClickableTextNode* retryButton;
-	ClickableTextNode* leaveButton;
+	ClickableTextNode* quitToTitleButton;
 };

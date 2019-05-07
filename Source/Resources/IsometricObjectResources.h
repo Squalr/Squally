@@ -60,6 +60,7 @@ namespace IsometricObjectResources
 	extern const std::string PointerTrace_Lava_RedWater2;
 	extern const std::string PointerTrace_Lava_RedWater3;
 	extern const std::string PointerTrace_Lava_RedWater4;
+	extern const std::string PointerTrace_MapNode;
 	extern const std::string PointerTrace_Runes_JmpEax;
 	extern const std::string PointerTrace_Runes_JmpEdi;
 	extern const std::string PointerTrace_Selector;
