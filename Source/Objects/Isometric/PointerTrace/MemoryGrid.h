@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class ClickableNode;
+class ConstantString;
 class LocalizedLabel;
 class RegisterMarker;
 
@@ -43,7 +44,9 @@ private:
 	void positionRegisterMarkers();
 
 	std::vector<ClickableNode*> gridHitBoxes;
-	std::vector<LocalizedLabel*> values;
+	std::vector<int> values;
+	std::vector<ConstantString*> valueStrings;
+	std::vector<LocalizedLabel*> valueLabels;
 	std::vector<LocalizedLabel*> addresses;
 
 	cocos2d::DrawNode* gridLines;

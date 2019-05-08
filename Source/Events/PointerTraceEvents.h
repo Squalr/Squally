@@ -14,6 +14,8 @@ public:
 	static const std::string EventEntityMoved;
 	static const std::string EventRequestMovement;
 	static const std::string EventResumeMovement;
+	static const std::string EventWriteValue;
+	static const std::string EventReadValue;
 	static const std::string EventUpdateRegister;
 
 	struct PointerTraceRequestMovementArgs
@@ -45,9 +47,27 @@ public:
 			: memoryGrid(memoryGrid), gridEntity(gridEntity), innerArgs(innerArgs) { } 
 	};
 
+	struct PointerTraceWriteArgs
+	{
+		int address;
+		int value;
+
+		PointerTraceWriteArgs(int address, int value) : address(address), value(value) { }
+	};
+
+	struct PointerTraceReadArgs
+	{
+		int address;
+		std::function<void(int)> onReadCallback;
+
+		PointerTraceReadArgs(int address, std::function<void(int)> onReadCallback) : address(address), onReadCallback(onReadCallback) { }
+	};
+
 	static void TriggerVictory();
 	static void TriggerEntityMoved(PointerTraceEntityMovedArgs args);
 	static void TriggerRequestMovement(PointerTraceRequestMovementArgs args);
 	static void TriggerResumeMovement(PointerTraceRequestMovementArgs args);
+	static void TriggerWriteValue(PointerTraceWriteArgs args);
+	static void TriggerReadValue(PointerTraceReadArgs args);
 	static void TriggerRegisterUpdated();
 };

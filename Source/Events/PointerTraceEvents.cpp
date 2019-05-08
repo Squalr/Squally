@@ -9,6 +9,8 @@ const std::string PointerTraceEvents::EventVictory = "EVENT_PTRACE_VICTORY";
 const std::string PointerTraceEvents::EventEntityMoved = "EVENT_PTRACE_ENTITY_MOVED";
 const std::string PointerTraceEvents::EventRequestMovement = "EVENT_PTRACE_REQUEST_MOVEMENT";
 const std::string PointerTraceEvents::EventResumeMovement = "EVENT_PTRACE_RESUME_MOVEMENT";
+const std::string PointerTraceEvents::EventWriteValue = "EVENT_PTRACE_WRITE_VALUE";
+const std::string PointerTraceEvents::EventReadValue = "EVENT_PTRACE_READ_VALUE";
 const std::string PointerTraceEvents::EventUpdateRegister = "EVENT_PTRACE_UPDATE_REGISTER";
 
 void PointerTraceEvents::TriggerVictory()
@@ -38,6 +40,22 @@ void PointerTraceEvents::TriggerResumeMovement(PointerTraceRequestMovementArgs a
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PointerTraceEvents::EventResumeMovement,
+		&args
+	);
+}
+
+void PointerTraceEvents::TriggerWriteValue(PointerTraceWriteArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PointerTraceEvents::EventWriteValue,
+		&args
+	);
+}
+
+void PointerTraceEvents::TriggerReadValue(PointerTraceReadArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PointerTraceEvents::EventReadValue,
 		&args
 	);
 }

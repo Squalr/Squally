@@ -279,8 +279,8 @@ int RegisterCrystal::runInstruction()
 void RegisterCrystal::updateMemory(int writeValue)
 {
 	int address = this->getRegisterValue() + this->getOffset();
-	
-	// TODO: Write [address] = this->getValue();
+
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(address, writeValue));
 }
 
 int RegisterCrystal::getValue()

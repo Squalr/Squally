@@ -48,7 +48,9 @@ MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 {
 	this->addresses = std::vector<LocalizedLabel*>();
-	this->values = std::vector<LocalizedLabel*>();
+	this->values= std::vector<int>();
+	this->valueStrings = std::vector<ConstantString*>();
+	this->valueLabels = std::vector<LocalizedLabel*>();
 	this->gridHitBoxes = std::vector<ClickableNode*>();
 	this->gridLines = DrawNode::create();
 	this->eaxMarker = RegisterMarkerEax::create();
@@ -87,10 +89,10 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 		{
 			int gridIndex = y + x * this->gridWidth;
 			std::string indexString = std::to_string(gridIndex);
-			std::string valueString = std::to_string(0);
 
 			LocalizedLabel* indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, ConstantString::create(indexString));
-			LocalizedLabel* valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, ConstantString::create(valueString));
+			ConstantString* valueString = ConstantString::create(std::to_string(0));
+			LocalizedLabel* valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, valueString);
 			ClickableNode* gridHitBox = ClickableNode::create();
 
 			indexLabel->setTextColor(Color4B(224, 224, 224, 255));
@@ -101,7 +103,9 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 			gridHitBox->setContentSize(Size(128.0f, 64.0f));
 			
 			this->addresses.push_back(indexLabel);
-			this->values.push_back(valueLabel);
+			this->values.push_back(0);
+			this->valueStrings.push_back(valueString);
+			this->valueLabels.push_back(valueLabel);
 			this->gridHitBoxes.push_back(gridHitBox);
 		}	
 	}
@@ -141,7 +145,7 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 		this->labelsNode->addChild(*it);
 	}
 
-	for (auto it = this->values.begin(); it != this->values.end(); it++)
+	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 	{
 		this->labelsNode->addChild(*it);
 	}
@@ -172,7 +176,7 @@ MemoryGrid::~MemoryGrid()
 		ObjectEvents::TriggerUnbindObject(*it);
 	}
 
-	for (auto it = this->values.begin(); it != this->values.end(); it++)
+	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 	{
 		ObjectEvents::TriggerUnbindObject(*it);
 	}
@@ -190,7 +194,7 @@ void MemoryGrid::onEnter()
 		(*it)->setOpacity(0);
 	}
 
-	for (auto it = this->values.begin(); it != this->values.end(); it++)
+	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 	{
 		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
@@ -219,7 +223,7 @@ void MemoryGrid::initializePositions()
 
 		(*it)->setPosition(realCoords + Vec2(0.0f, 48.0f));
 		this->gridHitBoxes[index]->setPosition(realCoords);
-		this->values[index]->setPosition(realCoords - Vec2(0.0f, 16.0f));
+		this->valueLabels[index]->setPosition(realCoords - Vec2(0.0f, 16.0f));
 	}
 }
 
@@ -236,7 +240,7 @@ void MemoryGrid::initializeListeners()
 			this->selector->setPosition((*it)->getPosition());
 			this->selector->setOpacity(255);
 
-			this->values[index]->setOpacity(255);
+			this->valueLabels[index]->setOpacity(255);
 			this->addresses[index]->setOpacity(255);
 		});
 
@@ -249,7 +253,7 @@ void MemoryGrid::initializeListeners()
 
 			if (!this->isValueFocused)
 			{
-				this->values[index]->setOpacity(0);
+				this->valueLabels[index]->setOpacity(0);
 			}
 		});
 
@@ -258,6 +262,37 @@ void MemoryGrid::initializeListeners()
 			return GameUtils::intersectsIsometric(*it, mousePos);
 		});
 	}
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventWriteValue, [=](EventCustom* eventCustom)
+	{
+		PointerTraceEvents::PointerTraceWriteArgs* args = static_cast<PointerTraceEvents::PointerTraceWriteArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			if (args->address > 0 && args->address < this->values.size())
+			{
+				this->values[args->address] = args->value;
+
+				this->valueStrings[args->address]->setString(std::to_string(args->value));
+			}
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventReadValue, [=](EventCustom* eventCustom)
+	{
+		PointerTraceEvents::PointerTraceReadArgs* args = static_cast<PointerTraceEvents::PointerTraceReadArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			if (args->address > 0 && args->address < this->values.size())
+			{
+				if (args->onReadCallback != nullptr)
+				{
+					args->onReadCallback(this->values[args->address]);
+				}
+			}
+		}
+	}));
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventUpdateRegister, [=](EventCustom* eventCustom)
 	{
@@ -283,7 +318,7 @@ void MemoryGrid::update(float dt)
 	{
 		this->isValueFocused = true;
 
-		for (auto it = this->values.begin(); it != this->values.end(); it++)
+		for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 		{
 			(*it)->setOpacity(255);
 		}
@@ -305,7 +340,7 @@ void MemoryGrid::update(float dt)
 	{
 		this->isValueFocused = false;
 		
-		for (auto it = this->values.begin(); it != this->values.end(); it++)
+		for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 		{
 			(*it)->setOpacity(0);
 		}

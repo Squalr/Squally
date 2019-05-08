@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="558">
+<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="559">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="../TileMap.png" width="4096" height="3584"/>
  </tileset>
@@ -138,6 +138,7 @@
   <object id="46" name="esp" type="iso_object" x="1281.39" y="2296.83" width="128" height="128"/>
   <object id="47" name="eax" type="iso_object" x="1281.41" y="3200.1" width="128" height="128"/>
   <object id="48" name="ebp" type="iso_object" x="1284.78" y="2415.01" width="128" height="128"/>
+  <object id="558" name="value-27" type="iso_object" x="1795.4" y="2173.24" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="78" name="Reference" visible="0">
   <object id="302" name="0" x="1279.83" y="3195.72" width="128" height="128"/>
