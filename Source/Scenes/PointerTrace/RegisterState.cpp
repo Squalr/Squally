@@ -4,124 +4,131 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/SmartNode.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Events/PointerTraceEvents.h"
 
 using namespace cocos2d;
 
-int RegisterState::registerEax = 0;
-int RegisterState::registerEbx = 0;
-int RegisterState::registerEcx = 0;
-int RegisterState::registerEdx = 0;
-int RegisterState::registerEdi = 0;
-int RegisterState::registerEsi = 0;
-int RegisterState::registerEbp = 0;
-int RegisterState::registerEsp = 0;
-int RegisterState::registerEip = 0;
+int RegisterState::RegisterEax = 0;
+int RegisterState::RegisterEbx = 0;
+int RegisterState::RegisterEcx = 0;
+int RegisterState::RegisterEdx = 0;
+int RegisterState::RegisterEdi = 0;
+int RegisterState::RegisterEsi = 0;
+int RegisterState::RegisterEbp = 0;
+int RegisterState::RegisterEsp = 0;
+int RegisterState::RegisterEip = 0;
+int RegisterState::RegisterMax = 0;
 
 int RegisterState::getRegisterEax()
 {
-	return RegisterState::registerEax;
+	return RegisterState::RegisterEax;
 }
 
 void RegisterState::setRegisterEax(int value)
 {
-	RegisterState::registerEax = value;
+	RegisterState::RegisterEax = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEbx()
 {
-	return RegisterState::registerEbx;
+	return RegisterState::RegisterEbx;
 }
 
 void RegisterState::setRegisterEbx(int value)
 {
-	RegisterState::registerEbx = value;
+	RegisterState::RegisterEbx = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEcx()
 {
-	return RegisterState::registerEcx;
+	return RegisterState::RegisterEcx;
 }
 
 void RegisterState::setRegisterEcx(int value)
 {
-	RegisterState::registerEcx = value;
+	RegisterState::RegisterEcx = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEdx()
 {
-	return RegisterState::registerEdx;
+	return RegisterState::RegisterEdx;
 }
 
 void RegisterState::setRegisterEdx(int value)
 {
-	RegisterState::registerEdx = value;
+	RegisterState::RegisterEdx = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEdi()
 {
-	return RegisterState::registerEdi;
+	return RegisterState::RegisterEdi;
 }
 
 void RegisterState::setRegisterEdi(int value)
 {
-	RegisterState::registerEdi = value;
+	RegisterState::RegisterEdi = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEsi()
 {
-	return RegisterState::registerEsi;
+	return RegisterState::RegisterEsi;
 }
 
 void RegisterState::setRegisterEsi(int value)
 {
-	RegisterState::registerEsi = value;
+	RegisterState::RegisterEsi = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEbp()
 {
-	return RegisterState::registerEbp;
+	return RegisterState::RegisterEbp;
 }
 
 void RegisterState::setRegisterEbp(int value)
 {
-	RegisterState::registerEbp = value;
+	RegisterState::RegisterEbp = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEsp()
 {
-	return RegisterState::registerEsp;
+	return RegisterState::RegisterEsp;
 }
 
 void RegisterState::setRegisterEsp(int value)
 {
-	RegisterState::registerEsp = value;
+	RegisterState::RegisterEsp = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
 }
 
 int RegisterState::getRegisterEip()
 {
-	return RegisterState::registerEip;
+	return RegisterState::RegisterEip;
 }
 
 void RegisterState::setRegisterEip(int value)
 {
-	RegisterState::registerEip = value;
+	RegisterState::RegisterEip = MathUtils::wrappingNormalize(value, 0, RegisterState::RegisterMax);
 
 	PointerTraceEvents::TriggerRegisterUpdated();
+}
+
+void RegisterState::setRegisterMax(int registerMax)
+{
+	RegisterState::RegisterMax = registerMax;
 }

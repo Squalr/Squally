@@ -210,6 +210,8 @@ void MemoryGrid::onEnter()
 		(*it)->setOpacity(0);
 	}
 
+	RegisterState::setRegisterMax(this->values.size() - 1);
+
 	// This is a shitty hack to ensure the grid has a Z index below all isometric objects
 	this->setLocalZOrder(-123456789);
 }

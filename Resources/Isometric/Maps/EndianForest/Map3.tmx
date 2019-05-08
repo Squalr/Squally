@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="534">
+<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="535">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="../TileMap.png" width="4096" height="3584"/>
  </tileset>
@@ -134,13 +134,14 @@
   <object id="41" name="ebx" type="iso_object" x="1278.44" y="3069.49" width="128" height="128"/>
   <object id="42" name="ecx" type="iso_object" x="2818.01" y="1538.65" width="128" height="128"/>
   <object id="43" name="edi" type="iso_object" x="1279.87" y="2678.93" width="128" height="128"/>
-  <object id="44" name="edx" type="iso_object" x="1278.41" y="2810.23" width="128" height="128"/>
+  <object id="44" name="edx" type="iso_object" x="2696.65" y="1409.53" width="128" height="128"/>
   <object id="45" name="esi" type="iso_object" x="1287.08" y="2545.85" width="128" height="128"/>
   <object id="46" name="esp" type="iso_object" x="1281.39" y="2296.83" width="128" height="128"/>
   <object id="47" name="eax" type="iso_object" x="1921.28" y="2300.68" width="128" height="128"/>
   <object id="48" name="ebp" type="iso_object" x="1284.78" y="2415.01" width="128" height="128"/>
   <object id="532" name="eax-jmp" type="iso_object" x="1916.37" y="1531.69" width="128" height="128"/>
   <object id="533" name="ecx-jmp" type="iso_object" x="1536.06" y="1919.22" width="128" height="128"/>
+  <object id="534" name="edx-jmp" type="iso_object" x="2702.61" y="1930.46" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="78" name="Reference" visible="0">
   <object id="50" name="0" x="1278.49" y="3196.75" width="128" height="128"/>
@@ -421,7 +422,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,109,0,0,0,0,
 0,0,0,0,0,0,96,0,0,0,0,0,0,0,0,0,112,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,80,0,0,0,0,0,
-0,0,0,0,0,109,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,109,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,108,0,0,0,
 0,0,0,0,80,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,96,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -468,7 +469,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

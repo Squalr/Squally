@@ -21,15 +21,17 @@ public:
 	static void setRegisterEsp(int value);
 	static int getRegisterEip();
 	static void setRegisterEip(int value);
+	static void setRegisterMax(int registerMax);
 
 private:
-	static int registerEax;
-	static int registerEbx;
-	static int registerEcx;
-	static int registerEdx;
-	static int registerEdi;
-	static int registerEsi;
-	static int registerEbp;
-	static int registerEsp;
-	static int registerEip;
+	static int RegisterEax;
+	static int RegisterEbx;
+	static int RegisterEcx;
+	static int RegisterEdx;
+	static int RegisterEdi;
+	static int RegisterEsi;
+	static int RegisterEbp;
+	static int RegisterEsp;
+	static int RegisterEip;
+	static int RegisterMax;
 };
