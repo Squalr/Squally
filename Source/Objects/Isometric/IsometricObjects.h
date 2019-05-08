@@ -35,3 +35,4 @@
 #include "Objects/Isometric/PointerTrace/RegisterInitializers/EsiInitializer.h"
 #include "Objects/Isometric/PointerTrace/RegisterInitializers/EbpInitializer.h"
 #include "Objects/Isometric/PointerTrace/RegisterInitializers/EspInitializer.h"
+#include "Objects/Isometric/PointerTrace/ValueInitializer.h"

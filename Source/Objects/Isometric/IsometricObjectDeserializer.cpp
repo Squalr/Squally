@@ -5,6 +5,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Objects/Isometric/IsometricObjects.h"
 
 using namespace cocos2d;
@@ -50,7 +51,7 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 	if (args->typeName == IsometricObjectDeserializer::KeyTypeIsometricObject)
 	{
 		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::MapKeyName).asString();
+		const std::string name = GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyName, Value("")).asString();
 		SerializableObject* newObject = nullptr;
 
 		if (name == HexusArcade::MapKeyHexusArcade)
@@ -196,6 +197,10 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		else if (name == EspPtrJmp::MapKeyEspPtrJmp)
 		{
 			newObject = EspPtrJmp::create(properties);
+		}
+		else if (StrUtils::startsWith(name, ValueInitializer::MapKeyValueInitializerPrefix, false))
+		{
+			newObject = ValueInitializer::create(properties);
 		}
 		else
 		{

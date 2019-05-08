@@ -6,6 +6,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Events/PointerTraceEvents.h"
 #include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricObjectResources.h"
@@ -55,5 +56,13 @@ void EdiPtrJmp::initializePositions()
 
 int EdiPtrJmp::getJumpDestination()
 {
-	return RegisterState::getRegisterEdi();
+	int destination = 0;
+	int address = RegisterState::getRegisterEdi() + this->getOffset();
+
+	PointerTraceEvents::TriggerReadValue(PointerTraceEvents::PointerTraceReadArgs(address, [&](int readValue)
+	{
+		destination = readValue;
+	}));
+
+	return destination;
 }

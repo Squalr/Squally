@@ -6,6 +6,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Events/PointerTraceEvents.h"
 #include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricObjectResources.h"
@@ -55,5 +56,13 @@ void EaxPtrJmp::initializePositions()
 
 int EaxPtrJmp::getJumpDestination()
 {
-	return RegisterState::getRegisterEax();
+	int destination = 0;
+	int address = RegisterState::getRegisterEax() + this->getOffset();
+
+	PointerTraceEvents::TriggerReadValue(PointerTraceEvents::PointerTraceReadArgs(address, [&](int readValue)
+	{
+		destination = readValue;
+	}));
+
+	return destination;
 }
