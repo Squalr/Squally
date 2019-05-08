@@ -93,7 +93,10 @@ WorldMap::WorldMap()
 	this->lightning9 = Lightning::create();
 	this->lightning10 = Lightning::create();
 
-	this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
+	if (this->background != nullptr)
+	{
+		this->background->setAnchorPoint(Vec2(0.0f, 0.0f));
+	}
 
 	this->addChild(this->background);
 	this->addChild(this->forest);
@@ -105,8 +108,11 @@ WorldMap::WorldMap()
 	this->addChild(this->crypts);
 	this->addChild(this->voidStar);
 	this->addChild(this->voidCrystalNode);
-	this->voidCrystalNode->addChild(this->voidCrystal);
-	this->voidCrystalNode->addChild(this->lightningSphere);
+	if (this->voidCrystalNode != nullptr)
+	{
+		this->voidCrystalNode->addChild(this->voidCrystal);
+		this->voidCrystalNode->addChild(this->lightningSphere);
+	}
 	this->addChild(this->lightning1);
 	this->addChild(this->lightning2);
 	this->addChild(this->lightning3);
