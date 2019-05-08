@@ -34,7 +34,7 @@ EsiCrystal::EsiCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEsi::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRsi::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -56,4 +56,9 @@ void EsiCrystal::initializePositions()
 void EsiCrystal::updateRegister(int value)
 {
 	RegisterState::setRegisterEsi(value);
+}
+
+int EsiCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEsi();
 }

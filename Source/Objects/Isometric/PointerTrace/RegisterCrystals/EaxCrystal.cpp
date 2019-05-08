@@ -34,7 +34,7 @@ EaxCrystal::EaxCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEax::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRax::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -56,4 +56,9 @@ void EaxCrystal::initializePositions()
 void EaxCrystal::updateRegister(int value)
 {
 	RegisterState::setRegisterEax(value);
+}
+
+int EaxCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEax();
 }

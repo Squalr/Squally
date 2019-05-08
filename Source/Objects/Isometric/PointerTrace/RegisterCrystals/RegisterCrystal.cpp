@@ -19,16 +19,22 @@
 #include "Resources/IsometricObjectResources.h"
 
 #include "Strings/Generics/Constant.h"
+#include "Strings/PointerTrace/Assembly/Add.h"
+#include "Strings/PointerTrace/Assembly/Dec.h"
+#include "Strings/PointerTrace/Assembly/Inc.h"
 #include "Strings/PointerTrace/Assembly/Mov.h"
 #include "Strings/PointerTrace/Assembly/OffsetNegative.h"
 #include "Strings/PointerTrace/Assembly/OffsetPositive.h"
 #include "Strings/PointerTrace/Assembly/Ptr.h"
+#include "Strings/PointerTrace/Assembly/Sub.h"
 
 #include "Resources/IsometricObjectResources.h"
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
+const std::string RegisterCrystal::MapKeyRegisterInstruction = "instruction";
+const std::string RegisterCrystal::MapKeyRegisterIsPointer = "is-pointer";
 const std::string RegisterCrystal::MapKeyRegisterValue = "value";
 const std::string RegisterCrystal::MapKeyRegisterOffset = "offset";
 
@@ -43,6 +49,8 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 
 	this->setZSorted(true);
 
+	this->instruction = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterInstruction, Value("mov")).asString();
+	this->isPointer = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterIsPointer, Value(false)).asBool();
 	this->value = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
 	this->offset = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
 
@@ -66,7 +74,6 @@ void RegisterCrystal::onEnter()
 
 	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 
-	this->crystalContainerNode->stopAllActions();
 	this->crystalContainerNode->runAction(RepeatForever::create(
 		Sequence::create(
 			EaseSineInOut::create(MoveTo::create(4.0f, Vec2(0.0f, 128.0f))),
@@ -74,7 +81,7 @@ void RegisterCrystal::onEnter()
 			nullptr
 		)
 	));
-	this->shadow->stopAllActions();
+	
 	this->shadow->runAction(RepeatForever::create(
 		Sequence::create(
 			ScaleTo::create(4.0f, 0.75f),
@@ -108,7 +115,15 @@ void RegisterCrystal::initializeListeners()
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
 				this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
-				this->updateRegister(this->getValue());
+
+				if (this->isPointer)
+				{
+					this->updateMemory(this->runInstruction());
+				}
+				else
+				{
+					this->updateRegister(this->runInstruction());
+				}
 			}
 		}
 	));
@@ -128,32 +143,92 @@ void RegisterCrystal::update(float dt)
 	}
 }
 
-void RegisterCrystal::buildMovString(LocalizedString* registerString)
+void RegisterCrystal::buildString(LocalizedString* registerString)
 {
-	LocalizedString* movString = Strings::PointerTrace_Assembly_Mov::create();
-	ConstantString* valueString = ConstantString::create(std::to_string(this->getValue()));
-	
-	// Note: there are no offsets for pure register movs, so if one is set, it is simply ignored
-	movString->setStringReplacementVariables({ registerString, valueString });
-
-	this->assemblyString->setStringReplacementVariables(movString);
+	if (this->instruction == "add")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Add::create(), true);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Add::create(), true);
+		}
+	}
+	else if (this->instruction == "sub")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Sub::create(), true);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Sub::create(), true);
+		}
+	}
+	else if (this->instruction == "inc")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Inc::create(), false);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Inc::create(), false);
+		}
+	}
+	else if (this->instruction == "dec")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Dec::create(), false);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Dec::create(), false);
+		}
+	}
+	else // if (this->instruction == "mov")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Mov::create(), true);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Mov::create(), true);
+		}
+	}
 }
 
-void RegisterCrystal::buildMovPtrString(LocalizedString* registerString)
+void RegisterCrystal::buildInstructionString(LocalizedString* registerString, LocalizedString* instructionString, bool bindValue)
 {
-	LocalizedString* movString = Strings::PointerTrace_Assembly_Mov::create();
 	ConstantString* valueString = ConstantString::create(std::to_string(this->getValue()));
 	
-	if (this->getOffset() == 0)
+	if (bindValue)
 	{
-		LocalizedString* ptrString = Strings::PointerTrace_Assembly_Ptr::create();
-		
-		ptrString->setStringReplacementVariables(registerString);
-		movString->setStringReplacementVariables({ ptrString, valueString });
+		instructionString->setStringReplacementVariables({ registerString, valueString });
 	}
 	else
 	{
-		LocalizedString* ptrString = Strings::PointerTrace_Assembly_Ptr::create();
+		instructionString->setStringReplacementVariables(registerString);
+	}
+
+	this->assemblyString->setStringReplacementVariables(instructionString);
+}
+
+void RegisterCrystal::buildInstructionPtrString(LocalizedString* registerString, LocalizedString* instructionString, bool bindValue)
+{
+	ConstantString* valueString = ConstantString::create(std::to_string(this->getValue()));
+	LocalizedString* ptrString = Strings::PointerTrace_Assembly_Ptr::create();
+	
+	if (this->getOffset() == 0)
+	{
+		ptrString->setStringReplacementVariables(registerString);
+	}
+	else
+	{
 		LocalizedString* offsetString = (this->getOffset() < 0) 
 			? (LocalizedString*)Strings::PointerTrace_Assembly_OffsetNegative::create()
 			: (LocalizedString*)Strings::PointerTrace_Assembly_OffsetPositive::create();
@@ -161,10 +236,51 @@ void RegisterCrystal::buildMovPtrString(LocalizedString* registerString)
 
 		offsetString->setStringReplacementVariables({ registerString, offsetValueString });
 		ptrString->setStringReplacementVariables(offsetString);
-		movString->setStringReplacementVariables({ ptrString, valueString });
 	}
 
-	this->assemblyString->setStringReplacementVariables(movString);
+	if (bindValue)
+	{
+		instructionString->setStringReplacementVariables({ ptrString, valueString });
+	}
+	else
+	{
+		instructionString->setStringReplacementVariables(ptrString);
+	}
+
+	this->assemblyString->setStringReplacementVariables(instructionString);
+}
+
+int RegisterCrystal::runInstruction()
+{
+	// Note: this does not support multiple registers (ie mov eax, ebx) yet
+
+	if (this->instruction == "add")
+	{
+		return this->getRegisterValue() + this->getValue();
+	}
+	else if (this->instruction == "sub")
+	{
+		return this->getRegisterValue() - this->getValue();
+	}
+	else if (this->instruction == "inc")
+	{
+		return this->getRegisterValue() + 1;
+	}
+	else if (this->instruction == "dec")
+	{
+		return this->getRegisterValue() - 1;
+	}
+	else // if (this->instruction == "mov")
+	{
+		return this->getValue();
+	}
+}
+
+void RegisterCrystal::updateMemory(int writeValue)
+{
+	int address = this->getRegisterValue() + this->getOffset();
+	
+	// TODO: Write [address] = this->getValue();
 }
 
 int RegisterCrystal::getValue()

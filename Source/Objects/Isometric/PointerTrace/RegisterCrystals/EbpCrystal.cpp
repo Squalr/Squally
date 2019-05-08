@@ -34,7 +34,7 @@ EbpCrystal::EbpCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEbp::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRbp::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -58,3 +58,7 @@ void EbpCrystal::updateRegister(int value)
 	RegisterState::setRegisterEbp(value);
 }
 
+int EbpCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEbp();
+}

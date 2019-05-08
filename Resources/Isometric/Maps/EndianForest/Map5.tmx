@@ -123,6 +123,7 @@
   <object id="23" name="exit-crystal" type="iso_object" x="2309.51" y="2166.28" width="128" height="128"/>
   <object id="29" name="eax-crystal" type="iso_object" x="2558.24" y="2940.31" width="128" height="128">
    <properties>
+    <property name="instruction" value="mov"/>
     <property name="value" type="int" value="60"/>
    </properties>
   </object>
@@ -142,6 +143,7 @@
   <object id="559" name="ecx-jmp" type="iso_object" x="2169.94" y="2802.45" width="128" height="128"/>
   <object id="561" name="ebx-crystal" type="iso_object" x="2689.49" y="1662.96" width="128" height="128">
    <properties>
+    <property name="instruction" value="mov"/>
     <property name="value" type="int" value="135"/>
    </properties>
   </object>

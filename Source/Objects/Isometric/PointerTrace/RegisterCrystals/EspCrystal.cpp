@@ -34,7 +34,7 @@ EspCrystal::EspCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEsp::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRsp::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -58,3 +58,7 @@ void EspCrystal::updateRegister(int value)
 	RegisterState::setRegisterEsp(value);
 }
 
+int EspCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEsp();
+}

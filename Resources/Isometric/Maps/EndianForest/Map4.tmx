@@ -123,6 +123,7 @@
   <object id="23" name="exit-crystal" type="iso_object" x="2690.16" y="2817.95" width="128" height="128"/>
   <object id="29" name="ebx-crystal" type="iso_object" x="2435.93" y="2556.07" width="128" height="128">
    <properties>
+    <property name="instruction" value="mov"/>
     <property name="value" type="int" value="93"/>
    </properties>
   </object>

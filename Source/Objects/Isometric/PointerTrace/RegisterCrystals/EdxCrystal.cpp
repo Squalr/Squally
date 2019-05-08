@@ -34,7 +34,7 @@ EdxCrystal::EdxCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEdx::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRdx::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -56,5 +56,10 @@ void EdxCrystal::initializePositions()
 void EdxCrystal::updateRegister(int value)
 {
 	RegisterState::setRegisterEdx(value);
+}
+
+int EdxCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEdx();
 }
 

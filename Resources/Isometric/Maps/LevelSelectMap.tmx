@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="320" height="320" tilewidth="256" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="59">
+<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="320" height="320" tilewidth="256" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="67">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="TileMap.png" width="4096" height="3584"/>
  </tileset>
@@ -714,68 +714,124 @@
     <property name="map-file" value="EndianForest/Map0"/>
    </properties>
   </object>
-  <object id="48" name="level-node" type="iso_object" x="20477.9" y="38528" width="128" height="128">
+  <object id="48" name="level-node" type="iso_object" x="20489.7" y="38787.6" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="1"/>
     <property name="map-file" value="EndianForest/Map1"/>
    </properties>
   </object>
-  <object id="49" name="level-node" type="iso_object" x="21122.5" y="38527.9" width="128" height="128">
+  <object id="49" name="level-node" type="iso_object" x="20874.7" y="38539.7" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="2"/>
     <property name="map-file" value="EndianForest/Map2"/>
    </properties>
   </object>
-  <object id="50" name="level-node" type="iso_object" x="20738" y="38014.4" width="128" height="128">
+  <object id="50" name="level-node" type="iso_object" x="21121.5" y="38256.3" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="3"/>
     <property name="map-file" value="EndianForest/Map3"/>
    </properties>
   </object>
-  <object id="51" name="level-node" type="iso_object" x="20868.2" y="37505.2" width="128" height="128">
+  <object id="51" name="level-node" type="iso_object" x="20346.1" y="38263.3" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="5"/>
     <property name="map-file" value="EndianForest/Map5"/>
    </properties>
   </object>
-  <object id="53" name="level-node" type="iso_object" x="19968.4" y="37883.8" width="128" height="128">
+  <object id="53" name="level-node" type="iso_object" x="20738.3" y="38010.6" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="4"/>
     <property name="map-file" value="EndianForest/Map4"/>
    </properties>
   </object>
-  <object id="54" name="level-node2" type="iso_object" x="21120.2" y="37116.4" width="128" height="128">
+  <object id="54" name="level-node" type="iso_object" x="19981.6" y="37995.5" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="6"/>
     <property name="map-file" value="EndianForest/Map6"/>
    </properties>
   </object>
-  <object id="55" name="level-node2" type="iso_object" x="20856.7" y="36614.7" width="128" height="128">
+  <object id="55" name="level-node" type="iso_object" x="19968.8" y="37502.6" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="7"/>
     <property name="map-file" value="EndianForest/Map7"/>
    </properties>
   </object>
-  <object id="56" name="level-node2" type="iso_object" x="21755" y="36221.2" width="128" height="128">
+  <object id="56" name="level-node" type="iso_object" x="20353.8" y="37752.2" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="8"/>
     <property name="map-file" value="EndianForest/Map8"/>
    </properties>
   </object>
-  <object id="57" name="level-node2" type="iso_object" x="20862.7" y="35967.2" width="128" height="128">
+  <object id="57" name="level-node" type="iso_object" x="20730" y="35592.6" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
     <property name="is-group-finale" type="bool" value="true"/>
+    <property name="level-index" type="int" value="17"/>
+    <property name="map-file" value="EndianForest/Map17"/>
+   </properties>
+  </object>
+  <object id="59" name="level-node" type="iso_object" x="20618.1" y="37501.5" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
     <property name="level-index" type="int" value="9"/>
     <property name="map-file" value="EndianForest/Map9"/>
+   </properties>
+  </object>
+  <object id="60" name="level-node" type="iso_object" x="21119.7" y="37749.3" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="10"/>
+    <property name="map-file" value="EndianForest/Map10"/>
+   </properties>
+  </object>
+  <object id="61" name="level-node" type="iso_object" x="21116.8" y="37126.9" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="11"/>
+    <property name="map-file" value="EndianForest/Map11"/>
+   </properties>
+  </object>
+  <object id="62" name="level-node" type="iso_object" x="20869" y="36607.7" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="12"/>
+    <property name="map-file" value="EndianForest/Map12"/>
+   </properties>
+  </object>
+  <object id="63" name="level-node" type="iso_object" x="21509.1" y="36604.8" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="13"/>
+    <property name="map-file" value="EndianForest/Map13"/>
+   </properties>
+  </object>
+  <object id="64" name="level-node" type="iso_object" x="21742.1" y="36218.4" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="14"/>
+    <property name="map-file" value="EndianForest/Map14"/>
+   </properties>
+  </object>
+  <object id="65" name="level-node" type="iso_object" x="21231.8" y="35961.7" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="15"/>
+    <property name="map-file" value="EndianForest/Map15"/>
+   </properties>
+  </object>
+  <object id="66" name="level-node" type="iso_object" x="20609.4" y="36218.4" width="128" height="128">
+   <properties>
+    <property name="group-index" type="int" value="0"/>
+    <property name="level-index" type="int" value="16"/>
+    <property name="map-file" value="EndianForest/Map16"/>
    </properties>
   </object>
  </objectgroup>

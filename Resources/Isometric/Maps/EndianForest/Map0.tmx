@@ -123,6 +123,7 @@
   <object id="23" name="exit-crystal" type="iso_object" x="2816" y="1536" width="128" height="128"/>
   <object id="29" name="eax-crystal" type="iso_object" x="2432" y="2560" width="128" height="128">
    <properties>
+    <property name="instruction" value="mov"/>
     <property name="value" type="int" value="93"/>
    </properties>
   </object>
