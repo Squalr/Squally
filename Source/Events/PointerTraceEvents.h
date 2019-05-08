@@ -17,6 +17,7 @@ public:
 	static const std::string EventWriteValue;
 	static const std::string EventReadValue;
 	static const std::string EventUpdateRegister;
+	static const std::string EventResetState;
 
 	struct PointerTraceRequestMovementArgs
 	{
@@ -70,4 +71,5 @@ public:
 	static void TriggerWriteValue(PointerTraceWriteArgs args);
 	static void TriggerReadValue(PointerTraceReadArgs args);
 	static void TriggerRegisterUpdated();
+	static void TriggerResetState();
 };

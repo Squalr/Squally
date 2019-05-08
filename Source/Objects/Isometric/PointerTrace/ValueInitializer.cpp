@@ -4,6 +4,7 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Events/PointerTraceEvents.h"
 
 using namespace cocos2d;
 
@@ -35,4 +36,6 @@ ValueInitializer::~ValueInitializer()
 void ValueInitializer::setGridIndex(int gridIndex)
 {
 	super::setGridIndex(gridIndex);
+
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(gridIndex, this->value));
 }

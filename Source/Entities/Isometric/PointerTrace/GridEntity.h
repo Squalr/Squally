@@ -18,7 +18,9 @@ public:
 	void lockMovement();
 	void unlockMovement();
 	bool isMovementLocked();
+	int getInitialGridIndex();
 	int getGridIndex();
+	void setInitialGridIndex(int gridIndex);
 	void setGridIndex(int gridIndex);
 	void runJumpAnimation(cocos2d::Vec2 destPosition, std::function<void()> callback = nullptr);
 
@@ -45,4 +47,5 @@ private:
 	bool movementInterrupted;
 	bool movementLocked;
 	int gridIndex;
+	int initialGridIndex;
 };

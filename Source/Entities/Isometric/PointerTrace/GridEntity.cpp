@@ -24,6 +24,7 @@ GridEntity::GridEntity(cocos2d::ValueMap& initProperties,
 		cocos2d::Size size) : super(initProperties, scmlResource, scale, offset, size)
 {
 	this->gridIndex = 0;
+	this->initialGridIndex = 0;
 	this->movementLocked = false;
 	this->movementInterrupted = false;
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
@@ -75,9 +76,21 @@ bool GridEntity::isMovementLocked()
 	return this->movementLocked;
 }
 
+int GridEntity::getInitialGridIndex()
+{
+	return this->initialGridIndex;
+}
+
 int GridEntity::getGridIndex()
 {
 	return this->gridIndex;
+}
+
+void GridEntity::setInitialGridIndex(int gridIndex)
+{
+	this->initialGridIndex = gridIndex;
+
+	this->setGridIndex(gridIndex);
 }
 
 void GridEntity::setGridIndex(int gridIndex)

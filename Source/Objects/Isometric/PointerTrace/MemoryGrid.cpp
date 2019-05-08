@@ -48,7 +48,8 @@ MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 {
 	this->addresses = std::vector<LocalizedLabel*>();
-	this->values= std::vector<int>();
+	this->values = std::vector<int>();
+	this->initialValues = std::vector<int>();
 	this->valueStrings = std::vector<ConstantString*>();
 	this->valueLabels = std::vector<LocalizedLabel*>();
 	this->gridHitBoxes = std::vector<ClickableNode*>();
@@ -67,6 +68,14 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	this->markers = std::vector<RegisterMarker*>();
 	this->isAddressFocused = false;
 	this->isValueFocused = false;
+	this->initialEax = 0;
+	this->initialEbx = 0;
+	this->initialEcx = 0;
+	this->initialEdx = 0;
+	this->initialEdi = 0;
+	this->initialEsi = 0;
+	this->initialEbp = 0;
+	this->initialEsp = 0;
 
 	this->markers.push_back(this->eaxMarker);
 	this->markers.push_back(this->ebxMarker);
@@ -104,6 +113,7 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 			
 			this->addresses.push_back(indexLabel);
 			this->values.push_back(0);
+			this->initialValues.push_back(0);
 			this->valueStrings.push_back(valueString);
 			this->valueLabels.push_back(valueLabel);
 			this->gridHitBoxes.push_back(gridHitBox);
@@ -349,6 +359,37 @@ void MemoryGrid::update(float dt)
 	}
 }
 
+void MemoryGrid::setInitialState()
+{
+	this->initialValues = this->values;
+	this->initialEax = RegisterState::getRegisterEax();
+	this->initialEbx = RegisterState::getRegisterEbx();
+	this->initialEcx = RegisterState::getRegisterEcx();
+	this->initialEdx = RegisterState::getRegisterEdx();
+	this->initialEdi = RegisterState::getRegisterEdi();
+	this->initialEsi = RegisterState::getRegisterEsi();
+	this->initialEbp = RegisterState::getRegisterEbp();
+	this->initialEsp = RegisterState::getRegisterEsp();
+
+	this->buildValueLabels();
+}
+
+void MemoryGrid::resetState()
+{
+	this->values = this->initialValues;
+
+	RegisterState::setRegisterEax(this->initialEax);
+	RegisterState::setRegisterEbx(this->initialEbx);
+	RegisterState::setRegisterEcx(this->initialEcx);
+	RegisterState::setRegisterEdx(this->initialEdx);
+	RegisterState::setRegisterEdi(this->initialEdi);
+	RegisterState::setRegisterEsi(this->initialEsi);
+	RegisterState::setRegisterEbp(this->initialEbp);
+	RegisterState::setRegisterEsp(this->initialEsp);
+
+	this->buildValueLabels();
+}
+
 int MemoryGrid::relativeCoordsToGridIndex(cocos2d::Vec2 relativeCoordinates)
 {
 	float y = (relativeCoordinates.x - 128.0f + float(this->getGridWidth()) * 128.0f) / 2.0f - relativeCoordinates.y;
@@ -395,6 +436,21 @@ int MemoryGrid::getGridWidth()
 int MemoryGrid::getGridHeight()
 {
 	return this->gridHeight;
+}
+
+void MemoryGrid::buildValueLabels()
+{
+	for (int x = 0; x < this->gridWidth; x++)
+	{
+		for (int y = 0; y < this->gridHeight; y++)
+		{
+			int gridIndex = y + x * this->gridWidth;
+			int value = this->values[gridIndex];
+
+			this->valueStrings[gridIndex]->setString(std::to_string(value));
+			this->valueLabels[gridIndex]->setTextColor(value == 0 ? Color4B::GRAY : Color4B::WHITE);
+		}
+	}
 }
 
 void MemoryGrid::positionRegisterMarkers()
