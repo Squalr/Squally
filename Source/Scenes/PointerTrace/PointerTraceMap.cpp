@@ -24,7 +24,6 @@
 #include "Objects/Isometric/PointerTrace/GridObject.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
 #include "Scenes/PointerTrace/Huds/PointerTraceHud.h"
-#include "Scenes/PointerTrace/Menus/SegfaultMenu.h"
 #include "Scenes/PointerTrace/Menus/VictoryMenu.h"
 #include "Scenes/PointerTrace/RegisterState.h"
 
@@ -55,14 +54,12 @@ PointerTraceMap::PointerTraceMap() : super(false)
 	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
 	this->pointerTraceHud = PointerTraceHud::create();
-	this->segfaultMenu = SegfaultMenu::create();
 	this->victoryMenu = VictoryMenu::create();
 
 	this->collisionDebugNode->setVisible(false);
 
 	this->addChild(this->collisionDebugNode);
 	this->hud->addChild(this->pointerTraceHud);
-	this->menuHud->addChild(this->segfaultMenu);
 	this->menuHud->addChild(this->victoryMenu);
 }
 
@@ -76,7 +73,6 @@ void PointerTraceMap::onEnter()
 
 	SoundManager::playMusicResource(MusicResources::PointerTrace);
 
-	this->segfaultMenu->setVisible(false);
 	this->victoryMenu->setVisible(false);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<MemoryGrid>([=](MemoryGrid* memoryGrid)
@@ -96,7 +92,6 @@ void PointerTraceMap::initializePositions()
 	
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->segfaultMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->victoryMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
@@ -113,10 +108,14 @@ void PointerTraceMap::initializeListeners()
 			this->loadMap(args->mapResource);
 
 			this->onLevelClearCallback = args->onLevelClearCallback;
-			this->segfaultMenu->setRetryParams(args->mapResource, args->onLevelClearCallback);
 
 			GlobalDirector::loadScene(this);
 		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventResetState, [=](EventCustom* eventCustom)
+	{
+		this->resetState();
 	}));
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventVictory, [=](EventCustom* eventCustom)
@@ -188,7 +187,7 @@ void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestM
 	if (this->collisionMap.find(sourceIndex) != this->collisionMap.end() || this->segfaultMap.find(sourceIndex) != this->segfaultMap.end())
 	{
 		args.gridEntity->lockMovement();
-		this->openSegfaultMenu();
+		this->doSegfault();
 		return;
 	}
 
@@ -284,7 +283,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 					MoveBy::create(speed, outOfBoundsMovement),
 					CallFunc::create([=]()
 					{
-						this->openSegfaultMenu();
+						this->doSegfault();
 					}),
 					nullptr
 				)
@@ -336,6 +335,35 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 	}
 }
 
+void PointerTraceMap::resetState()
+{
+	if (this->memoryGrid == nullptr)
+	{
+		return;
+	}
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<GridObject>([=](GridObject* gridObject)
+	{
+		gridObject->setGridIndex(gridObject->getInitialGridIndex());
+		Vec2 respawnPosition = this->memoryGrid->gridIndexToWorldPosition(gridObject->getGridIndex());
+		
+		gridObject->setPosition(respawnPosition);
+	}));
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
+	{
+		gridEntity->setGridIndex(gridEntity->getInitialGridIndex());
+		Vec2 respawnPosition = this->memoryGrid->gridIndexToWorldPosition(gridEntity->getGridIndex());
+
+		gridEntity->unlockMovement();
+		gridEntity->uninterruptMovement();
+		
+		gridEntity->setPosition(respawnPosition);
+	}));
+
+	this->memoryGrid->resetState();
+}
+
 void PointerTraceMap::initializeGridObjects()
 {
 	if (this->memoryGrid == nullptr)
@@ -349,7 +377,7 @@ void PointerTraceMap::initializeGridObjects()
 		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
 		
 		gridObject->setPosition(realignedPosition);
-		gridObject->setGridIndex(gridIndex);
+		gridObject->setInitialGridIndex(gridIndex);
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
@@ -358,8 +386,10 @@ void PointerTraceMap::initializeGridObjects()
 		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
 		
 		gridEntity->setPosition(realignedPosition);
-		gridEntity->setGridIndex(gridIndex);
+		gridEntity->setInitialGridIndex(gridIndex);
 	}));
+
+	this->memoryGrid->setInitialState();
 }
 
 void PointerTraceMap::buildCollisionMaps()
@@ -432,12 +462,9 @@ void PointerTraceMap::buildCollisionMaps()
 	}
 }
 
-void PointerTraceMap::openSegfaultMenu()
+void PointerTraceMap::doSegfault()
 {
-	this->segfaultMenu->setVisible(true);
-	this->menuBackDrop->setOpacity(196);
-
-	GameUtils::focus(this->segfaultMenu);
+	PointerTraceEvents::TriggerResetState();
 }
 
 void PointerTraceMap::openVictoryMenu()

@@ -5,7 +5,9 @@
 class GridObject : public HackableObject
 {
 public:
+	int getInitialGridIndex();
 	int getGridIndex();
+	void setInitialGridIndex(int gridIndex);
 	virtual void setGridIndex(int gridIndex);
 
 protected:
@@ -15,5 +17,6 @@ protected:
 private:
 	typedef HackableObject super;
 
+	int initialGridIndex;
 	int gridIndex;
 };

@@ -18,6 +18,8 @@ class MemoryGrid : public HackableObject
 public:
 	static MemoryGrid* create(const cocos2d::ValueMap& properties);
 
+	void setInitialState();
+	void resetState();
 	int getMaxIndex();
 	int getGridWidth();
 	int getGridHeight();
@@ -42,8 +44,10 @@ private:
 	typedef HackableObject super;
 
 	void positionRegisterMarkers();
+	void buildValueLabels();
 
 	std::vector<ClickableNode*> gridHitBoxes;
+	std::vector<int> initialValues;
 	std::vector<int> values;
 	std::vector<ConstantString*> valueStrings;
 	std::vector<LocalizedLabel*> valueLabels;
@@ -68,6 +72,15 @@ private:
 	bool isAddressFocused;
 	int gridWidth;
 	int gridHeight;
+
+	int initialEax;
+	int initialEbx;
+	int initialEcx;
+	int initialEdx;
+	int initialEdi;
+	int initialEsi;
+	int initialEbp;
+	int initialEsp;
 
 	static const cocos2d::Color4B GridColor;
 };

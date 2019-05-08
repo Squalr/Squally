@@ -12,6 +12,7 @@ const std::string PointerTraceEvents::EventResumeMovement = "EVENT_PTRACE_RESUME
 const std::string PointerTraceEvents::EventWriteValue = "EVENT_PTRACE_WRITE_VALUE";
 const std::string PointerTraceEvents::EventReadValue = "EVENT_PTRACE_READ_VALUE";
 const std::string PointerTraceEvents::EventUpdateRegister = "EVENT_PTRACE_UPDATE_REGISTER";
+const std::string PointerTraceEvents::EventResetState = "EVENT_PTRACE_RESET_STATE";
 
 void PointerTraceEvents::TriggerVictory()
 {
@@ -64,5 +65,12 @@ void PointerTraceEvents::TriggerRegisterUpdated()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PointerTraceEvents::EventUpdateRegister
+	);
+}
+
+void PointerTraceEvents::TriggerResetState()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PointerTraceEvents::EventResetState
 	);
 }
