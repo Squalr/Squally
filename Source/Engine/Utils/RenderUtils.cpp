@@ -38,6 +38,11 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 
 Sprite* RenderUtils::applyShaderOnce(Sprite* target, std::string vertexShader, std::string fragmentShader, std::function<void(GLProgramState*)> bindStateVariablesCallback)
 {
+	if (target == nullptr)
+	{
+		return nullptr;
+	}
+
 	GLProgram* program = GLProgram::createWithFilenames(vertexShader, fragmentShader);
 	GLProgramState* state = GLProgramState::getOrCreateWithGLProgram(program);
 
@@ -57,11 +62,21 @@ Sprite* RenderUtils::applyShaderOnce(Sprite* target, std::string vertexShader, s
 
 	RenderTexture* renderedSprite = RenderTexture::create(target->getContentSize().width, target->getContentSize().height);
 
+	if (renderedSprite == nullptr)
+	{
+		return target;
+	}
+
 	renderedSprite->begin();
 	target->visit();
 	renderedSprite->end();
 
 	Sprite* rasterizedSprite = renderedSprite->getSprite();
+
+	if (rasterizedSprite == nullptr)
+	{
+		return target;
+	}
 
 	// The sprite is attached to the render texture -- decouple it before returning
 	GameUtils::changeParent(rasterizedSprite, nullptr, false);
