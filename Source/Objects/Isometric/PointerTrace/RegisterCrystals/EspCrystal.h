@@ -21,6 +21,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void updateRegister(int value) override;
+	int getRegisterValue() override;
 
 private:
 	typedef RegisterCrystal super;

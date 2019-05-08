@@ -21,12 +21,16 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void buildMovString(LocalizedString* registerString);
-	void buildMovPtrString(LocalizedString* registerString);
 	virtual void updateRegister(int value) = 0;
+	virtual int getRegisterValue() = 0;
+	void updateMemory(int writeValue);
+	void buildString(LocalizedString* registerString);
+	int getValueAtPtr();
 	int getValue();
 	int getOffset();
 
+	static const std::string MapKeyRegisterInstruction;
+	static const std::string MapKeyRegisterIsPointer;
 	static const std::string MapKeyRegisterOffset;
 	static const std::string MapKeyRegisterValue;
 
@@ -37,8 +41,13 @@ protected:
 private:
 	typedef GridObject super;
 
+	int runInstruction();
+	void buildInstructionString(LocalizedString* registerString, LocalizedString* instructionString, bool bindValue);
+	void buildInstructionPtrString(LocalizedString* registerString, LocalizedString* instructionString, bool bindValue);
 	int value;
 	int offset;
+	bool isPointer;
+	std::string instruction;
 
 	cocos2d::Sprite* shadow;
 	LocalizedLabel* assemblyLabel;

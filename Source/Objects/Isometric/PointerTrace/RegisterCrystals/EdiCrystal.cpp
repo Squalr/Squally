@@ -34,7 +34,7 @@ EdiCrystal::EdiCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEdi::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRdi::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -56,4 +56,9 @@ void EdiCrystal::initializePositions()
 void EdiCrystal::updateRegister(int value)
 {
 	RegisterState::setRegisterEdi(value);
+}
+
+int EdiCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEdi();
 }

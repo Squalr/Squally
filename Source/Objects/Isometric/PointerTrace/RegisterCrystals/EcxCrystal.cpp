@@ -34,7 +34,7 @@ EcxCrystal::EcxCrystal(ValueMap& initProperties) : super(initProperties)
 		? (LocalizedString*)Strings::PointerTrace_Assembly_RegisterEcx::create()
 		: (LocalizedString*)Strings::PointerTrace_Assembly_RegisterRcx::create();
 
-	this->buildMovString(registerString);
+	this->buildString(registerString);
 
 	this->crystalNode->addChild(this->crystal);
 }
@@ -58,3 +58,7 @@ void EcxCrystal::updateRegister(int value)
 	RegisterState::setRegisterEcx(value);
 }
 
+int EcxCrystal::getRegisterValue()
+{
+	return RegisterState::getRegisterEcx();
+}
