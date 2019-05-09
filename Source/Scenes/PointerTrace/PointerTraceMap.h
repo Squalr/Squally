@@ -29,8 +29,8 @@ private:
 	void onEnter() override;
 	void update(float dt) override;
 	void buildCollisionMaps();
-	void resetState();
 	void initializeGridObjects();
+	void resetState();
 	void tryResumeMovement(PointerTraceEvents::PointerTraceRequestMovementArgs args);
 	void moveGridEntity(PointerTraceEvents::PointerTraceRequestMovementArgs args);
 	void doSegfault();

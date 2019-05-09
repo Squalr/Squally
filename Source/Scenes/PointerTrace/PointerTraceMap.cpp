@@ -22,6 +22,7 @@
 #include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
 #include "Objects/Isometric/PointerTrace/GridObject.h"
+#include "Objects/Isometric/PointerTrace/RegisterInitializers/RegisterInitializer.h"
 #include "Objects/Isometric/PointerTrace/MemoryGrid.h"
 #include "Scenes/PointerTrace/Huds/PointerTraceHud.h"
 #include "Scenes/PointerTrace/Menus/VictoryMenu.h"
@@ -335,6 +336,44 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 	}
 }
 
+void PointerTraceMap::initializeGridObjects()
+{
+	if (this->memoryGrid == nullptr)
+	{
+		return;
+	}
+
+	// Initialize registers first before anything else
+	ObjectEvents::QueryObjects(QueryObjectsArgs<RegisterInitializer>([=](RegisterInitializer* gridObject)
+	{
+		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridObject->getPosition());
+		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
+		
+		gridObject->setPosition(realignedPosition);
+		gridObject->setInitialGridIndex(gridIndex);
+	}));
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<GridObject>([=](GridObject* gridObject)
+	{
+		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridObject->getPosition());
+		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
+		
+		gridObject->setPosition(realignedPosition);
+		gridObject->setInitialGridIndex(gridIndex);
+	}));
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
+	{
+		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridEntity->getPosition());
+		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
+		
+		gridEntity->setPosition(realignedPosition);
+		gridEntity->setInitialGridIndex(gridIndex);
+	}));
+
+	this->memoryGrid->setInitialState();
+}
+
 void PointerTraceMap::resetState()
 {
 	if (this->memoryGrid == nullptr)
@@ -362,34 +401,6 @@ void PointerTraceMap::resetState()
 	}));
 
 	this->memoryGrid->resetState();
-}
-
-void PointerTraceMap::initializeGridObjects()
-{
-	if (this->memoryGrid == nullptr)
-	{
-		return;
-	}
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<GridObject>([=](GridObject* gridObject)
-	{
-		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridObject->getPosition());
-		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
-		
-		gridObject->setPosition(realignedPosition);
-		gridObject->setInitialGridIndex(gridIndex);
-	}));
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
-	{
-		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridEntity->getPosition());
-		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
-		
-		gridEntity->setPosition(realignedPosition);
-		gridEntity->setInitialGridIndex(gridIndex);
-	}));
-
-	this->memoryGrid->setInitialState();
 }
 
 void PointerTraceMap::buildCollisionMaps()
