@@ -8,14 +8,14 @@ namespace cocos2d
 	class LayerGradient;
 }
 
-class GridObject;
+class GridItem;
 
 class Grid : public SmartNode
 {
 public:
 	static Grid* create();
 
-	void addGridObject(GridObject* gridObject);
+	void addGridItem(GridItem* gridObject);
 	cocos2d::Vec2 coordsToLocation(cocos2d::Vec2 coords);
 	float getHorizon();
 
@@ -37,7 +37,7 @@ private:
 
 	std::vector<cocos2d::Node*> horizontalLines;
 	std::vector<cocos2d::Node*> verticalLines;
-	std::vector<GridObject*> gridObjects;
+	std::vector<GridItem*> gridObjects;
 	cocos2d::LayerGradient* distanceGradient;
 
 	static const float backPlane;
@@ -48,5 +48,5 @@ private:
 
 	static const float scrollSpeed;
 	static const float objectSpeed;
-	static const std::string ScheduleKeyScrollGridObjects;
+	static const std::string ScheduleKeyScrollGridItems;
 };

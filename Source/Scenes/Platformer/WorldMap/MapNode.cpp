@@ -64,8 +64,5 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick()
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(this->nodeMapFile, [](SerializableMap* map)
-	{
-		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
-	}));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile));
 }

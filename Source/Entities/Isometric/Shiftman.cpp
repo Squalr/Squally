@@ -18,13 +18,13 @@ Shiftman* Shiftman::deserialize(ValueMap& initProperties)
 }
 
 Shiftman::Shiftman(ValueMap& initProperties) : super::IsometricEntity(initProperties,
-	"", //// EntityResources::Isometric_Shiftman_Animations,
+	EntityResources::Squally_Animations,
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->registerHackables();
 
-	this->animationNode->playAnimation("Idle_SE");
+	//// this->animationNode->playAnimation("Idle_SE");
 }
 
 Shiftman::~Shiftman()

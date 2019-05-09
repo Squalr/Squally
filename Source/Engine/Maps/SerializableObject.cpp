@@ -55,6 +55,8 @@ const std::string SerializableObject::MapKeyPropertyValue = "value";
 SerializableObject::SerializableObject(const ValueMap& initProperties)
 {
 	this->properties = initProperties;
+	this->zSorted = false;
+	this->polylinePoints = std::vector<Vec2>();
 
 	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapIdentifier))
 	{
@@ -66,71 +68,88 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 	{
 		this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-		Size mapSize = Size::ZERO;
-		Vec2 position = Vec2::ZERO;
-		Size objectSize = Size::ZERO;
+		Size mapSize = Size(
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyMetaMapWidth, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyMetaMapHeight, Value(0.0f)).asFloat()
+		);
 
-		// Set map origin
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapWidth))
-		{
-			mapSize.width = (this->properties.at(SerializableObject::MapKeyMetaMapWidth).asFloat());
-		}
+		Vec2 position = Vec2(
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyXPosition, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyYPosition, Value(0.0f)).asFloat()
+		);
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapHeight))
-		{
-			mapSize.height = (this->properties.at(SerializableObject::MapKeyMetaMapHeight).asFloat());
-		}
-
-		// Update object position relative to this origin
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyXPosition))
-		{
-			position.x = this->properties.at(SerializableObject::MapKeyXPosition).asFloat();
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyWidth))
-		{
-			objectSize.width = this->properties.at(SerializableObject::MapKeyWidth).asFloat();
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyYPosition))
-		{
-			position.y =  this->properties.at(SerializableObject::MapKeyYPosition).asFloat();
-		}
-
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyHeight))
-		{
-			objectSize.height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
-		}
+		Size objectSize = Size(
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyWidth, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyHeight, Value(0.0f)).asFloat()
+		);
 
 		// Isometric position to screen position conversion magic
 		Vec2 convertedPosition = Vec2(
 			(position.x + position.y) + objectSize.width,
-			(position.y - position.x) / 2.0f + objectSize.height * 1.5f + mapSize.height / 2.0f
+			(position.y - position.x) / 2.0f + mapSize.height / 2.0f
 		);
 
 		this->setPosition(convertedPosition);
+
+		// Parse any polyline points in iso space
+		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();
+
+		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
+		{
+			ValueMap point = it->asValueMap();
+
+			Vec2 delta = Vec2(
+				point.at(SerializableObject::MapKeyXPosition).asFloat(),
+				point.at(SerializableObject::MapKeyYPosition).asFloat()
+			);
+
+			// Convert to iso space
+			Vec2 convertedDelta = Vec2(
+				(delta.x + delta.y),
+				(delta.y - delta.x) / 2.0f
+			);
+
+			this->polylinePoints.push_back(convertedDelta);
+		}
 	}
 	// Map the coordinates of Tiled space to Cocos space for 2d games:
 	else
 	{
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyXPosition))
-		{
-			this->setPositionX(this->properties.at(SerializableObject::MapKeyXPosition).asFloat());
-		}
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyWidth))
-		{
-			this->setPositionX(this->getPositionX() + this->properties.at(SerializableObject::MapKeyWidth).asFloat() / 2.0f);
-		}
+		Size mapSize = Size(
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyWidth, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyHeight, Value(0.0f)).asFloat()
+		);
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyYPosition))
-		{
-			this->setPositionY(this->properties.at(SerializableObject::MapKeyYPosition).asFloat());
-		}
+		Vec2 position = Vec2(
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyXPosition, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyYPosition, Value(0.0f)).asFloat()
+		);
 
-		if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyHeight))
+		this->setPosition(Vec2(
+			position.x + mapSize.width / 2.0f,
+			position.y + mapSize.height / 2.0f
+		));
+
+		// Parse any polyline points in cocos space
+		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();
+
+		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
 		{
-			this->setPositionY(this->getPositionY() + this->properties.at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
+			ValueMap point = it->asValueMap();
+
+			Vec2 delta = Vec2(
+				point.at(SerializableObject::MapKeyXPosition).asFloat(),
+				point.at(SerializableObject::MapKeyYPosition).asFloat()
+			);
+
+			// Negate the Y since we're operating in a different coordinate space
+			Vec2 convertedDelta = Vec2(
+				delta.x,
+				-delta.y
+			);
+
+			this->polylinePoints.push_back(convertedDelta);
 		}
 	}
 }
@@ -154,6 +173,16 @@ void SerializableObject::initializeListeners()
 std::string SerializableObject::getUniqueIdentifier()
 {
 	return this->uniqueIdentifier;
+}
+
+void SerializableObject::setZSorted(bool zSorted)
+{
+	this->zSorted = zSorted;
+}
+
+bool SerializableObject::isZSorted()
+{
+	return this->zSorted;
 }
 
 void SerializableObject::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, Size mapUnitSize, Size mapTileSize)

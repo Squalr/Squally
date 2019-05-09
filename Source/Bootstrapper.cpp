@@ -1,18 +1,29 @@
 #include "Bootstrapper.h"
 
 #include "Engine/EngineBootstrapper.h"
+#include "Entities/Isometric/IsometricEntityDeserializer.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Menus/CursorSets.h"
 #include "Menus/LoadingScreen/LoadingScreen.h"
 #include "Menus/MinigamesMenu.h"
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
+#include "Objects/GenericObjectDeserializer.h"
 #include "Objects/Isometric/IsometricDecorDeserializer.h"
 #include "Objects/Isometric/IsometricObjectDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorDeserializer.h"
 #include "Objects/Platformer/PlatformerObjectDeserializer.h"
-#include "Scenes/Cipher/CipherMenu/CipherSelectMenu.h"
+#include "Scenes/Cipher/CipherMenu/ChapterSelect/CipherChapterSelectMenu.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/BalmerPeaks/CipherPuzzleMenuBalmerPeaks.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/CastleValgrind/CipherPuzzleMenuCastleValgrind.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/DaemonsHallow/CipherPuzzleMenuDaemonsHallow.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/EndianForest/CipherPuzzleMenuEndianForest.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/LambdaCrypts/CipherPuzzleMenuLambdaCrypts.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/SeaSharpCaverns/CipherPuzzleMenuSeaSharpCaverns.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/UnderflowRuins/CipherPuzzleMenuUnderflowRuins.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/VoidStar/CipherPuzzleMenuVoidStar.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
+#include "Scenes/Cipher/CipherScene.h"
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenuPuzzles.h"
@@ -43,6 +54,8 @@
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Terrain/CastleTerrainDeserializer.h"
 #include "Scenes/Platformer/Level/Weather/WeatherDeserializer.h"
+#include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
+#include "Scenes/PointerTrace/PointerTraceMap.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/WorldMap/WorldMap.h"
 #include "Sound/MusicDeserializer.h"
@@ -55,8 +68,25 @@ void Bootstrapper::initialize()
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
 	LoadingScreen::registerGlobalScene();
+	
+	// Pointer trace
+	PointerTraceMap::registerGlobalScene();
+	PointerTraceLevelSelect::registerGlobalScene();
+
+	// Cipher
+	CipherScene::registerGlobalScene();
 	CipherPuzzleDeserializer::registerGlobalNode();
-	CipherSelectMenu::registerGlobalScene();
+	CipherPuzzleMenuBalmerPeaks::registerGlobalScene();
+	CipherPuzzleMenuCastleValgrind::registerGlobalScene();
+	CipherPuzzleMenuDaemonsHallow::registerGlobalScene();
+	CipherPuzzleMenuEndianForest::registerGlobalScene();
+	CipherPuzzleMenuLambdaCrypts::registerGlobalScene();
+	CipherPuzzleMenuSeaSharpCaverns::registerGlobalScene();
+	CipherPuzzleMenuUnderflowRuins::registerGlobalScene();
+	CipherPuzzleMenuVoidStar::registerGlobalScene();
+	CipherChapterSelectMenu::registerGlobalScene();
+
+	// Hexus
 	Hexus::registerGlobalScene();
 	HexusChapterSelectMenu::registerGlobalScene();
 	HexusChapterSelectMenuPuzzles::registerGlobalScene();
@@ -90,16 +120,18 @@ void Bootstrapper::initialize()
 	PlatformerItemDeserializer::registerGlobalNode();
 
 	// Entity deserializers
+	IsometricEntityDeserializer::registerGlobalNode();
 	PlatformerEntityDeserializer::registerGlobalNode();
 	PlatformerCollisionMapping::registerGlobalNode();
 
 	// Decor deserializers
+	PlatformerDecorDeserializer::registerGlobalNode();
 	IsometricDecorDeserializer::registerGlobalNode();
-	IsometricObjectDeserializer::registerGlobalNode();
 
 	// Object deserializers
-	PlatformerDecorDeserializer::registerGlobalNode();
+	GenericObjectDeserializer::registerGlobalNode();
 	PlatformerObjectDeserializer::registerGlobalNode();
+	IsometricObjectDeserializer::registerGlobalNode();
 
 	// Environment deserializers
 	WeatherDeserializer::registerGlobalNode();

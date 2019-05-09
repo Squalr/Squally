@@ -59,7 +59,7 @@ void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 	else
 	{
 		GameUtils::pause(GlobalDirector::getInstance()->activeScene);
-		Director::getInstance()->replaceScene(scene);
+		Director::getInstance()->pushScene(scene);
 	}
 
 	GlobalDirector::getInstance()->activeScene = scene;

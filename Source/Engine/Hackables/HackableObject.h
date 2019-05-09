@@ -3,7 +3,6 @@
 #include <string>
 
 #include "Engine/Maps/SerializableObject.h"
-#include "Engine/UI/UIBoundObject.h"
 
 namespace cocos2d
 {

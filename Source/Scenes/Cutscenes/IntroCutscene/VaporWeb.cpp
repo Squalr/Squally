@@ -10,7 +10,7 @@
 //#include "Engine/Dialogue/DialogueLabel.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Cutscenes/Objects/Grid.h"
-#include "Scenes/Cutscenes/Objects/GridObject.h"
+#include "Scenes/Cutscenes/Objects/GridItem.h"
 
 #include "Resources/CutsceneResources.h"
 #include "Resources/StringResources.h"
@@ -36,7 +36,7 @@ VaporWeb* VaporWeb::create()
 
 VaporWeb::VaporWeb()
 {
-	this->cells = std::map<int, GridObject*>();
+	this->cells = std::map<int, GridItem*>();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->forestBackground = Sprite::create(CutsceneResources::VaporWeb_Forest_Background);
@@ -59,12 +59,12 @@ VaporWeb::VaporWeb()
 			float gridRow = row * spacingRow + offset;
 			float gridColumn = Grid::lineColumns / 2 - (VaporWeb::cellColumns / 2) * spacingColumn + column * spacingColumn;
 
-			GridObject* cell = GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Cell), Vec2(gridRow, gridColumn), true);
+			GridItem* cell = GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Cell), Vec2(gridRow, gridColumn), true);
 			cell->setOpacity(0);
 
 			this->cells[this->getCellIndex(row, column)] = cell;
 
-			this->grid->addGridObject(cell);
+			this->grid->addGridItem(cell);
 		}
 	}
 
@@ -168,7 +168,7 @@ FiniteTimeAction* VaporWeb::createCutsceneGridSetup()
 		{
 			for (int row = 0; row < VaporWeb::cellRows; row++)
 			{
-				GridObject* cell = this->cells.at(this->getCellIndex(row, column));
+				GridItem* cell = this->cells.at(this->getCellIndex(row, column));
 
 				cell->runAction(Sequence::create(
 					DelayTime::create(row * rowDelay),
@@ -234,11 +234,11 @@ FiniteTimeAction* VaporWeb::createCutsceneForest()
 
 	CallFunc* addObjects = CallFunc::create([=]()
 	{
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Tree2), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Shrine), Vec2(-10.0f, Grid::lineColumns / 2.0f + 0.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Ruins1), Vec2(-12.0f, Grid::lineColumns / 2.0f - 4.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Thorns1), Vec2(-15.0f, Grid::lineColumns / 2.0f - 2.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Tree2), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Shrine), Vec2(-10.0f, Grid::lineColumns / 2.0f + 0.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Ruins1), Vec2(-12.0f, Grid::lineColumns / 2.0f - 4.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Forest_Thorns1), Vec2(-15.0f, Grid::lineColumns / 2.0f - 2.0f), false));
 	});
 
 	return Sequence::create(
@@ -266,9 +266,9 @@ FiniteTimeAction* VaporWeb::createCutsceneCaverns()
 
 	CallFunc* addObjects = CallFunc::create([=]()
 	{
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Caverns_DryTree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Caverns_DryTree2), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Caverns_Skulls), Vec2(-10.0f, Grid::lineColumns / 2.0f + 0.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Caverns_DryTree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Caverns_DryTree2), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Caverns_Skulls), Vec2(-10.0f, Grid::lineColumns / 2.0f + 0.0f), false));
 	});
 
 	return Sequence::create(
@@ -296,11 +296,11 @@ FiniteTimeAction* VaporWeb::createCutsceneObelisk()
 
 	CallFunc* addObjects = CallFunc::create([=]()
 	{
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Door), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Obelisk), Vec2(-9.0f, Grid::lineColumns / 2.0f - 2.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Tree2), Vec2(-12.0f, Grid::lineColumns / 2.0f + 3.0f), false));
-		this->grid->addGridObject(GridObject::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Wall), Vec2(-13.0f, Grid::lineColumns / 2.0f - 4.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Tree1), Vec2(-2.0f, Grid::lineColumns / 2.0f - 3.5f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Door), Vec2(-3.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Obelisk), Vec2(-9.0f, Grid::lineColumns / 2.0f - 2.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Tree2), Vec2(-12.0f, Grid::lineColumns / 2.0f + 3.0f), false));
+		this->grid->addGridItem(GridItem::create(Sprite::create(CutsceneResources::VaporWeb_Obelisk_Wall), Vec2(-13.0f, Grid::lineColumns / 2.0f - 4.0f), false));
 	});
 
 	return Sequence::create(

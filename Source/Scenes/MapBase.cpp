@@ -26,11 +26,13 @@ using namespace cocos2d;
 
 bool MapBase::hackerMode = false;
 
-MapBase::MapBase()
+MapBase::MapBase(bool allowHackerMode)
 {
+	this->allowHackerMode = allowHackerMode;
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->map = nullptr;;
+	this->map = nullptr;
 	this->mapNode = Node::create();
 
 	this->pauseMenu = PauseMenu::create();
@@ -79,6 +81,16 @@ void MapBase::onEnter()
 	this->pauseMenu->setVisible(false);
 	this->optionsMenu->setVisible(false);
 	this->confirmationMenu->setVisible(false);
+
+	if (this->map != nullptr)
+	{
+		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+	}
+}
+
+void MapBase::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
 }
 
 void MapBase::resume(void)
@@ -159,14 +171,18 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MapBase::loadMap(SerializableMap* serializableMap)
+void MapBase::loadMap(std::string mapResource)
 {
-	this->map = serializableMap;
-	this->mapNode->removeAllChildren();
+	if (this->map != nullptr)
+	{
+		this->mapNode->removeChild(this->map);
+	}
+	
+	this->map = SerializableMap::deserialize(mapResource);
 
 	if (this->map != nullptr)
 	{
-		GameUtils::changeParent(this->map, this->mapNode, false);
+		this->mapNode->addChild(this->map);
 		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
 	}
 }
@@ -244,6 +260,11 @@ void MapBase::onHackerModeDisable()
 
 void MapBase::toggleHackerMode()
 {
+	if (!this->allowHackerMode)
+	{
+		return;
+	}
+
 	MapBase::hackerMode = !MapBase::hackerMode;
 
 	if (MapBase::hackerMode)

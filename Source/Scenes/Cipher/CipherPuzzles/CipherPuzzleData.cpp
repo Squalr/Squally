@@ -44,6 +44,17 @@ void CipherPuzzleData::initializeListeners()
 	super::initializeListeners();
 }
 
+CipherPuzzleData* CipherPuzzleData::clone()
+{
+	return CipherPuzzleData::create(
+		this->inputOutputMapEasy,
+		this->inputOutputMapHard,
+		this->rewards,
+		this->bonusRewards,
+		this->isHardMode
+	);
+}
+
 std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMapEasy()
 {
 	return this->inputOutputMapEasy;

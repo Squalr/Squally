@@ -43,10 +43,9 @@ void CipherPuzzleDeserializer::initializeListeners()
 	this->addGlobalEventListener(deserializationRequestListener);
 }
 
-void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpenArgs* args)
+CipherPuzzleData* CipherPuzzleDeserializer::deserialize(std::string json, bool isHardMode)
 {
 	CipherPuzzleData* puzzle = nullptr;
-	std::string json = args->cipherJson;
 
 	Document document;
 	document.Parse(json.c_str());
@@ -54,49 +53,49 @@ void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpen
 	if (!document.HasMember("easy") || !document["easy"].IsObject())
 	{
 		CCLOG("Missing or invalid key 'easy' on cipher json.");
-		return;
+		return puzzle;
 	}
 
 	if (!document["easy"].HasMember("rule") || !document["easy"]["rule"].IsString())
 	{
 		CCLOG("Missing or invalid key 'rule' for easy puzzle.");
-		return;
+		return puzzle;
 	}
 
 	if (!document["easy"].HasMember("inputs") || !document["easy"]["inputs"].IsArray())
 	{
 		CCLOG("Missing or invalid key 'inputs' for easy puzzle.");
-		return;
+		return puzzle;
 	}
 
 	if (!document.HasMember("hard") || !document["hard"].IsObject())
 	{
 		CCLOG("Missing or invalid key 'hard' on cipher json.");
-		return;
+		return puzzle;
 	}
 
 	if (!document["hard"].HasMember("rule") || !document["hard"]["rule"].IsString())
 	{
 		CCLOG("Missing or invalid key 'rule' for hard puzzle.");
-		return;
+		return puzzle;
 	}
 
 	if (!document["hard"].HasMember("inputs") || !document["hard"]["inputs"].IsArray())
 	{
 		CCLOG("Missing or invalid key 'inputs' for hard puzzle.");
-		return;
+		return puzzle;
 	}
 
 	if (!document.HasMember("rewards") || !document["rewards"].IsArray())
 	{
 		CCLOG("Missing or invalid key 'rewards' on cipher json.");
-		return;
+		return puzzle;
 	}
 
 	if (!document.HasMember("bonus-rewards") || !document["bonus-rewards"].IsArray())
 	{
 		CCLOG("Missing or invalid key 'bonus-rewards' on cipher json.");
-		return;
+		return puzzle;
 	}
 
 	auto getChar = [&](std::string input)
@@ -166,7 +165,14 @@ void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpen
 		}
 	}
 
-	puzzle = CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, rewards, bonusRewards, args->isHardMode);
+	puzzle = CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, rewards, bonusRewards, isHardMode);
+
+	return puzzle;
+}
+
+void CipherPuzzleDeserializer::onDeserializationRequest(CipherEvents::CipherOpenArgs* args)
+{
+	CipherPuzzleData* puzzle = CipherPuzzleDeserializer::deserialize(args->cipherJson, args->isHardMode);
 
 	if (puzzle != nullptr)
 	{

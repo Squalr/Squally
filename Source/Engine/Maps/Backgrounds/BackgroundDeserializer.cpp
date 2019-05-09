@@ -34,7 +34,15 @@ void BackgroundDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestLayerDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::LayerDeserializationRequestArgs*)args->getUserData()); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::LayerDeserializationRequestArgs* args = static_cast<DeserializationEvents::LayerDeserializationRequestArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
@@ -45,14 +53,7 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 	std::string name = args->objectGroup->getGroupName();
 	ValueMap properties = args->objectGroup->getProperties();
 
-	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
-	{
-		return;
-	}
-
-	std::string type = properties.at(SerializableLayer::KeyType).asString();
-
-	if (type != BackgroundDeserializer::MapKeyBackgroundLayer)
+	if (GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
 	{
 		return;
 	}

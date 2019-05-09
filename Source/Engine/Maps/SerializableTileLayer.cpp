@@ -44,7 +44,7 @@ SerializableTileLayer::SerializableTileLayer(cocos_experimental::TMXLayer* initT
 		{
 			for (int x = 0; x < this->tileLayer->getLayerSize().width; x++)
 			{
-				for (int y = 0; y < this->tileLayer->getLayerSize().width; y++)
+				for (int y = 0; y < this->tileLayer->getLayerSize().height; y++)
 				{
 					Sprite* tile = this->tileLayer->getTileAt(Vec2(x, y));
 
@@ -113,4 +113,29 @@ std::string SerializableTileLayer::getType()
 	}
 
 	return "";
+}
+
+std::vector<std::vector<int>> SerializableTileLayer::getGidMap()
+{
+	std::vector<std::vector<int>> gidMap = std::vector<std::vector<int>>();
+
+	if (this->tileLayer != nullptr)
+	{
+		int width = this->tileLayer->getLayerSize().width;
+		int height = this->tileLayer->getLayerSize().height;
+
+		for (int y = 0; y < height; y++)
+		{
+			std::vector<int> row = std::vector<int>();
+
+			for (int x = 0; x < width; x++)
+			{
+				row.push_back(this->tileLayer->getTileGIDAt(Vec2(x, y)));
+			}
+
+			gidMap.push_back(row);
+		}
+	}
+
+	return gidMap;
 }

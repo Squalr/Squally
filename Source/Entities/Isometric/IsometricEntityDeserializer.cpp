@@ -38,7 +38,15 @@ void IsometricEntityDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
@@ -56,6 +64,10 @@ void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newEntity = IsometricSqually::deserialize(properties);
 		}
+		else if (name == IsometricBall::KeyBallProperty)
+		{
+			newEntity = IsometricBall::deserialize(properties);
+		}
 		else if (name == Shiftman::KeyShiftmanProperty)
 		{
 			newEntity = Shiftman::deserialize(properties);
@@ -67,6 +79,9 @@ void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents
 		}
 
 		// Fire an event indicating successful deserialization
-		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+		if (newEntity != nullptr)
+		{
+			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+		}
 	}
 }

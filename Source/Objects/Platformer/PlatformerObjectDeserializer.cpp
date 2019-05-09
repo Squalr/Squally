@@ -30,7 +30,15 @@ void PlatformerObjectDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest(static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(args->getUserData())); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
@@ -44,11 +52,7 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		std::string name = properties.at(SerializableObject::MapKeyName).asString();
 		SerializableObject* newObject = nullptr;
 
-		if (name == CameraFocus::MapKeyCameraFocus)
-		{
-			newObject = CameraFocus::create(properties);
-		}
-		else if (name == CombatSpawn::MapKeyCombatSpawn)
+		if (name == CombatSpawn::MapKeyCombatSpawn)
 		{
 			newObject = CombatSpawn::create(properties);
 		}

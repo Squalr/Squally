@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Menus_Credits_ZacTwitter::getStringAr()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringBg()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringCs()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringDa()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringDe()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringEl()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringEn()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringEs()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringEs419()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringFi()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringFr()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringHu()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringIt()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringJa()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringKo()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringNl()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringNo()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringPl()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringPt()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringPtBr()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringRo()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringRu()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringSv()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringTh()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringTr()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringUk()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringVi()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringZhCn()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 
 	std::string Menus_Credits_ZacTwitter::getStringZhTw()
 	{
-		return "@zcananm";
+		return "@zcanann";
 	}
 }

@@ -6,18 +6,22 @@
 
 using namespace cocos2d;
 
-HexusArcade* HexusArcade::create(ValueMap& initProperties)
+const std::string HexusArcade::MapKeyHexusArcade = "hexus-arcade";
+
+HexusArcade* HexusArcade::create(ValueMap& properties)
 {
-	HexusArcade* instance = new HexusArcade(initProperties);
+	HexusArcade* instance = new HexusArcade(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusArcade::HexusArcade(ValueMap& initProperties) : HackableObject(initProperties)
+HexusArcade::HexusArcade(ValueMap& properties) : HackableObject(properties)
 {
 	this->arcadeMachine = Sprite::create();
+	
+	this->setZSorted(true);
 
 	this->addChild(this->arcadeMachine);
 }

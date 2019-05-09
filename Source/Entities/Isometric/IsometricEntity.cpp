@@ -13,16 +13,22 @@ IsometricEntity::IsometricEntity(ValueMap& initProperties, std::string scmlResou
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
+	this->underNode = Node::create();
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle_NE");
 
 	this->animationNode->setPosition(offset * scale);
 
-	// Update width to be serialized
-	this->properties[IsometricEntity::MapKeyWidth] = size.width * scale;
-	this->properties[IsometricEntity::MapKeyHeight] = size.height * scale;
+	float height = this->properties[super::MapKeyHeight].asFloat();
 
+	this->setZSorted(true);
+
+	// Update width to be serialized
+	this->properties[super::MapKeyWidth] = size.width * scale;
+	this->properties[super::MapKeyHeight] = size.height * scale;
+
+	this->addChild(this->underNode);
 	this->addChild(this->animationNode);
 }
 

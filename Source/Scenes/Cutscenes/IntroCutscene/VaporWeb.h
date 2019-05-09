@@ -11,7 +11,7 @@ namespace cocos2d
 
 class DialogueLabel;
 class Grid;
-class GridObject;
+class GridItem;
 class LocalizedLabel;
 
 class VaporWeb : public CutsceneClip
@@ -36,7 +36,7 @@ private:
 	cocos2d::FiniteTimeAction* createCutsceneCaverns();
 	cocos2d::FiniteTimeAction* createCutsceneObelisk();
 
-	std::map<int, GridObject*> cells;
+	std::map<int, GridItem*> cells;
 
 	cocos2d::Sprite* forestBackground;
 	cocos2d::Sprite* cavernsBackground;

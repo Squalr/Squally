@@ -3,6 +3,8 @@
 #include "Engine/Input/Input.h"
 #include "Events/NavigationEvents.h"
 
+#include "Resources/IsometricEntityResources.h"
+
 using namespace cocos2d;
 
 IsometricSqually* IsometricSqually::squallyInstance = nullptr;
@@ -10,21 +12,20 @@ const std::string IsometricSqually::KeySquallyProperty = "squally";
 
 IsometricSqually* IsometricSqually::deserialize(ValueMap& initProperties)
 {
+	return IsometricSqually::create(initProperties);
+}
+
+IsometricSqually* IsometricSqually::create(cocos2d::ValueMap& initProperties)
+{
 	IsometricSqually* instance = new IsometricSqually(initProperties);
 
-	IsometricSqually::squallyInstance = instance;
 	instance->autorelease();
 
 	return instance;
 }
 
-IsometricSqually* IsometricSqually::getInstance()
-{
-	return IsometricSqually::squallyInstance;
-}
-
 IsometricSqually::IsometricSqually(ValueMap& initProperties) : super::IsometricEntity(initProperties,
-	"", //// EntityResources::Isometric_Squally_Animations,
+	IsometricEntityResources::Squally_Animations,
 	1.0f,
 	Vec2(-128.0f, 0.0f))
 {

@@ -38,6 +38,15 @@ def main():
 		'.tif',
 	), "Resources/Platformer/Entities")
 
+	# IsometricEntityResources
+	createResourceFile("IsometricEntityResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Isometric/Entities")
+
 	# HexusResources
 	createResourceFile("HexusResources", (
 		'.scml',
@@ -46,6 +55,15 @@ def main():
 		'.bmp',
 		'.tif',
 	), "Resources/Hexus")
+
+	# PointerTraceResources
+	createResourceFile("PointerTraceResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/PointerTrace")
 
 	# CipherResources
 	createResourceFile("CipherResources", (
@@ -64,6 +82,15 @@ def main():
 		'.bmp',
 		'.tif',
 	), "Resources/Platformer/Objects")
+
+	# IsometricObjectResources
+	createResourceFile("IsometricObjectResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Isometric/Objects")
 
 	# TerrainResources
 	createResourceFile("TerrainResources", (
@@ -114,6 +141,12 @@ def main():
 		'.tmx',
 		'.png',
 	), "Resources/Platformer/Maps")
+
+	# IsometricMapResources
+	createResourceFile("IsometricMapResources", (
+		'.tmx',
+		'.png',
+	), "Resources/Isometric/Maps")
 
 	# ParticleResources
 	createResourceFile("ParticleResources", (

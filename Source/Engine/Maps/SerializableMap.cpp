@@ -123,6 +123,14 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 		deserializedLayerMap[args.layerIndex] = args.serializableLayer;
 	};
 
+	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	bool isIsometric = mapRaw->getMapOrientation() == MapOrientation::Isometric;
+
+	if (isIsometric)
+	{
+		mapSize.width /= 2.0f;
+	}
+
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
@@ -130,8 +138,8 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 			*it,
 			DeserializationEvents::DeserializationMapMeta(
 				mapFileName,
-				Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height),
-				mapRaw->getMapOrientation() == MapOrientation::Isometric
+				mapSize,
+				isIsometric
 			),
 			onDeserializeCallback
 		));
@@ -376,6 +384,11 @@ void SerializableMap::setCollisionLayersVisible(bool isVisible)
 	}
 }
 
+std::vector<SerializableTileLayer*> SerializableMap::getCollisionLayers()
+{
+	return this->collisionLayers;
+}
+
 void SerializableMap::isometricZSort(Node* node)
 {
 	if (this->orientation != MapOrientation::Isometric || node == nullptr)
@@ -383,8 +396,10 @@ void SerializableMap::isometricZSort(Node* node)
 		return;
 	}
 
-	// Only z sort the objects in the map (top left lowest, bottom right highest)
-	if (dynamic_cast<SerializableObject*>(node) != nullptr)
+	SerializableObject* object = dynamic_cast<SerializableObject*>(node);
+
+	// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
+	if (object != nullptr && object->isZSorted())
 	{
 		// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
 		// TODO: This works for most cases but is incomplete
@@ -392,7 +407,7 @@ void SerializableMap::isometricZSort(Node* node)
 
 		if (dynamic_cast<ObjectifiedTile*>(node) != nullptr)
 		{
-			position.y += this->mapTileSize.height;
+			position.y += this->mapTileSize.height / 2.0f;
 		}
 
 		node->setLocalZOrder((int)(-position.y));

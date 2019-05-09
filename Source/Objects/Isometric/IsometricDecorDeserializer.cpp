@@ -35,7 +35,15 @@ void IsometricDecorDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
+		[=](EventCustom* eventCustom)
+		{
+			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->onDeserializationRequest(args);
+			}
+		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
@@ -59,6 +67,8 @@ void IsometricDecorDeserializer::onDeserializationRequest(DeserializationEvents:
 
 		SerializableObject* newObject = IsometricDecorObject::create(properties);
 		newObject->addChild(sprite);
+
+		newObject->setZSorted(true);
 
 		if (GameUtils::keyExists(properties, "flip-x"))
 		{

@@ -68,6 +68,7 @@ void LoadingScreen::initializeListeners()
 {
 	super::initializeListeners();
 
+	/*
 	LoadingScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateLoadingScreen, [](EventCustom* args)
 	{
 		NavigationEvents::NavigateLoadingScreenArgs* loadArgs = static_cast<NavigationEvents::NavigateLoadingScreenArgs*>(args->getUserData());
@@ -77,7 +78,7 @@ void LoadingScreen::initializeListeners()
 			GlobalDirector::loadScene(LoadingScreen::instance);
 			LoadingScreen::instance->loadLevel(loadArgs->levelFile, loadArgs->onLoadCallback);
 		}
-	}));
+	}));*/
 }
 
 void LoadingScreen::loadLevel(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback)

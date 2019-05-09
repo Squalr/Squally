@@ -4,6 +4,7 @@
 #include <vector>
 
 class Cutscene;
+class CipherPuzzleData;
 class HexusOpponentData;
 class PlatformerEnemy;
 class Squally;
@@ -12,19 +13,30 @@ class SerializableMap;
 class NavigationEvents
 {
 public:
-	struct NavigateLoadingScreenArgs
+	struct NavigateCipherPuzzleSelectArgs
 	{
-		std::string levelFile;
-		std::function<void(SerializableMap*)> onLoadCallback;
+		enum class Chapter
+		{
+			BalmerPeaks,
+			CastleValgrind,
+			DaemonsHallow,
+			EndianForest,
+			LambdaCrypts,
+			SeaSharpCaverns,
+			UnderflowRuins,
+			VoidStar,
+		};
 
-		NavigateLoadingScreenArgs(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback) : levelFile(levelFile), onLoadCallback(onLoadCallback) { }
+		NavigateCipherPuzzleSelectArgs::Chapter chapter;
+
+		NavigateCipherPuzzleSelectArgs(NavigateCipherPuzzleSelectArgs::Chapter chapter) : chapter(chapter) { }
 	};
 
 	struct NavigateCipherArgs
 	{
-		bool todo;
+		CipherPuzzleData* cipherPuzzleData;
 
-		NavigateCipherArgs(bool todo) : todo(todo)
+		NavigateCipherArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
 		{
 		}
 	};
@@ -51,9 +63,17 @@ public:
 
 	struct NavigateMapArgs
 	{
-		SerializableMap* levelMap;
+		std::string mapResource;
 
-		NavigateMapArgs(SerializableMap* levelMap) : levelMap(levelMap) { }
+		NavigateMapArgs(std::string mapResource) : mapResource(mapResource) { }
+	};
+
+	struct NavigatePointerTraceMapArgs
+	{
+		std::string mapResource;
+		std::function<void()> onLevelClearCallback;
+
+		NavigatePointerTraceMapArgs(std::string mapResource, std::function<void()> onLevelClearCallback) : mapResource(mapResource), onLevelClearCallback(onLevelClearCallback) { }
 	};
 
 	struct NavigateHexusOpponentSelectArgs
@@ -80,9 +100,9 @@ public:
 			PuzzleVoidStar,
 		};
 
-		Chapter chapter;
+		NavigateHexusOpponentSelectArgs::Chapter chapter;
 
-		NavigateHexusOpponentSelectArgs(Chapter chapter) : chapter(chapter) { }
+		NavigateHexusOpponentSelectArgs(NavigateHexusOpponentSelectArgs::Chapter chapter) : chapter(chapter) { }
 	};
 
 	struct NavigateCombatArgs
@@ -105,13 +125,17 @@ public:
 
 	static void navigateBack(int backCount = 1);
 	static void navigateTitle();
-	static void navigateLoadingScreen(NavigateLoadingScreenArgs args);
-	static void navigateMap(NavigateMapArgs args);
+	static void navigatePlatformerMap(NavigateMapArgs args);
+	static void navigateCombatMap(NavigateMapArgs args);
+	static void navigatePointerTraceMap(NavigatePointerTraceMapArgs args);
 	static void navigateSaveSelect();
 	static void navigateMinigames();
 	static void navigateOptions();
 	static void navigateWorldMap();
-	static void navigateCipherPuzzleSelect();
+	static void navigatePointerTrace();
+	static void navigatePointerTraceLevelSelect();
+	static void navigateCipherChapterSelect();
+	static void navigateCipherPuzzleSelect(NavigateCipherPuzzleSelectArgs args);
 	static void navigateCipher(NavigateCipherArgs args);
 	static void navigateHexus(NavigateHexusArgs args);
 	static void navigateHexusRewards(NavigateHexusRewardArgs args);
@@ -124,13 +148,17 @@ public:
 	static void navigateCutscene(NavigateCutsceneArgs args);
 	
 	static const std::string EventNavigateTitle;
-	static const std::string EventNavigateLoadingScreen;
-	static const std::string EventNavigateMap;
+	static const std::string EventNavigatePlatformerMap;
+	static const std::string EventNavigateCombatMap;
+	static const std::string EventNavigatePointerTraceMap;
 	static const std::string EventNavigateSaveSelect;
 	static const std::string EventNavigateMinigames;
 	static const std::string EventNavigateOptions;
 	static const std::string EventNavigateWorldMap;
+	static const std::string EventNavigatePointerTrace;
+	static const std::string EventNavigatePointerTraceLevelSelect;
 	static const std::string EventNavigateCipher;
+	static const std::string EventNavigateCipherChapterSelect;
 	static const std::string EventNavigateCipherPuzzleSelect;
 	static const std::string EventNavigateHexus;
 	static const std::string EventNavigateHexusRewards;

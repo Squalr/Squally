@@ -3,10 +3,14 @@
 #include "Events/CipherEvents.h"
 #include "Engine/GlobalNode.h"
 
+class CipherPuzzleData;
+
 class CipherPuzzleDeserializer : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
+	
+	static CipherPuzzleData* deserialize(std::string json, bool isHardMode);
 
 private:
 	typedef GlobalNode super;

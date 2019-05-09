@@ -10,6 +10,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/SoundManager.h"
+#include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Title/TitleScreenBackground.h"
@@ -163,6 +164,11 @@ void TitleScreen::onEnter()
 
 	firstRun = false;
 
+	if (!Steam::isSquallySteamBuild())
+	{
+		this->storyModeButton->disableInteraction();
+	}
+
 	GameUtils::fadeInObject(this->ether, delay, duration);
 	GameUtils::fadeInObject(this->etherParticles, delay, duration);
 	GameUtils::fadeInObject(this->titleBar, delay, duration);
@@ -210,12 +216,9 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigateLoadingScreen(NavigationEvents::NavigateLoadingScreenArgs(MapResources::EndianForest_Forest, [](SerializableMap* map)
-	{
-		NavigationEvents::navigateMap(NavigationEvents::NavigateMapArgs(map));
-	}));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::EndianForest_Forest));
 
-	////NavigationEvents::navigateSaveSelect();
+	//// NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onMinigamesClick()

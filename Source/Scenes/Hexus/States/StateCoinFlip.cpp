@@ -1,6 +1,5 @@
 #include "StateCoinFlip.h"
 
-#include "cocos/2d/CCAnimation.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"

@@ -9,13 +9,17 @@
 using namespace cocos2d;
 
 const std::string NavigationEvents::EventNavigateTitle = "EVENT_NAVIGATE_TITLE";
-const std::string NavigationEvents::EventNavigateLoadingScreen = "EVENT_NAVIGATE_LOADING_SCREEN";
-const std::string NavigationEvents::EventNavigateMap = "EVENT_NAVIGATE_MAP";
+const std::string NavigationEvents::EventNavigatePlatformerMap = "EVENT_NAVIGATE_PLATFORMER_MAP";
+const std::string NavigationEvents::EventNavigateCombatMap = "EVENT_NAVIGATE_COMBAT_MAP";
+const std::string NavigationEvents::EventNavigatePointerTraceMap = "EVENT_NAVIGATE_POINTER_TRACE_MAP";
 const std::string NavigationEvents::EventNavigateSaveSelect = "EVENT_NAVIGATE_SAVE_SELECT";
 const std::string NavigationEvents::EventNavigateMinigames = "EVENT_NAVIGATE_MINIGAMES";
 const std::string NavigationEvents::EventNavigateOptions = "EVENT_NAVIGATE_OPTIONS";
 const std::string NavigationEvents::EventNavigateWorldMap = "EVENT_NAVIGATE_WORLD_MAP";
+const std::string NavigationEvents::EventNavigatePointerTrace = "EVENT_NAVIGATE_POINTER_TRACE";
+const std::string NavigationEvents::EventNavigatePointerTraceLevelSelect = "EVENT_NAVIGATE_POINTER_TRACE_LEVEL_SELECT";
 const std::string NavigationEvents::EventNavigateCipher = "EVENT_NAVIGATE_CIPHER";
+const std::string NavigationEvents::EventNavigateCipherChapterSelect = "EVENT_NAVIGATE_CIPHER_CHAPTER_SELECT";
 const std::string NavigationEvents::EventNavigateCipherPuzzleSelect = "EVENT_NAVIGATE_CIPHER_PUZZLE_SELECT";
 const std::string NavigationEvents::EventNavigateHexus = "EVENT_NAVIGATE_HEXUS";
 const std::string NavigationEvents::EventNavigateHexusRewards = "EVENT_NAVIGATE_HEXUS_REWARDS";
@@ -39,18 +43,26 @@ void NavigationEvents::navigateTitle()
 	);
 }
 
-void NavigationEvents::navigateLoadingScreen(NavigateLoadingScreenArgs args)
+void NavigationEvents::navigatePlatformerMap(NavigateMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateLoadingScreen,
+		NavigationEvents::EventNavigatePlatformerMap,
 		&args
 	);
 }
 
-void NavigationEvents::navigateMap(NavigateMapArgs args)
+void NavigationEvents::navigateCombatMap(NavigateMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateMap,
+		NavigationEvents::EventNavigateCombatMap,
+		&args
+	);
+}
+
+void NavigationEvents::navigatePointerTraceMap(NavigatePointerTraceMapArgs args)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigatePointerTraceMap,
 		&args
 	);
 }
@@ -83,10 +95,32 @@ void NavigationEvents::navigateWorldMap()
 	);
 }
 
-void NavigationEvents::navigateCipherPuzzleSelect()
+void NavigationEvents::navigatePointerTrace()
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
-		NavigationEvents::EventNavigateCipherPuzzleSelect
+		NavigationEvents::EventNavigatePointerTrace
+	);
+}
+
+void NavigationEvents::navigatePointerTraceLevelSelect()
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigatePointerTraceLevelSelect
+	);
+}
+
+void NavigationEvents::navigateCipherChapterSelect()
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigateCipherChapterSelect
+	);
+}
+
+void NavigationEvents::navigateCipherPuzzleSelect(NavigateCipherPuzzleSelectArgs args)
+{
+	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
+		NavigationEvents::EventNavigateCipherPuzzleSelect,
+		&args
 	);
 }
 

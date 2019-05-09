@@ -32,6 +32,7 @@ public:
 	static bool isVisible(cocos2d::Node* node);
 	static bool isEclipsed(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos);
+	static bool intersectsIsometric(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool keyExists(const cocos2d::ValueMap& valueMap, std::string key);
 	static const cocos2d::Value& getKeyOrDefault(const cocos2d::ValueMap& valueMap, std::string key, const cocos2d::Value& defaultValue);
 

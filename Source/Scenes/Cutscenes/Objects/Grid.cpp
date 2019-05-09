@@ -8,7 +8,7 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Scenes/Cutscenes/Objects/GridObject.h"
+#include "Scenes/Cutscenes/Objects/GridItem.h"
 
 using namespace cocos2d;
 
@@ -22,7 +22,7 @@ const float Grid::objectSpeed = 1.0f / Grid::scrollSpeed;
 const Color4F Grid::gridColor = Color4F(Color3B(223, 61, 219));
 const Color4F Grid::specialGridColor = Color4F(Color3B(61, 138, 223));
 
-const std::string Grid::ScheduleKeyScrollGridObjects = "SCHEDULE_KEY_SCROLL_GRID_OBJECTS";
+const std::string Grid::ScheduleKeyScrollGridItems = "SCHEDULE_KEY_SCROLL_GRID_OBJECTS";
 
 Grid* Grid::create()
 {
@@ -37,7 +37,7 @@ Grid::Grid()
 {
 	this->horizontalLines = std::vector<Node*>();
 	this->verticalLines = std::vector<Node*>();
-	this->gridObjects = std::vector<GridObject*>();
+	this->gridObjects = std::vector<GridItem*>();
 	this->distanceGradient = LayerGradient::create(Color4B(0, 0, 0, 0), Color4B(0, 0, 0, 196), Vec2(0.0f, 1.0f));
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -183,7 +183,7 @@ void Grid::initializePositions()
 	this->distanceGradient->setPosition(Vec2(visibleSize.width / 2.0f - this->distanceGradient->getContentSize().width / 2.0f, noShadowDistance));
 }
 
-void Grid::addGridObject(GridObject* gridObject)
+void Grid::addGridItem(GridItem* gridObject)
 {
 	this->gridObjects.push_back(gridObject);
 
@@ -242,7 +242,7 @@ void Grid::update(float dt)
 	}
 	
 	// Remove off-screen objects
-	auto removed = std::remove_if(this->gridObjects.begin(), this->gridObjects.end(), [=](GridObject* object)
+	auto removed = std::remove_if(this->gridObjects.begin(), this->gridObjects.end(), [=](GridItem* object)
 	{
 		if (object->getScale() <= 0.0f)
 		{
