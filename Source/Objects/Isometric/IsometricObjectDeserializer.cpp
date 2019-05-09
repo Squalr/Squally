@@ -202,6 +202,38 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = ValueInitializer::create(properties);
 		}
+		else if (name == EaxPtrInitializer::MapKeyEaxPtrInitializer)
+		{
+			newObject = EaxPtrInitializer::create(properties);
+		}
+		else if (name == EbxPtrInitializer::MapKeyEbxPtrInitializer)
+		{
+			newObject = EbxPtrInitializer::create(properties);
+		}
+		else if (name == EcxPtrInitializer::MapKeyEcxPtrInitializer)
+		{
+			newObject = EcxPtrInitializer::create(properties);
+		}
+		else if (name == EdxPtrInitializer::MapKeyEdxPtrInitializer)
+		{
+			newObject = EdxPtrInitializer::create(properties);
+		}
+		else if (name == EdiPtrInitializer::MapKeyEdiPtrInitializer)
+		{
+			newObject = EdiPtrInitializer::create(properties);
+		}
+		else if (name == EsiPtrInitializer::MapKeyEsiPtrInitializer)
+		{
+			newObject = EsiPtrInitializer::create(properties);
+		}
+		else if (name == EbpPtrInitializer::MapKeyEbpPtrInitializer)
+		{
+			newObject = EbpPtrInitializer::create(properties);
+		}
+		else if (name == EspPtrInitializer::MapKeyEspPtrInitializer)
+		{
+			newObject = EspPtrInitializer::create(properties);
+		}
 		else
 		{
 			CCLOG("Missing properties on isometric object");

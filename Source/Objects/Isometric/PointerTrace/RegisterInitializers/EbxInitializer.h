@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Objects/Isometric/PointerTrace/GridObject.h"
+#include "Objects/Isometric/PointerTrace/RegisterInitializers/RegisterInitializer.h"
 
-class EbxInitializer : public GridObject
+class EbxInitializer : public RegisterInitializer
 {
 public:
 	static EbxInitializer* create(cocos2d::ValueMap& initProperties);
@@ -16,5 +16,5 @@ protected:
 	~EbxInitializer();
 
 private:
-	typedef GridObject super;
+	typedef RegisterInitializer super;
 };

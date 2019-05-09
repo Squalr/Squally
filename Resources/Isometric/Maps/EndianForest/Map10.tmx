@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="589">
+<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="595">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="../TileMap.png" width="4096" height="3584"/>
  </tileset>
@@ -81,7 +81,7 @@
 73,73,73,73,73,73,73,0,0,0,0,73,89,89,89,73,0,73,73,73,73,0,73,73,73,73,73,0,0,0,0,0,0,0,0,0,75,75,75,75,
 0,0,73,73,73,73,0,0,0,0,0,73,89,89,89,0,73,73,73,73,73,73,0,73,73,73,73,0,0,0,0,0,0,0,0,0,0,75,75,75,
 0,0,0,0,0,0,0,0,0,0,0,73,73,89,0,73,73,73,73,73,73,73,73,0,73,73,73,0,0,0,0,0,0,0,0,0,0,75,75,75,
-0,0,0,0,0,0,0,0,0,0,0,73,73,0,73,73,73,73,73,90,73,73,73,73,0,74,73,0,0,0,0,0,0,0,0,0,0,0,75,75,
+0,0,0,0,0,0,0,0,0,0,0,73,73,0,73,73,73,73,107,90,73,73,73,73,0,74,73,0,0,0,0,0,0,0,0,0,0,0,75,75,
 0,0,0,0,0,0,0,0,0,0,0,73,0,73,73,74,73,73,73,73,73,73,73,73,73,0,73,0,0,0,0,0,0,0,0,0,0,0,75,75,
 0,0,0,0,0,0,0,0,0,0,0,0,73,73,73,73,73,73,73,73,73,73,73,73,73,73,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -150,7 +150,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="561" name="value-248" type="iso_object" x="1538.4" y="2167.94" width="128" height="128"/>
   <object id="565" name="value-120" type="iso_object" x="2420.21" y="2933.41" width="128" height="128"/>
   <object id="570" name="value-69" type="iso_object" x="2822.72" y="2046.95" width="128" height="128"/>
   <object id="571" name="value-1" type="iso_object" x="1277.98" y="3202.33" width="128" height="128"/>
@@ -161,15 +160,12 @@
   <object id="576" name="value-22" type="iso_object" x="3197.53" y="2944.11" width="128" height="128"/>
   <object id="577" name="value-22" type="iso_object" x="3199.47" y="2815.74" width="128" height="128"/>
   <object id="578" name="value-22" type="iso_object" x="3198.41" y="2681.43" width="128" height="128"/>
-  <object id="579" name="value-128" type="iso_object" x="2041.84" y="1541.25" width="128" height="128"/>
-  <object id="582" name="value-206" type="iso_object" x="1415.02" y="1794.46" width="128" height="128"/>
+  <object id="579" name="value-128" type="iso_object" x="1281.11" y="1410.21" width="128" height="128"/>
   <object id="586" name="value-95" type="iso_object" x="1412.75" y="1534.53" width="128" height="128"/>
-  <object id="588" name="value-135" type="iso_object" x="2948.14" y="2440.03" width="128" height="128"/>
- </objectgroup>
- <objectgroup id="80" name="DevMarkers">
-  <object id="580" name="[eax]" x="3204.14" y="2180.52" width="128" height="128"/>
-  <object id="581" name="[ecx]" x="2189.2" y="2190.89" width="128" height="128"/>
-  <object id="584" name="[esi]" x="2821.95" y="1409.66" width="128" height="128"/>
+  <object id="591" name="[eax]" type="iso_object" x="3200.01" y="2180.8" width="128" height="128"/>
+  <object id="592" name="[ecx]" type="iso_object" x="2185.07" y="2191.17" width="128" height="128"/>
+  <object id="593" name="[esi]" type="iso_object" x="2817.82" y="1409.94" width="128" height="128"/>
+  <object id="594" name="[ebx]" type="iso_object" x="2303.8" y="2302.27" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="78" name="Reference" visible="0">
   <object id="302" name="0" x="1279.83" y="3195.72" width="128" height="128"/>
