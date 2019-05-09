@@ -164,7 +164,7 @@ void TitleScreen::onEnter()
 
 	firstRun = false;
 
-	if (!Steam::isSquallySteamBuild())
+	if (Steam::isSquallyItchBuild())
 	{
 		this->storyModeButton->disableInteraction();
 	}
