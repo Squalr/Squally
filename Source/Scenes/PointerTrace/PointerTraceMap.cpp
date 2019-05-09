@@ -232,7 +232,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 				destinationIndex--;
 				outOfBoundsMovement = Vec2(-128.0f, -64.0f);
 
-				if (destinationIndex / gridWidth != sourceIndex / gridWidth)
+				if (destinationIndex < 0 || destinationIndex / gridWidth != sourceIndex / gridWidth)
 				{
 					outOfBounds = true;
 				}
