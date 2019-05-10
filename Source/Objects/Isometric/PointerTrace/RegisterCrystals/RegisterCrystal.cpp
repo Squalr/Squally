@@ -21,8 +21,10 @@
 #include "Strings/Generics/Constant.h"
 #include "Strings/PointerTrace/Assembly/Add.h"
 #include "Strings/PointerTrace/Assembly/Dec.h"
+#include "Strings/PointerTrace/Assembly/Div.h"
 #include "Strings/PointerTrace/Assembly/Inc.h"
 #include "Strings/PointerTrace/Assembly/Mov.h"
+#include "Strings/PointerTrace/Assembly/Mul.h"
 #include "Strings/PointerTrace/Assembly/OffsetNegative.h"
 #include "Strings/PointerTrace/Assembly/OffsetPositive.h"
 #include "Strings/PointerTrace/Assembly/Ptr.h"
@@ -167,6 +169,28 @@ void RegisterCrystal::buildString(LocalizedString* registerString)
 			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Sub::create(), true);
 		}
 	}
+	else if (this->instruction == "div")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Div::create(), true);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Div::create(), true);
+		}
+	}
+	else if (this->instruction == "mul")
+	{
+		if (this->isPointer)
+		{
+			this->buildInstructionPtrString(registerString, Strings::PointerTrace_Assembly_Mul::create(), true);
+		}
+		else
+		{
+			this->buildInstructionString(registerString, Strings::PointerTrace_Assembly_Mul::create(), true);
+		}
+	}
 	else if (this->instruction == "inc")
 	{
 		if (this->isPointer)
@@ -261,6 +285,14 @@ int RegisterCrystal::runInstruction()
 	else if (this->instruction == "sub")
 	{
 		return this->getRegisterValue() - this->getValue();
+	}
+	else if (this->instruction == "div")
+	{
+		return this->getRegisterValue() / this->getValue();
+	}
+	else if (this->instruction == "mul")
+	{
+		return this->getRegisterValue() * this->getValue();
 	}
 	else if (this->instruction == "inc")
 	{
