@@ -153,7 +153,7 @@
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>
-  <object id="33" name="eax-ptr-jmp" type="iso_object" x="1920" y="1920" width="128" height="128">
+  <object id="33" name="[eax]-jmp" type="iso_object" x="1920" y="1920" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>

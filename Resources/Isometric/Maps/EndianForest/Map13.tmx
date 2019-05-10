@@ -147,21 +147,21 @@
   <object id="564" name="[esi]" type="iso_object" x="1537.67" y="2175.66" width="128" height="128"/>
   <object id="565" name="[ebp]" type="iso_object" x="2949.2" y="1537.23" width="128" height="128"/>
   <object id="566" name="[esp]" type="iso_object" x="2941.59" y="2303.54" width="128" height="128"/>
-  <object id="567" name="eax-ptr-jmp" type="iso_object" x="2947.48" y="2690.42" width="128" height="128"/>
-  <object id="568" name="ecx-ptr-jmp" type="iso_object" x="2938.7" y="2430.69" width="128" height="128"/>
+  <object id="567" name="[eax]-jmp" type="iso_object" x="2947.48" y="2690.42" width="128" height="128"/>
+  <object id="568" name="[ecx]-jmp" type="iso_object" x="2938.7" y="2430.69" width="128" height="128"/>
   <object id="569" name="ebx-jmp" type="iso_object" x="2441.22" y="1540.42" width="128" height="128"/>
-  <object id="570" name="ebx-ptr-jmp" type="iso_object" x="2049.79" y="1530.67" width="128" height="128"/>
+  <object id="570" name="[ebx]-jmp" type="iso_object" x="2049.79" y="1530.67" width="128" height="128"/>
   <object id="572" name="esi-jmp" type="iso_object" x="2950.24" y="1784.33" width="128" height="128"/>
-  <object id="573" name="esi-ptr-jmp" type="iso_object" x="2937.33" y="1276.34" width="128" height="128"/>
+  <object id="573" name="[esi]-jmp" type="iso_object" x="2937.33" y="1276.34" width="128" height="128"/>
   <object id="574" name="edx-jmp" type="iso_object" x="1287.38" y="2943.66" width="128" height="128"/>
-  <object id="575" name="edx-ptr-jmp" type="iso_object" x="1800.88" y="2951.51" width="128" height="128"/>
+  <object id="575" name="[edx]-jmp" type="iso_object" x="1800.88" y="2951.51" width="128" height="128"/>
   <object id="576" name="edi-jmp" type="iso_object" x="1536.5" y="2050.17" width="128" height="128"/>
-  <object id="577" name="edi-ptr-jmp" type="iso_object" x="1537.68" y="2429.51" width="128" height="128"/>
+  <object id="577" name="[edi]-jmp" type="iso_object" x="1537.68" y="2429.51" width="128" height="128"/>
   <object id="578" name="ecx-jmp" type="iso_object" x="2951.7" y="2047.06" width="128" height="128"/>
   <object id="579" name="ebp-jmp" type="iso_object" x="1795.2" y="1417.89" width="128" height="128"/>
-  <object id="580" name="ebp-ptr-jmp" type="iso_object" x="1280.53" y="1411.67" width="128" height="128"/>
+  <object id="580" name="[ebp]-jmp" type="iso_object" x="1280.53" y="1411.67" width="128" height="128"/>
   <object id="581" name="esp-jmp" type="iso_object" x="2171.77" y="2686.14" width="128" height="128"/>
-  <object id="582" name="esp-ptr-jmp" type="iso_object" x="2170.01" y="3201.99" width="128" height="128"/>
+  <object id="582" name="[esp]-jmp" type="iso_object" x="2170.01" y="3201.99" width="128" height="128"/>
   <object id="583" name="esp-crystal" type="iso_object" x="2172.26" y="2940.86" width="128" height="128">
    <properties>
     <property name="instruction" value="inc"/>

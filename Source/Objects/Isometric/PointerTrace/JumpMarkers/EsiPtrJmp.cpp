@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string EsiPtrJmp::MapKeyEsiPtrJmp = "esi-ptr-jmp";
+const std::string EsiPtrJmp::MapKeyEsiPtrJmp = "[esi]-jmp";
 
 EsiPtrJmp* EsiPtrJmp::create(ValueMap& initProperties)
 {

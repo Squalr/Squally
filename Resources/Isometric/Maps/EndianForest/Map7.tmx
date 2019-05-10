@@ -126,7 +126,7 @@
     <property name="value" type="int" value="201"/>
    </properties>
   </object>
-  <object id="30" name="eax-ptr-jmp" type="iso_object" x="2811.32" y="2430.32" width="128" height="128"/>
+  <object id="30" name="[eax]-jmp" type="iso_object" x="2811.32" y="2430.32" width="128" height="128"/>
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>

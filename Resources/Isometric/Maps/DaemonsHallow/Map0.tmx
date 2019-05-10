@@ -138,7 +138,7 @@
     <property name="value" type="int" value="27"/>
    </properties>
   </object>
-  <object id="41" name="edi-ptr-jmp" type="iso_object" x="2690" y="2046" width="128" height="128">
+  <object id="41" name="[edi]-jmp" type="iso_object" x="2690" y="2046" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>

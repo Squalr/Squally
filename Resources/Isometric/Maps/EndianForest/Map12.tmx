@@ -156,14 +156,14 @@
   <object id="562" name="esi-jmp" type="iso_object" x="1543.33" y="2440.22" width="128" height="128"/>
   <object id="563" name="esp-jmp" type="iso_object" x="2555.28" y="2679.27" width="128" height="128"/>
   <object id="565" name="ebx-jmp" type="iso_object" x="2688.75" y="2681.26" width="128" height="128"/>
-  <object id="566" name="edi-ptr-jmp" type="iso_object" x="2170.25" y="1917.3" width="128" height="128"/>
+  <object id="566" name="[edi]-jmp" type="iso_object" x="2170.25" y="1917.3" width="128" height="128"/>
   <object id="567" name="[edi]" type="iso_object" x="2194" y="2694" width="128" height="128"/>
   <object id="568" name="[eax]" type="iso_object" x="1290" y="1406" width="128" height="128"/>
   <object id="569" name="[ebx]" type="iso_object" x="1542" y="3082" width="128" height="128"/>
   <object id="570" name="[ecx]" type="iso_object" x="2952" y="2560" width="128" height="128"/>
   <object id="571" name="[esp]" type="iso_object" x="1674" y="3206" width="128" height="128"/>
   <object id="572" name="[esp]" type="iso_object" x="2690" y="1278" width="128" height="128"/>
-  <object id="573" name="esp-ptr-jmp" type="iso_object" x="2304" y="2296" width="128" height="128"/>
+  <object id="573" name="[esp]-jmp" type="iso_object" x="2304" y="2296" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="78" name="Reference" visible="0">
   <object id="302" name="0" x="1279.83" y="3195.72" width="128" height="128"/>

@@ -134,17 +134,17 @@
   <object id="47" name="eax" type="iso_object" x="1535.02" y="2164.73" width="128" height="128"/>
   <object id="48" name="ebp" type="iso_object" x="3067" y="2307.98" width="128" height="128"/>
   <object id="558" name="edi-jmp" type="iso_object" x="1789.68" y="2931.09" width="128" height="128"/>
-  <object id="559" name="eax-ptr-jmp" type="iso_object" x="2690.1" y="2933.41" width="128" height="128"/>
+  <object id="559" name="[eax]-jmp" type="iso_object" x="2690.1" y="2933.41" width="128" height="128"/>
   <object id="562" name="esi-jmp" type="iso_object" x="3192.66" y="1658.4" width="128" height="128"/>
   <object id="563" name="eax-jmp" type="iso_object" x="2559.81" y="2170.27" width="128" height="128"/>
-  <object id="564" name="ecx-ptr-jmp" type="iso_object" x="3197.31" y="2807.77" width="128" height="128"/>
-  <object id="566" name="esi-ptr-jmp" type="iso_object" x="1401.13" y="2696.09" width="128" height="128"/>
+  <object id="564" name="[ecx]-jmp" type="iso_object" x="3197.31" y="2807.77" width="128" height="128"/>
+  <object id="566" name="[esi]-jmp" type="iso_object" x="1401.13" y="2696.09" width="128" height="128"/>
   <object id="567" name="edi-jmp" type="iso_object" x="1666.37" y="1788.69" width="128" height="128"/>
   <object id="568" name="esp-jmp" type="iso_object" x="1417.41" y="1535.09" width="128" height="128"/>
   <object id="569" name="ebp-jmp" type="iso_object" x="2303.87" y="1281.48" width="128" height="128"/>
   <object id="583" name="edx-jmp" type="iso_object" x="2429.96" y="1410.49" width="128" height="128"/>
-  <object id="585" name="esp-ptr-jmp" type="iso_object" x="2932.55" y="2305.13" width="128" height="128"/>
-  <object id="587" name="ebx-ptr-jmp" type="iso_object" x="2567.23" y="2429.15" width="128" height="128"/>
+  <object id="585" name="[esp]-jmp" type="iso_object" x="2932.55" y="2305.13" width="128" height="128"/>
+  <object id="587" name="[ebx]-jmp" type="iso_object" x="2567.23" y="2429.15" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="79" name="Values">
   <properties>

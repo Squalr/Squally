@@ -165,8 +165,8 @@
   </object>
   <object id="577" name="edi-jmp" type="iso_object" x="2301.27" y="1415.84" width="128" height="128"/>
   <object id="578" name="edi-jmp" type="iso_object" x="2058.4" y="1658.7" width="128" height="128"/>
-  <object id="579" name="edi-ptr-jmp" type="iso_object" x="1542.1" y="1414.14" width="128" height="128"/>
-  <object id="585" name="esp-ptr-jmp" type="iso_object" x="2051.47" y="2817.27" width="128" height="128"/>
+  <object id="579" name="[edi]-jmp" type="iso_object" x="1542.1" y="1414.14" width="128" height="128"/>
+  <object id="585" name="[esp]-jmp" type="iso_object" x="2051.47" y="2817.27" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="79" name="Values">
   <properties>
