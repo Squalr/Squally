@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string EdiPtrJmp::MapKeyEdiPtrJmp = "edi-ptr-jmp";
+const std::string EdiPtrJmp::MapKeyEdiPtrJmp = "[edi]-jmp";
 
 EdiPtrJmp* EdiPtrJmp::create(ValueMap& initProperties)
 {
