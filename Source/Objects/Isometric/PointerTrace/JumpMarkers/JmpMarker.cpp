@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -44,11 +45,14 @@ JmpMarker::JmpMarker(ValueMap& initProperties) : super(initProperties)
 
 JmpMarker::~JmpMarker()
 {
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void JmpMarker::onEnter()
 {
 	super::onEnter();
+
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 	
 	this->scheduleUpdate();
 }
