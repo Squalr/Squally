@@ -17,14 +17,6 @@ public:
 	static float getMusicVolume();
 	static float getSoundVolume();
 
-	enum class BackgroundMusicStates { 
-		PLAYING,
-		PAUSED,
-		STOPPED,
-		FADING_IN,
-		FADING_OUT,
-	};
-
 private:
 	typedef GlobalNode super;
 	static SoundManager* getInstance();
@@ -32,16 +24,10 @@ private:
 	SoundManager();
 	~SoundManager();
 
-	void onEnter() override;
-	void update(float dt) override;
-
 	static SoundManager * soundManagerInstance;
 
 	int backgroundMusicId;
-	float timeRemainingOnTransition;
-	SoundManager::BackgroundMusicStates backgroundMusicState;
 	std::string currentMusicResource;
-	std::string nextMusicResource;
 
 	static const int INVALID_ID = -1;
 };

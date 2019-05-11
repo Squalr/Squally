@@ -3,7 +3,6 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/Checkbox.h"
