@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string EdiPtrInitializer::MapKeyEdiPtrInitializer = "[edi]";
+const std::string EdiPtrInitializer::MapKeyEdiPtrInitializerRegex = "\\[edi( ?(\\+|\\-) ?[0-9]+)?\\]";
 
 EdiPtrInitializer* EdiPtrInitializer::create(ValueMap& initProperties)
 {
@@ -28,5 +28,5 @@ void EdiPtrInitializer::setGridIndex(int gridIndex)
 {
 	super::setGridIndex(gridIndex);
 
-	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEdi(), gridIndex));
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEdi() + this->offset, gridIndex));
 }

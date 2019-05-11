@@ -1,20 +1,20 @@
 #pragma once
 
-#include "Objects/Isometric/PointerTrace/GridObject.h"
+#include "Objects/Isometric/PointerTrace/ValueInitializers/PtrInitializerBase.h"
 
-class EaxPtrInitializer : public GridObject
+class EaxPtrInitializer : public PtrInitializerBase
 {
 public:
 	static EaxPtrInitializer* create(cocos2d::ValueMap& initProperties);
 
 	void setGridIndex(int gridIndex) override;
 
-	static const std::string MapKeyEaxPtrInitializer;
+	static const std::string MapKeyEaxPtrInitializerRegex;
 
 protected:
 	EaxPtrInitializer(cocos2d::ValueMap& initProperties);
 	~EaxPtrInitializer();
 
 private:
-	typedef GridObject super;
+	typedef PtrInitializerBase super;
 };

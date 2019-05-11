@@ -137,7 +137,7 @@ void JmpMarker::buildJmpPtrString(LocalizedString* registerString)
 		LocalizedString* offsetString = (this->getOffset() < 0) 
 			? (LocalizedString*)Strings::PointerTrace_Assembly_OffsetNegative::create()
 			: (LocalizedString*)Strings::PointerTrace_Assembly_OffsetPositive::create();
-		ConstantString* offsetValueString = ConstantString::create(std::to_string(this->getOffset()));
+		ConstantString* offsetValueString = ConstantString::create(std::to_string(std::abs(this->getOffset())));
 
 		offsetString->setStringReplacementVariables({ registerString, offsetValueString });
 		ptrString->setStringReplacementVariables(offsetString);

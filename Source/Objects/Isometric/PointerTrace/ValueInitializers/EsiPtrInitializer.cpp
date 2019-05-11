@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string EsiPtrInitializer::MapKeyEsiPtrInitializer = "[esi]";
+const std::string EsiPtrInitializer::MapKeyEsiPtrInitializerRegex = "\\[esi( ?(\\+|\\-) ?[0-9]+)?\\]";
 
 EsiPtrInitializer* EsiPtrInitializer::create(ValueMap& initProperties)
 {
@@ -28,5 +28,5 @@ void EsiPtrInitializer::setGridIndex(int gridIndex)
 {
 	super::setGridIndex(gridIndex);
 
-	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEsi(), gridIndex));
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEsi() + this->offset, gridIndex));
 }

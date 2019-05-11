@@ -198,39 +198,39 @@ void IsometricObjectDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			newObject = EspPtrJmp::create(properties);
 		}
-		else if (StrUtils::startsWith(name, ValueInitializer::MapKeyValueInitializerPrefix, false))
+		else if (StrUtils::isRegexMatch(name, ValueInitializer::MapKeyValueInitializerRegex))
 		{
 			newObject = ValueInitializer::create(properties);
 		}
-		else if (name == EaxPtrInitializer::MapKeyEaxPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EaxPtrInitializer::MapKeyEaxPtrInitializerRegex))
 		{
 			newObject = EaxPtrInitializer::create(properties);
 		}
-		else if (name == EbxPtrInitializer::MapKeyEbxPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EbxPtrInitializer::MapKeyEbxPtrInitializerRegex))
 		{
 			newObject = EbxPtrInitializer::create(properties);
 		}
-		else if (name == EcxPtrInitializer::MapKeyEcxPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EcxPtrInitializer::MapKeyEcxPtrInitializerRegex))
 		{
 			newObject = EcxPtrInitializer::create(properties);
 		}
-		else if (name == EdxPtrInitializer::MapKeyEdxPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EdxPtrInitializer::MapKeyEdxPtrInitializerRegex))
 		{
 			newObject = EdxPtrInitializer::create(properties);
 		}
-		else if (name == EdiPtrInitializer::MapKeyEdiPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EdiPtrInitializer::MapKeyEdiPtrInitializerRegex))
 		{
 			newObject = EdiPtrInitializer::create(properties);
 		}
-		else if (name == EsiPtrInitializer::MapKeyEsiPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EsiPtrInitializer::MapKeyEsiPtrInitializerRegex))
 		{
 			newObject = EsiPtrInitializer::create(properties);
 		}
-		else if (name == EbpPtrInitializer::MapKeyEbpPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EbpPtrInitializer::MapKeyEbpPtrInitializerRegex))
 		{
 			newObject = EbpPtrInitializer::create(properties);
 		}
-		else if (name == EspPtrInitializer::MapKeyEspPtrInitializer)
+		else if (StrUtils::isRegexMatch(name, EspPtrInitializer::MapKeyEspPtrInitializerRegex))
 		{
 			newObject = EspPtrInitializer::create(properties);
 		}
