@@ -773,7 +773,6 @@
   <object id="57" name="level-node" type="iso_object" x="19844.7" y="32127.7" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
-    <property name="is-group-finale" type="bool" value="true"/>
     <property name="level-index" type="int" value="21"/>
     <property name="map-file" value="EndianForest/Map21"/>
    </properties>
@@ -870,18 +869,9 @@
     <property name="map-file" value="EndianForest/Map23"/>
    </properties>
   </object>
-  <object id="73" name="level-node" type="iso_object" x="21251.8" y="31101.9" width="128" height="128">
-   <properties>
-    <property name="group-index" type="int" value="0"/>
-    <property name="is-group-finale" type="bool" value="true"/>
-    <property name="level-index" type="int" value="24"/>
-    <property name="map-file" value="EndianForest/Map23"/>
-   </properties>
-  </object>
   <object id="74" name="level-node" type="iso_object" x="20226.9" y="31357.9" width="128" height="128">
    <properties>
     <property name="group-index" type="int" value="0"/>
-    <property name="is-group-finale" type="bool" value="true"/>
     <property name="level-index" type="int" value="22"/>
     <property name="map-file" value="EndianForest/Map22"/>
    </properties>
