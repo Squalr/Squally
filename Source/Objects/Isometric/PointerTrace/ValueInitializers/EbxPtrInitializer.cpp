@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string EbxPtrInitializer::MapKeyEbxPtrInitializer = "[ebx]";
+const std::string EbxPtrInitializer::MapKeyEbxPtrInitializerRegex = "\\[ebx( ?(\\+|\\-) ?[0-9]+)?\\]";
 
 EbxPtrInitializer* EbxPtrInitializer::create(ValueMap& initProperties)
 {
@@ -28,5 +28,5 @@ void EbxPtrInitializer::setGridIndex(int gridIndex)
 {
 	super::setGridIndex(gridIndex);
 
-	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEbx(), gridIndex));
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEbx() + this->offset, gridIndex));
 }

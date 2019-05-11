@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string EaxPtrInitializer::MapKeyEaxPtrInitializer = "[eax]";
+const std::string EaxPtrInitializer::MapKeyEaxPtrInitializerRegex = "\\[eax( ?(\\+|\\-) ?[0-9]+)?\\]";
 
 EaxPtrInitializer* EaxPtrInitializer::create(ValueMap& initProperties)
 {
@@ -28,5 +28,5 @@ void EaxPtrInitializer::setGridIndex(int gridIndex)
 {
 	super::setGridIndex(gridIndex);
 
-	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEax(), gridIndex));
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEax() + this->offset, gridIndex));
 }

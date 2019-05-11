@@ -13,6 +13,7 @@ public:
 	static bool isInteger(std::string str);
 	static bool isFloat(std::string str);
 	static bool isHexNumber(std::string str);
+	static bool isRegexMatch(const std::string str, const std::string regex);
 	static std::string ltrim(std::string str, std::string toRemove, bool ignoreCase = false);
 	static std::string rtrim(std::string str, std::string toRemove, bool ignoreCase = false);
 	static std::string trim(std::string str, std::string toRemove, bool ignoreCase = false);

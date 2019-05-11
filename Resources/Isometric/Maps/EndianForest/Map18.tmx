@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="567">
+<map version="1.2" tiledversion="1.2.2" orientation="isometric" renderorder="right-down" width="40" height="40" tilewidth="256" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="568">
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="../TileMap.png" width="4096" height="3584"/>
  </tileset>
@@ -131,7 +131,7 @@
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>
-  <object id="41" name="ebx" type="iso_object" x="2563.24" y="1416.61" width="128" height="128"/>
+  <object id="41" name="ebx" type="iso_object" x="1539.24" y="1540.39" width="128" height="128"/>
   <object id="42" name="ecx" type="iso_object" x="2689.14" y="1530.82" width="128" height="128"/>
   <object id="43" name="edi" type="iso_object" x="2429.53" y="1296.71" width="128" height="128"/>
   <object id="44" name="edx" type="iso_object" x="2444.95" y="1538.66" width="128" height="128"/>
@@ -164,8 +164,9 @@
    </properties>
   </object>
   <object id="564" name="ebp-jmp" type="iso_object" x="2948.02" y="3195.55" width="128" height="128"/>
-  <object id="565" name="ebx-jmp" type="iso_object" x="1406.38" y="3191.8" width="128" height="128"/>
+  <object id="565" name="[ebx]-jmp" type="iso_object" x="1406.38" y="3191.8" width="128" height="128"/>
   <object id="566" name="esi-jmp" type="iso_object" x="2569.17" y="2044.01" width="128" height="128"/>
+  <object id="567" name="[ebx]" type="iso_object" x="2563.55" y="1411.98" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="78" name="Reference" visible="0">
   <object id="302" name="0" x="1279.83" y="3195.72" width="128" height="128"/>
