@@ -5,7 +5,10 @@
 
 #include "Resources/UIResources.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
@@ -36,11 +39,14 @@ LevelNode::LevelNode(const cocos2d::ValueMap& properties) : super(properties)
 	this->isGroupFinale = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyGroupFinale, Value(false)).asBool();
 	this->disabledSprite = Sprite::create(UIResources::Menus_WorldMap_MarkerCompleted);
 	this->sprite = ClickableNode::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
+	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, ConstantString::create(std::to_string(this->levelIndex)));
 
 	this->setZSorted(true);
 	
 	this->disabledSprite->setScale(2.0f);
 	this->sprite->setScale(2.0f);
+
+	this->indexLabel->enableOutline(Color4B::BLACK, 4);
 
 	if (this->nodeMapFile != "")
 	{
@@ -49,10 +55,21 @@ LevelNode::LevelNode(const cocos2d::ValueMap& properties) : super(properties)
 
 	this->addChild(this->disabledSprite);
 	this->addChild(this->sprite);
+	this->addChild(this->indexLabel);
 }
 
 LevelNode::~LevelNode()
 {
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->indexLabel));
+}
+
+void LevelNode::onEnter()
+{
+	super::onEnter();
+
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->indexLabel));
+
+	this->setLockState();
 }
 
 void LevelNode::initializePositions()
@@ -78,13 +95,6 @@ void LevelNode::initializeListeners()
 			SaveManager::saveGlobalData(this->getSaveKey(), Value(true));
 		}));
 	});
-}
-
-void LevelNode::onEnter()
-{
-	super::onEnter();
-
-	this->setLockState();
 }
 
 std::string LevelNode::getSaveKey()
