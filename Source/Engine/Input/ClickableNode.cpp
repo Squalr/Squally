@@ -72,7 +72,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->debugHitbox->setVisible(false);
 
 	this->debugCachedPos = Vec2::ZERO;
-	this->setContentSize(this->sprite->getContentSize());
+	this->setContentSize(this->sprite == nullptr ? Size(256.0f, 128.0f) : this->sprite->getContentSize());
 
 	this->addChild(this->sprite);
 	this->addChild(this->spriteSelected);
