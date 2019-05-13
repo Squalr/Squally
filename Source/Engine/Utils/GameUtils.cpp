@@ -261,7 +261,7 @@ Vec2 GameUtils::getWorldCoords(Node* node)
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
 	{
-		Vec2 relativeCoords = parent->convertToWorldSpace(resultCoords);
+		Vec2 relativeCoords = parent == nullptr ? Vec2::ZERO : parent->convertToWorldSpace(resultCoords);
 		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
 		Vec2 fixedCoords = Vec2(realCoords.x, realCoords.y) + Vec2(relativeCoords.x, -relativeCoords.y / 2.0f);
 
