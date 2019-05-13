@@ -37,6 +37,7 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 
 HackableObject::~HackableObject()
 {
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::onEnter()
@@ -44,9 +45,7 @@ void HackableObject::onEnter()
 	super::onEnter();
 
 	// Move the UI elements to the top-most layer
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
-		this->uiElements
-	));
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
 
 	this->registerHackables();
 	this->scheduleUpdate();
