@@ -24,6 +24,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Generated
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${GLEW_INCLUDE_DIRS}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -38,6 +39,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     spriter2dx::spriter2dx
     SteamWorks::API
     breakpad::client
+
+    ${OPENGL_gl_LIBRARY}
+    ${GLEW_LIBRARIES}
 
     # platform dependencies
     $<$<PLATFORM_ID:Windows>:iphlpapi>
