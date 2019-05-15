@@ -5,12 +5,12 @@
 
 using namespace cocos2d;
 
-const std::string DialogEvents::DialogOpenEvent = "dialog_open_event";
+const std::string DialogEvents::EventDialogOpen = "EVENT_DIALOG_OPEN";
 
 void DialogEvents::TriggerDialog(DialogOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		DialogEvents::DialogOpenEvent,
+		DialogEvents::EventDialogOpen,
 		&args
 	);
 }

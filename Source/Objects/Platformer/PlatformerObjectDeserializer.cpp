@@ -132,6 +132,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = SpikeLog::create(properties);
 		}
+		else if (name == SquallyShip::MapKeySquallyShip)
+		{
+			newObject = SquallyShip::create(properties);
+		}
 		else if (name == Monkey::MapKeyMonkey)
 		{
 			newObject = Monkey::create(properties);

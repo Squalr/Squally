@@ -216,7 +216,7 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::EndianForest_Forest));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::EndianForest_Waterfall));
 
 	//// NavigationEvents::navigateSaveSelect();
 }

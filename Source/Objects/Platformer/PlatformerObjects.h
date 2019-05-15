@@ -1,4 +1,5 @@
 #pragma once
+#include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/Animals/Animals.h"
 #include "Objects/Platformer/Collectables/Chest.h"
 #include "Objects/Platformer/Collectables/Doubloon/Doubloon.h"

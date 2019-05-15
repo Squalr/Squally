@@ -43,6 +43,7 @@ public:
 		}
 	};
 
+	void buildInverseCollisionMap();
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
 	void bindTo(cocos2d::Node* bindTarget);
 	void forceBindTo(cocos2d::Node* bindTarget, float forceBounceFactor);

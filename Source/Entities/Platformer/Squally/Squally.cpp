@@ -2,10 +2,13 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/CameraTrackingData.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h" // Debugging
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h" // Debugging
@@ -65,6 +68,13 @@ Squally::~Squally()
 void Squally::onEnter()
 {
 	super::onEnter();
+
+	// Request camera track player
+	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(128.0f, 96.0f));
+	GameCamera::getInstance()->setTarget(trackingData);
+
+	// Request HUD track player
+	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 
 	if (PlayerEquipment::getInstance()->getWeapon() == nullptr)
 	{
