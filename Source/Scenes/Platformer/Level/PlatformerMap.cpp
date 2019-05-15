@@ -59,16 +59,6 @@ PlatformerMap::~PlatformerMap()
 void PlatformerMap::onEnter()
 {
 	super::onEnter();
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
-	{
-		this->gameHud->getCurrencyDisplay()->setCurrencyInventory(squally->getCurrencyInventory());
-		this->gameHud->getRuneBar()->setStatsTarget(squally);
-		this->gameHud->getStatsBars()->setStatsTarget(squally);
-
-		CameraTrackingData trackingData = CameraTrackingData(squally, Vec2(128.0f, 96.0f));
-		GameCamera::getInstance()->setTarget(trackingData);
-	}));
 
 	this->scheduleUpdate();
 }

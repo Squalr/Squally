@@ -11,6 +11,8 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string EndianForest_Battlegrounds;
 	extern const std::string EndianForest_Forest;
+	extern const std::string EndianForest_Town_Main;
+	extern const std::string EndianForest_Waterfall;
 	extern const std::string LambdaCrypts_Crypts;
 	extern const std::string SeaSharpCaverns_Caverns;
 	extern const std::string TileMap;

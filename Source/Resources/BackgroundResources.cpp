@@ -6,9 +6,11 @@
 #include <string>
 
 const std::string BackgroundResources::Bliss = "Platformer/Backgrounds/Bliss.png";
+const std::string BackgroundResources::DarkForestSky = "Platformer/Backgrounds/DarkForestSky.png";
 const std::string BackgroundResources::Dawn = "Platformer/Backgrounds/Dawn.png";
 const std::string BackgroundResources::Jungle = "Platformer/Backgrounds/Jungle.jpg";
 const std::string BackgroundResources::Laboratory = "Platformer/Backgrounds/Laboratory.png";
+const std::string BackgroundResources::LakeSideSky = "Platformer/Backgrounds/LakeSideSky.png";
 const std::string BackgroundResources::MatrixRain_Cloud = "Platformer/Backgrounds/MatrixRain/Cloud.bmp";
 const std::string BackgroundResources::MatrixRain_FontChar0 = "Platformer/Backgrounds/MatrixRain/FontChar0.png";
 const std::string BackgroundResources::MatrixRain_GreenFontsAlpha = "Platformer/Backgrounds/MatrixRain/GreenFontsAlpha.png";
@@ -30,3 +32,4 @@ const std::string BackgroundResources::SkySunrise = "Platformer/Backgrounds/SkyS
 const std::string BackgroundResources::SkySunset = "Platformer/Backgrounds/SkySunset.png";
 const std::string BackgroundResources::SkyYellow = "Platformer/Backgrounds/SkyYellow.png";
 const std::string BackgroundResources::Sun = "Platformer/Backgrounds/Sun.png";
+const std::string BackgroundResources::WaterfallSky = "Platformer/Backgrounds/WaterfallSky.png";

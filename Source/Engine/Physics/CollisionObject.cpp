@@ -8,6 +8,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -85,6 +86,21 @@ void CollisionObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
+	this->buildInverseCollisionMap();
+}
+
+void CollisionObject::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventCollisonMapUpdated, [=](EventCustom* eventCustom)
+	{
+		this->buildInverseCollisionMap();
+	}));
+}
+
+void CollisionObject::buildInverseCollisionMap()
+{
 	// Part of Box2D requires that both the colliders and collidees have their bitmasks set -- this is how we accomplish that
 	if (this->physicsBody != nullptr)
 	{
@@ -96,11 +112,6 @@ void CollisionObject::onEnterTransitionDidFinish()
 			this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | inverseTypes);
 		}
 	}
-}
-
-void CollisionObject::initializeListeners()
-{
-	super::initializeListeners();
 }
 
 void CollisionObject::setCollisionType(CollisionType collisionType)
@@ -344,6 +355,8 @@ void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<Co
 	{
 		CollisionObject::InverseCollisionMap[collisionType] = this->getCollisionType();
 	}
+
+	ObjectEvents::TriggerCollisionMapUpdated();
 
 	if (eventMap.find(collisionType) == eventMap.end())
 	{

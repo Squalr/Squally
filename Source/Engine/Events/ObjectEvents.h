@@ -57,6 +57,14 @@ public:
 class ObjectEvents
 {
 public:
+	static const std::string EventCollisonMapUpdated;
+	static const std::string EventQueryObject;
+	static const std::string EventBroadCastMapObjectStatePrefix;
+	static const std::string EventSpawnObject;
+	static const std::string EventSpawnObjectDelegator;
+	static const std::string EventMoveObjectToTopLayer;
+	static const std::string EventUnbindObject;
+
 	enum class SpawnMethod
 	{
 		Below,
@@ -92,18 +100,12 @@ public:
 		RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
 	};
 
+	static void TriggerCollisionMapUpdated();
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerMoveObjectToTopLayer(RelocateObjectArgs args);
 	static void TriggerUnbindObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
-
-	static const std::string EventQueryObject;
-	static const std::string EventBroadCastMapObjectStatePrefix;
-	static const std::string EventSpawnObject;
-	static const std::string EventSpawnObjectDelegator;
-	static const std::string EventMoveObjectToTopLayer;
-	static const std::string EventUnbindObject;
 
 	template<class T>
 	static void QueryObjects(QueryObjectsArgs<T> args)

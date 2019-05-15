@@ -153,7 +153,7 @@ void GameUtils::flattenNode(Node* parent)
 	}
 }
 
-Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
+Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, bool addAsReentry, int index)
 {
 	if (node == nullptr)
 	{
@@ -184,13 +184,16 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	}
 	else if (newParent != nullptr)
 	{
-		newParent->addChildAsReentry(node);
+		if (addAsReentry)
+		{
+			newParent->addChildAsReentry(node);
+		}
+		else
+		{
+			newParent->addChild(node);
+		}
+		
 		node->setPosition(newPosition);
-	}
-	else if (node->getParent() != nullptr)
-	{
-		node->getParent()->removeChild(node);
-		node = nullptr;
 	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.

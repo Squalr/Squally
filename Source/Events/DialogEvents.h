@@ -4,7 +4,7 @@
 class DialogEvents
 {
 public:
-	static const std::string DialogOpenEvent;
+	static const std::string EventDialogOpen;
 
 	struct DialogOpenArgs
 	{
