@@ -289,6 +289,11 @@ HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 	return this->hexusOpponentData;
 }
 
+CollisionObject* PlatformerEntity::getEntityCollision()
+{
+	return this->entityCollision;
+}
+
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
 {
 	return this->attacks;

@@ -115,7 +115,6 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 	// Map the coordinates of Tiled space to Cocos space for 2d games:
 	else
 	{
-
 		Size mapSize = Size(
 			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyHeight, Value(0.0f)).asFloat()

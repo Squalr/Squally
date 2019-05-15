@@ -88,12 +88,22 @@ void SerializableMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventArgs)
 	{
-		this->spawnObject(static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventArgs->getUserData()));
+		ObjectEvents::RequestObjectSpawnDelegatorArgs* args = static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->spawnObject(args);
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventArgs)
 	{
-		this->moveObjectToTopLayer(static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData()));
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->moveObjectToTopLayer(args);
+		}
 	}));
 }
 
@@ -248,10 +258,12 @@ std::string SerializableMap::getMapFileName()
 
 void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 {
-	if (this->serializableLayers.empty())
+	if (this->serializableLayers.empty() || args->objectToSpawn == nullptr)
 	{
 		return;
 	}
+
+	bool isReentry = (args->objectToSpawn->getParent() != nullptr);
 
 	switch (args->spawnMethod)
 	{
@@ -265,11 +277,11 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 				{
 					if (prevIt != this->serializableLayers.end())
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*prevIt), true);
+						GameUtils::changeParent(args->objectToSpawn, (*prevIt), true, isReentry);
 					}
 					else
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*it), true);
+						GameUtils::changeParent(args->objectToSpawn, (*it), true, isReentry);
 					}
 				}
 
@@ -285,7 +297,7 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 			{
 				if (*it == args->sourceLayer)
 				{
-					GameUtils::changeParent(args->objectToSpawn, (*it), true);
+					GameUtils::changeParent(args->objectToSpawn, (*it), true, isReentry);
 				}
 			}
 			
