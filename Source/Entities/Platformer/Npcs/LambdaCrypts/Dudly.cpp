@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Rusty.h"
+#include "Dudly.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Rusty::MapKeyRusty = "rusty";
-HexusOpponentData* Rusty::HexusOpponentDataInstance = nullptr;
-const std::string Rusty::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUSTY";
+const std::string Dudly::MapKeyDudly = "dudly";
+HexusOpponentData* Dudly::HexusOpponentDataInstance = nullptr;
+const std::string Dudly::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DUDLY";
 
-Rusty* Rusty::deserialize(ValueMap& initProperties)
+Dudly* Dudly::deserialize(ValueMap& initProperties)
 {
-	Rusty* instance = new Rusty(initProperties);
+	Dudly* instance = new Dudly(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Rusty::Rusty(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_EndianForest_Rusty_Animations,
-	EntityResources::Npcs_EndianForest_Rusty_Emblem,
+Dudly::Dudly(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
+	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	1.0f,
+	0.9f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Rusty::getHexusOpponentData();
+	this->hexusOpponentData = Dudly::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Rusty::Rusty(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Rusty::~Rusty()
+Dudly::~Dudly()
 {
 }
 
@@ -73,40 +73,45 @@ Rusty::~Rusty()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Rusty::getAvatarFrameOffset()
+Vec2 Dudly::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Rusty::getHexusOpponentData()
+HexusOpponentData* Dudly::getHexusOpponentData()
 {
-	if (Rusty::HexusOpponentDataInstance == nullptr)
+	if (Dudly::HexusOpponentDataInstance == nullptr)
 	{
-		Rusty::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Rusty_Animations,
-			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
+		Dudly::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
+			HexusResources::Menus_HexusFrameLambdaCrypts,
+			0.9f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Rusty::HexusSaveKey,
+			Dudly::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Earth,
-			0.019f,
-			HexusOpponentData::generateDeck(32, 0.019f,
+			Card::CardStyle::Shadow,
+			0.777f,
+			HexusOpponentData::generateDeck(32, 0.777f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
+				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 
 			}),
 			nullptr
 		);
 	}
 
-	return Rusty::HexusOpponentDataInstance;
+	return Dudly::HexusOpponentDataInstance;
 }

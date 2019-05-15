@@ -92,8 +92,8 @@ HexusOpponentData* Leon::getHexusOpponentData()
 			Leon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.969f,
-			HexusOpponentData::generateDeck(32, 0.969f,
+			0.971f,
+			HexusOpponentData::generateDeck(32, 0.971f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

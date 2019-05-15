@@ -92,8 +92,8 @@ HexusOpponentData* Brine::getHexusOpponentData()
 			Brine::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.646f,
-			HexusOpponentData::generateDeck(32, 0.646f,
+			0.661f,
+			HexusOpponentData::generateDeck(32, 0.661f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -92,8 +92,8 @@ HexusOpponentData* Zelina::getHexusOpponentData()
 			Zelina::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.792f,
-			HexusOpponentData::generateDeck(32, 0.792f,
+			0.795f,
+			HexusOpponentData::generateDeck(32, 0.795f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

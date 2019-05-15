@@ -92,8 +92,8 @@ HexusOpponentData* Kringle::getHexusOpponentData()
 			Kringle::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.583f,
-			HexusOpponentData::generateDeck(32, 0.583f,
+			0.580f,
+			HexusOpponentData::generateDeck(32, 0.580f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

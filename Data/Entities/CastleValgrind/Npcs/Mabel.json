@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "(1.0f / 8.0f) * (3.0f + (1.0f / 12.0f) * 6.0f)",
+      "Strength": "(1.0f / 8.0f) * (3.0f + (1.0f / 14.0f) * 6.0f)",
       "Strategy": "Random",
       "PresetCards": [
         "Greed",

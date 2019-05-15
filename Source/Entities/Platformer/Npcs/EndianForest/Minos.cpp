@@ -92,8 +92,8 @@ HexusOpponentData* Minos::getHexusOpponentData()
 			Minos::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.067f,
-			HexusOpponentData::generateDeck(32, 0.067f,
+			0.062f,
+			HexusOpponentData::generateDeck(32, 0.062f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

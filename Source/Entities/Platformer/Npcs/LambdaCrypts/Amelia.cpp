@@ -92,8 +92,8 @@ HexusOpponentData* Amelia::getHexusOpponentData()
 			Amelia::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.760f,
-			HexusOpponentData::generateDeck(32, 0.760f,
+			0.759f,
+			HexusOpponentData::generateDeck(32, 0.759f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

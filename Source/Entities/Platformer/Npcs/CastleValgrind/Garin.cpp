@@ -92,8 +92,8 @@ HexusOpponentData* Garin::getHexusOpponentData()
 			Garin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.406f,
-			HexusOpponentData::generateDeck(32, 0.406f,
+			0.393f,
+			HexusOpponentData::generateDeck(32, 0.393f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

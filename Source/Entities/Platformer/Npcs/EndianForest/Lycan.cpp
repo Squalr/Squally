@@ -92,8 +92,8 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 			Lycan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.077f,
-			HexusOpponentData::generateDeck(32, 0.077f,
+			0.071f,
+			HexusOpponentData::generateDeck(32, 0.071f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

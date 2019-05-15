@@ -92,8 +92,8 @@ HexusOpponentData* Thion::getHexusOpponentData()
 			Thion::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.865f,
-			HexusOpponentData::generateDeck(32, 0.865f,
+			0.857f,
+			HexusOpponentData::generateDeck(32, 0.857f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

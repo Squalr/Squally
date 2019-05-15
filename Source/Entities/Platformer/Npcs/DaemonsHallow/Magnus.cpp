@@ -92,8 +92,8 @@ HexusOpponentData* Magnus::getHexusOpponentData()
 			Magnus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.708f,
-			HexusOpponentData::generateDeck(32, 0.708f,
+			0.714f,
+			HexusOpponentData::generateDeck(32, 0.714f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

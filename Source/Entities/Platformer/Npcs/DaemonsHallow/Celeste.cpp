@@ -92,8 +92,8 @@ HexusOpponentData* Celeste::getHexusOpponentData()
 			Celeste::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.656f,
-			HexusOpponentData::generateDeck(32, 0.656f,
+			0.670f,
+			HexusOpponentData::generateDeck(32, 0.670f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

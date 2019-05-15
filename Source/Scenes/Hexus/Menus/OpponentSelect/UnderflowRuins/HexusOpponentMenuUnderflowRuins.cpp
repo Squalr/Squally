@@ -7,6 +7,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ajax.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Angel.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Aphrodite.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Ares.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Athena.h"
@@ -17,6 +18,7 @@
 #include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Horus.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Poseidon.h"
+#include "Entities/Platformer/Npcs/UnderflowRuins/Thor.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Zeus.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuins.h"
@@ -41,6 +43,7 @@ void HexusOpponentMenuUnderflowRuins::registerGlobalScene()
 HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins, HexusChapterPreviewUnderflowRuins::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Ajax::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Angel::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Aphrodite::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ares::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Athena::getHexusOpponentData()));
@@ -51,6 +54,7 @@ HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(Navig
 	this->opponents.push_back(HexusOpponentPreview::create(Hera::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Horus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Poseidon::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Thor::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zeus::getHexusOpponentData()));
 
 	this->buildOpponentList();

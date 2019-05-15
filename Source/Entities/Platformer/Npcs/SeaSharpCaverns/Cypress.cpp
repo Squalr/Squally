@@ -92,8 +92,8 @@ HexusOpponentData* Cypress::getHexusOpponentData()
 			Cypress::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.281f,
-			HexusOpponentData::generateDeck(32, 0.281f,
+			0.286f,
+			HexusOpponentData::generateDeck(32, 0.286f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

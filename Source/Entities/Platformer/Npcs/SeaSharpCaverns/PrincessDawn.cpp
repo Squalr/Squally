@@ -92,8 +92,8 @@ HexusOpponentData* PrincessDawn::getHexusOpponentData()
 			PrincessDawn::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.344f,
-			HexusOpponentData::generateDeck(32, 0.344f,
+			0.348f,
+			HexusOpponentData::generateDeck(32, 0.348f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

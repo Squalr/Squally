@@ -92,8 +92,8 @@ HexusOpponentData* Sarude::getHexusOpponentData()
 			Sarude::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.365f,
-			HexusOpponentData::generateDeck(32, 0.365f,
+			0.366f,
+			HexusOpponentData::generateDeck(32, 0.366f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

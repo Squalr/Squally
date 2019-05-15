@@ -92,8 +92,8 @@ HexusOpponentData* Ajax::getHexusOpponentData()
 			Ajax::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.135f,
-			HexusOpponentData::generateDeck(32, 0.135f,
+			0.152f,
+			HexusOpponentData::generateDeck(32, 0.152f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

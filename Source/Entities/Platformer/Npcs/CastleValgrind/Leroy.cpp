@@ -92,8 +92,8 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 			Leroy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.427f,
-			HexusOpponentData::generateDeck(32, 0.427f,
+			0.420f,
+			HexusOpponentData::generateDeck(32, 0.420f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

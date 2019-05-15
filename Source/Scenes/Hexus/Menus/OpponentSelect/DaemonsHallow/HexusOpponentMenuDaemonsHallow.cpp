@@ -17,6 +17,8 @@
 #include "Entities/Platformer/Npcs/DaemonsHallow/Pan.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/PrincessMittens.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ragnis.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Rupert.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Rusty.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Scaldor.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/DaemonsHallow/HexusChapterPreviewDaemonsHallow.h"
@@ -51,6 +53,8 @@ HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(Navigat
 	this->opponents.push_back(HexusOpponentPreview::create(Pan::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(PrincessMittens::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ragnis::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Rupert::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Rusty::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Scaldor::getHexusOpponentData()));
 
 	this->buildOpponentList();

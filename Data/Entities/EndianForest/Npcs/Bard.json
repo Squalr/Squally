@@ -1,5 +1,5 @@
 {
-  "Scale": "1.05f",
+  "Scale": "1.0f",
   "Size": {
     "Width": "112.0f",
     "Height": "160.0f"
@@ -21,21 +21,16 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "(1.0f / 8.0f) * (7.0f + (1.0f / 12.0f) * 11.0f)",
+      "Strength": "(1.0f / 8.0f) * (0.0f + (1.0f / 14.0f) * 2.0f)",
       "Strategy": "Random",
       "PresetCards": [
-        "Greed",
-        "Greed",
-        "ShiftLeft",
-        "ShiftRight",
-        "Kill",
-        "LogicalXor",
-        "SuddenDeath",
-        "ReturnToHand",
-        "Absorb",
-        "LogicalOr",
         "LogicalAnd",
-        "Flip3"
+        "ShiftRight",
+        "Flip2",
+        "LogicalXor",
+        "LogicalOr",
+        "ReturnToHand",
+        "Flip1"
       ]
     }
   }

@@ -92,8 +92,8 @@ HexusOpponentData* Poseidon::getHexusOpponentData()
 			Poseidon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.229f,
-			HexusOpponentData::generateDeck(32, 0.229f,
+			0.223f,
+			HexusOpponentData::generateDeck(32, 0.223f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

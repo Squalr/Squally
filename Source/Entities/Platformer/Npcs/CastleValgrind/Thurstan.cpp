@@ -92,8 +92,8 @@ HexusOpponentData* Thurstan::getHexusOpponentData()
 			Thurstan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.490f,
-			HexusOpponentData::generateDeck(32, 0.490f,
+			0.482f,
+			HexusOpponentData::generateDeck(32, 0.482f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

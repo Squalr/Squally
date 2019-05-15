@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Dudly.h"
+#include "Leopold.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Dudly::MapKeyDudly = "dudly";
-HexusOpponentData* Dudly::HexusOpponentDataInstance = nullptr;
-const std::string Dudly::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DUDLY";
+const std::string Leopold::MapKeyLeopold = "leopold";
+HexusOpponentData* Leopold::HexusOpponentDataInstance = nullptr;
+const std::string Leopold::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEOPOLD";
 
-Dudly* Dudly::deserialize(ValueMap& initProperties)
+Leopold* Leopold::deserialize(ValueMap& initProperties)
 {
-	Dudly* instance = new Dudly(initProperties);
+	Leopold* instance = new Leopold(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dudly::Dudly(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_EndianForest_Dudly_Animations,
-	EntityResources::Npcs_EndianForest_Dudly_Emblem,
+Leopold::Leopold(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_CastleValgrind_Leopold_Animations,
+	EntityResources::Npcs_CastleValgrind_Leopold_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	1.0f,
+	0.95f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Dudly::getHexusOpponentData();
+	this->hexusOpponentData = Leopold::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Dudly::Dudly(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Dudly::~Dudly()
+Leopold::~Leopold()
 {
 }
 
@@ -73,43 +73,43 @@ Dudly::~Dudly()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Dudly::getAvatarFrameOffset()
+Vec2 Leopold::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Dudly::getHexusOpponentData()
+HexusOpponentData* Leopold::getHexusOpponentData()
 {
-	if (Dudly::HexusOpponentDataInstance == nullptr)
+	if (Leopold::HexusOpponentDataInstance == nullptr)
 	{
-		Dudly::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Dudly_Animations,
-			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
+		Leopold::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_CastleValgrind_Leopold_Animations,
+			HexusResources::Menus_HexusFrameCastleValgrind,
+			0.95f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Dudly::HexusSaveKey,
+			Leopold::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Earth,
-			0.096f,
-			HexusOpponentData::generateDeck(32, 0.096f,
+			Card::CardStyle::Air,
+			0.491f,
+			HexusOpponentData::generateDeck(32, 0.491f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 
 			}),
 			nullptr
 		);
 	}
 
-	return Dudly::HexusOpponentDataInstance;
+	return Leopold::HexusOpponentDataInstance;
 }

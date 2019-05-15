@@ -92,8 +92,8 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 			Aphrodite::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.146f,
-			HexusOpponentData::generateDeck(32, 0.146f,
+			0.134f,
+			HexusOpponentData::generateDeck(32, 0.134f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

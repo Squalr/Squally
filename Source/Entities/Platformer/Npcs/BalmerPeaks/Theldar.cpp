@@ -92,8 +92,8 @@ HexusOpponentData* Theldar::getHexusOpponentData()
 			Theldar::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.615f,
-			HexusOpponentData::generateDeck(32, 0.615f,
+			0.607f,
+			HexusOpponentData::generateDeck(32, 0.607f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

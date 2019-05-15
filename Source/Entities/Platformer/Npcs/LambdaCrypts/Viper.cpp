@@ -92,8 +92,8 @@ HexusOpponentData* Viper::getHexusOpponentData()
 			Viper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.854f,
-			HexusOpponentData::generateDeck(32, 0.854f,
+			0.848f,
+			HexusOpponentData::generateDeck(32, 0.848f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

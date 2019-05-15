@@ -92,8 +92,8 @@ HexusOpponentData* Aster::getHexusOpponentData()
 			Aster::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.521f,
-			HexusOpponentData::generateDeck(32, 0.521f,
+			0.518f,
+			HexusOpponentData::generateDeck(32, 0.518f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

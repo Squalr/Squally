@@ -92,8 +92,8 @@ HexusOpponentData* Ragnis::getHexusOpponentData()
 			Ragnis::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.740f,
-			HexusOpponentData::generateDeck(32, 0.740f,
+			0.741f,
+			HexusOpponentData::generateDeck(32, 0.741f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

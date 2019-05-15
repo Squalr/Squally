@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Blackbeard.h"
+#include "Bard.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Blackbeard::MapKeyBlackbeard = "blackbeard";
-HexusOpponentData* Blackbeard::HexusOpponentDataInstance = nullptr;
-const std::string Blackbeard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BLACKBEARD";
+const std::string Bard::MapKeyBard = "bard";
+HexusOpponentData* Bard::HexusOpponentDataInstance = nullptr;
+const std::string Bard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BARD";
 
-Blackbeard* Blackbeard::deserialize(ValueMap& initProperties)
+Bard* Bard::deserialize(ValueMap& initProperties)
 {
-	Blackbeard* instance = new Blackbeard(initProperties);
+	Bard* instance = new Bard(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Blackbeard::Blackbeard(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_CastleValgrind_Blackbeard_Animations,
-	EntityResources::Npcs_CastleValgrind_Blackbeard_Emblem,
+Bard::Bard(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_EndianForest_Bard_Animations,
+	EntityResources::Npcs_EndianForest_Bard_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	0.95f,
+	1.0f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Blackbeard::getHexusOpponentData();
+	this->hexusOpponentData = Bard::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Blackbeard::Blackbeard(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Blackbeard::~Blackbeard()
+Bard::~Bard()
 {
 }
 
@@ -73,43 +73,40 @@ Blackbeard::~Blackbeard()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Blackbeard::getAvatarFrameOffset()
+Vec2 Bard::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Blackbeard::getHexusOpponentData()
+HexusOpponentData* Bard::getHexusOpponentData()
 {
-	if (Blackbeard::HexusOpponentDataInstance == nullptr)
+	if (Bard::HexusOpponentDataInstance == nullptr)
 	{
-		Blackbeard::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Blackbeard_Animations,
-			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.95f,
+		Bard::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_EndianForest_Bard_Animations,
+			HexusResources::Menus_HexusFrameEndianForest,
+			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Blackbeard::HexusSaveKey,
+			Bard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Air,
-			0.385f,
-			HexusOpponentData::generateDeck(32, 0.385f,
+			Card::CardStyle::Earth,
+			0.018f,
+			HexusOpponentData::generateDeck(32, 0.018f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 
 			}),
 			nullptr
 		);
 	}
 
-	return Blackbeard::HexusOpponentDataInstance;
+	return Bard::HexusOpponentDataInstance;
 }

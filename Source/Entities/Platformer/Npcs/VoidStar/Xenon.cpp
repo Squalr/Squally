@@ -92,8 +92,8 @@ HexusOpponentData* Xenon::getHexusOpponentData()
 			Xenon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.896f,
-			HexusOpponentData::generateDeck(32, 0.896f,
+			0.904f,
+			HexusOpponentData::generateDeck(32, 0.904f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

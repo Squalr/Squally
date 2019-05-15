@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Rupert.h"
+#include "Rusty.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,22 +27,22 @@
 
 using namespace cocos2d;
 
-const std::string Rupert::MapKeyRupert = "rupert";
-HexusOpponentData* Rupert::HexusOpponentDataInstance = nullptr;
-const std::string Rupert::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUPERT";
+const std::string Rusty::MapKeyRusty = "rusty";
+HexusOpponentData* Rusty::HexusOpponentDataInstance = nullptr;
+const std::string Rusty::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUSTY";
 
-Rupert* Rupert::deserialize(ValueMap& initProperties)
+Rusty* Rusty::deserialize(ValueMap& initProperties)
 {
-	Rupert* instance = new Rupert(initProperties);
+	Rusty* instance = new Rusty(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_EndianForest_Rupert_Animations,
-	EntityResources::Npcs_EndianForest_Rupert_Emblem,
+Rusty::Rusty(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
+	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -50,7 +50,7 @@ Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
 	10,
 	10)
 {
-	this->hexusOpponentData = Rupert::getHexusOpponentData();
+	this->hexusOpponentData = Rusty::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Rupert::~Rupert()
+Rusty::~Rusty()
 {
 }
 
@@ -73,40 +73,43 @@ Rupert::~Rupert()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Rupert::getAvatarFrameOffset()
+Vec2 Rusty::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Rupert::getHexusOpponentData()
+HexusOpponentData* Rusty::getHexusOpponentData()
 {
-	if (Rupert::HexusOpponentDataInstance == nullptr)
+	if (Rusty::HexusOpponentDataInstance == nullptr)
 	{
-		Rupert::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Rupert_Animations,
-			HexusResources::Menus_HexusFrameEndianForest,
+		Rusty::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
+			HexusResources::Menus_HexusFrameDaemonsHallow,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -160.0f),
+			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Rupert::HexusSaveKey,
+			Rusty::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Earth,
-			0.029f,
-			HexusOpponentData::generateDeck(32, 0.029f,
+			Card::CardStyle::Fire,
+			0.643f,
+			HexusOpponentData::generateDeck(32, 0.643f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 
 			}),
 			nullptr
 		);
 	}
 
-	return Rupert::HexusOpponentDataInstance;
+	return Rusty::HexusOpponentDataInstance;
 }

@@ -92,8 +92,8 @@ HexusOpponentData* Athena::getHexusOpponentData()
 			Athena::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.167f,
-			HexusOpponentData::generateDeck(32, 0.167f,
+			0.170f,
+			HexusOpponentData::generateDeck(32, 0.170f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
