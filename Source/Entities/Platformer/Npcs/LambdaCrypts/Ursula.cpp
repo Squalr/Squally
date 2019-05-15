@@ -92,8 +92,8 @@ HexusOpponentData* Ursula::getHexusOpponentData()
 			Ursula::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.844f,
-			HexusOpponentData::generateDeck(32, 0.844f,
+			0.839f,
+			HexusOpponentData::generateDeck(32, 0.839f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

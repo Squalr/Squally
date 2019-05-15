@@ -8,6 +8,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Amelia.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Azmus.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Dudly.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Garrick.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Johann.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Necron.h"
@@ -15,6 +16,7 @@
 #include "Entities/Platformer/Npcs/LambdaCrypts/Roger.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Thion.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Ursula.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Vesuvius.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Viper.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zana.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Zelina.h"
@@ -42,6 +44,7 @@ HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(Navigatio
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Amelia::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Azmus::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Dudly::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Garrick::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Johann::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Necron::getHexusOpponentData()));
@@ -49,6 +52,7 @@ HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(Navigatio
 	this->opponents.push_back(HexusOpponentPreview::create(Roger::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Thion::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ursula::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Vesuvius::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Viper::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zana::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Zelina::getHexusOpponentData()));

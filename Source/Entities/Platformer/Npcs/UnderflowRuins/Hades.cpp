@@ -92,8 +92,8 @@ HexusOpponentData* Hades::getHexusOpponentData()
 			Hades::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.198f,
-			HexusOpponentData::generateDeck(32, 0.198f,
+			0.196f,
+			HexusOpponentData::generateDeck(32, 0.196f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

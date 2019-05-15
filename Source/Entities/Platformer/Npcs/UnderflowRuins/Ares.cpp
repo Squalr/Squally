@@ -92,8 +92,8 @@ HexusOpponentData* Ares::getHexusOpponentData()
 			Ares::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.156f,
-			HexusOpponentData::generateDeck(32, 0.156f,
+			0.161f,
+			HexusOpponentData::generateDeck(32, 0.161f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

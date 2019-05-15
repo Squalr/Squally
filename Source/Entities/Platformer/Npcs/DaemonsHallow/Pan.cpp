@@ -92,8 +92,8 @@ HexusOpponentData* Pan::getHexusOpponentData()
 			Pan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.719f,
-			HexusOpponentData::generateDeck(32, 0.719f,
+			0.723f,
+			HexusOpponentData::generateDeck(32, 0.723f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

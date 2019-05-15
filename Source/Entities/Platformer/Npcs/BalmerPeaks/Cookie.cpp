@@ -92,8 +92,8 @@ HexusOpponentData* Cookie::getHexusOpponentData()
 			Cookie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.542f,
-			HexusOpponentData::generateDeck(32, 0.542f,
+			0.545f,
+			HexusOpponentData::generateDeck(32, 0.545f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

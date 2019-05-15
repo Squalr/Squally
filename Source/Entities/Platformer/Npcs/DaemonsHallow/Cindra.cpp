@@ -92,8 +92,8 @@ HexusOpponentData* Cindra::getHexusOpponentData()
 			Cindra::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.667f,
-			HexusOpponentData::generateDeck(32, 0.667f,
+			0.679f,
+			HexusOpponentData::generateDeck(32, 0.679f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

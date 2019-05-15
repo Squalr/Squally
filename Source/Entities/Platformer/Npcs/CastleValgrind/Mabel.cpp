@@ -92,8 +92,8 @@ HexusOpponentData* Mabel::getHexusOpponentData()
 			Mabel::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.438f,
-			HexusOpponentData::generateDeck(32, 0.438f,
+			0.429f,
+			HexusOpponentData::generateDeck(32, 0.429f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Cooper.h"
+#include "Blackbeard.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,22 +27,22 @@
 
 using namespace cocos2d;
 
-const std::string Cooper::MapKeyCooper = "cooper";
-HexusOpponentData* Cooper::HexusOpponentDataInstance = nullptr;
-const std::string Cooper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOPER";
+const std::string Blackbeard::MapKeyBlackbeard = "blackbeard";
+HexusOpponentData* Blackbeard::HexusOpponentDataInstance = nullptr;
+const std::string Blackbeard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BLACKBEARD";
 
-Cooper* Cooper::deserialize(ValueMap& initProperties)
+Blackbeard* Blackbeard::deserialize(ValueMap& initProperties)
 {
-	Cooper* instance = new Cooper(initProperties);
+	Blackbeard* instance = new Blackbeard(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cooper::Cooper(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_EndianForest_Cooper_Animations,
-	EntityResources::Npcs_EndianForest_Cooper_Emblem,
+Blackbeard::Blackbeard(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
+	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -50,7 +50,7 @@ Cooper::Cooper(ValueMap& initProperties) : NpcBase(initProperties,
 	10,
 	10)
 {
-	this->hexusOpponentData = Cooper::getHexusOpponentData();
+	this->hexusOpponentData = Blackbeard::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Cooper::Cooper(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Cooper::~Cooper()
+Blackbeard::~Blackbeard()
 {
 }
 
@@ -73,43 +73,40 @@ Cooper::~Cooper()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Cooper::getAvatarFrameOffset()
+Vec2 Blackbeard::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Cooper::getHexusOpponentData()
+HexusOpponentData* Blackbeard::getHexusOpponentData()
 {
-	if (Cooper::HexusOpponentDataInstance == nullptr)
+	if (Blackbeard::HexusOpponentDataInstance == nullptr)
 	{
-		Cooper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Cooper_Animations,
+		Blackbeard::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_EndianForest_Blackbeard_Animations,
 			HexusResources::Menus_HexusFrameEndianForest,
 			1.0f,
 			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
+			Vec2(-48.0f, -160.0f),
 			Vec2(-32.0f, -112.0f),
-			Cooper::HexusSaveKey,
+			Blackbeard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.106f,
-			HexusOpponentData::generateDeck(32, 0.106f,
+			0.027f,
+			HexusOpponentData::generateDeck(32, 0.027f,
 			{
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 
 			}),
 			nullptr
 		);
 	}
 
-	return Cooper::HexusOpponentDataInstance;
+	return Blackbeard::HexusOpponentDataInstance;
 }

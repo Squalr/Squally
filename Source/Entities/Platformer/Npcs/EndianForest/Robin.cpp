@@ -92,8 +92,8 @@ HexusOpponentData* Robin::getHexusOpponentData()
 			Robin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.038f,
-			HexusOpponentData::generateDeck(32, 0.038f,
+			0.036f,
+			HexusOpponentData::generateDeck(32, 0.036f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -92,8 +92,8 @@ HexusOpponentData* Azmus::getHexusOpponentData()
 			Azmus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.771f,
-			HexusOpponentData::generateDeck(32, 0.771f,
+			0.768f,
+			HexusOpponentData::generateDeck(32, 0.768f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

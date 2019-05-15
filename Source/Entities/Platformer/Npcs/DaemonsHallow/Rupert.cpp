@@ -2,7 +2,7 @@
 // THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#include "Thor.h"
+#include "Rupert.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -27,30 +27,30 @@
 
 using namespace cocos2d;
 
-const std::string Thor::MapKeyThor = "thor";
-HexusOpponentData* Thor::HexusOpponentDataInstance = nullptr;
-const std::string Thor::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THOR";
+const std::string Rupert::MapKeyRupert = "rupert";
+HexusOpponentData* Rupert::HexusOpponentDataInstance = nullptr;
+const std::string Rupert::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUPERT";
 
-Thor* Thor::deserialize(ValueMap& initProperties)
+Rupert* Rupert::deserialize(ValueMap& initProperties)
 {
-	Thor* instance = new Thor(initProperties);
+	Rupert* instance = new Rupert(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Thor::Thor(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_VoidStar_Thor_Animations,
-	EntityResources::Npcs_VoidStar_Thor_Emblem,
+Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
+	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
-	1.0f,
+	1.05f,
 	Vec2(0.0f, 0.0f),
 	10,
 	10)
 {
-	this->hexusOpponentData = Thor::getHexusOpponentData();
+	this->hexusOpponentData = Rupert::getHexusOpponentData();
 
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
@@ -61,7 +61,7 @@ Thor::Thor(ValueMap& initProperties) : NpcBase(initProperties,
 	///////////////////////////////////////////////////
 }
 
-Thor::~Thor()
+Rupert::~Rupert()
 {
 }
 
@@ -73,44 +73,43 @@ Thor::~Thor()
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
 
-Vec2 Thor::getAvatarFrameOffset()
+Vec2 Rupert::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Thor::getHexusOpponentData()
+HexusOpponentData* Rupert::getHexusOpponentData()
 {
-	if (Thor::HexusOpponentDataInstance == nullptr)
+	if (Rupert::HexusOpponentDataInstance == nullptr)
 	{
-		Thor::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Thor_Animations,
-			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
+		Rupert::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
+			HexusResources::Menus_HexusFrameDaemonsHallow,
+			1.05f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Thor::HexusSaveKey,
+			Rupert::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Shadow,
-			0.906f,
-			HexusOpponentData::generateDeck(32, 0.906f,
+			Card::CardStyle::Fire,
+			0.634f,
+			HexusOpponentData::generateDeck(32, 0.634f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
-				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
-				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
+				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 
 			}),
 			nullptr
 		);
 	}
 
-	return Thor::HexusOpponentDataInstance;
+	return Rupert::HexusOpponentDataInstance;
 }

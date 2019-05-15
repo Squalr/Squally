@@ -92,8 +92,8 @@ HexusOpponentData* Mildred::getHexusOpponentData()
 			Mildred::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.323f,
-			HexusOpponentData::generateDeck(32, 0.323f,
+			0.330f,
+			HexusOpponentData::generateDeck(32, 0.330f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

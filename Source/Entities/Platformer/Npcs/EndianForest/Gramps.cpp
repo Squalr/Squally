@@ -92,8 +92,8 @@ HexusOpponentData* Gramps::getHexusOpponentData()
 			Gramps::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.087f,
-			HexusOpponentData::generateDeck(32, 0.087f,
+			0.080f,
+			HexusOpponentData::generateDeck(32, 0.080f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

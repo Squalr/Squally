@@ -92,8 +92,8 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 			QueenElise::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.927f,
-			HexusOpponentData::generateDeck(32, 0.927f,
+			0.933f,
+			HexusOpponentData::generateDeck(32, 0.933f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

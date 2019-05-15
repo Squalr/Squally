@@ -92,8 +92,8 @@ HexusOpponentData* Johann::getHexusOpponentData()
 			Johann::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.875f,
-			HexusOpponentData::generateDeck(32, 0.875f,
+			0.866f,
+			HexusOpponentData::generateDeck(32, 0.866f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

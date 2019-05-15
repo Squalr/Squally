@@ -92,8 +92,8 @@ HexusOpponentData* Lucifer::getHexusOpponentData()
 			Lucifer::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.698f,
-			HexusOpponentData::generateDeck(32, 0.698f,
+			0.705f,
+			HexusOpponentData::generateDeck(32, 0.705f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -1,5 +1,5 @@
 {
-  "Scale": "1.0f",
+  "Scale": "0.95f",
   "Size": {
     "Width": "112.0f",
     "Height": "160.0f"
@@ -17,20 +17,23 @@
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
-      "Y": "-160.0f"
+      "Y": "-144.0f"
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "(1.0f / 8.0f) * (0.0f + (1.0f / 13.0f) * 3.0f)",
+      "Strength": "(1.0f / 8.0f) * (3.0f + (1.0f / 14.0f) * 13.0f)",
       "Strategy": "Random",
       "PresetCards": [
-        "Flip1",
+        "Greed",
+        "Greed",
         "LogicalAnd",
-        "Flip2",
-        "Mov",
+        "Steal",
         "LogicalOr",
+        "ShiftLeft",
+        "LogicalXor",
         "ReturnToHand",
-        "ShiftRight"
+        "ShiftRight",
+        "Addition"
       ]
     }
   }

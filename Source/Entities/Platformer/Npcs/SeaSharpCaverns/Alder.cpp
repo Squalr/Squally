@@ -92,8 +92,8 @@ HexusOpponentData* Alder::getHexusOpponentData()
 			Alder::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.260f,
-			HexusOpponentData::generateDeck(32, 0.260f,
+			0.259f,
+			HexusOpponentData::generateDeck(32, 0.259f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

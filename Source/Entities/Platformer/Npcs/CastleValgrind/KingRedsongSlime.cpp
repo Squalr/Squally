@@ -92,8 +92,8 @@ HexusOpponentData* KingRedsongSlime::getHexusOpponentData()
 			KingRedsongSlime::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.417f,
-			HexusOpponentData::generateDeck(32, 0.417f,
+			0.402f,
+			HexusOpponentData::generateDeck(32, 0.402f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

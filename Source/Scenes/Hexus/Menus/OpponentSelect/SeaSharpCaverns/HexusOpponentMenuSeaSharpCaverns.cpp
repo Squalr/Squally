@@ -7,7 +7,9 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Bonnie.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Brock.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Burch.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Finch.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Fraya.h"
@@ -41,7 +43,9 @@ void HexusOpponentMenuSeaSharpCaverns::registerGlobalScene()
 HexusOpponentMenuSeaSharpCaverns::HexusOpponentMenuSeaSharpCaverns() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::SeaSharpCaverns, HexusChapterPreviewSeaSharpCaverns::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Alder::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Bonnie::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Brock::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Burch::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Cypress::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Finch::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Fraya::getHexusOpponentData()));

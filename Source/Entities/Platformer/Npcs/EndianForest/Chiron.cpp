@@ -92,8 +92,8 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 			Chiron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.115f,
-			HexusOpponentData::generateDeck(32, 0.115f,
+			0.107f,
+			HexusOpponentData::generateDeck(32, 0.107f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -92,8 +92,8 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 			Rogas::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.479f,
-			HexusOpponentData::generateDeck(32, 0.479f,
+			0.464f,
+			HexusOpponentData::generateDeck(32, 0.464f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

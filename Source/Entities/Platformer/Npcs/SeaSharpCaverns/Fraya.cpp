@@ -92,8 +92,8 @@ HexusOpponentData* Fraya::getHexusOpponentData()
 			Fraya::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.302f,
-			HexusOpponentData::generateDeck(32, 0.302f,
+			0.304f,
+			HexusOpponentData::generateDeck(32, 0.304f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

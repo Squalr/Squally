@@ -92,8 +92,8 @@ HexusOpponentData* Necron::getHexusOpponentData()
 			Necron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.802f,
-			HexusOpponentData::generateDeck(32, 0.802f,
+			0.804f,
+			HexusOpponentData::generateDeck(32, 0.804f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

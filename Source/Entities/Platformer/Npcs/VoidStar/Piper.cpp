@@ -92,8 +92,8 @@ HexusOpponentData* Piper::getHexusOpponentData()
 			Piper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.938f,
-			HexusOpponentData::generateDeck(32, 0.938f,
+			0.942f,
+			HexusOpponentData::generateDeck(32, 0.942f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
