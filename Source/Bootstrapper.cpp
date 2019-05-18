@@ -52,7 +52,22 @@
 #include "Scenes/Platformer/Level/Physics/PhysicsDeserializer.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionMapping.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
+#include "Scenes/Platformer/Level/Terrain/BlueGrassTerrainDeserializer.h"
 #include "Scenes/Platformer/Level/Terrain/CastleTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/CaveTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/CavernsTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/DarkGrassTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/DryTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/DryGrassTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/FrostTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/GrassTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/IceTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/JungleTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/LeafTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/MarbleTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/MarbleGrassTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/ShadeGrassTerrainDeserializer.h"
+#include "Scenes/Platformer/Level/Terrain/TrailTerrainDeserializer.h"
 #include "Scenes/Platformer/Level/Weather/WeatherDeserializer.h"
 #include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
 #include "Scenes/PointerTrace/PointerTraceMap.h"
@@ -137,7 +152,24 @@ void Bootstrapper::initialize()
 	WeatherDeserializer::registerGlobalNode();
 	PhysicsDeserializer::registerGlobalNode();
 
+	// Terrain deserializer
+	BlueGrassTerrainDeserializer::registerGlobalNode();
 	CastleTerrainDeserializer::registerGlobalNode();
+	CaveTerrainDeserializer::registerGlobalNode();
+	CavernsTerrainDeserializer::registerGlobalNode();
+	DarkGrassTerrainDeserializer::registerGlobalNode();
+	DryTerrainDeserializer::registerGlobalNode();
+	DryGrassTerrainDeserializer::registerGlobalNode();
+	FrostTerrainDeserializer::registerGlobalNode();
+	GrassTerrainDeserializer::registerGlobalNode();
+	IceTerrainDeserializer::registerGlobalNode();
+	JungleTerrainDeserializer::registerGlobalNode();
+	LeafTerrainDeserializer::registerGlobalNode();
+	MarbleTerrainDeserializer::registerGlobalNode();
+	MarbleGrassTerrainDeserializer::registerGlobalNode();
+	ShadeGrassTerrainDeserializer::registerGlobalNode();
+	TrailTerrainDeserializer::registerGlobalNode();
+
 	MusicDeserializer::registerGlobalNode();
 	PlatformerCollisionMapping::registerGlobalNode();
 

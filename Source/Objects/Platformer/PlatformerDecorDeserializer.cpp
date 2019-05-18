@@ -62,19 +62,9 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		float height = properties.at(SerializableObject::MapKeyHeight).asFloat();
 		float x = properties.at(SerializableObject::MapKeyXPosition).asFloat();
 		float y = properties.at(SerializableObject::MapKeyYPosition).asFloat();
-		bool repeatX = false;
-		bool repeatY = false;
+		bool repeatX = GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyRepeatX, Value(false)).asBool();
+		bool repeatY = GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyRepeatY, Value(false)).asBool();
 		SerializableObject* newObject = PlatformerDecorObject::create(properties);
-
-		if (GameUtils::keyExists(properties, SerializableObject::MapKeyRepeatX))
-		{
-			repeatX = properties.at(SerializableObject::MapKeyRepeatX).asBool();
-		}
-
-		if (GameUtils::keyExists(properties, SerializableObject::MapKeyRepeatY))
-		{
-			repeatY = properties.at(SerializableObject::MapKeyRepeatY).asBool();
-		}
 
 		if (repeatX || repeatY)
 		{
@@ -117,6 +107,26 @@ void PlatformerDecorDeserializer::onDeserializationRequest(DeserializationEvents
 		{
 			// Default -- set the scale of the decor based on the height
 			newObject->setScale(height / sprite->getContentSize().height);
+		}
+		
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyAutoScale))
+		{
+			newObject->setScale(GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyAutoScale, Value(1.0f)).asFloat());
+		}
+		
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyScale))
+		{
+			newObject->setScale(GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyScale, Value(1.0f)).asFloat());
+		}
+		
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyScaleX))
+		{
+			newObject->setScaleX(GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyScaleX, Value(1.0f)).asFloat());
+		}
+		
+		if (GameUtils::keyExists(properties, SerializableObject::MapKeyScaleY))
+		{
+			newObject->setScaleY(GameUtils::getKeyOrDefault(properties, SerializableObject::MapKeyScaleY, Value(1.0f)).asFloat());
 		}
 
 		newObject->addChild(sprite);

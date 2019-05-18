@@ -226,12 +226,17 @@ void PlatformerEntity::performJumpAnimation()
 
 void PlatformerEntity::addHealth(int healthDelta)
 {
+	this->setHealth(this->getHealth() + healthDelta);
+}
+
+void PlatformerEntity::setHealth(int health)
+{
 	if (this->isDead())
 	{
 		return;
 	}
 
-	this->health = MathUtils::clamp(this->health + healthDelta, 0, this->maxHealth);
+	this->health = MathUtils::clamp(health, 0, this->maxHealth);
 
 	if (this->health <= 0)
 	{

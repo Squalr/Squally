@@ -6,6 +6,7 @@
 #include <string>
 
 const std::string BackgroundResources::Bliss = "Platformer/Backgrounds/Bliss.png";
+const std::string BackgroundResources::BlueSky = "Platformer/Backgrounds/BlueSky.png";
 const std::string BackgroundResources::DarkForestSky = "Platformer/Backgrounds/DarkForestSky.png";
 const std::string BackgroundResources::Dawn = "Platformer/Backgrounds/Dawn.png";
 const std::string BackgroundResources::Jungle = "Platformer/Backgrounds/Jungle.jpg";

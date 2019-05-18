@@ -10,6 +10,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCScheduler.h"
 
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/ConstantString.h"
@@ -138,7 +139,10 @@ void GameCamera::update(float dt)
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
 
-		this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
+		if (!DeveloperModeController::getInstance()->isDeveloperModeEnabled())
+		{
+			this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
+		}
 
 		switch (trackingData.scrollType)
 		{

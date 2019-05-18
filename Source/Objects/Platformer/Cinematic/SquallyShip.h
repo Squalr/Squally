@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class SmartAnimationSequenceNode;
 
 class SquallyShip : public HackableObject
 {
@@ -32,7 +33,11 @@ private:
 	typedef HackableObject super;
 
 	bool hasCrashed;
+	float flightTime;
 
 	cocos2d::Sprite* ship;
 	CollisionObject* shipCollision;
+	SmartAnimationSequenceNode* fireAnimation;
+
+	static const float FlightTimeUntilRedFlame;
 };
