@@ -14,6 +14,7 @@ class Lightning;
 class LightningSphere;
 class MapNode;
 class Mouse;
+class Music;
 
 class WorldMap : public GlobalScene
 {
@@ -58,6 +59,7 @@ private:
 	Lightning* lightning10;
 
 	Hud* hud;
+	Music* music;
 
 	static WorldMap* instance;
 };

@@ -9,6 +9,7 @@ public:
 
 private:
 	typedef HackableObject super;
+
 	PlatformerDecorObject(cocos2d::ValueMap& initProperties);
-	virtual ~PlatformerDecorObject();
+	~PlatformerDecorObject();
 };

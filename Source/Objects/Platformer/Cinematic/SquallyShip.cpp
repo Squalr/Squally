@@ -14,6 +14,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
@@ -21,6 +22,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -41,11 +43,17 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : HackableObject(initProperti
 {
 	this->ship = Sprite::create(ObjectResources::Cinematic_SpaceShipSqually);
 	this->shipCollision = CollisionObject::create(PhysicsBody::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->smokeAnimation = SmartAnimationSequenceNode::create();
 	this->fireAnimation = SmartAnimationSequenceNode::create();
 	this->thrustAnimation = SmartAnimationSequenceNode::create();
 	this->explodeAnimation = SmartAnimationSequenceNode::create();
+	this->fireRingAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
+	this->thrusterSound = Sound::create();
+	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_FX_WooshRough);
+	this->crashSound = Sound::create(SoundResources::Platformer_FX_Crash);
+	this->fireSound = Sound::create(SoundResources::Platformer_FX_Fire);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 
@@ -54,6 +62,8 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : HackableObject(initProperti
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
 
+	this->ship->addChild(this->smokeAnimation);
+	this->ship->addChild(this->fireRingAnimation);
 	this->ship->addChild(this->fireAnimation);
 	this->ship->addChild(this->thrustAnimation);
 	this->shipCollision->addChild(this->ship);
@@ -61,6 +71,10 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : HackableObject(initProperti
 	this->shipCollision->addChild(this->groundFireAnimation);
 	this->shipCollision->addChild(this->groundFireSmallAnimation);
 	this->addChild(this->shipCollision);
+	this->addChild(this->thrusterSound);
+	this->addChild(this->enterAtmosphereSound);
+	this->addChild(this->crashSound);
+	this->addChild(this->fireSound);
 }
 
 SquallyShip::~SquallyShip()
@@ -81,8 +95,10 @@ void SquallyShip::onEnter()
 
 	GameCamera::getInstance()->setTarget(trackingData);
 
+	this->smokeAnimation->playAnimationRepeat(ObjectResources::FX_SmokeWhisp_SmokeWhisp_0000, 0.06f);
 	this->fireAnimation->playAnimationRepeat(ObjectResources::FX_MeteorFireBlue_MeteorFire_0000, 0.06f);
 	this->thrustAnimation->playAnimationRepeat(ObjectResources::FX_SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
+	// this->thrusterSound->play(true);
 
 	this->scheduleUpdate();
 }
@@ -91,6 +107,7 @@ void SquallyShip::initializePositions()
 {
 	super::initializePositions();
 
+	this->smokeAnimation->setPosition(Vec2(96.0f, 96.0f));
 	this->fireAnimation->setPosition(Vec2(112.0f, 32.0f));
 	this->thrustAnimation->setPosition(Vec2(448.0f, 52.0f));
 	this->groundFireAnimation->setPosition(Vec2(-48.0f, -48.0f));
@@ -124,6 +141,10 @@ void SquallyShip::initializeListeners()
 			this->explodeAnimation->playAnimation(ObjectResources::FX_ExplosionGround_ExplosionGround_0000, 0.05f, true);
 			this->groundFireAnimation->playAnimationRepeat(ObjectResources::FX_FlameBig_FlameBig_0000, 0.05f);
 			this->groundFireSmallAnimation->playAnimationRepeat(ObjectResources::FX_FlameSmall_FlameSmall_0000, 0.05f);
+
+			this->thrusterSound->stop();
+			this->crashSound->play();
+			// this->fireSound->play(true);
 		}
 
 		return CollisionObject::CollisionResult::CollideWithPhysics;
@@ -141,7 +162,10 @@ void SquallyShip::update(float dt)
 		if (this->flightTime >= SquallyShip::FlightTimeUntilRedFlame)
 		{
 			this->fireAnimation->setPosition(Vec2(112.0f + 44.0f, 32.0f));
-			this->fireAnimation->playAnimationRepeat(ObjectResources::FX_MeteorFire_MeteorFire_0000, 0.025f);
+			this->fireAnimation->playAnimationRepeat(ObjectResources::FX_MeteorFire_MeteorFire_0000, 0.06f);
+			this->fireRingAnimation->playAnimation(ObjectResources::FX_FireRing_FireRing_0000, 0.08f);
+
+			this->enterAtmosphereSound->play();
 		}
 	}
 }

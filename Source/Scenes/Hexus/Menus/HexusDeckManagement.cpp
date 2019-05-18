@@ -9,7 +9,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/Checkbox.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/ToggleGroup.h"
@@ -88,6 +88,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->specialCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_SpecialCards::create());
 	this->specialCardsInDeckValueString = ConstantString::create();
 	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->cardMovementSound = Sound::create(SoundResources::Hexus_CardMovementStrong);
 
 	this->totalCardsInDeckValueLabel->setStringReplacementVariables({ this->totalCardsInDeckValueXString , this->totalCardsInDeckValueYString });
 	this->binaryCardsInDeckValueLabel->setStringReplacementVariables(this->binaryCardsInDeckValueString);
@@ -216,6 +217,7 @@ HexusDeckManagement::HexusDeckManagement()
 	this->addChild(this->specialCardsInDeckValueLabel);
 	this->addChild(this->filters);
 	this->addChild(this->backButton);
+	this->addChild(this->cardMovementSound);
 }
 
 HexusDeckManagement::~HexusDeckManagement()
@@ -616,7 +618,7 @@ void HexusDeckManagement::onDeckCardClick(Card* card)
 
 	this->save(false);
 
-	SoundManager::playSoundResource(SoundResources::Hexus_CardMovementStrong);
+	this->cardMovementSound->play();
 
 	this->rebuildCardLists();
 }
@@ -631,7 +633,7 @@ void HexusDeckManagement::onStorageCardClick(Card* card)
 
 	this->save(false);
 
-	SoundManager::playSoundResource(SoundResources::Hexus_CardMovementStrong);
+	this->cardMovementSound->play();
 	
 	this->rebuildCardLists();
 }

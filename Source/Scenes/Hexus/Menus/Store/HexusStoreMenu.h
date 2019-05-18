@@ -24,6 +24,7 @@ class MenuCard;
 class ScrollPane;
 class Shopkeeper;
 class SmartAnimationNode;
+class Sound;
 
 class HexusStoreMenu : public GlobalScene
 {
@@ -85,6 +86,8 @@ private:
 	cocos2d::Node* chosenCardsNode;
 	cocos2d::LayerColor* backdrop;
 	ConfirmationMenu* confirmationMenu;
+	Sound* errorSound;
+	Sound* purchaseSound;
 
 	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> binaryCards;
 	std::vector<std::tuple<ClickableNode*, MenuCard*, int>> decimalCards;

@@ -4,6 +4,7 @@
 
 class ClickableNode;
 class ClickableTextNode;
+class Sound;
 
 class StateGameEnd : public StateBase
 {
@@ -27,4 +28,6 @@ private:
 	void onBackClick(GameState* gameState);
 
 	ClickableTextNode* backButton;
+	Sound* defeatSound;
+	Sound* victorySound;
 };

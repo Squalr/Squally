@@ -9,7 +9,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Music.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
@@ -53,6 +53,7 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
+	this->music = Music::create(MusicResources::WeWillGetThereTogether);
 	
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -141,6 +142,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->minigamesButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
+	this->addChild(this->music);
 }
 
 TitleScreen::~TitleScreen()
@@ -151,7 +153,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::WeWillGetThereTogether);
+	this->music->play(true);
 
 	this->initializePositions();
 	this->etherParticles->start();

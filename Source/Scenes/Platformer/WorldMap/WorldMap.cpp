@@ -11,7 +11,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -46,6 +46,7 @@ WorldMap::WorldMap()
 	this->mapNodes = std::vector<MapNode*>();
 	this->background = Sprite::create(UIResources::Menus_WorldMap_WorldMap);
 	this->hud = Hud::create();
+	this->music = Music::create(MusicResources::Little_Wings_cut);
 
 	this->forest = MapNode::create(
 		MapResources::EndianForest_Forest
@@ -124,6 +125,7 @@ WorldMap::WorldMap()
 	this->addChild(this->lightning9);
 	this->addChild(this->lightning10);
 	this->addChild(this->hud);
+	this->addChild(this->music);
 }
 
 WorldMap::~WorldMap()
@@ -133,6 +135,8 @@ WorldMap::~WorldMap()
 void WorldMap::onEnter()
 {
 	super::onEnter();
+
+	this->music->play(true);
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -166,8 +170,6 @@ void WorldMap::onEnter()
 		EaseSineInOut::create(MoveTo::create(4.0f, startPosition)),
 		nullptr
 	)));
-
-	SoundManager::playMusicResource(MusicResources::Little_Wings_cut);
 
 	GameCamera::getInstance()->setTarget(trackingData);
 }

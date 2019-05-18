@@ -3,6 +3,7 @@
 #include "Engine/SmartNode.h"
 
 class SmartAnimationSequenceNode;
+class Sound;
 
 class Lightning : public SmartNode
 {
@@ -21,6 +22,7 @@ private:
 	void playAnimationsInternal(bool repeat, bool isFirstRun = false);
 
 	SmartAnimationSequenceNode* animations;
+	Sound* sound;
 	float manualDelay;
 };
 

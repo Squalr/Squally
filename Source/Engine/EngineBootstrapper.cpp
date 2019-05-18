@@ -12,7 +12,6 @@
 #include "Engine/Maps/ObjectLayerDeserializer.h"
 #include "Engine/Maps/Backgrounds/BackgroundDeserializer.h"
 #include "Engine/Physics/CollisionDeserializer.h"
-#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Mouse.h"
 
 void EngineBootstrapper::initialize()
@@ -27,7 +26,6 @@ void EngineBootstrapper::initialize()
 	Input::registerGlobalNode();
 	ObjectLayerDeserializer::registerGlobalNode();
 	CollisionDeserializer::registerGlobalNode();
-	SoundManager::registerGlobalNode();
 	CodeEditor::registerGlobalNode();
 	RadialMenu::registerGlobalNode();
 	Mouse::registerGlobalNode();

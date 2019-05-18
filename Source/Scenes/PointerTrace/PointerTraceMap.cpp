@@ -13,7 +13,7 @@
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableTileLayer.h"
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -56,12 +56,14 @@ PointerTraceMap::PointerTraceMap() : super(false)
 	this->collisionDebugNode = Node::create();
 	this->pointerTraceHud = PointerTraceHud::create();
 	this->victoryMenu = VictoryMenu::create();
+	this->music = Music::create(MusicResources::PointerTrace);
 
 	this->collisionDebugNode->setVisible(false);
 
 	this->addChild(this->collisionDebugNode);
 	this->hud->addChild(this->pointerTraceHud);
 	this->menuHud->addChild(this->victoryMenu);
+	this->addChild(this->music);
 }
 
 PointerTraceMap::~PointerTraceMap()
@@ -72,7 +74,7 @@ void PointerTraceMap::onEnter()
 {
 	super::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::PointerTrace);
+	this->music->play(true);
 
 	this->victoryMenu->setVisible(false);
 

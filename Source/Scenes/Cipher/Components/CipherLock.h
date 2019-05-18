@@ -8,6 +8,8 @@ namespace cocos2d
 	class Sprite;
 }
 
+class Sound;
+
 class CipherLock : public CipherComponentBase
 {
 public:
@@ -39,6 +41,8 @@ private:
 	cocos2d::Node* cipherPinsNode;
 	cocos2d::Sprite* stoppingBlock;
 	cocos2d::Sprite* pinboardFront;
+
+	Sound* gearTurnSound;
 
 	bool hasAnyPinFailed;
 

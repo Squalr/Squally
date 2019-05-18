@@ -12,7 +12,8 @@
  </objectgroup>
  <objectgroup id="2" name="music">
   <properties>
-   <property name="music" value="Music/BurdenOfTime.mp3"/>
+   <property name="delay" type="float" value="8"/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
