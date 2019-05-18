@@ -3,8 +3,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Controls/Checkbox.h"
 #include "Engine/UI/Controls/Slider.h"
 #include "Engine/Utils/GameUtils.h"
@@ -27,8 +27,8 @@ GeneralTab::GeneralTab()
 	this->musicIcon = Sprite::create(UIResources::Menus_OptionsMenu_MusicIcon);
 	this->soundIcon = Sprite::create(UIResources::Menus_OptionsMenu_SoundIcon);
 
-	this->musicSlider = Slider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, SoundManager::getMusicVolume());
-	this->soundSlider = Slider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, SoundManager::getSoundVolume());
+	this->musicSlider = Slider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, ConfigManager::getMusicVolume());
+	this->soundSlider = Slider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, ConfigManager::getSoundVolume());
 
 	this->addChild(this->musicIcon);
 	this->addChild(this->soundIcon);
@@ -52,8 +52,8 @@ void GeneralTab::onEnter()
 	GameUtils::fadeInObject(this->musicSlider, delay, duration);
 	GameUtils::fadeInObject(this->soundSlider, delay, duration);
 
-	this->musicSlider->setProgress(SoundManager::getMusicVolume());
-	this->soundSlider->setProgress(SoundManager::getSoundVolume());
+	this->musicSlider->setProgress(ConfigManager::getMusicVolume());
+	this->soundSlider->setProgress(ConfigManager::getSoundVolume());
 }
 
 void GeneralTab::initializeListeners()
@@ -76,10 +76,10 @@ void GeneralTab::initializePositions()
 
 void GeneralTab::onSoundVolumeUpdate(float soundVolume)
 {
-	SoundManager::setSoundVolume(soundVolume);
+	ConfigManager::setSoundVolume(soundVolume);
 }
 
 void GeneralTab::onMusicVolumeUpdate(float musicVolume)
 {
-	SoundManager::setMusicVolume(musicVolume);
+	ConfigManager::setMusicVolume(musicVolume);
 }

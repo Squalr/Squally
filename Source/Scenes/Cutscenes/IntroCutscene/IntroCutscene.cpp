@@ -1,6 +1,6 @@
 #include "IntroCutscene.h"
 
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Music.h"
 #include "Scenes/Cutscenes/IntroCutscene/BoardMembers.h"
 #include "Scenes/Cutscenes/IntroCutscene/HomeAssistantRobot.h"
 #include "Scenes/Cutscenes/IntroCutscene/NeonCity.h"
@@ -25,6 +25,8 @@ IntroCutscene* IntroCutscene::create(std::function<void()> cutsceneCompleteCallb
 
 IntroCutscene::IntroCutscene(std::function<void()> cutsceneCompleteCallback) : Cutscene(cutsceneCompleteCallback)
 {
+	this->music = Music::create(MusicResources::HeartBeat);
+
 	this->enqueueCutsceneClip(NeonCity::create(NeonCity::NeonCityScene::Intro));
 	this->enqueueCutsceneClip(HomeAssistantRobot::create(HomeAssistantRobot::HomeAssistantRobotScene::Intro));
 	this->enqueueCutsceneClip(RobotDoctor::create(RobotDoctor::RobotDoctorScene::Intro));
@@ -35,6 +37,8 @@ IntroCutscene::IntroCutscene(std::function<void()> cutsceneCompleteCallback) : C
 	this->enqueueCutsceneClip(HomeAssistantRobot::create(HomeAssistantRobot::HomeAssistantRobotScene::Singularity));
 	this->enqueueCutsceneClip(RobotDoctor::create(RobotDoctor::RobotDoctorScene::Singularity));
 	this->enqueueCutsceneClip(VaporWeb::create());
+
+	this->addChild(this->music);
 }
 
 IntroCutscene::~IntroCutscene()
@@ -45,5 +49,5 @@ void IntroCutscene::onEnter()
 {
 	Cutscene::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::HeartBeat);
+	this->music->play(true);
 }

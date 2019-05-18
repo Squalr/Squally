@@ -79,6 +79,7 @@ class HelpMenuComponent;
 class PauseMenu;
 class OptionsMenu;
 class ConfirmationMenu;
+class Music;
 
 class Hexus : public GlobalScene
 {
@@ -177,6 +178,9 @@ private:
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
+
+	Music* musicA;
+	Music* musicB;
 
 	static Hexus* instance;
 };

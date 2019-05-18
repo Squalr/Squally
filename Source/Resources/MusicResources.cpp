@@ -5,6 +5,10 @@
 #include "MusicResources.h"
 #include <string>
 
+const std::string MusicResources::Ambient_Birds = "Music/Ambient/Birds.mp3";
+const std::string MusicResources::Ambient_Forest = "Music/Ambient/Forest.mp3";
+const std::string MusicResources::Ambient_Nature = "Music/Ambient/Nature.mp3";
+const std::string MusicResources::Ambient_Wind = "Music/Ambient/Wind.mp3";
 const std::string MusicResources::Artrium = "Music/Artrium.mp3";
 const std::string MusicResources::BurdenOfTime = "Music/BurdenOfTime.mp3";
 const std::string MusicResources::HeartBeat = "Music/HeartBeat.mp3";

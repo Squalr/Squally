@@ -6,6 +6,7 @@
 
 class GridEntity;
 class MemoryGrid;
+class Music;
 class PointerTraceHud;
 class VictoryMenu;
 
@@ -43,6 +44,7 @@ private:
 	cocos2d::Node* collisionDebugNode;
 	PointerTraceHud* pointerTraceHud;
 	VictoryMenu* victoryMenu;
+	Music* music;
 
 	static PointerTraceMap* instance;
 };

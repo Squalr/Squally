@@ -11,7 +11,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/MouseEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -42,6 +42,9 @@ void PointerTraceLevelSelect::registerGlobalScene()
 
 PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false)
 {
+	this->music = Music::create(MusicResources::PointerTrace);
+
+	this->addChild(this->music);
 }
 
 PointerTraceLevelSelect::~PointerTraceLevelSelect()
@@ -52,7 +55,7 @@ void PointerTraceLevelSelect::onEnter()
 {
 	super::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::PointerTrace);
+	this->music->play(true);
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;

@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/CardRow.h"
@@ -25,6 +25,47 @@ StatePlayCard* StatePlayCard::create()
 
 StatePlayCard::StatePlayCard() : super(GameState::StateType::PlayCard)
 {
+	this->movementSound = Sound::create(SoundResources::Hexus_CardMovement);
+	this->shlSound = Sound::create(SoundResources::Hexus_Attacks_GlitterSpell);
+	this->shrSound = Sound::create(SoundResources::Hexus_Attacks_Downgrade);
+	this->flip1Sound = Sound::create(SoundResources::Hexus_Attacks_MagicSlash);
+	this->flip2Sound = Sound::create(SoundResources::Hexus_Attacks_Freeze);
+	this->flip3Sound = Sound::create(SoundResources::Hexus_Attacks_WindReverse);
+	this->flip4Sound = Sound::create(SoundResources::Hexus_Attacks_BurningStrong);
+	this->movSound = Sound::create(SoundResources::Hexus_Attacks_Shimmer);
+	this->andSound = Sound::create(SoundResources::Hexus_Attacks_Burning);
+	this->orSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
+	this->xorSound = Sound::create(SoundResources::Hexus_Attacks_GenericSpell);
+	this->addSound = Sound::create(SoundResources::Hexus_Attacks_ChimeShimmer);
+	this->subSound = Sound::create(SoundResources::Hexus_Attacks_AcidHit);
+	this->rolSound = Sound::create(SoundResources::Hexus_Attacks_DemonWhisper);
+	this->rorSound = Sound::create(SoundResources::Hexus_Attacks_DemonWhisper);
+	this->notSound = Sound::create(SoundResources::Hexus_Attacks_DemonWhisper);
+	this->killSound = Sound::create(SoundResources::Hexus_Attacks_DemonWhisper);
+	this->returnToHandSound = Sound::create(SoundResources::Hexus_Attacks_Shimmer);
+	this->stealSound = Sound::create(SoundResources::Hexus_Attacks_Shimmer);
+	this->sheepSound = Sound::create(SoundResources::Hexus_Attacks_Sheep);
+
+	this->addChild(this->movementSound);
+	this->addChild(this->shlSound);
+	this->addChild(this->shrSound);
+	this->addChild(this->flip1Sound);
+	this->addChild(this->flip2Sound);
+	this->addChild(this->flip3Sound);
+	this->addChild(this->flip4Sound);
+	this->addChild(this->movSound);
+	this->addChild(this->andSound);
+	this->addChild(this->orSound);
+	this->addChild(this->xorSound);
+	this->addChild(this->addSound);
+	this->addChild(this->subSound);
+	this->addChild(this->rolSound);
+	this->addChild(this->rorSound);
+	this->addChild(this->notSound);
+	this->addChild(this->killSound);
+	this->addChild(this->returnToHandSound);
+	this->addChild(this->stealSound);
+	this->addChild(this->sheepSound);
 }
 
 StatePlayCard::~StatePlayCard()
@@ -155,8 +196,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 				gameState->selectedRow->insertCards(hordeCards, Config::insertDelay);
 			}
-
-			SoundManager::playSoundResource(SoundResources::Hexus_CardMovement);
+			
+			this->movementSound->play();
 			break;
 		}
 		case CardData::CardType::Special_ABSORB:
@@ -169,7 +210,8 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			selfHand->removeCard(gameState->selectedHandCard);
 			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
-			SoundManager::playSoundResource(SoundResources::Hexus_CardMovement);
+			
+			this->movementSound->play();
 			break;
 		}
 		case CardData::CardType::Special_SHL:
@@ -227,37 +269,37 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					case CardData::CardType::Special_SHL:
 					{
 						gameState->selectedRow->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GlitterSpell);
+						this->shlSound->play();
 						break;
 					}
 					case CardData::CardType::Special_SHR:
 					{
 						gameState->selectedRow->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Downgrade);
+						this->shrSound->play();
 						break;
 					}
 					case CardData::CardType::Special_FLIP1:
 					{
 						gameState->selectedRow->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_MagicSlash);
+						this->flip1Sound->play();
 						break;
 					}
 					case CardData::CardType::Special_FLIP2:
 					{
 						gameState->selectedRow->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Freeze);
+						this->flip2Sound->play();
 						break;
 					}
 					case CardData::CardType::Special_FLIP3:
 					{
 						gameState->selectedRow->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
+						this->flip3Sound->play();
 						break;
 					}
 					case CardData::CardType::Special_FLIP4:
 					{
 						gameState->selectedRow->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_BurningStrong);
+						this->flip4Sound->play();
 						break;
 					}
 					default:
@@ -316,37 +358,37 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					case CardData::CardType::Special_MOV:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
+						this->movSound->play();
 						break;
 					}
 					case CardData::CardType::Special_AND:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Burning);
+						this->andSound->play();
 						break;
 					}
 					case CardData::CardType::Special_OR:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy);
+						this->orSound->play();
 						break;
 					}
 					case CardData::CardType::Special_XOR:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_GenericSpell);
+						this->xorSound->play();
 						break;
 					}
 					case CardData::CardType::Special_ADD:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_ChimeShimmer);
+						this->addSound->play();
 						break;
 					}
 					case CardData::CardType::Special_SUB:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_AcidHit);
+						this->subSound->play();
 						break;
 					}
 					default:
@@ -384,19 +426,19 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					case CardData::CardType::Special_ROL:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+						this->rolSound->play();
 						break;
 					}
 					case CardData::CardType::Special_ROR:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+						this->rorSound->play();
 						break;
 					}
 					case CardData::CardType::Special_NOT:
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-						SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+						this->notSound->play();
 						break;
 					}
 					default:
@@ -496,7 +538,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					}
 
 					gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-					SoundManager::playSoundResource(SoundResources::Hexus_Attacks_DemonWhisper);
+					this->killSound->play();
 				}
 				else
 				{
@@ -531,7 +573,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				}
 
 				gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
+				this->returnToHandSound->play();
 			}
 
 			break;
@@ -564,7 +606,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				tryStealCard(otherHexRow, selfHexRow, gameState->selectedDestinationCard);
 
 				gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
-				SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Shimmer);
+				this->stealSound->play();
 			}
 
 			break;
@@ -711,7 +753,7 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(*it), true, Config::insertDelay);
 			}
 
-			SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Sheep);
+			this->sheepSound->play();
 			
 			return true;
 		}

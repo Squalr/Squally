@@ -2,6 +2,8 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
+class Sound;
+
 class StateRoundStart : public StateBase
 {
 public:
@@ -17,4 +19,6 @@ private:
 	typedef StateBase super;
 	StateRoundStart();
 	~StateRoundStart();
+
+	Sound* roundStartSound;
 };

@@ -9,7 +9,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/SoundResources.h"
@@ -63,8 +63,8 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->intersectFunction = nullptr;
 	this->debugHitbox = DrawNode::create();
 
-	this->clickSound = "";
-	this->mouseOverSound = SoundResources::ButtonRollover1;
+	this->clickSound = Sound::create();
+	this->mouseOverSound = Sound::create(SoundResources::ButtonRollover1);
 
 	this->sprite = nodeNormal;
 	this->spriteSelected = nodeSelected;
@@ -77,6 +77,8 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->addChild(this->sprite);
 	this->addChild(this->spriteSelected);
 	this->addChild(this->debugHitbox);
+	this->addChild(this->clickSound);
+	this->addChild(this->mouseOverSound);
 }
 
 ClickableNode::~ClickableNode()
@@ -261,12 +263,12 @@ void ClickableNode::setMouseScrollCallback(std::function<void(MouseEvents::Mouse
 
 void ClickableNode::setMouseOverSound(std::string soundResource)
 {
-	this->mouseOverSound = soundResource;
+	this->mouseOverSound->setSoundResource(soundResource);
 }
 
 void ClickableNode::setClickSound(std::string soundResource)
 {
-	this->clickSound = soundResource;
+	this->clickSound->setSoundResource(soundResource);
 }
 
 void ClickableNode::showSprite(Node* sprite)
@@ -332,10 +334,7 @@ void ClickableNode::mouseMove(MouseEvents::MouseEventArgs* args, EventCustom* ev
 			// Play mouse over sound
 			if (!args->isDragging && !isRefresh && this->currentSprite != this->spriteSelected)
 			{
-				if (!this->mouseOverSound.empty())
-				{
-					SoundManager::playSoundResource(this->mouseOverSound);
-				}
+				this->mouseOverSound->play();
 			}
 
 			this->showSprite(this->spriteSelected);
@@ -427,11 +426,7 @@ void ClickableNode::mouseUp(MouseEvents::MouseEventArgs* args, EventCustom* even
 			this->mouseReleaseEvent(args);
 		}
 
-		// Play click sound
-		if (!this->clickSound.empty())
-		{
-			SoundManager::playSoundResource(this->clickSound);
-		}
+		this->clickSound->play();
 
 		this->showSprite(this->spriteSelected);
 
