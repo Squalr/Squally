@@ -19,6 +19,7 @@ class PlatformerEntity : public HackableObject
 public:
 	int getHealth();
 	void addHealth(int healthDelta);
+	void setHealth(int health);
 	int getMaxHealth();
 	bool isDead();
 	int getMana();

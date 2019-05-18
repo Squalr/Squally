@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="38" nextobjectid="603">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="40" nextobjectid="612">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -46,31 +46,33 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="decor -128">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-2147.08" y="2200.53" width="13333.3" height="866">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4329.69" y="11213.3" width="13333.3" height="866">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="decor -64">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
-   <property name="depth" type="float" value="-64"/>
+   <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-2147.08" y="2006.28" width="13257.6" height="922">
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="11217.6" width="13257.6" height="922">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="36" name="cave" width="64" height="48">
+ <layer id="38" name="cave" width="64" height="128">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAIB3AzAAAAE=
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYgAAAAQ==
   </data>
  </layer>
  <objectgroup id="18" name="decor background">
@@ -93,19 +95,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="solid" type="terrain" x="-2049.98" y="2816">
+  <object id="489" name="solid" type="terrain" x="-2049.98" y="13066.1">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 6400.81,-8 6921.02,32 7712.64,8 8526.88,-16 10562.5,0 10585.1,312 10381.5,784 8662.58,808 3189.1,712 -45.2354,624 0,232"/>
+   <polyline points="0,0 6400.81,-13.0491 6921.02,52.1965 7712.64,13.0491 8526.88,-26.0982 10562.5,0 10585.1,508.916 10381.5,1278.81 8662.58,1317.96 3189.1,1161.37 -45.2354,1017.83 0,378.425"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="2703.39" width="199" height="133"/>
-  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="2693.5" width="199" height="133"/>
+  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="12943.4" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="12933.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -124,11 +126,11 @@
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="-2093.41" y="-974.241" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="4681.91" y="8248.36" width="78.7879" height="88"/>
  </objectgroup>
- <layer id="37" name="water" width="64" height="48">
+ <layer id="39" name="water" width="64" height="128">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20ND6AAAAAAAAAAAAAAAIB3AzAAAAE=
+   eJztwQEBAAAAgJD+r+4ICgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYgAAAAQ==
   </data>
  </layer>
  <objectgroup id="27" name="terrain foreground">
@@ -163,19 +165,19 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2229.99" y="2585.34" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="950" y="2434" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1320.05" y="2568.31" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2677.12" y="2622.97" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="12796" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2229.99" y="12825.3" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="950" y="12674" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1320.05" y="12808.3" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2677.12" y="12863" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="2468" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1835.99" y="2547.58" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="2580" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="12708" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1835.99" y="12787.6" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="12820" width="242" height="738"/>
  </objectgroup>
 </map>

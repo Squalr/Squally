@@ -81,7 +81,7 @@ void GameHud::initializeListeners()
 			this->getStatsBars()->setStatsTarget(args->entity);
 
 			this->statsBars->setVisible(true);
-			this->runeBar->setVisible(true);
+			//// this->runeBar->setVisible(true);
 			this->currencyDisplay->setVisible(true);
 		}
 	}));

@@ -19,6 +19,10 @@ const std::string SerializableObject::MapKeyWidth = "width";
 const std::string SerializableObject::MapKeyHeight = "height";
 const std::string SerializableObject::MapKeyXPosition = "x";
 const std::string SerializableObject::MapKeyYPosition = "y";
+const std::string SerializableObject::MapKeyScale = "scale";
+const std::string SerializableObject::MapKeyScaleX = "scale-x";
+const std::string SerializableObject::MapKeyScaleY = "scale-y";
+const std::string SerializableObject::MapKeyAutoScale = "auto-scale";
 const std::string SerializableObject::MapKeyFlipX = "flip-x";
 const std::string SerializableObject::MapKeyFlipY = "flip-y";
 const std::string SerializableObject::MapKeyRepeatX = "repeat-x";
@@ -64,7 +68,7 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
-	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaIsIsometric) && this->properties.at(SerializableObject::MapKeyMetaIsIsometric).asBool())
+	if (GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyMetaIsIsometric, Value(false)).asBool())
 	{
 		this->setAnchorPoint(Vec2(0.5f, 0.0f));
 

@@ -26,15 +26,15 @@ CastleTerrainDeserializer::CastleTerrainDeserializer() : TerrainDeserializer(
 	TerrainObject::TerrainData(
 		0.5f,
 		CastleTerrainDeserializer::MapKeyTerrainTypeCastle,
-		TerrainResources::CastleTexture,
-		TerrainResources::Castle,
-		TerrainResources::CastleTopLeft,
-		TerrainResources::CastleTopRight,
-		TerrainResources::CastleBottom,
-		TerrainResources::CastleBottomLeft,
-		TerrainResources::CastleBottomRight,
-		TerrainResources::CastleLeft,
-		TerrainResources::CastleRight,
+		TerrainResources::Castle_CastleTexture,
+		TerrainResources::Castle_Castle,
+		TerrainResources::Castle_CastleTopLeft,
+		TerrainResources::Castle_CastleTopRight,
+		TerrainResources::Castle_CastleBottom,
+		TerrainResources::Castle_CastleBottomLeft,
+		TerrainResources::Castle_CastleBottomRight,
+		TerrainResources::Castle_CastleLeft,
+		TerrainResources::Castle_CastleRight,
 		Color4B(11, 30, 39, 255)))
 {
 }

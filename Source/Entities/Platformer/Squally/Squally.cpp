@@ -48,6 +48,7 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial)
 {
+	this->cameraTrackTarget = Node::create();
 	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::PlayerHover, true, false);
 	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, 0.0f));
 	this->hoverCollision->forceBindTo(this, 8.0f);
@@ -59,6 +60,7 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->inventory = PlayerInventory::getInstance();
 
 	this->addChild(this->hoverCollision);
+	this->addChild(this->cameraTrackTarget);
 }
 
 Squally::~Squally()
@@ -70,7 +72,7 @@ void Squally::onEnter()
 	super::onEnter();
 
 	// Request camera track player
-	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(128.0f, 96.0f));
+	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData);
 
 	// Request HUD track player
@@ -161,6 +163,8 @@ void Squally::initializeCollisionEvents()
 void Squally::initializePositions()
 {
 	super::initializeListeners();
+
+	this->cameraTrackTarget->setPosition(Vec2(0.0f, 128.0f));
 }
 
 Vec2 Squally::getButtonOffset()

@@ -40,6 +40,7 @@ private:
 	bool canJump;
 
 	CollisionObject* hoverCollision;
+	cocos2d::Node* cameraTrackTarget;
 
 	static const float squallyScale;
 };
