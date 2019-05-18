@@ -30,9 +30,6 @@ GeneralTab::GeneralTab()
 	this->musicSlider = Slider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, SoundManager::getMusicVolume());
 	this->soundSlider = Slider::create(UIResources::Menus_OptionsMenu_SliderFrame, UIResources::Menus_OptionsMenu_SliderFill, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, SoundManager::getSoundVolume());
 
-	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(GeneralTab::onMusicVolumeUpdate, this));
-	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(GeneralTab::onSoundVolumeUpdate, this));
-
 	this->addChild(this->musicIcon);
 	this->addChild(this->soundIcon);
 	this->addChild(this->soundSlider);
@@ -54,11 +51,17 @@ void GeneralTab::onEnter()
 	GameUtils::fadeInObject(this->soundIcon, delay, duration);
 	GameUtils::fadeInObject(this->musicSlider, delay, duration);
 	GameUtils::fadeInObject(this->soundSlider, delay, duration);
+
+	this->musicSlider->setProgress(SoundManager::getMusicVolume());
+	this->soundSlider->setProgress(SoundManager::getSoundVolume());
 }
 
 void GeneralTab::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->musicSlider->setProgressUpdateCallback(CC_CALLBACK_1(GeneralTab::onMusicVolumeUpdate, this));
+	this->soundSlider->setProgressUpdateCallback(CC_CALLBACK_1(GeneralTab::onSoundVolumeUpdate, this));
 }
 
 void GeneralTab::initializePositions()

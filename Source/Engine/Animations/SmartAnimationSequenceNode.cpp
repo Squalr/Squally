@@ -37,18 +37,20 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
 
 SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite)
 {
-	this->sprite = Sprite::create(defaultSprite);
+	this->defaultSprite = defaultSprite;
+	this->sprite = Sprite::create(this->defaultSprite);
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
 	this->repeatIndex = 0;
 
-	this->primeCache(defaultSprite);
+	this->primeCache(this->defaultSprite);
 
 	this->addChild(this->sprite);
 }
 
 SmartAnimationSequenceNode::SmartAnimationSequenceNode()
 {
+	this->defaultSprite = "";
 	this->sprite = Sprite::create();
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
@@ -68,6 +70,16 @@ void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceF
 	for (auto it = images.begin(); it != images.end(); it++)
 	{
 		Director::getInstance()->getTextureCache()->addImage(*it);
+	}
+}
+
+void SmartAnimationSequenceNode::stopAnimation()
+{
+	this->sprite->stopAllActions();
+
+	if (this->defaultSprite != "")
+	{
+		this->sprite->initWithFile(this->defaultSprite);
 	}
 }
 

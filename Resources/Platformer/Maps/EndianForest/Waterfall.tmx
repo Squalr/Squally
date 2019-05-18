@@ -99,7 +99,7 @@
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 6400.81,-13.0491 6921.02,52.1965 7712.64,13.0491 8526.88,-26.0982 10562.5,0 10585.1,508.916 10381.5,1278.81 8662.58,1317.96 3189.1,1161.37 -45.2354,1017.83 0,378.425"/>
+   <polyline points="0,0 5839.01,-35.521 7010.91,-67.6537 7712.64,13.0491 8526.88,-26.0982 10562.5,0 10585.1,508.916 10381.5,1278.81 8662.58,1317.96 3189.1,1161.37 -45.2354,1017.83 0,378.425"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -107,7 +107,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="12943.4" width="199" height="133"/>
-  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="12933.5" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="12951.6" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -126,7 +126,7 @@
    <property name="is_hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="4681.91" y="8248.36" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="4494.49" y="8234.97" width="78.7879" height="88"/>
  </objectgroup>
  <layer id="39" name="water" width="64" height="128">
   <data encoding="base64" compression="zlib">
@@ -167,8 +167,8 @@
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="12796" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2229.99" y="12825.3" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="950" y="12674" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1320.05" y="12808.3" width="242" height="738"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4555.62" y="12839.9" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="5097.97" y="12872.1" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2677.12" y="12863" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
@@ -176,8 +176,8 @@
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="12708" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="3993.74" y="12816.5" width="242" height="738"/>
   <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1835.99" y="12787.6" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="12820" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="3375.62" y="12749.8" width="242" height="738"/>
  </objectgroup>
 </map>
