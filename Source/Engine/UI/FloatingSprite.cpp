@@ -32,6 +32,8 @@ void FloatingSprite::onEnter()
 {
 	super::onEnter();
 
+	this->sprite->stopAllActions();
+
 	if (this->time.x > 0.0f && this->movement.x != 0.0f)
 	{
 		FiniteTimeAction* bounceX1 = EaseSineInOut::create(MoveTo::create(this->time.x, Vec2(this->movement.x, 0.0f)));

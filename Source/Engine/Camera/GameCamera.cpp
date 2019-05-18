@@ -329,6 +329,7 @@ Vec2 GameCamera::boundCameraByEllipses()
 
 Vec2 GameCamera::boundCameraByRectangle()
 {
+	Vec2 cameraPositionDebug = Camera::getDefaultCamera()->getPosition();
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 
 	if (!this->targetStack.empty())
@@ -410,11 +411,6 @@ void GameCamera::setTarget(CameraTrackingData trackingData)
 	this->clearTargets();
 
 	this->pushTarget(trackingData);
-
-	if (trackingData.target != nullptr)
-	{
-		this->setCameraPosition(trackingData.target->getPosition(), true);
-	}
 }
 
 void GameCamera::pushTarget(CameraTrackingData trackingData)

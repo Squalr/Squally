@@ -35,9 +35,14 @@ private:
 	bool hasCrashed;
 	float flightTime;
 
+	cocos2d::Node* shipContainer;
 	cocos2d::Sprite* ship;
 	CollisionObject* shipCollision;
 	SmartAnimationSequenceNode* fireAnimation;
+	SmartAnimationSequenceNode* thrustAnimation;
+	SmartAnimationSequenceNode* explodeAnimation;
+	SmartAnimationSequenceNode* groundFireAnimation;
+	SmartAnimationSequenceNode* groundFireSmallAnimation;
 
 	static const float FlightTimeUntilRedFlame;
 };
