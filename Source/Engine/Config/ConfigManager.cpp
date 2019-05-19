@@ -3,6 +3,7 @@
 #include "cocos/platform/CCFileUtils.h"
 #include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
+#include "Engine/Events/SoundEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -125,6 +126,8 @@ void ConfigManager::setSoundVolume(float volume)
 	ConfigManager* instance = ConfigManager::getInstance();
 
 	instance->valueMap[ConfigManager::SoundVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
+
+	SoundEvents::TriggerSoundVolumeUpdated();
 }
 
 void ConfigManager::setMusicVolume(float volume)
@@ -132,6 +135,8 @@ void ConfigManager::setMusicVolume(float volume)
 	ConfigManager* instance = ConfigManager::getInstance();
 
 	instance->valueMap[ConfigManager::MusicVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
+
+	SoundEvents::TriggerMusicVolumeUpdated();
 }
 
 cocos2d::Size ConfigManager::getResolutionSize()

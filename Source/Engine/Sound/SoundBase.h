@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/GlobalNode.h"
 
-class SoundBase : public SmartNode
+class SoundBase : public GlobalNode
 {
 public:
-	void play(bool repeat = false);
+	virtual void play(bool repeat = false);
 	void stop();
 	void stopAndFadeOut();
 	void setVolumeMultiplier(float volumeMultiplier);
@@ -16,18 +16,19 @@ protected:
 	SoundBase(std::string soundResource);
 	~SoundBase();
 
-	void onExit() override;
 	virtual float getConfigVolume() = 0;
-
-private:
-	typedef SmartNode super;
-
 	float getVolume();
 
-	std::string soundResource;
 	int activeTrackId;
+
+private:
+	typedef GlobalNode super;
+
+	std::string soundResource;
 	float volumeMultiplier;
+	int fadeOutTick;
 	bool enableCameraDistanceFade;
 
+	static const std::string KeyScheduleFadeOutAudio;
 	static const int INVALID_ID;
 };

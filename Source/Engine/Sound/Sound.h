@@ -8,6 +8,8 @@ public:
 	static Sound* create(std::string soundResource = "");
 
 protected:
+	void initializeListeners() override;
+	void onExit() override;
 	float getConfigVolume() override;
 
 private:

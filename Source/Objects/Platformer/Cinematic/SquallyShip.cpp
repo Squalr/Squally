@@ -163,7 +163,7 @@ void SquallyShip::update(float dt)
 		{
 			this->fireAnimation->setPosition(Vec2(112.0f + 44.0f, 32.0f));
 			this->fireAnimation->playAnimationRepeat(ObjectResources::FX_MeteorFire_MeteorFire_0000, 0.06f);
-			this->fireRingAnimation->playAnimation(ObjectResources::FX_FireRing_FireRing_0000, 0.08f);
+			this->fireRingAnimation->playAnimation(ObjectResources::FX_FireRing_FireRing_0000, 0.08f, true);
 
 			this->enterAtmosphereSound->play();
 		}

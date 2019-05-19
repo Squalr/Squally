@@ -107,8 +107,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="12943.4" width="199" height="133"/>
-  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="12951.6" width="199" height="133"/>
+  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="12928.4" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="12939.6" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

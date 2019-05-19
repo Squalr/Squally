@@ -6,6 +6,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableLayer.h"
 #include "Engine/Maps/SerializableObject.h"
@@ -68,13 +69,15 @@ void MusicDeserializer::onDeserializationRequest(DeserializationEvents::LayerDes
 
 	newObject->addChild(music);
 
+	SoundEvents::TriggerFadeOutMusic();
+
 	if (delay <= 0.0f)
 	{
 		music->play(true);
 	}
 	else
 	{
-		this->runAction(Sequence::create(
+		music->runAction(Sequence::create(
 			DelayTime::create(delay),
 			CallFunc::create([=]()
 			{
