@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyThurstan;
 
 private:
+	typedef NpcBase super;
 	Thurstan(cocos2d::ValueMap& initProperties);
 	~Thurstan();
 

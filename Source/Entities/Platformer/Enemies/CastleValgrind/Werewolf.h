@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyWerewolf;
 
 private:
+	typedef PlatformerEnemy super;
 	Werewolf(cocos2d::ValueMap& initProperties);
 	~Werewolf();
 

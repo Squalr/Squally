@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAgnes;
 
 private:
+	typedef PlatformerEnemy super;
 	Agnes(cocos2d::ValueMap& initProperties);
 	~Agnes();
 

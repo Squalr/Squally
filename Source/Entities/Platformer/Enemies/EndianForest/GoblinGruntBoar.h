@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGoblinGruntBoar;
 
 private:
+	typedef PlatformerEnemy super;
 	GoblinGruntBoar(cocos2d::ValueMap& initProperties);
 	~GoblinGruntBoar();
 

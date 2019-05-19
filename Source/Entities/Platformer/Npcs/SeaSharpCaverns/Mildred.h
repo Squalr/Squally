@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMildred;
 
 private:
+	typedef NpcBase super;
 	Mildred(cocos2d::ValueMap& initProperties);
 	~Mildred();
 

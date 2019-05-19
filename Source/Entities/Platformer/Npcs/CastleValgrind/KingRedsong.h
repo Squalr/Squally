@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyKingRedsong;
 
 private:
+	typedef NpcBase super;
 	KingRedsong(cocos2d::ValueMap& initProperties);
 	~KingRedsong();
 

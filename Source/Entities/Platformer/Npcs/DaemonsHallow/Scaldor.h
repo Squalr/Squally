@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyScaldor;
 
 private:
+	typedef NpcBase super;
 	Scaldor(cocos2d::ValueMap& initProperties);
 	~Scaldor();
 

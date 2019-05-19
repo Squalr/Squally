@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAbomination;
 
 private:
+	typedef PlatformerEnemy super;
 	Abomination(cocos2d::ValueMap& initProperties);
 	~Abomination();
 

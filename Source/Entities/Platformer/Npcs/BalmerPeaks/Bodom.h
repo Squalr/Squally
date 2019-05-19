@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBodom;
 
 private:
+	typedef NpcBase super;
 	Bodom(cocos2d::ValueMap& initProperties);
 	~Bodom();
 

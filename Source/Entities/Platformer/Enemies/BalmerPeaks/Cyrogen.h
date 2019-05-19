@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCyrogen;
 
 private:
+	typedef PlatformerEnemy super;
 	Cyrogen(cocos2d::ValueMap& initProperties);
 	~Cyrogen();
 

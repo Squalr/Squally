@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMara;
 
 private:
+	typedef NpcBase super;
 	Mara(cocos2d::ValueMap& initProperties);
 	~Mara();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyFraya;
 
 private:
+	typedef NpcBase super;
 	Fraya(cocos2d::ValueMap& initProperties);
 	~Fraya();
 

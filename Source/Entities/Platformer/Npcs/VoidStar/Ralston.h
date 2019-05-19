@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRalston;
 
 private:
+	typedef NpcBase super;
 	Ralston(cocos2d::ValueMap& initProperties);
 	~Ralston();
 

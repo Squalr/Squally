@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyThion;
 
 private:
+	typedef NpcBase super;
 	Thion(cocos2d::ValueMap& initProperties);
 	~Thion();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRobot;
 
 private:
+	typedef PlatformerEntity super;
 	Robot(cocos2d::ValueMap& initProperties);
 	~Robot();
 

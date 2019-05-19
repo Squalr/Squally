@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyKrampus;
 
 private:
+	typedef PlatformerEnemy super;
 	Krampus(cocos2d::ValueMap& initProperties);
 	~Krampus();
 

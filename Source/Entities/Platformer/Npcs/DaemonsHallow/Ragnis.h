@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRagnis;
 
 private:
+	typedef NpcBase super;
 	Ragnis(cocos2d::ValueMap& initProperties);
 	~Ragnis();
 

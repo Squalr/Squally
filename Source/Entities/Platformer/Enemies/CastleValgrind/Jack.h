@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyJack;
 
 private:
+	typedef PlatformerEnemy super;
 	Jack(cocos2d::ValueMap& initProperties);
 	~Jack();
 

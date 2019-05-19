@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCeleste;
 
 private:
+	typedef NpcBase super;
 	Celeste(cocos2d::ValueMap& initProperties);
 	~Celeste();
 

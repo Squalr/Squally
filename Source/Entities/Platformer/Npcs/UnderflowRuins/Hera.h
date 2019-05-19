@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyHera;
 
 private:
+	typedef NpcBase super;
 	Hera(cocos2d::ValueMap& initProperties);
 	~Hera();
 

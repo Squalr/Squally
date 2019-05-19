@@ -152,6 +152,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = TrapDoorFrame::create(properties);
 		}
+		else if (name == Trigger::MapKeyTrigger)
+		{
+			newObject = Trigger::create(properties);
+		}
 		else if (name == Water::MapKeyWater)
 		{
 			newObject = Water::create(properties);

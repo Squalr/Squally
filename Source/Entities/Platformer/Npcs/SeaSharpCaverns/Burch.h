@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBurch;
 
 private:
+	typedef NpcBase super;
 	Burch(cocos2d::ValueMap& initProperties);
 	~Burch();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyProfessor;
 
 private:
+	typedef PlatformerEntity super;
 	Professor(cocos2d::ValueMap& initProperties);
 	~Professor();
 

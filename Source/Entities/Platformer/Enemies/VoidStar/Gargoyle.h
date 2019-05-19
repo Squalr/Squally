@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGargoyle;
 
 private:
+	typedef PlatformerEnemy super;
 	Gargoyle(cocos2d::ValueMap& initProperties);
 	~Gargoyle();
 

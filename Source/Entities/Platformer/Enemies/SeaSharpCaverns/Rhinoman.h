@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRhinoman;
 
 private:
+	typedef PlatformerEnemy super;
 	Rhinoman(cocos2d::ValueMap& initProperties);
 	~Rhinoman();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyYetiBaby;
 
 private:
+	typedef PlatformerEntity super;
 	YetiBaby(cocos2d::ValueMap& initProperties);
 	~YetiBaby();
 

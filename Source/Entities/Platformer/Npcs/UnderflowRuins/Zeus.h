@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyZeus;
 
 private:
+	typedef NpcBase super;
 	Zeus(cocos2d::ValueMap& initProperties);
 	~Zeus();
 

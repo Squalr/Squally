@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLionMan;
 
 private:
+	typedef PlatformerEnemy super;
 	LionMan(cocos2d::ValueMap& initProperties);
 	~LionMan();
 

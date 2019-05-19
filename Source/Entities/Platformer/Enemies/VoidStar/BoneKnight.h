@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBoneKnight;
 
 private:
+	typedef PlatformerEnemy super;
 	BoneKnight(cocos2d::ValueMap& initProperties);
 	~BoneKnight();
 

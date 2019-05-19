@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRoger;
 
 private:
+	typedef NpcBase super;
 	Roger(cocos2d::ValueMap& initProperties);
 	~Roger();
 

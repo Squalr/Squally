@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRusty;
 
 private:
+	typedef NpcBase super;
 	Rusty(cocos2d::ValueMap& initProperties);
 	~Rusty();
 

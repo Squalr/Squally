@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMarcel;
 
 private:
+	typedef NpcBase super;
 	Marcel(cocos2d::ValueMap& initProperties);
 	~Marcel();
 

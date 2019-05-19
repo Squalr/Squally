@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyFinch;
 
 private:
+	typedef NpcBase super;
 	Finch(cocos2d::ValueMap& initProperties);
 	~Finch();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLucifer;
 
 private:
+	typedef NpcBase super;
 	Lucifer(cocos2d::ValueMap& initProperties);
 	~Lucifer();
 

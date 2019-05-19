@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyHorus;
 
 private:
+	typedef NpcBase super;
 	Horus(cocos2d::ValueMap& initProperties);
 	~Horus();
 

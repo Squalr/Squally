@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRaven;
 
 private:
+	typedef NpcBase super;
 	Raven(cocos2d::ValueMap& initProperties);
 	~Raven();
 

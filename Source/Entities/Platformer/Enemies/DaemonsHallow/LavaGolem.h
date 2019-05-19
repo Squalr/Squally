@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLavaGolem;
 
 private:
+	typedef PlatformerEnemy super;
 	LavaGolem(cocos2d::ValueMap& initProperties);
 	~LavaGolem();
 
