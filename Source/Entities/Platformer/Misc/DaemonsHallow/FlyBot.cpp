@@ -15,6 +15,7 @@
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 ///////////////////////////////////////////////////
@@ -26,9 +27,14 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
+#include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
+#include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
 const std::string FlyBot::EventGreetSqually = "event-greet-squally";
 
@@ -68,6 +74,15 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 	
 	this->entityCollision->setPhysicsEnabled(false);
+	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidAlarmed);
+	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidBrief);
+	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidBrief2);
+	this->droidChatterSound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidChatter);
+
+	this->addChild(this->droidAlarmedSound);
+	this->addChild(this->droidBrief1Sound);
+	this->addChild(this->droidBrief2Sound);
+	this->addChild(this->droidChatterSound);
 	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -90,8 +105,39 @@ void FlyBot::initializeListeners()
 	{
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
 		{
+			PlatformerEvents::TriggerCinematicHijack();
+
 			this->runAction(Sequence::create(
+				CallFunc::create([=]()
+				{
+					this->droidAlarmedSound->play();
+				}),
 				EaseSineInOut::create(MoveTo::create(2.0f, squally->getPosition() + Vec2(256.0f, 256.0f))),
+				CallFunc::create([=]()
+				{
+					this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
+				}),
+				DelayTime::create(2.0f),
+				CallFunc::create([=]()
+				{
+					this->droidBrief1Sound->play();
+					this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
+				}),
+				DelayTime::create(4.0f),
+				CallFunc::create([=]()
+				{
+					this->speechBubble->hideDialogue();
+				}),
+				DelayTime::create(1.0f),
+				CallFunc::create([=]()
+				{
+					PlatformerEvents::TriggerCinematicRestore();
+				}),
+				EaseSineInOut::create(MoveBy::create(3.0f, this->getPosition() + Vec2(2048.0f, -256.0f))),
+				CallFunc::create([=]()
+				{
+					this->setVisible(false);
+				}),
 				nullptr
 			));
 		}));

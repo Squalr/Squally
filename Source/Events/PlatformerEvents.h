@@ -7,6 +7,8 @@ class PlatformerEvents
 {
 public:
 	static const std::string EventHudTrackEntity;
+	static const std::string EventCinematicHijack;
+	static const std::string EventCinematicRestore;
 
 	struct HudTrackEntityArgs
 	{
@@ -17,5 +19,7 @@ public:
 		}
 	};
 
+	static void TriggerCinematicHijack();
+	static void TriggerCinematicRestore();
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 };

@@ -181,6 +181,11 @@ void Squally::update(float dt)
 {
 	super::update(dt);
 
+	if (this->isCinimaticHijacked)
+	{
+		return;
+	}
+
 	this->movement = Vec2::ZERO;
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))

@@ -86,6 +86,7 @@ protected:
 
 	bool isOnGround();
 	
+	bool isCinimaticHijacked;
 	int health;
 	int maxHealth;
 	int mana;

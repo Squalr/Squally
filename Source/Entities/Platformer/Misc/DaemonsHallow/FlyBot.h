@@ -11,6 +11,8 @@
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////A////A////A////A////A////A////A////A////A////A/
 
+class Sound;
+
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
 ///////////////////////////////////////////////////
@@ -48,6 +50,11 @@ private:
 	////X////X////X////X////X////X////X////X////X////X/
 
 	void initializeListeners() override;
+
+	Sound* droidAlarmedSound;
+	Sound* droidBrief1Sound;
+	Sound* droidBrief2Sound;
+	Sound* droidChatterSound;
 
 	static const std::string EventGreetSqually;
 	
