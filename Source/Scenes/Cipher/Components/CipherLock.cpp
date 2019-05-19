@@ -10,7 +10,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableNode.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
 
@@ -51,6 +51,7 @@ CipherLock::CipherLock()
 	this->pinboardFront = Sprite::create(CipherResources::Lock_PinboardFront);
 	this->cipherPinholes = std::vector<cocos2d::Sprite*>();
 	this->cipherPins = std::vector<cocos2d::Sprite*>();
+	this->gearTurnSound = Sound::create(SoundResources::Cipher_GearTurn);
 
 	// Enable to debug clipping:
 	// this->contentClip->addChild(stencil);
@@ -73,6 +74,7 @@ CipherLock::CipherLock()
 	this->contentClip->addChild(this->stoppingBlock);
 	this->contentClip->addChild(this->pinboardFront);
 	this->addChild(this->contentClip);
+	this->addChild(this->gearTurnSound);
 }
 
 CipherLock::~CipherLock()
@@ -132,7 +134,7 @@ void CipherLock::initializeListeners()
 					// Normal scroll animation
 					if (!this->hasAnyPinFailed)
 					{
-						SoundManager::playSoundResource(SoundResources::Cipher_GearTurn);
+						this->gearTurnSound->play();
 
 						this->woodGearTop->runAction(RotateBy::create(0.5f, 180.0f));
 						this->steelGear->runAction(RotateBy::create(0.5f, -180.0f));
@@ -151,7 +153,7 @@ void CipherLock::initializeListeners()
 					// Failure stall animation
 					else
 					{
-						SoundManager::playSoundResource(SoundResources::Cipher_GearTurn);
+						this->gearTurnSound->play();
 
 						this->woodGearTop->runAction(Sequence::create(
 							RotateBy::create(0.15f, 10.0f),

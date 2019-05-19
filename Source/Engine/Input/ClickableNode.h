@@ -13,6 +13,8 @@ namespace cocos2d
 	class Node;
 }
 
+class Sound;
+
 class ClickableNode : public SmartNode
 {
 public:
@@ -66,8 +68,8 @@ private:
 	void mouseScroll(MouseEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	bool intersects(cocos2d::Vec2 mousePos);
 
-	std::string mouseOverSound;
-	std::string clickSound;
+	Sound* mouseOverSound;
+	Sound* clickSound;
 
 	cocos2d::Node* currentSprite;
 

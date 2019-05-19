@@ -11,7 +11,7 @@ PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& initProperties)
 	return instance;
 }
 
-PlatformerDecorObject::PlatformerDecorObject(ValueMap& initProperties) : HackableObject(initProperties)
+PlatformerDecorObject::PlatformerDecorObject(ValueMap& initProperties) : super(initProperties)
 {
 }
 

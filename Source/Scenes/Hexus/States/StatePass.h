@@ -9,9 +9,10 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
 class ClickableIconNode;
 class LocalizedLabel;
-class ClickableNode;
+class Sound;
 
 class StatePass : public StateBase
 {
@@ -83,4 +84,8 @@ private:
 
 	cocos2d::Sprite* enemyClaimVictorySprite;
 	cocos2d::ParticleSystemQuad* enemyClaimVictoryParticles;
+
+	Sound* passSound;
+	Sound* lastStandSound;
+	Sound* claimVictorySound;
 };

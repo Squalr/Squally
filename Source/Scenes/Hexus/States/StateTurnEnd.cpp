@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardEffects.h"
@@ -24,6 +24,9 @@ StateTurnEnd* StateTurnEnd::create()
 
 StateTurnEnd::StateTurnEnd() : super(GameState::StateType::TurnEnd)
 {
+	this->increment0Sound = Sound::create(SoundResources::Hexus_Attacks_WindReverse);
+
+	this->addChild(increment0Sound);
 }
 
 StateTurnEnd::~StateTurnEnd()
@@ -191,6 +194,6 @@ void StateTurnEnd::runIncrementHex0Effect(GameState* gameState)
 
 	if (wasEffectRun)
 	{
-		SoundManager::playSoundResource(SoundResources::Hexus_Attacks_WindReverse);
+		this->increment0Sound->play();
 	}
 }

@@ -8,7 +8,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -27,6 +27,7 @@ Lightning* Lightning::create()
 Lightning::Lightning()
 {
 	this->animations = SmartAnimationSequenceNode::create(UIResources::EmptyImage);
+	this->sound = Sound::create(SoundResources::Hexus_Attacks_Energy);
 	this->manualDelay = -1.0f;
 
 	static bool runOnce = true;
@@ -116,7 +117,8 @@ void Lightning::playAnimationsInternal(bool repeat, bool isFirstRun)
 		float cameraDistance = GameCamera::getInstance()->getCameraPosition().distance(this->getPosition());
 		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4 * float(M_PI) * cameraDistance);
 
-		SoundManager::playSoundResource(SoundResources::Hexus_Attacks_Energy, soundIntensity);
+		this->sound->setVolumeMultiplier(soundIntensity);
+		this->sound->play();
 
 		switch (animationIndex)
 		{
