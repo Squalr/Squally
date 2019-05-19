@@ -1,6 +1,8 @@
 #include "PlatformerEntity.h"
 
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
@@ -10,6 +12,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
@@ -42,6 +45,7 @@ PlatformerEntity::PlatformerEntity(
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->emblemResource = emblemResource;
+	this->isCinimaticHijacked = false;
 	this->entityCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,
@@ -140,6 +144,16 @@ void PlatformerEntity::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicHijack, [=](EventCustom*)
+	{
+		this->isCinimaticHijacked = true;
+	}));
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicRestore, [=](EventCustom*)
+	{
+		this->isCinimaticHijacked = false;
+	}));
+
 	this->initializeCollisionEvents();
 }
 
@@ -150,6 +164,11 @@ void PlatformerEntity::update(float dt)
 	if (this->isDead())
 	{
 		this->entityCollision->setVelocity(Vec2::ZERO);
+		return;
+	}
+
+	if (this->isCinimaticHijacked)
+	{
 		return;
 	}
 
