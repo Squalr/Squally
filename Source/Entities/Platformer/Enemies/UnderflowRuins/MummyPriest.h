@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMummyPriest;
 
 private:
+	typedef PlatformerEnemy super;
 	MummyPriest(cocos2d::ValueMap& initProperties);
 	~MummyPriest();
 

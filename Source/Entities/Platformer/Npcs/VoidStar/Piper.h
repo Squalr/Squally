@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPiper;
 
 private:
+	typedef NpcBase super;
 	Piper(cocos2d::ValueMap& initProperties);
 	~Piper();
 

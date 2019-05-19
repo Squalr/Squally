@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyNecron;
 
 private:
+	typedef NpcBase super;
 	Necron(cocos2d::ValueMap& initProperties);
 	~Necron();
 

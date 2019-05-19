@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAlder;
 
 private:
+	typedef NpcBase super;
 	Alder(cocos2d::ValueMap& initProperties);
 	~Alder();
 

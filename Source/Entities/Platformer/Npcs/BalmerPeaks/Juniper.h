@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyJuniper;
 
 private:
+	typedef NpcBase super;
 	Juniper(cocos2d::ValueMap& initProperties);
 	~Juniper();
 

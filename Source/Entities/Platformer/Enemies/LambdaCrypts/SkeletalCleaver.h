@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySkeletalCleaver;
 
 private:
+	typedef PlatformerEnemy super;
 	SkeletalCleaver(cocos2d::ValueMap& initProperties);
 	~SkeletalCleaver();
 

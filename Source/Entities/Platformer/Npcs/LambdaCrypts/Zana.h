@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyZana;
 
 private:
+	typedef NpcBase super;
 	Zana(cocos2d::ValueMap& initProperties);
 	~Zana();
 

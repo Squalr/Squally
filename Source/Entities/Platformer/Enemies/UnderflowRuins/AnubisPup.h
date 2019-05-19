@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAnubisPup;
 
 private:
+	typedef PlatformerEnemy super;
 	AnubisPup(cocos2d::ValueMap& initProperties);
 	~AnubisPup();
 

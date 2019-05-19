@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySkeletalWarrior;
 
 private:
+	typedef PlatformerEnemy super;
 	SkeletalWarrior(cocos2d::ValueMap& initProperties);
 	~SkeletalWarrior();
 

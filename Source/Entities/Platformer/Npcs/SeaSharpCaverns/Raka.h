@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRaka;
 
 private:
+	typedef NpcBase super;
 	Raka(cocos2d::ValueMap& initProperties);
 	~Raka();
 

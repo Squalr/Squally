@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPenguinWarrior;
 
 private:
+	typedef PlatformerEnemy super;
 	PenguinWarrior(cocos2d::ValueMap& initProperties);
 	~PenguinWarrior();
 

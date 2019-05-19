@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyJingles;
 
 private:
+	typedef NpcBase super;
 	Jingles(cocos2d::ValueMap& initProperties);
 	~Jingles();
 

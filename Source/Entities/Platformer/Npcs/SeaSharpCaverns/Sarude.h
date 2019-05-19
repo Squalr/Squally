@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySarude;
 
 private:
+	typedef NpcBase super;
 	Sarude(cocos2d::ValueMap& initProperties);
 	~Sarude();
 

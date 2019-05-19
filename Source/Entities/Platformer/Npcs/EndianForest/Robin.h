@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRobin;
 
 private:
+	typedef NpcBase super;
 	Robin(cocos2d::ValueMap& initProperties);
 	~Robin();
 

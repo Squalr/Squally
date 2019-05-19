@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLiana;
 
 private:
+	typedef NpcBase super;
 	Liana(cocos2d::ValueMap& initProperties);
 	~Liana();
 

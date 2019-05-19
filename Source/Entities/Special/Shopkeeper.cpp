@@ -15,7 +15,7 @@ Shopkeeper* Shopkeeper::create()
 
 Shopkeeper::Shopkeeper()
 {
-	this->animationNode = SmartAnimationNode::create(EntityResources::Misc_Shopkeeper_Animations);
+	this->animationNode = SmartAnimationNode::create(EntityResources::Misc_LambdaCrypts_Shopkeeper_Animations);
 
 	this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
 

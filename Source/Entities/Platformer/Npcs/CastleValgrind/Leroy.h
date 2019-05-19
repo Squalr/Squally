@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLeroy;
 
 private:
+	typedef NpcBase super;
 	Leroy(cocos2d::ValueMap& initProperties);
 	~Leroy();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyUrsula;
 
 private:
+	typedef NpcBase super;
 	Ursula(cocos2d::ValueMap& initProperties);
 	~Ursula();
 

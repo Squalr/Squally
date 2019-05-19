@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTheldar;
 
 private:
+	typedef NpcBase super;
 	Theldar(cocos2d::ValueMap& initProperties);
 	~Theldar();
 

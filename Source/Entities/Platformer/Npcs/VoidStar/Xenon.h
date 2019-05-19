@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyXenon;
 
 private:
+	typedef NpcBase super;
 	Xenon(cocos2d::ValueMap& initProperties);
 	~Xenon();
 

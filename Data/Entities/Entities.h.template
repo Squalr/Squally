@@ -36,6 +36,7 @@ public:
 	static const std::string MapKey{{EntityName}};
 
 private:
+	typedef {{EntityBase}} super;
 	{{EntityName}}(cocos2d::ValueMap& initProperties);
 	~{{EntityName}}();
 

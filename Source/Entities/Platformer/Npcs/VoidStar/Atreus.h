@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAtreus;
 
 private:
+	typedef NpcBase super;
 	Atreus(cocos2d::ValueMap& initProperties);
 	~Atreus();
 

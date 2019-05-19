@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBrock;
 
 private:
+	typedef NpcBase super;
 	Brock(cocos2d::ValueMap& initProperties);
 	~Brock();
 

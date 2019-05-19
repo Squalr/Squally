@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAra;
 
 private:
+	typedef NpcBase super;
 	Ara(cocos2d::ValueMap& initProperties);
 	~Ara();
 

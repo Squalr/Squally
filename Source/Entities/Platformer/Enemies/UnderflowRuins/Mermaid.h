@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMermaid;
 
 private:
+	typedef PlatformerEnemy super;
 	Mermaid(cocos2d::ValueMap& initProperties);
 	~Mermaid();
 

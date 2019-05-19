@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMystic;
 
 private:
+	typedef PlatformerEnemy super;
 	Mystic(cocos2d::ValueMap& initProperties);
 	~Mystic();
 

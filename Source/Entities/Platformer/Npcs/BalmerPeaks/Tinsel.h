@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTinsel;
 
 private:
+	typedef NpcBase super;
 	Tinsel(cocos2d::ValueMap& initProperties);
 	~Tinsel();
 

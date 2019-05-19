@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMinos;
 
 private:
+	typedef NpcBase super;
 	Minos(cocos2d::ValueMap& initProperties);
 	~Minos();
 

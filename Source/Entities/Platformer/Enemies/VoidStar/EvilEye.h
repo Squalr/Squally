@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyEvilEye;
 
 private:
+	typedef PlatformerEnemy super;
 	EvilEye(cocos2d::ValueMap& initProperties);
 	~EvilEye();
 

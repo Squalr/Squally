@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySkeletalPirate;
 
 private:
+	typedef PlatformerEnemy super;
 	SkeletalPirate(cocos2d::ValueMap& initProperties);
 	~SkeletalPirate();
 

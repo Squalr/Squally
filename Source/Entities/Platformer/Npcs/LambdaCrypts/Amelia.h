@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAmelia;
 
 private:
+	typedef NpcBase super;
 	Amelia(cocos2d::ValueMap& initProperties);
 	~Amelia();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGarrick;
 
 private:
+	typedef NpcBase super;
 	Garrick(cocos2d::ValueMap& initProperties);
 	~Garrick();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAngel;
 
 private:
+	typedef NpcBase super;
 	Angel(cocos2d::ValueMap& initProperties);
 	~Angel();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyNessie;
 
 private:
+	typedef NpcBase super;
 	Nessie(cocos2d::ValueMap& initProperties);
 	~Nessie();
 
