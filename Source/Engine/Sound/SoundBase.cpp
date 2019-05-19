@@ -8,6 +8,7 @@ using namespace cocos2d;
 using namespace cocos_experimental;
 
 const int SoundBase::INVALID_ID = -1;
+const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
 SoundBase::SoundBase(std::string soundResource) : super()
 {
@@ -15,17 +16,12 @@ SoundBase::SoundBase(std::string soundResource) : super()
 	this->soundResource = soundResource;
 	this->enableCameraDistanceFade = false;
 	this->volumeMultiplier = 1.0f;
+	this->fadeOutTick = 0;
 }
 
 SoundBase::~SoundBase()
 {
-}
-
-void SoundBase::onExit()
-{
-	super::onExit();
-
-	this->stopAndFadeOut();
+	this->stop();
 }
 
 void SoundBase::play(bool repeat)
@@ -47,7 +43,43 @@ void SoundBase::stop()
 
 void SoundBase::stopAndFadeOut()
 {
-	AudioEngine::stop(this->activeTrackId);
+	const float duration = 2.00f;
+	const int ticks = int(duration / (1.0f / 15.0f)); // 15 FPS for audio updates
+	const float interval = duration / float(ticks);
+	const float delay = 0.0f;
+
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		{
+			// Not playing, do nothing
+			break;
+		}
+		case AudioEngine::AudioState::PLAYING:
+		{
+			this->fadeOutTick = 0;
+
+			this->schedule([=](float dt)
+			{
+				this->fadeOutTick++;
+				float fadeMultiplier = float(ticks - this->fadeOutTick) / float(ticks);
+
+				AudioEngine::setVolume(this->activeTrackId, this->getVolume() * fadeMultiplier);
+				
+				if (this->fadeOutTick >= ticks - 1)
+				{
+					AudioEngine::stop(this->activeTrackId);
+				}
+
+			}, interval, ticks, delay, SoundBase::KeyScheduleFadeOutAudio);
+			break;
+		}
+	}
 }
 
 void SoundBase::setVolumeMultiplier(float volumeMultiplier)
