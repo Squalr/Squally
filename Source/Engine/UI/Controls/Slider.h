@@ -20,7 +20,7 @@ public:
 
 	void enableInteraction();
 	void disableInteraction();
-	void setProgress(float newProgress);
+	void setProgress(float newProgress, bool callUpdateCallback = true);
 	void setProgressUpdateCallback(std::function<void(float progress)> callback);
 
 protected:

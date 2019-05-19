@@ -8,9 +8,10 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
 class ConstantString;
 class LocalizedLabel;
-class ClickableNode;
+class Sound;
 
 class HexusRewardsMenu : public GlobalScene
 {
@@ -36,6 +37,7 @@ private:
 	ConstantString* goldString;
 	LocalizedLabel* goldLabel;
 	ClickableNode* returnButton;
+	Sound* rewardSound;
 
 	static HexusRewardsMenu* instance;
 	static const std::string KeyScheduleHexusGoldTick;

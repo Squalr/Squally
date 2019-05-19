@@ -9,7 +9,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Config.h"
 
@@ -43,10 +43,14 @@ StateGameEnd::StateGameEnd() : super(GameState::StateType::GameEnd)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected
 	);
+	this->defeatSound = Sound::create(SoundResources::Hexus_Defeat);
+	this->victorySound = Sound::create(SoundResources::Hexus_Victory);
 
 	this->backButton->setOpacity(0);
 
 	this->addChild(this->backButton);
+	this->addChild(this->defeatSound);
+	this->addChild(this->victorySound);
 }
 
 StateGameEnd::~StateGameEnd()
@@ -176,11 +180,11 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	if (gameState->playerLosses >= 2)
 	{
-		SoundManager::playSoundResource(SoundResources::Hexus_Defeat);
+		this->defeatSound->play();
 	}
 	else if (gameState->enemyLosses >= 2)
 	{
-		SoundManager::playSoundResource(SoundResources::Hexus_Victory);
+		this->victorySound->play();
 	}
 
 	this->backButton->enableInteraction(0);

@@ -10,7 +10,7 @@
 #include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/Config.h"
 
 #include "Resources/HexusResources.h"
@@ -69,6 +69,10 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	this->enemyClaimVictorySprite = Sprite::create(HexusResources::Victory);
 	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
 
+	this->passSound = Sound::create(SoundResources::Hexus_Pass);
+	this->lastStandSound = Sound::create(SoundResources::Hexus_LastStand);
+	this->claimVictorySound = Sound::create(SoundResources::Hexus_ClaimVictory);
+
 	this->addChild(this->passParticles);
 	this->addChild(this->passSprite);
 	this->addChild(this->passButton);
@@ -92,6 +96,10 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	this->addChild(this->claimVictoryLabel);
 	this->addChild(this->enemyClaimVictoryParticles);
 	this->addChild(this->enemyClaimVictorySprite);
+
+	this->addChild(this->passSound);
+	this->addChild(this->lastStandSound);
+	this->addChild(this->claimVictorySound);
 }
 
 StatePass::~StatePass()
@@ -458,15 +466,15 @@ void StatePass::onStateEnter(GameState* gameState)
 			// Note: We play these on state enter rather than on button click, because button click is not the only way to enter this state
 			if (gameState->isPlayerLastStandCondition())
 			{
-				SoundManager::playSoundResource(SoundResources::Hexus_LastStand);
+				this->lastStandSound->play();
 			}
 			else if (gameState->isPlayerClaimVictoryCondition())
 			{
-				SoundManager::playSoundResource(SoundResources::Hexus_ClaimVictory);
+				this->claimVictorySound->play();
 			}
 			else
 			{
-				SoundManager::playSoundResource(SoundResources::Hexus_Pass);
+				this->passSound->play();
 			}
 
 			gameState->playerPassed = true;
@@ -475,15 +483,15 @@ void StatePass::onStateEnter(GameState* gameState)
 		{
 			if (gameState->isEnemyLastStandCondition())
 			{
-				SoundManager::playSoundResource(SoundResources::Hexus_LastStand);
+				this->lastStandSound->play();
 			}
 			else if (gameState->isEnemyClaimVictoryCondition())
 			{
-				SoundManager::playSoundResource(SoundResources::Hexus_ClaimVictory);
+				this->claimVictorySound->play();
 			}
 			else
 			{
-				SoundManager::playSoundResource(SoundResources::Hexus_Pass);
+				this->passSound->play();
 			}
 
 			gameState->enemyPassed = true;

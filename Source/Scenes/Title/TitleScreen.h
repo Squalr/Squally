@@ -11,6 +11,7 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class TitleScreenBackground;
+class Music;
 
 class TitleScreen : public GlobalScene
 {
@@ -44,6 +45,7 @@ private:
 	ClickableTextNode* exitButton;
 	cocos2d::Sprite* titleBar;
 	cocos2d::Sprite* title;
+	Music* music;
 
 	static TitleScreen* instance;
 };

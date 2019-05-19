@@ -1,19 +1,24 @@
 #include "MusicDeserializer.h"
 
 #include "cocos/2d/CCTMXObjectGroup.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Utils/GameUtils.h"
-
 #include "Engine/Maps/SerializableLayer.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Sound/Music.h"
+#include "Sound/MusicLayer.h"
 
 using namespace cocos2d;
 
 MusicDeserializer* MusicDeserializer::instance = nullptr;
-const std::string MusicDeserializer::KeyMusicProperty = "music";
+const std::string MusicDeserializer::MapKeyDelayProperty = "delay";
+const std::string MusicDeserializer::MapKeyMusicProperty = "music";
 
 void MusicDeserializer::registerGlobalNode()
 {
@@ -51,11 +56,36 @@ void MusicDeserializer::initializeListeners()
 void MusicDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->objectGroup->getProperties();
+	std::string name = GameUtils::getKeyOrDefault(properties, SerializableLayer::MapKeyPropertyName, Value("")).asString();
 
-	if (GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString() != MusicDeserializer::KeyMusicProperty)
+	if (GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString() != MusicDeserializer::MapKeyMusicProperty)
 	{
 		return;
 	}
+	
+	MusicLayer* newObject = MusicLayer::create(properties, name);
+	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
+	Music* music = Music::create(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString());
 
-	SoundManager::playMusicResource(GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString());
+	newObject->addChild(music);
+
+	SoundEvents::TriggerFadeOutMusic();
+
+	if (delay <= 0.0f)
+	{
+		music->play(true);
+	}
+	else
+	{
+		music->runAction(Sequence::create(
+			DelayTime::create(delay),
+			CallFunc::create([=]()
+			{
+				music->play(true);
+			}),
+			nullptr
+		));
+	}
+
+	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(newObject, args->objectGroup->layerIndex));
 }

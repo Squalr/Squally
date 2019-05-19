@@ -8,6 +8,8 @@ namespace cocos2d
 	class Event;
 }
 
+class Music;
+
 class PointerTraceLevelSelect  : public MapBase
 {
 public:
@@ -23,6 +25,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+
+	Music* music;
 
 	static PointerTraceLevelSelect* instance;
 };

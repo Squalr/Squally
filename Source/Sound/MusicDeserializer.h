@@ -13,6 +13,7 @@ private:
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
 
-	static const std::string KeyMusicProperty;
+	static const std::string MapKeyDelayProperty;
+	static const std::string MapKeyMusicProperty;
 	static MusicDeserializer* instance;
 };

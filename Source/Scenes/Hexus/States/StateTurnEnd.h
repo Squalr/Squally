@@ -2,6 +2,8 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
+class Sound;
+
 class StateTurnEnd : public StateBase
 {
 public:
@@ -19,4 +21,6 @@ private:
 	~StateTurnEnd();
 
 	void runIncrementHex0Effect(GameState* gameState);
+
+	Sound* increment0Sound;
 };

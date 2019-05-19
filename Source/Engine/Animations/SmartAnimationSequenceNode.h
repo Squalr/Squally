@@ -17,6 +17,7 @@ public:
 	static SmartAnimationSequenceNode* create();
 
 	static void primeCache(std::string initialSequenceResourceFile);
+	void stopAnimation();
 	void playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
 	void playAnimation(std::vector<std::string> animationFiles, float animationSpeed, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
 	void playAnimationRepeat(std::string initialSequenceResourceFile, float animationSpeed, float repeatDelay = 0.0f, bool insertBlankFrame = false, int repeatCount = -1, std::function<void()> onAnimationComplete = nullptr);
@@ -43,6 +44,7 @@ private:
 
 	cocos2d::Animate* forwardsAnimation;
 	cocos2d::Animate* backwardsAnimation;
+	std::string defaultSprite;
 	int repeatIndex;
 
 	static std::map<std::string, std::vector<std::string>> AnimationFileCache;

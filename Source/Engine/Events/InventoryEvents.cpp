@@ -5,12 +5,12 @@
 
 using namespace cocos2d;
 
-const std::string InventoryEvents::RequestItemDeserializationEvent = "EVENT_REQUEST_ITEM_DESERIALIZATION";
+const std::string InventoryEvents::EventRequestItemDeserialization = "EVENT_REQUEST_ITEM_DESERIALIZATION";
 
 void InventoryEvents::TriggerRequestItemDeserialization(RequestItemDeserializationArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		InventoryEvents::RequestItemDeserializationEvent,
+		InventoryEvents::EventRequestItemDeserialization,
 		&args
 	);
 }

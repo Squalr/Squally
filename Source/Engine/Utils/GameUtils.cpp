@@ -179,11 +179,13 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		newParent->addChildInsert(node, index, true);
 		node->setPosition(newPosition);
+		newParent->addChildInsert(node, index, true);
 	}
 	else if (newParent != nullptr)
 	{
+		node->setPosition(newPosition);
+
 		if (addAsReentry)
 		{
 			newParent->addChildAsReentry(node);
@@ -192,8 +194,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		{
 			newParent->addChild(node);
 		}
-		
-		node->setPosition(newPosition);
 	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.
