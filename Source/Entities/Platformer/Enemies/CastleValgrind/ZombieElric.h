@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyZombieElric;
 
 private:
+	typedef PlatformerEnemy super;
 	ZombieElric(cocos2d::ValueMap& initProperties);
 	~ZombieElric();
 

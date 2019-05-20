@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGoblinWarriorPig;
 
 private:
+	typedef PlatformerEnemy super;
 	GoblinWarriorPig(cocos2d::ValueMap& initProperties);
 	~GoblinWarriorPig();
 

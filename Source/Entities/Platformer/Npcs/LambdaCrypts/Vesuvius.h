@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyVesuvius;
 
 private:
+	typedef NpcBase super;
 	Vesuvius(cocos2d::ValueMap& initProperties);
 	~Vesuvius();
 

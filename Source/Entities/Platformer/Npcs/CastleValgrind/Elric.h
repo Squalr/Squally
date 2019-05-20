@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyElric;
 
 private:
+	typedef NpcBase super;
 	Elric(cocos2d::ValueMap& initProperties);
 	~Elric();
 

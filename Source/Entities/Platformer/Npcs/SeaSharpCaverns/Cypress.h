@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCypress;
 
 private:
+	typedef NpcBase super;
 	Cypress(cocos2d::ValueMap& initProperties);
 	~Cypress();
 

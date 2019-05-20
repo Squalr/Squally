@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGramps;
 
 private:
+	typedef NpcBase super;
 	Gramps(cocos2d::ValueMap& initProperties);
 	~Gramps();
 

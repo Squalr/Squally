@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRupert;
 
 private:
+	typedef NpcBase super;
 	Rupert(cocos2d::ValueMap& initProperties);
 	~Rupert();
 

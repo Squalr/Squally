@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyFireElemental;
 
 private:
+	typedef PlatformerEnemy super;
 	FireElemental(cocos2d::ValueMap& initProperties);
 	~FireElemental();
 

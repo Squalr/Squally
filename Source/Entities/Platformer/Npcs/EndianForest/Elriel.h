@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyElriel;
 
 private:
+	typedef NpcBase super;
 	Elriel(cocos2d::ValueMap& initProperties);
 	~Elriel();
 

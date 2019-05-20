@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyFrostFiend;
 
 private:
+	typedef PlatformerEnemy super;
 	FrostFiend(cocos2d::ValueMap& initProperties);
 	~FrostFiend();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyReanimatedFighter;
 
 private:
+	typedef PlatformerEnemy super;
 	ReanimatedFighter(cocos2d::ValueMap& initProperties);
 	~ReanimatedFighter();
 

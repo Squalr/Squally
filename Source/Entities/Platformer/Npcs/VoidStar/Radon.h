@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyRadon;
 
 private:
+	typedef NpcBase super;
 	Radon(cocos2d::ValueMap& initProperties);
 	~Radon();
 

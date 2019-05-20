@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGarin;
 
 private:
+	typedef NpcBase super;
 	Garin(cocos2d::ValueMap& initProperties);
 	~Garin();
 

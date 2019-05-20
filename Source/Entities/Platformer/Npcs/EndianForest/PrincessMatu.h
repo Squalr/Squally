@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPrincessMatu;
 
 private:
+	typedef NpcBase super;
 	PrincessMatu(cocos2d::ValueMap& initProperties);
 	~PrincessMatu();
 

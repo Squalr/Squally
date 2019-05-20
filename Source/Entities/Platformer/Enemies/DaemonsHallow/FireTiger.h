@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyFireTiger;
 
 private:
+	typedef PlatformerEnemy super;
 	FireTiger(cocos2d::ValueMap& initProperties);
 	~FireTiger();
 

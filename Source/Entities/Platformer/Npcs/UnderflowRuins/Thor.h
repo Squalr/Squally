@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyThor;
 
 private:
+	typedef NpcBase super;
 	Thor(cocos2d::ValueMap& initProperties);
 	~Thor();
 

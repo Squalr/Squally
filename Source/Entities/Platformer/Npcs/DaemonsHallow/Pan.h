@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPan;
 
 private:
+	typedef NpcBase super;
 	Pan(cocos2d::ValueMap& initProperties);
 	~Pan();
 

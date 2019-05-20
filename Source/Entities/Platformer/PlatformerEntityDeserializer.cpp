@@ -81,6 +81,7 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
 #include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Entities/Platformer/Helpers/DaemonsHallow/CritterDemon.h"
+#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Celeste.h"
@@ -583,6 +584,10 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 		if (name == CritterDemon::MapKeyCritterDemon)
 		{
 			newEntity = CritterDemon::deserialize(properties);
+		}
+		if (name == FlyBot::MapKeyFlyBot)
+		{
+			newEntity = FlyBot::deserialize(properties);
 		}
 		if (name == Ash::MapKeyAsh)
 		{

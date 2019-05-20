@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyQueenElise;
 
 private:
+	typedef NpcBase super;
 	QueenElise(cocos2d::ValueMap& initProperties);
 	~QueenElise();
 

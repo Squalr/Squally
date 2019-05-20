@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCookie;
 
 private:
+	typedef NpcBase super;
 	Cookie(cocos2d::ValueMap& initProperties);
 	~Cookie();
 

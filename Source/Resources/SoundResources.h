@@ -63,9 +63,15 @@ namespace SoundResources
 	extern const std::string Platformer_FX_Crash;
 	extern const std::string Platformer_FX_Explosion;
 	extern const std::string Platformer_FX_Fire;
+	extern const std::string Platformer_FX_FireSizzle;
+	extern const std::string Platformer_FX_LowFlame;
 	extern const std::string Platformer_FX_Thrusters;
 	extern const std::string Platformer_FX_Woosh;
 	extern const std::string Platformer_FX_WooshRough;
+	extern const std::string Platformer_Voices_Droid_DroidAlarmed;
+	extern const std::string Platformer_Voices_Droid_DroidBrief;
+	extern const std::string Platformer_Voices_Droid_DroidBrief2;
+	extern const std::string Platformer_Voices_Droid_DroidChatter;
 	extern const std::string Special1;
 	extern const std::string Special2;
 };

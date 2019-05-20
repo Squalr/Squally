@@ -6,6 +6,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
@@ -108,7 +109,7 @@ void PointerTraceMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(args->mapResource);
+			this->loadMap(args->mapResource, ValueMap());
 
 			this->onLevelClearCallback = args->onLevelClearCallback;
 
@@ -169,11 +170,6 @@ void PointerTraceMap::onDeveloperModeDisable()
 	super::onDeveloperModeDisable();
 
 	this->collisionDebugNode->setVisible(false);
-}
-
-void PointerTraceMap::loadMap(std::string mapResource)
-{
-	super::loadMap(mapResource);
 }
 
 void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestMovementArgs args)

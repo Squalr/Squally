@@ -40,6 +40,7 @@ private:
 	cocos2d::Sprite* ship;
 	CollisionObject* shipCollision;
 	SmartAnimationSequenceNode* smokeAnimation;
+	SmartAnimationSequenceNode* shipFireAnimation;
 	SmartAnimationSequenceNode* fireAnimation;
 	SmartAnimationSequenceNode* thrustAnimation;
 	SmartAnimationSequenceNode* explodeAnimation;

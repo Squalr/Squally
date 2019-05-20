@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyUndead;
 
 private:
+	typedef PlatformerEnemy super;
 	Undead(cocos2d::ValueMap& initProperties);
 	~Undead();
 

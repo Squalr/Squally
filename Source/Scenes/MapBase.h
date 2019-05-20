@@ -4,6 +4,12 @@
 
 #include "Engine/GlobalScene.h"
 
+namespace cocos2d
+{
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
+
 // Forward declarations
 class ConfirmationMenu;
 class DeveloperHud;
@@ -23,7 +29,7 @@ namespace cocos2d
 class MapBase : public GlobalScene
 {
 public:
-	virtual void loadMap(std::string mapResource);
+	virtual void loadMap(std::string mapResource, cocos2d::ValueMap args);
 
 protected:
 	MapBase(bool allowHackerMode);

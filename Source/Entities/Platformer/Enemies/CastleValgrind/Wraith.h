@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyWraith;
 
 private:
+	typedef PlatformerEnemy super;
 	Wraith(cocos2d::ValueMap& initProperties);
 	~Wraith();
 

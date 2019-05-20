@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBancroft;
 
 private:
+	typedef NpcBase super;
 	Bancroft(cocos2d::ValueMap& initProperties);
 	~Bancroft();
 

@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/MouseEvents.h"
@@ -63,7 +64,7 @@ void PointerTraceLevelSelect::onEnter()
 
 	if (this->map == nullptr)
 	{
-		this->loadMap(IsometricMapResources::LevelSelectMap);
+		this->loadMap(IsometricMapResources::LevelSelectMap, ValueMap());
 	}
 }
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyThug;
 
 private:
+	typedef PlatformerEnemy super;
 	Thug(cocos2d::ValueMap& initProperties);
 	~Thug();
 

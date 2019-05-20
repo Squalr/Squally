@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyVoidArcher;
 
 private:
+	typedef PlatformerEnemy super;
 	VoidArcher(cocos2d::ValueMap& initProperties);
 	~VoidArcher();
 

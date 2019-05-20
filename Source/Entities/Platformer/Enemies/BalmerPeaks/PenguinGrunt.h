@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPenguinGrunt;
 
 private:
+	typedef PlatformerEnemy super;
 	PenguinGrunt(cocos2d::ValueMap& initProperties);
 	~PenguinGrunt();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyIceGolem;
 
 private:
+	typedef PlatformerEnemy super;
 	IceGolem(cocos2d::ValueMap& initProperties);
 	~IceGolem();
 

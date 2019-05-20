@@ -3,8 +3,14 @@
 
 #include "Engine/GlobalScene.h"
 
+namespace cocos2d
+{
+	class LayerColor;
+}
+
 class ClickableNode;
 class ClickableTextNode;
+class ConfirmationMenu;
 
 class SaveSelectMenu : public GlobalScene
 {
@@ -22,16 +28,20 @@ private:
 	void initializePositions() override;
 
 	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onSaveGame1Click();
-	void onSaveGame2Click();
-	void onSaveGame3Click();
+	void buildSaveButtons();
+	ClickableTextNode* buildSaveButton(int profileId);
+	ClickableNode* buildDeleteButton(int profileId);
+	void loadSave();
 	void onBackClick();
 
 	cocos2d::Node* backgroundNode;
-	ClickableTextNode* saveGame1;
-	ClickableTextNode* saveGame2;
-	ClickableTextNode* saveGame3;
+	cocos2d::Node* buttonsNode;
+	ClickableTextNode* saveGameButton0;
+	ClickableTextNode* saveGameButton1;
+	ClickableTextNode* saveGameButton2;
 	ClickableTextNode* backButton;
+	cocos2d::LayerColor* backdrop;
+	ConfirmationMenu* confirmationMenu;
 
 	static SaveSelectMenu* instance;
 };

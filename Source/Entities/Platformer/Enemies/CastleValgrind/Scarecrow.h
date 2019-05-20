@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyScarecrow;
 
 private:
+	typedef PlatformerEnemy super;
 	Scarecrow(cocos2d::ValueMap& initProperties);
 	~Scarecrow();
 

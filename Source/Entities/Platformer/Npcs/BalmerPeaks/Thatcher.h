@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyThatcher;
 
 private:
+	typedef NpcBase super;
 	Thatcher(cocos2d::ValueMap& initProperties);
 	~Thatcher();
 

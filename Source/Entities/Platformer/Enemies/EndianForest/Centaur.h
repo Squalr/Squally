@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCentaur;
 
 private:
+	typedef PlatformerEnemy super;
 	Centaur(cocos2d::ValueMap& initProperties);
 	~Centaur();
 

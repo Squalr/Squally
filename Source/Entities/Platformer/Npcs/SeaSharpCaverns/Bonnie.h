@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBonnie;
 
 private:
+	typedef NpcBase super;
 	Bonnie(cocos2d::ValueMap& initProperties);
 	~Bonnie();
 

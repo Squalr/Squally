@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGriffin;
 
 private:
+	typedef NpcBase super;
 	Griffin(cocos2d::ValueMap& initProperties);
 	~Griffin();
 

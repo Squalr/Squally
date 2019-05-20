@@ -115,7 +115,7 @@ void Lightning::playAnimationsInternal(bool repeat, bool isFirstRun)
 	this->runAction(Sequence::create(DelayTime::create(delay), CallFunc::create([=]()
 	{
 		float cameraDistance = GameCamera::getInstance()->getCameraPosition().distance(this->getPosition());
-		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4 * float(M_PI) * cameraDistance);
+		float soundIntensity = (GameCamera::getInstance()->getBounds().size.width / 2.0f) / (4.0f * float(M_PI) * cameraDistance);
 
 		this->sound->setVolumeMultiplier(soundIntensity);
 		this->sound->play();

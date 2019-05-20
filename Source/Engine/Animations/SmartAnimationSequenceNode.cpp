@@ -77,10 +77,15 @@ void SmartAnimationSequenceNode::stopAnimation()
 {
 	this->sprite->stopAllActions();
 
-	if (this->defaultSprite != "")
+	if (this->defaultSprite.empty())
+	{
+		this->sprite->initWithFile(UIResources::EmptyImage);
+	}
+	else
 	{
 		this->sprite->initWithFile(this->defaultSprite);
 	}
+	
 }
 
 void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)

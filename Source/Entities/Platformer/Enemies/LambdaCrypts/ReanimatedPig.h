@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyReanimatedPig;
 
 private:
+	typedef PlatformerEnemy super;
 	ReanimatedPig(cocos2d::ValueMap& initProperties);
 	~ReanimatedPig();
 

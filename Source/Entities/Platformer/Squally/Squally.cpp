@@ -26,8 +26,8 @@ using namespace cocos2d;
 
 const float Squally::squallyScale = 0.92f;
 const std::string Squally::MapKeySqually = "squally";
-const int Squally::SquallyBaseHealth = 25;
-const int Squally::SquallyBaseSpecial = 15;
+const int Squally::SquallyBaseHealth = 16;
+const int Squally::SquallyBaseSpecial = 8;
 
 Squally* Squally::deserialize(ValueMap& initProperties)
 {
@@ -180,6 +180,11 @@ cocos2d::Vec2 Squally::getAvatarFrameOffset()
 void Squally::update(float dt)
 {
 	super::update(dt);
+
+	if (this->isCinimaticHijacked)
+	{
+		return;
+	}
 
 	this->movement = Vec2::ZERO;
 

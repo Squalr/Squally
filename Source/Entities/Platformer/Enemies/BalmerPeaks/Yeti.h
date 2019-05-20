@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyYeti;
 
 private:
+	typedef PlatformerEnemy super;
 	Yeti(cocos2d::ValueMap& initProperties);
 	~Yeti();
 

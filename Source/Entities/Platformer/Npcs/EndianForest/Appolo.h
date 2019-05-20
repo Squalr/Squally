@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAppolo;
 
 private:
+	typedef NpcBase super;
 	Appolo(cocos2d::ValueMap& initProperties);
 	~Appolo();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGorilla;
 
 private:
+	typedef PlatformerEnemy super;
 	Gorilla(cocos2d::ValueMap& initProperties);
 	~Gorilla();
 

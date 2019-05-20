@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBard;
 
 private:
+	typedef NpcBase super;
 	Bard(cocos2d::ValueMap& initProperties);
 	~Bard();
 

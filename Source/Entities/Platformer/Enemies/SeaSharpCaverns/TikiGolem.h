@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTikiGolem;
 
 private:
+	typedef PlatformerEnemy super;
 	TikiGolem(cocos2d::ValueMap& initProperties);
 	~TikiGolem();
 

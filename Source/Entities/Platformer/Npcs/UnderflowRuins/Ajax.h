@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAjax;
 
 private:
+	typedef NpcBase super;
 	Ajax(cocos2d::ValueMap& initProperties);
 	~Ajax();
 

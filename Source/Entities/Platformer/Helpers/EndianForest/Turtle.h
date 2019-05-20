@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTurtle;
 
 private:
+	typedef PlatformerEntity super;
 	Turtle(cocos2d::ValueMap& initProperties);
 	~Turtle();
 
