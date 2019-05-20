@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTigress;
 
 private:
+	typedef PlatformerEnemy super;
 	Tigress(cocos2d::ValueMap& initProperties);
 	~Tigress();
 

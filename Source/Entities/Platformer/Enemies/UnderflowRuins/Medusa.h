@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMedusa;
 
 private:
+	typedef PlatformerEnemy super;
 	Medusa(cocos2d::ValueMap& initProperties);
 	~Medusa();
 

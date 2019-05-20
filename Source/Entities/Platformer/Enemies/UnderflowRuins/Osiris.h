@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyOsiris;
 
 private:
+	typedef PlatformerEnemy super;
 	Osiris(cocos2d::ValueMap& initProperties);
 	~Osiris();
 

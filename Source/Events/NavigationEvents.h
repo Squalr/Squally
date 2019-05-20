@@ -1,7 +1,10 @@
 #pragma once
 #include <string>
 #include <functional>
+#include <map>
 #include <vector>
+
+#include "cocos/base/CCValue.h"
 
 class Cutscene;
 class CipherPuzzleData;
@@ -64,8 +67,9 @@ public:
 	struct NavigateMapArgs
 	{
 		std::string mapResource;
+		cocos2d::ValueMap mapArgs;
 
-		NavigateMapArgs(std::string mapResource) : mapResource(mapResource) { }
+		NavigateMapArgs(std::string mapResource, cocos2d::ValueMap mapArgs) : mapResource(mapResource), mapArgs(mapArgs) { }
 	};
 
 	struct NavigatePointerTraceMapArgs

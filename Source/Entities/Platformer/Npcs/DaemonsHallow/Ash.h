@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAsh;
 
 private:
+	typedef NpcBase super;
 	Ash(cocos2d::ValueMap& initProperties);
 	~Ash();
 

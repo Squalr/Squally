@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGodiva;
 
 private:
+	typedef NpcBase super;
 	Godiva(cocos2d::ValueMap& initProperties);
 	~Godiva();
 

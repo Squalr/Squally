@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyIllia;
 
 private:
+	typedef NpcBase super;
 	Illia(cocos2d::ValueMap& initProperties);
 	~Illia();
 

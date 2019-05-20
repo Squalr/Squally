@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyOlive;
 
 private:
+	typedef NpcBase super;
 	Olive(cocos2d::ValueMap& initProperties);
 	~Olive();
 

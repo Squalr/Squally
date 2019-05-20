@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAthena;
 
 private:
+	typedef NpcBase super;
 	Athena(cocos2d::ValueMap& initProperties);
 	~Athena();
 

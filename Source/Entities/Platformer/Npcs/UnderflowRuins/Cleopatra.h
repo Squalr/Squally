@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCleopatra;
 
 private:
+	typedef NpcBase super;
 	Cleopatra(cocos2d::ValueMap& initProperties);
 	~Cleopatra();
 

@@ -46,6 +46,7 @@ def parseEntityFile(entityDataPath):
 		entityData["Environment"] = pathSplit[len(pathSplit) - 3]
 		entityData["Prefix"] = pathSplit[len(pathSplit) - 2]
 		entityData["Name"] = pathSplit[len(pathSplit) - 1][:-len(".json")]
+
 		entityData["MapKeyName"] = "-".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).lower()
 		entityData["HexusSaveKey"] = "HEXUS_OPPONENT_SAVE_KEY_" + "_".join(filter(None, re.split("([A-Z][^A-Z]*)", entityData["Name"]))).upper()
 
@@ -191,7 +192,7 @@ def generateEntityCode(entityData):
 		if not os.path.exists(pathRoot):
 			os.makedirs(pathRoot)
 	with open(pathRoot + outputHeader,"w+") as h, open(pathRoot + outputClass,"w+") as cpp, open(templateOutputHeader,"r") as hTemplate, open(templateOutputClass,"r") as cppTemplate:
-		
+
 		def parseTemplate(template):
 			templateData = template.read()
 			templateData = templateData \
@@ -252,10 +253,11 @@ def generateHexusMenuCode(allEntityData):
 	sortedEntities = {}
 
 	for entity in allEntityData:
-		if not entity["Environment"] in sortedEntities:
-			sortedEntities[entity["Environment"]] = []
-		
-		sortedEntities[entity["Environment"]].append(entity)
+		if entity["Type"] != "Misc":
+			if not entity["Environment"] in sortedEntities:
+				sortedEntities[entity["Environment"]] = []
+			
+			sortedEntities[entity["Environment"]].append(entity)
 
 	with open(hTemplateFile, "r+") as hTemplateReader, open(cppTemplateFile, "r+") as cppTemplateReader:
 		hTemplateContent = hTemplateReader.read()

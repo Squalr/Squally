@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGrim;
 
 private:
+	typedef PlatformerEntity super;
 	Grim(cocos2d::ValueMap& initProperties);
 	~Grim();
 

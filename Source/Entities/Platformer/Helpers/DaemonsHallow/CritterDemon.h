@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCritterDemon;
 
 private:
+	typedef PlatformerEntity super;
 	CritterDemon(cocos2d::ValueMap& initProperties);
 	~CritterDemon();
 

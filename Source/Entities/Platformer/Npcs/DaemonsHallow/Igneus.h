@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyIgneus;
 
 private:
+	typedef NpcBase super;
 	Igneus(cocos2d::ValueMap& initProperties);
 	~Igneus();
 

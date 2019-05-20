@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMummy;
 
 private:
+	typedef PlatformerEntity super;
 	Mummy(cocos2d::ValueMap& initProperties);
 	~Mummy();
 

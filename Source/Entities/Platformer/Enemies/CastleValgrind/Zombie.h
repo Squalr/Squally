@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyZombie;
 
 private:
+	typedef PlatformerEnemy super;
 	Zombie(cocos2d::ValueMap& initProperties);
 	~Zombie();
 

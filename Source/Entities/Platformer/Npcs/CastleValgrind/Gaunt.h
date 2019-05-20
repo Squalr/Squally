@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGaunt;
 
 private:
+	typedef NpcBase super;
 	Gaunt(cocos2d::ValueMap& initProperties);
 	~Gaunt();
 

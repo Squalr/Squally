@@ -72,6 +72,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = Chest::create(properties);
 		}
+		else if (name == CinematicMarker::MapKeyCinematicMarker)
+		{
+			newObject = CinematicMarker::create(properties);
+		}
 		else if (name == DartGun::MapKeyDartGun)
 		{
 			newObject = DartGun::create(properties);
@@ -151,6 +155,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == TrapDoorFrame::MapKeyTrapDoorFrame)
 		{
 			newObject = TrapDoorFrame::create(properties);
+		}
+		else if (name == Trigger::MapKeyTrigger)
+		{
+			newObject = Trigger::create(properties);
 		}
 		else if (name == Water::MapKeyWater)
 		{

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyKingGrogg;
 
 private:
+	typedef PlatformerEnemy super;
 	KingGrogg(cocos2d::ValueMap& initProperties);
 	~KingGrogg();
 

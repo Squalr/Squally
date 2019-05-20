@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTyracius;
 
 private:
+	typedef NpcBase super;
 	Tyracius(cocos2d::ValueMap& initProperties);
 	~Tyracius();
 

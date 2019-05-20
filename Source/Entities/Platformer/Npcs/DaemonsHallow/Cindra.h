@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCindra;
 
 private:
+	typedef NpcBase super;
 	Cindra(cocos2d::ValueMap& initProperties);
 	~Cindra();
 

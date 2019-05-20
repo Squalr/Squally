@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCooper;
 
 private:
+	typedef NpcBase super;
 	Cooper(cocos2d::ValueMap& initProperties);
 	~Cooper();
 

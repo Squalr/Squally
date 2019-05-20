@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAzmus;
 
 private:
+	typedef NpcBase super;
 	Azmus(cocos2d::ValueMap& initProperties);
 	~Azmus();
 

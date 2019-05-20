@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyWaterElemental;
 
 private:
+	typedef PlatformerEnemy super;
 	WaterElemental(cocos2d::ValueMap& initProperties);
 	~WaterElemental();
 

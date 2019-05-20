@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyShade;
 
 private:
+	typedef PlatformerEnemy super;
 	Shade(cocos2d::ValueMap& initProperties);
 	~Shade();
 

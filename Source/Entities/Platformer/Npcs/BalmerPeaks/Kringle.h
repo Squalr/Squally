@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyKringle;
 
 private:
+	typedef NpcBase super;
 	Kringle(cocos2d::ValueMap& initProperties);
 	~Kringle();
 

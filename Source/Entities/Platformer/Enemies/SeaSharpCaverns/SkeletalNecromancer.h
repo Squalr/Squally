@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySkeletalNecromancer;
 
 private:
+	typedef PlatformerEnemy super;
 	SkeletalNecromancer(cocos2d::ValueMap& initProperties);
 	~SkeletalNecromancer();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyHades;
 
 private:
+	typedef NpcBase super;
 	Hades(cocos2d::ValueMap& initProperties);
 	~Hades();
 

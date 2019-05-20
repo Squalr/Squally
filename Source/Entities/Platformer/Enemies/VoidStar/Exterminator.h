@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyExterminator;
 
 private:
+	typedef PlatformerEnemy super;
 	Exterminator(cocos2d::ValueMap& initProperties);
 	~Exterminator();
 

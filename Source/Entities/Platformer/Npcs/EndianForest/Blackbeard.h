@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBlackbeard;
 
 private:
+	typedef NpcBase super;
 	Blackbeard(cocos2d::ValueMap& initProperties);
 	~Blackbeard();
 

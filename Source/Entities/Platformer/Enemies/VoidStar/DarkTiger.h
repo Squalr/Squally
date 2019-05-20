@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyDarkTiger;
 
 private:
+	typedef PlatformerEnemy super;
 	DarkTiger(cocos2d::ValueMap& initProperties);
 	~DarkTiger();
 

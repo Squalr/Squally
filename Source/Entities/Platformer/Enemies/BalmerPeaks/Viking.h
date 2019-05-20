@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyViking;
 
 private:
+	typedef PlatformerEnemy super;
 	Viking(cocos2d::ValueMap& initProperties);
 	~Viking();
 

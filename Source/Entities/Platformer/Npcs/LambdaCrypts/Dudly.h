@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyDudly;
 
 private:
+	typedef NpcBase super;
 	Dudly(cocos2d::ValueMap& initProperties);
 	~Dudly();
 

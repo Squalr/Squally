@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySanta;
 
 private:
+	typedef PlatformerEnemy super;
 	Santa(cocos2d::ValueMap& initProperties);
 	~Santa();
 

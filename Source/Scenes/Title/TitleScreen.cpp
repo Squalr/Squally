@@ -218,9 +218,7 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::EndianForest_Waterfall));
-
-	//// NavigationEvents::navigateSaveSelect();
+	NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onMinigamesClick()

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyCyclops;
 
 private:
+	typedef PlatformerEnemy super;
 	Cyclops(cocos2d::ValueMap& initProperties);
 	~Cyclops();
 

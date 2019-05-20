@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyForestGolem;
 
 private:
+	typedef PlatformerEnemy super;
 	ForestGolem(cocos2d::ValueMap& initProperties);
 	~ForestGolem();
 

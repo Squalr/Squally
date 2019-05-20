@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyReaper;
 
 private:
+	typedef PlatformerEnemy super;
 	Reaper(cocos2d::ValueMap& initProperties);
 	~Reaper();
 

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyJasper;
 
 private:
+	typedef NpcBase super;
 	Jasper(cocos2d::ValueMap& initProperties);
 	~Jasper();
 

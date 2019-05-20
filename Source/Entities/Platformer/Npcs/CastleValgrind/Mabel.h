@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMabel;
 
 private:
+	typedef NpcBase super;
 	Mabel(cocos2d::ValueMap& initProperties);
 	~Mabel();
 

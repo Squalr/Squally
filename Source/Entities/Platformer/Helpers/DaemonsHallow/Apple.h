@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyApple;
 
 private:
+	typedef PlatformerEntity super;
 	Apple(cocos2d::ValueMap& initProperties);
 	~Apple();
 

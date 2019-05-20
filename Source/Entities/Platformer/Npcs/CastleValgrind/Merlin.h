@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMerlin;
 
 private:
+	typedef NpcBase super;
 	Merlin(cocos2d::ValueMap& initProperties);
 	~Merlin();
 

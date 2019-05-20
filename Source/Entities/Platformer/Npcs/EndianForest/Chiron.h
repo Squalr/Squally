@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyChiron;
 
 private:
+	typedef NpcBase super;
 	Chiron(cocos2d::ValueMap& initProperties);
 	~Chiron();
 

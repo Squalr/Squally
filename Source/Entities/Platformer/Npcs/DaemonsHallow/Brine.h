@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBrine;
 
 private:
+	typedef NpcBase super;
 	Brine(cocos2d::ValueMap& initProperties);
 	~Brine();
 

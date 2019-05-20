@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyYsara;
 
 private:
+	typedef NpcBase super;
 	Ysara(cocos2d::ValueMap& initProperties);
 	~Ysara();
 

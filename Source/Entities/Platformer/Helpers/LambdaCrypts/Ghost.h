@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGhost;
 
 private:
+	typedef PlatformerEntity super;
 	Ghost(cocos2d::ValueMap& initProperties);
 	~Ghost();
 

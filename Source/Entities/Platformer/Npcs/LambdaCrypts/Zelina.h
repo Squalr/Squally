@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyZelina;
 
 private:
+	typedef NpcBase super;
 	Zelina(cocos2d::ValueMap& initProperties);
 	~Zelina();
 

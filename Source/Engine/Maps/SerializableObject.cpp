@@ -28,6 +28,7 @@ const std::string SerializableObject::MapKeyFlipY = "flip-y";
 const std::string SerializableObject::MapKeyRepeatX = "repeat-x";
 const std::string SerializableObject::MapKeyRepeatY = "repeat-y";
 const std::string SerializableObject::MapKeyEvent = "event";
+const std::string SerializableObject::MapKeyState = "event";
 const std::string SerializableObject::MapKeyArgs = "args";
 const std::string SerializableObject::MapKeyRotation = "rotation";
 const std::string SerializableObject::MapKeyPoints = "points";

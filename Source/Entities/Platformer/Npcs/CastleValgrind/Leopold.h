@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLeopold;
 
 private:
+	typedef NpcBase super;
 	Leopold(cocos2d::ValueMap& initProperties);
 	~Leopold();
 
