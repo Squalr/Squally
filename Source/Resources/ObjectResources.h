@@ -655,6 +655,8 @@ namespace ObjectResources
 	extern const std::string FX_TorchFire_TorchFire_0009;
 	extern const std::string FX_TorchFire_TorchFire_0010;
 	extern const std::string FX_TorchFire_TorchFire_0011;
+	extern const std::string Interactive_TentBack;
+	extern const std::string Interactive_TentFront;
 	extern const std::string Items_Consumables_ALCHEMY;
 	extern const std::string Items_Consumables_AMULET;
 	extern const std::string Items_Consumables_BEER;

@@ -149,7 +149,7 @@
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="493" name="spiked-log" type="object" x="3386.42" y="2823.94" width="598" height="140"/>
@@ -292,7 +292,7 @@
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="470" name="pendulum-blade" type="object" x="5275.45" y="2294.85" width="42.4242" height="277.636"/>
@@ -498,7 +498,7 @@
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="438" name="goblin" type="entity" x="4226.96" y="2711.46" width="78.7879" height="88">
@@ -509,7 +509,7 @@
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="523" name="squally" type="entity" x="1646.69" y="2520.27" width="78.7879" height="88"/>

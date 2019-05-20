@@ -84,6 +84,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = Doubloon::create(properties);
 		}
+		else if (name == EdgePortal::MapKeyEdgePortal)
+		{
+			newObject = EdgePortal::create(properties);
+		}
 		else if (name == FloatingAsteroid::MapKeyFloatingAsteroid)
 		{
 			newObject = FloatingAsteroid::create(properties);
@@ -147,6 +151,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == StoneButton::MapKeyStoneButton)
 		{
 			newObject = StoneButton::create(properties);
+		}
+		else if (name == Tent::MapKeyTent)
+		{
+			newObject = Tent::create(properties);
 		}
 		else if (name == TrapDoor::MapKeyTrapDoor)
 		{

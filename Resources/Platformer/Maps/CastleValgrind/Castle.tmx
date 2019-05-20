@@ -159,7 +159,7 @@
  </objectgroup>
  <objectgroup name="objects">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="511" name="wind" type="object" x="2986.82" y="3183.21" width="712.424" height="611.758">
@@ -246,7 +246,7 @@
  </objectgroup>
  <objectgroup name="entities">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="skeletal-priestess" type="entity" x="7847.69" y="3556.66" width="78.7879" height="88">
@@ -257,7 +257,7 @@
  </objectgroup>
  <objectgroup name="player_layer">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="452" name="squally" type="entity" x="2532.72" y="3597.4" width="78.7879" height="88"/>

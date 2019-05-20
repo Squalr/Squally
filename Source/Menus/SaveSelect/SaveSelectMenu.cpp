@@ -259,8 +259,8 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 
 void SaveSelectMenu::loadSave()
 {
-	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Waterfall)).asString();
-	ValueMap mapArgs = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMapArgs, Value(ValueMap())).asValueMap();
+	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Intro)).asString();
+	std::string mapArgs = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMapArgs, Value("")).asString();
 
 	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapFile, mapArgs));
 }

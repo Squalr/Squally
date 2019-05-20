@@ -143,7 +143,7 @@
  <objectgroup id="17" name="entities -256">
   <properties>
    <property name="depth" type="float" value="-256"/>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="532" name="spawn" type="object" x="4013.61" y="2314.66" width="78.7879" height="88">
@@ -180,7 +180,7 @@
  <objectgroup id="19" name="entities -128">
   <properties>
    <property name="depth" type="float" value="-128"/>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="536" name="spawn" type="object" x="5155.34" y="2405.05" width="78.7879" height="88">
@@ -216,7 +216,7 @@
  </objectgroup>
  <objectgroup id="21" name="entities +0">
   <properties>
-   <property name="is_hackable" type="bool" value="true"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="518" name="spawn" type="object" x="5371.27" y="2500.67" width="78.7879" height="88">

@@ -105,6 +105,16 @@ void SerializableMap::initializeListeners()
 			this->moveObjectToTopLayer(args);
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventArgs)
+	{
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->moveObjectToElevateLayer(args);
+		}
+	}));
 }
 
 void SerializableMap::update(float dt)
@@ -314,6 +324,22 @@ void SerializableMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* arg
 	}
 
 	this->serializableLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
+}
+
+void SerializableMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
+{
+	if (this->serializableLayers.empty())
+	{
+		return;
+	}
+
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	{
+		if ((*it)->isElevateTarget())
+		{
+			GameUtils::changeParent(args->relocatedObject, *it, true);
+		}
+	}
 }
 
 void SerializableMap::hackerModeEnable()

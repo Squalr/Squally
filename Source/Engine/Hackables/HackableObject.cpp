@@ -37,7 +37,6 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 
 HackableObject::~HackableObject()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::onEnter()
@@ -49,6 +48,24 @@ void HackableObject::onEnter()
 
 	this->registerHackables();
 	this->scheduleUpdate();
+}
+
+void HackableObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
+
+	this->registerHackables();
+
+	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
+}
+
+void HackableObject::onExit()
+{
+	super::onExit();
+
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::update(float dt)
@@ -83,17 +100,6 @@ void HackableObject::update(float dt)
 
 		this->timeRemainingBar->setProgress(1.0f - highestRatio);
 	}
-}
-
-void HackableObject::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-
-	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
-
-	this->registerHackables();
-
-	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
 }
 
 void HackableObject::initializeListeners()

@@ -109,7 +109,7 @@ void PointerTraceMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(args->mapResource, ValueMap());
+			this->loadMap(args->mapResource, "");
 
 			this->onLevelClearCallback = args->onLevelClearCallback;
 
