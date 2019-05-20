@@ -10,6 +10,8 @@ class PlatformerMap : public MapBase
 public:
 	static void registerGlobalScene();
 
+	void loadMap(std::string mapResource, cocos2d::ValueMap args) override;
+
 protected:
 	PlatformerMap();
 	~PlatformerMap();
