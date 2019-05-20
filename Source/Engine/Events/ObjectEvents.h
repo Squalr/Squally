@@ -63,6 +63,7 @@ public:
 	static const std::string EventSpawnObject;
 	static const std::string EventSpawnObjectDelegator;
 	static const std::string EventMoveObjectToTopLayer;
+	static const std::string EventElevateObject;
 	static const std::string EventUnbindObject;
 
 	enum class SpawnMethod
@@ -104,6 +105,7 @@ public:
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerMoveObjectToTopLayer(RelocateObjectArgs args);
 	static void TriggerUnbindObject(RelocateObjectArgs args);
+	static void TriggerElevateObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
 

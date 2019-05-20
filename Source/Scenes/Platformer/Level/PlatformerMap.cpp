@@ -122,7 +122,7 @@ void PlatformerMap::update(float dt)
 	this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
-void PlatformerMap::loadMap(std::string mapResource, cocos2d::ValueMap args)
+void PlatformerMap::loadMap(std::string mapResource, std::string args)
 {
 	SaveManager::saveProfileData(SaveKeys::SaveKeyMap, Value(mapResource));
 	SaveManager::saveProfileData(SaveKeys::SaveKeyMapArgs, Value(args));

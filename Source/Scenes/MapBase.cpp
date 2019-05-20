@@ -171,7 +171,7 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MapBase::loadMap(std::string mapResource, cocos2d::ValueMap args)
+void MapBase::loadMap(std::string mapResource, std::string args)
 {
 	if (this->map != nullptr)
 	{

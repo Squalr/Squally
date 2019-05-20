@@ -67,9 +67,9 @@ public:
 	struct NavigateMapArgs
 	{
 		std::string mapResource;
-		cocos2d::ValueMap mapArgs;
+		std::string mapArgs;
 
-		NavigateMapArgs(std::string mapResource, cocos2d::ValueMap mapArgs) : mapResource(mapResource), mapArgs(mapArgs) { }
+		NavigateMapArgs(std::string mapResource, std::string mapArgs) : mapResource(mapResource), mapArgs(mapArgs) { }
 	};
 
 	struct NavigatePointerTraceMapArgs

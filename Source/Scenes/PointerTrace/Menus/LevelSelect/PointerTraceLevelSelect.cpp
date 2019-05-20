@@ -64,7 +64,7 @@ void PointerTraceLevelSelect::onEnter()
 
 	if (this->map == nullptr)
 	{
-		this->loadMap(IsometricMapResources::LevelSelectMap, ValueMap());
+		this->loadMap(IsometricMapResources::LevelSelectMap, "");
 	}
 }
 

@@ -98,7 +98,7 @@ void CombatMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(args->levelFile, ValueMap());
+			this->loadMap(args->levelFile, "");
 
 			this->setEntityKeys(args->playerTypes, args->enemyTypes);
 			this->enemyIdentifier = args->enemyIdentifier;

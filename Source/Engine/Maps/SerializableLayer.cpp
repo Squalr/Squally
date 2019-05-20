@@ -16,7 +16,8 @@ const std::string SerializableLayer::KeyType = "type";
 const std::string SerializableLayer::MapKeyPropertyName = "name";
 const std::string SerializableLayer::MapKeyPropertyValue = "value";
 const std::string SerializableLayer::MapKeyPropertyDepth = "depth";
-const std::string SerializableLayer::MapKeyPropertyIsHackable = "is_hackable";
+const std::string SerializableLayer::MapKeyPropertyIsHackable = "is-hackable";
+const std::string SerializableLayer::MapKeyPropertyIsElevateTarget = "is-elevate-target";
 
 SerializableLayer* SerializableLayer::create(const ValueMap& initProperties, std::string name, const std::vector<SerializableObject*>& objects)
 {
@@ -105,4 +106,9 @@ void SerializableLayer::serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2:
 bool SerializableLayer::isHackable()
 {
 	return GameUtils::getKeyOrDefault(this->properties, SerializableLayer::MapKeyPropertyIsHackable, Value(false)).asBool();
+}
+\
+bool SerializableLayer::isElevateTarget()
+{
+	return GameUtils::getKeyOrDefault(this->properties, SerializableLayer::MapKeyPropertyIsElevateTarget, Value(false)).asBool();
 }

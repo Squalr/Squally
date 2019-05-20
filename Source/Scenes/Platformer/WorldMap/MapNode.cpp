@@ -64,5 +64,5 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick()
 {
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile, ValueMap()));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile, ""));
 }
