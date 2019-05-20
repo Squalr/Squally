@@ -15,8 +15,6 @@ class PointerTraceMap : public MapBase
 public:
 	static void registerGlobalScene();
 
-	void loadMap(std::string mapResource) override;
-
 protected:
 	PointerTraceMap();
 	~PointerTraceMap();

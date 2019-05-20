@@ -31,8 +31,8 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
@@ -103,44 +103,65 @@ void FlyBot::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventGreetSqually, [=](EventCustom*)
 	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
-		{
-			PlatformerEvents::TriggerCinematicHijack();
+		Vec2 positionA = Vec2::ZERO;
+		Vec2 positionB = Vec2::ZERO;
 
-			this->runAction(Sequence::create(
-				CallFunc::create([=]()
+		ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
+		{
+			switch(cinematicMarker->getId())
+			{
+				case 0:
 				{
-					this->droidAlarmedSound->play();
-				}),
-				EaseSineInOut::create(MoveTo::create(2.0f, squally->getPosition() + Vec2(256.0f, 256.0f))),
-				CallFunc::create([=]()
+					positionA = cinematicMarker->getPosition();
+					break;
+				}
+				case 1:
 				{
-					this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
-				}),
-				DelayTime::create(2.0f),
-				CallFunc::create([=]()
+					positionB = cinematicMarker->getPosition();
+					break;
+				}
+				default:
 				{
-					this->droidBrief1Sound->play();
-					this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
-				}),
-				DelayTime::create(4.0f),
-				CallFunc::create([=]()
-				{
-					this->speechBubble->hideDialogue();
-				}),
-				DelayTime::create(1.0f),
-				CallFunc::create([=]()
-				{
-					PlatformerEvents::TriggerCinematicRestore();
-				}),
-				EaseSineInOut::create(MoveBy::create(3.0f, this->getPosition() + Vec2(2048.0f, -256.0f))),
-				CallFunc::create([=]()
-				{
-					this->setVisible(false);
-				}),
-				nullptr
-			));
+					break;
+				}
+			}
 		}));
+	
+		PlatformerEvents::TriggerCinematicHijack();
+
+		this->runAction(Sequence::create(
+			CallFunc::create([=]()
+			{
+				this->droidAlarmedSound->play();
+			}),
+			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
+			CallFunc::create([=]()
+			{
+				this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
+			}),
+			DelayTime::create(2.0f),
+			CallFunc::create([=]()
+			{
+				this->droidBrief1Sound->play();
+				this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
+			}),
+			DelayTime::create(4.0f),
+			CallFunc::create([=]()
+			{
+				this->speechBubble->hideDialogue();
+			}),
+			DelayTime::create(1.0f),
+			CallFunc::create([=]()
+			{
+				PlatformerEvents::TriggerCinematicRestore();
+			}),
+			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+			CallFunc::create([=]()
+			{
+				this->setVisible(false);
+			}),
+			nullptr
+		));
 	}));
 }
 

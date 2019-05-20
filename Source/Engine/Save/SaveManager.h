@@ -21,29 +21,30 @@ public:
 	static cocos2d::Value getGlobalData(std::string key);
 	static cocos2d::Value getProfileDataOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	static cocos2d::Value getProfileData(std::string key);
+	static void deleteProfileData(int profileId);
+	static bool hasSaveProfile(int profileId);
 	static bool hasGlobalData(std::string key);
 	static bool hasProfileData(std::string key);
 	static ActiveSaveProfile getActiveSaveProfile();
 
 private:
-	static SaveManager* getInstance();
 	SaveManager();
 	~SaveManager();
-	void initialize();
 
+	static void initializeSaveData();
 	static void doSave(cocos2d::ValueMap valueMap, std::string localSavePath, std::string cloudSavePath);
 	static cocos2d::ValueMap loadSaveFile(std::string localSavePath, std::string cloudSavePath);
 
-	std::string getLocalGlobalSaveFilePath();
-	std::string getLocalActiveProfileSaveFilePath();
-	std::string getCloudGlobalSaveFilePath();
-	std::string getCloudActiveProfileSaveFilePath();
+	static std::string getLocalGlobalSaveFilePath();
+	static std::string getLocalProfileSaveFilePath(int profileId);
+	static std::string getCloudGlobalSaveFilePath();
+	static std::string getCloudProfileSaveFilePath(int profileId);
 
-	ActiveSaveProfile activeSaveProfile;
-	cocos2d::ValueMap globalSaveData;
-	cocos2d::ValueMap profileSaveData;
+	static std::map<std::string, cocos2d::ValueMap> saveFileCache;
+	static ActiveSaveProfile activeSaveProfile;
+	static cocos2d::ValueMap globalSaveData;
+	static cocos2d::ValueMap profileSaveData;
 
-	static SaveManager *instance;
 	static const std::string globalSaveFileName;
 	static const std::string profileSaveFileTemplate;
 	static const std::string SaveKeyIncrement;

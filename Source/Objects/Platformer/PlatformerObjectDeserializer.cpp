@@ -72,6 +72,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = Chest::create(properties);
 		}
+		else if (name == CinematicMarker::MapKeyCinematicMarker)
+		{
+			newObject = CinematicMarker::create(properties);
+		}
 		else if (name == DartGun::MapKeyDartGun)
 		{
 			newObject = DartGun::create(properties);

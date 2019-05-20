@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_ContinueGame : public LocalizedString
+	class Menus_SaveSelect_ConfirmDelete : public LocalizedString
 	{
 	public:
-		static Menus_ContinueGame* create();
+		static Menus_SaveSelect_ConfirmDelete* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_ContinueGame();
-		~Menus_ContinueGame();
+		Menus_SaveSelect_ConfirmDelete();
+		~Menus_SaveSelect_ConfirmDelete();
 	};
 }

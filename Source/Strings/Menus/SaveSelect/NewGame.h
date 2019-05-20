@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_NewGame : public LocalizedString
+	class Menus_SaveSelect_NewGame : public LocalizedString
 	{
 	public:
-		static Menus_NewGame* create();
+		static Menus_SaveSelect_NewGame* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_NewGame();
-		~Menus_NewGame();
+		Menus_SaveSelect_NewGame();
+		~Menus_SaveSelect_NewGame();
 	};
 }
