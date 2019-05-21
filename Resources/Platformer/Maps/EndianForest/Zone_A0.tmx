@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="42" nextobjectid="625">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="629">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -99,7 +99,13 @@
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 4875.36,-35.521 5853.86,-67.6537 6439.78,13.0491 7119.64,-26.0982 8819.31,0 8838.18,508.916 8668.18,1278.81 7232.94,1317.96 2662.78,1161.37 -37.7699,1017.83 0,378.425"/>
+   <polyline points="0,0 4875.36,-35.521 5853.86,17.5736 6439.78,13.0491 7119.64,-26.0982 8819.31,0 8838.18,508.916 8668.18,1278.81 7232.94,1317.96 2662.78,1161.37 -37.7699,1017.83 0,378.425"/>
+  </object>
+  <object id="627" name="solid" type="terrain" x="3906.55" y="11159.3">
+   <properties>
+    <property name="texture" value="blue-grass"/>
+   </properties>
+   <polyline points="0,0 1849.62,-33.8278 2220.84,-64.4287 2443.13,12.4271 2701.05,-24.8541 3345.88,0 3557.79,478.052 3374.4,1059.33 2744.04,1255.13 640.326,1264.53 -7.72415,929.681 0,360.386"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -119,39 +125,48 @@
     <property name="event" value="event-help-squally-heal"/>
    </properties>
   </object>
-  <object id="621" name="cinematic-marker" type="object" x="7001.77" y="12431.1" width="78.7879" height="88">
+  <object id="621" name="cinematic-marker" type="object" x="5198.81" y="12693.2" width="78.7879" height="88">
    <properties>
     <property name="id" value="0"/>
    </properties>
   </object>
-  <object id="622" name="cinematic-marker" type="object" x="14889.4" y="12519.3" width="78.7879" height="88">
+  <object id="622" name="cinematic-marker" type="object" x="8393.67" y="12861.2" width="78.7879" height="88">
    <properties>
     <property name="id" value="1"/>
    </properties>
   </object>
-  <object id="623" name="tent" type="object" x="2812.36" y="12338.2" width="702" height="745">
+  <object id="623" name="tent" type="object" x="2812.36" y="12338.2" width="702" height="745"/>
+  <object id="624" name="trigger" type="object" x="4860.41" y="11828.2" width="195.164" height="1351.51">
    <properties>
-    <property name="event" value="squally-healed"/>
+    <property name="event" value="event-teach-hacker-mode"/>
    </properties>
   </object>
-  <object id="624" name="trigger" type="object" x="6643.12" y="11756.2" width="195.164" height="1351.51">
+  <object id="625" name="wind" type="object" x="5565.79" y="12372" width="879.229" height="739.184">
    <properties>
-    <property name="event" value="event-help-squally-heal"/>
+    <property name="hackable-help" type="bool" value="true"/>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="628" name="hackable-hint" type="object" x="5435.87" y="12593.5" width="685.58" height="425.047"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="616" name="fly-bot" type="entity" x="2640.48" y="12591.9" width="78.7879" height="88">
+  <object id="616" name="fly-bot" type="entity" x="2627.72" y="12719.5" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="help-squally-heal"/>
    </properties>
   </object>
-  <object id="619" name="edge-portal" type="object" x="14828.8" y="12216.5" width="199.918" height="559.063">
+  <object id="619" name="edge-portal" type="object" x="8333.07" y="12558.4" width="199.918" height="559.063">
    <properties>
     <property name="args" value="0"/>
     <property name="direction" value="right"/>
@@ -164,7 +179,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="471.988" y="12651.8" width="78.7879" height="88"/>
+  <object id="523" name="squally" type="entity" x="277.065" y="12937.4" width="128" height="128"/>
  </objectgroup>
  <layer id="41" name="water" width="128" height="128">
   <data encoding="base64" compression="zlib">
@@ -204,7 +219,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="12796" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="438.393" y="12786.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="12890.5" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4555.62" y="12839.9" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="7237.57" y="12722.1" width="242" height="738"/>

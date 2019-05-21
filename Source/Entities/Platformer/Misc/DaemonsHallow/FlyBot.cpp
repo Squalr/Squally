@@ -34,9 +34,13 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
+#include "Strings/Dialogue/Story/Intro/HackerMode.h"
+#include "Strings/Dialogue/Story/Intro/TentHeal.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
 const std::string FlyBot::EventGreetSqually = "event-greet-squally";
+const std::string FlyBot::EventHelpSquallyHeal = "event-help-squally-heal";
+const std::string FlyBot::EventTeachHackerMode = "event-teach-hacker-mode";
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -103,66 +107,167 @@ void FlyBot::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventGreetSqually, [=](EventCustom*)
 	{
-		Vec2 positionA = Vec2::ZERO;
-		Vec2 positionB = Vec2::ZERO;
-
-		ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
-		{
-			switch(cinematicMarker->getId())
-			{
-				case 0:
-				{
-					positionA = cinematicMarker->getPosition();
-					break;
-				}
-				case 1:
-				{
-					positionB = cinematicMarker->getPosition();
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			}
-		}));
-	
-		PlatformerEvents::TriggerCinematicHijack();
-
-		this->runAction(Sequence::create(
-			CallFunc::create([=]()
-			{
-				this->droidAlarmedSound->play();
-			}),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
-			CallFunc::create([=]()
-			{
-				this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
-			}),
-			DelayTime::create(2.0f),
-			CallFunc::create([=]()
-			{
-				this->droidBrief1Sound->play();
-				this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				this->speechBubble->hideDialogue();
-			}),
-			DelayTime::create(1.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-			}),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
-			CallFunc::create([=]()
-			{
-				this->setVisible(false);
-			}),
-			nullptr
-		));
+		this->runGreetEvent();
 	}));
+
+	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventHelpSquallyHeal, [=](EventCustom*)
+	{
+		this->runHelpHealEvent();
+	}));
+
+	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventTeachHackerMode, [=](EventCustom*)
+	{
+		this->runTeachHackerModeEvent();
+	}));
+}
+
+void FlyBot::runGreetEvent()
+{
+	Vec2 positionA = Vec2::ZERO;
+	Vec2 positionB = Vec2::ZERO;
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
+	{
+		switch(cinematicMarker->getId())
+		{
+			case 0:
+			{
+				positionA = cinematicMarker->getPosition();
+				break;
+			}
+			case 1:
+			{
+				positionB = cinematicMarker->getPosition();
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}));
+
+	PlatformerEvents::TriggerCinematicHijack();
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->droidAlarmedSound->play();
+		}),
+		EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
+		}),
+		DelayTime::create(2.0f),
+		CallFunc::create([=]()
+		{
+			this->droidBrief1Sound->play();
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->hideDialogue();
+		}),
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+		}),
+		EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+		CallFunc::create([=]()
+		{
+			this->setVisible(false);
+		}),
+		nullptr
+	));
+}
+
+void FlyBot::runHelpHealEvent()
+{
+	Vec2 positionA = Vec2::ZERO;
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
+	{
+		switch(cinematicMarker->getId())
+		{
+			case 0:
+			{
+				positionA = cinematicMarker->getPosition();
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}));
+
+	PlatformerEvents::TriggerCinematicHijack();
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->droidBrief2Sound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_TentHeal::create());
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+			this->speechBubble->hideDialogue();
+		}),
+		DelayTime::create(1.0f),
+		EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
+		nullptr
+	));
+}
+
+void FlyBot::runTeachHackerModeEvent()
+{
+	Vec2 positionB = Vec2::ZERO;
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
+	{
+		switch(cinematicMarker->getId())
+		{
+			case 1:
+			{
+				positionB = cinematicMarker->getPosition();
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}));
+
+	PlatformerEvents::TriggerCinematicHijack();
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->droidChatterSound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerMode::create());
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+			this->speechBubble->hideDialogue();
+		}),
+		DelayTime::create(1.0f),
+		EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+		nullptr
+	));
 }
 
 ////O////O////O////O////O////O////O////O////O////O/

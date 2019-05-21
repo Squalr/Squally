@@ -33,6 +33,7 @@ private:
 	float volumeMultiplier;
 	int fadeOutTick;
 	bool enableCameraDistanceFade;
+	bool isFading;
 
 	static const std::string KeyScheduleFadeOutAudio;
 	static const int INVALID_ID;

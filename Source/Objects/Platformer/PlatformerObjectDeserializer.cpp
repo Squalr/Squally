@@ -108,6 +108,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = FloatingWoodenBeam::create(properties);
 		}
+		else if (name == HackableHint::MapKeyHackableHint)
+		{
+			newObject = HackableHint::create(properties);
+		}
 		else if (name == HeavenHug::MapKeyHeavenHug)
 		{
 			newObject = HeavenHug::create(properties);
