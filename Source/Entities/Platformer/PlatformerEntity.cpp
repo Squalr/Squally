@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const float PlatformerEntity::MoveAcceleration = 14000.0f;
+const float PlatformerEntity::MoveAcceleration = 5800.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;

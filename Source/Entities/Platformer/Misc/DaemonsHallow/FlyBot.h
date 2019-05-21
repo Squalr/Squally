@@ -50,6 +50,9 @@ private:
 	////X////X////X////X////X////X////X////X////X////X/
 
 	void initializeListeners() override;
+	void runGreetEvent();
+	void runHelpHealEvent();
+	void runTeachHackerModeEvent();
 
 	Sound* droidAlarmedSound;
 	Sound* droidBrief1Sound;
@@ -57,6 +60,8 @@ private:
 	Sound* droidChatterSound;
 
 	static const std::string EventGreetSqually;
+	static const std::string EventHelpSquallyHeal;
+	static const std::string EventTeachHackerMode;
 	
 	////O////O////O////O////O////O////O////O////O////O/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

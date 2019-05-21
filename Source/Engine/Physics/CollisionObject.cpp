@@ -18,7 +18,7 @@ using namespace cocos2d;
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
-const float CollisionObject::DefaultMaxHorizontalSpeed = 360.0f;
+const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;

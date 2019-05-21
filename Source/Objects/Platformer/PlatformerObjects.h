@@ -9,6 +9,7 @@
 #include "Objects/Platformer/Doors/EdgePortal.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoorFrame.h"
+#include "Objects/Platformer/Interactables/HackableHint.h"
 #include "Objects/Platformer/Interactables/Tent.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/Physics/Catapult/Catapult.h"
