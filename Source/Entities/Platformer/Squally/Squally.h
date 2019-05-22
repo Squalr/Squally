@@ -32,11 +32,10 @@ private:
 	virtual ~Squally();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void update(float) override;
-	void setFlippedX(bool newIsFlipped);
 
-	bool isFlipped;
 	bool canJump;
 
 	CollisionObject* hoverCollision;

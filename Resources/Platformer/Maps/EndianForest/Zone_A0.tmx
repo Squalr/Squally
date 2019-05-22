@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="629">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="630">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -125,7 +125,7 @@
     <property name="event" value="event-help-squally-heal"/>
    </properties>
   </object>
-  <object id="621" name="cinematic-marker" type="object" x="5198.81" y="12693.2" width="78.7879" height="88">
+  <object id="621" name="cinematic-marker" type="object" x="5226.49" y="12771.2" width="78.7879" height="88">
    <properties>
     <property name="id" value="0"/>
    </properties>
@@ -135,7 +135,7 @@
     <property name="id" value="1"/>
    </properties>
   </object>
-  <object id="623" name="tent" type="object" x="2812.36" y="12338.2" width="702" height="745"/>
+  <object id="623" name="tent" type="object" x="2812.36" y="12324.5" width="702" height="745"/>
   <object id="624" name="trigger" type="object" x="4860.41" y="11828.2" width="195.164" height="1351.51">
    <properties>
     <property name="event" value="event-teach-hacker-mode"/>
@@ -143,7 +143,7 @@
   </object>
   <object id="625" name="wind" type="object" x="5565.79" y="12372" width="879.229" height="739.184">
    <properties>
-    <property name="hackable-help" type="bool" value="true"/>
+    <property name="show-clippy" type="bool" value="true"/>
     <property name="speed-x" type="float" value="-1"/>
     <property name="speed-y" type="float" value="0"/>
    </properties>
@@ -153,14 +153,14 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="628" name="hackable-hint" type="object" x="5435.87" y="12593.5" width="685.58" height="425.047"/>
+  <object id="628" name="hackable-hint" type="object" x="5802.46" y="12665.3" width="198.052" height="330.565"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="616" name="fly-bot" type="entity" x="2627.72" y="12719.5" width="78.7879" height="88">
+  <object id="616" name="fly-bot" type="entity" x="2622.69" y="12825.2" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="help-squally-heal"/>

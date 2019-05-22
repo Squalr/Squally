@@ -16,6 +16,7 @@ class ClickableNode;
 class ClickableTextNode;
 class HackableCode;
 class LabelStack;
+class Lexicon;
 class MenuLabel;
 class ScriptEntry;
 class ScriptList;
@@ -59,16 +60,16 @@ private:
 	cocos2d::Sprite* rightBarBackground;
 	cocos2d::Sprite* radialEye;
 	cocos2d::Node* previewNode;
+	cocos2d::Node* clippyNode;
 	CodeWindow* functionWindow;
 	LabelStack* statusWindow;
 	LabelStack* registerWindow;
 	ScriptList* scriptList;
-
 	ClickableTextNode* cancelButton;
 	ClickableTextNode* applyChangesButton;
 	cocos2d::Node* applyChangesButtonGrayed;
-
 	LocalizedLabel* titleLabel;
+	Lexicon* lexicon;
 
 	HackableCode* activeHackableCode;
 	float compileDelay;

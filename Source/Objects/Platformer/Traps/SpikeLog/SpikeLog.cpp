@@ -36,7 +36,7 @@ SpikeLog* SpikeLog::create(ValueMap& initProperties)
 	return instance;
 }
 
-SpikeLog::SpikeLog(ValueMap& initProperties) : HackableObject(initProperties)
+SpikeLog::SpikeLog(ValueMap& initProperties) : super(initProperties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);

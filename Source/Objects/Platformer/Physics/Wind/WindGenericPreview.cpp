@@ -47,7 +47,7 @@ void WindGenericPreview::initializePositions()
 {
 	super::initializePositions();
 
-	const float offset = 48.0f;
+	const float offset = 192.0f;
 
 	this->windParticles->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - offset));
 }

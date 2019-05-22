@@ -3,6 +3,7 @@
 
 #include "Engine/SmartNode.h"
 
+class Clippy;
 class HackablePreview;
 class LocalizedString;
 
@@ -15,9 +16,10 @@ public:
 	LocalizedString* getName();
 	HackablePreview* getHackablePreview();
 	virtual void* getPointer();
+	Clippy* getClippy();
 
 protected:
-	HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview);
+	HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy = nullptr);
 	virtual ~HackableAttribute();
 
 	void onEnter() override;
@@ -33,4 +35,5 @@ private:
 	HackablePreview* hackablePreview;
 	float duration;
 	float elapsedDuration;
+	Clippy* clippy;
 };

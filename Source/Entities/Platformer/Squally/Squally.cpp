@@ -75,9 +75,6 @@ void Squally::onEnter()
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData);
 
-	// Request HUD track player
-	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
-
 	if (PlayerEquipment::getInstance()->getWeapon() == nullptr)
 	{
 		PlayerEquipment::getInstance()->forceInsert(CrystalSword::create());
@@ -98,6 +95,14 @@ void Squally::onEnter()
 	
 	mainhand->replaceSprite(weapon->getIconResource());
 	mainhand->setOffset(weapon->getDisplayOffset());
+}
+
+void Squally::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	// Request HUD track player
+	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 }
 
 void Squally::initializeCollisionEvents()
@@ -191,13 +196,11 @@ void Squally::update(float dt)
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
 		this->movement.x = -1.0f;
-		this->setFlippedX(true);
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
 		this->movement.x = 1.0f;
-		this->setFlippedX(false);
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W) || Input::isPressed(EventKeyboard::KeyCode::KEY_SPACE))
@@ -221,9 +224,4 @@ void Squally::performSwimAnimation()
 	{
 		this->animationNode->playAnimation("Swim");
 	}
-}
-
-void Squally::setFlippedX(bool newIsFlipped)
-{
-	this->isFlipped = newIsFlipped;
 }

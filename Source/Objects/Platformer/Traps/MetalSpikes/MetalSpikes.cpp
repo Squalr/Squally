@@ -35,7 +35,7 @@ MetalSpikes* MetalSpikes::create(ValueMap& initProperties)
 	return instance;
 }
 
-MetalSpikes::MetalSpikes(ValueMap& initProperties) : HackableObject(initProperties)
+MetalSpikes::MetalSpikes(ValueMap& initProperties) : super(initProperties)
 {
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;

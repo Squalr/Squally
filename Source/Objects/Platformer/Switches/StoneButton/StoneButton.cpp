@@ -37,7 +37,7 @@ StoneButton* StoneButton::create(ValueMap& initProperties)
 	return instance;
 }
 
-StoneButton::StoneButton(ValueMap& initProperties) : HackableObject(initProperties)
+StoneButton::StoneButton(ValueMap& initProperties) : super(initProperties)
 {
 	this->button = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonTop);
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);

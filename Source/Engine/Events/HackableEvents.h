@@ -3,6 +3,7 @@
 
 #include "cocos/math/Vec2.h"
 
+class Clippy;
 class HackableAttribute;
 class HackableObject;
 
@@ -13,7 +14,7 @@ public:
 	{
 		HackableObject* hackableObject;
 
-		HackableObjectOpenArgs(HackableObject* hackableObject) :hackableObject(hackableObject) { }
+		HackableObjectOpenArgs(HackableObject* hackableObject) : hackableObject(hackableObject) { }
 	};
 
 	struct HackableObjectEditArgs

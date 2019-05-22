@@ -154,7 +154,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="4494.49" y="2090.97" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="5426.69" y="2115.18" width="78.7879" height="88"/>
  </objectgroup>
  <layer id="45" name="water" width="64" height="80">
   <data encoding="base64" compression="zlib">

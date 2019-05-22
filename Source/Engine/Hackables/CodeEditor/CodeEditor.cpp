@@ -11,6 +11,8 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Hackables/Clippy.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Lexicon.h"
 #include "Engine/Hackables/CodeEditor/CodeWindow.h"
 #include "Engine/Hackables/CodeEditor/ScriptEntry.h"
 #include "Engine/Hackables/CodeEditor/ScriptList.h"
@@ -125,6 +127,7 @@ CodeEditor::CodeEditor()
 	this->rightBarBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
 	this->radialEye = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEyePupil);
 	this->previewNode = Node::create();
+	this->clippyNode = Node::create();
 
 	this->functionWindow = CodeWindow::create(CodeEditor::FunctionSize);
 	this->statusWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
@@ -133,10 +136,10 @@ CodeEditor::CodeEditor()
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_CodeEditor_FunctionHeader::create());
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
-	LocalizedLabel*	acceptLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
+	LocalizedLabel*	acceptLabelHover = acceptLabel->clone();
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
-	LocalizedLabel*	cancelLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -178,6 +181,8 @@ CodeEditor::CodeEditor()
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->applyChangesButtonGrayed->addChild(acceptGray);
 
+	this->lexicon = Lexicon::create();
+
 	this->titleLabel->enableOutline(Color4B::BLACK, 3);
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
@@ -207,6 +212,8 @@ CodeEditor::CodeEditor()
 	this->addChild(this->applyChangesButton);
 	this->addChild(this->applyChangesButtonGrayed);
 	this->addChild(this->titleLabel);
+	this->addChild(this->clippyNode);
+	this->addChild(this->lexicon);
 }
 
 CodeEditor::~CodeEditor()
@@ -216,6 +223,8 @@ CodeEditor::~CodeEditor()
 void CodeEditor::onEnter()
 {
 	super::onEnter();
+
+	this->lexicon->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -235,6 +244,7 @@ void CodeEditor::initializePositions()
 	this->rightBarBackground->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
 	this->radialEye->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
+	this->clippyNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f - 480.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::StatusSize.width, visibleSize.height / 2.0f + 144.0f));
 
@@ -254,7 +264,15 @@ void CodeEditor::initializeListeners()
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
 		HackableEvents::HackableAttributeEditEvent, 
-		[=](EventCustom* args) { this->open((HackableEvents::HackableObjectEditArgs*)args->getUserData()); }
+		[=](EventCustom* eventCustom)
+		{
+			HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				this->open(args);
+			}
+		}
 	);
 
 	this->addEventListenerIgnorePause(hackableEditListener);
@@ -270,6 +288,7 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 		this->activeHackableCode = hackableCode;
 
 		this->previewNode->removeAllChildren();
+		this->clippyNode->removeAllChildren();
 
 		if (hackableCode->getHackablePreview() != nullptr)
 		{
@@ -278,6 +297,13 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			preview->setAssemblyTextVisible(true);
 
 			this->previewNode->addChild(preview);
+		}
+
+		if (hackableCode->getClippy() != nullptr)
+		{
+			Clippy* clippy = hackableCode->getClippy()->clone();
+
+			this->clippyNode->addChild(clippy);
 		}
 
 		ScriptEntry* activeScript = this->scriptList->getActiveScript();

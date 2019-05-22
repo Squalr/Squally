@@ -31,6 +31,8 @@ protected:
 private:
 	typedef SmartNode super;
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
