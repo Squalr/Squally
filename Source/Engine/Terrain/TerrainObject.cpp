@@ -44,7 +44,7 @@ TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData 
 	return instance;
 }
 
-TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : HackableObject(initProperties)
+TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : super(initProperties)
 {
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();

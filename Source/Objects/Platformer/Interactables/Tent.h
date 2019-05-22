@@ -4,6 +4,7 @@
 
 namespace cocos2d
 {
+	class PhysicsBody;
 	class Sprite;
 }
 
@@ -21,11 +22,14 @@ protected:
 	virtual ~Tent();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef HackableObject super;
+
+	cocos2d::PhysicsBody* createTentTopCollision();
 
 	cocos2d::Sprite* tentBack;
 	cocos2d::Sprite* tentFront;

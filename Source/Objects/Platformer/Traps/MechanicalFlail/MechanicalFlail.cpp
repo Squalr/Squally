@@ -44,7 +44,7 @@ MechanicalFlail* MechanicalFlail::create(ValueMap& initProperties)
 	return instance;
 }
 
-MechanicalFlail::MechanicalFlail(ValueMap& initProperties) : HackableObject(initProperties)
+MechanicalFlail::MechanicalFlail(ValueMap& initProperties) : super(initProperties)
 {
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();

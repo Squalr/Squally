@@ -11,7 +11,7 @@ using namespace cocos2d;
 const std::string DensityObject::MapKeyDensity = "density";
 const float DensityObject::DensityFloatSpeed = 3.0f;
 
-DensityObject::DensityObject(ValueMap& initProperties) : HackableObject(initProperties)
+DensityObject::DensityObject(ValueMap& initProperties) : super(initProperties)
 {
 	this->contentNode = Node::create();
 

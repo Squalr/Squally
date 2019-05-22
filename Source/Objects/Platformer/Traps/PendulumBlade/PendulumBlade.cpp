@@ -43,7 +43,7 @@ PendulumBlade* PendulumBlade::create(ValueMap& initProperties)
 	return instance;
 }
 
-PendulumBlade::PendulumBlade(ValueMap& initProperties) : HackableObject(initProperties)
+PendulumBlade::PendulumBlade(ValueMap& initProperties) : super(initProperties)
 {
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();

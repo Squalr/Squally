@@ -8,6 +8,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Physics/Wind/WindClippy.h"
 #include "Objects/Platformer/Physics/Wind/WindGenericPreview.h"
 #include "Objects/Platformer/Physics/Wind/WindSetSpeedPreview.h"
 
@@ -35,7 +36,7 @@ Wind* Wind::create(ValueMap& initProperties)
 	return instance;
 }
 
-Wind::Wind(ValueMap& initProperties) : HackableObject(initProperties)
+Wind::Wind(ValueMap& initProperties) : super(initProperties)
 {
 	float speedX = 0.0f;
 	float speedY = 0.0f;
@@ -141,7 +142,8 @@ void Wind::registerHackables()
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
-				5.0f
+				5.0f,
+				WindClippy::create()
 			)
 		},
 	};

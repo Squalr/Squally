@@ -1,7 +1,7 @@
 #include "HackableObject.h"
 
-#include "base/CCEventCustom.h"
-#include "base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -68,40 +68,6 @@ void HackableObject::onExit()
 	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
-void HackableObject::update(float dt)
-{
-	super::update(dt);
-	
-	if (!this->trackedAttributes.empty())
-	{
-		float highestRatio = 0.0f;
-
-		if (!this->timeRemainingBar->isVisible())
-		{
-			this->timeRemainingBar->setVisible(true);
-		}
-
-		// Remove attributes that have timed out
-		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
-		{
-			return attribute->getElapsedDuration() >= attribute->getDuration();
-		}), this->trackedAttributes.end());
-
-		if (this->trackedAttributes.empty())
-		{
-			this->timeRemainingBar->setVisible(false);
-		}
-
-		// If multiple hacks are enabled, just pick the highest ratio for now
-		for (auto it = this->trackedAttributes.begin(); it != this->trackedAttributes.end(); it++)
-		{
-			highestRatio = std::max(highestRatio, (*it)->getElapsedDuration() / (*it)->getDuration());
-		}
-
-		this->timeRemainingBar->setProgress(1.0f - highestRatio);
-	}
-}
-
 void HackableObject::initializeListeners()
 {
 	super::initializeListeners();
@@ -140,6 +106,40 @@ void HackableObject::initializePositions()
 	super::initializePositions();
 
 	this->uiElements->setPosition(this->getButtonOffset());
+}
+
+void HackableObject::update(float dt)
+{
+	super::update(dt);
+	
+	if (!this->trackedAttributes.empty())
+	{
+		float highestRatio = 0.0f;
+
+		if (!this->timeRemainingBar->isVisible())
+		{
+			this->timeRemainingBar->setVisible(true);
+		}
+
+		// Remove attributes that have timed out
+		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
+		{
+			return attribute->getElapsedDuration() >= attribute->getDuration();
+		}), this->trackedAttributes.end());
+
+		if (this->trackedAttributes.empty())
+		{
+			this->timeRemainingBar->setVisible(false);
+		}
+
+		// If multiple hacks are enabled, just pick the highest ratio for now
+		for (auto it = this->trackedAttributes.begin(); it != this->trackedAttributes.end(); it++)
+		{
+			highestRatio = std::max(highestRatio, (*it)->getElapsedDuration() / (*it)->getDuration());
+		}
+
+		this->timeRemainingBar->setProgress(1.0f - highestRatio);
+	}
 }
 
 void HackableObject::onHackerModeEnable()

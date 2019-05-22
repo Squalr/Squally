@@ -36,7 +36,7 @@ CastleDoor* CastleDoor::create(ValueMap& initProperties)
 	return instance;
 }
 
-CastleDoor::CastleDoor(ValueMap& initProperties) : HackableObject(initProperties)
+CastleDoor::CastleDoor(ValueMap& initProperties) : super(initProperties)
 {
 	this->castleBack = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_BACK);
 	this->bridge1 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_1);

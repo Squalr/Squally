@@ -34,7 +34,7 @@ CinematicMarker* CinematicMarker::create(ValueMap& initProperties)
 	return instance;
 }
 
-CinematicMarker::CinematicMarker(ValueMap& initProperties) : HackableObject(initProperties)
+CinematicMarker::CinematicMarker(ValueMap& initProperties) : super(initProperties)
 {
 	this->id = GameUtils::getKeyOrDefault(initProperties, CinematicMarker::MapKeyId, Value(0)).asInt();
 }

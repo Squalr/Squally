@@ -35,7 +35,7 @@ WoodenSpikes* WoodenSpikes::create(ValueMap& initProperties)
 	return instance;
 }
 
-WoodenSpikes::WoodenSpikes(ValueMap& initProperties) : HackableObject(initProperties)
+WoodenSpikes::WoodenSpikes(ValueMap& initProperties) : super(initProperties)
 {
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;

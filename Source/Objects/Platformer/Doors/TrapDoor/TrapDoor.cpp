@@ -36,7 +36,7 @@ TrapDoor* TrapDoor::create(ValueMap& initProperties)
 	return instance;
 }
 
-TrapDoor::TrapDoor(ValueMap& initProperties) : HackableObject(initProperties)
+TrapDoor::TrapDoor(ValueMap& initProperties) : super(initProperties)
 {
 	this->door = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoor);
 	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);

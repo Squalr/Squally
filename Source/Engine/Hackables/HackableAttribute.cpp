@@ -1,19 +1,26 @@
 #include "HackableAttribute.h"
 
+#include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
 
-HackableAttribute::HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview)
+HackableAttribute::HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
 {
 	this->duration = duration;
 	this->iconResource = iconResource;
 	this->name = name;
 	this->hackablePreview = hackablePreview;
 	this->elapsedDuration = this->duration;
+	this->clippy = clippy;
 
 	if (this->hackablePreview != nullptr)
 	{
 		this->hackablePreview->retain();
+	}
+
+	if (this->clippy != nullptr)
+	{
+		this->clippy->retain();
 	}
 
 	this->addChild(name); // Retain with event listening
@@ -24,6 +31,11 @@ HackableAttribute::~HackableAttribute()
 	if (this->hackablePreview != nullptr)
 	{
 		this->hackablePreview->release();
+	}
+
+	if (this->clippy != nullptr)
+	{
+		this->clippy->release();
 	}
 }
 
@@ -86,4 +98,9 @@ LocalizedString* HackableAttribute::getName()
 HackablePreview* HackableAttribute::getHackablePreview()
 {
 	return this->hackablePreview;
+}
+
+Clippy* HackableAttribute::getClippy()
+{
+	return this->clippy;
 }

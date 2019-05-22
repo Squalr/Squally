@@ -159,7 +159,7 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LateBindData 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview, lateBindData.clippy)
 {
 	this->hackableCodeIdentifier = lateBindData.hackableObjectIdentifier + "_" + lateBindData.functionName->getStringIdentifier();
 	this->codePointer = (unsigned char*)codeStart;

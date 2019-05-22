@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
+#include "cocos/physics/CCPhysicsBody.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
@@ -32,12 +33,12 @@ Tent* Tent::create(ValueMap& initProperties)
 	return instance;
 }
 
-Tent::Tent(ValueMap& initProperties) : HackableObject(initProperties)
+Tent::Tent(ValueMap& initProperties) : super(initProperties)
 {
 	this->tentBack = Sprite::create(ObjectResources::Interactive_TentBack);
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
-	this->topCollision = CollisionObject::create(PhysicsBody::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
-	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(356.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 
 	this->addChild(this->healCollision);
 	this->addChild(this->topCollision);
@@ -53,16 +54,23 @@ void Tent::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->tentFront));
-
 	this->scheduleUpdate();
+}
+
+void Tent::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->tentFront));
 }
 
 void Tent::initializePositions()
 {
 	super::initializePositions();
 
-	this->topCollision->setPosition(Vec2(0.0f, 320.0f));
+	this->tentBack->setPosition(Vec2(-132.0f, -140.0f));
+	this->healCollision->setPosition(Vec2(0.0f, -160.0f));
+	this->topCollision->setPosition(Vec2(-8.0f, 320.0f));
 }
 
 void Tent::initializeListeners()
@@ -74,3 +82,19 @@ void Tent::initializeListeners()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 }
+
+
+PhysicsBody* Tent::createTentTopCollision()
+{
+	std::vector<Vec2> points = std::vector<Vec2>();
+
+	points.push_back(Vec2(0.0f, 0.0f));
+	points.push_back(Vec2(-336.0f, -192.0f));
+	points.push_back(Vec2(0.0f, -256.0f));
+	points.push_back(Vec2(336.0f, -192.0f));
+
+	PhysicsBody* physicsBody = PhysicsBody::createPolygon(points.data(), points.size());
+
+	return physicsBody;
+}
+
