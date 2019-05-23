@@ -135,7 +135,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="616" name="fly-bot" type="entity" x="5314.1" y="5874.9" width="78.7879" height="88">
+  <object id="616" name="fly-bot" type="entity" x="5416.93" y="5309.35" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="greet-squally"/>
@@ -143,7 +143,7 @@
   </object>
   <object id="619" name="edge-portal" type="object" x="7982.14" y="6362.5" width="199.918" height="559.063">
    <properties>
-    <property name="args" value="0"/>
+    <property name="args" value="{&quot;next-map-entrance-id&quot;:&quot;0&quot;}"/>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_A0"/>
    </properties>
@@ -154,7 +154,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="5426.69" y="2115.18" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="6514.95" y="2089.48" width="78.7879" height="88"/>
  </objectgroup>
  <layer id="45" name="water" width="64" height="80">
   <data encoding="base64" compression="zlib">

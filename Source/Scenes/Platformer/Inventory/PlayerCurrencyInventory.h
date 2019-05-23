@@ -17,5 +17,4 @@ private:
 	typedef CurrencyInventory super;
 
 	static PlayerCurrencyInventory* instance;
-	static const std::string SaveKeyPlayerCurrencyInventory;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="630">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="128" height="128" tilewidth="128" tileheight="128" infinite="0" nextlayerid="43" nextobjectid="633">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -101,11 +101,17 @@
    </properties>
    <polyline points="0,0 4875.36,-35.521 5853.86,17.5736 6439.78,13.0491 7119.64,-26.0982 8819.31,0 8838.18,508.916 8668.18,1278.81 7232.94,1317.96 2662.78,1161.37 -37.7699,1017.83 0,378.425"/>
   </object>
-  <object id="627" name="solid" type="terrain" x="3906.55" y="11159.3">
+  <object id="627" name="solid" type="terrain" x="3903.67" y="11159.3">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 1849.62,-33.8278 2220.84,-64.4287 2443.13,12.4271 2701.05,-24.8541 3345.88,0 3557.79,478.052 3374.4,1059.33 2744.04,1255.13 640.326,1264.53 -7.72415,929.681 0,360.386"/>
+   <polyline points="0,0 1161.48,-33.8278 1394.59,-64.4287 1534.17,12.4271 1696.14,-24.8541 2101.06,0 2234.13,478.052 2118.98,1059.33 1723.13,1255.13 402.096,1264.53 -4.85042,929.681 0,360.386"/>
+  </object>
+  <object id="630" name="solid" type="terrain" x="6405.9" y="11160.2">
+   <properties>
+    <property name="texture" value="blue-grass"/>
+   </properties>
+   <polyline points="332.577,-124.717 821.344,-135.869 1315.22,-151.352 1602.2,-237.006 1919.12,-104.219 2218.22,-105.82 2211.45,447.818 2160.55,961.068 1723.13,1255.13 27.9463,1290.99 339.065,990.15 340.136,371.724"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -148,6 +154,13 @@
     <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
+  <object id="632" name="wind" type="object" x="5977.62" y="11179.9" width="712.94" height="1230.49">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -160,7 +173,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="616" name="fly-bot" type="entity" x="2622.69" y="12825.2" width="78.7879" height="88">
+  <object id="616" name="fly-bot" type="entity" x="2633.33" y="12745.4" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="help-squally-heal"/>
@@ -168,9 +181,9 @@
   </object>
   <object id="619" name="edge-portal" type="object" x="8333.07" y="12558.4" width="199.918" height="559.063">
    <properties>
-    <property name="args" value="0"/>
+    <property name="args" value="{&quot;next-map-entrance-id&quot;:&quot;0&quot;}"/>
     <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_A0"/>
+    <property name="map" value="EndianForest/Zone_A1"/>
    </properties>
   </object>
  </objectgroup>

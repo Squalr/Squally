@@ -69,6 +69,7 @@ private:
 	ClickableTextNode* applyChangesButton;
 	cocos2d::Node* applyChangesButtonGrayed;
 	LocalizedLabel* titleLabel;
+	ClickableTextNode* lexiconButton;
 	Lexicon* lexicon;
 
 	HackableCode* activeHackableCode;

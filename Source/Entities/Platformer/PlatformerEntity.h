@@ -23,8 +23,11 @@ public:
 	int getMaxHealth();
 	bool isDead();
 	int getMana();
+	void addMana(int manaDelta);
+	void setMana(int mana);
 	int getMaxMana();
 	int getRunes();
+	void setRunes(int runes);
 	int getMaxRunes();
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();

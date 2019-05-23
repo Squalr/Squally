@@ -1,8 +1,9 @@
 #include "PlayerInventory.h"
 
+#include "Scenes/Platformer/Save/SaveKeys.h"
+
 using namespace cocos2d;
 
-const std::string PlayerInventory::SaveKeyPlayerInventory = "player_inventory";
 PlayerInventory* PlayerInventory::instance = nullptr;
 
 PlayerInventory* PlayerInventory::getInstance()
@@ -15,7 +16,7 @@ PlayerInventory* PlayerInventory::getInstance()
 	return instance;
 }
 
-PlayerInventory::PlayerInventory() : super(PlayerInventory::SaveKeyPlayerInventory)
+PlayerInventory::PlayerInventory() : super(SaveKeys::SaveKeySquallyInventory)
 {
 }
 

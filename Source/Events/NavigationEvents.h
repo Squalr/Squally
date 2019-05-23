@@ -68,8 +68,9 @@ public:
 	{
 		std::string mapResource;
 		std::string mapArgs;
+		bool isReload;
 
-		NavigateMapArgs(std::string mapResource, std::string mapArgs) : mapResource(mapResource), mapArgs(mapArgs) { }
+		NavigateMapArgs(std::string mapResource, std::string mapArgs, bool isReload) : mapResource(mapResource), mapArgs(mapArgs), isReload(isReload) { }
 	};
 
 	struct NavigatePointerTraceMapArgs

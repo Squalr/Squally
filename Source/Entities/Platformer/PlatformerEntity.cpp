@@ -283,6 +283,16 @@ int PlatformerEntity::getMana()
 	return this->mana;
 }
 
+void PlatformerEntity::addMana(int manaDelta)
+{
+	this->setMana(this->getMana() + manaDelta);
+}
+
+void PlatformerEntity::setMana(int mana)
+{
+	this->mana = MathUtils::clamp(mana, 0, this->getMaxMana());
+}
+
 int PlatformerEntity::getMaxMana()
 {
 	return this->maxMana;
@@ -291,6 +301,11 @@ int PlatformerEntity::getMaxMana()
 int PlatformerEntity::getRunes()
 {
 	return this->runes;
+}
+
+void PlatformerEntity::setRunes(int runes)
+{
+	this->runes = MathUtils::clamp(runes, 0, this->getMaxRunes());
 }
 
 int PlatformerEntity::getMaxRunes()

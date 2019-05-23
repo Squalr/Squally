@@ -7,6 +7,7 @@
 #include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsBody.h"
 
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -14,6 +15,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -36,13 +38,16 @@ Tent* Tent::create(ValueMap& initProperties)
 Tent::Tent(ValueMap& initProperties) : super(initProperties)
 {
 	this->tentBack = Sprite::create(ObjectResources::Interactive_TentBack);
+	this->healAnimation = SmartAnimationSequenceNode::create();
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
 	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, false, false);
-	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(356.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-
+	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->isAnimating = false;
+	
 	this->addChild(this->healCollision);
 	this->addChild(this->topCollision);
 	this->addChild(this->tentBack);
+	this->addChild(this->healAnimation);
 	this->addChild(this->tentFront);
 }
 
@@ -61,6 +66,7 @@ void Tent::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
+	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->healAnimation));
 	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->tentFront));
 }
 
@@ -70,6 +76,7 @@ void Tent::initializePositions()
 
 	this->tentBack->setPosition(Vec2(-132.0f, -140.0f));
 	this->healCollision->setPosition(Vec2(0.0f, -160.0f));
+	this->healAnimation->setPosition(Vec2(0.0f, -160.0f));
 	this->topCollision->setPosition(Vec2(-8.0f, 320.0f));
 }
 
@@ -81,8 +88,45 @@ void Tent::initializeListeners()
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
+
+	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	{
+		this->runHealAnimation();
+
+
+		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		{
+			squally->setHealth(squally->getMaxHealth());
+		}));
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	{
+		this->isAnimating = false;
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }
 
+void Tent::runHealAnimation(bool forceRun)
+{
+	if (this->isAnimating && !forceRun)
+	{
+		return;
+	}
+
+	this->isAnimating = true;
+	
+	this->healAnimation->playAnimation(ObjectResources::FX_Heal_Heal_0000, 0.05f, false, [=]()
+	{
+		if (this->isAnimating)
+		{
+			this->runHealAnimation(true);
+		}
+	});
+}
 
 PhysicsBody* Tent::createTentTopCollision()
 {
@@ -97,4 +141,3 @@ PhysicsBody* Tent::createTentTopCollision()
 
 	return physicsBody;
 }
-

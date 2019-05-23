@@ -89,6 +89,7 @@
 #include "Strings/Hacking/CodeEditor/StatusHeader.h"
 #include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
 #include "Strings/Hacking/CodeEditor/Unknown.h"
+#include "Strings/Hacking/Lexicon/Lexicon.h"
 #include "Strings/Menus/ApplyChanges.h"
 #include "Strings/Menus/Cancel.h"
 
@@ -181,9 +182,18 @@ CodeEditor::CodeEditor()
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->applyChangesButtonGrayed->addChild(acceptGray);
 
+	LocalizedLabel*	lexiconLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Lexicon_Lexicon::create());
+	LocalizedLabel*	lexiconLabelSelected = lexiconLabel->clone();
+
+	lexiconLabel->enableOutline(Color4B::BLACK, 2);
+	lexiconLabelSelected->enableOutline(Color4B::BLACK, 2);
+	lexiconLabelSelected->setTextColor(Color4B::YELLOW);
+
+	this->lexiconButton = ClickableTextNode::create(lexiconLabel, lexiconLabelSelected, UIResources::Menus_LexiconMenu_LexiconButton, UIResources::Menus_LexiconMenu_LexiconButtonSelected);
 	this->lexicon = Lexicon::create();
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 3);
+	this->lexiconButton->setTextOffset(Vec2(0.0f, -56.0f));
 
 	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
 	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::onFunctionTextUpdate, this));
@@ -212,6 +222,7 @@ CodeEditor::CodeEditor()
 	this->addChild(this->applyChangesButton);
 	this->addChild(this->applyChangesButtonGrayed);
 	this->addChild(this->titleLabel);
+	this->addChild(this->lexiconButton);
 	this->addChild(this->clippyNode);
 	this->addChild(this->lexicon);
 }
@@ -224,6 +235,7 @@ void CodeEditor::onEnter()
 {
 	super::onEnter();
 
+	this->lexiconButton->setVisible(false);
 	this->lexicon->setVisible(false);
 
 	this->scheduleUpdate();
@@ -253,6 +265,7 @@ void CodeEditor::initializePositions()
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
+	this->lexiconButton->setPosition(Vec2(sidebarWidth / 2.0f, 88.0f));
 }
 
 void CodeEditor::initializeListeners()
