@@ -1,8 +1,9 @@
 #include "PlayerEquipment.h"
 
+#include "Scenes/Platformer/Save/SaveKeys.h"
+
 using namespace cocos2d;
 
-const std::string PlayerEquipment::SaveKeyPlayerEquipment = "player_equipment";
 PlayerEquipment* PlayerEquipment::instance = nullptr;
 
 PlayerEquipment* PlayerEquipment::getInstance()
@@ -15,7 +16,7 @@ PlayerEquipment* PlayerEquipment::getInstance()
 	return instance;
 }
 
-PlayerEquipment::PlayerEquipment() : super(PlayerEquipment::SaveKeyPlayerEquipment)
+PlayerEquipment::PlayerEquipment() : super(SaveKeys::SaveKeySquallyEquipment)
 {
 }
 

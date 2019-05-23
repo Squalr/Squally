@@ -43,7 +43,8 @@ void NavigationEvents::navigateTitle()
 	);
 }
 
-void NavigationEvents::navigatePlatformerMap(NavigateMapArgs args)
+void NavigationEvents::
+navigatePlatformerMap(NavigateMapArgs args)
 {
 	Director::getInstance()->getRunningScene()->getEventDispatcher()->dispatchCustomEvent(
 		NavigationEvents::EventNavigatePlatformerMap,

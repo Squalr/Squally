@@ -238,7 +238,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{
-			SaveManager::deleteProfileData(profileId);
+			SaveManager::deleteAllProfileData(profileId);
 
 			this->buildSaveButtons();
 
@@ -259,10 +259,11 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 
 void SaveSelectMenu::loadSave()
 {
+	bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
 	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Intro)).asString();
 	std::string mapArgs = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMapArgs, Value("")).asString();
 
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapFile, mapArgs));
+	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapFile, mapArgs, isReload));
 }
 
 void SaveSelectMenu::onBackClick()

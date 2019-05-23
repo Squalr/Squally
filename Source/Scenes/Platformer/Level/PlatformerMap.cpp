@@ -82,6 +82,13 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
+			// Clear any intra-map save-state
+			if (!args->isReload)
+			{
+				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+			}
+
 			this->loadMap(args->mapResource, args->mapArgs);
 
 			GlobalDirector::loadScene(this);
@@ -124,8 +131,10 @@ void PlatformerMap::update(float dt)
 
 void PlatformerMap::loadMap(std::string mapResource, std::string args)
 {
-	SaveManager::saveProfileData(SaveKeys::SaveKeyMap, Value(mapResource));
-	SaveManager::saveProfileData(SaveKeys::SaveKeyMapArgs, Value(args));
+	SaveManager::batchSaveProfileData({
+		{ SaveKeys::SaveKeyMap, Value(mapResource) },
+		{ SaveKeys::SaveKeyMapArgs, Value(args) }
+	});
 
 	super::loadMap(mapResource, args);
 }

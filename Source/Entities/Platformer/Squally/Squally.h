@@ -33,8 +33,13 @@ private:
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
+	void onExit() override;
 	void initializePositions() override;
 	void update(float) override;
+	void onHackerModeEnable() override;
+	void saveState();
+	void loadState();
+	void updateWeaponVisual();
 
 	bool canJump;
 

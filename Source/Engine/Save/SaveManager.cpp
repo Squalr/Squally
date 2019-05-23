@@ -59,6 +59,41 @@ void SaveManager::saveGlobalData(std::string key, const Value& data)
 	SaveManager::doSave(SaveManager::globalSaveData, SaveManager::getLocalGlobalSaveFilePath(), SaveManager::getCloudGlobalSaveFilePath());
 }
 
+void SaveManager::batchSaveGlobalData(std::vector<std::tuple<std::string, const cocos2d::Value&>> newData)
+{
+	SaveManager::initializeSaveData();
+
+	for (auto it = newData.begin(); it != newData.end(); it++)
+	{
+		SaveManager::profileSaveData[std::get<0>(*it)] = std::get<1>(*it);
+	}
+
+	SaveManager::doSave(SaveManager::globalSaveData, SaveManager::getLocalGlobalSaveFilePath(), SaveManager::getCloudGlobalSaveFilePath());
+}
+
+void SaveManager::batchSaveProfileData(std::vector<std::tuple<std::string, const cocos2d::Value&>> newData)
+{
+	SaveManager::initializeSaveData();
+
+	for (auto it = newData.begin(); it != newData.end(); it++)
+	{
+		SaveManager::profileSaveData[std::get<0>(*it)] = std::get<1>(*it);
+	}
+
+	SaveManager::doSave(
+		SaveManager::profileSaveData,
+		SaveManager::getLocalProfileSaveFilePath(SaveManager::getActiveSaveProfile()),
+		SaveManager::getCloudProfileSaveFilePath(SaveManager::getActiveSaveProfile())
+	);
+}
+
+void SaveManager::softSaveProfileData(std::string key, const Value& data)
+{
+	SaveManager::initializeSaveData();
+
+	SaveManager::profileSaveData[key] = data;
+}
+
 void SaveManager::saveProfileData(std::string key, const Value& data)
 {
 	SaveManager::initializeSaveData();
@@ -128,6 +163,11 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 			{
 				std::string resultData = result.str();
 				bool writeSuccess = steamRemoteStorage->FileWrite(file, resultData.c_str(), resultData.size());
+
+				if (!writeSuccess)
+				{
+					LogUtils::logError("Error writing cloud save file: " + cloudSavePath);
+				}
 			}
 		}
 		catch (const std::exception& ex)
@@ -140,14 +180,19 @@ void SaveManager::doSave(ValueMap valueMap, std::string localSavePath, std::stri
 		}
 		catch (...)
 		{
-			LogUtils::logError("Unknown cloud save file write error on file: " + localSavePath);
+			LogUtils::logError("Unknown cloud save file write error on file: " + cloudSavePath);
 		}
 	}
 
 	// Always write locally as well
 	try
 	{
-		FileUtils::getInstance()->serializeValueMapToFile(valueMap, localSavePath);
+		bool writeSuccess = FileUtils::getInstance()->serializeValueMapToFile(valueMap, localSavePath);
+
+		if (!writeSuccess)
+		{
+			LogUtils::logError("Error writing local save file: " + localSavePath);
+		}
 	}
 	catch (const std::exception& ex)
 	{
@@ -284,7 +329,37 @@ bool SaveManager::hasSaveProfile(int profileId)
 	return !saveData.empty();
 }
 
-void SaveManager::deleteProfileData(int profileId)
+void SaveManager::batchDeleteProfileData(std::vector<std::string> keys)
+{
+	for (auto it = keys.begin(); it != keys.end(); it++)
+	{
+		SaveManager::profileSaveData.erase(*it);
+	}
+
+	SaveManager::doSave(
+		SaveManager::profileSaveData,
+		SaveManager::getLocalProfileSaveFilePath(SaveManager::getActiveSaveProfile()),
+		SaveManager::getCloudProfileSaveFilePath(SaveManager::getActiveSaveProfile())
+	);
+}
+
+void SaveManager::softDeleteProfileData(std::string key)
+{
+	SaveManager::profileSaveData.erase(key);
+}
+
+void SaveManager::deleteProfileData(std::string key)
+{
+	SaveManager::profileSaveData.erase(key);
+
+	SaveManager::doSave(
+		SaveManager::profileSaveData,
+		SaveManager::getLocalProfileSaveFilePath(SaveManager::getActiveSaveProfile()),
+		SaveManager::getCloudProfileSaveFilePath(SaveManager::getActiveSaveProfile())
+	);
+}
+
+void SaveManager::deleteAllProfileData(int profileId)
 {
 	ValueMap oldSaveData = SaveManager::loadSaveFile(
 		SaveManager::getLocalProfileSaveFilePath(profileId),

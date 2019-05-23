@@ -54,7 +54,7 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 	this->thrusterSound = Sound::create(SoundResources::Platformer_FX_LowFlame);
 	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_FX_WooshRough);
 	this->crashSound = Sound::create(SoundResources::Platformer_FX_Crash);
-	this->fireSound = Sound::create(SoundResources::Platformer_FX_FireSizzle);
+	this->fireSound = Sound::create(SoundResources::Platformer_FX_Fire);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 

@@ -74,7 +74,7 @@ void EdgePortal::initializeListeners()
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()
 				{
-					NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs));
+					NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, false));
 				}),
 				nullptr
 			));

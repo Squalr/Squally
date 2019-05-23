@@ -6,19 +6,16 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h" // Debugging
-#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h" // Debugging
-#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h" // Debugging
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h" // Debugging
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Maces/CrystalMace.h" // Debugging
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h" // Debugging
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
 #include "Scenes/Platformer/Inventory/PlayerInventory.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -75,26 +72,8 @@ void Squally::onEnter()
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData);
 
-	if (PlayerEquipment::getInstance()->getWeapon() == nullptr)
-	{
-		PlayerEquipment::getInstance()->forceInsert(CrystalSword::create());
-	}
-
-	if (PlayerInventory::getInstance()->getItems().empty())
-	{
-		PlayerInventory::getInstance()->forceInsert(HealthPotion::create());
-		PlayerInventory::getInstance()->forceInsert(ManaPotion::create());
-		PlayerInventory::getInstance()->forceInsert(SpeedPotion::create());
-	}
-
-	PlayerEquipment::getInstance()->tryRemove(PlayerEquipment::getInstance()->getWeapon(), nullptr, nullptr);
-	PlayerEquipment::getInstance()->forceInsert(CrystalMace::create());
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
-
-	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
-	
-	mainhand->replaceSprite(weapon->getIconResource());
-	mainhand->setOffset(weapon->getDisplayOffset());
+	this->loadState();
+	this->updateWeaponVisual();
 }
 
 void Squally::onEnterTransitionDidFinish()
@@ -103,6 +82,11 @@ void Squally::onEnterTransitionDidFinish()
 
 	// Request HUD track player
 	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
+}
+
+void Squally::onExit()
+{
+	super::onExit();
 }
 
 void Squally::initializeCollisionEvents()
@@ -191,6 +175,10 @@ void Squally::update(float dt)
 		return;
 	}
 
+	// Soft save the position (and the associated map)
+	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX()));
+	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY()));
+
 	this->movement = Vec2::ZERO;
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
@@ -223,5 +211,56 @@ void Squally::performSwimAnimation()
 	else
 	{
 		this->animationNode->playAnimation("Swim");
+	}
+}
+
+void Squally::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	this->saveState();
+}
+
+void Squally::saveState()
+{
+	SaveManager::batchSaveProfileData({
+		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
+		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
+		{ SaveKeys::SaveKeySquallyRunes, Value(this->getRunes()) },
+		{ SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX()) },
+		{ SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY()) }
+	});
+}
+
+void Squally::loadState()
+{
+	// Note: We just use the current value by default. This is normally the max if Squally was just constructed, but might also
+	// Be a lower value (ie if created as injured for a cutscene)
+	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
+	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
+	this->setRunes(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getRunes())).asInt());
+	
+	this->setPosition(Vec2(
+		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
+		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY())).asFloat()
+	));
+
+	// Save new defaults
+	this->saveState();
+}
+
+void Squally::updateWeaponVisual()
+{
+	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+
+	if (weapon != nullptr)
+	{
+		AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
+		
+		if (mainhand != nullptr)
+		{
+			mainhand->replaceSprite(weapon->getIconResource());
+			mainhand->setOffset(weapon->getDisplayOffset());
+		}
 	}
 }
