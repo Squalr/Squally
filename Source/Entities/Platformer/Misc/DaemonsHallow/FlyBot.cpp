@@ -30,9 +30,11 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
 #include "Strings/Dialogue/Story/Intro/HackerMode.h"
 #include "Strings/Dialogue/Story/Intro/TentHeal.h"
@@ -105,24 +107,56 @@ void FlyBot::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventGreetSqually, [=](EventCustom*)
+	if (this->state == FlyBot::EventGreetSqually)
 	{
-		this->runGreetEvent();
-	}));
+		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventGreetSqually, Value(false)).asBool())
+		{
+			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventGreetSqually, [=](EventCustom*)
+			{
+				this->runGreetEvent();
+			}));
+		}
+		else
+		{
+			this->setVisible(false);
+		}
+	}
 
-	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventHelpSquallyHeal, [=](EventCustom*)
+	if (this->state == FlyBot::EventHelpSquallyHeal)
 	{
-		this->runHelpHealEvent();
-	}));
+		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventHelpSquallyHeal, Value(false)).asBool())
+		{
+			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventHelpSquallyHeal, [=](EventCustom*)
+			{
+				this->runHelpHealEvent();
+			}));
+		}
+		else
+		{
+			this->setVisible(false);
+		}
+	}
 
-	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventTeachHackerMode, [=](EventCustom*)
+	if (this->state == FlyBot::EventTeachHackerMode)
 	{
-		this->runTeachHackerModeEvent();
-	}));
+		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventTeachHackerMode, Value(false)).asBool())
+		{
+			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventTeachHackerMode, [=](EventCustom*)
+			{
+				this->runTeachHackerModeEvent();
+			}));
+		}
+		else
+		{
+			this->setVisible(false);
+		}
+	}
 }
 
 void FlyBot::runGreetEvent()
 {
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventGreetSqually, Value(true));
+
 	Vec2 positionA = Vec2::ZERO;
 	Vec2 positionB = Vec2::ZERO;
 
@@ -186,6 +220,8 @@ void FlyBot::runGreetEvent()
 
 void FlyBot::runHelpHealEvent()
 {
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventHelpSquallyHeal, Value(true));
+
 	Vec2 positionA = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
@@ -223,12 +259,18 @@ void FlyBot::runHelpHealEvent()
 		}),
 		DelayTime::create(1.0f),
 		EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
+		CallFunc::create([=]()
+		{
+			this->setVisible(false);
+		}),
 		nullptr
 	));
 }
 
 void FlyBot::runTeachHackerModeEvent()
 {
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventTeachHackerMode, Value(true));
+
 	Vec2 positionB = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
@@ -266,6 +308,10 @@ void FlyBot::runTeachHackerModeEvent()
 		}),
 		DelayTime::create(1.0f),
 		EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+		CallFunc::create([=]()
+		{
+			this->setVisible(false);
+		}),
 		nullptr
 	));
 }

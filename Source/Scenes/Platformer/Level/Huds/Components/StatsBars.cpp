@@ -125,10 +125,13 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 
 	this->frame->removeAllChildren();
 
-	Sprite* emblem = Sprite::create(target->getEmblemResource());
+	if (this->target != nullptr)
+	{
+		Sprite* emblem = Sprite::create(target->getEmblemResource());
 
-	this->frame->addChild(emblem);
+		this->frame->addChild(emblem);
 
-	emblem->setFlippedX(!this->isFrameOnLeft);
-	emblem->setPosition(this->frame->getContentSize() / 2.0f);
+		emblem->setFlippedX(!this->isFrameOnLeft);
+		emblem->setPosition(this->frame->getContentSize() / 2.0f);
+	}
 }

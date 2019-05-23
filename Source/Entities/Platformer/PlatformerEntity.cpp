@@ -31,6 +31,8 @@ const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
 const int PlatformerEntity::MaxRunes = 4;
 
+const std::string PlatformerEntity::MapKeyPropertyState = "state";
+
 PlatformerEntity::PlatformerEntity(
 	ValueMap& initProperties, 
 	std::string scmlResource,
@@ -46,6 +48,8 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
+	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
+	
 	this->entityCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,

@@ -6,25 +6,22 @@
 
 namespace cocos2d
 {
+	class EventMouse;
+	class Sprite;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-// Forward declarations
+class CodeEditor;
 class ConfirmationMenu;
 class DeveloperHud;
 class Hud;
 class OptionsMenu;
 class PauseMenu;
+class RadialMenu;
 class SerializableMap;
 class MatrixRain;
 class HackerModeHud;
-
-namespace cocos2d
-{
-	class EventMouse;
-	class Sprite;
-}
 
 class MapBase : public GlobalScene
 {
@@ -63,6 +60,8 @@ private:
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
+	CodeEditor* codeEditor;
+	RadialMenu* radialMenu;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;

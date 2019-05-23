@@ -83,5 +83,8 @@ void CurrencyDisplay::update(float dt)
 
 void CurrencyDisplay::setCurrencyInventory(CurrencyInventory* inventory)
 {
+	this->value->setString("0");
+	this->cachedCurrency = (0 ^ CurrencyDisplay::CacheCipher);
+	
 	this->inventory = inventory;
 }
