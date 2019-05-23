@@ -85,6 +85,22 @@ void GameHud::initializeListeners()
 			this->currencyDisplay->setVisible(true);
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHudUntrackEntity, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->getCurrencyDisplay()->setCurrencyInventory(nullptr);
+			this->getRuneBar()->setStatsTarget(nullptr);
+			this->getStatsBars()->setStatsTarget(nullptr);
+
+			this->statsBars->setVisible(false);
+			this->runeBar->setVisible(false);
+			this->currencyDisplay->setVisible(false);
+		}
+	}));
 }
 
 void GameHud::update(float dt)

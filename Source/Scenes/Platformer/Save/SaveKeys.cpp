@@ -2,6 +2,7 @@
 
 const std::string SaveKeys::SaveKeyMap = "SAVE_KEY_MAP";
 const std::string SaveKeys::SaveKeyMapArgs = "SAVE_KEY_MAP_ARGS";
+const std::string SaveKeys::SaveKeyEventTriggeredPrefix = "SAVE_KEY_EVENT_TRIGGERED_";
 const std::string SaveKeys::SaveKeySquallyHeath = "SAVE_KEY_SQUALLY_HEALTH";
 const std::string SaveKeys::SaveKeySquallyMana = "SAVE_KEY_SQUALLY_MANA";
 const std::string SaveKeys::SaveKeySquallyRunes = "SAVE_KEY_SQUALLY_RUNES";

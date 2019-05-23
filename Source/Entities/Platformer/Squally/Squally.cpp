@@ -87,6 +87,8 @@ void Squally::onEnterTransitionDidFinish()
 void Squally::onExit()
 {
 	super::onExit();
+
+	PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 }
 
 void Squally::initializeCollisionEvents()

@@ -9,7 +9,6 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/Hackables/HackableObject.h"
@@ -26,18 +25,14 @@ using namespace cocos2d;
 
 const float RadialMenu::Radius = 372.0f;
 const float RadialMenu::IconRadius = 36.0f;
-RadialMenu* RadialMenu::instance = nullptr;
 
-void RadialMenu::registerGlobalNode()
+RadialMenu* RadialMenu::create()
 {
-	if (RadialMenu::instance == nullptr)
-	{
-		RadialMenu::instance = new RadialMenu();
+	RadialMenu* instance = new RadialMenu();
 
-		RadialMenu::instance->autorelease();
+	instance->autorelease();
 
-		GlobalDirector::registerGlobalNode(RadialMenu::instance);
-	}
+	return instance;
 }
 
 RadialMenu::RadialMenu()

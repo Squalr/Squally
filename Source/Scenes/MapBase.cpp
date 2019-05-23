@@ -11,6 +11,8 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/CodeEditor/CodeEditor.h"
+#include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -34,7 +36,8 @@ MapBase::MapBase(bool allowHackerMode)
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
-
+	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
+	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -56,6 +59,12 @@ MapBase::MapBase(bool allowHackerMode)
 	this->hackerModeRain->setVisible(false);
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
+
+	if (allowHackerMode)
+	{
+		this->menuHud->addChild(this->radialMenu);
+		this->menuHud->addChild(this->codeEditor);
+	}
 
 	this->menuHud->addChild(this->pauseMenu);
 	this->menuHud->addChild(this->optionsMenu);

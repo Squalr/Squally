@@ -25,7 +25,7 @@ class TextWindow;
 class CodeEditor : public GlobalHud
 {
 public:
-	static void registerGlobalNode();
+	static CodeEditor* create();
 
 private:
 	typedef SmartNode super;
@@ -34,6 +34,7 @@ private:
 	~CodeEditor();
 
 	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
@@ -84,5 +85,4 @@ private:
 	static const cocos2d::Color4B HeaderColor;
 	static const cocos2d::Color4B ErrorColor;
 	static const cocos2d::Color4B RegisterColor;
-	static CodeEditor* instance;
 };

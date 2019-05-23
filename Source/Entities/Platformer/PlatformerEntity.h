@@ -90,6 +90,7 @@ protected:
 	bool isOnGround();
 	
 	bool isCinimaticHijacked;
+	std::string state;
 	int health;
 	int maxHealth;
 	int mana;
@@ -111,4 +112,5 @@ private:
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float CapsuleRadius;
+	static const std::string MapKeyPropertyState;
 };

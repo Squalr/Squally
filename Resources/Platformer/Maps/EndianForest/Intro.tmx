@@ -138,7 +138,7 @@
   <object id="616" name="fly-bot" type="entity" x="5416.93" y="5309.35" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="state" value="greet-squally"/>
+    <property name="state" value="event-greet-squally"/>
    </properties>
   </object>
   <object id="619" name="edge-portal" type="object" x="7982.14" y="6362.5" width="199.918" height="559.063">

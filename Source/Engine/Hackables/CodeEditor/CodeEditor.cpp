@@ -105,18 +105,13 @@ const Color4B CodeEditor::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeEditor::ErrorColor = Color4B(196, 82, 82, 255);
 const Color4B CodeEditor::RegisterColor = Color4B(86, 156, 214, 255);
 
-CodeEditor* CodeEditor::instance = nullptr;
-
-void CodeEditor::registerGlobalNode()
+CodeEditor* CodeEditor::create()
 {
-	if (CodeEditor::instance == nullptr)
-	{
-		CodeEditor::instance = new CodeEditor();
+	CodeEditor* instance = new CodeEditor();
 
-		CodeEditor::instance->autorelease();
+	instance->autorelease();
 
-		GlobalDirector::registerGlobalNode(CodeEditor::instance);
-	}
+	return instance;
 }
 
 CodeEditor::CodeEditor()
@@ -239,6 +234,13 @@ void CodeEditor::onEnter()
 	this->lexicon->setVisible(false);
 
 	this->scheduleUpdate();
+}
+
+void CodeEditor::onExit()
+{
+	super::onExit();
+
+	this->clippyNode->removeAllChildren();
 }
 
 void CodeEditor::initializePositions()
