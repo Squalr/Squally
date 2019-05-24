@@ -123,13 +123,13 @@ void TimelineEntry::applyDamageOrHealing(int damageOrHealing)
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)
 {
-	this->target = TimelineEntry::getAssociatedTimelineEntry(target);
+	this->target = target == nullptr ? nullptr : TimelineEntry::getAssociatedTimelineEntry(target);
 }
 
 void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
 	// If this attach was created by the result of an item, it has no parent, and thus we need to keep a reference to it
-	if (attack->getParent() == nullptr)
+	if (attack != nullptr && attack->getParent() == nullptr)
 	{
 		this->orphanedAttackCache->addChild(attack);
 	}
