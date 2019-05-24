@@ -31,6 +31,7 @@
 #include "Scenes/Hexus/CardStorage.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -75,7 +76,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
 
 	this->goldPanel = Sprite::create(HexusResources::StoreMenu_GoldPanel);
-	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
+	this->goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
 
@@ -588,7 +589,8 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
-	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
+	
+	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
 
 	priceLabel->setStringReplacementVariables(priceString);
 

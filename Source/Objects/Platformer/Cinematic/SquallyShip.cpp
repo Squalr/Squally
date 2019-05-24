@@ -137,9 +137,15 @@ void SquallyShip::initializeListeners()
 			Squally* squally = Squally::deserialize(this->properties);
 
 			squally->setHealth(1);
-			squally->getEntityCollision()->setPosition(GameUtils::getWorldCoords(this->shipCollision));
 
-			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(this->ship, squally, ObjectEvents::SpawnMethod::Above));
+			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+				this->ship,
+				squally,
+				ObjectEvents::SpawnMethod::Above,
+				ObjectEvents::PositionMode::Discard
+			));
+			
+			squally->getEntityCollision()->setPosition(GameUtils::getWorldCoords(this->shipCollision));
 
 			this->shipCollision->setPhysicsEnabled(false);
 			this->ship->setVisible(false);

@@ -72,14 +72,22 @@ public:
 		Above,
 	};
 
+	enum class PositionMode
+	{
+		Discard,
+		Retain,
+		SetToOwner,
+	};
+
 	struct RequestObjectSpawnArgs
 	{
 		cocos2d::Node* spawner;
 		cocos2d::Node* objectToSpawn;
 		SpawnMethod spawnMethod;
+		PositionMode positionMode;
 
 		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod) : spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod) { }
+		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
 	};
 
 	struct RequestObjectSpawnDelegatorArgs
@@ -88,9 +96,10 @@ public:
 		cocos2d::Node* spawner;
 		cocos2d::Node* objectToSpawn;
 		SpawnMethod spawnMethod;
+		PositionMode positionMode;
 
 		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnDelegatorArgs(SerializableLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod) { }
+		RequestObjectSpawnDelegatorArgs(SerializableLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
 	};
 
 	struct RelocateObjectArgs

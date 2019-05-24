@@ -13,12 +13,13 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardStorage.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Menus/Return.h"
 #include "Strings/Generics/Constant.h"
@@ -45,9 +46,9 @@ void HexusRewardsMenu::registerGlobalScene()
 HexusRewardsMenu::HexusRewardsMenu()
 {
 	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
-	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
-	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
-	this->goldSpriteChapterClear = Sprite::create(UIResources::Menus_Objects_GOLD_4);
+	this->goldSprite = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
+	this->goldSpriteLesser = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
+	this->goldSpriteChapterClear = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
 	this->rewardSound = Sound::create(SoundResources::Hexus_Reward);

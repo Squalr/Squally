@@ -99,6 +99,11 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 		// Parse any polyline points in iso space
 		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();
 
+		if (polygonPointsRaw.empty())
+		{
+			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPoints, Value(ValueVector())).asValueVector();
+		}
+		
 		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
 		{
 			ValueMap point = it->asValueMap();
@@ -137,6 +142,11 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 
 		// Parse any polyline points in cocos space
 		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();
+
+		if (polygonPointsRaw.empty())
+		{
+			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPoints, Value(ValueVector())).asValueVector();
+		}
 
 		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
 		{

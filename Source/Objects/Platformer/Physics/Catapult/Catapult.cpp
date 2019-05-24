@@ -193,7 +193,8 @@ void Catapult::launchBall()
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
-		ObjectEvents::SpawnMethod::Above
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::SetToOwner
 	));
 
 	catapultBall->setRotation(0.0f);

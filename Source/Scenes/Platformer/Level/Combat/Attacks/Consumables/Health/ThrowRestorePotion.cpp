@@ -6,7 +6,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileRestorePotion.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/ObjectResources.h"
 
 #include "Strings/Generics/Empty.h"
 
@@ -21,7 +21,7 @@ ThrowRestorePotion* ThrowRestorePotion::create()
 	return instance;
 }
 
-ThrowRestorePotion::ThrowRestorePotion() : super(AttackType::ProjectileHealing, UIResources::Menus_Objects_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowRestorePotion::ThrowRestorePotion() : super(AttackType::ProjectileHealing, ObjectResources::Items_Consumables_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 }
 
