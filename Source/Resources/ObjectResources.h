@@ -659,6 +659,8 @@ namespace ObjectResources
 	extern const std::string Interactive_TentFront;
 	extern const std::string Items_Consumables_ALCHEMY;
 	extern const std::string Items_Consumables_AMULET;
+	extern const std::string Items_Consumables_BAG_1;
+	extern const std::string Items_Consumables_BAG_2;
 	extern const std::string Items_Consumables_BEER;
 	extern const std::string Items_Consumables_BIG_CHEESE;
 	extern const std::string Items_Consumables_BLUE_RUNE;
@@ -672,6 +674,7 @@ namespace ObjectResources
 	extern const std::string Items_Consumables_CHEESE;
 	extern const std::string Items_Consumables_CHEST;
 	extern const std::string Items_Consumables_CHICKEN;
+	extern const std::string Items_Consumables_CheeseLarge;
 	extern const std::string Items_Consumables_EYE;
 	extern const std::string Items_Consumables_FOOD_1;
 	extern const std::string Items_Consumables_FOOD_2;
@@ -680,6 +683,10 @@ namespace ObjectResources
 	extern const std::string Items_Consumables_FOOD_5;
 	extern const std::string Items_Consumables_FRUIT_1;
 	extern const std::string Items_Consumables_FRUIT_2;
+	extern const std::string Items_Consumables_GOLD_1;
+	extern const std::string Items_Consumables_GOLD_2;
+	extern const std::string Items_Consumables_GOLD_3;
+	extern const std::string Items_Consumables_GOLD_4;
 	extern const std::string Items_Consumables_GRE_RUNE;
 	extern const std::string Items_Consumables_GREEN_RUNE;
 	extern const std::string Items_Consumables_HEALTH_1;
@@ -688,6 +695,7 @@ namespace ObjectResources
 	extern const std::string Items_Consumables_HEALTH_4;
 	extern const std::string Items_Consumables_HEALTH_5;
 	extern const std::string Items_Consumables_HORN___ARTIFACT;
+	extern const std::string Items_Consumables_IOU;
 	extern const std::string Items_Consumables_KEY_1;
 	extern const std::string Items_Consumables_KEY_2;
 	extern const std::string Items_Consumables_KEY_3;
@@ -699,6 +707,7 @@ namespace ObjectResources
 	extern const std::string Items_Consumables_MANA_3;
 	extern const std::string Items_Consumables_MANA_4;
 	extern const std::string Items_Consumables_MANA_5;
+	extern const std::string Items_Consumables_MAP;
 	extern const std::string Items_Consumables_PURPLE_RUNE;
 	extern const std::string Items_Consumables_RAINBOW_HORN;
 	extern const std::string Items_Consumables_RED_LEAF;

@@ -13,6 +13,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -20,6 +21,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -42,6 +44,7 @@ Tent::Tent(ValueMap& initProperties) : super(initProperties)
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
 	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->healSound = Sound::create(SoundResources::Platformer_Spells_Heal4);
 	this->isAnimating = false;
 	
 	this->addChild(this->healCollision);
@@ -49,6 +52,7 @@ Tent::Tent(ValueMap& initProperties) : super(initProperties)
 	this->addChild(this->tentBack);
 	this->addChild(this->healAnimation);
 	this->addChild(this->tentFront);
+	this->addChild(this->healSound);
 }
 
 Tent::~Tent()
@@ -93,7 +97,6 @@ void Tent::initializeListeners()
 	{
 		this->runHealAnimation();
 
-
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
 			squally->setHealth(squally->getMaxHealth());
@@ -110,11 +113,16 @@ void Tent::initializeListeners()
 	});
 }
 
-void Tent::runHealAnimation(bool forceRun)
+void Tent::runHealAnimation(bool reRun)
 {
-	if (this->isAnimating && !forceRun)
+	if (this->isAnimating && !reRun)
 	{
 		return;
+	}
+
+	if (!reRun)
+	{
+		this->healSound->play();
 	}
 
 	this->isAnimating = true;

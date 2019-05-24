@@ -121,7 +121,8 @@ void PlatformerAttack::replaceWeaponWithProjectile(PlatformerEntity* owner, Proj
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,
 		projectile,
-		ObjectEvents::SpawnMethod::Above
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::Retain
 	));
 }
 
