@@ -35,14 +35,18 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Strings/Dialogue/EndOfDemo.h"
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
 #include "Strings/Dialogue/Story/Intro/HackerMode.h"
+#include "Strings/Dialogue/Story/Intro/OgreSpotted.h"
 #include "Strings/Dialogue/Story/Intro/TentHeal.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
+const std::string FlyBot::EventEndOfDemo = "event-end-of-demo";
 const std::string FlyBot::EventGreetSqually = "event-greet-squally";
 const std::string FlyBot::EventHelpSquallyHeal = "event-help-squally-heal";
 const std::string FlyBot::EventTeachHackerMode = "event-teach-hacker-mode";
+const std::string FlyBot::EventSpotOgre = "event-spot-ogre";
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -103,6 +107,16 @@ FlyBot::~FlyBot()
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////X////X////X////X////X////X////X////X////X////X/
 
+void FlyBot::onEnter()
+{
+	super::onEnter();
+
+	if (this->state == FlyBot::EventEndOfDemo)
+	{
+		this->runEndOfDemoEvent();
+	}
+}
+
 void FlyBot::initializeListeners()
 {
 	super::initializeListeners();
@@ -151,6 +165,36 @@ void FlyBot::initializeListeners()
 			this->setVisible(false);
 		}
 	}
+
+	if (this->state == FlyBot::EventSpotOgre)
+	{
+		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventSpotOgre, Value(false)).asBool())
+		{
+			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventSpotOgre, [=](EventCustom*)
+			{
+				this->runSpotOgreEvent();
+			}));
+		}
+		else
+		{
+			this->setVisible(false);
+		}
+	}
+}
+
+void FlyBot::runEndOfDemoEvent()
+{
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->droidChatterSound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_EndOfDemo::create());
+		}),
+		nullptr
+	));
 }
 
 void FlyBot::runGreetEvent()
@@ -311,6 +355,35 @@ void FlyBot::runTeachHackerModeEvent()
 		CallFunc::create([=]()
 		{
 			this->setVisible(false);
+		}),
+		nullptr
+	));
+}
+
+void FlyBot::runSpotOgreEvent()
+{
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventSpotOgre, Value(true));
+
+	PlatformerEvents::TriggerCinematicHijack();
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->droidChatterSound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_OgreSpotted::create());
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->hideDialogue();
 		}),
 		nullptr
 	));

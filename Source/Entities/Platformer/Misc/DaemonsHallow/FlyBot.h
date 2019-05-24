@@ -49,19 +49,24 @@ private:
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////X////X////X////X////X////X////X////X////X////X/
 
+	void onEnter() override;
 	void initializeListeners() override;
+	void runEndOfDemoEvent();
 	void runGreetEvent();
 	void runHelpHealEvent();
 	void runTeachHackerModeEvent();
+	void runSpotOgreEvent();
 
 	Sound* droidAlarmedSound;
 	Sound* droidBrief1Sound;
 	Sound* droidBrief2Sound;
 	Sound* droidChatterSound;
 
+	static const std::string EventEndOfDemo;
 	static const std::string EventGreetSqually;
 	static const std::string EventHelpSquallyHeal;
 	static const std::string EventTeachHackerMode;
+	static const std::string EventSpotOgre;
 	
 	////O////O////O////O////O////O////O////O////O////O/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

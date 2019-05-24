@@ -166,7 +166,7 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="537" name="spawn" type="object" x="4313.88" y="2408.95" width="78.7879" height="88">
+  <object id="537" name="spawn" type="object" x="4360.15" y="2349.91" width="78.7879" height="88">
    <properties>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>

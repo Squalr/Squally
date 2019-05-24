@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="67" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="51" nextobjectid="636">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="646">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -70,9 +70,9 @@
    </properties>
   </object>
  </objectgroup>
- <layer id="49" name="cave" width="67" height="64">
+ <layer id="55" name="cave" width="106" height="64">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAA4GdDAAAB
+   eJztwTEBAAAAwqD1T20Gf6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgMagAAAQ==
   </data>
  </layer>
  <objectgroup id="18" name="decor background">
@@ -95,23 +95,35 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="solid" type="terrain" x="-302.644" y="4874.1">
+  <object id="489" name="solid" type="terrain" x="-115.416" y="4874.1">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 4928.95,-35.521 5918.2,17.5736 6510.56,13.0491 7197.9,-26.0982 8916.25,0 8935.33,508.916 8763.46,1278.81 7312.44,1317.96 2692.05,1161.37 -38.1851,1017.83 0,378.425"/>
+   <polygon points="0,0 4792.55,-35.521 5754.46,17.5736 6330.39,13.0491 6998.71,-26.0982 8669.53,0 8688.05,508.916 8520.95,1278.81 7110.1,1317.96 2617.55,1161.37 -37.1284,1017.83 0,378.425"/>
   </object>
   <object id="627" name="solid" type="terrain" x="3903.67" y="2967.26">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 1161.48,-33.8278 1394.59,-64.4287 1534.17,12.4271 1696.14,-24.8541 2101.06,0 2234.13,478.052 2118.98,1059.33 1723.13,1255.13 402.096,1264.53 -4.85042,929.681 0,360.386"/>
+   <polygon points="0,0 1161.48,-33.8278 1394.59,-64.4287 1534.17,12.4271 1696.14,-24.8541 2101.06,0 2234.13,478.052 2118.98,1059.33 1723.13,1255.13 402.096,1264.53 -4.85042,929.681 0,360.386"/>
   </object>
   <object id="630" name="solid" type="terrain" x="6405.9" y="2968.24">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="332.577,-124.717 821.344,-135.869 1315.22,-151.352 1602.2,-237.006 1919.12,-104.219 2218.22,-105.82 2211.45,447.818 2160.55,961.068 1723.13,1255.13 27.9463,1290.99 339.065,990.15 340.136,371.724"/>
+   <polygon points="332.577,-124.717 821.344,-135.869 1315.22,-151.352 1602.2,-237.006 1919.12,-104.219 2218.22,-105.82 2211.45,447.818 2160.55,961.068 1723.13,1255.13 27.9463,1290.99 339.065,990.15 340.136,371.724"/>
+  </object>
+  <object id="640" name="solid" type="terrain" x="13337.6" y="4290.99">
+   <properties>
+    <property name="texture" value="blue-grass"/>
+   </properties>
+   <polygon points="0,0 -691.091,-83.2639 -2073.27,-1273.94 -2081.6,-2414.65 224.813,-2872.61 1815.15,-2356.37 1806.83,-1124.06 1773.52,-24.9792"/>
+  </object>
+  <object id="645" name="solid" type="terrain" x="8561.82" y="4916.32">
+   <properties>
+    <property name="texture" value="blue-grass"/>
+   </properties>
+   <polygon points="-2.20332,-30.9717 2777.14,-35.521 3334.54,17.5736 3668.27,13.0491 4055.55,-26.0982 5023.74,0 5034.48,508.916 4937.64,1278.81 4120.1,1317.96 1516.79,1161.37 134.921,948.144 2.20332,486.826"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -136,7 +148,7 @@
     <property name="id" value="0"/>
    </properties>
   </object>
-  <object id="622" name="cinematic-marker" type="object" x="8393.67" y="4669.18" width="78.7879" height="88">
+  <object id="622" name="cinematic-marker" type="object" x="10720.9" y="4513.42" width="78.7879" height="88">
    <properties>
     <property name="id" value="1"/>
    </properties>
@@ -161,6 +173,25 @@
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
+  <object id="636" name="trigger" type="object" x="10373.7" y="3529.4" width="195.164" height="1351.51">
+   <properties>
+    <property name="event" value="event-spot-ogre"/>
+   </properties>
+  </object>
+  <object id="639" name="orc-grunt" type="entity" x="11721.2" y="4750.7" width="128" height="128">
+   <properties>
+    <property name="battle-map" value="EndianForest/BattleGrounds"/>
+    <property name="combat-end-event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="641" name="edge-portal" type="object" x="13288.3" y="4269.89" width="199.918" height="609.021">
+   <properties>
+    <property name="args" value="{&quot;next-map-entrance-id&quot;:&quot;0&quot;}"/>
+    <property name="direction" value="right"/>
+    <property name="event" value="door-open"/>
+    <property name="map" value="EndianForest/Zone_A1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -179,17 +210,16 @@
     <property name="state" value="event-help-squally-heal"/>
    </properties>
   </object>
-  <object id="619" name="edge-portal" type="object" x="8333.07" y="4366.38" width="199.918" height="559.063">
-   <properties>
-    <property name="args" value="{&quot;next-map-entrance-id&quot;:&quot;0&quot;}"/>
-    <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_A1"/>
-   </properties>
-  </object>
   <object id="634" name="fly-bot" type="entity" x="5242.64" y="4575.56" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="event-teach-hacker-mode"/>
+   </properties>
+  </object>
+  <object id="638" name="fly-bot" type="entity" x="10707.1" y="4504.87" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="state" value="event-spot-ogre"/>
    </properties>
   </object>
  </objectgroup>
@@ -200,9 +230,9 @@
   </properties>
   <object id="523" name="squally" type="entity" x="277.065" y="4745.38" width="128" height="128"/>
  </objectgroup>
- <layer id="50" name="water" width="67" height="64">
+ <layer id="56" name="water" width="106" height="64">
   <data encoding="base64" compression="zlib">
-   eJztwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAA4GdDAAAB
+   eJztwTEBAAAAwqD1T20Gf6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgMagAAAQ==
   </data>
  </layer>
  <objectgroup id="27" name="terrain foreground">

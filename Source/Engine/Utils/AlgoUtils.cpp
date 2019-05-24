@@ -229,7 +229,7 @@ std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std
 	}
 
 	// Loop to start
-	if (points.size() >= 2)
+	if (points.size() >= 2 && points.back() != points.front())
 	{
 		segments.push_back(std::tuple<Vec2, Vec2>(points.back(), points[0]));
 	}

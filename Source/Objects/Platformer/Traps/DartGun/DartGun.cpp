@@ -152,7 +152,8 @@ void DartGun::shoot(float dt)
 				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 					this,
 					dart,
-					ObjectEvents::SpawnMethod::Below
+					ObjectEvents::SpawnMethod::Below,
+					ObjectEvents::PositionMode::Retain
 				));
 			}
 		}

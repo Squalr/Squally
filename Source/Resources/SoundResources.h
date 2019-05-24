@@ -56,6 +56,17 @@ namespace SoundResources
 	extern const std::string Menus_BookPageTurn_PE1014902;
 	extern const std::string Menus_Card_Game_UI_Button_Light_Reverb_02;
 	extern const std::string Menus_Simple_Button;
+	extern const std::string Platformer_Attacks_Hit1;
+	extern const std::string Platformer_Attacks_HitSqueak;
+	extern const std::string Platformer_Attacks_ShieldHit1;
+	extern const std::string Platformer_Attacks_ShieldHit2;
+	extern const std::string Platformer_Attacks_ShieldHit3;
+	extern const std::string Platformer_Attacks_Thud1;
+	extern const std::string Platformer_Attacks_Whack1;
+	extern const std::string Platformer_Attacks_Whack2;
+	extern const std::string Platformer_Attacks_Whack3;
+	extern const std::string Platformer_Attacks_Whack4;
+	extern const std::string Platformer_Attacks_Whack5;
 	extern const std::string Platformer_Doors_Ancient_Stone_Mechanism_Movement_01;
 	extern const std::string Platformer_Doors_StoneWall1;
 	extern const std::string Platformer_Doors_StoneWall2;
@@ -68,6 +79,10 @@ namespace SoundResources
 	extern const std::string Platformer_FX_Thrusters;
 	extern const std::string Platformer_FX_Woosh;
 	extern const std::string Platformer_FX_WooshRough;
+	extern const std::string Platformer_Spells_Heal1;
+	extern const std::string Platformer_Spells_Heal2;
+	extern const std::string Platformer_Spells_Heal3;
+	extern const std::string Platformer_Spells_Heal4;
 	extern const std::string Platformer_Voices_Droid_DroidAlarmed;
 	extern const std::string Platformer_Voices_Droid_DroidBrief;
 	extern const std::string Platformer_Voices_Droid_DroidBrief2;

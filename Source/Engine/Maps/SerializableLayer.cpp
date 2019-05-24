@@ -68,7 +68,7 @@ void SerializableLayer::initializeListeners()
 		if (GameUtils::getFirstParentOfType<SerializableLayer>(args->spawner) == this)
 		{
 			// Delegate the spawning to the map, which will decide where to place the object
-			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnMethod));
+			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnMethod, args->positionMode));
 		}
 	}));
 }
