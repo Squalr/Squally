@@ -16,7 +16,7 @@ public:
 
 protected:
 	ProjectileHealthPotionGenericPreview();
-	virtual ~ProjectileHealthPotionGenericPreview();
+	~ProjectileHealthPotionGenericPreview();
 	void onEnter() override;
 	void initializePositions() override;
 

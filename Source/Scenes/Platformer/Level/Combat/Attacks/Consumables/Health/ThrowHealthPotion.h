@@ -15,7 +15,7 @@ protected:
 	ThrowHealthPotion();
 	~ThrowHealthPotion();
 
-	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit) override;
+	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
 
 private:

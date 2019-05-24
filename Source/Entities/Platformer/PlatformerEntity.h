@@ -30,6 +30,7 @@ public:
 	void setRunes(int runes);
 	int getMaxRunes();
 	std::vector<PlatformerAttack*> getAttacks();
+	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	Inventory* getInventory();
 	CurrencyInventory* getCurrencyInventory();
@@ -99,12 +100,6 @@ protected:
 
 	cocos2d::Size entitySize;
 
-private:
-	typedef HackableObject super;
-
-	std::string emblemResource;
-	std::vector<PlatformerAttack*> attacks;
-
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
 	static const float SwimVerticalDrag;
@@ -113,4 +108,10 @@ private:
 	static const float GroundCollisionOffset;
 	static const float CapsuleRadius;
 	static const std::string MapKeyPropertyState;
+
+private:
+	typedef HackableObject super;
+
+	std::string emblemResource;
+	std::vector<PlatformerAttack*> attacks;
 };

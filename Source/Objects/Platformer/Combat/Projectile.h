@@ -12,17 +12,17 @@ class PlatformerEntity;
 class Projectile : public ProximityObject
 {
 protected:
-	Projectile(std::function<void(PlatformerEntity* target)> onTargetHit, float radius, float noCollideDuration);
+	Projectile(float radius, float noCollideDuration);
 	virtual	~Projectile();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
+	virtual void onCollideWithTarget(PlatformerEntity* target) = 0;
 
 private:
 	typedef ProximityObject super;
 
-	std::function<void(PlatformerEntity* target)> onTargetHit;
 	bool hasCollided;
 	float noCollideDuration;
 	float elapsedDuration;

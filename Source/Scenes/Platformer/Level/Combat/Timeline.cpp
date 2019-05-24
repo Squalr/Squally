@@ -90,48 +90,49 @@ void Timeline::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastTargetArgs* targetArgs = static_cast<CombatEvents::CastTargetArgs*>(args->getUserData());
+		CombatEvents::CastTargetArgs* args = static_cast<CombatEvents::CastTargetArgs*>(eventCustom->getUserData());
 
 		if (this->timelineEntryAwaitingUserAction != nullptr)
 		{
-			this->timelineEntryAwaitingUserAction->stageTarget(targetArgs->target);
+			this->timelineEntryAwaitingUserAction->stageTarget(args->target);
 		}
 
 		CombatEvents::TriggerResumeTimeline();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = true;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = false;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventInterruptTimeline, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventInterruptTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelineInterrupted = true;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
+		CombatEvents::MenuStateArgs* args = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
-		if (combatArgs != nullptr && combatArgs->entry != nullptr)
+		if (args != nullptr && args->entry != nullptr)
 		{
-			this->timelineEntryAwaitingUserAction = combatArgs->entry;
+			this->timelineEntryAwaitingUserAction = args->entry;
 
-			switch (combatArgs->currentMenu)
+			switch (args->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
 					if (this->timelineEntryAwaitingUserAction != nullptr)
 					{
-						// TODO: Trigger defend event
+						this->timelineEntryAwaitingUserAction->stageCast(nullptr);
+						this->timelineEntryAwaitingUserAction->stageTarget(nullptr);
 					}
 
 					CombatEvents::TriggerResumeTimeline();

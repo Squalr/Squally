@@ -14,7 +14,7 @@ protected:
 	BasicSlash(float attackDuration, float recoverDuration);
 	~BasicSlash() = default;
 
-	void onDamageOrHealingDelt() override;
+	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:
 	typedef PlatformerAttack super;

@@ -9,6 +9,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -23,6 +24,7 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
@@ -119,7 +121,9 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)
 	{
-		NavigationEvents::navigateBack();
+		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+
+		NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapResource, "", true));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)

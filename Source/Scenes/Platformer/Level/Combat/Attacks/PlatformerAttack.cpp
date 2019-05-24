@@ -7,10 +7,11 @@ using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
 
-PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
+PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
 {
 	this->attackType = attackType;
 	this->iconResource = iconResource;
+	this->priority = priority;
 	this->baseDamageOrHealingMin = baseDamageOrHealingMin;
 	this->baseDamageOrHealingMax = baseDamageOrHealingMax;
 	this->specialCost = specialCost;
@@ -28,7 +29,22 @@ std::string PlatformerAttack::getIconResource()
 	return this->iconResource;
 }
 
-void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target, int damageOrHealing)> onDamageOrHealingDelt, std::function<void()> onAttackComplete)
+float PlatformerAttack::getPriority()
+{
+	return this->priority;
+}
+
+int PlatformerAttack::getSpecialCost()
+{
+	return this->specialCost;
+}
+
+PlatformerAttack::AttackType PlatformerAttack::getAttackType()
+{
+	return this->attackType;
+}
+
+void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onAttackComplete)
 {
 	this->onAttackTelegraphBegin();
 
@@ -39,20 +55,17 @@ void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target
 			switch (this->attackType)
 			{
 				default:
-				case AttackType::Direct:
+				case AttackType::Damage:
+				case AttackType::Healing:
 				{
-					onDamageOrHealingDelt(target, this->getRandomDamageOrHealing());
-					this->onDamageOrHealingDelt();
+					this->doDamageOrHealing(owner, target);
 
 					break;
 				}
-				case AttackType::Projectile:
+				case AttackType::ProjectileDamage:
+				case AttackType::ProjectileHealing:
 				{
-					this->generateProjectiles(owner, target, [=](PlatformerEntity* newTarget)
-					{
-						onDamageOrHealingDelt(newTarget, this->getRandomDamageOrHealing());
-						this->onDamageOrHealingDelt();
-					});
+					this->generateProjectiles(owner, target);
 				}
 			}
 		}),
@@ -71,11 +84,11 @@ void PlatformerAttack::onAttackTelegraphBegin()
 {
 }
 
-void PlatformerAttack::onDamageOrHealingDelt()
+void PlatformerAttack::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 }
 
-void PlatformerAttack::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit)
+void PlatformerAttack::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
 }
 

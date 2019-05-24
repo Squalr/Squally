@@ -13,15 +13,16 @@ class SmartAnimationSequenceNode;
 class ProjectileHealthPotion : public Projectile
 {
 public:
-	static ProjectileHealthPotion* create(std::function<void(PlatformerEntity* target)> onTargetHit);
+	static ProjectileHealthPotion* create();
 
 protected:
-	ProjectileHealthPotion(std::function<void(PlatformerEntity* target)> onTargetHit);
-	virtual	~ProjectileHealthPotion();
+	ProjectileHealthPotion();
+	~ProjectileHealthPotion();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
+	void onCollideWithTarget(PlatformerEntity* target) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	HackablePreview* createVelocityPreview() override;
@@ -31,4 +32,6 @@ private:
 	typedef Projectile super;
 
 	cocos2d::Sprite* healthPotionSprite;
+
+	static const float HealPercentage;
 };

@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/BomberTorch/BomberTorchGenericPreview.h"
 
 #include "Resources/EntityResources.h"
@@ -14,17 +15,18 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_TORCH_ARC 1
 
-BomberTorch* BomberTorch::create(std::function<void(PlatformerEntity* target)> onTargetHit)
+BomberTorch* BomberTorch::create(int damage)
 {
-	BomberTorch* instance = new BomberTorch(onTargetHit);
+	BomberTorch* instance = new BomberTorch(damage);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BomberTorch::BomberTorch(std::function<void(PlatformerEntity* target)> onTargetHit) : Projectile(onTargetHit, 256.0f, 1.0f)
+BomberTorch::BomberTorch(int damage) : Projectile(256.0f, 1.0f)
 {
+	this->damage = -std::abs(damage);
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
 	this->fire = SmartAnimationSequenceNode::create(ObjectResources::FX_TorchFire_TorchFire_0000);
 
@@ -55,6 +57,11 @@ void BomberTorch::initializePositions()
 void BomberTorch::update(float dt)
 {
 	super::update(dt);
+}
+
+void BomberTorch::onCollideWithTarget(PlatformerEntity* target)
+{
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->damage, target));
 }
 
 cocos2d::Vec2 BomberTorch::getButtonOffset()
