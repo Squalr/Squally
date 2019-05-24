@@ -274,6 +274,12 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 	}
 
 	bool isReentry = (args->objectToSpawn->getParent() != nullptr);
+	bool retainPosition = (args->positionMode != ObjectEvents::PositionMode::Discard);
+
+	if (args->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	{
+		args->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(args->spawner));
+	}
 
 	switch (args->spawnMethod)
 	{
@@ -287,11 +293,11 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 				{
 					if (prevIt != this->serializableLayers.end())
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*prevIt), true, isReentry);
+						GameUtils::changeParent(args->objectToSpawn, (*prevIt), retainPosition, isReentry);
 					}
 					else
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*it), true, isReentry);
+						GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
 					}
 				}
 
@@ -307,7 +313,7 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 			{
 				if (*it == args->sourceLayer)
 				{
-					GameUtils::changeParent(args->objectToSpawn, (*it), true, isReentry);
+					GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
 				}
 			}
 			

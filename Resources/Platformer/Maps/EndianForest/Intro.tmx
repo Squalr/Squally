@@ -95,11 +95,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="solid" type="terrain" x="-2049.98" y="6922.1">
+  <object id="489" name="solid" type="terrain" x="-144.975" y="6922.1">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 5839.01,-35.521 7010.91,-67.6537 7712.64,13.0491 8526.88,-26.0982 10562.5,0 10585.1,508.916 10381.5,1278.81 8662.58,1317.96 3189.1,1161.37 -45.2354,1017.83 0,378.425"/>
+   <polygon points="0,0 4788.16,-35.521 5749.15,-67.6537 6324.59,13.0491 6992.29,-26.0982 8661.56,0 8680.1,508.916 8513.14,1278.81 7103.57,1317.96 2615.16,1161.37 -37.0944,1017.83 0,378.425"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -119,7 +119,7 @@
     <property name="event" value="event-greet-squally"/>
    </properties>
   </object>
-  <object id="621" name="cinematic-marker" type="object" x="4630.86" y="6375.9" width="78.7879" height="88">
+  <object id="621" name="cinematic-marker" type="object" x="4619.85" y="6557.62" width="78.7879" height="88">
    <properties>
     <property name="id" value="0"/>
    </properties>

@@ -10,6 +10,7 @@ namespace cocos2d
 
 class CollisionObject;
 class SmartAnimationSequenceNode;
+class Sound;
 
 class Tent : public HackableObject
 {
@@ -30,7 +31,7 @@ protected:
 private:
 	typedef HackableObject super;
 
-	void runHealAnimation(bool forceRun = false);
+	void runHealAnimation(bool reRun = false);
 	cocos2d::PhysicsBody* createTentTopCollision();
 
 	cocos2d::Sprite* tentBack;
@@ -38,6 +39,7 @@ private:
 	cocos2d::Sprite* tentFront;
 	CollisionObject* topCollision;
 	CollisionObject* healCollision;
+	Sound* healSound;
 	
 	bool isAnimating;
 };
