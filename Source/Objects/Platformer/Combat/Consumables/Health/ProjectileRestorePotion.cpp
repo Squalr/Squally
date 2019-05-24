@@ -1,5 +1,6 @@
 #include "ProjectileRestorePotion.h"
 
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
@@ -55,9 +56,21 @@ void ProjectileRestorePotion::update(float dt)
 
 void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 {
+	const float DelayBetweenTicks = 0.5f;
+
 	int healing = float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage;
 	
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(healing, target));
+	for (int healIndex = 0; healIndex < healing; healIndex++)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(DelayBetweenTicks * float(healIndex)),
+			CallFunc::create([=]()
+			{
+				this->doHealTick(target);
+			}),
+			nullptr
+		));
+	}
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()
@@ -78,4 +91,9 @@ HackablePreview* ProjectileRestorePotion::createVelocityPreview()
 HackablePreview* ProjectileRestorePotion::createAccelerationPreview()
 {
 	return ProjectileRestorePotionGenericPreview::create();
+}
+
+void ProjectileRestorePotion::doHealTick(PlatformerEntity* target)
+{
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(1, target));
 }

@@ -3,6 +3,13 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Animations/AnimationPart.h"
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Objects/Platformer/Combat/Projectile.h"
+
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
@@ -98,6 +105,24 @@ void PlatformerAttack::onAttackEnd()
 
 void PlatformerAttack::onCleanup()
 {
+}
+
+void PlatformerAttack::replaceWeaponWithProjectile(PlatformerEntity* owner, Projectile* projectile)
+{
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
+
+	if (weapon != nullptr)
+	{
+		weapon->replaceWithObject(projectile, 2.0f);
+	}
+
+	projectile->setPosition3D(GameUtils::getWorldCoords3D(weapon == nullptr ? (Node*)owner : (Node*)weapon));
+
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		owner,
+		projectile,
+		ObjectEvents::SpawnMethod::Above
+	));
 }
 
 int PlatformerAttack::getRandomDamageOrHealing()

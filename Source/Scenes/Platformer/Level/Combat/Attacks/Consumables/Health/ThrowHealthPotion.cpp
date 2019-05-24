@@ -2,9 +2,6 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Engine/Animations/AnimationPart.h"
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotion.h"
@@ -50,22 +47,12 @@ std::string ThrowHealthPotion::getAttackAnimation()
 void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	super::generateProjectiles(owner, target);
-
+	
 	ProjectileHealthPotion* potion = ProjectileHealthPotion::create();
-	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
 
-	if (weapon != nullptr)
-	{
-		weapon->replaceWithObject(potion, 2.0f);
-	}
+	this->replaceWeaponWithProjectile(owner, potion);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		potion,
-		ObjectEvents::SpawnMethod::Below
-	));
-
-	potion->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
+	potion->launchTowardsTarget(owner, Vec2(0.0f, owner->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
 }
 
 void ThrowHealthPotion::onCleanup()

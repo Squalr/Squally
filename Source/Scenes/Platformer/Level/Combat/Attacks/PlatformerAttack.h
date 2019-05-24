@@ -4,6 +4,7 @@
 
 class LocalizedString;
 class PlatformerEntity;
+class Projectile;
 
 class PlatformerAttack : public SmartNode
 {
@@ -40,6 +41,7 @@ protected:
 	int getBaseDamageOrHealingMax();
 	float getAttackDuration();
 	float getRecoverDuration();
+	void replaceWeaponWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 
 	static const float DefaultCleanupDuration;
 

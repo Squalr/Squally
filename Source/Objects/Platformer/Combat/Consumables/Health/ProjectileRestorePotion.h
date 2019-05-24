@@ -31,6 +31,8 @@ protected:
 private:
 	typedef Projectile super;
 
+	void doHealTick(PlatformerEntity* target);
+
 	cocos2d::Sprite* restorePotionSprite;
 
 	static const float HealPercentage;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="29" nextobjectid="538">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="35" nextobjectid="545">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -96,6 +96,13 @@
    <polyline points="0,0 505.257,0 483.129,212 516.321,360 486.817,624 486.817,960 276.601,1160 11.064,960 40.5681,664 25.8161,448 66.3842,268 -7.37601,36"/>
   </object>
  </objectgroup>
+ <objectgroup id="34" name="spawn target">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="544" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
+ </objectgroup>
  <objectgroup id="17" name="entities -256">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -115,6 +122,13 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="31" name="spawn target">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="541" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
+ </objectgroup>
  <objectgroup id="18" name="terrain -128">
   <properties>
    <property name="depth" type="float" value="-128"/>
@@ -132,6 +146,13 @@
    </properties>
    <polyline points="0,0 478.243,0 457.298,212 488.715,360 460.788,624 460.788,960 261.812,1160 10.4725,960 38.399,664 24.4358,448 62.8349,268 -6.98165,36"/>
   </object>
+ </objectgroup>
+ <objectgroup id="33" name="spawn target">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="543" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
  </objectgroup>
  <objectgroup id="19" name="entities -128">
   <properties>
@@ -152,6 +173,13 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="30" name="spawn target">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="540" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
+ </objectgroup>
  <objectgroup id="20" name="terrain +0">
   <properties>
    <property name="depth" type="float" value="0"/>
@@ -169,6 +197,13 @@
    </properties>
    <polyline points="0,0 492.685,0 471.108,212 503.474,360 474.705,624 474.705,960 269.718,1160 10.7887,960 39.5586,664 25.1738,448 64.7324,268 -7.19249,36"/>
   </object>
+ </objectgroup>
+ <objectgroup id="32" name="spawn target">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="542" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
  </objectgroup>
  <objectgroup id="21" name="entities +0">
   <properties>
@@ -188,10 +223,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="29" name="spawn target">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="539" name="camera-focus" type="object" x="4684.61" y="2232.67" width="170.788" height="172"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
