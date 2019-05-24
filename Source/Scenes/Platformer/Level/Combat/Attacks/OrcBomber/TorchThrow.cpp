@@ -24,7 +24,7 @@ TorchThrow* TorchThrow::create(float attackDuration, float recoverDuration)
 	return instance;
 }
 
-TorchThrow::TorchThrow(float attackDuration, float recoverDuration) : super(AttackType::Projectile, UIResources::Menus_Icons_FireBalls, -3, -5, 0, attackDuration, recoverDuration)
+TorchThrow::TorchThrow(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_FireBalls, 0.5f, -3, -5, 0, attackDuration, recoverDuration)
 {
 }
 
@@ -38,14 +38,17 @@ LocalizedString* TorchThrow::getString()
 	return Strings::Generics_Empty::create();
 }
 
-void TorchThrow::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit)
+void TorchThrow::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target, onTargetHit);
+	super::generateProjectiles(owner, target);
 
-	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("WEAPON");
-	BomberTorch* torch = BomberTorch::create(onTargetHit);
+	BomberTorch* torch = BomberTorch::create(this->getRandomDamageOrHealing());
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
 
-	weapon->replaceWithObject(torch, 2.0f);
+	if (weapon != nullptr)
+	{
+		weapon->replaceWithObject(torch, 2.0f);
+	}
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,

@@ -25,13 +25,23 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
 	this->spriterAnimationPart = entity->getObjectInstance(partName);
-	this->ghostSprite = Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
+	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 
-	this->ghostSprite->setColor(Color3B::BLUE);
-	this->ghostSprite->setVisible(false);
-	this->rotation = float(this->spriterAnimationPart->getAngle());
+	if (this->ghostSprite != nullptr)
+	{
+		this->ghostSprite->setColor(Color3B::BLUE);
+		this->ghostSprite->setVisible(false);
+	}
 
-	this->addChild(this->ghostSprite);
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->rotation = float(this->spriterAnimationPart->getAngle());
+	}
+
+	if (this->ghostSprite != nullptr)
+	{
+		this->addChild(this->ghostSprite);
+	}
 }
 
 void AnimationPart::onEnter()
@@ -50,12 +60,22 @@ void AnimationPart::update(float dt)
 
 void AnimationPart::detachFromTimeline()
 {
+	if (this->spriterAnimationPart == nullptr)
+	{
+		return;
+	}
+
 	// Detach the spriter animation part from the timeline such that it is entirely in the user's control
 	this->spriterAnimationPart->toggleTimelineCanUpdate(false);
 }
 
 void AnimationPart::replaceWithObject(cocos2d::Node* replacement, float disappearDuration, float fadeInDuration)
 {
+	if (replacement == nullptr || this->spriterAnimationPart == nullptr)
+	{
+		return;
+	}
+
 	this->setOpacity(0);
 	replacement->setRotation(this->getRotation());
 	replacement->setPosition(GameUtils::getWorldCoords(this));
@@ -74,44 +94,69 @@ void AnimationPart::replaceWithObject(cocos2d::Node* replacement, float disappea
 
 void AnimationPart::replaceSprite(std::string spriteResource)
 {
-	if (this->spriterAnimationPart->getImage() != nullptr)
+	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)
 	{
-		this->spriterAnimationPart->getImage()->setPath(spriteResource);
+		return;
 	}
+
+	this->spriterAnimationPart->getImage()->setPath(spriteResource);
 }
 
 void AnimationPart::setRotation(float rotation)
 {
 	this->detachFromTimeline();
-	this->spriterAnimationPart->setAngle(rotation / 180.0f * M_PI);
+
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setAngle(rotation / 180.0f * M_PI);
+	}
 
 	this->updateTrackedAttributes();
 }
 
 void AnimationPart::setOffset(Vec2 offset)
 {
-	this->spriterAnimationPart->setOffset(SpriterEngine::point(offset.x, offset.y));
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setOffset(SpriterEngine::point(offset.x, offset.y));
+	}
 }
 
 void AnimationPart::setOpacity(GLubyte opacity)
 {
-	this->spriterAnimationPart->setAlphaOverride((float)opacity / 255.0f);
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setAlphaOverride((float)opacity / 255.0f);
+	}
 }
 
 GLubyte AnimationPart::getOpacity() const
 {
-	return (GLubyte)(this->spriterAnimationPart->getAlphaOverride() * 255.0f);
+	if (this->spriterAnimationPart != nullptr)
+	{
+		return (GLubyte)(this->spriterAnimationPart->getAlphaOverride() * 255.0f);
+	}
+	
+	return 0;
 }
 
 void AnimationPart::setVisible(bool visible)
 {
 	static const float ClearOverride = -1.0f;
 
-	this->spriterAnimationPart->setAlphaOverride(visible ? 1.0f : ClearOverride);
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setAlphaOverride(visible ? 1.0f : ClearOverride);
+	}
 }
 
 void AnimationPart::updateTrackedAttributes()
 {
+	if (this->ghostSprite == nullptr)
+	{
+		return;
+	}
+
 	SmartAnimationNode* parent = dynamic_cast<SmartAnimationNode*>(this->getParent());
 	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
 
@@ -142,12 +187,18 @@ void AnimationPart::onDeveloperModeEnable()
 {
 	super::onDeveloperModeEnable();
 
-	this->ghostSprite->setVisible(true);
+	if (this->ghostSprite != nullptr)
+	{
+		this->ghostSprite->setVisible(true);
+	}
 }
 
 void AnimationPart::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
-	this->ghostSprite->setVisible(false);
+	if (this->ghostSprite != nullptr)
+	{
+		this->ghostSprite->setVisible(false);
+	}
 }

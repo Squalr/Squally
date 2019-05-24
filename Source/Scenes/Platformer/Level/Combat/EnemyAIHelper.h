@@ -22,6 +22,6 @@ private:
 	void update(float dt) override;
 
 	void performAIActions(TimelineEntry* attackingEntity);
-	PlatformerAttack* selectAttack(TimelineEntry* attackingEntity);
-	PlatformerEntity* selectTarget(TimelineEntry* attackingEntity);
+	PlatformerAttack* selectAttack(TimelineEntry* attackingEntity, std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
+	PlatformerEntity* selectTarget(TimelineEntry* attackingEntity, std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
 };

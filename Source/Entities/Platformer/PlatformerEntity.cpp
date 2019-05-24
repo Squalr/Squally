@@ -49,7 +49,7 @@ PlatformerEntity::PlatformerEntity(
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
-	
+
 	this->entityCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(size, scale),
 		(CollisionType)(int)collisionType,
@@ -87,13 +87,13 @@ PlatformerEntity::PlatformerEntity(
 
 	this->entityCollision->bindTo(this);
 	this->entityCollision->getPhysicsBody()->setLinearDamping(1.0f);
-	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, (size * scale).height / 2.0f));
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, height / 2.0f));
+	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->clickHitbox->setContentSize(this->entitySize);
-	this->clickHitbox->setPosition(Vec2(0.0f, (size * scale).height / 2.0f) + Vec2((size * scale).width / 2.0f, -height / 2.0f));
+	this->clickHitbox->setPosition(Vec2(0.0f, this->entitySize.height / 2.0f) + Vec2(this->entitySize.width / 2.0f, -height / 2.0f));
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
 
@@ -342,6 +342,21 @@ std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
 	return this->attacks;
 }
 
+std::vector<PlatformerAttack*> PlatformerEntity::getAvailableAttacks()
+{
+	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
+
+	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
+	{
+		if ((*it)->getSpecialCost() <= this->getMana())
+		{
+			availableAttacks.push_back(*it);
+		}
+	}
+
+	return availableAttacks;
+}
+
 std::vector<PlatformerAttack*> PlatformerEntity::cloneAttacks()
 {
 	std::vector<PlatformerAttack*> attacksClone = std::vector<PlatformerAttack*>();
@@ -409,7 +424,10 @@ void PlatformerEntity::initializeCollisionEvents()
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Clear current animation
-		this->animationNode->playAnimation("Idle");
+		if (!this->isDead())
+		{
+			this->animationNode->playAnimation("Idle");
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

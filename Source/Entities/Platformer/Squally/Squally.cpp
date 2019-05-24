@@ -56,6 +56,9 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->currencyInventory = PlayerCurrencyInventory::getInstance();
 	this->inventory = PlayerInventory::getInstance();
 
+	// Adjust ground offset (special case for Squally)
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, this->entitySize.height / 2.0f));
+
 	this->addChild(this->hoverCollision);
 	this->addChild(this->cameraTrackTarget);
 }

@@ -16,6 +16,7 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity);
 
 	PlatformerEntity* getEntity();
+	void applyDamageOrHealing(int damageOrHealing);
 	void stageTarget(PlatformerEntity* target);
 	void stageCast(PlatformerAttack* attack);
 	float getProgress();
@@ -56,6 +57,7 @@ private:
 	cocos2d::Node* orphanedAttackCache;
 
 	float speed;
+	float interruptBonus;
 	float progress;
 	bool isCasting;
 

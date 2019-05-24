@@ -12,7 +12,7 @@
  </objectgroup>
  <objectgroup id="2" name="background">
   <properties>
-   <property name="background" value="SkySunrise"/>
+   <property name="background" value="WaterfallSky"/>
    <property name="type" value="background"/>
   </properties>
  </objectgroup>
@@ -23,12 +23,6 @@
   </properties>
   <object id="460" name="Generic/Background/Moon" type="decor" x="4364.7" y="768.939" width="812" height="812"/>
  </objectgroup>
- <objectgroup id="4" name="decor -3584">
-  <properties>
-   <property name="depth" type="float" value="-3584"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="5" name="decor -3072">
   <properties>
    <property name="depth" type="float" value="-3072"/>
@@ -37,18 +31,12 @@
   <object id="461" name="Generic/Background/Cloud_01" type="decor" x="4846.82" y="629.364" width="1380" height="1000"/>
   <object id="462" name="Generic/Background/Cloud_03" type="decor" x="3829" y="1073.61" width="780" height="274"/>
  </objectgroup>
- <objectgroup id="6" name="decor -2560">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="7" name="decor -2304">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="Forest/Background/Forest3" type="decor" x="312" y="2922.5" width="10000" height="715">
+  <object id="489" name="Forest/Background/Forest3" type="decor" x="307.845" y="3149.53" width="10000" height="715">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -59,7 +47,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="490" name="Forest/Background/Forest2" type="decor" x="193.697" y="2824.05" width="10000" height="941">
+  <object id="490" name="Forest/Background/Forest2" type="decor" x="193.697" y="2938.91" width="10000" height="941">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -82,24 +70,6 @@
    <property name="type" value="background"/>
   </properties>
  </objectgroup>
- <objectgroup id="11" name="decor -1536">
-  <properties>
-   <property name="depth" type="float" value="-1536"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="12" name="decor -1024">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="13" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="14" name="decor -512">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -108,20 +78,6 @@
   <object id="477" name="Generic/Background/Cloud_05" type="decor" x="5236.79" y="1669.3" width="864" height="177"/>
   <object id="478" name="Generic/Background/Cloud_02" type="decor" x="3636.24" y="1637.56" width="570" height="271"/>
  </objectgroup>
- <objectgroup id="15" name="decor -312">
-  <properties>
-   <property name="depth" type="float" value="-312"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="468" name="Forest/Tree2" type="decor" x="5039.88" y="1869.21" width="679" height="712"/>
-  <object id="469" name="Forest/Tree1" type="decor" x="5685.11" y="1738.67" width="475" height="807"/>
-  <object id="470" name="Forest/Tree3" type="decor" x="5550.5" y="1692.14" width="475" height="807"/>
-  <object id="471" name="Forest/Tree3" type="decor" x="3566.5" y="1812.86" width="475" height="807"/>
-  <object id="472" name="Forest/Tree1" type="decor" x="4075.59" y="1955.29" width="475" height="807"/>
-  <object id="473" name="Forest/Tree2" type="decor" x="3682.68" y="1978.55" width="679" height="712"/>
-  <object id="475" name="Forest/Background/Tree3" type="decor" x="4070.26" y="1701.11" width="192" height="1240"/>
-  <object id="476" name="Forest/Background/Tree3" type="decor" x="4977.94" y="1943.27" width="192" height="1240"/>
- </objectgroup>
  <objectgroup id="16" name="terrain -256">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -129,13 +85,13 @@
   </properties>
   <object id="440" name="solid" type="terrain" x="3864.03" y="2406.67">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
    <polyline points="0,0 412.93,0 394.845,212 421.972,360 397.859,624 397.859,960 226.056,1160 9.04225,960 33.1549,664 21.0986,448 54.2535,268 -6.02817,36"/>
   </object>
   <object id="450" name="solid" type="terrain" x="5215.73" y="2407.33">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
    <polyline points="0,0 505.257,0 483.129,212 516.321,360 486.817,624 486.817,960 276.601,1160 11.064,960 40.5681,664 25.8161,448 66.3842,268 -7.37601,36"/>
   </object>
@@ -166,13 +122,13 @@
   </properties>
   <object id="439" name="solid" type="terrain" x="4163.75" y="2500">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
    <polyline points="0,0 393.634,0 376.394,212 402.254,360 379.268,624 379.268,960 215.493,1160 8.61972,960 31.6056,664 20.1127,448 51.7183,268 -5.74648,36"/>
   </object>
   <object id="447" name="solid" type="terrain" x="4913.76" y="2495">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
    <polyline points="0,0 478.243,0 457.298,212 488.715,360 460.788,624 460.788,960 261.812,1160 10.4725,960 38.399,664 24.4358,448 62.8349,268 -6.98165,36"/>
   </object>
@@ -203,13 +159,13 @@
   </properties>
   <object id="438" name="solid" type="terrain" x="3886.53" y="2588">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
    <polyline points="0,0 401.352,0 383.775,212 410.141,360 386.704,624 386.704,960 219.718,1160 8.78873,960 32.2254,664 20.507,448 52.7324,268 -5.85915,36"/>
   </object>
   <object id="448" name="solid" type="terrain" x="5129.67" y="2589.33">
    <properties>
-    <property name="texture" value="castle"/>
+    <property name="texture" value="blue-grass"/>
    </properties>
    <polyline points="0,0 492.685,0 471.108,212 503.474,360 474.705,624 474.705,960 269.718,1160 10.7887,960 39.5586,664 25.1738,448 64.7324,268 -7.19249,36"/>
   </object>

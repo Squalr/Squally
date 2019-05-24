@@ -14,7 +14,7 @@ protected:
 	TorchThrow(float attackDuration, float recoverDuration);
 	~TorchThrow() = default;
 
-	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit) override;
+	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
 
 private:

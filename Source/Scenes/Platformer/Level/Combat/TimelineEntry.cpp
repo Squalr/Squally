@@ -4,6 +4,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -38,6 +40,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->orphanedAttackCache = Node::create();
 
 	this->speed = 1.0f;
+	this->interruptBonus = 0.0f;
 	this->progress = 0.0f;
 
 	this->addChild(this->line);
@@ -80,6 +83,16 @@ void TimelineEntry::initializePositions()
 void TimelineEntry::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealing, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
+		{
+			this->applyDamageOrHealing(args->damageOrHealing);
+		}
+	}));
 }
 
 void TimelineEntry::update(float dt)
@@ -90,6 +103,22 @@ void TimelineEntry::update(float dt)
 PlatformerEntity* TimelineEntry::getEntity()
 {
 	return this->entity;
+}
+
+void TimelineEntry::applyDamageOrHealing(int damageOrHealing)
+{
+	if (this->getEntity() == nullptr)
+	{
+		return;
+	}
+
+	if (damageOrHealing < 0)
+	{
+		this->tryInterrupt();
+	}
+
+	this->getEntity()->addHealth(damageOrHealing);
+	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(damageOrHealing, this->getEntity()));
 }
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)
@@ -120,7 +149,7 @@ void TimelineEntry::setProgress(float progress)
 
 void TimelineEntry::addTimeWithoutActions(float dt)
 {
-	this->progress += (dt * this->speed * TimelineEntry::BaseSpeedMultiplier);
+	this->progress += (dt * (this->speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier);
 }
 
 void TimelineEntry::addTime(float dt)
@@ -159,6 +188,7 @@ void TimelineEntry::addTime(float dt)
 		else
 		{
 			this->progress = std::fmod(this->progress, 1.0f);
+			this->interruptBonus = 0.0f;
 		}
 	}
 }
@@ -171,25 +201,10 @@ void TimelineEntry::performCast()
 	this->currentCast->execute(
 		this->entity,
 		this->target->entity,
-		[=](PlatformerEntity* targetEntity, int damageOrHealing)
-		{
-			// It's possible that the target has changed since the attack started. This (should) only occur when the user has hacked a projectile to alter its path from the intended target.
-			TimelineEntry* newTarget = TimelineEntry::getAssociatedTimelineEntry(targetEntity);
-
-			if (newTarget != nullptr)
-			{
-				if (damageOrHealing < 0)
-				{
-					newTarget->tryInterrupt();
-				}
-
-				newTarget->entity->addHealth(damageOrHealing);
-				CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(damageOrHealing, newTarget->entity));
-			}
-		},
 		[=]()
 		{
 			this->progress = std::fmod(this->progress, 1.0f);
+			this->interruptBonus = 0.0f;
 
 			CombatEvents::TriggerResumeTimeline();
 		}
@@ -202,7 +217,8 @@ void TimelineEntry::tryInterrupt()
 	{
 		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
 		this->isCasting = false;
-		this->progress = 0.0f;
+		this->progress = this->progress / 3.0f;
+		this->interruptBonus = RandomHelper::random_real(0.05f, 0.1f);
 	}
 }
 

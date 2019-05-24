@@ -24,7 +24,7 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Projectile, UIResources::Menus_Objects_HEALTH_2, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::ProjectileHealing, UIResources::Menus_Objects_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 }
 
@@ -47,14 +47,17 @@ std::string ThrowHealthPotion::getAttackAnimation()
 	return "Throw";
 }
 
-void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit)
+void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target, onTargetHit);
+	super::generateProjectiles(owner, target);
 
+	ProjectileHealthPotion* potion = ProjectileHealthPotion::create();
 	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
-	ProjectileHealthPotion* potion = ProjectileHealthPotion::create(onTargetHit);
 
-	weapon->replaceWithObject(potion, 2.0f);
+	if (weapon != nullptr)
+	{
+		weapon->replaceWithObject(potion, 2.0f);
+	}
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,

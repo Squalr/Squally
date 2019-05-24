@@ -7,6 +7,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/MapResources.h"
@@ -14,8 +15,8 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEnemy::SaveKeyIsDead = "is_dead";
-const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
+const std::string PlatformerEnemy::SaveKeyIsDead = "is-dead";
+const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
 const std::string PlatformerEnemy::MapKeyAlly1 = "ally-1";
 const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
 const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
@@ -102,6 +103,7 @@ void PlatformerEnemy::initializeListeners()
 
 	this->resurrectButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
+		this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
 		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
 		this->health = std::max(this->getMaxHealth(), 1);
 	});
@@ -116,6 +118,11 @@ void PlatformerEnemy::initializeListeners()
 std::string PlatformerEnemy::getBattleMapResource()
 {
 	if (this->battleMapResource == "")
+	{
+		return this->battleMapResource;
+	}
+
+	if (StrUtils::endsWith(this->battleMapResource, ".tmx", true))
 	{
 		return this->battleMapResource;
 	}
