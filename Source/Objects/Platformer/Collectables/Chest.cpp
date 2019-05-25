@@ -36,7 +36,7 @@ Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->canInteract = false;
 
-	this->chestOpenEvent = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyEvent, Value("")).asString();
+	this->chestOpenEvent = this->mapEvent;
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyArgs, Value("")).asString();
 
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);

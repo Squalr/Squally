@@ -107,9 +107,9 @@
    </properties>
    <polyline points="0,0 1588.05,-33.8278 1906.77,-64.4287 2097.61,12.4271 2319.07,-24.8541 2872.7,0 3054.64,478.052 2897.2,1059.33 2355.97,1255.13 549.771,1264.53 -6.6318,929.681 0,360.386"/>
   </object>
-  <object id="638" name="fly-bot" type="entity" x="1909.03" y="4534.22" width="78.7879" height="88">
+  <object id="638" name="fly-bot" type="entity" x="1100.09" y="4528.9" width="78.7879" height="88">
    <properties>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="event-end-of-demo"/>
    </properties>
   </object>

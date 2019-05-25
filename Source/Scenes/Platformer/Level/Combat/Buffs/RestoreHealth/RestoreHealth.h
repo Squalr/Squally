@@ -9,6 +9,7 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
+class SmartAnimationSequenceNode;
 
 class RestoreHealth : public Buff
 {
@@ -19,8 +20,8 @@ protected:
 	RestoreHealth(PlatformerEntity* target, int healAmount);
 	~RestoreHealth();
 
+	void onEnter() override;
 	void registerHackables() override;
-	void tick() override;
 	void runRestoreTick();
 
 private:
@@ -28,9 +29,9 @@ private:
 
 	void incrementHeal();
 
-	float duration;
-	cocos2d::Sprite* iconFrame;
-	cocos2d::Sprite* icon;
+	int healAmount;
+	SmartAnimationSequenceNode* healEffect;
 
 	static const std::string RestoreHealthIdentifier;
+	static const float TimeBetweenTicks;
 };

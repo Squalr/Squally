@@ -36,6 +36,7 @@ EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
 	this->wasTripped = false;
 	this->mapArgs = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalArgs, Value("")).asString();
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalMap, Value("")).asString();
+	this->isLocked = !this->mapEvent.empty();
 
 	std::string direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalDirection, Value("")).asString();
 
@@ -63,13 +64,22 @@ void EdgePortal::initializeListeners()
 {
 	super::initializeListeners();
 
+	if (!this->mapEvent.empty())
+	{
+		this->listenForMapEvent(this->mapEvent, [=](ValueMap args)
+		{
+			this->isLocked = false;
+		});
+	}
+
 	this->edgePortalCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (!this->wasTripped)
+		if (!this->wasTripped && !this->isLocked)
 		{
 			this->wasTripped = true;
 
 			// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
+			// (not sure why, changing to a combat map is fine)
 			this->runAction(Sequence::create(
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()

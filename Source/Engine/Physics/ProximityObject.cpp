@@ -24,20 +24,21 @@
 
 using namespace cocos2d;
 
-ProximityObject* ProximityObject::create(float radius)
+ProximityObject* ProximityObject::create(float radius, bool allowHacking)
 {
-	ProximityObject* instance = new ProximityObject(radius);
+	ProximityObject* instance = new ProximityObject(radius, allowHacking);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ProximityObject::ProximityObject(float radius) : HackableObject(ValueMap())
+ProximityObject::ProximityObject(float radius, bool allowHacking) : HackableObject(ValueMap())
 {
 	this->radius = radius;
 	this->velocity = Vec3::ZERO;
 	this->acceleration = Vec3::ZERO;
+	this->allowHacking = allowHacking;
 
 	this->contentNode = Node::create();
 
@@ -71,6 +72,11 @@ void ProximityObject::update(float dt)
 void ProximityObject::registerHackables()
 {
 	super::registerHackables();
+
+	if (!this->allowHacking)
+	{
+		return;
+	}
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{

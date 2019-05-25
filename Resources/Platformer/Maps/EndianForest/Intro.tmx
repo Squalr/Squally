@@ -143,7 +143,7 @@
   </object>
   <object id="619" name="edge-portal" type="object" x="7982.14" y="6362.5" width="199.918" height="559.063">
    <properties>
-    <property name="args" value="{&quot;next-map-entrance-id&quot;:&quot;0&quot;}"/>
+    <property name="args" type="int" value="0"/>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_A0"/>
    </properties>

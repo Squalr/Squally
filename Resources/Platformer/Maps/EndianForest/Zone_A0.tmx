@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="646">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="647">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -181,17 +181,18 @@
   <object id="639" name="orc-grunt" type="entity" x="11721.2" y="4750.7" width="128" height="128">
    <properties>
     <property name="battle-map" value="EndianForest/BattleGrounds"/>
-    <property name="combat-end-event" value="door-open"/>
+    <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="641" name="edge-portal" type="object" x="13288.3" y="4269.89" width="199.918" height="609.021">
+  <object id="641" name="edge-portal" type="object" x="13288.3" y="4269.89" width="199.918" height="640.851">
    <properties>
-    <property name="args" value="{&quot;next-map-entrance-id&quot;:&quot;0&quot;}"/>
+    <property name="args" type="int" value="0"/>
     <property name="direction" value="right"/>
     <property name="event" value="door-open"/>
     <property name="map" value="EndianForest/Zone_A1"/>
    </properties>
   </object>
+  <object id="646" name="respawn" type="object" x="2105.33" y="4366.68" width="182.33" height="492.45"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -216,7 +217,7 @@
     <property name="state" value="event-teach-hacker-mode"/>
    </properties>
   </object>
-  <object id="638" name="fly-bot" type="entity" x="10707.1" y="4504.87" width="78.7879" height="88">
+  <object id="638" name="fly-bot" type="entity" x="10700.7" y="4504.87" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
     <property name="state" value="event-spot-ogre"/>

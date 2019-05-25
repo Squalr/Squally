@@ -42,6 +42,7 @@ private:
 	void updateWeaponVisual();
 
 	bool canJump;
+	float noCombatDuration;
 
 	CollisionObject* hoverCollision;
 	cocos2d::Node* cameraTrackTarget;
