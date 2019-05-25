@@ -29,6 +29,7 @@ public:
 	int getRunes();
 	void setRunes(int runes);
 	int getMaxRunes();
+
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();

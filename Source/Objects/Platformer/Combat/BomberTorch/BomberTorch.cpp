@@ -13,8 +13,6 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_TORCH_ARC 1
-
 BomberTorch* BomberTorch::create(int damage)
 {
 	BomberTorch* instance = new BomberTorch(damage);

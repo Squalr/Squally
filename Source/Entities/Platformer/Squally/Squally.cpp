@@ -156,7 +156,7 @@ void Squally::initializeCollisionEvents()
 
 void Squally::initializePositions()
 {
-	super::initializeListeners();
+	super::initializePositions();
 
 	this->cameraTrackTarget->setPosition(Vec2(0.0f, 128.0f));
 }
