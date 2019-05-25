@@ -50,7 +50,7 @@ OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(256.0f, 218.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f),
-	16,
+	12,
 	8)
 {
 	this->hexusOpponentData = OrcGrunt::getHexusOpponentData();

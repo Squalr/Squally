@@ -8,20 +8,10 @@
 
 using namespace cocos2d;
 
-const float Buff::DURATION_INFINITE = 0.0f;
-
-Buff::Buff(PlatformerEntity* target, std::string iconResource, int stacks, float tickDuration, float duration)
+Buff::Buff(PlatformerEntity* target)
 {
 	this->target = target;
-	this->stacks = stacks;
-	this->tickDuration = tickDuration;
-	this->duration = duration;
-	this->iconFrame = Sprite::create(iconResource);
-	this->icon = Sprite::create(iconResource);
 	this->hackables = std::vector<HackableCode*>();
-
-	this->addChild(this->iconFrame);
-	this->addChild(this->icon);
 }
 
 Buff::~Buff()
@@ -41,12 +31,23 @@ void Buff::registerHackables()
 
 void Buff::unregisterHackables()
 {
+	if (this->target == nullptr)
+	{
+		return;
+	}
+
 	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
 	{
 		this->target->unregisterCode(*it);
 	}
 }
 
-void Buff::tick()
+void Buff::removeBuff()
 {
+	this->unregisterHackables();
+
+	if (this->getParent() != nullptr)
+	{
+		this->getParent()->removeChild(this);
+	}
 }

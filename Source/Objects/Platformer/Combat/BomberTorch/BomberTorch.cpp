@@ -22,7 +22,7 @@ BomberTorch* BomberTorch::create(int damage)
 	return instance;
 }
 
-BomberTorch::BomberTorch(int damage) : Projectile(256.0f, 1.0f)
+BomberTorch::BomberTorch(int damage) : Projectile(256.0f, 1.0f, true)
 {
 	this->damage = -std::abs(damage);
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);

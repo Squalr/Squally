@@ -25,7 +25,7 @@ ProjectileHealthPotion* ProjectileHealthPotion::create()
 	return instance;
 }
 
-ProjectileHealthPotion::ProjectileHealthPotion() : Projectile(256.0f, 1.0f)
+ProjectileHealthPotion::ProjectileHealthPotion() : Projectile(256.0f, 1.0f, false)
 {
 	this->healthPotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
 

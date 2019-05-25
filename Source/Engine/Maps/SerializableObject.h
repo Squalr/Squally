@@ -76,6 +76,7 @@ protected:
 	virtual void onObjectStateLoaded();
 
 	cocos2d::ValueMap properties;
+	std::string mapEvent;
 	std::vector<cocos2d::Vec2> polylinePoints;
 
 private:

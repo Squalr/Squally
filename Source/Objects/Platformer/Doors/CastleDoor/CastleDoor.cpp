@@ -49,7 +49,7 @@ CastleDoor::CastleDoor(ValueMap& initProperties) : super(initProperties)
 	this->doorClip = ClippingNode::create(clipStencil);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
-	this->doorOpenEventName = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyEvent, Value("")).asString();
+	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);
 	this->bridge1->setFlippedX(this->isFlipped);

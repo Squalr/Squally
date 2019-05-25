@@ -43,7 +43,7 @@ StoneButton::StoneButton(ValueMap& initProperties) : super(initProperties)
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
 	this->buttonCollision = CollisionObject::create(PhysicsBody::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
-	this->stoneButtonEventName = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyEvent, Value("")).asString();
+	this->stoneButtonEventName = this->mapEvent;
 	this->maxDefaultButtonPosition = 48.0f;
 
 	this->buttonCollision->addChild(this->button);

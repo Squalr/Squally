@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
@@ -112,6 +113,11 @@ void PlatformerEnemy::initializeListeners()
 	{
 		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;
+
+		if (!this->mapEvent.empty())
+		{
+			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
+		}
 	});
 }
 
@@ -143,6 +149,11 @@ void PlatformerEnemy::onObjectStateLoaded()
 	{
 		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;
+
+		if (!this->mapEvent.empty())
+		{
+			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
+		}
 	}
 }
 

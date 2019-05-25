@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const float ProjectileRestorePotion::HealPercentage = 0.4f;
+const float ProjectileRestorePotion::HealPercentage = 0.8f;
 
 ProjectileRestorePotion* ProjectileRestorePotion::create()
 {
@@ -27,7 +27,7 @@ ProjectileRestorePotion* ProjectileRestorePotion::create()
 	return instance;
 }
 
-ProjectileRestorePotion::ProjectileRestorePotion() : Projectile(256.0f, 1.0f)
+ProjectileRestorePotion::ProjectileRestorePotion() : Projectile(256.0f, 1.0f, false)
 {
 	this->restorePotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
 

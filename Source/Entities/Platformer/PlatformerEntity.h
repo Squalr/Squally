@@ -29,6 +29,8 @@ public:
 	int getRunes();
 	void setRunes(int runes);
 	int getMaxRunes();
+	void disablePlatformerControls();
+	bool getIsPlatformerDisabled();
 
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
@@ -92,6 +94,7 @@ protected:
 	bool isOnGround();
 	
 	bool isCinimaticHijacked;
+	bool isPlatformerDisabled;
 	std::string state;
 	int health;
 	int maxHealth;

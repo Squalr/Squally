@@ -22,6 +22,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_RESTORE 1
 
 const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
+const float RestoreHealth::TimeBetweenTicks = 0.5f;
 
 RestoreHealth* RestoreHealth::create(PlatformerEntity* target, int healAmount)
 {
@@ -32,17 +33,49 @@ RestoreHealth* RestoreHealth::create(PlatformerEntity* target, int healAmount)
 	return instance;
 }
 
-RestoreHealth::RestoreHealth(PlatformerEntity* target, int healAmount) : super(target, UIResources::EmptyImage, healAmount, 0.5f)
+RestoreHealth::RestoreHealth(PlatformerEntity* target, int healAmount) : super(target)
 {
+	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 }
 
 RestoreHealth::~RestoreHealth()
 {
 }
 
+void RestoreHealth::onEnter()
+{
+	super::onEnter();
+
+	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(RestoreHealth::TimeBetweenTicks * float(healIndex)),
+			CallFunc::create([=]()
+			{
+				this->runRestoreTick();
+			}),
+			nullptr
+		));
+	}
+
+	this->runAction(Sequence::create(
+		DelayTime::create(RestoreHealth::TimeBetweenTicks * float(this->healAmount)),
+		CallFunc::create([=]()
+		{
+			this->removeBuff();
+		}),
+		nullptr
+	));
+}
+
 void RestoreHealth::registerHackables()
 {
 	super::registerHackables();
+
+	if (this->target == nullptr)
+	{
+		return;
+	}
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
@@ -68,11 +101,6 @@ void RestoreHealth::registerHackables()
 	{
 		this->target->registerCode(*it);
 	}
-}
-
-void RestoreHealth::tick()
-{
-	super::tick();
 }
 
 void RestoreHealth::runRestoreTick()

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-Projectile::Projectile(float radius, float noCollideDuration) : ProximityObject(radius)
+Projectile::Projectile(float radius, float noCollideDuration, bool allowHacking) : ProximityObject(radius, allowHacking)
 {
 	this->hasCollided = false;
 	this->noCollideDuration = noCollideDuration;
