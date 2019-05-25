@@ -59,10 +59,10 @@ CombatMap::CombatMap() : super(true)
 
 	this->addChild(this->textOverlays);
 	this->addChild(this->targetSelectionMenu);
-	this->addChild(this->combatHud);
 	this->addChild(this->enemyAIHelper);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->combatHud);
 	this->menuHud->addChild(this->rewardsMenu);
 }
 

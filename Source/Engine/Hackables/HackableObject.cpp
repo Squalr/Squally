@@ -191,6 +191,14 @@ void HackableObject::registerData(HackableData* hackableData)
 	this->dataList.push_back(hackableData);
 }
 
+void HackableObject::unregisterData(HackableData* hackableData)
+{
+	this->removeChild(hackableData);
+
+	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableData), this->hackableList.end());
+	this->dataList.erase(std::remove(this->dataList.begin(), this->dataList.end(), hackableData), this->dataList.end());
+}
+
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
 	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
@@ -204,4 +212,12 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 	this->addChild(hackableCode);
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
+}
+
+void HackableObject::unregisterCode(HackableCode* hackableCode)
+{
+	this->removeChild(hackableCode);
+
+	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
+	this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
 }
