@@ -21,6 +21,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -51,10 +52,10 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 	this->fireRingAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
-	this->thrusterSound = Sound::create(SoundResources::Platformer_FX_LowFlame);
-	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_FX_WooshRough);
-	this->crashSound = Sound::create(SoundResources::Platformer_FX_Crash);
-	this->fireSound = Sound::create(SoundResources::Platformer_FX_Fire);
+	this->thrusterSound = Sound::create(SoundResources::Platformer_Objects_LowFlame);
+	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_Objects_WooshRough);
+	this->crashSound = Sound::create(SoundResources::Platformer_Objects_Crash);
+	this->fireSound = Sound::create(SoundResources::Platformer_Environment_Fire);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 
@@ -100,10 +101,10 @@ void SquallyShip::onEnter()
 
 	GameCamera::getInstance()->setTarget(trackingData);
 
-	this->smokeAnimation->playAnimationRepeat(ObjectResources::FX_SmokeWhisp_SmokeWhisp_0000, 0.06f);
-	this->shipFireAnimation->playAnimationRepeat(ObjectResources::FX_FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
-	this->fireAnimation->playAnimationRepeat(ObjectResources::FX_MeteorFireBlue_MeteorFire_0000, 0.06f);
-	this->thrustAnimation->playAnimationRepeat(ObjectResources::FX_SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
+	this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
+	this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
+	this->fireAnimation->playAnimationRepeat(FXResources::MeteorFireBlue_MeteorFire_0000, 0.06f);
+	this->thrustAnimation->playAnimationRepeat(FXResources::SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
 	this->thrusterSound->play(true);
 
 	this->scheduleUpdate();
@@ -154,9 +155,9 @@ void SquallyShip::initializeListeners()
 			this->shipFireAnimation->stopAnimation();
 			this->fireAnimation->stopAnimation();
 			this->thrustAnimation->stopAnimation();
-			this->explodeAnimation->playAnimation(ObjectResources::FX_ExplosionGround_ExplosionGround_0000, 0.05f, true);
-			this->groundFireAnimation->playAnimationRepeat(ObjectResources::FX_FlameBig_FlameBig_0000, 0.05f);
-			this->groundFireSmallAnimation->playAnimationRepeat(ObjectResources::FX_FlameSmall_FlameSmall_0000, 0.05f);
+			this->explodeAnimation->playAnimation(FXResources::ExplosionGround_ExplosionGround_0000, 0.05f, true);
+			this->groundFireAnimation->playAnimationRepeat(FXResources::FlameBig_FlameBig_0000, 0.05f);
+			this->groundFireSmallAnimation->playAnimationRepeat(FXResources::FlameSmall_FlameSmall_0000, 0.05f);
 
 			this->thrusterSound->stop();
 			this->crashSound->play();
@@ -178,8 +179,8 @@ void SquallyShip::update(float dt)
 		if (this->flightTime >= SquallyShip::FlightTimeUntilRedFlame)
 		{
 			this->fireAnimation->setPosition(Vec2(112.0f + 44.0f, 32.0f));
-			this->fireAnimation->playAnimationRepeat(ObjectResources::FX_MeteorFire_MeteorFire_0000, 0.06f);
-			this->fireRingAnimation->playAnimation(ObjectResources::FX_FireRing_FireRing_0000, 0.08f, true);
+			this->fireAnimation->playAnimationRepeat(FXResources::MeteorFire_MeteorFire_0000, 0.06f);
+			this->fireRingAnimation->playAnimation(FXResources::FireRing_FireRing_0000, 0.08f, true);
 
 			this->enterAtmosphereSound->play();
 		}

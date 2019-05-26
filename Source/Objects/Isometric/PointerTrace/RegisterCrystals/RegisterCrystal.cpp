@@ -30,8 +30,8 @@
 #include "Strings/PointerTrace/Assembly/Ptr.h"
 #include "Strings/PointerTrace/Assembly/Sub.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/IsometricObjectResources.h"
-#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -116,7 +116,7 @@ void RegisterCrystal::initializeListeners()
 
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
-				this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
+				this->shineFx->playAnimation(FXResources::Shine_Shine_0000, 0.015f, true);
 
 				if (this->isPointer)
 				{

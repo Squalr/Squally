@@ -5,7 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/FXResources.h"
 
 using namespace cocos2d;
 
@@ -38,7 +38,7 @@ void RestoreHealthGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->healEffect->playAnimation(ObjectResources::FX_Heal_Heal_0000, 0.05f);
+	this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
 }
 
 void RestoreHealthGenericPreview::initializePositions()
