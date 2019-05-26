@@ -57,11 +57,12 @@ const std::string SerializableObject::MapKeyPropertyName = "name";
 const std::string SerializableObject::MapKeyPropertyType = "type";
 const std::string SerializableObject::MapKeyPropertyValue = "value";
 
-SerializableObject::SerializableObject(const ValueMap& initProperties)
+SerializableObject::SerializableObject(const ValueMap& properties)
 {
-	this->properties = initProperties;
+	this->properties = properties;
 	this->zSorted = false;
 	this->polylinePoints = std::vector<Vec2>();
+	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyEvent, Value("")).asString();
 
 	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapIdentifier))
 	{

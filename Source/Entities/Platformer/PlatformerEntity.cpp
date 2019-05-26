@@ -48,6 +48,7 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
+	this->isPlatformerDisabled = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 
 	this->entityCollision = CollisionObject::create(
@@ -315,6 +316,16 @@ void PlatformerEntity::setRunes(int runes)
 int PlatformerEntity::getMaxRunes()
 {
 	return PlatformerEntity::MaxRunes;
+}
+
+bool PlatformerEntity::getIsPlatformerDisabled()
+{
+	return this->isPlatformerDisabled;
+}
+
+void PlatformerEntity::disablePlatformerControls()
+{
+	this->isPlatformerDisabled = true;
 }
 
 SmartAnimationNode* PlatformerEntity::getAnimations()

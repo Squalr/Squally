@@ -10,12 +10,13 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileRestorePotionGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
 
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
-const float ProjectileRestorePotion::HealPercentage = 0.4f;
+const float ProjectileRestorePotion::HealPercentage = 0.8f;
 
 ProjectileRestorePotion* ProjectileRestorePotion::create()
 {
@@ -26,7 +27,7 @@ ProjectileRestorePotion* ProjectileRestorePotion::create()
 	return instance;
 }
 
-ProjectileRestorePotion::ProjectileRestorePotion() : Projectile(256.0f, 1.0f)
+ProjectileRestorePotion::ProjectileRestorePotion() : Projectile(256.0f, 1.0f, false)
 {
 	this->restorePotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
 
@@ -56,21 +57,9 @@ void ProjectileRestorePotion::update(float dt)
 
 void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 {
-	const float DelayBetweenTicks = 0.5f;
-
 	int healing = float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage;
 	
-	for (int healIndex = 0; healIndex < healing; healIndex++)
-	{
-		this->runAction(Sequence::create(
-			DelayTime::create(DelayBetweenTicks * float(healIndex)),
-			CallFunc::create([=]()
-			{
-				this->doHealTick(target);
-			}),
-			nullptr
-		));
-	}
+	target->addChild(RestoreHealth::create(target, healing));
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()
@@ -91,9 +80,4 @@ HackablePreview* ProjectileRestorePotion::createVelocityPreview()
 HackablePreview* ProjectileRestorePotion::createAccelerationPreview()
 {
 	return ProjectileRestorePotionGenericPreview::create();
-}
-
-void ProjectileRestorePotion::doHealTick(PlatformerEntity* target)
-{
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(1, target));
 }

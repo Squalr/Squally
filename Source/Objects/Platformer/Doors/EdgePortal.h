@@ -32,6 +32,7 @@ private:
 	CollisionObject* edgePortalHintCollision;
 
 	bool wasTripped;
+	bool isLocked;
 	std::string mapFile;
 	std::string mapArgs;
 

@@ -45,6 +45,7 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial)
 {
+	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();
 	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::PlayerHover, true, false);
 	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, 0.0f));
@@ -70,6 +71,8 @@ Squally::~Squally()
 void Squally::onEnter()
 {
 	super::onEnter();
+
+	this->noCombatDuration = 2.0f;
 
 	// Request camera track player
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
@@ -100,6 +103,11 @@ void Squally::initializeCollisionEvents()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
 	{
+		if (this->noCombatDuration > 0.0f)
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+		
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
 
 		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
@@ -156,7 +164,7 @@ void Squally::initializeCollisionEvents()
 
 void Squally::initializePositions()
 {
-	super::initializeListeners();
+	super::initializePositions();
 
 	this->cameraTrackTarget->setPosition(Vec2(0.0f, 128.0f));
 }
@@ -175,14 +183,15 @@ void Squally::update(float dt)
 {
 	super::update(dt);
 
-	if (this->isCinimaticHijacked)
+	if (this->noCombatDuration > 0.0f)
+	{
+		this->noCombatDuration -= dt;
+	}
+
+	if (this->isCinimaticHijacked || this->getIsPlatformerDisabled())
 	{
 		return;
 	}
-
-	// Soft save the position (and the associated map)
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX()));
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY()));
 
 	this->movement = Vec2::ZERO;
 
@@ -204,6 +213,13 @@ void Squally::update(float dt)
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
 		this->movement.y = -1.0f;
+	}
+
+	if (this->movement != Vec2::ZERO)
+	{
+		// Soft save the player's position
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX()));
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY()));
 	}
 }
 
@@ -231,9 +247,7 @@ void Squally::saveState()
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
 		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
-		{ SaveKeys::SaveKeySquallyRunes, Value(this->getRunes()) },
-		{ SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX()) },
-		{ SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY()) }
+		{ SaveKeys::SaveKeySquallyRunes, Value(this->getRunes()) }
 	});
 }
 

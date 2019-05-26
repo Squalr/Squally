@@ -239,7 +239,8 @@ void CodeEditor::onEnter()
 void CodeEditor::onExit()
 {
 	super::onExit();
-
+	
+	this->activeHackableCode = nullptr;
 	this->clippyNode->removeAllChildren();
 }
 

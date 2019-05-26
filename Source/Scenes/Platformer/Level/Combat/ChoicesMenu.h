@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
+#include "Events/CombatEvents.h"
 
 namespace cocos2d
 {
@@ -32,6 +33,8 @@ private:
 	void setSelectedEntry(TimelineEntry* selectedEntry);
 	void buildAttackList();
 	void buildItemList();
+
+	CombatEvents::MenuStateArgs::CurrentMenu currentMenu;
 
 	ClickableTextNode* itemsNode;
 	ClickableTextNode* attackNode;

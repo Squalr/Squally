@@ -43,6 +43,13 @@ public:
 		}
 	};
 
+	struct CollisionEvent
+	{
+		std::function<CollisionResult(CollisionData)> collisionEvent;
+
+		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
+	};
+
 	void buildInverseCollisionMap();
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
 	void bindTo(cocos2d::Node* bindTarget);
@@ -83,16 +90,16 @@ private:
 	// We need to let the dispatcher call our events directly when it determines that this object was involved in a collision
 	friend class CollisionEventDispatcher;
 
-	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, std::function<CollisionResult(CollisionData)> onCollision);
+	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	bool onContactUpdate(cocos2d::PhysicsContact& contact);
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
-	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
+	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 	void updateBinds();
 
-	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEvents;
-	std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>> collisionEndEvents;
+	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
+	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
 	cocos2d::Node* bindTarget;
 	cocos2d::Node* forceBindTarget;

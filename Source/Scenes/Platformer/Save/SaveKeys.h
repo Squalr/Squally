@@ -11,7 +11,6 @@ public:
 	static const std::string SaveKeySquallyHeath;
 	static const std::string SaveKeySquallyMana;
 	static const std::string SaveKeySquallyRunes;
-	static const std::string SaveKeySquallyPositionMap;
 	static const std::string SaveKeySquallyPositionX;
 	static const std::string SaveKeySquallyPositionY;
 	static const std::string SaveKeySquallyInventory;

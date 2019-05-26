@@ -12,7 +12,7 @@ class PlatformerEntity;
 class Projectile : public ProximityObject
 {
 protected:
-	Projectile(float radius, float noCollideDuration);
+	Projectile(float radius, float noCollideDuration, bool allowHacking);
 	virtual	~Projectile();
 
 	void onEnter() override;
