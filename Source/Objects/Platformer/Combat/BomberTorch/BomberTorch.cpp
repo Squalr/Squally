@@ -9,7 +9,7 @@
 #include "Objects/Platformer/Combat/BomberTorch/BomberTorchGenericPreview.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/FXResources.h"
 
 using namespace cocos2d;
 
@@ -26,7 +26,7 @@ BomberTorch::BomberTorch(int damage) : Projectile(256.0f, 1.0f, true)
 {
 	this->damage = -std::abs(damage);
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
-	this->fire = SmartAnimationSequenceNode::create(ObjectResources::FX_TorchFire_TorchFire_0000);
+	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 	this->contentNode->addChild(this->bomberTorchSprite);
 	this->contentNode->addChild(this->fire);
@@ -40,7 +40,7 @@ void BomberTorch::onEnter()
 {
 	super::onEnter();
 
-	this->fire->playAnimationRepeat(ObjectResources::FX_TorchFire_TorchFire_0000, 0.005f);
+	this->fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
 
 	this->scheduleUpdate();
 }

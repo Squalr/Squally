@@ -83,6 +83,15 @@ def main():
 		'.tif',
 	), "Resources/Platformer/Objects")
 
+	# FXResources
+	createResourceFile("FXResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Platformer/FX")
+
 	# IsometricObjectResources
 	createResourceFile("IsometricObjectResources", (
 		'.scml',

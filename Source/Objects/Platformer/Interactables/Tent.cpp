@@ -20,6 +20,7 @@
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -127,7 +128,7 @@ void Tent::runHealAnimation(bool reRun)
 
 	this->isAnimating = true;
 	
-	this->healAnimation->playAnimation(ObjectResources::FX_Heal_Heal_0000, 0.05f, false, [=]()
+	this->healAnimation->playAnimation(FXResources::Heal_Heal_0000, 0.05f, false, [=]()
 	{
 		if (this->isAnimating)
 		{
