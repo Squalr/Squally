@@ -13,10 +13,10 @@ class SmartAnimationSequenceNode;
 class ProjectileHealthPotion : public Projectile
 {
 public:
-	static ProjectileHealthPotion* create();
+	static ProjectileHealthPotion* create(PlatformerEntity* caster);
 
 protected:
-	ProjectileHealthPotion();
+	ProjectileHealthPotion(PlatformerEntity* caster);
 	~ProjectileHealthPotion();
 
 	void onEnter() override;

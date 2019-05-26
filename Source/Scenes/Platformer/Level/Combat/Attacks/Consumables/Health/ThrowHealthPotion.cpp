@@ -48,7 +48,7 @@ void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerE
 {
 	super::generateProjectiles(owner, target);
 	
-	ProjectileHealthPotion* potion = ProjectileHealthPotion::create();
+	ProjectileHealthPotion* potion = ProjectileHealthPotion::create(owner);
 
 	this->replaceWeaponWithProjectile(owner, potion);
 

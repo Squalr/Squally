@@ -48,7 +48,7 @@ void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, Platformer
 {
 	super::generateProjectiles(owner, target);
 
-	ProjectileRestorePotion* potion = ProjectileRestorePotion::create();
+	ProjectileRestorePotion* potion = ProjectileRestorePotion::create(owner);
 
 	this->replaceWeaponWithProjectile(owner, potion);
 

@@ -131,10 +131,12 @@ void Timeline::initializeListeners()
 				{
 					if (this->timelineEntryAwaitingUserAction != nullptr)
 					{
+						this->timelineEntryAwaitingUserAction->defend();
 						this->timelineEntryAwaitingUserAction->stageCast(nullptr);
 						this->timelineEntryAwaitingUserAction->stageTarget(nullptr);
 					}
-
+					
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 					CombatEvents::TriggerResumeTimeline();
 
 					break;

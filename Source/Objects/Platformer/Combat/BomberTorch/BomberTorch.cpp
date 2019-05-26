@@ -13,16 +13,16 @@
 
 using namespace cocos2d;
 
-BomberTorch* BomberTorch::create(int damage)
+BomberTorch* BomberTorch::create(PlatformerEntity* caster, int damage)
 {
-	BomberTorch* instance = new BomberTorch(damage);
+	BomberTorch* instance = new BomberTorch(caster, damage);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BomberTorch::BomberTorch(int damage) : Projectile(256.0f, 1.0f, true)
+BomberTorch::BomberTorch(PlatformerEntity* caster, int damage) : Projectile(caster, 256.0f, 1.0f, true)
 {
 	this->damage = -std::abs(damage);
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
@@ -59,7 +59,7 @@ void BomberTorch::update(float dt)
 
 void BomberTorch::onCollideWithTarget(PlatformerEntity* target)
 {
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->damage, target));
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, this->damage));
 }
 
 cocos2d::Vec2 BomberTorch::getButtonOffset()

@@ -34,7 +34,7 @@ LocalizedString* BasicSlash::getString()
 
 void BasicSlash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->getRandomDamageOrHealing(), target));
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamageOrHealing()));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

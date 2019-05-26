@@ -14,12 +14,13 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const float TimelineEntry::CastPercentage = 0.8f;
+const float TimelineEntry::CastPercentage = 0.75f;
 const float TimelineEntry::BaseSpeedMultiplier = 0.175f;
 
 TimelineEntry* TimelineEntry::create(PlatformerEntity* entity)
@@ -90,7 +91,9 @@ void TimelineEntry::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
-			this->applyDamageOrHealing(args->damageOrHealing);
+			CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
+
+			this->applyDamageOrHealing(args->caster, args->damageOrHealing);
 		}
 	}));
 }
@@ -105,12 +108,15 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
-void TimelineEntry::applyDamageOrHealing(int damageOrHealing)
+void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing)
 {
 	if (this->getEntity() == nullptr)
 	{
 		return;
 	}
+
+	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(caster, this->getEntity(), &damageOrHealing));
+	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing));
 
 	if (damageOrHealing < 0)
 	{
@@ -118,7 +124,7 @@ void TimelineEntry::applyDamageOrHealing(int damageOrHealing)
 	}
 
 	this->getEntity()->addHealth(damageOrHealing);
-	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(damageOrHealing, this->getEntity()));
+	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(caster, this->getEntity(), damageOrHealing));
 }
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)
@@ -135,6 +141,16 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 	}
 
 	this->currentCast = attack;
+}
+
+void TimelineEntry::defend()
+{
+	if (this->getEntity() == nullptr)
+	{
+		return;
+	}
+
+	this->getEntity()->addChild(Defend::create(this->getEntity()));
 }
 
 float TimelineEntry::getProgress()
@@ -187,8 +203,7 @@ void TimelineEntry::addTime(float dt)
 		}
 		else
 		{
-			this->progress = std::fmod(this->progress, 1.0f);
-			this->interruptBonus = 0.0f;
+			this->resetTimeline();
 		}
 	}
 }
@@ -203,9 +218,7 @@ void TimelineEntry::performCast()
 		this->target->entity,
 		[=]()
 		{
-			this->progress = std::fmod(this->progress, 1.0f);
-			this->interruptBonus = 0.0f;
-
+			this->resetTimeline();
 			CombatEvents::TriggerResumeTimeline();
 		}
 	);
@@ -219,7 +232,17 @@ void TimelineEntry::tryInterrupt()
 		this->isCasting = false;
 		this->progress = this->progress / 3.0f;
 		this->interruptBonus = RandomHelper::random_real(0.05f, 0.1f);
+
+		CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 	}
+}
+
+void TimelineEntry::resetTimeline()
+{
+	this->progress = std::fmod(this->progress, 1.0f);
+	this->interruptBonus = 0.0f;
+
+	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }
 
 bool TimelineEntry::isPlayerEntry()

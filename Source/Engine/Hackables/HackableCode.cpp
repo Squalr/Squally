@@ -254,16 +254,16 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		return false;
 	}
 
-	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.byteCount);
-
 	int unfilledBytes = this->originalCodeLength - compileResult.byteCount;
 
 	// Fill remaining bytes with NOPs
 	for (int index = 0; index < unfilledBytes; index++)
 	{
 		const unsigned char nop = 0x90;
-		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
+		compileResult.compiledBytes.push_back(nop);
 	}
+
+	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.compiledBytes.size());
 
 	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
 	this->resetTimer();

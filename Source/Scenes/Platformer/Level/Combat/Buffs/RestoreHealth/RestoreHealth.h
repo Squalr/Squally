@@ -14,13 +14,14 @@ class SmartAnimationSequenceNode;
 class RestoreHealth : public Buff
 {
 public:
-	static RestoreHealth* create(PlatformerEntity* target, int healAmount);
+	static RestoreHealth* create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
 
 protected:
-	RestoreHealth(PlatformerEntity* target, int healAmount);
+	RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
 	~RestoreHealth();
 
 	void onEnter() override;
+	void initializePositions() override;
 	void registerHackables() override;
 	void runRestoreTick();
 
