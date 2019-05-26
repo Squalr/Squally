@@ -100,18 +100,13 @@ void HackUtils::writeMemory(void* to, void* from, int length)
 	HackUtils::setAllMemoryPermissions(from, length);
 
 	memcpy(to, from, length);
-
-	for (int i = 0; i < length; i++)
-	{
-		((unsigned char*)to)[i] = ((unsigned char*)from)[i];
-	}
 }
 
 std::string HackUtils::preProcessAssembly(std::string assembly)
 {
 	std::string processedAssembly;
 
-	auto callback = [&](std::string const& match) {
+	auto floatParser = [&](std::string const& match) {
         std::istringstream iss(match);
         float parsedFloat;
 
@@ -128,7 +123,7 @@ std::string HackUtils::preProcessAssembly(std::string assembly)
 
     std::regex reg("[-]?[0-9]*\\.[0-9]+");
     std::sregex_token_iterator begin(assembly.begin(), assembly.end(), reg, {-1, 0}), end;
-    std::for_each(begin, end, callback);
+    std::for_each(begin, end, floatParser);
 
     return processedAssembly;
 }

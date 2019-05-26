@@ -13,10 +13,10 @@ class SmartAnimationSequenceNode;
 class BomberTorch : public Projectile
 {
 public:
-	static BomberTorch* create(int damage);
+	static BomberTorch* create(PlatformerEntity* caster, int damage);
 
 protected:
-	BomberTorch(int damage);
+	BomberTorch(PlatformerEntity* caster, int damage);
 	~BomberTorch();
 
 	void onEnter() override;

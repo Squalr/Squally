@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const float ProjectileRestorePotion::HealPercentage = 0.8f;
 
-ProjectileRestorePotion* ProjectileRestorePotion::create()
+ProjectileRestorePotion* ProjectileRestorePotion::create(PlatformerEntity* caster)
 {
-	ProjectileRestorePotion* instance = new ProjectileRestorePotion();
+	ProjectileRestorePotion* instance = new ProjectileRestorePotion(caster);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ProjectileRestorePotion::ProjectileRestorePotion() : Projectile(256.0f, 1.0f, false)
+ProjectileRestorePotion::ProjectileRestorePotion(PlatformerEntity* caster) : Projectile(caster, 256.0f, 1.0f, false)
 {
 	this->restorePotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
 
@@ -59,7 +59,7 @@ void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 {
 	int healing = float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage;
 	
-	target->addChild(RestoreHealth::create(target, healing));
+	target->addChild(RestoreHealth::create(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()

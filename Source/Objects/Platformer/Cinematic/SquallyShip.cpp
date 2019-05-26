@@ -110,6 +110,13 @@ void SquallyShip::onEnter()
 	this->scheduleUpdate();
 }
 
+void SquallyShip::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	GameCamera::getInstance()->setCameraZoom(2.0f);
+}
+
 void SquallyShip::initializePositions()
 {
 	super::initializePositions();

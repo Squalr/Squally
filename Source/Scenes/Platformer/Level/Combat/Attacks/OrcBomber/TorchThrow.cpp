@@ -39,7 +39,7 @@ void TorchThrow::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* 
 {
 	super::generateProjectiles(owner, target);
 
-	BomberTorch* torch = BomberTorch::create(this->getRandomDamageOrHealing());
+	BomberTorch* torch = BomberTorch::create(owner, this->getRandomDamageOrHealing());
 
 	this->replaceWeaponWithProjectile(owner, torch);
 

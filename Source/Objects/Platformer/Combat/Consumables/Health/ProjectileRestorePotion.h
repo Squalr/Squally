@@ -13,10 +13,10 @@ class SmartAnimationSequenceNode;
 class ProjectileRestorePotion : public Projectile
 {
 public:
-	static ProjectileRestorePotion* create();
+	static ProjectileRestorePotion* create(PlatformerEntity* caster);
 
 protected:
-	ProjectileRestorePotion();
+	ProjectileRestorePotion(PlatformerEntity* caster);
 	virtual	~ProjectileRestorePotion();
 
 	void onEnter() override;

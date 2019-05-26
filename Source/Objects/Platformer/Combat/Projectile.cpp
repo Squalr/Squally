@@ -9,8 +9,9 @@
 
 using namespace cocos2d;
 
-Projectile::Projectile(float radius, float noCollideDuration, bool allowHacking) : ProximityObject(radius, allowHacking)
+Projectile::Projectile(PlatformerEntity* caster, float radius, float noCollideDuration, bool allowHacking) : ProximityObject(radius, allowHacking)
 {
+	this->caster = caster;
 	this->hasCollided = false;
 	this->noCollideDuration = noCollideDuration;
 	this->elapsedDuration = 0.0f;

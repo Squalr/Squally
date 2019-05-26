@@ -24,6 +24,7 @@ protected:
 	virtual ~SquallyShip();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
