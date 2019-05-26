@@ -241,6 +241,7 @@ void TimelineEntry::resetTimeline()
 {
 	this->progress = std::fmod(this->progress, 1.0f);
 	this->interruptBonus = 0.0f;
+	this->isCasting = false;
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }

@@ -7,6 +7,7 @@
 namespace UIResources
 {
 	extern const std::string Combat_AttackCircle;
+	extern const std::string Combat_DefeatBanner;
 	extern const std::string Combat_DefendCircle;
 	extern const std::string Combat_EnemyCircle;
 	extern const std::string Combat_ItemsCircle;
@@ -18,6 +19,7 @@ namespace UIResources
 	extern const std::string Combat_SwordFill;
 	extern const std::string Combat_SwordFillRed;
 	extern const std::string Combat_SwordTop;
+	extern const std::string Combat_VictoryBanner;
 	extern const std::string Cursors_Chat;
 	extern const std::string Cursors_Craft;
 	extern const std::string Cursors_Crosshair;
