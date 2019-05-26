@@ -12,23 +12,21 @@ class LocalizedLabel;
 class PlatformerEntity;
 class ScrollPane;
 
-class RewardsMenu : public SmartNode
+class DefeatMenu : public SmartNode
 {
 public:
-	static RewardsMenu* create();
+	static DefeatMenu* create();
 
 private:
 	typedef SmartNode super;
-	RewardsMenu();
-	~RewardsMenu();
+	DefeatMenu();
+	~DefeatMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void loadRewards();
 
-	cocos2d::Sprite* rewardsMenu;
-	cocos2d::Sprite* victoryBanner;
-	LocalizedLabel* victoryLabel;
+	cocos2d::Sprite* defeatBanner;
+	LocalizedLabel* defeatLabel;
 	ClickableTextNode* okayButton;
 };

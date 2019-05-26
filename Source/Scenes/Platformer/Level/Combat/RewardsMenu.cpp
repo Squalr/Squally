@@ -17,6 +17,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Combat/Rewards.h"
+#include "Strings/Combat/Victory.h"
 #include "Strings/Menus/Okay.h"
 
 using namespace cocos2d;
@@ -33,20 +34,27 @@ RewardsMenu* RewardsMenu::create()
 RewardsMenu::RewardsMenu()
 {
 	this->rewardsMenu = Sprite::create(UIResources::Combat_RewardsMenu);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Rewards::create());
-	this->rewardsScroll = ScrollPane::create(Size(480.0f, 640.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
-
+	this->victoryBanner = Sprite::create(UIResources::Combat_VictoryBanner);
+	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Victory::create());
+	
 	LocalizedLabel*	okayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Okay::create());
-	LocalizedLabel*	okayLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Okay::create());
+	LocalizedLabel*	okayLabelHover = okayLabel->clone();
 
-	this->okayButton = ClickableTextNode::create(okayLabel, okayLabelHover, Sprite::create(UIResources::Menus_Buttons_GenericButton), Sprite::create(UIResources::Menus_Buttons_GenericButtonHover));
+	okayLabel->enableOutline(Color4B::BLACK, 2);
+	okayLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->titleLabel->enableOutline(Color4B::BLACK, 2);
+	this->okayButton = ClickableTextNode::create(okayLabel, okayLabelHover, Sprite::create(UIResources::Menus_Buttons_DarkWoodButton), Sprite::create(UIResources::Menus_Buttons_DarkWoodButtonSelected));
 
+	this->victoryLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->addChild(this->victoryBanner);
 	this->addChild(this->rewardsMenu);
-	this->addChild(this->titleLabel);
-	this->addChild(this->rewardsScroll);
+	this->addChild(this->victoryLabel);
 	this->addChild(this->okayButton);
+}
+
+RewardsMenu::~RewardsMenu()
+{
 }
 
 void RewardsMenu::onEnter()
@@ -54,16 +62,16 @@ void RewardsMenu::onEnter()
 	super::onEnter();
 
 	this->setVisible(false);
-
-	this->scheduleUpdate();
 }
 
 void RewardsMenu::initializePositions()
 {
 	super::initializePositions();
 
-	this->titleLabel->setPositionY(392.0f);
-	this->okayButton->setPositionY(-392.0f);
+	this->victoryBanner->setPositionY(256.0f);
+	this->victoryLabel->setPositionY(-64.0f + 280.0f);
+	this->rewardsMenu->setPositionY(-64.0f);
+	this->okayButton->setPositionY(-64.0f - 256.0f);
 }
 
 void RewardsMenu::initializeListeners()
@@ -97,7 +105,7 @@ void RewardsMenu::loadRewards()
 
 			itemIcon->setPosition(Vec2((x - 1) * 144.0f, y * -144.0f - 32.0f));
 
-			this->rewardsScroll->addChild(itemIcon);
+			this->rewardsMenu->addChild(itemIcon);
 		}
 	}));
 }

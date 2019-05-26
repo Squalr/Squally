@@ -17,6 +17,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
+#include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
 #include "Scenes/Platformer/Level/Combat/RewardsMenu.h"
 #include "Scenes/Platformer/Level/Combat/TargetSelectionMenu.h"
@@ -54,6 +55,7 @@ CombatMap::CombatMap() : super(true)
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
 
@@ -63,6 +65,7 @@ CombatMap::CombatMap() : super(true)
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
 	this->hud->addChild(this->combatHud);
+	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
 }
 
@@ -74,6 +77,7 @@ void CombatMap::onEnter()
 {
 	MapBase::onEnter();
 	
+	this->defeatMenu->setVisible(false);
 	this->rewardsMenu->setVisible(false);
 
 	this->spawnEntities();
@@ -85,6 +89,7 @@ void CombatMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
@@ -126,7 +131,8 @@ void CombatMap::initializeListeners()
 			}
 			else
 			{
-				CombatEvents::TriggerReturnToMap();
+				this->menuBackDrop->setOpacity(196);
+				this->defeatMenu->setVisible(true);
 			}
 		}
 	}));
