@@ -59,10 +59,10 @@ CombatMap::CombatMap() : super(true)
 
 	this->addChild(this->textOverlays);
 	this->addChild(this->targetSelectionMenu);
-	this->addChild(this->combatHud);
 	this->addChild(this->enemyAIHelper);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->combatHud);
 	this->menuHud->addChild(this->rewardsMenu);
 }
 
@@ -111,12 +111,24 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{
-		PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
+		CombatEvents::CombatFinishedArgs* args = static_cast<CombatEvents::CombatFinishedArgs*>(eventCustom->getUserData());
 
-		this->menuBackDrop->setOpacity(196);
-		this->rewardsMenu->setVisible(true);
+		if (args != nullptr)
+		{
+			if (args->playerVictory)
+			{
+				PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 
-		CombatEvents::TriggerGiveRewards();
+				this->menuBackDrop->setOpacity(196);
+				this->rewardsMenu->setVisible(true);
+
+				CombatEvents::TriggerGiveRewards();
+			}
+			else
+			{
+				CombatEvents::TriggerReturnToMap();
+			}
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)

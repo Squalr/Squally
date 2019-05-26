@@ -125,10 +125,10 @@ void FlyBot::initializeListeners()
 	{
 		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventGreetSqually, Value(false)).asBool())
 		{
-			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventGreetSqually, [=](EventCustom*)
+			this->listenForMapEvent(FlyBot::EventGreetSqually, [=](ValueMap args)
 			{
 				this->runGreetEvent();
-			}));
+			});
 		}
 		else
 		{
@@ -140,10 +140,10 @@ void FlyBot::initializeListeners()
 	{
 		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventHelpSquallyHeal, Value(false)).asBool())
 		{
-			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventHelpSquallyHeal, [=](EventCustom*)
+			this->listenForMapEvent(FlyBot::EventHelpSquallyHeal, [=](ValueMap args)
 			{
 				this->runHelpHealEvent();
-			}));
+			});
 		}
 		else
 		{
@@ -155,10 +155,10 @@ void FlyBot::initializeListeners()
 	{
 		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventTeachHackerMode, Value(false)).asBool())
 		{
-			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventTeachHackerMode, [=](EventCustom*)
+			this->listenForMapEvent(FlyBot::EventTeachHackerMode, [=](ValueMap args)
 			{
 				this->runTeachHackerModeEvent();
-			}));
+			});
 		}
 		else
 		{
@@ -170,10 +170,10 @@ void FlyBot::initializeListeners()
 	{
 		if (!SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventSpotOgre, Value(false)).asBool())
 		{
-			this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + FlyBot::EventSpotOgre, [=](EventCustom*)
+			this->listenForMapEvent(FlyBot::EventSpotOgre, [=](ValueMap args)
 			{
 				this->runSpotOgreEvent();
-			}));
+			});
 		}
 		else
 		{

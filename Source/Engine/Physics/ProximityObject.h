@@ -14,7 +14,7 @@ class HackablePreview;
 class ProximityObject : public HackableObject
 {
 public:
-	static ProximityObject* create(float radius);
+	static ProximityObject* create(float radius, bool allowHacking);
 
 	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setVelocity(cocos2d::Vec3 velocity);
@@ -40,7 +40,7 @@ public:
 	};
 
 protected:
-	ProximityObject(float radius);
+	ProximityObject(float radius, bool allowHacking);
 	virtual	~ProximityObject();
 
 	void onEnter() override;
@@ -57,6 +57,7 @@ private:
 	typedef HackableObject super;
 
 	float radius;
+	bool allowHacking;
 	cocos2d::Vec3 velocity;
 	cocos2d::Vec3 acceleration;
 };
