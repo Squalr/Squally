@@ -61,6 +61,7 @@ private:
 	float speed;
 	float interruptBonus;
 	float progress;
+	bool isBlocking;
 	bool isCasting;
 
 	static const float BaseSpeedMultiplier;

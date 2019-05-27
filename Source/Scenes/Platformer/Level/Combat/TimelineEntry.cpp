@@ -39,6 +39,8 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->emblem = Sprite::create(entity->getEmblemResource());
 	this->orphanedAttackCache = Node::create();
+	this->isCasting = false;
+	this->isBlocking = false;
 
 	this->speed = 1.0f;
 	this->interruptBonus = 0.0f;
@@ -57,6 +59,7 @@ void TimelineEntry::onEnter()
 	this->currentCast = nullptr;
 	this->target = nullptr;
 	this->isCasting = false;
+	this->isBlocking = false;
 	this->orphanedAttackCache->removeAllChildren();
 
 	this->scheduleUpdate();
@@ -150,6 +153,7 @@ void TimelineEntry::defend()
 		return;
 	}
 
+	this->isBlocking = true;
 	this->getEntity()->addChild(Defend::create(this->getEntity()));
 }
 
@@ -226,12 +230,25 @@ void TimelineEntry::performCast()
 
 void TimelineEntry::tryInterrupt()
 {
-	if (this->isCasting)
+	if (this->isBlocking || this->isCasting)
 	{
-		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+		if (this->isBlocking)
+		{
+			CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->entity));
+
+			this->progress = this->progress / 2.0f;
+			this->interruptBonus = 0.1f;
+		}
+		else if (this->isCasting)
+		{
+			CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+
+			this->progress = this->progress / 4.0f;
+			this->interruptBonus = 0.1f;
+		}
+		
 		this->isCasting = false;
-		this->progress = this->progress / 3.0f;
-		this->interruptBonus = RandomHelper::random_real(0.05f, 0.1f);
+		this->isBlocking = false;
 
 		CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 	}
@@ -241,6 +258,8 @@ void TimelineEntry::resetTimeline()
 {
 	this->progress = std::fmod(this->progress, 1.0f);
 	this->interruptBonus = 0.0f;
+	this->isCasting = false;
+	this->isBlocking = false;
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }
