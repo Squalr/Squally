@@ -1416,13 +1416,13 @@
                     <bone x="22.995319" angle="12.422221" scale_y="2.161805"/>
                 </key>
                 <key id="1" time="400" spin="-1">
-                    <bone x="22.995319" y="0" angle="30.735936" scale_y="2.161805"/>
+                    <bone x="22.995319" angle="30.735936" scale_y="2.161805"/>
                 </key>
                 <key id="2" time="499" spin="0">
-                    <bone x="22.995319" y="0" angle="27.825027" scale_y="2.161805"/>
+                    <bone x="22.995319" angle="27.825027" scale_y="2.161805"/>
                 </key>
                 <key id="3" time="549" spin="-1">
-                    <bone x="22.995319" y="0" angle="27.825027" scale_y="2.161805"/>
+                    <bone x="22.995319" angle="27.825027" scale_y="2.161805"/>
                 </key>
             </timeline>
             <timeline id="16" obj="6" name="mainhand_arm_bone_upper" object_type="bone">
@@ -2144,7 +2144,7 @@
                 </key>
             </timeline>
         </animation>
-        <animation id="6" name="Throw" length="700" interval="100">
+        <animation id="6" name="ThrowItem" length="700" interval="100">
             <mainline>
                 <key id="0">
                     <bone_ref id="0" timeline="10" key="0"/>
