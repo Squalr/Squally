@@ -19,6 +19,7 @@ public:
 	static const std::string EventInterruptTimeline;
 	static const std::string EventDamageOrHealingDelt;
 	static const std::string EventDamageOrHealing;
+	static const std::string EventCastBlocked;
 	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
 	static const std::string EventGiveRewards;
@@ -71,6 +72,15 @@ public:
 		TimelineEntry* attackingEntry;
 
 		AIRequestArgs(TimelineEntry* attackingEntry) : attackingEntry(attackingEntry)
+		{
+		}
+	};
+
+	struct CastBlockedArgs
+	{
+		PlatformerEntity* target;
+
+		CastBlockedArgs(PlatformerEntity* target) : target(target)
 		{
 		}
 	};
@@ -156,6 +166,7 @@ public:
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
 	static void TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args);
 	static void TriggerDamageOrHealing(DamageOrHealingArgs args);
+	static void TriggerCastBlocked(CastBlockedArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);
 	static void TriggerCombatFinished(CombatFinishedArgs args);
 	static void TriggerGiveRewards();

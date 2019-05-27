@@ -17,6 +17,7 @@ const std::string CombatEvents::EventResumeTimeline = "EVENT_RESUME_TIMELINE";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_INTERRUPT_TIMELINE";
 const std::string CombatEvents::EventDamageOrHealingDelt = "EVENT_DAMAGE_OR_HEALING_DELT";
 const std::string CombatEvents::EventDamageOrHealing = "EVENT_DAMAGE_OR_HEALING";
+const std::string CombatEvents::EventCastBlocked = "EVENT_CAST_BLOCKED";
 const std::string CombatEvents::EventCastInterrupt = "EVENT_CAST_INTERRUPT";
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_FINISHED";
 const std::string CombatEvents::EventGiveRewards = "EVENT_GIVE_REWARDS";
@@ -111,6 +112,14 @@ void CombatEvents::TriggerDamageOrHealing(DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventDamageOrHealing,
+		&args
+	);
+}
+
+void CombatEvents::TriggerCastBlocked(CastBlockedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventCastBlocked,
 		&args
 	);
 }

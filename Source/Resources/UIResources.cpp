@@ -6,6 +6,7 @@
 #include <string>
 
 const std::string UIResources::Combat_AttackCircle = "UI/Combat/AttackCircle.png";
+const std::string UIResources::Combat_DefeatBanner = "UI/Combat/DefeatBanner.png";
 const std::string UIResources::Combat_DefendCircle = "UI/Combat/DefendCircle.png";
 const std::string UIResources::Combat_EnemyCircle = "UI/Combat/EnemyCircle.png";
 const std::string UIResources::Combat_ItemsCircle = "UI/Combat/ItemsCircle.png";
@@ -17,6 +18,7 @@ const std::string UIResources::Combat_SelectionLight = "UI/Combat/SelectionLight
 const std::string UIResources::Combat_SwordFill = "UI/Combat/SwordFill.png";
 const std::string UIResources::Combat_SwordFillRed = "UI/Combat/SwordFillRed.png";
 const std::string UIResources::Combat_SwordTop = "UI/Combat/SwordTop.png";
+const std::string UIResources::Combat_VictoryBanner = "UI/Combat/VictoryBanner.png";
 const std::string UIResources::Cursors_Chat = "UI/Cursors/Chat.png";
 const std::string UIResources::Cursors_Craft = "UI/Cursors/Craft.png";
 const std::string UIResources::Cursors_Crosshair = "UI/Cursors/Crosshair.png";

@@ -84,7 +84,7 @@ void RestoreHealth::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 126.0f));
+	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
 void RestoreHealth::registerHackables()
