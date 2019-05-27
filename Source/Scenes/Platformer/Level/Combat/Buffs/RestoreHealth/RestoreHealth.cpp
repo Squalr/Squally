@@ -57,22 +57,16 @@ RestoreHealth::~RestoreHealth()
 void RestoreHealth::onEnter()
 {
 	super::onEnter();
+	
+	std::vector<std::string> mapArgs = CombatMap::getInstance()->getMapArgs();
 
-	bool showClippy = (CombatMap::getInstance()->getMapArgs() == RestoreHealth::MapKeyPropertyRestorePotionTutorial);
+	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), RestoreHealth::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
 	this->runRestoreHealth();
 
 	if (showClippy)
 	{
-		this->runAction(
-			Sequence::create(
-				DelayTime::create(1.5f),
-				CallFunc::create([=]()
-				{
-					ObjectEvents::TriggerBroadCastMapObjectState(RestoreHealth::EventShowRestorePotionTutorial, ValueMap());
-				}),
-				nullptr
-		));
+		ObjectEvents::TriggerBroadCastMapObjectState(RestoreHealth::EventShowRestorePotionTutorial, ValueMap());
 	}
 }
 
@@ -92,7 +86,9 @@ void RestoreHealth::registerHackables()
 		return;
 	}
 	
-	bool showClippy = (CombatMap::getInstance()->getMapArgs() == RestoreHealth::MapKeyPropertyRestorePotionTutorial);
+	std::vector<std::string> mapArgs = CombatMap::getInstance()->getMapArgs();
+
+	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), RestoreHealth::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{

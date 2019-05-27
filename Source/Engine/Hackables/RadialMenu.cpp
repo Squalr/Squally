@@ -71,8 +71,8 @@ void RadialMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* hackableOpenListener = EventListenerCustom::create(HackableEvents::HackableObjectOpenEvent, CC_CALLBACK_1(RadialMenu::onHackableOpen, this));
-	EventListenerCustom* hackableAttributeEditDoneListener = EventListenerCustom::create(HackableEvents::HackableAttributeEditDoneEvent, [=](EventCustom*) { this->onHackableAttributeEditDone(); });
+	EventListenerCustom* hackableOpenListener = EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, CC_CALLBACK_1(RadialMenu::onHackableOpen, this));
+	EventListenerCustom* hackableAttributeEditDoneListener = EventListenerCustom::create(HackableEvents::EventHackableAttributeEditDone, [=](EventCustom*) { this->onHackableAttributeEditDone(); });
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
 	keyboardListener->onKeyPressed = CC_CALLBACK_2(RadialMenu::onKeyPressed, this);

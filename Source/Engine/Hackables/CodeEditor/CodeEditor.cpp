@@ -279,7 +279,7 @@ void CodeEditor::initializeListeners()
 	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
 
 	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
-		HackableEvents::HackableAttributeEditEvent, 
+		HackableEvents::EventHackableAttributeEdit, 
 		[=](EventCustom* eventCustom)
 		{
 			HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());

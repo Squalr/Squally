@@ -66,22 +66,22 @@ void SerializableMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* args)
 	{
 		this->hackerModeEnable();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* args)
 	{
 		this->hackerModeDisable();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectOpenEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* args)
 	{
 		this->hackerModeLayerFade();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectCloseEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectClose, [=](EventCustom* args)
 	{
 		this->hackerModeLayerUnfade();
 	}));

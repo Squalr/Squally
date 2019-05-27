@@ -412,22 +412,32 @@ void FlyBot::runRestorePotionTutorial()
 
 	this->hasRunTutorialEvent = true;
 
-	HackableEvents::TriggerHackerModeEnable();
-	GameUtils::resume(this);
+	static const float TutorialDelay = 1.25f;
 
 	this->runAction(Sequence::create(
+		DelayTime::create(TutorialDelay),
 		CallFunc::create([=]()
 		{
-			this->droidChatterSound->play();
-		}),
-		CallFunc::create([=]()
-		{
-			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
-		}),
-		DelayTime::create(4.0f),
-		CallFunc::create([=]()
-		{
-			this->speechBubble->hideDialogue();
+			HackableEvents::TriggerHackerModeEnable();
+			HackableEvents::TriggerAllowHackerMode();
+			GameUtils::resume(this);
+
+			this->runAction(Sequence::create(
+				CallFunc::create([=]()
+				{
+					this->droidChatterSound->play();
+				}),
+				CallFunc::create([=]()
+				{
+					this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
+				}),
+				DelayTime::create(4.0f),
+				CallFunc::create([=]()
+				{
+					this->speechBubble->hideDialogue();
+				}),
+				nullptr
+			));
 		}),
 		nullptr
 	));

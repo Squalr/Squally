@@ -6,6 +6,7 @@
 
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -34,9 +35,14 @@ EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
 	this->edgePortalCollision = CollisionObject::create(PhysicsBody::createBox(portalSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->edgePortalHintCollision = CollisionObject::create(PhysicsBody::createBox(portalSize + Size(512.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->wasTripped = false;
-	this->mapArgs = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalArgs, Value("")).asString();
+	this->mapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalArgs, Value("")).asString(), ",");
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalMap, Value("")).asString();
 	this->isLocked = !this->mapEvent.empty();
+
+	for (int index = 0; index < this->mapArgs.size(); index++)
+	{
+		this->mapArgs[index] = StrUtils::trim(this->mapArgs[index], " ");
+	}
 
 	std::string direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalDirection, Value("")).asString();
 

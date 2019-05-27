@@ -10,6 +10,20 @@ const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RES
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 
+void PlatformerEvents::TriggerCinematicHijack()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventCinematicHijack
+	);
+}
+
+void PlatformerEvents::TriggerCinematicRestore()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventCinematicRestore
+	);
+}
+
 void PlatformerEvents::TriggerHudTrackEntity(HudTrackEntityArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
@@ -23,19 +37,5 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventHudUntrackEntity,
 		&args
-	);
-}
-
-void PlatformerEvents::TriggerCinematicHijack()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventCinematicHijack
-	);
-}
-
-void PlatformerEvents::TriggerCinematicRestore()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventCinematicRestore
 	);
 }

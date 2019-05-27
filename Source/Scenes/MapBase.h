@@ -26,9 +26,9 @@ class HackerModeHud;
 class MapBase : public GlobalScene
 {
 public:
-	virtual void loadMap(std::string mapResource, std::string args);
+	virtual void loadMap(std::string mapResource, std::vector<std::string> args = { });
 
-	std::string getMapArgs();
+	std::vector<std::string> getMapArgs();
 
 protected:
 	MapBase(bool allowHackerMode);
@@ -51,7 +51,7 @@ protected:
 	Hud* menuHud;
 	SerializableMap* map;
 
-	std::string mapArgs;
+	std::vector<std::string> mapArgs;
 
 private:
 	typedef GlobalScene super;
@@ -71,7 +71,7 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;
-
 	bool allowHackerMode;
+
 	static bool hackerMode;
 };
