@@ -41,7 +41,7 @@ LocalizedString* ThrowRestorePotion::getString()
 
 std::string ThrowRestorePotion::getAttackAnimation()
 {
-	return "Throw";
+	return "ThrowItem";
 }
 
 void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
@@ -50,7 +50,7 @@ void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, Platformer
 
 	ProjectileRestorePotion* potion = ProjectileRestorePotion::create(owner);
 
-	this->replaceWeaponWithProjectile(owner, potion);
+	this->replaceOffhandWithProjectile(owner, potion);
 
 	potion->launchTowardsTarget(owner, Vec2(0.0f, owner->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
 }

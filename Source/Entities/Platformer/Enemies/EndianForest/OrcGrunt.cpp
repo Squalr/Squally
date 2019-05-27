@@ -21,8 +21,8 @@
 // BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 ////A////A////A////A////A////A////A////A////A////A/
 
-#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowRestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -59,7 +59,7 @@ OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
-	this->registerAttack(BasicSlash::create(0.7f, 0.2f));
+	this->registerAttack(Slash::create(0.7f, 0.2f));
 	this->registerAttack(ThrowRestorePotion::create());
 	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/

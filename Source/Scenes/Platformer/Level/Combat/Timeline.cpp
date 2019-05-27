@@ -234,8 +234,8 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 
 	float nextPlayerBonus = 0.0f;
 	float nextEnemyBonus = 0.0f;
-	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.25f;
-	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.25f;
+	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.35f;
+	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{

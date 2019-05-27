@@ -2,17 +2,18 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class BasicSlash : public PlatformerAttack
+class Punch : public PlatformerAttack
 {
 public:
-	static BasicSlash* create(float attackDuration, float recoverDuration);
+	static Punch* create(float attackDuration, float recoverDuration);
 
 	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
+	std::string getAttackAnimation() override;
 
 protected:
-	BasicSlash(float attackDuration, float recoverDuration);
-	~BasicSlash() = default;
+	Punch(float attackDuration, float recoverDuration);
+	~Punch() = default;
 
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 

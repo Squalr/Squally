@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Combat_Attacks_Basic_BasicSlash : public LocalizedString
+	class Combat_Attacks_Punch : public LocalizedString
 	{
 	public:
-		static Combat_Attacks_Basic_BasicSlash* create();
+		static Combat_Attacks_Punch* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Combat_Attacks_Basic_BasicSlash();
-		~Combat_Attacks_Basic_BasicSlash();
+		Combat_Attacks_Punch();
+		~Combat_Attacks_Punch();
 	};
 }

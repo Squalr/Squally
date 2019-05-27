@@ -41,12 +41,15 @@ protected:
 	int getBaseDamageOrHealingMax();
 	float getAttackDuration();
 	float getRecoverDuration();
-	void replaceWeaponWithProjectile(PlatformerEntity* owner, Projectile* projectile);
+	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
+	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 
 	static const float DefaultCleanupDuration;
 
 private:
 	typedef SmartNode super;
+
+	void replaceAnimationPartWithProjectile(std::string animationPart, PlatformerEntity* owner, Projectile* projectile);
 
 	float priority;
 	AttackType attackType;

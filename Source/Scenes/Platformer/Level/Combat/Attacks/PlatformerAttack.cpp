@@ -107,9 +107,19 @@ void PlatformerAttack::onCleanup()
 {
 }
 
-void PlatformerAttack::replaceWeaponWithProjectile(PlatformerEntity* owner, Projectile* projectile)
+void PlatformerAttack::replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile)
 {
-	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
+	this->replaceAnimationPartWithProjectile("mainhand", owner, projectile);
+}
+
+void PlatformerAttack::replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile)
+{
+	this->replaceAnimationPartWithProjectile("offhand", owner, projectile);
+}
+
+void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationPart, PlatformerEntity* owner, Projectile* projectile)
+{
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart(animationPart);
 
 	if (weapon != nullptr)
 	{
@@ -124,7 +134,7 @@ void PlatformerAttack::replaceWeaponWithProjectile(PlatformerEntity* owner, Proj
 		ObjectEvents::SpawnMethod::Above,
 		ObjectEvents::PositionMode::Retain
 	));
-}
+} 
 
 int PlatformerAttack::getRandomDamageOrHealing()
 {

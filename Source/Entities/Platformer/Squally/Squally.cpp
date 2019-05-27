@@ -10,7 +10,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Basic/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
@@ -52,7 +52,7 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->hoverCollision->forceBindTo(this, 8.0f);
 
 	this->registerHackables();
-	this->registerAttack(BasicSlash::create(1.5f, 0.15f));
+	this->registerAttack(Punch::create(0.4f, 0.5f));
 
 	this->currencyInventory = PlayerCurrencyInventory::getInstance();
 	this->inventory = PlayerInventory::getInstance();

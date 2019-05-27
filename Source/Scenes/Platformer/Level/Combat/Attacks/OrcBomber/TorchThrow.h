@@ -9,10 +9,11 @@ public:
 
 	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
+	std::string getAttackAnimation() override;
 
 protected:
 	TorchThrow(float attackDuration, float recoverDuration);
-	~TorchThrow() = default;
+	~TorchThrow();
 
 	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
