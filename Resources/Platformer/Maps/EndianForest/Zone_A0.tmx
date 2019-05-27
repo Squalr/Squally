@@ -180,13 +180,14 @@
   </object>
   <object id="639" name="orc-grunt" type="entity" x="11721.2" y="4750.7" width="128" height="128">
    <properties>
+    <property name="battle-args" value="restore-potion-tutorial"/>
     <property name="battle-map" value="EndianForest/BattleGrounds"/>
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="641" name="edge-portal" type="object" x="13288.3" y="4269.89" width="199.918" height="640.851">
+  <object id="641" name="edge-portal" type="object" x="13357.3" y="4269.89" width="199.918" height="640.851">
    <properties>
-    <property name="args" type="int" value="0"/>
+    <property name="args" value="0"/>
     <property name="direction" value="right"/>
     <property name="event" value="door-open"/>
     <property name="map" value="EndianForest/Zone_A1"/>

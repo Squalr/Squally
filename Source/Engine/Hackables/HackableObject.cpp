@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -17,7 +18,9 @@
 
 using namespace cocos2d;
 
-HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObject(initProperties)
+const std::string HackableObject::MapKeyShowClippy = "show-clippy";
+
+HackableObject::HackableObject(const ValueMap& properties) : SerializableObject(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
@@ -26,6 +29,7 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
+	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);

@@ -73,6 +73,11 @@ void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceF
 	}
 }
 
+bool SmartAnimationSequenceNode::isPlayingAnimation()
+{
+	return this->getNumberOfRunningActions() != 0;
+}
+
 void SmartAnimationSequenceNode::stopAnimation()
 {
 	this->sprite->stopAllActions();

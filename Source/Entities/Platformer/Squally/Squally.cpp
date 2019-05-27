@@ -7,6 +7,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -113,7 +114,13 @@ void Squally::initializeCollisionEvents()
 		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
 		{
 			// TODO: First strike detection
-			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(true, enemy->getUniqueIdentifier(), enemy->getBattleMapResource(), { Squally::MapKeySqually }, enemy->getCombatEntityList()));
+			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(
+				true,
+				enemy->getUniqueIdentifier(),
+				enemy->getBattleMapResource(),
+				enemy->getBattleMapArgs(),
+				{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
+				enemy->getCombatEntityList()));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;
@@ -172,6 +179,11 @@ void Squally::initializePositions()
 Vec2 Squally::getButtonOffset()
 {
 	return Vec2(0, 72.0f);
+}
+
+float Squally::getFloatHeight()
+{
+	return 64.0f;
 }
 
 cocos2d::Vec2 Squally::getAvatarFrameOffset()
@@ -238,8 +250,6 @@ void Squally::performSwimAnimation()
 void Squally::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
-
-	this->saveState();
 }
 
 void Squally::saveState()

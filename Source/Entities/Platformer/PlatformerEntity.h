@@ -31,6 +31,7 @@ public:
 	int getMaxRunes();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();
+	virtual float getFloatHeight();
 
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();

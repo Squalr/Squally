@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="35" nextobjectid="545">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="35" nextobjectid="546">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -83,11 +83,11 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="440" name="solid" type="terrain" x="3864.03" y="2406.67">
+  <object id="440" name="solid" type="terrain" x="3864.63" y="2406.67">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 412.93,0 394.845,212 421.972,360 397.859,624 397.859,960 226.056,1160 9.04225,960 33.1549,664 21.0986,448 54.2535,268 -6.02817,36"/>
+   <polyline points="0,0 454.088,0 434.2,212 464.031,360 437.515,624 437.515,960 248.588,1160 9.94352,960 36.4595,664 23.2016,448 59.6611,268 -6.62901,36"/>
   </object>
   <object id="450" name="solid" type="terrain" x="5215.73" y="2407.33">
    <properties>
@@ -134,11 +134,11 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="439" name="solid" type="terrain" x="4163.75" y="2500">
+  <object id="439" name="solid" type="terrain" x="4114.27" y="2500">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 393.634,0 376.394,212 402.254,360 379.268,624 379.268,960 215.493,1160 8.61972,960 31.6056,664 20.1127,448 51.7183,268 -5.74648,36"/>
+   <polyline points="0,0 442.055,0 422.694,212 451.735,360 425.922,624 425.922,960 242.001,1160 9.68003,960 35.4934,664 22.5868,448 58.0802,268 -6.45336,36"/>
   </object>
   <object id="447" name="solid" type="terrain" x="4913.76" y="2495">
    <properties>
@@ -166,7 +166,7 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="537" name="spawn" type="object" x="4360.15" y="2349.91" width="78.7879" height="88">
+  <object id="537" name="spawn" type="object" x="4370.07" y="2411.88" width="78.7879" height="88">
    <properties>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>
@@ -185,12 +185,6 @@
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="438" name="solid" type="terrain" x="3886.53" y="2588">
-   <properties>
-    <property name="texture" value="blue-grass"/>
-   </properties>
-   <polyline points="0,0 401.352,0 383.775,212 410.141,360 386.704,624 386.704,960 219.718,1160 8.78873,960 32.2254,664 20.507,448 52.7324,268 -5.85915,36"/>
-  </object>
   <object id="448" name="solid" type="terrain" x="5129.67" y="2589.33">
    <properties>
     <property name="texture" value="blue-grass"/>
@@ -214,12 +208,6 @@
    <properties>
     <property name="spawn-order" type="int" value="3"/>
     <property name="spawn-type" value="enemy"/>
-   </properties>
-  </object>
-  <object id="520" name="spawn" type="object" x="4045.27" y="2499.33" width="78.7879" height="88">
-   <properties>
-    <property name="spawn-order" type="int" value="3"/>
-    <property name="spawn-type" value="player"/>
    </properties>
   </object>
  </objectgroup>

@@ -5,13 +5,18 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
+#include "Engine/UI/HUD/FocusTakeOver.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealthClippy.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealthGenericPreview.h"
+#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
@@ -23,6 +28,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
+const std::string RestoreHealth::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
+const std::string RestoreHealth::EventShowRestorePotionTutorial = "EVENT_SHOW_RESTORE_POTION_TUTORIAL";
 const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
 const float RestoreHealth::TimeBetweenTicks = 0.5f;
 
@@ -51,33 +58,22 @@ void RestoreHealth::onEnter()
 {
 	super::onEnter();
 
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f);
+	bool showClippy = (CombatMap::getInstance()->getMapArgs() == RestoreHealth::MapKeyPropertyRestorePotionTutorial);
 
-	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
+	this->runRestoreHealth();
+
+	if (showClippy)
 	{
-		this->runAction(Sequence::create(
-			DelayTime::create(RestoreHealth::TimeBetweenTicks * float(healIndex + 1)),
-			CallFunc::create([=]()
-			{
-				this->runRestoreTick();
-			}),
-			nullptr
+		this->runAction(
+			Sequence::create(
+				DelayTime::create(1.5f),
+				CallFunc::create([=]()
+				{
+					ObjectEvents::TriggerBroadCastMapObjectState(RestoreHealth::EventShowRestorePotionTutorial, ValueMap());
+				}),
+				nullptr
 		));
 	}
-
-	this->runAction(Sequence::create(
-		DelayTime::create(RestoreHealth::TimeBetweenTicks * float(this->healAmount + 1)),
-		CallFunc::create([=]()
-		{
-			this->healEffect->runAction(FadeTo::create(0.25f, 0));
-		}),
-		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			this->removeBuff();
-		}),
-		nullptr
-	));
 }
 
 void RestoreHealth::initializePositions()
@@ -95,6 +91,8 @@ void RestoreHealth::registerHackables()
 	{
 		return;
 	}
+	
+	bool showClippy = (CombatMap::getInstance()->getMapArgs() == RestoreHealth::MapKeyPropertyRestorePotionTutorial);
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
@@ -108,7 +106,8 @@ void RestoreHealth::registerHackables()
 				{
 					{ HackableCode::Register::zdi, Strings::Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
 				},
-				2.0f
+				2.0f,
+				showClippy ? RestoreHealthClippy::create() : nullptr
 			)
 		},
 	};
@@ -120,6 +119,39 @@ void RestoreHealth::registerHackables()
 	{
 		this->target->registerCode(*it);
 	}
+}
+
+void RestoreHealth::runRestoreHealth()
+{
+	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f);
+
+	const float StartDelay = 1.0f;
+
+	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(RestoreHealth::TimeBetweenTicks * float(healIndex) + StartDelay),
+			CallFunc::create([=]()
+			{
+				this->runRestoreTick();
+			}),
+			nullptr
+		));
+	}
+
+	this->runAction(Sequence::create(
+		DelayTime::create(RestoreHealth::TimeBetweenTicks * float(this->healAmount) + StartDelay),
+		CallFunc::create([=]()
+		{
+			this->healEffect->runAction(FadeTo::create(0.25f, 0));
+		}),
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			this->removeBuff();
+		}),
+		nullptr
+	));
 }
 
 void RestoreHealth::runRestoreTick()

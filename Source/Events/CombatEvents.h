@@ -1,5 +1,11 @@
 #pragma once
 #include <string>
+#include <vector>
+
+namespace cocos2d
+{
+	class Node;
+}
 
 class PlatformerEntity;
 class TimelineEntry;
@@ -22,6 +28,8 @@ public:
 	static const std::string EventCastBlocked;
 	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
+	static const std::string EventCombatTutorialFocus;
+	static const std::string EventCombatTutorialUnfocus;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
 
