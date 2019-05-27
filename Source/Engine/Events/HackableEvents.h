@@ -10,6 +10,17 @@ class HackableObject;
 class HackableEvents
 {
 public:
+	static const std::string EventHackerModeEnable;
+	static const std::string EventHackerModeDisable;
+	static const std::string EventAllowHackerMode;
+	static const std::string EventDisallowHackerMode;
+	static const std::string EventHackableObjectOpen;
+	static const std::string EventHackableObjectClose;
+	static const std::string EventHackableAttributeEdit;
+	static const std::string EventHackableAttributeEditDone;
+	static const std::string EventHackableObjectRegister;
+	static const std::string EventHackApplied;
+
 	struct HackableObjectOpenArgs
 	{
 		HackableObject* hackableObject;
@@ -44,19 +55,12 @@ public:
 
 	static void TriggerHackerModeEnable();
 	static void TriggerHackerModeDisable();
+	static void TriggerAllowHackerMode();
+	static void TriggerDisallowHackerMode();
 	static void TriggerOpenHackable(HackableObjectOpenArgs args);
 	static void TriggerCloseHackable();
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
 	static void TriggerOnHackApplied(HackAppliedArgs args);
-
-	static const std::string HackerModeEnable;
-	static const std::string HackerModeDisable;
-	static const std::string HackableObjectOpenEvent;
-	static const std::string HackableObjectCloseEvent;
-	static const std::string HackableAttributeEditEvent;
-	static const std::string HackableAttributeEditDoneEvent;
-	static const std::string HackableObjectRegisterEvent;
-	static const std::string HackAppliedEvent;
 };

@@ -34,7 +34,7 @@ private:
 	bool wasTripped;
 	bool isLocked;
 	std::string mapFile;
-	std::string mapArgs;
+	std::vector<std::string> mapArgs;
 
 	static const std::string MapKeyEdgePortalArgs;
 	static const std::string MapKeyEdgePortalDirection;

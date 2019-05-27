@@ -16,6 +16,8 @@ class DefeatMenu : public SmartNode
 {
 public:
 	static DefeatMenu* create();
+	
+	void show();
 
 private:
 	typedef SmartNode super;

@@ -10,7 +10,7 @@ class PlatformerMap : public MapBase
 public:
 	static void registerGlobalScene();
 
-	void loadMap(std::string mapResource, std::string args) override;
+	void loadMap(std::string mapResource, std::vector<std::string> args) override;
 
 protected:
 	PlatformerMap();

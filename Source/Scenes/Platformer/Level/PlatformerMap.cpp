@@ -129,11 +129,18 @@ void PlatformerMap::update(float dt)
 	this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
-void PlatformerMap::loadMap(std::string mapResource, std::string args)
+void PlatformerMap::loadMap(std::string mapResource, std::vector<std::string> args)
 {
+	ValueVector argsVector = ValueVector();
+
+	for (auto it = args.begin(); it != args.end(); it++)
+	{
+		argsVector.push_back(Value(*it));
+	}
+
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeyMap, Value(mapResource) },
-		{ SaveKeys::SaveKeyMapArgs, Value(args) }
+		{ SaveKeys::SaveKeyMapArgs, Value(argsVector) }
 	});
 
 	super::loadMap(mapResource, args);

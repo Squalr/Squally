@@ -116,15 +116,25 @@ void MapBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* hackerModeEnableListener = EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom*)
 	{
 		this->onHackerModeEnable();
-	});
+	}));
 
-	EventListenerCustom* hackerModeDisableListener = EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom*)
 	{
 		this->onHackerModeDisable();
-	});
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventAllowHackerMode, [=](EventCustom*)
+	{
+		this->allowHackerMode = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventDisallowHackerMode, [=](EventCustom*)
+	{
+		this->allowHackerMode = false;
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* scrollListener = EventListenerMouse::create();
@@ -139,8 +149,6 @@ void MapBase::initializeListeners()
 
 	this->addEventListener(keyboardListener);
 	this->addEventListenerIgnorePause(scrollListener);
-	this->addEventListenerIgnorePause(hackerModeEnableListener);
-	this->addEventListenerIgnorePause(hackerModeDisableListener);
 }
 
 void MapBase::onMouseWheelScroll(EventMouse* event)
@@ -180,12 +188,12 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-std::string MapBase::getMapArgs()
+std::vector<std::string> MapBase::getMapArgs()
 {
 	return this->mapArgs;
 }
 
-void MapBase::loadMap(std::string mapResource, std::string args)
+void MapBase::loadMap(std::string mapResource, std::vector<std::string> args)
 {
 	this->mapArgs = args;
 	

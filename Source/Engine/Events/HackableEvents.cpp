@@ -5,33 +5,49 @@
 
 using namespace cocos2d;
 
-const std::string HackableEvents::HackerModeEnable = "EVENT_HACKERMODE_ENABLE";
-const std::string HackableEvents::HackerModeDisable = "EVENT_HACKERMODE_DISABLE";
-const std::string HackableEvents::HackableObjectOpenEvent = "EVENT_OPEN_HACKABLE_OBJECT";
-const std::string HackableEvents::HackableObjectCloseEvent = "EVENT_CLOSE_HACKABLE_OBJECT";
-const std::string HackableEvents::HackableAttributeEditEvent = "EVENT_EDIT_HACKABLE_OBJECT";
-const std::string HackableEvents::HackableAttributeEditDoneEvent = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
-const std::string HackableEvents::HackableObjectRegisterEvent = "EVENT_REGISTER_HACKABLE_OBJECT";
-const std::string HackableEvents::HackAppliedEvent = "EVENT_HACK_APPLIED";
+const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENABLE";
+const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
+const std::string HackableEvents::EventAllowHackerMode = "EVENT_ALLOW_HACKER_MODE";
+const std::string HackableEvents::EventDisallowHackerMode = "EVENT_DISALLOW_HACKER_MODE";
+const std::string HackableEvents::EventHackableObjectOpen = "EVENT_OPEN_HACKABLE_OBJECT";
+const std::string HackableEvents::EventHackableObjectClose = "EVENT_CLOSE_HACKABLE_OBJECT";
+const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKABLE_OBJECT";
+const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
+const std::string HackableEvents::EventHackableObjectRegister = "EVENT_REGISTER_HACKABLE_OBJECT";
+const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
 
 void HackableEvents::TriggerHackerModeEnable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackerModeEnable
+		HackableEvents::EventHackerModeEnable
 	);
 }
 
 void HackableEvents::TriggerHackerModeDisable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackerModeDisable
+		HackableEvents::EventHackerModeDisable
+	);
+}
+
+void HackableEvents::TriggerAllowHackerMode()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventAllowHackerMode
+	);
+}
+
+void HackableEvents::TriggerDisallowHackerMode()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventDisallowHackerMode
 	);
 }
 
 void HackableEvents::TriggerOpenHackable(HackableObjectOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableObjectOpenEvent,
+		HackableEvents::EventHackableObjectOpen,
 		&args
 	);
 }
@@ -39,14 +55,14 @@ void HackableEvents::TriggerOpenHackable(HackableObjectOpenArgs args)
 void HackableEvents::TriggerCloseHackable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableObjectCloseEvent
+		HackableEvents::EventHackableObjectClose
 	);
 }
 
 void HackableEvents::TriggerEditHackableAttribute(HackableObjectEditArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableAttributeEditEvent,
+		HackableEvents::EventHackableAttributeEdit,
 		&args
 	);
 }
@@ -54,14 +70,14 @@ void HackableEvents::TriggerEditHackableAttribute(HackableObjectEditArgs args)
 void HackableEvents::TriggerEditHackableAttributeDone()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableAttributeEditDoneEvent
+		HackableEvents::EventHackableAttributeEditDone
 	);
 }
 
 void HackableEvents::TriggerRegisterHackable(HackableObjectRegisterArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackableObjectRegisterEvent,
+		HackableEvents::EventHackableObjectRegister,
 		&args
 	);
 }
@@ -69,7 +85,7 @@ void HackableEvents::TriggerRegisterHackable(HackableObjectRegisterArgs args)
 void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::HackAppliedEvent,
+		HackableEvents::EventHackApplied,
 		&args
 	);
 }

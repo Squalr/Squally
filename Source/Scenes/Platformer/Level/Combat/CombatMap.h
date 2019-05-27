@@ -17,6 +17,8 @@ public:
 	static CombatMap* getInstance();
 	static void registerGlobalScene();
 
+	void loadMap(std::string mapResource, std::vector<std::string> args = { }) override;
+
 protected:
 	CombatMap();
 	~CombatMap();
@@ -42,5 +44,6 @@ private:
 	std::vector<std::string> enemyEntityKeys;
 	std::string enemyIdentifier;
 
+	static const std::string MapKeyPropertyDisableHackerMode;
 	static CombatMap* instance;
 };

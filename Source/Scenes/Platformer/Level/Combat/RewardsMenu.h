@@ -17,6 +17,8 @@ class RewardsMenu : public SmartNode
 public:
 	static RewardsMenu* create();
 
+	void show();
+
 private:
 	typedef SmartNode super;
 	RewardsMenu();

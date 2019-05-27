@@ -1,5 +1,7 @@
 #include "RewardsMenu.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -87,6 +89,11 @@ void RewardsMenu::initializeListeners()
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
+}
+
+void RewardsMenu::show()
+{
+	this->runAction(FadeTo::create(1.0f, 255));
 }
 
 void RewardsMenu::loadRewards()

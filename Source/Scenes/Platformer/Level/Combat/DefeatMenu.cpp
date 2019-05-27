@@ -1,5 +1,7 @@
 #include "DefeatMenu.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -78,4 +80,9 @@ void DefeatMenu::initializeListeners()
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
+}
+
+void DefeatMenu::show()
+{
+	this->runAction(FadeTo::create(1.0f, 255));
 }

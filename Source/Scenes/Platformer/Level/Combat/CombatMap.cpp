@@ -6,6 +6,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
@@ -30,6 +31,7 @@
 using namespace cocos2d;
 
 CombatMap* CombatMap::instance = nullptr;
+const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disabled";
 
 CombatMap* CombatMap::getInstance()
 {
@@ -82,11 +84,10 @@ void CombatMap::onEnter()
 {
 	MapBase::onEnter();
 	
-	this->defeatMenu->setVisible(false);
-	this->rewardsMenu->setVisible(false);
+	this->defeatMenu->setOpacity(0);
+	this->rewardsMenu->setOpacity(0);
 
 	this->spawnEntities();
-	ObjectEvents::TriggerBroadCastMapObjectState(this->mapArgs, ValueMap());
 }
 
 void CombatMap::initializePositions()
@@ -131,14 +132,14 @@ void CombatMap::initializeListeners()
 				PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 
 				this->menuBackDrop->setOpacity(196);
-				this->rewardsMenu->setVisible(true);
+				this->rewardsMenu->show();
 
 				CombatEvents::TriggerGiveRewards();
 			}
 			else
 			{
 				this->menuBackDrop->setOpacity(196);
-				this->defeatMenu->setVisible(true);
+				this->rewardsMenu->show();
 			}
 		}
 	}));
@@ -147,7 +148,7 @@ void CombatMap::initializeListeners()
 	{
 		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-		NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapResource, "", true));
+		NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapResource, { }, true));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
@@ -177,6 +178,16 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
+}
+
+void CombatMap::loadMap(std::string mapResource, std::vector<std::string> args)
+{
+	super::loadMap(mapResource, args);
+
+	if (std::find(mapArgs.begin(), mapArgs.end(), CombatMap::MapKeyPropertyDisableHackerMode) != mapArgs.end())
+	{
+		HackableEvents::TriggerDisallowHackerMode();
+	}
 }
 
 void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys)

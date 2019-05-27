@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const float ProjectileRestorePotion::HealPercentage = 0.8f;
+const float ProjectileRestorePotion::HealPercentage = 0.6f;
 
 ProjectileRestorePotion* ProjectileRestorePotion::create(PlatformerEntity* caster)
 {
@@ -57,7 +57,7 @@ void ProjectileRestorePotion::update(float dt)
 
 void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 {
-	int healing = float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage;
+	int healing = std::round(float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage);
 	
 	target->addChild(RestoreHealth::create(this->caster, target, healing));
 }

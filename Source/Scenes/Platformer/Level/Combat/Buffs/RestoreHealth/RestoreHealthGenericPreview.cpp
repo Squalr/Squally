@@ -38,7 +38,7 @@ void RestoreHealthGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f);
 }
 
 void RestoreHealthGenericPreview::initializePositions()

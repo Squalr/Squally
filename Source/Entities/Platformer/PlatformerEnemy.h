@@ -15,7 +15,7 @@ class PlatformerEnemy : public PlatformerEntity
 {
 public:
 	std::string getBattleMapResource();
-	std::string getBattleMapArgs();
+	std::vector<std::string> getBattleMapArgs();
 	std::vector<std::string> getCombatEntityList();
 
 	static const std::string SaveKeyIsDead;
@@ -45,7 +45,7 @@ protected:
 	void onObjectStateLoaded() override;
 
 	std::string battleMapResource;
-	std::string battleMapArgs;
+	std::vector<std::string> battleMapArgs;
 	std::vector<std::string> combatEntityList;
 	std::map<std::string, float> dropTable = std::map<std::string, float>();
 

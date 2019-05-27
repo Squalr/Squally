@@ -67,10 +67,10 @@ public:
 	struct NavigateMapArgs
 	{
 		std::string mapResource;
-		std::string mapArgs;
+		std::vector<std::string> mapArgs;
 		bool isReload;
 
-		NavigateMapArgs(std::string mapResource, std::string mapArgs, bool isReload) : mapResource(mapResource), mapArgs(mapArgs), isReload(isReload) { }
+		NavigateMapArgs(std::string mapResource, std::vector<std::string> mapArgs, bool isReload) : mapResource(mapResource), mapArgs(mapArgs), isReload(isReload) { }
 	};
 
 	struct NavigatePointerTraceMapArgs
@@ -115,11 +115,11 @@ public:
 		bool playerFirstStrike;
 		std::string enemyIdentifier;
 		std::string levelFile;
-		std::string mapArgs;
+		std::vector<std::string> mapArgs;
 		std::vector<std::string> playerTypes;
 		std::vector<std::string> enemyTypes;
 
-		NavigateCombatArgs(bool playerFirstStrike, std::string enemyIdentifier, std::string levelFile, std::string mapArgs, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : playerFirstStrike(playerFirstStrike), enemyIdentifier(enemyIdentifier), levelFile(levelFile), mapArgs(mapArgs), playerTypes(playerTypes), enemyTypes(enemyTypes) { }
+		NavigateCombatArgs(bool playerFirstStrike, std::string enemyIdentifier, std::string levelFile, std::vector<std::string> mapArgs, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : playerFirstStrike(playerFirstStrike), enemyIdentifier(enemyIdentifier), levelFile(levelFile), mapArgs(mapArgs), playerTypes(playerTypes), enemyTypes(enemyTypes) { }
 	};
 
 	struct NavigateCutsceneArgs
