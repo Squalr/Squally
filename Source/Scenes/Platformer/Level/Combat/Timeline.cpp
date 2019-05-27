@@ -232,6 +232,11 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 	this->timelineNode->removeAllChildren();
 	this->timelineEntries.clear();
 
+	float nextPlayerBonus = 0.0f;
+	float nextEnemyBonus = 0.0f;
+	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.25f;
+	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.25f;
+
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
 		TimelineEntry* entry = TimelineEntry::create(entity);
@@ -239,7 +244,8 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
-		entry->setProgress(RandomHelper::random_real((isPlayerFirstStrike ? 0.25f : 0.0f), (isPlayerFirstStrike ? 0.5f : 0.25f)));
+		entry->setProgress(playerFirstStrikeBonus + nextPlayerBonus);
+		nextPlayerBonus += 0.1f;
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
@@ -249,6 +255,7 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
-		entry->setProgress(RandomHelper::random_real((!isPlayerFirstStrike ? 0.25f : 0.0f), (!isPlayerFirstStrike ? 0.5f : 0.25f)));
+		entry->setProgress(enemyFirstStrikeBonus + nextEnemyBonus);
+		nextEnemyBonus += 0.1f;
 	}));
 }
