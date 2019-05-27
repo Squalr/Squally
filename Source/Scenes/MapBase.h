@@ -28,6 +28,8 @@ class MapBase : public GlobalScene
 public:
 	virtual void loadMap(std::string mapResource, std::string args);
 
+	std::string getMapArgs();
+
 protected:
 	MapBase(bool allowHackerMode);
 	~MapBase();
@@ -48,6 +50,8 @@ protected:
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	SerializableMap* map;
+
+	std::string mapArgs;
 
 private:
 	typedef GlobalScene super;

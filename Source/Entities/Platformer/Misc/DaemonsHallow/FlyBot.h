@@ -27,6 +27,8 @@ public:
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
+
+	float getFloatHeight() override;
 	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -56,7 +58,9 @@ private:
 	void runHelpHealEvent();
 	void runTeachHackerModeEvent();
 	void runSpotOgreEvent();
+	void runRestorePotionTutorial();
 
+	bool hasRunTutorialEvent;
 	Sound* droidAlarmedSound;
 	Sound* droidBrief1Sound;
 	Sound* droidBrief2Sound;

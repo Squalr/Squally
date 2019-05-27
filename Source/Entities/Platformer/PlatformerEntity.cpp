@@ -84,8 +84,6 @@ PlatformerEntity::PlatformerEntity(
 	float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
 	this->entitySize = size * scale;
 
-	this->setPositionY(this->getPositionY());
-
 	this->entityCollision->bindTo(this);
 	this->entityCollision->getPhysicsBody()->setLinearDamping(1.0f);
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
@@ -236,6 +234,11 @@ void PlatformerEntity::update(float dt)
 			this->animationNode->setFlippedX(false);
 		}
 	}
+}
+
+float PlatformerEntity::getFloatHeight()
+{
+	return 0.0f;
 }
 
 void PlatformerEntity::performSwimAnimation()

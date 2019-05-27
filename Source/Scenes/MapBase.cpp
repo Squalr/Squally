@@ -180,8 +180,15 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
+std::string MapBase::getMapArgs()
+{
+	return this->mapArgs;
+}
+
 void MapBase::loadMap(std::string mapResource, std::string args)
 {
+	this->mapArgs = args;
+	
 	if (this->map != nullptr)
 	{
 		this->mapNode->removeChild(this->map);

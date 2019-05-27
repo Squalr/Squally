@@ -17,6 +17,7 @@ public:
 	static SmartAnimationSequenceNode* create();
 
 	static void primeCache(std::string initialSequenceResourceFile);
+	bool isPlayingAnimation();
 	void stopAnimation();
 	void playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
 	void playAnimation(std::vector<std::string> animationFiles, float animationSpeed, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);

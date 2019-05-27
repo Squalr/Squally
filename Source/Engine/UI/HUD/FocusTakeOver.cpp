@@ -47,16 +47,14 @@ void FocusTakeOver::initializeListeners()
 
 	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
 		SceneEvents::BeforeSceneChangeEvent,
-		CC_CALLBACK_0(FocusTakeOver::beforeSceneChange, this)
+		[=](EventCustom* EventCustom)
+		{
+			// Important to restore any hijacked nodes before scene changes
+			this->unfocus();
+		}
 	);
 
 	this->addEventListenerIgnorePause(beforeSceneChangeListener);
-}
-
-void FocusTakeOver::beforeSceneChange()
-{
-	// Important to restore any hijacked nodes before scene changes
-	this->unfocus();
 }
 
 void FocusTakeOver::focus(std::vector<Node*> nodes)

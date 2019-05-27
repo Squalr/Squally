@@ -14,6 +14,7 @@ class Timeline;
 class CombatMap : public MapBase
 {
 public:
+	static CombatMap* getInstance();
 	static void registerGlobalScene();
 
 protected:

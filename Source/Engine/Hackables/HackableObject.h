@@ -35,8 +35,10 @@ public:
 	std::vector<HackableCode*> codeList;
 
 protected:
-	HackableObject(const cocos2d::ValueMap& initProperties);
+	HackableObject(const cocos2d::ValueMap& properties);
 	virtual ~HackableObject();
+
+	bool showClippy;
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -58,4 +60,6 @@ private:
 	std::vector<HackableAttribute*> trackedAttributes;
 
 	cocos2d::Vec2 buttonOffset;
+
+	static const std::string MapKeyShowClippy;
 };

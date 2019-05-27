@@ -15,16 +15,18 @@ class PlatformerEnemy : public PlatformerEntity
 {
 public:
 	std::string getBattleMapResource();
+	std::string getBattleMapArgs();
 	std::vector<std::string> getCombatEntityList();
 
 	static const std::string SaveKeyIsDead;
+	static const std::string MapKeyBattleArgs;
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyAlly1;
 	static const std::string MapKeyAlly2;
 	static const std::string MapKeyAlly3;
 
 protected:
-	PlatformerEnemy(cocos2d::ValueMap& initProperties,
+	PlatformerEnemy(cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,
@@ -43,6 +45,7 @@ protected:
 	void onObjectStateLoaded() override;
 
 	std::string battleMapResource;
+	std::string battleMapArgs;
 	std::vector<std::string> combatEntityList;
 	std::map<std::string, float> dropTable = std::map<std::string, float>();
 

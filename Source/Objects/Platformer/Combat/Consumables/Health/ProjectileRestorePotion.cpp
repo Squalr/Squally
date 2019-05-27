@@ -30,7 +30,7 @@ ProjectileRestorePotion* ProjectileRestorePotion::create(PlatformerEntity* caste
 ProjectileRestorePotion::ProjectileRestorePotion(PlatformerEntity* caster) : Projectile(caster, 256.0f, 1.0f, false)
 {
 	this->restorePotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
-
+	
 	this->contentNode->addChild(this->restorePotionSprite);
 }
 

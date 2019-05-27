@@ -14,11 +14,12 @@ class Squally : public PlatformerFriendly
 public:
 	static Squally* deserialize(cocos2d::ValueMap& initProperties);
 
+	float getFloatHeight() override;
+	cocos2d::Vec2 getAvatarFrameOffset() override;
+
 	static const std::string MapKeySqually;
 	static const int SquallyBaseHealth;
 	static const int SquallyBaseSpecial;
-
-	cocos2d::Vec2 getAvatarFrameOffset() override;
 
 protected:
 	void initializeCollisionEvents() override;

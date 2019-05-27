@@ -31,7 +31,7 @@ using namespace cocos2d;
 
 CombatMap* CombatMap::instance = nullptr;
 
-void CombatMap::registerGlobalScene()
+CombatMap* CombatMap::getInstance()
 {
 	if (CombatMap::instance == nullptr)
 	{
@@ -40,7 +40,12 @@ void CombatMap::registerGlobalScene()
 		CombatMap::instance->initializeListeners();
 	}
 
-	GlobalDirector::registerGlobalScene(CombatMap::instance);
+	return CombatMap::instance;
+}
+
+void CombatMap::registerGlobalScene()
+{
+	GlobalDirector::registerGlobalScene(CombatMap::getInstance());
 }
 
 CombatMap::CombatMap() : super(true)
@@ -81,6 +86,7 @@ void CombatMap::onEnter()
 	this->rewardsMenu->setVisible(false);
 
 	this->spawnEntities();
+	ObjectEvents::TriggerBroadCastMapObjectState(this->mapArgs, ValueMap());
 }
 
 void CombatMap::initializePositions()
@@ -105,7 +111,7 @@ void CombatMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(args->levelFile, "");
+			this->loadMap(args->levelFile, args->mapArgs);
 
 			this->setEntityKeys(args->playerTypes, args->enemyTypes);
 			this->enemyIdentifier = args->enemyIdentifier;
@@ -225,7 +231,7 @@ void CombatMap::spawnEntities()
 				[=] (DeserializationEvents::ObjectDeserializationArgs args)
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
-
+					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}
 			);

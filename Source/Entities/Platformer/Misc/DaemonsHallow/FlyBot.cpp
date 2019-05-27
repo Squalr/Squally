@@ -27,17 +27,25 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Events/CombatEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
+
 #include "Strings/Dialogue/EndOfDemo.h"
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
 #include "Strings/Dialogue/Story/Intro/HackerMode.h"
+#include "Strings/Dialogue/Story/Intro/HackerModeCombat.h"
 #include "Strings/Dialogue/Story/Intro/OgreSpotted.h"
 #include "Strings/Dialogue/Story/Intro/TentHeal.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
@@ -82,7 +90,8 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	///////////////////////////////////////////////////
 	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
 	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-	
+
+	this->hasRunTutorialEvent = false;
 	this->entityCollision->setPhysicsEnabled(false);
 	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidAlarmed);
 	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidBrief);
@@ -180,6 +189,11 @@ void FlyBot::initializeListeners()
 			this->setVisible(false);
 		}
 	}
+
+	this->listenForMapEvent(RestoreHealth::EventShowRestorePotionTutorial, [=](ValueMap args)
+	{
+		this->runRestorePotionTutorial();
+	});
 }
 
 void FlyBot::runEndOfDemoEvent()
@@ -387,6 +401,41 @@ void FlyBot::runSpotOgreEvent()
 		}),
 		nullptr
 	));
+}
+
+void FlyBot::runRestorePotionTutorial()
+{
+	if (this->hasRunTutorialEvent)
+	{
+		return;
+	}
+
+	this->hasRunTutorialEvent = true;
+
+	HackableEvents::TriggerHackerModeEnable();
+	GameUtils::resume(this);
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->droidChatterSound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->hideDialogue();
+		}),
+		nullptr
+	));
+}
+
+float FlyBot::getFloatHeight()
+{
+	return 64.0f;
 }
 
 ////O////O////O////O////O////O////O////O////O////O/
