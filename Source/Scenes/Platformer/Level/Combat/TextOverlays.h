@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/UI/HUD/Hud.h"
 
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
 
-class TextOverlays : public SmartNode
+class TextOverlays : public Hud
 {
 public:
 	static TextOverlays* create();
 
 private:
-	typedef SmartNode super;
+	typedef Hud super;
 	TextOverlays();
 	virtual ~TextOverlays() = default;
 

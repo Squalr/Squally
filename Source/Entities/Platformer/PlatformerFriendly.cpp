@@ -3,16 +3,17 @@
 using namespace cocos2d;
 
 PlatformerFriendly::PlatformerFriendly(
-	cocos2d::ValueMap& initProperties,
+	ValueMap& properties,
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType, 
-	cocos2d::Size size, 
+	Size size, 
 	float scale,
-	cocos2d::Vec2 collisionOffset,
+	Vec2 collisionOffset,
 	int baseHealth,
-	int baseSpecial)
-	: super(initProperties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
+	int baseSpecial,
+	Size movementCollisionSize)
+	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize)
 {
 }
 

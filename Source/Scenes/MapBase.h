@@ -49,6 +49,7 @@ protected:
 	Hud* hud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
+	Hud* topMenuHud;
 	SerializableMap* map;
 
 	bool allowHackerMode;

@@ -11,7 +11,7 @@ class NpcBase : public PlatformerFriendly
 public:
 
 protected:
-	NpcBase(cocos2d::ValueMap& initProperties,
+	NpcBase(cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,

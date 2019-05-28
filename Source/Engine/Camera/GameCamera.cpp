@@ -406,14 +406,14 @@ Vec2 GameCamera::boundCameraByRectangle()
 	return cameraPosition;
 }
 
-void GameCamera::setTarget(CameraTrackingData trackingData)
+void GameCamera::setTarget(CameraTrackingData trackingData, bool immediatelyTrack)
 {
 	this->clearTargets();
 
-	this->pushTarget(trackingData);
+	this->pushTarget(trackingData, immediatelyTrack);
 }
 
-void GameCamera::pushTarget(CameraTrackingData trackingData)
+void GameCamera::pushTarget(CameraTrackingData trackingData, bool immediatelyTrack)
 {
 	trackingData.followSpeed.x = MathUtils::clamp(trackingData.followSpeed.x, 0.0f, 1.0f);
 	trackingData.followSpeed.y = MathUtils::clamp(trackingData.followSpeed.y, 0.0f, 1.0f);
@@ -436,6 +436,11 @@ void GameCamera::pushTarget(CameraTrackingData trackingData)
 	}
 
 	this->targetStack.push(trackingData);
+
+	if (immediatelyTrack)
+	{
+		this->snapToTrackedTarget();
+	}
 }
 
 CameraTrackingData* GameCamera::getCurrentTrackingData()
@@ -492,4 +497,16 @@ void GameCamera::updateCameraDebugLabels()
 	this->debugCameraStringX->setString(streamX.str());
 	this->debugCameraStringY->setString(streamY.str());
 	this->debugCameraStringZoom->setString(streamZoom.str());
+}
+
+void GameCamera::snapToTrackedTarget()
+{
+	if (!this->targetStack.empty())
+	{
+		CameraTrackingData trackingData = this->targetStack.top();
+
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
+
+		this->setCameraPositionReal(targetPosition);
+	}
 }

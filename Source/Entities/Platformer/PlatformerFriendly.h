@@ -10,7 +10,7 @@ class PlatformerFriendly : public PlatformerEntity
 public:
 
 protected:
-	PlatformerFriendly(cocos2d::ValueMap& initProperties,
+	PlatformerFriendly(cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,
@@ -18,7 +18,8 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
-		int baseSpecial);
+		int baseSpecial,
+		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO);
 	virtual ~PlatformerFriendly();
 
 private:

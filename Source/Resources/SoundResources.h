@@ -59,6 +59,9 @@ namespace SoundResources
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit1;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit2;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit3;
+	extern const std::string Platformer_Attacks_Physical_Impact_HitSoft1;
+	extern const std::string Platformer_Attacks_Physical_Impact_HitSoft2;
+	extern const std::string Platformer_Attacks_Physical_Impact_HitSoft3;
 	extern const std::string Platformer_Attacks_Physical_Impact_HitSqueak;
 	extern const std::string Platformer_Attacks_Physical_Impact_ShieldHit1;
 	extern const std::string Platformer_Attacks_Physical_Impact_ShieldHit2;
