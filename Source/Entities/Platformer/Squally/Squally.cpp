@@ -69,12 +69,12 @@ void Squally::onEnter()
 
 	this->noCombatDuration = 2.0f;
 
+	this->loadState();
+	this->updateWeaponVisual();
+
 	// Request camera track player
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData, true);
-
-	this->loadState();
-	this->updateWeaponVisual();
 }
 
 void Squally::onEnterTransitionDidFinish()
