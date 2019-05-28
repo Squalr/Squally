@@ -93,10 +93,10 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 
 	this->hasRunTutorialEvent = false;
 	this->entityCollision->setPhysicsEnabled(false);
-	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidAlarmed);
-	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidBrief);
-	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidBrief2);
-	this->droidChatterSound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidChatter);
+	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
+	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
+	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
+	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
 	this->addChild(this->droidAlarmedSound);
 	this->addChild(this->droidBrief1Sound);
@@ -412,7 +412,7 @@ void FlyBot::runRestorePotionTutorial()
 
 	this->hasRunTutorialEvent = true;
 
-	static const float TutorialDelay = 1.25f;
+	static const float TutorialDelay = 1.5f;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(TutorialDelay),

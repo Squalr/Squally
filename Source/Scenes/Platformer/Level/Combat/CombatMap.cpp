@@ -6,7 +6,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
@@ -83,9 +82,6 @@ CombatMap::~CombatMap()
 void CombatMap::onEnter()
 {
 	MapBase::onEnter();
-	
-	this->defeatMenu->setOpacity(0);
-	this->rewardsMenu->setOpacity(0);
 
 	this->spawnEntities();
 }
@@ -139,7 +135,7 @@ void CombatMap::initializeListeners()
 			else
 			{
 				this->menuBackDrop->setOpacity(196);
-				this->rewardsMenu->show();
+				this->defeatMenu->show();
 			}
 		}
 	}));
@@ -186,7 +182,7 @@ void CombatMap::loadMap(std::string mapResource, std::vector<std::string> args)
 
 	if (std::find(mapArgs.begin(), mapArgs.end(), CombatMap::MapKeyPropertyDisableHackerMode) != mapArgs.end())
 	{
-		HackableEvents::TriggerDisallowHackerMode();
+		this->allowHackerMode = false;
 	}
 }
 

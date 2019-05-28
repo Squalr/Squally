@@ -7,7 +7,7 @@ class Music : public SoundBase
 public:
 	static Music* create(std::string musicResource);
 
-	void play(bool repeat = true) override;
+	void play(bool repeat = true, float startDelay = 0.0f) override;
 
 protected:
 	void initializeListeners() override;

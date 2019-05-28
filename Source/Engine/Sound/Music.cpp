@@ -48,7 +48,7 @@ float Music::getConfigVolume()
 	return ConfigManager::getMusicVolume();
 }
 
-void Music::play(bool repeat)
+void Music::play(bool repeat, float startDelay)
 {
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
@@ -60,7 +60,7 @@ void Music::play(bool repeat)
 		case AudioEngine::AudioState::PAUSED:
 		{
 			SoundEvents::TriggerFadeOutMusic();
-			super::play(repeat);
+			super::play(repeat, startDelay);
 			break;
 		}
 		case AudioEngine::AudioState::PLAYING:

@@ -51,6 +51,7 @@ protected:
 	Hud* menuHud;
 	SerializableMap* map;
 
+	bool allowHackerMode;
 	std::vector<std::string> mapArgs;
 
 private:
@@ -71,7 +72,6 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;
-	bool allowHackerMode;
 
 	static bool hackerMode;
 };

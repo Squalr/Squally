@@ -2,7 +2,9 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Sound/Sound.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Combat/Attacks/Punch.h"
@@ -20,6 +22,9 @@ Punch* Punch::create(float attackDuration, float recoverDuration)
 
 Punch::Punch(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_Punch, 0.5f, -3, -5, 0, attackDuration, recoverDuration)
 {
+	this->punchSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Punches_Punch7);
+
+	this->addChild(this->punchSound);
 }
 
 PlatformerAttack* Punch::clone()
@@ -35,6 +40,13 @@ LocalizedString* Punch::getString()
 std::string Punch::getAttackAnimation()
 {
 	return "AttackPunch";
+}
+
+void Punch::onAttackTelegraphBegin()
+{
+	super::onAttackTelegraphBegin();
+
+	this->punchSound->play(false, this->attackDuration / 2.0f);
 }
 
 void Punch::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)

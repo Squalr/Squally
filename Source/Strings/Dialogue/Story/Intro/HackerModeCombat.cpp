@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringAr()
 	{
-		return "الآن! استخدام وضع القراصنة لوقف تعويذة العدو الشفاء.";
+		return "الآن! وقف العدو الشفاء الإملائي!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringBg()
 	{
-		return "Сега! Използвайте хакерски режим, за да спрете изцелителната магия на врага.";
+		return "Сега! Спрете лечебната магия на врага!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringCs()
 	{
-		return "Nyní! Použijte režim hackerů, abyste zastavili léčebné kouzlo nepřítele.";
+		return "Nyní! Zastavte nepřátelské kouzlo!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringDa()
 	{
-		return "Nu! Brug hacker mode til at stoppe fjendens helbredende magi.";
+		return "Nu! Stop fjendens helbredende magi!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringDe()
 	{
-		return "Jetzt! Verwenden Sie den Hacker-Modus, um den Heilzauber des Feindes zu stoppen.";
+		return "Jetzt! Beende den Heilzauber des Feindes!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringEl()
 	{
-		return "Τώρα! Χρησιμοποιήστε τη λειτουργία hacker για να σταματήσετε το ξόρκι θεραπείας του εχθρού.";
+		return "Τώρα! Σταματήστε το ξόρκι θεραπείας του εχθρού!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringEn()
 	{
-		return "Now! Use hacker mode to stop the enemy's healing spell.";
+		return "Now! Stop the enemy's healing spell!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringEs()
 	{
-		return "¡Ahora! Usa el modo hacker para detener el hechizo de curación del enemigo.";
+		return "¡Ahora! ¡Detén el hechizo de curación del enemigo!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringEs419()
 	{
-		return "¡Ahora! Usa el modo hacker para detener el hechizo de curación del enemigo.";
+		return "¡Ahora! ¡Detén el hechizo de curación del enemigo!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringFi()
 	{
-		return "Nyt! Käytä häkitilaa pysäyttääksesi vihollisen paranemisen.";
+		return "Nyt! Pysäytä vihollisen parantava loitsu!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringFr()
 	{
-		return "À présent! Utilisez le mode pirate pour arrêter le sortilège de guérison de l'ennemi.";
+		return "À présent! Arrêtez le sort de guérison de l'ennemi!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringHu()
 	{
-		return "Most! Használja a hacker módot, hogy megállítsa az ellenség gyógyító varázslatát.";
+		return "Most! Állítsa le az ellenség gyógyító varázsát!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringIt()
 	{
-		return "Adesso! Usa la modalità hacker per fermare l'incantesimo di cura del nemico.";
+		return "Adesso! Fermare l'incantesimo di cura del nemico!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringJa()
 	{
-		return "今すぐ！ハッカーモードを使用して敵の癒しの呪文を止めます。";
+		return "今すぐ！敵の癒しの呪文を止めろ！";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringKo()
 	{
-		return "지금! 해커 모드를 사용하여 적의 치유 주문을 중지하십시오.";
+		return "지금! 적의 치유 주문을 중지하십시오!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringNl()
 	{
-		return "Nu! Gebruik de hackermodus om de genezingsspreuk van de vijand te stoppen.";
+		return "Nu! Stop de genezingsspreuk van de vijand!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringNo()
 	{
-		return "Nå! Bruk hacker-modus for å stoppe fiendens helbredende stave.";
+		return "Nå! Stopp fiendens helbredelse!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringPl()
 	{
-		return "Teraz! Użyj trybu hakera, aby zatrzymać zaklęcie leczące wroga.";
+		return "Teraz! Zatrzymaj zaklęcie uzdrawiające wroga!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringPt()
 	{
-		return "Agora! Use o modo hacker para parar o feitiço de cura do inimigo.";
+		return "Agora! Pare o feitiço de cura do inimigo!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringPtBr()
 	{
-		return "Agora! Use o modo hacker para parar o feitiço de cura do inimigo.";
+		return "Agora! Pare o feitiço de cura do inimigo!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringRo()
 	{
-		return "Acum! Utilizați modul hacker pentru a opri vraja vindecătoare a inamicului.";
+		return "Acum! Opri vraja vindecătoare a inamicului!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringRu()
 	{
-		return "Сейчас! Используйте режим хакера, чтобы остановить заклинание лечения врага.";
+		return "Сейчас! Остановите заклинание лечения врага!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringSv()
 	{
-		return "Nu! Använd hackarläge för att stoppa fiendens helande stavning.";
+		return "Nu! Stoppa fiendens helande stavning!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringTh()
 	{
-		return "ในขณะนี้! ใช้โหมดแฮ็กเกอร์เพื่อหยุดเวทย์มนตร์ของศัตรู";
+		return "ในขณะนี้! หยุดเวทย์มนตร์ของศัตรู!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringTr()
 	{
-		return "Şimdi! Düşmanın iyileştirici büyüsünü durdurmak için korsan modunu kullanın.";
+		return "Şimdi! Düşmanın şifa büyüsünü durdur!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringUk()
 	{
-		return "Тепер! Використовуйте хакерський режим, щоб зупинити заклинання зцілення противника.";
+		return "Тепер! Зупиніть заклинання зцілення противника!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringVi()
 	{
-		return "Hiện nay! Sử dụng chế độ hacker để ngăn chặn phép chữa trị của kẻ thù.";
+		return "Hiện nay! Dừng bùa lợi của kẻ thù!";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringZhCn()
 	{
-		return "现在！使用黑客模式来阻止敌人的治疗法术。";
+		return "现在！阻止敌人的治疗法术！";
 	}
 
 	std::string Dialogue_Story_Intro_HackerModeCombat::getStringZhTw()
 	{
-		return "現在！使用黑客模式來阻止敵人的治療法術。";
+		return "現在！阻止敵人的治療法術！";
 	}
 }
