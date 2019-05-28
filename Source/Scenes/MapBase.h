@@ -47,6 +47,7 @@ protected:
 
 	cocos2d::Node* hudNode;
 	Hud* hud;
+	Hud* hackerModeVisibleHud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;

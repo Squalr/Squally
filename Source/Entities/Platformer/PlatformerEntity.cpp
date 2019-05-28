@@ -150,7 +150,7 @@ void PlatformerEntity::initializePositions()
 {
 	super::initializePositions();
 
-	this->speechBubble->setPositionY((this->properties[PlatformerEntity::MapKeyHeight].asFloat() * this->getScaleY()) / 2.0f);
+	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
 }
 
 void PlatformerEntity::initializeListeners()
@@ -356,7 +356,7 @@ HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 	return this->hexusOpponentData;
 }
 
-CollisionObject* PlatformerEntity::getEntityCollision()
+CollisionObject* PlatformerEntity::getCollision()
 {
 	return this->movementCollision;
 }

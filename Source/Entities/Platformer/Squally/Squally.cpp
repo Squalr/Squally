@@ -102,6 +102,9 @@ void Squally::initializeCollisionEvents()
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
+
+		this->noCombatDuration = 2.0f;
+		this->saveState();
 		
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
 

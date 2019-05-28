@@ -76,6 +76,19 @@ void PlatformerEnemy::onEnter()
 	this->buildDropInventory();
 }
 
+void PlatformerEnemy::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
+	{
+		if (!this->mapEvent.empty())
+		{
+			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
+		}
+	}
+}
+
 void PlatformerEnemy::onDeveloperModeEnable()
 {
 	super::onDeveloperModeEnable();
@@ -156,11 +169,6 @@ void PlatformerEnemy::onObjectStateLoaded()
 	{
 		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;
-
-		if (!this->mapEvent.empty())
-		{
-			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
-		}
 	}
 }
 
