@@ -4,26 +4,31 @@
 
 #include "Engine/GlobalScene.h"
 
-// Forward declarations
+namespace cocos2d
+{
+	class EventMouse;
+	class Sprite;
+	class Value;
+	typedef std::map<std::string, Value> ValueMap;
+}
+
+class CodeEditor;
 class ConfirmationMenu;
 class DeveloperHud;
 class Hud;
 class OptionsMenu;
 class PauseMenu;
+class RadialMenu;
 class SerializableMap;
 class MatrixRain;
 class HackerModeHud;
 
-namespace cocos2d
-{
-	class EventMouse;
-	class Sprite;
-}
-
 class MapBase : public GlobalScene
 {
 public:
-	virtual void loadMap(std::string mapResource);
+	virtual void loadMap(std::string mapResource, std::vector<std::string> args = { });
+
+	std::vector<std::string> getMapArgs();
 
 protected:
 	MapBase(bool allowHackerMode);
@@ -42,9 +47,14 @@ protected:
 
 	cocos2d::Node* hudNode;
 	Hud* hud;
+	Hud* hackerModeVisibleHud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
+	Hud* topMenuHud;
 	SerializableMap* map;
+
+	bool allowHackerMode;
+	std::vector<std::string> mapArgs;
 
 private:
 	typedef GlobalScene super;
@@ -57,12 +67,13 @@ private:
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
+	CodeEditor* codeEditor;
+	RadialMenu* radialMenu;
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;
 
-	bool allowHackerMode;
 	static bool hackerMode;
 };

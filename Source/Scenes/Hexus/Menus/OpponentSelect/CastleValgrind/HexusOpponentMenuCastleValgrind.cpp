@@ -6,11 +6,12 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Npcs/CastleValgrind/Blackbeard.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Elric.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Garin.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Gaunt.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/KingRedsong.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/KingRedsongSlime.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Leopold.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Leroy.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Mabel.h"
 #include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
@@ -41,11 +42,12 @@ void HexusOpponentMenuCastleValgrind::registerGlobalScene()
 
 HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::CastleValgrind, HexusChapterPreviewCastleValgrind::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(Blackbeard::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Elric::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Garin::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Gaunt::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(KingRedsong::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(KingRedsongSlime::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Leopold::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Leroy::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Mabel::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Merlin::getHexusOpponentData()));

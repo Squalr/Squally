@@ -12,7 +12,7 @@
 using namespace cocos2d;
 
 const std::string PhysicsLayer::MapKeyGravity = "gravity";
-const float PhysicsLayer::DefaultGravity = 2048.0f;
+const float PhysicsLayer::DefaultGravity = 768.0f;
 const float PhysicsLayer::MinimumGravity = 1024.0f;
 const float PhysicsLayer::MaximumGravity = 4096.0f;
 

@@ -31,7 +31,7 @@ WoodenCrate* WoodenCrate::create(ValueMap& initProperties)
 	return instance;
 }
 
-WoodenCrate::WoodenCrate(ValueMap& initProperties) : HackableObject(initProperties)
+WoodenCrate::WoodenCrate(ValueMap& initProperties) : super(initProperties)
 {
 	this->box = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
 	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);

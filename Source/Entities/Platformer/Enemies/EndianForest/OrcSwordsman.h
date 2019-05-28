@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyOrcSwordsman;
 
 private:
+	typedef PlatformerEnemy super;
 	OrcSwordsman(cocos2d::ValueMap& initProperties);
 	~OrcSwordsman();
 

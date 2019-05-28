@@ -75,8 +75,9 @@ void CombatSpawn::initializeListeners()
 			this->getParent()->addChild(args->entity);
 
 			float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
-			args->entity->setPosition(this->getPosition() - Vec2(0.0f, height / 2.0f));
+			args->entity->setPosition(this->getPosition() - Vec2(0.0f, height / 2.0f - args->entity->getFloatHeight()));
 			args->entity->setAnchorPoint(Vec2(0.5f, 0.0f));
+			args->entity->disablePlatformerControls();
 		}
 	}));
 }

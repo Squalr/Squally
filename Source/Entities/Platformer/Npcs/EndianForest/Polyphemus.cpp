@@ -92,8 +92,8 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 			Polyphemus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.058f,
-			HexusOpponentData::generateDeck(32, 0.058f,
+			0.054f,
+			HexusOpponentData::generateDeck(32, 0.054f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

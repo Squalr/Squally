@@ -7,8 +7,8 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/UI/Controls/FocusTakeOver.h"
 #include "Engine/UI/Controls/HelpArrow.h"
+#include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/StateOverride.h"
 

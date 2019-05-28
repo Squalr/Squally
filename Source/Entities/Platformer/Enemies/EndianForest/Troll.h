@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTroll;
 
 private:
+	typedef PlatformerEnemy super;
 	Troll(cocos2d::ValueMap& initProperties);
 	~Troll();
 

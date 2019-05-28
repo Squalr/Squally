@@ -92,8 +92,8 @@ HexusOpponentData* Garrick::getHexusOpponentData()
 			Garrick::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.781f,
-			HexusOpponentData::generateDeck(32, 0.781f,
+			0.786f,
+			HexusOpponentData::generateDeck(32, 0.786f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

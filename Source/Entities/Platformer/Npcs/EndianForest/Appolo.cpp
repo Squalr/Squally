@@ -92,8 +92,8 @@ HexusOpponentData* Appolo::getHexusOpponentData()
 			Appolo::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.125f,
-			HexusOpponentData::generateDeck(32, 0.125f,
+			0.116f,
+			HexusOpponentData::generateDeck(32, 0.116f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -92,8 +92,8 @@ HexusOpponentData* Jasper::getHexusOpponentData()
 			Jasper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.312f,
-			HexusOpponentData::generateDeck(32, 0.312f,
+			0.321f,
+			HexusOpponentData::generateDeck(32, 0.321f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

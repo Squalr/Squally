@@ -92,8 +92,8 @@ HexusOpponentData* Drak::getHexusOpponentData()
 			Drak::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.677f,
-			HexusOpponentData::generateDeck(32, 0.677f,
+			0.688f,
+			HexusOpponentData::generateDeck(32, 0.688f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

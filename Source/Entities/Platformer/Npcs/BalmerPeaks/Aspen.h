@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAspen;
 
 private:
+	typedef NpcBase super;
 	Aspen(cocos2d::ValueMap& initProperties);
 	~Aspen();
 

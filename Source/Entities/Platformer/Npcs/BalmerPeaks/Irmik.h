@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyIrmik;
 
 private:
+	typedef NpcBase super;
 	Irmik(cocos2d::ValueMap& initProperties);
 	~Irmik();
 

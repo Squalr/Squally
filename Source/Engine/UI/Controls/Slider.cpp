@@ -54,7 +54,7 @@ void Slider::onEnter()
 {
 	super::onEnter();
 
-	this->setProgress(progress);
+	this->setProgress(progress, false);
 }
 
 void Slider::initializePositions()
@@ -111,13 +111,13 @@ void Slider::onDrag(MouseEvents::MouseEventArgs* args)
 	}
 }
 
-void Slider::setProgress(float newProgress)
+void Slider::setProgress(float newProgress, bool callUpdateCallback)
 {
 	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
 
 	this->progressBar->setProgress(this->progress);
 
-	if (this->progressUpdateEvent != nullptr)
+	if (callUpdateCallback && this->progressUpdateEvent != nullptr)
 	{
 		this->progressUpdateEvent(this->progress);
 	}

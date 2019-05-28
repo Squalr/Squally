@@ -92,8 +92,8 @@ HexusOpponentData* Zeus::getHexusOpponentData()
 			Zeus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.240f,
-			HexusOpponentData::generateDeck(32, 0.240f,
+			0.232f,
+			HexusOpponentData::generateDeck(32, 0.232f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

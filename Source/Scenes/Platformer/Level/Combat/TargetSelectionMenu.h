@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/UI/HUD/Hud.h"
 
 namespace cocos2d
 {
@@ -9,13 +9,13 @@ namespace cocos2d
 
 class PlatformerEntity;
 
-class TargetSelectionMenu : public SmartNode
+class TargetSelectionMenu : public Hud
 {
 public:
 	static TargetSelectionMenu* create();
 
 private:
-	typedef SmartNode super;
+	typedef Hud super;
 	TargetSelectionMenu();
 	virtual ~TargetSelectionMenu() = default;
 

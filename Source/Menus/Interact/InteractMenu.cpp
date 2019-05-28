@@ -5,8 +5,11 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -49,12 +52,24 @@ void InteractMenu::onEnter()
 {
 	super::onEnter();
 
+	this->setOpacity(0);
+}
+
+void InteractMenu::onEnterTransitionDidFinish()
+{
 	// Move the UI elements to the top-most layer
 	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
 		this->uiElements
 	));
+}
 
-	this->setOpacity(0);
+void InteractMenu::onExit()
+{
+	super::onExit();
+
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(
+		this->uiElements
+	));
 }
 
 void InteractMenu::initializePositions()
@@ -70,6 +85,16 @@ void InteractMenu::initializePositions()
 void InteractMenu::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		this->uiElements->setVisible(false);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->uiElements->setVisible(true);
+	}));
 }
 
 void InteractMenu::show()

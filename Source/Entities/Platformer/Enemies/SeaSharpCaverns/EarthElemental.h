@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyEarthElemental;
 
 private:
+	typedef PlatformerEnemy super;
 	EarthElemental(cocos2d::ValueMap& initProperties);
 	~EarthElemental();
 

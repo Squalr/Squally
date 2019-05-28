@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyWarlock;
 
 private:
+	typedef PlatformerEnemy super;
 	Warlock(cocos2d::ValueMap& initProperties);
 	~Warlock();
 

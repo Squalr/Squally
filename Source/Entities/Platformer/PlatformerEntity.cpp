@@ -1,6 +1,8 @@
 #include "PlatformerEntity.h"
 
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
@@ -10,13 +12,14 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const float PlatformerEntity::MoveAcceleration = 14000.0f;
+const float PlatformerEntity::MoveAcceleration = 5800.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
@@ -28,8 +31,10 @@ const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
 const int PlatformerEntity::MaxRunes = 4;
 
+const std::string PlatformerEntity::MapKeyPropertyState = "state";
+
 PlatformerEntity::PlatformerEntity(
-	ValueMap& initProperties, 
+	ValueMap& properties, 
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType,
@@ -37,15 +42,29 @@ PlatformerEntity::PlatformerEntity(
 	float scale, 
 	Vec2 collisionOffset,
 	int baseHealth,
-	int baseSpecial
-	) : super(initProperties)
+	int baseSpecial,
+	Size movementCollisionSize
+	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->emblemResource = emblemResource;
-	this->entityCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(size, scale),
-		(CollisionType)(int)collisionType,
+	this->isCinimaticHijacked = false;
+	this->isPlatformerDisabled = false;
+	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
+
+	// A bit sketchy, but maintains backwards compatibility with how entities are coded right now
+	movementCollisionSize = (movementCollisionSize.width <= 0.0f || movementCollisionSize.height <= 0.0f) ? size : movementCollisionSize;
+
+	this->movementCollision = CollisionObject::create(
+		PlatformerEntity::createCapsulePolygon(movementCollisionSize, scale),
+		(CollisionType)PlatformerCollisionType::Entity,
 		true,
+		false
+	);
+	this->entityCollision = CollisionObject::create(
+		PlatformerEntity::createCapsulePolygon(size, scale * 0.9f),
+		(CollisionType)(int)collisionType,
+		false,
 		false
 	);
 	this->groundCollision = CollisionObject::create(
@@ -68,30 +87,27 @@ PlatformerEntity::PlatformerEntity(
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
-	this->animationNode->setScale(scale);
-	this->animationNode->playAnimation("Idle");
-
+	this->entitySize = size * scale;
 	float width = this->properties[PlatformerEntity::MapKeyWidth].asFloat();
 	float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
-	this->entitySize = size * scale;
+	Size movementSize = movementCollisionSize * scale;
+	float sizeDelta = std::abs(movementSize.height - this->entitySize.height);
 
-	this->setPositionY(this->getPositionY());
+	this->animationNode->setScale(scale);
+	this->animationNode->playAnimation("Idle");
+	this->animationNode->setPositionY(sizeDelta / 2.0f);
 
-	this->entityCollision->bindTo(this);
-	this->entityCollision->getPhysicsBody()->setLinearDamping(1.0f);
-	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, (size * scale).height / 2.0f));
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, height / 2.0f));
+	this->movementCollision->bindTo(this);
+	this->movementCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
+	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, movementSize.height / 2.0f));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f - PlatformerEntity::GroundCollisionOffset));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->clickHitbox->setContentSize(this->entitySize);
-	this->clickHitbox->setPosition(Vec2(0.0f, (size * scale).height / 2.0f) + Vec2((size * scale).width / 2.0f, -height / 2.0f));
+	this->clickHitbox->setPosition(Vec2(movementSize.width / 2.0f, movementSize.height / 2.0f));
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
-
-	// Update width to be serialized
-	this->properties[PlatformerEntity::MapKeyWidth] = size.width * scale;
-	this->properties[PlatformerEntity::MapKeyHeight] = size.height * scale;
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
@@ -110,6 +126,7 @@ PlatformerEntity::PlatformerEntity(
 	this->mana = this->maxMana;
 	this->runes = PlatformerEntity::MaxRunes;
 
+	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
 	this->addChild(this->groundCollision);
 	this->addChild(this->animationNode);
@@ -133,12 +150,22 @@ void PlatformerEntity::initializePositions()
 {
 	super::initializePositions();
 
-	this->speechBubble->setPositionY((this->properties[PlatformerEntity::MapKeyHeight].asFloat() * this->getScaleY()) / 2.0f);
+	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
 }
 
 void PlatformerEntity::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicHijack, [=](EventCustom*)
+	{
+		this->isCinimaticHijacked = true;
+	}));
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicRestore, [=](EventCustom*)
+	{
+		this->isCinimaticHijacked = false;
+	}));
 
 	this->initializeCollisionEvents();
 }
@@ -149,11 +176,16 @@ void PlatformerEntity::update(float dt)
 
 	if (this->isDead())
 	{
-		this->entityCollision->setVelocity(Vec2::ZERO);
+		this->movementCollision->setVelocity(Vec2::ZERO);
 		return;
 	}
 
-	Vec2 velocity = this->entityCollision->getVelocity();
+	if (this->isCinimaticHijacked)
+	{
+		return;
+	}
+
+	Vec2 velocity = this->movementCollision->getVelocity();
 
 	switch (this->controlState)
 	{
@@ -198,7 +230,7 @@ void PlatformerEntity::update(float dt)
 	}
 	
 	// Apply velocity
-	this->entityCollision->setVelocity(velocity);
+	this->movementCollision->setVelocity(velocity);
 
 	// Update flip
 	if (this->animationNode != nullptr)
@@ -214,6 +246,11 @@ void PlatformerEntity::update(float dt)
 	}
 }
 
+float PlatformerEntity::getFloatHeight()
+{
+	return 0.0f;
+}
+
 void PlatformerEntity::performSwimAnimation()
 {
 	this->animationNode->playAnimation("Swim");
@@ -226,12 +263,17 @@ void PlatformerEntity::performJumpAnimation()
 
 void PlatformerEntity::addHealth(int healthDelta)
 {
+	this->setHealth(this->getHealth() + healthDelta);
+}
+
+void PlatformerEntity::setHealth(int health)
+{
 	if (this->isDead())
 	{
 		return;
 	}
 
-	this->health = MathUtils::clamp(this->health + healthDelta, 0, this->maxHealth);
+	this->health = MathUtils::clamp(health, 0, this->maxHealth);
 
 	if (this->health <= 0)
 	{
@@ -259,6 +301,16 @@ int PlatformerEntity::getMana()
 	return this->mana;
 }
 
+void PlatformerEntity::addMana(int manaDelta)
+{
+	this->setMana(this->getMana() + manaDelta);
+}
+
+void PlatformerEntity::setMana(int mana)
+{
+	this->mana = MathUtils::clamp(mana, 0, this->getMaxMana());
+}
+
 int PlatformerEntity::getMaxMana()
 {
 	return this->maxMana;
@@ -269,9 +321,24 @@ int PlatformerEntity::getRunes()
 	return this->runes;
 }
 
+void PlatformerEntity::setRunes(int runes)
+{
+	this->runes = MathUtils::clamp(runes, 0, this->getMaxRunes());
+}
+
 int PlatformerEntity::getMaxRunes()
 {
 	return PlatformerEntity::MaxRunes;
+}
+
+bool PlatformerEntity::getIsPlatformerDisabled()
+{
+	return this->isPlatformerDisabled;
+}
+
+void PlatformerEntity::disablePlatformerControls()
+{
+	this->isPlatformerDisabled = true;
 }
 
 SmartAnimationNode* PlatformerEntity::getAnimations()
@@ -289,9 +356,29 @@ HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 	return this->hexusOpponentData;
 }
 
+CollisionObject* PlatformerEntity::getCollision()
+{
+	return this->movementCollision;
+}
+
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
 {
 	return this->attacks;
+}
+
+std::vector<PlatformerAttack*> PlatformerEntity::getAvailableAttacks()
+{
+	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
+
+	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
+	{
+		if ((*it)->getSpecialCost() <= this->getMana())
+		{
+			availableAttacks.push_back(*it);
+		}
+	}
+
+	return availableAttacks;
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::cloneAttacks()
@@ -323,16 +410,16 @@ bool PlatformerEntity::isOnGround()
 
 void PlatformerEntity::initializeCollisionEvents()
 {
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->entityCollision->setGravityEnabled(false);
+		this->movementCollision->setGravityEnabled(false);
 		this->controlState = ControlState::Swimming;
-		this->entityCollision->setVerticalDampening(PlatformerEntity::SwimVerticalDrag);
+		this->movementCollision->setVerticalDampening(PlatformerEntity::SwimVerticalDrag);
 
 		// Clear current animation
 		this->animationNode->playAnimation("Idle");
@@ -340,17 +427,17 @@ void PlatformerEntity::initializeCollisionEvents()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->entityCollision->setGravityEnabled(true);
+		this->movementCollision->setGravityEnabled(true);
 		this->controlState = ControlState::Normal;
-		this->entityCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
+		this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 
 		// Animate jumping out of water
-		if (this->entityCollision->getVelocity().y > 0.0f)
+		if (this->movementCollision->getVelocity().y > 0.0f)
 		{
 			// Give a velocity boost for jumping out of water
-			this->entityCollision->setVelocity(Vec2(this->entityCollision->getVelocity().x, PlatformerEntity::JumpVelocity));
+			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, PlatformerEntity::JumpVelocity));
 
 			this->animationNode->playAnimation("Jump");
 		}
@@ -361,7 +448,10 @@ void PlatformerEntity::initializeCollisionEvents()
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Clear current animation
-		this->animationNode->playAnimation("Idle");
+		if (!this->isDead())
+		{
+			this->animationNode->playAnimation("Idle");
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLycan;
 
 private:
+	typedef NpcBase super;
 	Lycan(cocos2d::ValueMap& initProperties);
 	~Lycan();
 

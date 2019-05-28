@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMinotaur;
 
 private:
+	typedef PlatformerEnemy super;
 	Minotaur(cocos2d::ValueMap& initProperties);
 	~Minotaur();
 

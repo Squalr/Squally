@@ -33,7 +33,7 @@ FloatingBomb* FloatingBomb::create(ValueMap& initProperties)
 	return instance;
 }
 
-FloatingBomb::FloatingBomb(ValueMap& initProperties) : HackableObject(initProperties)
+FloatingBomb::FloatingBomb(ValueMap& initProperties) : super(initProperties)
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_FloatingBomb_FloatingBomb);
 	this->bombCollision = CollisionObject::create(PhysicsBody::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Damage, true, true);

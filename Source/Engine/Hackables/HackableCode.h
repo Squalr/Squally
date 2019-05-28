@@ -119,6 +119,7 @@
 #define ASM_NOP15() ASM_NOP14() ASM_NOP1()
 #define ASM_NOP16() ASM_NOP15() ASM_NOP1()
 
+class Clippy;
 class HackablePreview;
 class LocalizedString;
 
@@ -141,10 +142,14 @@ public:
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
 		float duration;
+		Clippy* clippy;
 
-		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f) { }
+		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), clippy(nullptr) { }
 		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration) { }
+			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration), clippy(nullptr) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration, Clippy* clippy) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration), clippy(clippy) { }
+	
 	};
 
 	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);

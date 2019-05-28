@@ -6,8 +6,8 @@ class Steam
 {
 public:
 	static bool init();
-	static bool isSquallySteamBuild();
-	static bool isSteamDebugBuild();
+	static bool isSquallyItchBuild();
+	static bool isSteamDebugFilePresent();
 	static bool isCloudSaveAvailable();
 	static cocos2d::LanguageType getLanguage();
 
@@ -19,11 +19,9 @@ private:
 	Steam();
 	~Steam();
 
-	static bool isSteamLibPresent();
+	static bool isItchFilePresent();
 
-	static const std::string SteamLibOSX;
-	static const std::string SteamLibWin32;
-	static const std::string SteamLibWin64;
-	static const std::string SteamLibLinux32;
+	static const std::string ItchFile;
+	static const std::string SteamDebugFile;
 	static Steam* instance;
 };

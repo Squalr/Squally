@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyMagnus;
 
 private:
+	typedef NpcBase super;
 	Magnus(cocos2d::ValueMap& initProperties);
 	~Magnus();
 

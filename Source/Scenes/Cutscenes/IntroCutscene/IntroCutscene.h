@@ -3,6 +3,8 @@
 
 #include "Engine/Cutscenes/Cutscene.h"
 
+class Music;
+
 class IntroCutscene : public Cutscene
 {
 public:
@@ -13,4 +15,6 @@ private:
 	~IntroCutscene();
 
 	void onEnter() override;
+
+	Music* music;
 };

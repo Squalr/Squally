@@ -11,7 +11,6 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -39,6 +38,7 @@ ChoicesMenu* ChoicesMenu::create()
 ChoicesMenu::ChoicesMenu()
 {
 	this->selectedEntry = nullptr;
+	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 
 	LocalizedLabel* itemsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Items::create());
 	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Combat_Attack::create());
@@ -120,6 +120,8 @@ void ChoicesMenu::initializeListeners()
 
 		if (combatArgs != nullptr)
 		{
+			this->currentMenu = combatArgs->currentMenu;
+
 			switch (combatArgs->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
@@ -203,17 +205,53 @@ void ChoicesMenu::update(float dt)
 
 void ChoicesMenu::onItemsClick()
 {
-	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
+	switch (this->currentMenu)
+	{
+		case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect, this->selectedEntry));
+			break;
+		}
+		default:
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
+			break;
+		}
+	}
 }
 
 void ChoicesMenu::onAttackClick()
 {
-	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
+	switch (this->currentMenu)
+	{
+		case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect, this->selectedEntry));
+			break;
+		}
+		default:
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
+			break;
+		}
+	}
 }
 
 void ChoicesMenu::onDefendClick()
 {
-	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
+	switch (this->currentMenu)
+	{
+		case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
+			break;
+		}
+		default:
+		{
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
+			break;
+		}
+	}
 }
 
 void ChoicesMenu::toggleInnerText(bool isVisible)

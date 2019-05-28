@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/Config.h"
 
 #include "Resources/SoundResources.h"
@@ -21,6 +21,9 @@ StateRoundStart* StateRoundStart::create()
 
 StateRoundStart::StateRoundStart() : super(GameState::StateType::RoundStart)
 {
+	this->roundStartSound = Sound::create(SoundResources::Hexus_Medieval_War_Horn);
+
+	this->addChild(this->roundStartSound);
 }
 
 StateRoundStart::~StateRoundStart()
@@ -36,11 +39,11 @@ void StateRoundStart::onStateEnter(GameState* gameState)
 {
 	super::onStateEnter(gameState);
 
+	this->roundStartSound->play();
+
 	gameState->turnNumber = 0;
 	gameState->playerPassed = false;
 	gameState->enemyPassed = false;
-
-	SoundManager::playSoundResource(SoundResources::Hexus_Medieval_War_Horn);
 
 	this->runAction(Sequence::create(
 		DelayTime::create(Config::bannerDisplayDuration),

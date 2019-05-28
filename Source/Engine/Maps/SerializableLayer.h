@@ -27,12 +27,14 @@ public:
 			cocos2d::Size mapUnitSize, cocos2d::Size mapTileSize);
 
 	bool isHackable();
+	bool isElevateTarget();
 
 	static const std::string KeyType;
 	static const std::string MapKeyPropertyName;
 	static const std::string MapKeyPropertyValue;
 	static const std::string MapKeyPropertyDepth;
 	static const std::string MapKeyPropertyIsHackable;
+	static const std::string MapKeyPropertyIsElevateTarget;
 
 protected:
 	SerializableLayer(const cocos2d::ValueMap& initProperties, std::string name);

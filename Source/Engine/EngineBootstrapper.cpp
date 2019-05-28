@@ -4,15 +4,12 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/CollisionEventDispatcher.h"
-#include "Engine/Hackables/CodeEditor/CodeEditor.h"
-#include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Localization/TranslationMenu.h"
 #include "Engine/Maps/ObjectLayerDeserializer.h"
 #include "Engine/Maps/Backgrounds/BackgroundDeserializer.h"
 #include "Engine/Physics/CollisionDeserializer.h"
-#include "Engine/Sound/SoundManager.h"
 #include "Engine/UI/Mouse.h"
 
 void EngineBootstrapper::initialize()
@@ -27,9 +24,6 @@ void EngineBootstrapper::initialize()
 	Input::registerGlobalNode();
 	ObjectLayerDeserializer::registerGlobalNode();
 	CollisionDeserializer::registerGlobalNode();
-	SoundManager::registerGlobalNode();
-	CodeEditor::registerGlobalNode();
-	RadialMenu::registerGlobalNode();
 	Mouse::registerGlobalNode();
 	MouseState::registerGlobalNode();
 }

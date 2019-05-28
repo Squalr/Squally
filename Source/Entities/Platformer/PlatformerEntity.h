@@ -19,13 +19,22 @@ class PlatformerEntity : public HackableObject
 public:
 	int getHealth();
 	void addHealth(int healthDelta);
+	void setHealth(int health);
 	int getMaxHealth();
 	bool isDead();
 	int getMana();
+	void addMana(int manaDelta);
+	void setMana(int mana);
 	int getMaxMana();
 	int getRunes();
+	void setRunes(int runes);
 	int getMaxRunes();
+	void disablePlatformerControls();
+	bool getIsPlatformerDisabled();
+	virtual float getFloatHeight();
+
 	std::vector<PlatformerAttack*> getAttacks();
+	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	Inventory* getInventory();
 	CurrencyInventory* getCurrencyInventory();
@@ -33,6 +42,7 @@ public:
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
 	HexusOpponentData* getHexusOpponentData();
+	CollisionObject* getCollision();
 	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
 
 	ClickableNode* clickHitbox;
@@ -43,7 +53,7 @@ public:
 
 protected:
 	PlatformerEntity(
-		cocos2d::ValueMap& initProperties,
+		cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,
@@ -51,7 +61,8 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
-		int baseSpecial);
+		int baseSpecial,
+		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO);
 	virtual ~PlatformerEntity();
 
 	enum class ControlState
@@ -71,6 +82,7 @@ protected:
 
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
+	CollisionObject* movementCollision;
 	CollisionObject* entityCollision;
 	CollisionObject* groundCollision;
 	HexusOpponentData* hexusOpponentData;
@@ -84,6 +96,9 @@ protected:
 
 	bool isOnGround();
 	
+	bool isCinimaticHijacked;
+	bool isPlatformerDisabled;
+	std::string state;
 	int health;
 	int maxHealth;
 	int mana;
@@ -92,12 +107,6 @@ protected:
 
 	cocos2d::Size entitySize;
 
-private:
-	typedef HackableObject super;
-
-	std::string emblemResource;
-	std::vector<PlatformerAttack*> attacks;
-
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
 	static const float SwimVerticalDrag;
@@ -105,4 +114,11 @@ private:
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float CapsuleRadius;
+	static const std::string MapKeyPropertyState;
+
+private:
+	typedef HackableObject super;
+
+	std::string emblemResource;
+	std::vector<PlatformerAttack*> attacks;
 };

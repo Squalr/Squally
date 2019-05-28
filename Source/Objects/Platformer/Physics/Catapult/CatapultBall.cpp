@@ -31,7 +31,7 @@ CatapultBall* CatapultBall::create(const ValueMap& initProperties, Vec2 velocity
 	return instance;
 }
 
-CatapultBall::CatapultBall(const ValueMap& initProperties, Vec2 velocity) : HackableObject(initProperties)
+CatapultBall::CatapultBall(const ValueMap& initProperties, Vec2 velocity) : super(initProperties)
 {
 	this->ball = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
 	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(48.0f), (CollisionType)PlatformerCollisionType::Physics, true, true);

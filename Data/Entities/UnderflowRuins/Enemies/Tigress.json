@@ -12,8 +12,8 @@
     "X": "-16.0f",
     "Y": "-160.0f"
   },
-  "Health": "10",
-  "Special": "10",
+  "Health": "16",
+  "Special": "8",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",

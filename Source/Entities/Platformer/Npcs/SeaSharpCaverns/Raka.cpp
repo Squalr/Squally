@@ -92,8 +92,8 @@ HexusOpponentData* Raka::getHexusOpponentData()
 			Raka::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.354f,
-			HexusOpponentData::generateDeck(32, 0.354f,
+			0.357f,
+			HexusOpponentData::generateDeck(32, 0.357f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

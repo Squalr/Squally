@@ -5,28 +5,28 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/BomberTorch/BomberTorchGenericPreview.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/FXResources.h"
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_TORCH_ARC 1
-
-BomberTorch* BomberTorch::create(std::function<void(PlatformerEntity* target)> onTargetHit)
+BomberTorch* BomberTorch::create(PlatformerEntity* caster, int damage)
 {
-	BomberTorch* instance = new BomberTorch(onTargetHit);
+	BomberTorch* instance = new BomberTorch(caster, damage);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BomberTorch::BomberTorch(std::function<void(PlatformerEntity* target)> onTargetHit) : Projectile(onTargetHit, 256.0f, 1.0f)
+BomberTorch::BomberTorch(PlatformerEntity* caster, int damage) : Projectile(caster, 256.0f, 1.0f, true)
 {
+	this->damage = -std::abs(damage);
 	this->bomberTorchSprite = Sprite::create(EntityResources::Enemies_EndianForest_OrcBomber_WEAPON);
-	this->fire = SmartAnimationSequenceNode::create(ObjectResources::FX_TorchFire_TorchFire_0000);
+	this->fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 	this->contentNode->addChild(this->bomberTorchSprite);
 	this->contentNode->addChild(this->fire);
@@ -40,7 +40,7 @@ void BomberTorch::onEnter()
 {
 	super::onEnter();
 
-	this->fire->playAnimationRepeat(ObjectResources::FX_TorchFire_TorchFire_0000, 0.005f);
+	this->fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
 
 	this->scheduleUpdate();
 }
@@ -55,6 +55,11 @@ void BomberTorch::initializePositions()
 void BomberTorch::update(float dt)
 {
 	super::update(dt);
+}
+
+void BomberTorch::onCollideWithTarget(PlatformerEntity* target)
+{
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, this->damage));
 }
 
 cocos2d::Vec2 BomberTorch::getButtonOffset()

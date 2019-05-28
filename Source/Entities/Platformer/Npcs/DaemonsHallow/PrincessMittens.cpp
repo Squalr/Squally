@@ -92,8 +92,8 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 			PrincessMittens::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.729f,
-			HexusOpponentData::generateDeck(32, 0.729f,
+			0.732f,
+			HexusOpponentData::generateDeck(32, 0.732f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

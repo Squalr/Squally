@@ -44,7 +44,7 @@ TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData 
 	return instance;
 }
 
-TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : HackableObject(initProperties)
+TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : super(initProperties)
 {
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
@@ -152,6 +152,11 @@ void TerrainObject::buildInnerTextures()
 {
 	this->infillTexturesNode->removeAllChildren();
 
+	if (this->triangles.empty())
+	{
+		return;
+	}
+
 	DrawNode* stencil = DrawNode::create();
 
 	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
@@ -184,10 +189,12 @@ void TerrainObject::buildInnerTextures()
 
 void TerrainObject::buildInfill(Color4B infillColor)
 {
-	// Temp until the shader is fixed
-	return;
-
 	this->infillNode->removeAllChildren();
+
+	if (this->triangles.empty())
+	{
+		return;
+	}
 
 	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::InfillDistance);
 	std::vector<AlgoUtils::Triangle> infillTriangles = AlgoUtils::trianglefyPolygon(infillPoints);
@@ -229,6 +236,11 @@ void TerrainObject::buildInfill(Color4B infillColor)
 void TerrainObject::buildSurfaceShadow()
 {
 	this->shadowsNode->removeAllChildren();
+
+	if (this->triangles.empty())
+	{
+		return;
+	}
 
 	std::vector<Vec2> shadowPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::ShadowDistance);
 	std::vector<AlgoUtils::Triangle> shadowTriangles = AlgoUtils::trianglefyPolygon(shadowPoints);

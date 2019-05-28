@@ -30,12 +30,13 @@ public:
 	void setCameraZoom(float zoom);
 	cocos2d::Vec2 getCameraPosition();
 	void setCameraPosition(cocos2d::Vec2 position, bool addTrackOffset = false);
+	void setCameraPositionToTrackedTarget();
 	cocos2d::Rect getBounds();
 	void setBounds(cocos2d::Rect bounds);
 	void shakeCamera(float magnitude, float shakesPerSecond, float duration);
 	CameraTrackingData* getCurrentTrackingData();
-	void setTarget(CameraTrackingData trackingData);
-	void pushTarget(CameraTrackingData trackingData);
+	void setTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
+	void pushTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
 	void popTarget();
 	void clearTargets();
 
@@ -49,8 +50,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void setCameraPositionWorkAround();
-	void setCameraPositionReal(cocos2d::Vec2 position, bool addTrackOffset = false);
 	cocos2d::Vec2 boundCameraByEllipses();
 	cocos2d::Vec2 boundCameraByRectangle();
 	void updateCameraDebugLabels();
@@ -59,10 +58,6 @@ private:
 	cocos2d::Rect cameraBounds;
 	CameraTrackingData currentTrackingData;
 	float defaultDistance;
-
-	// Variables for working around cocos bugs
-	cocos2d::Vec2 storedNextCameraPosition;
-	bool useStoredNextCameraPosition;
 
 	Hud* hud;
 	LocalizedLabel* debugCameraLabelX;

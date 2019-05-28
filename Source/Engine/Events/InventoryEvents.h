@@ -8,6 +8,8 @@ class Item;
 class InventoryEvents
 {
 public:
+	static const std::string EventRequestItemDeserialization;
+
 	struct RequestItemDeserializationArgs
 	{
 		std::string itemSerializationKey;
@@ -17,6 +19,4 @@ public:
 	};
 
 	static void TriggerRequestItemDeserialization(RequestItemDeserializationArgs args);
-
-	static const std::string RequestItemDeserializationEvent;
 };

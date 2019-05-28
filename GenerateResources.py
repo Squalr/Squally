@@ -83,6 +83,15 @@ def main():
 		'.tif',
 	), "Resources/Platformer/Objects")
 
+	# FXResources
+	createResourceFile("FXResources", (
+		'.scml',
+		'.png',
+		'.jpg',
+		'.bmp',
+		'.tif',
+	), "Resources/Platformer/FX")
+
 	# IsometricObjectResources
 	createResourceFile("IsometricObjectResources", (
 		'.scml',
@@ -208,7 +217,14 @@ def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
 		for file in files:
 			resourceRelativeFilePath = relpath(file, resourcePath).replace("\\", "/")
 			searchRelativeFilePath = relpath(file, searchPath).replace("\\", "/")
-			variableName = searchRelativeFilePath.replace("/", "_").replace(" ", "_").replace("+", "_").replace("-", "_").replace("(", "_").replace(")", "_")
+			variableName = searchRelativeFilePath \
+				.replace("/", "_") \
+				.replace(" ", "_") \
+				.replace("+", "_") \
+				.replace("@", "_") \
+				.replace("-", "_") \
+				.replace("(", "_") \
+				.replace(")", "_")
 			variableNameNoExtension = splitext(variableName)[0]
 		
 			h.write("\textern const std::string " + variableNameNoExtension + ";" + "\n");

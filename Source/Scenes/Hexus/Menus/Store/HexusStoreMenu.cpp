@@ -16,7 +16,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -31,6 +31,7 @@
 #include "Scenes/Hexus/CardStorage.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -75,7 +76,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
 
 	this->goldPanel = Sprite::create(HexusResources::StoreMenu_GoldPanel);
-	this->goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_2);
+	this->goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
 
@@ -121,6 +122,8 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->backdrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->confirmationMenu = ConfirmationMenu::create();
+	this->errorSound = Sound::create(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
+	this->purchaseSound = Sound::create(SoundResources::Item_Purchase__1_);
 
 	this->backdrop->setOpacity(196);
 
@@ -586,7 +589,8 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
-	Sprite* goldIcon = Sprite::create(UIResources::Menus_Objects_GOLD_1);
+	
+	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
 
 	priceLabel->setStringReplacementVariables(priceString);
 
@@ -659,7 +663,7 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 {
 	if (CardStorage::getGold() < price || CardStorage::getOwnedCardCount(cardData) >= 3)
 	{
-		SoundManager::playSoundResource(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
+		this->errorSound->play();
 		return;
 	}
 
@@ -673,7 +677,7 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 
 		gold -= price;
 
-		SoundManager::playSoundResource(SoundResources::Item_Purchase__1_);
+		this->purchaseSound->play();
 
 		CardStorage::saveGold(gold);
 		this->updateGoldText();

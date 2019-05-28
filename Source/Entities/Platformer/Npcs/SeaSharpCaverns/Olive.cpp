@@ -92,8 +92,8 @@ HexusOpponentData* Olive::getHexusOpponentData()
 			Olive::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.333f,
-			HexusOpponentData::generateDeck(32, 0.333f,
+			0.339f,
+			HexusOpponentData::generateDeck(32, 0.339f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

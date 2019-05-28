@@ -11,6 +11,8 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/CodeEditor/CodeEditor.h"
+#include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -34,14 +36,17 @@ MapBase::MapBase(bool allowHackerMode)
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
-
+	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
+	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
 	this->pauseMenu = PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
+	this->hackerModeVisibleHud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
+	this->topMenuHud = Hud::create();
 
 	this->hackerModeGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
@@ -57,16 +62,24 @@ MapBase::MapBase(bool allowHackerMode)
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
-	this->menuHud->addChild(this->pauseMenu);
-	this->menuHud->addChild(this->optionsMenu);
-	this->menuHud->addChild(this->confirmationMenu);
+	if (allowHackerMode)
+	{
+		this->menuHud->addChild(this->radialMenu);
+		this->menuHud->addChild(this->codeEditor);
+	}
+
+	this->topMenuHud->addChild(this->pauseMenu);
+	this->topMenuHud->addChild(this->optionsMenu);
+	this->topMenuHud->addChild(this->confirmationMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
 	this->addChild(this->hudNode);
 	this->addChild(this->hud);
+	this->addChild(this->hackerModeVisibleHud);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
+	this->addChild(this->topMenuHud);
 }
 
 MapBase::~MapBase()
@@ -107,15 +120,25 @@ void MapBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* hackerModeEnableListener = EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom*)
 	{
 		this->onHackerModeEnable();
-	});
+	}));
 
-	EventListenerCustom* hackerModeDisableListener = EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom*)
 	{
 		this->onHackerModeDisable();
-	});
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventAllowHackerMode, [=](EventCustom*)
+	{
+		this->allowHackerMode = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventDisallowHackerMode, [=](EventCustom*)
+	{
+		this->allowHackerMode = false;
+	}));
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 	EventListenerMouse* scrollListener = EventListenerMouse::create();
@@ -130,8 +153,6 @@ void MapBase::initializeListeners()
 
 	this->addEventListener(keyboardListener);
 	this->addEventListenerIgnorePause(scrollListener);
-	this->addEventListenerIgnorePause(hackerModeEnableListener);
-	this->addEventListenerIgnorePause(hackerModeDisableListener);
 }
 
 void MapBase::onMouseWheelScroll(EventMouse* event)
@@ -171,8 +192,15 @@ void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 	}
 }
 
-void MapBase::loadMap(std::string mapResource)
+std::vector<std::string> MapBase::getMapArgs()
 {
+	return this->mapArgs;
+}
+
+void MapBase::loadMap(std::string mapResource, std::vector<std::string> args)
+{
+	this->mapArgs = args;
+	
 	if (this->map != nullptr)
 	{
 		this->mapNode->removeChild(this->map);

@@ -23,7 +23,7 @@ class LocalizedString;
 class RadialMenu : public GlobalHud
 {
 public:
-	static void registerGlobalNode();
+	static RadialMenu* create();
 
 private:
 	typedef SmartNode super;
@@ -48,5 +48,4 @@ private:
 
 	static const float Radius;
 	static const float IconRadius;
-	static RadialMenu* instance;
 };

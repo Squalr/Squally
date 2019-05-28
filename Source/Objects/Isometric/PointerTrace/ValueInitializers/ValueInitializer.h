@@ -9,7 +9,7 @@ public:
 
 	void setGridIndex(int gridIndex) override;
 
-	static const std::string MapKeyValueInitializerPrefix;
+	static const std::string MapKeyValueInitializerRegex;
 	static const std::string MapKeyMetaValue;
 
 protected:
@@ -20,4 +20,6 @@ private:
 	typedef GridObject super;
 
 	int value;
+
+	static const std::string IntegerRegex;
 };

@@ -2,12 +2,13 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-class ClickableNode;
-
 namespace cocos2d
 {
 	class Sprite;
 }
+
+class ClickableNode;
+class LocalizedLabel;
 
 class LevelNode : public HackableObject
 {
@@ -38,6 +39,7 @@ private:
 	bool isGroupFinale;
 	cocos2d::Sprite* disabledSprite;
 	ClickableNode* sprite;
+	LocalizedLabel* indexLabel;
 
 	static const std::string MapKeyMapFile;
 	static const std::string MapKeyGroupIndex;

@@ -8,17 +8,18 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NavigationEvents.h"
-#include "Resources/UIResources.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardStorage.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Menus/Return.h"
 #include "Strings/Generics/Constant.h"
@@ -45,11 +46,12 @@ void HexusRewardsMenu::registerGlobalScene()
 HexusRewardsMenu::HexusRewardsMenu()
 {
 	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
-	this->goldSprite = Sprite::create(UIResources::Menus_Objects_GOLD_2);
-	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Objects_GOLD_1);
-	this->goldSpriteChapterClear = Sprite::create(UIResources::Menus_Objects_GOLD_4);
+	this->goldSprite = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
+	this->goldSpriteLesser = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
+	this->goldSpriteChapterClear = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->rewardSound = Sound::create(SoundResources::Hexus_Reward);
 
 	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
@@ -73,6 +75,7 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->addChild(this->goldSpriteChapterClear);
 	this->addChild(this->goldLabel);
 	this->addChild(this->returnButton);
+	this->addChild(this->rewardSound);
 }
 
 HexusRewardsMenu::~HexusRewardsMenu()
@@ -86,7 +89,7 @@ void HexusRewardsMenu::onEnter()
 	float delay = 0.25f;
 	float duration = 0.35f;
 
-	SoundManager::playSoundResource(SoundResources::Hexus_Reward);
+	this->rewardSound->play();
 }
 
 void HexusRewardsMenu::initializeListeners()

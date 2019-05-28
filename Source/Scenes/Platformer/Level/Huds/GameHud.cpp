@@ -2,9 +2,13 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
@@ -29,7 +33,9 @@ GameHud::GameHud()
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->controlsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->statsBars->setVisible(false);
 	this->runeBar->setVisible(false);
+	this->currencyDisplay->setVisible(false);
 
 	this->addChild(this->statsBars);
 	this->addChild(this->runeBar);
@@ -63,6 +69,38 @@ void GameHud::initializePositions()
 void GameHud::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHudTrackEntity, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->getCurrencyDisplay()->setCurrencyInventory(args->entity->getCurrencyInventory());
+			this->getRuneBar()->setStatsTarget(args->entity);
+			this->getStatsBars()->setStatsTarget(args->entity);
+
+			this->statsBars->setVisible(true);
+			//// this->runeBar->setVisible(true);
+			this->currencyDisplay->setVisible(true);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventHudUntrackEntity, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::HudTrackEntityArgs* args = static_cast<PlatformerEvents::HudTrackEntityArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->getCurrencyDisplay()->setCurrencyInventory(nullptr);
+			this->getRuneBar()->setStatsTarget(nullptr);
+			this->getStatsBars()->setStatsTarget(nullptr);
+
+			this->statsBars->setVisible(false);
+			this->runeBar->setVisible(false);
+			this->currencyDisplay->setVisible(false);
+		}
+	}));
 }
 
 void GameHud::update(float dt)

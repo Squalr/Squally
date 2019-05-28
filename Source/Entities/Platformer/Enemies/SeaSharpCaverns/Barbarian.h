@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyBarbarian;
 
 private:
+	typedef PlatformerEnemy super;
 	Barbarian(cocos2d::ValueMap& initProperties);
 	~Barbarian();
 

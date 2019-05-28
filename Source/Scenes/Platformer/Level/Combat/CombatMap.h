@@ -4,6 +4,7 @@
 
 class CombatHud;
 class ChoicesMenu;
+class DefeatMenu;
 class EnemyAIHelper;
 class RewardsMenu;
 class TargetSelectionMenu;
@@ -13,7 +14,10 @@ class Timeline;
 class CombatMap : public MapBase
 {
 public:
+	static CombatMap* getInstance();
 	static void registerGlobalScene();
+
+	void loadMap(std::string mapResource, std::vector<std::string> args = { }) override;
 
 protected:
 	CombatMap();
@@ -31,6 +35,7 @@ private:
 	ChoicesMenu* choicesMenu;
 	CombatHud* combatHud;
 	TextOverlays* textOverlays;
+	DefeatMenu* defeatMenu;
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
 	EnemyAIHelper* enemyAIHelper;
@@ -39,5 +44,6 @@ private:
 	std::vector<std::string> enemyEntityKeys;
 	std::string enemyIdentifier;
 
+	static const std::string MapKeyPropertyDisableHackerMode;
 	static CombatMap* instance;
 };

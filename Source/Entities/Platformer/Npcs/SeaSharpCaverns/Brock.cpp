@@ -92,8 +92,8 @@ HexusOpponentData* Brock::getHexusOpponentData()
 			Brock::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.271f,
-			HexusOpponentData::generateDeck(32, 0.271f,
+			0.268f,
+			HexusOpponentData::generateDeck(32, 0.268f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

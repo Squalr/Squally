@@ -160,7 +160,7 @@ void HexusChapterSelectMenu::onEnter()
 
 	for (auto it = this->chapters.begin(); it != this->chapters.end(); it++)
 	{
-		(*it)->disableInteraction();
+		/// (*it)->disableInteraction();
 	}
 
 	this->loadProgress();

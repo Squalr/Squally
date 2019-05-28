@@ -153,14 +153,14 @@ void GameUtils::flattenNode(Node* parent)
 	}
 }
 
-Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
+Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, bool addAsReentry, int index)
 {
 	if (node == nullptr)
 	{
 		return node;
 	}
 
-	Vec2 newPosition = Vec2::ZERO;
+	Vec3 newPosition = Vec3::ZERO;
 	Node* previousParent = node->getParent();
 
 	// Remove child from current parent
@@ -168,29 +168,36 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	{
 		if (retainPosition && newParent != nullptr)
 		{
-			Vec2 screenPosition = previousParent->convertToWorldSpace(node->getPosition());
-			newPosition = newParent->convertToNodeSpace(screenPosition);
+			Vec3 screenPosition = previousParent->convertToWorldSpace3(node->getPosition3D());
+			newPosition = newParent->convertToNodeSpace3(screenPosition);
 		}
 
 		node->retain();
 		node->removeFromParent();
 	}
+	else if (retainPosition)
+	{
+		newPosition = node->getPosition3D();
+	}
 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
+		node->setPosition3D(newPosition);
 		newParent->addChildInsert(node, index, true);
-		node->setPosition(newPosition);
 	}
 	else if (newParent != nullptr)
 	{
-		newParent->addChildAsReentry(node);
-		node->setPosition(newPosition);
-	}
-	else if (node->getParent() != nullptr)
-	{
-		node->getParent()->removeChild(node);
-		node = nullptr;
+		node->setPosition3D(newPosition);
+
+		if (addAsReentry)
+		{
+			newParent->addChildAsReentry(node);
+		}
+		else
+		{
+			newParent->addChild(node);
+		}
 	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.
@@ -261,9 +268,9 @@ Vec2 GameUtils::getWorldCoords(Node* node)
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
 	{
-		Vec2 relativeCoords = parent->convertToWorldSpace(resultCoords);
+		Vec2 relativeCoords = uiBoundObjectParent->convertToWorldSpace(resultCoords);
 		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
-		Vec2 fixedCoords = Vec2(realCoords.x, realCoords.y) + Vec2(relativeCoords.x, -relativeCoords.y / 2.0f);
+		Vec2 fixedCoords = Vec2(realCoords.x, realCoords.y) + Vec2(relativeCoords.x, -resultRect.size.height / 2.0f);
 
 		return fixedCoords;
 	}
@@ -291,9 +298,9 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
 	{
-		Vec3 relativeCoords = parent->convertToWorldSpace3(resultCoords);
+		Vec3 relativeCoords = uiBoundObjectParent->convertToWorldSpace3(resultCoords);
 		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
-		Vec3 fixedCoords = realCoords + Vec3(relativeCoords.x, -relativeCoords.y / 4.0f, relativeCoords.z);
+		Vec3 fixedCoords = realCoords + Vec3(relativeCoords.x, -resultRect.size.height / 2.0f, relativeCoords.z);
 
 		return fixedCoords;
 	}

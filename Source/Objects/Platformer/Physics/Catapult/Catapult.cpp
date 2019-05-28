@@ -47,7 +47,7 @@ Catapult* Catapult::create(ValueMap& initProperties)
 	return instance;
 }
 
-Catapult::Catapult(ValueMap& initProperties) : HackableObject(initProperties)
+Catapult::Catapult(ValueMap& initProperties) : super(initProperties)
 {
 	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Catapult_Animations);
 	this->catapultCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, false, false);
@@ -193,7 +193,8 @@ void Catapult::launchBall()
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
-		ObjectEvents::SpawnMethod::Above
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::SetToOwner
 	));
 
 	catapultBall->setRotation(0.0f);

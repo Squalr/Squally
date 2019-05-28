@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGoblin;
 
 private:
+	typedef PlatformerEntity super;
 	Goblin(cocos2d::ValueMap& initProperties);
 	~Goblin();
 

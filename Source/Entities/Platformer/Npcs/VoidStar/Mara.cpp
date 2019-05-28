@@ -92,8 +92,8 @@ HexusOpponentData* Mara::getHexusOpponentData()
 			Mara::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.958f,
-			HexusOpponentData::generateDeck(32, 0.958f,
+			0.962f,
+			HexusOpponentData::generateDeck(32, 0.962f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

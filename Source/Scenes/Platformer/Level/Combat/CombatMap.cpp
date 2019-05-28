@@ -9,6 +9,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
 #include "Engine/Maps/SerializableObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -16,6 +17,7 @@
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
+#include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
 #include "Scenes/Platformer/Level/Combat/RewardsMenu.h"
 #include "Scenes/Platformer/Level/Combat/TargetSelectionMenu.h"
@@ -23,12 +25,14 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
 CombatMap* CombatMap::instance = nullptr;
+const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disabled";
 
-void CombatMap::registerGlobalScene()
+CombatMap* CombatMap::getInstance()
 {
 	if (CombatMap::instance == nullptr)
 	{
@@ -37,7 +41,12 @@ void CombatMap::registerGlobalScene()
 		CombatMap::instance->initializeListeners();
 	}
 
-	GlobalDirector::registerGlobalScene(CombatMap::instance);
+	return CombatMap::instance;
+}
+
+void CombatMap::registerGlobalScene()
+{
+	GlobalDirector::registerGlobalScene(CombatMap::getInstance());
 }
 
 CombatMap::CombatMap() : super(true)
@@ -52,15 +61,17 @@ CombatMap::CombatMap() : super(true)
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
 
-	this->addChild(this->textOverlays);
-	this->addChild(this->targetSelectionMenu);
-	this->addChild(this->combatHud);
 	this->addChild(this->enemyAIHelper);
+	this->hackerModeVisibleHud->addChild(this->textOverlays);
+	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
+	this->hud->addChild(this->combatHud);
 	this->hud->addChild(this->choicesMenu);
+	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
 }
 
@@ -71,8 +82,6 @@ CombatMap::~CombatMap()
 void CombatMap::onEnter()
 {
 	MapBase::onEnter();
-	
-	this->rewardsMenu->setVisible(false);
 
 	this->spawnEntities();
 }
@@ -83,6 +92,7 @@ void CombatMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->timeline->setPosition(Vec2(visibleSize.width / 2.0f, 160.0f));
@@ -98,7 +108,7 @@ void CombatMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(args->levelFile);
+			this->loadMap(args->levelFile, args->mapArgs);
 
 			this->setEntityKeys(args->playerTypes, args->enemyTypes);
 			this->enemyIdentifier = args->enemyIdentifier;
@@ -109,17 +119,32 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{
-		PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
+		CombatEvents::CombatFinishedArgs* args = static_cast<CombatEvents::CombatFinishedArgs*>(eventCustom->getUserData());
 
-		this->menuBackDrop->setOpacity(196);
-		this->rewardsMenu->setVisible(true);
+		if (args != nullptr)
+		{
+			if (args->playerVictory)
+			{
+				PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 
-		CombatEvents::TriggerGiveRewards();
+				this->menuBackDrop->setOpacity(196);
+				this->rewardsMenu->show();
+
+				CombatEvents::TriggerGiveRewards();
+			}
+			else
+			{
+				this->menuBackDrop->setOpacity(196);
+				this->defeatMenu->show();
+			}
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)
 	{
-		NavigationEvents::navigateBack();
+		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+
+		NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapResource, { }, true));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
@@ -149,6 +174,16 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
+}
+
+void CombatMap::loadMap(std::string mapResource, std::vector<std::string> args)
+{
+	super::loadMap(mapResource, args);
+
+	if (std::find(mapArgs.begin(), mapArgs.end(), CombatMap::MapKeyPropertyDisableHackerMode) != mapArgs.end())
+	{
+		this->allowHackerMode = false;
+	}
 }
 
 void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys)
@@ -203,7 +238,7 @@ void CombatMap::spawnEntities()
 				[=] (DeserializationEvents::ObjectDeserializationArgs args)
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
-
+					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}
 			);

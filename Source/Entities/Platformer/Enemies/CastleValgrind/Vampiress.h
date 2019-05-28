@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyVampiress;
 
 private:
+	typedef PlatformerEnemy super;
 	Vampiress(cocos2d::ValueMap& initProperties);
 	~Vampiress();
 

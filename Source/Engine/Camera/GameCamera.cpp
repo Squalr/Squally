@@ -10,6 +10,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCScheduler.h"
 
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/ConstantString.h"
@@ -45,7 +46,6 @@ GameCamera* GameCamera::getInstance()
 
 GameCamera::GameCamera()
 {
-	this->useStoredNextCameraPosition = false;
 	this->defaultDistance = Director::getInstance()->getZEye();
 	this->targetStack = std::stack<CameraTrackingData>();
 	this->cameraBounds = Rect::ZERO;
@@ -83,7 +83,6 @@ void GameCamera::onEnter()
 {
 	super::onEnter();
 
-	this->setCameraPositionWorkAround();
 	this->scheduleUpdate();
 }
 
@@ -129,8 +128,6 @@ void GameCamera::initializeListeners()
 
 void GameCamera::update(float dt)
 {
-	this->setCameraPositionWorkAround();
-
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -138,7 +135,10 @@ void GameCamera::update(float dt)
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
 
-		this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
+		if (!DeveloperModeController::getInstance()->isDeveloperModeEnabled())
+		{
+			this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
+		}
 
 		switch (trackingData.scrollType)
 		{
@@ -160,7 +160,7 @@ void GameCamera::update(float dt)
 	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
 	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
 
-	this->setCameraPositionReal(cameraPosition);
+	this->setCameraPosition(cameraPosition);
 }
 
 float GameCamera::getCameraDistance()
@@ -190,30 +190,6 @@ Vec2 GameCamera::getCameraPosition()
 }
 
 void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
-{
-	// Don't actually set the position -- store it to use later to work around a cocos bug
-	this->storedNextCameraPosition = position;
-	this->useStoredNextCameraPosition = true;
-
-	if (addTrackOffset && this->targetStack.size() > 0)
-	{
-		this->storedNextCameraPosition += this->targetStack.top().trackOffset;
-	}
-}
-
-void GameCamera::setCameraPositionWorkAround()
-{
-	// This is a work around from a bug where setting the camera position during the loading of a scene can cause
-	// A stupid crash inside the physics engine in code with no symbols -- this can't be easily diagnosed,
-	// So this is a work around to delay setting the position in the update loop after the scene is loaded instead, bypassing the crash
-	if (this->useStoredNextCameraPosition)
-	{
-		this->setCameraPositionReal(this->storedNextCameraPosition);
-		this->useStoredNextCameraPosition = false;
-	}
-}
-
-void GameCamera::setCameraPositionReal(Vec2 position, bool addTrackOffset)
 {
 	Vec2 cameraPosition = position;
 
@@ -325,6 +301,7 @@ Vec2 GameCamera::boundCameraByEllipses()
 
 Vec2 GameCamera::boundCameraByRectangle()
 {
+	Vec2 cameraPositionDebug = Camera::getDefaultCamera()->getPosition();
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 
 	if (!this->targetStack.empty())
@@ -401,19 +378,14 @@ Vec2 GameCamera::boundCameraByRectangle()
 	return cameraPosition;
 }
 
-void GameCamera::setTarget(CameraTrackingData trackingData)
+void GameCamera::setTarget(CameraTrackingData trackingData, bool immediatelyTrack)
 {
 	this->clearTargets();
 
-	this->pushTarget(trackingData);
-
-	if (trackingData.target != nullptr)
-	{
-		this->setCameraPosition(trackingData.target->getPosition(), true);
-	}
+	this->pushTarget(trackingData, immediatelyTrack);
 }
 
-void GameCamera::pushTarget(CameraTrackingData trackingData)
+void GameCamera::pushTarget(CameraTrackingData trackingData, bool immediatelyTrack)
 {
 	trackingData.followSpeed.x = MathUtils::clamp(trackingData.followSpeed.x, 0.0f, 1.0f);
 	trackingData.followSpeed.y = MathUtils::clamp(trackingData.followSpeed.y, 0.0f, 1.0f);
@@ -436,6 +408,11 @@ void GameCamera::pushTarget(CameraTrackingData trackingData)
 	}
 
 	this->targetStack.push(trackingData);
+
+	if (immediatelyTrack)
+	{
+		this->setCameraPositionToTrackedTarget();
+	}
 }
 
 CameraTrackingData* GameCamera::getCurrentTrackingData()
@@ -492,4 +469,16 @@ void GameCamera::updateCameraDebugLabels()
 	this->debugCameraStringX->setString(streamX.str());
 	this->debugCameraStringY->setString(streamY.str());
 	this->debugCameraStringZoom->setString(streamZoom.str());
+}
+
+void GameCamera::setCameraPositionToTrackedTarget()
+{
+	if (!this->targetStack.empty())
+	{
+		CameraTrackingData trackingData = this->targetStack.top();
+
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
+
+		this->setCameraPosition(targetPosition);
+	}
 }

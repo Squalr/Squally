@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPolyphemus;
 
 private:
+	typedef NpcBase super;
 	Polyphemus(cocos2d::ValueMap& initProperties);
 	~Polyphemus();
 

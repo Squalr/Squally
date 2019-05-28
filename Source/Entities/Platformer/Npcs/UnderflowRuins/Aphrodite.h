@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyAphrodite;
 
 private:
+	typedef NpcBase super;
 	Aphrodite(cocos2d::ValueMap& initProperties);
 	~Aphrodite();
 

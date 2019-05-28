@@ -39,7 +39,7 @@ HeavenHug* HeavenHug::create(ValueMap& initProperties)
 	return instance;
 }
 
-HeavenHug::HeavenHug(ValueMap& initProperties) : HackableObject(initProperties)
+HeavenHug::HeavenHug(ValueMap& initProperties) : super(initProperties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);

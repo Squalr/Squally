@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyDemonRogue;
 
 private:
+	typedef PlatformerEnemy super;
 	DemonRogue(cocos2d::ValueMap& initProperties);
 	~DemonRogue();
 

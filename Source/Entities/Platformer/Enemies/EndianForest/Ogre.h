@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyOgre;
 
 private:
+	typedef PlatformerEnemy super;
 	Ogre(cocos2d::ValueMap& initProperties);
 	~Ogre();
 

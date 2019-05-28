@@ -92,8 +92,8 @@ HexusOpponentData* Raven::getHexusOpponentData()
 			Raven::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.469f,
-			HexusOpponentData::generateDeck(32, 0.469f,
+			0.455f,
+			HexusOpponentData::generateDeck(32, 0.455f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -92,8 +92,8 @@ HexusOpponentData* Elric::getHexusOpponentData()
 			Elric::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.396f,
-			HexusOpponentData::generateDeck(32, 0.396f,
+			0.384f,
+			HexusOpponentData::generateDeck(32, 0.384f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

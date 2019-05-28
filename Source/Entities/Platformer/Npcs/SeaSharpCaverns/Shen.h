@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyShen;
 
 private:
+	typedef NpcBase super;
 	Shen(cocos2d::ValueMap& initProperties);
 	~Shen();
 

@@ -37,18 +37,20 @@ SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
 
 SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite)
 {
-	this->sprite = Sprite::create(defaultSprite);
+	this->defaultSprite = defaultSprite;
+	this->sprite = Sprite::create(this->defaultSprite);
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
 	this->repeatIndex = 0;
 
-	this->primeCache(defaultSprite);
+	this->primeCache(this->defaultSprite);
 
 	this->addChild(this->sprite);
 }
 
 SmartAnimationSequenceNode::SmartAnimationSequenceNode()
 {
+	this->defaultSprite = "";
 	this->sprite = Sprite::create();
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
@@ -69,6 +71,26 @@ void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceF
 	{
 		Director::getInstance()->getTextureCache()->addImage(*it);
 	}
+}
+
+bool SmartAnimationSequenceNode::isPlayingAnimation()
+{
+	return this->getNumberOfRunningActions() != 0;
+}
+
+void SmartAnimationSequenceNode::stopAnimation()
+{
+	this->sprite->stopAllActions();
+
+	if (this->defaultSprite.empty())
+	{
+		this->sprite->initWithFile(UIResources::EmptyImage);
+	}
+	else
+	{
+		this->sprite->initWithFile(this->defaultSprite);
+	}
+	
 }
 
 void SmartAnimationSequenceNode::playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame, std::function<void()> onAnimationComplete)

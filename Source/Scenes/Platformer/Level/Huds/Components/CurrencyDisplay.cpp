@@ -27,6 +27,7 @@ CurrencyDisplay::CurrencyDisplay()
 	this->emblem = Sprite::create(ObjectResources::Collectables_Doubloon_Doubloon_0000);
 	this->value = ConstantString::create("0");
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->value);
+	this->inventory = nullptr;
 
 	this->emblem->setScale(0.4f);
 	this->label->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -82,5 +83,8 @@ void CurrencyDisplay::update(float dt)
 
 void CurrencyDisplay::setCurrencyInventory(CurrencyInventory* inventory)
 {
+	this->value->setString("0");
+	this->cachedCurrency = (0 ^ CurrencyDisplay::CacheCipher);
+	
 	this->inventory = inventory;
 }

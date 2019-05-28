@@ -16,6 +16,7 @@ class ClickableNode;
 class ClickableTextNode;
 class HackableCode;
 class LabelStack;
+class Lexicon;
 class MenuLabel;
 class ScriptEntry;
 class ScriptList;
@@ -24,7 +25,7 @@ class TextWindow;
 class CodeEditor : public GlobalHud
 {
 public:
-	static void registerGlobalNode();
+	static CodeEditor* create();
 
 private:
 	typedef SmartNode super;
@@ -33,6 +34,7 @@ private:
 	~CodeEditor();
 
 	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
@@ -59,16 +61,17 @@ private:
 	cocos2d::Sprite* rightBarBackground;
 	cocos2d::Sprite* radialEye;
 	cocos2d::Node* previewNode;
+	cocos2d::Node* clippyNode;
 	CodeWindow* functionWindow;
 	LabelStack* statusWindow;
 	LabelStack* registerWindow;
 	ScriptList* scriptList;
-
 	ClickableTextNode* cancelButton;
 	ClickableTextNode* applyChangesButton;
 	cocos2d::Node* applyChangesButtonGrayed;
-
 	LocalizedLabel* titleLabel;
+	ClickableTextNode* lexiconButton;
+	Lexicon* lexicon;
 
 	HackableCode* activeHackableCode;
 	float compileDelay;
@@ -82,5 +85,4 @@ private:
 	static const cocos2d::Color4B HeaderColor;
 	static const cocos2d::Color4B ErrorColor;
 	static const cocos2d::Color4B RegisterColor;
-	static CodeEditor* instance;
 };

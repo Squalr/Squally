@@ -3,6 +3,7 @@
 #include <algorithm> 
 #include <cctype>
 #include <locale>
+#include<regex>
 #include <sstream>
 
 #ifndef WIN32
@@ -245,6 +246,20 @@ bool StrUtils::endsWith(std::string str, std::string suffix, bool ignoreCase)
 		{
 			return true;
 		}
+	}
+
+	return false;
+}
+
+bool StrUtils::isRegexMatch(const std::string str, const std::string regex)
+{
+	    std::regex re = std::regex(regex);
+		
+		std::smatch match;
+
+	if (std::regex_match(str, match, re))
+	{
+		return true;
 	}
 
 	return false;

@@ -1,7 +1,8 @@
 #include "HackableObject.h"
 
-#include "base/CCEventCustom.h"
-#include "base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
@@ -17,7 +18,9 @@
 
 using namespace cocos2d;
 
-HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObject(initProperties)
+const std::string HackableObject::MapKeyShowClippy = "show-clippy";
+
+HackableObject::HackableObject(const ValueMap& properties) : SerializableObject(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
@@ -26,6 +29,7 @@ HackableObject::HackableObject(const ValueMap& initProperties) : SerializableObj
 	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
+	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
@@ -44,12 +48,68 @@ void HackableObject::onEnter()
 	super::onEnter();
 
 	// Move the UI elements to the top-most layer
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
-		this->uiElements
-	));
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
 
 	this->registerHackables();
 	this->scheduleUpdate();
+}
+
+void HackableObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
+
+	this->registerHackables();
+
+	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
+}
+
+void HackableObject::onExit()
+{
+	super::onExit();
+
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
+}
+
+void HackableObject::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackApplied, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::HackAppliedArgs* args = static_cast<HackableEvents::HackAppliedArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
+			{
+				if ((*it)->getPointer() == args->activeAttribute->getPointer())
+				{
+					this->trackedAttributes.push_back(args->activeAttribute);
+
+					return;
+				}
+			}
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeDisable();
+	}));
+}
+
+void HackableObject::initializePositions()
+{
+	super::initializePositions();
+
+	this->uiElements->setPosition(this->getButtonOffset());
 }
 
 void HackableObject::update(float dt)
@@ -84,57 +144,6 @@ void HackableObject::update(float dt)
 
 		this->timeRemainingBar->setProgress(1.0f - highestRatio);
 	}
-}
-
-void HackableObject::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-
-	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
-
-	this->registerHackables();
-
-	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
-}
-
-void HackableObject::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackAppliedEvent, [=](EventCustom* eventCustom)
-	{
-		HackableEvents::HackAppliedArgs* args = static_cast<HackableEvents::HackAppliedArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
-			{
-				if ((*it)->getPointer() == args->activeAttribute->getPointer())
-				{
-					this->trackedAttributes.push_back(args->activeAttribute);
-
-					return;
-				}
-			}
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeEnable();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeDisable();
-	}));
-}
-
-void HackableObject::initializePositions()
-{
-	super::initializePositions();
-
-	this->uiElements->setPosition(this->getButtonOffset());
 }
 
 void HackableObject::onHackerModeEnable()
@@ -186,6 +195,14 @@ void HackableObject::registerData(HackableData* hackableData)
 	this->dataList.push_back(hackableData);
 }
 
+void HackableObject::unregisterData(HackableData* hackableData)
+{
+	this->removeChild(hackableData);
+
+	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableData), this->hackableList.end());
+	this->dataList.erase(std::remove(this->dataList.begin(), this->dataList.end(), hackableData), this->dataList.end());
+}
+
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
 	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
@@ -199,4 +216,29 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 	this->addChild(hackableCode);
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
+}
+
+void HackableObject::unregisterCode(HackableCode* hackableCode)
+{
+	bool hasHackableCode = false;
+
+	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+	{
+		if ((*it)->getPointer() == hackableCode->getPointer())
+		{
+			hackableCode = *it;
+			hasHackableCode = true;
+			break;
+		}
+	}
+
+	if (hasHackableCode)
+	{
+		this->removeChild(hackableCode);
+
+		hackableCode->restoreState();
+
+		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
+		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
+	}
 }

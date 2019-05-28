@@ -6,6 +6,7 @@
 
 class GridEntity;
 class MemoryGrid;
+class Music;
 class PointerTraceHud;
 class VictoryMenu;
 
@@ -13,8 +14,6 @@ class PointerTraceMap : public MapBase
 {
 public:
 	static void registerGlobalScene();
-
-	void loadMap(std::string mapResource) override;
 
 protected:
 	PointerTraceMap();
@@ -43,6 +42,7 @@ private:
 	cocos2d::Node* collisionDebugNode;
 	PointerTraceHud* pointerTraceHud;
 	VictoryMenu* victoryMenu;
+	Music* music;
 
 	static PointerTraceMap* instance;
 };

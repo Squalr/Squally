@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyPoseidon;
 
 private:
+	typedef NpcBase super;
 	Poseidon(cocos2d::ValueMap& initProperties);
 	~Poseidon();
 

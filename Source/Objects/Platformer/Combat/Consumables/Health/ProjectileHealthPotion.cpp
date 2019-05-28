@@ -5,6 +5,8 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotionGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
@@ -12,16 +14,18 @@
 
 using namespace cocos2d;
 
-ProjectileHealthPotion* ProjectileHealthPotion::create(std::function<void(PlatformerEntity* target)> onTargetHit)
+const float ProjectileHealthPotion::HealPercentage = 0.4f;
+
+ProjectileHealthPotion* ProjectileHealthPotion::create(PlatformerEntity* caster)
 {
-	ProjectileHealthPotion* instance = new ProjectileHealthPotion(onTargetHit);
+	ProjectileHealthPotion* instance = new ProjectileHealthPotion(caster);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ProjectileHealthPotion::ProjectileHealthPotion(std::function<void(PlatformerEntity* target)> onTargetHit) : Projectile(onTargetHit, 256.0f, 1.0f)
+ProjectileHealthPotion::ProjectileHealthPotion(PlatformerEntity* caster) : Projectile(caster, 256.0f, 1.0f, false)
 {
 	this->healthPotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
 
@@ -47,6 +51,13 @@ void ProjectileHealthPotion::initializePositions()
 void ProjectileHealthPotion::update(float dt)
 {
 	super::update(dt);
+}
+
+void ProjectileHealthPotion::onCollideWithTarget(PlatformerEntity* target)
+{
+	int healing = std::round(float(target->getMaxHealth()) * ProjectileHealthPotion::HealPercentage);
+
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileHealthPotion::getButtonOffset()

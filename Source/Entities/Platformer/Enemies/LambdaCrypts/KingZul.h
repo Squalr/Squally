@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyKingZul;
 
 private:
+	typedef PlatformerEnemy super;
 	KingZul(cocos2d::ValueMap& initProperties);
 	~KingZul();
 

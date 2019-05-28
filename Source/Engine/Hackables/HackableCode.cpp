@@ -159,7 +159,7 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LateBindData 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview, lateBindData.clippy)
 {
 	this->hackableCodeIdentifier = lateBindData.hackableObjectIdentifier + "_" + lateBindData.functionName->getStringIdentifier();
 	this->codePointer = (unsigned char*)codeStart;
@@ -254,16 +254,16 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		return false;
 	}
 
-	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.byteCount);
-
 	int unfilledBytes = this->originalCodeLength - compileResult.byteCount;
 
 	// Fill remaining bytes with NOPs
 	for (int index = 0; index < unfilledBytes; index++)
 	{
 		const unsigned char nop = 0x90;
-		((unsigned char*)this->codePointer)[compileResult.byteCount + index] = nop;
+		compileResult.compiledBytes.push_back(nop);
 	}
+
+	HackUtils::writeMemory(this->codePointer, compileResult.compiledBytes.data(), compileResult.compiledBytes.size());
 
 	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
 	this->resetTimer();
@@ -278,11 +278,5 @@ void HackableCode::restoreState()
 		return;
 	}
 
-	if (this->codePointer != nullptr)
-	{
-		for (int index = 0; index < this->originalCodeLength; index++)
-		{
-			((unsigned char*)this->codePointer)[index] = this->originalCodeCopy[index];
-		}
-	}
+	HackUtils::writeMemory(this->codePointer, this->originalCodeCopy.data(), this->originalCodeCopy.size());
 }

@@ -92,8 +92,8 @@ HexusOpponentData* Igneus::getHexusOpponentData()
 			Igneus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.688f,
-			HexusOpponentData::generateDeck(32, 0.688f,
+			0.696f,
+			HexusOpponentData::generateDeck(32, 0.696f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

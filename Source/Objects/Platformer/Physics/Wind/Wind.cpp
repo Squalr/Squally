@@ -7,6 +7,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Physics/Wind/WindClippy.h"
 #include "Objects/Platformer/Physics/Wind/WindGenericPreview.h"
 #include "Objects/Platformer/Physics/Wind/WindSetSpeedPreview.h"
 
@@ -23,7 +25,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_WIND_SPEED 1
 
 const std::string Wind::MapKeyWind = "wind";
-const float Wind::BaseWindSpeed = 1024.0f;
+const float Wind::BaseWindSpeed = 10240.0f;
 
 Wind* Wind::create(ValueMap& initProperties)
 {
@@ -34,7 +36,7 @@ Wind* Wind::create(ValueMap& initProperties)
 	return instance;
 }
 
-Wind::Wind(ValueMap& initProperties) : HackableObject(initProperties)
+Wind::Wind(ValueMap& initProperties) : super(initProperties)
 {
 	float speedX = 0.0f;
 	float speedY = 0.0f;
@@ -87,7 +89,7 @@ void Wind::initializeListeners()
 
 	this->windForce->setContactUpdateCallback(CC_CALLBACK_2(Wind::applyWindForce, this));
 
-	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Entity, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Speed is applied in the update applyWindForce
 
@@ -104,9 +106,17 @@ void Wind::update(float dt)
 
 void Wind::applyWindForce(std::set<CollisionObject*>* targets, float dt)
 {
+	Vec2 thisPosition = GameUtils::getWorldCoords(this);
+
 	for (auto it = targets->begin(); it != targets->end(); it++)
 	{
-		(*it)->setVelocity((*it)->getVelocity() + this->windSpeed * Wind::BaseWindSpeed * dt);
+		Vec2 targetPosition = GameUtils::getWorldCoords(*it);
+		Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));
+		Vec2 delta = Vec2(this->windSize / 2.0f) - distance;
+		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), 0.0f, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f), 0.0f, 1.0f));
+		Vec2 speed = Vec2(this->windSpeed.x * multiplier.x, this->windSpeed.y * multiplier.y) * Wind::BaseWindSpeed;
+
+		(*it)->setVelocity((*it)->getVelocity() + speed * dt);
 	}
 }
 
@@ -132,7 +142,8 @@ void Wind::registerHackables()
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
-				5.0f
+				5.0f,
+				this->showClippy ? WindClippy::create() : nullptr
 			)
 		},
 	};
@@ -153,26 +164,33 @@ HackablePreview* Wind::createDefaultPreview()
 
 void Wind::updateWind(float dt)
 {
-	this->windSpeed = this->windSpeedDefault;
+	this->windSpeed = Vec2::ZERO;
 
 	static volatile float* xSpeedPtr;
 	static volatile float* ySpeedPtr;
+	static volatile float* xDefaultSpeedPtr;
+	static volatile float* yDefaultSpeedPtr;
 
 	xSpeedPtr = &this->windSpeed.x;
 	ySpeedPtr = &this->windSpeed.y;
+	xDefaultSpeedPtr = &this->windSpeedDefault.x;
+	yDefaultSpeedPtr = &this->windSpeedDefault.y;
 
 	ASM(push EAX);
 	ASM(push EBX);
 
+	ASM_MOV_REG_VAR(EAX, xDefaultSpeedPtr);
+	ASM_MOV_REG_VAR(EBX, yDefaultSpeedPtr);
+
+	ASM(movss xmm0, [EAX])
+	ASM(movss xmm1, [EBX])
+
 	ASM_MOV_REG_VAR(EAX, xSpeedPtr);
 	ASM_MOV_REG_VAR(EBX, ySpeedPtr);
 
-	ASM(fld dword ptr [EBX])
-	ASM(fld dword ptr [EAX])
-
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WIND_SPEED);
-	ASM(fstp dword ptr [EAX])
-	ASM(fstp dword ptr [EBX])
+	ASM(movss [EAX], xmm0)
+	ASM(movss [EBX], xmm1)
 	ASM_NOP16()
 	ASM_NOP16()
 	HACKABLE_CODE_END();

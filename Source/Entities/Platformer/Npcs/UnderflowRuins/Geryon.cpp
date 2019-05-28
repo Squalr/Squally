@@ -92,8 +92,8 @@ HexusOpponentData* Geryon::getHexusOpponentData()
 			Geryon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.177f,
-			HexusOpponentData::generateDeck(32, 0.177f,
+			0.179f,
+			HexusOpponentData::generateDeck(32, 0.179f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyTigerMan;
 
 private:
+	typedef PlatformerEnemy super;
 	TigerMan(cocos2d::ValueMap& initProperties);
 	~TigerMan();
 

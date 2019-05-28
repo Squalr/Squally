@@ -34,7 +34,7 @@ Laser* Laser::create(ValueMap& initProperties)
 	return instance;
 }
 
-Laser::Laser(ValueMap& initProperties) : HackableObject(initProperties)
+Laser::Laser(ValueMap& initProperties) : super(initProperties)
 {
 	this->currentLaserCountDown = RandomHelper::random_real(0.0f, 3.0f);
 	this->maxLaserCountDown = 4.0f;

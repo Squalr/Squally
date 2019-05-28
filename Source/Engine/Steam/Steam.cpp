@@ -11,10 +11,8 @@
 using namespace cocos2d;
 
 const int Steam::SteamAppId = 770200;
-const std::string Steam::SteamLibOSX = "libsteam_api.dylib";
-const std::string Steam::SteamLibWin32 = "steam_api.dll";
-const std::string Steam::SteamLibWin64 = "steam_api64.dll";
-const std::string Steam::SteamLibLinux32 = "libsteam_api.so";
+const std::string Steam::ItchFile = ".itch.toml";
+const std::string Steam::SteamDebugFile = "steam_appid.txt";
 
 Steam* Steam::instance = nullptr;
 
@@ -38,7 +36,7 @@ Steam::~Steam()
 
 bool Steam::init()
 {
-	if (Steam::isSquallySteamBuild())
+	if (!Steam::isSquallyItchBuild())
 	{
 		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
 		{
@@ -56,27 +54,27 @@ bool Steam::init()
 	return true;
 }
 
-bool Steam::isSquallySteamBuild()
+bool Steam::isSquallyItchBuild()
 {
 	static bool init = false;
-	static bool isSteamBuild = true;
+	static bool isItchBuild = false;
 
 	if (!init)
 	{
 		init = true;
 
-		if (!Steam::isSteamLibPresent())
+		if (!isSteamDebugFilePresent() && Steam::isItchFilePresent())
 		{
-			isSteamBuild = false;
+			isItchBuild = true;
 		}
 	}
 
-	return isSteamBuild;
+	return isItchBuild;
 }
 
 bool Steam::isCloudSaveAvailable()
 {
-	if (!Steam::isSquallySteamBuild())
+	if (Steam::isSquallyItchBuild())
 	{
 		return false;
 	}
@@ -93,7 +91,7 @@ bool Steam::isCloudSaveAvailable()
 
 LanguageType Steam::getLanguage()
 {
-	if (!Steam::isSquallySteamBuild())
+	if (!Steam::isSquallyItchBuild())
 	{
 		return LanguageType::ENGLISH;
 	}
@@ -228,15 +226,12 @@ LanguageType Steam::getLanguage()
 	return LanguageType::ENGLISH;
 }
 
-bool Steam::isSteamDebugBuild()
+bool Steam::isSteamDebugFilePresent()
 {
-	return FileUtils::getInstance()->isFileExist("steam_appid.txt");
+	return FileUtils::getInstance()->isFileExist(Steam::SteamDebugFile);
 }
 
-bool Steam::isSteamLibPresent()
+bool Steam::isItchFilePresent()
 {
-	return (FileUtils::getInstance()->isFileExist(Steam::SteamLibOSX)
-		|| FileUtils::getInstance()->isFileExist(Steam::SteamLibWin32)
-		|| FileUtils::getInstance()->isFileExist(Steam::SteamLibWin64)
-		|| FileUtils::getInstance()->isFileExist(Steam::SteamLibLinux32));
+	return FileUtils::getInstance()->isFileExist(Steam::ItchFile);
 }

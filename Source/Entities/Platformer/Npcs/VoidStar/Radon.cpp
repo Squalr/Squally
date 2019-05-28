@@ -92,8 +92,8 @@ HexusOpponentData* Radon::getHexusOpponentData()
 			Radon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.917f,
-			HexusOpponentData::generateDeck(32, 0.917f,
+			0.923f,
+			HexusOpponentData::generateDeck(32, 0.923f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

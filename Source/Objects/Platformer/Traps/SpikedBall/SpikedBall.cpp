@@ -33,7 +33,7 @@ SpikedBall* SpikedBall::create(ValueMap& initProperties)
 	return instance;
 }
 
-SpikedBall::SpikedBall(ValueMap& initProperties) : HackableObject(initProperties)
+SpikedBall::SpikedBall(ValueMap& initProperties) : super(initProperties)
 {
 	this->ball = Sprite::create(ObjectResources::Traps_SpikeBall_SpikeBall);
 	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeySnowman;
 
 private:
+	typedef PlatformerEntity super;
 	Snowman(cocos2d::ValueMap& initProperties);
 	~Snowman();
 

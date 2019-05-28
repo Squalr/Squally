@@ -3,10 +3,12 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/MapResources.h"
@@ -14,14 +16,15 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEnemy::SaveKeyIsDead = "is_dead";
-const std::string PlatformerEnemy::MapKeyBattleMap = "battle_map";
+const std::string PlatformerEnemy::SaveKeyIsDead = "is-dead";
+const std::string PlatformerEnemy::MapKeyBattleArgs = "battle-args";
+const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
 const std::string PlatformerEnemy::MapKeyAlly1 = "ally-1";
 const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
 const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
-	cocos2d::ValueMap& initProperties,
+	cocos2d::ValueMap& properties,
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType, 
@@ -30,28 +33,29 @@ PlatformerEnemy::PlatformerEnemy(
 	cocos2d::Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial)
-	: super(initProperties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
+	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
 {
 	this->combatEntityList = std::vector<std::string>();
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
-	this->battleMapResource = GameUtils::getKeyOrDefault(initProperties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
+	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");
+	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
 
-	this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyName).asString());
+	this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyName).asString());
 
-	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly1))
+	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly1))
 	{
-		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly1).asString());
+		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly1).asString());
 	}
 
-	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly2))
+	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly2))
 	{
-		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly2).asString());
+		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly2).asString());
 	}
 
-	if (GameUtils::keyExists(initProperties, PlatformerEnemy::MapKeyAlly3))
+	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly3))
 	{
-		this->combatEntityList.push_back(initProperties.at(PlatformerEnemy::MapKeyAlly3).asString());
+		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly3).asString());
 	}
 
 	this->resurrectButton->setVisible(false);
@@ -70,6 +74,19 @@ void PlatformerEnemy::onEnter()
 	super::onEnter();
 
 	this->buildDropInventory();
+}
+
+void PlatformerEnemy::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
+	{
+		if (!this->mapEvent.empty())
+		{
+			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
+		}
+	}
 }
 
 void PlatformerEnemy::onDeveloperModeEnable()
@@ -102,6 +119,7 @@ void PlatformerEnemy::initializeListeners()
 
 	this->resurrectButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
+		this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
 		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
 		this->health = std::max(this->getMaxHealth(), 1);
 	});
@@ -110,6 +128,11 @@ void PlatformerEnemy::initializeListeners()
 	{
 		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 		this->health = 0;
+
+		if (!this->mapEvent.empty())
+		{
+			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
+		}
 	});
 }
 
@@ -120,7 +143,17 @@ std::string PlatformerEnemy::getBattleMapResource()
 		return this->battleMapResource;
 	}
 
+	if (StrUtils::endsWith(this->battleMapResource, ".tmx", true))
+	{
+		return this->battleMapResource;
+	}
+
 	return "Platformer/Maps/" + this->battleMapResource + ".tmx";
+}
+
+std::vector<std::string> PlatformerEnemy::getBattleMapArgs()
+{
+	return this->battleMapArgs;
 }
 
 std::vector<std::string> PlatformerEnemy::getCombatEntityList()

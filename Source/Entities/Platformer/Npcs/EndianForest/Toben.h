@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyToben;
 
 private:
+	typedef NpcBase super;
 	Toben(cocos2d::ValueMap& initProperties);
 	~Toben();
 

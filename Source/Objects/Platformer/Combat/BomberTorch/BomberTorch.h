@@ -13,15 +13,16 @@ class SmartAnimationSequenceNode;
 class BomberTorch : public Projectile
 {
 public:
-	static BomberTorch* create(std::function<void(PlatformerEntity* target)> onTargetHit);
+	static BomberTorch* create(PlatformerEntity* caster, int damage);
 
 protected:
-	BomberTorch(std::function<void(PlatformerEntity* target)> onTargetHit);
-	virtual	~BomberTorch();
+	BomberTorch(PlatformerEntity* caster, int damage);
+	~BomberTorch();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void update(float) override;
+	void onCollideWithTarget(PlatformerEntity* target) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	HackablePreview* createVelocityPreview() override;
@@ -30,6 +31,7 @@ protected:
 private:
 	typedef Projectile super;
 
+	int damage;
 	cocos2d::Sprite* bomberTorchSprite;
 	SmartAnimationSequenceNode* fire;
 };

@@ -9,7 +9,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/SoundManager.h"
+#include "Engine/Sound/Music.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/NavigationEvents.h"
@@ -20,7 +20,6 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Demo.h"
 #include "Strings/Menus/Exit.h"
 #include "Strings/Menus/Minigames.h"
 #include "Strings/Menus/Options/Options.h"
@@ -53,6 +52,7 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
+	this->music = Music::create(MusicResources::WeWillGetThereTogether);
 	
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -62,17 +62,17 @@ TitleScreen::TitleScreen()
 	Color3B highlightColor = Color3B::YELLOW;
 	Color4B glowColor = Color4B::ORANGE;
 
-	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Demo::create());
-	LocalizedLabel*	storyModeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Demo::create());
+	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
+	LocalizedLabel*	storyModeLabelHover = storyModeLabel->clone();
 
 	LocalizedLabel*	minigamesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Minigames::create());
-	LocalizedLabel*	minigamesLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Minigames::create());
+	LocalizedLabel*	minigamesLabelHover = minigamesLabel->clone();
 
 	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
-	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
+	LocalizedLabel*	optionsLabelHover = optionsLabel->clone();
 
 	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Exit::create());
-	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Exit::create());
+	LocalizedLabel*	exitLabelHover = exitLabel->clone();
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -141,6 +141,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->minigamesButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
+	this->addChild(this->music);
 }
 
 TitleScreen::~TitleScreen()
@@ -151,7 +152,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	SoundManager::playMusicResource(MusicResources::WeWillGetThereTogether);
+	this->music->play(true);
 
 	this->initializePositions();
 	this->etherParticles->start();
@@ -164,7 +165,7 @@ void TitleScreen::onEnter()
 
 	firstRun = false;
 
-	if (!Steam::isSquallySteamBuild())
+	if (Steam::isSquallyItchBuild())
 	{
 		this->storyModeButton->disableInteraction();
 	}
@@ -216,9 +217,7 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(MapResources::EndianForest_Forest));
-
-	//// NavigationEvents::navigateSaveSelect();
+	NavigationEvents::navigateSaveSelect();
 }
 
 void TitleScreen::onMinigamesClick()

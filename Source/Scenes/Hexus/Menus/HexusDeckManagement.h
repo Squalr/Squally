@@ -20,6 +20,7 @@ class LocalizedLabel;
 class MenuCard;
 class ToggleGroup;
 class ScrollPane;
+class Sound;
 
 class HexusDeckManagement : public GlobalScene
 {
@@ -100,6 +101,8 @@ private:
 
 	std::map<CardData*, int> deckCards;
 	std::map<CardData*, int> storageCards;
+
+	Sound* cardMovementSound;
 	
 	static HexusDeckManagement* instance;
 };

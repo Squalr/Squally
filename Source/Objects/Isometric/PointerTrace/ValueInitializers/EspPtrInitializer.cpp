@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string EspPtrInitializer::MapKeyEspPtrInitializer = "[esp]";
+const std::string EspPtrInitializer::MapKeyEspPtrInitializerRegex = "\\[esp( ?(\\+|\\-) ?[0-9]+)?\\]";
 
 EspPtrInitializer* EspPtrInitializer::create(ValueMap& initProperties)
 {
@@ -28,5 +28,5 @@ void EspPtrInitializer::setGridIndex(int gridIndex)
 {
 	super::setGridIndex(gridIndex);
 
-	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEsp(), gridIndex));
+	PointerTraceEvents::TriggerWriteValue(PointerTraceEvents::PointerTraceWriteArgs(RegisterState::getRegisterEsp() + this->offset, gridIndex));
 }

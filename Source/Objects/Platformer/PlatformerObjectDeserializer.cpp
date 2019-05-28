@@ -72,6 +72,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = Chest::create(properties);
 		}
+		else if (name == CinematicMarker::MapKeyCinematicMarker)
+		{
+			newObject = CinematicMarker::create(properties);
+		}
 		else if (name == DartGun::MapKeyDartGun)
 		{
 			newObject = DartGun::create(properties);
@@ -79,6 +83,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == Doubloon::MapKeyDoubloon)
 		{
 			newObject = Doubloon::create(properties);
+		}
+		else if (name == EdgePortal::MapKeyEdgePortal)
+		{
+			newObject = EdgePortal::create(properties);
 		}
 		else if (name == FloatingAsteroid::MapKeyFloatingAsteroid)
 		{
@@ -99,6 +107,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == FloatingWoodenBeam::MapKeyFloatingWoodenBeam)
 		{
 			newObject = FloatingWoodenBeam::create(properties);
+		}
+		else if (name == HackableHint::MapKeyHackableHint)
+		{
+			newObject = HackableHint::create(properties);
 		}
 		else if (name == HeavenHug::MapKeyHeavenHug)
 		{
@@ -132,6 +144,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = SpikeLog::create(properties);
 		}
+		else if (name == SquallyShip::MapKeySquallyShip)
+		{
+			newObject = SquallyShip::create(properties);
+		}
 		else if (name == Monkey::MapKeyMonkey)
 		{
 			newObject = Monkey::create(properties);
@@ -140,6 +156,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		{
 			newObject = StoneButton::create(properties);
 		}
+		else if (name == Tent::MapKeyTent)
+		{
+			newObject = Tent::create(properties);
+		}
 		else if (name == TrapDoor::MapKeyTrapDoor)
 		{
 			newObject = TrapDoor::create(properties);
@@ -147,6 +167,10 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 		else if (name == TrapDoorFrame::MapKeyTrapDoorFrame)
 		{
 			newObject = TrapDoorFrame::create(properties);
+		}
+		else if (name == Trigger::MapKeyTrigger)
+		{
+			newObject = Trigger::create(properties);
 		}
 		else if (name == Water::MapKeyWater)
 		{

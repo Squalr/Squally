@@ -38,11 +38,16 @@ public:
 	static const std::string MapKeyHeight;
 	static const std::string MapKeyXPosition;
 	static const std::string MapKeyYPosition;
+	static const std::string MapKeyScale;
+	static const std::string MapKeyScaleX;
+	static const std::string MapKeyScaleY;
+	static const std::string MapKeyAutoScale;
 	static const std::string MapKeyFlipX;
 	static const std::string MapKeyFlipY;
 	static const std::string MapKeyRepeatX;
 	static const std::string MapKeyRepeatY;
 	static const std::string MapKeyEvent;
+	static const std::string MapKeyState;
 	static const std::string MapKeyArgs;
 
 	static const std::string MapKeyGid;
@@ -71,6 +76,7 @@ protected:
 	virtual void onObjectStateLoaded();
 
 	cocos2d::ValueMap properties;
+	std::string mapEvent;
 	std::vector<cocos2d::Vec2> polylinePoints;
 
 private:

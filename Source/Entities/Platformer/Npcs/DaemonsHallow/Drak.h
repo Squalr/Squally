@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyDrak;
 
 private:
+	typedef NpcBase super;
 	Drak(cocos2d::ValueMap& initProperties);
 	~Drak();
 

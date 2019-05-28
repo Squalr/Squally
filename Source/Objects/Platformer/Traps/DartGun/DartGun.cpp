@@ -39,7 +39,7 @@ DartGun* DartGun::create(ValueMap& initProperties)
 	return instance;
 }
 
-DartGun::DartGun(ValueMap& initProperties) : HackableObject(initProperties)
+DartGun::DartGun(ValueMap& initProperties) : super(initProperties)
 {
 	this->dartNode = Node::create();
 	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);
@@ -152,7 +152,8 @@ void DartGun::shoot(float dt)
 				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 					this,
 					dart,
-					ObjectEvents::SpawnMethod::Below
+					ObjectEvents::SpawnMethod::Below,
+					ObjectEvents::PositionMode::Retain
 				));
 			}
 		}

@@ -19,11 +19,16 @@ const std::string SerializableObject::MapKeyWidth = "width";
 const std::string SerializableObject::MapKeyHeight = "height";
 const std::string SerializableObject::MapKeyXPosition = "x";
 const std::string SerializableObject::MapKeyYPosition = "y";
+const std::string SerializableObject::MapKeyScale = "scale";
+const std::string SerializableObject::MapKeyScaleX = "scale-x";
+const std::string SerializableObject::MapKeyScaleY = "scale-y";
+const std::string SerializableObject::MapKeyAutoScale = "auto-scale";
 const std::string SerializableObject::MapKeyFlipX = "flip-x";
 const std::string SerializableObject::MapKeyFlipY = "flip-y";
 const std::string SerializableObject::MapKeyRepeatX = "repeat-x";
 const std::string SerializableObject::MapKeyRepeatY = "repeat-y";
 const std::string SerializableObject::MapKeyEvent = "event";
+const std::string SerializableObject::MapKeyState = "event";
 const std::string SerializableObject::MapKeyArgs = "args";
 const std::string SerializableObject::MapKeyRotation = "rotation";
 const std::string SerializableObject::MapKeyPoints = "points";
@@ -52,11 +57,12 @@ const std::string SerializableObject::MapKeyPropertyName = "name";
 const std::string SerializableObject::MapKeyPropertyType = "type";
 const std::string SerializableObject::MapKeyPropertyValue = "value";
 
-SerializableObject::SerializableObject(const ValueMap& initProperties)
+SerializableObject::SerializableObject(const ValueMap& properties)
 {
-	this->properties = initProperties;
+	this->properties = properties;
 	this->zSorted = false;
 	this->polylinePoints = std::vector<Vec2>();
+	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyEvent, Value("")).asString();
 
 	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaMapIdentifier))
 	{
@@ -64,7 +70,7 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
-	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyMetaIsIsometric) && this->properties.at(SerializableObject::MapKeyMetaIsIsometric).asBool())
+	if (GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyMetaIsIsometric, Value(false)).asBool())
 	{
 		this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -94,6 +100,11 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 		// Parse any polyline points in iso space
 		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();
 
+		if (polygonPointsRaw.empty())
+		{
+			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPoints, Value(ValueVector())).asValueVector();
+		}
+		
 		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
 		{
 			ValueMap point = it->asValueMap();
@@ -115,7 +126,6 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 	// Map the coordinates of Tiled space to Cocos space for 2d games:
 	else
 	{
-
 		Size mapSize = Size(
 			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyHeight, Value(0.0f)).asFloat()
@@ -133,6 +143,11 @@ SerializableObject::SerializableObject(const ValueMap& initProperties)
 
 		// Parse any polyline points in cocos space
 		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();
+
+		if (polygonPointsRaw.empty())
+		{
+			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyPoints, Value(ValueVector())).asValueVector();
+		}
 
 		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
 		{

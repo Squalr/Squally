@@ -7,9 +7,11 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 
+#include "Strings/Combat/Blocked.h"
 #include "Strings/Combat/Interrupted.h"
 #include "Strings/Generics/MinusConstant.h"
 #include "Strings/Generics/PlusConstant.h"
@@ -50,35 +52,50 @@ void TextOverlays::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastInterruptArgs* castInterruptArgs = static_cast<CombatEvents::CastInterruptArgs*>(args->getUserData());
+		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getUserData());
 
-		if (castInterruptArgs != nullptr && castInterruptArgs->target != nullptr)
+		if (args != nullptr && args->target != nullptr)
 		{
 			LocalizedLabel* interruptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Interrupted::create());
 
 			interruptLabel->setTextColor(Color4B::ORANGE);
 			interruptLabel->setPosition(Vec2(0.0f, 64.0f));
 
-			this->runLabelOverEntity(castInterruptArgs->target, interruptLabel);
+			this->runLabelOverEntity(args->target, interruptLabel);
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealingDelt, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingDeltArgs* damageOrHealingArgs = static_cast<CombatEvents::DamageOrHealingDeltArgs*>(args->getUserData());
+		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getUserData());
 
-		if (damageOrHealingArgs != nullptr && damageOrHealingArgs->target != nullptr)
+		if (args != nullptr && args->target != nullptr)
 		{
-			ConstantString* amount = ConstantString::create(std::to_string(std::abs(damageOrHealingArgs->damageOrHealing)));
-			LocalizedString* deltaString = damageOrHealingArgs->damageOrHealing < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
+			LocalizedLabel* blockedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Blocked::create());
+
+			blockedLabel->setTextColor(Color4B::ORANGE);
+			blockedLabel->setPosition(Vec2(0.0f, 64.0f));
+
+			this->runLabelOverEntity(args->target, blockedLabel);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealingDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingDeltArgs* args = static_cast<CombatEvents::DamageOrHealingDeltArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr)
+		{
+			ConstantString* amount = ConstantString::create(std::to_string(std::abs(args->damageOrHealing)));
+			LocalizedString* deltaString = args->damageOrHealing < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
 			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
-			deltaLabel->setTextColor(damageOrHealingArgs->damageOrHealing < 0 ? Color4B::RED : Color4B::GREEN);
+			deltaLabel->setTextColor(args->damageOrHealing < 0 ? Color4B::RED : Color4B::GREEN);
 			deltaString->setStringReplacementVariables(amount);
 
-			this->runLabelOverEntity(damageOrHealingArgs->target, deltaLabel);
+			this->runLabelOverEntity(args->target, deltaLabel);
 		}
 	}));
 }
@@ -94,8 +111,8 @@ void TextOverlays::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* 
 
 	static const float LabelDuration = 2.0f;
 
-	label->setPosition(label->getPosition() + target->getPosition() + Vec2(0.0f, target->getEntitySize().height + 16.0f));
-	label->setPositionZ(target->getPositionZ());
+	Vec2 targetPosition = GameUtils::getScreenBounds(target).origin;
+	label->setPosition(label->getPosition() + targetPosition + Vec2(0.0f, target->getEntitySize().height + 16.0f));
 	label->enableOutline(Color4B::BLACK, 2);
 
 	label->runAction(Sequence::create(

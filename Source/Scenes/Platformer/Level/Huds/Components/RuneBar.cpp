@@ -115,4 +115,13 @@ void RuneBar::update(float dt)
 void RuneBar::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
+
+	if (this->target == nullptr)
+	{
+		for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+		{
+			this->filledRunes[index]->setVisible(true);
+			this->emptyRunes[index]->setVisible(false);
+		}
+	}
 }

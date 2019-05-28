@@ -92,8 +92,8 @@ HexusOpponentData* Illia::getHexusOpponentData()
 			Illia::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.979f,
-			HexusOpponentData::generateDeck(32, 0.979f,
+			0.981f,
+			HexusOpponentData::generateDeck(32, 0.981f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

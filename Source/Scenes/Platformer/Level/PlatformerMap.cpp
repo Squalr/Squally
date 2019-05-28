@@ -8,6 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/SerializableMap.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -19,6 +20,7 @@
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
@@ -59,16 +61,6 @@ PlatformerMap::~PlatformerMap()
 void PlatformerMap::onEnter()
 {
 	super::onEnter();
-	
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
-	{
-		this->gameHud->getCurrencyDisplay()->setCurrencyInventory(squally->getCurrencyInventory());
-		this->gameHud->getRuneBar()->setStatsTarget(squally);
-		this->gameHud->getStatsBars()->setStatsTarget(squally);
-
-		CameraTrackingData trackingData = CameraTrackingData(squally, Vec2(128.0f, 96.0f));
-		GameCamera::getInstance()->setTarget(trackingData);
-	}));
 
 	this->scheduleUpdate();
 }
@@ -90,7 +82,14 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->loadMap(args->mapResource);
+			// Clear any intra-map save-state
+			if (!args->isReload)
+			{
+				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+			}
+
+			this->loadMap(args->mapResource, args->mapArgs);
 
 			GlobalDirector::loadScene(this);
 		}
@@ -128,4 +127,21 @@ void PlatformerMap::update(float dt)
 
 	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
 	this->getPhysicsWorld()->step(1.0f / 60.0f);
+}
+
+void PlatformerMap::loadMap(std::string mapResource, std::vector<std::string> args)
+{
+	ValueVector argsVector = ValueVector();
+
+	for (auto it = args.begin(); it != args.end(); it++)
+	{
+		argsVector.push_back(Value(*it));
+	}
+
+	SaveManager::batchSaveProfileData({
+		{ SaveKeys::SaveKeyMap, Value(mapResource) },
+		{ SaveKeys::SaveKeyMapArgs, Value(argsVector) }
+	});
+
+	super::loadMap(mapResource, args);
 }

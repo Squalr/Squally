@@ -1,5 +1,11 @@
 #pragma once
 #include <string>
+#include <vector>
+
+namespace cocos2d
+{
+	class Node;
+}
 
 class PlatformerEntity;
 class TimelineEntry;
@@ -11,12 +17,19 @@ public:
 	static const std::string EventChangeMenuState;
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
+	static const std::string EventEntityBuffsModifyDamageOrHealingTaken;
+	static const std::string EventEntityBuffsModifyDamageOrHealingDelt;
+	static const std::string EventEntityTimelineReset;
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
 	static const std::string EventInterruptTimeline;
 	static const std::string EventDamageOrHealingDelt;
+	static const std::string EventDamageOrHealing;
+	static const std::string EventCastBlocked;
 	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
+	static const std::string EventCombatTutorialFocus;
+	static const std::string EventCombatTutorialUnfocus;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
 
@@ -71,6 +84,15 @@ public:
 		}
 	};
 
+	struct CastBlockedArgs
+	{
+		PlatformerEntity* target;
+
+		CastBlockedArgs(PlatformerEntity* target) : target(target)
+		{
+		}
+	};
+
 	struct CastInterruptArgs
 	{
 		PlatformerEntity* target;
@@ -82,10 +104,22 @@ public:
 
 	struct DamageOrHealingDeltArgs
 	{
-		int damageOrHealing;
+		PlatformerEntity* caster;
 		PlatformerEntity* target;
+		int damageOrHealing;
 
-		DamageOrHealingDeltArgs(int damageOrHealing, PlatformerEntity* target) : damageOrHealing(damageOrHealing), target(target)
+		DamageOrHealingDeltArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing)
+		{
+		}
+	};
+
+	struct DamageOrHealingArgs
+	{
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		int damageOrHealing;
+
+		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing)
 		{
 		}
 	};
@@ -99,6 +133,35 @@ public:
 		}
 	};
 
+	struct BeforeDamageOrHealingTakenArgs
+	{
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		int* damageOrHealing;
+		bool handled;
+
+		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
+	};
+
+	struct BeforeDamageOrHealingDeltArgs
+	{
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		int* damageOrHealing;
+		bool handled;
+
+		BeforeDamageOrHealingDeltArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
+	};
+
+	struct TimelineResetArgs
+	{
+		PlatformerEntity* target;
+		bool wasInterrupt;
+		bool handled;
+
+		TimelineResetArgs(PlatformerEntity* target, bool wasInterrupt) : target(target), wasInterrupt(wasInterrupt), handled(false) { }
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerSelectCastTarget(CastTargetArgs args);
@@ -106,7 +169,12 @@ public:
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerInterruptTimeline();
+	static void TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args);
+	static void TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args);
+	static void TriggerEntityTimelineReset(TimelineResetArgs args);
 	static void TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args);
+	static void TriggerDamageOrHealing(DamageOrHealingArgs args);
+	static void TriggerCastBlocked(CastBlockedArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);
 	static void TriggerCombatFinished(CombatFinishedArgs args);
 	static void TriggerGiveRewards();

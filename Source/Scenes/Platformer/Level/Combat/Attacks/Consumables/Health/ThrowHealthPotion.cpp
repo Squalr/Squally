@@ -2,14 +2,13 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Engine/Animations/AnimationPart.h"
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotion.h"
 
-#include "Resources/UIResources.h"
+#include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Generics/Empty.h"
 
@@ -24,8 +23,11 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Projectile, UIResources::Menus_Objects_HEALTH_2, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::ProjectileHealing, ObjectResources::Items_Consumables_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
+	this->throwSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Projectiles_ItemThrow1);
+
+	this->addChild(this->throwSound);
 }
 
 ThrowHealthPotion::~ThrowHealthPotion()
@@ -44,25 +46,25 @@ LocalizedString* ThrowHealthPotion::getString()
 
 std::string ThrowHealthPotion::getAttackAnimation()
 {
-	return "Throw";
+	return "ThrowItem";
 }
 
-void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target, std::function<void(PlatformerEntity* target)> onTargetHit)
+void ThrowHealthPotion::onAttackTelegraphBegin()
 {
-	super::generateProjectiles(owner, target, onTargetHit);
+	super::onAttackTelegraphBegin();
+	
+	this->throwSound->play(false, this->attackDuration / 2.0f);
+}
 
-	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
-	ProjectileHealthPotion* potion = ProjectileHealthPotion::create(onTargetHit);
+void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+{
+	super::generateProjectiles(owner, target);
+	
+	ProjectileHealthPotion* potion = ProjectileHealthPotion::create(owner);
 
-	weapon->replaceWithObject(potion, 2.0f);
+	this->replaceOffhandWithProjectile(owner, potion);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		potion,
-		ObjectEvents::SpawnMethod::Below
-	));
-
-	potion->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
+	potion->launchTowardsTarget(owner, Vec2(0.0f, owner->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
 }
 
 void ThrowHealthPotion::onCleanup()

@@ -13,11 +13,16 @@ using namespace cocos2d;
 
 Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSize, Size padding)
 {
+	if (renderSize.width <= 0 || renderSize.height <= 0)
+	{
+		return Sprite::create();
+	}
+
 	RenderTexture* renderedNode = RenderTexture::create(renderSize.width + padding.width * 2.0f, renderSize.height + padding.height * 2.0f);
 
 	if (renderedNode == nullptr)
 	{
-		return nullptr;
+		return Sprite::create();
 	}
 
 	target->setPosition(-offset + padding);

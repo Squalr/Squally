@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -44,11 +45,14 @@ JmpMarker::JmpMarker(ValueMap& initProperties) : super(initProperties)
 
 JmpMarker::~JmpMarker()
 {
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void JmpMarker::onEnter()
 {
 	super::onEnter();
+
+	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 	
 	this->scheduleUpdate();
 }
@@ -137,7 +141,7 @@ void JmpMarker::buildJmpPtrString(LocalizedString* registerString)
 		LocalizedString* offsetString = (this->getOffset() < 0) 
 			? (LocalizedString*)Strings::PointerTrace_Assembly_OffsetNegative::create()
 			: (LocalizedString*)Strings::PointerTrace_Assembly_OffsetPositive::create();
-		ConstantString* offsetValueString = ConstantString::create(std::to_string(this->getOffset()));
+		ConstantString* offsetValueString = ConstantString::create(std::to_string(std::abs(this->getOffset())));
 
 		offsetString->setStringReplacementVariables({ registerString, offsetValueString });
 		ptrString->setStringReplacementVariables(offsetString);

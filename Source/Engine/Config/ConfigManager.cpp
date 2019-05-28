@@ -3,7 +3,9 @@
 #include "cocos/platform/CCFileUtils.h"
 #include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
+#include "Engine/Events/SoundEvents.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
@@ -123,14 +125,18 @@ void ConfigManager::setSoundVolume(float volume)
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	instance->valueMap[ConfigManager::SoundVolumeKey] = volume;
+	instance->valueMap[ConfigManager::SoundVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
+
+	SoundEvents::TriggerSoundVolumeUpdated();
 }
 
 void ConfigManager::setMusicVolume(float volume)
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	instance->valueMap[ConfigManager::MusicVolumeKey] = volume;
+	instance->valueMap[ConfigManager::MusicVolumeKey] = MathUtils::clamp(volume, 0.0f, 1.0f);
+
+	SoundEvents::TriggerMusicVolumeUpdated();
 }
 
 cocos2d::Size ConfigManager::getResolutionSize()
@@ -239,26 +245,12 @@ float ConfigManager::getSoundVolume()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (GameUtils::keyExists(instance->valueMap, ConfigManager::SoundVolumeKey))
-	{
-		return instance->valueMap[ConfigManager::SoundVolumeKey].asFloat();
-	}
-	else
-	{
-		return 0.5f;
-	}
+	return GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::SoundVolumeKey, Value(0.5f)).asFloat();
 }
 
 float ConfigManager::getMusicVolume()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (GameUtils::keyExists(instance->valueMap, ConfigManager::MusicVolumeKey))
-	{
-		return instance->valueMap[ConfigManager::MusicVolumeKey].asFloat();
-	}
-	else
-	{
-		return 0.5f;
-	}
+	return GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::MusicVolumeKey, Value(0.5f)).asFloat();
 }

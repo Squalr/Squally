@@ -66,34 +66,54 @@ void SerializableMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeEnable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* args)
 	{
 		this->hackerModeEnable();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackerModeDisable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* args)
 	{
 		this->hackerModeDisable();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectOpenEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* args)
 	{
 		this->hackerModeLayerFade();
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::HackableObjectCloseEvent, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectClose, [=](EventCustom* args)
 	{
 		this->hackerModeLayerUnfade();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventArgs)
 	{
-		this->spawnObject(static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventArgs->getUserData()));
+		ObjectEvents::RequestObjectSpawnDelegatorArgs* args = static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->spawnObject(args);
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventArgs)
 	{
-		this->moveObjectToTopLayer(static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData()));
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->moveObjectToTopLayer(args);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventArgs)
+	{
+		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
+
+		if (args != nullptr)
+		{
+			this->moveObjectToElevateLayer(args);
+		}
 	}));
 }
 
@@ -248,9 +268,17 @@ std::string SerializableMap::getMapFileName()
 
 void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 {
-	if (this->serializableLayers.empty())
+	if (this->serializableLayers.empty() || args->objectToSpawn == nullptr)
 	{
 		return;
+	}
+
+	bool isReentry = (args->objectToSpawn->getParent() != nullptr);
+	bool retainPosition = (args->positionMode != ObjectEvents::PositionMode::Discard);
+
+	if (args->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	{
+		args->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(args->spawner));
 	}
 
 	switch (args->spawnMethod)
@@ -265,11 +293,11 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 				{
 					if (prevIt != this->serializableLayers.end())
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*prevIt), true);
+						GameUtils::changeParent(args->objectToSpawn, (*prevIt), retainPosition, isReentry);
 					}
 					else
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*it), true);
+						GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
 					}
 				}
 
@@ -285,7 +313,7 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 			{
 				if (*it == args->sourceLayer)
 				{
-					GameUtils::changeParent(args->objectToSpawn, (*it), true);
+					GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
 				}
 			}
 			
@@ -302,6 +330,22 @@ void SerializableMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* arg
 	}
 
 	this->serializableLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
+}
+
+void SerializableMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
+{
+	if (this->serializableLayers.empty())
+	{
+		return;
+	}
+
+	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	{
+		if ((*it)->isElevateTarget())
+		{
+			GameUtils::changeParent(args->relocatedObject, *it, true);
+		}
+	}
 }
 
 void SerializableMap::hackerModeEnable()

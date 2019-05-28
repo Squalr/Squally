@@ -93,7 +93,7 @@ void ScriptList::setActiveScriptText(std::string text)
 
 void ScriptList::addNewScript()
 {
-	const int maxScripts = 10;
+	const int maxScripts = 9;
 
 	if (this->scripts.size() < maxScripts)
 	{

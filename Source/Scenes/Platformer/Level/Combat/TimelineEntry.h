@@ -16,8 +16,10 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity);
 
 	PlatformerEntity* getEntity();
+	void applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing);
 	void stageTarget(PlatformerEntity* target);
 	void stageCast(PlatformerAttack* attack);
+	void defend();
 	float getProgress();
 	void setProgress(float progress);
 	void addTimeWithoutActions(float dt);
@@ -46,6 +48,7 @@ private:
 	bool isPlayerEntry();
 	void performCast();
 	void tryInterrupt();
+	void resetTimeline();
 
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
@@ -56,7 +59,9 @@ private:
 	cocos2d::Node* orphanedAttackCache;
 
 	float speed;
+	float interruptBonus;
 	float progress;
+	bool isBlocking;
 	bool isCasting;
 
 	static const float BaseSpeedMultiplier;

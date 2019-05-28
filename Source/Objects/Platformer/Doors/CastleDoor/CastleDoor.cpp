@@ -36,7 +36,7 @@ CastleDoor* CastleDoor::create(ValueMap& initProperties)
 	return instance;
 }
 
-CastleDoor::CastleDoor(ValueMap& initProperties) : HackableObject(initProperties)
+CastleDoor::CastleDoor(ValueMap& initProperties) : super(initProperties)
 {
 	this->castleBack = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_BACK);
 	this->bridge1 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_1);
@@ -49,7 +49,7 @@ CastleDoor::CastleDoor(ValueMap& initProperties) : HackableObject(initProperties
 	this->doorClip = ClippingNode::create(clipStencil);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
-	this->doorOpenEventName = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyEvent, Value("")).asString();
+	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);
 	this->bridge1->setFlippedX(this->isFlipped);

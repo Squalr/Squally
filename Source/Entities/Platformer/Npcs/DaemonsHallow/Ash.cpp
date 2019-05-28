@@ -92,8 +92,8 @@ HexusOpponentData* Ash::getHexusOpponentData()
 			Ash::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.635f,
-			HexusOpponentData::generateDeck(32, 0.635f,
+			0.652f,
+			HexusOpponentData::generateDeck(32, 0.652f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

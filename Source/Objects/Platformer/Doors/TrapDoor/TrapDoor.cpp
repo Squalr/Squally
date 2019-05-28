@@ -36,7 +36,7 @@ TrapDoor* TrapDoor::create(ValueMap& initProperties)
 	return instance;
 }
 
-TrapDoor::TrapDoor(ValueMap& initProperties) : HackableObject(initProperties)
+TrapDoor::TrapDoor(ValueMap& initProperties) : super(initProperties)
 {
 	this->door = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoor);
 	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
@@ -46,7 +46,7 @@ TrapDoor::TrapDoor(ValueMap& initProperties) : HackableObject(initProperties)
 	this->doorClip = ClippingNode::create(clipStencil);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
-	this->doorOpenEventName = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyEvent, Value("")).asString();
+	this->doorOpenEventName = this->mapEvent;
 
 	this->door->setFlippedX(this->isFlipped);
 

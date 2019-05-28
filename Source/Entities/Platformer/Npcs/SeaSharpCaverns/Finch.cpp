@@ -92,8 +92,8 @@ HexusOpponentData* Finch::getHexusOpponentData()
 			Finch::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.292f,
-			HexusOpponentData::generateDeck(32, 0.292f,
+			0.295f,
+			HexusOpponentData::generateDeck(32, 0.295f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

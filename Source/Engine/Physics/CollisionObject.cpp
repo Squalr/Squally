@@ -8,6 +8,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -17,7 +18,7 @@ using namespace cocos2d;
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
-const float CollisionObject::DefaultMaxHorizontalSpeed = 360.0f;
+const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
@@ -45,13 +46,11 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	super(initProperties)
 {
 	this->physicsBody = initPhysicsBody;
-	this->collisionEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
-	this->collisionEndEvents = std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>();
+	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
+	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::set<CollisionObject*>();
 	this->physicsEnabled = true;
 	this->bindTarget = nullptr;
-	this->forceBindTarget = nullptr;
-	this->forceBounceFactor = 0.0f;
 	this->contactUpdateCallback = nullptr;
 
 	if (this->physicsBody != nullptr)
@@ -85,6 +84,21 @@ void CollisionObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
+	this->buildInverseCollisionMap();
+}
+
+void CollisionObject::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventCollisonMapUpdated, [=](EventCustom* eventCustom)
+	{
+		this->buildInverseCollisionMap();
+	}));
+}
+
+void CollisionObject::buildInverseCollisionMap()
+{
 	// Part of Box2D requires that both the colliders and collidees have their bitmasks set -- this is how we accomplish that
 	if (this->physicsBody != nullptr)
 	{
@@ -96,11 +110,6 @@ void CollisionObject::onEnterTransitionDidFinish()
 			this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | inverseTypes);
 		}
 	}
-}
-
-void CollisionObject::initializeListeners()
-{
-	super::initializeListeners();
 }
 
 void CollisionObject::setCollisionType(CollisionType collisionType)
@@ -186,19 +195,6 @@ void CollisionObject::updateBinds()
 			this->bindTarget->setPosition(this->bindTarget->getPosition() + positionDelta);
 
 			this->setPosition(Vec2::ZERO);
-		}
-	}
-
-	if (this->forceBindTarget != nullptr)
-	{
-		Vec2 positionDelta = this->getPosition();
-
-		if (positionDelta != Vec2::ZERO)
-		{
-			this->forceBindTarget->setPosition(this->forceBindTarget->getPosition() + positionDelta * this->forceBounceFactor);
-
-			this->setPosition(Vec2::ZERO);
-			this->getPhysicsBody()->setVelocity(Vec2::ZERO);
 		}
 	}
 }
@@ -304,23 +300,13 @@ void CollisionObject::bindTo(cocos2d::Node* bindTarget)
 	this->bindTarget = bindTarget;
 }
 
-void CollisionObject::forceBindTo(cocos2d::Node* forceBindTarget, float forceBounceFactor)
-{
-	// Tragically, the `forceBounceFactor` parameter is a hack that prevents physicsbodies from overlapping. Use 0.0f to see how this is broken.
-	// I can't seem to diagnose the underlying math issues, so this hack fix is fine enough by me.
-
-	this->setGravityEnabled(false);
-	this->forceBindTarget = forceBindTarget;
-	this->forceBounceFactor = forceBounceFactor;
-}
-
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
 	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
 	{
 		CollisionType collisionType = *it;
 
-		this->addCollisionEvent(collisionType, this->collisionEvents, onCollision);
+		this->addCollisionEvent(collisionType, this->collisionEvents, CollisionEvent(onCollision));
 	}
 }
 
@@ -330,11 +316,11 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 	{
 		CollisionType collisionType = *it;
 
-		this->addCollisionEvent(collisionType, this->collisionEndEvents, onCollisionEnd);
+		this->addCollisionEvent(collisionType, this->collisionEndEvents, CollisionEvent(onCollisionEnd));
 	}
 }
 
-void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, std::function<CollisionResult(CollisionData)> onCollision)
+void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision)
 {
 	if (CollisionObject::InverseCollisionMap.find(collisionType) != CollisionObject::InverseCollisionMap.end())
 	{
@@ -345,9 +331,11 @@ void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<Co
 		CollisionObject::InverseCollisionMap[collisionType] = this->getCollisionType();
 	}
 
+	ObjectEvents::TriggerCollisionMapUpdated();
+
 	if (eventMap.find(collisionType) == eventMap.end())
 	{
-		eventMap[collisionType] = std::vector<std::function<CollisionResult(CollisionData)>>();
+		eventMap[collisionType] = std::vector<CollisionEvent>();
 	}
 
 	eventMap[collisionType].push_back(onCollision);
@@ -386,7 +374,7 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
-bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<std::function<CollisionResult(CollisionData)>>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
+bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
 	CollisionResult result = defaultResult;
 
@@ -396,11 +384,11 @@ bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::ma
 
 		if (eventMap.find(collisionType) != eventMap.end())
 		{
-			std::vector<std::function<CollisionResult(CollisionData)>> events = eventMap[collisionType];
+			std::vector<CollisionEvent> events = eventMap[collisionType];
 
 			for (auto eventIt = events.begin(); eventIt != events.end(); eventIt++)
 			{
-				CollisionResult eventResult = (*eventIt)(collisionData);
+				CollisionResult eventResult = (*eventIt).collisionEvent(collisionData);
 
 				// Anti-default takes precidence
 				result = (eventResult != defaultResult) ? eventResult : result;

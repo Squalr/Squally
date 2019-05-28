@@ -17,10 +17,12 @@ class RewardsMenu : public SmartNode
 public:
 	static RewardsMenu* create();
 
+	void show();
+
 private:
 	typedef SmartNode super;
 	RewardsMenu();
-	virtual ~RewardsMenu() = default;
+	~RewardsMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -28,7 +30,7 @@ private:
 	void loadRewards();
 
 	cocos2d::Sprite* rewardsMenu;
-	LocalizedLabel* titleLabel;
-	ScrollPane* rewardsScroll;
+	cocos2d::Sprite* victoryBanner;
+	LocalizedLabel* victoryLabel;
 	ClickableTextNode* okayButton;
 };

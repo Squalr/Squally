@@ -12,8 +12,8 @@
     "X": "-32.0f",
     "Y": "-112.0f"
   },
-  "Health": "10",
-  "Special": "10",
+  "Health": "16",
+  "Special": "8",
   "Hexus": {
     "FrameOffset": {
       "X": "-48.0f",
@@ -21,7 +21,7 @@
     },
     "MatchData": {
       "DeckSize": "32",
-      "Strength": "(1.0f / 8.0f) * (0.0f + (1.0f / 13.0f) * 7.0f)",
+      "Strength": "(1.0f / 8.0f) * (0.0f + (1.0f / 14.0f) * 7.0f)",
       "Strategy": "Random",
       "PresetCards": [
         "Greed",

@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGecko;
 
 private:
+	typedef PlatformerEntity super;
 	Gecko(cocos2d::ValueMap& initProperties);
 	~Gecko();
 

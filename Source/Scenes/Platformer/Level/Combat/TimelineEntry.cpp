@@ -4,6 +4,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -12,12 +14,13 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const float TimelineEntry::CastPercentage = 0.8f;
+const float TimelineEntry::CastPercentage = 0.75f;
 const float TimelineEntry::BaseSpeedMultiplier = 0.175f;
 
 TimelineEntry* TimelineEntry::create(PlatformerEntity* entity)
@@ -36,8 +39,11 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
 	this->emblem = Sprite::create(entity->getEmblemResource());
 	this->orphanedAttackCache = Node::create();
+	this->isCasting = false;
+	this->isBlocking = false;
 
 	this->speed = 1.0f;
+	this->interruptBonus = 0.0f;
 	this->progress = 0.0f;
 
 	this->addChild(this->line);
@@ -53,6 +59,7 @@ void TimelineEntry::onEnter()
 	this->currentCast = nullptr;
 	this->target = nullptr;
 	this->isCasting = false;
+	this->isBlocking = false;
 	this->orphanedAttackCache->removeAllChildren();
 
 	this->scheduleUpdate();
@@ -80,6 +87,18 @@ void TimelineEntry::initializePositions()
 void TimelineEntry::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealing, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
+		{
+			CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
+
+			this->applyDamageOrHealing(args->caster, args->damageOrHealing);
+		}
+	}));
 }
 
 void TimelineEntry::update(float dt)
@@ -92,20 +111,50 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
+void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing)
+{
+	if (this->getEntity() == nullptr)
+	{
+		return;
+	}
+
+	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(caster, this->getEntity(), &damageOrHealing));
+	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing));
+
+	if (damageOrHealing < 0)
+	{
+		this->tryInterrupt();
+	}
+
+	this->getEntity()->addHealth(damageOrHealing);
+	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(caster, this->getEntity(), damageOrHealing));
+}
+
 void TimelineEntry::stageTarget(PlatformerEntity* target)
 {
-	this->target = TimelineEntry::getAssociatedTimelineEntry(target);
+	this->target = target == nullptr ? nullptr : TimelineEntry::getAssociatedTimelineEntry(target);
 }
 
 void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
 	// If this attach was created by the result of an item, it has no parent, and thus we need to keep a reference to it
-	if (attack->getParent() == nullptr)
+	if (attack != nullptr && attack->getParent() == nullptr)
 	{
 		this->orphanedAttackCache->addChild(attack);
 	}
 
 	this->currentCast = attack;
+}
+
+void TimelineEntry::defend()
+{
+	if (this->getEntity() == nullptr)
+	{
+		return;
+	}
+
+	this->isBlocking = true;
+	this->getEntity()->addChild(Defend::create(this->getEntity()));
 }
 
 float TimelineEntry::getProgress()
@@ -120,7 +169,7 @@ void TimelineEntry::setProgress(float progress)
 
 void TimelineEntry::addTimeWithoutActions(float dt)
 {
-	this->progress += (dt * this->speed * TimelineEntry::BaseSpeedMultiplier);
+	this->progress += (dt * (this->speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier);
 }
 
 void TimelineEntry::addTime(float dt)
@@ -158,7 +207,7 @@ void TimelineEntry::addTime(float dt)
 		}
 		else
 		{
-			this->progress = std::fmod(this->progress, 1.0f);
+			this->resetTimeline();
 		}
 	}
 }
@@ -171,26 +220,9 @@ void TimelineEntry::performCast()
 	this->currentCast->execute(
 		this->entity,
 		this->target->entity,
-		[=](PlatformerEntity* targetEntity, int damageOrHealing)
-		{
-			// It's possible that the target has changed since the attack started. This (should) only occur when the user has hacked a projectile to alter its path from the intended target.
-			TimelineEntry* newTarget = TimelineEntry::getAssociatedTimelineEntry(targetEntity);
-
-			if (newTarget != nullptr)
-			{
-				if (damageOrHealing < 0)
-				{
-					newTarget->tryInterrupt();
-				}
-
-				newTarget->entity->addHealth(damageOrHealing);
-				CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(damageOrHealing, newTarget->entity));
-			}
-		},
 		[=]()
 		{
-			this->progress = std::fmod(this->progress, 1.0f);
-
+			this->resetTimeline();
 			CombatEvents::TriggerResumeTimeline();
 		}
 	);
@@ -198,12 +230,38 @@ void TimelineEntry::performCast()
 
 void TimelineEntry::tryInterrupt()
 {
-	if (this->isCasting)
+	if (this->isBlocking || this->isCasting)
 	{
-		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+		if (this->isBlocking)
+		{
+			CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->entity));
+
+			this->progress = this->progress / 2.0f;
+			this->interruptBonus = 0.1f;
+		}
+		else if (this->isCasting)
+		{
+			CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+
+			this->progress = this->progress / 4.0f;
+			this->interruptBonus = 0.1f;
+		}
+		
 		this->isCasting = false;
-		this->progress = 0.0f;
+		this->isBlocking = false;
+
+		CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 	}
+}
+
+void TimelineEntry::resetTimeline()
+{
+	this->progress = std::fmod(this->progress, 1.0f);
+	this->interruptBonus = 0.0f;
+	this->isCasting = false;
+	this->isBlocking = false;
+
+	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }
 
 bool TimelineEntry::isPlayerEntry()

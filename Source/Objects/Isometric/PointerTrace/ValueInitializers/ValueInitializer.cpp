@@ -1,5 +1,7 @@
 #include "ValueInitializer.h"
 
+#include <regex>
+
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
@@ -8,8 +10,9 @@
 
 using namespace cocos2d;
 
-const std::string ValueInitializer::MapKeyValueInitializerPrefix = "value-";
+const std::string ValueInitializer::MapKeyValueInitializerRegex = "value\\-[0-9]+";
 const std::string ValueInitializer::MapKeyMetaValue = "value";
+const std::string ValueInitializer::IntegerRegex = "[0-9]+";
 
 ValueInitializer* ValueInitializer::create(ValueMap& initProperties)
 {
@@ -22,11 +25,24 @@ ValueInitializer* ValueInitializer::create(ValueMap& initProperties)
 
 ValueInitializer::ValueInitializer(ValueMap& initProperties) : super(initProperties)
 {
-	const std::string name = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyName, Value("")).asString();
-	
-	std::string valueString = StrUtils::ltrim(name, ValueInitializer::MapKeyValueInitializerPrefix);
+	std::string name = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyName, Value("")).asString();
+	this->value = 0;
+    
+    std::regex re = std::regex(ValueInitializer::IntegerRegex);
+    std::smatch match = std::smatch();
 
-	this->value = StrUtils::isInteger(valueString) ? std::stoi(valueString) : 0;
+	if (std::regex_search(name, match, re))
+	{
+        if (match.ready())
+		{
+			std::string integerStr = match[0];
+
+			if (StrUtils::isInteger(integerStr))
+			{
+				this->value = std::stoi(integerStr);
+			}
+        }
+    }
 }
 
 ValueInitializer::~ValueInitializer()

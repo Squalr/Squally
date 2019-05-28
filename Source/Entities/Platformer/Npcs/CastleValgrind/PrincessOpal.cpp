@@ -92,8 +92,8 @@ HexusOpponentData* PrincessOpal::getHexusOpponentData()
 			PrincessOpal::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.458f,
-			HexusOpponentData::generateDeck(32, 0.458f,
+			0.446f,
+			HexusOpponentData::generateDeck(32, 0.446f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -13,8 +13,8 @@
 #include "Events/PointerTraceEvents.h"
 #include "Entities/Isometric/PointerTrace/GridEntity.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/IsometricObjectResources.h"
-#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -94,7 +94,7 @@ void ExitCrystal::initializeListeners()
 					MoveBy::create(0.25f, Vec2(0.0f, 128.0f)),
 					CallFunc::create([=]()
 					{
-						this->shineFx->playAnimation(ObjectResources::FX_Shine_Shine_0000, 0.015f, true);
+						this->shineFx->playAnimation(FXResources::Shine_Shine_0000, 0.015f, true);
 					}),
 					DelayTime::create(0.75f),
 					CallFunc::create([=]()

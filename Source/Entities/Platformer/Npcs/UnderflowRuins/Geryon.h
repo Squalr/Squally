@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyGeryon;
 
 private:
+	typedef NpcBase super;
 	Geryon(cocos2d::ValueMap& initProperties);
 	~Geryon();
 

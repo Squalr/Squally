@@ -92,8 +92,8 @@ HexusOpponentData* Toben::getHexusOpponentData()
 			Toben::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.010f,
-			HexusOpponentData::generateDeck(32, 0.010f,
+			0.009f,
+			HexusOpponentData::generateDeck(32, 0.009f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),

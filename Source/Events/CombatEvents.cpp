@@ -9,10 +9,15 @@ const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_CHANGE_MENU_STATE";
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_REQUEST_AI_ACTION";
+const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken = "EVENT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_TAKEN";
+const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt = "EVENT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_DELT";
+const std::string CombatEvents::EventEntityTimelineReset = "EVENT_ENTITY_TIMELINE_RESET";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventResumeTimeline = "EVENT_RESUME_TIMELINE";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_INTERRUPT_TIMELINE";
 const std::string CombatEvents::EventDamageOrHealingDelt = "EVENT_DAMAGE_OR_HEALING_DELT";
+const std::string CombatEvents::EventDamageOrHealing = "EVENT_DAMAGE_OR_HEALING";
+const std::string CombatEvents::EventCastBlocked = "EVENT_CAST_BLOCKED";
 const std::string CombatEvents::EventCastInterrupt = "EVENT_CAST_INTERRUPT";
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_FINISHED";
 const std::string CombatEvents::EventGiveRewards = "EVENT_GIVE_REWARDS";
@@ -71,10 +76,50 @@ void CombatEvents::TriggerInterruptTimeline()
 	);
 }
 
+void CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityTimelineReset(TimelineResetArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityTimelineReset,
+		&args
+	);
+}
+
 void CombatEvents::TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventDamageOrHealingDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerDamageOrHealing(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventDamageOrHealing,
+		&args
+	);
+}
+
+void CombatEvents::TriggerCastBlocked(CastBlockedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventCastBlocked,
 		&args
 	);
 }

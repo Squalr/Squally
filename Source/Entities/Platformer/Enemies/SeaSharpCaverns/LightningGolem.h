@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyLightningGolem;
 
 private:
+	typedef PlatformerEnemy super;
 	LightningGolem(cocos2d::ValueMap& initProperties);
 	~LightningGolem();
 

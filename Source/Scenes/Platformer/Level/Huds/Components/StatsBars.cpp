@@ -37,10 +37,10 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
 	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
 	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
-	this->healthNumerator = ConstantString::create();
-	this->healthDenominator = ConstantString::create();
-	this->manaNumerator = ConstantString::create();
-	this->manaDenominator = ConstantString::create();
+	this->healthNumerator = ConstantString::create("-");
+	this->healthDenominator = ConstantString::create("-");
+	this->manaNumerator = ConstantString::create("-");
+	this->manaDenominator = ConstantString::create("-");
 
 	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
 	this->manaLabel->setStringReplacementVariables({ this->manaNumerator, this->manaDenominator });
@@ -125,10 +125,13 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 
 	this->frame->removeAllChildren();
 
-	Sprite* emblem = Sprite::create(target->getEmblemResource());
+	if (this->target != nullptr)
+	{
+		Sprite* emblem = Sprite::create(target->getEmblemResource());
 
-	this->frame->addChild(emblem);
+		this->frame->addChild(emblem);
 
-	emblem->setFlippedX(!this->isFrameOnLeft);
-	emblem->setPosition(this->frame->getContentSize() / 2.0f);
+		emblem->setFlippedX(!this->isFrameOnLeft);
+		emblem->setPosition(this->frame->getContentSize() / 2.0f);
+	}
 }

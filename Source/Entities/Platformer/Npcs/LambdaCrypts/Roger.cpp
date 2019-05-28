@@ -92,8 +92,8 @@ HexusOpponentData* Roger::getHexusOpponentData()
 			Roger::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.823f,
-			HexusOpponentData::generateDeck(32, 0.823f,
+			0.821f,
+			HexusOpponentData::generateDeck(32, 0.821f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -51,6 +51,7 @@ private:
 	void update(float dt) override;
 	void spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args);
 	void moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args);
+	void moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args);
 	void isometricZSort(cocos2d::Node* node);
 	void isometricMapPreparation();
 	void hackerModeEnable();

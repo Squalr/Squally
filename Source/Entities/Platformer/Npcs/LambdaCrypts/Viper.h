@@ -36,6 +36,7 @@ public:
 	static const std::string MapKeyViper;
 
 private:
+	typedef NpcBase super;
 	Viper(cocos2d::ValueMap& initProperties);
 	~Viper();
 

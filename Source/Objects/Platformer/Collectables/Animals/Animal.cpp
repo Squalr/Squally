@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-Animal::Animal(ValueMap& initProperties) : HackableObject(initProperties)
+Animal::Animal(ValueMap& initProperties) : super(initProperties)
 {
 	this->spriteNode = Node::create();
 	this->cage = Sprite::create(ObjectResources::ChestBaseFront);
