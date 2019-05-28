@@ -24,4 +24,5 @@ private:
 	typedef PlatformerAttack super;
 
 	Sound* slashSound;
+	Sound* hitSound;
 };

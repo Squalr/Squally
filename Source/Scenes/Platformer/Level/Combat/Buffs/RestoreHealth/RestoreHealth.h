@@ -38,6 +38,7 @@ private:
 	
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
+	Sound* impactSound;
 	Sound* healSound;
 
 	static const float TimeBetweenTicks;
