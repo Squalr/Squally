@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -19,6 +20,7 @@
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 
 #include "Resources/FXResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Hacking/Objects/RestorePotion/IncrementHealth/IncrementHealth.h"
@@ -46,8 +48,10 @@ RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target,
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
+	this->healSound = Sound::create(SoundResources::Platformer_Attacks_Spells_Ding1);
 
 	this->addChild(this->healEffect);
+	this->addChild(this->healSound);
 }
 
 RestoreHealth::~RestoreHealth()
@@ -167,6 +171,7 @@ void RestoreHealth::runRestoreTick()
 
 	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
 
+	this->healSound->play();
 	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
 
 	HACKABLES_STOP_SEARCH();

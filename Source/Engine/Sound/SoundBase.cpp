@@ -1,6 +1,8 @@
 #include "SoundBase.h"
 
 #include "cocos/audio/include/AudioEngine.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
@@ -100,7 +102,7 @@ void SoundBase::update(float dt)
 	}
 }
 
-void SoundBase::play(bool repeat)
+void SoundBase::play(bool repeat, float startDelay)
 {
 	if (this->soundResource.empty())
 	{
@@ -112,7 +114,21 @@ void SoundBase::play(bool repeat)
 
 	float volume = this->getVolume();
 
-	this->activeTrackId = AudioEngine::play2d(this->soundResource, repeat, volume);
+	if (startDelay <= 0.0f)
+	{
+		this->activeTrackId = AudioEngine::play2d(this->soundResource, repeat, volume);
+	}
+	else
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(startDelay),
+			CallFunc::create([=]()
+			{
+				this->activeTrackId = AudioEngine::play2d(this->soundResource, repeat, volume);
+			}),
+			nullptr
+		));
+	}
 }
 
 void SoundBase::stop()

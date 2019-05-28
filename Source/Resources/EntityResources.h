@@ -898,6 +898,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcGrunt_R_LEG_1;
 	extern const std::string Enemies_EndianForest_OrcGrunt_TORSO;
 	extern const std::string Enemies_EndianForest_OrcGrunt_WEAPON_4;
+	extern const std::string Enemies_EndianForest_OrcGrunt_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_Animations;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_BELT;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_Emblem;
