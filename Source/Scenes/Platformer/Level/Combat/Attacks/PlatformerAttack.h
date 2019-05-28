@@ -44,6 +44,8 @@ protected:
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 
+	float attackDuration;
+	float recoverDuration;
 	static const float DefaultCleanupDuration;
 
 private:
@@ -57,6 +59,4 @@ private:
 	int baseDamageOrHealingMin;
 	int baseDamageOrHealingMax;
 	int specialCost;
-	float attackDuration;
-	float recoverDuration;
 };

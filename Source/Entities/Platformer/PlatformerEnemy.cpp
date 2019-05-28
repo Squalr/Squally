@@ -38,13 +38,8 @@ PlatformerEnemy::PlatformerEnemy(
 	this->combatEntityList = std::vector<std::string>();
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
-	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ",");
+	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
-
-	for (int index = 0; index < this->battleMapArgs.size(); index++)
-	{
-		this->battleMapArgs[index] = StrUtils::trim(this->battleMapArgs[index], " ");
-	}
 
 	this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyName).asString());
 

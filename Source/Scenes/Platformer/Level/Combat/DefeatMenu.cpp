@@ -60,7 +60,7 @@ void DefeatMenu::onEnter()
 {
 	super::onEnter();
 
-	this->setVisible(false);
+	this->setOpacity(0);
 }
 
 void DefeatMenu::initializePositions()

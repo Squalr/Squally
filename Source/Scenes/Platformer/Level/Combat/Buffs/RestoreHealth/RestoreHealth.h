@@ -10,6 +10,7 @@ namespace cocos2d
 class HackablePreview;
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
+class Sound;
 
 class RestoreHealth : public Buff
 {
@@ -34,9 +35,11 @@ private:
 	typedef Buff super;
 
 	void incrementHeal();
-
+	
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
+	Sound* impactSound;
+	Sound* healSound;
 
 	static const float TimeBetweenTicks;
 };

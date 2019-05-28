@@ -69,23 +69,7 @@ void MusicDeserializer::onDeserializationRequest(DeserializationEvents::LayerDes
 
 	newObject->addChild(music);
 
-	SoundEvents::TriggerFadeOutMusic();
-
-	if (delay <= 0.0f)
-	{
-		music->play(true);
-	}
-	else
-	{
-		music->runAction(Sequence::create(
-			DelayTime::create(delay),
-			CallFunc::create([=]()
-			{
-				music->play(true);
-			}),
-			nullptr
-		));
-	}
+	music->play(true, delay);
 
 	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(newObject, args->objectGroup->layerIndex));
 }
