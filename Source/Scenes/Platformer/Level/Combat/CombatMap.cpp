@@ -66,7 +66,7 @@ CombatMap::CombatMap() : super(true)
 	this->enemyAIHelper = EnemyAIHelper::create();
 
 	this->addChild(this->enemyAIHelper);
-	this->hud->addChild(this->textOverlays);
+	this->hackerModeVisibleHud->addChild(this->textOverlays);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->combatHud);

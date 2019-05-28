@@ -50,7 +50,7 @@ void Defend::initializePositions()
 
 	if (this->caster != nullptr)
 	{
-		this->setPosition(caster->getEntityCollision()->getPhysicsBody()->getPositionOffset());
+		this->setPosition(caster->getCollision()->getPhysicsBody()->getPositionOffset());
 	}
 }
 

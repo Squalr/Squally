@@ -140,8 +140,8 @@ void SquallyShip::initializeListeners()
 		{
 			this->hasCrashed = true;
 
-			GameCamera::getInstance()->clearTargets();
-
+			Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
+			Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
 			Squally* squally = Squally::deserialize(this->properties);
 
 			squally->setHealth(1);
@@ -152,8 +152,10 @@ void SquallyShip::initializeListeners()
 				ObjectEvents::SpawnMethod::Above,
 				ObjectEvents::PositionMode::Discard
 			));
-			
-			squally->getEntityCollision()->setPosition(GameUtils::getWorldCoords(this->shipCollision));
+
+			squally->setPosition(Vec2::ZERO);
+			squally->getCollision()->setPosition(crashCoords);
+			GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 			this->shipCollision->setPhysicsEnabled(false);
 			this->ship->setVisible(false);

@@ -40,6 +40,7 @@ protected:
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;

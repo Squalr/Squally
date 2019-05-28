@@ -42,7 +42,7 @@ public:
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
 	HexusOpponentData* getHexusOpponentData();
-	CollisionObject* getEntityCollision();
+	CollisionObject* getCollision();
 	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
 
 	ClickableNode* clickHitbox;

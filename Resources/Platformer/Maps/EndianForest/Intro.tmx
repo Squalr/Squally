@@ -145,7 +145,7 @@
    <properties>
     <property name="args" value="0"/>
     <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_A0"/>
+    <property name="map" value="EndianForest/Zone_1_0"/>
    </properties>
   </object>
  </objectgroup>

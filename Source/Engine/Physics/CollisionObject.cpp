@@ -51,8 +51,6 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	this->currentCollisions = std::set<CollisionObject*>();
 	this->physicsEnabled = true;
 	this->bindTarget = nullptr;
-	this->forceBindTarget = nullptr;
-	this->forceBounceFactor = 0.0f;
 	this->contactUpdateCallback = nullptr;
 
 	if (this->physicsBody != nullptr)
@@ -199,19 +197,6 @@ void CollisionObject::updateBinds()
 			this->setPosition(Vec2::ZERO);
 		}
 	}
-
-	if (this->forceBindTarget != nullptr)
-	{
-		Vec2 positionDelta = this->getPosition();
-
-		if (positionDelta != Vec2::ZERO)
-		{
-			this->forceBindTarget->setPosition(this->forceBindTarget->getPosition() + positionDelta * this->forceBounceFactor);
-
-			this->setPosition(Vec2::ZERO);
-			this->getPhysicsBody()->setVelocity(Vec2::ZERO);
-		}
-	}
 }
 
 void CollisionObject::setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback)
@@ -313,16 +298,6 @@ void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 void CollisionObject::bindTo(cocos2d::Node* bindTarget)
 {
 	this->bindTarget = bindTarget;
-}
-
-void CollisionObject::forceBindTo(cocos2d::Node* forceBindTarget, float forceBounceFactor)
-{
-	// Tragically, the `forceBounceFactor` parameter is a hack that prevents physicsbodies from overlapping. Use 0.0f to see how this is broken.
-	// I can't seem to diagnose the underlying math issues, so this hack fix is fine enough by me.
-
-	this->setGravityEnabled(false);
-	this->forceBindTarget = forceBindTarget;
-	this->forceBounceFactor = forceBounceFactor;
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)

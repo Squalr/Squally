@@ -151,7 +151,7 @@
    <properties>
     <property name="args" value="0"/>
     <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_A1"/>
+    <property name="map" value="EndianForest/Zone_1_1"/>
    </properties>
   </object>
  </objectgroup>

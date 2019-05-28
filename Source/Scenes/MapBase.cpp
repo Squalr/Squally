@@ -43,6 +43,7 @@ MapBase::MapBase(bool allowHackerMode)
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
+	this->hackerModeVisibleHud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
@@ -74,6 +75,7 @@ MapBase::MapBase(bool allowHackerMode)
 	this->addChild(this->mapNode);
 	this->addChild(this->hudNode);
 	this->addChild(this->hud);
+	this->addChild(this->hackerModeVisibleHud);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);

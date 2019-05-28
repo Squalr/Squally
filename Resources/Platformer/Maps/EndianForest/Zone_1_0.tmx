@@ -192,7 +192,7 @@
     <property name="args" value="0"/>
     <property name="direction" value="right"/>
     <property name="event" value="door-open"/>
-    <property name="map" value="EndianForest/Zone_A1"/>
+    <property name="map" value="EndianForest/Zone_1_1"/>
    </properties>
   </object>
   <object id="646" name="respawn" type="object" x="2105.33" y="4366.68" width="182.33" height="492.45"/>
