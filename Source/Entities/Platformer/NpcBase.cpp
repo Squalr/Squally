@@ -8,7 +8,7 @@
 using namespace cocos2d;
 
 NpcBase::NpcBase(
-	ValueMap& initProperties,
+	ValueMap& properties,
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType,
@@ -18,7 +18,7 @@ NpcBase::NpcBase(
 	int baseHealth,
 	int baseSpecial
 ) : super(
-	initProperties,
+	properties,
 	scmlResource,
 	emblemResource,
 	collisionType,
@@ -51,11 +51,6 @@ void NpcBase::update(float dt)
 void NpcBase::initializeCollisionEvents()
 {
 	super::initializeCollisionEvents();
-
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
 }
 
 void NpcBase::onInteractButtonClick()

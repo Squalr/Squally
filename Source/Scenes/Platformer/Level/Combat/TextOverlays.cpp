@@ -111,15 +111,15 @@ void TextOverlays::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* 
 
 	static const float LabelDuration = 2.0f;
 
-	Vec3 targetPosition = GameUtils::getWorldCoords3D(target);
-	label->setPosition3D(label->getPosition3D() + targetPosition + Vec3(0.0f, target->getEntitySize().height + 16.0f, 0.0f));
+	Vec2 targetPosition = GameUtils::getScreenBounds(target).origin;
+	label->setPosition(label->getPosition() + targetPosition + Vec2(0.0f, target->getEntitySize().height + 16.0f));
 	label->enableOutline(Color4B::BLACK, 2);
 
 	label->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
 			label->runAction(FadeTo::create(LabelDuration, 0));
-			label->runAction(MoveTo::create(LabelDuration, label->getPosition3D() + Vec3(0.0f, 128.0f, 0.0f)));
+			label->runAction(MoveTo::create(LabelDuration, label->getPosition() + Vec2(0.0f, 128.0f)));
 		}),
 		DelayTime::create(LabelDuration + 0.5f),
 		CallFunc::create([=]()

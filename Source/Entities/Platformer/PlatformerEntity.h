@@ -53,7 +53,7 @@ public:
 
 protected:
 	PlatformerEntity(
-		cocos2d::ValueMap& initProperties,
+		cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
 		PlatformerCollisionType collisionType,
@@ -61,7 +61,8 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
-		int baseSpecial);
+		int baseSpecial,
+		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO);
 	virtual ~PlatformerEntity();
 
 	enum class ControlState
@@ -81,6 +82,7 @@ protected:
 
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
+	CollisionObject* movementCollision;
 	CollisionObject* entityCollision;
 	CollisionObject* groundCollision;
 	HexusOpponentData* hexusOpponentData;

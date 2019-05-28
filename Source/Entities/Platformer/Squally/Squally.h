@@ -12,7 +12,7 @@ class CollisionObject;
 class Squally : public PlatformerFriendly
 {
 public:
-	static Squally* deserialize(cocos2d::ValueMap& initProperties);
+	static Squally* deserialize(cocos2d::ValueMap& properties);
 
 	float getFloatHeight() override;
 	cocos2d::Vec2 getAvatarFrameOffset() override;
@@ -29,7 +29,7 @@ protected:
 
 private:
 	typedef PlatformerFriendly super;
-	Squally(cocos2d::ValueMap& initProperties);
+	Squally(cocos2d::ValueMap& properties);
 	virtual ~Squally();
 
 	void onEnter() override;
@@ -45,7 +45,6 @@ private:
 	bool canJump;
 	float noCombatDuration;
 
-	CollisionObject* hoverCollision;
 	cocos2d::Node* cameraTrackTarget;
 
 	static const float squallyScale;

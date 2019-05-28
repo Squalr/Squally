@@ -23,7 +23,7 @@ Slash* Slash::create(float attackDuration, float recoverDuration)
 Slash::Slash(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, 0.5f, -3, -5, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Swings_Swing1);
-	this->hitSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Impact_Hit3);
+	this->hitSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Impact_HitSoft1);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);

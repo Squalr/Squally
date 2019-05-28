@@ -34,8 +34,8 @@ public:
 	void setBounds(cocos2d::Rect bounds);
 	void shakeCamera(float magnitude, float shakesPerSecond, float duration);
 	CameraTrackingData* getCurrentTrackingData();
-	void setTarget(CameraTrackingData trackingData);
-	void pushTarget(CameraTrackingData trackingData);
+	void setTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
+	void pushTarget(CameraTrackingData trackingData, bool immediatelyTrack = false);
 	void popTarget();
 	void clearTargets();
 
@@ -54,6 +54,7 @@ private:
 	cocos2d::Vec2 boundCameraByEllipses();
 	cocos2d::Vec2 boundCameraByRectangle();
 	void updateCameraDebugLabels();
+	void snapToTrackedTarget();
 
 	std::stack<CameraTrackingData> targetStack;
 	cocos2d::Rect cameraBounds;

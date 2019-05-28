@@ -65,12 +65,12 @@ CombatMap::CombatMap() : super(true)
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
 
-	this->addChild(this->textOverlays);
-	this->addChild(this->targetSelectionMenu);
 	this->addChild(this->enemyAIHelper);
+	this->hud->addChild(this->textOverlays);
+	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
-	this->hud->addChild(this->choicesMenu);
 	this->hud->addChild(this->combatHud);
+	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
 }

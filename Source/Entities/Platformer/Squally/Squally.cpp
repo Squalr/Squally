@@ -27,16 +27,16 @@ const std::string Squally::MapKeySqually = "squally";
 const int Squally::SquallyBaseHealth = 16;
 const int Squally::SquallyBaseSpecial = 8;
 
-Squally* Squally::deserialize(ValueMap& initProperties)
+Squally* Squally::deserialize(ValueMap& properties)
 {
-	Squally* instance = new Squally(initProperties);
+	Squally* instance = new Squally(properties);
 
 	instance->autorelease();
 	
 	return instance;
 }
 
-Squally::Squally(ValueMap& initProperties) : super(initProperties,
+Squally::Squally(ValueMap& properties) : super(properties,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
 	PlatformerCollisionType::Player,
@@ -44,13 +44,11 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	Squally::squallyScale,
 	Vec2(0.0f, 24.0f),
 	Squally::SquallyBaseHealth,
-	Squally::SquallyBaseSpecial)
+	Squally::SquallyBaseSpecial,
+	Size(128.0f, 224.0f))
 {
 	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();
-	this->hoverCollision = CollisionObject::create(PlatformerEntity::createCapsulePolygon(Size(112.0f, 128.0f), Squally::squallyScale), (int)PlatformerCollisionType::PlayerHover, true, false);
-	this->hoverCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, 0.0f));
-	this->hoverCollision->forceBindTo(this, 8.0f);
 
 	this->registerHackables();
 	this->registerAttack(Punch::create(0.4f, 0.5f));
@@ -58,10 +56,6 @@ Squally::Squally(ValueMap& initProperties) : super(initProperties,
 	this->currencyInventory = PlayerCurrencyInventory::getInstance();
 	this->inventory = PlayerInventory::getInstance();
 
-	// Adjust ground offset (special case for Squally)
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -PlatformerEntity::GroundCollisionOffset) - Vec2(0.0f, this->entitySize.height / 2.0f));
-
-	this->addChild(this->hoverCollision);
 	this->addChild(this->cameraTrackTarget);
 }
 
@@ -77,7 +71,7 @@ void Squally::onEnter()
 
 	// Request camera track player
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
-	GameCamera::getInstance()->setTarget(trackingData);
+	GameCamera::getInstance()->setTarget(trackingData, true);
 
 	this->loadState();
 	this->updateWeaponVisual();
@@ -130,7 +124,7 @@ void Squally::initializeCollisionEvents()
 	{
 		this->setPosition(this->spawnCoords);
 		this->entityCollision->setPosition(Vec2::ZERO);
-		this->hoverCollision->setPosition(Vec2::ZERO);
+		this->movementCollision->setPosition(Vec2::ZERO);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -154,16 +148,6 @@ void Squally::initializeCollisionEvents()
 	});
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->hoverCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
-
-	this->hoverCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});

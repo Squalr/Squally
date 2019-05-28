@@ -130,8 +130,7 @@ void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 
 	if (entity != nullptr)
 	{
-		this->lightRay->setPosition(entity->getPosition() + LightOffset);
-		this->lightRay->setPositionZ(GameUtils::getDepth(entity));
+		this->lightRay->setPosition(GameUtils::getScreenBounds(entity).origin + LightOffset);
 		this->lightRay->setVisible(true);
 	}
 	else
