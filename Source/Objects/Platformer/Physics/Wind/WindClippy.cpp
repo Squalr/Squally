@@ -25,7 +25,7 @@ WindClippy* WindClippy::create()
 WindClippy::WindClippy() : super()
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Misc_DaemonsHallow_FlyBot_Animations);
-	this->droidChatterSound = Sound::create(SoundResources::Platformer_Voices_Droid_DroidChatter);
+	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
 	this->clippyAnimations->setFlippedX(true);
 

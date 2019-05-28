@@ -63,7 +63,7 @@ void RewardsMenu::onEnter()
 {
 	super::onEnter();
 
-	this->setVisible(false);
+	this->setOpacity(0);
 }
 
 void RewardsMenu::initializePositions()

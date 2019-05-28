@@ -5,7 +5,7 @@
 class SoundBase : public GlobalNode
 {
 public:
-	virtual void play(bool repeat = false);
+	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	void stop();
 	void stopAndFadeOut();
 	void setVolumeMultiplier(float volumeMultiplier);

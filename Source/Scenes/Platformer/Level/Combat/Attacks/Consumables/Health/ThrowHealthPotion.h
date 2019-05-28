@@ -2,6 +2,8 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
+class Sound;
+
 class ThrowHealthPotion : public PlatformerAttack
 {
 public:
@@ -10,6 +12,7 @@ public:
 	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
+	void onAttackTelegraphBegin() override;
 
 protected:
 	ThrowHealthPotion();
@@ -20,4 +23,6 @@ protected:
 
 private:
 	typedef PlatformerAttack super;
+
+	Sound* throwSound;
 };

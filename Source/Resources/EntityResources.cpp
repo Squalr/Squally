@@ -897,6 +897,7 @@ const std::string EntityResources::Enemies_EndianForest_OrcGrunt_R_HAND = "Platf
 const std::string EntityResources::Enemies_EndianForest_OrcGrunt_R_LEG_1 = "Platformer/Entities/Enemies/EndianForest/OrcGrunt/R LEG 1.png";
 const std::string EntityResources::Enemies_EndianForest_OrcGrunt_TORSO = "Platformer/Entities/Enemies/EndianForest/OrcGrunt/TORSO.png";
 const std::string EntityResources::Enemies_EndianForest_OrcGrunt_WEAPON_4 = "Platformer/Entities/Enemies/EndianForest/OrcGrunt/WEAPON 4.png";
+const std::string EntityResources::Enemies_EndianForest_OrcGrunt_WEAPON_OH_PLACEHOLDER = "Platformer/Entities/Enemies/EndianForest/OrcGrunt/WEAPON_OH_PLACEHOLDER.png";
 const std::string EntityResources::Enemies_EndianForest_OrcSwordsman_Animations = "Platformer/Entities/Enemies/EndianForest/OrcSwordsman/Animations.scml";
 const std::string EntityResources::Enemies_EndianForest_OrcSwordsman_BELT = "Platformer/Entities/Enemies/EndianForest/OrcSwordsman/BELT.png";
 const std::string EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem = "Platformer/Entities/Enemies/EndianForest/OrcSwordsman/Emblem.png";

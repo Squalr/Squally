@@ -3,10 +3,12 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotion.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Generics/Empty.h"
 
@@ -23,6 +25,9 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 
 ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::ProjectileHealing, ObjectResources::Items_Consumables_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
+	this->throwSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Projectiles_ItemThrow1);
+
+	this->addChild(this->throwSound);
 }
 
 ThrowHealthPotion::~ThrowHealthPotion()
@@ -42,6 +47,13 @@ LocalizedString* ThrowHealthPotion::getString()
 std::string ThrowHealthPotion::getAttackAnimation()
 {
 	return "ThrowItem";
+}
+
+void ThrowHealthPotion::onAttackTelegraphBegin()
+{
+	super::onAttackTelegraphBegin();
+	
+	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
 void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)

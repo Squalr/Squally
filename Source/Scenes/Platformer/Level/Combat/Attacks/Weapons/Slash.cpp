@@ -2,7 +2,9 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Sound/Sound.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Combat/Attacks/Slash.h"
@@ -20,6 +22,9 @@ Slash* Slash::create(float attackDuration, float recoverDuration)
 
 Slash::Slash(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, 0.5f, -3, -5, 0, attackDuration, recoverDuration)
 {
+	this->slashSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Swings_Swing1);
+
+	this->addChild(this->slashSound);
 }
 
 PlatformerAttack* Slash::clone()
@@ -35,6 +40,13 @@ LocalizedString* Slash::getString()
 std::string Slash::getAttackAnimation()
 {
 	return "Attack";
+}
+
+void Slash::onAttackTelegraphBegin()
+{
+	super::onAttackTelegraphBegin();
+	
+	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
 void Slash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
