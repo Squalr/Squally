@@ -180,8 +180,8 @@
   </object>
   <object id="639" name="orc-grunt" type="entity" x="11378.2" y="4757.32" width="128" height="128">
    <properties>
-    <property name="ally-1" value="orc-grunt"/>
-    <property name="ally-2" value="orc-grunt"/>
+    <property name="ally-1" value=""/>
+    <property name="ally-2" value=""/>
     <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
     <property name="battle-map" value="EndianForest/BattleGrounds"/>
     <property name="event" value="door-open"/>

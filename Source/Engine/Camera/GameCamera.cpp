@@ -46,7 +46,6 @@ GameCamera* GameCamera::getInstance()
 
 GameCamera::GameCamera()
 {
-	this->useStoredNextCameraPosition = false;
 	this->defaultDistance = Director::getInstance()->getZEye();
 	this->targetStack = std::stack<CameraTrackingData>();
 	this->cameraBounds = Rect::ZERO;
@@ -84,7 +83,6 @@ void GameCamera::onEnter()
 {
 	super::onEnter();
 
-	this->setCameraPositionWorkAround();
 	this->scheduleUpdate();
 }
 
@@ -130,8 +128,6 @@ void GameCamera::initializeListeners()
 
 void GameCamera::update(float dt)
 {
-	this->setCameraPositionWorkAround();
-
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -164,7 +160,7 @@ void GameCamera::update(float dt)
 	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
 	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
 
-	this->setCameraPositionReal(cameraPosition);
+	this->setCameraPosition(cameraPosition);
 }
 
 float GameCamera::getCameraDistance()
@@ -194,30 +190,6 @@ Vec2 GameCamera::getCameraPosition()
 }
 
 void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
-{
-	// Don't actually set the position -- store it to use later to work around a cocos bug
-	this->storedNextCameraPosition = position;
-	this->useStoredNextCameraPosition = true;
-
-	if (addTrackOffset && this->targetStack.size() > 0)
-	{
-		this->storedNextCameraPosition += this->targetStack.top().trackOffset;
-	}
-}
-
-void GameCamera::setCameraPositionWorkAround()
-{
-	// This is a work around from a bug where setting the camera position during the loading of a scene can cause
-	// A stupid crash inside the physics engine in code with no symbols -- this can't be easily diagnosed,
-	// So this is a work around to delay setting the position in the update loop after the scene is loaded instead, bypassing the crash
-	if (this->useStoredNextCameraPosition)
-	{
-		this->setCameraPositionReal(this->storedNextCameraPosition);
-		this->useStoredNextCameraPosition = false;
-	}
-}
-
-void GameCamera::setCameraPositionReal(Vec2 position, bool addTrackOffset)
 {
 	Vec2 cameraPosition = position;
 
@@ -439,7 +411,7 @@ void GameCamera::pushTarget(CameraTrackingData trackingData, bool immediatelyTra
 
 	if (immediatelyTrack)
 	{
-		this->snapToTrackedTarget();
+		this->setCameraPositionToTrackedTarget();
 	}
 }
 
@@ -499,7 +471,7 @@ void GameCamera::updateCameraDebugLabels()
 	this->debugCameraStringZoom->setString(streamZoom.str());
 }
 
-void GameCamera::snapToTrackedTarget()
+void GameCamera::setCameraPositionToTrackedTarget()
 {
 	if (!this->targetStack.empty())
 	{
@@ -507,6 +479,6 @@ void GameCamera::snapToTrackedTarget()
 
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
 
-		this->setCameraPositionReal(targetPosition);
+		this->setCameraPosition(targetPosition);
 	}
 }

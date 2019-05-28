@@ -90,7 +90,7 @@ void FocusTakeOver::unfocus(bool fadeOut)
 		Node* parent = std::get<0>((*it).second);
 		int childIndex = std::get<1>((*it).second);
 
-		GameUtils::changeParent(node, parent, true, childIndex);
+		GameUtils::changeParent(node, parent, true, true, childIndex);
 	}
 
 	this->hijackedNodes.clear();
