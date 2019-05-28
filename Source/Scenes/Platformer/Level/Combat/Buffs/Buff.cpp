@@ -30,6 +30,13 @@ void Buff::onEnter()
 	this->registerHackables();
 }
 
+void Buff::onExit()
+{
+	super::onExit();
+
+	this->unregisterHackables();
+}
+
 void Buff::initializeListeners()
 {
 	super::initializeListeners();
@@ -101,10 +108,9 @@ void Buff::unregisterHackables()
 
 void Buff::removeBuff()
 {
-	this->unregisterHackables();
-
 	if (this->getParent() != nullptr)
 	{
+		// unregisterHackables will be indirectly called due to the onExit trigger
 		this->getParent()->removeChild(this);
 	}
 }

@@ -278,11 +278,5 @@ void HackableCode::restoreState()
 		return;
 	}
 
-	if (this->codePointer != nullptr)
-	{
-		for (int index = 0; index < this->originalCodeLength; index++)
-		{
-			((unsigned char*)this->codePointer)[index] = this->originalCodeCopy[index];
-		}
-	}
+	HackUtils::writeMemory(this->codePointer, this->originalCodeCopy.data(), this->originalCodeCopy.size());
 }

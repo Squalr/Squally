@@ -220,8 +220,25 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 
 void HackableObject::unregisterCode(HackableCode* hackableCode)
 {
-	this->removeChild(hackableCode);
+	bool hasHackableCode = false;
 
-	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
-	this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
+	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+	{
+		if ((*it)->getPointer() == hackableCode->getPointer())
+		{
+			hackableCode = *it;
+			hasHackableCode = true;
+			break;
+		}
+	}
+
+	if (hasHackableCode)
+	{
+		this->removeChild(hackableCode);
+
+		hackableCode->restoreState();
+
+		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
+		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
+	}
 }

@@ -278,20 +278,23 @@ void CodeEditor::initializeListeners()
 	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
 	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
 
-	EventListenerCustom* hackableEditListener = EventListenerCustom::create(
-		HackableEvents::EventHackableAttributeEdit, 
-		[=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		if (this->isVisible())
 		{
-			HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());
-			
-			if (args != nullptr)
-			{
-				this->open(args);
-			}
+			this->onCancel();
 		}
-	);
+	}));
 
-	this->addEventListenerIgnorePause(hackableEditListener);
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEdit, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->open(args);
+		}
+	}));
 }
 
 void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
