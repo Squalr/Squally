@@ -2,6 +2,7 @@
 
 #include <map>
 #include <string>
+#include <vector>
 
 namespace cocos2d
 {
@@ -15,9 +16,10 @@ public:
 	typedef int ActiveSaveProfile;
 
 	static void setActiveSaveProfile(ActiveSaveProfile activeSaveProfile);
-	static void batchSaveGlobalData(std::vector<std::tuple<std::string, const cocos2d::Value&>> newData);
+	static void save();
+	static void batchSaveGlobalData(std::vector<std::tuple<std::string, cocos2d::Value>> newData);
 	static void saveGlobalData(std::string key, const cocos2d::Value& data);
-	static void batchSaveProfileData(std::vector<std::tuple<std::string, const cocos2d::Value&>> newData);
+	static void batchSaveProfileData(std::vector<std::tuple<std::string, cocos2d::Value>> newData);
 	static void softSaveProfileData(std::string key, const cocos2d::Value& data);
 	static void saveProfileData(std::string key, const cocos2d::Value& data);
 	static cocos2d::Value getGlobalDataOrDefault(std::string key, const cocos2d::Value& defaultValue);

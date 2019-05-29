@@ -65,6 +65,13 @@ void PlatformerMap::onEnter()
 	this->scheduleUpdate();
 }
 
+void PlatformerMap::onExit()
+{
+	super::onExit();
+
+	SaveManager::save();
+}
+
 void PlatformerMap::initializePositions()
 {
 	super::initializePositions();

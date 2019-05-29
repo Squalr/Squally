@@ -21,6 +21,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEnter() override;
+	void onExit() override;
 	void update(float dt) override;
 	void openCipher();
 	void onCipherClose();
