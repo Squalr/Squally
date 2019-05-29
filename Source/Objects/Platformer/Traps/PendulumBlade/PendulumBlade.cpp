@@ -143,7 +143,7 @@ void PendulumBlade::startSwing()
 	swingToAngle(PendulumBlade::MinAngle);
 }
 
-void PendulumBlade::swingToAngle(float angle)
+NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
 {
 	const float arc = (PendulumBlade::MaxAngle - PendulumBlade::MinAngle);
 	const float minDuration = 0.5f;

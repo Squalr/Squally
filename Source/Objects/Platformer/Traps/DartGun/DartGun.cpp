@@ -124,7 +124,7 @@ void DartGun::registerHackables()
 	}
 }
 
-void DartGun::shoot(float dt)
+NO_OPTIMIZE void DartGun::shoot(float dt)
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{

@@ -122,7 +122,7 @@ float FloatingAsteroid::getDensity()
 	return this->getDensityNonVirtual();
 }
 
-float FloatingAsteroid::getDensityNonVirtual()
+NO_OPTIMIZE float FloatingAsteroid::getDensityNonVirtual()
 {
 	volatile static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;

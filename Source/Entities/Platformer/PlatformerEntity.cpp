@@ -174,15 +174,14 @@ void PlatformerEntity::update(float dt)
 {
 	super::update(dt);
 
-	if (this->isDead())
-	{
-		this->movementCollision->setVelocity(Vec2::ZERO);
-		return;
-	}
-
 	if (this->isCinimaticHijacked)
 	{
 		return;
+	}
+
+	if (this->isDead() && this->movement != Vec2::ZERO)
+	{
+		this->movement = Vec2::ZERO;
 	}
 
 	Vec2 velocity = this->movementCollision->getVelocity();

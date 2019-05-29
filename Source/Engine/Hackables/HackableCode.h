@@ -37,6 +37,7 @@
 
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
+	#define NO_OPTIMIZE
 	#define ASM1(asm_literal) \
 		__asm asm_literal
 	#define ASM2(asm_literal1, asm_literal2) \
@@ -51,6 +52,11 @@
 		ASM(mov variable, register)
 
 #elif __GNUC__ || __clang__
+	#ifdef __clang__
+		#define NO_OPTIMIZE __attribute__((optnone))
+	#elif __GNUC__
+		#define NO_OPTIMIZE [[gnu::optimize(0)]]
+	#endif
 
 	#define ASM1(asm_literal) \
 		ASM_GCC(#asm_literal)

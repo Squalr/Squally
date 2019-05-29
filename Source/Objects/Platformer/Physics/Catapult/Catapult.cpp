@@ -200,7 +200,7 @@ void Catapult::launchBall()
 	catapultBall->setRotation(0.0f);
 }
 
-cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
+NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 {
 	volatile static float* freeMemoryForUser = new float[16];
 	volatile float resultSpeedY = this->launchPower;
