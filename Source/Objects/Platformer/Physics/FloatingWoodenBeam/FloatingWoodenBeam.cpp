@@ -122,7 +122,7 @@ float FloatingWoodenBeam::getDensity()
 	return this->getDensityNonVirtual();
 }
 
-float FloatingWoodenBeam::getDensityNonVirtual()
+NO_OPTIMIZE float FloatingWoodenBeam::getDensityNonVirtual()
 {
 	volatile static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;

@@ -122,7 +122,7 @@ float FloatingCrate::getDensity()
 	return this->getDensityNonVirtual();
 }
 
-float FloatingCrate::getDensityNonVirtual()
+NO_OPTIMIZE float FloatingCrate::getDensityNonVirtual()
 {
 	volatile static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;

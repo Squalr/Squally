@@ -113,7 +113,7 @@ HackablePreview* SpikeLog::createDefaultPreview()
 	return SpikeLogGenericPreview::create();
 }
 
-int SpikeLog::incrementSpikeLogAnimation(int count, int max)
+NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 {
 	ASM(push ECX)
 	ASM_MOV_REG_VAR(ECX, count);

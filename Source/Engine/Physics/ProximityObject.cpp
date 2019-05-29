@@ -173,7 +173,7 @@ void ProximityObject::setAcceleration(cocos2d::Vec3 acceleration)
 	this->acceleration = acceleration;
 }
 
-Vec3 ProximityObject::getVelocity()
+NO_OPTIMIZE Vec3 ProximityObject::getVelocity()
 {
 	Vec3 velocityCopy = this->velocity;
 	static const volatile int* freeMemory = new int[128];
@@ -214,7 +214,7 @@ Vec3 ProximityObject::getVelocity()
 	return velocityCopy;
 }
 
-Vec3 ProximityObject::getAcceleration()
+NO_OPTIMIZE Vec3 ProximityObject::getAcceleration()
 {
 	Vec3 accelerationCopy = this->acceleration;
 	const volatile float* accelerationPtrX = &accelerationCopy.x;

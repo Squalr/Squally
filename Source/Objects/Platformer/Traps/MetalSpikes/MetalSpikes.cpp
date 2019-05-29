@@ -117,7 +117,7 @@ HackablePreview* MetalSpikes::createDefaultPreview()
 	return MetalSpikesGenericPreview::create();
 }
 
-void MetalSpikes::updateSpikes(float dt)
+NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 {
 	if (this->isRunningAnimation)
 	{

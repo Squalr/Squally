@@ -41,10 +41,24 @@ void SaveManager::initializeSaveData()
 
 void SaveManager::setActiveSaveProfile(ActiveSaveProfile activeSaveProfile)
 {
+	SaveManager::initializeSaveData();
+
 	SaveManager::activeSaveProfile = activeSaveProfile;
 
 	// Load the save data for this profile
 	SaveManager::profileSaveData = SaveManager::loadSaveFile(
+		SaveManager::getLocalProfileSaveFilePath(SaveManager::getActiveSaveProfile()),
+		SaveManager::getCloudProfileSaveFilePath(SaveManager::getActiveSaveProfile())
+	);
+}
+
+void SaveManager::save()
+{
+	SaveManager::initializeSaveData();
+
+	// Save any uncommitted save data
+	SaveManager::doSave(
+		SaveManager::profileSaveData,
 		SaveManager::getLocalProfileSaveFilePath(SaveManager::getActiveSaveProfile()),
 		SaveManager::getCloudProfileSaveFilePath(SaveManager::getActiveSaveProfile())
 	);
@@ -59,7 +73,7 @@ void SaveManager::saveGlobalData(std::string key, const Value& data)
 	SaveManager::doSave(SaveManager::globalSaveData, SaveManager::getLocalGlobalSaveFilePath(), SaveManager::getCloudGlobalSaveFilePath());
 }
 
-void SaveManager::batchSaveGlobalData(std::vector<std::tuple<std::string, const cocos2d::Value&>> newData)
+void SaveManager::batchSaveGlobalData(std::vector<std::tuple<std::string, cocos2d::Value>> newData)
 {
 	SaveManager::initializeSaveData();
 
@@ -71,7 +85,7 @@ void SaveManager::batchSaveGlobalData(std::vector<std::tuple<std::string, const 
 	SaveManager::doSave(SaveManager::globalSaveData, SaveManager::getLocalGlobalSaveFilePath(), SaveManager::getCloudGlobalSaveFilePath());
 }
 
-void SaveManager::batchSaveProfileData(std::vector<std::tuple<std::string, const cocos2d::Value&>> newData)
+void SaveManager::batchSaveProfileData(std::vector<std::tuple<std::string, cocos2d::Value>> newData)
 {
 	SaveManager::initializeSaveData();
 

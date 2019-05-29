@@ -156,7 +156,7 @@ void RestoreHealth::runRestoreHealth()
 	));
 }
 
-void RestoreHealth::runRestoreTick()
+NO_OPTIMIZE void RestoreHealth::runRestoreTick()
 {
 	int incrementAmount = 0;
 
