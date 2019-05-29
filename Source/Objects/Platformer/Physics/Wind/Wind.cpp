@@ -162,7 +162,7 @@ HackablePreview* Wind::createDefaultPreview()
 	return WindGenericPreview::create();
 }
 
-void Wind::updateWind(float dt)
+NO_OPTIMIZE void Wind::updateWind(float dt)
 {
 	this->windSpeed = Vec2::ZERO;
 

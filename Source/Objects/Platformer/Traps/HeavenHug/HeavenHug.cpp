@@ -139,7 +139,7 @@ void HeavenHug::updateHeavenHug()
 	}
 }
 
-float HeavenHug::getTravelHeight()
+NO_OPTIMIZE float HeavenHug::getTravelHeight()
 {
 	static volatile float* travelDistPtr = new float();
 	static volatile float retVal;

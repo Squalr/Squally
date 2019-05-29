@@ -117,7 +117,7 @@ HackablePreview* Laser::createDefaultPreview()
 	return LaserGenericPreview::create();
 }
 
-void Laser::updateLaser(float dt)
+NO_OPTIMIZE void Laser::updateLaser(float dt)
 {
 	if (this->isRunningAnimation)
 	{

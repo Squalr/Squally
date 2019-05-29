@@ -142,7 +142,7 @@ void MechanicalFlail::startSwing()
 	swingToAngle(MechanicalFlail::MinAngle);
 }
 
-void MechanicalFlail::swingToAngle(float angle)
+NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 {
 	const float arc = (MechanicalFlail::MaxAngle - MechanicalFlail::MinAngle);
 	const float minDuration = 0.5f;

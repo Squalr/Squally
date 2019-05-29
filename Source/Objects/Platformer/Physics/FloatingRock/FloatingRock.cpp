@@ -122,7 +122,7 @@ float FloatingRock::getDensity()
 	return this->getDensityNonVirtual();
 }
 
-float FloatingRock::getDensityNonVirtual()
+NO_OPTIMIZE float FloatingRock::getDensityNonVirtual()
 {
 	volatile static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;

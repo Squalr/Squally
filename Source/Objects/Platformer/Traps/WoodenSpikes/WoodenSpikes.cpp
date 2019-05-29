@@ -117,7 +117,7 @@ HackablePreview* WoodenSpikes::createDefaultPreview()
 	return WoodenSpikesGenericPreview::create();
 }
 
-void WoodenSpikes::updateSpikes(float dt)
+NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 {
 	if (this->isRunningAnimation)
 	{
