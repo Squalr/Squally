@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const int MatrixRain::strandCount = 32;
+const int MatrixRain::strandCount = 0;
 
 MatrixRain* MatrixRain::create()
 {

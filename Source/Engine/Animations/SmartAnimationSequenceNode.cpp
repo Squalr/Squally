@@ -241,7 +241,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::string initi
 {
 	std::vector<std::string> animationFiles = SmartAnimationSequenceNode::getAllAnimationFiles(initialSequenceResourceFile);
 
-	this->playAnimationAndReverseRepeat(animationFiles, animationSpeedIn, repeatDelay, animationSpeedOut, repeatDelay, insertBlankFrame, startReversed, repeatCount, onAnimationComplete);
+	this->playAnimationAndReverseRepeat(animationFiles, animationSpeedIn, reverseDelay, animationSpeedOut, repeatDelay, insertBlankFrame, startReversed, repeatCount, onAnimationComplete);
 }
 
 void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::string> animationFiles, float animationSpeedIn, float reverseDelay, float animationSpeedOut, float repeatDelay, bool insertBlankFrame, bool startReversed, int repeatCount, std::function<void()> onAnimationComplete)
@@ -268,32 +268,74 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::
 	animationIn->setDelayPerUnit(animationSpeedIn);
 	animationOut->setDelayPerUnit(animationSpeedOut);
 
+	this->forwardsAnimation = Animate::create(animationIn);
+	this->backwardsAnimation = Animate::create(animationOut)->reverse();
+	this->sprite->stopAllActions();
+
 	if (startReversed)
 	{
-		this->forwardsAnimation = Animate::create(animationIn)->reverse();
-		this->backwardsAnimation = Animate::create(animationOut);
-
-		this->sprite->stopAllActions();
-
 		if (repeatCount <= 0)
 		{
-			this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), this->backwardsAnimation, DelayTime::create(reverseDelay), nullptr)));
+			this->sprite->runAction(RepeatForever::create(
+				Sequence::create(
+					this->backwardsAnimation,
+					DelayTime::create(repeatDelay),
+					this->forwardsAnimation,
+					DelayTime::create(reverseDelay),
+					CallFunc::create([=]()
+					{
+						if (onAnimationComplete != nullptr)
+						{
+							onAnimationComplete();
+						}
+					}),
+					nullptr
+				)
+			));
 		}
 		else
 		{
-			this->sprite->runAction(Repeat::create(Sequence::create(this->forwardsAnimation, DelayTime::create(repeatDelay), this->backwardsAnimation, DelayTime::create(reverseDelay), nullptr), repeatCount));
+			this->sprite->runAction(Repeat::create(
+				Sequence::create(
+					this->backwardsAnimation,
+					DelayTime::create(repeatDelay),
+					this->forwardsAnimation,
+					DelayTime::create(reverseDelay),
+					CallFunc::create([=]()
+					{
+						this->repeatIndex++;
+
+						if (this->repeatIndex == repeatCount && onAnimationComplete != nullptr)
+						{
+							onAnimationComplete();
+						}
+					}),
+					nullptr
+				),
+				repeatCount
+			));
 		}
 	}
 	else
 	{
-		this->forwardsAnimation = Animate::create(animationIn);
-		this->backwardsAnimation = Animate::create(animationOut)->reverse();
-
-		this->sprite->stopAllActions();
-
 		if (repeatCount <= 0)
 		{
-			this->sprite->runAction(RepeatForever::create(Sequence::create(this->forwardsAnimation, DelayTime::create(reverseDelay), this->backwardsAnimation, DelayTime::create(repeatDelay), nullptr)));
+			this->sprite->runAction(RepeatForever::create(
+				Sequence::create(
+					this->forwardsAnimation,
+					DelayTime::create(reverseDelay),
+					this->backwardsAnimation,
+					DelayTime::create(repeatDelay),
+					CallFunc::create([=]()
+					{
+						if (onAnimationComplete != nullptr)
+						{
+							onAnimationComplete();
+						}
+					}),
+					nullptr
+				)
+			));
 		}
 		else
 		{
@@ -302,7 +344,7 @@ void SmartAnimationSequenceNode::playAnimationAndReverseRepeat(std::vector<std::
 			this->sprite->runAction(Repeat::create(
 				Sequence::create(
 					this->forwardsAnimation,
-					DelayTime::create(repeatDelay),
+					DelayTime::create(reverseDelay),
 					this->backwardsAnimation,
 					DelayTime::create(repeatDelay),
 					CallFunc::create([=]()
