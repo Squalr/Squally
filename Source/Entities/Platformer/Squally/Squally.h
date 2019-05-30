@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class SmartAnimationSequenceNode;
 
 class Squally : public PlatformerFriendly
 {
@@ -41,11 +42,14 @@ private:
 	void saveState();
 	void loadState();
 	void updateWeaponVisual();
+	void runEyeBlinkLoop();
 
 	bool canJump;
 	float noCombatDuration;
 
 	cocos2d::Node* cameraTrackTarget;
+	SmartAnimationSequenceNode* leftEyeController;
+	SmartAnimationSequenceNode* rightEyeController;
 
 	static const float squallyScale;
 };

@@ -1,7 +1,13 @@
 #include "Squally.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCSprite.h"
+
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
@@ -49,6 +55,8 @@ Squally::Squally(ValueMap& properties) : super(properties,
 {
 	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();
+	this->leftEyeController = SmartAnimationSequenceNode::create();
+	this->rightEyeController = SmartAnimationSequenceNode::create();
 
 	this->registerHackables();
 	this->registerAttack(Punch::create(0.4f, 0.5f));
@@ -56,7 +64,12 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	this->currencyInventory = PlayerCurrencyInventory::getInstance();
 	this->inventory = PlayerInventory::getInstance();
 
+	this->leftEyeController->setVisible(false);
+	this->rightEyeController->setVisible(false);
+
 	this->addChild(this->cameraTrackTarget);
+	this->addChild(this->leftEyeController);
+	this->addChild(this->rightEyeController);
 }
 
 Squally::~Squally()
@@ -71,6 +84,7 @@ void Squally::onEnter()
 
 	this->loadState();
 	this->updateWeaponVisual();
+	this->runEyeBlinkLoop();
 
 	// Request camera track player
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
@@ -279,4 +293,58 @@ void Squally::updateWeaponVisual()
 			mainhand->setOffset(weapon->getDisplayOffset());
 		}
 	}
+}
+
+void Squally::runEyeBlinkLoop()
+{
+	const float BlinkSpeed = 0.0075f;
+	const float EyesClosedDuration = 0.015f;
+	const float TimeBetweenBlinks = 5.5f;
+	
+	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	this->leftEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* leftEye = this->getAnimations()->getAnimationPart("eye_left");
+		
+		if (leftEye != nullptr)
+		{
+			leftEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
+	this->leftEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* leftEye = this->getAnimations()->getAnimationPart("eye_left");
+		
+		if (leftEye != nullptr)
+		{
+			leftEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
+	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	this->rightEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* rightEye = this->getAnimations()->getAnimationPart("eye_right");
+		
+		if (rightEye != nullptr)
+		{
+			rightEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
+	this->rightEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* rightEye = this->getAnimations()->getAnimationPart("eye_right");
+		
+		if (rightEye != nullptr)
+		{
+			rightEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
 }
