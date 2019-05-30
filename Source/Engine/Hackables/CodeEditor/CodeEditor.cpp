@@ -203,6 +203,7 @@ CodeEditor::CodeEditor()
 
 	this->scriptList->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->lexicon->setVisible(false);
 	this->setVisible(false);
 
 	this->addChild(this->functionWindow);
@@ -229,8 +230,6 @@ CodeEditor::~CodeEditor()
 void CodeEditor::onEnter()
 {
 	super::onEnter();
-
-	this->lexicon->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -294,11 +293,17 @@ void CodeEditor::initializeListeners()
 			this->open(args);
 		}
 	}));
+
+	this->lexicon->setCloseCallBack([=]()
+	{
+		GameUtils::focus(this);
+		this->functionWindow->focus();
+	});
 	
 	this->lexiconButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->lexicon->setVisible(true);
-		GameUtils::focus(this->lexicon);
+		this->functionWindow->unfocus();
+		this->lexicon->open();
 	});
 }
 
@@ -741,6 +746,7 @@ void CodeEditor::onScriptLoad(ScriptEntry* script)
 
 void CodeEditor::onAccept()
 {
+	this->lexicon->close();
 	this->scriptList->saveScripts();
 
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getPointer());
@@ -763,6 +769,7 @@ void CodeEditor::onAccept()
 
 void CodeEditor::onCancel()
 {
+	this->lexicon->close();
 	this->scriptList->saveScripts();
 
 	this->setVisible(false);

@@ -7,15 +7,19 @@ namespace cocos2d
 	class Sprite;
 }
 
-class NopPage : public LexiconPage
+class IntroPage : public LexiconPage
 {
 public:
-	static NopPage* create();
+	static IntroPage* create();
+
+protected:
+	void initializePositions() override;
+	void initializeListeners() override;
 	
 private:
 	typedef LexiconPage super;
-	NopPage();
-	~NopPage();
+	IntroPage();
+	~IntroPage();
 
 	cocos2d::Sprite* chapterSprite;
 };

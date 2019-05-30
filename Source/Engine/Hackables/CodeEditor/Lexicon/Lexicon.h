@@ -16,6 +16,10 @@ class Lexicon : public Hud
 public:
 	static Lexicon* create();
 
+	void open();
+	void close();
+	void setCloseCallBack(std::function<void()> closeCallback);
+
 private:
 	typedef Hud super;
 	Lexicon();
@@ -27,8 +31,19 @@ private:
 	cocos2d::Sprite* background;
 	cocos2d::Sprite* banner;
 	LocalizedSprite* title;
+	cocos2d::Sprite* lexiconBack;
+	ClickableTextNode* normalTab;
+	ClickableTextNode* controlFlowTab;
+	ClickableTextNode* xmmTab;
+	ClickableTextNode* fpuTab;
+	cocos2d::Sprite* lexiconFront;
+	cocos2d::Node* leftPageNode;
+	cocos2d::Node* rightPageNode;
 	ClickableTextNode* backButton;
 	cocos2d::Sprite* darkFrame;
 
-	std::vector<LexiconPage*> pages;
+	std::function<void()> closeCallback;
+	std::vector<LexiconPage*> leftPages;
+	std::vector<LexiconPage*> rightPages;
+	std::vector<LexiconPage*> allPages;
 };
