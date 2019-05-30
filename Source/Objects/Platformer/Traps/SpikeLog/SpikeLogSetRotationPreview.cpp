@@ -47,7 +47,7 @@ void SpikeLogSetRotationPreview::onEnter()
 	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
 	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.5f, 0.0f);
 
-	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max)
+	this->previewSpikedLog->getForwardsAnimation()->incrementCallback = [=](int count, int max, std::string spriteResource)
 	{
 		this->countString->setString(std::to_string(count));
 
