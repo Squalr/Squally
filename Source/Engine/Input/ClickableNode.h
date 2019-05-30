@@ -47,6 +47,10 @@ protected:
 	ClickableNode(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 	virtual ~ClickableNode();
 
+	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
+	void initializeListeners() override;
+	void update(float) override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 
@@ -55,10 +59,6 @@ protected:
 
 private:
 	typedef SmartNode super;
-	void initializeListeners() override;
-	void onEnter() override;
-	void onEnterTransitionDidFinish() override;
-	void update(float) override;
 	void setDebugDrawPosition();
 	void showSprite(cocos2d::Node* sprite);
 	void clearState();

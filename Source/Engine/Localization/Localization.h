@@ -13,6 +13,7 @@ public:
 
 protected:
 	friend class LocalizedLabel;
+	friend class LocalizedSprite;
 
 private:
 	static Localization* getInstance();

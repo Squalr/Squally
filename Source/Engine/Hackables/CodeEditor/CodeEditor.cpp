@@ -230,7 +230,6 @@ void CodeEditor::onEnter()
 {
 	super::onEnter();
 
-	this->lexiconButton->setVisible(false);
 	this->lexicon->setVisible(false);
 
 	this->scheduleUpdate();
@@ -295,6 +294,12 @@ void CodeEditor::initializeListeners()
 			this->open(args);
 		}
 	}));
+	
+	this->lexiconButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->lexicon->setVisible(true);
+		GameUtils::focus(this->lexicon);
+	});
 }
 
 void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
