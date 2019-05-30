@@ -12,6 +12,8 @@ class InputText : public cocos2d::ui::UICCTextField
 public:
 	static InputText* create(cocos2d::Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);
 
+	void focus();
+	void unfocus();
 	void setString(const std::string& label) override;
 	void setStringChangeCallback(std::function<void(std::string)> stringChangeCallback);
 	std::string getFont();

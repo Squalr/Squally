@@ -5,6 +5,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixLetter.h"
 
 using namespace cocos2d;
@@ -49,12 +50,15 @@ MatrixStrand::MatrixStrand(int strandIndex)
 	this->setScale(MatrixStrand::strandScale);
 
 	// Delayed start to prevent all strands from being created at the same time
-	MatrixStrand* matrixStrand = this;
-	this->runAction(Sequence::create(DelayTime::create((float)strandIndex * 0.15f), CallFunc::create([matrixStrand]()
-	{
-		matrixStrand->beginStrand();
-		matrixStrand->scheduleUpdate();
-	}), nullptr));
+	this->runAction(Sequence::create(
+		DelayTime::create(float(strandIndex) * 0.15f),
+		CallFunc::create([=]()
+		{
+			this->beginStrand();
+			this->scheduleUpdate();
+		}),
+		nullptr
+	));
 }
 
 MatrixStrand::~MatrixStrand()
@@ -75,17 +79,22 @@ void MatrixStrand::pause()
 
 void MatrixStrand::update(float dt)
 {
+	if (!GameUtils::isVisible(this))
+	{
+		return;
+	}
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Camera movement effect
 	this->setPositionY(this->getPositionY() - dt * movementSpeed / 4.0f);
 	this->setPositionZ(this->getPositionZ() + dt * movementSpeed);
 
-	// TODO: Bounds checking should be updated to be the projected 3d => 2d X position. This seems to not be working as intended after the camera updates.
+	Vec2 screenCoords = GameUtils::getScreenBounds(this).origin;
 
 	// Kill off-screen strands
-	if (this->getPositionX() < 0 - MatrixLetter::letterSize ||
-		this->getPositionX() > visibleSize.width + MatrixLetter::letterSize ||
+	if (screenCoords.x < 0 - MatrixLetter::letterSize ||
+		screenCoords.x > visibleSize.width + MatrixLetter::letterSize ||
 		this->getPositionZ() > GameCamera::getInstance()->getCameraDistance() + 64.0f)
 	{
 		this->killStrand();

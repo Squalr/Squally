@@ -239,7 +239,13 @@ void CodeWindow::setText(std::string text)
 
 void CodeWindow::focus()
 {
-	this->editableText->attachWithIME();
+	this->editableText->focus();
+}
+
+void CodeWindow::unfocus()
+{
+	this->windowTitle->unfocus();
+	this->editableText->unfocus();
 }
 
 void CodeWindow::insertNewline()
