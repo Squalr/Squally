@@ -28,8 +28,11 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+	void runEyeBlinkLoop();
 
 	SmartAnimationNode* squally;
+	SmartAnimationSequenceNode* leftEyeController;
+	SmartAnimationSequenceNode* rightEyeController;
 	AnimationPart* mainhand;
 	SmartAnimationSequenceNode* slime;
 	cocos2d::Sprite* background;
