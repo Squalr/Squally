@@ -7,10 +7,14 @@ namespace cocos2d
 	class Sprite;
 }
 
+class LocalizedLabel;
+
 class IntroPage : public LexiconPage
 {
 public:
 	static IntroPage* create();
+
+	static const std::string KeyIntroPage;
 
 protected:
 	void initializePositions() override;
@@ -21,5 +25,7 @@ private:
 	IntroPage();
 	~IntroPage();
 
+	cocos2d::Sprite* compileDiagram;
 	cocos2d::Sprite* chapterSprite;
+	LocalizedLabel* introText;
 };

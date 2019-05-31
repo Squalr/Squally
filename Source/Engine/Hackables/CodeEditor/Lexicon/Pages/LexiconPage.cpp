@@ -5,8 +5,11 @@
 using namespace cocos2d;
 
 const Size LexiconPage::TotalPageSize = Size(580.0f, 832.0f);
-const Size LexiconPage::PageMargin = Size(64.0f, 64.0f);
-const Size LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin;
+const Size LexiconPage::PageMargin = Size(32.0f, 32.0f);
+const Size LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin * 2.0f;
+const Vec2 LexiconPage::ChapterMarkerLocation = Vec2(-LexiconPage::PageSize.width / 2.0f + 64.0f, LexiconPage::PageSize.height / 2.0f - 192.0f);
+const Vec2 LexiconPage::ChapterLocation = LexiconPage::ChapterMarkerLocation + Vec2(32.0f, 32.0f);
+const Color4B LexiconPage::TextColor = Color4B(62, 45, 32, 255);
 
 LexiconPage::LexiconPage(std::string pageIdentifier)
 {

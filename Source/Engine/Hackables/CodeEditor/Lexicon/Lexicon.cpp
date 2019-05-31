@@ -56,6 +56,7 @@ Lexicon::Lexicon()
 
 	this->leftPages.push_back(IntroPage::create());
 	this->leftPages.push_back(NopPage::create());
+	this->rightPages.push_back(ChapterSelectPage::create());
 
 	for (auto it = this->leftPages.begin(); it != this->leftPages.end(); it++)
 	{
