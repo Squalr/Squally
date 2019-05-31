@@ -25,6 +25,7 @@ private:
 	Lexicon();
 	~Lexicon();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	
@@ -32,10 +33,6 @@ private:
 	cocos2d::Sprite* banner;
 	LocalizedSprite* title;
 	cocos2d::Sprite* lexiconBack;
-	ClickableTextNode* normalTab;
-	ClickableTextNode* controlFlowTab;
-	ClickableTextNode* xmmTab;
-	ClickableTextNode* fpuTab;
 	cocos2d::Sprite* lexiconFront;
 	cocos2d::Node* leftPageNode;
 	cocos2d::Node* rightPageNode;

@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -37,13 +38,6 @@ Lexicon::Lexicon()
 	this->lexiconFront = Sprite::create(UIResources::Menus_LexiconMenu_LexiconFront);
 	this->leftPageNode = Node::create();
 	this->rightPageNode = Node::create();
-
-	/*
-	ClickableTextNode* normalTab;
-	ClickableTextNode* controlFlowTab;
-	ClickableTextNode* xmmTab;
-	ClickableTextNode* fpuTab;
-	*/
 
 	LocalizedLabel*	backLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Back::create());
 	LocalizedLabel*	backLabelSelected = backLabel->clone();
@@ -81,6 +75,14 @@ Lexicon::Lexicon()
 
 Lexicon::~Lexicon()
 {
+}
+
+void Lexicon::onEnter()
+{
+	super::onEnter();
+
+	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(IntroPage::KeyIntroPage));
+	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ChapterSelectPage::KeyChapterSelectPage));
 }
 
 void Lexicon::initializePositions()
