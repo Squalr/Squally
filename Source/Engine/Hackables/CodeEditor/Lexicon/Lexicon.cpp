@@ -26,9 +26,24 @@ Lexicon* Lexicon::create()
 
 Lexicon::Lexicon()
 {
+	this->closeCallback = nullptr;
+	this->leftPages = std::vector<LexiconPage*>();
+	this->rightPages = std::vector<LexiconPage*>();
+
 	this->background = Sprite::create(UIResources::Menus_LexiconMenu_desert_background);
 	this->banner = Sprite::create(UIResources::Menus_LexiconMenu_Banner);
-	this->title = LocalizedSprite::create(UIResources::Menus_LexiconMenu_Lexicon_en);
+	this->title = LocalizedSprite::create(UIResources::Menus_LexiconMenu_Title_Lexicon_en);
+	this->lexiconBack = Sprite::create(UIResources::Menus_LexiconMenu_LexiconBack);
+	this->lexiconFront = Sprite::create(UIResources::Menus_LexiconMenu_LexiconFront);
+	this->leftPageNode = Node::create();
+	this->rightPageNode = Node::create();
+
+	/*
+	ClickableTextNode* normalTab;
+	ClickableTextNode* controlFlowTab;
+	ClickableTextNode* xmmTab;
+	ClickableTextNode* fpuTab;
+	*/
 
 	LocalizedLabel*	backLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Back::create());
 	LocalizedLabel*	backLabelSelected = backLabel->clone();
@@ -38,21 +53,29 @@ Lexicon::Lexicon()
 
 	this->backButton = ClickableTextNode::create(backLabel, backLabelSelected, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
 	this->darkFrame = Sprite::create(UIResources::Menus_LexiconMenu_DarkFrame);
-	this->pages = std::vector<LexiconPage*>();
 
-	this->pages.push_back(NopPage::create());
+	this->leftPages.push_back(IntroPage::create());
+	this->leftPages.push_back(NopPage::create());
+
+	for (auto it = this->leftPages.begin(); it != this->leftPages.end(); it++)
+	{
+		this->leftPageNode->addChild(*it);
+	}
+
+	for (auto it = this->rightPages.begin(); it != this->rightPages.end(); it++)
+	{
+		this->rightPageNode->addChild(*it);
+	}
 
 	this->addChild(this->background);
 	this->addChild(this->banner);
 	this->addChild(this->title);
-
-	for (auto it = this->pages.begin(); it != this->pages.end(); it++)
-	{
-		this->addChild(*it);
-	}
-
-	this->addChild(this->backButton);
+	this->addChild(this->lexiconBack);
+	this->addChild(this->lexiconFront);
+	this->addChild(this->leftPageNode);
+	this->addChild(this->rightPageNode);
 	this->addChild(this->darkFrame);
+	this->addChild(this->backButton);
 }
 
 Lexicon::~Lexicon()
@@ -63,10 +86,17 @@ void Lexicon::initializePositions()
 {
 	super::initializePositions();
 
+	const Vec2 BookOffset = Vec2(32.0f, -48.0f);
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->banner->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height / 2.0f));
-	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
+	this->banner->setPosition(Vec2(visibleSize.width / 2.0f - 712.0f, visibleSize.height / 2.0f + 32.0f));
+	this->title->setPosition(Vec2(visibleSize.width / 2.0f - 712.0f, visibleSize.height / 2.0f + 464.0f));
+	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 788.0f, 96.0f));
+	this->lexiconBack->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x, visibleSize.height / 2.0f + BookOffset.y));
+	this->lexiconFront->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x, visibleSize.height / 2.0f + BookOffset.y + 24.0f));
+	this->leftPageNode->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x - 324.0f, visibleSize.height / 2.0f + BookOffset.y + 36.0f));
+	this->rightPageNode->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x + 324.0f, visibleSize.height / 2.0f + BookOffset.y + 36.0f));
 	this->darkFrame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 	
@@ -76,7 +106,30 @@ void Lexicon::initializeListeners()
 
 	this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->setVisible(false);
-		GameUtils::focus(this->getParent());
+		this->close();
 	});
+}
+
+void Lexicon::open()
+{
+	this->setVisible(true);
+	GameUtils::focus(this);
+}
+
+void Lexicon::close()
+{
+	if (this->isVisible())
+	{
+		if (closeCallback != nullptr)
+		{
+			closeCallback();
+		}
+		
+		this->setVisible(false);
+	}
+}
+
+void Lexicon::setCloseCallBack(std::function<void()> closeCallback)
+{
+	this->closeCallback = closeCallback;
 }
