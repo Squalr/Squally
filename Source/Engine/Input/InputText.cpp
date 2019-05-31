@@ -94,6 +94,16 @@ void InputText::update(float dt)
 	}
 }
 
+void InputText::focus()
+{
+	this->attachWithIME();
+}
+
+void InputText::unfocus()
+{
+	this->detachWithIME();
+}
+
 void InputText::setStringChangeCallback(std::function<void(std::string)> stringChangeCallback)
 {
 	this->stringChangeCallback = stringChangeCallback;

@@ -21,7 +21,7 @@ LocalizedSprite* LocalizedSprite::create(std::string resourceEn)
 
 LocalizedSprite::LocalizedSprite(std::string resourceEn)
 {
-	this->resourceBase = StrUtils::rtrim(resourceEn, Localization::languageTypeToLanguageCode(cocos2d::LanguageType::ENGLISH));
+	this->resourceBase = StrUtils::rtrim(resourceEn, Localization::languageTypeToLanguageCode(cocos2d::LanguageType::ENGLISH) + ".png");
 	this->localizedSprite = Sprite::create();
 
 	this->updateSprite();
@@ -50,5 +50,5 @@ void LocalizedSprite::initializeListeners()
 
 void LocalizedSprite::updateSprite()
 {
-	this->localizedSprite->setTexture(this->resourceBase + Localization::languageTypeToLanguageCode(Localization::getLanguage()));
+	this->localizedSprite->setTexture(this->resourceBase + Localization::languageTypeToLanguageCode(Localization::getLanguage()) + ".png");
 }

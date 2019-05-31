@@ -16,8 +16,6 @@ private:
 	~MatrixRain();
 
 	void pause(void) override;
-	void onEnter() override;
-	void setPositions();
 
 	std::vector<MatrixStrand*> strands;
 
