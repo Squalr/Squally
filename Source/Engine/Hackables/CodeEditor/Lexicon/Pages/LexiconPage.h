@@ -39,4 +39,5 @@ private:
 
 	cocos2d::DrawNode* debugDrawNode;
 	std::string pageIdentifier;
+	PageType pageType;
 };

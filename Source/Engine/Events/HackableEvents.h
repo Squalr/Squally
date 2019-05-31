@@ -20,6 +20,9 @@ public:
 	static const std::string EventHackableAttributeEditDone;
 	static const std::string EventHackableObjectRegister;
 	static const std::string EventHackApplied;
+	static const std::string EventOpenLexiconPage;
+	static const std::string EventCloseLeftLexiconPage;
+	static const std::string EventCloseRightLexiconPage;
 
 	struct HackableObjectOpenArgs
 	{
@@ -53,6 +56,15 @@ public:
 		}
 	};
 
+	struct OpenLexiconPageArgs
+	{
+		std::string pageIdentifier;
+
+		OpenLexiconPageArgs(std::string pageIdentifier) : pageIdentifier(pageIdentifier)
+		{
+		}
+	};
+
 	static void TriggerHackerModeEnable();
 	static void TriggerHackerModeDisable();
 	static void TriggerAllowHackerMode();
@@ -63,4 +75,7 @@ public:
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
 	static void TriggerOnHackApplied(HackAppliedArgs args);
+	static void TriggerOpenLexiconPage(OpenLexiconPageArgs args);
+	static void TriggerCloseLeftLexiconPage();
+	static void TriggerCloseRightLexiconPage();
 };

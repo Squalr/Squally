@@ -2,6 +2,8 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/UIResources.h"
@@ -23,7 +25,7 @@ NopPage* NopPage::create()
 
 NopPage::NopPage() : super(NopPage::KeyNopPage, PageType::Left)
 {
-	this->compileDiagram = Sprite::create(UIResources::Menus_LexiconMenu_CompileDiagram);
+	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
@@ -35,7 +37,7 @@ NopPage::NopPage() : super(NopPage::KeyNopPage, PageType::Left)
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->compileDiagram);
+	this->addChild(this->hourglassSprite);
 	this->addChild(this->chapterSprite);
 	this->addChild(this->introText);
 }
@@ -48,7 +50,7 @@ void NopPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->compileDiagram->setPosition(Vec2(8.0f, -192.0f));
+	this->hourglassSprite->setPosition(Vec2(8.0f, -192.0f));
 	this->introText->setPosition(Vec2(-96.0f, super::PageSize.height / 2.0f));
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 }

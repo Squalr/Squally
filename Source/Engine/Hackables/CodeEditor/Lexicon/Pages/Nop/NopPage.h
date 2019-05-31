@@ -25,7 +25,8 @@ private:
 	NopPage();
 	~NopPage();
 
-	cocos2d::Sprite* compileDiagram;
+	cocos2d::Sprite* hourglassSprite;
 	cocos2d::Sprite* chapterSprite;
 	LocalizedLabel* introText;
+	LocalizedLabel* nopLabel;
 };

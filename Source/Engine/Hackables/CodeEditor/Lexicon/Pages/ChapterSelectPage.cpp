@@ -2,6 +2,8 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
@@ -91,4 +93,28 @@ void ChapterSelectPage::initializePositions()
 void ChapterSelectPage::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->commonChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		HackableEvents::TriggerCloseRightLexiconPage();
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(NopPage::KeyNopPage));
+	});
+
+	this->controlFlowChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		HackableEvents::TriggerCloseRightLexiconPage();
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(NopPage::KeyNopPage));
+	});
+
+	this->vectorChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		HackableEvents::TriggerCloseRightLexiconPage();
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(NopPage::KeyNopPage));
+	});
+
+	this->floatingPointChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		HackableEvents::TriggerCloseRightLexiconPage();
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(NopPage::KeyNopPage));
+	});
 }
