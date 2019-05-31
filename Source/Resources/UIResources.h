@@ -343,6 +343,9 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_BookArt_Sword;
 	extern const std::string Menus_LexiconMenu_BookArt_Warrior;
 	extern const std::string Menus_LexiconMenu_Chapter;
+	extern const std::string Menus_LexiconMenu_ChapterMarker;
+	extern const std::string Menus_LexiconMenu_ChapterMarkerSelected;
+	extern const std::string Menus_LexiconMenu_CompileDiagram;
 	extern const std::string Menus_LexiconMenu_DarkFrame;
 	extern const std::string Menus_LexiconMenu_DecorLine;
 	extern const std::string Menus_LexiconMenu_InstructionButton;

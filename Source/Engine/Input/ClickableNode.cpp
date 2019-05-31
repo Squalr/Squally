@@ -274,18 +274,28 @@ void ClickableNode::setClickSound(std::string soundResource)
 void ClickableNode::showSprite(Node* sprite)
 {
 	// Hide everything
-	this->sprite->setVisible(false);
-	this->spriteSelected->setVisible(false);
-
-	if (this->interactionEnabled)
+	if (this->sprite != nullptr)
 	{
-		// Show the specified one
-		sprite->setVisible(true);
+		this->sprite->setVisible(false);
 	}
-	else
+
+	if (this->spriteSelected != nullptr)
 	{
-		// Interaction disabled -- only show the main sprite
-		this->sprite->setVisible(true);
+		this->spriteSelected->setVisible(false);
+	}
+
+	if (sprite != nullptr)
+	{
+		if (this->interactionEnabled)
+		{
+			// Show the specified one
+			sprite->setVisible(true);
+		}
+		else
+		{
+			// Interaction disabled -- only show the main sprite
+			this->sprite->setVisible(true);
+		}
 	}
 
 	this->currentSprite = sprite;
