@@ -1,6 +1,14 @@
 #pragma once
 
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/BinaryIntroPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/BinarySelectPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/And/AndPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/Bswap/BswapPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/Not/NotPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/Or/OrPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/Shl/ShlPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/Shr/ShrPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Binary/Xor/XorPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/ChapterSelectPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/DataIntroPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"

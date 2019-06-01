@@ -8,6 +8,8 @@ namespace cocos2d
 }
 
 class ClickableNode;
+class ClickableTextNode;
+class LocalizedString;
 
 class LexiconPage : public SmartNode
 {
@@ -18,6 +20,8 @@ public:
 		Right,
 		Full
 	};
+
+	PageType getPageType();
 
 	static const cocos2d::Size TotalPageSize;
 	static const cocos2d::Size PageMargin;
@@ -38,6 +42,7 @@ protected:
 	void onDeveloperModeDisable() override;
 	void enableBack(std::string backPage, bool closeExisting = true);
 	void enableBack(std::string backPageLeft, std::string backPageRight);
+	ClickableTextNode* buildInstructionLabel(LocalizedString* instructionStr, std::string instructionIdentifier);
 	
 	static const cocos2d::Color4B TextColor;
 

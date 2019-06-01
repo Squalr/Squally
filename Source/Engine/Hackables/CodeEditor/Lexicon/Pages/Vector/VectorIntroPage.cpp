@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string VectorIntroPage::KeyVectorIntroPage = "VECTOR_INTRO_PAGE";
+const std::string VectorIntroPage::Identifier = "VECTOR_INTRO_PAGE";
 
 VectorIntroPage* VectorIntroPage::create()
 {
@@ -24,11 +24,11 @@ VectorIntroPage* VectorIntroPage::create()
 	return instance;
 }
 
-VectorIntroPage::VectorIntroPage() : super(VectorIntroPage::KeyVectorIntroPage, PageType::Left)
+VectorIntroPage::VectorIntroPage() : super(VectorIntroPage::Identifier, PageType::Left)
 {
 	this->barrelSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Barrel);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_Vector_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_Vector_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
@@ -55,14 +55,15 @@ void VectorIntroPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->barrelSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->barrelSprite->setPosition(Vec2(64.0f, -160.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
+	this->titleLabel->setPosition(super::ChapterLocation);
 }
 
 void VectorIntroPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->enableBack(IntroPage::KeyIntroPage, ChapterSelectPage::KeyChapterSelectPage);
+	this->enableBack(IntroPage::Identifier, ChapterSelectPage::Identifier);
 }

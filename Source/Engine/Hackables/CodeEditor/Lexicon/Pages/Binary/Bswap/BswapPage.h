@@ -9,10 +9,10 @@ namespace cocos2d
 
 class LocalizedLabel;
 
-class DataIntroPage : public LexiconPage
+class BswapPage : public LexiconPage
 {
 public:
-	static DataIntroPage* create();
+	static BswapPage* create();
 
 	static const std::string Identifier;
 
@@ -22,10 +22,10 @@ protected:
 	
 private:
 	typedef LexiconPage super;
-	DataIntroPage();
-	~DataIntroPage();
+	BswapPage();
+	~BswapPage();
 
-	cocos2d::Sprite* donkeySprite;
+	cocos2d::Sprite* hourglassSprite;
 	cocos2d::Sprite* chapterSprite;
 	LocalizedLabel* introText;
 	LocalizedLabel* titleLabel;
