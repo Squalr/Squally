@@ -313,6 +313,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_Wand;
 	extern const std::string Menus_Icons_WheelBurrow;
 	extern const std::string Menus_Icons_YinYang;
+	extern const std::string Menus_LexiconMenu_BackButton;
+	extern const std::string Menus_LexiconMenu_BackButtonSelected;
 	extern const std::string Menus_LexiconMenu_Banner;
 	extern const std::string Menus_LexiconMenu_BookArt_Axe;
 	extern const std::string Menus_LexiconMenu_BookArt_Bag;

@@ -7,6 +7,8 @@ namespace cocos2d
 	class DrawNode;
 }
 
+class ClickableNode;
+
 class LexiconPage : public SmartNode
 {
 public:
@@ -22,22 +24,29 @@ public:
 	static const cocos2d::Size PageSize;
 	static const cocos2d::Vec2 ChapterMarkerLocation;
 	static const cocos2d::Vec2 ChapterLocation;
+	static const cocos2d::Vec2 IntroLocation;
+	static const cocos2d::Vec2 BackButtonLocation;
 
 protected:
 	LexiconPage(std::string pageIdentifier, PageType pageType);
 	~LexiconPage();
 	
 	void onEnter() override;
+	void initializePositions() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
+	void enableBack(std::string backPage, bool closeExisting = true);
+	void enableBack(std::string backPageLeft, std::string backPageRight);
 	
 	static const cocos2d::Color4B TextColor;
 
 private:
 	typedef SmartNode super;
 
+	ClickableNode* backButton;
 	cocos2d::DrawNode* debugDrawNode;
+
 	std::string pageIdentifier;
 	PageType pageType;
 };

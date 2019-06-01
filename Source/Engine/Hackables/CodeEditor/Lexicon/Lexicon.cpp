@@ -12,7 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Back.h"
+#include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
 
@@ -39,7 +39,7 @@ Lexicon::Lexicon()
 	this->leftPageNode = Node::create();
 	this->rightPageNode = Node::create();
 
-	LocalizedLabel*	backLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Back::create());
+	LocalizedLabel*	backLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	backLabelSelected = backLabel->clone();
 
 	backLabel->enableOutline(Color4B::BLACK, 2);
@@ -48,9 +48,27 @@ Lexicon::Lexicon()
 	this->backButton = ClickableTextNode::create(backLabel, backLabelSelected, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
 	this->darkFrame = Sprite::create(UIResources::Menus_LexiconMenu_DarkFrame);
 
+	// Intro
 	this->leftPages.push_back(IntroPage::create());
-	this->leftPages.push_back(NopPage::create());
 	this->rightPages.push_back(ChapterSelectPage::create());
+
+	// Chapters
+	this->leftPages.push_back(DataIntroPage::create());
+	this->leftPages.push_back(BinaryIntroPage::create());
+	this->leftPages.push_back(ControlFlowIntroPage::create());
+	this->leftPages.push_back(VectorIntroPage::create());
+	this->leftPages.push_back(FloatingPointIntroPage::create());
+
+	// Data
+	
+	// Binary
+
+	// Control flow
+	this->leftPages.push_back(NopPage::create());
+
+	// SIMD
+
+	// FPU
 
 	for (auto it = this->leftPages.begin(); it != this->leftPages.end(); it++)
 	{
