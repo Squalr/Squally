@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string ChapterSelectPage::KeyChapterSelectPage = "CHAPTER_SELECT_PAGE";
+const std::string ChapterSelectPage::Identifier = "CHAPTER_SELECT_PAGE";
 
 ChapterSelectPage* ChapterSelectPage::create()
 {
@@ -29,7 +29,7 @@ ChapterSelectPage* ChapterSelectPage::create()
 	return instance;
 }
 
-ChapterSelectPage::ChapterSelectPage() : super(ChapterSelectPage::KeyChapterSelectPage, PageType::Right)
+ChapterSelectPage::ChapterSelectPage() : super(ChapterSelectPage::Identifier, PageType::Right)
 {
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
@@ -86,13 +86,15 @@ void ChapterSelectPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 16.0f));
-	this->chapterSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 72.0f));
-	this->dataChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 144.0f - 104.0f * 0.0f));
-	this->binaryChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 144.0f - 104.0f * 1.0f));
-	this->controlFlowChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 144.0f - 104.0f * 2.0f));
-	this->vectorChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 144.0f - 104.0f * 3.0f));
-	this->floatingPointChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f - 144.0f - 104.0f * 4.0f));
+	const float vOffset = -48.0f;
+
+	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset));
+	this->chapterSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
+	this->dataChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 0.0f));
+	this->binaryChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset  - 128.0f - 104.0f * 1.0f));
+	this->controlFlowChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset  - 128.0f - 104.0f * 2.0f));
+	this->vectorChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset  - 128.0f - 104.0f * 3.0f));
+	this->floatingPointChapterButton->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset  - 128.0f - 104.0f * 4.0f));
 }
 
 void ChapterSelectPage::initializeListeners()
@@ -101,31 +103,31 @@ void ChapterSelectPage::initializeListeners()
 
 	this->dataChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(DataIntroPage::KeyDataIntroPage));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(DataIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
 	this->binaryChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinaryIntroPage::KeyBinaryIntroPage));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinaryIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
 	this->controlFlowChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ControlFlowIntroPage::KeyControlFlowIntroPage));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ControlFlowIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
 	this->vectorChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(VectorIntroPage::KeyVectorIntroPage));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(VectorIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
 	this->floatingPointChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(FloatingPointIntroPage::KeyFloatingPointIntroPage));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(FloatingPointIntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 }

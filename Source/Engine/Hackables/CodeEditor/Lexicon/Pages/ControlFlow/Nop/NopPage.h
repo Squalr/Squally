@@ -14,7 +14,7 @@ class NopPage : public LexiconPage
 public:
 	static NopPage* create();
 
-	static const std::string KeyNopPage;
+	static const std::string Identifier;
 
 protected:
 	void initializePositions() override;

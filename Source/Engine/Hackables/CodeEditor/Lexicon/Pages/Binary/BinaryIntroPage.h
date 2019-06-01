@@ -14,7 +14,7 @@ class BinaryIntroPage : public LexiconPage
 public:
 	static BinaryIntroPage* create();
 
-	static const std::string KeyBinaryIntroPage;
+	static const std::string Identifier;
 
 protected:
 	void initializePositions() override;
@@ -25,7 +25,7 @@ private:
 	BinaryIntroPage();
 	~BinaryIntroPage();
 
-	cocos2d::Sprite* bagSprite;
+	cocos2d::Sprite* hammerSprite;
 	cocos2d::Sprite* chapterSprite;
 	LocalizedLabel* introText;
 	LocalizedLabel* titleLabel;

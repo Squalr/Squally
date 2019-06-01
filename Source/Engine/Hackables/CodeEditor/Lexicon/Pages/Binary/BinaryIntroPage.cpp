@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string BinaryIntroPage::KeyBinaryIntroPage = "BINARY_INTRO_PAGE";
+const std::string BinaryIntroPage::Identifier = "BINARY_INTRO_PAGE";
 
 BinaryIntroPage* BinaryIntroPage::create()
 {
@@ -24,11 +24,11 @@ BinaryIntroPage* BinaryIntroPage::create()
 	return instance;
 }
 
-BinaryIntroPage::BinaryIntroPage() : super(BinaryIntroPage::KeyBinaryIntroPage, PageType::Left)
+BinaryIntroPage::BinaryIntroPage() : super(BinaryIntroPage::Identifier, PageType::Left)
 {
-	this->bagSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bag);
+	this->hammerSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hammer);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_Binary_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_Binary_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
@@ -41,7 +41,7 @@ BinaryIntroPage::BinaryIntroPage() : super(BinaryIntroPage::KeyBinaryIntroPage, 
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->bagSprite);
+	this->addChild(this->hammerSprite);
 	this->addChild(this->chapterSprite);
 	this->addChild(this->introText);
 	this->addChild(this->titleLabel);
@@ -55,14 +55,15 @@ void BinaryIntroPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->bagSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->hammerSprite->setPosition(Vec2(48.0f, -144.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
+	this->titleLabel->setPosition(super::ChapterLocation);
 }
 
 void BinaryIntroPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->enableBack(IntroPage::KeyIntroPage, ChapterSelectPage::KeyChapterSelectPage);
+	this->enableBack(IntroPage::Identifier, ChapterSelectPage::Identifier);
 }

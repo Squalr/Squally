@@ -14,7 +14,7 @@ class ControlFlowIntroPage : public LexiconPage
 public:
 	static ControlFlowIntroPage* create();
 
-	static const std::string KeyControlFlowIntroPage;
+	static const std::string Identifier;
 
 protected:
 	void initializePositions() override;

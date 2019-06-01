@@ -352,6 +352,8 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_DecorLine;
 	extern const std::string Menus_LexiconMenu_InstructionButton;
 	extern const std::string Menus_LexiconMenu_InstructionButtonSelected;
+	extern const std::string Menus_LexiconMenu_InstructionFrame;
+	extern const std::string Menus_LexiconMenu_InstructionFrameSelected;
 	extern const std::string Menus_LexiconMenu_LexiconBack;
 	extern const std::string Menus_LexiconMenu_LexiconButton;
 	extern const std::string Menus_LexiconMenu_LexiconButtonSelected;

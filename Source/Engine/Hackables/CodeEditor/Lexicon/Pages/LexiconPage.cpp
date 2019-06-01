@@ -6,6 +6,9 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Localization/LocalizedString.h"
 
 #include "Resources/UIResources.h"
 
@@ -140,6 +143,12 @@ void LexiconPage::onDeveloperModeDisable()
     this->debugDrawNode->setVisible(false);
 }
 
+
+LexiconPage::PageType LexiconPage::getPageType()
+{
+    return this->pageType;
+}
+
 void LexiconPage::enableBack(std::string backPage, bool closeExisting)
 {
     this->backButton->setVisible(true);
@@ -165,4 +174,25 @@ void LexiconPage::enableBack(std::string backPageLeft, std::string backPageRight
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageLeft));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageRight));
     });
+}
+
+ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructionStr, std::string instructionIdentifier)
+{
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, instructionStr);
+	LocalizedLabel* labelSelected = label->clone();
+
+	ClickableTextNode* button = ClickableTextNode::create(label, labelSelected, UIResources::Menus_LexiconMenu_InstructionFrame, UIResources::Menus_LexiconMenu_InstructionFrameSelected);
+	
+	button->setTextOffset(Vec2(0.0f, -8.0f));
+
+	label->setTextColor(LexiconPage::TextColor);
+	labelSelected->setTextColor(LexiconPage::TextColor);
+
+	button->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		HackableEvents::TriggerCloseRightLexiconPage();
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(instructionIdentifier));
+	});
+
+    return button;
 }

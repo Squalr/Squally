@@ -14,7 +14,7 @@ class FloatingPointIntroPage : public LexiconPage
 public:
 	static FloatingPointIntroPage* create();
 
-	static const std::string KeyFloatingPointIntroPage;
+	static const std::string Identifier;
 
 protected:
 	void initializePositions() override;

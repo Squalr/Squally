@@ -1,4 +1,4 @@
-﻿#include "DataIntroPage.h"
+﻿#include "OrPage.h"
 
 #include "cocos/2d/CCSprite.h"
 
@@ -8,31 +8,31 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/Data/Intro.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Title.h"
+#include "Strings/Hacking/Lexicon/Instructions/Binary/Or.h"
+#include "Strings/Hacking/Lexicon/Pages/Binary/Or/Intro.h"
 
 using namespace cocos2d;
 
-const std::string DataIntroPage::Identifier = "DATA_INTRO_PAGE";
+const std::string OrPage::Identifier = "OR_PAGE";
 
-DataIntroPage* DataIntroPage::create()
+OrPage* OrPage::create()
 {
-	DataIntroPage* instance = new DataIntroPage();
+	OrPage* instance = new OrPage();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DataIntroPage::DataIntroPage() : super(DataIntroPage::Identifier, PageType::Left)
+OrPage::OrPage() : super(OrPage::Identifier, PageType::Right)
 {
-	this->donkeySprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Donkey);
+	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_Data_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Or::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Data_Intro::create(),
+		Strings::Hacking_Lexicon_Pages_Binary_Or_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
@@ -41,29 +41,27 @@ DataIntroPage::DataIntroPage() : super(DataIntroPage::Identifier, PageType::Left
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->donkeySprite);
+	this->addChild(this->hourglassSprite);
 	this->addChild(this->chapterSprite);
-	this->addChild(this->introText);
 	this->addChild(this->titleLabel);
+	this->addChild(this->introText);
 }
 
-DataIntroPage::~DataIntroPage()
+OrPage::~OrPage()
 {
 }
 
-void DataIntroPage::initializePositions()
+void OrPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->donkeySprite->setPosition(Vec2(48.0f, -144.0f));
+	this->hourglassSprite->setPosition(Vec2(32.0f, -160.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
 }
 
-void DataIntroPage::initializeListeners()
+void OrPage::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->enableBack(IntroPage::Identifier, ChapterSelectPage::Identifier);
 }
