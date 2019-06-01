@@ -26,10 +26,10 @@ private:
 	ChapterSelectPage();
 	~ChapterSelectPage();
 
-	cocos2d::Sprite* ratSprite;
 	cocos2d::Sprite* decorLine;
 	LocalizedLabel* chapterSelectLabel;
-	ClickableTextNode* commonChapterButton;
+	ClickableTextNode* dataChapterButton;
+	ClickableTextNode* binaryChapterButton;
 	ClickableTextNode* controlFlowChapterButton;
 	ClickableTextNode* vectorChapterButton;
 	ClickableTextNode* floatingPointChapterButton;
