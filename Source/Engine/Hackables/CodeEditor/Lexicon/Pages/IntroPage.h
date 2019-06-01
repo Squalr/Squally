@@ -25,7 +25,8 @@ private:
 	IntroPage();
 	~IntroPage();
 
-	cocos2d::Sprite* compileDiagram;
+	cocos2d::Sprite* ratSprite;
 	cocos2d::Sprite* chapterSprite;
 	LocalizedLabel* introText;
+	LocalizedLabel* titleLabel;
 };

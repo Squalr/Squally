@@ -9,6 +9,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Hacking/Lexicon/Pages/Intro/Intro.h"
+#include "Strings/Hacking/Lexicon/Pages/Intro/Title.h"
 
 using namespace cocos2d;
 
@@ -25,8 +26,9 @@ IntroPage* IntroPage::create()
 
 IntroPage::IntroPage() : super(IntroPage::KeyIntroPage, PageType::Left)
 {
-	this->compileDiagram = Sprite::create(UIResources::Menus_LexiconMenu_CompileDiagram);
+	this->ratSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Rat); 
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_Lexicon_Pages_Intro_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
@@ -34,11 +36,14 @@ IntroPage::IntroPage() : super(IntroPage::KeyIntroPage, PageType::Left)
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
+	this->titleLabel->setTextColor(super::TextColor);
+	this->titleLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->compileDiagram);
+	this->addChild(this->ratSprite);
 	this->addChild(this->chapterSprite);
+	this->addChild(this->titleLabel);
 	this->addChild(this->introText);
 }
 
@@ -50,9 +55,10 @@ void IntroPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->compileDiagram->setPosition(Vec2(8.0f, -192.0f));
-	this->introText->setPosition(Vec2(-96.0f, super::PageSize.height / 2.0f));
+	this->ratSprite->setPosition(Vec2(-96.0f, -224.0f));
+	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
+	this->titleLabel->setPosition(super::ChapterLocation);
 }
 
 void IntroPage::initializeListeners()

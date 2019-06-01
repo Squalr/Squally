@@ -35,6 +35,52 @@ void Sound::onExit()
 	this->stop();
 }
 
+void Sound::pause()
+{
+	super::pause();
+
+	switch (AudioEngine::getState(this->activeTrackId))
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		{
+			// Not playing, do nothing
+			break;
+		}
+		case AudioEngine::AudioState::PLAYING:
+		{
+			AudioEngine::pause(this->activeTrackId);
+
+			break;
+		}
+	}
+}
+
+void Sound::resume()
+{
+	super::resume();
+
+	switch (AudioEngine::getState(this->activeTrackId))
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PLAYING:
+		{
+			// Not paused, do nothing
+			break;
+		}
+		case AudioEngine::AudioState::PAUSED:
+		{
+			AudioEngine::resume(this->activeTrackId);
+
+			break;
+		}
+	}
+}
+
 void Sound::initializeListeners()
 {
 	super::initializeListeners();

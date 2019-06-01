@@ -5,6 +5,9 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Input/ClickableNode.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -12,7 +15,9 @@ const Size LexiconPage::TotalPageSize = Size(580.0f, 832.0f);
 const Size LexiconPage::PageMargin = Size(32.0f, 32.0f);
 const Size LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin * 2.0f;
 const Vec2 LexiconPage::ChapterMarkerLocation = Vec2(-LexiconPage::PageSize.width / 2.0f + 64.0f, LexiconPage::PageSize.height / 2.0f - 192.0f);
-const Vec2 LexiconPage::ChapterLocation = LexiconPage::ChapterMarkerLocation + Vec2(32.0f, 32.0f);
+const Vec2 LexiconPage::ChapterLocation = Vec2(-96.0f, LexiconPage::PageSize.height / 2.0f);
+const Vec2 LexiconPage::IntroLocation = LexiconPage::ChapterLocation + Vec2(0.0f, -48.0f);
+const Vec2 LexiconPage::BackButtonLocation = Vec2(-PageSize.width / 2.0f + 32.0f, -PageSize.height / 2.0f + 32.0f);
 const Color4B LexiconPage::TextColor = Color4B(62, 45, 32, 255);
 
 LexiconPage::LexiconPage(std::string pageIdentifier, PageType pageType)
@@ -20,14 +25,17 @@ LexiconPage::LexiconPage(std::string pageIdentifier, PageType pageType)
     this->pageType = pageType;
     this->pageIdentifier = pageIdentifier;
     this->debugDrawNode = DrawNode::create();
+    this->backButton = ClickableNode::create(UIResources::Menus_LexiconMenu_BackButton, UIResources::Menus_LexiconMenu_BackButtonSelected);
 
     this->debugDrawNode->setVisible(false);
+    this->backButton->setVisible(false);
     this->setVisible(false);
 
     this->debugDrawNode->drawSolidRect(-Vec2(LexiconPage::TotalPageSize / 2.0f), LexiconPage::TotalPageSize / 2.0f, Color4F(Color4B(255, 0, 0, 128)));
     this->debugDrawNode->drawSolidRect(-Vec2(LexiconPage::PageSize / 2.0f), LexiconPage::PageSize / 2.0f, Color4F(Color4B(0, 255, 0, 128)));
 
     this->addChild(this->debugDrawNode);
+    this->addChild(this->backButton);
 }
 
 LexiconPage::~LexiconPage()
@@ -37,6 +45,13 @@ LexiconPage::~LexiconPage()
 void LexiconPage::onEnter()
 {
     super::onEnter();
+}
+
+void LexiconPage::initializePositions()
+{
+	super::initializePositions();
+
+	this->backButton->setPosition(LexiconPage::BackButtonLocation);
 }
 
 void LexiconPage::initializeListeners()
@@ -123,4 +138,31 @@ void LexiconPage::onDeveloperModeDisable()
     super::onDeveloperModeDisable();
 
     this->debugDrawNode->setVisible(false);
+}
+
+void LexiconPage::enableBack(std::string backPage, bool closeExisting)
+{
+    this->backButton->setVisible(true);
+
+    this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+    {
+        if (closeExisting)
+        {
+            HackableEvents::TriggerCloseLeftLexiconPage();
+            HackableEvents::TriggerCloseRightLexiconPage();
+        }
+        
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPage));
+    });
+}
+
+void LexiconPage::enableBack(std::string backPageLeft, std::string backPageRight)
+{
+    this->backButton->setVisible(true);
+
+    this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+    {
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageLeft));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageRight));
+    });
 }
