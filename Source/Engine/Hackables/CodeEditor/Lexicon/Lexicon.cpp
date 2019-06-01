@@ -28,8 +28,7 @@ Lexicon* Lexicon::create()
 Lexicon::Lexicon()
 {
 	this->closeCallback = nullptr;
-	this->leftPages = std::vector<LexiconPage*>();
-	this->rightPages = std::vector<LexiconPage*>();
+	this->pages = std::vector<LexiconPage*>();
 
 	this->background = Sprite::create(UIResources::Menus_LexiconMenu_desert_background);
 	this->banner = Sprite::create(UIResources::Menus_LexiconMenu_Banner);
@@ -49,35 +48,42 @@ Lexicon::Lexicon()
 	this->darkFrame = Sprite::create(UIResources::Menus_LexiconMenu_DarkFrame);
 
 	// Intro
-	this->leftPages.push_back(IntroPage::create());
-	this->rightPages.push_back(ChapterSelectPage::create());
-
-	// Chapters
-	this->leftPages.push_back(DataIntroPage::create());
-	this->leftPages.push_back(BinaryIntroPage::create());
-	this->leftPages.push_back(ControlFlowIntroPage::create());
-	this->leftPages.push_back(VectorIntroPage::create());
-	this->leftPages.push_back(FloatingPointIntroPage::create());
+	this->pages.push_back(IntroPage::create());
+	this->pages.push_back(ChapterSelectPage::create());
 
 	// Data
-	
+	this->pages.push_back(DataIntroPage::create());
+
 	// Binary
+	this->pages.push_back(BinaryIntroPage::create());
+	this->pages.push_back(BinarySelectPage::create());
 
 	// Control flow
-	this->leftPages.push_back(NopPage::create());
+	this->pages.push_back(ControlFlowIntroPage::create());
+	this->pages.push_back(NopPage::create());
 
 	// SIMD
+	this->pages.push_back(VectorIntroPage::create());
 
 	// FPU
+	this->pages.push_back(FloatingPointIntroPage::create());
 
-	for (auto it = this->leftPages.begin(); it != this->leftPages.end(); it++)
+	for (auto it = this->pages.begin(); it != this->pages.end(); it++)
 	{
-		this->leftPageNode->addChild(*it);
-	}
-
-	for (auto it = this->rightPages.begin(); it != this->rightPages.end(); it++)
-	{
-		this->rightPageNode->addChild(*it);
+		switch((*it)->getPageType())
+		{
+			default:
+			case LexiconPage::PageType::Left:
+			{
+				this->leftPageNode->addChild(*it);
+				break;
+			}
+			case LexiconPage::PageType::Right:
+			{
+				this->rightPageNode->addChild(*it);
+				break;
+			}
+		}
 	}
 
 	this->addChild(this->background);
@@ -99,8 +105,8 @@ void Lexicon::onEnter()
 {
 	super::onEnter();
 
-	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(IntroPage::KeyIntroPage));
-	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ChapterSelectPage::KeyChapterSelectPage));
+	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(IntroPage::Identifier));
+	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ChapterSelectPage::Identifier));
 }
 
 void Lexicon::initializePositions()

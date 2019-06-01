@@ -15,7 +15,7 @@ class ChapterSelectPage : public LexiconPage
 public:
 	static ChapterSelectPage* create();
 
-	static const std::string KeyChapterSelectPage;
+	static const std::string Identifier;
 
 protected:
 	void initializePositions() override;

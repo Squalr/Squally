@@ -14,7 +14,7 @@ class VectorIntroPage : public LexiconPage
 public:
 	static VectorIntroPage* create();
 
-	static const std::string KeyVectorIntroPage;
+	static const std::string Identifier;
 
 protected:
 	void initializePositions() override;

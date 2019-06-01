@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Lexicon_Pages_Binary_Shr_ShrIntro : public LocalizedString
+	class Hacking_Lexicon_Pages_Binary_Not_Intro : public LocalizedString
 	{
 	public:
-		static Hacking_Lexicon_Pages_Binary_Shr_ShrIntro* create();
+		static Hacking_Lexicon_Pages_Binary_Not_Intro* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Lexicon_Pages_Binary_Shr_ShrIntro();
-		~Hacking_Lexicon_Pages_Binary_Shr_ShrIntro();
+		Hacking_Lexicon_Pages_Binary_Not_Intro();
+		~Hacking_Lexicon_Pages_Binary_Not_Intro();
 	};
 }

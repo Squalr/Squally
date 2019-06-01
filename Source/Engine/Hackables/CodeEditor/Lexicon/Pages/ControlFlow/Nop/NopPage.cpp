@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string NopPage::KeyNopPage = "NOP_PAGE";
+const std::string NopPage::Identifier = "NOP_PAGE";
 
 NopPage* NopPage::create()
 {
@@ -24,7 +24,7 @@ NopPage* NopPage::create()
 	return instance;
 }
 
-NopPage::NopPage() : super(NopPage::KeyNopPage, PageType::Left)
+NopPage::NopPage() : super(NopPage::Identifier, PageType::Left)
 {
 	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
