@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string ControlFlowIntroPage::KeyControlFlowIntroPage = "CONTROL_FLOW_INTRO_PAGE";
+const std::string ControlFlowIntroPage::Identifier = "CONTROL_FLOW_INTRO_PAGE";
 
 ControlFlowIntroPage* ControlFlowIntroPage::create()
 {
@@ -24,11 +24,11 @@ ControlFlowIntroPage* ControlFlowIntroPage::create()
 	return instance;
 }
 
-ControlFlowIntroPage::ControlFlowIntroPage() : super(ControlFlowIntroPage::KeyControlFlowIntroPage, PageType::Left)
+ControlFlowIntroPage::ControlFlowIntroPage() : super(ControlFlowIntroPage::Identifier, PageType::Left)
 {
 	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ControlFlow_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ControlFlow_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
@@ -55,14 +55,15 @@ void ControlFlowIntroPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->hourglassSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->hourglassSprite->setPosition(Vec2(48.0f, -128.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
+	this->titleLabel->setPosition(super::ChapterLocation);
 }
 
 void ControlFlowIntroPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->enableBack(IntroPage::KeyIntroPage, ChapterSelectPage::KeyChapterSelectPage);
+	this->enableBack(IntroPage::Identifier, ChapterSelectPage::Identifier);
 }

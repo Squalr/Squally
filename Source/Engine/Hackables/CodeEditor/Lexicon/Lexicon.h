@@ -40,7 +40,5 @@ private:
 	cocos2d::Sprite* darkFrame;
 
 	std::function<void()> closeCallback;
-	std::vector<LexiconPage*> leftPages;
-	std::vector<LexiconPage*> rightPages;
-	std::vector<LexiconPage*> allPages;
+	std::vector<LexiconPage*> pages;
 };

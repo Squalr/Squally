@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string FloatingPointIntroPage::KeyFloatingPointIntroPage = "FLOATING_POINT_INTRO_PAGE";
+const std::string FloatingPointIntroPage::Identifier = "FLOATING_POINT_INTRO_PAGE";
 
 FloatingPointIntroPage* FloatingPointIntroPage::create()
 {
@@ -24,11 +24,11 @@ FloatingPointIntroPage* FloatingPointIntroPage::create()
 	return instance;
 }
 
-FloatingPointIntroPage::FloatingPointIntroPage() : super(FloatingPointIntroPage::KeyFloatingPointIntroPage, PageType::Left)
+FloatingPointIntroPage::FloatingPointIntroPage() : super(FloatingPointIntroPage::Identifier, PageType::Left)
 {
 	this->skullSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Skull);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_FloatingPoint_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_FloatingPoint_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
@@ -58,11 +58,12 @@ void FloatingPointIntroPage::initializePositions()
 	this->skullSprite->setPosition(Vec2(32.0f, -160.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
+	this->titleLabel->setPosition(super::ChapterLocation);
 }
 
 void FloatingPointIntroPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->enableBack(IntroPage::KeyIntroPage, ChapterSelectPage::KeyChapterSelectPage);
+	this->enableBack(IntroPage::Identifier, ChapterSelectPage::Identifier);
 }

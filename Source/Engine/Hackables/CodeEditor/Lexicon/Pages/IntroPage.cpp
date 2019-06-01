@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string IntroPage::KeyIntroPage = "INTRO_PAGE";
+const std::string IntroPage::Identifier = "INTRO_PAGE";
 
 IntroPage* IntroPage::create()
 {
@@ -24,7 +24,7 @@ IntroPage* IntroPage::create()
 	return instance;
 }
 
-IntroPage::IntroPage() : super(IntroPage::KeyIntroPage, PageType::Left)
+IntroPage::IntroPage() : super(IntroPage::Identifier, PageType::Left)
 {
 	this->ratSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Rat); 
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
