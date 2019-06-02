@@ -25,7 +25,7 @@ private:
 	XorPage();
 	~XorPage();
 
-	cocos2d::Sprite* hourglassSprite;
+	cocos2d::Sprite* decorSprite;
 	cocos2d::Sprite* chapterSprite;
 	LocalizedLabel* introText;
 	LocalizedLabel* titleLabel;

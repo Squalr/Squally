@@ -24,9 +24,9 @@ BswapPage* BswapPage::create()
 	return instance;
 }
 
-BswapPage::BswapPage() : super(BswapPage::Identifier, PageType::Right)
+BswapPage::BswapPage() : super(BswapPage::Identifier, PageType::Full)
 {
-	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Bswap::create());
 	this->introText = LocalizedLabel::create(
@@ -41,7 +41,7 @@ BswapPage::BswapPage() : super(BswapPage::Identifier, PageType::Right)
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->hourglassSprite);
+	this->addChild(this->decorSprite);
 	this->addChild(this->chapterSprite);
 	this->addChild(this->titleLabel);
 	this->addChild(this->introText);
@@ -55,7 +55,7 @@ void BswapPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->hourglassSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->decorSprite->setPosition(Vec2(32.0f, -160.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
@@ -64,4 +64,6 @@ void BswapPage::initializePositions()
 void BswapPage::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->enableBack(BinaryIntroPage::Identifier, BinarySelectPage::Identifier);
 }

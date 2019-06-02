@@ -178,12 +178,12 @@ void LexiconPage::enableBack(std::string backPageLeft, std::string backPageRight
 
 ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructionStr, std::string instructionIdentifier)
 {
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, instructionStr);
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, instructionStr);
 	LocalizedLabel* labelSelected = label->clone();
 
 	ClickableTextNode* button = ClickableTextNode::create(label, labelSelected, UIResources::Menus_LexiconMenu_InstructionFrame, UIResources::Menus_LexiconMenu_InstructionFrameSelected);
 	
-	button->setTextOffset(Vec2(0.0f, -8.0f));
+	button->setTextOffset(Vec2(0.0f, -12.0f));
 
 	label->setTextColor(LexiconPage::TextColor);
 	labelSelected->setTextColor(LexiconPage::TextColor);
