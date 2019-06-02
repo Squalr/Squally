@@ -50,7 +50,7 @@ BinarySelectPage::BinarySelectPage() : super(BinarySelectPage::Identifier, PageT
 	this->shlOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Shl::create(), ShlPage::Identifier);
 	this->shrOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Shr::create(), ShrPage::Identifier);
 	this->notOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Not::create(), NotPage::Identifier);
-	this->bswapOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Not::create(), BswapPage::Identifier);
+	this->bswapOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Bswap::create(), BswapPage::Identifier);
 
 	this->operationSelectLabel->setTextColor(super::TextColor);
 
@@ -74,17 +74,18 @@ void BinarySelectPage::initializePositions()
 	super::initializePositions();
 
 	const float vOffset = -48.0f;
+	const float vSpacing = -144.0f;
 
 	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset));
-	this->operationSelectLabel->setPosition(Vec2(-72.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
-	this->andOperationButton->setPosition(Vec2(-72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 0.0f));
-	this->orOperationButton->setPosition(Vec2(-72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 1.0f));
-	this->xorOperationButton->setPosition(Vec2(-72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 2.0f));
-	this->notOperationButton->setPosition(Vec2(-72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 4.0f));
+	this->operationSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
+	this->notOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f));
+	this->shlOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f));
+	this->shrOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f));
+	this->bswapOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f));
 
-	this->shlOperationButton->setPosition(Vec2(72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 0.0f - 52.0f));
-	this->shrOperationButton->setPosition(Vec2(72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 1.0f - 52.0f));
-	this->bswapOperationButton->setPosition(Vec2(72.0f, super::PageSize.height / 2.0f + vOffset - 128.0f - 104.0f * 2.0f - 52.0f));
+	this->andOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f + vSpacing / 2.0f));
+	this->orOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f + vSpacing / 2.0f));
+	this->xorOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f + vSpacing / 2.0f));
 }
 
 void BinarySelectPage::initializeListeners()

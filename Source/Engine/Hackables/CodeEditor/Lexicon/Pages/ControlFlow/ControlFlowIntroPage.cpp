@@ -26,7 +26,7 @@ ControlFlowIntroPage* ControlFlowIntroPage::create()
 
 ControlFlowIntroPage::ControlFlowIntroPage() : super(ControlFlowIntroPage::Identifier, PageType::Left)
 {
-	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ControlFlow_Title::create());
 	this->introText = LocalizedLabel::create(
@@ -41,7 +41,7 @@ ControlFlowIntroPage::ControlFlowIntroPage() : super(ControlFlowIntroPage::Ident
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->hourglassSprite);
+	this->addChild(this->decorSprite);
 	this->addChild(this->chapterSprite);
 	this->addChild(this->introText);
 	this->addChild(this->titleLabel);
@@ -55,7 +55,7 @@ void ControlFlowIntroPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->hourglassSprite->setPosition(Vec2(48.0f, -128.0f));
+	this->decorSprite->setPosition(Vec2(48.0f, -128.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

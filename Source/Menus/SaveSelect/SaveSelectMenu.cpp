@@ -84,8 +84,8 @@ void SaveSelectMenu::onEnter()
 	this->backgroundNode->addChild(MenuBackground::claimInstance());
 	this->backdrop->setVisible(false);
 
-	const float delay = 0.5f;
-	const float duration = 0.75f;
+	const float delay = 0.15f;
+	const float duration = 0.5f;
 
 	this->buildSaveButtons();
 

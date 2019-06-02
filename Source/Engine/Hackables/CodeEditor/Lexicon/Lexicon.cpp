@@ -53,20 +53,42 @@ Lexicon::Lexicon()
 
 	// Data
 	this->pages.push_back(DataIntroPage::create());
+	this->pages.push_back(DataSelectPage::create());
+	this->pages.push_back(IncPage::create());
+	this->pages.push_back(DecPage::create());
+	this->pages.push_back(AddPage::create());
+	this->pages.push_back(SubPage::create());
+	this->pages.push_back(DivPage::create());
+	this->pages.push_back(MulPage::create());
+	this->pages.push_back(MovPage::create());
+	this->pages.push_back(LeaPage::create());
+	this->pages.push_back(PushPage::create());
+	this->pages.push_back(PopPage::create());
+	this->pages.push_back(NegPage::create());
 
 	// Binary
 	this->pages.push_back(BinaryIntroPage::create());
 	this->pages.push_back(BinarySelectPage::create());
+	this->pages.push_back(AndPage::create());
+	this->pages.push_back(OrPage::create());
+	this->pages.push_back(XorPage::create());
+	this->pages.push_back(ShlPage::create());
+	this->pages.push_back(ShrPage::create());
+	this->pages.push_back(NotPage::create());
+	this->pages.push_back(BswapPage::create());
 
 	// Control flow
 	this->pages.push_back(ControlFlowIntroPage::create());
+	this->pages.push_back(ControlFlowSelectPage::create());
 	this->pages.push_back(NopPage::create());
 
 	// SIMD
 	this->pages.push_back(VectorIntroPage::create());
+	this->pages.push_back(VectorSelectPage::create());
 
 	// FPU
 	this->pages.push_back(FloatingPointIntroPage::create());
+	this->pages.push_back(FloatingPointSelectPage::create());
 
 	for (auto it = this->pages.begin(); it != this->pages.end(); it++)
 	{

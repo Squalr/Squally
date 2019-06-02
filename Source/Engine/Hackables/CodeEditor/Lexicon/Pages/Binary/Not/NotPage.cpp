@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Instructions/Binary/And.h"
-#include "Strings/Hacking/Lexicon/Pages/Binary/And/Intro.h"
+#include "Strings/Hacking/Lexicon/Instructions/Binary/Not.h"
+#include "Strings/Hacking/Lexicon/Pages/Binary/Not/Intro.h"
 
 using namespace cocos2d;
 
@@ -24,15 +24,15 @@ NotPage* NotPage::create()
 	return instance;
 }
 
-NotPage::NotPage() : super(NotPage::Identifier, PageType::Right)
+NotPage::NotPage() : super(NotPage::Identifier, PageType::Full)
 {
-	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_And::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Not::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Binary_And_Intro::create(),
+		Strings::Hacking_Lexicon_Pages_Binary_Not_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
@@ -41,7 +41,7 @@ NotPage::NotPage() : super(NotPage::Identifier, PageType::Right)
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->hourglassSprite);
+	this->addChild(this->decorSprite);
 	this->addChild(this->chapterSprite);
 	this->addChild(this->titleLabel);
 	this->addChild(this->introText);
@@ -55,7 +55,7 @@ void NotPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->hourglassSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->decorSprite->setPosition(Vec2(32.0f, -160.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
@@ -64,4 +64,6 @@ void NotPage::initializePositions()
 void NotPage::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->enableBack(BinaryIntroPage::Identifier, BinarySelectPage::Identifier);
 }

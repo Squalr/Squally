@@ -24,9 +24,9 @@ XorPage* XorPage::create()
 	return instance;
 }
 
-XorPage::XorPage() : super(XorPage::Identifier, PageType::Right)
+XorPage::XorPage() : super(XorPage::Identifier, PageType::Full)
 {
-	this->hourglassSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Xor::create());
 	this->introText = LocalizedLabel::create(
@@ -41,7 +41,7 @@ XorPage::XorPage() : super(XorPage::Identifier, PageType::Right)
 	this->introText->setTextColor(super::TextColor);
 	this->introText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->addChild(this->hourglassSprite);
+	this->addChild(this->decorSprite);
 	this->addChild(this->chapterSprite);
 	this->addChild(this->titleLabel);
 	this->addChild(this->introText);
@@ -55,7 +55,7 @@ void XorPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->hourglassSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->decorSprite->setPosition(Vec2(32.0f, -160.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
@@ -64,4 +64,6 @@ void XorPage::initializePositions()
 void XorPage::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->enableBack(BinaryIntroPage::Identifier, BinarySelectPage::Identifier);
 }
