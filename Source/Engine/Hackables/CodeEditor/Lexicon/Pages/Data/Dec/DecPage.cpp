@@ -56,7 +56,7 @@ void DecPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 160.0f, -224.0f));
+	this->decorSprite->setPosition(Vec2(super::PageSize.width + 212.0f, -248.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

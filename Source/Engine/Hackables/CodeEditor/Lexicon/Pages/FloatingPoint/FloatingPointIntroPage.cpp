@@ -26,7 +26,7 @@ FloatingPointIntroPage* FloatingPointIntroPage::create()
 
 FloatingPointIntroPage::FloatingPointIntroPage() : super(FloatingPointIntroPage::Identifier, PageType::Left)
 {
-	this->skullSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Skull);
+	this->skullSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Fly);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_FloatingPoint_Title::create());
 	this->introText = LocalizedLabel::create(

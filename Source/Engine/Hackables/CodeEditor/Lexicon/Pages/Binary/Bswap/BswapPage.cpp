@@ -26,7 +26,7 @@ BswapPage* BswapPage::create()
 
 BswapPage::BswapPage() : super(BswapPage::Identifier, PageType::Full)
 {
-	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Monster);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Bswap::create());
 	this->introText = LocalizedLabel::create(
@@ -55,7 +55,7 @@ void BswapPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(32.0f, -160.0f));
+	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

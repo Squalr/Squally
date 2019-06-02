@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
+class RegisterBlock;
 
 class IncPage : public LexiconPage
 {
@@ -29,4 +30,5 @@ private:
 	cocos2d::Sprite* chapterSprite;
 	LocalizedLabel* introText;
 	LocalizedLabel* titleLabel;
+	RegisterBlock* registerBlock;
 };

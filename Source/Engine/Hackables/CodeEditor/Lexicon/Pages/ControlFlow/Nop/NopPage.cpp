@@ -26,7 +26,7 @@ NopPage* NopPage::create()
 
 NopPage::NopPage() : super(NopPage::Identifier, PageType::Full)
 {
-	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bread);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_ControlFlow_Nop::create());
 	this->introText = LocalizedLabel::create(
