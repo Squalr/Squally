@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Components/RegisterBlock.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
@@ -35,6 +36,7 @@ IncPage::IncPage() : super(IncPage::Identifier, PageType::Full)
 		Strings::Hacking_Lexicon_Pages_Data_Inc_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
+	this->registerBlock = RegisterBlock::create();
 
 	this->titleLabel->setTextColor(super::TextColor);
 	this->titleLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -45,6 +47,7 @@ IncPage::IncPage() : super(IncPage::Identifier, PageType::Full)
 	this->addChild(this->chapterSprite);
 	this->addChild(this->titleLabel);
 	this->addChild(this->introText);
+	this->addChild(this->registerBlock);
 }
 
 IncPage::~IncPage()
@@ -55,10 +58,11 @@ void IncPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 172.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(super::PageSize.width + 240.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
+	this->registerBlock->setPosition(Vec2(super::PageSize.width + 128.0f, 160.0f));
 }
 
 void IncPage::initializeListeners()

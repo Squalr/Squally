@@ -30,6 +30,7 @@ public:
 	static const cocos2d::Vec2 ChapterLocation;
 	static const cocos2d::Vec2 IntroLocation;
 	static const cocos2d::Vec2 BackButtonLocation;
+	static const cocos2d::Color4B TextColor;
 
 protected:
 	LexiconPage(std::string pageIdentifier, PageType pageType);
@@ -43,8 +44,6 @@ protected:
 	void enableBack(std::string backPage, bool closeExisting = true);
 	void enableBack(std::string backPageLeft, std::string backPageRight);
 	ClickableTextNode* buildInstructionLabel(LocalizedString* instructionStr, std::string instructionIdentifier);
-	
-	static const cocos2d::Color4B TextColor;
 
 private:
 	typedef SmartNode super;

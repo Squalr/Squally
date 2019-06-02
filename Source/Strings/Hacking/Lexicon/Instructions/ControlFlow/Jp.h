@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Lexicon_Instructions_FloatingPoint_Fprem1 : public LocalizedString
+	class Hacking_Lexicon_Instructions_ControlFlow_Jp : public LocalizedString
 	{
 	public:
-		static Hacking_Lexicon_Instructions_FloatingPoint_Fprem1* create();
+		static Hacking_Lexicon_Instructions_ControlFlow_Jp* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Lexicon_Instructions_FloatingPoint_Fprem1();
-		~Hacking_Lexicon_Instructions_FloatingPoint_Fprem1();
+		Hacking_Lexicon_Instructions_ControlFlow_Jp();
+		~Hacking_Lexicon_Instructions_ControlFlow_Jp();
 	};
 }

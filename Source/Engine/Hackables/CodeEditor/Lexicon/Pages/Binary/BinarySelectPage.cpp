@@ -78,14 +78,14 @@ void BinarySelectPage::initializePositions()
 
 	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset));
 	this->operationSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
-	this->notOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f));
-	this->shlOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f));
-	this->shrOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f));
-	this->bswapOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 3.0f));
+	this->notOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 0.0f));
+	this->shlOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 1.0f));
+	this->shrOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 2.0f));
+	this->bswapOperationButton->setPosition(Vec2(-112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 3.0f));
 
-	this->andOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 0.0f + vSpacing / 2.0f));
-	this->orOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 1.0f + vSpacing / 2.0f));
-	this->xorOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 128.0f + vSpacing * 2.0f + vSpacing / 2.0f));
+	this->andOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 0.0f + vSpacing / 2.0f));
+	this->orOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 1.0f + vSpacing / 2.0f));
+	this->xorOperationButton->setPosition(Vec2(112.0f, super::PageSize.height / 2.0f + vOffset - 144.0f + vSpacing * 2.0f + vSpacing / 2.0f));
 }
 
 void BinarySelectPage::initializeListeners()

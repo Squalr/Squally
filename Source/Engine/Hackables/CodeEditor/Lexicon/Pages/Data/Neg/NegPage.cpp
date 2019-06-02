@@ -26,7 +26,7 @@ NegPage* NegPage::create()
 
 NegPage::NegPage() : super(NegPage::Identifier, PageType::Full)
 {
-	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Hourglass);
+	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Helmet);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Data_Neg::create());
 	this->introText = LocalizedLabel::create(
@@ -55,7 +55,7 @@ void NegPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 172.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(super::PageSize.width + 212.0f, -224.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

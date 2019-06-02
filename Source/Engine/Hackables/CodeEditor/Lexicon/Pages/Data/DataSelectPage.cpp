@@ -82,7 +82,7 @@ void DataSelectPage::initializePositions()
 	super::initializePositions();
 
 	const float vOffset = -48.0f;
-	const float vSpacing = -128.0f;
+	const float vSpacing = -96.0f;
 
 	this->decorLine->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset));
 	this->operationSelectLabel->setPosition(Vec2(0.0f, super::PageSize.height / 2.0f + vOffset - 56.0f));
