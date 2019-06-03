@@ -54,6 +54,7 @@ Lexicon::Lexicon()
 	// Data
 	this->pages.push_back(DataIntroPage::create());
 	this->pages.push_back(DataSelectPage::create());
+	this->pages.push_back(IncExamplesPage::create());
 	this->pages.push_back(IncPage::create());
 	this->pages.push_back(DecPage::create());
 	this->pages.push_back(AddPage::create());
@@ -144,8 +145,8 @@ void Lexicon::initializePositions()
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 788.0f, 96.0f));
 	this->lexiconBack->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x, visibleSize.height / 2.0f + BookOffset.y));
 	this->lexiconFront->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x, visibleSize.height / 2.0f + BookOffset.y + 24.0f));
-	this->leftPageNode->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x - 324.0f, visibleSize.height / 2.0f + BookOffset.y + 36.0f));
-	this->rightPageNode->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x + 324.0f, visibleSize.height / 2.0f + BookOffset.y + 36.0f));
+	this->leftPageNode->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x - LexiconPage::PageOffset.x, visibleSize.height / 2.0f + BookOffset.y + LexiconPage::PageOffset.y));
+	this->rightPageNode->setPosition(Vec2(visibleSize.width / 2.0f + BookOffset.x + LexiconPage::PageOffset.x, visibleSize.height / 2.0f + BookOffset.y + LexiconPage::PageOffset.y));
 	this->darkFrame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 	

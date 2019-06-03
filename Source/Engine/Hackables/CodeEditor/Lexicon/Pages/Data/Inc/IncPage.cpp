@@ -5,10 +5,12 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Components/RegisterBlock.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Hacking/Lexicon/Examples.h"
 #include "Strings/Hacking/Lexicon/Instructions/Data/Inc.h"
 #include "Strings/Hacking/Lexicon/Pages/Data/Inc/Intro.h"
 
@@ -25,7 +27,7 @@ IncPage* IncPage::create()
 	return instance;
 }
 
-IncPage::IncPage() : super(IncPage::Identifier, PageType::Full)
+IncPage::IncPage() : super(IncPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bird);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -36,7 +38,6 @@ IncPage::IncPage() : super(IncPage::Identifier, PageType::Full)
 		Strings::Hacking_Lexicon_Pages_Data_Inc_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
-	this->registerBlock = RegisterBlock::create();
 
 	this->titleLabel->setTextColor(super::TextColor);
 	this->titleLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -47,7 +48,6 @@ IncPage::IncPage() : super(IncPage::Identifier, PageType::Full)
 	this->addChild(this->chapterSprite);
 	this->addChild(this->titleLabel);
 	this->addChild(this->introText);
-	this->addChild(this->registerBlock);
 }
 
 IncPage::~IncPage()
@@ -58,11 +58,10 @@ void IncPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 240.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(176.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
-	this->registerBlock->setPosition(Vec2(super::PageSize.width + 128.0f, 160.0f));
 }
 
 void IncPage::initializeListeners()
