@@ -18,6 +18,7 @@
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Add/AddPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Dec/DecPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Div/DivPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Inc/IncExamplesPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Inc/IncPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Lea/LeaPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Mov/MovPage.h"

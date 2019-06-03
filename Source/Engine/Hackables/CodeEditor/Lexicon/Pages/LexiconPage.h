@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
+class LocalizedLabel;
 class LocalizedString;
 
 class LexiconPage : public SmartNode
@@ -26,11 +27,14 @@ public:
 	static const cocos2d::Size TotalPageSize;
 	static const cocos2d::Size PageMargin;
 	static const cocos2d::Size PageSize;
+	static const cocos2d::Vec2 PageOffset;
+	static const cocos2d::Vec2 FullPageSecondOffset;
 	static const cocos2d::Vec2 ChapterMarkerLocation;
 	static const cocos2d::Vec2 ChapterLocation;
 	static const cocos2d::Vec2 IntroLocation;
 	static const cocos2d::Vec2 BackButtonLocation;
 	static const cocos2d::Color4B TextColor;
+	static const cocos2d::Color4B TextColorChanged;
 
 protected:
 	LexiconPage(std::string pageIdentifier, PageType pageType);
@@ -44,6 +48,13 @@ protected:
 	void enableBack(std::string backPage, bool closeExisting = true);
 	void enableBack(std::string backPageLeft, std::string backPageRight);
 	ClickableTextNode* buildInstructionLabel(LocalizedString* instructionStr, std::string instructionIdentifier);
+	ClickableTextNode* buildInstructionLabel(LocalizedString* instructionStr, std::string instructionIdentifierA, std::string instructionIdentifierB);
+	ClickableTextNode* buildExecuteButton();
+	ClickableTextNode* buildResetButton();
+	LocalizedString* pointerizeString(LocalizedString* memRegString);
+	LocalizedString* offsetString(LocalizedString* memRegString, int offset);
+	LocalizedLabel* createInstructionLabelSingle(LocalizedString* instructionString, LocalizedString* memRegString);
+	LocalizedLabel* createInstructionLabelDouble(LocalizedString* instructionString, LocalizedString* memRegStringA, LocalizedString* memRegStringB);
 
 private:
 	typedef SmartNode super;

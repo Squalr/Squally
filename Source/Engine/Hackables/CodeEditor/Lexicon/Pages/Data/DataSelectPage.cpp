@@ -44,7 +44,7 @@ DataSelectPage::DataSelectPage() : super(DataSelectPage::Identifier, PageType::R
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
 	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
-	this->incOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Inc::create(), IncPage::Identifier);
+	this->incOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Inc::create(), IncPage::Identifier, IncExamplesPage::Identifier);
 	this->decOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Dec::create(), DecPage::Identifier);
 	this->addOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Add::create(), AddPage::Identifier);
 	this->subOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Sub::create(), SubPage::Identifier);
