@@ -32,19 +32,20 @@ private:
 
 	std::vector<MatrixLetter*> letters;
 
-	cocos2d::Action* updateAction;
 	float spawnSpeed;
 	int currentLetterIndex;
 	int letterCount;
+	float elapsedDuration;
 
-	static const int minLetterCount;
-	static const int maxLetterCount;
-	static const float movementSpeed;
-	static const float strandScale;
-	static const float minSpawnSpeed;
-	static const float maxSpawnSpeed;
-	static const float overFlowY;
-	static const float underFlowY;
-	static const float minSpawnDistance;
-	static const float maxSpawnDistance;
+	static const int MinLetterCount;
+	static const int MaxLetterCount;
+	static const float MovementSpeed;
+	static const float StrandScale;
+	static const float MinSpawnSpeed;
+	static const float MaxSpawnSpeed;
+	static const float OverFlowY;
+	static const float UnderFlowY;
+	static const float MinSpawnDistance;
+	static const float MaxSpawnDistance;
+	static const float InitializationDuration;
 };

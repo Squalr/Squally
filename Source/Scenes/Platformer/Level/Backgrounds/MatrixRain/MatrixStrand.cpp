@@ -10,16 +10,17 @@
 
 using namespace cocos2d;
 
-const int MatrixStrand::minLetterCount = 24;
-const int MatrixStrand::maxLetterCount = 80;
-const float MatrixStrand::movementSpeed = 128.0f;
-const float MatrixStrand::strandScale = 0.35f;
-const float MatrixStrand::minSpawnSpeed = 0.02f;
-const float MatrixStrand::maxSpawnSpeed = 0.20f;
-const float MatrixStrand::overFlowY = 256.0f;
-const float MatrixStrand::underFlowY = 256.0f;
-const float MatrixStrand::minSpawnDistance = -256.0f;
-const float MatrixStrand::maxSpawnDistance = -512.0f;
+const int MatrixStrand::MinLetterCount = 24;
+const int MatrixStrand::MaxLetterCount = 80;
+const float MatrixStrand::MovementSpeed = 128.0f;
+const float MatrixStrand::StrandScale = 0.35f;
+const float MatrixStrand::MinSpawnSpeed = 0.02f;
+const float MatrixStrand::MaxSpawnSpeed = 0.20f;
+const float MatrixStrand::OverFlowY = 256.0f;
+const float MatrixStrand::UnderFlowY = 256.0f;
+const float MatrixStrand::MinSpawnDistance = -256.0f;
+const float MatrixStrand::MaxSpawnDistance = -512.0f;
+const float MatrixStrand::InitializationDuration = 8.0f;
 
 MatrixStrand* MatrixStrand::create(int strandIndex)
 {
@@ -32,11 +33,11 @@ MatrixStrand* MatrixStrand::create(int strandIndex)
 
 MatrixStrand::MatrixStrand(int strandIndex)
 {
-	this->updateAction = nullptr;
 	this->letters = std::vector<MatrixLetter*>();
 	this->letterCount = 0;
+	this->elapsedDuration = 0.0f;
 
-	for (int index = 0; index < MatrixStrand::maxLetterCount; index++)
+	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
 	{
 		MatrixLetter* letter = MatrixLetter::create();
 
@@ -47,7 +48,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 	}
 
 	this->setCascadeOpacityEnabled(true);
-	this->setScale(MatrixStrand::strandScale);
+	this->setScale(MatrixStrand::StrandScale);
 
 	// Delayed start to prevent all strands from being created at the same time
 	this->runAction(Sequence::create(
@@ -79,16 +80,27 @@ void MatrixStrand::pause()
 
 void MatrixStrand::update(float dt)
 {
+	// Do not update if not visible (unless we're initializing things)
 	if (!GameUtils::isVisible(this))
 	{
-		return;
+		if (this->elapsedDuration < MatrixStrand::InitializationDuration)
+		{
+			this->elapsedDuration += dt;
+
+			// Speed things up a bit
+			dt *= 3.0f;
+		}
+		else
+		{
+			return;
+		}
 	}
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Camera movement effect
-	this->setPositionY(this->getPositionY() - dt * movementSpeed / 4.0f);
-	this->setPositionZ(this->getPositionZ() + dt * movementSpeed);
+	this->setPositionY(this->getPositionY() - dt * MovementSpeed / 4.0f);
+	this->setPositionZ(this->getPositionZ() + dt * MovementSpeed);
 
 	Vec2 screenCoords = GameUtils::getScreenBounds(this).origin;
 
@@ -103,7 +115,7 @@ void MatrixStrand::update(float dt)
 	// Set darkness based on distance
 	if (this->getPositionZ() < 0.0f)
 	{
-		this->setOpacity(255 * (1.0f - (this->getPositionZ() / MatrixStrand::maxSpawnDistance)));
+		this->setOpacity(255 * (1.0f - (this->getPositionZ() / MatrixStrand::MaxSpawnDistance)));
 	}
 	else
 	{
@@ -137,12 +149,11 @@ void MatrixStrand::beginStrand()
 	this->setLetterCount();
 
 	this->currentLetterIndex = 0;
-	this->spawnSpeed = RandomHelper::random_real(MatrixStrand::minSpawnSpeed, MatrixStrand::maxSpawnSpeed);
+	this->spawnSpeed = RandomHelper::random_real(MatrixStrand::MinSpawnSpeed, MatrixStrand::MaxSpawnSpeed);
 
 	// Set update callback
 	CallFunc* onUpdate = CallFunc::create(CC_CALLBACK_0(MatrixStrand::nextStrandAction, this));
-	this->updateAction = RepeatForever::create(Sequence::create(onUpdate, DelayTime::create(this->spawnSpeed), nullptr));
-	this->runAction(this->updateAction);
+	this->runAction(RepeatForever::create(Sequence::create(onUpdate, DelayTime::create(this->spawnSpeed), nullptr)));
 }
 
 void MatrixStrand::killStrand()
@@ -153,7 +164,7 @@ void MatrixStrand::killStrand()
 
 void MatrixStrand::setLetterCount()
 {
-	this->letterCount = RandomHelper::random_int(MatrixStrand::minLetterCount, MatrixStrand::maxLetterCount);
+	this->letterCount = RandomHelper::random_int(MatrixStrand::MinLetterCount, MatrixStrand::MaxLetterCount);
 }
 
 void MatrixStrand::randomizePosition()
@@ -162,8 +173,8 @@ void MatrixStrand::randomizePosition()
 
 	Vec3 position;
 	position.x = RandomHelper::random_real(0.0f, visibleSize.width);
-	position.y = RandomHelper::random_real(visibleSize.height - MatrixStrand::underFlowY, visibleSize.height + MatrixStrand::overFlowY);
-	position.z = RandomHelper::random_real(MatrixStrand::maxSpawnDistance, MatrixStrand::minSpawnDistance);
+	position.y = RandomHelper::random_real(visibleSize.height - MatrixStrand::UnderFlowY, visibleSize.height + MatrixStrand::OverFlowY);
+	position.z = RandomHelper::random_real(MatrixStrand::MaxSpawnDistance, MatrixStrand::MinSpawnDistance);
 
 	this->setPosition3D(position);
 }
