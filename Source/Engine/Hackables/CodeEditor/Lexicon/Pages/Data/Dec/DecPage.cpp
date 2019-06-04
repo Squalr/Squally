@@ -24,7 +24,7 @@ DecPage* DecPage::create()
 	return instance;
 }
 
-DecPage::DecPage() : super(DecPage::Identifier, PageType::Full)
+DecPage::DecPage() : super(DecPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Frog);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -56,7 +56,7 @@ void DecPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 212.0f, -248.0f));
+	this->decorSprite->setPosition(Vec2(80.0f, -224.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

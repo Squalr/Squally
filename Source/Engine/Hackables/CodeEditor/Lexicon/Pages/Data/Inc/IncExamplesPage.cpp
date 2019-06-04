@@ -7,6 +7,7 @@
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/TextPanel.h"
 
 #include "Resources/UIResources.h"
 
@@ -19,7 +20,8 @@
 #include "Strings/Hacking/Lexicon/Assembly/RegisterRdi.h"
 #include "Strings/Hacking/Lexicon/Examples.h"
 #include "Strings/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Inc/Intro.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/Inc/OffsetHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/Inc/PointerHelp.h"
 
 using namespace cocos2d;
 
@@ -42,9 +44,16 @@ IncExamplesPage::IncExamplesPage() : super(IncExamplesPage::Identifier, PageType
 	this->incButton = this->buildExecuteButton();
 	this->incPtrButton = this->buildExecuteButton();
 	this->incPtrOffsetButton = this->buildExecuteButton();
+	this->pointerHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	this->offsetHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Inc_PointerHelp::create();
+	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
+	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_Inc_OffsetHelp::create());
 
 	if (sizeof(void*) == 4)
 	{
+		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEax::create());
+		
 		this->incLabel = this->createInstructionLabelSingle(
 			Strings::Hacking_Lexicon_Assembly_Inc::create(),
 			Strings::Hacking_Lexicon_Assembly_RegisterEcx::create()
@@ -60,6 +69,8 @@ IncExamplesPage::IncExamplesPage() : super(IncExamplesPage::Identifier, PageType
 	}
 	else
 	{
+		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRax::create());
+
 		this->incLabel = this->createInstructionLabelSingle(
 			Strings::Hacking_Lexicon_Assembly_Inc::create(),
 			Strings::Hacking_Lexicon_Assembly_RegisterRcx::create()
@@ -87,6 +98,10 @@ IncExamplesPage::IncExamplesPage() : super(IncExamplesPage::Identifier, PageType
 	this->addChild(this->incLabel);
 	this->addChild(this->incPtrLabel);
 	this->addChild(this->incPtrOffsetLabel);
+	this->addChild(this->pointerHelpButton);
+	this->addChild(this->offsetHelpButton);
+	this->addChild(this->textPanelPointerHelp);
+	this->addChild(this->textPanelOffsetHelp);
 }
 
 IncExamplesPage::~IncExamplesPage()
@@ -109,11 +124,37 @@ void IncExamplesPage::initializePositions()
 	this->incPtrLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 1.0f));
 	this->incPtrOffsetLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -312.0f));
+
+	this->pointerHelpButton->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->offsetHelpButton->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 2.0f));
+
+	this->textPanelPointerHelp->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 1.0f + 48.0f));
+	this->textPanelOffsetHelp->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
 }
 
 void IncExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->pointerHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelPointerHelp->show();
+	});
+
+	this->pointerHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelPointerHelp->hide();
+	});
+
+	this->offsetHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp->show();
+	});
+
+	this->offsetHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp->hide();
+	});
 
 	this->resetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
@@ -132,7 +173,7 @@ void IncExamplesPage::initializeListeners()
 
 	this->incPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEdiPtr(this->registerBlock->getEcxPtr(2) + 1, 2);
+		this->registerBlock->setEdiPtr(this->registerBlock->getEdiPtr(2) + 1, 2);
 	});
 }
 

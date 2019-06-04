@@ -13,10 +13,10 @@ class ClickableTextNode;
 class RegisterBlock;
 class TextPanel;
 
-class IncExamplesPage : public LexiconPage
+class DecExamplesPage : public LexiconPage
 {
 public:
-	static IncExamplesPage* create();
+	static DecExamplesPage* create();
 
 	static const std::string Identifier;
 
@@ -26,22 +26,22 @@ protected:
 	
 private:
 	typedef LexiconPage super;
-	IncExamplesPage();
-	~IncExamplesPage();
+	DecExamplesPage();
+	~DecExamplesPage();
 
 	void resetState();
 
 	LocalizedLabel* examplesLabel;
 	RegisterBlock* registerBlock;
 	ClickableTextNode* resetButton;
-	ClickableTextNode* incButton;
-	ClickableTextNode* incPtrButton;
-	ClickableTextNode* incPtrOffsetButton;
+	ClickableTextNode* decButton;
+	ClickableTextNode* decPtrButton;
+	ClickableTextNode* decPtrOffsetButton;
 	ClickableNode* pointerHelpButton;
 	ClickableNode* offsetHelpButton;
 	TextPanel* textPanelPointerHelp;
 	TextPanel* textPanelOffsetHelp;
-	LocalizedLabel* incLabel;
-	LocalizedLabel* incPtrLabel;
-	LocalizedLabel* incPtrOffsetLabel;
+	LocalizedLabel* decLabel;
+	LocalizedLabel* decPtrLabel;
+	LocalizedLabel* decPtrOffsetLabel;
 };

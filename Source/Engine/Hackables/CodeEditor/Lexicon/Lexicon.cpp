@@ -56,6 +56,7 @@ Lexicon::Lexicon()
 	this->pages.push_back(DataSelectPage::create());
 	this->pages.push_back(IncExamplesPage::create());
 	this->pages.push_back(IncPage::create());
+	this->pages.push_back(DecExamplesPage::create());
 	this->pages.push_back(DecPage::create());
 	this->pages.push_back(AddPage::create());
 	this->pages.push_back(SubPage::create());
