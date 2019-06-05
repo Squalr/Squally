@@ -48,7 +48,7 @@ DataSelectPage::DataSelectPage() : super(DataSelectPage::Identifier, PageType::R
 	this->decOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Dec::create(), DecPage::Identifier, DecExamplesPage::Identifier);
 	this->addOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Add::create(), AddPage::Identifier);
 	this->subOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Sub::create(), SubPage::Identifier);
-	this->divOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Div::create(), DivPage::Identifier);
+	this->divOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Div::create(), DivPage::Identifier, DivExamplesPage::Identifier);
 	this->mulOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Mul::create(), MulPage::Identifier);
 	this->movOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Mov::create(), MovPage::Identifier);
 	this->leaOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Lea::create(), LeaPage::Identifier);
