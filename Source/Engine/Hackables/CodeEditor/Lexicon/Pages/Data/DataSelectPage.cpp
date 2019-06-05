@@ -54,7 +54,7 @@ DataSelectPage::DataSelectPage() : super(DataSelectPage::Identifier, PageType::R
 	this->leaOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Lea::create(), LeaPage::Identifier);
 	this->pushOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Push::create(), PushPage::Identifier);
 	this->popOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Pop::create(), PopPage::Identifier);
-	this->negOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Neg::create(), NegPage::Identifier);
+	this->negOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Neg::create(), NegPage::Identifier, NegExamplesPage::Identifier);
 	
 	this->operationSelectLabel->setTextColor(super::TextColor);
 

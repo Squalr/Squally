@@ -27,6 +27,7 @@
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Mov/MovPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Mul/MulExamplesPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Mul/MulPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Neg/NegExamplesPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Neg/NegPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Pop/PopPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Push/PushPage.h"
