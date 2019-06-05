@@ -30,8 +30,10 @@
 #include "Strings/Hacking/Lexicon/Assembly/RegisterRsp.h"
 #include "Strings/Hacking/Lexicon/Examples.h"
 #include "Strings/Hacking/Lexicon/Instructions/Data/Div.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Div/OffsetHelp.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Div/PointerHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/Div/RemainderHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/PointerHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp4.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
 
 using namespace cocos2d;
 
@@ -57,16 +59,20 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 	this->divPtrRegButton = this->buildExecuteButton();
 	this->divPtrOffsetImmButton = this->buildExecuteButton();
 	this->divPtrOffsetRegButton = this->buildExecuteButton();
+	this->remainderHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	this->pointerHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
-	this->offsetHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	this->offsetHelp4Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	this->offsetHelp8Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	
-	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Div_PointerHelp::create();
+	this->textPanelRemainderHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_Div_RemainderHelp::create());
+	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
-	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_Div_OffsetHelp::create());
+	this->textPanelOffsetHelp4 = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp4::create());
+	this->textPanelOffsetHelp8 = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
 
 	if (sizeof(void*) == 4)
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEbx::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEax::create());
 		
 		this->divRegImmLabel = this->createInstructionLabelDouble(
 			Strings::Hacking_Lexicon_Assembly_Div::create(),
@@ -85,8 +91,8 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 		);
 		this->divPtrRegLabel = this->createInstructionLabelDouble(
 			Strings::Hacking_Lexicon_Assembly_Div::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEdi::create()),
-			Strings::Hacking_Lexicon_Assembly_RegisterEsi::create()
+			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEsp::create()),
+			Strings::Hacking_Lexicon_Assembly_RegisterEdi::create()
 		);
 		this->divPtrOffsetImmLabel = this->createInstructionLabelDouble(
 			Strings::Hacking_Lexicon_Assembly_Div::create(),
@@ -101,7 +107,7 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 	}
 	else
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRbx::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRax::create());
 		
 		this->divRegImmLabel = this->createInstructionLabelDouble(
 			Strings::Hacking_Lexicon_Assembly_Div::create(),
@@ -120,8 +126,8 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 		);
 		this->divPtrRegLabel = this->createInstructionLabelDouble(
 			Strings::Hacking_Lexicon_Assembly_Div::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRdi::create()),
-			Strings::Hacking_Lexicon_Assembly_RegisterRsi::create()
+			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRsp::create()),
+			Strings::Hacking_Lexicon_Assembly_RegisterRdi::create()
 		);
 		this->divPtrOffsetImmLabel = this->createInstructionLabelDouble(
 			Strings::Hacking_Lexicon_Assembly_Div::create(),
@@ -154,10 +160,14 @@ DivExamplesPage::DivExamplesPage() : super(DivExamplesPage::Identifier, PageType
 	this->addChild(this->divPtrRegLabel);
 	this->addChild(this->divPtrOffsetImmLabel);
 	this->addChild(this->divPtrOffsetRegLabel);
+	this->addChild(this->remainderHelpButton);
 	this->addChild(this->pointerHelpButton);
-	this->addChild(this->offsetHelpButton);
+	this->addChild(this->offsetHelp4Button);
+	this->addChild(this->offsetHelp8Button);
+	this->addChild(this->textPanelRemainderHelp);
 	this->addChild(this->textPanelPointerHelp);
-	this->addChild(this->textPanelOffsetHelp);
+	this->addChild(this->textPanelOffsetHelp4);
+	this->addChild(this->textPanelOffsetHelp8);
 }
 
 DivExamplesPage::~DivExamplesPage()
@@ -187,16 +197,30 @@ void DivExamplesPage::initializePositions()
 	this->divPtrOffsetRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 5.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -336.0f));
 
-	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->offsetHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->remainderHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->offsetHelp4Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f));
+	this->offsetHelp8Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 5.0f));
 
-	this->textPanelPointerHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f + 48.0f));
-	this->textPanelOffsetHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
+	this->textPanelRemainderHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 0.0f + 48.0f));
+	this->textPanelPointerHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
+	this->textPanelOffsetHelp4->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f + 48.0f));
+	this->textPanelOffsetHelp8->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 5.0f + 48.0f));
 }
 
 void DivExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->remainderHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelRemainderHelp->show();
+	});
+
+	this->remainderHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelRemainderHelp->hide();
+	});
 
 	this->pointerHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
@@ -208,14 +232,24 @@ void DivExamplesPage::initializeListeners()
 		this->textPanelPointerHelp->hide();
 	});
 
-	this->offsetHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->offsetHelp4Button->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->textPanelOffsetHelp->show();
+		this->textPanelOffsetHelp4->show();
 	});
 
-	this->offsetHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->offsetHelp4Button->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->textPanelOffsetHelp->hide();
+		this->textPanelOffsetHelp4->hide();
+	});
+
+	this->offsetHelp8Button->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp8->show();
+	});
+
+	this->offsetHelp8Button->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp8->hide();
 	});
 
 	this->resetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
@@ -271,13 +305,13 @@ void DivExamplesPage::initializeListeners()
 
 	this->divPtrRegButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEdiPtr(this->safeDiv(this->registerBlock->getEdiPtr(0), this->registerBlock->getEsi()), 0);
+		this->registerBlock->setEspPtr(this->safeDiv(this->registerBlock->getEspPtr(0), this->registerBlock->getEdi()), 0);
 	});
 
 	this->divPtrRegButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->registerBlock->highlightEdiPtr(true, 0);
-		this->registerBlock->highlightEsi(false);
+		this->registerBlock->highlightEspPtr(true, 0);
+		this->registerBlock->highlightEdi(false);
 	});
 
 	this->divPtrRegButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
@@ -323,10 +357,10 @@ void DivExamplesPage::resetState()
 	this->registerBlock->initEbx(33);
 	this->registerBlock->initEcx(12);
 	this->registerBlock->initEdx(3);
-	this->registerBlock->initEdi(0x041F0000, { 300 });
+	this->registerBlock->initEdi(2);
 	this->registerBlock->initEsi(3);
 	this->registerBlock->initEbp(0x0920000);
-	this->registerBlock->initEsp(0x0920008, { 0, 360, 600 });
+	this->registerBlock->initEsp(0x0920008, { 200, 360, 600 });
 	this->registerBlock->initEip(0x2F7029C);
 }
 

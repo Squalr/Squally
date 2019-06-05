@@ -20,8 +20,8 @@
 #include "Strings/Hacking/Lexicon/Assembly/RegisterRsi.h"
 #include "Strings/Hacking/Lexicon/Examples.h"
 #include "Strings/Hacking/Lexicon/Instructions/Data/Dec.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Dec/OffsetHelp.h"
 #include "Strings/Hacking/Lexicon/Pages/Data/Dec/PointerHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp12.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ DecExamplesPage::DecExamplesPage() : super(DecExamplesPage::Identifier, PageType
 	this->offsetHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Dec_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
-	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_Dec_OffsetHelp::create());
+	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp12::create());
 
 	if (sizeof(void*) == 4)
 	{
