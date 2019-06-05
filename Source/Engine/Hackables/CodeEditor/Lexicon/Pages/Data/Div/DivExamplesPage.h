@@ -41,10 +41,14 @@ private:
 	ClickableTextNode* divPtrRegButton;
 	ClickableTextNode* divPtrOffsetImmButton;
 	ClickableTextNode* divPtrOffsetRegButton;
+	ClickableNode* remainderHelpButton;
 	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelpButton;
+	ClickableNode* offsetHelp4Button;
+	ClickableNode* offsetHelp8Button;
+	TextPanel* textPanelRemainderHelp;
 	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp;
+	TextPanel* textPanelOffsetHelp4;
+	TextPanel* textPanelOffsetHelp8;
 	LocalizedLabel* divRegImmLabel;
 	LocalizedLabel* divRegRegLabel;
 	LocalizedLabel* divPtrImmLabel;

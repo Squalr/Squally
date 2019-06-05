@@ -5,7 +5,7 @@
     "da": "Bøjlerne angiver, at %s1 er en peger på en variabel. Dette betyder, at %s1 sporer placeringen af ​​en variabel. I stedet for at øge registret, stiger dataene.",
     "de": "Die geschweiften Klammern geben an, dass %s1 ein Zeiger auf eine Variable ist. Dies bedeutet, dass %s1 die Position einer Variablen verfolgt. Anstatt das Register zu erhöhen, werden die Daten erhöht.",
     "el": "Οι τιράντες δείχνουν ότι το %s1 είναι δείκτης σε μια μεταβλητή. Αυτό σημαίνει ότι το %s1 παρακολουθεί τη θέση μιας μεταβλητής. Αντί της αύξησης του μητρώου, τα δεδομένα αυξάνονται.",
-    "en": "The braces indicate that %s1 is a pointer to a variable. This means that %s1 is tracking the location of a variable. Instead of incrementing the register, the data is incremented.",
+    "en": "The braces indicate that %s1 is a pointer to a variable. This means that %s1 is tracking the location of a variable.",
     "es": "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de incrementar el registro, los datos se incrementan.",
     "es-419": "Las llaves indican que %s1 es un puntero a una variable. Esto significa que %s1 está rastreando la ubicación de una variable. En lugar de incrementar el registro, los datos se incrementan.",
     "fi": "Olkaimet osoittavat, että %s1 on muuttujan osoitin. Tämä tarkoittaa, että %s1 seuraa muuttujan sijaintia. Rekisterin lisäämisen sijasta tietoja lisätään.",

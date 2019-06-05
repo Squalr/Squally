@@ -55,7 +55,7 @@ void DivPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(112.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(112.0f, -180.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
