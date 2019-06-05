@@ -15,6 +15,7 @@
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/ControlFlow/Nop/NopPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/DataIntroPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/DataSelectPage.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Add/AddExamplesPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Add/AddPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Dec/DecExamplesPage.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/Data/Dec/DecPage.h"

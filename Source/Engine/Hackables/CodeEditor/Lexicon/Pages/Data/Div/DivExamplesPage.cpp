@@ -360,7 +360,7 @@ void DivExamplesPage::resetState()
 	this->registerBlock->initEdi(2);
 	this->registerBlock->initEsi(3);
 	this->registerBlock->initEbp(0x0920000);
-	this->registerBlock->initEsp(0x0920008, { 200, 360, 600 });
+	this->registerBlock->initEsp(0x0920008, { 200, 400, 360 });
 	this->registerBlock->initEip(0x2F7029C);
 }
 

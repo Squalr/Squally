@@ -24,7 +24,7 @@ AddPage* AddPage::create()
 	return instance;
 }
 
-AddPage::AddPage() : super(AddPage::Identifier, PageType::Full)
+AddPage::AddPage() : super(AddPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Axe);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void AddPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(128.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);
