@@ -120,16 +120,16 @@ void DecExamplesPage::initializePositions()
 	this->decButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->decPtrButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
 	this->decPtrOffsetButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->decLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->decPtrLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->decPtrOffsetLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->decLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->decPtrLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->decPtrOffsetLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -312.0f));
 
-	this->pointerHelpButton->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->offsetHelpButton->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->offsetHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
 
-	this->textPanelPointerHelp->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 1.0f + 48.0f));
-	this->textPanelOffsetHelp->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
+	this->textPanelPointerHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f + 48.0f));
+	this->textPanelOffsetHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
 }
 
 void DecExamplesPage::initializeListeners()
@@ -166,14 +166,44 @@ void DecExamplesPage::initializeListeners()
 		this->registerBlock->setEcx(this->registerBlock->getEcx() - 1);
 	});
 
+	this->decButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEcx(true);
+	});
+
+	this->decButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
 	this->decPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEbxPtr(this->registerBlock->getEbxPtr(0) - 1, 0);
 	});
 
+	this->decPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEbxPtr(true, 0);
+	});
+
+	this->decPtrButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
 	this->decPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEsiPtr(this->registerBlock->getEsiPtr(3) - 1, 3);
+	});
+
+	this->decPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEsiPtr(true, 3);
+	});
+
+	this->decPtrOffsetButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
 	});
 }
 

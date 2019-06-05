@@ -352,6 +352,7 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_DarkFrame;
 	extern const std::string Menus_LexiconMenu_DataFrame;
 	extern const std::string Menus_LexiconMenu_DecorLine;
+	extern const std::string Menus_LexiconMenu_DestSelector;
 	extern const std::string Menus_LexiconMenu_ExecuteButton;
 	extern const std::string Menus_LexiconMenu_ExecuteButtonSelected;
 	extern const std::string Menus_LexiconMenu_HelpButton;
@@ -368,6 +369,7 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_RegisterBlock;
 	extern const std::string Menus_LexiconMenu_ResetButton;
 	extern const std::string Menus_LexiconMenu_ResetButtonSelected;
+	extern const std::string Menus_LexiconMenu_SourceSelector;
 	extern const std::string Menus_LexiconMenu_StackBlock;
 	extern const std::string Menus_LexiconMenu_Tabs_TabBlue;
 	extern const std::string Menus_LexiconMenu_Tabs_TabBlueSelected;

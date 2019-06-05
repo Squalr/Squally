@@ -24,7 +24,7 @@ DivPage* DivPage::create()
 	return instance;
 }
 
-DivPage::DivPage() : super(DivPage::Identifier, PageType::Full)
+DivPage::DivPage() : super(DivPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Shield);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void DivPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 212.0f, -212.0f));
+	this->decorSprite->setPosition(Vec2(112.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

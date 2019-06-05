@@ -15,6 +15,26 @@ class RegisterBlock : public SmartNode
 public:
 	static RegisterBlock* create();
 
+	void clearHighlights();
+	void highlightEax(bool isDest);
+	void highlightEbx(bool isDest);
+	void highlightEcx(bool isDest);
+	void highlightEdx(bool isDest);
+	void highlightEdi(bool isDest);
+	void highlightEsi(bool isDest);
+	void highlightEbp(bool isDest);
+	void highlightEsp(bool isDest);
+	void highlightEip(bool isDest);
+	void highlightEaxPtr(bool isDest, int offset);
+	void highlightEbxPtr(bool isDest, int offset);
+	void highlightEcxPtr(bool isDest, int offset);
+	void highlightEdxPtr(bool isDest, int offset);
+	void highlightEdiPtr(bool isDest, int offset);
+	void highlightEsiPtr(bool isDest, int offset);
+	void highlightEbpPtr(bool isDest, int offset);
+	void highlightEspPtr(bool isDest, int offset);
+	void highlightEipPtr(bool isDest, int offset);
+
 	void initEax(unsigned long long eax, std::vector<unsigned int> values = { });
 	void initEbx(unsigned long long ebx, std::vector<unsigned int> values = { });
 	void initEcx(unsigned long long ecx, std::vector<unsigned int> values = { });
@@ -76,6 +96,9 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void highlightSource(cocos2d::Vec2 position);
+	void highlightDest(cocos2d::Vec2 position);
+
 	struct Register
 	{
 		bool initialized;
@@ -112,6 +135,8 @@ private:
 	cocos2d::Node* ebpPtrNode;
 	cocos2d::Node* espPtrNode;
 	cocos2d::Node* eipPtrNode;
+	cocos2d::Sprite* destSelector;
+	cocos2d::Sprite* srcSelector;
 
 	std::vector<ConstantString*> eaxPtrStrings;
 	std::vector<ConstantString*> ebxPtrStrings;
@@ -154,4 +179,5 @@ private:
 	Register eip;
 
 	static const float RegisterPtrSpacing;
+	static const cocos2d::Vec2 SelectorRegOffset;
 };

@@ -38,6 +38,7 @@
 using namespace cocos2d;
 
 const float RegisterBlock::RegisterPtrSpacing  = -32.0f;
+const Vec2 RegisterBlock::SelectorRegOffset = Vec2(-20.0f, 0.0f);
 
 RegisterBlock* RegisterBlock::create()
 {
@@ -123,7 +124,9 @@ RegisterBlock::RegisterBlock()
 	this->ebpPtrNode = Node::create();
 	this->espPtrNode = Node::create();
 	this->eipPtrNode = Node::create();
-
+    this->srcSelector = Sprite::create(UIResources::Menus_LexiconMenu_SourceSelector);
+    this->destSelector = Sprite::create(UIResources::Menus_LexiconMenu_DestSelector);
+    
     this->titleLabel->setTextColor(LexiconPage::TextColor);
     this->memoryTitleLabel->setTextColor(LexiconPage::TextColor);
     this->eaxLabel->setTextColor(LexiconPage::TextColor);
@@ -147,6 +150,8 @@ RegisterBlock::RegisterBlock()
     this->ebpLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
     this->espLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
     this->eipLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+    this->srcSelector->setAnchorPoint(Vec2(0.0f, 0.5f));
+    this->destSelector->setAnchorPoint(Vec2(0.0f, 0.5f));
 
     this->eaxLabel->setStringReplacementVariables(this->eaxString);
     this->ebxLabel->setStringReplacementVariables(this->ebxString);
@@ -157,6 +162,9 @@ RegisterBlock::RegisterBlock()
     this->ebpLabel->setStringReplacementVariables(this->ebpString);
     this->espLabel->setStringReplacementVariables(this->espString);
     this->eipLabel->setStringReplacementVariables(this->eipString);
+
+    this->srcSelector->setOpacity(0);
+    this->destSelector->setOpacity(0);
     
     this->addChild(this->registerBlock);
     this->addChild(this->titleLabel);
@@ -179,6 +187,8 @@ RegisterBlock::RegisterBlock()
     this->addChild(this->ebpPtrNode);
     this->addChild(this->espPtrNode);
     this->addChild(this->eipPtrNode);
+    this->addChild(this->srcSelector);
+    this->addChild(this->destSelector);
 }
 
 RegisterBlock::~RegisterBlock()
@@ -209,20 +219,254 @@ void RegisterBlock::initializePositions()
 	this->espLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 7.0f));
 	this->eipLabel->setPosition(Vec2(-88.0f, Offset - Spacing * 8.0f));
 
-	this->eaxPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 0.0f));
-	this->ebxPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 1.0f));
-	this->ecxPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 2.0f));
-	this->edxPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 3.0f));
-	this->ediPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 4.0f));
-	this->esiPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 5.0f));
-	this->ebpPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 6.0f));
-	this->espPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 7.0f));
-	this->eipPtrNode->setPosition(Vec2(224.0f, Offset - Spacing * 8.0f));
+	this->eaxPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 0.0f));
+	this->ebxPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 1.0f));
+	this->ecxPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 2.0f));
+	this->edxPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 3.0f));
+	this->ediPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 4.0f));
+	this->esiPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 5.0f));
+	this->ebpPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 6.0f));
+	this->espPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 7.0f));
+	this->eipPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 8.0f));
 }
 
 void RegisterBlock::initializeListeners()
 {
     super::initializeListeners();
+}
+
+void RegisterBlock::clearHighlights()
+{
+    this->srcSelector->setOpacity(0);
+    this->destSelector->setOpacity(0);
+}
+
+void RegisterBlock::highlightSource(Vec2 position)
+{
+    this->srcSelector->setOpacity(255);
+    this->srcSelector->setPosition(position);
+}
+
+void RegisterBlock::highlightDest(Vec2 position)
+{
+    this->destSelector->setOpacity(255);
+    this->destSelector->setPosition(position);
+}
+
+void RegisterBlock::highlightEax(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->eaxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->eaxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEbx(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ebxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->ebxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEcx(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ecxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->ecxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEdx(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->edxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->edxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEdi(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ediLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->ediLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEsi(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->esiLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->esiLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEbp(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ebpLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->ebpLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEsp(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->espLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->espLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEip(bool isDest)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->eipLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+    else
+    {
+        this->highlightDest(this->eipLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+    }
+}
+
+void RegisterBlock::highlightEaxPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->eaxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->eaxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEbxPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ebxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->ebxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEcxPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ecxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->ecxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEdxPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->edxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->edxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEdiPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ediPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->ediPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEsiPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->esiPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->esiPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEbpPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->ebpPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->ebpPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEspPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->espPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->espPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+}
+
+void RegisterBlock::highlightEipPtr(bool isDest, int offset)
+{
+    if (!isDest)
+    {
+        this->highlightSource(this->eipPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
+    else
+    {
+        this->highlightDest(this->eipPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+    }
 }
 
 void RegisterBlock::initEax(unsigned long long eax, std::vector<unsigned int> values)

@@ -60,6 +60,7 @@ Lexicon::Lexicon()
 	this->pages.push_back(DecPage::create());
 	this->pages.push_back(AddPage::create());
 	this->pages.push_back(SubPage::create());
+	this->pages.push_back(DivExamplesPage::create());
 	this->pages.push_back(DivPage::create());
 	this->pages.push_back(MulPage::create());
 	this->pages.push_back(MovPage::create());
