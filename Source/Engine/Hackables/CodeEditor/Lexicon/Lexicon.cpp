@@ -70,6 +70,7 @@ Lexicon::Lexicon()
 	this->pages.push_back(LeaPage::create());
 	this->pages.push_back(PushPage::create());
 	this->pages.push_back(PopPage::create());
+	this->pages.push_back(NegExamplesPage::create());
 	this->pages.push_back(NegPage::create());
 
 	// Binary
