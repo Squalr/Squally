@@ -10,10 +10,10 @@ namespace cocos2d
 class LocalizedLabel;
 class ConstantString;
 
-class RegisterBlock : public SmartNode
+class RegisterBlockSigned : public SmartNode
 {
 public:
-	static RegisterBlock* create();
+	static RegisterBlockSigned* create();
 
 	void clearHighlights();
 	void highlightEax(bool isDest);
@@ -35,59 +35,59 @@ public:
 	void highlightEspPtr(bool isDest, int offset);
 	void highlightEipPtr(bool isDest, int offset);
 
-	void initEax(unsigned long long eax, std::vector<unsigned int> values = { });
-	void initEbx(unsigned long long ebx, std::vector<unsigned int> values = { });
-	void initEcx(unsigned long long ecx, std::vector<unsigned int> values = { });
-	void initEdx(unsigned long long edx, std::vector<unsigned int> values = { });
-	void initEdi(unsigned long long edi, std::vector<unsigned int> values = { });
-	void initEsi(unsigned long long esi, std::vector<unsigned int> values = { });
-	void initEbp(unsigned long long ebp, std::vector<unsigned int> values = { });
-	void initEsp(unsigned long long esp, std::vector<unsigned int> values = { });
-	void initEip(unsigned long long eip, std::vector<unsigned int> values = { });
+	void initEax(long long eax, std::vector<int> values = { });
+	void initEbx(long long ebx, std::vector<int> values = { });
+	void initEcx(long long ecx, std::vector<int> values = { });
+	void initEdx(long long edx, std::vector<int> values = { });
+	void initEdi(long long edi, std::vector<int> values = { });
+	void initEsi(long long esi, std::vector<int> values = { });
+	void initEbp(long long ebp, std::vector<int> values = { });
+	void initEsp(long long esp, std::vector<int> values = { });
+	void initEip(long long eip, std::vector<int> values = { });
 
-	void setEax(unsigned long long eax);
-	void setEbx(unsigned long long ebx);
-	void setEcx(unsigned long long ecx);
-	void setEdx(unsigned long long edx);
-	void setEdi(unsigned long long edi);
-	void setEsi(unsigned long long esi);
-	void setEbp(unsigned long long ebp);
-	void setEsp(unsigned long long esp);
-	void setEip(unsigned long long eip);
+	void setEax(long long eax);
+	void setEbx(long long ebx);
+	void setEcx(long long ecx);
+	void setEdx(long long edx);
+	void setEdi(long long edi);
+	void setEsi(long long esi);
+	void setEbp(long long ebp);
+	void setEsp(long long esp);
+	void setEip(long long eip);
 
-	void setEaxPtr(unsigned long long value, int offset);
-	void setEbxPtr(unsigned long long value, int offset);
-	void setEcxPtr(unsigned long long value, int offset);
-	void setEdxPtr(unsigned long long value, int offset);
-	void setEdiPtr(unsigned long long value, int offset);
-	void setEsiPtr(unsigned long long value, int offset);
-	void setEbpPtr(unsigned long long value, int offset);
-	void setEspPtr(unsigned long long value, int offset);
-	void setEipPtr(unsigned long long value, int offset);
+	void setEaxPtr(long long value, int offset);
+	void setEbxPtr(long long value, int offset);
+	void setEcxPtr(long long value, int offset);
+	void setEdxPtr(long long value, int offset);
+	void setEdiPtr(long long value, int offset);
+	void setEsiPtr(long long value, int offset);
+	void setEbpPtr(long long value, int offset);
+	void setEspPtr(long long value, int offset);
+	void setEipPtr(long long value, int offset);
 
-	unsigned long long getEax();
-	unsigned long long getEbx();
-	unsigned long long getEcx();
-	unsigned long long getEdx();
-	unsigned long long getEdi();
-	unsigned long long getEsi();
-	unsigned long long getEbp();
-	unsigned long long getEsp();
-	unsigned long long getEip();
+	long long getEax();
+	long long getEbx();
+	long long getEcx();
+	long long getEdx();
+	long long getEdi();
+	long long getEsi();
+	long long getEbp();
+	long long getEsp();
+	long long getEip();
 
-	unsigned long long getEaxPtr(int offset);
-	unsigned long long getEbxPtr(int offset);
-	unsigned long long getEcxPtr(int offset);
-	unsigned long long getEdxPtr(int offset);
-	unsigned long long getEdiPtr(int offset);
-	unsigned long long getEsiPtr(int offset);
-	unsigned long long getEbpPtr(int offset);
-	unsigned long long getEspPtr(int offset);
-	unsigned long long getEipPtr(int offset);
+	long long getEaxPtr(int offset);
+	long long getEbxPtr(int offset);
+	long long getEcxPtr(int offset);
+	long long getEdxPtr(int offset);
+	long long getEdiPtr(int offset);
+	long long getEsiPtr(int offset);
+	long long getEbpPtr(int offset);
+	long long getEspPtr(int offset);
+	long long getEipPtr(int offset);
 
 protected:
-	RegisterBlock();
-	~RegisterBlock();
+	RegisterBlockSigned();
+	~RegisterBlockSigned();
 	
 	void onEnter() override;
 	void initializePositions() override;
@@ -102,13 +102,13 @@ private:
 	struct Register
 	{
 		bool initialized;
-		unsigned long long currentValue;
-		unsigned long long initialValue;
-		std::vector<unsigned int> initialValues;
-		std::vector<unsigned int> currentValues;
+		long long currentValue;
+		long long initialValue;
+		std::vector<int> initialValues;
+		std::vector<int> currentValues;
 
 		Register() : initialized(false), currentValue(0), initialValue(0), initialValues({}), currentValues({}) { }
-		Register(unsigned long long currentValue, unsigned long long initialValue, std::vector<unsigned int> initialValues, std::vector<unsigned int> currentValues) :
+		Register(long long currentValue, long long initialValue, std::vector<int> initialValues, std::vector<int> currentValues) :
 			initialized(true), currentValue(currentValue), initialValue(initialValue), initialValues(initialValues), currentValues(currentValues) {}
 	};
 

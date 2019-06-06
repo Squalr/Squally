@@ -1,9 +1,9 @@
-﻿#include "DecExamplesPage.h"
+﻿#include "NegExamplesPage.h"
 
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Hackables/CodeEditor/Lexicon/Components/RegisterBlock.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Components/RegisterBlockSigned.h"
 #include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -11,7 +11,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Assembly/Dec.h"
+#include "Strings/Hacking/Lexicon/Assembly/Neg.h"
 #include "Strings/Hacking/Lexicon/Assembly/RegisterEbx.h"
 #include "Strings/Hacking/Lexicon/Assembly/RegisterEcx.h"
 #include "Strings/Hacking/Lexicon/Assembly/RegisterEsi.h"
@@ -19,34 +19,34 @@
 #include "Strings/Hacking/Lexicon/Assembly/RegisterRcx.h"
 #include "Strings/Hacking/Lexicon/Assembly/RegisterRsi.h"
 #include "Strings/Hacking/Lexicon/Examples.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Dec.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Dec/PointerHelp.h"
+#include "Strings/Hacking/Lexicon/Instructions/Data/Neg.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/Neg/PointerHelp.h"
 #include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp12.h"
 
 using namespace cocos2d;
 
-const std::string DecExamplesPage::Identifier = "DEC_EXAMPLES_PAGE";
+const std::string NegExamplesPage::Identifier = "NEG_EXAMPLES_PAGE";
 
-DecExamplesPage* DecExamplesPage::create()
+NegExamplesPage* NegExamplesPage::create()
 {
-	DecExamplesPage* instance = new DecExamplesPage();
+	NegExamplesPage* instance = new NegExamplesPage();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DecExamplesPage::DecExamplesPage() : super(DecExamplesPage::Identifier, PageType::Right)
+NegExamplesPage::NegExamplesPage() : super(NegExamplesPage::Identifier, PageType::Right)
 {
 	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_Lexicon_Examples::create());
-	this->registerBlock = RegisterBlock::create();
+	this->registerBlock = RegisterBlockSigned::create();
 	this->resetButton = this->buildResetButton();
-	this->decButton = this->buildExecuteButton();
-	this->decPtrButton = this->buildExecuteButton();
-	this->decPtrOffsetButton = this->buildExecuteButton();
+	this->negButton = this->buildExecuteButton();
+	this->negPtrButton = this->buildExecuteButton();
+	this->negPtrOffsetButton = this->buildExecuteButton();
 	this->pointerHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	this->offsetHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
-	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Dec_PointerHelp::create();
+	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Neg_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
 	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp12::create());
 
@@ -54,16 +54,16 @@ DecExamplesPage::DecExamplesPage() : super(DecExamplesPage::Identifier, PageType
 	{
 		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEbx::create());
 		
-		this->decLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Dec::create(),
+		this->negLabel = this->createInstructionLabelSingle(
+			Strings::Hacking_Lexicon_Assembly_Neg::create(),
 			Strings::Hacking_Lexicon_Assembly_RegisterEcx::create()
 		);
-		this->decPtrLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Dec::create(),
+		this->negPtrLabel = this->createInstructionLabelSingle(
+			Strings::Hacking_Lexicon_Assembly_Neg::create(),
 			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEbx::create())
 		);
-		this->decPtrOffsetLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Dec::create(),
+		this->negPtrOffsetLabel = this->createInstructionLabelSingle(
+			Strings::Hacking_Lexicon_Assembly_Neg::create(),
 			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterEsi::create(), sizeof(int) * 3)
 		);
 	}
@@ -71,16 +71,16 @@ DecExamplesPage::DecExamplesPage() : super(DecExamplesPage::Identifier, PageType
 	{
 		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRbx::create());
 
-		this->decLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Dec::create(),
+		this->negLabel = this->createInstructionLabelSingle(
+			Strings::Hacking_Lexicon_Assembly_Neg::create(),
 			Strings::Hacking_Lexicon_Assembly_RegisterRcx::create()
 		);
-		this->decPtrLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Dec::create(),
+		this->negPtrLabel = this->createInstructionLabelSingle(
+			Strings::Hacking_Lexicon_Assembly_Neg::create(),
 			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRbx::create())
 		);
-		this->decPtrOffsetLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Dec::create(),
+		this->negPtrOffsetLabel = this->createInstructionLabelSingle(
+			Strings::Hacking_Lexicon_Assembly_Neg::create(),
 			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterRsi::create(), sizeof(int) * 3)
 		);
 	}
@@ -92,23 +92,23 @@ DecExamplesPage::DecExamplesPage() : super(DecExamplesPage::Identifier, PageType
 	this->addChild(this->examplesLabel);
 	this->addChild(this->registerBlock);
 	this->addChild(this->resetButton);
-	this->addChild(this->decButton);
-	this->addChild(this->decPtrButton);
-	this->addChild(this->decPtrOffsetButton);
-	this->addChild(this->decLabel);
-	this->addChild(this->decPtrLabel);
-	this->addChild(this->decPtrOffsetLabel);
+	this->addChild(this->negButton);
+	this->addChild(this->negPtrButton);
+	this->addChild(this->negPtrOffsetButton);
+	this->addChild(this->negLabel);
+	this->addChild(this->negPtrLabel);
+	this->addChild(this->negPtrOffsetLabel);
 	this->addChild(this->pointerHelpButton);
 	this->addChild(this->offsetHelpButton);
 	this->addChild(this->textPanelPointerHelp);
 	this->addChild(this->textPanelOffsetHelp);
 }
 
-DecExamplesPage::~DecExamplesPage()
+NegExamplesPage::~NegExamplesPage()
 {
 }
 
-void DecExamplesPage::initializePositions()
+void NegExamplesPage::initializePositions()
 {
 	super::initializePositions();
 
@@ -117,12 +117,12 @@ void DecExamplesPage::initializePositions()
 
 	this->registerBlock->setPosition(Vec2(-160.0f, 160.0f));
 	this->examplesLabel->setPosition(Vec2(0.0f, super::ChapterLocation.y - 16.0f));
-	this->decButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->decPtrButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->decPtrOffsetButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->decLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->decPtrLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->decPtrOffsetLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->negButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->negPtrButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->negPtrOffsetButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->negLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->negPtrLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->negPtrOffsetLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -312.0f));
 
 	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f));
@@ -132,7 +132,7 @@ void DecExamplesPage::initializePositions()
 	this->textPanelOffsetHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
 }
 
-void DecExamplesPage::initializeListeners()
+void NegExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -161,54 +161,54 @@ void DecExamplesPage::initializeListeners()
 		this->resetState();
 	});
 
-	this->decButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->negButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEcx(this->registerBlock->getEcx() - 1);
+		this->registerBlock->setEcx(-this->registerBlock->getEcx());
 	});
 
-	this->decButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->negButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEcx(true);
 	});
 
-	this->decButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->negButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->decPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->negPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEbxPtr(this->registerBlock->getEbxPtr(0) - 1, 0);
+		this->registerBlock->setEbxPtr(-this->registerBlock->getEbxPtr(0), 0);
 	});
 
-	this->decPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->negPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEbxPtr(true, 0);
 	});
 
-	this->decPtrButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->negPtrButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 
-	this->decPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->negPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
-		this->registerBlock->setEsiPtr(this->registerBlock->getEsiPtr(3) - 1, 3);
+		this->registerBlock->setEsiPtr(-this->registerBlock->getEsiPtr(3), 3);
 	});
 
-	this->decPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->negPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEsiPtr(true, 3);
 	});
 
-	this->decPtrOffsetButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->negPtrOffsetButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 	});
 }
 
 
-void DecExamplesPage::resetState()
+void NegExamplesPage::resetState()
 {
 	this->registerBlock->initEax(420);
 	this->registerBlock->initEbx(0x400F000, { 10 });
