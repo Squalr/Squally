@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Lexicon_Instructions_Data_Imul : public LocalizedString
+	class Hacking_Lexicon_Pages_Data_Push_PointerHelp : public LocalizedString
 	{
 	public:
-		static Hacking_Lexicon_Instructions_Data_Imul* create();
+		static Hacking_Lexicon_Pages_Data_Push_PointerHelp* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Lexicon_Instructions_Data_Imul();
-		~Hacking_Lexicon_Instructions_Data_Imul();
+		Hacking_Lexicon_Pages_Data_Push_PointerHelp();
+		~Hacking_Lexicon_Pages_Data_Push_PointerHelp();
 	};
 }

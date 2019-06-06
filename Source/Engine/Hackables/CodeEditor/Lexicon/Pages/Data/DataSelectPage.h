@@ -35,7 +35,6 @@ private:
 	ClickableTextNode* divOperationButton;
 	ClickableTextNode* mulOperationButton;
 	ClickableTextNode* movOperationButton;
-	ClickableTextNode* leaOperationButton;
 	ClickableTextNode* pushOperationButton;
 	ClickableTextNode* popOperationButton;
 	ClickableTextNode* negOperationButton;

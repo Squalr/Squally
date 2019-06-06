@@ -66,9 +66,11 @@ Lexicon::Lexicon()
 	this->pages.push_back(DivPage::create());
 	this->pages.push_back(MulExamplesPage::create());
 	this->pages.push_back(MulPage::create());
+	this->pages.push_back(MovExamplesPage::create());
 	this->pages.push_back(MovPage::create());
-	this->pages.push_back(LeaPage::create());
+	this->pages.push_back(PushExamplesPage::create());
 	this->pages.push_back(PushPage::create());
+	this->pages.push_back(PopExamplesPage::create());
 	this->pages.push_back(PopPage::create());
 	this->pages.push_back(NegExamplesPage::create());
 	this->pages.push_back(NegPage::create());

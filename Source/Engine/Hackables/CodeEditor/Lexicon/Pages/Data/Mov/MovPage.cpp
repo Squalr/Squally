@@ -24,7 +24,7 @@ MovPage* MovPage::create()
 	return instance;
 }
 
-MovPage::MovPage() : super(MovPage::Identifier, PageType::Full)
+MovPage::MovPage() : super(MovPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Ring);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void MovPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 224.0f, 224.0f));
+	this->decorSprite->setPosition(Vec2(128.0f, -212.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

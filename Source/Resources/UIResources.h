@@ -371,6 +371,7 @@ namespace UIResources
 	extern const std::string Menus_LexiconMenu_ResetButtonSelected;
 	extern const std::string Menus_LexiconMenu_SourceSelector;
 	extern const std::string Menus_LexiconMenu_StackBlock;
+	extern const std::string Menus_LexiconMenu_StackSelector;
 	extern const std::string Menus_LexiconMenu_Tabs_TabBlue;
 	extern const std::string Menus_LexiconMenu_Tabs_TabBlueSelected;
 	extern const std::string Menus_LexiconMenu_Tabs_TabGreen;
