@@ -170,6 +170,7 @@ void PopExamplesPage::initializeListeners()
 	this->popButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEcx(this->stackBlock->pop());
+		this->registerBlock->setEsp(this->registerBlock->getEsp() - sizeof(void*));
 	});
 
 	this->popButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
@@ -187,6 +188,7 @@ void PopExamplesPage::initializeListeners()
 	this->popPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEbxPtr(this->stackBlock->pop(), 0);
+		this->registerBlock->setEsp(this->registerBlock->getEsp() - sizeof(void*));
 	});
 
 	this->popPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
@@ -204,6 +206,7 @@ void PopExamplesPage::initializeListeners()
 	this->popPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEsiPtr(this->stackBlock->pop(), 3);
+		this->registerBlock->setEsp(this->registerBlock->getEsp() - sizeof(void*));
 	});
 
 	this->popPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
