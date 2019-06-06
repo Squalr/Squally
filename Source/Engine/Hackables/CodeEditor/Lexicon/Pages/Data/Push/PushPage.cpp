@@ -24,7 +24,7 @@ PushPage* PushPage::create()
 	return instance;
 }
 
-PushPage::PushPage() : super(PushPage::Identifier, PageType::Full)
+PushPage::PushPage() : super(PushPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Spear);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
@@ -55,7 +55,7 @@ void PushPage::initializePositions()
 {
 	super::initializePositions();
 
-	this->decorSprite->setPosition(Vec2(super::PageSize.width + 112.0f, -196.0f));
+	this->decorSprite->setPosition(Vec2(96.0f, -196.0f));
 	this->introText->setPosition(super::IntroLocation);
 	this->chapterSprite->setPosition(super::ChapterMarkerLocation);
 	this->titleLabel->setPosition(super::ChapterLocation);

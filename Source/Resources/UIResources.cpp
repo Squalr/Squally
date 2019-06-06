@@ -370,6 +370,7 @@ const std::string UIResources::Menus_LexiconMenu_ResetButton = "UI/Menus/Lexicon
 const std::string UIResources::Menus_LexiconMenu_ResetButtonSelected = "UI/Menus/LexiconMenu/ResetButtonSelected.png";
 const std::string UIResources::Menus_LexiconMenu_SourceSelector = "UI/Menus/LexiconMenu/SourceSelector.png";
 const std::string UIResources::Menus_LexiconMenu_StackBlock = "UI/Menus/LexiconMenu/StackBlock.png";
+const std::string UIResources::Menus_LexiconMenu_StackSelector = "UI/Menus/LexiconMenu/StackSelector.png";
 const std::string UIResources::Menus_LexiconMenu_Tabs_TabBlue = "UI/Menus/LexiconMenu/Tabs/TabBlue.png";
 const std::string UIResources::Menus_LexiconMenu_Tabs_TabBlueSelected = "UI/Menus/LexiconMenu/Tabs/TabBlueSelected.png";
 const std::string UIResources::Menus_LexiconMenu_Tabs_TabGreen = "UI/Menus/LexiconMenu/Tabs/TabGreen.png";
