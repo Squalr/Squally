@@ -20,8 +20,8 @@
 #include "Strings/Hacking/Lexicon/Assembly/RegisterRdi.h"
 #include "Strings/Hacking/Lexicon/Examples.h"
 #include "Strings/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Inc/OffsetHelp.h"
 #include "Strings/Hacking/Lexicon/Pages/Data/Inc/PointerHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
 
 using namespace cocos2d;
 
@@ -48,12 +48,12 @@ IncExamplesPage::IncExamplesPage() : super(IncExamplesPage::Identifier, PageType
 	this->offsetHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Inc_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
-	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_Inc_OffsetHelp::create());
+	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
 
 	if (sizeof(void*) == 4)
 	{
 		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEax::create());
-		
+
 		this->incLabel = this->createInstructionLabelSingle(
 			Strings::Hacking_Lexicon_Assembly_Inc::create(),
 			Strings::Hacking_Lexicon_Assembly_RegisterEcx::create()
@@ -120,16 +120,16 @@ void IncExamplesPage::initializePositions()
 	this->incButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
 	this->incPtrButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
 	this->incPtrOffsetButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
-	this->incLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 0.0f));
-	this->incPtrLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->incPtrOffsetLabel->setPosition(Vec2(-64.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->incLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->incPtrLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->incPtrOffsetLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
 	this->resetButton->setPosition(Vec2(0.0f, -312.0f));
 
-	this->pointerHelpButton->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 1.0f));
-	this->offsetHelpButton->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->offsetHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
 
-	this->textPanelPointerHelp->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 1.0f + 48.0f));
-	this->textPanelOffsetHelp->setPosition(Vec2(180.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
+	this->textPanelPointerHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 1.0f + 48.0f));
+	this->textPanelOffsetHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
 }
 
 void IncExamplesPage::initializeListeners()
@@ -166,14 +166,44 @@ void IncExamplesPage::initializeListeners()
 		this->registerBlock->setEcx(this->registerBlock->getEcx() + 1);
 	});
 
+	this->incButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEcx(true);
+	});
+
+	this->incButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
 	this->incPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEaxPtr(this->registerBlock->getEaxPtr(0) + 1, 0);
 	});
 
+	this->incPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEaxPtr(true, 0);
+	});
+
+	this->incPtrButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
 	this->incPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->setEdiPtr(this->registerBlock->getEdiPtr(2) + 1, 2);
+	});
+
+	this->incPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEdiPtr(true, 2);
+	});
+
+	this->incPtrOffsetButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
 	});
 }
 

@@ -1,0 +1,349 @@
+﻿#include "AddExamplesPage.h"
+
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Components/RegisterBlock.h"
+#include "Engine/Hackables/CodeEditor/Lexicon/Pages/LexiconPages.h"
+#include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/TextPanel.h"
+
+#include "Resources/UIResources.h"
+
+#include "Strings/Hacking/Lexicon/Assembly/Add.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEax.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEbx.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEcx.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEdx.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEdi.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEsi.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEbp.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterEsp.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRax.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRbx.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRcx.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRdx.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRdi.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRsi.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRbp.h"
+#include "Strings/Hacking/Lexicon/Assembly/RegisterRsp.h"
+#include "Strings/Hacking/Lexicon/Examples.h"
+#include "Strings/Hacking/Lexicon/Instructions/Data/Add.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/PointerHelp.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp4.h"
+#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
+
+using namespace cocos2d;
+
+const std::string AddExamplesPage::Identifier = "ADD_EXAMPLES_PAGE";
+
+AddExamplesPage* AddExamplesPage::create()
+{
+	AddExamplesPage* instance = new AddExamplesPage();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+AddExamplesPage::AddExamplesPage() : super(AddExamplesPage::Identifier, PageType::Right)
+{
+	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_Lexicon_Examples::create());
+	this->registerBlock = RegisterBlock::create();
+	this->resetButton = this->buildResetButton();
+	this->addRegImmButton = this->buildExecuteButton();
+	this->addRegRegButton = this->buildExecuteButton();
+	this->addPtrImmButton = this->buildExecuteButton();
+	this->addPtrRegButton = this->buildExecuteButton();
+	this->addPtrOffsetImmButton = this->buildExecuteButton();
+	this->addPtrOffsetRegButton = this->buildExecuteButton();
+	this->pointerHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	this->offsetHelp4Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	this->offsetHelp8Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
+	
+	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_PointerHelp::create();
+	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
+	this->textPanelOffsetHelp4 = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp4::create());
+	this->textPanelOffsetHelp8 = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
+
+	if (sizeof(void*) == 4)
+	{
+		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEbx::create());
+		
+		this->addRegImmLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			Strings::Hacking_Lexicon_Assembly_RegisterEax::create(),
+			ConstantString::create(std::to_string(2))
+		);
+		this->addRegRegLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			Strings::Hacking_Lexicon_Assembly_RegisterEcx::create(),
+			Strings::Hacking_Lexicon_Assembly_RegisterEdx::create()
+		);
+		this->addPtrImmLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEbx::create()),
+			ConstantString::create(std::to_string(10))
+		);
+		this->addPtrRegLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEbp::create()),
+			Strings::Hacking_Lexicon_Assembly_RegisterEdi::create()
+		);
+		this->addPtrOffsetImmLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterEbp::create(), sizeof(int) * 1),
+			ConstantString::create(std::to_string(4))
+		);
+		this->addPtrOffsetRegLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterEbp::create(), sizeof(int) * 2),
+			Strings::Hacking_Lexicon_Assembly_RegisterEsi::create()
+		);
+	}
+	else
+	{
+		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRbx::create());
+		
+		this->addRegImmLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			Strings::Hacking_Lexicon_Assembly_RegisterRax::create(),
+			ConstantString::create(std::to_string(2))
+		);
+		this->addRegRegLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			Strings::Hacking_Lexicon_Assembly_RegisterRcx::create(),
+			Strings::Hacking_Lexicon_Assembly_RegisterRdx::create()
+		);
+		this->addPtrImmLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRbx::create()),
+			ConstantString::create(std::to_string(10))
+		);
+		this->addPtrRegLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRbp::create()),
+			Strings::Hacking_Lexicon_Assembly_RegisterRdi::create()
+		);
+		this->addPtrOffsetImmLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterRbp::create(), sizeof(int) * 1),
+			ConstantString::create(std::to_string(4))
+		);
+		this->addPtrOffsetRegLabel = this->createInstructionLabelDouble(
+			Strings::Hacking_Lexicon_Assembly_Add::create(),
+			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterRbp::create(), sizeof(int) * 2),
+			Strings::Hacking_Lexicon_Assembly_RegisterRsi::create()
+		);
+	}
+
+	this->examplesLabel->setTextColor(super::TextColor);
+
+	this->resetState();
+
+	this->addChild(this->examplesLabel);
+	this->addChild(this->registerBlock);
+	this->addChild(this->resetButton);
+	this->addChild(this->addRegImmButton);
+	this->addChild(this->addRegRegButton);
+	this->addChild(this->addPtrImmButton);
+	this->addChild(this->addPtrRegButton);
+	this->addChild(this->addPtrOffsetImmButton);
+	this->addChild(this->addPtrOffsetRegButton);
+	this->addChild(this->addRegImmLabel);
+	this->addChild(this->addRegRegLabel);
+	this->addChild(this->addPtrImmLabel);
+	this->addChild(this->addPtrRegLabel);
+	this->addChild(this->addPtrOffsetImmLabel);
+	this->addChild(this->addPtrOffsetRegLabel);
+	this->addChild(this->pointerHelpButton);
+	this->addChild(this->offsetHelp4Button);
+	this->addChild(this->offsetHelp8Button);
+	this->addChild(this->textPanelPointerHelp);
+	this->addChild(this->textPanelOffsetHelp4);
+	this->addChild(this->textPanelOffsetHelp8);
+}
+
+AddExamplesPage::~AddExamplesPage()
+{
+}
+
+void AddExamplesPage::initializePositions()
+{
+	super::initializePositions();
+
+	const float buttonOffset = -32.0f;
+	const float buttonSpacing = -48.0f;
+
+	this->registerBlock->setPosition(Vec2(-160.0f, 160.0f));
+	this->examplesLabel->setPosition(Vec2(0.0f, super::ChapterLocation.y - 16.0f));
+	this->addRegImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->addRegRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->addPtrImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->addPtrRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 3.0f));
+	this->addPtrOffsetImmButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 4.0f));
+	this->addPtrOffsetRegButton->setPosition(Vec2(-180.0f, buttonOffset + buttonSpacing * 5.0f));
+	this->addRegImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 0.0f));
+	this->addRegRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 1.0f));
+	this->addPtrImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->addPtrRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 3.0f));
+	this->addPtrOffsetImmLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 4.0f));
+	this->addPtrOffsetRegLabel->setPosition(Vec2(-72.0f, buttonOffset + buttonSpacing * 5.0f));
+	this->resetButton->setPosition(Vec2(0.0f, -336.0f));
+
+	this->pointerHelpButton->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f));
+	this->offsetHelp4Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f));
+	this->offsetHelp8Button->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 5.0f));
+
+	this->textPanelPointerHelp->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 2.0f + 48.0f));
+	this->textPanelOffsetHelp4->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 4.0f + 48.0f));
+	this->textPanelOffsetHelp8->setPosition(Vec2(212.0f, buttonOffset + buttonSpacing * 5.0f + 48.0f));
+}
+
+void AddExamplesPage::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->pointerHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelPointerHelp->show();
+	});
+
+	this->pointerHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelPointerHelp->hide();
+	});
+
+	this->offsetHelp4Button->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp4->show();
+	});
+
+	this->offsetHelp4Button->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp4->hide();
+	});
+
+	this->offsetHelp8Button->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp8->show();
+	});
+
+	this->offsetHelp8Button->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->textPanelOffsetHelp8->hide();
+	});
+
+	this->resetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->resetState();
+	});
+
+	this->addRegImmButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEax(this->registerBlock->getEax() + 2);
+	});
+
+	this->addRegImmButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEax(true);
+	});
+
+	this->addRegImmButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->addRegRegButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEcx(this->registerBlock->getEcx() + this->registerBlock->getEdx());
+	});
+
+	this->addRegRegButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEcx(true);
+		this->registerBlock->highlightEdx(false);
+	});
+
+	this->addRegRegButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->addPtrImmButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEbxPtr(this->registerBlock->getEbxPtr(0) + 10, 0);
+	});
+
+	this->addPtrImmButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEbxPtr(true, 0);
+	});
+
+	this->addPtrImmButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->addPtrRegButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEbpPtr(this->registerBlock->getEbpPtr(0) + this->registerBlock->getEdi(), 0);
+	});
+
+	this->addPtrRegButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEbpPtr(true, 0);
+		this->registerBlock->highlightEdi(false);
+	});
+
+	this->addPtrRegButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->addPtrOffsetImmButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEbpPtr(this->registerBlock->getEbpPtr(1) + 4, 1);
+	});
+
+	this->addPtrOffsetImmButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEbpPtr(true, 1);
+	});
+
+	this->addPtrOffsetImmButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+
+	this->addPtrOffsetRegButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->setEbpPtr(this->registerBlock->getEbpPtr(2) + this->registerBlock->getEsi(), 2);
+	});
+
+	this->addPtrOffsetRegButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->highlightEbpPtr(true, 2);
+		this->registerBlock->highlightEsi(false);
+	});
+
+	this->addPtrOffsetRegButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	{
+		this->registerBlock->clearHighlights();
+	});
+}
+
+void AddExamplesPage::resetState()
+{
+	this->registerBlock->initEax(2);
+	this->registerBlock->initEbx(0x07CF0000, { 10 });
+	this->registerBlock->initEcx(12);
+	this->registerBlock->initEdx(3);
+	this->registerBlock->initEdi(2);
+	this->registerBlock->initEsi(3);
+	this->registerBlock->initEbp(0x0940000, { 0, 0, 0 });
+	this->registerBlock->initEsp(0x0940008);
+	this->registerBlock->initEip(0x0317034C);
+}

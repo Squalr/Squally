@@ -1,4 +1,4 @@
-﻿#include "RegisterBlock.h"
+﻿#include "RegisterBlockSigned.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
@@ -37,19 +37,19 @@
 
 using namespace cocos2d;
 
-const float RegisterBlock::RegisterPtrSpacing  = -32.0f;
-const Vec2 RegisterBlock::SelectorRegOffset = Vec2(-20.0f, 0.0f);
+const float RegisterBlockSigned::RegisterPtrSpacing  = -32.0f;
+const Vec2 RegisterBlockSigned::SelectorRegOffset = Vec2(-20.0f, 0.0f);
 
-RegisterBlock* RegisterBlock::create()
+RegisterBlockSigned* RegisterBlockSigned::create()
 {
-    RegisterBlock* instance = new RegisterBlock();
+    RegisterBlockSigned* instance = new RegisterBlockSigned();
 
     instance->autorelease();
 
     return instance;
 }
 
-RegisterBlock::RegisterBlock()
+RegisterBlockSigned::RegisterBlockSigned()
 {
     this->eax = Register();
     this->ebx = Register();
@@ -191,16 +191,16 @@ RegisterBlock::RegisterBlock()
     this->addChild(this->destSelector);
 }
 
-RegisterBlock::~RegisterBlock()
+RegisterBlockSigned::~RegisterBlockSigned()
 {
 }
 
-void RegisterBlock::onEnter()
+void RegisterBlockSigned::onEnter()
 {
     super::onEnter();
 }
 
-void RegisterBlock::initializePositions()
+void RegisterBlockSigned::initializePositions()
 {
 	super::initializePositions();
 
@@ -230,246 +230,246 @@ void RegisterBlock::initializePositions()
 	this->eipPtrNode->setPosition(Vec2(208.0f, Offset - Spacing * 8.0f));
 }
 
-void RegisterBlock::initializeListeners()
+void RegisterBlockSigned::initializeListeners()
 {
     super::initializeListeners();
 }
 
-void RegisterBlock::clearHighlights()
+void RegisterBlockSigned::clearHighlights()
 {
     this->srcSelector->setOpacity(0);
     this->destSelector->setOpacity(0);
 }
 
-void RegisterBlock::highlightSource(Vec2 position)
+void RegisterBlockSigned::highlightSource(Vec2 position)
 {
     this->srcSelector->setOpacity(255);
     this->srcSelector->setPosition(position);
 }
 
-void RegisterBlock::highlightDest(Vec2 position)
+void RegisterBlockSigned::highlightDest(Vec2 position)
 {
     this->destSelector->setOpacity(255);
     this->destSelector->setPosition(position);
 }
 
-void RegisterBlock::highlightEax(bool isDest)
+void RegisterBlockSigned::highlightEax(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->eaxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->eaxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->eaxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->eaxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEbx(bool isDest)
+void RegisterBlockSigned::highlightEbx(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ebxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->ebxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->ebxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->ebxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEcx(bool isDest)
+void RegisterBlockSigned::highlightEcx(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ecxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->ecxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->ecxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->ecxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEdx(bool isDest)
+void RegisterBlockSigned::highlightEdx(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->edxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->edxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->edxLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->edxLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEdi(bool isDest)
+void RegisterBlockSigned::highlightEdi(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ediLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->ediLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->ediLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->ediLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEsi(bool isDest)
+void RegisterBlockSigned::highlightEsi(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->esiLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->esiLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->esiLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->esiLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEbp(bool isDest)
+void RegisterBlockSigned::highlightEbp(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ebpLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->ebpLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->ebpLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->ebpLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEsp(bool isDest)
+void RegisterBlockSigned::highlightEsp(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->espLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->espLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->espLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->espLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEip(bool isDest)
+void RegisterBlockSigned::highlightEip(bool isDest)
 {
     if (!isDest)
     {
-        this->highlightSource(this->eipLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightSource(this->eipLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
     else
     {
-        this->highlightDest(this->eipLabel->getPosition() + RegisterBlock::SelectorRegOffset);
+        this->highlightDest(this->eipLabel->getPosition() + RegisterBlockSigned::SelectorRegOffset);
     }
 }
 
-void RegisterBlock::highlightEaxPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEaxPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->eaxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->eaxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->eaxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->eaxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEbxPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEbxPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ebxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->ebxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->ebxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->ebxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEcxPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEcxPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ecxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->ecxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->ecxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->ecxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEdxPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEdxPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->edxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->edxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->edxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->edxPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEdiPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEdiPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ediPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->ediPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->ediPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->ediPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEsiPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEsiPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->esiPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->esiPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->esiPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->esiPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEbpPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEbpPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->ebpPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->ebpPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->ebpPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->ebpPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEspPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEspPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->espPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->espPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->espPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->espPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::highlightEipPtr(bool isDest, int offset)
+void RegisterBlockSigned::highlightEipPtr(bool isDest, int offset)
 {
     if (!isDest)
     {
-        this->highlightSource(this->eipPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightSource(this->eipPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
     else
     {
-        this->highlightDest(this->eipPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlock::RegisterPtrSpacing));
+        this->highlightDest(this->eipPtrNode->getPosition() + Vec2(0.0f, float(offset) * RegisterBlockSigned::RegisterPtrSpacing));
     }
 }
 
-void RegisterBlock::initEax(unsigned long long eax, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEax(long long eax, std::vector<int> values)
 {
     if (!this->eax.initialized)
     {
@@ -489,7 +489,7 @@ void RegisterBlock::initEax(unsigned long long eax, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEbx(unsigned long long ebx, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEbx(long long ebx, std::vector<int> values)
 {
     if (!this->ebx.initialized)
     {
@@ -509,7 +509,7 @@ void RegisterBlock::initEbx(unsigned long long ebx, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEcx(unsigned long long ecx, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEcx(long long ecx, std::vector<int> values)
 {
     if (!this->ecx.initialized)
     {
@@ -529,7 +529,7 @@ void RegisterBlock::initEcx(unsigned long long ecx, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEdx(unsigned long long edx, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEdx(long long edx, std::vector<int> values)
 {
     if (!this->edx.initialized)
     {
@@ -549,7 +549,7 @@ void RegisterBlock::initEdx(unsigned long long edx, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEdi(unsigned long long edi, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEdi(long long edi, std::vector<int> values)
 {
     if (!this->edi.initialized)
     {
@@ -569,7 +569,7 @@ void RegisterBlock::initEdi(unsigned long long edi, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEsi(unsigned long long esi, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEsi(long long esi, std::vector<int> values)
 {
     if (!this->esi.initialized)
     {
@@ -589,7 +589,7 @@ void RegisterBlock::initEsi(unsigned long long esi, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEbp(unsigned long long ebp, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEbp(long long ebp, std::vector<int> values)
 {
     if (!this->ebp.initialized)
     {
@@ -609,7 +609,7 @@ void RegisterBlock::initEbp(unsigned long long ebp, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEsp(unsigned long long esp, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEsp(long long esp, std::vector<int> values)
 {
     if (!this->esp.initialized)
     {
@@ -629,7 +629,7 @@ void RegisterBlock::initEsp(unsigned long long esp, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::initEip(unsigned long long eip, std::vector<unsigned int> values)
+void RegisterBlockSigned::initEip(long long eip, std::vector<int> values)
 {
     if (!this->eip.initialized)
     {
@@ -649,223 +649,223 @@ void RegisterBlock::initEip(unsigned long long eip, std::vector<unsigned int> va
     }
 }
 
-void RegisterBlock::setEaxPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEaxPtr(long long value, int offset)
 {
     this->eax.currentValues[offset] = value;
     this->eaxPtrStrings[offset]->setString(std::to_string(this->eax.currentValues[offset]));
     this->eaxPtrLabels[offset]->setTextColor((this->eax.currentValues[offset] == this->eax.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEbxPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEbxPtr(long long value, int offset)
 {
     this->ebx.currentValues[offset] = value;
     this->ebxPtrStrings[offset]->setString(std::to_string(this->ebx.currentValues[offset]));
     this->ebxPtrLabels[offset]->setTextColor((this->ebx.currentValues[offset] == this->ebx.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEcxPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEcxPtr(long long value, int offset)
 {
     this->ecx.currentValues[offset] = value;
     this->ecxPtrStrings[offset]->setString(std::to_string(this->ecx.currentValues[offset]));
     this->ecxPtrLabels[offset]->setTextColor((this->ecx.currentValues[offset] == this->ecx.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEdxPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEdxPtr(long long value, int offset)
 {
     this->edx.currentValues[offset] = value;
     this->edxPtrStrings[offset]->setString(std::to_string(this->edx.currentValues[offset]));
     this->edxPtrLabels[offset]->setTextColor((this->edx.currentValues[offset] == this->edx.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEdiPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEdiPtr(long long value, int offset)
 {
     this->edi.currentValues[offset] = value;
     this->ediPtrStrings[offset]->setString(std::to_string(this->edi.currentValues[offset]));
     this->ediPtrLabels[offset]->setTextColor((this->edi.currentValues[offset] == this->edi.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEsiPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEsiPtr(long long value, int offset)
 {
     this->esi.currentValues[offset] = value;
     this->esiPtrStrings[offset]->setString(std::to_string(this->esi.currentValues[offset]));
     this->esiPtrLabels[offset]->setTextColor((this->esi.currentValues[offset] == this->esi.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEbpPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEbpPtr(long long value, int offset)
 {
     this->ebp.currentValues[offset] = value;
     this->ebpPtrStrings[offset]->setString(std::to_string(this->ebp.currentValues[offset]));
     this->ebpPtrLabels[offset]->setTextColor((this->ebp.currentValues[offset] == this->ebp.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEspPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEspPtr(long long value, int offset)
 {
     this->esp.currentValues[offset] = value;
     this->espPtrStrings[offset]->setString(std::to_string(this->esp.currentValues[offset]));
     this->espPtrLabels[offset]->setTextColor((this->esp.currentValues[offset] == this->esp.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEipPtr(unsigned long long value, int offset)
+void RegisterBlockSigned::setEipPtr(long long value, int offset)
 {
     this->eip.currentValues[offset] = value;
     this->eipPtrStrings[offset]->setString(std::to_string(this->eip.currentValues[offset]));
     this->eipPtrLabels[offset]->setTextColor((this->eip.currentValues[offset] == this->eip.initialValues[offset]) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEax(unsigned long long eax)
+void RegisterBlockSigned::setEax(long long eax)
 {
     this->eax.currentValue = eax;
     this->eaxString->setString(std::to_string(this->eax.currentValue));
     this->eaxLabel->setTextColor((this->eax.currentValue == this->eax.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEbx(unsigned long long ebx)
+void RegisterBlockSigned::setEbx(long long ebx)
 {
     this->ebx.currentValue = ebx;
     this->ebxString->setString(std::to_string(this->ebx.currentValue));
     this->ebxLabel->setTextColor((this->ebx.currentValue == this->ebx.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEcx(unsigned long long ecx)
+void RegisterBlockSigned::setEcx(long long ecx)
 {
     this->ecx.currentValue = ecx;
     this->ecxString->setString(std::to_string(this->ecx.currentValue));
     this->ecxLabel->setTextColor((this->ecx.currentValue == this->ecx.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEdx(unsigned long long edx)
+void RegisterBlockSigned::setEdx(long long edx)
 {
     this->edx.currentValue = edx;
     this->edxString->setString(std::to_string(this->edx.currentValue));
     this->edxLabel->setTextColor((this->edx.currentValue == this->edx.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEdi(unsigned long long edi)
+void RegisterBlockSigned::setEdi(long long edi)
 {
     this->edi.currentValue = edi;
     this->ediString->setString(std::to_string(this->edi.currentValue));
     this->ediLabel->setTextColor((this->edi.currentValue == this->edi.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEsi(unsigned long long esi)
+void RegisterBlockSigned::setEsi(long long esi)
 {
     this->esi.currentValue = esi;
     this->esiString->setString(std::to_string(this->esi.currentValue));
     this->esiLabel->setTextColor((this->esi.currentValue == this->esi.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEbp(unsigned long long ebp)
+void RegisterBlockSigned::setEbp(long long ebp)
 {
     this->ebp.currentValue = ebp;
     this->ebpString->setString(std::to_string(this->ebp.currentValue));
     this->ebpLabel->setTextColor((this->ebp.currentValue == this->ebp.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEsp(unsigned long long esp)
+void RegisterBlockSigned::setEsp(long long esp)
 {
     this->esp.currentValue = esp;
     this->espString->setString(std::to_string(this->esp.currentValue));
     this->espLabel->setTextColor((this->esp.currentValue == this->esp.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-void RegisterBlock::setEip(unsigned long long eip)
+void RegisterBlockSigned::setEip(long long eip)
 {
     this->eip.currentValue = eip;
     this->eipString->setString(std::to_string(this->eip.currentValue));
     this->eipLabel->setTextColor((this->eip.currentValue == this->eip.initialValue) ? LexiconPage::TextColor : LexiconPage::TextColorChanged);
 }
 
-unsigned long long RegisterBlock::getEax()
+long long RegisterBlockSigned::getEax()
 {
     return this->eax.currentValue;
 }
 
-unsigned long long RegisterBlock::getEbx()
+long long RegisterBlockSigned::getEbx()
 {
     return this->ebx.currentValue;
 }
 
-unsigned long long RegisterBlock::getEcx()
+long long RegisterBlockSigned::getEcx()
 {
     return this->ecx.currentValue;
 }
 
-unsigned long long RegisterBlock::getEdx()
+long long RegisterBlockSigned::getEdx()
 {
     return this->edx.currentValue;
 }
 
-unsigned long long RegisterBlock::getEdi()
+long long RegisterBlockSigned::getEdi()
 {
     return this->edi.currentValue;
 }
 
-unsigned long long RegisterBlock::getEsi()
+long long RegisterBlockSigned::getEsi()
 {
     return this->esi.currentValue;
 }
 
-unsigned long long RegisterBlock::getEbp()
+long long RegisterBlockSigned::getEbp()
 {
     return this->ebp.currentValue;
 }
 
-unsigned long long RegisterBlock::getEsp()
+long long RegisterBlockSigned::getEsp()
 {
     return this->esp.currentValue;
 }
 
-unsigned long long RegisterBlock::getEip()
+long long RegisterBlockSigned::getEip()
 {
     return this->eip.currentValue;
 }
 
-unsigned long long RegisterBlock::getEaxPtr(int offset)
+long long RegisterBlockSigned::getEaxPtr(int offset)
 {
     return this->eax.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEbxPtr(int offset)
+long long RegisterBlockSigned::getEbxPtr(int offset)
 {
     return this->ebx.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEcxPtr(int offset)
+long long RegisterBlockSigned::getEcxPtr(int offset)
 {
     return this->ecx.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEdxPtr(int offset)
+long long RegisterBlockSigned::getEdxPtr(int offset)
 {
     return this->edx.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEdiPtr(int offset)
+long long RegisterBlockSigned::getEdiPtr(int offset)
 {
     return this->edi.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEsiPtr(int offset)
+long long RegisterBlockSigned::getEsiPtr(int offset)
 {
     return this->esi.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEbpPtr(int offset)
+long long RegisterBlockSigned::getEbpPtr(int offset)
 {
     return this->ebp.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEspPtr(int offset)
+long long RegisterBlockSigned::getEspPtr(int offset)
 {
     return this->esp.currentValues[offset];
 }
 
-unsigned long long RegisterBlock::getEipPtr(int offset)
+long long RegisterBlockSigned::getEipPtr(int offset)
 {
     return this->eip.currentValues[offset];
 }
 
-void RegisterBlock::addToData(int value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
+void RegisterBlockSigned::addToData(int value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
 {
     ConstantString* str = ConstantString::create(std::to_string(value));
     LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, str);
@@ -875,14 +875,14 @@ void RegisterBlock::addToData(int value, int index, Node* node, std::vector<Cons
     {
         Sprite* arrow = Sprite::create(UIResources::Menus_LexiconMenu_Arrow);
 
-        arrow->setPosition(Vec2(-124.0f, RegisterBlock::RegisterPtrSpacing * index));
+        arrow->setPosition(Vec2(-124.0f, RegisterBlockSigned::RegisterPtrSpacing * index));
         arrow->setAnchorPoint(Vec2(0.0f, 0.5f));
         
         node->addChild(arrow);
     }
 
-    label->setPosition(Vec2(8.0f, RegisterBlock::RegisterPtrSpacing * index));
-    frame->setPosition(Vec2(0.0f, RegisterBlock::RegisterPtrSpacing * index));
+    label->setPosition(Vec2(8.0f, RegisterBlockSigned::RegisterPtrSpacing * index));
+    frame->setPosition(Vec2(0.0f, RegisterBlockSigned::RegisterPtrSpacing * index));
     label->setAnchorPoint(Vec2(0.0f, 0.5f));
     frame->setAnchorPoint(Vec2(0.0f, 0.5f));
 
