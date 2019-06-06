@@ -170,12 +170,13 @@ void PushExamplesPage::initializeListeners()
 	this->pushButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->stackBlock->push(this->registerBlock->getEcx());
+		this->registerBlock->setEsp(this->registerBlock->getEsp() + sizeof(void*));
 	});
 
 	this->pushButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEcx(true);
-		this->stackBlock->highlightTop();
+		this->stackBlock->highlightTopPlus1();
 	});
 
 	this->pushButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
@@ -187,12 +188,13 @@ void PushExamplesPage::initializeListeners()
 	this->pushPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->stackBlock->push(this->registerBlock->getEbxPtr(0));
+		this->registerBlock->setEsp(this->registerBlock->getEsp() + sizeof(void*));
 	});
 
 	this->pushPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEbxPtr(true, 0);
-		this->stackBlock->highlightTop();
+		this->stackBlock->highlightTopPlus1();
 	});
 
 	this->pushPtrButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
@@ -204,12 +206,13 @@ void PushExamplesPage::initializeListeners()
 	this->pushPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->stackBlock->push(this->registerBlock->getEsiPtr(3));
+		this->registerBlock->setEsp(this->registerBlock->getEsp() + sizeof(void*));
 	});
 
 	this->pushPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEsiPtr(true, 3);
-		this->stackBlock->highlightTop();
+		this->stackBlock->highlightTopPlus1();
 	});
 
 	this->pushPtrOffsetButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
@@ -223,13 +226,6 @@ void PushExamplesPage::initializeListeners()
 void PushExamplesPage::resetState()
 {
 	this->stackBlock->clear();
-	this->stackBlock->push(24);
-	this->stackBlock->push(1024);
-	this->stackBlock->push(256);
-	this->stackBlock->push(0);
-	this->stackBlock->push(65536);
-	this->stackBlock->push(92);
-	this->stackBlock->push(1);
 
 	this->registerBlock->initEax(420);
 	this->registerBlock->initEbx(0x400F000, { 10 });

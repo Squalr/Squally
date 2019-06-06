@@ -102,6 +102,15 @@ void StackBlock::highlightTop()
     this->stackSelector->setPosition(this->labels[index]->getPosition() - Vec2(22.0f, 0.0f));
 }
 
+void StackBlock::highlightTopPlus1()
+{
+    int index = this->values.size() <= 0 ? 0 : (this->values.size());
+    index = index == StackBlock::StackSize ? (index - 1) : index;
+
+    this->stackSelector->setOpacity(255);
+    this->stackSelector->setPosition(this->labels[index]->getPosition() - Vec2(22.0f, 0.0f));
+}
+
 void StackBlock::clear()
 {
     while(this->values.size() > 0)

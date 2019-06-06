@@ -16,6 +16,7 @@ public:
 	static StackBlock* create();
 
 	void clearHighlights();
+	void highlightTopPlus1();
 	void highlightTop();
 	void clear();
 	void push(unsigned long long value);
