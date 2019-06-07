@@ -409,8 +409,19 @@ bool PlatformerEntity::isOnGround()
 
 void PlatformerEntity::initializeCollisionEvents()
 {
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
+		return CollisionObject::CollisionResult::CollideWithPhysics;
+	});
+
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	{
+		// No collision when moving upwards (unless we're already standing on it)
+		if (this->movementCollision->getVelocity().y > 0.0f)
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 

@@ -148,8 +148,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 	return result;
 }
 
-
-std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints)
+std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<cocos2d::Vec2>& holePoints)
 {
 	std::vector<Triangle> triangles = std::vector<Triangle>();
 
@@ -177,6 +176,19 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 
 	// Add the polyline for the edge. This will consume all points added so far.
 	MPE_PolyAddEdge(&polyContext);
+
+	if (!holePoints.empty())
+	{
+		MPEPolyPoint* holes = MPE_PolyPushPointArray(&polyContext, holePoints.size());
+
+		for (int index = 0; index < holePoints.size(); index++)
+		{
+			holes[index].X = holePoints[index].x;
+			holes[index].Y = holePoints[index].y;
+		}
+
+		MPE_PolyAddHole(&polyContext);
+	}
 
 	// Triangulate the shape
 	MPE_PolyTriangulate(&polyContext);

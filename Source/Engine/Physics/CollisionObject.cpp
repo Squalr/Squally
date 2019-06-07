@@ -287,6 +287,11 @@ std::set<CollisionObject*> CollisionObject::getCurrentCollisions()
 	return this->currentCollisions;
 }
 
+bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
+{
+	return this->currentCollisions.find(collisionObject) != this->currentCollisions.end();
+}
+
 void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 {
 	if (this->physicsBody != nullptr)
