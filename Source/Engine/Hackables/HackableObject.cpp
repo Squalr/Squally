@@ -254,11 +254,11 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 
 	if (hasHackableCode)
 	{
-		this->removeChild(hackableCode);
-
 		hackableCode->restoreState();
 
 		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
 		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
+
+		this->removeChild(hackableCode);
 	}
 }
