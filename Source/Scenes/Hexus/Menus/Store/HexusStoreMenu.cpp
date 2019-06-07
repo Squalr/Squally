@@ -29,6 +29,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/CardStorage.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/ObjectResources.h"
@@ -121,6 +122,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 
 	this->backdrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+	this->helpMenuComponent = HelpMenuComponent::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->errorSound = Sound::create(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
 	this->purchaseSound = Sound::create(SoundResources::Item_Purchase__1_);
@@ -248,7 +250,10 @@ HexusStoreMenu::HexusStoreMenu()
 	this->addChild(this->cardPreview);
 	this->addChild(this->chosenCardsNode);
 	this->addChild(this->backdrop);
+	this->addChild(this->helpMenuComponent);
 	this->addChild(this->confirmationMenu);
+	this->addChild(this->errorSound);
+	this->addChild(this->purchaseSound);
 
 	for (auto it = this->binaryCards.begin(); it != this->binaryCards.end(); it++)
 	{
@@ -301,6 +306,20 @@ void HexusStoreMenu::initializeListeners()
 	{
 		GlobalDirector::loadScene(HexusStoreMenu::instance);
 	}));
+
+	this->cardPreview->setHelpClickCallback([=](Card* card)
+	{
+		this->backdrop->setVisible(true);
+		this->helpMenuComponent->openMenu(card);
+		GameUtils::focus(this->helpMenuComponent);
+	});
+
+	this->helpMenuComponent->setExitCallback([=]()
+	{
+		this->backdrop->setVisible(false);
+		this->helpMenuComponent->setVisible(false);
+		GameUtils::focus(this);
+	});
 
 	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
@@ -590,7 +609,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	
-	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
+	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
 
 	priceLabel->setStringReplacementVariables(priceString);
 
