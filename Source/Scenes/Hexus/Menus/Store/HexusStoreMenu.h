@@ -19,6 +19,7 @@ class ConstantString;
 class ClickableNode;
 class ClickableTextNode;
 class ConfirmationMenu;
+class HelpMenuComponent;
 class LocalizedLabel;
 class MenuCard;
 class ScrollPane;
@@ -85,6 +86,7 @@ private:
 	CardPreview* cardPreview;
 	cocos2d::Node* chosenCardsNode;
 	cocos2d::LayerColor* backdrop;
+	HelpMenuComponent* helpMenuComponent;
 	ConfirmationMenu* confirmationMenu;
 	Sound* errorSound;
 	Sound* purchaseSound;
