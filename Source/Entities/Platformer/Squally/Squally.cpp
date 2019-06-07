@@ -11,8 +11,10 @@
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
+#include "Engine/Input/MouseState.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
@@ -205,6 +207,9 @@ void Squally::update(float dt)
 	{
 		return;
 	}
+
+	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->animationNode).origin;
+	//// this->animationNode->setFlippedX(squallyPosition.x > MouseState::getMousePosition().x);
 
 	this->movement = Vec2::ZERO;
 

@@ -63,6 +63,7 @@ public:
 	void rebuildTerrain();
 
 	static std::string MapKeyTypeTexture;
+	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTerrain;
 	static std::string MapKeyCollisionDisabled;
 
@@ -89,7 +90,8 @@ private:
 
 	std::vector<cocos2d::Vec2> points;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
-	std::vector<AlgoUtils::Triangle> triangles;
+	std::vector<AlgoUtils::Triangle> textureTriangles;
+	std::vector<AlgoUtils::Triangle> collisionTriangles;
 
 	cocos2d::Node* collisionNode;
 	cocos2d::Node* infillTexturesNode;
@@ -105,6 +107,7 @@ private:
 
 	static const float ShadowDistance;
 	static const float InfillDistance;
+	static const float HollowDistance;
 	static const float TopThreshold;
 	static const float BottomThreshold;
 };
