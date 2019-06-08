@@ -17,6 +17,13 @@ public:
 			coords[1] = coordB;
 			coords[2] = coordC;
 		}
+
+		Triangle()
+		{
+			coords[0] = cocos2d::Vec2::ZERO;
+			coords[1] = cocos2d::Vec2::ZERO;
+			coords[2] = cocos2d::Vec2::ZERO;
+		}
 	};
 
 	static cocos2d::Vec3 computeArcVelocity(cocos2d::Vec3 source, cocos2d::Vec3 destination, cocos2d::Vec3 acceleration, cocos2d::Vec3 time);
@@ -25,6 +32,8 @@ public:
 	
 	static std::vector<Triangle> trianglefyPolygon(const std::vector<cocos2d::Vec2>& polygonPoints, const std::vector<cocos2d::Vec2>& holePoints = { });
 	static bool isPointInTriangle(const Triangle& triangle, cocos2d::Vec2 point);
+	static cocos2d::Vec2 getLineIntersectionPoint(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentA, std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentB);
+	static bool doSegmentsIntersect(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentA, std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentB);
 	static std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>
 			buildSegmentsFromPoints(const std::vector<cocos2d::Vec2>& points);
 	static cocos2d::Rect getPolygonRect(const std::vector<cocos2d::Vec2>& points);

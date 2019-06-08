@@ -6,8 +6,6 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 
-class CollisionObject;
-
 class TerrainObject : public HackableObject
 {
 public:
@@ -75,6 +73,7 @@ private:
 	virtual ~TerrainObject();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
@@ -95,7 +94,6 @@ private:
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> collisionTriangles;
-	std::vector<std::tuple<AlgoUtils::Triangle, CollisionObject*>> collisionObjects;
 
 	cocos2d::Node* collisionNode;
 	cocos2d::Node* infillTexturesNode;

@@ -190,7 +190,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 
 	// Create a special hud_target layer for top-level display items
 	deserializedLayers.push_back(SerializableLayer::create({ { SerializableLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target", { }));
-	
+
 	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
 	instance->autorelease();
