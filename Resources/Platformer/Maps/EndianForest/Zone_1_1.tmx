@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="56" nextobjectid="646">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="56" nextobjectid="647">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -131,7 +131,7 @@
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polyline points="0,0 1588.05,-33.8278 1906.77,-64.4287 2097.61,12.4271 2319.07,-24.8541 2872.7,0 3054.64,478.052 2897.2,1059.33 2355.97,1255.13 549.771,1264.53 -6.6318,929.681 0,360.386"/>
+   <polygon points="0,0 1588.05,-33.8278 1906.77,-64.4287 2097.61,12.4271 2319.07,-24.8541 2872.7,0 3054.64,478.052 2897.2,1059.33 2355.97,1255.13 549.771,1264.53 -6.6318,929.681 0,360.386"/>
   </object>
   <object id="638" name="fly-bot" type="entity" x="1100.09" y="4528.9" width="78.7879" height="88">
    <properties>
@@ -178,6 +178,15 @@
     <property name="args" value="0"/>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_1_1"/>
+   </properties>
+  </object>
+  <object id="646" name="orc-warrior" type="entity" x="738.621" y="3465.89" width="128" height="128">
+   <properties>
+    <property name="ally-1" value=""/>
+    <property name="ally-2" value=""/>
+    <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
+    <property name="battle-map" value="EndianForest/BattleGrounds"/>
+    <property name="event" value="door-open"/>
    </properties>
   </object>
  </objectgroup>

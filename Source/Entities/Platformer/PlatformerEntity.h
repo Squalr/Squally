@@ -121,6 +121,8 @@ protected:
 private:
 	typedef HackableObject super;
 
+	cocos2d::Node* platformTether;
+
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
 };

@@ -55,7 +55,6 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
-	this->collisionObjects = std::vector<std::tuple<AlgoUtils::Triangle, CollisionObject*>>();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -94,6 +93,14 @@ void TerrainObject::onEnter()
 
 	// Should get called right after this is terrain is added to the map
 	TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+}
+
+void TerrainObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+	
+	// This gets built as a deferred step since we may be waiting on masking until this point
+	this->buildCollision();
 }
 
 void TerrainObject::onDeveloperModeEnable()
@@ -147,7 +154,6 @@ void TerrainObject::rebuildTerrain()
 {
 	this->debugNode->removeAllChildren();
 
-	this->buildCollision();
 	this->buildInnerTextures();
 	this->buildInfill(Color4B(11, 30, 39, 255));
 	this->buildSurfaceShadow();
@@ -170,7 +176,7 @@ void TerrainObject::buildCollision()
 
 	std::string deserializedCollisionName = this->properties.at(SerializableObject::MapKeyName).asString();
 
-	// Create terrain collision as a series of triangles -- the other option is 1 giant EdgePolgyon, but this lacks internal collision
+	// Create terrain collision as a series of triangles
 	for (auto it = this->collisionTriangles.begin(); it != this->collisionTriangles.end(); it++)
 	{
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
@@ -178,7 +184,6 @@ void TerrainObject::buildCollision()
 		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, material);
 		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
 
-		this->collisionObjects.push_back(std::tuple<AlgoUtils::Triangle, CollisionObject*>(*it, collisionObject));
 		this->collisionNode->addChild(collisionObject);
 	}
 }
@@ -535,12 +540,13 @@ void TerrainObject::buildSurfaceTextures()
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
-	this->collisionObjects.erase(std::remove_if(this->collisionObjects.begin(), this->collisionObjects.end(),
-		[=](const std::tuple<AlgoUtils::Triangle, CollisionObject*> collisionMap)
+	// Remove all collision boxes that are completely eclipsed
+	this->collisionTriangles.erase(std::remove_if(this->collisionTriangles.begin(), this->collisionTriangles.end(),
+		[=](const AlgoUtils::Triangle& triangleSrc)
 		{
-			AlgoUtils::Triangle triangle = std::get<0>(collisionMap);
-			CollisionObject* collisionObject = std::get<1>(collisionMap);
+			AlgoUtils::Triangle triangle = triangleSrc;
 			bool isEclipsed[3] = { false, false, false };
+			AlgoUtils::Triangle intersectTriangles[3] = { AlgoUtils::Triangle(), AlgoUtils::Triangle(), AlgoUtils::Triangle() };
 
 			triangle.coords[0].x += this->getPositionX();
 			triangle.coords[1].x += this->getPositionX();
@@ -565,17 +571,60 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 				isEclipsed[2] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[2]);
 			}
 
-			// Currently this only masks collision boxes that are completely eclipsed. In the future, we probably want to 
-			// extend this capability to resize partially eclipsed polgyons
 			if (isEclipsed[0] && isEclipsed[1] && isEclipsed[2])
 			{
-				this->collisionNode->removeChild(collisionObject);
 				return true;
 			}
 
 			return false;
-		}), this->collisionObjects.end()
+		}), this->collisionTriangles.end()
 	);
+
+	// Step 2: Resize partially eclipsed collision boxes
+	for (auto it = this->collisionTriangles.begin(); it != this->collisionTriangles.end(); it++)
+	{
+		AlgoUtils::Triangle triangle = *it;
+
+		triangle.coords[0].x += this->getPositionX();
+		triangle.coords[1].x += this->getPositionX();
+		triangle.coords[2].x += this->getPositionX();
+		triangle.coords[0].y += this->getPositionY();
+		triangle.coords[1].y += this->getPositionY();
+		triangle.coords[2].y += this->getPositionY();
+
+		std::tuple<Vec2, Vec2> segmentA = std::tuple<Vec2, Vec2>(triangle.coords[0], triangle.coords[1]);
+		std::tuple<Vec2, Vec2> segmentB = std::tuple<Vec2, Vec2>(triangle.coords[1], triangle.coords[2]);
+		std::tuple<Vec2, Vec2> segmentC = std::tuple<Vec2, Vec2>(triangle.coords[2], triangle.coords[0]);
+
+		// Check if intersecting with any of the edge segements
+		for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
+		{
+			cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
+			cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
+
+			p1.x += other->getPositionX();
+			p1.y += other->getPositionY();
+			p2.x += other->getPositionX();
+			p2.y += other->getPositionY();
+
+			std::tuple<Vec2, Vec2> adjustedSegment = std::tuple<Vec2, Vec2>(p1, p2);
+
+			if (AlgoUtils::doSegmentsIntersect(segmentA, adjustedSegment))
+			{
+				
+			}
+
+			if (AlgoUtils::doSegmentsIntersect(segmentB, adjustedSegment))
+			{
+				
+			}
+
+			if (AlgoUtils::doSegmentsIntersect(segmentC, adjustedSegment))
+			{
+				
+			}
+		}
+	}
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)
