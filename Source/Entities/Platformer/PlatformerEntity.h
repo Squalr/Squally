@@ -95,6 +95,8 @@ protected:
 	ControlState controlState;
 
 	bool isOnGround();
+	bool isStandingOnSolid();
+	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
 	bool isCinimaticHijacked;
 	bool isPlatformerDisabled;

@@ -6,6 +6,8 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 
+class CollisionObject;
+
 class TerrainObject : public HackableObject
 {
 public:
@@ -81,6 +83,7 @@ private:
 	void buildInfill(cocos2d::Color4B infillColor);
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
+	void maskAgainstOther(TerrainObject* other);
 	bool isTopAngle(float normalAngle);
 	bool isBottomAngle(float normalAngle);
 	bool isLeftAngle(float normalAngle);
@@ -92,6 +95,7 @@ private:
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> collisionTriangles;
+	std::vector<std::tuple<AlgoUtils::Triangle, CollisionObject*>> collisionObjects;
 
 	cocos2d::Node* collisionNode;
 	cocos2d::Node* infillTexturesNode;

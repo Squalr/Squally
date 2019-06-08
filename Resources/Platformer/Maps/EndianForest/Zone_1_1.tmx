@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="55" nextobjectid="642">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="56" nextobjectid="646">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -85,6 +85,25 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="55" name="terrain 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="642" name="pass-through" type="terrain" x="1679.84" y="4886.36">
+   <properties>
+    <property name="is-hollow" type="bool" value="true"/>
+    <property name="texture" value="blue-grass"/>
+   </properties>
+   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 2880.43,-627.47 3740.12,-597.826 4446.64,-805.336 5706.52,-918.972 6665.02,-410.079 6763.83,113.636 6501.98,1116.6 4960.47,1595.85 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
+  </object>
+  <object id="645" name="pass-through" type="terrain" x="3808.35" y="4750.2">
+   <properties>
+    <property name="is-hollow" type="bool" value="true"/>
+    <property name="texture" value="blue-grass"/>
+   </properties>
+   <polygon points="0,0 -417.69,-343.98 -720.721,-597.871 -1277.64,-917.281 -1949.22,-1122.03 -2669.94,-1122.03 -3988.53,-1081.08 -4422.6,-262.08 -4365.27,1081.08 -3169.53,2063.88 -360.36,1449.63"/>
+  </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
