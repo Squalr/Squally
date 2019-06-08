@@ -7,10 +7,13 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 #include "cocos/renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -52,6 +55,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
+	this->collisionObjects = std::vector<std::tuple<AlgoUtils::Triangle, CollisionObject*>>();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -87,6 +91,9 @@ TerrainObject::~TerrainObject()
 void TerrainObject::onEnter()
 {
 	super::onEnter();
+
+	// Should get called right after this is terrain is added to the map
+	TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
 }
 
 void TerrainObject::onDeveloperModeEnable()
@@ -102,6 +109,20 @@ void TerrainObject::onDeveloperModeDisable()
 void TerrainObject::initializeListeners()
 {
 	super::initializeListeners();
+
+	// Hollow terrain should listen for other terrain creation to remove any overlapping segments
+	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	{
+		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
+		{
+			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				this->maskAgainstOther(args->newTerrain);
+			}
+		}));
+	}
 }
 
 void TerrainObject::setPoints(std::vector<Vec2> points)
@@ -157,6 +178,7 @@ void TerrainObject::buildCollision()
 		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, material);
 		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
 
+		this->collisionObjects.push_back(std::tuple<AlgoUtils::Triangle, CollisionObject*>(*it, collisionObject));
 		this->collisionNode->addChild(collisionObject);
 	}
 }
@@ -205,6 +227,11 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	this->infillNode->removeAllChildren();
 
 	if (this->textureTriangles.empty())
+	{
+		return;
+	}
+
+	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
 	{
 		return;
 	}
@@ -504,6 +531,51 @@ void TerrainObject::buildSurfaceTextures()
 
 		previousSegment = &segment;
 	}
+}
+
+void TerrainObject::maskAgainstOther(TerrainObject* other)
+{
+	this->collisionObjects.erase(std::remove_if(this->collisionObjects.begin(), this->collisionObjects.end(),
+		[=](const std::tuple<AlgoUtils::Triangle, CollisionObject*> collisionMap)
+		{
+			AlgoUtils::Triangle triangle = std::get<0>(collisionMap);
+			CollisionObject* collisionObject = std::get<1>(collisionMap);
+			bool isEclipsed[3] = { false, false, false };
+
+			triangle.coords[0].x += this->getPositionX();
+			triangle.coords[1].x += this->getPositionX();
+			triangle.coords[2].x += this->getPositionX();
+			triangle.coords[0].y += this->getPositionY();
+			triangle.coords[1].y += this->getPositionY();
+			triangle.coords[2].y += this->getPositionY();
+
+			for (auto it = other->textureTriangles.begin(); it != other->textureTriangles.end(); it++)
+			{
+				AlgoUtils::Triangle otherTriangle = *it;
+
+				otherTriangle.coords[0].x += other->getPositionX();
+				otherTriangle.coords[1].x += other->getPositionX();
+				otherTriangle.coords[2].x += other->getPositionX();
+				otherTriangle.coords[0].y += other->getPositionY();
+				otherTriangle.coords[1].y += other->getPositionY();
+				otherTriangle.coords[2].y += other->getPositionY();
+
+				isEclipsed[0] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[0]);
+				isEclipsed[1] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[1]);
+				isEclipsed[2] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[2]);
+			}
+
+			// Currently this only masks collision boxes that are completely eclipsed. In the future, we probably want to 
+			// extend this capability to resize partially eclipsed polgyons
+			if (isEclipsed[0] && isEclipsed[1] && isEclipsed[2])
+			{
+				this->collisionNode->removeChild(collisionObject);
+				return true;
+			}
+
+			return false;
+		}), this->collisionObjects.end()
+	);
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)

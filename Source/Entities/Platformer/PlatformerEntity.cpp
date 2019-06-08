@@ -407,6 +407,40 @@ bool PlatformerEntity::isOnGround()
 	return (!this->groundCollision->getCurrentCollisions().empty());
 }
 
+bool PlatformerEntity::isStandingOnSolid()
+{
+	std::set<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
+
+	for (auto it = collisions.begin(); it != collisions.end(); it++)
+	{
+		if ((*it)->getCollisionType() == (int)PlatformerCollisionType::Solid)
+		{
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+bool PlatformerEntity::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
+{
+	Node* parent = collisonObject->getParent();
+
+	std::set<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
+
+	for (auto it = collisions.begin(); it != collisions.end(); it++)
+	{
+		// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain triangles)
+		if ((*it)->getParent() != parent &&
+			((*it)->getCollisionType() == (int)PlatformerCollisionType::Solid || (*it)->getCollisionType() == (int)PlatformerCollisionType::PassThrough))
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void PlatformerEntity::initializeCollisionEvents()
 {
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
@@ -416,8 +450,8 @@ void PlatformerEntity::initializeCollisionEvents()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		// No collision when moving upwards (unless we're already standing on it)
-		if (this->movementCollision->getVelocity().y > 0.0f)
+		// No collision when moving upwards
+		if (this->isStandingOnSolid() || this->movementCollision->getVelocity().y > 256.0f)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
