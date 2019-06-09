@@ -43,7 +43,8 @@ PlatformerEntity::PlatformerEntity(
 	Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial,
-	Size movementCollisionSize
+	Size movementCollisionSize,
+	float ghettoGroundCollisionFix
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
@@ -68,9 +69,9 @@ PlatformerEntity::PlatformerEntity(
 		false
 	);
 	this->groundCollision = CollisionObject::create(
-		PhysicsBody::createBox(
-			Size(std::max((size * scale).width - PlatformerEntity::GroundCollisionPadding * 2.0f, 8.0f), 8.0f),
-			PHYSICSBODY_MATERIAL_DEFAULT
+		PlatformerEntity::createCapsulePolygon(
+			Size(std::max((size * scale).width - PlatformerEntity::GroundCollisionPadding * 2.0f, 8.0f), 24.0f),
+			1.0f
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		false,
@@ -100,7 +101,7 @@ PlatformerEntity::PlatformerEntity(
 	this->movementCollision->bindTo(this);
 	this->movementCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, movementSize.height / 2.0f));
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f - PlatformerEntity::GroundCollisionOffset));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f - PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -409,7 +410,7 @@ bool PlatformerEntity::isOnGround()
 
 bool PlatformerEntity::isStandingOnSolid()
 {
-	std::set<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
+	std::vector<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
 
 	for (auto it = collisions.begin(); it != collisions.end(); it++)
 	{
@@ -424,10 +425,11 @@ bool PlatformerEntity::isStandingOnSolid()
 
 bool PlatformerEntity::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
 {
-	Node* parent = collisonObject->getParent();
+	Node* currentCollisonParent = collisonObject->getParent();
 
-	std::set<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
+	std::vector<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
 
+	// Greedy search for the oldest collision. This is likely the object that is the true "ground".
 	for (auto it = collisions.begin(); it != collisions.end(); it++)
 	{
 		switch((*it)->getCollisionType())
@@ -436,9 +438,13 @@ bool PlatformerEntity::isStandingOnSomethingOtherThan(CollisionObject* collisonO
 			case (int)PlatformerCollisionType::PassThrough:
 			{
 				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain triangles)
-				if ((*it)->getParent() != parent)
+				if ((*it)->getParent() != currentCollisonParent)
 				{
 					return true;
+				}
+				else
+				{
+					return false;
 				}
 			}
 			default:
@@ -461,7 +467,7 @@ void PlatformerEntity::initializeCollisionEvents()
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// No collision when moving upwards, or if already on a different platform
-		if (this->isStandingOnSolid() || this->movementCollision->getVelocity().y > 256.0f)
+		if (this->isStandingOnSomethingOtherThan(collisionData.other) || this->movementCollision->getVelocity().y > 540.0f)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}

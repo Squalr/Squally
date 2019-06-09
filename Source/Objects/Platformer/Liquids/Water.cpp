@@ -59,9 +59,9 @@ void Water::initializeListeners()
 	});
 }
 
-void Water::applyWaterForce(std::set<CollisionObject*>* targets, float dt)
+void Water::applyWaterForce(const std::vector<CollisionObject*>& targets, float dt)
 {
-	for (auto it = targets->begin(); it != targets->end(); it++)
+	for (auto it = targets.begin(); it != targets.end(); it++)
 	{
 		(*it)->setVelocity((*it)->getVelocity() + Vec2(0.0f, Water::WaterGravity * dt));
 	}

@@ -24,16 +24,18 @@ const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
 const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
-	cocos2d::ValueMap& properties,
+	ValueMap& properties,
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType, 
-	cocos2d::Size size, 
+	Size size, 
 	float scale,
-	cocos2d::Vec2 collisionOffset,
+	Vec2 collisionOffset,
 	int baseHealth,
-	int baseSpecial)
-	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
+	int baseSpecial,
+	Size movementCollisionSize,
+	float ghettoGroundCollisionFix)
+	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix)
 {
 	this->combatEntityList = std::vector<std::string>();
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);

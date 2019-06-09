@@ -48,7 +48,7 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	this->physicsBody = initPhysicsBody;
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
-	this->currentCollisions = std::set<CollisionObject*>();
+	this->currentCollisions = std::vector<CollisionObject*>();
 	this->physicsEnabled = true;
 	this->bindTarget = nullptr;
 	this->contactUpdateCallback = nullptr;
@@ -130,7 +130,7 @@ void CollisionObject::update(float dt)
 
 	if (this->contactUpdateCallback != nullptr)
 	{
-		this->contactUpdateCallback(&this->currentCollisions, dt);
+		this->contactUpdateCallback(this->currentCollisions, dt);
 	}
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
@@ -199,7 +199,7 @@ void CollisionObject::updateBinds()
 	}
 }
 
-void CollisionObject::setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback)
+void CollisionObject::setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback)
 {
 	this->contactUpdateCallback = contactUpdateCallback;
 }
@@ -282,14 +282,14 @@ CollisionType CollisionObject::getCollisionType()
 	return this->physicsBody == nullptr ? (CollisionType)0 : (CollisionType)this->physicsBody->getCategoryBitmask();
 }
 
-std::set<CollisionObject*> CollisionObject::getCurrentCollisions()
+std::vector<CollisionObject*> CollisionObject::getCurrentCollisions()
 {
 	return this->currentCollisions;
 }
 
 bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
 {
-	return this->currentCollisions.find(collisionObject) != this->currentCollisions.end();
+	return std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionObject) != this->currentCollisions.end();
 }
 
 void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
@@ -362,7 +362,10 @@ bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
 
-	this->currentCollisions.insert(collisionData.other);
+	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
+	{
+		this->currentCollisions.push_back(collisionData.other);
+	}
 
 	return this->runContactEvents(contact, this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
 }
@@ -371,10 +374,9 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
 
-	if (this->currentCollisions.find(collisionData.other) != this->currentCollisions.end())
-	{
-		this->currentCollisions.erase(collisionData.other);
-	}
+	this->currentCollisions.erase(
+		std::remove(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other), this->currentCollisions.end()
+	);
 
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }

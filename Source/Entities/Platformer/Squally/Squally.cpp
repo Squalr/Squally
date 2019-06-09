@@ -53,7 +53,8 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 24.0f),
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial,
-	Size(128.0f, 224.0f))
+	Size(128.0f, 224.0f),
+	24.0f)
 {
 	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();

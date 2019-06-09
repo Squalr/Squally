@@ -67,10 +67,10 @@ public:
 	void setAngularVelocity(float angularVelocity);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
-	std::set<CollisionObject*> getCurrentCollisions();
+	std::vector<CollisionObject*> getCurrentCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
 	virtual void setPhysicsEnabled(bool enabled);
-	virtual void setContactUpdateCallback(std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback);
+	virtual void setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback);
 
 	static const std::string MapKeyTypeCollision;
 	static const float DefaultMaxHorizontalSpeed;
@@ -104,8 +104,8 @@ private:
 	cocos2d::Node* bindTarget;
 	float horizontalDampening;
 	float verticalDampening;
-	std::function<void(std::set<CollisionObject*>* currentCollisions, float dt)> contactUpdateCallback;
-	std::set<CollisionObject*> currentCollisions;
+	std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback;
+	std::vector<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
 };
