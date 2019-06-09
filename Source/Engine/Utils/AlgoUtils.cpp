@@ -224,6 +224,49 @@ bool AlgoUtils::isPointInTriangle(const AlgoUtils::Triangle& triangle, Vec2 poin
 	return true;
 }
 
+bool AlgoUtils::isPointInSegment(const Vec2& point, const std::tuple<Vec2, Vec2>& segment)
+{
+	/*
+	if (point == Vec2::ZERO)
+	{
+		return false;
+	}
+
+	Vec2 a = std::get<0>(segment);
+	Vec2 b = std::get<1>(segment);
+	float crossproduct = (point.y - a.y) * (b.x - a.x) - (point.x - a.x) * (b.y - a.y);
+
+    // compare versus epsilon for floating point values, or != 0 if using integers
+    if (std::abs(crossproduct) > 0.01f)
+	{
+        return false;
+	}
+
+    float dotproduct = (point.x - a.x) * (b.x - a.x) + (point.y - a.y) * (b.y - a.y);
+
+    if (dotproduct < 0.0f)
+	{
+        return false;
+	}
+
+    float squaredlengthba = (b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y);
+
+    if (dotproduct > squaredlengthba)
+	{
+        return false;
+	}
+
+	return true;
+*/
+	Vec2 p1 = std::get<0>(segment);
+	Vec2 p2 = std::get<1>(segment);
+
+	return (point.x >= std::min(p1.x, p2.x) &&
+		point.x <= std::max(p1.x, p2.x) &&
+		point.y >= std::min(p1.y, p2.y) &&
+		point.y <= std::max(p1.y, p2.y));
+}
+
 Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB) 
 {
 	Vec2 a = std::get<0>(segmentA);
@@ -231,17 +274,43 @@ Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::t
 	Vec2 c = std::get<0>(segmentB);
 	Vec2 d = std::get<1>(segmentB);
 
+	auto det = [=](float a, float b, float c, float d)
+	{
+		return a * d - b * c;
+	};
+
+    float detL1 = det(a.x, a.y, b.x, b.y);
+    float detL2 = det(c.x, c.y, d.x, d.y);
+    float x1mx2 = a.x - b.x;
+    float x3mx4 = c.x - d.x;
+    float y1my2 = a.y - b.y;
+    float y3my4 = c.y - d.y;
+
+    float xnom = det(detL1, x1mx2, detL2, x3mx4);
+    float ynom = det(detL1, y1my2, detL2, y3my4);
+    float denom = det(x1mx2, y1my2, x3mx4, y3my4);
+
+    if(denom == 0.0)
+    {
+        return Vec2::ZERO;
+    }
+
+    return Vec2(xnom / denom, ynom / denom);
+	
+	/*
+
+
     // Line AB represented as a1x + b1y = c1 
-    double a1 = b.y - a.y; 
-    double b1 = a.x - b.x; 
-    double c1 = a1 * (a.x) + b1 * (a.y); 
+    float a1 = b.y - a.y; 
+    float b1 = a.x - b.x; 
+    float c1 = a1 * (a.x) + b1 * (a.y); 
   
     // Line CD represented as a2x + b2y = c2 
-    double a2 = d.y - c.y; 
-    double b2 = c.x - d.x; 
-    double c2 = a2 * (c.x) + b2 * (c.y); 
+    float a2 = d.y - c.y; 
+    float b2 = c.x - d.x; 
+    float c2 = a2 * (c.x) + b2 * (c.y); 
   
-    double determinant = a1 * b2 - a2 * b1; 
+    float determinant = a1 * b2 - a2 * b1; 
   
     if (determinant == 0.0) 
     {
@@ -249,15 +318,26 @@ Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::t
     } 
     else
     { 
-        double x = (b2 * c1 - b1 * c2) / determinant; 
-        double y = (a1 * c2 - a2 * c1) / determinant;
+        float x = (b2 * c1 - b1 * c2) / determinant; 
+        float y = (a1 * c2 - a2 * c1) / determinant;
 		
         return Vec2(x, y); 
-    } 
+    }*/
 } 
 
 bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB)
 {
+	Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(segmentA, segmentB);
+
+	if (intersectionPoint != Vec2::ZERO && 
+		AlgoUtils::isPointInSegment(intersectionPoint, segmentA) &&
+		AlgoUtils::isPointInSegment(intersectionPoint, segmentB))
+	{
+		return true;
+	}
+
+	return false;
+
 	// Given three colinear points p, q, r, the function checks if point q lies on line segment 'pr' 
 	auto onSegment = [=](Vec2 p, Vec2 q, Vec2 r) 
 	{ 
