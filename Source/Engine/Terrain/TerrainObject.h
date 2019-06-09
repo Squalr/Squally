@@ -92,8 +92,9 @@ private:
 
 	std::vector<cocos2d::Vec2> points;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
-	std::vector<AlgoUtils::Triangle> collisionTriangles;
+	std::vector<AlgoUtils::Triangle> infillTriangles;
 
 	cocos2d::Node* collisionNode;
 	cocos2d::Node* infillTexturesNode;

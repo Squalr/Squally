@@ -12,8 +12,9 @@ PlatformerFriendly::PlatformerFriendly(
 	Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial,
-	Size movementCollisionSize)
-	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize)
+	Size movementCollisionSize,
+	float ghettoGroundCollisionFix)
+	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix)
 {
 }
 

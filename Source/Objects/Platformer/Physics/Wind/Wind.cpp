@@ -104,11 +104,11 @@ void Wind::update(float dt)
 	this->updateWind(dt);
 }
 
-void Wind::applyWindForce(std::set<CollisionObject*>* targets, float dt)
+void Wind::applyWindForce(const std::vector<CollisionObject*>& targets, float dt)
 {
 	Vec2 thisPosition = GameUtils::getWorldCoords(this);
 
-	for (auto it = targets->begin(); it != targets->end(); it++)
+	for (auto it = targets.begin(); it != targets.end(); it++)
 	{
 		Vec2 targetPosition = GameUtils::getWorldCoords(*it);
 		Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));

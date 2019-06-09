@@ -54,7 +54,9 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
+	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
+	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -136,17 +138,18 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 {
 	this->points = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
+	this->collisionSegments = this->segments;
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 
 	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
 	{
 		std::vector<Vec2> holes = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::HollowDistance);
 
-		this->collisionTriangles = AlgoUtils::trianglefyPolygon(this->points, holes);
+		this->infillTriangles = AlgoUtils::trianglefyPolygon(this->points, holes);
 	}
 	else
 	{
-		this->collisionTriangles = this->textureTriangles;
+		this->infillTriangles = this->textureTriangles;
 	}
 }
 
@@ -176,12 +179,11 @@ void TerrainObject::buildCollision()
 
 	std::string deserializedCollisionName = this->properties.at(SerializableObject::MapKeyName).asString();
 
-	// Create terrain collision as a series of triangles
-	for (auto it = this->collisionTriangles.begin(); it != this->collisionTriangles.end(); it++)
+	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
-		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, material);
+		PhysicsBody* physicsBody = PhysicsBody::createEdgeSegment(std::get<0>(*it), std::get<1>(*it), material, 2.0f);
 		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
 
 		this->collisionNode->addChild(collisionObject);
@@ -541,99 +543,74 @@ void TerrainObject::buildSurfaceTextures()
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
 	// Remove all collision boxes that are completely eclipsed
-	this->collisionTriangles.erase(std::remove_if(this->collisionTriangles.begin(), this->collisionTriangles.end(),
-		[=](const AlgoUtils::Triangle& triangleSrc)
+	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
+		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)
 		{
-			AlgoUtils::Triangle triangle = triangleSrc;
-			bool isEclipsed[3] = { false, false, false };
-			AlgoUtils::Triangle intersectTriangles[3] = { AlgoUtils::Triangle(), AlgoUtils::Triangle(), AlgoUtils::Triangle() };
+			int index = (&segment - &*this->collisionSegments.begin());
 
-			triangle.coords[0] += this->getPosition();
-			triangle.coords[1] += this->getPosition();
-			triangle.coords[2] += this->getPosition();
+			Vec2 pointA = std::get<0>(segment);
+			Vec2 pointB = std::get<1>(segment);
+			bool isEclipsed[2] = { false, false };
+
+			pointA += this->getPosition();
+			pointB += this->getPosition();
 
 			for (auto it = other->textureTriangles.begin(); it != other->textureTriangles.end(); it++)
 			{
-				AlgoUtils::Triangle otherTriangle = *it;
+				AlgoUtils::Triangle triangle = *it;
 
-				otherTriangle.coords[0] += other->getPosition();
-				otherTriangle.coords[1] += other->getPosition();
-				otherTriangle.coords[2] += other->getPosition();
+				triangle.coords[0] += other->getPosition();
+				triangle.coords[1] += other->getPosition();
+				triangle.coords[2] += other->getPosition();
 
-				isEclipsed[0] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[0]);
-				isEclipsed[1] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[1]);
-				isEclipsed[2] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[2]);
+				isEclipsed[0] |= AlgoUtils::isPointInTriangle(triangle, pointA);
+				isEclipsed[1] |= AlgoUtils::isPointInTriangle(triangle, pointB);
+
+				if (isEclipsed[0] && isEclipsed[1])
+				{
+					break;
+				}
 			}
 
-			if (isEclipsed[0] && isEclipsed[1] && isEclipsed[2])
+			if (isEclipsed[0] && isEclipsed[1])
 			{
 				return true;
 			}
+			else if (isEclipsed[0] || isEclipsed[1])
+			{
+				Vec2 eclipsedPoint = isEclipsed[0] ? pointA : pointB;
+				Vec2 anchorPoint = isEclipsed[0] ? pointB : pointA;
+				std::tuple<Vec2, Vec2> eclipsedSegment = std::tuple<Vec2, Vec2>(eclipsedPoint, anchorPoint);
+
+				for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
+				{
+					cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
+					cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
+
+					p1 += other->getPosition();
+					p2 += other->getPosition();
+					
+					std::tuple<Vec2, Vec2> candidateSegment = std::tuple<Vec2, Vec2>(p1, p2);
+
+					if (AlgoUtils::doSegmentsIntersect(eclipsedSegment, candidateSegment))
+					{
+						Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(eclipsedSegment, candidateSegment) - this->getPosition();
+
+						if (isEclipsed[0])
+						{
+							std::get<0>(this->collisionSegments[index]) = intersectionPoint;	
+						}
+						else
+						{
+							std::get<1>(this->collisionSegments[index]) = intersectionPoint;	
+						}
+					}
+				}
+			}
 
 			return false;
-		}), this->collisionTriangles.end()
+		}), this->collisionSegments.end()
 	);
-
-	// Step 2: Resize partially eclipsed collision boxes
-	for (auto it = this->collisionTriangles.begin(); it != this->collisionTriangles.end(); it++)
-	{
-		AlgoUtils::Triangle triangle = *it;
-
-		triangle.coords[0] += this->getPosition();
-		triangle.coords[1] += this->getPosition();
-		triangle.coords[2] += this->getPosition();
-
-		std::tuple<Vec2, Vec2> segmentA = std::tuple<Vec2, Vec2>(triangle.coords[0], triangle.coords[1]);
-		std::tuple<Vec2, Vec2> segmentB = std::tuple<Vec2, Vec2>(triangle.coords[1], triangle.coords[2]);
-		std::tuple<Vec2, Vec2> segmentC = std::tuple<Vec2, Vec2>(triangle.coords[2], triangle.coords[0]);
-
-		// Check if intersecting with any of the edge segements
-		for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
-		{
-			cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
-			cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
-
-			p1 += other->getPosition();
-			p2 += other->getPosition();
-
-			std::tuple<Vec2, Vec2> adjustedSegment = std::tuple<Vec2, Vec2>(p1, p2);
-
-			bool segAIntersects = AlgoUtils::doSegmentsIntersect(segmentA, adjustedSegment);
-			bool segBIntersects = AlgoUtils::doSegmentsIntersect(segmentB, adjustedSegment);
-			bool segCIntersects = AlgoUtils::doSegmentsIntersect(segmentC, adjustedSegment);
-
-			if (segAIntersects && segBIntersects && segCIntersects)
-			{
-			}
-
-			if (segAIntersects && segBIntersects)
-			{
-				// 2 => 0 (segC) is our anchor
-				Vec2 intersectA = AlgoUtils::getLineIntersectionPoint(segmentA, adjustedSegment);
-				Vec2 intersectB = AlgoUtils::getLineIntersectionPoint(segmentB, adjustedSegment);
-
-				// it->coords[1] = (intersectA + intersectB) / 2.0f - this->getPosition();
-			}
-			else if (segBIntersects && segCIntersects)
-			{
-				// 0 => 1 (segA) is our anchor
-				Vec2 intersectB = AlgoUtils::getLineIntersectionPoint(segmentB, adjustedSegment);
-				Vec2 intersectC = AlgoUtils::getLineIntersectionPoint(segmentC, adjustedSegment);
-
-				// it->coords[2] = (intersectB + intersectC) / 2.0f - this->getPosition();
-			}
-			else if (segCIntersects && segAIntersects)
-			{
-				// 1 => 2 (segB) is our anchor
-				Vec2 intersectC = AlgoUtils::getLineIntersectionPoint(segmentC, adjustedSegment);
-				Vec2 intersectA = AlgoUtils::getLineIntersectionPoint(segmentA, adjustedSegment);
-
-				//it->coords[0] = (intersectC + intersectA) / 2.0f - this->getPosition();
-			}
-
-			// Single intersection cases not handled, as this would require splitting triangles and recursing and fuck that
-		}
-	}
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)

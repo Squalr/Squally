@@ -62,7 +62,8 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial,
-		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO);
+		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
+		float ghettoGroundCollisionFix = 0.0f);
 	virtual ~PlatformerEntity();
 
 	enum class ControlState
@@ -120,8 +121,6 @@ protected:
 
 private:
 	typedef HackableObject super;
-
-	cocos2d::Node* platformTether;
 
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;

@@ -24,7 +24,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void applyWaterForce(std::set<CollisionObject*>* targets, float dt);
+	void applyWaterForce(const std::vector<CollisionObject*>& targets, float dt);
 
 private:
 	typedef SerializableObject super;
