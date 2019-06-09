@@ -124,7 +124,7 @@ void TerrainObject::initializeListeners()
 		{
 			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getUserData());
 
-			if (args != nullptr)
+			if (args != nullptr && args->newTerrain != this)
 			{
 				this->maskAgainstOther(args->newTerrain);
 			}
@@ -548,23 +548,17 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 			bool isEclipsed[3] = { false, false, false };
 			AlgoUtils::Triangle intersectTriangles[3] = { AlgoUtils::Triangle(), AlgoUtils::Triangle(), AlgoUtils::Triangle() };
 
-			triangle.coords[0].x += this->getPositionX();
-			triangle.coords[1].x += this->getPositionX();
-			triangle.coords[2].x += this->getPositionX();
-			triangle.coords[0].y += this->getPositionY();
-			triangle.coords[1].y += this->getPositionY();
-			triangle.coords[2].y += this->getPositionY();
+			triangle.coords[0] += this->getPosition();
+			triangle.coords[1] += this->getPosition();
+			triangle.coords[2] += this->getPosition();
 
 			for (auto it = other->textureTriangles.begin(); it != other->textureTriangles.end(); it++)
 			{
 				AlgoUtils::Triangle otherTriangle = *it;
 
-				otherTriangle.coords[0].x += other->getPositionX();
-				otherTriangle.coords[1].x += other->getPositionX();
-				otherTriangle.coords[2].x += other->getPositionX();
-				otherTriangle.coords[0].y += other->getPositionY();
-				otherTriangle.coords[1].y += other->getPositionY();
-				otherTriangle.coords[2].y += other->getPositionY();
+				otherTriangle.coords[0] += other->getPosition();
+				otherTriangle.coords[1] += other->getPosition();
+				otherTriangle.coords[2] += other->getPosition();
 
 				isEclipsed[0] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[0]);
 				isEclipsed[1] |= AlgoUtils::isPointInTriangle(otherTriangle, triangle.coords[1]);
@@ -585,12 +579,9 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		triangle.coords[0].x += this->getPositionX();
-		triangle.coords[1].x += this->getPositionX();
-		triangle.coords[2].x += this->getPositionX();
-		triangle.coords[0].y += this->getPositionY();
-		triangle.coords[1].y += this->getPositionY();
-		triangle.coords[2].y += this->getPositionY();
+		triangle.coords[0] += this->getPosition();
+		triangle.coords[1] += this->getPosition();
+		triangle.coords[2] += this->getPosition();
 
 		std::tuple<Vec2, Vec2> segmentA = std::tuple<Vec2, Vec2>(triangle.coords[0], triangle.coords[1]);
 		std::tuple<Vec2, Vec2> segmentB = std::tuple<Vec2, Vec2>(triangle.coords[1], triangle.coords[2]);
@@ -602,27 +593,45 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 			cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
 			cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
 
-			p1.x += other->getPositionX();
-			p1.y += other->getPositionY();
-			p2.x += other->getPositionX();
-			p2.y += other->getPositionY();
+			p1 += other->getPosition();
+			p2 += other->getPosition();
 
 			std::tuple<Vec2, Vec2> adjustedSegment = std::tuple<Vec2, Vec2>(p1, p2);
 
-			if (AlgoUtils::doSegmentsIntersect(segmentA, adjustedSegment))
+			bool segAIntersects = AlgoUtils::doSegmentsIntersect(segmentA, adjustedSegment);
+			bool segBIntersects = AlgoUtils::doSegmentsIntersect(segmentB, adjustedSegment);
+			bool segCIntersects = AlgoUtils::doSegmentsIntersect(segmentC, adjustedSegment);
+
+			if (segAIntersects && segBIntersects && segCIntersects)
 			{
-				
 			}
 
-			if (AlgoUtils::doSegmentsIntersect(segmentB, adjustedSegment))
+			if (segAIntersects && segBIntersects)
 			{
-				
+				// 2 => 0 (segC) is our anchor
+				Vec2 intersectA = AlgoUtils::getLineIntersectionPoint(segmentA, adjustedSegment);
+				Vec2 intersectB = AlgoUtils::getLineIntersectionPoint(segmentB, adjustedSegment);
+
+				// it->coords[1] = (intersectA + intersectB) / 2.0f - this->getPosition();
+			}
+			else if (segBIntersects && segCIntersects)
+			{
+				// 0 => 1 (segA) is our anchor
+				Vec2 intersectB = AlgoUtils::getLineIntersectionPoint(segmentB, adjustedSegment);
+				Vec2 intersectC = AlgoUtils::getLineIntersectionPoint(segmentC, adjustedSegment);
+
+				// it->coords[2] = (intersectB + intersectC) / 2.0f - this->getPosition();
+			}
+			else if (segCIntersects && segAIntersects)
+			{
+				// 1 => 2 (segB) is our anchor
+				Vec2 intersectC = AlgoUtils::getLineIntersectionPoint(segmentC, adjustedSegment);
+				Vec2 intersectA = AlgoUtils::getLineIntersectionPoint(segmentA, adjustedSegment);
+
+				//it->coords[0] = (intersectC + intersectA) / 2.0f - this->getPosition();
 			}
 
-			if (AlgoUtils::doSegmentsIntersect(segmentC, adjustedSegment))
-			{
-				
-			}
+			// Single intersection cases not handled, as this would require splitting triangles and recursing and fuck that
 		}
 	}
 }
