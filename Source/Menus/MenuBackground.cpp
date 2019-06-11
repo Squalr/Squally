@@ -23,7 +23,7 @@ MenuBackground* MenuBackground::claimInstance()
 	// Free the background from it's parent
 	if (instance->getParent() != nullptr)
 	{
-		GameUtils::changeParent(MenuBackground::menuBackgroundInstance, nullptr);
+		GameUtils::changeParent(MenuBackground::menuBackgroundInstance, nullptr, true);
 	}
 
 	return MenuBackground::menuBackgroundInstance;
