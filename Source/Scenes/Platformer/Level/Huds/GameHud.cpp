@@ -8,8 +8,9 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
+#include "Scenes/Platformer/Level/Huds/Components/IqEqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
@@ -26,21 +27,18 @@ GameHud* GameHud::create()
 
 GameHud::GameHud()
 {
-	this->currencyDisplay = CurrencyDisplay::create();
+	this->iqEqDisplay = IqEqDisplay::create();
 	this->runeBar = RuneBar::create();
 	this->statsBars = StatsBars::create();
-	this->controlsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(""));
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->controlsLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->statsBars->setVisible(false);
 	this->runeBar->setVisible(false);
-	this->currencyDisplay->setVisible(false);
+	this->iqEqDisplay->setVisible(false);
 
 	this->addChild(this->statsBars);
 	this->addChild(this->runeBar);
-	this->addChild(this->currencyDisplay);
-	this->addChild(this->controlsLabel);
+	this->addChild(this->iqEqDisplay);
 }
 
 GameHud::~GameHud()
@@ -59,11 +57,12 @@ void GameHud::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	static const Vec2 offset = Vec2(24.0f, -96.0f);
 	
-	this->statsBars->setPosition(24.0f, visibleSize.height - 64.0f);
-	this->runeBar->setPosition(24.0f + 0.0f, visibleSize.height - 64.0f - 88.0f);
-	this->currencyDisplay->setPosition(24.0f + 112.0f, visibleSize.height - 64.0f - 88.0f);
-	this->controlsLabel->setPosition(24.0f, 24.0f);
+	this->statsBars->setPosition(offset.x, visibleSize.height + offset.y);
+	this->runeBar->setPosition(offset.x + 306.0f, visibleSize.height + offset.y + 36.0f);
+	this->iqEqDisplay->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 32.0f);
 }
 
 void GameHud::initializeListeners()
@@ -76,13 +75,14 @@ void GameHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->getCurrencyDisplay()->setCurrencyInventory(args->entity->getCurrencyInventory());
+
+			this->getIqEqDisplay()->setStatsTarget(static_cast<Squally*>(args->entity));
 			this->getRuneBar()->setStatsTarget(args->entity);
 			this->getStatsBars()->setStatsTarget(args->entity);
 
 			this->statsBars->setVisible(true);
-			//// this->runeBar->setVisible(true);
-			this->currencyDisplay->setVisible(true);
+			this->runeBar->setVisible(true);
+			this->iqEqDisplay->setVisible(true);
 		}
 	}));
 
@@ -92,13 +92,13 @@ void GameHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->getCurrencyDisplay()->setCurrencyInventory(nullptr);
+			this->getIqEqDisplay()->setStatsTarget(nullptr);
 			this->getRuneBar()->setStatsTarget(nullptr);
 			this->getStatsBars()->setStatsTarget(nullptr);
 
 			this->statsBars->setVisible(false);
 			this->runeBar->setVisible(false);
-			this->currencyDisplay->setVisible(false);
+			this->iqEqDisplay->setVisible(false);
 		}
 	}));
 }
@@ -108,9 +108,9 @@ void GameHud::update(float dt)
 	super::update(dt);
 }
 
-CurrencyDisplay* GameHud::getCurrencyDisplay()
+IqEqDisplay* GameHud::getIqEqDisplay()
 {
-	return this->currencyDisplay;
+	return this->iqEqDisplay;
 }
 
 RuneBar* GameHud::getRuneBar()

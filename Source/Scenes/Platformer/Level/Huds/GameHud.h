@@ -2,8 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-class CurrencyDisplay;
-class LocalizedLabel;
+class IqEqDisplay;
 class RuneBar;
 class StatsBars;
 
@@ -12,7 +11,7 @@ class GameHud : public Hud
 public:
 	static GameHud* create();
 
-	CurrencyDisplay* getCurrencyDisplay();
+	IqEqDisplay* getIqEqDisplay();
 	RuneBar* getRuneBar();
 	StatsBars* getStatsBars();
 
@@ -26,8 +25,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	CurrencyDisplay* currencyDisplay;
+	IqEqDisplay* iqEqDisplay;
 	StatsBars* statsBars;
 	RuneBar* runeBar;
-	LocalizedLabel* controlsLabel;
 };
