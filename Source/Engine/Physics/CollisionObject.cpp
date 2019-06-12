@@ -361,7 +361,7 @@ bool CollisionObject::onContactBegin(PhysicsContact &contact)
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
-
+	
 	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
 	{
 		this->currentCollisions.push_back(collisionData.other);

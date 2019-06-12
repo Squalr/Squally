@@ -10,6 +10,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
@@ -23,8 +24,8 @@ const float PlatformerEntity::MoveAcceleration = 5800.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
-const float PlatformerEntity::GroundCollisionPadding = 22.0f;
-const float PlatformerEntity::GroundCollisionOffset = 2.0f;
+const float PlatformerEntity::GroundCollisionPadding = 28.0f;
+const float PlatformerEntity::GroundCollisionOffset = -12.0f;
 const float PlatformerEntity::CapsuleRadius = 8.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
@@ -70,7 +71,7 @@ PlatformerEntity::PlatformerEntity(
 	);
 	this->groundCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(
-			Size(std::max((size * scale).width - PlatformerEntity::GroundCollisionPadding * 2.0f, 8.0f), 24.0f),
+			Size(std::max((size * scale).width - PlatformerEntity::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
 			1.0f
 		),
 		(int)PlatformerCollisionType::GroundDetector,
@@ -101,7 +102,7 @@ PlatformerEntity::PlatformerEntity(
 	this->movementCollision->bindTo(this);
 	this->movementCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, movementSize.height / 2.0f));
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f - PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f + PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -425,20 +426,35 @@ bool PlatformerEntity::isStandingOnSolid()
 
 bool PlatformerEntity::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
 {
-	Node* currentCollisonParent = collisonObject->getParent();
+	Node* currentCollisionGroup = collisonObject->getParent();
+	std::vector<CollisionObject*> groundCollisions = this->groundCollision->getCurrentCollisions();
 
-	std::vector<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
+	// Special case when standing on an intersection -- always collide with the non-owner of that intersection point (the lower platform)
+	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
+	{
+		switch((*it)->getCollisionType())
+		{
+			case (int)EngineCollisionTypes::Intersection:
+			{
+				return currentCollisionGroup == (*it)->getParent();
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
 
-	// Greedy search for the oldest collision. This is likely the object that is the true "ground".
-	for (auto it = collisions.begin(); it != collisions.end(); it++)
+	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
+	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
 	{
 		switch((*it)->getCollisionType())
 		{
 			case (int)PlatformerCollisionType::Solid:
 			case (int)PlatformerCollisionType::PassThrough:
 			{
-				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain triangles)
-				if ((*it)->getParent() != currentCollisonParent)
+				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+				if ((*it)->getParent() != currentCollisionGroup)
 				{
 					return true;
 				}
@@ -466,8 +482,8 @@ void PlatformerEntity::initializeCollisionEvents()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		// No collision when moving upwards, or if already on a different platform
-		if (this->isStandingOnSomethingOtherThan(collisionData.other) || this->movementCollision->getVelocity().y > 540.0f)
+		// No collision when not standing on anything, or if already on a different platform
+		if (this->groundCollision->getCurrentCollisions().empty() || this->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -508,11 +524,16 @@ void PlatformerEntity::initializeCollisionEvents()
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Clear current animation
-		if (!this->isDead())
+		if (!this->isDead() && this->movementCollision->getVelocity().y <= 0.0f)
 		{
 			this->animationNode->playAnimation("Idle");
 		}
 
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
+	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 

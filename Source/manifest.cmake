@@ -2004,6 +2004,7 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/CategoryGroup.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/CollisionDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/CollisionObject.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/EngineCollisionTypes.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/PesudoCollisionObject.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Physics/ProximityObject.h"
     "${CMAKE_CURRENT_LIST_DIR}/Engine/Save/SaveManager.h"

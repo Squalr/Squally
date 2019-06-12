@@ -17,6 +17,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -53,6 +54,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 {
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
+	this->intersectionPoints = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
@@ -185,6 +187,18 @@ void TerrainObject::buildCollision()
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createEdgeSegment(std::get<0>(*it), std::get<1>(*it), material, 2.0f);
 		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
+
+		this->collisionNode->addChild(collisionObject);
+	}
+
+	for (auto it = this->intersectionPoints.begin(); it != this->intersectionPoints.end(); it++)
+	{
+		const float Radius = 32.0f;
+
+		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
+		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
+		PhysicsBody* physicsBody = PhysicsBody::createCircle(Radius, material, *it);
+		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}
@@ -604,6 +618,8 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 						{
 							std::get<1>(this->collisionSegments[index]) = intersectionPoint;	
 						}
+
+						this->intersectionPoints.push_back(intersectionPoint);
 					}
 				}
 			}
