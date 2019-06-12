@@ -30,6 +30,4 @@ private:
 
 	std::vector<cocos2d::Sprite*> emptyRunes;
 	std::vector<cocos2d::Sprite*> filledRunes;
-
-	static const int RuneCount;
 };

@@ -57,6 +57,10 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	24.0f)
 {
 	this->noCombatDuration = 0.0f;
+	this->iq = 0;
+	this->eq = 0;
+	this->iqExperience = 0;
+	this->eqExperience = 0;
 	this->cameraTrackTarget = Node::create();
 	this->leftEyeController = SmartAnimationSequenceNode::create();
 	this->rightEyeController = SmartAnimationSequenceNode::create();
@@ -275,6 +279,10 @@ void Squally::loadState()
 	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
 	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
 	this->setRunes(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getRunes())).asInt());
+	this->setIq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIq, Value(this->getIq())).asInt());
+	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(this->getEq())).asInt());
+	this->setIqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIqExperience, Value(this->getIqExperience())).asInt());
+	this->setEqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience())).asInt());
 	
 	this->setPosition(Vec2(
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
@@ -283,6 +291,56 @@ void Squally::loadState()
 
 	// Save new defaults
 	this->saveState();
+}
+
+void Squally::setIq(int iq)
+{
+	this->iq = iq;
+}
+
+int Squally::getIq()
+{
+	return this->iq;
+}
+
+void Squally::setEq(int eq)
+{
+	this->eq = eq;
+}
+
+int Squally::getEq()
+{
+	return this->eq;
+}
+
+void Squally::setIqExperience(int iqExperience)
+{
+	this->iqExperience = iqExperience;
+}
+
+void Squally::addIqExperience(int iqExperience)
+{
+	this->setIqExperience(this->getIqExperience() + iqExperience);
+}
+
+int Squally::getIqExperience()
+{
+	return this->iqExperience;
+}
+
+void Squally::setEqExperience(int eqExperience)
+{
+	this->eqExperience = eqExperience;
+}
+
+void Squally::addEqExperience(int eqExperience)
+{
+	this->setEqExperience(this->getEqExperience() + eqExperience);
+}
+
+int Squally::getEqExperience()
+{
+	return this->eqExperience;
 }
 
 void Squally::updateWeaponVisual()

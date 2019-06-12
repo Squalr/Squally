@@ -44,13 +44,17 @@ namespace UIResources
 	extern const std::string EmptyImage;
 	extern const std::string Fonts_Texture_AlienText;
 	extern const std::string Fonts_Texture_AsciiTable;
+	extern const std::string HUD_Combat_Frame;
+	extern const std::string HUD_Combat_FrameTop;
+	extern const std::string HUD_EmblemGlow;
 	extern const std::string HUD_Eye;
 	extern const std::string HUD_EyeSlot;
 	extern const std::string HUD_Frame;
-	extern const std::string HUD_FrameTop;
 	extern const std::string HUD_HPBarFill;
 	extern const std::string HUD_HackBarFill;
+	extern const std::string HUD_Heart;
 	extern const std::string HUD_MPBarFill;
+	extern const std::string HUD_Pendant;
 	extern const std::string HUD_StatFrame;
 	extern const std::string HelperArrow;
 	extern const std::string HelperArrowAnimations;

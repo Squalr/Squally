@@ -11,8 +11,6 @@
 
 using namespace cocos2d;
 
-const int RuneBar::RuneCount = 4;
-
 RuneBar* RuneBar::create(bool isFrameOnLeft)
 {
 	RuneBar* instance = new RuneBar(isFrameOnLeft);
@@ -26,7 +24,7 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 {
 	this->target = nullptr;
 
-	for (int index = 0; index < RuneBar::RuneCount; index++)
+	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
 	{
 		Sprite* emptyRune = Sprite::create(UIResources::HUD_EyeSlot);
 		Sprite* rune = Sprite::create(UIResources::HUD_Eye);
@@ -64,22 +62,10 @@ void RuneBar::initializePositions()
 {
 	super::initializePositions();
 
-	int index = 0;
-
-	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)
+	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
 	{
-		(*it)->setPosition(Vec2((float)index * 34.0f, 0.0f));
-
-		index++;
-	}
-
-	index = 0;
-
-	for (auto it = this->filledRunes.begin(); it != this->filledRunes.end(); it++)
-	{
-		(*it)->setPosition(Vec2((float)index * 34.0f, 0.0f));
-
-		index++;
+		this->emptyRunes[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
+		this->filledRunes[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
 	}
 }
 

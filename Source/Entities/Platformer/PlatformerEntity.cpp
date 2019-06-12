@@ -29,7 +29,7 @@ const float PlatformerEntity::CapsuleRadius = 8.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
-const int PlatformerEntity::MaxRunes = 4;
+const int PlatformerEntity::MaxRunes = 3;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
