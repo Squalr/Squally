@@ -91,6 +91,7 @@ private:
 	TerrainData terrainData;
 
 	std::vector<cocos2d::Vec2> points;
+	std::vector<cocos2d::Vec2> intersectionPoints;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
