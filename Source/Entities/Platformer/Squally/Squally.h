@@ -50,6 +50,8 @@ private:
 	void initializePositions() override;
 	void update(float) override;
 	void onHackerModeEnable() override;
+	void registerHackables() override;
+	bool isAliveSqually();
 	void saveState();
 	void loadState();
 	void updateWeaponVisual();
@@ -66,5 +68,7 @@ private:
 	SmartAnimationSequenceNode* leftEyeController;
 	SmartAnimationSequenceNode* rightEyeController;
 
-	static const float squallyScale;
+	static const float SquallyScale;
+	static const int DefaultIq;
+	static const int DefaultEq;
 };

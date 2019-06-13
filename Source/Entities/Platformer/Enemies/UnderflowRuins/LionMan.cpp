@@ -47,8 +47,8 @@ LionMan::LionMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(256.0f, 326.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = LionMan::getHexusOpponentData();
 

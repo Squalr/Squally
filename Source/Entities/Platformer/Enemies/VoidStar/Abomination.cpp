@@ -47,8 +47,8 @@ Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	Size(296.0f, 356.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Abomination::getHexusOpponentData();
 

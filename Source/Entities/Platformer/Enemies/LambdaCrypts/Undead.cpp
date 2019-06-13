@@ -47,8 +47,8 @@ Undead::Undead(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(146.0f, 248.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Undead::getHexusOpponentData();
 

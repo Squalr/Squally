@@ -47,8 +47,8 @@ SkeletalPirate::SkeletalPirate(ValueMap& initProperties) : PlatformerEnemy(initP
 	Size(112.0f, 820.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = SkeletalPirate::getHexusOpponentData();
 

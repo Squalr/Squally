@@ -47,8 +47,8 @@ Gargoyle::Gargoyle(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(256.0f, 256.0f),
 	0.9f,
 	Vec2(-32.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Gargoyle::getHexusOpponentData();
 

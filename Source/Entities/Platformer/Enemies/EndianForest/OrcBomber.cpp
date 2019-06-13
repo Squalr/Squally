@@ -47,8 +47,8 @@ OrcBomber::OrcBomber(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(256.0f, 218.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = OrcBomber::getHexusOpponentData();
 

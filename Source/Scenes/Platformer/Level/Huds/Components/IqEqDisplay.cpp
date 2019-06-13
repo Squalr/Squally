@@ -8,6 +8,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Generics/XOverY.h"
+
 using namespace cocos2d;
 
 const int IqEqDisplay::IqCacheCipher = 0x48195623;
@@ -24,23 +26,23 @@ IqEqDisplay* IqEqDisplay::create()
 
 IqEqDisplay::IqEqDisplay()
 {
-	this->iqFrame = Sprite::create(UIResources::HUD_EmblemGlow);
-	this->eqFrame = Sprite::create(UIResources::HUD_EmblemGlow);
+	this->iqEqFrame = Sprite::create(UIResources::HUD_LevelFrame);
 	this->iqValue = ConstantString::create("0");
 	this->eqValue = ConstantString::create("0");
-	this->iqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->eqValue);
-	this->eqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->iqValue);
+	this->iqEqValue = Strings::Generics_XOverY::create();
+	this->iqEqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->iqEqValue);
 
-	this->eqLabel->enableOutline(Color4B::BLACK, 2);
-	this->iqLabel->enableOutline(Color4B::BLACK, 2);
+	this->iqEqValue->setStringReplacementVariables( { this->iqValue, this->eqValue } );
+
+	this->iqEqLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->iqEqFrame->setVisible(false);
 
 	this->cachedIq = (0 ^ IqEqDisplay::IqCacheCipher);
 	this->cachedEq = (0 ^ IqEqDisplay::EqCacheCipher);
 
-	this->addChild(this->iqFrame);
-	this->addChild(this->eqFrame);
-	this->addChild(this->iqLabel);
-	this->addChild(this->eqLabel);
+	this->addChild(this->iqEqFrame);
+	this->addChild(this->iqEqLabel);
 }
 
 IqEqDisplay::~IqEqDisplay()
@@ -58,10 +60,8 @@ void IqEqDisplay::initializePositions()
 {
 	super::initializePositions();
 
-	this->iqFrame->setPosition(Vec2(-24.0f, 0.0f));
-	this->iqLabel->setPosition(Vec2(-24.0f, 0.0f));
-	this->eqFrame->setPosition(Vec2(24.0f, 0.0f));
-	this->eqLabel->setPosition(Vec2(24.0f, 0.0f));
+	this->iqEqFrame->setPosition(Vec2(0.0f, 0.0f));
+	this->iqEqLabel->setPosition(Vec2(0.0f, 0.0f));
 }
 
 void IqEqDisplay::initializeListeners()

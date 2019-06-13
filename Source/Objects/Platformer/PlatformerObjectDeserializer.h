@@ -10,8 +10,12 @@ public:
 
 private:
 	typedef GlobalNode super;
+	PlatformerObjectDeserializer();
+	~PlatformerObjectDeserializer();
 	void initializeListeners() override;
 	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+
+	std::map<std::string, std::function<SerializableObject*(cocos2d::ValueMap)>> deserializers;
 
 	static PlatformerObjectDeserializer* instance;
 	static const std::string KeyTypeObject;

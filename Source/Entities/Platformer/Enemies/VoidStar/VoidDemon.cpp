@@ -47,8 +47,8 @@ VoidDemon::VoidDemon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(338.0f, 342.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = VoidDemon::getHexusOpponentData();
 

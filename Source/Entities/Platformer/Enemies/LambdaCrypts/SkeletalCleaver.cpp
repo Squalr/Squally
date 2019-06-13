@@ -47,8 +47,8 @@ SkeletalCleaver::SkeletalCleaver(ValueMap& initProperties) : PlatformerEnemy(ini
 	Size(128.0f, 312.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = SkeletalCleaver::getHexusOpponentData();
 

@@ -47,8 +47,8 @@ VoidArcher::VoidArcher(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	Size(196.0f, 348.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = VoidArcher::getHexusOpponentData();
 

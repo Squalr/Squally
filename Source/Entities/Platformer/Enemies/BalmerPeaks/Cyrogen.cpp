@@ -47,8 +47,8 @@ Cyrogen::Cyrogen(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(420.0f, 420.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Cyrogen::getHexusOpponentData();
 
