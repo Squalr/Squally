@@ -1,5 +1,7 @@
 #include "PlatformerEntity.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -22,6 +24,7 @@ using namespace cocos2d;
 
 const float PlatformerEntity::MoveAcceleration = 5800.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
+const float PlatformerEntity::WallDetectorSize = 64.0f;
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
 const float PlatformerEntity::GroundCollisionPadding = 28.0f;
@@ -49,6 +52,8 @@ PlatformerEntity::PlatformerEntity(
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
+	this->scale = scale;
+	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
 	this->isPlatformerDisabled = false;
@@ -56,6 +61,7 @@ PlatformerEntity::PlatformerEntity(
 
 	// A bit sketchy, but maintains backwards compatibility with how entities are coded right now
 	movementCollisionSize = (movementCollisionSize.width <= 0.0f || movementCollisionSize.height <= 0.0f) ? size : movementCollisionSize;
+	this->entitySize = size * scale;
 
 	this->movementCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(movementCollisionSize, scale),
@@ -78,6 +84,18 @@ PlatformerEntity::PlatformerEntity(
 		false,
 		false
 	);
+	this->leftCollision = CollisionObject::create(
+		PlatformerEntity::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f),
+		(int)PlatformerCollisionType::WallDetector,
+		false,
+		false
+	);
+	this->rightCollision = CollisionObject::create(
+		PlatformerEntity::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f),
+		(int)PlatformerCollisionType::WallDetector,
+		false,
+		false
+	);
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create();
 	this->speechBubble = SpeechBubble::create();
@@ -89,7 +107,6 @@ PlatformerEntity::PlatformerEntity(
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);
 
-	this->entitySize = size * scale;
 	float width = this->properties[PlatformerEntity::MapKeyWidth].asFloat();
 	float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
 	Size movementSize = movementCollisionSize * scale;
@@ -103,6 +120,8 @@ PlatformerEntity::PlatformerEntity(
 	this->movementCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
 	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, movementSize.height / 2.0f));
 	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f + PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
+	this->leftCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(-this->entitySize.width / 2.0f + PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
+	this->rightCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(this->entitySize.width / 2.0f - PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -131,6 +150,8 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
 	this->addChild(this->groundCollision);
+	this->addChild(this->leftCollision);
+	this->addChild(this->rightCollision);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
@@ -193,7 +214,13 @@ void PlatformerEntity::update(float dt)
 		default:
 		case ControlState::Normal:
 		{
-			velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
+			// Move in the x direction unless hitting a wall while not standing on anything (this prevents wall jumps)
+			if (!this->groundCollision->getCurrentCollisions().empty() ||
+				(this->movement.x < 0.0f && this->leftCollision->getCurrentCollisions().empty()) ||
+				(this->movement.x > 0.0f && this->rightCollision->getCurrentCollisions().empty()))
+			{
+				velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
+			}
 
 			if (this->movement.y > 0.0f && this->isOnGround())
 			{
@@ -282,6 +309,16 @@ void PlatformerEntity::setHealth(int health)
 	}
 }
 
+void PlatformerEntity::revive()
+{
+	this->health = this->getMaxHealth();
+	this->mana = this->getMaxMana();
+	this->runes = this->getMaxRunes();
+
+	// Idle
+	this->animationNode->playAnimation();
+}
+
 int PlatformerEntity::getHealth()
 {
 	return this->health;
@@ -290,6 +327,11 @@ int PlatformerEntity::getHealth()
 int PlatformerEntity::getMaxHealth()
 {
 	return this->maxHealth;
+}
+
+bool PlatformerEntity::isAlive()
+{
+	return !this->isDead();
 }
 
 bool PlatformerEntity::isDead()
@@ -360,6 +402,24 @@ HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 CollisionObject* PlatformerEntity::getCollision()
 {
 	return this->movementCollision;
+}
+
+void PlatformerEntity::killAndRespawn()
+{
+	this->setHealth(0);
+
+	this->runAction(Sequence::create(
+		DelayTime::create(1.5f),
+		CallFunc::create([=]()
+		{
+			this->setPosition(this->spawnCoords);
+			this->entityCollision->setPosition(Vec2::ZERO);
+			this->movementCollision->setPosition(Vec2::ZERO);
+			
+			this->revive();
+		}),
+		nullptr
+	));
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
@@ -541,6 +601,16 @@ void PlatformerEntity::initializeCollisionEvents()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+
+	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{	
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{	
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }
 
 PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
@@ -572,6 +642,16 @@ void PlatformerEntity::registerAttack(PlatformerAttack* attack)
 {
 	this->addChild(attack);
 	this->attacks.push_back(attack);
+}
+
+float PlatformerEntity::getScale()
+{
+	return this->scale;
+}
+
+std::string PlatformerEntity::getAnimationResource()
+{
+	return this->animationResource;
 }
 
 std::string PlatformerEntity::getEmblemResource()

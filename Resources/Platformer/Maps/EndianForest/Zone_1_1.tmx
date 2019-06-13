@@ -124,9 +124,9 @@
    <properties>
     <property name="texture" value="caverns"/>
    </properties>
-   <polygon points="869.241,-115.657 2621.18,-136.706 2802.56,-831.312 2869.73,-1938.34 3376.15,-1959.26 3907.75,-1886.84 3915.16,439.37 3506.73,1080.41 1462.27,1255.13 549.771,1264.53 -128.927,929.681 -94.0734,-100.574"/>
+   <polygon points="894.272,-315.907 1695.02,-299.409 1657.38,-1162.98 1912.28,-1882.02 3376.15,-1959.26 3907.75,-1886.84 3915.16,439.37 3506.73,1080.41 1462.27,1255.13 549.771,1264.53 -128.927,929.681 -125.363,-200.699"/>
   </object>
-  <object id="657" name="wooden-crate" type="object" x="8433.64" y="6175.88" width="160" height="160"/>
+  <object id="657" name="wooden-crate" type="object" x="8421.12" y="6213.43" width="160" height="160"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -178,13 +178,9 @@
     <property name="id" value="1"/>
    </properties>
   </object>
-  <object id="650" name="chest" type="open-cipher" x="295.019" y="3499.92" width="128" height="128">
+  <object id="650" name="chest" type="object" x="295.019" y="3506.18" width="128" height="128">
    <properties>
-    <property name="ally-1" value=""/>
-    <property name="ally-2" value=""/>
-    <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
-    <property name="battle-map" value="EndianForest/BattleGrounds"/>
-    <property name="event" value="door-open"/>
+    <property name="event" value="open-cipher"/>
    </properties>
   </object>
   <object id="673" name="pendulum-blade" type="object" x="5194.64" y="3845.36" width="42.4242" height="277.636"/>
@@ -221,7 +217,7 @@
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="658" name="orc-grunt" type="entity" x="10792.4" y="5845.26" width="128" height="128">
+  <object id="658" name="orc-grunt" type="entity" x="10204.2" y="5695.07" width="128" height="128">
    <properties>
     <property name="ally-1" value=""/>
     <property name="ally-2" value=""/>

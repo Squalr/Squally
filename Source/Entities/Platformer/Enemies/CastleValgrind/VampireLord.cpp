@@ -47,8 +47,8 @@ VampireLord::VampireLord(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	Size(240.0f, 312.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = VampireLord::getHexusOpponentData();
 

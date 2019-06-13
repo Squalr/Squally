@@ -47,8 +47,8 @@ Apple::Apple(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Apple::getHexusOpponentData();
 

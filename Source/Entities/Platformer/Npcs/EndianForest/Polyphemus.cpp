@@ -47,8 +47,8 @@ Polyphemus::Polyphemus(ValueMap& initProperties) : NpcBase(initProperties,
 	Size(112.0f, 160.0f),
 	1.1f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Polyphemus::getHexusOpponentData();
 

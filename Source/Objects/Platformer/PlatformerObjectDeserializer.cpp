@@ -24,6 +24,49 @@ void PlatformerObjectDeserializer::registerGlobalNode()
 	}
 }
 
+PlatformerObjectDeserializer::PlatformerObjectDeserializer()
+{
+	this->deserializers = std::map<std::string, std::function<SerializableObject*(ValueMap)>>();
+
+	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (SerializableObject*)CombatSpawn::create(properties); };
+	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (SerializableObject*)CastleDoor::create(properties); };
+	this->deserializers[CastleDoorFront::MapKeyCastleDoorFront] = [=](ValueMap properties) { return (SerializableObject*)CastleDoorFront::create(properties); };
+	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (SerializableObject*)Catapult::create(properties); };
+	this->deserializers[Chest::MapKeyChest] = [=](ValueMap properties) { return (SerializableObject*)Chest::create(properties); };
+	this->deserializers[CinematicMarker::MapKeyCinematicMarker] = [=](ValueMap properties) { return (SerializableObject*)CinematicMarker::create(properties); };
+	this->deserializers[DartGun::MapKeyDartGun] = [=](ValueMap properties) { return (SerializableObject*)DartGun::create(properties); };
+	this->deserializers[Doubloon::MapKeyDoubloon] = [=](ValueMap properties) { return (SerializableObject*)Doubloon::create(properties); };
+	this->deserializers[EdgePortal::MapKeyEdgePortal] = [=](ValueMap properties) { return (SerializableObject*)EdgePortal::create(properties); };
+	this->deserializers[FloatingAsteroid::MapKeyFloatingAsteroid] = [=](ValueMap properties) { return (SerializableObject*)FloatingAsteroid::create(properties); };
+	this->deserializers[FloatingBomb::MapKeyFloatingBomb] = [=](ValueMap properties) { return (SerializableObject*)FloatingBomb::create(properties); };
+	this->deserializers[FloatingCrate::MapKeyFloatingCrate] = [=](ValueMap properties) { return (SerializableObject*)FloatingCrate::create(properties); };
+	this->deserializers[FloatingRock::MapKeyFloatingRock] = [=](ValueMap properties) { return (SerializableObject*)FloatingRock::create(properties); };
+	this->deserializers[FloatingWoodenBeam::MapKeyFloatingWoodenBeam] = [=](ValueMap properties) { return (SerializableObject*)FloatingWoodenBeam::create(properties); };
+	this->deserializers[HackableHint::MapKeyHackableHint] = [=](ValueMap properties) { return (SerializableObject*)HackableHint::create(properties); };
+	this->deserializers[HeavenHug::MapKeyHeavenHug] = [=](ValueMap properties) { return (SerializableObject*)HeavenHug::create(properties); };
+	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (SerializableObject*)Laser::create(properties); };
+	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (SerializableObject*)MetalSpikes::create(properties); };
+	this->deserializers[WoodenSpikes::MapKeyWoodenSpikes] = [=](ValueMap properties) { return (SerializableObject*)WoodenSpikes::create(properties); };
+	this->deserializers[MechanicalFlail::MapKeyMechanicalFlail] = [=](ValueMap properties) { return (SerializableObject*)MechanicalFlail::create(properties); };
+	this->deserializers[PendulumBlade::MapKeyPendulumBlade] = [=](ValueMap properties) { return (SerializableObject*)PendulumBlade::create(properties); };
+	this->deserializers[SpikedBall::MapKeySpikedBall] = [=](ValueMap properties) { return (SerializableObject*)SpikedBall::create(properties); };
+	this->deserializers[SpikeLog::MapKeySpikeLog] = [=](ValueMap properties) { return (SerializableObject*)SpikeLog::create(properties); };
+	this->deserializers[SquallyShip::MapKeySquallyShip] = [=](ValueMap properties) { return (SerializableObject*)SquallyShip::create(properties); };
+	this->deserializers[Monkey::MapKeyMonkey] = [=](ValueMap properties) { return (SerializableObject*)Monkey::create(properties); };
+	this->deserializers[StoneButton::MapKeyStoneButton] = [=](ValueMap properties) { return (SerializableObject*)StoneButton::create(properties); };
+	this->deserializers[Tent::MapKeyTent] = [=](ValueMap properties) { return (SerializableObject*)Tent::create(properties); };
+	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (SerializableObject*)TrapDoor::create(properties); };
+	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (SerializableObject*)TrapDoorFrame::create(properties); };
+	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (SerializableObject*)Trigger::create(properties); };
+	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (SerializableObject*)Water::create(properties); };
+	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (SerializableObject*)WoodenCrate::create(properties); };
+	this->deserializers[Wind::MapKeyWind] = [=](ValueMap properties) { return (SerializableObject*)Wind::create(properties); };
+}
+
+PlatformerObjectDeserializer::~PlatformerObjectDeserializer()
+{
+}
+
 void PlatformerObjectDeserializer::initializeListeners()
 {
 	super::initializeListeners();
@@ -48,148 +91,15 @@ void PlatformerObjectDeserializer::onDeserializationRequest(DeserializationEvent
 {
 	if (args->typeName == PlatformerObjectDeserializer::KeyTypeObject)
 	{
-		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::MapKeyName).asString();
-		SerializableObject* newObject = nullptr;
+		std::string name = args->properties.at(SerializableObject::MapKeyName).asString();
 
-		if (name == CombatSpawn::MapKeyCombatSpawn)
+		if (this->deserializers.find(name) != this->deserializers.end())
 		{
-			newObject = CombatSpawn::create(properties);
-		}
-		else if (name == CastleDoor::MapKeyCastleDoor)
-		{
-			newObject = CastleDoor::create(properties);
-		}
-		else if (name == CastleDoorFront::MapKeyCastleDoorFront)
-		{
-			newObject = CastleDoorFront::create(properties);
-		}
-		else if (name == Catapult::MapKeyCatapult)
-		{
-			newObject = Catapult::create(properties);
-		}
-		else if (name == Chest::MapKeyChest)
-		{
-			newObject = Chest::create(properties);
-		}
-		else if (name == CinematicMarker::MapKeyCinematicMarker)
-		{
-			newObject = CinematicMarker::create(properties);
-		}
-		else if (name == DartGun::MapKeyDartGun)
-		{
-			newObject = DartGun::create(properties);
-		}
-		else if (name == Doubloon::MapKeyDoubloon)
-		{
-			newObject = Doubloon::create(properties);
-		}
-		else if (name == EdgePortal::MapKeyEdgePortal)
-		{
-			newObject = EdgePortal::create(properties);
-		}
-		else if (name == FloatingAsteroid::MapKeyFloatingAsteroid)
-		{
-			newObject = FloatingAsteroid::create(properties);
-		}
-		else if (name == FloatingBomb::MapKeyFloatingBomb)
-		{
-			newObject = FloatingBomb::create(properties);
-		}
-		else if (name == FloatingCrate::MapKeyFloatingCrate)
-		{
-			newObject = FloatingCrate::create(properties);
-		}
-		else if (name == FloatingRock::MapKeyFloatingRock)
-		{
-			newObject = FloatingRock::create(properties);
-		}
-		else if (name == FloatingWoodenBeam::MapKeyFloatingWoodenBeam)
-		{
-			newObject = FloatingWoodenBeam::create(properties);
-		}
-		else if (name == HackableHint::MapKeyHackableHint)
-		{
-			newObject = HackableHint::create(properties);
-		}
-		else if (name == HeavenHug::MapKeyHeavenHug)
-		{
-			newObject = HeavenHug::create(properties);
-		}
-		else if (name == Laser::MapKeyLaser)
-		{
-			newObject = Laser::create(properties);
-		}
-		else if (name == MetalSpikes::MapKeyMetalSpikes)
-		{
-			newObject = MetalSpikes::create(properties);
-		}
-		else if (name == WoodenSpikes::MapKeyWoodenSpikes)
-		{
-			newObject = WoodenSpikes::create(properties);
-		}
-		else if (name == MechanicalFlail::MapKeyMechanicalFlail)
-		{
-			newObject = MechanicalFlail::create(properties);
-		}
-		else if (name == PendulumBlade::MapKeyPendulumBlade)
-		{
-			newObject = PendulumBlade::create(properties);
-		}
-		else if (name == SpikedBall::MapKeySpikedBall)
-		{
-			newObject = SpikedBall::create(properties);
-		}
-		else if (name == SpikeLog::MapKeySpikeLog)
-		{
-			newObject = SpikeLog::create(properties);
-		}
-		else if (name == SquallyShip::MapKeySquallyShip)
-		{
-			newObject = SquallyShip::create(properties);
-		}
-		else if (name == Monkey::MapKeyMonkey)
-		{
-			newObject = Monkey::create(properties);
-		}
-		else if (name == StoneButton::MapKeyStoneButton)
-		{
-			newObject = StoneButton::create(properties);
-		}
-		else if (name == Tent::MapKeyTent)
-		{
-			newObject = Tent::create(properties);
-		}
-		else if (name == TrapDoor::MapKeyTrapDoor)
-		{
-			newObject = TrapDoor::create(properties);
-		}
-		else if (name == TrapDoorFrame::MapKeyTrapDoorFrame)
-		{
-			newObject = TrapDoorFrame::create(properties);
-		}
-		else if (name == Trigger::MapKeyTrigger)
-		{
-			newObject = Trigger::create(properties);
-		}
-		else if (name == Water::MapKeyWater)
-		{
-			newObject = Water::create(properties);
-		}
-		else if (name == WoodenCrate::MapKeyWoodenCrate)
-		{
-			newObject = WoodenCrate::create(properties);
-		}
-		else if (name == Wind::MapKeyWind)
-		{
-			newObject = Wind::create(properties);
+			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(this->deserializers[name](args->properties)));
 		}
 		else
 		{
-			CCLOG("Missing properties on platformer object");
-			return;
+			CCLOG("Unknown object encountered: %s", name.c_str());
 		}
-		
-		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
 	}
 }

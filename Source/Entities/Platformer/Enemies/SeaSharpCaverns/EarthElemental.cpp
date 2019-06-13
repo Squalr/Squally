@@ -47,8 +47,8 @@ EarthElemental::EarthElemental(ValueMap& initProperties) : PlatformerEnemy(initP
 	Size(820.0f, 1480.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = EarthElemental::getHexusOpponentData();
 

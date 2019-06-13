@@ -47,8 +47,8 @@ KingZul::KingZul(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(196.0f, 320.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = KingZul::getHexusOpponentData();
 

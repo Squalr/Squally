@@ -47,8 +47,8 @@ CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEntity(initProp
 	Size(188.0f, 160.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = CritterDemon::getHexusOpponentData();
 

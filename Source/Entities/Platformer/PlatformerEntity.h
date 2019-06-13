@@ -20,7 +20,9 @@ public:
 	int getHealth();
 	void addHealth(int healthDelta);
 	void setHealth(int health);
+	void revive();
 	int getMaxHealth();
+	bool isAlive();
 	bool isDead();
 	int getMana();
 	void addMana(int manaDelta);
@@ -33,11 +35,14 @@ public:
 	bool getIsPlatformerDisabled();
 	virtual float getFloatHeight();
 
+	void killAndRespawn();
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	Inventory* getInventory();
 	CurrencyInventory* getCurrencyInventory();
+	float getScale();
+	std::string getAnimationResource();
 	std::string getEmblemResource();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
@@ -86,6 +91,8 @@ protected:
 	CollisionObject* movementCollision;
 	CollisionObject* entityCollision;
 	CollisionObject* groundCollision;
+	CollisionObject* leftCollision;
+	CollisionObject* rightCollision;
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	CurrencyInventory* currencyInventory;
@@ -112,6 +119,7 @@ protected:
 
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
+	static const float WallDetectorSize;
 	static const float SwimVerticalDrag;
 	static const float JumpVelocity;
 	static const float GroundCollisionPadding;
@@ -122,6 +130,8 @@ protected:
 private:
 	typedef HackableObject super;
 
+	float scale;
+	std::string animationResource;
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
 };
