@@ -134,19 +134,25 @@ void OptionsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cancelButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuCancel();  });
-	this->returnButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->closeButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onMenuExit();  });
-	this->generalTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
-	this->videoTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
-	this->languageTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
-	this->memesTabButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
+	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onMenuCancel();  });
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onMenuExit();  });
+	this->generalTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::General); });
+	this->videoTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Video); });
+	this->languageTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Language); });
+	this->memesTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Memes); });
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(OptionsMenu::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
+		this->onMenuExit();
+	});
 }
 
 void OptionsMenu::initializePositions()
@@ -177,28 +183,6 @@ void OptionsMenu::initializePositions()
 void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)
 {
 	this->backClickCallback = backClickCallback;
-}
-
-void OptionsMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			this->onMenuExit();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void OptionsMenu::setActiveTab(Tab tab)

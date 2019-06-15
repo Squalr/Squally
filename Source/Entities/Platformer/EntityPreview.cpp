@@ -28,7 +28,7 @@ EntityPreview::EntityPreview(PlatformerEntity* entity)
 
 	this->previewAnimation = SmartAnimationNode::create(this->animationResource);
 
-	this->previewAnimation->setScale(this->scale * 0.25f);
+	this->previewAnimation->setScale(this->scale * 0.75f);
 
 	this->previewNode->addChild(this->previewAnimation);
 }
@@ -45,6 +45,8 @@ HackablePreview* EntityPreview::clone()
 void EntityPreview::onEnter()
 {
 	super::onEnter();
+
+	this->previewAnimation->playAnimation("Idle");
 }
 
 void EntityPreview::initializePositions()

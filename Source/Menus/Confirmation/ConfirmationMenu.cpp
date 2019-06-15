@@ -75,11 +75,17 @@ void ConfirmationMenu::initializeListeners()
 	this->confirmButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::confirm, this));
 	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::close, this));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(ConfirmationMenu::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
+		this->close();
+	});
 }
 
 void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
@@ -101,29 +107,6 @@ void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::fu
 	this->addChild(this->confirmationLabel);
 
 	this->setVisible(true);
-}
-
-void ConfirmationMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isFocused(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			this->close();
-
-			event->stopPropagation();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void ConfirmationMenu::confirm()

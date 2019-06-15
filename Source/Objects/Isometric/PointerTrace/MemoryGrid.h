@@ -38,7 +38,6 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 
 private:
 	typedef HackableObject super;

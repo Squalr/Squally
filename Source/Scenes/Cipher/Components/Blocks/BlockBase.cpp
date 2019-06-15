@@ -6,7 +6,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/MouseEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -121,13 +121,13 @@ void BlockBase::initializeListeners()
 		}
 		case BlockType::Normal:
 		{
-			this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMousePressCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				this->originalPosition = this->getPosition();
 				this->clickDelta = this->originalPosition - args->mouseCoords;
 			});
 
-			this->block->setMouseReleaseNoHitTestCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				if (!this->isInGameArea())
 				{
@@ -138,7 +138,7 @@ void BlockBase::initializeListeners()
 				}
 			});
 
-			this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				this->setPosition(args->mouseCoords + this->clickDelta);
 			});
@@ -146,7 +146,7 @@ void BlockBase::initializeListeners()
 		}
 		case BlockType::Toolbox:
 		{
-			this->block->setMousePressCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMousePressCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				this->originalPosition = GameUtils::getScreenBounds(this).origin;
 				this->clickDelta = this->originalPosition - args->mouseCoords;
@@ -166,10 +166,10 @@ void BlockBase::initializeListeners()
 				this->label->stopAllActions();
 				this->label->setOpacity(0);
 
-				MouseEvents::TriggerMouseRefresh(*args);
+				InputEvents::TriggerMouseRefresh(*args);
 			});
 
-			this->block->setMouseDragCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				if (this->spawningBlock != nullptr)
 				{
@@ -177,7 +177,7 @@ void BlockBase::initializeListeners()
 				}
 			});
 
-			this->block->setMouseReleaseNoHitTestCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				args->handled = true;
 
@@ -189,13 +189,13 @@ void BlockBase::initializeListeners()
 				this->spawningBlock = nullptr;
 			});
 
-			this->block->setMouseInCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseInCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				this->label->stopAllActions();
 				this->label->runAction(FadeTo::create(0.25f, 255));
 			});
 
-			this->block->setMouseOutCallback([=](MouseEvents::MouseEventArgs* args)
+			this->block->setMouseOutCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				this->label->stopAllActions();
 				this->label->runAction(FadeTo::create(0.25f, 0));

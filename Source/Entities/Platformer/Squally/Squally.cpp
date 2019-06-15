@@ -10,6 +10,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -197,6 +198,21 @@ void Squally::initializePositions()
 	super::initializePositions();
 
 	this->cameraTrackTarget->setPosition(Vec2(0.0f, 128.0f));
+}
+
+void Squally::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	{
+		HackableEvents::TriggerHackerModeToggle();
+	});
+
+	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	{
+		HackableEvents::TriggerHackerModeToggle();
+	});
 }
 
 Vec2 Squally::getButtonOffset()

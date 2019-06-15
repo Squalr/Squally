@@ -101,31 +101,31 @@ void ChapterSelectPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->dataChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->dataChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(DataIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(DataSelectPage::Identifier));
 	});
 
-	this->binaryChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->binaryChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinaryIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(BinarySelectPage::Identifier));
 	});
 
-	this->controlFlowChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->controlFlowChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ControlFlowIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ControlFlowSelectPage::Identifier));
 	});
 
-	this->vectorChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->vectorChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(VectorIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(VectorSelectPage::Identifier));
 	});
 
-	this->floatingPointChapterButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->floatingPointChapterButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(FloatingPointIntroPage::Identifier));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(FloatingPointSelectPage::Identifier));

@@ -31,7 +31,6 @@ private:
 	void initializedLocked();
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	std::vector<MapNode*> mapNodes;
 	MapNode* forest;

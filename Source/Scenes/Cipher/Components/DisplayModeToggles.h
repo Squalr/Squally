@@ -1,7 +1,5 @@
 #pragma once
 
-#include "cocos/base/CCEventKeyboard.h"
-
 #include "Scenes/Cipher/Components/CipherComponentBase.h"
 
 namespace cocos2d
@@ -29,7 +27,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	bool inAsciiMenu;
 	RadioButton* toggleButtonBin;

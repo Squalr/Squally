@@ -52,7 +52,6 @@ private:
 	void hideMenus();
 	void onCardClick(CardData* cardData, int price, LocalizedLabel* label, ConstantString* countString, ConstantString* limitString);
 	void onBackClick();
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	static CardData* chooseRandomCard(std::map<CardData*, float> cardChoices);
 	static std::map<CardData*, float> getCardsTier1();
 	static std::map<CardData*, float> getCardsTier2();

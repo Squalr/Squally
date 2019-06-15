@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
 
 using namespace cocos2d;
@@ -54,15 +55,22 @@ void Input::initializeListeners()
 void Input::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	this->pressedKeysPrevious = this->pressedKeys;
-
 	this->pressedKeys[(int)keyCode] = true;
+
+	// Check if previously not pressed or if previously up
+	if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) == Input::getInstance()->pressedKeysPrevious.end() ||
+		!Input::getInstance()->pressedKeysPrevious[(int)keyCode])
+	{
+		InputEvents::TriggerKeyJustPressed(InputEvents::InputArgs(keyCode));
+	}
 }
 
 void Input::onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event)
 {
 	this->pressedKeysPrevious = this->pressedKeys;
-
 	this->pressedKeys[(int)keyCode] = false;
+
+	InputEvents::TriggerKeyJustReleased(InputEvents::InputArgs(keyCode));
 }
 
 EventKeyboard::KeyCode Input::getActiveModifiers()
@@ -80,39 +88,6 @@ EventKeyboard::KeyCode Input::getActiveModifiers()
 	}
 
 	return modifiers;
-}
-
-bool Input::isKeyJustPressed(EventKeyboard::KeyCode keyCode)
-{
-	// Check key pressed
-	if (Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end() &&
-		Input::getInstance()->pressedKeys[(int)keyCode])
-	{
-		// Check if previously not pressed or if previously up
-		if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) == Input::getInstance()->pressedKeysPrevious.end() ||
-			!Input::getInstance()->pressedKeysPrevious[(int)keyCode])
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-bool Input::isKeyJustReleased(EventKeyboard::KeyCode keyCode)
-{
-	// Both maps should have an entry set
-	if (Input::getInstance()->pressedKeysPrevious.find((int)keyCode) != Input::getInstance()->pressedKeysPrevious.end() &&
-		Input::getInstance()->pressedKeys.find((int)keyCode) != Input::getInstance()->pressedKeys.end())
-	{
-		// Check if previously pressed, and currently not pressed
-		if (Input::getInstance()->pressedKeysPrevious[(int)keyCode] && !Input::getInstance()->pressedKeys[(int)keyCode])
-		{
-			return true;
-		}
-	}
-
-	return false;
 }
 
 bool Input::isPressed(EventKeyboard::KeyCode keyCode)

@@ -8,6 +8,7 @@
 class CollisionObject;
 class ClickableNode;
 class CurrencyInventory;
+class HackablePreview;
 class HexusOpponentData;
 class Inventory;
 class PlatformerAttack;
@@ -81,6 +82,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
+	HackablePreview* createDefaultPreview() override;
 	void registerAttack(PlatformerAttack* attack);
 	virtual void initializeCollisionEvents();
 	virtual void performSwimAnimation();

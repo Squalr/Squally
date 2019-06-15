@@ -53,7 +53,7 @@ void CipherChapterPreview::initializeListeners()
 
 void CipherChapterPreview::setClickCallback(std::function<void()> callback)
 {
-	this->previewNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->previewNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (callback != nullptr)
 		{

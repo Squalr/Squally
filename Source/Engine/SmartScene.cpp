@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -168,5 +169,57 @@ void SmartScene::pause()
 		this->layerColor->setOpacity(0.0f);
 	}
 
-	Scene::pause();
+	super::pause();
+}
+
+void SmartScene::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartScene::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartScene::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartScene::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
 }

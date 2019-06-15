@@ -16,8 +16,6 @@ public:
 	static void registerGlobalNode();
 
 	static cocos2d::EventKeyboard::KeyCode getActiveModifiers();
-	static bool isKeyJustPressed(cocos2d::EventKeyboard::KeyCode keyCode);
-	static bool isKeyJustReleased(cocos2d::EventKeyboard::KeyCode keyCode);
 	static bool isPressed(cocos2d::EventKeyboard::KeyCode keyCode);
 	static bool isReleased(cocos2d::EventKeyboard::KeyCode keyCode);
 
