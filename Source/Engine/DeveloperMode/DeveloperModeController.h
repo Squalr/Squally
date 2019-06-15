@@ -22,7 +22,6 @@ private:
 	virtual ~DeveloperModeController();
 
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	bool developerModeEnabled;
 

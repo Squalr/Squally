@@ -38,9 +38,9 @@ MouseState::~MouseState()
 {
 }
 
-MouseEvents::MouseEventArgs MouseState::getMouseState()
+InputEvents::MouseEventArgs MouseState::getMouseState()
 {
-	return MouseEvents::MouseEventArgs(MouseState::mouseInitialPosition, MouseState::mousePosition, MouseState::scrollDelta, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
+	return InputEvents::MouseEventArgs(MouseState::mouseInitialPosition, MouseState::mousePosition, MouseState::scrollDelta, MouseState::isDragging, MouseState::canClick, MouseState::isLeftClicked);
 }
 
 Vec2 MouseState::getMousePosition()
@@ -55,17 +55,17 @@ void MouseState::initializeListeners()
 	EventListenerMouse* mouseListener = EventListenerMouse::create();
 
 	EventListenerCustom* clickableMouseOverListener = EventListenerCustom::create(
-		MouseEvents::EventClickableMouseOver,
+		InputEvents::EventClickableMouseOver,
 		CC_CALLBACK_1(MouseState::onEventClickableMouseOver, this)
 	);
 
 	EventListenerCustom* clickableMouseOutListener = EventListenerCustom::create(
-		MouseEvents::ClickableMouseOutEvent,
-		CC_CALLBACK_1(MouseState::onClickableMouseOutEvent, this)
+		InputEvents::EventClickableMouseOut,
+		CC_CALLBACK_1(MouseState::onEventClickableMouseOut, this)
 	);
 
 	EventListenerCustom* mouseDragListener = EventListenerCustom::create(
-		MouseEvents::EventMouseDrag,
+		InputEvents::EventMouseDrag,
 		CC_CALLBACK_1(MouseState::onEventMouseDrag, this)
 	);
 
@@ -90,8 +90,8 @@ void MouseState::onMouseDown(EventMouse* event)
 		MouseState::mouseInitialPosition = MouseState::mousePosition;
 	}
 
-	MouseEvents::TriggerMouseDown(MouseState::getMouseState());
-	MouseEvents::TriggerStateChange(MouseState::getMouseState());
+	InputEvents::TriggerMouseDown(MouseState::getMouseState());
+	InputEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onMouseUp(EventMouse* event)
@@ -106,13 +106,13 @@ void MouseState::onMouseUp(EventMouse* event)
 		MouseState::isDragging = false;
 	}
 
-	MouseEvents::TriggerMouseUp(MouseState::getMouseState());
+	InputEvents::TriggerMouseUp(MouseState::getMouseState());
 
 	MouseState::isDragging = false;
 	MouseState::canClick = false;
 
-	MouseEvents::TriggerStateChange(MouseState::getMouseState());
-	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	InputEvents::TriggerStateChange(MouseState::getMouseState());
+	InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 }
 
 void MouseState::onMouseMove(EventMouse* event)
@@ -121,16 +121,16 @@ void MouseState::onMouseMove(EventMouse* event)
 	MouseState::isLeftClicked = (event->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT);
 	MouseState::canClick = false;
 
-	MouseEvents::TriggerMouseMove(MouseState::getMouseState());
-	MouseEvents::TriggerStateChange(MouseState::getMouseState());
+	InputEvents::TriggerMouseMove(MouseState::getMouseState());
+	InputEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onMouseScroll(cocos2d::EventMouse* event)
 {
 	MouseState::scrollDelta = Vec2(event->getScrollX(), event->getScrollY());
 
-	MouseEvents::TriggerMouseScroll(MouseState::getMouseState());
-	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	InputEvents::TriggerMouseScroll(MouseState::getMouseState());
+	InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 
 	MouseState::scrollDelta = Vec2::ZERO;
 }
@@ -139,19 +139,19 @@ void MouseState::onEventClickableMouseOver(EventCustom* eventCustom)
 {
 	MouseState::canClick = true;
 
-	MouseEvents::TriggerStateChange(MouseState::getMouseState());
+	InputEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
-void MouseState::onClickableMouseOutEvent(EventCustom* eventCustom)
+void MouseState::onEventClickableMouseOut(EventCustom* eventCustom)
 {
 	MouseState::canClick = false;
 
-	MouseEvents::TriggerStateChange(MouseState::getMouseState());
+	InputEvents::TriggerStateChange(MouseState::getMouseState());
 }
 
 void MouseState::onEventMouseDrag(EventCustom* eventCustom)
 {
 	MouseState::isDragging = true;
 
-	MouseEvents::TriggerStateChange(MouseState::getMouseState());
+	InputEvents::TriggerStateChange(MouseState::getMouseState());
 }

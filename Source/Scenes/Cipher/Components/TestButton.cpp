@@ -69,7 +69,7 @@ void TestButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->testButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	this->testButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		if (this->activeCipherState != nullptr)
 		{

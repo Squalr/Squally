@@ -9,6 +9,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -16,6 +17,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
+#include "Entities/Platformer/EntityPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
@@ -274,6 +276,11 @@ void PlatformerEntity::update(float dt)
 	}
 }
 
+HackablePreview* PlatformerEntity::createDefaultPreview()
+{
+	return EntityPreview::create(this);
+}
+
 float PlatformerEntity::getFloatHeight()
 {
 	return 0.0f;
@@ -415,7 +422,7 @@ void PlatformerEntity::killAndRespawn()
 			this->setPosition(this->spawnCoords);
 			this->entityCollision->setPosition(Vec2::ZERO);
 			this->movementCollision->setPosition(Vec2::ZERO);
-			
+
 			this->revive();
 		}),
 		nullptr

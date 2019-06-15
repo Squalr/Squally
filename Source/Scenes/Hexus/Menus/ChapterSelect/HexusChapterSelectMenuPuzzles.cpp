@@ -146,9 +146,17 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 		GlobalDirector::loadScene(HexusChapterSelectMenuPuzzles::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenuPuzzles::onKeyPressed, this);
+		NavigationEvents::navigateBack();
+	});
 
 	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleBalmerPeaks)); } );
 	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleCastleValgrind)); } );
@@ -160,8 +168,6 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar)); } );
 	
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
 }
 
 void HexusChapterSelectMenuPuzzles::initializePositions()
@@ -215,28 +221,6 @@ void HexusChapterSelectMenuPuzzles::loadProgress()
 
 void HexusChapterSelectMenuPuzzles::onMouseOver(HexusChapterPreview* HexusChapterPreview)
 {
-}
-
-void HexusChapterSelectMenuPuzzles::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void HexusChapterSelectMenuPuzzles::onBackClick()

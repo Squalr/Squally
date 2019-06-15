@@ -4,10 +4,10 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 
@@ -148,4 +148,56 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	listener->setIgnorePause(true);
 
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
 }

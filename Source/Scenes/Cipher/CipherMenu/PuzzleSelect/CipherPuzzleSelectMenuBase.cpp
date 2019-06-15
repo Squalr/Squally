@@ -151,34 +151,18 @@ void CipherPuzzleSelectMenuBase::initializeListeners()
 		}
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(CipherPuzzleSelectMenuBase::onKeyPressed, this);
+		NavigationEvents::navigateBack();
+	});
+
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(CipherPuzzleSelectMenuBase::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
-}
-
-void CipherPuzzleSelectMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void CipherPuzzleSelectMenuBase::onBackClick()

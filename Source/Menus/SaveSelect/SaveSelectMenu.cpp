@@ -106,13 +106,18 @@ void SaveSelectMenu::initializeListeners()
 		GlobalDirector::loadScene(SaveSelectMenu::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(SaveSelectMenu::onKeyPressed, this);
+		NavigationEvents::navigateBack();
+	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
 }
 
 void SaveSelectMenu::initializePositions()
@@ -123,28 +128,6 @@ void SaveSelectMenu::initializePositions()
 
 	this->buttonsNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
-}
-
-void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-	
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void SaveSelectMenu::buildSaveButtons()
@@ -212,7 +195,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 
 	saveGameButton->addChild(saveGameIcon);
 
-	saveGameButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	saveGameButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		SaveManager::setActiveSaveProfile(profileId);
 		this->loadSave();
@@ -234,7 +217,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 {
 	ClickableNode* deleteButton = ClickableNode::create(UIResources::Menus_Buttons_DeleteButton, UIResources::Menus_Buttons_DeleteButtonHover);
 
-	deleteButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{

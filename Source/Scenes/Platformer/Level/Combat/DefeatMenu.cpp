@@ -76,7 +76,7 @@ void DefeatMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->okayButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->okayButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		CombatEvents::TriggerReturnToMap();
 	});

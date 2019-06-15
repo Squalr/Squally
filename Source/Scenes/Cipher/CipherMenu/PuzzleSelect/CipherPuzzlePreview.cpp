@@ -49,7 +49,7 @@ void CipherPuzzlePreview::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->previewNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->previewNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		NavigationEvents::navigateCipher(NavigationEvents::NavigateCipherArgs(this->cipherPuzzleData));
 	});

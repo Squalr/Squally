@@ -1,8 +1,6 @@
 #pragma once
 #include <map>
 
-#include "cocos/base/CCEventKeyboard.h"
-
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
@@ -48,7 +46,6 @@ private:
 	void initializeListeners() override;
 	void onBackClick();
 	void onToggleSelect(Checkbox* activeToggle);
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void rebuildCardLists();
 	void rebuildCardList(std::map<CardData*, int> cards, std::map<CardData*, MenuCard*> displayCards);
 	void save(bool exit);

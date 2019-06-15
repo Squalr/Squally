@@ -252,9 +252,17 @@ void HexusDeckManagement::initializeListeners()
 		GlobalDirector::loadScene(HexusDeckManagement::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusDeckManagement::onKeyPressed, this);
+		this->save(true);
+	});
 	
 	for (auto it = this->displayDeckCards.begin(); it != this->displayDeckCards.end(); it++)
 	{
@@ -269,7 +277,6 @@ void HexusDeckManagement::initializeListeners()
 	}
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusDeckManagement::onBackClick, this));
-	this->addEventListener(keyboardListener);
 }
 
 void HexusDeckManagement::initializePositions()
@@ -362,28 +369,6 @@ void HexusDeckManagement::onToggleSelect(Checkbox* activeToggle)
 	}
 
 	this->rebuildCardLists();
-}
-
-void HexusDeckManagement::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			this->save(true);
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void HexusDeckManagement::onBackClick()

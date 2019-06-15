@@ -86,7 +86,7 @@ void CipherStateVictory::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->okayButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->okayButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->runAction(Sequence::create(
 			DelayTime::create(0.5f),

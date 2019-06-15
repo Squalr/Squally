@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/Events/MouseEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalNode.h"
 
 namespace cocos2d
@@ -14,7 +14,7 @@ public:
 	static void registerGlobalNode();
 
 	static cocos2d::Vec2 getMousePosition();
-	static MouseEvents::MouseEventArgs getMouseState();
+	static InputEvents::MouseEventArgs getMouseState();
 
 private:
 	typedef GlobalNode super;
@@ -27,7 +27,7 @@ private:
 	void onMouseUp(cocos2d::EventMouse* event);
 	void onMouseScroll(cocos2d::EventMouse* event);
 	void onEventClickableMouseOver(cocos2d::EventCustom* eventCustom);
-	void onClickableMouseOutEvent(cocos2d::EventCustom* eventCustom);
+	void onEventClickableMouseOut(cocos2d::EventCustom* eventCustom);
 	void onEventMouseDrag(cocos2d::EventCustom* eventCustom);
 
 	static cocos2d::Vec2 mouseInitialPosition;

@@ -117,7 +117,7 @@ void HelpMenuComponent::setExitCallback(std::function<void()> onExit)
 {
     this->onExit = onExit;
 
-    this->exitButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+    this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         if (this->onExit != nullptr)
         {

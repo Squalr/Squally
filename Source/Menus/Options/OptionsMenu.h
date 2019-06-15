@@ -45,7 +45,6 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void setActiveTab(Tab tab);
 	void onMenuCancel();
 	void onMenuExit();

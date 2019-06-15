@@ -110,11 +110,25 @@ void DisplayModeToggles::initializeListeners()
 		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(CipherEvents::DisplayDataType::Ascii));
 	});
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
+	{
+		this->toggleButtonDec->check();
+	});
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(DisplayModeToggles::onKeyPressed, this);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
+	{
+		this->toggleButtonHex->check();
+	});
 
-	this->addEventListener(keyboardListener);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
+	{
+		this->toggleButtonBin->check();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
+	{
+		this->toggleButtonAscii->check();
+	});
 }
 
 void DisplayModeToggles::onBeforeStateChange(CipherState* cipherState)
@@ -125,35 +139,4 @@ void DisplayModeToggles::onBeforeStateChange(CipherState* cipherState)
 void DisplayModeToggles::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
-}
-
-void DisplayModeToggles::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_1:
-		{
-			this->toggleButtonDec->check();
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_2:
-		{
-			this->toggleButtonHex->check();
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_3:
-		{
-			this->toggleButtonBin->check();
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_4:
-		{
-			this->toggleButtonAscii->check();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }

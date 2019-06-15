@@ -142,80 +142,80 @@ void PushExamplesPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->pointerHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->pointerHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->show();
 	});
 
-	this->pointerHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->pointerHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelPointerHelp->hide();
 	});
 
-	this->offsetHelpButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->offsetHelpButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp->show();
 	});
 
-	this->offsetHelpButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->offsetHelpButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->textPanelOffsetHelp->hide();
 	});
 
-	this->resetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->resetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->resetState();
 	});
 
-	this->pushButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->stackBlock->push(this->registerBlock->getEcx());
 		this->registerBlock->setEsp(this->registerBlock->getEsp() + sizeof(void*));
 	});
 
-	this->pushButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEcx(true);
 		this->stackBlock->highlightTopPlus1();
 	});
 
-	this->pushButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 		this->stackBlock->clearHighlights();
 	});
 
-	this->pushPtrButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushPtrButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->stackBlock->push(this->registerBlock->getEbxPtr(0));
 		this->registerBlock->setEsp(this->registerBlock->getEsp() + sizeof(void*));
 	});
 
-	this->pushPtrButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushPtrButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEbxPtr(true, 0);
 		this->stackBlock->highlightTopPlus1();
 	});
 
-	this->pushPtrButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushPtrButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 		this->stackBlock->clearHighlights();
 	});
 
-	this->pushPtrOffsetButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushPtrOffsetButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->stackBlock->push(this->registerBlock->getEsiPtr(3));
 		this->registerBlock->setEsp(this->registerBlock->getEsp() + sizeof(void*));
 	});
 
-	this->pushPtrOffsetButton->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushPtrOffsetButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->highlightEsiPtr(true, 3);
 		this->stackBlock->highlightTopPlus1();
 	});
 
-	this->pushPtrOffsetButton->setMouseOutCallback([=](MouseEvents::MouseEventArgs*)
+	this->pushPtrOffsetButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->registerBlock->clearHighlights();
 		this->stackBlock->clearHighlights();
