@@ -4,6 +4,8 @@
 
 namespace cocos2d
 {
+	class ClippingNode;
+	class DrawNode;
 	class Sprite;
 }
 
@@ -31,6 +33,9 @@ private:
 	PlatformerEntity* target;
 
 	std::vector<cocos2d::Sprite*> emptyRunes;
+	std::vector<cocos2d::ClippingNode*> cooldownClips;
+	std::vector<cocos2d::DrawNode*> cooldownCircles;
+	std::vector<cocos2d::DrawNode*> cooldownStencils;
 	std::vector<cocos2d::Sprite*> filledRunes;
 	std::vector<SmartAnimationSequenceNode*> smokeFx;
 	std::vector<Sound*> smokeSound;

@@ -206,10 +206,9 @@ void Squally::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
-		if (this->getRunes() > 0)
+		if (this->tryUseRune())
 		{
 			HackableEvents::TriggerHackerModeToggle();
-			this->setRunes(this->getRunes() - 1);
 		}
 	});
 
@@ -353,10 +352,17 @@ NO_OPTIMIZE bool Squally::isAliveSqually()
 
 void Squally::saveState()
 {
+	ValueVector cooldowns = ValueVector();
+
+	for (int index = 0; index < this->getMaxRunes(); index++)
+	{
+		cooldowns.push_back(Value(this->getRuneCooldown(index)));
+	}
+
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
 		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
-		{ SaveKeys::SaveKeySquallyRunes, Value(this->getRunes()) },
+		{ SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns) },
 		{ SaveKeys::SaveKeySquallyIq, Value(this->getIq()) },
 		{ SaveKeys::SaveKeySquallyEq, Value(this->getEq()) }
 	});
@@ -368,11 +374,17 @@ void Squally::loadState()
 	// Be a lower value (ie if created as injured for a cutscene)
 	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
 	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
-	this->setRunes(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getRunes())).asInt());
 	this->setIq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIq, Value(Squally::DefaultIq)).asInt());
 	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(Squally::DefaultEq)).asInt());
 	this->setIqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIqExperience, Value(this->getIqExperience())).asInt());
 	this->setEqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience())).asInt());
+
+	ValueVector cooldowns = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
+
+	for (int index = 0; index < std::min((int)cooldowns.size(), (int)this->getMaxRunes()); index++)
+	{
+		this->setRuneCooldown(index, cooldowns[index].asFloat());
+	}
 	
 	this->setPosition(Vec2(
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),

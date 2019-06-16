@@ -1,5 +1,7 @@
 #include "RuneBar.h"
 
+#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
@@ -31,6 +33,9 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 {
 	this->target = nullptr;
 	this->emptyRunes = std::vector<Sprite*>();
+	this->cooldownClips = std::vector<ClippingNode*>();
+	this->cooldownCircles = std::vector<DrawNode*>();
+	this->cooldownStencils = std::vector<DrawNode*>();
 	this->filledRunes = std::vector<Sprite*>();
 	this->smokeFx = std::vector<SmartAnimationSequenceNode*>();
 	this->smokeSound = std::vector<Sound*>();
@@ -39,6 +44,21 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 
 	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
 	{
+		DrawNode* cooldownStencil = DrawNode::create();
+		DrawNode* cooldownCircle = DrawNode::create();
+
+		cooldownCircle->drawSolidCircle(Vec2::ZERO, 12.0f, 0.0f, 24, Color4F(Color4B(0, 0, 0, 196)));
+
+		// Enable to debug clipping:
+		// this->addChild(cooldownStencil);
+
+		ClippingNode* cooldownClip = ClippingNode::create(cooldownStencil);
+
+		cooldownClip->addChild(cooldownCircle);
+
+		this->cooldownStencils.push_back(cooldownStencil);
+		this->cooldownCircles.push_back(cooldownCircle);
+		this->cooldownClips.push_back(cooldownClip);
 		this->emptyRunes.push_back(Sprite::create(UIResources::HUD_EyeSlot));
 		this->filledRunes.push_back(Sprite::create(UIResources::HUD_Eye));
 		this->smokeFx.push_back(SmartAnimationSequenceNode::create());
@@ -46,6 +66,11 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 	}
 
 	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)
+	{
+		this->addChild(*it);
+	}
+
+	for (auto it = this->cooldownClips.begin(); it != this->cooldownClips.end(); it++)
 	{
 		this->addChild(*it);
 	}
@@ -84,6 +109,7 @@ void RuneBar::initializePositions()
 	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
 	{
 		this->emptyRunes[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
+		this->cooldownClips[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
 		this->filledRunes[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
 		this->smokeFx[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
 	}
@@ -103,13 +129,33 @@ void RuneBar::update(float dt)
 		return;
 	}
 
-	int currentRunes = MathUtils::clamp(target->getRunes(), 0, PlatformerEntity::MaxRunes);
+	int currentRunes = MathUtils::clamp(target->getAvailableRunes(), 0, PlatformerEntity::MaxRunes);
+
+	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+	{
+		this->cooldownStencils[index]->clear();
+
+		float progress = (PlatformerEntity::RuneCooldown - target->getRuneCooldown(index)) / PlatformerEntity::RuneCooldown;
+
+		this->cooldownStencils[index]->drawSolidRect(Vec2(-12.0f, -12.0f), Vec2(12.0f, 12.0f) - Vec2(24.0f, 24.0f) * progress, Color4F(Color4B(0, 0, 0, 196)));
+	}
 
 	if (currentRunes != (this->cachedRunes ^ RuneBar::RuneCipher))
 	{
+		int mostRecentIndex = 0;
+		float mostRecentCooldown = 0.0f;
+
 		for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
 		{
-			if (index < currentRunes)
+			float cooldown = target->getRuneCooldown(index);
+
+			if (cooldown > mostRecentCooldown)
+			{
+				mostRecentIndex = index;
+				mostRecentCooldown = cooldown;
+			}
+
+			if (cooldown <= 0.0f)
 			{
 				this->filledRunes[index]->setVisible(true);
 				this->emptyRunes[index]->setVisible(false);
@@ -123,8 +169,8 @@ void RuneBar::update(float dt)
 
 		if (currentRunes < (this->cachedRunes ^ RuneBar::RuneCipher) && currentRunes < PlatformerEntity::MaxRunes)
 		{
-			this->smokeFx[currentRunes]->playAnimation(FXResources::PurplePuffSmall_PurplePuff_0000, 0.05f, true);
-			this->smokeSound[currentRunes]->play();
+			this->smokeFx[mostRecentIndex]->playAnimation(FXResources::PurplePuffSmall_PurplePuff_0000, 0.05f, true);
+			this->smokeSound[mostRecentIndex]->play();
 		}
 
 		this->cachedRunes = currentRunes ^ RuneBar::RuneCipher;
@@ -135,7 +181,7 @@ void RuneBar::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
 
-	if (this->target != nullptr)
+	if (this->target == nullptr)
 	{
 		this->cachedRunes = PlatformerEntity::MaxRunes ^ RuneBar::RuneCipher;
 
@@ -147,6 +193,6 @@ void RuneBar::setStatsTarget(PlatformerEntity* target)
 	}
 	else
 	{
-		this->cachedRunes = target->getRunes() ^ RuneBar::RuneCipher;
+		this->cachedRunes = target->getAvailableRunes() ^ RuneBar::RuneCipher;
 	}
 }
