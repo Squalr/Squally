@@ -29,8 +29,10 @@ public:
 	void addMana(int manaDelta);
 	void setMana(int mana);
 	int getMaxMana();
-	int getRunes();
-	void setRunes(int runes);
+	int getAvailableRunes();
+	bool tryUseRune();
+	float getRuneCooldown(int runeIndex);
+	void setRuneCooldown(int runeIndex, float cooldown);
 	int getMaxRunes();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();
@@ -56,6 +58,7 @@ public:
 	static const int FallBackMaxHealth;
 	static const int FallBackMaxMana;
 	static const int MaxRunes;
+	static const float RuneCooldown;
 
 protected:
 	PlatformerEntity(
@@ -115,7 +118,7 @@ protected:
 	int maxHealth;
 	int mana;
 	int maxMana;
-	int runes;
+	std::vector<float> runeCooldowns;
 
 	cocos2d::Size entitySize;
 

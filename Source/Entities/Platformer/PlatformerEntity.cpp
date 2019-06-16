@@ -36,6 +36,7 @@ const float PlatformerEntity::CapsuleRadius = 8.0f;
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
 const int PlatformerEntity::MaxRunes = 3;
+const float PlatformerEntity::RuneCooldown = 24.0f;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
@@ -147,7 +148,12 @@ PlatformerEntity::PlatformerEntity(
 
 	this->health = this->maxHealth;
 	this->mana = this->maxMana;
-	this->runes = PlatformerEntity::MaxRunes;
+	this->runeCooldowns = std::vector<float>();
+
+	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+	{
+		this->runeCooldowns.push_back(0.0f);
+	}
 
 	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
@@ -198,6 +204,14 @@ void PlatformerEntity::initializeListeners()
 void PlatformerEntity::update(float dt)
 {
 	super::update(dt);
+
+	for (int index = 0; index < this->getMaxRunes(); index++)
+	{
+		if (this->getRuneCooldown(index) > 0.0f)
+		{
+			this->setRuneCooldown(index, this->getRuneCooldown(index) - dt);
+		}
+	}
 
 	if (this->isCinimaticHijacked)
 	{
@@ -319,7 +333,11 @@ void PlatformerEntity::revive()
 {
 	this->health = this->getMaxHealth();
 	this->mana = this->getMaxMana();
-	this->runes = this->getMaxRunes();
+
+	for (int index = 0; index < this->getMaxRunes(); index++)
+	{
+		this->setRuneCooldown(index, 0.0f);
+	}
 
 	// Idle
 	this->animationNode->playAnimation();
@@ -365,14 +383,48 @@ int PlatformerEntity::getMaxMana()
 	return this->maxMana;
 }
 
-int PlatformerEntity::getRunes()
+int PlatformerEntity::getAvailableRunes()
 {
-	return this->runes;
+	int availableRunes = 0;
+
+	for (int index = 0; index < this->getMaxRunes(); index++)
+	{
+		if (this->getRuneCooldown(index) <= 0.0f)
+		{
+			availableRunes++;
+		}
+	}
+
+	return availableRunes;
 }
 
-void PlatformerEntity::setRunes(int runes)
+bool PlatformerEntity::tryUseRune()
 {
-	this->runes = MathUtils::clamp(runes, 0, this->getMaxRunes());
+	for (int index = this->getMaxRunes() - 1; index >= 0; index--)
+	{
+		if (this->getRuneCooldown(index) <= 0.0f)
+		{
+			this->setRuneCooldown(index, PlatformerEntity::RuneCooldown);
+
+			return true;
+		}
+	}
+
+	return false;
+}
+
+float PlatformerEntity::getRuneCooldown(int runeIndex)
+{
+	int index = MathUtils::clamp(runeIndex, 0, this->getMaxRunes() - 1);
+
+	return this->runeCooldowns[index];
+}
+
+void PlatformerEntity::setRuneCooldown(int runeIndex, float cooldown)
+{
+	int index = MathUtils::clamp(runeIndex, 0, this->getMaxRunes() - 1);
+
+	this->runeCooldowns[index] = MathUtils::clamp(cooldown, 0.0f, PlatformerEntity::RuneCooldown);
 }
 
 int PlatformerEntity::getMaxRunes()
