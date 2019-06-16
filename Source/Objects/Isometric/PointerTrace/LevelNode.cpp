@@ -88,7 +88,7 @@ void LevelNode::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->sprite->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->sprite->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		NavigationEvents::navigatePointerTraceMap(NavigationEvents::NavigatePointerTraceMapArgs(this->nodeMapFile, [=]()
 		{

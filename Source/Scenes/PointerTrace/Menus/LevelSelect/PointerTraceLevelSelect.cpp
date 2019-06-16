@@ -10,7 +10,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Events/MouseEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -84,31 +84,14 @@ void PointerTraceLevelSelect::initializeListeners()
 		GlobalDirector::loadScene(PointerTraceLevelSelect::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(PointerTraceLevelSelect::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
-}
-
-void PointerTraceLevelSelect::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		return;
-	}
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
 
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
+		args->handled = true;
+		NavigationEvents::navigateBack();
+	});
 }

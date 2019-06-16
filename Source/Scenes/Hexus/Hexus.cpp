@@ -283,17 +283,23 @@ void Hexus::initializeListeners()
 			this->relocateLayer->addChild(UIBoundObject::create(args->relocatedObject));
 		}
 	}));
-	
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(Hexus::onKeyPressed, this);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->openPauseMenu();
+	});
 
 	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(Hexus::onOptionsExit, this));
 	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(Hexus::onResumeClick, this));
 	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(Hexus::onOptionsClick, this));
 	this->pauseMenu->setExitCallback(CC_CALLBACK_0(Hexus::onExitClick, this));
-
-	this->addEventListener(keyboardListener);
 }
 
 void Hexus::startGame(HexusOpponentData* opponentData)
@@ -324,28 +330,6 @@ void Hexus::startGame(HexusOpponentData* opponentData)
 
 	opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
 	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
-}
-
-void Hexus::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isFocused(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			this->openPauseMenu();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void Hexus::onOptionsExit()

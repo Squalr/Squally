@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Maps/SerializableObject.h"
 
 namespace cocos2d
@@ -50,6 +51,8 @@ protected:
 	virtual void onHackerModeDisable();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
+	void whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
+	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
 
 private:
 	typedef SerializableObject super;
@@ -57,8 +60,9 @@ private:
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
-	std::vector<HackableAttribute*> trackedAttributes;
 
+	bool hackermodeEnabled;
+	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 
 	static const std::string MapKeyShowClippy;

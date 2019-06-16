@@ -88,20 +88,24 @@ void Chest::initializeListeners()
 		this->canInteract = false;
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->canInteract)
+		{
+			if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
+			{
+				// TODO: Easy/Hard popup, callback indicating chest can no longer be opened
+				CipherEvents::TriggerLoadCipher(CipherEvents::CipherOpenArgs(this->chestOpenArgs, true));
+			}
+		} 
+	});
 }
 
 void Chest::update(float dt)
 {
 	super::update(dt);
 
-	if (this->canInteract && Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
-	{
-		if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
-		{
-			// TODO: Easy/Hard popup, callback indicating chest can no longer be opened
-			CipherEvents::TriggerLoadCipher(CipherEvents::CipherOpenArgs(this->chestOpenArgs, true));
-		}
-	} 
 }
 
 void Chest::open()

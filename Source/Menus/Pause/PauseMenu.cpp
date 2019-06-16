@@ -143,10 +143,6 @@ void PauseMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(PauseMenu::onKeyPressed, this);
-
 	this->resumeButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onResumeClick, this));
 	this->optionsButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onOptionsClick, this));
 	this->exitButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onExitClick, this));
@@ -154,7 +150,20 @@ void PauseMenu::initializeListeners()
 	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onCloseClick, this));
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
-	this->addEventListener(keyboardListener);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		if (this->resumeClickCallback != nullptr)
+		{
+			this->resumeClickCallback();
+		}
+	});
 }
 
 void PauseMenu::setResumeCallback(std::function<void()> resumeClickCallback)
@@ -175,33 +184,6 @@ void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
 void PauseMenu::onExitConfirm()
 {
 	NavigationEvents::navigateTitle();
-}
-
-void PauseMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-
-			if (this->resumeClickCallback != nullptr)
-			{
-				this->resumeClickCallback();
-			}
-
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void PauseMenu::onCloseClick()

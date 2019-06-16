@@ -47,8 +47,8 @@ PenguinGrunt::PenguinGrunt(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	Size(212.0f, 296.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = PenguinGrunt::getHexusOpponentData();
 

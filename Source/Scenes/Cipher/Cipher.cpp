@@ -149,11 +149,18 @@ void Cipher::initializeListeners()
 		}
 	})));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		/*
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(Cipher::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
+		NavigationEvents::navigateBack();
+		*/
+	});
 }
 
 void Cipher::initializePositions()
@@ -174,26 +181,6 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)
 {
 	this->backClickCallback = backClickCallback;
-}
-
-void Cipher::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void Cipher::onMenuExit()

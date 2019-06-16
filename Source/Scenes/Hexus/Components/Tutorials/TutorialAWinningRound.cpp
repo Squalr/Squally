@@ -106,7 +106,7 @@ void TutorialAWinningRound::onAnyStateChange(GameState* gameState)
 
 void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 {
-	this->scoreTotalsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	this->scoreTotalsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

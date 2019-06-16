@@ -340,12 +340,9 @@ def generateEntityDeserializationCode(allEntityData):
 		generatedContent = "\n\n"
 		
 		for nextEntity in allEntityData:
-			generatedContent += "\t\t" + "if (name == " + nextEntity["Name"] + "::" + "MapKey" + nextEntity["Name"] + ")\n"
-			generatedContent += "\t\t" + "{\n"
-			generatedContent += "\t\t\t" + "newEntity = " + nextEntity["Name"] + "::deserialize(properties);\n"
-			generatedContent += "\t\t" + "}\n"
+			generatedContent += "\t" + "this->deserializers[" + nextEntity["Name"] + "::MapKey" + nextEntity["Name"] + "] = [=](ValueMap properties) { return (SerializableObject*)" + nextEntity["Name"] + "::deserialize(properties); };\n"
 		
-		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t\t")
+		contents = replaceTextBetween(prefixDelimiter, suffixDelimiter, contents, generatedContent + "\n\t")
 		
 	with open(deserializerClass,"w+") as contentWriter:
 		contentWriter.write(contents)

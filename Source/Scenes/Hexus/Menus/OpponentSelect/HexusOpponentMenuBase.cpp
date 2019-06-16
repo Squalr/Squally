@@ -177,40 +177,25 @@ void HexusOpponentMenuBase::initializeListeners()
 		}
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusOpponentMenuBase::onKeyPressed, this);
+		NavigationEvents::navigateBack();
+	});
+
 	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onDeckManagementClick, this));
 	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onShopClick, this));
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
 }
 
 void HexusOpponentMenuBase::onMouseOver(HexusOpponentPreview* opponent)
 {
-}
-
-void HexusOpponentMenuBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void HexusOpponentMenuBase::onBackClick()

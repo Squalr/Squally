@@ -102,7 +102,7 @@ void TutorialEIntroSequence::onAnyStateChange(GameState* gameState)
 
 void TutorialEIntroSequence::initializeCallbacks(GameState* gameState)
 {
-	this->handCardsNextButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	this->handCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->concludeTutorial(gameState);
 	});

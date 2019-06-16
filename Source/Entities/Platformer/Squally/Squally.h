@@ -43,13 +43,16 @@ private:
 	typedef PlatformerFriendly super;
 	Squally(cocos2d::ValueMap& properties);
 	virtual ~Squally();
-
+	
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void update(float) override;
 	void onHackerModeEnable() override;
+	void registerHackables() override;
+	bool isAliveSqually();
 	void saveState();
 	void loadState();
 	void updateWeaponVisual();
@@ -66,5 +69,7 @@ private:
 	SmartAnimationSequenceNode* leftEyeController;
 	SmartAnimationSequenceNode* rightEyeController;
 
-	static const float squallyScale;
+	static const float SquallyScale;
+	static const int DefaultIq;
+	static const int DefaultEq;
 };

@@ -47,8 +47,8 @@ MummyPriest::MummyPriest(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	Size(128.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = MummyPriest::getHexusOpponentData();
 

@@ -47,8 +47,8 @@ BoneKnight::BoneKnight(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	Size(540.0f, 340.0f),
 	1.0f,
 	Vec2(-64.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = BoneKnight::getHexusOpponentData();
 

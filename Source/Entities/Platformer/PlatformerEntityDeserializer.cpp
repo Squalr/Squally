@@ -262,6 +262,238 @@ PlatformerEntityDeserializer* PlatformerEntityDeserializer::getInstance()
 
 PlatformerEntityDeserializer::PlatformerEntityDeserializer()
 {
+	this->deserializers = std::map<std::string, std::function<SerializableObject*(ValueMap)>>();
+
+	this->deserializers[Squally::MapKeySqually] = [=](ValueMap properties) { return (SerializableObject*)Squally::deserialize(properties); };
+	
+	////////////////////////////////////
+	// BEGIN: THIS CODE IS GENERATED: //
+	////X////X////X////X////X////X////X/
+
+	this->deserializers[Cyrogen::MapKeyCyrogen] = [=](ValueMap properties) { return (SerializableObject*)Cyrogen::deserialize(properties); };
+	this->deserializers[FrostFiend::MapKeyFrostFiend] = [=](ValueMap properties) { return (SerializableObject*)FrostFiend::deserialize(properties); };
+	this->deserializers[GoblinElf::MapKeyGoblinElf] = [=](ValueMap properties) { return (SerializableObject*)GoblinElf::deserialize(properties); };
+	this->deserializers[IceGolem::MapKeyIceGolem] = [=](ValueMap properties) { return (SerializableObject*)IceGolem::deserialize(properties); };
+	this->deserializers[PenguinGrunt::MapKeyPenguinGrunt] = [=](ValueMap properties) { return (SerializableObject*)PenguinGrunt::deserialize(properties); };
+	this->deserializers[PenguinWarrior::MapKeyPenguinWarrior] = [=](ValueMap properties) { return (SerializableObject*)PenguinWarrior::deserialize(properties); };
+	this->deserializers[Santa::MapKeySanta] = [=](ValueMap properties) { return (SerializableObject*)Santa::deserialize(properties); };
+	this->deserializers[SnowFiend::MapKeySnowFiend] = [=](ValueMap properties) { return (SerializableObject*)SnowFiend::deserialize(properties); };
+	this->deserializers[ToySoldierGoblin::MapKeyToySoldierGoblin] = [=](ValueMap properties) { return (SerializableObject*)ToySoldierGoblin::deserialize(properties); };
+	this->deserializers[Viking::MapKeyViking] = [=](ValueMap properties) { return (SerializableObject*)Viking::deserialize(properties); };
+	this->deserializers[WaterElemental::MapKeyWaterElemental] = [=](ValueMap properties) { return (SerializableObject*)WaterElemental::deserialize(properties); };
+	this->deserializers[Yeti::MapKeyYeti] = [=](ValueMap properties) { return (SerializableObject*)Yeti::deserialize(properties); };
+	this->deserializers[Snowman::MapKeySnowman] = [=](ValueMap properties) { return (SerializableObject*)Snowman::deserialize(properties); };
+	this->deserializers[YetiBaby::MapKeyYetiBaby] = [=](ValueMap properties) { return (SerializableObject*)YetiBaby::deserialize(properties); };
+	this->deserializers[Aspen::MapKeyAspen] = [=](ValueMap properties) { return (SerializableObject*)Aspen::deserialize(properties); };
+	this->deserializers[Aster::MapKeyAster] = [=](ValueMap properties) { return (SerializableObject*)Aster::deserialize(properties); };
+	this->deserializers[Bodom::MapKeyBodom] = [=](ValueMap properties) { return (SerializableObject*)Bodom::deserialize(properties); };
+	this->deserializers[Cookie::MapKeyCookie] = [=](ValueMap properties) { return (SerializableObject*)Cookie::deserialize(properties); };
+	this->deserializers[Cooper::MapKeyCooper] = [=](ValueMap properties) { return (SerializableObject*)Cooper::deserialize(properties); };
+	this->deserializers[Irmik::MapKeyIrmik] = [=](ValueMap properties) { return (SerializableObject*)Irmik::deserialize(properties); };
+	this->deserializers[Jingles::MapKeyJingles] = [=](ValueMap properties) { return (SerializableObject*)Jingles::deserialize(properties); };
+	this->deserializers[Juniper::MapKeyJuniper] = [=](ValueMap properties) { return (SerializableObject*)Juniper::deserialize(properties); };
+	this->deserializers[Kringle::MapKeyKringle] = [=](ValueMap properties) { return (SerializableObject*)Kringle::deserialize(properties); };
+	this->deserializers[Nessie::MapKeyNessie] = [=](ValueMap properties) { return (SerializableObject*)Nessie::deserialize(properties); };
+	this->deserializers[PrincessPepper::MapKeyPrincessPepper] = [=](ValueMap properties) { return (SerializableObject*)PrincessPepper::deserialize(properties); };
+	this->deserializers[Thatcher::MapKeyThatcher] = [=](ValueMap properties) { return (SerializableObject*)Thatcher::deserialize(properties); };
+	this->deserializers[Theldar::MapKeyTheldar] = [=](ValueMap properties) { return (SerializableObject*)Theldar::deserialize(properties); };
+	this->deserializers[Tinsel::MapKeyTinsel] = [=](ValueMap properties) { return (SerializableObject*)Tinsel::deserialize(properties); };
+	this->deserializers[Agnes::MapKeyAgnes] = [=](ValueMap properties) { return (SerializableObject*)Agnes::deserialize(properties); };
+	this->deserializers[Jack::MapKeyJack] = [=](ValueMap properties) { return (SerializableObject*)Jack::deserialize(properties); };
+	this->deserializers[Reaper::MapKeyReaper] = [=](ValueMap properties) { return (SerializableObject*)Reaper::deserialize(properties); };
+	this->deserializers[Scarecrow::MapKeyScarecrow] = [=](ValueMap properties) { return (SerializableObject*)Scarecrow::deserialize(properties); };
+	this->deserializers[SkeletalPirate::MapKeySkeletalPirate] = [=](ValueMap properties) { return (SerializableObject*)SkeletalPirate::deserialize(properties); };
+	this->deserializers[Thug::MapKeyThug] = [=](ValueMap properties) { return (SerializableObject*)Thug::deserialize(properties); };
+	this->deserializers[VampireLord::MapKeyVampireLord] = [=](ValueMap properties) { return (SerializableObject*)VampireLord::deserialize(properties); };
+	this->deserializers[Vampiress::MapKeyVampiress] = [=](ValueMap properties) { return (SerializableObject*)Vampiress::deserialize(properties); };
+	this->deserializers[Werewolf::MapKeyWerewolf] = [=](ValueMap properties) { return (SerializableObject*)Werewolf::deserialize(properties); };
+	this->deserializers[Wraith::MapKeyWraith] = [=](ValueMap properties) { return (SerializableObject*)Wraith::deserialize(properties); };
+	this->deserializers[Zombie::MapKeyZombie] = [=](ValueMap properties) { return (SerializableObject*)Zombie::deserialize(properties); };
+	this->deserializers[ZombieElric::MapKeyZombieElric] = [=](ValueMap properties) { return (SerializableObject*)ZombieElric::deserialize(properties); };
+	this->deserializers[Knight::MapKeyKnight] = [=](ValueMap properties) { return (SerializableObject*)Knight::deserialize(properties); };
+	this->deserializers[Princess::MapKeyPrincess] = [=](ValueMap properties) { return (SerializableObject*)Princess::deserialize(properties); };
+	this->deserializers[Elric::MapKeyElric] = [=](ValueMap properties) { return (SerializableObject*)Elric::deserialize(properties); };
+	this->deserializers[Garin::MapKeyGarin] = [=](ValueMap properties) { return (SerializableObject*)Garin::deserialize(properties); };
+	this->deserializers[Gaunt::MapKeyGaunt] = [=](ValueMap properties) { return (SerializableObject*)Gaunt::deserialize(properties); };
+	this->deserializers[KingRedsong::MapKeyKingRedsong] = [=](ValueMap properties) { return (SerializableObject*)KingRedsong::deserialize(properties); };
+	this->deserializers[KingRedsongSlime::MapKeyKingRedsongSlime] = [=](ValueMap properties) { return (SerializableObject*)KingRedsongSlime::deserialize(properties); };
+	this->deserializers[Leopold::MapKeyLeopold] = [=](ValueMap properties) { return (SerializableObject*)Leopold::deserialize(properties); };
+	this->deserializers[Leroy::MapKeyLeroy] = [=](ValueMap properties) { return (SerializableObject*)Leroy::deserialize(properties); };
+	this->deserializers[Mabel::MapKeyMabel] = [=](ValueMap properties) { return (SerializableObject*)Mabel::deserialize(properties); };
+	this->deserializers[Merlin::MapKeyMerlin] = [=](ValueMap properties) { return (SerializableObject*)Merlin::deserialize(properties); };
+	this->deserializers[PrincessOpal::MapKeyPrincessOpal] = [=](ValueMap properties) { return (SerializableObject*)PrincessOpal::deserialize(properties); };
+	this->deserializers[Raven::MapKeyRaven] = [=](ValueMap properties) { return (SerializableObject*)Raven::deserialize(properties); };
+	this->deserializers[Rogas::MapKeyRogas] = [=](ValueMap properties) { return (SerializableObject*)Rogas::deserialize(properties); };
+	this->deserializers[Thurstan::MapKeyThurstan] = [=](ValueMap properties) { return (SerializableObject*)Thurstan::deserialize(properties); };
+	this->deserializers[Tyracius::MapKeyTyracius] = [=](ValueMap properties) { return (SerializableObject*)Tyracius::deserialize(properties); };
+	this->deserializers[Asmodeus::MapKeyAsmodeus] = [=](ValueMap properties) { return (SerializableObject*)Asmodeus::deserialize(properties); };
+	this->deserializers[DemonDragon::MapKeyDemonDragon] = [=](ValueMap properties) { return (SerializableObject*)DemonDragon::deserialize(properties); };
+	this->deserializers[DemonGhost::MapKeyDemonGhost] = [=](ValueMap properties) { return (SerializableObject*)DemonGhost::deserialize(properties); };
+	this->deserializers[DemonGrunt::MapKeyDemonGrunt] = [=](ValueMap properties) { return (SerializableObject*)DemonGrunt::deserialize(properties); };
+	this->deserializers[DemonRogue::MapKeyDemonRogue] = [=](ValueMap properties) { return (SerializableObject*)DemonRogue::deserialize(properties); };
+	this->deserializers[DemonShaman::MapKeyDemonShaman] = [=](ValueMap properties) { return (SerializableObject*)DemonShaman::deserialize(properties); };
+	this->deserializers[DemonSwordsman::MapKeyDemonSwordsman] = [=](ValueMap properties) { return (SerializableObject*)DemonSwordsman::deserialize(properties); };
+	this->deserializers[DemonWarrior::MapKeyDemonWarrior] = [=](ValueMap properties) { return (SerializableObject*)DemonWarrior::deserialize(properties); };
+	this->deserializers[FireElemental::MapKeyFireElemental] = [=](ValueMap properties) { return (SerializableObject*)FireElemental::deserialize(properties); };
+	this->deserializers[FireTiger::MapKeyFireTiger] = [=](ValueMap properties) { return (SerializableObject*)FireTiger::deserialize(properties); };
+	this->deserializers[Krampus::MapKeyKrampus] = [=](ValueMap properties) { return (SerializableObject*)Krampus::deserialize(properties); };
+	this->deserializers[LavaGolem::MapKeyLavaGolem] = [=](ValueMap properties) { return (SerializableObject*)LavaGolem::deserialize(properties); };
+	this->deserializers[Apple::MapKeyApple] = [=](ValueMap properties) { return (SerializableObject*)Apple::deserialize(properties); };
+	this->deserializers[CritterDemon::MapKeyCritterDemon] = [=](ValueMap properties) { return (SerializableObject*)CritterDemon::deserialize(properties); };
+	this->deserializers[FlyBot::MapKeyFlyBot] = [=](ValueMap properties) { return (SerializableObject*)FlyBot::deserialize(properties); };
+	this->deserializers[Ash::MapKeyAsh] = [=](ValueMap properties) { return (SerializableObject*)Ash::deserialize(properties); };
+	this->deserializers[Brine::MapKeyBrine] = [=](ValueMap properties) { return (SerializableObject*)Brine::deserialize(properties); };
+	this->deserializers[Celeste::MapKeyCeleste] = [=](ValueMap properties) { return (SerializableObject*)Celeste::deserialize(properties); };
+	this->deserializers[Cindra::MapKeyCindra] = [=](ValueMap properties) { return (SerializableObject*)Cindra::deserialize(properties); };
+	this->deserializers[Drak::MapKeyDrak] = [=](ValueMap properties) { return (SerializableObject*)Drak::deserialize(properties); };
+	this->deserializers[Igneus::MapKeyIgneus] = [=](ValueMap properties) { return (SerializableObject*)Igneus::deserialize(properties); };
+	this->deserializers[Lucifer::MapKeyLucifer] = [=](ValueMap properties) { return (SerializableObject*)Lucifer::deserialize(properties); };
+	this->deserializers[Magnus::MapKeyMagnus] = [=](ValueMap properties) { return (SerializableObject*)Magnus::deserialize(properties); };
+	this->deserializers[Pan::MapKeyPan] = [=](ValueMap properties) { return (SerializableObject*)Pan::deserialize(properties); };
+	this->deserializers[PrincessMittens::MapKeyPrincessMittens] = [=](ValueMap properties) { return (SerializableObject*)PrincessMittens::deserialize(properties); };
+	this->deserializers[Ragnis::MapKeyRagnis] = [=](ValueMap properties) { return (SerializableObject*)Ragnis::deserialize(properties); };
+	this->deserializers[Rupert::MapKeyRupert] = [=](ValueMap properties) { return (SerializableObject*)Rupert::deserialize(properties); };
+	this->deserializers[Rusty::MapKeyRusty] = [=](ValueMap properties) { return (SerializableObject*)Rusty::deserialize(properties); };
+	this->deserializers[Scaldor::MapKeyScaldor] = [=](ValueMap properties) { return (SerializableObject*)Scaldor::deserialize(properties); };
+	this->deserializers[Centaur::MapKeyCentaur] = [=](ValueMap properties) { return (SerializableObject*)Centaur::deserialize(properties); };
+	this->deserializers[Cyclops::MapKeyCyclops] = [=](ValueMap properties) { return (SerializableObject*)Cyclops::deserialize(properties); };
+	this->deserializers[GoblinGruntBoar::MapKeyGoblinGruntBoar] = [=](ValueMap properties) { return (SerializableObject*)GoblinGruntBoar::deserialize(properties); };
+	this->deserializers[GoblinShaman::MapKeyGoblinShaman] = [=](ValueMap properties) { return (SerializableObject*)GoblinShaman::deserialize(properties); };
+	this->deserializers[GoblinWarriorPig::MapKeyGoblinWarriorPig] = [=](ValueMap properties) { return (SerializableObject*)GoblinWarriorPig::deserialize(properties); };
+	this->deserializers[KingGrogg::MapKeyKingGrogg] = [=](ValueMap properties) { return (SerializableObject*)KingGrogg::deserialize(properties); };
+	this->deserializers[Ogre::MapKeyOgre] = [=](ValueMap properties) { return (SerializableObject*)Ogre::deserialize(properties); };
+	this->deserializers[OrcBomber::MapKeyOrcBomber] = [=](ValueMap properties) { return (SerializableObject*)OrcBomber::deserialize(properties); };
+	this->deserializers[OrcGrunt::MapKeyOrcGrunt] = [=](ValueMap properties) { return (SerializableObject*)OrcGrunt::deserialize(properties); };
+	this->deserializers[OrcSwordsman::MapKeyOrcSwordsman] = [=](ValueMap properties) { return (SerializableObject*)OrcSwordsman::deserialize(properties); };
+	this->deserializers[OrcWarrior::MapKeyOrcWarrior] = [=](ValueMap properties) { return (SerializableObject*)OrcWarrior::deserialize(properties); };
+	this->deserializers[Troll::MapKeyTroll] = [=](ValueMap properties) { return (SerializableObject*)Troll::deserialize(properties); };
+	this->deserializers[Goblin::MapKeyGoblin] = [=](ValueMap properties) { return (SerializableObject*)Goblin::deserialize(properties); };
+	this->deserializers[Turtle::MapKeyTurtle] = [=](ValueMap properties) { return (SerializableObject*)Turtle::deserialize(properties); };
+	this->deserializers[Appolo::MapKeyAppolo] = [=](ValueMap properties) { return (SerializableObject*)Appolo::deserialize(properties); };
+	this->deserializers[Ara::MapKeyAra] = [=](ValueMap properties) { return (SerializableObject*)Ara::deserialize(properties); };
+	this->deserializers[Bard::MapKeyBard] = [=](ValueMap properties) { return (SerializableObject*)Bard::deserialize(properties); };
+	this->deserializers[Blackbeard::MapKeyBlackbeard] = [=](ValueMap properties) { return (SerializableObject*)Blackbeard::deserialize(properties); };
+	this->deserializers[Chiron::MapKeyChiron] = [=](ValueMap properties) { return (SerializableObject*)Chiron::deserialize(properties); };
+	this->deserializers[Elriel::MapKeyElriel] = [=](ValueMap properties) { return (SerializableObject*)Elriel::deserialize(properties); };
+	this->deserializers[Gramps::MapKeyGramps] = [=](ValueMap properties) { return (SerializableObject*)Gramps::deserialize(properties); };
+	this->deserializers[Liana::MapKeyLiana] = [=](ValueMap properties) { return (SerializableObject*)Liana::deserialize(properties); };
+	this->deserializers[Lycan::MapKeyLycan] = [=](ValueMap properties) { return (SerializableObject*)Lycan::deserialize(properties); };
+	this->deserializers[Minos::MapKeyMinos] = [=](ValueMap properties) { return (SerializableObject*)Minos::deserialize(properties); };
+	this->deserializers[Polyphemus::MapKeyPolyphemus] = [=](ValueMap properties) { return (SerializableObject*)Polyphemus::deserialize(properties); };
+	this->deserializers[PrincessMatu::MapKeyPrincessMatu] = [=](ValueMap properties) { return (SerializableObject*)PrincessMatu::deserialize(properties); };
+	this->deserializers[Robin::MapKeyRobin] = [=](ValueMap properties) { return (SerializableObject*)Robin::deserialize(properties); };
+	this->deserializers[Toben::MapKeyToben] = [=](ValueMap properties) { return (SerializableObject*)Toben::deserialize(properties); };
+	this->deserializers[BoneFiend::MapKeyBoneFiend] = [=](ValueMap properties) { return (SerializableObject*)BoneFiend::deserialize(properties); };
+	this->deserializers[Hunter::MapKeyHunter] = [=](ValueMap properties) { return (SerializableObject*)Hunter::deserialize(properties); };
+	this->deserializers[KingZul::MapKeyKingZul] = [=](ValueMap properties) { return (SerializableObject*)KingZul::deserialize(properties); };
+	this->deserializers[Mystic::MapKeyMystic] = [=](ValueMap properties) { return (SerializableObject*)Mystic::deserialize(properties); };
+	this->deserializers[ReanimatedFighter::MapKeyReanimatedFighter] = [=](ValueMap properties) { return (SerializableObject*)ReanimatedFighter::deserialize(properties); };
+	this->deserializers[ReanimatedPig::MapKeyReanimatedPig] = [=](ValueMap properties) { return (SerializableObject*)ReanimatedPig::deserialize(properties); };
+	this->deserializers[SkeletalBaron::MapKeySkeletalBaron] = [=](ValueMap properties) { return (SerializableObject*)SkeletalBaron::deserialize(properties); };
+	this->deserializers[SkeletalCleaver::MapKeySkeletalCleaver] = [=](ValueMap properties) { return (SerializableObject*)SkeletalCleaver::deserialize(properties); };
+	this->deserializers[SkeletalKnight::MapKeySkeletalKnight] = [=](ValueMap properties) { return (SerializableObject*)SkeletalKnight::deserialize(properties); };
+	this->deserializers[SkeletalPriestess::MapKeySkeletalPriestess] = [=](ValueMap properties) { return (SerializableObject*)SkeletalPriestess::deserialize(properties); };
+	this->deserializers[Undead::MapKeyUndead] = [=](ValueMap properties) { return (SerializableObject*)Undead::deserialize(properties); };
+	this->deserializers[Ghost::MapKeyGhost] = [=](ValueMap properties) { return (SerializableObject*)Ghost::deserialize(properties); };
+	this->deserializers[Grim::MapKeyGrim] = [=](ValueMap properties) { return (SerializableObject*)Grim::deserialize(properties); };
+	this->deserializers[Amelia::MapKeyAmelia] = [=](ValueMap properties) { return (SerializableObject*)Amelia::deserialize(properties); };
+	this->deserializers[Azmus::MapKeyAzmus] = [=](ValueMap properties) { return (SerializableObject*)Azmus::deserialize(properties); };
+	this->deserializers[Dudly::MapKeyDudly] = [=](ValueMap properties) { return (SerializableObject*)Dudly::deserialize(properties); };
+	this->deserializers[Garrick::MapKeyGarrick] = [=](ValueMap properties) { return (SerializableObject*)Garrick::deserialize(properties); };
+	this->deserializers[Johann::MapKeyJohann] = [=](ValueMap properties) { return (SerializableObject*)Johann::deserialize(properties); };
+	this->deserializers[Necron::MapKeyNecron] = [=](ValueMap properties) { return (SerializableObject*)Necron::deserialize(properties); };
+	this->deserializers[PrincessNebea::MapKeyPrincessNebea] = [=](ValueMap properties) { return (SerializableObject*)PrincessNebea::deserialize(properties); };
+	this->deserializers[Roger::MapKeyRoger] = [=](ValueMap properties) { return (SerializableObject*)Roger::deserialize(properties); };
+	this->deserializers[Thion::MapKeyThion] = [=](ValueMap properties) { return (SerializableObject*)Thion::deserialize(properties); };
+	this->deserializers[Ursula::MapKeyUrsula] = [=](ValueMap properties) { return (SerializableObject*)Ursula::deserialize(properties); };
+	this->deserializers[Vesuvius::MapKeyVesuvius] = [=](ValueMap properties) { return (SerializableObject*)Vesuvius::deserialize(properties); };
+	this->deserializers[Viper::MapKeyViper] = [=](ValueMap properties) { return (SerializableObject*)Viper::deserialize(properties); };
+	this->deserializers[Zana::MapKeyZana] = [=](ValueMap properties) { return (SerializableObject*)Zana::deserialize(properties); };
+	this->deserializers[Zelina::MapKeyZelina] = [=](ValueMap properties) { return (SerializableObject*)Zelina::deserialize(properties); };
+	this->deserializers[Barbarian::MapKeyBarbarian] = [=](ValueMap properties) { return (SerializableObject*)Barbarian::deserialize(properties); };
+	this->deserializers[EarthElemental::MapKeyEarthElemental] = [=](ValueMap properties) { return (SerializableObject*)EarthElemental::deserialize(properties); };
+	this->deserializers[EarthGolem::MapKeyEarthGolem] = [=](ValueMap properties) { return (SerializableObject*)EarthGolem::deserialize(properties); };
+	this->deserializers[ForestGolem::MapKeyForestGolem] = [=](ValueMap properties) { return (SerializableObject*)ForestGolem::deserialize(properties); };
+	this->deserializers[Gorilla::MapKeyGorilla] = [=](ValueMap properties) { return (SerializableObject*)Gorilla::deserialize(properties); };
+	this->deserializers[LightningGolem::MapKeyLightningGolem] = [=](ValueMap properties) { return (SerializableObject*)LightningGolem::deserialize(properties); };
+	this->deserializers[Rhinoman::MapKeyRhinoman] = [=](ValueMap properties) { return (SerializableObject*)Rhinoman::deserialize(properties); };
+	this->deserializers[Shaman::MapKeyShaman] = [=](ValueMap properties) { return (SerializableObject*)Shaman::deserialize(properties); };
+	this->deserializers[SkeletalArcher::MapKeySkeletalArcher] = [=](ValueMap properties) { return (SerializableObject*)SkeletalArcher::deserialize(properties); };
+	this->deserializers[SkeletalNecromancer::MapKeySkeletalNecromancer] = [=](ValueMap properties) { return (SerializableObject*)SkeletalNecromancer::deserialize(properties); };
+	this->deserializers[SkeletalWarrior::MapKeySkeletalWarrior] = [=](ValueMap properties) { return (SerializableObject*)SkeletalWarrior::deserialize(properties); };
+	this->deserializers[TikiGolem::MapKeyTikiGolem] = [=](ValueMap properties) { return (SerializableObject*)TikiGolem::deserialize(properties); };
+	this->deserializers[Gecko::MapKeyGecko] = [=](ValueMap properties) { return (SerializableObject*)Gecko::deserialize(properties); };
+	this->deserializers[Alder::MapKeyAlder] = [=](ValueMap properties) { return (SerializableObject*)Alder::deserialize(properties); };
+	this->deserializers[Bonnie::MapKeyBonnie] = [=](ValueMap properties) { return (SerializableObject*)Bonnie::deserialize(properties); };
+	this->deserializers[Brock::MapKeyBrock] = [=](ValueMap properties) { return (SerializableObject*)Brock::deserialize(properties); };
+	this->deserializers[Burch::MapKeyBurch] = [=](ValueMap properties) { return (SerializableObject*)Burch::deserialize(properties); };
+	this->deserializers[Cypress::MapKeyCypress] = [=](ValueMap properties) { return (SerializableObject*)Cypress::deserialize(properties); };
+	this->deserializers[Finch::MapKeyFinch] = [=](ValueMap properties) { return (SerializableObject*)Finch::deserialize(properties); };
+	this->deserializers[Fraya::MapKeyFraya] = [=](ValueMap properties) { return (SerializableObject*)Fraya::deserialize(properties); };
+	this->deserializers[Jasper::MapKeyJasper] = [=](ValueMap properties) { return (SerializableObject*)Jasper::deserialize(properties); };
+	this->deserializers[Mildred::MapKeyMildred] = [=](ValueMap properties) { return (SerializableObject*)Mildred::deserialize(properties); };
+	this->deserializers[Olive::MapKeyOlive] = [=](ValueMap properties) { return (SerializableObject*)Olive::deserialize(properties); };
+	this->deserializers[PrincessDawn::MapKeyPrincessDawn] = [=](ValueMap properties) { return (SerializableObject*)PrincessDawn::deserialize(properties); };
+	this->deserializers[Raka::MapKeyRaka] = [=](ValueMap properties) { return (SerializableObject*)Raka::deserialize(properties); };
+	this->deserializers[Sarude::MapKeySarude] = [=](ValueMap properties) { return (SerializableObject*)Sarude::deserialize(properties); };
+	this->deserializers[Shen::MapKeyShen] = [=](ValueMap properties) { return (SerializableObject*)Shen::deserialize(properties); };
+	this->deserializers[AnubisPup::MapKeyAnubisPup] = [=](ValueMap properties) { return (SerializableObject*)AnubisPup::deserialize(properties); };
+	this->deserializers[AnubisWarrior::MapKeyAnubisWarrior] = [=](ValueMap properties) { return (SerializableObject*)AnubisWarrior::deserialize(properties); };
+	this->deserializers[LionMan::MapKeyLionMan] = [=](ValueMap properties) { return (SerializableObject*)LionMan::deserialize(properties); };
+	this->deserializers[Lioness::MapKeyLioness] = [=](ValueMap properties) { return (SerializableObject*)Lioness::deserialize(properties); };
+	this->deserializers[Medusa::MapKeyMedusa] = [=](ValueMap properties) { return (SerializableObject*)Medusa::deserialize(properties); };
+	this->deserializers[Mermaid::MapKeyMermaid] = [=](ValueMap properties) { return (SerializableObject*)Mermaid::deserialize(properties); };
+	this->deserializers[Minotaur::MapKeyMinotaur] = [=](ValueMap properties) { return (SerializableObject*)Minotaur::deserialize(properties); };
+	this->deserializers[MummyPriest::MapKeyMummyPriest] = [=](ValueMap properties) { return (SerializableObject*)MummyPriest::deserialize(properties); };
+	this->deserializers[MummyWarrior::MapKeyMummyWarrior] = [=](ValueMap properties) { return (SerializableObject*)MummyWarrior::deserialize(properties); };
+	this->deserializers[Osiris::MapKeyOsiris] = [=](ValueMap properties) { return (SerializableObject*)Osiris::deserialize(properties); };
+	this->deserializers[TigerMan::MapKeyTigerMan] = [=](ValueMap properties) { return (SerializableObject*)TigerMan::deserialize(properties); };
+	this->deserializers[Tigress::MapKeyTigress] = [=](ValueMap properties) { return (SerializableObject*)Tigress::deserialize(properties); };
+	this->deserializers[Mummy::MapKeyMummy] = [=](ValueMap properties) { return (SerializableObject*)Mummy::deserialize(properties); };
+	this->deserializers[Ajax::MapKeyAjax] = [=](ValueMap properties) { return (SerializableObject*)Ajax::deserialize(properties); };
+	this->deserializers[Angel::MapKeyAngel] = [=](ValueMap properties) { return (SerializableObject*)Angel::deserialize(properties); };
+	this->deserializers[Aphrodite::MapKeyAphrodite] = [=](ValueMap properties) { return (SerializableObject*)Aphrodite::deserialize(properties); };
+	this->deserializers[Ares::MapKeyAres] = [=](ValueMap properties) { return (SerializableObject*)Ares::deserialize(properties); };
+	this->deserializers[Athena::MapKeyAthena] = [=](ValueMap properties) { return (SerializableObject*)Athena::deserialize(properties); };
+	this->deserializers[Cleopatra::MapKeyCleopatra] = [=](ValueMap properties) { return (SerializableObject*)Cleopatra::deserialize(properties); };
+	this->deserializers[Geryon::MapKeyGeryon] = [=](ValueMap properties) { return (SerializableObject*)Geryon::deserialize(properties); };
+	this->deserializers[Griffin::MapKeyGriffin] = [=](ValueMap properties) { return (SerializableObject*)Griffin::deserialize(properties); };
+	this->deserializers[Hades::MapKeyHades] = [=](ValueMap properties) { return (SerializableObject*)Hades::deserialize(properties); };
+	this->deserializers[Hera::MapKeyHera] = [=](ValueMap properties) { return (SerializableObject*)Hera::deserialize(properties); };
+	this->deserializers[Horus::MapKeyHorus] = [=](ValueMap properties) { return (SerializableObject*)Horus::deserialize(properties); };
+	this->deserializers[Poseidon::MapKeyPoseidon] = [=](ValueMap properties) { return (SerializableObject*)Poseidon::deserialize(properties); };
+	this->deserializers[Thor::MapKeyThor] = [=](ValueMap properties) { return (SerializableObject*)Thor::deserialize(properties); };
+	this->deserializers[Zeus::MapKeyZeus] = [=](ValueMap properties) { return (SerializableObject*)Zeus::deserialize(properties); };
+	this->deserializers[Abomination::MapKeyAbomination] = [=](ValueMap properties) { return (SerializableObject*)Abomination::deserialize(properties); };
+	this->deserializers[Assassin::MapKeyAssassin] = [=](ValueMap properties) { return (SerializableObject*)Assassin::deserialize(properties); };
+	this->deserializers[BoneKnight::MapKeyBoneKnight] = [=](ValueMap properties) { return (SerializableObject*)BoneKnight::deserialize(properties); };
+	this->deserializers[DarkTiger::MapKeyDarkTiger] = [=](ValueMap properties) { return (SerializableObject*)DarkTiger::deserialize(properties); };
+	this->deserializers[EvilEye::MapKeyEvilEye] = [=](ValueMap properties) { return (SerializableObject*)EvilEye::deserialize(properties); };
+	this->deserializers[Exterminator::MapKeyExterminator] = [=](ValueMap properties) { return (SerializableObject*)Exterminator::deserialize(properties); };
+	this->deserializers[Gargoyle::MapKeyGargoyle] = [=](ValueMap properties) { return (SerializableObject*)Gargoyle::deserialize(properties); };
+	this->deserializers[Shade::MapKeyShade] = [=](ValueMap properties) { return (SerializableObject*)Shade::deserialize(properties); };
+	this->deserializers[VoidArcher::MapKeyVoidArcher] = [=](ValueMap properties) { return (SerializableObject*)VoidArcher::deserialize(properties); };
+	this->deserializers[VoidDemon::MapKeyVoidDemon] = [=](ValueMap properties) { return (SerializableObject*)VoidDemon::deserialize(properties); };
+	this->deserializers[Warlock::MapKeyWarlock] = [=](ValueMap properties) { return (SerializableObject*)Warlock::deserialize(properties); };
+	this->deserializers[Professor::MapKeyProfessor] = [=](ValueMap properties) { return (SerializableObject*)Professor::deserialize(properties); };
+	this->deserializers[Robot::MapKeyRobot] = [=](ValueMap properties) { return (SerializableObject*)Robot::deserialize(properties); };
+	this->deserializers[Atreus::MapKeyAtreus] = [=](ValueMap properties) { return (SerializableObject*)Atreus::deserialize(properties); };
+	this->deserializers[Bancroft::MapKeyBancroft] = [=](ValueMap properties) { return (SerializableObject*)Bancroft::deserialize(properties); };
+	this->deserializers[Godiva::MapKeyGodiva] = [=](ValueMap properties) { return (SerializableObject*)Godiva::deserialize(properties); };
+	this->deserializers[Illia::MapKeyIllia] = [=](ValueMap properties) { return (SerializableObject*)Illia::deserialize(properties); };
+	this->deserializers[Leon::MapKeyLeon] = [=](ValueMap properties) { return (SerializableObject*)Leon::deserialize(properties); };
+	this->deserializers[Mara::MapKeyMara] = [=](ValueMap properties) { return (SerializableObject*)Mara::deserialize(properties); };
+	this->deserializers[Marcel::MapKeyMarcel] = [=](ValueMap properties) { return (SerializableObject*)Marcel::deserialize(properties); };
+	this->deserializers[Piper::MapKeyPiper] = [=](ValueMap properties) { return (SerializableObject*)Piper::deserialize(properties); };
+	this->deserializers[QueenElise::MapKeyQueenElise] = [=](ValueMap properties) { return (SerializableObject*)QueenElise::deserialize(properties); };
+	this->deserializers[Radon::MapKeyRadon] = [=](ValueMap properties) { return (SerializableObject*)Radon::deserialize(properties); };
+	this->deserializers[Ralston::MapKeyRalston] = [=](ValueMap properties) { return (SerializableObject*)Ralston::deserialize(properties); };
+	this->deserializers[Xenon::MapKeyXenon] = [=](ValueMap properties) { return (SerializableObject*)Xenon::deserialize(properties); };
+	this->deserializers[Ysara::MapKeyYsara] = [=](ValueMap properties) { return (SerializableObject*)Ysara::deserialize(properties); };
+
+	////O////O////O////O////O////O////O/
+	// END: THIS CODE IS GENERATED    //
+	////////////////////////////////////
 }
 
 PlatformerEntityDeserializer::~PlatformerEntityDeserializer()
@@ -292,908 +524,15 @@ void PlatformerEntityDeserializer::onDeserializationRequest(DeserializationEvent
 {
 	if (args->typeName == PlatformerEntityDeserializer::KeyTypeEntity)
 	{
-		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::MapKeyName).asString();
-		SerializableObject* newEntity = nullptr;
+		std::string name = args->properties.at(SerializableObject::MapKeyName).asString();
 
-		if (name == Squally::MapKeySqually)
+		if (this->deserializers.find(name) != this->deserializers.end())
 		{
-			newEntity = Squally::deserialize(properties);
+			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(this->deserializers[name](args->properties)));
 		}
-
-		////////////////////////////////////
-		// BEGIN: THIS CODE IS GENERATED: //
-		////X////X////X////X////X////X////X/
-
-		if (name == Cyrogen::MapKeyCyrogen)
+		else
 		{
-			newEntity = Cyrogen::deserialize(properties);
-		}
-		if (name == FrostFiend::MapKeyFrostFiend)
-		{
-			newEntity = FrostFiend::deserialize(properties);
-		}
-		if (name == GoblinElf::MapKeyGoblinElf)
-		{
-			newEntity = GoblinElf::deserialize(properties);
-		}
-		if (name == IceGolem::MapKeyIceGolem)
-		{
-			newEntity = IceGolem::deserialize(properties);
-		}
-		if (name == PenguinGrunt::MapKeyPenguinGrunt)
-		{
-			newEntity = PenguinGrunt::deserialize(properties);
-		}
-		if (name == PenguinWarrior::MapKeyPenguinWarrior)
-		{
-			newEntity = PenguinWarrior::deserialize(properties);
-		}
-		if (name == Santa::MapKeySanta)
-		{
-			newEntity = Santa::deserialize(properties);
-		}
-		if (name == SnowFiend::MapKeySnowFiend)
-		{
-			newEntity = SnowFiend::deserialize(properties);
-		}
-		if (name == ToySoldierGoblin::MapKeyToySoldierGoblin)
-		{
-			newEntity = ToySoldierGoblin::deserialize(properties);
-		}
-		if (name == Viking::MapKeyViking)
-		{
-			newEntity = Viking::deserialize(properties);
-		}
-		if (name == WaterElemental::MapKeyWaterElemental)
-		{
-			newEntity = WaterElemental::deserialize(properties);
-		}
-		if (name == Yeti::MapKeyYeti)
-		{
-			newEntity = Yeti::deserialize(properties);
-		}
-		if (name == Snowman::MapKeySnowman)
-		{
-			newEntity = Snowman::deserialize(properties);
-		}
-		if (name == YetiBaby::MapKeyYetiBaby)
-		{
-			newEntity = YetiBaby::deserialize(properties);
-		}
-		if (name == Aspen::MapKeyAspen)
-		{
-			newEntity = Aspen::deserialize(properties);
-		}
-		if (name == Aster::MapKeyAster)
-		{
-			newEntity = Aster::deserialize(properties);
-		}
-		if (name == Bodom::MapKeyBodom)
-		{
-			newEntity = Bodom::deserialize(properties);
-		}
-		if (name == Cookie::MapKeyCookie)
-		{
-			newEntity = Cookie::deserialize(properties);
-		}
-		if (name == Cooper::MapKeyCooper)
-		{
-			newEntity = Cooper::deserialize(properties);
-		}
-		if (name == Irmik::MapKeyIrmik)
-		{
-			newEntity = Irmik::deserialize(properties);
-		}
-		if (name == Jingles::MapKeyJingles)
-		{
-			newEntity = Jingles::deserialize(properties);
-		}
-		if (name == Juniper::MapKeyJuniper)
-		{
-			newEntity = Juniper::deserialize(properties);
-		}
-		if (name == Kringle::MapKeyKringle)
-		{
-			newEntity = Kringle::deserialize(properties);
-		}
-		if (name == Nessie::MapKeyNessie)
-		{
-			newEntity = Nessie::deserialize(properties);
-		}
-		if (name == PrincessPepper::MapKeyPrincessPepper)
-		{
-			newEntity = PrincessPepper::deserialize(properties);
-		}
-		if (name == Thatcher::MapKeyThatcher)
-		{
-			newEntity = Thatcher::deserialize(properties);
-		}
-		if (name == Theldar::MapKeyTheldar)
-		{
-			newEntity = Theldar::deserialize(properties);
-		}
-		if (name == Tinsel::MapKeyTinsel)
-		{
-			newEntity = Tinsel::deserialize(properties);
-		}
-		if (name == Agnes::MapKeyAgnes)
-		{
-			newEntity = Agnes::deserialize(properties);
-		}
-		if (name == Jack::MapKeyJack)
-		{
-			newEntity = Jack::deserialize(properties);
-		}
-		if (name == Reaper::MapKeyReaper)
-		{
-			newEntity = Reaper::deserialize(properties);
-		}
-		if (name == Scarecrow::MapKeyScarecrow)
-		{
-			newEntity = Scarecrow::deserialize(properties);
-		}
-		if (name == SkeletalPirate::MapKeySkeletalPirate)
-		{
-			newEntity = SkeletalPirate::deserialize(properties);
-		}
-		if (name == Thug::MapKeyThug)
-		{
-			newEntity = Thug::deserialize(properties);
-		}
-		if (name == VampireLord::MapKeyVampireLord)
-		{
-			newEntity = VampireLord::deserialize(properties);
-		}
-		if (name == Vampiress::MapKeyVampiress)
-		{
-			newEntity = Vampiress::deserialize(properties);
-		}
-		if (name == Werewolf::MapKeyWerewolf)
-		{
-			newEntity = Werewolf::deserialize(properties);
-		}
-		if (name == Wraith::MapKeyWraith)
-		{
-			newEntity = Wraith::deserialize(properties);
-		}
-		if (name == Zombie::MapKeyZombie)
-		{
-			newEntity = Zombie::deserialize(properties);
-		}
-		if (name == ZombieElric::MapKeyZombieElric)
-		{
-			newEntity = ZombieElric::deserialize(properties);
-		}
-		if (name == Knight::MapKeyKnight)
-		{
-			newEntity = Knight::deserialize(properties);
-		}
-		if (name == Princess::MapKeyPrincess)
-		{
-			newEntity = Princess::deserialize(properties);
-		}
-		if (name == Elric::MapKeyElric)
-		{
-			newEntity = Elric::deserialize(properties);
-		}
-		if (name == Garin::MapKeyGarin)
-		{
-			newEntity = Garin::deserialize(properties);
-		}
-		if (name == Gaunt::MapKeyGaunt)
-		{
-			newEntity = Gaunt::deserialize(properties);
-		}
-		if (name == KingRedsong::MapKeyKingRedsong)
-		{
-			newEntity = KingRedsong::deserialize(properties);
-		}
-		if (name == KingRedsongSlime::MapKeyKingRedsongSlime)
-		{
-			newEntity = KingRedsongSlime::deserialize(properties);
-		}
-		if (name == Leopold::MapKeyLeopold)
-		{
-			newEntity = Leopold::deserialize(properties);
-		}
-		if (name == Leroy::MapKeyLeroy)
-		{
-			newEntity = Leroy::deserialize(properties);
-		}
-		if (name == Mabel::MapKeyMabel)
-		{
-			newEntity = Mabel::deserialize(properties);
-		}
-		if (name == Merlin::MapKeyMerlin)
-		{
-			newEntity = Merlin::deserialize(properties);
-		}
-		if (name == PrincessOpal::MapKeyPrincessOpal)
-		{
-			newEntity = PrincessOpal::deserialize(properties);
-		}
-		if (name == Raven::MapKeyRaven)
-		{
-			newEntity = Raven::deserialize(properties);
-		}
-		if (name == Rogas::MapKeyRogas)
-		{
-			newEntity = Rogas::deserialize(properties);
-		}
-		if (name == Thurstan::MapKeyThurstan)
-		{
-			newEntity = Thurstan::deserialize(properties);
-		}
-		if (name == Tyracius::MapKeyTyracius)
-		{
-			newEntity = Tyracius::deserialize(properties);
-		}
-		if (name == Asmodeus::MapKeyAsmodeus)
-		{
-			newEntity = Asmodeus::deserialize(properties);
-		}
-		if (name == DemonDragon::MapKeyDemonDragon)
-		{
-			newEntity = DemonDragon::deserialize(properties);
-		}
-		if (name == DemonGhost::MapKeyDemonGhost)
-		{
-			newEntity = DemonGhost::deserialize(properties);
-		}
-		if (name == DemonGrunt::MapKeyDemonGrunt)
-		{
-			newEntity = DemonGrunt::deserialize(properties);
-		}
-		if (name == DemonRogue::MapKeyDemonRogue)
-		{
-			newEntity = DemonRogue::deserialize(properties);
-		}
-		if (name == DemonShaman::MapKeyDemonShaman)
-		{
-			newEntity = DemonShaman::deserialize(properties);
-		}
-		if (name == DemonSwordsman::MapKeyDemonSwordsman)
-		{
-			newEntity = DemonSwordsman::deserialize(properties);
-		}
-		if (name == DemonWarrior::MapKeyDemonWarrior)
-		{
-			newEntity = DemonWarrior::deserialize(properties);
-		}
-		if (name == FireElemental::MapKeyFireElemental)
-		{
-			newEntity = FireElemental::deserialize(properties);
-		}
-		if (name == FireTiger::MapKeyFireTiger)
-		{
-			newEntity = FireTiger::deserialize(properties);
-		}
-		if (name == Krampus::MapKeyKrampus)
-		{
-			newEntity = Krampus::deserialize(properties);
-		}
-		if (name == LavaGolem::MapKeyLavaGolem)
-		{
-			newEntity = LavaGolem::deserialize(properties);
-		}
-		if (name == Apple::MapKeyApple)
-		{
-			newEntity = Apple::deserialize(properties);
-		}
-		if (name == CritterDemon::MapKeyCritterDemon)
-		{
-			newEntity = CritterDemon::deserialize(properties);
-		}
-		if (name == FlyBot::MapKeyFlyBot)
-		{
-			newEntity = FlyBot::deserialize(properties);
-		}
-		if (name == Ash::MapKeyAsh)
-		{
-			newEntity = Ash::deserialize(properties);
-		}
-		if (name == Brine::MapKeyBrine)
-		{
-			newEntity = Brine::deserialize(properties);
-		}
-		if (name == Celeste::MapKeyCeleste)
-		{
-			newEntity = Celeste::deserialize(properties);
-		}
-		if (name == Cindra::MapKeyCindra)
-		{
-			newEntity = Cindra::deserialize(properties);
-		}
-		if (name == Drak::MapKeyDrak)
-		{
-			newEntity = Drak::deserialize(properties);
-		}
-		if (name == Igneus::MapKeyIgneus)
-		{
-			newEntity = Igneus::deserialize(properties);
-		}
-		if (name == Lucifer::MapKeyLucifer)
-		{
-			newEntity = Lucifer::deserialize(properties);
-		}
-		if (name == Magnus::MapKeyMagnus)
-		{
-			newEntity = Magnus::deserialize(properties);
-		}
-		if (name == Pan::MapKeyPan)
-		{
-			newEntity = Pan::deserialize(properties);
-		}
-		if (name == PrincessMittens::MapKeyPrincessMittens)
-		{
-			newEntity = PrincessMittens::deserialize(properties);
-		}
-		if (name == Ragnis::MapKeyRagnis)
-		{
-			newEntity = Ragnis::deserialize(properties);
-		}
-		if (name == Rupert::MapKeyRupert)
-		{
-			newEntity = Rupert::deserialize(properties);
-		}
-		if (name == Rusty::MapKeyRusty)
-		{
-			newEntity = Rusty::deserialize(properties);
-		}
-		if (name == Scaldor::MapKeyScaldor)
-		{
-			newEntity = Scaldor::deserialize(properties);
-		}
-		if (name == Centaur::MapKeyCentaur)
-		{
-			newEntity = Centaur::deserialize(properties);
-		}
-		if (name == Cyclops::MapKeyCyclops)
-		{
-			newEntity = Cyclops::deserialize(properties);
-		}
-		if (name == GoblinGruntBoar::MapKeyGoblinGruntBoar)
-		{
-			newEntity = GoblinGruntBoar::deserialize(properties);
-		}
-		if (name == GoblinShaman::MapKeyGoblinShaman)
-		{
-			newEntity = GoblinShaman::deserialize(properties);
-		}
-		if (name == GoblinWarriorPig::MapKeyGoblinWarriorPig)
-		{
-			newEntity = GoblinWarriorPig::deserialize(properties);
-		}
-		if (name == KingGrogg::MapKeyKingGrogg)
-		{
-			newEntity = KingGrogg::deserialize(properties);
-		}
-		if (name == Ogre::MapKeyOgre)
-		{
-			newEntity = Ogre::deserialize(properties);
-		}
-		if (name == OrcBomber::MapKeyOrcBomber)
-		{
-			newEntity = OrcBomber::deserialize(properties);
-		}
-		if (name == OrcGrunt::MapKeyOrcGrunt)
-		{
-			newEntity = OrcGrunt::deserialize(properties);
-		}
-		if (name == OrcSwordsman::MapKeyOrcSwordsman)
-		{
-			newEntity = OrcSwordsman::deserialize(properties);
-		}
-		if (name == OrcWarrior::MapKeyOrcWarrior)
-		{
-			newEntity = OrcWarrior::deserialize(properties);
-		}
-		if (name == Troll::MapKeyTroll)
-		{
-			newEntity = Troll::deserialize(properties);
-		}
-		if (name == Goblin::MapKeyGoblin)
-		{
-			newEntity = Goblin::deserialize(properties);
-		}
-		if (name == Turtle::MapKeyTurtle)
-		{
-			newEntity = Turtle::deserialize(properties);
-		}
-		if (name == Appolo::MapKeyAppolo)
-		{
-			newEntity = Appolo::deserialize(properties);
-		}
-		if (name == Ara::MapKeyAra)
-		{
-			newEntity = Ara::deserialize(properties);
-		}
-		if (name == Bard::MapKeyBard)
-		{
-			newEntity = Bard::deserialize(properties);
-		}
-		if (name == Blackbeard::MapKeyBlackbeard)
-		{
-			newEntity = Blackbeard::deserialize(properties);
-		}
-		if (name == Chiron::MapKeyChiron)
-		{
-			newEntity = Chiron::deserialize(properties);
-		}
-		if (name == Elriel::MapKeyElriel)
-		{
-			newEntity = Elriel::deserialize(properties);
-		}
-		if (name == Gramps::MapKeyGramps)
-		{
-			newEntity = Gramps::deserialize(properties);
-		}
-		if (name == Liana::MapKeyLiana)
-		{
-			newEntity = Liana::deserialize(properties);
-		}
-		if (name == Lycan::MapKeyLycan)
-		{
-			newEntity = Lycan::deserialize(properties);
-		}
-		if (name == Minos::MapKeyMinos)
-		{
-			newEntity = Minos::deserialize(properties);
-		}
-		if (name == Polyphemus::MapKeyPolyphemus)
-		{
-			newEntity = Polyphemus::deserialize(properties);
-		}
-		if (name == PrincessMatu::MapKeyPrincessMatu)
-		{
-			newEntity = PrincessMatu::deserialize(properties);
-		}
-		if (name == Robin::MapKeyRobin)
-		{
-			newEntity = Robin::deserialize(properties);
-		}
-		if (name == Toben::MapKeyToben)
-		{
-			newEntity = Toben::deserialize(properties);
-		}
-		if (name == BoneFiend::MapKeyBoneFiend)
-		{
-			newEntity = BoneFiend::deserialize(properties);
-		}
-		if (name == Hunter::MapKeyHunter)
-		{
-			newEntity = Hunter::deserialize(properties);
-		}
-		if (name == KingZul::MapKeyKingZul)
-		{
-			newEntity = KingZul::deserialize(properties);
-		}
-		if (name == Mystic::MapKeyMystic)
-		{
-			newEntity = Mystic::deserialize(properties);
-		}
-		if (name == ReanimatedFighter::MapKeyReanimatedFighter)
-		{
-			newEntity = ReanimatedFighter::deserialize(properties);
-		}
-		if (name == ReanimatedPig::MapKeyReanimatedPig)
-		{
-			newEntity = ReanimatedPig::deserialize(properties);
-		}
-		if (name == SkeletalBaron::MapKeySkeletalBaron)
-		{
-			newEntity = SkeletalBaron::deserialize(properties);
-		}
-		if (name == SkeletalCleaver::MapKeySkeletalCleaver)
-		{
-			newEntity = SkeletalCleaver::deserialize(properties);
-		}
-		if (name == SkeletalKnight::MapKeySkeletalKnight)
-		{
-			newEntity = SkeletalKnight::deserialize(properties);
-		}
-		if (name == SkeletalPriestess::MapKeySkeletalPriestess)
-		{
-			newEntity = SkeletalPriestess::deserialize(properties);
-		}
-		if (name == Undead::MapKeyUndead)
-		{
-			newEntity = Undead::deserialize(properties);
-		}
-		if (name == Ghost::MapKeyGhost)
-		{
-			newEntity = Ghost::deserialize(properties);
-		}
-		if (name == Grim::MapKeyGrim)
-		{
-			newEntity = Grim::deserialize(properties);
-		}
-		if (name == Amelia::MapKeyAmelia)
-		{
-			newEntity = Amelia::deserialize(properties);
-		}
-		if (name == Azmus::MapKeyAzmus)
-		{
-			newEntity = Azmus::deserialize(properties);
-		}
-		if (name == Dudly::MapKeyDudly)
-		{
-			newEntity = Dudly::deserialize(properties);
-		}
-		if (name == Garrick::MapKeyGarrick)
-		{
-			newEntity = Garrick::deserialize(properties);
-		}
-		if (name == Johann::MapKeyJohann)
-		{
-			newEntity = Johann::deserialize(properties);
-		}
-		if (name == Necron::MapKeyNecron)
-		{
-			newEntity = Necron::deserialize(properties);
-		}
-		if (name == PrincessNebea::MapKeyPrincessNebea)
-		{
-			newEntity = PrincessNebea::deserialize(properties);
-		}
-		if (name == Roger::MapKeyRoger)
-		{
-			newEntity = Roger::deserialize(properties);
-		}
-		if (name == Thion::MapKeyThion)
-		{
-			newEntity = Thion::deserialize(properties);
-		}
-		if (name == Ursula::MapKeyUrsula)
-		{
-			newEntity = Ursula::deserialize(properties);
-		}
-		if (name == Vesuvius::MapKeyVesuvius)
-		{
-			newEntity = Vesuvius::deserialize(properties);
-		}
-		if (name == Viper::MapKeyViper)
-		{
-			newEntity = Viper::deserialize(properties);
-		}
-		if (name == Zana::MapKeyZana)
-		{
-			newEntity = Zana::deserialize(properties);
-		}
-		if (name == Zelina::MapKeyZelina)
-		{
-			newEntity = Zelina::deserialize(properties);
-		}
-		if (name == Barbarian::MapKeyBarbarian)
-		{
-			newEntity = Barbarian::deserialize(properties);
-		}
-		if (name == EarthElemental::MapKeyEarthElemental)
-		{
-			newEntity = EarthElemental::deserialize(properties);
-		}
-		if (name == EarthGolem::MapKeyEarthGolem)
-		{
-			newEntity = EarthGolem::deserialize(properties);
-		}
-		if (name == ForestGolem::MapKeyForestGolem)
-		{
-			newEntity = ForestGolem::deserialize(properties);
-		}
-		if (name == Gorilla::MapKeyGorilla)
-		{
-			newEntity = Gorilla::deserialize(properties);
-		}
-		if (name == LightningGolem::MapKeyLightningGolem)
-		{
-			newEntity = LightningGolem::deserialize(properties);
-		}
-		if (name == Rhinoman::MapKeyRhinoman)
-		{
-			newEntity = Rhinoman::deserialize(properties);
-		}
-		if (name == Shaman::MapKeyShaman)
-		{
-			newEntity = Shaman::deserialize(properties);
-		}
-		if (name == SkeletalArcher::MapKeySkeletalArcher)
-		{
-			newEntity = SkeletalArcher::deserialize(properties);
-		}
-		if (name == SkeletalNecromancer::MapKeySkeletalNecromancer)
-		{
-			newEntity = SkeletalNecromancer::deserialize(properties);
-		}
-		if (name == SkeletalWarrior::MapKeySkeletalWarrior)
-		{
-			newEntity = SkeletalWarrior::deserialize(properties);
-		}
-		if (name == TikiGolem::MapKeyTikiGolem)
-		{
-			newEntity = TikiGolem::deserialize(properties);
-		}
-		if (name == Gecko::MapKeyGecko)
-		{
-			newEntity = Gecko::deserialize(properties);
-		}
-		if (name == Alder::MapKeyAlder)
-		{
-			newEntity = Alder::deserialize(properties);
-		}
-		if (name == Bonnie::MapKeyBonnie)
-		{
-			newEntity = Bonnie::deserialize(properties);
-		}
-		if (name == Brock::MapKeyBrock)
-		{
-			newEntity = Brock::deserialize(properties);
-		}
-		if (name == Burch::MapKeyBurch)
-		{
-			newEntity = Burch::deserialize(properties);
-		}
-		if (name == Cypress::MapKeyCypress)
-		{
-			newEntity = Cypress::deserialize(properties);
-		}
-		if (name == Finch::MapKeyFinch)
-		{
-			newEntity = Finch::deserialize(properties);
-		}
-		if (name == Fraya::MapKeyFraya)
-		{
-			newEntity = Fraya::deserialize(properties);
-		}
-		if (name == Jasper::MapKeyJasper)
-		{
-			newEntity = Jasper::deserialize(properties);
-		}
-		if (name == Mildred::MapKeyMildred)
-		{
-			newEntity = Mildred::deserialize(properties);
-		}
-		if (name == Olive::MapKeyOlive)
-		{
-			newEntity = Olive::deserialize(properties);
-		}
-		if (name == PrincessDawn::MapKeyPrincessDawn)
-		{
-			newEntity = PrincessDawn::deserialize(properties);
-		}
-		if (name == Raka::MapKeyRaka)
-		{
-			newEntity = Raka::deserialize(properties);
-		}
-		if (name == Sarude::MapKeySarude)
-		{
-			newEntity = Sarude::deserialize(properties);
-		}
-		if (name == Shen::MapKeyShen)
-		{
-			newEntity = Shen::deserialize(properties);
-		}
-		if (name == AnubisPup::MapKeyAnubisPup)
-		{
-			newEntity = AnubisPup::deserialize(properties);
-		}
-		if (name == AnubisWarrior::MapKeyAnubisWarrior)
-		{
-			newEntity = AnubisWarrior::deserialize(properties);
-		}
-		if (name == LionMan::MapKeyLionMan)
-		{
-			newEntity = LionMan::deserialize(properties);
-		}
-		if (name == Lioness::MapKeyLioness)
-		{
-			newEntity = Lioness::deserialize(properties);
-		}
-		if (name == Medusa::MapKeyMedusa)
-		{
-			newEntity = Medusa::deserialize(properties);
-		}
-		if (name == Mermaid::MapKeyMermaid)
-		{
-			newEntity = Mermaid::deserialize(properties);
-		}
-		if (name == Minotaur::MapKeyMinotaur)
-		{
-			newEntity = Minotaur::deserialize(properties);
-		}
-		if (name == MummyPriest::MapKeyMummyPriest)
-		{
-			newEntity = MummyPriest::deserialize(properties);
-		}
-		if (name == MummyWarrior::MapKeyMummyWarrior)
-		{
-			newEntity = MummyWarrior::deserialize(properties);
-		}
-		if (name == Osiris::MapKeyOsiris)
-		{
-			newEntity = Osiris::deserialize(properties);
-		}
-		if (name == TigerMan::MapKeyTigerMan)
-		{
-			newEntity = TigerMan::deserialize(properties);
-		}
-		if (name == Tigress::MapKeyTigress)
-		{
-			newEntity = Tigress::deserialize(properties);
-		}
-		if (name == Mummy::MapKeyMummy)
-		{
-			newEntity = Mummy::deserialize(properties);
-		}
-		if (name == Ajax::MapKeyAjax)
-		{
-			newEntity = Ajax::deserialize(properties);
-		}
-		if (name == Angel::MapKeyAngel)
-		{
-			newEntity = Angel::deserialize(properties);
-		}
-		if (name == Aphrodite::MapKeyAphrodite)
-		{
-			newEntity = Aphrodite::deserialize(properties);
-		}
-		if (name == Ares::MapKeyAres)
-		{
-			newEntity = Ares::deserialize(properties);
-		}
-		if (name == Athena::MapKeyAthena)
-		{
-			newEntity = Athena::deserialize(properties);
-		}
-		if (name == Cleopatra::MapKeyCleopatra)
-		{
-			newEntity = Cleopatra::deserialize(properties);
-		}
-		if (name == Geryon::MapKeyGeryon)
-		{
-			newEntity = Geryon::deserialize(properties);
-		}
-		if (name == Griffin::MapKeyGriffin)
-		{
-			newEntity = Griffin::deserialize(properties);
-		}
-		if (name == Hades::MapKeyHades)
-		{
-			newEntity = Hades::deserialize(properties);
-		}
-		if (name == Hera::MapKeyHera)
-		{
-			newEntity = Hera::deserialize(properties);
-		}
-		if (name == Horus::MapKeyHorus)
-		{
-			newEntity = Horus::deserialize(properties);
-		}
-		if (name == Poseidon::MapKeyPoseidon)
-		{
-			newEntity = Poseidon::deserialize(properties);
-		}
-		if (name == Thor::MapKeyThor)
-		{
-			newEntity = Thor::deserialize(properties);
-		}
-		if (name == Zeus::MapKeyZeus)
-		{
-			newEntity = Zeus::deserialize(properties);
-		}
-		if (name == Abomination::MapKeyAbomination)
-		{
-			newEntity = Abomination::deserialize(properties);
-		}
-		if (name == Assassin::MapKeyAssassin)
-		{
-			newEntity = Assassin::deserialize(properties);
-		}
-		if (name == BoneKnight::MapKeyBoneKnight)
-		{
-			newEntity = BoneKnight::deserialize(properties);
-		}
-		if (name == DarkTiger::MapKeyDarkTiger)
-		{
-			newEntity = DarkTiger::deserialize(properties);
-		}
-		if (name == EvilEye::MapKeyEvilEye)
-		{
-			newEntity = EvilEye::deserialize(properties);
-		}
-		if (name == Exterminator::MapKeyExterminator)
-		{
-			newEntity = Exterminator::deserialize(properties);
-		}
-		if (name == Gargoyle::MapKeyGargoyle)
-		{
-			newEntity = Gargoyle::deserialize(properties);
-		}
-		if (name == Shade::MapKeyShade)
-		{
-			newEntity = Shade::deserialize(properties);
-		}
-		if (name == VoidArcher::MapKeyVoidArcher)
-		{
-			newEntity = VoidArcher::deserialize(properties);
-		}
-		if (name == VoidDemon::MapKeyVoidDemon)
-		{
-			newEntity = VoidDemon::deserialize(properties);
-		}
-		if (name == Warlock::MapKeyWarlock)
-		{
-			newEntity = Warlock::deserialize(properties);
-		}
-		if (name == Professor::MapKeyProfessor)
-		{
-			newEntity = Professor::deserialize(properties);
-		}
-		if (name == Robot::MapKeyRobot)
-		{
-			newEntity = Robot::deserialize(properties);
-		}
-		if (name == Atreus::MapKeyAtreus)
-		{
-			newEntity = Atreus::deserialize(properties);
-		}
-		if (name == Bancroft::MapKeyBancroft)
-		{
-			newEntity = Bancroft::deserialize(properties);
-		}
-		if (name == Godiva::MapKeyGodiva)
-		{
-			newEntity = Godiva::deserialize(properties);
-		}
-		if (name == Illia::MapKeyIllia)
-		{
-			newEntity = Illia::deserialize(properties);
-		}
-		if (name == Leon::MapKeyLeon)
-		{
-			newEntity = Leon::deserialize(properties);
-		}
-		if (name == Mara::MapKeyMara)
-		{
-			newEntity = Mara::deserialize(properties);
-		}
-		if (name == Marcel::MapKeyMarcel)
-		{
-			newEntity = Marcel::deserialize(properties);
-		}
-		if (name == Piper::MapKeyPiper)
-		{
-			newEntity = Piper::deserialize(properties);
-		}
-		if (name == QueenElise::MapKeyQueenElise)
-		{
-			newEntity = QueenElise::deserialize(properties);
-		}
-		if (name == Radon::MapKeyRadon)
-		{
-			newEntity = Radon::deserialize(properties);
-		}
-		if (name == Ralston::MapKeyRalston)
-		{
-			newEntity = Ralston::deserialize(properties);
-		}
-		if (name == Xenon::MapKeyXenon)
-		{
-			newEntity = Xenon::deserialize(properties);
-		}
-		if (name == Ysara::MapKeyYsara)
-		{
-			newEntity = Ysara::deserialize(properties);
-		}
-
-		////O////O////O////O////O////O////O/
-		// END: THIS CODE IS GENERATED    //
-		////////////////////////////////////
-
-		if (newEntity != nullptr)
-		{
-			// Fire an event indicating successful deserialization
-			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
+			CCLOG("Unknown entity encountered: %s", name.c_str());
 		}
 	}
 }

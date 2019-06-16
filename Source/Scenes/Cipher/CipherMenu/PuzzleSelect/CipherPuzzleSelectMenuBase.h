@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
 #include "Events/NavigationEvents.h"
@@ -27,7 +26,6 @@ protected:
 	void initializeListeners() override;
 	void loadProgress();
 	void onBackClick();
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void buildCipherList();
 	static std::string buildCipherJson(std::string rule, std::vector<std::string> inputs);
 

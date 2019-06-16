@@ -10,6 +10,7 @@ class HackableObject;
 class HackableEvents
 {
 public:
+	static const std::string EventHackerModeToggle;
 	static const std::string EventHackerModeEnable;
 	static const std::string EventHackerModeDisable;
 	static const std::string EventAllowHackerMode;
@@ -65,6 +66,7 @@ public:
 		}
 	};
 
+	static void TriggerHackerModeToggle();
 	static void TriggerHackerModeEnable();
 	static void TriggerHackerModeDisable();
 	static void TriggerAllowHackerMode();

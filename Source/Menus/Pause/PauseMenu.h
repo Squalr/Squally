@@ -1,7 +1,6 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/CCEventKeyboard.h"
 #include "cocos/base/ccTypes.h"
 
 #include "Engine/SmartNode.h"
@@ -35,7 +34,6 @@ private:
 	void initializeListeners() override;
 	void onExitConfirm();
 	void onCloseClick();
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onResumeClick();
 	void onOptionsClick();
 	void onExitClick();

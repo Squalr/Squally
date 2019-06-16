@@ -163,7 +163,7 @@ void LexiconPage::enableBack(std::string backPage, bool closeExisting)
 {
     this->backButton->setVisible(true);
 
-    this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+    this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
         if (closeExisting)
         {
@@ -179,7 +179,7 @@ void LexiconPage::enableBack(std::string backPageLeft, std::string backPageRight
 {
     this->backButton->setVisible(true);
 
-    this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+    this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageLeft));
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageRight));
@@ -198,7 +198,7 @@ ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructi
 	label->setTextColor(LexiconPage::TextColor);
 	labelSelected->setTextColor(LexiconPage::TextColor);
 
-	button->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	button->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerCloseRightLexiconPage();
 		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(instructionIdentifier));
@@ -219,7 +219,7 @@ ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructi
 	label->setTextColor(LexiconPage::TextColor);
 	labelSelected->setTextColor(LexiconPage::TextColor);
 
-	button->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	button->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerCloseLeftLexiconPage();
 		HackableEvents::TriggerCloseRightLexiconPage();

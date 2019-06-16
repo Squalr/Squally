@@ -53,6 +53,7 @@ namespace UIResources
 	extern const std::string HUD_HPBarFill;
 	extern const std::string HUD_HackBarFill;
 	extern const std::string HUD_Heart;
+	extern const std::string HUD_LevelFrame;
 	extern const std::string HUD_MPBarFill;
 	extern const std::string HUD_Pendant;
 	extern const std::string HUD_StatFrame;

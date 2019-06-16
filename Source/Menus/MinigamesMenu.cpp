@@ -143,42 +143,26 @@ void MinigamesMenu::initializeListeners()
 		GlobalDirector::loadScene(MinigamesMenu::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->hexusButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
+	this->hexusPuzzlesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzlesChapterSelect(); });
+	this->pointerTraceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigatePointerTraceLevelSelect(); });
+	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
+	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
+	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
+	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(MinigamesMenu::onKeyPressed, this);
-
-	this->hexusButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
-	this->hexusPuzzlesButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzlesChapterSelect(); });
-	this->pointerTraceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigatePointerTraceLevelSelect(); });
-	this->cipherButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->stacksButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->towerDefenseButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->spaceForceButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->backButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
-
-	this->addEventListener(keyboardListener);
-}
-
-void MinigamesMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		return;
-	}
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
+		NavigationEvents::navigateBack();
+	});
 }
 
 ClickableTextNode* MinigamesMenu::createButton(LocalizedString* text, std::string iconResource)

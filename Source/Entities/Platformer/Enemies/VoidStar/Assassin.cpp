@@ -47,8 +47,8 @@ Assassin::Assassin(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(278.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Assassin::getHexusOpponentData();
 

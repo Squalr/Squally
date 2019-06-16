@@ -10,11 +10,13 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/NavigationEvents.h"
@@ -27,10 +29,17 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Hacking/Entities/Squally/IsAlive/IsAlive.h"
 
 using namespace cocos2d;
 
-const float Squally::squallyScale = 0.92f;
+#define LOCAL_FUNC_ID_IS_ALIVE 1
+
+const float Squally::SquallyScale = 0.92f;
+const int Squally::DefaultIq = 85;
+const int Squally::DefaultEq = 70;
 const std::string Squally::MapKeySqually = "squally";
 const int Squally::SquallyBaseHealth = 16;
 const int Squally::SquallyBaseSpecial = 8;
@@ -49,7 +58,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	EntityResources::Squally_Emblem,
 	PlatformerCollisionType::Player,
 	Size(128.0f, 128.0f),
-	Squally::squallyScale,
+	Squally::SquallyScale,
 	Vec2(0.0f, 24.0f),
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial,
@@ -119,7 +128,7 @@ void Squally::initializeCollisionEvents()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->noCombatDuration > 0.0f)
+		if (this->noCombatDuration > 0.0f || this->isDead())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -146,27 +155,34 @@ void Squally::initializeCollisionEvents()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->setPosition(this->spawnCoords);
-		this->entityCollision->setPosition(Vec2::ZERO);
-		this->movementCollision->setPosition(Vec2::ZERO);
+		if (this->isAlive())
+		{
+			this->killAndRespawn();
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 	
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
-		
-		mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
+		if (this->isAlive())
+		{
+			AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
+			
+			mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
+		if (this->isAlive())
+		{
+			AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
 
-		mouth->replaceSprite(EntityResources::Squally_MOUTH);
+			mouth->replaceSprite(EntityResources::Squally_MOUTH);
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -182,6 +198,21 @@ void Squally::initializePositions()
 	super::initializePositions();
 
 	this->cameraTrackTarget->setPosition(Vec2(0.0f, 128.0f));
+}
+
+void Squally::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	{
+		HackableEvents::TriggerHackerModeToggle();
+	});
+
+	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	{
+		HackableEvents::TriggerHackerModeToggle();
+	});
 }
 
 Vec2 Squally::getButtonOffset()
@@ -208,9 +239,15 @@ void Squally::update(float dt)
 		this->noCombatDuration -= dt;
 	}
 
-	if (this->isCinimaticHijacked || this->getIsPlatformerDisabled())
+	if (this->isCinimaticHijacked || this->getIsPlatformerDisabled() || this->isDead())
 	{
 		return;
+	}
+
+	// Check for player suicide
+	if (!this->isAliveSqually())
+	{
+		this->killAndRespawn();
 	}
 
 	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->animationNode).origin;
@@ -263,12 +300,61 @@ void Squally::onHackerModeEnable()
 	super::onHackerModeEnable();
 }
 
+void Squally::registerHackables()
+{
+	super::registerHackables();
+
+	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	{
+		{
+			LOCAL_FUNC_ID_IS_ALIVE,
+			HackableCode::LateBindData(
+				Squally::MapKeySqually,
+				Strings::Hacking_Entities_Squally_IsAlive_IsAlive::create(),
+				UIResources::Menus_Icons_Heart,
+				EntityPreview::create(this),
+				{
+				},
+				1.0f
+			)
+		},
+	};
+
+	auto isAliveSquallyFunc = &Squally::isAliveSqually;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)isAliveSquallyFunc, lateBindMap);
+
+	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	{
+		this->registerCode(*it);
+	}
+}
+
+NO_OPTIMIZE bool Squally::isAliveSqually()
+{
+	// The compiler will save EBP, we need to restore it before returning
+	ASM(pop EBP);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
+
+	ASM(mov eax, 1);
+	ASM(ret);
+
+	HACKABLE_CODE_END();
+
+	HACKABLES_STOP_SEARCH();
+
+	// Just to make compiler stop crying
+	return true;
+}
+
 void Squally::saveState()
 {
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
 		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
-		{ SaveKeys::SaveKeySquallyRunes, Value(this->getRunes()) }
+		{ SaveKeys::SaveKeySquallyRunes, Value(this->getRunes()) },
+		{ SaveKeys::SaveKeySquallyIq, Value(this->getIq()) },
+		{ SaveKeys::SaveKeySquallyEq, Value(this->getEq()) }
 	});
 }
 
@@ -279,8 +365,8 @@ void Squally::loadState()
 	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
 	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
 	this->setRunes(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getRunes())).asInt());
-	this->setIq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIq, Value(this->getIq())).asInt());
-	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(this->getEq())).asInt());
+	this->setIq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIq, Value(Squally::DefaultIq)).asInt());
+	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(Squally::DefaultEq)).asInt());
 	this->setIqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIqExperience, Value(this->getIqExperience())).asInt());
 	this->setEqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience())).asInt());
 	

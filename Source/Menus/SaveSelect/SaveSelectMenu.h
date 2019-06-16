@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
 
@@ -27,7 +26,6 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void buildSaveButtons();
 	ClickableTextNode* buildSaveButton(int profileId);
 	ClickableNode* buildDeleteButton(int profileId);

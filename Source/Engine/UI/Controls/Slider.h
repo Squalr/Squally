@@ -2,7 +2,7 @@
 #include <functional>
 
 #include "Engine/SmartNode.h"
-#include "Engine/Events/MouseEvents.h"
+#include "Engine/Events/InputEvents.h"
 
 namespace cocos2d
 {
@@ -33,7 +33,7 @@ protected:
 private:
 	typedef SmartNode super;
 	void updateSliderPosition();
-	void onDrag(MouseEvents::MouseEventArgs* args);
+	void onDrag(InputEvents::MouseEventArgs* args);
 
 	ClickableNode* slide;
 	ProgressBar* progressBar;

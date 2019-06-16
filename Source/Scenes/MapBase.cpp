@@ -26,8 +26,6 @@
 
 using namespace cocos2d;
 
-bool MapBase::hackerMode = false;
-
 MapBase::MapBase(bool allowHackerMode)
 {
 	this->allowHackerMode = allowHackerMode;
@@ -35,6 +33,7 @@ MapBase::MapBase(bool allowHackerMode)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->map = nullptr;
+	this->hackerMode = false;
 	this->mapNode = Node::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
 	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
@@ -108,7 +107,7 @@ void MapBase::onEnterTransitionDidFinish()
 
 void MapBase::resume(void)
 {
-	if (MapBase::hackerMode)
+	if (this->hackerMode)
 	{
 		this->toggleHackerMode();
 	}
@@ -119,6 +118,11 @@ void MapBase::resume(void)
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom*)
+	{
+		this->toggleHackerMode();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom*)
 	{
@@ -140,10 +144,20 @@ void MapBase::initializeListeners()
 		this->allowHackerMode = false;
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->openPauseMenu();
+	});
+
 	EventListenerMouse* scrollListener = EventListenerMouse::create();
 
-	keyboardListener->onKeyPressed = (CC_CALLBACK_2(MapBase::onKeyPressed, this));
 	scrollListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
 
 	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(MapBase::onOptionsExit, this));
@@ -151,7 +165,6 @@ void MapBase::initializeListeners()
 	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(MapBase::onOptionsClick, this));
 	this->pauseMenu->setExitCallback(CC_CALLBACK_0(MapBase::onExitClick, this));
 
-	this->addEventListener(keyboardListener);
 	this->addEventListenerIgnorePause(scrollListener);
 }
 
@@ -161,34 +174,6 @@ void MapBase::onMouseWheelScroll(EventMouse* event)
 	{
 		float delta = event->getScrollY() * 64.0f;
 		GameCamera::getInstance()->setCameraDistance(GameCamera::getInstance()->getCameraDistance() + delta);
-	}
-}
-
-void MapBase::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isFocused(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			this->openPauseMenu();
-			event->stopPropagation();
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_TAB:
-		{
-			this->toggleHackerMode();
-			event->stopPropagation();
-			break;
-		}
-		default:
-		{
-			break;
-		}
 	}
 }
 
@@ -252,29 +237,6 @@ void MapBase::onHackerModeEnable()
 	this->hud->setVisible(false);
 	this->hackerModeGlow->setVisible(true);
 	this->hackerModeRain->setVisible(true);
-
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = [=](EventKeyboard::KeyCode keyCode, Event* event)
-	{
-		switch (keyCode)
-		{
-			case EventKeyboard::KeyCode::KEY_ESCAPE:
-			case EventKeyboard::KeyCode::KEY_TAB:
-			{
-				this->toggleHackerMode();
-				event->stopPropagation();
-				this->removeEventListener(keyboardListener);
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	};
-
-	this->addEventListenerIgnorePause(keyboardListener);
 }
 
 void MapBase::onHackerModeDisable()
@@ -293,9 +255,9 @@ void MapBase::toggleHackerMode()
 		return;
 	}
 
-	MapBase::hackerMode = !MapBase::hackerMode;
+	this->hackerMode = !this->hackerMode;
 
-	if (MapBase::hackerMode)
+	if (this->hackerMode)
 	{
 		HackableEvents::TriggerHackerModeEnable();
 	}

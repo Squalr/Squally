@@ -47,8 +47,8 @@ Jack::Jack(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(432.0f, 768.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Jack::getHexusOpponentData();
 

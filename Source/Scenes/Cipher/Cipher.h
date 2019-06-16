@@ -1,8 +1,6 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/CCEventKeyboard.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -58,7 +56,6 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onMenuExit();
 
 	std::function<void()> backClickCallback;

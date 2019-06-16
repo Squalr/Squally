@@ -4,7 +4,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/MouseEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/SmartNode.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -51,14 +51,14 @@ void MouseOverPanel::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(MouseEvents::EventMouseMove, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
+	EventListenerCustom* mouseMoveListener = EventListenerCustom::create(InputEvents::EventMouseMove, CC_CALLBACK_1(MouseOverPanel::onMouseMove, this));
 
 	this->addEventListener(mouseMoveListener);
 }
 
 void MouseOverPanel::onMouseMove(EventCustom* event)
 {
-	MouseEvents::MouseEventArgs* args = static_cast<MouseEvents::MouseEventArgs*>(event->getUserData());
+	InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(event->getUserData());
 
 	if (GameUtils::isVisible(this) && GameUtils::intersects(this->content, args->mouseCoords))
 	{

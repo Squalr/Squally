@@ -47,8 +47,8 @@ Agnes::Agnes(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	Size(360.0f, 420.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = Agnes::getHexusOpponentData();
 

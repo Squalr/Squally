@@ -47,8 +47,8 @@ DemonSwordsman::DemonSwordsman(ValueMap& initProperties) : PlatformerEnemy(initP
 	Size(212.0f, 268.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = DemonSwordsman::getHexusOpponentData();
 
