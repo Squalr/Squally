@@ -233,6 +233,7 @@ void MapBase::onDeveloperModeDisable()
 void MapBase::onHackerModeEnable()
 {
 	GameUtils::pause(this);
+	GameUtils::resume(this->hackerModeVisibleHud);
 
 	this->hud->setVisible(false);
 	this->hackerModeGlow->setVisible(true);
