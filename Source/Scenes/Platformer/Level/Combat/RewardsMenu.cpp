@@ -85,7 +85,7 @@ void RewardsMenu::initializeListeners()
 		this->loadRewards();
 	}));
 
-	this->okayButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->okayButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		CombatEvents::TriggerReturnToMap();
 	});

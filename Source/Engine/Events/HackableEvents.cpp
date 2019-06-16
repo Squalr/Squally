@@ -5,6 +5,7 @@
 
 using namespace cocos2d;
 
+const std::string HackableEvents::EventHackerModeToggle = "EVENT_HACKERMODE_TOGGLE";
 const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENABLE";
 const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
 const std::string HackableEvents::EventAllowHackerMode = "EVENT_ALLOW_HACKER_MODE";
@@ -18,6 +19,13 @@ const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
 const std::string HackableEvents::EventOpenLexiconPage = "EVENT_OPEN_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseLeftLexiconPage = "EVENT_CLOSE_LEFT_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGHT_LEXICON_PAGE";
+
+void HackableEvents::TriggerHackerModeToggle()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackerModeToggle
+	);
+}
 
 void HackableEvents::TriggerHackerModeEnable()
 {

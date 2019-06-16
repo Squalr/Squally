@@ -71,27 +71,40 @@ void RadialMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* hackableOpenListener = EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, CC_CALLBACK_1(RadialMenu::onHackableOpen, this));
-	EventListenerCustom* hackableAttributeEditDoneListener = EventListenerCustom::create(HackableEvents::EventHackableAttributeEditDone, [=](EventCustom*) { this->onHackableAttributeEditDone(); });
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::HackableObjectOpenArgs* args = static_cast<HackableEvents::HackableObjectOpenArgs*>(eventCustom->getUserData());
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(RadialMenu::onKeyPressed, this);
+		if (args != nullptr)
+		{
+			this->setVisible(true);
 
-	this->addEventListenerIgnorePause(hackableOpenListener);
-	this->addEventListenerIgnorePause(hackableAttributeEditDoneListener);
-	this->addEventListener(keyboardListener);
-}
+			this->activeHackableObject = args->hackableObject;
+			this->buildRadialMenu(args);
 
-void RadialMenu::onHackableOpen(EventCustom* eventArgs)
-{
-	HackableEvents::HackableObjectOpenArgs* args = (HackableEvents::HackableObjectOpenArgs*)(eventArgs->getUserData());
+			GameUtils::focus(this);
+		}
+	}));
 
-	this->setVisible(true);
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableAttributeEditDone, [=](EventCustom* EventCustom)
+	{
+		GameUtils::focus(this);
 
-	this->activeHackableObject = args->hackableObject;
-	this->buildRadialMenu(args);
+		// Just close out of this when finished editing an attribute
+		this->close();
+	}));
 
-	GameUtils::focus(this);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->close();
+	});
 }
 
 void RadialMenu::onHackableAttributeEdit(HackableAttribute* attribute)
@@ -99,37 +112,6 @@ void RadialMenu::onHackableAttributeEdit(HackableAttribute* attribute)
 	HackableEvents::TriggerEditHackableAttribute(HackableEvents::HackableObjectEditArgs(attribute));
 
 	this->setVisible(false);
-}
-
-void RadialMenu::onHackableAttributeEditDone()
-{
-	GameUtils::focus(this);
-
-	// Just close out of this when finished editing an attribute
-	this->close();
-}
-
-void RadialMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_TAB:
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			this->close();
-			event->stopPropagation();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void RadialMenu::close()
@@ -153,7 +135,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	}
 
 	// +1 from the exit node, which is always present
-	float angleStep = (3.14159f * 2.0f) / ((float)(this->activeHackableObject->dataList.size() + this->activeHackableObject->codeList.size() + 1));
+	float angleStep = (float(M_PI) * 2.0f) / ((float)(this->activeHackableObject->dataList.size() + this->activeHackableObject->codeList.size() + 1));
 	float currentAngle = 3.0f * float(M_PI) / 2.0f;
 
 	// Create return button
@@ -197,9 +179,9 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 
 	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
-	clickableNode->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) {	clickCallback(); });
-	clickableNode->setMouseOverCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
-	clickableNode->setMouseOutCallback([=](MouseEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
+	clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) {	clickCallback(); });
+	clickableNode->setMouseOverCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });
+	clickableNode->setMouseOutCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::WHITE); });
 
 	const float tolerance = float(M_PI) / 64.0f;
 	const float offset = 64.0f;

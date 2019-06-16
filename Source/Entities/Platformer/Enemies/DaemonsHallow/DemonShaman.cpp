@@ -47,8 +47,8 @@ DemonShaman::DemonShaman(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	Size(212.0f, 280.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = DemonShaman::getHexusOpponentData();
 

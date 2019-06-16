@@ -175,13 +175,13 @@ void AsciiTable::initializeListeners()
 	{
 		ImmediateBlock* block = *it;
 
-		block->getBlock()->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+		block->getBlock()->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->select(block);
 		});
 	}
 
-	this->returnButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->close();
 	});
@@ -256,7 +256,7 @@ void AsciiTable::close()
 {
 	this->setVisible(false);
 	GameUtils::focus(this->getParent());
-	MouseEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
 	
 	if (this->immediateBlock != nullptr && this->selectedBlock != nullptr)
 	{

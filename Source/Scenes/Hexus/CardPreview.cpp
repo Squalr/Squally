@@ -107,7 +107,7 @@ void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpCli
 {
 	this->onHelpClick = onHelpClick;
 
-	this->helpButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->helpButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->onHelpClick != nullptr)
 		{

@@ -47,8 +47,8 @@ SkeletalKnight::SkeletalKnight(ValueMap& initProperties) : PlatformerEnemy(initP
 	Size(212.0f, 280.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = SkeletalKnight::getHexusOpponentData();
 

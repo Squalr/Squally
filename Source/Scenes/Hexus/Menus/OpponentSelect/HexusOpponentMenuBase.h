@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
 #include "Events/NavigationEvents.h"
@@ -29,7 +28,6 @@ protected:
 	void onDeckManagementClick();
 	void onShopClick();
 	void onMouseOver(HexusOpponentPreview* opponent);
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void buildOpponentList();
 
 	NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter;

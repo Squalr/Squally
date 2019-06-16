@@ -36,33 +36,17 @@ void Cutscene::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(Cutscene::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
-}
-
-void Cutscene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		return;
-	}
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			this->endCutscene();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
+		this->endCutscene();
+	});
 }
 
 void Cutscene::playCutscenes()

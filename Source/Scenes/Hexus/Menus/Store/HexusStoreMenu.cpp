@@ -321,11 +321,17 @@ void HexusStoreMenu::initializeListeners()
 		GameUtils::focus(this);
 	});
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusStoreMenu::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
+		NavigationEvents::navigateBack();
+	});
 
 	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
 	this->decimalButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onDecimalTabClick, this));
@@ -627,7 +633,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	menuCard->setScale(0.8f);
 
 	cardContainer->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
-	cardContainer->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	cardContainer->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->cardPreview->previewCard(menuCard);
 	});
@@ -719,28 +725,6 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 void HexusStoreMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
-}
-
-void HexusStoreMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void HexusStoreMenu::onBinaryTabClick()

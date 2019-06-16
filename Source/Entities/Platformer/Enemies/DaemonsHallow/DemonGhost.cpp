@@ -47,8 +47,8 @@ DemonGhost::DemonGhost(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	Size(256.0f, 320.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = DemonGhost::getHexusOpponentData();
 

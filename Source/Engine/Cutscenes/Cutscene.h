@@ -2,8 +2,6 @@
 #include <deque>
 #include <functional>
 
-#include "cocos/base/CCEventKeyboard.h"
-
 #include "Engine/SmartScene.h"
 
 class CutsceneClip;
@@ -20,7 +18,6 @@ protected:
 	virtual ~Cutscene();
 
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void enqueueCutsceneClip(CutsceneClip* cutscene);
 	void cutsceneClipCompleteCallback();
 	void endCutscene();

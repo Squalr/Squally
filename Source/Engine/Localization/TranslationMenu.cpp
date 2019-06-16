@@ -127,8 +127,6 @@ TranslationMenu::~TranslationMenu()
 void TranslationMenu::onEnter()
 {
 	super::onEnter();
-
-	this->scheduleUpdate();
 }
 
 void TranslationMenu::initializePositions()
@@ -162,23 +160,18 @@ void TranslationMenu::initializeListeners()
 		this->onTranslationMenuOpen(static_cast<LocalizationEvents::TranslationBeginEditArgs*>(eventArgs->getUserData()));
 	}));
 
-	cancelButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onCancelClick(); });
-	submitButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*) { this->onSubmitClick(); });
-}
-
-void TranslationMenu::update(float dt)
-{
-	super::update(dt);
-
-	if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_ALT))
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ALT }, [=](InputEvents::InputArgs* args)
 	{
 		Mouse::getInstance()->setActiveCursorSet(Mouse::SET_ID_TRANSLATION_CURSOR);
-	}
+	});
 
-	if (Input::isKeyJustReleased(EventKeyboard::KeyCode::KEY_ALT))
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_ALT }, [=](InputEvents::InputArgs* args)
 	{
 		Mouse::getInstance()->setActiveCursorSet(Mouse::SET_ID_DEFAULT);
-	}
+	});
+
+	cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onCancelClick(); });
+	submitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onSubmitClick(); });
 }
 
 void TranslationMenu::onTranslationMenuOpen(LocalizationEvents::TranslationBeginEditArgs* args)

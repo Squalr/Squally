@@ -52,6 +52,7 @@ const std::string UIResources::HUD_Frame = "UI/HUD/Frame.png";
 const std::string UIResources::HUD_HPBarFill = "UI/HUD/HPBarFill.png";
 const std::string UIResources::HUD_HackBarFill = "UI/HUD/HackBarFill.png";
 const std::string UIResources::HUD_Heart = "UI/HUD/Heart.png";
+const std::string UIResources::HUD_LevelFrame = "UI/HUD/LevelFrame.png";
 const std::string UIResources::HUD_MPBarFill = "UI/HUD/MPBarFill.png";
 const std::string UIResources::HUD_Pendant = "UI/HUD/Pendant.png";
 const std::string UIResources::HUD_StatFrame = "UI/HUD/StatFrame.png";

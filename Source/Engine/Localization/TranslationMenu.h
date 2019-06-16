@@ -33,7 +33,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	void onTranslationMenuOpen(LocalizationEvents::TranslationBeginEditArgs* args);
 	void onCancelClick();
 	void onSubmitClick();

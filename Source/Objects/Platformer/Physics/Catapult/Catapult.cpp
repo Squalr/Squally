@@ -105,6 +105,14 @@ void Catapult::initializeListeners()
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->interactionEnabled && this->currentCooldown <= 0.0f)
+		{
+			this->launchCatapult();
+		}
+	});
 }
 
 void Catapult::update(float dt)
@@ -114,14 +122,6 @@ void Catapult::update(float dt)
 	if (this->currentCooldown > 0.0f)
 	{
 		this->currentCooldown -= dt;
-	}
-
-	if (this->interactionEnabled && this->currentCooldown <= 0.0f)
-	{
-		if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
-		{
-			this->launchCatapult();
-		}
 	}
 }
 

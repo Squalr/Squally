@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/base/CCEventKeyboard.h"
 
 #include "Scenes/MapBase.h"
 
@@ -24,7 +23,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	Music* music;
 

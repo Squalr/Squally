@@ -300,7 +300,7 @@ void CodeEditor::initializeListeners()
 		this->functionWindow->focus();
 	});
 	
-	this->lexiconButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->functionWindow->unfocus();
 		this->lexicon->open();

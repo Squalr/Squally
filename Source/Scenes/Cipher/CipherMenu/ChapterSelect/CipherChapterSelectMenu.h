@@ -2,8 +2,6 @@
 #include <string>
 #include <vector>
 
-#include "cocos/base/CCEventKeyboard.h"
-
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
@@ -35,7 +33,6 @@ private:
 	void initializeListeners() override;
 	void loadLevels();
 	void onCloseClick();
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	cocos2d::ParticleSystem* nether;
 	cocos2d::ParticleSystem* swirl;

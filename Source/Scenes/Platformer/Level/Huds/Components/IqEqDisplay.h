@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ConstantString;
 class LocalizedLabel;
+class LocalizedString;
 class Squally;
 
 class IqEqDisplay : public SmartNode
@@ -29,10 +30,9 @@ private:
 	void update(float dt) override;
 
 	Squally* target;
-	cocos2d::Sprite* iqFrame;
-	cocos2d::Sprite* eqFrame;
-	LocalizedLabel* eqLabel;
-	LocalizedLabel* iqLabel;
+	cocos2d::Sprite* iqEqFrame;
+	LocalizedLabel* iqEqLabel;
+	LocalizedString* iqEqValue;
 	ConstantString* eqValue;
 	ConstantString* iqValue;
 

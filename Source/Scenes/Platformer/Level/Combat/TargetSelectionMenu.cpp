@@ -112,11 +112,21 @@ void TargetSelectionMenu::initializeListeners()
 		}
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW}, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isActive)
+		{
+			this->selectNext(true);
+		}
+	});
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(TargetSelectionMenu::onKeyPressed, this);
-
-	this->addEventListener(keyboardListener);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW}, [=](InputEvents::InputArgs* args)
+	{
+		if (this->isActive)
+		{
+			this->selectNext(false);
+		}
+	});
 }
 
 void TargetSelectionMenu::update(float dt)
@@ -139,36 +149,6 @@ void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 	}
 
 	this->selectedEntity = entity;
-}
-
-void TargetSelectionMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!this->isActive)
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_A:
-		case EventKeyboard::KeyCode::KEY_LEFT_ARROW:
-		{
-			this->selectNext(true);
-
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_D:
-		case EventKeyboard::KeyCode::KEY_RIGHT_ARROW:
-		{
-			this->selectNext(false);
-
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void TargetSelectionMenu::selectNext(bool directionIsLeft)
@@ -256,12 +236,12 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 		}
 
 		entity->clickHitbox->enableInteraction();
-		entity->clickHitbox->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+		entity->clickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
 		});
-		entity->clickHitbox->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+		entity->clickHitbox->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->selectEntity(entity);
 		});

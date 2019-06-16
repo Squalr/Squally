@@ -98,33 +98,16 @@ void CipherScene::initializeListeners()
 	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(CipherScene::onOptionsClick, this));
 	this->pauseMenu->setExitCallback(CC_CALLBACK_0(CipherScene::onExitClick, this));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = (CC_CALLBACK_2(CipherScene::onKeyPressed, this));
-
-	this->addEventListener(keyboardListener);
-}
-
-void CipherScene::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isFocused(this))
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		return;
-	}
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+		args->handled = true;
 
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			this->openPauseMenu();
-			event->stopPropagation();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
+		this->openPauseMenu();
+	});
 }
 
 void CipherScene::onOptionsExit()

@@ -47,8 +47,8 @@ DemonWarrior::DemonWarrior(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	Size(320.0f, 372.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	16,
+	8)
 {
 	this->hexusOpponentData = DemonWarrior::getHexusOpponentData();
 
