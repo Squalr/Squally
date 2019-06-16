@@ -423,6 +423,16 @@ namespace FXResources
 	extern const std::string Pop_Pop_0002;
 	extern const std::string Pop_Pop_0003;
 	extern const std::string Pop_Pop_0004;
+	extern const std::string PurplePuff_PurplePuff_0000;
+	extern const std::string PurplePuff_PurplePuff_0001;
+	extern const std::string PurplePuff_PurplePuff_0002;
+	extern const std::string PurplePuff_PurplePuff_0003;
+	extern const std::string PurplePuff_PurplePuff_0004;
+	extern const std::string PurplePuffSmall_PurplePuff_0000;
+	extern const std::string PurplePuffSmall_PurplePuff_0001;
+	extern const std::string PurplePuffSmall_PurplePuff_0002;
+	extern const std::string PurplePuffSmall_PurplePuff_0003;
+	extern const std::string PurplePuffSmall_PurplePuff_0004;
 	extern const std::string Restore_Restore_0000;
 	extern const std::string Restore_Restore_0001;
 	extern const std::string Restore_Restore_0002;

@@ -8,6 +8,8 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class SmartAnimationSequenceNode;
+class Sound;
 
 class RuneBar : public SmartNode
 {
@@ -30,4 +32,10 @@ private:
 
 	std::vector<cocos2d::Sprite*> emptyRunes;
 	std::vector<cocos2d::Sprite*> filledRunes;
+	std::vector<SmartAnimationSequenceNode*> smokeFx;
+	std::vector<Sound*> smokeSound;
+
+	int cachedRunes;
+
+	static const int RuneCipher;
 };

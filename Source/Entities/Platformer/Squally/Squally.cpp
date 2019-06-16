@@ -206,7 +206,11 @@ void Squally::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
-		HackableEvents::TriggerHackerModeToggle();
+		if (this->getRunes() > 0)
+		{
+			HackableEvents::TriggerHackerModeToggle();
+			this->setRunes(this->getRunes() - 1);
+		}
 	});
 
 	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)

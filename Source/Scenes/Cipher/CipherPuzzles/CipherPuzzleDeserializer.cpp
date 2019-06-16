@@ -50,6 +50,12 @@ CipherPuzzleData* CipherPuzzleDeserializer::deserialize(std::string json, bool i
 	Document document;
 	document.Parse(json.c_str());
 
+	if (!document.IsObject())
+	{
+		CCLOG("Error parsing cipher json, possible invalid json format.");
+		return puzzle;
+	}
+
 	if (!document.HasMember("easy") || !document["easy"].IsObject())
 	{
 		CCLOG("Missing or invalid key 'easy' on cipher json.");

@@ -217,8 +217,7 @@ void PlatformerEntity::update(float dt)
 		case ControlState::Normal:
 		{
 			// Move in the x direction unless hitting a wall while not standing on anything (this prevents wall jumps)
-			if (!this->groundCollision->getCurrentCollisions().empty() ||
-				(this->movement.x < 0.0f && this->leftCollision->getCurrentCollisions().empty()) ||
+			if ((this->movement.x < 0.0f && this->leftCollision->getCurrentCollisions().empty()) ||
 				(this->movement.x > 0.0f && this->rightCollision->getCurrentCollisions().empty()))
 			{
 				velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
@@ -609,12 +608,12 @@ void PlatformerEntity::initializeCollisionEvents()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::DoNothing;
 	});

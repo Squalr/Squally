@@ -55,6 +55,7 @@ const std::string SoundResources::MapOpen = "Sounds/MapOpen.mp3";
 const std::string SoundResources::Menus_BookPageTurn_PE1014902 = "Sounds/Menus/BookPageTurn PE1014902.mp3";
 const std::string SoundResources::Menus_Card_Game_UI_Button_Light_Reverb_02 = "Sounds/Menus/Card_Game_UI_Button_Light_Reverb_02.mp3";
 const std::string SoundResources::Menus_Simple_Button = "Sounds/Menus/Simple_Button.mp3";
+const std::string SoundResources::Platformer_Abilities_HackerMode_Enable = "Sounds/Platformer/Abilities/HackerMode/Enable.mp3";
 const std::string SoundResources::Platformer_Attacks_Physical_Impact_Hit1 = "Sounds/Platformer/Attacks/Physical/Impact/Hit1.mp3";
 const std::string SoundResources::Platformer_Attacks_Physical_Impact_Hit2 = "Sounds/Platformer/Attacks/Physical/Impact/Hit2.mp3";
 const std::string SoundResources::Platformer_Attacks_Physical_Impact_Hit3 = "Sounds/Platformer/Attacks/Physical/Impact/Hit3.mp3";

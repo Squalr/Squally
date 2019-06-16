@@ -56,6 +56,7 @@ namespace SoundResources
 	extern const std::string Menus_BookPageTurn_PE1014902;
 	extern const std::string Menus_Card_Game_UI_Button_Light_Reverb_02;
 	extern const std::string Menus_Simple_Button;
+	extern const std::string Platformer_Abilities_HackerMode_Enable;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit1;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit2;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit3;
