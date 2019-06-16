@@ -137,7 +137,69 @@ void RuneBar::update(float dt)
 
 		float progress = (PlatformerEntity::RuneCooldown - target->getRuneCooldown(index)) / PlatformerEntity::RuneCooldown;
 
-		this->cooldownStencils[index]->drawSolidRect(Vec2(-12.0f, -12.0f), Vec2(12.0f, 12.0f) - Vec2(24.0f, 24.0f) * progress, Color4F(Color4B(0, 0, 0, 196)));
+		if (progress < 0.25f)
+		{
+			static std::vector<Vec2> quadrant = std::vector<Vec2>
+			{
+				Vec2(0.0f, 0.0f),
+				Vec2(24.0f, 0.0f),
+				Vec2(0.0f, 0.0f),
+			};
+
+			float quadrantProgress = 1.0f - MathUtils::clamp(progress, 0.0f, 0.25f) / 0.25f;
+
+			quadrant[2] = Vec2(24.0f * std::cos(quadrantProgress * M_PI / 2.0f), 24.0f * std::sin(quadrantProgress * M_PI / 2.0f));
+
+			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
+		}
+
+		if (progress < 0.5f)
+		{
+			static std::vector<Vec2> quadrant = std::vector<Vec2>
+			{
+				Vec2(0.0f, 0.0f),
+				Vec2(0.0f, -24.0f),
+				Vec2(0.0f, 0.0f),
+			};
+
+			float quadrantProgress = progress < 0.25f ? 1.0f : (1.0f - MathUtils::clamp(std::fmod(progress, 0.25f), 0.0f, 0.25f) / 0.25f);
+
+			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 1.0f) * M_PI / 2.0f), 24.0f * std::sin((quadrantProgress - 1.0f) * M_PI / 2.0f));
+
+			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
+		}
+
+		if (progress < 0.75f)
+		{
+			static std::vector<Vec2> quadrant = std::vector<Vec2>
+			{
+				Vec2(0.0f, 0.0f),
+				Vec2(-24.0f, 0.0f),
+				Vec2(0.0f, 0.0f),
+			};
+
+			float quadrantProgress = progress < 0.5f ? 1.0f : (1.0f - MathUtils::clamp(std::fmod(progress, 0.25f), 0.0f, 0.25f) / 0.25f);
+
+			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 2.0f) * M_PI / 2.0f), 24.0f * std::sin((quadrantProgress - 2.0f) * M_PI / 2.0f));
+
+			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
+		}
+
+		if (progress < 1.0f)
+		{
+			static std::vector<Vec2> quadrant = std::vector<Vec2>
+			{
+				Vec2(0.0f, 0.0f),
+				Vec2(0.0f, 24.0f),
+				Vec2(0.0f, 0.0f),
+			};
+
+			float quadrantProgress = progress < 0.75f ? 1.0f : (1.0f - MathUtils::clamp(std::fmod(progress, 0.25f), 0.0f, 0.25f) / 0.25f);
+
+			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 3.0f) * M_PI / 2.0f), 24.0f * std::sin((quadrantProgress - 3.0f) * M_PI / 2.0f));
+
+			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
+		}
 	}
 
 	if (currentRunes != (this->cachedRunes ^ RuneBar::RuneCipher))
