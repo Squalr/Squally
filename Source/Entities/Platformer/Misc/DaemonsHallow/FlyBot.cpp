@@ -47,6 +47,7 @@
 #include "Strings/Dialogue/Story/Intro/HackerMode.h"
 #include "Strings/Dialogue/Story/Intro/HackerModeCombat.h"
 #include "Strings/Dialogue/Story/Intro/OgreSpotted.h"
+#include "Strings/Dialogue/Story/Intro/SquallyTrapped.h"
 #include "Strings/Dialogue/Story/Intro/TentHeal.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
@@ -55,6 +56,7 @@ const std::string FlyBot::EventGreetSqually = "event-greet-squally";
 const std::string FlyBot::EventHelpSquallyHeal = "event-help-squally-heal";
 const std::string FlyBot::EventTeachHackerMode = "event-teach-hacker-mode";
 const std::string FlyBot::EventSpotOgre = "event-spot-ogre";
+const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
 
 ////B////B////B////B////B////B////B////B////B////B/
 // END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -188,6 +190,16 @@ void FlyBot::initializeListeners()
 		{
 			this->setVisible(false);
 		}
+	}
+
+	if (this->state == FlyBot::EventSquallyTrapped)
+	{
+		this->setVisible(false);
+
+		this->listenForMapEvent(FlyBot::EventSquallyTrapped, [=](ValueMap args)
+		{
+			this->runSquallyTrappedEvent();
+		});
 	}
 
 	this->listenForMapEvent(RestoreHealth::EventShowRestorePotionTutorial, [=](ValueMap args)
@@ -438,6 +450,24 @@ void FlyBot::runRestorePotionTutorial()
 				}),
 				nullptr
 			));
+		}),
+		nullptr
+	));
+}
+
+void FlyBot::runSquallyTrappedEvent()
+{
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventSquallyTrapped, Value(true));
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->setVisible(true);
+			this->droidChatterSound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_SquallyTrapped::create());
 		}),
 		nullptr
 	));

@@ -59,6 +59,7 @@ private:
 	void runTeachHackerModeEvent();
 	void runSpotOgreEvent();
 	void runRestorePotionTutorial();
+	void runSquallyTrappedEvent();
 
 	bool hasRunTutorialEvent;
 	Sound* droidAlarmedSound;
@@ -71,6 +72,7 @@ private:
 	static const std::string EventHelpSquallyHeal;
 	static const std::string EventTeachHackerMode;
 	static const std::string EventSpotOgre;
+	static const std::string EventSquallyTrapped;
 	
 	////O////O////O////O////O////O////O////O////O////O/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //

@@ -118,16 +118,16 @@ HackablePreview* SpikeLog::createDefaultPreview()
 
 NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 {
-	ASM(push ECX)
-	ASM_MOV_REG_VAR(ECX, count);
+	ASM(push ZCX)
+	ASM_MOV_REG_VAR(ZCX, count);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(inc ECX)
+	ASM(inc ZCX)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(count, ECX);
-	ASM(pop ECX);
+	ASM_MOV_VAR_REG(count, ZCX);
+	ASM(pop ZCX);
 
 	HACKABLES_STOP_SEARCH();
 

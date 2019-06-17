@@ -337,11 +337,11 @@ void Squally::registerHackables()
 NO_OPTIMIZE bool Squally::isAliveSqually()
 {
 	// The compiler will save EBP, we need to restore it before returning
-	ASM(pop EBP);
+	ASM(pop ZBP);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
 
-	ASM(mov eax, 1);
+	ASM(mov ZAX, 1);
 	ASM(ret);
 
 	HACKABLE_CODE_END();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="104" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="63" nextobjectid="680">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="104" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="63" nextobjectid="682">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -107,26 +107,19 @@
     <property name="is-hollow" type="bool" value="true"/>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 2786.09,-618.894 4769.28,-572.097 5585.05,-918.297 8595.84,-1179.08 11670.8,-1162 11695.7,2480.07 6399.06,2480.24 4960.47,1595.85 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
+   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 2786.09,-618.894 4769.28,-572.097 5585.05,-918.297 8595.84,-1179.08 11670.8,-1162 11695.7,2480.07 7798.42,2985.03 4583.47,2944.09 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="655" name="solid" type="terrain" x="5197.5" y="6032.61">
+  <object id="680" name="solid" type="terrain" x="5671.62" y="5788.06">
    <properties>
     <property name="texture" value="caverns"/>
    </properties>
-   <polygon points="483.933,-229.081 1388.56,-66.5659 1950.29,14.9412 2404.35,11.7541 2402.96,342.032 4204.3,343.479 4136.06,995.055 3339.59,1124.8 1827.31,1424.46 402.31,1264.53 -4.853,929.681 0,360.386"/>
+   <polygon points="0,0 345.881,2.64316 584.192,5.45312 585.192,262.481 585.581,479.618 573.135,743.973 1067.48,736.646 1473.33,732.627 1711.54,732.13 1706.76,355.879 1710.67,127.238 1700.07,-436.224 2069.4,-446.207 2411.45,-433.889 2400.44,-20.0803 2388.39,417.581 2387,777.32 2329.1,1123.18 2181.41,1387.66 1602.11,1381.42 1034.03,1377.06 436.616,1378.46 -28.3928,1374.1 -30.8932,1023.39 -23.0588,736.582"/>
   </object>
-  <object id="656" name="solid" type="terrain" x="9415.76" y="6152.86">
-   <properties>
-    <property name="texture" value="caverns"/>
-   </properties>
-   <polygon points="894.272,-315.907 1695.02,-299.409 1657.38,-1162.98 1912.28,-1882.02 3376.15,-1959.26 3907.75,-1886.84 3915.16,439.37 3506.73,1080.41 1462.27,1255.13 549.771,1264.53 -128.927,929.681 -125.363,-200.699"/>
-  </object>
-  <object id="657" name="wooden-crate" type="object" x="8421.12" y="6213.43" width="160" height="160"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -183,13 +176,41 @@
     <property name="event" value="open-cipher"/>
    </properties>
   </object>
-  <object id="673" name="pendulum-blade" type="object" x="5194.64" y="3845.36" width="42.4242" height="277.636"/>
-  <object id="674" name="pendulum-blade" type="object" x="4503.98" y="3848.09" width="42.4242" height="420.97"/>
-  <object id="675" name="pendulum-blade" type="object" x="4802.64" y="3840.03" width="42.4242" height="304.97"/>
-  <object id="676" name="pendulum-blade" type="object" x="5591.98" y="3851.36" width="42.4242" height="364.97"/>
-  <object id="677" name="mechanical-flail" type="object" x="4661.98" y="4135.36" width="42.4242" height="198.303"/>
-  <object id="678" name="mechanical-flail" type="object" x="5003.98" y="4074.94" width="42.4242" height="264.303"/>
-  <object id="679" name="mechanical-flail" type="object" x="5393.98" y="4185.36" width="42.4242" height="166.303"/>
+  <object id="673" name="pendulum-blade" type="object" x="5194.64" y="3845.36" width="42.4242" height="277.636">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="674" name="pendulum-blade" type="object" x="4503.98" y="3848.09" width="42.4242" height="420.97">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="675" name="pendulum-blade" type="object" x="4802.64" y="3840.03" width="42.4242" height="304.97">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="676" name="pendulum-blade" type="object" x="5591.98" y="3851.36" width="42.4242" height="364.97">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="677" name="mechanical-flail" type="object" x="4661.98" y="4135.36" width="42.4242" height="198.303">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="678" name="mechanical-flail" type="object" x="5003.98" y="4074.94" width="42.4242" height="264.303">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="679" name="mechanical-flail" type="object" x="5393.98" y="4185.36" width="42.4242" height="166.303">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -208,22 +229,28 @@
     <property name="map" value="EndianForest/Zone_1_1"/>
    </properties>
   </object>
-  <object id="646" name="goblin-warrior-pig" type="entity" x="738.621" y="3465.89" width="128" height="128">
+  <object id="646" name="goblin-warrior-pig" type="entity" x="738.621" y="3500.83" width="128" height="128">
    <properties>
     <property name="ally-1" value=""/>
     <property name="ally-2" value=""/>
-    <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
+    <property name="battle-args" value=""/>
     <property name="battle-map" value="EndianForest/BattleGrounds"/>
-    <property name="event" value="door-open"/>
+    <property name="event" value=""/>
    </properties>
   </object>
-  <object id="658" name="orc-grunt" type="entity" x="10204.2" y="5695.07" width="128" height="128">
+  <object id="658" name="orc-grunt" type="entity" x="6504.52" y="6397.95" width="128" height="128">
    <properties>
     <property name="ally-1" value=""/>
     <property name="ally-2" value=""/>
-    <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
+    <property name="battle-args" value=""/>
     <property name="battle-map" value="EndianForest/BattleGrounds"/>
-    <property name="event" value="door-open"/>
+    <property name="event" value="event-squally-trapped"/>
+   </properties>
+  </object>
+  <object id="681" name="fly-bot" type="entity" x="7149.59" y="6286.4" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="state" value="event-squally-trapped"/>
    </properties>
   </object>
  </objectgroup>
@@ -275,7 +302,7 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="438.393" y="4594.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="4698.5" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4511.11" y="5078.17" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="6034.88" y="5661.79" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3970.98" y="5323.13" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="4671" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">

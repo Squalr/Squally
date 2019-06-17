@@ -208,26 +208,26 @@ NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 	volatile float* ySpeedPtr = &baseSpeed.y;
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, ySpeedPtr);
-	ASM(movss xmm0, dword ptr [EAX]);
-	ASM_MOV_REG_VAR(EAX, launchPowerPtr);
-	ASM(movss xmm1, dword ptr [EAX]);
-	ASM(pop EAX);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, ySpeedPtr);
+	ASM(movss xmm0, dword ptr [ZAX]);
+	ASM_MOV_REG_VAR(ZAX, launchPowerPtr);
+	ASM(movss xmm1, dword ptr [ZAX]);
+	ASM(pop ZAX);
 
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, freeMemoryForUser);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, freeMemoryForUser);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_APPLY_POWER);
 	ASM(mulss xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-	ASM(pop EAX);
+	ASM(pop ZAX);
 	
 	// Copy from xmm0 to the output variable
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, launchPowerPtr);
-	ASM(movss dword ptr [EAX], xmm0);
-	ASM(pop EAX);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, launchPowerPtr);
+	ASM(movss dword ptr [ZAX], xmm0);
+	ASM(pop ZAX);
 
 	HACKABLES_STOP_SEARCH();
 
