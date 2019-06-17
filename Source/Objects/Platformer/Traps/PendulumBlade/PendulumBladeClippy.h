@@ -11,11 +11,11 @@ class PendulumBladeClippy : public Clippy
 public:
 	static PendulumBladeClippy* create();
 
-	Clippy* clone() override;
-
 protected:
 	PendulumBladeClippy();
 	~PendulumBladeClippy();
+
+	Clippy* innerClone() override;
 
 private:
 	typedef Clippy super;

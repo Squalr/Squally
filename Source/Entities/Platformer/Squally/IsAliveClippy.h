@@ -6,14 +6,14 @@
 class SmartAnimationNode;
 class Sound;
 
-class MechanicalFlailClippy : public Clippy
+class IsAliveClippy : public Clippy
 {
 public:
-	static MechanicalFlailClippy* create();
+	static IsAliveClippy* create();
 
 protected:
-	MechanicalFlailClippy();
-	~MechanicalFlailClippy();
+	IsAliveClippy();
+	~IsAliveClippy();
 
 	Clippy* innerClone() override;
 

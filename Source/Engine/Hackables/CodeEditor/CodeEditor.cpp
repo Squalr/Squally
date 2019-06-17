@@ -328,7 +328,7 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			this->previewNode->addChild(preview);
 		}
 
-		if (hackableCode->getClippy() != nullptr)
+		if (hackableCode->getClippy() != nullptr && hackableCode->getClippy()->getIsEnabled())
 		{
 			Clippy* clippy = hackableCode->getClippy()->clone();
 

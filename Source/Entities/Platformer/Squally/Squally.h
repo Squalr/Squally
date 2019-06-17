@@ -18,15 +18,10 @@ public:
 	float getFloatHeight() override;
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 
-	void setIq(int iq);
 	void setEq(int eq);
-	int getIq();
 	int getEq();
-	void setIqExperience(int iqExperience);
 	void setEqExperience(int eqExperience);
-	void addIqExperience(int iqExperience);
 	void addEqExperience(int eqExperience);
-	int getIqExperience();
 	int getEqExperience();
 
 	static const std::string MapKeySqually;
@@ -60,9 +55,7 @@ private:
 
 	bool canJump;
 	float noCombatDuration;
-	int iq;
 	int eq;
-	int iqExperience;
 	int eqExperience;
 
 	cocos2d::Node* cameraTrackTarget;
@@ -70,6 +63,7 @@ private:
 	SmartAnimationSequenceNode* rightEyeController;
 
 	static const float SquallyScale;
-	static const int DefaultIq;
 	static const int DefaultEq;
+	static const std::string IdentifierIsAlive;
+	static const std::string EventSquallyTrapped;
 };

@@ -7,17 +7,23 @@ class SpeechBubble;
 class Clippy : public SmartNode
 {
 public:
-	virtual Clippy* clone() = 0;
+	Clippy* clone();
+	
+	void setIsEnabled(bool isEnabled);
+	bool getIsEnabled();
 
 protected:
 	Clippy();
 	~Clippy();
 
 	void initializePositions() override;
+	virtual Clippy* innerClone() = 0;
 
 	cocos2d::Node* animationNode;
 	SpeechBubble* speechBubble;
 
 private:
 	typedef SmartNode super;
+
+	bool isEnabled;
 };
