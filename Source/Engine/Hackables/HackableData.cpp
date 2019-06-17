@@ -5,16 +5,16 @@
 
 using namespace cocos2d;
 
-HackableData* HackableData::create(void* dataAddress, float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview)
+HackableData* HackableData::create(void* dataAddress, int requiredEq, float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview)
 {
-	HackableData* instance = new HackableData(dataAddress, duration, variableName, dataTypeInfo, iconResource, hackablePreview);
+	HackableData* instance = new HackableData(dataAddress, requiredEq, duration, variableName, dataTypeInfo, iconResource, hackablePreview);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackableData::HackableData(void* dataAddress, float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview) : HackableAttribute(duration, iconResource, variableName, hackablePreview)
+HackableData::HackableData(void* dataAddress, int requiredEq, float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview) : HackableAttribute(requiredEq, duration, iconResource, variableName, hackablePreview)
 {
 	this->dataPointer = dataAddress;
 	this->dataType = HackUtils::stdTypeToDataType(dataTypeInfo);

@@ -13,12 +13,15 @@
 #include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Hacking/RadialMenu/RequiresEq.h"
 #include "Strings/Menus/Exit.h"
 
 using namespace cocos2d;
@@ -38,6 +41,7 @@ RadialMenu* RadialMenu::create()
 RadialMenu::RadialMenu()
 {
 	this->activeHackableObject = nullptr;
+	this->currentEq = 0;
 
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
@@ -70,6 +74,16 @@ void RadialMenu::initializePositions()
 void RadialMenu::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->currentEq = args->currentEq;
+		}
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
 	{
@@ -140,7 +154,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 
 	// Create return button
 	Vec2 nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
-	Node* returnRadialNode = this->createRadialNode(UIResources::Menus_Icons_Cross, nextDataIconPosition, currentAngle, Strings::Menus_Exit::create(), [=]() { this->close(); });
+	Node* returnRadialNode = this->createRadialNode(UIResources::Menus_Icons_Cross, -1, nextDataIconPosition, currentAngle, Strings::Menus_Exit::create(), [=]() { this->close(); });
 	currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * float(M_PI));
 
 	this->radialMenuItems->addChild(returnRadialNode);
@@ -152,8 +166,9 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 
 		nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 
-		Node* menuNode = this->createRadialNode(
+		ClickableNode* menuNode = this->createRadialNode(
 			hackable->getIconResource(),
+			hackable->getRequiredEq(),
 			nextDataIconPosition,
 			currentAngle,
 			hackable->getName()->clone(), 
@@ -166,12 +181,12 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	}
 }
 
-Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback)
+ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requiredLevel, Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback)
 {
 	const Size padding = Size(4.0f, 0.0f);
 
-	Node* radialNode = Node::create();
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
+	//Sprite* radialNodeIcon = Sprite::create(this->currentEq >= requiredLevel ? iconResource : (StrUtils::rtrim(iconResource, ".png", true) + "_gray.png"));
 	ClickableNode* clickableNode = ClickableNode::create(Node::create(), Node::create());
 	Node* labelNode = Node::create();
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
@@ -229,13 +244,32 @@ Node* RadialMenu::createRadialNode(std::string iconResource, Vec2 nodePosition, 
 
 	labelBackground->setPosition(Vec2(-label->getContentSize().width * label->getAnchorPoint().x, -label->getContentSize().height / 2.0f) - padding);
 
+	clickableNode->setPosition(nodePosition);
+
 	labelNode->addChild(labelBackground);
 	labelNode->addChild(label);
 
-	radialNode->setPosition(nodePosition);
-	radialNode->addChild(clickableNode);
-	radialNode->addChild(radialNodeIcon);
-	radialNode->addChild(labelNode);
+	clickableNode->addChild(radialNodeIcon);
+	clickableNode->addChild(labelNode);
 
-	return radialNode;
+	if (this->currentEq < requiredLevel)
+	{
+		LocalizedLabel* requiredEqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_RadialMenu_RequiresEq::create());
+
+		requiredEqLabel->setStringReplacementVariables(ConstantString::create(std::to_string(requiredLevel)));
+
+		LayerColor* requiredEqBackground = LayerColor::create(Color4B(0, 0, 0, 196), requiredEqLabel->getContentSize().width + padding.width * 2.0f, requiredEqLabel->getContentSize().height + padding.height * 2.0f);
+
+		requiredEqLabel->enableOutline(Color4B::BLACK, 2);
+		requiredEqLabel->setTextColor(Color4B::RED);
+
+		requiredEqBackground->setPosition(Vec2(-requiredEqLabel->getContentSize().width * requiredEqLabel->getAnchorPoint().x, -requiredEqLabel->getContentSize().height / 2.0f) - padding);
+
+		clickableNode->addChild(requiredEqBackground);
+		clickableNode->addChild(requiredEqLabel);
+
+		clickableNode->disableInteraction();
+	}
+
+	return clickableNode;
 }
