@@ -105,4 +105,13 @@ void IqEqDisplay::setStatsTarget(Squally* target)
 	this->cachedIq = (0 ^ IqEqDisplay::IqCacheCipher);
 	
 	this->target = target;
+
+	if (this->target == nullptr)
+	{
+		this->setVisible(false);
+	}
+	else
+	{
+		this->setVisible(true);
+	}
 }

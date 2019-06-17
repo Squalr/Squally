@@ -404,6 +404,8 @@ bool PlatformerEntity::tryUseRune()
 	{
 		if (this->getRuneCooldown(index) <= 0.0f)
 		{
+			PlatformerEvents::TriggerRuneConsumed(PlatformerEvents::RuneConsumedArgs(this, index));
+
 			this->setRuneCooldown(index, PlatformerEntity::RuneCooldown);
 
 			return true;

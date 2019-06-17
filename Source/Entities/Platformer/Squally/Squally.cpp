@@ -120,6 +120,8 @@ void Squally::onExit()
 	super::onExit();
 
 	PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
+
+	this->saveState();
 }
 
 void Squally::initializeCollisionEvents()

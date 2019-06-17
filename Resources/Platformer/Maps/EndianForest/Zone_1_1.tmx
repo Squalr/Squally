@@ -275,7 +275,7 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="438.393" y="4594.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="4698.5" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4511.11" y="5078.17" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="6109.97" y="5323.87" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="6034.88" y="5661.79" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="4671" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
