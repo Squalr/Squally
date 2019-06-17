@@ -107,11 +107,6 @@ void MapBase::onEnterTransitionDidFinish()
 
 void MapBase::resume(void)
 {
-	if (this->hackerMode)
-	{
-		this->toggleHackerMode();
-	}
-
 	super::resume();
 }
 
@@ -119,9 +114,9 @@ void MapBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom* eventCustom)
 	{
-		this->toggleHackerMode();
+		this->toggleHackerMode(eventCustom->getUserData());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom*)
@@ -249,7 +244,7 @@ void MapBase::onHackerModeDisable()
 	GameUtils::resume(this);
 }
 
-void MapBase::toggleHackerMode()
+void MapBase::toggleHackerMode(void* userData)
 {
 	if (!this->allowHackerMode)
 	{
@@ -260,7 +255,9 @@ void MapBase::toggleHackerMode()
 
 	if (this->hackerMode)
 	{
-		HackableEvents::TriggerHackerModeEnable();
+		HackableEvents::HackToggleArgs args = *static_cast<HackableEvents::HackToggleArgs*>(userData);
+		
+		HackableEvents::TriggerHackerModeEnable(args);
 	}
 	else
 	{

@@ -98,6 +98,7 @@ void MetalSpikes::registerHackables()
 				{
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				},
+				1,
 				20.0f
 			)
 		},

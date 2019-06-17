@@ -5,6 +5,7 @@
 
 using namespace cocos2d;
 
+const std::string HackableEvents::EventRequestHackerModeEnable = "EVENT_REQUEST_HACKERMODE_ENABLE";
 const std::string HackableEvents::EventHackerModeToggle = "EVENT_HACKERMODE_TOGGLE";
 const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENABLE";
 const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
@@ -20,17 +21,26 @@ const std::string HackableEvents::EventOpenLexiconPage = "EVENT_OPEN_LEXICON_PAG
 const std::string HackableEvents::EventCloseLeftLexiconPage = "EVENT_CLOSE_LEFT_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGHT_LEXICON_PAGE";
 
-void HackableEvents::TriggerHackerModeToggle()
+void HackableEvents::TriggerRequestHackerModeEnable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventHackerModeToggle
+		HackableEvents::EventRequestHackerModeEnable
 	);
 }
 
-void HackableEvents::TriggerHackerModeEnable()
+void HackableEvents::TriggerHackerModeToggle(HackToggleArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventHackerModeEnable
+		HackableEvents::EventHackerModeToggle,
+		&args
+	);
+}
+
+void HackableEvents::TriggerHackerModeEnable(HackToggleArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackerModeEnable,
+		&args
 	);
 }
 

@@ -148,6 +148,7 @@ void Catapult::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
 				},
+				1,
 				20.0f
 			)
 		},

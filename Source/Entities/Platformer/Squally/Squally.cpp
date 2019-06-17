@@ -4,6 +4,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
@@ -41,7 +43,7 @@ using namespace cocos2d;
 const std::string Squally::EventSquallyTrapped = "event-squally-trapped";
 
 const float Squally::SquallyScale = 0.92f;
-const int Squally::DefaultEq = 0;
+const int Squally::DefaultEq = 1;
 const std::string Squally::MapKeySqually = "squally";
 const std::string Squally::IdentifierIsAlive = "is-alive";
 const int Squally::SquallyBaseHealth = 16;
@@ -207,13 +209,21 @@ void Squally::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListener(EventListenerCustom::create(HackableEvents::EventRequestHackerModeEnable, [=](EventCustom*)
+	{
+		if (this->tryUseRune())
+		{
+			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
+		}
+	}));
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
 		args->handled = true;
 		
 		if (this->tryUseRune())
 		{
-			HackableEvents::TriggerHackerModeToggle();
+			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 		}
 	});
 
@@ -221,7 +231,7 @@ void Squally::initializeListeners()
 	{
 		args->handled = true;
 
-		HackableEvents::TriggerHackerModeToggle();
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	});
 
 	this->listenForMapEvent(Squally::EventSquallyTrapped, [=](ValueMap args)
@@ -340,6 +350,7 @@ void Squally::registerHackables()
 				EntityPreview::create(this),
 				{
 				},
+				2,
 				1.0f,
 				isAliveClippy
 			)
