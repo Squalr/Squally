@@ -11,11 +11,11 @@ class WindClippy : public Clippy
 public:
 	static WindClippy* create();
 
-	Clippy* clone() override;
-
 protected:
 	WindClippy();
 	~WindClippy();
+
+	Clippy* innerClone() override;
 
 private:
 	typedef Clippy super;

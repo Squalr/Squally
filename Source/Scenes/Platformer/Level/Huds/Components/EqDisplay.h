@@ -12,17 +12,17 @@ class LocalizedLabel;
 class LocalizedString;
 class Squally;
 
-class IqEqDisplay : public SmartNode
+class EqDisplay : public SmartNode
 {
 public:
-	static IqEqDisplay* create();
+	static EqDisplay* create();
 
 	void setStatsTarget(Squally* target);
 
 private:
 	typedef SmartNode super;
-	IqEqDisplay();
-	virtual ~IqEqDisplay();
+	EqDisplay();
+	virtual ~EqDisplay();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -30,15 +30,12 @@ private:
 	void update(float dt) override;
 
 	Squally* target;
-	cocos2d::Sprite* iqEqFrame;
-	LocalizedLabel* iqEqLabel;
-	LocalizedString* iqEqValue;
+	cocos2d::Sprite* eqFrame;
+	LocalizedLabel* eqLabel;
 	ConstantString* eqValue;
-	ConstantString* iqValue;
 
 	int cachedEq;
 	int cachedIq;
 
-	static const int IqCacheCipher;
 	static const int EqCacheCipher;
 };

@@ -387,7 +387,7 @@ void SerializableObject::listenForMapEvent(std::string eventName, std::function<
 		return;
 	}
 
-	this->addEventListener(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
 	{
 		cocos2d::ValueMap* args = static_cast<cocos2d::ValueMap*>(eventCustom->getUserData());
 

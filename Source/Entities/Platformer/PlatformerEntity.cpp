@@ -62,8 +62,11 @@ PlatformerEntity::PlatformerEntity(
 	this->isPlatformerDisabled = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 
+	Vec2 scaledColOffset = collisionOffset * scale;
+
 	// A bit sketchy, but maintains backwards compatibility with how entities are coded right now
 	movementCollisionSize = (movementCollisionSize.width <= 0.0f || movementCollisionSize.height <= 0.0f) ? size : movementCollisionSize;
+	
 	this->entitySize = size * scale;
 
 	this->movementCollision = CollisionObject::create(
@@ -115,16 +118,18 @@ PlatformerEntity::PlatformerEntity(
 	Size movementSize = movementCollisionSize * scale;
 	float sizeDelta = std::abs(movementSize.height - this->entitySize.height);
 
+	this->hackButtonOffset = Vec2(scaledColOffset.x, scaledColOffset.y + sizeDelta + this->entitySize.height + 256.0f);
+
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
 	this->animationNode->setPositionY(sizeDelta / 2.0f);
 
 	this->movementCollision->bindTo(this);
-	this->movementCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, this->entitySize.height / 2.0f));
-	this->entityCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(0.0f, movementSize.height / 2.0f));
+	this->movementCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(0.0f, this->entitySize.height / 2.0f));
+	this->entityCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(0.0f, movementSize.height / 2.0f));
 	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f + PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
-	this->leftCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(-this->entitySize.width / 2.0f + PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
-	this->rightCollision->getPhysicsBody()->setPositionOffset(collisionOffset * scale + Vec2(this->entitySize.width / 2.0f - PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
+	this->leftCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(-this->entitySize.width / 2.0f + PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
+	this->rightCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(this->entitySize.width / 2.0f - PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -287,6 +292,11 @@ void PlatformerEntity::update(float dt)
 			this->animationNode->setFlippedX(false);
 		}
 	}
+}
+
+Vec2 PlatformerEntity::getButtonOffset()
+{
+	return this->hackButtonOffset;
 }
 
 HackablePreview* PlatformerEntity::createDefaultPreview()

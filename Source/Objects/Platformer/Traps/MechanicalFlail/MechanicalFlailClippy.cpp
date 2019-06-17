@@ -40,7 +40,7 @@ MechanicalFlailClippy::~MechanicalFlailClippy()
 {
 }
 
-Clippy* MechanicalFlailClippy::clone()
+Clippy* MechanicalFlailClippy::innerClone()
 {
 	return MechanicalFlailClippy::create();
 }

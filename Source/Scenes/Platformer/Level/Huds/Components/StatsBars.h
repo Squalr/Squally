@@ -8,7 +8,7 @@ namespace cocos2d
 }
 
 class ConstantString;
-class IqEqDisplay;
+class EqDisplay;
 class LocalizedLabel;
 class RuneBar;
 class PlatformerEntity;
@@ -49,6 +49,6 @@ private:
 	ConstantString* manaNumerator;
 	ConstantString* manaDenominator;
 
-	IqEqDisplay* iqEqDisplay;
+	EqDisplay* eqDisplay;
 	RuneBar* runeBar;
 };

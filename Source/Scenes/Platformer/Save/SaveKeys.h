@@ -11,9 +11,7 @@ public:
 	static const std::string SaveKeySquallyHeath;
 	static const std::string SaveKeySquallyMana;
 	static const std::string SaveKeySquallyRuneCooldowns;
-	static const std::string SaveKeySquallyIq;
 	static const std::string SaveKeySquallyEq;
-	static const std::string SaveKeySquallyIqExperience;
 	static const std::string SaveKeySquallyEqExperience;
 	static const std::string SaveKeySquallyPositionX;
 	static const std::string SaveKeySquallyPositionY;

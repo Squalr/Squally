@@ -11,11 +11,11 @@ class RestoreHealthClippy : public Clippy
 public:
 	static RestoreHealthClippy* create();
 
-	Clippy* clone() override;
-
 protected:
 	RestoreHealthClippy();
 	~RestoreHealthClippy();
+
+	Clippy* innerClone() override;
 
 private:
 	typedef Clippy super;

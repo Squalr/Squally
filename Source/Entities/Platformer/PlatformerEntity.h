@@ -85,6 +85,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
+	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	void registerAttack(PlatformerAttack* attack);
 	virtual void initializeCollisionEvents();
@@ -139,4 +140,5 @@ private:
 	std::string animationResource;
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
+	cocos2d::Vec2 hackButtonOffset;
 };

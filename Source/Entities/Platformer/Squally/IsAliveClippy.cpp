@@ -1,4 +1,4 @@
-#include "WindClippy.h"
+#include "IsAliveClippy.h"
 
 #include "cocos/2d/CCSprite.h"
 
@@ -9,20 +9,20 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hacking/ClippyHelp/WindNop.h"
+#include "Strings/Hacking/ClippyHelp/IsAliveRetVal.h"
 
 using namespace cocos2d;
 
-WindClippy* WindClippy::create()
+IsAliveClippy* IsAliveClippy::create()
 {
-	WindClippy* instance = new WindClippy();
+	IsAliveClippy* instance = new IsAliveClippy();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WindClippy::WindClippy() : super()
+IsAliveClippy::IsAliveClippy() : super()
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Misc_DaemonsHallow_FlyBot_Animations);
 	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
@@ -33,19 +33,19 @@ WindClippy::WindClippy() : super()
 	this->addChild(this->droidChatterSound);
 }
 
-WindClippy::~WindClippy()
+IsAliveClippy::~IsAliveClippy()
 {
 }
 
-Clippy* WindClippy::innerClone()
+Clippy* IsAliveClippy::innerClone()
 {
-	return WindClippy::create();
+	return IsAliveClippy::create();
 }
 
-void WindClippy::onEnterTransitionDidFinish()
+void IsAliveClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Hacking_ClippyHelp_WindNop::create());
+	this->speechBubble->runDialogue(Strings::Hacking_ClippyHelp_IsAliveRetVal::create());
 	this->droidChatterSound->play();
 }

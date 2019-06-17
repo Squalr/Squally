@@ -37,7 +37,7 @@ RestoreHealthClippy::~RestoreHealthClippy()
 {
 }
 
-Clippy* RestoreHealthClippy::clone()
+Clippy* RestoreHealthClippy::innerClone()
 {
 	return RestoreHealthClippy::create();
 }

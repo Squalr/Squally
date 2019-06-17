@@ -40,7 +40,7 @@ PendulumBladeClippy::~PendulumBladeClippy()
 {
 }
 
-Clippy* PendulumBladeClippy::clone()
+Clippy* PendulumBladeClippy::innerClone()
 {
 	return PendulumBladeClippy::create();
 }

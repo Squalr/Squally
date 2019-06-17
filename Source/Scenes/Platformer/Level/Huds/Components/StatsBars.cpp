@@ -9,7 +9,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/Level/Huds/Components/IqEqDisplay.h"
+#include "Scenes/Platformer/Level/Huds/Components/EqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 
 #include "Resources/UIResources.h"
@@ -46,7 +46,7 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->healthDenominator = ConstantString::create("-");
 	this->manaNumerator = ConstantString::create("-");
 	this->manaDenominator = ConstantString::create("-");
-	this->iqEqDisplay = IqEqDisplay::create();
+	this->eqDisplay = EqDisplay::create();
 	this->runeBar = RuneBar::create();
 
 	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
@@ -56,7 +56,7 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->manaLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->runeBar->setVisible(false);
-	this->iqEqDisplay->setVisible(false);
+	this->eqDisplay->setVisible(false);
 
 	this->healthBar->addChild(this->healthLabel);
 	this->manaBar->addChild(this->manaLabel);
@@ -68,7 +68,7 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->addChild(this->manaSprite);
 	this->addChild(this->healthSprite);
 	this->addChild(this->runeBar);
-	this->addChild(this->iqEqDisplay);
+	this->addChild(this->eqDisplay);
 }
 
 StatsBars::~StatsBars()
@@ -94,7 +94,7 @@ void StatsBars::initializePositions()
 	float manaBarOffet = this->isFrameOnLeft ? 16.0f : -16.0f;
 	float emblemOffset = this->isFrameOnLeft ? 64.0f : 112.0f;
 	float frameOffset = this->isFrameOnLeft ? (this->frame->getContentSize().width / 2.0f) : 0.0f;
-	float iqEqOffset = this->isFrameOnLeft ? 64.0f : 112.0f;
+	float eqOffset = this->isFrameOnLeft ? 64.0f : 112.0f;
 
 	this->frame->setPosition(Vec2(frameOffset, 0.0f));
 	this->emblemGlow->setPosition(Vec2(emblemOffset, 16.0f));
@@ -106,7 +106,7 @@ void StatsBars::initializePositions()
 	this->manaSprite->setPosition(Vec2(barInset + spriteOffset.x + manaBarOffet, barY + spriteOffset.y - 48.0f));
 	this->manaLabel->setPosition(Vec2(0.0f, 22.0f));
 	this->runeBar->setPosition(306.0f, 36.0f);
-	this->iqEqDisplay->setPosition(iqEqOffset, -32.0f);
+	this->eqDisplay->setPosition(eqOffset, -32.0f);
 }
 
 void StatsBars::initializeListeners()
@@ -146,7 +146,7 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 
 	bool isSqually = dynamic_cast<Squally*>(target) != nullptr;
 
-	this->iqEqDisplay->setStatsTarget(isSqually ? static_cast<Squally*>(target) : nullptr);
+	this->eqDisplay->setStatsTarget(isSqually ? static_cast<Squally*>(target) : nullptr);
 	this->runeBar->setStatsTarget(isSqually ? static_cast<Squally*>(target) : nullptr);
 
 	this->emblemNode->removeAllChildren();

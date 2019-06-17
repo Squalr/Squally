@@ -19,6 +19,7 @@
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/Squally/IsAliveClippy.h"
 #include "Events/NavigationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
@@ -37,10 +38,12 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_IS_ALIVE 1
 
+const std::string Squally::EventSquallyTrapped = "event-squally-trapped";
+
 const float Squally::SquallyScale = 0.92f;
-const int Squally::DefaultIq = 85;
-const int Squally::DefaultEq = 70;
+const int Squally::DefaultEq = 0;
 const std::string Squally::MapKeySqually = "squally";
+const std::string Squally::IdentifierIsAlive = "is-alive";
 const int Squally::SquallyBaseHealth = 16;
 const int Squally::SquallyBaseSpecial = 8;
 
@@ -66,9 +69,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	24.0f)
 {
 	this->noCombatDuration = 0.0f;
-	this->iq = 0;
 	this->eq = 0;
-	this->iqExperience = 0;
 	this->eqExperience = 0;
 	this->cameraTrackTarget = Node::create();
 	this->leftEyeController = SmartAnimationSequenceNode::create();
@@ -208,15 +209,30 @@ void Squally::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
+		args->handled = true;
+		
 		if (this->tryUseRune())
 		{
 			HackableEvents::TriggerHackerModeToggle();
 		}
 	});
 
-	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
+		args->handled = true;
+
 		HackableEvents::TriggerHackerModeToggle();
+	});
+
+	this->listenForMapEvent(Squally::EventSquallyTrapped, [=](ValueMap args)
+	{
+		for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+		{
+			if ((*it)->getHackableCodeIdentifier() == Squally::IdentifierIsAlive)
+			{
+				(*it)->getClippy()->setIsEnabled(true);
+			}
+		}
 	});
 }
 
@@ -309,18 +325,23 @@ void Squally::registerHackables()
 {
 	super::registerHackables();
 
+	IsAliveClippy* isAliveClippy = IsAliveClippy::create();
+
+	isAliveClippy->setIsEnabled(true);
+
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
 			LOCAL_FUNC_ID_IS_ALIVE,
 			HackableCode::LateBindData(
-				Squally::MapKeySqually,
+				Squally::IdentifierIsAlive,
 				Strings::Hacking_Entities_Squally_IsAlive_IsAlive::create(),
 				UIResources::Menus_Icons_Heart,
 				EntityPreview::create(this),
 				{
 				},
-				1.0f
+				1.0f,
+				isAliveClippy
 			)
 		},
 	};
@@ -365,7 +386,7 @@ void Squally::saveState()
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
 		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
 		{ SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns) },
-		{ SaveKeys::SaveKeySquallyIq, Value(this->getIq()) },
+		{ SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience()) },
 		{ SaveKeys::SaveKeySquallyEq, Value(this->getEq()) }
 	});
 }
@@ -376,9 +397,7 @@ void Squally::loadState()
 	// Be a lower value (ie if created as injured for a cutscene)
 	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
 	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
-	this->setIq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIq, Value(Squally::DefaultIq)).asInt());
 	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(Squally::DefaultEq)).asInt());
-	this->setIqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyIqExperience, Value(this->getIqExperience())).asInt());
 	this->setEqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience())).asInt());
 
 	ValueVector cooldowns = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
@@ -397,16 +416,6 @@ void Squally::loadState()
 	this->saveState();
 }
 
-void Squally::setIq(int iq)
-{
-	this->iq = iq;
-}
-
-int Squally::getIq()
-{
-	return this->iq;
-}
-
 void Squally::setEq(int eq)
 {
 	this->eq = eq;
@@ -415,21 +424,6 @@ void Squally::setEq(int eq)
 int Squally::getEq()
 {
 	return this->eq;
-}
-
-void Squally::setIqExperience(int iqExperience)
-{
-	this->iqExperience = iqExperience;
-}
-
-void Squally::addIqExperience(int iqExperience)
-{
-	this->setIqExperience(this->getIqExperience() + iqExperience);
-}
-
-int Squally::getIqExperience()
-{
-	return this->iqExperience;
 }
 
 void Squally::setEqExperience(int eqExperience)
