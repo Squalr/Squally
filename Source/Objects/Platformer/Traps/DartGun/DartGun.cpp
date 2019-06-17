@@ -110,6 +110,7 @@ void DartGun::registerHackables()
 					{ HackableCode::Register::zax, nullptr },
 					{ HackableCode::Register::zbx, nullptr }
 				},
+				1,
 				20.0f
 			)
 		},

@@ -107,6 +107,7 @@ void RestoreHealth::registerHackables()
 				{
 					{ HackableCode::Register::zdi, Strings::Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
 				},
+				1,
 				2.0f,
 				showClippy ? RestoreHealthClippy::create() : nullptr
 			)

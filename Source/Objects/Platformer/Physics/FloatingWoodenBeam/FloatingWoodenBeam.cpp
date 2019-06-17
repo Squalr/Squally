@@ -98,6 +98,7 @@ void FloatingWoodenBeam::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
+				1,
 				10.0f
 			)
 		},

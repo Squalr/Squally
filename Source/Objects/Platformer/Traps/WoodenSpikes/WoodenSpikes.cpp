@@ -98,6 +98,7 @@ void WoodenSpikes::registerHackables()
 				{
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 				},
+				1,
 				20.0f
 			)
 		},

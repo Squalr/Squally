@@ -119,6 +119,7 @@ void MechanicalFlail::registerHackables()
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }
 				},
+				2,
 				20.0f,
 				this->showClippy ? MechanicalFlailClippy::create() : nullptr
 			)

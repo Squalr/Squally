@@ -148,14 +148,15 @@ public:
 		std::string iconResource;
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
+		int requiredLevel;
 		float duration;
 		Clippy* clippy;
 
-		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), clippy(nullptr) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration), clippy(nullptr) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration, Clippy* clippy) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration), clippy(clippy) { }
+		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), requiredLevel(1), clippy(nullptr) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredLevel, float duration) :
+			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredLevel(requiredLevel), duration(duration), clippy(nullptr) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredLevel, float duration, Clippy* clippy) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredLevel(requiredLevel), duration(duration), clippy(clippy) { }
 	
 	};
 

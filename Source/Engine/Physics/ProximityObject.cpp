@@ -93,6 +93,7 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
 				},
+				10,
 				3.0f
 			)
 		},
@@ -109,6 +110,7 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				},
+				10,
 				3.0f
 			)
 		},

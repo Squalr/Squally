@@ -55,7 +55,7 @@ protected:
 
 private:
 	typedef GlobalScene super;
-	void toggleHackerMode();
+	void toggleHackerMode(void* userData);
 	void onOptionsExit();
 	void openPauseMenu();
 	void onResumeClick();

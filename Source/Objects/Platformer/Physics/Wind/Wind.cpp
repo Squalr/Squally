@@ -142,6 +142,7 @@ void Wind::registerHackables()
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
+				1,
 				5.0f,
 				this->showClippy ? WindClippy::create() : nullptr
 			)

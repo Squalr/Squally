@@ -430,7 +430,7 @@ void FlyBot::runRestorePotionTutorial()
 		DelayTime::create(TutorialDelay),
 		CallFunc::create([=]()
 		{
-			HackableEvents::TriggerHackerModeEnable();
+			HackableEvents::TriggerRequestHackerModeEnable();
 			HackableEvents::TriggerAllowHackerMode();
 			GameUtils::resume(this);
 
