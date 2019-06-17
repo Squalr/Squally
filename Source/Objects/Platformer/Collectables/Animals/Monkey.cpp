@@ -101,19 +101,19 @@ void Monkey::update(float dt)
 void Monkey::decreaseLockTimer()
 {
 	/*
-	ASM(push ECX);
-	ASM(mov ECX, lockCountDown);
+	ASM(push ZCX);
+	ASM(mov ZCX, lockCountDown);
 
 	HACKABLE_CODE_BEGIN(assemblyAddressStart);
-	ASM(dec ecx);
+	ASM(dec ZCX);
 	ASM(nop);
 	ASM(nop);
 	ASM(nop);
 	ASM(nop);
 	HACKABLE_CODE_END(assemblyAddressEnd);
 
-	ASM(mov lockCountDown, ECX);
-	ASM(pop ECX);
+	ASM(mov lockCountDown, ZCX);
+	ASM(pop ZCX);
 
 	if (Monkey::lockCountDown < 0)
 	{

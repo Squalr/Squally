@@ -127,22 +127,22 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 	volatile float* elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
 	volatile float* deltaTimePtr = &dt;
 
-	ASM(push EAX);
-	ASM(push EBX);
-	ASM_MOV_REG_VAR(EAX, elapsedPtr);
-	ASM_MOV_REG_VAR(EBX, deltaTimePtr);
+	ASM(push ZAX);
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZAX, elapsedPtr);
+	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
 
-	ASM(fld dword ptr [EAX]);
+	ASM(fld dword ptr [ZAX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(fadd dword ptr [EBX]);
+	ASM(fadd dword ptr [ZBX]);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(fstp dword ptr [EAX])
+	ASM(fstp dword ptr [ZAX])
 
-	ASM(pop EAX);
-	ASM(pop EBX);
+	ASM(pop ZAX);
+	ASM(pop ZBX);
 
 	HACKABLES_STOP_SEARCH();
 

@@ -160,16 +160,16 @@ NO_OPTIMIZE void RestoreHealth::runRestoreTick()
 {
 	int incrementAmount = 0;
 
-	ASM(push EDI);
-	ASM(mov EDI, 0)
+	ASM(push ZDI);
+	ASM(mov ZDI, 0)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(inc EDI);
+	ASM(inc ZDI);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, EDI);
+	ASM_MOV_VAR_REG(incrementAmount, ZDI);
 
-	ASM(pop EDI);
+	ASM(pop ZDI);
 
 	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
 

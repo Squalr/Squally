@@ -12,6 +12,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeClippy.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -119,7 +120,8 @@ void PendulumBlade::registerHackables()
 					{ HackableCode::Register::zax, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
 				},
-				20.0f
+				20.0f,
+				this->showClippy ? PendulumBladeClippy::create() : nullptr
 			)
 		},
 	};
@@ -153,20 +155,20 @@ NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
 	volatile int previousAngleInt = (int)previousAngle;
 	volatile int angleInt = (int)angle;
 
-	ASM(push EAX);
-	ASM(push EBX);
-	ASM_MOV_REG_VAR(EAX, angleInt);
-	ASM_MOV_REG_VAR(EBX, previousAngleInt);
+	ASM(push ZAX);
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZAX, angleInt);
+	ASM_MOV_REG_VAR(ZBX, previousAngleInt);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
-	ASM(mov EBX, EAX);
+	ASM(mov ZBX, ZAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(angleInt, EBX);
+	ASM_MOV_VAR_REG(angleInt, ZBX);
 
-	ASM(pop EBX);
-	ASM(pop EAX);
+	ASM(pop ZBX);
+	ASM(pop ZAX);
 
 	this->targetAngle = MathUtils::wrappingNormalize((float)angleInt, 0.0f, 360.0f);
 

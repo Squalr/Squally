@@ -176,27 +176,27 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 	xDefaultSpeedPtr = &this->windSpeedDefault.x;
 	yDefaultSpeedPtr = &this->windSpeedDefault.y;
 
-	ASM(push EAX);
-	ASM(push EBX);
+	ASM(push ZAX);
+	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(EAX, xDefaultSpeedPtr);
-	ASM_MOV_REG_VAR(EBX, yDefaultSpeedPtr);
+	ASM_MOV_REG_VAR(ZAX, xDefaultSpeedPtr);
+	ASM_MOV_REG_VAR(ZBX, yDefaultSpeedPtr);
 
-	ASM(movss xmm0, [EAX])
-	ASM(movss xmm1, [EBX])
+	ASM(movss xmm0, [ZAX])
+	ASM(movss xmm1, [ZBX])
 
-	ASM_MOV_REG_VAR(EAX, xSpeedPtr);
-	ASM_MOV_REG_VAR(EBX, ySpeedPtr);
+	ASM_MOV_REG_VAR(ZAX, xSpeedPtr);
+	ASM_MOV_REG_VAR(ZBX, ySpeedPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_WIND_SPEED);
-	ASM(movss [EAX], xmm0)
-	ASM(movss [EBX], xmm1)
+	ASM(movss [ZAX], xmm0)
+	ASM(movss [ZBX], xmm1)
 	ASM_NOP16()
 	ASM_NOP16()
 	HACKABLE_CODE_END();
 
-	ASM(pop EBX);
-	ASM(pop EAX);
+	ASM(pop ZBX);
+	ASM(pop ZAX);
 
 	HACKABLES_STOP_SEARCH();
 
