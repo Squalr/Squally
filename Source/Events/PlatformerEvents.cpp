@@ -7,6 +7,7 @@ using namespace cocos2d;
 
 const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJACK";
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
+const std::string PlatformerEvents::EventRuneConsumed = "EVENT_RUNE_CONSUMED";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 
@@ -21,6 +22,14 @@ void PlatformerEvents::TriggerCinematicRestore()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventCinematicRestore
+	);
+}
+
+void PlatformerEvents::TriggerRuneConsumed(RuneConsumedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventRuneConsumed,
+		&args
 	);
 }
 

@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-TitleScreenBackground * TitleScreenBackground::create()
+TitleScreenBackground* TitleScreenBackground::create()
 {
 	TitleScreenBackground* instance = new TitleScreenBackground();
 
@@ -179,24 +179,24 @@ void TitleScreenBackground::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->backgroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 320.0f));
-	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->tree->setPosition(Vec2(visibleSize.width / 2 + 38.0f, visibleSize.height / 2 + 180.0f));
+	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->backgroundVines->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 320.0f));
+	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->tree->setPosition(Vec2(visibleSize.width / 2.0f + 38.0f, visibleSize.height / 2.0f + 180.0f));
 
-	this->eyes1->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
-	this->eyes2->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
-	this->fog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 120.0f));
-	this->foregroundFog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 256.0f));
-	this->foregroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 196.0f));
-	this->foregroundGrassBottom->setPosition(Vec2(visibleSize.width / 2, 0.0f));
-	this->foregroundGrassTop->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 32.0f));
-	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
-	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
-	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->slime->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
-	this->squally->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
+	this->eyes1->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f - 180.0f));
+	this->eyes2->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f - 180.0f));
+	this->fog->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 120.0f));
+	this->foregroundFog->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 256.0f));
+	this->foregroundVines->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 196.0f));
+	this->foregroundGrassBottom->setPosition(Vec2(visibleSize.width / 2.0f, 0.0f));
+	this->foregroundGrassTop->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
+	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - foregroundLight->getContentSize().height / 2.0f));
+	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
+	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->slime->setPosition(Vec2(visibleSize.width / 2.0f + 112.0f, visibleSize.height / 2.0f - 320.0f));
+	this->squally->setPosition(Vec2(visibleSize.width / 2.0f + 228.0f, visibleSize.height / 2.0f + 160.0f));
 }
 
 void TitleScreenBackground::runEyeBlinkLoop()
