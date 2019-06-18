@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="104" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="63" nextobjectid="684">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="104" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="63" nextobjectid="689">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -107,7 +107,7 @@
     <property name="is-hollow" type="bool" value="true"/>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 2786.09,-618.894 4769.28,-572.097 5585.05,-918.297 8595.84,-1179.08 11670.8,-1162 11695.7,2480.07 7798.42,2985.03 4583.47,2944.09 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
+   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 5155.6,-560.899 6763.04,-769.994 8298.36,-846.055 10484.8,-1154.22 11670.8,-1162 11695.7,2480.07 7798.42,2985.03 4583.47,2944.09 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
@@ -181,12 +181,12 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="674" name="pendulum-blade" type="object" x="4503.98" y="3848.09" width="42.4242" height="420.97">
+  <object id="674" name="pendulum-blade" type="object" x="4422.98" y="3852.47" width="42.4242" height="219.569">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="675" name="pendulum-blade" type="object" x="4802.64" y="3840.03" width="42.4242" height="304.97">
+  <object id="675" name="pendulum-blade" type="object" x="4723.83" y="3848.79" width="42.4242" height="304.97">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
@@ -196,17 +196,38 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="677" name="mechanical-flail" type="object" x="4661.98" y="4135.36" width="42.4242" height="198.303">
+  <object id="677" name="mechanical-flail" type="object" x="5419.42" y="4148.49" width="42.4242" height="198.303">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="678" name="mechanical-flail" type="object" x="5003.98" y="4074.94" width="42.4242" height="264.303">
+  <object id="678" name="mechanical-flail" type="object" x="5831.48" y="4099.02" width="42.4242" height="264.303">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="679" name="mechanical-flail" type="object" x="5393.98" y="4185.36" width="42.4242" height="166.303">
+  <object id="679" name="mechanical-flail" type="object" x="6055.1" y="4198.49" width="42.4242" height="166.303">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="685" name="trigger" type="object" x="3826.4" y="2984.49" width="195.164" height="1351.51">
+   <properties>
+    <property name="event" value="event-spot-ogre"/>
+   </properties>
+  </object>
+  <object id="686" name="fly-bot" type="entity" x="4153.4" y="3959.96" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="state" value="event-spot-ogre"/>
+   </properties>
+  </object>
+  <object id="687" name="pendulum-blade" type="object" x="4974.41" y="3835.05" width="42.4242" height="420.97">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="688" name="mechanical-flail" type="object" x="6287.89" y="4034.62" width="42.4242" height="337.056">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>

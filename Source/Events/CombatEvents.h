@@ -30,6 +30,7 @@ public:
 	static const std::string EventCombatFinished;
 	static const std::string EventCombatTutorialFocus;
 	static const std::string EventCombatTutorialUnfocus;
+	static const std::string EventGiveExp;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
 
@@ -177,6 +178,7 @@ public:
 	static void TriggerCastBlocked(CastBlockedArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);
 	static void TriggerCombatFinished(CombatFinishedArgs args);
+	static void TriggerGiveExp();
 	static void TriggerGiveRewards();
 	static void TriggerReturnToMap();
 };

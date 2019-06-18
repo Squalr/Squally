@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringAr()
 	{
-		return "أنت محاصر! يجب عليك اختراق نفسك للخروج من هذا واحد!";
+		return "أنت محاصر! سيكون عليك اختراق نفسك للهروب.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringBg()
 	{
-		return "Вие сте в капан! Ще трябва да се хакнете, за да се измъкнете от това!";
+		return "Вие сте в капан! Ще трябва да се хакнеш, за да избягаш.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringCs()
 	{
-		return "Jste v pasti! Budeš se muset dostat z tohohle!";
+		return "Jste v pasti! Budeš muset uniknout.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringDa()
 	{
-		return "Du er fanget! Du bliver nødt til at hakke dig selv for at komme ud af denne!";
+		return "Du er fanget! Du bliver nødt til at hakke dig selv for at undslippe.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringDe()
 	{
-		return "Du bist gefangen! Du musst dich selbst hacken, um aus diesem herauszukommen!";
+		return "Du bist gefangen! Du musst dich selbst hacken, um zu entkommen.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringEl()
 	{
-		return "Είστε παγιδευμένοι! Θα πρέπει να χάσετε τον εαυτό σας για να βγείτε από αυτό!";
+		return "Είστε παγιδευμένοι! Θα πρέπει να χαράξεις τον εαυτό σου για να ξεφύγεις.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringEn()
 	{
-		return "You're trapped! You're gonna have to hack yourself to get out of this one!";
+		return "You're trapped! You're gonna have to hack yourself to escape.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringEs()
 	{
-		return "Estas atrapado ¡Tendrás que piratearte para salir de este!";
+		return "Estas atrapado Vas a tener que hackearte para escapar.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringEs419()
 	{
-		return "Estas atrapado ¡Tendrás que piratearte para salir de este!";
+		return "Estas atrapado Vas a tener que hackearte para escapar.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringFi()
 	{
-		return "Olet loukussa! Sinun täytyy hakata itsesi päästäksesi ulos tästä!";
+		return "Olet loukussa! Sinun täytyy hakata itsesi paeta.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringFr()
 	{
-		return "Vous êtes pris au piège! Vous allez devoir vous pirater pour sortir de celui-ci!";
+		return "Vous êtes pris au piège! Tu vas devoir te pirater pour t'échapper.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringHu()
 	{
-		return "Ön csapdába esett! Meg kell csapkodnia magát, hogy kijöjjön ebből!";
+		return "Ön csapdába esett! Meg kell csapkodnia magát, hogy elkerülje.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringIt()
 	{
-		return "Sei intrappolato! Dovrai hackerarti per uscire da questo!";
+		return "Sei intrappolato! Dovrai hackerarti per scappare.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringJa()
 	{
-		return "あなたは捕まっています！あなたはこれから抜け出すために自分自身をハックする必要があるのです！";
+		return "あなたは捕まっています！あなたは脱出するために自分自身をハックする必要があるのです。";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringKo()
 	{
-		return "너 갇혀있어! 이걸 벗어나기 위해 너 자신을 해킹해야 해!";
+		return "너 갇혀있어! 탈출하기 위해 너 자신을 해킹해야 할거야.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringNl()
 	{
-		return "Je zit in de val! Je moet jezelf hacken om hier uit te komen!";
+		return "Je zit in de val! Je moet jezelf hacken om te ontsnappen.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringNo()
 	{
-		return "Du er fanget! Du må hack deg for å komme deg ut av denne!";
+		return "Du er fanget! Du må hack deg for å rømme.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringPl()
 	{
-		return "Jesteś uwięziony! Musisz wydostać się z tego!";
+		return "Jesteś uwięziony! Musisz się włamać, żeby uciec.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringPt()
 	{
-		return "Você está preso! Você vai ter que hackear a si mesmo para sair dessa!";
+		return "Você está preso! Você vai ter que se cortar para escapar.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringPtBr()
 	{
-		return "Você está preso! Você vai ter que hackear a si mesmo para sair dessa!";
+		return "Você está preso! Você vai ter que se cortar para escapar.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringRo()
 	{
-		return "Ești prins! Va trebui să te hai să ieși din asta!";
+		return "Ești prins! Va trebui să te sperii să scape.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringRu()
 	{
-		return "Вы в ловушке! Тебе придется взломать себя, чтобы выбраться из этого!";
+		return "Вы в ловушке! Тебе придется взломать себя, чтобы сбежать.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringSv()
 	{
-		return "Du är instängd! Du kommer att behöva hacka dig själv för att komma ut ur den här!";
+		return "Du är instängd! Du kommer att behöva hacka dig att fly.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringTh()
 	{
-		return "คุณติดกับดัก! คุณจะต้องแฮ็คตัวเองเพื่อออกไปจากอันนี้!";
+		return "คุณติดกับดัก! คุณจะต้องแฮ็คตัวเองเพื่อหลบหนี";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringTr()
 	{
-		return "Kapana kısıldın! Bundan kurtulmak için kendini kesmek zorunda kalacaksın!";
+		return "Kapana kısıldın! Kaçmak için kendini kesmek zorunda kalacaksın.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringUk()
 	{
-		return "Ви потрапили в пастку! Ви повинні будете зламати себе, щоб вийти з цього!";
+		return "Ви потрапили в пастку! Ви повинні будете зламати себе, щоб втекти.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringVi()
 	{
-		return "Bạn bị mắc kẹt! Bạn sẽ phải tự hack để thoát khỏi cái này!";
+		return "Bạn bị mắc kẹt! Bạn sẽ phải tự hack để trốn thoát.";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringZhCn()
 	{
-		return "你被困了！你将不得不破解自己离开这个！";
+		return "你被困了！你将不得不破解自己逃避。";
 	}
 
 	std::string Dialogue_Story_Intro_SquallyTrapped::getStringZhTw()
 	{
-		return "你被困了！你將不得不破壞自己擺脫這一個！";
+		return "你被困了！你將不得不破解自己逃避。";
 	}
 }

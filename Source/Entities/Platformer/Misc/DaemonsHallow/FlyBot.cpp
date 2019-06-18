@@ -100,6 +100,11 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
 	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
+	this->droidAlarmedSound->toggleCameraDistanceFade(true);
+	this->droidBrief1Sound->toggleCameraDistanceFade(true);
+	this->droidBrief2Sound->toggleCameraDistanceFade(true);
+	this->droidChatterSound->toggleCameraDistanceFade(true);
+
 	this->addChild(this->droidAlarmedSound);
 	this->addChild(this->droidBrief1Sound);
 	this->addChild(this->droidBrief2Sound);
