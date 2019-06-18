@@ -1,5 +1,7 @@
 #include "CombatMap.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -127,10 +129,7 @@ void CombatMap::initializeListeners()
 			{
 				PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 
-				this->menuBackDrop->setOpacity(196);
-				this->rewardsMenu->show();
-
-				CombatEvents::TriggerGiveRewards();
+				CombatEvents::TriggerGiveExp();
 			}
 			else
 			{
@@ -138,6 +137,26 @@ void CombatMap::initializeListeners()
 				this->defeatMenu->show();
 			}
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
+	{
+		this->textOverlays->showExpBars(420);
+
+		this->runAction(Sequence::create(
+			DelayTime::create(8.0f),
+			CallFunc::create([=]()
+			{
+				CombatEvents::TriggerGiveRewards();
+			}),
+			nullptr
+		));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* eventCustom)
+	{
+		this->menuBackDrop->setOpacity(196);
+		this->rewardsMenu->show();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)

@@ -11,8 +11,6 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Hacking/ClippyHelp/MechanicalFlailMov.h"
-#include "Strings/Hacking/RegisterEax.h"
-#include "Strings/Hacking/RegisterRax.h"
 
 using namespace cocos2d;
 
@@ -49,17 +47,6 @@ void MechanicalFlailClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	LocalizedString* localizedString = Strings::Hacking_ClippyHelp_MechanicalFlailMov::create();
-
-	if (sizeof(void*) == 8)
-	{
-		localizedString->setStringReplacementVariables(Strings::Hacking_RegisterRax::create());
-	}
-	else
-	{
-		localizedString->setStringReplacementVariables(Strings::Hacking_RegisterEax::create());
-	}
-
-	this->speechBubble->runDialogue(localizedString);
+	this->speechBubble->runDialogue(Strings::Hacking_ClippyHelp_MechanicalFlailMov::create());
 	this->droidChatterSound->play();
 }

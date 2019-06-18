@@ -2,14 +2,20 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+
+#include "Resources/UIResources.h"
 
 #include "Strings/Combat/Blocked.h"
 #include "Strings/Combat/Interrupted.h"
@@ -103,6 +109,18 @@ void TextOverlays::initializeListeners()
 void TextOverlays::update(float dt)
 {
 	super::update(dt);
+}
+
+void TextOverlays::showExpBars(int gain)
+{
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
+	{
+		ProgressBar* expProgress = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
+
+		expProgress->setPosition(Vec2(0.0f, 128.0f));
+
+		entity->addChild(expProgress);
+	}));
 }
 
 void TextOverlays::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label)
