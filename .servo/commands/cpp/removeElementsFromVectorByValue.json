@@ -1,0 +1,11 @@
+{
+  "description": "Removes elements from a vector with the given value.",
+  "command": "remove elements from vector by value",
+  "programmingLanguage": "cpp",
+  "aliases": [
+	  "remove elements from vector by value",
+	  "remove element from vector by value"
+  ],
+  "scriptPath": "common/loadTemplateFile.py",
+  "scriptArgs": "cpp/removeElementsFromVectorByValue.cpp"
+}

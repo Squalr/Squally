@@ -1,0 +1,9 @@
+{
+  "description": "Sorts a vector by a lambda, defaulting to descending",
+  "command": "sort vector by lambda",
+  "programmingLanguage": "cpp",
+  "aliases": [
+  ],
+  "scriptPath": "cpp/sortVectorByLambda.py",
+  "scriptArgs": "descending"
+}

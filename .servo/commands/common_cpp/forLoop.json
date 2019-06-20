@@ -1,0 +1,12 @@
+{
+  "description": "Creates a generic for loop",
+  "command": "for loop",
+  "programmingLanguage": "cpp",
+  "aliases": [
+	"add for loop",
+	"create for loop",
+	"insert for loop"
+  ],
+  "scriptPath": "common/loadTemplateFile.py",
+  "scriptArgs": "cpp/forLoop.cpp"
+}
