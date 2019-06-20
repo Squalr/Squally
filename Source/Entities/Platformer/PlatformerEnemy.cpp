@@ -123,13 +123,12 @@ void PlatformerEnemy::initializeListeners()
 	{
 		this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
 		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
-		this->health = std::max(this->getMaxHealth(), 1);
+		this->revive();
 	});
 
 	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
-		this->health = 0;
+		this->kill();
 
 		if (!this->mapEvent.empty())
 		{
@@ -169,8 +168,7 @@ void PlatformerEnemy::onObjectStateLoaded()
 
 	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
 	{
-		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
-		this->health = 0;
+		this->kill(true);
 	}
 }
 

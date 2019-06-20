@@ -21,6 +21,7 @@ public:
 	int getHealth();
 	void addHealth(int healthDelta);
 	void setHealth(int health);
+	void kill(bool loadDeadAnim = false);
 	void revive();
 	int getMaxHealth();
 	bool isAlive();
@@ -34,6 +35,11 @@ public:
 	float getRuneCooldown(int runeIndex);
 	void setRuneCooldown(int runeIndex, float cooldown);
 	int getMaxRunes();
+	void setEq(int eq);
+	int getEq();
+	void setEqExperience(int eqExperience);
+	void addEqExperience(int eqExperience);
+	int getEqExperience();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();
 	virtual float getFloatHeight();
@@ -115,14 +121,10 @@ protected:
 	bool isCinimaticHijacked;
 	bool isPlatformerDisabled;
 	std::string state;
-	int health;
-	int maxHealth;
-	int mana;
-	int maxMana;
-	std::vector<float> runeCooldowns;
 
 	cocos2d::Size entitySize;
 
+	static const int DefaultEq;
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
 	static const float WallDetectorSize;
@@ -135,6 +137,14 @@ protected:
 
 private:
 	typedef HackableObject super;
+
+	int health;
+	int maxHealth;
+	int mana;
+	int maxMana;
+	std::vector<float> runeCooldowns;
+	int eq;
+	int eqExperience;
 
 	float scale;
 	std::string animationResource;
