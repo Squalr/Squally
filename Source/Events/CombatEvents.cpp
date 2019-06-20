@@ -20,6 +20,7 @@ const std::string CombatEvents::EventDamageOrHealing = "EVENT_DAMAGE_OR_HEALING"
 const std::string CombatEvents::EventCastBlocked = "EVENT_CAST_BLOCKED";
 const std::string CombatEvents::EventCastInterrupt = "EVENT_CAST_INTERRUPT";
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_FINISHED";
+const std::string CombatEvents::EventGiveExp = "EVENT_GIVE_EXP";
 const std::string CombatEvents::EventGiveRewards = "EVENT_GIVE_REWARDS";
 const std::string CombatEvents::EventReturnToMap = "EVENT_RETURN_TO_MAP";
 
@@ -137,6 +138,13 @@ void CombatEvents::TriggerCombatFinished(CombatFinishedArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventCombatFinished,
 		&args
+	);
+}
+
+void CombatEvents::TriggerGiveExp()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventGiveExp
 	);
 }
 

@@ -37,6 +37,7 @@ const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
 const int PlatformerEntity::MaxRunes = 3;
 const float PlatformerEntity::RuneCooldown = 24.0f;
+const int PlatformerEntity::DefaultEq = 1;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
@@ -61,6 +62,8 @@ PlatformerEntity::PlatformerEntity(
 	this->isCinimaticHijacked = false;
 	this->isPlatformerDisabled = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
+	this->eq = 0;
+	this->eqExperience = 0;
 
 	Vec2 scaledColOffset = collisionOffset * scale;
 
@@ -339,6 +342,16 @@ void PlatformerEntity::setHealth(int health)
 	}
 }
 
+void PlatformerEntity::kill(bool loadDeadAnim)
+{
+	this->setHealth(0);
+
+	if (loadDeadAnim)
+	{
+		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+	}
+}
+
 void PlatformerEntity::revive()
 {
 	this->health = this->getMaxHealth();
@@ -442,6 +455,31 @@ void PlatformerEntity::setRuneCooldown(int runeIndex, float cooldown)
 int PlatformerEntity::getMaxRunes()
 {
 	return PlatformerEntity::MaxRunes;
+}
+
+void PlatformerEntity::setEq(int eq)
+{
+	this->eq = eq;
+}
+
+int PlatformerEntity::getEq()
+{
+	return this->eq;
+}
+
+void PlatformerEntity::setEqExperience(int eqExperience)
+{
+	this->eqExperience = eqExperience;
+}
+
+void PlatformerEntity::addEqExperience(int eqExperience)
+{
+	this->setEqExperience(this->getEqExperience() + eqExperience);
+}
+
+int PlatformerEntity::getEqExperience()
+{
+	return this->eqExperience;
 }
 
 bool PlatformerEntity::getIsPlatformerDisabled()

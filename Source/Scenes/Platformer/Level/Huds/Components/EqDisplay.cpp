@@ -31,8 +31,6 @@ EqDisplay::EqDisplay()
 
 	this->eqLabel->enableOutline(Color4B::BLACK, 2);
 
-	// this->eqFrame->setVisible(false);
-
 	this->cachedEq = (0 ^ EqDisplay::EqCacheCipher);
 
 	this->addChild(this->eqFrame);
@@ -54,7 +52,7 @@ void EqDisplay::initializePositions()
 {
 	super::initializePositions();
 
-	this->eqFrame->setPosition(Vec2(0.0f, 0.0f));
+	this->eqFrame->setPosition(Vec2(0.0f, 4.0f));
 	this->eqLabel->setPosition(Vec2(0.0f, 0.0f));
 }
 

@@ -43,7 +43,6 @@ using namespace cocos2d;
 const std::string Squally::EventSquallyTrapped = "event-squally-trapped";
 
 const float Squally::SquallyScale = 0.92f;
-const int Squally::DefaultEq = 1;
 const std::string Squally::MapKeySqually = "squally";
 const std::string Squally::IdentifierIsAlive = "is-alive";
 const int Squally::SquallyBaseHealth = 16;
@@ -71,8 +70,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	24.0f)
 {
 	this->noCombatDuration = 0.0f;
-	this->eq = 0;
-	this->eqExperience = 0;
 	this->cameraTrackTarget = Node::create();
 	this->leftEyeController = SmartAnimationSequenceNode::create();
 	this->rightEyeController = SmartAnimationSequenceNode::create();
@@ -425,31 +422,6 @@ void Squally::loadState()
 
 	// Save new defaults
 	this->saveState();
-}
-
-void Squally::setEq(int eq)
-{
-	this->eq = eq;
-}
-
-int Squally::getEq()
-{
-	return this->eq;
-}
-
-void Squally::setEqExperience(int eqExperience)
-{
-	this->eqExperience = eqExperience;
-}
-
-void Squally::addEqExperience(int eqExperience)
-{
-	this->setEqExperience(this->getEqExperience() + eqExperience);
-}
-
-int Squally::getEqExperience()
-{
-	return this->eqExperience;
 }
 
 void Squally::updateWeaponVisual()
