@@ -8,6 +8,6 @@
 	"create foreach loop",
 	"insert foreach loop"
   ],
-  "scriptPath": "common/loadTemplateFile.py",
+  "scriptPath": "common/loadTemplateFile.js",
   "scriptArgs": "cpp/foreachLoop.cpp"
 }

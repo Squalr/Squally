@@ -37,8 +37,8 @@ public:
 	int getMaxRunes();
 	void setEq(int eq);
 	int getEq();
-	void setEqExperience(int eqExperience);
-	void addEqExperience(int eqExperience);
+	bool setEqExperience(int eqExperience);
+	bool addEqExperience(int eqExperience);
 	int getEqExperience();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();

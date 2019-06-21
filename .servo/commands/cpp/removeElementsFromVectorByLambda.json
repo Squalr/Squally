@@ -3,8 +3,8 @@
   "command": "remove elements from vector by lambda",
   "programmingLanguage": "cpp",
   "aliases": [
-	"remove element from vector by lambda",
+	"remove element from vector by lambda"
   ],
-  "scriptPath": "common/loadTemplateFile.py",
+  "scriptPath": "common/loadTemplateFile.js",
   "scriptArgs": "cpp/removeElementsFromVectorByLambda.cpp"
 }

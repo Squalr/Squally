@@ -5,6 +5,6 @@
   "aliases": [
     "please copy"
   ],
-  "scriptPath": "common/copy.py",
+  "scriptPath": "common/copy.js",
   "scriptArgs": ""
 }

@@ -5,6 +5,6 @@
   "aliases": [
     "sort vector by lambda ascending"
   ],
-  "scriptPath": "cpp/sortVectorByLambda.py",
+  "scriptPath": "cpp/sortVectorByLambda.js",
   "scriptArgs": "ascending"
 }
