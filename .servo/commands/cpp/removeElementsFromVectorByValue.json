@@ -6,6 +6,6 @@
 	  "remove elements from vector by value",
 	  "remove element from vector by value"
   ],
-  "scriptPath": "common/loadTemplateFile.py",
+  "scriptPath": "common/loadTemplateFile.js",
   "scriptArgs": "cpp/removeElementsFromVectorByValue.cpp"
 }

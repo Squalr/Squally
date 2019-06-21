@@ -4,6 +4,6 @@
   "programmingLanguage": "cpp",
   "aliases": [
   ],
-  "scriptPath": "common/loadTemplateFile.py",
+  "scriptPath": "common/loadTemplateFile.js",
   "scriptArgs": "cpp/addEventListener.cpp"
 }

@@ -4,6 +4,6 @@
   "programmingLanguage": "cpp",
   "aliases": [
   ],
-  "scriptPath": "cpp/sortVectorByLambda.py",
+  "scriptPath": "cpp/sortVectorByLambda.js",
   "scriptArgs": "descending"
 }

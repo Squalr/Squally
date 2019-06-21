@@ -7,6 +7,6 @@
 	"create for loop",
 	"insert for loop"
   ],
-  "scriptPath": "common/loadTemplateFile.py",
+  "scriptPath": "common/loadTemplateFile.js",
   "scriptArgs": "cpp/forLoop.cpp"
 }

@@ -16,6 +16,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
@@ -141,7 +142,16 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
 	{
-		this->textOverlays->showExpBars(420);
+		int expGain = 0;
+
+		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+		{
+			expGain += StatsTables::calculateEnemyExp(entity->getMaxHealth(), entity->getMaxMana());
+		}));
+
+		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
+		// both the gain and the animations in one step
+		this->textOverlays->showExpBars(expGain);
 
 		this->runAction(Sequence::create(
 			DelayTime::create(8.0f),

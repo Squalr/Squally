@@ -3,7 +3,8 @@
   "command": "add event listener with args",
   "programmingLanguage": "cpp",
   "aliases": [
+    "add event listener with arguments"
   ],
-  "scriptPath": "common/loadTemplateFile.py",
+  "scriptPath": "common/loadTemplateFile.js",
   "scriptArgs": "cpp/addEventListenerWithArgs.cpp"
 }
