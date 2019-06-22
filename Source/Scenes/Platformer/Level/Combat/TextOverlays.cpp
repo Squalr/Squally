@@ -6,6 +6,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -13,6 +14,7 @@
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 
 #include "Resources/UIResources.h"
@@ -111,15 +113,31 @@ void TextOverlays::update(float dt)
 	super::update(dt);
 }
 
-void TextOverlays::showExpBars(int gain)
+void TextOverlays::showExpBars(int expGain)
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
+		bool didLevelUp = entity->addEqExperience(expGain);
+		
+		// TODO: Show bar fill up, show level up effects
+
 		ProgressBar* expProgress = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
 
-		expProgress->setPosition(Vec2(0.0f, 128.0f));
+		expProgress->setProgress(float(entity->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity->getEq())));
 
-		entity->addChild(expProgress);
+		// Gain text
+		LocalizedString* deltaString = Strings::Generics_PlusConstant::create();
+		LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
+
+		deltaLabel->setTextColor(Color4B::YELLOW);
+		deltaLabel->enableOutline(Color4B::BLACK, 2);
+		deltaString->setStringReplacementVariables(ConstantString::create(std::to_string(expGain)));
+
+		entity->getAnimations()->addChild(expProgress);
+		entity->getAnimations()->addChild(deltaLabel);
+
+		deltaLabel->setPosition(Vec2(0.0f, 208.0f));
+		expProgress->setPosition(Vec2(0.0f, 160.0f));
 	}));
 }
 
