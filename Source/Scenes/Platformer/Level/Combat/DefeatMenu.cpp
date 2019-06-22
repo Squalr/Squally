@@ -34,7 +34,7 @@ DefeatMenu* DefeatMenu::create()
 
 DefeatMenu::DefeatMenu()
 {
-	this->defeatBanner = Sprite::create(UIResources::Combat_DefeatBanner);
+	this->defeatBanner = Sprite::create(UIResources::Combat_DefeatMenu);
 	this->defeatLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Defeat::create());
 
 	LocalizedLabel*	okayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());

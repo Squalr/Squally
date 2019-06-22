@@ -11,6 +11,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
@@ -115,15 +116,81 @@ void TextOverlays::update(float dt)
 
 void TextOverlays::showExpBars(int expGain)
 {
+	static std::vector<int> currentTicks = std::vector<int>();
+	int entityIndex = 0;
+
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
+		float startProgress = float(entity->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity->getEq()));
 		bool didLevelUp = entity->addEqExperience(expGain);
-		
-		// TODO: Show bar fill up, show level up effects
+		float endProgress = float(entity->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity->getEq()));
 
-		ProgressBar* expProgress = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
+		const float fillDuration = 1.0f;
+		const int updatesPerSecond = 60;
+		const float interval = fillDuration / float(updatesPerSecond);
+		const int ticks = int(fillDuration * float(updatesPerSecond));
+		const float delay = 0.0f;
 
-		expProgress->setProgress(float(entity->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity->getEq())));
+		while (currentTicks.size() <= entityIndex)
+		{
+			currentTicks.push_back(0);
+		}
+
+		currentTicks[entityIndex] = 0;
+
+		ProgressBar* expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
+
+		if (!didLevelUp)
+		{
+			expProgressBar->setProgress(startProgress);
+
+			expProgressBar->schedule([=](float dt)
+			{
+				float tickProgress = MathUtils::clamp(((float)currentTicks[entityIndex] / (float)ticks), 0.0f, 1.0f);
+
+				expProgressBar->setProgress(startProgress + (endProgress - startProgress) * tickProgress);
+
+				currentTicks[entityIndex]++;
+
+			}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE");
+		}
+		else
+		{
+			this->runAction(Sequence::create(
+				// Phase 1: Fill from start to max
+				CallFunc::create([=]()
+				{
+					expProgressBar->setProgress(startProgress);
+
+					expProgressBar->schedule([=](float dt)
+					{
+						float tickProgress = MathUtils::clamp(((float)currentTicks[entityIndex] / (float)ticks), 0.0f, 1.0f);
+
+						expProgressBar->setProgress(startProgress + (1.0f - startProgress) * tickProgress);
+
+						currentTicks[entityIndex]++;
+
+					}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE");
+				}),
+				DelayTime::create(fillDuration + 0.1f),
+				// Phase 2: Fill from 0 to end
+				CallFunc::create([=]()
+				{
+					currentTicks[entityIndex] = 0;
+
+					expProgressBar->schedule([=](float dt)
+					{
+						float tickProgress = MathUtils::clamp(((float)currentTicks[entityIndex] / (float)ticks), 0.0f, 1.0f);
+
+						expProgressBar->setProgress(endProgress * tickProgress);
+
+						currentTicks[entityIndex]++;
+
+					}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE");
+				}),
+				nullptr
+			));
+		}
 
 		// Gain text
 		LocalizedString* deltaString = Strings::Generics_PlusConstant::create();
@@ -133,11 +200,13 @@ void TextOverlays::showExpBars(int expGain)
 		deltaLabel->enableOutline(Color4B::BLACK, 2);
 		deltaString->setStringReplacementVariables(ConstantString::create(std::to_string(expGain)));
 
-		entity->getAnimations()->addChild(expProgress);
+		entity->getAnimations()->addChild(expProgressBar);
 		entity->getAnimations()->addChild(deltaLabel);
 
 		deltaLabel->setPosition(Vec2(0.0f, 208.0f));
-		expProgress->setPosition(Vec2(0.0f, 160.0f));
+		expProgressBar->setPosition(Vec2(0.0f, 160.0f));
+
+		entityIndex++;
 	}));
 }
 

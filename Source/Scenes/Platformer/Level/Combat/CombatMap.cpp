@@ -149,12 +149,14 @@ void CombatMap::initializeListeners()
 			expGain += StatsTables::calculateEnemyExp(entity->getMaxHealth(), entity->getMaxMana());
 		}));
 
+		expGain = 320;
+
 		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
 		// both the gain and the animations in one step
 		this->textOverlays->showExpBars(expGain);
 
 		this->runAction(Sequence::create(
-			DelayTime::create(8.0f),
+			DelayTime::create(6.0f),
 			CallFunc::create([=]()
 			{
 				CombatEvents::TriggerGiveRewards();

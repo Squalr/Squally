@@ -29,8 +29,9 @@ private:
 	void initializeListeners() override;
 	void loadRewards();
 
+	cocos2d::Sprite* victoryMenu;
 	cocos2d::Sprite* rewardsMenu;
-	cocos2d::Sprite* victoryBanner;
 	LocalizedLabel* victoryLabel;
-	ClickableTextNode* okayButton;
+	LocalizedLabel* itemsFoundLabel;
+	ClickableTextNode* returnButton;
 };
