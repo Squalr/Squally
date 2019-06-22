@@ -18,6 +18,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/EntityPreview.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/UIResources.h"
@@ -121,7 +122,7 @@ PlatformerEntity::PlatformerEntity(
 	Size movementSize = movementCollisionSize * scale;
 	float sizeDelta = std::abs(movementSize.height - this->entitySize.height);
 
-	this->hackButtonOffset = Vec2(scaledColOffset.x, scaledColOffset.y + sizeDelta + this->entitySize.height + 256.0f);
+	this->hackButtonOffset = Vec2(scaledColOffset.x, scaledColOffset.y + sizeDelta + this->entitySize.height);
 
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
@@ -467,14 +468,29 @@ int PlatformerEntity::getEq()
 	return this->eq;
 }
 
-void PlatformerEntity::setEqExperience(int eqExperience)
+bool PlatformerEntity::setEqExperience(int eqExperience)
 {
+	int expToLevel = StatsTables::getExpRequiredAtLevel(this->getEq());
+
 	this->eqExperience = eqExperience;
+
+	if (this->eqExperience >= expToLevel)
+	{
+		// Level up!
+		this->setEq(this->getEq() + 1);
+		
+		// Recurse to handle potential over-leveling
+		this->setEqExperience(this->eqExperience - expToLevel);
+
+		return true;
+	}
+
+	return false;
 }
 
-void PlatformerEntity::addEqExperience(int eqExperience)
+bool PlatformerEntity::addEqExperience(int eqExperience)
 {
-	this->setEqExperience(this->getEqExperience() + eqExperience);
+	return this->setEqExperience(this->getEqExperience() + eqExperience);
 }
 
 int PlatformerEntity::getEqExperience()

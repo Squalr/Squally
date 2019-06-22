@@ -4,9 +4,12 @@
 class StatsTables
 {
 public:
+	static int getHealthGainAtLevel(int level);
 	static int getHealthGainAtNewLevel(int newLevel);
+	static int getManaGainAtLevel(int level);
 	static int getManaGainAtNewLevel(int newLevel);
-	static int getExpRequiredAtNewLevel(int newLevel);
+	static int getExpRequiredAtLevel(int level);
+	static int calculateEnemyExp(int health, int mana);
 
 protected:
 

@@ -1,0 +1,10 @@
+{
+  "description": "Pastes text from the clipboard",
+  "command": "paste",
+  "programmingLanguage": "any",
+  "aliases": [
+    "please paste"
+  ],
+  "scriptPath": "common/paste.js",
+  "scriptArgs": ""
+}
