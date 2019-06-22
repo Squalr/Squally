@@ -206,6 +206,8 @@ void Squally::initializeListeners()
 {
 	super::initializeListeners();
 
+	
+
 	this->addEventListener(EventListenerCustom::create(HackableEvents::EventRequestHackerModeEnable, [=](EventCustom*)
 	{
 		if (this->tryUseRune())
