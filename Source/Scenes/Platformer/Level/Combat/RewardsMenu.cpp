@@ -18,9 +18,10 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Combat/ItemsFound.h"
 #include "Strings/Combat/Rewards.h"
 #include "Strings/Combat/Victory.h"
-#include "Strings/Menus/Okay.h"
+#include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
 
@@ -35,24 +36,27 @@ RewardsMenu* RewardsMenu::create()
 
 RewardsMenu::RewardsMenu()
 {
-	this->rewardsMenu = Sprite::create(UIResources::Combat_RewardsMenu);
-	this->victoryBanner = Sprite::create(UIResources::Combat_VictoryBanner);
-	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Victory::create());
+	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
+	this->rewardsMenu = Sprite::create(UIResources::Combat_ItemsMenu);
+	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Combat_Victory::create());
+	this->itemsFoundLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_ItemsFound::create());
 	
-	LocalizedLabel*	okayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Okay::create());
-	LocalizedLabel*	okayLabelHover = okayLabel->clone();
+	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	okayLabel->enableOutline(Color4B::BLACK, 2);
-	okayLabelHover->enableOutline(Color4B::BLACK, 2);
+	returnLabel->enableOutline(Color4B::BLACK, 2);
+	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->okayButton = ClickableTextNode::create(okayLabel, okayLabelHover, Sprite::create(UIResources::Menus_Buttons_DarkWoodButton), Sprite::create(UIResources::Menus_Buttons_DarkWoodButtonSelected));
+	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelHover, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->victoryLabel->enableOutline(Color4B::BLACK, 2);
+	this->itemsFoundLabel->enableOutline(Color4B::BLACK, 2);
 
-	this->addChild(this->victoryBanner);
+	this->addChild(this->victoryMenu);
 	this->addChild(this->rewardsMenu);
 	this->addChild(this->victoryLabel);
-	this->addChild(this->okayButton);
+	this->addChild(this->itemsFoundLabel);
+	this->addChild(this->returnButton);
 }
 
 RewardsMenu::~RewardsMenu()
@@ -70,10 +74,11 @@ void RewardsMenu::initializePositions()
 {
 	super::initializePositions();
 
-	this->victoryBanner->setPositionY(256.0f);
-	this->victoryLabel->setPositionY(-64.0f + 280.0f);
-	this->rewardsMenu->setPositionY(-64.0f);
-	this->okayButton->setPositionY(-64.0f - 256.0f);
+	this->victoryLabel->setPosition(Vec2(-380.0f, 176.0f));
+	this->victoryMenu->setPosition(Vec2(-380.0f, 0.0f));
+	this->returnButton->setPosition(Vec2(512.0f, -280.0f));
+	this->rewardsMenu->setPosition(Vec2(512.0f, 0.0f));
+	this->itemsFoundLabel->setPosition(Vec2(512.0f, 256.0f));
 }
 
 void RewardsMenu::initializeListeners()
@@ -85,7 +90,7 @@ void RewardsMenu::initializeListeners()
 		this->loadRewards();
 	}));
 
-	this->okayButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
