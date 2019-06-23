@@ -18,7 +18,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/ItemsFound.h"
+#include "Strings/Combat/ItemFound.h"
 #include "Strings/Combat/Rewards.h"
 #include "Strings/Combat/Victory.h"
 #include "Strings/Menus/Return.h"
@@ -96,6 +96,7 @@ void RewardsMenu::show()
 
 void RewardsMenu::loadRewards()
 {
+	const int DISPLAY_LIMIT = 15;
 	int index = 0;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -104,23 +105,52 @@ void RewardsMenu::loadRewards()
 	{
 		std::vector<Item*> items = entity->getInventory()->getItems();
 
-		const float spawnDuration = 2.0f;
+		const float onsetDuration = 0.5f;
+		const float interleaveDuration = 0.75f;
+		const float fadeInDuration = 0.35f;
+		const float sustainDuration = 2.0f;
+		const float fadeOutDuration = 0.5f;
+		const float roundDelay = 0.35f;
 
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{
+			if (index >= DISPLAY_LIMIT)
+			{
+				return;
+			}
+
+			int slot = index % 3;
+			int round = index / 3;
+
+			Node* container = Node::create();
+			Sprite* itemFrame = Sprite::create(UIResources::Combat_ItemFrame);
 			ClickableNode* itemIcon = ClickableNode::create((*it)->getIconResource(), (*it)->getIconResource());
+			LocalizedLabel* title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_ItemFound::create());
+			LocalizedLabel* itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
 
-			itemIcon->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, -visibleSize.height / 2.0f + 256.0f));
+			title->enableOutline(Color4B::BLACK, 2);
+			itemName->enableOutline(Color4B::BLACK, 2);
 
-			this->rewardsMenu->addChild(itemIcon);
+			container->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, -visibleSize.height / 2.0f + 256.0f + 256.0f * float(slot)));
+			itemIcon->setPosition(Vec2(-96.0f, 0.0f));
+			itemName->setPosition(Vec2(32.0f, 0.0f));
+			title->setPosition(Vec2(0.0f, 96.0f));
 
-			itemIcon->runAction(Sequence::create(
-				DelayTime::create(float(index) * spawnDuration),
-				FadeTo::create(0.25f, 255),
-				MoveBy::create(spawnDuration, Vec2(0.0f, 256.0f)),
-				FadeTo::create(0.5f, 0),
+			container->addChild(itemFrame);
+			container->addChild(itemIcon);
+			container->addChild(itemName);
+			container->addChild(title);
+			this->addChild(container);
+
+			container->setOpacity(0);
+
+			container->runAction(Sequence::create(
+				DelayTime::create(onsetDuration + float(index) * interleaveDuration + float(round) * roundDelay),
+				FadeTo::create(fadeInDuration, 255),
+				DelayTime::create(sustainDuration),
+				FadeTo::create(fadeOutDuration, 0),
 				nullptr
-			))
+			));
 		}
 	}));
 }

@@ -46,11 +46,12 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;
+	std::tuple<std::string, float> createDrop(std::string itemKey, float probability);
 
 	std::string battleMapResource;
 	std::vector<std::string> battleMapArgs;
 	std::vector<std::string> combatEntityList;
-	std::map<std::string, float> dropTable = std::map<std::string, float>();
+	std::vector<std::tuple<std::string, float>> dropTable = std::vector<std::tuple<std::string, float>>();
 
 private:
 	typedef PlatformerEntity super;

@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -117,6 +118,11 @@ void RuneBar::initializePositions()
 void RuneBar::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->setStatsTarget(nullptr);
+	}));
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventRuneConsumed, [=](EventCustom* eventCustom)
 	{

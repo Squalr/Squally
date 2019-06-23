@@ -12,6 +12,9 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
@@ -49,6 +52,9 @@ OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 
 	this->registerAttack(Slash::create(0.7f, 0.2f));
 	this->registerAttack(ThrowRestorePotion::create());
+
+	this->dropTable.push_back(this->createDrop(HealthPotion::SaveKeyHealthPotion, 0.5f));
+	this->dropTable.push_back(this->createDrop(ManaPotion::SaveKeyManaPotion, 0.5f));
 }
 
 OrcGrunt::~OrcGrunt()
