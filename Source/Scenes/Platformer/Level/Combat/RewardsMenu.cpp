@@ -71,7 +71,7 @@ void RewardsMenu::initializePositions()
 
 	this->victoryLabel->setPosition(Vec2(0.0f, 176.0f));
 	this->victoryMenu->setPosition(Vec2(0.0f, 0.0f));
-	this->returnButton->setPosition(Vec2(0.0f, -420.0f));
+	this->returnButton->setPosition(Vec2(0.0f, -192.0f));
 }
 
 void RewardsMenu::initializeListeners()
@@ -96,7 +96,7 @@ void RewardsMenu::show()
 
 void RewardsMenu::loadRewards()
 {
-	const int DISPLAY_LIMIT = 15;
+	const int DISPLAY_LIMIT = 32;
 	int index = 0;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
