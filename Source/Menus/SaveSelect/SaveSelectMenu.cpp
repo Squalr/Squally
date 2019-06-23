@@ -138,9 +138,9 @@ void SaveSelectMenu::buildSaveButtons()
 	this->saveGameButton1 = this->buildSaveButton(1);
 	this->saveGameButton2 = this->buildSaveButton(2);
 
-	this->saveGameButton0->setPositionY(192.0f);
+	this->saveGameButton0->setPositionY(224.0f);
 	this->saveGameButton1->setPositionY(0.0f);
-	this->saveGameButton2->setPositionY(-192.0f);
+	this->saveGameButton2->setPositionY(-224.0f);
 
 	this->buttonsNode->addChild(this->saveGameButton0);
 	this->buttonsNode->addChild(this->saveGameButton1);

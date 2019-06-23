@@ -11,6 +11,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
@@ -108,6 +109,7 @@ PlatformerEntity::PlatformerEntity(
 	);
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create();
+	this->currencyInventory = CurrencyInventory::create();
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
 	this->spawnCoords = this->getPosition();

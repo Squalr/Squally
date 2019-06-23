@@ -11,6 +11,8 @@ namespace cocos2d
 class CurrencyInventory : public SmartNode
 {
 public:
+	static CurrencyInventory* create();
+
 	int getCurrencyCount(std::string currencyKey);
 	void removeCurrency(std::string currencyKey, int count);
 	void addCurrency(std::string currencyKey, int count);

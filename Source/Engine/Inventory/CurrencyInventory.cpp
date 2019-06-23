@@ -6,6 +6,15 @@
 
 using namespace cocos2d;
 
+CurrencyInventory* CurrencyInventory::create()
+{
+	CurrencyInventory* instance = new CurrencyInventory();
+
+	instance->autorelease();
+
+	return instance;
+}
+
 CurrencyInventory::CurrencyInventory(std::string saveKey)
 {
 	this->currencyMap = ValueMap();
@@ -39,7 +48,7 @@ int CurrencyInventory::getCurrencyCount(std::string currencyKey)
 void CurrencyInventory::removeCurrency(std::string currencyKey, int count)
 {
 	//TODO
-	
+
 	this->save();
 }
 
