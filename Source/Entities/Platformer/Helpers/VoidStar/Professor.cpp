@@ -17,14 +17,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
-
 using namespace cocos2d;
 
 const std::string Professor::MapKeyProfessor = "professor";
@@ -51,27 +43,11 @@ Professor::Professor(ValueMap& initProperties) : PlatformerEntity(initProperties
 	8)
 {
 	this->hexusOpponentData = Professor::getHexusOpponentData();
-
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 }
 
 Professor::~Professor()
 {
 }
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////X////X////X////X////X////X////X////X////X////X/
-
-////O////O////O////O////O////O////O////O////O////O/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 Vec2 Professor::getAvatarFrameOffset()
 {

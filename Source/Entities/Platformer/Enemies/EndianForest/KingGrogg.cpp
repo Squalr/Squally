@@ -17,14 +17,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
-
 using namespace cocos2d;
 
 const std::string KingGrogg::MapKeyKingGrogg = "king-grogg";
@@ -51,27 +43,11 @@ KingGrogg::KingGrogg(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	8)
 {
 	this->hexusOpponentData = KingGrogg::getHexusOpponentData();
-
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 }
 
 KingGrogg::~KingGrogg()
 {
 }
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////X////X////X////X////X////X////X////X////X////X/
-
-////O////O////O////O////O////O////O////O////O////O/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 Vec2 KingGrogg::getAvatarFrameOffset()
 {

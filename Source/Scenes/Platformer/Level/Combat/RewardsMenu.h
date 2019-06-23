@@ -30,7 +30,6 @@ private:
 	void loadRewards();
 
 	cocos2d::Sprite* victoryMenu;
-	cocos2d::Sprite* rewardsMenu;
 	LocalizedLabel* victoryLabel;
 	LocalizedLabel* itemsFoundLabel;
 	ClickableTextNode* returnButton;

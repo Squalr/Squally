@@ -7,24 +7,12 @@
 
 #include "Entities/Platformer/PlatformerEnemy.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
-
 class HexusOpponentData;
 
 class MummyWarrior : public PlatformerEnemy
 {
 public:
 	static MummyWarrior* deserialize(cocos2d::ValueMap& initProperties);
-	
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 	
 	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
 	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
@@ -42,12 +30,4 @@ private:
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;
-	
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////X////X////X////X////X////X////X////X////X////X/
-	
-	////O////O////O////O////O////O////O////O////O////O/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 };

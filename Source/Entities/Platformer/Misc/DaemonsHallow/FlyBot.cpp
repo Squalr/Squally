@@ -18,10 +18,6 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -58,10 +54,6 @@ const std::string FlyBot::EventTeachHackerMode = "event-teach-hacker-mode";
 const std::string FlyBot::EventSpotOgre = "event-spot-ogre";
 const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
 
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
-
 using namespace cocos2d;
 
 const std::string FlyBot::MapKeyFlyBot = "fly-bot";
@@ -89,10 +81,6 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 {
 	this->hexusOpponentData = FlyBot::getHexusOpponentData();
 
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->hasRunTutorialEvent = false;
 	this->movementCollision->setPhysicsEnabled(false);
 	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
@@ -109,19 +97,11 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	this->addChild(this->droidBrief1Sound);
 	this->addChild(this->droidBrief2Sound);
 	this->addChild(this->droidChatterSound);
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 }
 
 FlyBot::~FlyBot()
 {
 }
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////X////X////X////X////X////X////X////X////X////X/
 
 void FlyBot::onEnter()
 {
@@ -482,10 +462,6 @@ float FlyBot::getFloatHeight()
 {
 	return 64.0f;
 }
-
-////O////O////O////O////O////O////O////O////O////O/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 Vec2 FlyBot::getAvatarFrameOffset()
 {

@@ -17,14 +17,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
-
 using namespace cocos2d;
 
 const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
@@ -51,27 +43,11 @@ SkeletalWarrior::SkeletalWarrior(ValueMap& initProperties) : PlatformerEnemy(ini
 	8)
 {
 	this->hexusOpponentData = SkeletalWarrior::getHexusOpponentData();
-
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 }
 
 SkeletalWarrior::~SkeletalWarrior()
 {
 }
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////X////X////X////X////X////X////X////X////X////X/
-
-////O////O////O////O////O////O////O////O////O////O/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 Vec2 SkeletalWarrior::getAvatarFrameOffset()
 {
