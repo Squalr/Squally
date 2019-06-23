@@ -172,13 +172,18 @@ void PlatformerEnemy::onObjectStateLoaded()
 	}
 }
 
+std::tuple<std::string, float> PlatformerEnemy::createDrop(std::string itemKey, float probability)
+{
+	return std::make_tuple(itemKey, probability);
+}
+
 void PlatformerEnemy::buildDropInventory()
 {
 	for (auto it = this->dropTable.begin(); it != this->dropTable.end(); it++)
 	{
-		if (RandomHelper::random_real(0.0f, 1.0f) <= it->second)
+		if (RandomHelper::random_real(0.0f, 1.0f) <= std::get<1>(*it))
 		{
-			PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+			PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(std::get<0>(*it), [=](Item* item)
 			{
 				this->getInventory()->forceInsert(item);
 			}));

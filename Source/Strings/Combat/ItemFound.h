@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Combat_ItemsFound : public LocalizedString
+	class Combat_ItemFound : public LocalizedString
 	{
 	public:
-		static Combat_ItemsFound* create();
+		static Combat_ItemFound* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Combat_ItemsFound();
-		~Combat_ItemsFound();
+		Combat_ItemFound();
+		~Combat_ItemFound();
 	};
 }
