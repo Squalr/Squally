@@ -47,15 +47,29 @@ int CurrencyInventory::getCurrencyCount(std::string currencyKey)
 
 void CurrencyInventory::removeCurrency(std::string currencyKey, int count)
 {
-	//TODO
+	if (this->currencyMap.find(currencyKey) != this->currencyMap.end())
+	{
+		this->currencyMap[currencyKey] = Value(this->currencyMap.at(currencyKey).asInt() - count);
+	}
+	else
+	{
+		this->currencyMap[currencyKey] = Value(0);
+	}
 
 	this->save();
 }
 
 void CurrencyInventory::addCurrency(std::string currencyKey, int count)
 {
-	//TODO
-
+	if (this->currencyMap.find(currencyKey) != this->currencyMap.end())
+	{
+		this->currencyMap[currencyKey] = Value(this->currencyMap.at(currencyKey).asInt() + count);
+	}
+	else
+	{
+		this->currencyMap[currencyKey] = Value(count);
+	}
+	
 	this->save();
 }
 

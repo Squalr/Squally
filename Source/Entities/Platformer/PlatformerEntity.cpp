@@ -175,6 +175,7 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
 	this->addChild(this->inventory);
+	this->addChild(this->currencyInventory);
 }
 
 PlatformerEntity::~PlatformerEntity()
