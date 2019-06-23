@@ -17,14 +17,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
-
 using namespace cocos2d;
 
 const std::string WaterElemental::MapKeyWaterElemental = "water-elemental";
@@ -51,27 +43,11 @@ WaterElemental::WaterElemental(ValueMap& initProperties) : PlatformerEnemy(initP
 	8)
 {
 	this->hexusOpponentData = WaterElemental::getHexusOpponentData();
-
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 }
 
 WaterElemental::~WaterElemental()
 {
 }
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////X////X////X////X////X////X////X////X////X////X/
-
-////O////O////O////O////O////O////O////O////O////O/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 Vec2 WaterElemental::getAvatarFrameOffset()
 {

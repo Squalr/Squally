@@ -15,12 +15,6 @@ import re
 import importlib.util
 
 def main():
-	# Generate entities
-	spec = importlib.util.spec_from_file_location("module.name", "Data/Entities/GenerateEntityFiles.py")
-	entityGenerator = importlib.util.module_from_spec(spec)
-	spec.loader.exec_module(entityGenerator)
-	entityGenerator.main()
-	
 	# Generate string files
 	spec = importlib.util.spec_from_file_location("module.name", "Data/Strings/GenerateStringFiles.py")
 	entityGenerator = importlib.util.module_from_spec(spec)

@@ -7,15 +7,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
 class Sound;
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 class HexusOpponentData;
 
@@ -23,16 +15,8 @@ class FlyBot : public PlatformerEntity
 {
 public:
 	static FlyBot* deserialize(cocos2d::ValueMap& initProperties);
-	
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
 	float getFloatHeight() override;
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -46,10 +30,6 @@ private:
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;
-	
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////X////X////X////X////X////X////X////X////X////X/
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -73,8 +53,4 @@ private:
 	static const std::string EventTeachHackerMode;
 	static const std::string EventSpotOgre;
 	static const std::string EventSquallyTrapped;
-	
-	////O////O////O////O////O////O////O////O////O////O/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 };

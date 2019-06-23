@@ -37,9 +37,7 @@ RewardsMenu* RewardsMenu::create()
 RewardsMenu::RewardsMenu()
 {
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
-	this->rewardsMenu = Sprite::create(UIResources::Combat_ItemsMenu);
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Combat_Victory::create());
-	this->itemsFoundLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_ItemsFound::create());
 	
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -50,12 +48,9 @@ RewardsMenu::RewardsMenu()
 	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelHover, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->victoryLabel->enableOutline(Color4B::BLACK, 2);
-	this->itemsFoundLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->victoryMenu);
-	this->addChild(this->rewardsMenu);
 	this->addChild(this->victoryLabel);
-	this->addChild(this->itemsFoundLabel);
 	this->addChild(this->returnButton);
 }
 
@@ -74,11 +69,9 @@ void RewardsMenu::initializePositions()
 {
 	super::initializePositions();
 
-	this->victoryLabel->setPosition(Vec2(-380.0f, 176.0f));
-	this->victoryMenu->setPosition(Vec2(-380.0f, 0.0f));
-	this->returnButton->setPosition(Vec2(512.0f, -280.0f));
-	this->rewardsMenu->setPosition(Vec2(512.0f, 0.0f));
-	this->itemsFoundLabel->setPosition(Vec2(512.0f, 256.0f));
+	this->victoryLabel->setPosition(Vec2(0.0f, 176.0f));
+	this->victoryMenu->setPosition(Vec2(0.0f, 0.0f));
+	this->returnButton->setPosition(Vec2(0.0f, -420.0f));
 }
 
 void RewardsMenu::initializeListeners()
@@ -105,19 +98,29 @@ void RewardsMenu::loadRewards()
 {
 	int index = 0;
 
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
 		std::vector<Item*> items = entity->getInventory()->getItems();
 
+		const float spawnDuration = 2.0f;
+
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{
 			ClickableNode* itemIcon = ClickableNode::create((*it)->getIconResource(), (*it)->getIconResource());
-			int x = index % 3;
-			int y = index / 3;
 
-			itemIcon->setPosition(Vec2((x - 1) * 144.0f, y * -144.0f - 32.0f));
+			itemIcon->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, -visibleSize.height / 2.0f + 256.0f));
 
 			this->rewardsMenu->addChild(itemIcon);
+
+			itemIcon->runAction(Sequence::create(
+				DelayTime::create(float(index) * spawnDuration),
+				FadeTo::create(0.25f, 255),
+				MoveBy::create(spawnDuration, Vec2(0.0f, 256.0f)),
+				FadeTo::create(0.5f, 0),
+				nullptr
+			))
 		}
 	}));
 }
