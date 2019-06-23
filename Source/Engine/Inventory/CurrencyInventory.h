@@ -27,7 +27,7 @@ protected:
 	void deserialize(const cocos2d::ValueMap& valueMap);
 
 private:
-	typedef CurrencyInventory super;
+	typedef SmartNode super;
 
 	void save();
 	void load();
