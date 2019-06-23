@@ -9,7 +9,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Inventory/Items/Currency/Doubloons.h"
+#include "Scenes/Platformer/Inventory/Currency/Doubloons.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -67,7 +67,7 @@ void Doubloon::initializeListeners()
 		{
 			this->disableCollection();
 
-			PlayerCurrencyInventory::getInstance()->forceInsert(Doubloons::create());
+			PlayerCurrencyInventory::getInstance()->addCurrency(Doubloons::getIdentifier(), 1);
 			this->saveObjectState(Doubloon::SaveKeyIsCollected, Value(true));
 		}
 

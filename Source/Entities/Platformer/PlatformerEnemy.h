@@ -51,12 +51,14 @@ protected:
 	std::string battleMapResource;
 	std::vector<std::string> battleMapArgs;
 	std::vector<std::string> combatEntityList;
-	std::vector<std::tuple<std::string, float>> dropTable = std::vector<std::tuple<std::string, float>>();
+	std::vector<std::tuple<std::string, float>> dropTable;
+	std::tuple<int, int> goldTable;
 
 private:
 	typedef PlatformerEntity super;
 
 	void buildDropInventory();
+	void buildGoldDrop();
 
 	ClickableNode* resurrectButton;
 	ClickableNode* killButton;
