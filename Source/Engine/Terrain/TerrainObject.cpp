@@ -45,7 +45,7 @@ TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData 
 
 	// Build the terrain from the parsed points
 	instance->setPoints(instance->polylinePoints);
-	instance->rebuildTerrain();
+	instance->rebuildTerrain(terrainData);
 
 	return instance;
 }
@@ -155,12 +155,12 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	}
 }
 
-void TerrainObject::rebuildTerrain()
+void TerrainObject::rebuildTerrain(TerrainData terrainData)
 {
 	this->debugNode->removeAllChildren();
 
 	this->buildInnerTextures();
-	this->buildInfill(Color4B(11, 30, 39, 255));
+	this->buildInfill(terrainData.infillColor);
 	this->buildSurfaceShadow();
 	this->buildSurfaceTextures();
 }
