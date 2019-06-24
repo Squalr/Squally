@@ -165,11 +165,21 @@ void GameCamera::update(float dt)
 
 float GameCamera::getCameraDistance()
 {
+	if (Camera::getDefaultCamera() == nullptr)
+	{
+		return 0.0f;
+	}
+
 	return Camera::getDefaultCamera()->getPositionZ();
 }
 
 void GameCamera::setCameraDistance(float distance)
 {
+	if (Camera::getDefaultCamera() == nullptr)
+	{
+		return;
+	}
+
 	this->setPositionZ(distance - this->defaultDistance);
 	Camera::getDefaultCamera()->setPositionZ(distance);
 }
@@ -186,7 +196,22 @@ void GameCamera::setCameraZoom(float zoom)
 
 Vec2 GameCamera::getCameraPosition()
 {
+	if (Camera::getDefaultCamera() == nullptr)
+	{
+		return Vec2::ZERO;
+	}
+
 	return Camera::getDefaultCamera()->getPosition();
+}
+
+Vec3 GameCamera::getCameraPosition3()
+{
+	if (Camera::getDefaultCamera() == nullptr)
+	{
+		return Vec3::ZERO;
+	}
+
+	return Camera::getDefaultCamera()->getPosition3D();
 }
 
 void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
@@ -203,7 +228,31 @@ void GameCamera::setCameraPosition(Vec2 position, bool addTrackOffset)
 		this->updateCameraDebugLabels();
 	}
 
-	Camera::getDefaultCamera()->setPosition(cameraPosition);
+	if (Camera::getDefaultCamera() != nullptr)
+	{
+		Camera::getDefaultCamera()->setPosition(cameraPosition);
+	}
+}
+
+void GameCamera::setCameraPosition3(Vec3 position, bool addTrackOffset)
+{
+	Vec3 cameraPosition = position;
+
+	if (addTrackOffset && this->targetStack.size() > 0)
+	{
+		cameraPosition.x += this->targetStack.top().trackOffset.x;
+		cameraPosition.y += this->targetStack.top().trackOffset.y;
+	}
+
+	if (this->isDeveloperModeEnabled())
+	{
+		this->updateCameraDebugLabels();
+	}
+
+	if (Camera::getDefaultCamera() != nullptr)
+	{
+		Camera::getDefaultCamera()->setPosition3D(cameraPosition);
+	}
 }
 
 Rect GameCamera::getBounds()
@@ -235,11 +284,17 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 
 		if (++elapsedTicks < ticks)
 		{
-			Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * M_PI) / waveLength)) * magnitude);
+			if (Camera::getDefaultCamera() != nullptr)
+			{
+				Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * M_PI) / waveLength)) * magnitude);
+			}
 		}
 		else
 		{
-			Camera::getDefaultCamera()->setRotation(0.0f);
+			if (Camera::getDefaultCamera() != nullptr)
+			{
+				Camera::getDefaultCamera()->setRotation(0.0f);
+			}
 		}
 
 	}, this, 0.0f, ticks, 0.0f, false, GameCamera::SchedulerKeyCameraShake);
@@ -247,7 +302,7 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 
 Vec2 GameCamera::boundCameraByEllipses()
 {
-	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+	Vec2 cameraPosition = this->getCameraPosition();
 
 	if (!this->targetStack.empty())
 	{
@@ -301,8 +356,8 @@ Vec2 GameCamera::boundCameraByEllipses()
 
 Vec2 GameCamera::boundCameraByRectangle()
 {
-	Vec2 cameraPositionDebug = Camera::getDefaultCamera()->getPosition();
-	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
+	Vec2 cameraPositionDebug = this->getCameraPosition();
+	Vec2 cameraPosition = this->getCameraPosition();
 
 	if (!this->targetStack.empty())
 	{
@@ -447,7 +502,7 @@ void GameCamera::updateCameraDebugLabels()
 		return;
 	}
 
-	Vec3 cameraPosition = Camera::getDefaultCamera()->getPosition3D();
+	Vec3 cameraPosition = this->getCameraPosition3();
 
 	if (cachedCameraPosition == cameraPosition)
 	{

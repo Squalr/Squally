@@ -29,7 +29,9 @@ public:
 	float getCameraZoom();
 	void setCameraZoom(float zoom);
 	cocos2d::Vec2 getCameraPosition();
+	cocos2d::Vec3 getCameraPosition3();
 	void setCameraPosition(cocos2d::Vec2 position, bool addTrackOffset = false);
+	void setCameraPosition3(cocos2d::Vec3 position, bool addTrackOffset = false);
 	void setCameraPositionToTrackedTarget();
 	cocos2d::Rect getBounds();
 	void setBounds(cocos2d::Rect bounds);
