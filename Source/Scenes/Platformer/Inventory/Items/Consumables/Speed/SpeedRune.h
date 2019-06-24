@@ -4,10 +4,10 @@
 
 class LocalizedString;
 
-class SpeedPotion : public Consumable
+class SpeedRune : public Consumable
 {
 public:
-	static SpeedPotion* create();
+	static SpeedRune* create();
 
 	Item* clone() override;
 	PlatformerAttack* createAssociatedAttack() override;
@@ -16,11 +16,11 @@ public:
 	std::string getSerializationKey() override;
 	ConsumableType getConsumableType() override;
 
-	static const std::string SaveKeySpeedPotion;
+	static const std::string SaveKeySpeedRune;
 
 protected:
-	SpeedPotion();
-	virtual ~SpeedPotion();
+	SpeedRune();
+	virtual ~SpeedRune();
 
 private:
 	typedef Consumable super;

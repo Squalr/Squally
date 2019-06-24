@@ -71,6 +71,7 @@ void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target
 				}
 				case AttackType::ProjectileDamage:
 				case AttackType::ProjectileHealing:
+				case AttackType::ProjectileBuffSpeed:
 				{
 					this->generateProjectiles(owner, target);
 				}

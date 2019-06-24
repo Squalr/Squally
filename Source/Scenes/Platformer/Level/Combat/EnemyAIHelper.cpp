@@ -131,6 +131,7 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 			{
 				case PlatformerAttack::AttackType::Healing:
 				case PlatformerAttack::AttackType::ProjectileHealing:
+				case PlatformerAttack::AttackType::ProjectileBuffSpeed:
 				{
 					if ((*it)->getPriority() > selectedAttackPriority)
 					{

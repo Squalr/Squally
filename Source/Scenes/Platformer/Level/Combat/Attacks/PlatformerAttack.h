@@ -15,6 +15,7 @@ public:
 		Healing,
 		ProjectileHealing,
 		ProjectileDamage,
+		ProjectileBuffSpeed,
 	};
 
 	virtual PlatformerAttack* clone() = 0;
