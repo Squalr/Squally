@@ -146,10 +146,21 @@ void CombatMap::initializeListeners()
 
 		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 		{
-			expGain += StatsTables::calculateEnemyExp(entity->getMaxHealth(), entity->getMaxMana());
+			expGain += StatsTables::calculateEnemyExp(entity);
 		}));
 
-		expGain = 320;
+		// Temporary code to prevent progression softlock for early-access users. Arbitrarily safe to delete after 9/01/2020.
+		for (auto it = this->mapArgs.begin(); it != this->mapArgs.end(); it++)
+		{
+			if (*it == "early-access-fix")
+			{
+				if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt() <= 0)
+				{
+					// This is to make up for some users not getting exp from the first kill in the tutorial
+					expGain *= 2;
+				}
+			}
+		}
 
 		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
 		// both the gain and the animations in one step

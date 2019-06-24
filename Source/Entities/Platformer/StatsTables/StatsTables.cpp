@@ -1,5 +1,7 @@
 #include "StatsTables.h"
 
+#include "Entities/Platformer/PlatformerEnemy.h"
+
 #include "Resources/UIResources.h"
 
 const std::map<int, int> StatsTables::HealthGain =
@@ -114,7 +116,7 @@ int StatsTables::getExpRequiredAtLevel(int level)
 	return 0;
 }
 
-int StatsTables::calculateEnemyExp(int health, int mana)
+int StatsTables::calculateEnemyExp(PlatformerEnemy* platformerEnemy)
 {
-	return health * 2 + mana;
+	return platformerEnemy->getMaxHealth() * 2 + platformerEnemy->getMaxMana();
 }

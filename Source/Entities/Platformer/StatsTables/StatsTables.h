@@ -1,6 +1,8 @@
 #pragma once
 #include <map>
 
+class PlatformerEnemy;
+
 class StatsTables
 {
 public:
@@ -9,7 +11,7 @@ public:
 	static int getManaGainAtLevel(int level);
 	static int getManaGainAtNewLevel(int newLevel);
 	static int getExpRequiredAtLevel(int level);
-	static int calculateEnemyExp(int health, int mana);
+	static int calculateEnemyExp(PlatformerEnemy* platformerEnemy);
 
 protected:
 

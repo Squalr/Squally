@@ -131,7 +131,7 @@ void RewardsMenu::loadRewards()
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
 		totalGoldGain += entity->getCurrencyInventory()->getCurrencyCount(Gold::getIdentifier());
-		totalExpGain += StatsTables::calculateEnemyExp(entity->getMaxHealth(), entity->getMaxMana());
+		totalExpGain += StatsTables::calculateEnemyExp(entity);
 
 		std::vector<Item*> items = entity->getInventory()->getItems();
 

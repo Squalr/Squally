@@ -60,7 +60,7 @@ public:
 	static TerrainObject* deserialize(cocos2d::ValueMap& initProperties, TerrainData terrainData);
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
-	void rebuildTerrain();
+	void rebuildTerrain(TerrainData terrainData);
 
 	static std::string MapKeyTypeTexture;
 	static std::string MapKeyTypeIsHollow;
