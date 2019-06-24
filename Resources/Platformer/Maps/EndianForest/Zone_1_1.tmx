@@ -107,7 +107,7 @@
     <property name="is-hollow" type="bool" value="true"/>
     <property name="texture" value="blue-grass"/>
    </properties>
-   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 5155.6,-560.899 6763.04,-769.994 8298.36,-846.055 10484.8,-1154.22 11670.8,-1162 11695.7,2480.07 7798.42,2985.03 4583.47,2944.09 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
+   <polygon points="0,0 1047.43,-410.079 1882.41,-607.708 5155.6,-560.899 6116.81,-736.854 8919.74,-730.065 10484.8,-1154.22 11670.8,-1162 11695.7,2480.07 7798.42,2985.03 4583.47,2944.09 899.209,1912.06 -489.13,1398.22 -494.071,385.375"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
@@ -166,12 +166,7 @@
     <property name="id" value="0"/>
    </properties>
   </object>
-  <object id="622" name="cinematic-marker" type="object" x="12405.4" y="3556.76" width="78.7879" height="88">
-   <properties>
-    <property name="id" value="1"/>
-   </properties>
-  </object>
-  <object id="650" name="chest" type="object" x="295.019" y="3506.18" width="128" height="128">
+  <object id="650" name="chest-fix-me" type="object" x="295.019" y="3506.18" width="128" height="128">
    <properties>
     <property name="event" value="open-cipher"/>
    </properties>
@@ -250,13 +245,14 @@
     <property name="map" value="EndianForest/Zone_1_1"/>
    </properties>
   </object>
-  <object id="646" name="goblin-warrior-pig" type="entity" x="738.621" y="3500.83" width="128" height="128">
+  <object id="646" name="goblin-warrior-pig" type="entity" x="9007.06" y="4080.78" width="128" height="128">
    <properties>
     <property name="ally-1" value=""/>
     <property name="ally-2" value=""/>
     <property name="battle-args" value=""/>
     <property name="battle-map" value="EndianForest/BattleGrounds"/>
     <property name="event" value=""/>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="658" name="orc-grunt" type="entity" x="6504.52" y="6397.95" width="128" height="128">

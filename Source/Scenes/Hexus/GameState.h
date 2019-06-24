@@ -4,6 +4,7 @@
 
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Engine/SmartNode.h"
 
 class Card;

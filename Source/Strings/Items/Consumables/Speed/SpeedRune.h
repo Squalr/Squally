@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Items_Consumables_Speed_SpeedPotion : public LocalizedString
+	class Items_Consumables_Speed_SpeedRune : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Speed_SpeedPotion* create();
+		static Items_Consumables_Speed_SpeedRune* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Items_Consumables_Speed_SpeedPotion();
-		~Items_Consumables_Speed_SpeedPotion();
+		Items_Consumables_Speed_SpeedRune();
+		~Items_Consumables_Speed_SpeedRune();
 	};
 }

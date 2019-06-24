@@ -12,9 +12,8 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedPotion.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
