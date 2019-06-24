@@ -1,13 +1,16 @@
 #include "RenderUtils.h"
 
+#include "cocos/2d/CCCamera.h"
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCRenderTexture.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/renderer/CCGLProgram.h"
 #include "cocos/renderer/CCGLProgramCache.h"
 #include "cocos/renderer/ccShaders.h"
 
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Camera/GameCamera.h"
 
 using namespace cocos2d;
 
@@ -25,10 +28,22 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 		return Sprite::create();
 	}
 
-	target->setPosition(-offset + padding);
+	target->setPosition(Vec2(padding.width - offset.x, padding.height - offset.y));
+	
+	// Reset camera such that the rendering performs properly
+	Vec3 cameraPosition = GameCamera::getInstance()->getCameraPosition3();
+
+	if (Camera::getDefaultCamera() != nullptr)
+	{
+		Camera::getDefaultCamera()->initDefault();
+	}
+
 	renderedNode->begin();
 	target->visit();
 	renderedNode->end();
+
+	// Restore camera
+	GameCamera::getInstance()->setCameraPosition3(cameraPosition);
 
 	// Rasterize the texture to a target
 	Sprite* renderSprite = renderedNode->getSprite();
@@ -58,7 +73,7 @@ Sprite* RenderUtils::applyShaderOnce(Sprite* target, std::string vertexShader, s
 
 	Vec2 position = target->getPosition();
 	Vec2 anchor = target->getAnchorPoint();
-
+	
 	target->setPosition(Vec2::ZERO);
 	target->setAnchorPoint(Vec2::ZERO);
 	target->setGLProgram(program);
@@ -72,9 +87,20 @@ Sprite* RenderUtils::applyShaderOnce(Sprite* target, std::string vertexShader, s
 		return target;
 	}
 
+	// Reset camera such that the rendering performs properly
+	Vec3 cameraPosition = GameCamera::getInstance()->getCameraPosition3();
+
+	if (Camera::getDefaultCamera() != nullptr)
+	{
+		Camera::getDefaultCamera()->initDefault();
+	}
+
 	renderedSprite->begin();
 	target->visit();
 	renderedSprite->end();
+
+	// Restore camera
+	GameCamera::getInstance()->setCameraPosition3(cameraPosition);
 
 	Sprite* rasterizedSprite = renderedSprite->getSprite();
 
