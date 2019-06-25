@@ -33,7 +33,6 @@ MapBase::MapBase(bool allowHackerMode)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->map = nullptr;
-	this->hackerMode = false;
 	this->mapNode = Node::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
 	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
@@ -117,16 +116,6 @@ void MapBase::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom* eventCustom)
 	{
 		this->toggleHackerMode(eventCustom->getUserData());
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom*)
-	{
-		this->onHackerModeEnable();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom*)
-	{
-		this->onHackerModeDisable();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventAllowHackerMode, [=](EventCustom*)
@@ -227,6 +216,8 @@ void MapBase::onDeveloperModeDisable()
 
 void MapBase::onHackerModeEnable()
 {
+	super::onHackerModeEnable();
+
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);
 
@@ -237,6 +228,8 @@ void MapBase::onHackerModeEnable()
 
 void MapBase::onHackerModeDisable()
 {
+	super::onHackerModeDisable();
+
 	this->hud->setVisible(true);
 	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
@@ -251,9 +244,7 @@ void MapBase::toggleHackerMode(void* userData)
 		return;
 	}
 
-	this->hackerMode = !this->hackerMode;
-
-	if (this->hackerMode)
+	if (!this->hackermodeEnabled)
 	{
 		HackableEvents::HackToggleArgs args = *static_cast<HackableEvents::HackToggleArgs*>(userData);
 		

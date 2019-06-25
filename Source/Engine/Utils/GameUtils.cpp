@@ -4,6 +4,7 @@
 #include "cocos/2d/CCCamera.h"
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCParticleSystem.h"
+#include "cocos/2d/CCScene.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 #include "cocos/platform/CCFileUtils.h"
 
@@ -30,7 +31,7 @@ void GameUtils::pause(Node *node)
 		}
 	}
 
-	node->pauseSchedulerAndActions();
+	node->pause();
 
 	for (const auto &child : node->getChildren())
 	{
@@ -51,7 +52,7 @@ void GameUtils::resume(Node *node)
 		}
 	}
 
-	node->resumeSchedulerAndActions();
+	node->resume();
 
 	for (const auto &child : node->getChildren())
 	{
@@ -62,6 +63,12 @@ void GameUtils::resume(Node *node)
 void GameUtils::resumeAll()
 {
 	GameUtils::resume(Director::getInstance()->getRunningScene());
+}
+
+bool GameUtils::isInRunningScene(cocos2d::Node* node)
+{
+	return node == Director::getInstance()->getRunningScene()
+		|| GameUtils::getFirstParentOfType<cocos2d::Scene>(node) == Director::getInstance()->getRunningScene();
 }
 
 Node* GameUtils::getFocusedNode()

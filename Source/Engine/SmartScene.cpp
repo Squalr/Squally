@@ -10,7 +10,9 @@
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/UI/HUD/Hud.h"
+#include "Engine/Utils/GameUtils.h"
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
 
@@ -27,6 +29,7 @@ SmartScene* SmartScene::create()
 
 SmartScene::SmartScene()
 {
+	this->hackermodeEnabled = false;
 	this->fadeAction = nullptr;
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
 	this->layerColorHud = Hud::create();
@@ -90,6 +93,16 @@ void SmartScene::initializeListeners()
 	{
 		this->onDeveloperModeDisable();
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeDisable();
+	}));
 }
 
 void SmartScene::onDeveloperModeEnable()
@@ -98,6 +111,16 @@ void SmartScene::onDeveloperModeEnable()
 
 void SmartScene::onDeveloperModeDisable()
 {
+}
+
+void SmartScene::onHackerModeEnable()
+{
+	this->hackermodeEnabled = true;
+}
+
+void SmartScene::onHackerModeDisable()
+{
+	this->hackermodeEnabled = false;
 }
 
 bool SmartScene::isDeveloperModeEnabled()
@@ -145,8 +168,20 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 		return;
 	}
 
-	listener->setIgnorePause(true);
+	EventListenerCustom* wrapper = EventListenerCustom::create(listener->getListenerId(), [=](EventCustom* eventCustom)
+	{
+		if (GameUtils::isInRunningScene(this))
+		{
+			listener->invoke(eventCustom);
+		}
+	});
 
+	wrapper->setIgnorePause(true);
+
+	// Keep the original listener around so that we can invoke it, but disable it
+	listener->setEnabled(false);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(wrapper, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
@@ -198,6 +233,22 @@ void SmartScene::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyC
 	}));
 }
 
+void SmartScene::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		if (this->hackermodeEnabled)
+		{
+			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+			{
+				callback(args);
+			}
+		}
+	}));
+}
+
 void SmartScene::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
 {
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
@@ -220,6 +271,22 @@ void SmartScene::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::Key
 		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
 		{
 			callback(args);
+		}
+	}));
+}
+
+void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		if (this->hackermodeEnabled)
+		{
+			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+			{
+				callback(args);
+			}
 		}
 	}));
 }
