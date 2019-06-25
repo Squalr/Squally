@@ -17,6 +17,7 @@ public:
 	static void pause(cocos2d::Node *node);
 	static void resume(cocos2d::Node *node);
 	static void resumeAll();
+	static bool isInRunningScene(cocos2d::Node *node);
 	static cocos2d::Node* getFocusedNode();
 	static bool isFocused(cocos2d::Node *node);
 	static void focus(cocos2d::Node *node);

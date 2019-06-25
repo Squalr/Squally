@@ -32,6 +32,8 @@ protected:
 	void onExit() override;
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
+	virtual void onHackerModeEnable();
+	virtual void onHackerModeDisable();
 	bool isDeveloperModeEnabled();
 	virtual void initializePositions();
 	virtual void initializeListeners();
@@ -42,9 +44,12 @@ protected:
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
 	void whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
 	void whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
+	void whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
 	void whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
 	void whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
+	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
 
+	bool hackermodeEnabled;
 	Hud* layerColorHud;
 	cocos2d::LayerColor* layerColor;
 	cocos2d::FiniteTimeAction* fadeAction;

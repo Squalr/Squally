@@ -38,8 +38,8 @@ protected:
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
-	virtual void onHackerModeEnable();
-	virtual void onHackerModeDisable();
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
 	cocos2d::Node* hudNode;
@@ -71,6 +71,4 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;
-
-	bool hackerMode;
 };

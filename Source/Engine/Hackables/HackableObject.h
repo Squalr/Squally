@@ -47,12 +47,10 @@ protected:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	virtual void onHackerModeEnable();
-	virtual void onHackerModeDisable();
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
-	void whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
-	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback);
 
 private:
 	typedef SerializableObject super;
@@ -61,7 +59,6 @@ private:
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
 
-	bool hackermodeEnabled;
 	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 

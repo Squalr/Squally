@@ -22,7 +22,6 @@ const std::string HackableObject::MapKeyShowClippy = "show-clippy";
 
 HackableObject::HackableObject(const ValueMap& properties) : SerializableObject(properties)
 {
-	this->hackermodeEnabled = false;
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
@@ -94,16 +93,6 @@ void HackableObject::initializeListeners()
 			}
 		}
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeEnable();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeDisable();
-	}));
 }
 
 void HackableObject::initializePositions()
@@ -149,7 +138,8 @@ void HackableObject::update(float dt)
 
 void HackableObject::onHackerModeEnable()
 {
-	this->hackermodeEnabled = true;
+	super::onHackerModeEnable();
+
 	this->uiElements->setPosition(this->getButtonOffset());
 
 	if (!(this->dataList.empty() && this->codeList.empty()))
@@ -160,40 +150,9 @@ void HackableObject::onHackerModeEnable()
 
 void HackableObject::onHackerModeDisable()
 {
-	this->hackermodeEnabled = false;
+	super::onHackerModeDisable();
+
 	this->hackButton->setVisible(false);
-}
-
-void HackableObject::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
-{
-	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
-	{
-		if (this->hackermodeEnabled)
-		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
-
-			if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
-			{
-				callback(args);
-			}
-		}
-	}));
-}
-
-void HackableObject::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
-{
-	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
-	{
-		if (this->hackermodeEnabled)
-		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
-
-			if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
-			{
-				callback(args);
-			}
-		}
-	}));
 }
 
 void HackableObject::registerHackables()
