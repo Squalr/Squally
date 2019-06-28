@@ -4,8 +4,9 @@
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
 
-HackableAttribute::HackableAttribute(float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
+HackableAttribute::HackableAttribute(int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
 {
+	this->requiredEq = requiredEq;
 	this->duration = duration;
 	this->iconResource = iconResource;
 	this->name = name;
@@ -73,6 +74,11 @@ void HackableAttribute::restoreState()
 void* HackableAttribute::getPointer()
 {
 	return nullptr;
+}
+
+int HackableAttribute::getRequiredEq()
+{
+	return this->requiredEq;
 }
 
 float HackableAttribute::getElapsedDuration()

@@ -1,21 +1,9 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #pragma once
 #include <string>
 
 #include "Entities/Platformer/PlatformerEntity.h"
 
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
-
 class Sound;
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 class HexusOpponentData;
 
@@ -23,16 +11,8 @@ class FlyBot : public PlatformerEntity
 {
 public:
 	static FlyBot* deserialize(cocos2d::ValueMap& initProperties);
-	
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
 
 	float getFloatHeight() override;
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -46,10 +26,6 @@ private:
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;
-	
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////X////X////X////X////X////X////X////X////X////X/
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -59,6 +35,7 @@ private:
 	void runTeachHackerModeEvent();
 	void runSpotOgreEvent();
 	void runRestorePotionTutorial();
+	void runSquallyTrappedEvent();
 
 	bool hasRunTutorialEvent;
 	Sound* droidAlarmedSound;
@@ -71,8 +48,5 @@ private:
 	static const std::string EventHelpSquallyHeal;
 	static const std::string EventTeachHackerMode;
 	static const std::string EventSpotOgre;
-	
-	////O////O////O////O////O////O////O////O////O////O/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
+	static const std::string EventSquallyTrapped;
 };

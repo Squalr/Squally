@@ -30,7 +30,6 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onOptionsExit();
 	void openPauseMenu();
 	void onResumeClick();

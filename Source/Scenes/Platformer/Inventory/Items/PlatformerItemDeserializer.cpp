@@ -53,9 +53,9 @@ void PlatformerItemDeserializer::onDeserializationRequest(const InventoryEvents:
 	{
 		result = ManaPotion::create();
 	}
-	else if (serializationKey == SpeedPotion::SaveKeySpeedPotion)
+	else if (serializationKey == SpeedRune::SaveKeySpeedRune)
 	{
-		result = SpeedPotion::create();
+		result = SpeedRune::create();
 	}
 	else if (serializationKey == BlueAxe::SaveKeyBlueAxe)
 	{

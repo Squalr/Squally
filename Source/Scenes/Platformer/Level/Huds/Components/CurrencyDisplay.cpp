@@ -5,7 +5,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Platformer/Inventory/Items/Currency/Doubloons.h"
+#include "Scenes/Platformer/Inventory/Currency/Doubloons.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -71,7 +71,7 @@ void CurrencyDisplay::update(float dt)
 		return;
 	}
 
-	int doubloonCount = this->inventory->getCurrencyCount<Doubloons>();
+	int doubloonCount = this->inventory->getCurrencyCount(Doubloons::getIdentifier());
 
 	if (doubloonCount != (this->cachedCurrency ^ CurrencyDisplay::CacheCipher))
 	{

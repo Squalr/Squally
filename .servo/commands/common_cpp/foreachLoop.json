@@ -1,0 +1,13 @@
+{
+  "description": "Creates a generic foreach loop",
+  "command": "foreach",
+  "programmingLanguage": "cpp",
+  "aliases": [
+	"foreach loop",
+	"add foreach loop",
+	"create foreach loop",
+	"insert foreach loop"
+  ],
+  "scriptPath": "common/loadTemplateFile.py",
+  "scriptArgs": "cpp/foreachLoop.cpp"
+}

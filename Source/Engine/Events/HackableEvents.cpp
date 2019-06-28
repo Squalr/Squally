@@ -5,6 +5,8 @@
 
 using namespace cocos2d;
 
+const std::string HackableEvents::EventRequestHackerModeEnable = "EVENT_REQUEST_HACKERMODE_ENABLE";
+const std::string HackableEvents::EventHackerModeToggle = "EVENT_HACKERMODE_TOGGLE";
 const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENABLE";
 const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
 const std::string HackableEvents::EventAllowHackerMode = "EVENT_ALLOW_HACKER_MODE";
@@ -15,11 +17,30 @@ const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKA
 const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
 const std::string HackableEvents::EventHackableObjectRegister = "EVENT_REGISTER_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
+const std::string HackableEvents::EventOpenLexiconPage = "EVENT_OPEN_LEXICON_PAGE";
+const std::string HackableEvents::EventCloseLeftLexiconPage = "EVENT_CLOSE_LEFT_LEXICON_PAGE";
+const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGHT_LEXICON_PAGE";
 
-void HackableEvents::TriggerHackerModeEnable()
+void HackableEvents::TriggerRequestHackerModeEnable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HackableEvents::EventHackerModeEnable
+		HackableEvents::EventRequestHackerModeEnable
+	);
+}
+
+void HackableEvents::TriggerHackerModeToggle(HackToggleArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackerModeToggle,
+		&args
+	);
+}
+
+void HackableEvents::TriggerHackerModeEnable(HackToggleArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackerModeEnable,
+		&args
 	);
 }
 
@@ -87,5 +108,27 @@ void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackApplied,
 		&args
+	);
+}
+
+void HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventOpenLexiconPage,
+		&args
+	);
+}
+
+void HackableEvents::TriggerCloseLeftLexiconPage()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventCloseLeftLexiconPage
+	);
+}
+
+void HackableEvents::TriggerCloseRightLexiconPage()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventCloseRightLexiconPage
 	);
 }

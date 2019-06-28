@@ -5,7 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Engine/Events/MouseEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/UI/HUD/Hud.h"
 
@@ -75,7 +75,7 @@ void Mouse::initializeListeners()
 	super::initializeListeners();
 
 	EventListenerCustom* mouseStateUpdateListener = EventListenerCustom::create(
-		MouseEvents::EventMouseStateUpdate,
+		InputEvents::EventMouseStateUpdate,
 		CC_CALLBACK_1(Mouse::onEventMouseStateUpdate, this)
 	);
 
@@ -130,7 +130,7 @@ const Vec2& Mouse::getPosition() const
 
 void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
 {
-	MouseEvents::MouseEventArgs* args = (MouseEvents::MouseEventArgs*)(eventCustom->getUserData());
+	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getUserData());
 
 	if (args->isDragging)
 	{

@@ -1,5 +1,7 @@
 #include "CombatMap.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -14,6 +16,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntityDeserializer.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
@@ -127,10 +130,7 @@ void CombatMap::initializeListeners()
 			{
 				PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
 
-				this->menuBackDrop->setOpacity(196);
-				this->rewardsMenu->show();
-
-				CombatEvents::TriggerGiveRewards();
+				CombatEvents::TriggerGiveExp();
 			}
 			else
 			{
@@ -138,6 +138,48 @@ void CombatMap::initializeListeners()
 				this->defeatMenu->show();
 			}
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
+	{
+		int expGain = 0;
+
+		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+		{
+			expGain += StatsTables::calculateEnemyExp(entity);
+		}));
+
+		// Temporary code to prevent progression softlock for early-access users. Arbitrarily safe to delete after 9/01/2020.
+		for (auto it = this->mapArgs.begin(); it != this->mapArgs.end(); it++)
+		{
+			if (*it == "early-access-fix")
+			{
+				if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt() <= 0)
+				{
+					// This is to make up for some users not getting exp from the first kill in the tutorial
+					expGain *= 2;
+				}
+			}
+		}
+
+		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
+		// both the gain and the animations in one step
+		this->textOverlays->showExpBars(expGain);
+
+		this->runAction(Sequence::create(
+			DelayTime::create(5.0f),
+			CallFunc::create([=]()
+			{
+				CombatEvents::TriggerGiveRewards();
+			}),
+			nullptr
+		));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* eventCustom)
+	{
+		this->menuBackDrop->setOpacity(196);
+		this->rewardsMenu->show();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)

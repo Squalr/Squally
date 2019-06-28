@@ -2,8 +2,6 @@
 #include <map>
 #include <vector>
 
-#include "cocos/base/CCEventListenerKeyboard.h"
-
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
@@ -44,7 +42,6 @@ private:
 	void onDeckManagementClick();
 	void onShopClick();
 	void onMouseOver(HexusChapterPreview* hexusChapterPreview);
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 
 	std::vector<HexusChapterPreview*> chapters;
 	std::map<HexusChapterPreview*, HexusChapterPreview*> dependencies;

@@ -11,6 +11,8 @@ class TextOverlays : public Hud
 public:
 	static TextOverlays* create();
 
+	void showExpBars(int expGain);
+
 private:
 	typedef Hud super;
 	TextOverlays();

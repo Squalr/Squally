@@ -1,0 +1,10 @@
+{
+  "description": "Copys text from the clipboard",
+  "command": "copy",
+  "programmingLanguage": "cpp",
+  "aliases": [
+    "please copy"
+  ],
+  "scriptPath": "common/copy.py",
+  "scriptArgs": ""
+}

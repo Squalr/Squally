@@ -93,16 +93,6 @@ void HackableObject::initializeListeners()
 			}
 		}
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeEnable();
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeDisable();
-	}));
 }
 
 void HackableObject::initializePositions()
@@ -148,6 +138,8 @@ void HackableObject::update(float dt)
 
 void HackableObject::onHackerModeEnable()
 {
+	super::onHackerModeEnable();
+
 	this->uiElements->setPosition(this->getButtonOffset());
 
 	if (!(this->dataList.empty() && this->codeList.empty()))
@@ -156,13 +148,15 @@ void HackableObject::onHackerModeEnable()
 	}
 }
 
-void HackableObject::registerHackables()
-{
-}
-
 void HackableObject::onHackerModeDisable()
 {
+	super::onHackerModeDisable();
+
 	this->hackButton->setVisible(false);
+}
+
+void HackableObject::registerHackables()
+{
 }
 
 Vec2 HackableObject::getButtonOffset()
@@ -182,6 +176,11 @@ HackablePreview* HackableObject::createDefaultPreview()
 
 void HackableObject::registerData(HackableData* hackableData)
 {
+	if (hackableData == nullptr)
+	{
+		return;
+	}
+	
 	for (auto it = this->dataList.begin(); it != this->dataList.end(); it++)
 	{
 		if ((*it)->getPointer() == hackableData->getPointer())
@@ -197,6 +196,11 @@ void HackableObject::registerData(HackableData* hackableData)
 
 void HackableObject::unregisterData(HackableData* hackableData)
 {
+	if (hackableData == nullptr)
+	{
+		return;
+	}
+
 	this->removeChild(hackableData);
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableData), this->hackableList.end());
@@ -205,6 +209,11 @@ void HackableObject::unregisterData(HackableData* hackableData)
 
 void HackableObject::registerCode(HackableCode* hackableCode)
 {
+	if (hackableCode == nullptr)
+	{
+		return;
+	}
+
 	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
 	{
 		if ((*it)->getPointer() == hackableCode->getPointer())
@@ -222,6 +231,11 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 {
 	bool hasHackableCode = false;
 
+	if (hackableCode == nullptr)
+	{
+		return;
+	}
+
 	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
 	{
 		if ((*it)->getPointer() == hackableCode->getPointer())
@@ -234,11 +248,11 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 
 	if (hasHackableCode)
 	{
-		this->removeChild(hackableCode);
-
 		hackableCode->restoreState();
 
 		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
 		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
+
+		this->removeChild(hackableCode);
 	}
 }

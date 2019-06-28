@@ -105,6 +105,14 @@ void Catapult::initializeListeners()
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->interactionEnabled && this->currentCooldown <= 0.0f)
+		{
+			this->launchCatapult();
+		}
+	});
 }
 
 void Catapult::update(float dt)
@@ -114,14 +122,6 @@ void Catapult::update(float dt)
 	if (this->currentCooldown > 0.0f)
 	{
 		this->currentCooldown -= dt;
-	}
-
-	if (this->interactionEnabled && this->currentCooldown <= 0.0f)
-	{
-		if (Input::isKeyJustPressed(EventKeyboard::KeyCode::KEY_V))
-		{
-			this->launchCatapult();
-		}
 	}
 }
 
@@ -148,6 +148,7 @@ void Catapult::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
 				},
+				1,
 				20.0f
 			)
 		},
@@ -208,26 +209,26 @@ NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 	volatile float* ySpeedPtr = &baseSpeed.y;
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, ySpeedPtr);
-	ASM(movss xmm0, dword ptr [EAX]);
-	ASM_MOV_REG_VAR(EAX, launchPowerPtr);
-	ASM(movss xmm1, dword ptr [EAX]);
-	ASM(pop EAX);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, ySpeedPtr);
+	ASM(movss xmm0, dword ptr [ZAX]);
+	ASM_MOV_REG_VAR(ZAX, launchPowerPtr);
+	ASM(movss xmm1, dword ptr [ZAX]);
+	ASM(pop ZAX);
 
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, freeMemoryForUser);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, freeMemoryForUser);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_APPLY_POWER);
 	ASM(mulss xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-	ASM(pop EAX);
+	ASM(pop ZAX);
 	
 	// Copy from xmm0 to the output variable
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, launchPowerPtr);
-	ASM(movss dword ptr [EAX], xmm0);
-	ASM(pop EAX);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, launchPowerPtr);
+	ASM(movss dword ptr [ZAX], xmm0);
+	ASM(pop ZAX);
 
 	HACKABLES_STOP_SEARCH();
 

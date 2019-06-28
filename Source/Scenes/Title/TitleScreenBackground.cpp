@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-TitleScreenBackground * TitleScreenBackground::create()
+TitleScreenBackground* TitleScreenBackground::create()
 {
 	TitleScreenBackground* instance = new TitleScreenBackground();
 
@@ -48,6 +48,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->foregroundGrassTop = FloatingSprite::create(UIResources::Menus_Backgrounds_TopLeaves, Vec2(-32.0f, 0.0f), Vec2(7.0f, 5.0f));
 	this->foregroundLight = Sprite::create(UIResources::Menus_Backgrounds_Light);
 	this->squally = SmartAnimationNode::create(EntityResources::Squally_Animations);
+	this->leftEyeController = SmartAnimationSequenceNode::create();
+	this->rightEyeController = SmartAnimationSequenceNode::create();
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
@@ -55,6 +57,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->mainhand = this->squally->getAnimationPart("mainhand");
 	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Staves_WoodenWand);
 	this->mainhand->setOffset(Vec2(-16.0f, 0.0f));
+	this->leftEyeController->setVisible(false);
+	this->rightEyeController->setVisible(false);
 
 	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
 	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
@@ -73,6 +77,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->eyes2);
 	this->addChild(this->slime);
 	this->addChild(this->squally);
+	this->addChild(this->leftEyeController);
+	this->addChild(this->rightEyeController);
 	this->addChild(this->fireflyParticles);
 	this->addChild(this->windParticles);
 	this->addChild(this->foregroundFog);
@@ -153,6 +159,7 @@ void TitleScreenBackground::onEnter()
 			nullptr
 		))
 	);
+	this->runEyeBlinkLoop();
 
 	this->fog->stopAllActions();
 	this->foregroundFog->stopAllActions();
@@ -172,22 +179,76 @@ void TitleScreenBackground::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->background->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->backgroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 320.0f));
-	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->tree->setPosition(Vec2(visibleSize.width / 2 + 38.0f, visibleSize.height / 2 + 180.0f));
+	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->backgroundVines->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 320.0f));
+	this->midgroundTrees->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->tree->setPosition(Vec2(visibleSize.width / 2.0f + 38.0f, visibleSize.height / 2.0f + 180.0f));
 
-	this->eyes1->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
-	this->eyes2->setPosition(Vec2(visibleSize.width / 2 + 48.0f, visibleSize.height / 2 - 180.0f));
-	this->fog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 120.0f));
-	this->foregroundFog->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 256.0f));
-	this->foregroundVines->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 196.0f));
-	this->foregroundGrassBottom->setPosition(Vec2(visibleSize.width / 2, 0.0f));
-	this->foregroundGrassTop->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - 32.0f));
-	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2, visibleSize.height - foregroundLight->getContentSize().height / 2));
-	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2));
-	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
-	this->slime->setPosition(Vec2(visibleSize.width / 2 + 112.0f, visibleSize.height / 2 - 320.0f));
-	this->squally->setPosition(Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f));
+	this->eyes1->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f - 180.0f));
+	this->eyes2->setPosition(Vec2(visibleSize.width / 2.0f + 48.0f, visibleSize.height / 2.0f - 180.0f));
+	this->fog->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 120.0f));
+	this->foregroundFog->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 256.0f));
+	this->foregroundVines->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 196.0f));
+	this->foregroundGrassBottom->setPosition(Vec2(visibleSize.width / 2.0f, 0.0f));
+	this->foregroundGrassTop->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
+	this->foregroundLight->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - foregroundLight->getContentSize().height / 2.0f));
+	this->windParticles->setPosition(Vec2(visibleSize.width, visibleSize.height / 2.0f));
+	this->fireflyParticles->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->slime->setPosition(Vec2(visibleSize.width / 2.0f + 112.0f, visibleSize.height / 2.0f - 320.0f));
+	this->squally->setPosition(Vec2(visibleSize.width / 2.0f + 228.0f, visibleSize.height / 2.0f + 160.0f));
+}
+
+void TitleScreenBackground::runEyeBlinkLoop()
+{
+	const float BlinkSpeed = 0.0075f;
+	const float EyesClosedDuration = 0.015f;
+	const float TimeBetweenBlinks = 5.5f;
+	
+	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	this->leftEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* leftEye = this->squally->getAnimationPart("eye_left");
+		
+		if (leftEye != nullptr)
+		{
+			leftEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
+	this->leftEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* leftEye = this->squally->getAnimationPart("eye_left");
+		
+		if (leftEye != nullptr)
+		{
+			leftEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
+	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	this->rightEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* rightEye = this->squally->getAnimationPart("eye_right");
+		
+		if (rightEye != nullptr)
+		{
+			rightEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
+	this->rightEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	{
+		AnimationPart* rightEye = this->squally->getAnimationPart("eye_right");
+		
+		if (rightEye != nullptr)
+		{
+			rightEye->replaceSprite(spriteResource);
+		}
+
+		return current + 1;
+	};
 }

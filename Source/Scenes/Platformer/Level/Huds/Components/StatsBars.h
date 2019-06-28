@@ -8,7 +8,9 @@ namespace cocos2d
 }
 
 class ConstantString;
+class EqDisplay;
 class LocalizedLabel;
+class RuneBar;
 class PlatformerEntity;
 class ProgressBar;
 
@@ -32,16 +34,21 @@ private:
 	PlatformerEntity* target;
 
 	bool isFrameOnLeft;
-	cocos2d::Sprite* statBackground;
 	cocos2d::Sprite* frame;
+	cocos2d::Sprite* emblemGlow;
+	cocos2d::Node* emblemNode;
 	cocos2d::Sprite* emblem;
-	cocos2d::Sprite* frameTop;
 	ProgressBar* healthBar;
 	ProgressBar* manaBar;
+	cocos2d::Sprite* healthSprite;
+	cocos2d::Sprite* manaSprite;
 	LocalizedLabel* healthLabel;
 	ConstantString* healthNumerator;
 	ConstantString* healthDenominator;
 	LocalizedLabel* manaLabel;
 	ConstantString* manaNumerator;
 	ConstantString* manaDenominator;
+
+	EqDisplay* eqDisplay;
+	RuneBar* runeBar;
 };

@@ -10,7 +10,9 @@ public:
 	static const std::string SaveKeyEventTriggeredPrefix;
 	static const std::string SaveKeySquallyHeath;
 	static const std::string SaveKeySquallyMana;
-	static const std::string SaveKeySquallyRunes;
+	static const std::string SaveKeySquallyRuneCooldowns;
+	static const std::string SaveKeySquallyEq;
+	static const std::string SaveKeySquallyEqExperience;
 	static const std::string SaveKeySquallyPositionX;
 	static const std::string SaveKeySquallyPositionY;
 	static const std::string SaveKeySquallyInventory;

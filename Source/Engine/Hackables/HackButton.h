@@ -8,6 +8,7 @@ public:
 	static HackButton* create();
 
 protected:
+	void initializeListeners() override;
 	virtual void addEventListener(cocos2d::EventListener* listener) override;
 
 private:

@@ -21,6 +21,8 @@ public:
 	int getCount();
 	int getStackSize();
 
+	static const int MaxStack;
+
 protected:
 	Item(int stackSize = 1);
 	virtual ~Item();

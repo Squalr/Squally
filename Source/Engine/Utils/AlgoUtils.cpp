@@ -148,8 +148,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 	return result;
 }
 
-
-std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints)
+std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<Vec2>& holePoints)
 {
 	std::vector<Triangle> triangles = std::vector<Triangle>();
 
@@ -177,6 +176,19 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 
 	// Add the polyline for the edge. This will consume all points added so far.
 	MPE_PolyAddEdge(&polyContext);
+
+	if (!holePoints.empty())
+	{
+		MPEPolyPoint* holes = MPE_PolyPushPointArray(&polyContext, holePoints.size());
+
+		for (int index = 0; index < holePoints.size(); index++)
+		{
+			holes[index].X = holePoints[index].x;
+			holes[index].Y = holePoints[index].y;
+		}
+
+		MPE_PolyAddHole(&polyContext);
+	}
 
 	// Triangulate the shape
 	MPE_PolyTriangulate(&polyContext);
@@ -210,6 +222,63 @@ bool AlgoUtils::isPointInTriangle(const AlgoUtils::Triangle& triangle, Vec2 poin
 	}
 
 	return true;
+}
+
+bool AlgoUtils::isPointInColinearSegment(const Vec2& point, const std::tuple<Vec2, Vec2>& segment)
+{
+	Vec2 p1 = std::get<0>(segment);
+	Vec2 p2 = std::get<1>(segment);
+
+	return (point.x >= std::min(p1.x, p2.x) &&
+		point.x <= std::max(p1.x, p2.x) &&
+		point.y >= std::min(p1.y, p2.y) &&
+		point.y <= std::max(p1.y, p2.y));
+}
+
+Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB) 
+{
+	Vec2 a = std::get<0>(segmentA);
+	Vec2 b = std::get<1>(segmentA);
+	Vec2 c = std::get<0>(segmentB);
+	Vec2 d = std::get<1>(segmentB);
+
+	auto det = [=](float a, float b, float c, float d)
+	{
+		return a * d - b * c;
+	};
+
+    float detL1 = det(a.x, a.y, b.x, b.y);
+    float detL2 = det(c.x, c.y, d.x, d.y);
+    float x1mx2 = a.x - b.x;
+    float x3mx4 = c.x - d.x;
+    float y1my2 = a.y - b.y;
+    float y3my4 = c.y - d.y;
+
+    float xnom = det(detL1, x1mx2, detL2, x3mx4);
+    float ynom = det(detL1, y1my2, detL2, y3my4);
+    float denom = det(x1mx2, y1my2, x3mx4, y3my4);
+
+    if(denom == 0.0)
+    {
+        return Vec2::ZERO;
+    }
+
+    return Vec2(xnom / denom, ynom / denom);
+} 
+
+bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB)
+{
+	Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(segmentA, segmentB);
+
+	// (0, 0) is our magic nubmer for "parallel non-intersecting". Trashy, but it works for our use cases.
+	if (intersectionPoint != Vec2::ZERO && 
+		AlgoUtils::isPointInColinearSegment(intersectionPoint, segmentA) &&
+		AlgoUtils::isPointInColinearSegment(intersectionPoint, segmentB))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std::vector<Vec2>& points)

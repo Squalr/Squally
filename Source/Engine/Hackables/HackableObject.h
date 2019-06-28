@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Maps/SerializableObject.h"
 
 namespace cocos2d
@@ -46,8 +47,8 @@ protected:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	virtual void onHackerModeEnable();
-	virtual void onHackerModeDisable();
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
 
@@ -57,8 +58,8 @@ private:
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
-	std::vector<HackableAttribute*> trackedAttributes;
 
+	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 
 	static const std::string MapKeyShowClippy;

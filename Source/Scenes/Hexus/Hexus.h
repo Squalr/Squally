@@ -1,5 +1,4 @@
 #pragma once
-#include "cocos/base/CCEventKeyboard.h"
 
 #include "Engine/GlobalScene.h"
 
@@ -95,7 +94,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void startGame(HexusOpponentData* opponentData);
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	void onOptionsExit();
 	void openPauseMenu();
 	void onResumeClick();

@@ -84,8 +84,8 @@ void SaveSelectMenu::onEnter()
 	this->backgroundNode->addChild(MenuBackground::claimInstance());
 	this->backdrop->setVisible(false);
 
-	const float delay = 0.5f;
-	const float duration = 0.75f;
+	const float delay = 0.15f;
+	const float duration = 0.5f;
 
 	this->buildSaveButtons();
 
@@ -106,13 +106,18 @@ void SaveSelectMenu::initializeListeners()
 		GlobalDirector::loadScene(SaveSelectMenu::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(SaveSelectMenu::onKeyPressed, this);
+		NavigationEvents::navigateBack();
+	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
 }
 
 void SaveSelectMenu::initializePositions()
@@ -125,28 +130,6 @@ void SaveSelectMenu::initializePositions()
 	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
 }
 
-void SaveSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-	
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
-}
-
 void SaveSelectMenu::buildSaveButtons()
 {
 	this->buttonsNode->removeAllChildren();
@@ -155,9 +138,9 @@ void SaveSelectMenu::buildSaveButtons()
 	this->saveGameButton1 = this->buildSaveButton(1);
 	this->saveGameButton2 = this->buildSaveButton(2);
 
-	this->saveGameButton0->setPositionY(192.0f);
+	this->saveGameButton0->setPositionY(224.0f);
 	this->saveGameButton1->setPositionY(0.0f);
-	this->saveGameButton2->setPositionY(-192.0f);
+	this->saveGameButton2->setPositionY(-224.0f);
 
 	this->buttonsNode->addChild(this->saveGameButton0);
 	this->buttonsNode->addChild(this->saveGameButton1);
@@ -212,7 +195,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 
 	saveGameButton->addChild(saveGameIcon);
 
-	saveGameButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	saveGameButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		SaveManager::setActiveSaveProfile(profileId);
 		this->loadSave();
@@ -234,7 +217,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 {
 	ClickableNode* deleteButton = ClickableNode::create(UIResources::Menus_Buttons_DeleteButton, UIResources::Menus_Buttons_DeleteButtonHover);
 
-	deleteButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs* args)
+	deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{

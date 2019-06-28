@@ -7,6 +7,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
 using namespace cocos2d;
@@ -44,14 +45,14 @@ void CombatHud::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->playerPartyStatsNode->setPosition(32.0f, visibleSize.height - 64.0f);
-	this->enemyPartyStatsNode->setPosition(visibleSize.width - 352, visibleSize.height - 64.0f);
+	this->playerPartyStatsNode->setPosition(32.0f, visibleSize.height - 96.0f);
+	this->enemyPartyStatsNode->setPosition(visibleSize.width - 212.0f, visibleSize.height - 96.0f);
 
 	int index = 0;
 
 	for (auto it = this->playerPartyStatsBars.begin(); it != this->playerPartyStatsBars.end(); it++)
 	{
-		(*it)->setPositionY((float)index * -128.0f);
+		(*it)->setPositionY((float)index * -160.0f);
 
 		index++;
 	}
@@ -61,7 +62,7 @@ void CombatHud::initializePositions()
 	for (auto it = this->enemyPartyStatsBars.begin(); it != this->enemyPartyStatsBars.end(); it++)
 	{
 		(*it)->setAnchorPoint(Vec2(1.0f, 0.5f));
-		(*it)->setPositionY((float)index * -128.0f);
+		(*it)->setPositionY((float)index * -160.0f);
 
 		index++;
 	}

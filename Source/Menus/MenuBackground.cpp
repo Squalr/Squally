@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
@@ -17,12 +18,12 @@ MenuBackground* MenuBackground::menuBackgroundInstance = nullptr;
 
 MenuBackground* MenuBackground::claimInstance()
 {
-	MenuBackground* mouse = MenuBackground::getInstance();
+	MenuBackground* instance = MenuBackground::getInstance();
 
 	// Free the background from it's parent
-	if (mouse->getParent() != nullptr)
+	if (instance->getParent() != nullptr)
 	{
-		mouse->getParent()->removeChild(MenuBackground::menuBackgroundInstance);
+		GameUtils::changeParent(MenuBackground::menuBackgroundInstance, nullptr, true);
 	}
 
 	return MenuBackground::menuBackgroundInstance;

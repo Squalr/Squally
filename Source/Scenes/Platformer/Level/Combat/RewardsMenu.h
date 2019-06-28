@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
+class ConstantString;
 class LocalizedLabel;
 class PlatformerEntity;
 class ScrollPane;
@@ -29,8 +30,14 @@ private:
 	void initializeListeners() override;
 	void loadRewards();
 
-	cocos2d::Sprite* rewardsMenu;
-	cocos2d::Sprite* victoryBanner;
+	cocos2d::Sprite* victoryMenu;
+	cocos2d::Sprite* expSprite;
+	cocos2d::Sprite* goldSprite;
+	ConstantString* expValue;
+	ConstantString* goldValue;
+	LocalizedLabel* expLabel;
+	LocalizedLabel* goldLabel;
 	LocalizedLabel* victoryLabel;
-	ClickableTextNode* okayButton;
+	LocalizedLabel* itemsFoundLabel;
+	ClickableTextNode* returnButton;
 };

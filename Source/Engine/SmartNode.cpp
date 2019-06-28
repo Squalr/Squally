@@ -4,12 +4,14 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
+#include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
@@ -24,6 +26,7 @@ SmartNode* SmartNode::create()
 
 SmartNode::SmartNode()
 {
+	this->hackermodeEnabled = false;
 }
 
 SmartNode::~SmartNode()
@@ -90,6 +93,16 @@ void SmartNode::initializeListeners()
 	{
 		this->onDeveloperModeDisable();
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeEnable();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeDisable();
+	}));
 }
 
 void SmartNode::onDeveloperModeEnable()
@@ -98,6 +111,16 @@ void SmartNode::onDeveloperModeEnable()
 
 void SmartNode::onDeveloperModeDisable()
 {
+}
+
+void SmartNode::onHackerModeEnable()
+{
+	this->hackermodeEnabled = true;
+}
+
+void SmartNode::onHackerModeDisable()
+{
+	this->hackermodeEnabled = false;
 }
 
 bool SmartNode::isDeveloperModeEnabled()
@@ -145,7 +168,103 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 		return;
 	}
 
-	listener->setIgnorePause(true);
+	EventListenerCustom* wrapper = EventListenerCustom::create(listener->getListenerId(), [=](EventCustom* eventCustom)
+	{
+		if (GameUtils::isInRunningScene(this))
+		{
+			listener->invoke(eventCustom);
+		}
+	});
 
+	wrapper->setIgnorePause(true);
+
+	// Keep the original listener around so that we can invoke it, but disable it
+	listener->setEnabled(false);
+
+	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(wrapper, this);
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	{
+		if (this->hackermodeEnabled)
+		{
+			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+			{
+				callback(args);
+			}
+		}
+	}));
+}
+
+void SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+		{
+			callback(args);
+		}
+	}));
+}
+
+void SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback)
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	{
+		if (this->hackermodeEnabled)
+		{
+			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr && !args->handled && keyCodes.find(args->keycode) != keyCodes.end())
+			{
+				callback(args);
+			}
+		}
+	}));
 }

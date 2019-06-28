@@ -58,23 +58,26 @@ void ProgressBar::setProgress(float newProgress)
 {
 	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
 
-	// Update progress bar
-	this->clipStencil->clear();
+	if (this->clipStencil != nullptr)
+	{
+		// Update progress bar
+		this->clipStencil->clear();
 
-	if (this->isHorizontal)
-	{
-		this->clipStencil->drawSolidRect(
-			-Vec2(this->progressBar->getContentSize() / 2.0f),
-			Size(this->progressBar->getContentSize().width * this->progress, this->progressBar->getContentSize().height) - this->progressBar->getContentSize() / 2.0f,
-			Color4F::GREEN
-		);
-	}
-	else
-	{
-		this->clipStencil->drawSolidRect(
-			-Vec2(this->progressBar->getContentSize() / 2.0f),
-			Size(this->progressBar->getContentSize().width, this->progressBar->getContentSize().height * this->progress) - this->progressBar->getContentSize() / 2.0f,
-			Color4F::GREEN
-		);
+		if (this->isHorizontal)
+		{
+			this->clipStencil->drawSolidRect(
+				-Vec2(this->progressBar->getContentSize() / 2.0f),
+				Size(this->progressBar->getContentSize().width * this->progress, this->progressBar->getContentSize().height) - this->progressBar->getContentSize() / 2.0f,
+				Color4F::GREEN
+			);
+		}
+		else
+		{
+			this->clipStencil->drawSolidRect(
+				-Vec2(this->progressBar->getContentSize() / 2.0f),
+				Size(this->progressBar->getContentSize().width, this->progressBar->getContentSize().height * this->progress) - this->progressBar->getContentSize() / 2.0f,
+				Color4F::GREEN
+			);
+		}
 	}
 }

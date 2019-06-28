@@ -1,0 +1,9 @@
+{
+  "description": "Adds a cocos2d-x event listener",
+  "command": "add event listener",
+  "programmingLanguage": "cpp",
+  "aliases": [
+  ],
+  "scriptPath": "common/loadTemplateFile.py",
+  "scriptArgs": "cpp/addEventListener.cpp"
+}

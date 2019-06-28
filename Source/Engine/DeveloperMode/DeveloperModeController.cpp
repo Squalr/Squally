@@ -46,114 +46,131 @@ void DeveloperModeController::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	static LanguageType nextLanguage = LanguageType::ENGLISH;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(DeveloperModeController::onKeyPressed, this);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_GRAVE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!DeveloperModeController::IsDeveloperBuild)
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	this->addGlobalEventListener(keyboardListener);
+		if (!this->developerModeEnabled)
+		{
+			DeveloperModeEvents::TriggerDeveloperModeModeEnable();
+		}
+		else
+		{
+			DeveloperModeEvents::TriggerDeveloperModeModeDisable();
+		}
+
+		this->developerModeEnabled = !this->developerModeEnabled;
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F1 }, [=](InputEvents::InputArgs* args)
+	{
+		if (!DeveloperModeController::IsDeveloperBuild)
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->stopAllActions();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F2 }, [=](InputEvents::InputArgs* args)
+	{
+		if (!DeveloperModeController::IsDeveloperBuild)
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->stopAllActions();
+		this->runAction(RepeatForever::create(Sequence::create(
+			CallFunc::create([=]()
+			{
+				Localization::setLanguage(nextLanguage);
+
+				nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
+			}),
+			DelayTime::create(1.0f),
+			nullptr
+		)));
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F3 }, [=](InputEvents::InputArgs* args)
+	{
+		if (!DeveloperModeController::IsDeveloperBuild)
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->stopAllActions();
+		this->runAction(RepeatForever::create(Sequence::create(
+			CallFunc::create([=]()
+			{
+				Localization::setLanguage(nextLanguage);
+
+				nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
+			}),
+			DelayTime::create(0.75f),
+			nullptr
+		)));
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F4 }, [=](InputEvents::InputArgs* args)
+	{
+		if (!DeveloperModeController::IsDeveloperBuild)
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->stopAllActions();
+		this->runAction(RepeatForever::create(Sequence::create(
+			CallFunc::create([=]()
+			{
+				Localization::setLanguage(nextLanguage);
+
+				nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
+			}),
+			DelayTime::create(0.5f),
+			nullptr
+		)));
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F5 }, [=](InputEvents::InputArgs* args)
+	{
+		if (!DeveloperModeController::IsDeveloperBuild)
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		this->stopAllActions();
+		this->runAction(RepeatForever::create(Sequence::create(
+			CallFunc::create([=]()
+			{
+				Localization::setLanguage(nextLanguage);
+
+				nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
+			}),
+			DelayTime::create(0.25f),
+			nullptr
+		)));
+	});
 }
 
 bool DeveloperModeController::isDeveloperModeEnabled()
 {
 	return this->developerModeEnabled;
-}
-
-void DeveloperModeController::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	// Prevent processing events non-developer builds
-	if (!DeveloperModeController::IsDeveloperBuild)
-	{
-		return;
-	}
-
-	static LanguageType nextLanguage = LanguageType::ENGLISH;
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_GRAVE:
-		{
-			if (!this->developerModeEnabled)
-			{
-				DeveloperModeEvents::TriggerDeveloperModeModeEnable();
-			}
-			else
-			{
-				DeveloperModeEvents::TriggerDeveloperModeModeDisable();
-			}
-
-			this->developerModeEnabled = !this->developerModeEnabled;
-
-			event->stopPropagation();
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F1:
-		{
-			this->stopAllActions();
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F2:
-		{
-			this->stopAllActions();
-			this->runAction(RepeatForever::create(Sequence::create(
-				CallFunc::create([=]()
-				{
-					Localization::setLanguage(nextLanguage);
-
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
-				}),
-				DelayTime::create(1.0f),
-				nullptr
-			)));
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F3:
-		{
-			this->stopAllActions();
-			this->runAction(RepeatForever::create(Sequence::create(
-				CallFunc::create([=]()
-				{
-					Localization::setLanguage(nextLanguage);
-
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
-				}),
-				DelayTime::create(0.75f),
-				nullptr
-			)));
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F4:
-		{
-			this->stopAllActions();
-			this->runAction(RepeatForever::create(Sequence::create(
-				CallFunc::create([=]()
-				{
-					Localization::setLanguage(nextLanguage);
-
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
-				}),
-				DelayTime::create(0.5f),
-				nullptr
-			)));
-			break;
-		}
-		case EventKeyboard::KeyCode::KEY_F5:
-		{
-			this->stopAllActions();
-			this->runAction(RepeatForever::create(Sequence::create(
-				CallFunc::create([=]()
-				{
-					Localization::setLanguage(nextLanguage);
-
-					nextLanguage = (LanguageType)(((int)nextLanguage + 1) % (int)LanguageType::LAST_LANGUAGE);
-				}),
-				DelayTime::create(0.25f),
-				nullptr
-			)));
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }

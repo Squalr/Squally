@@ -2,6 +2,8 @@
 #include "Engine/GlobalNode.h"
 #include "Engine/Events/DeserializationEvents.h"
 
+class SerializableObject;
+
 class PlatformerEntityDeserializer : public GlobalNode
 {
 public:
@@ -12,7 +14,8 @@ public:
 
 	static const std::string KeyTypeEntity;
 
-protected:
+private:
+	typedef GlobalNode super;
 	PlatformerEntityDeserializer();
 	virtual ~PlatformerEntityDeserializer();
 
@@ -20,6 +23,5 @@ protected:
 
 	static PlatformerEntityDeserializer* instance;
 
-private:
-	typedef GlobalNode super;
+	std::map<std::string, std::function<SerializableObject*(cocos2d::ValueMap)>> deserializers;
 };

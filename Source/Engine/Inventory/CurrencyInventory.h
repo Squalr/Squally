@@ -1,36 +1,38 @@
 #pragma once
 
-#include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/Currency.h"
+#include "Engine/SmartNode.h"
 
-// Generic inventory for any set of equipment with convenience methods
-class CurrencyInventory : public Inventory
+namespace cocos2d
+{
+	class Value;
+	typedef std::map<std::string, cocos2d::Value> ValueMap;
+}
+
+class CurrencyInventory : public SmartNode
 {
 public:
-	template<class T>
-	int getCurrencyCount()
-	{
-		int count = 0;
-		std::vector<Item*> items = this->getItems();
+	static CurrencyInventory* create();
 
-		for (auto it = items.begin(); it != items.end(); it++)
-		{
-			if (dynamic_cast<T*>(*it) != nullptr && dynamic_cast<Currency*>(*it) != nullptr)
-			{
-				count += (*it)->getCount();
-			}
-		}
-
-		return count;
-	}
+	int getCurrencyCount(std::string currencyKey);
+	void removeCurrency(std::string currencyKey, int count);
+	void addCurrency(std::string currencyKey, int count);
 
 protected:
-	CurrencyInventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
+	CurrencyInventory(std::string saveKey = "");
 	virtual ~CurrencyInventory();
 
 	void onEnter() override;
 	void initializeListeners() override;
 
+	void deserialize(const cocos2d::ValueMap& valueMap);
+
 private:
-	typedef Inventory super;
+	typedef SmartNode super;
+
+	void save();
+	void load();
+	
+	cocos2d::ValueMap currencyMap;
+
+	std::string saveKey;
 };

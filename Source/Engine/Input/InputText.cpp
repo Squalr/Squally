@@ -51,7 +51,7 @@ void InputText::onEnter()
 {
 	super::onEnter();
 
-	this->hitBox->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->hitBox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->attachWithIME();
 	});
@@ -92,6 +92,16 @@ void InputText::update(float dt)
 			this->stringChangeCallback(this->stringCache);
 		}
 	}
+}
+
+void InputText::focus()
+{
+	this->attachWithIME();
+}
+
+void InputText::unfocus()
+{
+	this->detachWithIME();
 }
 
 void InputText::setStringChangeCallback(std::function<void(std::string)> stringChangeCallback)

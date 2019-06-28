@@ -10,6 +10,8 @@ class HackableObject;
 class HackableEvents
 {
 public:
+	static const std::string EventRequestHackerModeEnable;
+	static const std::string EventHackerModeToggle;
 	static const std::string EventHackerModeEnable;
 	static const std::string EventHackerModeDisable;
 	static const std::string EventAllowHackerMode;
@@ -20,6 +22,9 @@ public:
 	static const std::string EventHackableAttributeEditDone;
 	static const std::string EventHackableObjectRegister;
 	static const std::string EventHackApplied;
+	static const std::string EventOpenLexiconPage;
+	static const std::string EventCloseLeftLexiconPage;
+	static const std::string EventCloseRightLexiconPage;
 
 	struct HackableObjectOpenArgs
 	{
@@ -53,7 +58,27 @@ public:
 		}
 	};
 
-	static void TriggerHackerModeEnable();
+	struct HackToggleArgs
+	{
+		int currentEq;
+
+		HackToggleArgs(int currentEq) : currentEq(currentEq)
+		{
+		}
+	};
+
+	struct OpenLexiconPageArgs
+	{
+		std::string pageIdentifier;
+
+		OpenLexiconPageArgs(std::string pageIdentifier) : pageIdentifier(pageIdentifier)
+		{
+		}
+	};
+
+	static void TriggerRequestHackerModeEnable();
+	static void TriggerHackerModeToggle(HackToggleArgs args);
+	static void TriggerHackerModeEnable(HackToggleArgs args);
 	static void TriggerHackerModeDisable();
 	static void TriggerAllowHackerMode();
 	static void TriggerDisallowHackerMode();
@@ -63,4 +88,7 @@ public:
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
 	static void TriggerOnHackApplied(HackAppliedArgs args);
+	static void TriggerOpenLexiconPage(OpenLexiconPageArgs args);
+	static void TriggerCloseLeftLexiconPage();
+	static void TriggerCloseRightLexiconPage();
 };

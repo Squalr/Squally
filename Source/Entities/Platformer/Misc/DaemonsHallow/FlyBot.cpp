@@ -12,15 +12,12 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////A////A////A////A////A////A////A////A////A////A/
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -47,6 +44,7 @@
 #include "Strings/Dialogue/Story/Intro/HackerMode.h"
 #include "Strings/Dialogue/Story/Intro/HackerModeCombat.h"
 #include "Strings/Dialogue/Story/Intro/OgreSpotted.h"
+#include "Strings/Dialogue/Story/Intro/SquallyTrapped.h"
 #include "Strings/Dialogue/Story/Intro/TentHeal.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
@@ -55,10 +53,7 @@ const std::string FlyBot::EventGreetSqually = "event-greet-squally";
 const std::string FlyBot::EventHelpSquallyHeal = "event-help-squally-heal";
 const std::string FlyBot::EventTeachHackerMode = "event-teach-hacker-mode";
 const std::string FlyBot::EventSpotOgre = "event-spot-ogre";
-
-////B////B////B////B////B////B////B////B////B////B/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
+const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
 
 using namespace cocos2d;
 
@@ -87,10 +82,6 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 {
 	this->hexusOpponentData = FlyBot::getHexusOpponentData();
 
-	///////////////////////////////////////////////////
-	// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-	////Y////Y////Y////Y////Y////Y////Y////Y////Y////Y/
-
 	this->hasRunTutorialEvent = false;
 	this->movementCollision->setPhysicsEnabled(false);
 	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
@@ -98,23 +89,20 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
 	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
+	this->droidAlarmedSound->toggleCameraDistanceFade(true);
+	this->droidBrief1Sound->toggleCameraDistanceFade(true);
+	this->droidBrief2Sound->toggleCameraDistanceFade(true);
+	this->droidChatterSound->toggleCameraDistanceFade(true);
+
 	this->addChild(this->droidAlarmedSound);
 	this->addChild(this->droidBrief1Sound);
 	this->addChild(this->droidBrief2Sound);
 	this->addChild(this->droidChatterSound);
-	
-	////Z////Z////Z////Z////Z////Z////Z////Z////Z////Z/
-	// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-	///////////////////////////////////////////////////
 }
 
 FlyBot::~FlyBot()
 {
 }
-
-///////////////////////////////////////////////////
-// BEGIN: CODE NOT AFFECTED BY GENERATE SCRIPTS: //
-////X////X////X////X////X////X////X////X////X////X/
 
 void FlyBot::onEnter()
 {
@@ -188,6 +176,16 @@ void FlyBot::initializeListeners()
 		{
 			this->setVisible(false);
 		}
+	}
+
+	if (this->state == FlyBot::EventSquallyTrapped)
+	{
+		this->setVisible(false);
+
+		this->listenForMapEvent(FlyBot::EventSquallyTrapped, [=](ValueMap args)
+		{
+			this->runSquallyTrappedEvent();
+		});
 	}
 
 	this->listenForMapEvent(RestoreHealth::EventShowRestorePotionTutorial, [=](ValueMap args)
@@ -418,7 +416,7 @@ void FlyBot::runRestorePotionTutorial()
 		DelayTime::create(TutorialDelay),
 		CallFunc::create([=]()
 		{
-			HackableEvents::TriggerHackerModeEnable();
+			HackableEvents::TriggerRequestHackerModeEnable();
 			HackableEvents::TriggerAllowHackerMode();
 			GameUtils::resume(this);
 
@@ -443,14 +441,28 @@ void FlyBot::runRestorePotionTutorial()
 	));
 }
 
+void FlyBot::runSquallyTrappedEvent()
+{
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventSquallyTrapped, Value(true));
+
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->setVisible(true);
+			this->droidChatterSound->play();
+		}),
+		CallFunc::create([=]()
+		{
+			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_SquallyTrapped::create());
+		}),
+		nullptr
+	));
+}
+
 float FlyBot::getFloatHeight()
 {
 	return 64.0f;
 }
-
-////O////O////O////O////O////O////O////O////O////O/
-// END: CODE NOT AFFECTED BY GENERATE SCRIPTS    //
-///////////////////////////////////////////////////
 
 Vec2 FlyBot::getAvatarFrameOffset()
 {

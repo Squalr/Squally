@@ -98,6 +98,7 @@ void Laser::registerHackables()
 				{
 					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
+				1,
 				20.0f
 			)
 		},
@@ -127,22 +128,22 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 	volatile float* countDownPtr = &this->currentLaserCountDown;
 	volatile float* deltaTimePtr = &dt;
 
-	ASM(push EAX);
-	ASM(push EBX);
-	ASM_MOV_REG_VAR(EAX, countDownPtr);
-	ASM_MOV_REG_VAR(EBX, deltaTimePtr);
+	ASM(push ZAX);
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZAX, countDownPtr);
+	ASM_MOV_REG_VAR(ZBX, deltaTimePtr);
 
-	ASM(fld dword ptr [EAX]);
+	ASM(fld dword ptr [ZAX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(fsub dword ptr [EBX]);
+	ASM(fsub dword ptr [ZBX]);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(fstp dword ptr [EAX])
+	ASM(fstp dword ptr [ZAX])
 
-	ASM(pop EAX);
-	ASM(pop EBX);
+	ASM(pop ZAX);
+	ASM(pop ZBX);
 
 	HACKABLES_STOP_SEARCH();
 

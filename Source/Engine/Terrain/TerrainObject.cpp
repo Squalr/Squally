@@ -7,13 +7,17 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 #include "cocos/renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -24,12 +28,14 @@
 using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeTexture = "texture";
+std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
+const float TerrainObject::HollowDistance = 144.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
-const float TerrainObject::BottomThreshold = 7 * float(M_PI) / 6.0f;
+const float TerrainObject::BottomThreshold = 7.0f * float(M_PI) / 6.0f;
 
 TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData terrainData)
 {
@@ -39,7 +45,7 @@ TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData 
 
 	// Build the terrain from the parsed points
 	instance->setPoints(instance->polylinePoints);
-	instance->rebuildTerrain();
+	instance->rebuildTerrain(terrainData);
 
 	return instance;
 }
@@ -48,8 +54,11 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 {
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
+	this->intersectionPoints = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->triangles = std::vector<AlgoUtils::Triangle>();
+	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
+	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
+	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -85,6 +94,17 @@ TerrainObject::~TerrainObject()
 void TerrainObject::onEnter()
 {
 	super::onEnter();
+
+	// Should get called right after this is terrain is added to the map
+	TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+}
+
+void TerrainObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+	
+	// This gets built as a deferred step since we may be waiting on masking until this point
+	this->buildCollision();
 }
 
 void TerrainObject::onDeveloperModeEnable()
@@ -100,22 +120,47 @@ void TerrainObject::onDeveloperModeDisable()
 void TerrainObject::initializeListeners()
 {
 	super::initializeListeners();
+
+	// Hollow terrain should listen for other terrain creation to remove any overlapping segments
+	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	{
+		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
+		{
+			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getUserData());
+
+			if (args != nullptr && args->newTerrain != this)
+			{
+				this->maskAgainstOther(args->newTerrain);
+			}
+		}));
+	}
 }
 
 void TerrainObject::setPoints(std::vector<Vec2> points)
 {
 	this->points = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
-	this->triangles = AlgoUtils::trianglefyPolygon(this->points);
+	this->collisionSegments = this->segments;
+	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
+
+	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	{
+		std::vector<Vec2> holes = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::HollowDistance);
+
+		this->infillTriangles = AlgoUtils::trianglefyPolygon(this->points, holes);
+	}
+	else
+	{
+		this->infillTriangles = this->textureTriangles;
+	}
 }
 
-void TerrainObject::rebuildTerrain()
+void TerrainObject::rebuildTerrain(TerrainData terrainData)
 {
 	this->debugNode->removeAllChildren();
 
-	this->buildCollision();
 	this->buildInnerTextures();
-	this->buildInfill(Color4B(11, 30, 39, 255));
+	this->buildInfill(terrainData.infillColor);
 	this->buildSurfaceShadow();
 	this->buildSurfaceTextures();
 }
@@ -125,7 +170,7 @@ void TerrainObject::buildCollision()
 	this->collisionNode->removeAllChildren();
 
 	// Check if physics is disabled for this terrain
-	if (GameUtils::keyExists(this->properties, TerrainObject::MapKeyCollisionDisabled) && this->properties[TerrainObject::MapKeyCollisionDisabled].asBool())
+	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyCollisionDisabled, Value(false)).asBool())
 	{
 		return;
 	}
@@ -136,13 +181,24 @@ void TerrainObject::buildCollision()
 
 	std::string deserializedCollisionName = this->properties.at(SerializableObject::MapKeyName).asString();
 
-	// Create terrain collision as a series of triangles -- the other option is 1 giant EdgePolgyon, but this lacks internal collision
-	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
-		PhysicsBody* physicsBody = PhysicsBody::createPolygon((*it).coords, 3, material);
+		PhysicsBody* physicsBody = PhysicsBody::createEdgeSegment(std::get<0>(*it), std::get<1>(*it), material, 2.0f);
 		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
+
+		this->collisionNode->addChild(collisionObject);
+	}
+
+	for (auto it = this->intersectionPoints.begin(); it != this->intersectionPoints.end(); it++)
+	{
+		const float Radius = 32.0f;
+
+		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
+		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
+		PhysicsBody* physicsBody = PhysicsBody::createCircle(Radius, material, *it);
+		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}
@@ -152,14 +208,14 @@ void TerrainObject::buildInnerTextures()
 {
 	this->infillTexturesNode->removeAllChildren();
 
-	if (this->triangles.empty())
+	if (this->textureTriangles.empty())
 	{
 		return;
 	}
 
 	DrawNode* stencil = DrawNode::create();
 
-	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	for (auto it = this->textureTriangles.begin(); it != this->textureTriangles.end(); it++)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
@@ -191,18 +247,23 @@ void TerrainObject::buildInfill(Color4B infillColor)
 {
 	this->infillNode->removeAllChildren();
 
-	if (this->triangles.empty())
+	if (this->textureTriangles.empty())
 	{
 		return;
 	}
 
-	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::InfillDistance);
+	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	{
+		return;
+	}
+
+	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::InfillDistance);
 	std::vector<AlgoUtils::Triangle> infillTriangles = AlgoUtils::trianglefyPolygon(infillPoints);
 
 	DrawNode* infill = DrawNode::create();
 
 	// Invisible padding up to the original triangle size
-	for (auto it = this->triangles.begin(); it != this->triangles.end(); it++)
+	for (auto it = this->textureTriangles.begin(); it != this->textureTriangles.end(); it++)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
@@ -237,12 +298,12 @@ void TerrainObject::buildSurfaceShadow()
 {
 	this->shadowsNode->removeAllChildren();
 
-	if (this->triangles.empty())
+	if (this->textureTriangles.empty())
 	{
 		return;
 	}
 
-	std::vector<Vec2> shadowPoints = AlgoUtils::insetPolygon(this->triangles, this->segments, TerrainObject::ShadowDistance);
+	std::vector<Vec2> shadowPoints = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::ShadowDistance);
 	std::vector<AlgoUtils::Triangle> shadowTriangles = AlgoUtils::trianglefyPolygon(shadowPoints);
 	std::vector<std::tuple<Vec2, Vec2>> shadowSegments = AlgoUtils::buildSegmentsFromPoints(shadowPoints);
 
@@ -312,10 +373,10 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
 		float currentSegmentLength = source.distance(dest);
-		float angle = AlgoUtils::getSegmentAngle(segment, this->triangles, this->debugNode);
-		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->triangles);
-		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->triangles);
-		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->triangles);
+		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugNode);
+		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
+		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->textureTriangles);
+		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->textureTriangles);
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
 
@@ -491,6 +552,81 @@ void TerrainObject::buildSurfaceTextures()
 
 		previousSegment = &segment;
 	}
+}
+
+void TerrainObject::maskAgainstOther(TerrainObject* other)
+{
+	// Remove all collision boxes that are completely eclipsed
+	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
+		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)
+		{
+			int index = (&segment - &*this->collisionSegments.begin());
+
+			Vec2 pointA = std::get<0>(segment);
+			Vec2 pointB = std::get<1>(segment);
+			bool isEclipsed[2] = { false, false };
+
+			pointA += this->getPosition();
+			pointB += this->getPosition();
+
+			for (auto it = other->textureTriangles.begin(); it != other->textureTriangles.end(); it++)
+			{
+				AlgoUtils::Triangle triangle = *it;
+
+				triangle.coords[0] += other->getPosition();
+				triangle.coords[1] += other->getPosition();
+				triangle.coords[2] += other->getPosition();
+
+				isEclipsed[0] |= AlgoUtils::isPointInTriangle(triangle, pointA);
+				isEclipsed[1] |= AlgoUtils::isPointInTriangle(triangle, pointB);
+
+				if (isEclipsed[0] && isEclipsed[1])
+				{
+					break;
+				}
+			}
+
+			if (isEclipsed[0] && isEclipsed[1])
+			{
+				return true;
+			}
+			else if (isEclipsed[0] || isEclipsed[1])
+			{
+				Vec2 eclipsedPoint = isEclipsed[0] ? pointA : pointB;
+				Vec2 anchorPoint = isEclipsed[0] ? pointB : pointA;
+				std::tuple<Vec2, Vec2> eclipsedSegment = std::tuple<Vec2, Vec2>(eclipsedPoint, anchorPoint);
+
+				for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
+				{
+					cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
+					cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
+
+					p1 += other->getPosition();
+					p2 += other->getPosition();
+					
+					std::tuple<Vec2, Vec2> candidateSegment = std::tuple<Vec2, Vec2>(p1, p2);
+
+					if (AlgoUtils::doSegmentsIntersect(eclipsedSegment, candidateSegment))
+					{
+						Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(eclipsedSegment, candidateSegment) - this->getPosition();
+
+						if (isEclipsed[0])
+						{
+							std::get<0>(this->collisionSegments[index]) = intersectionPoint;	
+						}
+						else
+						{
+							std::get<1>(this->collisionSegments[index]) = intersectionPoint;	
+						}
+
+						this->intersectionPoints.push_back(intersectionPoint);
+					}
+				}
+			}
+
+			return false;
+		}), this->collisionSegments.end()
+	);
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)

@@ -37,7 +37,7 @@ WindClippy::~WindClippy()
 {
 }
 
-Clippy* WindClippy::clone()
+Clippy* WindClippy::innerClone()
 {
 	return WindClippy::create();
 }

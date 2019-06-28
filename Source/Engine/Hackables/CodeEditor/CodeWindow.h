@@ -53,6 +53,7 @@ public:
 	std::string getTitle();
 	void setText(std::string text);
 	void focus();
+	void unfocus();
 
 private:
 	typedef SmartNode super;

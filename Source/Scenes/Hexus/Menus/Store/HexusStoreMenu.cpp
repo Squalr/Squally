@@ -29,6 +29,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/CardStorage.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/ObjectResources.h"
@@ -121,6 +122,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->specialCardsScrollPane = ScrollPane::create(scrollPaneSize, UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 
 	this->backdrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+	this->helpMenuComponent = HelpMenuComponent::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->errorSound = Sound::create(SoundResources::AFX_INTERFACE_ERROR_1_DFMG);
 	this->purchaseSound = Sound::create(SoundResources::Item_Purchase__1_);
@@ -248,7 +250,10 @@ HexusStoreMenu::HexusStoreMenu()
 	this->addChild(this->cardPreview);
 	this->addChild(this->chosenCardsNode);
 	this->addChild(this->backdrop);
+	this->addChild(this->helpMenuComponent);
 	this->addChild(this->confirmationMenu);
+	this->addChild(this->errorSound);
+	this->addChild(this->purchaseSound);
 
 	for (auto it = this->binaryCards.begin(); it != this->binaryCards.end(); it++)
 	{
@@ -302,11 +307,31 @@ void HexusStoreMenu::initializeListeners()
 		GlobalDirector::loadScene(HexusStoreMenu::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->cardPreview->setHelpClickCallback([=](Card* card)
+	{
+		this->backdrop->setVisible(true);
+		this->helpMenuComponent->openMenu(card);
+		GameUtils::focus(this->helpMenuComponent);
+	});
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusStoreMenu::onKeyPressed, this);
+	this->helpMenuComponent->setExitCallback([=]()
+	{
+		this->backdrop->setVisible(false);
+		this->helpMenuComponent->setVisible(false);
+		GameUtils::focus(this);
+	});
 
-	this->addEventListener(keyboardListener);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
+
+		NavigationEvents::navigateBack();
+	});
 
 	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
 	this->decimalButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onDecimalTabClick, this));
@@ -590,7 +615,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
 	
-	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
+	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
 
 	priceLabel->setStringReplacementVariables(priceString);
 
@@ -608,7 +633,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	menuCard->setScale(0.8f);
 
 	cardContainer->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onCardClick, this, cardData, price, cardLimitLabel, countString, limitString));
-	cardContainer->setMouseOverCallback([=](MouseEvents::MouseEventArgs*)
+	cardContainer->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->cardPreview->previewCard(menuCard);
 	});
@@ -700,28 +725,6 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 void HexusStoreMenu::onBackClick()
 {
 	NavigationEvents::navigateBack();
-}
-
-void HexusStoreMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void HexusStoreMenu::onBinaryTabClick()

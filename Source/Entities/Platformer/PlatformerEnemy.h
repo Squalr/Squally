@@ -34,7 +34,9 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
-		int baseSpecial);
+		int baseSpecial,
+		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
+		float ghettoGroundCollisionFix = 0.0f);
 	virtual ~PlatformerEnemy();
 
 	void onDeveloperModeEnable() override;
@@ -44,16 +46,19 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;
+	std::tuple<std::string, float> createDrop(std::string itemKey, float probability);
 
 	std::string battleMapResource;
 	std::vector<std::string> battleMapArgs;
 	std::vector<std::string> combatEntityList;
-	std::map<std::string, float> dropTable = std::map<std::string, float>();
+	std::vector<std::tuple<std::string, float>> dropTable;
+	std::tuple<int, int> goldTable;
 
 private:
 	typedef PlatformerEntity super;
 
 	void buildDropInventory();
+	void buildGoldDrop();
 
 	ClickableNode* resurrectButton;
 	ClickableNode* killButton;

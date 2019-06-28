@@ -175,9 +175,17 @@ void HexusChapterSelectMenu::initializeListeners()
 		GlobalDirector::loadScene(HexusChapterSelectMenu::instance);
 	}));
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		args->handled = true;
 
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(HexusChapterSelectMenu::onKeyPressed, this);
+		NavigationEvents::navigateBack();
+	});
 
 	this->hexusChapterPreviewTraining->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training)); } );
 	this->hexusChapterPreviewBalmerPeaks->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::BalmerPeaks)); } );
@@ -192,8 +200,6 @@ void HexusChapterSelectMenu::initializeListeners()
 	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onDeckManagementClick, this));
 	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onShopClick, this));
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onBackClick, this));
-
-	this->addEventListener(keyboardListener);
 }
 
 void HexusChapterSelectMenu::initializePositions()
@@ -251,28 +257,6 @@ void HexusChapterSelectMenu::loadProgress()
 
 void HexusChapterSelectMenu::onMouseOver(HexusChapterPreview* HexusChapterPreview)
 {
-}
-
-void HexusChapterSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void HexusChapterSelectMenu::onBackClick()

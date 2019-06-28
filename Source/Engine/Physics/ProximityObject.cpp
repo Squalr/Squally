@@ -93,6 +93,7 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
 				},
+				10,
 				3.0f
 			)
 		},
@@ -109,6 +110,7 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				},
+				10,
 				3.0f
 			)
 		},
@@ -182,32 +184,32 @@ NO_OPTIMIZE Vec3 ProximityObject::getVelocity()
 	const volatile float* velocityPtrZ = &velocityCopy.z;
 
 	// Push velocity variables onto FPU stack
-	ASM(push EAX)
-	ASM(push EBX)
-	ASM(push ECX)
-	ASM(push ESI)
-	ASM_MOV_REG_VAR(EAX, velocityPtrX);
-	ASM_MOV_REG_VAR(EBX, velocityPtrY);
-	ASM_MOV_REG_VAR(ECX, velocityPtrZ);
-	ASM_MOV_REG_VAR(ESI, freeMemory);
-	ASM(fld dword ptr[ECX])
-	ASM(fld dword ptr[EBX])
-	ASM(fld dword ptr[EAX])
+	ASM(push ZAX)
+	ASM(push ZBX)
+	ASM(push ZCX)
+	ASM(push ZSI)
+	ASM_MOV_REG_VAR(ZAX, velocityPtrX);
+	ASM_MOV_REG_VAR(ZBX, velocityPtrY);
+	ASM_MOV_REG_VAR(ZCX, velocityPtrZ);
+	ASM_MOV_REG_VAR(ZSI, freeMemory);
+	ASM(fld dword ptr[ZCX])
+	ASM(fld dword ptr[ZBX])
+	ASM(fld dword ptr[ZAX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_VELOCITY);
-	ASM(fstp dword ptr[EAX])
-	ASM(fstp dword ptr[EBX])
-	ASM(fstp dword ptr[ECX])
+	ASM(fstp dword ptr[ZAX])
+	ASM(fstp dword ptr[ZBX])
+	ASM(fstp dword ptr[ZCX])
 	ASM_NOP15();
 	HACKABLE_CODE_END();
-	ASM_MOV_VAR_REG(velocityPtrX, EAX);
-	ASM_MOV_VAR_REG(velocityPtrY, EBX);
-	ASM_MOV_VAR_REG(velocityPtrZ, ECX);
+	ASM_MOV_VAR_REG(velocityPtrX, ZAX);
+	ASM_MOV_VAR_REG(velocityPtrY, ZBX);
+	ASM_MOV_VAR_REG(velocityPtrZ, ZCX);
 
-	ASM(pop ESI)
-	ASM(pop ECX)
-	ASM(pop EBX)
-	ASM(pop EAX)
+	ASM(pop ZSI)
+	ASM(pop ZCX)
+	ASM(pop ZBX)
+	ASM(pop ZAX)
 
 	HACKABLES_STOP_SEARCH();
 
@@ -223,32 +225,32 @@ NO_OPTIMIZE Vec3 ProximityObject::getAcceleration()
 	static const volatile int* freeMemory = new int[128];
 
 	// Push acceleration variables onto FPU stack
-	ASM(push EAX)
-	ASM(push EBX)
-	ASM(push ECX)
-	ASM(push ESI)
-	ASM_MOV_REG_VAR(EAX, accelerationPtrX);
-	ASM_MOV_REG_VAR(EBX, accelerationPtrY);
-	ASM_MOV_REG_VAR(ECX, accelerationPtrZ);
-	ASM_MOV_REG_VAR(ESI, freeMemory);
-	ASM(fld dword ptr[ECX])
-	ASM(fld dword ptr[EBX])
-	ASM(fld dword ptr[EAX])
+	ASM(push ZAX)
+	ASM(push ZBX)
+	ASM(push ZCX)
+	ASM(push ZSI)
+	ASM_MOV_REG_VAR(ZAX, accelerationPtrX);
+	ASM_MOV_REG_VAR(ZBX, accelerationPtrY);
+	ASM_MOV_REG_VAR(ZCX, accelerationPtrZ);
+	ASM_MOV_REG_VAR(ZSI, freeMemory);
+	ASM(fld dword ptr[ZCX])
+	ASM(fld dword ptr[ZBX])
+	ASM(fld dword ptr[ZAX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ACCELERATION);
-	ASM(fstp dword ptr[EAX])
-	ASM(fstp dword ptr[EBX])
-	ASM(fstp dword ptr[ECX])
+	ASM(fstp dword ptr[ZAX])
+	ASM(fstp dword ptr[ZBX])
+	ASM(fstp dword ptr[ZCX])
 	ASM_NOP15();
 	HACKABLE_CODE_END();
-	ASM_MOV_VAR_REG(accelerationPtrX, EAX);
-	ASM_MOV_VAR_REG(accelerationPtrY, EBX);
-	ASM_MOV_VAR_REG(accelerationPtrZ, ECX);
+	ASM_MOV_VAR_REG(accelerationPtrX, ZAX);
+	ASM_MOV_VAR_REG(accelerationPtrY, ZBX);
+	ASM_MOV_VAR_REG(accelerationPtrZ, ZCX);
 
-	ASM(pop ESI)
-	ASM(pop ECX)
-	ASM(pop EBX)
-	ASM(pop EAX)
+	ASM(pop ZSI)
+	ASM(pop ZCX)
+	ASM(pop ZBX)
+	ASM(pop ZAX)
 
 	HACKABLES_STOP_SEARCH();
 

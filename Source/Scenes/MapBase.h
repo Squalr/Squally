@@ -1,7 +1,5 @@
 #pragma once
 
-#include "cocos/base/CCEventListenerKeyboard.h"
-
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
@@ -40,9 +38,8 @@ protected:
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
-	virtual void onHackerModeEnable();
-	virtual void onHackerModeDisable();
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 
 	cocos2d::Node* hudNode;
@@ -58,7 +55,7 @@ protected:
 
 private:
 	typedef GlobalScene super;
-	void toggleHackerMode();
+	void toggleHackerMode(void* userData);
 	void onOptionsExit();
 	void openPauseMenu();
 	void onResumeClick();
@@ -74,6 +71,4 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	cocos2d::Node* mapNode;
-
-	static bool hackerMode;
 };

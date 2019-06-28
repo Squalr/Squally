@@ -159,10 +159,6 @@ void CipherChapterSelectMenu::initializeListeners()
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(CipherChapterSelectMenu::onCloseClick, this));
 	this->backButton->setClickSound(SoundResources::ClickBack1);
 
-	EventListenerKeyboard* keyboardListener = EventListenerKeyboard::create();
-
-	keyboardListener->onKeyPressed = CC_CALLBACK_2(CipherChapterSelectMenu::onKeyPressed, this);
-
 	this->chapterEndianForest->setClickCallback([=]()
 	{
 		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::EndianForest));
@@ -196,7 +192,16 @@ void CipherChapterSelectMenu::initializeListeners()
 		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::VoidStar));
 	});
 
-	this->addEventListener(keyboardListener);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		args->handled = true;
+
+		NavigationEvents::navigateBack();
+	});
 }
 
 void CipherChapterSelectMenu::loadLevels()
@@ -221,28 +226,6 @@ void CipherChapterSelectMenu::loadLevels()
 		if ((*prevIt)->isChapterCleared())
 		{
 			(*it)->enableInteraction();
-		}
-	}
-}
-
-void CipherChapterSelectMenu::onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event)
-{
-	if (!GameUtils::isVisible(this))
-	{
-		return;
-	}
-
-	switch (keyCode)
-	{
-		case EventKeyboard::KeyCode::KEY_ESCAPE:
-		{
-			event->stopPropagation();
-			NavigationEvents::navigateBack();
-			break;
-		}
-		default:
-		{
-			break;
 		}
 	}
 }

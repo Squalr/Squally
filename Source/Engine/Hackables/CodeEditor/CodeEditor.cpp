@@ -203,6 +203,7 @@ CodeEditor::CodeEditor()
 
 	this->scriptList->setAnchorPoint(Vec2(0.0f, 1.0f));
 
+	this->lexicon->setVisible(false);
 	this->setVisible(false);
 
 	this->addChild(this->functionWindow);
@@ -229,9 +230,6 @@ CodeEditor::~CodeEditor()
 void CodeEditor::onEnter()
 {
 	super::onEnter();
-
-	this->lexiconButton->setVisible(false);
-	this->lexicon->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -295,6 +293,18 @@ void CodeEditor::initializeListeners()
 			this->open(args);
 		}
 	}));
+
+	this->lexicon->setCloseCallBack([=]()
+	{
+		GameUtils::focus(this);
+		this->functionWindow->focus();
+	});
+	
+	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->functionWindow->unfocus();
+		this->lexicon->open();
+	});
 }
 
 void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
@@ -318,7 +328,7 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			this->previewNode->addChild(preview);
 		}
 
-		if (hackableCode->getClippy() != nullptr)
+		if (hackableCode->getClippy() != nullptr && hackableCode->getClippy()->getIsEnabled())
 		{
 			Clippy* clippy = hackableCode->getClippy()->clone();
 
@@ -736,6 +746,7 @@ void CodeEditor::onScriptLoad(ScriptEntry* script)
 
 void CodeEditor::onAccept()
 {
+	this->lexicon->close();
 	this->scriptList->saveScripts();
 
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getPointer());
@@ -758,6 +769,7 @@ void CodeEditor::onAccept()
 
 void CodeEditor::onCancel()
 {
+	this->lexicon->close();
 	this->scriptList->saveScripts();
 
 	this->setVisible(false);

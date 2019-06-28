@@ -35,7 +35,7 @@ CavernsTerrainDeserializer::CavernsTerrainDeserializer() : TerrainDeserializer(
 		TerrainResources::Caverns_CavernsBottomRight,
 		TerrainResources::Caverns_CavernsLeft,
 		TerrainResources::Caverns_CavernsRight,
-		Color4B(11, 30, 39, 255)))
+		Color4B(14, 5, 2, 255)))
 {
 }
 

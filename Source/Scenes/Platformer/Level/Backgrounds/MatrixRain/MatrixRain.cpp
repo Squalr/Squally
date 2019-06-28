@@ -34,18 +34,7 @@ MatrixRain::~MatrixRain()
 {
 }
 
-void MatrixRain::onEnter() 
-{
-	super::onEnter();
-
-	this->scheduleUpdate();
-}
-
 void MatrixRain::pause()
 {
 	// Ignore pause
-}
-
-void MatrixRain::setPositions()
-{
 }

@@ -40,7 +40,7 @@ CipherStateVictory::CipherStateVictory() : super(CipherState::StateType::Victory
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
-	this->rewardsMenu = Sprite::create(UIResources::Combat_RewardsMenu);
+	this->rewardsMenu = Sprite::create(UIResources::Combat_VictoryMenu);
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Rewards::create());
 	this->rewardsScroll = ScrollPane::create(Size(480.0f, 640.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->activeCipherState = nullptr;
@@ -86,7 +86,7 @@ void CipherStateVictory::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->okayButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->okayButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->runAction(Sequence::create(
 			DelayTime::create(0.5f),

@@ -6,6 +6,8 @@
 
 using namespace cocos2d;
 
+const int Item::MaxStack = -1;
+
 Item::Item(int stackSize)
 {
 	this->count = 1;

@@ -5,10 +5,12 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Scenes/Platformer/Inventory/Currency/Gold.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/MapResources.h"
@@ -24,23 +26,26 @@ const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
 const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
-	cocos2d::ValueMap& properties,
+	ValueMap& properties,
 	std::string scmlResource,
 	std::string emblemResource,
 	PlatformerCollisionType collisionType, 
-	cocos2d::Size size, 
+	Size size, 
 	float scale,
-	cocos2d::Vec2 collisionOffset,
+	Vec2 collisionOffset,
 	int baseHealth,
-	int baseSpecial)
-	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial)
+	int baseSpecial,
+	Size movementCollisionSize,
+	float ghettoGroundCollisionFix)
+	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix)
 {
 	this->combatEntityList = std::vector<std::string>();
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
-
+	this->dropTable = std::vector<std::tuple<std::string, float>>();
+	this->goldTable = std::tuple<int, int>();
 	this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyName).asString());
 
 	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly1))
@@ -74,6 +79,7 @@ void PlatformerEnemy::onEnter()
 	super::onEnter();
 
 	this->buildDropInventory();
+	this->buildGoldDrop();
 }
 
 void PlatformerEnemy::onEnterTransitionDidFinish()
@@ -117,17 +123,16 @@ void PlatformerEnemy::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->resurrectButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
 		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
-		this->health = std::max(this->getMaxHealth(), 1);
+		this->revive();
 	});
 
-	this->killButton->setMouseClickCallback([=](MouseEvents::MouseEventArgs*)
+	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
-		this->health = 0;
+		this->kill();
 
 		if (!this->mapEvent.empty())
 		{
@@ -167,21 +172,30 @@ void PlatformerEnemy::onObjectStateLoaded()
 
 	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
 	{
-		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
-		this->health = 0;
+		this->kill(true);
 	}
+}
+
+std::tuple<std::string, float> PlatformerEnemy::createDrop(std::string itemKey, float probability)
+{
+	return std::make_tuple(itemKey, probability);
 }
 
 void PlatformerEnemy::buildDropInventory()
 {
 	for (auto it = this->dropTable.begin(); it != this->dropTable.end(); it++)
 	{
-		if (RandomHelper::random_real(0.0f, 1.0f) <= it->second)
+		if (RandomHelper::random_real(0.0f, 1.0f) <= std::get<1>(*it))
 		{
-			PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+			PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(std::get<0>(*it), [=](Item* item)
 			{
 				this->getInventory()->forceInsert(item);
 			}));
 		}
 	}
+}
+
+void PlatformerEnemy::buildGoldDrop()
+{
+	this->getCurrencyInventory()->addCurrency(Gold::getIdentifier(), RandomHelper::random_int(std::get<0>(this->goldTable), std::get<1>(this->goldTable)));
 }

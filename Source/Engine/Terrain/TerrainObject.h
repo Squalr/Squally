@@ -60,9 +60,10 @@ public:
 	static TerrainObject* deserialize(cocos2d::ValueMap& initProperties, TerrainData terrainData);
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
-	void rebuildTerrain();
+	void rebuildTerrain(TerrainData terrainData);
 
 	static std::string MapKeyTypeTexture;
+	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTerrain;
 	static std::string MapKeyCollisionDisabled;
 
@@ -72,6 +73,7 @@ private:
 	virtual ~TerrainObject();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
@@ -80,6 +82,7 @@ private:
 	void buildInfill(cocos2d::Color4B infillColor);
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
+	void maskAgainstOther(TerrainObject* other);
 	bool isTopAngle(float normalAngle);
 	bool isBottomAngle(float normalAngle);
 	bool isLeftAngle(float normalAngle);
@@ -88,8 +91,11 @@ private:
 	TerrainData terrainData;
 
 	std::vector<cocos2d::Vec2> points;
+	std::vector<cocos2d::Vec2> intersectionPoints;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
-	std::vector<AlgoUtils::Triangle> triangles;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
+	std::vector<AlgoUtils::Triangle> textureTriangles;
+	std::vector<AlgoUtils::Triangle> infillTriangles;
 
 	cocos2d::Node* collisionNode;
 	cocos2d::Node* infillTexturesNode;
@@ -105,6 +111,7 @@ private:
 
 	static const float ShadowDistance;
 	static const float InfillDistance;
+	static const float HollowDistance;
 	static const float TopThreshold;
 	static const float BottomThreshold;
 };

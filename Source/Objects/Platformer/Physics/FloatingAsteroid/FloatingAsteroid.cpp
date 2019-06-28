@@ -98,6 +98,7 @@ void FloatingAsteroid::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
+				1,
 				10.0f
 			)
 		},
@@ -131,26 +132,26 @@ NO_OPTIMIZE float FloatingAsteroid::getDensityNonVirtual()
 	volatile float* densityCopyPtr = &densityCopy;
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, densityRetPtr);
-	ASM(movss xmm0, dword ptr [EAX]);
-	ASM_MOV_REG_VAR(EAX, densityCopyPtr);
-	ASM(movss xmm1, dword ptr [EAX]);
-	ASM(pop EAX);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, densityRetPtr);
+	ASM(movss xmm0, dword ptr [ZAX]);
+	ASM_MOV_REG_VAR(ZAX, densityCopyPtr);
+	ASM(movss xmm1, dword ptr [ZAX]);
+	ASM(pop ZAX);
 
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, freeMemoryForUser);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, freeMemoryForUser);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GET_DENSITY);
 	ASM(movss xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-	ASM(pop EAX);
+	ASM(pop ZAX);
 
 	// Copy from xmm0 to the output variable
-	ASM(push EAX);
-	ASM_MOV_REG_VAR(EAX, densityRetPtr);
-	ASM(movss dword ptr [EAX], xmm0);
-	ASM(pop EAX);
+	ASM(push ZAX);
+	ASM_MOV_REG_VAR(ZAX, densityRetPtr);
+	ASM(movss dword ptr [ZAX], xmm0);
+	ASM(pop ZAX);
 
 	HACKABLES_STOP_SEARCH();
 

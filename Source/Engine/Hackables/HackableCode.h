@@ -16,28 +16,28 @@
 #define EXPAND_AND_QUOTE(str) QUOTE(str)
 
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
-	#define EAX rax
-	#define EBX rbx
-	#define ECX rcx
-	#define EDX rdx
-	#define ESI rsi
-	#define EDI rdi
-	#define EBP rbp
-	#define ESP rsp
+	#define ZAX rax
+	#define ZBX rbx
+	#define ZCX rcx
+	#define ZDX rdx
+	#define ZSI rsi
+	#define ZDI rdi
+	#define ZBP rbp
+	#define ZSP rsp
 #else
-	#define EAX eax
-	#define EBX ebx
-	#define ECX ecx
-	#define EDX edx
-	#define ESI esi
-	#define EDI edi
-	#define EBP ebp
-	#define ESP esp
+	#define ZAX eax
+	#define ZBX ebx
+	#define ZCX ecx
+	#define ZDX edx
+	#define ZSI esi
+	#define ZDI edi
+	#define ZBP ebp
+	#define ZSP esp
 #endif
 
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
-	#define NO_OPTIMIZE
+	#define NO_OPTIMIZE #pragma optimize("", off)
 	#define ASM1(asm_literal) \
 		__asm asm_literal
 	#define ASM2(asm_literal1, asm_literal2) \
@@ -86,27 +86,28 @@
 
 // 56 6A * BE DE C0 ED FE 5E 5E
 #define HACKABLE_CODE_BEGIN(func_id) \
-	ASM(push EDI) \
+	ASM(push ZDI) \
 	ASM(push func_id) \
 	ASM(mov edi, 0xFEEDC0DE) \
-	ASM(pop EDI) \
-	ASM(pop EDI)
+	ASM(pop ZDI) \
+	ASM(pop ZDI)
 
 // 56 6A 45 BE DE C0 AD DE 5E 5E
 #define HACKABLE_CODE_END() \
-	ASM(push ESI) \
+	ASM(push ZSI) \
 	ASM(push 69) \
 	ASM(mov esi, 0xDEADC0DE) \
-	ASM(pop ESI) \
-	ASM(pop ESI)
+	ASM(pop ZSI) \
+	ASM(pop ZSI)
 
 // 56 6A 45 BE 5E EA 5E D1 5E 5E
 #define HACKABLES_STOP_SEARCH() \
-	ASM(push EDX) \
+	ASM(push ZDX) \
 	ASM(push 69) \
 	ASM(mov edx, 0x0D15EA5E) \
-	ASM(pop EDX) \
-	ASM(pop EDX)
+	ASM(pop ZDX) \
+	ASM(pop ZDX)
+	#pragma optimize("", on) // This is just for MSVC to re-enable optimizations at the end of the function, harmless on Clang/GCC
 
 #define ASM_NOP1() ASM(nop)
 #define ASM_NOP2() ASM_NOP1() ASM_NOP1()
@@ -147,14 +148,15 @@ public:
 		std::string iconResource;
 		HackablePreview* hackablePreview;
 		std::map<Register, LocalizedString*> registerHints;
+		int requiredEq;
 		float duration;
 		Clippy* clippy;
 
-		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), clippy(nullptr) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration), clippy(nullptr) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, float duration, Clippy* clippy) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), duration(duration), clippy(clippy) { }
+		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), requiredEq(1), clippy(nullptr) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredEq, float duration) :
+			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(nullptr) { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredEq, float duration, Clippy* clippy) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(clippy) { }
 	
 	};
 

@@ -24,7 +24,6 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
 	ClickableTextNode* createButton(LocalizedString* text, std::string iconResource);
 	ClickableTextNode* createComingSoonButton();
 

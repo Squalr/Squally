@@ -106,9 +106,9 @@ void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint3
     }
 
     Vec3 originalCoords = this->referencedObject->getPosition3D();
+    float originalScale = this->referencedObject->getScale();
     Vec3 realCoords = UIBoundObject::getRealCoords(this);
     float realScale = UIBoundObject::getRealScale(this);
-    float originalScale = this->referencedObject->getScale();
 
     this->referencedObject->setPosition3D(realCoords);
     this->referencedObject->setScale(realScale);

@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class SmartAnimationSequenceNode;
 
 class Squally : public PlatformerFriendly
 {
@@ -31,21 +32,29 @@ private:
 	typedef PlatformerFriendly super;
 	Squally(cocos2d::ValueMap& properties);
 	virtual ~Squally();
-
+	
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void update(float) override;
 	void onHackerModeEnable() override;
+	void registerHackables() override;
+	bool isAliveSqually();
 	void saveState();
 	void loadState();
 	void updateWeaponVisual();
+	void runEyeBlinkLoop();
 
 	bool canJump;
 	float noCombatDuration;
 
 	cocos2d::Node* cameraTrackTarget;
+	SmartAnimationSequenceNode* leftEyeController;
+	SmartAnimationSequenceNode* rightEyeController;
 
-	static const float squallyScale;
+	static const float SquallyScale;
+	static const std::string IdentifierIsAlive;
+	static const std::string EventSquallyTrapped;
 };
