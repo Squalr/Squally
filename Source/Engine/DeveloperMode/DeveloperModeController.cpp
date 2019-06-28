@@ -10,7 +10,7 @@
 using namespace cocos2d;
 
 DeveloperModeController* DeveloperModeController::instance = nullptr;
-bool DeveloperModeController::IsDeveloperBuild = true;
+bool DeveloperModeController::IsDeveloperBuild = false;
 
 void DeveloperModeController::registerGlobalNode()
 {
