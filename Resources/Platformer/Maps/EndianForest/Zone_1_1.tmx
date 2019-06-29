@@ -180,22 +180,22 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="676" name="pendulum-blade" type="object" x="5591.98" y="3851.36" width="42.4242" height="364.97">
+  <object id="676" name="pendulum-blade" type="object" x="5427.16" y="3844.19" width="42.4242" height="364.97">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="677" name="mechanical-flail" type="object" x="5419.42" y="4148.49" width="42.4242" height="198.303">
+  <object id="677" name="mechanical-flail" type="object" x="5534.07" y="4044.58" width="42.4242" height="198.303">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="678" name="mechanical-flail" type="object" x="5831.48" y="4099.02" width="42.4242" height="264.303">
+  <object id="678" name="mechanical-flail" type="object" x="5824.31" y="3948.54" width="42.4242" height="264.303">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="679" name="mechanical-flail" type="object" x="6055.1" y="4198.49" width="42.4242" height="166.303">
+  <object id="679" name="mechanical-flail" type="object" x="6090.93" y="4051.59" width="42.4242" height="166.303">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
@@ -216,7 +216,7 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="688" name="mechanical-flail" type="object" x="6287.89" y="4034.62" width="42.4242" height="337.056">
+  <object id="688" name="mechanical-flail" type="object" x="6280.72" y="3884.14" width="42.4242" height="337.056">
    <properties>
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
