@@ -37,6 +37,7 @@
         <file id="11" name="HEAD.png" width="132" height="126" pivot_x="0" pivot_y="1"/>
         <file id="12" name="JAW.png" width="121" height="98" pivot_x="0" pivot_y="1"/>
         <file id="13" name="CROWN.png" width="61" height="85" pivot_x="0" pivot_y="1"/>
+        <file id="14" name="WEAPON_OH_PLACEHOLDER.png" width="40" height="200" pivot_x="0" pivot_y="1"/>
     </folder>
     <entity id="0" name="Entity">
         <animation id="0" name="Idle" length="1000" interval="100">
@@ -59,18 +60,19 @@
                     <object_ref id="14" timeline="16" key="0" z_index="14"/>
                     <object_ref id="15" timeline="15" key="0" z_index="15"/>
                     <object_ref id="16" timeline="17" key="0" z_index="16"/>
-                    <object_ref id="17" timeline="19" key="0" z_index="17"/>
-                    <object_ref id="18" timeline="18" key="0" z_index="18"/>
-                    <object_ref id="19" timeline="20" key="0" z_index="19"/>
-                    <object_ref id="20" timeline="21" key="0" z_index="20"/>
-                    <object_ref id="21" timeline="22" key="0" z_index="21"/>
-                    <object_ref id="22" timeline="1" key="0" z_index="22"/>
-                    <object_ref id="23" timeline="26" key="0" z_index="23"/>
-                    <object_ref id="24" timeline="25" key="0" z_index="24"/>
-                    <object_ref id="25" timeline="23" key="0" z_index="25"/>
-                    <object_ref id="26" timeline="24" key="0" z_index="26"/>
-                    <object_ref id="27" timeline="28" key="0" z_index="27"/>
-                    <object_ref id="28" timeline="27" key="0" z_index="28"/>
+                    <object_ref id="17" timeline="29" key="0" z_index="17"/>
+                    <object_ref id="18" timeline="19" key="0" z_index="18"/>
+                    <object_ref id="19" timeline="18" key="0" z_index="19"/>
+                    <object_ref id="20" timeline="20" key="0" z_index="20"/>
+                    <object_ref id="21" timeline="21" key="0" z_index="21"/>
+                    <object_ref id="22" timeline="22" key="0" z_index="22"/>
+                    <object_ref id="23" timeline="1" key="0" z_index="23"/>
+                    <object_ref id="24" timeline="26" key="0" z_index="24"/>
+                    <object_ref id="25" timeline="25" key="0" z_index="25"/>
+                    <object_ref id="26" timeline="23" key="0" z_index="26"/>
+                    <object_ref id="27" timeline="24" key="0" z_index="27"/>
+                    <object_ref id="28" timeline="28" key="0" z_index="28"/>
+                    <object_ref id="29" timeline="27" key="0" z_index="29"/>
                 </key>
             </mainline>
             <timeline id="0" name="L WING 2">
@@ -133,7 +135,7 @@
                     <object folder="3" file="4" x="63.407553" y="241.36715" angle="0" scale_x="0.8" scale_y="0.8"/>
                 </key>
             </timeline>
-            <timeline id="12" name="WEAPON">
+            <timeline id="12" name="mainhand">
                 <key id="0" spin="0">
                     <object folder="3" file="5" x="201.668423" y="365.714976" angle="310.21547" scale_x="0.8" scale_y="0.8"/>
                 </key>
@@ -216,6 +218,11 @@
             <timeline id="28" name="JAW_000">
                 <key id="0" spin="0">
                     <object folder="2" file="13" x="47.103206" y="182.019324" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="29" name="offhand">
+                <key id="0" spin="0">
+                    <object folder="3" file="14" x="52" y="225" angle="276.546291"/>
                 </key>
             </timeline>
         </animation>

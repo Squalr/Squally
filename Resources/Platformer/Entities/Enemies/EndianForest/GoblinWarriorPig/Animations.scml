@@ -167,7 +167,7 @@
                     <object folder="0" file="9" x="0.660565" y="-0.242653" angle="104.257035" scale_y="0.009671"/>
                 </key>
             </timeline>
-            <timeline id="10" name="WEAPON">
+            <timeline id="10" name="mainhand">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="135.222164" y="0.026877" angle="259.43419" scale_y="0.00057"/>
                 </key>
@@ -197,7 +197,7 @@
                     <object folder="1" file="4" x="-11.56212" y="-3.762572" angle="88.636072" scale_y="0.279344"/>
                 </key>
             </timeline>
-            <timeline id="16" name="SHIELD">
+            <timeline id="16" name="offhand">
                 <key id="0" spin="0">
                     <object folder="0" file="11" x="-33.766927" y="-0.222788" angle="90" scale_y="0.004417"/>
                 </key>
@@ -657,7 +657,7 @@
                     <object folder="0" file="9" x="0.660565" y="-0.242653" angle="104.257035" scale_y="0.009671"/>
                 </key>
             </timeline>
-            <timeline id="10" name="WEAPON">
+            <timeline id="10" name="mainhand">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="135.222164" y="0.026877" angle="259.43419" scale_y="0.00057"/>
                 </key>
@@ -741,7 +741,7 @@
                     <object folder="1" file="4" x="-11.56212" y="-3.762572" angle="88.636072" scale_y="0.279344"/>
                 </key>
             </timeline>
-            <timeline id="16" name="SHIELD">
+            <timeline id="16" name="offhand">
                 <key id="0" spin="0">
                     <object folder="0" file="11" x="-33.766927" y="-0.222788" angle="90" scale_y="0.004417"/>
                 </key>
@@ -1348,7 +1348,7 @@
                     <object folder="0" file="9" x="0.660565" y="-0.242653" angle="104.257035" scale_y="0.009671"/>
                 </key>
             </timeline>
-            <timeline id="10" name="WEAPON">
+            <timeline id="10" name="mainhand">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="135.222164" y="0.026877" angle="259.43419" scale_y="0.00057"/>
                 </key>
@@ -1432,7 +1432,7 @@
                     <object folder="1" file="4" x="-11.56212" y="-3.762572" angle="88.636072" scale_y="0.279344"/>
                 </key>
             </timeline>
-            <timeline id="16" name="SHIELD">
+            <timeline id="16" name="offhand">
                 <key id="0" spin="0">
                     <object folder="0" file="11" x="-33.766927" y="-0.222788" angle="90" scale_y="0.004417"/>
                 </key>
@@ -1600,7 +1600,7 @@
             </timeline>
             <timeline id="27" obj="9" name="bone_009" object_type="bone">
                 <key id="0" spin="-1">
-                    <bone x="-5.325444" y="0" angle="181.432096" scale_y="2.042261"/>
+                    <bone x="-5.325444" angle="181.432096" scale_y="2.042261"/>
                 </key>
                 <key id="1" time="300" spin="0">
                     <bone x="-5.325444" angle="167.477402" scale_y="2.042261"/>
@@ -1612,7 +1612,7 @@
                     <bone x="-5.325444" angle="167.477402" scale_y="2.042261"/>
                 </key>
                 <key id="4" time="600">
-                    <bone x="-5.325444" y="0" angle="167.477402" scale_y="2.042261"/>
+                    <bone x="-5.325444" angle="167.477402" scale_y="2.042261"/>
                 </key>
             </timeline>
             <timeline id="28" obj="10" name="bone_010" object_type="bone">
@@ -1819,7 +1819,7 @@
                     <object folder="0" file="9" x="0.660565" y="-0.242653" angle="104.257035" scale_y="0.009671"/>
                 </key>
             </timeline>
-            <timeline id="10" name="WEAPON">
+            <timeline id="10" name="mainhand">
                 <key id="0" spin="0">
                     <object folder="0" file="10" x="135.222164" y="0.026877" angle="259.43419" scale_y="0.00057"/>
                 </key>
@@ -1849,7 +1849,7 @@
                     <object folder="1" file="4" x="-11.56212" y="-3.762572" angle="88.636072" scale_y="0.279344"/>
                 </key>
             </timeline>
-            <timeline id="16" name="SHIELD">
+            <timeline id="16" name="offhand">
                 <key id="0" spin="0">
                     <object folder="0" file="11" x="-33.766927" y="-0.222788" angle="90" scale_y="0.004417"/>
                 </key>
