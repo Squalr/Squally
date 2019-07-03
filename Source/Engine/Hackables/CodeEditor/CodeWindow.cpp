@@ -17,7 +17,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/StrUtils.h"
 
-#include "Strings/Generics/Newline.h"
+#include "Strings/Common/Newline.h"
 
 #include "Resources/UIResources.h"
 
@@ -258,7 +258,7 @@ void CodeWindow::insertNewline()
 	this->lineNumberElements.push_back(lineNumberNewLine);
 	this->lineNumbers->pushBackElement(lineNumberNewLine);
 
-	LocalizedString* text = Strings::Generics_Newline::create();
+	LocalizedString* text = Strings::Common_Newline::create();
 	RichElement* element = RichElementNewLine::create(0, CodeWindow::DefaultColor, 0xFF);
 
 	text->retain();

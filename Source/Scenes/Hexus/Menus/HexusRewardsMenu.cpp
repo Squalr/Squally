@@ -22,7 +22,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Return.h"
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
@@ -50,7 +50,7 @@ HexusRewardsMenu::HexusRewardsMenu()
 	this->goldSpriteLesser = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
 	this->goldSpriteChapterClear = Sprite::create(ObjectResources::Items_Consumables_GOLD_4);
 	this->goldString = ConstantString::create();
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 	this->rewardSound = Sound::create(SoundResources::Hexus_Reward);
 
 	this->goldLabel->setStringReplacementVariables(this->goldString);

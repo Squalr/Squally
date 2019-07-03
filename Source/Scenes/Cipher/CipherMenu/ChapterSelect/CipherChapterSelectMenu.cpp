@@ -20,7 +20,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Cipher/SelectAChapter.h"
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 #include "Strings/Menus/Back.h"
 
 using namespace cocos2d;

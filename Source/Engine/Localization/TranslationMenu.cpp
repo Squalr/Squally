@@ -17,7 +17,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 #include "Strings/Menus/Cancel.h"
 #include "Strings/Menus/Submit.h"
 #include "Strings/Menus/TranslationEditor/CurrentTranslation.h"
@@ -63,9 +63,9 @@ TranslationMenu::TranslationMenu()
 	this->menuBackground = Sprite::create(UIResources::Menus_TranslateMenu_TranslateMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_TranslationEditor_TranslationEditor::create());
 	this->englishTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_OriginalTextInEnglish::create());
-	this->englishTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create(), TranslationMenu::PreviousTranslationSize);
+	this->englishTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create(), TranslationMenu::PreviousTranslationSize);
 	this->nativeTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_CurrentTranslation::create());
-	this->oldTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create(), TranslationMenu::PreviousTranslationSize);
+	this->oldTranslation = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create(), TranslationMenu::PreviousTranslationSize);
 	this->newTranslationTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_TranslationEditor_NewTranslation::create());
 	this->newTranslation = UICCTextField::create("", this->oldTranslation->getFont(), this->oldTranslation->getFontSize());
 

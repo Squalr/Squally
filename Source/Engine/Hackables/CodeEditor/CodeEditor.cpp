@@ -27,9 +27,9 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/Constant.h"
-#include "Strings/Generics/Empty.h"
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/Constant.h"
+#include "Strings/Common/Empty.h"
+#include "Strings/Common/XOverY.h"
 #include "Strings/Hacking/CodeEditor/Address.h"
 #include "Strings/Hacking/CodeEditor/AllocationEditor.h"
 #include "Strings/Hacking/CodeEditor/Assembler.h"
@@ -616,7 +616,7 @@ void CodeEditor::compile(std::string assemblyText)
 	{
 		bool isByteOverflow = compileResult.byteCount > this->activeHackableCode->getOriginalLength();
 
-		LocalizedString* bytesUsed = Strings::Generics_XOverY::create();
+		LocalizedString* bytesUsed = Strings::Common_XOverY::create();
 
 		bytesUsed->setStringReplacementVariables(
 		{
@@ -637,7 +637,7 @@ void CodeEditor::compile(std::string assemblyText)
 		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
 		byteCountLabel->setTextColor(CodeEditor::HeaderColor);
 
-		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
+		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
 
 		bytesUsedLabel->setStringReplacementVariables
 		({
