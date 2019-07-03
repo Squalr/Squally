@@ -11,13 +11,13 @@
 
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
 RegisterMarker::RegisterMarker() : super(ValueMap())
 {
-	this->registerString = Strings::Generics_Constant::create();
+	this->registerString = Strings::Common_Constant::create();
 	this->registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->registerString);
 
 	this->registerLabel->setTextColor(Color4B::YELLOW);

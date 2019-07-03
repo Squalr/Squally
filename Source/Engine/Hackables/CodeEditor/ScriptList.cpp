@@ -10,7 +10,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Save/SaveManager.h"
 
-#include "Strings/Generics/Count.h"
+#include "Strings/Common/Count.h"
 #include "Strings/Hacking/CodeEditor/CreateNewScript.h"
 #include "Strings/Hacking/CodeEditor/MyNewScript.h"
 #include "Strings/Hacking/CodeEditor/YourScripts.h"
@@ -97,7 +97,7 @@ void ScriptList::addNewScript()
 
 	if (this->scripts.size() < maxScripts)
 	{
-		LocalizedString* newScriptName = Strings::Generics_Count::create();
+		LocalizedString* newScriptName = Strings::Common_Count::create();
 
 		newScriptName->setStringReplacementVariables(
 		{

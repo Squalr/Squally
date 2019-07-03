@@ -15,7 +15,7 @@
 #include "Resources/StringResources.h"
 
 #include "Strings/Cutscenes/PressEscToSkip.h"
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
@@ -45,13 +45,13 @@ RobotDoctor::RobotDoctor(RobotDoctorScene robotDoctorScene)
 		case RobotDoctorScene::Intro:
 		{
 			this->robot = Sprite::create(CutsceneResources::RobotDoctor_Doctor);
-			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctor, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctor, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 		case RobotDoctorScene::Singularity:
 		{
 			this->robot = Sprite::create(CutsceneResources::RobotDoctor_DoctorEvil);
-			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+			//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneRobotDoctorSingularity, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 			break;
 		}
 	}

@@ -19,6 +19,7 @@
 #include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeam.h"
 #include "Objects/Platformer/Physics/Wind/Wind.h"
 #include "Objects/Platformer/Physics/WoodenCrate/WoodenCrate.h"
+#include "Objects/Platformer/Puzzles/CrystalPuzzle/CrystalPuzzle.h"
 #include "Objects/Platformer/Spawns/CombatSpawn.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"
 #include "Objects/Platformer/Switches/Trigger.h"

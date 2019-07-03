@@ -9,7 +9,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

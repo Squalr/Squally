@@ -28,8 +28,9 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer()
 {
 	this->deserializers = std::map<std::string, std::function<SerializableObject*(ValueMap)>>();
 
-	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (SerializableObject*)CombatSpawn::create(properties); };
 	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (SerializableObject*)CastleDoor::create(properties); };
+	this->deserializers[CrystalPuzzle::MapKeyCrystalPuzzle] = [=](ValueMap properties) { return (SerializableObject*)CrystalPuzzle::create(properties); };
+	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (SerializableObject*)CombatSpawn::create(properties); };
 	this->deserializers[CastleDoorFront::MapKeyCastleDoorFront] = [=](ValueMap properties) { return (SerializableObject*)CastleDoorFront::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (SerializableObject*)Catapult::create(properties); };
 	this->deserializers[Chest::MapKeyChest] = [=](ValueMap properties) { return (SerializableObject*)Chest::create(properties); };

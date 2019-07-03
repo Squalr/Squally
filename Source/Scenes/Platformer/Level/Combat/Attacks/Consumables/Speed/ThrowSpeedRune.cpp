@@ -10,7 +10,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 
 using namespace cocos2d;
 
@@ -41,7 +41,7 @@ PlatformerAttack* ThrowSpeedRune::clone()
 
 LocalizedString* ThrowSpeedRune::getString()
 {
-	return Strings::Generics_Empty::create();
+	return Strings::Common_Empty::create();
 }
 
 std::string ThrowSpeedRune::getAttackAnimation()

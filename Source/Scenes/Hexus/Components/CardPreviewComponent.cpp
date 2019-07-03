@@ -13,7 +13,7 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 #include "Strings/Hexus/BinLabel.h"
 #include "Strings/Hexus/CardDescriptions/Absorb.h"
 #include "Strings/Hexus/CardDescriptions/Addition.h"
