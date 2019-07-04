@@ -8,7 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ PlatformerAttack* TorchThrow::clone()
 
 LocalizedString* TorchThrow::getString()
 {
-	return Strings::Generics_Empty::create();
+	return Strings::Common_Empty::create();
 }
 
 std::string TorchThrow::getAttackAnimation()

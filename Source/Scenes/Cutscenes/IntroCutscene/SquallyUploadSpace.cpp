@@ -14,7 +14,7 @@
 #include "Resources/StringResources.h"
 
 #include "Strings/Cutscenes/PressEscToSkip.h"
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
@@ -37,7 +37,7 @@ SquallyUploadSpace::SquallyUploadSpace()
 	this->mars = Sprite::create(CutsceneResources::IntroSpace_Mars);
 	this->beam = Node::create();
 	this->satellite = Sprite::create(CutsceneResources::SquallyUploadSpace_Satellite);
-	//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	//this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneSquallyUploadSpace, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 
 	this->dialoguePlate = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, 256.0f);
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);

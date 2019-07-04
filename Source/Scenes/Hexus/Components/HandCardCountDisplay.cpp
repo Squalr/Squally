@@ -12,7 +12,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
@@ -31,7 +31,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->playerHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->playerHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->playerHandCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->playerHandCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 	this->playerHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->playerHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 
@@ -39,7 +39,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->enemyHandCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
 	this->enemyHandCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->enemyHandCardCountFrame->setContentSize(Size(80.0f, 32.0f));
-	this->enemyHandCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->enemyHandCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 	this->enemyHandCardCountText->setAlignment(TextHAlignment::LEFT);
 	this->enemyHandCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
 

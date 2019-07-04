@@ -10,9 +10,9 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Generics/Constant.h"
-#include "Strings/Generics/Empty.h"
-#include "Strings/Generics/PlusConstant.h"
+#include "Strings/Common/Constant.h"
+#include "Strings/Common/Empty.h"
+#include "Strings/Common/PlusConstant.h"
 
 using namespace cocos2d;
 
@@ -33,7 +33,7 @@ Monkey::Monkey(ValueMap& initProperties) : super(initProperties)
 	this->spriteNode->addChild(Sprite::create(ObjectResources::Collectables_Animals_MONKEY));
 
 	this->valueString = ConstantString::create();
-	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
+	this->valueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Constant::create());
 
 	this->valueString->setString(std::to_string(Monkey::lockCountDown));
 
