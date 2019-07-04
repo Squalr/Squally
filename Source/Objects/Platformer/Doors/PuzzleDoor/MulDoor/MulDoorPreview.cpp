@@ -1,4 +1,4 @@
-#include "CrystalPuzzleIncrementPreview.h"
+#include "MulDoorPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -12,16 +12,16 @@
 
 using namespace cocos2d;
 
-CrystalPuzzleIncrementPreview* CrystalPuzzleIncrementPreview::create()
+MulDoorPreview* MulDoorPreview::create()
 {
-	CrystalPuzzleIncrementPreview* instance = new CrystalPuzzleIncrementPreview();
+	MulDoorPreview* instance = new MulDoorPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CrystalPuzzleIncrementPreview::CrystalPuzzleIncrementPreview()
+MulDoorPreview::MulDoorPreview()
 {
 	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
 
@@ -35,12 +35,12 @@ CrystalPuzzleIncrementPreview::CrystalPuzzleIncrementPreview()
 	this->assemblyTextNode->addChild(this->ecxAnimationCount);
 }
 
-HackablePreview* CrystalPuzzleIncrementPreview::clone()
+HackablePreview* MulDoorPreview::clone()
 {
-	return CrystalPuzzleIncrementPreview::create();
+	return MulDoorPreview::create();
 }
 
-void CrystalPuzzleIncrementPreview::onEnter()
+void MulDoorPreview::onEnter()
 {
 	super::onEnter();
 
@@ -55,7 +55,7 @@ void CrystalPuzzleIncrementPreview::onEnter()
 	};
 }
 
-void CrystalPuzzleIncrementPreview::initializePositions()
+void MulDoorPreview::initializePositions()
 {
 	super::initializePositions();
 

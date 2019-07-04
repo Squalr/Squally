@@ -1,4 +1,4 @@
-#include "CrystalPuzzleGenericPreview.h"
+#include "PuzzleDoorGenericPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -10,16 +10,16 @@
 
 using namespace cocos2d;
 
-CrystalPuzzleGenericPreview* CrystalPuzzleGenericPreview::create()
+PuzzleDoorGenericPreview* PuzzleDoorGenericPreview::create()
 {
-	CrystalPuzzleGenericPreview* instance = new CrystalPuzzleGenericPreview();
+	PuzzleDoorGenericPreview* instance = new PuzzleDoorGenericPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CrystalPuzzleGenericPreview::CrystalPuzzleGenericPreview()
+PuzzleDoorGenericPreview::PuzzleDoorGenericPreview()
 {
 	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
 
@@ -28,12 +28,12 @@ CrystalPuzzleGenericPreview::CrystalPuzzleGenericPreview()
 	this->previewNode->addChild(this->previewSpikedLog);
 }
 
-HackablePreview* CrystalPuzzleGenericPreview::clone()
+HackablePreview* PuzzleDoorGenericPreview::clone()
 {
-	return CrystalPuzzleGenericPreview::create();
+	return PuzzleDoorGenericPreview::create();
 }
 
-void CrystalPuzzleGenericPreview::onEnter()
+void PuzzleDoorGenericPreview::onEnter()
 {
 	super::onEnter();
 
@@ -41,7 +41,7 @@ void CrystalPuzzleGenericPreview::onEnter()
 	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.08f, 0.0f);
 }
 
-void CrystalPuzzleGenericPreview::initializePositions()
+void PuzzleDoorGenericPreview::initializePositions()
 {
 	super::initializePositions();
 }

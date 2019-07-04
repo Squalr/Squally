@@ -29,7 +29,6 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer()
 	this->deserializers = std::map<std::string, std::function<SerializableObject*(ValueMap)>>();
 
 	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (SerializableObject*)CastleDoor::create(properties); };
-	this->deserializers[CrystalPuzzle::MapKeyCrystalPuzzle] = [=](ValueMap properties) { return (SerializableObject*)CrystalPuzzle::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (SerializableObject*)CombatSpawn::create(properties); };
 	this->deserializers[CastleDoorFront::MapKeyCastleDoorFront] = [=](ValueMap properties) { return (SerializableObject*)CastleDoorFront::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (SerializableObject*)Catapult::create(properties); };
@@ -47,21 +46,22 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer()
 	this->deserializers[HeavenHug::MapKeyHeavenHug] = [=](ValueMap properties) { return (SerializableObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (SerializableObject*)Laser::create(properties); };
 	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (SerializableObject*)MetalSpikes::create(properties); };
-	this->deserializers[WoodenSpikes::MapKeyWoodenSpikes] = [=](ValueMap properties) { return (SerializableObject*)WoodenSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKeyMechanicalFlail] = [=](ValueMap properties) { return (SerializableObject*)MechanicalFlail::create(properties); };
+	this->deserializers[Monkey::MapKeyMonkey] = [=](ValueMap properties) { return (SerializableObject*)Monkey::create(properties); };
+	this->deserializers[MulDoor::MapKeyMulDoor] = [=](ValueMap properties) { return (SerializableObject*)MulDoor::create(properties); };
 	this->deserializers[PendulumBlade::MapKeyPendulumBlade] = [=](ValueMap properties) { return (SerializableObject*)PendulumBlade::create(properties); };
 	this->deserializers[SpikedBall::MapKeySpikedBall] = [=](ValueMap properties) { return (SerializableObject*)SpikedBall::create(properties); };
 	this->deserializers[SpikeLog::MapKeySpikeLog] = [=](ValueMap properties) { return (SerializableObject*)SpikeLog::create(properties); };
 	this->deserializers[SquallyShip::MapKeySquallyShip] = [=](ValueMap properties) { return (SerializableObject*)SquallyShip::create(properties); };
-	this->deserializers[Monkey::MapKeyMonkey] = [=](ValueMap properties) { return (SerializableObject*)Monkey::create(properties); };
 	this->deserializers[StoneButton::MapKeyStoneButton] = [=](ValueMap properties) { return (SerializableObject*)StoneButton::create(properties); };
 	this->deserializers[Tent::MapKeyTent] = [=](ValueMap properties) { return (SerializableObject*)Tent::create(properties); };
 	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (SerializableObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (SerializableObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (SerializableObject*)Trigger::create(properties); };
 	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (SerializableObject*)Water::create(properties); };
-	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (SerializableObject*)WoodenCrate::create(properties); };
 	this->deserializers[Wind::MapKeyWind] = [=](ValueMap properties) { return (SerializableObject*)Wind::create(properties); };
+	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (SerializableObject*)WoodenCrate::create(properties); };
+	this->deserializers[WoodenSpikes::MapKeyWoodenSpikes] = [=](ValueMap properties) { return (SerializableObject*)WoodenSpikes::create(properties); };
 }
 
 PlatformerObjectDeserializer::~PlatformerObjectDeserializer()

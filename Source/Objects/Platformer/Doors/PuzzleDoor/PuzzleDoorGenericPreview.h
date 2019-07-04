@@ -7,25 +7,22 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
-class CrystalPuzzleIncrementPreview : public HackablePreview
+class PuzzleDoorGenericPreview : public HackablePreview
 {
 public:
-	static CrystalPuzzleIncrementPreview* create();
+	static PuzzleDoorGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	CrystalPuzzleIncrementPreview();
-	virtual ~CrystalPuzzleIncrementPreview() = default;
+	PuzzleDoorGenericPreview();
+	virtual ~PuzzleDoorGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
 
 	SmartAnimationSequenceNode* previewSpikedLog;
-	LocalizedLabel* ecxAnimationCount;
-	ConstantString* countString;
 };
