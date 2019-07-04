@@ -116,7 +116,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="690" name="crystal-puzzle" type="object" x="1569.79" y="4514.6" width="550" height="335.521"/>
+  <object id="690" name="mul-door" type="object" x="1454.02" y="4070.29" width="696" height="775"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
