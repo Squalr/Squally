@@ -16,7 +16,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 #include "Strings/Hexus/BinLabel.h"
 #include "Strings/Hexus/CardDescriptions/Absorb.h"
 #include "Strings/Hexus/CardDescriptions/Addition.h"
@@ -223,7 +223,7 @@ void CardPreview::previewCard(Card* card)
 			}
 			default:
 			{
-				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
+				LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 
 				specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 				specialLabel->setTextColor(Card::specialColor);

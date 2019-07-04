@@ -18,7 +18,7 @@
 #include "Events/PointerTraceEvents.h"
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 #include "Strings/PointerTrace/Assembly/Add.h"
 #include "Strings/PointerTrace/Assembly/Dec.h"
 #include "Strings/PointerTrace/Assembly/Div.h"
@@ -45,7 +45,7 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 	this->shadow = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_Shadow);
 	this->crystalContainerNode = Node::create();
 	this->crystalNode = Node::create();
-	this->assemblyString = Strings::Generics_Constant::create();
+	this->assemblyString = Strings::Common_Constant::create();
 	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
 	this->shineFx = SmartAnimationSequenceNode::create();
 

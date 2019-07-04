@@ -44,8 +44,8 @@
 #include "Strings/Hexus/StoreLabelDecimal.h"
 #include "Strings/Hexus/StoreLabelHex.h"
 #include "Strings/Hexus/StoreLabelSpecial.h"
-#include "Strings/Generics/Constant.h"
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/Constant.h"
+#include "Strings/Common/XOverY.h"
 
 using namespace cocos2d;
 
@@ -79,7 +79,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->goldPanel = Sprite::create(HexusResources::StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
 	this->goldString = ConstantString::create();
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Constant::create());
 
 	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
@@ -603,7 +603,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 
 	ConstantString* countString = ConstantString::create();
 	ConstantString* limitString = ConstantString::create();
-	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_XOverY::create());
+	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_XOverY::create());
 
 	cardLimitLabel->setStringReplacementVariables({ countString, limitString });
 	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -613,7 +613,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	
 	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
 

@@ -10,7 +10,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/NativeLanguage.h"
+#include "Strings/Common/NativeLanguage.h"
 #include "Engine/Localization/Localization.h"
 
 using namespace cocos2d;
@@ -31,7 +31,7 @@ LanguageTab::LanguageTab()
 	for (int index = (int)LanguageType::FIRST_LANGUAGE; index < (int)LanguageType::LAST_LANGUAGE; index++)
 	{
 		LanguageType language = (LanguageType)index;
-		LocalizedString* nextString = Strings::Generics_NativeLanguage::create();
+		LocalizedString* nextString = Strings::Common_NativeLanguage::create();
 
 		nextString->setOverrideLanguage(language);
 

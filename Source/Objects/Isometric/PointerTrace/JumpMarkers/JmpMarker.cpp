@@ -19,7 +19,7 @@
 
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 #include "Strings/PointerTrace/Assembly/Jmp.h"
 #include "Strings/PointerTrace/Assembly/OffsetNegative.h"
 #include "Strings/PointerTrace/Assembly/OffsetPositive.h"
@@ -32,7 +32,7 @@ const std::string JmpMarker::MapKeyOffset = "offset";
 JmpMarker::JmpMarker(ValueMap& initProperties) : super(initProperties)
 {
 	this->markerNode = Node::create();
-	this->assemblyString = Strings::Generics_Constant::create();
+	this->assemblyString = Strings::Common_Constant::create();
 	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
 	this->offset = GameUtils::getKeyOrDefault(initProperties, JmpMarker::MapKeyOffset, Value(0)).asInt();
 	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
