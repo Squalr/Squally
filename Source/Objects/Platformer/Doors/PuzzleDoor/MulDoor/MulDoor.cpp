@@ -58,7 +58,7 @@ void MulDoor::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Puzzles_Crystal_PuzzleIncrement_RegisterEcx::create() },
 				},
 				1,
-				12.0f,
+				14.0f,
 				nullptr,
 				"imul rcx, 1" // The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs
 			)
