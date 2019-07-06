@@ -58,7 +58,9 @@ void MulDoor::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Puzzles_Crystal_PuzzleIncrement_RegisterEcx::create() },
 				},
 				1,
-				20.0f
+				12.0f,
+				nullptr,
+				"imul rcx, 1" // The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs
 			)
 		},
 	};
@@ -72,12 +74,14 @@ void MulDoor::registerHackables()
 	}
 }
 
-int MulDoor::onIncrement(int puzzleIndex)
+void MulDoor::runOperation(int puzzleIndex)
 {
-	return this->mulDoorTransform(puzzleIndex);
+	this->setRealValue(puzzleIndex * 2);
+
+	this->mulDoorTransform(puzzleIndex);
 }
 
-NO_OPTIMIZE int MulDoor::mulDoorTransform(int puzzleIndex)
+NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 {
 	int transform = puzzleIndex;
 
@@ -85,14 +89,14 @@ NO_OPTIMIZE int MulDoor::mulDoorTransform(int puzzleIndex)
 	ASM_MOV_REG_VAR(ZCX, transform);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(inc ZCX)
+	ASM(imul ZCX, 1)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(transform, ZCX);
 	ASM(pop ZCX);
 
-	HACKABLES_STOP_SEARCH();
+	this->setHackValue(transform);
 
-	return transform;
+	HACKABLES_STOP_SEARCH();
 }

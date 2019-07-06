@@ -151,12 +151,15 @@ public:
 		int requiredEq;
 		float duration;
 		Clippy* clippy;
+		std::string asmOverride;
 
 		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), requiredEq(1), clippy(nullptr) { }
 		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredEq, float duration) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(nullptr) { }
+			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(nullptr), asmOverride("") { }
 		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredEq, float duration, Clippy* clippy) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(clippy) { }
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(clippy), asmOverride("") { }
+		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int requiredEq, float duration, Clippy* clippy, std::string asmOverride) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), requiredEq(requiredEq), duration(duration), clippy(clippy), asmOverride(asmOverride) { }
 	
 	};
 
