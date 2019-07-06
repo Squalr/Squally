@@ -191,6 +191,23 @@ bool StrUtils::isHexNumber(std::string str)
 	return false;
 }
 
+int StrUtils::HexToInt(std::string str)
+{
+	if (StrUtils::startsWith(str, "0x", false))
+	{
+		str = str.substr(2, str.size() - 2);
+	}
+
+    int result;
+    std::stringstream stream;
+
+	stream << str;
+
+    stream >> std::hex >> result;
+    
+	return result;
+}
+
 bool StrUtils::startsWith(std::string str, std::string prefix, bool ignoreCase)
 {
 	if (str.size() >= prefix.size())
@@ -253,11 +270,23 @@ bool StrUtils::endsWith(std::string str, std::string suffix, bool ignoreCase)
 
 bool StrUtils::isRegexMatch(const std::string str, const std::string regex)
 {
-	    std::regex re = std::regex(regex);
-		
-		std::smatch match;
+	std::regex re = std::regex(regex);
+	std::smatch match;
 
 	if (std::regex_match(str, match, re))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+bool StrUtils::isRegexSubMatch(const std::string str, const std::string regex)
+{
+	std::regex re = std::regex(regex);
+	std::smatch match;
+
+	if (std::regex_search(str, match, re))
 	{
 		return true;
 	}

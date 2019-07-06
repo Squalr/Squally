@@ -25,10 +25,10 @@ protected:
 	virtual ~MulDoor();
 
 	void registerHackables() override;
-	int onIncrement(int puzzleIndex) override;
+	void runOperation(int puzzleIndex) override;
 
 private:
 	typedef PuzzleDoorBase super;
 	void showActiveHackableCrystal();
-	int mulDoorTransform(int puzzleIndex);
+	void mulDoorTransform(int puzzleIndex);
 };

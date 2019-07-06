@@ -25,14 +25,21 @@ protected:
 	void initializePositions() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
-	virtual int onIncrement(int puzzleIndex) = 0;
+	virtual void runOperation(int puzzleIndex) = 0;
+	void setRealValue(int value);
+	void setHackValue(int value);
 
 private:
 	typedef HackableObject super;
 
 	cocos2d::Sprite* back;
+	cocos2d::Sprite* lightLeft;
+	cocos2d::Sprite* lightRight;
 	cocos2d::Sprite* door;
 	cocos2d::Sprite* front;
+	std::vector<cocos2d::Sprite*> runes;
+	std::vector<cocos2d::Sprite*> runesPassed;
+	std::vector<cocos2d::Sprite*> runesFailed;
 	ConstantString* indexString;
 	ConstantString* truthString;
 	ConstantString* hackableString;
@@ -40,6 +47,14 @@ private:
 	LocalizedLabel* truthLabel;
 	LocalizedLabel* hackableLabel;
 
+	bool firstRun;
 	bool isUnlocked;
+	int passedCount;
 	int puzzleIndex;
+	int realValue;
+	int hackValue;
+
+	static const int RuneCount;
+	static const cocos2d::Color4B PassColor;
+	static const cocos2d::Color4B FailColor;
 };
