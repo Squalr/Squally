@@ -3,12 +3,14 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Doors/PuzzleDoor/PuzzleDoorGenericPreview.h"
@@ -25,6 +27,7 @@ using namespace cocos2d;
 const int PuzzleDoorBase::RuneCount = 4;
 const Color4B PuzzleDoorBase::PassColor = Color4B(70, 144, 75, 255);
 const Color4B PuzzleDoorBase::FailColor = Color4B(144, 70, 70, 255);
+const Vec2 PuzzleDoorBase::Offset = Vec2(0.0f, -160.0f);
 
 PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
 {
@@ -50,6 +53,12 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
 		this->runesPassed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneGreen));
 		this->runesFailed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneRed));
 	}
+
+	DrawNode* doorStencil = DrawNode::create();
+
+	doorStencil->drawSolidRect(Vec2(-312.0f / 2.0f, -540.0f / 2.0f - 112.0f), Vec2(312.0f / 2.0f, 540.0f / 2.0f - 112.0f), Color4F::GREEN);
+
+	this->doorClip = SmartClippingNode::create(this->door, doorStencil);
 
 	this->indexLabel->enableOutline(Color4B::BLACK, 4);
 	this->truthLabel->enableOutline(Color4B::BLACK, 4);
@@ -80,7 +89,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
 	this->addChild(this->back);
 	this->addChild(this->lightLeft);
 	this->addChild(this->lightRight);
-	this->addChild(this->door);
+	this->addChild(this->doorClip);
 	this->addChild(this->front);
 	this->addChild(this->indexLabel);
 	this->addChild(this->truthLabel);
@@ -116,16 +125,16 @@ void PuzzleDoorBase::onEnter()
 					else
 					{
 						this->puzzleIndex = MathUtils::wrappingNormalize(this->puzzleIndex + 1, 0, 3);
+					}
 						
-						if (this->puzzleIndex == 0)
-						{
-							this->passedCount = 0;
+					if (this->puzzleIndex == 0)
+					{
+						this->passedCount = 0;
 
-							for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
-							{
-								this->runesPassed[index]->runAction(FadeTo::create(0.25f, 0));
-								this->runesFailed[index]->runAction(FadeTo::create(0.25f, 0));
-							}
+						for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
+						{
+							this->runesPassed[index]->runAction(FadeTo::create(0.25f, 0));
+							this->runesFailed[index]->runAction(FadeTo::create(0.25f, 0));
 						}
 					}
 
@@ -163,26 +172,29 @@ void PuzzleDoorBase::onEnter()
 			DelayTime::create(1.5f),
 			CallFunc::create([=]()
 			{
-				this->runOperation(this->puzzleIndex);
+				if (!this->isUnlocked)
+				{
+					this->runOperation(this->puzzleIndex);
 
-				if (this->realValue == this->hackValue)
-				{
-					this->passedCount++;
-					this->hackableLabel->setTextColor(PuzzleDoorBase::PassColor);
-					this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 255));
-				}
-				else
-				{
-					this->hackableLabel->setTextColor(PuzzleDoorBase::FailColor);
-					this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 255));
+					if (this->realValue == this->hackValue)
+					{
+						this->passedCount++;
+						this->hackableLabel->setTextColor(PuzzleDoorBase::PassColor);
+						this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 255));
+					}
+					else
+					{
+						this->hackableLabel->setTextColor(PuzzleDoorBase::FailColor);
+						this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 255));
+					}
 				}
 			}),
 			DelayTime::create(1.5f),
 			CallFunc::create([=]()
 			{
-				if (this->passedCount == PuzzleDoorBase::RuneCount)
+				if (!this->isUnlocked && this->passedCount == PuzzleDoorBase::RuneCount)
 				{
-					this->isUnlocked = true;
+					this->unlock();
 				}
 			}),
 			nullptr
@@ -194,22 +206,20 @@ void PuzzleDoorBase::initializePositions()
 {
 	super::initializePositions();
 
-	const Vec2 offset = Vec2(0.0f, -160.0f);
-
-	this->back->setPosition(Vec2(-4.0f, 128.0f) + offset);
-	this->door->setPosition(Vec2(0.0f, 64.0f) + offset);
-	this->front->setPosition(Vec2(0.0f, 144.0f) + offset);
-	this->indexLabel->setPosition(Vec2(0.0f, 464.0f) + offset);
-	this->truthLabel->setPosition(Vec2(284.0f, 104.0f) + offset);
-	this->hackableLabel->setPosition(Vec2(-288.0f, 104.0f) + offset);
+	this->back->setPosition(Vec2(-4.0f, 128.0f) + PuzzleDoorBase::Offset);
+	this->door->setPosition(Vec2(0.0f, 64.0f) + PuzzleDoorBase::Offset);
+	this->front->setPosition(Vec2(0.0f, 144.0f) + PuzzleDoorBase::Offset);
+	this->indexLabel->setPosition(Vec2(0.0f, 464.0f) + PuzzleDoorBase::Offset);
+	this->truthLabel->setPosition(Vec2(284.0f, 104.0f) + PuzzleDoorBase::Offset);
+	this->hackableLabel->setPosition(Vec2(-288.0f, 104.0f) + PuzzleDoorBase::Offset);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
 		const Vec2 basePosition = Vec2(-208.0f, 354.0f);
 
-		this->runes[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + offset);
-		this->runesPassed[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + offset);
-		this->runesFailed[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + offset);
+		this->runes[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + PuzzleDoorBase::Offset);
+		this->runesPassed[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + PuzzleDoorBase::Offset);
+		this->runesFailed[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + PuzzleDoorBase::Offset);
 	}
 }
 
@@ -235,4 +245,24 @@ void PuzzleDoorBase::setHackValue(int value)
 	this->hackValue = value;
 
 	this->hackableString->setString(std::to_string(value));
+}
+
+void PuzzleDoorBase::unlock(bool animate)
+{
+	this->isUnlocked = true;
+	this->indexLabel->runAction(FadeTo::create(0.25f, 0));
+	this->hackableLabel->runAction(FadeTo::create(0.25f, 0));
+	this->truthLabel->runAction(FadeTo::create(0.25f, 0));
+
+	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
+	{
+		this->runes[index]->runAction(FadeTo::create(0.25f, 0));
+		this->runesPassed[index]->runAction(FadeTo::create(0.25f, 0));
+		this->runesFailed[index]->runAction(FadeTo::create(0.25f, 0));
+	}
+
+	if (animate)
+	{
+		this->door->runAction(MoveTo::create(5.0f, PuzzleDoorBase::Offset + Vec2(0.0f, 64.0f) + Vec2(0.0f, 356.0f)));
+	}
 }

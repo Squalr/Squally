@@ -10,6 +10,7 @@ namespace cocos2d
 
 class HexusOpponentData;
 class SmartAnimationNode;
+class SmartClippingNode;
 
 class Avatars : public ComponentBase
 {
@@ -30,8 +31,8 @@ private:
 	void initializePositions() override;
 	void setAvatars(GameState* gameState);
 
-	cocos2d::ClippingNode* clipPlayer;
-	cocos2d::ClippingNode* clipEnemy;
+	SmartClippingNode* clipPlayer;
+	SmartClippingNode* clipEnemy;
 	cocos2d::Sprite* framePlayer;
 	cocos2d::Sprite* frameEnemy;
 	cocos2d::Node* avatarPlayer;
