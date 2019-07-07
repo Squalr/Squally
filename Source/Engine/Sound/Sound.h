@@ -5,7 +5,7 @@
 class Sound : public SoundBase
 {
 public:
-	static Sound* create(std::string soundResource = "");
+	static Sound* create(std::string soundResource = "", bool isPositional = false);
 
 protected:
 	void initializeListeners() override;
@@ -17,6 +17,6 @@ protected:
 private:
 	typedef SoundBase super;
 
-	Sound(std::string soundResource);
+	Sound(std::string soundResource, bool isPositional);
 	~Sound();
 };
