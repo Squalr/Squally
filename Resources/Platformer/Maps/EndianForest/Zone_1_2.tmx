@@ -116,7 +116,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="690" name="mul-door" type="object" x="1454.02" y="4070.29" width="696" height="775"/>
+  <object id="690" name="mul-door" type="object" x="1454.02" y="4070.29" width="696" height="775">
+   <properties>
+    <property name="args" value="0"/>
+    <property name="direction" value="right"/>
+    <property name="map" value="EndianForest/Zone_1_2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
