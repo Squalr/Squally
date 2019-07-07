@@ -5,6 +5,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/UI/SmartClippingNode.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
@@ -33,25 +34,19 @@ Avatars::Avatars()
 
 	this->playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
 
-	DrawNode* stencilLeft = DrawNode::create();
-	DrawNode* stencilRight = DrawNode::create();
-	stencilLeft->drawSolidCircle(Vec2(0.0f, 0.0f), 184.0f / 2.0f, 0.0f, 48, Color4F::GREEN);
-	stencilRight->drawSolidCircle(Vec2(0.0f, 0.0f), 184.0f / 2.0f, 0.0f, 48, Color4F::GREEN);
+	DrawNode* playerStencil = DrawNode::create();
+	DrawNode* enemyStencil = DrawNode::create();
+	playerStencil->drawSolidCircle(Vec2(0.0f, 0.0f), 188.0f / 2.0f, 0.0f, 48, Color4F::GREEN);
+	enemyStencil->drawSolidCircle(Vec2(0.0f, 0.0f), 188.0f / 2.0f, 0.0f, 48, Color4F::GREEN);
 
-	// Enable to debug clipping:
-	// this->addChild(stencilLeft);
-	// this->addChild(stencilRight);
+	this->clipPlayer = SmartClippingNode::create(this->avatarPlayer, playerStencil);
+	this->clipEnemy = SmartClippingNode::create(this->avatarEnemy, enemyStencil);
 
-	this->clipPlayer = ClippingNode::create(stencilLeft);
-	this->clipEnemy = ClippingNode::create(stencilRight);
-
-	this->addChild(this->framePlayer);
-	this->addChild(this->frameEnemy);
 	this->avatarPlayer->addChild(this->playerSprite);
-	this->clipPlayer->addChild(this->avatarPlayer);
-	this->clipEnemy->addChild(this->avatarEnemy);
 	this->addChild(this->clipPlayer);
 	this->addChild(this->clipEnemy);
+	this->addChild(this->framePlayer);
+	this->addChild(this->frameEnemy);
 }
 
 Avatars::~Avatars()

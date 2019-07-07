@@ -186,7 +186,15 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBind
 	}
 
 	// Disassemble starting bytes, strip out NOPs
-	this->originalAssemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
+	if (!lateBindData.asmOverride.empty())
+	{
+		this->originalAssemblyString = lateBindData.asmOverride;
+	}
+	else
+	{
+		this->originalAssemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
+	}
+	
 	this->assemblyString = this->originalAssemblyString;
 }
 
