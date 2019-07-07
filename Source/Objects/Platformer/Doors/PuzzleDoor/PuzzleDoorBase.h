@@ -13,6 +13,7 @@ class HackableData;
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 class SmartClippingNode;
+class Sound;
 
 class PuzzleDoorBase : public HackableObject
 {
@@ -50,6 +51,7 @@ private:
 	LocalizedLabel* indexLabel;
 	LocalizedLabel* truthLabel;
 	LocalizedLabel* hackableLabel;
+	Sound* doorOpenSound;
 
 	bool firstRun;
 	bool isUnlocked;
