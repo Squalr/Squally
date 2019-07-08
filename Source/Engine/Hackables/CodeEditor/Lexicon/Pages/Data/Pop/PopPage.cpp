@@ -24,7 +24,7 @@ PopPage* PopPage::create()
 	return instance;
 }
 
-PopPage::PopPage() : super(PopPage::Identifier, PageType::Full)
+PopPage::PopPage() : super(PopPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Dagger);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);

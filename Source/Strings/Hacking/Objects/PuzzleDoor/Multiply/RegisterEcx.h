@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Hacking_Objects_Puzzles_Crystal_PuzzleIncrement_PuzzleIncrement : public LocalizedString
+	class Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Hacking_Objects_Puzzles_Crystal_PuzzleIncrement_PuzzleIncrement* create();
+		static Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Hacking_Objects_Puzzles_Crystal_PuzzleIncrement_PuzzleIncrement();
-		~Hacking_Objects_Puzzles_Crystal_PuzzleIncrement_PuzzleIncrement();
+		Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx();
+		~Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx();
 	};
 }
