@@ -29,7 +29,7 @@ using namespace cocos2d;
 
 SaveSelectMenu* SaveSelectMenu::instance;
 
-void SaveSelectMenu::registerGlobalScene()
+SaveSelectMenu* SaveSelectMenu::getInstance()
 {
 	if (SaveSelectMenu::instance == nullptr)
 	{
@@ -37,9 +37,11 @@ void SaveSelectMenu::registerGlobalScene()
 
 		SaveSelectMenu::instance->autorelease();
 		SaveSelectMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
+	return SaveSelectMenu::instance;
 }
 
 SaveSelectMenu::SaveSelectMenu()
@@ -100,11 +102,6 @@ void SaveSelectMenu::onEnter()
 void SaveSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
-
-	SaveSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateSaveSelect, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(SaveSelectMenu::instance);
-	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

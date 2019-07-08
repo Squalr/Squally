@@ -35,7 +35,7 @@ using namespace cocos2d;
 
 HexusChapterSelectMenuPuzzles* HexusChapterSelectMenuPuzzles::instance = nullptr;
 
-void HexusChapterSelectMenuPuzzles::registerGlobalScene()
+HexusChapterSelectMenuPuzzles* HexusChapterSelectMenuPuzzles::getInstance()
 {
 	if (HexusChapterSelectMenuPuzzles::instance == nullptr)
 	{
@@ -43,9 +43,11 @@ void HexusChapterSelectMenuPuzzles::registerGlobalScene()
 
 		HexusChapterSelectMenuPuzzles::instance->autorelease();
 		HexusChapterSelectMenuPuzzles::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusChapterSelectMenuPuzzles::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusChapterSelectMenuPuzzles::instance);
+	return HexusChapterSelectMenuPuzzles::instance;
 }
 
 HexusChapterSelectMenuPuzzles::HexusChapterSelectMenuPuzzles()
@@ -140,11 +142,6 @@ void HexusChapterSelectMenuPuzzles::onEnter()
 void HexusChapterSelectMenuPuzzles::initializeListeners()
 {
 	super::initializeListeners();
-
-	HexusChapterSelectMenuPuzzles::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusPuzzlesChapterSelect, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(HexusChapterSelectMenuPuzzles::instance);
-	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

@@ -10,6 +10,7 @@
 #include "Bootstrapper.h"
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Localization/LocalizedString.h"
@@ -96,8 +97,7 @@ bool GameWindow::applicationDidFinishLaunching()
 		Analytics::sendEvent(AnalyticsCategories::GameStart, "Linux");
 	#endif
 
-	// load into the title screen first
-	GlobalDirector::loadScene(TitleScreen::getInstance());
+	NavigationEvents2::LoadScene(TitleScreen::getInstance());
 
 	return true;
 }

@@ -14,7 +14,7 @@ class ConfirmationMenu;
 class SaveSelectMenu : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static SaveSelectMenu* getInstance();
 
 protected:
 	SaveSelectMenu();

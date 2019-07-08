@@ -28,7 +28,7 @@ using namespace cocos2d;
 
 PointerTraceLevelSelect* PointerTraceLevelSelect::instance = nullptr;
 
-void PointerTraceLevelSelect::registerGlobalScene()
+PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 {
 	if (PointerTraceLevelSelect::instance == nullptr)
 	{
@@ -36,14 +36,18 @@ void PointerTraceLevelSelect::registerGlobalScene()
 
 		PointerTraceLevelSelect::instance->autorelease();
 		PointerTraceLevelSelect::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(PointerTraceLevelSelect::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(PointerTraceLevelSelect::instance);
+	return PointerTraceLevelSelect::instance;
 }
 
 PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false)
 {
 	this->music = Music::create(MusicResources::PointerTrace);
+
+	this->loadMap(IsometricMapResources::LevelSelectMap);
 
 	this->addChild(this->music);
 }
@@ -78,11 +82,6 @@ void PointerTraceLevelSelect::initializePositions()
 void PointerTraceLevelSelect::initializeListeners()
 {
 	super::initializeListeners();
-
-	PointerTraceLevelSelect::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePointerTraceLevelSelect, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(PointerTraceLevelSelect::instance);
-	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
