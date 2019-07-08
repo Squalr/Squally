@@ -6,14 +6,19 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
+#include "Scenes/Cipher/CipherMenu/ChapterSelect/CipherChapterSelectMenu.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
+#include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenuPuzzles.h"
+#include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -32,7 +37,7 @@ using namespace cocos2d;
 
 MinigamesMenu* MinigamesMenu::instance;
 
-void MinigamesMenu::registerGlobalScene()
+MinigamesMenu* MinigamesMenu::getInstance()
 {
 	if (MinigamesMenu::instance == nullptr)
 	{
@@ -40,9 +45,11 @@ void MinigamesMenu::registerGlobalScene()
 
 		MinigamesMenu::instance->autorelease();
 		MinigamesMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(MinigamesMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(MinigamesMenu::instance);
+	return MinigamesMenu::instance;
 }
 
 MinigamesMenu::MinigamesMenu()
@@ -138,19 +145,14 @@ void MinigamesMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	MinigamesMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateMinigames, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(MinigamesMenu::instance);
-	}));
-
-	this->hexusButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateHexusChapterSelect(); });
-	this->hexusPuzzlesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateHexusPuzzlesChapterSelect(); });
-	this->pointerTraceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigatePointerTraceLevelSelect(); });
-	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateCipherChapterSelect(); });
-	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::navigateBack(); });
+	this->hexusButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(HexusChapterSelectMenu::getInstance()); });
+	this->hexusPuzzlesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(HexusChapterSelectMenuPuzzles::getInstance()); });
+	this->pointerTraceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(PointerTraceLevelSelect::getInstance()); });
+	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(TitleScreen::getInstance()); });
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -161,7 +163,7 @@ void MinigamesMenu::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents2::LoadScene(TitleScreen::getInstance());
 	});
 }
 

@@ -79,6 +79,8 @@ void Bootstrapper::initialize()
 {
 	EngineBootstrapper::initialize();
 
+	/*
+
 	// Register scenes
 	CombatMap::registerGlobalScene();
 	PlatformerMap::registerGlobalScene();
@@ -172,6 +174,7 @@ void Bootstrapper::initialize()
 
 	MusicDeserializer::registerGlobalNode();
 	PlatformerCollisionMapping::registerGlobalNode();
+	 */
 
 	CursorSets::registerCursorSets();
 }

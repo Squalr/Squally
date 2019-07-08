@@ -51,7 +51,7 @@ using namespace cocos2d;
 
 HexusStoreMenu* HexusStoreMenu::instance;
 
-void HexusStoreMenu::registerGlobalScene()
+HexusStoreMenu* HexusStoreMenu::getInstance()
 {
 	if (HexusStoreMenu::instance == nullptr)
 	{
@@ -59,9 +59,11 @@ void HexusStoreMenu::registerGlobalScene()
 
 		HexusStoreMenu::instance->autorelease();
 		HexusStoreMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusStoreMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusStoreMenu::instance);
+	return HexusStoreMenu::instance;
 }
 
 HexusStoreMenu::HexusStoreMenu()
@@ -301,11 +303,6 @@ void HexusStoreMenu::onEnter()
 void HexusStoreMenu::initializeListeners()
 {
 	super::initializeListeners();
-
-	HexusStoreMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusShop, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(HexusStoreMenu::instance);
-	}));
 
 	this->cardPreview->setHelpClickCallback([=](Card* card)
 	{

@@ -28,7 +28,7 @@ using namespace cocos2d;
 CipherChapterSelectMenu* CipherChapterSelectMenu::instance = nullptr;
 const Color3B CipherChapterSelectMenu::TitleColor = Color3B(88, 188, 193);
 
-void CipherChapterSelectMenu::registerGlobalScene()
+CipherChapterSelectMenu* CipherChapterSelectMenu::getInstance()
 {
 	if (CipherChapterSelectMenu::instance == nullptr)
 	{
@@ -36,9 +36,11 @@ void CipherChapterSelectMenu::registerGlobalScene()
 
 		CipherChapterSelectMenu::instance->autorelease();
 		CipherChapterSelectMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(CipherChapterSelectMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherChapterSelectMenu::instance);
+	return CipherChapterSelectMenu::instance;
 }
 
 CipherChapterSelectMenu::CipherChapterSelectMenu()
@@ -150,11 +152,6 @@ void CipherChapterSelectMenu::initializePositions()
 void CipherChapterSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
-
-	CipherChapterSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCipherChapterSelect, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(CipherChapterSelectMenu::instance);
-	}));
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(CipherChapterSelectMenu::onCloseClick, this));
 	this->backButton->setClickSound(SoundResources::ClickBack1);

@@ -40,7 +40,7 @@ using namespace cocos2d;
 
 HexusDeckManagement* HexusDeckManagement::instance;
 
-void HexusDeckManagement::registerGlobalScene()
+HexusDeckManagement* HexusDeckManagement::getInstance()
 {
 	if (HexusDeckManagement::instance == nullptr)
 	{
@@ -48,9 +48,11 @@ void HexusDeckManagement::registerGlobalScene()
 
 		HexusDeckManagement::instance->autorelease();
 		HexusDeckManagement::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusDeckManagement::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusDeckManagement::instance);
+	return HexusDeckManagement::instance;
 }
 
 HexusDeckManagement::HexusDeckManagement()
@@ -246,11 +248,6 @@ void HexusDeckManagement::onExit()
 void HexusDeckManagement::initializeListeners()
 {
 	super::initializeListeners();
-
-	HexusDeckManagement::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusDeckManagement, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(HexusDeckManagement::instance);
-	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

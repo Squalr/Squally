@@ -20,7 +20,7 @@ class LocalizedString;
 class CipherChapterSelectMenu : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static CipherChapterSelectMenu* getInstance();
 
 protected:
 	CipherChapterSelectMenu();
