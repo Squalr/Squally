@@ -24,8 +24,4 @@ private:
 	virtual ~MulDoorPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
-
-	SmartAnimationSequenceNode* previewSpikedLog;
-	LocalizedLabel* ecxAnimationCount;
-	ConstantString* countString;
 };

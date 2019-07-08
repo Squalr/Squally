@@ -23,6 +23,4 @@ private:
 	virtual ~PuzzleDoorGenericPreview() = default;
 	void onEnter() override;
 	void initializePositions() override;
-
-	SmartAnimationSequenceNode* previewSpikedLog;
 };
