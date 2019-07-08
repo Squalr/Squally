@@ -10,6 +10,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -17,10 +18,8 @@
 
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
-
-#include "Strings/Hacking/Objects/Puzzles/Crystal/PuzzleIncrement/PuzzleIncrement.h"
-#include "Strings/Hacking/Objects/Puzzles/Crystal/PuzzleIncrement/RegisterEcx.h"
 
 using namespace cocos2d;
 
@@ -45,6 +44,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->indexString);
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
+	this->doorOpenSound = Sound::create(SoundResources::Platformer_Doors_StoneWall1, true);
 	this->isUnlocked = false;
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
@@ -101,6 +101,8 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
 		this->addChild(this->runesFailed[index]);
 		this->addChild(this->runesPassed[index]);
 	}
+
+	this->addChild(this->doorOpenSound);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -212,6 +214,7 @@ void PuzzleDoorBase::initializePositions()
 	this->indexLabel->setPosition(Vec2(0.0f, 464.0f) + PuzzleDoorBase::Offset);
 	this->truthLabel->setPosition(Vec2(284.0f, 104.0f) + PuzzleDoorBase::Offset);
 	this->hackableLabel->setPosition(Vec2(-288.0f, 104.0f) + PuzzleDoorBase::Offset);
+	this->doorOpenSound->setPosition(PuzzleDoorBase::Offset);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
@@ -264,5 +267,6 @@ void PuzzleDoorBase::unlock(bool animate)
 	if (animate)
 	{
 		this->door->runAction(MoveTo::create(5.0f, PuzzleDoorBase::Offset + Vec2(0.0f, 64.0f) + Vec2(0.0f, 356.0f)));
+		this->doorOpenSound->play();
 	}
 }
