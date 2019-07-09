@@ -254,7 +254,7 @@ void CombatMap::spawnEntities()
 				valueMap,
 				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.GameObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 				}
@@ -281,7 +281,7 @@ void CombatMap::spawnEntities()
 				valueMap,
 				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.GameObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}

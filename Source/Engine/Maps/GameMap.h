@@ -26,7 +26,7 @@ public:
 		Isometric = 2,
 	};
 
-	static void deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers);
+	static GameMap* deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers);
 	void appendLayer(MapLayer* mapLayer);
 	void setCollisionLayersVisible(bool isVisible);
 	std::vector<TileLayer*> getCollisionLayers();

@@ -156,6 +156,8 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 
 		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
 			(*it)->getProperties(),
+			(*it)->getObjects(),
+			(*it)->layerIndex,
 			mapFileName,
 			mapSize,
 			isIsometric,

@@ -88,7 +88,7 @@ void LoadingScreen::loadLevel(std::string levelFile, std::function<void(GameMap*
 	this->currentLevelFile = levelFile;
 	this->onLoadCallback = onLoadCallback;
 
-	this->map = GameMap::deserialize(levelFile);
+	this->map = GameMap::deserialize(levelFile, { });
 	this->map->retain();
 
 	if (this->onLoadCallback != nullptr)

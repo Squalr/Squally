@@ -4,6 +4,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/GlobalDirector.h"
+#include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Engine/Maps/Backgrounds/Background.h"
@@ -31,22 +32,23 @@ BackgroundDeserializer::~BackgroundDeserializer()
 
 void BackgroundDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
 {
-	std::string name = args->name;
+	ValueMap properties = args->properties;
+	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
 
-	if (GameUtils::getKeyOrDefault(args->properties, MapLayer::KeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
+	if (GameUtils::getKeyOrDefault(properties, MapLayer::KeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
 	{
 		return;
 	}
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(args->properties, BackgroundDeserializer::MapKeyBackgroundLayer))
+	if (!GameUtils::keyExists(properties, BackgroundDeserializer::MapKeyBackgroundLayer))
 	{
 		CCLOG("No background property on background layer");
 		return;
 	}
 
-	std::string background = args->properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
+	std::string background = properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* sprite = Sprite::create("Platformer/Backgrounds/" + background + ".png");
@@ -57,5 +59,5 @@ void BackgroundDeserializer::deserialize(LayerDeserializer::LayerDeserialization
 		return;
 	}
 
-	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Background::create(args->properties, name, sprite), args->objectGroup->layerIndex));
+	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(Background::create(properties, name, sprite), args->layerIndex));
 }
