@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerObjectDeserializer::KeyTypeObject = "object";
+const std::string PlatformerObjectDeserializer::MapKeyTypeObject = "object";
 
 PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 {
@@ -19,10 +19,12 @@ PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 	return instance;
 }
 
-PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::KeyTypeObject)
+PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject)
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
+	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
+	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
 	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (GameObject*)CastleDoor::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
 	this->deserializers[CastleDoorFront::MapKeyCastleDoorFront] = [=](ValueMap properties) { return (GameObject*)CastleDoorFront::create(properties); };

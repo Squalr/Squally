@@ -24,15 +24,13 @@ public:
 
 	struct ObjectDeserializationRequestArgs
 	{
-		std::string objectType;
 		cocos2d::ValueMap properties;
 		std::function<void(ObjectDeserializationArgs)> onDeserializeCallback;
 
 		ObjectDeserializationRequestArgs(
-			std::string objectType, 
 			cocos2d::ValueMap properties,
 			std::function<void(ObjectDeserializationArgs)> onDeserializeCallback):
-			objectType(objectType), properties(properties), onDeserializeCallback(onDeserializeCallback)
+			properties(properties), onDeserializeCallback(onDeserializeCallback)
 		{
 		}
 	};

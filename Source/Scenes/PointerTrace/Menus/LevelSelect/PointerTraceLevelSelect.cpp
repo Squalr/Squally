@@ -46,22 +46,19 @@ PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 
 PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false)
 {
-	this->music = Music::create(MusicResources::PointerTrace);
-
 	this->addLayerDeserializers({
 			BackgroundDeserializer::create(),
 			MusicDeserializer::create(),
+			
 			ObjectLayerDeserializer::create({
-				{ IsometricDecorDeserializer::KeyTypeDecor, IsometricDecorDeserializer::create()} ,
-				{ IsometricEntityDeserializer::KeyTypeIsometricEntity, IsometricEntityDeserializer::create() },
-				{ IsometricObjectDeserializer::KeyTypeIsometricObject, IsometricObjectDeserializer::create() }
+				{ IsometricDecorDeserializer::MapKeyTypeDecor, IsometricDecorDeserializer::create() },
+				{ IsometricEntityDeserializer::MapKeyTypeEntity, IsometricEntityDeserializer::create() },
+				{ IsometricObjectDeserializer::MapKeyTypeObject, IsometricObjectDeserializer::create() },
 			})
 		}
 	);
 
 	this->loadMap(IsometricMapResources::LevelSelectMap);
-
-	this->addChild(this->music);
 }
 
 PointerTraceLevelSelect::~PointerTraceLevelSelect()
@@ -71,8 +68,6 @@ PointerTraceLevelSelect::~PointerTraceLevelSelect()
 void PointerTraceLevelSelect::onEnter()
 {
 	super::onEnter();
-
-	this->music->play(true);
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;

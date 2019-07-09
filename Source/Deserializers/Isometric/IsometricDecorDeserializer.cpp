@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string IsometricDecorDeserializer::KeyTypeDecor = "iso_decor";
+const std::string IsometricDecorDeserializer::MapKeyTypeDecor = "decor";
 
 IsometricDecorDeserializer* IsometricDecorDeserializer::create()
 {
@@ -20,7 +20,7 @@ IsometricDecorDeserializer* IsometricDecorDeserializer::create()
 	return instance;
 }
 
-IsometricDecorDeserializer::IsometricDecorDeserializer() : super(IsometricDecorDeserializer::KeyTypeDecor)
+IsometricDecorDeserializer::IsometricDecorDeserializer() : super(IsometricDecorDeserializer::MapKeyTypeDecor)
 {
 }
 

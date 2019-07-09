@@ -28,7 +28,7 @@ using namespace cocos2d;
 GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation)
 {
 	this->collisionLayers = std::vector<TileLayer*>();
-	this->mapLayers = std::vector<MapLayer*>();
+	this->mapLayers = mapLayers;
 	this->tileLayers = std::vector<TileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
@@ -40,7 +40,7 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 
 	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
-		this->appendLayer(*it);
+		this->addChild(*it);
 	}
 
 	if (this->orientation == MapOrientation::Isometric)
@@ -164,7 +164,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 			onDeserializeCallback
 		);
 
-		for (auto deserializerIt = layerDeserializers.begin(); deserializerIt != layerDeserializers.end(); it++)
+		for (auto deserializerIt = layerDeserializers.begin(); deserializerIt != layerDeserializers.end(); deserializerIt++)
 		{
 			if ((*deserializerIt)->getLayerType() == layerType)
 			{

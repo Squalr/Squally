@@ -2,14 +2,13 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/GlobalDirector.h"
+#include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/StrUtils.h"
 #include "Objects/Isometric/IsometricObjects.h"
 
 using namespace cocos2d;
 
-const std::string IsometricObjectDeserializer::KeyTypeIsometricObject = "iso_object";
+const std::string IsometricObjectDeserializer::MapKeyTypeObject = "object";
 
 IsometricObjectDeserializer* IsometricObjectDeserializer::create()
 {
@@ -20,164 +19,52 @@ IsometricObjectDeserializer* IsometricObjectDeserializer::create()
 	return instance;
 }
 
-IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObjectDeserializer::KeyTypeIsometricObject)
+IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObjectDeserializer::MapKeyTypeObject)
 {
-}
+	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
-IsometricObjectDeserializer::~IsometricObjectDeserializer()
-{
-}
+	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
+	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
+	this->deserializers[HexusArcade::MapKeyHexusArcade] = [=](ValueMap properties) { return (GameObject*)HexusArcade::create(properties); };
+	this->deserializers[LevelNode::MapKeyLevelNode] = [=](ValueMap properties) { return (GameObject*)LevelNode::create(properties); };
+	this->deserializers[MemoryGrid::MapKeyMemoryGrid] = [=](ValueMap properties) { return (GameObject*)MemoryGrid::create(properties); };
+	this->deserializers[ExitCrystal::MapKeyExitCrystal] = [=](ValueMap properties) { return (GameObject*)ExitCrystal::create(properties); };
+	this->deserializers[EaxInitializer::MapKeyEaxInitializer] = [=](ValueMap properties) { return (GameObject*)EaxInitializer::create(properties); };
+	this->deserializers[EbxInitializer::MapKeyEbxInitializer] = [=](ValueMap properties) { return (GameObject*)EbxInitializer::create(properties); };
+	this->deserializers[EcxInitializer::MapKeyEcxInitializer] = [=](ValueMap properties) { return (GameObject*)EcxInitializer::create(properties); };
+	this->deserializers[EdxInitializer::MapKeyEdxInitializer] = [=](ValueMap properties) { return (GameObject*)EdxInitializer::create(properties); };
+	this->deserializers[EdiInitializer::MapKeyEdiInitializer] = [=](ValueMap properties) { return (GameObject*)EdiInitializer::create(properties); };
+	this->deserializers[EsiInitializer::MapKeyEsiInitializer] = [=](ValueMap properties) { return (GameObject*)EsiInitializer::create(properties); };
+	this->deserializers[EbpInitializer::MapKeyEbpInitializer] = [=](ValueMap properties) { return (GameObject*)EbpInitializer::create(properties); };
+	this->deserializers[EspInitializer::MapKeyEspInitializer] = [=](ValueMap properties) { return (GameObject*)EspInitializer::create(properties); };
+	this->deserializers[EaxCrystal::MapKeyEaxCrystal] = [=](ValueMap properties) { return (GameObject*)EaxCrystal::create(properties); };
+	this->deserializers[EbxCrystal::MapKeyEbxCrystal] = [=](ValueMap properties) { return (GameObject*)EbxCrystal::create(properties); };
+	this->deserializers[EcxCrystal::MapKeyEcxCrystal] = [=](ValueMap properties) { return (GameObject*)EcxCrystal::create(properties); };
+	this->deserializers[EdxCrystal::MapKeyEdxCrystal] = [=](ValueMap properties) { return (GameObject*)EdxCrystal::create(properties); };
+	this->deserializers[EdiCrystal::MapKeyEdiCrystal] = [=](ValueMap properties) { return (GameObject*)EdiCrystal::create(properties); };
+	this->deserializers[EsiCrystal::MapKeyEsiCrystal] = [=](ValueMap properties) { return (GameObject*)EsiCrystal::create(properties); };
+	this->deserializers[EbpCrystal::MapKeyEbpCrystal] = [=](ValueMap properties) { return (GameObject*)EbpCrystal::create(properties); };
+	this->deserializers[EspCrystal::MapKeyEspCrystal] = [=](ValueMap properties) { return (GameObject*)EspCrystal::create(properties); };
+	this->deserializers[EaxJmp::MapKeyEaxJmp] = [=](ValueMap properties) { return (GameObject*)EbxJmp::create(properties); };
+	this->deserializers[EbxJmp::MapKeyEbxJmp] = [=](ValueMap properties) { return (GameObject*)EbxJmp::create(properties); };
+	this->deserializers[EcxJmp::MapKeyEcxJmp] = [=](ValueMap properties) { return (GameObject*)EcxJmp::create(properties); };
+	this->deserializers[EdxJmp::MapKeyEdxJmp] = [=](ValueMap properties) { return (GameObject*)EdxJmp::create(properties); };
+	this->deserializers[EdiJmp::MapKeyEdiJmp] = [=](ValueMap properties) { return (GameObject*)EdiJmp::create(properties); };
+	this->deserializers[EsiJmp::MapKeyEsiJmp] = [=](ValueMap properties) { return (GameObject*)EsiJmp::create(properties); };
+	this->deserializers[EbpJmp::MapKeyEbpJmp] = [=](ValueMap properties) { return (GameObject*)EbpJmp::create(properties); };
+	this->deserializers[EspJmp::MapKeyEspJmp] = [=](ValueMap properties) { return (GameObject*)EspJmp::create(properties); };
 
-void IsometricObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
-{
-	ValueMap properties = args->properties;
-	const std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
-	GameObject* newObject = nullptr;
-
-	if (name == HexusArcade::MapKeyHexusArcade)
-	{
-		newObject = HexusArcade::create(properties);
-	}
-	else if (name == LevelNode::MapKeyLevelNode)
-	{
-		newObject = LevelNode::create(properties);
-	}
-	else if (name == MemoryGrid::MapKeyMemoryGrid)
-	{
-		newObject = MemoryGrid::create(properties);
-	}
-	else if (name == ExitCrystal::MapKeyExitCrystal)
-	{
-		newObject = ExitCrystal::create(properties);
-	}
-	else if (name == EaxInitializer::MapKeyEaxInitializer)
-	{
-		newObject = EaxInitializer::create(properties);
-	}
-	else if (name == EbxInitializer::MapKeyEbxInitializer)
-	{
-		newObject = EbxInitializer::create(properties);
-	}
-	else if (name == EcxInitializer::MapKeyEcxInitializer)
-	{
-		newObject = EcxInitializer::create(properties);
-	}
-	else if (name == EdxInitializer::MapKeyEdxInitializer)
-	{
-		newObject = EdxInitializer::create(properties);
-	}
-	else if (name == EdiInitializer::MapKeyEdiInitializer)
-	{
-		newObject = EdiInitializer::create(properties);
-	}
-	else if (name == EsiInitializer::MapKeyEsiInitializer)
-	{
-		newObject = EsiInitializer::create(properties);
-	}
-	else if (name == EbpInitializer::MapKeyEbpInitializer)
-	{
-		newObject = EbpInitializer::create(properties);
-	}
-	else if (name == EspInitializer::MapKeyEspInitializer)
-	{
-		newObject = EspInitializer::create(properties);
-	}
-	else if (name == EaxCrystal::MapKeyEaxCrystal)
-	{
-		newObject = EaxCrystal::create(properties);
-	}
-	else if (name == EbxCrystal::MapKeyEbxCrystal)
-	{
-		newObject = EbxCrystal::create(properties);
-	}
-	else if (name == EcxCrystal::MapKeyEcxCrystal)
-	{
-		newObject = EcxCrystal::create(properties);
-	}
-	else if (name == EdxCrystal::MapKeyEdxCrystal)
-	{
-		newObject = EdxCrystal::create(properties);
-	}
-	else if (name == EdiCrystal::MapKeyEdiCrystal)
-	{
-		newObject = EdiCrystal::create(properties);
-	}
-	else if (name == EsiCrystal::MapKeyEsiCrystal)
-	{
-		newObject = EsiCrystal::create(properties);
-	}
-	else if (name == EbpCrystal::MapKeyEbpCrystal)
-	{
-		newObject = EbpCrystal::create(properties);
-	}
-	else if (name == EspCrystal::MapKeyEspCrystal)
-	{
-		newObject = EspCrystal::create(properties);
-	}
-	else if (name == EaxJmp::MapKeyEaxJmp)
-	{
-		newObject = EaxJmp::create(properties);
-	}
-	else if (name == EbxJmp::MapKeyEbxJmp)
-	{
-		newObject = EbxJmp::create(properties);
-	}
-	else if (name == EcxJmp::MapKeyEcxJmp)
-	{
-		newObject = EcxJmp::create(properties);
-	}
-	else if (name == EdxJmp::MapKeyEdxJmp)
-	{
-		newObject = EdxJmp::create(properties);
-	}
-	else if (name == EdiJmp::MapKeyEdiJmp)
-	{
-		newObject = EdiJmp::create(properties);
-	}
-	else if (name == EsiJmp::MapKeyEsiJmp)
-	{
-		newObject = EsiJmp::create(properties);
-	}
-	else if (name == EbpJmp::MapKeyEbpJmp)
-	{
-		newObject = EbpJmp::create(properties);
-	}
-	else if (name == EspJmp::MapKeyEspJmp)
-	{
-		newObject = EspJmp::create(properties);
-	}
-	else if (name == EaxPtrJmp::MapKeyEaxPtrJmp)
-	{
-		newObject = EaxPtrJmp::create(properties);
-	}
-	else if (name == EbxPtrJmp::MapKeyEbxPtrJmp)
-	{
-		newObject = EbxPtrJmp::create(properties);
-	}
-	else if (name == EcxPtrJmp::MapKeyEcxPtrJmp)
-	{
-		newObject = EcxPtrJmp::create(properties);
-	}
-	else if (name == EdxPtrJmp::MapKeyEdxPtrJmp)
-	{
-		newObject = EdxPtrJmp::create(properties);
-	}
-	else if (name == EdiPtrJmp::MapKeyEdiPtrJmp)
-	{
-		newObject = EdiPtrJmp::create(properties);
-	}
-	else if (name == EsiPtrJmp::MapKeyEsiPtrJmp)
-	{
-		newObject = EsiPtrJmp::create(properties);
-	}
-	else if (name == EbpPtrJmp::MapKeyEbpPtrJmp)
-	{
-		newObject = EbpPtrJmp::create(properties);
-	}
-	else if (name == EspPtrJmp::MapKeyEspPtrJmp)
-	{
-		newObject = EspPtrJmp::create(properties);
-	}
+	this->deserializers[EaxPtrJmp::MapKeyEaxPtrJmp] = [=](ValueMap properties) { return (GameObject*)EaxPtrJmp::create(properties); };
+	this->deserializers[EbxPtrJmp::MapKeyEbxPtrJmp] = [=](ValueMap properties) { return (GameObject*)EbxPtrJmp::create(properties); };
+	this->deserializers[EcxPtrJmp::MapKeyEcxPtrJmp] = [=](ValueMap properties) { return (GameObject*)EcxPtrJmp::create(properties); };
+	this->deserializers[EdxPtrJmp::MapKeyEdxPtrJmp] = [=](ValueMap properties) { return (GameObject*)EdxPtrJmp::create(properties); };
+	this->deserializers[EdiPtrJmp::MapKeyEdiPtrJmp] = [=](ValueMap properties) { return (GameObject*)EdiPtrJmp::create(properties); };
+	this->deserializers[EsiPtrJmp::MapKeyEsiPtrJmp] = [=](ValueMap properties) { return (GameObject*)EsiPtrJmp::create(properties); };
+	this->deserializers[EbpPtrJmp::MapKeyEbpPtrJmp] = [=](ValueMap properties) { return (GameObject*)EbpPtrJmp::create(properties); };
+	this->deserializers[EspPtrJmp::MapKeyEspPtrJmp] = [=](ValueMap properties) { return (GameObject*)EspPtrJmp::create(properties); };
+	
+	// GG
+	/*
 	else if (StrUtils::isRegexMatch(name, ValueInitializer::MapKeyValueInitializerRegex))
 	{
 		newObject = ValueInitializer::create(properties);
@@ -213,15 +100,24 @@ void IsometricObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 	else if (StrUtils::isRegexMatch(name, EspPtrInitializer::MapKeyEspPtrInitializerRegex))
 	{
 		newObject = EspPtrInitializer::create(properties);
+	} */
+}
+
+IsometricObjectDeserializer::~IsometricObjectDeserializer()
+{
+}
+
+void IsometricObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
+{
+	ValueMap properties = args->properties;
+	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
+
+	if (this->deserializers.find(name) != this->deserializers.end())
+	{
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
 	}
 	else
 	{
-		CCLOG("Missing properties on isometric object");
-		return;
-	}
-
-	if (newObject != nullptr)
-	{
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(newObject));
+		CCLOG("Unknown object encountered: %s", name.c_str());
 	}
 }
