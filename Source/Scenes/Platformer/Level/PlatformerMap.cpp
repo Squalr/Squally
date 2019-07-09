@@ -7,7 +7,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
+#include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"

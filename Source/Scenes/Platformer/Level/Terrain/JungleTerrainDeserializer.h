@@ -5,14 +5,13 @@
 class JungleTerrainDeserializer : public TerrainDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static JungleTerrainDeserializer* create();
 
 	static const std::string MapKeyTerrainTypeJungle;
 
 private:
 	typedef TerrainDeserializer super;
+	
 	JungleTerrainDeserializer();
 	~JungleTerrainDeserializer();
-
-	static JungleTerrainDeserializer* instance;
 };

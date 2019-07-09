@@ -13,7 +13,7 @@ Background* Background::create(ValueMap& initProperties, std::string name, Node*
 	return instance;
 }
 
-Background::Background(ValueMap& properties, std::string name, Node* child) : SerializableLayer(properties, name)
+Background::Background(ValueMap& properties, std::string name, Node* child) : MapLayer(properties, name)
 {
 	this->background = Hud::create();
 

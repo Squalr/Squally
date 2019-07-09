@@ -1,25 +1,20 @@
 #include "DryTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string DryTerrainDeserializer::MapKeyTerrainTypeDry = "dry";
-DryTerrainDeserializer* DryTerrainDeserializer::instance = nullptr;
 
-void DryTerrainDeserializer::registerGlobalNode()
+DryTerrainDeserializer* DryTerrainDeserializer::create()
 {
-	if (DryTerrainDeserializer::instance == nullptr)
-	{
-		DryTerrainDeserializer::instance = new DryTerrainDeserializer();
+	DryTerrainDeserializer* instance = new DryTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(DryTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 DryTerrainDeserializer::DryTerrainDeserializer() : TerrainDeserializer(

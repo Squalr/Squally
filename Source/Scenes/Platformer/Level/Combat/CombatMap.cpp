@@ -9,8 +9,8 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameMap.h"
+#include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -67,6 +67,8 @@ CombatMap::CombatMap() : super(true)
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
+
+	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->textOverlays);
@@ -244,21 +246,21 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
-			valueMap[SerializableObject::MapKeyName] = Value(*it);
-			valueMap[SerializableObject::MapKeyFlipX] = Value(true);
+			valueMap[GameObject::MapKeyName] = Value(*it);
+			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
-			DeserializationEvents::ObjectDeserializationRequestArgs args = DeserializationEvents::ObjectDeserializationRequestArgs(
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				PlatformerEntityDeserializer::KeyTypeEntity,
 				valueMap,
-				[=] (DeserializationEvents::ObjectDeserializationArgs args)
+				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.GameObject);
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 				}
 			);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&args);
+			this->platformerEntityDeserializer->deserialize(&args);
 
 			index++;
 		}
@@ -272,20 +274,20 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
-			valueMap[SerializableObject::MapKeyName] = Value(*it);
+			valueMap[GameObject::MapKeyName] = Value(*it);
 			
-			DeserializationEvents::ObjectDeserializationRequestArgs args = DeserializationEvents::ObjectDeserializationRequestArgs(
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				PlatformerEntityDeserializer::KeyTypeEntity,
 				valueMap,
-				[=] (DeserializationEvents::ObjectDeserializationArgs args)
+				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.GameObject);
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}
 			);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&args);
+			this->platformerEntityDeserializer->deserialize(&args);
 
 			index++;
 		}

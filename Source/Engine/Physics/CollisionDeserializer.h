@@ -1,19 +1,16 @@
 #pragma once
-#include "Engine/Events/DeserializationEvents.h"
-#include "Engine/GlobalNode.h"
 
-class CollisionDeserializer : public GlobalNode
+#include "Engine/Maps/ObjectDeserializer.h"
+
+class CollisionDeserializer : public ObjectDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static CollisionDeserializer* create();
 
 private:
-	typedef GlobalNode super;
+	typedef ObjectDeserializer super;
 	CollisionDeserializer();
-	virtual ~CollisionDeserializer();
+	~CollisionDeserializer();
 
-	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
-
-	static CollisionDeserializer* instance;
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 };

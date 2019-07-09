@@ -24,7 +24,7 @@ CameraFocus* CameraFocus::create(ValueMap& initProperties)
 	return instance;
 }
 
-CameraFocus::CameraFocus(ValueMap& initProperties) : SerializableObject(initProperties)
+CameraFocus::CameraFocus(ValueMap& initProperties) : GameObject(initProperties)
 {
 	this->zoom = GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyZoom, Value(1.0f)).asFloat();
 	this->scrollBounds = Vec2(

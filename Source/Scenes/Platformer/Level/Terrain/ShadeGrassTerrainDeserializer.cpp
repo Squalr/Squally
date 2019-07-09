@@ -1,25 +1,20 @@
 #include "ShadeGrassTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string ShadeGrassTerrainDeserializer::MapKeyTerrainTypeShadeGrass = "shade-grass";
-ShadeGrassTerrainDeserializer* ShadeGrassTerrainDeserializer::instance = nullptr;
 
-void ShadeGrassTerrainDeserializer::registerGlobalNode()
+ShadeGrassTerrainDeserializer* ShadeGrassTerrainDeserializer::create()
 {
-	if (ShadeGrassTerrainDeserializer::instance == nullptr)
-	{
-		ShadeGrassTerrainDeserializer::instance = new ShadeGrassTerrainDeserializer();
+	ShadeGrassTerrainDeserializer* instance = new ShadeGrassTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(ShadeGrassTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 ShadeGrassTerrainDeserializer::ShadeGrassTerrainDeserializer() : TerrainDeserializer(

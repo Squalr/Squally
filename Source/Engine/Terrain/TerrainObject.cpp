@@ -176,10 +176,10 @@ void TerrainObject::buildCollision()
 	}
 
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
-	this->properties[SerializableObject::MapKeyXPosition] = 0.0f;
-	this->properties[SerializableObject::MapKeyYPosition] = 0.0f;
+	this->properties[GameObject::MapKeyXPosition] = 0.0f;
+	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
-	std::string deserializedCollisionName = this->properties.at(SerializableObject::MapKeyName).asString();
+	std::string deserializedCollisionName = this->properties.at(GameObject::MapKeyName).asString();
 
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{

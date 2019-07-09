@@ -5,14 +5,13 @@
 class IceTerrainDeserializer : public TerrainDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static IceTerrainDeserializer* create();
 
 	static const std::string MapKeyTerrainTypeIce;
 
 private:
 	typedef TerrainDeserializer super;
+	
 	IceTerrainDeserializer();
 	~IceTerrainDeserializer();
-
-	static IceTerrainDeserializer* instance;
 };

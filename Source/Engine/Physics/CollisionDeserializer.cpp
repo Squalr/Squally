@@ -1,30 +1,20 @@
 #include "CollisionDeserializer.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
-
-#include "Engine/GlobalDirector.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-CollisionDeserializer* CollisionDeserializer::instance = nullptr;
-
-void CollisionDeserializer::registerGlobalNode()
+CollisionDeserializer* CollisionDeserializer::create()
 {
-	if (CollisionDeserializer::instance == nullptr)
-	{
-		CollisionDeserializer::instance = new CollisionDeserializer();
+	CollisionDeserializer* instance = new CollisionDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(CollisionDeserializer::instance);
-	}
+	return instance;
 }
 
-CollisionDeserializer::CollisionDeserializer()
+CollisionDeserializer::CollisionDeserializer() : super(CollisionObject::MapKeyTypeCollision)
 {
 }
 
@@ -32,58 +22,44 @@ CollisionDeserializer::~CollisionDeserializer()
 {
 }
 
-void CollisionDeserializer::initializeListeners()
+void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
-	super::initializeListeners();
+	ValueMap properties = args->properties;
+	std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
 
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* args) { this->onDeserializationRequest((DeserializationEvents::ObjectDeserializationRequestArgs*)args->getUserData()); }
-	);
+	float width = properties.at(GameObject::MapKeyWidth).asFloat();
+	float height = properties.at(GameObject::MapKeyHeight).asFloat();
+	float x = properties.at(GameObject::MapKeyXPosition).asFloat() + width / 2.0f;
+	float y = properties.at(GameObject::MapKeyYPosition).asFloat() + height / 2.0f;
+	PhysicsBody* physicsBody = nullptr;
 
-	this->addGlobalEventListener(deserializationRequestListener);
-}
-
-void CollisionDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
-{
-	if (args->typeName == CollisionObject::MapKeyTypeCollision)
+	if (GameUtils::keyExists(properties, GameObject::MapKeyPoints))
 	{
-		ValueMap properties = args->properties;
-		std::string deserializedCollisionName = properties.at(SerializableObject::MapKeyName).asString();
-		float width = properties.at(SerializableObject::MapKeyWidth).asFloat();
-		float height = properties.at(SerializableObject::MapKeyHeight).asFloat();
-		float x = properties.at(SerializableObject::MapKeyXPosition).asFloat() + width / 2.0f;
-		float y = properties.at(SerializableObject::MapKeyYPosition).asFloat() + height / 2.0f;
-		PhysicsBody* physicsBody = nullptr;
+		ValueVector polygonPoints = (properties.at(GameObject::MapKeyPoints).asValueVector());
 
-		if (GameUtils::keyExists(properties, SerializableObject::MapKeyPoints))
+		Vec2* points = new Vec2[polygonPoints.size()];
+		int index = 0;
+
+		for (auto it = polygonPoints.begin(); it != polygonPoints.end(); ++it)
 		{
-			ValueVector polygonPoints = (properties.at(SerializableObject::MapKeyPoints).asValueVector());
+			auto point = it->asValueMap();
 
-			Vec2* points = new Vec2[polygonPoints.size()];
-			int index = 0;
+			float deltaX = point.at(GameObject::MapKeyXPosition).asFloat();
+			float deltaY = point.at(GameObject::MapKeyYPosition).asFloat();
 
-			for (auto it = polygonPoints.begin(); it != polygonPoints.end(); ++it)
-			{
-				auto point = it->asValueMap();
-
-				float deltaX = point.at(SerializableObject::MapKeyXPosition).asFloat();
-				float deltaY = point.at(SerializableObject::MapKeyYPosition).asFloat();
-
-				// Negate the Y since we're operating in a different coordinate system
-				points[index++] = Vec2(deltaX, -deltaY);
-			}
-
-			physicsBody = PhysicsBody::createPolygon(points, polygonPoints.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
-		}
-		else
-		{
-			physicsBody = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+			// Negate the Y since we're operating in a different coordinate system
+			points[index++] = Vec2(deltaX, -deltaY);
 		}
 
-		CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, deserializedCollisionName, false, false);
-
-		// Fire an event indicating successful deserialization
-		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(collisionObject));
+		physicsBody = PhysicsBody::createPolygon(points, polygonPoints.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
 	}
+	else
+	{
+		physicsBody = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+	}
+
+	CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, name, false, false);
+
+	// Fire an event indicating successful deserialization
+	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(collisionObject));
 }

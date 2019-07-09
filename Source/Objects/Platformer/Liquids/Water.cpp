@@ -24,7 +24,7 @@ Water* Water::create(ValueMap& initProperties)
 
 Water::Water(ValueMap& initProperties) : super(initProperties)
 {
-	Size waterSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
+	Size waterSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	
 	this->waterCollision = CollisionObject::create(PhysicsBody::createBox(waterSize), (CollisionType)PlatformerCollisionType::Water, false, false);
 

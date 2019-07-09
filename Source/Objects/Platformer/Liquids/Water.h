@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ namespace cocos2d
 class CollisionObject;
 class HackableData;
 
-class Water : public SerializableObject
+class Water : public GameObject
 {
 public:
 	static Water* create(cocos2d::ValueMap& initProperties);
@@ -27,7 +27,7 @@ protected:
 	void applyWaterForce(const std::vector<CollisionObject*>& targets, float dt);
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 
 	CollisionObject* waterCollision;
 

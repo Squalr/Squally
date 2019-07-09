@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
-class CameraFocus : public SerializableObject
+class CameraFocus : public GameObject
 {
 public:
 	static CameraFocus* create(cocos2d::ValueMap& initProperties);
@@ -16,7 +16,7 @@ public:
 	static const std::string MapKeyScrollType;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 	CameraFocus(cocos2d::ValueMap& initProperties);
 	~CameraFocus();
 

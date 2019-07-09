@@ -35,7 +35,7 @@ Trigger* Trigger::create(ValueMap& initProperties)
 
 Trigger::Trigger(ValueMap& initProperties) : super(initProperties)
 {
-	Size triggerSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
+	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(PhysicsBody::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->triggerEventName = this->mapEvent;
 	this->wasActivated = false;

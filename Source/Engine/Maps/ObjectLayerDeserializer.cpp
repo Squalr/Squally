@@ -1,33 +1,27 @@
 #include "ObjectLayerDeserializer.h"
 
-#include "cocos/2d/CCTMXObjectGroup.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableLayer.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/ObjectDeserializer.h"
+#include "Engine/Maps/MapLayer.h"
+#include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
 const std::string ObjectLayerDeserializer::MapKeyObjectLayer = "objects";
-ObjectLayerDeserializer* ObjectLayerDeserializer::instance = nullptr;
 
-void ObjectLayerDeserializer::registerGlobalNode()
+ObjectLayerDeserializer* ObjectLayerDeserializer::create()
 {
-	if (ObjectLayerDeserializer::instance == nullptr)
-	{
-		ObjectLayerDeserializer::instance = new ObjectLayerDeserializer();
+	ObjectLayerDeserializer* instance = new ObjectLayerDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(ObjectLayerDeserializer::instance);
-	}
+	return instance;
 }
 
-ObjectLayerDeserializer::ObjectLayerDeserializer()
+ObjectLayerDeserializer::ObjectLayerDeserializer() : super(ObjectLayerDeserializer::MapKeyObjectLayer)
 {
 }
 
@@ -35,50 +29,16 @@ ObjectLayerDeserializer::~ObjectLayerDeserializer()
 {
 }
 
-void ObjectLayerDeserializer::initializeListeners()
+void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
 {
-	super::initializeListeners();
-
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::RequestLayerDeserializeEvent,
-		[=](EventCustom* eventCustom)
-		{
-			DeserializationEvents::LayerDeserializationRequestArgs* args = static_cast<DeserializationEvents::LayerDeserializationRequestArgs*>(eventCustom->getUserData());
-			
-			if (args != nullptr)
-			{
-				this->onDeserializationRequest(args);
-			}
-		}
-	);
-
-	this->addGlobalEventListener(deserializationRequestListener);
-}
-
-void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
-{
-	ValueMap properties = args->objectGroup->getProperties();
-
-	if (!GameUtils::keyExists(properties, SerializableLayer::KeyType))
-	{
-		return;
-	}
-
-	std::string type = properties.at(SerializableLayer::KeyType).asString();
-
-	if (type != ObjectLayerDeserializer::MapKeyObjectLayer)
-	{
-		return;
-	}
-
-	std::vector<SerializableObject*> deserializedObjects = std::vector<SerializableObject*>();
-	std::string name = args->objectGroup->getGroupName();
-	ValueVector objects = args->objectGroup->getObjects();
+	std::vector<GameObject*> deserializedObjects = std::vector<GameObject*>();
+	std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
+	ValueVector objects = args->objects;
 
 	// Callback to receive deserialized layers as they are parsed by their deserializers
-	auto onDeserializeCallback = [&](DeserializationEvents::ObjectDeserializationArgs args)
+	auto onDeserializeCallback = [&](ObjectDeserializer::ObjectDeserializationArgs args)
 	{
-		deserializedObjects.push_back(args.serializableObject);
+		deserializedObjects.push_back(args.gameObject);
 	};
 
 	// Fire deserialization events for objects
@@ -90,57 +50,57 @@ void ObjectLayerDeserializer::onDeserializationRequest(DeserializationEvents::La
 			std::string typeName = "";
 
 			// Append additional map metadata properties to object at load time to assist in deserialization
-			object[SerializableObject::MapKeyMetaIsIsometric] = args->mapMeta.isIsometric;
-			object[SerializableObject::MapKeyMetaMapWidth] = args->mapMeta.mapSize.width;
-			object[SerializableObject::MapKeyMetaMapHeight] = args->mapMeta.mapSize.height;
-			object[SerializableObject::MapKeyMetaMapIdentifier] = args->mapMeta.mapIdentifier;
+			object[GameObject::MapKeyMetaIsIsometric] = args->isIsometric;
+			object[GameObject::MapKeyMetaMapWidth] = args->mapSize.width;
+			object[GameObject::MapKeyMetaMapHeight] = args->mapSize.height;
+			object[GameObject::MapKeyMetaMapIdentifier] = args->mapIdentifier;
 
-			if (!GameUtils::keyExists(object, SerializableObject::MapKeyType))
+			if (!GameUtils::keyExists(object, GameObject::MapKeyType))
 			{
 				CCLOG("Missing type on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::MapKeyName))
+			if (!GameUtils::keyExists(object, GameObject::MapKeyName))
 			{
 				CCLOG("Missing name on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::MapKeyWidth))
+			if (!GameUtils::keyExists(object, GameObject::MapKeyWidth))
 			{
 				CCLOG("Missing width on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::MapKeyHeight))
+			if (!GameUtils::keyExists(object, GameObject::MapKeyHeight))
 			{
 				CCLOG("Missing height on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::MapKeyXPosition))
+			if (!GameUtils::keyExists(object, GameObject::MapKeyXPosition))
 			{
 				CCLOG("Missing x position on object");
 				continue;
 			}
 
-			if (!GameUtils::keyExists(object, SerializableObject::MapKeyYPosition))
+			if (!GameUtils::keyExists(object, GameObject::MapKeyYPosition))
 			{
 				CCLOG("Missing y position on object");
 				continue;
 			}
 
-			typeName = object.at(SerializableObject::MapKeyType).asString();
+			typeName = object.at(GameObject::MapKeyType).asString();
 
 			// Fire event requesting the deserialization of this object
-			DeserializationEvents::TriggerRequestObjectDeserialize(DeserializationEvents::ObjectDeserializationRequestArgs(
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				typeName,
 				object,
 				onDeserializeCallback
-			));
+			);
 		}
 	}
 
-	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(SerializableLayer::create(properties, name, deserializedObjects), args->objectGroup->layerIndex));
+	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(MapLayer::create(properties, name, deserializedObjects), args->objectGroup->layerIndex));
 }

@@ -1,15 +1,15 @@
 #pragma once
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/MapLayer.h"
 
 class Hud;
 
-class Background : public SerializableLayer
+class Background : public MapLayer
 {
 public:
 	static Background* create(cocos2d::ValueMap& initProperties, std::string name, cocos2d::Node* child);
 
 private:
-	typedef SerializableLayer super;
+	typedef MapLayer super;
 	Background(cocos2d::ValueMap& properties, std::string name, Node* child);
 	~Background();
 

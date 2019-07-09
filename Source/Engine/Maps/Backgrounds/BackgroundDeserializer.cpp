@@ -1,9 +1,7 @@
 #include "BackgroundDeserializer.h"
 
 #include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCTMXObjectGroup.h"
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/GameUtils.h"
@@ -12,61 +10,43 @@
 
 using namespace cocos2d;
 
-BackgroundDeserializer* BackgroundDeserializer::instance = nullptr;
 const std::string BackgroundDeserializer::MapKeyBackgroundLayer = "background";
 
-void BackgroundDeserializer::registerGlobalNode()
+BackgroundDeserializer* BackgroundDeserializer::create()
 {
-	if (BackgroundDeserializer::instance == nullptr)
-	{
-		BackgroundDeserializer::instance = new BackgroundDeserializer();
+	BackgroundDeserializer* instance = new BackgroundDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(BackgroundDeserializer::instance);
-	}
+	return instance;
 }
 
-void BackgroundDeserializer::initializeListeners()
+BackgroundDeserializer::BackgroundDeserializer() : super(BackgroundDeserializer::MapKeyBackgroundLayer)
 {
-	super::initializeListeners();
-
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::RequestLayerDeserializeEvent,
-		[=](EventCustom* eventCustom)
-		{
-			DeserializationEvents::LayerDeserializationRequestArgs* args = static_cast<DeserializationEvents::LayerDeserializationRequestArgs*>(eventCustom->getUserData());
-			
-			if (args != nullptr)
-			{
-				this->onDeserializationRequest(args);
-			}
-		}
-	);
-
-	this->addGlobalEventListener(deserializationRequestListener);
 }
 
-void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args)
+BackgroundDeserializer::~BackgroundDeserializer()
 {
-	std::string name = args->objectGroup->getGroupName();
-	ValueMap properties = args->objectGroup->getProperties();
+}
 
-	if (GameUtils::getKeyOrDefault(properties, SerializableLayer::KeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
+void BackgroundDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
+{
+	std::string name = args->name;
+
+	if (GameUtils::getKeyOrDefault(args->properties, MapLayer::KeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
 	{
 		return;
 	}
 
 	args->handled = true;
 
-	if (!GameUtils::keyExists(properties, BackgroundDeserializer::MapKeyBackgroundLayer))
+	if (!GameUtils::keyExists(args->properties, BackgroundDeserializer::MapKeyBackgroundLayer))
 	{
 		CCLOG("No background property on background layer");
 		return;
 	}
 
-	std::string background = properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
+	std::string background = args->properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* sprite = Sprite::create("Platformer/Backgrounds/" + background + ".png");
@@ -77,5 +57,5 @@ void BackgroundDeserializer::onDeserializationRequest(DeserializationEvents::Lay
 		return;
 	}
 
-	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Background::create(properties, name, sprite), args->objectGroup->layerIndex));
+	args->onDeserializeCallback(DeserializationEvents::LayerDeserializationArgs(Background::create(args->properties, name, sprite), args->objectGroup->layerIndex));
 }

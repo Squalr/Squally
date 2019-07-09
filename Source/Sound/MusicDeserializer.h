@@ -1,19 +1,19 @@
 #pragma once
 
-#include "Engine/Events/DeserializationEvents.h"
-#include "Engine/GlobalNode.h"
+#include "Engine/Maps/LayerDeserializer.h"
 
-class MusicDeserializer : public GlobalNode
+class MusicDeserializer : public LayerDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static MusicDeserializer* create();
 
 private:
-	typedef GlobalNode super;
-	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
+	typedef LayerDeserializer super;
+	MusicDeserializer();
+	~MusicDeserializer();
 
-	static const std::string MapKeyDelayProperty;
+	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args);
+
 	static const std::string MapKeyMusicProperty;
-	static MusicDeserializer* instance;
+	static const std::string MapKeyDelayProperty;
 };

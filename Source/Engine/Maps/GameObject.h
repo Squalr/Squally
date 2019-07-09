@@ -11,18 +11,9 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-namespace tinyxml2
-{
-	class XMLDocument;
-	class XMLElement;
-}
-
-class SerializableObject : public SmartNode
+class GameObject : public SmartNode
 {
 public:
-	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement, cocos2d::Size mapUnitSize,
-			cocos2d::Size mapTileSize);
-
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
 	void setZSorted(bool zSorted);
@@ -64,8 +55,8 @@ public:
 	static const std::string MapKeyPropertyValue;
 
 protected:
-	SerializableObject(const cocos2d::ValueMap& initProperties);
-	virtual ~SerializableObject();
+	GameObject(const cocos2d::ValueMap& initProperties);
+	virtual ~GameObject();
 	
 	void onEnter() override;
 	void initializeListeners() override;

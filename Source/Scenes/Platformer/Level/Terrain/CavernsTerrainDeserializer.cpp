@@ -1,25 +1,20 @@
 #include "CavernsTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string CavernsTerrainDeserializer::MapKeyTerrainTypeCaverns = "caverns";
-CavernsTerrainDeserializer* CavernsTerrainDeserializer::instance = nullptr;
 
-void CavernsTerrainDeserializer::registerGlobalNode()
+CavernsTerrainDeserializer* CavernsTerrainDeserializer::create()
 {
-	if (CavernsTerrainDeserializer::instance == nullptr)
-	{
-		CavernsTerrainDeserializer::instance = new CavernsTerrainDeserializer();
+	CavernsTerrainDeserializer* instance = new CavernsTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(CavernsTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 CavernsTerrainDeserializer::CavernsTerrainDeserializer() : TerrainDeserializer(

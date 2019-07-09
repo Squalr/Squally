@@ -11,7 +11,7 @@ class CipherPuzzleData;
 class HexusOpponentData;
 class PlatformerEnemy;
 class Squally;
-class SerializableMap;
+class GameMap;
 
 class NavigationEvents
 {

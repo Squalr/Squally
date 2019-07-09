@@ -26,7 +26,7 @@ CombatSpawn* CombatSpawn::create(ValueMap& initProperties)
 	return instance;
 }
 
-CombatSpawn::CombatSpawn(ValueMap& initProperties) : SerializableObject(initProperties)
+CombatSpawn::CombatSpawn(ValueMap& initProperties) : GameObject(initProperties)
 {
 	this->spawnType = SpawnType::Player;
 	this->spawnOrder = 1;

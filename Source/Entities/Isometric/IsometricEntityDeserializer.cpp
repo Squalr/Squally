@@ -1,30 +1,23 @@
 #include "IsometricEntityDeserializer.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
-#include "Engine/GlobalDirector.h"
 #include "Entities/Isometric/IsometricEntities.h"
 
 using namespace cocos2d;
 
-IsometricEntityDeserializer* IsometricEntityDeserializer::instance = nullptr;
 const std::string IsometricEntityDeserializer::KeyTypeIsometricEntity = "iso_entity";
 
-void IsometricEntityDeserializer::registerGlobalNode()
+IsometricEntityDeserializer* IsometricEntityDeserializer::create()
 {
-	if (IsometricEntityDeserializer::instance == nullptr)
-	{
-		IsometricEntityDeserializer::instance = new IsometricEntityDeserializer();
+	IsometricEntityDeserializer* instance = new IsometricEntityDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(IsometricEntityDeserializer::instance);
-	}
+	return instance;
 }
 
-IsometricEntityDeserializer::IsometricEntityDeserializer()
+IsometricEntityDeserializer::IsometricEntityDeserializer() : super(IsometricEntityDeserializer::KeyTypeIsometricEntity)
 {
 }
 
@@ -32,56 +25,33 @@ IsometricEntityDeserializer::~IsometricEntityDeserializer()
 {
 }
 
-void IsometricEntityDeserializer::initializeListeners()
+void IsometricEntityDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
-	super::initializeListeners();
+	ValueMap properties = args->properties;
+	std::string name = properties.at(GameObject::MapKeyName).asString();
+	GameObject* newEntity = nullptr;
 
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* eventCustom)
-		{
-			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
-
-			if (args != nullptr)
-			{
-				this->onDeserializationRequest(args);
-			}
-		}
-	);
-
-	this->addGlobalEventListener(deserializationRequestListener);
-}
-
-void IsometricEntityDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
-{
-	if (args->typeName == IsometricEntityDeserializer::KeyTypeIsometricEntity)
+	if (name == IsometricSqually::KeySquallyProperty)
 	{
-		ValueMap properties = args->properties;
-		std::string name = properties.at(SerializableObject::MapKeyName).asString();
-		SerializableObject* newEntity = nullptr;
+		newEntity = IsometricSqually::deserialize(properties);
+	}
+	else if (name == IsometricBall::KeyBallProperty)
+	{
+		newEntity = IsometricBall::deserialize(properties);
+	}
+	else if (name == Shiftman::KeyShiftmanProperty)
+	{
+		newEntity = Shiftman::deserialize(properties);
+	}
+	else
+	{
+		CCLOG("Missing type on entity");
+		return;
+	}
 
-		if (name == IsometricSqually::KeySquallyProperty)
-		{
-			newEntity = IsometricSqually::deserialize(properties);
-		}
-		else if (name == IsometricBall::KeyBallProperty)
-		{
-			newEntity = IsometricBall::deserialize(properties);
-		}
-		else if (name == Shiftman::KeyShiftmanProperty)
-		{
-			newEntity = Shiftman::deserialize(properties);
-		}
-		else
-		{
-			CCLOG("Missing type on entity");
-			return;
-		}
-
-		// Fire an event indicating successful deserialization
-		if (newEntity != nullptr)
-		{
-			args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newEntity));
-		}
+	// Fire an event indicating successful deserialization
+	if (newEntity != nullptr)
+	{
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(newEntity));
 	}
 }

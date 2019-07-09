@@ -20,11 +20,11 @@ TrapDoorFrame* TrapDoorFrame::create(ValueMap& initProperties)
 	return instance;
 }
 
-TrapDoorFrame::TrapDoorFrame(ValueMap& initProperties) : SerializableObject(initProperties)
+TrapDoorFrame::TrapDoorFrame(ValueMap& initProperties) : GameObject(initProperties)
 {
 	this->trapDoorFrame = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoorFrame);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
 
 	this->trapDoorFrame->setFlippedX(this->isFlipped);
 

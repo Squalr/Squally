@@ -20,7 +20,7 @@ using namespace cocos2d;
 
 const std::string HackableObject::MapKeyShowClippy = "show-clippy";
 
-HackableObject::HackableObject(const ValueMap& properties) : SerializableObject(properties)
+HackableObject::HackableObject(const ValueMap& properties) : GameObject(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();

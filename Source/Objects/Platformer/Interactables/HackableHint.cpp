@@ -25,7 +25,7 @@ HackableHint* HackableHint::create(ValueMap& initProperties)
 
 HackableHint::HackableHint(ValueMap& initProperties) : super(initProperties)
 {
-	Size collisionSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
+	Size collisionSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	
 	this->hintCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->interactMenu = InteractMenu::create(ConstantString::create("[TAB]"));

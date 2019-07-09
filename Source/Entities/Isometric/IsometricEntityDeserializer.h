@@ -1,21 +1,18 @@
 #pragma once
 
-#include "Engine/GlobalNode.h"
-#include "Engine/Events/DeserializationEvents.h"
+#include "Engine/Maps/ObjectDeserializer.h"
 
-class IsometricEntityDeserializer : public GlobalNode
+class IsometricEntityDeserializer : public ObjectDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static IsometricEntityDeserializer* create();
 
 private:
-	typedef GlobalNode super;
+	typedef ObjectDeserializer super;
 	IsometricEntityDeserializer();
 	~IsometricEntityDeserializer();
 
-	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 
-	static IsometricEntityDeserializer* instance;
 	static const std::string KeyTypeIsometricEntity;
 };

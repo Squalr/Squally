@@ -30,7 +30,7 @@ CameraScrollTracker* CameraScrollTracker::create(ValueMap& initProperties)
 	return instance;
 }
 
-CameraScrollTracker::CameraScrollTracker(ValueMap& initProperties) : SerializableObject(initProperties)
+CameraScrollTracker::CameraScrollTracker(ValueMap& initProperties) : GameObject(initProperties)
 {
 	this->zoom = GameUtils::getKeyOrDefault(initProperties, CameraScrollTracker::MapKeyZoom, Value(1.0f)).asFloat();
 	this->trackTarget = Node::create();

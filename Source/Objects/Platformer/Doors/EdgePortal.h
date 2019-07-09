@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ namespace cocos2d
 class CollisionObject;
 class HackableData;
 
-class EdgePortal : public SerializableObject
+class EdgePortal : public GameObject
 {
 public:
 	static EdgePortal* create(cocos2d::ValueMap& initProperties);
@@ -26,7 +26,7 @@ protected:
 	void initializeListeners() override;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 
 	CollisionObject* edgePortalCollision;
 	CollisionObject* edgePortalHintCollision;

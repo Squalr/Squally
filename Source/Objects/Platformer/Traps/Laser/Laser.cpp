@@ -40,7 +40,7 @@ Laser::Laser(ValueMap& initProperties) : super(initProperties)
 	this->maxLaserCountDown = 4.0f;
 	this->isRunningAnimation = false;
 
-	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
+	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
 	this->laserAnimation = LaserAnimation::create(height);
 	this->laserCollision = CollisionObject::create(PhysicsBody::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, false, false);

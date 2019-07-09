@@ -25,7 +25,7 @@ ValueInitializer* ValueInitializer::create(ValueMap& initProperties)
 
 ValueInitializer::ValueInitializer(ValueMap& initProperties) : super(initProperties)
 {
-	std::string name = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyName, Value("")).asString();
+	std::string name = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
 	this->value = 0;
     
     std::regex re = std::regex(ValueInitializer::IntegerRegex);

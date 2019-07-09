@@ -1,25 +1,20 @@
 #include "FrostTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string FrostTerrainDeserializer::MapKeyTerrainTypeFrost = "frost";
-FrostTerrainDeserializer* FrostTerrainDeserializer::instance = nullptr;
 
-void FrostTerrainDeserializer::registerGlobalNode()
+FrostTerrainDeserializer* FrostTerrainDeserializer::create()
 {
-	if (FrostTerrainDeserializer::instance == nullptr)
-	{
-		FrostTerrainDeserializer::instance = new FrostTerrainDeserializer();
+	FrostTerrainDeserializer* instance = new FrostTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(FrostTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 FrostTerrainDeserializer::FrostTerrainDeserializer() : TerrainDeserializer(

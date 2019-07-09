@@ -5,7 +5,7 @@
 class GrassTerrainDeserializer : public TerrainDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static GrassTerrainDeserializer* create();
 
 	static const std::string MapKeyTerrainTypeGrass;
 

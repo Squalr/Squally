@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/MapLayer.h"
 
 using namespace cocos2d;
 
@@ -9,7 +9,7 @@ namespace cocos2d
 	class ParticleSystem;
 }
 
-class Fireflies : public SerializableLayer
+class Fireflies : public MapLayer
 {
 public:
 	static Fireflies* create(cocos2d::ValueMap& properties, std::string name);
@@ -17,7 +17,7 @@ public:
 	static const std::string MapKeyWeatherLayerFireflies;
 
 private:
-	typedef SerializableLayer super;
+	typedef MapLayer super;
 	Fireflies(cocos2d::ValueMap& properties, std::string name);
 	~Fireflies();
 

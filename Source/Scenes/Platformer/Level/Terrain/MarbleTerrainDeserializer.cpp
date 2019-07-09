@@ -1,25 +1,20 @@
 #include "MarbleTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string MarbleTerrainDeserializer::MapKeyTerrainTypeMarble = "marble";
-MarbleTerrainDeserializer* MarbleTerrainDeserializer::instance = nullptr;
 
-void MarbleTerrainDeserializer::registerGlobalNode()
+MarbleTerrainDeserializer* MarbleTerrainDeserializer::create()
 {
-	if (MarbleTerrainDeserializer::instance == nullptr)
-	{
-		MarbleTerrainDeserializer::instance = new MarbleTerrainDeserializer();
+	MarbleTerrainDeserializer* instance = new MarbleTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(MarbleTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 MarbleTerrainDeserializer::MarbleTerrainDeserializer() : TerrainDeserializer(

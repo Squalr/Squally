@@ -1,25 +1,20 @@
 #include "CastleTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string CastleTerrainDeserializer::MapKeyTerrainTypeCastle = "castle";
-CastleTerrainDeserializer* CastleTerrainDeserializer::instance = nullptr;
 
-void CastleTerrainDeserializer::registerGlobalNode()
+CastleTerrainDeserializer* CastleTerrainDeserializer::create()
 {
-	if (CastleTerrainDeserializer::instance == nullptr)
-	{
-		CastleTerrainDeserializer::instance = new CastleTerrainDeserializer();
+	CastleTerrainDeserializer* instance = new CastleTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(CastleTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 CastleTerrainDeserializer::CastleTerrainDeserializer() : TerrainDeserializer(

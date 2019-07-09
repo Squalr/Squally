@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/MapLayer.h"
 
-class PhysicsLayer : public SerializableLayer
+class PhysicsLayer : public MapLayer
 {
 public:
 	static PhysicsLayer* create(cocos2d::ValueMap& properties, std::string name);
@@ -13,7 +13,7 @@ protected:
 	void onEnter() override;
 
 private:
-	typedef SerializableLayer super;
+	typedef MapLayer super;
 	PhysicsLayer(cocos2d::ValueMap& properties, std::string name);
 	~PhysicsLayer();
 

@@ -1,4 +1,4 @@
-#include "SerializableMap.h"
+#include "GameMap.h"
 
 #include "cocos/2d/CCFastTMXLayer.h"
 #include "cocos/2d/CCFastTMXTiledMap.h"
@@ -7,14 +7,13 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/platform/CCFileUtils.h"
 
-#include <tinyxml2.h>
-
 #include "Engine/Events/DeserializationEvents.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/ObjectifiedTile.h"
-#include "Engine/Maps/SerializableLayer.h"
-#include "Engine/Maps/SerializableTileLayer.h"
+#include "Engine/Maps/LayerDeserializer.h"
+#include "Engine/Maps/MapLayer.h"
+#include "Engine/Maps/TileLayer.h"
 #include "Engine/SmartNode.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -22,16 +21,15 @@
 
 #include "Resources/MapResources.h"
 
-const std::string SerializableMap::KeyTypeCollision = "collision";
+const std::string GameMap::KeyTypeCollision = "collision";
 
 using namespace cocos2d;
 
-SerializableMap::SerializableMap(std::string mapFileName, const std::vector<SerializableLayer*>& layers,
-		Size unitSize, Size tileSize, MapOrientation orientation)
+GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation)
 {
-	this->collisionLayers = std::vector<SerializableTileLayer*>();
-	this->serializableLayers = std::vector<SerializableLayer*>();
-	this->tileLayers = std::vector<SerializableTileLayer*>();
+	this->collisionLayers = std::vector<TileLayer*>();
+	this->mapLayers = std::vector<MapLayer*>();
+	this->tileLayers = std::vector<TileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
@@ -40,7 +38,7 @@ SerializableMap::SerializableMap(std::string mapFileName, const std::vector<Seri
 	// Initialize in constructor to pick up early object spawn events
 	this->initializeListeners();
 
-	for (auto it = layers.begin(); it != layers.end(); it++)
+	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		this->appendLayer(*it);
 	}
@@ -51,18 +49,18 @@ SerializableMap::SerializableMap(std::string mapFileName, const std::vector<Seri
 	}
 }
 
-SerializableMap::~SerializableMap()
+GameMap::~GameMap()
 {
 }
 
-void SerializableMap::onEnter()
+void GameMap::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void SerializableMap::initializeListeners()
+void GameMap::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -117,14 +115,14 @@ void SerializableMap::initializeListeners()
 	}));
 }
 
-void SerializableMap::update(float dt)
+void GameMap::update(float dt)
 {
 	super::update(dt);
 
 	this->isometricZSort(this);
 }
 
-SerializableMap* SerializableMap::deserialize(std::string mapFileName)
+GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 
@@ -133,14 +131,14 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 		return nullptr;
 	}
 
-	std::map<int, SerializableLayer*> deserializedLayerMap = std::map<int, SerializableLayer*>();
+	std::map<int, MapLayer*> deserializedLayerMap = std::map<int, MapLayer*>();
 	std::vector<cocos_experimental::TMXLayer*> tileLayers = std::vector<cocos_experimental::TMXLayer*>();
-	std::vector<SerializableLayer*> deserializedLayers = std::vector<SerializableLayer*>();
+	std::vector<MapLayer*> deserializedLayers = std::vector<MapLayer*>();
 
 	// Callback to receive deserialized layers as they are parsed by their deserializers
-	auto onDeserializeCallback = [&](DeserializationEvents::LayerDeserializationArgs args)
+	auto onDeserializeCallback = [&](LayerDeserializer::LayerDeserializationArgs args)
 	{
-		deserializedLayerMap[args.layerIndex] = args.serializableLayer;
+		deserializedLayerMap[args.layerIndex] = args.mapLayer;
 	};
 
 	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
@@ -154,15 +152,28 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
-		DeserializationEvents::TriggerRequestLayerDeserialize(DeserializationEvents::LayerDeserializationRequestArgs(
-			*it,
-			DeserializationEvents::DeserializationMapMeta(
-				mapFileName,
-				mapSize,
-				isIsometric
-			),
+		std::string layerType = GameUtils::getKeyOrDefault((*it)->getProperties(), MapLayer::KeyType, Value("")).asString();
+
+		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
+			(*it)->getProperties(),
+			mapFileName,
+			mapSize,
+			isIsometric,
 			onDeserializeCallback
-		));
+		);
+
+		for (auto deserializerIt = layerDeserializers.begin(); deserializerIt != layerDeserializers.end(); it++)
+		{
+			if ((*deserializerIt)->getLayerType() == layerType)
+			{
+				(*deserializerIt)->deserialize(&args);
+			}
+
+			if (args.handled)
+			{
+				break;
+			}
+		}
 	}
 
 	// Pull out tile layers
@@ -179,7 +190,7 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
 	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
 	{
-		deserializedLayerMap[(*it)->layerIndex] = SerializableTileLayer::deserialize((*it));
+		deserializedLayerMap[(*it)->layerIndex] = TileLayer::deserialize((*it));
 	}
 
 	// Convert from map to ordered vector
@@ -189,86 +200,23 @@ SerializableMap* SerializableMap::deserialize(std::string mapFileName)
 	}
 
 	// Create a special hud_target layer for top-level display items
-	deserializedLayers.push_back(SerializableLayer::create({ { SerializableLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target", { }));
+	deserializedLayers.push_back(MapLayer::create({ { MapLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target", { }));
 
-	SerializableMap* instance = new SerializableMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
+	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
 	instance->autorelease();
 
 	return instance;
 }
 
-bool SerializableMap::serialize()
-{
-	tinyxml2::XMLDocument* documentRoot = new (std::nothrow)tinyxml2::XMLDocument();
-	tinyxml2::XMLDeclaration* declaration = documentRoot->NewDeclaration(("xml version=" + StrUtils::quote("1.0") + " encoding=" + StrUtils::quote("UTF-8")).c_str());
-	documentRoot->LinkEndChild(declaration);
-
-	tinyxml2::XMLElement* mapElement = documentRoot->NewElement("map");
-	mapElement->SetAttribute("version", "1.0");
-	mapElement->SetAttribute("tiledversion", "1.0.3");
-
-	if (this->isPlatformer())
-	{
-		mapElement->SetAttribute("orientation", "orthogonal");
-	}
-	else if (this->isIsometric())
-	{
-		mapElement->SetAttribute("orientation", "isometric");
-	}
-
-	mapElement->SetAttribute("renderorder", "right-down");
-	mapElement->SetAttribute("width", std::to_string((int)this->getMapUnitSize().width).c_str());
-	mapElement->SetAttribute("height", std::to_string((int)this->getMapUnitSize().height).c_str());
-	mapElement->SetAttribute("tilewidth", std::to_string((int)this->getMapTileSize().width).c_str());
-	mapElement->SetAttribute("tileheight", std::to_string((int)this->getMapTileSize().height).c_str());
-
-	// TODO: This is not isometric friendly
-	Sprite* tileMap = Sprite::create(MapResources::TileMap);
-
-	tinyxml2::XMLElement* tileSetElement = documentRoot->NewElement("tileset");
-	tileSetElement->SetAttribute("firstgid", "1");
-	tileSetElement->SetAttribute("name", "TileMap");
-	tileSetElement->SetAttribute("tilewidth", std::to_string((int)this->getMapTileSize().width).c_str());
-	tileSetElement->SetAttribute("tileheight", std::to_string((int)this->getMapTileSize().height).c_str());
-	tileSetElement->SetAttribute("tilecount", std::to_string(0).c_str()); // Unused
-	tileSetElement->SetAttribute("columns", std::to_string((int)tileMap->getContentSize().width / (int)this->getMapTileSize().width).c_str());
-
-	tinyxml2::XMLElement* gridElement = documentRoot->NewElement("grid");
-	gridElement->SetAttribute("width", std::to_string(64).c_str()); // Unused
-	gridElement->SetAttribute("height", std::to_string(64).c_str()); // Unused
-	tileSetElement->LinkEndChild(gridElement);
-
-	tinyxml2::XMLElement* imageElement = documentRoot->NewElement("image");
-	imageElement->SetAttribute("source", ("../" + StrUtils::replaceAll(MapResources::TileMap, "\\", "/")).c_str());
-	imageElement->SetAttribute("width", std::to_string((int)tileMap->getContentSize().width).c_str());
-	imageElement->SetAttribute("height", std::to_string((int)tileMap->getContentSize().height).c_str());
-	tileSetElement->LinkEndChild(imageElement);
-
-	mapElement->LinkEndChild(tileSetElement);
-
-	// Serialize all layers
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
-	{
-		(*it)->serialize(documentRoot, mapElement, this->getMapUnitSize(), this->getMapTileSize());
-	}
-
-	// TODO: count obj ids
-	mapElement->SetAttribute("nextobjectid", std::to_string(366).c_str());
-
-	documentRoot->LinkEndChild(mapElement);
-
-	return tinyxml2::XML_SUCCESS == documentRoot->SaveFile(FileUtils::getInstance()->fullPathForFilename(this->levelMapFileName + ".dbg.tmx").c_str());
-}
-
-std::string SerializableMap::getMapFileName()
+std::string GameMap::getMapFileName()
 {
 	return this->levelMapFileName;
 }
 
-void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
+void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 {
-	if (this->serializableLayers.empty() || args->objectToSpawn == nullptr)
+	if (this->mapLayers.empty() || args->objectToSpawn == nullptr)
 	{
 		return;
 	}
@@ -285,13 +233,13 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 	{
 		case ObjectEvents::SpawnMethod::Below:
 		{
-			std::vector<SerializableLayer*>::iterator prevIt = this->serializableLayers.end();
+			std::vector<MapLayer*>::iterator prevIt = this->mapLayers.end();
 
-			for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+			for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 			{
 				if (*it == args->sourceLayer)
 				{
-					if (prevIt != this->serializableLayers.end())
+					if (prevIt != this->mapLayers.end())
 					{
 						GameUtils::changeParent(args->objectToSpawn, (*prevIt), retainPosition, isReentry);
 					}
@@ -309,7 +257,7 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 		default:
 		case ObjectEvents::SpawnMethod::Above:
 		{
-			for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+			for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 			{
 				if (*it == args->sourceLayer)
 				{
@@ -322,24 +270,24 @@ void SerializableMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs*
 	}
 }
 
-void SerializableMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
+void GameMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
 {
-	if (this->serializableLayers.empty())
+	if (this->mapLayers.empty())
 	{
 		return;
 	}
 
-	this->serializableLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
+	this->mapLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
 }
 
-void SerializableMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
+void GameMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
 {
-	if (this->serializableLayers.empty())
+	if (this->mapLayers.empty())
 	{
 		return;
 	}
 
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		if ((*it)->isElevateTarget())
 		{
@@ -348,9 +296,9 @@ void SerializableMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs*
 	}
 }
 
-void SerializableMap::hackerModeEnable()
+void GameMap::hackerModeEnable()
 {
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		if (!(*it)->isHackable())
 		{
@@ -359,17 +307,17 @@ void SerializableMap::hackerModeEnable()
 	}
 }
 
-void SerializableMap::hackerModeDisable()
+void GameMap::hackerModeDisable()
 {
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		(*it)->setVisible(true);
 	}
 }
 
-void SerializableMap::hackerModeLayerFade()
+void GameMap::hackerModeLayerFade()
 {
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		if ((*it)->isHackable())
 		{
@@ -378,15 +326,15 @@ void SerializableMap::hackerModeLayerFade()
 	}
 }
 
-void SerializableMap::hackerModeLayerUnfade()
+void GameMap::hackerModeLayerUnfade()
 {
-	for (auto it = this->serializableLayers.begin(); it != this->serializableLayers.end(); it++)
+	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		(*it)->setOpacity(255);
 	}
 }
 
-Size SerializableMap::getMapSize()
+Size GameMap::getMapSize()
 {
 	Size unitSize = this->getMapUnitSize();
 	Size tileSize = this->getMapTileSize();
@@ -394,33 +342,33 @@ Size SerializableMap::getMapSize()
 	return Size(unitSize.width * tileSize.width, unitSize.height * tileSize.height);
 }
 
-Size SerializableMap::getMapUnitSize()
+Size GameMap::getMapUnitSize()
 {
 	return this->mapUnitSize;
 }
 
-Size SerializableMap::getMapTileSize()
+Size GameMap::getMapTileSize()
 {
 	return this->mapTileSize;
 }
 
-bool SerializableMap::isIsometric()
+bool GameMap::isIsometric()
 {
 	return this->orientation == MapOrientation::Isometric;
 }
-bool SerializableMap::isPlatformer()
+bool GameMap::isPlatformer()
 {
 	return this->orientation == MapOrientation::Platformer;
 }
 
-void SerializableMap::appendLayer(SerializableLayer* layer)
+void GameMap::appendLayer(MapLayer* mapLayer)
 {
-	this->serializableLayers.push_back(layer);
+	this->mapLayers.push_back(mapLayer);
 
-	this->addChild(layer);
+	this->addChild(mapLayer);
 }
 
-void SerializableMap::setCollisionLayersVisible(bool isVisible)
+void GameMap::setCollisionLayersVisible(bool isVisible)
 {
 	for (auto it = this->collisionLayers.begin(); it != this->collisionLayers.end(); it++)
 	{
@@ -428,19 +376,19 @@ void SerializableMap::setCollisionLayersVisible(bool isVisible)
 	}
 }
 
-std::vector<SerializableTileLayer*> SerializableMap::getCollisionLayers()
+std::vector<TileLayer*> GameMap::getCollisionLayers()
 {
 	return this->collisionLayers;
 }
 
-void SerializableMap::isometricZSort(Node* node)
+void GameMap::isometricZSort(Node* node)
 {
 	if (this->orientation != MapOrientation::Isometric || node == nullptr)
 	{
 		return;
 	}
 
-	SerializableObject* object = dynamic_cast<SerializableObject*>(node);
+	GameObject* object = dynamic_cast<GameObject*>(node);
 
 	// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
 	if (object != nullptr && object->isZSorted())
@@ -464,7 +412,7 @@ void SerializableMap::isometricZSort(Node* node)
 	}
 }
 
-void SerializableMap::isometricMapPreparation()
+void GameMap::isometricMapPreparation()
 {
 	if (this->orientation != MapOrientation::Isometric)
 	{
@@ -474,20 +422,20 @@ void SerializableMap::isometricMapPreparation()
 	// Flatten tile layers so all children are the immediate child of the layer (needed for Z sorting)
 	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
 	{
-		if (dynamic_cast<SerializableTileLayer*>(*it) != nullptr)
+		if (dynamic_cast<TileLayer*>(*it) != nullptr)
 		{
-			//// GameUtils::flattenNode(dynamic_cast<SerializableTileLayer*>(*it));
+			//// GameUtils::flattenNode(dynamic_cast<TileLayer*>(*it));
 		}
 	}
 
 	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
 	{
 		// Tile layers:
-		if (dynamic_cast<SerializableTileLayer*>(*it) != nullptr)
+		if (dynamic_cast<TileLayer*>(*it) != nullptr)
 		{
-			SerializableTileLayer* tileLayer = dynamic_cast<SerializableTileLayer*>(*it);
+			TileLayer* tileLayer = dynamic_cast<TileLayer*>(*it);
 
-			if (tileLayer->getType() == SerializableMap::KeyTypeCollision)
+			if (tileLayer->getType() == GameMap::KeyTypeCollision)
 			{
 				// Pull out collision layer
 				this->collisionLayers.push_back(tileLayer);
@@ -499,17 +447,17 @@ void SerializableMap::isometricMapPreparation()
 			}
 		}
 		// Object layers
-		else if (dynamic_cast<SerializableLayer*>(*it) != nullptr)
+		else if (dynamic_cast<MapLayer*>(*it) != nullptr)
 		{
-			SerializableLayer* objectLayer = dynamic_cast<SerializableLayer*>(*it);
+			MapLayer* objectLayer = dynamic_cast<MapLayer*>(*it);
 
 			// Iterate through remaining layers to find the next tile layer
 			for (auto itClone = std::vector<Node*>::iterator(it); itClone != this->getChildren().end(); itClone++)
 			{
-				SerializableTileLayer* nextTileLayer = dynamic_cast<SerializableTileLayer*>(*itClone);
+				TileLayer* nextTileLayer = dynamic_cast<TileLayer*>(*itClone);
 
 				// Pull out objects and inject them into the next highest tile layer (allows for proper dynamic Z sorting)
-				if (nextTileLayer != nullptr && nextTileLayer->getType() != SerializableMap::KeyTypeCollision)
+				if (nextTileLayer != nullptr && nextTileLayer->getType() != GameMap::KeyTypeCollision)
 				{
 					cocos2d::Vector<Node*> children = objectLayer->getChildren();
 

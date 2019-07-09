@@ -4,7 +4,7 @@
 #include "cocos/math/CCGeometry.h"
 
 #include "Engine/SmartNode.h"
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/MapLayer.h"
 
 namespace cocos2d
 {
@@ -20,13 +20,11 @@ namespace tinyxml2
 	class XMLElement;
 }
 
-class SerializableTileLayer : public SerializableLayer
+class TileLayer : public MapLayer
 {
 public:
-	static SerializableTileLayer* deserialize(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
+	static TileLayer* deserialize(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
 
-	void serialize(tinyxml2::XMLDocument* documentRoot, tinyxml2::XMLElement* parentElement,
-			cocos2d::Size mapUnitSize, cocos2d::Size mapTileSize) override;
 	std::string getType();
 	std::vector<std::vector<int>> getGidMap();
 
@@ -38,10 +36,10 @@ public:
 	static const std::string MapKeyPropertyEncodingValue;
 
 protected:
-	SerializableTileLayer(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
-	virtual ~SerializableTileLayer();
+	TileLayer(cocos2d::cocos_experimental::TMXLayer* initTileLayer);
+	virtual ~TileLayer();
 
 private:
-	typedef SerializableLayer super;
+	typedef MapLayer super;
 	cocos2d::cocos_experimental::TMXLayer* tileLayer;
 };

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 class CollisionObject;
 class SmartAnimationSequenceNode;
 
-class Doubloon : public SerializableObject
+class Doubloon : public GameObject
 {
 public:
 	static Doubloon* create(cocos2d::ValueMap& initProperties);
@@ -24,7 +24,7 @@ protected:
 	void onObjectStateLoaded() override;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 
 	void disableCollection();
 	SmartAnimationSequenceNode* doubloon;
