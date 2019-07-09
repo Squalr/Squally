@@ -1,8 +1,9 @@
 #include "PlatformerEntityDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Maps/GameObject.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
@@ -223,6 +224,7 @@
 #include "Entities/Platformer/Npcs/VoidStar/Ralston.h"
 #include "Entities/Platformer/Npcs/VoidStar/Xenon.h"
 #include "Entities/Platformer/Npcs/VoidStar/Ysara.h"
+#include "Entities/Platformer/Squally/Squally.h"
 
 using namespace cocos2d;
 
@@ -470,13 +472,14 @@ PlatformerEntityDeserializer::~PlatformerEntityDeserializer()
 {
 }
 
-void PlatformerEntityDeserializer::deserialize(DeserializationEvents::ObjectDeserializationRequestArgs* args)
+void PlatformerEntityDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
-	std::string name = args->properties.at(GameObject::MapKeyName).asString();
+	ValueMap properties = args->properties;
+	const std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
 
 	if (this->deserializers.find(name) != this->deserializers.end())
 	{
-		args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(this->deserializers[name](args->properties)));
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
 	}
 	else
 	{

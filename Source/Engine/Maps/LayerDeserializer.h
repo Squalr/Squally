@@ -6,6 +6,7 @@ namespace cocos2d
 {
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
+	typedef std::vector<Value> ValueVector;
 }
 
 class MapLayer;
@@ -26,6 +27,7 @@ public:
 	struct LayerDeserializationRequestArgs
 	{
 		const cocos2d::ValueMap& properties;
+		const cocos2d::ValueVector& objects;
 		int layerIndex;
 		std::string mapIdentifier;
 		cocos2d::Size mapSize;
@@ -34,6 +36,7 @@ public:
 		bool handled;
 
 		LayerDeserializationRequestArgs(const cocos2d::ValueMap& properties,
+			const cocos2d::ValueVector& objects,
 			int layerIndex,
 			std::string mapIdentifier,
 			cocos2d::Size mapSize,
@@ -41,7 +44,7 @@ public:
 			std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback,
 			bool handled = false
 		):
-			properties(properties), layerIndex(layerIndex), mapIdentifier(mapIdentifier), mapSize(mapSize), isIsometric(isIsometric), onDeserializeCallback(onDeserializeCallback), handled(handled)
+			properties(properties), objects(objects), layerIndex(layerIndex), mapIdentifier(mapIdentifier), mapSize(mapSize), isIsometric(isIsometric), onDeserializeCallback(onDeserializeCallback), handled(handled)
 		{
 		}
 	};

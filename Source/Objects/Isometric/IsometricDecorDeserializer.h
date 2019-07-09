@@ -5,10 +5,11 @@
 class IsometricDecorDeserializer : public ObjectDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static IsometricDecorDeserializer* create();
 
 private:
 	typedef ObjectDeserializer super;
+	
 	IsometricDecorDeserializer();
 	~IsometricDecorDeserializer();
 

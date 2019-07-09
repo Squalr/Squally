@@ -1,5 +1,9 @@
 #include "PlatformerObjectDeserializer.h"
 
+#include "cocos/base/CCValue.h"
+
+#include "Engine/Maps/GameObject.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/PlatformerObjects.h"
 
 using namespace cocos2d;
@@ -16,14 +20,6 @@ PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 }
 
 PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::KeyTypeObject)
-{
-}
-
-PlatformerObjectDeserializer::~PlatformerObjectDeserializer()
-{
-}
-
-PlatformerObjectDeserializer::PlatformerObjectDeserializer()
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
@@ -67,13 +63,14 @@ PlatformerObjectDeserializer::~PlatformerObjectDeserializer()
 {
 }
 
-void PlatformerObjectDeserializer::onDeserializationRequest(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
+void PlatformerObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
-	std::string name = args->properties.at(GameObject::MapKeyName).asString();
+	ValueMap properties = args->properties;
+	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
 
 	if (this->deserializers.find(name) != this->deserializers.end())
 	{
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](args->properties)));
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
 	}
 	else
 	{

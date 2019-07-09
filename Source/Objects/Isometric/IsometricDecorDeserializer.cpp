@@ -28,10 +28,10 @@ IsometricDecorDeserializer::~IsometricDecorDeserializer()
 {
 }
 
-void IsometricDecorDeserializer::onDeserializationRequest(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
+void IsometricDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
-	std::string name = properties.at(GameObject::MapKeyName).asString();
+	const std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* sprite = Sprite::create("Gameplay/Isometric/Decor" + name + ".png");
@@ -90,5 +90,5 @@ void IsometricDecorDeserializer::onDeserializationRequest(ObjectDeserializer::Ob
 		newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 	}
 
-	args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(newObject));
+	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(newObject));
 }

@@ -5,7 +5,7 @@
 class PlatformerDecorDeserializer : public ObjectDeserializer
 {
 public:
-	static ObjectDeserializer* create();
+	static PlatformerDecorDeserializer* create();
 
 private:
 	typedef ObjectDeserializer super;

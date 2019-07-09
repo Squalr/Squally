@@ -175,7 +175,7 @@ void MapBase::loadMap(std::string mapResource, std::vector<std::string> args)
 		this->mapNode->removeChild(this->map);
 	}
 	
-	this->map = GameMap::deserialize(mapResource);
+	this->map = GameMap::deserialize(mapResource, { });
 
 	if (this->map != nullptr)
 	{
