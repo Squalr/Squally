@@ -9,6 +9,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -46,6 +47,17 @@ PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false)
 {
 	this->music = Music::create(MusicResources::PointerTrace);
+
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			ObjectLayerDeserializer::create({
+				{ IsometricDecorDeserializer::KeyTypeDecor, IsometricDecorDeserializer::create()} ,
+				{ IsometricEntityDeserializer::KeyTypeIsometricEntity, IsometricEntityDeserializer::create() },
+				{ IsometricObjectDeserializer::KeyTypeIsometricObject, IsometricObjectDeserializer::create() }
+			})
+		}
+	);
 
 	this->loadMap(IsometricMapResources::LevelSelectMap);
 

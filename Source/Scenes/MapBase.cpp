@@ -10,6 +10,7 @@
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/CodeEditor/CodeEditor.h"
 #include "Engine/Hackables/RadialMenu.h"
@@ -29,6 +30,7 @@ using namespace cocos2d;
 MapBase::MapBase(bool allowHackerMode)
 {
 	this->allowHackerMode = allowHackerMode;
+	this->layerDeserializers = std::vector<LayerDeserializer*>();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -152,6 +154,21 @@ void MapBase::initializeListeners()
 	this->addEventListenerIgnorePause(scrollListener);
 }
 
+void MapBase::addLayerDeserializer(LayerDeserializer* layerDeserializer)
+{
+	this->addChild(layerDeserializer);
+	this->layerDeserializers.push_back(layerDeserializer);
+}
+
+void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers)
+{
+	for (auto it = layerDeserializers.begin(); it != layerDeserializers.end(); it++)
+	{
+		this->addChild(*it);
+		this->layerDeserializers.push_back(*it);
+	}
+}
+
 void MapBase::onMouseWheelScroll(EventMouse* event)
 {
 	if (this->isDeveloperModeEnabled())
@@ -175,7 +192,7 @@ void MapBase::loadMap(std::string mapResource, std::vector<std::string> args)
 		this->mapNode->removeChild(this->map);
 	}
 	
-	this->map = GameMap::deserialize(mapResource, { });
+	this->map = GameMap::deserialize(mapResource, this->layerDeserializers);
 
 	if (this->map != nullptr)
 	{
