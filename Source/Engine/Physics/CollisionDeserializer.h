@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/ObjectDeserializer.h"
+#include "Engine/Deserializers/ObjectDeserializer.h"
 
 class CollisionDeserializer : public ObjectDeserializer
 {

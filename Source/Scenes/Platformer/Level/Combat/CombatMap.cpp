@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameMap.h"
@@ -15,7 +16,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Events/NavigationEvents.h"
