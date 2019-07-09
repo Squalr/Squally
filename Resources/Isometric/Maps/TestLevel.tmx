@@ -5,7 +5,7 @@
  </tileset>
  <objectgroup id="1" name="Music">
   <properties>
-   <property name="music" value="Music/ISeeYou.mp3"/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
@@ -122,13 +122,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="24" name="memory-grid" type="iso_object" x="1280" y="1279.54" width="2048" height="2048"/>
+  <object id="24" name="memory-grid" type="object" x="1280" y="1279.54" width="2048" height="2048"/>
  </objectgroup>
  <objectgroup id="3" name="Entities">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="18" name="ball" type="iso_entity" x="2944" y="2560" width="128" height="128"/>
+  <object id="18" name="ball" type="entity" x="2944" y="2560" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="4" name="Objects">
   <properties>
@@ -139,13 +139,13 @@
     <property name="zoom" type="float" value="2.1499999999999999"/>
    </properties>
   </object>
-  <object id="23" name="exit-crystal" type="iso_object" x="2816" y="1536" width="128" height="128"/>
-  <object id="29" name="eax-crystal" type="iso_object" x="2432" y="2560" width="128" height="128">
+  <object id="23" name="exit-crystal" type="object" x="2816" y="1536" width="128" height="128"/>
+  <object id="29" name="eax-crystal" type="object" x="2432" y="2560" width="128" height="128">
    <properties>
     <property name="value" type="int" value="93"/>
    </properties>
   </object>
-  <object id="30" name="eax-jmp" type="iso_object" x="1920" y="2944" width="128" height="128">
+  <object id="30" name="eax-jmp" type="object" x="1920" y="2944" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
@@ -153,7 +153,7 @@
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>
-  <object id="33" name="[eax]-jmp" type="iso_object" x="1920" y="1920" width="128" height="128">
+  <object id="33" name="[eax]-jmp" type="object" x="1920" y="1920" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>

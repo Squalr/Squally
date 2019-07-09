@@ -3,6 +3,12 @@
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="../TileMap.png" width="4096" height="3584"/>
  </tileset>
+ <objectgroup id="1" name="Music">
+  <properties>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="music"/>
+  </properties>
+ </objectgroup>
  <layer id="65" name="Level 0" width="40" height="40">
   <properties>
    <property name="objectify" type="bool" value="false"/>
@@ -103,13 +109,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="24" name="memory-grid" type="iso_object" x="1280" y="1279.54" width="2048" height="2048"/>
+  <object id="24" name="memory-grid" type="object" x="1280" y="1279.54" width="2048" height="2048"/>
  </objectgroup>
  <objectgroup id="3" name="Entities">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="18" name="ball" type="iso_entity" x="3201.48" y="1280.74" width="128" height="128"/>
+  <object id="18" name="ball" type="entity" x="3201.48" y="1280.74" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="4" name="Objects">
   <properties>
@@ -120,42 +126,42 @@
     <property name="zoom" type="float" value="2.1499999999999999"/>
    </properties>
   </object>
-  <object id="23" name="exit-crystal" type="iso_object" x="2176.5" y="2172.22" width="128" height="128"/>
-  <object id="30" name="esi-jmp" type="iso_object" x="3200.46" y="1406.8" width="128" height="128"/>
+  <object id="23" name="exit-crystal" type="object" x="2176.5" y="2172.22" width="128" height="128"/>
+  <object id="30" name="esi-jmp" type="object" x="3200.46" y="1406.8" width="128" height="128"/>
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>
-  <object id="41" name="ebx" type="iso_object" x="2170.15" y="2679.25" width="128" height="128"/>
-  <object id="42" name="ecx" type="iso_object" x="2047.86" y="2173.67" width="128" height="128"/>
-  <object id="43" name="edi" type="iso_object" x="2167.56" y="2431.92" width="128" height="128"/>
-  <object id="44" name="edx" type="iso_object" x="2177.09" y="1922.54" width="128" height="128"/>
-  <object id="45" name="esi" type="iso_object" x="3201.4" y="2183.06" width="128" height="128"/>
-  <object id="46" name="esp" type="iso_object" x="1281.39" y="2296.83" width="128" height="128"/>
-  <object id="47" name="eax" type="iso_object" x="2437.33" y="2167.68" width="128" height="128"/>
-  <object id="48" name="ebp" type="iso_object" x="2172.47" y="1411.54" width="128" height="128"/>
-  <object id="558" name="ebp-jmp" type="iso_object" x="1280.78" y="3200.72" width="128" height="128"/>
-  <object id="559" name="[ecx]" type="iso_object" x="2947.21" y="2181.45" width="128" height="128"/>
-  <object id="560" name="[ebp]" type="iso_object" x="1795.14" y="2299.16" width="128" height="128"/>
-  <object id="561" name="[edx]" type="iso_object" x="2169.52" y="2935.98" width="128" height="128"/>
-  <object id="562" name="[edi]" type="iso_object" x="2694.41" y="2179.52" width="128" height="128"/>
-  <object id="563" name="[esi]" type="iso_object" x="2175.31" y="3208.08" width="128" height="128"/>
-  <object id="564" name="[esp]" type="iso_object" x="2167.59" y="1656.56" width="128" height="128"/>
-  <object id="565" name="[eax]" type="iso_object" x="1538.49" y="2301.09" width="128" height="128"/>
-  <object id="566" name="eax-jmp" type="iso_object" x="1789.35" y="2683.19" width="128" height="128"/>
-  <object id="567" name="ebx-jmp" type="iso_object" x="2694.41" y="1662.35" width="128" height="128"/>
-  <object id="568" name="ecx-jmp" type="iso_object" x="2430.03" y="1919" width="128" height="128"/>
-  <object id="569" name="edx-jmp" type="iso_object" x="2943.35" y="2941.77" width="128" height="128"/>
-  <object id="570" name="edi-jmp" type="iso_object" x="1270.25" y="1403.76" width="128" height="128"/>
-  <object id="571" name="esp-jmp" type="iso_object" x="3206.95" y="1538.23" width="128" height="128"/>
-  <object id="572" name="[esi]-jmp" type="iso_object" x="1541.87" y="2940.75" width="128" height="128"/>
-  <object id="573" name="[ebp]-jmp" type="iso_object" x="2686.69" y="2688.97" width="128" height="128"/>
-  <object id="574" name="[eax]-jmp" type="iso_object" x="3198.08" y="3188.78" width="128" height="128"/>
-  <object id="575" name="[ebx]-jmp" type="iso_object" x="2426.25" y="2434.04" width="128" height="128"/>
-  <object id="576" name="[ecx]-jmp" type="iso_object" x="1538.48" y="1668.13" width="128" height="128"/>
-  <object id="577" name="[edx]-jmp" type="iso_object" x="1795.15" y="1920.93" width="128" height="128"/>
-  <object id="578" name="[edi]-jmp" type="iso_object" x="2951.07" y="1397.97" width="128" height="128"/>
-  <object id="579" name="[esp]-jmp" type="iso_object" x="2046.89" y="2434.41" width="128" height="128"/>
-  <object id="580" name="[ebx]" type="iso_object" x="3198.59" y="1281.18" width="128" height="128"/>
+  <object id="41" name="ebx" type="object" x="2170.15" y="2679.25" width="128" height="128"/>
+  <object id="42" name="ecx" type="object" x="2047.86" y="2173.67" width="128" height="128"/>
+  <object id="43" name="edi" type="object" x="2167.56" y="2431.92" width="128" height="128"/>
+  <object id="44" name="edx" type="object" x="2177.09" y="1922.54" width="128" height="128"/>
+  <object id="45" name="esi" type="object" x="3201.4" y="2183.06" width="128" height="128"/>
+  <object id="46" name="esp" type="object" x="1281.39" y="2296.83" width="128" height="128"/>
+  <object id="47" name="eax" type="object" x="2437.33" y="2167.68" width="128" height="128"/>
+  <object id="48" name="ebp" type="object" x="2172.47" y="1411.54" width="128" height="128"/>
+  <object id="558" name="ebp-jmp" type="object" x="1280.78" y="3200.72" width="128" height="128"/>
+  <object id="559" name="[ecx]" type="object" x="2947.21" y="2181.45" width="128" height="128"/>
+  <object id="560" name="[ebp]" type="object" x="1795.14" y="2299.16" width="128" height="128"/>
+  <object id="561" name="[edx]" type="object" x="2169.52" y="2935.98" width="128" height="128"/>
+  <object id="562" name="[edi]" type="object" x="2694.41" y="2179.52" width="128" height="128"/>
+  <object id="563" name="[esi]" type="object" x="2175.31" y="3208.08" width="128" height="128"/>
+  <object id="564" name="[esp]" type="object" x="2167.59" y="1656.56" width="128" height="128"/>
+  <object id="565" name="[eax]" type="object" x="1538.49" y="2301.09" width="128" height="128"/>
+  <object id="566" name="eax-jmp" type="object" x="1789.35" y="2683.19" width="128" height="128"/>
+  <object id="567" name="ebx-jmp" type="object" x="2694.41" y="1662.35" width="128" height="128"/>
+  <object id="568" name="ecx-jmp" type="object" x="2430.03" y="1919" width="128" height="128"/>
+  <object id="569" name="edx-jmp" type="object" x="2943.35" y="2941.77" width="128" height="128"/>
+  <object id="570" name="edi-jmp" type="object" x="1270.25" y="1403.76" width="128" height="128"/>
+  <object id="571" name="esp-jmp" type="object" x="3206.95" y="1538.23" width="128" height="128"/>
+  <object id="572" name="[esi]-jmp" type="object" x="1541.87" y="2940.75" width="128" height="128"/>
+  <object id="573" name="[ebp]-jmp" type="object" x="2686.69" y="2688.97" width="128" height="128"/>
+  <object id="574" name="[eax]-jmp" type="object" x="3198.08" y="3188.78" width="128" height="128"/>
+  <object id="575" name="[ebx]-jmp" type="object" x="2426.25" y="2434.04" width="128" height="128"/>
+  <object id="576" name="[ecx]-jmp" type="object" x="1538.48" y="1668.13" width="128" height="128"/>
+  <object id="577" name="[edx]-jmp" type="object" x="1795.15" y="1920.93" width="128" height="128"/>
+  <object id="578" name="[edi]-jmp" type="object" x="2951.07" y="1397.97" width="128" height="128"/>
+  <object id="579" name="[esp]-jmp" type="object" x="2046.89" y="2434.41" width="128" height="128"/>
+  <object id="580" name="[ebx]" type="object" x="3198.59" y="1281.18" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="78" name="Reference" visible="0">
   <object id="302" name="0" x="1279.83" y="3195.72" width="128" height="128"/>

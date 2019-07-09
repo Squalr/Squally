@@ -7,7 +7,7 @@ class IsometricDecorDeserializer : public ObjectDeserializer
 public:
 	static IsometricDecorDeserializer* create();
 
-	static const std::string KeyTypeDecor;
+	static const std::string MapKeyTypeDecor;
 
 private:
 	typedef ObjectDeserializer super;

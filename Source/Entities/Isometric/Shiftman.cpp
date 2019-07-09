@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string Shiftman::KeyShiftmanProperty = "shiftman";
+const std::string Shiftman::MapKeyShiftman = "shiftman";
 
 Shiftman* Shiftman::deserialize(ValueMap& initProperties)
 {

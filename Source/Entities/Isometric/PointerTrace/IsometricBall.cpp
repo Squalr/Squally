@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string IsometricBall::KeyBallProperty = "ball";
+const std::string IsometricBall::MapKeyBall = "ball";
 const float IsometricBall::MovementSpeed = 0.2f;
 
 IsometricBall* IsometricBall::deserialize(ValueMap& initProperties)

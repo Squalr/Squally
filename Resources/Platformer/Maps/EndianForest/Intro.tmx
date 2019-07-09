@@ -95,7 +95,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="solid" type="terrain" x="-144.975" y="6922.1">
+  <object id="489" name="terrain" type="solid" x="-144.975" y="6922.1">
    <properties>
     <property name="texture" value="blue-grass"/>
    </properties>
@@ -114,7 +114,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="612" name="trigger" type="object" x="4312.77" y="5621" width="195.164" height="1351.51">
+  <object id="612" name="trigger" x="4312.77" y="5621" width="195.164" height="1351.51">
    <properties>
     <property name="event" value="event-greet-squally"/>
    </properties>

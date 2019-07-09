@@ -3,9 +3,9 @@
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="TileMap.png" width="4096" height="3584"/>
  </tileset>
- <objectgroup name="music">
+ <objectgroup id="1" name="Music">
   <properties>
-   <property name="music" value="Music/ISeeYou.mp3"/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
@@ -146,8 +146,8 @@
 </data>
  </layer>
  <objectgroup name="Entities">
-  <object id="17" name="hexus" type="iso_object" x="8970.79" y="11015" width="128" height="128"/>
-  <object id="18" name="squally" type="iso_entity" x="9216.5" y="10242" width="128" height="128"/>
+  <object id="17" name="hexus" type="object" x="8970.79" y="11015" width="128" height="128"/>
+  <object id="18" name="squally" type="entity" x="9216.5" y="10242" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Objects"/>
  <layer name="Level 2" width="128" height="128">

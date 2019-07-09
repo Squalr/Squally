@@ -4,7 +4,6 @@ cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Analytics/AnalyticsCategories.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Bootstrapper.cpp"
-    "${CMAKE_CURRENT_LIST_DIR}/Deserializers/GenericObjectDeserializer.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricDecorDeserializer.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricEntityDeserializer.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricObjectDeserializer.cpp"
@@ -1916,7 +1915,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Analytics/AnalyticsCategories.h"
     "${CMAKE_CURRENT_LIST_DIR}/Bootstrapper.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Deserializers.h"
-    "${CMAKE_CURRENT_LIST_DIR}/Deserializers/GenericObjectDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricDecorDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricEntityDeserializer.h"
     "${CMAKE_CURRENT_LIST_DIR}/Deserializers/Isometric/IsometricObjectDeserializer.h"
@@ -2380,7 +2378,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Menus/SaveSelect/SaveSelectMenu.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/CameraFocus.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/CameraScrollTracker.h"
-    "${CMAKE_CURRENT_LIST_DIR}/Objects/GenericObjects.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Isometric/HexusArcade.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Isometric/IsometricDecorObject.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Isometric/IsometricObjects.h"

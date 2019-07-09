@@ -228,8 +228,7 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEntityDeserializer::KeyTypeEntity = "entity";
-
+const std::string PlatformerEntityDeserializer::MapKeyTypeEntity = "entity";
 
 PlatformerEntityDeserializer* PlatformerEntityDeserializer::create()
 {
@@ -240,7 +239,7 @@ PlatformerEntityDeserializer* PlatformerEntityDeserializer::create()
 	return instance;
 }
 
-PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerEntityDeserializer::KeyTypeEntity)
+PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerEntityDeserializer::MapKeyTypeEntity)
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 

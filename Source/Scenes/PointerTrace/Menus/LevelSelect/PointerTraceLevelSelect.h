@@ -24,7 +24,5 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	Music* music;
-
 	static PointerTraceLevelSelect* instance;
 };

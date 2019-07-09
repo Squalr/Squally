@@ -27,3 +27,4 @@
 #include "Deserializers/Terrain/MarbleGrassTerrainDeserializer.h"
 #include "Deserializers/Terrain/MarbleGrassTerrainDeserializer.h"
 #include "Deserializers/Terrain/MarbleGrassTerrainDeserializer.h"
+#include "Deserializers/WeatherDeserializer.h"

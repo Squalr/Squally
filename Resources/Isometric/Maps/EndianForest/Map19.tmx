@@ -3,6 +3,12 @@
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="224" columns="16">
   <image source="../TileMap.png" width="4096" height="3584"/>
  </tileset>
+ <objectgroup id="1" name="Music">
+  <properties>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="music"/>
+  </properties>
+ </objectgroup>
  <layer id="65" name="Level 0" width="40" height="40">
   <properties>
    <property name="objectify" type="bool" value="false"/>
@@ -103,13 +109,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="24" name="memory-grid" type="iso_object" x="1280" y="1279.54" width="2048" height="2048"/>
+  <object id="24" name="memory-grid" type="object" x="1280" y="1279.54" width="2048" height="2048"/>
  </objectgroup>
  <objectgroup id="3" name="Entities">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="18" name="ball" type="iso_entity" x="2950.55" y="2946.79" width="128" height="128"/>
+  <object id="18" name="ball" type="entity" x="2950.55" y="2946.79" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="4" name="Objects">
   <properties>
@@ -120,59 +126,59 @@
     <property name="zoom" type="float" value="2.1499999999999999"/>
    </properties>
   </object>
-  <object id="23" name="exit-crystal" type="iso_object" x="2309.4" y="2303.93" width="128" height="128"/>
-  <object id="29" name="eax-crystal" type="iso_object" x="2682.25" y="2436.17" width="128" height="128">
+  <object id="23" name="exit-crystal" type="object" x="2309.4" y="2303.93" width="128" height="128"/>
+  <object id="29" name="eax-crystal" type="object" x="2682.25" y="2436.17" width="128" height="128">
    <properties>
     <property name="instruction" value="add"/>
     <property name="value" type="int" value="16"/>
    </properties>
   </object>
-  <object id="30" name="ebx-jmp" type="iso_object" x="1664.44" y="1916.74" width="128" height="128"/>
+  <object id="30" name="ebx-jmp" type="object" x="1664.44" y="1916.74" width="128" height="128"/>
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>
-  <object id="41" name="ebx" type="iso_object" x="2824.97" y="1801.12" width="128" height="128"/>
-  <object id="42" name="ecx" type="iso_object" x="1413.36" y="2689.25" width="128" height="128"/>
-  <object id="43" name="edi" type="iso_object" x="1659.25" y="1275.56" width="128" height="128"/>
-  <object id="44" name="edx" type="iso_object" x="2173.27" y="1791.27" width="128" height="128"/>
-  <object id="45" name="esi" type="iso_object" x="1923.48" y="1271" width="128" height="128"/>
-  <object id="46" name="esp" type="iso_object" x="1274.01" y="2945.12" width="128" height="128"/>
-  <object id="47" name="eax" type="iso_object" x="1415.56" y="1534.48" width="128" height="128"/>
-  <object id="48" name="ebp" type="iso_object" x="1265.27" y="3201.82" width="128" height="128"/>
-  <object id="568" name="eax-jmp" type="iso_object" x="2176.04" y="2683.03" width="128" height="128"/>
-  <object id="569" name="ecx-jmp" type="iso_object" x="2307.46" y="1658.76" width="128" height="128"/>
-  <object id="570" name="edx-jmp" type="iso_object" x="1914.98" y="2683.67" width="128" height="128"/>
-  <object id="582" name="edx-crystal" type="iso_object" x="3067.93" y="2440.14" width="128" height="128">
+  <object id="41" name="ebx" type="object" x="2824.97" y="1801.12" width="128" height="128"/>
+  <object id="42" name="ecx" type="object" x="1413.36" y="2689.25" width="128" height="128"/>
+  <object id="43" name="edi" type="object" x="1659.25" y="1275.56" width="128" height="128"/>
+  <object id="44" name="edx" type="object" x="2173.27" y="1791.27" width="128" height="128"/>
+  <object id="45" name="esi" type="object" x="1923.48" y="1271" width="128" height="128"/>
+  <object id="46" name="esp" type="object" x="1274.01" y="2945.12" width="128" height="128"/>
+  <object id="47" name="eax" type="object" x="1415.56" y="1534.48" width="128" height="128"/>
+  <object id="48" name="ebp" type="object" x="1265.27" y="3201.82" width="128" height="128"/>
+  <object id="568" name="eax-jmp" type="object" x="2176.04" y="2683.03" width="128" height="128"/>
+  <object id="569" name="ecx-jmp" type="object" x="2307.46" y="1658.76" width="128" height="128"/>
+  <object id="570" name="edx-jmp" type="object" x="1914.98" y="2683.67" width="128" height="128"/>
+  <object id="582" name="edx-crystal" type="object" x="3067.93" y="2440.14" width="128" height="128">
    <properties>
     <property name="instruction" value="inc"/>
     <property name="value" type="int" value="1"/>
    </properties>
   </object>
-  <object id="583" name="edx-crystal" type="iso_object" x="2687.71" y="2950.05" width="128" height="128">
+  <object id="583" name="edx-crystal" type="object" x="2687.71" y="2950.05" width="128" height="128">
    <properties>
     <property name="instruction" value="dec"/>
     <property name="value" type="int" value="1"/>
    </properties>
   </object>
-  <object id="584" name="eax-crystal" type="iso_object" x="2945.37" y="2685.19" width="128" height="128">
+  <object id="584" name="eax-crystal" type="object" x="2945.37" y="2685.19" width="128" height="128">
    <properties>
     <property name="instruction" value="sub"/>
     <property name="value" type="int" value="16"/>
    </properties>
   </object>
-  <object id="585" name="eax-crystal" type="iso_object" x="2687.71" y="2690.59" width="128" height="128">
+  <object id="585" name="eax-crystal" type="object" x="2687.71" y="2690.59" width="128" height="128">
    <properties>
     <property name="instruction" value="add"/>
     <property name="value" type="int" value="16"/>
    </properties>
   </object>
-  <object id="586" name="edx-crystal" type="iso_object" x="2439.06" y="2932.04" width="128" height="128">
+  <object id="586" name="edx-crystal" type="object" x="2439.06" y="2932.04" width="128" height="128">
    <properties>
     <property name="instruction" value="dec"/>
     <property name="value" type="int" value="1"/>
    </properties>
   </object>
-  <object id="587" name="ebx-crystal" type="iso_object" x="1919.33" y="1922.47" width="128" height="128">
+  <object id="587" name="ebx-crystal" type="object" x="1919.33" y="1922.47" width="128" height="128">
    <properties>
     <property name="instruction" value="inc"/>
     <property name="value" type="int" value="1"/>

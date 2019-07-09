@@ -5,7 +5,7 @@
  </tileset>
  <objectgroup name="Music">
   <properties>
-   <property name="music" value="Music/ISeeYou.mp3"/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
@@ -122,23 +122,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="24" name="memory-grid" type="iso_object" x="1280" y="1279.54" width="2048" height="2048"/>
-  <object id="38" name="edx-jmp" type="iso_object" x="2305.5" y="2046.5" width="128" height="128">
+  <object id="24" name="memory-grid" type="object" x="1280" y="1279.54" width="2048" height="2048"/>
+  <object id="38" name="edx-jmp" type="object" x="2305.5" y="2046.5" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
   </object>
-  <object id="39" name="esi-jmp" type="iso_object" x="2563.33" y="2180.67" width="128" height="128">
+  <object id="39" name="esi-jmp" type="object" x="2563.33" y="2180.67" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
   </object>
-  <object id="40" name="edi-jmp" type="iso_object" x="2559.58" y="1919.94" width="128" height="128">
+  <object id="40" name="edi-jmp" type="object" x="2559.58" y="1919.94" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
   </object>
-  <object id="41" name="[edi]-jmp" type="iso_object" x="2690" y="2046" width="128" height="128">
+  <object id="41" name="[edi]-jmp" type="object" x="2690" y="2046" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
@@ -148,7 +148,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="18" name="ball" type="iso_entity" x="2052.86" y="2685.89" width="128" height="128"/>
+  <object id="18" name="ball" type="entity" x="2052.86" y="2685.89" width="128" height="128"/>
  </objectgroup>
  <objectgroup name="Objects">
   <properties>
@@ -159,13 +159,13 @@
     <property name="zoom" type="float" value="2.15"/>
    </properties>
   </object>
-  <object id="23" name="exit-crystal" type="iso_object" x="2943.63" y="2047.14" width="128" height="128"/>
-  <object id="29" name="ebx-crystal" type="iso_object" x="1535.75" y="3073.39" width="128" height="128">
+  <object id="23" name="exit-crystal" type="object" x="2943.63" y="2047.14" width="128" height="128"/>
+  <object id="29" name="ebx-crystal" type="object" x="1535.75" y="3073.39" width="128" height="128">
    <properties>
     <property name="value" type="int" value="105"/>
    </properties>
   </object>
-  <object id="30" name="ebx-jmp" type="iso_object" x="1792" y="2046" width="128" height="128">
+  <object id="30" name="ebx-jmp" type="object" x="1792" y="2046" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
@@ -173,12 +173,12 @@
   <object id="32" x="1584.97" y="1636.7">
    <ellipse/>
   </object>
-  <object id="33" name="eax-jmp" type="iso_object" x="1540" y="2048" width="128" height="128">
+  <object id="33" name="eax-jmp" type="object" x="1540" y="2048" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>
   </object>
-  <object id="36" name="ecx-jmp" type="iso_object" x="2050" y="2046" width="128" height="128">
+  <object id="36" name="ecx-jmp" type="object" x="2050" y="2046" width="128" height="128">
    <properties>
     <property name="value" type="int" value="27"/>
    </properties>

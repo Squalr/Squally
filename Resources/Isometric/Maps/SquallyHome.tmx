@@ -3,9 +3,9 @@
  <tileset firstgid="1" name="TileMapIsometric" tilewidth="256" tileheight="256" tilecount="16" columns="4">
   <image source="../../TileMapIsometric.png" width="1024" height="1024"/>
  </tileset>
- <objectgroup name="music">
+ <objectgroup id="1" name="Music">
   <properties>
-   <property name="music" value="Music/NightSwim.mp3"/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>
@@ -34,18 +34,18 @@
 </data>
  </layer>
  <objectgroup name="Main Layer">
-  <object id="5" name="hexus" type="iso_object" x="384" y="1154" width="128" height="128"/>
-  <object id="7" name="hexus" type="iso_object" x="1152" y="1151" width="128" height="128"/>
-  <object id="9" name="MiscArcade" type="iso_decor" x="1152" y="1022.5" width="128" height="128"/>
-  <object id="10" name="hexus" type="iso_object" x="512" y="1154" width="128" height="128"/>
-  <object id="11" name="hexus" type="iso_object" x="640" y="1154" width="128" height="128"/>
-  <object id="12" name="hexus" type="iso_object" x="0" y="1154" width="128" height="128"/>
-  <object id="13" name="hexus" type="iso_object" x="256" y="1154" width="128" height="128"/>
-  <object id="14" name="hexus" type="iso_object" x="128" y="1154" width="128" height="128"/>
-  <object id="15" name="hexus" type="iso_object" x="-128" y="1154" width="128" height="128"/>
-  <object id="16" name="hexus" type="iso_object" x="2304" y="1152" width="128" height="128"/>
-  <object id="17" name="hexus" type="iso_object" x="2305" y="2305" width="128" height="128"/>
-  <object id="18" name="squally" type="iso_entity" x="1792" y="1792" width="128" height="128"/>
+  <object id="5" name="hexus" type="object" x="384" y="1154" width="128" height="128"/>
+  <object id="7" name="hexus" type="object" x="1152" y="1151" width="128" height="128"/>
+  <object id="9" name="MiscArcade" type="decor" x="1152" y="1022.5" width="128" height="128"/>
+  <object id="10" name="hexus" type="object" x="512" y="1154" width="128" height="128"/>
+  <object id="11" name="hexus" type="object" x="640" y="1154" width="128" height="128"/>
+  <object id="12" name="hexus" type="object" x="0" y="1154" width="128" height="128"/>
+  <object id="13" name="hexus" type="object" x="256" y="1154" width="128" height="128"/>
+  <object id="14" name="hexus" type="object" x="128" y="1154" width="128" height="128"/>
+  <object id="15" name="hexus" type="object" x="-128" y="1154" width="128" height="128"/>
+  <object id="16" name="hexus" type="object" x="2304" y="1152" width="128" height="128"/>
+  <object id="17" name="hexus" type="object" x="2305" y="2305" width="128" height="128"/>
+  <object id="18" name="squally" type="entity" x="1792" y="1792" width="128" height="128"/>
  </objectgroup>
  <layer name="Level 2" width="20" height="20">
   <data encoding="csv">

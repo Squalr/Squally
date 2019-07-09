@@ -49,7 +49,6 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 		if (objects[index].getType() == cocos2d::Value::Type::MAP)
 		{
 			ValueMap object = objects[index].asValueMap();
-			std::string typeName = "";
 
 			// Append additional map metadata properties to object at load time to assist in deserialization
 			object[GameObject::MapKeyMetaIsIsometric] = args->isIsometric;
@@ -93,18 +92,17 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 				continue;
 			}
 
-			typeName = object.at(GameObject::MapKeyType).asString();
+			std::string objectName = GameUtils::getKeyOrDefault(object, GameObject::MapKeyName, Value("")).asString();
+			std::string objectType = GameUtils::getKeyOrDefault(object, GameObject::MapKeyType, Value("")).asString();
 
-			// Fire event requesting the deserialization of this object
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
-				typeName,
 				object,
 				onDeserializeCallback
 			);
 
-			if (this->objectDeserializers.find(typeName) != this->objectDeserializers.end())
+			if (objectDeserializers.find(objectType) != objectDeserializers.end())
 			{
-				this->objectDeserializers[typeName]->deserialize(&args);
+				objectDeserializers[objectType]->deserialize(&args);
 			}
 		}
 	}

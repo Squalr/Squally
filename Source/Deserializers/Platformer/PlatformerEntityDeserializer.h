@@ -10,12 +10,13 @@ public:
 	static PlatformerEntityDeserializer* create();
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 
-	static const std::string KeyTypeEntity;
+	static const std::string MapKeyTypeEntity;
 
 private:
 	typedef ObjectDeserializer super;
+
 	PlatformerEntityDeserializer();
-	virtual ~PlatformerEntityDeserializer();
+	~PlatformerEntityDeserializer();
 
 	std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> deserializers;
 };

@@ -246,11 +246,11 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
+			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(*it);
 			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
-				PlatformerEntityDeserializer::KeyTypeEntity,
 				valueMap,
 				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
@@ -274,10 +274,10 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
+			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(*it);
 			
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
-				PlatformerEntityDeserializer::KeyTypeEntity,
 				valueMap,
 				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{

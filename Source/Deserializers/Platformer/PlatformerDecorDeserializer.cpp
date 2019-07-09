@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerDecorDeserializer::KeyTypeDecor = "decor";
+const std::string PlatformerDecorDeserializer::MapKeyTypeDecor = "decor";
 
 PlatformerDecorDeserializer* PlatformerDecorDeserializer::create()
 {
@@ -21,7 +21,7 @@ PlatformerDecorDeserializer* PlatformerDecorDeserializer::create()
 	return instance;
 }
 
-PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::KeyTypeDecor)
+PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor)
 {
 }
 
