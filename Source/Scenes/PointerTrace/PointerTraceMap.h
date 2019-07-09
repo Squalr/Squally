@@ -13,10 +13,10 @@ class VictoryMenu;
 class PointerTraceMap : public MapBase
 {
 public:
-	static void registerGlobalScene();
+	static PointerTraceMap* create(std::string mapFile, std::function<void()> onLevelClearCallback);
 
 protected:
-	PointerTraceMap();
+	PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback);
 	~PointerTraceMap();
 
 private:
@@ -42,7 +42,4 @@ private:
 	cocos2d::Node* collisionDebugNode;
 	PointerTraceHud* pointerTraceHud;
 	VictoryMenu* victoryMenu;
-	Music* music;
-
-	static PointerTraceMap* instance;
 };

@@ -45,7 +45,7 @@ IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObje
 	this->deserializers[EsiCrystal::MapKeyEsiCrystal] = [=](ValueMap properties) { return (GameObject*)EsiCrystal::create(properties); };
 	this->deserializers[EbpCrystal::MapKeyEbpCrystal] = [=](ValueMap properties) { return (GameObject*)EbpCrystal::create(properties); };
 	this->deserializers[EspCrystal::MapKeyEspCrystal] = [=](ValueMap properties) { return (GameObject*)EspCrystal::create(properties); };
-	this->deserializers[EaxJmp::MapKeyEaxJmp] = [=](ValueMap properties) { return (GameObject*)EbxJmp::create(properties); };
+	this->deserializers[EaxJmp::MapKeyEaxJmp] = [=](ValueMap properties) { return (GameObject*)EaxJmp::create(properties); };
 	this->deserializers[EbxJmp::MapKeyEbxJmp] = [=](ValueMap properties) { return (GameObject*)EbxJmp::create(properties); };
 	this->deserializers[EcxJmp::MapKeyEcxJmp] = [=](ValueMap properties) { return (GameObject*)EcxJmp::create(properties); };
 	this->deserializers[EdxJmp::MapKeyEdxJmp] = [=](ValueMap properties) { return (GameObject*)EdxJmp::create(properties); };
