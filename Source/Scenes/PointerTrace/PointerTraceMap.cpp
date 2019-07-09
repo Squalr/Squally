@@ -9,6 +9,7 @@
 #include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameMap.h"
@@ -34,37 +35,43 @@
 
 using namespace cocos2d;
 
-PointerTraceMap* PointerTraceMap::instance = nullptr;
-
-void PointerTraceMap::registerGlobalScene()
+PointerTraceMap* PointerTraceMap::create(std::string mapFile, std::function<void()> onLevelClearCallback)
 {
-	if (PointerTraceMap::instance == nullptr)
-	{
-		PointerTraceMap::instance = new PointerTraceMap();
-		PointerTraceMap::instance->autorelease();
-		PointerTraceMap::instance->initializeListeners();
-	}
+	PointerTraceMap* instance = new PointerTraceMap(mapFile, onLevelClearCallback);
 
-	GlobalDirector::registerGlobalScene(PointerTraceMap::instance);
+	instance->autorelease();
+
+	return instance;
 }
 
-PointerTraceMap::PointerTraceMap() : super(false)
+PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback) : super(false)
 {
-	this->onLevelClearCallback = nullptr;
+	this->onLevelClearCallback = onLevelClearCallback;
 	this->collisionMap = std::set<int>();
 	this->segfaultMap = std::set<int>();
 	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
 	this->pointerTraceHud = PointerTraceHud::create();
 	this->victoryMenu = VictoryMenu::create();
-	this->music = Music::create(MusicResources::PointerTrace);
+
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			ObjectLayerDeserializer::create({
+				{ IsometricDecorDeserializer::MapKeyTypeDecor, IsometricDecorDeserializer::create() },
+				{ IsometricEntityDeserializer::MapKeyTypeEntity, IsometricEntityDeserializer::create() },
+				{ IsometricObjectDeserializer::MapKeyTypeObject, IsometricObjectDeserializer::create() },
+			})
+		}
+	);
 
 	this->collisionDebugNode->setVisible(false);
+
+	this->loadMap(mapFile);
 
 	this->addChild(this->collisionDebugNode);
 	this->hud->addChild(this->pointerTraceHud);
 	this->menuHud->addChild(this->victoryMenu);
-	this->addChild(this->music);
 }
 
 PointerTraceMap::~PointerTraceMap()
@@ -74,8 +81,6 @@ PointerTraceMap::~PointerTraceMap()
 void PointerTraceMap::onEnter()
 {
 	super::onEnter();
-
-	this->music->play(true);
 
 	this->victoryMenu->setVisible(false);
 

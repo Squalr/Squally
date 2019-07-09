@@ -5,13 +5,14 @@
 
 #include "Resources/UIResources.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
+#include "Scenes/PointerTrace/PointerTraceMap.h"
 
 using namespace cocos2d;
 
@@ -90,10 +91,12 @@ void LevelNode::initializeListeners()
 
 	this->sprite->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		NavigationEvents::navigatePointerTraceMap(NavigationEvents::NavigatePointerTraceMapArgs(this->nodeMapFile, [=]()
+		PointerTraceMap* map = PointerTraceMap::create(this->nodeMapFile, [=]()
 		{
 			SaveManager::saveGlobalData(this->getSaveKey(), Value(true));
-		}));
+		});
+
+		NavigationEvents2::LoadScene(map);
 	});
 }
 
