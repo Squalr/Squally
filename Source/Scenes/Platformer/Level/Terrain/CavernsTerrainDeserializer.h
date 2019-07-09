@@ -5,14 +5,13 @@
 class CavernsTerrainDeserializer : public TerrainDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static CavernsTerrainDeserializer* create();
 
 	static const std::string MapKeyTerrainTypeCaverns;
 
 private:
 	typedef TerrainDeserializer super;
+
 	CavernsTerrainDeserializer();
 	~CavernsTerrainDeserializer();
-
-	static CavernsTerrainDeserializer* instance;
 };

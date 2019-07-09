@@ -11,8 +11,8 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
-#include "Engine/Maps/SerializableTileLayer.h"
+#include "Engine/Maps/GameMap.h"
+#include "Engine/Maps/TileLayer.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -411,7 +411,7 @@ void PointerTraceMap::buildCollisionMaps()
 		return;
 	}
 
-	std::vector<SerializableTileLayer*> collisionLayers = this->map->getCollisionLayers();
+	std::vector<TileLayer*> collisionLayers = this->map->getCollisionLayers();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	for (auto it = collisionLayers.begin(); it != collisionLayers.end(); it++)

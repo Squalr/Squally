@@ -17,7 +17,7 @@ class Hud;
 class OptionsMenu;
 class PauseMenu;
 class RadialMenu;
-class SerializableMap;
+class GameMap;
 class MatrixRain;
 class HackerModeHud;
 
@@ -48,7 +48,7 @@ protected:
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
-	SerializableMap* map;
+	GameMap* map;
 
 	bool allowHackerMode;
 	std::vector<std::string> mapArgs;

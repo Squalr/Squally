@@ -1,5 +1,5 @@
 #pragma once
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -9,15 +9,15 @@ namespace cocos2d
 }
 
 // A special class for represeting a tile as an object to allow for dynamic z-sorting in isometric maps
-class ObjectifiedTile : public SerializableObject
+class ObjectifiedTile : public GameObject
 {
 public:
 	static ObjectifiedTile* create(cocos2d::Sprite* sprite, cocos2d::ValueMap initProperties);
 
 protected:
 	ObjectifiedTile(cocos2d::Sprite* sprite, cocos2d::ValueMap initProperties);
-	virtual ~ObjectifiedTile();
+	~ObjectifiedTile();
 
 private:
-	cocos2d::Sprite * innerSprite;
+	cocos2d::Sprite* innerSprite;
 };

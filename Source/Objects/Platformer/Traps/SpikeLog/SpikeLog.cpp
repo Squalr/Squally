@@ -68,7 +68,7 @@ void SpikeLog::initializePositions()
 {
 	super::initializePositions();
 
-	// this->spikedLog->setPositionY(this->properties->at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
+	// this->spikedLog->setPositionY(this->properties->at(GameObject::MapKeyHeight).asFloat() / 2.0f);
 	this->logCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
 	this->spikeCollision->setPosition(Vec2(this->spikedLog->getContentSize().width / 2.0f, 0.0f));
 }

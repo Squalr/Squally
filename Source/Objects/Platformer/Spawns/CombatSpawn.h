@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
-class CombatSpawn : public SerializableObject
+class CombatSpawn : public GameObject
 {
 public:
 	static CombatSpawn* create(cocos2d::ValueMap& initProperties);
@@ -19,7 +19,7 @@ public:
 	static const std::string MapKeyCombatSpawn;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 	CombatSpawn(cocos2d::ValueMap& initProperties);
 	virtual ~CombatSpawn();
 

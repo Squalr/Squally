@@ -20,11 +20,11 @@ CastleDoorFront* CastleDoorFront::create(ValueMap& initProperties)
 	return instance;
 }
 
-CastleDoorFront::CastleDoorFront(ValueMap& initProperties) : SerializableObject(initProperties)
+CastleDoorFront::CastleDoorFront(ValueMap& initProperties) : GameObject(initProperties)
 {
 	this->castleDoorFront = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_FRONT);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
 
 	this->castleDoorFront->setFlippedX(this->isFlipped);
 

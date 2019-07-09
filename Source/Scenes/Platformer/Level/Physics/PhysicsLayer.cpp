@@ -25,7 +25,7 @@ PhysicsLayer* PhysicsLayer::create(ValueMap& properties, std::string name)
 	return instance;
 }
 
-PhysicsLayer::PhysicsLayer(ValueMap& properties, std::string name) : SerializableLayer(properties, name)
+PhysicsLayer::PhysicsLayer(ValueMap& properties, std::string name) : MapLayer(properties, name)
 {
 	// Parse gravity, fixing any bad input (force negative gravity values, bound between min and max)
 	float parsedGravity = GameUtils::getKeyOrDefault(properties, PhysicsLayer::MapKeyGravity, Value(PhysicsLayer::DefaultGravity)).asFloat();

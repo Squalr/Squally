@@ -1,25 +1,20 @@
 #include "TrailTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string TrailTerrainDeserializer::MapKeyTerrainTypeTrail = "trail";
-TrailTerrainDeserializer* TrailTerrainDeserializer::instance = nullptr;
 
-void TrailTerrainDeserializer::registerGlobalNode()
+TrailTerrainDeserializer* TrailTerrainDeserializer::create()
 {
-	if (TrailTerrainDeserializer::instance == nullptr)
-	{
-		TrailTerrainDeserializer::instance = new TrailTerrainDeserializer();
+	TrailTerrainDeserializer* instance = new TrailTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(TrailTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 TrailTerrainDeserializer::TrailTerrainDeserializer() : TerrainDeserializer(

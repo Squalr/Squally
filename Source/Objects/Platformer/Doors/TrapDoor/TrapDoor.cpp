@@ -45,7 +45,7 @@ TrapDoor::TrapDoor(ValueMap& initProperties) : super(initProperties)
 	clipStencil->drawSolidRect(Vec2(-112.0f, -64.0f), Vec2(112.0f, 48.0f), Color4F::GREEN);
 	this->doorClip = ClippingNode::create(clipStencil);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
 	this->doorOpenEventName = this->mapEvent;
 
 	this->door->setFlippedX(this->isFlipped);

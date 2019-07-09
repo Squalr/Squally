@@ -6,6 +6,7 @@ class CombatHud;
 class ChoicesMenu;
 class DefeatMenu;
 class EnemyAIHelper;
+class PlatformerEntityDeserializer;
 class RewardsMenu;
 class TargetSelectionMenu;
 class TextOverlays;
@@ -43,6 +44,8 @@ private:
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;
 	std::string enemyIdentifier;
+
+	PlatformerEntityDeserializer* platformerEntityDeserializer;
 
 	static const std::string MapKeyPropertyDisableHackerMode;
 	static CombatMap* instance;

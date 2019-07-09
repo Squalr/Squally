@@ -30,7 +30,7 @@ EdgePortal* EdgePortal::create(ValueMap& initProperties)
 
 EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
 {
-	Size portalSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
+	Size portalSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	
 	this->edgePortalCollision = CollisionObject::create(PhysicsBody::createBox(portalSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->edgePortalHintCollision = CollisionObject::create(PhysicsBody::createBox(portalSize + Size(512.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);

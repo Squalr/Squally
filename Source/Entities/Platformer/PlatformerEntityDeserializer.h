@@ -1,27 +1,21 @@
 #pragma once
-#include "Engine/GlobalNode.h"
-#include "Engine/Events/DeserializationEvents.h"
 
-class SerializableObject;
+#include "Engine/Maps/ObjectDeserializer.h"
 
-class PlatformerEntityDeserializer : public GlobalNode
+class GameObject;
+
+class PlatformerEntityDeserializer : public ObjectDeserializer
 {
 public:
-	static void registerGlobalNode();
-	static PlatformerEntityDeserializer* getInstance();
-
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+	static PlatformerEntityDeserializer* create();
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 
 	static const std::string KeyTypeEntity;
 
 private:
-	typedef GlobalNode super;
+	typedef ObjectDeserializer super;
 	PlatformerEntityDeserializer();
 	virtual ~PlatformerEntityDeserializer();
 
-	void initializeListeners() override;
-
-	static PlatformerEntityDeserializer* instance;
-
-	std::map<std::string, std::function<SerializableObject*(cocos2d::ValueMap)>> deserializers;
+	std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> deserializers;
 };

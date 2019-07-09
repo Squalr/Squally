@@ -13,7 +13,7 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/CodeEditor/CodeEditor.h"
 #include "Engine/Hackables/RadialMenu.h"
-#include "Engine/Maps/SerializableMap.h"
+#include "Engine/Maps/GameMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/NavigationEvents.h"
@@ -175,7 +175,7 @@ void MapBase::loadMap(std::string mapResource, std::vector<std::string> args)
 		this->mapNode->removeChild(this->map);
 	}
 	
-	this->map = SerializableMap::deserialize(mapResource);
+	this->map = GameMap::deserialize(mapResource);
 
 	if (this->map != nullptr)
 	{

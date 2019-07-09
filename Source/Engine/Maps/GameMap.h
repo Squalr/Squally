@@ -7,16 +7,18 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/SmartNode.h"
 
-class SerializableLayer;
-class SerializableTileLayer;
+class LayerDeserializer;
+class MapLayer;
+class TileLayer;
 
 namespace cocos2d
 {
 	class Node;
 }
 
-class SerializableMap : public SmartNode
+class GameMap : public SmartNode
 {
+public:
 	// Orientation constant defined by the TMX file standard
 	enum MapOrientation
 	{
@@ -24,13 +26,10 @@ class SerializableMap : public SmartNode
 		Isometric = 2,
 	};
 
-public:
-	static SerializableMap* deserialize(std::string mapFileName);
-
-	bool serialize();
-	void appendLayer(SerializableLayer* layer);
+	static void deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers);
+	void appendLayer(MapLayer* mapLayer);
 	void setCollisionLayersVisible(bool isVisible);
-	std::vector<SerializableTileLayer*> getCollisionLayers();
+	std::vector<TileLayer*> getCollisionLayers();
 	cocos2d::Size getMapSize();
 	cocos2d::Size getMapUnitSize();
 	cocos2d::Size getMapTileSize();
@@ -42,9 +41,9 @@ public:
 
 private:
 	typedef SmartNode super;
-	SerializableMap(std::string mapFileName, const std::vector<SerializableLayer*>& layers, cocos2d::Size unitSize,
+	GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, cocos2d::Size unitSize,
 			cocos2d::Size tileSize, MapOrientation orientation);
-	virtual ~SerializableMap();
+	~GameMap();
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -59,9 +58,9 @@ private:
 	void hackerModeLayerFade();
 	void hackerModeLayerUnfade();
 
-	std::vector<SerializableTileLayer*> collisionLayers;
-	std::vector<SerializableTileLayer*> tileLayers;
-	std::vector<SerializableLayer*> serializableLayers;
+	std::vector<TileLayer*> collisionLayers;
+	std::vector<TileLayer*> tileLayers;
+	std::vector<MapLayer*> mapLayers;
 
 	std::string levelMapFileName;
 	MapOrientation orientation;

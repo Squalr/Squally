@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class TrapDoorFrame : public SerializableObject
+class TrapDoorFrame : public GameObject
 {
 public:
 	static TrapDoorFrame* create(cocos2d::ValueMap& initProperties);
@@ -22,7 +22,7 @@ protected:
 	void initializePositions() override;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 
 	bool isFlipped;
 	cocos2d::Sprite* trapDoorFrame;

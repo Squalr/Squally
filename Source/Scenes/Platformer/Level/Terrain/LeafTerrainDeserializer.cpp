@@ -1,25 +1,20 @@
 #include "LeafTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string LeafTerrainDeserializer::MapKeyTerrainTypeLeaf = "leaf";
-LeafTerrainDeserializer* LeafTerrainDeserializer::instance = nullptr;
 
-void LeafTerrainDeserializer::registerGlobalNode()
+LeafTerrainDeserializer* LeafTerrainDeserializer::create()
 {
-	if (LeafTerrainDeserializer::instance == nullptr)
-	{
-		LeafTerrainDeserializer::instance = new LeafTerrainDeserializer();
+	LeafTerrainDeserializer* instance = new LeafTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(LeafTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 LeafTerrainDeserializer::LeafTerrainDeserializer() : TerrainDeserializer(

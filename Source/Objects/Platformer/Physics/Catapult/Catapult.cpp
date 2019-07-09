@@ -56,7 +56,7 @@ Catapult::Catapult(ValueMap& initProperties) : super(initProperties)
 	this->interactionEnabled = false;
 	this->currentCooldown = 0.0f;
 
-	float height = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyHeight, Value(0.0f)).asFloat();
+	float height = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
 	this->catapultAnimations->setPositionY(-height / 2.0f);
 	this->catapultAnimations->setScale(1.75f);
 

@@ -15,11 +15,11 @@ DensityObject::DensityObject(ValueMap& initProperties) : super(initProperties)
 {
 	this->contentNode = Node::create();
 
-	this->heightRange = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyHeight, Value(128.0f)).asFloat();
+	this->heightRange = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(128.0f)).asFloat();
 	this->loadedDensity = GameUtils::getKeyOrDefault(this->properties, DensityObject::MapKeyDensity, Value(1.0f)).asFloat();
 	this->currentDensity = this->loadedDensity;
 
-	this->contentNode->setRotation(GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyRotation, Value(0.0f)).asFloat());
+	this->contentNode->setRotation(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat());
 	
 	this->addChild(this->contentNode);
 }

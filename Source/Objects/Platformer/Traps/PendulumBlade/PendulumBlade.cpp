@@ -50,7 +50,7 @@ PendulumBlade::PendulumBlade(ValueMap& initProperties) : super(initProperties)
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
+	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
 	this->targetAngle = PendulumBlade::DefaultAngle;
 	this->chainHeight = height;

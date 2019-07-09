@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Engine/Events/DeserializationEvents.h"
-#include "Engine/GlobalNode.h"
+#include "Engine/Maps/ObjectDeserializer.h"
 
-class PlatformerDecorDeserializer : public GlobalNode
+class PlatformerDecorDeserializer : public ObjectDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static ObjectDeserializer* create();
 
 private:
-	typedef GlobalNode super;
-	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+	typedef ObjectDeserializer super;
+	PlatformerDecorDeserializer();
+	~PlatformerDecorDeserializer();
 
-	static PlatformerDecorDeserializer* instance;
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
+
 	static const std::string KeyTypeDecor;
 };

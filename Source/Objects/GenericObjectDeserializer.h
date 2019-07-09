@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Engine/Events/DeserializationEvents.h"
-#include "Engine/GlobalNode.h"
+#include "Engine/Maps/ObjectDeserializer.h"
 
-class GenericObjectDeserializer : public GlobalNode
+class GenericObjectDeserializer : public ObjectDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static GenericObjectDeserializer* create();
 
 private:
-	typedef GlobalNode super;
-	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args);
+	typedef ObjectDeserializer super;
+	GenericObjectDeserializer();
+	~GenericObjectDeserializer();
 
-	static GenericObjectDeserializer* instance;
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
+
 	static const std::string KeyTypeObject;
 };

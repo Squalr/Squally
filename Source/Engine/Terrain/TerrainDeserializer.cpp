@@ -1,15 +1,12 @@
 #include "TerrainDeserializer.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-TerrainDeserializer* TerrainDeserializer::instance = nullptr;
-
-TerrainDeserializer::TerrainDeserializer(TerrainObject::TerrainData terrainData)
+TerrainDeserializer::TerrainDeserializer(TerrainObject::TerrainData terrainData) : super(TerrainObject::MapKeyTypeTerrain)
 {
 	this->terrainData = terrainData;
 }
@@ -18,39 +15,13 @@ TerrainDeserializer::~TerrainDeserializer()
 {
 }
 
-void TerrainDeserializer::initializeListeners()
+void TerrainDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
 {
-	super::initializeListeners();
-
-	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		DeserializationEvents::RequestObjectDeserializeEvent,
-		[=](EventCustom* eventCustom)
-		{
-			DeserializationEvents::ObjectDeserializationRequestArgs* args = static_cast<DeserializationEvents::ObjectDeserializationRequestArgs*>(eventCustom->getUserData());
-
-			if (args != nullptr)
-			{
-				this->onDeserializationRequest(args);
-			}
-		}
-	);
-
-	this->addGlobalEventListener(deserializationRequestListener);
-}
-
-void TerrainDeserializer::onDeserializationRequest(DeserializationEvents::ObjectDeserializationRequestArgs* args)
-{
-	if (args->typeName == TerrainObject::MapKeyTypeTerrain)
+	if (GameUtils::getKeyOrDefault(args->properties, TerrainObject::MapKeyTypeTexture, Value("")).asString() == this->terrainData.textureMapKeyValue)
 	{
-		if (GameUtils::keyExists(args->properties, TerrainObject::MapKeyTypeTexture))
-		{
-			if (args->properties[TerrainObject::MapKeyTypeTexture].asString() == this->terrainData.textureMapKeyValue)
-			{
-				TerrainObject* terrainObject = TerrainObject::deserialize(args->properties, this->terrainData);
+		TerrainObject* terrainObject = TerrainObject::deserialize(args->properties, this->terrainData);
 
-				// Fire an event indicating successful deserialization
-				args->onDeserializeCallback(DeserializationEvents::ObjectDeserializationArgs(terrainObject));
-			}
-		}
+		// Fire an event indicating successful deserialization
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(terrainObject));
 	}
 }

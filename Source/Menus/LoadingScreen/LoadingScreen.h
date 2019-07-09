@@ -4,14 +4,14 @@
 #include "Engine/GlobalScene.h"
 
 class ProgressBar;
-class SerializableMap;
+class GameMap;
 
 class LoadingScreen : public GlobalScene
 {
 public:
 	static void registerGlobalScene();
 
-	void loadLevel(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback);
+	void loadLevel(std::string levelFile, std::function<void(GameMap*)> onLoadCallback);
 
 protected:
 	LoadingScreen();
@@ -34,8 +34,8 @@ private:
 
 	cocos2d::Node* backgroundNode;
 	ProgressBar* progressBar;
-	SerializableMap* map;
-	std::function<void(SerializableMap*)> onLoadCallback;
+	GameMap* map;
+	std::function<void(GameMap*)> onLoadCallback;
 
 	int totalFileCount;
 	std::atomic_int loadedFileCount;

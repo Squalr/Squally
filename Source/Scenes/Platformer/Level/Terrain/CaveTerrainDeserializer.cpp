@@ -1,25 +1,20 @@
 #include "CaveTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string CaveTerrainDeserializer::MapKeyTerrainTypeCave = "cave";
-CaveTerrainDeserializer* CaveTerrainDeserializer::instance = nullptr;
 
-void CaveTerrainDeserializer::registerGlobalNode()
+CaveTerrainDeserializer* CaveTerrainDeserializer::create()
 {
-	if (CaveTerrainDeserializer::instance == nullptr)
-	{
-		CaveTerrainDeserializer::instance = new CaveTerrainDeserializer();
+	CaveTerrainDeserializer* instance = new CaveTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(CaveTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 CaveTerrainDeserializer::CaveTerrainDeserializer() : TerrainDeserializer(

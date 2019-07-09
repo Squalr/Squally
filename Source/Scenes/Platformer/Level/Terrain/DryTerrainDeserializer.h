@@ -5,14 +5,13 @@
 class DryTerrainDeserializer : public TerrainDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static DryTerrainDeserializer* create();
 
 	static const std::string MapKeyTerrainTypeDry;
 
 private:
 	typedef TerrainDeserializer super;
+
 	DryTerrainDeserializer();
 	~DryTerrainDeserializer();
-
-	static DryTerrainDeserializer* instance;
 };

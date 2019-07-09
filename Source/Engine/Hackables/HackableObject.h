@@ -3,7 +3,7 @@
 #include <string>
 
 #include "Engine/Events/InputEvents.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -20,7 +20,7 @@ class HackablePreview;
 class HackButton;
 class ProgressBar;
 
-class HackableObject : public SerializableObject
+class HackableObject : public GameObject
 {
 public:
 	void onHackableClick();
@@ -53,7 +53,7 @@ protected:
 	virtual cocos2d::Vec2 getButtonOffset();
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;

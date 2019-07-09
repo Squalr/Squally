@@ -48,14 +48,14 @@ DartGun::DartGun(ValueMap& initProperties) : super(initProperties)
 
 	this->dartGunAnimations->playAnimation();
 
-	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyFlipX))
+	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipX))
 	{
-		this->dartGunAnimations->setFlippedX(this->properties[SerializableObject::MapKeyWidth].asBool());
+		this->dartGunAnimations->setFlippedX(this->properties[GameObject::MapKeyWidth].asBool());
 	}
 
-	if (GameUtils::keyExists(this->properties, SerializableObject::MapKeyFlipY))
+	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipY))
 	{
-		this->dartGunAnimations->setFlippedY(this->properties[SerializableObject::MapKeyWidth].asBool());
+		this->dartGunAnimations->setFlippedY(this->properties[GameObject::MapKeyWidth].asBool());
 	}
 
 	this->addChild(this->dartNode);

@@ -1,19 +1,20 @@
 #pragma once
 
-#include "Engine/Events/DeserializationEvents.h"
+#include "Engine/Maps/LayerDeserializer.h"
 #include "Engine/GlobalNode.h"
 
-class WeatherDeserializer : public GlobalNode
+class WeatherDeserializer : public LayerDeserializer
 {
 public:
-	static void registerGlobalNode();
+	static WeatherDeserializer* create();
 
 private:
-	typedef GlobalNode super;
-	void initializeListeners() override;
-	void onDeserializationRequest(DeserializationEvents::LayerDeserializationRequestArgs* args);
+	typedef LayerDeserializer super;
+	WeatherDeserializer();
+	~WeatherDeserializer();
+
+	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args);
 
 	static const std::string MapKeyWeatherLayer;
 	static const std::string MapKeyWeather;
-	static WeatherDeserializer* instance;
 };

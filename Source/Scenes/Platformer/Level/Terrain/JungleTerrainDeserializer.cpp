@@ -1,25 +1,20 @@
 #include "JungleTerrainDeserializer.h"
 
-#include "Engine/GlobalDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Resources/TerrainResources.h"
 
 using namespace cocos2d;
 
 const std::string JungleTerrainDeserializer::MapKeyTerrainTypeJungle = "jungle";
-JungleTerrainDeserializer* JungleTerrainDeserializer::instance = nullptr;
 
-void JungleTerrainDeserializer::registerGlobalNode()
+JungleTerrainDeserializer* JungleTerrainDeserializer::create()
 {
-	if (JungleTerrainDeserializer::instance == nullptr)
-	{
-		JungleTerrainDeserializer::instance = new JungleTerrainDeserializer();
+	JungleTerrainDeserializer* instance = new JungleTerrainDeserializer();
 
-		instance->autorelease();
+	instance->autorelease();
 
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(JungleTerrainDeserializer::instance);
-	}
+	return instance;
 }
 
 JungleTerrainDeserializer::JungleTerrainDeserializer() : TerrainDeserializer(
