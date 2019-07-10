@@ -92,6 +92,7 @@
   </properties>
   <object id="649" name="blue-grass" type="terrain" x="3808.35" y="4750.2">
    <properties>
+    <property name="collision" value="pass-through"/>
     <property name="is-hollow" type="bool" value="true"/>
    </properties>
    <polygon points="0,0 -417.69,-343.98 -720.721,-597.871 -1277.64,-917.281 -1949.22,-1122.03 -2669.94,-1122.03 -3988.53,-1081.08 -4422.6,-262.08 -4365.27,1081.08 -3169.53,2063.88 -360.36,1449.63"/>
@@ -103,6 +104,7 @@
   </properties>
   <object id="648" name="blue-grass" type="terrain" x="1414.59" y="4943.69">
    <properties>
+    <property name="collision" value="pass-through"/>
     <property name="is-hollow" type="bool" value="true"/>
    </properties>
    <polygon points="0,0 728.172,-410.079 1308.65,-607.708 3584.17,-560.899 4252.4,-736.854 6200.99,-730.065 7289.02,-1154.22 8113.52,-1162 8130.84,2480.07 5421.45,2985.03 3186.42,2944.09 625.129,1912.06 -340.043,1398.22 -343.477,385.375"/>
@@ -113,6 +115,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="680" name="caverns" type="terrain" x="5671.62" y="5788.06">
+   <properties>
+    <property name="collision" value="solid"/>
+   </properties>
    <polygon points="0,0 345.881,2.64316 584.192,5.45312 585.192,262.481 585.581,479.618 573.135,743.973 1067.48,736.646 1473.33,732.627 1711.54,732.13 1706.76,355.879 1710.67,127.238 1526.08,-394.799 1547.44,-785.892 2461.16,-781.859 2499.86,-467.471 3233.46,-394.349 3356.35,39.9546 3281.88,626.08 2902.21,1337.95 2389.19,1903.38 1613.98,1990.15 784.586,2049.55 79.3123,1887.77 -469.998,1454.21 -553.299,819.432"/>
   </object>
  </objectgroup>
@@ -121,9 +126,15 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="blue-grass" type="terrain" x="-321.634" y="4874.1">
+   <properties>
+    <property name="collision" value="solid"/>
+   </properties>
    <polygon points="0,0 2477.63,-35.521 3479.35,165.942 4526.37,458.153 6090.21,823.467 6094.8,1028.01 5558.56,1749.13 4501.56,2080 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
   </object>
   <object id="627" name="blue-grass" type="terrain" x="3679.41" y="2590.48">
+   <properties>
+    <property name="collision" value="solid"/>
+   </properties>
    <polygon points="0,0 1588.05,-33.8278 1906.77,-64.4287 2097.61,12.4271 2319.07,-24.8541 2872.7,0 3054.64,478.052 2897.2,1059.33 2355.97,1255.13 549.771,1264.53 -6.6318,929.681 0,360.386"/>
   </object>
  </objectgroup>

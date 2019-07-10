@@ -94,6 +94,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="blue-grass" type="terrain" x="-321.634" y="4874.1">
+   <properties>
+    <property name="collision" value="solid"/>
+   </properties>
    <polygon points="0,0 2477.63,-35.521 3479.35,165.942 4526.37,458.153 6090.21,823.467 6094.8,1028.01 5558.56,1749.13 4501.56,2080 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
   </object>
  </objectgroup>

@@ -29,6 +29,7 @@ using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
+std::string TerrainObject::MapKeyCollision = "collision";
 std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
@@ -169,7 +170,7 @@ void TerrainObject::buildCollision()
 	this->properties[GameObject::MapKeyXPosition] = 0.0f;
 	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
-	std::string deserializedCollisionName = this->properties.at(GameObject::MapKeyName).asString();
+	std::string deserializedCollisionName = this->properties.at(TerrainObject::MapKeyCollision).asString();
 
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
