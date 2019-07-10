@@ -103,7 +103,7 @@ void HexusOpponentMenuBase::onEnter()
 		{
 			// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
 			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-			NavigationEvents2::NavigateBack(1);
+			NavigationEvents2::NavigateBack();
 			return;
 		}
 	}

@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewSeaSharpCavernsPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewSeaSharpCavernsPuzzle* HexusChapterPreviewSeaSharpCavernsPuzz
 
 HexusChapterPreviewSeaSharpCavernsPuzzle::HexusChapterPreviewSeaSharpCavernsPuzzle() : HexusChapterPreview(HexusChapterPreviewSeaSharpCavernsPuzzle::SaveKeyChapterName, Strings::Menus_Maps_SeaSharpCaverns::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameSeaSharpCaverns));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameSeaSharpCaverns));
 }
 
 HexusChapterPreviewSeaSharpCavernsPuzzle::~HexusChapterPreviewSeaSharpCavernsPuzzle()

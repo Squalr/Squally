@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewEndianForestPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewEndianForestPuzzle* HexusChapterPreviewEndianForestPuzzle::cr
 
 HexusChapterPreviewEndianForestPuzzle::HexusChapterPreviewEndianForestPuzzle() : HexusChapterPreview(HexusChapterPreviewEndianForestPuzzle::SaveKeyChapterName, Strings::Menus_Maps_EndianForest::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameEndianForest));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameEndianForest));
 }
 
 HexusChapterPreviewEndianForestPuzzle::~HexusChapterPreviewEndianForestPuzzle()

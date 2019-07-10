@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewBalmerPeaksPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewBalmerPeaksPuzzle* HexusChapterPreviewBalmerPeaksPuzzle::crea
 
 HexusChapterPreviewBalmerPeaksPuzzle::HexusChapterPreviewBalmerPeaksPuzzle() : HexusChapterPreview(HexusChapterPreviewBalmerPeaksPuzzle::SaveKeyChapterName, Strings::Menus_Maps_BallmerPeaks::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameBalmerPeaks));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameBalmerPeaks));
 }
 
 HexusChapterPreviewBalmerPeaksPuzzle::~HexusChapterPreviewBalmerPeaksPuzzle()

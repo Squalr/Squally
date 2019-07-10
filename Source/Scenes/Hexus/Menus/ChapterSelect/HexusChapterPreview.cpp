@@ -1,12 +1,13 @@
 #include "HexusChapterPreview.h"
 
-#include "cocos/2d/CCClippingNode.h"
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
@@ -29,6 +30,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 {
 	this->chapterSaveKey = chapterSaveKey;
 	this->callback = nullptr;
+	this->contentNode = Node::create();
 	this->frameBackground = Sprite::create(HexusResources::Menus_EnemyFrameBackground);
 	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
@@ -40,11 +42,7 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 	Size clipSize = Size(frameSize.width - 64.0f, frameSize.height - 64.0f);
 	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
-	// Enable to debug clipping:
-	//this->addChild(clipStencil);
-
-	this->frameClip = ClippingNode::create(clipStencil);
-	this->frameClip->setAnchorPoint(Vec2::ZERO);
+	this->frameClip = SmartClippingNode::create(this->contentNode, clipStencil);
 
 	this->lockedSprite->setVisible(false);
 	this->text->setVisible(false);
@@ -89,7 +87,7 @@ void HexusChapterPreview::initializeListeners()
 void HexusChapterPreview::disableInteraction()
 {
 	this->frame->disableInteraction();
-	this->frameClip->setOpacity(96);
+	this->contentNode->setOpacity(96);
 	this->text->setVisible(false);
 	this->lockedSprite->setVisible(true);
 }
@@ -97,7 +95,7 @@ void HexusChapterPreview::disableInteraction()
 void HexusChapterPreview::enableInteraction()
 {
 	this->frame->enableInteraction();
-	this->frameClip->setOpacity(255);
+	this->contentNode->setOpacity(255);
 	this->text->setVisible(true);
 	this->lockedSprite->setVisible(false);
 }
