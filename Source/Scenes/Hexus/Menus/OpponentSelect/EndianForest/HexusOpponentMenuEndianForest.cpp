@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuEndianForest.h"
 
 #include "Engine/GlobalDirector.h"
@@ -27,20 +23,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuEndianForest* HexusOpponentMenuEndianForest::instance = nullptr;
 
-void HexusOpponentMenuEndianForest::registerGlobalScene()
+HexusOpponentMenuEndianForest* HexusOpponentMenuEndianForest::getInstance()
 {
 	if (HexusOpponentMenuEndianForest::instance == nullptr)
 	{
 		HexusOpponentMenuEndianForest::instance = new HexusOpponentMenuEndianForest();
 
 		HexusOpponentMenuEndianForest::instance->autorelease();
-		HexusOpponentMenuEndianForest::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuEndianForest::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuEndianForest::instance);
+	return HexusOpponentMenuEndianForest::instance;
 }
 
-HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::EndianForest, HexusChapterPreviewEndianForest::SaveKeyChapterName)
+HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(HexusChapterPreviewEndianForest::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Appolo::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Ara::getHexusOpponentData()));

@@ -4,8 +4,9 @@
 #include "cocos/2d/CCLayer.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Events/NavigationEvents.h"
+#include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/HexusResources.h"
@@ -82,7 +83,9 @@ void HexusOpponentPreview::initializePositions()
 
 void HexusOpponentPreview::onOpponentClick()
 {
-	NavigationEvents::navigateHexus(NavigationEvents::NavigateHexusArgs(this->hexusOpponentData));
+	Hexus* hexus = Hexus::create(this->hexusOpponentData);
+
+	NavigationEvents2::LoadScene(hexus);
 }
 
 void HexusOpponentPreview::disableInteraction()

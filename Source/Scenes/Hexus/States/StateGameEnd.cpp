@@ -5,13 +5,14 @@
 
 #include "Analytics/AnalyticsCategories.h"
 #include "Engine/Analytics/Analytics.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -101,12 +102,14 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		if (gameState->opponentData->stateOverride == nullptr)
 		{
+			NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusRewardsMenu::getInstance()));
+
 			// Half the reward for a draw
-			NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward / 2, true));
+			HexusRewardsMenu::getInstance()->showReward(reward / 2, true, false);
 		}
 		else
 		{
-			NavigationEvents::navigateBack();
+			NavigationEvents2::NavigateBack();
 		}
 	}
 	else if (isWin)
@@ -143,11 +146,14 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		if (gameState->opponentData->stateOverride == nullptr)
 		{
-			NavigationEvents::navigateHexusRewards(NavigationEvents::NavigateHexusRewardArgs(reward, false, isLastInChapter));
+			NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusRewardsMenu::getInstance()));
+
+			// Half the reward for a draw
+			HexusRewardsMenu::getInstance()->showReward(reward, false, isLastInChapter);
 		}
 		else
 		{
-			NavigationEvents::navigateBack();
+			NavigationEvents2::NavigateBack();
 		}
 	}
 	else
@@ -165,7 +171,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
 
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	}
 }
 

@@ -370,20 +370,19 @@ void Squally::registerHackables()
 
 NO_OPTIMIZE bool Squally::isAliveSqually()
 {
-	// The compiler will save EBP, we need to restore it before returning
-	ASM(pop ZBP);
+	bool ret = true;
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
 
 	ASM(mov ZAX, 1);
-	ASM(ret);
 
 	HACKABLE_CODE_END();
 
+	ASM_MOV_VAR_REG(ret, ZAX);
+
 	HACKABLES_STOP_SEARCH();
 
-	// Just to make compiler stop crying
-	return true;
+	return ret;
 }
 
 void Squally::saveState()
@@ -424,6 +423,11 @@ void Squally::loadState()
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY())).asFloat()
 	));
+
+	if (this->getHealth() <= 0)
+	{
+		this->killAndRespawn();
+	}
 
 	// Save new defaults
 	this->saveState();

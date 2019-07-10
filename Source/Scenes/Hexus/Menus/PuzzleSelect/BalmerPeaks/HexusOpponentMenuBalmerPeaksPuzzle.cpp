@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuBalmerPeaksPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -25,20 +21,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuBalmerPeaksPuzzle* HexusOpponentMenuBalmerPeaksPuzzle::instance = nullptr;
 
-void HexusOpponentMenuBalmerPeaksPuzzle::registerGlobalScene()
+HexusOpponentMenuBalmerPeaksPuzzle* HexusOpponentMenuBalmerPeaksPuzzle::getInstance()
 {
 	if (HexusOpponentMenuBalmerPeaksPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuBalmerPeaksPuzzle::instance = new HexusOpponentMenuBalmerPeaksPuzzle();
 
 		HexusOpponentMenuBalmerPeaksPuzzle::instance->autorelease();
-		HexusOpponentMenuBalmerPeaksPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuBalmerPeaksPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuBalmerPeaksPuzzle::instance);
+	return HexusOpponentMenuBalmerPeaksPuzzle::instance;
 }
 
-HexusOpponentMenuBalmerPeaksPuzzle::HexusOpponentMenuBalmerPeaksPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleBalmerPeaks, HexusChapterPreviewBalmerPeaksPuzzle::SaveKeyChapterName)
+HexusOpponentMenuBalmerPeaksPuzzle::HexusOpponentMenuBalmerPeaksPuzzle() : super(HexusChapterPreviewBalmerPeaksPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Cyrogen::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FrostFiend::getHexusOpponentData()));

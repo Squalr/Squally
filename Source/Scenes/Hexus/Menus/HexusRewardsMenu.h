@@ -16,7 +16,9 @@ class Sound;
 class HexusRewardsMenu : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static HexusRewardsMenu* getInstance();
+
+	void showReward(int reward, bool isRewardReduced, bool isChapterClear);
 
 protected:
 	HexusRewardsMenu();
@@ -27,7 +29,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onRewardsOpen(int reward, bool isRewardReduced, bool isChapterClear);
 	void onReturnClick();
 
 	cocos2d::Sprite* background;

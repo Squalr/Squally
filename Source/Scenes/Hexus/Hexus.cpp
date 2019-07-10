@@ -6,6 +6,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableIconNode.h"
@@ -13,7 +14,6 @@
 #include "Engine/Sound/Music.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
@@ -25,6 +25,7 @@
 #include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 #include "Scenes/Hexus/States/States.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/MusicResources.h"
@@ -33,19 +34,16 @@ using namespace cocos2d;
 
 Hexus* Hexus::instance = nullptr;
 
-void Hexus::registerGlobalScene()
+Hexus* Hexus::create(HexusOpponentData* opponentData)
 {
-	if (Hexus::instance == nullptr)
-	{
-		Hexus::instance = new Hexus();
-		Hexus::instance->autorelease();
-		Hexus::instance->initializeListeners();
-	}
+	Hexus* instance = new Hexus(opponentData);
+	
+	instance->autorelease();
 
-	GlobalDirector::registerGlobalScene(Hexus::instance);
+	return instance;
 }
 
-Hexus::Hexus()
+Hexus::Hexus(HexusOpponentData* opponentData)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -208,6 +206,8 @@ Hexus::Hexus()
 	this->addChild(this->confirmationMenu);
 	this->addChild(this->musicA);
 	this->addChild(this->musicB);
+
+	this->startGame(opponentData);
 }
 
 Hexus::~Hexus()
@@ -262,17 +262,6 @@ void Hexus::initializeListeners()
 		this->helpMenuComponent->setVisible(false);
 		GameUtils::focus(this);
 	});
-
-	Hexus::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexus, [](EventCustom* args)
-	{
-		NavigationEvents::NavigateHexusArgs* hexusArgs = static_cast<NavigationEvents::NavigateHexusArgs*>(args->getUserData());
-
-		if (hexusArgs != nullptr)
-		{
-			Hexus::instance->startGame(hexusArgs->opponentData);
-			GlobalDirector::loadScene(Hexus::instance);
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventArgs)
 	{
@@ -363,5 +352,5 @@ void Hexus::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents::navigateTitle();
+	NavigationEvents2::LoadScene(TitleScreen::getInstance());
 }

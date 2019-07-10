@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuDaemonsHallow.h"
 
 #include "Engine/GlobalDirector.h"
@@ -27,20 +23,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuDaemonsHallow* HexusOpponentMenuDaemonsHallow::instance = nullptr;
 
-void HexusOpponentMenuDaemonsHallow::registerGlobalScene()
+HexusOpponentMenuDaemonsHallow* HexusOpponentMenuDaemonsHallow::getInstance()
 {
 	if (HexusOpponentMenuDaemonsHallow::instance == nullptr)
 	{
 		HexusOpponentMenuDaemonsHallow::instance = new HexusOpponentMenuDaemonsHallow();
 
 		HexusOpponentMenuDaemonsHallow::instance->autorelease();
-		HexusOpponentMenuDaemonsHallow::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuDaemonsHallow::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuDaemonsHallow::instance);
+	return HexusOpponentMenuDaemonsHallow::instance;
 }
 
-HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::DaemonsHallow, HexusChapterPreviewDaemonsHallow::SaveKeyChapterName)
+HexusOpponentMenuDaemonsHallow::HexusOpponentMenuDaemonsHallow() : super(HexusChapterPreviewDaemonsHallow::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Ash::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Brine::getHexusOpponentData()));

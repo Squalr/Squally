@@ -4,10 +4,11 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Events/NavigationEvents.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
@@ -85,7 +86,9 @@ void EdgePortal::initializeListeners()
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()
 				{
-					NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, false));
+					PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, false);
+
+					NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(map));
 				}),
 				nullptr
 			));

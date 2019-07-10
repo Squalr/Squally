@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuCastleValgrind.h"
 
 #include "Engine/GlobalDirector.h"
@@ -27,20 +23,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuCastleValgrind* HexusOpponentMenuCastleValgrind::instance = nullptr;
 
-void HexusOpponentMenuCastleValgrind::registerGlobalScene()
+HexusOpponentMenuCastleValgrind* HexusOpponentMenuCastleValgrind::getInstance()
 {
 	if (HexusOpponentMenuCastleValgrind::instance == nullptr)
 	{
 		HexusOpponentMenuCastleValgrind::instance = new HexusOpponentMenuCastleValgrind();
 
 		HexusOpponentMenuCastleValgrind::instance->autorelease();
-		HexusOpponentMenuCastleValgrind::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuCastleValgrind::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuCastleValgrind::instance);
+	return HexusOpponentMenuCastleValgrind::instance;
 }
 
-HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::CastleValgrind, HexusChapterPreviewCastleValgrind::SaveKeyChapterName)
+HexusOpponentMenuCastleValgrind::HexusOpponentMenuCastleValgrind() : super(HexusChapterPreviewCastleValgrind::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Elric::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Garin::getHexusOpponentData()));

@@ -83,11 +83,11 @@ class Music;
 class Hexus : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static Hexus* create(HexusOpponentData* opponentData);
 
 private:
 	typedef GlobalScene super;
-	Hexus();
+	Hexus(HexusOpponentData* opponentData);
 	~Hexus();
 
 	void onEnter() override;

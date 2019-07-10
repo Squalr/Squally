@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -15,7 +16,6 @@
 #include "Engine/UI/Controls/ToggleGroup.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardStorage.h"
@@ -38,7 +38,7 @@
 
 using namespace cocos2d;
 
-HexusDeckManagement* HexusDeckManagement::instance;
+HexusDeckManagement* HexusDeckManagement::instance = nullptr;
 
 HexusDeckManagement* HexusDeckManagement::getInstance()
 {
@@ -380,7 +380,7 @@ void HexusDeckManagement::save(bool exit)
 
 	if (exit)
 	{
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	}
 }
 
