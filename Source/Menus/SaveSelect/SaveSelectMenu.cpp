@@ -113,7 +113,7 @@ void SaveSelectMenu::initializeListeners()
 		}
 		args->handled = true;
 
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
@@ -253,10 +253,10 @@ void SaveSelectMenu::loadSave()
 
 	PlatformerMap* map = PlatformerMap::create(mapFile, mapArgs, isReload);
 
-	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(map));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }
 
 void SaveSelectMenu::onBackClick()
 {
-	NavigationEvents2::NavigateBack();
+	NavigationEvents::NavigateBack();
 }

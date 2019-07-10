@@ -352,5 +352,5 @@ void Hexus::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents2::LoadScene(TitleScreen::getInstance());
+	NavigationEvents::LoadScene(TitleScreen::getInstance());
 }

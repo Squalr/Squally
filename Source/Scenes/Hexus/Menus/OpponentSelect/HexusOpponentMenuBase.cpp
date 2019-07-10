@@ -103,7 +103,7 @@ void HexusOpponentMenuBase::onEnter()
 		{
 			// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
 			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-			NavigationEvents2::NavigateBack();
+			NavigationEvents::NavigateBack();
 			return;
 		}
 	}
@@ -178,7 +178,7 @@ void HexusOpponentMenuBase::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
 	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onDeckManagementClick, this));
@@ -192,17 +192,17 @@ void HexusOpponentMenuBase::onMouseOver(HexusOpponentPreview* opponent)
 
 void HexusOpponentMenuBase::onBackClick()
 {
-	NavigationEvents2::NavigateBack();
+	NavigationEvents::NavigateBack();
 }
 
 void HexusOpponentMenuBase::onDeckManagementClick()
 {
-	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusDeckManagement::getInstance()));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusDeckManagement::getInstance()));
 }
 
 void HexusOpponentMenuBase::onShopClick()
 {
-	NavigationEvents2::LoadScene(HexusStoreMenu::getInstance());
+	NavigationEvents::LoadScene(HexusStoreMenu::getInstance());
 }
 
 void HexusOpponentMenuBase::loadProgress()

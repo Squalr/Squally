@@ -8,14 +8,14 @@
 
 using namespace cocos2d;
 
-const std::string NavigationEvents2::EventNavigateScene = "EVENT_LOAD_SCENE";
+const std::string NavigationEvents::EventNavigateScene = "EVENT_LOAD_SCENE";
 
-void NavigationEvents2::LoadScene(LoadSceneArgs args)
+void NavigationEvents::LoadScene(LoadSceneArgs args)
 {
 	GlobalDirector::loadScene(args.scene);
 }
 
-void NavigationEvents2::NavigateBack(int backCount)
+void NavigationEvents::NavigateBack(int backCount)
 {
 	GlobalDirector::navigateBack(backCount);
 }

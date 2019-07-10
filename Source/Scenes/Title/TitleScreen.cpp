@@ -212,17 +212,17 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents2::LoadScene(SaveSelectMenu::getInstance());
+	NavigationEvents::LoadScene(SaveSelectMenu::getInstance());
 }
 
 void TitleScreen::onMinigamesClick()
 {
-	NavigationEvents2::LoadScene(MinigamesMenu::getInstance());
+	NavigationEvents::LoadScene(MinigamesMenu::getInstance());
 }
 
 void TitleScreen::onOptionsClick()
 {
-	NavigationEvents2::LoadScene(OptionsScene::getInstance());
+	NavigationEvents::LoadScene(OptionsScene::getInstance());
 }
 
 void TitleScreen::onExitClick()

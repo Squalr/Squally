@@ -68,5 +68,5 @@ void MapNode::onNodeClick()
 {
 	PlatformerMap* map = PlatformerMap::create(this->nodeMapFile, { }, false);
 
-	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(map));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }

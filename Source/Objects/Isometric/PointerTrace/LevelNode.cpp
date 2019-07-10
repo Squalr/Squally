@@ -96,7 +96,7 @@ void LevelNode::initializeListeners()
 			SaveManager::saveGlobalData(this->getSaveKey(), Value(true));
 		});
 
-		NavigationEvents2::LoadScene(map);
+		NavigationEvents::LoadScene(map);
 	});
 }
 

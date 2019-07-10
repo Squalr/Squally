@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuDaemonsHallow.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuDaemonsHallow* CipherPuzzleMenuDaemonsHallow::instance = nullptr;
 std::string CipherPuzzleMenuDaemonsHallow::ChapterSavekey = "CIPHER_CHAPTER_DAEMONS_HALLOW";
 
-void CipherPuzzleMenuDaemonsHallow::registerGlobalScene()
+CipherPuzzleMenuDaemonsHallow* CipherPuzzleMenuDaemonsHallow::getInstance()
 {
 	if (CipherPuzzleMenuDaemonsHallow::instance == nullptr)
 	{
 		CipherPuzzleMenuDaemonsHallow::instance = new CipherPuzzleMenuDaemonsHallow();
 
 		CipherPuzzleMenuDaemonsHallow::instance->autorelease();
-		CipherPuzzleMenuDaemonsHallow::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuDaemonsHallow::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuDaemonsHallow::instance);
+	return CipherPuzzleMenuDaemonsHallow::instance;
 }
 
-CipherPuzzleMenuDaemonsHallow::CipherPuzzleMenuDaemonsHallow() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::DaemonsHallow, CipherPuzzleMenuDaemonsHallow::ChapterSavekey)
+CipherPuzzleMenuDaemonsHallow::CipherPuzzleMenuDaemonsHallow() : super(CipherPuzzleMenuDaemonsHallow::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

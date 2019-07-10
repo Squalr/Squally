@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuEndianForest.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuEndianForest* CipherPuzzleMenuEndianForest::instance = nullptr;
 std::string CipherPuzzleMenuEndianForest::ChapterSavekey = "CIPHER_CHAPTER_ENDIAN_FOREST";
 
-void CipherPuzzleMenuEndianForest::registerGlobalScene()
+CipherPuzzleMenuEndianForest* CipherPuzzleMenuEndianForest::getInstance()
 {
 	if (CipherPuzzleMenuEndianForest::instance == nullptr)
 	{
 		CipherPuzzleMenuEndianForest::instance = new CipherPuzzleMenuEndianForest();
 
 		CipherPuzzleMenuEndianForest::instance->autorelease();
-		CipherPuzzleMenuEndianForest::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuEndianForest::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuEndianForest::instance);
+	return CipherPuzzleMenuEndianForest::instance;
 }
 
-CipherPuzzleMenuEndianForest::CipherPuzzleMenuEndianForest() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::EndianForest, CipherPuzzleMenuEndianForest::ChapterSavekey)
+CipherPuzzleMenuEndianForest::CipherPuzzleMenuEndianForest() : super(CipherPuzzleMenuEndianForest::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

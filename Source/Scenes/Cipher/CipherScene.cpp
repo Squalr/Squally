@@ -5,34 +5,29 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/CipherResources.h"
 
 using namespace cocos2d;
 
-CipherScene* CipherScene::instance = nullptr;
-
-void CipherScene::registerGlobalScene()
+CipherScene* CipherScene::create(CipherPuzzleData* cipherPuzzleData)
 {
-	if (CipherScene::instance == nullptr)
-	{
-		CipherScene::instance = new CipherScene();
+	CipherScene* instance = new CipherScene(cipherPuzzleData);
 
-		CipherScene::instance->autorelease();
-		CipherScene::instance->initializeListeners();
-	}
+	instance->autorelease();
 
-	GlobalDirector::registerGlobalScene(CipherScene::instance);
+	return instance;
 }
 
-CipherScene::CipherScene()
+CipherScene::CipherScene(CipherPuzzleData* cipherPuzzleData)
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -40,7 +35,7 @@ CipherScene::CipherScene()
 	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->optionsMenu = OptionsMenu::create();
 	this->pauseMenu = PauseMenu::create();
-	this->cipherPuzzleDataRef = nullptr;
+	this->cipherPuzzleData = cipherPuzzleData == nullptr ? cipherPuzzleData : cipherPuzzleData->clone();
 
 	this->addChild(this->cipher);
 	this->addChild(this->menuBackDrop);
@@ -65,9 +60,9 @@ void CipherScene::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 	
-	if (this->cipherPuzzleDataRef != nullptr)
+	if (this->cipherPuzzleData != nullptr)
 	{
-		this->cipher->openCipher(this->cipherPuzzleDataRef->clone());
+		this->cipher->openCipher(this->cipherPuzzleData->clone());
 		this->cipher->setVisible(true);
 	}
 }
@@ -80,18 +75,6 @@ void CipherScene::initializePositions()
 void CipherScene::initializeListeners()
 {
 	super::initializeListeners();
-
-	CipherScene::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCipher, [](EventCustom* eventCustom)
-	{
-		NavigationEvents::NavigateCipherArgs* args = static_cast<NavigationEvents::NavigateCipherArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
-		{
-			GlobalDirector::loadScene(CipherScene::instance);
-
-			CipherScene::instance->cipherPuzzleDataRef = args->cipherPuzzleData;
-		}
-	}));
 
 	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(CipherScene::onOptionsExit, this));
 	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(CipherScene::onResumeClick, this));
@@ -141,6 +124,6 @@ void CipherScene::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents::navigateTitle();
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 }
 

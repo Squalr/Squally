@@ -102,14 +102,14 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		if (gameState->opponentData->stateOverride == nullptr)
 		{
-			NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusRewardsMenu::getInstance()));
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusRewardsMenu::getInstance()));
 
 			// Half the reward for a draw
 			HexusRewardsMenu::getInstance()->showReward(reward / 2, true, false);
 		}
 		else
 		{
-			NavigationEvents2::NavigateBack();
+			NavigationEvents::NavigateBack();
 		}
 	}
 	else if (isWin)
@@ -146,14 +146,14 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		if (gameState->opponentData->stateOverride == nullptr)
 		{
-			NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusRewardsMenu::getInstance()));
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusRewardsMenu::getInstance()));
 
 			// Half the reward for a draw
 			HexusRewardsMenu::getInstance()->showReward(reward, false, isLastInChapter);
 		}
 		else
 		{
-			NavigationEvents2::NavigateBack();
+			NavigationEvents::NavigateBack();
 		}
 	}
 	else
@@ -171,7 +171,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
 
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	}
 }
 

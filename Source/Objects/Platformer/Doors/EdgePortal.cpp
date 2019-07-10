@@ -88,7 +88,7 @@ void EdgePortal::initializeListeners()
 				{
 					PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, false);
 
-					NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(map));
+					NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 				}),
 				nullptr
 			));
