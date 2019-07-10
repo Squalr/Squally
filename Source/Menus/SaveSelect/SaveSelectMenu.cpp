@@ -6,15 +6,17 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/MapResources.h"
@@ -111,7 +113,7 @@ void SaveSelectMenu::initializeListeners()
 		}
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
@@ -249,10 +251,12 @@ void SaveSelectMenu::loadSave()
 		mapArgs.push_back((*it).asString());
 	}
 
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapFile, mapArgs, isReload));
+	PlatformerMap* map = PlatformerMap::create(mapFile, mapArgs, isReload);
+
+	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(map));
 }
 
 void SaveSelectMenu::onBackClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents2::NavigateBack();
 }

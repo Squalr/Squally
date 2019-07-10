@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -24,18 +25,22 @@
 
 using namespace cocos2d;
 
-PlatformerMap* PlatformerMap::instance = nullptr;
-
-void PlatformerMap::registerGlobalScene()
+PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs, bool isReload)
 {
-	if (PlatformerMap::instance == nullptr)
+	PlatformerMap* instance = new PlatformerMap();
+
+	instance->autorelease();
+
+	// Clear any intra-map save-state
+	if (isReload)
 	{
-		PlatformerMap::instance = new PlatformerMap();
-		PlatformerMap::instance->autorelease();
-		PlatformerMap::instance->initializeListeners();
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	}
 
-	GlobalDirector::registerGlobalScene(PlatformerMap::instance);
+	instance->loadMap(mapResource, mapArgs);
+
+	return instance;
 }
 
 PlatformerMap::PlatformerMap() : super(true)
@@ -47,6 +52,21 @@ PlatformerMap::PlatformerMap() : super(true)
 
 	this->gameHud = GameHud::create();
 	this->cipher = Cipher::create();
+
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			PhysicsDeserializer::create(),
+			ObjectLayerDeserializer::create({
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create() },
+				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
+				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
+				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
+				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
+			}),
+			WeatherDeserializer::create()
+		}
+	);
 
 	this->getPhysicsWorld()->setAutoStep(false);
 
@@ -82,25 +102,6 @@ void PlatformerMap::initializePositions()
 void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePlatformerMap, [=](EventCustom* eventCustom)
-	{
-		NavigationEvents::NavigateMapArgs* args = static_cast<NavigationEvents::NavigateMapArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			// Clear any intra-map save-state
-			if (!args->isReload)
-			{
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-			}
-
-			this->loadMap(args->mapResource, args->mapArgs);
-
-			GlobalDirector::loadScene(this);
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{

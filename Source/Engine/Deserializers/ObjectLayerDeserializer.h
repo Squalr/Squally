@@ -9,7 +9,7 @@ class ObjectLayerDeserializer : public LayerDeserializer
 public:
 	static ObjectLayerDeserializer* create(std::map<std::string, ObjectDeserializer*> objectDeserializers);
 
-	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args);
+	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args) override;
 
 private:
 	typedef LayerDeserializer super;

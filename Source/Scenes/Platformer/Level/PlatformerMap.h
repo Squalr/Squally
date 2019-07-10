@@ -8,7 +8,7 @@ class GameHud;
 class PlatformerMap : public MapBase
 {
 public:
-	static void registerGlobalScene();
+	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs, bool isReload);
 
 	void loadMap(std::string mapResource, std::vector<std::string> args) override;
 
@@ -28,6 +28,4 @@ private:
 
 	GameHud* gameHud;
 	Cipher* cipher;
-
-	static PlatformerMap* instance;
 };

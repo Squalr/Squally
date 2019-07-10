@@ -8,12 +8,12 @@ class BackgroundDeserializer : public LayerDeserializer
 public:
 	static BackgroundDeserializer* create();
 
+	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args) override;
+
 private:
 	typedef LayerDeserializer super;
 	BackgroundDeserializer();
 	~BackgroundDeserializer();
-
-	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args);
 
 	static const std::string MapKeyBackgroundLayer;
 };

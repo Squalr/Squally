@@ -21,7 +21,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Isometric/PointerTrace/GridEntity.h"
-#include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
 #include "Objects/Isometric/PointerTrace/GridObject.h"
 #include "Objects/Isometric/PointerTrace/RegisterInitializers/RegisterInitializer.h"
@@ -107,20 +106,6 @@ void PointerTraceMap::initializePositions()
 void PointerTraceMap::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePointerTraceMap, [=](EventCustom* eventCustom)
-	{
-		NavigationEvents::NavigatePointerTraceMapArgs* args = static_cast<NavigationEvents::NavigatePointerTraceMapArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->loadMap(args->mapResource);
-
-			this->onLevelClearCallback = args->onLevelClearCallback;
-
-			GlobalDirector::loadScene(this);
-		}
-	}));
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventResetState, [=](EventCustom* eventCustom)
 	{

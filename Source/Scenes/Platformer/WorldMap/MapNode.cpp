@@ -3,6 +3,7 @@
 #include "Resources/UIResources.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Events/NavigationEvents.h"
 
 using namespace cocos2d;
 

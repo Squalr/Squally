@@ -7,12 +7,12 @@ class MusicDeserializer : public LayerDeserializer
 public:
 	static MusicDeserializer* create();
 
+	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args) override;
+
 private:
 	typedef LayerDeserializer super;
 	MusicDeserializer();
 	~MusicDeserializer();
-
-	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args);
 
 	static const std::string MapKeyMusicProperty;
 	static const std::string MapKeyDelayProperty;
