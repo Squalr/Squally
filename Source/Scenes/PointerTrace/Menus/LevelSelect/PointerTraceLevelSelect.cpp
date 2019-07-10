@@ -12,12 +12,12 @@
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/InputEvents.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 
 #include "Resources/IsometricMapResources.h"
 #include "Resources/IsometricMapResources.h"
@@ -98,6 +98,6 @@ void PointerTraceLevelSelect::initializeListeners()
 		}
 
 		args->handled = true;
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	});
 }

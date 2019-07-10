@@ -9,13 +9,13 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/InputEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/WorldMap/FX/Lightning.h"
 #include "Scenes/Platformer/WorldMap/FX/LightningSphere.h"
 #include "Scenes/Platformer/WorldMap/MapNode.h"
@@ -207,11 +207,6 @@ void WorldMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	WorldMap::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateWorldMap, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(WorldMap::instance);
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -220,7 +215,7 @@ void WorldMap::initializeListeners()
 		}
 
 		args->handled = true;
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	});
 }
 

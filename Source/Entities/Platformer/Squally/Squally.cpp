@@ -13,6 +13,7 @@
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -22,9 +23,9 @@
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/IsAliveClippy.h"
-#include "Events/NavigationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
+#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
@@ -143,13 +144,18 @@ void Squally::initializeCollisionEvents()
 		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
 		{
 			// TODO: First strike detection
-			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(
-				true,
-				enemy->getUniqueIdentifier(),
+			bool firstStrike = true;
+
+			CombatMap* combatMap = CombatMap::create(
 				enemy->getBattleMapResource(),
 				enemy->getBattleMapArgs(),
+				true,
+				enemy->getUniqueIdentifier(),
 				{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
-				enemy->getCombatEntityList()));
+				enemy->getCombatEntityList()
+			);
+
+			NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(combatMap));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;
@@ -206,14 +212,11 @@ void Squally::initializeListeners()
 {
 	super::initializeListeners();
 
-	
-
-	this->addEventListener(EventListenerCustom::create(HackableEvents::EventRequestHackerModeEnable, [=](EventCustom*)
+	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
-		if (this->tryUseRune())
-		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
-		}
+		this->tryUseRune();
+		
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)

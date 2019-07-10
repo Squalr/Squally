@@ -14,6 +14,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealthClippy.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -63,7 +64,9 @@ void RestoreHealth::onEnter()
 {
 	super::onEnter();
 	
-	std::vector<std::string> mapArgs = CombatMap::getInstance()->getMapArgs();
+	std::vector<std::string> mapArgs = std::vector<std::string>();
+
+	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
 
 	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), RestoreHealth::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
@@ -91,7 +94,9 @@ void RestoreHealth::registerHackables()
 		return;
 	}
 	
-	std::vector<std::string> mapArgs = CombatMap::getInstance()->getMapArgs();
+	std::vector<std::string> mapArgs = std::vector<std::string>();
+
+	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
 
 	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), RestoreHealth::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
