@@ -1,7 +1,6 @@
 #include "IsometricSqually.h"
 
 #include "Engine/Input/Input.h"
-#include "Events/NavigationEvents.h"
 
 #include "Resources/IsometricEntityResources.h"
 

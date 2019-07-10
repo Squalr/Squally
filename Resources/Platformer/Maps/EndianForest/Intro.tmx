@@ -95,10 +95,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="terrain" type="solid" x="-144.975" y="6922.1">
-   <properties>
-    <property name="texture" value="blue-grass"/>
-   </properties>
+  <object id="489" name="blue-grass" type="terrain" x="-144.975" y="6922.1">
    <polygon points="0,0 4788.16,-35.521 5749.15,-67.6537 6324.59,13.0491 6992.29,-26.0982 8661.56,0 8680.1,508.916 8513.14,1278.81 7103.57,1317.96 2615.16,1161.37 -37.0944,1017.83 0,378.425"/>
   </object>
  </objectgroup>

@@ -7,7 +7,6 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"

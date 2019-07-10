@@ -1,7 +1,6 @@
 #include "IsometricBall.h"
 
 #include "Engine/Input/Input.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/PointerTrace/RegisterState.h"
 
 #include "Resources/IsometricEntityResources.h"

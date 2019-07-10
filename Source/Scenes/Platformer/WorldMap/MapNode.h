@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
-#include "Events/NavigationEvents.h"
 
 class ClickableNode;
 

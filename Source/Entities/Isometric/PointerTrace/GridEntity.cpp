@@ -9,7 +9,6 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Events/NavigationEvents.h"
 #include "Events/PointerTraceEvents.h"
 
 #include "Resources/IsometricEntityResources.h"

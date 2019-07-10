@@ -27,7 +27,6 @@
 
 using namespace cocos2d;
 
-std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
@@ -36,19 +35,6 @@ const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::HollowDistance = 144.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
 const float TerrainObject::BottomThreshold = 7.0f * float(M_PI) / 6.0f;
-
-TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData terrainData)
-{
-	TerrainObject* instance = new TerrainObject(initProperties, terrainData);
-
-	instance->autorelease();
-
-	// Build the terrain from the parsed points
-	instance->setPoints(instance->polylinePoints);
-	instance->rebuildTerrain(terrainData);
-
-	return instance;
-}
 
 TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : super(initProperties)
 {
@@ -85,6 +71,10 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->addChild(this->topsNode);
 	this->addChild(this->topCornersNode);
 	this->addChild(this->debugNode);
+
+	// Build the terrain from the parsed points
+	this->setPoints(this->polylinePoints);
+	this->rebuildTerrain(terrainData);
 }
 
 TerrainObject::~TerrainObject()
