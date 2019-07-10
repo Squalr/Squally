@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Deserializers/Deserializers.h"
@@ -15,7 +16,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"

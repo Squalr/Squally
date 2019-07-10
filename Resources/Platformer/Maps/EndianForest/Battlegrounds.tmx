@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="35" nextobjectid="546">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="35" nextobjectid="551">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -83,17 +83,17 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="440" name="solid" type="terrain" x="3864.63" y="2406.67">
+  <object id="549" name="blue-grass" type="terrain" x="5213.84" y="2411.35">
    <properties>
-    <property name="texture" value="blue-grass"/>
+    <property name="collision" value="solid"/>
    </properties>
-   <polyline points="0,0 454.088,0 434.2,212 464.031,360 437.515,624 437.515,960 248.588,1160 9.94352,960 36.4595,664 23.2016,448 59.6611,268 -6.62901,36"/>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="450" name="solid" type="terrain" x="5215.73" y="2407.33">
+  <object id="550" name="blue-grass" type="terrain" x="3827.64" y="2407.05">
    <properties>
-    <property name="texture" value="blue-grass"/>
+    <property name="collision" value="solid"/>
    </properties>
-   <polyline points="0,0 505.257,0 483.129,212 516.321,360 486.817,624 486.817,960 276.601,1160 11.064,960 40.5681,664 25.8161,448 66.3842,268 -7.37601,36"/>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
  </objectgroup>
  <objectgroup id="34" name="spawn target">
@@ -134,17 +134,17 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="439" name="solid" type="terrain" x="4114.27" y="2500">
+  <object id="547" name="blue-grass" type="terrain" x="4904.36" y="2499.46">
    <properties>
-    <property name="texture" value="blue-grass"/>
+    <property name="collision" value="solid"/>
    </properties>
-   <polyline points="0,0 442.055,0 422.694,212 451.735,360 425.922,624 425.922,960 242.001,1160 9.68003,960 35.4934,664 22.5868,448 58.0802,268 -6.45336,36"/>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="447" name="solid" type="terrain" x="4913.76" y="2495">
+  <object id="548" name="blue-grass" type="terrain" x="4074.79" y="2501.61">
    <properties>
-    <property name="texture" value="blue-grass"/>
+    <property name="collision" value="solid"/>
    </properties>
-   <polyline points="0,0 478.243,0 457.298,212 488.715,360 460.788,624 460.788,960 261.812,1160 10.4725,960 38.399,664 24.4358,448 62.8349,268 -6.98165,36"/>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
  </objectgroup>
  <objectgroup id="33" name="spawn target">
@@ -185,11 +185,11 @@
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="448" name="solid" type="terrain" x="5129.67" y="2589.33">
+  <object id="546" name="blue-grass" type="terrain" x="5132.17" y="2574.68">
    <properties>
-    <property name="texture" value="blue-grass"/>
+    <property name="collision" value="solid"/>
    </properties>
-   <polyline points="0,0 492.685,0 471.108,212 503.474,360 474.705,624 474.705,960 269.718,1160 10.7887,960 39.5586,664 25.1738,448 64.7324,268 -7.19249,36"/>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
  </objectgroup>
  <objectgroup id="32" name="spawn target">

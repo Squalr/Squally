@@ -10,7 +10,6 @@
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
-#include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
@@ -34,33 +33,27 @@
 
 using namespace cocos2d;
 
-CombatMap* CombatMap::instance = nullptr;
 const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disabled";
 
-CombatMap* CombatMap::getInstance()
+CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes)
 {
-	if (CombatMap::instance == nullptr)
-	{
-		CombatMap::instance = new CombatMap();
-		CombatMap::instance->autorelease();
-		CombatMap::instance->initializeListeners();
-	}
+	CombatMap* instance = new CombatMap(levelFile, mapArgs, playerFirstStrike, enemyIdentifier, playerTypes, enemyTypes);
 
-	return CombatMap::instance;
+	instance->autorelease();
+
+	return instance;
 }
 
-void CombatMap::registerGlobalScene()
-{
-	GlobalDirector::registerGlobalScene(CombatMap::getInstance());
-}
-
-CombatMap::CombatMap() : super(true)
+CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true)
 {
 	if (!MapBase::init())
 	{
 		throw std::uncaught_exception();
 	}
 
+	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
 	this->targetSelectionMenu = TargetSelectionMenu::create();
@@ -72,6 +65,21 @@ CombatMap::CombatMap() : super(true)
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			PhysicsDeserializer::create(),
+			ObjectLayerDeserializer::create({
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create() },
+				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
+				{ PlatformerEntityDeserializer::MapKeyTypeEntity, this->platformerEntityDeserializer },
+				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
+				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
+			}),
+			WeatherDeserializer::create()
+		}
+	);
+
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->textOverlays);
 	this->hud->addChild(this->targetSelectionMenu);
@@ -80,6 +88,9 @@ CombatMap::CombatMap() : super(true)
 	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
+
+	this->loadMap(levelFile, mapArgs);
+	this->setEntityKeys(playerTypes, enemyTypes);
 }
 
 CombatMap::~CombatMap()
@@ -108,21 +119,6 @@ void CombatMap::initializePositions()
 void CombatMap::initializeListeners()
 {
 	MapBase::initializeListeners();
-
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* eventCustom)
-	{
-		NavigationEvents::NavigateCombatArgs* args = static_cast<NavigationEvents::NavigateCombatArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->loadMap(args->levelFile, args->mapArgs);
-
-			this->setEntityKeys(args->playerTypes, args->enemyTypes);
-			this->enemyIdentifier = args->enemyIdentifier;
-
-			GlobalDirector::loadScene(this);
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{

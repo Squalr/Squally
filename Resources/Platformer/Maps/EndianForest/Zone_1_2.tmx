@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="694">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="696">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -98,6 +98,15 @@
     <property name="collision" value="solid"/>
    </properties>
    <polygon points="0,0 2477.63,-35.521 3479.35,165.942 4526.37,458.153 6090.21,823.467 6094.8,1028.01 5558.56,1749.13 4501.56,2080 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
+  </object>
+  <object id="695" name="orc-grunt" type="entity" x="1095.42" y="4692.26" width="128" height="128">
+   <properties>
+    <property name="ally-1" value=""/>
+    <property name="ally-2" value=""/>
+    <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
+    <property name="battle-map" value="EndianForest/BattleGrounds"/>
+    <property name="event" value="event-door-open"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">

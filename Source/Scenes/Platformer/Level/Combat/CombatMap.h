@@ -15,13 +15,14 @@ class Timeline;
 class CombatMap : public MapBase
 {
 public:
-	static CombatMap* getInstance();
-	static void registerGlobalScene();
+	static CombatMap* create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes);
 
 	void loadMap(std::string mapResource, std::vector<std::string> args = { }) override;
 
 protected:
-	CombatMap();
+	CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes);
 	~CombatMap();
 
 private:
@@ -48,5 +49,4 @@ private:
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 
 	static const std::string MapKeyPropertyDisableHackerMode;
-	static CombatMap* instance;
 };

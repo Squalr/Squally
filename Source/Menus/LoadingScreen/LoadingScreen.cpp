@@ -8,11 +8,11 @@
 #include "cocos/platform/CCFileUtils.h"
 #include "cocos/renderer/CCTextureCache.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
 
 #include "Resources/UIResources.h"

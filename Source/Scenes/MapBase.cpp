@@ -12,16 +12,18 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Hackables/CodeEditor/CodeEditor.h"
 #include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/UI/HUD/Hud.h"
-#include "Events/NavigationEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/BackgroundResources.h"
 
@@ -114,6 +116,19 @@ void MapBase::resume(void)
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventQueryMapArgs, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::QueryMapArgsArgs* args = static_cast<PlatformerEvents::QueryMapArgsArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->argRef != nullptr)
+		{
+			for (auto it = this->mapArgs.begin(); it != this->mapArgs.end(); it++)
+			{
+				args->argRef->push_back(*it);
+			}
+		}
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom* eventCustom)
 	{
@@ -304,5 +319,5 @@ void MapBase::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents::navigateTitle();
+	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(TitleScreen::getInstance()));
 }
