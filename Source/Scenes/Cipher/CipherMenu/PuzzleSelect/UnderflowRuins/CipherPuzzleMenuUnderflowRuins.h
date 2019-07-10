@@ -5,7 +5,7 @@
 class CipherPuzzleMenuUnderflowRuins : public CipherPuzzleSelectMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static CipherPuzzleMenuUnderflowRuins* getInstance();
 
 protected:
 	CipherPuzzleMenuUnderflowRuins();

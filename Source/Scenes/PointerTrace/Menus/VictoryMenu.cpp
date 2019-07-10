@@ -73,5 +73,5 @@ void VictoryMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->leaveButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { NavigationEvents2::NavigateBack(); } );
+	this->leaveButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { NavigationEvents::NavigateBack(); } );
 }

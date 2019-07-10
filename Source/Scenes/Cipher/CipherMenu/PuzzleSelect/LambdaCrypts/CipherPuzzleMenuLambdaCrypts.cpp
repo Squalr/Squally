@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuLambdaCrypts.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuLambdaCrypts* CipherPuzzleMenuLambdaCrypts::instance = nullptr;
 std::string CipherPuzzleMenuLambdaCrypts::ChapterSavekey = "CIPHER_CHAPTER_LAMBDA_CRYPTS";
 
-void CipherPuzzleMenuLambdaCrypts::registerGlobalScene()
+CipherPuzzleMenuLambdaCrypts* CipherPuzzleMenuLambdaCrypts::getInstance()
 {
 	if (CipherPuzzleMenuLambdaCrypts::instance == nullptr)
 	{
 		CipherPuzzleMenuLambdaCrypts::instance = new CipherPuzzleMenuLambdaCrypts();
 
 		CipherPuzzleMenuLambdaCrypts::instance->autorelease();
-		CipherPuzzleMenuLambdaCrypts::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuLambdaCrypts::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuLambdaCrypts::instance);
+	return CipherPuzzleMenuLambdaCrypts::instance;
 }
 
-CipherPuzzleMenuLambdaCrypts::CipherPuzzleMenuLambdaCrypts() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::LambdaCrypts, CipherPuzzleMenuLambdaCrypts::ChapterSavekey)
+CipherPuzzleMenuLambdaCrypts::CipherPuzzleMenuLambdaCrypts() : super(CipherPuzzleMenuLambdaCrypts::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

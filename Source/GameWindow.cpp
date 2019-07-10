@@ -97,7 +97,7 @@ bool GameWindow::applicationDidFinishLaunching()
 		Analytics::sendEvent(AnalyticsCategories::GameStart, "Linux");
 	#endif
 
-	NavigationEvents2::LoadScene(TitleScreen::getInstance());
+	NavigationEvents::LoadScene(TitleScreen::getInstance());
 
 	return true;
 }

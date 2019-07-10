@@ -7,7 +7,7 @@
 
 class SmartScene;
 
-class NavigationEvents2
+class NavigationEvents
 {
 public:
 	static const std::string EventNavigateScene;

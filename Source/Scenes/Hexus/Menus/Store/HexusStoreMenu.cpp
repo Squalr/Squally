@@ -327,7 +327,7 @@ void HexusStoreMenu::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
 	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
@@ -721,7 +721,7 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 
 void HexusStoreMenu::onBackClick()
 {
-	NavigationEvents2::NavigateBack();
+	NavigationEvents::NavigateBack();
 }
 
 void HexusStoreMenu::onBinaryTabClick()

@@ -145,14 +145,14 @@ void MinigamesMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->hexusButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(HexusChapterSelectMenu::getInstance()); });
-	this->hexusPuzzlesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(HexusChapterSelectMenuPuzzles::getInstance()); });
-	this->pointerTraceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(PointerTraceLevelSelect::getInstance()); });
-	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents2::LoadScene(TitleScreen::getInstance()); });
+	this->hexusButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(HexusChapterSelectMenu::getInstance()); });
+	this->hexusPuzzlesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(HexusChapterSelectMenuPuzzles::getInstance()); });
+	this->pointerTraceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(PointerTraceLevelSelect::getInstance()); });
+	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(TitleScreen::getInstance()); });
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -163,7 +163,7 @@ void MinigamesMenu::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents2::LoadScene(TitleScreen::getInstance());
+		NavigationEvents::LoadScene(TitleScreen::getInstance());
 	});
 }
 

@@ -5,7 +5,7 @@
 class CipherPuzzleMenuCastleValgrind : public CipherPuzzleSelectMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static CipherPuzzleMenuCastleValgrind* getInstance();
 
 protected:
 	CipherPuzzleMenuCastleValgrind();

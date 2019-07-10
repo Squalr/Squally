@@ -187,7 +187,7 @@ void CombatMap::initializeListeners()
 
 		PlatformerMap* map = PlatformerMap::create(mapResource, { }, true);
 
-		NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(map));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)

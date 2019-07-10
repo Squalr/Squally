@@ -184,7 +184,7 @@ void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
 
 void PauseMenu::onExitConfirm()
 {
-	NavigationEvents2::LoadScene(TitleScreen::getInstance());
+	NavigationEvents::LoadScene(TitleScreen::getInstance());
 }
 
 void PauseMenu::onCloseClick()

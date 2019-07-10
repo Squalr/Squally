@@ -380,7 +380,7 @@ void HexusDeckManagement::save(bool exit)
 
 	if (exit)
 	{
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	}
 }
 

@@ -83,7 +83,7 @@ void HexusOpponentPreview::onOpponentClick()
 {
 	Hexus* hexus = Hexus::create(this->hexusOpponentData);
 
-	NavigationEvents2::LoadScene(hexus);
+	NavigationEvents::LoadScene(hexus);
 }
 
 void HexusOpponentPreview::disableInteraction()

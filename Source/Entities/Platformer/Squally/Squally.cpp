@@ -155,7 +155,7 @@ void Squally::initializeCollisionEvents()
 				enemy->getCombatEntityList()
 			);
 
-			NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(combatMap));
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

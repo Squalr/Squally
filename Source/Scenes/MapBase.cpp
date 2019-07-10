@@ -319,5 +319,5 @@ void MapBase::onExitClick()
 {
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
-	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(TitleScreen::getInstance()));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 }

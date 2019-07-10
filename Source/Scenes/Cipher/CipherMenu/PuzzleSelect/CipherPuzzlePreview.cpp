@@ -4,9 +4,10 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherScene.h"
 #include "Scenes/Cipher/CipherState.h"
 
 using namespace cocos2d;
@@ -51,7 +52,9 @@ void CipherPuzzlePreview::initializeListeners()
 
 	this->previewNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		NavigationEvents::navigateCipher(NavigationEvents::NavigateCipherArgs(this->cipherPuzzleData));
+		CipherScene* cipherScene = CipherScene::create(this->cipherPuzzleData);
+
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(cipherScene));
 	});
 }
 

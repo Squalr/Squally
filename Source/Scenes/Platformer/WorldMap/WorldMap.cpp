@@ -215,7 +215,7 @@ void WorldMap::initializeListeners()
 		}
 
 		args->handled = true;
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	});
 }
 

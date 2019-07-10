@@ -5,7 +5,7 @@
 class CipherPuzzleMenuLambdaCrypts : public CipherPuzzleSelectMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static CipherPuzzleMenuLambdaCrypts* getInstance();
 
 protected:
 	CipherPuzzleMenuLambdaCrypts();

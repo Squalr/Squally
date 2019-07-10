@@ -162,17 +162,17 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents2::NavigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
-	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuBalmerPeaksPuzzle::getInstance())); } );
-	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuCastleValgrindPuzzle::getInstance())); } );
-	this->hexusChapterPreviewDaemonsHallowPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuDaemonsHallowPuzzle::getInstance())); } );
-	this->hexusChapterPreviewEndianForestPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuEndianForestPuzzle::getInstance())); } );
-	this->hexusChapterPreviewLambdaCryptsPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuLambdaCryptsPuzzle::getInstance())); } );
-	this->hexusChapterPreviewSeaSharpCavernsPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuSeaSharpCavernsPuzzle::getInstance())); } );
-	this->hexusChapterPreviewUnderflowRuinsPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuUnderflowRuinsPuzzle::getInstance())); } );
-	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuVoidStarPuzzle::getInstance())); } );
+	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuBalmerPeaksPuzzle::getInstance())); } );
+	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuCastleValgrindPuzzle::getInstance())); } );
+	this->hexusChapterPreviewDaemonsHallowPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuDaemonsHallowPuzzle::getInstance())); } );
+	this->hexusChapterPreviewEndianForestPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuEndianForestPuzzle::getInstance())); } );
+	this->hexusChapterPreviewLambdaCryptsPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuLambdaCryptsPuzzle::getInstance())); } );
+	this->hexusChapterPreviewSeaSharpCavernsPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuSeaSharpCavernsPuzzle::getInstance())); } );
+	this->hexusChapterPreviewUnderflowRuinsPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuUnderflowRuinsPuzzle::getInstance())); } );
+	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusOpponentMenuVoidStarPuzzle::getInstance())); } );
 	
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onBackClick, this));
 }
@@ -232,15 +232,15 @@ void HexusChapterSelectMenuPuzzles::onMouseOver(HexusChapterPreview* HexusChapte
 
 void HexusChapterSelectMenuPuzzles::onBackClick()
 {
-	NavigationEvents2::NavigateBack();
+	NavigationEvents::NavigateBack();
 }
 
 void HexusChapterSelectMenuPuzzles::onDeckManagementClick()
 {
-	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusDeckManagement::getInstance()));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusDeckManagement::getInstance()));
 }
 
 void HexusChapterSelectMenuPuzzles::onShopClick()
 {
-	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusStoreMenu::getInstance()));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusStoreMenu::getInstance()));
 }

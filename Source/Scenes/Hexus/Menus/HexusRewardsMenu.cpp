@@ -157,5 +157,5 @@ void HexusRewardsMenu::showReward(int reward, bool isRewardReduced, bool isChapt
 
 void HexusRewardsMenu::onReturnClick()
 {
-	NavigationEvents2::NavigateBack(2);
+	NavigationEvents::NavigateBack(2);
 }

@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuSeaSharpCaverns.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuSeaSharpCaverns* CipherPuzzleMenuSeaSharpCaverns::instance = nullptr;
 std::string CipherPuzzleMenuSeaSharpCaverns::ChapterSavekey = "CIPHER_CHAPTER_SEA_SHARP_CAVERNS";
 
-void CipherPuzzleMenuSeaSharpCaverns::registerGlobalScene()
+CipherPuzzleMenuSeaSharpCaverns* CipherPuzzleMenuSeaSharpCaverns::getInstance()
 {
 	if (CipherPuzzleMenuSeaSharpCaverns::instance == nullptr)
 	{
 		CipherPuzzleMenuSeaSharpCaverns::instance = new CipherPuzzleMenuSeaSharpCaverns();
 
 		CipherPuzzleMenuSeaSharpCaverns::instance->autorelease();
-		CipherPuzzleMenuSeaSharpCaverns::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuSeaSharpCaverns::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuSeaSharpCaverns::instance);
+	return CipherPuzzleMenuSeaSharpCaverns::instance;
 }
 
-CipherPuzzleMenuSeaSharpCaverns::CipherPuzzleMenuSeaSharpCaverns() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::SeaSharpCaverns, CipherPuzzleMenuSeaSharpCaverns::ChapterSavekey)
+CipherPuzzleMenuSeaSharpCaverns::CipherPuzzleMenuSeaSharpCaverns() : super(CipherPuzzleMenuSeaSharpCaverns::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

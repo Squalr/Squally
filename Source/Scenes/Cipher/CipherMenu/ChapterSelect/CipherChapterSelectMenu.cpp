@@ -6,13 +6,21 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/ChapterSelect/CipherChapterPreview.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/BalmerPeaks/CipherPuzzleMenuBalmerPeaks.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/CastleValgrind/CipherPuzzleMenuCastleValgrind.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/DaemonsHallow/CipherPuzzleMenuDaemonsHallow.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/EndianForest/CipherPuzzleMenuEndianForest.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/LambdaCrypts/CipherPuzzleMenuLambdaCrypts.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/SeaSharpCaverns/CipherPuzzleMenuSeaSharpCaverns.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/UnderflowRuins/CipherPuzzleMenuUnderflowRuins.h"
+#include "Scenes/Cipher/CipherMenu/PuzzleSelect/VoidStar/CipherPuzzleMenuVoidStar.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/ParticleResources.h"
@@ -158,35 +166,35 @@ void CipherChapterSelectMenu::initializeListeners()
 
 	this->chapterEndianForest->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::EndianForest));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuBalmerPeaks::getInstance()));
 	});
 	this->chapterUnderflowRuins->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::UnderflowRuins));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuCastleValgrind::getInstance()));
 	});
 	this->chapterSeaSharpCaverns->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::SeaSharpCaverns));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuDaemonsHallow::getInstance()));
 	});
 	this->chapterCastleValgrind->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::CastleValgrind));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuEndianForest::getInstance()));
 	});
 	this->chapterBalmerPeaks->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::BalmerPeaks));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuLambdaCrypts::getInstance()));
 	});
 	this->chapterDaemonsHallow->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::DaemonsHallow));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuSeaSharpCaverns::getInstance()));
 	});
 	this->chapterLambdaCrypts->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::LambdaCrypts));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuUnderflowRuins::getInstance()));
 	});
 	this->chapterVoidStar->setClickCallback([=]()
 	{
-		NavigationEvents::navigateCipherPuzzleSelect(NavigationEvents::NavigateCipherPuzzleSelectArgs(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::VoidStar));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(CipherPuzzleMenuVoidStar::getInstance()));
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -197,7 +205,7 @@ void CipherChapterSelectMenu::initializeListeners()
 		}
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 	});
 }
 
@@ -229,5 +237,5 @@ void CipherChapterSelectMenu::loadLevels()
 
 void CipherChapterSelectMenu::onCloseClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents::NavigateBack();
 }
