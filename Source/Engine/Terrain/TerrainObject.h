@@ -59,6 +59,7 @@ public:
 
 	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTerrain;
+	static std::string MapKeyCollision;
 	static std::string MapKeyCollisionDisabled;
 
 protected:
