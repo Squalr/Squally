@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuUnderflowRuinsPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -25,20 +21,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuUnderflowRuinsPuzzle* HexusOpponentMenuUnderflowRuinsPuzzle::instance = nullptr;
 
-void HexusOpponentMenuUnderflowRuinsPuzzle::registerGlobalScene()
+HexusOpponentMenuUnderflowRuinsPuzzle* HexusOpponentMenuUnderflowRuinsPuzzle::getInstance()
 {
 	if (HexusOpponentMenuUnderflowRuinsPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuUnderflowRuinsPuzzle::instance = new HexusOpponentMenuUnderflowRuinsPuzzle();
 
 		HexusOpponentMenuUnderflowRuinsPuzzle::instance->autorelease();
-		HexusOpponentMenuUnderflowRuinsPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuUnderflowRuinsPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuUnderflowRuinsPuzzle::instance);
+	return HexusOpponentMenuUnderflowRuinsPuzzle::instance;
 }
 
-HexusOpponentMenuUnderflowRuinsPuzzle::HexusOpponentMenuUnderflowRuinsPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleUnderflowRuins, HexusChapterPreviewUnderflowRuinsPuzzle::SaveKeyChapterName)
+HexusOpponentMenuUnderflowRuinsPuzzle::HexusOpponentMenuUnderflowRuinsPuzzle() : super(HexusChapterPreviewUnderflowRuinsPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(AnubisPup::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(AnubisWarrior::getHexusOpponentData()));

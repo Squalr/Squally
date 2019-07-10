@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuVoidStar.h"
 
 #include "Engine/GlobalDirector.h"
@@ -26,20 +22,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuVoidStar* HexusOpponentMenuVoidStar::instance = nullptr;
 
-void HexusOpponentMenuVoidStar::registerGlobalScene()
+HexusOpponentMenuVoidStar* HexusOpponentMenuVoidStar::getInstance()
 {
 	if (HexusOpponentMenuVoidStar::instance == nullptr)
 	{
 		HexusOpponentMenuVoidStar::instance = new HexusOpponentMenuVoidStar();
 
 		HexusOpponentMenuVoidStar::instance->autorelease();
-		HexusOpponentMenuVoidStar::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuVoidStar::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuVoidStar::instance);
+	return HexusOpponentMenuVoidStar::instance;
 }
 
-HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::VoidStar, HexusChapterPreviewVoidStar::SaveKeyChapterName)
+HexusOpponentMenuVoidStar::HexusOpponentMenuVoidStar() : super(HexusChapterPreviewVoidStar::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Atreus::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Bancroft::getHexusOpponentData()));

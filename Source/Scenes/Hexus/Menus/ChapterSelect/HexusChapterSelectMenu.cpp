@@ -23,6 +23,15 @@
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuins.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStar.h"
 #include "Scenes/Hexus/Menus/HexusDeckManagement.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/BalmerPeaks/HexusOpponentMenuBalmerPeaks.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/CastleValgrind/HexusOpponentMenuCastleValgrind.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/DaemonsHallow/HexusOpponentMenuDaemonsHallow.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/EndianForest/HexusOpponentMenuEndianForest.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/LambdaCrypts/HexusOpponentMenuLambdaCrypts.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/SeaSharpCaverns/HexusOpponentMenuSeaSharpCaverns.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/Training/HexusOpponentMenuTraining.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/UnderflowRuins/HexusOpponentMenuUnderflowRuins.h"
+#include "Scenes/Hexus/Menus/OpponentSelect/VoidStar/HexusOpponentMenuVoidStar.h"
 #include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
 
 #include "Resources/HexusResources.h"
@@ -186,15 +195,15 @@ void HexusChapterSelectMenu::initializeListeners()
 		NavigationEvents2::NavigateBack();
 	});
 
-	this->hexusChapterPreviewTraining->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewBalmerPeaks->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewCastleValgrind->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewDaemonsHallow->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewEndianForest->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewLambdaCrypts->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewSeaSharpCaverns->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewUnderflowRuins->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
-	this->hexusChapterPreviewVoidStar->setMouseClickCallback([]() { NavigationEvents2::NavigateBack(); } );
+	this->hexusChapterPreviewTraining->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuTraining::getInstance())); } );
+	this->hexusChapterPreviewBalmerPeaks->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuBalmerPeaks::getInstance())); } );
+	this->hexusChapterPreviewCastleValgrind->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuCastleValgrind::getInstance())); } );
+	this->hexusChapterPreviewDaemonsHallow->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuDaemonsHallow::getInstance())); } );
+	this->hexusChapterPreviewEndianForest->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuEndianForest::getInstance())); } );
+	this->hexusChapterPreviewLambdaCrypts->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuLambdaCrypts::getInstance())); } );
+	this->hexusChapterPreviewSeaSharpCaverns->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuSeaSharpCaverns::getInstance())); } );
+	this->hexusChapterPreviewUnderflowRuins->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuUnderflowRuins::getInstance())); } );
+	this->hexusChapterPreviewVoidStar->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuVoidStar::getInstance())); } );
 	
 	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onDeckManagementClick, this));
 	this->shopButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenu::onShopClick, this));

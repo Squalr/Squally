@@ -10,20 +10,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuTraining* HexusOpponentMenuTraining::instance = nullptr;
 
-void HexusOpponentMenuTraining::registerGlobalScene()
+HexusOpponentMenuTraining* HexusOpponentMenuTraining::getInstance()
 {
 	if (HexusOpponentMenuTraining::instance == nullptr)
 	{
 		HexusOpponentMenuTraining::instance = new HexusOpponentMenuTraining();
 
 		HexusOpponentMenuTraining::instance->autorelease();
-		HexusOpponentMenuTraining::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuTraining::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuTraining::instance);
+	return HexusOpponentMenuTraining::instance;
 }
 
-HexusOpponentMenuTraining::HexusOpponentMenuTraining() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::Training, HexusChapterPreviewTraining::SaveKeyChapterName)
+HexusOpponentMenuTraining::HexusOpponentMenuTraining() : super(HexusChapterPreviewTraining::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialA::getInstance()));
 	this->opponents.push_back(HexusOpponentPreview::create(HexusOpponentTutorialB::getInstance()));

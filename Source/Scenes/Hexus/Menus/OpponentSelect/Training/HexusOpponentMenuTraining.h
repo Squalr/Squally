@@ -5,7 +5,7 @@
 class HexusOpponentMenuTraining : public HexusOpponentMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static HexusOpponentMenuTraining* getInstance();
 
 protected:
 	HexusOpponentMenuTraining();

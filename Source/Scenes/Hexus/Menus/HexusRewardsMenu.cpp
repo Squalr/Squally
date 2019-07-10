@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
@@ -12,7 +13,6 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardStorage.h"
 
@@ -26,21 +26,21 @@
 
 using namespace cocos2d;
 
+HexusRewardsMenu* HexusRewardsMenu::instance;
 const std::string HexusRewardsMenu::KeyScheduleHexusGoldTick = "KEY_SCHEDULE_HEXUS_GOLD_TICK";
 
-HexusRewardsMenu* HexusRewardsMenu::instance;
-
-void HexusRewardsMenu::registerGlobalScene()
+HexusRewardsMenu* HexusRewardsMenu::getInstance()
 {
 	if (HexusRewardsMenu::instance == nullptr)
 	{
 		HexusRewardsMenu::instance = new HexusRewardsMenu();
 
 		HexusRewardsMenu::instance->autorelease();
-		HexusRewardsMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusRewardsMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusRewardsMenu::instance);
+	return HexusRewardsMenu::instance;
 }
 
 HexusRewardsMenu::HexusRewardsMenu()
@@ -96,17 +96,6 @@ void HexusRewardsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	HexusRewardsMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusRewards, [](EventCustom* args)
-	{
-		NavigationEvents::NavigateHexusRewardArgs* rewardsArgs = static_cast<NavigationEvents::NavigateHexusRewardArgs*>(args->getUserData());
-
-		if (rewardsArgs != nullptr)
-		{
-			GlobalDirector::loadScene(HexusRewardsMenu::instance);
-			HexusRewardsMenu::instance->onRewardsOpen(rewardsArgs->reward, rewardsArgs->isRewardReduced, rewardsArgs->isChapterClear);
-		}
-	}));
-
 	this->returnButton->setMouseClickCallback(CC_CALLBACK_0(HexusRewardsMenu::onReturnClick, this));
 }
 
@@ -124,7 +113,7 @@ void HexusRewardsMenu::initializePositions()
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
-void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced, bool isChapterClear)
+void HexusRewardsMenu::showReward(int reward, bool isRewardReduced, bool isChapterClear)
 {
 	if (isChapterClear)
 	{
@@ -168,5 +157,5 @@ void HexusRewardsMenu::onRewardsOpen(int reward, bool isRewardReduced, bool isCh
 
 void HexusRewardsMenu::onReturnClick()
 {
-	NavigationEvents::navigateBack(2);
+	NavigationEvents2::NavigateBack(2);
 }

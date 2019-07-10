@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/GlobalScene.h"
-#include "Events/NavigationEvents.h"
 
 namespace cocos2d
 {
@@ -17,7 +16,7 @@ class ClickableTextNode;
 class HexusOpponentMenuBase : public GlobalScene
 {
 protected:
-	HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey);
+	HexusOpponentMenuBase(std::string chapterProgressSaveKey);
 	~HexusOpponentMenuBase();
 
 	void onEnter() override;
@@ -30,8 +29,6 @@ protected:
 	void onMouseOver(HexusOpponentPreview* opponent);
 	void buildOpponentList();
 
-	NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter;
-
 	ScrollPane* scrollPane;
 	std::vector<HexusOpponentPreview*> opponents;
 	std::map<HexusOpponentPreview*, HexusOpponentPreview*> dependencies;
@@ -42,6 +39,7 @@ protected:
 	ClickableTextNode* shopButton;
 	LocalizedLabel* opponentSelectLabel;
 	ClickableTextNode* backButton;
+
 private:
 	typedef GlobalScene super;
 };

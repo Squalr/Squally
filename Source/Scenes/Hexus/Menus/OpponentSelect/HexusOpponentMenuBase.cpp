@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -14,7 +15,9 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Scenes/Hexus/Menus/HexusDeckManagement.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
+#include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/HexusResources.h"
@@ -27,9 +30,8 @@
 
 using namespace cocos2d;
 
-HexusOpponentMenuBase::HexusOpponentMenuBase(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter chapter, std::string chapterProgressSaveKey)
+HexusOpponentMenuBase::HexusOpponentMenuBase(std::string chapterProgressSaveKey)
 {
-	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->opponents = std::vector<HexusOpponentPreview*>();
 	this->scrollPane = ScrollPane::create(Size(1536.0f, 840.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
@@ -101,7 +103,7 @@ void HexusOpponentMenuBase::onEnter()
 		{
 			// Beat the last opponent -- save that we beat the chapter and navigate back to chapter select
 			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-			NavigationEvents::navigateBack(1);
+			NavigationEvents2::NavigateBack(1);
 			return;
 		}
 	}
@@ -167,16 +169,6 @@ void HexusOpponentMenuBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusOpponentSelect, [=](EventCustom* args)
-	{
-		NavigationEvents::NavigateHexusOpponentSelectArgs* navArgs = (NavigationEvents::NavigateHexusOpponentSelectArgs*)args->getUserData();
-
-		if (navArgs->chapter == this->chapter)
-		{
-			GlobalDirector::loadScene(this);
-		}
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -186,7 +178,7 @@ void HexusOpponentMenuBase::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	});
 
 	this->deckManagementButton->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentMenuBase::onDeckManagementClick, this));
@@ -200,17 +192,17 @@ void HexusOpponentMenuBase::onMouseOver(HexusOpponentPreview* opponent)
 
 void HexusOpponentMenuBase::onBackClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents2::NavigateBack();
 }
 
 void HexusOpponentMenuBase::onDeckManagementClick()
 {
-	NavigationEvents::navigateHexusDeckManagement();
+	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusDeckManagement::getInstance()));
 }
 
 void HexusOpponentMenuBase::onShopClick()
 {
-	NavigationEvents::navigateHexusShop();
+	NavigationEvents2::LoadScene(HexusStoreMenu::getInstance());
 }
 
 void HexusOpponentMenuBase::loadProgress()

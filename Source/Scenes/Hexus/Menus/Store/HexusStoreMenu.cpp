@@ -11,6 +11,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
@@ -21,7 +22,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Special/Shopkeeper.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Hexus/Menus/MenuCard.h"
 #include "Scenes/Hexus/Card.h"
@@ -327,7 +327,7 @@ void HexusStoreMenu::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	});
 
 	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
@@ -721,7 +721,7 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 
 void HexusStoreMenu::onBackClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents2::NavigateBack();
 }
 
 void HexusStoreMenu::onBinaryTabClick()

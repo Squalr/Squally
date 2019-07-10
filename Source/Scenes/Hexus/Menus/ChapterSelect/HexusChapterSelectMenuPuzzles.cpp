@@ -6,12 +6,12 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterPreview.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/BalmerPeaks/HexusChapterPreviewBalmerPeaksPuzzle.h"
@@ -22,6 +22,16 @@
 #include "Scenes/Hexus/Menus/ChapterSelect/SeaSharpCaverns/HexusChapterPreviewSeaSharpCavernsPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/UnderflowRuins/HexusChapterPreviewUnderflowRuinsPuzzle.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/VoidStar/HexusChapterPreviewVoidStarPuzzle.h"
+#include "Scenes/Hexus/Menus/HexusDeckManagement.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/BalmerPeaks/HexusOpponentMenuBalmerPeaksPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/CastleValgrind/HexusOpponentMenuCastleValgrindPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/DaemonsHallow/HexusOpponentMenuDaemonsHallowPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/EndianForest/HexusOpponentMenuEndianForestPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/LambdaCrypts/HexusOpponentMenuLambdaCryptsPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/SeaSharpCaverns/HexusOpponentMenuSeaSharpCavernsPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/UnderflowRuins/HexusOpponentMenuUnderflowRuinsPuzzle.h"
+#include "Scenes/Hexus/Menus/PuzzleSelect/VoidStar/HexusOpponentMenuVoidStarPuzzle.h"
+#include "Scenes/Hexus/Menus/Store/HexusStoreMenu.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
@@ -152,17 +162,17 @@ void HexusChapterSelectMenuPuzzles::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents2::NavigateBack();
 	});
 
-	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleBalmerPeaks)); } );
-	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleCastleValgrind)); } );
-	this->hexusChapterPreviewDaemonsHallowPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleDaemonsHallow)); } );
-	this->hexusChapterPreviewEndianForestPuzzle->setMouseClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleEndianForest)); } );
-	this->hexusChapterPreviewLambdaCryptsPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleLambdaCrypts)); } );
-	this->hexusChapterPreviewSeaSharpCavernsPuzzle->setMouseClickCallback([]() {NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleSeaSharpCaverns)); } );
-	this->hexusChapterPreviewUnderflowRuinsPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleUnderflowRuins)); } );
-	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents::navigateHexusOpponentSelect(NavigationEvents::NavigateHexusOpponentSelectArgs(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar)); } );
+	this->hexusChapterPreviewBalmerPeaksPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuBalmerPeaksPuzzle::getInstance())); } );
+	this->hexusChapterPreviewCastleValgrindPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuCastleValgrindPuzzle::getInstance())); } );
+	this->hexusChapterPreviewDaemonsHallowPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuDaemonsHallowPuzzle::getInstance())); } );
+	this->hexusChapterPreviewEndianForestPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuEndianForestPuzzle::getInstance())); } );
+	this->hexusChapterPreviewLambdaCryptsPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuLambdaCryptsPuzzle::getInstance())); } );
+	this->hexusChapterPreviewSeaSharpCavernsPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuSeaSharpCavernsPuzzle::getInstance())); } );
+	this->hexusChapterPreviewUnderflowRuinsPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuUnderflowRuinsPuzzle::getInstance())); } );
+	this->hexusChapterPreviewVoidStarPuzzle->setMouseClickCallback([]() { NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusOpponentMenuVoidStarPuzzle::getInstance())); } );
 	
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(HexusChapterSelectMenuPuzzles::onBackClick, this));
 }
@@ -222,15 +232,15 @@ void HexusChapterSelectMenuPuzzles::onMouseOver(HexusChapterPreview* HexusChapte
 
 void HexusChapterSelectMenuPuzzles::onBackClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents2::NavigateBack();
 }
 
 void HexusChapterSelectMenuPuzzles::onDeckManagementClick()
 {
-	NavigationEvents::navigateHexusDeckManagement();
+	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusDeckManagement::getInstance()));
 }
 
 void HexusChapterSelectMenuPuzzles::onShopClick()
 {
-	NavigationEvents::navigateHexusShop();
+	NavigationEvents2::LoadScene(NavigationEvents2::LoadSceneArgs(HexusStoreMenu::getInstance()));
 }

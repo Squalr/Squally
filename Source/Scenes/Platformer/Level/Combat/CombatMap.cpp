@@ -18,7 +18,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
