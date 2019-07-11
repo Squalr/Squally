@@ -370,7 +370,7 @@ void Squally::registerHackables()
 
 NO_OPTIMIZE bool Squally::isAliveSqually()
 {
-	static volatile bool ret = true;
+	static volatile int isAlive = true;
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
 
@@ -378,11 +378,11 @@ NO_OPTIMIZE bool Squally::isAliveSqually()
 
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(ret, ZAX);
+	ASM_MOV_VAR_REG(isAlive, ZAX);
 
 	HACKABLES_STOP_SEARCH();
 
-	return ret;
+	return isAlive;
 }
 
 void Squally::saveState()
