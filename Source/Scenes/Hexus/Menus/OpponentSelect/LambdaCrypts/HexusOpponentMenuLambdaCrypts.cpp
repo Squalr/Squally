@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuLambdaCrypts.h"
 
 #include "Engine/GlobalDirector.h"
@@ -27,20 +23,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuLambdaCrypts* HexusOpponentMenuLambdaCrypts::instance = nullptr;
 
-void HexusOpponentMenuLambdaCrypts::registerGlobalScene()
+HexusOpponentMenuLambdaCrypts* HexusOpponentMenuLambdaCrypts::getInstance()
 {
 	if (HexusOpponentMenuLambdaCrypts::instance == nullptr)
 	{
 		HexusOpponentMenuLambdaCrypts::instance = new HexusOpponentMenuLambdaCrypts();
 
 		HexusOpponentMenuLambdaCrypts::instance->autorelease();
-		HexusOpponentMenuLambdaCrypts::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuLambdaCrypts::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuLambdaCrypts::instance);
+	return HexusOpponentMenuLambdaCrypts::instance;
 }
 
-HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::LambdaCrypts, HexusChapterPreviewLambdaCrypts::SaveKeyChapterName)
+HexusOpponentMenuLambdaCrypts::HexusOpponentMenuLambdaCrypts() : super(HexusChapterPreviewLambdaCrypts::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Amelia::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Azmus::getHexusOpponentData()));

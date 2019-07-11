@@ -1,14 +1,12 @@
 #include "IsometricSqually.h"
 
 #include "Engine/Input/Input.h"
-#include "Events/NavigationEvents.h"
 
 #include "Resources/IsometricEntityResources.h"
 
 using namespace cocos2d;
 
-IsometricSqually* IsometricSqually::squallyInstance = nullptr;
-const std::string IsometricSqually::KeySquallyProperty = "squally";
+const std::string IsometricSqually::MapKeySqually = "squally";
 
 IsometricSqually* IsometricSqually::deserialize(ValueMap& initProperties)
 {

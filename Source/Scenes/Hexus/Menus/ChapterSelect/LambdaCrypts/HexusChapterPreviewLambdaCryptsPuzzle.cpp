@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewLambdaCryptsPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewLambdaCryptsPuzzle* HexusChapterPreviewLambdaCryptsPuzzle::cr
 
 HexusChapterPreviewLambdaCryptsPuzzle::HexusChapterPreviewLambdaCryptsPuzzle() : HexusChapterPreview(HexusChapterPreviewLambdaCryptsPuzzle::SaveKeyChapterName, Strings::Menus_Maps_LambdaCrypts::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameLambdaCrypts));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameLambdaCrypts));
 }
 
 HexusChapterPreviewLambdaCryptsPuzzle::~HexusChapterPreviewLambdaCryptsPuzzle()

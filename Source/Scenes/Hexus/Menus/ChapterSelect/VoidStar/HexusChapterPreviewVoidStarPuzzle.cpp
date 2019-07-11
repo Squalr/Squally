@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewVoidStarPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewVoidStarPuzzle* HexusChapterPreviewVoidStarPuzzle::create()
 
 HexusChapterPreviewVoidStarPuzzle::HexusChapterPreviewVoidStarPuzzle() : HexusChapterPreview(HexusChapterPreviewVoidStarPuzzle::SaveKeyChapterName, Strings::Menus_Maps_VoidStar::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameVoidStar));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameVoidStar));
 }
 
 HexusChapterPreviewVoidStarPuzzle::~HexusChapterPreviewVoidStarPuzzle()

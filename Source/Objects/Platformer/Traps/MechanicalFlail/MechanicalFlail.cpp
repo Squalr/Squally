@@ -52,7 +52,7 @@ MechanicalFlail::MechanicalFlail(ValueMap& initProperties) : super(initPropertie
 	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
 	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	float height = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
+	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
 	this->smokeParticles->setVisible(false);
 

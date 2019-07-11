@@ -32,7 +32,7 @@ protected:
 	void onExit() override;
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
-	virtual void onHackerModeEnable();
+	virtual void onHackerModeEnable(int eq);
 	virtual void onHackerModeDisable();
 	bool isDeveloperModeEnabled();
 	virtual void initializePositions();

@@ -8,7 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/XOverY.h"
 
 using namespace cocos2d;
 
@@ -25,6 +25,7 @@ EqDisplay* EqDisplay::create()
 
 EqDisplay::EqDisplay()
 {
+	this->target = nullptr;
 	this->eqFrame = Sprite::create(UIResources::HUD_LevelFrame);
 	this->eqValue = ConstantString::create("0");
 	this->eqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->eqValue);

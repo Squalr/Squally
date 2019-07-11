@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 using namespace cocos2d;
 
 class CollisionObject;
 class InteractMenu;
 
-class Chest : public SerializableObject
+class Chest : public GameObject
 {
 public:
 	static Chest* create(cocos2d::ValueMap& initProperties);
@@ -18,7 +18,7 @@ public:
 	static const std::string MapKeyChest;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 	Chest(cocos2d::ValueMap& initProperties);
 	virtual ~Chest();
 

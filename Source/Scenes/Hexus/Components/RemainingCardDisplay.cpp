@@ -17,8 +17,8 @@
 #include "Resources/ParticleResources.h"
 
 #include "Strings/Hexus/CardsToPlayToolTip.h"
-#include "Strings/Generics/Constant.h"
-#include "Strings/Generics/Infinity.h"
+#include "Strings/Common/Constant.h"
+#include "Strings/Common/Infinity.h"
 
 using namespace cocos2d;
 
@@ -35,9 +35,9 @@ RemainingCardDisplay::RemainingCardDisplay()
 {
 	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
 	this->remainingCardSprite = ClickableNode::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
-	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 	this->enemyRemainingCardSprite = Sprite::create(HexusResources::RemainingCardsIcon);
-	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
 	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardsToPlayToolTip::create());
@@ -130,8 +130,8 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 
 	if (gameState->enemyPassed || gameState->playerPassed)
 	{
-		this->remainingCardLabel->setStringReplacementVariables(Strings::Generics_Infinity::create());
-		this->enemyRemainingCardLabel->setStringReplacementVariables(Strings::Generics_Infinity::create());
+		this->remainingCardLabel->setStringReplacementVariables(Strings::Common_Infinity::create());
+		this->enemyRemainingCardLabel->setStringReplacementVariables(Strings::Common_Infinity::create());
 	}
 	else
 	{

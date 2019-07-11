@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewCastleValgrind.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewCastleValgrind* HexusChapterPreviewCastleValgrind::create()
 
 HexusChapterPreviewCastleValgrind::HexusChapterPreviewCastleValgrind() : HexusChapterPreview(HexusChapterPreviewCastleValgrind::SaveKeyChapterName, Strings::Menus_Maps_CastleValgrind::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind));
 }
 
 HexusChapterPreviewCastleValgrind::~HexusChapterPreviewCastleValgrind()

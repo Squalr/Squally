@@ -516,7 +516,38 @@ std::string HackUtils::disassemble(void* address, int length)
 		instructions += "\n";
 	}
 
-	return instructions;
+	return HackUtils::preProcess(instructions);
+}
+
+std::string HackUtils::preProcess(std::string instructions)
+{
+	const std::string regExpStr = "0x([0-9]|[a-f]|[A-F])+";
+	const std::regex regExp = std::regex(regExpStr);
+
+	if (!StrUtils::isRegexSubMatch(instructions, regExpStr))
+	{
+		return instructions;
+	}
+
+	std::string result = "";
+	std::sregex_token_iterator begin = std::sregex_token_iterator(instructions.begin(), instructions.end(), regExp, { -1, 0 });
+	std::sregex_token_iterator end = std::sregex_token_iterator();
+
+	std::for_each(begin, end, [&](std::string const& next)
+	{
+		std::istringstream iss(next);
+
+		if (StrUtils::isHexNumber(next))
+		{
+			result += std::to_string(StrUtils::HexToInt(next));
+		}
+		else
+		{
+			result += next;
+		}
+	});
+
+	return result;
 }
 
 std::string HackUtils::hexAddressOf(void* address, bool zeroPad, bool prefix)

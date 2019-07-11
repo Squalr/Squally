@@ -27,28 +27,15 @@
 
 using namespace cocos2d;
 
-std::string TerrainObject::MapKeyTypeTexture = "texture";
 std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
+std::string TerrainObject::MapKeyCollision = "collision";
 std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::HollowDistance = 144.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
 const float TerrainObject::BottomThreshold = 7.0f * float(M_PI) / 6.0f;
-
-TerrainObject* TerrainObject::deserialize(ValueMap& initProperties, TerrainData terrainData)
-{
-	TerrainObject* instance = new TerrainObject(initProperties, terrainData);
-
-	instance->autorelease();
-
-	// Build the terrain from the parsed points
-	instance->setPoints(instance->polylinePoints);
-	instance->rebuildTerrain(terrainData);
-
-	return instance;
-}
 
 TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : super(initProperties)
 {
@@ -85,6 +72,10 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->addChild(this->topsNode);
 	this->addChild(this->topCornersNode);
 	this->addChild(this->debugNode);
+
+	// Build the terrain from the parsed points
+	this->setPoints(this->polylinePoints);
+	this->rebuildTerrain(terrainData);
 }
 
 TerrainObject::~TerrainObject()
@@ -176,10 +167,10 @@ void TerrainObject::buildCollision()
 	}
 
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
-	this->properties[SerializableObject::MapKeyXPosition] = 0.0f;
-	this->properties[SerializableObject::MapKeyYPosition] = 0.0f;
+	this->properties[GameObject::MapKeyXPosition] = 0.0f;
+	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
-	std::string deserializedCollisionName = this->properties.at(SerializableObject::MapKeyName).asString();
+	std::string deserializedCollisionName = this->properties.at(TerrainObject::MapKeyCollision).asString();
 
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{

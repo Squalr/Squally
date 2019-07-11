@@ -5,7 +5,7 @@
 class CipherPuzzleMenuSeaSharpCaverns : public CipherPuzzleSelectMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static CipherPuzzleMenuSeaSharpCaverns* getInstance();
 
 protected:
 	CipherPuzzleMenuSeaSharpCaverns();

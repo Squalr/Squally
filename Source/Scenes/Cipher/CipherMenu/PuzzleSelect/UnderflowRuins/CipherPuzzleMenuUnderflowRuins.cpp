@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuUnderflowRuins.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuUnderflowRuins* CipherPuzzleMenuUnderflowRuins::instance = nullptr;
 std::string CipherPuzzleMenuUnderflowRuins::ChapterSavekey = "CIPHER_CHAPTER_UNDERFLOW_RUINS";
 
-void CipherPuzzleMenuUnderflowRuins::registerGlobalScene()
+CipherPuzzleMenuUnderflowRuins* CipherPuzzleMenuUnderflowRuins::getInstance()
 {
 	if (CipherPuzzleMenuUnderflowRuins::instance == nullptr)
 	{
 		CipherPuzzleMenuUnderflowRuins::instance = new CipherPuzzleMenuUnderflowRuins();
 
 		CipherPuzzleMenuUnderflowRuins::instance->autorelease();
-		CipherPuzzleMenuUnderflowRuins::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuUnderflowRuins::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuUnderflowRuins::instance);
+	return CipherPuzzleMenuUnderflowRuins::instance;
 }
 
-CipherPuzzleMenuUnderflowRuins::CipherPuzzleMenuUnderflowRuins() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::UnderflowRuins, CipherPuzzleMenuUnderflowRuins::ChapterSavekey)
+CipherPuzzleMenuUnderflowRuins::CipherPuzzleMenuUnderflowRuins() : super(CipherPuzzleMenuUnderflowRuins::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

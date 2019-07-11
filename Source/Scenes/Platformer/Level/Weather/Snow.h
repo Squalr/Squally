@@ -1,12 +1,12 @@
 #pragma once
-#include "Engine/Maps/SerializableLayer.h"
+#include "Engine/Maps/MapLayer.h"
 
 namespace cocos2d
 {
 	class ParticleSystem;
 }
 
-class Snow : public SerializableLayer
+class Snow : public MapLayer
 {
 public:
 	static Snow* create(cocos2d::ValueMap& properties, std::string name);
@@ -14,7 +14,7 @@ public:
 	static const std::string MapKeyWeatherLayerSnow;
 
 private:
-	typedef SerializableLayer super;
+	typedef MapLayer super;
 	Snow(cocos2d::ValueMap& properties, std::string name);
 	~Snow();
 

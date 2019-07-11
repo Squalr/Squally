@@ -57,26 +57,26 @@ public:
 		}
 	};
 
-	static TerrainObject* deserialize(cocos2d::ValueMap& initProperties, TerrainData terrainData);
-
-	void setPoints(std::vector<cocos2d::Vec2> points);
-	void rebuildTerrain(TerrainData terrainData);
-
-	static std::string MapKeyTypeTexture;
 	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTerrain;
+	static std::string MapKeyCollision;
 	static std::string MapKeyCollisionDisabled;
 
-private:
-	typedef HackableObject super;
+protected:
 	TerrainObject(cocos2d::ValueMap& initProperties, TerrainData terrainData);
-	virtual ~TerrainObject();
+	~TerrainObject();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
+
+private:
+	typedef HackableObject super;
+
+	void setPoints(std::vector<cocos2d::Vec2> points);
+	void rebuildTerrain(TerrainData terrainData);
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(cocos2d::Color4B infillColor);

@@ -4,10 +4,11 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Events/NavigationEvents.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
@@ -30,7 +31,7 @@ EdgePortal* EdgePortal::create(ValueMap& initProperties)
 
 EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
 {
-	Size portalSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
+	Size portalSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	
 	this->edgePortalCollision = CollisionObject::create(PhysicsBody::createBox(portalSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->edgePortalHintCollision = CollisionObject::create(PhysicsBody::createBox(portalSize + Size(512.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
@@ -42,6 +43,8 @@ EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
 	std::string direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalDirection, Value("")).asString();
 
 	// parse & set direction helper arrows
+
+	this->mapArgs.push_back(PlatformerMap::MapArgClearSavedPosition);
 
 	this->addChild(this->edgePortalCollision);
 	this->addChild(this->edgePortalHintCollision);
@@ -85,7 +88,9 @@ void EdgePortal::initializeListeners()
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()
 				{
-					NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, false));
+					PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs);
+
+					NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 				}),
 				nullptr
 			));

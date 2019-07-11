@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/Inventory.h"
@@ -13,7 +14,6 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
-#include "Events/NavigationEvents.h"
 
 #include "Resources/PointerTraceResources.h"
 #include "Resources/UIResources.h"
@@ -73,6 +73,5 @@ void VictoryMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->leaveButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { NavigationEvents::navigateBack(); } );
+	this->leaveButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { NavigationEvents::NavigateBack(); } );
 }
-

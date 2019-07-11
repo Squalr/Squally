@@ -18,7 +18,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/XOverY.h"
 
 using namespace cocos2d;
 

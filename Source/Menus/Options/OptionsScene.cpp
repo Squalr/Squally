@@ -4,16 +4,17 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/MenuBackground.h"
+#include "Scenes/Title/TitleScreen.h"
 
 using namespace cocos2d;
 
 OptionsScene* OptionsScene::instance;
 
-void OptionsScene::registerGlobalScene()
+OptionsScene* OptionsScene::getInstance()
 {
 	if (OptionsScene::instance == nullptr)
 	{
@@ -21,9 +22,10 @@ void OptionsScene::registerGlobalScene()
 
 		OptionsScene::instance->autorelease();
 		OptionsScene::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(OptionsScene::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(OptionsScene::instance);
+	return OptionsScene::instance;
 }
 
 OptionsScene::OptionsScene()
@@ -57,13 +59,8 @@ void OptionsScene::initializeListeners()
 {
 	super::initializeListeners();
 
-	OptionsScene::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateOptions, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(OptionsScene::instance);
-	}));
-
 	this->menu->setBackClickCallback([]()
 	{
-		NavigationEvents::navigateBack();
+		NavigationEvents::LoadScene(TitleScreen::getInstance());
 	});
 }

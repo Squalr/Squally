@@ -20,7 +20,7 @@ Rain* Rain::create(ValueMap& properties, std::string name)
 	return instance;
 }
 
-Rain::Rain(ValueMap& properties, std::string name) : SerializableLayer(properties, name)
+Rain::Rain(ValueMap& properties, std::string name) : MapLayer(properties, name)
 {
 	this->rain = ParticleSystemQuad::create(ParticleResources::Rain);
 	this->rain->setPositionType(ParticleSystem::PositionType::GROUPED);

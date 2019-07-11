@@ -3,7 +3,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 #include "Strings/Hexus/Cards/Abbreviations/ADD.h"
 #include "Strings/Hexus/Cards/Abbreviations/AND.h"
 #include "Strings/Hexus/Cards/Abbreviations/BIN.h"
@@ -124,7 +124,7 @@ LocalizedString* CardData::getCardTypeString()
 		case CardData::CardType::Special_BONUS_MOVES:
 		case CardData::CardType::Special_PEEK:
 		{
-			return Strings::Generics_Empty::create();
+			return Strings::Common_Empty::create();
 		}
 		default:
 		{
@@ -198,7 +198,7 @@ LocalizedString* CardData::getCardOperationString()
 		case CardData::CardType::Special_PEEK:
 		default:
 		{
-			return Strings::Generics_Empty::create();
+			return Strings::Common_Empty::create();
 		}
 	}
 }

@@ -5,14 +5,13 @@
 
 namespace cocos2d
 {
-	class ClippingNode;
 	class Sprite;
 }
 
 class LocalizedLabel;
 class LocalizedString;
 class ClickableNode;
-class LocalizedLabel;
+class SmartClippingNode;
 
 class HexusChapterPreview : public SmartNode
 {
@@ -34,8 +33,9 @@ protected:
 	void initializeListeners() override;
 	void onOpponentClick();
 	
+	cocos2d::Node* contentNode;
 	cocos2d::Sprite* frameBackground;
-	cocos2d::ClippingNode* frameClip;
+	SmartClippingNode* frameClip;
 	ClickableNode* frame;
 	cocos2d::Sprite* lockedSprite;
 	LocalizedLabel* text;

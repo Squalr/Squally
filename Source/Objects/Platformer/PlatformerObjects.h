@@ -1,4 +1,6 @@
 #pragma once
+#include "Objects/CameraFocus.h"
+#include "Objects/CameraScrollTracker.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/Animals/Animals.h"
@@ -7,6 +9,7 @@
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoor.h"
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoorFront.h"
 #include "Objects/Platformer/Doors/EdgePortal.h"
+#include "Objects/Platformer/Doors/PuzzleDoor/MulDoor/MulDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoorFrame.h"
 #include "Objects/Platformer/Interactables/HackableHint.h"

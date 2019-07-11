@@ -14,10 +14,11 @@ class CodeEditor;
 class ConfirmationMenu;
 class DeveloperHud;
 class Hud;
+class LayerDeserializer;
 class OptionsMenu;
 class PauseMenu;
 class RadialMenu;
-class SerializableMap;
+class GameMap;
 class MatrixRain;
 class HackerModeHud;
 
@@ -38,9 +39,11 @@ protected:
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
-	void onHackerModeEnable() override;
+	void onHackerModeEnable(int eq) override;
 	void onHackerModeDisable() override;
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
+	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
+	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 
 	cocos2d::Node* hudNode;
 	Hud* hud;
@@ -48,7 +51,7 @@ protected:
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
-	SerializableMap* map;
+	GameMap* map;
 
 	bool allowHackerMode;
 	std::vector<std::string> mapArgs;
@@ -69,6 +72,8 @@ private:
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
+
+	std::vector<LayerDeserializer*> layerDeserializers;
 
 	cocos2d::Node* mapNode;
 };

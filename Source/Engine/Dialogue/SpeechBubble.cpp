@@ -8,7 +8,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/UI/FX/TypeWriterEffect.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 
 using namespace cocos2d;
 
@@ -30,7 +30,7 @@ SpeechBubble::SpeechBubble()
 {
 	this->stem = DrawNode::create(3.0f);
 	this->bubble = DrawNode::create(3.0f);
-	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_Empty::create());
+	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 

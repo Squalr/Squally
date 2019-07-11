@@ -5,7 +5,7 @@
 class CipherPuzzleMenuEndianForest : public CipherPuzzleSelectMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static CipherPuzzleMenuEndianForest* getInstance();
 
 protected:
 	CipherPuzzleMenuEndianForest();

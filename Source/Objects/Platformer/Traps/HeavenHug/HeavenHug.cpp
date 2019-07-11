@@ -45,7 +45,7 @@ HeavenHug::HeavenHug(ValueMap& initProperties) : super(initProperties)
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
 	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
-	this->travelDistance = this->properties.at(SerializableObject::MapKeyHeight).asFloat();
+	this->travelDistance = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
 	this->heavenHugContainer->addChild(this->heavenHug);
 	this->heavenHug->addChild(this->spikeCollision);
@@ -67,7 +67,7 @@ void HeavenHug::initializePositions()
 {
 	super::initializePositions();
 
-	this->heavenHugContainer->setPositionY(this->properties.at(SerializableObject::MapKeyHeight).asFloat() / 2.0f);
+	this->heavenHugContainer->setPositionY(this->properties.at(GameObject::MapKeyHeight).asFloat() / 2.0f);
 	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
 }
 

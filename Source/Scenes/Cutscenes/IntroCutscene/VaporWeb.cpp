@@ -16,7 +16,7 @@
 #include "Resources/StringResources.h"
 
 #include "Strings/Cutscenes/PressEscToSkip.h"
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
@@ -45,7 +45,7 @@ VaporWeb::VaporWeb()
 	this->grid = Grid::create();
 	this->darkLord = Sprite::create(CutsceneResources::VaporWeb_DarkLord);
 	this->dialoguePlate = LayerColor::create(Color4B(64, 0, 64, 255), visibleSize.width, VaporWeb::dialogueHeight);
-	// this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
+	// this->dialogue = DialogueLabel::create(StringResources::Dialogue_CutsceneVaporWeb, LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()), Size(visibleSize.width - 48.0f, 256.0f - 48.0f));
 	this->escapeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Pixel, LocalizedLabel::FontSize::H3, Strings::Cutscenes_PressEscToSkip::create(), Size::ZERO, TextHAlignment::LEFT);
 
 	for (int column = 0; column < VaporWeb::cellColumns; column++)

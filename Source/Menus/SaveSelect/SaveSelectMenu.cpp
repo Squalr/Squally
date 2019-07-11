@@ -6,15 +6,17 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/MapResources.h"
@@ -29,7 +31,7 @@ using namespace cocos2d;
 
 SaveSelectMenu* SaveSelectMenu::instance;
 
-void SaveSelectMenu::registerGlobalScene()
+SaveSelectMenu* SaveSelectMenu::getInstance()
 {
 	if (SaveSelectMenu::instance == nullptr)
 	{
@@ -37,9 +39,11 @@ void SaveSelectMenu::registerGlobalScene()
 
 		SaveSelectMenu::instance->autorelease();
 		SaveSelectMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
+	return SaveSelectMenu::instance;
 }
 
 SaveSelectMenu::SaveSelectMenu()
@@ -101,11 +105,6 @@ void SaveSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	SaveSelectMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateSaveSelect, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(SaveSelectMenu::instance);
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -114,7 +113,7 @@ void SaveSelectMenu::initializeListeners()
 		}
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
@@ -252,10 +251,12 @@ void SaveSelectMenu::loadSave()
 		mapArgs.push_back((*it).asString());
 	}
 
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapFile, mapArgs, isReload));
+	PlatformerMap* map = PlatformerMap::create(mapFile, mapArgs);
+
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }
 
 void SaveSelectMenu::onBackClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents::NavigateBack();
 }

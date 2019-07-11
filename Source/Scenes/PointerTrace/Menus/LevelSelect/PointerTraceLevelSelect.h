@@ -12,7 +12,7 @@ class Music;
 class PointerTraceLevelSelect  : public MapBase
 {
 public:
-	static void registerGlobalScene();
+	static PointerTraceLevelSelect* getInstance();
 
 protected:
 	PointerTraceLevelSelect();
@@ -23,8 +23,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-
-	Music* music;
 
 	static PointerTraceLevelSelect* instance;
 };

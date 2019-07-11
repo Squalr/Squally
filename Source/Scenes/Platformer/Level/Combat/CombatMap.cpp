@@ -7,18 +7,17 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Events/NavigationEvents.h"
+#include "Engine/Maps/GameMap.h"
+#include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/PlatformerEntityDeserializer.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
@@ -28,37 +27,32 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
-CombatMap* CombatMap::instance = nullptr;
 const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disabled";
 
-CombatMap* CombatMap::getInstance()
+CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes)
 {
-	if (CombatMap::instance == nullptr)
-	{
-		CombatMap::instance = new CombatMap();
-		CombatMap::instance->autorelease();
-		CombatMap::instance->initializeListeners();
-	}
+	CombatMap* instance = new CombatMap(levelFile, mapArgs, playerFirstStrike, enemyIdentifier, playerTypes, enemyTypes);
 
-	return CombatMap::instance;
+	instance->autorelease();
+
+	return instance;
 }
 
-void CombatMap::registerGlobalScene()
-{
-	GlobalDirector::registerGlobalScene(CombatMap::getInstance());
-}
-
-CombatMap::CombatMap() : super(true)
+CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true)
 {
 	if (!MapBase::init())
 	{
 		throw std::uncaught_exception();
 	}
 
+	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
 	this->targetSelectionMenu = TargetSelectionMenu::create();
@@ -68,6 +62,23 @@ CombatMap::CombatMap() : super(true)
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
 
+	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
+
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			PhysicsDeserializer::create(),
+			ObjectLayerDeserializer::create({
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create() },
+				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
+				{ PlatformerEntityDeserializer::MapKeyTypeEntity, this->platformerEntityDeserializer },
+				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
+				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
+			}),
+			WeatherDeserializer::create()
+		}
+	);
+
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->textOverlays);
 	this->hud->addChild(this->targetSelectionMenu);
@@ -76,6 +87,9 @@ CombatMap::CombatMap() : super(true)
 	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
+
+	this->loadMap(levelFile, mapArgs);
+	this->setEntityKeys(playerTypes, enemyTypes);
 }
 
 CombatMap::~CombatMap()
@@ -104,21 +118,6 @@ void CombatMap::initializePositions()
 void CombatMap::initializeListeners()
 {
 	MapBase::initializeListeners();
-
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCombat, [=](EventCustom* eventCustom)
-	{
-		NavigationEvents::NavigateCombatArgs* args = static_cast<NavigationEvents::NavigateCombatArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->loadMap(args->levelFile, args->mapArgs);
-
-			this->setEntityKeys(args->playerTypes, args->enemyTypes);
-			this->enemyIdentifier = args->enemyIdentifier;
-
-			GlobalDirector::loadScene(this);
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{
@@ -186,7 +185,9 @@ void CombatMap::initializeListeners()
 	{
 		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-		NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(mapResource, { }, true));
+		PlatformerMap* map = PlatformerMap::create(mapResource, { });
+
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
@@ -244,21 +245,21 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
-			valueMap[SerializableObject::MapKeyName] = Value(*it);
-			valueMap[SerializableObject::MapKeyFlipX] = Value(true);
+			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
+			valueMap[GameObject::MapKeyName] = Value(*it);
+			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
-			DeserializationEvents::ObjectDeserializationRequestArgs args = DeserializationEvents::ObjectDeserializationRequestArgs(
-				PlatformerEntityDeserializer::KeyTypeEntity,
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
-				[=] (DeserializationEvents::ObjectDeserializationArgs args)
+				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 				}
 			);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&args);
+			this->platformerEntityDeserializer->deserialize(&args);
 
 			index++;
 		}
@@ -272,20 +273,20 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
-			valueMap[SerializableObject::MapKeyName] = Value(*it);
+			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
+			valueMap[GameObject::MapKeyName] = Value(*it);
 			
-			DeserializationEvents::ObjectDeserializationRequestArgs args = DeserializationEvents::ObjectDeserializationRequestArgs(
-				PlatformerEntityDeserializer::KeyTypeEntity,
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
-				[=] (DeserializationEvents::ObjectDeserializationArgs args)
+				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.serializableObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}
 			);
 
-			PlatformerEntityDeserializer::getInstance()->onDeserializationRequest(&args);
+			this->platformerEntityDeserializer->deserialize(&args);
 
 			index++;
 		}

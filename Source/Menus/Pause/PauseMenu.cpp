@@ -4,11 +4,12 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -183,7 +184,7 @@ void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
 
 void PauseMenu::onExitConfirm()
 {
-	NavigationEvents::navigateTitle();
+	NavigationEvents::LoadScene(TitleScreen::getInstance());
 }
 
 void PauseMenu::onCloseClick()

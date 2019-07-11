@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuEndianForestPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -25,20 +21,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuEndianForestPuzzle* HexusOpponentMenuEndianForestPuzzle::instance = nullptr;
 
-void HexusOpponentMenuEndianForestPuzzle::registerGlobalScene()
+HexusOpponentMenuEndianForestPuzzle* HexusOpponentMenuEndianForestPuzzle::getInstance()
 {
 	if (HexusOpponentMenuEndianForestPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuEndianForestPuzzle::instance = new HexusOpponentMenuEndianForestPuzzle();
 
 		HexusOpponentMenuEndianForestPuzzle::instance->autorelease();
-		HexusOpponentMenuEndianForestPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuEndianForestPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuEndianForestPuzzle::instance);
+	return HexusOpponentMenuEndianForestPuzzle::instance;
 }
 
-HexusOpponentMenuEndianForestPuzzle::HexusOpponentMenuEndianForestPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleEndianForest, HexusChapterPreviewEndianForestPuzzle::SaveKeyChapterName)
+HexusOpponentMenuEndianForestPuzzle::HexusOpponentMenuEndianForestPuzzle() : super(HexusChapterPreviewEndianForestPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Centaur::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Cyclops::getHexusOpponentData()));

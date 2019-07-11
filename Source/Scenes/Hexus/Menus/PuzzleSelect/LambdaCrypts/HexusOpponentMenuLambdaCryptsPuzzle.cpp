@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuLambdaCryptsPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -24,20 +20,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuLambdaCryptsPuzzle* HexusOpponentMenuLambdaCryptsPuzzle::instance = nullptr;
 
-void HexusOpponentMenuLambdaCryptsPuzzle::registerGlobalScene()
+HexusOpponentMenuLambdaCryptsPuzzle* HexusOpponentMenuLambdaCryptsPuzzle::getInstance()
 {
 	if (HexusOpponentMenuLambdaCryptsPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuLambdaCryptsPuzzle::instance = new HexusOpponentMenuLambdaCryptsPuzzle();
 
 		HexusOpponentMenuLambdaCryptsPuzzle::instance->autorelease();
-		HexusOpponentMenuLambdaCryptsPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuLambdaCryptsPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuLambdaCryptsPuzzle::instance);
+	return HexusOpponentMenuLambdaCryptsPuzzle::instance;
 }
 
-HexusOpponentMenuLambdaCryptsPuzzle::HexusOpponentMenuLambdaCryptsPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleLambdaCrypts, HexusChapterPreviewLambdaCryptsPuzzle::SaveKeyChapterName)
+HexusOpponentMenuLambdaCryptsPuzzle::HexusOpponentMenuLambdaCryptsPuzzle() : super(HexusChapterPreviewLambdaCryptsPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(BoneFiend::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Hunter::getHexusOpponentData()));

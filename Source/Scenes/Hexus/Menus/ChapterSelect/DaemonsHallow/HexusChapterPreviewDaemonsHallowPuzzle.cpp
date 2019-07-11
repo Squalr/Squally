@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewDaemonsHallowPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewDaemonsHallowPuzzle* HexusChapterPreviewDaemonsHallowPuzzle::
 
 HexusChapterPreviewDaemonsHallowPuzzle::HexusChapterPreviewDaemonsHallowPuzzle() : HexusChapterPreview(HexusChapterPreviewDaemonsHallowPuzzle::SaveKeyChapterName, Strings::Menus_Maps_DaemonsHallow::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow));
 }
 
 HexusChapterPreviewDaemonsHallowPuzzle::~HexusChapterPreviewDaemonsHallowPuzzle()

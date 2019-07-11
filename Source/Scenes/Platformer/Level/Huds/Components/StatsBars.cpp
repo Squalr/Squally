@@ -14,7 +14,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/XOverY.h"
 
 using namespace cocos2d;
 
@@ -38,8 +38,8 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->emblemNode = Node::create();
 	this->healthBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_HPBarFill), fillOffset);
 	this->manaBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_MPBarFill), fillOffset);
-	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
-	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Generics_XOverY::create());
+	this->healthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
+	this->manaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
 	this->healthSprite = Sprite::create(UIResources::HUD_Heart);
 	this->manaSprite = Sprite::create(UIResources::HUD_Pendant);
 	this->healthNumerator = ConstantString::create("-");

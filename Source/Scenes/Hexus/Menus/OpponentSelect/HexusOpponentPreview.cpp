@@ -1,11 +1,12 @@
 #include "HexusOpponentPreview.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCLayer.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Events/NavigationEvents.h"
+#include "Engine/UI/SmartClippingNode.h"
+#include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 
 #include "Resources/HexusResources.h"
@@ -26,6 +27,7 @@ HexusOpponentPreview* HexusOpponentPreview::create(HexusOpponentData* opponentDa
 HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 {
 	this->hexusOpponentData = opponentData;
+	this->contentNode = Node::create();
 	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
 	this->disabledLayer = LayerColor::create(Color4B(0, 0, 0, 0), 512, 512);
 	this->lockedSprite = Sprite::create(UIResources::Menus_Icons_Lock);
@@ -38,10 +40,7 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	Size clipSize = Size(frameSize.width - 52.0f, frameSize.height - 52.0f);
 	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
-	// Enable to debug clipping:
-	// this->addChild(clipStencil);
-
-	this->frameClip = ClippingNode::create(clipStencil);
+	this->frameClip = SmartClippingNode::create(this->contentNode, clipStencil);
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
 
 	this->opponentSprite->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -54,9 +53,9 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 
 	this->frame->setMouseClickCallback(CC_CALLBACK_0(HexusOpponentPreview::onOpponentClick, this));
 
-	this->frameClip->addChild(Sprite::create(opponentData->backgroundResourceFile));
-	this->frameClip->addChild(this->opponentSprite);
-	this->frameClip->addChild(this->disabledLayer);
+	this->contentNode->addChild(Sprite::create(opponentData->backgroundResourceFile));
+	this->contentNode->addChild(this->opponentSprite);
+	this->contentNode->addChild(this->disabledLayer);
 	this->addChild(this->frameClip);
 	this->addChild(this->frame);
 	this->addChild(this->lockedSprite);
@@ -82,13 +81,15 @@ void HexusOpponentPreview::initializePositions()
 
 void HexusOpponentPreview::onOpponentClick()
 {
-	NavigationEvents::navigateHexus(NavigationEvents::NavigateHexusArgs(this->hexusOpponentData));
+	Hexus* hexus = Hexus::create(this->hexusOpponentData);
+
+	NavigationEvents::LoadScene(hexus);
 }
 
 void HexusOpponentPreview::disableInteraction()
 {
 	this->frame->disableInteraction();
-	this->frameClip->setOpacity(128);
+	this->contentNode->setOpacity(128);
 	this->disabledLayer->setOpacity(196);
 	this->lockedSprite->setVisible(true);
 }
@@ -96,7 +97,7 @@ void HexusOpponentPreview::disableInteraction()
 void HexusOpponentPreview::enableInteraction()
 {
 	this->frame->enableInteraction();
-	this->frameClip->setOpacity(255);
+	this->contentNode->setOpacity(255);
 	this->disabledLayer->setOpacity(0);
 	this->lockedSprite->setVisible(false);
 }

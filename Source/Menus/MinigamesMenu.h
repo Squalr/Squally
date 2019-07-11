@@ -12,7 +12,7 @@ class ScrollPane;
 class MinigamesMenu : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static MinigamesMenu* getInstance();
 
 protected:
 	MinigamesMenu();

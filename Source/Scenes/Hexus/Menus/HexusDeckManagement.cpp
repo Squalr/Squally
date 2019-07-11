@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -15,7 +16,6 @@
 #include "Engine/UI/Controls/ToggleGroup.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardStorage.h"
@@ -32,15 +32,15 @@
 #include "Strings/Hexus/CardsInStorage.h"
 #include "Strings/Hexus/HexCards.h"
 #include "Strings/Hexus/SpecialCards.h"
-#include "Strings/Generics/Constant.h"
-#include "Strings/Generics/TimesConstant.h"
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/Constant.h"
+#include "Strings/Common/TimesConstant.h"
+#include "Strings/Common/XOverY.h"
 
 using namespace cocos2d;
 
-HexusDeckManagement* HexusDeckManagement::instance;
+HexusDeckManagement* HexusDeckManagement::instance = nullptr;
 
-void HexusDeckManagement::registerGlobalScene()
+HexusDeckManagement* HexusDeckManagement::getInstance()
 {
 	if (HexusDeckManagement::instance == nullptr)
 	{
@@ -48,9 +48,11 @@ void HexusDeckManagement::registerGlobalScene()
 
 		HexusDeckManagement::instance->autorelease();
 		HexusDeckManagement::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusDeckManagement::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusDeckManagement::instance);
+	return HexusDeckManagement::instance;
 }
 
 HexusDeckManagement::HexusDeckManagement()
@@ -75,19 +77,19 @@ HexusDeckManagement::HexusDeckManagement()
 	this->totalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardsInDeck::create());
 	this->totalCardsInDeckValueXString = ConstantString::create();
 	this->totalCardsInDeckValueYString = ConstantString::create();
-	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_XOverY::create());
+	this->totalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_XOverY::create());
 	this->binaryCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_BinCards::create());
 	this->binaryCardsInDeckValueString = ConstantString::create();
-	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->binaryCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->decimalCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_DecCards::create());
 	this->decimalCardsInDeckValueString = ConstantString::create();
-	this->decimalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->decimalCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->hexCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_HexCards::create());
 	this->hexCardsInDeckValueString = ConstantString::create();
-	this->hexCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->hexCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->specialCardsInDeckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_SpecialCards::create());
 	this->specialCardsInDeckValueString = ConstantString::create();
-	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	this->specialCardsInDeckValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardMovementSound = Sound::create(SoundResources::Hexus_CardMovementStrong);
 
 	this->totalCardsInDeckValueLabel->setStringReplacementVariables({ this->totalCardsInDeckValueXString , this->totalCardsInDeckValueYString });
@@ -247,11 +249,6 @@ void HexusDeckManagement::initializeListeners()
 {
 	super::initializeListeners();
 
-	HexusDeckManagement::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusDeckManagement, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(HexusDeckManagement::instance);
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -383,7 +380,7 @@ void HexusDeckManagement::save(bool exit)
 
 	if (exit)
 	{
-		NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 	}
 }
 
@@ -543,7 +540,7 @@ MenuCard* HexusDeckManagement::createCard(CardData* cardData, int count)
 {
 	MenuCard* card = MenuCard::create(Card::CardStyle::Earth, cardData);
 	ConstantString* valueString = ConstantString::create();
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, Strings::Generics_TimesConstant::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M1, Strings::Common_TimesConstant::create());
 
 	label->setStringReplacementVariables(valueString);
 

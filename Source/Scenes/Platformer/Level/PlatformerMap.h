@@ -8,9 +8,11 @@ class GameHud;
 class PlatformerMap : public MapBase
 {
 public:
-	static void registerGlobalScene();
+	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs);
 
 	void loadMap(std::string mapResource, std::vector<std::string> args) override;
+
+	static const std::string MapArgClearSavedPosition;
 
 protected:
 	PlatformerMap();
@@ -28,6 +30,4 @@ private:
 
 	GameHud* gameHud;
 	Cipher* cipher;
-
-	static PlatformerMap* instance;
 };

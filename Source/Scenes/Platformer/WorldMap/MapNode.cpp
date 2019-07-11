@@ -2,7 +2,9 @@
 
 #include "Resources/UIResources.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 
 using namespace cocos2d;
 
@@ -64,5 +66,7 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick()
 {
-	NavigationEvents::navigatePlatformerMap(NavigationEvents::NavigateMapArgs(this->nodeMapFile, { }, false));
+	PlatformerMap* map = PlatformerMap::create(this->nodeMapFile, { PlatformerMap::MapArgClearSavedPosition });
+
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }
