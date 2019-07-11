@@ -37,7 +37,8 @@
 
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
-	#define NO_OPTIMIZE #pragma optimize("", off)
+	#define NO_OPTIMIZE
+		#pragma optimize("", off)
 	#define ASM1(asm_literal) \
 		__asm asm_literal
 	#define ASM2(asm_literal1, asm_literal2) \
