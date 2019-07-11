@@ -9,7 +9,8 @@ public:
 
 	void setGridIndex(int gridIndex) override;
 
-	static const std::string MapKeyEaxPtrInitializerRegex;
+	static const std::vector<std::string> MapKeyEaxPtrInitializerBases;
+	static const std::string MapKeyEaxPtrInitializer;
 
 protected:
 	EaxPtrInitializer(cocos2d::ValueMap& initProperties);

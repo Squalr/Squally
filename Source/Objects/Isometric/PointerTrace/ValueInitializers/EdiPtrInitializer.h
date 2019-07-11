@@ -9,7 +9,8 @@ public:
 
 	void setGridIndex(int gridIndex) override;
 
-	static const std::string MapKeyEdiPtrInitializerRegex;
+	static const std::vector<std::string> MapKeyEdiPtrInitializerBases;
+	static const std::string MapKeyEdiPtrInitializer;
 
 protected:
 	EdiPtrInitializer(cocos2d::ValueMap& initProperties);

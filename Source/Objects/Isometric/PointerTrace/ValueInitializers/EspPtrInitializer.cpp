@@ -5,7 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string EspPtrInitializer::MapKeyEspPtrInitializerRegex = "\\[esp( ?(\\+|\\-) ?[0-9]+)?\\]";
+const std::vector<std::string> EspPtrInitializer::MapKeyEspPtrInitializerBases = {
+	"[esp+%d]",
+	"[esp + %d]",
+	"[esp +%d]",
+	"[esp+ %d]",
+};
+const std::string EspPtrInitializer::MapKeyEspPtrInitializer = "[esp]";
 
 EspPtrInitializer* EspPtrInitializer::create(ValueMap& initProperties)
 {

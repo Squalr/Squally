@@ -5,7 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string EcxPtrInitializer::MapKeyEcxPtrInitializerRegex = "\\[ecx( ?(\\+|\\-) ?[0-9]+)?\\]";
+const std::vector<std::string> EcxPtrInitializer::MapKeyEcxPtrInitializerBases = {
+	"[ecx+%d]",
+	"[ecx + %d]",
+	"[ecx +%d]",
+	"[ecx+ %d]",
+};
+const std::string EcxPtrInitializer::MapKeyEcxPtrInitializer = "[ecx]";
 
 EcxPtrInitializer* EcxPtrInitializer::create(ValueMap& initProperties)
 {

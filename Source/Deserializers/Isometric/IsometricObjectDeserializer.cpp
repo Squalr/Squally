@@ -4,6 +4,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Objects/Isometric/IsometricObjects.h"
 
 using namespace cocos2d;
@@ -63,44 +64,45 @@ IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObje
 	this->deserializers[EbpPtrJmp::MapKeyEbpPtrJmp] = [=](ValueMap properties) { return (GameObject*)EbpPtrJmp::create(properties); };
 	this->deserializers[EspPtrJmp::MapKeyEspPtrJmp] = [=](ValueMap properties) { return (GameObject*)EspPtrJmp::create(properties); };
 	
-	// GG
-	/*
-	else if (StrUtils::isRegexMatch(name, ValueInitializer::MapKeyValueInitializerRegex))
+	this->deserializers[EaxPtrInitializer::MapKeyEaxPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EaxPtrInitializer::create(properties); };
+	this->deserializers[EbxPtrInitializer::MapKeyEbxPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EbxPtrInitializer::create(properties); };
+	this->deserializers[EcxPtrInitializer::MapKeyEcxPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EcxPtrInitializer::create(properties); };
+	this->deserializers[EdxPtrInitializer::MapKeyEdxPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EdxPtrInitializer::create(properties); };
+	this->deserializers[EdiPtrInitializer::MapKeyEdiPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EdiPtrInitializer::create(properties); };
+	this->deserializers[EsiPtrInitializer::MapKeyEsiPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EsiPtrInitializer::create(properties); };
+	this->deserializers[EbpPtrInitializer::MapKeyEbpPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EbpPtrInitializer::create(properties); };
+	this->deserializers[EspPtrInitializer::MapKeyEspPtrInitializer] = [=](ValueMap properties) { return (GameObject*)EspPtrInitializer::create(properties); };
+	
+	// Create deserializers for variable-named objects (ie value-212 and value 256)
+	for (int index = 0; index < 256; index++)
 	{
-		newObject = ValueInitializer::create(properties);
+		std::string indexStr = std::to_string(index);
+		
+		auto assignKey([=](std::string str, std::function<GameObject*(ValueMap properties)> deserializer)
+		{
+			std::string key = StrUtils::replaceFirstOccurence(str, "%d", indexStr);
+
+			this->deserializers[key] = deserializer;
+		});
+		
+		auto assignKeys([=](std::vector<std::string> strs, std::function<GameObject*(ValueMap properties)> deserializer)
+		{
+			for (auto it = strs.begin(); it != strs.end(); it++)
+			{
+				assignKey(*it, deserializer);
+			}
+		});
+
+		assignKey(ValueInitializer::MapKeyValueInitializerBase, [=](ValueMap properties) { return (GameObject*)ValueInitializer::create(properties); });
+		assignKeys(EaxPtrInitializer::MapKeyEaxPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EaxPtrInitializer::create(properties); });
+		assignKeys(EbxPtrInitializer::MapKeyEbxPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EbxPtrInitializer::create(properties); });
+		assignKeys(EcxPtrInitializer::MapKeyEcxPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EcxPtrInitializer::create(properties); });
+		assignKeys(EdxPtrInitializer::MapKeyEdxPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EdxPtrInitializer::create(properties); });
+		assignKeys(EdiPtrInitializer::MapKeyEdiPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EdiPtrInitializer::create(properties); });
+		assignKeys(EsiPtrInitializer::MapKeyEsiPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EsiPtrInitializer::create(properties); });
+		assignKeys(EbpPtrInitializer::MapKeyEbpPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EbpPtrInitializer::create(properties); });
+		assignKeys(EspPtrInitializer::MapKeyEspPtrInitializerBases, [=](ValueMap properties) { return (GameObject*)EspPtrInitializer::create(properties); });
 	}
-	else if (StrUtils::isRegexMatch(name, EaxPtrInitializer::MapKeyEaxPtrInitializerRegex))
-	{
-		newObject = EaxPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EbxPtrInitializer::MapKeyEbxPtrInitializerRegex))
-	{
-		newObject = EbxPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EcxPtrInitializer::MapKeyEcxPtrInitializerRegex))
-	{
-		newObject = EcxPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EdxPtrInitializer::MapKeyEdxPtrInitializerRegex))
-	{
-		newObject = EdxPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EdiPtrInitializer::MapKeyEdiPtrInitializerRegex))
-	{
-		newObject = EdiPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EsiPtrInitializer::MapKeyEsiPtrInitializerRegex))
-	{
-		newObject = EsiPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EbpPtrInitializer::MapKeyEbpPtrInitializerRegex))
-	{
-		newObject = EbpPtrInitializer::create(properties);
-	}
-	else if (StrUtils::isRegexMatch(name, EspPtrInitializer::MapKeyEspPtrInitializerRegex))
-	{
-		newObject = EspPtrInitializer::create(properties);
-	} */
 }
 
 IsometricObjectDeserializer::~IsometricObjectDeserializer()

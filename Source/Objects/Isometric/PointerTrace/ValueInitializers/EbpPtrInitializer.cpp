@@ -5,7 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string EbpPtrInitializer::MapKeyEbpPtrInitializerRegex = "\\[ebp( ?(\\+|\\-) ?[0-9]+)?\\]";
+const std::vector<std::string> EbpPtrInitializer::MapKeyEbpPtrInitializerBases = {
+	"[ebp+%d]",
+	"[ebp + %d]",
+	"[ebp +%d]",
+	"[ebp+ %d]",
+};
+const std::string EbpPtrInitializer::MapKeyEbpPtrInitializer = "[ebp]";
 
 EbpPtrInitializer* EbpPtrInitializer::create(ValueMap& initProperties)
 {

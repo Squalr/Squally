@@ -5,7 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string EaxPtrInitializer::MapKeyEaxPtrInitializerRegex = "\\[eax( ?(\\+|\\-) ?[0-9]+)?\\]";
+const std::vector<std::string> EaxPtrInitializer::MapKeyEaxPtrInitializerBases = {
+	"[eax+%d]",
+	"[eax + %d]",
+	"[eax +%d]",
+	"[eax+ %d]",
+};
+const std::string EaxPtrInitializer::MapKeyEaxPtrInitializer = "[eax]";
 
 EaxPtrInitializer* EaxPtrInitializer::create(ValueMap& initProperties)
 {

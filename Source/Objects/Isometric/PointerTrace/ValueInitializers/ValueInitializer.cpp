@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string ValueInitializer::MapKeyValueInitializerRegex = "value\\-[0-9]+";
+const std::string ValueInitializer::MapKeyValueInitializerBase = "value-%d";
 const std::string ValueInitializer::MapKeyMetaValue = "value";
 const std::string ValueInitializer::IntegerRegex = "[0-9]+";
 

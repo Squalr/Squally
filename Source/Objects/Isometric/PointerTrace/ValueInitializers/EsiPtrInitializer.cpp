@@ -5,7 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string EsiPtrInitializer::MapKeyEsiPtrInitializerRegex = "\\[esi( ?(\\+|\\-) ?[0-9]+)?\\]";
+const std::vector<std::string> EsiPtrInitializer::MapKeyEsiPtrInitializerBases = {
+	"[esi+%d]",
+	"[esi + %d]",
+	"[esi +%d]",
+	"[esi+ %d]",
+};
+const std::string EsiPtrInitializer::MapKeyEsiPtrInitializer = "[esi]";
 
 EsiPtrInitializer* EsiPtrInitializer::create(ValueMap& initProperties)
 {

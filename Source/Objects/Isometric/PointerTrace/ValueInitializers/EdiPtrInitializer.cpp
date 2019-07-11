@@ -5,7 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string EdiPtrInitializer::MapKeyEdiPtrInitializerRegex = "\\[edi( ?(\\+|\\-) ?[0-9]+)?\\]";
+const std::vector<std::string> EdiPtrInitializer::MapKeyEdiPtrInitializerBases = {
+	"[edi+%d]",
+	"[edi + %d]",
+	"[edi +%d]",
+	"[edi+ %d]",
+};
+const std::string EdiPtrInitializer::MapKeyEdiPtrInitializer = "[edi]";
 
 EdiPtrInitializer* EdiPtrInitializer::create(ValueMap& initProperties)
 {
