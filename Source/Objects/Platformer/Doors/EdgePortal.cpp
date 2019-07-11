@@ -44,6 +44,8 @@ EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
 
 	// parse & set direction helper arrows
 
+	this->mapArgs.push_back(PlatformerMap::MapArgClearSavedPosition);
+
 	this->addChild(this->edgePortalCollision);
 	this->addChild(this->edgePortalHintCollision);
 }
@@ -86,7 +88,7 @@ void EdgePortal::initializeListeners()
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()
 				{
-					PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, false);
+					PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs);
 
 					NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 				}),

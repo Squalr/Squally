@@ -251,7 +251,7 @@ void SaveSelectMenu::loadSave()
 		mapArgs.push_back((*it).asString());
 	}
 
-	PlatformerMap* map = PlatformerMap::create(mapFile, mapArgs, isReload);
+	PlatformerMap* map = PlatformerMap::create(mapFile, mapArgs);
 
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }

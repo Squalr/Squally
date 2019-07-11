@@ -8,9 +8,11 @@ class GameHud;
 class PlatformerMap : public MapBase
 {
 public:
-	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs, bool isReload);
+	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs);
 
 	void loadMap(std::string mapResource, std::vector<std::string> args) override;
+
+	static const std::string MapArgClearSavedPosition;
 
 protected:
 	PlatformerMap();

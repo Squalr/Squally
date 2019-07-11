@@ -246,9 +246,9 @@ void MapBase::onDeveloperModeDisable()
 	Director::getInstance()->setDisplayStats(false);
 }
 
-void MapBase::onHackerModeEnable()
+void MapBase::onHackerModeEnable(int eq)
 {
-	super::onHackerModeEnable();
+	super::onHackerModeEnable(eq);
 
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);

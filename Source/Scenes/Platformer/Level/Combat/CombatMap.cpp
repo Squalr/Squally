@@ -185,7 +185,7 @@ void CombatMap::initializeListeners()
 	{
 		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-		PlatformerMap* map = PlatformerMap::create(mapResource, { }, true);
+		PlatformerMap* map = PlatformerMap::create(mapResource, { });
 
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 	}));

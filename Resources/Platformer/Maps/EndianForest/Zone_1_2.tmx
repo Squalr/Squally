@@ -99,15 +99,6 @@
    </properties>
    <polygon points="0,0 2477.63,-35.521 3479.35,165.942 4526.37,458.153 6090.21,823.467 6094.8,1028.01 5558.56,1749.13 4501.56,2080 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
   </object>
-  <object id="695" name="orc-grunt" type="entity" x="1095.42" y="4692.26" width="128" height="128">
-   <properties>
-    <property name="ally-1" value=""/>
-    <property name="ally-2" value=""/>
-    <property name="battle-args" value="restore-potion-tutorial, hacker-mode-disabled"/>
-    <property name="battle-map" value="EndianForest/BattleGrounds"/>
-    <property name="event" value="event-door-open"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -119,7 +110,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="690" name="mul-door" type="object" x="1454.02" y="4070.29" width="696" height="775">
+  <object id="690" name="mul-door" type="object" x="3081.72" y="3998.35" width="696" height="775">
    <properties>
     <property name="args" value="0"/>
     <property name="direction" value="right"/>
@@ -149,7 +140,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="693" name="fly-bot" type="entity" x="918.46" y="4373.08" width="78.7879" height="88">
+  <object id="693" name="fly-bot" type="entity" x="880.219" y="4557.91" width="78.7879" height="88">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="state" value="event-end-of-demo"/>

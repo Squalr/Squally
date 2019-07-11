@@ -328,9 +328,9 @@ void Squally::performSwimAnimation()
 	}
 }
 
-void Squally::onHackerModeEnable()
+void Squally::onHackerModeEnable(int eq)
 {
-	super::onHackerModeEnable();
+	super::onHackerModeEnable(eq);
 }
 
 void Squally::registerHackables()
@@ -370,7 +370,7 @@ void Squally::registerHackables()
 
 NO_OPTIMIZE bool Squally::isAliveSqually()
 {
-	bool ret = true;
+	static volatile bool ret = true;
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
 
