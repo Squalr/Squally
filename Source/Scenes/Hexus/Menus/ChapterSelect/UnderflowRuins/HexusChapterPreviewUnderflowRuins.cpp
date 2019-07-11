@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewUnderflowRuins.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewUnderflowRuins* HexusChapterPreviewUnderflowRuins::create()
 
 HexusChapterPreviewUnderflowRuins::HexusChapterPreviewUnderflowRuins() : HexusChapterPreview(HexusChapterPreviewUnderflowRuins::SaveKeyChapterName, Strings::Menus_Maps_UnderflowRuins::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins));
 }
 
 HexusChapterPreviewUnderflowRuins::~HexusChapterPreviewUnderflowRuins()

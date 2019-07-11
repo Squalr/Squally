@@ -20,7 +20,7 @@ using namespace cocos2d;
 
 const std::string HackableObject::MapKeyShowClippy = "show-clippy";
 
-HackableObject::HackableObject(const ValueMap& properties) : SerializableObject(properties)
+HackableObject::HackableObject(const ValueMap& properties) : GameObject(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
@@ -136,13 +136,21 @@ void HackableObject::update(float dt)
 	}
 }
 
-void HackableObject::onHackerModeEnable()
+void HackableObject::onHackerModeEnable(int eq)
 {
-	super::onHackerModeEnable();
+	super::onHackerModeEnable(eq);
 
 	this->uiElements->setPosition(this->getButtonOffset());
 
-	if (!(this->dataList.empty() && this->codeList.empty()))
+	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
+	{
+		if ((*it)->getRequiredEq() > eq)
+		{
+			return;
+		}
+	}
+
+	if (!this->hackableList.empty())
 	{
 		this->hackButton->setVisible(true);
 	}

@@ -723,6 +723,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Centaur_TORSO_CLOTH;
 	extern const std::string Enemies_EndianForest_Centaur_TORSO;
 	extern const std::string Enemies_EndianForest_Centaur_WEAPON_1;
+	extern const std::string Enemies_EndianForest_Centaur_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_Cyclops_Animations;
 	extern const std::string Enemies_EndianForest_Cyclops_COVER;
 	extern const std::string Enemies_EndianForest_Cyclops_Emblem;
@@ -741,6 +742,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Cyclops_R_LEG_2;
 	extern const std::string Enemies_EndianForest_Cyclops_TORSO;
 	extern const std::string Enemies_EndianForest_Cyclops_WEAPON;
+	extern const std::string Enemies_EndianForest_Cyclops_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_Animations;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_BELT;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_Boar_B_BACK_LEG;
@@ -762,6 +764,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_TORSO_CLOTH;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_TORSO;
 	extern const std::string Enemies_EndianForest_GoblinGruntBoar_WEAPON;
+	extern const std::string Enemies_EndianForest_GoblinGruntBoar_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_GoblinShaman_Animations;
 	extern const std::string Enemies_EndianForest_GoblinShaman_BELT;
 	extern const std::string Enemies_EndianForest_GoblinShaman_Emblem;
@@ -843,6 +846,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_KingGrogg_R_LEG_2;
 	extern const std::string Enemies_EndianForest_KingGrogg_TORSO;
 	extern const std::string Enemies_EndianForest_KingGrogg_WEAPON;
+	extern const std::string Enemies_EndianForest_KingGrogg_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_Ogre_Animations;
 	extern const std::string Enemies_EndianForest_Ogre_BELT;
 	extern const std::string Enemies_EndianForest_Ogre_COVER_1;
@@ -860,6 +864,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Ogre_R_LEG_1;
 	extern const std::string Enemies_EndianForest_Ogre_SKULL_CRUSHER;
 	extern const std::string Enemies_EndianForest_Ogre_TORSO;
+	extern const std::string Enemies_EndianForest_Ogre_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_OrcBomber_Animations;
 	extern const std::string Enemies_EndianForest_OrcBomber_BELT;
 	extern const std::string Enemies_EndianForest_OrcBomber_BOMB;
@@ -882,6 +887,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcBomber_R_STRAP;
 	extern const std::string Enemies_EndianForest_OrcBomber_TORSO;
 	extern const std::string Enemies_EndianForest_OrcBomber_WEAPON;
+	extern const std::string Enemies_EndianForest_OrcBomber_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_OrcGrunt_Animations;
 	extern const std::string Enemies_EndianForest_OrcGrunt_BELT;
 	extern const std::string Enemies_EndianForest_OrcGrunt_Emblem;
@@ -919,6 +925,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_OrcSwordsman_SASH;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_TORSO;
 	extern const std::string Enemies_EndianForest_OrcSwordsman_WEAPON;
+	extern const std::string Enemies_EndianForest_OrcSwordsman_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_EndianForest_OrcWarrior_Animations;
 	extern const std::string Enemies_EndianForest_OrcWarrior_BELT;
 	extern const std::string Enemies_EndianForest_OrcWarrior_Emblem;
@@ -956,6 +963,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_Troll_R_LEG_2;
 	extern const std::string Enemies_EndianForest_Troll_TORSO;
 	extern const std::string Enemies_EndianForest_Troll_WEAPON;
+	extern const std::string Enemies_EndianForest_Troll_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Enemies_LambdaCrypts_BoneFiend_Animations;
 	extern const std::string Enemies_LambdaCrypts_BoneFiend_Emblem;
 	extern const std::string Enemies_LambdaCrypts_BoneFiend_HEAD;

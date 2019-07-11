@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuVoidStar.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuVoidStar* CipherPuzzleMenuVoidStar::instance = nullptr;
 std::string CipherPuzzleMenuVoidStar::ChapterSavekey = "CIPHER_CHAPTER_VOID_STAR";
 
-void CipherPuzzleMenuVoidStar::registerGlobalScene()
+CipherPuzzleMenuVoidStar* CipherPuzzleMenuVoidStar::getInstance()
 {
 	if (CipherPuzzleMenuVoidStar::instance == nullptr)
 	{
 		CipherPuzzleMenuVoidStar::instance = new CipherPuzzleMenuVoidStar();
 
 		CipherPuzzleMenuVoidStar::instance->autorelease();
-		CipherPuzzleMenuVoidStar::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuVoidStar::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuVoidStar::instance);
+	return CipherPuzzleMenuVoidStar::instance;
 }
 
-CipherPuzzleMenuVoidStar::CipherPuzzleMenuVoidStar() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::VoidStar, CipherPuzzleMenuVoidStar::ChapterSavekey)
+CipherPuzzleMenuVoidStar::CipherPuzzleMenuVoidStar() : super(CipherPuzzleMenuVoidStar::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

@@ -8,11 +8,11 @@
 #include "cocos/platform/CCFileUtils.h"
 #include "cocos/renderer/CCTextureCache.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
+#include "Engine/Maps/GameMap.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/MenuBackground.h"
 
 #include "Resources/UIResources.h"
@@ -81,14 +81,14 @@ void LoadingScreen::initializeListeners()
 	}));*/
 }
 
-void LoadingScreen::loadLevel(std::string levelFile, std::function<void(SerializableMap*)> onLoadCallback)
+void LoadingScreen::loadLevel(std::string levelFile, std::function<void(GameMap*)> onLoadCallback)
 {
 	this->totalFileCount = 0;
 	this->loadedFileCount = 0;
 	this->currentLevelFile = levelFile;
 	this->onLoadCallback = onLoadCallback;
 
-	this->map = SerializableMap::deserialize(levelFile);
+	this->map = GameMap::deserialize(levelFile, { });
 	this->map->retain();
 
 	if (this->onLoadCallback != nullptr)

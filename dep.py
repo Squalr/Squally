@@ -23,13 +23,13 @@ def main():
     parser.add_argument('command', nargs='+', help="accepted commands: init, update, search, install")
     parser.add_argument("-c", "--common", help="operation operates on the common set", action="store_true")
     parser.add_argument("-t", "--triplet", help="vcpkg triplet (use vcpkg default is not specified", default="")
-	
+    
     try:
     	args = parser.parse_args()
     except:
         parser.print_help()
         return 0
-		
+        
     if len(args.command) <= 0:
         parser.print_help()
         return 0
@@ -50,7 +50,7 @@ def main():
 
     elif args.command[0] == "update":
         update(args.triplet)
-	
+    
     else:
         parser.print_help()
 

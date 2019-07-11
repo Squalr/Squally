@@ -6,7 +6,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
@@ -37,7 +37,7 @@ Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
 	this->canInteract = false;
 
 	this->chestOpenEvent = this->mapEvent;
-	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, SerializableObject::MapKeyArgs, Value("")).asString();
+	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyArgs, Value("")).asString();
 
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);
 	Sprite* chestOpenLidSprite = Sprite::create(ObjectResources::ChestLid);

@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuUnderflowRuins.h"
 
 #include "Engine/GlobalDirector.h"
@@ -27,20 +23,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuUnderflowRuins* HexusOpponentMenuUnderflowRuins::instance = nullptr;
 
-void HexusOpponentMenuUnderflowRuins::registerGlobalScene()
+HexusOpponentMenuUnderflowRuins* HexusOpponentMenuUnderflowRuins::getInstance()
 {
 	if (HexusOpponentMenuUnderflowRuins::instance == nullptr)
 	{
 		HexusOpponentMenuUnderflowRuins::instance = new HexusOpponentMenuUnderflowRuins();
 
 		HexusOpponentMenuUnderflowRuins::instance->autorelease();
-		HexusOpponentMenuUnderflowRuins::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuUnderflowRuins::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuUnderflowRuins::instance);
+	return HexusOpponentMenuUnderflowRuins::instance;
 }
 
-HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::UnderflowRuins, HexusChapterPreviewUnderflowRuins::SaveKeyChapterName)
+HexusOpponentMenuUnderflowRuins::HexusOpponentMenuUnderflowRuins() : super(HexusChapterPreviewUnderflowRuins::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Ajax::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Angel::getHexusOpponentData()));

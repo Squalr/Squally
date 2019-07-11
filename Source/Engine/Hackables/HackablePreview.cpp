@@ -3,8 +3,8 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
-#include "Strings/Generics/Brackets.h"
-#include "Strings/Generics/XEqualsY.h"
+#include "Strings/Common/Brackets.h"
+#include "Strings/Common/XEqualsY.h"
 #include "Strings/Hacking/RegisterEax.h"
 #include "Strings/Hacking/RegisterEbx.h"
 #include "Strings/Hacking/RegisterEcx.h"
@@ -71,11 +71,11 @@ void HackablePreview::setAssemblyTextVisible(bool isVisible)
 
 LocalizedLabel* HackablePreview::createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, ConstantString* value)
 {
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_XEqualsY::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_XEqualsY::create());
 
 	if (isPointer)
 	{
-		LocalizedString* pointerString = Strings::Generics_Brackets::create();
+		LocalizedString* pointerString = Strings::Common_Brackets::create();
 
 		pointerString->setStringReplacementVariables(this->getRegisterString(reg));
 

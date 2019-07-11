@@ -23,7 +23,7 @@ class Sound;
 class HexusDeckManagement : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static HexusDeckManagement* getInstance();
 
 protected:
 	HexusDeckManagement();

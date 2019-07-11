@@ -7,7 +7,7 @@ class IsometricBall : public GridEntity
 public:
 	static IsometricBall* deserialize(cocos2d::ValueMap& initProperties);
 
-	static const std::string KeyBallProperty;
+	static const std::string MapKeyBall;
 
 private:
 	typedef GridEntity super;

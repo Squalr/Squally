@@ -10,6 +10,7 @@
 #include "Bootstrapper.h"
 #include "Engine/Analytics/Analytics.h"
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/Localization/LocalizedString.h"
@@ -17,7 +18,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Scenes/Title/TitleScreen.h"
 
-#include "Strings/Generics/Squally.h"
+#include "Strings/Common/Squally.h"
 
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;
@@ -25,7 +26,7 @@ using namespace cocos2d::cocos_experimental;
 GameWindow::GameWindow()
 {
 	this->gameWindowTitleContainer = GlobalNode::create();
-	this->gameWindowTitle = Strings::Generics_Squally::create();
+	this->gameWindowTitle = Strings::Common_Squally::create();
 	this->glView = nullptr;
 
 	// Listen for locale change events and update the window title
@@ -96,8 +97,7 @@ bool GameWindow::applicationDidFinishLaunching()
 		Analytics::sendEvent(AnalyticsCategories::GameStart, "Linux");
 	#endif
 
-	// load into the title screen first
-	GlobalDirector::loadScene(TitleScreen::getInstance());
+	NavigationEvents::LoadScene(TitleScreen::getInstance());
 
 	return true;
 }

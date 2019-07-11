@@ -96,7 +96,12 @@ void SmartNode::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 	{
-		this->onHackerModeEnable();
+		HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->onHackerModeEnable(args->currentEq);
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
@@ -113,7 +118,7 @@ void SmartNode::onDeveloperModeDisable()
 {
 }
 
-void SmartNode::onHackerModeEnable()
+void SmartNode::onHackerModeEnable(int eq)
 {
 	this->hackermodeEnabled = true;
 }

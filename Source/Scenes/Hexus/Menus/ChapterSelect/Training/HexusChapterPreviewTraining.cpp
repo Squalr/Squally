@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewTraining.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewTraining* HexusChapterPreviewTraining::create()
 
 HexusChapterPreviewTraining::HexusChapterPreviewTraining() : HexusChapterPreview(HexusChapterPreviewTraining::SaveKeyChapterName, Strings::Menus_Maps_TrainingGrounds::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameTraining));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameTraining));
 }
 
 HexusChapterPreviewTraining::~HexusChapterPreviewTraining()

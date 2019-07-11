@@ -103,6 +103,7 @@ public:
 	static HackUtils::CompileResult assemble(std::string assembly, void* addressStart);
 	static void* resolveVTableAddress(void* address);
 	static std::string disassemble(void* address, int length);
+	static std::string preProcess(std::string instructions);
 	static std::string hexAddressOf(void* address, bool zeroPad, bool prefix);
 	static std::string toHex(int value, bool prefix = false);
 	static std::string toBinary4(int value);

@@ -23,7 +23,7 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Generics/Empty.h"
+#include "Strings/Common/Empty.h"
 
 using namespace cocos2d;
 using namespace rapidjson;
@@ -89,7 +89,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 	this->spriteLeft = this->getPortraitNode(portraitLeft, false);
 	this->spriteRight = this->getPortraitNode(portraitRight, true);
 
-	this->dialogText = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Empty::create());
+	this->dialogText = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
 	//this->dialogText->setString(text);
 	this->dialogText->enableWrap(true);
 	this->dialogText->setDimensions(1024.0f, 224.0f);
@@ -159,7 +159,7 @@ DialogMenu::DialogMenu(Portrait portraitLeft, Portrait portraitRight, Speaker sp
 		std::string choice = choiceDialogPair.first;
 		DialogMenu* dialogMenu = choiceDialogPair.second;
 
-		LocalizedLabel* localizedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Generics_Empty::create());
+		LocalizedLabel* localizedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create());
 		//	localizedLabel->setString(choice);
 		MenuLabel* label = MenuLabel::create(localizedLabel);
 		label->setColor(Color4B::YELLOW);

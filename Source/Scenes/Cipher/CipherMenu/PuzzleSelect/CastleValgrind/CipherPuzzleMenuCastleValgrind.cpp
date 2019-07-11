@@ -1,7 +1,6 @@
 #include "CipherPuzzleMenuCastleValgrind.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/CipherMenu/PuzzleSelect/CipherPuzzlePreview.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleDeserializer.h"
@@ -13,20 +12,20 @@ using namespace cocos2d;
 CipherPuzzleMenuCastleValgrind* CipherPuzzleMenuCastleValgrind::instance = nullptr;
 std::string CipherPuzzleMenuCastleValgrind::ChapterSavekey = "CIPHER_CHAPTER_CASTLE_VALGRIND";
 
-void CipherPuzzleMenuCastleValgrind::registerGlobalScene()
+CipherPuzzleMenuCastleValgrind* CipherPuzzleMenuCastleValgrind::getInstance()
 {
 	if (CipherPuzzleMenuCastleValgrind::instance == nullptr)
 	{
 		CipherPuzzleMenuCastleValgrind::instance = new CipherPuzzleMenuCastleValgrind();
 
 		CipherPuzzleMenuCastleValgrind::instance->autorelease();
-		CipherPuzzleMenuCastleValgrind::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(CipherPuzzleMenuCastleValgrind::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(CipherPuzzleMenuCastleValgrind::instance);
+	return CipherPuzzleMenuCastleValgrind::instance;
 }
 
-CipherPuzzleMenuCastleValgrind::CipherPuzzleMenuCastleValgrind() : super(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter::CastleValgrind, CipherPuzzleMenuCastleValgrind::ChapterSavekey)
+CipherPuzzleMenuCastleValgrind::CipherPuzzleMenuCastleValgrind() : super(CipherPuzzleMenuCastleValgrind::ChapterSavekey)
 {
 	this->chests.push_back(CipherPuzzlePreview::create(
 		CipherPuzzleDeserializer::deserialize(

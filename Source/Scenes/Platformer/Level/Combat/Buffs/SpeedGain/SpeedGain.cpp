@@ -14,9 +14,9 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/SpeedGain/SpeedGainClippy.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/SpeedGain/SpeedGainGenericPreview.h"
-#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -63,7 +63,9 @@ void SpeedGain::onEnter()
 {
 	super::onEnter();
 	
-	std::vector<std::string> mapArgs = CombatMap::getInstance()->getMapArgs();
+	std::vector<std::string> mapArgs = std::vector<std::string>();
+
+	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
 
 	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), SpeedGain::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
@@ -91,7 +93,9 @@ void SpeedGain::registerHackables()
 		return;
 	}
 	
-	std::vector<std::string> mapArgs = CombatMap::getInstance()->getMapArgs();
+	std::vector<std::string> mapArgs = std::vector<std::string>();
+
+	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
 
 	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), SpeedGain::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 

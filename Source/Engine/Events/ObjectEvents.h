@@ -12,8 +12,8 @@ namespace cocos2d
 }
 
 class UIBoundObject;
-class SerializableLayer;
-class SerializableObject;
+class MapLayer;
+class GameObject;
 class SmartNode;
 
 class QueryObjectsArgsBase
@@ -92,14 +92,14 @@ public:
 
 	struct RequestObjectSpawnDelegatorArgs
 	{
-		SerializableLayer* sourceLayer;
+		MapLayer* sourceLayer;
 		cocos2d::Node* spawner;
 		cocos2d::Node* objectToSpawn;
 		SpawnMethod spawnMethod;
 		PositionMode positionMode;
 
 		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnDelegatorArgs(SerializableLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
+		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
 	};
 
 	struct RelocateObjectArgs

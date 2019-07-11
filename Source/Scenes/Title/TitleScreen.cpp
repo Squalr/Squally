@@ -5,6 +5,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -12,7 +13,9 @@
 #include "Engine/Sound/Music.h"
 #include "Engine/Steam/Steam.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
+#include "Menus/MinigamesMenu.h"
+#include "Menus/Options/OptionsScene.h"
+#include "Menus/SaveSelect/SaveSelectMenu.h"
 #include "Scenes/Title/TitleScreenBackground.h"
 
 #include "Resources/MapResources.h"
@@ -37,14 +40,11 @@ TitleScreen* TitleScreen::getInstance()
 
 		TitleScreen::instance->autorelease();
 		TitleScreen::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(TitleScreen::getInstance());
 	}
 
 	return TitleScreen::instance;
-}
-
-void TitleScreen::registerGlobalScene()
-{
-	GlobalDirector::registerGlobalScene(TitleScreen::getInstance());
 }
 
 TitleScreen::TitleScreen()
@@ -204,11 +204,6 @@ void TitleScreen::initializeListeners()
 {
 	super::initializeListeners();
 
-	TitleScreen::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateTitle, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(TitleScreen::instance);
-	}));
-
 	this->storyModeButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onStoryModeClick, this));
 	this->minigamesButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onMinigamesClick, this));
 	this->optionsButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onOptionsClick, this));
@@ -217,17 +212,17 @@ void TitleScreen::initializeListeners()
 
 void TitleScreen::onStoryModeClick()
 {
-	NavigationEvents::navigateSaveSelect();
+	NavigationEvents::LoadScene(SaveSelectMenu::getInstance());
 }
 
 void TitleScreen::onMinigamesClick()
 {
-	NavigationEvents::navigateMinigames();
+	NavigationEvents::LoadScene(MinigamesMenu::getInstance());
 }
 
 void TitleScreen::onOptionsClick()
 {
-	NavigationEvents::navigateOptions();
+	NavigationEvents::LoadScene(OptionsScene::getInstance());
 }
 
 void TitleScreen::onExitClick()

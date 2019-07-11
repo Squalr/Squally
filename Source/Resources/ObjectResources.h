@@ -100,6 +100,10 @@ namespace ObjectResources
 	extern const std::string Doors_Cave_CAVE_G;
 	extern const std::string Doors_Cave_GROUND_SHADOW;
 	extern const std::string Doors_Cave_MISC;
+	extern const std::string Doors_Crypt_CryptClosed;
+	extern const std::string Doors_Crypt_CryptOpened;
+	extern const std::string Doors_Gate_GateLeft;
+	extern const std::string Doors_Gate_GateRight;
 	extern const std::string Doors_OrcGate_2;
 	extern const std::string Doors_OrcGate_BACK_ORC;
 	extern const std::string Doors_OrcGate_FRONT_ORC;
@@ -111,6 +115,13 @@ namespace ObjectResources
 	extern const std::string Doors_OrcGate_GROUND_OBJECTS_GROUND_OBJECTS_6;
 	extern const std::string Doors_OrcGate_P_MIDDLE;
 	extern const std::string Doors_OrcGate_TOP_P;
+	extern const std::string Doors_PuzzleDoor_Back;
+	extern const std::string Doors_PuzzleDoor_Door;
+	extern const std::string Doors_PuzzleDoor_Front;
+	extern const std::string Doors_PuzzleDoor_Light;
+	extern const std::string Doors_PuzzleDoor_Rune;
+	extern const std::string Doors_PuzzleDoor_RuneGreen;
+	extern const std::string Doors_PuzzleDoor_RuneRed;
 	extern const std::string Doors_Tent_1;
 	extern const std::string Doors_Tent_BACK_CART;
 	extern const std::string Doors_Tent_BARREL;

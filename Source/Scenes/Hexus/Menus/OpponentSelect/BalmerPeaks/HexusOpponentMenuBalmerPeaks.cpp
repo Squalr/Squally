@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuBalmerPeaks.h"
 
 #include "Engine/GlobalDirector.h"
@@ -27,20 +23,20 @@ using namespace cocos2d;
 
 HexusOpponentMenuBalmerPeaks* HexusOpponentMenuBalmerPeaks::instance = nullptr;
 
-void HexusOpponentMenuBalmerPeaks::registerGlobalScene()
+HexusOpponentMenuBalmerPeaks* HexusOpponentMenuBalmerPeaks::getInstance()
 {
 	if (HexusOpponentMenuBalmerPeaks::instance == nullptr)
 	{
 		HexusOpponentMenuBalmerPeaks::instance = new HexusOpponentMenuBalmerPeaks();
 
 		HexusOpponentMenuBalmerPeaks::instance->autorelease();
-		HexusOpponentMenuBalmerPeaks::instance->initializeListeners();
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuBalmerPeaks::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuBalmerPeaks::instance);
+	return HexusOpponentMenuBalmerPeaks::instance;
 }
 
-HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::BalmerPeaks, HexusChapterPreviewBalmerPeaks::SaveKeyChapterName)
+HexusOpponentMenuBalmerPeaks::HexusOpponentMenuBalmerPeaks() : super(HexusChapterPreviewBalmerPeaks::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Aspen::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Aster::getHexusOpponentData()));

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/GlobalScene.h"
-#include "Events/NavigationEvents.h"
 
 namespace cocos2d
 {
@@ -18,7 +17,7 @@ class ClickableTextNode;
 class CipherPuzzleSelectMenuBase : public GlobalScene
 {
 protected:
-	CipherPuzzleSelectMenuBase(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter chapter, std::string chapterProgressSaveKey);
+	CipherPuzzleSelectMenuBase(std::string chapterProgressSaveKey);
 	~CipherPuzzleSelectMenuBase();
 
 	void onEnter() override;
@@ -28,8 +27,6 @@ protected:
 	void onBackClick();
 	void buildCipherList();
 	static std::string buildCipherJson(std::string rule, std::vector<std::string> inputs);
-
-	NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter chapter;
 
 	std::vector<CipherPuzzlePreview*> chests;
 	std::map<CipherPuzzlePreview*, CipherPuzzlePreview*> dependencies;

@@ -22,8 +22,8 @@
 
 #include "Strings/Combat/Blocked.h"
 #include "Strings/Combat/Interrupted.h"
-#include "Strings/Generics/MinusConstant.h"
-#include "Strings/Generics/PlusConstant.h"
+#include "Strings/Common/MinusConstant.h"
+#include "Strings/Common/PlusConstant.h"
 
 using namespace cocos2d;
 
@@ -98,7 +98,7 @@ void TextOverlays::initializeListeners()
 		if (args != nullptr && args->target != nullptr)
 		{
 			ConstantString* amount = ConstantString::create(std::to_string(std::abs(args->damageOrHealing)));
-			LocalizedString* deltaString = args->damageOrHealing < 0 ? (LocalizedString*)Strings::Generics_MinusConstant::create() : (LocalizedString*)Strings::Generics_PlusConstant::create();
+			LocalizedString* deltaString = args->damageOrHealing < 0 ? (LocalizedString*)Strings::Common_MinusConstant::create() : (LocalizedString*)Strings::Common_PlusConstant::create();
 			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
 			deltaLabel->setTextColor(args->damageOrHealing < 0 ? Color4B::RED : Color4B::GREEN);
@@ -193,7 +193,7 @@ void TextOverlays::showExpBars(int expGain)
 		}
 
 		// Gain text
-		LocalizedString* deltaString = Strings::Generics_PlusConstant::create();
+		LocalizedString* deltaString = Strings::Common_PlusConstant::create();
 		LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 
 		deltaLabel->setTextColor(Color4B::YELLOW);

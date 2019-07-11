@@ -20,7 +20,7 @@ Fireflies* Fireflies::create(ValueMap& properties, std::string name)
 	return instance;
 }
 
-Fireflies::Fireflies(ValueMap& properties, std::string name) : SerializableLayer(properties, name)
+Fireflies::Fireflies(ValueMap& properties, std::string name) : MapLayer(properties, name)
 {
 	this->fireflies = ParticleSystemQuad::create(ParticleResources::Fireflies2);
 	this->fireflies->setPositionType(ParticleSystem::PositionType::GROUPED);

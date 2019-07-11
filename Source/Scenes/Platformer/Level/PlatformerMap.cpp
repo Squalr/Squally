@@ -2,19 +2,20 @@
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Maps/SerializableMap.h"
+#include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
-#include "Events/NavigationEvents.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
@@ -24,18 +25,23 @@
 
 using namespace cocos2d;
 
-PlatformerMap* PlatformerMap::instance = nullptr;
+const std::string PlatformerMap::MapArgClearSavedPosition = "ARGS_CLEAR_SAVED_POSITION";
 
-void PlatformerMap::registerGlobalScene()
+PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs)
 {
-	if (PlatformerMap::instance == nullptr)
+	PlatformerMap* instance = new PlatformerMap();
+
+	instance->autorelease();
+
+	if (std::find(mapArgs.begin(), mapArgs.end(), PlatformerMap::MapArgClearSavedPosition) != mapArgs.end())
 	{
-		PlatformerMap::instance = new PlatformerMap();
-		PlatformerMap::instance->autorelease();
-		PlatformerMap::instance->initializeListeners();
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	}
 
-	GlobalDirector::registerGlobalScene(PlatformerMap::instance);
+	instance->loadMap(mapResource, mapArgs);
+
+	return instance;
 }
 
 PlatformerMap::PlatformerMap() : super(true)
@@ -47,6 +53,21 @@ PlatformerMap::PlatformerMap() : super(true)
 
 	this->gameHud = GameHud::create();
 	this->cipher = Cipher::create();
+
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			PhysicsDeserializer::create(),
+			ObjectLayerDeserializer::create({
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create() },
+				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
+				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
+				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
+				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
+			}),
+			WeatherDeserializer::create()
+		}
+	);
 
 	this->getPhysicsWorld()->setAutoStep(false);
 
@@ -82,25 +103,6 @@ void PlatformerMap::initializePositions()
 void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePlatformerMap, [=](EventCustom* eventCustom)
-	{
-		NavigationEvents::NavigateMapArgs* args = static_cast<NavigationEvents::NavigateMapArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			// Clear any intra-map save-state
-			if (!args->isReload)
-			{
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-				SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-			}
-
-			this->loadMap(args->mapResource, args->mapArgs);
-
-			GlobalDirector::loadScene(this);
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{

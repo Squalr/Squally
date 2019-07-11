@@ -8,7 +8,7 @@
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 
-#include "Strings/Generics/Constant.h"
+#include "Strings/Common/Constant.h"
 
 #include "Resources/UIResources.h"
 
@@ -25,7 +25,7 @@ DebugDisplay* DebugDisplay::create()
 
 DebugDisplay::DebugDisplay()
 {
-	this->stateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Generics_Constant::create());
+	this->stateLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 	this->loseButton = ClickableNode::create(UIResources::Menus_Icons_BloodGoblet, UIResources::Menus_Icons_BloodGoblet);
 	this->drawButton = ClickableNode::create(UIResources::Menus_Icons_YinYang, UIResources::Menus_Icons_YinYang);
 	this->winButton = ClickableNode::create(UIResources::Menus_Icons_Medals, UIResources::Menus_Icons_Medals);

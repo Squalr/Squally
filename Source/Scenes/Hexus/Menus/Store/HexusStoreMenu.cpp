@@ -11,6 +11,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
@@ -21,7 +22,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Special/Shopkeeper.h"
-#include "Events/NavigationEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Scenes/Hexus/Menus/MenuCard.h"
 #include "Scenes/Hexus/Card.h"
@@ -44,14 +44,14 @@
 #include "Strings/Hexus/StoreLabelDecimal.h"
 #include "Strings/Hexus/StoreLabelHex.h"
 #include "Strings/Hexus/StoreLabelSpecial.h"
-#include "Strings/Generics/Constant.h"
-#include "Strings/Generics/XOverY.h"
+#include "Strings/Common/Constant.h"
+#include "Strings/Common/XOverY.h"
 
 using namespace cocos2d;
 
 HexusStoreMenu* HexusStoreMenu::instance;
 
-void HexusStoreMenu::registerGlobalScene()
+HexusStoreMenu* HexusStoreMenu::getInstance()
 {
 	if (HexusStoreMenu::instance == nullptr)
 	{
@@ -59,9 +59,11 @@ void HexusStoreMenu::registerGlobalScene()
 
 		HexusStoreMenu::instance->autorelease();
 		HexusStoreMenu::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusStoreMenu::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusStoreMenu::instance);
+	return HexusStoreMenu::instance;
 }
 
 HexusStoreMenu::HexusStoreMenu()
@@ -79,7 +81,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->goldPanel = Sprite::create(HexusResources::StoreMenu_GoldPanel);
 	this->goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
 	this->goldString = ConstantString::create();
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Generics_Constant::create());
+	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Constant::create());
 
 	this->goldLabel->setStringReplacementVariables(this->goldString);
 	this->goldLabel->enableOutline(Color4B::BLACK, 3);
@@ -302,11 +304,6 @@ void HexusStoreMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	HexusStoreMenu::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateHexusShop, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(HexusStoreMenu::instance);
-	}));
-
 	this->cardPreview->setHelpClickCallback([=](Card* card)
 	{
 		this->backdrop->setVisible(true);
@@ -330,7 +327,7 @@ void HexusStoreMenu::initializeListeners()
 		
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
 	this->binaryButton->setMouseClickCallback(CC_CALLBACK_0(HexusStoreMenu::onBinaryTabClick, this));
@@ -603,7 +600,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 
 	ConstantString* countString = ConstantString::create();
 	ConstantString* limitString = ConstantString::create();
-	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Generics_XOverY::create());
+	LocalizedLabel* cardLimitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_XOverY::create());
 
 	cardLimitLabel->setStringReplacementVariables({ countString, limitString });
 	cardLimitLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -613,7 +610,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	this->updateCardLimitText(cardLimitLabel, countString, limitString, cardData);
 
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
-	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Generics_Constant::create());
+	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	
 	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
 
@@ -724,7 +721,7 @@ void HexusStoreMenu::onCardClick(CardData* cardData, int price, LocalizedLabel* 
 
 void HexusStoreMenu::onBackClick()
 {
-	NavigationEvents::navigateBack();
+	NavigationEvents::NavigateBack();
 }
 
 void HexusStoreMenu::onBinaryTabClick()

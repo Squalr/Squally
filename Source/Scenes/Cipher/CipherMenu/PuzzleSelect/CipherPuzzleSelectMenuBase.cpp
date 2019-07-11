@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -30,9 +31,8 @@
 
 using namespace cocos2d;
 
-CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(NavigationEvents::NavigateCipherPuzzleSelectArgs::Chapter chapter, std::string chapterProgressSaveKey)
+CipherPuzzleSelectMenuBase::CipherPuzzleSelectMenuBase(std::string chapterProgressSaveKey)
 {
-	this->chapter = chapter;
 	this->chapterProgressSaveKey = chapterProgressSaveKey;
 	this->chests = std::vector<CipherPuzzlePreview*>();
 	this->nether = ParticleSystemQuad::create(ParticleResources::BlueNether);
@@ -74,7 +74,7 @@ void CipherPuzzleSelectMenuBase::onEnter()
 		{
 			// Beat the last chest -- save that we beat the chapter and navigate back to chapter select
 			SaveManager::saveGlobalData(this->chapterProgressSaveKey, cocos2d::Value(true));
-			NavigationEvents::navigateBack(1);
+			NavigationEvents::NavigateBack();
 			return;
 		}
 	}
@@ -141,16 +141,6 @@ void CipherPuzzleSelectMenuBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigateCipherPuzzleSelect, [=](EventCustom* args)
-	{
-		NavigationEvents::NavigateCipherPuzzleSelectArgs* navArgs = (NavigationEvents::NavigateCipherPuzzleSelectArgs*)args->getUserData();
-
-		if (navArgs->chapter == this->chapter)
-		{
-			GlobalDirector::loadScene(this);
-		}
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -159,7 +149,7 @@ void CipherPuzzleSelectMenuBase::initializeListeners()
 		}
 		args->handled = true;
 
-		NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(CipherPuzzleSelectMenuBase::onBackClick, this));
@@ -167,7 +157,7 @@ void CipherPuzzleSelectMenuBase::initializeListeners()
 
 void CipherPuzzleSelectMenuBase::onBackClick()
 {
-	NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 }
 
 void CipherPuzzleSelectMenuBase::loadProgress()

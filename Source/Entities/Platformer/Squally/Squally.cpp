@@ -13,6 +13,7 @@
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -22,9 +23,9 @@
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/IsAliveClippy.h"
-#include "Events/NavigationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
+#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
@@ -143,13 +144,18 @@ void Squally::initializeCollisionEvents()
 		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
 		{
 			// TODO: First strike detection
-			NavigationEvents::navigateCombat(NavigationEvents::NavigateCombatArgs(
-				true,
-				enemy->getUniqueIdentifier(),
+			bool firstStrike = true;
+
+			CombatMap* combatMap = CombatMap::create(
 				enemy->getBattleMapResource(),
 				enemy->getBattleMapArgs(),
+				true,
+				enemy->getUniqueIdentifier(),
 				{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
-				enemy->getCombatEntityList()));
+				enemy->getCombatEntityList()
+			);
+
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;
@@ -206,14 +212,11 @@ void Squally::initializeListeners()
 {
 	super::initializeListeners();
 
-	
-
-	this->addEventListener(EventListenerCustom::create(HackableEvents::EventRequestHackerModeEnable, [=](EventCustom*)
+	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
-		if (this->tryUseRune())
-		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
-		}
+		this->tryUseRune();
+		
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
@@ -325,9 +328,9 @@ void Squally::performSwimAnimation()
 	}
 }
 
-void Squally::onHackerModeEnable()
+void Squally::onHackerModeEnable(int eq)
 {
-	super::onHackerModeEnable();
+	super::onHackerModeEnable(eq);
 }
 
 void Squally::registerHackables()
@@ -367,20 +370,19 @@ void Squally::registerHackables()
 
 NO_OPTIMIZE bool Squally::isAliveSqually()
 {
-	// The compiler will save EBP, we need to restore it before returning
-	ASM(pop ZBP);
+	static volatile bool ret = true;
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
 
 	ASM(mov ZAX, 1);
-	ASM(ret);
 
 	HACKABLE_CODE_END();
 
+	ASM_MOV_VAR_REG(ret, ZAX);
+
 	HACKABLES_STOP_SEARCH();
 
-	// Just to make compiler stop crying
-	return true;
+	return ret;
 }
 
 void Squally::saveState()
@@ -421,6 +423,11 @@ void Squally::loadState()
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY())).asFloat()
 	));
+
+	if (this->getHealth() <= 0)
+	{
+		this->killAndRespawn();
+	}
 
 	// Save new defaults
 	this->saveState();

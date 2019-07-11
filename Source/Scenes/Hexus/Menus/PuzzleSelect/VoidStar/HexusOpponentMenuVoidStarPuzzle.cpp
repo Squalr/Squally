@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuVoidStarPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -24,20 +20,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuVoidStarPuzzle* HexusOpponentMenuVoidStarPuzzle::instance = nullptr;
 
-void HexusOpponentMenuVoidStarPuzzle::registerGlobalScene()
+HexusOpponentMenuVoidStarPuzzle* HexusOpponentMenuVoidStarPuzzle::getInstance()
 {
 	if (HexusOpponentMenuVoidStarPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuVoidStarPuzzle::instance = new HexusOpponentMenuVoidStarPuzzle();
 
 		HexusOpponentMenuVoidStarPuzzle::instance->autorelease();
-		HexusOpponentMenuVoidStarPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuVoidStarPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuVoidStarPuzzle::instance);
+	return HexusOpponentMenuVoidStarPuzzle::instance;
 }
 
-HexusOpponentMenuVoidStarPuzzle::HexusOpponentMenuVoidStarPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleVoidStar, HexusChapterPreviewVoidStarPuzzle::SaveKeyChapterName)
+HexusOpponentMenuVoidStarPuzzle::HexusOpponentMenuVoidStarPuzzle() : super(HexusChapterPreviewVoidStarPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Abomination::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Assassin::getHexusOpponentData()));

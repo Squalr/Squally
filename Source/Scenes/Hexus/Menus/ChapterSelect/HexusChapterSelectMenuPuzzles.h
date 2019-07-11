@@ -26,7 +26,7 @@ class ClickableTextNode;
 class HexusChapterSelectMenuPuzzles : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static HexusChapterSelectMenuPuzzles* getInstance();
 
 protected:
 	HexusChapterSelectMenuPuzzles();

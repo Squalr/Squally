@@ -30,7 +30,7 @@ class Sound;
 class HexusStoreMenu : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static HexusStoreMenu* getInstance();
 
 protected:
 	HexusStoreMenu();

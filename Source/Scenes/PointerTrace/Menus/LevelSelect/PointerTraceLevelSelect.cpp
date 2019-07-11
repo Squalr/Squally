@@ -9,14 +9,15 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
+#include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/InputEvents.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/NavigationEvents.h"
 
 #include "Resources/IsometricMapResources.h"
 #include "Resources/IsometricMapResources.h"
@@ -28,7 +29,7 @@ using namespace cocos2d;
 
 PointerTraceLevelSelect* PointerTraceLevelSelect::instance = nullptr;
 
-void PointerTraceLevelSelect::registerGlobalScene()
+PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 {
 	if (PointerTraceLevelSelect::instance == nullptr)
 	{
@@ -36,16 +37,28 @@ void PointerTraceLevelSelect::registerGlobalScene()
 
 		PointerTraceLevelSelect::instance->autorelease();
 		PointerTraceLevelSelect::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(PointerTraceLevelSelect::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(PointerTraceLevelSelect::instance);
+	return PointerTraceLevelSelect::instance;
 }
 
 PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false)
 {
-	this->music = Music::create(MusicResources::PointerTrace);
+	this->addLayerDeserializers({
+			BackgroundDeserializer::create(),
+			MusicDeserializer::create(),
+			
+			ObjectLayerDeserializer::create({
+				{ IsometricDecorDeserializer::MapKeyTypeDecor, IsometricDecorDeserializer::create() },
+				{ IsometricEntityDeserializer::MapKeyTypeEntity, IsometricEntityDeserializer::create() },
+				{ IsometricObjectDeserializer::MapKeyTypeObject, IsometricObjectDeserializer::create() },
+			})
+		}
+	);
 
-	this->addChild(this->music);
+	this->loadMap(IsometricMapResources::LevelSelectMap);
 }
 
 PointerTraceLevelSelect::~PointerTraceLevelSelect()
@@ -55,8 +68,6 @@ PointerTraceLevelSelect::~PointerTraceLevelSelect()
 void PointerTraceLevelSelect::onEnter()
 {
 	super::onEnter();
-
-	this->music->play(true);
 
 	const float delay = 0.5f;
 	const float duration = 0.75f;
@@ -79,11 +90,6 @@ void PointerTraceLevelSelect::initializeListeners()
 {
 	super::initializeListeners();
 
-	PointerTraceLevelSelect::instance->addGlobalEventListener(EventListenerCustom::create(NavigationEvents::EventNavigatePointerTraceLevelSelect, [](EventCustom* args)
-	{
-		GlobalDirector::loadScene(PointerTraceLevelSelect::instance);
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
@@ -92,6 +98,6 @@ void PointerTraceLevelSelect::initializeListeners()
 		}
 
 		args->handled = true;
-		NavigationEvents::navigateBack();
+		NavigationEvents::NavigateBack();
 	});
 }

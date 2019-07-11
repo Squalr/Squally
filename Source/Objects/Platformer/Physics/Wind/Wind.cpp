@@ -51,7 +51,7 @@ Wind::Wind(ValueMap& initProperties) : super(initProperties)
 		speedY = this->properties.at("speed-y").asFloat();
 	}
 
-	this->windSize = Size(this->properties.at(SerializableObject::MapKeyWidth).asFloat(), this->properties.at(SerializableObject::MapKeyHeight).asFloat());
+	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
 	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);

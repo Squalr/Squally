@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuSeaSharpCavernsPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -25,20 +21,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuSeaSharpCavernsPuzzle* HexusOpponentMenuSeaSharpCavernsPuzzle::instance = nullptr;
 
-void HexusOpponentMenuSeaSharpCavernsPuzzle::registerGlobalScene()
+HexusOpponentMenuSeaSharpCavernsPuzzle* HexusOpponentMenuSeaSharpCavernsPuzzle::getInstance()
 {
 	if (HexusOpponentMenuSeaSharpCavernsPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuSeaSharpCavernsPuzzle::instance = new HexusOpponentMenuSeaSharpCavernsPuzzle();
 
 		HexusOpponentMenuSeaSharpCavernsPuzzle::instance->autorelease();
-		HexusOpponentMenuSeaSharpCavernsPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuSeaSharpCavernsPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuSeaSharpCavernsPuzzle::instance);
+	return HexusOpponentMenuSeaSharpCavernsPuzzle::instance;
 }
 
-HexusOpponentMenuSeaSharpCavernsPuzzle::HexusOpponentMenuSeaSharpCavernsPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleSeaSharpCaverns, HexusChapterPreviewSeaSharpCavernsPuzzle::SaveKeyChapterName)
+HexusOpponentMenuSeaSharpCavernsPuzzle::HexusOpponentMenuSeaSharpCavernsPuzzle() : super(HexusChapterPreviewSeaSharpCavernsPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Barbarian::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(EarthElemental::getHexusOpponentData()));

@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewUnderflowRuinsPuzzle.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewUnderflowRuinsPuzzle* HexusChapterPreviewUnderflowRuinsPuzzle
 
 HexusChapterPreviewUnderflowRuinsPuzzle::HexusChapterPreviewUnderflowRuinsPuzzle() : HexusChapterPreview(HexusChapterPreviewUnderflowRuinsPuzzle::SaveKeyChapterName, Strings::Menus_Maps_UnderflowRuins::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins));
 }
 
 HexusChapterPreviewUnderflowRuinsPuzzle::~HexusChapterPreviewUnderflowRuinsPuzzle()

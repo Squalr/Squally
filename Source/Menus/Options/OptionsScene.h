@@ -12,7 +12,7 @@ class OptionsMenu;
 class OptionsScene : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static OptionsScene* getInstance();
 
 protected:
 	OptionsScene();

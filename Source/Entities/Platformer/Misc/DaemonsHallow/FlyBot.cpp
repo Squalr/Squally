@@ -1,7 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED. ONLY EDIT NON-GENERATED SECTIONS. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "FlyBot.h"
 
 #include "cocos/math/CCGeometry.h"
@@ -416,8 +412,8 @@ void FlyBot::runRestorePotionTutorial()
 		DelayTime::create(TutorialDelay),
 		CallFunc::create([=]()
 		{
-			HackableEvents::TriggerRequestHackerModeEnable();
 			HackableEvents::TriggerAllowHackerMode();
+			HackableEvents::TriggerForceHackerModeEnable();
 			GameUtils::resume(this);
 
 			this->runAction(Sequence::create(

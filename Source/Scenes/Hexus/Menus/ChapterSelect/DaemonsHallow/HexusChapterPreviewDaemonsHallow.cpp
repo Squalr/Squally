@@ -1,6 +1,5 @@
 #include "HexusChapterPreviewDaemonsHallow.h"
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Localization/LocalizedLabel.h"
@@ -24,7 +23,7 @@ HexusChapterPreviewDaemonsHallow* HexusChapterPreviewDaemonsHallow::create()
 
 HexusChapterPreviewDaemonsHallow::HexusChapterPreviewDaemonsHallow() : HexusChapterPreview(HexusChapterPreviewDaemonsHallow::SaveKeyChapterName, Strings::Menus_Maps_DaemonsHallow::create())
 {
-	this->frameClip->addChild(Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow));
+	this->contentNode->addChild(Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow));
 }
 
 HexusChapterPreviewDaemonsHallow::~HexusChapterPreviewDaemonsHallow()

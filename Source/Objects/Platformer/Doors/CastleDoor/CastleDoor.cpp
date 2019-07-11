@@ -48,7 +48,7 @@ CastleDoor::CastleDoor(ValueMap& initProperties) : super(initProperties)
 	clipStencil->drawSolidRect(Vec2(-64.0f, -224.0f), Vec2(96.0f, 192.0f), Color4F::GREEN);
 	this->doorClip = ClippingNode::create(clipStencil);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, SerializableObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
 	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);

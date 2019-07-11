@@ -18,10 +18,10 @@ class PauseMenu;
 class CipherScene : public GlobalScene
 {
 public:
-	static void registerGlobalScene();
+	static CipherScene* create(CipherPuzzleData* cipherPuzzleData);
 
 protected:
-	CipherScene();
+	CipherScene(CipherPuzzleData* cipherPuzzleData);
 	~CipherScene();
 
 private:
@@ -41,7 +41,5 @@ private:
 	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 
-	CipherPuzzleData* cipherPuzzleDataRef;
-
-	static CipherScene* instance;
+	CipherPuzzleData* cipherPuzzleData;
 };

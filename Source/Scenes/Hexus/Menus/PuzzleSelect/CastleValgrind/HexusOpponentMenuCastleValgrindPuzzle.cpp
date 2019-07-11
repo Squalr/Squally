@@ -1,7 +1,3 @@
-////////////////////////////////////////////////////////////////////////////////////////////
-// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateDataFiles.py TO GENERATE THIS FILE //
-////////////////////////////////////////////////////////////////////////////////////////////
-
 #include "HexusOpponentMenuCastleValgrindPuzzle.h"
 
 #include "Engine/GlobalDirector.h"
@@ -25,20 +21,21 @@ using namespace cocos2d;
 
 HexusOpponentMenuCastleValgrindPuzzle* HexusOpponentMenuCastleValgrindPuzzle::instance = nullptr;
 
-void HexusOpponentMenuCastleValgrindPuzzle::registerGlobalScene()
+HexusOpponentMenuCastleValgrindPuzzle* HexusOpponentMenuCastleValgrindPuzzle::getInstance()
 {
 	if (HexusOpponentMenuCastleValgrindPuzzle::instance == nullptr)
 	{
 		HexusOpponentMenuCastleValgrindPuzzle::instance = new HexusOpponentMenuCastleValgrindPuzzle();
 
 		HexusOpponentMenuCastleValgrindPuzzle::instance->autorelease();
-		HexusOpponentMenuCastleValgrindPuzzle::instance->initializeListeners();
+
+		GlobalDirector::registerGlobalScene(HexusOpponentMenuCastleValgrindPuzzle::instance);
 	}
 
-	GlobalDirector::registerGlobalScene(HexusOpponentMenuCastleValgrindPuzzle::instance);
+	return HexusOpponentMenuCastleValgrindPuzzle::instance;
 }
 
-HexusOpponentMenuCastleValgrindPuzzle::HexusOpponentMenuCastleValgrindPuzzle() : super(NavigationEvents::NavigateHexusOpponentSelectArgs::Chapter::PuzzleCastleValgrind, HexusChapterPreviewCastleValgrindPuzzle::SaveKeyChapterName)
+HexusOpponentMenuCastleValgrindPuzzle::HexusOpponentMenuCastleValgrindPuzzle() : super(HexusChapterPreviewCastleValgrindPuzzle::SaveKeyChapterName)
 {
 	this->opponents.push_back(HexusOpponentPreview::create(Agnes::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Jack::getHexusOpponentData()));

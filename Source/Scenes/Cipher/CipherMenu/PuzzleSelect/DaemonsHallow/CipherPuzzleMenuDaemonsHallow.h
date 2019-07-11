@@ -5,7 +5,7 @@
 class CipherPuzzleMenuDaemonsHallow : public CipherPuzzleSelectMenuBase
 {
 public:
-	static void registerGlobalScene();
+	static CipherPuzzleMenuDaemonsHallow* getInstance();
 
 protected:
 	CipherPuzzleMenuDaemonsHallow();

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Engine/Maps/SerializableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 class Hud;
 
-class CameraScrollTracker : public SerializableObject
+class CameraScrollTracker : public GameObject
 {
 public:
 	static CameraScrollTracker* create(cocos2d::ValueMap& initProperties);
@@ -14,7 +14,7 @@ public:
 	static const std::string MapKeyScrollSpeed;
 
 private:
-	typedef SerializableObject super;
+	typedef GameObject super;
 	CameraScrollTracker(cocos2d::ValueMap& initProperties);
 	~CameraScrollTracker();
 
