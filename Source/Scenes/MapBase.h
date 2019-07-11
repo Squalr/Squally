@@ -39,7 +39,7 @@ protected:
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
-	void onHackerModeEnable() override;
+	void onHackerModeEnable(int eq) override;
 	void onHackerModeDisable() override;
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);

@@ -39,7 +39,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
-	void onHackerModeEnable() override;
+	void onHackerModeEnable(int eq) override;
 	void registerHackables() override;
 	bool isAliveSqually();
 	void saveState();

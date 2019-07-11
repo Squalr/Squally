@@ -25,14 +25,15 @@
 
 using namespace cocos2d;
 
-PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs, bool isReload)
+const std::string PlatformerMap::MapArgClearSavedPosition = "ARGS_CLEAR_SAVED_POSITION";
+
+PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs)
 {
 	PlatformerMap* instance = new PlatformerMap();
 
 	instance->autorelease();
 
-	// Clear any intra-map save-state
-	if (isReload)
+	if (std::find(mapArgs.begin(), mapArgs.end(), PlatformerMap::MapArgClearSavedPosition) != mapArgs.end())
 	{
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
