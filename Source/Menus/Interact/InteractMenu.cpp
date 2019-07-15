@@ -99,12 +99,18 @@ void InteractMenu::initializeListeners()
 
 void InteractMenu::show()
 {
-	this->uiElements->stopAllActions();
-	this->uiElements->runAction(FadeTo::create(0.15f, 255));
+	if (this->uiElements->getOpacity() < 255)
+	{
+		this->uiElements->stopAllActions();
+		this->uiElements->runAction(FadeTo::create(0.15f, 255));
+	}
 }
 
 void InteractMenu::hide()
 {
-	this->uiElements->stopAllActions();
-	this->uiElements->runAction(FadeTo::create(0.15f, 0));
+	if (this->uiElements->getOpacity() > 0)
+	{
+		this->uiElements->stopAllActions();
+		this->uiElements->runAction(FadeTo::create(0.15f, 0));
+	}
 }

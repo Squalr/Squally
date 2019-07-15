@@ -10,11 +10,13 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Doors/PuzzleDoor/PuzzleDoorGenericPreview.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
@@ -28,7 +30,7 @@ const Color4B PuzzleDoorBase::PassColor = Color4B(70, 144, 75, 255);
 const Color4B PuzzleDoorBase::FailColor = Color4B(144, 70, 70, 255);
 const Vec2 PuzzleDoorBase::Offset = Vec2(0.0f, -160.0f);
 
-PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
+PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties, Size(256.0f, 512.0f), PuzzleDoorBase::Offset + Vec2(0.0f, 48.0f))
 {
 	this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_Back);
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
@@ -46,6 +48,8 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties)
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
 	this->doorOpenSound = Sound::create(SoundResources::Platformer_Doors_StoneWall1, true);
 	this->isUnlocked = false;
+
+	this->setRequiresInteraction(true);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
@@ -226,6 +230,11 @@ void PuzzleDoorBase::initializePositions()
 	}
 }
 
+void PuzzleDoorBase::initializeListeners()
+{
+	super::initializeListeners();
+}
+
 Vec2 PuzzleDoorBase::getButtonOffset()
 {
 	return Vec2(-286.0f, -128.0f);
@@ -252,6 +261,9 @@ void PuzzleDoorBase::setHackValue(int value)
 
 void PuzzleDoorBase::unlock(bool animate)
 {
+	// Update parent door class lock
+	this->setLocked(false);
+
 	this->isUnlocked = true;
 	this->indexLabel->runAction(FadeTo::create(0.25f, 0));
 	this->hackableLabel->runAction(FadeTo::create(0.25f, 0));

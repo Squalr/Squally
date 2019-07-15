@@ -1,17 +1,9 @@
 #pragma once
 #include <set>
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Doors/Portal.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
-
-class CollisionObject;
-class HackableData;
-
-class EdgePortal : public GameObject
+class EdgePortal : public Portal
 {
 public:
 	static EdgePortal* create(cocos2d::ValueMap& initProperties);
@@ -26,17 +18,5 @@ protected:
 	void initializeListeners() override;
 
 private:
-	typedef GameObject super;
-
-	CollisionObject* edgePortalCollision;
-	CollisionObject* edgePortalHintCollision;
-
-	bool wasTripped;
-	bool isLocked;
-	std::string mapFile;
-	std::vector<std::string> mapArgs;
-
-	static const std::string MapKeyEdgePortalArgs;
-	static const std::string MapKeyEdgePortalDirection;
-	static const std::string MapKeyEdgePortalMap;
+	typedef Portal super;
 };

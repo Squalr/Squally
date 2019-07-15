@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Platformer/Doors/Portal.h"
 
 namespace cocos2d
 {
@@ -9,13 +9,13 @@ namespace cocos2d
 
 class CollisionObject;
 class ConstantString;
-class HackableData;
+class InteractMenu;
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 class SmartClippingNode;
 class Sound;
 
-class PuzzleDoorBase : public HackableObject
+class PuzzleDoorBase : public Portal
 {
 public:
 
@@ -25,6 +25,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	virtual void runOperation(int puzzleIndex) = 0;
@@ -32,7 +33,7 @@ protected:
 	void setHackValue(int value);
 
 private:
-	typedef HackableObject super;
+	typedef Portal super;
 
 	void unlock(bool animate = true);
 

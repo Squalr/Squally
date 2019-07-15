@@ -8,6 +8,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Objects/Platformer/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -16,9 +17,6 @@
 using namespace cocos2d;
 
 const std::string EdgePortal::MapKeyEdgePortal = "edge-portal";
-const std::string EdgePortal::MapKeyEdgePortalArgs = "args";
-const std::string EdgePortal::MapKeyEdgePortalDirection = "direction";
-const std::string EdgePortal::MapKeyEdgePortalMap = "map";
 
 EdgePortal* EdgePortal::create(ValueMap& initProperties)
 {
@@ -29,25 +27,8 @@ EdgePortal* EdgePortal::create(ValueMap& initProperties)
 	return instance;
 }
 
-EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties)
+EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties, Size(initProperties.at(GameObject::MapKeyWidth).asFloat(), initProperties.at(GameObject::MapKeyHeight).asFloat()))
 {
-	Size portalSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
-	
-	this->edgePortalCollision = CollisionObject::create(PhysicsBody::createBox(portalSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-	this->edgePortalHintCollision = CollisionObject::create(PhysicsBody::createBox(portalSize + Size(512.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-	this->wasTripped = false;
-	this->mapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalArgs, Value("")).asString(), ", ");
-	this->mapFile = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalMap, Value("")).asString();
-	this->isLocked = !this->mapEvent.empty();
-
-	std::string direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapKeyEdgePortalDirection, Value("")).asString();
-
-	// parse & set direction helper arrows
-
-	this->mapArgs.push_back(PlatformerMap::MapArgClearSavedPosition);
-
-	this->addChild(this->edgePortalCollision);
-	this->addChild(this->edgePortalHintCollision);
 }
 
 EdgePortal::~EdgePortal()
@@ -67,41 +48,4 @@ void EdgePortal::initializePositions()
 void EdgePortal::initializeListeners()
 {
 	super::initializeListeners();
-
-	if (!this->mapEvent.empty())
-	{
-		this->listenForMapEvent(this->mapEvent, [=](ValueMap args)
-		{
-			this->isLocked = false;
-		});
-	}
-
-	this->edgePortalCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (!this->wasTripped && !this->isLocked)
-		{
-			this->wasTripped = true;
-
-			// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
-			// (not sure why, changing to a combat map is fine)
-			this->runAction(Sequence::create(
-				DelayTime::create(0.1f),
-				CallFunc::create([=]()
-				{
-					PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs);
-
-					NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
-				}),
-				nullptr
-			));
-			
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->edgePortalHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
 }
