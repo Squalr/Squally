@@ -27,11 +27,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-
-	void onStoryModeClick();
-	void onMinigamesClick();
-	void onOptionsClick();
-	void onExitClick();
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 
 	TitleScreenBackground* background;
 
@@ -42,6 +39,7 @@ private:
 	ClickableTextNode* minigamesButton;
 	ClickableTextNode* optionsButton;
 	ClickableTextNode* exitButton;
+	ClickableNode* debugButton;
 	cocos2d::Sprite* titleBar;
 	cocos2d::Sprite* title;
 	Music* music;

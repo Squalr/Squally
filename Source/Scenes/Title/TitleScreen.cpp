@@ -17,6 +17,7 @@
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
 #include "Scenes/Title/TitleScreenBackground.h"
+#include "Scenes/DebugScene/DebugScene.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/MusicResources.h"
@@ -124,6 +125,8 @@ TitleScreen::TitleScreen()
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
+	this->debugButton = ClickableNode::create(UIResources::Menus_Icons_AlchemyBrew, UIResources::Menus_Icons_AlchemyBrew);
+
 	this->ether = Sprite::create(UIResources::Menus_Backgrounds_Ether);
 	this->etherParticles = ParticleGalaxy::create();
 
@@ -131,6 +134,8 @@ TitleScreen::TitleScreen()
 	this->minigamesButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->optionsButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->exitButton->setClickSound(SoundResources::Menus_Simple_Button);
+
+	this->debugButton->setVisible(false);
 
 	this->addChild(this->background);
 	this->addChild(this->ether);
@@ -141,6 +146,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->minigamesButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
+	this->addChild(this->debugButton);
 	this->addChild(this->music);
 }
 
@@ -154,7 +160,6 @@ void TitleScreen::onEnter()
 
 	this->music->play(true);
 
-	this->initializePositions();
 	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
 	
@@ -187,45 +192,40 @@ void TitleScreen::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
 	this->ether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));
 	this->etherParticles->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));
 
-	this->titleBar->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f));
-	this->title->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height - this->title->getContentSize().height / 2));
-	this->storyModeButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 288.0f));
-	this->minigamesButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f + 144.0f));
-	this->optionsButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 0.0f));
-	this->exitButton->setPosition(Vec2(origin.x + visibleSize.width / 2.0f - visibleSize.width / 3.0f, origin.y + visibleSize.height / 2.0f - 256.0f));
+	this->titleBar->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f));
+	this->title->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height - this->title->getContentSize().height / 2));
+	this->storyModeButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f + 288.0f));
+	this->minigamesButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f + 144.0f));
+	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 0.0f));
+	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 256.0f));
+	this->debugButton->setPosition(Vec2(visibleSize.width - 128.0f, 64.0f));
 }
 
 void TitleScreen::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->storyModeButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onStoryModeClick, this));
-	this->minigamesButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onMinigamesClick, this));
-	this->optionsButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onOptionsClick, this));
-	this->exitButton->setMouseClickCallback(CC_CALLBACK_0(TitleScreen::onExitClick, this));
+	this->storyModeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(SaveSelectMenu::getInstance()); });
+	this->minigamesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(MinigamesMenu::getInstance()); });
+	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(OptionsScene::getInstance()); });
+	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { Director::getInstance()->end(); });
+	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DebugScene::getInstance()); });
 }
 
-void TitleScreen::onStoryModeClick()
+void TitleScreen::onDeveloperModeEnable()
 {
-	NavigationEvents::LoadScene(SaveSelectMenu::getInstance());
+	super::onDeveloperModeEnable();
+
+	this->debugButton->setVisible(true);
 }
 
-void TitleScreen::onMinigamesClick()
+void TitleScreen::onDeveloperModeDisable()
 {
-	NavigationEvents::LoadScene(MinigamesMenu::getInstance());
-}
+	super::onDeveloperModeDisable();
 
-void TitleScreen::onOptionsClick()
-{
-	NavigationEvents::LoadScene(OptionsScene::getInstance());
-}
-
-void TitleScreen::onExitClick()
-{
-	Director::getInstance()->end();
+	this->debugButton->setVisible(false);
 }
