@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ClickableNode;
 class CollisionObject;
 class ConstantString;
 class InteractMenu;
@@ -26,15 +27,21 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
+	void onObjectStateLoaded() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	virtual void runOperation(int puzzleIndex) = 0;
 	void setRealValue(int value);
 	void setHackValue(int value);
 
+	static const std::string UnlockedSaveKey;
+
 private:
 	typedef Portal super;
 
+	void lock(bool animate = true);
 	void unlock(bool animate = true);
 
 	cocos2d::Sprite* back;
@@ -54,6 +61,9 @@ private:
 	LocalizedLabel* hackableLabel;
 	Sound* doorOpenSound;
 
+	ClickableNode* lockButton;
+	ClickableNode* unlockButton;
+
 	bool firstRun;
 	bool isUnlocked;
 	int passedCount;
@@ -65,4 +75,6 @@ private:
 	static const cocos2d::Color4B PassColor;
 	static const cocos2d::Color4B FailColor;
 	static const cocos2d::Vec2 Offset;
+	static const cocos2d::Vec2 DoorOffset;
+	static const cocos2d::Vec2 DoorOpenOffset;
 };

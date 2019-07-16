@@ -40,8 +40,6 @@ PlatformerEnemy::PlatformerEnemy(
 	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix)
 {
 	this->combatEntityList = std::vector<std::string>();
-	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Voodoo, UIResources::Menus_Icons_Voodoo);
-	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
@@ -62,12 +60,6 @@ PlatformerEnemy::PlatformerEnemy(
 	{
 		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly3).asString());
 	}
-
-	this->resurrectButton->setVisible(false);
-	this->killButton->setVisible(false);
-
-	this->addChild(this->resurrectButton);
-	this->addChild(this->killButton);
 }
 
 PlatformerEnemy::~PlatformerEnemy()
@@ -95,50 +87,33 @@ void PlatformerEnemy::onEnterTransitionDidFinish()
 	}
 }
 
-void PlatformerEnemy::onDeveloperModeEnable()
-{
-	super::onDeveloperModeEnable();
-
-	this->resurrectButton->setVisible(true);
-	this->killButton->setVisible(true);
-}
-
-void PlatformerEnemy::onDeveloperModeDisable()
-{
-	super::onDeveloperModeDisable();
-
-	this->resurrectButton->setVisible(false);
-	this->killButton->setVisible(false);
-}
-
 void PlatformerEnemy::initializePositions()
 {
 	super::initializePositions();
-
-	this->killButton->setPosition(Vec2(-64.0f, this->getEntitySize().height + 32.0f));
-	this->resurrectButton->setPosition(Vec2(64.0f, this->getEntitySize().height + 32.0f));
 }
 
 void PlatformerEnemy::initializeListeners()
 {
 	super::initializeListeners();
+}
 
-	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+void PlatformerEnemy::kill(bool loadDeadAnim)
+{
+	super::kill(loadDeadAnim);
+
+	if (!this->mapEvent.empty())
 	{
-		this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
-		this->animationNode->playAnimation(SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.25f);
-		this->revive();
-	});
+		ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
+	}
 
-	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->kill();
+	this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(true));
+}
 
-		if (!this->mapEvent.empty())
-		{
-			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
-		}
-	});
+void PlatformerEnemy::revive()
+{
+	super::revive();
+
+	this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
 }
 
 std::string PlatformerEnemy::getBattleMapResource()

@@ -219,6 +219,11 @@ void Squally::initializeListeners()
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	}));
 
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->animationNode->playAnimation("AttackFast");
+	});
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
 		args->handled = true;
@@ -298,7 +303,7 @@ void Squally::update(float dt)
 		this->movement.x = 1.0f;
 	}
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W) || Input::isPressed(EventKeyboard::KeyCode::KEY_SPACE))
+	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W))
 	{
 		this->movement.y = 1.0f;
 	}
@@ -446,6 +451,19 @@ void Squally::updateWeaponVisual()
 			mainhand->replaceSprite(weapon->getIconResource());
 			mainhand->setOffset(weapon->getDisplayOffset());
 		}
+
+		this->attackCollision->setPosition(weapon->getWeaponOffset());
+		this->attackCollision->setScaleX(weapon->getWeaponSizeMultiplier().x);
+		this->attackCollision->setScaleY(weapon->getWeaponSizeMultiplier().y);
+	}
+	else
+	{
+		const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
+		const Vec2 NoWeaponScale = Vec2(1.0f, 0.5f);
+
+		this->attackCollision->setScaleX(NoWeaponScale.x);
+		this->attackCollision->setScaleY(NoWeaponScale.y);
+		this->attackCollision->setPosition(NoWeaponOffset);
 	}
 }
 

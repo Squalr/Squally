@@ -21,3 +21,13 @@ int Weapon::getMaxAttack()
 {
 	return this->maxAttack;
 }
+
+Vec2 Weapon::getWeaponSizeMultiplier()
+{
+	return Vec2(1.0f, 1.0f);
+}
+
+Vec2 Weapon::getWeaponOffset()
+{
+	return Vec2::ZERO;
+}

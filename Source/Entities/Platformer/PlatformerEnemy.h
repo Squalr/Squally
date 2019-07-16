@@ -8,8 +8,6 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-class ClickableNode;
-
 // Base class for enemies
 class PlatformerEnemy : public PlatformerEntity
 {
@@ -17,6 +15,9 @@ public:
 	std::string getBattleMapResource();
 	std::vector<std::string> getBattleMapArgs();
 	std::vector<std::string> getCombatEntityList();
+	
+	void kill(bool loadDeadAnim = false) override;
+	void revive() override;
 
 	static const std::string SaveKeyIsDead;
 	static const std::string MapKeyBattleArgs;
@@ -39,8 +40,6 @@ protected:
 		float ghettoGroundCollisionFix = 0.0f);
 	virtual ~PlatformerEnemy();
 
-	void onDeveloperModeEnable() override;
-	void onDeveloperModeDisable() override;
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
@@ -59,7 +58,4 @@ private:
 
 	void buildDropInventory();
 	void buildGoldDrop();
-
-	ClickableNode* resurrectButton;
-	ClickableNode* killButton;
 };

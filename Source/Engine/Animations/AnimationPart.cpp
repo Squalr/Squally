@@ -24,6 +24,7 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
+	this->trackedObjects = std::vector<Node*>();
 	this->spriterAnimationPart = entity->getObjectInstance(partName);
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 
@@ -54,8 +55,12 @@ void AnimationPart::onEnter()
 void AnimationPart::update(float dt)
 {
 	super::update(dt);
-
 	this->updateTrackedAttributes();
+}
+
+void AnimationPart::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags)
+{
+	super::visit(renderer, parentTransform, parentFlags);
 }
 
 void AnimationPart::detachFromTimeline()
@@ -69,7 +74,14 @@ void AnimationPart::detachFromTimeline()
 	this->spriterAnimationPart->toggleTimelineCanUpdate(false);
 }
 
-void AnimationPart::replaceWithObject(cocos2d::Node* replacement, float disappearDuration, float fadeInDuration)
+void AnimationPart::addTrackingObject(Node* trackedObject)
+{
+	this->addChild(trackedObject);
+
+	this->trackedObjects.push_back(trackedObject);
+}
+
+void AnimationPart::replaceWithObject(Node* replacement, float disappearDuration, float fadeInDuration)
 {
 	if (replacement == nullptr || this->spriterAnimationPart == nullptr)
 	{

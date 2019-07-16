@@ -67,6 +67,15 @@ void SmartScene::onEnter()
 
 	this->initializePositions();
 	this->initializeListeners();
+
+	if (this->isDeveloperModeEnabled())
+	{
+		this->onDeveloperModeEnable();
+	}
+	else
+	{
+		this->onDeveloperModeDisable();
+	}
 }
 
 void SmartScene::onExit()
