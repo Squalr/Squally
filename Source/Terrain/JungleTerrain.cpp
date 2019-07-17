@@ -31,6 +31,10 @@ JungleTerrain::JungleTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Jungle_JungleBottomRight,
 		TerrainResources::Jungle_JungleLeft,
 		TerrainResources::Jungle_JungleRight,
+		cocos2d::Vec2(-16.0f, 0.0f),
+		cocos2d::Vec2(16.0f, 0.0f),
+		cocos2d::Vec2::ZERO,
+		cocos2d::Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }

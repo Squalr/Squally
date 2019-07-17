@@ -22,6 +22,10 @@ public:
 		std::string bottomCornerRightResource;
 		std::string leftResource;
 		std::string rightResource;
+		cocos2d::Vec2 topLeftCornerOffset;
+		cocos2d::Vec2 topRightCornerOffset;
+		cocos2d::Vec2 bottomLeftCornerOffset;
+		cocos2d::Vec2 bottomRightCornerOffset;
 		cocos2d::Color4B infillColor;
 
 		TerrainData(
@@ -36,6 +40,10 @@ public:
 			std::string bottomCornerRightResource,
 			std::string leftResource,
 			std::string rightResource,
+			cocos2d::Vec2 topLeftCornerOffset,
+			cocos2d::Vec2 topRightCornerOffset,
+			cocos2d::Vec2 bottomLeftCornerOffset,
+			cocos2d::Vec2 bottomRightCornerOffset,
 			cocos2d::Color4B infillColor) :
 			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
@@ -48,6 +56,10 @@ public:
 			bottomCornerRightResource(bottomCornerRightResource),
 			leftResource(leftResource),
 			rightResource(rightResource),
+			topLeftCornerOffset(topLeftCornerOffset),
+			topRightCornerOffset(topRightCornerOffset),
+			bottomLeftCornerOffset(bottomLeftCornerOffset),
+			bottomRightCornerOffset(bottomRightCornerOffset),
 			infillColor(infillColor)
 		{
 		}

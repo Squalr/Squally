@@ -31,6 +31,10 @@ ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& initProperties) : super(
 		TerrainResources::ShadeGrass_ShadeGrassBottomRight,
 		TerrainResources::ShadeGrass_ShadeGrassLeft,
 		TerrainResources::ShadeGrass_ShadeGrassRight,
+		cocos2d::Vec2(-16.0f, 0.0f),
+		cocos2d::Vec2(16.0f, 0.0f),
+		cocos2d::Vec2::ZERO,
+		cocos2d::Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }

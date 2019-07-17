@@ -24,6 +24,7 @@ EntityPreview::EntityPreview(PlatformerEntity* entity)
 {
 	this->animationResource = entity == nullptr ? "" : entity->getAnimationResource();
 	this->scale = entity == nullptr ? 1.0f : entity->getScale();
+	this->offset = entity == nullptr ? Vec2::ZERO : Vec2(0.0f, -(entity->getEntitySize() * this->scale).height / 2.0f);
 	this->entityRef = entity;
 
 	this->previewAnimation = SmartAnimationNode::create(this->animationResource);
@@ -52,4 +53,6 @@ void EntityPreview::onEnter()
 void EntityPreview::initializePositions()
 {
 	super::initializePositions();
+
+	this->previewAnimation->setPosition(this->offset);
 }

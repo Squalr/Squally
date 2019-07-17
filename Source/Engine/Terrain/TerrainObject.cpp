@@ -409,18 +409,6 @@ void TerrainObject::buildSurfaceTextures()
 				params.wrapT = GL_REPEAT;
 			}
 
-			// Calculate overdraw to create seamless rectangle connection
-			// TODO: clear seg length on side change
-			// TEMP: This is a mediocre correction to the gap problem
-			if (isTextureHorizontal)
-			{
-				float hypotenuse = textureSize.height;
-				float sinTheta = std::sin(bisectingAngle);
-				float overDraw = std::ceil(std::abs(sinTheta * hypotenuse));
-
-				currentSegmentLength += overDraw;
-			}
-
 			// Prevent off-by-1 rendering errors where texture pixels are barely separated
 			currentSegmentLength = std::ceil(currentSegmentLength);
 
@@ -477,10 +465,6 @@ void TerrainObject::buildSurfaceTextures()
 		bool roofToWall = this->isBottomAngle(normalAngle) && !this->isBottomAngle(nextSegmentNormalAngle);
 		bool wallToRoof = !this->isBottomAngle(normalAngle) && this->isBottomAngle(nextSegmentNormalAngle);
 
-		// A slight anchor offset to make the top corners overlap a bit with the floor terrain -- if they entirely extrude, there is often a 1-2px gap
-		// Note that this is not needed for the bottom corners -- bottom corners already overlap entirely with the roof material (they don't extrude)
-		const float TOP_ANCHOR_X_OFFSET = 0.1f;
-
 		// Handle case when going from floor to walls
 		if (floorToWall || wallToFloor)
 		{
@@ -492,9 +476,8 @@ void TerrainObject::buildSurfaceTextures()
 				Sprite* topLeft = Sprite::create(this->terrainData.topCornerLeftResource);
 				Size textureSize = topLeft->getContentSize();
 
-				
-				topLeft->setAnchorPoint(Vec2(1.0f - TOP_ANCHOR_X_OFFSET, 1.0f));
-				topLeft->setPosition(dest + Vec2(0.0f, topLeft->getContentSize().height / 2.0f));
+				topLeft->setAnchorPoint(Vec2(0.0f, 0.5f));
+				topLeft->setPosition(dest + this->terrainData.topLeftCornerOffset);
 				topLeft->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->topCornersNode->addChild(topLeft);
@@ -504,8 +487,8 @@ void TerrainObject::buildSurfaceTextures()
 				Sprite* topRight = Sprite::create(this->terrainData.topCornerRightResource);
 				Size textureSize = topRight->getContentSize();
 
-				topRight->setAnchorPoint(Vec2(0.0f + TOP_ANCHOR_X_OFFSET, 1.0f));
-				topRight->setPosition(dest + Vec2(0.0f, topRight->getContentSize().height / 2.0f));
+				topRight->setAnchorPoint(Vec2(1.0f, 0.5f));
+				topRight->setPosition(dest  + terrainData.topRightCornerOffset);
 				topRight->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->topCornersNode->addChild(topRight);
@@ -522,8 +505,8 @@ void TerrainObject::buildSurfaceTextures()
 				Sprite* bottomLeft = Sprite::create(this->terrainData.bottomCornerLeftResource);
 				Size textureSize = bottomLeft->getContentSize();
 
-				bottomLeft->setAnchorPoint(Vec2(0.0f, 0.0f));
-				bottomLeft->setPosition(dest + Vec2(0.0f, -bottomLeft->getContentSize().height / 2.0f));
+				bottomLeft->setAnchorPoint(Vec2(0.0f, 0.5f));
+				bottomLeft->setPosition(dest + this->terrainData.bottomLeftCornerOffset);
 				bottomLeft->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->bottomCornersNode->addChild(bottomLeft);
@@ -533,8 +516,8 @@ void TerrainObject::buildSurfaceTextures()
 				Sprite* bottomRight = Sprite::create(this->terrainData.bottomCornerRightResource);
 				Size textureSize = bottomRight->getContentSize();
 
-				bottomRight->setAnchorPoint(Vec2(1.0f, 0.0f));
-				bottomRight->setPosition(dest + Vec2(0.0f, -bottomRight->getContentSize().height / 2.0f));
+				bottomRight->setAnchorPoint(Vec2(1.0f, 0.5f));
+				bottomRight->setPosition(dest + this->terrainData.bottomRightCornerOffset);
 				bottomRight->setRotation(360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->bottomCornersNode->addChild(bottomRight);

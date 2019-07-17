@@ -31,6 +31,10 @@ DryTerrain::DryTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Dry_DryBottomRight,
 		TerrainResources::Dry_DryLeft,
 		TerrainResources::Dry_DryRight,
+		cocos2d::Vec2(-16.0f, 0.0f),
+		cocos2d::Vec2(16.0f, 0.0f),
+		cocos2d::Vec2::ZERO,
+		cocos2d::Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }

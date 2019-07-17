@@ -31,6 +31,10 @@ IceTerrain::IceTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Ice_IceBottomRight,
 		TerrainResources::Ice_IceLeft,
 		TerrainResources::Ice_IceRight,
+		cocos2d::Vec2(-16.0f, 0.0f),
+		cocos2d::Vec2(16.0f, 0.0f),
+		cocos2d::Vec2::ZERO,
+		cocos2d::Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }

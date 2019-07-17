@@ -28,6 +28,7 @@ private:
 	PlatformerEntity* entityRef;
 	std::string animationResource;
 	float scale;
+	cocos2d::Vec2 offset;
 
 	SmartAnimationNode* previewAnimation;
 };

@@ -31,6 +31,10 @@ MarbleGrassTerrain::MarbleGrassTerrain(ValueMap& initProperties) : super(
 		TerrainResources::MarbleGrass_MarbleGrassBottomRight,
 		TerrainResources::MarbleGrass_MarbleGrassLeft,
 		TerrainResources::MarbleGrass_MarbleGrassRight,
+		cocos2d::Vec2(-16.0f, 0.0f),
+		cocos2d::Vec2(16.0f, 0.0f),
+		cocos2d::Vec2::ZERO,
+		cocos2d::Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }
