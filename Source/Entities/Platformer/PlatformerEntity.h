@@ -21,8 +21,8 @@ public:
 	int getHealth();
 	void addHealth(int healthDelta);
 	void setHealth(int health);
-	void kill(bool loadDeadAnim = false);
-	void revive();
+	virtual void kill(bool loadDeadAnim = false);
+	virtual void revive();
 	int getMaxHealth();
 	bool isAlive();
 	bool isDead();
@@ -90,6 +90,8 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
@@ -105,6 +107,7 @@ protected:
 	CollisionObject* groundCollision;
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
+	CollisionObject* attackCollision;
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	CurrencyInventory* currencyInventory;
@@ -128,6 +131,7 @@ protected:
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
 	static const float WallDetectorSize;
+	static const cocos2d::Size DefaultWeaponSize;
 	static const float SwimVerticalDrag;
 	static const float JumpVelocity;
 	static const float GroundCollisionPadding;
@@ -145,10 +149,14 @@ private:
 	std::vector<float> runeCooldowns;
 	int eq;
 	int eqExperience;
+	float hoverHeight;
 
 	float scale;
 	std::string animationResource;
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
 	cocos2d::Vec2 hackButtonOffset;
+
+	ClickableNode* resurrectButton;
+	ClickableNode* killButton;
 };

@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Hackables/HackablePreview.h"
@@ -29,6 +30,7 @@ using namespace cocos2d;
 const float PlatformerEntity::MoveAcceleration = 5800.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float PlatformerEntity::WallDetectorSize = 64.0f;
+const Size PlatformerEntity::DefaultWeaponSize = Size(64.0f, 128.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
 const float PlatformerEntity::GroundCollisionPadding = 28.0f;
@@ -58,6 +60,8 @@ PlatformerEntity::PlatformerEntity(
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
+	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
+	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 	this->scale = scale;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
@@ -107,6 +111,12 @@ PlatformerEntity::PlatformerEntity(
 		false,
 		false
 	);
+	this->attackCollision = CollisionObject::create(
+		PlatformerEntity::createCapsulePolygon(PlatformerEntity::DefaultWeaponSize, 1.0f),
+		(int)PlatformerCollisionType::WallDetector,
+		false,
+		false
+	);
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create();
 	this->currencyInventory = CurrencyInventory::create();
@@ -122,18 +132,18 @@ PlatformerEntity::PlatformerEntity(
 	float width = this->properties[PlatformerEntity::MapKeyWidth].asFloat();
 	float height = this->properties[PlatformerEntity::MapKeyHeight].asFloat();
 	Size movementSize = movementCollisionSize * scale;
-	float sizeDelta = std::abs(movementSize.height - this->entitySize.height);
+	this->hoverHeight = std::abs(movementSize.height - this->entitySize.height);
 
-	this->hackButtonOffset = Vec2(scaledColOffset.x, scaledColOffset.y + sizeDelta + this->entitySize.height);
+	this->hackButtonOffset = Vec2(scaledColOffset.x, scaledColOffset.y + this->hoverHeight + this->entitySize.height);
 
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
-	this->animationNode->setPositionY(sizeDelta / 2.0f);
+	this->animationNode->setPositionY(this->hoverHeight / 2.0f);
 
 	this->movementCollision->bindTo(this);
 	this->movementCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(0.0f, this->entitySize.height / 2.0f));
 	this->entityCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(0.0f, movementSize.height / 2.0f));
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -sizeDelta / 2.0f + PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -this->hoverHeight / 2.0f + PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
 	this->leftCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(-this->entitySize.width / 2.0f + PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
 	this->rightCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(this->entitySize.width / 2.0f - PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -166,6 +176,16 @@ PlatformerEntity::PlatformerEntity(
 		this->runeCooldowns.push_back(0.0f);
 	}
 
+	this->resurrectButton->setVisible(false);
+	this->killButton->setVisible(false);
+
+	AnimationPart* mainhand = this->animationNode->getAnimationPart("mainhand");
+
+	if (mainhand != nullptr)
+	{
+		mainhand->addTrackingObject(this->attackCollision);
+	}
+
 	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
 	this->addChild(this->groundCollision);
@@ -176,6 +196,8 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->clickHitbox);
 	this->addChild(this->inventory);
 	this->addChild(this->currencyInventory);
+	this->addChild(this->resurrectButton);
+	this->addChild(this->killButton);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -194,6 +216,8 @@ void PlatformerEntity::initializePositions()
 	super::initializePositions();
 
 	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
+	this->killButton->setPosition(Vec2(-64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
+	this->resurrectButton->setPosition(Vec2(64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
 }
 
 void PlatformerEntity::initializeListeners()
@@ -210,7 +234,33 @@ void PlatformerEntity::initializeListeners()
 		this->isCinimaticHijacked = false;
 	}));
 
+	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->revive();
+	});
+
+	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->kill();
+	});
+
 	this->initializeCollisionEvents();
+}
+
+void PlatformerEntity::onDeveloperModeEnable()
+{
+	super::onDeveloperModeEnable();
+
+	this->resurrectButton->setVisible(true);
+	this->killButton->setVisible(true);
+}
+
+void PlatformerEntity::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	this->resurrectButton->setVisible(false);
+	this->killButton->setVisible(false);
 }
 
 void PlatformerEntity::update(float dt)

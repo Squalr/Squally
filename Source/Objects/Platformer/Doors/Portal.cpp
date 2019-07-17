@@ -117,9 +117,13 @@ void Portal::setLocked(bool isLocked)
 {
 	this->isLocked = isLocked;
 
-	if (this->canInteract)
+	if (this->canInteract && !this->isLocked)
 	{
 		this->interactMenu->show();
+	}
+	else
+	{
+		this->interactMenu->hide();
 	}
 }
 
