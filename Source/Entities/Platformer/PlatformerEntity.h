@@ -5,6 +5,11 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class CollisionObject;
 class ClickableNode;
 class CurrencyInventory;
@@ -99,6 +104,10 @@ protected:
 	virtual void initializeCollisionEvents();
 	virtual void performSwimAnimation();
 	virtual void performJumpAnimation();
+	void doOutOfCombatAttack();
+	virtual std::string getOutOfCombatAttackAnimation();
+	virtual float getOutOfCombatAttackOnset();
+	virtual float getOutOfCombatAttackSustain();
 
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
@@ -122,6 +131,7 @@ protected:
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
 	bool isCinimaticHijacked;
+	bool isPerformingOutOfCombatAttack;
 	bool isPlatformerDisabled;
 	std::string state;
 
@@ -159,4 +169,5 @@ private:
 
 	ClickableNode* resurrectButton;
 	ClickableNode* killButton;
+	cocos2d::Sprite* outOfCombatAttackDebug;
 };

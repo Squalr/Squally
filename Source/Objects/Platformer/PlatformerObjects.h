@@ -1,6 +1,7 @@
 #pragma once
 #include "Objects/CameraFocus.h"
 #include "Objects/CameraScrollTracker.h"
+#include "Objects/Platformer/Breakables/BreakableBarrel.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/Animals/Animals.h"

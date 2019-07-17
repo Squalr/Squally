@@ -22,6 +22,16 @@ int Weapon::getMaxAttack()
 	return this->maxAttack;
 }
 
+float Weapon::getAttackOnset()
+{
+	return 0.2f;
+}
+
+float Weapon::getAttackSustain()
+{
+	return 0.15f;
+}
+
 Vec2 Weapon::getWeaponSizeMultiplier()
 {
 	return Vec2(1.0f, 1.0f);
