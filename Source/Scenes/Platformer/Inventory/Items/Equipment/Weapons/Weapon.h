@@ -9,6 +9,8 @@ class Weapon : public Equipable
 public:
 	int getMinAttack();
 	int getMaxAttack();
+	virtual float getAttackOnset();
+	virtual float getAttackSustain();
 	virtual cocos2d::Vec2 getWeaponSizeMultiplier();
 	virtual cocos2d::Vec2 getWeaponOffset();
 

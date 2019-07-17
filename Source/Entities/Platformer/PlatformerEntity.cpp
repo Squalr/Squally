@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -62,10 +63,12 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
+	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
 	this->scale = scale;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
+	this->isPerformingOutOfCombatAttack = false;
 	this->isPlatformerDisabled = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->eq = 0;
@@ -111,9 +114,13 @@ PlatformerEntity::PlatformerEntity(
 		false,
 		false
 	);
+
+	PlatformerCollisionType weaponType = collisionType == PlatformerCollisionType::Player ? PlatformerCollisionType::PlayerWeapon : 
+		(collisionType == PlatformerCollisionType::Enemy ? PlatformerCollisionType::EnemyWeapon : PlatformerCollisionType::None);
+
 	this->attackCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(PlatformerEntity::DefaultWeaponSize, 1.0f),
-		(int)PlatformerCollisionType::WallDetector,
+		(int)weaponType,
 		false,
 		false
 	);
@@ -153,6 +160,8 @@ PlatformerEntity::PlatformerEntity(
 	this->clickHitbox->setPosition(Vec2(movementSize.width / 2.0f, movementSize.height / 2.0f));
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
+
+	this->attackCollision->setPhysicsEnabled(false);
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
@@ -198,6 +207,7 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->currencyInventory);
 	this->addChild(this->resurrectButton);
 	this->addChild(this->killButton);
+	this->addChild(this->outOfCombatAttackDebug);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -218,6 +228,7 @@ void PlatformerEntity::initializePositions()
 	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
 	this->killButton->setPosition(Vec2(-64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
 	this->resurrectButton->setPosition(Vec2(64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
+	this->outOfCombatAttackDebug->setPosition(Vec2(0.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 64.0f));
 }
 
 void PlatformerEntity::initializeListeners()
@@ -261,6 +272,7 @@ void PlatformerEntity::onDeveloperModeDisable()
 
 	this->resurrectButton->setVisible(false);
 	this->killButton->setVisible(false);
+	this->outOfCombatAttackDebug->setVisible(false);
 }
 
 void PlatformerEntity::update(float dt)
@@ -834,4 +846,50 @@ std::string PlatformerEntity::getAnimationResource()
 std::string PlatformerEntity::getEmblemResource()
 {
 	return this->emblemResource;
+}
+
+void PlatformerEntity::doOutOfCombatAttack()
+{
+	if (this->isPerformingOutOfCombatAttack)
+	{
+		return;
+	}
+
+	this->isPerformingOutOfCombatAttack = true;
+	this->animationNode->playAnimation(this->getOutOfCombatAttackAnimation());
+
+	this->runAction(Sequence::create(
+		DelayTime::create(this->getOutOfCombatAttackOnset()),
+		CallFunc::create([=]()
+		{
+			if (this->isDeveloperModeEnabled())
+			{
+				this->outOfCombatAttackDebug->setVisible(true);
+			}
+			this->attackCollision->setPhysicsEnabled(true);
+		}),
+		DelayTime::create(this->getOutOfCombatAttackSustain()),
+		CallFunc::create([=]()
+		{
+			this->attackCollision->setPhysicsEnabled(false);
+			this->isPerformingOutOfCombatAttack = false;
+			this->outOfCombatAttackDebug->setVisible(false);
+		}),
+		nullptr
+	));
+}
+
+std::string PlatformerEntity::getOutOfCombatAttackAnimation()
+{
+	return "Attack";
+}
+
+float PlatformerEntity::getOutOfCombatAttackOnset()
+{
+	return 0.2f;
+}
+
+float PlatformerEntity::getOutOfCombatAttackSustain()
+{
+	return 0.15f;
 }

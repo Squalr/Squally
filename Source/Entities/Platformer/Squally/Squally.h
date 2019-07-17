@@ -25,6 +25,9 @@ public:
 protected:
 	void initializeCollisionEvents() override;
 	void performSwimAnimation() override;
+	std::string getOutOfCombatAttackAnimation() override;
+	float getOutOfCombatAttackOnset() override;
+	float getOutOfCombatAttackSustain() override;
 
 	cocos2d::Vec2 getButtonOffset() override;
 

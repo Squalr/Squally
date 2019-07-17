@@ -18,7 +18,10 @@ enum class PlatformerCollisionType
 	Water				= 1 << 12,
 	GroundDetector		= 1 << 13,
 	WallDetector		= 1 << 14,
-	Damage				= 1 << 15,
-	Collectable			= 1 << 16,
-	Trigger				= 1 << 17,
+	PlayerWeapon		= 1 << 15,
+	EnemyWeapon			= 1 << 16,
+	Breakable			= 1 << 17,
+	Damage				= 1 << 18,
+	Collectable			= 1 << 19,
+	Trigger				= 1 << 20,
 };

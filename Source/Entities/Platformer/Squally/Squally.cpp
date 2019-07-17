@@ -221,7 +221,7 @@ void Squally::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		this->animationNode->playAnimation("AttackFast");
+		this->doOutOfCombatAttack();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
@@ -330,6 +330,48 @@ void Squally::performSwimAnimation()
 	else
 	{
 		this->animationNode->playAnimation("Swim");
+	}
+}
+
+std::string Squally::getOutOfCombatAttackAnimation()
+{
+	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+
+	if (weapon != nullptr)
+	{
+		return "AttackFast";
+	}
+	else
+	{
+		return "AttackPunchFast";
+	}
+}
+
+float Squally::getOutOfCombatAttackOnset()
+{
+	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+
+	if (weapon == nullptr)
+	{
+		return 0.2f;
+	}
+	else
+	{
+		return weapon->getAttackOnset();
+	}
+}
+
+float Squally::getOutOfCombatAttackSustain()
+{
+	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+
+	if (weapon == nullptr)
+	{
+		return 0.15f;
+	}
+	else
+	{
+		return weapon->getAttackSustain();
 	}
 }
 

@@ -23,6 +23,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
+	this->deserializers[BreakableBarrel::MapKeyBreakableBarrel] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
 	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (GameObject*)CastleDoor::create(properties); };
