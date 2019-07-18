@@ -22,6 +22,10 @@ namespace ObjectResources
 	extern const std::string Collectables_Animals_CHICKY;
 	extern const std::string Collectables_Animals_COWY;
 	extern const std::string Collectables_Animals_CROCKY;
+	extern const std::string Collectables_Animals_CageBottom;
+	extern const std::string Collectables_Animals_CageSide;
+	extern const std::string Collectables_Animals_CageTop;
+	extern const std::string Collectables_Animals_CollectShine;
 	extern const std::string Collectables_Animals_DOGY;
 	extern const std::string Collectables_Animals_DUCKY;
 	extern const std::string Collectables_Animals_FOXY;

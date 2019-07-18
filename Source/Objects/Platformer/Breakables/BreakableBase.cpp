@@ -49,6 +49,8 @@ void BreakableBase::initializeListeners()
 			this->onBreak();
 		}
 
+		this->breakableCollision->setPhysicsEnabled(false);
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }

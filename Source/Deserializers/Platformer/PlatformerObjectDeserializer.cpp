@@ -24,6 +24,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
 	this->deserializers[BreakableBarrel::MapKeyBreakableBarrel] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
+	this->deserializers[CagedMonkey::MapKeyCagedMonkey] = [=](ValueMap properties) { return (GameObject*)CagedMonkey::create(properties); };
 	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
 	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (GameObject*)CastleDoor::create(properties); };
@@ -45,7 +46,6 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
 	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKeyMechanicalFlail] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };
-	this->deserializers[Monkey::MapKeyMonkey] = [=](ValueMap properties) { return (GameObject*)Monkey::create(properties); };
 	this->deserializers[MulDoor::MapKeyMulDoor] = [=](ValueMap properties) { return (GameObject*)MulDoor::create(properties); };
 	this->deserializers[PendulumBlade::MapKeyPendulumBlade] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
 	this->deserializers[SpikedBall::MapKeySpikedBall] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };

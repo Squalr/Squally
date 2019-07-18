@@ -10,7 +10,6 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Squally/Squally.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
