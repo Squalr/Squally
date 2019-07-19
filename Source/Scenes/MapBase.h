@@ -51,6 +51,7 @@ protected:
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
+	PauseMenu* pauseMenu;
 	GameMap* map;
 
 	bool allowHackerMode;
@@ -69,7 +70,6 @@ private:
 	MatrixRain* hackerModeRain;
 	CodeEditor* codeEditor;
 	RadialMenu* radialMenu;
-	PauseMenu* pauseMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
 

@@ -2,6 +2,7 @@
 #include "Objects/CameraFocus.h"
 #include "Objects/CameraScrollTracker.h"
 #include "Objects/Platformer/Breakables/BreakableBarrel.h"
+#include "Objects/Platformer/Breakables/BreakableCage.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedAnimals.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"

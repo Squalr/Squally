@@ -14,6 +14,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -250,6 +251,12 @@ void Squally::initializeListeners()
 				(*it)->getClippy()->setIsEnabled(true);
 			}
 		}
+	});
+
+	// Override kill to also respawn
+	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->killAndRespawn();
 	});
 }
 

@@ -14,6 +14,9 @@ class Sound;
 class BreakableCage : public BreakableBase
 {
 public:
+	static BreakableCage* create(cocos2d::ValueMap& initProperties);
+
+	static const std::string MapKeyBreakableCage;
 
 protected:
 	BreakableCage(cocos2d::ValueMap& initProperties, int requiredHits = 1);

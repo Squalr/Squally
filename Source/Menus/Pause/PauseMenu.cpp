@@ -21,8 +21,6 @@
 
 using namespace cocos2d;
 
-const Color3B PauseMenu::TitleColor = Color3B(88, 188, 193);
-
 PauseMenu* PauseMenu::create()
 {
 	PauseMenu* instance = new PauseMenu();
@@ -36,68 +34,65 @@ PauseMenu::PauseMenu()
 {
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Pause::create());
+	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Pause::create());
+	this->newButtonsNode = Node::create();
+	this->addedButtons = std::vector<ClickableTextNode*>();
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
 	this->exitClickCallback = nullptr;
 
-	Size shadowSize = Size(-2.0f, -2.0f);
-	int shadowBlur = 2;
-	int hoverOutlineSize = 2;
-	Color3B textColor = Color3B::WHITE;
-	Color4B shadowColor = Color4B::BLACK;
-	Color3B highlightColor = Color3B::YELLOW;
-	Color4B glowColor = Color4B::ORANGE;
-
 	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Resume::create());
-	LocalizedLabel*	resumeLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Resume::create());
+	LocalizedLabel*	resumeLabelHover = resumeLabel->clone();
 
 	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
-	LocalizedLabel*	optionsLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
+	LocalizedLabel*	optionsLabelHover = optionsLabel->clone();
 
 	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_QuitToTitle::create());
-	LocalizedLabel*	exitLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_QuitToTitle::create());
+	LocalizedLabel*	exitLabelHover = exitLabel->clone();
 
-	resumeLabel->setColor(textColor);
-	resumeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	resumeLabel->enableGlow(shadowColor);
-	optionsLabel->setColor(textColor);
-	optionsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabel->enableGlow(shadowColor);
-	exitLabel->setColor(textColor);
-	exitLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabel->enableGlow(shadowColor);
+	resumeLabel->enableOutline(Color4B::BLACK, 2);
+	resumeLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabel->enableGlow(Color4B::BLACK);
+	optionsLabel->enableOutline(Color4B::BLACK, 2);
+	optionsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabel->enableGlow(Color4B::BLACK);
+	exitLabel->enableOutline(Color4B::BLACK, 2);
+	exitLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	exitLabel->enableGlow(Color4B::BLACK);
 
-	resumeLabelHover->setColor(highlightColor);
-	resumeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	resumeLabelHover->enableGlow(glowColor);
-	optionsLabelHover->setColor(highlightColor);
-	optionsLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabelHover->enableGlow(glowColor);
-	exitLabelHover->setColor(highlightColor);
-	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabelHover->enableGlow(glowColor);
+	resumeLabelHover->enableOutline(Color4B::BLACK, 2);
+	resumeLabelHover->setTextColor(Color4B::YELLOW);
+	resumeLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabelHover->enableGlow(Color4B::ORANGE);
+	optionsLabelHover->enableOutline(Color4B::BLACK, 2);
+	optionsLabelHover->setTextColor(Color4B::YELLOW);
+	optionsLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabelHover->enableGlow(Color4B::ORANGE);
+	exitLabelHover->enableOutline(Color4B::BLACK, 2);
+	exitLabelHover->setTextColor(Color4B::YELLOW);
+	exitLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	exitLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->resumeButton = ClickableTextNode::create(
 		resumeLabel,
 		resumeLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->optionsButton = ClickableTextNode::create(
 		optionsLabel,
 		optionsLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->exitButton = ClickableTextNode::create(
 		exitLabel,
 		exitLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->pauseLabel->setColor(PauseMenu::TitleColor);
-	this->pauseLabel->enableShadow(Color4B::BLACK, Size(2.0f, -2.0f), 2);
+	this->pauseLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->pauseLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->pauseWindow);
 	this->addChild(this->pauseLabel);
@@ -105,6 +100,7 @@ PauseMenu::PauseMenu()
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
+	this->addChild(this->newButtonsNode);
 }
 
 PauseMenu::~PauseMenu()
@@ -124,6 +120,11 @@ void PauseMenu::onEnter()
 	GameUtils::fadeInObject(this->resumeButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
+
+	for (auto it = this->addedButtons.begin(); it != this->addedButtons.end(); it++)
+	{
+		GameUtils::fadeInObject(*it, delay, duration);
+	}
 }
 
 void PauseMenu::initializePositions()
@@ -133,11 +134,12 @@ void PauseMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 230.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 136.0f, visibleSize.height / 2.0f + 204.0f));
-	this->resumeButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 128.0f));
-	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 0.0f));
-	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 180.0f));
+	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 204.0f, visibleSize.height / 2.0f + 392.0f));
+	this->resumeButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f + 128.0f));
+	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f));
+	this->newButtonsNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f - 128.0f));
+	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 256.0f));
 }
 
 void PauseMenu::initializeListeners()
@@ -180,6 +182,34 @@ void PauseMenu::setOptionsCallback(std::function<void()> optionsClickCallback)
 void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
 {
 	this->exitClickCallback = exitClickCallback;
+}
+
+ClickableTextNode* PauseMenu::addNewButton(LocalizedString* text)
+{
+	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
+	LocalizedLabel*	labelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text == nullptr ? nullptr : text->clone());
+
+	labelSelected->enableOutline(Color4B::BLACK, 2);
+	label->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	label->enableGlow(Color4B::BLACK);
+
+	labelSelected->enableOutline(Color4B::BLACK, 2);
+	labelSelected->setTextColor(Color4B::YELLOW);
+	labelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	labelSelected->enableGlow(Color4B::ORANGE);
+
+	ClickableTextNode* newButton = ClickableTextNode::create(
+		label,
+		labelSelected,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
+
+	this->addedButtons.push_back(newButton);
+	this->newButtonsNode->addChild(newButton);
+
+	newButton->setPositionY(float(this->addedButtons.size() - 1) * -128.0f);
+
+	return newButton;
 }
 
 void PauseMenu::onExitConfirm()

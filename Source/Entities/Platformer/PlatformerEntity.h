@@ -125,6 +125,9 @@ protected:
 	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;
 	ControlState controlState;
+	
+	ClickableNode* resurrectButton;
+	ClickableNode* killButton;
 
 	bool isOnGround();
 	bool isStandingOnSolid();
@@ -167,7 +170,5 @@ private:
 	std::vector<PlatformerAttack*> attacks;
 	cocos2d::Vec2 hackButtonOffset;
 
-	ClickableNode* resurrectButton;
-	ClickableNode* killButton;
 	cocos2d::Sprite* outOfCombatAttackDebug;
 };

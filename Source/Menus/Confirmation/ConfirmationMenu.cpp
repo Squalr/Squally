@@ -27,7 +27,7 @@ ConfirmationMenu::ConfirmationMenu()
 	this->onConfirmCallback = nullptr;
 	this->onCancelCallback = nullptr;
 
-	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenuWindow);
+	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
 	this->confirmButton = ClickableNode::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
