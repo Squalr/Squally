@@ -317,6 +317,7 @@ const std::string UIResources::Menus_Icons_WheelBurrow = "UI/Menus/Icons/WheelBu
 const std::string UIResources::Menus_Icons_YinYang = "UI/Menus/Icons/YinYang.png";
 const std::string UIResources::Menus_InventoryMenu_Arrow = "UI/Menus/InventoryMenu/Arrow.png";
 const std::string UIResources::Menus_InventoryMenu_EquipmentMenu = "UI/Menus/InventoryMenu/EquipmentMenu.png";
+const std::string UIResources::Menus_InventoryMenu_InventoryMenu = "UI/Menus/InventoryMenu/InventoryMenu.png";
 const std::string UIResources::Menus_InventoryMenu_Pointer = "UI/Menus/InventoryMenu/Pointer.png";
 const std::string UIResources::Menus_LexiconMenu_Arrow = "UI/Menus/LexiconMenu/Arrow.png";
 const std::string UIResources::Menus_LexiconMenu_BackButton = "UI/Menus/LexiconMenu/BackButton.png";

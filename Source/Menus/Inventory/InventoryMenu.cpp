@@ -25,6 +25,9 @@
 
 using namespace cocos2d;
 
+const float InventoryMenu::LabelSpacing = 96.0f;
+const Size InventoryMenu::LabelSize = Size(288.0f, 32.0f);
+
 InventoryMenu* InventoryMenu::create()
 {
 	InventoryMenu* instance = new InventoryMenu();
@@ -36,13 +39,21 @@ InventoryMenu* InventoryMenu::create()
 
 InventoryMenu::InventoryMenu()
 {
-	this->inventoryWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
+	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->equipmentPanel = Sprite::create(UIResources::Menus_InventoryMenu_EquipmentMenu);
 	this->filterNode = Node::create();
+	this->filterNodeContent = Node::create();
+	this->inventoryNode = Node::create();
+	this->inventoryNodeContent = Node::create();
+	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
+	this->filterSelectedArrow =  Sprite::create(UIResources::Menus_InventoryMenu_Pointer);
+	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
 	this->returnClickCallback = nullptr;
 	this->activeFocus = ActiveFocus::Filter;
+	this->activeFilter = ActiveFilter::All;
+	this->filterLabels = std::vector<ClickableTextNode*>();
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -69,15 +80,27 @@ InventoryMenu::InventoryMenu()
 	this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create());
 	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create());
 	this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create());
+
+	this->filterLabels.push_back(this->allLabel);
+	this->filterLabels.push_back(this->equipmentLabel);
+	this->filterLabels.push_back(this->consumablesLabel);
+	this->filterLabels.push_back(this->craftingLabel);
+	this->filterLabels.push_back(this->miscLabel);
 	
-	this->filterNode->addChild(this->allLabel);
-	this->filterNode->addChild(this->equipmentLabel);
-	this->filterNode->addChild(this->consumablesLabel);
-	this->filterNode->addChild(this->craftingLabel);
-	this->filterNode->addChild(this->miscLabel);
+	this->filterNodeContent->addChild(this->allLabel);
+	this->filterNodeContent->addChild(this->equipmentLabel);
+	this->filterNodeContent->addChild(this->consumablesLabel);
+	this->filterNodeContent->addChild(this->craftingLabel);
+	this->filterNodeContent->addChild(this->miscLabel);
+	this->filterNode->addChild(this->filterNodeContent);
+	this->inventoryNode->addChild(this->inventoryNodeContent);
 	this->addChild(this->inventoryWindow);
 	this->addChild(this->equipmentPanel);
 	this->addChild(this->filterNode);
+	this->addChild(this->inventoryNode);
+	this->addChild(this->filterSelectionArrow);
+	this->addChild(this->filterSelectedArrow);
+	this->addChild(this->inventorySelectionArrow);
 	this->addChild(this->inventoryLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
@@ -98,6 +121,9 @@ void InventoryMenu::onEnter()
 	GameUtils::fadeInObject(this->inventoryLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+
+	this->unfocusInventory();
+	this->setActiveFilter(ActiveFilter::All);
 }
 
 void InventoryMenu::initializePositions()
@@ -107,21 +133,23 @@ void InventoryMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->inventoryWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->filterNode->setPosition(Vec2(visibleSize.width / 2.0f - 480.0f, visibleSize.height / 2.0f - 32.0f));
+	this->filterNode->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 32.0f));
+	this->inventoryNode->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f + 342.0f, visibleSize.height / 2.0f - 32.0f));
+	this->filterSelectionArrow->setPosition(Vec2(visibleSize.width / 2.0f - 524.0f, visibleSize.height / 2.0f - 44.0f));
+	this->filterSelectedArrow->setPosition(Vec2(visibleSize.width / 2.0f - 524.0f, visibleSize.height / 2.0f - 44.0f));
+	this->inventorySelectionArrow->setPosition(Vec2(visibleSize.width / 2.0f - 192.0f, visibleSize.height / 2.0f - 44.0f));
 	this->equipmentPanel->setPosition(Vec2(visibleSize.width / 2.0f + 292.0f, visibleSize.height / 2.0f + 64.0f));
 	this->inventoryLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
 
-	const int count = 5;
-	const float spacing = 96.0f;
-	const float offsetY = spacing * float(count / 2);
+	const float offsetY = InventoryMenu::LabelSpacing * float(this->filterLabels.size() / 2);
+	int index = 0;
 
-	this->allLabel->setPositionY(0.0f * -spacing + offsetY);
-	this->equipmentLabel->setPositionY(1.0f * -spacing + offsetY);
-	this->consumablesLabel->setPositionY(2.0f * -spacing + offsetY);
-	this->craftingLabel->setPositionY(3.0f * -spacing + offsetY);
-	this->miscLabel->setPositionY(4.0f * -spacing + offsetY);
+	for (auto it = this->filterLabels.begin(); it != this->filterLabels.end(); it++, index++)
+	{
+		(*it)->setPositionY(float(index) * -InventoryMenu::LabelSpacing + offsetY);
+	}
 }
 
 void InventoryMenu::initializeListeners()
@@ -162,12 +190,84 @@ void InventoryMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		this->activeFocus = ActiveFocus::Inventory;
+		this->focusInventory();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		this->activeFocus = ActiveFocus::Filter;
+		this->unfocusInventory();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
+	{
+		switch(this->activeFocus)
+		{
+			case ActiveFocus::Filter:
+			{
+				this->scrollFilterUp();
+				break;
+			}
+			case ActiveFocus::Inventory:
+			{
+				this->scrollInventoryUp();
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs* args)
+	{
+		switch(this->activeFocus)
+		{
+			case ActiveFocus::Filter:
+			{
+				this->scrollFilterDown();
+				break;
+			}
+			case ActiveFocus::Inventory:
+			{
+				this->scrollInventoryDown();
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	});
+
+	this->allLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->setActiveFilter(ActiveFilter::All);
+		this->focusInventory();
+	});
+
+	this->equipmentLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->setActiveFilter(ActiveFilter::Equipment);
+		this->focusInventory();
+	});
+
+	this->consumablesLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->setActiveFilter(ActiveFilter::Consumables);
+		this->focusInventory();
+	});
+
+	this->craftingLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->setActiveFilter(ActiveFilter::Crafting);
+		this->focusInventory();
+	});
+
+	this->miscLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->setActiveFilter(ActiveFilter::Misc);
+		this->focusInventory();
 	});
 }
 
@@ -176,10 +276,194 @@ void InventoryMenu::setReturnCallback(std::function<void()> returnClickCallback)
 	this->returnClickCallback = returnClickCallback;
 }
 
+void InventoryMenu::setActiveFilter(ActiveFilter activeFilter)
+{
+	this->activeFilter = activeFilter;
+
+	this->positionScrolls();
+}
+
+void InventoryMenu::scrollFilterUp()
+{
+	switch(this->activeFilter)
+	{
+		case ActiveFilter::All:
+		{
+			this->setActiveFilter(ActiveFilter::Misc);
+			break;
+		}
+		case ActiveFilter::Equipment:
+		{
+			this->setActiveFilter(ActiveFilter::All);
+			break;
+		}
+		case ActiveFilter::Consumables:
+		{
+			this->setActiveFilter(ActiveFilter::Equipment);
+			break;
+		}
+		case ActiveFilter::Crafting:
+		{
+			this->setActiveFilter(ActiveFilter::Consumables);
+			break;
+		}
+		case ActiveFilter::Misc:
+		{
+			this->setActiveFilter(ActiveFilter::Crafting);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+
+	this->positionScrolls();
+}
+
+void InventoryMenu::scrollFilterDown()
+{
+	switch(this->activeFilter)
+	{
+		case ActiveFilter::All:
+		{
+			this->setActiveFilter(ActiveFilter::Equipment);
+			break;
+		}
+		case ActiveFilter::Equipment:
+		{
+			this->setActiveFilter(ActiveFilter::Consumables);
+			break;
+		}
+		case ActiveFilter::Consumables:
+		{
+			this->setActiveFilter(ActiveFilter::Crafting);
+			break;
+		}
+		case ActiveFilter::Crafting:
+		{
+			this->setActiveFilter(ActiveFilter::Misc);
+			break;
+		}
+		case ActiveFilter::Misc:
+		{
+			this->setActiveFilter(ActiveFilter::All);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+
+	this->positionScrolls();
+}
+
+void InventoryMenu::scrollInventoryUp()
+{
+	this->positionScrolls();
+}
+
+void InventoryMenu::scrollInventoryDown()
+{
+	this->positionScrolls();
+}
+
+void InventoryMenu::unfocusInventory()
+{
+	this->activeFocus = ActiveFocus::Filter;
+	this->filterSelectionArrow->setVisible(true);
+	this->filterSelectedArrow->setVisible(false);
+	this->inventorySelectionArrow->setVisible(false);
+}
+
+void InventoryMenu::focusInventory()
+{
+	this->activeFocus = ActiveFocus::Inventory;
+	this->filterSelectionArrow->setVisible(false);
+	this->filterSelectedArrow->setVisible(true);
+	this->inventorySelectionArrow->setVisible(true);
+
+	switch (this->activeFilter)
+	{
+		case ActiveFilter::All:
+		{
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
+void InventoryMenu::positionScrolls()
+{
+	int adjustedIndex = (int)this->activeFilter - this->filterLabels.size() / 2;
+	float offset = float(adjustedIndex) * InventoryMenu::LabelSpacing;
+
+	this->filterNodeContent->setPositionY(offset);
+
+	const float offsetY = InventoryMenu::LabelSpacing * float(this->filterLabels.size() / 2);
+	int index = 0;
+
+	for (auto it = this->filterLabels.begin(); it != this->filterLabels.end(); it++, index++)
+	{
+		(*it)->setPositionX(0.0f);
+		(*it)->setPositionY(float(index) * -InventoryMenu::LabelSpacing + offsetY);
+		(*it)->setPositionZ(0.0f);
+	}
+
+	const float XOffset = 64.0f;
+	const float YOffset = 8.0f;
+	const float ZOffset = 128.0f;
+
+	switch(this->activeFilter)
+	{
+		case ActiveFilter::All:
+		{
+			this->allLabel->setPositionX(XOffset);
+			this->allLabel->setPositionY(this->allLabel->getPositionY() + YOffset);
+			this->allLabel->setPositionZ(ZOffset);
+			break;
+		}
+		case ActiveFilter::Equipment:
+		{
+			this->equipmentLabel->setPositionX(XOffset);
+			this->equipmentLabel->setPositionY(this->equipmentLabel->getPositionY() + YOffset);
+			this->equipmentLabel->setPositionZ(ZOffset);
+			break;
+		}
+		case ActiveFilter::Consumables:
+		{
+			this->consumablesLabel->setPositionX(XOffset);
+			this->consumablesLabel->setPositionY(this->consumablesLabel->getPositionY() + YOffset);
+			this->consumablesLabel->setPositionZ(ZOffset);
+			break;
+		}
+		case ActiveFilter::Crafting:
+		{
+			this->craftingLabel->setPositionX(XOffset);
+			this->craftingLabel->setPositionY(this->craftingLabel->getPositionY() + YOffset);
+			this->craftingLabel->setPositionZ(ZOffset);
+			break;
+		}
+		case ActiveFilter::Misc:
+		{
+			this->miscLabel->setPositionX(XOffset);
+			this->miscLabel->setPositionY(this->miscLabel->getPositionY() + YOffset);
+			this->miscLabel->setPositionZ(ZOffset);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+}
+
 ClickableTextNode* InventoryMenu::buildMenuLabel(LocalizedString* text)
 {
-	static const Size LabelSize = Size(128.0f, 32.0f);
-
 	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
 	LocalizedLabel*	labelSelected = label->clone();
 	Node* frameNode = Node::create();
@@ -190,19 +474,20 @@ ClickableTextNode* InventoryMenu::buildMenuLabel(LocalizedString* text)
 	frameNode->setAnchorPoint(Vec2(0.0f, 0.5f));
 	frameNodeSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
 
-	frameNode->setContentSize(LabelSize);
-	frameNodeSelected->setContentSize(LabelSize);
+	frameNode->setContentSize(InventoryMenu::LabelSize);
+	frameNodeSelected->setContentSize(InventoryMenu::LabelSize);
 
 	label->enableOutline(Color4B::BLACK, 2);
-	label->enableGlow(Color4B::BLACK);
 	labelSelected->enableOutline(Color4B::BLACK, 2);
 	labelSelected->setTextColor(Color4B::YELLOW);
-	labelSelected->enableGlow(Color4B::ORANGE);
 
 	ClickableTextNode* menuLabel = ClickableTextNode::create(label, labelSelected, frameNode, frameNodeSelected);
 
+	label->setPositionX(-InventoryMenu::LabelSize.width / 2.0f);
+	labelSelected->setPositionX(-InventoryMenu::LabelSize.width / 2.0f);
+
 	menuLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	menuLabel->setContentSize(Size(128.0f, 32.0f));
+	menuLabel->setContentSize(Size(InventoryMenu::LabelSize.width, InventoryMenu::LabelSize.height));
 
 	return menuLabel;
 }

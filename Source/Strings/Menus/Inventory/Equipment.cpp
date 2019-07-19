@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Menus_Inventory_Equipment::getStringAr()
 	{
-		return "المخزون";
+		return "الرجعية";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringBg()
 	{
-		return "Складова наличност";
+		return "оборудване";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringCs()
 	{
-		return "Inventář";
+		return "Zařízení";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringDa()
 	{
-		return "Beholdning";
+		return "Udstyr";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringDe()
 	{
-		return "Inventar";
+		return "Ausrüstung";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringEl()
 	{
-		return "Καταγραφή εμπορευμάτων";
+		return "Εξοπλισμός";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringEn()
 	{
-		return "Inventory";
+		return "Equipment";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringEs()
 	{
-		return "Inventario";
+		return "Equipo";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringEs419()
 	{
-		return "Inventario";
+		return "Equipo";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringFi()
 	{
-		return "inventaario";
+		return "Laitteet";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringFr()
 	{
-		return "Inventaire";
+		return "Équipement";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringHu()
 	{
-		return "Leltár";
+		return "Felszerelés";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringIt()
 	{
-		return "Inventario";
+		return "attrezzatura";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringJa()
 	{
-		return "在庫";
+		return "装置";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringKo()
 	{
-		return "목록";
+		return "장비";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringNl()
 	{
-		return "Inventaris";
+		return "uitrusting";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringNo()
 	{
-		return "Inventar";
+		return "Utstyr";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringPl()
 	{
-		return "Inwentarz";
+		return "Sprzęt";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringPt()
 	{
-		return "Inventário";
+		return "Equipamento";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringPtBr()
 	{
-		return "Inventário";
+		return "Equipamento";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringRo()
 	{
-		return "Inventar";
+		return "echipament";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringRu()
 	{
-		return "инвентарь";
+		return "Оборудование";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringSv()
 	{
-		return "Lager";
+		return "Utrustning";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringTh()
 	{
-		return "สินค้าคงคลัง";
+		return "อุปกรณ์";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringTr()
 	{
-		return "Envanter";
+		return "ekipman";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringUk()
 	{
-		return "Інвентаризація";
+		return "Обладнання";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringVi()
 	{
-		return "Hàng tồn kho";
+		return "Trang thiết bị";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringZhCn()
 	{
-		return "库存";
+		return "设备";
 	}
 
 	std::string Menus_Inventory_Equipment::getStringZhTw()
 	{
-		return "庫存";
+		return "設備";
 	}
 }
