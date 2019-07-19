@@ -9,6 +9,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
@@ -16,12 +17,16 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
+#include "Menus/Inventory/InventoryMenu.h"
+#include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+
+#include "Strings/Menus/Inventory/Inventory.h"
 
 using namespace cocos2d;
 
@@ -53,6 +58,8 @@ PlatformerMap::PlatformerMap() : super(true)
 
 	this->gameHud = GameHud::create();
 	this->cipher = Cipher::create();
+	this->inventoryButtonRef = this->pauseMenu->addNewButton(Strings::Menus_Inventory_Inventory::create());
+	this->inventoryMenu = InventoryMenu::create();
 
 	this->addLayerDeserializers({
 			BackgroundDeserializer::create(),
@@ -73,6 +80,7 @@ PlatformerMap::PlatformerMap() : super(true)
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->menuHud->addChild(this->cipher);
+	this->topMenuHud->addChild(this->inventoryMenu);
 }
 
 PlatformerMap::~PlatformerMap()
@@ -82,6 +90,8 @@ PlatformerMap::~PlatformerMap()
 void PlatformerMap::onEnter()
 {
 	super::onEnter();
+
+	this->inventoryMenu->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -128,6 +138,19 @@ void PlatformerMap::initializeListeners()
 			GameUtils::focus(this);
 		}
 	}));
+
+	this->inventoryButtonRef->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->inventoryMenu->setVisible(true);
+		GameUtils::focus(this->inventoryMenu);
+	});
+
+	this->inventoryMenu->setReturnCallback([=]()
+	{
+		this->inventoryMenu->setVisible(false);
+		this->pauseMenu->setVisible(true);
+		GameUtils::focus(this->pauseMenu);
+	});
 }
 
 void PlatformerMap::update(float dt)

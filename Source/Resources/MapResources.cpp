@@ -15,6 +15,7 @@ const std::string MapResources::EndianForest_Town_Main = "Platformer/Maps/Endian
 const std::string MapResources::EndianForest_Zone_1_0 = "Platformer/Maps/EndianForest/Zone_1_0.tmx";
 const std::string MapResources::EndianForest_Zone_1_1 = "Platformer/Maps/EndianForest/Zone_1_1.tmx";
 const std::string MapResources::EndianForest_Zone_1_2 = "Platformer/Maps/EndianForest/Zone_1_2.tmx";
+const std::string MapResources::EndianForest_Zone_1_Town_0 = "Platformer/Maps/EndianForest/Zone_1_Town_0.tmx";
 const std::string MapResources::LambdaCrypts_Crypts = "Platformer/Maps/LambdaCrypts/Crypts.tmx";
 const std::string MapResources::SeaSharpCaverns_Caverns = "Platformer/Maps/SeaSharpCaverns/Caverns.tmx";
 const std::string MapResources::TileMap = "Platformer/Maps/TileMap.png";

@@ -3,6 +3,8 @@
 #include "Scenes/MapBase.h"
 
 class Cipher;
+class ClickableTextNode;
+class InventoryMenu;
 class GameHud;
 
 class PlatformerMap : public MapBase
@@ -30,4 +32,6 @@ private:
 
 	GameHud* gameHud;
 	Cipher* cipher;
+	ClickableTextNode* inventoryButtonRef;
+	InventoryMenu* inventoryMenu;
 };

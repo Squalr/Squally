@@ -141,6 +141,7 @@ namespace TerrainResources
 	extern const std::string ShadeGrass_ShadeGrassTexture;
 	extern const std::string ShadeGrass_ShadeGrassTopLeft;
 	extern const std::string ShadeGrass_ShadeGrassTopRight;
+	extern const std::string Temple_TempleTexture;
 	extern const std::string Trail_Trail;
 	extern const std::string Trail_TrailBottom;
 	extern const std::string Trail_TrailBottomLeft;

@@ -10,9 +10,11 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
+class ConfirmationMenu;
+class LocalizedLabel;
+class LocalizedString;
 
 class PauseMenu : public SmartNode
 {
@@ -22,6 +24,7 @@ public:
 	void setResumeCallback(std::function<void()> resumeClickCallback);
 	void setOptionsCallback(std::function<void()> optionsClickCallback);
 	void setExitCallback(std::function<void()> exitClickCallback);
+	ClickableTextNode* addNewButton(LocalizedString* text);
 
 protected:
 	PauseMenu();
@@ -44,10 +47,11 @@ private:
 	ClickableTextNode* resumeButton;
 	ClickableTextNode* optionsButton;
 	ClickableTextNode* exitButton;
+	cocos2d::Node* newButtonsNode;
+	std::vector<ClickableTextNode*> addedButtons;
+	ConfirmationMenu* exitConfirmMenu;
 
 	std::function<void()> resumeClickCallback;
 	std::function<void()> optionsClickCallback;
 	std::function<void()> exitClickCallback;
-
-	static const cocos2d::Color3B TitleColor;
 };

@@ -46,6 +46,7 @@ DebugScene::DebugScene()
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_0));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_1));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_2));
+	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_Town_0));
 
 	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
 	{
@@ -76,7 +77,7 @@ void DebugScene::initializePositions()
 
 	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(0.0f, float(index) * -160.0f));
+		(*it)->setPosition(Vec2(0.0f, -128.0f - float(index) * 160.0f));
 	}
 }
 
@@ -99,6 +100,7 @@ ClickableTextNode* DebugScene::buildDebugButton(std::string mapResource, std::ve
 	{
 		const int UNUSED_SAVE_PROFILE = 3;
 
+		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		PlatformerMap* map = PlatformerMap::create(mapResource, mapArgs);
 

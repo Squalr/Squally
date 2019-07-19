@@ -140,6 +140,7 @@ const std::string TerrainResources::ShadeGrass_ShadeGrassRight = "Platformer/Ter
 const std::string TerrainResources::ShadeGrass_ShadeGrassTexture = "Platformer/Terrain/ShadeGrass/ShadeGrassTexture.png";
 const std::string TerrainResources::ShadeGrass_ShadeGrassTopLeft = "Platformer/Terrain/ShadeGrass/ShadeGrassTopLeft.png";
 const std::string TerrainResources::ShadeGrass_ShadeGrassTopRight = "Platformer/Terrain/ShadeGrass/ShadeGrassTopRight.png";
+const std::string TerrainResources::Temple_TempleTexture = "Platformer/Terrain/Temple/TempleTexture.png";
 const std::string TerrainResources::Trail_Trail = "Platformer/Terrain/Trail/Trail.png";
 const std::string TerrainResources::Trail_TrailBottom = "Platformer/Terrain/Trail/TrailBottom.png";
 const std::string TerrainResources::Trail_TrailBottomLeft = "Platformer/Terrain/Trail/TrailBottomLeft.png";
