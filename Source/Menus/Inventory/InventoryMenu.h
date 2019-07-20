@@ -7,6 +7,7 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
@@ -23,16 +24,15 @@ public:
 
 	void setReturnCallback(std::function<void()> returnClickCallback);
 
+	static const float LabelSpacing;
+	static const cocos2d::Size LabelSize;
+
 protected:
 	InventoryMenu();
 	~InventoryMenu();
 
 private:
 	typedef SmartNode super;
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-	
 	enum ActiveFocus
 	{
 		Filter,
@@ -48,21 +48,41 @@ private:
 		Misc
 	};
 
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
+	void setActiveFilter(ActiveFilter activeFilter);
+	void scrollFilterUp();
+	void scrollFilterDown();
+	void scrollInventoryUp();
+	void scrollInventoryDown();
+	void unfocusInventory();
+	void focusInventory();
+	void positionScrolls();
+	ClickableTextNode* buildMenuLabel(LocalizedString* text);
+
 	cocos2d::Sprite* inventoryWindow;
 	cocos2d::Sprite* equipmentPanel;
 	LocalizedLabel* inventoryLabel;
 	ClickableNode* closeButton;
 	ClickableTextNode* returnButton;
 	ActiveFocus activeFocus;
+	ActiveFilter activeFilter;
+	cocos2d::Sprite* filterSelectionArrow;
+	cocos2d::Sprite* filterSelectedArrow;
+	cocos2d::Sprite* inventorySelectionArrow;
 
 	cocos2d::Node* filterNode;
+	cocos2d::Node* filterNodeContent;
+	cocos2d::Node* inventoryNode;
+	cocos2d::Node* inventoryNodeContent;
 	ClickableTextNode* allLabel;
 	ClickableTextNode* equipmentLabel;
 	ClickableTextNode* consumablesLabel;
 	ClickableTextNode* craftingLabel;
 	ClickableTextNode* miscLabel;
 
-	ClickableTextNode* buildMenuLabel(LocalizedString* text);
+	std::vector<ClickableTextNode*> filterLabels;
 
 	std::function<void()> returnClickCallback;
 };
