@@ -320,6 +320,8 @@ namespace UIResources
 	extern const std::string Menus_InventoryMenu_EquipmentMenu;
 	extern const std::string Menus_InventoryMenu_InventoryMenu;
 	extern const std::string Menus_InventoryMenu_Pointer;
+	extern const std::string Menus_InventoryMenu_RowSelectActive;
+	extern const std::string Menus_InventoryMenu_RowSelectInactive;
 	extern const std::string Menus_LexiconMenu_Arrow;
 	extern const std::string Menus_LexiconMenu_BackButton;
 	extern const std::string Menus_LexiconMenu_BackButtonSelected;

@@ -33,14 +33,9 @@ Avatars::Avatars()
 	this->playerSprite = SmartAnimationNode::create(EntityResources::Squally_Animations);
 
 	this->playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
-
-	DrawNode* playerStencil = DrawNode::create();
-	DrawNode* enemyStencil = DrawNode::create();
-	playerStencil->drawSolidCircle(Vec2(0.0f, 0.0f), 188.0f / 2.0f, 0.0f, 48, Color4F::GREEN);
-	enemyStencil->drawSolidCircle(Vec2(0.0f, 0.0f), 188.0f / 2.0f, 0.0f, 48, Color4F::GREEN);
-
-	this->clipPlayer = SmartClippingNode::create(this->avatarPlayer, playerStencil);
-	this->clipEnemy = SmartClippingNode::create(this->avatarEnemy, enemyStencil);
+	
+	this->clipPlayer = SmartClippingNode::create(this->avatarPlayer, 188.0f / 2.0f, Vec2::ZERO, 48);
+	this->clipEnemy = SmartClippingNode::create(this->avatarEnemy, 188.0f / 2.0f, Vec2::ZERO, 48);
 
 	this->avatarPlayer->addChild(this->playerSprite);
 	this->addChild(this->clipPlayer);
