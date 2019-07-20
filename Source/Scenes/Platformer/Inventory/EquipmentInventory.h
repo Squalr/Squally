@@ -3,6 +3,8 @@
 #include "Engine/Inventory/Inventory.h"
 
 class Gear;
+class Hat;
+class Offhand;
 class Weapon;
 
 // Generic inventory for any set of equipment with convenience methods
@@ -10,6 +12,8 @@ class EquipmentInventory : public Inventory
 {
 public:
 	Weapon* getWeapon();
+	Offhand* getOffhand();
+	Hat* getHat();
 	std::vector<Gear*> getGear();
 
 	int getTotalMinAttack();

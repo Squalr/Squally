@@ -35,12 +35,10 @@ HexusOpponentPreview::HexusOpponentPreview(HexusOpponentData* opponentData)
 	this->frame = ClickableNode::create(HexusResources::Menus_EnemyFrame, HexusResources::Menus_EnemyFrameHover);
 	this->frame->setClickSound(SoundResources::Menus_Simple_Button);
 
-	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);
 	Size clipSize = Size(frameSize.width - 52.0f, frameSize.height - 52.0f);
-	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
-	this->frameClip = SmartClippingNode::create(this->contentNode, clipStencil);
+	this->frameClip = SmartClippingNode::create(this->contentNode, Rect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), clipSize));
 	this->frameClip->setAnchorPoint(Vec2::ZERO);
 
 	this->opponentSprite->setAnchorPoint(Vec2(0.5f, 0.0f));

@@ -64,11 +64,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties,
 		this->runesFailed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneRed));
 	}
 
-	DrawNode* doorStencil = DrawNode::create();
-
-	doorStencil->drawSolidRect(Vec2(-312.0f / 2.0f, -540.0f / 2.0f - 112.0f), Vec2(312.0f / 2.0f, 540.0f / 2.0f - 112.0f), Color4F::GREEN);
-
-	this->doorClip = SmartClippingNode::create(this->door, doorStencil);
+	this->doorClip = SmartClippingNode::create(this->door, Rect(Vec2(-312.0f / 2.0f, -540.0f / 2.0f - 112.0f), Size(312.0f, 540.0f)));
 
 	this->indexLabel->enableOutline(Color4B::BLACK, 4);
 	this->truthLabel->enableOutline(Color4B::BLACK, 4);

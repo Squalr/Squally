@@ -37,12 +37,10 @@ HexusChapterPreview::HexusChapterPreview(std::string chapterSaveKey, LocalizedSt
 	this->lockedSprite = Sprite::create(UIResources::Menus_Icons_Lock);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, localizedChapterName);
 
-	DrawNode* clipStencil = DrawNode::create();
 	Size frameSize = Size(this->frame->getContentSize().width, this->frame->getContentSize().height);
 	Size clipSize = Size(frameSize.width - 64.0f, frameSize.height - 64.0f);
-	clipStencil->drawSolidRect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), Color4F::GREEN);
 
-	this->frameClip = SmartClippingNode::create(this->contentNode, clipStencil);
+	this->frameClip = SmartClippingNode::create(this->contentNode, Rect(Vec2(-clipSize.width / 2.0f, -clipSize.height / 2.0f), clipSize));
 
 	this->lockedSprite->setVisible(false);
 	this->text->setVisible(false);

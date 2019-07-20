@@ -14,8 +14,10 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class ConfirmationMenu;
+class Item;
 class LocalizedLabel;
 class LocalizedString;
+class SmartClippingNode;
 
 class InventoryMenu : public SmartNode
 {
@@ -58,7 +60,9 @@ private:
 	void scrollInventoryDown();
 	void unfocusInventory();
 	void focusInventory();
-	void positionScrolls();
+	void buildInventoryList();
+	void positionFilterText();
+	void updateAndPositionItemText();
 	ClickableTextNode* buildMenuLabel(LocalizedString* text);
 
 	cocos2d::Sprite* inventoryWindow;
@@ -68,13 +72,14 @@ private:
 	ClickableTextNode* returnButton;
 	ActiveFocus activeFocus;
 	ActiveFilter activeFilter;
+	int selectedItemIndex;
 	cocos2d::Sprite* filterSelectionArrow;
 	cocos2d::Sprite* filterSelectedArrow;
 	cocos2d::Sprite* inventorySelectionArrow;
 
-	cocos2d::Node* filterNode;
+	SmartClippingNode* filterNode;
 	cocos2d::Node* filterNodeContent;
-	cocos2d::Node* inventoryNode;
+	SmartClippingNode* inventoryNode;
 	cocos2d::Node* inventoryNodeContent;
 	ClickableTextNode* allLabel;
 	ClickableTextNode* equipmentLabel;
@@ -82,7 +87,11 @@ private:
 	ClickableTextNode* craftingLabel;
 	ClickableTextNode* miscLabel;
 
+	std::vector<Item*> allItems;
+	std::vector<Item*> equippedItems;
 	std::vector<ClickableTextNode*> filterLabels;
+	std::vector<ClickableTextNode*> equippedItemLabels;
+	std::vector<ClickableTextNode*> itemLabels;
 
 	std::function<void()> returnClickCallback;
 };

@@ -1,6 +1,8 @@
 #include "EquipmentInventory.h"
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Gear.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 
 using namespace cocos2d;
@@ -31,6 +33,32 @@ Weapon* EquipmentInventory::getWeapon()
 		if (dynamic_cast<Weapon*>(*it) != nullptr)
 		{
 			return dynamic_cast<Weapon*>(*it);
+		}
+	}
+
+	return nullptr;
+}
+
+Offhand* EquipmentInventory::getOffhand()
+{
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Offhand*>(*it) != nullptr)
+		{
+			return dynamic_cast<Offhand*>(*it);
+		}
+	}
+
+	return nullptr;
+}
+
+Hat* EquipmentInventory::getHat()
+{
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Hat*>(*it) != nullptr)
+		{
+			return dynamic_cast<Hat*>(*it);
 		}
 	}
 

@@ -14,6 +14,8 @@ namespace cocos2d
 class SmartClippingNode : public SmartNode
 {
 public:
+	static SmartClippingNode* create(cocos2d::Node* contentNode, float radius, cocos2d::Vec2 center = cocos2d::Vec2::ZERO, int segments = 32);
+	static SmartClippingNode* create(cocos2d::Node* contentNode, cocos2d::Rect bounds);
 	static SmartClippingNode* create(cocos2d::Node* contentNode, cocos2d::DrawNode* stencil);
 
 protected:

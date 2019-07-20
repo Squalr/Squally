@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Gear.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 
-class SantaHat : public Gear
+class SantaHat : public Hat
 {
 public:
 	static SantaHat* create();
@@ -19,5 +19,5 @@ protected:
 	virtual ~SantaHat();
 
 private:
-	typedef Gear super;
+	typedef Hat super;
 };
