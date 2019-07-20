@@ -14,6 +14,7 @@ class Item : public SmartNode
 {
 public:
 	virtual Item* clone() = 0;
+	virtual std::string getItemName() = 0;
 	virtual LocalizedString* getString() = 0;
 	virtual std::string getIconResource() = 0;
 	virtual std::string getSerializationKey() = 0;

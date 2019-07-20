@@ -30,6 +30,11 @@ Item* BlueAxe::clone()
 	return BlueAxe::create();
 }
 
+std::string BlueAxe::getItemName()
+{
+	return BlueAxe::SaveKeyBlueAxe;
+}
+
 LocalizedString* BlueAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_BlueAxe::create();

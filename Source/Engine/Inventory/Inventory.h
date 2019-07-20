@@ -34,11 +34,11 @@ public:
 	};
 
 	int getCapacity();
-	void tryRemove(Item* item, std::function<void(Item*)> onRemove, std::function<void(Item*)> onRemoveFailed);
-	void tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed);
+	void tryRemove(Item* item, std::function<void(Item*)> onRemove = nullptr, std::function<void(Item*)> onRemoveFailed = nullptr);
+	void tryInsert(Item* item, std::function<void(Item*)> onInsert = nullptr, std::function<void(Item*)> onInsertFailed = nullptr);
 	void forceInsert(Item* item);
-	void tryTransact(Inventory* other, Item* item, Item* otherItem, std::function<void(Item*, Item*)> onTransact, std::function<void(Item*, Item*)> onTransactFailed);
-	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove, std::function<void(Item*)> onMoveFailed);
+	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr);
+	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr);
 
 protected:
 	Inventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);

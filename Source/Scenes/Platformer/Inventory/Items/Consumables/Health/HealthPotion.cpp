@@ -32,6 +32,11 @@ Item* HealthPotion::clone()
 	return HealthPotion::create();
 }
 
+std::string HealthPotion::getItemName()
+{
+	return HealthPotion::SaveKeyHealthPotion;
+}
+
 PlatformerAttack* HealthPotion::createAssociatedAttack()
 {
 	return ThrowHealthPotion::create();

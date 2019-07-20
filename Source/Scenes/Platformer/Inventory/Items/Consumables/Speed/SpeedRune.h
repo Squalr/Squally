@@ -10,6 +10,7 @@ public:
 	static SpeedRune* create();
 
 	Item* clone() override;
+	std::string getItemName() override;
 	PlatformerAttack* createAssociatedAttack() override;
 	LocalizedString* getString() override;
 	std::string getIconResource() override;

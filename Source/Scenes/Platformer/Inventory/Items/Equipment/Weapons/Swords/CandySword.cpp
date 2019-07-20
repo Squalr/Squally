@@ -30,6 +30,11 @@ Item* CandySword::clone()
 	return CandySword::create();
 }
 
+std::string CandySword::getItemName()
+{
+	return CandySword::SaveKeyCandySword;
+}
+
 LocalizedString* CandySword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CandySword::create();

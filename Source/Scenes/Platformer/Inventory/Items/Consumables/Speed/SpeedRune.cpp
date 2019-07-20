@@ -32,6 +32,11 @@ Item* SpeedRune::clone()
 	return SpeedRune::create();
 }
 
+std::string SpeedRune::getItemName()
+{
+	return SpeedRune::SaveKeySpeedRune;
+}
+
 PlatformerAttack* SpeedRune::createAssociatedAttack()
 {
 	return ThrowSpeedRune::create();
