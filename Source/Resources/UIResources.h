@@ -316,9 +316,14 @@ namespace UIResources
 	extern const std::string Menus_Icons_Wand;
 	extern const std::string Menus_Icons_WheelBurrow;
 	extern const std::string Menus_Icons_YinYang;
+	extern const std::string Menus_InventoryMenu_AllIcon;
 	extern const std::string Menus_InventoryMenu_Arrow;
+	extern const std::string Menus_InventoryMenu_ConsumablesIcon;
+	extern const std::string Menus_InventoryMenu_CraftingIcons;
+	extern const std::string Menus_InventoryMenu_EquipmentIcon;
 	extern const std::string Menus_InventoryMenu_EquipmentMenu;
 	extern const std::string Menus_InventoryMenu_InventoryMenu;
+	extern const std::string Menus_InventoryMenu_MiscIcon;
 	extern const std::string Menus_InventoryMenu_Pointer;
 	extern const std::string Menus_InventoryMenu_RowSelectActive;
 	extern const std::string Menus_InventoryMenu_RowSelectInactive;

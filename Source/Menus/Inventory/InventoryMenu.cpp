@@ -13,6 +13,7 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Menus/Inventory/ItemPreview.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -55,12 +56,16 @@ InventoryMenu::InventoryMenu()
 {
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->equipmentPanel = Sprite::create(UIResources::Menus_InventoryMenu_EquipmentMenu);
+	this->itemPreview = ItemPreview::create();
+	this->contentNode = Node::create();
+	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
+	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
+	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->filterNodeContent = Node::create();
 	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->inventoryNodeContent = Node::create();
 	this->inventoryNode = SmartClippingNode::create(this->inventoryNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->filterSelectedArrow =  Sprite::create(UIResources::Menus_InventoryMenu_Pointer);
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
@@ -68,10 +73,10 @@ InventoryMenu::InventoryMenu()
 	this->activeFocus = ActiveFocus::Filter;
 	this->activeFilter = ActiveFilter::All;
 	this->selectedItemIndex = 0;
-	this->filterLabels = std::vector<ClickableTextNode*>();
-	this->itemLabels = std::vector<ClickableTextNode*>();
+	this->filterLabels = std::vector<Node*>();
+	this->itemLabels = std::vector<Node*>();
 	this->equippedItems = std::vector<Item*>();
-	this->equippedItemLabels = std::vector<ClickableTextNode*>();
+	this->equippedItemLabels = std::vector<Node*>();
 	this->allItems = std::vector<Item*>();
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
@@ -94,11 +99,11 @@ InventoryMenu::InventoryMenu()
 	this->inventoryLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->inventoryLabel->enableGlow(Color4B::BLACK);
 
-	this->allLabel = this->buildMenuLabel(Strings::Menus_Inventory_All::create());
-	this->equipmentLabel = this->buildMenuLabel(Strings::Menus_Inventory_Equipment::create());
-	this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create());
-	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create());
-	this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create());
+	this->allLabel = this->buildMenuLabel(Strings::Menus_Inventory_All::create(), Sprite::create(UIResources::Menus_InventoryMenu_AllIcon));
+	this->equipmentLabel = this->buildMenuLabel(Strings::Menus_Inventory_Equipment::create(), Sprite::create(UIResources::Menus_InventoryMenu_EquipmentIcon));
+	this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create(), Sprite::create(UIResources::Menus_InventoryMenu_ConsumablesIcon));
+	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create(), Sprite::create(UIResources::Menus_InventoryMenu_CraftingIcons));
+	this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create(), Sprite::create(UIResources::Menus_InventoryMenu_MiscIcon));
 
 	this->filterLabels.push_back(this->allLabel);
 	this->filterLabels.push_back(this->equipmentLabel);
@@ -111,13 +116,17 @@ InventoryMenu::InventoryMenu()
 	this->filterNodeContent->addChild(this->consumablesLabel);
 	this->filterNodeContent->addChild(this->craftingLabel);
 	this->filterNodeContent->addChild(this->miscLabel);
+	this->contentNode->addChild(this->selectedFilterRowActive);
+	this->contentNode->addChild(this->selectedFilterRowInactive);
+	this->contentNode->addChild(this->selectedInventoryRow);
+	this->contentNode->addChild(this->filterNode);
+	this->contentNode->addChild(this->inventoryNode);
+	this->contentNode->addChild(this->filterSelectionArrow);
+	this->contentNode->addChild(this->inventorySelectionArrow);
+	this->contentNode->addChild(this->itemPreview);
 	this->addChild(this->inventoryWindow);
 	this->addChild(this->equipmentPanel);
-	this->addChild(this->filterNode);
-	this->addChild(this->inventoryNode);
-	this->addChild(this->filterSelectionArrow);
-	this->addChild(this->filterSelectedArrow);
-	this->addChild(this->inventorySelectionArrow);
+	this->addChild(this->contentNode);
 	this->addChild(this->inventoryLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
@@ -143,6 +152,7 @@ void InventoryMenu::onEnter()
 	PlayerInventory::getInstance()->forceInsert(SantaHat::create());
 	PlayerInventory::getInstance()->forceInsert(BlueAxe::create());
 	PlayerInventory::getInstance()->forceInsert(HealthPotion::create());
+	this->equipmentPanel->setVisible(false);
 
 	this->unfocusInventory();
 	this->setActiveFilter(ActiveFilter::All);
@@ -158,11 +168,15 @@ void InventoryMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->inventoryWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->filterNode->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 48.0f));
-	this->inventoryNode->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f + 342.0f, visibleSize.height / 2.0f - 48.0f));
-	this->filterSelectionArrow->setPosition(Vec2(visibleSize.width / 2.0f - 524.0f, visibleSize.height / 2.0f - 60.0f));
-	this->filterSelectedArrow->setPosition(Vec2(visibleSize.width / 2.0f - 524.0f, visibleSize.height / 2.0f - 60.0f));
-	this->inventorySelectionArrow->setPosition(Vec2(visibleSize.width / 2.0f - 192.0f, visibleSize.height / 2.0f - 60.0f));
+	this->contentNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 44.0f));
+	this->filterNode->setPosition(Vec2(-340.0f, 0.0f));
+	this->inventoryNode->setPosition(Vec2(-340.0f + 342.0f, 0.0f));
+	this->filterSelectionArrow->setPosition(Vec2(-524.0f, 0.0f));
+	this->inventorySelectionArrow->setPosition(Vec2(-186.0f, 0.0f));
+	this->selectedFilterRowActive->setPosition(Vec2(-341.0f, 0.0f));
+	this->selectedFilterRowInactive->setPosition(Vec2(-341.0f, 0.0f));
+	this->selectedInventoryRow->setPosition(Vec2(0.0f, 0.0f));
+	this->itemPreview->setPosition(Vec2(360.0f, 96.0f));
 	this->equipmentPanel->setPosition(Vec2(visibleSize.width / 2.0f + 292.0f, visibleSize.height / 2.0f + 64.0f));
 	this->inventoryLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -263,36 +277,6 @@ void InventoryMenu::initializeListeners()
 				break;
 			}
 		}
-	});
-
-	this->allLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->setActiveFilter(ActiveFilter::All);
-		this->focusInventory();
-	});
-
-	this->equipmentLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->setActiveFilter(ActiveFilter::Equipment);
-		this->focusInventory();
-	});
-
-	this->consumablesLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->setActiveFilter(ActiveFilter::Consumables);
-		this->focusInventory();
-	});
-
-	this->craftingLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->setActiveFilter(ActiveFilter::Crafting);
-		this->focusInventory();
-	});
-
-	this->miscLabel->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->setActiveFilter(ActiveFilter::Misc);
-		this->focusInventory();
 	});
 }
 
@@ -406,8 +390,10 @@ void InventoryMenu::unfocusInventory()
 {
 	this->activeFocus = ActiveFocus::Filter;
 	this->filterSelectionArrow->setVisible(true);
-	this->filterSelectedArrow->setVisible(false);
 	this->inventorySelectionArrow->setVisible(false);
+	this->selectedFilterRowActive->setVisible(true);
+	this->selectedFilterRowInactive->setVisible(false);
+	this->selectedInventoryRow->setVisible(false);
 
 	this->updateAndPositionItemText();
 }
@@ -416,8 +402,10 @@ void InventoryMenu::focusInventory()
 {
 	this->activeFocus = ActiveFocus::Inventory;
 	this->filterSelectionArrow->setVisible(false);
-	this->filterSelectedArrow->setVisible(true);
 	this->inventorySelectionArrow->setVisible(true);
+	this->selectedFilterRowActive->setVisible(false);
+	this->selectedFilterRowInactive->setVisible(true);
+	this->selectedInventoryRow->setVisible(true);
 
 	this->updateAndPositionItemText();
 }
@@ -450,7 +438,7 @@ void InventoryMenu::buildInventoryList()
 
 	for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++)
 	{
-		ClickableTextNode* label = this->buildMenuLabel((*it)->getString());
+		Node* label = this->buildMenuLabel((*it)->getString());
 
 		this->equippedItemLabels.push_back(label);
 		this->inventoryNodeContent->addChild(label);
@@ -458,7 +446,7 @@ void InventoryMenu::buildInventoryList()
 
 	for (auto it = this->allItems.begin(); it != this->allItems.end(); it++)
 	{
-		ClickableTextNode* label = this->buildMenuLabel((*it)->getString());
+		Node* label = this->buildMenuLabel((*it)->getString());
 
 		this->itemLabels.push_back(label);
 		this->inventoryNodeContent->addChild(label);
@@ -485,7 +473,7 @@ void InventoryMenu::positionFilterText()
 	}
 
 	const float XOffset = 64.0f;
-	const float YOffset = 12.0f;
+	const float YOffset = 6.0f;
 	const float ZOffset = 128.0f;
 
 	switch(this->activeFilter)
@@ -535,7 +523,7 @@ void InventoryMenu::positionFilterText()
 void InventoryMenu::updateAndPositionItemText()
 {
 	std::vector<Item*> filteredItems = std::vector<Item*>();
-	std::vector<ClickableTextNode*> filteredItemLabels = std::vector<ClickableTextNode*>();
+	std::vector<Node*> filteredItemLabels = std::vector<Node*>();
 
 	int index = 0;
 
@@ -629,6 +617,7 @@ void InventoryMenu::updateAndPositionItemText()
 	float offset = float(adjustedIndex) * InventoryMenu::LabelSpacing;
 
 	this->inventoryNodeContent->setPositionY(offset);
+	this->itemPreview->clearPreview();
 
 	if (filteredItemLabels.empty())
 	{
@@ -647,41 +636,36 @@ void InventoryMenu::updateAndPositionItemText()
 	if (this->activeFocus == ActiveFocus::Inventory)
 	{
 		const float XOffset = 16.0f;
-		const float YOffset = 12.0f;
+		const float YOffset = 6.0f;
 		const float ZOffset = 128.0f;
 
 		filteredItemLabels[this->selectedItemIndex]->setPositionX(XOffset);
 		filteredItemLabels[this->selectedItemIndex]->setPositionY(filteredItemLabels[this->selectedItemIndex]->getPositionY() + YOffset);
 		filteredItemLabels[this->selectedItemIndex]->setPositionZ(ZOffset);
+
+		this->itemPreview->preview(filteredItems[this->selectedItemIndex]);
 	}
 }
 
-ClickableTextNode* InventoryMenu::buildMenuLabel(LocalizedString* text)
+cocos2d::Node* InventoryMenu::buildMenuLabel(LocalizedString* text, Sprite* icon)
 {
+	Node* contentNode = Node::create();
+
 	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
-	LocalizedLabel*	labelSelected = label->clone();
-	Node* frameNode = Node::create();
-	Node* frameNodeSelected = Node::create();
 
 	label->setAnchorPoint(Vec2(0.0f, 0.5f));
-	labelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
-	frameNode->setAnchorPoint(Vec2(0.0f, 0.5f));
-	frameNodeSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
-
-	frameNode->setContentSize(InventoryMenu::LabelSize);
-	frameNodeSelected->setContentSize(InventoryMenu::LabelSize);
-
 	label->enableOutline(Color4B::BLACK, 2);
-	labelSelected->enableOutline(Color4B::BLACK, 2);
-	labelSelected->setTextColor(Color4B::YELLOW);
-
-	ClickableTextNode* menuLabel = ClickableTextNode::create(label, labelSelected, frameNode, frameNodeSelected);
-
 	label->setPositionX(-InventoryMenu::LabelSize.width / 2.0f);
-	labelSelected->setPositionX(-InventoryMenu::LabelSize.width / 2.0f);
 
-	menuLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	menuLabel->setContentSize(Size(InventoryMenu::LabelSize.width, InventoryMenu::LabelSize.height));
+	contentNode->addChild(label);
 
-	return menuLabel;
+	if (icon != nullptr)
+	{
+		label->setPositionX(label->getPositionX() + 40.0f);
+		contentNode->addChild(icon);
+
+		icon->setPositionX(-InventoryMenu::LabelSize.width / 2.0f + 16.0f);
+	}
+
+	return contentNode;
 }
