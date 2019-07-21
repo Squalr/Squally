@@ -14,6 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
@@ -234,7 +235,19 @@ void InventoryMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		this->toggleEquipSelectedItem();
+		switch(this->activeFocus)
+		{
+			case ActiveFocus::Inventory:
+			{
+				this->toggleEquipSelectedItem();
+				break;
+			}
+			case ActiveFocus::Filter:
+			default:
+			{
+				break;
+			}
+		}
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
@@ -642,6 +655,11 @@ void InventoryMenu::updateAndPositionItemText()
 
 void InventoryMenu::toggleEquipSelectedItem()
 {
+	if (this->activeFocus != ActiveFocus::Inventory)
+	{
+		return;
+	}
+	
 	bool isSelectionInEquipment = this->selectedItemIndex < this->equippedItems.size();
 
 	if (isSelectionInEquipment)
@@ -650,7 +668,8 @@ void InventoryMenu::toggleEquipSelectedItem()
 		
 		PlayerEquipment::getInstance()->tryTransact(PlayerInventory::getInstance(), selectedItem, nullptr, [=](Item* item, Item* otherItem)
 		{
-			// Success
+			// Success unequipping item -- visually best if this ends up in the 1st inventory slot
+			PlayerInventory::getInstance()->moveItem(item, 0);
 		},
 		[=](Item* item, Item* otherItem)
 		{
@@ -693,7 +712,11 @@ void InventoryMenu::toggleEquipSelectedItem()
 		
 		PlayerInventory::getInstance()->tryTransact(PlayerEquipment::getInstance(), selectedItem, equippedItem, [=](Item* item, Item* otherItem)
 		{
-			// Success
+			// Success equipping item. Adjust final position if equipping an item without a swap
+			if (otherItem == nullptr)
+			{
+				PlayerEquipment::getInstance()->moveItem(item, PlayerEquipment::getInstance()->getItems().size());
+			}
 		},
 		[=](Item* item, Item* otherItem)
 		{
@@ -713,6 +736,8 @@ void InventoryMenu::toggleEquipSelectedItem()
 	
 		this->buildInventoryList();
 	}
+
+	PlatformerEvents::TriggerEquippedItemsChanged();
 }
 
 cocos2d::Node* InventoryMenu::buildMenuLabel(LocalizedString* text, Sprite* icon)

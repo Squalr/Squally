@@ -49,3 +49,8 @@ std::string SantaHat::getSerializationKey()
 {
 	return SantaHat::SaveKeySantaHat;
 }
+
+Vec2 SantaHat::getDisplayOffset()
+{
+	return Vec2(12.0f, -24.0f);
+}

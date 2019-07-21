@@ -27,6 +27,7 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 	this->trackedObjects = std::vector<Node*>();
 	this->spriterAnimationPart = entity->getObjectInstance(partName);
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
+	this->originalPath = "";
 
 	if (this->ghostSprite != nullptr)
 	{
@@ -37,6 +38,11 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 	if (this->spriterAnimationPart != nullptr)
 	{
 		this->rotation = float(this->spriterAnimationPart->getAngle());
+
+		if (this->spriterAnimationPart->getImage() != nullptr)
+		{
+			this->originalPath = this->spriterAnimationPart->getImage()->path();
+		}
 	}
 
 	if (this->ghostSprite != nullptr)
@@ -74,8 +80,28 @@ void AnimationPart::detachFromTimeline()
 	this->spriterAnimationPart->toggleTimelineCanUpdate(false);
 }
 
+void AnimationPart::removeTrackingObject(Node* trackedObject)
+{
+	if (trackedObject == nullptr)
+	{
+		return;
+	}
+
+	if (std::find(this->trackedObjects.begin(), this->trackedObjects.end(), trackedObject) != this->trackedObjects.end())
+	{
+		this->removeChild(trackedObject);
+
+		this->trackedObjects.erase(std::remove(this->trackedObjects.begin(), this->trackedObjects.end(), trackedObject), this->trackedObjects.end());
+	}
+}
+
 void AnimationPart::addTrackingObject(Node* trackedObject)
 {
+	if (trackedObject == nullptr)
+	{
+		return;
+	}
+
 	this->addChild(trackedObject);
 
 	this->trackedObjects.push_back(trackedObject);
@@ -114,6 +140,11 @@ void AnimationPart::replaceSprite(std::string spriteResource)
 	this->spriterAnimationPart->getImage()->setPath(spriteResource);
 }
 
+void AnimationPart::restoreSprite()
+{
+	this->spriterAnimationPart->getImage()->setPath(this->originalPath);
+}
+
 void AnimationPart::setRotation(float rotation)
 {
 	this->detachFromTimeline();
@@ -129,8 +160,17 @@ void AnimationPart::setRotation(float rotation)
 void AnimationPart::setOffset(Vec2 offset)
 {
 	if (this->spriterAnimationPart != nullptr)
-	{
-		this->spriterAnimationPart->setOffset(SpriterEngine::point(offset.x, offset.y));
+	{	
+		// Flipped x/y for some reason
+		this->spriterAnimationPart->setOffset(SpriterEngine::point(offset.y, offset.x));
+	}
+}
+
+void AnimationPart::restoreOffset()
+{
+	if (this->spriterAnimationPart != nullptr)
+	{	
+		this->spriterAnimationPart->setOffset(SpriterEngine::point(0.0f, 0.0f));
 	}
 }
 

@@ -159,28 +159,6 @@ void CollisionObject::update(float dt)
 			// Use setter such that if physics was disabled for a reason other than being off-screen, we do not overwrite that
 			this->setPhysicsEnabled(this->physicsEnabled);
 		}
-
-		Rect mapBounds = GameCamera::getInstance()->getBounds();
-
-		if (worldPos.x < mapBounds.getMinX())
-		{
-			this->setPositionX(deltaPos.x + mapBounds.getMinX());
-		}
-
-		if (worldPos.x > mapBounds.getMaxX())
-		{
-			this->setPositionX(deltaPos.x + mapBounds.getMaxX());
-		}
-
-		if (worldPos.y < mapBounds.getMinY())
-		{
-			this->setPositionY(deltaPos.y + mapBounds.getMinY());
-		}
-
-		if (worldPos.y > mapBounds.getMaxY())
-		{
-			this->setPositionY(deltaPos.y + mapBounds.getMaxY());
-		}
 	}
 }
 

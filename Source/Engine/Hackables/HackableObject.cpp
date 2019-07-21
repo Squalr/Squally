@@ -41,6 +41,7 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 
 HackableObject::~HackableObject()
 {
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::onEnter()
