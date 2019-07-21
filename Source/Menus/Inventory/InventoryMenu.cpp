@@ -12,6 +12,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Menus/Inventory/ItemPreview.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -37,6 +38,8 @@
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/SantaHat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CandySword.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h"
 
 using namespace cocos2d;
 
@@ -77,7 +80,7 @@ InventoryMenu::InventoryMenu()
 	this->itemLabels = std::vector<Node*>();
 	this->equippedItems = std::vector<Item*>();
 	this->equippedItemLabels = std::vector<Node*>();
-	this->allItems = std::vector<Item*>();
+	this->inventoryItems = std::vector<Item*>();
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -102,7 +105,7 @@ InventoryMenu::InventoryMenu()
 	this->allLabel = this->buildMenuLabel(Strings::Menus_Inventory_All::create(), Sprite::create(UIResources::Menus_InventoryMenu_AllIcon));
 	this->equipmentLabel = this->buildMenuLabel(Strings::Menus_Inventory_Equipment::create(), Sprite::create(UIResources::Menus_InventoryMenu_EquipmentIcon));
 	this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create(), Sprite::create(UIResources::Menus_InventoryMenu_ConsumablesIcon));
-	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create(), Sprite::create(UIResources::Menus_InventoryMenu_CraftingIcons));
+	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create(), Sprite::create(UIResources::Menus_InventoryMenu_CraftingIcon));
 	this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create(), Sprite::create(UIResources::Menus_InventoryMenu_MiscIcon));
 
 	this->filterLabels.push_back(this->allLabel);
@@ -151,7 +154,9 @@ void InventoryMenu::onEnter()
 	// DEBUG
 	PlayerInventory::getInstance()->forceInsert(SantaHat::create());
 	PlayerInventory::getInstance()->forceInsert(BlueAxe::create());
+	PlayerInventory::getInstance()->forceInsert(CandySword::create());
 	PlayerInventory::getInstance()->forceInsert(HealthPotion::create());
+	PlayerInventory::getInstance()->forceInsert(CrystalSword::create());
 	this->equipmentPanel->setVisible(false);
 
 	this->unfocusInventory();
@@ -225,6 +230,11 @@ void InventoryMenu::initializeListeners()
 		{
 			this->returnClickCallback();
 		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->toggleEquipSelectedItem();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
@@ -413,38 +423,21 @@ void InventoryMenu::focusInventory()
 void InventoryMenu::buildInventoryList()
 {
 	this->inventoryNodeContent->removeAllChildren();
+	this->equippedItemLabels.clear();
+	this->itemLabels.clear();
 
-	this->allItems = PlayerInventory::getInstance()->getItems();
-	this->equippedItems.clear();
-
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
-	Offhand* offhand = PlayerEquipment::getInstance()->getOffhand();
-	Hat* hat = PlayerEquipment::getInstance()->getHat();
-
-	if (weapon != nullptr)
-	{
-		this->equippedItems.push_back(weapon);
-	}
-
-	if (offhand != nullptr)
-	{
-		this->equippedItems.push_back(offhand);
-	}
-
-	if (hat != nullptr)
-	{
-		this->equippedItems.push_back(hat);
-	}
+	this->inventoryItems = PlayerInventory::getInstance()->getItems();
+	this->equippedItems = PlayerEquipment::getInstance()->getItems();
 
 	for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++)
 	{
-		Node* label = this->buildMenuLabel((*it)->getString());
+		Node* label = this->buildMenuLabel((*it)->getString(), Sprite::create(UIResources::Menus_InventoryMenu_EquippedIcon));
 
 		this->equippedItemLabels.push_back(label);
 		this->inventoryNodeContent->addChild(label);
 	}
 
-	for (auto it = this->allItems.begin(); it != this->allItems.end(); it++)
+	for (auto it = this->inventoryItems.begin(); it != this->inventoryItems.end(); it++)
 	{
 		Node* label = this->buildMenuLabel((*it)->getString());
 
@@ -547,7 +540,7 @@ void InventoryMenu::updateAndPositionItemText()
 
 	index = 0;
 
-	for (auto it = this->allItems.begin(); it != this->allItems.end(); it++, index++)
+	for (auto it = this->inventoryItems.begin(); it != this->inventoryItems.end(); it++, index++)
 	{
 		switch(this->activeFilter)
 		{
@@ -644,6 +637,81 @@ void InventoryMenu::updateAndPositionItemText()
 		filteredItemLabels[this->selectedItemIndex]->setPositionZ(ZOffset);
 
 		this->itemPreview->preview(filteredItems[this->selectedItemIndex]);
+	}
+}
+
+void InventoryMenu::toggleEquipSelectedItem()
+{
+	bool isSelectionInEquipment = this->selectedItemIndex < this->equippedItems.size();
+
+	if (isSelectionInEquipment)
+	{
+		Item* selectedItem = this->equippedItems[this->selectedItemIndex];
+		
+		PlayerEquipment::getInstance()->tryTransact(PlayerInventory::getInstance(), selectedItem, nullptr, [=](Item* item, Item* otherItem)
+		{
+			// Success
+		},
+		[=](Item* item, Item* otherItem)
+		{
+			// Failure
+			LogUtils::logError("Error unequipping item!");
+
+			if (otherItem != nullptr)
+			{
+				LogUtils::logError(otherItem->getName());
+			}
+		});
+	
+		this->buildInventoryList();
+	}
+	else
+	{
+		int adjustedIndex = this->selectedItemIndex - this->equippedItems.size();
+		Item* selectedItem = this->inventoryItems[adjustedIndex];
+		Item* equippedItem = nullptr;
+		std::string selectedItemName = selectedItem == nullptr ? "" : selectedItem->getName();
+		
+		// Check if it's even an equipable item...
+		if (dynamic_cast<Equipable*>(selectedItem) == nullptr)
+		{
+			return;
+		}
+
+		if (dynamic_cast<Hat*>(selectedItem))
+		{
+			equippedItem = PlayerEquipment::getInstance()->getHat();
+		}
+		else if (dynamic_cast<Weapon*>(selectedItem))
+		{
+			equippedItem = PlayerEquipment::getInstance()->getWeapon();
+		}
+		else if (dynamic_cast<Offhand*>(selectedItem))
+		{
+			equippedItem = PlayerEquipment::getInstance()->getOffhand();
+		}
+		
+		PlayerInventory::getInstance()->tryTransact(PlayerEquipment::getInstance(), selectedItem, equippedItem, [=](Item* item, Item* otherItem)
+		{
+			// Success
+		},
+		[=](Item* item, Item* otherItem)
+		{
+			// Failure
+			LogUtils::logError("Error equipping item!");
+
+			if (item != nullptr)
+			{
+				LogUtils::logError(item->getName());
+			}
+
+			if (otherItem != nullptr)
+			{
+				LogUtils::logError(otherItem->getName());
+			}
+		});
+	
+		this->buildInventoryList();
 	}
 }
 

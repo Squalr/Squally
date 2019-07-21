@@ -64,6 +64,7 @@ private:
 	void buildInventoryList();
 	void positionFilterText();
 	void updateAndPositionItemText();
+	void toggleEquipSelectedItem();
 	cocos2d::Node* buildMenuLabel(LocalizedString* text, cocos2d::Sprite* icon = nullptr);
 
 	cocos2d::Sprite* inventoryWindow;
@@ -92,7 +93,7 @@ private:
 	cocos2d::Node* craftingLabel;
 	cocos2d::Node* miscLabel;
 
-	std::vector<Item*> allItems;
+	std::vector<Item*> inventoryItems;
 	std::vector<Item*> equippedItems;
 	std::vector<cocos2d::Node*> filterLabels;
 	std::vector<cocos2d::Node*> equippedItemLabels;

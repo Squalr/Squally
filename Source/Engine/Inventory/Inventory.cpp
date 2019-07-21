@@ -6,6 +6,8 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
@@ -101,7 +103,14 @@ int Inventory::getCapacity()
 
 void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::function<void(Item*)> onRemoveFailed)
 {
-	if (item == nullptr || std::find(this->items.begin(), this->items.end(), item) == this->items.end())
+	if (item == nullptr)
+	{
+		onRemove(nullptr);
+
+		return;
+	}
+
+	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end())
 	{
 		if (onRemoveFailed != nullptr)
 		{
@@ -111,9 +120,13 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 		return;
 	}
 
+	Item* returnItem = item->clone();
+
 	this->removeChild(item);
 	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
 	this->save();
+
+	onRemove(returnItem);
 }
 
 void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed)
@@ -140,56 +153,115 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 void Inventory::forceInsert(Item* item)
 {
-	this->addChild(item);
-	this->items.push_back(item);
-	this->save();
+	if (item != nullptr)
+	{
+		this->addChild(item);
+		this->items.push_back(item);
+		this->save();
+	}
 }
 
 void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::function<void(Item*, Item*)> onTransact, std::function<void(Item*, Item*)> onTransactFailed)
 {
-	// Input checking
-	if (other == nullptr || item == nullptr || otherItem == nullptr)
+	auto failTransaction = [=]()
 	{
 		if (onTransactFailed != nullptr)
 		{
 			onTransactFailed(item, otherItem);
 		}
+	};
 
+	// Input checking
+	if (other == nullptr || item == nullptr)
+	{
+		failTransaction();
 		return;
 	}
 
 	// Check if items exist in the inventories
-	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end() ||
-		std::find(other->items.begin(), other->items.end(), otherItem) == this->items.end())
+	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end())
 	{
-		if (onTransactFailed != nullptr)
+		failTransaction();
+		return;
+	}
+
+	int itemIndex = std::distance(this->items.begin(), std::find(this->items.begin(), this->items.end(), item));
+	int otherItemIndex = -1;
+
+	if (otherItem != nullptr)
+	{
+		if (std::find(other->items.begin(), other->items.end(), otherItem) == this->items.end())
 		{
-			onTransactFailed(item, otherItem);
+			failTransaction();
+			return;
+		}
+
+		otherItemIndex = std::distance(other->items.begin(), std::find(other->items.begin(), other->items.end(), otherItem));
+	}
+
+	// Remove items with no safety checking, no reason it should fail at this stage
+	other->tryRemove(otherItem, [=](Item* otherRemovedItem)
+	{
+		this->tryRemove(item, [=](Item* removedItem)
+		{
+			other->forceInsert(removedItem);
+			this->forceInsert(otherRemovedItem);
+
+			// Move the transacted items to the correct place (best effort, but it should work)
+			other->moveItem(removedItem, otherItemIndex);
+			this->moveItem(otherRemovedItem, itemIndex);
+
+			// Callback success
+			onTransact(removedItem, otherRemovedItem);
+		},
+		[=](Item* removedItem)
+		{
+			// Return the first removed item to where it came from
+			other->forceInsert(otherRemovedItem);
+
+			LogUtils::logError("Error removing self item during transaction");
+
+			if (removedItem != nullptr)
+			{
+				LogUtils::logError(removedItem->getName());
+			}
+		});
+	},
+	[=](Item* otherRemovedItem)
+	{
+		LogUtils::logError("Error removing other item during transaction");
+
+		if (otherRemovedItem != nullptr)
+		{
+			LogUtils::logError(otherRemovedItem->getName());
+		}
+	});
+}
+
+void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove, std::function<void(Item*)> onMoveFailed)
+{
+	// Check if items exists
+	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end())
+	{
+		if (onMoveFailed != nullptr)
+		{
+			onMoveFailed(item);
 		}
 
 		return;
 	}
 
-	// Remove items with no safety checking, no reason it should fail at this stage
-	other->tryRemove(otherItem, nullptr, nullptr);
-	this->tryRemove(item, nullptr, nullptr);
+	// Remove item
+	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
 
-	// Transact, again without safety checks
-	other->tryInsert(item, nullptr, nullptr);
-	this->tryInsert(otherItem, nullptr, nullptr);
-}
-
-void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove, std::function<void(Item*)> onMoveFailed)
-{
-	// TODO: Do we even support indicies?
-
-	// Just fail for now
-	if (onMoveFailed != nullptr)
+	if (destinationIndex < 0)
 	{
-		onMoveFailed(item);
-
-		return;
+		destinationIndex = this->items.size();
 	}
+
+	// Re-insert item
+	destinationIndex = MathUtils::clamp(destinationIndex, 0, this->items.size());
+	this->items.insert(this->items.begin() + destinationIndex, item);
 
 	this->save();
 }

@@ -32,6 +32,11 @@ Item* ManaPotion::clone()
 	return ManaPotion::create();
 }
 
+std::string ManaPotion::getItemName()
+{
+	return ManaPotion::SaveKeyManaPotion;
+}
+
 PlatformerAttack* ManaPotion::createAssociatedAttack()
 {
 	return ThrowHealthPotion::create();
