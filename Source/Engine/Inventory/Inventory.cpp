@@ -254,11 +254,6 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 	// Remove item
 	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
 
-	if (destinationIndex < 0)
-	{
-		destinationIndex = this->items.size();
-	}
-
 	// Re-insert item
 	destinationIndex = MathUtils::clamp(destinationIndex, 0, this->items.size());
 	this->items.insert(this->items.begin() + destinationIndex, item);

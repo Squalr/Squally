@@ -3,5 +3,6 @@
 enum class EngineCollisionTypes
 {
 	None				= 0,
+	Solid				= 1 << 30,
 	Intersection		= 1 << 31,
 };

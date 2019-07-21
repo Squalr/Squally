@@ -5,6 +5,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/physics/CCPhysicsBody.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/Deserializers/LayerDeserializer.h"
@@ -14,6 +15,8 @@
 #include "Engine/Maps/ObjectifiedTile.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/TileLayer.h"
+#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/SmartNode.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -147,6 +150,29 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	if (isIsometric)
 	{
 		mapSize.width /= 2.0f;
+	}
+	else
+	{
+		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision", { });
+
+		const float EdgeThickness = 256.0f;
+
+		CollisionObject* topCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* bottomCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* leftCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* rightCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+
+		edgeCollisionLayer->addChild(topCollision);
+		edgeCollisionLayer->addChild(leftCollision);
+		edgeCollisionLayer->addChild(rightCollision);
+		edgeCollisionLayer->addChild(bottomCollision);
+
+		topCollision->setPosition(Vec2(mapSize.width / 2.0f, mapSize.height + EdgeThickness / 2.0f));
+		bottomCollision->setPosition(Vec2(mapSize.width / 2.0f, -EdgeThickness / 2.0f));
+		leftCollision->setPosition(Vec2(-EdgeThickness / 2.0f, mapSize.height / 2.0f));
+		rightCollision->setPosition(Vec2(mapSize.width + EdgeThickness / 2.0f, mapSize.height / 2.0f));
+
+		deserializedLayers.push_back(edgeCollisionLayer);
 	}
 
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
