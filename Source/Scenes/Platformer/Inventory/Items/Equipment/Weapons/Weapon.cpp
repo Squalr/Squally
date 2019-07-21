@@ -24,20 +24,22 @@ int Weapon::getMaxAttack()
 
 float Weapon::getAttackOnset()
 {
-	return 0.2f;
+	return 0.1f;
 }
 
 float Weapon::getAttackSustain()
 {
-	return 0.15f;
+	return 0.35f;
 }
 
-Vec2 Weapon::getWeaponSizeMultiplier()
+Size Weapon::getWeaponCollisionSize()
 {
-	return Vec2(1.0f, 1.0f);
+	// As expected: Weapon width, height
+	return Size(32.0f, 160.0f);
 }
 
 Vec2 Weapon::getWeaponOffset()
 {
-	return Vec2::ZERO;
+	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
+	return Vec2(0.0f, 192.0f);
 }

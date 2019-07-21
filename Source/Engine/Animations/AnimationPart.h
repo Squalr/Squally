@@ -20,12 +20,15 @@ class AnimationPart : public SmartNode
 public:
 	static AnimationPart* create(SpriterEngine::EntityInstance* entity, std::string partName);
 
-	void addTrackingObject(cocos2d::Node* object);
+	void removeTrackingObject(cocos2d::Node* trackedObject);
+	void addTrackingObject(cocos2d::Node* trackedObject);
 	void replaceWithObject(cocos2d::Node* replacement, float disappearDuration = 2.0f, float fadeInDuration = 0.5f);
 	void detachFromTimeline();
 	void replaceSprite(std::string spriteResource);
+	void restoreSprite();
 	void setRotation(float rotation) override;
 	void setOffset(cocos2d::Vec2 offset);
+	void restoreOffset();
 	void setOpacity(GLubyte opacity) override;
 	void setVisible(bool visible) override;
 
@@ -43,6 +46,7 @@ private:
 	void onDeveloperModeDisable() override;
 	void updateTrackedAttributes();
 
+	std::string originalPath;
 	cocos2d::Sprite* ghostSprite;
 	std::vector<cocos2d::Node*> trackedObjects;
 	SpriterEngine::UniversalObjectInterface* spriterAnimationPart;

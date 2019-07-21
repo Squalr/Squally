@@ -14,7 +14,6 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
-class UIBoundObject;
 
 class InteractMenu : public SmartNode
 {

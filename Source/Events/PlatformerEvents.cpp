@@ -9,6 +9,7 @@ const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJA
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
 const std::string PlatformerEvents::EventQueryMapArgs = "EVENT_QUERY_MAP_ARGS";
 const std::string PlatformerEvents::EventRuneConsumed = "EVENT_RUNE_CONSUMED";
+const std::string PlatformerEvents::EventEquippedItemsChanged = "EVENT_EQUIPPED_ITEMS_CHANGED";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 
@@ -39,6 +40,13 @@ void PlatformerEvents::TriggerRuneConsumed(RuneConsumedArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventRuneConsumed,
 		&args
+	);
+}
+
+void PlatformerEvents::TriggerEquippedItemsChanged()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventEquippedItemsChanged
 	);
 }
 

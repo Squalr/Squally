@@ -11,6 +11,7 @@ public:
 	static const std::string EventCinematicRestore;
 	static const std::string EventQueryMapArgs;
 	static const std::string EventRuneConsumed;
+	static const std::string EventEquippedItemsChanged;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 
@@ -46,6 +47,7 @@ public:
 	static void TriggerCinematicRestore();
 	static void TriggerQueryMapArgs(QueryMapArgsArgs args);
 	static void TriggerRuneConsumed(RuneConsumedArgs args);
+	static void TriggerEquippedItemsChanged();
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 };

@@ -52,5 +52,5 @@ std::string CrystalMace::getSerializationKey()
 
 Vec2 CrystalMace::getDisplayOffset()
 {
-	return Vec2(-24.0f, 0.0f);
+	return Vec2(0.0f, -24.0f);
 }

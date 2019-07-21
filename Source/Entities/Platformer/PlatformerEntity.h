@@ -116,7 +116,7 @@ protected:
 	CollisionObject* groundCollision;
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
-	CollisionObject* attackCollision;
+	CollisionObject* weaponCollision;
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	CurrencyInventory* currencyInventory;
@@ -132,6 +132,7 @@ protected:
 	bool isOnGround();
 	bool isStandingOnSolid();
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
+	void rebuildWeaponCollision(cocos2d::Size size);
 	
 	bool isCinimaticHijacked;
 	bool isPerformingOutOfCombatAttack;
@@ -165,6 +166,7 @@ private:
 	float hoverHeight;
 
 	float scale;
+	PlatformerCollisionType collisionType;
 	std::string animationResource;
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;

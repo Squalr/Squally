@@ -47,7 +47,7 @@ private:
 	bool isAliveSqually();
 	void saveState();
 	void loadState();
-	void updateWeaponVisual();
+	void updateEquipmentVisual();
 	void runEyeBlinkLoop();
 
 	bool canJump;

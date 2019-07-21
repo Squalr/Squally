@@ -27,6 +27,8 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/PlayerEquipment.h"
@@ -101,7 +103,7 @@ void Squally::onEnter()
 	this->noCombatDuration = 2.0f;
 
 	this->loadState();
-	this->updateWeaponVisual();
+	this->updateEquipmentVisual();
 	this->runEyeBlinkLoop();
 
 	// Request camera track player
@@ -218,6 +220,11 @@ void Squally::initializeListeners()
 		this->tryUseRune();
 		
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
+	{
+		this->updateEquipmentVisual();
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
@@ -487,32 +494,72 @@ void Squally::loadState()
 	this->saveState();
 }
 
-void Squally::updateWeaponVisual()
+void Squally::updateEquipmentVisual()
 {
 	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+	Hat* hat = PlayerEquipment::getInstance()->getHat();
+	Offhand* offhand = PlayerEquipment::getInstance()->getOffhand();
 
-	if (weapon != nullptr)
+	AnimationPart* hatAnim = this->getAnimations()->getAnimationPart("hat");
+	
+	if (hatAnim != nullptr)
 	{
-		AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
-		
-		if (mainhand != nullptr)
+		if (hat != nullptr)
+		{
+			hatAnim->replaceSprite(hat->getIconResource());
+			hatAnim->setOffset(hat->getDisplayOffset());
+		}
+		else
+		{
+			hatAnim->restoreSprite();
+			hatAnim->restoreOffset();
+		}
+	}
+	
+	AnimationPart* offhandAnim = this->getAnimations()->getAnimationPart("offhand");
+	
+	if (offhandAnim != nullptr)
+	{
+		if (offhand != nullptr)
+		{
+			offhandAnim->replaceSprite(offhand->getIconResource());
+			offhandAnim->setOffset(offhand->getDisplayOffset());
+		}
+		else
+		{
+			offhandAnim->restoreSprite();
+			offhandAnim->restoreOffset();
+		}
+	}
+
+	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
+	
+	if (mainhand != nullptr)
+	{
+		if (weapon != nullptr)
 		{
 			mainhand->replaceSprite(weapon->getIconResource());
 			mainhand->setOffset(weapon->getDisplayOffset());
 		}
+		else
+		{
+			mainhand->restoreSprite();
+			mainhand->restoreOffset();
+		}
+	}
 
-		this->attackCollision->setPosition(weapon->getWeaponOffset());
-		this->attackCollision->setScaleX(weapon->getWeaponSizeMultiplier().x);
-		this->attackCollision->setScaleY(weapon->getWeaponSizeMultiplier().y);
+	if (weapon != nullptr)
+	{
+		this->rebuildWeaponCollision(weapon->getWeaponCollisionSize());
+		this->weaponCollision->setPosition(weapon->getWeaponOffset());
 	}
 	else
 	{
+		const Size NoWeaponSize = Size(64.0f, 64.0f);
 		const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
-		const Vec2 NoWeaponScale = Vec2(1.0f, 0.5f);
 
-		this->attackCollision->setScaleX(NoWeaponScale.x);
-		this->attackCollision->setScaleY(NoWeaponScale.y);
-		this->attackCollision->setPosition(NoWeaponOffset);
+		this->rebuildWeaponCollision(NoWeaponSize);
+		this->weaponCollision->setPosition(NoWeaponOffset);
 	}
 }
 

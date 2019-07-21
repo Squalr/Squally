@@ -14,6 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
@@ -713,6 +714,8 @@ void InventoryMenu::toggleEquipSelectedItem()
 	
 		this->buildInventoryList();
 	}
+
+	PlatformerEvents::TriggerEquippedItemsChanged();
 }
 
 cocos2d::Node* InventoryMenu::buildMenuLabel(LocalizedString* text, Sprite* icon)

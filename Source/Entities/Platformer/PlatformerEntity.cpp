@@ -64,7 +64,9 @@ PlatformerEntity::PlatformerEntity(
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
+	this->weaponCollision = nullptr;
 	this->scale = scale;
+	this->collisionType = collisionType;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
@@ -89,7 +91,7 @@ PlatformerEntity::PlatformerEntity(
 	);
 	this->entityCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(size, scale * 0.9f),
-		(CollisionType)(int)collisionType,
+		(CollisionType)(int)this->collisionType,
 		false,
 		false
 	);
@@ -115,15 +117,6 @@ PlatformerEntity::PlatformerEntity(
 		false
 	);
 
-	PlatformerCollisionType weaponType = collisionType == PlatformerCollisionType::Player ? PlatformerCollisionType::PlayerWeapon : 
-		(collisionType == PlatformerCollisionType::Enemy ? PlatformerCollisionType::EnemyWeapon : PlatformerCollisionType::None);
-
-	this->attackCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(PlatformerEntity::DefaultWeaponSize, 1.0f),
-		(int)weaponType,
-		false,
-		false
-	);
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create();
 	this->currencyInventory = CurrencyInventory::create();
@@ -161,8 +154,6 @@ PlatformerEntity::PlatformerEntity(
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
 
-	this->attackCollision->setPhysicsEnabled(false);
-
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
 		this->animationNode->setFlippedX(this->properties[PlatformerEntity::MapKeyFlipX].asBool());
@@ -188,13 +179,6 @@ PlatformerEntity::PlatformerEntity(
 	this->resurrectButton->setVisible(false);
 	this->killButton->setVisible(false);
 
-	AnimationPart* mainhand = this->animationNode->getAnimationPart("mainhand");
-
-	if (mainhand != nullptr)
-	{
-		mainhand->addTrackingObject(this->attackCollision);
-	}
-
 	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
 	this->addChild(this->groundCollision);
@@ -217,6 +201,8 @@ PlatformerEntity::~PlatformerEntity()
 void PlatformerEntity::onEnter()
 {
 	super::onEnter();
+
+	this->rebuildWeaponCollision(PlatformerEntity::DefaultWeaponSize);
 
 	this->scheduleUpdate();
 }
@@ -722,6 +708,31 @@ bool PlatformerEntity::isStandingOnSomethingOtherThan(CollisionObject* collisonO
 	return false;
 }
 
+void PlatformerEntity::rebuildWeaponCollision(Size size)
+{
+	AnimationPart* mainhand = this->animationNode->getAnimationPart("mainhand");
+
+	if (mainhand == nullptr)
+	{
+		return;
+	}
+
+	PlatformerCollisionType weaponType = this->collisionType == PlatformerCollisionType::Player ? PlatformerCollisionType::PlayerWeapon : 
+		(this->collisionType == PlatformerCollisionType::Enemy ? PlatformerCollisionType::EnemyWeapon : PlatformerCollisionType::None);
+
+	mainhand->removeTrackingObject(this->weaponCollision);
+
+	this->weaponCollision = CollisionObject::create(
+		PlatformerEntity::createCapsulePolygon(size, 1.0f),
+		(int)weaponType,
+		false,
+		false
+	);
+
+	this->weaponCollision->setPhysicsEnabled(false);
+	mainhand->addTrackingObject(this->weaponCollision);
+}
+
 void PlatformerEntity::initializeCollisionEvents()
 {
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
@@ -866,12 +877,12 @@ void PlatformerEntity::doOutOfCombatAttack()
 			{
 				this->outOfCombatAttackDebug->setVisible(true);
 			}
-			this->attackCollision->setPhysicsEnabled(true);
+			this->weaponCollision->setPhysicsEnabled(true);
 		}),
 		DelayTime::create(this->getOutOfCombatAttackSustain()),
 		CallFunc::create([=]()
 		{
-			this->attackCollision->setPhysicsEnabled(false);
+			this->weaponCollision->setPhysicsEnabled(false);
 			this->isPerformingOutOfCombatAttack = false;
 			this->outOfCombatAttackDebug->setVisible(false);
 		}),

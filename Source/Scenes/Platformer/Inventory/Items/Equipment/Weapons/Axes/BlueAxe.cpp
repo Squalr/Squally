@@ -49,3 +49,15 @@ std::string BlueAxe::getSerializationKey()
 {
 	return BlueAxe::SaveKeyBlueAxe;
 }
+
+Size BlueAxe::getWeaponCollisionSize()
+{
+	// As expected: Weapon width, height
+	return Size(112.0f, 96.0f);
+}
+
+Vec2 BlueAxe::getWeaponOffset()
+{
+	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
+	return Vec2(0.0f, 212.0f);
+}
