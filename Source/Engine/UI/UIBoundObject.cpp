@@ -45,16 +45,21 @@ void UIBoundObject::initializeListeners()
 {
     super::initializeListeners();
 
-    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObject, [=](EventCustom*)
+    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObject, [=](EventCustom* eventCustom)
     {
-        if (this->referencedObject != nullptr)
+        ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+        
+        if (args != nullptr)
         {
-            this->removeChild(referencedObject);
-        }
+            if (this->referencedObject != nullptr && this->referencedObject == args->relocatedObject)
+            {
+                this->removeChild(referencedObject);
 
-        if (this->getParent() != nullptr)
-        {
-            this->getParent()->removeChild(this);
+                if (this->getParent() != nullptr)
+                {
+                    this->getParent()->removeChild(this);
+                }
+            }
         }
     }));
 }

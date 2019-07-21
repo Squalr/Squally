@@ -13,6 +13,7 @@ namespace cocos2d
 class CodeEditor;
 class ConfirmationMenu;
 class DeveloperHud;
+class IngameMenu;
 class Hud;
 class LayerDeserializer;
 class OptionsMenu;
@@ -30,7 +31,7 @@ public:
 	std::vector<std::string> getMapArgs();
 
 protected:
-	MapBase(bool allowHackerMode);
+	MapBase(bool useIngameMenu, bool allowHackerMode);
 	~MapBase();
 
 	void onEnter() override;
@@ -51,6 +52,7 @@ protected:
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
+	IngameMenu* ingameMenu;
 	PauseMenu* pauseMenu;
 	GameMap* map;
 
@@ -60,11 +62,7 @@ protected:
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode(void* userData);
-	void onOptionsExit();
 	void openPauseMenu();
-	void onResumeClick();
-	void onOptionsClick();
-	void onExitClick();
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;

@@ -61,9 +61,9 @@ void ConfirmationMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->confirmWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 136.0f, visibleSize.height / 2 + 124.0f));
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2 - 96.0f, visibleSize.height / 2 - 64.0f));
-	this->confirmButton->setPosition(Vec2(visibleSize.width / 2 + 96.0f, visibleSize.height / 2 - 64.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 224.0f, visibleSize.height / 2 + 212.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2 - 160.0f, visibleSize.height / 2 - 192.0f));
+	this->confirmButton->setPosition(Vec2(visibleSize.width / 2 + 160.0f, visibleSize.height / 2 - 192.0f));
 }
 
 void ConfirmationMenu::initializeListeners()
@@ -94,13 +94,14 @@ void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::fu
 		this->removeChild(this->confirmationLabel);
 	}
 
-	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, confirmationMessage);
+	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, confirmationMessage);
 
 	this->onConfirmCallback = confirmCallback;
 	this->onCancelCallback = cancelCallback;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->confirmationLabel->enableOutline(Color4B::BLACK, 2);
 	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));
 
 	this->addChild(this->confirmationLabel);

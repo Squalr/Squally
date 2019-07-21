@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Resume : public LocalizedString
+	class Menus_Map_Map : public LocalizedString
 	{
 	public:
-		static Menus_Resume* create();
+		static Menus_Map_Map* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Resume();
-		~Menus_Resume();
+		Menus_Map_Map();
+		~Menus_Map_Map();
 	};
 }

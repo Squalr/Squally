@@ -5,11 +5,13 @@
 
 using namespace cocos2d;
 
+const Color4F SmartClippingNode::DebugColor = Color4F(0.0f, 1.0f, 0.0f, 0.5f);
+
 SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, float radius, Vec2 center, int segments)
 {
 	DrawNode* stencil = DrawNode::create();
 
-	stencil->drawSolidCircle(center, radius, 0.0f, segments, Color4F::GREEN);
+	stencil->drawSolidCircle(center, radius, 0.0f, segments, SmartClippingNode::DebugColor);
 
 	return SmartClippingNode::create(contentNode, stencil);
 }
@@ -18,7 +20,7 @@ SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, Rect bo
 {
 	DrawNode* stencil = DrawNode::create();
 
-	stencil->drawSolidRect(bounds.origin, Vec2(bounds.origin + bounds.size), Color4F::GREEN);
+	stencil->drawSolidRect(bounds.origin, Vec2(bounds.origin + bounds.size), SmartClippingNode::DebugColor);
 
 	return SmartClippingNode::create(contentNode, stencil);
 }

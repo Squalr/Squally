@@ -30,11 +30,7 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onOptionsExit();
 	void openPauseMenu();
-	void onResumeClick();
-	void onOptionsClick();
-	void onExitClick();
 
 	Cipher* cipher;
 	cocos2d::LayerColor* menuBackDrop;

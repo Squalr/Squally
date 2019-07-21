@@ -2,10 +2,14 @@
 
 #include "Scenes/MapBase.h"
 
+class CollectablesMenu;
 class CombatHud;
 class ChoicesMenu;
 class DefeatMenu;
 class EnemyAIHelper;
+class InventoryMenu;
+class MapMenu;
+class PartyMenu;
 class PlatformerEntityDeserializer;
 class RewardsMenu;
 class TargetSelectionMenu;
@@ -32,6 +36,11 @@ private:
 	void initializeListeners() override;
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 	void spawnEntities();
+
+	CollectablesMenu* collectablesMenu;
+	MapMenu* mapMenu;
+	PartyMenu* partyMenu;
+	InventoryMenu* inventoryMenu;
 
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;

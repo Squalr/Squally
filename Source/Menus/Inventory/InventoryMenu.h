@@ -25,7 +25,7 @@ class InventoryMenu : public SmartNode
 public:
 	static InventoryMenu* create();
 
-	void setReturnCallback(std::function<void()> returnClickCallback);
+	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 	static const float LabelSpacing;
 	static const cocos2d::Size LabelSize;

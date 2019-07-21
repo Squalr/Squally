@@ -14,10 +14,14 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Options/Options.h"
-#include "Strings/Menus/Pause.h"
-#include "Strings/Menus/QuitToTitle.h"
-#include "Strings/Menus/Resume.h"
+#include "Strings/Menus/Pause/Collectables.h"
+#include "Strings/Menus/Pause/Inventory.h"
+#include "Strings/Menus/Pause/Map.h"
+#include "Strings/Menus/Pause/Options.h"
+#include "Strings/Menus/Pause/Party.h"
+#include "Strings/Menus/Pause/Pause.h"
+#include "Strings/Menus/Pause/QuitToTitle.h"
+#include "Strings/Menus/Pause/Resume.h"
 
 using namespace cocos2d;
 
@@ -30,25 +34,31 @@ PauseMenu* PauseMenu::create()
 	return instance;
 }
 
-PauseMenu::PauseMenu()
+PauseMenu::PauseMenu(bool ownerInitialized)
 {
+	// Do nothing if this flag is set -- the overriding class will instantiate everything
+	if (ownerInitialized)
+	{
+		return;
+	}
+
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Pause::create());
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButtonSelected, UIResources::Menus_IngameMenu_CloseButton);
+	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Pause_Pause::create());
 	this->newButtonsNode = Node::create();
 	this->addedButtons = std::vector<ClickableTextNode*>();
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
-	this->exitClickCallback = nullptr;
+	this->quitToTitleClickCallback = nullptr;
 
-	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Resume::create());
-	LocalizedLabel*	resumeLabelHover = resumeLabel->clone();
+	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Pause_Resume::create());
+	LocalizedLabel*	resumeLabelSelected = resumeLabel->clone();
 
-	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
-	LocalizedLabel*	optionsLabelHover = optionsLabel->clone();
+	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Pause_Options::create());
+	LocalizedLabel*	optionsLabelSelected = optionsLabel->clone();
 
-	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_QuitToTitle::create());
-	LocalizedLabel*	exitLabelHover = exitLabel->clone();
+	LocalizedLabel*	quitToTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Pause_QuitToTitle::create());
+	LocalizedLabel*	quitToTitleLabelSelected = quitToTitleLabel->clone();
 
 	resumeLabel->enableOutline(Color4B::BLACK, 2);
 	resumeLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
@@ -56,38 +66,38 @@ PauseMenu::PauseMenu()
 	optionsLabel->enableOutline(Color4B::BLACK, 2);
 	optionsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	optionsLabel->enableGlow(Color4B::BLACK);
-	exitLabel->enableOutline(Color4B::BLACK, 2);
-	exitLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
-	exitLabel->enableGlow(Color4B::BLACK);
+	quitToTitleLabel->enableOutline(Color4B::BLACK, 2);
+	quitToTitleLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitToTitleLabel->enableGlow(Color4B::BLACK);
 
-	resumeLabelHover->enableOutline(Color4B::BLACK, 2);
-	resumeLabelHover->setTextColor(Color4B::YELLOW);
-	resumeLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
-	resumeLabelHover->enableGlow(Color4B::ORANGE);
-	optionsLabelHover->enableOutline(Color4B::BLACK, 2);
-	optionsLabelHover->setTextColor(Color4B::YELLOW);
-	optionsLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
-	optionsLabelHover->enableGlow(Color4B::ORANGE);
-	exitLabelHover->enableOutline(Color4B::BLACK, 2);
-	exitLabelHover->setTextColor(Color4B::YELLOW);
-	exitLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
-	exitLabelHover->enableGlow(Color4B::ORANGE);
+	resumeLabelSelected->enableOutline(Color4B::BLACK, 2);
+	resumeLabelSelected->setTextColor(Color4B::YELLOW);
+	resumeLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabelSelected->enableGlow(Color4B::ORANGE);
+	optionsLabelSelected->enableOutline(Color4B::BLACK, 2);
+	optionsLabelSelected->setTextColor(Color4B::YELLOW);
+	optionsLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabelSelected->enableGlow(Color4B::ORANGE);
+	quitToTitleLabelSelected->enableOutline(Color4B::BLACK, 2);
+	quitToTitleLabelSelected->setTextColor(Color4B::YELLOW);
+	quitToTitleLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitToTitleLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->resumeButton = ClickableTextNode::create(
 		resumeLabel,
-		resumeLabelHover,
+		resumeLabelSelected,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->optionsButton = ClickableTextNode::create(
 		optionsLabel,
-		optionsLabelHover,
+		optionsLabelSelected,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->exitButton = ClickableTextNode::create(
-		exitLabel,
-		exitLabelHover,
+	this->quitToTitleButton = ClickableTextNode::create(
+		quitToTitleLabel,
+		quitToTitleLabelSelected,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
@@ -99,7 +109,7 @@ PauseMenu::PauseMenu()
 	this->addChild(this->closeButton);
 	this->addChild(this->resumeButton);
 	this->addChild(this->optionsButton);
-	this->addChild(this->exitButton);
+	this->addChild(this->quitToTitleButton);
 	this->addChild(this->newButtonsNode);
 }
 
@@ -119,7 +129,7 @@ void PauseMenu::onEnter()
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->resumeButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
-	GameUtils::fadeInObject(this->exitButton, delay, duration);
+	GameUtils::fadeInObject(this->quitToTitleButton, delay, duration);
 
 	for (auto it = this->addedButtons.begin(); it != this->addedButtons.end(); it++)
 	{
@@ -136,21 +146,55 @@ void PauseMenu::initializePositions()
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 204.0f, visibleSize.height / 2.0f + 392.0f));
-	this->resumeButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f + 128.0f));
+
+	if (this->resumeButton != nullptr)
+	{
+		this->resumeButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f + 128.0f));
+	}
+
 	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f));
 	this->newButtonsNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 104.0f - 128.0f));
-	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 256.0f));
+	this->quitToTitleButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 256.0f));
 }
 
 void PauseMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->resumeButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onResumeClick, this));
-	this->optionsButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onOptionsClick, this));
-	this->exitButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onExitClick, this));
+	if (this->resumeButton != nullptr)
+	{
+		this->resumeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		{
+			if (this->resumeClickCallback != nullptr)
+			{
+				this->resumeClickCallback();
+			}
+		});
+	}
+	
+	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->optionsClickCallback != nullptr)
+		{
+			this->optionsClickCallback();
+		}
+	});
 
-	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(PauseMenu::onCloseClick, this));
+	this->quitToTitleButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->quitToTitleClickCallback != nullptr)
+		{
+			this->quitToTitleClickCallback();
+		}
+	});
+
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->resumeClickCallback != nullptr)
+		{
+			this->resumeClickCallback();
+		}
+	});
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -169,19 +213,19 @@ void PauseMenu::initializeListeners()
 	});
 }
 
-void PauseMenu::setResumeCallback(std::function<void()> resumeClickCallback)
+void PauseMenu::setResumeClickCallback(std::function<void()> resumeClickCallback)
 {
 	this->resumeClickCallback = resumeClickCallback;
 }
 
-void PauseMenu::setOptionsCallback(std::function<void()> optionsClickCallback)
+void PauseMenu::setOptionsClickCallback(std::function<void()> optionsClickCallback)
 {
 	this->optionsClickCallback = optionsClickCallback;
 }
 
-void PauseMenu::setExitCallback(std::function<void()> exitClickCallback)
+void PauseMenu::setQuitToTitleClickCallback(std::function<void()> quitToTitleClickCallback)
 {
-	this->exitClickCallback = exitClickCallback;
+	this->quitToTitleClickCallback = quitToTitleClickCallback;
 }
 
 ClickableTextNode* PauseMenu::addNewButton(LocalizedString* text)
@@ -210,41 +254,4 @@ ClickableTextNode* PauseMenu::addNewButton(LocalizedString* text)
 	newButton->setPositionY(float(this->addedButtons.size() - 1) * -128.0f);
 
 	return newButton;
-}
-
-void PauseMenu::onExitConfirm()
-{
-	NavigationEvents::LoadScene(TitleScreen::getInstance());
-}
-
-void PauseMenu::onCloseClick()
-{
-	if (this->resumeClickCallback != nullptr)
-	{
-		this->resumeClickCallback();
-	}
-}
-
-void PauseMenu::onResumeClick()
-{
-	if (this->resumeClickCallback != nullptr)
-	{
-		this->resumeClickCallback();
-	}
-}
-
-void PauseMenu::onOptionsClick()
-{
-	if (this->optionsClickCallback != nullptr)
-	{
-		this->optionsClickCallback();
-	}
-}
-
-void PauseMenu::onExitClick()
-{
-	if (this->exitClickCallback != nullptr)
-	{
-		this->exitClickCallback();
-	}
 }

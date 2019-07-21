@@ -18,6 +18,12 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
+#include "Menus/Collectables/CollectablesMenu.h"
+#include "Menus/Ingame/IngameMenu.h"
+#include "Menus/Inventory/InventoryMenu.h"
+#include "Menus/Map/MapMenu.h"
+#include "Menus/Party/PartyMenu.h"
+#include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
@@ -45,12 +51,17 @@ CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> map
 }
 
 CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
-		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true)
+		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true, true)
 {
 	if (!MapBase::init())
 	{
 		throw std::uncaught_exception();
 	}
+
+	this->collectablesMenu = CollectablesMenu::create();
+	this->mapMenu = MapMenu::create();
+	this->partyMenu = PartyMenu::create();
+	this->inventoryMenu = InventoryMenu::create();
 
 	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
@@ -87,6 +98,10 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
+	this->topMenuHud->addChild(this->collectablesMenu);
+	this->topMenuHud->addChild(this->mapMenu);
+	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->inventoryMenu);
 
 	this->loadMap(levelFile, mapArgs);
 	this->setEntityKeys(playerTypes, enemyTypes);
@@ -99,6 +114,11 @@ CombatMap::~CombatMap()
 void CombatMap::onEnter()
 {
 	MapBase::onEnter();
+
+	this->collectablesMenu->setVisible(false);
+	this->mapMenu->setVisible(false);
+	this->partyMenu->setVisible(false);
+	this->inventoryMenu->setVisible(false);
 
 	this->spawnEntities();
 }
@@ -217,6 +237,62 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
+	
+	this->ingameMenu->setInventoryClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(false);
+		this->inventoryMenu->setVisible(true);
+		GameUtils::focus(this->inventoryMenu);
+	});
+
+	this->ingameMenu->setPartyClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(false);
+		this->partyMenu->setVisible(true);
+		GameUtils::focus(this->partyMenu);
+	});
+	
+	this->ingameMenu->setMapClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(false);
+		this->mapMenu->setVisible(true);
+		GameUtils::focus(this->mapMenu);
+	});
+	
+	this->ingameMenu->setCollectablesClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(false);
+		this->collectablesMenu->setVisible(true);
+		GameUtils::focus(this->collectablesMenu);
+	});
+
+	this->collectablesMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->collectablesMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->mapMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->mapMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->partyMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->partyMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->inventoryMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->inventoryMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
 }
 
 void CombatMap::loadMap(std::string mapResource, std::vector<std::string> args)

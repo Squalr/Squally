@@ -31,6 +31,7 @@ CagedAnimal::CagedAnimal(ValueMap& initProperties) : super(initProperties, 1)
 
 CagedAnimal::~CagedAnimal()
 {
+	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->animalNode));
 }
 
 void CagedAnimal::initializePositions()

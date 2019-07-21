@@ -213,6 +213,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 
 void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float duration)
 {
+	if (particleSystem == nullptr)
+	{
+		return;
+	}
+
 	const float step = 0.0166660007;
 
 	particleSystem->start();
@@ -225,6 +230,11 @@ void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float durati
 
 void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte opacity)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+
 	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeTo::create(duration, opacity), nullptr);
 
 	node->setCascadeOpacityEnabled(true);

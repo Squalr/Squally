@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_QuitToTitle : public LocalizedString
+	class Menus_Pause_Pause : public LocalizedString
 	{
 	public:
-		static Menus_QuitToTitle* create();
+		static Menus_Pause_Pause* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_QuitToTitle();
-		~Menus_QuitToTitle();
+		Menus_Pause_Pause();
+		~Menus_Pause_Pause();
 	};
 }

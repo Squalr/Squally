@@ -31,4 +31,6 @@ private:
 
 	cocos2d::ClippingNode* clip;
 	cocos2d::DrawNode* stencil;
+
+	static const cocos2d::Color4F DebugColor;
 };

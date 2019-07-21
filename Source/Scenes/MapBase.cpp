@@ -20,6 +20,7 @@
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
@@ -29,7 +30,7 @@
 
 using namespace cocos2d;
 
-MapBase::MapBase(bool allowHackerMode)
+MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 {
 	this->allowHackerMode = allowHackerMode;
 	this->layerDeserializers = std::vector<LayerDeserializer*>();
@@ -40,7 +41,8 @@ MapBase::MapBase(bool allowHackerMode)
 	this->mapNode = Node::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
 	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
-	this->pauseMenu = PauseMenu::create();
+	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
+	this->pauseMenu = useIngameMenu ? (PauseMenu*)this->ingameMenu : PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->hudNode = Node::create();
@@ -69,7 +71,7 @@ MapBase::MapBase(bool allowHackerMode)
 		this->menuHud->addChild(this->radialMenu);
 		this->menuHud->addChild(this->codeEditor);
 	}
-
+	
 	this->topMenuHud->addChild(this->pauseMenu);
 	this->topMenuHud->addChild(this->optionsMenu);
 	this->topMenuHud->addChild(this->confirmationMenu);
@@ -161,10 +163,32 @@ void MapBase::initializeListeners()
 
 	scrollListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
 
-	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(MapBase::onOptionsExit, this));
-	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(MapBase::onResumeClick, this));
-	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(MapBase::onOptionsClick, this));
-	this->pauseMenu->setExitCallback(CC_CALLBACK_0(MapBase::onExitClick, this));
+	this->optionsMenu->setBackClickCallback([=]()
+	{
+		this->optionsMenu->setVisible(false);
+		this->openPauseMenu();
+	});
+
+	this->pauseMenu->setResumeClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->pauseMenu->setVisible(false);
+		GameUtils::focus(this);
+	});
+
+	this->pauseMenu->setOptionsClickCallback([=]()
+	{
+		this->pauseMenu->setVisible(false);
+		this->optionsMenu->setVisible(true);
+		GameUtils::focus(this->optionsMenu);
+	});
+
+	this->pauseMenu->setQuitToTitleClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->pauseMenu->setVisible(false);
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+	});
 
 	this->addEventListenerIgnorePause(scrollListener);
 }
@@ -288,36 +312,9 @@ void MapBase::toggleHackerMode(void* userData)
 	}
 }
 
-void MapBase::onOptionsExit()
-{
-	this->optionsMenu->setVisible(false);
-	this->openPauseMenu();
-}
-
 void MapBase::openPauseMenu()
 {
 	this->menuBackDrop->setOpacity(196);
 	this->pauseMenu->setVisible(true);
 	GameUtils::focus(this->pauseMenu);
-}
-
-void MapBase::onResumeClick()
-{
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	GameUtils::focus(this);
-}
-
-void MapBase::onOptionsClick()
-{
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(true);
-	GameUtils::focus(this->optionsMenu);
-}
-
-void MapBase::onExitClick()
-{
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 }
