@@ -264,6 +264,7 @@ void CombatMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(false);
 		this->collectablesMenu->setVisible(true);
+		this->collectablesMenu->open();
 		GameUtils::focus(this->collectablesMenu);
 	});
 
