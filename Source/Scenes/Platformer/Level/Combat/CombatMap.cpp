@@ -129,6 +129,7 @@ void CombatMap::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->ingameMenu->setPosition(Vec2(72.0f, 0.0f));
 	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));

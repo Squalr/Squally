@@ -170,14 +170,31 @@ void TerrainObject::buildCollision()
 	this->properties[GameObject::MapKeyXPosition] = 0.0f;
 	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
-	std::string deserializedCollisionName = this->properties.at(TerrainObject::MapKeyCollision).asString();
+	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyCollision, Value("")).asString();
 
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createEdgeSegment(std::get<0>(*it), std::get<1>(*it), material, 2.0f);
-		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
+		CollisionObject* collisionObject = nullptr;
+
+		if (deserializedCollisionName != "")
+		{
+			collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
+		}
+		else
+		{
+			if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+			{
+				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+			}
+			else
+			{
+				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
+			}
+		}
+		
 
 		this->collisionNode->addChild(collisionObject);
 	}
