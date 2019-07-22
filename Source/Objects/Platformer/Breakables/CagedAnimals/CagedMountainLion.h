@@ -1,0 +1,27 @@
+#pragma once
+
+#include "Objects/Platformer/Breakables/CagedAnimals/CagedAnimal.h"
+
+namespace cocos2d
+{
+	class Sprite;
+};
+
+class CagedMountainLion : public CagedAnimal
+{
+public:
+	static CagedMountainLion* create(cocos2d::ValueMap& initProperties);
+
+	static const std::string MapKeyCagedMountainLion;
+
+protected:
+	CagedMountainLion(cocos2d::ValueMap& initProperties);
+	virtual ~CagedMountainLion();
+
+	void initializePositions() override;
+
+private:
+	typedef CagedAnimal super;
+
+	cocos2d::Sprite* animalSprite;
+};

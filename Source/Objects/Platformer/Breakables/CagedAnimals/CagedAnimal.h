@@ -12,7 +12,7 @@ class CagedAnimal : public BreakableCage
 public:
 
 protected:
-	CagedAnimal(cocos2d::ValueMap& initProperties);
+	CagedAnimal(cocos2d::ValueMap& initProperties, std::string saveKey);
 	virtual ~CagedAnimal();
 
 	void initializePositions() override;
@@ -26,4 +26,5 @@ private:
 	typedef BreakableCage super;
 
 	cocos2d::Sprite* shineFx;
+	std::string saveKey;
 };

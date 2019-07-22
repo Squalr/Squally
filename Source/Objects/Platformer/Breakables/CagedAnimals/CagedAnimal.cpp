@@ -16,10 +16,11 @@
 
 using namespace cocos2d;
 
-CagedAnimal::CagedAnimal(ValueMap& initProperties) : super(initProperties, 1)
+CagedAnimal::CagedAnimal(ValueMap& initProperties, std::string saveKey) : super(initProperties, 1)
 {
 	this->animalNode = Node::create();
 	this->shineFx = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
+	this->saveKey = saveKey;
 
 	this->shineFx->setOpacity(0);
 

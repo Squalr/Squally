@@ -120,6 +120,8 @@ void PlatformerMap::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->ingameMenu->setPosition(Vec2(72.0f, 0.0f));
 }
 
 void PlatformerMap::initializeListeners()

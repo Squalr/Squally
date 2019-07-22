@@ -4,6 +4,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Scenes/Platformer/Save/SaveKeys.h"
+
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
@@ -19,9 +21,9 @@ CagedMonkey* CagedMonkey::create(ValueMap& initProperties)
 	return instance;
 }
 
-CagedMonkey::CagedMonkey(ValueMap& initProperties) : super(initProperties)
+CagedMonkey::CagedMonkey(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalMonkey)
 {
-	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_MONKEY);
+	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Monkey);
 
 	this->animalNode->addChild(this->animalSprite);
 }
