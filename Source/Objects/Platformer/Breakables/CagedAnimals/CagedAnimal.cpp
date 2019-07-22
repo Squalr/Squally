@@ -7,6 +7,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -21,6 +22,7 @@ CagedAnimal::CagedAnimal(ValueMap& initProperties, std::string saveKey) : super(
 	this->animalNode = Node::create();
 	this->shineFx = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
 	this->saveKey = saveKey;
+	this->alreadyCollected = false;
 
 	this->shineFx->setOpacity(0);
 
@@ -33,6 +35,18 @@ CagedAnimal::CagedAnimal(ValueMap& initProperties, std::string saveKey) : super(
 CagedAnimal::~CagedAnimal()
 {
 	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->animalNode));
+}
+
+void CagedAnimal::onEnter()
+{
+	super::onEnter();
+
+	if (SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool())
+	{
+		this->alreadyCollected = true;
+		this->animalNode->setVisible(false);
+		this->shineFx->setVisible(false);
+	}
 }
 
 void CagedAnimal::initializePositions()
@@ -56,6 +70,13 @@ void CagedAnimal::onBreak()
 {
 	super::onBreak();
 
+	if (this->alreadyCollected)
+	{
+		return;
+	}
+
+	SaveManager::saveProfileData(this->saveKey, Value(true));
+
 	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->animalNode));
 
 	this->shineFx->runAction(Sequence::create(
@@ -68,10 +89,6 @@ void CagedAnimal::onBreak()
 
 	this->animalNode->runAction(Sequence::create(
 		MoveBy::create(1.0f, Vec2(0.0f, 128.0f)),
-		CallFunc::create([=]()
-		{
-			// TODO: Save collection
-		}),
 		DelayTime::create(1.25f),
 		FadeTo::create(0.25f, 0),
 		nullptr

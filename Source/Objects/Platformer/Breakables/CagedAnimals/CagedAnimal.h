@@ -15,6 +15,7 @@ protected:
 	CagedAnimal(cocos2d::ValueMap& initProperties, std::string saveKey);
 	virtual ~CagedAnimal();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
@@ -27,4 +28,6 @@ private:
 
 	cocos2d::Sprite* shineFx;
 	std::string saveKey;
+
+	bool alreadyCollected;
 };

@@ -42,6 +42,7 @@ DebugScene::DebugScene()
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
 
+	this->chapterList.push_back(this->buildDebugButton(MapResources::Dev_Cages));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Intro));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_0));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_1));
