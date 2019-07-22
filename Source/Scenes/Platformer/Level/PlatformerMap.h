@@ -4,8 +4,11 @@
 
 class Cipher;
 class ClickableTextNode;
-class InventoryMenu;
+class CollectablesMenu;
 class GameHud;
+class InventoryMenu;
+class MapMenu;
+class PartyMenu;
 
 class PlatformerMap : public MapBase
 {
@@ -32,6 +35,8 @@ private:
 
 	GameHud* gameHud;
 	Cipher* cipher;
-	ClickableTextNode* inventoryButtonRef;
+	CollectablesMenu* collectablesMenu;
+	MapMenu* mapMenu;
+	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
 };

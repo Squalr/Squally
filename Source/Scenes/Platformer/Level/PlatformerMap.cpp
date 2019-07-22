@@ -17,7 +17,11 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
+#include "Menus/Collectables/CollectablesMenu.h"
+#include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
+#include "Menus/Map/MapMenu.h"
+#include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
@@ -49,7 +53,7 @@ PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::s
 	return instance;
 }
 
-PlatformerMap::PlatformerMap() : super(true)
+PlatformerMap::PlatformerMap() : super(true, true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{
@@ -58,7 +62,9 @@ PlatformerMap::PlatformerMap() : super(true)
 
 	this->gameHud = GameHud::create();
 	this->cipher = Cipher::create();
-	this->inventoryButtonRef = this->pauseMenu->addNewButton(Strings::Menus_Inventory_Inventory::create());
+	this->collectablesMenu = CollectablesMenu::create();
+	this->mapMenu = MapMenu::create();
+	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 
 	this->addLayerDeserializers({
@@ -80,6 +86,9 @@ PlatformerMap::PlatformerMap() : super(true)
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->menuHud->addChild(this->cipher);
+	this->topMenuHud->addChild(this->collectablesMenu);
+	this->topMenuHud->addChild(this->mapMenu);
+	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 }
 
@@ -91,6 +100,9 @@ void PlatformerMap::onEnter()
 {
 	super::onEnter();
 
+	this->collectablesMenu->setVisible(false);
+	this->mapMenu->setVisible(false);
+	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
 
 	this->scheduleUpdate();
@@ -138,18 +150,61 @@ void PlatformerMap::initializeListeners()
 			GameUtils::focus(this);
 		}
 	}));
-
-	this->inventoryButtonRef->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	
+	this->ingameMenu->setInventoryClickCallback([=]()
 	{
+		this->ingameMenu->setVisible(false);
 		this->inventoryMenu->setVisible(true);
 		GameUtils::focus(this->inventoryMenu);
 	});
 
-	this->inventoryMenu->setReturnCallback([=]()
+	this->ingameMenu->setPartyClickCallback([=]()
 	{
+		this->ingameMenu->setVisible(false);
+		this->partyMenu->setVisible(true);
+		GameUtils::focus(this->partyMenu);
+	});
+	
+	this->ingameMenu->setMapClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(false);
+		this->mapMenu->setVisible(true);
+		GameUtils::focus(this->mapMenu);
+	});
+	
+	this->ingameMenu->setCollectablesClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(false);
+		this->collectablesMenu->setVisible(true);
+		GameUtils::focus(this->collectablesMenu);
+	});
+
+	this->collectablesMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->collectablesMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->mapMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->mapMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->partyMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
+		this->partyMenu->setVisible(false);
+		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->inventoryMenu->setReturnClickCallback([=]()
+	{
+		this->ingameMenu->setVisible(true);
 		this->inventoryMenu->setVisible(false);
-		this->pauseMenu->setVisible(true);
-		GameUtils::focus(this->pauseMenu);
+		GameUtils::focus(this->ingameMenu);
 	});
 }
 

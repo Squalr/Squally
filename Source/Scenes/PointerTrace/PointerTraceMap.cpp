@@ -43,7 +43,7 @@ PointerTraceMap* PointerTraceMap::create(std::string mapFile, std::function<void
 	return instance;
 }
 
-PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback) : super(false)
+PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback) : super(false, false)
 {
 	this->onLevelClearCallback = onLevelClearCallback;
 	this->collisionMap = std::set<int>();

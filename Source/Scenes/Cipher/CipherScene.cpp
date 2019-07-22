@@ -76,10 +76,29 @@ void CipherScene::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(CipherScene::onOptionsExit, this));
-	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(CipherScene::onResumeClick, this));
-	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(CipherScene::onOptionsClick, this));
-	this->pauseMenu->setExitCallback(CC_CALLBACK_0(CipherScene::onExitClick, this));
+	this->optionsMenu->setBackClickCallback([=]()
+	{
+		this->optionsMenu->setVisible(false);
+		this->openPauseMenu();
+	});
+	this->pauseMenu->setResumeClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->pauseMenu->setVisible(false);
+		GameUtils::focus(this);
+	});
+	this->pauseMenu->setOptionsClickCallback([=]()
+	{
+		this->pauseMenu->setVisible(false);
+		this->optionsMenu->setVisible(true);
+		GameUtils::focus(this->optionsMenu);
+	});
+	this->pauseMenu->setQuitToTitleClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->pauseMenu->setVisible(false);
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -93,37 +112,10 @@ void CipherScene::initializeListeners()
 	});
 }
 
-void CipherScene::onOptionsExit()
-{
-	this->optionsMenu->setVisible(false);
-	this->openPauseMenu();
-}
-
 void CipherScene::openPauseMenu()
 {
 	this->menuBackDrop->setOpacity(196);
 	this->pauseMenu->setVisible(true);
 	GameUtils::focus(this->pauseMenu);
-}
-
-void CipherScene::onResumeClick()
-{
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	GameUtils::focus(this);
-}
-
-void CipherScene::onOptionsClick()
-{
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(true);
-	GameUtils::focus(this->optionsMenu);
-}
-
-void CipherScene::onExitClick()
-{
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 }
 

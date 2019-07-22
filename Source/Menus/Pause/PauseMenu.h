@@ -21,37 +21,32 @@ class PauseMenu : public SmartNode
 public:
 	static PauseMenu* create();
 
-	void setResumeCallback(std::function<void()> resumeClickCallback);
-	void setOptionsCallback(std::function<void()> optionsClickCallback);
-	void setExitCallback(std::function<void()> exitClickCallback);
+	void setResumeClickCallback(std::function<void()> resumeClickCallback);
+	void setOptionsClickCallback(std::function<void()> optionsClickCallback);
+	void setQuitToTitleClickCallback(std::function<void()> quitToTitleClickCallback);
 	ClickableTextNode* addNewButton(LocalizedString* text);
 
 protected:
-	PauseMenu();
+	PauseMenu(bool ownerInitialized = false);
 	~PauseMenu();
-
-private:
-	typedef SmartNode super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onExitConfirm();
-	void onCloseClick();
-	void onResumeClick();
-	void onOptionsClick();
-	void onExitClick();
 
 	cocos2d::Sprite* pauseWindow;
 	LocalizedLabel* pauseLabel;
 	ClickableNode* closeButton;
 	ClickableTextNode* resumeButton;
 	ClickableTextNode* optionsButton;
-	ClickableTextNode* exitButton;
+	ClickableTextNode* quitToTitleButton;
 	cocos2d::Node* newButtonsNode;
 	std::vector<ClickableTextNode*> addedButtons;
 	ConfirmationMenu* exitConfirmMenu;
 
 	std::function<void()> resumeClickCallback;
 	std::function<void()> optionsClickCallback;
-	std::function<void()> exitClickCallback;
+	std::function<void()> quitToTitleClickCallback;
+
+private:
+	typedef SmartNode super;
 };

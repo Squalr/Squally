@@ -48,7 +48,7 @@ void DeveloperModeController::initializeListeners()
 
 	static LanguageType nextLanguage = LanguageType::ENGLISH;
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_GRAVE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK_SLASH }, [=](InputEvents::InputArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{

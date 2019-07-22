@@ -285,10 +285,29 @@ void Hexus::initializeListeners()
 		this->openPauseMenu();
 	});
 
-	this->optionsMenu->setBackClickCallback(CC_CALLBACK_0(Hexus::onOptionsExit, this));
-	this->pauseMenu->setResumeCallback(CC_CALLBACK_0(Hexus::onResumeClick, this));
-	this->pauseMenu->setOptionsCallback(CC_CALLBACK_0(Hexus::onOptionsClick, this));
-	this->pauseMenu->setExitCallback(CC_CALLBACK_0(Hexus::onExitClick, this));
+	this->optionsMenu->setBackClickCallback([=]()
+	{
+		this->optionsMenu->setVisible(false);
+		this->openPauseMenu();
+	});
+	this->pauseMenu->setResumeClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->pauseMenu->setVisible(false);
+		GameUtils::focus(this);
+	});
+	this->pauseMenu->setOptionsClickCallback([=]()
+	{
+		this->pauseMenu->setVisible(false);
+		this->optionsMenu->setVisible(true);
+		GameUtils::focus(this->optionsMenu);
+	});
+	this->pauseMenu->setQuitToTitleClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		this->pauseMenu->setVisible(false);
+		NavigationEvents::LoadScene(TitleScreen::getInstance());
+	});
 }
 
 void Hexus::startGame(HexusOpponentData* opponentData)
@@ -321,36 +340,9 @@ void Hexus::startGame(HexusOpponentData* opponentData)
 	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
 }
 
-void Hexus::onOptionsExit()
-{
-	this->optionsMenu->setVisible(false);
-	this->openPauseMenu();
-}
-
 void Hexus::openPauseMenu()
 {
 	this->menuBackDrop->setOpacity(196);
 	this->pauseMenu->setVisible(true);
 	GameUtils::focus(this->pauseMenu);
-}
-
-void Hexus::onResumeClick()
-{
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	GameUtils::focus(this);
-}
-
-void Hexus::onOptionsClick()
-{
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(true);
-	GameUtils::focus(this->optionsMenu);
-}
-
-void Hexus::onExitClick()
-{
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	NavigationEvents::LoadScene(TitleScreen::getInstance());
 }

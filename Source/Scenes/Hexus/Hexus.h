@@ -94,11 +94,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void startGame(HexusOpponentData* opponentData);
-	void onOptionsExit();
 	void openPauseMenu();
-	void onResumeClick();
-	void onOptionsClick();
-	void onExitClick();
 
 	GameState* gameState;
 	cocos2d::Sprite* gameBackground;

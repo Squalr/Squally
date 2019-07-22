@@ -44,7 +44,7 @@ PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 	return PointerTraceLevelSelect::instance;
 }
 
-PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false)
+PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false, false)
 {
 	this->addLayerDeserializers({
 			BackgroundDeserializer::create(),

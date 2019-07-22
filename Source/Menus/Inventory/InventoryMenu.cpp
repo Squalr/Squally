@@ -71,7 +71,7 @@ InventoryMenu::InventoryMenu()
 	this->inventoryNode = SmartClippingNode::create(this->inventoryNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
 	this->returnClickCallback = nullptr;
 	this->activeFocus = ActiveFocus::Filter;
@@ -303,7 +303,7 @@ void InventoryMenu::initializeListeners()
 	});
 }
 
-void InventoryMenu::setReturnCallback(std::function<void()> returnClickCallback)
+void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
 {
 	this->returnClickCallback = returnClickCallback;
 }

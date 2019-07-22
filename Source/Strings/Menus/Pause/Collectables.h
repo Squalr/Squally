@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Pause : public LocalizedString
+	class Menus_Pause_Collectables : public LocalizedString
 	{
 	public:
-		static Menus_Pause* create();
+		static Menus_Pause_Collectables* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Pause();
-		~Menus_Pause();
+		Menus_Pause_Collectables();
+		~Menus_Pause_Collectables();
 	};
 }
