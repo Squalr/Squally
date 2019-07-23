@@ -239,7 +239,7 @@ void CollectablesMenu::registerCollectableAnimal(std::string resource, std::stri
 	int x = this->sprites.size() % 5;
 	int y = this->sprites.size() / 5;
 
-	Vec2 position = Vec2((float(x) + 0.5f) * 192.0f + 16.0f - this->contentPane->getPaneSize().width / 2.0f, float(y) * -256.0f - 128.0f);
+	Vec2 position = Vec2((float(x) + 0.5f) * 192.0f + 16.0f - this->contentPane->getPaneSize().width / 2.0f, float(y) * -212.0f - 128.0f);
 
 	next->setPosition(position);
 	nextLocked->setPosition(position);
