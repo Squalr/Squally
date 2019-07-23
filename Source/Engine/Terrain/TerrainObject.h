@@ -27,6 +27,7 @@ public:
 		cocos2d::Vec2 bottomLeftCornerOffset;
 		cocos2d::Vec2 bottomRightCornerOffset;
 		cocos2d::Color4B infillColor;
+		bool isPerfectlyFlat;
 
 		TerrainData(
 			float friction,
@@ -44,7 +45,8 @@ public:
 			cocos2d::Vec2 topRightCornerOffset,
 			cocos2d::Vec2 bottomLeftCornerOffset,
 			cocos2d::Vec2 bottomRightCornerOffset,
-			cocos2d::Color4B infillColor) :
+			cocos2d::Color4B infillColor,
+			bool isPerfectlyFlat) :
 			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
 			textureResource(textureResource),
@@ -60,7 +62,8 @@ public:
 			topRightCornerOffset(topRightCornerOffset),
 			bottomLeftCornerOffset(bottomLeftCornerOffset),
 			bottomRightCornerOffset(bottomRightCornerOffset),
-			infillColor(infillColor)
+			infillColor(infillColor),
+			isPerfectlyFlat(isPerfectlyFlat)
 		{
 		}
 
@@ -89,6 +92,7 @@ private:
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain(TerrainData terrainData);
+	void removeHollowEdgeCollisions();
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(cocos2d::Color4B infillColor);
@@ -101,6 +105,7 @@ private:
 	bool isRightAngle(float normalAngle);
 
 	TerrainData terrainData;
+	bool isHollow;
 
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> intersectionPoints;

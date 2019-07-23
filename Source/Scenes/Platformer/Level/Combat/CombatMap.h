@@ -58,4 +58,7 @@ private:
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 
 	static const std::string MapKeyPropertyDisableHackerMode;
+	static const std::string MapKeyPropertyFirstStrike;
+	static const std::string MapKeyPropertyNoDefend;
+	static const std::string MapKeyPropertyNoItems;
 };

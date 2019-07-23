@@ -39,6 +39,9 @@
 using namespace cocos2d;
 
 const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disabled";
+const std::string CombatMap::MapKeyPropertyFirstStrike = "first-strike";
+const std::string CombatMap::MapKeyPropertyNoDefend = "no-defend";
+const std::string CombatMap::MapKeyPropertyNoItems = "no-items";
 
 CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
 		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes)
@@ -58,14 +61,22 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 		throw std::uncaught_exception();
 	}
 
+	bool noItems = GameUtils::hasArg(mapArgs, CombatMap::MapKeyPropertyNoItems);
+	bool noDefend = GameUtils::hasArg(mapArgs, CombatMap::MapKeyPropertyNoDefend);
+
+	// Check for forced first-strike advantage (ie in tutorials)
+	if (GameUtils::hasArg(mapArgs, CombatMap::MapKeyPropertyFirstStrike))
+	{
+		playerFirstStrike = true;
+	}
+
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
-
 	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
-	this->choicesMenu = ChoicesMenu::create();
+	this->choicesMenu = ChoicesMenu::create(noItems, noDefend);
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
@@ -169,16 +180,12 @@ void CombatMap::initializeListeners()
 			expGain += StatsTables::calculateEnemyExp(entity);
 		}));
 
-		// Temporary code to prevent progression softlock for early-access users. Arbitrarily safe to delete after 9/01/2020.
-		for (auto it = this->mapArgs.begin(); it != this->mapArgs.end(); it++)
+		if (GameUtils::hasArg(this->mapArgs, "early-access-fix"))
 		{
-			if (*it == "early-access-fix")
+			if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt() <= 0)
 			{
-				if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt() <= 0)
-				{
-					// This is to make up for some users not getting exp from the first kill in the tutorial
-					expGain *= 2;
-				}
+				// This is to make up for some users not getting exp from the first kill in the tutorial
+				expGain *= 2;
 			}
 		}
 

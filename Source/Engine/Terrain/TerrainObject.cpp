@@ -46,6 +46,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
+	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -113,7 +114,7 @@ void TerrainObject::initializeListeners()
 	super::initializeListeners();
 
 	// Hollow terrain should listen for other terrain creation to remove any overlapping segments
-	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	if (this->isHollow)
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{
@@ -134,7 +135,7 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	this->collisionSegments = this->segments;
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 
-	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	if (this->isHollow)
 	{
 		std::vector<Vec2> holes = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::HollowDistance);
 
@@ -166,12 +167,14 @@ void TerrainObject::buildCollision()
 		return;
 	}
 
+	this->removeHollowEdgeCollisions();
+
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
 	this->properties[GameObject::MapKeyXPosition] = 0.0f;
 	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
 	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyCollision, Value("")).asString();
-
+	
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
@@ -185,13 +188,13 @@ void TerrainObject::buildCollision()
 		}
 		else
 		{
-			if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+			if (this->isHollow)
 			{
-				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
 			}
 			else
 			{
-				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
+				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
 			}
 		}
 		
@@ -260,7 +263,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 		return;
 	}
 
-	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool())
+	if (this->isHollow)
 	{
 		return;
 	}
@@ -356,6 +359,23 @@ void TerrainObject::buildSurfaceShadow()
 			this->shadowsNode->addChild(rasterizedShadowLine);
 		}
 	}
+}
+
+void TerrainObject::removeHollowEdgeCollisions()
+{
+	if (!this->isHollow)
+	{
+		return;
+	}
+	
+	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
+		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)
+		{
+			float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
+			
+			// Remove all collision except for top collision
+			return (!this->isTopAngle(normalAngle));
+		}));
 }
 
 void TerrainObject::buildSurfaceTextures()
@@ -454,8 +474,9 @@ void TerrainObject::buildSurfaceTextures()
 		if (this->isTopAngle(normalAngle))
 		{
 			Sprite* top = Sprite::create(this->terrainData.topResource);
+			Vec2 offset = this->terrainData.isPerfectlyFlat ? Vec2(0.0f, -2.0f) : Vec2(0.0f, top->getContentSize().height / 2.0f);
 
-			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), Vec2(0.0f, top->getContentSize().height / 2.0f), 180.0f, true);
+			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), offset, 180.0f, true);
 		}
 		else if (this->isBottomAngle(normalAngle))
 		{

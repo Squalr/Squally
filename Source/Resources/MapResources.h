@@ -13,7 +13,6 @@ namespace MapResources
 	extern const std::string EndianForest_Battlegrounds;
 	extern const std::string EndianForest_Forest;
 	extern const std::string EndianForest_Intro;
-	extern const std::string EndianForest_Town_Main;
 	extern const std::string EndianForest_Zone_1_0;
 	extern const std::string EndianForest_Zone_1_1;
 	extern const std::string EndianForest_Zone_1_2;

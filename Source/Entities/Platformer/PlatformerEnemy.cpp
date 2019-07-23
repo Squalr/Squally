@@ -21,8 +21,8 @@ using namespace cocos2d;
 const std::string PlatformerEnemy::SaveKeyIsDead = "is-dead";
 const std::string PlatformerEnemy::MapKeyBattleArgs = "battle-args";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
-const std::string PlatformerEnemy::MapKeyAlly1 = "ally-1";
-const std::string PlatformerEnemy::MapKeyAlly2 = "ally-2";
+const std::string PlatformerEnemy::MapKeyEnemy1 = "enemy-1";
+const std::string PlatformerEnemy::MapKeyEnemy2 = "enemy-2";
 const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
@@ -46,14 +46,14 @@ PlatformerEnemy::PlatformerEnemy(
 	this->goldTable = std::tuple<int, int>();
 	this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyName).asString());
 
-	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly1))
+	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyEnemy1))
 	{
-		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly1).asString());
+		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyEnemy1).asString());
 	}
 
-	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly2))
+	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyEnemy2))
 	{
-		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly2).asString());
+		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyEnemy2).asString());
 	}
 
 	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly3))

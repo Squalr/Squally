@@ -134,7 +134,7 @@ void SquallyShip::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
+	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
 	{
 		if (!this->hasCrashed)
 		{

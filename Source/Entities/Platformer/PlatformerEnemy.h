@@ -22,8 +22,8 @@ public:
 	static const std::string SaveKeyIsDead;
 	static const std::string MapKeyBattleArgs;
 	static const std::string MapKeyBattleMap;
-	static const std::string MapKeyAlly1;
-	static const std::string MapKeyAlly2;
+	static const std::string MapKeyEnemy1;
+	static const std::string MapKeyEnemy2;
 	static const std::string MapKeyAlly3;
 
 protected:

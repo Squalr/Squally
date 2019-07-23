@@ -218,8 +218,7 @@ void AnimationPart::updateTrackedAttributes()
 
 		if (!parent->getFlippedX())
 		{
-			// TODO: This logic is wrong and only results in quasi-accuracy (Enter debug mode and watch the ghost sprites visually to see the bug)
-			this->ghostSprite->setPositionX(this->ghostSprite->getPositionX() * 2.0f);
+			this->ghostSprite->setPositionX(this->ghostSprite->getPositionX() + this->ghostSprite->getContentSize().width);
 		}
 	}
 

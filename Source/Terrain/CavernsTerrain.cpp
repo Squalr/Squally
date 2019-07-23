@@ -35,7 +35,8 @@ CavernsTerrain::CavernsTerrain(ValueMap& initProperties) : super(
 		cocos2d::Vec2(16.0f, 0.0f),
 		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2::ZERO,
-		Color4B(14, 5, 2, 255)))
+		Color4B(14, 5, 2, 255),
+		false))
 {
 }
 

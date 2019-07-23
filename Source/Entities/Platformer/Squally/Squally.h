@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class PlatformerEnemy;
 class SmartAnimationSequenceNode;
 
 class Squally : public PlatformerFriendly
@@ -45,8 +46,10 @@ private:
 	void onHackerModeEnable(int eq) override;
 	void registerHackables() override;
 	bool isAliveSqually();
+	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
 	void saveState();
 	void loadState();
+	void rebuildWeaponCollision(cocos2d::Size size) override;
 	void updateEquipmentVisual();
 	void runEyeBlinkLoop();
 

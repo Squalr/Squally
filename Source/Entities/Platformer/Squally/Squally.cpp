@@ -132,34 +132,17 @@ void Squally::initializeCollisionEvents()
 {
 	super::initializeCollisionEvents();
 
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->noCombatDuration > 0.0f || this->isDead())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
-		this->noCombatDuration = 2.0f;
-		this->saveState();
-		
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
-
-		if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
-		{
-			// TODO: First strike detection
-			bool firstStrike = true;
-
-			CombatMap* combatMap = CombatMap::create(
-				enemy->getBattleMapResource(),
-				enemy->getBattleMapArgs(),
-				true,
-				enemy->getUniqueIdentifier(),
-				{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
-				enemy->getCombatEntityList()
-			);
-
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
-		}
+		
+		// Hit enemy directly, or got hit by their weapon -- not a first-strike
+		this->engageEnemy(enemy, false);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -446,6 +429,26 @@ NO_OPTIMIZE bool Squally::isAliveSqually()
 	return isAlive;
 }
 
+void Squally::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
+{
+	this->noCombatDuration = 2.0f;
+	this->saveState();
+
+	if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
+	{
+		CombatMap* combatMap = CombatMap::create(
+			enemy->getBattleMapResource(),
+			enemy->getBattleMapArgs(),
+			firstStrike,
+			enemy->getUniqueIdentifier(),
+			{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
+			enemy->getCombatEntityList()
+		);
+
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+	}
+}
+
 void Squally::saveState()
 {
 	ValueVector cooldowns = ValueVector();
@@ -492,6 +495,26 @@ void Squally::loadState()
 
 	// Save new defaults
 	this->saveState();
+}
+
+void Squally::rebuildWeaponCollision(cocos2d::Size size)
+{
+	super::rebuildWeaponCollision(size);
+
+	this->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->isDead())
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
+		
+		// First-strike!
+		this->engageEnemy(enemy, true);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }
 
 void Squally::updateEquipmentVisual()

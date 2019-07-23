@@ -14,11 +14,11 @@ class TimelineEntry;
 class ChoicesMenu : public SmartNode
 {
 public:
-	static ChoicesMenu* create();
+	static ChoicesMenu* create(bool noItems = false, bool noDefend = false);
 
 private:
 	typedef SmartNode super;
-	ChoicesMenu();
+	ChoicesMenu(bool noItems = false, bool noDefend = false);
 	virtual ~ChoicesMenu() = default;
 
 	void onEnter() override;
@@ -46,6 +46,9 @@ private:
 
 	std::vector<ClickableTextNode*> attackListNodes;
 	std::vector<ClickableTextNode*> itemListNodes;
+	
+	bool noItems;
+	bool noDefend;
 
 	static const float InnerChoicesRadius;
 	static const float OuterChoicesRadius;

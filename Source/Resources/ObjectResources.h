@@ -158,6 +158,10 @@ namespace ObjectResources
 	extern const std::string Doors_Crypt_CryptOpened;
 	extern const std::string Doors_Gate_GateLeft;
 	extern const std::string Doors_Gate_GateRight;
+	extern const std::string Doors_LanternGate_LanternLeft;
+	extern const std::string Doors_LanternGate_LanternOrangeLeft;
+	extern const std::string Doors_LanternGate_LanternOrangeRight;
+	extern const std::string Doors_LanternGate_LanternRight;
 	extern const std::string Doors_OrcGate_2;
 	extern const std::string Doors_OrcGate_BACK_ORC;
 	extern const std::string Doors_OrcGate_FRONT_ORC;

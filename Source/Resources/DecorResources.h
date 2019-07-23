@@ -512,6 +512,14 @@ namespace DecorResources
 	extern const std::string Generic_Background_Fog4;
 	extern const std::string Generic_Background_Moon;
 	extern const std::string Generic_Background_sun;
+	extern const std::string Generic_Bed;
+	extern const std::string Generic_BoardedWindow;
+	extern const std::string Generic_Counter;
+	extern const std::string Generic_Lamp1;
+	extern const std::string Generic_Lamp2;
+	extern const std::string Generic_Nightstand;
+	extern const std::string Generic_Register;
+	extern const std::string Generic_Sack;
 	extern const std::string Generic_TownAlchemy;
 	extern const std::string Generic_TownEquipment;
 	extern const std::string Generic_TownFence;
@@ -525,6 +533,12 @@ namespace DecorResources
 	extern const std::string Generic_TownHomeEmpty4;
 	extern const std::string Generic_TownHomeEmpty5;
 	extern const std::string Generic_TownHomeEmpty6;
+	extern const std::string Generic_VillageAlchemy;
+	extern const std::string Generic_VillageEquipment;
+	extern const std::string Generic_VillageHome1;
+	extern const std::string Generic_VillageHome2;
+	extern const std::string Generic_VillageHome3;
+	extern const std::string Generic_WoodDoor;
 	extern const std::string Generic_arrow_1;
 	extern const std::string Generic_arrow_2;
 	extern const std::string Generic_arrow1;

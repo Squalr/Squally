@@ -1989,6 +1989,7 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/MarbleTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShadeGrassTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/TrailTerrain.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/WoodTerrain.cpp"
 )
 
 set(GAME_HEADERS
@@ -4005,5 +4006,6 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/PlatformerTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShadeGrassTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/TrailTerrain.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/WoodTerrain.h"
 )
 

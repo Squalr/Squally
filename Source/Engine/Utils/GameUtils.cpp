@@ -439,6 +439,11 @@ bool GameUtils::keyExists(const ValueMap& valueMap, std::string key)
 	return false;
 }
 
+bool GameUtils::hasArg(const std::vector<std::string>& argList, std::string arg)
+{
+	return (std::find(argList.begin(), argList.end(), arg) != argList.end());
+}
+
 const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::string key, const Value& defaultValue)
 {
 	if (GameUtils::keyExists(valueMap, key))

@@ -35,6 +35,7 @@ public:
 	static bool intersects(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool intersectsIsometric(cocos2d::Node* node, cocos2d::Vec2 mousePos);
 	static bool keyExists(const cocos2d::ValueMap& valueMap, std::string key);
+	static bool hasArg(const std::vector<std::string>& argList, std::string arg);
 	static const cocos2d::Value& getKeyOrDefault(const cocos2d::ValueMap& valueMap, std::string key, const cocos2d::Value& defaultValue);
 
 	template <class T>

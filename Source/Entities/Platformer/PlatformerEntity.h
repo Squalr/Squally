@@ -132,7 +132,7 @@ protected:
 	bool isOnGround();
 	bool isStandingOnSolid();
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
-	void rebuildWeaponCollision(cocos2d::Size size);
+	virtual void rebuildWeaponCollision(cocos2d::Size size);
 	
 	bool isCinimaticHijacked;
 	bool isPerformingOutOfCombatAttack;

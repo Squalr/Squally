@@ -26,17 +26,19 @@ using namespace cocos2d;
 const float ChoicesMenu::InnerChoicesRadius = 240.0f;
 const float ChoicesMenu::OuterChoicesRadius = 384.0f;
 
-ChoicesMenu* ChoicesMenu::create()
+ChoicesMenu* ChoicesMenu::create(bool noItems, bool noDefend)
 {
-	ChoicesMenu* instance = new ChoicesMenu();
+	ChoicesMenu* instance = new ChoicesMenu(noItems, noDefend);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChoicesMenu::ChoicesMenu()
+ChoicesMenu::ChoicesMenu(bool noItems, bool noDefend)
 {
+	this->noItems = noItems;
+	this->noDefend = noDefend;
 	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 
@@ -193,9 +195,25 @@ void ChoicesMenu::initializeListeners()
 		}
 	}));
 
-	this->itemsNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onItemsClick(); });
+	if (!this->noItems)
+	{
+		this->itemsNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onItemsClick(); });
+	}
+	else
+	{
+		this->itemsNode->disableInteraction();
+	}
+
 	this->attackNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onAttackClick(); });
-	this->defendNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onDefendClick(); });
+
+	if (!this->noDefend)
+	{
+		this->defendNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->onDefendClick(); });
+	}
+	else
+	{
+		this->defendNode->disableInteraction();
+	}
 }
 
 void ChoicesMenu::update(float dt)
@@ -260,9 +278,9 @@ void ChoicesMenu::toggleInnerText(bool isVisible)
 	this->attackNode->setTextVisible(isVisible);
 	this->defendNode->setTextVisible(isVisible);
 
-	this->itemsNode->setOpacity(isVisible ? 255 : 127);
+	this->itemsNode->setOpacity((this->noItems || !isVisible) ? 127 : 255);
 	this->attackNode->setOpacity(isVisible ? 255 : 127);
-	this->defendNode->setOpacity(isVisible ? 255 : 127);
+	this->defendNode->setOpacity((this->noDefend || !isVisible) ? 127 : 255);
 }
 
 void ChoicesMenu::toggleOuterText(bool isVisible)

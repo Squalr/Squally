@@ -29,6 +29,7 @@ EdgePortal* EdgePortal::create(ValueMap& initProperties)
 
 EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties, Size(initProperties.at(GameObject::MapKeyWidth).asFloat(), initProperties.at(GameObject::MapKeyHeight).asFloat()))
 {
+	this->requiresInteraction = false;
 }
 
 EdgePortal::~EdgePortal()

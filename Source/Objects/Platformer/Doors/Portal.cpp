@@ -17,9 +17,19 @@
 
 using namespace cocos2d;
 
+const std::string Portal::MapKeyPortal = "portal";
 const std::string Portal::MapKeyPortalArgs = "args";
 const std::string Portal::MapKeyPortalTransition = "transition";
 const std::string Portal::MapKeyPortalMap = "map";
+
+Portal* Portal::create(ValueMap& initProperties)
+{
+	Portal* instance = new Portal(initProperties, Size(initProperties.at(GameObject::MapKeyWidth).asFloat(), initProperties.at(GameObject::MapKeyHeight).asFloat()));
+
+	instance->autorelease();
+
+	return instance;
+}
 
 Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initProperties)
 {
@@ -29,7 +39,7 @@ Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initPro
 	this->mapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalArgs, Value("")).asString(), ", ");
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
 	this->isLocked = !this->mapEvent.empty();
-	this->requiresInteraction = false;
+	this->requiresInteraction = true;
 
 	std::string transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
 

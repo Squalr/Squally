@@ -151,4 +151,13 @@ namespace TerrainResources
 	extern const std::string Trail_TrailTexture;
 	extern const std::string Trail_TrailTopLeft;
 	extern const std::string Trail_TrailTopRight;
+	extern const std::string Wood_Wood;
+	extern const std::string Wood_WoodBottom;
+	extern const std::string Wood_WoodBottomLeft;
+	extern const std::string Wood_WoodBottomRight;
+	extern const std::string Wood_WoodLeft;
+	extern const std::string Wood_WoodRight;
+	extern const std::string Wood_WoodTexture;
+	extern const std::string Wood_WoodTopLeft;
+	extern const std::string Wood_WoodTopRight;
 };

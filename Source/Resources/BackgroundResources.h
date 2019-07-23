@@ -12,6 +12,7 @@ namespace BackgroundResources
 	extern const std::string Crypt2;
 	extern const std::string DarkForestSky;
 	extern const std::string Dawn;
+	extern const std::string IndoorHouse;
 	extern const std::string Jungle;
 	extern const std::string Laboratory;
 	extern const std::string LakeSideSky;
