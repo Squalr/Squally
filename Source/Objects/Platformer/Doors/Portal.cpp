@@ -40,8 +40,7 @@ Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initPro
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
 	this->isLocked = !this->mapEvent.empty();
 	this->requiresInteraction = true;
-
-	std::string transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
+	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
 
 	this->mapArgs.push_back(PlatformerMap::MapArgClearSavedPosition);
 

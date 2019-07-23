@@ -26,7 +26,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	
+
 	bool requiresInteraction;
 
 private:
@@ -40,6 +40,7 @@ private:
 	bool canInteract;
 	bool wasTripped;
 	bool isLocked;
+	std::string transition;
 	std::string mapFile;
 	std::vector<std::string> mapArgs;
 };

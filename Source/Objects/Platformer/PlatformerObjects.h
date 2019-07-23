@@ -12,6 +12,7 @@
 #include "Objects/Platformer/Doors/CastleDoor/CastleDoorFront.h"
 #include "Objects/Platformer/Doors/EdgePortal.h"
 #include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Doors/PortalSpawn.h"
 #include "Objects/Platformer/Doors/PuzzleDoor/MulDoor/MulDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoorFrame.h"

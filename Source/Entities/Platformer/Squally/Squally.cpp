@@ -198,6 +198,16 @@ void Squally::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocation, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->setPosition(args->position);
+		}
+	}));
+
 	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
 		this->tryUseRune();

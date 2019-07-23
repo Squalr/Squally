@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
@@ -36,9 +37,9 @@ using namespace cocos2d;
 
 const std::string PlatformerMap::MapArgClearSavedPosition = "ARGS_CLEAR_SAVED_POSITION";
 
-PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs)
+PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs, std::string transition)
 {
-	PlatformerMap* instance = new PlatformerMap();
+	PlatformerMap* instance = new PlatformerMap(transition);
 
 	instance->autorelease();
 
@@ -53,13 +54,14 @@ PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::s
 	return instance;
 }
 
-PlatformerMap::PlatformerMap() : super(true, true)
+PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{
 		throw std::uncaught_exception();
 	}
 
+	this->transition = transition;
 	this->gameHud = GameHud::create();
 	this->cipher = Cipher::create();
 	this->collectablesMenu = CollectablesMenu::create();
@@ -106,6 +108,13 @@ void PlatformerMap::onEnter()
 	this->inventoryMenu->setVisible(false);
 
 	this->scheduleUpdate();
+}
+
+void PlatformerMap::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
 }
 
 void PlatformerMap::onExit()

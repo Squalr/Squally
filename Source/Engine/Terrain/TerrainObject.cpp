@@ -474,7 +474,7 @@ void TerrainObject::buildSurfaceTextures()
 		if (this->isTopAngle(normalAngle))
 		{
 			Sprite* top = Sprite::create(this->terrainData.topResource);
-			Vec2 offset = this->terrainData.isPerfectlyFlat ? Vec2(0.0f, -2.0f) : Vec2(0.0f, top->getContentSize().height / 2.0f);
+			Vec2 offset = this->terrainData.isPerfectlyFlat ? Vec2(0.0f, 2.0f) : Vec2(0.0f, top->getContentSize().height / 2.0f);
 
 			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), offset, 180.0f, true);
 		}
