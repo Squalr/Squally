@@ -59,6 +59,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->topsNode = Node::create();
 	this->topCornersNode = Node::create();
 	this->debugNode = Node::create();
+	this->boundsRect = Rect::ZERO;
 
 	this->debugNode->setVisible(false);
 
@@ -244,6 +245,8 @@ void TerrainObject::buildInnerTextures()
 
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
 	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
+
+	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
 	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
 	texture->getTexture()->setTexParameters(params);
@@ -568,6 +571,11 @@ void TerrainObject::buildSurfaceTextures()
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
+	if (!this->boundsRect.intersectsRect(other->boundsRect))
+	{
+		return;
+	}
+
 	// Remove all collision boxes that are completely eclipsed
 	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
 		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)

@@ -56,7 +56,7 @@ CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> map
 CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
 		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true, true)
 {
-	if (!MapBase::init())
+	if (!super::init())
 	{
 		throw std::uncaught_exception();
 	}
@@ -124,7 +124,7 @@ CombatMap::~CombatMap()
 
 void CombatMap::onEnter()
 {
-	MapBase::onEnter();
+	super::onEnter();
 
 	this->collectablesMenu->setVisible(false);
 	this->mapMenu->setVisible(false);
@@ -134,9 +134,15 @@ void CombatMap::onEnter()
 	this->spawnEntities();
 }
 
+void CombatMap::onExit()
+{
+	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// super::onExit();
+}
+
 void CombatMap::initializePositions()
 {
-	MapBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -149,7 +155,7 @@ void CombatMap::initializePositions()
 
 void CombatMap::initializeListeners()
 {
-	MapBase::initializeListeners();
+	super::initializeListeners();
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{

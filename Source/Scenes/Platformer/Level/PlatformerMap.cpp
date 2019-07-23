@@ -8,6 +8,7 @@
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Maps/GameMap.h"
@@ -119,9 +120,8 @@ void PlatformerMap::onEnterTransitionDidFinish()
 
 void PlatformerMap::onExit()
 {
-	super::onExit();
-
-	SaveManager::save();
+	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// super::onExit();
 }
 
 void PlatformerMap::initializePositions()
@@ -136,6 +136,13 @@ void PlatformerMap::initializePositions()
 void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->unscheduleUpdate();
+
+		SaveManager::save();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{

@@ -9,7 +9,6 @@ public:
 
 protected:
 	void initializeListeners() override;
-	void onExit() override;
 	void pause() override;
 	void resume() override;
 	float getConfigVolume() override;

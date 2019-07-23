@@ -30,6 +30,7 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 	this->hackButton = HackButton::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
+	this->hasRelocatedUI = false;
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
@@ -47,9 +48,6 @@ HackableObject::~HackableObject()
 void HackableObject::onEnter()
 {
 	super::onEnter();
-
-	// Move the UI elements to the top-most layer
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
 
 	this->registerHackables();
 	this->scheduleUpdate();
@@ -153,6 +151,14 @@ void HackableObject::onHackerModeEnable(int eq)
 
 	if (!this->hackableList.empty())
 	{
+		// Note that this is deferred until now as an optimization, as TriggerMoveObjectToTopLayer is expensive
+		if (!this->hasRelocatedUI)
+		{
+			// Move the UI elements to the top-most layer
+			ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
+			this->hasRelocatedUI = true;
+		}
+		
 		this->hackButton->setVisible(true);
 	}
 }

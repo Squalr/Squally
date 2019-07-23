@@ -6,6 +6,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -234,14 +235,6 @@ void CodeEditor::onEnter()
 	this->scheduleUpdate();
 }
 
-void CodeEditor::onExit()
-{
-	super::onExit();
-	
-	this->activeHackableCode = nullptr;
-	this->clippyNode->removeAllChildren();
-}
-
 void CodeEditor::initializePositions()
 {
 	super::initializePositions();
@@ -275,6 +268,12 @@ void CodeEditor::initializeListeners()
 
 	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
 	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->activeHackableCode = nullptr;
+		this->clippyNode->removeAllChildren();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
 	{

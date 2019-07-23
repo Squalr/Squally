@@ -180,7 +180,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		}
 
 		node->retain();
-		node->removeFromParent();
+		
+		if (node->getParent() != nullptr)
+		{
+			node->getParent()->removeChildNoExit(node);
+		}
 	}
 	else if (retainPosition)
 	{

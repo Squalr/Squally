@@ -29,8 +29,21 @@ HackButton::~HackButton()
 
 void HackButton::addEventListener(cocos2d::EventListener* listener)
 {
-	// Here's the magic trick -- we want the hackable button to be clickable no matter what
-	this->addEventListenerIgnorePause(listener);
+	static bool isWrappingCall = false;
+
+	if (!isWrappingCall)
+	{
+		isWrappingCall = true;
+
+		// Here's the magic trick -- we want the hackable button to be clickable no matter what
+		this->addEventListenerIgnorePause(listener);
+
+		isWrappingCall = false;
+	}
+	else
+	{
+		super::addEventListener(listener);
+	}
 }
 
 void HackButton::initializeListeners()

@@ -195,8 +195,8 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 	// Keep the original listener around so that we can invoke it, but disable it
 	listener->setEnabled(false);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(wrapper, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->addEventListener(wrapper);
+	this->addEventListener(listener);
 }
 
 void SmartScene::setFadeSpeed(float newFadeSpeed)

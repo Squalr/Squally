@@ -26,7 +26,6 @@ private:
 	virtual ~Timeline() = default;
 
 	void onEnter() override;
-	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;

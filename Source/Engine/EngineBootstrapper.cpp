@@ -13,7 +13,7 @@ void EngineBootstrapper::initialize()
 {
 	// Initialize global objects
 	Analytics::registerGlobalNode();
-	TranslationMenu::registerGlobalNode();
+	// TranslationMenu::registerGlobalNode();
 	CollisionEventDispatcher::registerGlobalNode();
 	DeveloperModeController::registerGlobalNode();
 	GameCamera::registerGlobalNode();

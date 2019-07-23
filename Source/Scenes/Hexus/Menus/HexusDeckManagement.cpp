@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -238,16 +239,14 @@ void HexusDeckManagement::onEnter()
 	this->rebuildCardLists();
 }
 
-void HexusDeckManagement::onExit()
-{
-	this->save(false);
-
-	super::onExit();
-}
-
 void HexusDeckManagement::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->save(false);
+	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

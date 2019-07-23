@@ -47,7 +47,7 @@ void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 			GlobalDirector::getInstance()->sceneHistory.push(GlobalDirector::getInstance()->activeScene);
 		}
 		
-		GlobalDirector::getInstance()->getParent()->removeChild(GlobalDirector::getInstance());
+		GlobalDirector::getInstance()->getParent()->removeChildNoExit(GlobalDirector::getInstance());
 	}
 
 	scene->addChild(GlobalDirector::getInstance());

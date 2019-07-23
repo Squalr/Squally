@@ -42,7 +42,7 @@ LocalizedLabel::LocalizedLabel(
 	this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->localizedString = nullptr; // Do not set here; set via the setter function
 
-	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
+	// this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
 	this->setDimensions(dimensions.width, dimensions.height);
 	this->setAlignment(hAlignment, vAlignment);
@@ -62,11 +62,12 @@ void LocalizedLabel::onEnter()
 	super::onEnter();
 
 	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
+	/*
 	this->updateTranslationEditHitbox();
 	this->translationButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
-	});
+	});*/
 }
 
 LocalizedLabel* LocalizedLabel::clone()

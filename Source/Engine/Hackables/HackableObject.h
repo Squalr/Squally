@@ -55,6 +55,8 @@ protected:
 private:
 	typedef GameObject super;
 
+	bool hasRelocatedUI;
+
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
