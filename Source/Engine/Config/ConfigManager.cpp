@@ -105,7 +105,7 @@ void ConfigManager::setGraphics(GraphicsSetting graphics)
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	instance->valueMap[ConfigManager::ResolutionKey] = Value((int)graphics);
+	instance->valueMap[ConfigManager::GraphicsKey] = Value((int)graphics);
 }
 
 void ConfigManager::setIsFullScreen(bool isFullScreen)

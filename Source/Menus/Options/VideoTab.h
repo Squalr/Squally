@@ -35,6 +35,7 @@ private:
 	void initializePositions() override;
 	bool onFullScreenChanged(Checkbox* checkbox, bool isFullScreen);
 	void onResolutionChanged(RadioButton* radioButton);
+	void onGraphicsChanged(RadioButton* radioButton);
 	void showResolutionOptions();
 	void hideResolutionOptions();
 
@@ -65,5 +66,13 @@ private:
 	RadioButton* option2560x1440;
 	RadioButton* option3840x2160;
 
+	LocalizedLabel* graphicEffectsLabel;
+	LocalizedLabel* highQualityLabel;
+	LocalizedLabel* lowQualityLabel;
+
+	RadioButton* optionLowQuality;
+	RadioButton* optionHighQuality;
+
 	static const int ResolutionGroupId;
+	static const int GraphicsGroupId;
 };
