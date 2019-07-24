@@ -11,6 +11,7 @@
 
 using namespace cocos2d;
 
+const std::string PhysicsLayer::MapKeyPhysicsLayer = "physics";
 const std::string PhysicsLayer::MapKeyGravity = "gravity";
 const float PhysicsLayer::DefaultGravity = 768.0f;
 const float PhysicsLayer::MinimumGravity = 1024.0f;
@@ -25,7 +26,7 @@ PhysicsLayer* PhysicsLayer::create(ValueMap& properties, std::string name)
 	return instance;
 }
 
-PhysicsLayer::PhysicsLayer(ValueMap& properties, std::string name) : MapLayer(properties, name)
+PhysicsLayer::PhysicsLayer(ValueMap& properties, std::string name) : MapLayer(properties, name, PhysicsLayer::MapKeyPhysicsLayer)
 {
 	// Parse gravity, fixing any bad input (force negative gravity values, bound between min and max)
 	float parsedGravity = GameUtils::getKeyOrDefault(properties, PhysicsLayer::MapKeyGravity, Value(PhysicsLayer::DefaultGravity)).asFloat();

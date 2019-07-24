@@ -27,7 +27,9 @@ public:
 
 	std::string getType();
 	std::vector<std::vector<int>> getGidMap();
+	bool isObjectified();
 
+	static const std::string MapKeyTilemapType;
 	static const std::string MapKeyPropertyWidth;
 	static const std::string MapKeyPropertyHeight;
 	static const std::string MapKeyPropertyType;
@@ -42,4 +44,6 @@ protected:
 private:
 	typedef MapLayer super;
 	cocos2d::cocos_experimental::TMXLayer* tileLayer;
+
+	bool objectified;
 };

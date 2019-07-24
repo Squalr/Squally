@@ -20,8 +20,14 @@ private:
 	~UIBoundObject();
 	void onEnter() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	void visit(cocos2d::Renderer* renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
 	cocos2d::Node* referencedObject;
 	cocos2d::Node* originalParent;
+
+    cocos2d::Vec3 originalCoords;
+    float originalScale;
+    cocos2d::Vec3 realCoords;
+    float realScale;
 };

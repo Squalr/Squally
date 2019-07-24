@@ -35,7 +35,7 @@ void BackgroundDeserializer::deserialize(LayerDeserializer::LayerDeserialization
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
 
-	if (GameUtils::getKeyOrDefault(properties, MapLayer::KeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
+	if (GameUtils::getKeyOrDefault(properties, MapLayer::MapKeyType, Value("")).asString() != BackgroundDeserializer::MapKeyBackgroundLayer)
 	{
 		return;
 	}

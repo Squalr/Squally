@@ -51,7 +51,7 @@ private:
 	void spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args);
 	void moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args);
 	void moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args);
-	void isometricZSort(cocos2d::Node* node);
+	void isometricZSort();
 	void isometricMapPreparation();
 	void hackerModeEnable();
 	void hackerModeDisable();
@@ -61,6 +61,7 @@ private:
 	std::vector<TileLayer*> collisionLayers;
 	std::vector<TileLayer*> tileLayers;
 	std::vector<MapLayer*> mapLayers;
+	std::vector<TileLayer*> layersToSort;
 
 	std::string levelMapFileName;
 	MapOrientation orientation;

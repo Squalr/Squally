@@ -20,7 +20,7 @@ Rain* Rain::create(ValueMap& properties, std::string name)
 	return instance;
 }
 
-Rain::Rain(ValueMap& properties, std::string name) : MapLayer(properties, name)
+Rain::Rain(ValueMap& properties, std::string name) : super(properties, name, "weather")
 {
 	this->rain = ParticleSystemQuad::create(ParticleResources::Rain);
 	this->rain->setPositionType(ParticleSystem::PositionType::GROUPED);

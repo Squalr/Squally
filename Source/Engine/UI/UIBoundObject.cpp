@@ -21,6 +21,10 @@ UIBoundObject::UIBoundObject(cocos2d::Node* referencedObject)
 {
     this->referencedObject = referencedObject;
     this->originalParent = this->referencedObject == nullptr ? nullptr : this->referencedObject->getParent();
+    this->originalCoords = Vec3::ZERO;
+    this->originalScale = 1.0f;
+    this->realCoords = Vec3::ZERO;
+    this->realScale = 1.0f;
 }
 
 UIBoundObject::~UIBoundObject()
@@ -39,6 +43,8 @@ void UIBoundObject::onEnter()
 
         this->referencedObject->setPosition3D(position);
     }
+
+    this->scheduleUpdate();
 }
 
 void UIBoundObject::initializeListeners()
@@ -62,6 +68,19 @@ void UIBoundObject::initializeListeners()
             }
         }
     }));
+}
+
+void UIBoundObject::update(float dt)
+{
+    super::update(dt);
+
+    if (this->referencedObject == nullptr)
+    {
+        return;
+    }
+
+    this->realCoords = UIBoundObject::getRealCoords(this);
+    this->realScale = UIBoundObject::getRealScale(this);
 }
 
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
@@ -110,16 +129,14 @@ void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint3
         return;
     }
 
-    Vec3 originalCoords = this->referencedObject->getPosition3D();
-    float originalScale = this->referencedObject->getScale();
-    Vec3 realCoords = UIBoundObject::getRealCoords(this);
-    float realScale = UIBoundObject::getRealScale(this);
-
-    this->referencedObject->setPosition3D(realCoords);
-    this->referencedObject->setScale(realScale);
+    this->originalCoords = this->referencedObject->getPosition3D();
+    this->originalScale = this->referencedObject->getScale();
+    
+    this->referencedObject->setPosition3D(this->realCoords);
+    this->referencedObject->setScale(this->realScale);
 
 	super::visit(renderer, parentTransform, parentFlags);
 
-    this->referencedObject->setPosition3D(originalCoords);
-    this->referencedObject->setScale(originalScale);
+    this->referencedObject->setPosition3D(this->originalCoords);
+    this->referencedObject->setScale(this->originalScale);
 }

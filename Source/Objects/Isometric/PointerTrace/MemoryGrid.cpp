@@ -318,6 +318,7 @@ void MemoryGrid::initializeListeners()
 		for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 		{
 			(*it)->setOpacity(255);
+			(*it)->setVisible(true);
 		}
 	});
 
@@ -328,6 +329,7 @@ void MemoryGrid::initializeListeners()
 		for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 		{
 			(*it)->setOpacity(255);
+			(*it)->setVisible(true);
 		}
 	});
 
@@ -338,6 +340,7 @@ void MemoryGrid::initializeListeners()
 		for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 		{
 			(*it)->setOpacity(0);
+			(*it)->setVisible(false);
 		}
 
 		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
@@ -350,6 +353,7 @@ void MemoryGrid::initializeListeners()
 		for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 		{
 			(*it)->setOpacity(0);
+			(*it)->setVisible(false);
 		}
 
 		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));

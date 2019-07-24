@@ -35,6 +35,7 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 	std::vector<GameObject*> deserializedObjects = std::vector<GameObject*>();
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
+	std::string type = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyType, Value("")).asString();
 	ValueVector objects = args->objects;
 
 	// Callback to receive deserialized layers as they are parsed by their deserializers
@@ -107,5 +108,5 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 		}
 	}
 
-	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(MapLayer::create(properties, name, deserializedObjects), args->layerIndex));
+	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(MapLayer::create(properties, name, type, deserializedObjects), args->layerIndex));
 }
