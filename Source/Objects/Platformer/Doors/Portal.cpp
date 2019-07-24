@@ -146,7 +146,7 @@ void Portal::loadMap()
 	if (!this->wasTripped)
 	{
 		this->wasTripped = true;
-		PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs);
+		PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, this->transition);
 
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 	}

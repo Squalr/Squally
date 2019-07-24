@@ -47,7 +47,7 @@ DebugScene::DebugScene()
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_0));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_1));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_2));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_Town_0));
+	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_Town_Main));
 
 	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
 	{

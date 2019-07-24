@@ -52,7 +52,7 @@ void PortalSpawn::initializeListeners()
 	{
 		PlatformerEvents::TransitionArgs* args = static_cast<PlatformerEvents::TransitionArgs*>(eventCustom->getUserData());
 		
-		if (args != nullptr)
+		if (args != nullptr && args->transition == this->transition)
 		{
 			PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(GameUtils::getWorldCoords(this)));
 		}

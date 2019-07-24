@@ -427,7 +427,6 @@ void GameMap::isometricZSort()
 			if (object != nullptr && object->isZSorted())
 			{
 				// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
-				// TODO: This works for most cases but is incomplete
 				Vec2 position = object->getParent()->convertToWorldSpace(object->getPosition());
 
 				if (dynamic_cast<ObjectifiedTile*>(object) != nullptr)
@@ -435,6 +434,7 @@ void GameMap::isometricZSort()
 					position.y += this->mapTileSize.height / 2.0f;
 				}
 
+				// TODO: This works for most cases but is incomplete
 				object->setLocalZOrder((int)(-position.y));
 			}
 		}
