@@ -203,6 +203,7 @@ void Squally::initializeListeners()
 		if (args != nullptr)
 		{
 			this->setPosition(args->position);
+			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 		}
 	}));
 

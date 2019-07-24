@@ -64,7 +64,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 
 	this->transition = transition;
 	this->gameHud = GameHud::create();
-	this->cipher = Cipher::create();
+	this->cipher = nullptr;
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
@@ -88,7 +88,6 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
-	this->menuHud->addChild(this->cipher);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);
@@ -151,9 +150,9 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->menuBackDrop->setOpacity(196);
-			this->cipher->setVisible(true);
-			this->cipher->openCipher(args->cipherPuzzleData);
-			GameUtils::focus(this->cipher);
+			this->getCipherInstance()->setVisible(true);
+			this->getCipherInstance()->openCipher(args->cipherPuzzleData);
+			GameUtils::focus(this->getCipherInstance());
 		}
 	}));
 
@@ -164,7 +163,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->menuBackDrop->setOpacity(0);
-			this->cipher->setVisible(false);
+			this->getCipherInstance()->setVisible(false);
 			GameUtils::focus(this);
 		}
 	}));
@@ -250,4 +249,15 @@ void PlatformerMap::loadMap(std::string mapResource, std::vector<std::string> ar
 	});
 
 	super::loadMap(mapResource, args);
+}
+
+Cipher* PlatformerMap::getCipherInstance()
+{
+	if (this->cipher == nullptr)
+	{
+		this->cipher = Cipher::create();
+		this->menuHud->addChild(this->cipher);
+	}
+
+	return this->cipher;
 }

@@ -31,8 +31,7 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void update(float dt) override;
-	void openCipher();
-	void onCipherClose();
+	Cipher* getCipherInstance();
 
 	GameHud* gameHud;
 	Cipher* cipher;

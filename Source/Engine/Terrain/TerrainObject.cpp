@@ -13,6 +13,7 @@
 #include "cocos/renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -153,8 +154,21 @@ void TerrainObject::rebuildTerrain(TerrainData terrainData)
 	this->debugNode->removeAllChildren();
 
 	this->buildInnerTextures();
-	this->buildInfill(terrainData.infillColor);
-	this->buildSurfaceShadow();
+
+	switch(ConfigManager::getGraphics())
+	{
+		case ConfigManager::GraphicsSetting::SlowHighQuality:
+		{
+			this->buildInfill(terrainData.infillColor);
+			this->buildSurfaceShadow();
+			break;
+		}
+		case ConfigManager::GraphicsSetting::FastLowQuality:
+		{
+			break;
+		}
+	}
+
 	this->buildSurfaceTextures();
 }
 

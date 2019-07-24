@@ -27,11 +27,12 @@ private:
 	void beginStrand();
 	void killStrand();
 
-	void randomizePosition();
-	void setLetterCount();
+	void randomizeInitialState(int strandIndex);
+	void randomizeState(bool spawnInRange);
 
 	std::vector<MatrixLetter*> letters;
 
+	bool isAlive;
 	float spawnSpeed;
 	int currentLetterIndex;
 	int letterCount;
@@ -47,5 +48,4 @@ private:
 	static const float UnderFlowY;
 	static const float MinSpawnDistance;
 	static const float MaxSpawnDistance;
-	static const float InitializationDuration;
 };

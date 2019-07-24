@@ -7,10 +7,11 @@ class MatrixLetter : public cocos2d::Sprite
 public:
 	static MatrixLetter* create();
 
+	void spawnImmediate();
 	void spawn();
 	void despawn();
 
-	static const int letterSize;
+	static const int LetterSize;
 
 private:
 	typedef cocos2d::Sprite super;
@@ -20,12 +21,12 @@ private:
 	void pause(void) override;
 	void randomizeLetter();
 
-	static const cocos2d::Color3B letterColor;
-	static const cocos2d::Color3B spawnColor;
-	static const cocos2d::Color4B glowColor;
+	static const cocos2d::Color3B LetterColor;
+	static const cocos2d::Color3B SpawnColor;
+	static const cocos2d::Color4B GlowColor;
 
-	static const float spawnChangeRate;
-	static const float spawnTime;
-	static const float fadeOutPercentage;
-	static const float letterChangePercentage;
+	static const float SpawnChangeRate;
+	static const float SpawnTime;
+	static const float FadeOutPercentage;
+	static const float LetterChangePercentage;
 };
