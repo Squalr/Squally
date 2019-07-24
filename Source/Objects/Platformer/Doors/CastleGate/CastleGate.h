@@ -4,23 +4,23 @@
 
 namespace cocos2d
 {
-	class ClippingNode;
 	class Sprite;
 }
 
 class CollisionObject;
 class HackableData;
+class SmartClippingNode;
 
-class CastleDoor : public HackableObject
+class CastleGate : public HackableObject
 {
 public:
-	static CastleDoor* create(cocos2d::ValueMap& initProperties);
+	static CastleGate* create(cocos2d::ValueMap& initProperties);
 
-	static const std::string MapKeyCastleDoor;
+	static const std::string MapKeyCastleGate;
 
 protected:
-	CastleDoor(cocos2d::ValueMap& initProperties);
-	virtual ~CastleDoor();
+	CastleGate(cocos2d::ValueMap& initProperties);
+	virtual ~CastleGate();
 
 	void onEnter() override;
 	void initializeListeners() override;
@@ -38,11 +38,13 @@ private:
 	float doorClosedPosition;
 	std::string doorOpenEventName;
 	cocos2d::Sprite* castleBack;
-	cocos2d::ClippingNode* doorClip;
+	SmartClippingNode* doorClip;
 	cocos2d::Sprite* door;
 	cocos2d::Sprite* bridge1;
 	cocos2d::Sprite* bridge2;
 	CollisionObject* doorCollision;
+	cocos2d::Sprite* castleDoorFront;
+	cocos2d::Sprite* castleDoorFront2;
 
 	static const float DoorOpenDelta;
 };

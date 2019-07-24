@@ -77,9 +77,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CagedZebra::MapKeyCagedZebra] = [=](ValueMap properties) { return (GameObject*)CagedZebra::create(properties); };
 	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
-	this->deserializers[CastleDoor::MapKeyCastleDoor] = [=](ValueMap properties) { return (GameObject*)CastleDoor::create(properties); };
+	this->deserializers[CastleGate::MapKeyCastleGate] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
-	this->deserializers[CastleDoorFront::MapKeyCastleDoorFront] = [=](ValueMap properties) { return (GameObject*)CastleDoorFront::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };
 	this->deserializers[Chest::MapKeyChest] = [=](ValueMap properties) { return (GameObject*)Chest::create(properties); };
 	this->deserializers[CinematicMarker::MapKeyCinematicMarker] = [=](ValueMap properties) { return (GameObject*)CinematicMarker::create(properties); };
@@ -111,6 +110,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };
 	this->deserializers[Wind::MapKeyWind] = [=](ValueMap properties) { return (GameObject*)Wind::create(properties); };
 	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (GameObject*)WoodenCrate::create(properties); };
+	this->deserializers[WoodenGate::MapKeyWoodenGate] = [=](ValueMap properties) { return (GameObject*)WoodenGate::create(properties); };
 	this->deserializers[WoodenSpikes::MapKeyWoodenSpikes] = [=](ValueMap properties) { return (GameObject*)WoodenSpikes::create(properties); };
 }
 

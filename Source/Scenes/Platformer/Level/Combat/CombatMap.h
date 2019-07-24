@@ -62,4 +62,5 @@ private:
 	static const std::string MapKeyPropertyFirstStrike;
 	static const std::string MapKeyPropertyNoDefend;
 	static const std::string MapKeyPropertyNoItems;
+	static const std::string MapKeyPropertyForceLevel2;
 };

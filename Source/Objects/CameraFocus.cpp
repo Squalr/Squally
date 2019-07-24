@@ -68,4 +68,5 @@ void CameraFocus::onEnterTransitionDidFinish()
 	);
 
 	GameCamera::getInstance()->setTarget(trackingData);
+	GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 }

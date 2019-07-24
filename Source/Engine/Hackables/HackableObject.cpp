@@ -104,6 +104,17 @@ void HackableObject::initializePositions()
 void HackableObject::update(float dt)
 {
 	super::update(dt);
+
+	if (!this->hackableList.empty())
+	{	
+		// Note that this is deferred until now as an optimization, as TriggerMoveObjectToTopLayer is expensive
+		if (!this->hasRelocatedUI)
+		{
+			// Move the UI elements to the top-most layer
+			ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
+			this->hasRelocatedUI = true;
+		}
+	}
 	
 	if (!this->trackedAttributes.empty())
 	{
@@ -150,15 +161,7 @@ void HackableObject::onHackerModeEnable(int eq)
 	}
 
 	if (!this->hackableList.empty())
-	{
-		// Note that this is deferred until now as an optimization, as TriggerMoveObjectToTopLayer is expensive
-		if (!this->hasRelocatedUI)
-		{
-			// Move the UI elements to the top-most layer
-			ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
-			this->hasRelocatedUI = true;
-		}
-		
+	{	
 		this->hackButton->setVisible(true);
 	}
 }

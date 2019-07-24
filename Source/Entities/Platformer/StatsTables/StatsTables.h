@@ -11,6 +11,7 @@ public:
 	static int getManaGainAtLevel(int level);
 	static int getManaGainAtNewLevel(int newLevel);
 	static int getExpRequiredAtLevel(int level);
+	static int getExpNeededUntilLevel(int currentLevel, int currentExp, int level);
 	static int calculateEnemyExp(PlatformerEnemy* platformerEnemy);
 
 protected:

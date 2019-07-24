@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string CombatSpawn::MapKeyCombatSpawn = "spawn";
+const std::string CombatSpawn::MapKeyCombatSpawn = "combat-spawn";
 const std::string CombatSpawn::MapKeySpawnType = "spawn-type";
 const std::string CombatSpawn::MapKeySpawnOrder = "spawn-order";
 const std::string CombatSpawn::MapKeyPlayerSpawn = "player";
