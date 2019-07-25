@@ -60,7 +60,7 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 		physicsBody = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
 	}
 
-	CollisionObject* collisionObject = new CollisionObject(properties, physicsBody, name, false, false);
+	CollisionObject* collisionObject = CollisionObject::create(properties, physicsBody, name, false, false);
 
 	// Fire an event indicating successful deserialization
 	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(collisionObject));

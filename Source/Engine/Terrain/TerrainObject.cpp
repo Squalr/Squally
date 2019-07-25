@@ -199,17 +199,17 @@ void TerrainObject::buildCollision()
 
 		if (deserializedCollisionName != "")
 		{
-			collisionObject = new CollisionObject(this->properties, physicsBody, deserializedCollisionName, false, false);
+			collisionObject = CollisionObject::create(this->properties, physicsBody, deserializedCollisionName, false, false);
 		}
 		else
 		{
 			if (this->isHollow)
 			{
-				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
+				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
 			}
 			else
 			{
-				collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
 			}
 		}
 		
@@ -224,7 +224,7 @@ void TerrainObject::buildCollision()
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createCircle(Radius, material, *it);
-		CollisionObject* collisionObject = new CollisionObject(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
+		CollisionObject* collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}
