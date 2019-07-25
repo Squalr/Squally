@@ -2,22 +2,12 @@
 
 #include "Engine/SmartNode.h"
 
-// define the constants that are going to define the water surface behaviour
-static const int kColumnCount = 160;
-static const float kTension = 0.025f;
-static const float kDampening = 0.0f;
-static const float kSpread = 0.25f;
-static cocos2d::Color4B topColor = cocos2d::Color4B(119, 167, 178, 212);
-static cocos2d::Color4B bottomColor = cocos2d::Color4B(91, 126, 135, 64);
-
-// define a struct for Vertex we are going to use to draw primitives
-
 namespace cocos2d
 {
     class CustomCommand;
 }
 
-class LiquidColumn;
+class ColumnData;
 
 class LiquidTop : public SmartNode
 {
@@ -34,9 +24,25 @@ private:
         Vertex(uint16_t x, uint16_t y) : x(x), y(y) { }
     };
 
-    static LiquidTop* create(cocos2d::Size surfaceSize);
+    struct ColumnData
+    {
+        float targetHeight;
+        float height;
+        float speed;
 
-    LiquidTop(cocos2d::Size surfaceSize);
+        ColumnData(float targetHeight, float height, float speed) : targetHeight(targetHeight), height(height), speed(speed) { }
+
+        void update(float dampening, float tension)
+        {
+            float deltaHeight = targetHeight - height;
+            speed += tension * deltaHeight - speed * dampening;
+            height += speed;
+        }
+    };
+
+    static LiquidTop* create(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
+
+    LiquidTop(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
     ~LiquidTop();
     
     void onEnter() override;
@@ -46,10 +52,17 @@ private:
     void splash(float index, float speed);
     void onCustomDraw(const cocos2d::Mat4 &transform);
 
-    std::vector<LiquidColumn*> columns;
-    Vertex vertexArray[kColumnCount * 2];
-    cocos2d::Color4B colorArray[kColumnCount * 2];
+    std::vector<ColumnData> columns;
+    std::vector<Vertex> vertexArray;
+    std::vector<float> leftDeltas;
+    std::vector<float> rightDeltas;
+    std::vector<cocos2d::Color4B> colorArray;
     cocos2d::CustomCommand* customCommand;
 
     cocos2d::Size surfaceSize;
+    float tension;
+    float dampening;
+    float spread;
+
+    static const int ColumnsPer128px;
 };

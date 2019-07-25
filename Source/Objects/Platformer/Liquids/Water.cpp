@@ -13,6 +13,8 @@ using namespace cocos2d;
 
 const std::string Water::MapKeyWater = "water";
 const float Water::WaterGravity = 0.0f;
+const Color4B Water::SurfaceColor = Color4B(105, 190, 206, 212);
+const Color4B Water::BodyColor = Color4B(98, 186, 209, 64);
 
 Water* Water::create(ValueMap& initProperties)
 {
@@ -27,7 +29,7 @@ Water::Water(ValueMap& initProperties) : super(initProperties)
 {
 	this->waterSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->elapsed = 0.0f;
-	this->water = LiquidNode::create(this->waterSize, 192.0f);
+	this->water = LiquidNode::create(this->waterSize, 192.0f, Water::SurfaceColor, Water::BodyColor);
 
 	std::string customCollison = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
 
@@ -51,8 +53,6 @@ Water::~Water()
 void Water::onEnter()
 {
 	super::onEnter();
-	
-	this->water->splash(42, -128.0f);
 
 	this->scheduleUpdate();
 }
@@ -61,11 +61,18 @@ void Water::update(float dt)
 {
 	super::update(dt);
 
-	this->elapsed += dt;
+	this->elapsed -= dt;
 
-	if (this->elapsed > 5.0f)
+	if (this->elapsed <= 0.0f)
 	{
-		this->elapsed = 0.0f;
+		this->elapsed = RandomHelper::random_real(0.5f, 2.0f);
+	
+		this->water->splash(RandomHelper::random_real(0.0f, this->waterSize.width), RandomHelper::random_real(-24.0f, -4.0f));
+		this->water->splash(RandomHelper::random_real(0.0f, this->waterSize.width), RandomHelper::random_real(-24.0f, -4.0f));
+		this->water->splash(RandomHelper::random_real(0.0f, this->waterSize.width), RandomHelper::random_real(-24.0f, -4.0f));
+		this->water->splash(RandomHelper::random_real(0.0f, this->waterSize.width), RandomHelper::random_real(-24.0f, -4.0f));
+		this->water->splash(RandomHelper::random_real(0.0f, this->waterSize.width), RandomHelper::random_real(-24.0f, -4.0f));
+		this->water->splash(RandomHelper::random_real(0.0f, this->waterSize.width), RandomHelper::random_real(-24.0f, -4.0f));
 	}
 }
 

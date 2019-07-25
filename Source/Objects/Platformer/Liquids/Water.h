@@ -38,4 +38,6 @@ private:
 	float elapsed;
 
 	static const float WaterGravity;
+	static const cocos2d::Color4B SurfaceColor;
+	static const cocos2d::Color4B BodyColor;
 };
