@@ -11,6 +11,7 @@
 
 using namespace cocos2d;
 
+const std::string TileLayer::MapKeyTilemapType = "tilemap";
 const std::string TileLayer::MapKeyPropertyWidth = "width";
 const std::string TileLayer::MapKeyPropertyHeight = "height";
 const std::string TileLayer::MapKeyPropertyType = "type";
@@ -27,9 +28,10 @@ TileLayer* TileLayer::deserialize(cocos_experimental::TMXLayer* initTileLayer)
 	return instance;
 }
 
-TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(initTileLayer->getProperties(), initTileLayer->getLayerName())
+TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(initTileLayer->getProperties(), initTileLayer->getLayerName(), TileLayer::MapKeyTilemapType)
 {
 	this->tileLayer = initTileLayer;
+	this->objectified = GameUtils::getKeyOrDefault(this->properties, TileLayer::MapKeyPropertyObjectify, Value(false)).asBool();
 
 	// Can be a nullptr if the layer is empty
 	if (this->tileLayer != nullptr)
@@ -40,7 +42,7 @@ TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(ini
 		// Check for the objectify flag. This basically converts all tiles in the layer into individual sprites. Cocos2d-x is garbage and does not allow
 		// for dynamic Z sorting on a tile layer, because the tiles are sprite batch rendered instead of as individual sprites.
 		// Objectifying comes at a severe performance penalty, so we have to be very careful which layers this gets done on -- ideally only for things like walls and small mountains and things
-		if (GameUtils::keyExists(this->properties, TileLayer::MapKeyPropertyObjectify) && this->properties.at(TileLayer::MapKeyPropertyObjectify).asBool())
+		if (this->objectified)
 		{
 			for (int x = 0; x < this->tileLayer->getLayerSize().width; x++)
 			{
@@ -73,12 +75,7 @@ TileLayer::~TileLayer()
 
 std::string TileLayer::getType()
 {
-	if (GameUtils::keyExists(this->properties, TileLayer::MapKeyPropertyType))
-	{
-		return this->properties.at(TileLayer::MapKeyPropertyType).asString();
-	}
-
-	return "";
+	return GameUtils::getKeyOrDefault(this->properties, TileLayer::MapKeyPropertyType, Value("")).asString();
 }
 
 std::vector<std::vector<int>> TileLayer::getGidMap()
@@ -104,4 +101,9 @@ std::vector<std::vector<int>> TileLayer::getGidMap()
 	}
 
 	return gidMap;
+}
+
+bool TileLayer::isObjectified()
+{
+	return this->objectified;
 }

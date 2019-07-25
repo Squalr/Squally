@@ -6,6 +6,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -67,14 +68,6 @@ void Timeline::onEnter()
 	this->scheduleUpdate();
 }
 
-void Timeline::onExit()
-{
-	super::onExit();
-
-	this->timelineNode->removeAllChildren();
-	this->timelineEntries.clear();
-}
-
 void Timeline::initializePositions()
 {
 	super::initializePositions();
@@ -89,6 +82,12 @@ void Timeline::initializePositions()
 void Timeline::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->timelineNode->removeAllChildren();
+		this->timelineEntries.clear();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
 	{

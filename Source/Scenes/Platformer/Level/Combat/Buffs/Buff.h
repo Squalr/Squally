@@ -17,7 +17,6 @@ protected:
 	~Buff();
 
 	void onEnter() override;
-	void onExit() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
 	virtual void onTimelineReset(bool wasInterrupt);

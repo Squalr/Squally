@@ -8,6 +8,7 @@
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Maps/GameMap.h"
@@ -17,6 +18,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
@@ -36,9 +38,9 @@ using namespace cocos2d;
 
 const std::string PlatformerMap::MapArgClearSavedPosition = "ARGS_CLEAR_SAVED_POSITION";
 
-PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs)
+PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs, std::string transition)
 {
-	PlatformerMap* instance = new PlatformerMap();
+	PlatformerMap* instance = new PlatformerMap(transition);
 
 	instance->autorelease();
 
@@ -53,15 +55,16 @@ PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::s
 	return instance;
 }
 
-PlatformerMap::PlatformerMap() : super(true, true)
+PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{
 		throw std::uncaught_exception();
 	}
 
+	this->transition = transition;
 	this->gameHud = GameHud::create();
-	this->cipher = Cipher::create();
+	this->cipher = nullptr;
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
@@ -85,7 +88,6 @@ PlatformerMap::PlatformerMap() : super(true, true)
 	this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
-	this->menuHud->addChild(this->cipher);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);
@@ -108,11 +110,17 @@ void PlatformerMap::onEnter()
 	this->scheduleUpdate();
 }
 
+void PlatformerMap::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(this->transition));
+}
+
 void PlatformerMap::onExit()
 {
-	super::onExit();
-
-	SaveManager::save();
+	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// super::onExit();
 }
 
 void PlatformerMap::initializePositions()
@@ -128,6 +136,13 @@ void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->unscheduleUpdate();
+
+		SaveManager::save();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
 		CipherEvents::CipherLoadArgs* args = static_cast<CipherEvents::CipherLoadArgs*>(eventCustom->getUserData());
@@ -135,9 +150,9 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->menuBackDrop->setOpacity(196);
-			this->cipher->setVisible(true);
-			this->cipher->openCipher(args->cipherPuzzleData);
-			GameUtils::focus(this->cipher);
+			this->getCipherInstance()->setVisible(true);
+			this->getCipherInstance()->openCipher(args->cipherPuzzleData);
+			GameUtils::focus(this->getCipherInstance());
 		}
 	}));
 
@@ -148,7 +163,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->menuBackDrop->setOpacity(0);
-			this->cipher->setVisible(false);
+			this->getCipherInstance()->setVisible(false);
 			GameUtils::focus(this);
 		}
 	}));
@@ -234,4 +249,15 @@ void PlatformerMap::loadMap(std::string mapResource, std::vector<std::string> ar
 	});
 
 	super::loadMap(mapResource, args);
+}
+
+Cipher* PlatformerMap::getCipherInstance()
+{
+	if (this->cipher == nullptr)
+	{
+		this->cipher = Cipher::create();
+		this->menuHud->addChild(this->cipher);
+	}
+
+	return this->cipher;
 }

@@ -15,12 +15,13 @@ class GameObject;
 class MapLayer : public SmartNode
 {
 public:
-	static MapLayer* create(const cocos2d::ValueMap& initProperties, std::string name, const std::vector<GameObject*>& objects);
+	static MapLayer* create(const cocos2d::ValueMap& initProperties, std::string name, std::string type = "", const std::vector<GameObject*>& objects = { });
 
+	std::string getLayerType();
 	bool isHackable();
 	bool isElevateTarget();
 
-	static const std::string KeyType;
+	static const std::string MapKeyType;
 	static const std::string MapKeyPropertyName;
 	static const std::string MapKeyPropertyValue;
 	static const std::string MapKeyPropertyDepth;
@@ -28,14 +29,15 @@ public:
 	static const std::string MapKeyPropertyIsElevateTarget;
 
 protected:
-	MapLayer(const cocos2d::ValueMap& initProperties, std::string name);
-	MapLayer(const cocos2d::ValueMap& initProperties, std::string name, const std::vector<GameObject*>& objects);
+	MapLayer(const cocos2d::ValueMap& initProperties, std::string name, std::string type);
+	MapLayer(const cocos2d::ValueMap& initProperties, std::string name, std::string type, const std::vector<GameObject*>& objects);
 	MapLayer();
 	~MapLayer();
 
 	void initializeListeners() override;
 
 	std::string layerName;
+	std::string layerType;
 	cocos2d::ValueMap properties;
 
 private:

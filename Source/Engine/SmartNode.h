@@ -21,7 +21,11 @@ public:
 
 protected:
 	void onEnter() override;
+
+	// IMPORTANT: This method may not get called if the object is being disposed (new scene) as an optimization.
+	// Instead, put critical exit code in a BeforeSceneChange event listener.	
 	void onExit() override;
+
 	void onReenter() override; // Called on parent change
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
@@ -46,4 +50,7 @@ protected:
 	
 private:
 	typedef cocos2d::Node super;
+
+	bool optimizationHasGlobalListener;
+	bool optimizationHasListener;
 };

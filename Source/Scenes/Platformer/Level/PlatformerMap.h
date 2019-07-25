@@ -13,14 +13,14 @@ class PartyMenu;
 class PlatformerMap : public MapBase
 {
 public:
-	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs);
+	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs, std::string transition = "");
 
 	void loadMap(std::string mapResource, std::vector<std::string> args) override;
 
 	static const std::string MapArgClearSavedPosition;
 
 protected:
-	PlatformerMap();
+	PlatformerMap(std::string transition = "");
 	~PlatformerMap();
 
 private:
@@ -28,10 +28,10 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void update(float dt) override;
-	void openCipher();
-	void onCipherClose();
+	Cipher* getCipherInstance();
 
 	GameHud* gameHud;
 	Cipher* cipher;
@@ -39,4 +39,6 @@ private:
 	MapMenu* mapMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
+
+	std::string transition;
 };

@@ -11,6 +11,7 @@ using namespace cocos2d;
 
 const std::string ConfigManager::ConfigFile = "config.txt";
 const std::string ConfigManager::ResolutionKey = "resolution";
+const std::string ConfigManager::GraphicsKey = "graphics";
 const std::string ConfigManager::FullScreenKey = "fullscreen";
 const std::string ConfigManager::SoundVolumeKey = "sound";
 const std::string ConfigManager::MusicVolumeKey = "music";
@@ -98,6 +99,13 @@ void ConfigManager::setResolution(ResolutionSetting resolution)
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 		glView->setWindowed(resolutionSize.width, resolutionSize.height);
 	}
+}
+
+void ConfigManager::setGraphics(GraphicsSetting graphics)
+{
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	instance->valueMap[ConfigManager::GraphicsKey] = Value((int)graphics);
 }
 
 void ConfigManager::setIsFullScreen(bool isFullScreen)
@@ -224,14 +232,14 @@ ConfigManager::ResolutionSetting ConfigManager::getResolution()
 {
 	ConfigManager* instance = ConfigManager::getInstance();
 
-	if (!GameUtils::keyExists(instance->valueMap, ConfigManager::ResolutionKey))
-	{
-		return ResolutionSetting::R1080x768;
-	}
-	else
-	{
-		return (ResolutionSetting)(instance->valueMap[ConfigManager::ResolutionKey].asInt());
-	}
+	return (ResolutionSetting)GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::ResolutionKey, Value((int)ResolutionSetting::R1080x768)).asInt();
+}
+
+ConfigManager::GraphicsSetting ConfigManager::getGraphics()
+{
+	ConfigManager* instance = ConfigManager::getInstance();
+
+	return (GraphicsSetting)GameUtils::getKeyOrDefault(instance->valueMap, ConfigManager::GraphicsKey, Value((int)GraphicsSetting::SlowHighQuality)).asInt();
 }
 
 bool ConfigManager::getIsFullScreen()

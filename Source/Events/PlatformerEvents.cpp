@@ -5,6 +5,8 @@
 
 using namespace cocos2d;
 
+const std::string PlatformerEvents::EventSpawnToTransitionLocation = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
+const std::string PlatformerEvents::EventWarpToLocation = "EVENT_WARP_TO_LOCATION";
 const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJACK";
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
 const std::string PlatformerEvents::EventQueryMapArgs = "EVENT_QUERY_MAP_ARGS";
@@ -12,6 +14,22 @@ const std::string PlatformerEvents::EventRuneConsumed = "EVENT_RUNE_CONSUMED";
 const std::string PlatformerEvents::EventEquippedItemsChanged = "EVENT_EQUIPPED_ITEMS_CHANGED";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
+
+void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventSpawnToTransitionLocation,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerWarpToLocation(WarpArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventWarpToLocation,
+		&args
+	);
+}
 
 void PlatformerEvents::TriggerCinematicHijack()
 {

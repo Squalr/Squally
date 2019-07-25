@@ -34,7 +34,6 @@ private:
 	~CodeEditor();
 
 	void onEnter() override;
-	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
@@ -48,9 +47,9 @@ private:
 	void onScriptLoad(ScriptEntry* script);
 	void onAccept();
 	void onCancel();
-
 	void setWindowColor(cocos2d::Color4B windowColor);
 	void setTitleBarColor(cocos2d::Color4B titleBarColor);
+	Lexicon* getLexicon();
 
 	// This is an unused label that is simply kept around to steal attributes from (font size, font style, etc)
 	LocalizedLabel* referenceContentLabel;

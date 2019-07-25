@@ -33,6 +33,7 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
 	this->tileLayers = std::vector<TileLayer*>();
+	this->layersToSort = std::vector<TileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
@@ -122,7 +123,7 @@ void GameMap::update(float dt)
 {
 	super::update(dt);
 
-	this->isometricZSort(this);
+	this->isometricZSort();
 }
 
 GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers)
@@ -153,7 +154,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 	else
 	{
-		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision", { });
+		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
 
 		const float EdgeThickness = 256.0f;
 
@@ -178,7 +179,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
 	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
 	{
-		std::string layerType = GameUtils::getKeyOrDefault((*it)->getProperties(), MapLayer::KeyType, Value("")).asString();
+		std::string layerType = GameUtils::getKeyOrDefault((*it)->getProperties(), MapLayer::MapKeyType, Value("")).asString();
 
 		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
 			(*it)->getProperties(),
@@ -228,7 +229,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Create a special hud_target layer for top-level display items
-	deserializedLayers.push_back(MapLayer::create({ { MapLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target", { }));
+	deserializedLayers.push_back(MapLayer::create({ { MapLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target"));
 
 	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 
@@ -409,34 +410,34 @@ std::vector<TileLayer*> GameMap::getCollisionLayers()
 	return this->collisionLayers;
 }
 
-void GameMap::isometricZSort(Node* node)
+void GameMap::isometricZSort()
 {
-	if (this->orientation != MapOrientation::Isometric || node == nullptr)
+	if (this->orientation != MapOrientation::Isometric)
 	{
 		return;
 	}
 
-	GameObject* object = dynamic_cast<GameObject*>(node);
-
-	// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
-	if (object != nullptr && object->isZSorted())
+	for (auto it = this->layersToSort.begin(); it != this->layersToSort.end(); it++)
 	{
-		// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
-		// TODO: This works for most cases but is incomplete
-		Vec2 position = node->getParent()->convertToWorldSpace(node->getPosition());
-
-		if (dynamic_cast<ObjectifiedTile*>(node) != nullptr)
+		for (auto childIt = (*it)->getChildren().begin(); childIt != (*it)->getChildren().end(); childIt++)
 		{
-			position.y += this->mapTileSize.height / 2.0f;
+			GameObject* object = dynamic_cast<GameObject*>(*childIt);
+
+			// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
+			if (object != nullptr && object->isZSorted())
+			{
+				// Note: This sets local Z order, so make sure objects are on the same layer if you want them to dynamically sort.
+				Vec2 position = object->getParent()->convertToWorldSpace(object->getPosition());
+
+				if (dynamic_cast<ObjectifiedTile*>(object) != nullptr)
+				{
+					position.y += this->mapTileSize.height / 2.0f;
+				}
+
+				// TODO: This works for most cases but is incomplete
+				object->setLocalZOrder((int)(-position.y));
+			}
 		}
-
-		node->setLocalZOrder((int)(-position.y));
-	}
-
-	// Recurse
-	for (auto it = node->getChildren().begin(); it != node->getChildren().end(); it++)
-	{
-		this->isometricZSort(*it);
 	}
 }
 
@@ -445,15 +446,6 @@ void GameMap::isometricMapPreparation()
 	if (this->orientation != MapOrientation::Isometric)
 	{
 		return;
-	}
-
-	// Flatten tile layers so all children are the immediate child of the layer (needed for Z sorting)
-	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
-	{
-		if (dynamic_cast<TileLayer*>(*it) != nullptr)
-		{
-			//// GameUtils::flattenNode(dynamic_cast<TileLayer*>(*it));
-		}
 	}
 
 	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
@@ -465,12 +457,12 @@ void GameMap::isometricMapPreparation()
 
 			if (tileLayer->getType() == GameMap::KeyTypeCollision)
 			{
-				// Pull out collision layer
+				// Collision layer
 				this->collisionLayers.push_back(tileLayer);
 			}
 			else
 			{
-				// Pull out standard tile layer
+				// Standard tile layer
 				this->tileLayers.push_back(tileLayer);
 			}
 		}
@@ -479,19 +471,24 @@ void GameMap::isometricMapPreparation()
 		{
 			MapLayer* objectLayer = dynamic_cast<MapLayer*>(*it);
 
-			// Iterate through remaining layers to find the next tile layer
-			for (auto itClone = std::vector<Node*>::iterator(it); itClone != this->getChildren().end(); itClone++)
+			if (objectLayer->getLayerType() == "objects")
 			{
-				TileLayer* nextTileLayer = dynamic_cast<TileLayer*>(*itClone);
-
-				// Pull out objects and inject them into the next highest tile layer (allows for proper dynamic Z sorting)
-				if (nextTileLayer != nullptr && nextTileLayer->getType() != GameMap::KeyTypeCollision)
+				// Iterate through remaining layers to find the next tile layer
+				for (auto itClone = std::vector<Node*>::iterator(it); itClone != this->getChildren().end(); itClone++)
 				{
-					cocos2d::Vector<Node*> children = objectLayer->getChildren();
+					TileLayer* nextTileLayer = dynamic_cast<TileLayer*>(*itClone);
 
-					for (auto childIt = children.begin(); childIt != children.end(); childIt++)
+					// Pull out objects and inject them into the next highest tile layer (allows for proper dynamic Z sorting)
+					if (nextTileLayer != nullptr && nextTileLayer->isObjectified() && nextTileLayer->getType() != GameMap::KeyTypeCollision)
 					{
-						GameUtils::changeParent(*childIt, nextTileLayer, true);
+						cocos2d::Vector<Node*> children = objectLayer->getChildren();
+
+						for (auto childIt = children.begin(); childIt != children.end(); childIt++)
+						{
+							GameUtils::changeParent(*childIt, nextTileLayer, true);
+						}
+
+						this->layersToSort.push_back(nextTileLayer);
 					}
 				}
 			}

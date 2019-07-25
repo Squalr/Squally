@@ -42,21 +42,22 @@ OptionsMenu::OptionsMenu()
 	this->backClickCallback = nullptr;
 
 	this->background = Node::create();
-	this->optionsWindow = Sprite::create(UIResources::Menus_OptionsMenu_OptionsMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton2, UIResources::Menus_Buttons_CloseButton2Select);
+	this->optionsWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
 	this->generalTab = GeneralTab::create();
 	this->videoTab = VideoTab::create();
 	this->languageTab = LanguageTab::create();
 	this->memesTab = MemesTab::create();
-	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Options_Options::create());
+	this->optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Options_Options::create());
 	this->generalTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconLightbulb, Strings::Menus_Options_GeneralOptions::create());
 	this->videoTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCogs, Strings::Menus_Options_VideoOptions::create());
 	this->languageTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconChatBubble, Strings::Menus_Options_Language::create());
 	this->memesTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Options_Memes::create());
 
-	this->optionsLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
+	this->optionsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->optionsLabel->enableGlow(Color4B::BLACK);
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
@@ -71,8 +72,8 @@ OptionsMenu::OptionsMenu()
 	this->cancelButton = ClickableTextNode::create(
 		cancelLabel,
 		cancelLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -87,8 +88,8 @@ OptionsMenu::OptionsMenu()
 	this->returnButton = ClickableTextNode::create(
 		returnLabel,
 		returnLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover);
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->leftPanel->addChild(this->generalTabButton);
 	this->leftPanel->addChild(this->videoTabButton);
@@ -163,9 +164,9 @@ void OptionsMenu::initializePositions()
 
 	this->optionsWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->optionsLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
-	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 376.0f, visibleSize.height / 2.0f + 278.0f));
-	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 160.0f, visibleSize.height / 2.0f + 52.0f));
-	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 510.0f, visibleSize.height / 2.0f + 364.0f));
+	this->leftPanel->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f + 192.0f));
+	this->rightPanel->setPosition(Vec2(visibleSize.width / 2.0f + 192.0f, visibleSize.height / 2.0f + 0.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 
 	const float spacing = -66.0f;
 
@@ -176,8 +177,8 @@ void OptionsMenu::initializePositions()
 
 	const float offsetY = 48.0f;
 
-	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 80.0f, visibleSize.height / 2.0f - 348.0f));
-	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f - 348.0f));
+	this->cancelButton->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f - 420.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f + 256.0f, visibleSize.height / 2.0f - 420.0f));
 }
 
 void OptionsMenu::setBackClickCallback(std::function<void()> backClickCallback)

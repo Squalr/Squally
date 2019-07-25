@@ -42,6 +42,7 @@ const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disa
 const std::string CombatMap::MapKeyPropertyFirstStrike = "first-strike";
 const std::string CombatMap::MapKeyPropertyNoDefend = "no-defend";
 const std::string CombatMap::MapKeyPropertyNoItems = "no-items";
+const std::string CombatMap::MapKeyPropertyForceLevel2 = "force-level-2";
 
 CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
 		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes)
@@ -56,7 +57,7 @@ CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> map
 CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
 		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true, true)
 {
-	if (!MapBase::init())
+	if (!super::init())
 	{
 		throw std::uncaught_exception();
 	}
@@ -124,7 +125,7 @@ CombatMap::~CombatMap()
 
 void CombatMap::onEnter()
 {
-	MapBase::onEnter();
+	super::onEnter();
 
 	this->collectablesMenu->setVisible(false);
 	this->mapMenu->setVisible(false);
@@ -134,9 +135,15 @@ void CombatMap::onEnter()
 	this->spawnEntities();
 }
 
+void CombatMap::onExit()
+{
+	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// super::onExit();
+}
+
 void CombatMap::initializePositions()
 {
-	MapBase::initializePositions();
+	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -149,7 +156,7 @@ void CombatMap::initializePositions()
 
 void CombatMap::initializeListeners()
 {
-	MapBase::initializeListeners();
+	super::initializeListeners();
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{
@@ -180,13 +187,13 @@ void CombatMap::initializeListeners()
 			expGain += StatsTables::calculateEnemyExp(entity);
 		}));
 
-		if (GameUtils::hasArg(this->mapArgs, "early-access-fix"))
+		int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(0)).asInt();
+		int squallyExp = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt();
+
+		// Check for special keys to prevent progression soft-locks
+		if (GameUtils::hasArg(this->mapArgs, CombatMap::MapKeyPropertyForceLevel2))
 		{
-			if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt() <= 0)
-			{
-				// This is to make up for some users not getting exp from the first kill in the tutorial
-				expGain *= 2;
-			}
+			expGain = std::max(expGain, StatsTables::getExpNeededUntilLevel(squallyEq, squallyExp, 2));
 		}
 
 		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do

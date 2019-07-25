@@ -13,6 +13,7 @@
 #include "cocos/renderer/CCGLProgram.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -59,6 +60,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->topsNode = Node::create();
 	this->topCornersNode = Node::create();
 	this->debugNode = Node::create();
+	this->boundsRect = Rect::ZERO;
 
 	this->debugNode->setVisible(false);
 
@@ -152,8 +154,21 @@ void TerrainObject::rebuildTerrain(TerrainData terrainData)
 	this->debugNode->removeAllChildren();
 
 	this->buildInnerTextures();
-	this->buildInfill(terrainData.infillColor);
-	this->buildSurfaceShadow();
+
+	switch(ConfigManager::getGraphics())
+	{
+		case ConfigManager::GraphicsSetting::SlowHighQuality:
+		{
+			this->buildInfill(terrainData.infillColor);
+			this->buildSurfaceShadow();
+			break;
+		}
+		case ConfigManager::GraphicsSetting::FastLowQuality:
+		{
+			break;
+		}
+	}
+
 	this->buildSurfaceTextures();
 }
 
@@ -244,6 +259,8 @@ void TerrainObject::buildInnerTextures()
 
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
 	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
+
+	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
 	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
 	texture->getTexture()->setTexParameters(params);
@@ -474,7 +491,7 @@ void TerrainObject::buildSurfaceTextures()
 		if (this->isTopAngle(normalAngle))
 		{
 			Sprite* top = Sprite::create(this->terrainData.topResource);
-			Vec2 offset = this->terrainData.isPerfectlyFlat ? Vec2(0.0f, -2.0f) : Vec2(0.0f, top->getContentSize().height / 2.0f);
+			Vec2 offset = this->terrainData.isPerfectlyFlat ? Vec2(0.0f, 2.0f) : Vec2(0.0f, top->getContentSize().height / 2.0f);
 
 			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), offset, 180.0f, true);
 		}
@@ -568,6 +585,11 @@ void TerrainObject::buildSurfaceTextures()
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
+	if (!this->boundsRect.intersectsRect(other->boundsRect))
+	{
+		return;
+	}
+
 	// Remove all collision boxes that are completely eclipsed
 	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
 		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)

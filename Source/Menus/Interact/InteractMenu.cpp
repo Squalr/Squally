@@ -36,6 +36,7 @@ InteractMenu::InteractMenu(LocalizedString* displayString)
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), 128, 48);
+	this->hasRelocated = false;
 
 	this->uiElements->setOpacity(0);
 
@@ -53,14 +54,6 @@ void InteractMenu::onEnter()
 	super::onEnter();
 
 	this->setOpacity(0);
-}
-
-void InteractMenu::onEnterTransitionDidFinish()
-{
-	// Move the UI elements to the top-most layer
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
-		this->uiElements
-	));
 }
 
 void InteractMenu::onExit()
@@ -99,6 +92,15 @@ void InteractMenu::initializeListeners()
 
 void InteractMenu::show()
 {
+	if (!this->hasRelocated)
+	{
+		// Move the UI elements to the top-most layer
+		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
+			this->uiElements
+		));
+		this->hasRelocated = true;
+	}
+
 	if (this->uiElements->getOpacity() < 255)
 	{
 		this->uiElements->stopAllActions();

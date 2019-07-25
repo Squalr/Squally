@@ -32,6 +32,7 @@ protected:
 private:
 	typedef MapBase super;
 	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
@@ -61,4 +62,5 @@ private:
 	static const std::string MapKeyPropertyFirstStrike;
 	static const std::string MapKeyPropertyNoDefend;
 	static const std::string MapKeyPropertyNoItems;
+	static const std::string MapKeyPropertyForceLevel2;
 };

@@ -2,11 +2,15 @@
 #include <string>
 #include <vector>
 
+#include "cocos/math/CCGeometry.h"
+
 class PlatformerEntity;
 
 class PlatformerEvents
 {
 public:
+	static const std::string EventSpawnToTransitionLocation;
+	static const std::string EventWarpToLocation;
 	static const std::string EventCinematicHijack;
 	static const std::string EventCinematicRestore;
 	static const std::string EventQueryMapArgs;
@@ -14,6 +18,24 @@ public:
 	static const std::string EventEquippedItemsChanged;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
+
+	struct TransitionArgs
+	{
+		std::string transition;
+
+		TransitionArgs(std::string transition) : transition(transition)
+		{
+		}
+	};
+
+	struct WarpArgs
+	{
+		cocos2d::Vec2 position;
+
+		WarpArgs(cocos2d::Vec2 position) : position(position)
+		{
+		}
+	};
 
 	struct HudTrackEntityArgs
 	{
@@ -43,6 +65,8 @@ public:
 		}
 	};
 
+	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
+	static void TriggerWarpToLocation(WarpArgs args);
 	static void TriggerCinematicHijack();
 	static void TriggerCinematicRestore();
 	static void TriggerQueryMapArgs(QueryMapArgsArgs args);

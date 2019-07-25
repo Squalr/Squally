@@ -39,7 +39,6 @@ private:
 	
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
-	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;

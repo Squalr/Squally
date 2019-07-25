@@ -107,6 +107,7 @@ private:
 	TerrainData terrainData;
 	bool isHollow;
 
+	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> intersectionPoints;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;

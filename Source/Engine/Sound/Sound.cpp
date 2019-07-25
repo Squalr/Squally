@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -29,11 +30,19 @@ Sound::~Sound()
 {
 }
 
-void Sound::onExit()
+void Sound::initializeListeners()
 {
-	super::onExit();
+	super::initializeListeners();
 
-	this->stop();
+	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventSoundVolumeUpdated, [=](EventCustom* eventCustom)
+	{
+		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->stop();
+	}));
 }
 
 void Sound::pause()
@@ -80,16 +89,6 @@ void Sound::resume()
 			break;
 		}
 	}
-}
-
-void Sound::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventSoundVolumeUpdated, [=](EventCustom* eventCustom)
-	{
-		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
-	}));
 }
 
 float Sound::getConfigVolume()

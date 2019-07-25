@@ -1,5 +1,6 @@
 #include "StatsTables.h"
 
+#include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 
 #include "Resources/UIResources.h"
@@ -114,6 +115,26 @@ int StatsTables::getExpRequiredAtLevel(int level)
 	}
 	
 	return 0;
+}
+
+int StatsTables::getExpNeededUntilLevel(int currentLevel, int currentExp, int level)
+{
+	currentLevel = MathUtils::clamp(currentLevel, 0, currentLevel);
+	level = MathUtils::clamp(level, 0, StatsTables::ExpRequired.size());
+
+	if (currentLevel >= level)
+	{
+		return 0;
+	}
+
+	int expRequired = 0;
+
+	while (currentLevel < level)
+	{
+		expRequired += StatsTables::getExpRequiredAtLevel(currentLevel++);
+	}
+
+	return expRequired;
 }
 
 int StatsTables::calculateEnemyExp(PlatformerEnemy* platformerEnemy)

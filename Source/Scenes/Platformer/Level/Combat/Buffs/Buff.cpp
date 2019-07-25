@@ -8,6 +8,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Events/CombatEvents.h"
 
 using namespace cocos2d;
@@ -30,16 +31,14 @@ void Buff::onEnter()
 	this->registerHackables();
 }
 
-void Buff::onExit()
-{
-	super::onExit();
-
-	this->unregisterHackables();
-}
-
 void Buff::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->unregisterHackables();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{

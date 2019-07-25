@@ -13,6 +13,9 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Options/FullScreen.h"
+#include "Strings/Menus/Options/GraphicEffects.h"
+#include "Strings/Menus/Options/HighQuality.h"
+#include "Strings/Menus/Options/LowQuality.h"
 #include "Strings/Menus/Options/Resolution1080x768.h"
 #include "Strings/Menus/Options/Resolution1152x864.h"
 #include "Strings/Menus/Options/Resolution1280x720.h"
@@ -29,6 +32,7 @@
 using namespace cocos2d;
 
 const int VideoTab::ResolutionGroupId = 299267945; // RNG based to avoid conflicts
+const int VideoTab::GraphicsGroupId = 712968357; // RNG based to avoid conflicts
 
 VideoTab* VideoTab::create()
 {
@@ -119,6 +123,21 @@ VideoTab::VideoTab()
 	 	VideoTab::ResolutionGroupId
 	);
 
+	this->graphicEffectsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_GraphicEffects::create());
+	this->highQualityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_HighQuality::create());
+	this->lowQualityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, Strings::Menus_Options_LowQuality::create());
+
+	this->optionLowQuality = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::GraphicsGroupId
+	);
+	this->optionHighQuality = RadioButton::create(
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonSelected, UIResources::Menus_OptionsMenu_RadioButtonSelectedHover),
+		ClickableNode::create(UIResources::Menus_OptionsMenu_RadioButtonEmpty, UIResources::Menus_OptionsMenu_RadioButtonHover),
+	 	VideoTab::GraphicsGroupId
+	);
+
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	Color3B textColor = Color3B::WHITE;
@@ -136,6 +155,25 @@ VideoTab::VideoTab()
 	returnLabelHover->setColor(highlightColor);
 	returnLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
 	returnLabelHover->enableGlow(glowColor);
+	
+	this->label1080x768->enableOutline(Color4B::BLACK, 2);
+	this->label1152x864->enableOutline(Color4B::BLACK, 2);
+	this->label1280x720->enableOutline(Color4B::BLACK, 2);
+	this->label1280x960->enableOutline(Color4B::BLACK, 2);
+	this->label1280x1024->enableOutline(Color4B::BLACK, 2);
+	this->label1440x900->enableOutline(Color4B::BLACK, 2);
+	this->label1600x900->enableOutline(Color4B::BLACK, 2);
+	this->label1600x1024->enableOutline(Color4B::BLACK, 2);
+	this->label1920x1080->enableOutline(Color4B::BLACK, 2);
+	this->label2560x1440->enableOutline(Color4B::BLACK, 2);
+	this->label3840x2160->enableOutline(Color4B::BLACK, 2);
+
+	this->graphicEffectsLabel->enableOutline(Color4B::BLACK, 2);
+	this->highQualityLabel->enableOutline(Color4B::BLACK, 2);
+	this->lowQualityLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->highQualityLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->lowQualityLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->option1080x768->setCheckCallback(CC_CALLBACK_1(VideoTab::onResolutionChanged, this));
 	this->option1152x864->setCheckCallback(CC_CALLBACK_1(VideoTab::onResolutionChanged, this));
@@ -149,6 +187,9 @@ VideoTab::VideoTab()
 	this->option1920x1080->setCheckCallback(CC_CALLBACK_1(VideoTab::onResolutionChanged, this));
 	this->option2560x1440->setCheckCallback(CC_CALLBACK_1(VideoTab::onResolutionChanged, this));
 	this->option3840x2160->setCheckCallback(CC_CALLBACK_1(VideoTab::onResolutionChanged, this));
+
+	this->optionLowQuality->setCheckCallback(CC_CALLBACK_1(VideoTab::onGraphicsChanged, this));
+	this->optionHighQuality->setCheckCallback(CC_CALLBACK_1(VideoTab::onGraphicsChanged, this));
 
 	this->addChild(this->fullScreenLabel);
 	this->addChild(this->fullScreenButton);
@@ -176,6 +217,13 @@ VideoTab::VideoTab()
 	this->addChild(this->option1920x1080);
 	this->addChild(this->option2560x1440);
 	this->addChild(this->option3840x2160);
+
+	this->addChild(this->graphicEffectsLabel);
+	this->addChild(this->lowQualityLabel);
+	this->addChild(this->highQualityLabel);
+
+	this->addChild(this->optionHighQuality);
+	this->addChild(this->optionLowQuality);
 
 	switch (ConfigManager::getResolution())
 	{
@@ -233,6 +281,21 @@ VideoTab::VideoTab()
 		default:
 		{
 			this->option3840x2160->check();
+			break;
+		}
+	}
+	 
+	switch (ConfigManager::getGraphics())
+	{
+		case ConfigManager::GraphicsSetting::FastLowQuality:
+		{
+			this->optionLowQuality->check();
+			break;
+		}
+		case ConfigManager::GraphicsSetting::SlowHighQuality:
+		default:
+		{
+			this->optionHighQuality->check();
 			break;
 		}
 	}
@@ -302,30 +365,36 @@ void VideoTab::initializePositions()
 	const float offsetY = 48.0f;
 	const float textOffset = 70.0f;
 
-	this->label1080x768->setPosition(Vec2(base + spacing * 0, baseY));
-	this->label1152x864->setPosition(Vec2(base + spacing * 1, baseY));
-	this->label1280x720->setPosition(Vec2(base + spacing * 2, baseY));
-	this->label1280x960->setPosition(Vec2(base + spacing * 3, baseY));
-	this->option1080x768->setPosition(Vec2((base + textOffset) + spacing * 0, baseY));
-	this->option1152x864->setPosition(Vec2((base + textOffset) + spacing * 1, baseY));
-	this->option1280x720->setPosition(Vec2((base + textOffset) + spacing * 2, baseY));
-	this->option1280x960->setPosition(Vec2((base + textOffset) + spacing * 3, baseY));
+	this->label1080x768->setPosition(Vec2(base + spacing * 0.0f, baseY));
+	this->label1152x864->setPosition(Vec2(base + spacing * 1.0f, baseY));
+	this->label1280x720->setPosition(Vec2(base + spacing * 2.0f, baseY));
+	this->label1280x960->setPosition(Vec2(base + spacing * 3.0f, baseY));
+	this->option1080x768->setPosition(Vec2((base + textOffset) + spacing * 0.0f, baseY));
+	this->option1152x864->setPosition(Vec2((base + textOffset) + spacing * 1.0f, baseY));
+	this->option1280x720->setPosition(Vec2((base + textOffset) + spacing * 2.0f, baseY));
+	this->option1280x960->setPosition(Vec2((base + textOffset) + spacing * 3.0f, baseY));
 
-	this->label1280x1024->setPosition(Vec2(base + spacing * 0, baseY - offsetY));
-	this->label1440x900->setPosition(Vec2(base + spacing * 1, baseY - offsetY));
-	this->label1600x900->setPosition(Vec2(base + spacing * 2, baseY - offsetY));
-	this->label1600x1024->setPosition(Vec2(base + spacing * 3, baseY - offsetY));
-	this->option1280x1024->setPosition(Vec2((base + textOffset) + spacing * 0, baseY - offsetY));
-	this->option1440x900->setPosition(Vec2((base + textOffset) + spacing * 1, baseY - offsetY));
-	this->option1600x900->setPosition(Vec2((base + textOffset) + spacing * 2, baseY - offsetY));
-	this->option1600x1024->setPosition(Vec2((base + textOffset) + spacing * 3, baseY - offsetY));
+	this->label1280x1024->setPosition(Vec2(base + spacing * 0.0f, baseY - offsetY));
+	this->label1440x900->setPosition(Vec2(base + spacing * 1.0f, baseY - offsetY));
+	this->label1600x900->setPosition(Vec2(base + spacing * 2.0f, baseY - offsetY));
+	this->label1600x1024->setPosition(Vec2(base + spacing * 3.0f, baseY - offsetY));
+	this->option1280x1024->setPosition(Vec2((base + textOffset) + spacing * 0.0f, baseY - offsetY));
+	this->option1440x900->setPosition(Vec2((base + textOffset) + spacing * 1.0f, baseY - offsetY));
+	this->option1600x900->setPosition(Vec2((base + textOffset) + spacing * 2.0f, baseY - offsetY));
+	this->option1600x1024->setPosition(Vec2((base + textOffset) + spacing * 3.0f, baseY - offsetY));
 
-	this->label1920x1080->setPosition(Vec2(base + spacing * 0, baseY - offsetY * 2));
-	this->label2560x1440->setPosition(Vec2(base + spacing * 1, baseY - offsetY * 2));
-	this->label3840x2160->setPosition(Vec2(base + spacing * 2, baseY - offsetY * 2));
-	this->option1920x1080->setPosition(Vec2((base + textOffset) + spacing * 0, baseY - offsetY * 2));
-	this->option2560x1440->setPosition(Vec2((base + textOffset) + spacing * 1, baseY - offsetY * 2));
-	this->option3840x2160->setPosition(Vec2((base + textOffset) + spacing * 2, baseY - offsetY * 2));
+	this->label1920x1080->setPosition(Vec2(base + spacing * 0.0f, baseY - offsetY * 2.0f));
+	this->label2560x1440->setPosition(Vec2(base + spacing * 1.0f, baseY - offsetY * 2.0f));
+	this->label3840x2160->setPosition(Vec2(base + spacing * 2.0f, baseY - offsetY * 2.0f));
+	this->option1920x1080->setPosition(Vec2((base + textOffset) + spacing * 0.0f, baseY - offsetY * 2.0f));
+	this->option2560x1440->setPosition(Vec2((base + textOffset) + spacing * 1.0f, baseY - offsetY * 2.0f));
+	this->option3840x2160->setPosition(Vec2((base + textOffset) + spacing * 2.0f, baseY - offsetY * 2.0f));
+	
+	this->graphicEffectsLabel->setPosition(Vec2(base + 32.0f, baseY - 160.0f));
+	this->optionHighQuality->setPosition(Vec2(base, baseY - 160.0f - offsetY * 1.0f));
+	this->optionLowQuality->setPosition(Vec2(base, baseY - 160.0f - offsetY * 2.0f));
+	this->highQualityLabel->setPosition(Vec2(base + 32.0f, baseY - 160.0f - offsetY * 1.0f));
+	this->lowQualityLabel->setPosition(Vec2(base + 32.0f, baseY - 160.0f - offsetY * 2.0f));
 }
 
 bool VideoTab::onFullScreenChanged(Checkbox* checkbox, bool isFullScreen)
@@ -389,6 +458,18 @@ void VideoTab::onResolutionChanged(RadioButton* radioButton)
 	else if (radioButton == this->option3840x2160)
 	{
 		ConfigManager::setResolution(ConfigManager::ResolutionSetting::R3840x2160);
+	}
+}
+
+void VideoTab::onGraphicsChanged(RadioButton* radioButton)
+{
+	if (radioButton == this->optionLowQuality)
+	{
+		ConfigManager::setGraphics(ConfigManager::GraphicsSetting::FastLowQuality);
+	}
+	else if (radioButton == this->optionHighQuality)
+	{
+		ConfigManager::setGraphics(ConfigManager::GraphicsSetting::SlowHighQuality);
 	}
 }
 

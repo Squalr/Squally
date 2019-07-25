@@ -39,10 +39,10 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
+	// this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->localizedString = nullptr; // Do not set here; set via the setter function
 
-	this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
+	// this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
 	this->setDimensions(dimensions.width, dimensions.height);
 	this->setAlignment(hAlignment, vAlignment);
@@ -50,7 +50,7 @@ LocalizedLabel::LocalizedLabel(
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
-	this->addChild(this->translationButton);
+	// this->addChild(this->translationButton);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -62,11 +62,12 @@ void LocalizedLabel::onEnter()
 	super::onEnter();
 
 	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
+	/*
 	this->updateTranslationEditHitbox();
 	this->translationButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
-	});
+	});*/
 }
 
 LocalizedLabel* LocalizedLabel::clone()
@@ -190,11 +191,11 @@ void LocalizedLabel::toggleAllowTranslationEdit(bool allowTranslationEdit)
 {
 	if (allowTranslationEdit)
 	{
-		this->translationButton->enableInteraction();
+		// this->translationButton->enableInteraction();
 	}
 	else
 	{
-		this->translationButton->disableInteraction();
+		// this->translationButton->disableInteraction();
 	}
 }
 
@@ -552,6 +553,6 @@ float LocalizedLabel::getFontSizeSmall()
 
 void LocalizedLabel::updateTranslationEditHitbox()
 {
-	this->translationButton->setContentSize(this->getContentSize());
-	this->translationButton->setPosition(Vec2(this->getContentSize() / 2.0f));
+	// this->translationButton->setContentSize(this->getContentSize());
+	// this->translationButton->setPosition(Vec2(this->getContentSize() / 2.0f));
 }

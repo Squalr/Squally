@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-const Color3B MatrixLetter::letterColor = Color3B(25, 242, 51);
-const Color3B MatrixLetter::spawnColor = Color3B::WHITE;
-const Color4B MatrixLetter::glowColor = Color4B::RED;// Color4B(25, 242, 51, 0xFF);
+const Color3B MatrixLetter::LetterColor = Color3B(25, 242, 51);
+const Color3B MatrixLetter::SpawnColor = Color3B::WHITE;
+const Color4B MatrixLetter::GlowColor = Color4B::RED;// Color4B(25, 242, 51, 0xFF);
 
-const int MatrixLetter::letterSize = 48;
+const int MatrixLetter::LetterSize = 48;
 
-const float MatrixLetter::spawnChangeRate = 0.1f;
-const float MatrixLetter::spawnTime = 0.5f;
-const float MatrixLetter::fadeOutPercentage = 25.0f;
-const float MatrixLetter::letterChangePercentage = 25.0f;
+const float MatrixLetter::SpawnChangeRate = 0.1f;
+const float MatrixLetter::SpawnTime = 0.5f;
+const float MatrixLetter::FadeOutPercentage = 25.0f;
+const float MatrixLetter::LetterChangePercentage = 25.0f;
 
 MatrixLetter* MatrixLetter::create()
 {
@@ -47,19 +47,26 @@ void MatrixLetter::pause()
 	// Ignore pause
 }
 
+void MatrixLetter::spawnImmediate()
+{
+	this->stopAllActions();
+	this->setColor(MatrixLetter::LetterColor);
+	this->setOpacity(255);
+}
+
 void MatrixLetter::spawn()
 {
 	this->stopAllActions();
 
-	this->setColor(MatrixLetter::spawnColor);
+	this->setColor(MatrixLetter::SpawnColor);
 
 	// Restore color action
-	this->runAction(TintTo::create(MatrixLetter::spawnTime, MatrixLetter::letterColor));
+	this->runAction(TintTo::create(MatrixLetter::SpawnTime, MatrixLetter::LetterColor));
 
 	FiniteTimeAction* fadeIn = FadeIn::create(0.1f);
 
 	// Some letters fade in and then out over time
-	if (RandomHelper::random_real(0.0f, 100.0f) < fadeOutPercentage)
+	if (RandomHelper::random_real(0.0f, 100.0f) < FadeOutPercentage)
 	{
 		FiniteTimeAction* fadeOut = FadeOut::create(RandomHelper::random_real(1.0f, 5.0f));
 
@@ -72,31 +79,37 @@ void MatrixLetter::spawn()
 	}
 
 	// While the letter is fading in, constantly change the letter
-
-	auto randomizeLetterFunc = CC_CALLBACK_0(MatrixLetter::randomizeLetter, this);
-	int repeatCount = (int)(MatrixLetter::spawnTime / MatrixLetter::spawnChangeRate) / 2;
-
-	FiniteTimeAction* letterChangeSpawn = Repeat::create(Sequence::create(CallFunc::create([randomizeLetterFunc]()
-	{
-		randomizeLetterFunc();
-
-	}), DelayTime::create(MatrixLetter::spawnChangeRate), nullptr), repeatCount);
+	int repeatCount = (int)(MatrixLetter::SpawnTime / MatrixLetter::SpawnChangeRate) / 2;
 
 	// Some letters do the normal spawn effect, and continue to have their letters change at a different rate
-	if (RandomHelper::random_real(0.0f, 100.0f) < letterChangePercentage)
+	if (RandomHelper::random_real(0.0f, 100.0f) < LetterChangePercentage)
 	{
 		float changeRate = RandomHelper::random_real(0.1f, 1.0f);
 
-		this->runAction(RepeatForever::create(Sequence::create(DelayTime::create(changeRate), CallFunc::create([randomizeLetterFunc]()
-		{
-			randomizeLetterFunc();
-
-		}), nullptr)));
+		this->runAction(RepeatForever::create(
+			Sequence::create(
+				DelayTime::create(changeRate),
+				CallFunc::create([=]()
+				{
+					this->randomizeLetter();
+				}),
+				nullptr
+			))
+		);
 	}
 	else
 	{
 		// Run the normal letter change effect
-		this->runAction(letterChangeSpawn);
+		this->runAction(Repeat::create(
+			Sequence::create(
+				CallFunc::create([=]()
+				{
+					this->randomizeLetter();
+				}),
+				DelayTime::create(MatrixLetter::SpawnChangeRate),
+				nullptr
+			), repeatCount)
+		);
 	}
 }
 
@@ -110,8 +123,8 @@ void MatrixLetter::randomizeLetter()
 {
 	Size spriteSheetSize = this->getTexture()->getContentSize();
 
-	float x = float(RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize);
-	float y = float(RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::letterSize) - 1) *  MatrixLetter::letterSize);
+	float x = float(RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::LetterSize) - 1) *  MatrixLetter::LetterSize);
+	float y = float(RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::LetterSize) - 1) *  MatrixLetter::LetterSize);
 
-	this->setTextureRect(Rect(x, y, MatrixLetter::letterSize, MatrixLetter::letterSize));
+	this->setTextureRect(Rect(x, y, MatrixLetter::LetterSize, MatrixLetter::LetterSize));
 }

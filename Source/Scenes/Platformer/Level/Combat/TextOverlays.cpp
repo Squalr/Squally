@@ -8,6 +8,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -45,13 +46,6 @@ void TextOverlays::onEnter()
 	super::onEnter();
 }
 
-void TextOverlays::onExit()
-{
-	super::onExit();
-
-	this->removeAllChildren();
-}
-
 void TextOverlays::initializePositions()
 {
 	super::initializePositions();
@@ -60,6 +54,11 @@ void TextOverlays::initializePositions()
 void TextOverlays::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->removeAllChildren();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
 	{

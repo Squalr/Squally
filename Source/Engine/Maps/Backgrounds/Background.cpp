@@ -4,6 +4,8 @@
 
 using namespace cocos2d;
 
+const std::string Background::MapKeyBackgroundType = "background";
+
 Background* Background::create(ValueMap& initProperties, std::string name, Node* child)
 {
 	Background* instance = new Background(initProperties, name, child);
@@ -13,7 +15,7 @@ Background* Background::create(ValueMap& initProperties, std::string name, Node*
 	return instance;
 }
 
-Background::Background(ValueMap& properties, std::string name, Node* child) : MapLayer(properties, name)
+Background::Background(ValueMap& properties, std::string name, Node* child) : MapLayer(properties, name, Background::MapKeyBackgroundType)
 {
 	this->background = Hud::create();
 

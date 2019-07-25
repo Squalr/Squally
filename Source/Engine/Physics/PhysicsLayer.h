@@ -7,7 +7,7 @@ class PhysicsLayer : public MapLayer
 public:
 	static PhysicsLayer* create(cocos2d::ValueMap& properties, std::string name);
 
-	static const std::string MapKeyWeatherLayerPhysicsLayer;
+	static const std::string MapKeyPhysicsLayer;
 
 protected:
 	void onEnter() override;

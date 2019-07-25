@@ -27,6 +27,8 @@ SmartNode* SmartNode::create()
 SmartNode::SmartNode()
 {
 	this->hackermodeEnabled = false;
+	this->optimizationHasGlobalListener = false;
+	this->optimizationHasListener = false;
 }
 
 SmartNode::~SmartNode()
@@ -54,7 +56,11 @@ void SmartNode::onExit()
 {
 	super::onExit();
 
-	this->removeNonGlobalListeners();
+	// Only attempt to remove non global listeners if we've ever added one. Optimization to save significant time.
+	if (this->optimizationHasGlobalListener)
+	{
+		this->removeNonGlobalListeners();
+	}
 }
 
 void SmartNode::onReenter()
@@ -71,7 +77,11 @@ void SmartNode::initializePositions()
 
 void SmartNode::initializeListeners()
 {
-	this->removeAllListeners();
+	// Only attempt to remove listeners if we've ever added one. Optimization to save significant time.
+	if (this->optimizationHasListener)
+	{
+		this->removeAllListeners();
+	}
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 	{
@@ -152,6 +162,13 @@ void SmartNode::addEventListener(EventListener* listener)
 		return;
 	}
 
+	if (!listener->isGlobal())
+	{
+		this->optimizationHasGlobalListener = true;
+	}
+
+	this->optimizationHasListener = true;
+
 	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
 }
 
@@ -185,8 +202,8 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	// Keep the original listener around so that we can invoke it, but disable it
 	listener->setEnabled(false);
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(wrapper, this);
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->addEventListener(wrapper);
+	this->addEventListener(listener);
 }
 
 void SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)

@@ -68,10 +68,10 @@ void GeneralTab::initializePositions()
 {
 	super::initializePositions();
 
-	this->soundIcon->setPosition(Vec2(-276.0f, 176.0f));
-	this->musicIcon->setPosition(Vec2(-276.0f, 96.0f));
-	this->soundSlider->setPosition(Vec2(32.0f, 176.0f));
-	this->musicSlider->setPosition(Vec2(32.0f, 96.0f));
+	this->musicIcon->setPosition(Vec2(-276.0f, 0.0f));
+	this->musicSlider->setPosition(Vec2(32.0f, 0.0f));
+	this->soundIcon->setPosition(Vec2(-276.0f, 0.0f + 80.0f));
+	this->soundSlider->setPosition(Vec2(32.0f, 0.0f + 80.0f));
 }
 
 void GeneralTab::onSoundVolumeUpdate(float soundVolume)

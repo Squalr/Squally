@@ -20,13 +20,21 @@ public:
 		R3840x2160,
 	};
 
+	enum class GraphicsSetting
+	{
+		SlowHighQuality,
+		FastLowQuality
+	};
+
 	static void setResolution(ResolutionSetting resolution);
+	static void setGraphics(GraphicsSetting graphics);
 	static void setIsFullScreen(bool isFullscreen);
 	static void setSoundVolume(float volume);
 	static void setMusicVolume(float volume);
 
 	static cocos2d::Size getResolutionSize();
 	static ResolutionSetting getResolution();
+	static GraphicsSetting getGraphics();
 	static bool getIsFullScreen();
 	static float getSoundVolume();
 	static float getMusicVolume();
@@ -48,6 +56,7 @@ private:
 
 	static const std::string ConfigFile;
 	static const std::string ResolutionKey;
+	static const std::string GraphicsKey;
 	static const std::string FullScreenKey;
 	static const std::string SoundVolumeKey;
 	static const std::string MusicVolumeKey;

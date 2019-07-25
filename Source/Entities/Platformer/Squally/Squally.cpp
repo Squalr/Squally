@@ -14,6 +14,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
@@ -119,15 +120,6 @@ void Squally::onEnterTransitionDidFinish()
 	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 }
 
-void Squally::onExit()
-{
-	super::onExit();
-
-	PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
-
-	this->saveState();
-}
-
 void Squally::initializeCollisionEvents()
 {
 	super::initializeCollisionEvents();
@@ -197,6 +189,23 @@ void Squally::initializePositions()
 void Squally::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
+		this->saveState();
+	}));
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocation, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->setPosition(args->position);
+			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+		}
+	}));
 
 	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{

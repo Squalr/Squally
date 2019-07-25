@@ -6,6 +6,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -185,7 +186,7 @@ CodeEditor::CodeEditor()
 	lexiconLabelSelected->setTextColor(Color4B::YELLOW);
 
 	this->lexiconButton = ClickableTextNode::create(lexiconLabel, lexiconLabelSelected, UIResources::Menus_LexiconMenu_LexiconButton, UIResources::Menus_LexiconMenu_LexiconButtonSelected);
-	this->lexicon = Lexicon::create();
+	this->lexicon = nullptr;
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 3);
 	this->lexiconButton->setTextOffset(Vec2(0.0f, -56.0f));
@@ -203,7 +204,6 @@ CodeEditor::CodeEditor()
 
 	this->scriptList->setAnchorPoint(Vec2(0.0f, 1.0f));
 
-	this->lexicon->setVisible(false);
 	this->setVisible(false);
 
 	this->addChild(this->functionWindow);
@@ -220,7 +220,6 @@ CodeEditor::CodeEditor()
 	this->addChild(this->titleLabel);
 	this->addChild(this->lexiconButton);
 	this->addChild(this->clippyNode);
-	this->addChild(this->lexicon);
 }
 
 CodeEditor::~CodeEditor()
@@ -232,14 +231,6 @@ void CodeEditor::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
-}
-
-void CodeEditor::onExit()
-{
-	super::onExit();
-	
-	this->activeHackableCode = nullptr;
-	this->clippyNode->removeAllChildren();
 }
 
 void CodeEditor::initializePositions()
@@ -276,6 +267,12 @@ void CodeEditor::initializeListeners()
 	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
 	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	{
+		this->activeHackableCode = nullptr;
+		this->clippyNode->removeAllChildren();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
 	{
 		if (this->isVisible())
@@ -293,12 +290,6 @@ void CodeEditor::initializeListeners()
 			this->open(args);
 		}
 	}));
-
-	this->lexicon->setCloseCallBack([=]()
-	{
-		GameUtils::focus(this);
-		this->functionWindow->focus();
-	});
 	
 	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
@@ -746,7 +737,10 @@ void CodeEditor::onScriptLoad(ScriptEntry* script)
 
 void CodeEditor::onAccept()
 {
-	this->lexicon->close();
+	if (this->lexicon != nullptr)
+	{
+		this->lexicon->close();
+	}
 	this->scriptList->saveScripts();
 
 	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getPointer());
@@ -769,10 +763,35 @@ void CodeEditor::onAccept()
 
 void CodeEditor::onCancel()
 {
-	this->lexicon->close();
+	if (this->lexicon != nullptr)
+	{
+		this->getLexicon()->close();
+	}
+
 	this->scriptList->saveScripts();
 
 	this->setVisible(false);
 
 	HackableEvents::TriggerEditHackableAttributeDone();
+}
+
+Lexicon* CodeEditor::getLexicon()
+{
+	// Lazy initialization for lexicon since it is a little bit resource intensive (several sprites, buttons)
+	if (this->lexicon == nullptr)
+	{
+		this->lexicon = Lexicon::create();
+
+		this->lexicon->setCloseCallBack([=]()
+		{
+			GameUtils::focus(this);
+			this->functionWindow->focus();
+		});
+
+		this->lexicon->setVisible(false);
+
+		this->addChild(this->lexicon);
+	}
+
+	return this->lexicon;
 }
