@@ -31,12 +31,12 @@ FrostTerrain::FrostTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Frost_FrostBottomRight,
 		TerrainResources::Frost_FrostLeft,
 		TerrainResources::Frost_FrostRight,
+		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2(-16.0f, 0.0f),
 		cocos2d::Vec2(16.0f, 0.0f),
 		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2::ZERO,
-		Color4B(11, 30, 39, 255),
-		false))
+		Color4B(11, 30, 39, 255)))
 {
 }
 

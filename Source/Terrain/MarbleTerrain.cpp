@@ -31,12 +31,12 @@ MarbleTerrain::MarbleTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Marble_MarbleBottomRight,
 		TerrainResources::Marble_MarbleLeft,
 		TerrainResources::Marble_MarbleRight,
+		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2(-16.0f, 0.0f),
 		cocos2d::Vec2(16.0f, 0.0f),
 		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2::ZERO,
-		Color4B(11, 30, 39, 255),
-		false))
+		Color4B(11, 30, 39, 255)))
 {
 }
 

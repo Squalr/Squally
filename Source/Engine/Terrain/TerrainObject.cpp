@@ -491,7 +491,7 @@ void TerrainObject::buildSurfaceTextures()
 		if (this->isTopAngle(normalAngle))
 		{
 			Sprite* top = Sprite::create(this->terrainData.topResource);
-			Vec2 offset = this->terrainData.isPerfectlyFlat ? Vec2(0.0f, 2.0f) : Vec2(0.0f, top->getContentSize().height / 2.0f);
+			Vec2 offset = Vec2(0.0f, top->getContentSize().height / 2.0f) + terrainData.topOffset;
 
 			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), offset, 180.0f, true);
 		}
@@ -532,7 +532,7 @@ void TerrainObject::buildSurfaceTextures()
 				Size textureSize = topLeft->getContentSize();
 
 				topLeft->setAnchorPoint(Vec2(0.0f, 0.5f));
-				topLeft->setPosition(dest + this->terrainData.topLeftCornerOffset);
+				topLeft->setPosition(dest + terrainData.topOffset + this->terrainData.topLeftCornerOffset);
 				topLeft->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->topCornersNode->addChild(topLeft);
@@ -543,7 +543,7 @@ void TerrainObject::buildSurfaceTextures()
 				Size textureSize = topRight->getContentSize();
 
 				topRight->setAnchorPoint(Vec2(1.0f, 0.5f));
-				topRight->setPosition(dest  + terrainData.topRightCornerOffset);
+				topRight->setPosition(dest + terrainData.topOffset + terrainData.topRightCornerOffset);
 				topRight->setRotation(180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI));
 
 				this->topCornersNode->addChild(topRight);

@@ -31,12 +31,12 @@ ShipTerrain::ShipTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Ship_ShipBottomRight,
 		TerrainResources::Ship_ShipLeft,
 		TerrainResources::Ship_ShipRight,
+		cocos2d::Vec2(0.0f, -16.0f),
 		cocos2d::Vec2(-56.0f, 0.0f),
 		cocos2d::Vec2(56.0f, 0.0f),
 		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2::ZERO,
-		Color4B(11, 30, 39, 255),
-		false))
+		Color4B(11, 30, 39, 255)))
 {
 }
 

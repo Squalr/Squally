@@ -31,12 +31,12 @@ WoodTerrain::WoodTerrain(ValueMap& initProperties) : super(
 		TerrainResources::Wood_WoodBottomRight,
 		TerrainResources::Wood_WoodLeft,
 		TerrainResources::Wood_WoodRight,
+		cocos2d::Vec2(0.0f, -42.0f),
 		cocos2d::Vec2(-16.0f, 0.0f),
 		cocos2d::Vec2(16.0f, 0.0f),
 		cocos2d::Vec2::ZERO,
 		cocos2d::Vec2::ZERO,
-		Color4B(11, 30, 39, 255),
-		true))
+		Color4B(11, 30, 39, 255)))
 {
 }
 

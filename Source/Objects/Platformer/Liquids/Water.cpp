@@ -27,7 +27,7 @@ Water::Water(ValueMap& initProperties) : super(initProperties)
 {
 	this->waterSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->elapsed = 0.0f;
-	this->water = LiquidNode::create(this->waterSize);
+	this->water = LiquidNode::create(this->waterSize, 192.0f);
 
 	std::string customCollison = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
 
@@ -72,8 +72,6 @@ void Water::update(float dt)
 void Water::initializePositions()
 {
 	super::initializePositions();
-
-	this->water->setPosition(-Vec2(this->waterSize / 2.0f));
 }
 
 void Water::initializeListeners()
