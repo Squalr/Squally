@@ -611,6 +611,7 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Spawns/CombatSpawn.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Switches/StoneButton/StoneButton.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Switches/Trigger.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Transportation/Ship.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Traps/DartGun/Dart.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Traps/DartGun/DartGun.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Traps/FloatingBomb/FloatingBomb.cpp"
@@ -1992,6 +1993,8 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/MarbleGrassTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/MarbleTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShadeGrassTerrain.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipAltTerrain.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/TrailTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/WoodTerrain.cpp"
 )
@@ -2622,6 +2625,7 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Spawns/CombatSpawn.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Switches/StoneButton/StoneButton.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Switches/Trigger.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Transportation/Ship.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Traps/DartGun/Dart.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Traps/DartGun/DartGun.h"
     "${CMAKE_CURRENT_LIST_DIR}/Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
@@ -4013,6 +4017,8 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/MarbleTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/PlatformerTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShadeGrassTerrain.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipAltTerrain.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/TrailTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/WoodTerrain.h"
 )

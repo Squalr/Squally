@@ -29,6 +29,7 @@
 #include "Objects/Platformer/Spawns/CombatSpawn.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"
 #include "Objects/Platformer/Switches/Trigger.h"
+#include "Objects/Platformer/Transportation/Ship.h"
 #include "Objects/Platformer/Traps/DartGun/DartGun.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"

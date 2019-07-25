@@ -35,6 +35,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 	this->letters = std::vector<MatrixLetter*>();
 	this->letterCount = 0;
 	this->elapsedDuration = 0.0f;
+	this->currentLetterIndex = 0;
 	this->isAlive = true;
 
 	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
@@ -115,6 +116,7 @@ void MatrixStrand::nextStrandAction()
 {
 	if (this->currentLetterIndex < MatrixStrand::letterCount)
 	{
+		
 		MatrixLetter* letter = this->letters[this->currentLetterIndex];
 
 		letter->spawn();

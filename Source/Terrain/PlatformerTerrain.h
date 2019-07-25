@@ -13,5 +13,7 @@
 #include "Terrain/MarbleGrassTerrain.h"
 #include "Terrain/MarbleTerrain.h"
 #include "Terrain/ShadeGrassTerrain.h"
+#include "Terrain/ShipAltTerrain.h"
+#include "Terrain/ShipTerrain.h"
 #include "Terrain/TrailTerrain.h"
 #include "Terrain/WoodTerrain.h"

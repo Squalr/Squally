@@ -515,6 +515,16 @@ namespace DecorResources
 	extern const std::string Generic_Bed;
 	extern const std::string Generic_BoardedWindow;
 	extern const std::string Generic_Counter;
+	extern const std::string Generic_InsanityPoster1;
+	extern const std::string Generic_InsanityPoster10;
+	extern const std::string Generic_InsanityPoster2;
+	extern const std::string Generic_InsanityPoster3;
+	extern const std::string Generic_InsanityPoster4;
+	extern const std::string Generic_InsanityPoster5;
+	extern const std::string Generic_InsanityPoster6;
+	extern const std::string Generic_InsanityPoster7;
+	extern const std::string Generic_InsanityPoster8;
+	extern const std::string Generic_InsanityPoster9;
 	extern const std::string Generic_Lamp1;
 	extern const std::string Generic_Lamp2;
 	extern const std::string Generic_Nightstand;
