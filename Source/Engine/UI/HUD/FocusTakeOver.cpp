@@ -46,7 +46,7 @@ void FocusTakeOver::initializeListeners()
 	super::initializeListeners();
 
 	EventListenerCustom* beforeSceneChangeListener = EventListenerCustom::create(
-		SceneEvents::BeforeSceneChangeEvent,
+		SceneEvents::EventBeforeSceneChange,
 		[=](EventCustom* EventCustom)
 		{
 			// Important to restore any hijacked nodes before scene changes

@@ -39,6 +39,9 @@ public:
 	static const std::string MapKeyRepeatY;
 	static const std::string MapKeyEvent;
 	static const std::string MapKeyState;
+	static const std::string MapKeyQuest;
+	static const std::string MapKeyQuestLine;
+	static const std::string MapKeyQuestTag;
 	static const std::string MapKeyArgs;
 
 	static const std::string MapKeyGid;
@@ -55,6 +58,7 @@ public:
 	static const std::string MapKeyPropertyValue;
 
 protected:
+	GameObject();
 	GameObject(const cocos2d::ValueMap& initProperties);
 	virtual ~GameObject();
 	

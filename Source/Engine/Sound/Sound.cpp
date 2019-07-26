@@ -39,7 +39,7 @@ void Sound::initializeListeners()
 		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		this->stop();
 	}));

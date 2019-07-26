@@ -267,7 +267,7 @@ void CodeEditor::initializeListeners()
 	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
 	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::BeforeSceneChangeEvent, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		this->activeHackableCode = nullptr;
 		this->clippyNode->removeAllChildren();

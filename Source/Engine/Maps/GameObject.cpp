@@ -26,7 +26,10 @@ const std::string GameObject::MapKeyFlipY = "flip-y";
 const std::string GameObject::MapKeyRepeatX = "repeat-x";
 const std::string GameObject::MapKeyRepeatY = "repeat-y";
 const std::string GameObject::MapKeyEvent = "event";
-const std::string GameObject::MapKeyState = "event";
+const std::string GameObject::MapKeyState = "state";
+const std::string GameObject::MapKeyQuest = "quest";
+const std::string GameObject::MapKeyQuestLine = "quest-line";
+const std::string GameObject::MapKeyQuestTag = "quest-tag";
 const std::string GameObject::MapKeyArgs = "args";
 const std::string GameObject::MapKeyRotation = "rotation";
 const std::string GameObject::MapKeyPoints = "points";
@@ -54,6 +57,10 @@ const std::vector<std::string> GameObject::AttributeKeys =
 const std::string GameObject::MapKeyPropertyName = "name";
 const std::string GameObject::MapKeyPropertyType = "type";
 const std::string GameObject::MapKeyPropertyValue = "value";
+
+GameObject::GameObject() : GameObject(ValueMap())
+{
+}
 
 GameObject::GameObject(const ValueMap& properties)
 {
@@ -266,7 +273,7 @@ bool GameObject::isAttributeOrHiddenProperty(std::string propertyName)
 	return std::find(GameObject::AttributeKeys.begin(), GameObject::AttributeKeys.end(), propertyName) != GameObject::AttributeKeys.end();
 }
 
-void GameObject::listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback)
+void GameObject::listenForMapEvent(std::string eventName, std::function<void(ValueMap args)> callback)
 {
 	if (eventName.empty())
 	{
@@ -275,7 +282,7 @@ void GameObject::listenForMapEvent(std::string eventName, std::function<void(coc
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
 	{
-		cocos2d::ValueMap* args = static_cast<cocos2d::ValueMap*>(eventCustom->getUserData());
+		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
 
 		callback(*args);
 	}));

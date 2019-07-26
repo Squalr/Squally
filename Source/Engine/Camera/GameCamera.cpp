@@ -118,7 +118,7 @@ void GameCamera::initializeListeners()
 	super::initializeListeners();
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(
-		SceneEvents::BeforeSceneChangeEvent,
+		SceneEvents::EventBeforeSceneChange,
 		[=](EventCustom* eventCustom)
 		{
 			this->clearTargets();

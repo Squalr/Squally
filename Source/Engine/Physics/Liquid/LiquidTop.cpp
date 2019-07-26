@@ -74,32 +74,23 @@ void LiquidTop::update(float dt)
         (*it).update(this->dampening, this->tension);
     }
 
-    for (int j = 0; j < 8; j++)
+    const int SpreadIterations = 8;
+
+    for (int iteration = 0; iteration < SpreadIterations; iteration++)
     {
-        for (int i = 0; i < this->columns.size(); i++)
+        // Ignore the first and last columns as an optimization. No apparent visual impact, much cleaner code.
+        for (int index = 1; index < this->columns.size() - 1; index++)
         {
-            if (i > 0)
-            {
-                leftDeltas[i] = this->spread * (columns[i].height - columns[i-1].height);
-                (columns[i - 1]).speed += leftDeltas[i];
-            }
-            if (i < this->columns.size() - 1)
-            {
-                rightDeltas[i] = this->spread * (columns[i].height - columns[i+1].height);
-                (columns[i + 1]).speed += rightDeltas[i];
-            }
+            leftDeltas[index] = this->spread * (columns[index].height - columns[index - 1].height);
+            rightDeltas[index] = this->spread * (columns[index].height - columns[index + 1].height);
+            columns[index - 1].speed += leftDeltas[index];
+            columns[index + 1].speed += rightDeltas[index];
         }
 
-        for (int i = 0; i < this->columns.size(); i++)
+        for (int index = 1; index < this->columns.size() - 1; index++)
         {
-            if (i > 0)
-            {
-                (columns[i - 1]).height += leftDeltas[i];
-            }
-            if (i < this->columns.size() - 1)
-            {
-                (columns[i + 1]).height += rightDeltas[i];
-            }
+            columns[index - 1].height += leftDeltas[index];
+            columns[index + 1].height += rightDeltas[index];
         }
     }
 }

@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class GameObject;
+class QuestDeserializer;
 
 class ObjectDeserializer : public SmartNode
 {
@@ -39,8 +40,10 @@ public:
 	std::string getObjectType();
 
 protected:
-	ObjectDeserializer(std::string objectType);
+	ObjectDeserializer(std::string objectType, QuestDeserializer* questDeserializer = nullptr);
 	~ObjectDeserializer();
+
+	QuestDeserializer* questDeserializer;
 
 private:
 	typedef SmartNode super;

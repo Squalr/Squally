@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/PlatformerObjects.h"
@@ -19,7 +20,7 @@ PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 	return instance;
 }
 
-PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject)
+PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerQuestDeserializer::create())
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
@@ -123,10 +124,21 @@ void PlatformerObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeseria
 {
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
+	std::string quest = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
 
 	if (this->deserializers.find(name) != this->deserializers.end())
 	{
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
+		GameObject* object = this->deserializers[name](properties);
+
+		if (quest != "")
+		{
+			std::string questLine = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString();
+			std::string questTag = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestTag, Value("")).asString();
+			
+			this->questDeserializer->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(object, quest, questLine, questTag));
+		}
+
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));
 	}
 	else
 	{

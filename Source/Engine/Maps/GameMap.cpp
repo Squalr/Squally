@@ -9,7 +9,6 @@
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/Deserializers/LayerDeserializer.h"
-#include "Engine/Events/DeserializationEvents.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/ObjectifiedTile.h"

@@ -6,5 +6,5 @@ class SceneEvents
 public:
 	static void TriggerBeforeSceneChange();
 
-	static const std::string BeforeSceneChangeEvent;
+	static const std::string EventBeforeSceneChange;
 };
