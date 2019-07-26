@@ -5,32 +5,37 @@
 class QuestTask : public GameObject
 {
 public:
-	virtual void setActive(bool isActive);
-	virtual void setActiveThroughSkippable();
-	virtual void markComplete();
+	enum class QuestState
+	{
+		Untracked,
+		Active,
+		ActiveThroughSkippable,
+		Complete,
+	};
+	
+	void initialize();
+	QuestState getQuestState();
+	void setQuestState(QuestState questState);
 	std::string getQuestName();
-	bool isQuestComplete();
-	bool isQuestActive();
 	bool isQuestSkippable();
 
 protected:
 	QuestTask(GameObject* owner, std::string quest, bool skippable = false);
 	~QuestTask();
 
-	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
-	virtual void onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete) = 0;
-	virtual void onActivate() = 0;
-	virtual void onActivateAsSkippable();
+	virtual void onLoad(QuestState questState) = 0;
+	virtual void onStateChange(QuestState questState, QuestState questStatePrevious) = 0;
+	virtual void onActivateRunOnce() = 0;
 
 private:
 	typedef GameObject super;
 
 	GameObject* owner;
 	std::string quest;
-	bool isComplete;
-	bool isActive;
+	QuestState questState;
+	bool hasRunActivateFunction;
+	bool hasLoaded;
 	bool isSkippable;
-	bool hasActivated;
 };
 

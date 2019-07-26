@@ -41,32 +41,42 @@ HelpSquallyHeal::~HelpSquallyHeal()
 {
 }
 
-void HelpSquallyHeal::onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete)
+void HelpSquallyHeal::onLoad(QuestTask::QuestState questState)
 {
-	if (isQuestActive || isQuestActiveAsSkippable)
+	switch (questState)
 	{
-		if (this->flyBot != nullptr)
+		case QuestTask::QuestState::Active:
+		case QuestTask::QuestState::ActiveThroughSkippable:
 		{
-			flyBot->animationNode->setFlippedX(true);
-
-			if (isQuestComplete)
+			if (this->flyBot != nullptr)
 			{
-				flyBot->setVisible(false);
+				this->flyBot->animationNode->setFlippedX(true);
 			}
+			
+			break;
+		}
+		default:
+		{
+			if (this->flyBot != nullptr)
+			{
+				this->flyBot->setVisible(false);
+			}
+			break;
 		}
 	}
 }
 
-void HelpSquallyHeal::onActivate()
+void HelpSquallyHeal::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
+{
+}
+
+void HelpSquallyHeal::onActivateRunOnce()
 {
 	this->listenForMapEvent(HelpSquallyHeal::MapKeyQuest, [=](ValueMap args)
 	{
-		if (this->isQuestActive())
-		{
-			QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
+		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
 
-			this->runCinematicSequence();
-		}
+		this->runCinematicSequence();
 	});
 }
 

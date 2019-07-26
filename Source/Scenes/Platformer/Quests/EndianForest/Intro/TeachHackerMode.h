@@ -15,8 +15,9 @@ protected:
 	TeachHackerMode(GameObject* owner);
 	~TeachHackerMode();
 	
-	void onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete) override;
-	void onActivate() override;
+	void onLoad(QuestTask::QuestState questState) override;
+	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;
+	void onActivateRunOnce() override;
 
 private:
 	typedef QuestTask super;

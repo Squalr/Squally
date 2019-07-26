@@ -8,11 +8,10 @@ class QuestLine : public SmartNode
 {
 public:
 	void advanceNextQuest(QuestTask* currentQuest);
-	void advanceToQuest(std::string questName);
 	void markComplete();
 
 protected:
-	QuestLine(std::string questLine, std::vector<QuestTask*> questTasks);
+	QuestLine(std::string questLine, std::string quest, std::string questTag, std::vector<QuestTask*> questTasks);
 	~QuestLine();
 	
 	void onEnterTransitionDidFinish() override;
@@ -22,9 +21,11 @@ private:
 	typedef SmartNode super;
 
 	std::string questLine;
+	std::string quest;
+	std::string questTag;
 	std::vector<QuestTask*> questTasks;
 
-	QuestTask* activeQuestTask;
+	QuestTask* trackedQuestTask;
 
 	static const std::string QuestLineSaveKeyPrefix;
 	static const std::string QuestLineSaveKeyComplete;

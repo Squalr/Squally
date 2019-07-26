@@ -8,12 +8,12 @@ class Quest;
 class IntroLine : public QuestLine
 {
 public:
-	static IntroLine* create(GameObject* owner);
+	static IntroLine* create(std::string quest, std::string questTag, GameObject* owner);
 
 	static const std::string MapKeyQuestLineIntro;
 
 protected:
-	IntroLine(GameObject* owner);
+	IntroLine(std::string quest, std::string questTag, GameObject* owner);
 	~IntroLine();
 
 private:

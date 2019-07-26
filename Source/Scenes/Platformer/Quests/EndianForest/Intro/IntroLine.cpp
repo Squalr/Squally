@@ -10,22 +10,24 @@ using namespace cocos2d;
 
 const std::string IntroLine::MapKeyQuestLineIntro = "intro";
 
-IntroLine* IntroLine::create(GameObject* owner)
+IntroLine* IntroLine::create(std::string quest, std::string questTag, GameObject* owner)
 {
-	IntroLine* instance = new IntroLine(owner);
+	IntroLine* instance = new IntroLine(quest, questTag, owner);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-IntroLine::IntroLine(GameObject* owner) : super(
+IntroLine::IntroLine(std::string quest, std::string questTag, GameObject* owner) : super(
 	IntroLine::MapKeyQuestLineIntro,
+	quest,
+	questTag,
 	{
-		(QuestTask*)MeetFlyBot::create(owner),
-		(QuestTask*)HelpSquallyHeal::create(owner),
-		(QuestTask*)TeachHackerMode::create(owner),
-		(QuestTask*)SpotOrcGrunt::create(owner),
+		(QuestTask*)MeetFlyBot::create(quest == MeetFlyBot::MapKeyQuest ? owner : nullptr),
+		(QuestTask*)HelpSquallyHeal::create(quest == HelpSquallyHeal::MapKeyQuest ? owner : nullptr),
+		(QuestTask*)TeachHackerMode::create(quest == TeachHackerMode::MapKeyQuest ? owner : nullptr),
+		(QuestTask*)SpotOrcGrunt::create(quest == SpotOrcGrunt::MapKeyQuest ? owner : nullptr),
 	})
 {
 }

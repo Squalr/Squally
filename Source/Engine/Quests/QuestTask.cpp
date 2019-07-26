@@ -4,23 +4,15 @@ using namespace cocos2d;
 
 QuestTask::QuestTask(GameObject* owner, std::string quest, bool skippable) : super()
 {
+	this->questState = QuestState::Untracked;
 	this->owner = owner;
 	this->quest = quest;
-	this->isActive = false;
 	this->isSkippable = skippable;
-	this->isComplete = false;
-	this->hasActivated = false;
+	this->hasRunActivateFunction = false;
 }
 
 QuestTask::~QuestTask()
 {
-}
-
-void QuestTask::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-
-	this->onLoad(this->isQuestActive(), this->isQuestSkippable(), this->isQuestComplete());
 }
 
 void QuestTask::initializeListeners()
@@ -28,52 +20,58 @@ void QuestTask::initializeListeners()
 	super::initializeListeners();
 }
 
-void QuestTask::onActivateAsSkippable()
+void QuestTask::initialize()
 {
-	this->onActivate();
-}
-
-void QuestTask::setActive(bool isActive)
-{
-	this->isActive = isActive;
-
-	if (this->isActive && !this->hasActivated)
+	if (!this->hasLoaded)
 	{
-		this->hasActivated = true;
-
-		// Run activate function -- can only be run once
-		this->onActivate();
+		this->hasLoaded = true;
+		this->onLoad(this->questState);
 	}
 }
 
-void QuestTask::setActiveThroughSkippable()
+QuestTask::QuestState QuestTask::getQuestState()
 {
-	if (!this->hasActivated)
-	{
-		this->hasActivated = true;
-
-		this->onActivateAsSkippable();
-	}
+	return this->questState;
 }
 
-void QuestTask::markComplete()
+void QuestTask::setQuestState(QuestState questState)
 {
-	this->isComplete = true;
+	QuestState questStatePrevious = this->questState;
+	this->questState = questState;
+
+	if (!this->hasLoaded)
+	{
+		this->hasLoaded = true;
+		this->onLoad(this->questState);
+	}
+	else
+	{
+		this->onStateChange(this->questState, questStatePrevious);
+	}
+
+	switch(this->questState)
+	{
+		case QuestState::Active:
+		case QuestState::ActiveThroughSkippable:
+		{
+			if (!this->hasRunActivateFunction)
+			{
+				this->hasRunActivateFunction = true;
+				this->onActivateRunOnce();
+			}
+
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
 }
 
 std::string QuestTask::getQuestName()
 {
 	return this->quest;
-}
-
-bool QuestTask::isQuestComplete()
-{
-	return this->isComplete;
-}
-
-bool QuestTask::isQuestActive()
-{
-	return this->isActive;
 }
 
 bool QuestTask::isQuestSkippable()
