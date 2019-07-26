@@ -1,4 +1,4 @@
-#include "HelpSquallyHeal.h"
+#include "TeachHackerMode.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -16,50 +16,50 @@
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
-#include "Strings/Dialogue/Story/Intro/TentHeal.h"
+#include "Strings/Dialogue/Story/Intro/HackerMode.h"
 
 using namespace cocos2d;
 
-const std::string HelpSquallyHeal::MapKeyQuest = "help-squally-heal";
+const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
 
-HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner)
+TeachHackerMode* TeachHackerMode::create(GameObject* owner)
 {
-	HelpSquallyHeal* instance = new HelpSquallyHeal(owner);
+	TeachHackerMode* instance = new TeachHackerMode(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HelpSquallyHeal::HelpSquallyHeal(GameObject* owner) : super(owner, HelpSquallyHeal::MapKeyQuest, true)
+TeachHackerMode::TeachHackerMode(GameObject* owner) : super(owner, TeachHackerMode::MapKeyQuest, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
 }
 
-HelpSquallyHeal::~HelpSquallyHeal()
+TeachHackerMode::~TeachHackerMode()
 {
 }
 
-void HelpSquallyHeal::onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete)
+void TeachHackerMode::onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete)
 {
 	if (isQuestActive || isQuestActiveAsSkippable)
 	{
 		if (this->flyBot != nullptr)
 		{
-			flyBot->animationNode->setFlippedX(true);
+			this->flyBot->animationNode->setFlippedX(true);
 
 			if (isQuestComplete)
 			{
-				flyBot->setVisible(false);
+				this->flyBot->setVisible(false);
 			}
 		}
 	}
 }
 
-void HelpSquallyHeal::onActivate()
+void TeachHackerMode::onActivate()
 {
-	this->listenForMapEvent(HelpSquallyHeal::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
 	{
 		if (this->isQuestActive())
 		{
@@ -70,24 +70,23 @@ void HelpSquallyHeal::onActivate()
 	});
 }
 
-void HelpSquallyHeal::runCinematicSequence()
+void TeachHackerMode::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{
 		return;
 	}
-
+	
 	this->hasRunEvent = true;
-
-	Vec2 positionA = Vec2::ZERO;
+	Vec2 positionB = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
 		switch(cinematicMarker->getId())
 		{
-			case 0:
+			case 1:
 			{
-				positionA = cinematicMarker->getPosition();
+				positionB = cinematicMarker->getPosition();
 				break;
 			}
 			default:
@@ -104,11 +103,11 @@ void HelpSquallyHeal::runCinematicSequence()
 		this->flyBot->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidBrief2Sound->play();
+				this->flyBot->droidChatterSound->play();
 			}),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_TentHeal::create());
+				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerMode::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
@@ -117,7 +116,7 @@ void HelpSquallyHeal::runCinematicSequence()
 				this->flyBot->speechBubble->hideDialogue();
 			}),
 			DelayTime::create(1.0f),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
+			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
 			CallFunc::create([=]()
 			{
 				this->flyBot->setVisible(false);

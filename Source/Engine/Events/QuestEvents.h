@@ -1,29 +1,29 @@
 #pragma once
 #include <string>
 
-class Quest;
+class QuestTask;
 
 class QuestEvents
 {
 public:
-	static const std::string EventAdvanceNextQuest;
-	static const std::string EventAdvanceQuest;
+	static const std::string EventAdvanceNextQuestTask;
+	static const std::string EventAdvanceQuestTask;
 
 	struct AdvanceNextQuestArgs
 	{
-		Quest* quest;
+		QuestTask* questTask;
 
-		AdvanceNextQuestArgs(Quest* quest) : quest(quest) { }
+		AdvanceNextQuestArgs(QuestTask* questTask) : questTask(questTask) { }
 	};
 
 	struct AdvanceToQuestArgs
 	{
 		std::string questLine;
-		std::string newQuest;
+		std::string newQuestTask;
 
-		AdvanceToQuestArgs(std::string questLine, std::string newQuest) : questLine(questLine), newQuest(newQuest) { }
+		AdvanceToQuestArgs(std::string questLine, std::string newQuestTask) : questLine(questLine), newQuestTask(newQuestTask) { }
 	};
 
-	static void TriggerAdvanceToNextQuest(AdvanceNextQuestArgs args);
-	static void TriggerAdvanceToQuest(AdvanceToQuestArgs args);
+	static void TriggerAdvanceToNextQuestTask(AdvanceNextQuestArgs args);
+	static void TriggerAdvanceToQuestTask(AdvanceToQuestArgs args);
 };

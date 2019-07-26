@@ -2,17 +2,18 @@
 
 #include "Engine/Quests/QuestLine.h"
 
+class GameObject;
 class Quest;
 
 class IntroLine : public QuestLine
 {
 public:
-	static IntroLine* create();
+	static IntroLine* create(GameObject* owner);
 
 	static const std::string MapKeyQuestLineIntro;
 
 protected:
-	IntroLine();
+	IntroLine(GameObject* owner);
 	~IntroLine();
 
 private:

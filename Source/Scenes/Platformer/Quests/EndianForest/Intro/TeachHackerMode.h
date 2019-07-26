@@ -4,18 +4,17 @@
 
 class FlyBot;
 
-class MeetFlyBot : public QuestTask
+class TeachHackerMode : public QuestTask
 {
 public:
-	static MeetFlyBot* create(GameObject* owner);
+	static TeachHackerMode* create(GameObject* owner);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	MeetFlyBot(GameObject* owner);
-	~MeetFlyBot();
-
-	void initializeListeners() override;
+	TeachHackerMode(GameObject* owner);
+	~TeachHackerMode();
+	
 	void onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete) override;
 	void onActivate() override;
 

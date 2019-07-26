@@ -4,18 +4,17 @@
 
 class FlyBot;
 
-class MeetFlyBot : public QuestTask
+class SpotOrcGrunt : public QuestTask
 {
 public:
-	static MeetFlyBot* create(GameObject* owner);
+	static SpotOrcGrunt* create(GameObject* owner);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	MeetFlyBot(GameObject* owner);
-	~MeetFlyBot();
-
-	void initializeListeners() override;
+	SpotOrcGrunt(GameObject* owner);
+	~SpotOrcGrunt();
+	
 	void onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete) override;
 	void onActivate() override;
 

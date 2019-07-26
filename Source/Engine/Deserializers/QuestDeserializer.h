@@ -21,10 +21,10 @@ public:
 		std::string questTag;
 
 		QuestDeserializationRequestArgs(GameObject* targetObject,
-			std::string quest,
 			std::string questLine,
+			std::string quest,
 			std::string questTag):
-			targetObject(targetObject), quest(quest), questLine(questLine), questTag(questTag)
+			targetObject(targetObject), questLine(questLine), quest(quest), questTag(questTag)
 		{
 		}
 	};

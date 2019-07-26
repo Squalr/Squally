@@ -1,4 +1,4 @@
-#include "HelpSquallyHeal.h"
+#include "SpotOrcGrunt.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -17,49 +17,50 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
 #include "Strings/Dialogue/Story/Intro/TentHeal.h"
+#include "Strings/Dialogue/Story/Intro/OgreSpotted.h"
 
 using namespace cocos2d;
 
-const std::string HelpSquallyHeal::MapKeyQuest = "help-squally-heal";
+const std::string SpotOrcGrunt::MapKeyQuest = "spot-orc-grunt";
 
-HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner)
+SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner)
 {
-	HelpSquallyHeal* instance = new HelpSquallyHeal(owner);
+	SpotOrcGrunt* instance = new SpotOrcGrunt(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HelpSquallyHeal::HelpSquallyHeal(GameObject* owner) : super(owner, HelpSquallyHeal::MapKeyQuest, true)
+SpotOrcGrunt::SpotOrcGrunt(GameObject* owner) : super(owner, SpotOrcGrunt::MapKeyQuest, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
 }
 
-HelpSquallyHeal::~HelpSquallyHeal()
+SpotOrcGrunt::~SpotOrcGrunt()
 {
 }
 
-void HelpSquallyHeal::onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete)
+void SpotOrcGrunt::onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete)
 {
 	if (isQuestActive || isQuestActiveAsSkippable)
 	{
 		if (this->flyBot != nullptr)
 		{
-			flyBot->animationNode->setFlippedX(true);
+			this->flyBot ->animationNode->setFlippedX(true);
 
 			if (isQuestComplete)
 			{
-				flyBot->setVisible(false);
+				this->flyBot ->setVisible(false);
 			}
 		}
 	}
 }
 
-void HelpSquallyHeal::onActivate()
+void SpotOrcGrunt::onActivate()
 {
-	this->listenForMapEvent(HelpSquallyHeal::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
 	{
 		if (this->isQuestActive())
 		{
@@ -70,57 +71,37 @@ void HelpSquallyHeal::onActivate()
 	});
 }
 
-void HelpSquallyHeal::runCinematicSequence()
+void SpotOrcGrunt::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{
 		return;
 	}
-
+	
 	this->hasRunEvent = true;
-
-	Vec2 positionA = Vec2::ZERO;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
-	{
-		switch(cinematicMarker->getId())
-		{
-			case 0:
-			{
-				positionA = cinematicMarker->getPosition();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}));
 
 	if (this->flyBot != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
 
-		this->flyBot->runAction(Sequence::create(
+		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidBrief2Sound->play();
+				this->flyBot->droidChatterSound->play();
 			}),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_TentHeal::create());
+				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_OgreSpotted::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
 				PlatformerEvents::TriggerCinematicRestore();
-				this->flyBot->speechBubble->hideDialogue();
 			}),
-			DelayTime::create(1.0f),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
+			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				this->flyBot->setVisible(false);
+				this->flyBot->speechBubble->hideDialogue();
 			}),
 			nullptr
 		));

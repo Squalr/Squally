@@ -21,9 +21,9 @@ PlatformerQuestDeserializer* PlatformerQuestDeserializer::create()
 
 PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
-	this->deserializers = std::map<std::string, std::function<GameObject*()>>();
+	this->deserializers = std::map<std::string, std::function<GameObject*(GameObject*)>>();
 
-	this->deserializers[IntroLine::MapKeyQuestLineIntro] = [=]() { return (GameObject*)IntroLine::create(); };
+	this->deserializers[IntroLine::MapKeyQuestLineIntro] = [=](GameObject* owner) { return (GameObject*)IntroLine::create(owner); };
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
@@ -32,12 +32,12 @@ PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
 
 void PlatformerQuestDeserializer::deserialize(QuestDeserializer::QuestDeserializationRequestArgs args)
 {
-	if (args.targetObject != nullptr && this->deserializers.find(args.quest) != this->deserializers.end())
+	if (args.targetObject != nullptr && this->deserializers.find(args.questLine) != this->deserializers.end())
 	{
-		args.targetObject->addChild(this->deserializers[args.quest]());
+		args.targetObject->addChild(this->deserializers[args.questLine](args.targetObject));
 	}
 	else
 	{
-		CCLOG("Unknown quest encountered: %s", args.quest.c_str());
+		CCLOG("Unknown quest line encountered: %s", args.questLine.c_str());
 	}
 }

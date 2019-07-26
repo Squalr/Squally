@@ -17,6 +17,11 @@ public:
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
+	Sound* droidAlarmedSound;
+	Sound* droidBrief1Sound;
+	Sound* droidBrief2Sound;
+	Sound* droidChatterSound;
+
 	static const std::string MapKeyFlyBot;
 
 private:
@@ -30,23 +35,11 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void runEndOfDemoEvent();
-	void runGreetEvent();
-	void runHelpHealEvent();
-	void runTeachHackerModeEvent();
-	void runSpotOgreEvent();
 	void runRestorePotionTutorial();
 	void runSquallyTrappedEvent();
 
 	bool hasRunTutorialEvent;
-	Sound* droidAlarmedSound;
-	Sound* droidBrief1Sound;
-	Sound* droidBrief2Sound;
-	Sound* droidChatterSound;
 
 	static const std::string EventEndOfDemo;
-	static const std::string EventGreetSqually;
-	static const std::string EventHelpSquallyHeal;
-	static const std::string EventTeachHackerMode;
-	static const std::string EventSpotOgre;
 	static const std::string EventSquallyTrapped;
 };

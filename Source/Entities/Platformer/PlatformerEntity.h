@@ -65,6 +65,8 @@ public:
 	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
 
 	ClickableNode* clickHitbox;
+	SpeechBubble* speechBubble;
+	SmartAnimationNode* animationNode;
 
 	static const int FallBackMaxHealth;
 	static const int FallBackMaxMana;
@@ -120,8 +122,6 @@ protected:
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	CurrencyInventory* currencyInventory;
-	SpeechBubble* speechBubble;
-	SmartAnimationNode* animationNode;
 	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;
 	ControlState controlState;

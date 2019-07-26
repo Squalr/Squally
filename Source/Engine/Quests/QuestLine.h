@@ -2,29 +2,29 @@
 
 #include "Engine/SmartNode.h"
 
-class Quest;
+class QuestTask;
 
 class QuestLine : public SmartNode
 {
 public:
-	void advanceNextQuest();
+	void advanceNextQuest(QuestTask* currentQuest);
 	void advanceToQuest(std::string questName);
 	void markComplete();
 
 protected:
-	QuestLine(std::string questLine, std::vector<Quest*> quests);
+	QuestLine(std::string questLine, std::vector<QuestTask*> questTasks);
 	~QuestLine();
 	
-	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
 
 	std::string questLine;
-	std::vector<Quest*> quests;
+	std::vector<QuestTask*> questTasks;
 
-	Quest* activeQuest;
+	QuestTask* activeQuestTask;
 
 	static const std::string QuestLineSaveKeyPrefix;
 	static const std::string QuestLineSaveKeyComplete;

@@ -124,18 +124,18 @@ void PlatformerObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeseria
 {
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
-	std::string quest = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
+	std::string questLine = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString();
 
 	if (this->deserializers.find(name) != this->deserializers.end())
 	{
 		GameObject* object = this->deserializers[name](properties);
 
-		if (quest != "")
+		if (questLine != "")
 		{
-			std::string questLine = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString();
+			std::string quest = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
 			std::string questTag = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestTag, Value("")).asString();
 			
-			this->questDeserializer->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(object, quest, questLine, questTag));
+			this->questDeserializer->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(object, questLine, quest, questTag));
 		}
 
 		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));

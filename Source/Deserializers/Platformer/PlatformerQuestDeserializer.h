@@ -17,5 +17,5 @@ private:
 
 	void deserialize(QuestDeserializer::QuestDeserializationRequestArgs args);
 
-	std::map<std::string, std::function<GameObject*()>> deserializers;
+	std::map<std::string, std::function<GameObject*(GameObject*)>> deserializers;
 };

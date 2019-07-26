@@ -1,20 +1,28 @@
 #pragma once
 
-#include "Engine/Quests/Quest.h"
+#include "Engine/Quests/QuestTask.h"
 
-class HelpSquallyHeal : public Quest
+class FlyBot;
+
+class HelpSquallyHeal : public QuestTask
 {
 public:
-	static HelpSquallyHeal* create();
+	static HelpSquallyHeal* create(GameObject* owner);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	HelpSquallyHeal();
+	HelpSquallyHeal(GameObject* owner);
 	~HelpSquallyHeal();
+	
+	void onLoad(bool isQuestActive, bool isQuestActiveAsSkippable, bool isQuestComplete) override;
+	void onActivate() override;
 
 private:
-	typedef Quest super;
-	void initializeListeners() override;
-};
+	typedef QuestTask super;
 
+	void runCinematicSequence();
+
+	bool hasRunEvent;
+	FlyBot* flyBot;
+};
