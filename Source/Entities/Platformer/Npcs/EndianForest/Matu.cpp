@@ -1,4 +1,4 @@
-#include "PrincessMatu.h"
+#include "Matu.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -16,22 +16,22 @@
 
 using namespace cocos2d;
 
-const std::string PrincessMatu::MapKeyPrincessMatu = "princess-matu";
-HexusOpponentData* PrincessMatu::HexusOpponentDataInstance = nullptr;
-const std::string PrincessMatu::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_MATU";
+const std::string Matu::MapKeyMatu = "matu";
+HexusOpponentData* Matu::HexusOpponentDataInstance = nullptr;
+const std::string Matu::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_MATU";
 
-PrincessMatu* PrincessMatu::deserialize(ValueMap& initProperties)
+Matu* Matu::deserialize(ValueMap& initProperties)
 {
-	PrincessMatu* instance = new PrincessMatu(initProperties);
+	Matu* instance = new Matu(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PrincessMatu::PrincessMatu(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_EndianForest_PrincessMatu_Animations,
-	EntityResources::Npcs_EndianForest_PrincessMatu_Emblem,
+Matu::Matu(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_EndianForest_Matu_Animations,
+	EntityResources::Npcs_EndianForest_Matu_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -39,30 +39,30 @@ PrincessMatu::PrincessMatu(ValueMap& initProperties) : NpcBase(initProperties,
 	16,
 	8)
 {
-	this->hexusOpponentData = PrincessMatu::getHexusOpponentData();
+	this->hexusOpponentData = Matu::getHexusOpponentData();
 }
 
-PrincessMatu::~PrincessMatu()
+Matu::~Matu()
 {
 }
 
-Vec2 PrincessMatu::getAvatarFrameOffset()
+Vec2 Matu::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* PrincessMatu::getHexusOpponentData()
+HexusOpponentData* Matu::getHexusOpponentData()
 {
-	if (PrincessMatu::HexusOpponentDataInstance == nullptr)
+	if (Matu::HexusOpponentDataInstance == nullptr)
 	{
-		PrincessMatu::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_PrincessMatu_Animations,
+		Matu::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_EndianForest_Matu_Animations,
 			HexusResources::Menus_HexusFrameEndianForest,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			PrincessMatu::HexusSaveKey,
+			Matu::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.045f,
@@ -83,5 +83,5 @@ HexusOpponentData* PrincessMatu::getHexusOpponentData()
 		);
 	}
 
-	return PrincessMatu::HexusOpponentDataInstance;
+	return Matu::HexusOpponentDataInstance;
 }

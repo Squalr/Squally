@@ -9,11 +9,11 @@
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
 #include "Entities/Platformer/Npcs/EndianForest/Elriel.h"
 #include "Entities/Platformer/Npcs/EndianForest/Gramps.h"
-#include "Entities/Platformer/Npcs/EndianForest/Liana.h"
+#include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Npcs/EndianForest/Lycan.h"
 #include "Entities/Platformer/Npcs/EndianForest/Minos.h"
 #include "Entities/Platformer/Npcs/EndianForest/Polyphemus.h"
-#include "Entities/Platformer/Npcs/EndianForest/PrincessMatu.h"
+#include "Entities/Platformer/Npcs/EndianForest/Matu.h"
 #include "Entities/Platformer/Npcs/EndianForest/Robin.h"
 #include "Entities/Platformer/Npcs/EndianForest/Toben.h"
 #include "Scenes/Hexus/Menus/OpponentSelect/HexusOpponentPreview.h"
@@ -45,11 +45,11 @@ HexusOpponentMenuEndianForest::HexusOpponentMenuEndianForest() : super(HexusChap
 	this->opponents.push_back(HexusOpponentPreview::create(Chiron::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Elriel::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Gramps::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(Liana::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(QueenLiana::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Lycan::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Minos::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Polyphemus::getHexusOpponentData()));
-	this->opponents.push_back(HexusOpponentPreview::create(PrincessMatu::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Matu::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Robin::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(Toben::getHexusOpponentData()));
 

@@ -5,20 +5,20 @@
 
 class HexusOpponentData;
 
-class PrincessMatu : public NpcBase
+class Matu : public NpcBase
 {
 public:
-	static PrincessMatu* deserialize(cocos2d::ValueMap& initProperties);
+	static Matu* deserialize(cocos2d::ValueMap& initProperties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyPrincessMatu;
+	static const std::string MapKeyMatu;
 
 private:
 	typedef NpcBase super;
-	PrincessMatu(cocos2d::ValueMap& initProperties);
-	~PrincessMatu();
+	Matu(cocos2d::ValueMap& initProperties);
+	~Matu();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;
