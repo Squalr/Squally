@@ -1,4 +1,4 @@
-#include "Liana.h"
+#include "QueenLiana.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -16,22 +16,22 @@
 
 using namespace cocos2d;
 
-const std::string Liana::MapKeyLiana = "liana";
-HexusOpponentData* Liana::HexusOpponentDataInstance = nullptr;
-const std::string Liana::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LIANA";
+const std::string QueenLiana::MapKeyQueenLiana = "queen-liana";
+HexusOpponentData* QueenLiana::HexusOpponentDataInstance = nullptr;
+const std::string QueenLiana::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_QUEEN_LIANA";
 
-Liana* Liana::deserialize(ValueMap& initProperties)
+QueenLiana* QueenLiana::deserialize(ValueMap& initProperties)
 {
-	Liana* instance = new Liana(initProperties);
+	QueenLiana* instance = new QueenLiana(initProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Liana::Liana(ValueMap& initProperties) : NpcBase(initProperties,
-	EntityResources::Npcs_EndianForest_Liana_Animations,
-	EntityResources::Npcs_EndianForest_Liana_Emblem,
+QueenLiana::QueenLiana(ValueMap& initProperties) : NpcBase(initProperties,
+	EntityResources::Npcs_EndianForest_QueenLiana_Animations,
+	EntityResources::Npcs_EndianForest_QueenLiana_Emblem,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -39,30 +39,30 @@ Liana::Liana(ValueMap& initProperties) : NpcBase(initProperties,
 	16,
 	8)
 {
-	this->hexusOpponentData = Liana::getHexusOpponentData();
+	this->hexusOpponentData = QueenLiana::getHexusOpponentData();
 }
 
-Liana::~Liana()
+QueenLiana::~QueenLiana()
 {
 }
 
-Vec2 Liana::getAvatarFrameOffset()
+Vec2 QueenLiana::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* Liana::getHexusOpponentData()
+HexusOpponentData* QueenLiana::getHexusOpponentData()
 {
-	if (Liana::HexusOpponentDataInstance == nullptr)
+	if (QueenLiana::HexusOpponentDataInstance == nullptr)
 	{
-		Liana::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Liana_Animations,
+		QueenLiana::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Npcs_EndianForest_QueenLiana_Animations,
 			HexusResources::Menus_HexusFrameEndianForest,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			Liana::HexusSaveKey,
+			QueenLiana::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
 			0.098f,
@@ -84,5 +84,5 @@ HexusOpponentData* Liana::getHexusOpponentData()
 		);
 	}
 
-	return Liana::HexusOpponentDataInstance;
+	return QueenLiana::HexusOpponentDataInstance;
 }

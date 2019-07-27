@@ -111,11 +111,11 @@
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
 #include "Entities/Platformer/Npcs/EndianForest/Elriel.h"
 #include "Entities/Platformer/Npcs/EndianForest/Gramps.h"
-#include "Entities/Platformer/Npcs/EndianForest/Liana.h"
+#include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Npcs/EndianForest/Lycan.h"
 #include "Entities/Platformer/Npcs/EndianForest/Minos.h"
 #include "Entities/Platformer/Npcs/EndianForest/Polyphemus.h"
-#include "Entities/Platformer/Npcs/EndianForest/PrincessMatu.h"
+#include "Entities/Platformer/Npcs/EndianForest/Matu.h"
 #include "Entities/Platformer/Npcs/EndianForest/Robin.h"
 #include "Entities/Platformer/Npcs/EndianForest/Toben.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/BoneFiend.h"
@@ -352,11 +352,11 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Chiron::MapKeyChiron] = [=](ValueMap properties) { return (GameObject*)Chiron::deserialize(properties); };
 	this->deserializers[Elriel::MapKeyElriel] = [=](ValueMap properties) { return (GameObject*)Elriel::deserialize(properties); };
 	this->deserializers[Gramps::MapKeyGramps] = [=](ValueMap properties) { return (GameObject*)Gramps::deserialize(properties); };
-	this->deserializers[Liana::MapKeyLiana] = [=](ValueMap properties) { return (GameObject*)Liana::deserialize(properties); };
+	this->deserializers[QueenLiana::MapKeyQueenLiana] = [=](ValueMap properties) { return (GameObject*)QueenLiana::deserialize(properties); };
 	this->deserializers[Lycan::MapKeyLycan] = [=](ValueMap properties) { return (GameObject*)Lycan::deserialize(properties); };
 	this->deserializers[Minos::MapKeyMinos] = [=](ValueMap properties) { return (GameObject*)Minos::deserialize(properties); };
 	this->deserializers[Polyphemus::MapKeyPolyphemus] = [=](ValueMap properties) { return (GameObject*)Polyphemus::deserialize(properties); };
-	this->deserializers[PrincessMatu::MapKeyPrincessMatu] = [=](ValueMap properties) { return (GameObject*)PrincessMatu::deserialize(properties); };
+	this->deserializers[Matu::MapKeyMatu] = [=](ValueMap properties) { return (GameObject*)Matu::deserialize(properties); };
 	this->deserializers[Robin::MapKeyRobin] = [=](ValueMap properties) { return (GameObject*)Robin::deserialize(properties); };
 	this->deserializers[Toben::MapKeyToben] = [=](ValueMap properties) { return (GameObject*)Toben::deserialize(properties); };
 	this->deserializers[BoneFiend::MapKeyBoneFiend] = [=](ValueMap properties) { return (GameObject*)BoneFiend::deserialize(properties); };

@@ -5,20 +5,20 @@
 
 class HexusOpponentData;
 
-class Liana : public NpcBase
+class QueenLiana : public NpcBase
 {
 public:
-	static Liana* deserialize(cocos2d::ValueMap& initProperties);
+	static QueenLiana* deserialize(cocos2d::ValueMap& initProperties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyLiana;
+	static const std::string MapKeyQueenLiana;
 
 private:
 	typedef NpcBase super;
-	Liana(cocos2d::ValueMap& initProperties);
-	~Liana();
+	QueenLiana(cocos2d::ValueMap& initProperties);
+	~QueenLiana();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;
