@@ -6,12 +6,18 @@
 
 namespace DecorResources
 {
+	extern const std::string Castle_Background_CastleBrickInterior1;
+	extern const std::string Castle_Banner1;
+	extern const std::string Castle_Banner2;
+	extern const std::string Castle_Emblem1;
+	extern const std::string Castle_Emblem2;
+	extern const std::string Castle_KnightSuit1;
+	extern const std::string Castle_Throne1;
+	extern const std::string Castle_Window1;
 	extern const std::string Castle_barrel;
 	extern const std::string Castle_chair_1;
 	extern const std::string Castle_chair_2;
 	extern const std::string Castle_cup;
-	extern const std::string Castle_flag;
-	extern const std::string Castle_shield;
 	extern const std::string Castle_st_10;
 	extern const std::string Castle_st_2;
 	extern const std::string Castle_st_3;
@@ -494,6 +500,10 @@ namespace DecorResources
 	extern const std::string Forest_wood_3;
 	extern const std::string Forest_wood_4;
 	extern const std::string Forest_wood;
+	extern const std::string Generic_Arrow2;
+	extern const std::string Generic_Arrow3;
+	extern const std::string Generic_ArrowTemp1;
+	extern const std::string Generic_Background_BrickInterior1;
 	extern const std::string Generic_Background_Cloud1;
 	extern const std::string Generic_Background_Cloud10;
 	extern const std::string Generic_Background_Cloud11;
@@ -514,7 +524,12 @@ namespace DecorResources
 	extern const std::string Generic_Background_sun;
 	extern const std::string Generic_Bed;
 	extern const std::string Generic_BoardedWindow;
+	extern const std::string Generic_Bone1;
+	extern const std::string Generic_Bone2;
+	extern const std::string Generic_Bone3;
 	extern const std::string Generic_Counter;
+	extern const std::string Generic_DiningTable1;
+	extern const std::string Generic_FireplaceEmpty1;
 	extern const std::string Generic_InsanityPoster1;
 	extern const std::string Generic_InsanityPoster10;
 	extern const std::string Generic_InsanityPoster2;
@@ -530,6 +545,12 @@ namespace DecorResources
 	extern const std::string Generic_Nightstand;
 	extern const std::string Generic_Register;
 	extern const std::string Generic_Sack;
+	extern const std::string Generic_Shack1;
+	extern const std::string Generic_Shield1;
+	extern const std::string Generic_Spear1;
+	extern const std::string Generic_Spear2;
+	extern const std::string Generic_Sword1;
+	extern const std::string Generic_Sword2;
 	extern const std::string Generic_TownAlchemy;
 	extern const std::string Generic_TownEquipment;
 	extern const std::string Generic_TownFence;
@@ -543,29 +564,13 @@ namespace DecorResources
 	extern const std::string Generic_TownHomeEmpty4;
 	extern const std::string Generic_TownHomeEmpty5;
 	extern const std::string Generic_TownHomeEmpty6;
-	extern const std::string Generic_VillageAlchemy;
-	extern const std::string Generic_VillageEquipment;
-	extern const std::string Generic_VillageHome1;
-	extern const std::string Generic_VillageHome2;
-	extern const std::string Generic_VillageHome3;
 	extern const std::string Generic_WoodDoor;
-	extern const std::string Generic_arrow_1;
-	extern const std::string Generic_arrow_2;
-	extern const std::string Generic_arrow1;
 	extern const std::string Generic_birds;
-	extern const std::string Generic_bone_1;
-	extern const std::string Generic_bone_2;
-	extern const std::string Generic_bone;
 	extern const std::string Generic_flag_1;
 	extern const std::string Generic_flag_2;
 	extern const std::string Generic_flag_3;
 	extern const std::string Generic_helmet_2;
 	extern const std::string Generic_helmet;
-	extern const std::string Generic_shield;
-	extern const std::string Generic_skull;
-	extern const std::string Generic_spear;
-	extern const std::string Generic_sword_1;
-	extern const std::string Generic_sword_2;
 	extern const std::string Generic_wheel;
 	extern const std::string Ruins_Background_island_1_no_trees;
 	extern const std::string Ruins_Background_island_1_with_trees;

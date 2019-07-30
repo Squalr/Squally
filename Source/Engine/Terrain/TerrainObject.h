@@ -74,8 +74,6 @@ public:
 
 	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTerrain;
-	static std::string MapKeyCollision;
-	static std::string MapKeyCollisionDisabled;
 
 protected:
 	TerrainObject(cocos2d::ValueMap& initProperties, TerrainData terrainData);
@@ -106,6 +104,7 @@ private:
 
 	TerrainData terrainData;
 	bool isHollow;
+	bool isInactive;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;

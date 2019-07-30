@@ -71,6 +71,7 @@ public:
 	virtual void setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback);
 
 	static const std::string MapKeyTypeCollision;
+	static const std::string MapKeyCollisionTypeNone;
 	static const float DefaultMaxHorizontalSpeed;
 	static const float DefaultMaxLaunchSpeed;
 	static const float DefaultMaxFallSpeed;

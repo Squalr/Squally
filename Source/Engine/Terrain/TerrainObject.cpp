@@ -30,8 +30,6 @@ using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
-std::string TerrainObject::MapKeyCollision = "collision";
-std::string TerrainObject::MapKeyCollisionDisabled = "collision-disabled";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::HollowDistance = 144.0f;
@@ -48,6 +46,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
+	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -82,7 +81,7 @@ TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) 
 }
 
 TerrainObject::~TerrainObject()
-{
+{ 
 }
 
 void TerrainObject::onEnter()
@@ -90,7 +89,10 @@ void TerrainObject::onEnter()
 	super::onEnter();
 
 	// Should get called right after this is terrain is added to the map
-	TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+	if (!this->isInactive)
+	{
+		TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+	}
 }
 
 void TerrainObject::onEnterTransitionDidFinish()
@@ -116,7 +118,7 @@ void TerrainObject::initializeListeners()
 	super::initializeListeners();
 
 	// Hollow terrain should listen for other terrain creation to remove any overlapping segments
-	if (this->isHollow)
+	if (this->isHollow && !this->isInactive)
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{
@@ -159,8 +161,9 @@ void TerrainObject::rebuildTerrain(TerrainData terrainData)
 	{
 		case ConfigManager::GraphicsSetting::SlowHighQuality:
 		{
-			this->buildInfill(terrainData.infillColor);
-			this->buildSurfaceShadow();
+			// Zac: Disabled for now since this is pretty slow
+			// this->buildInfill(terrainData.infillColor);
+			// this->buildSurfaceShadow();
 			break;
 		}
 		case ConfigManager::GraphicsSetting::FastLowQuality:
@@ -176,8 +179,7 @@ void TerrainObject::buildCollision()
 {
 	this->collisionNode->removeAllChildren();
 
-	// Check if physics is disabled for this terrain
-	if (GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyCollisionDisabled, Value(false)).asBool())
+	if (this->isInactive)
 	{
 		return;
 	}
@@ -188,7 +190,7 @@ void TerrainObject::buildCollision()
 	this->properties[GameObject::MapKeyXPosition] = 0.0f;
 	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
-	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyCollision, Value("")).asString();
+	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
 	
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
@@ -380,7 +382,7 @@ void TerrainObject::buildSurfaceShadow()
 
 void TerrainObject::removeHollowEdgeCollisions()
 {
-	if (!this->isHollow)
+	if (!this->isHollow || this->isInactive)
 	{
 		return;
 	}
@@ -585,7 +587,7 @@ void TerrainObject::buildSurfaceTextures()
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
-	if (!this->boundsRect.intersectsRect(other->boundsRect))
+	if (this->isInactive || !this->boundsRect.intersectsRect(other->boundsRect))
 	{
 		return;
 	}

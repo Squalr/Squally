@@ -36,6 +36,7 @@ Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initPro
 	this->portalCollision = CollisionObject::create(PhysicsBody::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->wasTripped = false;
+	this->canInteract = false;
 	this->mapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalArgs, Value("")).asString(), ", ");
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
 	this->isLocked = !this->mapEvent.empty();

@@ -204,6 +204,12 @@ void PlatformerEntity::onEnter()
 
 	this->rebuildWeaponCollision(PlatformerEntity::DefaultWeaponSize);
 
+	if (GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone)
+	{
+		this->movementCollision->setPhysicsEnabled(false);
+		this->movementCollision->bindTo(nullptr);
+	}
+
 	this->scheduleUpdate();
 }
 

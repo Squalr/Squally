@@ -34,6 +34,7 @@ NpcBase::NpcBase(
 	this->interactButton->setMouseClickCallback(CC_CALLBACK_0(NpcBase::onInteractButtonClick, this));
 
 	this->chatBubbleSprite->setPosition(Vec2(0.0f, 196.0f));
+	this->chatBubbleSprite->setVisible(false);
 
 	this->addChild(this->chatBubbleSprite);
 	this->addChild(this->interactButton);
