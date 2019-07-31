@@ -4,9 +4,9 @@ enum class PlatformerCollisionType
 {
 	None				= 0,
 	Physics				= 1 << 0,
-	Entity				= 1 << 1,
+	Movement			= 1 << 1,
 	Player				= 1 << 2,
-	PlayerHover			= 1 << 3,
+	PlayerMovement		= 1 << 3,
 	FriendlyNpc			= 1 << 4,
 	Enemy				= 1 << 5,
 	EnemyFlying			= 1 << 6,

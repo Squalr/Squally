@@ -8,6 +8,7 @@ class CollectablesMenu;
 class GameHud;
 class InventoryMenu;
 class MapMenu;
+class NotificationHud;
 class PartyMenu;
 
 class PlatformerMap : public MapBase
@@ -34,6 +35,7 @@ private:
 	Cipher* getCipherInstance();
 
 	GameHud* gameHud;
+	NotificationHud* notificationHud;
 	Cipher* cipher;
 	CollectablesMenu* collectablesMenu;
 	MapMenu* mapMenu;

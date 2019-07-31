@@ -67,41 +67,13 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 		return;
 	}
 
-	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePhysics)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Physics);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
+	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Solid);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePassThrough)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::PassThrough);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePlayer)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Player);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePlayerHover)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::PlayerHover);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeNpc)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::FriendlyNpc);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeEnemy)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Enemy);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeEnemyFlying)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::EnemyFlying);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeForce)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Force);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc)
 	{
@@ -110,6 +82,10 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpcFlying)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::SolidFlyingNpcOnly);
+	}
+	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeForce)
+	{
+		args->collisionObject->setCollisionType((int)PlatformerCollisionType::Force);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeWater)
 	{

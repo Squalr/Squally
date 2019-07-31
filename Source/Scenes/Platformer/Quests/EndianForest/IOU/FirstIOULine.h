@@ -10,7 +10,7 @@ class FirstIOULine : public QuestLine
 public:
 	static FirstIOULine* create(std::string quest, std::string questTag, GameObject* owner);
 
-	static const std::string MapKeyQuestLineIntro;
+	static const std::string MapKeyQuestLine;
 
 protected:
 	FirstIOULine(std::string quest, std::string questTag, GameObject* owner);

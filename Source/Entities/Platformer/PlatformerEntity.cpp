@@ -57,7 +57,8 @@ PlatformerEntity::PlatformerEntity(
 	int baseHealth,
 	int baseSpecial,
 	Size movementCollisionSize,
-	float ghettoGroundCollisionFix
+	float ghettoGroundCollisionFix,
+	PlatformerCollisionType movementCollisionType
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
@@ -85,7 +86,7 @@ PlatformerEntity::PlatformerEntity(
 
 	this->movementCollision = CollisionObject::create(
 		PlatformerEntity::createCapsulePolygon(movementCollisionSize, scale),
-		(CollisionType)PlatformerCollisionType::Entity,
+		(CollisionType)movementCollisionType,
 		true,
 		false
 	);

@@ -28,6 +28,7 @@
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
+#include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Strings/Menus/Inventory/Inventory.h"
@@ -62,6 +63,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 
 	this->transition = transition;
 	this->gameHud = GameHud::create();
+	this->notificationHud = NotificationHud::create();
 	this->cipher = nullptr;
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
@@ -86,6 +88,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
+	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);

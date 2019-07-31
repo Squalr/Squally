@@ -13,8 +13,9 @@ PlatformerFriendly::PlatformerFriendly(
 	int baseHealth,
 	int baseSpecial,
 	Size movementCollisionSize,
-	float ghettoGroundCollisionFix)
-	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix)
+	float ghettoGroundCollisionFix,
+	PlatformerCollisionType movementCollisionType)
+	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix, movementCollisionType)
 {
 }
 

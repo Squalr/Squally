@@ -15,6 +15,9 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 
+#include "Strings/Cutscenes/IOU/FoundIOU.h"
+#include "Strings/Cutscenes/IOU/IOUDescription.h"
+
 using namespace cocos2d;
 
 const std::string FirstIOUFound::MapKeyQuest = "first-iou-found";
@@ -75,4 +78,5 @@ void FirstIOUFound::onActivateRunOnce()
 
 void FirstIOUFound::runNotification()
 {
+	PlatformerEvents::TriggerNotificationTakeover(PlatformerEvents::NotificationTakeoverArgs(Strings::Cutscenes_IOU_FoundIOU::create(), Strings::Cutscenes_IOU_IOUDescription::create()));
 }

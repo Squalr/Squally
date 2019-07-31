@@ -72,7 +72,8 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Squally::SquallyBaseHealth,
 	Squally::SquallyBaseSpecial,
 	Size(128.0f, 224.0f),
-	24.0f)
+	24.0f,
+	PlatformerCollisionType::PlayerMovement)
 {
 	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();

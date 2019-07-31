@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string IntroLine::MapKeyQuestLineIntro = "intro";
+const std::string IntroLine::MapKeyQuestLine = "intro";
 
 IntroLine* IntroLine::create(std::string quest, std::string questTag, GameObject* owner)
 {
@@ -20,7 +20,7 @@ IntroLine* IntroLine::create(std::string quest, std::string questTag, GameObject
 }
 
 IntroLine::IntroLine(std::string quest, std::string questTag, GameObject* owner) : super(
-	IntroLine::MapKeyQuestLineIntro,
+	IntroLine::MapKeyQuestLine,
 	quest,
 	questTag,
 	{

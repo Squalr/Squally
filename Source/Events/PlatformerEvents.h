@@ -4,6 +4,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+class LocalizedString;
 class PlatformerEntity;
 
 class PlatformerEvents
@@ -16,6 +17,8 @@ public:
 	static const std::string EventQueryMapArgs;
 	static const std::string EventRuneConsumed;
 	static const std::string EventEquippedItemsChanged;
+	static const std::string EventNotificationTakeover;
+	static const std::string EventNotification;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 
@@ -65,6 +68,26 @@ public:
 		}
 	};
 
+	struct NotificationTakeoverArgs
+	{
+		LocalizedString* title;
+		LocalizedString* description;
+
+		NotificationTakeoverArgs(LocalizedString* title, LocalizedString* description) : title(title), description(description)
+		{
+		}
+	};
+
+	struct NotificationArgs
+	{
+		std::string iconResource;
+		LocalizedString* description;
+
+		NotificationArgs(std::string iconResource, LocalizedString* description) : iconResource(iconResource), description(description)
+		{
+		}
+	};
+
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpToLocation(WarpArgs args);
 	static void TriggerCinematicHijack();
@@ -72,6 +95,8 @@ public:
 	static void TriggerQueryMapArgs(QueryMapArgsArgs args);
 	static void TriggerRuneConsumed(RuneConsumedArgs args);
 	static void TriggerEquippedItemsChanged();
+	static void TriggerNotificationTakeover(NotificationTakeoverArgs args);
+	static void TriggerNotification(NotificationArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 };

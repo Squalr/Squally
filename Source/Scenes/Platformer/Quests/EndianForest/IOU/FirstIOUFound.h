@@ -2,6 +2,11 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class IOU;
 
 class FirstIOUFound : public QuestTask

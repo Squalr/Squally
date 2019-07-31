@@ -23,7 +23,9 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(std::string, std::string, GameObject*)>>();
 
-	this->deserializers[IntroLine::MapKeyQuestLineIntro] = [=](std::string quest, std::string questTag, GameObject* owner) { return (GameObject*)IntroLine::create(quest, questTag, owner); };
+	this->deserializers[IntroLine::MapKeyQuestLine] = [=](std::string quest, std::string questTag, GameObject* owner) { return (GameObject*)IntroLine::create(quest, questTag, owner); };
+	this->deserializers[FirstIOULine::MapKeyQuestLine] = [=](std::string quest, std::string questTag, GameObject* owner) { return (GameObject*)FirstIOULine::create(quest, questTag, owner); };
+	
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()

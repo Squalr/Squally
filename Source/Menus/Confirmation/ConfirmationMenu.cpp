@@ -11,6 +11,8 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Common/Empty.h"
+
 using namespace cocos2d;
 
 ConfirmationMenu* ConfirmationMenu::create()
@@ -27,16 +29,19 @@ ConfirmationMenu::ConfirmationMenu()
 	this->onConfirmCallback = nullptr;
 	this->onCancelCallback = nullptr;
 
+	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
 	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
 	this->confirmButton = ClickableNode::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
-	this->confirmationLabel = nullptr;
+
+	this->confirmationLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->setVisible(false);
 
 	this->addChild(this->confirmWindow);
+	this->addChild(this->confirmationLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->cancelButton);
 	this->addChild(this->confirmButton);
@@ -61,6 +66,7 @@ void ConfirmationMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->confirmWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2 + 224.0f, visibleSize.height / 2 + 212.0f));
 	this->cancelButton->setPosition(Vec2(visibleSize.width / 2 - 160.0f, visibleSize.height / 2 - 192.0f));
 	this->confirmButton->setPosition(Vec2(visibleSize.width / 2 + 160.0f, visibleSize.height / 2 - 192.0f));
@@ -89,22 +95,9 @@ void ConfirmationMenu::initializeListeners()
 
 void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)
 {
-	if (this->confirmationLabel != nullptr)
-	{
-		this->removeChild(this->confirmationLabel);
-	}
-
-	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, confirmationMessage);
-
+	this->confirmationLabel->setLocalizedString(confirmationMessage);
 	this->onConfirmCallback = confirmCallback;
 	this->onCancelCallback = cancelCallback;
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->confirmationLabel->enableOutline(Color4B::BLACK, 2);
-	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));
-
-	this->addChild(this->confirmationLabel);
 
 	this->setVisible(true);
 }

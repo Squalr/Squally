@@ -45,8 +45,6 @@ Collectable::~Collectable()
 void Collectable::onEnter()
 {
 	super::onEnter();
-
-	this->scheduleUpdate();
 }
 
 void Collectable::initializePositions()
@@ -63,13 +61,13 @@ void Collectable::initializeListeners()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::PlayerHover }, [=](CollisionObject::CollisionData data)
-	{
+	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
+	{ 
 		if (!this->isCollected)
 		{
 			this->disableCollection();
 
-			for (auto it = this->collectionEvents.begin(); it != this->collectionEvents.begin(); it++)
+			for (auto it = this->collectionEvents.begin(); it != this->collectionEvents.end(); it++)
 			{
 				(*it)();
 			}

@@ -1,14 +1,11 @@
 #include "FirstIOULine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/EndianForest/Intro/MeetFlyBot.h"
-#include "Scenes/Platformer/Quests/EndianForest/Intro/HelpSquallyHeal.h"
-#include "Scenes/Platformer/Quests/EndianForest/Intro/SpotOrcGrunt.h"
-#include "Scenes/Platformer/Quests/EndianForest/Intro/TeachHackerMode.h"
+#include "Scenes/Platformer/Quests/EndianForest/IOU/FirstIOUFound.h"
 
 using namespace cocos2d;
 
-const std::string FirstIOULine::MapKeyQuestLineIntro = "first-iou";
+const std::string FirstIOULine::MapKeyQuestLine = "first-iou";
 
 FirstIOULine* FirstIOULine::create(std::string quest, std::string questTag, GameObject* owner)
 {
@@ -20,14 +17,11 @@ FirstIOULine* FirstIOULine::create(std::string quest, std::string questTag, Game
 }
 
 FirstIOULine::FirstIOULine(std::string quest, std::string questTag, GameObject* owner) : super(
-	FirstIOULine::MapKeyQuestLineIntro,
+	FirstIOULine::MapKeyQuestLine,
 	quest,
 	questTag,
 	{
-		(QuestTask*)MeetFlyBot::create(quest == MeetFlyBot::MapKeyQuest ? owner : nullptr),
-		(QuestTask*)HelpSquallyHeal::create(quest == HelpSquallyHeal::MapKeyQuest ? owner : nullptr),
-		(QuestTask*)TeachHackerMode::create(quest == TeachHackerMode::MapKeyQuest ? owner : nullptr),
-		(QuestTask*)SpotOrcGrunt::create(quest == SpotOrcGrunt::MapKeyQuest ? owner : nullptr),
+		(QuestTask*)FirstIOUFound::create(quest == FirstIOUFound::MapKeyQuest ? owner : nullptr),
 	})
 {
 }

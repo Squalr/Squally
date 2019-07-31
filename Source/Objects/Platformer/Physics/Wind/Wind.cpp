@@ -89,7 +89,7 @@ void Wind::initializeListeners()
 
 	this->windForce->setContactUpdateCallback(CC_CALLBACK_2(Wind::applyWindForce, this));
 
-	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::Entity, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Movement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Speed is applied in the update applyWindForce
 
