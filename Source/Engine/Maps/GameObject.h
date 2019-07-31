@@ -64,9 +64,11 @@ protected:
 	
 	void onEnter() override;
 	void initializeListeners() override;
+	bool isMapObject();
 	void saveObjectState(std::string key, cocos2d::Value value);
 	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void loadObjectState();
+	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	virtual void onObjectStateLoaded();
 

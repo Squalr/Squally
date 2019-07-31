@@ -68,6 +68,7 @@ GameObject::GameObject(const ValueMap& properties)
 	this->zSorted = false;
 	this->polylinePoints = std::vector<Vec2>();
 	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyEvent, Value("")).asString();
+	this->uniqueIdentifier = "";
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
@@ -205,6 +206,11 @@ bool GameObject::isZSorted()
 	return this->zSorted;
 }
 
+bool GameObject::isMapObject()
+{
+	return this->uniqueIdentifier != "";
+}
+
 void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
 	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
@@ -216,9 +222,12 @@ void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, 
 
 void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 {
-	this->saveProperties[key] = value;
+	if (this->isMapObject())
+	{
+		this->saveProperties[key] = value;
 
-	SaveManager::saveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
+		SaveManager::saveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
+	}
 }
 
 const Value& GameObject::getObjectStateOrDefault(std::string key, const Value& defaultValue)
@@ -228,9 +237,11 @@ const Value& GameObject::getObjectStateOrDefault(std::string key, const Value& d
 
 void GameObject::loadObjectState()
 {
-	this->saveProperties = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
-
-	this->onObjectStateLoaded();
+	if (this->isMapObject())
+	{
+		this->saveProperties = SaveManager::getProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
+		this->onObjectStateLoaded();
+	}
 }
 
 void GameObject::onObjectStateLoaded()
@@ -271,6 +282,11 @@ bool GameObject::isAttributeOrHiddenProperty(std::string propertyName)
 	}
 
 	return std::find(GameObject::AttributeKeys.begin(), GameObject::AttributeKeys.end(), propertyName) != GameObject::AttributeKeys.end();
+}
+
+void GameObject::broadcastMapEvent(std::string eventName, cocos2d::ValueMap args)
+{
+	ObjectEvents::TriggerBroadCastMapObjectState(eventName, args);
 }
 
 void GameObject::listenForMapEvent(std::string eventName, std::function<void(ValueMap args)> callback)

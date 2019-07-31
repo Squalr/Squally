@@ -19,7 +19,6 @@
 using namespace cocos2d;
 
 const std::string Doubloon::MapKeyDoubloon = "doubloon";
-const std::string Doubloon::SaveKeyIsCollected = "is_collected";
 
 Doubloon* Doubloon::create(ValueMap& initProperties)
 {
@@ -33,11 +32,13 @@ Doubloon* Doubloon::create(ValueMap& initProperties)
 Doubloon::Doubloon(ValueMap& initProperties) : super(initProperties)
 {
 	this->doubloon = SmartAnimationSequenceNode::create(ObjectResources::Collectables_Doubloon_Doubloon_0000);
-	this->doubloonCollision = CollisionObject::create(PhysicsBody::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, false, false);
-	this->isCollected = false;
 
-	this->doubloonCollision->addChild(this->doubloon);
-	this->addChild(this->doubloonCollision);
+	this->onCollected([=]()
+	{
+		PlayerCurrencyInventory::getInstance()->addCurrency(Doubloon::getIdentifier(), 1);
+	});
+
+	this->collectableNode->addChild(this->doubloon);
 }
 
 Doubloon::~Doubloon()
@@ -49,53 +50,6 @@ void Doubloon::onEnter()
 	super::onEnter();
 
 	this->doubloon->playAnimationRepeat(ObjectResources::Collectables_Doubloon_Doubloon_0000, 0.1f);
-
-	this->scheduleUpdate();
-}
-
-void Doubloon::initializePositions()
-{
-	super::initializePositions();
-}
-
-void Doubloon::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->doubloonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
-	{
-		if (!this->isCollected)
-		{
-			this->disableCollection();
-
-			PlayerCurrencyInventory::getInstance()->addCurrency(Doubloon::getIdentifier(), 1);
-			this->saveObjectState(Doubloon::SaveKeyIsCollected, Value(true));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-}
-
-void Doubloon::update(float dt)
-{
-	super::update(dt);
-}
-
-void Doubloon::onObjectStateLoaded()
-{
-	super::onObjectStateLoaded();
-
-	if (this->getObjectStateOrDefault(Doubloon::SaveKeyIsCollected, Value(false)).asBool())
-	{
-		this->disableCollection();
-	}
-}
-
-void Doubloon::disableCollection()
-{
-	this->isCollected = true;
-	this->doubloonCollision->setPhysicsEnabled(false);
-	this->doubloonCollision->setVisible(false);
 }
 
 std::string Doubloon::getIdentifier()

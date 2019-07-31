@@ -1,12 +1,11 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Collectables/Collectable.h"
 
-class CollisionObject;
 class LocalizedString;
 class SmartAnimationSequenceNode;
 
-class Doubloon : public GameObject
+class Doubloon : public Collectable
 {
 public:
 	static Doubloon* create(cocos2d::ValueMap& initProperties);
@@ -16,24 +15,15 @@ public:
 	static LocalizedString* getString();
 
 	static const std::string MapKeyDoubloon;
-	static const std::string SaveKeyIsCollected;
 
 protected:
 	Doubloon(cocos2d::ValueMap& initProperties);
-	virtual ~Doubloon();
+	~Doubloon();
 
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-	void update(float) override;
-	void onObjectStateLoaded() override;
 
 private:
-	typedef GameObject super;
+	typedef Collectable super;
 
-	void disableCollection();
 	SmartAnimationSequenceNode* doubloon;
-	CollisionObject* doubloonCollision;
-
-	bool isCollected;
 };
