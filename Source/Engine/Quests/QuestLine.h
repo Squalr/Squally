@@ -20,6 +20,8 @@ protected:
 private:
 	typedef SmartNode super;
 
+	QuestTask* getActiveQuest();
+
 	std::string questLine;
 	std::string quest;
 	std::string questTag;

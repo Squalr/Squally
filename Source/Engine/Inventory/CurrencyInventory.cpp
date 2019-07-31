@@ -42,9 +42,9 @@ void CurrencyInventory::initializeListeners()
 	{
 		InventoryEvents::CurrencyInventoryInstanceChangedArgs* args = static_cast<InventoryEvents::CurrencyInventoryInstanceChangedArgs*>(eventCustom->getUserData());
 		
+		this->load();
 		if (args != nullptr && args->instance != this)
 		{
-			this->load();
 		}
 	}));
 }

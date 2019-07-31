@@ -7,17 +7,18 @@ class FlyBot;
 class TeachHackerMode : public QuestTask
 {
 public:
-	static TeachHackerMode* create(GameObject* owner);
+	static TeachHackerMode* create(GameObject* owner, std::string questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TeachHackerMode(GameObject* owner);
+	TeachHackerMode(GameObject* owner, std::string questLine);
 	~TeachHackerMode();
 	
-	void onLoad(QuestTask::QuestState questState) override;
 	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;
 	void onActivateRunOnce() override;
+	void enable(bool isSkippable) override;
+	void disable() override;
 
 private:
 	typedef QuestTask super;

@@ -33,7 +33,8 @@ PlatformerFriendly::PlatformerFriendly(
 		ghettoGroundCollisionFix,
 		movementCollisionType,
 		inventorySaveKey,
-		equipmentSaveKey
+		equipmentSaveKey,
+		currencySaveKey
 	)
 {
 }

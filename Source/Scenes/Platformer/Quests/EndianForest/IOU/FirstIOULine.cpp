@@ -21,7 +21,7 @@ FirstIOULine::FirstIOULine(std::string quest, std::string questTag, GameObject* 
 	quest,
 	questTag,
 	{
-		(QuestTask*)FirstIOUFound::create(quest == FirstIOUFound::MapKeyQuest ? owner : nullptr),
+		(QuestTask*)FirstIOUFound::create(quest == FirstIOUFound::MapKeyQuest ? owner : nullptr, FirstIOULine::MapKeyQuestLine),
 	})
 {
 }

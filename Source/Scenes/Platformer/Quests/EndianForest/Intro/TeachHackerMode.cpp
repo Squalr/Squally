@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
 
-TeachHackerMode* TeachHackerMode::create(GameObject* owner)
+TeachHackerMode* TeachHackerMode::create(GameObject* owner, std::string questLine)
 {
-	TeachHackerMode* instance = new TeachHackerMode(owner);
+	TeachHackerMode* instance = new TeachHackerMode(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TeachHackerMode::TeachHackerMode(GameObject* owner) : super(owner, TeachHackerMode::MapKeyQuest, true)
+TeachHackerMode::TeachHackerMode(GameObject* owner, std::string questLine) : super(owner, questLine, TeachHackerMode::MapKeyQuest, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -39,32 +39,6 @@ TeachHackerMode::TeachHackerMode(GameObject* owner) : super(owner, TeachHackerMo
 
 TeachHackerMode::~TeachHackerMode()
 {
-}
-
-void TeachHackerMode::onLoad(QuestTask::QuestState questState)
-{
-	switch (questState)
-	{
-		case QuestTask::QuestState::Active:
-		case QuestTask::QuestState::ActiveThroughSkippable:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->animationNode->setFlippedX(true);
-			}
-			
-			break;
-		}
-		default:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->setVisible(false);
-			}
-			
-			break;
-		}
-	}
 }
 
 void TeachHackerMode::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
@@ -79,6 +53,24 @@ void TeachHackerMode::onActivateRunOnce()
 
 		this->runCinematicSequence();
 	});
+}
+
+void TeachHackerMode::enable(bool isSkippable)
+{
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+}
+
+void TeachHackerMode::disable()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
 }
 
 void TeachHackerMode::runCinematicSequence()

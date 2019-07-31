@@ -43,20 +43,9 @@ QuestLine::~QuestLine()
 void QuestLine::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	std::string savedQuestName = SaveManager::getProfileDataOrDefault(QuestLine::QuestLineSaveKeyPrefix + this->questLine, Value("")).asString();
-	QuestTask* activeQuest = this->questTasks.empty() ? nullptr : this->questTasks.front();
+	
+	QuestTask* activeQuest = this->getActiveQuest();
 	bool isPreviousSkippable = false;
-
-	// Step 1: Locate the active quest
-	for (auto it = this->questTasks.begin(); it != this->questTasks.end(); it++)
-	{
-		if ((*it)->getQuestName() == savedQuestName)
-		{
-			activeQuest = *it;
-			break;
-		}
-	}
 
 	// Mark quests as either untracked (default), active, or active-through-skip
 	for (auto it = std::find(this->questTasks.begin(), this->questTasks.end(), activeQuest); it != this->questTasks.end(); it++)
@@ -98,11 +87,37 @@ void QuestLine::initializeListeners()
 	}));
 }
 
+QuestTask* QuestLine::getActiveQuest()
+{
+	std::string savedQuestName = SaveManager::getProfileDataOrDefault(QuestLine::QuestLineSaveKeyPrefix + this->questLine, Value("")).asString();
+	QuestTask* activeQuest = nullptr;
+
+	// Step 1: Locate the active quest
+	for (auto it = this->questTasks.begin(); it != this->questTasks.end(); it++)
+	{
+		if (savedQuestName.empty() || (*it)->getQuestName() == savedQuestName)
+		{
+			activeQuest = *it;
+			break;
+		}
+	}
+
+	return activeQuest;
+}
+
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 {
 	if (this->trackedQuestTask != nullptr)
 	{
 		this->trackedQuestTask->setQuestState(QuestTask::QuestState::Untracked);
+	}
+
+	QuestTask* activeQuest = this->getActiveQuest();
+
+	// Skip any skipped quests
+	for (auto it = std::find(this->questTasks.begin(), this->questTasks.end(), activeQuest); it != std::find(this->questTasks.begin(), this->questTasks.end(), this->trackedQuestTask); it++)
+	{
+		QuestEvents::TriggerSkipQuestTask(QuestEvents::SkipQuestArgs(*it));
 	}
 
 	for (auto it = std::find(this->questTasks.begin(), this->questTasks.end(), this->trackedQuestTask) + 1; it != this->questTasks.end(); it++)

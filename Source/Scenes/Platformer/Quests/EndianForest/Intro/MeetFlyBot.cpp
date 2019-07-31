@@ -23,16 +23,16 @@ using namespace cocos2d;
 
 const std::string MeetFlyBot::MapKeyQuest = "meet-flybot";
 
-MeetFlyBot* MeetFlyBot::create(GameObject* owner)
+MeetFlyBot* MeetFlyBot::create(GameObject* owner, std::string questLine)
 {
-	MeetFlyBot* instance = new MeetFlyBot(owner);
+	MeetFlyBot* instance = new MeetFlyBot(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MeetFlyBot::MeetFlyBot(GameObject* owner) : super(owner, MeetFlyBot::MapKeyQuest, true)
+MeetFlyBot::MeetFlyBot(GameObject* owner, std::string questLine) : super(owner, questLine, MeetFlyBot::MapKeyQuest, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -40,32 +40,6 @@ MeetFlyBot::MeetFlyBot(GameObject* owner) : super(owner, MeetFlyBot::MapKeyQuest
 
 MeetFlyBot::~MeetFlyBot()
 {
-}
-
-void MeetFlyBot::onLoad(QuestTask::QuestState questState)
-{
-	switch (questState)
-	{
-		case QuestTask::QuestState::Active:
-		case QuestTask::QuestState::ActiveThroughSkippable:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->animationNode->setFlippedX(true);
-			}
-			
-			break;
-		}
-		default:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->setVisible(false);
-			}
-			
-			break;
-		}
-	}
 }
 
 void MeetFlyBot::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
@@ -80,6 +54,24 @@ void MeetFlyBot::onActivateRunOnce()
 
 		this->runCinematicSequence();
 	});
+}
+
+void MeetFlyBot::enable(bool isSkippable)
+{
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+}
+
+void MeetFlyBot::disable()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
 }
 
 void MeetFlyBot::runCinematicSequence()

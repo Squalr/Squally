@@ -23,16 +23,16 @@ using namespace cocos2d;
 
 const std::string SpotOrcGrunt::MapKeyQuest = "spot-orc-grunt";
 
-SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner)
+SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, std::string questLine)
 {
-	SpotOrcGrunt* instance = new SpotOrcGrunt(owner);
+	SpotOrcGrunt* instance = new SpotOrcGrunt(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpotOrcGrunt::SpotOrcGrunt(GameObject* owner) : super(owner, SpotOrcGrunt::MapKeyQuest, true)
+SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, std::string questLine) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -40,32 +40,6 @@ SpotOrcGrunt::SpotOrcGrunt(GameObject* owner) : super(owner, SpotOrcGrunt::MapKe
 
 SpotOrcGrunt::~SpotOrcGrunt()
 {
-}
-
-void SpotOrcGrunt::onLoad(QuestTask::QuestState questState)
-{
-	switch (questState)
-	{
-		case QuestTask::QuestState::Active:
-		case QuestTask::QuestState::ActiveThroughSkippable:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->animationNode->setFlippedX(true);
-			}
-			
-			break;
-		}
-		default:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->setVisible(false);
-			}
-			
-			break;
-		}
-	}
 }
 
 void SpotOrcGrunt::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
@@ -80,6 +54,24 @@ void SpotOrcGrunt::onActivateRunOnce()
 
 		this->runCinematicSequence();
 	});
+}
+
+void SpotOrcGrunt::enable(bool isSkippable)
+{
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+}
+
+void SpotOrcGrunt::disable()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
 }
 
 void SpotOrcGrunt::runCinematicSequence()

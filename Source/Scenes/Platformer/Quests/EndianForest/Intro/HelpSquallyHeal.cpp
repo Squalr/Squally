@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string HelpSquallyHeal::MapKeyQuest = "help-squally-heal";
 
-HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner)
+HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, std::string questLine)
 {
-	HelpSquallyHeal* instance = new HelpSquallyHeal(owner);
+	HelpSquallyHeal* instance = new HelpSquallyHeal(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HelpSquallyHeal::HelpSquallyHeal(GameObject* owner) : super(owner, HelpSquallyHeal::MapKeyQuest, true)
+HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, std::string questLine) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -39,31 +39,6 @@ HelpSquallyHeal::HelpSquallyHeal(GameObject* owner) : super(owner, HelpSquallyHe
 
 HelpSquallyHeal::~HelpSquallyHeal()
 {
-}
-
-void HelpSquallyHeal::onLoad(QuestTask::QuestState questState)
-{
-	switch (questState)
-	{
-		case QuestTask::QuestState::Active:
-		case QuestTask::QuestState::ActiveThroughSkippable:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->animationNode->setFlippedX(true);
-			}
-			
-			break;
-		}
-		default:
-		{
-			if (this->flyBot != nullptr)
-			{
-				this->flyBot->setVisible(false);
-			}
-			break;
-		}
-	}
 }
 
 void HelpSquallyHeal::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
@@ -78,6 +53,24 @@ void HelpSquallyHeal::onActivateRunOnce()
 
 		this->runCinematicSequence();
 	});
+}
+
+void HelpSquallyHeal::enable(bool isSkippable)
+{
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+}
+
+void HelpSquallyHeal::disable()
+{
+	this->removeAllListeners();
+
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
 }
 
 void HelpSquallyHeal::runCinematicSequence()
