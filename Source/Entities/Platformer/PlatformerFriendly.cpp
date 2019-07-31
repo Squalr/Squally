@@ -14,8 +14,27 @@ PlatformerFriendly::PlatformerFriendly(
 	int baseSpecial,
 	Size movementCollisionSize,
 	float ghettoGroundCollisionFix,
-	PlatformerCollisionType movementCollisionType)
-	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix, movementCollisionType)
+	PlatformerCollisionType movementCollisionType,
+	std::string inventorySaveKey,
+	std::string equipmentSaveKey,
+	std::string currencySaveKey
+	)
+	: super(
+		properties,
+		scmlResource,
+		emblemResource,
+		collisionType,
+		size,
+		scale,
+		collisionOffset,
+		baseHealth,
+		baseSpecial,
+		movementCollisionSize,
+		ghettoGroundCollisionFix,
+		movementCollisionType,
+		inventorySaveKey,
+		equipmentSaveKey
+	)
 {
 }
 

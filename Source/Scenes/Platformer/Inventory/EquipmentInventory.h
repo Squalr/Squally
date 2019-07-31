@@ -11,6 +11,8 @@ class Weapon;
 class EquipmentInventory : public Inventory
 {
 public:
+	static EquipmentInventory* create(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
+
 	Weapon* getWeapon();
 	Offhand* getOffhand();
 	Hat* getHat();

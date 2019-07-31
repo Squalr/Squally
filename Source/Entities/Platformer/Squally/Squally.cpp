@@ -28,12 +28,10 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
-#include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
-#include "Scenes/Platformer/Inventory/PlayerEquipment.h"
-#include "Scenes/Platformer/Inventory/PlayerInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -73,7 +71,10 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Squally::SquallyBaseSpecial,
 	Size(128.0f, 224.0f),
 	24.0f,
-	PlatformerCollisionType::PlayerMovement)
+	PlatformerCollisionType::PlayerMovement,
+	SaveKeys::SaveKeySquallyInventory,
+	SaveKeys::SaveKeySquallyEquipment,
+	SaveKeys::SaveKeySquallyCurrencyInventory)
 {
 	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();
@@ -82,9 +83,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 
 	this->registerHackables();
 	this->registerAttack(Punch::create(0.4f, 0.5f));
-
-	this->currencyInventory = PlayerCurrencyInventory::getInstance();
-	this->inventory = PlayerInventory::getInstance();
 
 	this->leftEyeController->setVisible(false);
 	this->rightEyeController->setVisible(false);
@@ -330,7 +328,7 @@ void Squally::update(float dt)
 
 void Squally::performSwimAnimation()
 {
-	if (PlayerEquipment::getInstance()->getWeapon() != nullptr)
+	if (this->equipmentInventory->getWeapon() != nullptr)
 	{
 		this->animationNode->playAnimation("SwimWithWeapon");
 	}
@@ -342,7 +340,7 @@ void Squally::performSwimAnimation()
 
 std::string Squally::getOutOfCombatAttackAnimation()
 {
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+	Weapon* weapon = this->equipmentInventory->getWeapon();
 
 	if (weapon != nullptr)
 	{
@@ -356,7 +354,7 @@ std::string Squally::getOutOfCombatAttackAnimation()
 
 float Squally::getOutOfCombatAttackOnset()
 {
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+	Weapon* weapon = this->equipmentInventory->getWeapon();
 
 	if (weapon == nullptr)
 	{
@@ -370,7 +368,7 @@ float Squally::getOutOfCombatAttackOnset()
 
 float Squally::getOutOfCombatAttackSustain()
 {
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
+	Weapon* weapon = this->equipmentInventory->getWeapon();
 
 	if (weapon == nullptr)
 	{
@@ -529,9 +527,9 @@ void Squally::rebuildWeaponCollision(cocos2d::Size size)
 
 void Squally::updateEquipmentVisual()
 {
-	Weapon* weapon = PlayerEquipment::getInstance()->getWeapon();
-	Hat* hat = PlayerEquipment::getInstance()->getHat();
-	Offhand* offhand = PlayerEquipment::getInstance()->getOffhand();
+	Weapon* weapon = this->equipmentInventory->getWeapon();
+	Hat* hat = this->equipmentInventory->getHat();
+	Offhand* offhand = this->equipmentInventory->getOffhand();
 
 	AnimationPart* hatAnim = this->getAnimations()->getAnimationPart("hat");
 	

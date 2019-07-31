@@ -21,7 +21,10 @@ protected:
 		int baseSpecial,
 		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
 		float ghettoGroundCollisionFix = 0.0f,
-		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement);
+		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement,
+		std::string inventorySaveKey = "",
+		std::string equipmentSaveKey = "",
+		std::string currencySaveKey = "");
 	virtual ~PlatformerFriendly();
 
 private:

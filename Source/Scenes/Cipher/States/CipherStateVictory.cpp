@@ -17,7 +17,7 @@
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
-#include "Scenes/Platformer/Inventory/PlayerInventory.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -158,7 +158,9 @@ void CipherStateVictory::giveRewards(CipherState* cipherState)
 
 	for (auto it = items.begin(); it != items.end(); it++, index++)
 	{
-		PlayerInventory::getInstance()->forceInsert(*it);	
+		Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+
+		playerInventory->forceInsert(*it);	
 	}
 
 	for (auto it = items.begin(); it != items.end(); it++, index++)

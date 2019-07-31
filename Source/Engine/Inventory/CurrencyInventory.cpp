@@ -1,14 +1,17 @@
 #include "CurrencyInventory.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/InventoryEvents.h"
 #include "Engine/Save/SaveManager.h"
 
 using namespace cocos2d;
 
-CurrencyInventory* CurrencyInventory::create()
+CurrencyInventory* CurrencyInventory::create(std::string saveKey)
 {
-	CurrencyInventory* instance = new CurrencyInventory();
+	CurrencyInventory* instance = new CurrencyInventory(saveKey);
 
 	instance->autorelease();
 
@@ -17,6 +20,7 @@ CurrencyInventory* CurrencyInventory::create()
 
 CurrencyInventory::CurrencyInventory(std::string saveKey)
 {
+	this->saveKey = saveKey;
 	this->currencyMap = ValueMap();
 	this->load();
 }
@@ -33,6 +37,16 @@ void CurrencyInventory::onEnter()
 void CurrencyInventory::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventCurrencyInventoryInstanceChangedPrefix + this->saveKey, [=](EventCustom* eventCustom)
+	{
+		InventoryEvents::CurrencyInventoryInstanceChangedArgs* args = static_cast<InventoryEvents::CurrencyInventoryInstanceChangedArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr && args->instance != this)
+		{
+			this->load();
+		}
+	}));
 }
 
 int CurrencyInventory::getCurrencyCount(std::string currencyKey)
@@ -78,6 +92,8 @@ void CurrencyInventory::save()
 	if (!this->saveKey.empty())
 	{
 		SaveManager::saveProfileData(this->saveKey, Value(this->currencyMap));
+		
+		InventoryEvents::TriggerCurrencyInventoryInstanceChanged(InventoryEvents::CurrencyInventoryInstanceChangedArgs(this, this->saveKey));
 	}
 }
 

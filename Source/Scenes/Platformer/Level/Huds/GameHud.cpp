@@ -9,7 +9,6 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
@@ -32,8 +31,6 @@ GameHud::GameHud()
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->statsBars->setVisible(false);
 	this->currencyDisplay->setVisible(false);
-
-	this->currencyDisplay->setCurrencyInventory(PlayerCurrencyInventory::getInstance());
 
 	this->addChild(this->statsBars);
 	this->addChild(this->currencyDisplay);
@@ -73,6 +70,7 @@ void GameHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->statsBars->setStatsTarget(args->entity);
+			this->currencyDisplay->setCurrencyInventory(args->entity->getCurrencyInventory());
 
 			this->statsBars->setVisible(true);
 			this->currencyDisplay->setVisible(true);
@@ -86,6 +84,7 @@ void GameHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->statsBars->setStatsTarget(nullptr);
+			this->currencyDisplay->setCurrencyInventory(nullptr);
 
 			this->statsBars->setVisible(false);
 			this->currencyDisplay->setVisible(false);

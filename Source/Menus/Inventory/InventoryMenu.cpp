@@ -7,6 +7,8 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
@@ -17,12 +19,13 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
 #include "Scenes/Title/TitleScreen.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
-#include "Scenes/Platformer/Inventory/PlayerEquipment.h"
-#include "Scenes/Platformer/Inventory/PlayerInventory.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -34,13 +37,6 @@
 #include "Strings/Menus/Inventory/Inventory.h"
 #include "Strings/Menus/Inventory/Misc.h"
 #include "Strings/Menus/Return.h"
-
-// DEBUG
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/SantaHat.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CandySword.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/CrystalSword.h"
 
 using namespace cocos2d;
 
@@ -58,6 +54,9 @@ InventoryMenu* InventoryMenu::create()
 
 InventoryMenu::InventoryMenu()
 {
+	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
+	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
+	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->equipmentPanel = Sprite::create(UIResources::Menus_InventoryMenu_EquipmentMenu);
 	this->itemPreview = ItemPreview::create();
@@ -128,6 +127,9 @@ InventoryMenu::InventoryMenu()
 	this->contentNode->addChild(this->filterSelectionArrow);
 	this->contentNode->addChild(this->inventorySelectionArrow);
 	this->contentNode->addChild(this->itemPreview);
+	this->addChild(this->currencyInventory);
+	this->addChild(this->equipmentInventory);
+	this->addChild(this->inventory);
 	this->addChild(this->inventoryWindow);
 	this->addChild(this->equipmentPanel);
 	this->addChild(this->contentNode);
@@ -152,12 +154,6 @@ void InventoryMenu::onEnter()
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
 
-	// DEBUG
-	PlayerInventory::getInstance()->forceInsert(SantaHat::create());
-	PlayerInventory::getInstance()->forceInsert(BlueAxe::create());
-	PlayerInventory::getInstance()->forceInsert(CandySword::create());
-	PlayerInventory::getInstance()->forceInsert(HealthPotion::create());
-	PlayerInventory::getInstance()->forceInsert(CrystalSword::create());
 	this->equipmentPanel->setVisible(false);
 
 	this->unfocusInventory();
@@ -439,8 +435,8 @@ void InventoryMenu::buildInventoryList()
 	this->equippedItemLabels.clear();
 	this->itemLabels.clear();
 
-	this->inventoryItems = PlayerInventory::getInstance()->getItems();
-	this->equippedItems = PlayerEquipment::getInstance()->getItems();
+	this->inventoryItems = this->inventory->getItems();
+	this->equippedItems = this->equipmentInventory->getItems();
 
 	for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++)
 	{
@@ -666,10 +662,10 @@ void InventoryMenu::toggleEquipSelectedItem()
 	{
 		Item* selectedItem = this->equippedItems[this->selectedItemIndex];
 		
-		PlayerEquipment::getInstance()->tryTransact(PlayerInventory::getInstance(), selectedItem, nullptr, [=](Item* item, Item* otherItem)
+		this->equipmentInventory->tryTransact(this->inventory, selectedItem, nullptr, [=](Item* item, Item* otherItem)
 		{
 			// Success unequipping item -- visually best if this ends up in the 1st inventory slot
-			PlayerInventory::getInstance()->moveItem(item, 0);
+			this->inventory->moveItem(item, 0);
 		},
 		[=](Item* item, Item* otherItem)
 		{
@@ -699,23 +695,23 @@ void InventoryMenu::toggleEquipSelectedItem()
 
 		if (dynamic_cast<Hat*>(selectedItem))
 		{
-			equippedItem = PlayerEquipment::getInstance()->getHat();
+			equippedItem = this->equipmentInventory->getHat();
 		}
 		else if (dynamic_cast<Weapon*>(selectedItem))
 		{
-			equippedItem = PlayerEquipment::getInstance()->getWeapon();
+			equippedItem = this->equipmentInventory->getWeapon();
 		}
 		else if (dynamic_cast<Offhand*>(selectedItem))
 		{
-			equippedItem = PlayerEquipment::getInstance()->getOffhand();
+			equippedItem = this->equipmentInventory->getOffhand();
 		}
 		
-		PlayerInventory::getInstance()->tryTransact(PlayerEquipment::getInstance(), selectedItem, equippedItem, [=](Item* item, Item* otherItem)
+		this->inventory->tryTransact(this->equipmentInventory, selectedItem, equippedItem, [=](Item* item, Item* otherItem)
 		{
 			// Success equipping item. Adjust final position if equipping an item without a swap
 			if (otherItem == nullptr)
 			{
-				PlayerEquipment::getInstance()->moveItem(item, PlayerEquipment::getInstance()->getItems().size());
+				this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
 			}
 		},
 		[=](Item* item, Item* otherItem)

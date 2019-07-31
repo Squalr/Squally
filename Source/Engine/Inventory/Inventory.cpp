@@ -1,5 +1,7 @@
 #include "Inventory.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/InventoryEvents.h"
@@ -15,9 +17,9 @@ const int Inventory::InfiniteCapacity = -1;
 const std::string Inventory::SaveKeyCapacity = "capacity";
 const std::string Inventory::SaveKeyItems = "items";
 
-Inventory* Inventory::create()
+Inventory* Inventory::create(std::string saveKey, int capacity)
 {
-	Inventory* instance = new Inventory();
+	Inventory* instance = new Inventory(saveKey, capacity);
 
 	instance->autorelease();
 
@@ -29,6 +31,9 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->saveKey = saveKey;
 	this->capacity = capacity;
 	this->items = std::vector<Item*>();
+	this->itemsNode = Node::create();
+
+	this->addChild(this->itemsNode);
 }
 
 Inventory::~Inventory()
@@ -43,6 +48,16 @@ void Inventory::onEnter()
 void Inventory::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->saveKey, [=](EventCustom* eventCustom)
+	{
+		InventoryEvents::InventoryInstanceChangedArgs* args = static_cast<InventoryEvents::InventoryInstanceChangedArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr && args->instance != this)
+		{
+			this->load();
+		}
+	}));
 }
 
 ValueMap Inventory::serialize()
@@ -63,6 +78,8 @@ ValueMap Inventory::serialize()
 
 void Inventory::deserialize(const ValueMap& valueMap)
 {
+	this->clearItems();
+
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
 	ValueMap itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueMap())).asValueMap();
 
@@ -75,11 +92,19 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	}
 }
 
+void Inventory::clearItems()
+{
+	this->itemsNode->removeAllChildren();
+	this->items.clear();
+}
+
 void Inventory::save()
 {
 	if (!this->saveKey.empty())
 	{
 		SaveManager::saveProfileData(this->saveKey, Value(this->serialize()));
+		
+		InventoryEvents::TriggerInventoryInstanceChanged(InventoryEvents::InventoryInstanceChangedArgs(this, this->saveKey));
 	}
 }
 
@@ -133,7 +158,7 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 {
 	if (this->capacity == Inventory::InfiniteCapacity || this->items.size() < this->capacity)
 	{
-		this->addChild(item);
+		this->itemsNode->addChild(item);
 		this->items.push_back(item);
 
 		if (onInsert != nullptr)
@@ -155,7 +180,7 @@ void Inventory::forceInsert(Item* item)
 {
 	if (item != nullptr)
 	{
-		this->addChild(item);
+		this->itemsNode->addChild(item);
 		this->items.push_back(item);
 		this->save();
 	}

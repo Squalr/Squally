@@ -8,9 +8,10 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -35,7 +36,9 @@ Doubloon::Doubloon(ValueMap& initProperties) : super(initProperties)
 
 	this->onCollected([=]()
 	{
-		PlayerCurrencyInventory::getInstance()->addCurrency(Doubloon::getIdentifier(), 1);
+		CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
+
+		playerCurrencyInventory->addCurrency(Doubloon::getIdentifier(), 1);
 	});
 
 	this->collectableNode->addChild(this->doubloon);

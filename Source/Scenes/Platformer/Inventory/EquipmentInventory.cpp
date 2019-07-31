@@ -7,6 +7,15 @@
 
 using namespace cocos2d;
 
+EquipmentInventory* EquipmentInventory::create(std::string saveKey, int capacity)
+{
+	EquipmentInventory* instance = new EquipmentInventory(saveKey, capacity);
+
+	instance->autorelease();
+
+	return instance;
+}
+
 EquipmentInventory::EquipmentInventory(std::string saveKey, int capacity) : super(saveKey, capacity)
 {
 	this->load();

@@ -13,6 +13,7 @@ namespace cocos2d
 class CollisionObject;
 class ClickableNode;
 class CurrencyInventory;
+class EquipmentInventory;
 class HackablePreview;
 class HexusOpponentData;
 class Inventory;
@@ -86,7 +87,10 @@ protected:
 		int baseSpecial,
 		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
 		float ghettoGroundCollisionFix = 0.0f,
-		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement);
+		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement,
+		std::string inventorySaveKey = "",
+		std::string equipmentSaveKey = "",
+		std::string currencySaveKey = "");
 	virtual ~PlatformerEntity();
 
 	enum class ControlState
@@ -122,6 +126,7 @@ protected:
 	CollisionObject* weaponCollision;
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
+	EquipmentInventory* equipmentInventory;
 	CurrencyInventory* currencyInventory;
 	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;

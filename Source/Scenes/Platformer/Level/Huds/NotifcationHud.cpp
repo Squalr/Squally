@@ -40,8 +40,8 @@ NotificationHud::NotificationHud()
 	LocalizedLabel* okLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Okay::create());
 	LocalizedLabel* okLabelSelected = okLabel->clone();
 
-	okLabel->enableOutline(Color4B::BLACK);
-	okLabelSelected->enableOutline(Color4B::BLACK);
+	okLabel->enableOutline(Color4B::BLACK, 2);
+	okLabelSelected->enableOutline(Color4B::BLACK, 2);
 
 	this->okButton = ClickableTextNode::create(okLabel, okLabelSelected, UIResources::Menus_Buttons_WoodButton, UIResources::Menus_Buttons_WoodButtonSelected);
 
@@ -74,7 +74,7 @@ void NotificationHud::initializePositions()
 	
 	this->menuBack->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->okButton->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2 - 192.0f));
-	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 192.0f));
+	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 204.0f));
 	this->description->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));
 }
 
@@ -103,12 +103,14 @@ void NotificationHud::initializeListeners()
 
 	this->okButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->setVisible(false);
+		this->closeNotificationMenu();
+	});
 
-		if (this->previousFocus != nullptr)
-		{
-			GameUtils::focus(this->previousFocus);
-		}
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		args->handled = true;
+		
+		this->closeNotificationMenu();
 	});
 }
 
@@ -120,4 +122,14 @@ void NotificationHud::showNotificationMenu(LocalizedString* title, LocalizedStri
 	
 	this->previousFocus = GameUtils::getFocusedNode();
 	GameUtils::focus(this);
+}
+
+void NotificationHud::closeNotificationMenu()
+{
+	this->setVisible(false);
+
+	if (this->previousFocus != nullptr)
+	{
+		GameUtils::focus(this->previousFocus);
+	}
 }

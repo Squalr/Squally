@@ -9,9 +9,10 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -36,7 +37,9 @@ IOU::IOU(ValueMap& initProperties) : super(initProperties)
 
 	this->onCollected([=]()
 	{
-		PlayerCurrencyInventory::getInstance()->addCurrency(IOU::getIdentifier(), 1);
+		CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
+
+		playerCurrencyInventory->addCurrency(IOU::getIdentifier(), 1);
 	});
 
 	this->collectableNode->addChild(this->iou);

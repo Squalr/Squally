@@ -28,6 +28,7 @@ private:
 	void initializeListeners() override;
 
 	void showNotificationMenu(LocalizedString* title, LocalizedString* description);
+	void closeNotificationMenu();
 
 	cocos2d::Node* previousFocus;
 

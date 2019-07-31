@@ -13,7 +13,7 @@ class Item;
 class Inventory : public SmartNode
 {
 public:
-	static Inventory* create();
+	static Inventory* create(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
 
 	std::vector<Item*> getItems();
 
@@ -50,6 +50,7 @@ protected:
 	void load();
 	cocos2d::ValueMap serialize();
 	void deserialize(const cocos2d::ValueMap& valueMap);
+	void clearItems();
 
 	std::vector<Item*> items;
 	int capacity;
@@ -58,6 +59,8 @@ protected:
 
 private:
 	typedef SmartNode super;
+
+	cocos2d::Node* itemsNode;
 
 	std::string saveKey;
 

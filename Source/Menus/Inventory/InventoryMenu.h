@@ -14,6 +14,9 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class ConfirmationMenu;
+class CurrencyInventory;
+class EquipmentInventory;
+class Inventory;
 class Item;
 class ItemPreview;
 class LocalizedLabel;
@@ -36,13 +39,13 @@ protected:
 
 private:
 	typedef SmartNode super;
-	enum ActiveFocus
+	enum class ActiveFocus
 	{
 		Filter,
 		Inventory
 	};
 	
-	enum ActiveFilter
+	enum class ActiveFilter
 	{
 		All,
 		Equipment,
@@ -67,6 +70,9 @@ private:
 	void toggleEquipSelectedItem();
 	cocos2d::Node* buildMenuLabel(LocalizedString* text, cocos2d::Sprite* icon = nullptr);
 
+	CurrencyInventory* currencyInventory;
+	EquipmentInventory* equipmentInventory;
+	Inventory* inventory;
 	cocos2d::Sprite* inventoryWindow;
 	cocos2d::Sprite* equipmentPanel;
 	ItemPreview* itemPreview;

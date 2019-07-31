@@ -23,6 +23,7 @@
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
 #include "Resources/UIResources.h"
 
@@ -58,7 +59,10 @@ PlatformerEntity::PlatformerEntity(
 	int baseSpecial,
 	Size movementCollisionSize,
 	float ghettoGroundCollisionFix,
-	PlatformerCollisionType movementCollisionType
+	PlatformerCollisionType movementCollisionType,
+	std::string inventorySaveKey,
+	std::string equipmentSaveKey,
+	std::string currencySaveKey
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
@@ -119,8 +123,9 @@ PlatformerEntity::PlatformerEntity(
 	);
 
 	this->hexusOpponentData = nullptr;
-	this->inventory = Inventory::create();
-	this->currencyInventory = CurrencyInventory::create();
+	this->inventory = Inventory::create(inventorySaveKey);
+	this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
+	this->currencyInventory = CurrencyInventory::create(currencySaveKey);
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
 	this->spawnCoords = this->getPosition();
