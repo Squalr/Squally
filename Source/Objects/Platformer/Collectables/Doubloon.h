@@ -3,12 +3,17 @@
 #include "Engine/Maps/GameObject.h"
 
 class CollisionObject;
+class LocalizedString;
 class SmartAnimationSequenceNode;
 
 class Doubloon : public GameObject
 {
 public:
 	static Doubloon* create(cocos2d::ValueMap& initProperties);
+
+	static std::string getIdentifier();
+	static std::string getIconResource();
+	static LocalizedString* getString();
 
 	static const std::string MapKeyDoubloon;
 	static const std::string SaveKeyIsCollected;

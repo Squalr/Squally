@@ -26,8 +26,6 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
-#include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
-#include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

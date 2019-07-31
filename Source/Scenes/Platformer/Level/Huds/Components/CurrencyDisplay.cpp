@@ -5,7 +5,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Platformer/Inventory/Currency/Doubloons.h"
+#include "Objects/Platformer/Collectables/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -24,7 +24,7 @@ CurrencyDisplay* CurrencyDisplay::create()
 
 CurrencyDisplay::CurrencyDisplay()
 {
-	this->emblem = Sprite::create(ObjectResources::Collectables_Doubloon_Doubloon_0000);
+	this->emblem = Sprite::create(ObjectResources::Items_Consumables_IOU);
 	this->value = ConstantString::create("0");
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->value);
 	this->inventory = nullptr;
@@ -71,13 +71,13 @@ void CurrencyDisplay::update(float dt)
 		return;
 	}
 
-	int doubloonCount = this->inventory->getCurrencyCount(Doubloons::getIdentifier());
+	int iouCount = this->inventory->getCurrencyCount(IOU::getIdentifier());
 
-	if (doubloonCount != (this->cachedCurrency ^ CurrencyDisplay::CacheCipher))
+	if (iouCount != (this->cachedCurrency ^ CurrencyDisplay::CacheCipher))
 	{
-		this->cachedCurrency = (doubloonCount ^ CurrencyDisplay::CacheCipher);
+		this->cachedCurrency = (iouCount ^ CurrencyDisplay::CacheCipher);
 
-		this->value->setString(std::to_string(doubloonCount));
+		this->value->setString(std::to_string(iouCount));
 	}
 }
 

@@ -91,6 +91,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[FloatingCrate::MapKeyFloatingCrate] = [=](ValueMap properties) { return (GameObject*)FloatingCrate::create(properties); };
 	this->deserializers[FloatingRock::MapKeyFloatingRock] = [=](ValueMap properties) { return (GameObject*)FloatingRock::create(properties); };
 	this->deserializers[FloatingWoodenBeam::MapKeyFloatingWoodenBeam] = [=](ValueMap properties) { return (GameObject*)FloatingWoodenBeam::create(properties); };
+	this->deserializers[IOU::MapKeyIOU] = [=](ValueMap properties) { return (GameObject*)IOU::create(properties); };
 	this->deserializers[HackableHint::MapKeyHackableHint] = [=](ValueMap properties) { return (GameObject*)HackableHint::create(properties); };
 	this->deserializers[HeavenHug::MapKeyHeavenHug] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };

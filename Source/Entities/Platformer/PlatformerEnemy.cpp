@@ -10,7 +10,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Scenes/Platformer/Inventory/Currency/Gold.h"
+#include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/MapResources.h"
@@ -43,7 +43,7 @@ PlatformerEnemy::PlatformerEnemy(
 	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
-	this->goldTable = std::tuple<int, int>();
+	this->iouTable = std::tuple<int, int>();
 	this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyName).asString());
 
 	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyEnemy1))
@@ -71,7 +71,7 @@ void PlatformerEnemy::onEnter()
 	super::onEnter();
 
 	this->buildDropInventory();
-	this->buildGoldDrop();
+	this->buildIOUDrop();
 }
 
 void PlatformerEnemy::onEnterTransitionDidFinish()
@@ -170,7 +170,7 @@ void PlatformerEnemy::buildDropInventory()
 	}
 }
 
-void PlatformerEnemy::buildGoldDrop()
+void PlatformerEnemy::buildIOUDrop()
 {
-	this->getCurrencyInventory()->addCurrency(Gold::getIdentifier(), RandomHelper::random_int(std::get<0>(this->goldTable), std::get<1>(this->goldTable)));
+	this->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), RandomHelper::random_int(std::get<0>(this->iouTable), std::get<1>(this->iouTable)));
 }

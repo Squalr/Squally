@@ -50,7 +50,7 @@ OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 
 	this->dropTable.push_back(this->createDrop(HealthPotion::SaveKeyHealthPotion, 0.5f));
 	this->dropTable.push_back(this->createDrop(ManaPotion::SaveKeyManaPotion, 0.5f));
-	this->goldTable = std::make_tuple(16, 24);
+	this->iouTable = std::make_tuple(1, 2);
 }
 
 OrcGrunt::~OrcGrunt()

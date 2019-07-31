@@ -18,7 +18,6 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/Inventory/Currency/Gold.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -43,11 +42,8 @@ RewardsMenu::RewardsMenu()
 {
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
 	this->expSprite = Sprite::create(UIResources::Menus_Icons_Stars);
-	this->goldSprite = Sprite::create(UIResources::Menus_Icons_Coins);
 	this->expValue = ConstantString::create(std::to_string(0));
-	this->goldValue = ConstantString::create(std::to_string(0));
 	this->expLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->expValue);
-	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->goldValue);
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Combat_Victory::create());
 
@@ -60,17 +56,13 @@ RewardsMenu::RewardsMenu()
 	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelHover, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->expLabel->enableOutline(Color4B::BLACK, 2);
-	this->goldLabel->enableOutline(Color4B::BLACK, 2);
 	this->victoryLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->expLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->goldLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->addChild(this->victoryMenu);
 	this->addChild(this->expSprite);
-	this->addChild(this->goldSprite);
 	this->addChild(this->expLabel);
-	this->addChild(this->goldLabel);
 	this->addChild(this->victoryLabel);
 	this->addChild(this->returnButton);
 }
@@ -94,8 +86,6 @@ void RewardsMenu::initializePositions()
 	this->victoryMenu->setPosition(Vec2(0.0f, 0.0f));
 	this->expSprite->setPosition(Vec2(-48.0f, 32.0f));
 	this->expLabel->setPosition(Vec2(16.0f, 32.0f));
-	this->goldSprite->setPosition(Vec2(-48.0f, -48.0f));
-	this->goldLabel->setPosition(Vec2(16.0f, -48.0f));
 	this->returnButton->setPosition(Vec2(16.0f, -160.0f));
 }
 
@@ -123,14 +113,12 @@ void RewardsMenu::loadRewards()
 {
 	const int DISPLAY_LIMIT = 32;
 	int index = 0;
-	int totalGoldGain = 0;
 	int totalExpGain = 0;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		totalGoldGain += entity->getCurrencyInventory()->getCurrencyCount(Gold::getIdentifier());
 		totalExpGain += StatsTables::calculateEnemyExp(entity);
 
 		std::vector<Item*> items = entity->getInventory()->getItems();
@@ -184,6 +172,5 @@ void RewardsMenu::loadRewards()
 		}
 	}));
 
-	this->goldValue->setString(std::to_string(totalGoldGain));
 	this->expValue->setString(std::to_string(totalExpGain));
 }

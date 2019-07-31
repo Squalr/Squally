@@ -9,11 +9,12 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Inventory/Currency/Doubloons.h"
 #include "Scenes/Platformer/Inventory/PlayerCurrencyInventory.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+
+#include "Strings/Items/Currency/Doubloons.h"
 
 using namespace cocos2d;
 
@@ -67,7 +68,7 @@ void Doubloon::initializeListeners()
 		{
 			this->disableCollection();
 
-			PlayerCurrencyInventory::getInstance()->addCurrency(Doubloons::getIdentifier(), 1);
+			PlayerCurrencyInventory::getInstance()->addCurrency(Doubloon::getIdentifier(), 1);
 			this->saveObjectState(Doubloon::SaveKeyIsCollected, Value(true));
 		}
 
@@ -95,4 +96,19 @@ void Doubloon::disableCollection()
 	this->isCollected = true;
 	this->doubloonCollision->setPhysicsEnabled(false);
 	this->doubloonCollision->setVisible(false);
+}
+
+std::string Doubloon::getIdentifier()
+{
+	return "Doubloons";
+}
+
+std::string Doubloon::getIconResource()
+{
+	return ObjectResources::Collectables_Doubloon_Doubloon_0000;
+}
+
+LocalizedString* Doubloon::getString()
+{
+	return Strings::Items_Currency_Doubloons::create();
 }

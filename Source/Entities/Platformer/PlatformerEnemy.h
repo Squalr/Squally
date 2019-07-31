@@ -51,11 +51,11 @@ protected:
 	std::vector<std::string> battleMapArgs;
 	std::vector<std::string> combatEntityList;
 	std::vector<std::tuple<std::string, float>> dropTable;
-	std::tuple<int, int> goldTable;
+	std::tuple<int, int> iouTable;
 
 private:
 	typedef PlatformerEntity super;
 
 	void buildDropInventory();
-	void buildGoldDrop();
+	void buildIOUDrop();
 };

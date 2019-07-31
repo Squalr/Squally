@@ -2,6 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+class CurrencyDisplay;
 class StatsBars;
 
 class GameHud : public Hud
@@ -19,5 +20,6 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	CurrencyDisplay* currencyDisplay;
 	StatsBars* statsBars;
 };
