@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 const std::string MeetFlyBot::MapKeyQuest = "meet-flybot";
 
-MeetFlyBot* MeetFlyBot::create(GameObject* owner, std::string questLine, std::string questTag)
+MeetFlyBot* MeetFlyBot::create(GameObject* owner, QuestLine* questLine, std::string questTag)
 {
 	MeetFlyBot* instance = new MeetFlyBot(owner, questLine, questTag);
 
@@ -32,7 +32,7 @@ MeetFlyBot* MeetFlyBot::create(GameObject* owner, std::string questLine, std::st
 	return instance;
 }
 
-MeetFlyBot::MeetFlyBot(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, MeetFlyBot::MapKeyQuest, questTag, true)
+MeetFlyBot::MeetFlyBot(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetFlyBot::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -42,6 +42,7 @@ MeetFlyBot::~MeetFlyBot()
 {
 }
 
+/*
 void MeetFlyBot::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
@@ -145,3 +146,4 @@ void MeetFlyBot::runCinematicSequence()
 		));
 	}
 }
+*/

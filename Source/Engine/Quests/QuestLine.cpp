@@ -14,15 +14,39 @@ using namespace cocos2d;
 const std::string QuestLine::QuestsSaveKey = "SAVE_KEY_QUESTS";
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE";
 
-QuestLine::QuestLine()
+QuestLine::QuestLine(std::string questLine, const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> quests)
 {
+	this->questLine = questLine;
+	this->quests = quests;
 }
 
 QuestLine::~QuestLine()
 {
 }
 
-std::string QuestLine::getActiveQuestTaskForLine(std::string questLine)
+QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
+{
+	if (this->quests.find(questTask) != this->quests.end())
+	{
+		return std::get<1>(this->quests.at(questTask))(owner, this, questTag);
+	}
+
+	return nullptr;
+}
+
+const std::map<std::string, bool> QuestLine::getQuests()
+{
+	std::map<std::string, bool> quests = std::map<std::string, bool>();
+
+	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
+	{
+		quests[(*it).first] = std::get<0>((*it).second);
+	}
+
+	return quests;
+}
+
+std::string QuestLine::getActiveQuestTaskName()
 {
 	ValueMap questData = Quests::getQuestData();
 
@@ -34,7 +58,7 @@ std::string QuestLine::getActiveQuestTaskForLine(std::string questLine)
 	return "";
 }
 
-bool QuestLine::isQuestTaskComplete(std::string questLine, std::string questTask)
+bool QuestLine::isQuestTaskComplete(std::string questTask)
 {
 	ValueMap questData = Quests::getQuestData();
 
@@ -46,22 +70,20 @@ bool QuestLine::isQuestTaskComplete(std::string questLine, std::string questTask
 	return false;
 }
 
-LocalizedString* QuestLine::getQuestLineName(std::string questLine)
+LocalizedString* QuestLine::getQuestLineName()
 {
 	return nullptr;
 }
 
-LocalizedString* QuestLine::getQuestLineObjective(std::string questLine, std::string questTask)
+LocalizedString* QuestLine::getQuestLineObjective(std::string questTask)
 {
 	return nullptr;
 }
 
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 {
-
 }
 
-void QuestLine::markQuestLineComplete(std::string questLine)
+void QuestLine::markQuestLineComplete()
 {
-
 }

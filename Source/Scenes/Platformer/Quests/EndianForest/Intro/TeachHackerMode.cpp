@@ -22,7 +22,7 @@ using namespace cocos2d;
 
 const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
 
-TeachHackerMode* TeachHackerMode::create(GameObject* owner, std::string questLine, std::string questTag)
+TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
 	TeachHackerMode* instance = new TeachHackerMode(owner, questLine, questTag);
 
@@ -31,7 +31,7 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, std::string questLin
 	return instance;
 }
 
-TeachHackerMode::TeachHackerMode(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
+TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -41,6 +41,7 @@ TeachHackerMode::~TeachHackerMode()
 {
 }
 
+/*
 void TeachHackerMode::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
@@ -71,7 +72,7 @@ void TeachHackerMode::disable()
 	{
 		this->flyBot->setVisible(false);
 	}
-}
+}*/
 
 void TeachHackerMode::runCinematicSequence()
 {

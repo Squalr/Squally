@@ -8,22 +8,25 @@ namespace cocos2d
 }
 
 class IOU;
+class QuestLine;
 
 class FirstIOUFound : public QuestTask
 {
 public:
-	static FirstIOUFound* create(GameObject* owner, std::string questLine, std::string questTag);
+	static FirstIOUFound* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	FirstIOUFound(GameObject* owner, std::string questLine, std::string questTag);
+	FirstIOUFound(GameObject* owner, QuestLine* questLine, std::string questTag);
 	~FirstIOUFound();
 
+	/*
 	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;
 	void onActivateRunOnce() override;
 	void enable(bool isSkippable) override;
 	void disable() override;
+	*/
 
 private:
 	typedef QuestTask super;

@@ -8,9 +8,9 @@
 using namespace cocos2d;
 
 const std::string FirstIOULine::MapKeyQuestLine = "first-iou";
-const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, std::string, std::string)>>> FirstIOULine::Quests =
+const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> FirstIOULine::Quests =
 {
-	{ FirstIOUFound::MapKeyQuest, { true, [](GameObject* owner, std::string questLine, std::string questTag) { return FirstIOUFound::create(owner, questLine, questTag); }}},
+	{ FirstIOUFound::MapKeyQuest, { true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return FirstIOUFound::create(owner, questLine, questTag); }}},
 };
 
 FirstIOULine* FirstIOULine::create()
@@ -22,12 +22,10 @@ FirstIOULine* FirstIOULine::create()
 	return instance;
 }
 
-QuestTask* FirstIOULine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
+FirstIOULine::FirstIOULine() : super(FirstIOULine::MapKeyQuestLine, FirstIOULine::Quests)
 {
-	if (FirstIOULine::Quests.find(questTask) != FirstIOULine::Quests.end())
-	{
-		return std::get<1>(FirstIOULine::Quests.at(questTask))(owner, FirstIOULine::MapKeyQuestLine, questTag);
-	}
+}
 
-	return nullptr;
+FirstIOULine::~FirstIOULine()
+{
 }

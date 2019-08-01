@@ -22,7 +22,7 @@ using namespace cocos2d;
 
 const std::string HelpSquallyHeal::MapKeyQuest = "help-squally-heal";
 
-HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, std::string questLine, std::string questTag)
+HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, QuestLine* questLine, std::string questTag)
 {
 	HelpSquallyHeal* instance = new HelpSquallyHeal(owner, questLine, questTag);
 
@@ -31,7 +31,7 @@ HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, std::string questLin
 	return instance;
 }
 
-HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, questTag, true)
+HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
@@ -41,6 +41,7 @@ HelpSquallyHeal::~HelpSquallyHeal()
 {
 }
 
+/*
 void HelpSquallyHeal::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
@@ -72,6 +73,7 @@ void HelpSquallyHeal::disable()
 		this->flyBot->setVisible(false);
 	}
 }
+*/
 
 void HelpSquallyHeal::runCinematicSequence()
 {

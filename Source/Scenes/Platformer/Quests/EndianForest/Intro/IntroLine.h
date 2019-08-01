@@ -8,10 +8,9 @@ class IntroLine : public QuestLine
 {
 public:
 	static IntroLine* create();
-	QuestTask* deserialize(GameObject* owner, std::string questTask, std::string questTag) override;
 
 	static const std::string MapKeyQuestLine;
-	static const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, std::string, std::string)>>> Quests;
+	static const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> Quests;
 
 protected:
 	IntroLine();

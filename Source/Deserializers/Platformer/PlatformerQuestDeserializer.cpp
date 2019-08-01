@@ -23,7 +23,6 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
 	this->lineDeserializers = std::map<std::string, std::function<QuestLine*()>>();
 
-	this->lineDeserializers[DeveloperLine::MapKeyQuestLine] = [=]() { return (QuestLine*)DeveloperLine::create(); };
 	this->lineDeserializers[IntroLine::MapKeyQuestLine] = [=]() { return (QuestLine*)IntroLine::create(); };
 	this->lineDeserializers[FirstIOULine::MapKeyQuestLine] = [=]() { return (QuestLine*)FirstIOULine::create(); };
 	

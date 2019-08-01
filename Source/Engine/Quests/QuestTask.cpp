@@ -5,10 +5,12 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Quests/QuestLine.h"
+#include "Engine/Quests/Quests.h"
 
 using namespace cocos2d;
 
-QuestTask::QuestTask(GameObject* owner, std::string questLine, std::string questTask, std::string questTag, bool skippable) : super()
+QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable) : super()
 {
 	this->questState = QuestState::Untracked;
 	this->owner = owner;
@@ -16,7 +18,8 @@ QuestTask::QuestTask(GameObject* owner, std::string questLine, std::string quest
 	this->questTask = questTask;
 	this->questTag = questTag;
 	this->isSkippable = skippable;
-	this->hasRunActivateFunction = false;
+
+	this->addChild(this->questLine);
 }
 
 QuestTask::~QuestTask()
@@ -31,13 +34,20 @@ void QuestTask::initializeListeners()
 	{
 		QuestEvents::SkipQuestArgs* args = static_cast<QuestEvents::SkipQuestArgs*>(eventCustom->getUserData());
 		
+		/*
 		if (args != nullptr && args->questTask->getQuestLine() == this->getQuestLine() && args->questTask->getQuestName() == this->getQuestName())
 		{
 			this->skip();
-		}
+		}*/
 	}));
 }
 
+void QuestTask::updateState()
+{
+	//QuestLine* questLine = this->deserializer->deserialize(QuestDeserializer::QuestLineDeserializationRequestArgs(this->questLine));
+}
+
+/*
 void QuestTask::initialize()
 {
 	if (!this->hasLoaded)
@@ -140,4 +150,4 @@ void QuestTask::skip()
 			break;
 		}
 	}
-}
+}*/

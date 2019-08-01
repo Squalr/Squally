@@ -25,7 +25,7 @@ ValueMap Quests::getQuestData()
 	return SaveManager::getProfileDataOrDefault(Quests::QuestsSaveKey, Value(ValueMap())).asValueMap();
 }
 
-std::set<std::string> Quests::getQuests()
+std::set<std::string> Quests::getStartedQuestLines()
 {
 	std::set<std::string> questLines = std::set<std::string>();
 
@@ -39,20 +39,14 @@ std::set<std::string> Quests::getQuests()
 	return questLines;
 }
 
-std::set<std::string> Quests::getActiveQuests()
+std::set<std::string> Quests::getActiveQuestLines()
 {
-	std::set<std::string> questLines = std::set<std::string>();
-
-	ValueMap questData = Quests::getQuestData();
-
-	for (auto it = questData.begin(); it != questData.end(); it++)
-	{
-		//if ((*it).second.asString() != Quests::QuestsSaveKeyComplete)
-		{
-		//	questLines.insert((*it).first);
-		}
-	}
-
-	return questLines;
+	// TODO
+	return Quests::getStartedQuestLines();
 }
 
+std::set<std::string> Quests::getCompletedQuestLines()
+{
+	// TODO
+	return Quests::getStartedQuestLines();
+}

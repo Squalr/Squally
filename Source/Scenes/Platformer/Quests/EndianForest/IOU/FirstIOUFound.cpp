@@ -22,7 +22,7 @@ using namespace cocos2d;
 
 const std::string FirstIOUFound::MapKeyQuest = "first-iou-found";
 
-FirstIOUFound* FirstIOUFound::create(GameObject* owner, std::string questLine, std::string questTag)
+FirstIOUFound* FirstIOUFound::create(GameObject* owner, QuestLine* questLine, std::string questTag)
 {
 	FirstIOUFound* instance = new FirstIOUFound(owner, questLine, questTag);
 
@@ -31,7 +31,7 @@ FirstIOUFound* FirstIOUFound::create(GameObject* owner, std::string questLine, s
 	return instance;
 }
 
-FirstIOUFound::FirstIOUFound(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, FirstIOUFound::MapKeyQuest, questTag, true)
+FirstIOUFound::FirstIOUFound(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, FirstIOUFound::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->iou = static_cast<IOU*>(owner);
@@ -46,6 +46,7 @@ FirstIOUFound::~FirstIOUFound()
 {
 }
 
+/*
 void FirstIOUFound::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
@@ -67,6 +68,7 @@ void FirstIOUFound::enable(bool isSkippable)
 void FirstIOUFound::disable()
 {
 }
+*/
 
 void FirstIOUFound::runNotification()
 {
