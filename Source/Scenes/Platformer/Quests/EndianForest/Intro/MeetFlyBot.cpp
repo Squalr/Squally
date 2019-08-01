@@ -42,6 +42,18 @@ MeetFlyBot::~MeetFlyBot()
 {
 }
 
+void MeetFlyBot::onLoad(QuestState questState)
+{
+}
+
+void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
+{
+}
+
+void MeetFlyBot::onComplete()
+{
+}
+
 /*
 void MeetFlyBot::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {

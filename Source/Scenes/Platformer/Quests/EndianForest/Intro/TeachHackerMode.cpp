@@ -41,6 +41,18 @@ TeachHackerMode::~TeachHackerMode()
 {
 }
 
+void TeachHackerMode::onLoad(QuestState questState)
+{
+}
+
+void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
+{
+}
+
+void TeachHackerMode::onComplete()
+{
+}
+
 /*
 void TeachHackerMode::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {

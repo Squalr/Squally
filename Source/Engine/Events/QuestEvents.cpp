@@ -5,21 +5,12 @@
 
 using namespace cocos2d;
 
-const std::string QuestEvents::EventAdvanceNextQuestTask = "EVENT_ADVANCE_NEXT_QUEST_TASK";
-const std::string QuestEvents::EventSkipQuestTask = "EVENT_SKIP_QUEST_TASK";
+const std::string QuestEvents::EventQuestTaskComplete = "EVENT_QUEST_TASK_COMPLETE";
 
-void QuestEvents::TriggerAdvanceToNextQuestTask(AdvanceNextQuestArgs args)
+void QuestEvents::TriggerQuestTaskComplete(QuestTaskCompleteArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		QuestEvents::EventAdvanceNextQuestTask,
-		&args
-	);
-}
-
-void QuestEvents::TriggerSkipQuestTask(SkipQuestArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		QuestEvents::EventSkipQuestTask,
+		QuestEvents::EventQuestTaskComplete + args.questLine,
 		&args
 	);
 }

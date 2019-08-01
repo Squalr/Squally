@@ -9,7 +9,7 @@ class QuestTask : public GameObject
 public:
 	enum class QuestState
 	{
-		Untracked,
+		None,
 		Active,
 		ActiveThroughSkippable,
 		Complete,
@@ -20,25 +20,17 @@ protected:
 	~QuestTask();
 
 	void initializeListeners() override;
+	void onEnterTransitionDidFinish() override;
+
+	virtual void onLoad(QuestState questState) = 0;
+	virtual void onActivate(bool isActiveThroughSkippable) = 0;
+	virtual void onComplete() = 0;
 
 private:
 	typedef GameObject super;
 	
 	void updateState();
-	/*
-	void initialize();
-	virtual void onLoad(QuestState questState);
-	virtual void onStateChange(QuestState questState, QuestState questStatePrevious) = 0;
-	virtual void onActivateRunOnce() = 0;
-	virtual void enable(bool isSkippable) = 0;
-	virtual void disable() = 0;
-	QuestState getQuestState();
-	void setQuestState(QuestState questState);
-	std::string getQuestLine();
-	std::string getQuestName();
-	bool isQuestSkippable();
-	void skip();
-	*/
+	void complete();
 
 	GameObject* owner;
 	QuestLine* questLine;

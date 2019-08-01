@@ -12,12 +12,14 @@ using namespace cocos2d;
 
 QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable) : super()
 {
-	this->questState = QuestState::Untracked;
+	this->questState = QuestState::None;
 	this->owner = owner;
 	this->questLine = questLine;
 	this->questTask = questTask;
 	this->questTag = questTag;
 	this->isSkippable = skippable;
+
+	this->updateState();
 
 	this->addChild(this->questLine);
 }
@@ -30,124 +32,61 @@ void QuestTask::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventSkipQuestTask, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + this->questLine->getQuestLine(), [=](EventCustom* eventCustom)
 	{
-		QuestEvents::SkipQuestArgs* args = static_cast<QuestEvents::SkipQuestArgs*>(eventCustom->getUserData());
+		QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getUserData());
 		
-		/*
-		if (args != nullptr && args->questTask->getQuestLine() == this->getQuestLine() && args->questTask->getQuestName() == this->getQuestName())
+		if (args != nullptr)
 		{
-			this->skip();
-		}*/
+		}
 	}));
+}
+
+void QuestTask::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->onLoad(this->questState);
 }
 
 void QuestTask::updateState()
 {
-	//QuestLine* questLine = this->deserializer->deserialize(QuestDeserializer::QuestLineDeserializationRequestArgs(this->questLine));
-}
+	const std::vector<QuestLine::QuestData> quests = this->questLine->getQuests();
 
-/*
-void QuestTask::initialize()
-{
-	if (!this->hasLoaded)
+	bool isPreviousSkippable = false;
+	bool isPreviousComplete = false;
+	this->questState = QuestState::None;
+
+	for (auto it = quests.begin(); it != quests.end(); it++)
 	{
-		this->hasLoaded = true;
-		this->onLoad(this->questState);
-	}
-}
-
-QuestTask::QuestState QuestTask::getQuestState()
-{
-	return this->questState;
-}
-
-void QuestTask::setQuestState(QuestState questState)
-{
-	QuestState questStatePrevious = this->questState;
-	this->questState = questState;
-
-	if (!this->hasLoaded)
-	{
-		this->hasLoaded = true;
-		this->onLoad(this->questState);
-	}
-	else
-	{
-		this->onStateChange(this->questState, questStatePrevious);
-	}
-
-	switch(this->questState)
-	{
-		case QuestState::Active:
-		case QuestState::ActiveThroughSkippable:
+		if ((*it).questTask == this->questTask)
 		{
-			if (!this->hasRunActivateFunction)
+			if ((*it).isComplete)
 			{
-				this->hasRunActivateFunction = true;
-				this->onActivateRunOnce();
+				this->questState = QuestState::Complete;
 			}
+			else if ((*it).isActive && (isPreviousSkippable && !isPreviousComplete))
+			{
+				this->questState = QuestState::ActiveThroughSkippable;
+			}
+			else if ((*it).isActive)
+			{
+				this->questState = QuestState::Active;
+			}
+			
+			break;
+		}
 
-			break;
-		}
-		default:
-		{
-			break;
-		}
+		isPreviousSkippable = (*it).isSkippable;
+		isPreviousComplete = (*it).isComplete;
 	}
 }
 
-void QuestTask::onLoad(QuestTask::QuestState questState)
+void QuestTask::complete()
 {
-	switch (questState)
-	{
-		case QuestTask::QuestState::Active:
-		{
-			this->enable(false);
-			break;
-		}
-		case QuestTask::QuestState::ActiveThroughSkippable:
-		{
-			this->enable(true);
-			break;
-		}
-		default:
-		{
-			this->disable();
-			break;
-		}
-	}
-}
+	this->questState = QuestState::Complete;
 
-std::string QuestTask::getQuestLine()
-{
-	return this->questLine;
-}
+	this->onComplete();
 
-std::string QuestTask::getQuestName()
-{
-	return this->questTask;
+	this->questLine->advanceNextQuest(this);
 }
-
-bool QuestTask::isQuestSkippable()
-{
-	return this->isSkippable;
-}
-
-void QuestTask::skip()
-{
-	switch(this->questState)
-	{
-		case QuestState::Active:
-		case QuestState::ActiveThroughSkippable:
-		{
-			this->setQuestState(QuestTask::QuestState::Untracked);
-			this->disable();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
-}*/

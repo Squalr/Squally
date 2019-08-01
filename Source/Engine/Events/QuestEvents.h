@@ -6,23 +6,15 @@ class QuestTask;
 class QuestEvents
 {
 public:
-	static const std::string EventAdvanceNextQuestTask;
-	static const std::string EventSkipQuestTask;
+	static const std::string EventQuestTaskComplete;
 
-	struct AdvanceNextQuestArgs
+	struct QuestTaskCompleteArgs
 	{
+		std::string questLine;
 		QuestTask* questTask;
 
-		AdvanceNextQuestArgs(QuestTask* questTask) : questTask(questTask) { }
+		QuestTaskCompleteArgs(std::string questLine, QuestTask* questTask) : questLine(questLine), questTask(questTask) { }
 	};
 
-	struct SkipQuestArgs
-	{
-		QuestTask* questTask;
-
-		SkipQuestArgs(QuestTask* questTask) : questTask(questTask) { }
-	};
-
-	static void TriggerAdvanceToNextQuestTask(AdvanceNextQuestArgs args);
-	static void TriggerSkipQuestTask(SkipQuestArgs args);
+	static void TriggerQuestTaskComplete(QuestTaskCompleteArgs args);
 };

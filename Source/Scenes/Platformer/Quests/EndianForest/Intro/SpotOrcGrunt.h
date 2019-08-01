@@ -15,13 +15,10 @@ public:
 protected:
 	SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag);
 	~SpotOrcGrunt();
-	
-	/*
-	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;
-	void onActivateRunOnce() override;
-	void enable(bool isSkippable) override;
-	void disable() override;
-	*/
+
+	void onLoad(QuestState questState) override;
+	void onActivate(bool isActiveThroughSkippable) override;
+	void onComplete() override;
 
 private:
 	typedef QuestTask super;

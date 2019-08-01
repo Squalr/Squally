@@ -46,6 +46,18 @@ FirstIOUFound::~FirstIOUFound()
 {
 }
 
+void FirstIOUFound::onLoad(QuestState questState)
+{
+}
+
+void FirstIOUFound::onActivate(bool isActiveThroughSkippable)
+{
+}
+
+void FirstIOUFound::onComplete()
+{
+}
+
 /*
 void FirstIOUFound::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {

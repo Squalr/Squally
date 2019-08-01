@@ -11,7 +11,6 @@
 
 using namespace cocos2d;
 
-const std::string QuestLine::QuestsSaveKey = "SAVE_KEY_QUESTS";
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE";
 
 QuestLine::QuestLine(std::string questLine, const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> quests)
@@ -34,16 +33,35 @@ QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask, std:
 	return nullptr;
 }
 
-const std::map<std::string, bool> QuestLine::getQuests()
+const std::vector<QuestLine::QuestData> QuestLine::getQuests()
 {
-	std::map<std::string, bool> quests = std::map<std::string, bool>();
+	std::vector<QuestData> questData = std::vector<QuestData>();
+	std::string currentQuestTask = Quests::getCurrentQuestTaskForLine(this->questLine);
+	bool hasEncounteredActive = false;
+	bool activeThroughSkippable = false;
 
 	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
 	{
-		quests[(*it).first] = std::get<0>((*it).second);
+		bool isActive = activeThroughSkippable || (*it).first == currentQuestTask;
+		bool isComplete = !isActive && hasEncounteredActive;
+		bool isSkippable = std::get<0>((*it).second);
+
+		questData.push_back(QuestData((*it).first, isActive, isSkippable, isComplete));
+
+		if (activeThroughSkippable || isActive)
+		{
+			activeThroughSkippable &= isSkippable;
+		}
+
+		hasEncounteredActive |= isActive;
 	}
 
-	return quests;
+	return questData;
+}
+
+std::string QuestLine::getQuestLine()
+{
+	return this->questLine;
 }
 
 std::string QuestLine::getActiveQuestTaskName()
@@ -82,6 +100,7 @@ LocalizedString* QuestLine::getQuestLineObjective(std::string questTask)
 
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 {
+	QuestEvents::TriggerQuestTaskComplete(QuestEvents::QuestTaskCompleteArgs(this->questLine, currentQuest));
 }
 
 void QuestLine::markQuestLineComplete()

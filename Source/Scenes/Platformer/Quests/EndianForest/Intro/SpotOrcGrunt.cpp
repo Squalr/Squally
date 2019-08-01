@@ -41,6 +41,18 @@ SpotOrcGrunt::~SpotOrcGrunt()
 {
 }
 
+void SpotOrcGrunt::onLoad(QuestState questState)
+{
+}
+
+void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
+{
+}
+
+void SpotOrcGrunt::onComplete()
+{
+}
+
 /*
 void SpotOrcGrunt::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {

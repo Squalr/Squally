@@ -41,6 +41,18 @@ HelpSquallyHeal::~HelpSquallyHeal()
 {
 }
 
+void HelpSquallyHeal::onLoad(QuestState questState)
+{
+}
+
+void HelpSquallyHeal::onActivate(bool isActiveThroughSkippable)
+{
+}
+
+void HelpSquallyHeal::onComplete()
+{
+}
+
 /*
 void HelpSquallyHeal::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {

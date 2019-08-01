@@ -15,6 +15,7 @@ class Quests
 {
 public:
 	static cocos2d::ValueMap getQuestData();
+	static std::string getCurrentQuestTaskForLine(std::string questLine);
 	static std::set<std::string> getStartedQuestLines();
 	static std::set<std::string> getActiveQuestLines();
 	static std::set<std::string> getCompletedQuestLines();

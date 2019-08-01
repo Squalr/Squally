@@ -25,6 +25,18 @@ ValueMap Quests::getQuestData()
 	return SaveManager::getProfileDataOrDefault(Quests::QuestsSaveKey, Value(ValueMap())).asValueMap();
 }
 
+std::string Quests::getCurrentQuestTaskForLine(std::string questLine)
+{
+	ValueMap questData = Quests::getQuestData();
+
+	if (questData.find(questLine) != questData.end())
+	{
+		return questData[questLine].asString();
+	}
+
+	return "";
+}
+
 std::set<std::string> Quests::getStartedQuestLines()
 {
 	std::set<std::string> questLines = std::set<std::string>();
