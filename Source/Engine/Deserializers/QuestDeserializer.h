@@ -9,10 +9,21 @@ namespace cocos2d
 }
 
 class GameObject;
+class QuestLine;
+class QuestTask;
 
 class QuestDeserializer : public SmartNode
 {
 public:
+	struct QuestLineDeserializationRequestArgs
+	{
+		std::string questLine;
+
+		QuestLineDeserializationRequestArgs(std::string questLine) : questLine(questLine)
+		{
+		}
+	};
+	
 	struct QuestDeserializationRequestArgs
 	{
 		GameObject* owner;
@@ -29,11 +40,14 @@ public:
 		}
 	};
 
-	virtual void deserialize(QuestDeserializer::QuestDeserializationRequestArgs args) = 0;
+	QuestLine* deserialize(QuestDeserializer::QuestLineDeserializationRequestArgs args);
+	QuestTask* deserialize(QuestDeserializer::QuestDeserializationRequestArgs args);
 
 protected:
 	QuestDeserializer();
 	~QuestDeserializer();
+
+	std::map<std::string, std::function<QuestLine*()>> lineDeserializers;
 
 private:
 	typedef SmartNode super;

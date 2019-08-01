@@ -9,20 +9,28 @@
 using namespace cocos2d;
 
 const std::string DeveloperLine::MapKeyQuestLine = "intro";
-
-GameObject* DeveloperLine::deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag)
+const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, std::string, std::string)>>> DeveloperLine::Quests =
 {
-	static const std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string)>> Quests =
-	{
-		{ Task1::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return Task1::create(owner, questLine, questTag); }},
-		{ Task2::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return Task2::create(owner, questLine, questTag); }},
-		{ Task3::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return Task3::create(owner, questLine, questTag); }},
-		{ Task4::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return Task4::create(owner, questLine, questTag); }},
-	};
+	{ Task1::MapKeyQuest, { true, [](GameObject* owner, std::string questLine, std::string questTag) { return Task1::create(owner, questLine, questTag); }}},
+	{ Task2::MapKeyQuest, { true, [](GameObject* owner, std::string questLine, std::string questTag) { return Task2::create(owner, questLine, questTag); }}},
+	{ Task3::MapKeyQuest, { true, [](GameObject* owner, std::string questLine, std::string questTag) { return Task3::create(owner, questLine, questTag); }}},
+	{ Task4::MapKeyQuest, { true, [](GameObject* owner, std::string questLine, std::string questTag) { return Task4::create(owner, questLine, questTag); }}},
+};
 
-	if (Quests.find(questTask) != Quests.end())
+DeveloperLine* DeveloperLine::create()
+{
+	DeveloperLine* instance = new DeveloperLine();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+QuestTask* DeveloperLine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
+{
+	if (DeveloperLine::Quests.find(questTask) != DeveloperLine::Quests.end())
 	{
-		return Quests.at(questTask)(owner, questLine, questTag);
+		return std::get<1>(DeveloperLine::Quests.at(questTask))(owner, DeveloperLine::MapKeyQuestLine, questTag);
 	}
 
 	return nullptr;

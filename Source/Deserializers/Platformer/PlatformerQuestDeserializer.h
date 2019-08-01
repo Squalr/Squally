@@ -14,8 +14,4 @@ private:
 
 	PlatformerQuestDeserializer();
 	~PlatformerQuestDeserializer();
-
-	void deserialize(QuestDeserializer::QuestDeserializationRequestArgs args);
-
-	std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string, std::string)>> deserializers;
 };

@@ -4,12 +4,14 @@
 
 class GameObject;
 
-class DeveloperLine : QuestLine
+class DeveloperLine : public QuestLine
 {
 public:
-	static GameObject* deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag);
+	static DeveloperLine* create();
+	QuestTask* deserialize(GameObject* owner, std::string questTask, std::string questTag) override;
 
 	static const std::string MapKeyQuestLine;
+	static const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, std::string, std::string)>>> Quests;
 
 private:
 	typedef QuestLine super;

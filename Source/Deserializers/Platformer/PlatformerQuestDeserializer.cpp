@@ -21,26 +21,14 @@ PlatformerQuestDeserializer* PlatformerQuestDeserializer::create()
 
 PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
-	this->deserializers = std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string, std::string)>>();
+	this->lineDeserializers = std::map<std::string, std::function<QuestLine*()>>();
 
-	this->deserializers[DeveloperLine::MapKeyQuestLine] = [=](GameObject* owner, std::string questLine, std::string questTask, std::string questTag) { return (GameObject*)DeveloperLine::deserialize(owner, questLine, questTask, questTag); };
-	this->deserializers[IntroLine::MapKeyQuestLine] = [=](GameObject* owner, std::string questLine, std::string questTask, std::string questTag) { return (GameObject*)IntroLine::deserialize(owner, questLine, questTask, questTag); };
-	this->deserializers[FirstIOULine::MapKeyQuestLine] = [=](GameObject* owner, std::string questLine, std::string questTask, std::string questTag) { return (GameObject*)FirstIOULine::deserialize(owner, questLine, questTask, questTag); };
+	this->lineDeserializers[DeveloperLine::MapKeyQuestLine] = [=]() { return (QuestLine*)DeveloperLine::create(); };
+	this->lineDeserializers[IntroLine::MapKeyQuestLine] = [=]() { return (QuestLine*)IntroLine::create(); };
+	this->lineDeserializers[FirstIOULine::MapKeyQuestLine] = [=]() { return (QuestLine*)FirstIOULine::create(); };
 	
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
 {
-}
-
-void PlatformerQuestDeserializer::deserialize(QuestDeserializer::QuestDeserializationRequestArgs args)
-{
-	if (args.owner != nullptr && this->deserializers.find(args.questLine) != this->deserializers.end())
-	{
-		args.owner->addChild(this->deserializers[args.questLine](args.owner, args.questLine, args.questTask, args.questTag));
-	}
-	else
-	{
-		CCLOG("Unknown quest line encountered: %s", args.questLine.c_str());
-	}
 }

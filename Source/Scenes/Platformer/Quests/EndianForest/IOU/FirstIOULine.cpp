@@ -8,17 +8,25 @@
 using namespace cocos2d;
 
 const std::string FirstIOULine::MapKeyQuestLine = "first-iou";
-
-GameObject* FirstIOULine::deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag)
+const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, std::string, std::string)>>> FirstIOULine::Quests =
 {
-	static const std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string)>> Quests =
-	{
-		{ FirstIOUFound::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return FirstIOUFound::create(owner, questLine, questTag); }},
-	};
+	{ FirstIOUFound::MapKeyQuest, { true, [](GameObject* owner, std::string questLine, std::string questTag) { return FirstIOUFound::create(owner, questLine, questTag); }}},
+};
 
-	if (Quests.find(questTask) != Quests.end())
+FirstIOULine* FirstIOULine::create()
+{
+	FirstIOULine* instance = new FirstIOULine();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+QuestTask* FirstIOULine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
+{
+	if (FirstIOULine::Quests.find(questTask) != FirstIOULine::Quests.end())
 	{
-		return Quests.at(questTask)(owner, questLine, questTag);
+		return std::get<1>(FirstIOULine::Quests.at(questTask))(owner, FirstIOULine::MapKeyQuestLine, questTag);
 	}
 
 	return nullptr;

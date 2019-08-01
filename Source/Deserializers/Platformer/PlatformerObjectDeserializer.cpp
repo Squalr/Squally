@@ -5,6 +5,7 @@
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Quests/QuestTask.h"
 #include "Objects/Platformer/PlatformerObjects.h"
 
 using namespace cocos2d;
@@ -133,10 +134,15 @@ void PlatformerObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeseria
 
 		if (questLine != "")
 		{
-			std::string quest = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
+			std::string questTask = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
 			std::string questTag = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestTag, Value("")).asString();
 			
-			this->questDeserializer->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(object, questLine, quest, questTag));
+			QuestTask* quest = this->questDeserializer->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(object, questLine, questTask, questTag));
+
+			if (quest != nullptr)
+			{
+				object->addChild(quest);
+			}
 		}
 
 		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));

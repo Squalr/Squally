@@ -8,15 +8,14 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
+class GameObject;
 class LocalizedString;
 class QuestTask;
 
-class QuestLine
+class QuestLine : public SmartNode
 {
 public:
-	static cocos2d::ValueMap getQuestData();
-	static std::set<std::string> getQuestLines();
-	static std::set<std::string> getActiveQuestLines();
+	virtual QuestTask* deserialize(GameObject* owner, std::string questTask, std::string questTag) = 0;
 	static std::string getActiveQuestTaskForLine(std::string questLine);
 	static bool isQuestTaskComplete(std::string questLine, std::string questTask);
 	static LocalizedString* getQuestLineName(std::string questLine);
@@ -24,7 +23,13 @@ public:
 	static void advanceNextQuest(QuestTask* currentQuest);
 	static void markQuestLineComplete(std::string questLine);
 
+protected:
+	QuestLine();
+	~QuestLine();
+
 private:
+	typedef SmartNode super;
+
 	static const std::string QuestsSaveKey;
 	static const std::string QuestLineSaveKeyComplete;
 };
