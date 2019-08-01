@@ -15,16 +15,16 @@ class QuestDeserializer : public SmartNode
 public:
 	struct QuestDeserializationRequestArgs
 	{
-		GameObject* targetObject;
-		std::string quest;
+		GameObject* owner;
 		std::string questLine;
+		std::string questTask;
 		std::string questTag;
 
-		QuestDeserializationRequestArgs(GameObject* targetObject,
+		QuestDeserializationRequestArgs(GameObject* owner,
 			std::string questLine,
-			std::string quest,
+			std::string questTask,
 			std::string questTag):
-			targetObject(targetObject), questLine(questLine), quest(quest), questTag(questTag)
+			owner(owner), questLine(questLine), questTask(questTask), questTag(questTag)
 		{
 		}
 	};

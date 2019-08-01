@@ -4,16 +4,16 @@
 
 class FlyBot;
 
-class HelpSquallyHeal : public QuestTask
+class Task2 : public QuestTask
 {
 public:
-	static HelpSquallyHeal* create(GameObject* owner, std::string questLine, std::string questTag);
+	static Task2* create(GameObject* owner, std::string questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	HelpSquallyHeal(GameObject* owner, std::string questLine, std::string questTag);
-	~HelpSquallyHeal();
+	Task2(GameObject* owner, std::string questLine, std::string questTag);
+	~Task2();
 	
 	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;
 	void onActivateRunOnce() override;

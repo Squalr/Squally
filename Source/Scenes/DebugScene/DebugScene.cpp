@@ -43,6 +43,7 @@ DebugScene::DebugScene()
 	this->chapterList = std::vector<ClickableTextNode*>();
 
 	this->chapterList.push_back(this->buildDebugButton(MapResources::Dev_Cages));
+	this->chapterList.push_back(this->buildDebugButton(MapResources::Dev_Quests));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Intro));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_0));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_1));

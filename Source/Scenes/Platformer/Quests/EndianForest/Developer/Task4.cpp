@@ -1,4 +1,4 @@
-#include "SpotOrcGrunt.h"
+#include "Task4.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -20,34 +20,34 @@
 
 using namespace cocos2d;
 
-const std::string SpotOrcGrunt::MapKeyQuest = "spot-orc-grunt";
+const std::string Task4::MapKeyQuest = "task4";
 
-SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, std::string questLine, std::string questTag)
+Task4* Task4::create(GameObject* owner, std::string questLine, std::string questTag)
 {
-	SpotOrcGrunt* instance = new SpotOrcGrunt(owner, questLine, questTag);
+	Task4* instance = new Task4(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
+Task4::Task4(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, Task4::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
 }
 
-SpotOrcGrunt::~SpotOrcGrunt()
+Task4::~Task4()
 {
 }
 
-void SpotOrcGrunt::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
+void Task4::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
 
-void SpotOrcGrunt::onActivateRunOnce()
+void Task4::onActivateRunOnce()
 {
-	this->listenForMapEvent(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(Task4::MapKeyQuest, [=](ValueMap args)
 	{
 		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
 
@@ -55,7 +55,7 @@ void SpotOrcGrunt::onActivateRunOnce()
 	});
 }
 
-void SpotOrcGrunt::enable(bool isSkippable)
+void Task4::enable(bool isSkippable)
 {
 	if (this->flyBot != nullptr)
 	{
@@ -63,7 +63,7 @@ void SpotOrcGrunt::enable(bool isSkippable)
 	}
 }
 
-void SpotOrcGrunt::disable()
+void Task4::disable()
 {
 	this->removeAllListeners();
 	
@@ -73,7 +73,7 @@ void SpotOrcGrunt::disable()
 	}
 }
 
-void SpotOrcGrunt::runCinematicSequence()
+void Task4::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{
@@ -84,8 +84,6 @@ void SpotOrcGrunt::runCinematicSequence()
 
 	if (this->flyBot != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
@@ -98,7 +96,6 @@ void SpotOrcGrunt::runCinematicSequence()
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				PlatformerEvents::TriggerCinematicRestore();
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()

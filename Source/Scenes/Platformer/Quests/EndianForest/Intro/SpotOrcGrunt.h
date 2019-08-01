@@ -7,12 +7,12 @@ class FlyBot;
 class SpotOrcGrunt : public QuestTask
 {
 public:
-	static SpotOrcGrunt* create(GameObject* owner, std::string questLine);
+	static SpotOrcGrunt* create(GameObject* owner, std::string questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	SpotOrcGrunt(GameObject* owner, std::string questLine);
+	SpotOrcGrunt(GameObject* owner, std::string questLine, std::string questTag);
 	~SpotOrcGrunt();
 	
 	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;

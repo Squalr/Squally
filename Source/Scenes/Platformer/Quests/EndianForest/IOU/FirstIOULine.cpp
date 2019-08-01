@@ -1,5 +1,7 @@
 #include "FirstIOULine.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/EndianForest/IOU/FirstIOUFound.h"
 
@@ -7,35 +9,17 @@ using namespace cocos2d;
 
 const std::string FirstIOULine::MapKeyQuestLine = "first-iou";
 
-FirstIOULine* FirstIOULine::create(std::string quest, std::string questTag, GameObject* owner)
+GameObject* FirstIOULine::deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag)
 {
-	FirstIOULine* instance = new FirstIOULine(quest, questTag, owner);
-	
-	instance->autorelease();
-
-	return instance;
-}
-
-FirstIOULine::FirstIOULine(std::string quest, std::string questTag, GameObject* owner) : super(
-	FirstIOULine::MapKeyQuestLine,
-	quest,
-	questTag,
+	static const std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string)>> Quests =
 	{
-		(QuestTask*)FirstIOUFound::create(quest == FirstIOUFound::MapKeyQuest ? owner : nullptr, FirstIOULine::MapKeyQuestLine),
-	})
-{
-}
+		{ FirstIOUFound::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return FirstIOUFound::create(owner, questLine, questTag); }},
+	};
 
-FirstIOULine::~FirstIOULine()
-{
-}
+	if (Quests.find(questTask) != Quests.end())
+	{
+		return Quests.at(questTask)(owner, questLine, questTag);
+	}
 
-void FirstIOULine::initializePositions()
-{
-	super::initializePositions();
-}
-
-void FirstIOULine::initializeListeners()
-{
-	super::initializeListeners();
+	return nullptr;
 }

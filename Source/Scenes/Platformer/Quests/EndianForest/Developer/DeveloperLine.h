@@ -4,7 +4,7 @@
 
 class GameObject;
 
-class FirstIOULine : QuestLine
+class DeveloperLine : QuestLine
 {
 public:
 	static GameObject* deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag);
@@ -14,3 +14,5 @@ public:
 private:
 	typedef QuestLine super;
 };
+
+

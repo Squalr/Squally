@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string FirstIOUFound::MapKeyQuest = "first-iou-found";
 
-FirstIOUFound* FirstIOUFound::create(GameObject* owner, std::string questLine)
+FirstIOUFound* FirstIOUFound::create(GameObject* owner, std::string questLine, std::string questTag)
 {
-	FirstIOUFound* instance = new FirstIOUFound(owner, questLine);
+	FirstIOUFound* instance = new FirstIOUFound(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FirstIOUFound::FirstIOUFound(GameObject* owner, std::string questLine) : super(owner, questLine, FirstIOUFound::MapKeyQuest, true)
+FirstIOUFound::FirstIOUFound(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, FirstIOUFound::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->iou = static_cast<IOU*>(owner);

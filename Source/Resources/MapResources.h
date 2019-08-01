@@ -10,6 +10,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Castle;
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string Dev_Cages;
+	extern const std::string Dev_Quests;
 	extern const std::string EndianForest_Battlegrounds;
 	extern const std::string EndianForest_Forest;
 	extern const std::string EndianForest_Intro;
@@ -18,6 +19,8 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_1_2;
 	extern const std::string EndianForest_Zone_1_Town_Alch;
 	extern const std::string EndianForest_Zone_1_Town_Docks;
+	extern const std::string EndianForest_Zone_1_Town_Home_1;
+	extern const std::string EndianForest_Zone_1_Town_Inn;
 	extern const std::string EndianForest_Zone_1_Town_Liana;
 	extern const std::string EndianForest_Zone_1_Town_Main;
 	extern const std::string EndianForest_Zone_1_Town_Shack;

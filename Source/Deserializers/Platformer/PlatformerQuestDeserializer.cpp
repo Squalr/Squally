@@ -21,10 +21,11 @@ PlatformerQuestDeserializer* PlatformerQuestDeserializer::create()
 
 PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
-	this->deserializers = std::map<std::string, std::function<GameObject*(std::string, std::string, GameObject*)>>();
+	this->deserializers = std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string, std::string)>>();
 
-	this->deserializers[IntroLine::MapKeyQuestLine] = [=](std::string quest, std::string questTag, GameObject* owner) { return (GameObject*)IntroLine::create(quest, questTag, owner); };
-	this->deserializers[FirstIOULine::MapKeyQuestLine] = [=](std::string quest, std::string questTag, GameObject* owner) { return (GameObject*)FirstIOULine::create(quest, questTag, owner); };
+	this->deserializers[DeveloperLine::MapKeyQuestLine] = [=](GameObject* owner, std::string questLine, std::string questTask, std::string questTag) { return (GameObject*)DeveloperLine::deserialize(owner, questLine, questTask, questTag); };
+	this->deserializers[IntroLine::MapKeyQuestLine] = [=](GameObject* owner, std::string questLine, std::string questTask, std::string questTag) { return (GameObject*)IntroLine::deserialize(owner, questLine, questTask, questTag); };
+	this->deserializers[FirstIOULine::MapKeyQuestLine] = [=](GameObject* owner, std::string questLine, std::string questTask, std::string questTag) { return (GameObject*)FirstIOULine::deserialize(owner, questLine, questTask, questTag); };
 	
 }
 
@@ -34,9 +35,9 @@ PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
 
 void PlatformerQuestDeserializer::deserialize(QuestDeserializer::QuestDeserializationRequestArgs args)
 {
-	if (args.targetObject != nullptr && this->deserializers.find(args.questLine) != this->deserializers.end())
+	if (args.owner != nullptr && this->deserializers.find(args.questLine) != this->deserializers.end())
 	{
-		args.targetObject->addChild(this->deserializers[args.questLine](args.quest, args.questTag, args.targetObject));
+		args.owner->addChild(this->deserializers[args.questLine](args.owner, args.questLine, args.questTask, args.questTag));
 	}
 	else
 	{

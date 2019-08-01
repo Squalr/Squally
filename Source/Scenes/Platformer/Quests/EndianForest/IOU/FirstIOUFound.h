@@ -12,12 +12,12 @@ class IOU;
 class FirstIOUFound : public QuestTask
 {
 public:
-	static FirstIOUFound* create(GameObject* owner, std::string questLine);
+	static FirstIOUFound* create(GameObject* owner, std::string questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	FirstIOUFound(GameObject* owner, std::string questLine);
+	FirstIOUFound(GameObject* owner, std::string questLine, std::string questTag);
 	~FirstIOUFound();
 
 	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;

@@ -7,12 +7,12 @@ class FlyBot;
 class MeetFlyBot : public QuestTask
 {
 public:
-	static MeetFlyBot* create(GameObject* owner, std::string questLine);
+	static MeetFlyBot* create(GameObject* owner, std::string questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	MeetFlyBot(GameObject* owner, std::string questLine);
+	MeetFlyBot(GameObject* owner, std::string questLine, std::string questTag);
 	~MeetFlyBot();
 
 	void onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious) override;

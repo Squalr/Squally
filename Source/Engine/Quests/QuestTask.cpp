@@ -8,12 +8,13 @@
 
 using namespace cocos2d;
 
-QuestTask::QuestTask(GameObject* owner, std::string questLine, std::string quest, bool skippable) : super()
+QuestTask::QuestTask(GameObject* owner, std::string questLine, std::string questTask, std::string questTag, bool skippable) : super()
 {
 	this->questState = QuestState::Untracked;
 	this->owner = owner;
 	this->questLine = questLine;
-	this->quest = quest;
+	this->questTask = questTask;
+	this->questTag = questTag;
 	this->isSkippable = skippable;
 	this->hasRunActivateFunction = false;
 }
@@ -25,15 +26,6 @@ QuestTask::~QuestTask()
 void QuestTask::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-void QuestTask::initialize()
-{
-	if (!this->hasLoaded)
-	{
-		this->hasLoaded = true;
-		this->onLoad(this->questState);
-	}
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventSkipQuestTask, [=](EventCustom* eventCustom)
 	{
@@ -44,6 +36,15 @@ void QuestTask::initialize()
 			this->skip();
 		}
 	}));
+}
+
+void QuestTask::initialize()
+{
+	if (!this->hasLoaded)
+	{
+		this->hasLoaded = true;
+		this->onLoad(this->questState);
+	}
 }
 
 QuestTask::QuestState QuestTask::getQuestState()
@@ -115,7 +116,7 @@ std::string QuestTask::getQuestLine()
 
 std::string QuestTask::getQuestName()
 {
-	return this->quest;
+	return this->questTask;
 }
 
 bool QuestTask::isQuestSkippable()

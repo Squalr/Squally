@@ -21,7 +21,7 @@ public:
 	bool isQuestSkippable();
 
 protected:
-	QuestTask(GameObject* owner, std::string questLine, std::string quest, bool skippable = false);
+	QuestTask(GameObject* owner, std::string questLine, std::string questTask, std::string questTag, bool skippable = false);
 	~QuestTask();
 
 	void initializeListeners() override;
@@ -38,7 +38,8 @@ private:
 
 	GameObject* owner;
 	std::string questLine;
-	std::string quest;
+	std::string questTask;
+	std::string questTag;
 	QuestState questState;
 	bool hasRunActivateFunction;
 	bool hasLoaded;

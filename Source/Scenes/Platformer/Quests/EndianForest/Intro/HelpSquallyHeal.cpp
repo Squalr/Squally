@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string HelpSquallyHeal::MapKeyQuest = "help-squally-heal";
 
-HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, std::string questLine)
+HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, std::string questLine, std::string questTag)
 {
-	HelpSquallyHeal* instance = new HelpSquallyHeal(owner, questLine);
+	HelpSquallyHeal* instance = new HelpSquallyHeal(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, std::string questLine) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, true)
+HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);

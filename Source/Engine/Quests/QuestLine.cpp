@@ -10,133 +10,85 @@
 
 using namespace cocos2d;
 
-const std::string QuestLine::QuestLineSaveKeyPrefix = "SAVE_KEY_QUEST_LINE_";
+const std::string QuestLine::QuestsSaveKey = "SAVE_KEY_QUESTS";
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE";
 
-QuestLine::QuestLine(std::string questLine, std::string quest, std::string questTag, std::vector<QuestTask*> questTasks)
+ValueMap QuestLine::getQuestData()
 {
-	this->questLine = questLine;
-	this->quest = quest;
-	this->questTag = questTag;
-	this->questTasks = questTasks;
-	this->trackedQuestTask = nullptr;
-
-	for (auto it = this->questTasks.begin(); it != this->questTasks.end(); it++)
-	{
-		if ((*it)->getQuestName() == this->quest)
-		{
-			this->trackedQuestTask = *it;
-			break;
-		}
-	}
-
-	for (auto it = this->questTasks.begin(); it != this->questTasks.end(); it++)
-	{
-		this->addChild(*it);
-	}
+	return SaveManager::getProfileDataOrDefault(QuestLine::QuestsSaveKey, Value(ValueMap())).asValueMap();
 }
 
-QuestLine::~QuestLine()
+std::set<std::string> QuestLine::getQuestLines()
 {
-}
+	std::set<std::string> questLines = std::set<std::string>();
 
-void QuestLine::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-	
-	QuestTask* activeQuest = this->getActiveQuest();
-	bool isPreviousSkippable = false;
+	ValueMap questData = QuestLine::getQuestData();
 
-	// Mark quests as either untracked (default), active, or active-through-skip
-	for (auto it = std::find(this->questTasks.begin(), this->questTasks.end(), activeQuest); it != this->questTasks.end(); it++)
+	for (auto it = questData.begin(); it != questData.end(); it++)
 	{
-		if (*it == this->trackedQuestTask && *it == activeQuest)
-		{
-			this->trackedQuestTask->setQuestState(QuestTask::QuestState::Active);
-		}
-		else if (*it == this->trackedQuestTask && isPreviousSkippable)
-		{
-			this->trackedQuestTask->setQuestState(QuestTask::QuestState::ActiveThroughSkippable);
-		}
-		else if (!(*it)->isQuestSkippable())
-		{
-			break;
-		}
-
-		isPreviousSkippable = (*it)->isQuestSkippable();
+		questLines.insert((*it).first);
 	}
 
-	for (auto it = this->questTasks.begin(); it != this->questTasks.end(); it++)
-	{
-		(*it)->initialize();
-	}
+	return questLines;
 }
 
-void QuestLine::initializeListeners()
+std::set<std::string> QuestLine::getActiveQuestLines()
 {
-	super::initializeListeners();
+	std::set<std::string> questLines = std::set<std::string>();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventAdvanceNextQuestTask, [=](EventCustom* eventCustom)
+	ValueMap questData = QuestLine::getQuestData();
+
+	for (auto it = questData.begin(); it != questData.end(); it++)
 	{
-		QuestEvents::AdvanceNextQuestArgs* args = static_cast<QuestEvents::AdvanceNextQuestArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr && args->questTask == this->trackedQuestTask)
+		if ((*it).second.asString() != QuestLine::QuestLineSaveKeyComplete)
 		{
-			this->advanceNextQuest(args->questTask);
-		}
-	}));
-}
-
-QuestTask* QuestLine::getActiveQuest()
-{
-	std::string savedQuestName = SaveManager::getProfileDataOrDefault(QuestLine::QuestLineSaveKeyPrefix + this->questLine, Value("")).asString();
-	QuestTask* activeQuest = nullptr;
-
-	// Step 1: Locate the active quest
-	for (auto it = this->questTasks.begin(); it != this->questTasks.end(); it++)
-	{
-		if (savedQuestName.empty() || (*it)->getQuestName() == savedQuestName)
-		{
-			activeQuest = *it;
-			break;
+			questLines.insert((*it).first);
 		}
 	}
 
-	return activeQuest;
+	return questLines;
+}
+
+std::string QuestLine::getActiveQuestTaskForLine(std::string questLine)
+{
+	ValueMap questData = QuestLine::getQuestData();
+
+	if (questData.find(questLine) != questData.end())
+	{
+		return questData[questLine].asString();
+	}
+
+	return "";
+}
+
+bool QuestLine::isQuestTaskComplete(std::string questLine, std::string questTask)
+{
+	ValueMap questData = QuestLine::getQuestData();
+
+	if (questData.find(questLine) != questData.end())
+	{
+		return questData[questLine].asString() == QuestLine::QuestLineSaveKeyComplete;
+	}
+
+	return false;
+}
+
+LocalizedString* QuestLine::getQuestLineName(std::string questLine)
+{
+	return nullptr;
+}
+
+LocalizedString* QuestLine::getQuestLineObjective(std::string questLine, std::string questTask)
+{
+	return nullptr;
 }
 
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 {
-	if (this->trackedQuestTask != nullptr)
-	{
-		this->trackedQuestTask->setQuestState(QuestTask::QuestState::Untracked);
-	}
 
-	QuestTask* activeQuest = this->getActiveQuest();
-
-	// Skip any skipped quests
-	for (auto it = std::find(this->questTasks.begin(), this->questTasks.end(), activeQuest); it != std::find(this->questTasks.begin(), this->questTasks.end(), this->trackedQuestTask); it++)
-	{
-		QuestEvents::TriggerSkipQuestTask(QuestEvents::SkipQuestArgs(*it));
-	}
-
-	for (auto it = std::find(this->questTasks.begin(), this->questTasks.end(), this->trackedQuestTask) + 1; it != this->questTasks.end(); it++)
-	{
-		QuestTask* newQuest = *it;
-		SaveManager::saveProfileData(QuestLine::QuestLineSaveKeyPrefix + this->questLine, Value(newQuest->getQuestName()));
-		return;
-	}
-
-	this->markComplete();
 }
 
-void QuestLine::markComplete()
+void QuestLine::markQuestLineComplete(std::string questLine)
 {
-	if (this->trackedQuestTask != nullptr)
-	{
-		this->trackedQuestTask->setQuestState(QuestTask::QuestState::Untracked);
-		this->trackedQuestTask = nullptr;
-	}
-	
-	SaveManager::saveProfileData(QuestLine::QuestLineSaveKeyPrefix + this->questLine, Value(QuestLine::QuestLineSaveKeyComplete));
+
 }

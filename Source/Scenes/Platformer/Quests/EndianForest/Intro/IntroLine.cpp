@@ -10,38 +10,20 @@ using namespace cocos2d;
 
 const std::string IntroLine::MapKeyQuestLine = "intro";
 
-IntroLine* IntroLine::create(std::string quest, std::string questTag, GameObject* owner)
+GameObject* IntroLine::deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag)
 {
-	IntroLine* instance = new IntroLine(quest, questTag, owner);
-	
-	instance->autorelease();
-
-	return instance;
-}
-
-IntroLine::IntroLine(std::string quest, std::string questTag, GameObject* owner) : super(
-	IntroLine::MapKeyQuestLine,
-	quest,
-	questTag,
+	static const std::map<std::string, std::function<GameObject*(GameObject*, std::string, std::string)>> Quests =
 	{
-		(QuestTask*)MeetFlyBot::create(quest == MeetFlyBot::MapKeyQuest ? owner : nullptr, IntroLine::MapKeyQuestLine),
-		(QuestTask*)HelpSquallyHeal::create(quest == HelpSquallyHeal::MapKeyQuest ? owner : nullptr, IntroLine::MapKeyQuestLine),
-		(QuestTask*)TeachHackerMode::create(quest == TeachHackerMode::MapKeyQuest ? owner : nullptr, IntroLine::MapKeyQuestLine),
-		(QuestTask*)SpotOrcGrunt::create(quest == SpotOrcGrunt::MapKeyQuest ? owner : nullptr, IntroLine::MapKeyQuestLine),
-	})
-{
-}
+		{ MeetFlyBot::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return MeetFlyBot::create(owner, questLine, questTag); }},
+		{ HelpSquallyHeal::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return HelpSquallyHeal::create(owner, questLine, questTag); }},
+		{ TeachHackerMode::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return TeachHackerMode::create(owner, questLine, questTag); }},
+		{ SpotOrcGrunt::MapKeyQuest, [=](GameObject* owner, std::string questLine, std::string questTag) { return SpotOrcGrunt::create(owner, questLine, questTag); }},
+	};
 
-IntroLine::~IntroLine()
-{
-}
+	if (Quests.find(questTask) != Quests.end())
+	{
+		return Quests.at(questTask)(owner, questLine, questTag);
+	}
 
-void IntroLine::initializePositions()
-{
-	super::initializePositions();
-}
-
-void IntroLine::initializeListeners()
-{
-	super::initializeListeners();
+	return nullptr;
 }

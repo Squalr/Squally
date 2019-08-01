@@ -1,4 +1,4 @@
-#include "TeachHackerMode.h"
+#include "Task2.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -16,38 +16,38 @@
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
-#include "Strings/Dialogue/Story/Intro/HackerMode.h"
+#include "Strings/Dialogue/Story/Intro/TentHeal.h"
 
 using namespace cocos2d;
 
-const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
+const std::string Task2::MapKeyQuest = "task2";
 
-TeachHackerMode* TeachHackerMode::create(GameObject* owner, std::string questLine, std::string questTag)
+Task2* Task2::create(GameObject* owner, std::string questLine, std::string questTag)
 {
-	TeachHackerMode* instance = new TeachHackerMode(owner, questLine, questTag);
+	Task2* instance = new Task2(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TeachHackerMode::TeachHackerMode(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
+Task2::Task2(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, Task2::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
 }
 
-TeachHackerMode::~TeachHackerMode()
+Task2::~Task2()
 {
 }
 
-void TeachHackerMode::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
+void Task2::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
 
-void TeachHackerMode::onActivateRunOnce()
+void Task2::onActivateRunOnce()
 {
-	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(Task2::MapKeyQuest, [=](ValueMap args)
 	{
 		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
 
@@ -55,7 +55,7 @@ void TeachHackerMode::onActivateRunOnce()
 	});
 }
 
-void TeachHackerMode::enable(bool isSkippable)
+void Task2::enable(bool isSkippable)
 {
 	if (this->flyBot != nullptr)
 	{
@@ -63,33 +63,34 @@ void TeachHackerMode::enable(bool isSkippable)
 	}
 }
 
-void TeachHackerMode::disable()
+void Task2::disable()
 {
 	this->removeAllListeners();
-	
+
 	if (this->flyBot != nullptr)
 	{
 		this->flyBot->setVisible(false);
 	}
 }
 
-void TeachHackerMode::runCinematicSequence()
+void Task2::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{
 		return;
 	}
-	
+
 	this->hasRunEvent = true;
-	Vec2 positionB = Vec2::ZERO;
+
+	Vec2 positionA = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
 		switch(cinematicMarker->getId())
 		{
-			case 1:
+			case 0:
 			{
-				positionB = cinematicMarker->getPosition();
+				positionA = cinematicMarker->getPosition();
 				break;
 			}
 			default:
@@ -101,25 +102,22 @@ void TeachHackerMode::runCinematicSequence()
 
 	if (this->flyBot != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
 		this->flyBot->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidChatterSound->play();
+				this->flyBot->droidBrief2Sound->play();
 			}),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerMode::create());
+				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_TentHeal::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				PlatformerEvents::TriggerCinematicRestore();
 				this->flyBot->speechBubble->hideDialogue();
 			}),
 			DelayTime::create(1.0f),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
 				this->flyBot->setVisible(false);

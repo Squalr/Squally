@@ -23,16 +23,16 @@ using namespace cocos2d;
 
 const std::string MeetFlyBot::MapKeyQuest = "meet-flybot";
 
-MeetFlyBot* MeetFlyBot::create(GameObject* owner, std::string questLine)
+MeetFlyBot* MeetFlyBot::create(GameObject* owner, std::string questLine, std::string questTag)
 {
-	MeetFlyBot* instance = new MeetFlyBot(owner, questLine);
+	MeetFlyBot* instance = new MeetFlyBot(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MeetFlyBot::MeetFlyBot(GameObject* owner, std::string questLine) : super(owner, questLine, MeetFlyBot::MapKeyQuest, true)
+MeetFlyBot::MeetFlyBot(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, MeetFlyBot::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);

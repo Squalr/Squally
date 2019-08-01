@@ -3,22 +3,14 @@
 #include "Engine/Quests/QuestLine.h"
 
 class GameObject;
-class Quest;
 
-class IntroLine : public QuestLine
+class IntroLine : QuestLine
 {
 public:
-	static IntroLine* create(std::string quest, std::string questTag, GameObject* owner);
+	static GameObject* deserialize(GameObject* owner, std::string questLine, std::string questTask, std::string questTag);
 
 	static const std::string MapKeyQuestLine;
 
-protected:
-	IntroLine(std::string quest, std::string questTag, GameObject* owner);
-	~IntroLine();
-
 private:
 	typedef QuestLine super;
-	void initializePositions() override;
-	void initializeListeners() override;
 };
-

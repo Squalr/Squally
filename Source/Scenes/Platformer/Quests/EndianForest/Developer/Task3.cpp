@@ -1,4 +1,4 @@
-#include "TeachHackerMode.h"
+#include "Task3.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -20,34 +20,34 @@
 
 using namespace cocos2d;
 
-const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
+const std::string Task3::MapKeyQuest = "task3";
 
-TeachHackerMode* TeachHackerMode::create(GameObject* owner, std::string questLine, std::string questTag)
+Task3* Task3::create(GameObject* owner, std::string questLine, std::string questTag)
 {
-	TeachHackerMode* instance = new TeachHackerMode(owner, questLine, questTag);
+	Task3* instance = new Task3(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TeachHackerMode::TeachHackerMode(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
+Task3::Task3(GameObject* owner, std::string questLine, std::string questTag) : super(owner, questLine, Task3::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
 	this->flyBot = static_cast<FlyBot*>(owner);
 }
 
-TeachHackerMode::~TeachHackerMode()
+Task3::~Task3()
 {
 }
 
-void TeachHackerMode::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
+void Task3::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
 {
 }
 
-void TeachHackerMode::onActivateRunOnce()
+void Task3::onActivateRunOnce()
 {
-	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(Task3::MapKeyQuest, [=](ValueMap args)
 	{
 		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
 
@@ -55,7 +55,7 @@ void TeachHackerMode::onActivateRunOnce()
 	});
 }
 
-void TeachHackerMode::enable(bool isSkippable)
+void Task3::enable(bool isSkippable)
 {
 	if (this->flyBot != nullptr)
 	{
@@ -63,7 +63,7 @@ void TeachHackerMode::enable(bool isSkippable)
 	}
 }
 
-void TeachHackerMode::disable()
+void Task3::disable()
 {
 	this->removeAllListeners();
 	
@@ -73,7 +73,7 @@ void TeachHackerMode::disable()
 	}
 }
 
-void TeachHackerMode::runCinematicSequence()
+void Task3::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{
@@ -101,8 +101,6 @@ void TeachHackerMode::runCinematicSequence()
 
 	if (this->flyBot != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
 		this->flyBot->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
@@ -115,7 +113,6 @@ void TeachHackerMode::runCinematicSequence()
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				PlatformerEvents::TriggerCinematicRestore();
 				this->flyBot->speechBubble->hideDialogue();
 			}),
 			DelayTime::create(1.0f),
