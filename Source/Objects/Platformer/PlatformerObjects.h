@@ -18,6 +18,7 @@
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoorFrame.h"
 #include "Objects/Platformer/Doors/WoodenGate/WoodenGate.h"
 #include "Objects/Platformer/Interactables/HackableHint.h"
+#include "Objects/Platformer/Interactables/ShopItem.h"
 #include "Objects/Platformer/Interactables/Tent.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/Physics/Catapult/Catapult.h"

@@ -102,6 +102,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Portal::MapKeyPortal] = [=](ValueMap properties) { return (GameObject*)Portal::create(properties); };
 	this->deserializers[PortalSpawn::MapKeyPortalSpawn] = [=](ValueMap properties) { return (GameObject*)PortalSpawn::create(properties); };
 	this->deserializers[PendulumBlade::MapKeyPendulumBlade] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
+	this->deserializers[ShopItem::MapKeyShopItem] = [=](ValueMap properties) { return (GameObject*)ShopItem::create(properties); };
 	this->deserializers[Ship::MapKeyShip] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
 	this->deserializers[SpikedBall::MapKeySpikedBall] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };
 	this->deserializers[SpikeLog::MapKeySpikeLog] = [=](ValueMap properties) { return (GameObject*)SpikeLog::create(properties); };

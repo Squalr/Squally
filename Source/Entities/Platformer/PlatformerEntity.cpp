@@ -194,6 +194,7 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
 	this->addChild(this->inventory);
+	this->addChild(this->equipmentInventory);
 	this->addChild(this->currencyInventory);
 	this->addChild(this->resurrectButton);
 	this->addChild(this->killButton);

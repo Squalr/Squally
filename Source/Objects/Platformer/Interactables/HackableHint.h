@@ -1,5 +1,4 @@
 #pragma once
-#include <set>
 
 #include "Engine/Maps/GameObject.h"
 
@@ -20,7 +19,7 @@ public:
 
 protected:
 	HackableHint(cocos2d::ValueMap& initProperties);
-	virtual ~HackableHint();
+	~HackableHint();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
