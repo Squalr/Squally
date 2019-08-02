@@ -44,47 +44,32 @@ MeetFlyBot::~MeetFlyBot()
 
 void MeetFlyBot::onLoad(QuestState questState)
 {
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+
+	if (!this->isActive())
+	{
+		if (this->flyBot != nullptr)
+		{
+			this->flyBot->setVisible(false);
+		}
+	}
 }
 
 void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
 {
-}
-
-void MeetFlyBot::onComplete()
-{
-}
-
-/*
-void MeetFlyBot::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
-{
-}
-
-void MeetFlyBot::onActivateRunOnce()
-{
 	this->listenForMapEvent(MeetFlyBot::MapKeyQuest, [=](ValueMap args)
 	{
-		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
+		this->complete();
 
 		this->runCinematicSequence();
 	});
 }
 
-void MeetFlyBot::enable(bool isSkippable)
+void MeetFlyBot::onComplete()
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
-}
-
-void MeetFlyBot::disable()
-{
-	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->setVisible(false);
-	}
 }
 
 void MeetFlyBot::runCinematicSequence()
@@ -158,4 +143,3 @@ void MeetFlyBot::runCinematicSequence()
 		));
 	}
 }
-*/

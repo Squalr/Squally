@@ -14,6 +14,8 @@ public:
 		ActiveThroughSkippable,
 		Complete,
 	};
+	
+	std::string getQuestTaskName();
 
 protected:
 	QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable = false);
@@ -25,12 +27,13 @@ protected:
 	virtual void onLoad(QuestState questState) = 0;
 	virtual void onActivate(bool isActiveThroughSkippable) = 0;
 	virtual void onComplete() = 0;
+	bool isActive();
+	void complete();
 
 private:
 	typedef GameObject super;
 	
 	void updateState();
-	void complete();
 
 	GameObject* owner;
 	QuestLine* questLine;
@@ -38,5 +41,6 @@ private:
 	std::string questTag;
 	QuestState questState;
 	bool isSkippable;
+	bool hasLoaded;
 };
 

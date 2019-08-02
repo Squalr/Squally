@@ -52,35 +52,17 @@ void FirstIOUFound::onLoad(QuestState questState)
 
 void FirstIOUFound::onActivate(bool isActiveThroughSkippable)
 {
-}
-
-void FirstIOUFound::onComplete()
-{
-}
-
-/*
-void FirstIOUFound::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
-{
-}
-
-void FirstIOUFound::onActivateRunOnce()
-{
 	this->listenForMapEvent(FirstIOUFound::MapKeyQuest, [=](ValueMap args)
 	{
-		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
+		this->complete();
 
 		this->runNotification();
 	});
 }
 
-void FirstIOUFound::enable(bool isSkippable)
+void FirstIOUFound::onComplete()
 {
 }
-
-void FirstIOUFound::disable()
-{
-}
-*/
 
 void FirstIOUFound::runNotification()
 {

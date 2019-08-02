@@ -43,48 +43,33 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+	
+	if (!this->isActive())
+	{
+		if (this->flyBot != nullptr)
+		{
+			this->flyBot->setVisible(false);
+		}
+	}
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
 {
-}
-
-void TeachHackerMode::onComplete()
-{
-}
-
-/*
-void TeachHackerMode::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
-{
-}
-
-void TeachHackerMode::onActivateRunOnce()
-{
 	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
 	{
-		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
+		this->complete();
 
 		this->runCinematicSequence();
 	});
 }
 
-void TeachHackerMode::enable(bool isSkippable)
+void TeachHackerMode::onComplete()
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
 }
-
-void TeachHackerMode::disable()
-{
-	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->setVisible(false);
-	}
-}*/
 
 void TeachHackerMode::runCinematicSequence()
 {

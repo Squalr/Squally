@@ -43,49 +43,33 @@ HelpSquallyHeal::~HelpSquallyHeal()
 
 void HelpSquallyHeal::onLoad(QuestState questState)
 {
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+
+	if (!this->isActive())
+	{
+		if (this->flyBot != nullptr)
+		{
+			this->flyBot->setVisible(false);
+		}
+	}
 }
 
 void HelpSquallyHeal::onActivate(bool isActiveThroughSkippable)
 {
-}
-
-void HelpSquallyHeal::onComplete()
-{
-}
-
-/*
-void HelpSquallyHeal::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
-{
-}
-
-void HelpSquallyHeal::onActivateRunOnce()
-{
 	this->listenForMapEvent(HelpSquallyHeal::MapKeyQuest, [=](ValueMap args)
 	{
-		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
+		this->complete();
 
 		this->runCinematicSequence();
 	});
 }
 
-void HelpSquallyHeal::enable(bool isSkippable)
+void HelpSquallyHeal::onComplete()
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
 }
-
-void HelpSquallyHeal::disable()
-{
-	this->removeAllListeners();
-
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->setVisible(false);
-	}
-}
-*/
 
 void HelpSquallyHeal::runCinematicSequence()
 {

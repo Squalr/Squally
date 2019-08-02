@@ -18,14 +18,20 @@ QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questT
 	this->questTask = questTask;
 	this->questTag = questTag;
 	this->isSkippable = skippable;
-
-	this->updateState();
+	this->hasLoaded = false;
 
 	this->addChild(this->questLine);
 }
 
 QuestTask::~QuestTask()
 {
+}
+
+void QuestTask::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	this->updateState();
 }
 
 void QuestTask::initializeListeners()
@@ -38,15 +44,14 @@ void QuestTask::initializeListeners()
 		
 		if (args != nullptr)
 		{
+			this->updateState();
 		}
 	}));
 }
 
-void QuestTask::onEnterTransitionDidFinish()
+std::string QuestTask::getQuestTaskName()
 {
-	super::onEnterTransitionDidFinish();
-
-	this->onLoad(this->questState);
+	return this->questTask;
 }
 
 void QuestTask::updateState()
@@ -55,6 +60,7 @@ void QuestTask::updateState()
 
 	bool isPreviousSkippable = false;
 	bool isPreviousComplete = false;
+	QuestState previousState = this->questState;
 	this->questState = QuestState::None;
 
 	for (auto it = quests.begin(); it != quests.end(); it++)
@@ -80,10 +86,37 @@ void QuestTask::updateState()
 		isPreviousSkippable = (*it).isSkippable;
 		isPreviousComplete = (*it).isComplete;
 	}
+
+	if (!this->hasLoaded)
+	{
+		this->onLoad(this->questState);
+	}
+
+	if (previousState == QuestState::None)
+	{
+		if (this->questState == QuestState::Active)
+		{
+			this->onActivate(false);
+		}
+		else if (this->questState == QuestState::ActiveThroughSkippable)
+		{
+			this->onActivate(true);
+		}
+	}
+}
+
+bool QuestTask::isActive()
+{
+	return this->questState == QuestState::Active || this->questState == QuestState::ActiveThroughSkippable;
 }
 
 void QuestTask::complete()
 {
+	if (this->questState != QuestState::Active && this->questState != QuestState::ActiveThroughSkippable)
+	{
+		return;
+	}
+
 	this->questState = QuestState::Complete;
 
 	this->onComplete();

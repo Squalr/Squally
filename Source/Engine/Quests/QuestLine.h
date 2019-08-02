@@ -28,10 +28,7 @@ public:
 	QuestTask* deserialize(GameObject* owner, std::string questTask, std::string questTag);
 	const std::vector<QuestData> getQuests();
 	std::string getQuestLine();
-	std::string getActiveQuestTaskName();
-	bool isQuestTaskComplete(std::string questTaskName);
 	void advanceNextQuest(QuestTask* currentQuest);
-	void markQuestLineComplete();
 	LocalizedString* getQuestLineName();
 	LocalizedString* getQuestLineObjective(std::string questTask);
 

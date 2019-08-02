@@ -43,48 +43,33 @@ SpotOrcGrunt::~SpotOrcGrunt()
 
 void SpotOrcGrunt::onLoad(QuestState questState)
 {
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->animationNode->setFlippedX(true);
+	}
+
+	if (!this->isActive())
+	{
+		if (this->flyBot != nullptr)
+		{
+			this->flyBot->setVisible(false);
+		}
+	}
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
 {
-}
-
-void SpotOrcGrunt::onComplete()
-{
-}
-
-/*
-void SpotOrcGrunt::onStateChange(QuestTask::QuestState questState, QuestTask::QuestState questStatePrevious)
-{
-}
-
-void SpotOrcGrunt::onActivateRunOnce()
-{
 	this->listenForMapEvent(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
 	{
-		QuestEvents::TriggerAdvanceToNextQuestTask(QuestEvents::AdvanceNextQuestArgs(this));
+		this->complete();
 
 		this->runCinematicSequence();
 	});
 }
 
-void SpotOrcGrunt::enable(bool isSkippable)
+void SpotOrcGrunt::onComplete()
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
 }
-
-void SpotOrcGrunt::disable()
-{
-	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->setVisible(false);
-	}
-}*/
 
 void SpotOrcGrunt::runCinematicSequence()
 {
