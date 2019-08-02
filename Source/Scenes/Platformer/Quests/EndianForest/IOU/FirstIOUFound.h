@@ -24,6 +24,7 @@ protected:
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
 	void onComplete() override;
+	void onSkipped() override;
 
 private:
 	typedef QuestTask super;

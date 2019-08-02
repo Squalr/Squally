@@ -72,6 +72,16 @@ void MeetFlyBot::onComplete()
 {
 }
 
+void MeetFlyBot::onSkipped()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
+}
+
 void MeetFlyBot::runCinematicSequence()
 {
 	if (this->hasRunEvent)

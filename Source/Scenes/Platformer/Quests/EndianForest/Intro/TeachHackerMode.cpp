@@ -71,6 +71,16 @@ void TeachHackerMode::onComplete()
 {
 }
 
+void TeachHackerMode::onSkipped()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
+}
+
 void TeachHackerMode::runCinematicSequence()
 {
 	if (this->hasRunEvent)

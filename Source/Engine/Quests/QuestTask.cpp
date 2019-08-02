@@ -19,6 +19,7 @@ QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questT
 	this->questTag = questTag;
 	this->isSkippable = skippable;
 	this->hasLoaded = false;
+	this->completeCalled = false;
 
 	this->addChild(this->questLine);
 }
@@ -42,7 +43,7 @@ void QuestTask::initializeListeners()
 	{
 		QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getUserData());
 		
-		if (args != nullptr)
+		if (args != nullptr && this->questLine != nullptr && args->questLine == this->questLine->getQuestLine())
 		{
 			this->updateState();
 		}
@@ -56,8 +57,8 @@ std::string QuestTask::getQuestTaskName()
 
 void QuestTask::updateState()
 {
-	const std::vector<QuestLine::QuestData> quests = this->questLine->getQuests();
-
+	const std::vector<QuestLine::QuestMeta> quests = this->questLine->getQuests();
+	
 	bool isPreviousSkippable = false;
 	bool isPreviousComplete = false;
 	QuestState previousState = this->questState;
@@ -89,6 +90,7 @@ void QuestTask::updateState()
 
 	if (!this->hasLoaded)
 	{
+		this->hasLoaded = true;
 		this->onLoad(this->questState);
 	}
 
@@ -103,6 +105,12 @@ void QuestTask::updateState()
 			this->onActivate(true);
 		}
 	}
+
+	// Check if this quest was skipped
+	if (!this->completeCalled && previousState == QuestState::ActiveThroughSkippable && (this->questState == QuestState::None || this->questState == QuestState::Complete))
+	{
+		this->onSkipped();
+	}
 }
 
 bool QuestTask::isActive()
@@ -112,11 +120,12 @@ bool QuestTask::isActive()
 
 void QuestTask::complete()
 {
-	if (this->questState != QuestState::Active && this->questState != QuestState::ActiveThroughSkippable)
+	if (this->completeCalled || (this->questState != QuestState::Active && this->questState != QuestState::ActiveThroughSkippable))
 	{
 		return;
 	}
 
+	this->completeCalled = true;
 	this->questState = QuestState::Complete;
 
 	this->onComplete();

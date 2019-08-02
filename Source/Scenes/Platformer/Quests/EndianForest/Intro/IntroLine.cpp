@@ -9,13 +9,6 @@
 using namespace cocos2d;
 
 const std::string IntroLine::MapKeyQuestLine = "intro";
-const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> IntroLine::Quests =
-{
-	{ MeetFlyBot::MapKeyQuest, { true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return MeetFlyBot::create(owner, questLine, questTag); }}},
-	{ HelpSquallyHeal::MapKeyQuest, { true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return HelpSquallyHeal::create(owner, questLine, questTag); }}},
-	{ TeachHackerMode::MapKeyQuest, { true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TeachHackerMode::create(owner, questLine, questTag); }}},
-	{ SpotOrcGrunt::MapKeyQuest, { true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return SpotOrcGrunt::create(owner, questLine, questTag); }}},
-};
 
 IntroLine* IntroLine::create()
 {
@@ -26,7 +19,12 @@ IntroLine* IntroLine::create()
 	return instance;
 }
 
-IntroLine::IntroLine() : super(IntroLine::MapKeyQuestLine, IntroLine::Quests)
+IntroLine::IntroLine() : super(IntroLine::MapKeyQuestLine, {
+	QuestData(MeetFlyBot::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return MeetFlyBot::create(owner, questLine, questTag); }),
+	QuestData(HelpSquallyHeal::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return HelpSquallyHeal::create(owner, questLine, questTag); }),
+	QuestData(TeachHackerMode::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TeachHackerMode::create(owner, questLine, questTag); }),
+	QuestData(SpotOrcGrunt::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return SpotOrcGrunt::create(owner, questLine, questTag); }),
+})
 {
 }
 

@@ -18,29 +18,39 @@ public:
 	struct QuestData
 	{
 		std::string questTask;
+		bool isSkippable;
+		std::function<QuestTask*(GameObject*, QuestLine*, std::string)> deserializer;
+
+		QuestData(std::string questTask, bool isSkippable, std::function<QuestTask*(GameObject*, QuestLine*, std::string)> deserializer)
+			: questTask(questTask), isSkippable(isSkippable), deserializer(deserializer) { }
+	};
+
+	struct QuestMeta
+	{
+		std::string questTask;
 		bool isActive;
 		bool isSkippable;
 		bool isComplete;
 
-		QuestData(std::string questTask, bool isActive, bool isSkippable, bool isComplete) : questTask(questTask), isActive(isActive), isSkippable(isSkippable), isComplete(isComplete) { }
+		QuestMeta(std::string questTask, bool isActive, bool isSkippable, bool isComplete) : questTask(questTask), isActive(isActive), isSkippable(isSkippable), isComplete(isComplete) { }
 	};
 
 	QuestTask* deserialize(GameObject* owner, std::string questTask, std::string questTag);
-	const std::vector<QuestData> getQuests();
+	const std::vector<QuestMeta> getQuests();
 	std::string getQuestLine();
 	void advanceNextQuest(QuestTask* currentQuest);
 	LocalizedString* getQuestLineName();
 	LocalizedString* getQuestLineObjective(std::string questTask);
 
 protected:
-	QuestLine(std::string questLine, const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> quests);
+	QuestLine(std::string questLine, const std::vector<QuestData> quests);
 	~QuestLine();
 
 private:
 	typedef SmartNode super;
 
 	std::string questLine;
-	std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> quests;
+	std::vector<QuestData> quests;
 
 	static const std::string QuestLineSaveKeyComplete;
 };

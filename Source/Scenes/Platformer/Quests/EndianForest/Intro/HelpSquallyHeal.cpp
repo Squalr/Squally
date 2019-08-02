@@ -71,6 +71,16 @@ void HelpSquallyHeal::onComplete()
 {
 }
 
+void HelpSquallyHeal::onSkipped()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
+}
+
 void HelpSquallyHeal::runCinematicSequence()
 {
 	if (this->hasRunEvent)

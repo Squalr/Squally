@@ -64,6 +64,10 @@ void FirstIOUFound::onComplete()
 {
 }
 
+void FirstIOUFound::onSkipped()
+{
+}
+
 void FirstIOUFound::runNotification()
 {
 	PlatformerEvents::TriggerNotificationTakeover(PlatformerEvents::NotificationTakeoverArgs(Strings::Cutscenes_IOU_FoundIOU::create(), Strings::Cutscenes_IOU_IOUDescription::create()));

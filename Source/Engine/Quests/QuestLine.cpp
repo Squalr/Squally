@@ -14,7 +14,7 @@ using namespace cocos2d;
 
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE_";
 
-QuestLine::QuestLine(std::string questLine, const std::map<std::string, std::tuple<bool, std::function<QuestTask*(GameObject*, QuestLine*, std::string)>>> quests)
+QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests)
 {
 	this->questLine = questLine;
 	this->quests = quests;
@@ -26,24 +26,27 @@ QuestLine::~QuestLine()
 
 QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
 {
-	if (this->quests.find(questTask) != this->quests.end())
+	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
 	{
-		return std::get<1>(this->quests.at(questTask))(owner, this, questTag);
+		if ((*it).questTask == questTask)
+		{
+			return (*it).deserializer(owner, this, questTag);
+		}
 	}
-
+	
 	return nullptr;
 }
 
-const std::vector<QuestLine::QuestData> QuestLine::getQuests()
+const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 {
-	std::vector<QuestData> questData = std::vector<QuestData>();
+	std::vector<QuestMeta> questData = std::vector<QuestMeta>();
 	std::string currentQuestTask = Quests::getCurrentQuestTaskForLine(this->questLine);
 	bool hasEncounteredActive = false;
 	bool activeThroughSkippable = false;
 
 	if (currentQuestTask.empty() && !this->quests.empty())
 	{
-		currentQuestTask = this->quests.begin()->first;
+		currentQuestTask = this->quests.front().questTask;
 	}
 	else if (StrUtils::startsWith(currentQuestTask, QuestLine::QuestLineSaveKeyComplete, false) && !this->quests.empty())
 	{
@@ -51,16 +54,16 @@ const std::vector<QuestLine::QuestData> QuestLine::getQuests()
 		std::string lastKnownCompletedQuest = StrUtils::ltrim(currentQuestTask, QuestLine::QuestLineSaveKeyComplete, false);
 
 		// If the last known completed quest doesn't match the end of the chain, a new quest was added
-		if (lastKnownCompletedQuest != this->quests.end()->first)
+		if (lastKnownCompletedQuest != this->quests.back().questTask)
 		{
 			for (auto it = this->quests.begin(); it != this->quests.end(); it++)
 			{
-				if ((*it).first == lastKnownCompletedQuest)
+				if ((*it).questTask == lastKnownCompletedQuest)
 				{
 					if (++it != this->quests.end())
 					{
 						// Set the current quest to the newly added next quest in the chain
-						currentQuestTask = (*it).first;
+						currentQuestTask = (*it).questTask;
 					}
 
 					break;
@@ -71,17 +74,13 @@ const std::vector<QuestLine::QuestData> QuestLine::getQuests()
 
 	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
 	{
-		bool isActive = activeThroughSkippable || (*it).first == currentQuestTask;
-		bool isComplete = !isActive && hasEncounteredActive;
-		bool isSkippable = std::get<0>((*it).second);
+		bool isActive = activeThroughSkippable || (*it).questTask == currentQuestTask;
+		bool isComplete = !isActive && !hasEncounteredActive;
+		bool isSkippable = (*it).isSkippable;
 
-		questData.push_back(QuestData((*it).first, isActive, isSkippable, isComplete));
+		questData.push_back(QuestMeta((*it).questTask, isActive, isSkippable, isComplete));
 
-		if (activeThroughSkippable || isActive)
-		{
-			activeThroughSkippable &= isSkippable;
-		}
-
+		activeThroughSkippable = (activeThroughSkippable || isActive) && isSkippable;
 		hasEncounteredActive |= isActive;
 	}
 
@@ -109,10 +108,8 @@ void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 	{
 		return;
 	}
-	
-	QuestEvents::TriggerQuestTaskComplete(QuestEvents::QuestTaskCompleteArgs(this->questLine, currentQuest));
 
-	std::vector<QuestLine::QuestData> quests = this->getQuests();
+	std::vector<QuestLine::QuestMeta> quests = this->getQuests();
 
 	for (auto it = quests.begin(); it != quests.end(); it++)
 	{
@@ -134,4 +131,6 @@ void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 			break;
 		}
 	}
+	
+	QuestEvents::TriggerQuestTaskComplete(QuestEvents::QuestTaskCompleteArgs(this->questLine, currentQuest));
 }

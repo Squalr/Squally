@@ -71,6 +71,16 @@ void SpotOrcGrunt::onComplete()
 {
 }
 
+void SpotOrcGrunt::onSkipped()
+{
+	this->removeAllListeners();
+	
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->setVisible(false);
+	}
+}
+
 void SpotOrcGrunt::runCinematicSequence()
 {
 	if (this->hasRunEvent)

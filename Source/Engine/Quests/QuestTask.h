@@ -14,7 +14,7 @@ public:
 		ActiveThroughSkippable,
 		Complete,
 	};
-	
+
 	std::string getQuestTaskName();
 
 protected:
@@ -27,6 +27,7 @@ protected:
 	virtual void onLoad(QuestState questState) = 0;
 	virtual void onActivate(bool isActiveThroughSkippable) = 0;
 	virtual void onComplete() = 0;
+	virtual void onSkipped() = 0;
 	bool isActive();
 	void complete();
 
@@ -42,5 +43,6 @@ private:
 	QuestState questState;
 	bool isSkippable;
 	bool hasLoaded;
+	bool completeCalled;
 };
 
