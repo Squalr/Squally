@@ -20,7 +20,7 @@ SantaHat* SantaHat::create()
 	return instance;
 }
 
-SantaHat::SantaHat() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 4)
+SantaHat::SantaHat() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4)
 {
 }
 

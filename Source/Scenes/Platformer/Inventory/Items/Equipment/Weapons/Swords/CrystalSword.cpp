@@ -20,7 +20,7 @@ CrystalSword* CrystalSword::create()
 	return instance;
 }
 
-CrystalSword::CrystalSword() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 3, 6)
+CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
 {
 }
 

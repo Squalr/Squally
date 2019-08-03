@@ -20,7 +20,7 @@ BlueAxe* BlueAxe::create()
 	return instance;
 }
 
-BlueAxe::BlueAxe() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 4, 7)
+BlueAxe::BlueAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
 {
 }
 

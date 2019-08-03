@@ -21,7 +21,7 @@ ManaPotion* ManaPotion::create()
 	return instance;
 }
 
-ManaPotion::ManaPotion() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }))
+ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}))
 {
 }
 

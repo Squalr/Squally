@@ -20,7 +20,7 @@ CrystalMace* CrystalMace::create()
 	return instance;
 }
 
-CrystalMace::CrystalMace() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 3, 6)
+CrystalMace::CrystalMace() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
 {
 }
 

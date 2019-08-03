@@ -20,7 +20,7 @@ CandySword* CandySword::create()
 	return instance;
 }
 
-CandySword::CandySword() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 4, 7)
+CandySword::CandySword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
 {
 }
 

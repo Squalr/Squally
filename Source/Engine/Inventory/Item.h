@@ -22,6 +22,7 @@ public:
 	virtual cocos2d::ValueMap serialize();
 	int getCount();
 	int getStackSize();
+	CurrencyInventory* getCost();
 
 	static const int MaxStack;
 

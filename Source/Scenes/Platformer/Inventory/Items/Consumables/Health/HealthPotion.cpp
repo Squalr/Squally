@@ -21,7 +21,7 @@ HealthPotion* HealthPotion::create()
 	return instance;
 }
 
-HealthPotion::HealthPotion() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }))
+HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}))
 {
 }
 

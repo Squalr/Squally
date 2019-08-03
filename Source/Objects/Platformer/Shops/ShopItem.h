@@ -2,7 +2,14 @@
 
 #include "Engine/Maps/GameObject.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class ClickableNode;
+class ConstantString;
+class LocalizedLabel;
 class ItemPreview;
 class Item;
 
@@ -29,4 +36,7 @@ private:
 	cocos2d::Node* itemNode;
 	ClickableNode* itemClickHitbox;
 	std::string poolName;
+	cocos2d::Sprite* currencySprite;
+	LocalizedLabel* itemCost;
+	ConstantString* itemCostString;
 };

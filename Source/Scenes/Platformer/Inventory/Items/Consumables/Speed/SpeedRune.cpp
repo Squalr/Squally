@@ -21,7 +21,7 @@ SpeedRune* SpeedRune::create()
 	return instance;
 }
 
-SpeedRune::SpeedRune() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }))
+SpeedRune::SpeedRune() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}))
 {
 }
 
