@@ -1,5 +1,8 @@
 #include "CrystalSword.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Equipment/Weapons/Swords/CrystalSword.h"
@@ -17,7 +20,7 @@ CrystalSword* CrystalSword::create()
 	return instance;
 }
 
-CrystalSword::CrystalSword() : super(3, 6)
+CrystalSword::CrystalSword() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 3, 6)
 {
 }
 

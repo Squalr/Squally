@@ -29,9 +29,6 @@ ShopPoolToben::ShopPoolToben(ValueMap& initProperties) : super(initProperties, S
 	this->addItemToPool(HealthPotion::create(), 1.0f);
 	this->addItemToPool(ManaPotion::create(), 1.0f);
 	this->addItemToPool(SpeedRune::create(), 1.0f);
-	this->addItemToPool(BlueAxe::create(), 1.0f);
-	this->addItemToPool(CandySword::create(), 1.0f);
-	this->addItemToPool(CrystalSword::create(), 1.0f);
 }
 
 ShopPoolToben::~ShopPoolToben()

@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-Consumable::Consumable() : super()
+Consumable::Consumable(CurrencyInventory* cost) : super(cost)
 {
 }
 

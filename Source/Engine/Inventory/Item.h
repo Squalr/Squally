@@ -8,6 +8,7 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
+class CurrencyInventory;
 class LocalizedString;
 
 class Item : public SmartNode
@@ -25,7 +26,7 @@ public:
 	static const int MaxStack;
 
 protected:
-	Item(int stackSize = 1);
+	Item(CurrencyInventory* cost, int stackSize = 1);
 	virtual ~Item();
 	void onEnter() override;
 	void initializeListeners() override;
@@ -35,4 +36,5 @@ private:
 
 	int count;
 	int stackSize;
+	CurrencyInventory* cost;
 };

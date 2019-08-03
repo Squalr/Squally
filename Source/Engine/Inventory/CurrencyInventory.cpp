@@ -11,18 +11,28 @@ using namespace cocos2d;
 
 CurrencyInventory* CurrencyInventory::create(std::string saveKey)
 {
-	CurrencyInventory* instance = new CurrencyInventory(saveKey);
+	return CurrencyInventory::create({ }, saveKey);
+}
+
+CurrencyInventory* CurrencyInventory::create(std::map<std::string, int> currency, std::string saveKey)
+{
+	CurrencyInventory* instance = new CurrencyInventory(currency, saveKey);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CurrencyInventory::CurrencyInventory(std::string saveKey)
+CurrencyInventory::CurrencyInventory(std::map<std::string, int> currency, std::string saveKey)
 {
 	this->saveKey = saveKey;
 	this->currencyMap = ValueMap();
 	this->load();
+
+	for (auto it = currency.begin(); it != currency.end(); it++)
+	{
+		this->currencyMap[(*it).first] = Value((*it).second);
+	}
 }
 
 CurrencyInventory::~CurrencyInventory()

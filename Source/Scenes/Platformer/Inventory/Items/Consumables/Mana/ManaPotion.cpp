@@ -1,5 +1,7 @@
 #include "ManaPotion.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowHealthPotion.h"
 
 #include "Resources/ObjectResources.h"
@@ -19,7 +21,7 @@ ManaPotion* ManaPotion::create()
 	return instance;
 }
 
-ManaPotion::ManaPotion() : Consumable()
+ManaPotion::ManaPotion() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }))
 {
 }
 

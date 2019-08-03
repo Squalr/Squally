@@ -1,5 +1,8 @@
 #include "CrystalMace.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Equipment/Weapons/Maces/CrystalMace.h"
@@ -17,7 +20,7 @@ CrystalMace* CrystalMace::create()
 	return instance;
 }
 
-CrystalMace::CrystalMace() : super(3, 6)
+CrystalMace::CrystalMace() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 3, 6)
 {
 }
 

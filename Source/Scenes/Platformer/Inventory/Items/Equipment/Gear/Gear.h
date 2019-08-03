@@ -10,7 +10,7 @@ public:
 	int getDefense();
 
 protected:
-	Gear(int defense);
+	Gear(CurrencyInventory* cost, int defense);
 	virtual ~Gear();
 
 private:

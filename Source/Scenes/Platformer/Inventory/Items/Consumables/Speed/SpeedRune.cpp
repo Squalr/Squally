@@ -1,5 +1,7 @@
 #include "SpeedRune.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Speed/ThrowSpeedRune.h"
 
 #include "Resources/ObjectResources.h"
@@ -19,7 +21,7 @@ SpeedRune* SpeedRune::create()
 	return instance;
 }
 
-SpeedRune::SpeedRune() : Consumable()
+SpeedRune::SpeedRune() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }))
 {
 }
 

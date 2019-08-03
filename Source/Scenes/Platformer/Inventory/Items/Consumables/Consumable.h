@@ -19,7 +19,7 @@ public:
 	virtual ConsumableType getConsumableType() = 0;
 
 protected:
-	Consumable();
+	Consumable(CurrencyInventory* cost);
 	virtual ~Consumable();
 
 private:

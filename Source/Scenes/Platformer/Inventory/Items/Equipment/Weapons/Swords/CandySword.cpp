@@ -1,5 +1,8 @@
 #include "CandySword.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Equipment/Weapons/Swords/CandySword.h"
@@ -17,7 +20,7 @@ CandySword* CandySword::create()
 	return instance;
 }
 
-CandySword::CandySword() : super(4, 7)
+CandySword::CandySword() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 4, 7)
 {
 }
 

@@ -8,10 +8,11 @@ using namespace cocos2d;
 
 const int Item::MaxStack = -1;
 
-Item::Item(int stackSize)
+Item::Item(CurrencyInventory* cost, int stackSize)
 {
 	this->count = 1;
 	this->stackSize = stackSize;
+	this->cost = cost;
 }
 
 Item::~Item()

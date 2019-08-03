@@ -1,5 +1,8 @@
 #include "WoodenShield.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Equipment/Offhands/Shields/WoodenShield.h"
@@ -17,7 +20,7 @@ WoodenShield* WoodenShield::create()
 	return instance;
 }
 
-WoodenShield::WoodenShield() : super(3, 6)
+WoodenShield::WoodenShield() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 3, 6)
 {
 }
 

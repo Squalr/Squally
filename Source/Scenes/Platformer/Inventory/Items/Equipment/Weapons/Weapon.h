@@ -15,7 +15,7 @@ public:
 	virtual cocos2d::Vec2 getWeaponOffset();
 
 protected:
-	Weapon(int minAttack, int maxAttack);
+	Weapon(CurrencyInventory* cost, int minAttack, int maxAttack);
 	virtual ~Weapon();
 
 private:

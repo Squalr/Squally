@@ -10,7 +10,7 @@ public:
 	virtual cocos2d::Vec2 getDisplayOffset();
 
 protected:
-	Equipable();
+	Equipable(CurrencyInventory* cost);
 	virtual ~Equipable();
 
 private:

@@ -9,7 +9,7 @@ class Hat : public Gear
 public:
 
 protected:
-	Hat(int defense);
+	Hat(CurrencyInventory* cost, int defense);
 	virtual ~Hat();
 
 private:

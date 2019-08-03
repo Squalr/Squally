@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Hat::Hat(int defense) : super(defense)
+Hat::Hat(CurrencyInventory* cost, int defense) : super(cost, defense)
 {
 }
 

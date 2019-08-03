@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Gear::Gear(int defense) : super()
+Gear::Gear(CurrencyInventory* cost, int defense) : super(cost)
 {
 	this->defense = defense;
 }

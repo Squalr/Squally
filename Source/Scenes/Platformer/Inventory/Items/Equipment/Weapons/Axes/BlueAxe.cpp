@@ -1,5 +1,8 @@
 #include "BlueAxe.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Equipment/Weapons/Axes/BlueAxe.h"
@@ -17,7 +20,7 @@ BlueAxe* BlueAxe::create()
 	return instance;
 }
 
-BlueAxe::BlueAxe() : super(4, 7)
+BlueAxe::BlueAxe() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 4, 7)
 {
 }
 

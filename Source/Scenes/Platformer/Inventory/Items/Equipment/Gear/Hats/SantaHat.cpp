@@ -1,5 +1,8 @@
 #include "SantaHat.h"
 
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
 #include "Resources/ObjectResources.h"
 
 #include "Strings/Items/Equipment/Gear/Hats/SantaHat.h"
@@ -17,7 +20,7 @@ SantaHat* SantaHat::create()
 	return instance;
 }
 
-SantaHat::SantaHat() : super(4)
+SantaHat::SantaHat() : super(CurrencyInventory::create({ IOU::getIdentifier(), 2 }), 4)
 {
 }
 

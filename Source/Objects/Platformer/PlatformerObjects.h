@@ -28,6 +28,7 @@
 #include "Objects/Platformer/Physics/Wind/Wind.h"
 #include "Objects/Platformer/Physics/WoodenCrate/WoodenCrate.h"
 #include "Objects/Platformer/Shops/ShopItem.h"
+#include "Objects/Platformer/Shops/ShopPoolMinos.h"
 #include "Objects/Platformer/Shops/ShopPoolToben.h"
 #include "Objects/Platformer/Spawns/CombatSpawn.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"
