@@ -139,7 +139,7 @@ void CipherStateVictory::giveRewards(CipherState* cipherState)
 
 	for (auto it = rewards.begin(); it != rewards.end(); it++)
 	{
-		PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(*it, [&](Item* item)
+		PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(*it, [&](Item* item)
 		{
 			items.push_back(item);
 		}));
@@ -149,7 +149,7 @@ void CipherStateVictory::giveRewards(CipherState* cipherState)
 	{
 		for (auto it = bonusRewards.begin(); it != bonusRewards.end(); it++)
 		{
-			PlatformerItemDeserializer::onDeserializationRequest(InventoryEvents::RequestItemDeserializationArgs(*it, [&](Item* item)
+			PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(*it, [&](Item* item)
 			{
 				items.push_back(item);
 			}));

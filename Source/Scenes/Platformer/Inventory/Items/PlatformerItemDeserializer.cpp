@@ -12,17 +12,47 @@ using namespace cocos2d;
 
 PlatformerItemDeserializer* PlatformerItemDeserializer::instance = nullptr;
 
-void PlatformerItemDeserializer::registerGlobalNode()
+PlatformerItemDeserializer* PlatformerItemDeserializer::getInstance()
 {
 	if (PlatformerItemDeserializer::instance == nullptr)
 	{
 		PlatformerItemDeserializer::instance = new PlatformerItemDeserializer();
 
 		instance->autorelease();
-
-		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(PlatformerItemDeserializer::instance);
 	}
+
+	return PlatformerItemDeserializer::instance;
+}
+
+void PlatformerItemDeserializer::registerGlobalNode()
+{
+	// Register this class globally so that it can always listen for events
+	GlobalDirector::getInstance()->registerGlobalNode(PlatformerItemDeserializer::getInstance());
+}
+
+PlatformerItemDeserializer::PlatformerItemDeserializer()
+{
+	this->deserializers = std::map<std::string, std::function<Item*()>>();
+
+	// Consumables
+	this->deserializers[HealthPotion::SaveKeyHealthPotion] = [=]() { return (Item*)HealthPotion::create(); };
+	this->deserializers[ManaPotion::SaveKeyManaPotion] = [=]() { return (Item*)ManaPotion::create(); };
+	this->deserializers[SpeedRune::SaveKeySpeedRune] = [=]() { return (Item*)SpeedRune::create(); };
+
+	// Weapons
+	this->deserializers[BlueAxe::SaveKeyBlueAxe] = [=]() { return (Item*)BlueAxe::create(); };
+	this->deserializers[CandySword::SaveKeyCandySword] = [=]() { return (Item*)CandySword::create(); };
+	this->deserializers[CrystalSword::SaveKeyCrystalSword] = [=]() { return (Item*)CrystalSword::create(); };
+
+	// Hats
+	this->deserializers[SantaHat::SaveKeySantaHat] = [=]() { return (Item*)SantaHat::create(); };
+
+	// Offhands
+	this->deserializers[WoodenShield::SaveKeyWoodenShield] = [=]() { return (Item*)WoodenShield::create(); };
+}
+
+PlatformerItemDeserializer::~PlatformerItemDeserializer()
+{
 }
 
 void PlatformerItemDeserializer::initializeListeners()
@@ -31,47 +61,30 @@ void PlatformerItemDeserializer::initializeListeners()
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
 		InventoryEvents::EventRequestItemDeserialization,
-		[=](EventCustom* args) {
-			InventoryEvents::RequestItemDeserializationArgs* data_ptr = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(args->getUserData()); 
-			PlatformerItemDeserializer::onDeserializationRequest(*data_ptr); 
+		[=](EventCustom* eventCustom)
+		{
+			InventoryEvents::RequestItemDeserializationArgs* args = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				PlatformerItemDeserializer::deserialize(*args); 
+			}
 		}
 	);
 
 	this->addGlobalEventListener(deserializationRequestListener);
 }
 
-void PlatformerItemDeserializer::onDeserializationRequest(const InventoryEvents::RequestItemDeserializationArgs& args)
+void PlatformerItemDeserializer::deserialize(InventoryEvents::RequestItemDeserializationArgs args)
 {
-	Item* result = nullptr;
 	std::string serializationKey = args.itemSerializationKey;
 
-	if (serializationKey == HealthPotion::SaveKeyHealthPotion)
+	if (args.onItemDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
-		result = HealthPotion::create();
+		args.onItemDeserializedCallback(this->deserializers[serializationKey]());
 	}
-	else if (serializationKey == ManaPotion::SaveKeyManaPotion)
+	else
 	{
-		result = ManaPotion::create();
-	}
-	else if (serializationKey == SpeedRune::SaveKeySpeedRune)
-	{
-		result = SpeedRune::create();
-	}
-	else if (serializationKey == BlueAxe::SaveKeyBlueAxe)
-	{
-		result = BlueAxe::create();
-	}
-	else if (serializationKey == CrystalSword::SaveKeyCrystalSword)
-	{
-		result = CrystalSword::create();
-	}
-	else if (serializationKey == CandySword::SaveKeyCandySword)
-	{
-		result = CandySword::create();
-	}
-
-	if (result != nullptr && args.onItemDeserializedCallback != nullptr)
-	{
-		args.onItemDeserializedCallback(result);
+		CCLOG("Unknown item encountered: %s", serializationKey.c_str());
 	}
 }
