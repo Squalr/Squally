@@ -33,6 +33,8 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->items = std::vector<Item*>();
 	this->itemsNode = Node::create();
 
+	this->load();
+
 	this->addChild(this->itemsNode);
 }
 
@@ -87,7 +89,7 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	{
 		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
 		{
-			this->forceInsert(item);
+			this->forceInsert(item, false);
 		}));
 	}
 }
@@ -126,7 +128,7 @@ int Inventory::getCapacity()
 	return this->capacity;
 }
 
-void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::function<void(Item*)> onRemoveFailed)
+void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::function<void(Item*)> onRemoveFailed, bool doSave)
 {
 	if (item == nullptr)
 	{
@@ -149,12 +151,16 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 
 	this->removeChild(item);
 	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
-	this->save();
+
+	if (doSave)
+	{
+		this->save();
+	}
 
 	onRemove(returnItem);
 }
 
-void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed)
+void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
 {
 	if (this->capacity == Inventory::InfiniteCapacity || this->items.size() < this->capacity)
 	{
@@ -163,7 +169,11 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 		if (onInsert != nullptr)
 		{
-			this->save();
+			if (doSave)
+			{
+				this->save();
+			}
+
 			onInsert(item);
 		}
 	}
@@ -176,17 +186,21 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 	}
 }
 
-void Inventory::forceInsert(Item* item)
+void Inventory::forceInsert(Item* item, bool doSave)
 {
 	if (item != nullptr)
 	{
 		this->itemsNode->addChild(item);
 		this->items.push_back(item);
-		this->save();
+
+		if (doSave)
+		{
+			this->save();
+		}
 	}
 }
 
-void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::function<void(Item*, Item*)> onTransact, std::function<void(Item*, Item*)> onTransactFailed)
+void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::function<void(Item*, Item*)> onTransact, std::function<void(Item*, Item*)> onTransactFailed, bool doSave)
 {
 	auto failTransaction = [=]()
 	{
@@ -229,12 +243,12 @@ void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::
 	{
 		this->tryRemove(item, [=](Item* removedItem)
 		{
-			other->forceInsert(removedItem);
-			this->forceInsert(otherRemovedItem);
+			other->forceInsert(removedItem, false);
+			this->forceInsert(otherRemovedItem, false);
 
 			// Move the transacted items to the correct place (best effort, but it should work)
-			other->moveItem(removedItem, otherItemIndex);
-			this->moveItem(otherRemovedItem, itemIndex);
+			other->moveItem(removedItem, otherItemIndex, nullptr, nullptr, doSave);
+			this->moveItem(otherRemovedItem, itemIndex, nullptr, nullptr, doSave);
 
 			// Callback success
 			onTransact(removedItem, otherRemovedItem);
@@ -263,7 +277,7 @@ void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::
 	});
 }
 
-void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove, std::function<void(Item*)> onMoveFailed)
+void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove, std::function<void(Item*)> onMoveFailed, bool doSave)
 {
 	// Check if items exists
 	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end())
@@ -283,5 +297,8 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 	destinationIndex = MathUtils::clamp(destinationIndex, 0, this->items.size());
 	this->items.insert(this->items.begin() + destinationIndex, item);
 
-	this->save();
+	if (doSave)
+	{
+		this->save();
+	}
 }

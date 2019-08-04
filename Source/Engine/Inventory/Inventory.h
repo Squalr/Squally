@@ -34,11 +34,11 @@ public:
 	};
 
 	int getCapacity();
-	void tryRemove(Item* item, std::function<void(Item*)> onRemove = nullptr, std::function<void(Item*)> onRemoveFailed = nullptr);
-	void tryInsert(Item* item, std::function<void(Item*)> onInsert = nullptr, std::function<void(Item*)> onInsertFailed = nullptr);
-	void forceInsert(Item* item);
-	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr);
-	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr);
+	void tryRemove(Item* item, std::function<void(Item*)> onRemove = nullptr, std::function<void(Item*)> onRemoveFailed = nullptr, bool doSave = true);
+	void tryInsert(Item* item, std::function<void(Item*)> onInsert = nullptr, std::function<void(Item*)> onInsertFailed = nullptr, bool doSave = true);
+	void forceInsert(Item* item, bool doSave = true);
+	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr, bool doSave = true);
+	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr, bool doSave = true);
 
 protected:
 	Inventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);

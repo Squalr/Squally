@@ -66,7 +66,11 @@ void ItemPreview::initializePositions()
 void ItemPreview::preview(Item* item)
 {
 	this->clearPreview();
-	this->previewNode->addChild(Sprite::create(item->getIconResource()));
+
+	if (item != nullptr)
+	{
+		this->previewNode->addChild(Sprite::create(item->getIconResource()));
+	}
 
 	if (this->allowEquipHint && dynamic_cast<Equipable*>(item) != nullptr)
 	{

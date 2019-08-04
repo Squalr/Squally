@@ -31,12 +31,17 @@ protected:
 private:
 	typedef GameObject super;
 
+	void sellItem();
+
 	ItemPreview* itemPreview;
 	Item* item;
 	cocos2d::Node* itemNode;
 	ClickableNode* itemClickHitbox;
 	std::string poolName;
 	cocos2d::Sprite* currencySprite;
-	LocalizedLabel* itemCost;
+	LocalizedLabel* itemCostLabel;
 	ConstantString* itemCostString;
+
+	int itemCost;
+	bool available;
 };

@@ -159,8 +159,6 @@ void InventoryMenu::onEnter()
 	this->unfocusInventory();
 	this->setActiveFilter(ActiveFilter::All);
 	this->selectedItemIndex = 0;
-
-	this->buildInventoryList();
 }
 
 void InventoryMenu::initializePositions()
@@ -297,6 +295,11 @@ void InventoryMenu::initializeListeners()
 			}
 		}
 	});
+}
+
+void InventoryMenu::open()
+{
+	this->buildInventoryList();
 }
 
 void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCallback)

@@ -257,6 +257,7 @@ void CombatMap::initializeListeners()
 	{
 		this->ingameMenu->setVisible(false);
 		this->inventoryMenu->setVisible(true);
+		this->inventoryMenu->open();
 		GameUtils::focus(this->inventoryMenu);
 	});
 

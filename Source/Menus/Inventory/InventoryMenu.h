@@ -28,6 +28,7 @@ class InventoryMenu : public SmartNode
 public:
 	static InventoryMenu* create();
 
+	void open();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 	static const float LabelSpacing;

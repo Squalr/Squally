@@ -5,6 +5,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -12,6 +13,7 @@
 #include "Events/ShopEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
 #include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -38,18 +40,20 @@ ShopItem::ShopItem(ValueMap& initProperties) : super(initProperties)
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::MapKeyPropertyShopPool, Value("")).asString();
 	this->currencySprite = Sprite::create(IOU::getIconResource());
 	this->itemCostString = ConstantString::create(std::to_string(0));
-	this->itemCost = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->itemCostString);
+	this->itemCostLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->itemCostString);
+	this->itemCost = -1;
+	this->available = true;
 
 	this->currencySprite->setScale(0.4f);
 	this->itemClickHitbox->setContentSize(Size(224.0f, 224.0f));
-	this->itemCost->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->itemCost->enableOutline(Color4B::BLACK, 2);
+	this->itemCostLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->itemCostLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->itemPreview);
 	this->addChild(this->itemNode);
 	this->addChild(this->itemClickHitbox);
 	this->addChild(this->currencySprite);
-	this->addChild(this->itemCost);
+	this->addChild(this->itemCostLabel);
 }
 
 ShopItem::~ShopItem()
@@ -73,7 +77,8 @@ void ShopItem::onEnterTransitionDidFinish()
 
 			if (cost != nullptr)
 			{
-				this->itemCostString->setString(std::to_string(cost->getCurrencyCount(IOU::getIdentifier())));
+				this->itemCost = cost->getCurrencyCount(IOU::getIdentifier());
+				this->itemCostString->setString(std::to_string(this->itemCost));
 			}
 		}
 	}));
@@ -84,10 +89,40 @@ void ShopItem::initializePositions()
 	super::initializePositions();
 
 	this->currencySprite->setPosition(Vec2(-32.0f, -132.0f));
-	this->itemCost->setPosition(Vec2(-32.0f + 24.0f, -132.0f));
+	this->itemCostLabel->setPosition(Vec2(-32.0f + 24.0f, -132.0f));
 }
 
 void ShopItem::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->itemClickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->sellItem();
+	});
+}
+
+void ShopItem::sellItem()
+{
+	CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
+	int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
+
+	if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
+	{
+		Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+
+		playerInventory->tryInsert(this->item->clone(),
+		[=](Item*)
+		{
+			this->available = false;
+			playerCurrencyInventory->removeCurrency(IOU::getIdentifier(), this->itemCost);
+			this->itemPreview->preview(nullptr);
+			this->currencySprite->setVisible(false);
+			this->itemCostLabel->setVisible(false);
+		},
+		[=](Item*)
+		{
+			// Failure!
+		});
+	}
 }
