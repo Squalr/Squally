@@ -104,6 +104,7 @@
         "__errc": "cpp",
         "optional": "cpp"
     },
+    "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",
     "cmake.generator": "Ninja",
     "cmake.configureSettings": {

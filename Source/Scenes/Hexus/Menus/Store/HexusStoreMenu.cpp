@@ -325,7 +325,7 @@ void HexusStoreMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		NavigationEvents::NavigateBack();
 	});

@@ -20,8 +20,8 @@ protected:
 	void initializeListeners() override;
 	virtual void registerHackables();
 	virtual void onTimelineReset(bool wasInterrupt);
-	virtual void onBeforeDamageTaken(int* damageOrHealing, bool* handled);
-	virtual void onBeforeDamageDelt(int* damageOrHealing, bool* handled);
+	virtual void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback);
+	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback);
 	void removeBuff();
 
 	PlatformerEntity* caster;

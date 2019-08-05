@@ -225,7 +225,7 @@ void Squally::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
-		args->handled = true;
+		args->handle();
 		
 		if (this->tryUseRune())
 		{
@@ -235,7 +235,7 @@ void Squally::initializeListeners()
 
 	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		args->handled = true;
+		args->handle();
 
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	});

@@ -87,7 +87,7 @@ void OutputBolt::initializeListeners()
 	{
 		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && !args->handled)
+		if (args != nullptr && !args->isHandled())
 		{
 			// Source bolt is input bolt
 			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
@@ -96,7 +96,7 @@ void OutputBolt::initializeListeners()
 				this->connection->setInputBolt(dynamic_cast<InputBolt*>(args->sourceBolt));
 				CipherEvents::TriggerConnectionUpdated(CipherEvents::CipherConnectionUpdatedArgs(this->connection));
 
-				args->handled = true;
+				args->handle();
 			}
 		}
 	}));

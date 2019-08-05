@@ -62,11 +62,23 @@ public:
 		BoltBase* sourceBolt;
 		Connection* connection;
 		cocos2d::Vec2 destination;
-		bool handled;
 
 		CipherConnectionCreateArgs(BoltBase* sourceBolt, Connection* connection, cocos2d::Vec2 destination) : sourceBolt(sourceBolt), connection(connection), destination(destination), handled(false)
 		{
 		}
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	struct CipherConnectionUpdatedArgs

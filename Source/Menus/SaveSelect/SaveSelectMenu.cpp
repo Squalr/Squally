@@ -111,7 +111,7 @@ void SaveSelectMenu::initializeListeners()
 		{
 			return;
 		}
-		args->handled = true;
+		args->handle();
 
 		NavigationEvents::NavigateBack();
 	});

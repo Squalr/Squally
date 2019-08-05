@@ -190,7 +190,7 @@ void HexusChapterSelectMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		NavigationEvents::NavigateBack();
 	});

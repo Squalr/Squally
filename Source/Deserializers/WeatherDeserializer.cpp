@@ -36,7 +36,7 @@ void WeatherDeserializer::deserialize(LayerDeserializer::LayerDeserializationReq
 	std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
 	ValueMap properties = args->properties;
 
-	args->handled = true;
+	args->handle();
 
 	if (!GameUtils::keyExists(properties, WeatherDeserializer::MapKeyWeather))
 	{

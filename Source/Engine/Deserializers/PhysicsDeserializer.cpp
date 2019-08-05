@@ -32,7 +32,7 @@ void PhysicsDeserializer::deserialize(LayerDeserializer::LayerDeserializationReq
 {
 	std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
 
-	args->handled = true;
+	args->handle();
 
 	ValueMap properties = args->properties;
 

@@ -55,7 +55,7 @@ void DeveloperModeController::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		if (!this->developerModeEnabled)
 		{
@@ -76,7 +76,7 @@ void DeveloperModeController::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->stopAllActions();
 	});
@@ -88,7 +88,7 @@ void DeveloperModeController::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->stopAllActions();
 		this->runAction(RepeatForever::create(Sequence::create(
@@ -110,7 +110,7 @@ void DeveloperModeController::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->stopAllActions();
 		this->runAction(RepeatForever::create(Sequence::create(
@@ -132,7 +132,7 @@ void DeveloperModeController::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->stopAllActions();
 		this->runAction(RepeatForever::create(Sequence::create(
@@ -154,7 +154,7 @@ void DeveloperModeController::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->stopAllActions();
 		this->runAction(RepeatForever::create(Sequence::create(

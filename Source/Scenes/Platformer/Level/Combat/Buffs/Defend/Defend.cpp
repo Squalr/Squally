@@ -54,9 +54,9 @@ void Defend::initializePositions()
 	}
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, bool* handled)
+void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handled);
+	super::onBeforeDamageTaken(damageOrHealing, handleCallback);
 
 	*damageOrHealing = std::round(float(*damageOrHealing) * Defend::DamageReduction);
 }

@@ -87,7 +87,7 @@ void ConfirmationMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->close();
 	});

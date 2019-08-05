@@ -49,9 +49,9 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::BeforeDamageOrHealingDeltArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingDeltArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->caster == this->caster && !args->handled)
+		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, &args->handled);
+			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -59,9 +59,9 @@ void Buff::initializeListeners()
 	{
 		CombatEvents::BeforeDamageOrHealingTakenArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingTakenArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->target == this->target && !args->handled)
+		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, &args->handled);
+			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -84,11 +84,11 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(int* damageOrHealing, bool* handled)
+void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
 {
 }
 
-void Buff::onBeforeDamageDelt(int* damageOrHealing, bool* handled)
+void Buff::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
 {
 }
 

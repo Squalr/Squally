@@ -156,7 +156,7 @@ void Cipher::initializeListeners()
 		{
 			return;
 		}
-		args->handled = true;
+		args->handle();
 
 		NavigationEvents::navigateBack();
 		*/

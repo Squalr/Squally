@@ -150,7 +150,7 @@ void OptionsMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->onMenuExit();
 	});

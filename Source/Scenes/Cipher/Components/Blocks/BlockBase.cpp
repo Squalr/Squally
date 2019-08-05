@@ -179,7 +179,7 @@ void BlockBase::initializeListeners()
 
 			this->block->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
 			{
-				args->handled = true;
+				args->handle();
 
 				if (this->spawningBlock != nullptr && !this->spawningBlock->isInGameArea())
 				{

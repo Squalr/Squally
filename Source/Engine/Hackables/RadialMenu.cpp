@@ -115,7 +115,7 @@ void RadialMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->close();
 	});

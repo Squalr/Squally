@@ -43,7 +43,7 @@ void Cutscene::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->endCutscene();
 	});

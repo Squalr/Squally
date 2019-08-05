@@ -161,7 +161,7 @@ void MinigamesMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		NavigationEvents::LoadScene(TitleScreen::getInstance());
 	});

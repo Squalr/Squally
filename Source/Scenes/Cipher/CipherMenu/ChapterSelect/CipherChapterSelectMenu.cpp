@@ -203,7 +203,7 @@ void CipherChapterSelectMenu::initializeListeners()
 		{
 			return;
 		}
-		args->handled = true;
+		args->handle();
 
 		NavigationEvents::NavigateBack();
 	});

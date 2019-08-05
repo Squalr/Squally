@@ -139,9 +139,21 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
-		bool handled;
 
 		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	struct BeforeDamageOrHealingDeltArgs
@@ -149,18 +161,43 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
-		bool handled;
 
 		BeforeDamageOrHealingDeltArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
+	
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	struct TimelineResetArgs
 	{
 		PlatformerEntity* target;
 		bool wasInterrupt;
-		bool handled;
 
 		TimelineResetArgs(PlatformerEntity* target, bool wasInterrupt) : target(target), wasInterrupt(wasInterrupt), handled(false) { }
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	static void TriggerSpawn(SpawnArgs args);

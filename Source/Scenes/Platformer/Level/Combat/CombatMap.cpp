@@ -33,6 +33,7 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -84,6 +85,7 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
+	this->notificationHud = NotificationHud::create();
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -110,6 +112,7 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
+	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);

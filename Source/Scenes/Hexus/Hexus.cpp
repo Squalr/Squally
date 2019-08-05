@@ -280,7 +280,7 @@ void Hexus::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		this->openPauseMenu();
 	});

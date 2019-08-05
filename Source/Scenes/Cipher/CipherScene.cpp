@@ -106,7 +106,7 @@ void CipherScene::initializeListeners()
 		{
 			return;
 		}
-		args->handled = true;
+		args->handle();
 
 		this->openPauseMenu();
 	});

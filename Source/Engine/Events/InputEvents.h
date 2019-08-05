@@ -27,20 +27,44 @@ public:
 		bool isDragging;
 		bool canClick;
 		bool isLeftClicked;
-		bool handled;
 
 		MouseEventArgs(cocos2d::Vec2 mouseInitialCoords, cocos2d::Vec2 mouseCoords, cocos2d::Vec2 scrollDelta, bool isDragging, bool canClick, bool isLeftClicked) :
 				mouseInitialCoords(mouseInitialCoords), mouseCoords(mouseCoords), scrollDelta(scrollDelta), isDragging(isDragging), canClick(canClick), isLeftClicked(isLeftClicked), handled(false)
 		{
 		}
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	struct InputArgs
 	{
 		cocos2d::EventKeyboard::KeyCode keycode;
-		bool handled;
 
 		InputArgs(cocos2d::EventKeyboard::KeyCode keycode) : keycode(keycode), handled(false) { }
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	static void TriggerMouseMove(MouseEventArgs args);

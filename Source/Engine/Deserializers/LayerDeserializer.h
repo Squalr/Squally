@@ -33,7 +33,6 @@ public:
 		cocos2d::Size mapSize;
 		bool isIsometric;
 		std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback;
-		bool handled;
 
 		LayerDeserializationRequestArgs(const cocos2d::ValueMap& properties,
 			const cocos2d::ValueVector& objects,
@@ -47,6 +46,20 @@ public:
 			properties(properties), objects(objects), layerIndex(layerIndex), mapIdentifier(mapIdentifier), mapSize(mapSize), isIsometric(isIsometric), onDeserializeCallback(onDeserializeCallback), handled(handled)
 		{
 		}
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
+
 	};
 
 	virtual void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args) = 0;

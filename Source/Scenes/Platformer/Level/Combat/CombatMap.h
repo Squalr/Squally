@@ -9,6 +9,7 @@ class DefeatMenu;
 class EnemyAIHelper;
 class InventoryMenu;
 class MapMenu;
+class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
 class RewardsMenu;
@@ -51,6 +52,7 @@ private:
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
 	EnemyAIHelper* enemyAIHelper;
+	NotificationHud* notificationHud;
 
 	std::vector<std::string> playerEntityKeys;
 	std::vector<std::string> enemyEntityKeys;

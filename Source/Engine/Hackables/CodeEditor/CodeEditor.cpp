@@ -98,7 +98,7 @@ using namespace cocos2d;
 using namespace cocos2d::ui;
 
 const float CodeEditor::CompileDelayMaxSeconds = 0.1f;
-const float CodeEditor::LineNumberMargin = 32.0f;;
+const float CodeEditor::LineNumberMargin = 32.0f;
 const Size CodeEditor::StatusSize = Size(420.0f, 1080.0f);
 const Size CodeEditor::FunctionSize = Size(640.0f, 640.0f);
 const Color4B CodeEditor::SubtextColor = Color4B(66, 166, 166, 255);

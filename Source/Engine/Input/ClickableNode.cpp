@@ -328,7 +328,7 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 		this->clearState();
 	}
 
-	if (!args->handled && this->intersects(args->mouseCoords))
+	if (!args->isHandled() && this->intersects(args->mouseCoords))
 	{
 		InputEvents::TriggerEventClickableMouseOver();
 
@@ -351,7 +351,7 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 		}
 
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handled = true;
+		args->handle();
 
 		// Mouse over callback
 		if (this->mouseOverEvent != nullptr)
@@ -380,7 +380,7 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 		return;
 	}
 
-	if (!args->handled && this->intersects(args->mouseCoords) && args->isLeftClicked)
+	if (!args->isHandled() && this->intersects(args->mouseCoords) && args->isLeftClicked)
 	{
 		if (this->mouseDownEvent != nullptr)
 		{
@@ -391,7 +391,7 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 		if (!this->wasAnywhereClicked)
 		{
 			// Set args as handled. Caller must un-handle in either callback if they choose.
-			args->handled = true;
+			args->handle();
 
 			if (this->mousePressEvent != nullptr)
 			{
@@ -426,7 +426,7 @@ void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* even
 		this->mouseReleaseNoHitTestEvent(args);
 	}
 
-	if (!args->handled && this->intersects(args->mouseCoords) && this->mouseClickEvent != nullptr && !args->isDragging && this->wasClickedDirectly)
+	if (!args->isHandled() && this->intersects(args->mouseCoords) && this->mouseClickEvent != nullptr && !args->isDragging && this->wasClickedDirectly)
 	{
 		this->wasClickedDirectly = false;
 		this->wasAnywhereClicked = false;
@@ -446,7 +446,7 @@ void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* even
 		}
 
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handled = true;
+		args->handle();
 
 		// Mouse click callback. IMPORTANT: Do not access any references to 'this' from here to the end of the function, in the case where this object is deleted in a callback
 		this->mouseClickEvent(args);
@@ -465,10 +465,10 @@ void ClickableNode::mouseScroll(InputEvents::MouseEventArgs* args, EventCustom* 
 		return;
 	}
 
-	if (!args->handled && this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
+	if (!args->isHandled() && this->mouseScrollEvent != nullptr && this->intersects(args->mouseCoords))
 	{
 		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handled = true;
+		args->handle();
 
 		this->mouseScrollEvent(args);
 	}

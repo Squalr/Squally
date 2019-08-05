@@ -184,7 +184,7 @@ void CollectablesMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		if (this->returnClickCallback != nullptr)
 		{

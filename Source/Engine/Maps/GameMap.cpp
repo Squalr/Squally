@@ -197,7 +197,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 				(*deserializerIt)->deserialize(&args);
 			}
 
-			if (args.handled)
+			if (args.isHandled())
 			{
 				break;
 			}

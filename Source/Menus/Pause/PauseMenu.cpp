@@ -204,7 +204,7 @@ void PauseMenu::initializeListeners()
 			return;
 		}
 		
-		args->handled = true;
+		args->handle();
 
 		if (this->resumeClickCallback != nullptr)
 		{

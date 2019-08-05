@@ -40,7 +40,7 @@ void BackgroundDeserializer::deserialize(LayerDeserializer::LayerDeserialization
 		return;
 	}
 
-	args->handled = true;
+	args->handle();
 
 	if (!GameUtils::keyExists(properties, BackgroundDeserializer::MapKeyBackgroundLayer))
 	{
