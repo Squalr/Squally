@@ -38,3 +38,13 @@ void CagedLadybug::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedLadybug::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedLadybug::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Ladybug;
+}

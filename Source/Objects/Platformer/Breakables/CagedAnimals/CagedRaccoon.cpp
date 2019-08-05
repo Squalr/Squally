@@ -38,3 +38,13 @@ void CagedRaccoon::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedRaccoon::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedRaccoon::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Raccoon;
+}

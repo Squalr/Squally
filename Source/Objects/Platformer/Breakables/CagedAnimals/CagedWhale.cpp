@@ -38,3 +38,13 @@ void CagedWhale::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedWhale::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedWhale::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Whale;
+}

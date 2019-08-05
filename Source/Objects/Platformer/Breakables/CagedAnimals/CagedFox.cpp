@@ -38,3 +38,13 @@ void CagedFox::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedFox::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedFox::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Fox;
+}

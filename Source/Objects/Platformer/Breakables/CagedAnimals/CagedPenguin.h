@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedPenguin(cocos2d::ValueMap& initProperties);
-	virtual ~CagedPenguin();
+	~CagedPenguin();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;

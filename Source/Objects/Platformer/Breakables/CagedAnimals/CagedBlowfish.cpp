@@ -38,3 +38,13 @@ void CagedBlowfish::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedBlowfish::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedBlowfish::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Blowfish;
+}

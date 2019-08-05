@@ -79,10 +79,11 @@ void Tent::initializePositions()
 {
 	super::initializePositions();
 
-	this->tentBack->setPosition(Vec2(-132.0f, -140.0f));
-	this->healCollision->setPosition(Vec2(0.0f, -160.0f));
-	this->healAnimation->setPosition(Vec2(0.0f, -160.0f));
-	this->topCollision->setPosition(Vec2(-8.0f, 320.0f));
+	this->tentBack->setPosition(Vec2(-132.0f, -140.0f - 32.0f));
+	this->healCollision->setPosition(Vec2(0.0f, -160.0f - 32.0f));
+	this->healAnimation->setPosition(Vec2(0.0f, -160.0f - 32.0f));
+	this->topCollision->setPosition(Vec2(-8.0f, 320.0f - 32.0f));
+	this->tentFront->setPosition(Vec2(0.0f, -16.0f));
 }
 
 void Tent::initializeListeners()

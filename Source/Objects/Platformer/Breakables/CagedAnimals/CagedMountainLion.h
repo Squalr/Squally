@@ -20,6 +20,9 @@ protected:
 
 	void initializePositions() override;
 
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
+
 private:
 	typedef CagedAnimal super;
 

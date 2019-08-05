@@ -38,3 +38,13 @@ void CagedPenguin::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedPenguin::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedPenguin::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Penguin;
+}

@@ -38,3 +38,13 @@ void CagedReindeer::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedReindeer::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedReindeer::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Reindeer;
+}

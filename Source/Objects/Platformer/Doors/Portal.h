@@ -12,7 +12,8 @@ class Portal : public HackableObject
 public:
 	static Portal* create(cocos2d::ValueMap& initProperties);
 
-	void setLocked(bool isLocked);
+	virtual void lock(bool animate = true);
+	virtual void unlock(bool animate = true);
 	void setRequiresInteraction(bool requiresInteraction);
 
 	static const std::string MapKeyPortal;
@@ -26,6 +27,8 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
 
 	bool requiresInteraction;
 
@@ -35,6 +38,8 @@ private:
 	void loadMap();
 
 	CollisionObject* portalCollision;
+	ClickableNode* lockButton;
+	ClickableNode* unlockButton;
 	InteractMenu* interactMenu;
 
 	bool canInteract;

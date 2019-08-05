@@ -12,7 +12,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
-#include "Events/PlatformerEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 
 #include "Strings/Cutscenes/IOU/FoundIOU.h"
@@ -70,5 +70,5 @@ void FirstIOUFound::onSkipped()
 
 void FirstIOUFound::runNotification()
 {
-	PlatformerEvents::TriggerNotificationTakeover(PlatformerEvents::NotificationTakeoverArgs(Strings::Cutscenes_IOU_FoundIOU::create(), Strings::Cutscenes_IOU_IOUDescription::create()));
+	NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(Strings::Cutscenes_IOU_FoundIOU::create(), Strings::Cutscenes_IOU_IOUDescription::create()));
 }

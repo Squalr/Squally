@@ -38,3 +38,13 @@ void CagedZebra::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedZebra::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedZebra::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Zebra;
+}

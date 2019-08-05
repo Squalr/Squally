@@ -38,3 +38,13 @@ void CagedYeti::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedYeti::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedYeti::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Yeti;
+}

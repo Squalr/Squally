@@ -38,3 +38,13 @@ void CagedBunny::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedBunny::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedBunny::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Bunny;
+}

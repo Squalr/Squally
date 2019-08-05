@@ -38,3 +38,13 @@ void CagedWorm::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedWorm::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedWorm::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Worm;
+}

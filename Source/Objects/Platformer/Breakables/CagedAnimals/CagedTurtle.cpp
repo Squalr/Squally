@@ -38,3 +38,13 @@ void CagedTurtle::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedTurtle::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedTurtle::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Turtle;
+}

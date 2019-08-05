@@ -38,3 +38,13 @@ void CagedHedgehog::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedHedgehog::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedHedgehog::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Hedgehog;
+}

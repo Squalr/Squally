@@ -38,3 +38,13 @@ void CagedGiraffe::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedGiraffe::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedGiraffe::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Giraffe;
+}

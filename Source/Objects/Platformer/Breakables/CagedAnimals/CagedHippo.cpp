@@ -38,3 +38,13 @@ void CagedHippo::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedHippo::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedHippo::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Hippo;
+}

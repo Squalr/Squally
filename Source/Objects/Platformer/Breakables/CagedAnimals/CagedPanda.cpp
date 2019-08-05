@@ -38,3 +38,13 @@ void CagedPanda::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedPanda::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedPanda::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Panda;
+}

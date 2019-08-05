@@ -23,7 +23,7 @@ CagedBat* CagedBat::create(ValueMap& initProperties)
 
 CagedBat::CagedBat(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalBat)
 {
-	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Bat);
+	this->animalSprite = Sprite::create(this->getSpriteResource());
 
 	this->animalNode->addChild(this->animalSprite);
 }
@@ -37,4 +37,14 @@ void CagedBat::initializePositions()
 	super::initializePositions();
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
+}
+
+LocalizedString* CagedBat::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedBat::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Bat;
 }

@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedYeti(cocos2d::ValueMap& initProperties);
-	virtual ~CagedYeti();
+	~CagedYeti();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;

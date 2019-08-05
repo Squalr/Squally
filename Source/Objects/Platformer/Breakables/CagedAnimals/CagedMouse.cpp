@@ -38,3 +38,13 @@ void CagedMouse::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedMouse::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedMouse::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Mouse;
+}

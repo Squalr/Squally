@@ -19,16 +19,16 @@ class Sound;
 class PuzzleDoorBase : public Portal
 {
 public:
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
 
 protected:
 	PuzzleDoorBase(cocos2d::ValueMap& initProperties);
-	virtual ~PuzzleDoorBase();
+	~PuzzleDoorBase();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
-	void onDeveloperModeDisable() override;
 	void onObjectStateLoaded() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
@@ -40,9 +40,6 @@ protected:
 
 private:
 	typedef Portal super;
-
-	void lock(bool animate = true);
-	void unlock(bool animate = true);
 
 	cocos2d::Sprite* back;
 	cocos2d::Sprite* lightLeft;
@@ -60,9 +57,6 @@ private:
 	LocalizedLabel* truthLabel;
 	LocalizedLabel* hackableLabel;
 	Sound* doorOpenSound;
-
-	ClickableNode* lockButton;
-	ClickableNode* unlockButton;
 
 	bool firstRun;
 	bool isUnlocked;

@@ -38,3 +38,13 @@ void CagedSnail::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedSnail::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedSnail::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Snail;
+}

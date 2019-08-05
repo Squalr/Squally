@@ -38,3 +38,13 @@ void CagedBeaver::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedBeaver::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedBeaver::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Beaver;
+}

@@ -38,3 +38,13 @@ void CagedSheep::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedSheep::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedSheep::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Sheep;
+}

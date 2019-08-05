@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -34,6 +35,8 @@ Portal* Portal::create(ValueMap& initProperties)
 Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initProperties)
 {
 	this->portalCollision = CollisionObject::create(PhysicsBody::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
+	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->wasTripped = false;
 	this->canInteract = false;
@@ -49,6 +52,8 @@ Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initPro
 	this->interactMenu->setPosition(offset);
 
 	this->addChild(this->portalCollision);
+	this->addChild(this->lockButton);
+	this->addChild(this->unlockButton);
 	this->addChild(this->interactMenu);
 }
 
@@ -64,6 +69,9 @@ void Portal::onEnter()
 void Portal::initializePositions()
 {
 	super::initializePositions();
+
+	this->lockButton->setPosition(Vec2(-64.0f, 212.0f));
+	this->unlockButton->setPosition(Vec2(64.0f, 212.0f));
 }
 
 void Portal::initializeListeners()
@@ -121,19 +129,48 @@ void Portal::initializeListeners()
 			this->loadMap();
 		} 
 	});
+
+	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->lock(false);
+	});
+
+	this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->unlock(false);
+	});
 }
 
-void Portal::setLocked(bool isLocked)
+void Portal::onDeveloperModeEnable()
 {
-	this->isLocked = isLocked;
+	super::onDeveloperModeEnable();
+	
+	this->lockButton->setVisible(true);
+	this->unlockButton->setVisible(true);
+}
 
-	if (this->canInteract && !this->isLocked)
+void Portal::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	this->lockButton->setVisible(false);
+	this->unlockButton->setVisible(false);
+}
+
+void Portal::lock(bool animate)
+{
+	this->isLocked = true;
+	this->interactMenu->hide();
+}
+
+void Portal::unlock(bool animate)
+{
+	this->isLocked = false;
+	this->interactMenu->hide();
+
+	if (this->canInteract)
 	{
 		this->interactMenu->show();
-	}
-	else
-	{
-		this->interactMenu->hide();
 	}
 }
 

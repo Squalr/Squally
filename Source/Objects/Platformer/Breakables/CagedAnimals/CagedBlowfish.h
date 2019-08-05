@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedBlowfish(cocos2d::ValueMap& initProperties);
-	virtual ~CagedBlowfish();
+	~CagedBlowfish();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;

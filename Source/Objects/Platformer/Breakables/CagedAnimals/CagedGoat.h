@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedGoat(cocos2d::ValueMap& initProperties);
-	virtual ~CagedGoat();
+	~CagedGoat();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;

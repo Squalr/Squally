@@ -38,3 +38,13 @@ void CagedTucan::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedTucan::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedTucan::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Tucan;
+}

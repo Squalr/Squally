@@ -38,3 +38,13 @@ void CagedDog::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedDog::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedDog::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Dog;
+}

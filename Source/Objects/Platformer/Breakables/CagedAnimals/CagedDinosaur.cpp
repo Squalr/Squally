@@ -38,3 +38,13 @@ void CagedDinosaur::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedDinosaur::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedDinosaur::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Dinosaur;
+}

@@ -11,6 +11,8 @@
 #include "Objects/Platformer/Collectables/IOU.h"
 #include "Objects/Platformer/Doors/CastleGate/CastleGate.h"
 #include "Objects/Platformer/Doors/EdgePortal.h"
+#include "Objects/Platformer/Doors/Gate/Gate.h"
+#include "Objects/Platformer/Doors/LanternGate/LanternGate.h"
 #include "Objects/Platformer/Doors/Portal.h"
 #include "Objects/Platformer/Doors/PortalSpawn.h"
 #include "Objects/Platformer/Doors/PuzzleDoor/MulDoor/MulDoor.h"

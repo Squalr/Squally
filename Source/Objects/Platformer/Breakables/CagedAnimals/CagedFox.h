@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedFox(cocos2d::ValueMap& initProperties);
-	virtual ~CagedFox();
+	~CagedFox();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;

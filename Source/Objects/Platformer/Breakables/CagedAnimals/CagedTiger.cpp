@@ -38,3 +38,13 @@ void CagedTiger::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedTiger::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedTiger::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Tiger;
+}

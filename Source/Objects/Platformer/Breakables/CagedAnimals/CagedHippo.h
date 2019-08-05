@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedHippo(cocos2d::ValueMap& initProperties);
-	virtual ~CagedHippo();
+	~CagedHippo();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;

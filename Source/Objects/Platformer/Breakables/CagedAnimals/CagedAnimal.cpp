@@ -9,11 +9,14 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
+#include "Events/NotificationEvents.h"
 
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/FXResources.h"
+
+#include "Strings/Menus/Notifications/AnimalRescued.h"
 
 using namespace cocos2d;
 
@@ -76,6 +79,8 @@ void CagedAnimal::onBreak()
 	}
 
 	SaveManager::saveProfileData(this->saveKey, Value(true));
+
+	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Menus_Notifications_AnimalRescued::create(), this->getAnimalName(), this->getSpriteResource()));
 
 	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->animalNode));
 

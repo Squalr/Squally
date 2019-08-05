@@ -38,3 +38,13 @@ void CagedBee::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedBee::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedBee::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Bee;
+}

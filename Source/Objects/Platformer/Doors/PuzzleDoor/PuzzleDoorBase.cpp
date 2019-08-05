@@ -8,7 +8,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -50,8 +49,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties,
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->indexString);
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
-	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
-	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->doorOpenSound = Sound::create(SoundResources::Platformer_Doors_StoneWall1, true);
 	this->isUnlocked = false;
 
@@ -108,8 +105,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties,
 		this->addChild(this->runesPassed[index]);
 	}
 
-	this->addChild(this->lockButton);
-	this->addChild(this->unlockButton);
 	this->addChild(this->doorOpenSound);
 }
 
@@ -210,16 +205,6 @@ void PuzzleDoorBase::onEnter()
 			nullptr
 		)
 	));
-
-	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->lock(true);
-	});
-
-	this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->unlock(true);
-	});
 }
 
 void PuzzleDoorBase::initializePositions()
@@ -232,8 +217,6 @@ void PuzzleDoorBase::initializePositions()
 	this->indexLabel->setPosition(Vec2(0.0f, 464.0f) + PuzzleDoorBase::Offset);
 	this->truthLabel->setPosition(Vec2(284.0f, 104.0f) + PuzzleDoorBase::Offset);
 	this->hackableLabel->setPosition(Vec2(-288.0f, 104.0f) + PuzzleDoorBase::Offset);
-	this->lockButton->setPosition(Vec2(-64.0f, 212.0f) + PuzzleDoorBase::Offset);
-	this->unlockButton->setPosition(Vec2(64.0f, 212.0f) + PuzzleDoorBase::Offset);
 	this->doorOpenSound->setPosition(PuzzleDoorBase::Offset);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
@@ -249,22 +232,6 @@ void PuzzleDoorBase::initializePositions()
 void PuzzleDoorBase::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-void PuzzleDoorBase::onDeveloperModeEnable()
-{
-	super::onDeveloperModeEnable();
-	
-	this->lockButton->setVisible(true);
-	this->unlockButton->setVisible(true);
-}
-
-void PuzzleDoorBase::onDeveloperModeDisable()
-{
-	super::onDeveloperModeDisable();
-
-	this->lockButton->setVisible(false);
-	this->unlockButton->setVisible(false);
 }
 
 void PuzzleDoorBase::onObjectStateLoaded()
@@ -307,8 +274,7 @@ void PuzzleDoorBase::setHackValue(int value)
 
 void PuzzleDoorBase::lock(bool animate)
 {
-	// Update parent door class lock
-	this->setLocked(true);
+	super::lock(animate);
 
 	this->saveObjectState(PuzzleDoorBase::UnlockedSaveKey, Value(false));
 
@@ -341,8 +307,7 @@ void PuzzleDoorBase::lock(bool animate)
 
 void PuzzleDoorBase::unlock(bool animate)
 {
-	// Update parent door class lock
-	this->setLocked(false);
+	super::unlock(animate);
 
 	this->saveObjectState(PuzzleDoorBase::UnlockedSaveKey, Value(true));
 

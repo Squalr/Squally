@@ -1,4 +1,5 @@
 #pragma once
+#include <queue>
 
 #include "Engine/UI/HUD/Hud.h"
 
@@ -18,6 +19,9 @@ class NotificationHud : public Hud
 public:
 	static NotificationHud* create();
 
+protected:
+	void update(float dt) override;
+
 private:
 	typedef Hud super;
 	NotificationHud();
@@ -27,7 +31,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	void showNotificationMenu(LocalizedString* title, LocalizedString* description);
+	void showNotificationTakeover(LocalizedString* title, LocalizedString* description);
+	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource);
 	void closeNotificationMenu();
 
 	cocos2d::Node* previousFocus;
@@ -37,4 +42,11 @@ private:
 	ClickableTextNode* okButton;
 	LocalizedLabel* title;
 	LocalizedLabel* description;
+	cocos2d::Node* takeoverNode;
+	cocos2d::Node* notificationsNode;
+
+	std::queue<cocos2d::Node*> toProcess;
+	std::vector<float> slotCooldowns;
+
+	static const int SlotCount;
 };

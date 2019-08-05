@@ -38,3 +38,13 @@ void CagedSquid::initializePositions()
 
 	this->animalSprite->setPosition(Vec2(0.0f, -16.0f));
 }
+
+LocalizedString* CagedSquid::getAnimalName()
+{
+	return nullptr;
+}
+
+std::string CagedSquid::getSpriteResource()
+{
+	return ObjectResources::Collectables_Animals_Squid;
+}

@@ -12,8 +12,6 @@ const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RES
 const std::string PlatformerEvents::EventQueryMapArgs = "EVENT_QUERY_MAP_ARGS";
 const std::string PlatformerEvents::EventRuneConsumed = "EVENT_RUNE_CONSUMED";
 const std::string PlatformerEvents::EventEquippedItemsChanged = "EVENT_EQUIPPED_ITEMS_CHANGED";
-const std::string PlatformerEvents::EventNotificationTakeover = "EVENT_NOTIFICATION_TAKEOVER";
-const std::string PlatformerEvents::EventNotification = "EVENT_NOTIFICATION";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 
@@ -67,22 +65,6 @@ void PlatformerEvents::TriggerEquippedItemsChanged()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventEquippedItemsChanged
-	);
-}
-
-void PlatformerEvents::TriggerNotificationTakeover(NotificationTakeoverArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventNotificationTakeover,
-		&args
-	);
-}
-
-void PlatformerEvents::TriggerNotification(NotificationArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventNotification,
-		&args
 	);
 }
 

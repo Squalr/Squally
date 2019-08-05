@@ -18,6 +18,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
+#include "Events/NotificationEvents.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -115,60 +116,15 @@ void RewardsMenu::loadRewards()
 	int index = 0;
 	int totalExpGain = 0;
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
 		totalExpGain += StatsTables::calculateEnemyExp(entity);
 
 		std::vector<Item*> items = entity->getInventory()->getItems();
 
-		const float onsetDuration = 0.5f;
-		const float interleaveDuration = 0.75f;
-		const float fadeInDuration = 0.35f;
-		const float sustainDuration = 2.0f;
-		const float fadeOutDuration = 0.5f;
-		const float roundDelay = 0.35f;
-
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{
-			if (index >= DISPLAY_LIMIT)
-			{
-				return;
-			}
-
-			int slot = index % 3;
-			int round = index / 3;
-
-			Node* container = Node::create();
-			Sprite* itemFrame = Sprite::create(UIResources::Combat_ItemFrame);
-			ClickableNode* itemIcon = ClickableNode::create((*it)->getIconResource(), (*it)->getIconResource());
-			LocalizedLabel* title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_ItemFound::create());
-			LocalizedLabel* itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, (*it)->getString());
-
-			title->enableOutline(Color4B::BLACK, 2);
-			itemName->enableOutline(Color4B::BLACK, 2);
-
-			container->setPosition(Vec2(visibleSize.width / 2.0f - 256.0f, -visibleSize.height / 2.0f + 256.0f + 256.0f * float(slot)));
-			itemIcon->setPosition(Vec2(-96.0f, 0.0f));
-			itemName->setPosition(Vec2(32.0f, 0.0f));
-			title->setPosition(Vec2(0.0f, 96.0f));
-
-			container->addChild(itemFrame);
-			container->addChild(itemIcon);
-			container->addChild(itemName);
-			container->addChild(title);
-			this->addChild(container);
-
-			container->setOpacity(0);
-
-			container->runAction(Sequence::create(
-				DelayTime::create(onsetDuration + float(index) * interleaveDuration + float(round) * roundDelay),
-				FadeTo::create(fadeInDuration, 255),
-				DelayTime::create(sustainDuration),
-				FadeTo::create(fadeOutDuration, 0),
-				nullptr
-			));
+			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Combat_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
 		}
 	}));
 

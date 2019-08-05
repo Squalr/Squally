@@ -20,7 +20,7 @@ public:
 
 protected:
 	CastleGate(cocos2d::ValueMap& initProperties);
-	virtual ~CastleGate();
+	~CastleGate();
 
 	void onEnter() override;
 	void initializeListeners() override;

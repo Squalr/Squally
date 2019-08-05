@@ -16,9 +16,12 @@ public:
 
 protected:
 	CagedSquid(cocos2d::ValueMap& initProperties);
-	virtual ~CagedSquid();
+	~CagedSquid();
 
 	void initializePositions() override;
+
+	LocalizedString* getAnimalName() override;
+	std::string getSpriteResource() override;
 
 private:
 	typedef CagedAnimal super;
