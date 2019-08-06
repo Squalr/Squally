@@ -33,6 +33,11 @@ FirstIOUFound* FirstIOUFound::create(GameObject* owner, std::string attachedBeha
 FirstIOUFound::FirstIOUFound(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->iou = static_cast<IOU*>(owner);
+
+	if (this->iou == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 FirstIOUFound::~FirstIOUFound()

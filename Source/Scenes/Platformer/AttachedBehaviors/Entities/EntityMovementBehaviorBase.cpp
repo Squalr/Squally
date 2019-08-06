@@ -15,6 +15,11 @@ using namespace cocos2d;
 EntityMovementBehaviorBase::EntityMovementBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
+
+	if (this->entity == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 EntityMovementBehaviorBase::~EntityMovementBehaviorBase()

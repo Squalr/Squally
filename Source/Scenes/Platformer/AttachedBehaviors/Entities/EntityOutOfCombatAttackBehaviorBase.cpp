@@ -22,10 +22,14 @@ using namespace cocos2d;
 EntityOutOfCombatAttackBehaviorBase::EntityOutOfCombatAttackBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
-	this->isPerformingOutOfCombatAttack = false;
-	
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
+	this->isPerformingOutOfCombatAttack = false;
 
+	if (this->entity == nullptr)
+	{
+		this->invalidate();
+	}
+	
 	this->addChild(this->outOfCombatAttackDebug);
 }
 

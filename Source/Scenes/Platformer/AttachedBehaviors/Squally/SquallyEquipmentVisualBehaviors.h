@@ -10,16 +10,16 @@ namespace cocos2d
 class PlatformerEnemy;
 class Squally;
 
-class SquallyEquipmentVisuals : public AttachedBehavior
+class SquallyEquipmentVisualBehaviors : public AttachedBehavior
 {
 public:
-	static SquallyEquipmentVisuals* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyEquipmentVisualBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyEquipmentVisuals(GameObject* owner, std::string attachedBehaviorArgs);
-	~SquallyEquipmentVisuals();
+	SquallyEquipmentVisualBehaviors(GameObject* owner, std::string attachedBehaviorArgs);
+	~SquallyEquipmentVisualBehaviors();
 
 	void onLoad() override;
 

@@ -20,6 +20,10 @@ using namespace cocos2d;
 
 const std::string HackableObject::MapKeyShowClippy = "show-clippy";
 
+HackableObject::HackableObject() : HackableObject(ValueMap())
+{
+}
+
 HackableObject::HackableObject(const ValueMap& properties) : GameObject(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
@@ -49,7 +53,6 @@ void HackableObject::onEnter()
 {
 	super::onEnter();
 
-	this->registerHackables();
 	this->scheduleUpdate();
 }
 
@@ -60,8 +63,6 @@ void HackableObject::onEnterTransitionDidFinish()
 	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
 
 	this->registerHackables();
-
-	HackableEvents::TriggerRegisterHackable(HackableEvents::HackableObjectRegisterArgs(this));
 }
 
 void HackableObject::onExit()

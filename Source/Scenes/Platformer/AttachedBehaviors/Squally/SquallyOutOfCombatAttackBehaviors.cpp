@@ -27,6 +27,11 @@ SquallyOutOfCombatAttackBehaviors* SquallyOutOfCombatAttackBehaviors::create(Gam
 SquallyOutOfCombatAttackBehaviors::SquallyOutOfCombatAttackBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->squally = static_cast<Squally*>(owner);
+
+	if (this->squally == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 SquallyOutOfCombatAttackBehaviors::~SquallyOutOfCombatAttackBehaviors()

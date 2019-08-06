@@ -28,8 +28,12 @@ EntityDebugBehaviors::EntityDebugBehaviors(GameObject* owner, std::string attach
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
-	
 
+	if (this->entity == nullptr)
+	{
+		this->invalidate();
+	}
+	
 	this->resurrectButton->setVisible(false);
 	this->killButton->setVisible(false);
 

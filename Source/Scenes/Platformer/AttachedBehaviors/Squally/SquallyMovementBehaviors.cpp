@@ -25,6 +25,11 @@ SquallyMovementBehaviors* SquallyMovementBehaviors::create(GameObject* owner, st
 SquallyMovementBehaviors::SquallyMovementBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->squally = static_cast<Squally*>(owner);
+
+	if (this->squally == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 SquallyMovementBehaviors::~SquallyMovementBehaviors()
@@ -38,12 +43,6 @@ void SquallyMovementBehaviors::update(float dt)
 	if (this->squally->isCinimaticHijacked || this->squally->getIsPlatformerDisabled() || this->squally->isDead())
 	{
 		return;
-	}
-
-	// Check for player suicide
-	if (!this->squally->isAliveSqually())
-	{
-		this->squally->killAndRespawn();
 	}
 
 	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->squally->animationNode).origin;

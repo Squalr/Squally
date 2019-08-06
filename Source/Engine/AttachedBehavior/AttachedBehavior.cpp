@@ -13,13 +13,17 @@ AttachedBehavior::AttachedBehavior(GameObject* owner, std::string attachedBehavi
 
 AttachedBehavior::~AttachedBehavior()
 {
+	this->isInvalidated = false;
 }
 
 void AttachedBehavior::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->onLoad();
+	if (!this->isInvalidated)
+	{
+		this->onLoad();
+	}
 }
 
 void AttachedBehavior::initializeListeners()
@@ -30,4 +34,9 @@ void AttachedBehavior::initializeListeners()
 std::string AttachedBehavior::getAttachedBehaviorArgs()
 {
 	return this->attachedBehaviorArgs;
+}
+
+void AttachedBehavior::invalidate()
+{
+	this->isInvalidated = true;
 }

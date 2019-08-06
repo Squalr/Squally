@@ -20,7 +20,6 @@ public:
 	static const std::string EventHackableObjectClose;
 	static const std::string EventHackableAttributeEdit;
 	static const std::string EventHackableAttributeEditDone;
-	static const std::string EventHackableObjectRegister;
 	static const std::string EventHackApplied;
 	static const std::string EventOpenLexiconPage;
 	static const std::string EventCloseLeftLexiconPage;
@@ -38,15 +37,6 @@ public:
 		HackableAttribute* hackableAttribute;
 
 		HackableObjectEditArgs(HackableAttribute* hackableAttribute) :hackableAttribute(hackableAttribute) { }
-	};
-
-	struct HackableObjectRegisterArgs
-	{
-		HackableObject* hackableObject;
-
-		HackableObjectRegisterArgs(HackableObject* hackableObject) : hackableObject(hackableObject)
-		{
-		}
 	};
 
 	struct HackAppliedArgs
@@ -86,7 +76,6 @@ public:
 	static void TriggerCloseHackable();
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
 	static void TriggerEditHackableAttributeDone();
-	static void TriggerRegisterHackable(HackableObjectRegisterArgs args);
 	static void TriggerOnHackApplied(HackAppliedArgs args);
 	static void TriggerOpenLexiconPage(OpenLexiconPageArgs args);
 	static void TriggerCloseLeftLexiconPage();

@@ -2,7 +2,6 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
@@ -31,6 +30,11 @@ SquallyCollisionBehaviors::SquallyCollisionBehaviors(GameObject* owner, std::str
 {
 	this->squally = static_cast<Squally*>(owner);
 	this->noCombatDuration = 0.0f;
+
+	if (this->squally == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 SquallyCollisionBehaviors::~SquallyCollisionBehaviors()

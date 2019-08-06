@@ -1,11 +1,10 @@
-#include "SquallyEquipmentVisuals.h"
+#include "SquallyEquipmentVisualBehaviors.h"
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
@@ -24,27 +23,32 @@
 
 using namespace cocos2d;
 
-const std::string SquallyEquipmentVisuals::MapKeyAttachedBehavior = "squally-equipment-visuals";
+const std::string SquallyEquipmentVisualBehaviors::MapKeyAttachedBehavior = "squally-equipment-visuals";
 
-SquallyEquipmentVisuals* SquallyEquipmentVisuals::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyEquipmentVisualBehaviors* SquallyEquipmentVisualBehaviors::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
-	SquallyEquipmentVisuals* instance = new SquallyEquipmentVisuals(owner, attachedBehaviorArgs);
+	SquallyEquipmentVisualBehaviors* instance = new SquallyEquipmentVisualBehaviors(owner, attachedBehaviorArgs);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyEquipmentVisuals::SquallyEquipmentVisuals(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyEquipmentVisualBehaviors::SquallyEquipmentVisualBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->squally = static_cast<Squally*>(owner);
+
+	if (this->squally == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
-SquallyEquipmentVisuals::~SquallyEquipmentVisuals()
+SquallyEquipmentVisualBehaviors::~SquallyEquipmentVisualBehaviors()
 {
 }
 
-void SquallyEquipmentVisuals::onLoad()
+void SquallyEquipmentVisualBehaviors::onLoad()
 {
 	this->updateEquipmentVisual();
 
@@ -54,7 +58,7 @@ void SquallyEquipmentVisuals::onLoad()
 	}));
 }
 
-void SquallyEquipmentVisuals::updateEquipmentVisual()
+void SquallyEquipmentVisualBehaviors::updateEquipmentVisual()
 {
 	Weapon* weapon = this->squally->equipmentInventory->getWeapon();
 	Hat* hat = this->squally->equipmentInventory->getHat();

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Engine/Hackables/HackableObject.h"
 
-class AttachedBehavior : public GameObject
+class AttachedBehavior : public HackableObject
 {
 public:
 	std::string getAttachedBehaviorArgs();
@@ -15,13 +15,15 @@ protected:
 	void onEnterTransitionDidFinish() override;
 
 	virtual void onLoad() = 0;
+	void invalidate();
 
 private:
-	typedef GameObject super;
+	typedef HackableObject super;
 	
 	void updateState();
 
 	GameObject* owner;
 	std::string attachedBehaviorArgs;
+	bool isInvalidated;
 };
 

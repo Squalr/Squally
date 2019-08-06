@@ -23,6 +23,11 @@ EntityCollisionBehaviors* EntityCollisionBehaviors::create(GameObject* owner, st
 EntityCollisionBehaviors::EntityCollisionBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
+
+	if (this->entity == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 EntityCollisionBehaviors::~EntityCollisionBehaviors()

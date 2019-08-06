@@ -23,6 +23,11 @@ NpcCollisionBehaviors* NpcCollisionBehaviors::create(GameObject* owner, std::str
 NpcCollisionBehaviors::NpcCollisionBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->npc = static_cast<NpcBase*>(owner);
+
+	if (this->npc == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 NpcCollisionBehaviors::~NpcCollisionBehaviors()

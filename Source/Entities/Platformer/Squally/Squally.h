@@ -7,10 +7,6 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-class CollisionObject;
-class PlatformerEnemy;
-class SmartAnimationSequenceNode;
-
 class Squally : public PlatformerFriendly
 {
 public:
@@ -32,7 +28,7 @@ private:
 	typedef PlatformerFriendly super;
 	friend class SquallyBehaviors;
 	friend class SquallyCollisionBehaviors;
-	friend class SquallyEquipmentVisuals;
+	friend class SquallyEquipmentVisualBehaviors;
 	friend class SquallyMovementBehaviors;
 	friend class SquallyOutOfCombatAttackBehaviors;
 	
@@ -44,8 +40,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onHackerModeEnable(int eq) override;
-	void registerHackables() override;
-	bool isAliveSqually();
 	void saveState();
 	void loadState();
 	void runEyeBlinkLoop();
@@ -54,10 +48,6 @@ private:
 	bool canJump;
 
 	cocos2d::Node* cameraTrackTarget;
-	SmartAnimationSequenceNode* leftEyeController;
-	SmartAnimationSequenceNode* rightEyeController;
 
 	static const float SquallyScale;
-	static const std::string IdentifierIsAlive;
-	static const std::string EventSquallyTrapped;
 };

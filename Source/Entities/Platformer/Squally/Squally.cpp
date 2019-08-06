@@ -7,9 +7,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
@@ -21,29 +19,17 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/EntityPreview.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
-#include "Entities/Platformer/Squally/IsAliveClippy.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
-#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/UIResources.h"
-
-#include "Strings/Hacking/Entities/Squally/IsAlive/IsAlive.h"
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_IS_ALIVE 1
-
-const std::string Squally::EventSquallyTrapped = "event-squally-trapped";
-
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKeySqually = "squally";
-const std::string Squally::IdentifierIsAlive = "is-alive";
 const int Squally::SquallyBaseHealth = 16;
 const int Squally::SquallyBaseSpecial = 8;
 
@@ -73,18 +59,11 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	SaveKeys::SaveKeySquallyCurrencyInventory)
 {
 	this->cameraTrackTarget = Node::create();
-	this->leftEyeController = SmartAnimationSequenceNode::create();
-	this->rightEyeController = SmartAnimationSequenceNode::create();
 
 	this->registerHackables();
 	this->registerAttack(Punch::create(0.4f, 0.5f));
 
-	this->leftEyeController->setVisible(false);
-	this->rightEyeController->setVisible(false);
-
 	this->addChild(this->cameraTrackTarget);
-	this->addChild(this->leftEyeController);
-	this->addChild(this->rightEyeController);
 }
 
 Squally::~Squally()
@@ -96,7 +75,6 @@ void Squally::onEnter()
 	super::onEnter();
 
 	this->loadState();
-	this->runEyeBlinkLoop();
 
 	// Request camera track player
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
@@ -162,17 +140,6 @@ void Squally::initializeListeners()
 
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	});
-
-	this->listenForMapEvent(Squally::EventSquallyTrapped, [=](ValueMap args)
-	{
-		for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
-		{
-			if ((*it)->getHackableCodeIdentifier() == Squally::IdentifierIsAlive)
-			{
-				(*it)->getClippy()->setIsEnabled(true);
-			}
-		}
-	});
 }
 
 Vec2 Squally::getButtonOffset()
@@ -205,58 +172,6 @@ void Squally::performSwimAnimation()
 void Squally::onHackerModeEnable(int eq)
 {
 	super::onHackerModeEnable(eq);
-}
-
-void Squally::registerHackables()
-{
-	super::registerHackables();
-
-	IsAliveClippy* isAliveClippy = IsAliveClippy::create();
-
-	isAliveClippy->setIsEnabled(true);
-
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
-	{
-		{
-			LOCAL_FUNC_ID_IS_ALIVE,
-			HackableCode::LateBindData(
-				Squally::IdentifierIsAlive,
-				Strings::Hacking_Entities_Squally_IsAlive_IsAlive::create(),
-				UIResources::Menus_Icons_Heart,
-				EntityPreview::create(this),
-				{
-				},
-				2,
-				1.0f,
-				isAliveClippy
-			)
-		},
-	};
-
-	auto isAliveSquallyFunc = &Squally::isAliveSqually;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)isAliveSquallyFunc, lateBindMap);
-
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
-	{
-		this->registerCode(*it);
-	}
-}
-
-NO_OPTIMIZE bool Squally::isAliveSqually()
-{
-	static volatile int isAlive = true;
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IS_ALIVE);
-
-	ASM(mov ZAX, 1);
-
-	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(isAlive, ZAX);
-
-	HACKABLES_STOP_SEARCH();
-
-	return isAlive;
 }
 
 void Squally::saveState()
@@ -305,58 +220,4 @@ void Squally::loadState()
 
 	// Save new defaults
 	this->saveState();
-}
-
-void Squally::runEyeBlinkLoop()
-{
-	const float BlinkSpeed = 0.0075f;
-	const float EyesClosedDuration = 0.015f;
-	const float TimeBetweenBlinks = 5.5f;
-	
-	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->leftEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
-	{
-		AnimationPart* leftEye = this->getAnimations()->getAnimationPart("eye_left");
-		
-		if (leftEye != nullptr)
-		{
-			leftEye->replaceSprite(spriteResource);
-		}
-
-		return current + 1;
-	};
-	this->leftEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
-	{
-		AnimationPart* leftEye = this->getAnimations()->getAnimationPart("eye_left");
-		
-		if (leftEye != nullptr)
-		{
-			leftEye->replaceSprite(spriteResource);
-		}
-
-		return current + 1;
-	};
-	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->rightEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
-	{
-		AnimationPart* rightEye = this->getAnimations()->getAnimationPart("eye_right");
-		
-		if (rightEye != nullptr)
-		{
-			rightEye->replaceSprite(spriteResource);
-		}
-
-		return current + 1;
-	};
-	this->rightEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
-	{
-		AnimationPart* rightEye = this->getAnimations()->getAnimationPart("eye_right");
-		
-		if (rightEye != nullptr)
-		{
-			rightEye->replaceSprite(spriteResource);
-		}
-
-		return current + 1;
-	};
 }
