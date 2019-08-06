@@ -68,14 +68,12 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
 	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
-	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
 	this->weaponCollision = nullptr;
 	this->scale = scale;
 	this->collisionType = collisionType;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
-	this->isPerformingOutOfCombatAttack = false;
 	this->isPlatformerDisabled = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->eq = 0;
@@ -198,7 +196,6 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->currencyInventory);
 	this->addChild(this->resurrectButton);
 	this->addChild(this->killButton);
-	this->addChild(this->outOfCombatAttackDebug);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -227,7 +224,6 @@ void PlatformerEntity::initializePositions()
 	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
 	this->killButton->setPosition(Vec2(-64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
 	this->resurrectButton->setPosition(Vec2(64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
-	this->outOfCombatAttackDebug->setPosition(Vec2(0.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 64.0f));
 }
 
 void PlatformerEntity::initializeListeners()
@@ -253,8 +249,6 @@ void PlatformerEntity::initializeListeners()
 	{
 		this->kill();
 	});
-
-	this->initializeCollisionEvents();
 }
 
 void PlatformerEntity::onDeveloperModeEnable()
@@ -271,7 +265,6 @@ void PlatformerEntity::onDeveloperModeDisable()
 
 	this->resurrectButton->setVisible(false);
 	this->killButton->setVisible(false);
-	this->outOfCombatAttackDebug->setVisible(false);
 }
 
 void PlatformerEntity::update(float dt)
@@ -746,86 +739,6 @@ void PlatformerEntity::rebuildWeaponCollision(Size size)
 	mainhand->addTrackingObject(this->weaponCollision);
 }
 
-void PlatformerEntity::initializeCollisionEvents()
-{
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{	
-		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
-
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
-	{
-		// No collision when not standing on anything, or if already on a different platform
-		if (this->groundCollision->getCurrentCollisions().empty() || this->isStandingOnSomethingOtherThan(collisionData.other))
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
-
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		this->movementCollision->setGravityEnabled(false);
-		this->controlState = ControlState::Swimming;
-		this->movementCollision->setVerticalDampening(PlatformerEntity::SwimVerticalDrag);
-
-		// Clear current animation
-		this->animationNode->playAnimation("Idle");
-		
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		this->movementCollision->setGravityEnabled(true);
-		this->controlState = ControlState::Normal;
-		this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
-
-		// Animate jumping out of water
-		if (this->movementCollision->getVelocity().y > 0.0f)
-		{
-			// Give a velocity boost for jumping out of water
-			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, PlatformerEntity::JumpVelocity));
-
-			this->animationNode->playAnimation("Jump");
-		}
-		
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{
-		// Clear current animation
-		if (!this->isDead() && this->movementCollision->getVelocity().y <= 0.0f)
-		{
-			this->animationNode->playAnimation("Idle");
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
-	{	
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
-	{	
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-}
-
 PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
 {
 	Size newSize = size * scale;
@@ -870,50 +783,4 @@ std::string PlatformerEntity::getAnimationResource()
 std::string PlatformerEntity::getEmblemResource()
 {
 	return this->emblemResource;
-}
-
-void PlatformerEntity::doOutOfCombatAttack()
-{
-	if (this->isPerformingOutOfCombatAttack)
-	{
-		return;
-	}
-
-	this->isPerformingOutOfCombatAttack = true;
-	this->animationNode->playAnimation(this->getOutOfCombatAttackAnimation());
-
-	this->runAction(Sequence::create(
-		DelayTime::create(this->getOutOfCombatAttackOnset()),
-		CallFunc::create([=]()
-		{
-			if (this->isDeveloperModeEnabled())
-			{
-				this->outOfCombatAttackDebug->setVisible(true);
-			}
-			this->weaponCollision->setPhysicsEnabled(true);
-		}),
-		DelayTime::create(this->getOutOfCombatAttackSustain()),
-		CallFunc::create([=]()
-		{
-			this->weaponCollision->setPhysicsEnabled(false);
-			this->isPerformingOutOfCombatAttack = false;
-			this->outOfCombatAttackDebug->setVisible(false);
-		}),
-		nullptr
-	));
-}
-
-std::string PlatformerEntity::getOutOfCombatAttackAnimation()
-{
-	return "Attack";
-}
-
-float PlatformerEntity::getOutOfCombatAttackOnset()
-{
-	return 0.2f;
-}
-
-float PlatformerEntity::getOutOfCombatAttackSustain()
-{
-	return 0.15f;
 }

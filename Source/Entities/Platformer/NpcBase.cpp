@@ -49,16 +49,6 @@ void NpcBase::update(float dt)
 	super::update(dt);
 }
 
-void NpcBase::initializeCollisionEvents()
-{
-	super::initializeCollisionEvents();
-
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
-	{	
-		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
-}
-
 void NpcBase::onInteractButtonClick()
 {
 	//// HexusEvents::startGame(HexusEvents::HexusGameEventArgs(this->deck, this->deck));

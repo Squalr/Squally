@@ -119,11 +119,6 @@ void Squally::onEnterTransitionDidFinish()
 	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 }
 
-void Squally::initializeCollisionEvents()
-{
-	super::initializeCollisionEvents();
-}
-
 void Squally::initializePositions()
 {
 	super::initializePositions();
@@ -163,11 +158,6 @@ void Squally::initializeListeners()
 	{
 		this->updateEquipmentVisual();
 	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
-	{
-		this->doOutOfCombatAttack();
-	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
@@ -219,59 +209,6 @@ cocos2d::Vec2 Squally::getAvatarFrameOffset()
 	return Vec2(0.0f, 0.0f);
 }
 
-void Squally::update(float dt)
-{
-	super::update(dt);
-
-	if (this->noCombatDuration > 0.0f)
-	{
-		this->noCombatDuration -= dt;
-	}
-
-	if (this->isCinimaticHijacked || this->getIsPlatformerDisabled() || this->isDead())
-	{
-		return;
-	}
-
-	// Check for player suicide
-	if (!this->isAliveSqually())
-	{
-		this->killAndRespawn();
-	}
-
-	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->animationNode).origin;
-	//// this->animationNode->setFlippedX(squallyPosition.x > MouseState::getMousePosition().x);
-
-	this->movement = Vec2::ZERO;
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
-	{
-		this->movement.x = -1.0f;
-	}
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
-	{
-		this->movement.x = 1.0f;
-	}
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W))
-	{
-		this->movement.y = 1.0f;
-	}
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
-	{
-		this->movement.y = -1.0f;
-	}
-
-	if (this->movement != Vec2::ZERO)
-	{
-		// Soft save the player's position
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX()));
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY()));
-	}
-}
-
 void Squally::performSwimAnimation()
 {
 	if (this->equipmentInventory->getWeapon() != nullptr)
@@ -281,48 +218,6 @@ void Squally::performSwimAnimation()
 	else
 	{
 		this->animationNode->playAnimation("Swim");
-	}
-}
-
-std::string Squally::getOutOfCombatAttackAnimation()
-{
-	Weapon* weapon = this->equipmentInventory->getWeapon();
-
-	if (weapon != nullptr)
-	{
-		return "AttackFast";
-	}
-	else
-	{
-		return "AttackPunchFast";
-	}
-}
-
-float Squally::getOutOfCombatAttackOnset()
-{
-	Weapon* weapon = this->equipmentInventory->getWeapon();
-
-	if (weapon == nullptr)
-	{
-		return 0.2f;
-	}
-	else
-	{
-		return weapon->getAttackOnset();
-	}
-}
-
-float Squally::getOutOfCombatAttackSustain()
-{
-	Weapon* weapon = this->equipmentInventory->getWeapon();
-
-	if (weapon == nullptr)
-	{
-		return 0.15f;
-	}
-	else
-	{
-		return weapon->getAttackSustain();
 	}
 }
 

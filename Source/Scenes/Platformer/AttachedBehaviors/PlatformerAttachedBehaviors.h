@@ -1,4 +1,11 @@
 #pragma once
+#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/OutOfCombatAttackBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehaviors/IOU/FirstIOUFound.h"
+#include "Scenes/Platformer/AttachedBehaviors/Npcs/NpcBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Npcs/NpcCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyMovementBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyOutOfCombatAttackBehaviors.h"

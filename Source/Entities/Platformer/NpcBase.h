@@ -25,11 +25,12 @@ protected:
 	void update(float) override;
 
 protected:
-	virtual void initializeCollisionEvents() override;
 	virtual void onInteractButtonClick();
 
 private:
 	typedef PlatformerFriendly super;
+	friend class NpcCollisionBehaviors;
+
 	cocos2d::Sprite* chatBubbleSprite;
 	ClickableNode* interactButton;
 };

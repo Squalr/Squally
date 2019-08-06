@@ -24,11 +24,7 @@ public:
 	static const int SquallyBaseSpecial;
 
 protected:
-	void initializeCollisionEvents() override;
 	void performSwimAnimation() override;
-	std::string getOutOfCombatAttackAnimation() override;
-	float getOutOfCombatAttackOnset() override;
-	float getOutOfCombatAttackSustain() override;
 
 	cocos2d::Vec2 getButtonOffset() override;
 
@@ -36,6 +32,8 @@ private:
 	typedef PlatformerFriendly super;
 	friend class SquallyBehaviors;
 	friend class SquallyCollisionBehaviors;
+	friend class SquallyMovementBehaviors;
+	friend class SquallyOutOfCombatAttackBehaviors;
 	
 	Squally(cocos2d::ValueMap& properties);
 	virtual ~Squally();
@@ -44,7 +42,6 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float) override;
 	void onHackerModeEnable(int eq) override;
 	void registerHackables() override;
 	bool isAliveSqually();

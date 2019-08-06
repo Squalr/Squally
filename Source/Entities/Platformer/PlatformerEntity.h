@@ -108,13 +108,9 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	void registerAttack(PlatformerAttack* attack);
-	virtual void initializeCollisionEvents();
 	virtual void performSwimAnimation();
 	virtual void performJumpAnimation();
 	void doOutOfCombatAttack();
-	virtual std::string getOutOfCombatAttackAnimation();
-	virtual float getOutOfCombatAttackOnset();
-	virtual float getOutOfCombatAttackSustain();
 
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
 
@@ -141,7 +137,6 @@ protected:
 	virtual void rebuildWeaponCollision(cocos2d::Size size);
 	
 	bool isCinimaticHijacked;
-	bool isPerformingOutOfCombatAttack;
 	bool isPlatformerDisabled;
 	std::string state;
 
@@ -161,6 +156,8 @@ protected:
 
 private:
 	typedef HackableObject super;
+	friend class EntityCollisionBehaviors;
+	friend class OutOfCombatAttackBehaviorBase;
 
 	int health;
 	int maxHealth;
@@ -177,6 +174,4 @@ private:
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;
 	cocos2d::Vec2 hackButtonOffset;
-
-	cocos2d::Sprite* outOfCombatAttackDebug;
 };
