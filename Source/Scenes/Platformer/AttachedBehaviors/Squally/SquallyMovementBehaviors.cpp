@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyMovementBehaviors::MapKeyAttachedBehavior = "squally-collisions";
+const std::string SquallyMovementBehaviors::MapKeyAttachedBehavior = "squally-movements";
 
 SquallyMovementBehaviors* SquallyMovementBehaviors::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
@@ -34,11 +34,6 @@ SquallyMovementBehaviors::~SquallyMovementBehaviors()
 void SquallyMovementBehaviors::update(float dt)
 {
 	super::update(dt);
-
-	if (this->squally->noCombatDuration > 0.0f)
-	{
-		this->squally->noCombatDuration -= dt;
-	}
 
 	if (this->squally->isCinimaticHijacked || this->squally->getIsPlatformerDisabled() || this->squally->isDead())
 	{

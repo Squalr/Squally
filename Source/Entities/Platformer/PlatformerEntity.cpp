@@ -66,8 +66,6 @@ PlatformerEntity::PlatformerEntity(
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
-	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
-	this->killButton = ClickableNode::create(UIResources::Menus_Icons_Skull, UIResources::Menus_Icons_Skull);
 	this->weaponCollision = nullptr;
 	this->scale = scale;
 	this->collisionType = collisionType;
@@ -180,9 +178,6 @@ PlatformerEntity::PlatformerEntity(
 		this->runeCooldowns.push_back(0.0f);
 	}
 
-	this->resurrectButton->setVisible(false);
-	this->killButton->setVisible(false);
-
 	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
 	this->addChild(this->groundCollision);
@@ -194,8 +189,6 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->inventory);
 	this->addChild(this->equipmentInventory);
 	this->addChild(this->currencyInventory);
-	this->addChild(this->resurrectButton);
-	this->addChild(this->killButton);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -222,8 +215,6 @@ void PlatformerEntity::initializePositions()
 	super::initializePositions();
 
 	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
-	this->killButton->setPosition(Vec2(-64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
-	this->resurrectButton->setPosition(Vec2(64.0f, this->getEntitySize().height + this->hoverHeight / 2.0f + 32.0f));
 }
 
 void PlatformerEntity::initializeListeners()
@@ -239,32 +230,6 @@ void PlatformerEntity::initializeListeners()
 	{
 		this->isCinimaticHijacked = false;
 	}));
-
-	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->revive();
-	});
-
-	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->kill();
-	});
-}
-
-void PlatformerEntity::onDeveloperModeEnable()
-{
-	super::onDeveloperModeEnable();
-
-	this->resurrectButton->setVisible(true);
-	this->killButton->setVisible(true);
-}
-
-void PlatformerEntity::onDeveloperModeDisable()
-{
-	super::onDeveloperModeDisable();
-
-	this->resurrectButton->setVisible(false);
-	this->killButton->setVisible(false);
 }
 
 void PlatformerEntity::update(float dt)
@@ -276,81 +241,6 @@ void PlatformerEntity::update(float dt)
 		if (this->getRuneCooldown(index) > 0.0f)
 		{
 			this->setRuneCooldown(index, this->getRuneCooldown(index) - dt);
-		}
-	}
-
-	if (this->isCinimaticHijacked)
-	{
-		return;
-	}
-
-	if (this->isDead() && this->movement != Vec2::ZERO)
-	{
-		this->movement = Vec2::ZERO;
-	}
-
-	Vec2 velocity = this->movementCollision->getVelocity();
-
-	switch (this->controlState)
-	{
-		default:
-		case ControlState::Normal:
-		{
-			// Move in the x direction unless hitting a wall while not standing on anything (this prevents wall jumps)
-			if ((this->movement.x < 0.0f && this->leftCollision->getCurrentCollisions().empty()) ||
-				(this->movement.x > 0.0f && this->rightCollision->getCurrentCollisions().empty()))
-			{
-				velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
-			}
-
-			if (this->movement.y > 0.0f && this->isOnGround())
-			{
-				velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
-
-				this->performJumpAnimation();
-			}
-
-			break;
-		}
-		case ControlState::Swimming:
-		{
-			const float minSpeed = PlatformerEntity::SwimAcceleration.y;
-
-			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
-			if (velocity.y < minSpeed && this->movement.y > 0.0f)
-			{
-				velocity.y = minSpeed;
-			}
-			else if (velocity.y > -minSpeed && this->movement.y < 0.0f)
-			{
-				velocity.y = -minSpeed;
-			}
-
-			velocity.x += this->movement.x * PlatformerEntity::SwimAcceleration.x * dt;
-			velocity.y += this->movement.y * PlatformerEntity::SwimAcceleration.y * dt;
-
-			if (this->movement != Vec2::ZERO)
-			{
-				this->performSwimAnimation();
-			}
-
-			break;
-		}
-	}
-	
-	// Apply velocity
-	this->movementCollision->setVelocity(velocity);
-
-	// Update flip
-	if (this->animationNode != nullptr)
-	{
-		if (this->movement.x < 0.0f)
-		{
-			this->animationNode->setFlippedX(true);
-		}
-		else if (this->movement.x > 0.0f)
-		{
-			this->animationNode->setFlippedX(false);
 		}
 	}
 }
@@ -648,70 +538,6 @@ CurrencyInventory* PlatformerEntity::getCurrencyInventory()
 bool PlatformerEntity::isOnGround()
 {
 	return (!this->groundCollision->getCurrentCollisions().empty());
-}
-
-bool PlatformerEntity::isStandingOnSolid()
-{
-	std::vector<CollisionObject*> collisions = this->groundCollision->getCurrentCollisions();
-
-	for (auto it = collisions.begin(); it != collisions.end(); it++)
-	{
-		if ((*it)->getCollisionType() == (int)PlatformerCollisionType::Solid)
-		{
-			return true;
-		}
-	}
-	
-	return false;
-}
-
-bool PlatformerEntity::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
-{
-	Node* currentCollisionGroup = collisonObject->getParent();
-	std::vector<CollisionObject*> groundCollisions = this->groundCollision->getCurrentCollisions();
-
-	// Special case when standing on an intersection -- always collide with the non-owner of that intersection point (the lower platform)
-	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
-	{
-		switch((*it)->getCollisionType())
-		{
-			case (int)EngineCollisionTypes::Intersection:
-			{
-				return currentCollisionGroup == (*it)->getParent();
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}
-
-	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
-	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
-	{
-		switch((*it)->getCollisionType())
-		{
-			case (int)PlatformerCollisionType::Solid:
-			case (int)PlatformerCollisionType::PassThrough:
-			{
-				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
-				if ((*it)->getParent() != currentCollisionGroup)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}
-
-	return false;
 }
 
 void PlatformerEntity::rebuildWeaponCollision(Size size)

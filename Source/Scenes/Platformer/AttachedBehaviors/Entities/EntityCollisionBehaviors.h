@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class CollisionObject;
 class PlatformerEntity;
 
 class EntityCollisionBehaviors : public AttachedBehavior
@@ -24,6 +25,8 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+
+	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 
 	PlatformerEntity* entity;
 };

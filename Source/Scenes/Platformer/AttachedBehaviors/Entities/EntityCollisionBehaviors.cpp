@@ -39,7 +39,7 @@ void EntityCollisionBehaviors::onLoad()
 	this->entity->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// No collision when not standing on anything, or if already on a different platform
-		if (this->entity->groundCollision->getCurrentCollisions().empty() || this->entity->isStandingOnSomethingOtherThan(collisionData.other))
+		if (this->entity->groundCollision->getCurrentCollisions().empty() || this->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -107,4 +107,53 @@ void EntityCollisionBehaviors::onLoad()
 	{	
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+}
+
+bool EntityCollisionBehaviors::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
+{
+	Node* currentCollisionGroup = collisonObject->getParent();
+	std::vector<CollisionObject*> groundCollisions = this->entity->groundCollision->getCurrentCollisions();
+
+	// Special case when standing on an intersection -- always collide with the non-owner of that intersection point (the lower platform)
+	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
+	{
+		switch((*it)->getCollisionType())
+		{
+			case (int)EngineCollisionTypes::Intersection:
+			{
+				return currentCollisionGroup == (*it)->getParent();
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
+
+	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
+	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
+	{
+		switch((*it)->getCollisionType())
+		{
+			case (int)PlatformerCollisionType::Solid:
+			case (int)PlatformerCollisionType::PassThrough:
+			{
+				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+				if ((*it)->getParent() != currentCollisionGroup)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
+
+	return false;
 }

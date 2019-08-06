@@ -22,16 +22,12 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/EntityPreview.h"
-#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/IsAliveClippy.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -76,7 +72,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	SaveKeys::SaveKeySquallyEquipment,
 	SaveKeys::SaveKeySquallyCurrencyInventory)
 {
-	this->noCombatDuration = 0.0f;
 	this->cameraTrackTarget = Node::create();
 	this->leftEyeController = SmartAnimationSequenceNode::create();
 	this->rightEyeController = SmartAnimationSequenceNode::create();
@@ -100,10 +95,7 @@ void Squally::onEnter()
 {
 	super::onEnter();
 
-	this->noCombatDuration = 2.0f;
-
 	this->loadState();
-	this->updateEquipmentVisual();
 	this->runEyeBlinkLoop();
 
 	// Request camera track player
@@ -154,11 +146,6 @@ void Squally::initializeListeners()
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
-	{
-		this->updateEquipmentVisual();
-	}));
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
 		args->handle();
@@ -185,12 +172,6 @@ void Squally::initializeListeners()
 				(*it)->getClippy()->setIsEnabled(true);
 			}
 		}
-	});
-
-	// Override kill to also respawn
-	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		this->killAndRespawn();
 	});
 }
 
@@ -278,26 +259,6 @@ NO_OPTIMIZE bool Squally::isAliveSqually()
 	return isAlive;
 }
 
-void Squally::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
-{
-	this->noCombatDuration = 2.0f;
-	this->saveState();
-
-	if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
-	{
-		CombatMap* combatMap = CombatMap::create(
-			enemy->getBattleMapResource(),
-			enemy->getBattleMapArgs(),
-			firstStrike,
-			enemy->getUniqueIdentifier(),
-			{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
-			enemy->getCombatEntityList()
-		);
-
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
-	}
-}
-
 void Squally::saveState()
 {
 	ValueVector cooldowns = ValueVector();
@@ -344,95 +305,6 @@ void Squally::loadState()
 
 	// Save new defaults
 	this->saveState();
-}
-
-void Squally::rebuildWeaponCollision(cocos2d::Size size)
-{
-	super::rebuildWeaponCollision(size);
-
-	this->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->isDead())
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
-		
-		// First-strike!
-		this->engageEnemy(enemy, true);
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-}
-
-void Squally::updateEquipmentVisual()
-{
-	Weapon* weapon = this->equipmentInventory->getWeapon();
-	Hat* hat = this->equipmentInventory->getHat();
-	Offhand* offhand = this->equipmentInventory->getOffhand();
-
-	AnimationPart* hatAnim = this->getAnimations()->getAnimationPart("hat");
-	
-	if (hatAnim != nullptr)
-	{
-		if (hat != nullptr)
-		{
-			hatAnim->replaceSprite(hat->getIconResource());
-			hatAnim->setOffset(hat->getDisplayOffset());
-		}
-		else
-		{
-			hatAnim->restoreSprite();
-			hatAnim->restoreOffset();
-		}
-	}
-	
-	AnimationPart* offhandAnim = this->getAnimations()->getAnimationPart("offhand");
-	
-	if (offhandAnim != nullptr)
-	{
-		if (offhand != nullptr)
-		{
-			offhandAnim->replaceSprite(offhand->getIconResource());
-			offhandAnim->setOffset(offhand->getDisplayOffset());
-		}
-		else
-		{
-			offhandAnim->restoreSprite();
-			offhandAnim->restoreOffset();
-		}
-	}
-
-	AnimationPart* mainhand = this->getAnimations()->getAnimationPart("mainhand");
-	
-	if (mainhand != nullptr)
-	{
-		if (weapon != nullptr)
-		{
-			mainhand->replaceSprite(weapon->getIconResource());
-			mainhand->setOffset(weapon->getDisplayOffset());
-		}
-		else
-		{
-			mainhand->restoreSprite();
-			mainhand->restoreOffset();
-		}
-	}
-
-	if (weapon != nullptr)
-	{
-		this->rebuildWeaponCollision(weapon->getWeaponCollisionSize());
-		this->weaponCollision->setPosition(weapon->getWeaponOffset());
-	}
-	else
-	{
-		const Size NoWeaponSize = Size(64.0f, 64.0f);
-		const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
-
-		this->rebuildWeaponCollision(NoWeaponSize);
-		this->weaponCollision->setPosition(NoWeaponOffset);
-	}
 }
 
 void Squally::runEyeBlinkLoop()

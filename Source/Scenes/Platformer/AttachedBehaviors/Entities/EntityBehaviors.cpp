@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/EntityCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityDebugBehaviors.h"
 
 using namespace cocos2d;
 
@@ -18,6 +19,7 @@ EntityBehaviors* EntityBehaviors::create(GameObject* owner, std::string attached
 
 EntityBehaviors::EntityBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
 	EntityCollisionBehaviors::create(owner, attachedBehaviorArgs),
+	EntityDebugBehaviors::create(owner, attachedBehaviorArgs),
 	})
 {
 }

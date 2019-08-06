@@ -1,4 +1,4 @@
-#include "OutOfCombatAttackBehaviorBase.h"
+#include "EntityOutOfCombatAttackBehaviorBase.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-OutOfCombatAttackBehaviorBase::OutOfCombatAttackBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityOutOfCombatAttackBehaviorBase::EntityOutOfCombatAttackBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->isPerformingOutOfCombatAttack = false;
@@ -29,11 +29,11 @@ OutOfCombatAttackBehaviorBase::OutOfCombatAttackBehaviorBase(GameObject* owner, 
 	this->addChild(this->outOfCombatAttackDebug);
 }
 
-OutOfCombatAttackBehaviorBase::~OutOfCombatAttackBehaviorBase()
+EntityOutOfCombatAttackBehaviorBase::~EntityOutOfCombatAttackBehaviorBase()
 {
 }
 
-void OutOfCombatAttackBehaviorBase::initializePositions()
+void EntityOutOfCombatAttackBehaviorBase::initializePositions()
 {
 	super::initializePositions();
 
@@ -41,23 +41,23 @@ void OutOfCombatAttackBehaviorBase::initializePositions()
 }
 
 
-void OutOfCombatAttackBehaviorBase::onDeveloperModeEnable()
+void EntityOutOfCombatAttackBehaviorBase::onDeveloperModeEnable()
 {
 	super::onDeveloperModeEnable();
 }
 
-void OutOfCombatAttackBehaviorBase::onDeveloperModeDisable()
+void EntityOutOfCombatAttackBehaviorBase::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
 	this->outOfCombatAttackDebug->setVisible(false);
 }
 
-void OutOfCombatAttackBehaviorBase::onLoad()
+void EntityOutOfCombatAttackBehaviorBase::onLoad()
 {
 }
 
-void OutOfCombatAttackBehaviorBase::doOutOfCombatAttack(std::string attackAnimation, float onset, float sustain)
+void EntityOutOfCombatAttackBehaviorBase::doOutOfCombatAttack(std::string attackAnimation, float onset, float sustain)
 {
 	if (this->isPerformingOutOfCombatAttack)
 	{

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehaviors/Entities/OutOfCombatAttackBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityOutOfCombatAttackBehaviorBase.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class Squally;
 
-class SquallyOutOfCombatAttackBehaviors : public OutOfCombatAttackBehaviorBase
+class SquallyOutOfCombatAttackBehaviors : public EntityOutOfCombatAttackBehaviorBase
 {
 public:
 	static SquallyOutOfCombatAttackBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
@@ -23,7 +23,7 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef OutOfCombatAttackBehaviorBase super;
+	typedef EntityOutOfCombatAttackBehaviorBase super;
 	
 	std::string getOutOfCombatAttackAnimation();
 	float getOutOfCombatAttackOnset();

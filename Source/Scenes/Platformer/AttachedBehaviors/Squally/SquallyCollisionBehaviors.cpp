@@ -3,9 +3,14 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
+#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -25,17 +30,45 @@ SquallyCollisionBehaviors* SquallyCollisionBehaviors::create(GameObject* owner, 
 SquallyCollisionBehaviors::SquallyCollisionBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->squally = static_cast<Squally*>(owner);
+	this->noCombatDuration = 0.0f;
 }
 
 SquallyCollisionBehaviors::~SquallyCollisionBehaviors()
 {
 }
 
+void SquallyCollisionBehaviors::update(float dt)
+{
+	super::update(dt);
+
+	if (this->noCombatDuration > 0.0f)
+	{
+		this->noCombatDuration -= dt;
+	}
+}
+
 void SquallyCollisionBehaviors::onLoad()
 {
+	this->noCombatDuration = 2.0f;
+
+	this->squally->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->squally->isDead())
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
+		
+		// First-strike!
+		this->engageEnemy(enemy, true);
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
 	this->squally->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->noCombatDuration > 0.0f || this->squally->isDead())
+		if (this->noCombatDuration > 0.0f || this->squally->isDead())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -43,7 +76,7 @@ void SquallyCollisionBehaviors::onLoad()
 		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
 		
 		// Hit enemy directly, or got hit by their weapon -- not a first-strike
-		this->squally->engageEnemy(enemy, false);
+		this->engageEnemy(enemy, false);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -86,4 +119,26 @@ void SquallyCollisionBehaviors::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+
+	this->scheduleUpdate();
+}
+
+void SquallyCollisionBehaviors::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
+{
+	this->noCombatDuration = 2.0f;
+	this->squally->saveState();
+
+	if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
+	{
+		CombatMap* combatMap = CombatMap::create(
+			enemy->getBattleMapResource(),
+			enemy->getBattleMapArgs(),
+			firstStrike,
+			enemy->getUniqueIdentifier(),
+			{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
+			enemy->getCombatEntityList()
+		);
+
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+	}
 }

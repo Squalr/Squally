@@ -9,11 +9,11 @@ namespace cocos2d
 
 class PlatformerEntity;
 
-class OutOfCombatAttackBehaviorBase : public AttachedBehavior
+class EntityOutOfCombatAttackBehaviorBase : public AttachedBehavior
 {
 protected:
-	OutOfCombatAttackBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs);
-	~OutOfCombatAttackBehaviorBase();
+	EntityOutOfCombatAttackBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs);
+	~EntityOutOfCombatAttackBehaviorBase();
 
 	void initializePositions() override;
 	void onDeveloperModeEnable() override;

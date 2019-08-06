@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityMovementBehaviorBase.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class Squally;
 
-class SquallyMovementBehaviors : public AttachedBehavior
+class SquallyMovementBehaviors : public EntityMovementBehaviorBase
 {
 public:
 	static SquallyMovementBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
@@ -24,7 +24,7 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef AttachedBehavior super;
+	typedef EntityMovementBehaviorBase super;
 
 	Squally* squally;
 };

@@ -102,8 +102,6 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
-	void onDeveloperModeDisable() override;
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
@@ -127,13 +125,8 @@ protected:
 	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;
 	ControlState controlState;
-	
-	ClickableNode* resurrectButton;
-	ClickableNode* killButton;
 
 	bool isOnGround();
-	bool isStandingOnSolid();
-	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	virtual void rebuildWeaponCollision(cocos2d::Size size);
 	
 	bool isCinimaticHijacked;
@@ -157,7 +150,9 @@ protected:
 private:
 	typedef HackableObject super;
 	friend class EntityCollisionBehaviors;
-	friend class OutOfCombatAttackBehaviorBase;
+	friend class EntityDebugBehaviors;
+	friend class EntityMovementBehaviorBase;
+	friend class EntityOutOfCombatAttackBehaviorBase;
 
 	int health;
 	int maxHealth;

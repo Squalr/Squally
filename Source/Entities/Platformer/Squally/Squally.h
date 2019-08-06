@@ -32,6 +32,7 @@ private:
 	typedef PlatformerFriendly super;
 	friend class SquallyBehaviors;
 	friend class SquallyCollisionBehaviors;
+	friend class SquallyEquipmentVisuals;
 	friend class SquallyMovementBehaviors;
 	friend class SquallyOutOfCombatAttackBehaviors;
 	
@@ -45,16 +46,12 @@ private:
 	void onHackerModeEnable(int eq) override;
 	void registerHackables() override;
 	bool isAliveSqually();
-	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
 	void saveState();
 	void loadState();
-	void rebuildWeaponCollision(cocos2d::Size size) override;
-	void updateEquipmentVisual();
 	void runEyeBlinkLoop();
 	void spawnHelper();
 
 	bool canJump;
-	float noCombatDuration;
 
 	cocos2d::Node* cameraTrackTarget;
 	SmartAnimationSequenceNode* leftEyeController;
