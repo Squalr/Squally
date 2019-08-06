@@ -9,7 +9,7 @@ namespace cocos2d
 }
 
 class GameObject;
-class QuestDeserializer;
+class PropertyDeserializer;
 
 class ObjectDeserializer : public SmartNode
 {
@@ -36,14 +36,15 @@ public:
 		}
 	};
 
-	virtual void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) = 0;
+	virtual void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 	std::string getObjectType();
 
 protected:
-	ObjectDeserializer(std::string objectType, QuestDeserializer* questDeserializer = nullptr);
+	ObjectDeserializer(std::string objectType, std::vector<PropertyDeserializer*> propertyDeserializers = { });
 	~ObjectDeserializer();
 
-	QuestDeserializer* questDeserializer;
+	std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> deserializers;
+	std::vector<PropertyDeserializer*> propertyDeserializers;
 
 private:
 	typedef SmartNode super;

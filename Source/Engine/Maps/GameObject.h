@@ -42,6 +42,8 @@ public:
 	static const std::string MapKeyQuest;
 	static const std::string MapKeyQuestLine;
 	static const std::string MapKeyQuestTag;
+	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKeyAttachedBehaviorArgs;
 	static const std::string MapKeyArgs;
 
 	static const std::string MapKeyGid;

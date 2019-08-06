@@ -14,5 +14,5 @@ private:
 	PlatformerDecorDeserializer();
 	~PlatformerDecorDeserializer();
 
-	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
+	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 };

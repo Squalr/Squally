@@ -51,6 +51,7 @@ private:
 	void rebuildWeaponCollision(cocos2d::Size size) override;
 	void updateEquipmentVisual();
 	void runEyeBlinkLoop();
+	void spawnHelper();
 
 	bool canJump;
 	float noCombatDuration;

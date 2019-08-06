@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -21,7 +22,7 @@ PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 	return instance;
 }
 
-PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerQuestDeserializer::create())
+PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
@@ -125,35 +126,4 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 
 PlatformerObjectDeserializer::~PlatformerObjectDeserializer()
 {
-}
-
-void PlatformerObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
-{
-	ValueMap properties = args->properties;
-	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
-	std::string questLine = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString();
-
-	if (this->deserializers.find(name) != this->deserializers.end())
-	{
-		GameObject* object = this->deserializers[name](properties);
-
-		if (questLine != "")
-		{
-			std::string questTask = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
-			std::string questTag = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestTag, Value("")).asString();
-			
-			QuestTask* quest = this->questDeserializer->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(object, questLine, questTask, questTag));
-
-			if (quest != nullptr)
-			{
-				object->addChild(quest);
-			}
-		}
-
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));
-	}
-	else
-	{
-		CCLOG("Unknown object encountered: %s", name.c_str());
-	}
 }

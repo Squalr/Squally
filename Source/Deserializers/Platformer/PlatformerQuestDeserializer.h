@@ -7,7 +7,8 @@ class PlatformerQuestDeserializer : public QuestDeserializer
 public:
 	static PlatformerQuestDeserializer* create();
 
-	static const std::string MapKeyTypeObject;
+	void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) override;
+	std::string getPropertyDeserializerKey() override;
 
 private:
 	typedef QuestDeserializer super;

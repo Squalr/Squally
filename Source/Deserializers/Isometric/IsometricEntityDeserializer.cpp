@@ -31,18 +31,3 @@ IsometricEntityDeserializer::IsometricEntityDeserializer() : super(IsometricEnti
 IsometricEntityDeserializer::~IsometricEntityDeserializer()
 {
 }
-
-void IsometricEntityDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
-{
-	ValueMap properties = args->properties;
-	const std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
-
-	if (this->deserializers.find(name) != this->deserializers.end())
-	{
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
-	}
-	else
-	{
-		CCLOG("Unknown entity encountered: %s", name.c_str());
-	}
-}

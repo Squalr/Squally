@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/Deserializers/PropertyDeserializer.h"
 
 namespace cocos2d
 {
@@ -12,7 +12,7 @@ class GameObject;
 class QuestLine;
 class QuestTask;
 
-class QuestDeserializer : public SmartNode
+class QuestDeserializer : public PropertyDeserializer
 {
 public:
 	struct QuestLineDeserializationRequestArgs
@@ -50,5 +50,5 @@ protected:
 	std::map<std::string, std::function<QuestLine*()>> lineDeserializers;
 
 private:
-	typedef SmartNode super;
+	typedef PropertyDeserializer super;
 };

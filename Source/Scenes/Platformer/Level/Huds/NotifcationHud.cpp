@@ -88,6 +88,7 @@ void NotificationHud::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
+	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
 	this->menuBack->setPosition(Vec2(0.0f, 0.0f));
 	this->okButton->setPosition(Vec2(0.0f, - 192.0f));
 	this->title->setPosition(Vec2(0.0f, 204.0f));

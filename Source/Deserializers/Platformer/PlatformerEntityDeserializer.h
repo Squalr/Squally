@@ -8,7 +8,6 @@ class PlatformerEntityDeserializer : public ObjectDeserializer
 {
 public:
 	static PlatformerEntityDeserializer* create();
-	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 
 	static const std::string MapKeyTypeEntity;
 
@@ -17,6 +16,4 @@ private:
 
 	PlatformerEntityDeserializer();
 	~PlatformerEntityDeserializer();
-
-	std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> deserializers;
 };

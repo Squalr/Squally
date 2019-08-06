@@ -108,18 +108,3 @@ IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObje
 IsometricObjectDeserializer::~IsometricObjectDeserializer()
 {
 }
-
-void IsometricObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args)
-{
-	ValueMap properties = args->properties;
-	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
-
-	if (this->deserializers.find(name) != this->deserializers.end())
-	{
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
-	}
-	else
-	{
-		CCLOG("Unknown object encountered: %s", name.c_str());
-	}
-}
