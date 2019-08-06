@@ -36,8 +36,7 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial,
-		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
-		float ghettoGroundCollisionFix = 0.0f);
+		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO);
 	virtual ~PlatformerEnemy();
 
 	void onEnter() override;

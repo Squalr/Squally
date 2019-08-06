@@ -35,9 +35,18 @@ PlatformerEnemy::PlatformerEnemy(
 	Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial,
-	Size movementCollisionSize,
-	float ghettoGroundCollisionFix)
-	: super(properties, scmlResource, emblemResource, collisionType, size, scale, collisionOffset, baseHealth, baseSpecial, movementCollisionSize, ghettoGroundCollisionFix)
+	Size movementCollisionSize)
+	: super(
+		properties,
+		scmlResource,
+		emblemResource,
+		collisionType,
+		size,
+		scale,
+		collisionOffset,
+		baseHealth,
+		baseSpecial,
+		movementCollisionSize)
 {
 	this->combatEntityList = std::vector<std::string>();
 	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");

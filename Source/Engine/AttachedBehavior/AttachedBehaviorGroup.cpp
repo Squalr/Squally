@@ -14,7 +14,7 @@ AttachedBehaviorGroup::AttachedBehaviorGroup(GameObject* owner, std::string atta
 {
 	for (auto it = attachedBehaviors.begin(); it != attachedBehaviors.end(); it++)
 	{
-		this->addChild(*it);
+		owner->attachBehavior(*it);
 	}
 }
 

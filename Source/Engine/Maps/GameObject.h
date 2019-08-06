@@ -11,11 +11,16 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
+class AttachedBehavior;
+
 class GameObject : public SmartNode
 {
 public:
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
+	void attachBehavior(AttachedBehavior* attachedBehavior);
+	void setState(std::string key, cocos2d::Value value);
+	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
 	void setZSorted(bool zSorted);
 	bool isZSorted();
 
@@ -87,4 +92,5 @@ private:
 	bool zSorted;
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
+	cocos2d::ValueMap stateVariables;
 };

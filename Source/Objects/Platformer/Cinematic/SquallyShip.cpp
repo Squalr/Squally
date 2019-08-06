@@ -19,6 +19,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyBehaviors.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/FXResources.h"
@@ -143,7 +144,9 @@ void SquallyShip::initializeListeners()
 			Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
 			Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
 			Squally* squally = Squally::deserialize(this->properties);
+			SquallyBehaviors* squallyBehaviors = SquallyBehaviors::create(squally, "");
 
+			squally->attachBehavior(squallyBehaviors);
 			squally->setHealth(1);
 
 			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(

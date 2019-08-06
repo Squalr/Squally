@@ -22,11 +22,16 @@ protected:
 	~EntityCollisionBehaviors();
 
 	void onLoad() override;
+	void update(float dt) override;
 
 private:
 	typedef AttachedBehavior super;
 
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
+	float calculateGhettoOffsetFix();
 
 	PlatformerEntity* entity;
+	CollisionObject* groundCollision;
+
+	static const float GroundCollisionPadding;
 };

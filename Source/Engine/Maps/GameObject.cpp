@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
@@ -69,6 +70,7 @@ GameObject::GameObject(const ValueMap& properties)
 	this->properties = properties;
 	this->zSorted = false;
 	this->polylinePoints = std::vector<Vec2>();
+	this->stateVariables = ValueMap();
 	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 
@@ -196,6 +198,24 @@ void GameObject::initializeListeners()
 std::string GameObject::getUniqueIdentifier()
 {
 	return this->uniqueIdentifier;
+}
+
+void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
+{
+	if (attachedBehavior != nullptr)
+	{
+		this->addChild(attachedBehavior);
+	}
+}
+
+void GameObject::setState(std::string key, Value value)
+{
+	this->stateVariables[key] = value;
+}
+
+Value GameObject::getStateOrDefault(std::string key, Value value)
+{
+	return GameUtils::getKeyOrDefault(this->stateVariables, key, value);
 }
 
 void GameObject::setZSorted(bool zSorted)

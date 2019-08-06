@@ -4,12 +4,15 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
 const std::string EntityCollisionBehaviors::MapKeyAttachedBehavior = "entity-collisions";
+const float EntityCollisionBehaviors::GroundCollisionPadding = 28.0f;
 
 EntityCollisionBehaviors* EntityCollisionBehaviors::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
@@ -36,6 +39,21 @@ EntityCollisionBehaviors::~EntityCollisionBehaviors()
 
 void EntityCollisionBehaviors::onLoad()
 {
+	this->groundCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(
+			Size(std::max((this->entity->entitySize).width - EntityCollisionBehaviors::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
+			1.0f,
+			PlatformerEntity::CapsuleRadius
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		false,
+		false
+	);
+
+	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -this->entity->hoverHeight / 2.0f + PlatformerEntity::GroundCollisionOffset + this->calculateGhettoOffsetFix()));
+	
+	this->entity->addChild(this->groundCollision);
+
 	this->entity->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
@@ -44,7 +62,7 @@ void EntityCollisionBehaviors::onLoad()
 	this->entity->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// No collision when not standing on anything, or if already on a different platform
-		if (this->entity->groundCollision->getCurrentCollisions().empty() || this->isStandingOnSomethingOtherThan(collisionData.other))
+		if (this->groundCollision->getCurrentCollisions().empty() || this->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -82,7 +100,7 @@ void EntityCollisionBehaviors::onLoad()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entity->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Clear current animation
 		if (!this->entity->isDead() && this->entity->movementCollision->getVelocity().y <= 0.0f)
@@ -93,12 +111,12 @@ void EntityCollisionBehaviors::onLoad()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entity->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->entity->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -117,7 +135,7 @@ void EntityCollisionBehaviors::onLoad()
 bool EntityCollisionBehaviors::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
 {
 	Node* currentCollisionGroup = collisonObject->getParent();
-	std::vector<CollisionObject*> groundCollisions = this->entity->groundCollision->getCurrentCollisions();
+	std::vector<CollisionObject*> groundCollisions = this->groundCollision->getCurrentCollisions();
 
 	// Special case when standing on an intersection -- always collide with the non-owner of that intersection point (the lower platform)
 	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
@@ -161,4 +179,21 @@ bool EntityCollisionBehaviors::isStandingOnSomethingOtherThan(CollisionObject* c
 	}
 
 	return false;
+}
+
+void EntityCollisionBehaviors::update(float dt)
+{
+	super::update(dt);
+
+	this->entity->setState(StateKeys::IsOnGround, Value(!this->groundCollision->getCurrentCollisions().empty()));
+}
+
+float EntityCollisionBehaviors::calculateGhettoOffsetFix()
+{
+	if (dynamic_cast<Squally*>(this->entity) != nullptr)
+	{
+		return 24.0f;
+	}
+
+	return 0.0f;
 }

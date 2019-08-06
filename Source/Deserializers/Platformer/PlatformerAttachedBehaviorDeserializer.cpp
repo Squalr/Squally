@@ -47,7 +47,7 @@ void PlatformerAttachedBehaviorDeserializer::deserializeProperties(GameObject* o
 
 		if (attachedBehavior != nullptr)
 		{
-			owner->addChild(attachedBehavior);
+			owner->attachBehavior(attachedBehavior);
 		}
 	}
 }

@@ -86,7 +86,6 @@ protected:
 		int baseHealth,
 		int baseSpecial,
 		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
-		float ghettoGroundCollisionFix = 0.0f,
 		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement,
 		std::string inventorySaveKey = "",
 		std::string equipmentSaveKey = "",
@@ -110,11 +109,8 @@ protected:
 	virtual void performJumpAnimation();
 	void doOutOfCombatAttack();
 
-	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale);
-
 	CollisionObject* movementCollision;
 	CollisionObject* entityCollision;
-	CollisionObject* groundCollision;
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
 	CollisionObject* weaponCollision;
@@ -126,7 +122,6 @@ protected:
 	cocos2d::Vec2 spawnCoords;
 	ControlState controlState;
 
-	bool isOnGround();
 	virtual void rebuildWeaponCollision(cocos2d::Size size);
 	
 	bool isCinimaticHijacked;
@@ -142,7 +137,6 @@ protected:
 	static const cocos2d::Size DefaultWeaponSize;
 	static const float SwimVerticalDrag;
 	static const float JumpVelocity;
-	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float CapsuleRadius;
 	static const std::string MapKeyPropertyState;

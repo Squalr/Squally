@@ -380,6 +380,31 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
+PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius)
+{
+	Size newSize = size * scale;
+
+	newSize.height = std::max(0.0f, newSize.height - capsuleRadius * 2.0f);
+
+	std::vector<Vec2> points = std::vector<Vec2>();
+
+	// Right side
+	points.push_back(Vec2(newSize.width / 2.0f, newSize.height / 2.0f));
+	points.push_back(Vec2(newSize.width / 2.0f, -newSize.height / 2.0f));
+
+	// Bottom capsule
+	points.push_back(Vec2(0.0f, -newSize.height / 2.0f - capsuleRadius));
+
+	// Left side
+	points.push_back(Vec2(-newSize.width / 2.0f, -newSize.height / 2.0f));
+	points.push_back(Vec2(-newSize.width / 2.0f, newSize.height / 2.0f));
+
+	// Top capsule
+	points.push_back(Vec2(0.0f, newSize.height / 2.0f + capsuleRadius));
+
+	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, 0.5f));
+}
+
 bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
 	CollisionResult result = defaultResult;

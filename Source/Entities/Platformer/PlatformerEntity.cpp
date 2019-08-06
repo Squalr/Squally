@@ -35,7 +35,6 @@ const float PlatformerEntity::WallDetectorSize = 64.0f;
 const Size PlatformerEntity::DefaultWeaponSize = Size(64.0f, 128.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
-const float PlatformerEntity::GroundCollisionPadding = 28.0f;
 const float PlatformerEntity::GroundCollisionOffset = -12.0f;
 const float PlatformerEntity::CapsuleRadius = 8.0f;
 
@@ -58,7 +57,6 @@ PlatformerEntity::PlatformerEntity(
 	int baseHealth,
 	int baseSpecial,
 	Size movementCollisionSize,
-	float ghettoGroundCollisionFix,
 	PlatformerCollisionType movementCollisionType,
 	std::string inventorySaveKey,
 	std::string equipmentSaveKey,
@@ -85,34 +83,25 @@ PlatformerEntity::PlatformerEntity(
 	this->entitySize = size * scale;
 
 	this->movementCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(movementCollisionSize, scale),
+		CollisionObject::createCapsulePolygon(movementCollisionSize, scale, PlatformerEntity::CapsuleRadius),
 		(CollisionType)movementCollisionType,
 		true,
 		false
 	);
 	this->entityCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(size, scale * 0.9f),
+		CollisionObject::createCapsulePolygon(size, scale * 0.9f, PlatformerEntity::CapsuleRadius),
 		(CollisionType)(int)this->collisionType,
 		false,
 		false
 	);
-	this->groundCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(
-			Size(std::max((size * scale).width - PlatformerEntity::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
-			1.0f
-		),
-		(int)PlatformerCollisionType::GroundDetector,
-		false,
-		false
-	);
 	this->leftCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f),
+		CollisionObject::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f, PlatformerEntity::CapsuleRadius),
 		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false
 	);
 	this->rightCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f),
+		CollisionObject::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f, PlatformerEntity::CapsuleRadius),
 		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false
@@ -145,7 +134,7 @@ PlatformerEntity::PlatformerEntity(
 	this->movementCollision->bindTo(this);
 	this->movementCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(0.0f, this->entitySize.height / 2.0f));
 	this->entityCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(0.0f, movementSize.height / 2.0f));
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -this->hoverHeight / 2.0f + PlatformerEntity::GroundCollisionOffset + ghettoGroundCollisionFix));
+	
 	this->leftCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(-this->entitySize.width / 2.0f + PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
 	this->rightCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(this->entitySize.width / 2.0f - PlatformerEntity::WallDetectorSize / 2.0f, movementSize.height / 2.0f));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -180,7 +169,6 @@ PlatformerEntity::PlatformerEntity(
 
 	this->addChild(this->movementCollision);
 	this->addChild(this->entityCollision);
-	this->addChild(this->groundCollision);
 	this->addChild(this->leftCollision);
 	this->addChild(this->rightCollision);
 	this->addChild(this->animationNode);
@@ -535,11 +523,6 @@ CurrencyInventory* PlatformerEntity::getCurrencyInventory()
 	return this->currencyInventory;
 }
 
-bool PlatformerEntity::isOnGround()
-{
-	return (!this->groundCollision->getCurrentCollisions().empty());
-}
-
 void PlatformerEntity::rebuildWeaponCollision(Size size)
 {
 	AnimationPart* mainhand = this->animationNode->getAnimationPart("mainhand");
@@ -555,7 +538,7 @@ void PlatformerEntity::rebuildWeaponCollision(Size size)
 	mainhand->removeTrackingObject(this->weaponCollision);
 
 	this->weaponCollision = CollisionObject::create(
-		PlatformerEntity::createCapsulePolygon(size, 1.0f),
+		CollisionObject::createCapsulePolygon(size, 1.0f, PlatformerEntity::CapsuleRadius),
 		(int)weaponType,
 		false,
 		false
@@ -563,31 +546,6 @@ void PlatformerEntity::rebuildWeaponCollision(Size size)
 
 	this->weaponCollision->setPhysicsEnabled(false);
 	mainhand->addTrackingObject(this->weaponCollision);
-}
-
-PhysicsBody* PlatformerEntity::createCapsulePolygon(Size size, float scale)
-{
-	Size newSize = size * scale;
-
-	newSize.height = std::max(0.0f, newSize.height - PlatformerEntity::CapsuleRadius * 2.0f);
-
-	std::vector<Vec2> points = std::vector<Vec2>();
-
-	// Right side
-	points.push_back(Vec2(newSize.width / 2.0f, newSize.height / 2.0f));
-	points.push_back(Vec2(newSize.width / 2.0f, -newSize.height / 2.0f));
-
-	// Bottom capsule
-	points.push_back(Vec2(0.0f, -newSize.height / 2.0f - PlatformerEntity::CapsuleRadius));
-
-	// Left side
-	points.push_back(Vec2(-newSize.width / 2.0f, -newSize.height / 2.0f));
-	points.push_back(Vec2(-newSize.width / 2.0f, newSize.height / 2.0f));
-
-	// Top capsule
-	points.push_back(Vec2(0.0f, newSize.height / 2.0f + PlatformerEntity::CapsuleRadius));
-
-	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, 0.5f));
 }
 
 void PlatformerEntity::registerAttack(PlatformerAttack* attack)
