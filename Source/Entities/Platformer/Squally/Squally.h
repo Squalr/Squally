@@ -34,6 +34,9 @@ protected:
 
 private:
 	typedef PlatformerFriendly super;
+	friend class SquallyBehaviors;
+	friend class SquallyCollisionBehaviors;
+	
 	Squally(cocos2d::ValueMap& properties);
 	virtual ~Squally();
 	

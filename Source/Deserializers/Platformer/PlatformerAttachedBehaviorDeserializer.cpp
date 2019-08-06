@@ -22,6 +22,8 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers = std::map<std::string, std::function<AttachedBehavior*(GameObject*, std::string)>>();
 	
 	this->attachedBehaviorDeserializers[FirstIOUFound::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)FirstIOUFound::create(owner, attachedBehaviorArgs); };
+	this->attachedBehaviorDeserializers[SquallyBehaviors::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyBehaviors::create(owner, attachedBehaviorArgs); };
+	this->attachedBehaviorDeserializers[SquallyCollisionBehaviors::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyCollisionBehaviors::create(owner, attachedBehaviorArgs); };
 }
 
 PlatformerAttachedBehaviorDeserializer::~PlatformerAttachedBehaviorDeserializer()

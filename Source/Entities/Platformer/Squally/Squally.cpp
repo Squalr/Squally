@@ -122,60 +122,6 @@ void Squally::onEnterTransitionDidFinish()
 void Squally::initializeCollisionEvents()
 {
 	super::initializeCollisionEvents();
-
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->noCombatDuration > 0.0f || this->isDead())
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
-		
-		// Hit enemy directly, or got hit by their weapon -- not a first-strike
-		this->engageEnemy(enemy, false);
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->isAlive())
-		{
-			this->killAndRespawn();
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-	
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->isAlive())
-		{
-			AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
-			
-			mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->isAlive())
-		{
-			AnimationPart* mouth = this->getAnimations()->getAnimationPart("mouth");
-
-			mouth->replaceSprite(EntityResources::Squally_MOUTH);
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
 }
 
 void Squally::initializePositions()
