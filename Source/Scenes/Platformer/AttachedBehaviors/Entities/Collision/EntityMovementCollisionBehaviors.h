@@ -15,6 +15,11 @@ class EntityMovementCollisionBehaviors : public AttachedBehavior
 public:
 	static EntityMovementCollisionBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
 
+	cocos2d::Vec2 getVelocity();
+	void setVelocity(cocos2d::Vec2 velocity);
+	bool hasLeftWallCollision();
+	bool hasRightWallCollision();
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:

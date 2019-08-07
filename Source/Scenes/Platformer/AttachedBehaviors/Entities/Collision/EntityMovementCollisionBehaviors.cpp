@@ -47,15 +47,31 @@ void EntityMovementCollisionBehaviors::onLoad()
 {
 	this->buildMovementCollision();
 	this->buildWallDetectors();
-
-	this->entity->setState(StateKeys::MovementCollisionObjectPtr, Value(this->movementCollision));
-	this->entity->setState(StateKeys::LeftWallCollisionObjectPtr, Value(this->leftCollision));
-	this->entity->setState(StateKeys::RightWallCollisionObjectPtr, Value(this->rightCollision));
 }
 
 void EntityMovementCollisionBehaviors::update(float dt)
 {
 	super::update(dt);
+}
+
+Vec2 EntityMovementCollisionBehaviors::getVelocity()
+{
+	return this->movementCollision->getVelocity();
+}
+
+void EntityMovementCollisionBehaviors::setVelocity(Vec2 velocity)
+{
+	this->movementCollision->setVelocity(velocity);
+}
+
+bool EntityMovementCollisionBehaviors::hasLeftWallCollision()
+{
+	return !this->leftCollision->getCurrentCollisions().empty();
+}
+
+bool EntityMovementCollisionBehaviors::hasRightWallCollision()
+{
+	return !this->rightCollision->getCurrentCollisions().empty();
 }
 
 void EntityMovementCollisionBehaviors::buildMovementCollision()
