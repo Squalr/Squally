@@ -26,6 +26,20 @@ public:
 	void setZSorted(bool zSorted);
 	bool isZSorted();
 
+	template <class T>
+	T* getAttachedBehavior()
+	{
+		for (auto it = attachedBehaviors.begin(); it != attachedBehaviors.end(); it++)
+		{
+			if (dynamic_cast<T*>(*it) != nullptr)
+			{
+				return dynamic_cast<T*>(*it);
+			}
+		}
+
+		return nullptr;
+	}
+
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
 	static const std::string MapKeyPoints;
@@ -95,4 +109,5 @@ private:
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;
+	std::vector<AttachedBehavior*> attachedBehaviors;
 };

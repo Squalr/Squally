@@ -16,13 +16,15 @@ protected:
 	EntityMovementBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs);
 	~EntityMovementBehaviorBase();
 
-	void update(float dt) override;
 	void onLoad() override;
+	void update(float dt) override;
 	
 	cocos2d::Vec2 movement;
 
 private:
 	typedef AttachedBehavior super;
+
+	bool isOnGround();
 
 	PlatformerEntity* entity;
 };

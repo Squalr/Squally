@@ -6,6 +6,7 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityGroundCollisionBehaviors.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -87,9 +88,15 @@ void EntityMovementCollisionBehaviors::buildMovementCollision()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
+		EntityGroundCollisionBehaviors* groundBehaviors = this->entity->getAttachedBehavior<EntityGroundCollisionBehaviors>();
+
+		if (groundBehaviors == nullptr)
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
 		// No collision when not standing on anything, or if already on a different platform
-		if (this->entity->getStateOrDefault(StateKeys::IsOnGround, Value(false)).asBool() || 
-			collisionData.other->getStateOrDefault(StateKeys::CollisionObjectIsStandingOnOther, Value(false)).asBool() )
+		if (!groundBehaviors->isOnGround() || groundBehaviors->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}

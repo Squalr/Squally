@@ -7,6 +7,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityGroundCollisionBehaviors.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -47,7 +48,10 @@ void EntityMovementBehaviorBase::update(float dt)
 	}
 
 	Vec2 velocity = movementCollision->getVelocity();
-	bool isOnGround = this->entity->getStateOrDefault(StateKeys::IsOnGround, Value(false)).asBool();
+
+	EntityGroundCollisionBehaviors* groundBehaviors = this->entity->getAttachedBehavior<EntityGroundCollisionBehaviors>();
+
+	bool isOnGround = groundBehaviors == nullptr ? false : groundBehaviors->isOnGround();
 
 	switch (this->entity->controlState)
 	{

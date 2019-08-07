@@ -15,6 +15,9 @@ class EntityGroundCollisionBehaviors : public AttachedBehavior
 public:
 	static EntityGroundCollisionBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
 
+	bool isOnGround();
+	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
@@ -22,13 +25,9 @@ protected:
 	~EntityGroundCollisionBehaviors();
 
 	void onLoad() override;
-	void update(float dt) override;
 
 private:
 	typedef AttachedBehavior super;
-
-	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
-	float calculateGhettoOffsetFix();
 
 	PlatformerEntity* entity;
 	CollisionObject* groundCollision;

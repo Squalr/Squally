@@ -13,7 +13,7 @@ using namespace cocos2d;
 
 const std::string EntityGroundCollisionBehaviors::MapKeyAttachedBehavior = "entity-ground-collisions";
 const float EntityGroundCollisionBehaviors::GroundCollisionPadding = 28.0f;
-const float EntityGroundCollisionBehaviors::GroundCollisionOffset = -12.0f;
+const float EntityGroundCollisionBehaviors::GroundCollisionOffset = -4.0f;
 const float EntityGroundCollisionBehaviors::GroundCollisionRadius = 8.0f;
 
 EntityGroundCollisionBehaviors* EntityGroundCollisionBehaviors::create(GameObject* owner, std::string attachedBehaviorArgs)
@@ -65,9 +65,7 @@ void EntityGroundCollisionBehaviors::onLoad()
 		{
 			this->entity->animationNode->playAnimation("Idle");
 		}
-
-		collisionData.other->setState(StateKeys::CollisionObjectIsStandingOnOther, Value(this->isStandingOnSomethingOtherThan(collisionData.other)));
-
+		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
@@ -80,6 +78,11 @@ void EntityGroundCollisionBehaviors::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+}
+
+bool EntityGroundCollisionBehaviors::isOnGround()
+{
+	return !this->groundCollision->getCurrentCollisions().empty();
 }
 
 bool EntityGroundCollisionBehaviors::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
@@ -129,11 +132,4 @@ bool EntityGroundCollisionBehaviors::isStandingOnSomethingOtherThan(CollisionObj
 	}
 
 	return false;
-}
-
-void EntityGroundCollisionBehaviors::update(float dt)
-{
-	super::update(dt);
-
-	this->entity->setState(StateKeys::IsOnGround, Value(!this->groundCollision->getCurrentCollisions().empty()));
 }
