@@ -27,6 +27,13 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void buildMovementCollision();
+	void buildWallDetectors();
+
 	PlatformerEntity* entity;
 	CollisionObject* movementCollision;
+	CollisionObject* leftCollision;
+	CollisionObject* rightCollision;
+
+	static const float WallDetectorSize;
 };

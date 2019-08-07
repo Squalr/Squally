@@ -52,7 +52,9 @@ void EntityGroundCollisionBehaviors::onLoad()
 		false
 	);
 
-	this->groundCollision->getPhysicsBody()->setPositionOffset(Vec2(0.0f, -this->entity->hoverHeight / 2.0f + EntityGroundCollisionBehaviors::GroundCollisionOffset + this->calculateGhettoOffsetFix()));
+	float offsetY = 0.0f;
+
+	this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, -this->entity->hoverHeight / 2.0f + EntityGroundCollisionBehaviors::GroundCollisionOffset));
 	
 	this->entity->addChild(this->groundCollision);
 
@@ -76,16 +78,6 @@ void EntityGroundCollisionBehaviors::onLoad()
 
 	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entity->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
-	{	
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entity->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
-	{	
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
@@ -144,14 +136,4 @@ void EntityGroundCollisionBehaviors::update(float dt)
 	super::update(dt);
 
 	this->entity->setState(StateKeys::IsOnGround, Value(!this->groundCollision->getCurrentCollisions().empty()));
-}
-
-float EntityGroundCollisionBehaviors::calculateGhettoOffsetFix()
-{
-	if (dynamic_cast<Squally*>(this->entity) != nullptr)
-	{
-		return 24.0f;
-	}
-
-	return 0.0f;
 }

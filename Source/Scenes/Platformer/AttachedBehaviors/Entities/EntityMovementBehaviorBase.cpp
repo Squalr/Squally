@@ -33,8 +33,10 @@ void EntityMovementBehaviorBase::update(float dt)
 	super::update(dt);
 
 	CollisionObject* movementCollision = static_cast<CollisionObject*>(this->entity->getStateOrDefault(StateKeys::MovementCollisionObjectPtr, Value(nullptr)).asPointer());
+	CollisionObject* leftCollision = static_cast<CollisionObject*>(this->entity->getStateOrDefault(StateKeys::LeftWallCollisionObjectPtr, Value(nullptr)).asPointer());
+	CollisionObject* rightCollision = static_cast<CollisionObject*>(this->entity->getStateOrDefault(StateKeys::RightWallCollisionObjectPtr, Value(nullptr)).asPointer());
 	
-	if (movementCollision == nullptr || this->entity->isCinimaticHijacked)
+	if (movementCollision == nullptr || leftCollision == nullptr || rightCollision == nullptr || this->entity->isCinimaticHijacked)
 	{
 		return;
 	}
@@ -53,8 +55,8 @@ void EntityMovementBehaviorBase::update(float dt)
 		case PlatformerEntity::ControlState::Normal:
 		{
 			// Move in the x direction unless hitting a wall while not standing on anything (this->entity prevents wall jumps)
-			if ((this->movement.x < 0.0f && this->entity->leftCollision->getCurrentCollisions().empty()) ||
-				(this->movement.x > 0.0f && this->entity->rightCollision->getCurrentCollisions().empty()))
+			if ((this->movement.x < 0.0f && leftCollision->getCurrentCollisions().empty()) ||
+				(this->movement.x > 0.0f && rightCollision->getCurrentCollisions().empty()))
 			{
 				velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
 			}

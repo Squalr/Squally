@@ -108,8 +108,6 @@ protected:
 	void doOutOfCombatAttack();
 
 	CollisionObject* entityCollision;
-	CollisionObject* leftCollision;
-	CollisionObject* rightCollision;
 	CollisionObject* weaponCollision;
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
@@ -126,12 +124,12 @@ protected:
 	float entityScale;
 	cocos2d::Vec2 entityCollisionOffset;
 	cocos2d::Size entitySize;
+	cocos2d::Size movementSize;
 	ControlState controlState;
 
 	static const int DefaultEq;
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
-	static const float WallDetectorSize;
 	static const cocos2d::Size DefaultWeaponSize;
 	static const float SwimVerticalDrag;
 	static const float JumpVelocity;

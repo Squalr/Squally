@@ -31,7 +31,6 @@ using namespace cocos2d;
 
 const float PlatformerEntity::MoveAcceleration = 5800.0f;
 const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
-const float PlatformerEntity::WallDetectorSize = 64.0f;
 const Size PlatformerEntity::DefaultWeaponSize = Size(64.0f, 128.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
@@ -71,27 +70,13 @@ PlatformerEntity::PlatformerEntity(
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->eq = 0;
 	this->eqExperience = 0;
-	this->entityCollisionOffset = collisionOffset;
-
-	Vec2 scaledColOffset = this->entityCollisionOffset * this->entityScale;
+	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	
 	this->entitySize = size * scale;
 	
 	this->entityCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(size, scale * 0.9f, 8.0f),
 		(CollisionType)(int)this->collisionType,
-		false,
-		false
-	);
-	this->leftCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f, 8.0f),
-		(int)PlatformerCollisionType::WallDetector,
-		false,
-		false
-	);
-	this->rightCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(Size(PlatformerEntity::WallDetectorSize, this->entitySize.height), 1.0f, 8.0f),
-		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false
 	);
@@ -106,21 +91,21 @@ PlatformerEntity::PlatformerEntity(
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
+	this->movementSize = this->entitySize * this->entityScale + Size(0.0f, this->hoverHeight);
 
-	this->hackButtonOffset = Vec2(scaledColOffset.x, scaledColOffset.y + this->hoverHeight + this->entitySize.height);
+	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
 
 	this->animationNode->setScale(scale);
 	this->animationNode->playAnimation("Idle");
 	this->animationNode->setPositionY(this->hoverHeight / 2.0f);
 	
-	this->leftCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(-this->entitySize.width / 2.0f + PlatformerEntity::WallDetectorSize / 2.0f, (this->entitySize.width + this->hoverHeight / 2.0f)));
-	this->rightCollision->getPhysicsBody()->setPositionOffset(scaledColOffset + Vec2(this->entitySize.width / 2.0f - PlatformerEntity::WallDetectorSize / 2.0f, (this->entitySize.width + this->hoverHeight / 2.0f)));
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->clickHitbox->setContentSize(this->entitySize);
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
+	this->clickHitbox->setPosition(Vec2(this->movementSize.width / 2.0f, this->movementSize.height / 2.0f));
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
@@ -145,8 +130,6 @@ PlatformerEntity::PlatformerEntity(
 	}
 
 	this->addChild(this->entityCollision);
-	this->addChild(this->leftCollision);
-	this->addChild(this->rightCollision);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
 	this->addChild(this->clickHitbox);
