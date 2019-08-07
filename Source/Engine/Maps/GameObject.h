@@ -21,6 +21,8 @@ public:
 	void attachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value);
 	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
+	bool hasState(std::string key);
+	void clearState(std::string key);
 	void setZSorted(bool zSorted);
 	bool isZSorted();
 

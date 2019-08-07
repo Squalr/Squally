@@ -10,16 +10,16 @@ namespace cocos2d
 class CollisionObject;
 class PlatformerEntity;
 
-class EntityCollisionBehaviors : public AttachedBehavior
+class EntityGroundCollisionBehaviors : public AttachedBehavior
 {
 public:
-	static EntityCollisionBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityGroundCollisionBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityCollisionBehaviors(GameObject* owner, std::string attachedBehaviorArgs);
-	~EntityCollisionBehaviors();
+	EntityGroundCollisionBehaviors(GameObject* owner, std::string attachedBehaviorArgs);
+	~EntityGroundCollisionBehaviors();
 
 	void onLoad() override;
 	void update(float dt) override;
@@ -34,4 +34,6 @@ private:
 	CollisionObject* groundCollision;
 
 	static const float GroundCollisionPadding;
+	static const float GroundCollisionOffset;
+	static const float GroundCollisionRadius;
 };

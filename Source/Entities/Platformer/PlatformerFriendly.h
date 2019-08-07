@@ -19,8 +19,7 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial,
-		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
-		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement,
+		float hoverHeight = 0.0f,
 		std::string inventorySaveKey = "",
 		std::string equipmentSaveKey = "",
 		std::string currencySaveKey = "");

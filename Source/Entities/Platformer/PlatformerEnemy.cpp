@@ -35,7 +35,7 @@ PlatformerEnemy::PlatformerEnemy(
 	Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial,
-	Size movementCollisionSize)
+	float hoverHeight)
 	: super(
 		properties,
 		scmlResource,
@@ -46,7 +46,7 @@ PlatformerEnemy::PlatformerEnemy(
 		collisionOffset,
 		baseHealth,
 		baseSpecial,
-		movementCollisionSize)
+		hoverHeight)
 {
 	this->combatEntityList = std::vector<std::string>();
 	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");

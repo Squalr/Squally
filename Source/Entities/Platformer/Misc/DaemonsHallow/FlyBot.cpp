@@ -70,7 +70,6 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	this->hexusOpponentData = FlyBot::getHexusOpponentData();
 
 	this->hasRunTutorialEvent = false;
-	this->movementCollision->setPhysicsEnabled(false);
 	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
 	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
 	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);

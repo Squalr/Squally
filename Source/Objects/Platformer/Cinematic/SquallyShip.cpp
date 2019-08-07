@@ -157,7 +157,8 @@ void SquallyShip::initializeListeners()
 			));
 
 			squally->setPosition(Vec2::ZERO);
-			squally->getCollision()->setPosition(crashCoords);
+			// Zac: oops fuck
+			//squally->getCollision()->setPosition(crashCoords);
 			GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 			this->shipCollision->setPhysicsEnabled(false);

@@ -1,7 +1,7 @@
 #include "EntityBehaviors.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/EntityDebugBehaviors.h"
 
 using namespace cocos2d;

@@ -38,8 +38,6 @@ SquallyMovementBehaviors::~SquallyMovementBehaviors()
 
 void SquallyMovementBehaviors::update(float dt)
 {
-	super::update(dt);
-
 	if (this->squally->isCinimaticHijacked || this->squally->getIsPlatformerDisabled() || this->squally->isDead())
 	{
 		return;
@@ -48,34 +46,36 @@ void SquallyMovementBehaviors::update(float dt)
 	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->squally->animationNode).origin;
 	//// this->squally->animationNode->setFlippedX(squallyPosition.x > MouseState::getMousePosition().x);
 
-	this->squally->movement = Vec2::ZERO;
+	this->movement = Vec2::ZERO;
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
-		this->squally->movement.x = -1.0f;
+		this->movement.x = -1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
-		this->squally->movement.x = 1.0f;
+		this->movement.x = 1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W))
 	{
-		this->squally->movement.y = 1.0f;
+		this->movement.y = 1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		this->squally->movement.y = -1.0f;
+		this->movement.y = -1.0f;
 	}
 
-	if (this->squally->movement != Vec2::ZERO)
+	if (this->movement != Vec2::ZERO)
 	{
 		// Soft save the player's position
 		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(this->squally->getPositionX()));
 		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(this->squally->getPositionY()));
 	}
+
+	super::update(dt);
 }
 
 void SquallyMovementBehaviors::onLoad()

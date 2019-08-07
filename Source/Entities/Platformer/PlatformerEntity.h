@@ -24,6 +24,12 @@ class SpeechBubble;
 class PlatformerEntity : public HackableObject
 {
 public:
+	enum class ControlState
+	{
+		Normal,
+		Swimming,
+	};
+
 	int getHealth();
 	void addHealth(int healthDelta);
 	void setHealth(int health);
@@ -62,7 +68,6 @@ public:
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
 	HexusOpponentData* getHexusOpponentData();
-	CollisionObject* getCollision();
 	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
 
 	ClickableNode* clickHitbox;
@@ -85,18 +90,11 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial,
-		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO,
-		PlatformerCollisionType movementCollisionType = PlatformerCollisionType::Movement,
+		float hoverHeight = 0.0f,
 		std::string inventorySaveKey = "",
 		std::string equipmentSaveKey = "",
 		std::string currencySaveKey = "");
-	virtual ~PlatformerEntity();
-
-	enum class ControlState
-	{
-		Normal,
-		Swimming,
-	};
+	~PlatformerEntity();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -109,7 +107,6 @@ protected:
 	virtual void performJumpAnimation();
 	void doOutOfCombatAttack();
 
-	CollisionObject* movementCollision;
 	CollisionObject* entityCollision;
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
@@ -118,9 +115,7 @@ protected:
 	Inventory* inventory;
 	EquipmentInventory* equipmentInventory;
 	CurrencyInventory* currencyInventory;
-	cocos2d::Vec2 movement;
 	cocos2d::Vec2 spawnCoords;
-	ControlState controlState;
 
 	virtual void rebuildWeaponCollision(cocos2d::Size size);
 	
@@ -128,7 +123,10 @@ protected:
 	bool isPlatformerDisabled;
 	std::string state;
 
+	float entityScale;
+	cocos2d::Vec2 entityCollisionOffset;
 	cocos2d::Size entitySize;
+	ControlState controlState;
 
 	static const int DefaultEq;
 	static const float MoveAcceleration;
@@ -137,16 +135,16 @@ protected:
 	static const cocos2d::Size DefaultWeaponSize;
 	static const float SwimVerticalDrag;
 	static const float JumpVelocity;
-	static const float GroundCollisionOffset;
-	static const float CapsuleRadius;
 	static const std::string MapKeyPropertyState;
 
 private:
 	typedef HackableObject super;
 	friend class EntityCollisionBehaviors;
 	friend class EntityDebugBehaviors;
+	friend class EntityGroundCollisionBehaviors;
 	friend class EntityMovementBehaviorBase;
 	friend class EntityOutOfCombatAttackBehaviorBase;
+	friend class EntityMovementCollisionBehaviors;
 
 	int health;
 	int maxHealth;

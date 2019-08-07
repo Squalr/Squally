@@ -218,6 +218,16 @@ Value GameObject::getStateOrDefault(std::string key, Value value)
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, value);
 }
 
+bool GameObject::hasState(std::string key)
+{
+	return GameUtils::keyExists(this->stateVariables, key);
+}
+
+void GameObject::clearState(std::string key)
+{
+	GameUtils::deleteKey(this->stateVariables, key);
+}
+
 void GameObject::setZSorted(bool zSorted)
 {
 	this->zSorted = zSorted;

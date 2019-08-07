@@ -1,6 +1,6 @@
 #pragma once
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/EntityBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/EntityDebugBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/EntityOutOfCombatAttackBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehaviors/IOU/FirstIOUFound.h"

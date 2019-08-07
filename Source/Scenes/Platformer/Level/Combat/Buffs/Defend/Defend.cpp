@@ -47,11 +47,6 @@ void Defend::onEnter()
 void Defend::initializePositions()
 {
 	super::initializePositions();
-
-	if (this->caster != nullptr)
-	{
-		this->setPosition(caster->getCollision()->getPhysicsBody()->getPositionOffset());
-	}
 }
 
 void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)

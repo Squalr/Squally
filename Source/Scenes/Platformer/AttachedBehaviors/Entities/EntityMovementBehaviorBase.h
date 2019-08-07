@@ -18,6 +18,8 @@ protected:
 
 	void update(float dt) override;
 	void onLoad() override;
+	
+	cocos2d::Vec2 movement;
 
 private:
 	typedef AttachedBehavior super;

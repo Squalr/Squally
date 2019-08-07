@@ -12,8 +12,7 @@ PlatformerFriendly::PlatformerFriendly(
 	Vec2 collisionOffset,
 	int baseHealth,
 	int baseSpecial,
-	Size movementCollisionSize,
-	PlatformerCollisionType movementCollisionType,
+	float hoverHeight,
 	std::string inventorySaveKey,
 	std::string equipmentSaveKey,
 	std::string currencySaveKey
@@ -28,8 +27,7 @@ PlatformerFriendly::PlatformerFriendly(
 		collisionOffset,
 		baseHealth,
 		baseSpecial,
-		movementCollisionSize,
-		movementCollisionType,
+		hoverHeight,
 		inventorySaveKey,
 		equipmentSaveKey,
 		currencySaveKey

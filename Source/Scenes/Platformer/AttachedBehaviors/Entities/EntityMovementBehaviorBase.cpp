@@ -25,23 +25,26 @@ EntityMovementBehaviorBase::EntityMovementBehaviorBase(GameObject* owner, std::s
 
 EntityMovementBehaviorBase::~EntityMovementBehaviorBase()
 {
+	this->movement = Vec2::ZERO;
 }
 
 void EntityMovementBehaviorBase::update(float dt)
 {
 	super::update(dt);
 
-	if (this->entity->isCinimaticHijacked)
+	CollisionObject* movementCollision = static_cast<CollisionObject*>(this->entity->getStateOrDefault(StateKeys::MovementCollisionObjectPtr, Value(nullptr)).asPointer());
+	
+	if (movementCollision == nullptr || this->entity->isCinimaticHijacked)
 	{
 		return;
 	}
 
-	if (this->entity->isDead() && this->entity->movement != Vec2::ZERO)
+	if (this->entity->isDead() && this->movement != Vec2::ZERO)
 	{
-		this->entity->movement = Vec2::ZERO;
+		this->movement = Vec2::ZERO;
 	}
 
-	Vec2 velocity = this->entity->movementCollision->getVelocity();
+	Vec2 velocity = movementCollision->getVelocity();
 	bool isOnGround = this->entity->getStateOrDefault(StateKeys::IsOnGround, Value(false)).asBool();
 
 	switch (this->entity->controlState)
@@ -50,15 +53,15 @@ void EntityMovementBehaviorBase::update(float dt)
 		case PlatformerEntity::ControlState::Normal:
 		{
 			// Move in the x direction unless hitting a wall while not standing on anything (this->entity prevents wall jumps)
-			if ((this->entity->movement.x < 0.0f && this->entity->leftCollision->getCurrentCollisions().empty()) ||
-				(this->entity->movement.x > 0.0f && this->entity->rightCollision->getCurrentCollisions().empty()))
+			if ((this->movement.x < 0.0f && this->entity->leftCollision->getCurrentCollisions().empty()) ||
+				(this->movement.x > 0.0f && this->entity->rightCollision->getCurrentCollisions().empty()))
 			{
-				velocity.x += this->entity->movement.x * PlatformerEntity::MoveAcceleration * dt;
+				velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
 			}
 
-			if (this->entity->movement.y > 0.0f && isOnGround)
+			if (this->movement.y > 0.0f && isOnGround)
 			{
-				velocity.y = this->entity->movement.y * PlatformerEntity::JumpVelocity;
+				velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
 
 				this->entity->performJumpAnimation();
 			}
@@ -70,19 +73,19 @@ void EntityMovementBehaviorBase::update(float dt)
 			const float minSpeed = PlatformerEntity::SwimAcceleration.y;
 
 			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
-			if (velocity.y < minSpeed && this->entity->movement.y > 0.0f)
+			if (velocity.y < minSpeed && this->movement.y > 0.0f)
 			{
 				velocity.y = minSpeed;
 			}
-			else if (velocity.y > -minSpeed && this->entity->movement.y < 0.0f)
+			else if (velocity.y > -minSpeed && this->movement.y < 0.0f)
 			{
 				velocity.y = -minSpeed;
 			}
 
-			velocity.x += this->entity->movement.x * PlatformerEntity::SwimAcceleration.x * dt;
-			velocity.y += this->entity->movement.y * PlatformerEntity::SwimAcceleration.y * dt;
+			velocity.x += this->movement.x * PlatformerEntity::SwimAcceleration.x * dt;
+			velocity.y += this->movement.y * PlatformerEntity::SwimAcceleration.y * dt;
 
-			if (this->entity->movement != Vec2::ZERO)
+			if (this->movement != Vec2::ZERO)
 			{
 				this->entity->performSwimAnimation();
 			}
@@ -91,17 +94,20 @@ void EntityMovementBehaviorBase::update(float dt)
 		}
 	}
 	
-	// Apply velocity
-	this->entity->movementCollision->setVelocity(velocity);
+	// Save velocity
+	movementCollision->setVelocity(velocity);
+
+	this->entity->setState(StateKeys::VelocityX, Value(velocity.x));
+	this->entity->setState(StateKeys::VelocityY, Value(velocity.y));
 
 	// Update flip
 	if (this->entity->animationNode != nullptr)
 	{
-		if (this->entity->movement.x < 0.0f)
+		if (this->movement.x < 0.0f)
 		{
 			this->entity->animationNode->setFlippedX(true);
 		}
-		else if (this->entity->movement.x > 0.0f)
+		else if (this->movement.x > 0.0f)
 		{
 			this->entity->animationNode->setFlippedX(false);
 		}

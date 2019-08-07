@@ -36,8 +36,9 @@ NpcCollisionBehaviors::~NpcCollisionBehaviors()
 
 void NpcCollisionBehaviors::onLoad()
 {
+	/*
 	this->npc->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
+	});*/
 }

@@ -457,3 +457,11 @@ const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::
 
 	return defaultValue;
 }
+
+void GameUtils::deleteKey(cocos2d::ValueMap& valueMap, std::string key)
+{
+	if (GameUtils::keyExists(valueMap, key))
+	{
+		valueMap.erase(key);
+	}
+}

@@ -36,7 +36,7 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		int baseHealth,
 		int baseSpecial,
-		cocos2d::Size movementCollisionSize = cocos2d::Size::ZERO);
+		float hoverHeight = 0.0f);
 	virtual ~PlatformerEnemy();
 
 	void onEnter() override;
