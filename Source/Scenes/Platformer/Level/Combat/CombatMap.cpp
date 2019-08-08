@@ -24,6 +24,7 @@
 #include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Scenes/Platformer/AttachedBehaviors/Combat/Entities/EntityCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
@@ -351,6 +352,8 @@ void CombatMap::spawnEntities()
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 
+					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity, ""));
+
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 				}
 			);
@@ -377,6 +380,8 @@ void CombatMap::spawnEntities()
 				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
+					
+					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity, ""));
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}

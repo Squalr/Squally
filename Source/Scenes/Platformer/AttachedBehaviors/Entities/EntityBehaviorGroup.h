@@ -9,16 +9,16 @@ namespace cocos2d
 
 class Squally;
 
-class NpcBehaviors : public AttachedBehaviorGroup
+class EntityBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
-	static NpcBehaviors* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityBehaviorGroup* create(GameObject* owner, std::string attachedBehaviorArgs);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	NpcBehaviors(GameObject* owner, std::string attachedBehaviorArgs);
-	~NpcBehaviors();
+	EntityBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs);
+	~EntityBehaviorGroup();
 
 	void onLoad() override;
 

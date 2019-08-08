@@ -88,7 +88,6 @@ PlatformerEntity::PlatformerEntity(
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
 	this->spawnCoords = this->getPosition();
-	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->movementSize = this->entitySize * this->entityScale + Size(0.0f, this->hoverHeight);
@@ -101,11 +100,6 @@ PlatformerEntity::PlatformerEntity(
 	
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
-
-	this->clickHitbox->setContentSize(this->entitySize);
-	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
-	this->clickHitbox->disableInteraction();
-	this->clickHitbox->setPosition(Vec2(this->movementSize.width / 2.0f, this->movementSize.height / 2.0f));
 
 	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
 	{
@@ -132,7 +126,6 @@ PlatformerEntity::PlatformerEntity(
 	this->addChild(this->entityCollision);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
-	this->addChild(this->clickHitbox);
 	this->addChild(this->inventory);
 	this->addChild(this->equipmentInventory);
 	this->addChild(this->currencyInventory);

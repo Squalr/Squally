@@ -1,7 +1,7 @@
-#include "SquallyBehaviors.h"
+#include "SquallyBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyEquipmentVisualBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyEyeBlinkBehaviors.h"
@@ -11,19 +11,19 @@
 
 using namespace cocos2d;
 
-const std::string SquallyBehaviors::MapKeyAttachedBehavior = "squally";
+const std::string SquallyBehaviorGroup::MapKeyAttachedBehavior = "squally";
 
-SquallyBehaviors* SquallyBehaviors::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyBehaviorGroup* SquallyBehaviorGroup::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
-	SquallyBehaviors* instance = new SquallyBehaviors(owner, attachedBehaviorArgs);
+	SquallyBehaviorGroup* instance = new SquallyBehaviorGroup(owner, attachedBehaviorArgs);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyBehaviors::SquallyBehaviors(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
-	EntityBehaviors::create(owner, attachedBehaviorArgs),
+SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
+	EntityBehaviorGroup::create(owner, attachedBehaviorArgs),
 	SquallyCollisionBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyEquipmentVisualBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyEyeBlinkBehaviors::create(owner, attachedBehaviorArgs),
@@ -34,10 +34,10 @@ SquallyBehaviors::SquallyBehaviors(GameObject* owner, std::string attachedBehavi
 {
 }
 
-SquallyBehaviors::~SquallyBehaviors()
+SquallyBehaviorGroup::~SquallyBehaviorGroup()
 {
 }
 
-void SquallyBehaviors::onLoad()
+void SquallyBehaviorGroup::onLoad()
 {
 }

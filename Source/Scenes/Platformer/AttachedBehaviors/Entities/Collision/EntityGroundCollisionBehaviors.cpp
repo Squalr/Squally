@@ -56,7 +56,7 @@ void EntityGroundCollisionBehaviors::onLoad()
 
 	this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, -this->entity->hoverHeight / 2.0f + EntityGroundCollisionBehaviors::GroundCollisionOffset));
 	
-	this->entity->addChild(this->groundCollision);
+	this->addChild(this->groundCollision);
 
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{

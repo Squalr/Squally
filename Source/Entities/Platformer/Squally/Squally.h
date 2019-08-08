@@ -26,7 +26,7 @@ protected:
 
 private:
 	typedef PlatformerFriendly super;
-	friend class SquallyBehaviors;
+	friend class SquallyBehaviorGroup;
 	friend class SquallyCollisionBehaviors;
 	friend class SquallyEquipmentVisualBehaviors;
 	friend class SquallyMovementBehaviors;

@@ -95,7 +95,7 @@ void EntityMovementCollisionBehaviors::buildMovementCollision()
 
 	this->entity->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, this->entity->movementSize.height / 2.0f));
 
-	this->entity->addChild(this->movementCollision);
+	this->addChild(this->movementCollision);
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{	

@@ -47,6 +47,8 @@ EntityDebugBehaviors::~EntityDebugBehaviors()
 
 void EntityDebugBehaviors::initializePositions()
 {
+	super::initializePositions();
+	
 	this->killButton->setPosition(Vec2(-64.0f, this->entity->getEntitySize().height + this->entity->hoverHeight / 2.0f + 32.0f));
 	this->resurrectButton->setPosition(Vec2(64.0f, this->entity->getEntitySize().height + this->entity->hoverHeight / 2.0f + 32.0f));
 }

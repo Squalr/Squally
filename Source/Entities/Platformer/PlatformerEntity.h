@@ -70,7 +70,6 @@ public:
 	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
 
-	ClickableNode* clickHitbox;
 	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
 
@@ -137,12 +136,13 @@ protected:
 
 private:
 	typedef HackableObject super;
-	friend class EntityCollisionBehaviors;
+	friend class EntityCollisionBehaviorGroup;
 	friend class EntityDebugBehaviors;
 	friend class EntityGroundCollisionBehaviors;
 	friend class EntityMovementBehaviorBase;
 	friend class EntityOutOfCombatAttackBehaviorBase;
 	friend class EntityMovementCollisionBehaviors;
+	friend class EntitySelectionBehavior;
 
 	int health;
 	int maxHealth;

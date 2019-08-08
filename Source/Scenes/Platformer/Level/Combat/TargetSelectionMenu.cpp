@@ -13,6 +13,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/AttachedBehaviors/Combat/Entities/EntitySelectionBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -228,23 +229,27 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
 	{
-		if (entity->isDead() 
-			|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
-			|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
+		EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
+		
+		if (selection != nullptr)
 		{
-			return;
-		}
+			if (entity->isDead() 
+				|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
+				|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
+			{
+				return;
+			}
 
-		entity->clickHitbox->enableInteraction();
-		entity->clickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-		{
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
-			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
-		});
-		entity->clickHitbox->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
-		{
-			this->selectEntity(entity);
-		});
+			selection->setEntityClickCallbacks([=]()
+			{
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
+			},
+			[=]()
+			{
+				this->selectEntity(entity);
+			});
+		}
 	}));
 }
 
@@ -252,8 +257,11 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
 	{
-		entity->clickHitbox->disableInteraction();
-		entity->clickHitbox->setMouseClickCallback(nullptr);
-		entity->clickHitbox->setMouseOverCallback(nullptr);
+		EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
+		
+		if (selection != nullptr)
+		{
+			selection->clearEntityClickCallbacks();
+		}
 	}));
 }
