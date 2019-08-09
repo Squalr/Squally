@@ -18,6 +18,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityEqBehaviorBase.h"
 
 #include "Resources/UIResources.h"
 
@@ -120,9 +121,16 @@ void TextOverlays::showExpBars(int expGain)
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		float startProgress = float(entity->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity->getEq()));
-		bool didLevelUp = entity->addEqExperience(expGain);
-		float endProgress = float(entity->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity->getEq()));
+		EntityEqBehaviorBase* eqBehavior = entity == nullptr ? nullptr : entity->getAttachedBehavior<EntityEqBehaviorBase>();
+
+		if (eqBehavior == nullptr)
+		{
+			return;
+		}
+
+		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
+		bool didLevelUp = eqBehavior->addEqExperience(expGain);
+		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
 
 		const float fillDuration = 1.0f;
 		const int updatesPerSecond = 60;

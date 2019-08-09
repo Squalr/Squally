@@ -24,6 +24,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -124,7 +125,7 @@ void Squally::initializeListeners()
 	{
 		args->handle();
 
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getStateOrDefault(StateKeys::SquallyEq, Value(1)).asInt()));
 	});
 }
 
@@ -162,12 +163,9 @@ void Squally::onHackerModeEnable(int eq)
 
 void Squally::saveState()
 {
-
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
 		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
-		{ SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience()) },
-		{ SaveKeys::SaveKeySquallyEq, Value(this->getEq()) }
 	});
 }
 
@@ -177,8 +175,6 @@ void Squally::loadSaveState()
 	// Be a lower value (ie if created as injured for a cutscene)
 	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
 	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
-	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(Squally::DefaultEq)).asInt());
-	this->setEqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience())).asInt());
 	
 	/*
 	this->setPosition(Vec2(

@@ -37,7 +37,6 @@ const float PlatformerEntity::JumpVelocity = 7680.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
-const int PlatformerEntity::DefaultEq = 1;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
@@ -66,8 +65,6 @@ PlatformerEntity::PlatformerEntity(
 	this->isCinimaticHijacked = false;
 	this->isPlatformerDisabled = false;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
-	this->eq = 0;
-	this->eqExperience = 0;
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	
 	this->entitySize = size * scale;
@@ -260,46 +257,6 @@ void PlatformerEntity::setMana(int mana)
 int PlatformerEntity::getMaxMana()
 {
 	return this->maxMana;
-}
-
-void PlatformerEntity::setEq(int eq)
-{
-	this->eq = eq;
-}
-
-int PlatformerEntity::getEq()
-{
-	return this->eq;
-}
-
-bool PlatformerEntity::setEqExperience(int eqExperience)
-{
-	int expToLevel = StatsTables::getExpRequiredAtLevel(this->getEq());
-
-	this->eqExperience = eqExperience;
-
-	if (this->eqExperience >= expToLevel)
-	{
-		// Level up!
-		this->setEq(this->getEq() + 1);
-		
-		// Recurse to handle potential over-leveling
-		this->setEqExperience(this->eqExperience - expToLevel);
-
-		return true;
-	}
-
-	return false;
-}
-
-bool PlatformerEntity::addEqExperience(int eqExperience)
-{
-	return this->setEqExperience(this->getEqExperience() + eqExperience);
-}
-
-int PlatformerEntity::getEqExperience()
-{
-	return this->eqExperience;
 }
 
 bool PlatformerEntity::getIsPlatformerDisabled()

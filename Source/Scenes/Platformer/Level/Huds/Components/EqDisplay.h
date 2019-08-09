@@ -8,16 +8,17 @@ namespace cocos2d
 }
 
 class ConstantString;
+class EntityEqBehaviorBase;
 class LocalizedLabel;
 class LocalizedString;
-class Squally;
+class PlatformerEntity;
 
 class EqDisplay : public SmartNode
 {
 public:
 	static EqDisplay* create();
 
-	void setStatsTarget(Squally* target);
+	void setStatsTarget(PlatformerEntity* target);
 
 private:
 	typedef SmartNode super;
@@ -29,7 +30,8 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	Squally* target;
+	EntityEqBehaviorBase* eqBehavior;
+	PlatformerEntity* target;
 	cocos2d::Sprite* eqFrame;
 	LocalizedLabel* eqLabel;
 	ConstantString* eqValue;

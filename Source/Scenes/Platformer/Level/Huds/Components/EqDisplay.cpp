@@ -4,7 +4,8 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityEqBehaviorBase.h"
 
 #include "Resources/UIResources.h"
 
@@ -26,6 +27,7 @@ EqDisplay* EqDisplay::create()
 EqDisplay::EqDisplay()
 {
 	this->target = nullptr;
+	this->eqBehavior = nullptr;
 	this->eqFrame = Sprite::create(UIResources::HUD_LevelFrame);
 	this->eqValue = ConstantString::create("0");
 	this->eqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->eqValue);
@@ -66,12 +68,12 @@ void EqDisplay::update(float dt)
 {
 	super::update(dt);
 
-	if (this->target == nullptr)
+	if (this->eqBehavior == nullptr)
 	{
 		return;
 	}
 
-	int eq = this->target->getEq();
+	int eq = this->eqBehavior->getEq();
 
 	if (eq != (this->cachedEq ^ EqDisplay::EqCacheCipher))
 	{
@@ -81,14 +83,15 @@ void EqDisplay::update(float dt)
 	}
 }
 
-void EqDisplay::setStatsTarget(Squally* target)
+void EqDisplay::setStatsTarget(PlatformerEntity* target)
 {
 	this->eqValue->setString("0");
 	this->cachedEq = (0 ^ EqDisplay::EqCacheCipher);
 	
 	this->target = target;
+	this->eqBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityEqBehaviorBase>();
 
-	if (this->target == nullptr)
+	if (this->eqBehavior == nullptr)
 	{
 		this->setVisible(false);
 	}

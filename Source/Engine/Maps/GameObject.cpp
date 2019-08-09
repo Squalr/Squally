@@ -143,15 +143,16 @@ GameObject::GameObject(const ValueMap& properties)
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
 
-		Vec2 position = Vec2(
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyXPosition, Value(0.0f)).asFloat(),
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat()
-		);
+		// Note: Explicit checks for key for setting position. Important, because non-deserialized objects may not have this key, and should end up at (0, 0)
+		if (GameUtils::keyExists(this->properties, GameObject::MapKeyXPosition))
+		{
+			this->setPositionX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyXPosition, Value(0.0f)).asFloat() + mapSize.width / 2.0f);
+		}
 
-		this->setPosition(Vec2(
-			position.x + mapSize.width / 2.0f,
-			position.y + mapSize.height / 2.0f
-		));
+		if (GameUtils::keyExists(this->properties, GameObject::MapKeyYPosition))
+		{
+			this->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat() + mapSize.height / 2.0f);
+		}
 
 		// Parse any polyline points in cocos space
 		ValueVector polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyPolyLinePoints, Value(ValueVector())).asValueVector();

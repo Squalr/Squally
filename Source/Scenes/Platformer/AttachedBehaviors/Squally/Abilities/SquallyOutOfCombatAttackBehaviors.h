@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityOutOfCombatAttackBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Abilities/EntityOutOfCombatAttackBehaviorBase.h"
 
 namespace cocos2d
 {

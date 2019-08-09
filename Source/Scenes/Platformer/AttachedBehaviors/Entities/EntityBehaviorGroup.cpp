@@ -2,7 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityCollisionBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityDebugBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Developer/EntityDebugBehaviors.h"
 
 using namespace cocos2d;
 

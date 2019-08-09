@@ -42,11 +42,6 @@ public:
 	void addMana(int manaDelta);
 	void setMana(int mana);
 	int getMaxMana();
-	void setEq(int eq);
-	int getEq();
-	bool setEqExperience(int eqExperience);
-	bool addEqExperience(int eqExperience);
-	int getEqExperience();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();
 	virtual float getFloatHeight();
@@ -118,7 +113,6 @@ protected:
 	cocos2d::Size movementSize;
 	ControlState controlState;
 
-	static const int DefaultEq;
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
 	static const cocos2d::Size DefaultWeaponSize;
@@ -140,8 +134,6 @@ private:
 	int maxHealth;
 	int mana;
 	int maxMana;
-	int eq;
-	int eqExperience;
 	float hoverHeight;
 
 	float scale;

@@ -287,6 +287,8 @@ void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 void CollisionObject::bindTo(cocos2d::Node* bindTarget)
 {
 	this->bindTarget = bindTarget;
+
+	this->setPosition(Vec2::ZERO);
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)

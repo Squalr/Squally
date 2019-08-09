@@ -2,13 +2,14 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/EntityBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyCollisionBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyEquipmentVisualBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyEyeBlinkBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyIsAliveHackBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyMovementBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyOutOfCombatAttackBehaviors.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyRuneBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Abilities/SquallyIsAliveHackBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Abilities/SquallyOutOfCombatAttackBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Collision/SquallyCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Movement/SquallyMovementBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyEqBehavior.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyRuneBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Visual/SquallyEquipmentVisualBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Visual/SquallyEyeBlinkBehaviors.h"
 
 using namespace cocos2d;
 
@@ -31,6 +32,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner, std::string attach
 	SquallyIsAliveHackBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyMovementBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyOutOfCombatAttackBehaviors::create(owner, attachedBehaviorArgs),
+	SquallyEqBehavior::create(owner, attachedBehaviorArgs),
 	SquallyRuneBehaviors::create(owner, attachedBehaviorArgs),
 	})
 {

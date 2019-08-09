@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehaviors/Entities/EntityMovementBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Movement/EntityMovementBehaviorBase.h"
 
 namespace cocos2d
 {
