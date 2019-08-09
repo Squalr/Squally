@@ -12,6 +12,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Events/SaveEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
@@ -72,7 +73,7 @@ void Squally::onEnter()
 {
 	super::onEnter();
 
-	this->loadState();
+	this->loadSaveState();
 
 	// Request camera track player
 	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
@@ -101,6 +102,10 @@ void Squally::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
+	{
 		this->saveState();
 	}));
 
@@ -114,23 +119,6 @@ void Squally::initializeListeners()
 			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 		}
 	}));
-
-	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
-	{
-		this->tryUseRune();
-		
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
-	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
-	{
-		args->handle();
-		
-		if (this->tryUseRune())
-		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getEq()));
-		}
-	});
 
 	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -174,23 +162,16 @@ void Squally::onHackerModeEnable(int eq)
 
 void Squally::saveState()
 {
-	ValueVector cooldowns = ValueVector();
-
-	for (int index = 0; index < this->getMaxRunes(); index++)
-	{
-		cooldowns.push_back(Value(this->getRuneCooldown(index)));
-	}
 
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
 		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
-		{ SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns) },
 		{ SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience()) },
 		{ SaveKeys::SaveKeySquallyEq, Value(this->getEq()) }
 	});
 }
 
-void Squally::loadState()
+void Squally::loadSaveState()
 {
 	// Note: We just use the current value by default. This is normally the max if Squally was just constructed, but might also
 	// Be a lower value (ie if created as injured for a cutscene)
@@ -198,18 +179,13 @@ void Squally::loadState()
 	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
 	this->setEq(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(Squally::DefaultEq)).asInt());
 	this->setEqExperience(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(this->getEqExperience())).asInt());
-
-	ValueVector cooldowns = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
-
-	for (int index = 0; index < std::min((int)cooldowns.size(), (int)this->getMaxRunes()); index++)
-	{
-		this->setRuneCooldown(index, cooldowns[index].asFloat());
-	}
 	
+	/*
 	this->setPosition(Vec2(
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY())).asFloat()
 	));
+	*/
 
 	if (this->getHealth() <= 0)
 	{

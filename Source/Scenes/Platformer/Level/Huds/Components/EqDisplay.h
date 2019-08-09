@@ -22,7 +22,7 @@ public:
 private:
 	typedef SmartNode super;
 	EqDisplay();
-	virtual ~EqDisplay();
+	~EqDisplay();
 
 	void onEnter() override;
 	void initializePositions() override;

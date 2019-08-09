@@ -3,9 +3,11 @@
 #include "cocos/2d/CCScene.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/SaveEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalNode.h"
 #include "Engine/GlobalHud.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -36,6 +38,7 @@ GlobalDirector::~GlobalDirector()
 void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 {
 	auto director = Director::getInstance();
+	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
 
 	// Although this is counter-intuitive, add the Global Director as a child to whichever scene is active.
@@ -62,6 +65,7 @@ void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 		Director::getInstance()->pushScene(scene);
 	}
 
+	SaveManager::save();
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
 }

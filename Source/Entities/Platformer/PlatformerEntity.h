@@ -42,11 +42,6 @@ public:
 	void addMana(int manaDelta);
 	void setMana(int mana);
 	int getMaxMana();
-	int getAvailableRunes();
-	bool tryUseRune();
-	float getRuneCooldown(int runeIndex);
-	void setRuneCooldown(int runeIndex, float cooldown);
-	int getMaxRunes();
 	void setEq(int eq);
 	int getEq();
 	bool setEqExperience(int eqExperience);
@@ -75,8 +70,6 @@ public:
 
 	static const int FallBackMaxHealth;
 	static const int FallBackMaxMana;
-	static const int MaxRunes;
-	static const float RuneCooldown;
 
 protected:
 	PlatformerEntity(
@@ -98,7 +91,6 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	void registerAttack(PlatformerAttack* attack);
@@ -148,7 +140,6 @@ private:
 	int maxHealth;
 	int mana;
 	int maxMana;
-	std::vector<float> runeCooldowns;
 	int eq;
 	int eqExperience;
 	float hoverHeight;

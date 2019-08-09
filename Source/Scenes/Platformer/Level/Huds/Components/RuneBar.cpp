@@ -13,6 +13,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityRuneBehaviorBase.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -34,6 +35,7 @@ RuneBar* RuneBar::create(bool isFrameOnLeft)
 RuneBar::RuneBar(bool isFrameOnLeft)
 {
 	this->target = nullptr;
+	this->runeBehavior = nullptr;
 	this->emptyRunes = std::vector<Sprite*>();
 	this->cooldownClips = std::vector<ClippingNode*>();
 	this->cooldownCircles = std::vector<DrawNode*>();
@@ -42,7 +44,7 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 	this->smokeFx = std::vector<SmartAnimationSequenceNode*>();
 	this->smokeSound = std::vector<Sound*>();
 
-	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+	for (int index = 0; index < EntityRuneBehaviorBase::MaxRunes; index++)
 	{
 		DrawNode* cooldownStencil = DrawNode::create();
 		DrawNode* cooldownCircle = DrawNode::create();
@@ -106,7 +108,7 @@ void RuneBar::initializePositions()
 {
 	super::initializePositions();
 
-	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+	for (int index = 0; index < EntityRuneBehaviorBase::MaxRunes; index++)
 	{
 		this->emptyRunes[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
 		this->cooldownClips[index]->setPosition(Vec2(0.0f, (float)index * -34.0f));
@@ -130,7 +132,7 @@ void RuneBar::initializeListeners()
 		
 		if (args != nullptr && this->target != nullptr && args->entity == this->target)
 		{
-			args->index = MathUtils::clamp(args->index, 0, PlatformerEntity::MaxRunes);
+			args->index = MathUtils::clamp(args->index, 0, EntityRuneBehaviorBase::MaxRunes);
 
 			this->smokeFx[args->index]->playAnimation(FXResources::PurplePuffSmall_PurplePuff_0000, 0.05f, true);
 			this->smokeSound[args->index]->play();
@@ -142,18 +144,18 @@ void RuneBar::update(float dt)
 {
 	super::update(dt);
 
-	if (this->target == nullptr)
+	if (this->runeBehavior == nullptr)
 	{
 		return;
 	}
 
-	int currentRunes = MathUtils::clamp(target->getAvailableRunes(), 0, PlatformerEntity::MaxRunes);
+	int currentRunes = MathUtils::clamp(this->runeBehavior->getAvailableRunes(), 0, EntityRuneBehaviorBase::MaxRunes);
 
-	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
+	for (int index = 0; index < EntityRuneBehaviorBase::MaxRunes; index++)
 	{
 		this->cooldownStencils[index]->clear();
 		
-		if (target->getRuneCooldown(index) <= 0.0f)
+		if (this->runeBehavior->getRuneCooldown(index) <= 0.0f)
 		{
 			this->filledRunes[index]->setVisible(true);
 			this->emptyRunes[index]->setVisible(false);
@@ -164,7 +166,7 @@ void RuneBar::update(float dt)
 			this->emptyRunes[index]->setVisible(true);
 		}
 
-		float progress = (PlatformerEntity::RuneCooldown - target->getRuneCooldown(index)) / PlatformerEntity::RuneCooldown;
+		float progress = (EntityRuneBehaviorBase::RuneCooldown - this->runeBehavior->getRuneCooldown(index)) / EntityRuneBehaviorBase::RuneCooldown;
 
 		if (progress < 0.25f)
 		{
@@ -235,8 +237,9 @@ void RuneBar::update(float dt)
 void RuneBar::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
+	this->runeBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityRuneBehaviorBase>();
 
-	if (this->target == nullptr)
+	if (this->runeBehavior == nullptr)
 	{
 		this->setVisible(false);
 	}

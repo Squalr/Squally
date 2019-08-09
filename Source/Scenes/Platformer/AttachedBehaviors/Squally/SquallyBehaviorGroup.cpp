@@ -8,6 +8,7 @@
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyIsAliveHackBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyMovementBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyOutOfCombatAttackBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyRuneBehaviors.h"
 
 using namespace cocos2d;
 
@@ -30,6 +31,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner, std::string attach
 	SquallyIsAliveHackBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyMovementBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyOutOfCombatAttackBehaviors::create(owner, attachedBehaviorArgs),
+	SquallyRuneBehaviors::create(owner, attachedBehaviorArgs),
 	})
 {
 }

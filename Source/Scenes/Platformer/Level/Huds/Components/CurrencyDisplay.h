@@ -21,7 +21,7 @@ public:
 private:
 	typedef SmartNode super;
 	CurrencyDisplay();
-	virtual ~CurrencyDisplay();
+	~CurrencyDisplay();
 
 	void onEnter() override;
 	void initializePositions() override;

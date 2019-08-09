@@ -24,7 +24,7 @@ public:
 private:
 	typedef SmartNode super;
 	StatsBars(bool isFrameOnLeft = true);
-	virtual ~StatsBars();
+	~StatsBars();
 
 	void onEnter() override;
 	void initializePositions() override;

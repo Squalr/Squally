@@ -74,6 +74,7 @@ GameObject::GameObject(const ValueMap& properties)
 	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 	this->attachedBehaviors = std::vector<AttachedBehavior*>();
+	this->attachedBehaviorNode = Node::create();
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
@@ -178,6 +179,8 @@ GameObject::GameObject(const ValueMap& properties)
 			this->polylinePoints.push_back(convertedDelta);
 		}
 	}
+
+	this->addChild(this->attachedBehaviorNode);
 }
 
 GameObject::~GameObject()
@@ -209,7 +212,7 @@ void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 	}
 
 	this->attachedBehaviors.push_back(attachedBehavior);
-	this->addChild(attachedBehavior);
+	this->attachedBehaviorNode->addChild(attachedBehavior);
 }
 
 void GameObject::setState(std::string key, Value value)

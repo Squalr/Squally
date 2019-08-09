@@ -37,8 +37,6 @@ const float PlatformerEntity::JumpVelocity = 7680.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
 const int PlatformerEntity::FallBackMaxMana = 10;
-const int PlatformerEntity::MaxRunes = 3;
-const float PlatformerEntity::RuneCooldown = 24.0f;
 const int PlatformerEntity::DefaultEq = 1;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
@@ -116,12 +114,6 @@ PlatformerEntity::PlatformerEntity(
 
 	this->health = this->maxHealth;
 	this->mana = this->maxMana;
-	this->runeCooldowns = std::vector<float>();
-
-	for (int index = 0; index < PlatformerEntity::MaxRunes; index++)
-	{
-		this->runeCooldowns.push_back(0.0f);
-	}
 
 	this->addChild(this->entityCollision);
 	this->addChild(this->animationNode);
@@ -164,19 +156,6 @@ void PlatformerEntity::initializeListeners()
 	{
 		this->isCinimaticHijacked = false;
 	}));
-}
-
-void PlatformerEntity::update(float dt)
-{
-	super::update(dt);
-
-	for (int index = 0; index < this->getMaxRunes(); index++)
-	{
-		if (this->getRuneCooldown(index) > 0.0f)
-		{
-			this->setRuneCooldown(index, this->getRuneCooldown(index) - dt);
-		}
-	}
 }
 
 Vec2 PlatformerEntity::getButtonOffset()
@@ -239,11 +218,6 @@ void PlatformerEntity::revive()
 	this->health = this->getMaxHealth();
 	this->mana = this->getMaxMana();
 
-	for (int index = 0; index < this->getMaxRunes(); index++)
-	{
-		this->setRuneCooldown(index, 0.0f);
-	}
-
 	// Idle
 	this->animationNode->playAnimation();
 }
@@ -286,57 +260,6 @@ void PlatformerEntity::setMana(int mana)
 int PlatformerEntity::getMaxMana()
 {
 	return this->maxMana;
-}
-
-int PlatformerEntity::getAvailableRunes()
-{
-	int availableRunes = 0;
-
-	for (int index = 0; index < this->getMaxRunes(); index++)
-	{
-		if (this->getRuneCooldown(index) <= 0.0f)
-		{
-			availableRunes++;
-		}
-	}
-
-	return availableRunes;
-}
-
-bool PlatformerEntity::tryUseRune()
-{
-	for (int index = this->getMaxRunes() - 1; index >= 0; index--)
-	{
-		if (this->getRuneCooldown(index) <= 0.0f)
-		{
-			PlatformerEvents::TriggerRuneConsumed(PlatformerEvents::RuneConsumedArgs(this, index));
-
-			this->setRuneCooldown(index, PlatformerEntity::RuneCooldown);
-
-			return true;
-		}
-	}
-
-	return false;
-}
-
-float PlatformerEntity::getRuneCooldown(int runeIndex)
-{
-	int index = MathUtils::clamp(runeIndex, 0, this->getMaxRunes() - 1);
-
-	return this->runeCooldowns[index];
-}
-
-void PlatformerEntity::setRuneCooldown(int runeIndex, float cooldown)
-{
-	int index = MathUtils::clamp(runeIndex, 0, this->getMaxRunes() - 1);
-
-	this->runeCooldowns[index] = MathUtils::clamp(cooldown, 0.0f, PlatformerEntity::RuneCooldown);
-}
-
-int PlatformerEntity::getMaxRunes()
-{
-	return PlatformerEntity::MaxRunes;
 }
 
 void PlatformerEntity::setEq(int eq)

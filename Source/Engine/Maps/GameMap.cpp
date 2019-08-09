@@ -433,7 +433,6 @@ void GameMap::isometricZSort()
 					position.y += this->mapTileSize.height / 2.0f;
 				}
 
-				// TODO: This works for most cases but is incomplete
 				object->setLocalZOrder((int)(-position.y));
 			}
 		}

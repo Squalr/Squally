@@ -148,6 +148,8 @@ void CollisionObject::update(float dt)
 	Vec2 pos = this->getPosition();
 	Vec2 deltaPos = pos - worldPos;
 	Size STOP_PHYSICS_OFFSET = visibleSize / 2.0f;
+	
+	this->updateBinds();
 
 	if (this->contactUpdateCallback != nullptr)
 	{
@@ -163,23 +165,6 @@ void CollisionObject::update(float dt)
 		velocity.y *= this->verticalDampening;
 
 		this->setVelocity(velocity);
-
-		// Bound physics objects to camera bounds
-		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
-
-		if (pos.x > cameraPosition.x + visibleSize.width + STOP_PHYSICS_OFFSET.width ||
-			pos.x < cameraPosition.x - STOP_PHYSICS_OFFSET.width ||
-			pos.y > cameraPosition.y + visibleSize.height + STOP_PHYSICS_OFFSET.height ||
-			pos.y < cameraPosition.y - STOP_PHYSICS_OFFSET.height)
-		{
-			// Bypass setter to force disable physics for this object
-			//this->physicsBody->setEnabled(false);
-		}
-		else
-		{
-			// Use setter such that if physics was disabled for a reason other than being off-screen, we do not overwrite that
-			this->setPhysicsEnabled(this->physicsEnabled);
-		}
 	}
 }
 
@@ -456,6 +441,4 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
 	super::visit(renderer, parentTransform, parentFlags);
-
-	this->updateBinds();
 }

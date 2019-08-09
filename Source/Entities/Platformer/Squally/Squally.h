@@ -33,7 +33,7 @@ private:
 	friend class SquallyOutOfCombatAttackBehaviors;
 	
 	Squally(cocos2d::ValueMap& properties);
-	virtual ~Squally();
+	~Squally();
 	
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -41,7 +41,7 @@ private:
 	void initializeListeners() override;
 	void onHackerModeEnable(int eq) override;
 	void saveState();
-	void loadState();
+	void loadSaveState();
 	void runEyeBlinkLoop();
 	void spawnHelper();
 

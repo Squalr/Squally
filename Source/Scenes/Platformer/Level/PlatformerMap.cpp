@@ -137,13 +137,6 @@ void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
-	{
-		this->unscheduleUpdate();
-
-		SaveManager::save();
-	}));
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{
 		CipherEvents::CipherLoadArgs* args = static_cast<CipherEvents::CipherLoadArgs*>(eventCustom->getUserData());

@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string EntitySelectionBehavior::MapKeyAttachedBehavior = "entity-debug";
+const std::string EntitySelectionBehavior::MapKeyAttachedBehavior = "entity-selection";
 
 EntitySelectionBehavior* EntitySelectionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
