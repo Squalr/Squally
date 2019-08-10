@@ -20,7 +20,6 @@ public:
 	int getEqExperience();
 	
 	static const int DefaultEq;
-	static const std::string MapKeyAttachedBehavior;
 
 protected:
 	EntityEqBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs);

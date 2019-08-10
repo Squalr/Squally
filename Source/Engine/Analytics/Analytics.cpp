@@ -15,38 +15,6 @@ void Analytics::registerGlobalNode()
 	GlobalDirector::getInstance()->registerGlobalNode(Analytics::getInstance());
 }
 
-void Analytics::sendEvent(std::string category, std::string action, std::string label, int value)
-{
-	if (Analytics::areAnalyticsEnabled())
-	{
-		TAnalytics_Event(category.c_str(), action.c_str(), label.c_str(), value);
-	}
-}
-
-void Analytics::sendEvent(std::string category, std::string action, std::string label)
-{
-	if (Analytics::areAnalyticsEnabled())
-	{
-		TAnalytics_Event(category.c_str(), action.c_str(), label.c_str());
-	}
-}
-
-void Analytics::sendEvent(std::string category, std::string action)
-{
-	if (Analytics::areAnalyticsEnabled())
-	{
-		TAnalytics_Event(category.c_str(), action.c_str());
-	}
-}
-
-void Analytics::shutDown()
-{
-	if (Analytics::areAnalyticsEnabled())
-	{
-		TAnalytics_Shutdown();
-	}
-}
-
 Analytics* Analytics::getInstance()
 {
 	if (Analytics::instance == nullptr)
@@ -81,6 +49,38 @@ void Analytics::update(float dt)
 	if (Analytics::areAnalyticsEnabled())
 	{
 		TAnalytics_Update();
+	}
+}
+
+void Analytics::sendEvent(std::string category, std::string action, std::string label, int value)
+{
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Event(category.c_str(), action.c_str(), label.c_str(), value);
+	}
+}
+
+void Analytics::sendEvent(std::string category, std::string action, std::string label)
+{
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Event(category.c_str(), action.c_str(), label.c_str());
+	}
+}
+
+void Analytics::sendEvent(std::string category, std::string action)
+{
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Event(category.c_str(), action.c_str());
+	}
+}
+
+void Analytics::shutDown()
+{
+	if (Analytics::areAnalyticsEnabled())
+	{
+		TAnalytics_Shutdown();
 	}
 }
 

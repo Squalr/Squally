@@ -7,6 +7,7 @@
 #include "Scenes/Platformer/AttachedBehaviors/Squally/Collision/SquallyCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/Movement/SquallyMovementBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyEqBehavior.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyManaBehavior.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyRuneBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/Visual/SquallyEquipmentVisualBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Squally/Visual/SquallyEyeBlinkBehaviors.h"
@@ -32,6 +33,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner, std::string attach
 	SquallyIsAliveHackBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyMovementBehaviors::create(owner, attachedBehaviorArgs),
 	SquallyOutOfCombatAttackBehaviors::create(owner, attachedBehaviorArgs),
+	SquallyManaBehavior::create(owner, attachedBehaviorArgs),
 	SquallyEqBehavior::create(owner, attachedBehaviorArgs),
 	SquallyRuneBehaviors::create(owner, attachedBehaviorArgs),
 	})

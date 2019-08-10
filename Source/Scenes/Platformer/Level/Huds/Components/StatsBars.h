@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class ConstantString;
+class EntityManaBehaviorBase;
 class EqDisplay;
 class LocalizedLabel;
 class RuneBar;
@@ -31,6 +32,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	EntityManaBehaviorBase* manaBehavior;
 	PlatformerEntity* target;
 
 	bool isFrameOnLeft;

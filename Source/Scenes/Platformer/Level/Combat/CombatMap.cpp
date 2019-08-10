@@ -188,7 +188,7 @@ void CombatMap::initializeListeners()
 
 		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 		{
-			expGain += StatsTables::calculateEnemyExp(entity);
+			expGain += StatsTables::getKillExp(entity);
 		}));
 
 		int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(0)).asInt();

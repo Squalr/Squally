@@ -30,6 +30,7 @@ public:
 		Swimming,
 	};
 
+	std::string getEntityName();
 	int getHealth();
 	void addHealth(int healthDelta);
 	void setHealth(int health);
@@ -38,10 +39,6 @@ public:
 	int getMaxHealth();
 	bool isAlive();
 	bool isDead();
-	int getMana();
-	void addMana(int manaDelta);
-	void setMana(int mana);
-	int getMaxMana();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();
 	virtual float getFloatHeight();
@@ -64,7 +61,6 @@ public:
 	SmartAnimationNode* animationNode;
 
 	static const int FallBackMaxHealth;
-	static const int FallBackMaxMana;
 
 protected:
 	PlatformerEntity(
@@ -132,11 +128,10 @@ private:
 
 	int health;
 	int maxHealth;
-	int mana;
-	int maxMana;
 	float hoverHeight;
 
 	float scale;
+	std::string entityName;
 	PlatformerCollisionType collisionType;
 	std::string animationResource;
 	std::string emblemResource;

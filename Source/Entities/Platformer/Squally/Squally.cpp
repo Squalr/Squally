@@ -165,7 +165,6 @@ void Squally::saveState()
 {
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
-		{ SaveKeys::SaveKeySquallyMana, Value(this->getMana()) },
 	});
 }
 
@@ -174,7 +173,6 @@ void Squally::loadSaveState()
 	// Note: We just use the current value by default. This is normally the max if Squally was just constructed, but might also
 	// Be a lower value (ie if created as injured for a cutscene)
 	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
-	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
 	
 	/*
 	this->setPosition(Vec2(

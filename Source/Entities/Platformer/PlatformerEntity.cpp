@@ -36,7 +36,6 @@ const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
 
 const int PlatformerEntity::FallBackMaxHealth = 10;
-const int PlatformerEntity::FallBackMaxMana = 10;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
@@ -64,6 +63,7 @@ PlatformerEntity::PlatformerEntity(
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
 	this->isPlatformerDisabled = false;
+	this->entityName = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	
@@ -96,21 +96,12 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipX))
-	{
-		this->animationNode->setFlippedX(this->properties[PlatformerEntity::MapKeyFlipX].asBool());
-	}
-
-	if (GameUtils::keyExists(this->properties, PlatformerEntity::MapKeyFlipY))
-	{
-		this->animationNode->setFlippedY(this->properties[PlatformerEntity::MapKeyFlipY].asBool());
-	}
+	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
+	this->animationNode->setFlippedY(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool());
 
 	this->maxHealth = baseHealth;
-	this->maxMana = baseSpecial;
 
 	this->health = this->maxHealth;
-	this->mana = this->maxMana;
 
 	this->addChild(this->entityCollision);
 	this->addChild(this->animationNode);
@@ -165,6 +156,11 @@ HackablePreview* PlatformerEntity::createDefaultPreview()
 	return EntityPreview::create(this);
 }
 
+std::string PlatformerEntity::getEntityName()
+{
+	return this->entityName;
+}
+
 float PlatformerEntity::getFloatHeight()
 {
 	return 0.0f;
@@ -213,7 +209,6 @@ void PlatformerEntity::kill(bool loadDeadAnim)
 void PlatformerEntity::revive()
 {
 	this->health = this->getMaxHealth();
-	this->mana = this->getMaxMana();
 
 	// Idle
 	this->animationNode->playAnimation();
@@ -237,26 +232,6 @@ bool PlatformerEntity::isAlive()
 bool PlatformerEntity::isDead()
 {
 	return this->health <= 0;
-}
-
-int PlatformerEntity::getMana()
-{
-	return this->mana;
-}
-
-void PlatformerEntity::addMana(int manaDelta)
-{
-	this->setMana(this->getMana() + manaDelta);
-}
-
-void PlatformerEntity::setMana(int mana)
-{
-	this->mana = MathUtils::clamp(mana, 0, this->getMaxMana());
-}
-
-int PlatformerEntity::getMaxMana()
-{
-	return this->maxMana;
 }
 
 bool PlatformerEntity::getIsPlatformerDisabled()
@@ -312,10 +287,11 @@ std::vector<PlatformerAttack*> PlatformerEntity::getAvailableAttacks()
 
 	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
 	{
+		/* TODO: Broken until attacks abstracted into their own behavior
 		if ((*it)->getSpecialCost() <= this->getMana())
 		{
 			availableAttacks.push_back(*it);
-		}
+		}*/
 	}
 
 	return availableAttacks;

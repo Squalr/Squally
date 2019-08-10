@@ -102,7 +102,8 @@
         "__functional_03": "cpp",
         "__node_handle": "cpp",
         "__errc": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "clocale": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",
