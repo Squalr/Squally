@@ -17,9 +17,7 @@ protected:
 		PlatformerCollisionType collisionType,
 		cocos2d::Size size,
 		float scale,
-		cocos2d::Vec2 collisionOffset,
-		int baseHealth,
-		int baseSpecial);
+		cocos2d::Vec2 collisionOffset);
 	virtual ~NpcBase();
 
 	void update(float) override;

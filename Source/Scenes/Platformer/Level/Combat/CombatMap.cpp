@@ -25,6 +25,7 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/AttachedBehaviors/Combat/Entities/EntityCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehaviors/Enemies/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
@@ -170,7 +171,7 @@ void CombatMap::initializeListeners()
 		{
 			if (args->playerVictory)
 			{
-				PlatformerEnemy::saveObjectState(this->enemyIdentifier, PlatformerEnemy::SaveKeyIsDead, Value(true));
+				GameObject::saveObjectState(this->enemyIdentifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
 
 				CombatEvents::TriggerGiveExp();
 			}

@@ -57,9 +57,10 @@ void ProjectileRestorePotion::update(float dt)
 
 void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 {
-	int healing = std::round(float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage);
+	abort();
+	// int healing = std::round(float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage);
 	
-	target->addChild(RestoreHealth::create(this->caster, target, healing));
+	// target->addChild(RestoreHealth::create(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()

@@ -343,3 +343,8 @@ void GameObject::listenForMapEvent(std::string eventName, std::function<void(Val
 		callback(*args);
 	}));
 }
+
+std::string GameObject::getMapEvent()
+{
+	return this->mapEvent;
+}

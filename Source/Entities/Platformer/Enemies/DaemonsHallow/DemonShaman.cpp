@@ -35,9 +35,7 @@ DemonShaman::DemonShaman(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	PlatformerCollisionType::Enemy,
 	Size(212.0f, 280.0f),
 	0.65f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = DemonShaman::getHexusOpponentData();
 }

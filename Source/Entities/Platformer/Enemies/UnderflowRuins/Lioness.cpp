@@ -35,9 +35,7 @@ Lioness::Lioness(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 278.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Lioness::getHexusOpponentData();
 }

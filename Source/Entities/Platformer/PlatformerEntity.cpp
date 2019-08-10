@@ -35,8 +35,6 @@ const Size PlatformerEntity::DefaultWeaponSize = Size(64.0f, 128.0f);
 const float PlatformerEntity::SwimVerticalDrag = 0.93f;
 const float PlatformerEntity::JumpVelocity = 7680.0f;
 
-const int PlatformerEntity::FallBackMaxHealth = 10;
-
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
 PlatformerEntity::PlatformerEntity(
@@ -47,8 +45,6 @@ PlatformerEntity::PlatformerEntity(
 	Size size,
 	float scale, 
 	Vec2 collisionOffset,
-	int baseHealth,
-	int baseSpecial,
 	float hoverHeight,
 	std::string inventorySaveKey,
 	std::string equipmentSaveKey,
@@ -98,10 +94,6 @@ PlatformerEntity::PlatformerEntity(
 
 	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 	this->animationNode->setFlippedY(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool());
-
-	this->maxHealth = baseHealth;
-
-	this->health = this->maxHealth;
 
 	this->addChild(this->entityCollision);
 	this->addChild(this->animationNode);
@@ -176,64 +168,6 @@ void PlatformerEntity::performJumpAnimation()
 	this->animationNode->playAnimation("Jump");
 }
 
-void PlatformerEntity::addHealth(int healthDelta)
-{
-	this->setHealth(this->getHealth() + healthDelta);
-}
-
-void PlatformerEntity::setHealth(int health)
-{
-	if (this->isDead())
-	{
-		return;
-	}
-
-	this->health = MathUtils::clamp(health, 0, this->maxHealth);
-
-	if (this->health <= 0)
-	{
-		this->animationNode->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
-	}
-}
-
-void PlatformerEntity::kill(bool loadDeadAnim)
-{
-	this->setHealth(0);
-
-	if (loadDeadAnim)
-	{
-		this->animationNode->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
-	}
-}
-
-void PlatformerEntity::revive()
-{
-	this->health = this->getMaxHealth();
-
-	// Idle
-	this->animationNode->playAnimation();
-}
-
-int PlatformerEntity::getHealth()
-{
-	return this->health;
-}
-
-int PlatformerEntity::getMaxHealth()
-{
-	return this->maxHealth;
-}
-
-bool PlatformerEntity::isAlive()
-{
-	return !this->isDead();
-}
-
-bool PlatformerEntity::isDead()
-{
-	return this->health <= 0;
-}
-
 bool PlatformerEntity::getIsPlatformerDisabled()
 {
 	return this->isPlatformerDisabled;
@@ -257,23 +191,6 @@ Size PlatformerEntity::getEntitySize()
 HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 {
 	return this->hexusOpponentData;
-}
-
-void PlatformerEntity::killAndRespawn()
-{
-	this->setHealth(0);
-
-	this->runAction(Sequence::create(
-		DelayTime::create(1.5f),
-		CallFunc::create([=]()
-		{
-			this->setPosition(this->spawnCoords);
-			this->entityCollision->setPosition(Vec2::ZERO);
-
-			this->revive();
-		}),
-		nullptr
-	));
 }
 
 std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()

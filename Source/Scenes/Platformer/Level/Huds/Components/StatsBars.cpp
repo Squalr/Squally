@@ -11,6 +11,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Level/Huds/Components/EqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityHealthBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityManaBehaviorBase.h"
 
 #include "Resources/UIResources.h"
@@ -33,6 +34,7 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	const Vec2 fillOffset = Vec2(0.0f, 0.0f);
 
 	this->isFrameOnLeft = isFrameOnLeft;
+	this->healthBehavior = nullptr;
 	this->manaBehavior = nullptr;
 	this->target = nullptr;
 	this->frame = Sprite::create(UIResources::HUD_Frame);
@@ -120,10 +122,10 @@ void StatsBars::update(float dt)
 {
 	super::update(dt);
 
-	if (this->target != nullptr)
+	if (this->healthBehavior != nullptr)
 	{
-		int health = this->target->getHealth();
-		int maxHealth = this->target->getMaxHealth();
+		int health = this->healthBehavior->getHealth();
+		int maxHealth = this->healthBehavior->getMaxHealth();
 		float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
 		this->healthNumerator->setString(std::to_string(health));
 		this->healthDenominator->setString(std::to_string(maxHealth));
@@ -146,6 +148,7 @@ void StatsBars::update(float dt)
 void StatsBars::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
+	this->healthBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityHealthBehaviorBase>();
 	this->manaBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityManaBehaviorBase>();
 
 	bool isSqually = dynamic_cast<Squally*>(target) != nullptr;

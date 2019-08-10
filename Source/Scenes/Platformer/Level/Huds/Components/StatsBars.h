@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class ConstantString;
+class EntityHealthBehaviorBase;
 class EntityManaBehaviorBase;
 class EqDisplay;
 class LocalizedLabel;
@@ -32,6 +33,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
+	EntityHealthBehaviorBase* healthBehavior;
 	EntityManaBehaviorBase* manaBehavior;
 	PlatformerEntity* target;
 

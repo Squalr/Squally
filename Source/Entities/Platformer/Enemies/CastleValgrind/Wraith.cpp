@@ -35,9 +35,7 @@ Wraith::Wraith(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(142.0f, 400.0f),
 	0.6f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Wraith::getHexusOpponentData();
 }

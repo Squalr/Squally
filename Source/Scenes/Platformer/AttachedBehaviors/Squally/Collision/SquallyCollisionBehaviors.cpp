@@ -8,6 +8,7 @@
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityHealthBehaviorBase.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -55,9 +56,11 @@ void SquallyCollisionBehaviors::onLoad()
 {
 	this->noCombatDuration = 2.0f;
 
+	EntityHealthBehaviorBase* health = this->squally->getAttachedBehavior<EntityHealthBehaviorBase>();
+
 	this->squally->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->isDead())
+		if (health->isDead())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -72,7 +75,7 @@ void SquallyCollisionBehaviors::onLoad()
 
 	this->squally->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->noCombatDuration > 0.0f || this->squally->isDead())
+		if (this->noCombatDuration > 0.0f || health->isDead())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -87,9 +90,9 @@ void SquallyCollisionBehaviors::onLoad()
 
 	this->squally->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->isAlive())
+		if (health->isAlive())
 		{
-			this->squally->killAndRespawn();
+			health->killAndRespawn();
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;
@@ -97,7 +100,7 @@ void SquallyCollisionBehaviors::onLoad()
 	
 	this->squally->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->isAlive())
+		if (health->isAlive())
 		{
 			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
 			
@@ -109,7 +112,7 @@ void SquallyCollisionBehaviors::onLoad()
 
 	this->squally->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->isAlive())
+		if (health->isAlive())
 		{
 			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
 
@@ -132,7 +135,9 @@ void SquallyCollisionBehaviors::engageEnemy(PlatformerEnemy* enemy, bool firstSt
 	this->noCombatDuration = 2.0f;
 	this->squally->saveState();
 
-	if (enemy != nullptr && !enemy->isDead() && enemy->getBattleMapResource() != "")
+	EntityHealthBehaviorBase* health = enemy->getAttachedBehavior<EntityHealthBehaviorBase>();
+
+	if (enemy != nullptr && health != nullptr && !health->isDead() && enemy->getBattleMapResource() != "")
 	{
 		CombatMap* combatMap = CombatMap::create(
 			enemy->getBattleMapResource(),

@@ -56,7 +56,8 @@ void SquallyIsAliveHackBehaviors::update(float dt)
 	// Check for player suicide
 	if (!this->isSquallyAliveHack())
 	{
-		this->squally->killAndRespawn();
+		abort();
+		// this->squally->killAndRespawn();
 	}
 }
 

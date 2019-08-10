@@ -35,9 +35,7 @@ Vampiress::Vampiress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(96.0f, 236.0f),
 	0.9f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Vampiress::getHexusOpponentData();
 }

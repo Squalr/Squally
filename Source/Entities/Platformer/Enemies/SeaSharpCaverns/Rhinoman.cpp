@@ -35,9 +35,7 @@ Rhinoman::Rhinoman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(592.0f, 592.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	35,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Rhinoman::getHexusOpponentData();
 }

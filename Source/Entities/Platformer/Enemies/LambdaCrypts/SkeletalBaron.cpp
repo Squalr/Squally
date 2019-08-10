@@ -35,9 +35,7 @@ SkeletalBaron::SkeletalBaron(ValueMap& initProperties) : PlatformerEnemy(initPro
 	PlatformerCollisionType::Enemy,
 	Size(112.0f, 368.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = SkeletalBaron::getHexusOpponentData();
 }

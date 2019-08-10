@@ -35,9 +35,7 @@ Shaman::Shaman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 288.0f),
 	0.78f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Shaman::getHexusOpponentData();
 }

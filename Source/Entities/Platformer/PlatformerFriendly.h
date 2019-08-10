@@ -17,8 +17,6 @@ protected:
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
-		int baseHealth,
-		int baseSpecial,
 		float hoverHeight = 0.0f,
 		std::string inventorySaveKey = "",
 		std::string equipmentSaveKey = "",

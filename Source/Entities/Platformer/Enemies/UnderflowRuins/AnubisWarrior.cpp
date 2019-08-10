@@ -35,9 +35,7 @@ AnubisWarrior::AnubisWarrior(ValueMap& initProperties) : PlatformerEnemy(initPro
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 292.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	27,
-	17)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = AnubisWarrior::getHexusOpponentData();
 }

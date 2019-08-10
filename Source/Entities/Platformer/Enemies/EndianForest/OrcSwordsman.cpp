@@ -35,9 +35,7 @@ OrcSwordsman::OrcSwordsman(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 228.0f),
 	0.9f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = OrcSwordsman::getHexusOpponentData();
 }

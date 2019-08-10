@@ -35,9 +35,7 @@ Barbarian::Barbarian(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(1280.0f, 920.0f),
 	1.0f,
-	Vec2(-32.0f, 0.0f),
-	16,
-	8)
+	Vec2(-32.0f, 0.0f))
 {
 	this->hexusOpponentData = Barbarian::getHexusOpponentData();
 }

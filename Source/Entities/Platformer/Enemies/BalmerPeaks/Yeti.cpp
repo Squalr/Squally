@@ -35,9 +35,7 @@ Yeti::Yeti(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(380.0f, 572.0f),
 	1.0f,
-	Vec2(24.0f, 0.0f),
-	16,
-	8)
+	Vec2(24.0f, 0.0f))
 {
 	this->hexusOpponentData = Yeti::getHexusOpponentData();
 }

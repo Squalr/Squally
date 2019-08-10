@@ -35,9 +35,7 @@ GoblinGruntBoar::GoblinGruntBoar(ValueMap& initProperties) : PlatformerEnemy(ini
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 296.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinGruntBoar::getHexusOpponentData();
 }

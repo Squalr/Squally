@@ -169,12 +169,14 @@ void Timeline::checkCombatComplete()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		allEnemiesDead &= entity->isDead();
+		abort();
+		// allEnemiesDead &= entity->isDead();
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		allPlayersDead &= entity->isDead();
+		abort();
+		// allPlayersDead &= entity->isDead();
 	}));
 
 	if (allEnemiesDead)
@@ -202,7 +204,8 @@ void Timeline::updateTimeline(float dt)
 		{
 			TimelineEntry* entry = *it;
 
-			if (!entry->getEntity()->isDead())
+			abort();
+			// if (!entry->getEntity()->isDead())
 			{
 				if (!this->isTimelineInterrupted)
 				{

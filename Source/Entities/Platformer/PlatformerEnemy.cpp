@@ -18,7 +18,6 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEnemy::SaveKeyIsDead = "is-dead";
 const std::string PlatformerEnemy::MapKeyBattleArgs = "battle-args";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
 const std::string PlatformerEnemy::MapKeyEnemy1 = "enemy-1";
@@ -33,8 +32,6 @@ PlatformerEnemy::PlatformerEnemy(
 	Size size, 
 	float scale,
 	Vec2 collisionOffset,
-	int baseHealth,
-	int baseSpecial,
 	float hoverHeight)
 	: super(
 		properties,
@@ -44,8 +41,6 @@ PlatformerEnemy::PlatformerEnemy(
 		size,
 		scale,
 		collisionOffset,
-		baseHealth,
-		baseSpecial,
 		hoverHeight)
 {
 	this->combatEntityList = std::vector<std::string>();
@@ -86,14 +81,6 @@ void PlatformerEnemy::onEnter()
 void PlatformerEnemy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
-	{
-		if (!this->mapEvent.empty())
-		{
-			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
-		}
-	}
 }
 
 void PlatformerEnemy::initializePositions()
@@ -104,25 +91,6 @@ void PlatformerEnemy::initializePositions()
 void PlatformerEnemy::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-void PlatformerEnemy::kill(bool loadDeadAnim)
-{
-	super::kill(loadDeadAnim);
-
-	if (!this->mapEvent.empty())
-	{
-		ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
-	}
-
-	this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(true));
-}
-
-void PlatformerEnemy::revive()
-{
-	super::revive();
-
-	this->saveObjectState(PlatformerEnemy::SaveKeyIsDead, Value(false));
 }
 
 std::string PlatformerEnemy::getBattleMapResource()
@@ -153,11 +121,6 @@ std::vector<std::string> PlatformerEnemy::getCombatEntityList()
 void PlatformerEnemy::onObjectStateLoaded()
 {
 	super::onObjectStateLoaded();
-
-	if (this->getObjectStateOrDefault(PlatformerEnemy::SaveKeyIsDead, Value(false)).asBool())
-	{
-		this->kill(true);
-	}
 }
 
 std::tuple<std::string, float> PlatformerEnemy::createDrop(std::string itemKey, float probability)

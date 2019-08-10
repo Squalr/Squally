@@ -35,9 +35,7 @@ OrcWarrior::OrcWarrior(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 228.0f),
 	0.9f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = OrcWarrior::getHexusOpponentData();
 }

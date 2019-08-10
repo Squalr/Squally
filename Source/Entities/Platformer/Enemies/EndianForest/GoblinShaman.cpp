@@ -35,9 +35,7 @@ GoblinShaman::GoblinShaman(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	PlatformerCollisionType::Enemy,
 	Size(96.0f, 204.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinShaman::getHexusOpponentData();
 }

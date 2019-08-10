@@ -35,9 +35,7 @@ Thatcher::Thatcher(ValueMap& initProperties) : NpcBase(initProperties,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.9f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Thatcher::getHexusOpponentData();
 }

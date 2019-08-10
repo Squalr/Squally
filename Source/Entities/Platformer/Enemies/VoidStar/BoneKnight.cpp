@@ -35,9 +35,7 @@ BoneKnight::BoneKnight(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	PlatformerCollisionType::Enemy,
 	Size(540.0f, 340.0f),
 	1.0f,
-	Vec2(-64.0f, 0.0f),
-	16,
-	8)
+	Vec2(-64.0f, 0.0f))
 {
 	this->hexusOpponentData = BoneKnight::getHexusOpponentData();
 }

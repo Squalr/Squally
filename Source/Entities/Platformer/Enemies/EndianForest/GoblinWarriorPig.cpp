@@ -37,9 +37,7 @@ GoblinWarriorPig::GoblinWarriorPig(ValueMap& initProperties) : PlatformerEnemy(i
 	PlatformerCollisionType::Enemy,
 	Size(128.0f, 296.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	14,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinWarriorPig::getHexusOpponentData();
 

@@ -69,7 +69,8 @@ void TargetSelectionMenu::initializeListeners()
 
 					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity, bool* isHandled)
 					{
-						if (!entity->isDead())
+						abort();
+						// if (!entity->isDead())
 						{
 							this->selectEntity(entity);
 
@@ -89,7 +90,8 @@ void TargetSelectionMenu::initializeListeners()
 
 					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity, bool* isHandled)
 					{
-						if (!entity->isDead())
+						abort();
+						// if (!entity->isDead())
 						{
 							this->selectEntity(entity);
 
@@ -162,7 +164,8 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 			{
-				if (!entity->isDead())
+				abort();
+				// if (!entity->isDead())
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -174,7 +177,8 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEntity* entity)
 			{
-				if (!entity->isDead())
+				abort();
+				// if (!entity->isDead())
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -186,7 +190,8 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 			{
-				if (!entity->isDead())
+				abort();
+				// if (!entity->isDead())
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -233,8 +238,9 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 		
 		if (selection != nullptr)
 		{
-			if (entity->isDead() 
-				|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
+			abort();
+			if (// entity->isDead() ||
+				(this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
 				|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
 			{
 				return;

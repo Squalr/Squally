@@ -63,9 +63,7 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	10,
-	10)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = FlyBot::getHexusOpponentData();
 

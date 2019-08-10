@@ -35,9 +35,7 @@ DemonDragon::DemonDragon(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	PlatformerCollisionType::Enemy,
 	Size(340.0f, 360.0f),
 	0.85f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = DemonDragon::getHexusOpponentData();
 }

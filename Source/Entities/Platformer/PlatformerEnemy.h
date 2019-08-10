@@ -15,11 +15,7 @@ public:
 	std::string getBattleMapResource();
 	std::vector<std::string> getBattleMapArgs();
 	std::vector<std::string> getCombatEntityList();
-	
-	void kill(bool loadDeadAnim = false) override;
-	void revive() override;
 
-	static const std::string SaveKeyIsDead;
 	static const std::string MapKeyBattleArgs;
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyEnemy1;
@@ -34,8 +30,6 @@ protected:
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
-		int baseHealth,
-		int baseSpecial,
 		float hoverHeight = 0.0f);
 	virtual ~PlatformerEnemy();
 
@@ -54,6 +48,7 @@ protected:
 
 private:
 	typedef PlatformerEntity super;
+	friend class EnemyHealthBehavior;
 
 	void buildDropInventory();
 	void buildIOUDrop();

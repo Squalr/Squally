@@ -35,9 +35,7 @@ Goblin::Goblin(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Goblin::getHexusOpponentData();
 }

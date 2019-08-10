@@ -35,9 +35,7 @@ ForestGolem::ForestGolem(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	PlatformerCollisionType::Enemy,
 	Size(768.0f, 840.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = ForestGolem::getHexusOpponentData();
 }

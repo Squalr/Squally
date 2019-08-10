@@ -35,9 +35,7 @@ KingGrogg::KingGrogg(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(412.0f, 412.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = KingGrogg::getHexusOpponentData();
 }

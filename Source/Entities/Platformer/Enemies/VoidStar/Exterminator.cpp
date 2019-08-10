@@ -35,9 +35,7 @@ Exterminator::Exterminator(ValueMap& initProperties) : PlatformerEnemy(initPrope
 	PlatformerCollisionType::Enemy,
 	Size(320.0f, 278.0f),
 	0.9f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Exterminator::getHexusOpponentData();
 }

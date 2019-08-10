@@ -16,8 +16,6 @@ public:
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 
 	static const std::string MapKeySqually;
-	static const int SquallyBaseHealth;
-	static const int SquallyBaseSpecial;
 
 protected:
 	void performSwimAnimation() override;
@@ -44,8 +42,6 @@ private:
 	void loadSaveState();
 	void runEyeBlinkLoop();
 	void spawnHelper();
-
-	bool canJump;
 
 	cocos2d::Node* cameraTrackTarget;
 

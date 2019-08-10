@@ -126,7 +126,8 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 		this->tryInterrupt();
 	}
 
-	this->getEntity()->addHealth(damageOrHealing);
+	abort();
+	// this->getEntity()->addHealth(damageOrHealing);
 	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(caster, this->getEntity(), damageOrHealing));
 }
 

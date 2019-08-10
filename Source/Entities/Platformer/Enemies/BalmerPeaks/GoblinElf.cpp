@@ -35,9 +35,7 @@ GoblinElf::GoblinElf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(140.0f, 296.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinElf::getHexusOpponentData();
 }

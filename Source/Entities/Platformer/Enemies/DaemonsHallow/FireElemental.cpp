@@ -35,9 +35,7 @@ FireElemental::FireElemental(ValueMap& initProperties) : PlatformerEnemy(initPro
 	PlatformerCollisionType::Enemy,
 	Size(820.0f, 1480.0f),
 	1.0f,
-	Vec2(64.0f, 0.0f),
-	16,
-	8)
+	Vec2(64.0f, 0.0f))
 {
 	this->hexusOpponentData = FireElemental::getHexusOpponentData();
 }

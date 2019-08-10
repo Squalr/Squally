@@ -55,9 +55,10 @@ void ProjectileHealthPotion::update(float dt)
 
 void ProjectileHealthPotion::onCollideWithTarget(PlatformerEntity* target)
 {
-	int healing = std::round(float(target->getMaxHealth()) * ProjectileHealthPotion::HealPercentage);
+	abort();
+	//int healing = std::round(float(target->getMaxHealth()) * ProjectileHealthPotion::HealPercentage);
 
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, healing));
+	//CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileHealthPotion::getButtonOffset()

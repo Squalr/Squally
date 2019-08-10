@@ -35,9 +35,7 @@ PrincessPepper::PrincessPepper(ValueMap& initProperties) : NpcBase(initPropertie
 	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.85f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = PrincessPepper::getHexusOpponentData();
 }

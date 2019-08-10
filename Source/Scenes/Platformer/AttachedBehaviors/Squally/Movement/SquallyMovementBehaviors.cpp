@@ -38,11 +38,6 @@ SquallyMovementBehaviors::~SquallyMovementBehaviors()
 
 void SquallyMovementBehaviors::update(float dt)
 {
-	if (this->squally->isCinimaticHijacked || this->squally->getIsPlatformerDisabled() || this->squally->isDead())
-	{
-		return;
-	}
-
 	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->squally->animationNode).origin;
 	//// this->squally->animationNode->setFlippedX(squallyPosition.x > MouseState::getMousePosition().x);
 

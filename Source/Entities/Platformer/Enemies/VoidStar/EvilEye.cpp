@@ -35,9 +35,7 @@ EvilEye::EvilEye(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(720.0f, 840.0f),
 	0.6f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = EvilEye::getHexusOpponentData();
 }

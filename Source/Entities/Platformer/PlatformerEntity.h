@@ -31,19 +31,10 @@ public:
 	};
 
 	std::string getEntityName();
-	int getHealth();
-	void addHealth(int healthDelta);
-	void setHealth(int health);
-	virtual void kill(bool loadDeadAnim = false);
-	virtual void revive();
-	int getMaxHealth();
-	bool isAlive();
-	bool isDead();
 	void disablePlatformerControls();
 	bool getIsPlatformerDisabled();
 	virtual float getFloatHeight();
 
-	void killAndRespawn();
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
@@ -60,8 +51,6 @@ public:
 	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
 
-	static const int FallBackMaxHealth;
-
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap& properties,
@@ -71,8 +60,6 @@ protected:
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
-		int baseHealth,
-		int baseSpecial,
 		float hoverHeight = 0.0f,
 		std::string inventorySaveKey = "",
 		std::string equipmentSaveKey = "",
@@ -125,11 +112,9 @@ private:
 	friend class EntityOutOfCombatAttackBehaviorBase;
 	friend class EntityMovementCollisionBehaviors;
 	friend class EntitySelectionBehavior;
+	friend class EntityHealthBehaviorBase;
 
-	int health;
-	int maxHealth;
 	float hoverHeight;
-
 	float scale;
 	std::string entityName;
 	PlatformerCollisionType collisionType;

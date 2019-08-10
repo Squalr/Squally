@@ -35,9 +35,7 @@ Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	PlatformerCollisionType::Enemy,
 	Size(296.0f, 356.0f),
 	0.6f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Abomination::getHexusOpponentData();
 }

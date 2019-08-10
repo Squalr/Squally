@@ -35,9 +35,7 @@ TigerMan::TigerMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 308.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	23,
-	18)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = TigerMan::getHexusOpponentData();
 }

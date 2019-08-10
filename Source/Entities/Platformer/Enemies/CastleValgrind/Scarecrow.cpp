@@ -35,9 +35,7 @@ Scarecrow::Scarecrow(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	PlatformerCollisionType::Enemy,
 	Size(196.0f, 512.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Scarecrow::getHexusOpponentData();
 }

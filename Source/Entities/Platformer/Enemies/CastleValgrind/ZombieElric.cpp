@@ -35,9 +35,7 @@ ZombieElric::ZombieElric(ValueMap& initProperties) : PlatformerEnemy(initPropert
 	PlatformerCollisionType::Enemy,
 	Size(114.0f, 208.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = ZombieElric::getHexusOpponentData();
 }

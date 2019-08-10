@@ -73,11 +73,14 @@ void EntityDebugBehaviors::onLoad()
 {
 	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->entity->revive();
+		abort();
+		// this->entity->revive();
 	});
 
 	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
+		abort();
+		/*
 		Squally* squally = dynamic_cast<Squally*>(this->entity);
 
 		if (squally != nullptr)
@@ -87,6 +90,6 @@ void EntityDebugBehaviors::onLoad()
 		else
 		{
 			this->entity->kill();
-		}
+		}*/
 	});
 }

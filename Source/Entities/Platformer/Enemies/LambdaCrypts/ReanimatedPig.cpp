@@ -35,9 +35,7 @@ ReanimatedPig::ReanimatedPig(ValueMap& initProperties) : PlatformerEnemy(initPro
 	PlatformerCollisionType::Enemy,
 	Size(256.0f, 240.0f),
 	0.8f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = ReanimatedPig::getHexusOpponentData();
 }

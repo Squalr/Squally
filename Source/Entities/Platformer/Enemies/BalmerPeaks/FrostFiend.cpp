@@ -35,9 +35,7 @@ FrostFiend::FrostFiend(ValueMap& initProperties) : PlatformerEnemy(initPropertie
 	PlatformerCollisionType::Enemy,
 	Size(212.0f, 296.0f),
 	1.0f,
-	Vec2(0.0f, 0.0f),
-	16,
-	8)
+	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = FrostFiend::getHexusOpponentData();
 }

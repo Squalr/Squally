@@ -9,6 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityGroundCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityMovementCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityHealthBehaviorBase.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -34,21 +35,26 @@ void EntityMovementBehaviorBase::update(float dt)
 {
 	super::update(dt);
 
+	if (this->entity->isCinimaticHijacked || this->entity->getIsPlatformerDisabled())
+	{
+		return;
+	}
+
 	EntityMovementCollisionBehaviors* movementCollision = this->entity->getAttachedBehavior<EntityMovementCollisionBehaviors>();
+	EntityHealthBehaviorBase* health = this->entity->getAttachedBehavior<EntityHealthBehaviorBase>();
+	EntityGroundCollisionBehaviors* groundBehaviors = this->entity->getAttachedBehavior<EntityGroundCollisionBehaviors>();
 
 	if (movementCollision == nullptr)
 	{
 		return;
 	}
 
-	if (this->entity->isDead() && this->movement != Vec2::ZERO)
+	if (health != nullptr && health->isDead())
 	{
 		this->movement = Vec2::ZERO;
 	}
 
 	Vec2 velocity = movementCollision->getVelocity();
-
-	EntityGroundCollisionBehaviors* groundBehaviors = this->entity->getAttachedBehavior<EntityGroundCollisionBehaviors>();
 
 	bool isOnGround = groundBehaviors == nullptr ? false : groundBehaviors->isOnGround();
 

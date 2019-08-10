@@ -14,9 +14,7 @@ NpcBase::NpcBase(
 	PlatformerCollisionType collisionType,
 	Size size,
 	float scale,
-	Vec2 collisionOffset,
-	int baseHealth,
-	int baseSpecial
+	Vec2 collisionOffset
 ) : super(
 	properties,
 	scmlResource,
@@ -24,9 +22,7 @@ NpcBase::NpcBase(
 	collisionType,
 	size,
 	scale,
-	collisionOffset,
-	baseHealth,
-	baseSpecial)
+	collisionOffset)
 {
 	this->chatBubbleSprite = Sprite::create(UIResources::Platformer_ChatBubble);
 

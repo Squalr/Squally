@@ -32,8 +32,6 @@ using namespace cocos2d;
 
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKeySqually = "squally";
-const int Squally::SquallyBaseHealth = 16;
-const int Squally::SquallyBaseSpecial = 8;
 
 Squally* Squally::deserialize(ValueMap& properties)
 {
@@ -51,8 +49,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Size(128.0f, 128.0f),
 	Squally::SquallyScale,
 	Vec2(0.0f, 24.0f),
-	Squally::SquallyBaseHealth,
-	Squally::SquallyBaseSpecial,
 	96.0f,
 	SaveKeys::SaveKeySquallyInventory,
 	SaveKeys::SaveKeySquallyEquipment,
@@ -163,28 +159,16 @@ void Squally::onHackerModeEnable(int eq)
 
 void Squally::saveState()
 {
-	SaveManager::batchSaveProfileData({
-		{ SaveKeys::SaveKeySquallyHeath, Value(this->getHealth()) },
-	});
 }
 
 void Squally::loadSaveState()
 {
-	// Note: We just use the current value by default. This is normally the max if Squally was just constructed, but might also
-	// Be a lower value (ie if created as injured for a cutscene)
-	this->setHealth(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHeath, Value(this->getHealth())).asInt());
-	
 	/*
 	this->setPosition(Vec2(
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
 		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY())).asFloat()
 	));
 	*/
-
-	if (this->getHealth() <= 0)
-	{
-		this->killAndRespawn();
-	}
 
 	// Save new defaults
 	this->saveState();
