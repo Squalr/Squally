@@ -16,6 +16,10 @@
 
 using namespace cocos2d;
 
+const float EntityMovementBehaviorBase::MoveAcceleration = 5800.0f;
+const Vec2 EntityMovementBehaviorBase::SwimAcceleration = Vec2(8000.0f, 420.0f);
+const float EntityMovementBehaviorBase::JumpVelocity = 7680.0f;
+
 EntityMovementBehaviorBase::EntityMovementBehaviorBase(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
@@ -67,12 +71,12 @@ void EntityMovementBehaviorBase::update(float dt)
 			if ((this->movement.x < 0.0f && !movementCollision->hasLeftWallCollision()) ||
 				(this->movement.x > 0.0f && !movementCollision->hasRightWallCollision()))
 			{
-				velocity.x += this->movement.x * PlatformerEntity::MoveAcceleration * dt;
+				velocity.x += this->movement.x * EntityMovementBehaviorBase::MoveAcceleration * dt;
 			}
 
 			if (this->movement.y > 0.0f && isOnGround)
 			{
-				velocity.y = this->movement.y * PlatformerEntity::JumpVelocity;
+				velocity.y = this->movement.y * EntityMovementBehaviorBase::JumpVelocity;
 
 				this->entity->performJumpAnimation();
 			}
@@ -81,7 +85,7 @@ void EntityMovementBehaviorBase::update(float dt)
 		}
 		case PlatformerEntity::ControlState::Swimming:
 		{
-			const float minSpeed = PlatformerEntity::SwimAcceleration.y;
+			const float minSpeed = EntityMovementBehaviorBase::SwimAcceleration.y;
 
 			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
 			if (velocity.y < minSpeed && this->movement.y > 0.0f)
@@ -93,8 +97,8 @@ void EntityMovementBehaviorBase::update(float dt)
 				velocity.y = -minSpeed;
 			}
 
-			velocity.x += this->movement.x * PlatformerEntity::SwimAcceleration.x * dt;
-			velocity.y += this->movement.y * PlatformerEntity::SwimAcceleration.y * dt;
+			velocity.x += this->movement.x * EntityMovementBehaviorBase::SwimAcceleration.x * dt;
+			velocity.y += this->movement.y * EntityMovementBehaviorBase::SwimAcceleration.y * dt;
 
 			if (this->movement != Vec2::ZERO)
 			{

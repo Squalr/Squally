@@ -58,21 +58,6 @@ void SquallyCollisionBehaviors::onLoad()
 
 	EntityHealthBehaviorBase* health = this->squally->getAttachedBehavior<EntityHealthBehaviorBase>();
 
-	this->squally->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (health->isDead())
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
-		
-		// First-strike!
-		this->engageEnemy(enemy, true);
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
 	this->squally->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->noCombatDuration > 0.0f || health->isDead())

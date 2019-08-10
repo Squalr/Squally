@@ -16,6 +16,8 @@ using namespace cocos2d;
 
 const std::string EntityMovementCollisionBehaviors::MapKeyAttachedBehavior = "entity-movement-collisions";
 const float EntityMovementCollisionBehaviors::WallDetectorSize = 64.0f;
+const float EntityMovementCollisionBehaviors::WaterJumpVelocity = 7680.0f;
+const float EntityMovementCollisionBehaviors::SwimVerticalDrag = 0.93f;
 
 EntityMovementCollisionBehaviors* EntityMovementCollisionBehaviors::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
@@ -124,7 +126,7 @@ void EntityMovementCollisionBehaviors::buildMovementCollision()
 	{
 		this->movementCollision->setGravityEnabled(false);
 		this->entity->controlState = PlatformerEntity::ControlState::Swimming;
-		this->movementCollision->setVerticalDampening(PlatformerEntity::SwimVerticalDrag);
+		this->movementCollision->setVerticalDampening(EntityMovementCollisionBehaviors::SwimVerticalDrag);
 
 		// Clear current animation
 		this->entity->animationNode->playAnimation("Idle");
@@ -142,7 +144,7 @@ void EntityMovementCollisionBehaviors::buildMovementCollision()
 		if (this->movementCollision->getVelocity().y > 0.0f)
 		{
 			// Give a velocity boost for jumping out of water
-			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, PlatformerEntity::JumpVelocity));
+			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityMovementCollisionBehaviors::WaterJumpVelocity));
 
 			this->entity->animationNode->playAnimation("Jump");
 		}

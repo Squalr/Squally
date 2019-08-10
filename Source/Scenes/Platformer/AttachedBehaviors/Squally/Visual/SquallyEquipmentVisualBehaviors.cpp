@@ -111,18 +111,4 @@ void SquallyEquipmentVisualBehaviors::updateEquipmentVisual()
 			mainhand->restoreOffset();
 		}
 	}
-
-	if (weapon != nullptr)
-	{
-		this->squally->rebuildWeaponCollision(weapon->getWeaponCollisionSize());
-		this->squally->weaponCollision->setPosition(weapon->getWeaponOffset());
-	}
-	else
-	{
-		const Size NoWeaponSize = Size(64.0f, 64.0f);
-		const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
-
-		this->squally->rebuildWeaponCollision(NoWeaponSize);
-		this->squally->weaponCollision->setPosition(NoWeaponOffset);
-	}
 }

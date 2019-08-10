@@ -17,11 +17,12 @@ enum class PlatformerCollisionType
 	GroundDetector		= 1 << 11,
 	WallDetector		= 1 << 12,
 	PlayerWeapon		= 1 << 13,
-	EnemyWeapon			= 1 << 14,
-	Breakable			= 1 << 15,
-	Damage				= 1 << 16,
-	Collectable			= 1 << 17,
-	Trigger				= 1 << 18,
+	NpcWeapon			= 1 << 14,
+	EnemyWeapon			= 1 << 15,
+	Breakable			= 1 << 16,
+	Damage				= 1 << 17,
+	Collectable			= 1 << 18,
+	Trigger				= 1 << 19,
 
 	// Keep in sync with EngineCollisionType:
 	Solid				= 1 << 29,

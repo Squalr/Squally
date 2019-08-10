@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityGroundCollisionBehaviors.h"
 #include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityMovementCollisionBehaviors.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityWeaponCollisionBehaviors.h"
 
 using namespace cocos2d;
 
@@ -20,6 +21,7 @@ EntityCollisionBehaviorGroup* EntityCollisionBehaviorGroup::create(GameObject* o
 EntityCollisionBehaviorGroup::EntityCollisionBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
 	EntityGroundCollisionBehaviors::create(owner, attachedBehaviorArgs),
 	EntityMovementCollisionBehaviors::create(owner, attachedBehaviorArgs),
+	EntityWeaponCollisionBehaviors::create(owner, attachedBehaviorArgs),
 	})
 {
 }

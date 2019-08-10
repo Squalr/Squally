@@ -13,6 +13,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehaviors/Entities/Collision/EntityWeaponCollisionBehaviors.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
@@ -70,6 +71,7 @@ void EntityOutOfCombatAttackBehaviorBase::doOutOfCombatAttack(std::string attack
 
 	this->isPerformingOutOfCombatAttack = true;
 	this->entity->animationNode->playAnimation(attackAnimation);
+	EntityWeaponCollisionBehaviors* weaponBehavior = this->entity->getAttachedBehavior<EntityWeaponCollisionBehaviors>();
 
 	this->runAction(Sequence::create(
 		DelayTime::create(onset),
@@ -80,12 +82,12 @@ void EntityOutOfCombatAttackBehaviorBase::doOutOfCombatAttack(std::string attack
 				this->outOfCombatAttackDebug->setVisible(true);
 			}
 
-			this->entity->weaponCollision->setPhysicsEnabled(true);
+			weaponBehavior->enable();
 		}),
 		DelayTime::create(sustain),
 		CallFunc::create([=]()
 		{
-			this->entity->weaponCollision->setPhysicsEnabled(false);
+			weaponBehavior->disable();
 			this->isPerformingOutOfCombatAttack = false;
 			this->outOfCombatAttackDebug->setVisible(false);
 		}),

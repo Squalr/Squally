@@ -29,12 +29,6 @@
 
 using namespace cocos2d;
 
-const float PlatformerEntity::MoveAcceleration = 5800.0f;
-const Vec2 PlatformerEntity::SwimAcceleration = Vec2(8000.0f, 420.0f);
-const Size PlatformerEntity::DefaultWeaponSize = Size(64.0f, 128.0f);
-const float PlatformerEntity::SwimVerticalDrag = 0.93f;
-const float PlatformerEntity::JumpVelocity = 7680.0f;
-
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
 PlatformerEntity::PlatformerEntity(
@@ -52,7 +46,6 @@ PlatformerEntity::PlatformerEntity(
 	) : super(properties)
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
-	this->weaponCollision = nullptr;
 	this->entityScale = scale;
 	this->collisionType = collisionType;
 	this->animationResource = scmlResource;
@@ -110,8 +103,6 @@ PlatformerEntity::~PlatformerEntity()
 void PlatformerEntity::onEnter()
 {
 	super::onEnter();
-
-	this->rebuildWeaponCollision(PlatformerEntity::DefaultWeaponSize);
 
 	this->scheduleUpdate();
 }
@@ -231,34 +222,14 @@ Inventory* PlatformerEntity::getInventory()
 	return this->inventory;
 }
 
+EquipmentInventory* PlatformerEntity::getEquipmentInventory()
+{
+	return this->equipmentInventory;
+}
+
 CurrencyInventory* PlatformerEntity::getCurrencyInventory()
 {
 	return this->currencyInventory;
-}
-
-void PlatformerEntity::rebuildWeaponCollision(Size size)
-{
-	AnimationPart* mainhand = this->animationNode->getAnimationPart("mainhand");
-
-	if (mainhand == nullptr)
-	{
-		return;
-	}
-
-	PlatformerCollisionType weaponType = this->collisionType == PlatformerCollisionType::Player ? PlatformerCollisionType::PlayerWeapon : 
-		(this->collisionType == PlatformerCollisionType::Enemy ? PlatformerCollisionType::EnemyWeapon : PlatformerCollisionType::None);
-
-	mainhand->removeTrackingObject(this->weaponCollision);
-
-	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(size, 1.0f, 8.0f),
-		(int)weaponType,
-		false,
-		false
-	);
-
-	this->weaponCollision->setPhysicsEnabled(false);
-	mainhand->addTrackingObject(this->weaponCollision);
 }
 
 void PlatformerEntity::registerAttack(PlatformerAttack* attack)

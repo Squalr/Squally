@@ -39,6 +39,7 @@ public:
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> cloneAttacks();
 	Inventory* getInventory();
+	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();
 	float getScale();
 	std::string getAnimationResource();
@@ -77,14 +78,11 @@ protected:
 	void doOutOfCombatAttack();
 
 	CollisionObject* entityCollision;
-	CollisionObject* weaponCollision;
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	EquipmentInventory* equipmentInventory;
 	CurrencyInventory* currencyInventory;
 	cocos2d::Vec2 spawnCoords;
-
-	virtual void rebuildWeaponCollision(cocos2d::Size size);
 	
 	bool isCinimaticHijacked;
 	bool isPlatformerDisabled;
@@ -96,11 +94,6 @@ protected:
 	cocos2d::Size movementSize;
 	ControlState controlState;
 
-	static const float MoveAcceleration;
-	static const cocos2d::Vec2 SwimAcceleration;
-	static const cocos2d::Size DefaultWeaponSize;
-	static const float SwimVerticalDrag;
-	static const float JumpVelocity;
 	static const std::string MapKeyPropertyState;
 
 private:
