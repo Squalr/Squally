@@ -52,7 +52,7 @@ void SquallyRuneBehaviors::onLoad()
 	{
 		this->tryUseRune();
 		
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefault(StateKeys::SquallyEq, Value(1)).asInt()));
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefault(StateKeys::Eq, Value(1)).asInt()));
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
@@ -61,7 +61,7 @@ void SquallyRuneBehaviors::onLoad()
 		
 		if (this->tryUseRune())
 		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefault(StateKeys::SquallyEq, Value(1)).asInt()));
+			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefault(StateKeys::Eq, Value(1)).asInt()));
 		}
 	});
 

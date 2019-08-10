@@ -14,6 +14,7 @@
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/IsAliveClippy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyHealthBehavior.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
@@ -56,8 +57,9 @@ void SquallyIsAliveHackBehaviors::update(float dt)
 	// Check for player suicide
 	if (!this->isSquallyAliveHack())
 	{
-		abort();
-		// this->squally->killAndRespawn();
+		SquallyHealthBehavior* health = squally->getAttachedBehavior<SquallyHealthBehavior>();
+		
+		health->killAndRespawn();
 	}
 }
 

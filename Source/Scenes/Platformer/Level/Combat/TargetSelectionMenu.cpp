@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -14,6 +15,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehaviors/Combat/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -69,8 +71,7 @@ void TargetSelectionMenu::initializeListeners()
 
 					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity, bool* isHandled)
 					{
-						abort();
-						// if (!entity->isDead())
+						if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
 						{
 							this->selectEntity(entity);
 
@@ -90,8 +91,7 @@ void TargetSelectionMenu::initializeListeners()
 
 					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity, bool* isHandled)
 					{
-						abort();
-						// if (!entity->isDead())
+						if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
 						{
 							this->selectEntity(entity);
 
@@ -164,8 +164,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 			{
-				abort();
-				// if (!entity->isDead())
+				if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -177,8 +176,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEntity* entity)
 			{
-				abort();
-				// if (!entity->isDead())
+				if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -190,8 +188,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 			{
-				abort();
-				// if (!entity->isDead())
+				if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -238,9 +235,8 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 		
 		if (selection != nullptr)
 		{
-			abort();
-			if (// entity->isDead() ||
-				(this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
+			if (entity->getStateOrDefault(StateKeys::IsDead, Value(true)).asBool()
+				|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
 				|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
 			{
 				return;

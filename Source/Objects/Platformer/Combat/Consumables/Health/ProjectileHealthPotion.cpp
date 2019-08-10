@@ -9,6 +9,7 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotionGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -55,10 +56,14 @@ void ProjectileHealthPotion::update(float dt)
 
 void ProjectileHealthPotion::onCollideWithTarget(PlatformerEntity* target)
 {
-	abort();
-	//int healing = std::round(float(target->getMaxHealth()) * ProjectileHealthPotion::HealPercentage);
+	if (target == nullptr)
+	{
+		return;
+	}
 
-	//CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, healing));
+	int healing = std::round(float(target->getStateOrDefault(StateKeys::Health, Value(0)).asInt())) * ProjectileHealthPotion::HealPercentage;
+
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileHealthPotion::getButtonOffset()

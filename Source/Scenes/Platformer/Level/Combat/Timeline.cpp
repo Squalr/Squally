@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
@@ -14,6 +15,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -169,14 +171,12 @@ void Timeline::checkCombatComplete()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		abort();
-		// allEnemiesDead &= entity->isDead();
+		allEnemiesDead &= entity->getStateOrDefault(StateKeys::IsDead, Value(true)).asBool();
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		abort();
-		// allPlayersDead &= entity->isDead();
+		allPlayersDead &= entity->getStateOrDefault(StateKeys::IsDead, Value(true)).asBool();
 	}));
 
 	if (allEnemiesDead)
@@ -204,8 +204,7 @@ void Timeline::updateTimeline(float dt)
 		{
 			TimelineEntry* entry = *it;
 
-			abort();
-			// if (!entry->getEntity()->isDead())
+			if (entry->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
 			{
 				if (!this->isTimelineInterrupted)
 				{

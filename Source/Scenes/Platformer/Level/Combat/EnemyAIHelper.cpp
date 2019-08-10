@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -10,6 +11,7 @@
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
 
@@ -117,9 +119,10 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 
 	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{
-		// TODO
-		abort();
-		//if (std::round(float((*it)->getHealth()) / float((*it)->getMaxHealth())) <= WeakPercentage)
+		int health = (*it)->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
+		int maxHealth = (*it)->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
+
+		if (std::round(float(health) / float(maxHealth)) <= WeakPercentage)
 		{
 			hasWeakAlly = true;
 		}
@@ -194,11 +197,12 @@ PlatformerEntity* EnemyAIHelper::selectTarget(TimelineEntry* attackingEntry, std
 		}
 		else
 		{
-			// TODO
-			abort();
-			// if ((*it)->getHealth() > target->getHealth())
+			int health = (*it)->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
+			int targetHealth = target->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
+			
+			if (health > targetHealth)
 			{
-				// target = *it;
+				target = *it;
 			}
 		}
 	}

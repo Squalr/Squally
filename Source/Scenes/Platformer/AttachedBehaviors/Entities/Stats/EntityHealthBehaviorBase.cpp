@@ -12,6 +12,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -23,14 +24,12 @@ EntityHealthBehaviorBase::EntityHealthBehaviorBase(GameObject* owner, std::strin
 
 	if (this->entity == nullptr)
 	{
-		this->maxHealth = 0;
-		this->health = 0;
 		this->invalidate();
 	}
 	else
 	{
-		this->maxHealth = StatsTables::getBaseHealth(this->entity);
-		this->health = this->maxHealth;
+		this->entity->setState(StateKeys::MaxHealth, Value(StatsTables::getBaseHealth(this->entity)));
+		this->entity->setState(StateKeys::Health, Value(StatsTables::getBaseHealth(this->entity)));
 	}
 }
 
@@ -44,7 +43,7 @@ void EntityHealthBehaviorBase::onLoad()
 
 int EntityHealthBehaviorBase::getHealth()
 {
-	return this->health;
+	return this->entity->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
 }
 
 void EntityHealthBehaviorBase::addHealth(int healthDelta)
@@ -59,9 +58,12 @@ void EntityHealthBehaviorBase::setHealth(int health)
 		return;
 	}
 
-	this->health = MathUtils::clamp(health, 0, this->maxHealth);
+	health = MathUtils::clamp(health, 0, this->entity->getStateOrDefault(StateKeys::MaxHealth, Value(0)).asInt());
+	this->entity->setState(StateKeys::Health, Value(health));
+	this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()));
+	this->entity->setState(StateKeys::IsDead, Value(this->isDead()));
 
-	if (this->health <= 0 && this->entity != nullptr)
+	if (this->entity != nullptr && this->entity->getStateOrDefault(StateKeys::Health, Value(0)).asInt() <= 0)
 	{
 		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
 	}
@@ -69,7 +71,7 @@ void EntityHealthBehaviorBase::setHealth(int health)
 
 int EntityHealthBehaviorBase::getMaxHealth()
 {
-	return this->maxHealth;
+	return this->entity == nullptr ? 0 :this->entity->getStateOrDefault(StateKeys::MaxHealth, Value(0)).asInt();
 }
 
 void EntityHealthBehaviorBase::kill(bool loadDeadAnim)
@@ -100,7 +102,7 @@ void EntityHealthBehaviorBase::killAndRespawn()
 
 void EntityHealthBehaviorBase::revive()
 {
-	this->health = this->getMaxHealth();
+	this->setHealth(this->getMaxHealth());
 
 	if (this->entity != nullptr)
 	{
@@ -115,7 +117,7 @@ bool EntityHealthBehaviorBase::isAlive()
 
 bool EntityHealthBehaviorBase::isDead()
 {
-	return this->health <= 0;
+	return this->entity->getStateOrDefault(StateKeys::Health, Value(0)).asInt() <= 0;
 }
 
 /*

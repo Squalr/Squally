@@ -11,6 +11,7 @@
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileRestorePotionGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -57,10 +58,14 @@ void ProjectileRestorePotion::update(float dt)
 
 void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 {
-	abort();
-	// int healing = std::round(float(target->getMaxHealth()) * ProjectileRestorePotion::HealPercentage);
+	if (target == nullptr)
+	{
+		return;
+	}
+
+	int healing = std::round(float(target->getStateOrDefault(StateKeys::Health, Value(0)).asInt()) * ProjectileRestorePotion::HealPercentage);
 	
-	// target->addChild(RestoreHealth::create(this->caster, target, healing));
+	target->addChild(RestoreHealth::create(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()

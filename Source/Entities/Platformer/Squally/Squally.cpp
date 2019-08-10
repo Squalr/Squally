@@ -121,7 +121,7 @@ void Squally::initializeListeners()
 	{
 		args->handle();
 
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getStateOrDefault(StateKeys::SquallyEq, Value(1)).asInt()));
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getStateOrDefault(StateKeys::Eq, Value(1)).asInt()));
 	});
 }
 
