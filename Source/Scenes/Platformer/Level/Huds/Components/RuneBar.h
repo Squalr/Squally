@@ -9,7 +9,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class EntityRuneBehaviorBase;
+class EntityRuneBehavior;
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
 class SmartClippingNode;
@@ -32,7 +32,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	EntityRuneBehaviorBase* runeBehavior;
+	EntityRuneBehavior* runeBehavior;
 	PlatformerEntity* target;
 
 	std::vector<cocos2d::Sprite*> emptyRunes;

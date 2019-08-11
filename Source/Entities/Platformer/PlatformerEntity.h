@@ -99,13 +99,13 @@ protected:
 private:
 	typedef HackableObject super;
 	friend class EntityCollisionBehaviorGroup;
-	friend class EntityDebugBehaviors;
-	friend class EntityGroundCollisionBehaviors;
-	friend class EntityMovementBehaviorBase;
-	friend class EntityOutOfCombatAttackBehaviorBase;
-	friend class EntityMovementCollisionBehaviors;
+	friend class EntityDebugBehavior;
+	friend class EntityGroundCollisionBehavior;
+	friend class EntityMovementBehavior;
+	friend class EntityOutOfCombatAttackBehavior;
+	friend class EntityMovementCollisionBehavior;
 	friend class EntitySelectionBehavior;
-	friend class EntityHealthBehaviorBase;
+	friend class EntityHealthBehavior;
 
 	float hoverHeight;
 	float scale;

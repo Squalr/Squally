@@ -8,7 +8,7 @@ namespace cocos2d
 }
 
 class ConstantString;
-class EntityEqBehaviorBase;
+class EntityEqBehavior;
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
@@ -30,7 +30,7 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	EntityEqBehaviorBase* eqBehavior;
+	EntityEqBehavior* eqBehavior;
 	PlatformerEntity* target;
 	cocos2d::Sprite* eqFrame;
 	LocalizedLabel* eqLabel;

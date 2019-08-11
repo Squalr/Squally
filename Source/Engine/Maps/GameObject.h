@@ -34,7 +34,7 @@ public:
 	template <class T>
 	T* getAttachedBehavior()
 	{
-		for (auto it = attachedBehaviors.begin(); it != attachedBehaviors.end(); it++)
+		for (auto it = attachedBehavior.begin(); it != attachedBehavior.end(); it++)
 		{
 			if (dynamic_cast<T*>(*it) != nullptr)
 			{
@@ -111,5 +111,5 @@ private:
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;
-	std::vector<AttachedBehavior*> attachedBehaviors;
+	std::vector<AttachedBehavior*> attachedBehavior;
 };

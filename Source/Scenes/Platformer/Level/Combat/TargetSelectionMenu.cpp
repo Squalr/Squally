@@ -14,7 +14,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehaviors/Combat/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Combat/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"

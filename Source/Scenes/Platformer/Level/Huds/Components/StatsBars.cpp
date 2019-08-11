@@ -11,8 +11,8 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Level/Huds/Components/EqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityHealthBehaviorBase.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityManaBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -148,8 +148,8 @@ void StatsBars::update(float dt)
 void StatsBars::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
-	this->healthBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityHealthBehaviorBase>();
-	this->manaBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityManaBehaviorBase>();
+	this->healthBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityHealthBehavior>();
+	this->manaBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityManaBehavior>();
 
 	bool isSqually = dynamic_cast<Squally*>(target) != nullptr;
 

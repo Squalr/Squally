@@ -6,6 +6,8 @@ class AttachedBehavior : public HackableObject
 {
 public:
 	std::string getAttachedBehaviorArgs();
+	
+	bool isInvalidated();
 
 protected:
 	AttachedBehavior(GameObject* owner, std::string attachedBehaviorArgs);
@@ -24,6 +26,6 @@ private:
 
 	GameObject* owner;
 	std::string attachedBehaviorArgs;
-	bool isInvalidated;
+	bool invalidated;
 };
 

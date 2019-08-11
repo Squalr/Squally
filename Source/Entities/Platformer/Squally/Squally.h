@@ -25,10 +25,10 @@ protected:
 private:
 	typedef PlatformerFriendly super;
 	friend class SquallyBehaviorGroup;
-	friend class SquallyCollisionBehaviors;
-	friend class SquallyEquipmentVisualBehaviors;
-	friend class SquallyMovementBehaviors;
-	friend class SquallyOutOfCombatAttackBehaviors;
+	friend class SquallyCollisionBehavior;
+	friend class SquallyEquipmentVisualBehavior;
+	friend class SquallyMovementBehavior;
+	friend class SquallyOutOfCombatAttackBehavior;
 	
 	Squally(cocos2d::ValueMap& properties);
 	~Squally();

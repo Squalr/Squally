@@ -10,9 +10,9 @@
 
 using namespace cocos2d;
 
-AttachedBehaviorGroup::AttachedBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs, std::vector<AttachedBehavior*> attachedBehaviors) : super(owner, attachedBehaviorArgs)
+AttachedBehaviorGroup::AttachedBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs, std::vector<AttachedBehavior*> attachedBehavior) : super(owner, attachedBehaviorArgs)
 {
-	for (auto it = attachedBehaviors.begin(); it != attachedBehaviors.end(); it++)
+	for (auto it = attachedBehavior.begin(); it != attachedBehavior.end(); it++)
 	{
 		owner->attachBehavior(*it);
 	}

@@ -4,7 +4,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/AttachedBehaviors/PlatformerAttachedBehaviors.h"
+#include "Scenes/Platformer/AttachedBehavior/PlatformerAttachedBehavior.h"
 
 using namespace cocos2d;
 
@@ -25,11 +25,11 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[EntityBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)EntityBehaviorGroup::create(owner, attachedBehaviorArgs); };
 	this->attachedBehaviorDeserializers[EntityCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)EntityCollisionBehaviorGroup::create(owner, attachedBehaviorArgs); };
 	this->attachedBehaviorDeserializers[NpcBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)NpcBehaviorGroup::create(owner, attachedBehaviorArgs); };
-	this->attachedBehaviorDeserializers[NpcCollisionBehaviors::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)NpcCollisionBehaviors::create(owner, attachedBehaviorArgs); };
+	this->attachedBehaviorDeserializers[NpcCollisionBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)NpcCollisionBehavior::create(owner, attachedBehaviorArgs); };
 	this->attachedBehaviorDeserializers[SquallyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyBehaviorGroup::create(owner, attachedBehaviorArgs); };
-	this->attachedBehaviorDeserializers[SquallyCollisionBehaviors::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyCollisionBehaviors::create(owner, attachedBehaviorArgs); };
-	this->attachedBehaviorDeserializers[SquallyOutOfCombatAttackBehaviors::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyOutOfCombatAttackBehaviors::create(owner, attachedBehaviorArgs); };
-	this->attachedBehaviorDeserializers[SquallyMovementBehaviors::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyMovementBehaviors::create(owner, attachedBehaviorArgs); };
+	this->attachedBehaviorDeserializers[SquallyCollisionBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyCollisionBehavior::create(owner, attachedBehaviorArgs); };
+	this->attachedBehaviorDeserializers[SquallyOutOfCombatAttackBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyOutOfCombatAttackBehavior::create(owner, attachedBehaviorArgs); };
+	this->attachedBehaviorDeserializers[SquallyMovementBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner, std::string attachedBehaviorArgs) { return (AttachedBehavior*)SquallyMovementBehavior::create(owner, attachedBehaviorArgs); };
 }
 
 PlatformerAttachedBehaviorDeserializer::~PlatformerAttachedBehaviorDeserializer()

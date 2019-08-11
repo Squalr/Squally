@@ -19,8 +19,8 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/SquallyBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehaviors/Squally/Stats/SquallyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/SquallyBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Stats/SquallyHealthBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/FXResources.h"
@@ -145,7 +145,7 @@ void SquallyShip::initializeListeners()
 			Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
 			Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
 			Squally* squally = Squally::deserialize(this->properties);
-			SquallyBehaviorGroup* squallyBehaviors = SquallyBehaviorGroup::create(squally, "");
+			SquallyBehaviorGroup* squallyBehavior = SquallyBehaviorGroup::create(squally, "");
 			SquallyHealthBehavior* health = squally->getAttachedBehavior<SquallyHealthBehavior>();
 			
 			health->setHealth(1);
@@ -158,7 +158,7 @@ void SquallyShip::initializeListeners()
 			));
 
 			squally->setPosition(crashCoords);
-			squally->attachBehavior(squallyBehaviors);
+			squally->attachBehavior(squallyBehavior);
 			GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 			this->shipCollision->setPhysicsEnabled(false);

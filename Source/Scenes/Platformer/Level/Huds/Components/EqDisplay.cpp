@@ -5,7 +5,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityEqBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -89,7 +89,7 @@ void EqDisplay::setStatsTarget(PlatformerEntity* target)
 	this->cachedEq = (0 ^ EqDisplay::EqCacheCipher);
 	
 	this->target = target;
-	this->eqBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityEqBehaviorBase>();
+	this->eqBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityEqBehavior>();
 
 	if (this->eqBehavior == nullptr)
 	{

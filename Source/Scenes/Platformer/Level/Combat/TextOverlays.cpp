@@ -18,7 +18,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityEqBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -121,7 +121,7 @@ void TextOverlays::showExpBars(int expGain)
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		EntityEqBehaviorBase* eqBehavior = entity == nullptr ? nullptr : entity->getAttachedBehavior<EntityEqBehaviorBase>();
+		EntityEqBehavior* eqBehavior = entity == nullptr ? nullptr : entity->getAttachedBehavior<EntityEqBehavior>();
 
 		if (eqBehavior == nullptr)
 		{

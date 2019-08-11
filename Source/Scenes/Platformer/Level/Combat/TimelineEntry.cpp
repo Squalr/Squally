@@ -13,7 +13,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehaviors/Entities/Stats/EntityHealthBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 
@@ -127,7 +127,7 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 		this->tryInterrupt();
 	}
 
-	EntityHealthBehaviorBase* health = this->getEntity()->getAttachedBehavior<EntityHealthBehaviorBase>();
+	EntityHealthBehavior* health = this->getEntity()->getAttachedBehavior<EntityHealthBehavior>();
 
 	if (health != nullptr)
 	{

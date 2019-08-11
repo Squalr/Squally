@@ -27,7 +27,7 @@ protected:
 
 private:
 	typedef PlatformerFriendly super;
-	friend class NpcCollisionBehaviors;
+	friend class NpcCollisionBehavior;
 
 	cocos2d::Sprite* chatBubbleSprite;
 	ClickableNode* interactButton;

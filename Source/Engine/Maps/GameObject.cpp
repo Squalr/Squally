@@ -73,7 +73,7 @@ GameObject::GameObject(const ValueMap& properties)
 	this->stateVariables = ValueMap();
 	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
-	this->attachedBehaviors = std::vector<AttachedBehavior*>();
+	this->attachedBehavior = std::vector<AttachedBehavior*>();
 	this->attachedBehaviorNode = Node::create();
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
@@ -207,12 +207,12 @@ std::string GameObject::getUniqueIdentifier()
 
 void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 {
-	if (attachedBehavior == nullptr)
+	if (attachedBehavior == nullptr || attachedBehavior->isInvalidated())
 	{
 		return;
 	}
 
-	this->attachedBehaviors.push_back(attachedBehavior);
+	this->attachedBehavior.push_back(attachedBehavior);
 	this->attachedBehaviorNode->addChild(attachedBehavior);
 }
 
