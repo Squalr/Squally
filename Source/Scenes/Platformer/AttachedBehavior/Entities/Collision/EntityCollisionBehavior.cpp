@@ -57,7 +57,7 @@ void EntityCollisionBehavior::onLoad()
 		false
 	);
 
-	this->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, this->entity->movementSize.height / 2.0f));
+	this->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
 
 	this->addChild(this->entityCollision);
 }

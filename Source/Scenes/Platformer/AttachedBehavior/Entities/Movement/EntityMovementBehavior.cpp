@@ -15,6 +15,7 @@
 
 using namespace cocos2d;
 
+const std::string EntityMovementBehavior::MapKeyAttachedBehavior = "entity-movement";
 const float EntityMovementBehavior::MoveAcceleration = 5800.0f;
 const Vec2 EntityMovementBehavior::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float EntityMovementBehavior::JumpVelocity = 7680.0f;
@@ -36,18 +37,24 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner, std::string at
 	{
 		this->invalidate();
 	}
+
+	this->movement = Vec2::ZERO;
 }
 
 EntityMovementBehavior::~EntityMovementBehavior()
 {
-	this->movement = Vec2::ZERO;
+}
+
+void EntityMovementBehavior::onLoad()
+{
+	this->scheduleUpdate();
 }
 
 void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->entity == nullptr || this->entity->isCinimaticHijacked || this->entity->getIsPlatformerDisabled())
+	if (this->entity == nullptr || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
 		return;
 	}
@@ -134,9 +141,4 @@ void EntityMovementBehavior::update(float dt)
 			this->entity->animationNode->setFlippedX(false);
 		}
 	}
-}
-
-void EntityMovementBehavior::onLoad()
-{
-	this->scheduleUpdate();
 }

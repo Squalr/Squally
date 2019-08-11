@@ -86,14 +86,14 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	}
 
 	this->movementCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->entity->movementSize, 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f),
 		collisionType,
 		true,
 		false
 	);
 
 	this->movementCollision->bindTo(this->entity);
-	this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, this->entity->entitySize.height / 2.0f));
+	this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
 
 	this->addChild(this->movementCollision);
 
@@ -154,13 +154,13 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 void EntityMovementCollisionBehavior::buildWallDetectors()
 {
 	this->leftCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(Size(EntityMovementCollisionBehavior::WallDetectorSize, this->entity->entitySize.height), 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(Size(EntityMovementCollisionBehavior::WallDetectorSize, this->entity->getEntitySize().height), 1.0f, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false
 	);
 	this->rightCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(Size(EntityMovementCollisionBehavior::WallDetectorSize, this->entity->entitySize.height), 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(Size(EntityMovementCollisionBehavior::WallDetectorSize, this->entity->getEntitySize().height), 1.0f, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false
@@ -177,8 +177,11 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->leftCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(-this->entity->entitySize.width / 2.0f + EntityMovementCollisionBehavior::WallDetectorSize / 2.0f, this->entity->entitySize.height / 2.0f + this->entity->hoverHeight / 2.0f));
-	this->rightCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(this->entity->entitySize.width / 2.0f - EntityMovementCollisionBehavior::WallDetectorSize / 2.0f, this->entity->entitySize.height / 2.0f + this->entity->hoverHeight / 2.0f));
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Size entitySize = this->entity->getEntitySize();
+
+	this->leftCollision->getPhysicsBody()->setPositionOffset(collisionOffset + Vec2(-entitySize.width / 2.0f + EntityMovementCollisionBehavior::WallDetectorSize / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f));
+	this->rightCollision->getPhysicsBody()->setPositionOffset(collisionOffset + Vec2(entitySize.width / 2.0f - EntityMovementCollisionBehavior::WallDetectorSize / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f));
 
 	this->addChild(this->leftCollision);
 	this->addChild(this->rightCollision);

@@ -9,7 +9,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
 class ClickableNode;
 class CurrencyInventory;
 class EquipmentInventory;
@@ -30,8 +29,6 @@ public:
 	};
 
 	std::string getEntityName();
-	void disablePlatformerControls();
-	bool getIsPlatformerDisabled();
 	virtual float getFloatHeight();
 
 	std::vector<PlatformerAttack*> getAttacks();
@@ -45,9 +42,15 @@ public:
 	std::string getEmblemResource();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
+	cocos2d::Size getMovementSize();
+	cocos2d::Vec2 getCollisionOffset();
+	float getHoverHeight();
 	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
+	virtual void performSwimAnimation();
+	virtual void performJumpAnimation();
 
+	ControlState controlState;
 	SpeechBubble* speechBubble;
 	SmartAnimationNode* animationNode;
 
@@ -71,44 +74,24 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	void registerAttack(PlatformerAttack* attack);
-	virtual void performSwimAnimation();
-	virtual void performJumpAnimation();
-	void doOutOfCombatAttack();
 
-	CollisionObject* entityCollision;
+	std::string state;
+
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;
 	EquipmentInventory* equipmentInventory;
 	CurrencyInventory* currencyInventory;
-	cocos2d::Vec2 spawnCoords;
-	
-	bool isCinimaticHijacked;
-	bool isPlatformerDisabled;
-	std::string state;
-
-	float entityScale;
-	cocos2d::Vec2 entityCollisionOffset;
-	cocos2d::Size entitySize;
-	cocos2d::Size movementSize;
-	ControlState controlState;
 
 	static const std::string MapKeyPropertyState;
 
 private:
 	typedef HackableObject super;
-	friend class EntityCollisionBehaviorGroup;
-	friend class EntityDebugBehavior;
-	friend class EntityGroundCollisionBehavior;
-	friend class EntityMovementBehavior;
-	friend class EntityOutOfCombatAttackBehavior;
-	friend class EntityMovementCollisionBehavior;
-	friend class EntitySelectionBehavior;
-	friend class EntityHealthBehavior;
-	friend class EntityMovementCollisionBehavior;
-	friend class EntityCollisionBehavior;
-
+	
+	float entityScale;
+	cocos2d::Vec2 entityCollisionOffset;
+	cocos2d::Size entitySize;
+	cocos2d::Size movementSize;
 	float hoverHeight;
-	float scale;
 	std::string entityName;
 	std::string animationResource;
 	std::string emblemResource;

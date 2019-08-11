@@ -33,10 +33,10 @@ EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner, std::string 
 
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 
-	this->clickHitbox->setContentSize(this->entity->entitySize);
+	this->clickHitbox->setContentSize(this->entity->getEntitySize());
 	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->clickHitbox->disableInteraction();
-	this->clickHitbox->setPosition(Vec2(this->entity->movementSize.width / 2.0f, this->entity->movementSize.height / 2.0f));
+	this->clickHitbox->setPosition(Vec2(this->entity->getMovementSize() / 2.0f));
 
 	this->addChild(this->clickHitbox);
 }

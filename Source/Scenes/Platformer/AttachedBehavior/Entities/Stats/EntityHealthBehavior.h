@@ -35,4 +35,6 @@ private:
 	virtual void kill(bool loadDeadAnim = true);
 	virtual void killAndRespawn();
 	virtual void revive();
+
+	cocos2d::Vec2 spawnCoords;
 };

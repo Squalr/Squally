@@ -44,7 +44,7 @@ void EntityGroundCollisionBehavior::onLoad()
 {
 	this->groundCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->entitySize).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
+			Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
 			1.0f,
 			EntityGroundCollisionBehavior::GroundCollisionRadius
 		),
@@ -55,7 +55,7 @@ void EntityGroundCollisionBehavior::onLoad()
 
 	float offsetY = 0.0f;
 
-	this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, -this->entity->hoverHeight / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset));
+	this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset));
 	
 	this->addChild(this->groundCollision);
 

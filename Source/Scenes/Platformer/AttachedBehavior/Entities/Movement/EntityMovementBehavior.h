@@ -2,11 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class PlatformerEntity;
 
 class EntityMovementBehavior : public AttachedBehavior
@@ -14,6 +9,7 @@ class EntityMovementBehavior : public AttachedBehavior
 public:
 	static EntityMovementBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
 
+	static const std::string MapKeyAttachedBehavior;
 	static const float MoveAcceleration;
 	static const cocos2d::Vec2 SwimAcceleration;
 	static const float JumpVelocity;

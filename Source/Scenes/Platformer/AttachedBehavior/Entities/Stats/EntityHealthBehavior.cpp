@@ -48,6 +48,8 @@ EntityHealthBehavior::~EntityHealthBehavior()
 
 void EntityHealthBehavior::onLoad()
 {
+	this->spawnCoords = this->entity->getPosition();
+
 	this->listenForStateWrite(StateKeys::Health, [=](Value value)
 	{
 		this->setHealth(value.asInt());
@@ -129,7 +131,7 @@ void EntityHealthBehavior::killAndRespawn()
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
 		{
-			this->entity->setPosition(this->entity->spawnCoords);
+			this->entity->setPosition(this->spawnCoords);
 
 			this->revive();
 		}),

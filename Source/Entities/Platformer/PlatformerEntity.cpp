@@ -44,8 +44,6 @@ PlatformerEntity::PlatformerEntity(
 	this->entityScale = scale;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
-	this->isCinimaticHijacked = false;
-	this->isPlatformerDisabled = false;
 	this->entityName = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
@@ -57,7 +55,6 @@ PlatformerEntity::PlatformerEntity(
 	this->currencyInventory = CurrencyInventory::create(currencySaveKey);
 	this->speechBubble = SpeechBubble::create();
 	this->attacks = std::vector<PlatformerAttack*>();
-	this->spawnCoords = this->getPosition();
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->movementSize = this->entitySize * this->entityScale + Size(0.0f, this->hoverHeight);
@@ -102,16 +99,6 @@ void PlatformerEntity::initializePositions()
 void PlatformerEntity::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicHijack, [=](EventCustom*)
-	{
-		this->isCinimaticHijacked = true;
-	}));
-
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicRestore, [=](EventCustom*)
-	{
-		this->isCinimaticHijacked = false;
-	}));
 }
 
 Vec2 PlatformerEntity::getButtonOffset()
@@ -144,16 +131,6 @@ void PlatformerEntity::performJumpAnimation()
 	this->animationNode->playAnimation("Jump");
 }
 
-bool PlatformerEntity::getIsPlatformerDisabled()
-{
-	return this->isPlatformerDisabled;
-}
-
-void PlatformerEntity::disablePlatformerControls()
-{
-	this->isPlatformerDisabled = true;
-}
-
 SmartAnimationNode* PlatformerEntity::getAnimations()
 {
 	return this->animationNode;
@@ -162,6 +139,21 @@ SmartAnimationNode* PlatformerEntity::getAnimations()
 Size PlatformerEntity::getEntitySize()
 {
 	return this->entitySize;
+}
+
+Size PlatformerEntity::getMovementSize()
+{
+	return this->movementSize;
+}
+
+Vec2 PlatformerEntity::getCollisionOffset()
+{
+	return this->entityCollisionOffset;
+}
+
+float PlatformerEntity::getHoverHeight()
+{
+	return this->hoverHeight;
 }
 
 HexusOpponentData* PlatformerEntity::getHexusOpponentData()
