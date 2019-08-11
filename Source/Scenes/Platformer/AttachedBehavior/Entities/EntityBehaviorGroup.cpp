@@ -21,6 +21,7 @@ EntityBehaviorGroup* EntityBehaviorGroup::create(GameObject* owner, std::string 
 EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
 	EntityCollisionBehaviorGroup::create(owner, attachedBehaviorArgs),
 	EntityDebugBehavior::create(owner, attachedBehaviorArgs),
+	EntityStatsBehaviorGroup::create(owner, attachedBehaviorArgs),
 	})
 {
 }

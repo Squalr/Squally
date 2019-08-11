@@ -38,6 +38,7 @@ EnemyHealthBehavior::~EnemyHealthBehavior()
 
 void EnemyHealthBehavior::onLoad()
 {
+	/*
 	if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
 	{
 		this->kill(true);
@@ -47,12 +48,14 @@ void EnemyHealthBehavior::onLoad()
 			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
 		}
 	}
+	*/
 }
 
 void EnemyHealthBehavior::saveState()
 {
 }
 
+/*
 void EnemyHealthBehavior::kill(bool loadDeadAnim)
 {
 	super::kill(loadDeadAnim);
@@ -71,3 +74,4 @@ void EnemyHealthBehavior::revive()
 
 	this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(false));
 }
+*/

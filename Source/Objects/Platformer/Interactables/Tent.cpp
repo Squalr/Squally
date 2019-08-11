@@ -103,9 +103,7 @@ void Tent::initializeListeners()
 
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
-			SquallyHealthBehavior* health = squally->getAttachedBehavior<SquallyHealthBehavior>();
-			
-			health->setHealth(health->getMaxHealth());
+			squally->setState(StateKeys::Health, squally->getStateOrDefault(StateKeys::MaxHealth, Value(0)));
 		}));
 
 		return CollisionObject::CollisionResult::DoNothing;

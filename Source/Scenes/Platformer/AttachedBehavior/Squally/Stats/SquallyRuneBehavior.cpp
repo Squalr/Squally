@@ -47,12 +47,13 @@ void SquallyRuneBehavior::onLoad()
 	{
 		this->saveState();
 	}));
+	/*
 
 	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
 		this->tryUseRune();
 		
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefault(StateKeys::Eq, Value(1)).asInt()));
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefaultInt(StateKeys::Eq, 1)));
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
@@ -61,7 +62,7 @@ void SquallyRuneBehavior::onLoad()
 		
 		if (this->tryUseRune())
 		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefault(StateKeys::Eq, Value(1)).asInt()));
+			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->entity->getStateOrDefaultInt(StateKeys::Eq, 1)));
 		}
 	});
 
@@ -70,17 +71,18 @@ void SquallyRuneBehavior::onLoad()
 	for (int index = 0; index < std::min((int)cooldowns.size(), (int)this->getMaxRunes()); index++)
 	{
 		this->setRuneCooldown(index, cooldowns[index].asFloat());
-	}
+	}*/
 }
 
 void SquallyRuneBehavior::saveState()
 {
 	ValueVector cooldowns = ValueVector();
+	/*
 
 	for (int index = 0; index < this->getMaxRunes(); index++)
 	{
 		cooldowns.push_back(Value(this->getRuneCooldown(index)));
-	}
+	}*/
 
 	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
 }

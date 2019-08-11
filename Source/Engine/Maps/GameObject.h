@@ -19,8 +19,11 @@ public:
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
-	void setState(std::string key, cocos2d::Value value);
+	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
+	int getStateOrDefaultInt(std::string key, int value);
+	float getStateOrDefaultFloat(std::string key, float value);
+	bool getStateOrDefaultBool(std::string key, bool value);
 	bool hasState(std::string key);
 	void clearState(std::string key);
 	void setZSorted(bool zSorted);

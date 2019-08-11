@@ -216,14 +216,34 @@ void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 	this->attachedBehaviorNode->addChild(attachedBehavior);
 }
 
-void GameObject::setState(std::string key, Value value)
+void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 {
 	this->stateVariables[key] = value;
+
+	if (broadcastUpdate)
+	{
+		ObjectEvents::TriggerWriteObjectState(ObjectEvents::StateWriteArgs(this, key, value));
+	}
 }
 
 Value GameObject::getStateOrDefault(std::string key, Value value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, value);
+}
+
+int GameObject::getStateOrDefaultInt(std::string key, int value)
+{
+	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asInt();
+}
+
+float GameObject::getStateOrDefaultFloat(std::string key, float value)
+{
+	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asFloat();
+}
+
+bool GameObject::getStateOrDefaultBool(std::string key, bool value)
+{
+	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asBool();
 }
 
 bool GameObject::hasState(std::string key)

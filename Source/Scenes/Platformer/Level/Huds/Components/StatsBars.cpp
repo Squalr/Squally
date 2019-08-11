@@ -11,8 +11,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Level/Huds/Components/EqDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/RuneBar.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -34,8 +33,6 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	const Vec2 fillOffset = Vec2(0.0f, 0.0f);
 
 	this->isFrameOnLeft = isFrameOnLeft;
-	this->healthBehavior = nullptr;
-	this->manaBehavior = nullptr;
 	this->target = nullptr;
 	this->frame = Sprite::create(UIResources::HUD_Frame);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
@@ -122,34 +119,29 @@ void StatsBars::update(float dt)
 {
 	super::update(dt);
 
-	if (this->healthBehavior != nullptr)
+	if (this->target == nullptr)
 	{
-		int health = this->healthBehavior->getHealth();
-		int maxHealth = this->healthBehavior->getMaxHealth();
-		float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
-		this->healthNumerator->setString(std::to_string(health));
-		this->healthDenominator->setString(std::to_string(maxHealth));
-
-		this->healthBar->setProgress(healthPercent);
+		return;
 	}
 
-	if (this->manaBehavior != nullptr)
-	{
-		int mana = this->manaBehavior->getMana();
-		int maxMana = this->manaBehavior->getMaxMana();
-		float manaPercent = MathUtils::clamp((float)mana / (maxMana == 0 ? 1.0f : (float)maxMana), 0.0f, 1.0f);
-		this->manaNumerator->setString(std::to_string(mana));
-		this->manaDenominator->setString(std::to_string(maxMana));
+	int health = this->target->getStateOrDefaultInt(StateKeys::Health, 0);
+	int maxHealth = this->target->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
+	float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
+	this->healthNumerator->setString(std::to_string(health));
+	this->healthDenominator->setString(std::to_string(maxHealth));
+	this->healthBar->setProgress(healthPercent);
 
-		this->manaBar->setProgress(manaPercent);
-	}
+	int mana = this->target->getStateOrDefaultInt(StateKeys::Mana, 0);
+	int maxMana = this->target->getStateOrDefaultInt(StateKeys::MaxMana, 0);
+	float manaPercent = MathUtils::clamp((float)mana / (maxMana == 0 ? 1.0f : (float)maxMana), 0.0f, 1.0f);
+	this->manaNumerator->setString(std::to_string(mana));
+	this->manaDenominator->setString(std::to_string(maxMana));
+	this->manaBar->setProgress(manaPercent);
 }
 
 void StatsBars::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
-	this->healthBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityHealthBehavior>();
-	this->manaBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityManaBehavior>();
 
 	bool isSqually = dynamic_cast<Squally*>(target) != nullptr;
 

@@ -16,6 +16,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
+#include "Scenes/Platformer/State/StateKeys.h"
+
 
 #include "Resources/UIResources.h"
 
@@ -127,12 +129,9 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 		this->tryInterrupt();
 	}
 
-	EntityHealthBehavior* health = this->getEntity()->getAttachedBehavior<EntityHealthBehavior>();
+	int health = caster->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	if (health != nullptr)
-	{
-		health->addHealth(damageOrHealing);
-	}
+	caster->setState(StateKeys::Health, Value(health + damageOrHealing));
 
 	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(caster, this->getEntity(), damageOrHealing));
 }

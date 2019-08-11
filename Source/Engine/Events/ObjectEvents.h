@@ -4,12 +4,7 @@
 
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
-
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
+#include "cocos/base/CCValue.h"
 
 class UIBoundObject;
 class MapLayer;
@@ -65,6 +60,7 @@ public:
 	static const std::string EventMoveObjectToTopLayer;
 	static const std::string EventElevateObject;
 	static const std::string EventUnbindObject;
+	static const std::string EventWriteStatePrefix;
 
 	enum class SpawnMethod
 	{
@@ -110,6 +106,15 @@ public:
 		RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
 	};
 
+	struct StateWriteArgs
+	{
+		void* owner;
+		std::string key;
+		cocos2d::Value value;
+
+		StateWriteArgs(void* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
+	};
+
 	static void TriggerCollisionMapUpdated();
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerMoveObjectToTopLayer(RelocateObjectArgs args);
@@ -117,6 +122,7 @@ public:
 	static void TriggerElevateObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
+	static void TriggerWriteObjectState(StateWriteArgs args);
 
 	template<class T>
 	static void QueryObjects(QueryObjectsArgs<T> args)

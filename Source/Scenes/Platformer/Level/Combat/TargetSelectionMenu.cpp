@@ -71,7 +71,7 @@ void TargetSelectionMenu::initializeListeners()
 
 					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity, bool* isHandled)
 					{
-						if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
+						if (entity->getStateOrDefaultBool(StateKeys::IsAlive, false))
 						{
 							this->selectEntity(entity);
 
@@ -91,7 +91,7 @@ void TargetSelectionMenu::initializeListeners()
 
 					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity, bool* isHandled)
 					{
-						if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
+						if (entity->getStateOrDefaultBool(StateKeys::IsAlive, false))
 						{
 							this->selectEntity(entity);
 
@@ -164,7 +164,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 			{
-				if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
+				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, false))
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -176,7 +176,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEntity* entity)
 			{
-				if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
+				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, false))
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -188,7 +188,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		{
 			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 			{
-				if (entity->getStateOrDefault(StateKeys::IsAlive, Value(false)).asBool())
+				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, false))
 				{
 					targetEntityGroup.push_back(entity);
 				}
@@ -235,7 +235,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 		
 		if (selection != nullptr)
 		{
-			if (entity->getStateOrDefault(StateKeys::IsDead, Value(true)).asBool()
+			if (entity->getStateOrDefaultBool(StateKeys::IsDead, true)
 				|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
 				|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
 			{

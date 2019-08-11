@@ -1,22 +1,13 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class ClickableNode;
 class PlatformerEntity;
 
-class EnemyHealthBehavior : public EntityHealthBehavior
+class EnemyHealthBehavior : public AttachedBehavior
 {
 public:
 	static EnemyHealthBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
-
-	void kill(bool loadDeadAnim = true) override;
-	void revive() override;
 
 	static const std::string MapKeyAttachedBehavior;
 	static const std::string SaveKeyIsDead;
@@ -28,7 +19,7 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef EntityHealthBehavior super;
+	typedef AttachedBehavior super;
 	
 	void saveState();
 };

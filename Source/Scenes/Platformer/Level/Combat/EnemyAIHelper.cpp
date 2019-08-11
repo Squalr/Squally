@@ -119,8 +119,8 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 
 	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{
-		int health = (*it)->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
-		int maxHealth = (*it)->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
+		int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
 
 		if (std::round(float(health) / float(maxHealth)) <= WeakPercentage)
 		{
@@ -197,8 +197,8 @@ PlatformerEntity* EnemyAIHelper::selectTarget(TimelineEntry* attackingEntry, std
 		}
 		else
 		{
-			int health = (*it)->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
-			int targetHealth = target->getStateOrDefault(StateKeys::Health, Value(0)).asInt();
+			int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+			int targetHealth = target->getStateOrDefaultInt(StateKeys::Health, 0);
 			
 			if (health > targetHealth)
 			{

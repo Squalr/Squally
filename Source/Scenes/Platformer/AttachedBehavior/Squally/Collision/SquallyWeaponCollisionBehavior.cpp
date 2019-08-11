@@ -12,9 +12,9 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -55,13 +55,12 @@ void SquallyWeaponCollisionBehavior::onLoad()
 	}));
 
 	EntityWeaponCollisionBehavior* weaponBehavior = this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>();
-	EntityHealthBehavior* health = this->squally->getAttachedBehavior<EntityHealthBehavior>();
 
 	if (weaponBehavior != nullptr)
 	{
 		weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyFlying }, [=](CollisionObject::CollisionData collisionData)
 		{
-			if (health->isDead())
+			if (this->squally->getStateOrDefaultBool(StateKeys::IsDead, true))
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}

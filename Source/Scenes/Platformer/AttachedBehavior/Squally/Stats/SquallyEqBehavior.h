@@ -1,16 +1,10 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
+#include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
+class Squally;
 
-class ClickableNode;
-class PlatformerEntity;
-
-class SquallyEqBehavior : public EntityEqBehavior
+class SquallyEqBehavior : public AttachedBehavior
 {
 public:
 	static SquallyEqBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
@@ -24,7 +18,9 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef EntityEqBehavior super;
+	typedef AttachedBehavior super;
 	
 	void saveState();
+
+	Squally* squally;
 };

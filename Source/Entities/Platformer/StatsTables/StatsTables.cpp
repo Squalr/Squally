@@ -392,9 +392,9 @@ int StatsTables::getExpNeededUntilLevel(int currentLevel, int currentExp, int le
 
 int StatsTables::getKillExp(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::StatsTable.find(platformerEntity->getName()) != StatsTables::StatsTable.end())
+	if (StatsTables::StatsTable.find(platformerEntity->getEntityName()) != StatsTables::StatsTable.end())
 	{
-		return StatsTables::StatsTable[platformerEntity->getName()].exp;
+		return StatsTables::StatsTable[platformerEntity->getEntityName()].exp;
 	}
 
 	return StatsTables::FallbackExp;
@@ -402,9 +402,9 @@ int StatsTables::getKillExp(PlatformerEntity* platformerEntity)
 
 int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::StatsTable.find(platformerEntity->getName()) != StatsTables::StatsTable.end())
+	if (StatsTables::StatsTable.find(platformerEntity->getEntityName()) != StatsTables::StatsTable.end())
 	{
-		return StatsTables::StatsTable[platformerEntity->getName()].mana;
+		return StatsTables::StatsTable[platformerEntity->getEntityName()].mana;
 	}
 
 	return StatsTables::FallbackMana;
@@ -412,9 +412,9 @@ int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 
 int StatsTables::getBaseHealth(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::StatsTable.find(platformerEntity->getName()) != StatsTables::StatsTable.end())
+	if (StatsTables::StatsTable.find(platformerEntity->getEntityName()) != StatsTables::StatsTable.end())
 	{
-		return StatsTables::StatsTable[platformerEntity->getName()].health;
+		return StatsTables::StatsTable[platformerEntity->getEntityName()].health;
 	}
 
 	return StatsTables::FallbackHealth;

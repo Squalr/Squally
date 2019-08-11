@@ -6,7 +6,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/State/StateKeys.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 
 #include "Resources/EntityResources.h"
 
@@ -52,7 +51,6 @@ void EntityGroundCollisionBehavior::onLoad()
 		false,
 		false
 	);
-	EntityHealthBehavior* health = this->entity->getAttachedBehavior<EntityHealthBehavior>();
 
 	float offsetY = 0.0f;
 
@@ -63,7 +61,7 @@ void EntityGroundCollisionBehavior::onLoad()
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Clear current animation
-		if (!health->isDead() && this->entity->getStateOrDefault(StateKeys::VelocityY, Value(0.0f)).asFloat() <= 0.0f)
+		if (this->entity->getStateOrDefaultBool(StateKeys::IsAlive, false) && this->entity->getStateOrDefaultFloat(StateKeys::VelocityY, 0.0f) <= 0.0f)
 		{
 			this->entity->animationNode->playAnimation("Idle");
 		}

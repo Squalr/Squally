@@ -8,8 +8,6 @@ namespace cocos2d
 }
 
 class ConstantString;
-class EntityHealthBehavior;
-class EntityManaBehavior;
 class EqDisplay;
 class LocalizedLabel;
 class RuneBar;
@@ -33,8 +31,6 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	EntityHealthBehavior* healthBehavior;
-	EntityManaBehavior* manaBehavior;
 	PlatformerEntity* target;
 
 	bool isFrameOnLeft;

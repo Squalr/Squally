@@ -14,6 +14,7 @@ const std::string ObjectEvents::EventUnbindObject = "EVENT_UNBIND_OBJECT";
 const std::string ObjectEvents::EventElevateObject = "EVENT_ELEVATE_OBJECT";
 const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
 const std::string ObjectEvents::EventSpawnObjectDelegator = "EVENT_SPAWN_OBJECT_DELEGATOR";
+const std::string ObjectEvents::EventWriteStatePrefix = "EVENT_WRITE_OBJECT_STATE_";
 
 void ObjectEvents::TriggerCollisionMapUpdated()
 {
@@ -69,6 +70,14 @@ void ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs a
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		ObjectEvents::EventSpawnObjectDelegator,
+		&args
+	);
+}
+
+void ObjectEvents::TriggerWriteObjectState(StateWriteArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		ObjectEvents::EventWriteStatePrefix + args.key + std::to_string((unsigned long long)(args.owner)),
 		&args
 	);
 }

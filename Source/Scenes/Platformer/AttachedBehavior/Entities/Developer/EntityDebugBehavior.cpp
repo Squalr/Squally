@@ -8,6 +8,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Stats/SquallyHealthBehavior.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
@@ -75,26 +76,11 @@ void EntityDebugBehavior::onLoad()
 {
 	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		EntityHealthBehavior* health = this->entity->getAttachedBehavior<EntityHealthBehavior>();
-		
-		health->revive();
+		this->entity->setState(StateKeys::IsAlive, Value(true));
 	});
 
 	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		Squally* squally = dynamic_cast<Squally*>(this->entity);
-		EntityHealthBehavior* health = this->entity->getAttachedBehavior<EntityHealthBehavior>();
-
-		if (health != nullptr)
-		{
-			if (squally != nullptr)
-			{
-				health->killAndRespawn();
-			}
-			else
-			{
-				health->kill();
-			}
-		}
+		this->entity->setState(StateKeys::IsAlive, Value(false));
 	});
 }

@@ -6,7 +6,7 @@
 
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -28,6 +28,12 @@ SquallyManaBehavior* SquallyManaBehavior::create(GameObject* owner, std::string 
 
 SquallyManaBehavior::SquallyManaBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
+	this->squally = static_cast<Squally*>(owner);
+
+	if (this->squally == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 SquallyManaBehavior::~SquallyManaBehavior()
@@ -41,11 +47,12 @@ void SquallyManaBehavior::onLoad()
 		this->saveState();
 	}));
 
-	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(0)).asInt());
+	int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(0)).asInt();
+
+	this->squally->setState(StateKeys::Mana, Value(mana));
 }
 
 void SquallyManaBehavior::saveState()
 {
-	this->setMana(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(this->getMana())).asInt());
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyMana, Value(this->getMana()));
+	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
 }
