@@ -32,7 +32,6 @@ Bodom* Bodom::deserialize(ValueMap& initProperties)
 Bodom::Bodom(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

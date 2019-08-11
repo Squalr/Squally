@@ -60,7 +60,6 @@ FlyBot* FlyBot::deserialize(ValueMap& initProperties)
 FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Misc_DaemonsHallow_FlyBot_Animations,
 	EntityResources::Misc_DaemonsHallow_FlyBot_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

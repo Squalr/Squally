@@ -32,7 +32,6 @@ SnowFiend* SnowFiend::deserialize(ValueMap& initProperties)
 SnowFiend::SnowFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(420.0f, 420.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

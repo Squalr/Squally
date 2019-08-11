@@ -32,7 +32,6 @@ Werewolf* Werewolf::deserialize(ValueMap& initProperties)
 Werewolf::Werewolf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(196.0f, 512.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

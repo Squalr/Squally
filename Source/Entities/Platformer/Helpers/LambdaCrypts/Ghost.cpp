@@ -32,7 +32,6 @@ Ghost* Ghost::deserialize(ValueMap& initProperties)
 Ghost::Ghost(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))

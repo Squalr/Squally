@@ -32,7 +32,6 @@ CritterDemon* CritterDemon::deserialize(ValueMap& initProperties)
 CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(188.0f, 160.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))

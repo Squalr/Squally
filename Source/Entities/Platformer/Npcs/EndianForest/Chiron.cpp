@@ -32,7 +32,6 @@ Chiron* Chiron::deserialize(ValueMap& initProperties)
 Chiron::Chiron(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(160.0f, 224.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

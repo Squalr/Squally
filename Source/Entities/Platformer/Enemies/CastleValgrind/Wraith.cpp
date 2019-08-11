@@ -32,7 +32,6 @@ Wraith* Wraith::deserialize(ValueMap& initProperties)
 Wraith::Wraith(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(142.0f, 400.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f))

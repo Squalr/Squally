@@ -32,7 +32,6 @@ Knight* Knight::deserialize(ValueMap& initProperties)
 Knight::Knight(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_CastleValgrind_Knight_Animations,
 	EntityResources::Helpers_CastleValgrind_Knight_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))

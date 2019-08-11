@@ -32,7 +32,6 @@ Ares* Ares::deserialize(ValueMap& initProperties)
 Ares::Ares(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

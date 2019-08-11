@@ -32,7 +32,6 @@ Dudly* Dudly::deserialize(ValueMap& initProperties)
 Dudly::Dudly(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

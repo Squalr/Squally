@@ -32,7 +32,6 @@ ZombieElric* ZombieElric::deserialize(ValueMap& initProperties)
 ZombieElric::ZombieElric(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(114.0f, 208.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

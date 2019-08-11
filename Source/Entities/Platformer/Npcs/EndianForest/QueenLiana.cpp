@@ -32,7 +32,6 @@ QueenLiana* QueenLiana::deserialize(ValueMap& initProperties)
 QueenLiana::QueenLiana(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_EndianForest_QueenLiana_Animations,
 	EntityResources::Npcs_EndianForest_QueenLiana_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

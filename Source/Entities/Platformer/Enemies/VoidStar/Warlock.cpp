@@ -32,7 +32,6 @@ Warlock* Warlock::deserialize(ValueMap& initProperties)
 Warlock::Warlock(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(284.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -11,7 +11,6 @@ NpcBase::NpcBase(
 	ValueMap& properties,
 	std::string scmlResource,
 	std::string emblemResource,
-	PlatformerCollisionType collisionType,
 	Size size,
 	float scale,
 	Vec2 collisionOffset
@@ -19,7 +18,6 @@ NpcBase::NpcBase(
 	properties,
 	scmlResource,
 	emblemResource,
-	collisionType,
 	size,
 	scale,
 	collisionOffset)

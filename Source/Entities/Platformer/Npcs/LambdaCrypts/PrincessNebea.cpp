@@ -32,7 +32,6 @@ PrincessNebea* PrincessNebea::deserialize(ValueMap& initProperties)
 PrincessNebea::PrincessNebea(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

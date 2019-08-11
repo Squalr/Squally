@@ -32,7 +32,6 @@ Theldar* Theldar::deserialize(ValueMap& initProperties)
 Theldar::Theldar(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

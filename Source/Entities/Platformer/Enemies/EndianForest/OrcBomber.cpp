@@ -32,7 +32,6 @@ OrcBomber* OrcBomber::deserialize(ValueMap& initProperties)
 OrcBomber::OrcBomber(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 218.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

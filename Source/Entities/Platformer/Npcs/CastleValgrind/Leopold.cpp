@@ -32,7 +32,6 @@ Leopold* Leopold::deserialize(ValueMap& initProperties)
 Leopold::Leopold(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Leopold_Animations,
 	EntityResources::Npcs_CastleValgrind_Leopold_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.95f,
 	Vec2(0.0f, 0.0f))

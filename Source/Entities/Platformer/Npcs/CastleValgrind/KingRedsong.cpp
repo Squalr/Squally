@@ -32,7 +32,6 @@ KingRedsong* KingRedsong::deserialize(ValueMap& initProperties)
 KingRedsong::KingRedsong(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(160.0f, 192.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -32,7 +32,6 @@ Drak* Drak::deserialize(ValueMap& initProperties)
 Drak::Drak(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Drak_Animations,
 	EntityResources::Npcs_DaemonsHallow_Drak_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

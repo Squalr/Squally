@@ -32,7 +32,6 @@ Aphrodite* Aphrodite::deserialize(ValueMap& initProperties)
 Aphrodite::Aphrodite(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

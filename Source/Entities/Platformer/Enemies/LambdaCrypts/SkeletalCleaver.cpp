@@ -32,7 +32,6 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& initProperties)
 SkeletalCleaver::SkeletalCleaver(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(128.0f, 312.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

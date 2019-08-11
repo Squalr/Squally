@@ -32,7 +32,6 @@ DemonGrunt* DemonGrunt::deserialize(ValueMap& initProperties)
 DemonGrunt::DemonGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(312.0f, 372.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))

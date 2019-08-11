@@ -32,7 +32,6 @@ Piper* Piper::deserialize(ValueMap& initProperties)
 Piper::Piper(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Piper_Animations,
 	EntityResources::Npcs_VoidStar_Piper_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

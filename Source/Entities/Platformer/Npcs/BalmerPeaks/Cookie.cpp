@@ -32,7 +32,6 @@ Cookie* Cookie::deserialize(ValueMap& initProperties)
 Cookie::Cookie(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

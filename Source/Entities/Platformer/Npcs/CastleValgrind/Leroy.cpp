@@ -32,7 +32,6 @@ Leroy* Leroy::deserialize(ValueMap& initProperties)
 Leroy::Leroy(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

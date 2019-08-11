@@ -7,8 +7,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -80,7 +80,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 {
 	CollisionType collisionType = CollisionType(PlatformerCollisionType::Movement);
 
-	if (static_cast<Squally*>(this->entity) == nullptr)
+	if (static_cast<Squally*>(this->entity) != nullptr)
 	{
 		collisionType = CollisionType(PlatformerCollisionType::PlayerMovement);
 	}
@@ -94,8 +94,6 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision->bindTo(this->entity);
 	this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, this->entity->entitySize.height / 2.0f));
-
-	this->entity->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(0.0f, this->entity->movementSize.height / 2.0f));
 
 	this->addChild(this->movementCollision);
 
@@ -182,6 +180,6 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 	this->leftCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(-this->entity->entitySize.width / 2.0f + EntityMovementCollisionBehavior::WallDetectorSize / 2.0f, this->entity->entitySize.height / 2.0f + this->entity->hoverHeight / 2.0f));
 	this->rightCollision->getPhysicsBody()->setPositionOffset(this->entity->entityCollisionOffset + Vec2(this->entity->entitySize.width / 2.0f - EntityMovementCollisionBehavior::WallDetectorSize / 2.0f, this->entity->entitySize.height / 2.0f + this->entity->hoverHeight / 2.0f));
 
-	this->entity->addChild(this->leftCollision);
-	this->entity->addChild(this->rightCollision);
+	this->addChild(this->leftCollision);
+	this->addChild(this->rightCollision);
 }

@@ -12,16 +12,12 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Hackables/HackablePreview.h"
-#include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/EntityPreview.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
@@ -35,7 +31,6 @@ PlatformerEntity::PlatformerEntity(
 	ValueMap& properties, 
 	std::string scmlResource,
 	std::string emblemResource,
-	PlatformerCollisionType collisionType,
 	Size size,
 	float scale, 
 	Vec2 collisionOffset,
@@ -47,7 +42,6 @@ PlatformerEntity::PlatformerEntity(
 {
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->entityScale = scale;
-	this->collisionType = collisionType;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->isCinimaticHijacked = false;
@@ -55,15 +49,7 @@ PlatformerEntity::PlatformerEntity(
 	this->entityName = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
-	
 	this->entitySize = size * scale;
-	
-	this->entityCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(size, scale * 0.9f, 8.0f),
-		(CollisionType)(int)this->collisionType,
-		false,
-		false
-	);
 
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create(inventorySaveKey);
@@ -88,7 +74,6 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 	this->animationNode->setFlippedY(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool());
 
-	this->addChild(this->entityCollision);
 	this->addChild(this->animationNode);
 	this->addChild(this->speechBubble);
 	this->addChild(this->inventory);

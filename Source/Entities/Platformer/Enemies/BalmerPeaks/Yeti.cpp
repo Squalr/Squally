@@ -32,7 +32,6 @@ Yeti* Yeti::deserialize(ValueMap& initProperties)
 Yeti::Yeti(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(380.0f, 572.0f),
 	1.0f,
 	Vec2(24.0f, 0.0f))

@@ -32,7 +32,6 @@ WaterElemental* WaterElemental::deserialize(ValueMap& initProperties)
 WaterElemental::WaterElemental(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(820.0f, 1480.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

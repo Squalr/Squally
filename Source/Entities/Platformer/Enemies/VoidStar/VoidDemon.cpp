@@ -32,7 +32,6 @@ VoidDemon* VoidDemon::deserialize(ValueMap& initProperties)
 VoidDemon::VoidDemon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(338.0f, 342.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))

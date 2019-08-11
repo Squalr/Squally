@@ -26,7 +26,6 @@ protected:
 	PlatformerEnemy(cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
-		PlatformerCollisionType collisionType,
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,

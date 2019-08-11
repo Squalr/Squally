@@ -32,7 +32,6 @@ ReanimatedPig* ReanimatedPig::deserialize(ValueMap& initProperties)
 ReanimatedPig::ReanimatedPig(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 240.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

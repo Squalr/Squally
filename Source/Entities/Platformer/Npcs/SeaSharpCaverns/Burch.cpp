@@ -32,7 +32,6 @@ Burch* Burch::deserialize(ValueMap& initProperties)
 Burch::Burch(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

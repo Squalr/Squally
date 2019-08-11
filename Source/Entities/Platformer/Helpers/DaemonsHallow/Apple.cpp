@@ -32,7 +32,6 @@ Apple* Apple::deserialize(ValueMap& initProperties)
 Apple::Apple(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_DaemonsHallow_Apple_Animations,
 	EntityResources::Helpers_DaemonsHallow_Apple_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))

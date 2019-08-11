@@ -32,7 +32,6 @@ Olive* Olive::deserialize(ValueMap& initProperties)
 Olive::Olive(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

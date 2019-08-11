@@ -32,7 +32,6 @@ Rupert* Rupert::deserialize(ValueMap& initProperties)
 Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

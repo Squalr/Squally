@@ -17,10 +17,8 @@ const std::string PlatformerCollisionMapping::MapKeyCollisionTypePlayer = "playe
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypePlayerHover = "player-hover";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeNpc = "npc";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeEnemy = "enemy";
-const std::string PlatformerCollisionMapping::MapKeyCollisionTypeEnemyFlying = "enemy-flying";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeForce = "force";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc = "solid-npc";
-const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpcFlying = "solid-npc-flying";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeWater = "water";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeDamage = "damage";
 
@@ -78,10 +76,6 @@ void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc)
 	{
 		args->collisionObject->setCollisionType((int)PlatformerCollisionType::SolidNpcOnly);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpcFlying)
-	{
-		args->collisionObject->setCollisionType((int)PlatformerCollisionType::SolidFlyingNpcOnly);
 	}
 	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeForce)
 	{

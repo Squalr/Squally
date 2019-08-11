@@ -3,7 +3,6 @@
 #include "cocos/math/CCGeometry.h"
 
 #include "Engine/Hackables/HackableObject.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 namespace cocos2d
 {
@@ -57,7 +56,6 @@ protected:
 		cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		std::string emblemResource,
-		PlatformerCollisionType collisionType,
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
@@ -106,11 +104,12 @@ private:
 	friend class EntityMovementCollisionBehavior;
 	friend class EntitySelectionBehavior;
 	friend class EntityHealthBehavior;
+	friend class EntityMovementCollisionBehavior;
+	friend class EntityCollisionBehavior;
 
 	float hoverHeight;
 	float scale;
 	std::string entityName;
-	PlatformerCollisionType collisionType;
 	std::string animationResource;
 	std::string emblemResource;
 	std::vector<PlatformerAttack*> attacks;

@@ -32,7 +32,6 @@ Snowman* Snowman::deserialize(ValueMap& initProperties)
 Snowman::Snowman(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))

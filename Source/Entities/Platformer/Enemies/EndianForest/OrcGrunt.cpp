@@ -36,7 +36,6 @@ OrcGrunt* OrcGrunt::deserialize(ValueMap& initProperties)
 OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 218.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

@@ -1,13 +1,14 @@
 #include "EntityCollisionBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 
 using namespace cocos2d;
 
-const std::string EntityCollisionBehaviorGroup::MapKeyAttachedBehavior = "entity-collisions";
+const std::string EntityCollisionBehaviorGroup::MapKeyAttachedBehavior = "entity-collision-group";
 
 EntityCollisionBehaviorGroup* EntityCollisionBehaviorGroup::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
@@ -19,6 +20,7 @@ EntityCollisionBehaviorGroup* EntityCollisionBehaviorGroup::create(GameObject* o
 }
 
 EntityCollisionBehaviorGroup::EntityCollisionBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
+	EntityCollisionBehavior::create(owner, attachedBehaviorArgs),
 	EntityGroundCollisionBehavior::create(owner, attachedBehaviorArgs),
 	EntityMovementCollisionBehavior::create(owner, attachedBehaviorArgs),
 	EntityWeaponCollisionBehavior::create(owner, attachedBehaviorArgs),

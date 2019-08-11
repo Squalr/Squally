@@ -32,7 +32,6 @@ TigerMan* TigerMan::deserialize(ValueMap& initProperties)
 TigerMan::TigerMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 308.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

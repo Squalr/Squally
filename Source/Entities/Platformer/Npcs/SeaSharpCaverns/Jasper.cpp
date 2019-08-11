@@ -32,7 +32,6 @@ Jasper* Jasper::deserialize(ValueMap& initProperties)
 Jasper::Jasper(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -32,7 +32,6 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap& initProperties)
 DemonSwordsman::DemonSwordsman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(212.0f, 268.0f),
 	0.65f,
 	Vec2(0.0f, 0.0f))

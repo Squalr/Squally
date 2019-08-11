@@ -32,7 +32,6 @@ Krampus* Krampus::deserialize(ValueMap& initProperties)
 Krampus::Krampus(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(396.0f, 412.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

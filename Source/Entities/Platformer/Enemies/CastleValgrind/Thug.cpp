@@ -32,7 +32,6 @@ Thug* Thug::deserialize(ValueMap& initProperties)
 Thug::Thug(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

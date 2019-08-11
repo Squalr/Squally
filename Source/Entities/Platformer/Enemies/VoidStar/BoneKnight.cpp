@@ -32,7 +32,6 @@ BoneKnight* BoneKnight::deserialize(ValueMap& initProperties)
 BoneKnight::BoneKnight(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(540.0f, 340.0f),
 	1.0f,
 	Vec2(-64.0f, 0.0f))

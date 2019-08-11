@@ -32,7 +32,6 @@ Brine* Brine::deserialize(ValueMap& initProperties)
 Brine::Brine(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

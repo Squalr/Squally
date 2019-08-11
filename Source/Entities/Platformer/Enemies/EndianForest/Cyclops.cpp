@@ -32,7 +32,6 @@ Cyclops* Cyclops::deserialize(ValueMap& initProperties)
 Cyclops::Cyclops(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(296.0f, 256.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

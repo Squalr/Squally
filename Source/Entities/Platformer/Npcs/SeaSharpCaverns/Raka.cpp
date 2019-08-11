@@ -32,7 +32,6 @@ Raka* Raka::deserialize(ValueMap& initProperties)
 Raka::Raka(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

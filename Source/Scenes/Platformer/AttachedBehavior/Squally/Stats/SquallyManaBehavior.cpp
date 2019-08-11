@@ -47,7 +47,8 @@ void SquallyManaBehavior::onLoad()
 		this->saveState();
 	}));
 
-	int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(0)).asInt();
+	int maxMana = this->squally->getStateOrDefaultInt(StateKeys::MaxMana, 123);
+	int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(maxMana)).asInt();
 
 	this->squally->setState(StateKeys::Mana, Value(mana));
 }

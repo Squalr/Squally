@@ -32,7 +32,6 @@ Goblin* Goblin::deserialize(ValueMap& initProperties)
 Goblin::Goblin(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_EndianForest_Goblin_Animations,
 	EntityResources::Helpers_EndianForest_Goblin_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))

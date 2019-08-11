@@ -32,7 +32,6 @@ Minotaur* Minotaur::deserialize(ValueMap& initProperties)
 Minotaur::Minotaur(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(278.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

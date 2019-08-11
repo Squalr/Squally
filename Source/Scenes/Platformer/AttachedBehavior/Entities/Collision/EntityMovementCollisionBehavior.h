@@ -19,6 +19,8 @@ public:
 	void setVelocity(cocos2d::Vec2 velocity);
 	bool hasLeftWallCollision();
 	bool hasRightWallCollision();
+	
+	CollisionObject* movementCollision;
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -36,7 +38,6 @@ private:
 	void buildWallDetectors();
 
 	PlatformerEntity* entity;
-	CollisionObject* movementCollision;
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
 

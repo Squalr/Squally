@@ -32,7 +32,6 @@ SkeletalKnight* SkeletalKnight::deserialize(ValueMap& initProperties)
 SkeletalKnight::SkeletalKnight(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(212.0f, 280.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

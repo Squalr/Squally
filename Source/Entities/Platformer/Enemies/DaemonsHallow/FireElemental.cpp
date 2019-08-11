@@ -32,7 +32,6 @@ FireElemental* FireElemental::deserialize(ValueMap& initProperties)
 FireElemental::FireElemental(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(820.0f, 1480.0f),
 	1.0f,
 	Vec2(64.0f, 0.0f))

@@ -32,7 +32,6 @@ Cleopatra* Cleopatra::deserialize(ValueMap& initProperties)
 Cleopatra::Cleopatra(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

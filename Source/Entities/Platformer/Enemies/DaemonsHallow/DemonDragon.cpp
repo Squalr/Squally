@@ -32,7 +32,6 @@ DemonDragon* DemonDragon::deserialize(ValueMap& initProperties)
 DemonDragon::DemonDragon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(340.0f, 360.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

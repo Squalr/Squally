@@ -2,12 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class ClickableNode;
 class PlatformerEntity;
 
 class EntityManaBehavior : public AttachedBehavior
@@ -30,7 +24,4 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
-	
-	int mana;
-	int maxMana;
 };

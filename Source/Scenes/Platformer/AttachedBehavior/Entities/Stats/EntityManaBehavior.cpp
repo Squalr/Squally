@@ -9,6 +9,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -29,14 +30,12 @@ EntityManaBehavior::EntityManaBehavior(GameObject* owner, std::string attachedBe
 
 	if (this->entity == nullptr)
 	{
-		this->maxMana = 0;
-		this->mana = 0;
 		this->invalidate();
 	}
 	else
 	{
-		this->maxMana = StatsTables::getBaseMana(this->entity);
-		this->mana = this->maxMana;
+		this->entity->setState(StateKeys::MaxMana, Value(StatsTables::getBaseMana(this->entity)), false);
+		this->entity->setState(StateKeys::Mana, Value(StatsTables::getBaseMana(this->entity)), false);
 	}
 }
 
@@ -50,7 +49,7 @@ void EntityManaBehavior::onLoad()
 
 int EntityManaBehavior::getMana()
 {
-	return this->mana;
+	return this->entity->getStateOrDefaultInt(StateKeys::Mana, 0);
 }
 
 void EntityManaBehavior::addMana(int manaDelta)
@@ -60,16 +59,11 @@ void EntityManaBehavior::addMana(int manaDelta)
 
 void EntityManaBehavior::setMana(int mana)
 {
-	this->mana = MathUtils::clamp(mana, 0, this->getMaxMana());
+	mana = MathUtils::clamp(mana, 0, this->entity->getStateOrDefaultInt(StateKeys::MaxMana, 0));
+	this->entity->setState(StateKeys::Mana, Value(mana), false);
 }
 
 int EntityManaBehavior::getMaxMana()
 {
-	return this->maxMana;
+	return this->entity->getStateOrDefaultInt(StateKeys::MaxMana, 0);
 }
-
-/*
-void revive()
-{
-	this->mana = this->getMaxMana();
-}*/

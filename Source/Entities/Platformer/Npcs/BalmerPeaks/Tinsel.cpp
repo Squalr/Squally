@@ -32,7 +32,6 @@ Tinsel* Tinsel::deserialize(ValueMap& initProperties)
 Tinsel::Tinsel(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

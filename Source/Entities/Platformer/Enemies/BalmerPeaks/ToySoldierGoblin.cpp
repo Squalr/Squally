@@ -32,7 +32,6 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& initProperties)
 ToySoldierGoblin::ToySoldierGoblin(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(112.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

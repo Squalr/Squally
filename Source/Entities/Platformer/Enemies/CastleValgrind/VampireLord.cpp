@@ -32,7 +32,6 @@ VampireLord* VampireLord::deserialize(ValueMap& initProperties)
 VampireLord::VampireLord(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(240.0f, 312.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

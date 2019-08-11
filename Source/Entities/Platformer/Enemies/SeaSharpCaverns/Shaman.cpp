@@ -32,7 +32,6 @@ Shaman* Shaman::deserialize(ValueMap& initProperties)
 Shaman::Shaman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 288.0f),
 	0.78f,
 	Vec2(0.0f, 0.0f))

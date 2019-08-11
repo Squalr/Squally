@@ -32,7 +32,6 @@ Troll* Troll::deserialize(ValueMap& initProperties)
 Troll::Troll(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 248.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

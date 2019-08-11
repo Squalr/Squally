@@ -32,7 +32,6 @@ Agnes* Agnes::deserialize(ValueMap& initProperties)
 Agnes::Agnes(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(360.0f, 420.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

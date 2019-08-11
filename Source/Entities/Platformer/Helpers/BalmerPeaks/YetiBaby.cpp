@@ -32,7 +32,6 @@ YetiBaby* YetiBaby::deserialize(ValueMap& initProperties)
 YetiBaby::YetiBaby(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))

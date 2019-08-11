@@ -31,7 +31,6 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& initProperties)
 ReanimatedFighter::ReanimatedFighter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 248.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

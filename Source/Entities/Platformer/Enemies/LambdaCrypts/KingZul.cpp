@@ -32,7 +32,6 @@ KingZul* KingZul::deserialize(ValueMap& initProperties)
 KingZul::KingZul(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(196.0f, 320.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))

@@ -21,10 +21,8 @@ public:
 	static const std::string MapKeyCollisionTypePlayerHover;
 	static const std::string MapKeyCollisionTypeNpc;
 	static const std::string MapKeyCollisionTypeEnemy;
-	static const std::string MapKeyCollisionTypeEnemyFlying;
 	static const std::string MapKeyCollisionTypeForce;
 	static const std::string MapKeyCollisionTypeSolidNpc;
-	static const std::string MapKeyCollisionTypeSolidNpcFlying;
 	static const std::string MapKeyCollisionTypeWater;
 	static const std::string MapKeyCollisionTypeDamage;
 

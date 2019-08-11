@@ -32,7 +32,6 @@ FireTiger* FireTiger::deserialize(ValueMap& initProperties)
 FireTiger::FireTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(256.0f, 320.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -32,7 +32,6 @@ Mabel* Mabel::deserialize(ValueMap& initProperties)
 Mabel::Mabel(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

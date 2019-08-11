@@ -32,7 +32,6 @@ Assassin* Assassin::deserialize(ValueMap& initProperties)
 Assassin::Assassin(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(278.0f, 288.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

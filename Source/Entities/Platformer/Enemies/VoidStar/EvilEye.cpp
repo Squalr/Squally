@@ -32,7 +32,6 @@ EvilEye* EvilEye::deserialize(ValueMap& initProperties)
 EvilEye::EvilEye(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_EvilEye_Animations,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(720.0f, 840.0f),
 	0.6f,
 	Vec2(0.0f, 0.0f))

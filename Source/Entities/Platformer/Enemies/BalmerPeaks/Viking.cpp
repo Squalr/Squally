@@ -32,7 +32,6 @@ Viking* Viking::deserialize(ValueMap& initProperties)
 Viking::Viking(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
 	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(980.0f, 1200.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

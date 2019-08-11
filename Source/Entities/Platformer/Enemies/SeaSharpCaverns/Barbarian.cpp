@@ -32,7 +32,6 @@ Barbarian* Barbarian::deserialize(ValueMap& initProperties)
 Barbarian::Barbarian(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(1280.0f, 920.0f),
 	1.0f,
 	Vec2(-32.0f, 0.0f))

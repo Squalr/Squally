@@ -32,7 +32,6 @@ Mildred* Mildred::deserialize(ValueMap& initProperties)
 Mildred::Mildred(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

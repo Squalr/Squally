@@ -32,7 +32,6 @@ TikiGolem* TikiGolem::deserialize(ValueMap& initProperties)
 TikiGolem::TikiGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(284.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

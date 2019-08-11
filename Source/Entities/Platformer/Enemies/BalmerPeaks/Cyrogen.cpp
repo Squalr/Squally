@@ -32,7 +32,6 @@ Cyrogen* Cyrogen::deserialize(ValueMap& initProperties)
 Cyrogen::Cyrogen(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Animations,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(420.0f, 420.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

@@ -32,7 +32,6 @@ Ysara* Ysara::deserialize(ValueMap& initProperties)
 Ysara::Ysara(ValueMap& initProperties) : NpcBase(initProperties,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))

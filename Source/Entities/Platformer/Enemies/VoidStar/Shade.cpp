@@ -32,7 +32,6 @@ Shade* Shade::deserialize(ValueMap& initProperties)
 Shade::Shade(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_VoidStar_Shade_Animations,
 	EntityResources::Enemies_VoidStar_Shade_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(284.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

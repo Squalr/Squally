@@ -32,7 +32,6 @@ SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& initProperties)
 SkeletalPriestess::SkeletalPriestess(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(196.0f, 312.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

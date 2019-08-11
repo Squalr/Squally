@@ -32,7 +32,6 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& initProperties)
 SkeletalBaron::SkeletalBaron(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(112.0f, 368.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))

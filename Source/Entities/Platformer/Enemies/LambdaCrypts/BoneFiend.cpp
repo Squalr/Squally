@@ -32,7 +32,6 @@ BoneFiend* BoneFiend::deserialize(ValueMap& initProperties)
 BoneFiend::BoneFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
-	PlatformerCollisionType::Enemy,
 	Size(224.0f, 278.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

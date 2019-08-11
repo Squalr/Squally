@@ -32,7 +32,6 @@ Professor* Professor::deserialize(ValueMap& initProperties)
 Professor::Professor(ValueMap& initProperties) : PlatformerEntity(initProperties,
 	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,
-	PlatformerCollisionType::FriendlyNpc,
 	Size(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))
