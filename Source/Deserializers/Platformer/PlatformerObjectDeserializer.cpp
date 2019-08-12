@@ -117,6 +117,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
+	this->deserializers[Warp::MapKeyWarp] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };
 	this->deserializers[Wind::MapKeyWind] = [=](ValueMap properties) { return (GameObject*)Wind::create(properties); };
 	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (GameObject*)WoodenCrate::create(properties); };

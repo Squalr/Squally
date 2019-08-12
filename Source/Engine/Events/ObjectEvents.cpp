@@ -78,7 +78,7 @@ void ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs a
 
 void ObjectEvents::TriggerWriteObjectState(StateWriteArgs args)
 {
-	const std::string eventKey = args.key + "_" + args.owner->getUniqueIdentifier();
+	const std::string eventKey = args.key + "_" + std::to_string((unsigned long long)(args.owner));
 
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		ObjectEvents::EventWriteStatePrefix + eventKey,

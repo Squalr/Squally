@@ -29,13 +29,12 @@ protected:
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
+	virtual void loadMap();
 
 	bool requiresInteraction;
 
 private:
 	typedef HackableObject super;
-
-	void loadMap();
 
 	CollisionObject* portalCollision;
 	ClickableNode* lockButton;

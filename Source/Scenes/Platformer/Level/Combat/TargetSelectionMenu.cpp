@@ -235,7 +235,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 		
 		if (selection != nullptr)
 		{
-			if (entity->getStateOrDefaultBool(StateKeys::IsDead, true)
+			if (entity->getStateOrDefaultBool(StateKeys::IsDead, false)
 				|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
 				|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
 			{

@@ -41,7 +41,7 @@ void AttachedBehavior::initializeListeners()
 
 void AttachedBehavior::listenForStateWrite(std::string key, std::function<void(cocos2d::Value)> onWrite)
 {
-	const std::string eventKey = key + "_" + this->owner->getUniqueIdentifier();
+	const std::string eventKey = key + "_" + std::to_string((unsigned long long)(this->owner));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{

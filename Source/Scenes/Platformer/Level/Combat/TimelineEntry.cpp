@@ -129,9 +129,9 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 		this->tryInterrupt();
 	}
 
-	int health = caster->getStateOrDefaultInt(StateKeys::Health, 0);
+	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	caster->setState(StateKeys::Health, Value(health + damageOrHealing));
+	this->getEntity()->setState(StateKeys::Health, Value(health + damageOrHealing));
 
 	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(caster, this->getEntity(), damageOrHealing));
 }

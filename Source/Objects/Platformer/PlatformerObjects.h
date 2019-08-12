@@ -18,6 +18,7 @@
 #include "Objects/Platformer/Doors/PuzzleDoor/MulDoor/MulDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoor.h"
 #include "Objects/Platformer/Doors/TrapDoor/TrapDoorFrame.h"
+#include "Objects/Platformer/Doors/Warp.h"
 #include "Objects/Platformer/Doors/WoodenGate/WoodenGate.h"
 #include "Objects/Platformer/Interactables/HackableHint.h"
 #include "Objects/Platformer/Interactables/Tent.h"

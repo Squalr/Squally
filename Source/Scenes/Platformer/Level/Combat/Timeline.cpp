@@ -204,7 +204,7 @@ void Timeline::updateTimeline(float dt)
 		{
 			TimelineEntry* entry = *it;
 
-			if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, false))
+			if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				if (!this->isTimelineInterrupted)
 				{
