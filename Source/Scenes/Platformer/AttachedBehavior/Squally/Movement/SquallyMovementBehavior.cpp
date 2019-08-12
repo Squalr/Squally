@@ -24,7 +24,7 @@ SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner, std:
 
 SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{

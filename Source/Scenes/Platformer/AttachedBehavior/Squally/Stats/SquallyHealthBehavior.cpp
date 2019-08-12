@@ -30,7 +30,7 @@ SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner, std::str
 
 SquallyHealthBehavior::SquallyHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 	this->spawnCoords = Vec2::ZERO;
 
 	if (this->squally == nullptr)

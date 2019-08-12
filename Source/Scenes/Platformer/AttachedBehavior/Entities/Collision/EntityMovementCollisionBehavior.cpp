@@ -30,7 +30,7 @@ EntityMovementCollisionBehavior* EntityMovementCollisionBehavior::create(GameObj
 
 EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->movementCollision = nullptr;
 	this->leftCollision = nullptr;
 	this->rightCollision = nullptr;
@@ -80,7 +80,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 {
 	CollisionType collisionType = CollisionType(PlatformerCollisionType::Movement);
 
-	if (static_cast<Squally*>(this->entity) != nullptr)
+	if (dynamic_cast<Squally*>(this->entity) != nullptr)
 	{
 		collisionType = CollisionType(PlatformerCollisionType::PlayerMovement);
 	}

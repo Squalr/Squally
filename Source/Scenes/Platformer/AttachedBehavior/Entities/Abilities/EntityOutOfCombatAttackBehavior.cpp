@@ -22,7 +22,7 @@ using namespace cocos2d;
 
 EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
 	this->isPerformingOutOfCombatAttack = false;
 

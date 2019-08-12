@@ -27,9 +27,9 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
-
 	float noCombatDuration;
 
 	Squally* squally;
+
+	static const float DefaultNoCombatDuration;
 };

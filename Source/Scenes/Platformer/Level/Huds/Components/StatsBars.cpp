@@ -145,8 +145,8 @@ void StatsBars::setStatsTarget(PlatformerEntity* target)
 
 	bool isSqually = dynamic_cast<Squally*>(target) != nullptr;
 
-	this->eqDisplay->setStatsTarget(isSqually ? static_cast<Squally*>(target) : nullptr);
-	this->runeBar->setStatsTarget(isSqually ? static_cast<Squally*>(target) : nullptr);
+	this->eqDisplay->setStatsTarget(isSqually ? dynamic_cast<Squally*>(target) : nullptr);
+	this->runeBar->setStatsTarget(isSqually ? dynamic_cast<Squally*>(target) : nullptr);
 
 	this->emblemNode->removeAllChildren();
 

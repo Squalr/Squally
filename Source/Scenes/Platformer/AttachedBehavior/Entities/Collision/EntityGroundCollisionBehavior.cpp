@@ -28,7 +28,7 @@ EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject*
 
 EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

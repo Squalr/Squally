@@ -25,7 +25,7 @@ EntityCinematicHijackBehavior* EntityCinematicHijackBehavior::create(GameObject*
 
 EntityCinematicHijackBehavior::EntityCinematicHijackBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

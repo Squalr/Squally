@@ -24,7 +24,7 @@ EntitySelectionBehavior* EntitySelectionBehavior::create(GameObject* owner, std:
 
 EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

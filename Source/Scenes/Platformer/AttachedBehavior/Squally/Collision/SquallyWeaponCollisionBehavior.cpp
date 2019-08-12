@@ -8,6 +8,7 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -34,7 +35,7 @@ SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObjec
 
 SquallyWeaponCollisionBehavior::SquallyWeaponCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 
 	if (this->squally == nullptr)
 	{
@@ -66,10 +67,9 @@ void SquallyWeaponCollisionBehavior::onLoad()
 				return CollisionObject::CollisionResult::DoNothing;
 			}
 
-			PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
-			
-			// First-strike!
-			// this->engageEnemy(enemy, true);
+			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));
 
 			return CollisionObject::CollisionResult::DoNothing;
 		});

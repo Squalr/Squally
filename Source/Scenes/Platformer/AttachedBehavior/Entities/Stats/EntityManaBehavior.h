@@ -24,4 +24,6 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+
+	void onRevive();
 };

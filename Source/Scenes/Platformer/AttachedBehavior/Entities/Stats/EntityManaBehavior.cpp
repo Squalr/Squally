@@ -26,7 +26,7 @@ EntityManaBehavior* EntityManaBehavior::create(GameObject* owner, std::string at
 
 EntityManaBehavior::EntityManaBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{
@@ -45,6 +45,13 @@ EntityManaBehavior::~EntityManaBehavior()
 
 void EntityManaBehavior::onLoad()
 {
+	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (value.asBool())
+		{
+			this->onRevive();
+		}
+	});
 }
 
 int EntityManaBehavior::getMana()
@@ -66,4 +73,9 @@ void EntityManaBehavior::setMana(int mana)
 int EntityManaBehavior::getMaxMana()
 {
 	return this->entity->getStateOrDefaultInt(StateKeys::MaxMana, 0);
+}
+
+void EntityManaBehavior::onRevive()
+{
+	this->setMana(this->getMaxMana());
 }

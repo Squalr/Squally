@@ -7,6 +7,7 @@
 
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -15,6 +16,8 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
@@ -26,6 +29,7 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
+#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
@@ -136,6 +140,25 @@ void PlatformerMap::initializePositions()
 void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::EngageEnemyArgs* args = static_cast<PlatformerEvents::EngageEnemyArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->enemy != nullptr && !args->enemy->getBattleMapResource().empty())
+		{
+			CombatMap* combatMap = CombatMap::create(
+				args->enemy->getBattleMapResource(),
+				args->enemy->getBattleMapArgs(),
+				args->firstStrike,
+				args->enemy->getUniqueIdentifier(),
+				{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
+				args->enemy->getCombatEntityList()
+			);
+
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+		}
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
 	{

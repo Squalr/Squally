@@ -1,5 +1,7 @@
 #include "EntityRuneBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/MathUtils.h"
@@ -8,6 +10,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -27,7 +30,7 @@ EntityRuneBehavior* EntityRuneBehavior::create(GameObject* owner, std::string at
 
 EntityRuneBehavior::EntityRuneBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{
@@ -48,13 +51,20 @@ EntityRuneBehavior::~EntityRuneBehavior()
 
 void EntityRuneBehavior::onLoad()
 {
+	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (value.asBool())
+		{
+			this->onRevive();
+		}
+	});
 }
 
 void EntityRuneBehavior::update(float dt)
 {
 	super::update(dt);
 
-	for (int index = 0; index < this->getMaxRunes(); index++)
+	for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
 	{
 		if (this->getRuneCooldown(index) > 0.0f)
 		{
@@ -67,7 +77,7 @@ int EntityRuneBehavior::getAvailableRunes()
 {
 	int availableRunes = 0;
 
-	for (int index = 0; index < this->getMaxRunes(); index++)
+	for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
 	{
 		if (this->getRuneCooldown(index) <= 0.0f)
 		{
@@ -80,7 +90,7 @@ int EntityRuneBehavior::getAvailableRunes()
 
 bool EntityRuneBehavior::tryUseRune()
 {
-	for (int index = this->getMaxRunes() - 1; index >= 0; index--)
+	for (int index = EntityRuneBehavior::MaxRunes - 1; index >= 0; index--)
 	{
 		if (this->getRuneCooldown(index) <= 0.0f)
 		{
@@ -97,29 +107,22 @@ bool EntityRuneBehavior::tryUseRune()
 
 float EntityRuneBehavior::getRuneCooldown(int runeIndex)
 {
-	int index = MathUtils::clamp(runeIndex, 0, this->getMaxRunes() - 1);
+	int index = MathUtils::clamp(runeIndex, 0, EntityRuneBehavior::MaxRunes - 1);
 
 	return this->runeCooldowns[index];
 }
 
 void EntityRuneBehavior::setRuneCooldown(int runeIndex, float cooldown)
 {
-	int index = MathUtils::clamp(runeIndex, 0, this->getMaxRunes() - 1);
+	int index = MathUtils::clamp(runeIndex, 0, EntityRuneBehavior::MaxRunes - 1);
 
 	this->runeCooldowns[index] = MathUtils::clamp(cooldown, 0.0f, EntityRuneBehavior::RuneCooldown);
 }
 
-int EntityRuneBehavior::getMaxRunes()
+void EntityRuneBehavior::onRevive()
 {
-	return EntityRuneBehavior::MaxRunes;
-}
-
-// TODO
-/*
-void onRevive()
-{
-	for (int index = 0; index < this->getMaxRunes(); index++)
+	for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
 	{
 		this->setRuneCooldown(index, 0.0f);
 	}
-}*/
+}

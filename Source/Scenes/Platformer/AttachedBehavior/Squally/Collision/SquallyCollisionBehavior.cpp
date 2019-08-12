@@ -1,13 +1,17 @@
 #include "SquallyCollisionBehavior.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -19,6 +23,7 @@
 using namespace cocos2d;
 
 const std::string SquallyCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
+const float SquallyCollisionBehavior::DefaultNoCombatDuration = 2.0f;
 
 SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
 {
@@ -31,7 +36,7 @@ SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner, st
 
 SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->squally = static_cast<Squally*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 	this->noCombatDuration = 0.0f;
 
 	if (this->squally == nullptr)
@@ -56,9 +61,15 @@ void SquallyCollisionBehavior::update(float dt)
 
 void SquallyCollisionBehavior::onLoad()
 {
-	this->noCombatDuration = 2.0f;
+	this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 
 	EntityCollisionBehavior* collisionBehavior = this->squally->getAttachedBehavior<EntityCollisionBehavior>();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
+	{
+		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
+		this->squally->saveState();
+	}));
 
 	if (collisionBehavior != nullptr)
 	{
@@ -69,10 +80,12 @@ void SquallyCollisionBehavior::onLoad()
 				return CollisionObject::CollisionResult::DoNothing;
 			}
 
-			PlatformerEnemy* enemy = dynamic_cast<PlatformerEnemy*>(collisionData.other->getParent());
-			
-			// Hit enemy directly, or got hit by their weapon -- not a first-strike
-			this->engageEnemy(enemy, false);
+			this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
+
+			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+			// Encountered enemy body/weapon -- not a first-strike
+			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));
 
 			return CollisionObject::CollisionResult::DoNothing;
 		});
@@ -118,24 +131,4 @@ void SquallyCollisionBehavior::onLoad()
 	}
 
 	this->scheduleUpdate();
-}
-
-void SquallyCollisionBehavior::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
-{
-	this->noCombatDuration = 2.0f;
-	this->squally->saveState();
-
-	if (enemy != nullptr && this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true) && enemy->getBattleMapResource() != "")
-	{
-		CombatMap* combatMap = CombatMap::create(
-			enemy->getBattleMapResource(),
-			enemy->getBattleMapArgs(),
-			firstStrike,
-			enemy->getUniqueIdentifier(),
-			{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
-			enemy->getCombatEntityList()
-		);
-
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
-	}
 }

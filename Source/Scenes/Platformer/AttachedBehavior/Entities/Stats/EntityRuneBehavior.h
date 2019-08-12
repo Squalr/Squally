@@ -19,7 +19,6 @@ public:
 	bool tryUseRune();
 	float getRuneCooldown(int runeIndex);
 	void setRuneCooldown(int runeIndex, float cooldown);
-	int getMaxRunes();
 
 	static const int MaxRunes;
 	static const float RuneCooldown;
@@ -37,4 +36,6 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+
+	void onRevive();
 };

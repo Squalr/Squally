@@ -31,7 +31,7 @@ EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner, std::s
 
 EntityMovementBehavior::EntityMovementBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

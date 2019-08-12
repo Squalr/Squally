@@ -6,6 +6,7 @@
 
 class LocalizedString;
 class PlatformerEntity;
+class PlatformerEnemy;
 
 class PlatformerEvents
 {
@@ -17,6 +18,7 @@ public:
 	static const std::string EventQueryMapArgs;
 	static const std::string EventRuneConsumed;
 	static const std::string EventEquippedItemsChanged;
+	static const std::string EventEngageEnemy;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 
@@ -66,6 +68,14 @@ public:
 		}
 	};
 
+	struct EngageEnemyArgs
+	{
+		PlatformerEnemy* enemy;
+		bool firstStrike;
+
+		EngageEnemyArgs(PlatformerEnemy* enemy, bool firstStrike) : enemy(enemy), firstStrike(firstStrike) { }
+	};
+
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpToLocation(WarpArgs args);
 	static void TriggerCinematicHijack();
@@ -73,6 +83,7 @@ public:
 	static void TriggerQueryMapArgs(QueryMapArgsArgs args);
 	static void TriggerRuneConsumed(RuneConsumedArgs args);
 	static void TriggerEquippedItemsChanged();
+	static void TriggerEngageEnemy(EngageEnemyArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 };

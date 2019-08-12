@@ -25,7 +25,7 @@ EntityCollisionBehavior* EntityCollisionBehavior::create(GameObject* owner, std:
 
 EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{
@@ -41,11 +41,11 @@ void EntityCollisionBehavior::onLoad()
 {
 	CollisionType collisionType = CollisionType(PlatformerCollisionType::Enemy);
 
-	if (static_cast<Squally*>(this->entity) != nullptr)
+	if (dynamic_cast<Squally*>(this->entity) != nullptr)
 	{
 		collisionType = CollisionType(PlatformerCollisionType::Player);
 	}
-	else if (static_cast<PlatformerFriendly*>(this->entity) != nullptr)
+	else if (dynamic_cast<PlatformerFriendly*>(this->entity) != nullptr)
 	{
 		collisionType = CollisionType(PlatformerCollisionType::FriendlyNpc);
 	}
