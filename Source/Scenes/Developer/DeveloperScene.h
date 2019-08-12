@@ -5,14 +5,14 @@
 class ClickableTextNode;
 class ScrollPane;
 
-class DebugScene : public GlobalScene
+class DeveloperScene : public GlobalScene
 {
 public:
-	static DebugScene* getInstance();
+	static DeveloperScene* getInstance();
 
 protected:
-	DebugScene();
-	~DebugScene();
+	DeveloperScene();
+	~DeveloperScene();
 
 private:
 	typedef GlobalScene super;
@@ -25,5 +25,5 @@ private:
 
 	ClickableTextNode* buildDebugButton(std::string mapResource, std::vector<std::string> mapArgs = { });
 
-	static DebugScene* instance;
+	static DeveloperScene* instance;
 };

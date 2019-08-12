@@ -17,7 +17,7 @@
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
 #include "Scenes/Title/TitleScreenBackground.h"
-#include "Scenes/DebugScene/DebugScene.h"
+#include "Scenes/Developer/DeveloperScene.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/MusicResources.h"
@@ -213,7 +213,7 @@ void TitleScreen::initializeListeners()
 	this->minigamesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(MinigamesMenu::getInstance()); });
 	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(OptionsScene::getInstance()); });
 	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { Director::getInstance()->end(); });
-	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DebugScene::getInstance()); });
+	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DeveloperScene::getInstance()); });
 }
 
 void TitleScreen::onDeveloperModeEnable()

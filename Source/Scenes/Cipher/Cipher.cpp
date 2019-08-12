@@ -148,19 +148,6 @@ void Cipher::initializeListeners()
 			});
 		}
 	})));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
-	{
-		/*
-		if (!GameUtils::isVisible(this))
-		{
-			return;
-		}
-		args->handle();
-
-		NavigationEvents::navigateBack();
-		*/
-	});
 }
 
 void Cipher::initializePositions()

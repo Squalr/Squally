@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class EntityRuneBehavior;
 class Squally;
 
 class SquallyRuneBehavior : public AttachedBehavior
@@ -23,4 +24,5 @@ private:
 	void saveState();
 
 	Squally* squally;
+	EntityRuneBehavior* entityRuneBehavior;
 };

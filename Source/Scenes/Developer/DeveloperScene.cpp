@@ -1,4 +1,4 @@
-#include "DebugScene.h"
+#include "DeveloperScene.h"
 
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -10,6 +10,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 
@@ -20,24 +21,24 @@
 
 using namespace cocos2d;
 
-DebugScene* DebugScene::instance = nullptr;
+DeveloperScene* DeveloperScene::instance = nullptr;
 
-DebugScene* DebugScene::getInstance()
+DeveloperScene* DeveloperScene::getInstance()
 {
-	if (DebugScene::instance == nullptr)
+	if (DeveloperScene::instance == nullptr)
 	{
-		DebugScene::instance = new DebugScene();
+		DeveloperScene::instance = new DeveloperScene();
 
-		DebugScene::instance->autorelease();
-		DebugScene::instance->initializeListeners();
+		DeveloperScene::instance->autorelease();
+		DeveloperScene::instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(DebugScene::getInstance());
+		GlobalDirector::registerGlobalScene(DeveloperScene::getInstance());
 	}
 
-	return DebugScene::instance;
+	return DeveloperScene::instance;
 }
 
-DebugScene::DebugScene()
+DeveloperScene::DeveloperScene()
 {
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
@@ -61,16 +62,16 @@ DebugScene::DebugScene()
 	this->addChild(this->scrollPane);
 }
 
-DebugScene::~DebugScene()
+DeveloperScene::~DeveloperScene()
 {
 }
 
-void DebugScene::onEnter()
+void DeveloperScene::onEnter()
 {
 	super::onEnter();
 }
 
-void DebugScene::initializePositions()
+void DeveloperScene::initializePositions()
 {
 	super::initializePositions();
 
@@ -86,12 +87,24 @@ void DebugScene::initializePositions()
 	}
 }
 
-void DebugScene::initializeListeners()
+void DeveloperScene::initializeListeners()
 {
 	super::initializeListeners();
+
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		args->handle();
+
+		NavigationEvents::NavigateBack();
+	});
 }
 
-ClickableTextNode* DebugScene::buildDebugButton(std::string mapResource, std::vector<std::string> mapArgs)
+ClickableTextNode* DeveloperScene::buildDebugButton(std::string mapResource, std::vector<std::string> mapArgs)
 {
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, ConstantString::create(mapResource));
 	LocalizedLabel* labelSelected = label->clone();

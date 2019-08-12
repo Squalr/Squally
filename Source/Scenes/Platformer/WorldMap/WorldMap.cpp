@@ -221,14 +221,4 @@ void WorldMap::initializeListeners()
 
 void WorldMap::initializedLocked()
 {
-	/*
-	this->jungle->setLocked(false);
-	this->waterRuins->setLocked(false);
-	this->forest->setLocked(false);
-	this->caverns->setLocked(false);
-	this->castle->setLocked(false);
-	this->iceCaps->setLocked(false);
-	this->obelisk->setLocked(false);
-	this->volcano->setLocked(false);
-	this->mech->setLocked(false);*/
 }

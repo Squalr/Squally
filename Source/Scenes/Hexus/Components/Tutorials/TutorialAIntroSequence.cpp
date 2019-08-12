@@ -327,15 +327,6 @@ void TutorialAIntroSequence::runTutorialRowTotals(GameState* gameState)
 			this->helpArrowRowTotals->setPositionY(gameState->enemyBinaryRowTotalPointer->getPositionY());
 		}),
 		DelayTime::create(1.5f),
-		/*CallFunc::create([=]()
-		{
-			std::vector<Node*> focusTargets = std::vector<Node*>();
-			focusTargets.push_back(gameState->playerBinaryCards);
-			focusTargets.push_back(gameState->playerBinaryRowTotalPointer);
-			this->focusTakeOver->focus(focusTargets);
-			this->helpArrowRowTotals->setPositionY(gameState->playerBinaryRowTotalPointer->getPositionY());
-		}),
-		DelayTime::create(1.5f),*/
 		CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();
@@ -345,15 +336,6 @@ void TutorialAIntroSequence::runTutorialRowTotals(GameState* gameState)
 			this->helpArrowRowTotals->setPositionY(gameState->playerDecimalRowTotalPointer->getPositionY());
 		}),
 		DelayTime::create(1.5f),
-		/*CallFunc::create([=]()
-		{
-			std::vector<Node*> focusTargets = std::vector<Node*>();
-			focusTargets.push_back(gameState->playerHexCards);
-			focusTargets.push_back(gameState->playerHexRowTotalPointer);
-			this->focusTakeOver->focus(focusTargets);
-			this->helpArrowRowTotals->setPositionY(gameState->playerHexRowTotalPointer->getPositionY());
-		}),
-		DelayTime::create(1.5f),*/
 		CallFunc::create([=]()
 		{
 			std::vector<Node*> focusTargets = std::vector<Node*>();

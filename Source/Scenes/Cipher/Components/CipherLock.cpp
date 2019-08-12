@@ -190,14 +190,6 @@ void CipherLock::initializeListeners()
 							MoveBy::create(0.15f, Vec2(0.0f, -10.0f)),
 							nullptr
 						));
-						/*
-						pinhole->runAction(Sequence::create(
-							MoveBy::create(0.15f, Vec2(0.0f, 10.0f)),
-							MoveBy::create(0.15f, Vec2(0.0f, -10.0f)),
-							MoveBy::create(0.15f, Vec2(0.0f, 10.0f)),
-							MoveBy::create(0.15f, Vec2(0.0f, -10.0f)),
-							nullptr
-						));*/
 					}
 				});
 
