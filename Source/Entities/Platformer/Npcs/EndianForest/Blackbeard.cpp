@@ -30,6 +30,7 @@ Blackbeard* Blackbeard::deserialize(ValueMap& initProperties)
 }
 
 Blackbeard::Blackbeard(ValueMap& initProperties) : NpcBase(initProperties,
+	Blackbeard::MapKeyBlackbeard,
 	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
 	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,
 	Size(112.0f, 160.0f),

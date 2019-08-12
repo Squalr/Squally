@@ -30,6 +30,7 @@ LightningGolem* LightningGolem::deserialize(ValueMap& initProperties)
 }
 
 LightningGolem::LightningGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	LightningGolem::MapKeyLightningGolem,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
 	Size(768.0f, 840.0f),

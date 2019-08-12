@@ -30,6 +30,7 @@ Fraya* Fraya::deserialize(ValueMap& initProperties)
 }
 
 Fraya::Fraya(ValueMap& initProperties) : NpcBase(initProperties,
+	Fraya::MapKeyFraya,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,
 	Size(112.0f, 160.0f),

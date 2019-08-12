@@ -26,6 +26,7 @@ const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
 	ValueMap& properties,
+	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
 	Size size, 
@@ -34,6 +35,7 @@ PlatformerEnemy::PlatformerEnemy(
 	float hoverHeight)
 	: super(
 		properties,
+		entityName,
 		scmlResource,
 		emblemResource,
 		size,

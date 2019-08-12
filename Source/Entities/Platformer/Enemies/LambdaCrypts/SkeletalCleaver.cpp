@@ -30,6 +30,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& initProperties)
 }
 
 SkeletalCleaver::SkeletalCleaver(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	SkeletalCleaver::MapKeySkeletalCleaver,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	Size(128.0f, 312.0f),

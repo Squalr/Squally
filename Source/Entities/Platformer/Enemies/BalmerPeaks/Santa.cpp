@@ -30,6 +30,7 @@ Santa* Santa::deserialize(ValueMap& initProperties)
 }
 
 Santa::Santa(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Santa::MapKeySanta,
 	EntityResources::Enemies_BalmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BalmerPeaks_Santa_Emblem,
 	Size(420.0f, 452.0f),

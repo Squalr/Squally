@@ -30,6 +30,7 @@ Undead* Undead::deserialize(ValueMap& initProperties)
 }
 
 Undead::Undead(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Undead::MapKeyUndead,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
 	Size(146.0f, 248.0f),

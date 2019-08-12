@@ -30,6 +30,7 @@ Burch* Burch::deserialize(ValueMap& initProperties)
 }
 
 Burch::Burch(ValueMap& initProperties) : NpcBase(initProperties,
+	Burch::MapKeyBurch,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,
 	Size(112.0f, 160.0f),

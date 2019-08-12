@@ -30,6 +30,7 @@ Cookie* Cookie::deserialize(ValueMap& initProperties)
 }
 
 Cookie::Cookie(ValueMap& initProperties) : NpcBase(initProperties,
+	Cookie::MapKeyCookie,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Geryon* Geryon::deserialize(ValueMap& initProperties)
 }
 
 Geryon::Geryon(ValueMap& initProperties) : NpcBase(initProperties,
+	Geryon::MapKeyGeryon,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,
 	Size(112.0f, 160.0f),

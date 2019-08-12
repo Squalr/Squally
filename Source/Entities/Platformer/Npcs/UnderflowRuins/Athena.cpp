@@ -30,6 +30,7 @@ Athena* Athena::deserialize(ValueMap& initProperties)
 }
 
 Athena::Athena(ValueMap& initProperties) : NpcBase(initProperties,
+	Athena::MapKeyAthena,
 	EntityResources::Npcs_UnderflowRuins_Athena_Animations,
 	EntityResources::Npcs_UnderflowRuins_Athena_Emblem,
 	Size(112.0f, 160.0f),

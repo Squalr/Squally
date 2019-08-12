@@ -1,6 +1,7 @@
 #include "EntityBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDebugBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
@@ -19,6 +20,7 @@ EntityBehaviorGroup* EntityBehaviorGroup::create(GameObject* owner, std::string 
 }
 
 EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
+	EntityCinematicHijackBehavior::create(owner, attachedBehaviorArgs),
 	EntityCollisionBehaviorGroup::create(owner, attachedBehaviorArgs),
 	EntityDebugBehavior::create(owner, attachedBehaviorArgs),
 	EntityStatsBehaviorGroup::create(owner, attachedBehaviorArgs),

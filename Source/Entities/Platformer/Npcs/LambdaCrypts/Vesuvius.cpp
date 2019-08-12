@@ -30,6 +30,7 @@ Vesuvius* Vesuvius::deserialize(ValueMap& initProperties)
 }
 
 Vesuvius::Vesuvius(ValueMap& initProperties) : NpcBase(initProperties,
+	Vesuvius::MapKeyVesuvius,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Animations,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Emblem,
 	Size(112.0f, 160.0f),

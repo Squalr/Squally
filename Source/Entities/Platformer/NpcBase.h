@@ -12,6 +12,7 @@ public:
 
 protected:
 	NpcBase(cocos2d::ValueMap& properties,
+		std::string entityName,
 		std::string scmlResource,
 		std::string emblemResource,
 		cocos2d::Size size,

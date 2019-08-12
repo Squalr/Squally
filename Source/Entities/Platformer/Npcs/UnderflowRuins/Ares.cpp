@@ -30,6 +30,7 @@ Ares* Ares::deserialize(ValueMap& initProperties)
 }
 
 Ares::Ares(ValueMap& initProperties) : NpcBase(initProperties,
+	Ares::MapKeyAres,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,
 	Size(112.0f, 160.0f),

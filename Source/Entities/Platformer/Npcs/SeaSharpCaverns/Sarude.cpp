@@ -30,6 +30,7 @@ Sarude* Sarude::deserialize(ValueMap& initProperties)
 }
 
 Sarude::Sarude(ValueMap& initProperties) : NpcBase(initProperties,
+	Sarude::MapKeySarude,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,
 	Size(112.0f, 160.0f),

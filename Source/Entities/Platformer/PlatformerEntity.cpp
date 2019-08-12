@@ -29,6 +29,7 @@ const std::string PlatformerEntity::MapKeyPropertyState = "state";
 
 PlatformerEntity::PlatformerEntity(
 	ValueMap& properties, 
+	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
 	Size size,
@@ -44,7 +45,7 @@ PlatformerEntity::PlatformerEntity(
 	this->entityScale = scale;
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
-	this->entityName = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
+	this->entityName = entityName;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * scale;

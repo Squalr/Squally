@@ -30,6 +30,7 @@ Rogas* Rogas::deserialize(ValueMap& initProperties)
 }
 
 Rogas::Rogas(ValueMap& initProperties) : NpcBase(initProperties,
+	Rogas::MapKeyRogas,
 	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,
 	Size(112.0f, 160.0f),

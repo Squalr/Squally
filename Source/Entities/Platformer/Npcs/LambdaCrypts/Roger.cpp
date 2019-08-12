@@ -30,6 +30,7 @@ Roger* Roger::deserialize(ValueMap& initProperties)
 }
 
 Roger::Roger(ValueMap& initProperties) : NpcBase(initProperties,
+	Roger::MapKeyRoger,
 	EntityResources::Npcs_LambdaCrypts_Roger_Animations,
 	EntityResources::Npcs_LambdaCrypts_Roger_Emblem,
 	Size(112.0f, 160.0f),

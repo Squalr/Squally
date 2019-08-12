@@ -31,6 +31,7 @@ Centaur* Centaur::deserialize(ValueMap& initProperties)
 }
 
 Centaur::Centaur(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Centaur::MapKeyCentaur,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	Size(296.0f, 256.0f),

@@ -30,6 +30,7 @@ FrostFiend* FrostFiend::deserialize(ValueMap& initProperties)
 }
 
 FrostFiend::FrostFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	FrostFiend::MapKeyFrostFiend,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Emblem,
 	Size(212.0f, 296.0f),

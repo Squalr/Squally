@@ -30,6 +30,7 @@ DemonWarrior* DemonWarrior::deserialize(ValueMap& initProperties)
 }
 
 DemonWarrior::DemonWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	DemonWarrior::MapKeyDemonWarrior,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,
 	Size(320.0f, 372.0f),

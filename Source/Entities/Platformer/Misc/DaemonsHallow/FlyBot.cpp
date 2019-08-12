@@ -58,6 +58,7 @@ FlyBot* FlyBot::deserialize(ValueMap& initProperties)
 }
 
 FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	FlyBot::MapKeyFlyBot,
 	EntityResources::Misc_DaemonsHallow_FlyBot_Animations,
 	EntityResources::Misc_DaemonsHallow_FlyBot_Emblem,
 	Size(112.0f, 160.0f),

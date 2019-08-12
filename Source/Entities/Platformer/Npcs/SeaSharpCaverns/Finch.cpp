@@ -30,6 +30,7 @@ Finch* Finch::deserialize(ValueMap& initProperties)
 }
 
 Finch::Finch(ValueMap& initProperties) : NpcBase(initProperties,
+	Finch::MapKeyFinch,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Lycan* Lycan::deserialize(ValueMap& initProperties)
 }
 
 Lycan::Lycan(ValueMap& initProperties) : NpcBase(initProperties,
+	Lycan::MapKeyLycan,
 	EntityResources::Npcs_EndianForest_Lycan_Animations,
 	EntityResources::Npcs_EndianForest_Lycan_Emblem,
 	Size(112.0f, 160.0f),

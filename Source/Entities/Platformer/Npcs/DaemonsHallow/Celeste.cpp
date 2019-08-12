@@ -30,6 +30,7 @@ Celeste* Celeste::deserialize(ValueMap& initProperties)
 }
 
 Celeste::Celeste(ValueMap& initProperties) : NpcBase(initProperties,
+	Celeste::MapKeyCeleste,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Animations,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Emblem,
 	Size(112.0f, 160.0f),

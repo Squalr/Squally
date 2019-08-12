@@ -11,6 +11,12 @@ using namespace cocos2d;
 AttachedBehavior::AttachedBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super()
 {
 	this->attachedBehaviorArgs = attachedBehaviorArgs;
+	this->owner = owner;
+
+	if (this->owner == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 AttachedBehavior::~AttachedBehavior()
@@ -35,7 +41,9 @@ void AttachedBehavior::initializeListeners()
 
 void AttachedBehavior::listenForStateWrite(std::string key, std::function<void(cocos2d::Value)> onWrite)
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + key + std::to_string((unsigned long long)this), [=](EventCustom* eventCustom)
+	const std::string eventKey = key + "_" + this->owner->getUniqueIdentifier();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{
 		ObjectEvents::StateWriteArgs* args = static_cast<ObjectEvents::StateWriteArgs*>(eventCustom->getUserData());
 		

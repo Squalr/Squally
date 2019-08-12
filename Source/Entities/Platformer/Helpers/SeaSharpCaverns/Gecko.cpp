@@ -30,6 +30,7 @@ Gecko* Gecko::deserialize(ValueMap& initProperties)
 }
 
 Gecko::Gecko(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Gecko::MapKeyGecko,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Emblem,
 	Size(224.0f, 440.0f),

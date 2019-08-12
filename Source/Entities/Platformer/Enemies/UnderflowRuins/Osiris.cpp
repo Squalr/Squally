@@ -30,6 +30,7 @@ Osiris* Osiris::deserialize(ValueMap& initProperties)
 }
 
 Osiris::Osiris(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Osiris::MapKeyOsiris,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	Size(324.0f, 316.0f),

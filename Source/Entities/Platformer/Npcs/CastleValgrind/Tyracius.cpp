@@ -30,6 +30,7 @@ Tyracius* Tyracius::deserialize(ValueMap& initProperties)
 }
 
 Tyracius::Tyracius(ValueMap& initProperties) : NpcBase(initProperties,
+	Tyracius::MapKeyTyracius,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,
 	Size(112.0f, 160.0f),

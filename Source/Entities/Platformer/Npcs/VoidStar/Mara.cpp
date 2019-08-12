@@ -30,6 +30,7 @@ Mara* Mara::deserialize(ValueMap& initProperties)
 }
 
 Mara::Mara(ValueMap& initProperties) : NpcBase(initProperties,
+	Mara::MapKeyMara,
 	EntityResources::Npcs_VoidStar_Mara_Animations,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,
 	Size(112.0f, 160.0f),

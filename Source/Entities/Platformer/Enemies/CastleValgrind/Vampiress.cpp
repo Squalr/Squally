@@ -30,6 +30,7 @@ Vampiress* Vampiress::deserialize(ValueMap& initProperties)
 }
 
 Vampiress::Vampiress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Vampiress::MapKeyVampiress,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
 	Size(96.0f, 236.0f),

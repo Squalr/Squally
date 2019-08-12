@@ -30,6 +30,7 @@ DemonRogue* DemonRogue::deserialize(ValueMap& initProperties)
 }
 
 DemonRogue::DemonRogue(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	DemonRogue::MapKeyDemonRogue,
 	EntityResources::Enemies_DaemonsHallow_DemonRogue_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonRogue_Emblem,
 	Size(212.0f, 268.0f),

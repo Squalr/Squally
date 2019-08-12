@@ -30,6 +30,7 @@ LavaGolem* LavaGolem::deserialize(ValueMap& initProperties)
 }
 
 LavaGolem::LavaGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	LavaGolem::MapKeyLavaGolem,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,
 	Size(980.0f, 1200.0f),

@@ -30,6 +30,7 @@ ForestGolem* ForestGolem::deserialize(ValueMap& initProperties)
 }
 
 ForestGolem::ForestGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	ForestGolem::MapKeyForestGolem,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,
 	Size(768.0f, 840.0f),

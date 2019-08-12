@@ -30,6 +30,7 @@ AnubisWarrior* AnubisWarrior::deserialize(ValueMap& initProperties)
 }
 
 AnubisWarrior::AnubisWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	AnubisWarrior::MapKeyAnubisWarrior,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
 	Size(256.0f, 292.0f),

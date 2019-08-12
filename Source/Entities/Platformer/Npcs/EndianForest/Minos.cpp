@@ -30,6 +30,7 @@ Minos* Minos::deserialize(ValueMap& initProperties)
 }
 
 Minos::Minos(ValueMap& initProperties) : NpcBase(initProperties,
+	Minos::MapKeyMinos,
 	EntityResources::Npcs_EndianForest_Minos_Animations,
 	EntityResources::Npcs_EndianForest_Minos_Emblem,
 	Size(112.0f, 160.0f),

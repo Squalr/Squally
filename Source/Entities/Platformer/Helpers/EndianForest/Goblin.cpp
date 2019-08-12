@@ -30,6 +30,7 @@ Goblin* Goblin::deserialize(ValueMap& initProperties)
 }
 
 Goblin::Goblin(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Goblin::MapKeyGoblin,
 	EntityResources::Helpers_EndianForest_Goblin_Animations,
 	EntityResources::Helpers_EndianForest_Goblin_Emblem,
 	Size(224.0f, 440.0f),

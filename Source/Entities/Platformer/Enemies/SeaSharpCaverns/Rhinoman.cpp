@@ -30,6 +30,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap& initProperties)
 }
 
 Rhinoman::Rhinoman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Rhinoman::MapKeyRhinoman,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	Size(592.0f, 592.0f),

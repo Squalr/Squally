@@ -30,6 +30,7 @@ Horus* Horus::deserialize(ValueMap& initProperties)
 }
 
 Horus::Horus(ValueMap& initProperties) : NpcBase(initProperties,
+	Horus::MapKeyHorus,
 	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,
 	Size(112.0f, 160.0f),

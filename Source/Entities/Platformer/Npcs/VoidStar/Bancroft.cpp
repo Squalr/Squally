@@ -30,6 +30,7 @@ Bancroft* Bancroft::deserialize(ValueMap& initProperties)
 }
 
 Bancroft::Bancroft(ValueMap& initProperties) : NpcBase(initProperties,
+	Bancroft::MapKeyBancroft,
 	EntityResources::Npcs_VoidStar_Bancroft_Animations,
 	EntityResources::Npcs_VoidStar_Bancroft_Emblem,
 	Size(112.0f, 160.0f),

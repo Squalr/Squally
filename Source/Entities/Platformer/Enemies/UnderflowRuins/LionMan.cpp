@@ -30,6 +30,7 @@ LionMan* LionMan::deserialize(ValueMap& initProperties)
 }
 
 LionMan::LionMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	LionMan::MapKeyLionMan,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	Size(256.0f, 326.0f),

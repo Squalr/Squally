@@ -30,6 +30,7 @@ OrcSwordsman* OrcSwordsman::deserialize(ValueMap& initProperties)
 }
 
 OrcSwordsman::OrcSwordsman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	OrcSwordsman::MapKeyOrcSwordsman,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,
 	Size(256.0f, 228.0f),
@@ -92,7 +93,7 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Kill),
-CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -108,7 +109,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -124,13 +125,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

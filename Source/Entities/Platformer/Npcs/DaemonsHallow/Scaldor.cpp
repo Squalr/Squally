@@ -30,6 +30,7 @@ Scaldor* Scaldor::deserialize(ValueMap& initProperties)
 }
 
 Scaldor::Scaldor(ValueMap& initProperties) : NpcBase(initProperties,
+	Scaldor::MapKeyScaldor,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,
 	Size(112.0f, 160.0f),

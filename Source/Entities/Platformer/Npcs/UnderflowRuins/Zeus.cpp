@@ -30,6 +30,7 @@ Zeus* Zeus::deserialize(ValueMap& initProperties)
 }
 
 Zeus::Zeus(ValueMap& initProperties) : NpcBase(initProperties,
+	Zeus::MapKeyZeus,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,
 	Size(112.0f, 160.0f),

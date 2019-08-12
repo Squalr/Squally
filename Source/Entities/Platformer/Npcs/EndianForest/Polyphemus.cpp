@@ -30,6 +30,7 @@ Polyphemus* Polyphemus::deserialize(ValueMap& initProperties)
 }
 
 Polyphemus::Polyphemus(ValueMap& initProperties) : NpcBase(initProperties,
+	Polyphemus::MapKeyPolyphemus,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Rusty* Rusty::deserialize(ValueMap& initProperties)
 }
 
 Rusty::Rusty(ValueMap& initProperties) : NpcBase(initProperties,
+	Rusty::MapKeyRusty,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,
 	Size(112.0f, 160.0f),

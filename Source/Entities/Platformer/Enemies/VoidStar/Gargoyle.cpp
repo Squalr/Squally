@@ -30,6 +30,7 @@ Gargoyle* Gargoyle::deserialize(ValueMap& initProperties)
 }
 
 Gargoyle::Gargoyle(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Gargoyle::MapKeyGargoyle,
 	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
 	Size(256.0f, 256.0f),

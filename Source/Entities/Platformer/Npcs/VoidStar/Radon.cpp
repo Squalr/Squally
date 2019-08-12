@@ -30,6 +30,7 @@ Radon* Radon::deserialize(ValueMap& initProperties)
 }
 
 Radon::Radon(ValueMap& initProperties) : NpcBase(initProperties,
+	Radon::MapKeyRadon,
 	EntityResources::Npcs_VoidStar_Radon_Animations,
 	EntityResources::Npcs_VoidStar_Radon_Emblem,
 	Size(112.0f, 160.0f),

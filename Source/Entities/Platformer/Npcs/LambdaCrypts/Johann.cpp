@@ -30,6 +30,7 @@ Johann* Johann::deserialize(ValueMap& initProperties)
 }
 
 Johann::Johann(ValueMap& initProperties) : NpcBase(initProperties,
+	Johann::MapKeyJohann,
 	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,
 	Size(112.0f, 160.0f),

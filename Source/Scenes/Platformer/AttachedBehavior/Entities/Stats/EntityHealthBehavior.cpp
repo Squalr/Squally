@@ -48,8 +48,6 @@ EntityHealthBehavior::~EntityHealthBehavior()
 
 void EntityHealthBehavior::onLoad()
 {
-	this->spawnCoords = this->entity->getPosition();
-
 	this->listenForStateWrite(StateKeys::Health, [=](Value value)
 	{
 		this->setHealth(value.asInt());
@@ -90,9 +88,9 @@ void EntityHealthBehavior::addHealth(int healthDelta)
 	this->setHealth(this->getHealth() + healthDelta);
 }
 
-void EntityHealthBehavior::setHealth(int health)
+void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 {
-	if (this->isDead())
+	if (checkDeath && this->isDead())
 	{
 		return;
 	}
@@ -115,7 +113,7 @@ int EntityHealthBehavior::getMaxHealth()
 
 void EntityHealthBehavior::kill(bool loadDeadAnim)
 {
-	this->setHealth(0);
+	this->setHealth(0, false);
 
 	if (loadDeadAnim && this->entity != nullptr)
 	{
@@ -123,25 +121,9 @@ void EntityHealthBehavior::kill(bool loadDeadAnim)
 	}
 }
 
-void EntityHealthBehavior::killAndRespawn()
-{
-	this->kill();
-
-	this->runAction(Sequence::create(
-		DelayTime::create(1.5f),
-		CallFunc::create([=]()
-		{
-			this->entity->setPosition(this->spawnCoords);
-
-			this->revive();
-		}),
-		nullptr
-	));
-}
-
 void EntityHealthBehavior::revive()
 {
-	this->setHealth(this->getMaxHealth());
+	this->setHealth(this->getMaxHealth(), false);
 
 	if (this->entity != nullptr)
 	{

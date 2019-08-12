@@ -30,6 +30,7 @@ Apple* Apple::deserialize(ValueMap& initProperties)
 }
 
 Apple::Apple(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Apple::MapKeyApple,
 	EntityResources::Helpers_DaemonsHallow_Apple_Animations,
 	EntityResources::Helpers_DaemonsHallow_Apple_Emblem,
 	Size(224.0f, 440.0f),

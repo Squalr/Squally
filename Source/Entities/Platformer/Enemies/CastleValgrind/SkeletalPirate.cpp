@@ -30,6 +30,7 @@ SkeletalPirate* SkeletalPirate::deserialize(ValueMap& initProperties)
 }
 
 SkeletalPirate::SkeletalPirate(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	SkeletalPirate::MapKeySkeletalPirate,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Animations,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Emblem,
 	Size(112.0f, 820.0f),

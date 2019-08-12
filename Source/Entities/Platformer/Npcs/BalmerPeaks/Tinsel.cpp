@@ -30,6 +30,7 @@ Tinsel* Tinsel::deserialize(ValueMap& initProperties)
 }
 
 Tinsel::Tinsel(ValueMap& initProperties) : NpcBase(initProperties,
+	Tinsel::MapKeyTinsel,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,
 	Size(112.0f, 160.0f),

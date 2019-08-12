@@ -30,6 +30,7 @@ Appolo* Appolo::deserialize(ValueMap& initProperties)
 }
 
 Appolo::Appolo(ValueMap& initProperties) : NpcBase(initProperties,
+	Appolo::MapKeyAppolo,
 	EntityResources::Npcs_EndianForest_Appolo_Animations,
 	EntityResources::Npcs_EndianForest_Appolo_Emblem,
 	Size(112.0f, 160.0f),

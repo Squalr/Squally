@@ -126,8 +126,8 @@ void EntityMovementBehavior::update(float dt)
 	// Save velocity
 	movementCollision->setVelocity(velocity);
 
-	this->entity->setState(StateKeys::VelocityX, Value(velocity.x));
-	this->entity->setState(StateKeys::VelocityY, Value(velocity.y));
+	this->entity->setState(StateKeys::VelocityX, Value(velocity.x), false);
+	this->entity->setState(StateKeys::VelocityY, Value(velocity.y), false);
 
 	// Update flip
 	if (this->entity->animationNode != nullptr)

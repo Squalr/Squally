@@ -30,6 +30,7 @@ Leroy* Leroy::deserialize(ValueMap& initProperties)
 }
 
 Leroy::Leroy(ValueMap& initProperties) : NpcBase(initProperties,
+	Leroy::MapKeyLeroy,
 	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,
 	Size(112.0f, 160.0f),

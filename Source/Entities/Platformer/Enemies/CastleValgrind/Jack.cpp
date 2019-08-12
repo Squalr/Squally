@@ -30,6 +30,7 @@ Jack* Jack::deserialize(ValueMap& initProperties)
 }
 
 Jack::Jack(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Jack::MapKeyJack,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
 	Size(432.0f, 768.0f),

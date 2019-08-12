@@ -30,6 +30,7 @@ Azmus* Azmus::deserialize(ValueMap& initProperties)
 }
 
 Azmus::Azmus(ValueMap& initProperties) : NpcBase(initProperties,
+	Azmus::MapKeyAzmus,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Animations,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Emblem,
 	Size(112.0f, 160.0f),

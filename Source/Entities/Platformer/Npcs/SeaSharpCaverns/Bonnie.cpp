@@ -30,6 +30,7 @@ Bonnie* Bonnie::deserialize(ValueMap& initProperties)
 }
 
 Bonnie::Bonnie(ValueMap& initProperties) : NpcBase(initProperties,
+	Bonnie::MapKeyBonnie,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Robot* Robot::deserialize(ValueMap& initProperties)
 }
 
 Robot::Robot(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Robot::MapKeyRobot,
 	EntityResources::Helpers_VoidStar_Robot_Animations,
 	EntityResources::Helpers_VoidStar_Robot_Emblem,
 	Size(224.0f, 440.0f),

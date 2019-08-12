@@ -30,6 +30,7 @@ Ajax* Ajax::deserialize(ValueMap& initProperties)
 }
 
 Ajax::Ajax(ValueMap& initProperties) : NpcBase(initProperties,
+	Ajax::MapKeyAjax,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,
 	Size(112.0f, 160.0f),

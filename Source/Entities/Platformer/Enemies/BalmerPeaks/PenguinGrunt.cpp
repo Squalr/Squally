@@ -30,6 +30,7 @@ PenguinGrunt* PenguinGrunt::deserialize(ValueMap& initProperties)
 }
 
 PenguinGrunt::PenguinGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	PenguinGrunt::MapKeyPenguinGrunt,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,
 	Size(212.0f, 296.0f),

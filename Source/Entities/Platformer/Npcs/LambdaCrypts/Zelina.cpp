@@ -30,6 +30,7 @@ Zelina* Zelina::deserialize(ValueMap& initProperties)
 }
 
 Zelina::Zelina(ValueMap& initProperties) : NpcBase(initProperties,
+	Zelina::MapKeyZelina,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,
 	Size(112.0f, 160.0f),

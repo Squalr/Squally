@@ -30,6 +30,7 @@ QueenElise* QueenElise::deserialize(ValueMap& initProperties)
 }
 
 QueenElise::QueenElise(ValueMap& initProperties) : NpcBase(initProperties,
+	QueenElise::MapKeyQueenElise,
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,
 	Size(112.0f, 160.0f),

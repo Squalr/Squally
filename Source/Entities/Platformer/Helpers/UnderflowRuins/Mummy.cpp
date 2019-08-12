@@ -30,6 +30,7 @@ Mummy* Mummy::deserialize(ValueMap& initProperties)
 }
 
 Mummy::Mummy(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Mummy::MapKeyMummy,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Emblem,
 	Size(224.0f, 440.0f),

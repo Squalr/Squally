@@ -30,6 +30,7 @@ Princess* Princess::deserialize(ValueMap& initProperties)
 }
 
 Princess::Princess(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Princess::MapKeyPrincess,
 	EntityResources::Helpers_CastleValgrind_Princess_Animations,
 	EntityResources::Helpers_CastleValgrind_Princess_Emblem,
 	Size(224.0f, 440.0f),

@@ -30,6 +30,7 @@ Leon* Leon::deserialize(ValueMap& initProperties)
 }
 
 Leon::Leon(ValueMap& initProperties) : NpcBase(initProperties,
+	Leon::MapKeyLeon,
 	EntityResources::Npcs_VoidStar_Leon_Animations,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,
 	Size(112.0f, 160.0f),

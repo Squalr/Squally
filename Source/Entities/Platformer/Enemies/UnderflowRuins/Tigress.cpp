@@ -30,6 +30,7 @@ Tigress* Tigress::deserialize(ValueMap& initProperties)
 }
 
 Tigress::Tigress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Tigress::MapKeyTigress,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
 	Size(128.0f, 256.0f),

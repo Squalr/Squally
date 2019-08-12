@@ -30,6 +30,7 @@ Zombie* Zombie::deserialize(ValueMap& initProperties)
 }
 
 Zombie::Zombie(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Zombie::MapKeyZombie,
 	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
 	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
 	Size(146.0f, 248.0f),

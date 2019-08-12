@@ -30,6 +30,7 @@ Illia* Illia::deserialize(ValueMap& initProperties)
 }
 
 Illia::Illia(ValueMap& initProperties) : NpcBase(initProperties,
+	Illia::MapKeyIllia,
 	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,
 	Size(112.0f, 160.0f),

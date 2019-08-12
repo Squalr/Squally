@@ -30,6 +30,7 @@ YetiBaby* YetiBaby::deserialize(ValueMap& initProperties)
 }
 
 YetiBaby::YetiBaby(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	YetiBaby::MapKeyYetiBaby,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
 	Size(224.0f, 440.0f),

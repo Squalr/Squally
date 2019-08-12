@@ -30,6 +30,7 @@ Hades* Hades::deserialize(ValueMap& initProperties)
 }
 
 Hades::Hades(ValueMap& initProperties) : NpcBase(initProperties,
+	Hades::MapKeyHades,
 	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,
 	Size(112.0f, 160.0f),

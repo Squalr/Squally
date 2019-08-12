@@ -30,6 +30,7 @@ Alder* Alder::deserialize(ValueMap& initProperties)
 }
 
 Alder::Alder(ValueMap& initProperties) : NpcBase(initProperties,
+	Alder::MapKeyAlder,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	Size(112.0f, 160.0f),

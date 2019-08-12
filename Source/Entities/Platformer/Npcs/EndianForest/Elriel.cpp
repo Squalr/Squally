@@ -30,6 +30,7 @@ Elriel* Elriel::deserialize(ValueMap& initProperties)
 }
 
 Elriel::Elriel(ValueMap& initProperties) : NpcBase(initProperties,
+	Elriel::MapKeyElriel,
 	EntityResources::Npcs_EndianForest_Elriel_Animations,
 	EntityResources::Npcs_EndianForest_Elriel_Emblem,
 	Size(112.0f, 160.0f),

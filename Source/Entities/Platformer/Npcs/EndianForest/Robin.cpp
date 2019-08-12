@@ -30,6 +30,7 @@ Robin* Robin::deserialize(ValueMap& initProperties)
 }
 
 Robin::Robin(ValueMap& initProperties) : NpcBase(initProperties,
+	Robin::MapKeyRobin,
 	EntityResources::Npcs_EndianForest_Robin_Animations,
 	EntityResources::Npcs_EndianForest_Robin_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ QueenLiana* QueenLiana::deserialize(ValueMap& initProperties)
 }
 
 QueenLiana::QueenLiana(ValueMap& initProperties) : NpcBase(initProperties,
+	QueenLiana::MapKeyQueenLiana,
 	EntityResources::Npcs_EndianForest_QueenLiana_Animations,
 	EntityResources::Npcs_EndianForest_QueenLiana_Emblem,
 	Size(112.0f, 160.0f),

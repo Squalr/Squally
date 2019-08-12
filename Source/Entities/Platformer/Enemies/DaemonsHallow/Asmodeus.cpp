@@ -30,6 +30,7 @@ Asmodeus* Asmodeus::deserialize(ValueMap& initProperties)
 }
 
 Asmodeus::Asmodeus(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Asmodeus::MapKeyAsmodeus,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	Size(480.0f, 480.0f),

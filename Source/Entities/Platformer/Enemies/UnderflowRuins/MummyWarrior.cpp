@@ -30,6 +30,7 @@ MummyWarrior* MummyWarrior::deserialize(ValueMap& initProperties)
 }
 
 MummyWarrior::MummyWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	MummyWarrior::MapKeyMummyWarrior,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
 	Size(128.0f, 256.0f),

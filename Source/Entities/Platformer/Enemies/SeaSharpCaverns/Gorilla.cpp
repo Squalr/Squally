@@ -30,6 +30,7 @@ Gorilla* Gorilla::deserialize(ValueMap& initProperties)
 }
 
 Gorilla::Gorilla(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Gorilla::MapKeyGorilla,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Emblem,
 	Size(512.0f, 1126.0f),

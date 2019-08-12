@@ -30,6 +30,7 @@ Brine* Brine::deserialize(ValueMap& initProperties)
 }
 
 Brine::Brine(ValueMap& initProperties) : NpcBase(initProperties,
+	Brine::MapKeyBrine,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Lucifer* Lucifer::deserialize(ValueMap& initProperties)
 }
 
 Lucifer::Lucifer(ValueMap& initProperties) : NpcBase(initProperties,
+	Lucifer::MapKeyLucifer,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Emblem,
 	Size(112.0f, 160.0f),

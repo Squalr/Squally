@@ -30,6 +30,7 @@ EarthGolem* EarthGolem::deserialize(ValueMap& initProperties)
 }
 
 EarthGolem::EarthGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EarthGolem::MapKeyEarthGolem,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	Size(256.0f, 224.0f),

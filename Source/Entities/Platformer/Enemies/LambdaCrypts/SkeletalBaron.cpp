@@ -30,6 +30,7 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& initProperties)
 }
 
 SkeletalBaron::SkeletalBaron(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	SkeletalBaron::MapKeySkeletalBaron,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
 	Size(112.0f, 368.0f),

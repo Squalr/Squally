@@ -30,6 +30,7 @@ Medusa* Medusa::deserialize(ValueMap& initProperties)
 }
 
 Medusa::Medusa(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Medusa::MapKeyMedusa,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	Size(224.0f, 304.0f),

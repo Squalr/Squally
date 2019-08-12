@@ -30,6 +30,7 @@ Grim* Grim::deserialize(ValueMap& initProperties)
 }
 
 Grim::Grim(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Grim::MapKeyGrim,
 	EntityResources::Helpers_LambdaCrypts_Grim_Animations,
 	EntityResources::Helpers_LambdaCrypts_Grim_Emblem,
 	Size(224.0f, 440.0f),

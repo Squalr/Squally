@@ -30,6 +30,7 @@ Shaman* Shaman::deserialize(ValueMap& initProperties)
 }
 
 Shaman::Shaman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Shaman::MapKeyShaman,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,
 	Size(256.0f, 288.0f),

@@ -30,6 +30,7 @@ VoidArcher* VoidArcher::deserialize(ValueMap& initProperties)
 }
 
 VoidArcher::VoidArcher(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	VoidArcher::MapKeyVoidArcher,
 	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
 	Size(196.0f, 348.0f),

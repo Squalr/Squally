@@ -30,6 +30,7 @@ Matu* Matu::deserialize(ValueMap& initProperties)
 }
 
 Matu::Matu(ValueMap& initProperties) : NpcBase(initProperties,
+	Matu::MapKeyMatu,
 	EntityResources::Npcs_EndianForest_Matu_Animations,
 	EntityResources::Npcs_EndianForest_Matu_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Mildred* Mildred::deserialize(ValueMap& initProperties)
 }
 
 Mildred::Mildred(ValueMap& initProperties) : NpcBase(initProperties,
+	Mildred::MapKeyMildred,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	Size(112.0f, 160.0f),

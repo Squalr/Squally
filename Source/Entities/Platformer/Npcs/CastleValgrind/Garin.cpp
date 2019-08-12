@@ -30,6 +30,7 @@ Garin* Garin::deserialize(ValueMap& initProperties)
 }
 
 Garin::Garin(ValueMap& initProperties) : NpcBase(initProperties,
+	Garin::MapKeyGarin,
 	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,
 	Size(112.0f, 160.0f),

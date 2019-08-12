@@ -30,6 +30,7 @@ Turtle* Turtle::deserialize(ValueMap& initProperties)
 }
 
 Turtle::Turtle(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Turtle::MapKeyTurtle,
 	EntityResources::Helpers_EndianForest_Turtle_Animations,
 	EntityResources::Helpers_EndianForest_Turtle_Emblem,
 	Size(224.0f, 440.0f),

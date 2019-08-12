@@ -30,6 +30,7 @@ Aster* Aster::deserialize(ValueMap& initProperties)
 }
 
 Aster::Aster(ValueMap& initProperties) : NpcBase(initProperties,
+	Aster::MapKeyAster,
 	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,
 	Size(112.0f, 160.0f),

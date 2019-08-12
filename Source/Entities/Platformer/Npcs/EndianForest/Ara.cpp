@@ -30,6 +30,7 @@ Ara* Ara::deserialize(ValueMap& initProperties)
 }
 
 Ara::Ara(ValueMap& initProperties) : NpcBase(initProperties,
+	Ara::MapKeyAra,
 	EntityResources::Npcs_EndianForest_Ara_Animations,
 	EntityResources::Npcs_EndianForest_Ara_Emblem,
 	Size(112.0f, 160.0f),

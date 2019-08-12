@@ -30,6 +30,7 @@ OrcBomber* OrcBomber::deserialize(ValueMap& initProperties)
 }
 
 OrcBomber::OrcBomber(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	OrcBomber::MapKeyOrcBomber,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
 	Size(256.0f, 218.0f),

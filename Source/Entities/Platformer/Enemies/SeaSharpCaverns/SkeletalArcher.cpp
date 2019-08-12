@@ -30,6 +30,7 @@ SkeletalArcher* SkeletalArcher::deserialize(ValueMap& initProperties)
 }
 
 SkeletalArcher::SkeletalArcher(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	SkeletalArcher::MapKeySkeletalArcher,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	Size(128.0f, 216.0f),

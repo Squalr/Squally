@@ -30,6 +30,7 @@ Xenon* Xenon::deserialize(ValueMap& initProperties)
 }
 
 Xenon::Xenon(ValueMap& initProperties) : NpcBase(initProperties,
+	Xenon::MapKeyXenon,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Ragnis* Ragnis::deserialize(ValueMap& initProperties)
 }
 
 Ragnis::Ragnis(ValueMap& initProperties) : NpcBase(initProperties,
+	Ragnis::MapKeyRagnis,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,
 	Size(112.0f, 160.0f),

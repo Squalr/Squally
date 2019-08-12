@@ -30,6 +30,7 @@ PrincessMittens* PrincessMittens::deserialize(ValueMap& initProperties)
 }
 
 PrincessMittens::PrincessMittens(ValueMap& initProperties) : NpcBase(initProperties,
+	PrincessMittens::MapKeyPrincessMittens,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,
 	Size(112.0f, 160.0f),

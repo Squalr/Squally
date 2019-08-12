@@ -30,6 +30,7 @@ Mabel* Mabel::deserialize(ValueMap& initProperties)
 }
 
 Mabel::Mabel(ValueMap& initProperties) : NpcBase(initProperties,
+	Mabel::MapKeyMabel,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	Size(112.0f, 160.0f),

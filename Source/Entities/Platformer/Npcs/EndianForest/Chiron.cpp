@@ -30,6 +30,7 @@ Chiron* Chiron::deserialize(ValueMap& initProperties)
 }
 
 Chiron::Chiron(ValueMap& initProperties) : NpcBase(initProperties,
+	Chiron::MapKeyChiron,
 	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
 	Size(160.0f, 224.0f),

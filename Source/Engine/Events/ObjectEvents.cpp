@@ -4,6 +4,8 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Maps/GameObject.h"
+
 using namespace cocos2d;
 
 const std::string ObjectEvents::EventCollisonMapUpdated = "EVENT_COLLISION_MAP_UPDATED";
@@ -76,8 +78,10 @@ void ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs a
 
 void ObjectEvents::TriggerWriteObjectState(StateWriteArgs args)
 {
+	const std::string eventKey = args.key + "_" + args.owner->getUniqueIdentifier();
+
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventWriteStatePrefix + args.key + std::to_string((unsigned long long)(args.owner)),
+		ObjectEvents::EventWriteStatePrefix + eventKey,
 		&args
 	);
 }

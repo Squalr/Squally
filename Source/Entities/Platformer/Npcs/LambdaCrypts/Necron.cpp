@@ -30,6 +30,7 @@ Necron* Necron::deserialize(ValueMap& initProperties)
 }
 
 Necron::Necron(ValueMap& initProperties) : NpcBase(initProperties,
+	Necron::MapKeyNecron,
 	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
 	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,
 	Size(112.0f, 160.0f),

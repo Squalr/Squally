@@ -30,6 +30,7 @@ Nessie* Nessie::deserialize(ValueMap& initProperties)
 }
 
 Nessie::Nessie(ValueMap& initProperties) : NpcBase(initProperties,
+	Nessie::MapKeyNessie,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ DemonGhost* DemonGhost::deserialize(ValueMap& initProperties)
 }
 
 DemonGhost::DemonGhost(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	DemonGhost::MapKeyDemonGhost,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Emblem,
 	Size(256.0f, 320.0f),

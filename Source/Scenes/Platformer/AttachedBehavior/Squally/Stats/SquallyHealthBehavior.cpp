@@ -1,5 +1,7 @@
 #include "SquallyHealthBehavior.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -29,6 +31,7 @@ SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner, std::str
 SquallyHealthBehavior::SquallyHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
 {
 	this->squally = static_cast<Squally*>(owner);
+	this->spawnCoords = Vec2::ZERO;
 
 	if (this->squally == nullptr)
 	{
@@ -42,10 +45,20 @@ SquallyHealthBehavior::~SquallyHealthBehavior()
 
 void SquallyHealthBehavior::onLoad()
 {
+	this->spawnCoords = this->squally->getPosition();
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
 	{
 		this->saveState();
 	}));
+
+	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (!value.asBool())
+		{
+			this->respawn();
+		}
+	});
 
 	int maxHealth = this->squally->getStateOrDefaultInt(StateKeys::MaxHealth, 123);
 	int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(maxHealth)).asInt();
@@ -56,4 +69,21 @@ void SquallyHealthBehavior::onLoad()
 void SquallyHealthBehavior::saveState()
 {
 	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
+}
+
+void SquallyHealthBehavior::respawn()
+{
+	this->runAction(Sequence::create(
+		DelayTime::create(1.5f),
+		CallFunc::create([=]()
+		{
+			if (this->spawnCoords != Vec2::ZERO)
+			{
+				this->squally->setPosition(this->spawnCoords);
+			}
+			
+			this->squally->setState(StateKeys::IsAlive, Value(true));
+		}),
+		nullptr
+	));
 }

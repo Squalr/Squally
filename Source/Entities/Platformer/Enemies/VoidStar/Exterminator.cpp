@@ -30,6 +30,7 @@ Exterminator* Exterminator::deserialize(ValueMap& initProperties)
 }
 
 Exterminator::Exterminator(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Exterminator::MapKeyExterminator,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
 	Size(320.0f, 278.0f),

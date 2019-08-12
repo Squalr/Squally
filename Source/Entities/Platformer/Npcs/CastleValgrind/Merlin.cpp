@@ -30,6 +30,7 @@ Merlin* Merlin::deserialize(ValueMap& initProperties)
 }
 
 Merlin::Merlin(ValueMap& initProperties) : NpcBase(initProperties,
+	Merlin::MapKeyMerlin,
 	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
 	Size(112.0f, 160.0f),

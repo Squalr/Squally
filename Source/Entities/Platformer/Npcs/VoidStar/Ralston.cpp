@@ -30,6 +30,7 @@ Ralston* Ralston::deserialize(ValueMap& initProperties)
 }
 
 Ralston::Ralston(ValueMap& initProperties) : NpcBase(initProperties,
+	Ralston::MapKeyRalston,
 	EntityResources::Npcs_VoidStar_Ralston_Animations,
 	EntityResources::Npcs_VoidStar_Ralston_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Pan* Pan::deserialize(ValueMap& initProperties)
 }
 
 Pan::Pan(ValueMap& initProperties) : NpcBase(initProperties,
+	Pan::MapKeyPan,
 	EntityResources::Npcs_DaemonsHallow_Pan_Animations,
 	EntityResources::Npcs_DaemonsHallow_Pan_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Thug* Thug::deserialize(ValueMap& initProperties)
 }
 
 Thug::Thug(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Thug::MapKeyThug,
 	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
 	Size(112.0f, 160.0f),

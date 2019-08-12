@@ -30,6 +30,7 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& initProperties)
 }
 
 SkeletalNecromancer::SkeletalNecromancer(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	SkeletalNecromancer::MapKeySkeletalNecromancer,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
 	Size(128.0f, 228.0f),

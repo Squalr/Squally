@@ -30,6 +30,7 @@ Ogre* Ogre::deserialize(ValueMap& initProperties)
 }
 
 Ogre::Ogre(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Ogre::MapKeyOgre,
 	EntityResources::Enemies_EndianForest_Ogre_Animations,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,
 	Size(256.0f, 248.0f),

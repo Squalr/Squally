@@ -30,6 +30,7 @@ Bard* Bard::deserialize(ValueMap& initProperties)
 }
 
 Bard::Bard(ValueMap& initProperties) : NpcBase(initProperties,
+	Bard::MapKeyBard,
 	EntityResources::Npcs_EndianForest_Bard_Animations,
 	EntityResources::Npcs_EndianForest_Bard_Emblem,
 	Size(112.0f, 160.0f),

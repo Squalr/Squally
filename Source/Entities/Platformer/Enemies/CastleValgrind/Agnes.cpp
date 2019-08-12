@@ -30,6 +30,7 @@ Agnes* Agnes::deserialize(ValueMap& initProperties)
 }
 
 Agnes::Agnes(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Agnes::MapKeyAgnes,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	Size(360.0f, 420.0f),

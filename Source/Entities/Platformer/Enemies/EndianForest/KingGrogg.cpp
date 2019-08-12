@@ -30,6 +30,7 @@ KingGrogg* KingGrogg::deserialize(ValueMap& initProperties)
 }
 
 KingGrogg::KingGrogg(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	KingGrogg::MapKeyKingGrogg,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	Size(412.0f, 412.0f),

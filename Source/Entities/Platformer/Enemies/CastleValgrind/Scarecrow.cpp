@@ -30,6 +30,7 @@ Scarecrow* Scarecrow::deserialize(ValueMap& initProperties)
 }
 
 Scarecrow::Scarecrow(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Scarecrow::MapKeyScarecrow,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
 	Size(196.0f, 512.0f),

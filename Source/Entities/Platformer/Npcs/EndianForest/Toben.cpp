@@ -30,6 +30,7 @@ Toben* Toben::deserialize(ValueMap& initProperties)
 }
 
 Toben::Toben(ValueMap& initProperties) : NpcBase(initProperties,
+	Toben::MapKeyToben,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
 	EntityResources::Npcs_EndianForest_Toben_Emblem,
 	Size(112.0f, 160.0f),

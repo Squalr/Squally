@@ -30,6 +30,7 @@ Gaunt* Gaunt::deserialize(ValueMap& initProperties)
 }
 
 Gaunt::Gaunt(ValueMap& initProperties) : NpcBase(initProperties,
+	Gaunt::MapKeyGaunt,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Animations,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Emblem,
 	Size(112.0f, 160.0f),

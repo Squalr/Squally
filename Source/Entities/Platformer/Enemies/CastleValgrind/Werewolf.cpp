@@ -30,6 +30,7 @@ Werewolf* Werewolf::deserialize(ValueMap& initProperties)
 }
 
 Werewolf::Werewolf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Werewolf::MapKeyWerewolf,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Emblem,
 	Size(196.0f, 512.0f),

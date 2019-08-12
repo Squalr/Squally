@@ -30,6 +30,7 @@ FireTiger* FireTiger::deserialize(ValueMap& initProperties)
 }
 
 FireTiger::FireTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	FireTiger::MapKeyFireTiger,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
 	Size(256.0f, 320.0f),

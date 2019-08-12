@@ -30,6 +30,7 @@ Olive* Olive::deserialize(ValueMap& initProperties)
 }
 
 Olive::Olive(ValueMap& initProperties) : NpcBase(initProperties,
+	Olive::MapKeyOlive,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,
 	Size(112.0f, 160.0f),

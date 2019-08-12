@@ -30,6 +30,7 @@ Elric* Elric::deserialize(ValueMap& initProperties)
 }
 
 Elric::Elric(ValueMap& initProperties) : NpcBase(initProperties,
+	Elric::MapKeyElric,
 	EntityResources::Npcs_CastleValgrind_Elric_Animations,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	Size(112.0f, 160.0f),

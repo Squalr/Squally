@@ -30,6 +30,7 @@ Raven* Raven::deserialize(ValueMap& initProperties)
 }
 
 Raven::Raven(ValueMap& initProperties) : NpcBase(initProperties,
+	Raven::MapKeyRaven,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	Size(112.0f, 160.0f),

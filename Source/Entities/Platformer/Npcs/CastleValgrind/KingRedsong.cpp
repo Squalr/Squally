@@ -30,6 +30,7 @@ KingRedsong* KingRedsong::deserialize(ValueMap& initProperties)
 }
 
 KingRedsong::KingRedsong(ValueMap& initProperties) : NpcBase(initProperties,
+	KingRedsong::MapKeyKingRedsong,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,
 	Size(160.0f, 192.0f),

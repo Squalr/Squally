@@ -30,6 +30,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& initProperties)
 }
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	GoblinGruntBoar::MapKeyGoblinGruntBoar,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	Size(128.0f, 296.0f),

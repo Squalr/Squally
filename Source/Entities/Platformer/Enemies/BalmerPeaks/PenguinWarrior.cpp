@@ -30,6 +30,7 @@ PenguinWarrior* PenguinWarrior::deserialize(ValueMap& initProperties)
 }
 
 PenguinWarrior::PenguinWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	PenguinWarrior::MapKeyPenguinWarrior,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,
 	Size(212.0f, 296.0f),

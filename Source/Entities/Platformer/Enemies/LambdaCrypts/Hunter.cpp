@@ -30,6 +30,7 @@ Hunter* Hunter::deserialize(ValueMap& initProperties)
 }
 
 Hunter::Hunter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Hunter::MapKeyHunter,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,
 	Size(112.0f, 596.0f),

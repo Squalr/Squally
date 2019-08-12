@@ -30,6 +30,7 @@ DemonShaman* DemonShaman::deserialize(ValueMap& initProperties)
 }
 
 DemonShaman::DemonShaman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	DemonShaman::MapKeyDemonShaman,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Emblem,
 	Size(212.0f, 280.0f),

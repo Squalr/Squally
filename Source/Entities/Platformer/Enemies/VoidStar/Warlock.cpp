@@ -30,6 +30,7 @@ Warlock* Warlock::deserialize(ValueMap& initProperties)
 }
 
 Warlock::Warlock(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Warlock::MapKeyWarlock,
 	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,
 	Size(284.0f, 256.0f),

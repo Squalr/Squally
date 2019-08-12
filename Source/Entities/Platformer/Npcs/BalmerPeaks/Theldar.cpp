@@ -30,6 +30,7 @@ Theldar* Theldar::deserialize(ValueMap& initProperties)
 }
 
 Theldar::Theldar(ValueMap& initProperties) : NpcBase(initProperties,
+	Theldar::MapKeyTheldar,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
 	Size(112.0f, 160.0f),

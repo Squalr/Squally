@@ -30,6 +30,7 @@ Kringle* Kringle::deserialize(ValueMap& initProperties)
 }
 
 Kringle::Kringle(ValueMap& initProperties) : NpcBase(initProperties,
+	Kringle::MapKeyKringle,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Griffin* Griffin::deserialize(ValueMap& initProperties)
 }
 
 Griffin::Griffin(ValueMap& initProperties) : NpcBase(initProperties,
+	Griffin::MapKeyGriffin,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Emblem,
 	Size(112.0f, 160.0f),

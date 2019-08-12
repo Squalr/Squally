@@ -30,6 +30,7 @@ Mystic* Mystic::deserialize(ValueMap& initProperties)
 }
 
 Mystic::Mystic(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Mystic::MapKeyMystic,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,
 	Size(420.0f, 296.0f),

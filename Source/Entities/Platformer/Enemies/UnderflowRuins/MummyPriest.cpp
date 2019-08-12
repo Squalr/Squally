@@ -30,6 +30,7 @@ MummyPriest* MummyPriest::deserialize(ValueMap& initProperties)
 }
 
 MummyPriest::MummyPriest(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	MummyPriest::MapKeyMummyPriest,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
 	Size(128.0f, 256.0f),

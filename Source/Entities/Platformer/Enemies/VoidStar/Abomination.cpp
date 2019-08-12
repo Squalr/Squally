@@ -30,6 +30,7 @@ Abomination* Abomination::deserialize(ValueMap& initProperties)
 }
 
 Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Abomination::MapKeyAbomination,
 	EntityResources::Enemies_VoidStar_Abomination_Animations,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,
 	Size(296.0f, 356.0f),

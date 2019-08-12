@@ -30,6 +30,7 @@ PrincessOpal* PrincessOpal::deserialize(ValueMap& initProperties)
 }
 
 PrincessOpal::PrincessOpal(ValueMap& initProperties) : NpcBase(initProperties,
+	PrincessOpal::MapKeyPrincessOpal,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,
 	Size(112.0f, 160.0f),

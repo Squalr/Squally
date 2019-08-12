@@ -30,6 +30,7 @@ AnubisPup* AnubisPup::deserialize(ValueMap& initProperties)
 }
 
 AnubisPup::AnubisPup(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	AnubisPup::MapKeyAnubisPup,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,
 	Size(128.0f, 186.0f),

@@ -30,6 +30,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& initProperties)
 }
 
 SkeletalWarrior::SkeletalWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	SkeletalWarrior::MapKeySkeletalWarrior,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	Size(128.0f, 216.0f),

@@ -30,6 +30,7 @@ Angel* Angel::deserialize(ValueMap& initProperties)
 }
 
 Angel::Angel(ValueMap& initProperties) : NpcBase(initProperties,
+	Angel::MapKeyAngel,
 	EntityResources::Npcs_UnderflowRuins_Angel_Animations,
 	EntityResources::Npcs_UnderflowRuins_Angel_Emblem,
 	Size(112.0f, 160.0f),

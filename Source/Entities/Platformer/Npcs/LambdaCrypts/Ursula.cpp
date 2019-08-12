@@ -30,6 +30,7 @@ Ursula* Ursula::deserialize(ValueMap& initProperties)
 }
 
 Ursula::Ursula(ValueMap& initProperties) : NpcBase(initProperties,
+	Ursula::MapKeyUrsula,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,
 	Size(112.0f, 160.0f),

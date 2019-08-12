@@ -9,6 +9,7 @@ using namespace cocos2d;
 
 NpcBase::NpcBase(
 	ValueMap& properties,
+	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
 	Size size,
@@ -16,6 +17,7 @@ NpcBase::NpcBase(
 	Vec2 collisionOffset
 ) : super(
 	properties,
+	entityName,
 	scmlResource,
 	emblemResource,
 	size,

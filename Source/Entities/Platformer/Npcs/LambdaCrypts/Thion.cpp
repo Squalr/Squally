@@ -30,6 +30,7 @@ Thion* Thion::deserialize(ValueMap& initProperties)
 }
 
 Thion::Thion(ValueMap& initProperties) : NpcBase(initProperties,
+	Thion::MapKeyThion,
 	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	EntityResources::Npcs_LambdaCrypts_Thion_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Troll* Troll::deserialize(ValueMap& initProperties)
 }
 
 Troll::Troll(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Troll::MapKeyTroll,
 	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
 	Size(256.0f, 248.0f),
@@ -131,10 +132,10 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				StateOverride::TutorialMode::NoTutorial
 			)

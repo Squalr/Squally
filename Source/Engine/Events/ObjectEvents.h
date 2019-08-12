@@ -108,11 +108,11 @@ public:
 
 	struct StateWriteArgs
 	{
-		void* owner;
+		GameObject* owner;
 		std::string key;
 		cocos2d::Value value;
 
-		StateWriteArgs(void* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
+		StateWriteArgs(GameObject* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
 	};
 
 	static void TriggerCollisionMapUpdated();

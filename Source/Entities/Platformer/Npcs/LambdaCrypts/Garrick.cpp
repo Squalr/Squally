@@ -30,6 +30,7 @@ Garrick* Garrick::deserialize(ValueMap& initProperties)
 }
 
 Garrick::Garrick(ValueMap& initProperties) : NpcBase(initProperties,
+	Garrick::MapKeyGarrick,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,
 	Size(112.0f, 160.0f),

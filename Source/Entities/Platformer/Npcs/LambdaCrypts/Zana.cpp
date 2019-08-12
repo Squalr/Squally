@@ -30,6 +30,7 @@ Zana* Zana::deserialize(ValueMap& initProperties)
 }
 
 Zana::Zana(ValueMap& initProperties) : NpcBase(initProperties,
+	Zana::MapKeyZana,
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Poseidon* Poseidon::deserialize(ValueMap& initProperties)
 }
 
 Poseidon::Poseidon(ValueMap& initProperties) : NpcBase(initProperties,
+	Poseidon::MapKeyPoseidon,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Emblem,
 	Size(112.0f, 160.0f),

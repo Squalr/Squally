@@ -30,6 +30,7 @@ Jingles* Jingles::deserialize(ValueMap& initProperties)
 }
 
 Jingles::Jingles(ValueMap& initProperties) : NpcBase(initProperties,
+	Jingles::MapKeyJingles,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,
 	Size(112.0f, 160.0f),

@@ -30,6 +30,7 @@ Juniper* Juniper::deserialize(ValueMap& initProperties)
 }
 
 Juniper::Juniper(ValueMap& initProperties) : NpcBase(initProperties,
+	Juniper::MapKeyJuniper,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,
 	Size(112.0f, 160.0f),

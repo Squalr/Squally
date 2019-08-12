@@ -30,6 +30,7 @@ KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap& initProperties)
 }
 
 KingRedsongSlime::KingRedsongSlime(ValueMap& initProperties) : NpcBase(initProperties,
+	KingRedsongSlime::MapKeyKingRedsongSlime,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,
 	Size(112.0f, 160.0f),

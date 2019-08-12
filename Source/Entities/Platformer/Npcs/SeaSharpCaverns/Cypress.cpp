@@ -30,6 +30,7 @@ Cypress* Cypress::deserialize(ValueMap& initProperties)
 }
 
 Cypress::Cypress(ValueMap& initProperties) : NpcBase(initProperties,
+	Cypress::MapKeyCypress,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,
 	Size(112.0f, 160.0f),

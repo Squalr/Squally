@@ -30,6 +30,7 @@ ZombieElric* ZombieElric::deserialize(ValueMap& initProperties)
 }
 
 ZombieElric::ZombieElric(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	ZombieElric::MapKeyZombieElric,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
 	Size(114.0f, 208.0f),

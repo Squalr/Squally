@@ -30,6 +30,7 @@ IceGolem* IceGolem::deserialize(ValueMap& initProperties)
 }
 
 IceGolem::IceGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	IceGolem::MapKeyIceGolem,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
 	Size(1680.0f, 996.0f),

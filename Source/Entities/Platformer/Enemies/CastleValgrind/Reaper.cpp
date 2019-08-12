@@ -30,6 +30,7 @@ Reaper* Reaper::deserialize(ValueMap& initProperties)
 }
 
 Reaper::Reaper(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	Reaper::MapKeyReaper,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
 	Size(196.0f, 512.0f),

@@ -30,6 +30,7 @@ PrincessPepper* PrincessPepper::deserialize(ValueMap& initProperties)
 }
 
 PrincessPepper::PrincessPepper(ValueMap& initProperties) : NpcBase(initProperties,
+	PrincessPepper::MapKeyPrincessPepper,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,
 	Size(112.0f, 160.0f),

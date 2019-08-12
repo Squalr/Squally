@@ -4,6 +4,7 @@ using namespace cocos2d;
 
 PlatformerFriendly::PlatformerFriendly(
 	ValueMap& properties,
+	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
 	Size size, 
@@ -16,6 +17,7 @@ PlatformerFriendly::PlatformerFriendly(
 	)
 	: super(
 		properties,
+		entityName,
 		scmlResource,
 		emblemResource,
 		size,

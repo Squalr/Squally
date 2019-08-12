@@ -30,6 +30,7 @@ Amelia* Amelia::deserialize(ValueMap& initProperties)
 }
 
 Amelia::Amelia(ValueMap& initProperties) : NpcBase(initProperties,
+	Amelia::MapKeyAmelia,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Animations,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Emblem,
 	Size(112.0f, 160.0f),

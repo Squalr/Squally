@@ -30,6 +30,7 @@ DarkTiger* DarkTiger::deserialize(ValueMap& initProperties)
 }
 
 DarkTiger::DarkTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	DarkTiger::MapKeyDarkTiger,
 	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
 	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,
 	Size(256.0f, 248.0f),

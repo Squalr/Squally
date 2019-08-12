@@ -30,6 +30,7 @@ PrincessDawn* PrincessDawn::deserialize(ValueMap& initProperties)
 }
 
 PrincessDawn::PrincessDawn(ValueMap& initProperties) : NpcBase(initProperties,
+	PrincessDawn::MapKeyPrincessDawn,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Emblem,
 	Size(112.0f, 160.0f),

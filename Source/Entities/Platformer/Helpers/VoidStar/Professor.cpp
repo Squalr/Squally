@@ -30,6 +30,7 @@ Professor* Professor::deserialize(ValueMap& initProperties)
 }
 
 Professor::Professor(ValueMap& initProperties) : PlatformerEntity(initProperties,
+	Professor::MapKeyProfessor,
 	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,
 	Size(224.0f, 440.0f),

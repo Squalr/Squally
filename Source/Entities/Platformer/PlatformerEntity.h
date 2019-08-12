@@ -57,6 +57,7 @@ public:
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap& properties,
+		std::string entityName,
 		std::string scmlResource,
 		std::string emblemResource,
 		cocos2d::Size size,

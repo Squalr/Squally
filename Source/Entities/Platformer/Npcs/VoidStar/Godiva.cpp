@@ -30,6 +30,7 @@ Godiva* Godiva::deserialize(ValueMap& initProperties)
 }
 
 Godiva::Godiva(ValueMap& initProperties) : NpcBase(initProperties,
+	Godiva::MapKeyGodiva,
 	EntityResources::Npcs_VoidStar_Godiva_Animations,
 	EntityResources::Npcs_VoidStar_Godiva_Emblem,
 	Size(112.0f, 160.0f),

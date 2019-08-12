@@ -30,6 +30,7 @@ Brock* Brock::deserialize(ValueMap& initProperties)
 }
 
 Brock::Brock(ValueMap& initProperties) : NpcBase(initProperties,
+	Brock::MapKeyBrock,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,
 	Size(112.0f, 160.0f),

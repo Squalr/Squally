@@ -30,6 +30,7 @@ Igneus* Igneus::deserialize(ValueMap& initProperties)
 }
 
 Igneus::Igneus(ValueMap& initProperties) : NpcBase(initProperties,
+	Igneus::MapKeyIgneus,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,
 	Size(112.0f, 160.0f),

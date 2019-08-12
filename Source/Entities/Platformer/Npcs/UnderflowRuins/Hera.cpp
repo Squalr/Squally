@@ -30,6 +30,7 @@ Hera* Hera::deserialize(ValueMap& initProperties)
 }
 
 Hera::Hera(ValueMap& initProperties) : NpcBase(initProperties,
+	Hera::MapKeyHera,
 	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hera_Emblem,
 	Size(112.0f, 160.0f),

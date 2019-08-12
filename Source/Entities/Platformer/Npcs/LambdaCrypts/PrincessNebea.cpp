@@ -30,6 +30,7 @@ PrincessNebea* PrincessNebea::deserialize(ValueMap& initProperties)
 }
 
 PrincessNebea::PrincessNebea(ValueMap& initProperties) : NpcBase(initProperties,
+	PrincessNebea::MapKeyPrincessNebea,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,
 	Size(112.0f, 160.0f),

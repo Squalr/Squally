@@ -30,6 +30,7 @@ Jasper* Jasper::deserialize(ValueMap& initProperties)
 }
 
 Jasper::Jasper(ValueMap& initProperties) : NpcBase(initProperties,
+	Jasper::MapKeyJasper,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,
 	Size(112.0f, 160.0f),

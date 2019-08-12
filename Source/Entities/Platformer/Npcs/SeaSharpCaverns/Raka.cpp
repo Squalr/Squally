@@ -30,6 +30,7 @@ Raka* Raka::deserialize(ValueMap& initProperties)
 }
 
 Raka::Raka(ValueMap& initProperties) : NpcBase(initProperties,
+	Raka::MapKeyRaka,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,
 	Size(112.0f, 160.0f),

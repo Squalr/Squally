@@ -30,6 +30,7 @@ GoblinElf* GoblinElf::deserialize(ValueMap& initProperties)
 }
 
 GoblinElf::GoblinElf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	GoblinElf::MapKeyGoblinElf,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,
 	Size(140.0f, 296.0f),

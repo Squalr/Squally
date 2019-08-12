@@ -30,6 +30,7 @@ Aspen* Aspen::deserialize(ValueMap& initProperties)
 }
 
 Aspen::Aspen(ValueMap& initProperties) : NpcBase(initProperties,
+	Aspen::MapKeyAspen,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,
 	Size(112.0f, 160.0f),

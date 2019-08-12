@@ -30,6 +30,7 @@ Shen* Shen::deserialize(ValueMap& initProperties)
 }
 
 Shen::Shen(ValueMap& initProperties) : NpcBase(initProperties,
+	Shen::MapKeyShen,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,
 	Size(112.0f, 160.0f),

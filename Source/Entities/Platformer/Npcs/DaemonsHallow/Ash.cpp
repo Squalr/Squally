@@ -30,6 +30,7 @@ Ash* Ash::deserialize(ValueMap& initProperties)
 }
 
 Ash::Ash(ValueMap& initProperties) : NpcBase(initProperties,
+	Ash::MapKeyAsh,
 	EntityResources::Npcs_DaemonsHallow_Ash_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ash_Emblem,
 	Size(112.0f, 160.0f),

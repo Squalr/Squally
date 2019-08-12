@@ -30,6 +30,7 @@ Cindra* Cindra::deserialize(ValueMap& initProperties)
 }
 
 Cindra::Cindra(ValueMap& initProperties) : NpcBase(initProperties,
+	Cindra::MapKeyCindra,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,
 	Size(112.0f, 160.0f),

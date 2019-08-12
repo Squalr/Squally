@@ -30,6 +30,7 @@ EarthElemental* EarthElemental::deserialize(ValueMap& initProperties)
 }
 
 EarthElemental::EarthElemental(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+	EarthElemental::MapKeyEarthElemental,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,
 	Size(820.0f, 1480.0f),

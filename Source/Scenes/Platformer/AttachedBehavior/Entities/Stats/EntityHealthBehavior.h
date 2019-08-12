@@ -28,13 +28,10 @@ private:
 
 	int getHealth();
 	void addHealth(int healthDelta);
-	void setHealth(int health);
+	void setHealth(int health, bool checkDeath = true);
 	int getMaxHealth();
 	bool isAlive();
 	bool isDead();
 	virtual void kill(bool loadDeadAnim = true);
-	virtual void killAndRespawn();
 	virtual void revive();
-
-	cocos2d::Vec2 spawnCoords;
 };
