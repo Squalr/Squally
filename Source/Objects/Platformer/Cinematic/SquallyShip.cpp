@@ -144,7 +144,7 @@ void SquallyShip::initializeListeners()
 
 			Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
 			Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
-			Squally* squally = Squally::deserialize(this->properties);
+			Squally* squally = Squally::create();
 			
 			squally->setState(StateKeys::Health, Value(1));
 

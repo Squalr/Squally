@@ -10,6 +10,7 @@ namespace cocos2d
 class Squally : public PlatformerFriendly
 {
 public:
+	static Squally* create();
 	static Squally* deserialize(cocos2d::ValueMap& properties);
 
 	float getFloatHeight() override;

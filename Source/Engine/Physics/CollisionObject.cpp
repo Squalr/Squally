@@ -73,6 +73,7 @@ CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* in
 	this->physicsEnabled = true;
 	this->bindTarget = nullptr;
 	this->contactUpdateCallback = nullptr;
+	this->setPosition(Vec2::ZERO);
 
 	if (this->physicsBody != nullptr)
 	{

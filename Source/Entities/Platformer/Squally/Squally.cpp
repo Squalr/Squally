@@ -33,6 +33,16 @@ using namespace cocos2d;
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKeySqually = "squally";
 
+Squally* Squally::create()
+{
+	ValueMap emptyProperties = ValueMap();
+	Squally* instance = new Squally(emptyProperties);
+
+	instance->autorelease();
+	
+	return instance;
+}
+
 Squally* Squally::deserialize(ValueMap& properties)
 {
 	Squally* instance = new Squally(properties);
