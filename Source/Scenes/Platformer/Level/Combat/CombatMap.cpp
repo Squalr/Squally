@@ -24,7 +24,7 @@
 #include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Combat/Entities/EntityCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Enemies/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
