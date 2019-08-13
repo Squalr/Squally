@@ -43,9 +43,6 @@ OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
 {
 	this->hexusOpponentData = OrcGrunt::getHexusOpponentData();
 
-	this->registerAttack(Slash::create(0.7f, 0.2f));
-	this->registerAttack(ThrowRestorePotion::create());
-
 	this->dropTable.push_back(this->createDrop(HealthPotion::SaveKeyHealthPotion, 0.5f));
 	this->dropTable.push_back(this->createDrop(ManaPotion::SaveKeyManaPotion, 0.5f));
 	this->iouTable = std::make_tuple(1, 2);

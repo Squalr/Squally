@@ -8,8 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Speed/ThrowSpeedRune.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
@@ -40,9 +38,6 @@ GoblinWarriorPig::GoblinWarriorPig(ValueMap& initProperties) : PlatformerEnemy(i
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinWarriorPig::getHexusOpponentData();
-
-	this->registerAttack(Slash::create(0.7f, 0.2f));
-	// this->registerAttack(ThrowSpeedRune::create());
 
 	this->dropTable.push_back(this->createDrop(SpeedRune::SaveKeySpeedRune, 0.35f));
 }

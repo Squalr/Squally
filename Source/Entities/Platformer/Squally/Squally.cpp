@@ -21,7 +21,6 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -67,7 +66,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	this->cameraTrackTarget = Node::create();
 
 	this->registerHackables();
-	this->registerAttack(Punch::create(0.4f, 0.5f));
 
 	this->addChild(this->cameraTrackTarget);
 }

@@ -15,7 +15,6 @@ class EquipmentInventory;
 class HackablePreview;
 class HexusOpponentData;
 class Inventory;
-class PlatformerAttack;
 class SmartAnimationNode;
 class SpeechBubble;
 
@@ -31,9 +30,6 @@ public:
 	std::string getEntityName();
 	virtual float getFloatHeight();
 
-	std::vector<PlatformerAttack*> getAttacks();
-	std::vector<PlatformerAttack*> getAvailableAttacks();
-	std::vector<PlatformerAttack*> cloneAttacks();
 	Inventory* getInventory();
 	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();
@@ -74,7 +70,6 @@ protected:
 	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
-	void registerAttack(PlatformerAttack* attack);
 
 	std::string state;
 
@@ -96,6 +91,5 @@ private:
 	std::string entityName;
 	std::string animationResource;
 	std::string emblemResource;
-	std::vector<PlatformerAttack*> attacks;
 	cocos2d::Vec2 hackButtonOffset;
 };

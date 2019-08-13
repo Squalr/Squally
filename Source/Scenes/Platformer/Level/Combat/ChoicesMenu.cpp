@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -320,7 +321,8 @@ void ChoicesMenu::buildAttackList()
 
 		if (entity != nullptr)
 		{
-			std::vector<PlatformerAttack*> attacks = entity->getAttacks();
+			EntityAttackBehavior* attackBehavior = entity->getAttachedBehavior<EntityAttackBehavior>();
+			std::vector<PlatformerAttack*> attacks = attackBehavior->getAttacks();
 
 			for (auto it = attacks.begin(); it != attacks.end(); it++)
 			{

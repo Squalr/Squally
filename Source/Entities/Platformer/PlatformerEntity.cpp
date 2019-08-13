@@ -55,7 +55,6 @@ PlatformerEntity::PlatformerEntity(
 	this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
 	this->currencyInventory = CurrencyInventory::create(currencySaveKey);
 	this->speechBubble = SpeechBubble::create();
-	this->attacks = std::vector<PlatformerAttack*>();
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->movementSize = this->entitySize * this->entityScale + Size(0.0f, this->hoverHeight);
@@ -162,39 +161,6 @@ HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 	return this->hexusOpponentData;
 }
 
-std::vector<PlatformerAttack*> PlatformerEntity::getAttacks()
-{
-	return this->attacks;
-}
-
-std::vector<PlatformerAttack*> PlatformerEntity::getAvailableAttacks()
-{
-	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
-
-	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
-	{
-		/* TODO: Broken until attacks abstracted into their own behavior
-		if ((*it)->getSpecialCost() <= this->getMana())
-		{
-			availableAttacks.push_back(*it);
-		}*/
-	}
-
-	return availableAttacks;
-}
-
-std::vector<PlatformerAttack*> PlatformerEntity::cloneAttacks()
-{
-	std::vector<PlatformerAttack*> attacksClone = std::vector<PlatformerAttack*>();
-
-	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
-	{
-		attacksClone.push_back((*it)->clone());
-	}
-
-	return attacksClone;
-}
-
 Inventory* PlatformerEntity::getInventory()
 {
 	return this->inventory;
@@ -208,12 +174,6 @@ EquipmentInventory* PlatformerEntity::getEquipmentInventory()
 CurrencyInventory* PlatformerEntity::getCurrencyInventory()
 {
 	return this->currencyInventory;
-}
-
-void PlatformerEntity::registerAttack(PlatformerAttack* attack)
-{
-	this->addChild(attack);
-	this->attacks.push_back(attack);
 }
 
 float PlatformerEntity::getScale()

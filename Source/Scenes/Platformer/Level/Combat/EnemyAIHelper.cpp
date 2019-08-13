@@ -9,6 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -111,7 +112,8 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 	}
 
 	// PHASE 1: Check if available heal target / heal spell
-	std::vector<PlatformerAttack*> attackList = attackingEntity->getAvailableAttacks();
+	EntityAttackBehavior* attackBehavior = attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
+	std::vector<PlatformerAttack*> attackList = attackBehavior->getAvailableAttacks();
 	PlatformerAttack* attack = nullptr;
 	bool hasWeakAlly = false;
 	float selectedAttackPriority = -1.0f;
