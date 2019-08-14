@@ -315,46 +315,55 @@ void ChoicesMenu::buildAttackList()
 	this->attackListNodes.clear();
 	this->attackListNode->removeAllChildren();
 
-	if (this->selectedEntry != nullptr)
+	if (this->selectedEntry == nullptr)
 	{
-		PlatformerEntity* entity = this->selectedEntry->getEntity();
+		return;
+	}
+	PlatformerEntity* entity = this->selectedEntry->getEntity();
 
-		if (entity != nullptr)
+	if (entity == nullptr)
+	{
+		return;
+	}
+
+	EntityAttackBehavior* attackBehavior = entity->getAttachedBehavior<EntityAttackBehavior>();
+
+	if (attackBehavior == nullptr)
+	{
+		return;
+	}
+
+	std::vector<PlatformerAttack*> attacks = attackBehavior->getAttacks();
+
+	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	{
+		PlatformerAttack* attack = *it;
+		LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, attack->getString());
+		LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, attack->getString());
+
+		attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+		attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+		attackLabel->enableOutline(Color4B::BLACK, 2);
+		attackLabelSelected->enableOutline(Color4B::BLACK, 2);
+		attackLabelSelected->setTextColor(Color4B::YELLOW);
+
+		ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
+
+		node->setTextOffset(Vec2(48.0f, 0.0f));
+		node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
+		node->addChild(Sprite::create(attack->getIconResource()));
+
+		node->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
-			EntityAttackBehavior* attackBehavior = entity->getAttachedBehavior<EntityAttackBehavior>();
-			std::vector<PlatformerAttack*> attacks = attackBehavior->getAttacks();
+			this->selectedEntry->stageCast(attack);
 
-			for (auto it = attacks.begin(); it != attacks.end(); it++)
-			{
-				PlatformerAttack* attack = *it;
-				LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, attack->getString());
-				LocalizedLabel* attackLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, attack->getString());
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
+		});
 
-				attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-				attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
-				attackLabel->enableOutline(Color4B::BLACK, 2);
-				attackLabelSelected->enableOutline(Color4B::BLACK, 2);
-				attackLabelSelected->setTextColor(Color4B::YELLOW);
+		currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
 
-				ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
-
-				node->setTextOffset(Vec2(48.0f, 0.0f));
-				node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
-				node->addChild(Sprite::create(attack->getIconResource()));
-
-				node->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-				{
-					this->selectedEntry->stageCast(attack);
-
-					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
-				});
-
-				currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
-
-				this->attackListNodes.push_back(node);
-				this->attackListNode->addChild(node);
-			}
-		}
+		this->attackListNodes.push_back(node);
+		this->attackListNode->addChild(node);
 	}
 }
 

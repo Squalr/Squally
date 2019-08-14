@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDebugBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
@@ -20,6 +21,7 @@ EntityCombatBehaviorGroup* EntityCombatBehaviorGroup::create(GameObject* owner)
 }
 
 EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(owner, {
+	EntityAttackBehavior::create(owner),
 	EntitySelectionBehavior::create(owner),
 	EntityDebugBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),

@@ -32,6 +32,7 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
+	this->hackablesNode = Node::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 	this->hasRelocatedUI = false;
@@ -41,6 +42,7 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
+	this->addChild(this->hackablesNode);
 	this->addChild(this->uiElements);
 }
 
@@ -208,7 +210,7 @@ void HackableObject::registerData(HackableData* hackableData)
 		}
 	}
 
-	this->addChild(hackableData);
+	this->hackablesNode->addChild(hackableData);
 	this->hackableList.push_back(hackableData);
 	this->dataList.push_back(hackableData);
 }
@@ -220,7 +222,7 @@ void HackableObject::unregisterData(HackableData* hackableData)
 		return;
 	}
 
-	this->removeChild(hackableData);
+	this->hackablesNode->removeChild(hackableData);
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableData), this->hackableList.end());
 	this->dataList.erase(std::remove(this->dataList.begin(), this->dataList.end(), hackableData), this->dataList.end());
@@ -241,7 +243,7 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 		}
 	}
 
-	this->addChild(hackableCode);
+	this->hackablesNode->addChild(hackableCode);
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
 }
@@ -272,6 +274,6 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 		this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableCode), this->hackableList.end());
 		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
 
-		this->removeChild(hackableCode);
+		this->hackablesNode->removeChild(hackableCode);
 	}
 }

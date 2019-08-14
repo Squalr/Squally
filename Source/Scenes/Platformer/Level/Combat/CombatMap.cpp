@@ -307,6 +307,7 @@ void CombatMap::spawnEntities()
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
+			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;
 			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -333,6 +334,7 @@ void CombatMap::spawnEntities()
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
+			valueMap[GameObject::MapKeyAttachedBehavior] = this->playerData[index].battleBehavior;
 			
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,

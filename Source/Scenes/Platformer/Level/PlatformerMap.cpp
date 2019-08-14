@@ -29,6 +29,7 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
@@ -152,7 +153,7 @@ void PlatformerMap::initializeListeners()
 				args->firstStrike,
 				args->enemy->getUniqueIdentifier(),
 				{
-					CombatMap::CombatData(Squally::MapKeySqually, ""),
+					CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior),
 					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString(), ""),
 		 		},
 				{ 

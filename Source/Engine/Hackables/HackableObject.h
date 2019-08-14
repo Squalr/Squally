@@ -61,6 +61,7 @@ private:
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
+	cocos2d::Node* hackablesNode;
 
 	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;

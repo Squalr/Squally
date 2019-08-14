@@ -58,11 +58,11 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 
 	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
 	{
-		/* TODO: Broken until attacks abstracted into their own behavior
-		if ((*it)->getSpecialCost() <= this->getMana())
+		// TODO: Broken until attacks abstracted into their own behavior
+		// if ((*it)->getSpecialCost() <= this->getMana())
 		{
 			availableAttacks.push_back(*it);
-		}*/
+		}
 	}
 
 	return availableAttacks;

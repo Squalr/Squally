@@ -50,7 +50,7 @@ void EntityHealthBehavior::onLoad()
 {
 	this->listenForStateWrite(StateKeys::Health, [=](Value value)
 	{
-		this->setHealth(value.asInt());
+		this->setHealth(value.asInt(), false);
 	});
 
 	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
