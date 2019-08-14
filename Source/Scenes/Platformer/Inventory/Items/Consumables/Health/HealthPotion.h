@@ -11,7 +11,6 @@ public:
 
 	Item* clone() override;
 	std::string getItemName() override;
-	PlatformerAttack* createAssociatedAttack() override;
 	LocalizedString* getString() override;
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
@@ -20,7 +19,9 @@ public:
 
 protected:
 	HealthPotion();
-	virtual ~HealthPotion();
+	~HealthPotion();
+
+	PlatformerAttack* createAssociatedAttack() override;
 
 private:
 	typedef Consumable super;

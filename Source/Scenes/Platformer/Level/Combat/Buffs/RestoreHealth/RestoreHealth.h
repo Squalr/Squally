@@ -18,7 +18,6 @@ public:
 	static RestoreHealth* create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
 
 	static const std::string MapKeyPropertyRestorePotionTutorial;
-	static const std::string EventShowRestorePotionTutorial;
 	static const std::string RestoreHealthIdentifier;
 
 protected:

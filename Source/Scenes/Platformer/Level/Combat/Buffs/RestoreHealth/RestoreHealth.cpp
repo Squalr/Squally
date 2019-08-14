@@ -31,7 +31,6 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_RESTORE 1
 
 const std::string RestoreHealth::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
-const std::string RestoreHealth::EventShowRestorePotionTutorial = "EVENT_SHOW_RESTORE_POTION_TUTORIAL";
 const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
 const float RestoreHealth::TimeBetweenTicks = 0.5f;
 
@@ -63,19 +62,8 @@ RestoreHealth::~RestoreHealth()
 void RestoreHealth::onEnter()
 {
 	super::onEnter();
-	
-	std::vector<std::string> mapArgs = std::vector<std::string>();
-
-	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
-
-	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), RestoreHealth::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
 	this->runRestoreHealth();
-
-	if (showClippy)
-	{
-		ObjectEvents::TriggerBroadCastMapObjectState(RestoreHealth::EventShowRestorePotionTutorial, ValueMap());
-	}
 }
 
 void RestoreHealth::initializePositions()
@@ -93,12 +81,8 @@ void RestoreHealth::registerHackables()
 	{
 		return;
 	}
-	
-	std::vector<std::string> mapArgs = std::vector<std::string>();
 
-	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
-
-	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), RestoreHealth::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
+	bool showClippy = true;
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{

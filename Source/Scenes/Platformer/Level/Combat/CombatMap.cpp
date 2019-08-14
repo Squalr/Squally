@@ -186,7 +186,7 @@ void CombatMap::initializeListeners()
 		this->textOverlays->showExpBars(expGain);
 
 		this->runAction(Sequence::create(
-			DelayTime::create(5.0f),
+			DelayTime::create(3.5f),
 			CallFunc::create([=]()
 			{
 				CombatEvents::TriggerGiveRewards();

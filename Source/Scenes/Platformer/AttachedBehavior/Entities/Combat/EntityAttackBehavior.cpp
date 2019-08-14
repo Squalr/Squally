@@ -126,7 +126,7 @@ void EntityAttackBehavior::buildEquipmentAttacks()
 			continue;
 		}
 		
-		std::vector<PlatformerAttack*> weaponAttacks = (*it)->createAssociatedAttacks();
+		std::vector<PlatformerAttack*> weaponAttacks = (*it)->cloneAssociatedAttacks();
 
 		for (auto it = weaponAttacks.begin(); it != weaponAttacks.end(); it++)
 		{
@@ -151,7 +151,7 @@ void EntityAttackBehavior::rebuildConsumables()
 	for (auto it = consumables.begin(); it != consumables.end(); it++)
 	{
 		Consumable* item = *it;
-		PlatformerAttack* consumable = item->createAssociatedAttack();
+		PlatformerAttack* consumable = item->cloneAssociatedAttack();
 
 		consumable->registerAttackCompleteCallback([=]()
 		{

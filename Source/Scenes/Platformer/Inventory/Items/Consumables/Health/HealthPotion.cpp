@@ -39,11 +39,6 @@ std::string HealthPotion::getItemName()
 	return HealthPotion::SaveKeyHealthPotion;
 }
 
-PlatformerAttack* HealthPotion::createAssociatedAttack()
-{
-	return ThrowHealthPotion::create();
-}
-
 LocalizedString* HealthPotion::getString()
 {
 	return Strings::Items_Consumables_Health_HealthPotion::create();
@@ -57,4 +52,9 @@ std::string HealthPotion::getIconResource()
 std::string HealthPotion::getSerializationKey()
 {
 	return HealthPotion::SaveKeyHealthPotion;
+}
+
+PlatformerAttack* HealthPotion::createAssociatedAttack()
+{
+	return ThrowHealthPotion::create();
 }

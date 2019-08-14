@@ -39,11 +39,6 @@ std::string ManaPotion::getItemName()
 	return ManaPotion::SaveKeyManaPotion;
 }
 
-PlatformerAttack* ManaPotion::createAssociatedAttack()
-{
-	return ThrowHealthPotion::create();
-}
-
 LocalizedString* ManaPotion::getString()
 {
 	return Strings::Items_Consumables_Mana_ManaPotion::create();
@@ -57,4 +52,9 @@ std::string ManaPotion::getIconResource()
 std::string ManaPotion::getSerializationKey()
 {
 	return ManaPotion::SaveKeyManaPotion;
+}
+
+PlatformerAttack* ManaPotion::createAssociatedAttack()
+{
+	return ThrowHealthPotion::create();
 }

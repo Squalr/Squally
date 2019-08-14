@@ -32,6 +32,15 @@ OrcGruntCombatBehavior::OrcGruntCombatBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
+	else
+	{
+		Inventory* inventory = this->entity->getInventory();
+
+		if (inventory != nullptr)
+		{
+			inventory->forceInsert(RestorePotion::create());
+		}
+	}
 }
 
 OrcGruntCombatBehavior::~OrcGruntCombatBehavior()
@@ -49,12 +58,5 @@ void OrcGruntCombatBehavior::onLoad()
 	if (attackBehavior != nullptr)
 	{
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
-	}
-
-	Inventory* inventory = this->entity->getInventory();
-
-	if (inventory != nullptr)
-	{
-		inventory->forceInsert(RestorePotion::create());
 	}
 }

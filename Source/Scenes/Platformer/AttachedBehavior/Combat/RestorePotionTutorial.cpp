@@ -11,9 +11,13 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -51,24 +55,21 @@ RestorePotionTutorial::~RestorePotionTutorial()
 
 void RestorePotionTutorial::onLoad()
 {
-	this->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		if (value.asInt() <= 6)
-		{
-			// Force a potion as the next attack
-		}
-	});
-
-	this->listenForMapEvent(RestoreHealth::EventShowRestorePotionTutorial, [=](ValueMap args)
-	{
-		this->runTutorial();
-	});
-
 	ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([=](FlyBot* flyBot, bool* isHandled)
 	{
 		this->flyBot = flyBot;
 		*isHandled = true;
 	}));
+
+	RestorePotion* restorePotion = this->entity->getInventory()->getItemOfType<RestorePotion>();
+
+	if (restorePotion != nullptr)
+	{
+		restorePotion->getAssociatedAttack()->registerAttackCompleteCallback([=]()
+		{
+			this->runTutorial();
+		});
+	}
 
 	HackableEvents::TriggerDisallowHackerMode();
 }

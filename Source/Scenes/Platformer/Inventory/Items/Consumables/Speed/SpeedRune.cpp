@@ -39,11 +39,6 @@ std::string SpeedRune::getItemName()
 	return SpeedRune::SaveKeySpeedRune;
 }
 
-PlatformerAttack* SpeedRune::createAssociatedAttack()
-{
-	return ThrowSpeedRune::create();
-}
-
 LocalizedString* SpeedRune::getString()
 {
 	return Strings::Items_Consumables_Speed_SpeedRune::create();
@@ -57,4 +52,9 @@ std::string SpeedRune::getIconResource()
 std::string SpeedRune::getSerializationKey()
 {
 	return SpeedRune::SaveKeySpeedRune;
+}
+
+PlatformerAttack* SpeedRune::createAssociatedAttack()
+{
+	return ThrowSpeedRune::create();
 }

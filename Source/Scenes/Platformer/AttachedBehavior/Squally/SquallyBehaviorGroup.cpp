@@ -2,14 +2,11 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Abilities/SquallyIsAliveHackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Abilities/SquallyOutOfCombatAttackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Collision/SquallyCollisionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Collision/SquallyWeaponCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Abilities/SquallyAbilityBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Collision/SquallyCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Stats/SquallyStatsBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Visual/SquallyEquipmentVisualBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Visual/SquallyEyeBlinkBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Visual/SquallyVisualBehaviorGroup.h"
 
 using namespace cocos2d;
 
@@ -26,14 +23,11 @@ SquallyBehaviorGroup* SquallyBehaviorGroup::create(GameObject* owner)
 
 SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityBehaviorGroup::create(owner),
-	SquallyCollisionBehavior::create(owner),
-	SquallyWeaponCollisionBehavior::create(owner),
-	SquallyEquipmentVisualBehavior::create(owner),
-	SquallyEyeBlinkBehavior::create(owner),
-	SquallyIsAliveHackBehavior::create(owner),
+	SquallyAbilityBehaviorGroup::create(owner),
+	SquallyCollisionBehaviorGroup::create(owner),
 	SquallyMovementBehavior::create(owner),
-	SquallyOutOfCombatAttackBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),
+	SquallyVisualBehaviorGroup::create(owner),
 	})
 {
 }

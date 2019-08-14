@@ -39,11 +39,6 @@ std::string RestorePotion::getItemName()
 	return RestorePotion::SaveKeyRestorePotion;
 }
 
-PlatformerAttack* RestorePotion::createAssociatedAttack()
-{
-	return ThrowRestorePotion::create();
-}
-
 LocalizedString* RestorePotion::getString()
 {
 	return Strings::Items_Consumables_Health_RestorePotion::create();
@@ -57,4 +52,9 @@ std::string RestorePotion::getIconResource()
 std::string RestorePotion::getSerializationKey()
 {
 	return RestorePotion::SaveKeyRestorePotion;
+}
+
+PlatformerAttack* RestorePotion::createAssociatedAttack()
+{
+	return ThrowRestorePotion::create();
 }

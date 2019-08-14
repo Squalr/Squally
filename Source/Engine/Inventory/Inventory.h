@@ -33,6 +33,20 @@ public:
 		return foundItems;
 	};
 
+	template<class T>
+	T* getItemOfType()
+	{
+		for (auto it = this->items.begin(); it != this->items.end(); it++)
+		{
+			if (dynamic_cast<T*>(*it) != nullptr)
+			{
+				return dynamic_cast<T*>(*it);
+			}
+		}
+
+		return nullptr;
+	};
+
 	int getCapacity();
 	void tryRemove(Item* item, std::function<void(Item*)> onRemove = nullptr, std::function<void(Item*)> onRemoveFailed = nullptr, bool doSave = true);
 	void tryInsert(Item* item, std::function<void(Item*)> onInsert = nullptr, std::function<void(Item*)> onInsertFailed = nullptr, bool doSave = true);

@@ -8,12 +8,17 @@ class PlatformerAttack;
 class Consumable : public Item
 {
 public:
-	virtual PlatformerAttack* createAssociatedAttack() = 0;
+	PlatformerAttack* cloneAssociatedAttack();
+	PlatformerAttack* getAssociatedAttack();
 
 protected:
 	Consumable(CurrencyInventory* cost);
-	virtual ~Consumable();
+	~Consumable();
+
+	virtual PlatformerAttack* createAssociatedAttack() = 0;
 
 private:
 	typedef Item super;
+
+	PlatformerAttack* associatedAttack;
 };

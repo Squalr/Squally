@@ -9,7 +9,7 @@ class Equipable : public Item
 {
 public:
 	virtual cocos2d::Vec2 getDisplayOffset();
-	virtual std::vector<PlatformerAttack*> createAssociatedAttacks();
+	virtual std::vector<PlatformerAttack*> cloneAssociatedAttacks();
 
 protected:
 	Equipable(CurrencyInventory* cost);
