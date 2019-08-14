@@ -12,7 +12,6 @@ public:
 
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
-	std::vector<PlatformerAttack*> cloneAttacks();
 	void registerAttack(PlatformerAttack* attack);
 
 	static const std::string MapKeyAttachedBehavior;
@@ -27,6 +26,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void buildEquipmentAttacks();
+
 	PlatformerEntity* entity;
-	std::vector<PlatformerAttack*> attacks;
+	std::vector<PlatformerAttack*> registeredAttacks;
 };

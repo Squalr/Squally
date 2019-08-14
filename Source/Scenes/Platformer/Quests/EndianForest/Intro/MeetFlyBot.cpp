@@ -35,7 +35,7 @@ MeetFlyBot* MeetFlyBot::create(GameObject* owner, QuestLine* questLine, std::str
 MeetFlyBot::MeetFlyBot(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetFlyBot::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = static_cast<FlyBot*>(owner);
+	this->flyBot = dynamic_cast<FlyBot*>(owner);
 }
 
 MeetFlyBot::~MeetFlyBot()

@@ -34,7 +34,7 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine
 TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
-	this->flyBot = static_cast<FlyBot*>(owner);
+	this->flyBot = dynamic_cast<FlyBot*>(owner);
 }
 
 TeachHackerMode::~TeachHackerMode()

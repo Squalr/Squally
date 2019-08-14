@@ -34,7 +34,7 @@ HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, QuestLine* questLine
 HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = static_cast<FlyBot*>(owner);
+	this->flyBot = dynamic_cast<FlyBot*>(owner);
 }
 
 HelpSquallyHeal::~HelpSquallyHeal()

@@ -34,7 +34,7 @@ RestorePotionTutorial* RestorePotionTutorial::create(GameObject* owner)
 
 RestorePotionTutorial::RestorePotionTutorial(GameObject* owner) : super(owner)
 {
-	this->entity = static_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

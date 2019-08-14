@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/Inventory.h"
 
+class Equipable;
 class Gear;
 class Hat;
 class Offhand;
@@ -13,6 +14,7 @@ class EquipmentInventory : public Inventory
 public:
 	static EquipmentInventory* create(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
 
+	std::vector<Equipable*> getEquipment();
 	Weapon* getWeapon();
 	Offhand* getOffhand();
 	Hat* getHat();

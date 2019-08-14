@@ -34,6 +34,21 @@ void EquipmentInventory::initializeListeners()
 	super::initializeListeners();
 }
 
+std::vector<Equipable*> EquipmentInventory::getEquipment()
+{
+	std::vector<Equipable*> equipment = std::vector<Equipable*>();
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<Equipable*>(*it) != nullptr)
+		{
+			equipment.push_back(dynamic_cast<Equipable*>(*it));
+		}
+	}
+
+	return equipment;
+}
+
 Weapon* EquipmentInventory::getWeapon()
 {
 	for (auto it = this->items.begin(); it != this->items.end(); it++)

@@ -31,7 +31,7 @@ FirstIOUFound* FirstIOUFound::create(GameObject* owner)
 
 FirstIOUFound::FirstIOUFound(GameObject* owner) : super(owner)
 {
-	this->iou = static_cast<IOU*>(owner);
+	this->iou = dynamic_cast<IOU*>(owner);
 
 	if (this->iou == nullptr)
 	{

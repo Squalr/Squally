@@ -34,7 +34,7 @@ SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std:
 SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = static_cast<FlyBot*>(owner);
+	this->flyBot = dynamic_cast<FlyBot*>(owner);
 }
 
 SpotOrcGrunt::~SpotOrcGrunt()

@@ -14,3 +14,8 @@ Vec2 Equipable::getDisplayOffset()
 {
 	return Vec2::ZERO;
 }
+
+std::vector<PlatformerAttack*> Equipable::createAssociatedAttacks()
+{
+	return std::vector<PlatformerAttack*>();
+}

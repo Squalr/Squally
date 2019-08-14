@@ -1,10 +1,13 @@
 #include "OrcGruntCombatBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/Item.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowRestorePotion.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
 
 #include "Resources/UIResources.h"
 
@@ -46,6 +49,7 @@ void OrcGruntCombatBehavior::onLoad()
 	if (attackBehavior != nullptr)
 	{
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
-		attackBehavior->registerAttack(ThrowRestorePotion::create());
 	}
+
+	this->entity->getInventory()->forceInsert(RestorePotion::create());
 }

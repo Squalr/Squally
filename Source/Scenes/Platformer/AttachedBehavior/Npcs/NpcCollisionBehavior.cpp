@@ -24,7 +24,7 @@ NpcCollisionBehavior* NpcCollisionBehavior::create(GameObject* owner)
 
 NpcCollisionBehavior::NpcCollisionBehavior(GameObject* owner) : super(owner)
 {
-	this->npc = static_cast<NpcBase*>(owner);
+	this->npc = dynamic_cast<NpcBase*>(owner);
 
 	if (this->npc == nullptr)
 	{

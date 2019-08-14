@@ -6,6 +6,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -33,7 +35,7 @@ EntityAttackBehavior::EntityAttackBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 
-	this->attacks = std::vector<PlatformerAttack*>();
+	this->registeredAttacks = std::vector<PlatformerAttack*>();
 }
 
 EntityAttackBehavior::~EntityAttackBehavior()
@@ -50,14 +52,22 @@ void EntityAttackBehavior::onLoad()
 
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAttacks()
 {
-	return this->attacks;
+	std::vector<PlatformerAttack*> attacks = std::vector<PlatformerAttack*>();
+
+	for (auto it = this->registeredAttacks.begin(); it != this->registeredAttacks.end(); it++)
+	{
+		attacks.push_back(*it);
+	}
+
+	return attacks;
 }
 
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 {
+	std::vector<PlatformerAttack*> attacks = this->getAttacks();
 	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
+	for (auto it = attacks.begin(); it != attacks.end(); it++)
 	{
 		if ((*it)->getSpecialCost() <= this->getStateOrDefaultInt(StateKeys::Mana, 0))
 		{
@@ -68,20 +78,40 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 	return availableAttacks;
 }
 
-std::vector<PlatformerAttack*> EntityAttackBehavior::cloneAttacks()
-{
-	std::vector<PlatformerAttack*> attacksClone = std::vector<PlatformerAttack*>();
-
-	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
-	{
-		attacksClone.push_back((*it)->clone());
-	}
-
-	return attacksClone;
-}
-
 void EntityAttackBehavior::registerAttack(PlatformerAttack* attack)
 {
+	if (attack == nullptr)
+	{
+		return;
+	}
+	
 	this->addChild(attack);
-	this->attacks.push_back(attack);
+	this->registeredAttacks.push_back(attack);
+}
+
+void EntityAttackBehavior::buildEquipmentAttacks()
+{
+	EquipmentInventory* equipmentInventory = this->entity->getEquipmentInventory();
+
+	if (equipmentInventory == nullptr)
+	{
+		return;
+	}
+
+	std::vector<Equipable*> equipment = equipmentInventory->getEquipment();
+
+	for (auto it = equipment.begin(); it != equipment.end(); it++)
+	{
+		if (*it == nullptr)
+		{
+			continue;
+		}
+		
+		std::vector<PlatformerAttack*> weaponAttacks = (*it)->createAssociatedAttacks();
+
+		for (auto it = weaponAttacks.begin(); it != weaponAttacks.end(); it++)
+		{
+			this->registerAttack(*it);
+		}
+	}
 }
